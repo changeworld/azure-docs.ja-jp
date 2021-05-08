@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035429"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579766"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
@@ -44,7 +44,9 @@ Logstash エンジンは、次の 3 つのコンポーネントで構成され�
 - 出力プラグイン:収集および処理されたデータのさまざまな宛先へのカスタマイズされた送信。
 
 > [!NOTE]
-> Azure Sentinel サポートは用意された独自の出力プラグインのみをサポートしています。 Azure Sentinel 用のサード パーティ製出力プラグインや、あらゆる種類のその他の Logstash プラグインはサポートされていません。
+> - Azure Sentinel サポートは用意された独自の出力プラグインのみをサポートしています。 このプラグインの現在のバージョンは、2020-08-25 にリリースされた v1.0.0 です。 Azure Sentinel 用のサード パーティ製出力プラグインや、あらゆる種類のその他の Logstash プラグインはサポートされていません。
+>
+> - Azure Sentinel の Logstash 出力プラグインでサポートされるのは、**Logstash の 7.0 から 7.9 までのバージョン** だけです。
 
 Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP データ コレクター REST API を使用して、JSON 形式のデータを Log Analytics ワークスペースに送信します。 データはカスタム ログに取り込まれます。
 
@@ -67,19 +69,21 @@ Logstash の[構成ファイルの構造](https://www.elastic.co/guide/en/logsta
 
 | フィールド名 | データ型 | 説明 |
 |----------------|---------------|-----------------|
-| `workspace_id` | string | ワークスペース ID GUID を入力します。 * |
-| `workspace_key` | string | ワークスペースの主キー GUID を入力します。 * |
+| `workspace_id` | string | ワークスペース ID GUID を入力します (ヒントを参照)。 |
+| `workspace_key` | string | ワークスペースの主キー GUID を入力します (ヒントを参照)。 |
 | `custom_log_table_name` | string | ログが取り込まれるテーブルの名前を設定します。 構成できるのは、出力プラグインごとに 1 つのテーブル名だけです。 ログ テーブルは、Azure Sentinel の **[ログ]** の下の **[カスタム ログ]** カテゴリの **[テーブル]** に `_CL` サフィックス付きで表示されます。 |
 | `endpoint` | string | 省略可能なフィールド。 既定では、これは Log Analytics エンドポイントです。 代替エンドポイントを設定するには、このフィールドを使用します。 |
 | `time_generated_field` | string | 省略可能なフィールド。 このプロパティは Log Analytics の既定の **TimeGenerated** フィールドよりも優先されます。 データ ソースのタイムスタンプ フィールドの名前を入力します。 フィールドのデータは、ISO 8601 形式 (`YYYY-MM-DDThh:mm:ssZ`) に準拠している必要があります |
 | `key_names` | array | Log Analytics 出力スキーマ フィールドの一覧を入力します。 各リスト項目は、単一引用符で囲み、項目をコンマで区切り、リスト全体を角かっこで囲む必要があります。 以下の例を参照してください。 |
 | `plugin_flush_interval` | 数値 | 省略可能なフィールド。 Log Analytics へのメッセージの転送間の最大間隔 (秒) を定義するように設定します。 既定値は 5 です。 |
-    | `amount_resizing` | boolean | true または false 自動スケーリング メカニズムを有効または無効にします。これにより、受信したログ データの量に応じてメッセージ バッファー サイズが調整されます。 |
+| `amount_resizing` | boolean | true または false 自動スケーリング メカニズムを有効または無効にします。これにより、受信したログ データの量に応じてメッセージ バッファー サイズが調整されます。 |
 | `max_items` | 数値 | 省略可能なフィールド。 `amount_resizing` が "false" に設定されている場合にのみ適用されます。 メッセージ バッファー サイズ (レコード単位) の上限の設定に使用します。 既定値は 2000 です。  |
 | `azure_resource_id` | string | 省略可能なフィールド。 データが存在する Azure リソースの ID を定義します。 <br>リソース ID 値は特に、[リソースコンテキスト RBAC](resource-context-rbac.md) を使用して特定のデータへのアクセスのみを許可する場合に便利です。 |
 | | | |
 
-*  ワークスペース ID と主キーは、ワークスペース リソースの **[エージェント管理]** で確認できます。
+> [!TIP]
+> -  ワークスペース ID と主キーは、ワークスペース リソースの **[エージェント管理]** で確認できます。
+> - **ただし**、資格情報やその他の機密情報を構成ファイルにクリアテキストで格納することは、セキュリティのベスト プラクティスに沿っていないため、構成に **ワークスペース ID** と **ワークスペースの主キー** を安全に含めるために、**Logstash キー ストア** を利用することを強くお勧めします。 手順については、[Elastic のドキュメント](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html)を参照してください。
 
 #### <a name="sample-configurations"></a>サンプルの構成
 

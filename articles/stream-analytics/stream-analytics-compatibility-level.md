@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094087"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606244"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
-この記事では、Azure Stream Analytics の互換性レベル オプションについて説明します。 Stream Analytics は管理されたサービスであり、定期的に機能が更新され、パフォーマンスが向上しています。 サービスのほとんどのランタイム更新は、自動的にエンド ユーザーが使用できるようになります。 
+この記事では、Azure Stream Analytics の互換性レベル オプションについて説明します。
 
-ただし、サービスの一部の新機能では、既存のジョブの動作変更や、実行中ジョブによるデータの使用方法の変更など、大幅な変更が導入されている場合があります。 互換性レベルの設定を下げたままにすることで、大幅な変更を取り入れずに既存の Stream Analytics ジョブの実行を保持することができます。 最新のランタイム動作への準備ができたら、互換性レベルを上げることでオプトインできます。 
+Stream Analytics は管理サービスであり、[定期的に機能が更新され、常にパフォーマンスが向上しています](https://azure.microsoft.com/updates/?product=stream-analytics)。 サービスのほとんどのランタイム更新は、互換性レベルとは無関係に、自動的にエンド ユーザーが使用できるようになります。 ただし、新しい機能によって既存のジョブの動作に変更が生じる場合や、実行中のジョブでデータが消費される方法に変更が生じる場合は、この変更を新しい互換性レベルで導入します。 互換性レベルの設定を下げたままにすることで、大幅な変更を取り入れずに既存の Stream Analytics ジョブの実行を保持することができます。 最新のランタイム動作への準備ができたら、互換性レベルを上げることでオプトインできます。
+
 
 ## <a name="choose-a-compatibility-level"></a>互換性レベルを選択する
 
-互換性レベルは、ストリーム分析ジョブの実行時の動作を制御します。 
+互換性レベルは、ストリーム分析ジョブの実行時の動作を制御します。
 
 Azure Stream Analytics では現在、次の 3 つの互換性レベルがサポートされています。
 
-* 1.0 - 元の互換性レベル。数年前の Azure Stream Analytics の一般提供時に導入されました。
-* 1.1 - 以前の動作
 * 1.2 - 最近の改善による最新の動作
+* 1.1 - 以前の動作
+* 1.0 - 元の互換性レベル。数年前の Azure Stream Analytics の一般提供時に導入されました。 
 
 新しい Stream Analytics ジョブを作成する場合は、最新の互換性レベルを使用して作成することをお勧めします。 その後に追加される変更や複雑さを避けるために、最新の動作に基づいてジョブの設計を開始ししてください。
 

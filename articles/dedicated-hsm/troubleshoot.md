@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97508273"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611652"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
-Azure Dedicated HSM サービスには、明確に区別される 2 つの側面があります。 1 つは、HSM デバイスとその基になるネットワーク コンポーネントの Azure への登録とデプロイです。 もう 1 つは、特定のワークロードやアプリケーションでの使用またはそれらとの統合に備えた HSM デバイスの構成です。 Azure で使用される Thales Luna Network の HSM デバイスは、Thales から直接購入できる製品と同じですが、Azure ではリソースという位置付けになるため、独自の考慮事項がいくつか発生します。 ここでは、重要な情報への注目度を高め、周知徹底するために、それらの考慮事項とそれに伴うトラブルシューティングのための分析情報やベスト プラクティスについて取り上げています。 サービスの使用開始後は、Microsoft へのサポート リクエストか Thales への直接の問い合わせを通じて、信頼性の高い情報を入手できます。 
+Azure Dedicated HSM サービスには、明確に区別される 2 つの側面があります。 1 つは、HSM デバイスとその基になるネットワーク コンポーネントの Azure への登録とデプロイです。 もう 1 つは、特定のワークロードやアプリケーションでの使用またはそれらとの統合に備えた HSM デバイスの構成です。 Azure で使用される [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) デバイスは、Thales から直接購入できる製品と同じですが、Azure ではリソースという位置付けになるため、独自の考慮事項がいくつか発生します。 ここでは、重要な情報への注目度を高め、周知徹底するために、それらの考慮事項とそれに伴うトラブルシューティングのための分析情報やベスト プラクティスについて取り上げています。 サービスの使用開始後は、Microsoft へのサポート リクエストか Thales への直接の問い合わせを通じて、信頼性の高い情報を入手できます。 
 
 > [!NOTE]
 > 新たにデプロイした HSM デバイスに対してなんらかの構成を行う際は、あらかじめ適切なパッチを使用して更新しておくようにしてください。 Thales サポート ポータルの固有の必須パッチは、再起動中にシステムが応答しなくなる問題に対処する [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789) です。
@@ -33,7 +33,7 @@ Dedicated HSM は無償提供されません。ハードウェア リソース�
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Dedicated HSM へのアクセス
 
-Dedicated HSM がキー ストレージ要件を満たしていると確信したら、アクセスを要求するメールを HSMrequest@microsoft.com 宛てに送信してください。 お使いのアプリケーション、HSM を希望するリージョン、必要な HSM のボリュームの概要を記述してください。 Microsoft 担当者 (アカウント エグゼクティブ、クラウド ソリューション アーキテクトなど) がいる場合は、それらの担当者もリクエストに含めてください。
+まず、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) や [Azure Managed HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview) で対処できないのは、どのようなユース ケースかを考えます。 そのうえで、実際のキー ストレージ要件が Dedicated HSM でしか満たせないと判断したら、アクセスをリクエストするメールを HSMrequest@microsoft.com 宛てに送信してください。 お使いのアプリケーションとユース ケース、HSM を希望するリージョン、必要な HSM のボリュームの概要を記述してください。 Microsoft 担当者 (アカウント エグゼクティブ、クラウド ソリューション アーキテクトなど) がいる場合は、それらの担当者もリクエストに含めてください。
 
 ## <a name="hsm-provisioning"></a>HSM のプロビジョニング
 
@@ -66,7 +66,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 HSM がスタンプあたり 2 つ、またリージョンあたり 4 つを超えた場合、デプロイに失敗する可能性があります。 この状況を避けるには、以前に失敗したデプロイのリソースを削除してから、再度デプロイするようにしてください。 リソースの確認については、以下の HSM の表示方法に関する項目を参照してください。 このクォータは本来予防措置として存在するものですが、どうしても超えてしまう場合は、詳細を記載したメールを HSMrequest@microsoft.com 宛てにお送りください。
 
 ### <a name="deployment-failure-based-on-capacity"></a>容量に起因するデプロイ エラー
-特定のスタンプまたはリージョンがいっぱいになると (つまり、空いている HSM がほぼすべてプロビジョニングされると)、デプロイに失敗する可能性があります。 お客様が利用できる HSM は各スタンプにつき 11 個、つまりリージョンあたり 22 個となります。 また、各スタンプには、スペアが 3 つ、テスト デバイスが 1 つ存在します。 上限に達したと思われる場合、個別のスタンプの容量については、HSMrequest@microsoft.com にメールでお問い合わせください。
+特定のスタンプまたはリージョンがいっぱいになると (つまり、空いている HSM がほぼすべてプロビジョニングされると)、デプロイに失敗する可能性があります。 お客様が利用できる HSM は各スタンプにつき 12 個、つまりリージョンあたり 24 個となります。 また、各スタンプには、スペアが 2 つ、テスト デバイスが 1 つ存在します。 上限に達したと思われる場合、個別のスタンプの容量については、HSMrequest@microsoft.com にメールでお問い合わせください。
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>プロビジョニング時に HSM を表示する方法
 Dedicated HSM は許可リストに登録されたサービスであるため、Azure portal では "非表示の型" と見なされます。 HSM リソースを表示するには、下に示すように [非表示の型の表示] チェック ボックスをオンにする必要があります。 HSM の後ろには常に NIC リソースが表示されるため、SSH を使用して HSM に接続する際は、あらかじめここで IP アドレスを調べることができます。
@@ -112,7 +112,7 @@ HSM に間違った資格情報を入力すると、破壊的な結果を招く�
 以下は、一般的な構成エラーや注意すべき結果を招く状況を箇条書きでまとめたものです。
 
 ### <a name="hsm-documentation-and-software"></a>HSM のドキュメントとソフトウェア
-Thales SafeNet Luna 7 HSM デバイスのソフトウェアとドキュメントは、Microsoft からは入手できません。Thales から直接ダウンロードする必要があります。 その際、登録プロセス時に提供される Thales Customer ID を使用した登録が必要となります。 Microsoft から提供されるデバイスのソフトウェア バージョンは 7.2 で、ファームウェア バージョンは 7.0.3 です。 2020 年の初めに Thales が公開したドキュメントは、[こちら](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)にあります。  
+[Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) デバイスのソフトウェアとドキュメントは、Microsoft からは入手できません。Thales から直接ダウンロードする必要があります。 その際、登録プロセス時に提供される Thales Customer ID を使用した登録が必要となります。 Microsoft から提供されるデバイスのソフトウェア バージョンは 7.2 で、ファームウェア バージョンは 7.0.3 です。 2020 年の初めに Thales が公開したドキュメントは、[こちら](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)にあります。  
 
 ### <a name="hsm-networking-configuration"></a>HSM のネットワーク構成
 
@@ -120,7 +120,7 @@ HSM 内のネットワークを構成する際は注意が必要です。  HSM �
 
 ### <a name="hsm-device-reboot"></a>HSM デバイスの再起動
 
-一部の構成変更では、HSM の電源を入れ直すか、再起動する必要があります。 Microsoft が Azure で HSM をテストしたところ、まれに再起動が応答を停止することが確認されました。 その場合、ハード リブートを要求するサポート リクエストを Azure portal からご送信いただく必要があります。この作業は Azure データセンターにて手動で実施されるため、完了までに最大 48 時間かかります。  この状況を避けるために、Thales から直接入手できる再起動のパッチを必ずデプロイしておいてください。 再起動中にシステムが応答しなくなる問題に推奨されるパッチについては、Thales Luna Network HSM 7.2 ダウンロード ページの [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) を参照してください (注: ダウンロードするには Thales サポート ポータルへの登録が必要です)。
+一部の構成変更では、HSM の電源を入れ直すか、再起動する必要があります。 Microsoft が Azure で HSM をテストしたところ、まれに再起動が応答を停止することが確認されました。 その場合、ハード リブートを要求するサポート リクエストを Azure portal からご送信いただく必要があります。この作業は Azure データセンターにて手動で実施されるため、完了までに最大 48 時間かかります。  この状況を避けるために、Thales から直接入手できる再起動のパッチを必ずデプロイしておいてください。 再起動中にシステムが応答しなくなる問題に推奨されるパッチについては、Thales Luna 7 HSM 7.2 ダウンロード ページの [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) を参照してください (注: ダウンロードするには [Thales カスタマー サポート ポータル](https://supportportal.thalesgroup.com/csm)への登録が必要です)。
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS 証明書の非同期
 証明書が有効期限切れになったり、構成の更新によって上書きされたりすると、クライアントでは HSM への接続が失われることがあります。 各 HSM に対して、証明書の交換のクライアント構成を再適用する必要があります。

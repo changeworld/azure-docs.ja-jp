@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 145dffea50040c86a4af9d77ba8f68cccc8d2958
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930376"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866048"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -35,7 +35,7 @@ Azure portal を使用して、クラスター ストレージとして Azure St
 
 1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Azure portal でのリソースの作成](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png "Azure Portal でのリソースの作成")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-resource.png " alt-text="Azure portal でのリソースの作成" border="true":::urce" border="true":::
 
 1. **[分析]**  >  **[Azure HDInsight]** の順に選択して **[HDInsight クラスターの作成]** ページに移動します。
 
@@ -53,7 +53,7 @@ Azure portal を使用して、クラスター ストレージとして Azure St
     |クラスター ログイン パスワード| クラスターのログイン パスワードを入力します。 |
     |Secure Shell (SSH) ユーザー名| SSH ユーザー名を入力します。 このクイック スタートで使う SSH ユーザー名は **sshuser** です。 既定では、このアカウントは "*クラスター ログイン ユーザー名*" アカウントと同じパスワードを共有します。 |
 
-    ![[基本] タブが選択された [HDInsight クラスターの作成] を示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "HDInsight での Spark クラスターの作成の基本構成")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png " alt-text="[基本] タブが選択された [HDInsight クラスターの作成] を示すスクリーンショット。" border="true":::
 
     **ストレージ >>** を選択して **ストレージ** ページに進みます。
 
@@ -66,7 +66,7 @@ Azure portal を使用して、クラスター ストレージとして Azure St
     |プライマリ ストレージ アカウント|自動入力されている値を使用します。|
     |コンテナー|自動入力されている値を使用します。|
 
-    ![[ストレージ] タブが選択された [HDInsight クラスターの作成] を示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "HDInsight での Spark クラスターの作成の基本構成")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png " alt-text="[ストレージ] タブが選択された [HDInsight クラスターの作成] を示すスクリーンショット。" border="true":::
 
     **[Review + create]\(確認と作成\)** を選択して続行します。
 
@@ -82,7 +82,7 @@ Jupyter Notebook は、さまざまなプログラミング言語をサポート
 
 1. **[新規]**  >  **[PySpark]** を選んで、ノートブックを作成します。
 
-   ![Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Jupyter Notebook を作成して対話型の Spark SQL クエリを実行する" border="true":::
 
    Untitled(Untitled.pynb) という名前の新しい Notebook が作成されて開かれます。
 
@@ -92,7 +92,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
 1. カーネルの準備ができていることを確認します。 Notebook のカーネル名の横に白丸が表示されたら、カーネルの準備ができています。 黒丸は、カーネルがビジー状態であることを示します。
 
-    ![PySpark インジケーターのある Jupyter ウィンドウを示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "HDInsight での Hive クエリ")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="PySpark インジケーターのある Jupyter ウィンドウを示すスクリーンショット。" border="true":::ark indicator." border="true":::
 
     Notebook を初めて起動すると、カーネルがバックグラウンドでいくつかのタスクを実行します。 カーネルの準備ができるまで待ちます。
 
@@ -105,7 +105,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
     HDInsight クラスターで Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 `%%sql` により、プリセット `sqlContext` を使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターに既定で付属する Hive テーブル (**hivesampletable**) から先頭の 10 行を取得します。 結果が得られるまで約 30 秒かかります。 出力は次のようになります。
 
-    ![このクイックスタートで作成したノートブックの Jupyter ウィンドウを示すスクリーンショット。](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "HDInsight での Hive クエリ")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png " alt-text="このクイックスタートで作成したノートブックの Jupyter ウィンドウを示すスクリーンショット。" border="true":::is quickstart." border="true":::
 
     Jupyter でクエリを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。 また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。
 
@@ -118,7 +118,7 @@ SQL (構造化照会言語) は、データ照会とデータ定義のための�
 
     画面が更新され、クエリ出力が表示されます。
 
-    ![HDInsight での Hive クエリの出力](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query-output.png "HDInsight での Hive クエリの出力")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query-output.png " alt-text="HDInsight での Hive クエリの出力" border="true":::Insight" border="true":::
 
 1. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンすると、クラスターのリソースが解放されます。
 
@@ -128,7 +128,7 @@ HDInsight はデータを Azure Storage または Azure Data Lake Storage に格
 
 Azure portal に戻り、 **[削除]** を選びます。
 
-![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure portal で HDInsight クラスターを削除する" border="true":::sight cluster" border="true":::
 
 リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight クラスターと既定のストレージ アカウントの両方が削除されます。
 

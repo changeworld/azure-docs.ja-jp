@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f3d9dfa33e71d827a338258001f2b52af62b06
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0f3638e7649fc02f050c575ee621ce9dc237c24f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509371"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517268"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -148,7 +148,7 @@ SQL や SAP HANA のようなデータベース ワークロードの場合、�
 
 * **期間ごとのポリシー準拠**: このビューを使用すると、特定の日に少なくとも 1 回のバックアップが成功した項目の数と、その日に正常にバックアップされなかった項目の数を特定できます。 行をクリックすると、選択した日にトリガーされたすべてのバックアップ ジョブの詳細を確認できます。 時間の範囲を過去 60 日間などの大きな値に広げると、グリッドは週単位のビューで表示され、特定の週の各曜日で 1 回以上バックアップが成功したすべての項目の数が表示される点に注意してください。 同様に、広い時間範囲には月単位のビューがあります。
 
-週単位でバックアップされた項目の場合、このグリッドは、特定の週に 1 回以上バックアップが成功したすべての項目を識別するのに役立ちます。 過去 120 日間などのより広い時間範囲の場合、グリッドは月単位のビューで表示され、特定の月の各週に 1 回以上バックアップが成功したすべての項目の数が表示されます。 日単位、週単位、および月単位のビューの詳細については、「[バックアップ レポートで使用される規則](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)」を参照してください。
+週単位でバックアップされた項目の場合、このグリッドは、特定の週に 1 回以上バックアップが成功したすべての項目を識別するのに役立ちます。 過去 120 日間などのより広い時間範囲の場合、グリッドは月単位のビューで表示され、特定の月の各週に 1 回以上バックアップが成功したすべての項目の数が表示されます。 日単位、週単位、および月単位のビューの詳細については、「[バックアップ レポートで使用される規則](#conventions-used-in-backup-reports)」を参照してください。
 
 ![期間ごとのポリシー準拠](./media/backup-azure-configure-backup-reports/policy-adherence-by-time-period.png)
 
@@ -166,7 +166,7 @@ SQL や SAP HANA のようなデータベース ワークロードの場合、�
 
 バックアップ レポートには、[Azure Monitor ログに対するシステム関数](backup-reports-system-functions.md)が使用されます。 これらの関数を使用して、LA の未加工の Azure Backup テーブルのデータを操作し、書式を設定したデータを返すことができます。これにより、簡単なクエリを使用して、バックアップ関連のすべてのエンティティの情報を簡単に取得できます。 
 
-バックアップ レポートをベースとして使用して独自のレポート ブックを作成するには、[バックアップ レポート] に移動し、レポートの上部にある **[編集]** をクリックして、レポートに使用されているクエリを表示して編集します。 カスタム レポートの作成方法の詳細については、[Azure ブックのドキュメント](https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview)を参照してください。 
+バックアップ レポートをベースとして使用して独自のレポート ブックを作成するには、[バックアップ レポート] に移動し、レポートの上部にある **[編集]** をクリックして、レポートに使用されているクエリを表示して編集します。 カスタム レポートの作成方法の詳細については、[Azure ブックのドキュメント](../azure-monitor/visualize/workbooks-overview.md)を参照してください。 
 
 ## <a name="export-to-excel"></a>Excel へのエクスポート
 
@@ -212,4 +212,4 @@ SQL や SAP HANA のようなデータベース ワークロードの場合、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[監視とレポート作成の詳細については、Azure Backup をご参照ください。](./backup-azure-monitor-alert-faq.md)
+[監視とレポート作成の詳細については、Azure Backup をご参照ください。](./backup-azure-monitor-alert-faq.yml)

@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931098"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869669"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight Interactive Query クラスター (Hive LLAP) サイズ設定ガイド
 
@@ -26,9 +26,9 @@ ms.locfileid: "98931098"
 | ワーカー   | **D14 v2**        | **16 vCPU、112 GB RAM、800 GB SSD**       |
 | ZooKeeper   | A4 v2        | 4 vCPU、8 GB RAM、40 GB SSD       |
 
-**_注: 推奨されるすべての構成値は、D14 v2 タイプのワーカー ノードに基づいています。_* _  
+***注意事項: 推奨されるすべての構成値は、D14 v2 タイプのワーカー ノードに基づいています。***  
 
-### <a name="_configuration"></a>_ *構成:* *    
+### <a name="configuration"></a>**構成:**    
 | 構成キー      | 推奨値  | 説明 |
 | :---        |    :----:   | :---     |
 | yarn.nodemanager.resource.memory-mb | 102400 (MB) | ノード上のすべての YARN コンテナーに割り当てられるメモリの合計 (MB) | 
@@ -47,64 +47,64 @@ ms.locfileid: "98931098"
 
 ### <a name="llap-architecturecomponents"></a>**LLAP アーキテクチャ/コンポーネント:**  
 
-![`LLAP アーキテクチャ/コンポーネント`](./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png "LLAP アーキテクチャ/コンポーネント")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png " alt-text="`LLAP アーキテクチャ/コンポーネント`" border="true":::
 
 ### <a name="llap-daemon-size-estimations"></a>**LLAP デーモンのサイズ見積もり** 
 
 #### <a name="1-determining-total-yarn-memory-allocation-for-all-containers-on-a-node"></a>**1.ノード上のすべてのコンテナーに対する YARN メモリ割り当ての合計の決定**    
-構成: **_yarn.nodemanager.resource.memory-mb_* _  
+構成: ***yarn.nodemanager.resource.memory-mb***  
 
 この値は、各ノードの YARN コンテナーが使用できるメモリの最大合計 (MB) を示します。 指定する値は、当該ノードの物理メモリの合計容量より小さくする必要があります。   
 ノード上のすべての YARN コンテナーに対するメモリ合計 = (物理メモリの合計 – OS とその他サービス用のメモリ)  
 この値は、使用可能な RAM サイズの 90% 以下に設定します。  
-D14 v2 の場合、推奨値は _*102400 MB** です。 
+D14 v2 の場合、推奨値は **102400 MB** です。 
 
 #### <a name="2-determining-maximum-amount-of-memory-per-yarn-container-request"></a>**2.YARN コンテナー要求あたりの最大メモリ容量の決定**  
-構成: **_yarn.scheduler.maximum-allocation-mb_* _
+構成: ***yarn.scheduler.maximum-allocation-mb***
 
-この値は、Resource Manager でのすべてのコンテナー要求に対する最大割り当て (MB) を示します。 指定された値より大きいメモリ要求は有効になりません。 Resource Manager では、_yarn.scheduler.minimum-allocation-mb* を増分単位としてコンテナーにメモリを割り当てることができ、*yarn.scheduler.maximum-allocation-mb* で指定されたサイズを超えることはできません。 指定する値は、*yarn.nodemanager.resource.memory-mb* で指定された、ノード上のすべてのコンテナーに割り当てられるメモリの合計以下にする必要があります。    
+この値は、Resource Manager でのすべてのコンテナー要求に対する最大割り当て (MB) を示します。 指定された値より大きいメモリ要求は有効になりません。 Resource Manager では、*yarn.scheduler.minimum-allocation-mb* を増分単位としてコンテナーにメモリを割り当てることができ、*yarn.scheduler.maximum-allocation-mb* で指定されたサイズを超えることはできません。 指定する値は、*yarn.nodemanager.resource.memory-mb* で指定された、ノード上のすべてのコンテナーに割り当てられるメモリの合計以下にする必要があります。    
 D14 v2 のワーカー ノードでの推奨値は、**102400 MB** です。
 
 #### <a name="3-determining-maximum-amount-of-vcores-per-yarn-container-request"></a>**3.YARN コンテナー要求あたりの最大仮想コア数の決定**  
-構成: **_yarn.scheduler.maximum-allocation-vcores_* _  
+構成: ***yarn.scheduler.maximum-allocation-vcores***  
 
 この値は、Resource Manager でのすべてのコンテナー要求に対する仮想 CPU コアの最大数を示します。 この値を超える仮想コア数の要求は有効にはなりません。 これは YARN スケジューラのグローバル プロパティです。 LLAP デーモン コンテナーの場合、この値は使用可能な仮想コアの合計の 75% に設定できます。 残りの 25% は、NodeManager、DataNode、およびワーカー ノードで実行されているその他のサービスのために確保しておく必要があります。  
 D14 v2 の VM には 16 個の仮想コアがあり、合計 16 個の仮想コアの 75% を LLAP デーモン コンテナーで使用できます。  
-D14 v2 での推奨値は _*12** です。  
+D14 v2 での推奨値は **12** です。  
 
 #### <a name="4-number-of-concurrent-queries"></a>**4.同時クエリの数**  
-構成: **_hive.server2.tez.sessions.per.default.queue_* _
+構成: ***hive.server2.tez.sessions.per.default.queue***
 
 この構成値により、並列で起動できる Tez セッションの数が決まります。 これらの Tez セッションは、"hive.server2.tez.default.queues" で指定されたキューごとに起動されます。 これは Tez AM (クエリ コーディネーター) の数に対応します。 ワーカー ノードの数と同じにすることをお勧めします。 Tez AM の数は、LLAP デーモン ノードの数より大きくなる可能性があります。 Tez AM の主な役割は、クエリの実行を調整し、クエリ プラン フラグメントを対応する LLAP デーモンに割り当てて実行することです。 より高いスループットを実現するには、この値は常に LLAP デーモン ノードの数の倍数にしてください。  
 
-既定の HDInsight クラスターでは、4 つのワーカー ノードで 4 つの LLAP デーモンが実行されるため、推奨値は _*4** です。  
+既定の HDInsight クラスターでは、4 つのワーカー ノードで 4 つの LLAP デーモンが実行されるため、推奨値は **4** です。  
 
 **Hive 構成変数の Ambari UI スライダー`hive.server2.tez.sessions.per.default.queue`:**
 
-![`LLAP 同時クエリの最大数`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "LLAP の同時クエリの最大数")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png " alt-text="`LLAP 同時クエリの最大数`" border="true":::
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5.Tez コンテナーおよび Tez アプリケーション マスターのサイズ**    
-構成: **_tez.am.resource.memory.mb、hive.tez.container.size_* _  
+構成: ***tez.am.resource.memory.mb、hive.tez.container.size***  
 
-_tez.am.resource.memory.mb* - Tez アプリケーション マスターのサイズを定義します。  
+*tez.am.resource.memory.mb* - Tez アプリケーション マスターのサイズを定義します。  
 推奨値は **4096 MB** です。
    
 *hive.tez.container.size* - Tez コンテナーに割り当てられるメモリ量を定義します。 この値は、YARN 最小コンテナー サイズ (*yarn.scheduler.minimum-allocation-mb*) と YARN 最大コンテナー サイズ (*yarn.scheduler.maximum-allocation-mb*) の間に設定する必要があります。 LLAP デーモンの Executor は、この値を使用して Executor あたりのメモリ使用量を制限します。  
 推奨値は **4096 MB** です。  
 
 #### <a name="6-llap-queue-capacity-allocation"></a>**6.LLAP キューの容量割り当て**   
-構成: **_yarn.scheduler.capacity.root.llap.capacity_* _  
+構成: ***yarn.scheduler.capacity.root.llap.capacity***  
 
 この値は、LLAP キューに割り当てる容量の割合を示します。 YARN キューの構成方法によっては、容量割り当ての値がワークロードごとに異なる可能性があります。 ワークロードが読み取り専用操作の場合は、これを容量の 90% のように高く設定しても機能します。 ただし、ワークロードがマネージド テーブルを使用する更新、削除、マージの混合操作である場合は、容量の 85% を LLAP キューに割り当てることをお勧めします。 残りの 15% の容量は、圧縮などのその他のタスクが既定のキューからコンテナーを割り当てるために使用できます。 これにより、既定のキュー内のタスクによって YARN リソースが使われることはなくなります。    
 
-D14 v2 のワーカー ノードでの LLAP キューの推奨値は _*85** です。     
+D14 v2 のワーカー ノードでの LLAP キューの推奨値は **85** です。     
 (読み取り専用のワークロードの場合は、必要に応じて 90 まで引き上げることができます。)  
 
 #### <a name="7-llap-daemon-container-size"></a>**7.LLAP デーモン コンテナーのサイズ**    
-構成: **_hive.llap.daemon.yarn.container.mb_* _  
+構成: ***hive.llap.daemon.yarn.container.mb***  
    
 LLAP デーモンは、各ワーカー ノードで YARN コンテナーとして実行されます。 LLAP デーモン コンテナーの合計メモリ サイズは、次の要因によって決まります。    
-_  YARN コンテナー サイズの構成 (yarn.scheduler.minimum-allocation-mb、yarn.scheduler.maximum-allocation-mb、yarn.nodemanager.resource.memory-mb)
+*  YARN コンテナー サイズの構成 (yarn.scheduler.minimum-allocation-mb、yarn.scheduler.maximum-allocation-mb、yarn.nodemanager.resource.memory-mb)
 *  ノード上の Tez AM の数
 *  ノード上のすべてのコンテナーに対して構成された合計メモリと LLAP キューの容量  
 
@@ -112,11 +112,11 @@ Tez アプリケーション マスター (Tez AM) に必要なメモリは、�
 Tez AM はクエリ コーディネーターとして動作し、Tez AM の数は、処理される同時実行クエリの数に基づいて構成できます。 理論的には、ワーカー ノードごとに 1 つの Tez AM を検討できます。 ただし、1 つのワーカー ノードに複数の Tez AM が表示されることもあります。 計算上の目的により、Tez AM はすべての LLAP デーモン ノード/ワーカー ノードに均等に分布されていると見なします。
 Tez AM あたりのメモリは 4 GB にすることをお勧めします。  
 
-Tez AM の数 = Hive 構成で指定された値 ***hive.server2.tez.sessions.per.default.queue** _。  
-LLAP デーモン ノードの数 = Ambari UI の環境変数 _*_num_llap_nodes_for_llap_daemons_*_ で指定。  
-Tez AM のコンテナー サイズ = Tez 構成 _*_tez.am.resource.memory.mb_*_ で指定した値。  
+Tez AM の数 = Hive 構成で指定された値 ***hive.server2.tez.sessions.per.default.queue***。  
+LLAP デーモン ノードの数 = Ambari UI の環境変数 ***num_llap_nodes_for_llap_daemons*** で指定。  
+Tez AM のコンテナー サイズ = Tez 構成 ***tez.am.resource.memory.mb*** で指定した値。  
 
-ノードあたりの Tez AM メモリ = _ *(* * ceil **(** Tez AM の数 **/** LLAP デーモン ノードの数 **)** **x** Tez AM コンテナー サイズ **)**  
+ノードあたりの Tez AM メモリ = **(** ceil **(** Tez AM の数 **/** LLAP デーモン ノードの数 **)** **x** Tez AM コンテナー サイズ **)**  
 D14 v2 の場合、既定の構成の Tez AM の数と LLAP デーモン ノードの数はそれぞれ 4 つです。  
 ノードあたりの Tez AM メモリ = (ceil(4/4) x 4 GB) = 4 GB
 
@@ -133,22 +133,25 @@ D14 v2 ワーカー ノード、HDI 4.0 の場合、推奨値は (85 GB - 4 GB -
 (HDI 3.6 の場合は、スライダー AM 用に追加で最大 2 GB を予約する必要があるため、推奨値は **79 GB** となります)。  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8.LLAP デーモンあたりの Executor の数の決定**  
-構成: **_hive.llap.daemon.num.executors_* _、_*_hive.llap.io.threadpool.size_*_
+構成: ***hive.llap.daemon.num.executors** _、_ *_hive.llap.io.threadpool.size_**
 
-_*_hive.llap.daemon.num.executors_*_:   
+***hive.llap.daemon.num.executors***:   
 この構成は、LLAP デーモンあたりの、タスクを並列で実行できる Executor の数を制御します。 この値は、仮想コアの数、Executor ごとに使用されるメモリの量、および LLAP デーモン コンテナーで使用できるメモリの合計量によって決まります。    Executor の数は、ワーカー ノードあたりの使用可能な仮想コアの 120% にオーバーサブスクライブされる場合があります。 ただし、メモリ要件を満たしていない場合は、Executor ごとに必要なメモリと LLAP デーモン コンテナーのサイズに基づいて調整する必要があります。
 
 各 Executor は 1 つの Tez コンテナーに相当し、4 GB のメモリ (Tez コンテナー サイズ) を使用します。 LLAP デーモン内のすべての Executor は、同じヒープ メモリを共有します。 すべての Executor がメモリ集中型の操作を同時に実行するわけではないと仮定すると、Executor ごとに Tez コンテナー サイズ (4 GB) の 75% が妥当です。 このように考え、並列処理を向上するために各 Executor のメモリを少なくする (3 GB など) ことで、Executor の数を増やすことができます。 ただし、対象のワークロードに合わせてこの設定を調整することをお勧めします。
 
 D14 v2 の VM には仮想コアが 16 個あります。
-D14 v2 の場合、Executor 数の推奨値は、Executor ごとに 3GB とすると、各ワーカー ノードで (16 個の仮想コア x 120%) ~= _ *19** となります。
+D14 v2 の場合、Executor 数の推奨値は、Executor ごとに 3 GB とすると、各ワーカー ノードで (16 個の仮想コア x 120%) ~= **19** となります。
 
-**_hive.llap.io.threadpool.size_ *_:この値は、Executor のスレッド プール サイズを指定します。Executor は指定したとおりに固定されるため、これは LLAP デーモンあたりの Executor の数と同じになります。D14 v2 の場合、推奨値は _* 19** です。
+***hive.llap.io.threadpool.size***:   
+この値は、Executor のスレッド プール サイズを指定します。 Executor は指定したとおりに固定されるため、これは LLAP デーモンあたりの Executor の数と同じになります。    
+D14 v2 の場合、推奨値は **19** です。
 
 #### <a name="9-determining-llap-daemon-cache-size"></a>**9.LLAP デーモンのキャッシュ サイズの決定**  
-構成: **_hive.llap.io.memory.size_* _
+構成: ***hive.llap.io.memory.size***
 
-LLAP デーモンのコンテナー メモリは、次のコンポーネントで構成されます。 _  ヘッド ルーム
+LLAP デーモンのコンテナー メモリは、次のコンポーネントで構成されます。
+*  ヘッド ルーム
 *  Executor (Xmx) が使用するヒープ メモリ
 *  デーモンごとのメモリ内キャッシュ (そのオフヒープ メモリのサイズ。SSD キャッシュが有効になっている場合は適用されません)
 *  メモリ内キャッシュのメタデータ サイズ (SSD キャッシュが有効になっている場合のみ適用できます)
@@ -162,7 +165,7 @@ D14 v2 の場合、この値は 19 x 3 GB = **57 GB**
 
 `Ambari environment variable for LLAP heap size:`
 
-![`LLAP ヒープ サイズ`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png "LLAP ヒープ サイズ")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png " alt-text="`LLAP ヒープ サイズ`" border="true":::
 
 SSD キャッシュが無効になっている場合は、LLAP デーモン コンテナーのサイズからヘッドルーム サイズとヒープ サイズを取り除いたあとに残るメモリの量がメモリ内キャッシュとなります。
 
@@ -181,24 +184,24 @@ D14 v2、HDI 4.0 の場合の推奨 SSD キャッシュ サイズ = 19 GB / 0.08
 D14 v2、HDI 3.6 の場合の推奨 SSD キャッシュ サイズ = 18 GB / 0.08 ~= **225 GB**
 
 #### <a name="10-adjusting-map-join-memory"></a>**10.マップ結合メモリの調整**   
-構成: **_hive.auto.convert.join.noconditionaltask.size_* _
+構成: ***hive.auto.convert.join.noconditionaltask.size***
 
-このパラメーターを有効にするには、_hive.auto.convert.join.noconditionaltask* が有効になっていることを確認してください。
+このパラメーターを有効にするには、*hive.auto.convert.join.noconditionaltask* が有効になっていることを確認してください。
 この構成は、Hive オプティマイザーによる MapJoin の選択に関するしきい値を決定します。Hive オプティマイザーは、他の Executor からのメモリのオーバーサブスクリプションによってインメモリ ハッシュ テーブルに余裕が生まれ、より多くのマップ結合変換が可能になると見なします。 Executor あたり 3 GB と考えると、このサイズは 3 GB までオーバーサブスクライブが可能ですが、他の操作によって、バッファーの並べ替え、バッファーのシャッフルなどにヒープ メモリが使用されることもあります。   
 そのため、D14 v2 で Executor ごとに 3 GB のメモリを使用する場合は、この値を **2048 MB** に設定することをお勧めします。  
 
 (注: 場合によっては、ワークロードに合わせてこの値を調整する必要があります。 この値を低く設定しすぎると、自動変換機能が使用されない場合があります。 また、これを大きく設定しすぎると、メモリ不足例外や GC の一時停止が発生して、パフォーマンスが低下する可能性があります。)  
 
 #### <a name="11-number-of-llap-daemons"></a>**11.LLAP デーモンの数**
-Ambari 環境変数: **_num_llap_nodes、num_llap_nodes_for_llap_daemons_* _  
+Ambari 環境変数: ***num_llap_nodes、num_llap_nodes_for_llap_daemons***  
 
-_ *num_llap_nodes** - Hive LLAP サービスで使用されるノードの数を指定します。これには、LLAP デーモン、LLAP サービス マスター、Tez アプリケーション マスター (Tez AM) を実行するノードが含まれます。  
+**num_llap_nodes** - Hive LLAP サービスで使用されるノードの数を指定します。これには、LLAP デーモン、LLAP サービス マスター、Tez アプリケーション マスター (Tez AM) を実行するノードが含まれます。  
 
-![`LLAP サービスのノード数`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "LLAP サービスのノード数")  
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png " alt-text="`LLAP サービスのノード数`" border="true":::  
 
 **num_llap_nodes_for_llap_daemons** - LLAP デーモンにのみ使用されるノードの数を指定します。 LLAP デーモン コンテナーのサイズは最大限適合するノードに設定され、結果的に、各ノードの LLAP デーモンは 1 つとなります。
 
-![`LLAP デーモンのノード数`](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png "LLAP デーモンのノード数")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png " alt-text="`LLAP デーモンのノード数`" border="true":::
 
 どちらの値も、Interactive Query クラスターのワーカー ノードの数と同じにしておくことをお勧めします。
 

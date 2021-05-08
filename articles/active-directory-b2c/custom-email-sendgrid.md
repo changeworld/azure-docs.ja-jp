@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 86f40944af9fb49b0402a33e5009b99d60be61f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105031309"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** では、 **[手動]** を選びます。
 1. ポリシー キーの **名前** を入力します。 たとえば、「 `SendGridSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-1. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
+1. **[シークレット]** に、前に記録しておいた SendGrid API キーを入力します。
 1. **[キー使用法]** には **[署名]** を選択します。
 1. **［作成］** を選択します
 

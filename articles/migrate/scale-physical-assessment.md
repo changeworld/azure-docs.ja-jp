@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753690"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780312"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Azure への移行について多数の物理サーバーを評価する
 
-この記事では、Azure Migrate Server Assessment ツールを使用して、Azure への移行について多数のオンプレミス物理サーバーを評価する方法について説明します。
+この記事では、Azure Migrate 検出および評価のツールを使用して、Azure への移行について多数のオンプレミス物理サーバーを評価する方法について説明します。
 
 [Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "96753690"
 多数の物理サーバーの評価を計画するときは、以下のようないくつかの考慮点があります。
 
 - **Azure Migrate プロジェクトの計画**: Azure Migrate プロジェクトをデプロイする方法を調べます。 たとえば、データセンターが地理的に異なる場所にある場合や、検出、評価、または移行に関連するメタデータを地理的に異なる場所に格納する必要がある場合は、複数のプロジェクトが必要になることがあります。
-- **アプライアンスの計画**: Azure Migrate では、Windows コンピューターに展開されたオンプレミスの Azure Migrate アプライアンスを使用して、評価と移行のためにサーバーが継続的に検出されます。 アプライアンスでは、VM、ディスク、ネットワーク アダプターなどの環境の変化が監視されます。 また、これらに関するメタデータとパフォーマンス データが Azure に送信されます。 デプロイするアプライアンスの数を確認する必要があります。
+- **アプライアンスの計画**: Azure Migrate では、Windows サーバーに展開されたオンプレミスの Azure Migrate アプライアンスを使用して、評価と移行のためにサーバーが継続的に検出されます。 アプライアンスでは、サーバー、ディスク、ネットワーク アダプターなどの環境の変化が監視されます。 また、これらに関するメタデータとパフォーマンス データが Azure に送信されます。 デプロイするアプライアンスの数を確認する必要があります。
 
 
 ## <a name="planning-limits"></a>計画の制限
@@ -57,7 +57,7 @@ ms.locfileid: "96753690"
 
 ## <a name="prepare-for-assessment"></a>評価の準備
 
-サーバー評価のために、Azure と物理サーバーを準備します。 
+検出および評価のツールのために Azure と物理サーバーを準備します。  
 
 1. [物理サーバーのサポート要件と制限事項](migrate-support-matrix-physical.md)を確認します。
 2. Azure Migrate とやり取りするために、自分の Azure アカウントのアクセス許可を設定します。
@@ -70,7 +70,7 @@ ms.locfileid: "96753690"
 計画の要件に従って、以下を実行します。
 
 1. Azure Migrate プロジェクトを作成します。
-2. Azure Migrate Server Assessment ツールをプロジェクトに追加します。
+2. プロジェクトに Azure Migrate 検出および評価のツールを追加します。
 
 [詳細情報](./create-manage-projects.md)
 

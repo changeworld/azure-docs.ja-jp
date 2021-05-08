@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 78cdc0b59fd178049e755cca5e1e909ac24483f2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204050"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581819"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>チュートリアル:Key Vault における証明書の自動ローテーションを構成する
 
@@ -51,7 +51,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="update-certificate-lifecycle-attributes"></a>証明書のライフサイクル属性を更新する
 
-Azure Key Vault では、証明書の作成前と作成後の両方のタイミングで証明書のライフサイクル属性を更新できます。
+Azure Key Vault では、証明書の作成時と作成後の両方のタイミングで証明書のライフサイクル属性を更新できます。
 
 Key Vault には、次の証明書を作成できます。
 
@@ -83,7 +83,7 @@ Key Vault では、CA との確立されたパートナーシップを通じて�
         |  特定のタイミングで自動的に更新する| 特定のタイミングですべての連絡先にメールを送信する |
         |-----------|------|
         |このオプションを選択すると、自動ローテーションが "*オンになります*"。 | このオプションを選択すると、自動ローテーションが "*実行されません*"。連絡先にアラートが送信されるだけです。|
-
+         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
 1. **［作成］** を選択します
 
 ![証明書のライフサイクル](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)

@@ -3,18 +3,21 @@ title: Azure Key Vault でマネージド キーの属性を作成し、取得�
 description: Azure PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う方法を紹介するクイックスタート
 services: key-vault
 author: msmbaldwin
-tags: azure-resource-manager
+ms.author: mbaldwin
+ms.date: 01/26/2021
+ms.topic: quickstart
 ms.service: key-vault
 ms.subservice: keys
-ms.topic: quickstart
-ms.date: 01/26/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 943555e9f7a26530a075aee27dd310d96974e652
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+tags:
+- azure-resource-manager
+ms.custom:
+- mode-api
+ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99072790"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534665"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>クイックスタート: PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う
 

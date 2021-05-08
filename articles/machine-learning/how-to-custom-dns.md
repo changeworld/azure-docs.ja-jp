@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 03/12/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: a5224aab8db65cf22e952185d07147f6f007e088
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.custom: how-to, contperf-fy21q3
+ms.openlocfilehash: 9021c3f70c9fc053998d1b31271a1ca3b0124b4d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956283"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169540"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
-プライベート エンドポイントで Azure Machine Learning ワークスペースを使用する場合、[DNS 名前解決を処理する方法はいくつかあります](../private-link/private-endpoint-dns.md)。 既定では、ワークスペースとプライベート エンドポイントの名前解決は、Azure によって自動的に処理されます。 代わりに "_独自のカスタム DNS サーバーを使用する場合_" は、ワークスペース用に DNS エントリを手動で作成したり、条件付きフォワーダーを使用する必要があります。
+プライベート エンドポイントで Azure Machine Learning ワークスペースを使用する場合、[DNS 名前解決を処理する方法はいくつかあります](../private-link/private-endpoint-dns.md)。 既定では、ワークスペースとプライベート エンドポイントの名前解決は、Azure によって自動的に処理されます。 代わりに __独自のカスタム DNS サーバーを使用する場合__ は、ワークスペース用に DNS エントリを手動で作成したり、条件付きフォワーダーを使用したりする必要があります。
 
 > [!IMPORTANT]
 > この記事では、これらのエントリの完全修飾ドメイン名 (FQDN) と IP アドレスを検索する方法についてのみ説明します。これらの項目の DNS レコードを構成する方法については説明しません。 レコードを追加する方法については、DNS ソフトウェアのドキュメントを参照してください。
@@ -46,11 +46,12 @@ ms.locfileid: "104956283"
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは、FQDN が63文字以下になるように行われます。
+    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは `ml-<workspace-name, truncated>-<region>-<workspace-guid>` の 63 文字を保持するために行われます。
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
-    > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
+    > * コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
+    > * この FQDN の IP アドレスは、コンピューティング インスタンスの IP では **ありません**。 代わりに、ワークスペースのプライベート エンドポイントのプライベート IP アドレス (`*.api.azureml.ms` エントリの IP) を使用します。
 
 ## <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet リージョン
 
@@ -61,7 +62,7 @@ ms.locfileid: "104956283"
 * `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
 
     > [!NOTE]
-    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは、FQDN が63文字以下になるように行われます。
+    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは `ml-<workspace-name, truncated>-<region>-<workspace-guid>` の 63 文字を保持するために行われます。
 * `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>IP アドレスを検索する
 
@@ -108,7 +109,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * コンピューティング インスタンスがある場合は、`<instance-name>.<region>.instances.azureml.ms` を使用します。ここで `<instance-name>` は、コンピューティング インスタンスの名前です。 ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用してください。 コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできることに注意してください。
+> * コンピューティング インスタンスがある場合は、`<instance-name>.<region>.instances.azureml.ms` を使用します。ここで `<instance-name>` は、コンピューティング インスタンスの名前です。 ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用します。 コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
 >
 > これらの IP アドレスのすべてに対して、前のステップで返された `*.api.azureml.ms` エントリと同じアドレスを使用します。
 

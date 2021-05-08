@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 8437d12075a148a3e8062f62e195bc019d89a85b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "70881030"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606965"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure Dedicated HSM の物理的なセキュリティ
 
@@ -25,7 +25,7 @@ Azure Dedicated HSM は、キーの保存に関する高度なセキュリティ
 
 ## <a name="security-through-procurement"></a>調達時のセキュリティ
 
-マイクロソフトは、安全な調達プロセスに従います。 物流過程を管理し、注文および出荷した特定のデバイスがデータ センターに届くようにします。 デバイスは、改ざん防止用のプラスチック袋に入れられます。 これらは、データ センターのデータ ギャラリーに委託されるまで、安全な保管エリアに保管されます。  HSM デバイスを格納しているラックは、ビジネスへの影響が大きい (HBI) と見なされます。 デバイスはロックされ、前面と背面が監視カメラで常時監視されます。
+マイクロソフトは、安全な調達プロセスに従います。 物流過程を管理し、注文および出荷した特定のデバイスがデータ センターに届くようにします。 デバイスは、シリアル化された改ざん防止用のプラスチック袋と容器に入っています。 これらは、データ センターのデータ ギャラリーに委託されるまで、安全な保管エリアに保管されます。  HSM デバイスを格納しているラックは、ビジネスへの影響が大きい (HBI) と見なされます。 デバイスはロックされ、前面と背面が監視カメラで常時監視されます。
 
 ## <a name="security-through-deployment"></a>展開時のセキュリティ
 
@@ -49,7 +49,7 @@ HSM は、ハードウェア アプライアンス (実際の HSM はアプラ�
 
 ## <a name="logical-level-security-considerations"></a>論理レベルのセキュリティに関する考慮事項
 
-HSM は、お客様が作成した仮想ネットワークにプロビジョニングされます。 これは、お客様のプライベート IUP アドレス空間です。  この構成では、貴重な論理ネットワーク レベルの分離が提供され、確実にお客様だけがアクセスするようにします。 これは、すべての論理レベルのセキュリティ コントロールがお客様の責任で行われることを意味します。
+HSM は、お客様のプライベート IP アドレス空間内にお客様が作成した仮想ネットワークにプロビジョニングされます。  この構成では、貴重な論理ネットワーク レベルの分離が提供され、確実にお客様だけがアクセスするようにします。 これは、すべての論理レベルのセキュリティ コントロールがお客様の責任で行われることを意味します。
 
 ## <a name="next-steps"></a>次のステップ
 

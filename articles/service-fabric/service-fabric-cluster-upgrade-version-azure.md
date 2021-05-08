@@ -1,117 +1,185 @@
 ---
-title: クラスターの Azure Service Fabric のバージョンをアップグレードする
-description: Service Fabric クラスターを実行している Service Fabric コード、構成、またはその両方をアップグレードします。たとえば、クラスター アップグレード モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの適用などを行います。 アップグレードを実行しているときに、どのようなことが起きるでしょうか?
-ms.topic: conceptual
-ms.date: 11/12/2018
-ms.openlocfilehash: 01fe916f0ee78c8481ac6b17b8f7409b47c852ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+title: Service Fabric クラスターのアップグレードの管理
+description: Service Fabric クラスター ランタイムをいつどのように更新するかを管理する
+ms.topic: how-to
+ms.date: 03/26/2021
+ms.openlocfilehash: 98c3300e5cc51c32d894397839879e25190d979b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90564289"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731169"
 ---
-# <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>クラスターの Service Fabric バージョンをアップグレードする
+# <a name="manage-service-fabric-cluster-upgrades"></a>Service Fabric クラスターのアップグレードの管理
 
-最新のシステムでは、アップグレード性を考慮した設計を行うことが、製品の長期的な成功を達成する鍵となります。 Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されます。 この記事では、Azure クラスター内で実行されている Service Fabric のバージョンをアップグレードする方法について説明します。
+Azure Service Fabric クラスターはユーザーが所有するリソースですが、一部が Microsoft によって管理されています。 ここでは、Microsoft が Azure Service Fabric クラスターを更新するタイミングとその方法を管理する方法について説明します。
 
-Microsoft からのリリース時に自動ファブリック アップグレードを受信するようにクラスターを設定するか、有効にするクラスターのサポートされるファブリック バージョンを選択することもできます。
+クラスターのアップグレードの概念とプロセスの背景については、「[Azure Service Fabric クラスターのアップグレードと更新](service-fabric-cluster-upgrade.md)」を参照してください
 
-そのためには、クラスターの作成時に (または後から稼働中のクラスターに対して) Resource Manager を使用するか、またはポータルで "upgradeMode" クラスター構成を設定します。 
+## <a name="set-upgrade-mode"></a>アップグレード モードの設定
+
+Microsoft からリリースされる Service Fabric の自動アップグレードを受信するようにクラスターを設定することができます。また、クラスターのアップグレード モードを設定して、現在サポートされているバージョンの一覧から手動で選択することもできます。 これを行うには、Azure portal の"*ファブリック アップグレード モード*" 制御を使用するか、クラスター デプロイ テンプレートの `upgradeMode` 設定から行うことができます。
+
+### <a name="azure-portal"></a>Azure portal
+
+Azure portal を使用して、新しい Service Fabric クラスターを作成するときに自動または手動アップグレードのいずれかを選択します。
+
+:::image type="content" source="media/service-fabric-cluster-upgrade/portal-new-cluster-upgrade-mode.png" alt-text="[詳細設定] オプションから Azure portal に新しいクラスターを作成するときに、自動または手動アップグレードのいずれかを選択する":::
+
+既存のクラスター リソースの **[ファブリックのアップグレード]** セクションから、自動または手動アップグレードを切り替えることもできます。
+
+:::image type="content" source="./media/service-fabric-cluster-upgrade/fabric-upgrade-mode.png" alt-text="Azure portal のクラスター リソースの [ファブリックのアップグレード] セクションで、[自動] または [手動] アップグレードを選択する":::
+
+### <a name="manual-upgrades-with-azure-portal"></a>Azure portal を使用した手動アップグレード
+
+手動アップグレード オプションを選択した場合、アップグレードを開始するには、使用可能なバージョンをドロップダウンから選択し、"*保存*" するだけです。 そこから、クラスターのアップグレードがすぐに開始されます。
+
+[クラスター正常性ポリシー](#custom-policies-for-manual-upgrades) (ノードの正常性と、クラスターで実行されている全アプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。 クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。
+
+ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
+
+### <a name="resource-manager-template"></a>Resource Manager テンプレート
+
+Resource Manager テンプレートを使用してクラスター アップグレード モードを変更するには、*Microsoft.ServiceFabric/clusters* リソース定義の `upgradeMode` プロパティに *Automatic* または *Manual* を指定します。 手動アップグレードを選択した場合は、も現在`clusterCodeVersion`サポートされているファブリック のバージョン[に設定します。](#query-for-supported-cluster-versions)
+
+:::image type="content" source="./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG" alt-text="スクリーンショットには、構造を反映するようにインデントされたプレーン テキストのテンプレートが示されています。'clusterCodeVersion' と 'upgradeMode' のプロパティーが強調表示されています。":::
+
+テンプレートが正常にデプロイされると、クラスター アップグレード モードの変更が適用されます。 クラスターが手動モードの場合、クラスターのアップグレードは自動的に開始されます。
+
+[クラスター正常性ポリシー](#custom-policies-for-manual-upgrades) (ノードの正常性と、クラスターで実行されている全アプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。 クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。
+
+ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
+
+## <a name="wave-deployment-for-automatic-upgrades"></a>自動アップグレードのウェーブ デプロイ
+
+自動アップグレード モードでは、クラスターでウェーブ デプロイを有効にするオプションがあります。 ウェーブ デプロイでは、テスト、ステージ、および運用のクラスターを順番にアップグレードするためのパイプラインを作成でき、それぞれが運用クラスターのアップデート前に次期の Service Fabric のバージョンを検証するための組み込みの 'ベイク時間' で区切られています。
+
+### <a name="enable-wave-deployment"></a>ウェーブ デプロイを有効にする
 
 > [!NOTE]
-> クラスターには必ず、サポートされているバージョンのファブリックを使用してください。 Microsoft が Service Fabric の新バージョン リリースをアナウンスした日から最短で 60 日後には、以前のバージョンがサポート期間の終了として指定されます。 新バージョンのリリースは、 [Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)でお知らせします。 その後間もなく新しいバージョンが利用できるようになります。 
-> 
-> 
+> ウェーブ デプロイを行うには、*Microsoft.ServiceFabric/clusters* リソースの `2020-12-01-preview` (またはそれ以降) の API バージョンが必要です。
 
-現在クラスターで実行されているバージョンの有効期間が終了する 14 日前に、正常性に関するイベントが生成され、クラスターの正常性が警告状態に移行します。 サポートされているバージョンのファブリックにアップグレードするまで、クラスターは警告状態のままとなります。
+自動アップグレードでウェーブ デプロイを有効にするには、まず、クラスターに割り当てるウェーブを決定します。
 
-## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>Azure portal でアップグレード モードを設定する
-ファブリックのアップグレード モードは、クラスターの作成時に自動または手動に設定することができます。
+* **ウェーブ 0** (`Wave0`): クラスターは、新しい Service Fabric ビルドがリリースされるとすぐに更新されます。 テストまたは開発クラスターが対象です。
+* **ウェーブ 1** (`Wave1`): クラスターは、新しいビルドがリリースされてから 1 週間 (7 日) 後に更新されます。 運用前またはステージング クラスターを対象としています。
+* **ウェーブ 2** (`Wave2`): クラスターは、新しいビルドがリリースされてから 2 週間 (14 日) 後に更新されます。 運用クラスターが対象です。
 
-![スクリーンショットは、オプション 2 の [クラスター構成] が選択された [Service Fabric クラスターの作成] ペインと、[クラスター構成] ペインが開いた状態を示しています。][Create_Manualmode]
+次に、上記のいずれかのウェーブの値を使用して、クラスター リソース テンプレートに `upgradeWave` プロパティを追加します。 クラスター リソースの API のバージョンが `2020-12-01-preview` またはそれ以降であることを確認してください。
 
-稼働中のクラスターに対しては、管理操作からファブリックのアップグレード モードを自動または手動に設定することができます。 
-
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal"></a>ポータルで手動モードに設定されたクラスターを新バージョンにアップグレードする
-新しいバージョンにアップグレードするために必要な操作は、ドロップダウンに表示されたバージョンの中からいずれかを選択し、保存するだけです。 ファブリックのアップグレードが自動的に開始されます。 クラスター正常性ポリシー (ノードの正常性と、クラスターで実行されているすべてのアプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。
-
-クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。 正常性ポリシーのカスタマイズ方法については、このドキュメントの後半で詳しく取り上げています。下へスクロールして該当セクションを参照してください。 
-
-ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
-
-![スクリーンショットは、[ファブリックのアップグレード] ペインが開き、自動、手動などのアップグレード オプションが強調表示された [Service Fabric クラスター] ウィンドウを示しています。][Manage_Automaticmode]
-
-## <a name="set-the-upgrade-mode-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してアップグレード モードを設定する
-Microsoft.ServiceFabric/クラスター リソース定義に "upgradeMode" 構成を追加し、サポートされているいずれかのファブリック バージョンを "clusterCodeVersion" に指定して (下記)、テンプレートをデプロイします。 "upgradeMode" には "Manual" または "Automatic" のいずれかを値として指定できます。
-
-![スクリーンショットはテンプレートを示しています。これは、構造を反映するようにインデントされたプレーンテキストで、clusterCodeVersion と upgradeMode が強調表示されています。][ARMUpgradeMode]
-
-### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>Resource Manager テンプレートで手動モードに設定されたクラスターを新バージョンにアップグレードする
-手動モードのクラスターを新バージョンにアップグレードするには、"clusterCodeVersion" に指定されているバージョンを、サポートされているいずれかのバージョンに変更してデプロイします。 テンプレートをデプロイすると、ファブリックのアップグレードが自動的に開始されます。 クラスター正常性ポリシー (ノードの正常性と、クラスターで実行されているすべてのアプリケーションの正常性の組み合わせ) は、アップグレードの実行中、遵守されます。
-
-クラスター正常性ポリシーが満たされていない場合は、アップグレードがロールバックされます。  
-
-ロールバックの原因となった問題を解決した後、前述の手順に従ってもう一度アップグレードを実行してください。
-
-## <a name="set-custom-health-polices-for-upgrades"></a>アップグレードに対するカスタム正常性ポリシーを設定する
-ファブリックのアップグレードには、カスタム正常性ポリシーを指定できます。 指定したポリシーは、クラスターのファブリック アップグレードが Automatic に設定されている場合、[自動ファブリック アップグレードのフェーズ 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades) に適用されます。
-クラスターのファブリック アップグレードを Manual に設定した場合は、新しいバージョンを選択するたびにこれらのポリシーが適用され、クラスターのファブリック アップグレードが開始されます。 ポリシーをオーバーライドしていない場合、既定の設定が使用されます。
-
-カスタム正常性ポリシーを指定したり、現在の設定を確認したりするには、[ファブリック アップグレード] ブレードでアップグレードの詳細設定を選択します。 具体的な方法については、次の図を参照してください。 
-
-![Manage custom health policies][HealthPolices]
-
-## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>特定のサブスクリプションのすべての環境を対象に利用できる全バージョンの一覧を表示する
-以下のコマンドを実行すると、次のような結果が出力されます。
-
-特定のリリースの有効期限が近づいている (または終了している) ことは "supportExpiryUtc" で確認できます。 最新リリースに有効な日付はありません。"9999-12-31T23:59:59.9999999" という値が設定されていますが、これは単に有効期限が設定されていないことを意味するものです。
-
-```REST
-GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01
-
-Example: https://management.azure.com/subscriptions/1857f442-3bce-4b96-ad95-627f76437a67/providers/Microsoft.ServiceFabric/locations/eastus/clusterVersions?api-version=2016-09-01
-
-Output:
+```json
 {
-                  "value": [
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
-                      "name": "5.0.1427.9490",
-                      "type": "Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "5.0.1427.9490",
-                        "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
-                        "environment": "Windows"
-                      }
-                    },
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
-                      "name": "5.1.1427.9490",
-                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "5.1.1427.9490",
-                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                        "environment": "Windows"
-                      }
-                    },
-                    {
-                      "id": "subscriptions/35349203-a0b3-405e-8a23-9f1450984307/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
-                      "name": "4.4.1427.9490",
-                      "type": " Microsoft.ServiceFabric/environments/clusterVersions",
-                      "properties": {
-                        "codeVersion": "4.4.1427.9490",
-                        "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                        "environment": "Linux"
-                      }
-                    }
-                  ]
-                }
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+     ...
+        "fabricSettings": [...],
+        "managementEndpoint": ...,
+        "nodeTypes": [...],
+        "provisioningState": ...,
+        "reliabilityLevel": ...,
+        "upgradeMode": "Automatic",
+        "upgradeWave": "Wave1",
+       ...
 ```
 
-## <a name="next-steps"></a>次のステップ
-* [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)
+更新されたテンプレートをデプロイすると、クラスターは、次のアップグレード期間およびその後にわたって、指定されたウェーブに登録されます。
+
+クラスターのアップグレードが失敗した場合のヘルプへのリンクを含む[電子メール通知を登録](#register-for-notifications)できます。
+
+### <a name="register-for-notifications"></a>通知を登録する
+
+クラスターのアップグレードが失敗したときに通知されるよう、登録することができます。 指定したメール アドレスに、アップグレードの失敗に関する詳細情報とヘルプへのリンクが記載されたメールが送信されます。
+
+> [!NOTE]
+> アップグレード エラーの通知を受信するのに、ウェーブ デプロイに登録する必要はありません。
+
+通知を受け取るよう登録するには、クラスター リソース テンプレートに `notifications` セクションを追加し、通知を受信する 1 つ以上のメール アドレス (*receivers*) を指定します。
+
+```json
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+     ...
+        "upgradeMode": "Automatic",
+        "upgradeWave": "Wave1",
+        "notifications": [
+        {
+            "isEnabled": true,
+            "notificationCategory": "WaveProgress",
+            "notificationLevel": "Critical",
+            "notificationTargets": [
+            {
+                "notificationChannel": "EmailUser",
+                "receivers": [
+                    "devops@contoso.com"
+                ]
+            }]
+        }]
+```
+
+更新したテンプレートをデプロイすると、アップグレード エラー通知に登録されます。
+
+## <a name="custom-policies-for-manual-upgrades"></a>手動アップグレードのカスタム ポリシー
+
+手動によるクラスター アップグレードのためのカスタム正常性ポリシーを指定できます。 これらのポリシーは、新しいランタイム バージョンを選択するたびに適用されます。これにより、システムによってクラスターのアップグレードが開始されます。 ポリシーをオーバーライドしていない場合、既定の設定が使用されます。
+
+カスタム正常性ポリシーを指定したり、 **[アップグレード ポリシー]** の *[カスタム]* オプションを選択して Azure portal のクラスター リソースの **[ファブリックのアップグレード]** セクションから現在の設定を確認したりできます。
+
+:::image type="content" source="./media/service-fabric-cluster-upgrade/custom-upgrade-policy.png" alt-text="アップグレード時にカスタム正常性ポリシーを設定するには、Azure portal のクラスター リソースの [ファブリックのアップグレード] セクションで [カスタム] アップグレード ポリシー オプションを選択します":::
+
+## <a name="query-for-supported-cluster-versions"></a>サポートされているクラスター バージョンのクエリ
+
+[Azure REST API](/rest/api/azure/) を使用すると、指定した場所とサブスクリプションで使用可能なすべての Service Fabric ランタイム バージョン ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list)) を一覧表示できます。
+
+サポートされているバージョンとオペレーティング システムの詳細については、[Service Fabric バージョン](service-fabric-versions.md)に関するページでも確認できます。
+
+```REST
+GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2018-02-01
+
+"value": [
+  {
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/5.0.1427.9490",
+    "name": "5.0.1427.9490",
+    "type": "Microsoft.ServiceFabric/environments/clusterVersions",
+    "properties": {
+      "codeVersion": "5.0.1427.9490",
+      "supportExpiryUtc": "2016-11-26T23:59:59.9999999",
+      "environment": "Windows"
+    }
+  },
+  {
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.0.1427.9490",
+    "name": "5.1.1427.9490",
+    "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+    "properties": {
+      "codeVersion": "5.1.1427.9490",
+      "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+      "environment": "Windows"
+    }
+  },
+  {
+    "id": "subscriptions/########-####-####-####-############/providers/Microsoft.ServiceFabric/environments/Windows/clusterVersions/4.4.1427.9490",
+    "name": "4.4.1427.9490",
+    "type": " Microsoft.ServiceFabric/environments/clusterVersions",
+    "properties": {
+      "codeVersion": "4.4.1427.9490",
+      "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+      "environment": "Linux"
+    }
+  }
+]
+}
+```
+
+出力の `supportExpiryUtc` は、特定のリリースの有効期限が近づいているか、期限切れになっていることを報告します。 最新リリースには有効な日付ではなく、*9999-12-31T23:59:59.9999999* という値が設定されていますが、これは単に有効期限が設定されていないことを意味するものです。
+
+
+## <a name="next-steps"></a>次の手順
+
+* [Service Fabric のアップグレードの管理](service-fabric-cluster-upgrade-version-azure.md)
+* [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)のカスタマイズ
+* [クラスターのスケール インとスケール アウト](service-fabric-cluster-scale-in-out.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

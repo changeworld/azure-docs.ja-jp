@@ -51,6 +51,8 @@
   items:
     - name: セキュリティ パートナー プロバイダーのデプロイ
       href: deploy-trusted-security-partner.md
+    - name: プライベート エンドポイントをセキュリティ保護する
+      href: private-link-inspection-secure-virtual-hub.md
     - name: ファイアウォール ポリシーへの移行 - PowerShell
       href: migrate-to-policy.md
     - name: DNS の設定

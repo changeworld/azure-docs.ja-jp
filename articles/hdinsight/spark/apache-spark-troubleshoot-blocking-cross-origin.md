@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 27cd3aff859fd46679679ac12d3acc03fa6da158
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929442"
 ---
-# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での "クロス オリジン API のブロック" による Jupyter サーバーでの 404 "見つかりません" エラー
+# <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での "クロス オリジン API のブロック" による Jupyter サーバーでの 404 "見つかりません" エラー
 
 この記事では、Azure HDInsight クラスターで Apache Spark コンポーネントを使用するときのトラブルシューティングの手順と考えられる解決策について説明します。
 
@@ -35,7 +35,7 @@ Jupyter ログの "Origin" フィールドに IP アドレスが表示される�
 
 - HDInsight ゲートウェイに、標準の `xxx.azurehdinsight.net` ではなくカスタマイズした DNS 名を指定した場合。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. 次の 2 つの場所の jupyter.py ファイルを変更します。
 
@@ -44,7 +44,7 @@ Jupyter ログの "Origin" フィールドに IP アドレスが表示される�
     /var/lib/ambari-agent/cache/common-services/JUPYTER/1.0.0/package/scripts/jupyter.py
     ```
 
-1. 次のような行を探します: `NotebookApp.allow_origin='\"https://{2}.{3}\"'`。それを次のように変更します: `NotebookApp.allow_origin='\"*\"'`。
+1. `NotebookApp.allow_origin='\"https://{2}.{3}\"'` という行を探し、`NotebookApp.allow_origin='\"*\"'` に変更します。
 
 1. Ambari から Jupyter サービスを再起動します。
 

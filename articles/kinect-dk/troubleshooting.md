@@ -1,18 +1,18 @@
 ---
 title: Azure Kinect の既知の問題とトラブルシューティング
 description: Azure Kinect DK で Sensor SDK を使用する際の既知の問題とトラブルシューティングのヒントについて説明します。
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: トラブルシューティング、更新プログラム、バグ、Kinect、フィードバック、回復、ログ記録、ヒント
-ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: da5242a09934a756093a9e02b6d474e6c75fecda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038822"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108742"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect の既知の問題とトラブルシューティング
 
@@ -172,18 +172,60 @@ Linux 上の Azure Kinect 深度エンジンでは、OpenGL を使用します�
 
 1. 使用する予定のユーザー アカウントに対して自動ログインを有効にします。 自動ログインを有効にする方法については、[この](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/)記事を参照してください。
 2. システムの電源を切り、モニターを切断し、システムの電源を入れます。 自動ログインでは、x サーバー セッションが強制的に作成されます。
-2. ssh 経由で接続し、DISPLAY 環境変数 `export DISPLAY=:0` を設定します。
-3. Azure Kinect アプリケーションを起動します。
+3. ssh 経由で接続し、DISPLAY 環境変数 `export DISPLAY=:0` を設定します。
+4. Azure Kinect アプリケーションを起動します。
 
 [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) ユーティリティを使用すると、自動ログイン後すぐに画面をロックすることができます。 スタートアップ アプリケーションまたは systemd サービスに次のコマンドを追加します。
 
-`bash -c “xtrlock -b”` 
+`bash -c “xtrlock -b”`
 
 ## <a name="missing-c-documentation"></a>C# ドキュメントがない
 
 Sensor SDK C# ドキュメントは、[こちら](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)から入手できます。
 
 Body Tracking SDK C# ドキュメントは、[こちら](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)から入手できます。
+
+## <a name="specifying-onnx-runtime-execution-environment"></a>ONNX Runtime 実行環境の指定
+
+Body Tracking SDK では、CPU、CUDA、DirectML (Windows のみ)、および TensorRT の実行環境がサポートされており、姿勢推定モデルを推論できます。 `K4ABT_TRACKER_PROCESSING_MODE_GPU` は、Linux では CUDA、Windows では DirectML が既定になります。 特定の実行環境を選択するために、`K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA`、`K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML`、`K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` の 3 つの追加のモードが追加されました。
+
+> [!NOTE]  
+> ONNX Runtime は、アクセラレートされないオペコードの警告を表示します。 これらは無視しても問題ありません。
+
+ONNX Runtime には、TensorRT モデルのキャッシュを制御するための環境変数が含まれています。 推奨値は次のとおりです。
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE=1 
+- ORT_TENSORRT_CACHE_PATH="pathname"
+
+本文の追跡を開始する前に、フォルダーを作成する必要があります。
+
+> [!IMPORTANT]  
+> TensorRT では、推論の前にモデルが事前に処理されるため、他の実行環境と比較すると、開始時間が長くかかります。 エンジン キャッシュはこれを最初の実行に限定しますが、これは実験的なものであり、モデル、ONNX Runtime バージョン、TensorRT バージョン、および GPU モデルに固有です。
+
+TensorRT 実行環境では、FP32 (既定) と FP16 の両方がサポートされます。 FP16 は、精度の低下を最小限に抑えるために、最大 2 倍のパフォーマンスを引き換えにします。 FP16 を指定するには、次のようにします。
+- ORT_TENSORRT_FP16_ENABLE=1
+
+## <a name="required-dlls-for-onnx-runtime-execution-environments"></a>ONNX Runtime 実行環境に必要な DLL
+
+|モード      | CUDA 11.1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
+|----------|----------------------|----------------------|----------------------|
+| CPU      | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| CUDA     | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           | cudnn_ops_infer64_8  |                      |
+|          | cublas64_11          | cudnn_cnn_infer64_8  |                      |
+|          | cublasLt64_11        |                      |                      |
+| DirectML | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| TensorRT | cudart64_110         | cudnn64_8            | nvinfer              |
+|          | cufft64_10           | cudnn_ops_infer64_8  | nvinfer_plugin       |
+|          | cublas64_11          | cudnn_cnn_infer64_8  | myelin64_1           |
+|          | cublasLt64_11        |                      |                      |
+|          | nvrtc64_111_0        |                      |                      |
+|          | nvrtc-builtins64_111 |                      |                      |
 
 ## <a name="next-steps"></a>次のステップ
 

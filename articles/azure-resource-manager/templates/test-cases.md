@@ -5,16 +5,16 @@ ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 451323058ad743d6e26fc8bcea27d1b44c76f543
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97674044"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064149"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットの既定のテスト ケース
 
-この記事では、[テンプレート テスト ツールキット](test-toolkit.md)で実行される既定のテストについて説明します。 テストの合格の例または不合格の例を示します。 各テストの名前が含まれます。
+この記事では、Azure Resource Manager テンプレート (ARM テンプレート) 用の [テンプレート テスト ツールキット](test-toolkit.md)を使用して実行される既定のテストについて説明します。 テストの合格の例または不合格の例を示します。 各テストの名前が含まれます。 特定のテストを実行するには、「[テスト パラメーター](test-toolkit.md#test-parameters)」を参照してください。
 
 ## <a name="use-correct-schema"></a>正しいスキーマを使用する
 
@@ -137,7 +137,7 @@ URL がハードコーディングされているため、次の例ではこの�
 
 テスト名: **Location Should Not Be Hardcoded** (場所をハードコーディングしてはいけない)
 
-テンプレートには、location という名前のパラメーターが必要です。 このパラメーターを使用して、テンプレート内のリソースの場所を設定します。 メイン テンプレート (azuredeploy.json または mainTemplate.json という名前) では、このパラメーターを既定でリソース グループの場所に設定することができます。 リンクまたは入れ子になったテンプレートの場合、location パラメーターに既定の場所を設定しないでください。
+テンプレートには、location という名前のパラメーターが必要です。 このパラメーターを使用して、テンプレート内のリソースの場所を設定します。 メイン テンプレート (_azuredeploy.json_ または _mainTemplate.json_ という名前) では、このパラメーターを既定でリソース グループの場所に設定することができます。 リンクまたは入れ子になったテンプレートの場合、location パラメーターに既定の場所を設定しないでください。
 
 テンプレートのユーザーは、使用できるリージョンが限られている場合があります。 リソースの場所をハード コーディングすると、ユーザーはそのリージョンでリソースを作成できなくなる可能性があります。 リソースの場所を `"[resourceGroup().location]"` に設定しても、ユーザーがブロックされる可能性があります。 リソース グループは、他のユーザーがアクセスできないリージョンに作成されている可能性があります。 それらのユーザーは、テンプレートの使用をブロックされます。
 
@@ -393,11 +393,11 @@ URL がハードコーディングされているため、次の例ではこの�
 * 一方のパラメーターを指定する場合は、他も指定する必要があります
 * `_artifactsLocation` は **string** である必要があります
 * `_artifactsLocation` の既定値は、メイン テンプレートで指定されている必要があります
-* `_artifactsLocation` の既定値を、入れ子になったテンプレートで指定することはできません 
+* `_artifactsLocation` の既定値を、入れ子になったテンプレートで指定することはできません
 * `_artifactsLocation` には、`"[deployment().properties.templateLink.uri]"` またはその既定値に対する生リポジトリ URL のいずれかが必要です
 * `_artifactsLocationSasToken` は **secureString** である必要があります
 * `_artifactsLocationSasToken` の既定値には空の文字列のみを指定できます
-* `_artifactsLocationSasToken` の既定値を、入れ子になったテンプレートで指定することはできません 
+* `_artifactsLocationSasToken` の既定値を、入れ子になったテンプレートで指定することはできません
 
 ## <a name="declared-variables-must-be-used"></a>宣言された変数が使用されている必要がある
 
@@ -520,7 +520,7 @@ concat 関数を使用してリソース ID を作成しないでください。
 
 テスト名: **ResourceIds should not contain** (ResourceId に含まれていてはならない)
 
-リソース ID を生成するときは、省略可能なパラメーターに不要な関数を使用しないでください。 既定の [resourceId](template-functions-resource.md#resourceid) 関数では、現在のサブスクリプションとリソース グループが使用されます。 それらの値を指定する必要はありません。  
+リソース ID を生成するときは、省略可能なパラメーターに不要な関数を使用しないでください。 既定の [resourceId](template-functions-resource.md#resourceid) 関数では、現在のサブスクリプションとリソース グループが使用されます。 それらの値を指定する必要はありません。
 
 次の例は、現在のサブスクリプション ID とリソース グループ名を指定する必要がないため、このテストで **不合格** になります。
 
@@ -691,7 +691,40 @@ outputs セクションには、シークレットが公開される可能性の
 }
 ```
 
+## <a name="use-protectedsettings-for-commandtoexecute-secrets"></a>commandToExecute のシークレットに protectedSettings を使用する
+
+テスト名: **CommandToExecute Must Use ProtectedSettings For Secrets** (CommandToExecute ではシークレットに ProtectedSettings を使用する必要がある)
+
+カスタム スクリプト拡張機能では、`commandToExecute` にパスワードなどのシークレット データが含まれる場合、暗号化されたプロパティ `protectedSettings` を使用します。 シークレット データの種類の例として、`secureString`、`secureObject`、`list()` 関数、またはスクリプトがあります。
+
+仮想マシンのカスタム スクリプト拡張機能の詳細については、[Windows](
+/azure/virtual-machines/extensions/custom-script-windows)、[Linux](/azure/virtual-machines/extensions/custom-script-linux)、スキーマ [Microsoft.Compute virtualMachines/extensions](/azure/templates/microsoft.compute/virtualmachines/extensions) に関する記事を参照してください。
+
+この例では、名前が `adminPassword` で種類が `secureString` のパラメーターを持つテンプレートは、暗号化されたプロパティ `protectedSettings` に `commandToExecute` が含まれているため、テストで **合格** になります。
+
+```json
+"properties": [
+  {
+    "protectedSettings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
+暗号化されていないプロパティ `settings` に `commandToExecute` が含まれている場合、テストで **不合格** になります。
+
+```json
+"properties": [
+  {
+    "settings": {
+      "commandToExecute": "[parameters('adminPassword')]"
+    }
+  }
+]
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-- テスト ツールキットの実行については、「[ARM テンプレート テスト ツールキットを使用する](test-toolkit.md)」を参照してください。
-- テスト ツールキットの使用に関して説明している Microsoft Learn モジュールについては、「[what-if と ARM テンプレート テスト ツールキットを使用して変更をプレビューし、Azure リソースを検証する](/learn/modules/arm-template-test/)」をご覧ください。
+* テスト ツールキットの実行については、「[ARM テンプレート テスト ツールキットを使用する](test-toolkit.md)」を参照してください。
+* テスト ツールキットの使用に関して説明している Microsoft Learn モジュールについては、「[what-if と ARM テンプレート テスト ツールキットを使用して変更をプレビューし、Azure リソースを検証する](/learn/modules/arm-template-test/)」をご覧ください。

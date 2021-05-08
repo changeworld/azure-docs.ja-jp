@@ -3,15 +3,15 @@ title: Windows Virtual Desktop に関する FAQ - Azure
 description: Windows Virtual Desktop のよく寄せられる質問とベスト プラクティス。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 03/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 3bdb38b8a9590cf6191c75fdef024543c2b1c190
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: femila
+ms.openlocfilehash: 1f5e4cb0d2db30c6b07370be137506f3fe26837f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720275"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505299"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop の FAQ
 
@@ -110,7 +110,7 @@ Windows Virtual Desktop は、現在 Teams 向けに最適化されています�
 
 FSLogix の制限事項またはクォータは、ユーザー プロファイルの VHD(X) ファイルの格納に使用される記憶域ファブリックによって異なります。
 
-次の表に、FSLogix プロファイルで各ユーザーをサポートするために必要なリソースの数を示します。 要件は、各プロファイルのユーザー、アプリケーション、およびアクティビティによって大きく異なる場合があります。
+次の表に、FSLogix プロファイルで各ユーザーをサポートするために必要な IOPS 数を示します。 要件は、各プロファイルのユーザー、アプリケーション、およびアクティビティによって大きく異なる場合があります。
 
 | リソース | 要件 |
 |---|---|
@@ -139,4 +139,23 @@ Azure Lighthouse では、Windows Virtual Desktop 環境の管理は完全には
 
 ## <a name="how-often-should-i-turn-my-vms-on-to-prevent-registration-issues"></a>登録の問題を防ぐには、VM をどれくらいの頻度でオンにする必要がありますか?
 
-Windows Virtual Desktop サービス内のホスト プールに VM を登録した後は、VM がアクティブになるたびに、エージェントによって VM のトークンが定期的に更新されます。 登録トークンの証明書の有効期間は 90 日間です。 この 90 日間の期限を考慮し、お客様には、VM を 90 日おきに起動することをお勧めしています。 この期限内に VM をオンにすれば、登録トークンが期限切れになったり、無効になったりするのを回避できます。 90 日を過ぎた後に VM を起動し、登録に関する問題が発生した場合は、[Windows Virtual Desktop エージェントのトラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)に記載されている手順に従って、ホスト プールから VM を削除し、エージェントを再インストールした後、VM をプールに再登録してください。
+Windows Virtual Desktop サービス内のホスト プールに VM を登録した後は、VM がアクティブになるたびに、エージェントによって VM のトークンが定期的に更新されます。 登録トークンの証明書の有効期間は 90 日間です。 この 90 日間の制限のために、マシンがトークンを最新の情報に更新し、エージェントとサイド バイ サイド スタック コンポーネントを更新できるように、90 日ごとに 20 分間 VM をオンラインにすることをお勧めします。 この期限内に VM をオンにすれば、登録トークンが期限切れになったり、無効になったりするのを回避できます。 90 日を過ぎた後に VM を起動し、登録に関する問題が発生した場合は、[Windows Virtual Desktop エージェントのトラブルシューティング ガイド](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)に記載されている手順に従って、ホスト プールから VM を削除し、エージェントを再インストールした後、VM をプールに再登録してください。
+
+## <a name="can-i-set-availability-options-when-creating-host-pools"></a>ホスト プールの作成時に可用性オプションを設定できますか?
+
+はい。 Windows Virtual Desktop ホスト プールには、VM を作成するときに可用性セットまたは可用性ゾーンのいずれかを選択するオプションがあります。 これらの可用性オプションは、Azure Compute で使用されるものと同じです。 ホスト プールに作成する VM のゾーンを選択すると、そのゾーンに作成するすべての VM に自動的に設定が適用されます。 ホスト プールの VM を複数のゾーンに分散する場合は、「[Azure portal を使用して仮想マシンを追加する](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal)」の指示に従って、作成する新しい VM ごとに新しいゾーンを手動で選択する必要があります。
+
+## <a name="which-availability-option-is-best-for-me"></a>どの可用性オプションが最適ですか?
+
+VM に使用すべき可用性オプションは、イメージの場所とそのマネージド ディスクのフィールドによって異なります。 次の表では、各設定とこれらの変数の関係が説明されており、デプロイに最適なオプションを判断するのに役立ちます。 
+
+| 可用性オプション | イメージの場所 | [マネージド ディスクの使用] オプション ボタン (ラジオ ボタン) |
+|---|---|---|
+| なし | [ギャラリー] | 既定として "Yes" で無効 |
+| なし | BLOB ストレージ | 既定として "No" で有効 |
+| 可用性ゾーン | ギャラリー (BLOB ストレージ オプションは無効) | 既定として "Yes" で無効 |
+| 管理対象 SKU を使用した可用性セット (マネージド ディスク) | [ギャラリー] | 既定として "Yes" で無効 |
+| 管理対象 SKU を使用した可用性セット (マネージド ディスク) | BLOB ストレージ | 既定として "No" で有効 |
+| 管理対象 SKU を使用した可用性セット (マネージド ディスク) | BLOB ストレージ (ギャラリー オプションは無効) | 既定として "No" で無効 |
+| 可用性セット (ユーザーが新しく作成) | [ギャラリー] | 既定として "Yes" で無効 |
+| 可用性セット (ユーザーが新しく作成) | BLOB ストレージ | 既定として "No" で有効 |

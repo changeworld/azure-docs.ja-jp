@@ -13,17 +13,19 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 7ff61811e8b736f8f6d104a253cfe5dc5e76c428
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600287"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771364"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>MSAL.NET を使用してクライアント アプリケーションを初期化する
-この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
+この記事では、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用したパブリック クライアント アプリケーションと機密性の高いクライアント アプリケーションの初期化について説明します。  クライアント アプリケーションの種類の詳細については、[パブリック クライアント アプリケーションと機密クライアント アプリケーション](msal-client-applications.md)に関するページを参照してください。
 
 MSAL.NET 3.x でアプリケーションをインスタンス化するには、アプリケーション ビルダー `PublicClientApplicationBuilder` および `ConfidentialClientApplicationBuilder` を使用することをお勧めします。 これらは、コードまたは構成ファイルから、または両方のアプローチを組み合わせることで、アプリケーションを構成する強力なメカニズムを提供します。
+
+[API リファレンス ドキュメント](/dotnet/api/microsoft.identity.client) | [NuGet のパッケージ](https://www.nuget.org/packages/Microsoft.Identity.Client/) | [ライブラリのソース コード](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [コード サンプル](sample-v2-code.md)
 
 ## <a name="prerequisites"></a>前提条件
 アプリケーションを初期化する前に、まず、そのアプリケーションを[登録](quickstart-register-app.md)して、Microsoft ID プラットフォームに統合できるようにする必要があります。  登録後に、次の情報が必要な場合があります (Azure portal で検索できます)。

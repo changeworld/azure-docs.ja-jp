@@ -7,21 +7,21 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 03b29e6ddd16731073b33fef14d5aafb54df2abe
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877530"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227859"
 ---
-# <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud での問題を自己診断して解決する方法
+# <a name="self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud での問題の自己診断と解決
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
 Azure Spring Cloud 診断は、構成無しでアプリのトラブルシューティングが可能な対話型エクスペリエンスです。 Azure Spring Cloud 診断は、問題点を特定し、問題のトラブルシューティングと解決に役立つ情報を示します。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを完了するには、次のものが必要です。
+この演習を完了するには、以下が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 * デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](spring-cloud-quickstart.md)に従って作業を開始してください。

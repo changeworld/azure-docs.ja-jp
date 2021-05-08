@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Azure で Linux SQL Server VM を作成する
 description: このチュートリアルでは、Azure Portal で Linux SQL Server 2017 仮想マシンを作成する方法について説明します。
-services: virtual-machines-linux
+services: virtual-machines-sql
 author: MashaMSFT
 ms.date: 10/22/2019
 tags: azure-service-management
@@ -10,12 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 492d4a799f35d7fee4f500b48cbb31d2a9c5957f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92790153"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450006"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Azure portal で SQL Server を実行している Linux 仮想マシンをプロビジョニングする
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

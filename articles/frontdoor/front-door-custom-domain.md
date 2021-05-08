@@ -3,23 +3,24 @@ title: チュートリアル - カスタム ドメインを Azure Front Door の
 description: このチュートリアルでは、Azure Front Door にカスタム ドメインをオンボードする方法を説明します。
 services: frontdoor
 documentationcenter: ''
-author: duongau
+author: jessie-jyy
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2020
-ms.author: duau
-ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/12/2021
+ms.author: yuajia
+ms.openlocfilehash: 7e2f05a7d911ce2b311a423994d2b459de0fa269
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96011525"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308865"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>チュートリアル:Front Door にカスタム ドメインを追加する
+
 このチュートリアルでは、Front Door にカスタム ドメインを追加する方法を説明します。 アプリケーション デリバリーに Azure Front Door を使用している場合、独自のドメイン名がエンド ユーザーの要求で示されるようにしたいときは、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
 
 Front Door を作成すると、`azurefd.net` のサブドメインである既定のフロントエンド ホストが、バックエンドから Front Door コンテンツを配信するための URL に、既定で含まれるようになります (例: https:\//contoso-frontend.azurefd.net/activeusers.htm)。 便宜を図るため、Azure Front Door には、カスタム ドメインを既定のホストと関連付けるオプションが用意されています。 このオプションを使用すると、コンテンツ配信の URL に、Front Door 所有のドメイン名ではなく、カスタム ドメインが含まれるようになります (例: https:\//www.contoso.com/photo.png)。 
@@ -41,7 +42,7 @@ Front Door を作成すると、`azurefd.net` のサブドメインである既�
 
 * カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 たとえば、[カスタム ドメイン名の購入](../app-service/manage-custom-dns-buy-domain.md)に関するページを参照してください。
 
-* Azure を使用して [DNS ドメイン](../dns/dns-overview.md) をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](../dns/dns-delegate-domain-azure-dns.md)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
+* Azure を使用して [DNS ドメイン](../dns/dns-overview.md)をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](../dns/dns-delegate-domain-azure-dns.md)」を参照してください。 また、ドメイン プロバイダーを使用して DNS ドメインを処理している場合は、「[CNAME DNS レコードを作成する](#create-a-cname-dns-record)」に進んでください。
 
 
 ## <a name="create-a-cname-dns-record"></a>CNAME DNS レコードを作成する
@@ -53,9 +54,9 @@ Front Door を作成すると、`azurefd.net` のサブドメインである既�
 
 ## <a name="map-the-temporary-afdverify-subdomain"></a>一時的な afdverify サブドメインをマップする
 
-運用環境にある既存のドメインをマップする場合、特別な考慮事項があります。 Azure Portal にカスタム ドメインを登録している間、ドメインが短時間ダウンする場合があります。 Web トラフィックの中断を避けるには、Azure afdverify サブドメインを含む Front Door の既定のフロントエンド ホストにカスタム ドメインをマップして、一時的な CNAME マッピングを作成します。 この方法を使用すると、ユーザーは、DNS マッピングの実行中に中断することなくドメインにアクセスできます。
+運用環境にある既存のドメインをマップする場合、特別な考慮事項があります。 Azure portal でカスタム ドメインを登録している間、ドメインが短時間ダウンする場合があります。 Web トラフィックの中断を避けるには、Azure afdverify サブドメインを含む Front Door の既定のフロントエンド ホストにカスタム ドメインをマップして、一時的な CNAME マッピングを作成します。 この方法を使用すると、ユーザーは、DNS マッピングの実行中に中断することなくドメインにアクセスできます。
 
-それ以外の場合、初めてカスタム ドメインを使用していて、まだ運用トラフィックが発生していないときは、カスタム ドメインを Front Door に直接マップできます。 「[永続的なカスタム ドメインをマップする](#map-the-permanent-custom-domain)」に進みます。
+それ以外の場合、初めてカスタム ドメインを使用していて、まだ運用トラフィックが発生していないときは、カスタム ドメインを Front Door に直接マップできます。 「[永続的なカスタム ドメインをマップする](#map-the-permanent-custom-domain)」に進んでください。
 
 afdverify サブドメインを含む CNAME レコードを作成するには:
 
@@ -69,7 +70,7 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
     |---------------------------|-------|---------------------------------|
     | afdverify. www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
-    - ソース:afdverify サブドメインを含めて、カスタム ドメイン名を afdverify. _&lt;カスタム ドメイン名&gt;_ の形式で入力します。 たとえば、afdverify. www.contoso.com などです。
+    - ソース:afdverify サブドメインを含めて、カスタム ドメイン名を afdverify. _&lt;カスタム ドメイン名&gt;_ の形式で入力します。 たとえば、afdverify. www.contoso.com などです。 \*.contoso.com のようにワイルドカード ドメインをマップしても、ソースの値は、ワイルドカードを使用しない場合と同じ (afdverify.contoso.com) になります。
 
     - 型: 「*CNAME*」と入力します。
 
@@ -108,7 +109,7 @@ afdverify サブドメインを含む CNAME レコードを作成するには:
 
 1. [Azure portal](https://portal.azure.com/) にサインインし、カスタム ドメインにマップするフロントエンド ホストを含む Front Door を参照します。
     
-2. **Front Door デザイナー** のページで、[+] をクリックしてカスタム ドメインを追加します。
+2. **Front Door デザイナー** のページで、[+] を選択してカスタム ドメインを追加します。
     
 3. **[Custom domain]\(カスタム ドメイン\)** を指定します。 
 
@@ -186,17 +187,18 @@ afdverify サブドメインが Front Door に正常にマップされている�
 
 8. **[Delete]\(削除\)** を選択して CNAME レコードを削除します。
 
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-上記の手順では、カスタム ドメインを Front Door に追加しました。 Front Door をカスタム ドメインに関連付けておく必要がない場合は、次の手順を実行してカスタム ドメインを削除できます。
+上記の手順では、カスタム ドメインを Front Door に追加しました。 Front Door をカスタム ドメインに関連付けておく必要がない場合は、これらの手順を実行してカスタム ドメインを削除できます。
  
-1. Front Door デザイナーで、削除するカスタム ドメインを選択します。
+1. お使いの DNS プロバイダーに移動してカスタム ドメインの CNAME レコードを削除するか、カスタム ドメインの CNAME レコードを Front Door 以外のエンドポイントに更新します。
 
-2. カスタム ドメインのコンテキスト メニューから [削除] をクリックします。  
+    > [!Important]
+    > 未解決の DNS エントリとそこから生じるセキュリティ リスクを防ぐために、2021 年 4 月 9 日以降、Azure Front Door では、Front Door エンドポイントへの CNAME レコードを削除してからでないと、リソースを削除できなくなりました。 リソースには、Front Door カスタム ドメイン、Front Door エンドポイント、または Front Door カスタム ドメインが有効になっている Azure リソース グループが含まれます。
 
-   カスタム ドメインとエンドポイントの関連付けが解除されます。
+2. Front Door デザイナーで、削除するカスタム ドメインを選択します。
 
+3. カスタム ドメインのコンテキスト メニューから **[削除]** を選択します。 これで、カスタム ドメインとエンドポイントの関連付けが解除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

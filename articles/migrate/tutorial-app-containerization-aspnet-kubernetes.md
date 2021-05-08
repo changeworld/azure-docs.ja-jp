@@ -7,14 +7,14 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780737"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561799"
 ---
-# <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>ASP.NET アプリケーションをコンテナー化し、Azure Kubernetes Service に移行する
+# <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET アプリのコンテナ化と Azure Kubernetes Service への移行
 
 この記事では、Azure Migrate: App Containerization ツールを使用して、ASP.NET アプリケーションをコンテナー化し、それらを [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) に移行する方法について説明します。 このコンテナー化プロセスでは、コードベースへのアクセスは不要で、既存のアプリケーションを簡単な方法でコンテナー化できます。 このツールは、サーバー上のアプリケーションの実行状態を使用して動作し、アプリケーション コンポーネントを判別し、それらをコンテナー イメージにパッケージ化できるように支援します。 コンテナー化されたアプリケーションは、Azure Kubernetes Service (AKS) にデプロイできます。
 
@@ -60,7 +60,7 @@ Azure Migrate: App Containerization ツールを使用すると、以下を行�
 **要件** | **詳細**
 --- | ---
 **ツールをインストールするコンピューターを特定する** | Azure Migrate: App Containerization ツールをインストールして実行する Windows コンピューター。 Windows コンピューターとして、サーバー (Windows Server 2016 以降) またはクライアント (Windows 10) オペレーティング システムを使用できます。これは、このツールをデスクトップでも実行できることを意味します。 <br/><br/> ツールを実行する Windows コンピューターには、コンテナー化する ASP.NET アプリケーションをホストするサーバーまたは仮想マシンへのネットワーク接続が必要です。<br/><br/> アプリケーション アーティファクトを保存するために、Azure Migrate: App Containerization ツールを実行する Windows コンピューターで 6 GB の領域が使用可能であることを確認します。 <br/><br/> Windows コンピューターは、直接またはプロキシ経由でインターネットにアクセスできる必要があります。 <br/> <br/>App Containerization ヘルパー ツールとアプリケーション サーバーを実行するコンピューターに Microsoft Web Deploy ツールをインストールします (まだインストールされていない場合)。 このツールは、[こちら](https://aka.ms/webdeploy3.6)からダウンロードできます。
-**アプリケーション サーバー** | アプリケーション サーバーで PowerShell リモート処理を有効にする: アプリケーション サーバーにログインし、[こちら](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting)の手順に従って PowerShell リモート処理を有効にします。 <br/><br/> アプリケーション サーバーで Windows Server 2008 R2 が実行されている場合は、そのアプリケーション サーバーに PowerShell 5.1 がインストールされていることを確認します。 [こちら](https://docs.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure)の手順に従って、PowerShell 5.1 をダウンロードし、アプリケーション サーバーにインストールします。 <br/><br/> App Containerization ヘルパー ツールとアプリケーション サーバーを実行するコンピューターに Microsoft Web Deploy ツールをインストールします (まだインストールされていない場合)。 このツールは、[こちら](https://aka.ms/webdeploy3.6)からダウンロードできます。
+**アプリケーション サーバー** | アプリケーション サーバーで PowerShell リモート処理を有効にする: アプリケーション サーバーにログインし、[こちら](/powershell/module/microsoft.powershell.core/enable-psremoting)の手順に従って PowerShell リモート処理を有効にします。 <br/><br/> アプリケーション サーバーで Windows Server 2008 R2 が実行されている場合は、そのアプリケーション サーバーに PowerShell 5.1 がインストールされていることを確認します。 [こちら](/powershell/scripting/windows-powershell/wmf/setup/install-configure)の手順に従って、PowerShell 5.1 をダウンロードし、アプリケーション サーバーにインストールします。 <br/><br/> App Containerization ヘルパー ツールとアプリケーション サーバーを実行するコンピューターに Microsoft Web Deploy ツールをインストールします (まだインストールされていない場合)。 このツールは、[こちら](https://aka.ms/webdeploy3.6)からダウンロードできます。
 **ASP.NET アプリケーション** | このツールは、現在以下をサポートしています。 <br/><br/> - Microsoft .NET Framework 3.5 以降を使用する ASP.NET アプリケーション。<br/> - Windows Server 2008 R2 以降を実行するアプリケーション サーバー (アプリケーション サーバーで、PowerShell バージョン 5.1 を実行する必要があります)。 <br/> - インターネット インフォメーション サービス (IIS) 7.5 以降で実行されるアプリケーション。 <br/><br/> このツールは現在以下をサポートしていません。 <br/><br/> - Windows 認証を必要とするアプリケーション (AKS は、現在 gMSA をサポートしていません)。 <br/> - IIS の外部でホストされる他の Windows サービスに依存するアプリケーション。
 
 
@@ -180,7 +180,7 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
 
 ### <a name="externalize-file-system-dependencies"></a>ファイル システムの依存関係を外部化する
 
- アプリケーションで使用する他のフォルダーを追加できます。 それらをコンテナー イメージの一部にするか、Azure ファイル共有の永続ボリュームを使用して外部化するかを指定します。 永続ボリュームの使用は、コンテナーの外部に状態を保存する、またはファイル システムに他の静的コンテンツを保存するステートフル アプリケーションに適しています。 [詳細情報](https://docs.microsoft.com/azure/aks/concepts-storage)
+ アプリケーションで使用する他のフォルダーを追加できます。 それらをコンテナー イメージの一部にするか、Azure ファイル共有の永続ボリュームを使用して外部化するかを指定します。 永続ボリュームの使用は、コンテナーの外部に状態を保存する、またはファイル システムに他の静的コンテンツを保存するステートフル アプリケーションに適しています。 [詳細情報](../aks/concepts-storage.md)
 
 1. [App Folders]\(アプリ フォルダー\) の下の **[編集]** をクリックして、検出されたアプリケーション フォルダーを確認します。 検出されたアプリケーション フォルダーは、アプリケーションに必要な必須のアーティファクトとして識別され、コンテナー イメージにコピーされます。
 
@@ -195,7 +195,7 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
 ## <a name="build-container-image"></a>コンテナー イメージの構築
 
 
-1. **Azure Container Registry を選択する**: ドロップダウンを使用して、アプリのコンテナー イメージのビルドおよび保存に使用する [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) を選択します。 既存の Azure Container Registry を使用すること、または [Create new registry]\(新しいレジストリの作成\) オプションを使用して、新しいレジストリを作成することができます。
+1. **Azure Container Registry を選択する**: ドロップダウンを使用して、アプリのコンテナー イメージのビルドおよび保存に使用する [Azure Container Registry](../container-registry/index.yml) を選択します。 既存の Azure Container Registry を使用すること、または [Create new registry]\(新しいレジストリの作成\) オプションを使用して、新しいレジストリを作成することができます。
 
     ![アプリの ACR 選択のスクリーンショット。](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 

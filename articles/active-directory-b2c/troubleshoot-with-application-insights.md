@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 074bffb8614be1f71ba1956fd5a238bc19354c58
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102611829"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028745"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -31,6 +31,18 @@ ms.locfileid: "102611829"
 ## <a name="set-up-application-insights"></a>Application Insights を設定する
 
 サブスクリプションに Application Insights のインスタンスがまだない場合は、作成します。
+
+> [!TIP]
+> Application Insights の 1 つのインスタンスを、複数の Azure AD B2C テナントに使用できます。 次に、クエリで、テナント名またはポリシー名でフィルター処理できます。 詳細については、「[Application Insights のサンプル](#see-the-logs-in-application-insights)」のログをご覧ください。
+
+サブスクリプションで Application Insights の終了インスタンスを使用するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
+1. 先ほど作成した Application Insights リソースを開きます。
+1. **[概要]** ページで、 **[インストルメンテーション キー]** を記録します。
+
+サブスクリプションに Application Insights のインスタンスを作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
@@ -96,12 +108,59 @@ Application Insights で新しいログが確認できるようになるまで�
 
 | クエリ | 説明 |
 |---------------------|--------------------|
-`traces` | Azure AD B2C によって生成されたすべてのログを確認します |
-`traces | where timestamp > ago(1d)` | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します
+| `traces` | Azure AD B2C によって生成されたすべてのログを取得します。 |
+| `traces | where timestamp > ago(1d)` | Azure AD B2C によって生成された直近 1 日分のすべてのログを取得します。|
+| `traces | where message contains "exception" | where timestamp > ago(2h)`|  過去 2 時間以内に発生したエラーありのすべてのログを取得します。|
+| `traces | where customDimensions.Tenant == "contoso.onmicrosoft.com" and customDimensions.UserJourney  == "b2c_1a_signinandup"` | Azure AD B2C *contoso.onmicrosoft.com* テナントによって生成され、ユーザー体験が *b2c_1a_signinandup* であるすべてのログを取得します。 |
+| `traces | where customDimensions.CorrelationId == "00000000-0000-0000-0000-000000000000"`| Azure AD B2C によって関連付け ID で生成されたすべてのログを取得します。 関連付け ID を自分の関連付け ID に置き換えます。 | 
 
 エントリは長い可能性があります。 詳細を確認する際は CSV にエクスポートしてください。
 
 クエリの実行について詳しくは、「[Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)」をご覧ください。
+
+## <a name="see-the-logs-in-vs-code-extension"></a>VS Code 拡張機能でログを確認する
+
+[VS Code](https://code.visualstudio.com/) 用の [Azure AD B2C 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)をインストールすることをお勧めします。 Azure AD B2C 拡張機能を使用すると、ポリシー名、関連付け ID (Application Insights では関連付け ID の最初の桁が示されます)、ログのタイムスタンプによってログが整理されます。 この機能を使用すると、ローカル タイムスタンプに基づいて関連するログを検索し、Azure AD B2C によって実行されるユーザー体験を確認することができます。
+
+> [!NOTE]
+> コミュニティでは、ID 開発者を支援するために、Azure AD B2C 用の VS Code 拡張機能が開発されました。 Microsoft はこの拡張機能をサポートしておらず、厳密に現状のまま利用可能です。
+
+### <a name="set-application-insights-api-access"></a>Application Insights API アクセスの設定
+
+Application Insights を設定し、カスタム ポリシーを構成したら、Application Insights **API ID** を取得して、 **API キー** を作成する必要があります。 API ID と API キーは両方とも、Application Insights イベント (テレメトリ) を読み取るために Azure AD B2C 拡張機能によって使用されます。 API キーは、パスワードと同じように管理する必要があります。 安全に保管してください。
+
+> [!NOTE]
+> 事前に作成した Application Insights インストルメンテーション キーは、Application Insights にテレメトリを送信するために Azure AD B2C によって使用されます。 インストルメンテーション キーは、VS Code 拡張機能ではなく、Azure AD B2C ポリシーでのみ使用します。
+
+Application Insights の ID とキーを取得するには、次の手順を実行します。
+
+1. Azure Portal で、アプリケーションの Application Insights リソースを開きます。
+1. **[設定]** 、 **[API アクセス]** の順に選択します。
+1. **アプリケーション ID** をコピーします。
+1. **[API キーの作成]** を選択します。
+1. **[テレメトリを読み取る]** チェック ボックスをオンにします。
+1. [API キーの作成] ブレードを閉じる前に **キー** をコピーし、セキュリティで保護された場所に保存します。 キーを紛失した場合は、別のキーを作成する必要があります。
+
+    ![API アクセス キーの作成方法を示すスクリーンショット。](./media/troubleshoot-with-application-insights/application-insights-api-access.png)
+
+### <a name="set-up-azure-ad-b2c-vs-code-extension"></a>Azure AD B2C VS Code 拡張機能のセットアップ
+
+Azure Application insights API の ID と キーが作成されたため、ログを読み取るように VS Code 拡張機能を構成できます。 Azure AD B2C VS Code 拡張機能には、次の 2 つの設定のスコープがあります。
+
+- **ユーザー グローバル設定** - 開いた VS Code の任意のインスタンスにグローバルに適用される設定。
+- **ワークスペースの設定** - ワークスペース内に格納されている設定。ワークスペースが開かれている場合にのみ適用されます (VS Code を使用して **フォルダーを開きます**)。
+
+1. **Azure AD B2C Trace** エクスプローラーで、 **[設定]** アイコンをクリックします。
+
+    ![Application Insights の設定の選択を示すスクリーンショット。](./media/troubleshoot-with-application-insights/app-insights-settings.png)
+
+1. Azure Application Insights の **ID** と **キー** を指定します。
+1. **[保存]**
+
+設定を保存すると、Application Insights のログが **[Azure AD B2C トレース (App Insights)]** ウィンドウに表示されます。
+
+![VSCode 用の Azure AD B2C 拡張機能のスクリーンショット。Azure Application Insights のトレースを示しています。](./media/troubleshoot-with-application-insights/vscode-extension-application-insights-trace.png)
+
 
 ## <a name="configure-application-insights-in-production"></a>運用環境で Application Insights を構成する
 
@@ -128,12 +187,8 @@ Application Insights で新しいログが確認できるようになるまで�
    
 1. ポリシーをアップロードしてテストします。
 
+
+
 ## <a name="next-steps"></a>次の手順
 
-ID 開発者を支援するためのユーザー体験ビューアーがコミュニティによって開発されています。 このビューアーは、Application Insights インスタンスからデータを読み取り、ユーザー体験イベントの適切に構造化された表示を提供します。 ソース コードを入手し、独自のソリューションでデプロイできます。
-
-ユーザー体験プレーヤーは Microsoft によってサポートされておらず、厳密に現状のまま利用可能です。
-
-Application Insights からイベントを読み取るビューアーのバージョンは、GitHub の次の場所にあります。
-
-[Azure-Samples/active-directory-b2c-advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
+- [Azure AD B2C カスタム ポリシーのトラブルシューティング](troubleshoot-custom-policies.md)を行う方法について確認してください。

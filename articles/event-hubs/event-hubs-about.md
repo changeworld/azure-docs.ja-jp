@@ -3,12 +3,12 @@ title: Azure Event Hubs とは - ビッグ データ インジェスト サー�
 description: 1 秒間に百万単位のイベントを取り込むビッグ データ ストリーミング サービスである Azure Event Hubs について説明します。
 ms.topic: overview
 ms.date: 01/13/2021
-ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 35e89f60e93ec759d852641653ad138d7672cc37
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98195766"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303051"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs - ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービス
 Azure Event Hubs は、ビッグ データのストリーミング プラットフォームとなるイベント インジェスト サービスです。 1 秒間に何百万ものイベントを受信して処理することができます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。
@@ -92,4 +92,4 @@ Event Hubs を使い始めるには、以下の **イベントの送受信** の
 Event Hubs の詳細については、次の記事を参照してください。
 
 - [Event Hubs の機能の概要](event-hubs-features.md)
-- [よく寄せられる質問](event-hubs-faq.md)
+- [よく寄せられる質問](event-hubs-faq.yml)

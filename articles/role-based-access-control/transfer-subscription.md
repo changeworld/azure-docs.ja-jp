@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2020
+ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555908"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580123"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -74,15 +74,15 @@ ms.locfileid: "100555908"
 | システム割り当てのマネージド ID | はい | はい | [マネージド ID を一覧表示する](#list-role-assignments-for-managed-identities) | マネージド ID を無効にして、再度有効にする必要があります。 ロールの割り当てを再作成する必要があります。 |
 | ユーザー割り当て済みマネージド ID | はい | はい | [マネージド ID を一覧表示する](#list-role-assignments-for-managed-identities) | マネージド ID を削除して再作成し、適切なリソースにアタッチする必要があります。 ロールの割り当てを再作成する必要があります。 |
 | Azure Key Vault | はい | はい | [Key Vault アクセス ポリシーを一覧表示する](#list-key-vaults) | キー コンテナーに関連付けられているテナント ID を更新する必要があります。 アクセス ポリシーを削除して、新しく追加する必要があります。 |
-| Azure AD 認証が統合された Azure SQL データベース | はい | いいえ | [Azure SQL データベースと Azure AD 認証を確認する](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure AD 認証が統合された Azure SQL データベース | はい | いいえ | [Azure SQL データベースと Azure AD 認証を確認する](#list-azure-sql-databases-with-azure-ad-authentication) | Azure AD 認証が有効になっている Azure SQL データベースを別のディレクトリに転送することはできません。 詳細については、「[Azure Active Directory 認証を使用する](../azure-sql/database/authentication-aad-overview.md)」を参照してください。 | 
 | Azure Storage と Azure Data Lake Storage Gen2 | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure Data Lake Storage Gen1 | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure Files | はい | はい |  | すべての ACL を再作成する必要があります。 |
-| Azure File Sync | はい | はい |  |  |
+| Azure File Sync | はい | はい |  | ストレージ同期サービスやストレージ アカウントは、別のディレクトリに移動できます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](../storage/files/storage-files-faq.md#azure-file-sync)」を参照してください。 |
 | Azure Managed Disks | はい | はい |  |  ディスク暗号化セットを使用して、カスタマー マネージド キーで Managed Disks を暗号化する場合は、ディスク暗号化セットに関連付けられているシステム割り当て ID を無効にしてから、再度有効にする必要があります。 また、ロールの割り当てを再作成する必要があります。つまり、Key Vault 内にあるディスク暗号化セットに対し、必要なアクセス許可を再度付与します。 |
-| Azure Kubernetes Service | はい | はい |  |  |
+| Azure Kubernetes Service | はい | いいえ |  | AKS クラスターとそれに関連付けられているリソースを別のディレクトリに転送することはできません。 詳細については、「[Azure Kubernetes Service (AKS) についてよく寄せられる質問](../aks/faq.md)」を参照してください。 |
 | Azure Policy | はい | いいえ | カスタム定義、割り当て、除外、コンプライアンス データなど、すべての Azure Policy オブジェクト。 | 定義を[エクスポート](../governance/policy/how-to/export-resources.md)、インポート、および再割り当てする必要があります。 次に、新しいポリシー割り当てと、必要な[ポリシーの除外](../governance/policy/concepts/exemption-structure.md)を作成します。 |
-| Azure Active Directory Domain Services | はい | いいえ |  |  |
+| Azure Active Directory Domain Services | はい | いいえ |  | Azure AD Domain Services の管理対象ドメインを別のディレクトリに転送することはできません。 詳細については、「[Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)](../active-directory-domain-services/faqs.md)」を参照してください。 |
 | アプリの登録 | はい | はい |  |  |
 
 > [!WARNING]

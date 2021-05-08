@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL ワークロード ブループリント サンプル�
 description: ブループリント アーティファクト パラメーターの詳細を含む ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのデプロイ手順。
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 60867c117c9f1fda6f8ba33333c19a7bd764d219
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627485"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669646"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルをデプロイする
 
@@ -133,7 +133,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Azure SQL Database のリソース グループ|Resource group|名前|**[ロック済み]** - **組織名** と `-workload-azsql-rg` を連結して、リソース グループを一意にします。|
 |Azure SQL Database のリソース グループ|Resource group|場所|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者ユーザー名|Azure SQL Server のユーザー名。 **キー コンテナー テンプレート** 内の同じプロパティの値に一致する必要があります。 既定値は _sql-admin-user_ です。|
-|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (キー コンテナー リソース ID)|キー コンテナーのリソース ID。 "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
+|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (キー コンテナー リソース ID)|キー コンテナーのリソース ID。 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" を使用し、`{subscriptionId}` を自分のサブスクリプション ID に置き換え、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (キー コンテナー シークレット名)|SQL Server 管理者のユーザー名。 **[キー コンテナー テンプレート]** のプロパティ **[Azure SQL Server 管理者ユーザー名]** の値に一致する必要があります。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|AAD 管理者オブジェクト ID|Active Directory 管理者として割り当てられたユーザーの AAD オブジェクト ID。既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[オブジェクト ID]_ の横にある [クリックしてコピー] アイコンを選択します。|

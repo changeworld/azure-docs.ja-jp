@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea9662b6f5890c6240e91b26cf641d6166d560a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f9dcbb12f48a98a35013a80f986b67f75118d74c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051193"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060256"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
@@ -30,7 +30,7 @@ ms.locfileid: "102051193"
 - すべてのアプリケーションに対する Azure AD での構成を管理するためのアクセス権を付与する、[組み込みの管理ロールを割り当てる](#assign-built-in-application-admin-roles)。 これは、IT エキスパートに、幅広いアプリケーション構成を管理するためのアクセス権を付与しつつ、アプリケーション構成に関連しない Azure AD の他の部分を管理するためのアクセス権を付与しないようにするための推奨される方法です。
 - 非常に限定されたアクセス許可を定義する[カスタム ロールを作成](#create-and-assign-a-custom-role-preview)し、それを一部のユーザーに、限定された所有者として 1 つのアプリケーションのスコープに対して割り当てるか、または制限付き管理者としてディレクトリ スコープ (すべてのアプリケーション) で割り当てます。
 
-上記の方法のいずれかを使用してアクセス権を付与することを検討することは、2 つの理由から重要です。 まず、管理タスクを実行する機能を委任することで、グローバル管理者のオーバーヘッドを減らすことができます。 2 番目の理由として、制限付きアクセス許可を使用することでセキュリティ体制が改善され、未承認アクセスの可能性が減少します。 委任に関する問題と一般的なガイドラインについては、「[Azure Active Directory での管理の委任](concept-delegation.md)」をご覧ください。
+上記の方法のいずれかを使用してアクセス権を付与することを検討することは、2 つの理由から重要です。 まず、管理タスクを実行する機能を委任することで、グローバル管理者のオーバーヘッドを減らすことができます。 2 番目の理由として、制限付きアクセス許可を使用することでセキュリティ体制が改善され、未承認アクセスの可能性が減少します。 ロール セキュリティの計画のガイドラインについては、「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](security-planning.md)」を参照してください。
 
 ## <a name="restrict-who-can-create-applications"></a>アプリケーションを作成できるユーザーを制限する
 

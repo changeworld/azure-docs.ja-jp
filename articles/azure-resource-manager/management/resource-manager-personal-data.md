@@ -3,12 +3,12 @@ title: 個人データ
 description: Azure Resource Manager の操作に関連する個人データを管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 1e531f7cd9992536bcc191637111761c5bbdefa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9087d3e46f38aab3de7774ea341ebd9cbc2d7d1f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97693703"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785957"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Azure Resource Manager に関連する個人データを管理する
 
@@ -42,13 +42,13 @@ ms.locfileid: "97693703"
 
 * [一覧](/rest/api/resources/resourcegroups/list)
 * [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup)
-* [az group list](/cli/azure/group#az-group-list)
+* [az group list](/cli/azure/group#az_group_list)
 
 **リソース グループ** を削除するには、以下のコマンドを使用します。
 
 * [削除](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzResourceGroup](/powershell/module/az.resources/Remove-AzResourceGroup)
-* [az group delete](/cli/azure/group#az-group-delete)
+* [az group delete](/cli/azure/group#az_group_delete)
 
 ## <a name="delete-personal-data-in-tags"></a>タグ内の個人データを削除する
 
@@ -58,13 +58,13 @@ ms.locfileid: "97693703"
 
 * [一覧](/rest/api/resources/tags/list)
 * [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
-* [az tag list](/cli/azure/tag#az-tag-list)
+* [az tag list](/cli/azure/tag#az_tag_list)
 
 **タグ** を削除するには、以下のコマンドを使用します。
 
 * [削除](/rest/api/resources/tags/delete)
 * [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
-* [az tag delete](/cli/azure/tag#az-tag-delete)
+* [az tag delete](/cli/azure/tag#az_tag_delete)
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Resource Manager の概要については、「[Azure Resource Manager の概要](overview.md)」を参照してください。

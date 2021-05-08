@@ -2,19 +2,21 @@
 title: Bicep ファイルを作成する - Visual Studio Code
 description: Visual Studio Code と Bicep 拡張機能を使用して、Azure リソースをデプロイするための Bicepファイルを作成します
 author: mumian
-ms.date: 03/02/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a5b5533cd87c417d03db960c477392c24fa59f8a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504152"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306468"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する
 
 Visual Studio Code の Bicep 拡張機能によって、言語サポートとリソース オートコンプリートが提供されます。 これらのツールは、[Bicep](./bicep-overview.md) ファイルの作成と検証を行うときに役立ちます。 このクイックスタートでは、拡張機能を使用して Bicep ファイルを一から作成します。 作業中に、この拡張機能の検証や入力候補などの機能を使用します。
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 このクイックスタートを完了するには、[Visual Studio Code](https://code.visualstudio.com/) と、[Bicep 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)のインストールが必要です。 さらに、最新の [Azure CLI](/cli/azure/) または最新の [Azure PowerShell モジュール](/powershell/azure/new-azureps-module-az)のどちらかがインストールされ、認証されている必要があります。
 
@@ -49,6 +51,10 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 - **シンボリック名** (stg): シンボリック名は、bicep ファイルを通してリソースを参照するための識別子です。 これは、デプロイされるときに付けられるリソースの名前ではありません。 リソースの名前は、**name** プロパティによって定義されます。  この一覧の 4 番目のコンポーネントを参照してください。
 - **リソースの種類** (Microsoft.Storage/storageAccounts@2019-06-01): リソース プロバイダー (Microsoft.Storage)、リソースの種類 (storageAccounts)、および apiVersion (2019-06-01) で構成されます。 リソース プロバイダーからは、それぞれ独自の API バージョンが公開されているため、これはその種類に固有の値となります。 [ARM テンプレート リファレンス](/azure/templates/)で、さまざまな Azure リソースの種類と apiVersion を 見つけることができます。
 - **プロパティ** (= {...} 内のすべて): リソースの種類のプロパティを指定します。 すべてのリソースに、`name` プロパティがあります。 ほとんどのリソースには、リソースのデプロイ先リージョンを設定する `location` プロパティがあります。 その他のプロパティは、リソースの種類と API バージョンにより異なります。
+
+詳細については、「[Bicep の構造](./bicep-file.md)」を参照してください。
+
+name プロパティにはコメントがあります。  単一行のコメントには `//` を、複数行のコメントには `/* ... */` を使用します
 
 ## <a name="completion-and-validation"></a>入力候補と検証
 

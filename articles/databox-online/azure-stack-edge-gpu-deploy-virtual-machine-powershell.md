@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 28988af0c1b3b5e4e5ce359abb617a66af816d69
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90925f30e84ec3c06e715669ebd982c823dfaf5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439818"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568326"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする
 
@@ -127,7 +127,7 @@ New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resou
 ```
 
 > [!NOTE]
-> Azure Resource Manager を使用して、ローカル冗長ストレージ (Standard または Premium) などのローカル ストレージ アカウントのみを作成できます。 階層化ストレージ アカウントを作成するには、[GPU が搭載された Azure Stack Edge Pro でストレージ アカウントを使用してデータを転送する方法に関するチュートリアル](azure-stack-edge-j-series-deploy-add-storage-accounts.md)を参照してください。
+> Azure Resource Manager を使用して、ローカル冗長ストレージ (Standard または Premium) などのローカル ストレージ アカウントのみを作成できます。 階層化ストレージ アカウントを作成するには、[GPU が搭載された Azure Stack Edge Pro でストレージ アカウントを使用してデータを転送する方法に関するチュートリアル](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)を参照してください。
 
 出力例を次に示します。
 
@@ -179,7 +179,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-the-blob-uri-to-the-host-file"></a>BLOB URI をホスト ファイルに追加する
 
-Azure Blob Storage への接続に使用しているクライアントの BLOB URI は、既にホスト ファイルに追加しています ([Azure PowerShell を使用した Azure Stack Edge デバイスへの VM のデプロイ](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)に関するページの「手順 5: エンドポイントの名前解決のためのホスト ファイルを変更する」)。 このエントリは、BLOB URI を追加するために使用されました。
+Azure Blob Storage への接続に使用しているクライアントの BLOB URI は、既にホスト ファイルに追加しています ([Azure PowerShell を使用した Azure Stack Edge デバイスへの VM のデプロイ](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)に関するページの「手順 5: エンドポイントの名前解決のためのホスト ファイルを変更する」)。 このエントリは、BLOB URI を追加するために使用されました。
 
 \<Azure consistent network services VIP \> \<storage name\>.blob.\<appliance name\>.\<dnsdomain\>
 

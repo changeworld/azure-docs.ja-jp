@@ -10,13 +10,13 @@ author: saachigopal
 ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 440723167ded15933ba46a3a58f9a873496bd6a7
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: f621bb2a7d4543620d22ab85fb8b44752c9989ac
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609364"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376258"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 
@@ -72,7 +72,7 @@ Azure Machine Learning を使用してトレーニング済みモデルをデプ
 Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
 * Ubuntu 16.04 以上
 * Conda 4.5.# 以上
-* Python 3.5 以降
+* Python 3.6 以上
 
 データセットを使用するには、libfuse-dev パッケージをインストールしてください。 また、必要になる可能性のあるユーザー スペース パッケージも必ずインストールしてください。
 

@@ -7,12 +7,12 @@ ms.subservice: dedicated-hosts
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: 9d4117cafd665556fb60278aa4dc60dc14a27ada
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: adc09bf2572be563ff52cf9fa3d0dea51263d032
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101670521"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774415"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI を使用して専用ホストにデプロイする
  
@@ -54,7 +54,7 @@ az vm list-skus -l eastus2  -r hostGroups/hosts  -o table
 可用性ゾーンと障害ドメインの両方を使用することもできます。 
 
 
-この例では、[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) を使用し、可用性ゾーンと障害ドメインの両方を使用してホスト グループを作成します。 
+この例では、[az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) を使用し、可用性ゾーンと障害ドメインの両方を使用してホスト グループを作成します。 
 
 ```azurecli-interactive
 az vm host group create \
@@ -69,7 +69,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>その他の例
 
-[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) を使用して、可用性ゾーン 1 (障害ドメインなし) にホスト グループを作成することもでいます。
+[az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) を使用して、可用性ゾーン 1 (障害ドメインなし) にホスト グループを作成することもでいます。
 
 ```azurecli-interactive
 az vm host group create \
@@ -79,7 +79,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-以下では、[az vm host group create](/cli/azure/vm/host/group#az-vm-host-group-create) を使用し、障害ドメインのみを使用してホスト グループを作成します (可用性ゾーンがサポートされていないリージョンで使用する場合)。 
+以下では、[az vm host group create](/cli/azure/vm/host/group#az_vm_host_group_create) を使用し、障害ドメインのみを使用してホスト グループを作成します (可用性ゾーンがサポートされていないリージョンで使用する場合)。 
 
 ```azurecli-interactive
 az vm host group create \
@@ -94,7 +94,7 @@ az vm host group create \
 
 ホスト SKU の詳細と価格については、「[Azure 専用ホストの価格](https://aka.ms/ADHPricing)」を参照してください。
 
-[az vm host create](/cli/azure/vm/host#az-vm-host-create) を使用してホストを作成します。 ホスト グループの障害ドメイン数を設定した場合は、ホストの障害ドメインを指定するように求められます。  
+[az vm host create](/cli/azure/vm/host#az_vm_host_create) を使用してホストを作成します。 ホスト グループの障害ドメイン数を設定した場合は、ホストの障害ドメインを指定するように求められます。  
 
 ```azurecli-interactive
 az vm host create \
@@ -108,7 +108,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成 
-[az vm create](/cli/azure/vm#az-vm-create) を使用して、専用ホスト内に仮想マシンを作成します。 ホスト グループを作成するときに可用性ゾーンを指定した場合は、仮想マシンを作成するときに同じゾーンを使用する必要があります。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して、専用ホスト内に仮想マシンを作成します。 ホスト グループを作成するときに可用性ゾーンを指定した場合は、仮想マシンを作成するときに同じゾーンを使用する必要があります。
 
 ```azurecli-interactive
 az vm create \
@@ -149,7 +149,7 @@ az vmss create \
 
 ## <a name="check-the-status-of-the-host"></a>ホストの状態を確認する
 
-[az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) を使用して、ホストの正常性状態と、ホストにデプロイできる仮想マシンの数を確認できます。
+[az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view) を使用して、ホストの正常性状態と、ホストにデプロイできる仮想マシンの数を確認できます。
 
 ```azurecli-interactive
 az vm host get-instance-view \
@@ -256,7 +256,7 @@ az vm host get-instance-view \
 ```
  
 ## <a name="export-as-a-template"></a>テンプレートとしてのエクスポート 
-同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合は、テンプレートをエクスポートできます。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 JSON テンプレートを手動で構築できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group#az-group-export) を使って、リソース グループをエクスポートします。
+同じパラメーターを使用して追加の開発環境を作成する場合や、開発環境に合った運用環境を作成する場合は、テンプレートをエクスポートできます。 リソース マネージャーでは、環境に合ったすべてのパラメーターを定義する JSON テンプレートを使用します。 この JSON テンプレートを参照することで全体の環境を構築します。 JSON テンプレートを手動で構築できます。または、既存の環境をエクスポートして JSON テンプレートを作成することもできます。 [az group export](/cli/azure/group#az_group_export) を使って、リソース グループをエクスポートします。
 
 ```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
@@ -277,19 +277,19 @@ az deployment group create \
 
 仮想マシンがデプロイされていない場合でも、専用ホストに対して課金されます。 コストを節約するには、現在使用していないすべてのホストを削除する必要があります。  
 
-ホストを削除できるのは、それを使用している仮想マシンがなくなった場合のみです。 [az vm delete](/cli/azure/vm#az-vm-delete) を使用して VM を削除します。
+ホストを削除できるのは、それを使用している仮想マシンがなくなった場合のみです。 [az vm delete](/cli/azure/vm#az_vm_delete) を使用して VM を削除します。
 
 ```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-VM を削除した後、[az vm host delete](/cli/azure/vm/host#az-vm-host-delete) を使用してホストを削除できます。
+VM を削除した後、[az vm host delete](/cli/azure/vm/host#az_vm_host_delete) を使用してホストを削除できます。
 
 ```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-すべてのホストを削除したら、[az vm host group delete](/cli/azure/vm/host/group#az-vm-host-group-delete) を使用してホスト グループを削除できます。  
+すべてのホストを削除したら、[az vm host group delete](/cli/azure/vm/host/group#az_vm_host_group_delete) を使用してホスト グループを削除できます。  
  
 ```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  

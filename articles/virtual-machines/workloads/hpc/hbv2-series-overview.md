@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674643"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721162"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 シリーズの仮想マシンの概要 
 
@@ -53,14 +53,16 @@ VM 自体に、pNUMA 0 と 16 が予約されているという認識はあり�
 |-----------------------------|-----------------------------------------------------------|
 | 最大 MPI ジョブ サイズ            | 36000 コア (1 つの仮想マシン スケール セットに 300 の VM、singlePlacementGroup=true) |
 | MPI のサポート                 | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH、Platform MPI  |
-| その他のフレームワーク       | Unified Communication X、libfabric、PGAS                  |
-| Azure Storage のサポート       | Standard および Premium ディスク (最大 8 ディスク)              |
-| SRIOV RDMA の OS サポート   | CentOS/RHEL 7.6 以降、SLES 12 SP4 以降、WinServer 2016 以降           |
-| Orchestrator のサポート        | CycleCloud、Batch                                         | 
+| その他のフレームワーク       | UCX、libfabric、PGAS |
+| Azure Storage のサポート       | Standard および Premium ディスク (最大 8 ディスク) |
+| SRIOV RDMA の OS サポート   | CentOS/RHEL 7.6 以降、Ubuntu 16.04 以降、SLES 12 SP4 以降、WinServer 2016 以降  |
+| Orchestrator のサポート        | CycleCloud、Batch、AKS。[クラスター構成オプション](../../sizes-hpc.md#cluster-configuration-options)  |
 
+> [!NOTE] 
+> Windows Server 2012 R2 は、64 個を超える (仮想または物理) コアを備えた HBv2 およびその他の VM ではサポートされていません。 詳細については、[こちら](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [AMD EPYC アーキテクチャ](https://bit.ly/2Epv3kC)および[マルチチップ アーキテクチャ](https://bit.ly/2GpQIMb)の詳細を確認します。 詳細については、[AMD EPYC プロセッサ向けの HPC チューニング ガイド](https://bit.ly/2T3AWZ9)を参照してください。
-- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC のいくつかの例について参照します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

@@ -10,10 +10,10 @@ ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
 ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104801929"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure Virtual Machines のトラステッド起動 (プレビュー)
@@ -123,7 +123,7 @@ VM でトラステッド起動が適切に設定されている場合、Azure De
 
 ### <a name="why-should-i-use-trusted-launch-what-does-trusted-launch-guard-against"></a>なぜトラステッド起動を使用する必要があるのですか? トラステッド起動によって何から保護されるのですか?
 
-トラステッド起動により、ブート キット、ルートキット、カーネルレベルのマルウェから保護されます。 これらの高度な種類のマルウェアはカーネル モードで動作し、ユーザーからは見えない状態のままです。 次に例を示します。
+トラステッド起動により、ブート キット、ルートキット、カーネルレベルのマルウェアから保護されます。 これらの高度な種類のマルウェアはカーネル モードで動作し、ユーザーからは見えない状態のままです。 次に例を示します。
 - ファームウェア ルートキット: これらのキットによって仮想マシンの BIOS のファームウェアが上書きされ、OS より前にルートキットが起動できるようになります。 
 - ブート キット: これらのキットによって OS のブートローダーが置き換えられて、仮想マシンにより OS より前にブート キットが読み込まれます。
 - カーネル ルートキット: これらのキットによって OS カーネルの一部が置き換えられ、OS の読み込み時にルートキットが自動的に開始できるようになります。

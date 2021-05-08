@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b870a0325646b01ae3a72bdd28d3ae33cba45b09
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 64a93cfea9d470ba45e59a56d4855e374f7fb704
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733127"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559929"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS 用の Azure セキュリティ ベースライン
 
@@ -34,7 +34,7 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 **責任**: Customer
 
@@ -52,9 +52,9 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **責任**: Customer
 
@@ -68,9 +68,9 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **責任**: Customer
 
@@ -86,7 +86,7 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -102,11 +102,11 @@ Azure Monitor を介してログを取り込み、エンドポイント デバ�
 
 Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン レベルとレコード セット レベルの Azure RBAC が存在します。 独自のカスタム Azure ロールを作成して、さらにきめ細かくリソースを制御することもできます。 プライベート DNS ゾーン リソースでは、異なるロール名、プライベート DNS ゾーン共同作成者が使用されていることに注意してください。
 
-- [PowerShell を使用して Azure Active Directory (Azure AD) でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure Active Directory (Azure AD) でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Azure DNS での Azure RBAC について](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Azure DNS での Azure RBAC について](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **責任**: Customer
 
@@ -131,7 +131,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 また、Azure Active Directory (Azure AD) Privileged Identity Management および Azure Resource Manager を使用して、管理者アカウントへの Just-In-Time アクセスを有効にすることもできます。
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 - [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -191,7 +191,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 ### <a name="38-manage-azure-resources-only-from-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: Azure Active Directory (Azure AD) のネームド ロケーションを使用して、IP アドレス範囲または国、リージョンの特定の論理グループからのアクセスのみを許可します。
+**ガイダンス**: Azure Active Directory (Azure AD) のネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。
 
 - [Azure AD のネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
@@ -213,7 +213,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -227,7 +227,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **責任**: Customer
 
@@ -271,7 +271,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 - [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
-- [Azure DNS での Azure RBAC について](https://docs.microsoft.com/azure/dns/dns-protect-zones-recordsets#azure-role-based-access-control)
+- [Azure DNS での Azure RBAC について](./dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [Azure プライベート DNS での Azure RBAC について](dns-protect-private-zones-recordsets.md)
 
@@ -283,7 +283,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 **ガイダンス**: Azure DNS およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -301,7 +301,7 @@ Azure DNS には、DNS ゾーンの共同作成者ロール、およびゾーン
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -368,7 +368,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -392,7 +392,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Policy を使用して、Azure DNS の標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -422,9 +422,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:カスタム Azure ポリシー定義を使用している場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **責任**: Customer
 
@@ -566,5 +566,5 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

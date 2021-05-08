@@ -2,21 +2,21 @@
 title: Service Fabric クラスターでの混乱の誘発
 description: フォールト挿入とクラスター分析サービス API を使用して、クラスター内の混乱を管理します。
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 759e2d1c8d2a326583625fbbbcadb4f4fa950510
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732433"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。
 
 [フォールト挿入とクラスター分析サービス](./service-fabric-testability-overview.md) (別名 Fault Analysis Service) によって、開発者が、障害アクションを誘発してサービスをテストできます。 [パーティションの再起動](/powershell/module/servicefabric/start-servicefabricpartitionrestart)などのこれらのシミュレーション対象のエラーは、最も一般的な状態遷移の練習に役立ちます。 ただし、シミュレートされた対象のエラーは、定義でバイアスがかけられ、そのため予測が難しい、長くて複雑な状態のシーケンスでのみ発生し、バグに記録されない場合があります。 バイアスをかけないテストのために、混乱を使用することができます。
 
-混乱により、長時間にわたり、クラスター全体で、交互に配置された (グレースフルと非グレースフル) 定期的な障害がシミュレートされます。 グレースフル障害は、一連の Service Fabric API の呼び出しで構成されます。たとえば、レプリカの再起動障害は、レプリカを閉じる操作に続いて開く操作が発生するため、グレースフル障害です。 レプリカの削除、プライマリ レプリカの移動、およびセカンダリ レプリカの移動は、混乱によって実行されるその他のグレースフル障害です。 非グレースフル障害はプロセスの終了であり、ノードの再起動やコード パッケージの再起動などがあります。 
+混乱により、長時間にわたり、クラスター全体で、交互に配置された (グレースフルと非グレースフル) 定期的な障害がシミュレートされます。 グレースフル障害は、一連の Service Fabric API の呼び出しで構成されます。たとえば、レプリカの再起動障害は、レプリカを閉じる操作に続いて開く操作が発生するため、グレースフル障害です。 レプリカの削除、プライマリ レプリカの移動、セカンダリ レプリカの移動、インスタンスの移動は、Chaos により発生するその他のグレースフル障害です。 非グレースフル障害はプロセスの終了であり、ノードの再起動やコード パッケージの再起動などがあります。
 
 障害の発生率と種類を指定して混乱を構成したら、C#、Powershell、または REST API を使用して混乱を開始し、クラスターとサービスでの障害の生成を開始できます。 指定した時間 (たとえば 1 時間) だけ実行されるように混乱を構成し、その後で自動的に混乱を停止できます。または、いつでも StopChaos API (C#、Powershell、または REST) を呼び出して混乱を停止できます。
 
@@ -37,6 +37,7 @@ ms.locfileid: "101720512"
 * レプリカの再起動
 * プライマリ レプリカの移動 (構成可能)
 * セカンダリ レプリカの移動 (構成可能)
+* インスタンスの移動
 
 混乱は複数回にわたり反復して実行されます。 それぞれの反復が、一定の期間にわたる障害とクラスター検証で構成されています。 クラスターが安定し、検証が成功するまでの時間を設定できます。 クラスター検証で 1 つの障害が見つかると、混乱により、ValidationFailedEvent が UTC タイムスタンプと障害の詳細と共に生成され、保持されます。 たとえば、1 時間実行して、最大 3 つの障害が同時に発生するように設定された混乱のインスタンスを考えてみます。 混乱では 3 つの障害が誘発されてから、クラスターの正常性が検証されます。 混乱は StopChaosAsync API によって明示的に停止されるまで、または 1 時間が経過するまで、前述の手順で反復処理されます。 反復処理中にクラスターの状態が異常になる (安定しなくなるか、渡された MaxClusterStabilizationTimeout 時間内に正常な状態にならなくなる) と、混乱は ValidationFailedEvent を生成します。 このイベントは、問題が発生しており詳細な調査が必要であることを示します。
 
@@ -56,14 +57,14 @@ ms.locfileid: "101720512"
 > *MaxConcurrentFaults* の値がどれだけ大きいかに関係なく、混乱では、外部障害が存在しない場合、クォーラム損失またはデータ損失は発生しません。
 >
 
-* **EnableMoveReplicaFaults**:プライマリ レプリカまたはセカンダリ レプリカの移動を発生させる障害を有効または無効にします。 これらの障害は、既定で有効になっています。
+* **EnableMoveReplicaFaults**: プライマリ レプリカ、セカンダリ レプリカ、またはインスタンスの移動の原因となる障害を有効または無効にします。 これらの障害は、既定で有効になっています。
 * **WaitTimeBetweenIterations**:反復の間の待機時間。 つまり、一巡の障害を実行し、クラスターの正常性の対応する検証を完了した後に混乱が一時停止する時間の長さ。 値が大きいほど、平均障害挿入率は低くなります。
 * **WaitTimeBetweenFaults**:1 つの反復における 2 つの連続する障害間の待機時間。 値が大きいほど、障害のコンカレンシー (または重複) が少なくなります。
 * **ClusterHealthPolicy**:クラスターの正常性ポリシーは、混乱の反復の間にクラスターの正常性の検証に使用されます。 クラスターの正常性に問題がある場合または障害の実行中に予期しない例外が発生した場合は、混乱は、クラスターが回復する時間を提供するために、次の正常性チェックの前に 30 分間待機します。
 * **コンテキスト**:(文字列, 文字列) 型のキーと値のペアのコレクション。 マップを使用して、混乱の実行に関する情報を記録できます。 このようなペアが 100 を超えることはできませんし、各文字列 (キーまたは値) の最大は 4095 文字です。 このマップは、オプションで特定の実行に関するコンテキストを格納するために、混乱実行を開始するユーザーによって設定されます。
 * **ChaosTargetFilter**:このフィルターを使用して、混乱による障害のターゲットを特定のノードの種類またはアプリケーション インスタンスに限定することができます。 ChaosTargetFilter が使用されない場合、混乱による障害のターゲットはすべてのクラスターのエンティティになります。 ChaosTargetFilter が使用された場合、ChaosTargetFilter の指定に合致するエンティティのみに、混乱による障害が発生します。 NodeTypeInclusionList と ApplicationInclusionList では、和集合セマンティクスのみが可能です。 つまり、NodeTypeInclusionList と ApplicationInclusionList の積集合を指定することはできません。 たとえば、"アプリケーションが特定のノードの種類上にある場合のみ障害を発生させる" と指定することはできません。 エンティティが NodeTypeInclusionList または ApplicationInclusionList のどちらかに含まれている時点で、ChaosTargetFilter を使用してエンティティを除外することはできません。 applicationX が ApplicationInclusionList に含まれていない場合でも、そのアプリケーションが NodeTypeInclusionList に含まれている nodeTypeY のノード上にあるという理由で、何らかの混乱の反復処理中にそのアプリケーションで障害が発生する可能性があります。 NodeTypeInclusionList と ApplicationInclusionList の両方が null または空の場合は、ArgumentException がスローされます。
-    * **NodeTypeInclusionList**:混乱による障害のターゲットとなるノードの種類の一覧。 すべての種類の障害 (ノードの再起動、コード パッケージの再起動、レプリカの削除、レプリカの再起動、プライマリの移動、およびセカンダリの移動) は、指定されたノードの種類のノードで有効になります。 ノードの種類 (たとえば NodeTypeX) が NodeTypeInclusionList に含まれていない場合、ノード レベルの障害 (ノードの再起動など) が NodeTypeX のノードで有効になることはありませんが、ApplicationInclusionList 内のアプリケーションが NodeTypeX のノードに存在する場合、コード パッケージ障害とレプリカ障害が NodeTypeX のノードで有効になる可能性があります。 この一覧には最大 100 種のノードの種類を含めることができ、この数を増やすには、MaxNumberOfNodeTypesInChaosTargetFilter 構成をアップグレードする必要があります。
-    * **ApplicationInclusionList**:混乱による障害のターゲットとなるアプリケーションの URI の一覧。 指定されたアプリケーションのサービスに属すすべてのレプリカは、混乱によって誘発されるレプリカ障害 (レプリカの再起動、レプリカの削除、プライマリの移動、およびセカンダリの移動) を受け入れます。 コード パッケージがこれらのアプリケーションのレプリカをホストしている場合のみ、混乱は、コード パッケージを再起動できます。 アプリケーションがこの一覧に含まれていない場合でも、NodeTypeInclusionList に含まれるノードの種類のノード上にアプリケーションが存在する場合は、混乱の反復処理によって障害が発生する可能性があります。 ただし、applicationX が配置制約によって nodeTypeY に関連付けられているときに、applicationX が ApplicationInclusionList になく、nodeTypeY が NodeTypeInclusionList にない場合、applicationX で障害が発生することはありません。 この一覧には最大 1,000 個のアプリケーションの名前を含めることができ、この数を増やすには、MaxNumberOfApplicationsInChaosTargetFilter 構成をアップグレードする必要があります。
+    * **NodeTypeInclusionList**:混乱による障害のターゲットとなるノードの種類の一覧。 すべての種類の障害 (ノードの再起動、コード パッケージの再起動、レプリカの削除、レプリカの再起動、プライマリの移動、セカンダリの移動、インスタンスの移動) は、これらのノードの種類のノードで有効になります。 ノードの種類 (たとえば NodeTypeX) が NodeTypeInclusionList に含まれていない場合、ノード レベルの障害 (ノードの再起動など) が NodeTypeX のノードで有効になることはありませんが、ApplicationInclusionList 内のアプリケーションが NodeTypeX のノードに存在する場合、コード パッケージ障害とレプリカ障害が NodeTypeX のノードで有効になる可能性があります。 この一覧には最大 100 種のノードの種類を含めることができ、この数を増やすには、MaxNumberOfNodeTypesInChaosTargetFilter 構成をアップグレードする必要があります。
+    * **ApplicationInclusionList**:混乱による障害のターゲットとなるアプリケーションの URI の一覧。 これらのアプリケーションのサービスに属するすべてのレプリカは、Chaos によるレプリカ障害 (レプリカの再起動、レプリカの削除、プライマリの移動、セカンダリの移動、インスタンスの移動) に従います。 コード パッケージがこれらのアプリケーションのレプリカをホストしている場合のみ、混乱は、コード パッケージを再起動できます。 アプリケーションがこの一覧に含まれていない場合でも、NodeTypeInclusionList に含まれるノードの種類のノード上にアプリケーションが存在する場合は、混乱の反復処理によって障害が発生する可能性があります。 ただし、applicationX が配置制約によって nodeTypeY に関連付けられているときに、applicationX が ApplicationInclusionList になく、nodeTypeY が NodeTypeInclusionList にない場合、applicationX で障害が発生することはありません。 この一覧には最大 1,000 個のアプリケーションの名前を含めることができ、この数を増やすには、MaxNumberOfApplicationsInChaosTargetFilter 構成をアップグレードする必要があります。
 
 ## <a name="how-to-run-chaos"></a>混乱を実行する方法
 
@@ -137,14 +138,15 @@ class Program
                 MaxPercentUnhealthyNodes = 100
             };
 
-            // All types of faults, restart node, restart code package, restart replica, move primary replica,
-            // and move secondary replica will happen for nodes of type 'FrontEndType'
+            // All types of faults, restart node, restart code package, restart replica, move primary
+            // replica, move secondary replica, and move instance will happen for nodes of type 'FrontEndType'
             var nodetypeInclusionList = new List<string> { "FrontEndType"};
 
             // In addition to the faults included by nodetypeInclusionList,
-            // restart code package, restart replica, move primary replica, move secondary replica faults will
-            // happen for 'fabric:/TestApp2' even if a replica or code package from 'fabric:/TestApp2' is residing
-            // on a node which is not of type included in nodeypeInclusionList.
+            // restart code package, restart replica, move primary replica, move secondary replica,
+            //  and move instance faults will happen for 'fabric:/TestApp2' even if a replica or code
+            // package from 'fabric:/TestApp2' is residing on a node which is not of type included
+            // in nodeypeInclusionList.
             var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
 
             // List of cluster entities to target for Chaos faults.

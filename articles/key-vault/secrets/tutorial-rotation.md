@@ -3,7 +3,6 @@ title: Azure Key Vault に格納された 1 セットの認証資格情報を使
 description: このチュートリアルでは、1 セットの認証資格情報を使用するリソースを対象に、シークレットのローテーションを自動化する方法について学習します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: rotation
 ms.service: key-vault
 ms.subservice: secrets
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e66be3b0e3ecae5caa1a76294cc8b8dc11a5f207
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99805232"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748666"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 

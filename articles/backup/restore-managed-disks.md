@@ -3,19 +3,14 @@ title: Azure マネージド ディスクを復元する
 description: Azure portal から Azure マネージド ディスクを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 995217cd17d1e2a16cd7a5f963ee88aa7116d4a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c57d60047a5bcef58c721ee25bd8a0b3ed523aa4
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101703751"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517200"
 ---
-# <a name="restore-azure-managed-disks-in-preview"></a>Azure マネージド ディスクを復元する (プレビュー段階)
-
->[!IMPORTANT]
->Azure ディスク バックアップは、サービス レベル アグリーメントのないプレビュー段階であるため、運用ワークロードにはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
->
->プレビューにサインアップするには、[このフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
+# <a name="restore-azure-managed-disks"></a>Azure マネージド ディスクを復元する
 
 この記事では、Azure Backup によって作成された復元ポイントから [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)を復元する方法について説明します。
 
@@ -133,4 +128,4 @@ ms.locfileid: "101703751"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure ディスク バックアップに関する FAQ](disk-backup-faq.md)
+- [Azure ディスク バックアップに関する FAQ](disk-backup-faq.yml)

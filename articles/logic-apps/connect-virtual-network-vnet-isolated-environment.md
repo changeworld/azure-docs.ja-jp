@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 12/18/2020
-ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/30/2021
+ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97739741"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219316"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -91,7 +91,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 
   [NSG セキュリティ規則](../virtual-network/network-security-groups-overview.md#security-rules)を設定する場合は、**TCP** プロトコルと **UDP** プロトコルの *両方* を使用するか、代わりに **[任意]** を選択する必要があります。そうしないと、プロトコルごとに個別のルールを作成する必要があります。 NSG セキュリティ規則では、これらのポートへのアクセスが必要な IP アドレスに対して開く必要があるポートが記述されています。 すべてのファイアウォール、ルーター、またはこれらのエンドポイント間に存在するその他の項目で、これらのポートがこれらの IP アドレスにアクセスできる状態になっていることも確認してください。
 
-* ファイアウォールを経由してインターネットへのトラフィックをリダイレクトする強制トンネリングを設定した場合は、[強制トンネリングの追加要件](#forced-tunneling)を確認してください。
+* ファイアウォールを経由してインターネットへのトラフィックをリダイレクトする強制トンネリングを設定した場合は、[強制トンネリングの要件](#forced-tunneling)を確認してください。
 
 <a name="network-ports-for-ise"></a>
 
@@ -108,9 +108,9 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの "*間*" を通過するために必要です。 <p><p>**重要**:トラフィックが各サブネット内の "*コンポーネント*" 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
 | 両方: <p>ロジック アプリへの通信 <p><p>ロジック アプリの実行履歴| 内部 ISE: <br>**VirtualNetwork** <p><p>外部 ISE:**インターネット** (または **メモ** を参照) | * | **VirtualNetwork** | 443 | **Internet** サービス タグを使用する代わりに、これらの項目に発信元 IP アドレスを指定できます。 <p><p>- ロジック アプリ内の任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービス <p>- ロジック アプリの実行履歴へのアクセス元となるコンピューターまたはサービス <p><p>**重要**:このポートを閉じるかブロックすると、要求トリガーまたは Webhook を持つロジック アプリへの呼び出しができなくなります。 また、実行履歴の各ステップの入力と出力にアクセスすることもできなくなります。 ただし、ロジック アプリの実行履歴にアクセスすることはできます。|
-| Logic Apps デザイナー - 動的プロパティ | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | 要求は、そのリージョンの Logic Apps アクセス エンドポイントの[受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から取得されます。 |
-| コネクタのデプロイ | **AzureConnectors** | * | **VirtualNetwork** | 454 | コネクタをデプロイおよび更新するために必要です。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
-| ネットワーク正常性チェック | **LogicApps** | * | **VirtualNetwork** | 454 | 要求は、そのリージョンの[受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)と[送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)に対して Logic Apps アクセス エンドポイントから送信されます。 |
+| Logic Apps デザイナー - 動的プロパティ | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | 要求は、そのリージョンの Logic Apps アクセス エンドポイントの[受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から取得されます。 <p><p>**重要**: Azure Government クラウドで作業している場合は、**LogicAppsManagement** サービス タグが機能しません。 代わりに、Azure Government 用の Logic Apps [受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#azure-government-inbound)を指定する必要があります。 |
+| ネットワーク正常性チェック | **LogicApps** | * | **VirtualNetwork** | 454 | 要求は、そのリージョンの[受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)と[送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)に対して Logic Apps アクセス エンドポイントから送信されます。 <p><p>**重要**: Azure Government クラウドで作業している場合は、**LogicApps** サービス タグが機能しません。 代わりに、Azure Government 用の Logic Apps [受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#azure-government-inbound)と[送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#azure-government-outbound)の両方を指定する必要があります。 |
+| コネクタのデプロイ | **AzureConnectors** | * | **VirtualNetwork** | 454 | コネクタをデプロイおよび更新するために必要です。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 <p><p>**重要**: Azure Government クラウドで作業している場合は、**AzureConnectors** サービス タグが機能しません。 代わりに、Azure Government 用の[マネージド コネクタ送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#azure-government-outbound)を指定する必要があります。 |
 | App Service の管理の依存関係 | **AppServiceManagement** | * | **VirtualNetwork** | 454、455 ||
 | Azure Traffic Manager からの通信 | **AzureTrafficManager** | * | **VirtualNetwork** | 内部 ISE:454 <p><p>外部 ISE:443 ||
 | 両方: <p>コネクタ ポリシーのデプロイ <p>API Management - 管理エンドポイント | **APIManagement** | * | **VirtualNetwork** | 3443 | コネクタ ポリシーのデプロイについては、コネクタをデプロイおよび更新するためにポート アクセスが必要です。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
@@ -221,7 +221,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
      > * 168.63.129.16/32
      > * 169.254.169.254/32
 
-   * 各サブネットには 32 個のアドレスが必要なため、アドレス空間で `/27` を使用する。 たとえば、2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。 アドレスが増加しても追加の利点はありません。 アドレス計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。
+   * 各サブネットには 32 個のアドレスが必要なため、アドレス空間で `/27` を使用する。 たとえば、2<sup>(32-27)</sup> は 2<sup>5</sup> (つまり 32) なので、`10.0.0.0/27` には 32 個のアドレスがあります。 アドレスを多くしても、追加の利点はありません。 アドレス計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。
 
    * [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクする必要があります。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/15/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2cb203a00bb00767126f95e1fdc2f5aff8990f01
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 1dd78ba3799573e05e4ebbf55887bae3d9674b7c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601281"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310081"
 ---
 イベント ハブでは、イベント ハブに送信されたイベントのシーケンスを 1 つまたは複数のパーティションにまとめて整理します。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 
 
@@ -32,7 +32,7 @@ Event Hubs の目的は、大量のイベントの処理を支援することで
 ### <a name="number-of-partitions"></a>パーティションの数
 パーティションの数は、作成時に 1 から 32 の間 (Event Hubs Standard の場合) で指定する必要があります。 Event Hubs Dedicated では、容量ユニットあたり最大 2,000 パーティションまで指定できます。 
 
-アプリケーションの負荷がピークに達している状態で[スループット ユニット (TU)](../articles/event-hubs/event-hubs-faq.md#what-are-event-hubs-throughput-units) の持続に必要となるであろう数以上のパーティションを、その特定のイベント ハブに選択することをお勧めします。 1 つのパーティションのスループット容量は 1 TU (1 MB の入力、2 MB の出力) として計算する必要があります。 パーティション数とは別にクラスターの容量ユニットまたは名前空間の TU をスケーリングすることができます。 名前空間の容量が 1 TU に設定されているとき、パーティションが 32 個のイベント ハブとパーティションが 1 個のイベント ハブで発生するコストはまったく同じです。 
+アプリケーションの負荷がピークに達している状態で[スループット ユニット (TU)](../articles/event-hubs/event-hubs-faq.yml#what-are-event-hubs-throughput-units-) の持続に必要となるであろう数以上のパーティションを、その特定のイベント ハブに選択することをお勧めします。 1 つのパーティションのスループット容量は 1 TU (1 MB の入力、2 MB の出力) として計算する必要があります。 パーティション数とは別にクラスターの容量ユニットまたは名前空間の TU をスケーリングすることができます。 名前空間の容量が 1 TU に設定されているとき、パーティションが 32 個のイベント ハブとパーティションが 1 個のイベント ハブで発生するコストはまったく同じです。 
 
 [専用の Event Hubs クラスター](../articles/event-hubs/event-hubs-dedicated-overview.md)内のイベント ハブのパーティション数は、イベント ハブの作成後に[増やす](../articles/event-hubs/dynamically-add-partitions.md)こともできますが、パーティションへのパーティション キーのマッピングが変わるので、パーティション全体に対するストリームの配分が変化します。そのため、アプリケーションの中でイベントの相対的な順序が重要な場合は、そのような変更は極力避けるようにしてください。
 

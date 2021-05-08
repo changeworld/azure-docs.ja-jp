@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery を使用した VMware/物理ディザスター リカバリーのスケーリング
 description: Azure Site Recovery を使用して多数のオンプレミスの VMware VM または物理サーバーの Azure へのディザスター リカバリーを設定する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: cc87429f269fba5083b87e2c328f0e21de9707ff
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 869702c9eaac4a38f6b0e64311c772892ddd6d90
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102454349"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580433"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM/物理サーバーの大規模なディザスター リカバリーを設定する
 

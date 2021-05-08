@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0265984c4ae83b8869071017e2fb571a7ff548c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508233"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027654"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -69,7 +69,7 @@ Azure Machine Learning Studio を使用して、少ない手順で新しいデ�
 データストアを作成したら、データを操作するためのデータセットを作成します。 データセットを使用すると、データを機械学習タスク (トレーニングなど) 用に遅延評価された使用可能なオブジェクトにパッケージ化できます。 [データセットの詳細情報](how-to-create-register-datasets.md).
 
 データセットには、FileDataset と TabularDataset の 2 種類があります。 
-[FileDatasets](how-to-create-register-datasets.md#filedataset) は、1 つまたは複数のファイルまたはパブリック URL への参照を作成します。 一方、[TabularDatasets](how-to-create-register-datasets.md#tabulardataset) は、データを表形式で表現します。 
+[FileDatasets](how-to-create-register-datasets.md#filedataset) は、1 つまたは複数のファイルまたはパブリック URL への参照を作成します。 一方、[TabularDatasets](how-to-create-register-datasets.md#tabulardataset) は、データを表形式で表現します。 TabularDatasets は、.csv ファイル、.tsv ファイル、.parquet ファイル、.jsonl ファイル、SQL クエリ結果から作成できます。
 
 次の手順とアニメーションでは、[Azure Machine Learning Studio](https://ml.azure.com) でデータセットを作成する方法を示します。
 

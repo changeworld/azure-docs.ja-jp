@@ -12,10 +12,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139f347a3d1bce7a8f841cd1c39cd250b9a2182d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99259357"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する
@@ -32,25 +32,25 @@ MCAS を使用して作成できるポリシーの種類の例をいくつか次
 
 ## <a name="requirements"></a>必要条件
 
-ライセンス:
+ライセンス: 
 
 - EMS E5 ライセンス、または 
 - Azure Active Directory Premium P1 および MCAS スタンドアロン。
 
-オンプレミスのアプリケーション:
+オンプレミスのアプリケーション: 
 
 - オンプレミスのアプリケーションでは、Kerberos 制約付き委任 (KCD) を使用する必要があります
 
-アプリケーション プロキシの構成:
+アプリケーション プロキシの構成: 
 
 - ご自身の環境の準備、アプリケーション プロキシ コネクタのインストールなど、アプリケーション プロキシを使用するように Azure AD を構成します。 チュートリアルについては、[Azure AD のアプリケーション プロキシを介してリモート アクセスするためのオンプレミス アプリケーションの追加](application-proxy-add-on-premises-application.md)に関するページをご覧ください。 
 
 ## <a name="add-on-premises-application-to-azure-ad"></a>オンプレミスのアプリケーションを Azure AD に追加する
 
-オンプレミスのアプリケーションを Azure AD に追加します。 クイック スタートについては、「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。 アプリケーションを追加するときは、 **[Add your on-premises application]\(オンプレミス アプリケーションを追加\)** ブレードで必ず次の 2 つを設定してください。
+オンプレミスのアプリケーションを Azure AD に追加します。 クイック スタートについては、「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。 アプリケーションを追加するときは、**[Add your on-premises application]\(オンプレミス アプリケーションを追加\)** ブレードで必ず次の 2 つを設定してください。
 
-- **事前認証**: **Azure Active Directory** を入力します。
-- **アプリケーション本文の URL を変換する**: **[はい]** を選択します。
+- **[事前認証]** : 「**Azure Active Directory**」と入力します。
+- **[Translate URLs in Application Body]\(アプリケーション本文の URL を変換する\)** : **[はい]** を選択します。
 
 これらの 2 つの設定は、アプリケーションで MCAS を使用するために必要です。
 

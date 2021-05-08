@@ -1,15 +1,17 @@
 ---
 title: Resource Manager テンプレートを使用して Azure サービス通知でアクティビティ ログ アラートを受け取る
 description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: 532fbae505e0bcaa6ab31a2e935362114537d134
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 730c023de61275d95fe594642149770af42b34b9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594961"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535746"
 ---
 # <a name="quickstart-create-activity-log-alerts-on-service-notifications-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してサービス通知のアクティビティ ログ アラートを作成する
 

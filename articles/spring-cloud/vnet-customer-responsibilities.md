@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.custom: devx-track-java
+ms.openlocfilehash: a6b444092ec4e3588564a3f902b49c4ed3dc5fe5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877657"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376785"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET での Azure Spring Cloud の実行に関するお客様の責任
 このドキュメントには、仮想ネットワークで Azure Spring Cloud を使用するための仕様が含まれています。
@@ -33,7 +33,7 @@ Azure Spring Cloud サービスのリソース要件の一覧を次に示しま�
 ## <a name="azure-spring-cloud-network-requirements"></a>Azure Spring Cloud のネットワーク要件
 
   | 送信先エンドポイント | Port | 用途 | 注意 |
-  |------|------|------|
+  |------|------|------|------|
   | *:1194 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:1194 | UDP:1194 | 基になる Kubernetes クラスターの管理。 | |
   | *:443 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:443 | TCP:443 | Azure Spring Cloud サービスの管理。 | サービス インスタンス "requiredTraffics" の情報は、リソース ペイロードの "networkProfile" セクションで確認できます。 |
   | *:9000 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - AzureCloud:9000 | TCP:9000 | 基になる Kubernetes クラスターの管理。 |
@@ -43,9 +43,9 @@ Azure Spring Cloud サービスのリソース要件の一覧を次に示しま�
   | *.servicebus.windows.net:443 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - EventHub:443 | TCP:443 | Azure Event Hub。 | [仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) *Azure Event Hubs* を有効にすることで置き換えることができます。 |
   
 
-## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Azure Spring Cloud の FQDN 要件/アプリケーション ルール
+## <a name="azure-spring-cloud-fqdn-requirementsapplication-rules"></a>Azure Spring Cloud の FQDN 要件またはアプリケーション ルール
 
-Azure Firewall には、次の構成を簡略化するための完全修飾ドメイン名 (FQDN) タグ **AzureKubernetesService** が用意されています。
+Azure Firewall には、次の構成を簡略化するために FQDN タグ **AzureKubernetesService** が用意されています。
 
   | 送信先 FQDN | Port | 用途 |
   |------|------|------|
@@ -54,13 +54,23 @@ Azure Firewall には、次の構成を簡略化するための完全修飾ド�
   | *.cdn.mscr.io | HTTPS: 443 | Azure CDN によってサポートされる MCR ストレージ。 |
   | *.data.mcr.microsoft.com | HTTPS: 443 | Azure CDN によってサポートされる MCR ストレージ。 |
   | <i>management.azure.com</i> | HTTPS: 443 | 基になる Kubernetes クラスターの管理。 |
-  | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory 認証。 |
+  | <i>*login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory 認証。 |
+  | <i>*login.microsoft.com</i> | HTTPS: 443 | Azure Active Directory 認証。 |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft パッケージ リポジトリ。 |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | kubenet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ。 |
   | *mscrl.microsoft.com* | HTTPS:80 | 必要な Microsoft 証明書チェーン パス。 |
   | *crl.microsoft.com* | HTTPS:80 | 必要な Microsoft 証明書チェーン パス。 |
   | *crl3.digicert.com* | HTTPS:80 | サード パーティの SSL 証明書チェーン パス。 |
+  
+## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>サードパーティ製アプリケーションのパフォーマンス管理に使用される Azure Spring Cloud の省略可能な FQDN
+
+Azure Firewall には、次の構成を簡略化するために FQDN タグ **AzureKubernetesService** が用意されています。
+
+  | 送信先 FQDN | Port | 用途                                                          |
+  | ---------------- | ---- | ------------------------------------------------------------ |
+  | collector*.newrelic.com | TCP:443/80 | 米国リージョンの New Relic APM エージェントの必須ネットワーク。[APM エージェント ネットワーク](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents)に関する記事も参照してください。 |
+  | collector*.eu01.nr-data.net | TCP:443/80 | EU リージョンの New Relic APM エージェントの必須ネットワーク。[APM エージェント ネットワーク](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents)に関する記事も参照してください。 |
 
 ## <a name="see-also"></a>関連項目
-* [プライベート ネットワークのアプリケーションにアクセスする](spring-cloud-access-app-virtual-network.md)
-* [Application Gateway と Azure Firewall を使用してアプリを公開する](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [プライベート ネットワークのアプリケーションにアクセスする](access-app-virtual-network.md)
+* [Application Gateway と Azure Firewall を使用してアプリを公開する](expose-apps-gateway-azure-firewall.md)

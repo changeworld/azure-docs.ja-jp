@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 1282d1916d669f1026707e15cc8d5437d885087f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93e97f1f04aea2a31b62b2014a88a5aaa998ed2d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101668998"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376088"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>SAP ソリューション向け Azure Monitor のプロバイダー (プレビュー)
 
@@ -25,6 +25,7 @@ SAP ソリューション向け Azure Monitor のコンテキストにおいて�
 - SAP HANA
 - 高可用性クラスター
 - Microsoft SQL Server
+- SAP NetWeaver
 
 ![SAP ソリューション向け Azure Monitor のプロバイダー](./media/azure-monitor-sap/azure-monitor-providers.png)
 
@@ -108,6 +109,27 @@ OS (Linux) プロバイダーを構成するには、次の 2 つの主要な手
 Microsoft SQL Server プロバイダーを構成するには、SAP システム ID、ホスト IP アドレス、SQL Server ポート番号、および SQL Server のログイン名とパスワードが必要です。
 
 ![SAP ソリューション向け Azure Monitor のプロバイダー - SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
+
+## <a name="provider-type-sap-netweaver"></a>プロバイダーの種類: SAP NetWeaver
+
+お客様は、プロバイダーの種類 SAP NetWeaver のプロバイダーを 1 つ以上構成して、SAP NetWeaver レイヤーからのデータ収集を有効にできます。 AMS NetWeaver プロバイダーは、既存の [SAPControl Web サービス](https://www.sap.com/documents/2016/09/0a40e60d-8b7c-0010-82c7-eda71af511fa.html) インターフェイスを利用して、適切なテレメトリ情報を取得します。
+
+現在のリリースでは、以下が AMS によって呼び出される既成の標準 SOAP Web メソッドです。
+|Web メソッド|    ABAP|   Java|   メトリック|
+|--|--|--|--|
+|GetSystemInstanceList| X|  X|  インスタンスの可用性、メッセージ サーバー、ゲートウェイ、ICM、ABAP の可用性|
+|GetProcessList|    X|  X|  インスタンス リストが RED の場合、そのサーバーが RED になる原因となったプロセスを取得できます|
+|GetQueueStatistic| X|  X|  キューの統計 (DIA/BATCH/UPD)|
+|ABAPGetWPTable|    X|   -| 作業プロセス使用率|
+|EnqGetStatistic|   X   |X  |Locks|
+
+パブリック プレビューでは、SAP NetWeaver プロバイダーを使用して次のデータを確認できます。 
+- システムとインスタンスの可用性
+- 作業プロセス使用率
+- キュー使用率
+- エンキュー ロックの統計。
+
+![image](https://user-images.githubusercontent.com/75772258/114581825-a9f2eb00-9c9d-11eb-8e6f-79cee7c5093f.png)
 
 ## <a name="next-steps"></a>次のステップ
 

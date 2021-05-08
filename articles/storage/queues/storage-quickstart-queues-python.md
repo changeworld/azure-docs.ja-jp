@@ -1,19 +1,21 @@
 ---
 title: 'クイックスタート: Azure Queue Storage クライアント ライブラリ v12 - Python'
 description: Python 用 Azure Queue Storage クライアント ライブラリ v12 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.custom: devx-track-python
-ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 68f68c32b160757e82d59b1dd5ee4847a06ec698
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585498"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534352"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>クイックスタート: Python 用 Azure Queue Storage クライアント ライブラリ v12
 
@@ -40,7 +42,7 @@ Python 用 Azure Queue Storage クライアント ライブラリ v12 を使用�
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - Azure Storage アカウント - [ストレージ アカウントを作成する](../common/storage-account-create.md)
-- [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
+- [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7 または 3.6 以上
 
 ## <a name="setting-up"></a>設定
 

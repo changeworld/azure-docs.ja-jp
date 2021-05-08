@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8ba3fc578580e6eee02f435272f4ea53523586
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 60a846d72c1760c7f9dddac891f36e834b8364f3
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448219"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028164"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
@@ -46,7 +46,7 @@ Azure Active Directory B2C (Azure AD B2C) で Microsoft アカウントを持つ
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)]\(任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント) と、個人用の Microsoft アカウント (Skype、Xbox など)\)** を選択します。
 
    アカウントの種類のその他の選択肢の詳細については、「[クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。
-1. **[リダイレクト URI (省略可能)]** で、 **[Web]** を選択し、テキスト ボックスに「`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp`」と入力します。 `<tenant-name>` を Azure AD B2C テナント名に置き換えます。
+1. **[リダイレクト URI (省略可能)]** で **[Web]** を選択し、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`を入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。
 1. **[登録]** を選択します
 1. アプリケーションの [概要] ページに表示されている **[アプリケーション (クライアント) ID]** を記録します。 このクライアント ID は、次のセクションで ID プロバイダーを構成するときに必要です。
 1. **[証明書とシークレット]** を選択します。
@@ -68,6 +68,8 @@ Azure Active Directory B2C (Azure AD B2C) で Microsoft アカウントを持つ
 1. **[保存]** を選択します。
 
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>ユーザー フローに Microsoft ID プロバイダーを追加する 
+
+この時点では、Microsoft ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに Microsoft ID プロバイダーを追加するには:
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Microsoft ID プロバイダーを追加するユーザー フローをクリックします。
@@ -194,7 +196,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[Microsoft]** を選択して Microsoft アカウントでサインインします。
 

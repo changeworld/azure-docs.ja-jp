@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c927682231bab1fc92f198c56a2f6aeff2f4c516
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715515"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553534"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) で Private Link を使用して配信元をセキュリティで保護する
 
@@ -30,7 +30,7 @@ ms.locfileid: "101715515"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Front Door Premium SKU では、Private Link サービスを使用して、Web アプリとストレージ アカウントの背後にある配信元に接続できます。これにより、配信元をパブリックにアクセス可能にする必要がなくなります。
+Azure Front Door Premium SKU は、プライベート リンク サービスを使用して配信元に接続できます。 プライベート VNet 内で、または Web アプリやストレージ アカウントなどの PaaS サービスの背後でアプリケーションをホストすることもできます。これにより、配信元をパブリックにアクセス可能にする必要がなくなります。
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Front Door プライベート エンドポイントのアーキテクチャ":::
 
@@ -43,7 +43,7 @@ Azure Front Door Premium の構成で配信元に対して Private Link を有�
 
 ## <a name="limitations"></a>制限事項
 
-Azure Front Door のプライベート エンドポイントは、パブリック プレビューの間は、米国東部、米国西部 2、米国中南部の各リージョンで利用できます。
+Azure Front Door のプライベート エンドポイントは、パブリック プレビューの間は、米国東部、米国西部 2、米国中南部、英国南部の各リージョンで利用できます。
 
 待機時間を最短にするには、Front Door プライベート リンク エンドポイントを有効にすることを選択したときに、配信元に最も近い Azure リージョンを選択する必要があります。
 

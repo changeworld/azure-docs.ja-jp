@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 2f55df70b2ebdaed9b7f15c940d3f4f0553a2856
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf71f180a1ce845df436391b98227ae173fe77f1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101676900"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303663"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -198,7 +198,6 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
          1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb-ascs**)
          1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-ascs-frontend**、**nw1-backend**、および **nw1-ascs-hp**)
          1. **[HA ポート]** を選択します
-         1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
          * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **nw1-lb-ers**)

@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 7c39f8bc0db44f1d8aa885969ca09d90b0dcd332
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583625"
 ---
 # <a name="delete-report-api"></a>レポートの削除 API
@@ -27,7 +27,7 @@ ms.locfileid: "102583625"
 
 **要求ヘッダー**
 
-| ヘッダー | 種類 | 説明 |
+| ヘッダー | Type | 説明 |
 | ------------ | ------------- | ------------- |
 | 承認 | string | 必須。 `Bearer <token>` という形式の Azure AD アクセス トークン |
 | コンテンツの種類 | string | `Application/JSON` |

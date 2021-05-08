@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 52f0151fd4be7505cf7beea0eeb54f8e34404997
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: femila
+ms.openlocfilehash: a1094004bc523a59c3fcf7eb77c6f11bc4554080
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577584"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445858"
 ---
 # <a name="built-in-roles-for-windows-virtual-desktop"></a>Windows Virtual Desktop の組み込みロール
 
@@ -146,7 +146,7 @@ Windows Virtual Desktop には、特定の所有者ロールはありません�
 
 ## <a name="session-host-operator"></a>セッション ホスト オペレーター
 
-セッション ホスト共同作成者ロールを使用すると、セッション ホストを表示および削除したり、ドレイン モードを変更したりできます。 ホスト プール オブジェクトに対する書き込みアクセス許可がないため、Azure portal を使用してセッション ホストを追加することはできません。 登録トークンが有効 (生成され、期限切れではない) で、仮想マシン共同作成者ロールを通じて管理者にコンピューティングのアクセス許可が付与されている場合は、このロールを使用して、Azure portal の外部のホスト プールにセッション ホストを追加できます。
+セッション ホスト オペレーター ロールを使用すると、セッション ホストを表示および削除したり、ドレイン モードを変更したりできます。 ホスト プール オブジェクトに対する書き込みアクセス許可がないため、Azure portal を使用してセッション ホストを追加することはできません。 登録トークンが有効 (生成され、期限切れではない) で、仮想マシン共同作成者ロールを通じて管理者にコンピューティングのアクセス許可が付与されている場合は、このロールを使用して、Azure portal の外部のホスト プールにセッション ホストを追加できます。
 
 次の一覧では、このロールがアクセスできるアクセス許可について説明しています。
 

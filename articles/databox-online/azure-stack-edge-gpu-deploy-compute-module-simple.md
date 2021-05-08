@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d10e27c80a9253de7482644debd19debce8f4e50
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102440141"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055299"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU で IoT Edge モジュールを使用してコンピューティング ワークロードを実行する
 
@@ -84,9 +83,9 @@ Azure Stack Edge Pro GPU デバイスでコンピューティング ロールを
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
-カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 デバイスには、事前に構築されたモジュールもカスタム モジュールも付属していません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](azure-stack-edge-j-series-create-iot-edge-module.md)に関するページを参照してください。
+カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 デバイスには、事前に構築されたモジュールもカスタム モジュールも付属していません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](./azure-stack-edge-gpu-create-iot-edge-module.md)に関するページを参照してください。
 
-このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](azure-stack-edge-j-series-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
+このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](./azure-stack-edge-gpu-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
 
 モジュールを追加するには、次の手順を実行します。
 

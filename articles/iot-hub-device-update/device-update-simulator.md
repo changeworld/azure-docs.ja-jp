@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 4740bf02c33314dd7c887356f2ef1ed12bea44cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443813"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120097"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Ubuntu (18.04 x64) Simulator Reference Agent を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -30,10 +30,8 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 > * イメージの更新プログラムをデプロイする
 > * 更新プログラムのデプロイを監視する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
 ## <a name="prerequisites"></a>前提条件
-* IoT Hub へのアクセス。 S1 (Standard) レベル以上を使用することをお勧めします。
+* まだ [Device Update アカウントとインスタンス](create-device-update-account.md)を作成していない場合は作成します (IoT ハブの構成も含む)。
 
 ### <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -104,7 +102,7 @@ Ubuntu 更新イメージは、[こちらから](https://github.com/Azure/iot-hu
   ```
 Device Update for Azure IoT Hub ソフトウェアには、次のライセンス条項が適用されます。
    * [Device Update for IoT Hub ライセンス](https://github.com/Azure/iot-hub-device-update/blob/main/LICENSE.md)
-   * [配信の最適化のクライアント ライセンス](https://github.com/microsoft/do-client/blob/main/LICENSE.md)
+   * [配信の最適化のクライアント ライセンス](https://github.com/microsoft/do-client/blob/main/LICENSE)
    
 エージェントを使用する前に、ライセンス条項をお読みください。 インストールして使用すると、これらの条項に同意したものと見なされます。 ライセンス条項に同意しない場合は、Device Update for IoT Hub エージェントをお使いいただけません。
 
@@ -149,9 +147,9 @@ Agent running. [main]
 
 1. [Azure portal](https://portal.azure.com) にログインし、IoT Hub に移動します。
 
-2. 左側のナビゲーション ウィンドウの [IoT デバイス] または [IoT Edge] から、対象の IoT デバイスを見つけて、[デバイス ツイン] に移動します。
+2. 左側のナビゲーション ペインの [IoT デバイス] または [IoT Edge] から、対象の IoT デバイスを見つけて、[デバイス ツイン] または [モジュール ツイン] に移動します。
 
-3. デバイス ツインで、Device Update の既存のタグ値を null に設定することで削除します。
+3. Device Update エージェント モジュールの [モジュール ツイン] で、既存の Device Update タグ値を null 値に設定して削除します。 Device Update エージェントでデバイス ID を使用している場合は、[デバイス ツイン] でそれらの変更を行います。
 
 4. 次に示すように、Device Update の新しいタグ値を追加します。
 

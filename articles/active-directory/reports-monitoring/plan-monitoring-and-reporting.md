@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683367251c220abe36660d61463bce9e5a0c52f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577760"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552616"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -47,7 +47,7 @@ Azure AD の監視では、次の場所にログをルーティングできま�
 * Splunk、Sumologic、QRadar などの既存の SIEM ツールと統合できる Azure イベント ハブ。
 
 > [!NOTE]
-最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
+> 最近になって、Log Analytics の代わりに Azure Monitor ログという用語が使われるようになりました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../../azure-monitor/data-platform.md)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../../azure-monitor/terminology.md)に関するページをご覧ください。
 
 [レポート保持ポリシーの詳細を確認します](./reference-reports-data-retention.md)。
 

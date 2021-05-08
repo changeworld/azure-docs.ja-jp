@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579554"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933340"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -240,7 +240,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
     | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
-    | 宛先                       | Any          |
+    | 到着地                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
     | アクション                            | Allow        |
@@ -298,6 +298,21 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 1. ローカル コンピューターで、管理者として "*メモ帳*" を開きます。
 1. ファイルの保存先 (*C:\Windows\System32\drivers\etc\hosts*) を参照してファイルを開きます。
 1. 追加したレコードの行 (例: `168.62.205.103    ldaps.aaddscontoso.com`) を削除します。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+LDAP.exe が接続できないというエラーが表示される場合は、接続を確立するためのさまざまな側面に対処してみてください。 
+
+1. ドメイン コントローラーの構成
+1. クライアントの構成
+1. ネットワーク
+1. TLS セッションの確立
+
+証明書のサブジェクト名を照合するために、DC は (Azure AD ドメイン名ではなく) Azure AD DS ドメイン名を使用して、証明書ストアで証明書を検索します。 たとえばスペルミスなどがあると、DC は適切な証明書を選択できなくなります。 
+
+クライアントは、指定された名前を使用して TLS 接続の確立を試みます。 トラフィックは、経路の端から端まで通過する必要があります。 DC は、サーバー認証証明書の公開キーを送信します。証明書には、正しい使用法が記載されている必要があります。また、サブジェクト名で署名されている名前は、そのサーバーが接続先の DNS 名であることをクライアントから信頼されるように矛盾のない (つまり、ワイルドカードが機能し、スペルミスがない) ものである必要があります。この場合、クライアントは発行者を信頼する必要があります。 イベント ビューアーのシステム ログで、そのチェーンに問題があるかどうかを確認し、ソースが Schannel であるイベントをフィルター処理できます。 これらの要素が整うと、セッション キーが形成されます。  
+
+詳細については、[TLS ハンドシェイク](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

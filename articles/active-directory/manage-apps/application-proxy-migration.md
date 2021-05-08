@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7d089d8f57bf8ef1278d262129cc8ddfc81d581
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 52cb4480e8b7820d656b8ab66f12486c2062dca5
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257745"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443493"
 ---
 # <a name="compare-remote-access-solutions"></a>リモート アクセス ソリューションを比較します
 
@@ -64,4 +64,4 @@ Azure Active Directory アプリケーション プロキシは、Microsoft が�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD アプリケーション プロキシを使用してセキュリティで保護されたオンプレミス アプリケーションへのリモート アクセスを提供する](application-proxy.md)
+- [Azure AD アプリケーション プロキシを使用してオンプレミス アプリケーションへのセキュリティで保護されたリモート アクセスを提供する](application-proxy.md)

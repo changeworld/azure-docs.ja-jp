@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33408c65fdc09972807aaa8afdf123f1c39cfff5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0530baf5c198b5d82527cfb02c66765ec885bd94
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700264"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566712"
 ---
 # <a name="azure-security-baseline-for-azure-backup"></a>Azure Backup 用の Azure セキュリティ ベースライン
 
@@ -30,7 +30,7 @@ Azure Backup を完全に Azure セキュリティ ベンチマークにマッ�
 
 **ガイダンス**: Azure Backup で使用されるエンドポイント (Microsoft Azure Recovery Services エージェントを含む) はすべて、Microsoft によって管理されます。 オンプレミスのシステムにデプロイする追加のコントロールについては、お客様が責任を負うものとします。
 
-- [MARS エージェントのネットワークとアクセスのサポートについて](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent#networking-and-access-support)
+- [MARS エージェントのネットワークとアクセスのサポートについて](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
 **責任**: Customer
 
@@ -58,9 +58,9 @@ Azure Backup を完全に Azure セキュリティ ベンチマークにマッ�
 
 **ガイダンス**: ネットワーク セキュリティ グループまたは Azure Firewall によって保護されている Azure 仮想マシンで MARS エージェントを使用している場合、Azure アクティビティ ログを使用して、NSG または Firewall の構成を監視します。 これらのリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成できます。
 
-- [Azure アクティビティ ログ イベントを表示および取得する](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -76,7 +76,7 @@ Azure Backup を完全に Azure セキュリティ ベンチマークにマッ�
 
 また、Azure Monitor を介してログを取り込み、Azure Backup によって生成されたセキュリティ データを集計します。 Azure Monitor で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期のアーカイブ ストレージにはストレージ アカウントを使用します。 または、Azure Sentinel またはサードパーティのセキュリティ情報イベント管理 (SIEM) にデータをオンボードすることもできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Recovery Services コンテナーの診断設定を使用する](backup-azure-diagnostic-events.md)
 
@@ -92,7 +92,7 @@ Azure Backup を完全に Azure セキュリティ ベンチマークにマッ�
 
 また、Azure Backup では、分析、アラート、レポートの目的で収集して使用できる診断イベントを送信します。 Azure portal を使用して、Recovery Services コンテナーの診断設定を構成できます。 1 つ以上の診断イベントをストレージ アカウント、イベント ハブ、Log Analytics ワークスペースに送信できます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Recovery Services コンテナーの診断設定を使用する](backup-azure-diagnostic-events.md)
 
@@ -104,7 +104,7 @@ Azure Backup を完全に Azure セキュリティ ベンチマークにマッ�
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure Recovery Services コンテナーに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
 
@@ -118,9 +118,9 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure Backup ワークロードの監視](backup-azure-monitoring-built-in-monitor.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](/azure/azure-monitor/platform/activity-log)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **責任**: Customer
 
@@ -138,7 +138,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する](/azure/azure-monitor/platform/alerts-log)
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)
 
 **責任**: Customer
 
@@ -268,7 +268,7 @@ Azure アクティビティ ログの診断設定を有効にし、Log Analytics
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure AD アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 適切なユーザーのみが継続的なアクセス権を持っていることを確認するために、ユーザー アクセスを定期的に確認する必要があります。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD アクセス レビューを使用する方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -284,7 +284,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -310,7 +310,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 **ガイダンス**:現時点では利用できません。Azure Backup では、カスタマー ロックボックスはまだサポートされていません。
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **責任**: Customer
 
@@ -402,7 +402,7 @@ MARS エージェントでバックアップする場合、またはカスタマ
 
 **ガイダンス**:運用 Recovery Services コンテナーおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -418,7 +418,7 @@ MARS エージェントでバックアップする場合、またはカスタマ
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 Azure Backup で利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-- [Azure Backup で利用可能なセキュリティ コントロールについて](/azure/backup/backup-security-controls)
+- [Azure Backup で利用可能なセキュリティ コントロールについて]()
 
 **責任**: Customer
 
@@ -446,7 +446,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -520,7 +520,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -544,7 +544,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Policy を使用して、Recovery Services コンテナーの標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.RecoveryServices" 名前空間で Azure Policy エイリアスを使用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -656,7 +656,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.RecoveryServices**:
 
@@ -676,7 +676,7 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 **ガイダンス**:オンプレミスのバックアップでは、Azure にバックアップする際に指定するパスフレーズを使用して保存時の暗号化が行われます。 Azure VM の場合、データは Storage Service Encryption (SSE) を使用して暗号化された上で保存されます。 Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護することができます。
 
-- [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **責任**: Customer
 
@@ -772,5 +772,5 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

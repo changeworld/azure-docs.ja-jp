@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 69c83e9172a8369b7ff31116ee4db74fc33d86bb
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472116"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868224"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -39,12 +39,10 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 
 現在、マルチサービス リソースでは次の Cognitive Services にアクセスできます。
 
-* Computer Vision
-* Content Moderator
-* Face
-* Language Understanding (LUIS)
-* Text Analytics
-* Translator
+* **視覚** - Computer Vision、Custom Vision、Form Recognizer、Face
+* **音声** - Speech
+* **言語** - Language Understanding (LUIS)、Text Analytics、Translator
+* **決定** - Personalizer、Content Moderator
 
 ### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
@@ -53,9 +51,10 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 | 視覚                      | 音声                  | Language                          | 決定             |
 |-----------------------------|-------------------------|-----------------------------------|----------------------|
 | [Computer Vision](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Speech Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [イマーシブ リーダー](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomaly Detector](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
-| [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
+| [Custom Vision Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-| [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| [Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
 
@@ -72,9 +71,10 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 | **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
 | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
 
-![マルチサービス リソースのリソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+<!--![Multi-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen-multi.png" alt-text="マルチサービス リソースの作成画面":::
 
-**［作成］** を選択します
+状況に合わせて条件を読んで同意し、 **[Review + create]\(レビュー + 作成\)** を選択します。
 
 ### <a name="single-service-resource"></a>[単一サービス リソース](#tab/singleservice)
 
@@ -86,9 +86,10 @@ Azure Cognitive Services は、開発者が直接的な人工知能 (AI) また�
 | **名前** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
 | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
 
-![単一サービス リソースのリソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen.png)
+<!--![Single-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen.png" alt-text="単一サービス リソースのリソース作成画面":::
 
-**［作成］** を選択します
+**[Next: Virtual Network]\(次へ: 仮想ネットワーク\)** を選択し、リソースに対して許可するネットワーク アクセスの種類を選択してから、 **[Review + create]\(レビュー + 作成\)** を選択します。
 
 ---
 
@@ -116,8 +117,8 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Cognitive Services に対する要求の認証](authentication.md)
-* [Azure Cognitive Services とは](./what-are-cognitive-services.md)
-* [Azure Management クライアント ライブラリを使用して新しいリソースを作成する](.\cognitive-services-apis-create-account-client-library.md)
-* [自然言語のサポート](language-support.md)
-* [Docker コンテナーのサポート](cognitive-services-container-support.md)
+* Cognitive Services を安全に使用する方法については、「 **[Azure Cognitive Services に対する要求の認証](authentication.md)** 」をご覧ください。
+* Cognitive Services 内のさまざまなカテゴリの一覧を入手するには、「 **[Azure Cognitive Services とは](./what-are-cognitive-services.md)** 」をご覧ください。
+* Cognitive Services がサポートする自然言語の一覧を確認するには、 **[自然言語のサポート](language-support.md)** に関する記事をご覧ください。
+* Cognitive Services をオンプレミスで使用する方法については、 **[コンテナーとしての Cognitive Services の使用](cognitive-services-container-support.md)** に関する記事をご覧ください。
+* Cognitive Services の使用コストを見積もるには、 **[Cognitive Services のコストの計画および管理](plan-manage-costs.md)** に関する記事をご覧ください。

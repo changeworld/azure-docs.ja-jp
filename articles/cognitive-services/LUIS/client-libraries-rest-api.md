@@ -2,7 +2,7 @@
 title: 'クイックスタート: Language Understanding (LUIS) SDK クライアント ライブラリと REST API'
 description: LUIS SDK クライアント ライブラリと REST API を使用して LUIS アプリを作成し、クエリを実行します。
 ms.topic: quickstart
-ms.date: 12/09/2020
+ms.date: 03/29/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
@@ -11,12 +11,12 @@ author: aahill
 keywords: Azure, 人工知能, AI, 自然言語処理, NLP, LUIS, Azure LUIS, 自然言語理解, AI チャットボット, チャットボット メーカー, 自然言語の理解
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: 7ff5844cf9f1bce45df438fc00e24da28c438b05
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96941527"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278917"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>クイックスタート: Language Understanding (LUIS) クライアント ライブラリと REST API
 
@@ -61,9 +61,5 @@ REST API を使用している場合は、このクイック スタートが完�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Language Understanding (LUIS) API とは](what-is-luis.md)
-* [新機能](whats-new.md)
-* [意図](luis-concept-intent.md)、[エンティティ](luis-concept-entity-types.md)、[発話の例](luis-concept-utterance.md)、[事前構築済みエンティティ](luis-reference-prebuilt-entities.md)
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code) にあります。
-* 自然言語の理解: [自然言語理解 (NLU) と自然言語処理 (NLP)](artificial-intelligence.md)
-* ボット: [AI チャットボット](luis-csharp-tutorial-bf-v4.md "チャットボット メーカーのチュートリアル")
+> [!div class="nextstepaction"]
+> [LUIS の反復的アプリ開発](./luis-concept-app-iteration.md)

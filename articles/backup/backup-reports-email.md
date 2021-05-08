@@ -3,12 +3,12 @@ title: Azure バックアップ レポートをメールで送信する
 description: 定期的なレポートをメールで受信する自動化されたタスクを作成します
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 8c18d4c7a3c7a9ba343296961fa9a44614366405
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561340"
 ---
 # <a name="email-azure-backup-reports"></a>Azure バックアップ レポートをメールで送信する
 
@@ -30,7 +30,7 @@ ms.locfileid: "102510390"
 
 ## <a name="authorize-connections-to-azure-monitor-logs-and-office-365"></a>Azure Monitor ログと Office 365 への接続を承認する
 
-ロジック アプリによる LA ワークスペースのクエリの実行には [azuremonitorlogs](https://docs.microsoft.com/connectors/azuremonitorlogs/) コネクタが使用され、メールの送信には [Office365 Outlook](https://docs.microsoft.com/connectors/office365connector/) コネクタが使用されます。 これら 2 つのコネクタについて、承認を 1 回だけ行う必要があります。 
+ロジック アプリによる LA ワークスペースのクエリの実行には [azuremonitorlogs](/connectors/azuremonitorlogs/) コネクタが使用され、メールの送信には [Office365 Outlook](/connectors/office365connector/) コネクタが使用されます。 これら 2 つのコネクタについて、承認を 1 回だけ行う必要があります。 
  
 承認を実行するには、次の手順のようにします。
 
@@ -79,4 +79,4 @@ ms.locfileid: "102510390"
 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
-[バックアップ レポートに関する詳細を確認する](https://docs.microsoft.com/azure/backup/configure-reports)
+[バックアップ レポートに関する詳細を確認する](./configure-reports.md)

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dd87b58c604b0bb2141c29d3b2227e9a81668a75
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 51a9635d42b07eb27b05312d292ca890c7963b4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488824"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028232"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 
@@ -62,6 +62,8 @@ Azure Active Directory B2C (Azure AD B2C) で LinkedIn アカウントを使用�
 1. **[保存]** を選択します。
 
 ## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>ユーザー フローに LinkedIn ID プロバイダーを追加する 
+
+この時点では、LinkedIn ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに LinkedIn ID プロバイダーを追加するには、次のようにします。
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. LinkedIn ID プロバイダーを追加するユーザー フローをクリックします。
@@ -219,7 +221,7 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[LinkedIn]** を選択して、LinkedIn アカウントでサインインします。
 

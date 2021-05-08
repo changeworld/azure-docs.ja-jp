@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4967e0ff79a638891da4f784cf2f5f1ca4ddfe51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 648be6325cce5bad36795b113c8bbccb3e21d37b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100578558"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774005"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -105,7 +105,7 @@ HTTP によってトリガーされる関数の場合、関数コードの実行
 
 #### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure/) には、メトリックを取得するためのコマンドがあります。 ローカル コマンド環境から、または [Azure Cloud Shell](../cloud-shell/overview.md) を使用してポータルから直接、CLI を使用できます。 たとえば、次の [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) コマンドでは、前に使用したのと同じ期間に対する 1 時間あたりのデータが返されます。
+[Azure CLI](/cli/azure/) には、メトリックを取得するためのコマンドがあります。 ローカル コマンド環境から、または [Azure Cloud Shell](../cloud-shell/overview.md) を使用してポータルから直接、CLI を使用できます。 たとえば、次の [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドでは、前に使用したのと同じ期間に対する 1 時間あたりのデータが返されます。
 
 `<AZURE_SUBSCRIPTON_ID>` は、コマンドを実行している Azure サブスクリプション ID に置き換えてください。
 

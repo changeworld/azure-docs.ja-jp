@@ -2,21 +2,21 @@
 title: データの読み込みのベスト プラクティス
 description: 専用 SQL プール Azure Synapse Analytics にデータを読み込むための、推奨事項とパフォーマンスの最適化について説明します。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 33212d44fcb6be3f01cf968d00751d55e3bd7b8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9fe7ef8e6ccbadd5e78de5bfd5f137132dbe6319
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585453"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567946"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>専用 SQL プール Azure Synapse Analytics にデータを読み込むためのベスト プラクティス
 

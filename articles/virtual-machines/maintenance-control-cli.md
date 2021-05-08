@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562964"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765901"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
 
@@ -93,7 +93,7 @@ az maintenance assignment create \
 
 専用ホストに構成を適用するには、`--resource-type hosts` と `--resource-parent-name` を含める必要があります。これらには、ホスト グループの名前と `--resource-parent-type hostGroups` を使用します。 
 
-パラメーター `--resource-id` は、ホストの ID です。 [az vm host get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view) を使用すると、専用ホストの ID を取得できます。
+パラメーター `--resource-id` は、ホストの ID です。 [az vm host get-instance-view](/cli/azure/vm/host#az_vm_host_get_instance_view) を使用すると、専用ホストの ID を取得できます。
 
 ```azurecli-interactive
 az maintenance assignment create \

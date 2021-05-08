@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/30/2021
+ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9bd61d65d6d64dac6081d3491deb8a15efc4a45b
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105048421"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530644"
 ---
 # <a name="features"></a>特徴
 
@@ -41,8 +41,8 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | create                         | はい       | Yes       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | Yes       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | 検索                         | Partial   | Partial   | Partial   | 下の「検索」セクションを参照してください。                           |
-| chained search                 | Yes       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
-| reverse chained search         | Yes       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| chained search                 | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| reverse chained search         | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
 | capabilities                   | はい       | Yes       | はい       |                                                     |
 | batch (バッチ)                          | はい       | Yes       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
@@ -146,7 +146,7 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 ## <a name="service-limits"></a>サービスの制限
 
-* [**要求ユニット (RU)**](../../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RU か 10 RU/GB が必要になります (大きい方)。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
+* [**要求ユニット (RU)**](../../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 Ru または 40 Ru/GB のいずれか大きい方が必要です。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
 
 * **コンカレント接続** と **インスタンス** - 既定では、クラスター内の 2 つのインスタンス上で 5 つのコンカレント接続が用意されています (同時要求は合計で 10)。 同時要求がさらに必要であると思われる場合、サポート チケットを開き、ニーズの詳細を含めてください。
 
@@ -160,12 +160,12 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 | RU の数 | リソース/sec |    最大ストレージ (GB)*    |
 |----------|---------------|--------|                 
-| 400      | 5-10          |     40   |
-| 1,000    | 100-150       |      100  |
-| 10,000   | 225-400       |      1,000  |
-| 100,000  | 2,500-4,000   |      10,000  |
+| 400      | 5-10          |     10   |
+| 1,000    | 100-150       |      25  |
+| 10,000   | 225-400       |      250  |
+| 100,000  | 2,500-4,000   |      2,500  |
 
-注:Cosmos DB の要件ごとに、ストレージの GB あたり 10 RU/秒の最小スループットの要件があります。 詳細については、「[Azure Cosmos DB サービスのクォータ](../../cosmos-db/concepts-limits.md)」を参照してください。
+注: Cosmos DB の要件には、ストレージの GB あたり 40 RU/秒の最小スループットが必要です。 
 
 ## <a name="next-steps"></a>次のステップ
 

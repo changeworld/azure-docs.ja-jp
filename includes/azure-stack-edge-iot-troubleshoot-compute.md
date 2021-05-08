@@ -3,13 +3,13 @@ author: v-dalc
 ms.service: databox
 ms.author: alkohli
 ms.topic: include
-ms.date: 03/02/2021
-ms.openlocfilehash: 57415ec76a3e8d9fc3c160b47668d3419ff6ea5c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.date: 03/23/2021
+ms.openlocfilehash: 0d912d0ac3f0fcf4c52116e67909038a1973304b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622210"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104135"
 ---
 IoT Edge エージェント ランタイムの応答を使用すると、コンピューティング関連のエラーをトラブルシューティングできます。 考えられる応答の一覧を以下に示します。
 
@@ -32,7 +32,7 @@ IoT Edge エージェント ランタイムの応答を使用すると、コン�
 
 #### <a name="suggested-solution"></a>推奨されている解決方法
 
-IoT Edge サービスを削除してから、モジュールを再デプロイしてください。 詳細については、「[IoT Edge サービスの削除](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)」を参照してください。
+IoT Edge サービスを削除してから、モジュールを再デプロイしてください。 詳細については、「[IoT Edge サービスの削除](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#remove-iot-edge-service)」を参照してください。
 
 
 ### <a name="modules-show-as-running-but-are-not-working"></a>モジュールは実行中と表示されているが動作していない
@@ -65,4 +65,44 @@ IoT Edge サービスを削除してから、モジュールを再デプロイ�
 1. **[Kubernetes external service IPs]\(Kubernetes 外部サービス IP\)** に IP の連続した静的な範囲を入力します。 `edgehub` サービスには 1 つの IP が必要です。 また、IoT Edge モジュールごと、およびデプロイする VM ごとに 1 つの IP が必要です。 
 1. **[適用]** を選択します。 変更された IP 範囲は直ちに有効になります。
 
-詳細については、「[コンテナーの外部サービス IP を変更する](../articles/databox-online/azure-stack-edge-j-series-manage-compute.md#change-external-service-ips-for-containers)」を参照してください。
+詳細については、「[コンテナーの外部サービス IP を変更する](../articles/databox-online/azure-stack-edge-gpu-manage-compute.md#change-external-service-ips-for-containers)」を参照してください。
+
+### <a name="configure-static-ips-for-iot-edge-modules"></a>IoT Edge モジュールの静的 IP を構成する
+
+#### <a name="problem-description"></a>問題の説明
+
+Kubernetes では、Azure Stack Edge Pro GPU デバイス上の各 IoT Edge モジュールに動的 IP が割り当てられます。 モジュールの静的 IP を構成するにはメソッドが必要です。
+
+#### <a name="suggested-solution"></a>推奨されている解決方法
+
+下に示すように、K8s-experimental セクションを使用して、IoT Edge モジュールの固定 IP アドレスを指定できます。 
+
+```yaml
+{
+  "k8s-experimental": {
+    "serviceOptions" : {
+      "loadBalancerIP" : "100.23.201.78",
+      "type" : "LoadBalancer"
+    }
+  }
+}
+```
+### <a name="expose-kubernetes-service-as-cluster-ip-service-for-internal-communication"></a>Kubernetes サービスを内部通信用のクラスター IP サービスとして公開する
+
+#### <a name="problem-description"></a>問題の説明
+
+既定では、IoT サービスの種類はロード バランサーであり、外部に接続する IP アドレスが割り当てられます。 外部に接続する IP アドレスをアプリケーションに使用させたくない場合があります。 場合によっては、Kubernetes クラスター内のポッドを、外部に公開されているロード バランサー サービスとしてではなく、他のポッドとしてアクセスするために公開する必要があります。 
+
+#### <a name="suggested-solution"></a>推奨されている解決方法
+
+K8s-experimental セクションを通じて作成オプションを使用できます。 次のサービス オプションはポートのバインドで機能します。
+
+```yaml
+{
+"k8s-experimental": {
+  "serviceOptions" : {
+    "type" : "ClusterIP"
+    }
+  }
+}
+```

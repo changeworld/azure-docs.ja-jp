@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: fd5dce0760953bf19c72e1a1062a9c03ffe861e7
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9db7576cb2278cc2ef0d8b93ef04bb633962cd0e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563377"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255751"
 ---
 # <a name="configure-directory-services"></a>ディレクトリ サービスを構成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "103563377"
 
 * **[AD DNS ドメイン名]** - 資格情報を取得するためにキャッシュが参加する AD サーバーの完全修飾ドメイン名を指定します。
 
-* **[Cache server name (computer account)]\(キャッシュ サーバー名 (コンピューター アカウント)\)** - AD ドメインに参加するときに、この HPC キャッシュに割り当てる名前を設定します。 このキャッシュとして認識しやすい名前を指定します。 名前の長さは最大 15 文字で、大文字、小文字、数字、ハイフン (-) を使用できます。
+* **キャッシュ サーバー名 (コンピューター アカウント)** - AD ドメインに参加するときにこの HPC Cache に割り当てる名前を設定します。 このキャッシュとして認識しやすい名前を指定します。 名前の長さは最大 15 文字で、大文字、小文字、数字、ハイフン (-) を使用できます。
 
 **[資格情報]** セクションで、AD サーバーにアクセスするために Azure HPC Cache で使用できる AD 管理者のユーザー名とパスワードを指定します。 この情報は、保存時には暗号化され、クエリを行うことはできません。
 

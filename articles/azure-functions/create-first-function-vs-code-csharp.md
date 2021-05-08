@@ -8,12 +8,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-csharp-ieux
-ms.openlocfilehash: b0c659c1b3bf373b7754dd9b058c74da35cc2e0a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea0b66c49d6f37c6b8f7eaa7f667a63ab09155e0
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704788"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952690"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に C# 関数を作成する
 
@@ -82,8 +82,10 @@ ms.locfileid: "101704788"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=csharp)」を参照してください。 
+[Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Cosmos DB または Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=csharp)」を参照してください。 
 
+> [!div class="nextstepaction"]
+> [データベースに接続する](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-csharp)
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)
 

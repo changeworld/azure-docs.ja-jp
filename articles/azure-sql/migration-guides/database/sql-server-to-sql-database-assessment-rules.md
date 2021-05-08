@@ -1,5 +1,5 @@
 ---
-title: SQL Server から SQL Database に移行するための評価ルール
+title: SQL Server から Azure SQL Database に移行するための評価ルール
 description: Azure SQL Database に移行する前に対処する必要があるソース SQL Server インスタンスの問題を特定する評価ルール。
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: MashaMSFT
 ms.date: 12/15/2020
-ms.openlocfilehash: bf825572226bf5d7432fd3ad825f2f3a13355c53
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: c407b62b5f0308fbb6d9ff7223a3554ca09592db
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054154"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027212"
 ---
-# <a name="assessment-rules-for-sql-server-to-sql-database-migration"></a>SQL Server から SQL Database に移行するための評価ルール
+# <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server から Azure SQL Database に移行するための評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
 
 移行ツールでは、お使いのソース SQL Server インスタンスを多数の評価ルールを実行して検証し、お使いの SQL Server データベースを Azure SQL Database に移行する前に、解決する必要のある問題を特定します。 

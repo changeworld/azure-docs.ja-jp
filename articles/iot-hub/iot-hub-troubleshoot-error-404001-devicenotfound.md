@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 15aa21c2ec2c11bb251f7208fd22c92ceb859d6d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 09f3c00dadc6e95aae01fb8082fb746e155d4688
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "76960304"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061283"
 ---
 # <a name="404001-devicenotfound"></a>404001 DeviceNotFound
 

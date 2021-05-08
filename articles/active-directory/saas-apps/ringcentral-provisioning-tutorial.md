@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181625"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800771"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -46,15 +46,7 @@ ms.locfileid: "96181625"
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように RingCentral を構成する
 
-1. [RingCentral 管理コンソール](https://login.ringcentral.com/sw.html)にサインインします。 **[Tools]\(ツール\) > [Directory Integration]\(ディレクトリの統合\)** に移動します。
-
-    ![RingCentral 管理コンソール](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  **[Select Directory Provider]\(ディレクトリ プロバイダーの選択\)** で **[SCIM]** を選択します。 (将来的には、Azure Active Directory がオプションに追加されます)。 **[Enable SCIM service]\(SCIM サービスを有効にする\)** をクリックします。
-
-    ![RingCentral での SCIM の追加](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  **SCIM 認証トークン** については、matthew.hunt@ringcentral.com で RingCentral のサポート チームに問い合わせてください。 この値を、Azure portal で RingCentral アプリケーションの [プロビジョニング] タブの [シークレット トークン] フィールドに入力します。
+手順 5. の [管理者資格情報] セクションで承認を行うためには、[RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 管理者アカウントが必要です。
 
 > [!NOTE]
 > ユーザーにライセンスを割り当てる方法については、[こちら](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)のビデオ リンクをご覧ください。
@@ -94,9 +86,13 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
     ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://platform.ringcentral.com/scim/v2`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM 認証トークン** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から RingCentral への接続を確認します。 接続できない場合は、使用中の RingCentral アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクション下にある **[承認する]** をクリックします。 RingCentral のサインイン ページにリダイレクトされます。 メールまたは電話番号を入力し、パスワードを入力して、 **[サインイン]** ボタンをクリックします。 RingCentral の **[Access Request]\(アクセス要求\)** ページで **[Authorize]\(承認\)** をクリックします。 **[テスト接続]** をクリックして、Azure AD から RingCentral への接続を確認します。 接続できない場合は、使用中の RingCentral アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![[テスト接続] オプションが示されている [テナント URL] と [シークレット トークン] テキスト フィールドのスクリーンショット。](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![アクセス](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![承認します](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
@@ -151,6 +147,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="change-log"></a>ログの変更
 
 * 2020 年 9 月 10 日 - "displayName" および "manager" 属性のサポートを削除しました。
+* 03/15/2021 - 承認方法を永続的なベアラー トークンから OAuth コード付与フローに更新しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

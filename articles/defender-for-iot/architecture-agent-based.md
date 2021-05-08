@@ -1,16 +1,16 @@
 ---
-title: エージェントベースのソリューション アーキテクチャ
+title: エージェントベースのソリューション アーキテクチャとは
 description: Azure Defender for IoT のエージェントベースのアーキテクチャと情報フローについて説明します。
 ms.topic: overview
 ms.date: 1/25/2021
-ms.openlocfilehash: b04e8fa6225aef9f3c228a44631f117fedffccff
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e08c3f151c3d3bc4fe08e61d960874b07f5b63e8
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784885"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383526"
 ---
-# <a name="agent-based-solution-for-device-builders"></a>デバイス ビルダー向けのエージェントベースのソリューション
+# <a name="what-is-agent-based-solution-for-device-builders"></a>デバイス ビルダー向けのエージェントベースのソリューションとは
 
 この記事では、Defender for IoT エージェントベースのソリューションの機能的なシステム アーキテクチャについて説明します。 Azure Defender for IoT には、ご使用環境のニーズに適合するように、組織向けのエージェントレス ソリューションとデバイス ビルダー向けのエージェントベースのソリューションという 2 つの機能セットが用意されています。
 
@@ -34,7 +34,7 @@ Defender for IoT の推奨事項とアラート (分析パイプライン出力)
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="マイクロ エージェントのアーキテクチャ。":::
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 [Defender for IoT に関する FAQ](resources-frequently-asked-questions.md)
 

@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521172"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889163"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
@@ -106,7 +106,7 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 > Azure Machine Learning では、次のソフトウェアを提供する Docker イメージのみがサポートされています。
 > * Ubuntu 16.04 以上
 > * Conda 4.5.# 以上
-> * Python 3.5 以降
+> * Python 3.6 以上
 
 Azure Machine Learning 環境の作成と管理の詳細について詳しくは、[ソフトウェア環境を作成して使用する](how-to-use-environments.md)方法に関するページを参照してください。 
 

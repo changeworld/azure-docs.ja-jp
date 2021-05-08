@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 26c158145de6ce729d8a7060152b19fb14b63d58
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95561946"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager の要求を認証するための準備
@@ -40,9 +40,9 @@ ms.locfileid: "95561946"
 2. **TenantId** と **SubscriptionId** を書き留めておきます。 この情報は後で必要になります。
 3. 次のコマンドを使用して新しい Azure Active Directory アプリケーションを作成します。プレース ホルダーを以下のとおりに置き換えます。
    
-   * **{Display name}:** **MySampleApp** など、アプリケーションの表示名。
-   * **{Home page URL}:** **http:\//mysampleapp/home** など、お使いのアプリのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
-   * **{Application identifier}:** **http:\//mysampleapp** などの一意の識別子。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Display name}:****MySampleApp** など、アプリケーションの表示名。
+   * **{Home page URL}:****http:\//mysampleapp/home** など、お使いのアプリのホーム ページの URL。 この URL は実際のアプリケーションを示している必要はありません。
+   * **{Application identifier}:** **http:\///mysampleapp** などの一意識別子。 この URL は実際のアプリケーションを示している必要はありません。
    * **{Password}:** 自分のアプリで認証に使用するパスワード。
      
      ```powershell
@@ -50,12 +50,12 @@ ms.locfileid: "95561946"
      New-AzADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. 作成したアプリケーションの **ApplicationId** を書き留めておきます。 この情報は後で必要になります。
-5. 次のコマンドを使用して新しいサービス プリンシパルを作成します。 **{MyApplicationId}** を前の手順で書き留めた **ApplicationId** と置き換えます。
+5. 次のコマンドを使用して新しいサービス プリンシパルを作成します。**{MyApplicationId}** を前の手順で書き留めた **ApplicationId** と置き換えます。
    
     ```powershell
     New-AzADServicePrincipal -ApplicationId {MyApplicationId}
     ```
-6. 次のコマンドを使用してロール割り当てを設定します。 **{MyApplicationId}** を自分の **ApplicationId** と置き換えます。
+6. 次のコマンドを使用してロール割り当てを設定します。**{MyApplicationId}** を自分の **ApplicationId** と置き換えます。
    
     ```powershell
     New-AzRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName {MyApplicationId}

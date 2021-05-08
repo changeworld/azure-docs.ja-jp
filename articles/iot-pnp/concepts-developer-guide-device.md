@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 339ae9a0a799a0a03f1fcf37dadf2e1ffa724243
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cca47269e632e1fcba1f8f9eb1c835f27e63059
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028684"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582794"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT プラグ アンド プレイ デバイス開発者ガイド
 
@@ -26,7 +26,7 @@ IoT プラグ アンド プレイを使用すると、Azure IoT アプリケー�
 IoT プラグ アンド プレイ デバイス、モジュール、または IoT Edge モジュールを構築するには、次の手順に従います。
 
 1. デバイスでは、MQTT または MQTT over WebSockets プロトコルを使用して Azure IoT Hub に接続していることを確認します。
-1. デバイスを記述する [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) モデルを作成します。 詳細については、[IoT プラグ アンド プレイ モデルのコンポーネントの概要](concepts-components.md)に関するページを参照してください。
+1. デバイスを記述する [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) モデルを作成します。 詳細については、[IoT プラグ アンド プレイ モデルのコンポーネントの概要](concepts-modeling-guide.md)に関するページを参照してください。
 1. デバイス接続の一部として `model-id` をアナウンスするようにデバイスまたはモジュールを更新します。
 1. [IoT プラグ アンド プレイ規則](concepts-convention.md)を使用してテレメトリ、プロパティ、コマンドを実装します
 
@@ -69,6 +69,6 @@ IoT プラグ アンド プレイ デバイスの開発について学習した�
 - [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C デバイス SDK](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [モデル コンポーネント](concepts-components.md)
+- [IoT プラグ アンド プレイ モデルのコンポーネントの理解](concepts-modeling-guide.md)
 - [DTDL 作成ツールをインストールして使用する](howto-use-dtdl-authoring-tools.md)
 - [IoT プラグ アンド プレイ サービス開発者ガイド](concepts-developer-guide-service.md)

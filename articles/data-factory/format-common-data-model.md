@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: makromer
 ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387701"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式

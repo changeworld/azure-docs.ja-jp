@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 81635a5f81548f0b4edeeb62fae19c567c6942bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bdcd18ab8b223681af0825c13d4927abf83ebfa7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932740"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774379"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - CLI
 
@@ -107,7 +107,7 @@ az network lb create \
 
 ### <a name="create-ipv6-frontend"></a>IPv6 フロントエンドの作成
 
-IPV6 フロントエンド IP を作成するには、[az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) を使用します。 次の例では、*dsLbFrontEnd_v6* という名前のフロントエンド IP 構成を作成して、*dsPublicIP_v6* アドレスをアタッチします。
+IPV6 フロントエンド IP を作成するには、[az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create) を使用します。 次の例では、*dsLbFrontEnd_v6* という名前のフロントエンド IP 構成を作成して、*dsPublicIP_v6* アドレスをアタッチします。
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -120,7 +120,7 @@ az network lb frontend-ip create \
 
 ### <a name="configure-ipv6-back-end-address-pool"></a>IPv6 バックエンド アドレス プールの構成
 
-[az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) を使用して、IPv6 バックエンド アドレス プールを作成します。 次の例では、IPv6 NIC が構成された VM を含めるための *dsLbBackEndPool_v6* という名前のバックエンド アドレス プールを作成します。
+[az network lb address-pool create](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create) を使用して、IPv6 バックエンド アドレス プールを作成します。 次の例では、IPv6 NIC が構成された VM を含めるための *dsLbBackEndPool_v6* という名前のバックエンド アドレス プールを作成します。
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -140,7 +140,7 @@ az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --pro
 
 ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。 着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 
 
-ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) で作成します。 次の例では、*dsLBrule_v4* および *dsLBrule_v6* という名前のロード バランサー規則を作成し、IPv4 および IPv6 フロントエンド IP 構成に応じて、*TCP* ポート *80* のトラフィックを負荷分散します。
+ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) で作成します。 次の例では、*dsLBrule_v4* および *dsLBrule_v6* という名前のロード バランサー規則を作成し、IPv4 および IPv6 フロントエンド IP 構成に応じて、*TCP* ポート *80* のトラフィックを負荷分散します。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -190,7 +190,7 @@ VNet でのインバウンドおよびアウトバウンド通信を管理する
 
 #### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-ネットワーク セキュリティ グループを作成するには、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用します。
+ネットワーク セキュリティ グループを作成するには、[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) を使用します。
 
 
 ```azurecli-interactive
@@ -203,7 +203,7 @@ az network nsg create \
 
 #### <a name="create-a-network-security-group-rule-for-inbound-and-outbound-connections"></a>インバウンドおよびアウトバウンド接続に関するネットワーク セキュリティ グループ規則の作成
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用して、ポート 3389 経由の RDP 接続と、ポート 80 経由のインターネット接続を許可するネットワーク セキュリティ グループ規則を作成します。また、アウトバウンド接続用のネットワーク セキュリティ グループ規則を作成します。
+[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、ポート 3389 経由の RDP 接続と、ポート 80 経由のインターネット接続を許可するネットワーク セキュリティ グループ規則を作成します。また、アウトバウンド接続用のネットワーク セキュリティ グループ規則を作成します。
 
 ```azurecli-interactive
 # Create inbound rule for port 3389
@@ -256,7 +256,7 @@ az network nsg rule create \
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して仮想ネットワークを作成します。 次の例では、*dsVNET* という名前の仮想ネットワークと、サブネット *dsSubNET_v4* および *dsSubNET_v6* を作成します。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 次の例では、*dsVNET* という名前の仮想ネットワークと、サブネット *dsSubNET_v4* および *dsSubNET_v6* を作成します。
 
 ```azurecli-interactive
 # Create the virtual network
@@ -278,7 +278,7 @@ az network vnet subnet create \
 
 ### <a name="create-nics"></a>NIC の作成
 
-各 VM の仮想 NIC を作成するには、[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用します。 次の例では、各 VM の仮想 NIC を作成します。 各 NIC には、2 つの IP 構成があります (1 つは IPv4 構成、1 つは IPv6 構成)。 IPV6 構成を作成するには、[az network nic ip-config create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) を使用します。
+各 VM の仮想 NIC を作成するには、[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用します。 次の例では、各 VM の仮想 NIC を作成します。 各 NIC には、2 つの IP 構成があります (1 つは IPv4 構成、1 つは IPv6 構成)。 IPV6 構成を作成するには、[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create) を使用します。
  
 ```azurecli-interactive
 # Create NICs
@@ -329,7 +329,7 @@ az network nic ip-config create \
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) を使用します。 次の例では、2 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。 
+VM を作成するには、[az vm create](/cli/azure/vm#az_vm_create) を使用します。 次の例では、2 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。 
 
 仮想マシン *dsVM0* を以下のように作成します。
 
@@ -364,7 +364,7 @@ az vm create \
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive
  az group delete --name DsResourceGroup01

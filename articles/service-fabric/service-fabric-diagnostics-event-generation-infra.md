@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric のプラットフォーム レベルの監視
 description: Azure Service Fabric クラスターの監視と診断に使用するプラットフォーム レベルのイベントとログについて説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: f9db0df9370197190c11b740f1fd1af3fb69f19c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9104c390ab4115c626beb4759c6b6952d691ca9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581405"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626522"
 ---
 # <a name="monitoring-the-cluster"></a>クラスターの監視
 

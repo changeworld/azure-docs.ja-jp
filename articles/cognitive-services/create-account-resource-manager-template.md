@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 161c5779926acad8814ec057f24e36f371738483
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928650"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864365"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
@@ -137,9 +137,10 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
-* [Azure Cognitive Services に対する要求の認証](authentication.md)
-* [Azure Cognitive Services とは](./what-are-cognitive-services.md)
-* [自然言語のサポート](language-support.md)
-* [Docker コンテナーのサポート](cognitive-services-container-support.md)
+* Cognitive Services を安全に使用する方法については、「 **[Azure Cognitive Services に対する要求の認証](authentication.md)** 」をご覧ください。
+* Cognitive Services 内のさまざまなカテゴリの一覧を入手するには、「 **[Azure Cognitive Services とは](./what-are-cognitive-services.md)** 」をご覧ください。
+* Cognitive Services がサポートする自然言語の一覧を確認するには、 **[自然言語のサポート](language-support.md)** に関する記事をご覧ください。
+* Cognitive Services をオンプレミスで使用する方法については、 **[コンテナーとしての Cognitive Services の使用](cognitive-services-container-support.md)** に関する記事をご覧ください。
+* Cognitive Services の使用コストを見積もるには、 **[Cognitive Services のコストの計画および管理](plan-manage-costs.md)** に関する記事をご覧ください。

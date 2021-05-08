@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008483"
 ---
 1. プロセス サーバーを実行しているマシンへのリモート デスクトップ接続を確立します。 
@@ -19,7 +19,7 @@ ms.locfileid: "96008483"
 3. **[Configuration Server FQDN Or IP]\(構成サーバーの FQDN または IP\)** に、プロセス サーバーの登録に使用する構成サーバーの名前または IP アドレスを指定します。
 4. **[Configuration Server Port]\(構成サーバーのポート\)** に 443 が指定されていることを確認します。 これは、構成サーバーが要求をリッスンするポートです。
 5. **[Connection Passphrase]\(接続パスフレーズ\)** に、構成サーバーを設定するときに指定したパスフレーズを指定します。 パスフレーズを見つけるには:
-    -  構成サーバーで、Site Recovery のインストール フォルダー * *\home\svssystems\bin\** に移動します。
+    -  構成サーバーで、Site Recovery のインストール フォルダー **\home\svssystems\bin\** に移動します。
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```

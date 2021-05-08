@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義でのタグの使用
 description: この Azure Policy パターンでは、パラメーター化されたタグを追加したり、ポリシー定義内のリソース グループからタグを継承したりする方法の例が示されています。
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c748eb9b8ea795f9725082ec0aa0b8065ada8c65
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88545558"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093369"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy パターン: タグ
 

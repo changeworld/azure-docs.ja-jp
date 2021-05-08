@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e61d2ff3807b65022d72414615af9fa729359358
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101715719"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932456"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure Digital Twins でのエンドポイントとルートの管理 (ポータル)
 
@@ -151,6 +151,11 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 イベント ルートの作成中にイベント フィルターを追加するには、 *[イベント ルートを作成する]* ページの _[イベント ルート フィルターの追加]_ セクションを使用します。 
 
 いくつかの基本的な共通フィルター オプションから選択することも、高度なフィルター オプションを使用して独自のカスタム フィルターを作成することもできます。
+
+>[!NOTE]
+> フィルターは **大文字と小文字を区別** し、ペイロードの大文字と小文字と一致する必要があります。 
+>
+> テレメトリ フィルターの場合、これは、大文字と小文字の指定が、デバイスによって送信されたテレメトリ内の大文字と小文字の指定と一致する必要はあるが、必ずしもツインのモデル内に定義された大文字と小文字の指定に一致する必要はないことを意味します。
 
 #### <a name="use-the-basic-filters"></a>基本的なフィルターを使用する
 

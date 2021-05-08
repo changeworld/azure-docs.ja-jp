@@ -1,15 +1,17 @@
 ---
 title: Azure クイック スタート - Batch アカウントの作成 - Azure Resource Manager テンプレート
 description: このクイックスタートでは、ARM テンプレートを使用して Batch アカウントを作成する方法を示します。
-ms.topic: quickstart
 ms.date: 08/17/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: fc6f1537b32c8ced2cfc2bf09f16106f791001fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: e3405e98e2753a308b6b34b392aa364a67f7fe5b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106582"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535586"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Batch アカウントを作成する
 

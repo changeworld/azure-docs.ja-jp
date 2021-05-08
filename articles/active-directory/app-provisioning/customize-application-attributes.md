@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091110"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579469"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -113,13 +113,13 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - ServiceNow
 - Workday から Active Directory / Workday から Azure Active Directory へ
 - SuccessFactors から Active Directory へ / SuccessFactors から Azure Active Directory へ
-- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)
+- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)。 [拡張機能の作成](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user)と[既知の制限](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)の詳細を参照してください。 
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ
 - Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません
 
 
 > [!NOTE]
-> サポートされている属性一覧の編集は、アプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
+> サポートされている属性一覧の編集は、ソース属性が Azure portal の UI に自動的に表示されない場合、またはアプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
 
 サポートされている属性の一覧を編集するときは、次のプロパティが表示されます。
 

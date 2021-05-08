@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 01a73e7940f88a3eb6e040f26d255448294cab18
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467949"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285359"
 ---
 # <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Form Recognizer 事前構築済み ID カード (ID) モデル
 
-Azure Form Recognizer により、事前構築済み ID モデルを使用して政府機関の ID カード (ID) の情報を分析し、抽出することができます。 強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と ID 認識機能を組み合わせて、世界各国のパスポートと米国の運転免許証 (50 州すべてとワシントン D.C.) から重要な情報を抽出することができます。 ID API により、これらの ID ドキュメントから、名、姓、生年月日、ドキュメント番号などの重要な情報が抽出されます。 この API は、Form Recognizer v2.1 プレビューで、クラウド サービスおよびオンプレミスのコンテナーとして使用できます。
+Azure Form Recognizer により、事前構築済み ID モデルを使用して政府機関の ID カード (ID) の情報を分析し、抽出することができます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と ID 認識機能を組み合わせて、世界各国のパスポートと米国の運転免許証 (50 州すべてとワシントン D.C.) から重要な情報を抽出することができます。 ID API により、これらの ID ドキュメントから、名、姓、生年月日、ドキュメント番号などの重要な情報が抽出されます。 この API は、Form Recognizer v2.1 プレビューで、クラウド サービスおよびオンプレミスのコンテナーとして使用できます。
 
 ## <a name="what-does-the-id-service-do"></a>ID サービスの機能 
 

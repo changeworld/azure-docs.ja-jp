@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034763"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590536"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -24,9 +24,13 @@ Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Defini
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>モデル用の Digital Twin Definition Language (DTDL)
 
-Azure Digital Twins のモデルは、Digital Twins Definition language (DTDL) を使用して定義されます。 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 
+Azure Digital Twins のモデルは、Digital Twins Definition Language (DTDL) を使用して定義されます。 
 
-Azure Digital Twins では、DTDL "**_バージョン 2_**" が使用されます。 このバージョンの DTDL の詳細については、GitHub で次の仕様ドキュメントを参照してください: [*Digital Twins Definition Language (DTDL) - バージョン 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 Azure Digital Twins での DTDL "_バージョン 1_" の使用は、非推奨になっています。
+DTDL の完全な言語仕様については、GitHub: [**Digital Twins Definition Language (DTDL) - Version 2**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を参照してください。
+
+DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 Azure Digital Twins は DTDL **バージョン 2** を使用します (Azure Digital Twins での DTDL バージョン 1 の使用は非推奨となりました)。 
+
+この記事の残りの部分では、Azure Digital Twins で言語を使用する方法について説明します。
 
 > [!NOTE] 
 > DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。

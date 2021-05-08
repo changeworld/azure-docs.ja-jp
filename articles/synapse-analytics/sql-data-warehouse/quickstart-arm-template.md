@@ -5,15 +5,17 @@ services: azure-resource-manager
 author: julieMSFT
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 73f4baf1e48b5495d513fbabe66763538c8cca57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460740"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568473"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を作成する
 

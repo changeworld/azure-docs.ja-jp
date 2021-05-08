@@ -3,12 +3,12 @@ title: Azure クイック スタート - Azure portal を使用したイベン�
 description: このクイックスタートでは、Azure portal を使用して Azure イベント ハブを作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bf83c53792c4934f43e0039d092bb3e36954bf7b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742043"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303119"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート:Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -54,7 +54,7 @@ Event Hubs 名前空間は、イベント ハブの作成先となる一意の�
    1. 前の手順で作成した **リソース グループ** を選択します。   
    1. 名前空間の **名前** を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。  
    1. 名前空間の **場所** を選択します。
-   1. **価格レベル** (Basic または Standard) を選択します。 Basic レベルと Standard レベルのいくつかの違いについては、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」のほか、[レベル間の違い](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers)および[クォータと制限](event-hubs-quotas.md)に関するページを参照してください。 
+   1. **価格レベル** (Basic または Standard) を選択します。 Basic レベルと Standard レベルのいくつかの違いについては、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」のほか、[レベル間の違い](event-hubs-faq.yml#what-is-the-difference-between-event-hubs-basic-and-standard-tiers-)および[クォータと制限](event-hubs-quotas.md)に関するページを参照してください。 
    1. **[throughput units]\(スループット ユニット\)** 設定はそのままにしておきます。 スループット ユニットとは、購入済みの容量ユニットのことです。 スループット ユニットの詳細については、[Event Hubs のスケーラビリティ](event-hubs-scalability.md#throughput-units)に関するページを参照してください。  
    1. ページの下部にある **[確認および作成]** を選択します。
       

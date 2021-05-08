@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.service: azure-object-anchors
-ms.openlocfilehash: 74663f05c5ff995a090c7cd35e4edf46a754da17
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 551374824610c0257aaf52c45768d31849026524
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047543"
 ---
 # <a name="runtime-sdk-overview"></a>Runtime SDK の概要
 
@@ -25,59 +25,59 @@ ms.locfileid: "102034610"
 
 ### <a name="objectmodel"></a>ObjectModel
 
-[ObjectModel](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectmodel) は、物理オブジェクトのジオメトリを表し、検出と姿勢推定に必要なパラメーターをエンコードします。 これは、[Object Anchors サービス](../quickstarts/get-started-model-conversion.md)を使用して作成する必要があります。 その後、アプリケーションは、Object Anchors API を使用して、生成されたモデル ファイルを読み込み、視覚化のためにそのモデルに埋め込まれているメッシュに対してクエリを実行できます。
+[ObjectModel](/dotnet/api/microsoft.azure.objectanchors.objectmodel) は、物理オブジェクトのジオメトリを表し、検出と姿勢推定に必要なパラメーターをエンコードします。 これは、[Object Anchors サービス](../quickstarts/get-started-model-conversion.md)を使用して作成する必要があります。 その後、アプリケーションは、Object Anchors API を使用して、生成されたモデル ファイルを読み込み、視覚化のためにそのモデルに埋め込まれているメッシュに対してクエリを実行できます。
 
 ### <a name="objectsearcharea"></a>ObjectSearchArea
 
-[ObjectSearchArea](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) は、1 つまたは複数のオブジェクトを検索する領域を指定します。 これは、空間グラフ ノード ID と、空間グラフ ノード ID で表される座標系の空間境界によって定義されます。 Object Anchors Runtime SDK では、4 種類の境界 (すなわち、**ビューのフィールド**、**境界ボックス**、**球**、および **場所**) がサポートされています。
+[ObjectSearchArea](/dotnet/api/microsoft.azure.objectanchors.objectsearcharea) は、1 つまたは複数のオブジェクトを検索する領域を指定します。 これは、空間グラフ ノード ID と、空間グラフ ノード ID で表される座標系の空間境界によって定義されます。 Object Anchors Runtime SDK では、4 種類の境界 (すなわち、**ビューのフィールド**、**境界ボックス**、**球**、および **場所**) がサポートされています。
 
 ### <a name="objectquery"></a>ObjectQuery
 
-[ObjectQuery](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery) は、指定したモデルのオブジェクトを検索する方法を **オブジェクト オブザーバー** に伝えます。 次のチューニング可能なパラメーターが用意されています。その既定値は、オブジェクト モデルから取得できます。
+[ObjectQuery](/dotnet/api/microsoft.azure.objectanchors.objectquery) は、指定したモデルのオブジェクトを検索する方法を **オブジェクト オブザーバー** に伝えます。 次のチューニング可能なパラメーターが用意されています。その既定値は、オブジェクト モデルから取得できます。
 
 #### <a name="minsurfacecoverage"></a>MinSurfaceCoverage
 
-[MinSurfaceCoverage](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) プロパティでは、インスタンスを検出済みと見なす値が示されます。
+[MinSurfaceCoverage](/dotnet/api/microsoft.azure.objectanchors.objectquery.minsurfacecoverage) プロパティでは、インスタンスを検出済みと見なす値が示されます。
 
 **オブザーバー** は、オブジェクトの候補ごとに、変換されたオブジェクト モデルとシーンの間で重複するサーフェスの比率を計算し、カバレッジの比率が所定のしきい値を超えた場合にのみ、アプリケーションにその候補を報告します。
 
 #### <a name="isexpectedtobestandingongroundplane"></a>IsExpectedToBeStandingOnGroundPlane
 
-[IsExpectedToBeStandingOnGroundPlane](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) プロパティは、ターゲット オブジェクトがグランド プレーン上にあると予想されているかどうかを示します。
+[IsExpectedToBeStandingOnGroundPlane](/dotnet/api/microsoft.azure.objectanchors.objectquery.isexpectedtobestandingongroundplane) プロパティは、ターゲット オブジェクトがグランド プレーン上にあると予想されているかどうかを示します。
 
 グランド プレーンは、検索領域内で最も低い水平床です。 これにより、可能なオブジェクトの姿勢に対して適切な制約が提供されます。 このフラグをオンにすると、**オブザーバー** によって、限られた空間内の姿勢が推定され、精度が向上する場合があります。 モデルがグランド プレーン上にあると想定されていない場合、このパラメーターは無視されます。
 
 #### <a name="expectedmaxverticalorientationindegrees"></a>ExpectedMaxVerticalOrientationInDegrees
 
-[ExpectedMaxVerticalOrientationInDegrees](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) プロパティは、オブジェクト インスタンスの上方向と重力の間の予想される最大角度 (度数) を示します。
+[ExpectedMaxVerticalOrientationInDegrees](/dotnet/api/microsoft.azure.objectanchors.objectquery.expectedmaxverticalorientationindegrees) プロパティは、オブジェクト インスタンスの上方向と重力の間の予想される最大角度 (度数) を示します。
 
 このパラメーターによって、推定される姿勢の上方向に対して別の制約が提供されます。 たとえば、オブジェクトが真っすぐ立っている場合、このパラメーターは 0 にすることができます。 Object Anchors は、モデルと異なるオブジェクトを検出することは想定していません。 モデルが真っすぐ立っている場合は、横向きに置かれたインスタンスは検出されません。 横向きのレイアウト用に新しいモデルが使用されます。 関節についても同じルールが適用されます。
 
 #### <a name="maxscalechange"></a>MaxScaleChange
 
-[MaxScaleChange](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) プロパティは、空間マッピングに対するオブジェクトの最大のスケール変更 (0 から 1 以内) を示します。 推定されたスケールは、原点を中心とし、座標軸に沿った、変換されたオブジェクトの頂点に適用されます。 推定されるスケールは、CAD モデルとそれを物理的に表したものとの間の実際のスケールではなく、アプリが物理オブジェクト上の空間マッピングに近いオブジェクト モデルをレンダリングできるようにするいくつかの値である場合があります。
+[MaxScaleChange](/dotnet/api/microsoft.azure.objectanchors.objectquery.maxscalechange) プロパティは、空間マッピングに対するオブジェクトの最大のスケール変更 (0 から 1 以内) を示します。 推定されたスケールは、原点を中心とし、座標軸に沿った、変換されたオブジェクトの頂点に適用されます。 推定されるスケールは、CAD モデルとそれを物理的に表したものとの間の実際のスケールではなく、アプリが物理オブジェクト上の空間マッピングに近いオブジェクト モデルをレンダリングできるようにするいくつかの値である場合があります。
 
 #### <a name="searchareas"></a>SearchAreas
 
-[SearchAreas](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) プロパティは、オブジェクトを検索する空間境界の配列を示します。
+[SearchAreas](/dotnet/api/microsoft.azure.objectanchors.objectquery.searchareas) プロパティは、オブジェクトを検索する空間境界の配列を示します。
 
 **オブザーバー** は、クエリに指定されたすべての検索領域の結合空間内でオブジェクトを検索します。 このリリースでは、待機時間を短縮するために、最も信頼度の高いオブジェクトが最大で 1 つ返されます。
 
 ### <a name="objectinstance"></a>ObjectInstance
 
-[ObjectInstance](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectinstance) は、特定のモデルのインスタンスが HoloLens の座標系に存在する可能性がある仮想的位置を表します。 各インスタンスには、推定された姿勢がどのくらい適切かを示す `SurfaceCoverage` プロパティが付属します。
+[ObjectInstance](/dotnet/api/microsoft.azure.objectanchors.objectinstance) は、特定のモデルのインスタンスが HoloLens の座標系に存在する可能性がある仮想的位置を表します。 各インスタンスには、推定された姿勢がどのくらい適切かを示す `SurfaceCoverage` プロパティが付属します。
 
 インスタンスは、`ObjectObserver.DetectAsync` メソッドを呼び出すことによって作成され、有効である間は自動的にバックグラウンドで更新されます。 アプリケーションは、特定のインスタンスの状態変更イベントをリッスンしたり、更新を一時停止または再開するように追跡モードを変更したりできます。 追跡が失われると、インスタンスは自動的に **オブザーバー** から削除されます。
 
 ### <a name="objectobserver"></a>ObjectObserver
 
-[ObjectObserver](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.objectobserver) は、オブジェクト モデルを読み込み、それらのインスタンスを検出し、HoloLens 座標系での各インスタンスの 6-DoF 姿勢を報告します。
+[ObjectObserver](/dotnet/api/microsoft.azure.objectanchors.objectobserver) は、オブジェクト モデルを読み込み、それらのインスタンスを検出し、HoloLens 座標系での各インスタンスの 6-DoF 姿勢を報告します。
 
 オブジェクト モデルまたはインスタンスはいずれも **オブザーバー** から作成されますが、その有効期間は独立しています。 アプリケーションは、オブザーバーを破棄して、オブジェクト モデルまたはインスタンスを引き続き使用できます。
 
 ### <a name="objectdiagnosticssession"></a>ObjectDiagnosticsSession
 
-[ObjectDiagnosticSession](https://docs.microsoft.com/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) は診断を記録し、データをアーカイブに書き込みます。
+[ObjectDiagnosticSession](/dotnet/api/microsoft.azure.objectanchors.diagnostics.objectdiagnosticssession) は診断を記録し、データをアーカイブに書き込みます。
 
 診断アーカイブには、シーン ポイント クラウド、オブザーバーの状態、およびモデルに関する情報が含まれています。 この情報は、発生する可能性のあるランタイムの問題を特定するのに役立ちます。 詳細については、[FAQ](../faq.md) をご覧ください。
 

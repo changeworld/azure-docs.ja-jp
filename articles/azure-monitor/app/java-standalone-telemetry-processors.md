@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 35e53454e5b2c6265082bbedb4a8b60e82df7191
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 991e52c13a5730b83552abb6b922d4d7a57c5429
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734572"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024117"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>テレメトリ プロセッサ (プレビュー) - Azure Monitor Application Insights for Java
 
@@ -21,10 +21,13 @@ ms.locfileid: "101734572"
 Application Insights の Java 3.0 エージェントでは、テレメトリ データを、データがエクスポートされる前に処理することができます。
 
 テレメトリ プロセッサのユース ケースを次にいくつか示します。
- * 機密データを作成する。
+ * 機密データをマスクする。
  * 条件付きでカスタム ディメンションを追加する。
  * スパン名を更新する。これは、Azure portal で同様のテレメトリを集計するために使用されます。
- * インジェスト コストを制御するためにスパン属性を削除する。
+ * インジェスト コストを制御するために特定のスパン属性を削除する。
+
+> [!NOTE]
+> インジェスト コストを制御するために特定の (全体の) スパンを削除しようとしている場合は、「[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)」参照してください。
 
 ## <a name="terminology"></a>用語
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f670af1fca4b4638988e53075f092ca1bbac55b2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584299"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578262"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>ユーザーをサインインさせる Web アプリ:運用環境に移行する
 
@@ -48,6 +48,12 @@ Microsoft.Identity.Web NuGet パッケージでは、最も一般的な SameSite
 - 職場または学校アカウント、または個人用 Microsoft アカウント
 - [Azure AD B2C](../../active-directory-b2c/overview.md)
 - 各国のクラウド
+
+## <a name="tutorial-nodejs-web-app"></a>チュートリアル: Node.js Web アプリ
+
+このチュートリアルでは Node.js web について詳しく学習します。
+
+[チュートリアル: Node.js + Express Web アプリにユーザーをサインインさせる](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-nodejs-webapp-msal)
 
 ## <a name="sample-code-java-web-app"></a>サンプル コード:Java Web アプリ
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 6e1064e4362175b3de5187ce050f1719ede56bd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96018751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>チュートリアル: Azure Active Directory と Talent Palette の統合
@@ -100,7 +100,7 @@ Talent Palette を使用して Azure AD のシングル サインオンを構成
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[基本的な SAML 構成] を示すスクリーンショット。ここに応答 U R L を入力することができます。](common/both_replyurl.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。ここに応答 URL を入力することができます。](common/both_replyurl.png)
 
     **[応答 URL]** ボックスに、`https://talent-p.net/saml/acs/<tenantID>` のパターンを使用して URL を入力します
 

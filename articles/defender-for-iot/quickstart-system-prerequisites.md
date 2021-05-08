@@ -1,17 +1,22 @@
 ---
-title: システムの前提条件
-description: Azure Defender for IoT を実行するために必要なシステムの前提条件を確認します。
+title: 'クイックスタート: システムの前提条件'
+description: このクイックスタートでは、Azure Defender for IoT を実行するために必要なシステムの前提条件を確認します。
 ms.date: 11/30/2020
 ms.topic: quickstart
-ms.openlocfilehash: 78d5948554ae531c4b2f77d67bb916d5290db943
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 2aae849b6ee772c2aa29c680f3b107af3ed600b0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780941"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382948"
 ---
-# <a name="system-prerequisites"></a>システムの前提条件
+# <a name="quickstart-system-prerequisites"></a>クイックスタート: システムの前提条件
+
 この記事では、Azure Defender for IoT を実行するためのシステムの前提条件を示します。
+
+## <a name="prerequisites"></a>前提条件
+
+- なし
 
 ## <a name="minimum-requirements"></a>最小要件
 
@@ -27,7 +32,7 @@ Defender for IoT では、すべてのヨーロッパ リージョンのすべ�
 
 詳細については、[IoT Hub によりサポートされるリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=iot-hub)に関するページをご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
-- [必要なアプライアンスを特定する](how-to-identify-required-appliances.md)
-- [Azure Defender for IoT のネットワーク設定について](how-to-set-up-your-network.md)
+> [!div class="nextstepaction"]
+> [必要なアプライアンスを特定する](how-to-identify-required-appliances.md)

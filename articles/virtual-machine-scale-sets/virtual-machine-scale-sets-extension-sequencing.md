@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 01/30/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3271041b9f4db100cd05588129c7d714d4478f10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b5aea1f0f0101231408dc9ad7b57a30f2c86256
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83121033"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788159"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>仮想マシン スケール セット内の拡張機能のプロビジョニングをシーケンス処理する
 Azure 仮想マシンの拡張機能は、デプロイ後の構成と管理、監視、セキュリティなどの機能を提供します。 通常、運用環境のデプロイでは、目的の結果を実現するために、VM インスタンス用に構成された複数の拡張機能の組み合わせを使用します。
@@ -223,7 +223,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az vmss 拡張機能セット](/cli/azure/vmss/extension#az-vmss-extension-set) を使用して、アプリケーションの正常性拡張機能をスケール セット モデルの定義に追加します。 拡張機能のシーケンス処理では、Azure CLI 2.0.55 以上を使用する必要があります。
+[az vmss 拡張機能セット](/cli/azure/vmss/extension#az_vmss_extension_set) を使用して、アプリケーションの正常性拡張機能をスケール セット モデルの定義に追加します。 拡張機能のシーケンス処理では、Azure CLI 2.0.55 以上を使用する必要があります。
 
 次の例は、Windows ベースのスケール セットのスケール セット モデルに[アプリケーションの正常性拡張機能](virtual-machine-scale-sets-health-extension.md)を追加しています。 アプリケーションの正常性拡張機能は、スケール セット内に既に定義されている[カスタム スクリプト拡張機能](../virtual-machines/extensions/custom-script-windows.md)のプロビジョニング後にプロビジョニングされます。
 

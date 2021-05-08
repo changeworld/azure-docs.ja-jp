@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 02/15/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: dd027f94edad580836f0afb8c7293c81ca77605a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101723828"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>Change Tracking と Inventory に関する問題のトラブルシューティング

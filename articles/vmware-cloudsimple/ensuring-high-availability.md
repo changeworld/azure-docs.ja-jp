@@ -8,32 +8,32 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c80b9fd65588fe6c390f44b34509168f3bfb549
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895752"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077688"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Azure 上で VMware を実行する場合のアプリケーション高可用性の確保
 
 CloudSimple ソリューションでは、Azure 環境内の VMware 上で実行されているアプリケーションの高可用性が実現されます。 次の表に、障害のシナリオと、関連する高可用性機能を示します。
 
-| 障害のシナリオ | アプリケーションが保護されているか? | プラットフォーム HA 機能 | VMware HA 機能 | Azure HA 機能 |
------------- | ------------- | ------------ | ------------ | ------------- |
-| ディスク障害 | YES | 障害が発生したノードの高速置換 | [vSAN の既定のストレージ ポリシーについて](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| ファン障害 | YES | 冗長性のあるファン、障害が発生したノードの高速置換 |  |  |
-| NIC の障害 | YES | 冗長性のある NIC、障害が発生したノードの高速置換
-| ホストの電源障害 | YES | 冗長電源 |  |  |
-| ESXi ホスト障害 | YES | 障害が発生したノードの高速置換 | [VMware vSphere の高可用性](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM の障害 | YES | [ロード バランサー](load-balancers.md)  | [VMware vSphere の高可用性](https://www.vmware.com/products/vsphere/high-availability.html) | ステートレス VMware VM 用の Azure Load Balancer |
-| リーフ スイッチ ポートの障害 | YES | 冗長性のある NIC |  |  |
-| リーフ スイッチの障害 | YES | 冗長性のあるリーフ スイッチ |  |  |
-| ラックの障害 | YES | 配置グループ |  |  |
-| オンプレミスの DC へのネットワーク接続 | YES  | 冗長性のあるネットワーク サービス |  | 冗長性のある ER 回線 |
-| Azure へのネットワーク接続 | YES | |  | 冗長性のある ER 回線 |
-| データセンターの障害 | YES |  |  | 可用性ゾーン |
-| リージョンの障害 | YES  |  |  | Azure Azure リージョン |
+|  障害のシナリオ  |  アプリケーションが保護されているか?  |  プラットフォーム HA 機能  |  VMware HA 機能  |  Azure HA 機能  |
+|----------------------------------------|------------------------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+|  ディスク障害  |  YES  |  障害が発生したノードの高速置換  |  [vSAN の既定のストレージ ポリシーについて](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html)  |  |
+|  ファン障害  |  YES  |  冗長性のあるファン、障害が発生したノードの高速置換  |  |  |
+|  NIC の障害  |  YES  |  冗長性のある NIC、障害が発生したノードの高速置換  |  |  |
+|  ホストの電源障害  |  YES  |  冗長電源  |  |  |
+|  ESXi ホスト障害  |  YES  |  障害が発生したノードの高速置換  |  [VMware vSphere の高可用性](https://www.vmware.com/products/vsphere/high-availability.html)  |  |
+|  VM の障害  |  YES  |  [ロード バランサー](load-balancers.md)  |  [VMware vSphere の高可用性](https://www.vmware.com/products/vsphere/high-availability.html)  |  ステートレス VMware VM 用の Azure Load Balancer  |
+|  リーフ スイッチ ポートの障害  |  YES  |  冗長性のある NIC  |  |  |
+|  リーフ スイッチの障害  |  YES  |  冗長性のあるリーフ スイッチ  |  |  |
+|  ラックの障害  |  YES  |  配置グループ  |  |  |
+|  オンプレミスの DC へのネットワーク接続  |  YES  |  冗長性のあるネットワーク サービス  |  |  冗長性のある ER 回線  |
+|  Azure へのネットワーク接続  |  YES  |  |  |  冗長性のある ER 回線  |
+|  データセンターの障害  |  YES  |  |  |  可用性ゾーン  |
+|  リージョンの障害  |  YES  |  |  |  Azure リージョン  |
 
 Azure VMware Solution by CloudSimple には、以下の高可用性機能が用意されています。
 

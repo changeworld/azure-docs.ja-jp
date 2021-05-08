@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 04/01/2021
+ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964433"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219367"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーのプラン作成する方法
 
@@ -154,7 +154,9 @@ Microsoft がパートナーに代わって消費税および使用税を送金�
 
 別のソリューション テンプレートまたはマネージド アプリケーションによって参照されることにより間接的にのみ使用されることを意図されている仮想マシンの場合、仮想マシンを発行しても、顧客がそれを直接検索したり参照したりできないようにするには、このチェック ボックスをオンにします。
 
-非表示のプランでは、プレビュー リンクはサポートされません。
+すべての Azure のお客様は、PowerShell または CLI を使用してオファーをデプロイできます。  限定された一連の顧客がこのオファーを利用できるようにする場合は、プランを **[プライベート]** に設定します。 
+
+非表示のプランでは、プレビュー リンクは生成されません。 ただし、[こちらの手順に従って](azure-vm-create-faq.md#how-do-i-test-a-hidden-preview-image)それらをテストすることはできます。 
 
 左側のナビゲーション プラン メニューの次のタブである **[技術的な構成]** に進む前に、 **[下書きの保存]** を選択してください。
 
@@ -221,6 +223,8 @@ VM が **高速ネットワークをサポートしている** かどうかを�
 使用するオペレーティング システムに関係なく、ソリューションに必要な最小数のデータ ディスクのみを追加します。 顧客はデプロイ時にイメージの一部であるディスクを削除することはできませんが、デプロイ中またはデプロイ後にいつでもディスクを追加できます。
 
 **[下書きの保存]** を選択してから、作成したばかりのプランの左上にある **[← プランの概要]** を選択します。
+
+VM イメージが発行されたら、Azure ストレージからイメージを削除できます。
 
 ## <a name="next-steps"></a>次のステップ
 

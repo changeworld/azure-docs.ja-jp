@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 357fe1844fabf6ec241d509651b4f0cbcffa3df3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa7bc6b979869a06ba7441ae33a47f82aea0704c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009132"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063969"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する  
 
@@ -715,7 +715,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 ```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>静的暗号化を使用して AES-128 で HLSv3 を保護する
-AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。 動的暗号化を使用する場合は、「 [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
+AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。 動的暗号化を使用する場合は、「 [AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)」を参照してください。
 
 > [!NOTE]
 > コンテンツを HLS に変換するには、まずコンテンツを Smooth Streaming に変換/エンコードする必要があります。

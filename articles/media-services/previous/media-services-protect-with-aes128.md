@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7dacc01b37fb91f02fe67f76fe79c0bfa9375ea7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b4375e7b68f0b279a971e92775ca454f06dcbd45
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009540"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067335"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [.NET](media-services-protect-with-aes128.md)
+> * [.NET](media-services-playready-license-template-overview.md)
 > * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
@@ -55,7 +55,7 @@ Media Services キー配信サービスと動的暗号化を使用して、AES �
 
 2. [ファイルが含まれている資産をアダプティブ ビットレート MP4 セットにエンコードします](media-services-protect-with-aes128.md#encode_asset)。
 
-3. [コンテンツ キーを作成し、それをエンコードした資産に関連付けます](media-services-protect-with-aes128.md#create_contentkey)。 Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
+3. [コンテンツ キーを作成し、それをエンコードした資産に関連付けます]media-services-protect-with-aes128.md#create_contentkey)。 Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
 
 4. [コンテンツ キーの承認ポリシーを構成します](media-services-protect-with-aes128.md#configure_key_auth_policy)。 コンテンツ キー承認ポリシーを構成する必要があります。 コンテンツ キーがクライアントに配信される前に、クライアントはポリシーの要件を満たす必要があります。
 

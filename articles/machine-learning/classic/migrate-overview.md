@@ -3,17 +3,17 @@ title: 'ML スタジオ (クラシック): Azure Machine Learning に移行す�
 description: 最新のデータ サイエンス プラットフォームのために、スタジオ (クラシック) から Azure Machine Learning に移行します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: fda34a7ee06d35846bcec571e904297d0421c38f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fafb9f7e84263c33cf1b15a52742ec9cd0380a40
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565628"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311857"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning への移行
 
@@ -46,7 +46,7 @@ Azure Machine Learning に移行するには、次の方法をお勧めします
 
 3. Azure Machine Learning デザイナーで、ご自分の重要なスタジオ (クラシック) モジュールがサポートされていることを確認します。 詳細については、後述の「[スタジオ (クラシック) とデザイナーのモジュールマッピング](#studio-classic-and-designer-module-mapping)」の表を参照してください。
 
-4. [Azure Machine Learning ワークスペースを作成](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace?tabs=azure-portal)します。
+4. [Azure Machine Learning ワークスペースを作成](../how-to-manage-workspace.md?tabs=azure-portal)します。
 
 ## <a name="step-2-create-a-migration-plan"></a>手順 2:移行計画を作成する
 
@@ -162,9 +162,3 @@ Azure Machine Learning では、リアルタイムの予測に **リアルタイ
 1. [スタジオ (クラシック) の Web サービスを再構築します](migrate-rebuild-web-service.md)。
 1. [Azure Machine Learning の Web サービスをクライアント アプリと統合します](migrate-rebuild-integrate-with-client-app.md)。
 1. [R スクリプトの実行を移行します](migrate-execute-r-script.md)。
-
-
-
-
-
-

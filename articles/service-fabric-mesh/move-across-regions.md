@@ -6,12 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 1b59d482b8b88e37da2d61636ff3f254a46ba5c2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9f3fcdc56b4e8d7873872212cb62f57a7669b459
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99626089"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726630"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh アプリケーションを別の Azure リージョンに移動する
 
@@ -22,7 +22,7 @@ ms.locfileid: "99626089"
 
 この記事では、Service Fabric Mesh アプリケーションおよびそのリソースを別の Azure リージョンに移動する方法について説明します。 さまざまな理由により、リソースを別のリージョンに移動する場合があります。 たとえば、障害への対応、特定のリージョンでのみ利用可能な機能やサービスの取得、内部ポリシーとガバナンスの要件の達成、容量計画の要求への対応などです。
 
- Azure リージョン間でリソースを直接移動する機能は、[Service Fabric Mesh ではサポートされていません](../azure-resource-manager/management/region-move-support.md#microsoftservicefabricmesh)。 ただし、現在の Azure Resource Manager テンプレートのコピーを新しいターゲット リージョンにデプロイし、イグレス トラフィックと依存関係を新しく作成された Service Fabric Mesh アプリケーションにリダイレクトすることで、リソースを間接的に移動できます。
+ Azure リージョン間でリソースを直接移動する機能は、[Service Fabric Mesh ではサポートされていません](../azure-resource-manager/management/move-support-resources.md#microsoftservicefabricmesh)。 ただし、現在の Azure Resource Manager テンプレートのコピーを新しいターゲット リージョンにデプロイし、イグレス トラフィックと依存関係を新しく作成された Service Fabric Mesh アプリケーションにリダイレクトすることで、リソースを間接的に移動できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ ms.locfileid: "99626089"
 
 2. エクスポートしたテンプレートを使用して、Azure portal を使用して「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」の手順に従います。 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、または [REST API](../azure-resource-manager/templates/deploy-rest.md) を使用することもできます。
 
-3. [Azure ストレージ アカウント](../storage/common/storage-account-move.md)などの関連リソースの移動に関するガイダンスについては、「[リージョン間の Azure リソースの移動](../azure-resource-manager/management/move-region.md)」に記載されている各サービスのガイダンスを参照してください。
+3. [Azure ストレージ アカウント](../storage/common/storage-account-move.md)などの関連リソースの移動に関するガイダンスについては、「[リージョン間の Azure リソースの移動](../azure-resource-manager/management/move-resources-overview.md#move-resources-across-regions)」に記載されている各サービスのガイダンスを参照してください。
 
 ## <a name="verify"></a>確認
 
@@ -61,8 +61,8 @@ Service Fabric Mesh アプリケーションの移動を完了するには、[�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [リージョン間で Azure リソースを移動する](../azure-resource-manager/management/move-region.md)
-* [リージョン間の Azure リソースの移動のサポート](../azure-resource-manager/management/region-move-support.md)
+* [リージョン間で Azure リソースを移動する](../azure-resource-manager/management/move-resources-overview.md#move-resources-across-regions)
+* [リージョン間の Azure リソースの移動のサポート](../azure-resource-manager/management/move-support-resources.md)
 * [リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 * [リソースの移動操作のサポート](../azure-resource-manager/management/move-support-resources.md
 )

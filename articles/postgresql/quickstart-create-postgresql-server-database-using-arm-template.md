@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:Azure DB for PostgreSQL を作成する - ARM テンプレート
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 02/11/2021
-ms.openlocfilehash: fb9f12b3b31f1049cd4d9306294783e514331229
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: db65a4bb5137da23f125d67920a2ff9a1a801141
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382193"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606724"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:ARM テンプレートを使用して、Azure Database for PostgreSQL - Single Server を作成する
 

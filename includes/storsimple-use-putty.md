@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95995432"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>シリアル コンソールを使用して接続するには
 1. シリアル ケーブルをデバイスに接続します (直接、または USB シリアル アダプターを使用)。
-2. **コントロール パネル** を開き、 **[デバイス マネージャー]** を開きます。
+2. **コントロール パネル** を開き、**[デバイス マネージャー]** を開きます。
 3. 次の図に示すように COM ポートを確認します。
    
      ![シリアル コンソールを使用した接続](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
 4. PuTTY を起動します。 
-5. 右側のウィンドウで、 **[接続の種類]** を **[シリアル]** に変更します。
+5. 右側のウィンドウで、[**接続の種類**] を [**シリアル**] に変更します。
 6. 右側のウィンドウで、適切な COM ポートを入力します。 シリアル構成パラメーターが次のように設定されていることを確認します。
    
    * 速度: 115,200
@@ -35,5 +35,5 @@ ms.locfileid: "95995432"
      > 既定のフロー制御の設定が動作しない場合は、フロー制御を [XON/XOFF] に設定してみてください。
      > 
      > 
-7. **[開く]** をクリックして、シリアル セッションを開始します。
+7. [**開く**] をクリックして、シリアル セッションを開始します。
 

@@ -5,14 +5,14 @@ services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
-ms.date: 08/31/2020
+ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 92080f119567d185ca6a5bccf0e89d8d10213f3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732311"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628528"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用してプライベート エンドポイントを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "101732311"
 このクイックスタートでは、Azure Attestation のプライベート エンドポイントを作成し、仮想マシンをデプロイしてプライベート接続をテストします。  
 
 > [!NOTE]
-> 現在の実装には、自動承認オプションのみが含まれています。 プライベート エンドポイントの作成を続行できるようにするには、サブスクリプションをホワイトリストに登録する必要があります。 以下の手順を進める前に、サービス チームに連絡するか、[Azure サポート ページ](https://azure.microsoft.com/support/options/)で Azure サポート リクエストを送信してください。
+> 現在の実装には、自動承認オプションのみが含まれています。 プライベート エンドポイントの作成を続行できるようにするには、サブスクリプションを許可リストに登録する必要があります。 以下の手順を進める前に、サービス チームに連絡するか、[Azure サポート ページ](https://azure.microsoft.com/support/options/)で Azure サポート リクエストを送信してください。
 
 ## <a name="prerequisites"></a>前提条件
 

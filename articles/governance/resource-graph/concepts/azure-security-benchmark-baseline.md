@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e5e01c8d1ac16e5e8be405660a0726796789e645
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ad8968fdb6548da29a031f0e44bd3671f67b5553
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557719"
 ---
 # <a name="azure-security-baseline-for-azure-resource-graph"></a>Azure Resource Graph 用の Azure セキュリティ ベースライン
 
@@ -30,7 +30,7 @@ Azure Resource Graph を完全に Azure セキュリティ ベンチマークに
 
 **ガイダンス**: Azure Resource Graph では、Azure ロールベースのアクセス制御 (Azure RBAC) に基づいて、リソースの種類とプロパティへのアクセスが提供されます。 セキュリティ プリンシパル (ユーザー、グループ、およびサービス アカウント) に付与されたアクセス権を定期的に監査して確認し、クエリが適切なリソースの結果を返すようにします。
 
-- [Azure Resource Graph でのアクセス許可](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)
 
 - [Azure ID アクセス レビューの使用方法](../../../active-directory/governance/access-reviews-overview.md)
 
@@ -46,7 +46,7 @@ Azure Resource Graph を完全に Azure セキュリティ ベンチマークに
 
 **ガイダンス**: Azure RBAC を使用して、データとリソースへのアクセスを制御します。 Azure Resource Graph を使用するには、クエリ対象のリソースに対する適切なアクセス権も必要です。 このアクセスは、読み取り専用にする必要があり、必要な担当者にのみ付与する必要があります。
 
-- [Azure Resource Graph でのアクセス許可](https://docs.microsoft.com/azure/governance/resource-graph/overview#permissions-in-azure-resource-graph)
+- [Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)
 
 - [Azure RBAC を構成する方法](../../../role-based-access-control/role-assignments-rest.md)
 
@@ -96,5 +96,5 @@ Azure Resource Graph を完全に Azure セキュリティ ベンチマークに
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../../../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../../../security/benchmarks/security-baselines-overview.md)の詳細について学習する

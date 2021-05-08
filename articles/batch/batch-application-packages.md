@@ -2,17 +2,17 @@
 title: コンピューティング ノードへのアプリケーション パッケージのデプロイ
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 04/13/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9c4b40f0e99475fc0b19ec94a14f67af131e5f59
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033733"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389385"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -59,6 +59,9 @@ Azure Batch では、" *アプリケーション* " という用語は、プー�
 ## <a name="upload-and-manage-applications"></a>アプリケーションのアップロードと管理
 
 [Azure portal](https://portal.azure.com) または Batch Management API を使用して、Batch アカウントのアプリケーション パッケージを管理できます。 以下のセクションでは、ストレージ アカウントをリンクする方法と、Azure portal でアプリケーションとアプリケーション パッケージを追加および管理する方法について説明します。
+
+> [!NOTE]
+> [ARM テンプレート](quick-create-template.md)の [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts) リソースでアプリケーションの値を定義できますが、現時点では、ARM テンプレートを使用して、Batch アカウントで使用するアプリケーション パッケージをアップロードすることはできません。 [下](#add-a-new-application)で説明されているように、リンクされたストレージ アカウントにアップロードする必要があります。
 
 ### <a name="link-a-storage-account"></a>ストレージ アカウントをリンクする
 
@@ -151,7 +154,13 @@ CloudPool myCloudPool =
         poolId: "myPool",
         targetDedicatedComputeNodes: 1,
         virtualMachineSize: "standard_d1_v2",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+        VirtualMachineConfiguration: new VirtualMachineConfiguration(
+            imageReference: new ImageReference(
+                                publisher: "MicrosoftWindowsServer",
+                                offer: "WindowsServer",
+                                sku: "2019-datacenter-core",
+                                version: "latest"),
+            nodeAgentSkuId: "batch.node.windows amd64");
 
 // Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>

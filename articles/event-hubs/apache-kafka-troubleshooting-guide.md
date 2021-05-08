@@ -3,12 +3,12 @@ title: Apache Kafka 用 Azure Event Hubs に関する問題をトラブルシュ
 description: この記事では、Apache Kafka 用 Azure Event Hubs に関する問題をトラブルシューティングする方法を示します
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e32e02947b9f004755381d562fd3f3c897b70674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9d4a93f0074f206cd4627913505c66eb6480cbd
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90061429"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314084"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Event Hubs 用 Apache Kafka トラブルシューティング ガイド
 この記事では、Apache Kafka 用 Event Hubs を使用するときに発生する可能性がある問題のトラブルシューティングのヒントを示します。 
@@ -67,5 +67,5 @@ Event Hubs と Kafka 用 Event Hubs の詳細については、次の記事を�
 
 - [Event Hubs 用 Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)
 - [Event Hubs 用 Apache Kafka 移行ガイド](apache-kafka-migration-guide.md)
-- [よく寄せられる質問 - Apache Kafka 用 Event Hubs](apache-kafka-frequently-asked-questions.md)
+- [よく寄せられる質問 - Apache Kafka 用 Event Hubs](apache-kafka-frequently-asked-questions.yml)
 - [推奨される構成](apache-kafka-configurations.md)

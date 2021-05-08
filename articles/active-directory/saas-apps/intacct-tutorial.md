@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
 ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736979"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>チュートリアル:Sage Intacct と Azure Active Directory を統合する
@@ -110,7 +110,7 @@ Sage Intacct に対する Azure AD SSO を構成してテストするには、�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -122,7 +122,7 @@ Sage Intacct に対する Azure AD SSO を構成してテストするには、�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Sage Intacct へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -134,13 +134,13 @@ Sage Intacct に対する Azure AD SSO を構成してテストするには、�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-sage-intacct-sso"></a>Sage Intacct SSO の構成
+## <a name=&quot;configure-sage-intacct-sso&quot;></a>Sage Intacct SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Sage Intacct 企業サイトに管理者としてサインインします。
 
 1. **[会社]** タブをクリックし、 **[会社情報]** をクリックします。
 
-    ![Company](./media/intacct-tutorial/ic790037.png "[会社]")
+    ![Company](./media/intacct-tutorial/ic790037.png &quot;[会社]")
 
 1. **[セキュリティ]** タブをクリックし、 **[編集]** をクリックします。
 

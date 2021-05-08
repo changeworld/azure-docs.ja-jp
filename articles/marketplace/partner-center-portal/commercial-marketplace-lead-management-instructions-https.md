@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 03/30/2020
-ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/09/2021
+ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98247184"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308137"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS エンドポイントを使用してコマーシャル マーケットプレースのリードを管理する
 
@@ -31,13 +31,13 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 
     ![マイ フローにサインイン](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-1. **[+ 新規]** の下で、 **[+ Instant—from blank]\(インスタント - 一から作成\)** を選択します。
+1. **[+ 新規]** で、 **[+ Instant cloud flow]\(+ インスタント クラウド フロー\)** を選択します。
 
-    ![[マイ フロー] [+ Automated--from blank]\(+自動 – 白紙から作成\)](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![[マイ フロー] [+ Automated--from blank]\(+自動 – 白紙から作成\)](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
 
 1. フローに名前を付け、次に、 **[このフローをトリガーする方法を選択します]** の下で **[HTTP 要求の受信時]** を選択します。
 
-    ![[自動化されたフローを作成します] ウィンドウの [スキップ] ボタン](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![[自動化されたフローを作成します] ウィンドウの [スキップ] ボタン](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
 
 1. フロー ステップをクリックして展開します。
 
@@ -137,9 +137,13 @@ Microsoft AppSource と Azure Marketplace のリードを受け取るために�
 ### <a name="connect-to-a-crm-system"></a>CRM システムに接続する
 
 1. **[+ New step (+ 新しいステップ)]** を選択します。
-1. **[コネクタとアクションを検索する]** と表示されている場所を検索して、任意の CRM システムを選択します。 それを、新しいレコードを作成するためのアクションが表示された **[アクション]** タブで選択します。 次の画面では、例として **[新しいレコードを作成する (Dynamics 365)]** が示されています。
+1. **[コネクタとアクションを検索する]** と表示されている場所を検索して、任意の CRM システムを選択します。 次の画面では、例として新しいレコードを作成する (Common Data Service) が示されています。
 
     ![新しいレコードを作成する](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+
+1. それを、**新しいレコードを作成** するためのアクションが表示された **[アクション] タブ** を選択します。
+
+    ![[新しいレコードを作成する] を選択する](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
 
 1. CRM システムに関連付けられている **組織名** を指定します。 **[エンティティ名]** ドロップダウン リストから **[潜在顧客]** を選択します。
 

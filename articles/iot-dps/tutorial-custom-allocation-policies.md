@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f19f43b89cd2527a67827d7434f2e054ee40001e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258543"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227383"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>チュートリアル:Device Provisioning Service (DPS) でカスタム割り当てポリシーを使用する
 
@@ -483,6 +483,17 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 ## <a name="next-steps"></a>次のステップ
 
-* より詳細なカスタム割り当てポリシーの例については、「[カスタム割り当てポリシーの使用方法](how-to-use-custom-allocation-policies.md)」を参照してください。
-* 再プロビジョニングの詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)」を参照してください。
-* プロビジョニング解除の詳細については、「[以前に自動プロビジョニングされたデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください。
+より詳細なカスタム割り当てポリシーの例については、次の記事を参照してください。 
+
+> [!div class="nextstepaction"]
+> [カスタム割り当てポリシーの使用方法](how-to-use-custom-allocation-policies.md)
+
+* 再プロビジョニングの詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [IoT Hub デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)
+
+* プロビジョニング解除の詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)

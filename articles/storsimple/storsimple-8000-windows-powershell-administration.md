@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/25/2021
 ms.author: alkohli
 ms.openlocfilehash: 3292f337a39e2adb7dc5e78f12785ead8759f5d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102611948"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
@@ -81,7 +81,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 ![シリアル バナー メッセージ](./media/storsimple-windows-powershell-administration/IC741098.png)
 
 > [!IMPORTANT]
-> バナー メッセージを使用して、接続中のコントローラーの状態 ("_アクティブ_" または "_パッシブ_") を識別できます。
+> バナー メッセージを使用して、接続中のコントローラーの状態 ("_アクティブ_&quot; または &quot;_パッシブ_") を識別できます。
 
 次の図に、シリアル コンソール メニューで利用できるさまざまな実行空間オプションを示します。
 

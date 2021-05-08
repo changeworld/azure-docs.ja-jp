@@ -1,17 +1,15 @@
 ---
 title: Service Fabric のカスタム正常性レポートの追加
 description: Azure Service Fabric の正常性エンティティにカスタム正常性レポートを送信する方法について説明します。 品質正常性レポートの設計と実装の推奨事項を紹介します。
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c87c063ac9d3b4810657f72c46c17725b8899c77
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96001866"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626171"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Service Fabric のカスタム正常性レポートの追加
 Azure Service Fabric では、特定のエンティティで、問題のあるクラスターおよびアプリケーションの条件にフラグを設定することを目的とする [正常性モデル](service-fabric-health-introduction.md) が導入されています。 正常性モデルは、 **正常性レポーター** (システム コンポーネントとウォッチドッグ) を使用します。 その目標は、簡単かつ迅速な診断および修復です。 サービスの作成者は、正常性に関して事前に検討する必要があります。 正常性に影響する可能性があるすべての条件は、特にルートに近い問題にフラグを設定するために役立つ場合に、レポートする必要があります。 正常性情報があると、デバッグや調査にかかる時間と労力を軽減することができます。 クラウド (プライベートまたは Azure) で大規模なサービスを立ち上げ、運用すると、この情報が役立つことがよくわかります。

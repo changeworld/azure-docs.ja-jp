@@ -9,10 +9,10 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "75659876"
 ---
 >[!IMPORTANT]
@@ -34,13 +34,13 @@ ms.locfileid: "75659876"
 
 ### <a name="delete-individual-assets"></a>個々の資産を削除する
 
-実験を作成したデザイナーで、個々の資産を選択し、 **[削除]** ボタンを選択してそれらを削除します。
+実験を作成したデザイナーで、個々の資産を選択し、**[削除]** ボタンを選択してそれらを削除します。
 
-ここで作成したコンピューティング ターゲットは、使用されていない場合、自動的にゼロ  ノードに*自動スケーリング*されます。 このアクションは、料金を最小限に抑えるために実行されます。 コンピューティング ターゲットを削除する場合は、次の手順を実行してください。
+ここで作成したコンピューティング ターゲットは、使用されていない場合、自動的にゼロ  ノードに *自動スケーリング* されます。 このアクションは、料金を最小限に抑えるために実行されます。 コンピューティング ターゲットを削除する場合は、次の手順を実行してください。
 
 ![アセットを削除する](./media/aml-ui-cleanup/delete-asset.png)
 
-各データセットを選択し、 **[登録解除]** を選択することによって、ワークスペースからデータセットを登録解除できます。
+各データセットを選択し、**[登録解除]** を選択することによって、ワークスペースからデータセットを登録解除できます。
 
 ![データセットの登録解除](./media/aml-ui-cleanup/unregister-dataset1225.png)
 

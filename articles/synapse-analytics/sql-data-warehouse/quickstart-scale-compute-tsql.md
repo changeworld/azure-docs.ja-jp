@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ffffeb38aeb9d1f01f376d58a52323bb7b84b306
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c105fe217834dc9e0e652a42ebf3b526972b228
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98676325"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961372"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>クイックスタート: Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) に使用されるコンピューティングを T-SQL を使用してスケーリングする
 
@@ -99,12 +99,12 @@ Data Warehouse ユニットを変更するには:
 
 ## <a name="monitor-scale-change-request"></a>スケール変更要求の監視
 
-以前の変更要求の進行状況を確認するには、`WAITFORDELAY` T-SQL 構文を使用して sys.dm_operation_status 動的管理ビュー (DMV) をポーリングします。
+以前の変更要求の進行状況を確認するには、`WAITFORDELAY` T-SQL 構文を使用して [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) 動的管理ビュー (DMV) をポーリングします。
 
 サービス オブジェクトの変更状態をポーリングするには:
 
 1. **master** を右クリックし、 **[新しいクエリ]** を選択します。
-2. 次のクエリを実行して、sys.dm_operation_status DMV をポーリングします。
+2. 次のクエリを実行して、[sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?view=azure-sqldw-latest&preserve-view=true) DMV をポーリングします。
 
     ```sql
     WHILE

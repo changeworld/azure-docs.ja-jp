@@ -3,20 +3,19 @@ title: Azure Active Directory マイ アプリの構成を計画する
 description: 組織内でマイ アプリを効果的に使用するための計画ガイド。
 services: active-directory
 author: barbaraselden
-manager: daveba
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: kenwith
-ms.reviewer: baselden
-ms.openlocfilehash: f63a8fd05e1a6ed5e41eeb64aa852ff01db295af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: baselden
+ms.openlocfilehash: 777daecc119a158f11d865489e4eb497c3bc7899
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101645469"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376598"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory マイ アプリの構成を計画する
 
@@ -74,31 +73,19 @@ Azure Active Directory (Azure AD) のマイ アプリは、アプリの起動と
 
 ## <a name="plan-consent-configuration"></a>同意の構成を計画する
 
-同意には、ユーザーの同意とデータにアクセスするアプリの同意の 2 種類があります。
-
-![同意の構成のスクリーンショット](./media/my-apps-deployment-plan/my-apps-consent.png)
-
 ### <a name="user-consent-for-applications"></a>アプリケーションに対するユーザーの同意 
 
-アプリケーションの使用条件やプライバシー ポリシーがある場合、ユーザーまたは管理者がそれらに同意する必要があります。 ユーザーがアプリケーションに対して同意できるか、または管理者だけがそうできるかを決定する必要があります。 **ビジネス ルールで許可されている場合は、テナント内のアプリケーションの制御を維持するために、管理者の同意を使用することをお勧めします**。
+ユーザーがアプリケーションにサインインして、アプリケーションが組織のデータにアクセスできるようにするには、ユーザーまたは管理者が事前にアプリケーションにアクセス許可を付与する必要があります。 ユーザーの同意が許可されるかどうか、およびどの条件に基づくかを構成できます。 **Microsoft では、検証済みの発行元からのアプリケーションに対してのみユーザーの同意を許可することをお勧めします。**
 
-管理者の同意を使用するには、組織のグローバル管理者である必要があり、かつ、アプリケーションが以下のいずれかの条件を満たしている必要があります。
-
-* 組織に登録されている。
-
-* 別の Azure AD 組織に登録されており、少なくとも 1 人のユーザーによって同意されている。
-
-ユーザーに同意を許可する場合は、どのアプリに対しても同意できるようにするか、特定の状況下でのみにするかを決定する必要があります。
-
-詳細については、[Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法の構成](../manage-apps/configure-user-consent.md)に関するページを参照してください。
+詳細については、「[エンドユーザーがアプリケーションに同意する方法を構成する](../manage-apps/configure-user-consent.md)」を参照してください
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>アプリがデータにアクセスすることへのグループ所有者の同意
 
-Azure AD セキュリティ グループまたは M365 グループの所有者が、所有しているグループのデータにアプリケーションがアクセスすることに同意できるかどうかを決定します。 許可しない、すべてのグループ所有者を許可する、グループ所有者のサブセットのみを許可する、のいずれかにできます。
+グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](https://docs.microsoft.com/microsoftteams/resource-specific-consent)」を参照してください。 
+
+この機能を許可するか無効にするかを構成できます。
 
 詳細については、[グループに対する同意の許可の構成](../manage-apps/configure-user-consent-groups.md)に関するページを参照してください。
-
-次に、Azure portal で[ユーザーとグループ所有者の同意の設定](https://portal.azure.com/)を構成します。
 
 ### <a name="plan-communications"></a>連絡を計画する
 

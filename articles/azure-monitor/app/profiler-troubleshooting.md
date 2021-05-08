@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 622a83c6d91bf2a30c2844e3279d6fd4b89d429f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c80362c3407f1404c6657997de89c2741264909
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213795"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026557"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
@@ -19,7 +19,7 @@ ms.locfileid: "102213795"
 
 ### <a name="make-sure-youre-using-the-appropriate-profiler-endpoint"></a>必ず適切なプロファイラー エンドポイントを使用してください
 
-現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) と [Azure China](/azure/china/resources-developer-guide) のみです。
 
 |アプリ設定    | 米国政府のクラウド | China Cloud |   
 |---------------|---------------------|-------------|

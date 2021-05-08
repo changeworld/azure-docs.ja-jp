@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387684"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584402"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -168,7 +168,7 @@ ms.locfileid: "100387684"
   - [並列コピー](copy-activity-performance-features.md) を徐々に調整することを検討してください。並列コピーの数が多すぎると、パフォーマンスが低下する可能性があることに注意してください。
 
 
-## <a name="connector-and-ir-performance"></a>コネクタと IR のパフォーマンス
+## <a name="connector-and-ir-performance"></a>コネクタと IR のパフォーマンス 
 
 このセクションでは、特定のコネクタの種類または統合ランタイムに関するパフォーマンスのトラブルシューティング ガイドをいくつか紹介します。
 
@@ -176,9 +176,11 @@ ms.locfileid: "100387684"
 
 データセットが異なる統合ランタイムに基づいている場合、アクティビティの実行時間は異なります。
 
-- **現象**:データセット内で [リンクされたサービス] ドロップダウンを切り替えるだけで、同じパイプライン アクティビティが実行されますが、実行時間は大幅に異なります。 データセットがマネージド仮想ネットワークの統合ランタイムに基づいている場合、実行が完了するまでに平均 2 分以上かかりますが、既定の統合ランタイムに基づいている場合は、約 20 秒で完了します。
+- **現象**:データセット内で [リンクされたサービス] ドロップダウンを切り替えるだけで、同じパイプライン アクティビティが実行されますが、実行時間は大幅に異なります。 データセットがマネージド仮想ネットワークの統合ランタイムに基づいている場合、既定の統合ランタイムに基づいているよりも時間がかかります。  
 
-- **原因**:パイプライン実行の詳細を確認すると、低速のパイプラインはマネージド VNet (Virtual Network) IR で実行されている一方、通常のパイプラインは Azure IR で実行されていることがわかります。 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド VNet IR は Azure IR よりもキュー時間が長く、各コピー アクティビティが開始するまでにウォームアップとして約 2 分間かかります。これは、Azure IR ではなく、主に VNet 参加で発生します。
+- **原因**:パイプライン実行の詳細を確認すると、低速のパイプラインはマネージド VNet (Virtual Network) IR で実行されている一方、通常のパイプラインは Azure IR で実行されていることがわかります。 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド VNet IR は Azure IR よりもキュー時間が長く、各コピー アクティビティが開始するまでにウォームアップがあります。これは、Azure IR ではなく、主に VNet 参加で発生します。 
+
+
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>データを Azure SQL Database に読み込むときにパフォーマンスが低下する

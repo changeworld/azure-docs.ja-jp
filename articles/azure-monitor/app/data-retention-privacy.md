@@ -4,12 +4,12 @@ description: データ保持およびプライバシー ポリシー ステー�
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579589"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774917"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -294,6 +294,10 @@ SDK はプラットフォームごとに異なり、インストールできる�
 
 > [!NOTE]
 > クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../logs/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](./ip-collection.md)のオプションについての説明をご覧ください。
+
+## <a name="can-i-modify-or-update-data-after-it-has-been-collected"></a>収集後にデータを変更または更新できますか。
+
+いいえ。データは読み取り専用であり、消去機能による削除のみが可能です。 詳細については、「[Log Analytics と Application Insights に格納される個人データに関するガイダンス](../logs/personal-data-mgmt.md#delete)」をご覧ください。
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [https://www.maxmind.com](https://www.maxmind.com) から入手できます。

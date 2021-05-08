@@ -5,10 +5,10 @@ ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101726004"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure の自動スケールの概要
@@ -81,8 +81,8 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 * [VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](autoscale-virtual-machine-scale-sets.md)  
 * [自動スケールの REST API](/rest/api/monitor/autoscalesettings)
 
-## <a name="horizontal-vs-vertical-scaling"></a>水平および垂直方向のスケーリング
-自動スケールは、水平的なスケーリングだけを行います。つまり、VM インスタンスの数が増加 ("アウト") したり、減少 ("イン") したりします。  水平スケーリングは、クラウド環境では負荷を処理するために数千の VM さえ実行できるため、より柔軟です。
+## <a name="horizontal-vs-vertical-scaling&quot;></a>水平および垂直方向のスケーリング
+自動スケールは、水平的なスケーリングだけを行います。つまり、VM インスタンスの数が増加 (&quot;アウト") したり、減少 ("イン") したりします。  水平スケーリングは、クラウド環境では負荷を処理するために数千の VM さえ実行できるため、より柔軟です。
 
 一方、垂直方向のスケーリングは、それとは異なります。 VM の数は同じままですが、VM の能力を強めたり ("アップ") 弱めたり ("ダウン") します。 能力は、メモリ、CPU 速度、ディスク領域などで計測します。垂直スケーリングには、より多くの制限があります。 これはハードウェアの規模によって左右されます。大規模なハードウェアは拡張の上限に達しやすく、リージョンによって違いが出ることもあります。 垂直スケーリングでは、多くの場合、VM の停止と再起動も必要になります。
 

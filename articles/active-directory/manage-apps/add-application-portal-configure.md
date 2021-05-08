@@ -2,20 +2,20 @@
 title: クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
 description: このクイック スタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントに登録されているアプリケーションを構成します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
-ms.author: kenwith
-ms.openlocfilehash: e83caba2d2a5435c5cdac02c6f63094dc079c43c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.author: iangithinji
+ms.openlocfilehash: 3b7a5d88aa40422dc46c6ca2c1681447cb030ea4
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258610"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379521"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する
 

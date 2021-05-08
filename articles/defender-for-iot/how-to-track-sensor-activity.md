@@ -4,10 +4,10 @@ description: イベント タイムラインには、アラートとアラート
 ms.date: 12/10/2020
 ms.topic: article
 ms.openlocfilehash: 195908001fbd247ed2e0fa007bc8dcd5ebf28e60
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781621"
 ---
 # <a name="track-sensor-activity"></a>センサー アクティビティを追跡する

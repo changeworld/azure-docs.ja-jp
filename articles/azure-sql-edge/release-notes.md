@@ -10,17 +10,27 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6218715878ec40fecee79f1c93bf2ca1820af007
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98696381"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277013"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
 この記事では、Azure SQL Edge の新しいビルドごとに、新機能と変更点について説明します。
 
+## <a name="azure-sql-edge-103"></a>Azure SQL Edge 1.0.3
+
+SQL エンジンのビルド 15.0.2000.1554
+
+### <a name="fixes"></a>修正
+
+- ONNX ランタイムの 1.5.3 へのアップグレード
+- Microsoft.SqlServer.DACFx バージョン 150.5084.2 への更新
+- 各種のバグ修正  
+   
 ## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
 
 SQL エンジンのビルド 15.0.2000.1554

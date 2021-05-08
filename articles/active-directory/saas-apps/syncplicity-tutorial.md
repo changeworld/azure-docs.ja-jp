@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 3c665795325ed3863583eb0f21f3e0d3f534154a
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103201495"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>チュートリアル: Azure Active Directory と Syncplicity の統合
@@ -95,13 +95,13 @@ Syncplicity で Azure AD SSO を構成してテストするには、次の構成
 
    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="configure-syncplicity-sso"></a>Syncplicity の SSO の構成
+### <a name="configure-syncplicity-sso&quot;></a>Syncplicity の SSO の構成
 
 1. **Syncplicity** テナントにサインインします。
 
 1. 上部のメニューで **[Admin]** をクリックし、 **[Settings]** を選択し、 **[Custom domain and single sign-on]** をクリックします。
 
-    ![Syncplicity](./media/syncplicity-tutorial/ic769545.png "Syncplicity")
+    ![Syncplicity](./media/syncplicity-tutorial/ic769545.png &quot;Syncplicity")
 
 1. [**Single Sign-On (SSO)**] ページで、以下の手順を実行します。
 

@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e80699a043d4c18a1bc7ba75ce58c6972fae0fad
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880929"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531546"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>ポータルおよび API でアニメーション化されたキャラクターの検出 (プレビュー) を使用する 
 
@@ -59,7 +59,7 @@ Custom Vision アカウントにアクセスできる有料アカウントでは
 1. **[Connect Custom Vision Account (PREVIEW)]\(Custom Vision アカウントの接続 (プレビュー)\)** を選択し、 **[試す]** をクリックします。
 1. 必要なフィールドとアクセス トークンを入力し、 **[送信]** をクリックします。 
 
-    Video Indexer アクセス トークンを取得する方法の詳細については、[開発者ポータル](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)にアクセスし、[関連ドキュメント](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)を参照してください。  
+    Video Indexer アクセス トークンを取得する方法の詳細については、[開発者ポータル](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token)にアクセスし、[関連ドキュメント](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)を参照してください。  
 1. 呼び出しから 200 OK 応答が返されると、アカウントは接続されます。
 1. 接続を確認するには、[Video Indexer](https://vi.microsoft.com/) ポータルに移動します。
 1. 右上隅にある **[コンテンツ モデルのカスタマイズ]** ボタンをクリックします。
@@ -154,16 +154,16 @@ Custom Vision アカウントにアクセスできる有料アカウントでは
     Video Indexer 有料アカウントをお持ちの場合は、最初に Custom Vision アカウントを接続する必要があります。 <br/>
     Custom Vision アカウントをまだお持ちではない場合は、アカウントを作成してください。 詳細については、[Custom Vision](../../cognitive-services/custom-vision-service/overview.md) に関するページを参照してください。
 
-    [API を使用して Custom Vision アカウントを接続します](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)。
+    [API を使用して Custom Vision アカウントを接続します](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Connect-Custom-Vision-Account)。
 1. アニメーション化されたキャラクター モデルを作成します。
 
-    [アニメーション モデルの作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API を使用します。
+    [アニメーション モデルの作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Animation-Model) API を使用します。
 1. ビデオのインデックスを作成、またはインデックスを再作成します。
 
-    [インデックスの再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API を使用します。 
+    [インデックスの再作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) API を使用します。 
 1. アニメーション化されたキャラクター モデルをカスタマイズします。
 
-    [アニメーション モデルのトレーニング](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API を使用します。
+    [アニメーション モデルのトレーニング](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Train-Animation-Model) API を使用します。
 
 ### <a name="view-the-output"></a>出力を表示する
 

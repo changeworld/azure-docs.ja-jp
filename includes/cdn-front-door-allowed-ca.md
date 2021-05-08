@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2020
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f0621788f50a07466861fbd87ede191f5ab688cd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750953"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554877"
 ---
 次の CA は、独自の証明書を作成するときに使用できます。
 
@@ -62,6 +62,10 @@ ms.locfileid: "101750953"
 - Security Communication RootCA1
 - Security Communication RootCA2
 - Security Communication RootCA3
+- SSL.com Root Certification Authority ECC
+- SSL.com Root Certification Authority RSA
+- SSL.com EV Root Certification Authority ECC
+- SSL.com EV Root Certification Authority RSA R2
 - Staat der Nederlanden EV Root CA
 - Symantec Class 3 EV SSL CA - G3
 - Symantec Class 3 Secure Server CA - G4

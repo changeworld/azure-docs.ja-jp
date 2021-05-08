@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8b41b43c70f72ab327de2f1d59415cc1f49e5a5b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178832"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767405"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 
@@ -43,7 +43,8 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プ�
 * システム プールの osType は、Linux である必要があります。
 * ユーザー ノード プールの osType には、Linux または Windows が可能です。
 * システム プールには少なくとも 1 つのノードを含める必要があり、ユーザー ノード プールには 0 以上のノードを含めることができます。
-* システム ノード プールには、少なくとも 2 つの vCPU と 4 GB のメモリのがある VM SKU が必要です。
+* システム ノード プールには、少なくとも 2 つの vCPU と 4 GB のメモリのがある VM SKU が必要です。 ただし、バースト可能 VM (B シリーズ) は推奨されません。
+* 特に大規模なクラスター (複数の CoreDNS ポッド レプリカ、3 から 4+ のアドオンなど) の場合は、少なくとも 2 つのノードと 4 つの vCPU (Standard_DS4_v2 など) をお勧めします。
 * システム ノード プールでは、[ポッドの最小値と最大値の式][maximum-pods]に関する説明のとおり、少なくともポッドを 30 サポートしている必要があります。
 * スポット ノード プールには、ユーザー ノード プールが必要です。
 * システム ノード プールをさらに追加したり、システム ノード プールとなるノード プールを変更したりしても、システム ポッドは自動的には移動 *されません*。 ノード プールをユーザー ノード プールに変更しても、システム ポッドは同じノード プール上で実行し続けることができます。 システム ポッドを実行中の、以前はシステム ノード プールだったノード プールを削除またはスケールダウンした場合、それらのシステム ポッドは、推奨されるスケジュールで新しいシステム ノード プールに再デプロイされます。
@@ -195,19 +196,19 @@ az group delete --name myResourceGroup --yes --no-wait
 <!-- INTERNAL LINKS -->
 [aks-taints]: use-multiple-node-pools.md#setting-nodepool-taints
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-delete]: /cli/azure/group#az_group_delete
+[az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

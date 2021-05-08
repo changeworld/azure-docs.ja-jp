@@ -3,14 +3,14 @@ title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: 0771249e94d3e00cbeaff00406a0dbf33777a14d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490332"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104985"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -149,7 +149,7 @@ Azure mobile app の構成時にアカウント ID として使用するメー�
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
 
 ### <a name="function"></a>機能
-[Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。
+[Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。 要求を処理するには、エンドポイントで HTTP POST 動詞を処理する必要があります。
 
 アクション グループには、限られた数の Function アクションを保持できます。
 
@@ -162,12 +162,10 @@ ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](./itsmc-o
 アクション グループには、限られた数のロジック アプリのアクションを保持できます。
 
 ### <a name="secure-webhook"></a>Secure Webhook
+アクション グループのセキュリティで保護された Webhook アクションを使用すると、Azure Active Directory を利用して、アクション グループと保護された Web API (Webhook エンドポイント) との間の接続をセキュリティで保護することができます。 この機能を利用するための全体的なワークフローを次に示します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](../../active-directory/develop/v2-overview.md)」を参照してください。
 
 > [!NOTE]
 > Webhook アクションを使用するには、ターゲット Webhook エンドポイントにおいてアラートの細部が正常に機能する必要がないか、POST 操作の一環として与えられるアラート コンテキスト情報を解析できることが求められます。 Webhook エンドポイント自体でアラート コンテキスト情報を処理できない場合、アラート コンテキスト情報のカスタム操作のための [Logic App アクション](./action-groups-logic-app.md)などのソリューションを利用し、Webhook で求められるデータ形式に一致させることができます。
-> セキュリティに違反しないようにするために、ユーザーは Webhook サービス プリンシパルの **所有者** である必要があります。 Azure のすべてのお客様は、所有者を確認せずに、ポータルを通じてすべてのオブジェクト ID にアクセスできるため、すべてのユーザーが、セキュリティに違反する Azure Monitor アラート通知用の独自のアクション グループに対して、セキュリティで保護された Webhook を追加できます。
-
-アクション グループの Webhook アクションを使用すると、Azure Active Directory を利用して、アクション グループと、保護された Web API (Webhook エンドポイント) との間の接続をセキュリティで保護することができます。 この機能を利用するための全体的なワークフローを次に示します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](../../active-directory/develop/v2-overview.md)」を参照してください。
 
 1. 保護された Web API 用の Azure AD アプリケーションを作成します。 「[保護された Web API: アプリの登録](../../active-directory/develop/scenario-protected-web-api-app-registration.md)」の手順に従う必要があります。
     - [デーモン アプリで呼び出される](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)よう、保護された API を構成します。

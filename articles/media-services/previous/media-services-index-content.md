@@ -16,19 +16,19 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c575904d994232726cf8d0d9152b02130fd29cea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 68b72cca319772fa52829c6b95237e15f083a2e7
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013255"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962664"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer によるメディア ファイルのインデックス作成
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!IMPORTANT]
-> [Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyzing-video-audio-files-concept.md)を使用して、Indexer v1 および Indexer v2 から移行することをお勧めします。 [Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](./legacy-components.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
+> [Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyze-video-audio-files-concept.md)を使用して、Indexer v1 および Indexer v2 から移行することをお勧めします。 [Azure Media Indexer](media-services-index-content.md) メディア プロセッサと [Azure Media Indexer 2 プレビュー](./legacy-components.md) メディア プロセッサのインベントリは廃止される予定です。 提供終了日については、この[レガシ コンポーネント](legacy-components.md)に関するトピックを参照してください。
 
 Azure Media Indexer を使用すると、メディア ファイルのコンテンツを検索対応にしたり、字幕やキーワード用にフルテキストのトランスクリプトを生成したりできます。 バッチ内の 1 つのメディア ファイルまたは複数のメディア ファイルを処理できます。  
 

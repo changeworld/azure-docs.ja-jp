@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100581987"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643677"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -93,7 +93,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 
 ### <a name="clone-the-source-code-and-initialize"></a>ソース コードを複製し、初期化する
 
-1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](/cpp/build/vscpp-step-0-installation?view=vs-2019)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
+1. Visual Studio 2019 用の ["C++ によるデスクトップ開発" ワークロード](/cpp/build/vscpp-step-0-installation?view=vs-2019&preserve-view=true)をインストールします。 Visual Studio 2017 および 2015 もサポートされています。
 
 1. [CMake](https://cmake.org/) をインストールします。 コマンド プロンプトから `cmake -version` と入力して、これが `PATH` に含まれていることを確認してください。
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4e4081ecca4714c713d105d363a83a4f96a0d3fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab9f33616547c073e8e3a2128a441238bf3a17d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84697845"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220455"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
 
@@ -128,6 +128,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 Functions ランタイム バージョン 2.x の URL 形式は、パラメーターがすべて同じですが、プレフィックスが若干異なります。
@@ -140,6 +141,7 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
     &showHistory=[true|false]
     &showHistoryOutput=[true|false]
     &showInput=[true|false]
+    &returnInternalServerErrorOnFailure=[true|false]
 ```
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
@@ -153,16 +155,17 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 | **`createdTimeFrom`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
 | **`createdTimeTo`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以前に作成されたインスタンスにフィルター処理されます。|
 | **`runtimeStatus`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を確認するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関する記事をご覧ください。 |
+| **`returnInternalServerErrorOnFailure`**  | クエリ文字列    | 省略可能なパラメーター。 `true` に設定すると、インスタンスがエラー状態の場合、この API は HTTP 200 ではなく HTTP 500 応答を返します。 このパラメーターは、ステータス ポーリングの自動化シナリオを対象としています。 |
 
 ### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
-* **HTTP 200 (OK)**: 指定されたインスタンスが完了状態。
+* **HTTP 200 (OK)** : 指定されたインスタンスが完了状態またはエラー状態。
 * **HTTP 202 (Accepted)**: 指定されたインスタンスが処理中。
 * **HTTP 400 (Bad Request)**: 指定されたインスタンスが失敗したか終了した。
 * **HTTP 404 (Not Found)**: 指定されたインスタンスが存在しないか実行開始されていない。
-* **HTTP 500 (Internal Server Error)**: 指定されたインスタンスがハンドルされない例外で失敗した。
+* **HTTP 500 (Internal Server Error)** : `returnInternalServerErrorOnFailure` が `true` に設定され、指定したインスタンスがハンドルされない例外で失敗した場合にのみ返されます。
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 814824fb6708abaf549bb3de19b4aced4774a244
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 24b1be2ca55b057c887c8782ce7eea1150f143da
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485760"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762625"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
 
@@ -71,7 +71,7 @@ Set-AzVmssStorageProfile -DiffDiskSetting Local -OsDiskCaching ReadOnly
 
 ## <a name="cli"></a>CLI
 
-CLI VM デプロイにエフェメラル ディスクを使用するには、[az vm create](/cli/azure/vm#az-vm-create) 内の `--ephemeral-os-disk` パラメーターを `true` に設定し、`--os-disk-caching` パラメーターを `ReadOnly` に設定します。
+CLI VM デプロイにエフェメラル ディスクを使用するには、[az vm create](/cli/azure/vm#az_vm_create) 内の `--ephemeral-os-disk` パラメーターを `true` に設定し、`--os-disk-caching` パラメーターを `ReadOnly` に設定します。
 
 ```azurecli-interactive
 az vm create \
@@ -84,7 +84,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-スケール セットの場合は、[az-vmss-create](/cli/azure/vmss#az-vmss-create) に同じ `--ephemeral-os-disk true` パラメーターを使用し、`--os-disk-caching` パラメーターを `ReadOnly` に設定します。
+スケール セットの場合は、[az-vmss-create](/cli/azure/vmss#az_vmss_create) に同じ `--ephemeral-os-disk true` パラメーターを使用し、`--os-disk-caching` パラメーターを `ReadOnly` に設定します。
 
 ## <a name="portal"></a>ポータル
 
@@ -251,4 +251,4 @@ A:エフェメラル ディスクでサポートされていない機能は次�
 > 
  
 ## <a name="next-steps"></a>次のステップ
-[Azure CLI](/cli/azure/vm#az-vm-create) を使用して、エフェメラル OS ディスクで VM を作成できます。
+[Azure CLI](/cli/azure/vm#az_vm_create) を使用して、エフェメラル OS ディスクで VM を作成できます。

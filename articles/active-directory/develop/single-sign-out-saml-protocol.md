@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703417"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781213"
 ---
 # <a name="single-sign-out-saml-protocol"></a>シングル サインアウトの SAML プロトコル
 
-Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シングル サインアウト プロファイルをサポートします。 シングル サインアウトが正常に動作するためには、アプリケーションの **LogoutURL** が、アプリケーションの登録時に Azure AD に明示的に登録されている必要があります。 Azure AD は LogoutURL を使って、サインアウト後のユーザーをリダイレクトします。
+Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シングル サインアウト プロファイルをサポートします。 シングル サインアウトが正常に動作するためには、アプリケーションの **LogoutURL** が、アプリケーションの登録時に Azure AD に明示的に登録されている必要があります。 アプリが [Azure アプリ ギャラリーに追加された](v2-howto-app-gallery-listing.md)場合は、既定でこの値を設定できます。 それ以外の場合は、アプリを Azure AD テナントに追加するユーザーが値を決定および設定する必要があります。 Azure AD は LogoutURL を使って、サインアウト後のユーザーをリダイレクトします。 
 
 Azure AD は、HTTP POST バインディングではなく、リダイレクト バインディング (HTTP GET) をサポートしています。
 

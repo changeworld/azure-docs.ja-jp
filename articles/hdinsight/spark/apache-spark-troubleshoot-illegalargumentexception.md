@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
 ms.openlocfilehash: 429659d605cdaf8aad978841e486a17da321cce4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98929396"
 ---
-# <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Spark アクティビティのための IllegalArgumentException
+# <a name="scenario-illegalargumentexception-for-apache-spark-activity-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での Apache Spark アクティビティのための IllegalArgumentException
 
 この記事では、Azure HDInsight クラスターで Apache Spark コンポーネントを使用するときのトラブルシューティングの手順と考えられる解決策について説明します。
 
@@ -28,11 +28,11 @@ Wrong FS: wasbs://additional@xxx.blob.core.windows.net/spark-examples_2.11-2.1.0
 
 アプリケーション jar ファイルが Spark クラスターの既定のストレージまたはプライマリ ストレージに配置されていない場合、Spark ジョブは失敗します。
 
-これは、このバグで追跡されている Spark オープンソース フレームワークに関する既知の問題です。[fs.defaultFS とアプリケーション jar の URL が異なる場合に Spark のジョブが失敗する](https://issues.apache.org/jira/browse/SPARK-22587)。
+これは、こちらのバグ [Spark job fails if fs.defaultFS and application jar are different url](https://issues.apache.org/jira/browse/SPARK-22587) で追跡されている Spark オープンソース フレームワークの既知の問題です。
 
 この問題は Spark 2.3.0 で解決されました。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 アプリケーション jar が、HDInsight クラスターの既定のストレージまたはプライマリ ストレージに格納されていることを確認します。 Azure Data Factory 場合は、ADF のリンクされたサービスが、HDInsight の既定のコンテナー (セカンダリ コンテナーではなく) を指していることを確認します。
 

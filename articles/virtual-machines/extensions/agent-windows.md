@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: 1b1766c0385303993af436911391a1c858bbff61
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102547460"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309817"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -53,7 +53,7 @@ VM を起動するには、VM に PA がインストールされている必要�
 エージェントがインストールされていない場合、Azure Backup や Azure Security など、Azure の一部のサービスを使用できません。 これらのサービスでは、拡張機能をインストールする必要があります。 WinGA なしで VM をデプロイした場合は、最新バージョンのエージェントを後からインストールできます。
 
 ### <a name="manual-installation"></a>手動のインストール
-Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM エージェントは、Windows Server 2008 (64 ビット) 以降でサポートされます。
+Windows インストーラー パッケージを使用して、手動で Windows VM エージェントをインストールできます。 Azure にデプロイされるカスタム VM イメージを作成するときには、手動でのインストールが必要な場合があります。 手動で Windows VM エージェントをインストールするには、[VM エージェント インストーラーをダウンロードします](https://go.microsoft.com/fwlink/?LinkID=394789)。 [GitHub Windows IaaS VM エージェントのリリース](https://github.com/Azure/WindowsVMAgent/releases)で、特定のバージョンを検索することもできます。 VM エージェントは、Windows Server 2008 (64 ビット) 以降でサポートされます。
 
 > [!NOTE]
 > ProvisionVMAgent を有効にせずにイメージからデプロイされた VM に VMAgent を手動でインストールした後は、AllowExtensionOperations オプションを更新することが重要です。
@@ -121,7 +121,7 @@ Azure VM エージェントによって、VM または仮想マシン スケー�
 
 仮想マシンについては、[Remove-AzVMSecret]() を使用し、`OSProfile` から証明書を削除します。
 
-仮想マシン スケール セットの証明書に関する詳細については、仮想マシン スケール セットに関するページの「[非推奨の証明書を削除するにはどうすればよいですか?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)」を参照してください。
+仮想マシン スケール セットの証明書に関する詳細については、仮想マシン スケール セットに関するページの「[非推奨の証明書を削除するにはどうすればよいですか?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-remove-deprecated-certificates-)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

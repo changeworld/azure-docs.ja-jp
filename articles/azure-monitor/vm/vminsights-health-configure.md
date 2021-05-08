@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6bda6c9e5f6e23e9e15c12fd507645fc72159302
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052213"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583447"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) で監視を構成する
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、Azure portal を使用して既定の監視を変更する方法について説明します。 また、[データ収集ルールを使用した監視の構成](vminsights-health-configure-dcr.md)に必要なモニターの基本的な概念についても説明します。

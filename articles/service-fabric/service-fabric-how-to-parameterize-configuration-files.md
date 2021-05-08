@@ -4,10 +4,10 @@ description: 複数の環境を管理する際に役立つ手法である、Serv
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.openlocfilehash: ca376230c427c47e839b2dee96e8daa83ccedf15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96576759"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法

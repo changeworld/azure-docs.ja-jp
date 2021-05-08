@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: cec391ba998165af4dd9339b719a3b73cb330c16
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 94440b71eee1ff9dcc4a86733582e3e5f57f6a00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104601792"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764623"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)
 
@@ -32,7 +32,7 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
  > - これまで [Azure AD アプリで Azure Disk Encryption](disk-encryption-overview-aad.md) を使用してこの VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 この暗号化された VM に対して [Azure Disk Encryption](disk-encryption-overview.md) を使用することはできません。それはサポートされていないシナリオであり、暗号化された VM 用の Azure AD アプリケーションからの切り替えはまだサポートされていないことを意味します。
  > - 暗号化シークレットがリージョンの境界を越えないようにするため、Azure Disk Encryption ではキー コンテナーと VM を同じリージョンに併置する必要があります。 暗号化する VM と同じリージョン内にキー コンテナーを作成して使用します。
  > - Linux OS ボリュームの暗号化には数時間かかる場合があります。 通常は、データ ボリュームの暗号化よりも Linux OS ボリュームの暗号化に時間がかかります。
-> - Linux OS ボリュームを暗号化する場合、VM は利用不可と見なす必要があります。 暗号化プロセス中にアクセスする必要がある、開かれたファイルがブロックされることを回避するために、暗号化の進行中は SSH login を避けることを強くお勧めします。 進行状況を確認するために、[Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドまたは [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) コマンドを使用します。 30GB の OS ボリュームに対するこのプロセスの実行には数時間かかり、加えてデータ ボリュームを暗号化するための時間がかかることが予測されます。 データ ボリュームの暗号化の時間は、**暗号化形式の全て** のオプションが使用されている場合を除いて、データ ボリュームのサイズと数量に比例します。 
+> - Linux OS ボリュームを暗号化する場合、VM は利用不可と見なす必要があります。 暗号化プロセス中にアクセスする必要がある、開かれたファイルがブロックされることを回避するために、暗号化の進行中は SSH login を避けることを強くお勧めします。 進行状況を確認するために、[Get-AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドまたは [vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) コマンドを使用します。 30GB の OS ボリュームに対するこのプロセスの実行には数時間かかり、加えてデータ ボリュームを暗号化するための時間がかかることが予測されます。 データ ボリュームの暗号化の時間は、**暗号化形式の全て** のオプションが使用されている場合を除いて、データ ボリュームのサイズと数量に比例します。 
  > - Linux VM での暗号化の無効化は、データ ボリュームに対してのみサポートされます。 OS ボリュームが暗号化されている場合、暗号化の無効化はデータ ボリュームまたは OS ボリュームではサポートされません。 
 
  
@@ -50,7 +50,7 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-the-azure-cli"></a><a name="bkmk_RunningLinuxCLI"> </a>Azure CLI を使用して既存または実行中の Linux VM で暗号化を有効にする 
 暗号化された VHD でのディスク暗号化は、[Azure CLI 2.0](/cli/azure) コマンドライン ツールをインストールして使用することで有効化できます。 これは、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用してブラウザーで使用することも、ローカル コンピューターにインストールして PowerShell セッションで使用することもできます。 Azure 内にある既存または実行中の IaaS Linux VM で暗号化を有効にするには、次の CLI コマンドを使用します。
 
-[az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) コマンドを使用して、Azure で実行中の IaaS 仮想マシンで暗号化を有効にします。
+[az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable) コマンドを使用して、Azure で実行中の IaaS 仮想マシンで暗号化を有効にします。
 
 -  **クライアント シークレットを使用して実行中の VM を暗号化する:**
     
@@ -67,13 +67,13 @@ Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化�
    >[!NOTE]
    > disk-encryption-keyvault パラメーターの値の構文は、/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name] という完全な識別子の文字列です。</br> </br> key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。
 
-- **ディスクが暗号化されていることを確認する:** IaaS VM の暗号化の状態を確認するには、[az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) コマンドを使用します。 
+- **ディスクが暗号化されていることを確認する:** IaaS VM の暗号化の状態を確認するには、[az vm encryption show](/cli/azure/vm/encryption#az_vm_encryption_show) コマンドを使用します。 
 
      ```azurecli-interactive
          az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
+- **暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) コマンドを使用します。 Linux VM 用のデータ ボリュームでのみ、暗号化を無効にすることができます。
     
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type DATA
@@ -337,7 +337,7 @@ Azure PowerShell、Azure CLI、または Resource Manager テンプレートを�
          Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM' [--volume-type {ALL, DATA, OS}]
      ```
 
-- **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az-vm-encryption-disable) コマンドを使用します。 
+- **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) コマンドを使用します。 
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```

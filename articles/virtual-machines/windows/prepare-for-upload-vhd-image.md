@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 12ef839cbbbc69230b314bf7c56a63f57a0d6b20
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556266"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967967"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -113,6 +113,10 @@ SFC スキャンが完了したら、Windows 更新プログラムをインス�
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TEMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name TMP -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
    ```
+1. レガシ オペレーティング システム (Windows Server 2012 R2 または Windows 8.1 以下) が使用されている VM では、最新の Hyper-V 統合コンポーネント サービスがインストールされていることを確認してください。 詳細については、「[Windows 仮想マシン用の Hyper-V 統合コンポーネントの更新](https://support.microsoft.com/topic/hyper-v-integration-components-update-for-windows-virtual-machines-8a74ffad-576e-d5a0-5a2f-d6fb2594f990)」を参照してください。
+
+> [!NOTE]
+> オンプレミスの VMware サーバーと Azure 間のディザスター リカバリー ソリューションを使用して VM を設定するシナリオでは、Hyper-V 統合コンポーネント サービスは使用できません。 その場合は、VMware のサポートに連絡して、VM を Azure に移行し、VMware サーバーに共存させるようにしてください。
 
 ## <a name="check-the-windows-services"></a>Windows サービスの確認
 
@@ -266,6 +270,8 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 1. ブート構成データ (BCD) を設定します。
 
    ```powershell
+   cmd
+
    bcdedit.exe /set "{bootmgr}" integrityservices enable
    bcdedit.exe /set "{default}" device partition=C:
    bcdedit.exe /set "{default}" integrityservices enable
@@ -279,6 +285,8 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
    bcdedit.exe /set "{bootmgr}" bootems yes
    bcdedit.exe /ems "{current}" ON
    bcdedit.exe /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+   exit
    ```
 
 1. Dump ログは、Windows のクラッシュの問題をトラブルシューティングするのに役立つ場合があります。 Dump ログ コレクションを有効にします。
@@ -352,6 +360,10 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 
 ### <a name="install-windows-updates"></a>Windows 更新プログラムのインストール
 
+> [!NOTE]
+> VM のプロビジョニング中に誤って再起動が行われないようにするために、Windows のすべての更新プログラムのインストールを完了し、保留中の再起動がないことを確認することをお勧めします。 これを行う 1 つの方法は、Azure への移行を実行する前に、すべての Windows 更新プログラムをインストールし、VM を再起動することです。 </br><br>
+>また、OS (sysprep) の一般化を行う必要がある場合は、Sysprep コマンドを実行する前に、Windows を更新して VM を再起動する必要があります。
+
 理想的には、継続して "*パッチ レベル*" でマシンを更新する必要があります。そうできない場合は、以下の更新プログラムがインストールされていることを確認してください。 最新の更新プログラムを入手するには、Windows Update の履歴ページを参照してください。[Windows 10 および Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 および Windows Server 2012 R2](https://support.microsoft.com/help/4009470)、[Windows 7 SP1 および Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 <br />
@@ -387,7 +399,7 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
 |                         | rdpdd.dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 |                         | rdpwd.sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
-| セキュリティ                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                           | KB4012606                                   | KB4012606                  | -                                           | -                                           |
+| Security                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                           | KB4012606                                   | KB4012606                  | -                                           | -                                           |
 |                         |                |                                           | KB4012216                                   |                                     | KB4013198                                   | KB4013198                  | -                                           | -                                           |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                           | KB4013429                                   | KB4013429                  | -                                           | -                                           |
 |                         |                |                                           | KB4012217                                   |                                     | KB4013429                                   | KB4013429                  | -                                           | -                                           |
@@ -522,4 +534,4 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 ## <a name="next-steps"></a>次のステップ
 
 - [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
-- [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](../troubleshooting/troubleshoot-activation-problems.md)
+- [Azure Windows VM のライセンス認証に関する問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)

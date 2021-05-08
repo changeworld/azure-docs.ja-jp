@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
 ms.openlocfilehash: 61076b49d396c83a67635e46eb4f1b928b3f9e1d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98933973"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
@@ -194,7 +194,7 @@ Nothing。 IP アドレス (パブリック VIP、パブリック、プライベ
 はい。 ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイし、VNet 統合を使用してアプリのバックエンドを VNet に接続し、サービス エンドポイントを使用してインバウンド トラフィックをアプリにロックダウンできます。 詳細については、次の記事を参照してください。
 
 * [App Service のネットワーク機能](../app-service/networking-features.md)
-* [App Service 環境で Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [App Service Environmentで Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [アプリを Azure Virtual Network に統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
@@ -263,7 +263,7 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- App Service 環境
+- App Service Environment
 
 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 

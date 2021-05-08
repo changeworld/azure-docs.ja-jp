@@ -3,12 +3,12 @@ title: Azure DevTest Labs でのラボ ユーザーの追加を自動化する |
 description: この記事では、Azure Resource Manager テンプレート、PowerShell、および CLI を使用して、Azure DevTest Labs でのラボへのユーザー追加を自動化する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dc5522cfe694f193b9bbeeb3145808a367a62c12
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1168e00960c35e2ac1e4a660efba63d30c63a575
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519403"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727707"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Environments)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -115,13 +115,13 @@ $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ### <a name="principal-id"></a>プリンシパル ID
 プリンシパル ID は、ラボにラボ ユーザーとして追加する必要がある Active Directory ユーザー、グループ、またはサービス プリンシパルのオブジェクト ID です。 テンプレートでは、パラメーターとして `ObjectId` を使用します。
 
-[Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0)、Get-AzureRMADGroup、または [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell コマンドレットを使用することで、ObjectId を取得できます。 これらのコマンドレットによって、ID プロパティがある Active Directory オブジェクトが 1 つまたはその一覧が返されます。これが必要なオブジェクト ID です。 次の例では、会社の単一ユーザーのオブジェクト ID を取得する方法を示します。
+[Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0&preserve-view=true)、Get-AzureRMADGroup、または [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0&preserve-view=true) PowerShell コマンドレットを使用することで、ObjectId を取得できます。 これらのコマンドレットによって、ID プロパティがある Active Directory オブジェクトが 1 つまたはその一覧が返されます。これが必要なオブジェクト ID です。 次の例では、会社の単一ユーザーのオブジェクト ID を取得する方法を示します。
 
 ```powershell
-$userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
+$userObjectId = (Get-AzureRmADUser -UserPrincipalName 'email@company.com').Id
 ```
 
-[Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0)、[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)、[Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0) を含む、Azure Active Directory PowerShell コマンドレットを使用することもできます。
+[Get-MsolUser](/powershell/module/msonline/get-msoluser?preserve-view=true&view=azureadps-1.0)、[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?preserve-view=true&view=azureadps-1.0)、[Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?preserve-view=true&view=azureadps-1.0) を含む、Azure Active Directory PowerShell コマンドレットを使用することもできます。
 
 ### <a name="scope"></a>Scope
 スコープでは、ロールの割り当てを適用する必要があるリソースまたはリソース グループを指定します。 リソースには、スコープは次のフォームに含まれます: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`。 テンプレートでは、`subscription-id` パーツに入力するための `subscription().subscriptionId` 関数および `resource-group-name` パーツに入力するための `resourceGroup().name` テンプレート関数を使用します。 これらの関数を使用することは、ロールを割り当てるラボが、現在のサブスクリプション、およびテンプレートのデプロイが行われる同じリソース グループに存在する必要があるということを意味します。 最後のパーツ `resource-name` は、ラボの名前です。 この値は、この例ではテンプレート パラメーターによって受け取ります。 
@@ -153,7 +153,7 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 }
 ```
 
-次に、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell コマンドレットを使用して、Resource Manager テンプレートをデプロイします。 次の例のコマンドでは、ユーザー、グループ、またはサービス プリンシパルをラボに対する DevTest Labs ユーザー ロールに割り当てます。
+次に、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) PowerShell コマンドレットを使用して、Resource Manager テンプレートをデプロイします。 次の例のコマンドでは、ユーザー、グループ、またはサービス プリンシパルをラボに対する DevTest Labs ユーザー ロールに割り当てます。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
@@ -168,7 +168,7 @@ New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -Resou
 ```
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-概要で説明されているように、新しい Azure のロールの割り当てを作成して、ラボに対する **DevTest Labs ユーザー** ロールにユーザーを追加します。 PowerShell で、[New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) コマンドレットを使用してこれを行います。 このコマンドレットには、柔軟性のために多くの省略可能なパラメーターがあります。 `ObjectId`、`SigninName`、または `ServicePrincipalName` は、アクセス許可を付与されているオブジェクトとして指定できます。  
+概要で説明されているように、新しい Azure のロールの割り当てを作成して、ラボに対する **DevTest Labs ユーザー** ロールにユーザーを追加します。 PowerShell で、[New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドレットを使用してこれを行います。 このコマンドレットには、柔軟性のために多くの省略可能なパラメーターがあります。 `ObjectId`、`SigninName`、または `ServicePrincipalName` は、アクセス許可を付与されているオブジェクトとして指定できます。  
 
 指定されたラボで DevTest Labs ユーザー ロールにユーザーを追加する、サンプルの Azure PowerShell コマンドは次のとおりです。
 
@@ -186,7 +186,7 @@ Azure CLI で、`az role assignment create` コマンドを使用して、ラボ
 次の Azure CLI の例は、指定されたラボに対する DevTest Labs ユーザー ロールにユーザーを追加する方法を示します。  
 
 ```azurecli
-az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
+az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type "Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
 ## <a name="next-steps"></a>次のステップ

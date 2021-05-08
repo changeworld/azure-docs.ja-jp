@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: e8f1b3fffefcdf1d2ec8bd3e9b1aaea93697ca8a
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103471961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751996"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 
@@ -21,8 +21,6 @@ Azure Key Vault を使用して、Azure HPC Cache でデータを暗号化する
 > Azure でキャッシュ ディスクなどに格納されているすべてのデータは、既定で Microsoft のマネージド キーを使用して保存時に暗号化されます。 この記事の手順に従うだけで、データの暗号化に使用するキーを管理することができます。
 
 Azure HPC Cache は、キャッシュ ディスクにカスタマー キーを追加した場合でも、キャッシュされたデータを保持しているマネージド ディスクでの [VM ホスト暗号化](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)によっても保護されます。 カスタマー マネージド キーを二重暗号化のために追加することで、セキュリティ ニーズが高いお客様に追加のセキュリティ レベルが提供されます。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../virtual-machines/disk-encryption.md)」を参照してください。
-
-<!-- This feature is available only in some of the Azure regions where Azure HPC Cache is available. Refer to the [Region availability](hpc-cache-overview.md#region-availability) list for details. -->
 
 Azure HPC Cache にカスタマー マネージド キーの暗号化を有効にするには、次の 3 つの手順を行います。
 
@@ -58,7 +56,7 @@ Azure HPC Cache を使用するには、キー コンテナーとキーがこれ
 
 * Azure HPC Cache を作成するユーザーは、[Key Vault の共同作成者ロール](../role-based-access-control/built-in-roles.md#key-vault-contributor)と同等のアクセス許可を持っている必要があります。 Azure Key Vault を設定および管理するには、同じアクセス許可が必要です。
 
-  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/secure-your-key-vault.md)」を参照してください。
+  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/security-overview.md)」を参照してください。
 
 ## <a name="1-set-up-azure-key-vault"></a>1.Azure Key Vault を設定する
 
@@ -69,14 +67,14 @@ Azure HPC Cache を使用するには、キー コンテナーとキーがこれ
 詳細については、[Azure Key Vault のドキュメント](../key-vault/general/overview.md)を参照してください。
 
 > [!NOTE]
-> Azure Key Vault は、Azure HPC Cache と同じサブスクリプションを使用し、同じリージョンに存在する必要があります。 選択するリージョンで、[カスタマー マネージド キー機能がサポートされている](hpc-cache-overview.md#region-availability)ことを確認します。
+> Azure Key Vault は、Azure HPC Cache と同じサブスクリプションを使用し、同じリージョンに存在する必要があります。 選択するリージョンで[両方の製品がサポートされている](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)ことを確認してください。
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2.カスタマー マネージド キーを有効にしてキャッシュを作成する
 
 Azure HPC Cache を作成する際には、暗号化キーのソースを指定する必要があります。 「[Azure HPC Cache を作成する](hpc-cache-create.md)」の手順に従って、 **[ディスク暗号化キー]** ページでキー コンテナーとキーを指定します。 キャッシュの作成時に新しいキー コンテナーとキーを作成できます。
 
 > [!TIP]
-> **[ディスク暗号化キー]** ページが表示されない場合は、キャッシュがサポートされているリージョンのいずれかにあることを確認します。
+> **[ディスク暗号化キー]** ページが表示されない場合は、[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)のいずれかにキャッシュがあることを確認します。
 
 キャッシュを作成するユーザーは、[Key Vault の共同作成者ロール](../role-based-access-control/built-in-roles.md#key-vault-contributor)以上の権限を持っている必要があります。
 

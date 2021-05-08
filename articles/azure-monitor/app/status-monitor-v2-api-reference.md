@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 2278b9d70e888fa546dc64da4743b2bf5b6c45e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7c5c2f1d055ec6270892873548872b20b17b4158
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100587521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566899"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights エージェント API リファレンス
 
@@ -100,6 +100,8 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ```
 
+> [!NOTE]
+> このコンテキストでの AppFilter の名前付けは、混乱を招く可能性があり、`AppFilter` により、アプリケーション名の regex フィルター (IIS の .Net の場合は HostingEnvironment.SiteName) が設定されます。 `VirtualPathFilter` により、仮想パス regex フィルター (IIS の .Net の場合は HostingEnvironment.ApplicationVirtualPath) が設定されます。 1 つのアプリをインストルメント化するには、VirtualPathFilter を次のように使用します: `Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap @(@{VirtualPathFilter="^/MyAppName$"; InstrumentationSettings=@{InstrumentationKey='<your ikey>'}})`
 
 ### <a name="parameters"></a>パラメーター
 

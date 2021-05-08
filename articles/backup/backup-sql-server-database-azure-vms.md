@@ -1,16 +1,16 @@
 ---
-title: Azure VM での SQL Server データベースのバックアップ
-description: この記事では、Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します。
+title: コンテナーから複数の SQL Server VM をバックアップする
+description: この記事では、Recovery Services コンテナーから Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 4cfd8233b9a696b5b4b1981eefa81aa9723f6431
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 04/07/2021
+ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538986"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258471"
 ---
-# <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
+# <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Recovery Services コンテナーから複数の SQL Server VM をバックアップする
 
 SQL Server データベースは、低い回復ポイントの目標値 (RPO) と長期のリテンション期間を必要とする重要なワークロードです。 [Azure Backup](backup-overview.md) を使用して、Azure 仮想マシン (VM) 上で稼働している SQL Server データベースをバックアップできます。
 
@@ -24,10 +24,6 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 > * データベースの検出とバックアップの設定。
 > * データベースに対する自動保護の設定。
 
->[!NOTE]
->**Azure VM での SQL Server の論理的な削除と Azure VM ワークロードでの SAP HANA の論理的な削除**が、プレビューで利用できるようになりました。<br>
->プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
-
 ## <a name="prerequisites"></a>前提条件
 
 SQL Server データベースをバックアップする前に、次の基準を確認してください。
@@ -35,8 +31,9 @@ SQL Server データベースをバックアップする前に、次の基準を
 1. SQL Server インスタンスをホストする VM として、同じリージョンおよびサブスクリプションの [Recovery Services コンテナー](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)を特定または作成する。
 1. VM が[ネットワーク接続](backup-sql-server-database-azure-vms.md#establish-network-connectivity)を備えていることを確認する。
 1. SQL Server データベースが、[Azure Backup のためのデータベースの命名に関するガイドライン](#database-naming-guidelines-for-azure-backup)に従っていることを確認する。
-1. SQL Server VM 名とリソース グループ名とを組み合わせた長さが、Azure Resource Manager (ARM) VM の場合は 84 文字、クラシック VM の場合は 77 文字を超えないようにしてください。 この制限は、一部の文字がサービスによって予約されていることに起因します。
+1. SQL Server VM 名とリソース グループ名とを組み合わせた長さが、Azure Resource Manager VM の場合は 84 文字、クラシック VM の場合は 77 文字を超えないようにしてください。 この制限は、一部の文字がサービスによって予約されていることに起因します。
 1. データベースに対して有効になっているバックアップ ソリューションが他にないことをチェックする。 データベースをバックアップする前に、他のすべての SQL Server バックアップを無効にします。
+1. SQL Server 2008 R2 または SQL Server 2012 を使用している場合は、[こちら](https://support.microsoft.com/help/2697983/kb2697983-fix-an-incorrect-value-is-stored-in-the-time-zone-column-of)に記載されているバックアップのタイム ゾーンの問題が発生する場合があります。 上記のタイム ゾーンに関連する問題を回避するために、最新の累積的な更新プログラムを使用していることを確認してください。 Azure VM の SQL Server インスタンスに更新プログラムの適用が不可能な場合は、仮想マシン上のタイム ゾーンの夏時間 (DST) を無効にします。
 
 > [!NOTE]
 > Azure VM に対してだけでなく、VM 上で稼働している SQL Server データベースに対しても、競合を発生させることなく Azure Backup を有効にすることができます。
@@ -63,7 +60,7 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 #### <a name="nsg-tags"></a>NSG タグ
 
-ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、*Azure AD* および *Azure Storage* に対して同様の [NSG 規則](../virtual-network/security-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。  次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
 1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
 
@@ -71,7 +68,7 @@ SQL Server データベースをバックアップする前に、次の基準を
 
 1. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
 
-1. **[追加]** をクリックして、新しく作成した送信セキュリティ規則を保存します。
+1. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
 
 Azure Storage と Azure AD に対する NSG 送信セキュリティ規則も、同様に作成できます。
 
@@ -87,11 +84,11 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 
 次の FQDN を使用することで、サーバーから必要なサービスへのアクセスを許可することもできます。
 
-| サービス    | アクセスするドメイン名                             |
-| -------------- | ------------------------------------------------------------ |
-| Azure Backup  | `*.backup.windowsazure.com`                             |
-| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します |
+| サービス    | アクセスするドメイン名                             | ポート
+| -------------- | ------------------------------------------------------------ | ---
+| Azure Backup  | `*.backup.windowsazure.com`                             | 443
+| Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` | 443
+| Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します | 該当する場合
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
@@ -110,7 +107,7 @@ Azure VM 上の SQL Server データベースをバックアップする場合�
 サポートされていない文字のエイリアス処理は用意されていますが、これらは使用しないことをお勧めします。 詳細については、「 [Table サービス データ モデルについて](/rest/api/storageservices/understanding-the-table-service-data-model)」を参照してください。
 
 >[!NOTE]
->名前に "+" や "&" などの特殊文字が含まれるデータベースに対する**保護の構成**操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる**自動保護**を有効にできます。
+>名前に "+" や "&" などの特殊文字が含まれるデータベースに対する **保護の構成** 操作はサポートされていません。 データベース名を変更するか、これらのデータベースを適切に保護できる **自動保護** を有効にできます。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -161,7 +158,7 @@ VM 上で稼働しているデータベースを検出する方法:
 
    ![[バックアップの構成] を選択する](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-1. 登録されている可用性グループおよびスタンドアロン SQL Server インスタンスをすべて表示するには、 **[リソースの追加]** をクリックします。
+1. 登録されている可用性グループおよびスタンドアロン SQL Server インスタンスをすべて表示するには、 **[リソースの追加]** を選択します。
 
     ![[リソースの追加] の選択](./media/backup-azure-sql-database/add-resources.png)
 
@@ -176,7 +173,7 @@ VM 上で稼働しているデータベースを検出する方法:
    バックアップの負荷を最適化するために、Azure Backup では、1 つのバックアップ ジョブにおけるデータベースの最大数が 50 個に設定されています。
 
      * 50 個を超えるデータベースを保護するには、複数のバックアップを構成します。
-     * インスタンス全体または AlwaysOn 可用性グループを[有効にする](#enable-auto-protection)には、 **[AUTOPROTECT]\(自動保護\)** ドロップダウン リストで **[オン]** を選択し、 **[OK]** を選択します。
+     * インスタンス全体または AlwaysOn 可用性グループを [有効にする](#enable-auto-protection)には、 **[AUTOPROTECT]\(自動保護\)** ドロップダウン リストで **[オン]** を選択し、 **[OK]** を選択します。
 
          > [!NOTE]
          > [自動保護](#enable-auto-protection)機能では、既存のすべてのデータベースの保護が一度に有効になるだけでなく、そのインスタンスまたは可用性グループに追加されたすべての新しいデータベースも自動的に保護されます。  
@@ -189,7 +186,7 @@ VM 上で稼働しているデータベースを検出する方法:
 
      ![[バックアップ ポリシー] を選択する](./media/backup-azure-sql-database/select-backup-policy.png)
 
-1. **[バックアップの有効化]** をクリックして、 **[保護を構成]** 操作を送信し、ポータルの **[通知]** 領域で構成の進行状況を追跡します。
+1. **[バックアップの有効化]** を選択して、 **[保護を構成]** 操作を送信し、ポータルの **[通知]** 領域で構成の進行状況を追跡します。
 
    ![構成の進行状況の追跡](./media/backup-azure-sql-database/track-configuration-progress.png)
 
@@ -214,7 +211,7 @@ VM 上で稼働しているデータベースを検出する方法:
 
     ![ポリシー名を入力する](./media/backup-azure-sql-database/policy-name.png)
 
-1. 既定の設定を変更するには、 **[完全バックアップ]** に対応する **[編集]** リンクをクリックします。
+1. 既定の設定を変更するには、 **[完全バックアップ]** に対応する **[編集]** リンクを選択します。
 
    * **[バックアップ頻度]** を選択します。 **[毎日]** または **[毎週]** を選択します。
    * **[毎日]** を選択する場合は、バックアップ ジョブが開始されるときに、時刻とタイム ゾーンを選択します。 日次の完全バックアップを選択する場合は、差分バックアップを作成できません。
@@ -231,20 +228,20 @@ VM 上で稼働しているデータベースを検出する方法:
        ![[リテンション期間] の間隔の設定](./media/backup-azure-sql-database/retention-range-interval.png)
 
 1. **[OK]** を選択して、完全バックアップの設定を受け入れます。
-1. 既定の設定を変更するには、 **[差分バックアップ]** に対応する **[編集]** リンクをクリックします。
+1. 既定の設定を変更するには、 **[差分バックアップ]** に対応する **[編集]** リンクを選択します。
 
-    * **差分バックアップのポリシー**で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
+    * **差分バックアップのポリシー** で、 **[有効]** を選択して頻度とリテンション期間の制御を開きます。
     * 差分バックアップは 1 日に 1 回のみトリガーできます。 完全バックアップと同じ日に差分バックアップをトリガーすることはできません。
     * 差分バックアップは、最大 180 日間保持できます。
     * マスター データベースでは、差分バックアップはサポートされていません。
 
       ![差分バックアップ ポリシー](./media/backup-azure-sql-database/differential-backup-policy.png)
 
-1. 既定の設定を変更するには、 **[ログ バックアップ]** に対応する **[編集]** リンクをクリックします
+1. 既定の設定を変更するには、 **[ログ バックアップ]** に対応する **[編集]** リンクを選択します
 
     * **[ログ バックアップ]** で、 **[有効]** を選択して、頻度とリテンション期間の制御を設定します。
     * ログ バックアップは、15 分ごとの頻度で実行でき、最大 35 日間保持することが可能です。
-    * データベースが[単純復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)である場合、そのデータベースのログ バックアップ スケジュールは一時停止されるため、ログ バックアップはトリガーされません。
+    * データベースが[単純復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server)である場合、そのデータベースのログ バックアップ スケジュールは一時停止されるため、ログ バックアップはトリガーされません。
     * データベースの復旧モデルが **[完全]** から **[単純]** に変更された場合、復旧モデルが変更されてから 24 時間以内にログ バックアップが一時停止されます。 同様に、復旧モデルが **[単純]** から変更された場合、データベースでログ バックアップがサポートされるようになったので、復旧モデルの変更から 24 時間以内にログ バックアップ スケジュールが有効になります。
 
       ![ログ バックアップのポリシー](./media/backup-azure-sql-database/log-backup-policy.png)
@@ -254,7 +251,7 @@ VM 上で稼働しているデータベースを検出する方法:
 1. バックアップ ポリシーに対する編集が完了したら、 **[OK]** を選択します。
 
 > [!NOTE]
-> 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 ユーザーが、週単位の完全バックアップ、日単位の差分、2 時間ごとのログを実行しているとしましょう。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後、すなわち 30 + 7 日後に、クリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
+> 各ログ バックアップは、復旧チェーンを形成するために、以前の完全バックアップにチェーンされています。 この完全バックアップは、前回のログ バックアップのリテンション期間が終了するまで保持されます。 これは、完全バックアップのリテンション期間を追加して、すべてのログが確実に復旧されるようにすることを意味します。 週単位の完全、日単位の差分、2 時間ごとのログの各バックアップを実行していると仮定します。 これらのすべてが 30 日間保持されます。 ただし、週単位の完全バックアップは、次の完全バックアップが利用可能になった後でのみ、すなわち 30 + 7 日後に、実際にクリーンアップまたは削除することができます。 たとえば、週単位の完全バックアップが 11 月 16 日に行われたとします。 保持ポリシーに従って、12 月 16 日まで保持されます。 この完全バックアップに対する前回のログ バックアップは、11 月 22 日に予定されている次の完全バックアップの前に行われます。 このログが 12 月 22 日までに利用可能になるまでは、11 月 16 日の完全バックアップは削除されません。 そのため、11 月 16 日の完全バックアップは、12 月 22 日までは保持されます。
 
 ## <a name="enable-auto-protection"></a>自動保護を有効にする  
 

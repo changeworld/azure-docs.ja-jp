@@ -4,22 +4,20 @@ description: Container Instances のセキュリティ ベースラインでは�
 author: msmbaldwin
 ms.service: container-instances
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07eaa9fd9add14f136d68c50bca15807ef4037ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8790e05edbaeb40debd997ea9b35d31b25947761
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738091"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598790"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Container Instances の Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Container Instances に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。
-内容は、Container Instances に適用される Azure セキュリティ ベンチマークと関連ガイダンスで定義されている **セキュリティ コントロール** によってグループ化されています。 Container Instances に適用できない **コントロール** は除外されています。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Container Instances に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、Container Instances に適用される Azure セキュリティ ベンチマークと関連ガイダンスで定義されている **セキュリティ コントロール** によってグループ化されています。 Container Instances に適用されない **コントロール**、または Microsoft が責任を持つものは、除外されています。
 
- 
 Container Instances を Azure セキュリティ ベンチマークに完全にマップする方法については、[完全な Container Instances セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
@@ -32,7 +30,7 @@ Container Instances を Azure セキュリティ ベンチマークに完全に�
 
 Azure Firewall を使用して、Azure Container Instances に委任されたサブネットからの送信ネットワーク アクセスを制御します。 
 
-- [コンテナー インスタンスを Azure 仮想ネットワークにデプロイする](/azure/container-instances/container-instance-vnet)
+- [コンテナー インスタンスを Azure 仮想ネットワークにデプロイする](/azure/container-instances/container-instances-vnet)
 
 - [Azure Firewall をデプロイして構成する方法](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -254,9 +252,9 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 Azure Container Instances で Azure コンテナー レジストリなどのクラウドベースのプライベート レジストリを使用する場合、Azure コンテナー レジストリごとに、組み込みの管理者アカウントが有効になっているか無効になっているかを追跡します。 使用されていない場合、アカウントは無効にします。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Azure Container Registry 管理者アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
 
@@ -604,7 +602,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -728,7 +726,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限します。
 
-- [たとえば、Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [たとえば、Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **責任**: Customer
 
@@ -802,9 +800,9 @@ Azure Container Instances で Azure Container Registry (ACR) などのクラウ�
 
 **ガイダンス**: カスタム Azure ポリシー定義を使用する場合は、Azure Repos を使用してコードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/)
 
 **責任**: Customer
 
@@ -964,7 +962,7 @@ Azure コマンドライン ツールまたは SDK を使用して、Azure Key V
 
 - [コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 - [Container Instances を使用したデプロイ データの暗号化](container-instances-encrypt-data.md)
 
@@ -976,7 +974,7 @@ Azure コマンドライン ツールまたは SDK を使用して、Azure Key V
 
 **ガイダンス**: Azure コマンドライン ツールまたは SDK を使用して、Azure Key Vault でバックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure で Azure Key Vault キーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure で Azure Key Vault キーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **責任**: Customer
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582321"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669306"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
 
@@ -28,15 +28,11 @@ ms.locfileid: "99582321"
 
 [ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md)のシナリオでは、最初のステップだけが説明されていました。 ここでは、ユーザーをサインインさせるだけでなく、Web API の呼び出しも行うように、Web アプリを変更する方法について説明します。
 
-## <a name="libraries-that-support-web-app-scenarios"></a>Web アプリのシナリオがサポートされているライブラリ
+## <a name="microsoft-libraries-supporting-web-apps"></a>Web アプリをサポートしている Microsoft ライブラリ
 
-Microsoft 認証ライブラリ (MSAL) の次のライブラリでは、Web アプリの承認コード フローがサポートされています。
+次の Microsoft ライブラリで Web アプリがサポートされています。
 
-| MSAL ライブラリ | 説明 |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | .NET Framework プラットフォームと .NET Core プラットフォームのサポート。 ユニバーサル Windows プラットフォーム (UWP)、Xamarin.iOS、Xamarin.Android の各プラットフォームは、パブリック クライアント アプリケーションの構築に使用されるため、サポートされていません。 <br/><br/>ASP.NET Core Web アプリと Web API の場合、MSAL.NET は、[Microsoft.Identity.Web](https://aka.ms/ms-identity-web) という名前の上位レベルのライブラリにカプセル化されます。 |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL for Python | Python Web アプリケーションのサポート。 |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL for Java | Java Web アプリケーションのサポート。 |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 関心があるプラットフォームのタブを選択してください。
 

@@ -8,13 +8,13 @@ ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594047"
 ---
-# <a name="use-an-app-service-environment"></a>App Service 環境の使用
+# <a name="use-an-app-service-environment"></a>App Service Environment の使用
 
 App Service Environment (ASE) は、ユーザーの Azure Virtual Network インスタンス内のサブネットに Azure App Service をデプロイしたものです。 ASE は次の要素で構成されます。
 
@@ -71,14 +71,14 @@ ASE 内にアプリを作成するには:
     ![[分離] 価格レベル][2]
 
     > [!NOTE]
-    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。
+    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service Environment に追加することはできます。
     >
 
 1. **[確認および作成]** を選択し、情報が正しいことを確認して、 **[作成]** を選択します。
 
 ## <a name="how-scale-works"></a>スケールのしくみ
 
-すべての App Service アプリは、App Service プランで実行されます。 App Service 環境に App Service プランが存在し、App Service プランにアプリが存在します。 アプリをスケールするときは、App Service プラン、および同じプラン内のすべてのアプリをスケールすることになります。
+すべての App Service アプリは、App Service プランで実行されます。 App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。 アプリをスケールするときは、App Service プラン、および同じプラン内のすべてのアプリをスケールすることになります。
 
 App Service プランをスケールすると、必要なインフラストラクチャが自動的に追加されます。 インフラストラクチャが追加されるまでの間、スケール操作に時間差が生じます。 複数のスケール操作を順番に実行すると、最初のインフラストラクチャ スケール要求が処理され、他のものはキューに入れられます。 最初のスケール操作が終了すると、他のインフラストラクチャ要求はすべて一緒に動作します。 インフラストラクチャを追加すると、App Service プランが適切に割り当てられます。 新しい App Service プランを作成すること自体が、追加のハードウェアが必要となるため、スケール操作になります。
 

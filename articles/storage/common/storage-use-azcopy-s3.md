@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 34f54bb30e959ecc2fa27fba5ab7392b9eddc68e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 01c3296569d03a7fcc13c004d42d64a86a48a0bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494514"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728795"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -40,7 +40,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 AWS アクセス キーとシークレット アクセス キーを収集して、以下の環境変数を設定します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -59,7 +59,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -76,7 +76,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -89,7 +89,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 
 ワイルドカード記号 (*) を使用することで、ディレクトリ自体をコピーせずにディレクトリの内容をコピーできます。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -99,7 +99,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
@@ -109,7 +109,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -119,7 +119,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |

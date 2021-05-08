@@ -5,12 +5,12 @@ description: サービスを Azure Kubernetes Service (AKS) を使用して公�
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 4c2c0866aa9a721a73e1eb8fa230f0022cf6b8ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cbb898d05ecc1f0796f3609adb1368c3d77de2c5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505632"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779743"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
@@ -149,8 +149,8 @@ spec:
 
 <!-- LINKS - Internal -->
 [advanced-networking]: configure-azure-cni.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
 [azure-lb-comparison]: ../load-balancer/skus.md
 [use-kubenet]: configure-kubenet.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md

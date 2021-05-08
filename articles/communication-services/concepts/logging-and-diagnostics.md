@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ed75a7f8c7915645778696282e179af3a4d4091
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0bf7213e5cfdc57194482c6914d4e25b9336832e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493596"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935876"
 ---
 # <a name="communication-services-logs"></a>Communication Services のログ
 
@@ -97,7 +97,7 @@ Communication Services には、有効にできるログが 3 種類用意され
 | OutgoingMessageLength | 送信メッセージに含まれる文字数。 |
 | IncomingMessageLength | 受信メッセージに含まれる文字数。 |
 | DeliveryAttempts | このメッセージの配信試行回数。 |
-| PhoneNumber | SMS メッセージの送信先である電話番号。 |
+| PhoneNumber | 携帯ショートメール (SMS) メッセージの送信元である電話番号。 |
 | SdkType | 要求で使用された SDK の種類。 |
 | PlatformType | 要求で使用されたプラットフォームの種類。 |
 | メソッド | 要求で使用されたメソッド。 |

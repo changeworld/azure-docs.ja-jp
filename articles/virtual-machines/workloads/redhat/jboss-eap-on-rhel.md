@@ -3,18 +3,20 @@ title: クイックスタート - Red Hat Enterprise Linux (RHEL) 上の JBoss E
 description: Azure の RHEL VM および仮想マシン スケール セット上の Red Hat JBoss EAP を使用してエンタープライズ Java アプリケーションをデプロイする方法。
 author: theresa-nguyen
 ms.author: bicnguy
+ms.date: 10/30/2020
+ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: redhat
+ms.custom:
+- mode-api
 ms.collection: linux
-ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
-ms.date: 10/30/2020
-ms.openlocfilehash: 4027e9c336d938c3877e56b0eb59edea6ac1d992
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 18cf093adad858f50b2b1fa1c97e38821bd1c949
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671964"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538679"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の JBoss EAP を使用してエンタープライズ Java アプリケーションを Azure にデプロイする
 

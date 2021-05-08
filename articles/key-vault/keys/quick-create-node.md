@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: db6bb5c204bfe79b9d7470f651081aa4f4dcf2ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c0066409732f4492186ea0bf604261e1ab59ca9f
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97932709"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750304"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault キー クライアント ライブラリ (バージョン 4)
 
@@ -272,6 +272,6 @@ Purging your key from <your-unique-keyvault-name> ... done.
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Key Vault キーの概要](about-keys.md)を確認する
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)方法
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)方法
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
 - [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

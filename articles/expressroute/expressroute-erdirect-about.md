@@ -5,18 +5,18 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 03/17/2021
 ms.author: duau
-ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 56d6a76991c4386be45b2c18f4edb3d363e58fa5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202158"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027144"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
-ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps または 10 Gbps 接続が提供されます。
+ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続できます。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps または 10 Gbps 接続が提供されます。 任意のサービス プロバイダーの ER Direct を操作できます。
 
 以下に、ExpressRoute Direct で提供される主な機能の一部を示します。
 
@@ -26,33 +26,50 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 ## <a name="onboard-to-expressroute-direct"></a>ExpressRoute Direct へのオンボード
 
-ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、Azure PowerShell を使用して次のコマンドを実行します。
 
-* **ExpressRoute Direct** で実行しようとしているシナリオ
-* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
-* 実装のタイムライン
-* その他の質問について
+1.  Azure にサインインして、登録するサブスクリプションを選択します。
+
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+1. 次のコマンドを使用して、サブスクリプションをパブリック プレビューに登録します。
+1. 
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+登録したら、**Microsoft.Network** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。
+
+1. 「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」の説明に従って、サブスクリプションの設定にアクセスします。
+
+1. サブスクリプションで、**リソース プロバイダー** に関して、**Microsoft.Network** プロバイダーに **登録** 状態が表示されていることを確認します。 登録されているプロバイダーの一覧に、Microsoft.Network リソース プロバイダーが存在しない場合は、それを追加します。
+
+ExpressRoute Direct の使用開始後、選択したピアリングの場所に利用可能なポートが見つからない場合は、ExpressRouteDirect@microsoft.com にメールを送信してインベントリの追加を依頼してください。
 
 ## <a name="expressroute-using-a-service-provider-and-expressroute-direct"></a>サービス プロバイダーを使用する ExpressRoute と ExpressRoute Direct
 
 | **サービス プロバイダーを使用する ExpressRoute** | **ExpressRoute Direct** | 
 | --- | --- |
-| サービス プロバイダーを利用して、既存のインフラストラクチャへの高速オンボードと接続を有効にします | 100 Gbps/10 Gbps インフラストラクチャとすべてのレイヤーの完全な管理が必要です
+| サービス プロバイダーを使用して、既存のインフラストラクチャへの高速オンボードと接続を有効にします | 100 Gbps/10 Gbps インフラストラクチャとすべてのレイヤーの完全な管理が必要です
 | イーサネットや MPLS を含む、何百ものプロバイダーと統合されます | 規制対象の業種と大量のデータ インジェストのための直接/専用容量 |
 | 50 Mbps ～ 10 Gbps 回線 SKU | 顧客は 100 Gbps ExpressRoute Direct で以下の回線 SKU の組み合わせを選択できます。 <ul><li>5 Gbps</li><li>10 Gbps</li><li>40 Gbps</li><li>100 Gbps</li></ul> 顧客は 10 Gbps ExpressRoute Direct で以下の回線 SKU の組み合わせを選択できます。<ul><li>1 Gbps</li><li>2 Gbps</li><li>5 Gbps</li><li>10 Gbps</li></ul>
 | シングル テナント用に最適化 | 複数の事業単位と複数の作業環境を持つシングル テナント用に最適化
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct の回線
 
-Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute を使用すると、Microsoft Azure、Microsoft 365 などの Microsoft クラウド サービスへの接続を確立できます。
+Microsoft Azure ExpressRoute を使用すると、接続プロバイダーによって容易になるプライベート接続を経由して、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute を使用すると、Microsoft Azure、Microsoft 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
-各ピアリングの場所からは Microsoft のグローバル ネットワークにアクセスできます。また、既定で地理的ゾーン内のすべてのリージョンにアクセス可能であり、Premium 回線を使用してすべてのグローバル リージョンにアクセスすることができます。  
+各ピアリングの場所からは Microsoft のグローバル ネットワークにアクセスできます。また、既定で地理的ゾーン内のすべてのリージョンにアクセス可能です。 Premium 回線を使用してすべてのグローバル リージョンにアクセスできます。  
 
-ほとんどのシナリオの機能は、ExpressRoute サービス プロバイダーを利用して操作する回線と同じです。 ExpressRoute Direct を使用して提供される新しい機能をサポートするため、また細分性を高めるために、ExpressRoute Direct 回線に存在する特定の主な機能があります。
+ほとんどのシナリオの機能は、ExpressRoute サービス プロバイダーを使用して操作する回線と同じです。 ExpressRoute Direct を使用して提供される新しい機能をサポートするため、また細分性を高めるために、ExpressRoute Direct 回線に存在する特定の主な機能があります。
 
 ## <a name="circuit-skus"></a>回線 SKU
 
-ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
+ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、100 Gbps ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps の回線 SKU がサポートされるようになりました。 物理ポート ペアは、**100 Gbps または 10 Gbps** のみであり、複数の仮想回線を備えることができます。 回線のサイズ:
 
 | **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
@@ -79,9 +96,9 @@ ExpressRoute Direct では、Azure Storage やその他のビッグ データ �
 
 ExpressRoute Direct では、QinQ と Dot1Q の両方の VLAN タグ付けがサポートされます。
 
-* **QinQ VLAN タグ付け**では、ExpressRoute 回線ごとにルーティング ドメインを分離することができます。 Azure では回線の作成時に S-Tag が動的に割り当てられ、変更することはできません。 回線 (プライベートおよび Microsoft) の各ピアリングでは、VLAN として一意の C-Tag が利用されます。 C-Tag を、ExpressRoute Direct ポートの回線全体で一意にする必要はありません。
+* **QinQ VLAN タグ付け** では、ExpressRoute 回線ごとにルーティング ドメインを分離することができます。 Azure では回線の作成時に S-Tag が動的に付与され、変更することはできません。 回線 (プライベートおよび Microsoft) の各ピアリングでは、VLAN として一意の C-Tag が使用されます。 C-Tag を、ExpressRoute Direct ポートの回線全体で一意にする必要はありません。
 
-* **Dot1Q VLAN タグ付け**では、ExpressRoute Direct ポート ペアごとに 1 つの VLAN タグ付けが可能です。 ピアリングで使用される C-Tag は、ExpressRoute Direct ポート ペアのすべての回線とピアリング全体で一意である必要があります。
+* **Dot1Q VLAN タグ付け** では、ExpressRoute Direct ポート ペアごとに 1 つの VLAN タグ付けが可能です。 ピアリングで使用される C-Tag は、ExpressRoute Direct ポート ペアのすべての回線とピアリング全体で一意である必要があります。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -89,7 +106,7 @@ ExpressRoute Direct では、QinQ と Dot1Q の両方の VLAN タグ付けがサ
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件に応じてスケーリングされます。 
+ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件のとおりにスケーリングされます。 
 
 ## <a name="next-steps"></a>次のステップ
 

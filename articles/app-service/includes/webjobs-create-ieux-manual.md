@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.title: include
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5687fb99c27b8b2141e0a2a817327cfbb124951a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 40e9e2b0e7437566a132f2402d3bed01b284d11a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102109392"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081149"
 ---
 ## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>手動でトリガーされる Web ジョブを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "102109392"
    | <abbr title="App Service アプリ内で一意の名前。 文字または数字で始まる必要があり、`-` と `_` 以外の特殊文字を使用することはできません。">名前</abbr> | myTriggeredWebJob | 
     | <abbr title="実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。">ファイルのアップロード</abbr> | ConsoleApp.zip |
     | <abbr title="種類には、継続的とトリガーがあります。">Type</abbr> | トリガー | 
-    | <abbr title="種類には、スケジュールと手動があります">トリガー</a> | マニュアル | |
+    | <abbr title="種類には、スケジュールと手動があります">トリガー</a> | マニュアル | 
 
 4. **[OK]** をクリックします。 
 

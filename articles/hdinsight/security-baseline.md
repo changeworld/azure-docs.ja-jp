@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf2360bda55735aa8ef4258da5ae47f673f4d71b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c5ffdecf768be0962950bb3691dbb11fb0e70120
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738924"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565012"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight 用の Azure セキュリティ ベースライン
 
@@ -58,9 +58,9 @@ HDInsight を完全に Azure セキュリティ ベンチマークにマップ�
 
 **ガイダンス**:DDoS 攻撃からの保護のために、Azure HDInsight がデプロイされている仮想ネットワーク上で Azure DDoS Standard Protection を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-- [DDoS 保護を構成する方法](/azure/virtual-network/manage-ddos-protection)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Security Center の統合された脅威インテリジェンスについて](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 **責任**: Customer
 
@@ -100,7 +100,7 @@ HDInsight を完全に Azure セキュリティ ベンチマークにマップ�
 
 **ガイダンス**:仮想ネットワーク サービス タグを使用して、Azure HDInsight クラスターがデプロイされているサブネットに接続されたネットワーク セキュリティ グループ (NSG) に対して、ネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-- [Azure HDInsight でのサービス タグの概要と使用方法](/azure/virtual-network/security-overview#service-tags)
+- [Azure HDInsight でのサービス タグの概要と使用方法](../virtual-network/network-security-groups-overview.md#service-tags)
 
 **責任**: Customer
 
@@ -130,7 +130,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 Azure PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 - [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
@@ -144,9 +144,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure HDInsight デプロイに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -186,7 +186,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 - [Azure Monitor に Azure HDInsight クラスターをオンボードする方法](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
 **責任**: Customer
 
@@ -198,7 +198,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 - [Azure Monitor に Azure HDInsight クラスターをオンボードする方法](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
 **責任**: Customer
 
@@ -220,7 +220,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -230,7 +230,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Azure HDInsight には Clamscan がプレインストールされ、クラスター ノード イメージに対して有効になっています。ただし、ソフトウェアを管理し、Clamscan によって生成されたログを手動で集計/監視する必要があります。
 
-- [Clamscan の概要](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Clamscan の概要](./hdinsight-faq.md#security-and-certificates)
 
 **責任**: Customer
 
@@ -300,7 +300,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Azure HDInsight ID ブローカーを使用して、パスワードを指定せずに多要素認証を使って Enterprise セキュリティ パッケージ (ESP) クラスターにサインインします。 Azure portal などの他の Azure サービスに既にサインインしている場合は、シングル サインオン (SSO) エクスペリエンスによって Azure HDInsight クラスターにサインインできます。
 
-- [Azure HDInsight ID ブローカーを有効にする方法](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-hdinsight-id-broker)
+- [Azure HDInsight ID ブローカーを有効にする方法](./domain-joined/identity-broker.md#enable-hdinsight-id-broker)
 
 **責任**: Customer
 
@@ -334,7 +334,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Enterprise セキュリティ パッケージが構成された Azure HDInsight クラスターはドメインに接続できるので、ドメイン ユーザーは自分のドメイン資格情報を使用して認証を受けることができます。 Azure AD 環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときに、Azure Active Directory (Azure AD) セキュリティ レポートを使用して、ログおよびアラートを生成できます。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -392,7 +392,7 @@ Enterprise セキュリティ パッケージ (ESP) が構成された Azure HDI
 
 **ガイダンス**:Enterprise セキュリティ パッケージ (ESP) が構成された Azure HDInsight クラスターはドメインに接続できるので、ドメイン ユーザーは自分のドメイン資格情報を使用してクラスターの認証を受けることができます。 ユーザー ID に関連する検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (Azure AD) リスク検出および Identity Protection 機能を使用します。 また、さらに調査するためにデータを Azure Sentinel に取り込むこともできます。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -404,7 +404,7 @@ Enterprise セキュリティ パッケージ (ESP) が構成された Azure HDI
 
 **ガイダンス**:使用できません。Azure HDInsight ではまだカスタマー ロックボックスがサポートされていません。
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **責任**: Customer
 
@@ -418,7 +418,7 @@ Enterprise セキュリティ パッケージ (ESP) が構成された Azure HDI
 
 **ガイダンス**:Azure HDInsight デプロイに関連するリソースに対してタグを使用すると、機密情報を格納または処理する Azure リソースの追跡に役立ちます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -432,7 +432,7 @@ Enterprise セキュリティ パッケージ (ESP) が構成された Azure HDI
 
 - [Azure Data Lake Storage をセキュリティで保護する方法](../data-lake-store/data-lake-store-security-overview.md)
 
-- [Azure Storage アカウントをセキュリティで保護する方法](/azure/storage/common/storage-security-guide)
+- [Azure Storage アカウントをセキュリティで保護する方法](../storage/blobs/security-recommendations.md)
 
 **責任**: Customer
 
@@ -506,13 +506,13 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Azure SQL Database を使用して Apache Hive と Apache Oozie メタデータを格納する場合は、常に SQL データが暗号化された状態を保証するようにします。 Azure Storage Accounts および Data Lake Storage (Gen1 または Gen2) では、Microsoft による暗号化キーの管理を許可することをお勧めします。ただし、必要に応じて、ご自身のキーを自分で管理することも可能です。
 
-- [Azure Storage アカウントの暗号化キーを管理する方法](/azure/storage/common/storage-encryption-keys-portal)
+- [Azure Storage アカウントの暗号化キーを管理する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [カスタマー マネージド暗号化キーを使用して Azure Data Lake Storage を作成する方法](../data-lake-store/data-lake-store-get-started-portal.md)
 
-- [Azure SQL Database の暗号化の概要](/azure/sql-database/sql-database-technical-overview#data-encryption)
+- [Azure SQL Database の暗号化の概要](../azure-sql/database/sql-database-paas-overview.md#data-encryption)
 
-- [カスタマー マネージド キーを使用して SQL Database の Transparent Data Encryption を構成する方法](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal)
+- [カスタマー マネージド キーを使用して SQL Database の Transparent Data Encryption を構成する方法](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
 **責任**: 共有
 
@@ -522,7 +522,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:クラスター データに対するすべての CRUD 操作を監視してログに記録するように、Azure HDInsight クラスターに関連付けられている Azure Storage アカウントの診断設定を構成します。 Azure HDInsight クラスターに関連付けられている任意のストレージ アカウントまたは Data Lake Store の監査を有効にします。
 
-- [Azure Storage アカウントでの追加のログ記録/監査を有効にする方法](/azure/storage/common/storage-monitor-storage-account)
+- [Azure Storage アカウントでの追加のログ記録/監査を有効にする方法](../storage/common/manage-storage-analytics-logs.md)
 
 - [Azure Data Lake Storage での追加のログ記録/監査を有効にする方法](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md)
 
@@ -614,7 +614,7 @@ Microsoft では、Azure HDInsight ノードの基本イメージを管理およ
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -624,11 +624,11 @@ Microsoft では、Azure HDInsight ノードの基本イメージを管理およ
 
 **ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -697,7 +697,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -823,9 +823,9 @@ Azure HDInsight 内のマネージド ディスクはすべて、Azure Storage S
 
 また、Key Vault は、クラスター ストレージ (Azure Storage アカウント、Azure Data Lake Storage) のキーを管理するために、Azure HDInsight デプロイによって使用される場合もあります。
 
-- [Azure HDInsight 上で Apache Kafka 用に自分のキーを持ち込む方法](/azure/hdinsight/kafka/apache-kafka-byok)
+- [Azure HDInsight 上で Apache Kafka 用に自分のキーを持ち込む方法](./disk-encryption.md)
 
-- [Azure Storage アカウントの暗号化キーを管理する方法](/azure/storage/common/storage-encryption-keys-portal)
+- [Azure Storage アカウントの暗号化キーを管理する方法](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **責任**: Customer
 
@@ -859,7 +859,7 @@ Azure HDInsight 内のマネージド ディスクはすべて、Azure Storage S
 
 **ガイダンス**:Azure HDInsight には Clamscan がプレインストールされ、クラスター ノード イメージに対して有効になっています。ただし、ソフトウェアを管理し、Clamscan によって生成されたログを手動で集計/監視する必要があります。
 
-- [Azure HDInsight での Clamscan の概要](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Azure HDInsight での Clamscan の概要](./hdinsight-faq.md#security-and-certificates)
 
 **責任**: Customer
 
@@ -881,7 +881,7 @@ Data Lake Storage、Blob Storage など、Azure HDInsight クラスター デプ
 
 **ガイダンス**:Azure HDInsight には Clamscan がプレインストールされており、クラスター ノード イメージに対して有効になっています。 Clamscan では、エンジンと定義の更新は自動的に実行されますが、ログの集計と管理は手動で実行する必要があります。
 
-- [Azure HDInsight での Clamscan の概要](https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates)
+- [Azure HDInsight での Clamscan の概要](./hdinsight-faq.md#security-and-certificates)
 
 **責任**: Customer
 
@@ -897,7 +897,7 @@ Data Lake Storage、Blob Storage など、Azure HDInsight クラスター デプ
 
 - [Azure Storage アカウントのストレージ冗長性を構成する方法](../storage/common/storage-redundancy.md)
 
-- [Azure SQL Database の冗長性を構成する方法](/azure/sql-database/sql-database-active-geo-replication)
+- [Azure SQL Database の冗長性を構成する方法](../azure-sql/database/active-geo-replication-overview.md)
 
 **責任**: Customer
 
@@ -921,7 +921,7 @@ Data Lake Storage、Blob Storage など、Azure HDInsight クラスター デプ
 
 **ガイダンス**:Azure HDInsight のデプロイで Azure Key Vault が使用されている場合は、バックアップされたカスタマー マネージド キーの復元をテストします。
 
-- [Azure HDInsight 上で Apache Kafka 用に自分のキーを持ち込む方法](/azure/hdinsight/kafka/apache-kafka-byok)
+- [Azure HDInsight 上で Apache Kafka 用に自分のキーを持ち込む方法](./disk-encryption.md)
 
 - [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
@@ -933,7 +933,7 @@ Data Lake Storage、Blob Storage など、Azure HDInsight クラスター デプ
 
 **ガイダンス**:Azure HDInsight のデプロイで Azure Key Vault が使用されている場合は、Key Vault での論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。
 
-- [Azure Key Vault で論理的な削除を有効にする方法](/azure/key-vault/key-vault-ovw-soft-delete)
+- [Azure Key Vault で論理的な削除を有効にする方法](../key-vault/general/soft-delete-overview.md)
 
 **責任**: Customer
 
@@ -1025,5 +1025,5 @@ Data Lake Storage、Blob Storage など、Azure HDInsight クラスター デプ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

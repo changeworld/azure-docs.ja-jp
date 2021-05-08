@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/05/2021
+ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e08be08f2d898b017bb34ed38c9c3a69ee0582fa
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499137"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312979"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Firewall のアクティブ FTP のサポート
 
@@ -20,6 +20,12 @@ ms.locfileid: "102499137"
 
 既定では、Azure Firewall のアクティブ FTP サポートは、FTP `PORT` コマンドを使用した FTP バウンス攻撃から保護するために無効になっています。 ただし、Azure PowerShell、Azure CLI、または Azure ARM テンプレートを使用してデプロイする場合は、アクティブ FTP を有効にすることができます。
 
+アクティブ モードの FTP をサポートするには、次の TCP ポートを開く必要があります。
+
+- 任意の場所から FTP サーバーのポート 21 (クライアントが接続を開始)
+- FTP サーバーのポート 21 からポート > 1023 (サーバーはクライアントの制御ポートに応答)
+- FTP サーバーのポート 20 からクライアントのポート > 1023 (サーバーはクライアントのデータ ポートへのデータ接続を開始)
+- クライアントのポート > 1023 から FTP サーバーのポート 20 (クライアントはサーバーのデータ ポートに ACK を送信)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/30/2020
-ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/23/2021
+ms.openlocfilehash: 6bd8d6001fcd3bfa487259aa219ff771f26a8a94
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500871"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104951285"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での自動チューニング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,8 +54,8 @@ Azure SQL Database の自動チューニングの核となるロジックは、�
 
 ## <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
-- [Azure SQL Database の自動チューニングは Azure portal で有効にするか](automatic-tuning-enable.md)、または [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) T-SQL ステートメントを使用します。
-- Azure SQL Managed Instance の自動チューニングを有効にするには、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current) T-SQL ステートメントを使用します。
+- [Azure SQL Database の自動チューニングは Azure portal で有効にするか](automatic-tuning-enable.md)、または [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current&preserve-view=true) T-SQL ステートメントを使用します。
+- Azure SQL Managed Instance の自動チューニングを有効にするには、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-mi-current&preserve-view=true) T-SQL ステートメントを使用します。
 
 ## <a name="automatic-tuning-options"></a>自動チューニング オプション
 
@@ -64,7 +64,7 @@ Azure SQL Database および Azure SQL Managed Instance で使用可能な自動
 | 自動チューニング オプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :----------------------------- | ----- | ----- |
 | **CREATE INDEX** - ご自分のワークロードのパフォーマンスを向上させる可能性があるインデックスを特定し、インデックスを作成して、クエリのパフォーマンスが向上したことを自動的に確認します。 | はい | いいえ |
-| **DROP INDEX** - 一意なインデックスを除く冗長なインデックスや重複するインデックス、また長期間 (90 日超) 使用されていないインデックスを特定します。 なお、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。 Premium および Business Critical サービスレベルでは、使われていないインデックスの削除はサポートされていません。 | はい | いいえ |
+| **DROP INDEX** - 未使用 (過去 90 日間) と重複したインデックスを削除します。 一意なインデックス (主キーと一意制約をサポートするインデックスを含む) は削除されません。 このオプションは、インデックス ヒントを指定したクエリがワークロード内に存在する場合、またはワークロードがパーティションの切り替えを実行する場合に、自動的に無効になることがあります。 Premium および Business Critical サービス レベルでは、このオプションを使用しても未使用のインデックスは削除されませんが、重複するインデックスが存在する場合は削除されます。 | はい | いいえ |
 | **FORCE LAST GOOD PLAN** (自動プラン修正) - 以前の良好なプランよりも速度の低い実行プランを使用している Azure SQL クエリを特定し、その低速なプランの代わりに、最後に確認された良好なプランを使用してクエリを実行します。 | はい | はい |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database の自動チューニング
@@ -90,7 +90,7 @@ T-SQL を使用してチューニングの推奨事項を適用する場合は�
 
 ### <a name="automatic-tuning-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の自動チューニング
 
-SQL Managed Instance の自動チューニングでは、**FORCE LAST GOOD PLAN** のみがサポートされます。 T-SQL による自動チューニング オプションの構成の詳細については、[自動チューニングでの自動プラン修正の導入](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)と[自動プラン修正](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction)に関するページを参照してください。
+SQL Managed Instance の自動チューニングでは、**FORCE LAST GOOD PLAN** のみがサポートされます。 T-SQL による自動チューニング オプションの構成の詳細については、[自動チューニングでの自動プラン修正の導入](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)と[自動プラン修正](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

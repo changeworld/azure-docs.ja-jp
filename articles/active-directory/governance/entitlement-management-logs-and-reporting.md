@@ -16,12 +16,13 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 354805b3e2b538c92ba2345df2bcd93968640068
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501704"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764389"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 

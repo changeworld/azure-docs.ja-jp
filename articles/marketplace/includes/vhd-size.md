@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
 ms.openlocfilehash: f4e34e850391696506beed9f6f386f85528dff24
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92283384"
 ---
 オペレーティング システム (および必要に応じてその他のサービス) が事前に構成されているいずれかの VM を選択した場合、標準の Azure VM サイズが既に選択されています。 事前構成された OS でソリューションを始めるのが、推奨されるアプローチです。 ただし、OS を手動でインストールする場合は、VM イメージ内のプライマリ VHD のサイズを変更する必要があります。 OS ディスクのサイズが Linux または Windows の制限内であることを確認します。

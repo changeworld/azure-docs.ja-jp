@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97563077"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>静的にレンダリングされた Next.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
@@ -136,7 +136,7 @@ Azure Static Web Apps により、GitHub リポジトリからアプリがデプ
 
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** をクリックします
-1. **Static Web Apps** を検索します
+1. **[Static Web Apps]** を探します
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
 1. **[作成]**
 

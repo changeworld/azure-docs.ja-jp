@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.openlocfilehash: b27db94775e2ba8275dbdab4bf5bd61cc0fdf5c8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04a3fb9e4e7dd1d498714cd3b2ebd4c5f6b55bec
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666871"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210348"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure と Oracle Cloud Infrastructure を統合した Oracle アプリケーション ソリューション
 
@@ -50,6 +50,8 @@ Oracle ソリューションを完全に Azure インフラストラクチャに
 * Azure 西ヨーロッパ (WestEurope) および OCI アムステルダム (オランダ北西部)
 * Azure 東日本 (JapanEast) および OCI 東京 (東日本)
 * Azure 米国西部 (WestUS) および OCI サンノゼ (米国西部)
+* ドイツ中西部 (フランクフルト) および OCI ドイツ中部 (フランクフルト)
+
 
 ## <a name="networking"></a>ネットワーク
 

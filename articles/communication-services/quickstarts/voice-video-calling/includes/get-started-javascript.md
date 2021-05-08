@@ -1,23 +1,23 @@
 ---
 title: クイックスタート - Azure Communication Services を使用して Web アプリに VOIP 通話を追加する
-description: このチュートリアルでは、JavaScript 用 Azure Communication Services 通話クライアント ライブラリの使用方法について説明します。
+description: このチュートリアルでは、JavaScript 用 Azure Communication Services Calling SDK の使用方法について説明します
 author: ddematheu
 ms.author: nimag
-ms.date: 08/11/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d27a79e180a0219773a3094fb85f842773d75183
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: bd9a607b46c87ca590bcefef310f822d6f23483c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656618"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386786"
 ---
-このクイックスタートでは、JavaScript 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
-このドキュメントでは、呼び出し元ライブラリのバージョン 1.0.0-beta.5 の型を参照しています。
+このクイックスタートでは、JavaScript 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
 > [!NOTE]
-> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.6 を使用します。
+> このドキュメントでは、Calling SDK のバージョン 1.0.0-beta.10 を使用します。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,10 +41,20 @@ ms.locfileid: "101656618"
     <h4>Azure Communication Services</h4>
     <h1>Calling Quickstart</h1>
     <input 
+      id="token-input"
+      type="text"
+      placeholder="User access token"
+      style="margin-bottom:1em; width: 200px;"
+    />
+    </div>
+    <button id="token-submit" type="button">
+        Submit
+    </button>
+    <input 
       id="callee-id-input"
       type="text"
       placeholder="Who would you like to call?"
-      style="margin-bottom:1em; width: 200px;"
+      style="margin-bottom:1em; width: 200px; display: block;"
     />
     <div>
       <button id="call-button" type="button" disabled="true">
@@ -68,34 +78,42 @@ import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
+let userTokenCredential = "";
+const userToken = document.getElementById("token-input");
 const calleeInput = document.getElementById("callee-id-input");
+const submitToken = document.getElementById("token-submit");
 const callButton = document.getElementById("call-button");
 const hangUpButton = document.getElementById("hang-up-button");
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Azure Communication Services 通話クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+Azure Communication Services Calling SDK の主な機能のいくつかは、次のクラスとインターフェイスによって処理されます。
 
 | 名前                             | 説明                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。                                                                       |
+| CallClient                       | CallClient は、Calling SDK へのメイン エントリ ポイントです。                                                                       |
 | CallAgent                        | CallAgent は、通話を開始および管理するために使用します。                                                                                            |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential クラスによって、CallAgent のインスタンス化に使用する CommunicationTokenCredential インターフェイスが実装されます。 |
 
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-`<USER_ACCESS_TOKEN>` を、リソース用の有効なユーザー アクセス トークンで置き換える必要があります。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../access-tokens.md)に関するドキュメントを参照してください。 `CallClient` を使用して、`CallAgent` インスタンスを `CommunicationTokenCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 次のコードを **client.js** に追加します。
+リソースの有効なユーザー アクセス トークンをテキスト フィールドに入力し、[Submit]\(送信\) をクリックする必要があります。 まだトークンを入手していない場合は、[ユーザー アクセス トークン](../../access-tokens.md)に関するドキュメントを参照してください。 `CallClient` を使用して、`CallAgent` インスタンスを `CommunicationTokenCredential` で初期化します。これにより、電話をかりたり受けたりすることができるようになります。 次のコードを **client.js** に追加します。
 
 ```javascript
-async function init() {
-    const callClient = new CallClient();
-    const tokenCredential = new AzureCommunicationTokenCredential("<USER ACCESS TOKEN>");
-    callAgent = await callClient.createCallAgent(tokenCredential);
-    callButton.disabled = false;
-}
-init();
+submitToken.addEventListener("click", async () => {
+  const callClient = new CallClient(); 
+  const userTokenCredential = userToken.value;
+    try {
+      tokenCredential = new AzureCommunicationTokenCredential(userTokenCredential);
+      callAgent = await callClient.createCallAgent(tokenCredential);
+      callButton.disabled = false;
+      submitToken.disabled = true;
+    } catch(error) {
+      window.alert("Please submit a valid token!");
+    }
+})
 ```
 
 ## <a name="start-a-call"></a>通話を開始する
@@ -107,7 +125,7 @@ callButton.addEventListener("click", () => {
     // start a call
     const userToCall = calleeInput.value;
     call = callAgent.startCall(
-        [{ communicationUserId: userToCall }],
+        [{ id: userToCall }],
         {}
     );
     // toggle button states
@@ -128,6 +146,7 @@ hangUpButton.addEventListener("click", () => {
   // toggle button states
   hangUpButton.disabled = true;
   callButton.disabled = false;
+  submitToken.disabled = false;
 });
 ```
 
@@ -143,6 +162,10 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 ブラウザーを開き、http://localhost:8080/ に移動します。 次のように表示されます。
 
-:::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
+:::image type="content" source="../media/javascript/calling-javascript-app-2.png" alt-text="完成した JavaScript アプリケーションのスクリーンショット。":::
 
-発信 VOIP 通話を行うには、テキスト フィールドにユーザー ID を指定し、 **[Start Call]\(通話の開始\)** ボタンをクリックします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。
+発信 VOIP 通話を行うには、有効なユーザー アクセス トークンとユーザー ID を対応するテキスト フィールドに指定し、 **[Start Call]\(通話の開始\)** ボタンをクリックします。 `8:echo123` を呼び出すとエコー ボットに接続されます。これは、オーディオ デバイスを起動し、デバイスが機能していることを確認する場合に役立ちます。
+
+## <a name="sample-code"></a>サンプル コード
+
+サンプル アプリは [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) からダウンロードできます。

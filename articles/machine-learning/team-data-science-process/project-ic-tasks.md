@@ -39,17 +39,17 @@ ms.locfileid: "96000999"
 - データ サイエンス ユニット用の Azure DevOps **組織**
 - プロジェクトのテンプレートとアセットを共有する目的プロジェクト リーダーが設定した **プロジェクト リポジトリ**
 - 該当する場合、グループ マネージャーとチーム リーダーが設定した **GroupUtilities** リポジトリと **TeamUtilities** リポジトリ
-- 該当する場合、チームまたはプロジェクトの共有アセットに対して設定された Azure **ファイル ストレージ**
+- 該当する場合、チームまたはプロジェクトの共有アセットに対して設定された Azure **File Storage**
 - プロジェクト リポジトリとの間でクローン/プッシュを行うための **アクセス許可** 
 
-ローカル コンピューターまたは DSVM でリポジトリをクローンしてその内容を変更したり、Azure ファイル ストレージを DSVM にマウントしたりするには、次のチェックリストを考慮する必要があります。
+ローカル コンピューターまたは DSVM でリポジトリをクローンしてその内容を変更したり、Azure File Storage を DSVM にマウントしたりするには、次のチェックリストを考慮する必要があります。
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
 - DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](../data-science-virtual-machine/index.yml)を参照してください。
 - Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー** を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
 - Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細と手順については、[プラットフォームとツールの付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成** に関するセクションをご覧ください。 
-- DSVM にマウントする必要がある Azure ファイル ストレージの Azure ファイル ストレージ情報 
+- DSVM にマウントする必要がある Azure File Storage の Azure File Storage 情報 
 
 ## <a name="clone-repositories"></a>リポジトリのクローン
 
@@ -92,9 +92,9 @@ ms.locfileid: "96000999"
    
    ![3 つのローカル リポジトリ フォルダー](./media/project-ic-tasks/project-ic-5-three-repo-cloned-to-ic-linux.png)
 
-## <a name="mount-azure-file-storage-to-your-dsvm"></a>Azure ファイル ストレージを DSVM にマウントする
+## <a name="mount-azure-file-storage-to-your-dsvm"></a>Azure File Storage を DSVM にマウントする
 
-チームまたはプロジェクトが Azure ファイル ストレージでアセットを共有している場合、ローカル コンピューターまたは DSVM にファイル ストレージをマウントします。 「[ローカル コンピューターまたは DSVM に Azure ファイル ストレージをマウントする](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)」の指示に従ってください。
+チームまたはプロジェクトが Azure File Storage でアセットを共有している場合、ローカル コンピューターまたは DSVM にファイル ストレージをマウントします。 「[ローカル コンピューターまたは DSVM に Azure File Storage をマウントする](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)」の指示に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

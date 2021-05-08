@@ -3,22 +3,25 @@ title: Azure Data Factory の Webhook アクティビティ
 description: Webhook アクティビティは、ユーザーが指定する特定の条件で接続されたデータセットを検証するまで、パイプラインの実行を継続しません。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361487"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785939"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Webhook アクティビティを使用すると、カスタム コードでパイプラインの実行を制御できます。 Webhook アクティビティを使用すると、顧客のコードでエンドポイントを呼び出して、コールバック URL を渡すことができます。 パイプラインでは、次のアクティビティに進む前に、コールバックが呼び出されるまで実行が待機されます。
+
+> [!IMPORTANT]
+> Webhook アクティビティでは、エラー状態とカスタム メッセージをアクティビティとパイプラインに戻すことができるようになりました。 _reportStatusOnCallBack_ を true に設定し、コールバック ペイロードに _StatusCode_ と _Error_ を含めます。 詳細については、「[その他のメモ](#additional-notes)」セクションを参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -37,6 +40,7 @@ Webhook アクティビティを使用すると、カスタム コードでパ�
             "key": "value"
         },
         "timeout": "00:03:00",
+        "reportStatusOnCallBack": false,
         "authentication": {
             "type": "ClientCertificate",
             "pfx": "****",
@@ -59,7 +63,7 @@ Webhook アクティビティを使用すると、カスタム コードでパ�
 **body** | エンドポイントに送信されるペイロードを表します。 | 有効な JSON または **resultType** 値の JSON が含まれる式。 要求ペイロードのスキーマについては、「[要求ペイロードのスキーマ](./control-flow-web-activity.md#request-payload-schema)」を参照してください。 | はい |
 **認証** | エンドポイントを呼び出すために使用される認証方法。 サポートされる種類は "Basic" および "ClientCertificate" です。 詳細については、[認証](./control-flow-web-activity.md#authentication)に関するページをご覧ください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列または **resultType** 値の文字列が含まれる式。 | いいえ |
 **timeout** | **callBackUri** で指定されたコールバックが呼び出されるまでのアクティビティの待機時間。 既定値は 10 分 ("00:10:00") です。 値の TimeSpan 形式は *d*.*hh*:*mm*:*ss* です。 | String | いいえ |
-**Report status on callback (コールバックで状態を報告する)** | ユーザーが Webhook アクティビティの失敗した状態を報告できるようにします。 | Boolean | いいえ |
+**[Report status on callback] (コールバックで状態を報告する)** | ユーザーが Webhook アクティビティの失敗した状態を報告できるようにします。 | ブール型 | いいえ |
 
 ## <a name="authentication"></a>認証
 

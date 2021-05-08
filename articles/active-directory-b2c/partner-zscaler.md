@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dbeb3cd4fccf80f434e6c7ac08c658632f64b135
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096855"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256295"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で Zscaler Private Access を構成する
 
@@ -96,7 +96,7 @@ Azure AD B2C を構成すると、残りの IdP の構成が再開されます�
 >[!Note]
 >この手順は、カスタム ポリシーをまだ設定していない場合にのみ必要です。 1 つ以上のカスタム ポリシーが既にある場合は、この手順を省略できます。
 
-Azure AD B2C テナントでカスタム ポリシーを構成するには、「[Azure Active Directory B2C でのカスタム ポリシーの概要](./custom-policy-get-started.md)」を参照してください。
+Azure AD B2C テナントでカスタム ポリシーを構成するには、「[Azure Active Directory B2C でのカスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)」を参照してください。
 
 ### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>手順 3:ZPA を SAML アプリケーションとして Azure AD B2C に登録する
 
@@ -149,7 +149,7 @@ ZPA User Portal または Browser Access アプリケーションにアクセス
 
 詳細については、次の記事を参照してください。
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md)
+- [Azure AD B2C のカスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [SAML アプリケーションを Azure AD B2C に登録する](./saml-service-provider.md)
 - [ZPA の詳細な構成ガイド](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
 - [シングル サインオンのための IdP の構成](https://help.zscaler.com/zpa/configuring-idp-single-sign)

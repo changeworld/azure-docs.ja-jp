@@ -2,13 +2,13 @@
 title: コンテナー分析情報の概要 | Microsoft Docs
 description: この記事では、コンテナー分析情報での問題をトラブルシューティングして解決する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 60a6e76d43d954b27336b9631c48328aeff0b69b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: b7618e9073308da67a8e17c82375a0f05925a542
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708307"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627117"
 ---
 # <a name="troubleshooting-container-insights"></a>コンテナー分析情報のトラブルシューティング
 
@@ -113,6 +113,54 @@ nodeSelector:
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-container-insights"></a>非 Azure Kubernetes クラスターがコンテナー分析情報に表示されない
 
 コンテナー分析情報で非 Azure Kubernetes クラスターを表示するには、この分析情報をサポートする Log Analytics ワークスペースと、コンテナーの分析情報ソリューション リソース **ContainerInsights ("*ワークスペース*")** で読み取りアクセスが必要です。
+
+## <a name="metrics-arent-being-collected"></a>メトリックが収集されない
+
+1. クラスターが[カスタム メトリックのサポートされているリージョン](../essentials/metrics-custom-overview.md#supported-regions)にあることを確認します。
+
+2. 次の CLI コマンドを使用して、**監視メトリック パブリッシャー** ロールの割り当てが存在することを確認します。
+
+    ``` azurecli
+    az role assignment list --assignee "SP/UserassignedMSI for omsagent" --scope "/subscriptions/<subid>/resourcegroups/<RG>/providers/Microsoft.ContainerService/managedClusters/<clustername>" --role "Monitoring Metrics Publisher"
+    ```
+    MSI を使用するクラスターの場合、ユーザーが割り当てた omsagent のクライアント ID は監視が有効/無効になるたびに変更されるため、ロール割り当ては現在の MSI クライアント ID に存在する必要があります。 
+
+3. Azure Active Directory ポッド ID が有効になっていて MSI を使用しているクラスターの場合:
+
+   - 次のコマンドを使用して、必要なラベル **kubernetes.azure.com/managedby: aks** が omsagent ポッドに存在していることを確認します。
+
+        `kubectl get pods --show-labels -n kube-system | grep omsagent`
+
+    - ポッド ID が有効な場合に例外が有効になっていることを、 https://github.com/Azure/aad-pod-identity#1-deploy-aad-pod-identity でサポートされている方法のいずれかを使用して確認します。
+
+        次のコマンドを実行して確認します。
+
+        `kubectl get AzurePodIdentityException -A -o yaml`
+
+        次のような出力が表示されます。
+
+        ```
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: mic-exception
+        namespace: default
+        spec:
+        podLabels:
+        app: mic
+        component: mic
+        ---
+        apiVersion: "aadpodidentity.k8s.io/v1"
+        kind: AzurePodIdentityException
+        metadata:
+        name: aks-addon-exception
+        namespace: kube-system
+        spec:
+        podLabels:
+        kubernetes.azure.com/managedby: aks
+        ```
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

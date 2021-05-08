@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c42b79cb8b92b5f96f31eb58f091ff0ce79b84f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: b2c-support
+ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652132"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529445"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -36,7 +37,8 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 新しい職場アカウントを追加する場合は、次の構成設定を考慮する必要があります。
 
-- **[名前]** と **[ユーザー名]** - **[名前]** プロパティには、ユーザーの姓名が含まれます。 **[ユーザー名]** は、ユーザーがサインインするために入力する識別子です。 ユーザー名には、完全なドメインが含まれます。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 *your-domain.onmicrosoft.com*、または検証済みの非フェデレーション [カスタム ドメイン](../active-directory/fundamentals/add-custom-domain.md)名 (*contoso.com* など) のいずれかである必要があります。
+- **[名前]** と **[ユーザー名]** - **[名前]** プロパティには、ユーザーの姓名が含まれます。 **[ユーザー名]** は、ユーザーがサインインするために入力する識別子です。 ユーザー名には、完全なドメインが含まれます。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 *your-domain.onmicrosoft.com*、または検証済みの非フェデレーション [カスタム ドメイン](../active-directory/fundamentals/add-custom-domain.md)名 (*contoso.com* など) のいずれかである必要があります。 
+- **メール アドレス** - 新しいユーザーは、メール アドレスを使用してサインインすることもできます。 メール アドレスでは、特殊文字やマルチバイト文字 (日本語の文字など) はサポートされていません。
 - **プロファイル** - アカウントは、ユーザー データのプロファイルを使用して設定されます。 姓、名、役職、および部署名を入力できます。 プロファイルは、アカウントの作成後に編集できます。
 - **グループ** - グループを使用して管理タスクを実行します。たとえば、多くのユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。 新しいアカウントを、テナントの既存の[グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に配置できます。
 - **ディレクトリ ロール** - ユーザー アカウントが所有する、テナントのリソースへのアクセス レベルを指定する必要があります。 次のアクセス許可レベルを使用できます。
@@ -72,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 招待リンクによって、ユーザーは同意ページに移動します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
-ゲスト ユーザーは、[Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
+ゲスト ユーザーは、[Microsoft Graph API](/graph/api/invitation-post) を使用して招待することもできます。
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 

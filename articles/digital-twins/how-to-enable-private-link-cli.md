@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bd7ffda508980a9a56d86037887fc53a0fed640
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4dab08983fc1348ca49e728a65d48aa65fe19a47
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202945"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105716"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure CLI
 
@@ -53,21 +53,21 @@ az network private-endpoint create --connection-name {private_link_service_conne
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>インスタンスのプライベート エンドポイント接続を管理する
 
-Azure Digital Twins インスタンスに対してプライベート エンドポイントを作成した後、[**az dt network private-endpoint connection**](/cli/azure/ext/azure-iot/dt/network/private-endpoint/connection) コマンドを使用して、インスタンスに対するプライベート エンドポイント **接続** を引き続き管理できます。 操作には以下が含まれます。
+Azure Digital Twins インスタンスに対してプライベート エンドポイントを作成した後、[**az dt network private-endpoint connection**](/cli/azure/dt/network/private-endpoint/connection) コマンドを使用して、インスタンスに対するプライベート エンドポイント **接続** を引き続き管理できます。 操作には以下が含まれます。
 * プライベート エンドポイント接続を表示する
 * プライベート エンドポイント接続の状態を設定する
 * プライベート エンドポイント接続を削除する
 * インスタンスのすべてのプライベート エンドポイント接続を一覧表示する
 
-詳細と例については、[**az dt network private-endpoint** のリファレンス ドキュメント](/cli/azure/ext/azure-iot/dt/network/private-endpoint)を参照してください。
+詳細と例については、[**az dt network private-endpoint** のリファレンス ドキュメント](/cli/azure/dt/network/private-endpoint)を参照してください。
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスの他の Private Link 情報を管理する
 
-[**az dt network private-link**](/cli/azure/ext/azure-iot/dt/network/private-link) コマンドを使用して、インスタンスの Private Link の状態に関する追加情報を取得できます。 操作には以下が含まれます。
+[**az dt network private-link**](/cli/azure/dt/network/private-link) コマンドを使用して、インスタンスの Private Link の状態に関する追加情報を取得できます。 操作には以下が含まれます。
 * Azure Digital Twins インスタンスに関連付けられている Private Link を一覧表示する
 * インスタンスに関連付けられている Private Link を表示する
 
-詳細と例については、[**az dt network private-link** のリファレンス ドキュメント](/cli/azure/ext/azure-iot/dt/network/private-link)を参照してください。
+詳細と例については、[**az dt network private-link** のリファレンス ドキュメント](/cli/azure/dt/network/private-link)を参照してください。
 
 ## <a name="disable--enable-public-network-access-flags"></a>パブリック ネットワーク アクセス フラグを無効または有効にする
 
@@ -79,7 +79,7 @@ Azure Digital Twins インスタンスの構成によって、すべてのパブ
 
 ### <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-Azure CLI で、`--public-network-access` パラメーターを `az dt create` コマンドに追加することで、パブリック ネットワーク アクセスを無効または有効にできます。 このコマンドは、新しいインスタンスを作成する場合にも使用できますが、既存のインスタンスの名前を指定することで、既存のインスタンスのプロパティを編集する場合にも使用できます。 (このコマンドの詳細については、その[リファレンス ドキュメント](/cli/azure/ext/azure-iot/dt#ext_azure_iot_az_dt_create)または [Azure Digital Twins インスタンスを設定するための一般的な手順](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)に関する記事を参照してください)。
+Azure CLI で、`--public-network-access` パラメーターを `az dt create` コマンドに追加することで、パブリック ネットワーク アクセスを無効または有効にできます。 このコマンドは、新しいインスタンスを作成する場合にも使用できますが、既存のインスタンスの名前を指定することで、既存のインスタンスのプロパティを編集する場合にも使用できます。 (このコマンドの詳細については、その[リファレンス ドキュメント](/cli/azure/dt#az_dt_create)または [Azure Digital Twins インスタンスを設定するための一般的な手順](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)に関する記事を参照してください)。
 
 Azure Digital Twins インスタンスのパブリック ネットワーク アクセスを **無効にする** には、このような `--public-network-access` パラメーターを使用します。
 

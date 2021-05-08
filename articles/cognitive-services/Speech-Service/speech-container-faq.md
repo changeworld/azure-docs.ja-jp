@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16158b4ecfb46ea9092fe9eeb31cc4dee259b1ab
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 28a044f42d0774d940521964b68b38a0f35bcdbb
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573746"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387957"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>音声サービスコンテナーの良くある質問(FAQ)
 
@@ -536,76 +536,6 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
  `SetSpeechSynthesisVoiceName`関数が呼び出されます。更新されたテキスト変換エンジンを持つコンテナーには、音声名が必要であるためです。
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>音声 SDK の v1.7  を Speech コンテナーと共に使用するにはどうすればよいですか？</b>
-</summary>
-
-**回答:** 音声コンテナーには、さまざまな用途のエンドポイントが3つあります。これらは音声モードとして定義されています。以下を参照してください：
-
-## <a name="speech-modes"></a>音声モード
-
-[!INCLUDE [speech-modes](includes/speech-modes.md)]
-
-さまざまな目的で使用され、異なる方法で使用されます。
-
-Python [サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)：
-- カスタムエンドポイント（エンドポイントパラメターを用いた`SpeechConfig` ）を使用した単一の認識 (対話モード) の場合 は、`speech_recognize_once_from_file_with_custom_endpoint_parameters()`を参照してください。
-- 継続的な認識 (会話モード) の場合は、上記のカスタムエンドポイントを使用するように変更するだけで、`speech_recognize_continuous_from_file()`を参照してください。
-- (本当に必要な場合にのみ) 上記のようなサンプルでディクテーションを有効にするには、 を作成した直後に`speech_config`、コード を追加します`speech_config.enable_dictation()`。
-
-ディクテーションC#を有効にするには、 関数`SpeechConfig.EnableDictation()`を呼び出します。
-
-### <a name="fromendpoint-apis"></a>`FromEndpoint` APIs
-| Language | APIの詳細 |
-|----------|:------------|
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | 現在サポート、または計画されていません。 |
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>音声SDK の v1.8 を Speech コンテナーと共に使用するにはどうすればよいですか？</b>
-</summary>
-
-**回答:** 新しい `FromHost`API があります。 これは現存しているAPIの取り換え、または修正はできません。 カスタムホストを使用して音声構成を作成するための別の方法を追加するだけです。
-
-### <a name="fromhost-apis"></a>`FromHost` APIs
-
-| Language | APIの詳細 |
-|--|:-|
-| C# | <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| C++ | <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#fromhost" target="_blank">`SpeechConfig::FromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromhost" target="_blank">`SpeechConfig.fromHost` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Objective-C | <a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithhost" target="_blank">`SPXSpeechConfiguration:initWithHost;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | 現在、サポートされていません |
-
-> パラメーター: host (必須)、サブスクリプションキー (省略可能。サービスを使用できない場合)。
-
-ホストの形式は`protocol://hostname:port``:port`は省略可能です (下記参照)：
-- コンテナーがローカルで実行されている場合、ホスト名は`localhost`です。
-- コンテナーがリモートサーバー上で実行されている場合は、そのサーバーのホスト名または IPv4 アドレスを使用します。
-
-読み上げのホストパラメーターの例:
-- ポート5000を使用したローカルコンテナーへの`ws://localhost:5000`セキュリティで保護されていない接続
-- リモートサーバーで実行されているコンテナーへの`ws://some.host.com:5000`セキュリティで保護されていない接続
-
-上記の Python サンプルは`endpoint`ではなく`host`パラメーターを使用しています。
-
-```python
-speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
-```
 
 <br>
 </details>

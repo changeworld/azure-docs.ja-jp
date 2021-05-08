@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: cd787e1c846bfe4728577cbbce069385ce064a10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f26813176d4286a052772d2096427231759aacc2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943410"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863379"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -37,7 +37,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 次の図の緑色の線は、仮想ネットワークの DNS サフィックスで終わるリソースの要求です。 青色の線は、オンプレミス ネットワークまたはパブリック インターネットのリソースの要求です。
 
-![構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+:::image type="content" source="./media/connect-on-premises-network/on-premises-to-cloud-dns.png" alt-text="構成で DNS 要求がどのように解決されるかを示す図" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,7 +64,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
   
 1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-    ![Ubuntu 仮想マシンを作成する](./media/connect-on-premises-network/azure-portal-create-resource.png)
+    :::image type="content" source="./media/connect-on-premises-network/azure-portal-create-resource.png" alt-text="Ubuntu 仮想マシンを作成する":::
 
 1. **[Compute]\(計算\)**  >  **[Virtual machine]\(仮想マシン\)** を選択して、 **[仮想マシンの作成]** ページに移動します。
 
@@ -76,16 +76,16 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |Resource group |前に作成した仮想ネットワークが含まれているリソース グループを選択します。|
     |仮想マシン名 | この仮想マシンを特定するフレンドリ名を入力します。 この例では、**DNSProxy** を使用します。|
     |リージョン | 前に作成した仮想ネットワークと同じリージョンを選択します。  すべてのリージョンですべての VM サイズを使用できるわけではありません。  |
-    |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、 **[インフラストラクチャ冗長は必要ありません]** を使用します。 |
+    |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、**[インフラストラクチャ冗長は必要ありません]** を使用します。 |
     |Image | **[Ubuntu Server 18.04 LTS]** のままにしてください。 |
-    |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 より安全な公開キーを使用することをお勧めします。 この例では、 **[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
+    |認証の種類 | __[パスワード]__ または __[SSH 公開キー]__ : SSH アカウントの認証方法。 より安全な公開キーを使用することをお勧めします。 この例では、**[パスワード]** を使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
     |ユーザー名 |VM の管理者ユーザー名を入力します。  この例では、**sshuser** を使用します。|
-    |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、 **[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
-    |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、 **[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
+    |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、**[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
+    |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、**[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
 
-    ![仮想マシンの基本構成](./media/connect-on-premises-network/virtual-machine-basics.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-machine-basics.png" alt-text="仮想マシンの基本構成":::
 
-    他のエントリは既定値のままにして、 **[ネットワーク]** タブを選択します。
+    他のエントリは既定値のままにして、**[ネットワーク]** タブを選択します。
 
 4. **[ネットワーク]** タブで、次の情報を入力します。
 
@@ -95,21 +95,21 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
     |パブリック IP | 自動入力されている値を使用します。  |
 
-    ![HDInsight 仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
+    :::image type="content" source="./media/connect-on-premises-network/virtual-network-settings.png" alt-text="HDInsight 仮想ネットワークの設定":::
 
-    他のエントリは既定値のままにして、 **[確認と作成]** を選択します。
+    他のエントリは既定値のままにして、**[確認と作成]** を選択します。
 
-5. **[確認と作成]** タブで、 **[作成]** を選択して仮想マシンを作成します。
+5. **[確認と作成]** タブで、**[作成]** を選択して仮想マシンを作成します。
 
 ### <a name="review-ip-addresses"></a>IP アドレスの確認
 
-仮想マシンが作成されると、 **[リソースに移動]** ボタンが含まれている **[デプロイメントに成功しました]** という通知を受け取ります。  **[リソースに移動]** を選択して、新しい仮想マシンに移動します。  新しい仮想マシンの既定のビューで、次の手順に従って関連する IP アドレスを特定します。
+仮想マシンが作成されると、**[リソースに移動]** ボタンが含まれている **[デプロイメントに成功しました]** という通知を受け取ります。  **[リソースに移動]** を選択して、新しい仮想マシンに移動します。  新しい仮想マシンの既定のビューで、次の手順に従って関連する IP アドレスを特定します。
 
 1. **[設定]** で **[プロパティ]** を選択します。
 
 2. 後で使用するために **[パブリック IP アドレス/DNS 名ラベル]** と **[プライベート IP アドレス]** の値をメモします。
 
-   ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
+   :::image type="content" source="./media/connect-on-premises-network/virtual-machine-ip-addresses.png" alt-text="パブリックおよびプライベート IP アドレス":::
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bind (DNS ソフトウェア) をインストールして構成する
 
@@ -239,13 +239,13 @@ Azure 再帰リゾルバーではなく、カスタム DNS サーバーを使用
 
 2. リストから仮想ネットワークを選択して、仮想ネットワークの既定のビューを開きます。  
 
-3. 既定のビューの **[設定]** で、 **[DNS サーバー]** を選択します。  
+3. 既定のビューの **[設定]** で、**[DNS サーバー]** を選択します。  
 
 4. __[カスタム]__ を選択し、カスタム DNS サーバーの **プライベート IP アドレス** を入力します。
 
 5. __[保存]__ を選択します。  <br />  
 
-    ![ネットワークのカスタム DNS サーバーを設定する](./media/connect-on-premises-network/configure-custom-dns.png)
+    :::image type="content" source="./media/connect-on-premises-network/configure-custom-dns.png" alt-text="ネットワークのカスタム DNS サーバーを設定する":::
 
 ## <a name="configure-on-premises-dns-server"></a>オンプレミス DNS サーバーを構成する
 
@@ -274,7 +274,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 この例では、196.168.0.4 のオンプレミス DNS サーバーを使用して、カスタム DNS サーバーの名前を解決します。 IP アドレスは、オンプレミス DNS サーバーの IP アドレスで置き換えてください。 `dnsproxy` アドレスは、カスタム DNS サーバーの完全修飾ドメイン名で置き換えてください。
 
-## <a name="optional-control-network-traffic"></a>省略可能:ネットワーク トラフィックを制御する
+## <a name="optional-control-network-traffic"></a>省略可能: ネットワーク トラフィックを制御する
 
 ネットワーク セキュリティ グループ (NSG) またはユーザー定義のルート (UDR) を使用して、ネットワーク トラフィックを制御できます。 NSG を使用すると、受信トラフィックと送信トラフィックをフィルター処理し、そのトラフィックを許可または拒否できます。 UDR を使用すると、仮想ネットワーク、インターネット、およびオンプレミス ネットワークのリソース間のトラフィック フローを制御できます。
 
@@ -285,8 +285,8 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
 
-   * __NSG__ を使用している場合:IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
-   * __UDR__ を使用している場合:IP アドレスについて、ルートの __[次ホップ]__ の種類を __[インターネット]__ に設定します。
+   * __NSG__ を使用している場合: IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
+   * __UDR__ を使用している場合: IP アドレスについて、ルートの __次ホップ__ の種類を __インターネット__ に設定します。
 
 Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-create-virtual-network.md#hdinsight-nsg)」を参照してください。
 

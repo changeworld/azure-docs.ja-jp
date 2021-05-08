@@ -13,12 +13,12 @@ ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8488325613b05d54b352a19a06860e08f1779877
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 1d52b017f94785f5fb25a25f127ae52d96e97d8b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99063116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578755"
 ---
 # <a name="logging-in-msal-for-python"></a>Python 用の MSAL でのログ記録
 
@@ -26,22 +26,51 @@ ms.locfileid: "99063116"
 
 ## <a name="msal-for-python-logging"></a>MSAL for Python でのログ記録
 
-MSAL Python でのログ記録には、`logging.info("msg")` などの標準的な Python ログ記録メカニズムが使用されます。次のように MSAL ログを構成できます ([username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32) で動作を確認できます)。
+MSAL for Python でのログ記録では、[Python 標準ライブラリのログ モジュール](https://docs.python.org/3/library/logging.html)が使用されます。 次のように MSAL ログを構成できます ([username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32) で動作を確認できます)。
 
 ### <a name="enable-debug-logging-for-all-modules"></a>すべてのモジュールのデバッグ ログを有効にする
 
-既定では、すべての Python スクリプトでログ記録は無効になっています。 Python スクリプト全体のすべてのモジュールに対してデバッグ ログを有効にする場合は、次のようにします。
+既定では、すべての Python スクリプトでログ記録は無効になっています。 スクリプト内の **すべて** の Python モジュールの詳細ログ記録を有効にする場合は、`logging.basicConfig` を `logging.DEBUG` のレベルで使用します。
 
 ```python
+import logging
+
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-### <a name="silence-only-msal-logging"></a>MSAL ログ記録のみをサイレント状態にする
+これにより、ログ モジュールに渡されるすべてのログ メッセージが標準出力に出力されます。
 
-MSAL ライブラリのログ記録のみをサイレント状態にするには、Python スクリプト内の他のすべてのモジュールでデバッグ ログを有効にするときに、MSAL Python で使用されるロガーを無効にします。
+### <a name="configure-msal-logging-level"></a>MSAL ログ レベルの構成
 
-```Python
+次のようにロガー名 `"msal"` を指定して `logging.getLogger()` メソッドを使用することにより、MSAL for Python ログ プロバイダーのログ レベルを構成できます。
+
+```python
+import logging
+
 logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="configure-msal-logging-with-azure-app-insights"></a>Azure アプリ Insights を使用して MSAL ログを構成する
+
+Python のログは、既定では `StreamHandler` というログ ハンドラーに渡されます。 インストルメンテーション キーを使用して Application Insights に MSAL ログを送信するには、`opencensus-ext-azure` ライブラリによって提供される `AzureLogHandler` を使用します。
+
+`opencensus-ext-azure` をインストールするには、PyPI から依存関係または pip install に `opencensus-ext-azure` パッケージを追加します。
+
+```console
+pip install opencensus-ext-azure
+```
+
+次に、`APP_INSIGHTS_KEY` 環境変数に設定されているインストルメンテーション キーを使用して、`"msal"` ログ プロバイダーの既定のハンドラーを `AzureLogHandler` のインスタンスに変更します。
+
+```python
+import logging
+import os
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+APP_INSIGHTS_KEY = os.getenv('APP_INSIGHTS_KEY')
+
+logging.getLogger("msal").addHandler(AzureLogHandler(connection_string='InstrumentationKey={0}'.format(APP_INSIGHTS_KEY))
 ```
 
 ### <a name="personal-and-organizational-data-in-python"></a>Python での個人と組織のデータ

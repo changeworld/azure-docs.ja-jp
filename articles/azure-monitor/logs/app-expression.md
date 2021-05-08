@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2019
-ms.openlocfilehash: 235a6bf4a0dd9afcac8751067b2eac3ddb37c0cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031244"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283560"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
 `app` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからデータを取得するために、Azure Monitor クエリで使用します。 これは、Azure Monitor ログ クエリにアプリケーション データを含めたり、Application Insights のクエリで複数のアプリケーションにわたるデータをクエリしたりする場合に便利です。
 
 > [!IMPORTANT]
-> ログ データは Log Analytics ワークスペースに格納されるため、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を使用している場合、app () 式は使用されません。 log () 式を使用して、複数のワークスペースにアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
+> ログ データは Log Analytics ワークスペースに格納されるため、[ワークスペースベースの Application Insights リソース](../app/create-workspace-resource.md)を使用している場合、app () 式は使用されません。 workspace() 式を使用して、複数のワークスペースにアプリケーションを含むクエリを記述します。 同じワークスペース内に複数のアプリケーションがある場合、クロス ワークスペース クエリは必要ありません。
 
 ## <a name="syntax"></a>構文
 

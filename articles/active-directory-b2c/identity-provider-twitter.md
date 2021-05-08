@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 04/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 97a8134e858112d7e1deff6744b5555c172692f2
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050449"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028181"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
@@ -45,8 +45,12 @@ Azure AD B2C で Twitter アカウントを持つユーザーのサインイン�
 1. **[認証設定]** で **[編集]** を選択します。
     1. **[3-legged OAuth の有効化]** チェックボックスをオンにします。
     1. **[ユーザーのメール アドレスを要求する]** チェックボックスをオンにします。
-    1. **[コールバック URL]** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。 `your-tenant` を自分のテナント名に置き換え、`your-user-flow-Id` を自分のユーザー フローの識別子に置き換えます。 たとえば、「 `b2c_1a_signup_signin_twitter` 」のように入力します。 テナント名とユーザー フロー ID が Azure AD B2C に大文字で定義されている場合でも、それらを入力するときに、すべて小文字を使用します。
-    1. **[Web サイトの URL]** には「`https://your-tenant.b2clogin.com`」と入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 `https://contosob2c.b2clogin.com` 」のように入力します。
+    1. **[コールバック URL]** に「`https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。  [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。 テナント名とユーザー フロー ID が Azure AD B2C に大文字で定義されている場合でも、それらを入力するときに、すべて小文字を使用します。 置換前のコード:
+        - `your-tenant-name` を自分のテナント名に置き換えます。
+        - `your-domain-name` を自分のカスタム ドメインに置き換えます。
+        - `your-user-flow-Id` を自分のユーザー フローの識別子に置き換えます。 たとえば、「 `b2c_1a_signup_signin_twitter` 」のように入力します。 
+    
+    1. **[Web サイトの URL]** には「`https://your-tenant.b2clogin.com`」と入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 `https://contosob2c.b2clogin.com` 」のように入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name`」と入力します。
     1. **[サービス利用規約]** に URL を入力します (例: `http://www.contoso.com/tos`)。 ポリシーの URL は、アプリケーションの利用規約を提供するために維持されるページです。
     1. **[プライバシー ポリシー]** に URL (`http://www.contoso.com/privacy` など) を入力します。 ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
     1. **[保存]** を選択します。
@@ -66,13 +70,18 @@ Azure AD B2C で Twitter アカウントを持つユーザーのサインイン�
 
 ## <a name="add-twitter-identity-provider-to-a-user-flow"></a>ユーザー フローに Twitter ID プロバイダーを追加する 
 
+この時点では、Twitter ID プロバイダーは設定されていますが、サインイン ページではまだ使用できません。 ユーザー フローに Twitter ID プロバイダーを追加するには、次の手順を実行します。
+
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Twitter ID プロバイダーを追加するユーザー フローを選択します。
 1. **[ソーシャル ID プロバイダー]** から、 **[Twitter]** を選択します。
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページから、 **[Twitter]** を選択し、Twitter アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -167,7 +176,13 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページから、 **[Twitter]** を選択し、Twitter アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end

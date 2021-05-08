@@ -4,12 +4,12 @@ description: トラブルシューティングやメンテナンスのタスク�
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 4c068dc1521d19793d42b6788d0439dd11499a91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8df3e8be14e258aac34881014057dd7ee7ec3239
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605904"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769537"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -206,10 +206,10 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- INTERNAL LINKS -->
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-vm-list]: /cli/azure/vm#az-vm-list
-[az-vm-user-update]: /cli/azure/vm/user#az-vm-user-update
-[az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-vm-list]: /cli/azure/vm#az_vm_list
+[az-vm-user-update]: /cli/azure/vm/user#az_vm_user_update
+[az-vm-list-ip-addresses]: /cli/azure/vm#az_vm_list_ip_addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: ./view-control-plane-logs.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
@@ -218,6 +218,6 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 [aks-windows-rdp]: rdp.md
 [ssh-nix]: ../virtual-machines/linux/mac-create-ssh-keys.md
 [ssh-windows]: ../virtual-machines/linux/ssh-from-windows.md
-[az-vmss-list]: /cli/azure/vmss#az-vmss-list
-[az-vmss-extension-set]: /cli/azure/vmss/extension#az-vmss-extension-set
-[az-vmss-update-instances]: /cli/azure/vmss#az-vmss-update-instances
+[az-vmss-list]: /cli/azure/vmss#az_vmss_list
+[az-vmss-extension-set]: /cli/azure/vmss/extension#az_vmss_extension_set
+[az-vmss-update-instances]: /cli/azure/vmss#az_vmss_update_instances

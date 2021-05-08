@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76dcb9aec935dd4ea4f57a1362953d9741d8eaf0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095801"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557277"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -68,7 +68,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | [OAuth2 承認コード](authorization-code-flow.md) |  |  | X |  |
 | PKCE を使用した OAuth2 承認コード |  |  | X | [パブリック クライアントとシングルページ アプリケーション](authorization-code-flow.md)  |
 | [OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) |  |  | X |  |
-| [OAuth2 リソース所有者のパスワード資格情報](ropc-custom.md) |  | X |  |  |
+| [OAuth2 リソース所有者のパスワード資格情報](add-ropc-policy.md) |  | X |  |  |
 | [OIDC Connect](openid-connect.md) |  |  | X |  |
 | [SAML2](saml-service-provider.md)  |  |  |X  | POST とリダイレクトのバインディング。 |
 | OAuth1 |  |  |  | サポートされていません。 |

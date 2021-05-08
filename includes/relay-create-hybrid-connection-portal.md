@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: ceb2626a43ed44338bb0faad475ae2333af2de9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67181407"
 ---
 既に [Relay 名前空間を作成][namespace-how-to]していることを確認してください。
@@ -16,7 +16,7 @@ ms.locfileid: "67181407"
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、 **[すべてのリソース]** を選びます。
 3. ハイブリッド接続を作成する名前空間を選択します。 この例では **mynewns** です。  
-4. **リレー名前空間**の下で、 **[ハイブリッド接続]** を選択します。
+4. **リレー名前空間** の下で、**[ハイブリッド接続]** を選択します。
 
     ![ハイブリッド接続の追加](./media/relay-create-hybrid-connection-portal/create-hc-1.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b38f2831136b0ccec4aa241135f2fd342c939845
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100535240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936888"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>クイックスタート: Azure DDoS Protection Standard の作成と構成
 
@@ -70,10 +70,9 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>既存の仮想ネットワークの DDoS 保護を有効にする
 
 1. 既存の DDoS Protection プランがない場合は、「[DDoS Protection プランを作成する](#create-a-ddos-protection-plan)」の手順を実行して DDoS Protection プランを作成します。
-2. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-3. ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\) ボックス** に、DDoS Protection Standard を有効にする仮想ネットワークの名前を入力します。 仮想ネットワークの名前が検索結果に表示されたら、それを選びます。
-4. **[設定]** で、 **[DDoS Protection]** を選択します。
-5. **[Standard]** を選択します。 **[DDoS protection plan]\(DDoS Protection プラン\)** で、既存の DDoS Protection プランまたは手順 1. で作成したプランを選び、 **[保存]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。
+2. Azure portal の上部にある **[リソース、サービス、ドキュメントの検索] ボックス** に、DDoS Protection Standard を有効にする仮想ネットワークの名前を入力します。 仮想ネットワークの名前が検索結果に表示されたら、それを選びます。
+3. **[設定]** で、 **[DDoS Protection]** を選択します。
+4. **[Standard]** を選択します。 **[DDoS protection plan]\(DDoS Protection プラン\)** で、既存の DDoS Protection プランまたは手順 1. で作成したプランを選び、 **[保存]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。
 
 ### <a name="enable-ddos-protection-for-all-virtual-networks"></a>すべての仮想ネットワークの DDoS 保護を有効にする
 
@@ -112,7 +111,7 @@ _MyVnet_ 仮想ネットワークが一覧表示されます。
 仮想ネットワークに対して DDoS 保護を無効にするには: 
 
 1. ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\) ボックス** に、DDoS Protection Standard を無効にする仮想ネットワークの名前を入力します。 仮想ネットワークの名前が検索結果に表示されたら、それを選びます。
-2. **[Under DDoS Protection Standard]\(DDoS Protection Standard の下\)** で **[無効にする]** を選択します。
+2. **[DDoS Protection Standard]** で、 **[無効にする]** を選択します。
 
 DDoS 保護プランを削除する場合は、最初にそのプランからすべての仮想ネットワークの関連付けを解除する必要があります。 
 

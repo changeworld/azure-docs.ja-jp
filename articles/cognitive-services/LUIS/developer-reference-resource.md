@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 08a1965aadf8f50625e54d7c5e3b3f6a44c0bbd4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04c7d4a7e725d99c7dba94779d365312f8b960af
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946175"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787109"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -23,7 +23,7 @@ Azure Cognitive Services 管理レイヤーを使用して、Language Understand
 
 ツールに基づくリファレンス ドキュメントを検索します。
 
-* [Azure CLI](/cli/azure/cognitiveservices#az-cognitiveservices-list)
+* [Azure CLI](/cli/azure/cognitiveservices#az_cognitiveservices_list)
 
 * [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/#cognitive_services)
 

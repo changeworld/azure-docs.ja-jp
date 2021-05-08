@@ -10,15 +10,15 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96904705"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI ビジュアルの概要
 
-<Token>**適用対象:** ![緑のチェック マーク。](media/power-bi-visual/yes.png)Power BI サービス * *(_コンシューマー_)* _![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI サービス (デザイナーおよび開発者) ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI Desktop X !["いいえ" を示す X。](media/power-bi-visual/no.png)Pro または Premium ライセンスが必要</Token>
+<Token>**適用対象:** ![緑のチェック マーク。](media/power-bi-visual/yes.png)Power BI サービス **_(コンシューマー)_** ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI サービス (デザイナーおよび開発者) ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI Desktop ![X "いいえ" を示す X。](media/power-bi-visual/no.png)Pro または Premium ライセンスが必要</Token>
 
 この記事では、Power BI で Microsoft Azure Maps ビジュアルを使用する方法を示します。
 
@@ -47,7 +47,7 @@ Azure Maps ビジュアルに関連するプライバシーと使用条件の詳
 
 ## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure Maps ビジュアル (プレビュー) の動作と要件
 
-_ *Azure Maps** ビジュアルには、いくつかの考慮事項と要件があります。 :
+**Azure Maps** ビジュアルには、いくつかの考慮事項と要件があります。 :
 
 -   **Azure Maps** ビジュアル (プレビュー) は、Power BI Desktop で有効にする必要があります。 **Azure Maps** ビジュアルを有効にするには、 **[ファイル]** &gt; **[オプションと設定]** &gt; **[オプション]** &gt; **[プレビュー機能]** の順に選択してから、 **[Azure Maps Visual]** チェック ボックスをオンにします。 この操作を行っても Azure Maps ビジュアルが使用できない場合は、おそらく、管理ポータルでテナント管理者スイッチを有効にする必要があります。
 -   **緯度** と **経度** の情報を含むフィールドがデータセットに必要です。 位置情報フィールドのジオコーディングは、将来の更新で追加される予定です。

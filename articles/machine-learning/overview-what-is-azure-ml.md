@@ -7,15 +7,15 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2020
+ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 00a3ab2954d09a7e70e81d8de3644b678b79d005
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521392"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031088"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -40,7 +40,7 @@ Azure Machine Learning は、従来の ML からディープ ラーニング、�
 ## <a name="machine-learning-tools-to-fit-each-task"></a>各タスクに適合する機械学習ツール 
 
 Azure Machine Learning には、次のような、開発者やデータ科学者が機械学習ワークフロー用に必要とするすべてのツールが用意されています。
-+ [Azure Machine Learning デザイナー](tutorial-designer-automobile-price-train-score.md): ドラッグアンドドロップ モジュールを使用して実験を構築し、パイプラインをデプロイします。
++ [Azure Machine Learning デザイナー](tutorial-designer-automobile-price-train-score.md): ドラッグアンドドロップ モジュールを使用して実験を構築し、ロー コード環境でパイプラインをデプロイします。
 
 + Jupyter Notebook: [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks)を使用するか、独自のノートブックを作成して、<a href="/python/api/overview/azure/ml/intro" target="_blank">SDK for Python</a> のサンプルを機械学習に活用します。 
 
@@ -48,11 +48,11 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 + [多くのモデルのソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
-+ [Visual Studio Code ユーザー用の Machine Learning 拡張機能](tutorial-setup-vscode-extension.md)
++ [Visual Studio Code 用の Machine Learning 拡張機能 (プレビュー)](how-to-set-up-vs-code-remote.md) は、機械学習プロジェクトの構築と管理を目的としたフル機能の開発環境を提供します。
 
-+ [Machine Learning CLI](reference-azure-machine-learning-cli.md)
++ [Machine Learning CLI](reference-azure-machine-learning-cli.md) は、Azure Machine Learning リソースをコマンド ラインから管理するためのコマンドを備えた Azure CLI 拡張機能です。
 
-+ PyTorch、TensorFlow、scikit-learn などの、オープンソースのフレームワーク
++ PyTorch、TensorFlow、scikit-learn など、エンド ツー エンドの機械学習プロセスのトレーニング、デプロイ、管理を目的としたさまざまな[オープンソース フレームワークとの統合](concept-open-source.md)。
 
 + Ray RLlib を使用した[強化学習](how-to-use-reinforcement-learning.md)
 
@@ -130,6 +130,8 @@ Azure Storage アカウントやコンピューティング先などのリソー
 - + [個人の開発環境で使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)
   + [コンピューティング インスタンスで Jupyter Notebook を使用して ML モデルのトレーニングとデプロイを行う](tutorial-1st-experiment-sdk-setup.md)
   + [自動化された機械学習を使用して、ML モデルをトレーニングおよびデプロイする](tutorial-first-experiment-automated-ml.md) 
+  + [Visual Studio Code でリソースを管理する](how-to-manage-resources-vscode.md)
+  + [Visual Studio Code を使用して画像分類モデルのトレーニングとデプロイを行う](tutorial-train-deploy-image-classification-model-vscode.md)
   + [デザイナーのドラッグ アンド ドロップ機能を使用して、トレーニングおよびデプロイする](tutorial-designer-automobile-price-train-score.md) 
   + [Machine Learning CLI を使用して、モデルをトレーニングおよびデプロイする](tutorial-train-deploy-model-cli.md)
 

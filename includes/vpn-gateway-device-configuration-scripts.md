@@ -9,17 +9,17 @@ ms.date: 02/07/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e84a77629026bb8885a48b8ed928699825f07115
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77111223"
 ---
 | **ベンダー名** | **デバイス ファミリ** | **ファームウェア バージョン** |
 | --- | --- | --- |
 |Cisco | ISR| IOS 15.1 (プレビュー)|
-|Cisco | ASA | 9\.8 より前の ASA 用 ASA (*) RouteBased (IKEv2- No BGP) |
-|Cisco | ASA | 9\.8 以降の ASA 用 ASA RouteBased (IKEv2- No BGP) |
+|Cisco | ASA | 9.8 より前の ASA 用 ASA (*) RouteBased (IKEv2- No BGP) |
+|Cisco | ASA | 9.8 以降の ASA 用 ASA RouteBased (IKEv2- No BGP) |
 |Juniper | SRX_GA | 12.x|
 |Juniper | SSG_GA | ScreenOS 6.2.x|
 |Juniper | JSeries_GA | JunOS 12.x|

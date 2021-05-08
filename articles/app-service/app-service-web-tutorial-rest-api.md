@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6d2f4d8fc7a2a7011a2417467f7131c4cfb26edc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96005753"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788225"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -160,7 +160,7 @@ dotnet run
 
 ### <a name="enable-cors"></a>CORS を有効にする 
 
-Cloud Shell で [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;app-name>_ プレースホルダーを置換します。
+Cloud Shell で [`az webapp cors add`](/cli/azure/webapp/cors#az_webapp_cors_add) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _&lt;app-name>_ プレースホルダーを置換します。
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'

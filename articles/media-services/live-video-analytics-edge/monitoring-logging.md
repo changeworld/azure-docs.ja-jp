@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge での監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 08b2f5cce80581d71ce73e97ab30900aa8957c77
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730246"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564485"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -312,7 +312,7 @@ IoT Edge モジュールでの Live Video Analytics からメトリックを収�
    この場合は、Azure portal で IoT ハブに移動し、左側のペインで **[メトリック]** を選択します。 ここでメトリックが表示されます。
 
 ### <a name="log-analytics-metrics-collection"></a>Log Analytics メトリックの収集
-[Prometheus エンドポイント](https://prometheus.io/docs/practices/naming/)を [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial) と一緒に使用すると、CPUPercent、MemoryUsedPercent などのメトリックを生成して[それらを監視](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)できます。   
+[Prometheus エンドポイント](https://prometheus.io/docs/practices/naming/)を [Log Analytics](../../azure-monitor/logs/log-analytics-tutorial.md) と一緒に使用すると、CPUPercent、MemoryUsedPercent などのメトリックを生成して[それらを監視](../../azure-monitor/essentials/metrics-supported.md)できます。   
 
 > [!NOTE]
 > 以下の構成で収集されるのは **メトリックのみ** です。ログは収集されません。 コレクター モジュールを拡張すれば、ログの収集とアップロードも行うことができます。

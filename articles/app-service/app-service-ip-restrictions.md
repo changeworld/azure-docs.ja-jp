@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 420dade645d1a4ee32bb888aecb76b033d5756e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102502690"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731303"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限を設定する
 
@@ -97,26 +97,25 @@ App Service Environment で実行されているアプリへのアクセスを�
 > [!NOTE]
 > - 現在、IP Secure Sockets Layer (SSL) 仮想 IP (VIP) を使用する Web アプリに対しては、サービス エンドポイントがサポートされていません。
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>サービス タグベースの規則を設定する (プレビュー)
+#### <a name="set-a-service-tag-based-rule"></a>サービス タグベースの規則を設定する
 
-* 手順 4 の **[種類]** ドロップダウン リストで、 **[サービス タグ (プレビュー)]** を選択します。
+* 手順 4 の **[種類]** ドロップダウン リストで、 **[サービス タグ]** を選択します。
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="[サービス タグ] の種類が選択されている [制限の追加] ペインのスクリーンショット。":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="[サービス タグ] の種類が選択されている [制限の追加] ペインのスクリーンショット。":::
 
 各サービス タグは、Azure サービスの IP 範囲の一覧を表します。 これらのサービスの一覧と特定の範囲へのリンクについては、[サービス タグに関するドキュメント][servicetags]に記載されています。
 
-プレビュー段階では、次のサービス タグの一覧がアクセス制限規則でサポートされています。
+すべての使用可能なサービス タグがアクセス制限規則でサポートされています。 わかりやすく説明すると、Azure portal 経由で使用できるのは最も一般的なタグのリストだけです。 リージョン スコープ ルールなどの高度な規則を構成するには、Azure Resource Manager テンプレートまたはスクリプトを使用します。 これらは Azure portal 経由で使用できるタグです。
+
 * ActionGroup
+* ApplicationInsightsAvailability
 * AzureCloud
 * AzureCognitiveSearch
-* AzureConnectors
 * AzureEventGrid
 * AzureFrontDoor.Backend
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>規則を編集する
 
@@ -137,6 +136,31 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 ## <a name="access-restriction-advanced-scenarios"></a>アクセス制限の高度なシナリオ
 次のセクションでは、アクセス制限を使用したいくつかの高度なシナリオについて説明します。
+
+### <a name="filter-by-http-header"></a>http ヘッダーによってフィルターを適用する
+
+規則の一部として、追加の http ヘッダー フィルターを追加できます。 次の http ヘッダー名がサポートされています。
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+ヘッダー名ごとに、最大 8 つの値をコンマで区切って追加できます。 http ヘッダーフィルターは、規則自体の後で評価され、規則を適用するには両方の条件が true である必要があります。
+
+### <a name="multi-source-rules"></a>複数ソース規則
+
+複数ソース規則を使用すると、1 つのルールで最大 8 個の IP 範囲または 8 個のサービス タグを組み合わせることができます。 IP 範囲数が 512 を超える場合、または複数の IP 範囲を 1 つの http ヘッダー フィルターと組み合わせる論理規則を作成する場合は、この方法を使用できます。
+
+複数ソース規則は、単一ソース規則と同じ方法で定義されますが、各範囲をコンマで区切ります。
+
+PowerShell の例:
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>単一の IP アドレスをブロックする
 
 最初のアクセス制限規則を追加するとき、サービスによって、2147483647 の優先度で明示的な "*すべて拒否*" 規則が追加されます。 実際には、明示的な "*すべて拒否*" 規則は、最後に実行される規則であり、"*許可*" 規則を使用して明示的に許可されていないすべての IP アドレスへのアクセスをブロックするものです。
@@ -151,17 +175,20 @@ App Service Environment で実行されているアプリへのアクセスを�
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="SCM サイトまたはアプリに対して設定されているアクセス制限がないことを示す、Azure portal の [アクセス制限] ページのスクリーンショット。":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>特定の Azure Front Door インスタンスへのアクセスを制限する (プレビュー)
-Azure Front Door からアプリケーションへのトラフィックは、AzureFrontDoor.Backend サービス タグに定義されている既知の IP 範囲セットが発信元です。 サービス タグ制限規則を使用すると、トラフィックを Azure Front Door からの発信のみに制限できます。 トラフィックの発信元が特定のインスタンスのみになるようにするには、Azure Front Door によって送信される一意の HTTP ヘッダーに基づいて受信要求をさらにフィルター処理する必要があります。 プレビュー期間中は、PowerShell または REST/ARM を使用してこれを実現できます。 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>特定の Azure Front Door インスタンスへのアクセスを制限する
+Azure Front Door からアプリケーションへのトラフィックは、AzureFrontDoor.Backend サービス タグに定義されている既知の IP 範囲セットが発信元です。 サービス タグ制限規則を使用すると、トラフィックを Azure Front Door からの発信のみに制限できます。 トラフィックの発信元が特定のインスタンスのみになるようにするには、Azure Front Door によって送信される一意の HTTP ヘッダーに基づいて受信要求をさらにフィルター処理する必要があります。
 
-* PowerShell の例 (Front Door の ID は Azure portal で確認できます):
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png?v2" alt-text="Azure Front Door の制限を追加する方法が示された、Azure portal の [アクセス制限] ページのスクリーンショット。":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+PowerShell の例:
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>プログラムによってアクセス制限規則を管理する
 
 次のいずれかを実行して、アクセス制限をプログラムによって追加できます。 
@@ -181,7 +208,7 @@ Azure Front Door からアプリケーションへのトラフィックは、Azu
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > サービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 5.1.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、**Get-InstalledModule -Name Az** を使用します。
+   > サービス タグ、HTTP ヘッダー、またはマルチソース規則を操作するには、バージョン 5.7.0 以降が必要です。 インストールされているモジュールのバージョンを確認するには、**Get-InstalledModule -Name Az** を使用します。
 
 次のいずれかを行うことにより、手動で値を設定することもできます。
 

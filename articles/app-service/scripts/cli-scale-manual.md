@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 9b909d041cf6acba0f3b12ad69018ebc371ff599
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c2dbd7368cb8cc43c069b54d286e3e7f4f733c6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005615"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787649"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>Azure CLI を使用した App Service アプリの手動によるスケーリング
 
@@ -38,10 +38,10 @@ ms.locfileid: "97005615"
 
 | コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
-| [`az appservice plan update`](/cli/azure/appservice/plan#az-appservice-plan-update) | App Service プランのプロパティを更新します。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
+| [`az appservice plan update`](/cli/azure/appservice/plan#az_appservice_plan_update) | App Service プランのプロパティを更新します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

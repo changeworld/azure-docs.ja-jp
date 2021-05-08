@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
 ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102049850"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
@@ -81,7 +81,7 @@ Azure Digital Twins インスタンスを再作成しようとしている場合
 
 Azure Digital Twins Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。
 
-サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページを参照してください。 **[ZIP のダウンロード]** ボタンを選択して、このサンプル コードの .zip ファイルを、ご利用のコンピューターに **Azure_Digital_Twins__ADT__explorer.zip** としてダウンロードします。 ファイルを解凍します。
+サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページを参照してください。 **[Download ZIP]** ボタンを選択して、このサンプル コードの .zip ファイルを、ご利用のコンピューターに **Azure_Digital_Twins__ADT__explorer.zip** としてダウンロードします。 ファイルを解凍します。
 
 次に、Azure Digital Twins Explorer のアクセス許可を設定し、構成します。 Azure Digital Twins クイックスタートの「[Azure Digital Twins と Azure Digital Twins Explorer を設定する](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer)」セクションの指示に従ってください。 このセクションでは、次の手順について説明します。
 

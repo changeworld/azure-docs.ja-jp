@@ -1,17 +1,18 @@
 ---
 title: Azure Site Recovery でのディザスター リカバリーのために構成サーバーを管理する
+description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーするためのオンプレミス構成サーバーを管理する際の一般的なタスクについて説明します。
 author: Rajeswari-Mamilla
+ms.author: ramamill
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: ramamill
-ms.openlocfilehash: 2f1edc14efdeaf70bf4c2acc0e31e1517753ed3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67f25c97e0b4433ed09cb8c6337afe671424ba0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546349"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048546"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 

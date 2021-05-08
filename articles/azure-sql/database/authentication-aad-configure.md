@@ -5,19 +5,19 @@ description: Azure Active Directory を構成した後で、Azure AD 認証を�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: azure-synapse, has-adal-ref, sqldbrb=2, devx-track-azurecli
+ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c75364f2565611b6738996c082610229db0cb2a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201212"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762229"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -115,7 +115,7 @@ Azure portal を使用して SQL Managed Instance に Azure AD の読み取り�
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 
-SQL Managed Instance に対する Azure AD 管理者をプロビジョニングした後、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文で Azure AD サーバー プリンシパル (ログイン) の作成を始めることができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。
+SQL Managed Instance に対する Azure AD 管理者をプロビジョニングした後、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文で Azure AD サーバー プリンシパル (ログイン) の作成を始めることができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。
 
 > [!TIP]
 > 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、 **[保存]** を選択します。
@@ -220,10 +220,10 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 | コマンド | 説明 |
 | --- | --- |
-|[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | SQL Managed Instance (現在のサブスクリプションのものである必要があります) に対する Azure Active Directory 管理者をプロビジョニングします。 |
-|[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | SQL Managed Instance に対する Azure Active Directory 管理者を削除します。 |
-|[az sql mi ad-admin list](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | SQL Managed Instance に対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
-|[az sql mi ad-admin update](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | SQL Managed Instance に対する Active Directory 管理者を更新します。 |
+|[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_create) | SQL Managed Instance (現在のサブスクリプションのものである必要があります) に対する Azure Active Directory 管理者をプロビジョニングします。 |
+|[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_delete) | SQL Managed Instance に対する Azure Active Directory 管理者を削除します。 |
+|[az sql mi ad-admin list](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_list) | SQL Managed Instance に対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
+|[az sql mi ad-admin update](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_update) | SQL Managed Instance に対する Active Directory 管理者を更新します。 |
 
 CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」を参照してください。
 
@@ -324,12 +324,12 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
-|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
-|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
-|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | SQL Database または Azure Synapse をホストするサーバーに対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
-|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | SQL Server または Azure Synapse をホストするサーバーに対する Active Directory 管理者を更新します。 |
+|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
+|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
+|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) | SQL Database または Azure Synapse をホストするサーバーに対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
+|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) | SQL Server または Azure Synapse をホストするサーバーに対する Active Directory 管理者を更新します。 |
 
 CLI コマンドの詳細については、「[az sql server](/cli/azure/sql/server)」を参照してください。
 
@@ -345,8 +345,8 @@ Azure AD の ID を使用して SQL Database または Azure Synapse に接続�
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) の .NET Framework 4.6 以降。
 - SQL Server 用 Azure Active Directory 認証ライブラリ (*ADAL.DLL*)。 *ADAL.DLL* ライブラリを含む最新の SSMS、ODBC、OLE DB ドライバーをインストールするためのダウンロード リンクを以下に示します。
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)
-  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15)
+  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 これらの要件は、次の操作を行うことで満たすことができます。
 
@@ -357,7 +357,7 @@ Azure AD の ID を使用して SQL Database または Azure Synapse に接続�
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Azure AD ID にマップされる包含ユーザーを作成する
 
-SQL Managed Instance では Azure AD サーバー プリンシパル (ログイン) がサポートされているため、包含データベース ユーザーを使用する必要はありません。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD ユーザー、グループ、またはアプリケーションからログインを作成できます。 つまり、包含データベース ユーザーではなく、Azure AD サーバー ログインを使用して、SQL Managed Instance での認証を行うことができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
+SQL Managed Instance では Azure AD サーバー プリンシパル (ログイン) がサポートされているため、包含データベース ユーザーを使用する必要はありません。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD ユーザー、グループ、またはアプリケーションからログインを作成できます。 つまり、包含データベース ユーザーではなく、Azure AD サーバー ログインを使用して、SQL Managed Instance での認証を行うことができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 ただし、SQL Database と Azure Synapse で Azure Active Directory 認証を使用するには、Azure AD ID に基づく包含データベース ユーザーを使用する必要があります。 包含データベース ユーザーは、master データベース内にログインを持たず、データベースに関連付けられている Azure AD の ID にマップされます。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」を参照してください。
 

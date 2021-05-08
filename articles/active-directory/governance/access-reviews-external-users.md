@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/06/2020
 ms.author: ajburnle
-ms.openlocfilehash: fe68ec498d17ec20778c8f34fc6ffa1f0964c44e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c976562224d4a0caca8921e46d8f8566800027ee
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176962"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532240"
 ---
 # <a name="use-azure-active-directory-azure-ad-identity-governance-to-review-and-remove-external-users-who-no-longer-have-resource-access"></a>Azure Active Directory (Azure AD) Identity Governance を使用して、リソースへのアクセス権がなくなった外部ユーザーを確認および削除する
 
@@ -77,5 +77,5 @@ ms.locfileid: "102176962"
 
 ## <a name="next-steps"></a>次の手順
 
-- [アクセス レビュー - Graph API](/graph/api/resources/accessreviews-root?view=graph-rest-beta)
-- [エンタイトルメント管理 - Graph API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)
+- [アクセス レビュー - Graph API](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
+- [エンタイトルメント管理 - Graph API](/graph/api/resources/entitlementmanagement-root)

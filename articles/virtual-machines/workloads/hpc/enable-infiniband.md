@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666963"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721237"
 ---
 # <a name="enable-infiniband"></a>InfiniBand の有効化
 
@@ -22,9 +22,9 @@ ms.locfileid: "101666963"
 対応する VM サイズで InfiniBand を有効にするには、さまざまな方法があります。
 
 ## <a name="vm-images-with-infiniband-drivers"></a>InfiniBand ドライバーが含まれる VM イメージ
-Marketplace でサポートされている VM イメージの一覧については、「[VM イメージ](configure.md#vm-images)」を参照してください。これらは、InfiniBand ドライバーがあらかじめ読み込まれているか (SR-IOV VM または非 SR-IOV VM の場合)、または適切なドライバーを使用して構成できます。
-SR-IOV が有効な [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、Marketplace の [CentOS-HPC バージョン 7.6 またはそれ以降](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)のバージョンの VM イメージを使用するのが、最も簡単に始める方法です。
-Ubuntu VM イメージは、[こちらの手順](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)を使用して、SR-IOV および非 SR-IOV 対応 VM に対する適切なドライバーで構成できます。
+Marketplace でサポートされている VM イメージの一覧については、「[VM イメージ](configure.md#vm-images)」を参照してください。これらは、InfiniBand ドライバーとともにあらかじめ読み込まれています (SR-IOV または非 SR-IOV の VM の場合)。または、[RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) に適切なドライバーを使用して構成できます。
+- Marketplace の [CentOS-HPC](configure.md#centos-hpc-vm-images) VM イメージが、最も簡単な作業の開始方法です。
+- [Ubuntu](configure.md#ubuntu-vm-images) VM イメージは、適正な IB ドライバーを使用して構成できます。
 
 ## <a name="infiniband-driver-vm-extensions"></a>InfiniBand ドライバー VM 拡張機能
 Linux の場合、SR-IOV が有効になっている H シリーズと N シリーズの VM で、[InfiniBandDriverLinux VM 拡張機能](../../extensions/hpc-compute-infiniband-linux.md) を使用して、Mellanox OFED ドライバーをインストールし、InfiniBand を有効にすることができます。
@@ -68,6 +68,6 @@ sudo systemctl restart waagent
 ## <a name="next-steps"></a>次のステップ
 
 - VM で[サポートされているさまざまな MPI ライブラリ](setup-mpi.md)のインストールと最適な構成の詳細について確認します。
-- [HB シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)に関するページを参照して、パフォーマンスとスケーラビリティのためにワークロードを最適に構成する方法を学習します。
-- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- [HBv3 シリーズの概要](hbv3-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事を確認します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

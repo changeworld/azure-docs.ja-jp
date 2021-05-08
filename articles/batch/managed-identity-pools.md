@@ -2,14 +2,14 @@
 title: Batch プールでマネージド ID を構成する
 description: Batch プールでユーザー割り当てマネージド ID を有効にする方法と、ノード内でマネージド ID を使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4a59383d119f88bb3ee180f629ba0a6ea6ac2f44
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100416670"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967253"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Batch プールでマネージド ID を構成する
 
@@ -53,7 +53,7 @@ var poolParameters = new Pool(name: "yourPoolName")
                     "18.04-LTS",
                     "latest"),
                 "batch.node.ubuntu 18.04")
-        };
+        },
         Identity = new BatchPoolIdentity
         {
             Type = PoolIdentityType.UserAssigned,
@@ -100,3 +100,4 @@ curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-
 
 - [Azure リソース用マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 詳細について説明します。
 - [ユーザー マネージド ID でカスタマー マネージド キー](batch-customer-managed-key.md)を使用する方法について説明します。
+- [Batch プールで証明書の自動ローテーションを有効](automatic-certificate-rotation.md)にする方法について説明します。

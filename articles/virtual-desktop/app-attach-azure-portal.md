@@ -1,26 +1,21 @@
 ---
-title: Windows Virtual Desktop MSIX アプリ アタッチ ポータル (プレビュー) - Azure
+title: Windows Virtual Desktop MSIX アプリのアタッチ ポータル - Azure
 description: Azure portal を使用して MSIX アプリ アタッチを Windows Virtual Desktop 用に設定する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: femila
+ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737547"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366557"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
-> [!IMPORTANT]
-> 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-この記事では、Windows Virtual Desktop 環境で MSIX アプリ アタッチ (プレビュー) を設定する方法について説明します。
+この記事では、Windows Virtual Desktop 環境で MSIX アプリのアタッチを設定する方法について説明します。
 
 ## <a name="requirements"></a>必要条件
 

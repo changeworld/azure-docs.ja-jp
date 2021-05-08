@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 605f495fbc5913663499f5411abcaa531cea97ee
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071189"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312214"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) 上で Synapse ワークスペース機能を有効にする
 
@@ -24,6 +24,7 @@ SQL データ ウェアハウスのすべてのユーザーが、Synapse Studio 
 ## <a name="prerequisites"></a>前提条件
 データ ウェアハウス上で Synapse ワークスペース機能を有効にするには、事前に以下を確保しておく必要があります。
 - SQL 論理サーバー上でホストされる SQL リソースを作成して管理する権限。
+- ホスト SQL Server に対する書き込みアクセス許可。 
 - Azure Synapse リソースを作成する権限。
 - 論理サーバー上で識別される Azure Active Directory 管理者
 

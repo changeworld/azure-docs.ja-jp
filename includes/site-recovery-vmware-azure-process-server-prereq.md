@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/28/2019
 ms.author: raynew
 ms.openlocfilehash: de15e3028cf22cdd03ce29385278fc5e2babaa9b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96008484"
 ---
 この記事では、以下のことを前提としています。

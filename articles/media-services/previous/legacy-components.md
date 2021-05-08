@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3487e735e48cb5067515762d6276429ca81e43fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 459658867a143a69850ce74b910fd5dc7e70d4b9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008741"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962987"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services のレガシ コンポーネント
 
@@ -39,13 +39,13 @@ ms.locfileid: "103008741"
  
 | **メディア プロセッサ名** | **提供終了日** | **補足メモ** |
 | --- | --- | ---|
-| Azure Media Indexer 2 | 2020 年 1 月 1 日 | このメディア プロセッサは、[Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyzing-video-audio-files-concept.md)に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください。 |
-| Azure Media Indexer | 2023 年 3 月 1 日 | このメディア プロセッサは、[Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyzing-video-audio-files-concept.md)に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください。 |
+| Azure Media Indexer 2 | 2020 年 1 月 1 日 | このメディア プロセッサは、[Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyze-video-audio-files-concept.md)に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください。 |
+| Azure Media Indexer | 2023 年 3 月 1 日 | このメディア プロセッサは、[Media Services v3 AudioAnalyzerPreset Basic モード](../latest/analyze-video-audio-files-concept.md)に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください。 |
 | モーション検出 | 2020 年 6 月 1 日|現時点では置換する計画はありません。 |
 | ビデオ要約 |2020 年 6 月 1 日|現時点では置換する計画はありません。|
-| ビデオ光学式文字認識 | 2020 年 6 月 1 日 |このメディア プロセッサは、[Azure Media Services Video Indexer](../video-indexer/index.yml) に置き換えられます。 また、[Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md) の使用も検討してください。 <br/>「[Azure Media Services v3 プリセットと Video Indexer の比較](../video-indexer/compare-video-indexer-with-media-services-presets.md)」をご覧ください。 |
-| Face Detector | 2020 年 6 月 1 日 | このメディア プロセッサは、[Azure Media Services Video Indexer](../video-indexer/index.yml) に置き換えられます。 また、[Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md) の使用も検討してください。 <br/>「[Azure Media Services v3 プリセットと Video Indexer の比較](../video-indexer/compare-video-indexer-with-media-services-presets.md)」をご覧ください。 |
-| Content Moderator | 2020 年 6 月 1 日 |このメディア プロセッサは、[Azure Media Services Video Indexer](../video-indexer/index.yml) に置き換えられます。 また、[Azure Media Services v3 API](../latest/analyzing-video-audio-files-concept.md) の使用も検討してください。 <br/>「[Azure Media Services v3 プリセットと Video Indexer の比較](../video-indexer/compare-video-indexer-with-media-services-presets.md)」をご覧ください。 |
+| ビデオ光学式文字認識 | 2020 年 6 月 1 日 |このメディア プロセッサは、[Azure Media Services Video Indexer](../video-indexer/index.yml) に置き換えられます。 また、[Azure Media Services v3 API](../latest/analyze-video-audio-files-concept.md) の使用も検討してください。 <br/>「[Azure Media Services v3 プリセットと Video Indexer の比較](../video-indexer/compare-video-indexer-with-media-services-presets.md)」をご覧ください。 |
+| Face Detector | 2020 年 6 月 1 日 | このメディア プロセッサは、[Azure Media Services Video Indexer](../video-indexer/index.yml) に置き換えられます。 また、[Azure Media Services v3 API](../latest/analyze-video-audio-files-concept.md) の使用も検討してください。 <br/>「[Azure Media Services v3 プリセットと Video Indexer の比較](../video-indexer/compare-video-indexer-with-media-services-presets.md)」をご覧ください。 |
+| Content Moderator | 2020 年 6 月 1 日 |このメディア プロセッサは、[Azure Media Services Video Indexer](../video-indexer/index.yml) に置き換えられます。 また、[Azure Media Services v3 API](../latest/analyze-video-audio-files-concept.md) の使用も検討してください。 <br/>「[Azure Media Services v3 プリセットと Video Indexer の比較](../video-indexer/compare-video-indexer-with-media-services-presets.md)」をご覧ください。 |
 
 ## <a name="next-steps"></a>次のステップ
 

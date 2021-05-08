@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 8435cab1855e9df871d17ff7fa393b6ab2cf0cb1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5f07e9dbd574d8a27e6048154c72b9afc24b6ba4
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98736345"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286157"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>チュートリアル:Netskope Administrator Console と Azure Active Directory のシングル サインオン (SSO) 統合
 
@@ -37,13 +37,12 @@ ms.locfileid: "98736345"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Netskope Administrator Console では **SP と IDP** によって開始される SSO がサポートされます
+* Netskope Administrator Console では **SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-
-## <a name="adding-netskope-administrator-console-from-the-gallery"></a>ギャラリーからの Netskope Administrator Console の追加
+## <a name="add-netskope-administrator-console-from-the-gallery"></a>ギャラリーから Netskope Administrator Console を追加する
 
 Netskope Administrator Console の Azure AD への統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Netskope Administrator Console を追加する必要があります。
 
@@ -142,19 +141,19 @@ Netskope Administrator Console に対して Azure AD SSO を構成してテス�
 
 1. 左側のナビゲーション ペインの **[Settings]\(設定\)** タブをクリックします。
 
-    ![ナビゲーション ウィンドウで [設定] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![ナビゲーション ウィンドウで [設定] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. **[管理]** タブをクリックします。
 
-    ![[設定] で [管理] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-administration.png)
+    ![[設定] で [管理] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/administration.png)
 
 1. **[SSO]** タブをクリックします。
 
-    ![[管理] で [SSO] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-sso.png)
+    ![[管理] で [SSO] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/tab.png)
 
 1. **[ネットワーク設定]** セクションで、次の手順に従います。
     
-    ![[ネットワーク設定] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/netskope-cloud-security-tutorial/config-pasteurls.png)
+    ![[ネットワーク設定] を示すスクリーンショット。ここでは、説明されている値を入力できます。](./media/netskope-cloud-security-tutorial/network.png)
 
     a. **[Assertion Consumer Service URL]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションにある **[返信 URL]** テキスト ボックスに貼り付けます。
 
@@ -162,7 +161,7 @@ Netskope Administrator Console に対して Azure AD SSO を構成してテス�
 
 1. **[SSO/SLO Settings]\(SSO/SLO 設定\)** セクションの **[設定の編集]** をクリックします。
 
-    ![[SSO/SLO Settings]\(SSO/SLO 設定\) を示すスクリーンショット。ここでは、[設定の編集] を選択できます。](./media/netskope-cloud-security-tutorial/config-editsettings.png)
+    ![[SSO/SLO Settings]\(SSO/SLO 設定\) を示すスクリーンショット。ここでは、[設定の編集] を選択できます。](./media/netskope-cloud-security-tutorial/settings.png)
 
 1. **[設定]** ポップアップ ウィンドウで、次の手順を実行します。
 
@@ -188,11 +187,11 @@ Netskope Administrator Console に対して Azure AD SSO を構成してテス�
 
 1. 左側のナビゲーション ペインの **[Settings]\(設定\)** タブをクリックします。
 
-    ![[設定] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/config-settings.png)
+    ![[設定] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/configure-settings.png)
 
 1. **[Active Platform]\(アクティブなプラットフォーム\)** タブをクリックします。
 
-    ![[設定] で [アクティブなプラットフォーム] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/user1.png)
+    ![[設定] で [アクティブなプラットフォーム] が選択されていることを示すスクリーンショット。](./media/netskope-cloud-security-tutorial/user-1.png)
 
 1. **[Users]** タブをクリックします。
 

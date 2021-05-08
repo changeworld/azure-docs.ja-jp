@@ -3,12 +3,12 @@ title: Apache Kafka 用 Azure Event Hubs への移行
 description: この記事では、Apache Kafka から Azure Event Hubs にクライアントを移行する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8db14f6ec18843bf7d592d56b3cf2352c3901a9a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90061446"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310038"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Apache Kafka エコシステム用 Azure Event Hubs への移行
 Azure Event Hubs は Apache Kafka エンドポイントを公開します。これにより、Kafka プロトコルを使用して Event Hubs に接続できます。 既存の Kafka アプリケーションに最小限の変更を行うことで、Azure Event Hubs に接続し、Azure エコシステムの利点を享受することができます。 Event Hubs は、MirrorMaker を含む既存の Kafka アプリケーションの多くで動作します。 詳細については、[Apache Kafka 用の Event Hubs](event-hubs-for-kafka-ecosystem-overview.md) に関するページを参照してください
@@ -59,6 +59,6 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 Event Hubs と Kafka 用 Event Hubs の詳細については、次の記事を参照してください。  
 
 - [Event Hubs 用 Apache Kafka トラブルシューティング ガイド](apache-kafka-troubleshooting-guide.md)
-- [よく寄せられる質問 - Apache Kafka 用 Event Hubs](apache-kafka-frequently-asked-questions.md)
+- [よく寄せられる質問 - Apache Kafka 用 Event Hubs](apache-kafka-frequently-asked-questions.yml)
 - [Azure Event Hubs のための Apache Kafka 開発者ガイド](apache-kafka-developer-guide.md)
 - [推奨構成](apache-kafka-configurations.md)

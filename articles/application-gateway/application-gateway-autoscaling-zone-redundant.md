@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98059723"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
@@ -27,7 +27,7 @@ Application Gateway は、Standard_v2 SKU で利用できます。 Web アプリ
   ゾーン冗長性は、Azure ゾーンが使用可能な場所でのみ使用できます。 他のリージョンでは、その他のすべての機能がサポートされます。 詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」を参照してください
 - **静的 VIP**: Application Gateway v2 SKU では、静的 VIP の種類だけがサポートされます。 これにより、アプリケーション ゲートウェイに関連付けられた VIP は、デプロイのライフサイクルの間は、再起動後であっても変化しません。  v1 には静的 VIP がないため、アプリケーション ゲートウェイを経由して App Services にルーティングするドメイン名の IP アドレスの代わりに、アプリケーション ゲートウェイの URL を使用する必要があります。
 - **ヘッダーの書き換え**: Application Gateway では、HTTP 要求と応答のヘッダーを v2 SKU で追加、削除、更新することができます。 詳しくは、「[Application Gateway で HTTP ヘッダーを書き換える](rewrite-http-headers.md)」をご覧ください
-- **Key Vault の統合**: Application Gateway v2 では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 詳細については、「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」 を参照してください。
+- **Key Vault の統合**: Application Gateway v2 では、HTTPS 対応リスナーにアタッチされているサーバー証明書用の Key Vault との統合をサポートします。 詳細については、「[Key Vault 証明書での SSL 終端](key-vault-certs.md)」 を参照してください。
 - **Azure Kubernetes Service のイングレス コントローラー**: Application Gateway v2 のイングレス コントローラーを使うと、AKS クラスターと呼ばれる Azure Kubernetes Service (AKS) に対するイングレスとして Azure Application Gateway を使用できます。 詳細については、「[Application Gateway イングレス コントローラーとは](ingress-controller-overview.md)」を参照してください。
 - **パフォーマンスの向上**: v2 SKU では、Standard/WAF SKU と比較して、TLS オフロードのパフォーマンスが最大で 5 倍になります。
 - **デプロイと更新の時間の短縮**: v2 SKU では、Standard/WAF SKU と比較して、デプロイと更新の時間が短縮されます。 これには、WAF の構成の変更も含まれます。
@@ -81,7 +81,7 @@ Azure Application Gateways は常に可用性が高くなるようにデプロ�
 | トラフィック リダイレクト                               | &#x2713; | &#x2713; |
 | Web アプリケーション ファイアウォール (WAF)                    | &#x2713; | &#x2713; |
 | WAF カスタム規則                                  |          | &#x2713; |
-| トランスポート層セキュリティ (TLS) または Secure Sockets Layer (SSL) の終了            | &#x2713; | &#x2713; |
+| トランスポート層セキュリティ (TLS) または Secure Sockets Layer (SSL) の終端            | &#x2713; | &#x2713; |
 | エンド ツー エンド TLS 暗号化                         | &#x2713; | &#x2713; |
 | セッション アフィニティ                                  | &#x2713; | &#x2713; |
 | カスタム エラー ページ                                | &#x2713; | &#x2713; |

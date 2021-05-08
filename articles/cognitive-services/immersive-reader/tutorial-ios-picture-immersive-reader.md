@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:写真を撮影してイマーシブ リーダーで起動する iOS アプリを作成する (Swift)
+title: 'チュートリアル: 写真を撮影してイマーシブ リーダーで起動する iOS アプリを作成する (Swift)'
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、iOS アプリを一から作成し、イマーシブ リーダー機能に画像を追加します。
 services: cognitive-services
@@ -9,18 +9,18 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: d8ee6b2344f0c953233195a693e774e410a8a8ea
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 23e9fd586882d25aed646b984e17c5885145ccff
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368204"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284636"
 ---
-# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>チュートリアル:写真のコンテンツを含むイマーシブ リーダーを起動する iOS アプリを作成する (Swift)
+# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>チュートリアル: 写真のコンテンツを含むイマーシブ リーダーを起動する iOS アプリを作成する (Swift)
 
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
-[Computer Vision Cognitive Services Read API](../computer-vision/concept-recognizing-text.md) では、Microsoft の最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはマシンで読み取り可能な文字ストリームに変換されます。
+[Computer Vision Cognitive Services Read API](../computer-vision/overview-ocr.md) では、Microsoft の最新の認識モデルを使用して画像内のテキスト コンテンツが検出され、識別されたテキストはマシンで読み取り可能な文字ストリームに変換されます。
 
 このチュートリアルでは、iOS アプリを一から作成し、イマーシブ リーダー SDK を使用して Read API とイマーシブ リーダーを統合します。 このチュートリアルの完全に動作するサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
 

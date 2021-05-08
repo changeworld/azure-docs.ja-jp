@@ -2,13 +2,13 @@
 title: Azure Event Grid のイベント ドメイン
 description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198678"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374711"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -23,7 +23,7 @@ ms.locfileid: "102198678"
 
 イベント ドメインは、同じアプリケーションに関連する数多くの Event Grid トピック用の管理ツールです。 数千の個々のトピックを含めることができるメタ トピックと考えることができます。
 
-イベント ドメインにより、ユーザーは、Azure サービス (Storage や IoT Hub など) によって使用されているものと同じアーキテクチャ を使用して、イベントを発行できます。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
+イベント ドメインでは、イベントを発行するために Storage や IoT Hub などの Azure サービスで使用されているものと同じアーキテクチャが提供されます。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
 
 ## <a name="example-use-case"></a>ユース ケースの例
 [!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
@@ -43,6 +43,9 @@ Event Grid には、Azure RBAC がイベント ドメインでより簡単に動
 ## <a name="subscribing-to-topics"></a>トピックのサブスクライブ
 
 イベント ドメイン内のトピックでイベントをサブスクライブすることは、[カスタム トピックでイベント サブスクリプションを作成](./custom-event-quickstart.md)したり、Azure サービスからイベントをサブスクライブしたりすることと同じです。
+
+> [!IMPORTANT]
+> ドメイン トピックは、Event Grid の **自動管理** されたリソースと見なされます。 イベント サブスクリプションは、ドメイン トピックを作成せずに、ドメイン トピック スコープで作成できます。 この場合、Event Grid によって自動的にドメイン トピックが作成されます。 もちろん、ドメイン トピックを手動で作成することもできます。 この動作により、多数のドメイン トピックを扱うときに注意する必要があるリソースが 1 つ少なくなります。 ドメイン トピックに対する最後のサブスクリプションが削除されると、ドメイン トピックが手動で作成されたか自動作成されたかに関係なく、ドメイン トピックも削除されます。 
 
 ### <a name="domain-scope-subscriptions"></a>ドメイン スコープ サブスクリプション
 
@@ -94,7 +97,7 @@ Event Grid には、Azure RBAC がイベント ドメインでより簡単に動
 - 50 のドメイン スコープ サブスクリプション 
 - 毎秒 5,000 イベントのインジェスト速度 (ドメインへの取り込み)
 
-これらの制限が実情に沿わない場合は、サポート チケットを開くか、[askgrid@microsoft.com](mailto:askgrid@microsoft.com) 宛てにメールを送信して製品チームにご相談ください。 
+これらの制限が実情に沿わない場合は、サポート チケットを開くか、[askgrid@microsoft.com](mailto:askgrid@microsoft.com) 宛てにメールを送信してください。 
 
 ## <a name="pricing"></a>価格
 イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。

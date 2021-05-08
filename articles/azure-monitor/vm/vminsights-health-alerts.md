@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
-ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c4b15fa2a8be32aa7397ae425f28f1deaac6b71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052264"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024610"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>VM insights のゲストの正常性アラート (プレビュー)
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 アラートは、仮想マシンまたはモニターが異常な状態に変化するときに作成されます。 [Azure Monitor のアラート ルールによって作成されるもの](../alerts/alerts-overview.md)を含むこれらのアラートを表示して管理し、新しいアラートが作成されたときに事前に通知されるように選択できます。
@@ -35,7 +35,7 @@ VM insights のゲストの正常性を使用すると、一定間隔でサン�
 仮想マシンの状態が変化したときにアラートが既に **発生** 状態になっている場合、2 番目のアラートは作成されませんが、同じアラートの重要度は仮想マシンの状態に合わせて変更されます。 たとえば、**警告** アラートが既に **発生** 状態にあったときに、仮想マシンが **クリティカル** 状態に変化した場合、そのアラートの重要度は **Sev1** に変更されます。 **Sev1** アラートが既に **発生** 状態にあったときに、仮想マシンが **警告** 状態に変化した場合、そのアラートの重要度は **Sev2** に変更されます。 仮想マシンが **正常** 状態に戻った場合、重要度が **Sev4** に変更されてアラートは解除されます。
 
 ## <a name="viewing-alerts"></a>アラートの表示
-[Azure portal](../platform/alerts-overview.md#alerts-experience) で、VM insights のゲストの正常性によって作成されたアラートを他の アラートと共に表示します。 **[Azure Monitor]** メニューから **[アラート]** を選択して、すべての監視対象リソースのアラートを表示するか、仮想マシンのメニューから **[アラート]** を選択して、その仮想マシンについてのみアラートを表示することができます。
+[Azure portal](../alerts/alerts-overview.md#alerts-experience) で、VM insights のゲストの正常性によって作成されたアラートを他の アラートと共に表示します。 **[Azure Monitor]** メニューから **[アラート]** を選択して、すべての監視対象リソースのアラートを表示するか、仮想マシンのメニューから **[アラート]** を選択して、その仮想マシンについてのみアラートを表示することができます。
 
 ## <a name="alert-properties"></a>[アラートのプロパティ]
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bd0d53049c68843a6fd2cb6128c473d7c4f8d639
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f4b223c9195168b445b7eb81c2709a61807fddac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582793"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578398"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し
 
@@ -30,16 +30,6 @@ ms.locfileid: "99582793"
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
-
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-endpoint = "url to the API"
-http_headers = {'Authorization': 'Bearer ' + result['access_token'],
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'}
-data = requests.get(endpoint, headers=http_headers, stream=False).json()
-```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -60,6 +50,43 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+[Axios](https://www.npmjs.com/package/axios)などの HTTP クライアントを使用し、"*承認ベアラー*" としてアクセス トークンを使用して API エンドポイント URI を呼び出します。
+
+```JavaScript
+const axios = require('axios');
+
+async function callApi(endpoint, accessToken) {
+
+    const options = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    };
+
+    console.log('request made to web API at: ' + new Date().toString());
+
+    try {
+        const response = await axios.default.get(endpoint, options);
+        return response.data;
+    } catch (error) {
+        console.log(error)
+        return error;
+    }
+};
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+endpoint = "url to the API"
+http_headers = {'Authorization': 'Bearer ' + result['access_token'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'}
+data = requests.get(endpoint, headers=http_headers, stream=False).json()
+```
+
 ---
 
 ## <a name="calling-several-apis"></a>複数の API の呼び出し
@@ -72,12 +99,16 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 このシナリオの次の記事「[運用環境に移行する](./scenario-daemon-production.md?tabs=dotnet)」に進みます。
 
-# <a name="python"></a>[Python](#tab/python)
-
-このシナリオの次の記事「[運用環境に移行する](./scenario-daemon-production.md?tabs=python)」に進みます。
-
 # <a name="java"></a>[Java](#tab/java)
 
 このシナリオの次の記事「[運用環境に移行する](./scenario-daemon-production.md?tabs=java)」に進みます。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+このシナリオの次の記事「[運用環境に移行する](./scenario-daemon-production.md?tabs=nodejs)」に進みます。
+
+# <a name="python"></a>[Python](#tab/python)
+
+このシナリオの次の記事「[運用環境に移行する](./scenario-daemon-production.md?tabs=python)」に進みます。
 
 ---

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b502690a62410f1e8d2950074e8b479f7dc7f88
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b9d3f6973c210e7bd91c088ee7a276bfbcc48ce
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608794"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121984"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
@@ -330,7 +330,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 | encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
 | resultCode | string | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
 
-エラーの結果コードは、[ライブ イベントのエラー コード](../live-event-error-codes.md)で確認できます。
+エラーの結果コードは、[ライブ イベントのエラー コード](../live-event-error-codes-reference.md)で確認できます。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -400,7 +400,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 | encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
 | resultCode | string | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
 
-エラーの結果コードは、[ライブ イベントのエラー コード](../live-event-error-codes.md)で確認できます。
+エラーの結果コードは、[ライブ イベントのエラー コード](../live-event-error-codes-reference.md)で確認できます。
 
 正常な切断の結果コードは次のとおりです。
 
@@ -676,4 +676,4 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 - [メディア サービス イベントを含む EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services イベントの定義](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [ライブ イベントのエラー コード](../live-event-error-codes.md)
+- [ライブ イベントのエラー コード](../live-event-error-codes-reference.md)

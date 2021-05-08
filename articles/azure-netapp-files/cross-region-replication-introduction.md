@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 03/10/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 4d4cf7a0dc73070f4f48ed87f60a2458bc925b13
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ac0f9e6e5e1a1988386cc85c2d7576719acbd6e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101707355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590961"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -123,6 +123,7 @@ Azure NetApp Files のリージョン間レプリケーションでは、レプ�
 * [ボリューム レプリケーションを作成する](cross-region-replication-create-peering.md)
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
+* [リージョン間レプリケーションの宛先ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
 * [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)

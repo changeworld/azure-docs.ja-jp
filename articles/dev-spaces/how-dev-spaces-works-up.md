@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces による Azure Kubernetes Service でのコード実行のプロセスについて説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96014433"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces でのコード実行のしくみ
@@ -44,7 +44,7 @@ azds up
 
 より詳細なレベルでは、`azds up` の実行時には次の処理が行われます。
 
-1. ユーザーのコンピューターから、ユーザーの AKS クラスターに固有の Azure ファイル ストレージに[ファイルが同期][sync-section]されます。 ソース コード、Helm チャート、および構成ファイルがアップロードされます。
+1. ユーザーのコンピューターから、ユーザーの AKS クラスターに固有の Azure File Storage に[ファイルが同期][sync-section]されます。 ソース コード、Helm チャート、および構成ファイルがアップロードされます。
 1. 新しいセッションを開始する要求がコントローラーによって作成されます。 この要求には、一意の ID、スペース名、ソース コードのパス、デバッグ フラグなどの複数のプロパティが含まれます。
 1. コントローラーによって、Helm チャート内の *$(tag)* プレースホルダーが一意のセッション ID に置き換えられ、サービス用の Helm チャートがインストールされます。 一意のセッション ID への参照を Helm チャートに追加すると、この特定のセッション用に AKS クラスターにデプロイされたコンテナーをセッション要求と関連情報に再び関連付けることができます。
 1. Helm チャートのインストール時には、Kubernetes webhook 受付サーバーによって、インストルメンテーションおよびプロジェクトのソース コードにアクセスするためのコンテナーがアプリケーションのポッドに追加されます。 HTTP トレースとスペースのルーティングを提供するために、devspaces-proxy コンテナーと devspaces-proxy-init コンテナーが追加されます。 アプリケーションのコンテナーのビルドに必要な Docker インスタンスとプロジェクトのソース コードへのアクセスをポッドに提供するために、devspaces-build コンテナーが追加されます。

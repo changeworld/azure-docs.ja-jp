@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/04/2021
-ms.openlocfilehash: 7ffb5a3dfd23a1515c6d21784b82ccdbf0674f0e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb954a32a4e598c45578d4b06606bc133babb50d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593409"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107154"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM からコマーシャル マーケットプレースへの共同販売ソリューションの移行
 
@@ -32,7 +32,7 @@ Microsoft は、発行エクスペリエンスを移動します。 [コマー�
 Microsoft Partner Network のアクティブなメンバーシップを持っており、パートナー センターのコマーシャル マーケットプレースに登録していることを確認します。
 
 - [無料](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)で Microsoft Partner Network に参加します。 パートナーは、ビジネスを成長させるために専用のリソース、プログラム、ツール、および接続にアクセスできます。
-- コマーシャル マーケットプレースにアカウントをお持ちでない場合はMicrosoft との共同販売を継続し、完全な発行エクスペリエンスにアクセスするために、[今すぐご登録](partner-center-portal/create-account.md)ください。
+- コマーシャル マーケットプレースにアカウントをお持ちでない場合はMicrosoft との共同販売を継続し、完全な発行エクスペリエンスにアクセスするために、[今すぐご登録](create-account.md)ください。
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Co-Sell-Ready 状態を達成するための発行の更新
 
@@ -45,7 +45,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
 ソリューションを OCP GTM からインポートする前に、こちらの手順を実行してください。
 
-1. 会社の[発行元リスト](https://partner.microsoft.com/dashboard/account/v3/publishers/list)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](./partner-center-portal/manage-account.md#define-user-roles-and-permissions)を参照してください。
+1. 会社の[発行元リスト](https://partner.microsoft.com/dashboard/account/v3/publishers/list)にアクセスします。 これには、発行アクセス権を持つアカウント所有者、マネージャー、および開発者が含まれています。 パートナー センターのユーザー ロールの詳細については、[こちら](user-roles.md)を参照してください。
 2. リストに記載されているいずれかの連絡先に連絡し、"*マネージャー*" または "*開発者*" としてコマーシャル マーケットプレースに [ユーザーを追加](https://partner.microsoft.com/dashboard/account/usermanagement)するように依頼します。これは、ソリューションを編集したり発行したりできるのはこれらのロールだけだからです。
 3. 開発者と協力して、ソリューションを OCP GTM アカウントからコマーシャル マーケットプレースに移動します。
 4. 次のうちどれを実行するかを決定します。
@@ -97,7 +97,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
     [![移行プロセスの [アクション 1] タブ。](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
-1. **[アクション 2]** タブで、表示された一覧から [発行元プロファイル](partner-center-portal/create-account.md)を選択します。 発行元アカウントがない場合は、[パートナー センター](https://partner.microsoft.com/solutions/migration)で作成し、こちらで選択します。
+1. **[アクション 2]** タブで、表示された一覧から [発行元プロファイル](create-account.md)を選択します。 発行元アカウントがない場合は、[パートナー センター](https://partner.microsoft.com/solutions/migration)で作成し、こちらで選択します。
 
     [![移行プロセスの [アクション 2] タブ。](media/co-sell-migrate/action-2-migrate.png)](media/co-sell-migrate/action-2-migrate.png#lightbox)
 

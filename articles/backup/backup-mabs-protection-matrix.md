@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d8f2a38db468ec57cdc0a4f0813fe7ae8e341d52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfdd227135a2124e22a604bad4bd41594a38fb37
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561272"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 
@@ -127,7 +127,7 @@ Azure Backup Server は、MABS サーバーと同じドメイン内、および�
   * ファイル サーバー
   * Hyper-V
 
-  これらのワークロードは、1 台のサーバーまたはクラスター構成で実行できます。 信頼されたドメインにないワークロードを保護する場合、サポートの詳細および必要な認証については、[ワークグループと信頼されていないドメインのコンピューターの準備](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm)に関するページを参照してください。
+  これらのワークロードは、1 台のサーバーまたはクラスター構成で実行できます。 信頼されたドメインにないワークロードを保護する場合、サポートの詳細および必要な認証については、[ワークグループと信頼されていないドメインのコンピューターの準備](/system-center/dpm/prepare-environment-for-dpm)に関するページを参照してください。
 
 ## <a name="unsupported-data-types"></a>サポートされていないデータ型
 

@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 4f3ecb6c9aa4ec200cd1a53b82d7c81a2c8d4dcd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100546790"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210812"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>クイックスタート: GPU 搭載の Azure Stack Edge Pro を使い始める 
 
@@ -37,7 +36,7 @@ ms.locfileid: "100546790"
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 
-1. **設置**: クロスオーバー ケーブルまたは USB イーサネット アダプターを使用して、ポート 1 をクライアント コンピューターに接続します。 データ用に、他に少なくとも 1 つのデバイス ポートを接続します。できる限り、少なくとも 1 つの GbE スイッチと SFP+ 銅線ケーブルを経由して、インターネットへの 25 GbE (ポート 3 からポート 6) を使用します。 提供された電源コードを電源装置に接続し、配電コンセントを分離します。 フロント パネルの電源ボタンを押して、デバイスの電源を入れます。  
+1. **設置**: クロスオーバー ケーブルまたは USB イーサネット アダプターを使用して、ポート 1 をクライアント コンピューターに接続します。 データ用に、他に少なくとも 1 つのデバイス ポートを接続します。できる限り、インターネットへの 25 GbE (ポート 3 からポート 6) を SFP + 銅線ケーブルで使用するか、ポート 2 を RJ45 パッチ ケーブルで使用してください。 提供された電源コードを電源装置に接続し、配電コンセントを分離します。 フロント パネルの電源ボタンを押して、デバイスの電源を入れます。  
 
     互換性のあるネットワーク ケーブルとスイッチについては、[Cavium FastlinQ 41000 シリーズの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)および [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)に関するドキュメントを参照してください。
 

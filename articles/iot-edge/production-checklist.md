@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 711b4f6577b17e84a5d30774fa7be4c9033d4340
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489757"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031135"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -174,11 +174,17 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 
 ### <a name="use-tags-to-manage-versions"></a>タグを使用してバージョンを管理する
 
-タグは、Docker コンテナーのバージョンを区別するために使用できる Docker 概念です。 タグは、コンテナー リポジトリの末尾に付加される **1.0** などのサフィックスです。 たとえば、**mcr.microsoft.com/azureiotedge-agent:1.0** のようになります。 タグは可変であり、別のコンテナーを指すようにいつでも変更できます。したがって、チームは、今後モジュール イメージを更新する際に従う規則に同意する必要があります。
+タグは、Docker コンテナーのバージョンを区別するために使用できる Docker 概念です。 タグは、コンテナー リポジトリの末尾に付加される **1.1** などのサフィックスです。 たとえば、**mcr.microsoft.com/azureiotedge-agent:1.1** のようになります。 タグは可変であり、別のコンテナーを指すようにいつでも変更できます。したがって、チームは、今後モジュール イメージを更新する際に従う規則に同意する必要があります。
 
 また、タグは、IoT Edge デバイスに更新プログラムを適用するのに役立ちます。 更新バージョンのモジュールをコンテナー レジストリにプッシュするときに、タグを増分します。 次に、増分されたタグでデバイスに新しいデプロイをプッシュします。 コンテナー エンジンでは、増分されたタグが新しいバージョンとして認識され、最新バージョンのモジュールがご利用のデバイスにプルダウンされます。
 
-タグ規則の例については、[IoT Edge ランタイムの更新](how-to-update-iot-edge.md#understand-iot-edge-tags)に関する記述を参照してください。そこでは、IoT Edge でローリング タグと特定のタグを使用して、バージョンを追跡する方法について説明されています。
+#### <a name="tags-for-the-iot-edge-runtime"></a>IoT Edge ランタイムのタグ
+
+IoT Edge エージェントおよび IoT Edge ハブ イメージには、関連付けられている IoT Edge のバージョンでタグ付けされます。 ランタイム イメージでタグを使用する方法は 2 つあります。
+
+* **ローリング タグ** - バージョン番号の先頭の 2 つの値のみを使用して、これらの数字に一致する最新のイメージを取得します。 たとえば、最新の 1.1.x バージョンを指す新しいリリースが存在するたびに、1.1 が更新されます。 IoT Edge デバイス上のコンテナー ランタイムによって、再度イメージが取得されると、ランタイム モジュールが最新バージョンに更新されます。 Azure portal からのデプロイでは、既定でローリング タグに設定されます。 *開発目的では、このアプローチが推奨されます。*
+
+* **特定のタグ** - バージョン番号の 3 つすべての値を使用して、イメージのバージョンを明示的に設定します。 たとえば、1.1.0 はその最初のリリース後に変更されることはありません。 更新する準備ができたら、配置マニフェストに新しいバージョン番号を宣言できます。 *運用環境目的では、このアプローチが推奨されます。*
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>プライベート レジストリにランタイム コンテナーを格納する
 
@@ -257,6 +263,17 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 Linux では、IoT Edge デーモンで既定のログ ドライバーとしてジャーナルが使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-IoTEdgeLog` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (既定)。  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
+
+:::moniker-end
+<!-- end 1.1 -->
+
 <!--1.2-->
 :::moniker range=">=iotedge-2020-11"
 
@@ -275,12 +292,6 @@ Linux では、IoT Edge デーモンで既定のログ ドライバーとして�
   ```
 
 :::moniker-end
-
-Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-IoTEdgeLog` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (既定)。  
-
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
-```
 
 IoT Edge のデプロイをテストする場合、通常はデバイスにアクセスしてログを取得し、トラブルシューティングを行うことができます。 デプロイ シナリオでは、そのオプションがない場合があります。 運用環境でデバイスに関する情報をどのように収集するかを検討してください。 1 つのオプションとして、他のモジュールから情報を収集し、クラウドに送信するログ モジュールを使用する方法があります。 ログ モジュールの一例として [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics) があります。独自のものを設計することもできます。
 
@@ -302,12 +313,24 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 }
 ```
 
-この情報を `daemon.json` という名前のファイルに追加 (またはアペンド) して、デバイス プラットフォームの適切な場所に配置します。
+この情報を `daemon.json` という名前のファイルに追加 (またはアペンド) して、次の場所に配置します。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 | プラットフォーム | 場所 |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* `/etc/docker/`
+
+:::moniker-end
+<!-- end 1.2 -->
 
 変更を有効にするには、コンテナー エンジンを再起動する必要があります。
 

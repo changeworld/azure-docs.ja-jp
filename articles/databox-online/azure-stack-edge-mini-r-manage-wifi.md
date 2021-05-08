@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/28/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a2cc0707c344c3ca537795666a3f60f648026596
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96465743"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043769"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>ローカル Web UI を使用して Azure Stack Edge Mini R でのワイヤレス接続を管理する
 
@@ -55,6 +55,8 @@ Wi-Fi プロファイルを追加してそれに接続するには、ご利用�
     ![ローカル Web UI のポート WiFi の [ネットワーク設定] 1](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-1.png)
     
     ワイヤレス ネットワーク プロファイルには、ワイヤレス ネットワークに接続するために必要な SSID (ネットワーク名)、パスワード キー、およびセキュリティ情報が含まれています。 ご利用の環境の Wi-Fi プロファイルは、ネットワーク管理者から入手できます。
+
+    Wi-Fi プロファイルの準備の詳細については、「[Azure Stack Edge Mini R デバイスで Wi-Fi プロファイルを使用する](azure-stack-edge-mini-r-use-wifi-profiles.md)」を参照してください。
 
     ![ローカル Web UI のポート WiFi の [ネットワーク設定] 2](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/add-wifi-profile-2.png)
 

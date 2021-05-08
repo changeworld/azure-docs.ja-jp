@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 1bf9a2cf7af8b18994ef2473c11176b8aea74f6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3538e90a6dea69c703f56871fde86a18557a022
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042727"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095171"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューのクォータ
 
@@ -29,7 +29,7 @@ Azure Static Web Apps のプレビューには、次のクォータがありま�
 | アプリのサイズ                    | 250 MB           |
 | 実稼働前の環境数 | 3                |
 | カスタム ドメイン              | 1                |
-| 承認<br><br>カスタム ロールとルーティング規則を使用 | 招待されてロールを割り当てられるエンドユーザーの最大数は 25 人 |
+| 承認 (カスタム ロールとルーティング規則を使用) | カスタム ロールに属することができるエンドユーザーは最大 25 名 |
 | Azure Functions             | 利用可能        |
 | SLA                         | なし             |
 

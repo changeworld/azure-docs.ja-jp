@@ -1,14 +1,14 @@
 ---
-title: クイック スタート:Computer Vision クライアント ライブラリ
+title: 'クイックスタート: Read クライアント ライブラリまたは REST API'
 titleSuffix: Azure Cognitive Services
-description: 選択した言語のネイティブ クライアント ライブラリを使用して、アプリケーションで Azure Computer Vision を使用する方法について学習します。
+description: 選択した言語のネイティブ クライアント ライブラリを使用して、アプリケーションで光学式文字認識 (OCR) を使用する方法について学習します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/15/2020
+ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -17,16 +17,16 @@ ms.custom:
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
 keywords: computer vision, computer vision サービス
-ms.openlocfilehash: 50976de4a60e5330740bcbf387d74c505316c0cf
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: bd6fcec1544e20c119018df2595cc27c8c368824
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560816"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728269"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>クイック スタート:Computer Vision クライアント ライブラリを使用する
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>クイックスタート: Read クライアント ライブラリまたは REST API を使用する
 
-Computer Vision REST API またはクライアント ライブラリの使用を開始します。 Computer Vision サービスは、画像を処理し、その視覚的特徴に関する情報を返す AI アルゴリズムを提供します。 以下の手順に従って、パッケージを自分のアプリケーションにインストールし、基本タスクのコード例を試してみましょう。
+Read REST API またはクライアント ライブラリの使用を開始します。 Read サービスは、画像から読み取ることができるテキストを抽出し、それを構造化文字列として返す AI アルゴリズムを提供します。 以下の手順に従って、パッケージを自分のアプリケーションにインストールし、基本タスクのコード例を試してみましょう。
 
 
 

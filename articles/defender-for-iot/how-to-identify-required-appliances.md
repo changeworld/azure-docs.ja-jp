@@ -4,10 +4,10 @@ description: 認定済みの Defender for IoT センサーとオンプレミス�
 ms.date: 01/13/2021
 ms.topic: how-to
 ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104782760"
 ---
 # <a name="identify-required-appliances"></a>必要なアプライアンスを特定する
@@ -39,7 +39,7 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | Image | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="企業レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="エンタープライズ レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB レベルのモデル。"::: | :::image type="content" source="media/how-to-prepare-your-network/office-ruggedized.png" alt-text="SMB ラグド レベルのモデル。"::: |
 | モデル | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | 監視ポート | 最大 15 個の RJ45 または 8 個の OPT | 最大 8 個の RJ45 または 6 個の OPT | 4 個の RJ45 | 最大 5 個 |
-| 最大帯域幅 [1](#anchortext) | 3 GB/秒 | 1 GB/秒 | 200 MB/秒 | 100 MB/秒 |
+| 最大帯域幅 [1](#anchortext) | 3 Gb/秒 | 1 Gb/秒 | 200 Mb/秒 | 100 Mb/秒 |
 | 保護される最大デバイス数 | 30,000 | 15,000 | 1,000 | 800 |
 
 ベンダーの詳細については、「[アプライアンスの仕様](#appliance-specifications)」をご覧ください。
@@ -260,7 +260,7 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | Image | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="エンタープライズ デプロイ タイプ。"::: |
 | モデル | Dell PowerEdge R340 XL |
 | 監視ポート | 最大 9 個の RJ45 または 6 個の OPT |
-| 最大帯域幅 [1](#anchortext2)| 1 GB/秒 |
+| 最大帯域幅 [1](#anchortext2)| 1 Gb/秒 |
 | 保護される最大デバイス数 | 10,000 |
 
 <a id="anchortext2">1</a> 帯域幅の容量は、プロトコルの分布によって異なる場合があります。

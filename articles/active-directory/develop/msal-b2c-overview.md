@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5168dfb531c40a3efeef978abf65473ee59d2921
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98063724"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255598"
 ---
 # <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
@@ -215,6 +215,6 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 以下の Azure AD B2C の概念について詳しく学習します。
 
-- [ユーザー フロー](../../active-directory-b2c/tutorial-create-user-flows.md)
-- [カスタム ポリシー](../../active-directory-b2c/custom-policy-get-started.md)
+- [ユーザー フロー](../../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-user-flow)
+- [カスタム ポリシー](../../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 - [UX のカスタマイズ](../../active-directory-b2c/configure-user-input.md)

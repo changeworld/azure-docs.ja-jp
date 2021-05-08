@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 670176d7478ddab3d17e15526df512dfa7e99fd4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98795334"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762085"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -247,11 +247,11 @@ REST API を使用してデータベースを復元するには:
 
 #### <a name="sql-database"></a>SQL Database
 
-Azure CLI を使用してデータベースを復元するには、「[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)」を参照してください。
+Azure CLI を使用してデータベースを復元するには、「[az sql db restore](/cli/azure/sql/db#az_sql_db_restore)」を参照してください。
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
-Azure CLI を使用してマネージド インスタンス データベースを復元するには、「[az sql db restore](/cli/azure/sql/midb#az-sql-midb-restore)」を参照してください。
+Azure CLI を使用してマネージド インスタンス データベースを復元するには、「[az sql db restore](/cli/azure/sql/midb#az_sql_midb_restore)」を参照してください。
 
 ## <a name="summary"></a>まとめ
 
