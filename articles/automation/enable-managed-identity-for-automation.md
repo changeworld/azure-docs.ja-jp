@@ -3,14 +3,14 @@ title: Azure Automation アカウントのマネージド ID を有効にする 
 description: この記事では、Azure Automation アカウントのマネージド ID を設定する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2021
+ms.date: 04/20/2021
 ms.topic: conceptual
-ms.openlocfilehash: 93c55c21bf740f2851cac1926bc673cebcd914b0
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 1f06fb89111236c7465cf5237acc2d187f72fe98
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514803"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896497"
 ---
 # <a name="enable-a-managed-identity-for-your-azure-automation-account-preview"></a>Azure Automation アカウントのマネージド ID を有効にする (プレビュー)
 
@@ -20,7 +20,7 @@ ms.locfileid: "107514803"
 
 - Azure アカウントとサブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 マネージド ID と、その ID を使用して Runbook が管理するターゲット Azure リソースの両方が、同じ Azure サブスクリプションに存在する必要があります。
 
-- 最新バージョンの Azure Automation アカウント モジュール。 現時点でこれは 1.6.0 です。 (このバージョンの詳細については、「[Az.Automation 1.6.0](https://www.powershellgallery.com/packages/Az.Automation/1.6.0)」を参照してください。)
+- Azure アカウント モジュールの最新バージョン。 現在 2.2.8 です。 (このバージョンの詳細は [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/) をご覧ください。)
 
 - Automation Runbook からアクセスする必要がある Azure リソース。 このリソースには、マネージド ID に対して定義されたロールが必要です。これにより、Automation Runbook はリソースへのアクセスを認証できます。 ロールを追加するには、対応する Azure AD テナントのリソースの所有者である必要があります。
 
@@ -87,7 +87,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-|プロパティ (JSON) | 値 | 説明|
+|プロパティ (JSON) | 値 | [説明]|
 |----------|-----------|------------|
 | principalid | \<principal-ID\> | Azure AD テナント内の Automation アカウントを表すマネージド ID に対するサービス プリンシパル オブジェクトのグローバル一意識別子 (GUID)。 この GUID は、"オブジェクト ID" (objectID) として表されることがあります。 |
 | tenantid | \<Azure-AD-tenant-ID\> | Automation アカウントが現在メンバーである Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは Automation アカウントと同じ名前です。 |
@@ -150,6 +150,10 @@ Write-Output $accessToken.access_token
 
 ### <a name="sample-runbook-to-access-a-sql-database-without-using-azure-cmdlets"></a>Azure コマンドレットを使用せずに SQL データベースにアクセスするためのサンプル Runbook
 
+ID を有効にしたことを確認してから、このスクリプトを試します。 「[システム割り当て ID を有効にする](#enable-system-assigned-identity)」を参照してください。
+
+Azure SQL データベースへのアクセス権のプロビジョニングの詳細は、[Azure AD 管理者のプロビジョニング (SQL Database)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-database) に関するセクションを参照してください。
+
 ```powershell
 $queryParameter = "?resource=https://database.windows.net/" 
 $url = $env:IDENTITY_ENDPOINT + $queryParameter
@@ -179,6 +183,10 @@ $conn.Close()
 
 ### <a name="sample-runbook-to-access-a-key-vault-using-azure-cmdlets"></a>Azure コマンドレットを使用してキー コンテナーにアクセスするためのサンプル Runbook
 
+ID を有効にしたことを確認してから、このスクリプトを試します。 「[システム割り当て ID を有効にする](#enable-system-assigned-identity)」を参照してください。
+
+詳しくは「[Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret)」をご覧ください。
+
 ```powershell
 Write-Output "Connecting to azure via  Connect-AzAccount -Identity" 
 Connect-AzAccount -Identity 
@@ -196,7 +204,9 @@ try {
 ```
 
 ### <a name="sample-python-runbook-to-get-a-token"></a>トークンを取得するためのサンプル Python Runbook
- 
+
+ID を有効にしたことを確認してから、この Runbook を試します。 「[システム割り当て ID を有効にする](#enable-system-assigned-identity)」を参照してください。
+
 ```python
 #!/usr/bin/env python3 
 import os 

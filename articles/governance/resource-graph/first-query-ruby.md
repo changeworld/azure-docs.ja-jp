@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めての Ruby クエリ
 description: このクイックスタートでは、手順に従って、Ruby 用の Resource Graph gem を有効にし、初めてのクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 41769359eaa1f930d34b0a182f35da38a6f5109d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40950a5ca575df67f04830446a547f8d3dd1bd92
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98920039"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324133"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-ruby"></a>クイック スタート:Ruby を使用して初めての Resource Graph クエリを実行する
 

@@ -10,16 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: f9215469b1436ce9dc95c140e6969366d80d1ced
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5214d914c104fdf6df302c7879230bba2b3d2928
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607135"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891844"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 
 以下のセクションでは、最新リリースでの変更点の一覧を示します。
+
+## <a name="speech-devices-sdk-1160"></a>Speech Devices SDK 1.16.0:
+
+- [Github の問題 #22](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues/22) が修正されました。
+- [Speech SDK](./speech-sdk.md) コンポーネントがバージョン 1.16.0 に更新されました。 詳しくは、[リリース ノート](./releasenotes.md)をご覧ください。
 
 ## <a name="speech-devices-sdk-1150"></a>Speech Devices SDK 1.15.0:
 

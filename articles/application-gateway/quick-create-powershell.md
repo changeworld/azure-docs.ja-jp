@@ -8,15 +8,13 @@ ms.author: victorh
 ms.date: 01/19/2021
 ms.topic: quickstart
 ms.service: application-gateway
-ms.custom:
-- mvc
-- mode-api
-ms.openlocfilehash: a4aa16ba4334e5f1e035face9549f4c03ad3a14f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - mvc - mode-api
+ms.openlocfilehash: a50c264829ce08b409b52b321ca9c31b3688aed9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538564"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320621"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure Application Gateway による Web トラフィックの転送
 

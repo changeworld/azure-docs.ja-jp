@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 1de495253dacac5aeab7dcff95f74aeed11782a8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1bdc439bc281338fc3df95f7d82784a5eebf7a4a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750736"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288546"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -440,7 +440,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 
 データのラベル付けで画像インスタンスのセグメント化 (ポリゴン アノテーション) プロジェクトの種類を使用できるようになりました。これにより、ユーザーは画像内のオブジェクトの輪郭の周囲にポリゴンを使って描画したり注釈を付けたりすることができます。 ユーザーは、画像内で対象とする各オブジェクトに対して、クラスとポリゴンを割り当てることができます。
 
-画像インスタンスのセグメント化のラベル付けに関する詳細については、[こちら](how-to-label-images.md)を参照してください。
+画像インスタンスのセグメント化のラベル付けに関する詳細については、[こちら](how-to-label-data.md)を参照してください。
 
 
 

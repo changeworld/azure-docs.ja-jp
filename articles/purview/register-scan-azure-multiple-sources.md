@@ -1,5 +1,5 @@
 ---
-title: Azure の複数のソースをスキャンする方法
+title: Azure Purview で複数のソースをスキャンする
 description: Azure Purview Data Catalog で Azure サブスクリプションまたはリソース グループ全体をスキャンする方法について説明します。
 author: viseshag
 ms.author: viseshag
@@ -7,134 +7,141 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/26/2021
-ms.openlocfilehash: 098f62365971fd634001706ab99fd414a6b25056
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f3503dd986f037310b2b24dec535cc05b9d4c4a4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123566"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127499"
 ---
-# <a name="register-and-scan-azure-multiple-sources"></a>Azure の複数のソースを登録してスキャンする
+# <a name="register-and-scan-multiple-sources-in-azure-purview"></a>Azure Purview で複数のソースを登録してスキャンする
 
-この記事では、Azure の複数のソース (Azure サブスクリプションまたはリソース グループ) を Purview に登録し、それに対してスキャンを設定する方法について説明します。
+この記事では、複数のソース (Azure サブスクリプションまたはリソース グループ) を Azure Purview に登録し、それらに対してスキャンを設定する方法を概説します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Azure の複数のソースでは、Purview でサポートされるほとんどの種類の Azure リソースでメタデータおよびスキーマをキャプチャするためのスキャンがサポートされます。 また、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
+複数のソースをスキャンして、Azure Purview でサポートされるほとんどの種類の Azure リソースでメタデータおよびスキーマを取り込むことができます。 Azure Purview では、システムおよびカスタムの分類規則に基づいてデータが自動的に分類されます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
-- Azure Purview データ ソース管理者である必要があります
-- 以下のセクションの説明に従った認証の設定
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
+- Azure Purview データ ソース管理者であることを確認します。 また、サブスクリプションまたはリソース グループにロールを追加するには、所有者またはユーザー アクセス管理者である必要があります。
+- 以下のセクションの説明に従って認証を設定します。
 
-### <a name="setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループの下にあるリソースを列挙するための認証を設定する
+### <a name="set-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループの下にあるリソースを列挙するための認証を設定する
 
 1. Azure portal でサブスクリプションまたはリソース グループに移動します。  
-1. 左側のナビゲーション メニューで  **[アクセス制御 (IAM)]**   を選択します。 
-1. サブスクリプションまたはリソース グループにロールを追加するには、所有者またはユーザー アクセス管理者である必要があります。 *[+ 追加]* ボタンを選択します。 
-1. **[閲覧者]** ロールを設定し、[入力の選択] ボックスに Azure Purview のアカウント名 (MSI を表すもの) を入力します。 *[保存]* をクリックして、ロールの割り当てを完了します。
+1. 左側のメニューから  **[アクセス制御 (IAM)]**   を選択します。 
+1. **[+追加]** を選択します。 
+1. **[入力の選択]** ボックスで、 **[閲覧者]** ロールを選択し、Azure Purview のアカウント名 (その MSI ファイル名を表すもの) を入力します。 
+1. **[保存]** を選択して、ロールの割り当てを終了します。
 
-### <a name="setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループの下にあるリソースをスキャンするための認証を設定する
+### <a name="set-up-authentication-to-scan-resources-under-a-subscription-or-resource-group"></a>サブスクリプションまたはリソース グループの下にあるリソースをスキャンするための認証を設定する
 
-Azure の複数のソースの認証を設定するには、次の 2 つの方法があります。
+Azure で複数のソースの認証を設定するには、次の 2 つの方法があります。
 
 - マネージド ID
 - サービス プリンシパル
 
-> [!NOTE]
-> 登録してスキャンするサブスクリプションまたはリソース グループ内にある各リソースに対して認証を設定する必要があります。 Azure ストレージ リソースの種類 (Azure BLOB ストレージおよび Azure Data Lake Storage Gen2) については、ストレージ BLOB データ閲覧者として、サブスクリプションまたはリソース グループのレベルで MSI またはサービス プリンシパルを追加できるため簡単に行うことができます。その後、アクセス許可が、そのサブスクリプションまたはリソース グループ内の各ストレージ アカウントに継承されます。 他のすべてのリソースの種類については、各リソースに MSI またはサービス プリンシパルを適用するか、またはデバイスにスクリプトを適用する必要があります。 サブスクリプションまたはリソース グループ内のリソースの種類ごとにアクセス許可を追加する方法を次に示します。
+登録してスキャンするサブスクリプションまたはリソース グループ内にある各リソースに対して、認証を設定する必要があります。 Azure Storage リソースの種類 (Azure Blob Storage と Azure Data Lake Storage Gen2) の場合、ストレージ BLOB データ閲覧者として、サブスクリプションまたはリソース グループ レベルで MSI ファイルまたはサービス プリンシパルを追加できるため、これを簡単に行うことができます。 その後、アクセス許可が、そのサブスクリプションまたはリソース グループ内の各ストレージ アカウントに継承されます。 他のすべてのリソースの種類の場合は、各リソースに MSI ファイルまたはサービス プリンシパルを適用するか、スクリプトを作成してこれを行う必要があります。 
+
+サブスクリプションまたはリソース グループ内のリソースの種類ごとにアクセス許可を追加する方法を学習する場合は、以下のリソースを参照してください。
     
 - [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Database](register-scan-azure-sql-database.md)
-- [Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Azure SQL Managed Instance](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
  
-## <a name="register-an-azure-multiple-source"></a>Azure の複数のソースを登録する
+## <a name="register-multiple-sources"></a>複数のソースを登録する
 
-新しい Azure の複数のソースをデータ カタログに登録するには、次の手順を実行します。
+新しい複数のソースをデータ カタログに登録するには、次の操作を行います。
 
-1. Purview アカウントに移動します。
-1. 左側のナビゲーションで **[ソース]** を選択します。
-1. **[登録]** を選択します
+1. Azure Purview アカウントに移動します。
+1. 左側のメニューで **[ソース]** を選択します。
+1. **[登録]** を選択します。
 1. **[ソースの登録]** で、 **[Azure (multiple)]\(Azure (複数)\)** を選択します。
-1. **[続行]** を選択します。
 
-   :::image type="content" source="media/register-scan-azure-multiple-sources/register-azure-multiple.png" alt-text="Azure の複数のソースを登録する":::
+   :::image type="content" source="media/register-scan-azure-multiple-sources/register-azure-multiple.png" alt-text="複数のソースを登録するための画面上の Azure Multiple のタイルを示すスクリーンショット。":::
+1. **[続行]** をクリックします。
+1. **[Register sources (Azure)]\(ソースの登録 (Azure)\)** 画面で、次の操作を行います。
 
-**[Register sources (Azure multiple)]\(ソースの登録 (Azure 複数)\)** 画面で、次の手順を実行します。
+   1. **[名前]** ボックスに、データ ソースがカタログに一覧表示されるときの名前を入力します。 
+   1. **[管理グループ]** ボックスで、必要に応じて、フィルターを適用する管理グループを選択します。
+   1. **[サブスクリプション]** および **[リソース グループ]** ドロップダウン リスト ボックスで、サブスクリプションまたは特定のリソース グループをそれぞれ選択します。 登録スコープは、選択されたサブスクリプションまたはリソース グループに設定されます。  
 
-1. データ ソースがカタログに表示されるときの **[名前]** を入力します。 
-1. 必要に応じて、フィルターを適用する **管理グループ** を選択します。
-1. ドロップダウンで、**サブスクリプションを選択するか、指定したサブスクリプションの下の特定のリソースを選択** します。 登録スコープは、選択したサブスクリプションまたはリソース グループに設定されます。  
-1. **コレクション** を選択するか、新しいものを作成します (省略可能)
-1. データ ソースの登録を **[完了]** します。
+      :::image type="content" source="media/register-scan-azure-multiple-sources/azure-multiple-source-setup.png" alt-text="サブスクリプションとリソース グループを選択するためのボックスを示すスクリーンショット。":::
+   1. **[コレクションを選択する]** ボックスで、コレクションを選択するか、新しいものを作成します (省略可能)。
+   1. **[完了]** を選択してデータ ソースを登録します。
 
-   :::image type="content" source="media/register-scan-azure-multiple-sources/azure-multiple-source-setup.png" alt-text="Azure の複数のソースを設定する":::
 
-## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
+## <a name="create-and-run-a-scan"></a>スキャンを作成して実行する
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
 1. **[ソース]** セクションに移動します。
-
 1. 登録したデータ ソースを選択します。
+1. **[詳細の表示]**  >  **[+ 新しいスキャン]** の順に選択するか、ソース タイルの **[スキャン]** クイック操作アイコンを使用します。
+1. **[名前]** に、名前を入力します。
+1. **[種類]** で、このソース内でスキャンするリソースの種類を選択します。 次のいずれかのオプションを選択します。
 
-1. [詳細の表示] をクリックし、 **[+ 新しいスキャン]** を選択するか、ソース タイルのスキャン クイック操作アイコンを使用します。
-
-1. "*名前*" を入力し、このソース内でスキャンするすべての種類のリソースを選択します。
-
-    1. *[すべて]* のままにしておくことができます (これには、そのサブスクリプションまたはリソース グループ内に現在存在しない可能性のある将来のリソースの種類が含まれます)。
-    1. スキャンする **リソースの種類を具体的に選択** できます。 このオプションを選択した場合、将来スキャンが明示的に編集されない限り、このサブスクリプションまたはリソース グループ内に将来作成される可能性のあるリソースの種類はスキャンの対象に含まれません。
+    - **[すべて]** のままにしておきます。 この選択には、そのサブスクリプションまたはリソース グループ内に現在存在しない可能性のある将来のリソースの種類が含まれます。
+    - ボックスを使用して、スキャンするリソースの種類を具体的に選択します。 このオプションを選択した場合、将来スキャンが明示的に編集されない限り、このサブスクリプションまたはリソース グループ内に将来作成される可能性のあるリソースの種類はスキャンの対象に含まれません。
     
-    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-scan.png" alt-text="Azure の複数のソースのスキャン":::
+    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-scan.png" alt-text="複数のソースをスキャンするためのオプションを示すスクリーンショット。":::
 
-1. データ ソース内のリソースに接続する資格情報を選択します。 
-    1. MSI として **親レベルの資格情報** を選択するか、特定のサービス プリンシパルの種類の資格情報を選択できます。これは、サブスクリプションまたはリソース グループの下にあるすべてのリソースの種類に対して使用することを選択できます。
-    1. また、具体的に **リソースの種類を選択し、そのリソースの種類の別の資格情報を適用** することもできます。
-    1. 各資格情報は、特定の種類の下にあるすべてのリソースの認証方法と見なされます。
-    1. 上記のこの[セクション](#setting-up-authentication-to-scan-resources-under-a-subscription-or-resource-group)で説明したように、リソースを正常にスキャンするために、選択した認証をリソースに設定する必要があります。
-1. 各種類では、すべてのリソースをスキャンするか、またはそのサブセットを名前でスキャンするかを選択できます。
-    1. オプションを **[すべて]** のままにすると、その種類の将来のリソースも、将来のスキャンの実行でスキャンされます。
-    1. 特定のストレージ アカウントまたは SQL データベースを選択した場合、将来スキャンが明示的に編集されない限り、このサブスクリプションまたはリソース グループ内に将来作成される、その種類のリソースはスキャンの対象に含まれません。
+1. データ ソース内のリソースに接続するための資格情報を選択します。 
+    - 親レベルで MSI ファイルとして資格情報を選択することも、特定のサービス プリンシパルの種類の資格情報を選択することもできます。 その後、サブスクリプションまたはリソース グループの下にあるすべてのリソースの種類に対して、その資格情報を使用できます。
+    - 具体的にリソースの種類を選択し、そのリソースの種類の別の資格情報を適用することができます。
+    
+    各資格情報は、特定の種類の下にあるすべてのリソースの認証方法と見なされます。 [この記事で前述した](#set-up-authentication-to-scan-resources-under-a-subscription-or-resource-group)とおり、リソースを正常にスキャンするために、選択された資格情報をリソースに設定する必要があります。
+1. 各種類では、すべてのリソースをスキャンするか、それらのサブセットを名前でスキャンするかを選択できます。
+    - オプションを **[すべて]** のままにすると、その種類の将来のリソースも、将来のスキャンの実行でスキャンされます。
+    - 特定のストレージ アカウントまたは SQL データベースを選択した場合、将来スキャンが明示的に編集されない限り、このサブスクリプションまたはリソース グループ内に将来作成されるその種類のリソースはスキャンの対象に含まれません。
  
-1.  **[続行]** をクリックして続行します。 サブスクリプションまたはリソース グループの閲覧者として Purview MSI を適用したかどうかを確認するために、Microsoft によってアクセスがテストされます。 エラー メッセージがスローされた場合は、[こちら](#setting-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)の手順に従ってください。
+1. **[続行]** をクリックして先に進みます。 サブスクリプションまたはリソース グループの閲覧者として Azure Purview MSI ファイルを適用したかどうかを確認するために、Azure Purview によってアクセスがテストされます。 エラー メッセージが表示された場合は、[これらの手順](#set-up-authentication-for-enumerating-resources-under-a-subscription-or-resource-group)に従って解決してください。
 
-1.  前の手順で選択したリソースの種類ごとに **スキャン ルール セット** を選択します。 また、スキャン ルール セットをインラインで作成することもできます。
-  :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="Azure の複数スキャンのルール セットの選択":::
+1. 前の手順で選択したリソースの種類ごとにスキャン ルール セットを選択します。 また、スキャン ルール セットをインラインで作成することもできます。
+  
+   :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-rule-set.png" alt-text="リソースの種類ごとのスキャン ルールを示すスクリーンショット。":::
 
-1. スキャン トリガーを選択します。 **[weekly/monthly]\(毎週/毎月\)** または **[1 回]** 、実行するようにスケジュールできます。
+1. スキャン トリガーを選択します。 毎週、毎月または 1 回実行するようにスケジュールできます。
 
-1. スキャンをレビューし、[保存] を選択して設定を完了します。   
+1. スキャンをレビューし、 **[保存]** を選択して設定を完了します。 
 
-## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
+## <a name="view-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を表示する
 
-1. [ソース] セクションの下にあるタイルで **[詳細の表示]** をクリックして、ソースの詳細を表示します。 
+1. **[ソース]** セクションの下にあるタイルで **[詳細の表示]** を選択して、ソースの詳細を表示します。 
 
-      :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-detail.png" alt-text="Azure の複数のソースの詳細"::: 
+    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-source-detail.png" alt-text="ソースの詳細を示すスクリーンショット。"::: 
 
-1. **[スキャンの詳細]** に移動して、スキャン実行の詳細を表示します。
-    1. "*ステータス バー*" は、子リソースの実行中の状態に関する概要です。 これは、サブスクリプションまたはリソース グループ レベルで表示されます。
-    1. 緑色は成功を意味し、赤色は失敗を意味します。 グレーは、スキャンがまだ進行中であることを意味します。
-    1. 各スキャンをクリックすると、より詳細な情報を表示できます。
+1. **[スキャンの詳細]** ページに移動して、スキャン実行の詳細を表示します。
+   
+    "*ステータス バー*" は、子リソースの実行中の状態の概要を示すものです。 これは、サブスクリプション レベルまたはリソース グループ レベルで表示されます。 色には次の意味があります。
+    
+    - 緑: スキャンに成功しました。
+    - 赤: スキャンに失敗しました。 
+    - グレー: スキャンはまだ進行中です。
+   
+    各スキャンを選択して、さらに詳細を表示することができます。
 
-      :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-full-details.png" alt-text="Azure 複数スキャンの詳細":::
+    :::image type="content" source="media/register-scan-azure-multiple-sources/multiple-scan-full-details.png" alt-text="スキャンの詳細を示すスクリーンショット。":::
 
-1. [ソースの詳細] ページの下部に、最近失敗したスキャン実行の概要が表示されます。 また、クリックして、これらの実行に関するより詳細な情報を表示することもできます。
+1. ソースの詳細の下部に最近失敗したスキャン実行の概要を表示します。 これらの実行に関するより詳細な情報を表示することもできます。
 
-## <a name="manage-your-scans---edit-delete-or-cancel"></a>スキャンを管理する - 編集、削除、またはキャンセル
-スキャンを管理または削除するには、次の操作を行います。
+## <a name="manage-your-scans-edit-delete-or-cancel"></a>スキャンを管理する: 編集、削除、またはキャンセル
+スキャンを管理するには、次の操作を行います。
 
-- 管理センターに移動します。 [Sources and scanning]\(ソースとスキャン\) セクションで [データ ソース] を選択し、目的のデータ ソースを選択します。
+1. 管理センターに移動します。
+1. **[Sources and scanning]\(ソースとスキャン\)** セクションで **[データ ソース]** を選択し、目的のデータ ソースを選びます。
+1. 管理するスキャンを選択します。 次のことを行います。 
 
-- 管理するスキャンを選択します。 スキャンを編集するには、[編集] を選択します。
+   - スキャンを編集するには、 **[編集]** を選択します。
+   - **[削除]** を選択することで、スキャンを削除できます。
+   - スキャンが実行中の場合は、 **[キャンセル]** を選択して取り消すことができます。
 
-- スキャンを削除するには、[削除] を選択します。
-- 実行中のスキャンもキャンセルできます。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Purview データ カタログを参照する](how-to-browse-catalog.md)
 - [Azure Purview データ カタログを検索する](how-to-search-catalog.md)    

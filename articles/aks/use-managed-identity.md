@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でマネージド ID を使用す�
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c87b6dbde14c8b736301846faa8471dd518a98a4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777673"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289770"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -35,8 +35,8 @@ AKS では、組み込みのサービスとアドオンに対して複数のマ�
 
 | ID                       | 名前    | 使用事例 | 既定のアクセス許可 | 独自の ID を使用する
 |----------------------------|-----------|----------|
-| コントロール プレーン | 非表示 | イングレス ロード バランサーと AKS マネージド パブリック IP、Cluster Autoscaler 操作など、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | サポート対象
-| kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | 現在、サポートされていません
+| コントロール プレーン | 非表示 | イングレス ロード バランサーと AKS マネージド パブリック IP、Cluster Autoscaler 操作など、クラスター リソースを管理する目的で AKS コントロール プレーン コンポーネントによって使用されます | ノード リソース グループの共同作成者ロール | サポートされています
+| kubelet | AKS クラスター名 - agentpool | Azure Container Registry (ACR) を使用した認証 | NA (kubernetes v1.15+ 用) | サポート (プレビュー)
 | アドオン | AzureNPM | ID は必要ありません | NA | いいえ
 | アドオン | AzureCNI ネットワーク監視 | ID は必要ありません | NA | いいえ
 | アドオン | azure-policy (ゲートキーパー) | ID は必要ありません | NA | いいえ
@@ -209,10 +209,144 @@ az aks create \
  },
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージド ID が有効になっているクラスターを作成するには、[Azure Resource Manager (ARM) テンプレート][aks-arm-template]を使用します。
+## <a name="bring-your-own-kubelet-mi-preview"></a>ユーザー自身の kubelet MI を使う (プレビュー)
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+kubelet ID を使用すると、クラスターの作成前に、既存の ID にアクセス権を付与できます。 この機能により、事前に作成されたマネージド ID を使用した ACR への接続などのシナリオが可能になります。
+
+### <a name="prerequisites"></a>前提条件
+
+- Azure CLI バージョン 2.21.1 以降がインストールされている必要があります。
+- aks-preview バージョン 0.5.10 以降がインストールされている必要があります。
+
+### <a name="limitations"></a>制限事項
+
+- ユーザー割り当てのマネージド クラスターでのみ機能します。
+- Azure Government は現在サポートされていません。
+- Azure China 21Vianet は現在サポートされていません。
+
+まず、Kubelet ID の機能フラグを登録します。
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n CustomKubeletIdentityPreview
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/CustomKubeletIdentityPreview')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-or-obtain-managed-identities"></a>マネージド ID を作成または取得する
+
+コントロール プレーンのマネージド ID をまだ持っていない場合は、作成してください。 次の例では、 [az identity create][az-identity-create] コマンドを使用します。
+
+```azurecli-interactive
+az identity create --name myIdentity --resource-group myResourceGroup
+```
+
+結果は次のようになります。
+
+```output
+{                                  
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity", 
+  "location": "westus2",
+  "name": "myIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+kubelet マネージド ID をまだ持っていない場合は、作成してください。 次の例では、 [az identity create][az-identity-create] コマンドを使用します。
+
+```azurecli-interactive
+az identity create --name myKubeletIdentity --resource-group myResourceGroup
+```
+
+結果は次のようになります。
+
+```output
+{
+  "clientId": "<client-id>",
+  "clientSecretUrl": "<clientSecretUrl>",
+  "id": "/subscriptions/<subscriptionid>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity", 
+  "location": "westus2",
+  "name": "myKubeletIdentity",
+  "principalId": "<principalId>",
+  "resourceGroup": "myResourceGroup",                       
+  "tags": {},
+  "tenantId": "<tenant-id>",
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities"
+}
+```
+
+既存のマネージド ID がサブスクリプションの一部である場合は、[az identity list][az-identity-list] コマンドを使用してクエリを実行できます。
+
+```azurecli-interactive
+az identity list --query "[].{Name:name, Id:id, Location:location}" -o table
+```
+
+### <a name="create-a-cluster-using-kubelet-identity"></a>Kubelet ID を使用してクラスターを作成する
+
+これで、次のコマンドを使用して、既存の ID でクラスターを作成できるようになりました。 `assign-identity` を使用して、コントロールプレーン ID を提供し、`assign-kublet-identity` を使用して kubelet マネージ ID を提供し ます。
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myManagedCluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 \
+    --enable-managed-identity \
+    --assign-identity <identity-id> \
+    --assign-kubelet-identity <kubelet-identity-id> \
+```
+
+独自の kubelet マネージ ID を使用してクラスターを正常に作成すると、次の出力が含まれます。
+
+```output
+  "identity": {
+    "principalId": null,
+    "tenantId": null,
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity": {
+        "clientId": "<client-id>",
+        "principalId": "<principal-id>"
+      }
+    }
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "<client-id>",
+      "objectId": "<object-id>",
+      "resourceId": "/subscriptions/<subscriptionid>/resourcegroups/resourcegroups/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myKubeletIdentity"
+    }
+  },
+```
+
+## <a name="next-steps"></a>次の手順
+* マネージド ID が有効になっているクラスターを作成するには、[Azure Resource Manager テンプレート][aks-arm-template]を使用します。
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
+
+<!-- LINKS - internal -->
 [az-identity-create]: /cli/azure/identity#az_identity_create
 [az-identity-list]: /cli/azure/identity#az_identity_list
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

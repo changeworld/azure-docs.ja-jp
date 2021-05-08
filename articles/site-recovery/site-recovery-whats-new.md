@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 01/26/2021
-ms.openlocfilehash: 423fbc563878d0cc2a63a5366d2226281a204e87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a960a62a8262128d775b0fe386a72e5ec613b7f1
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454600"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897633"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,6 +22,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
+[ロールアップ 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  | 9.42.5941.1 | 5.1.6692.0 | 9.42.5941.1 | 5.1.6692.0  | 2.0.9208.0
 [ロールアップ 54](https://support.microsoft.com/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)  | 9.41.5888.1 | 5.1.6620.0 | 9.41.5888.1 | 5.1.6620.0  | 2.0.9202.0
 [ロールアップ 53](https://support.microsoft.com/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | 9.40.5850.1 | 5.1.6537.0 | 9.40.5850.1 | 5.1.6537.0  | 2.0.9202.0
 [ロールアップ 52](https://support.microsoft.com/help/4597409/)  | 9.39.5796.1 | 5.1.6458.0 | 9.39.5796.1 | 5.1.6458.0  | 2.0.9196.0
@@ -31,6 +32,20 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+
+## <a name="updates-april-2021"></a>更新プログラム (2021 年 4 月)
+
+### <a name="update-rollup-55"></a>更新プログラム ロールアップ 55
+
+[更新プログラム ロールアップ 55](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照) 
+**Azure VM のディザスター リカバリー** | Azure VM の大陸間ディザスター リカバリーのサポートが追加されました。<br/><br/> VMSS Flex の保護のための Rest API のサポート。<br/><br/> Oracle Linux 8.2 および 8.3 を実行する VM でサポートされるようになりました。
+**VMware VM/物理の Azure へのディザスター リカバリー** | マスター ターゲット サーバーの設定中に Ubuntu-20.04 を使用するためのサポートが追加されました。<br/><br/> Oracle Linux 8.2 および 8.3 を実行する VM でサポートされるようになりました。
+
 
 ## <a name="updates-february-2021"></a>更新プログラム (2021 年 2 月)
 
@@ -72,7 +87,7 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 **プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
 **問題の修正/改善点** | Mobility Service に対する新しい Linux のサポートを含む、ロールアップで詳細に説明されているいくつかの修正と改善。
 **Azure VM のディザスター リカバリー** | RHEL 8.3 および Oracle Linux 7.9 が実行される VM でサポートされるようになりました
-**VMware VM/物理の Azure へのディザスター リカバリー** | RHEL 8.3 および Oracle Linux 7.9/8.3 が実行される VM でサポートされるようになりました。
+**VMware VM/物理の Azure へのディザスター リカバリー** | RHEL 8.3、Oracle Linux 7.9 を実行する VM でサポートされるようになりました。
 
 ## <a name="updates-october-2020"></a>更新プログラム (2020 年 10 月)
 

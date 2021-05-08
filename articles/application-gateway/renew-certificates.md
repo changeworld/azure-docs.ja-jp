@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ea5512f3b454edc2edd66c546629cc5f0b8f465c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98622182"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320891"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway の証明書を更新する
 

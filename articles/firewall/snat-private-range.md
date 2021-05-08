@@ -7,16 +7,16 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: victorh
-ms.openlocfilehash: 91d4d631376c03b668128936f3840ce1119f9b6f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 01707a99b1ff5d077daf3c095e1daf78ccddfeac
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482749"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898191"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall の SNAT プライベート IP アドレス範囲
 
-Azure Firewall では、パブリック IP アドレスへのすべてのアウトバウンド トラフィックに対して自動 SNAT が提供されます。 既定では、宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、Azure Firewall では、ネットワーク規則を使用した SNAT は行われません。 アプリケーション ルールは、宛先 IP アドレスに関係なく、常に[透過プロキシ](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)を使用して適用されます。
+Azure Firewall では、パブリック IP アドレスへのすべてのアウトバウンド トラフィックに対して自動 SNAT が提供されます。 既定では、宛先の IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP アドレスの範囲または [IANA RFC 6598](https://tools.ietf.org/html/rfc6598) の共有アドレス スペースに含まれているときは、Azure Firewall でネットワーク ルールによる SNAT を行いません。 アプリケーション ルールは、宛先 IP アドレスに関係なく、常に[透過プロキシ](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy)を使用して適用されます。
 
 このロジックは、トラフィックをインターネットに直接ルーティングする場合に適しています。 ただし、[強制トンネリング](forced-tunneling.md)を有効にすると、SNAT によってインターネットへのトラフィックに AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスが適用され、対象のオンプレミスのファイアウォールからソースが隠されます。
 
