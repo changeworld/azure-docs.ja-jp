@@ -4,14 +4,14 @@ description: Azure Data Factory を使用して、Google Cloud Storage からサ
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: 4d8ddb89055d318aaea9ada7f38f908223ff5a57
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388449"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588991"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
 
@@ -156,7 +156,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                                          |
 | enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
 | partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections | ストレージへのコンカレント接続数。 データ ストアへのコンカレント接続を制限する場合にのみ指定します。 | いいえ                                                          |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ                                                          |
 
 **例:**
 

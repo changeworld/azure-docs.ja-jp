@@ -5,13 +5,13 @@ ms.service: logic-apps
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.custom: subject-cost-optimization
-ms.date: 01/29/2021
-ms.openlocfilehash: 44351497ed58c8d49404c094f6800b52186edabb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ec2e1098df4c21704ee7c17852b893630cd3fd27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709633"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761819"
 ---
 # <a name="plan-and-manage-costs-for-azure-logic-apps"></a>Azure Logic Apps のコストを計画および管理する
 
@@ -210,7 +210,7 @@ Otherwise, if no other cost-saving recommendations or best practices exist to re
 
 ロジック アプリと関連リソースのコストを削減できるように、こちらのオプションを試してください。
 
-* 可能であれば、[組み込みのトリガーとアクション](../connectors/apis-list.md#built-in)を使用します。これにより、[マネージド コネクタのトリガーとアクション](../connectors/apis-list.md#managed-connectors)よりも実行ごとの実行コストが少なくなります。
+* 可能であれば、[組み込みのトリガーとアクション](../connectors/built-in.md)を使用します。これにより、[マネージド コネクタのトリガーとアクション](../connectors/managed.md)よりも実行ごとの実行コストが少なくなります。
 
   たとえば、[HTTP アクション](../connectors/connectors-native-http.md)を使用することによって、または [Azure Functions サービス](../azure-functions/functions-overview.md)を使用し、さらに[組み込みの Azure Functions アクション](../logic-apps/logic-apps-azure-functions.md)を使用して作成した関数を呼び出すことによって他のリソースにアクセスする場合、コストを削減できる可能性があります。 ただし、Azure Functions を使用することでもコストが発生するため、オプションを比較する必要があります。
 

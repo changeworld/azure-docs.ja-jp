@@ -3,12 +3,12 @@ title: DPM を使用した SharePoint ファームの Azure へのバックア�
 description: この記事では、Azure への SharePoint ファームの DPM/Azure Backup サーバー保護の概要について説明します
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3524107b545c151fcf931b89c629a61d83f47ace
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91254433"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515160"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM を使用した SharePoint ファームの Azure へのバックアップ
 
@@ -75,5 +75,5 @@ DPM を使用してディスクから SharePoint 項目を復元する方法に�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Backup Server と DPM - FAQ](backup-azure-dpm-azure-server-faq.md)
+* [Azure Backup Server と DPM - FAQ](backup-azure-dpm-azure-server-faq.yml)
 * [System Center Data Protection Manager のトラブルシューティング](backup-azure-scdpm-troubleshooting.md)

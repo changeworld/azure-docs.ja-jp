@@ -5,23 +5,20 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 94edf35cc16d4967449af15797f6ecccba60be4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2d3c946bc2f98b0c06fe33dcaaa77a5399f6d56b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181093"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782731"
 ---
-# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (AKS) クラスターの起動と開始 (プレビュー)
+# <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターの停止と起動
 
 AKS ワークロードは、継続的に実行する必要がない場合があります。たとえば、営業時間中にのみ使用される開発クラスターなどです。 そのため、Azure Kubernetes Service (AKS) クラスターがアイドル状態になり、システム コンポーネントしか実行されない場合があります。 [すべての `User` ノード プールを 0 にスケーリングする](scale-cluster.md#scale-user-node-pools-to-0)ことで、クラスターの占有領域を削減できますが、クラスターの実行中にシステム コンポーネントを実行するには、[`System` プール](use-system-pools.md)が必要です。 これらの期間中にコストをさらに最適化するために、クラスターを完全にオフにする (停止する) ことができます。 この操作により、コントロール プレーンとエージェント ノードが完全に停止し、再起動時に保存されているすべてのオブジェクトとクラスターの状態を保持しながら、すべてのコンピューティング コストを節約することができます。 また、週末の後に中断したところからすぐに再開することや、バッチ ジョブの実行中にのみクラスターを実行することができるようになります。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
-
 
 ### <a name="limitations"></a>制限事項
 
@@ -29,42 +26,7 @@ AKS ワークロードは、継続的に実行する必要がない場合があ�
 
 - この機能は、Virtual Machine Scale Sets でサポートされているクラスターでのみサポートされています。
 - 停止した AKS クラスターのクラスターの状態は、最大 12 か月間保持されます。 クラスターの停止期間が 12 か月間を超えた場合、クラスターの状態を回復することはできません。 詳細については、[AKS のポリシーのサポート](support-policies.md)に関するページを参照してください。
-- プレビュー期間中は、クラスターを停止する前に、クラスター オートスケーラー (CA) を停止する必要があります。
 - 停止された AKS クラスターの起動または削除のみを行うことができます。 スケールやアップグレードなどの操作を実行するには、まずクラスターを起動します。
-
-### <a name="install-the-aks-preview-azure-cli"></a>`aks-preview` Azure CLI をインストールする 
-
-*aks-preview* Azure CLI 拡張機能バージョン 0.4.64 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 または、[az extension update][az-extension-update] コマンドを使用すると、使用可能な更新プログラムをインストールできます。
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
-
-### <a name="register-the-startstoppreview-preview-feature"></a>`StartStopPreview` プレビュー機能を登録する
-
-クラスターの起動または停止機能を使用するには、サブスクリプションで `StartStopPreview` 機能フラグを有効にする必要があります。
-
-`StartStopPreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 ## <a name="stop-an-aks-cluster"></a>AKS クラスターを停止する
 
@@ -95,7 +57,6 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 > [!IMPORTANT]
 > [ポッド中断バジェット](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)を使用している場合、ドレイン プロセスの完了に時間がかかるため、停止操作に時間がかかる可能性があります。
 
-
 ## <a name="start-an-aks-cluster"></a>AKS クラスターを起動する
 
 `az aks start` コマンドを使用して、停止した AKS クラスターのノードとコントロール プレーンを起動できます。 クラスターは、以前のコントロール プレーンの状態とエージェント ノード数で再起動されます。  
@@ -123,7 +84,6 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 
 `provisioningState` に `Starting` が表示されている場合は、クラスターがまだ完全に起動していないことを意味します。
 
-
 ## <a name="next-steps"></a>次の手順
 
 - `User` プールを 0 にスケーリングする方法については、[`User` プールの 0 へのスケーリング](scale-cluster.md#scale-user-node-pools-to-0)に関する記事を参照してください。
@@ -136,9 +96,9 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [az-aks-show]: /cli/azure/aks#az_aks_show

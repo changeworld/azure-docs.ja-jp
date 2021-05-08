@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/02/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996561"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104720340"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync サービス アカウントのパスワードの変更
 ADSync サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、ADSync サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
+
+>[!IMPORTANT]
+> 2017 年 3 月以前のバージョンのビルドで Connect を使用した場合、Windows は、セキュリティ上の理由から暗号化キーを破棄するため、サービス アカウントのパスワードをリセットする必要はありません。 アカウントを他のアカウントに変更するには、Azure AD Connect を再インストールする必要があります。 2017 年 4 月以降のビルドにアップグレードする場合、サービス アカウントのパスワードを変更することはできますが、使用されるアカウントを変更することはできません。 
 
 Azure AD Connect は同期サービスの一部として、暗号化キーを使用して AD DS コネクタ アカウントと ADSync サービス アカウントのパスワードを保存します。  これらのアカウントは、データベースへの保存前に暗号化されます。 
 

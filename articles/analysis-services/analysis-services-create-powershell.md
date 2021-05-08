@@ -2,18 +2,18 @@
 title: クイックスタート - PowerShell を使用して Azure Analysis Services を作成する - Azure Analysis Services | Microsoft Docs
 description: このクイックスタートでは、PowerShell を使って Azure Analysis Services サーバーを作成する方法について説明します。
 author: minewiskan
-ms.service: azure-analysis-services
-ms.topic: quickstart
-ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: 737649538aaf82352e27aec6220b13ba355a7a82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 08/31/2020
+ms.topic: quickstart
+ms.service: azure-analysis-services
+ms.custom: devx-track-azurepowershell - references_regions - devx-track-azurepowershell - mode-api
+ms.openlocfilehash: f1902a7192fc2153725e2b1d1e76f23cbd1426f3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89229346"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769359"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーを作成する - PowerShell
 

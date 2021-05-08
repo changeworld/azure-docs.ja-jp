@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 04/05/2021
 ms.author: zhchia
-ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96179257"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450091"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>チュートリアル:Fuze を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -144,6 +144,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="connector-limitations"></a>コネクタの制限事項
 
 * Fuze では、**エンタイトルメント** と呼ばれるカスタム SCIM 属性がサポートされています。 これらの属性は作成することはできますが、更新することはできません。 
+* Futex SCIM API では、userName 属性のフィルター処理をサポートしていません。 このため、userName 属性を持たないが、Azure AD に userPrincipalName と一致する電子メールが存在する既存のユーザーを同期しようとすると、ログにエラーが表示されることがあります。 
 
 ## <a name="change-log"></a>ログの変更
 

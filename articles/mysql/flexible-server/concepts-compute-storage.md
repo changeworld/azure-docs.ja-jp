@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 9b5a2c5d004e63c602a30f7808586e97a0e436e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7165cdc072ffaa5b0d862e1fe17f94e35c35aeec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034539"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -46,28 +46,28 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 
 使用可能なサーバーの種類の詳細な仕様は次のとおりです。
 
-| コンピューティング サイズ         | 仮想コア | メモリ サイズ (GiB) | 
-|----------------------|--------|-------------------|
+| コンピューティング サイズ         | 仮想コア | メモリ サイズ (GiB) | サポートされる最大 IOPS | サポートされる最大 I/O 帯域幅 (MBps)|
+|----------------------|--------|-------------------| ------------------ |-----------------------------------|
 | **バースト可能**        |        |                   | 
-| Standard_B1s         | 1      | 1                 |  
-| Standard_B1ms        | 1      | 2                 | 
-| Standard_B2s         | 2      | 4                 |  
-| **汎用**  |        |                   | 
-| Standard_D2ds_v4     | 2      | 8                 |  
-| Standard_D4ds_v4     | 4      | 16                | 
-| Standard_D8ds_v4     | 8      | 32                | 
-| Standard_D16ds_v4    | 16     | 64                | 
-| Standard_D32ds_v4    | 32     | 128               |  
-| Standard_D48ds_v4    | 48     | 192               |  
-| Standard_D64ds_v4    | 64     | 256               | 
-| **メモリ最適化** |        |                   |
-| Standard_E2ds_v4     | 2      | 16                |
-| Standard_E4ds_v4     | 4      | 32                |
-| Standard_E8ds_v4     | 8      | 64                |
-| Standard_E16ds_v4    | 16     | 128               |
-| Standard_E32ds_v4    | 32     | 256               |
-| Standard_E48ds_v4    | 48     | 384               |
-| Standard_E64ds_v4    | 64     | 504               |
+| Standard_B1s         | 1      | 1                 | 320                | 10                                | 
+| Standard_B1ms        | 1      | 2                 | 640                | 10                                |
+| Standard_B2s         | 2      | 4                 | 1280               | 15                                |
+| **汎用**  |        |                   |                    |                                   |
+| Standard_D2ds_v4     | 2      | 8                 | 3200               | 48                                |
+| Standard_D4ds_v4     | 4      | 16                | 6400               | 96                                |
+| Standard_D8ds_v4     | 8      | 32                | 12800              | 192                               |
+| Standard_D16ds_v4    | 16     | 64                | 20000              | 384                               |
+| Standard_D32ds_v4    | 32     | 128               | 20000              | 768                               |
+| Standard_D48ds_v4    | 48     | 192               | 20000              | 1152                              |
+| Standard_D64ds_v4    | 64     | 256               | 20000              | 1200                              |
+| **メモリ最適化** |        |                   |                    |                                   |
+| Standard_E2ds_v4     | 2      | 16                | 3200               | 48                                |
+| Standard_E4ds_v4     | 4      | 32                | 6400               | 96                                |
+| Standard_E8ds_v4     | 8      | 64                | 12800              | 192                               |
+| Standard_E16ds_v4    | 16     | 128               | 20000              | 384                               |
+| Standard_E32ds_v4    | 32     | 256               | 20000              | 768                               |
+| Standard_E48ds_v4    | 48     | 384               | 20000              | 1152                              |
+| Standard_E64ds_v4    | 64     | 504               | 20000              | 1200                              |
 
 使用可能なコンピューティング シリーズの詳細については、 [バースト可能 (B シリーズ)](../../virtual-machines/sizes-b-series-burstable.md)、[汎用 (Ddsv4 シリーズ)](../../virtual-machines/ddv4-ddsv4-series.md)、[メモリ最適化 (Edsv4 シリーズ)](../../virtual-machines/edv4-edsv4-series.md) に関する Azure VM ドキュメントを参照して、ください。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: c0eea74890665297a0d450c8afd0a5d60dd1ae00
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b08e8ebbba3ba91c1c1aa0f135c4cba37ba038b1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551812"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769915"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 
@@ -183,7 +183,7 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 前の手順では、仮想ネットワークとサブネットを作成し、NIC を接続した後、VM を作成しました。 パブリック IP アドレスと SSH トラフィックを許可するネットワーク セキュリティ グループの規則は作成していません。 複数の NIC 用にゲスト OS を構成するには、リモート接続を許可し、VM 上でローカルにコマンドを実行する必要があります。
 
-SSH トラフィックを許可するには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用してネットワーク セキュリティ グループの規則を作成します。
+SSH トラフィックを許可するには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用してネットワーク セキュリティ グループの規則を作成します。
 
 ```azurecli
 az network nsg rule create \
@@ -194,7 +194,7 @@ az network nsg rule create \
     --destination-port-ranges 22
 ```
 
-[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用してパブリック IP アドレスを作成し、[az network nic ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) を使用してこれを最初の NIC に割り当てます。
+[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) を使用してパブリック IP アドレスを作成し、[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) を使用してこれを最初の NIC に割り当てます。
 
 ```azurecli
 az network public-ip create --resource-group myResourceGroup --name myPublicIP
@@ -206,7 +206,7 @@ az network nic ip-config update \
     --public-ip myPublicIP
 ```
 
-VM のパブリック IP アドレスを表示するには、次のように [az vm show](/cli/azure/vm#az-vm-show) を使用します。
+VM のパブリック IP アドレスを表示するには、次のように [az vm show](/cli/azure/vm#az_vm_show) を使用します。
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv

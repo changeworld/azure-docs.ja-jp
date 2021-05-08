@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure PowerShell - Azure Database for PostgreSQL - Single Server
 description: Azure PowerShell を使用して Azure Database for PostgreSQL - Single Server を作成するためのクイックスタート ガイド。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91351c0b2982c6ee0e96cc1433c0fadf67e3bcc0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 79a070dbd49ed6ee00dd790c8157057aebde30df
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96010658"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606739"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 

@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 03/26/2021
 ms.author: kgremban
-ms.openlocfilehash: 6a64bb2801830440dc49e72786c9c00a6e4796b3
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: a98eed61904b580988fe34302999f3ec6a24ac9e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201615"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640925"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Azure IoT Edge for Linux をインストールまたはアンインストールする
 
@@ -398,6 +398,8 @@ IoT Edge システム サービスが実行されていることを確認しま�
    sudo iotedge system status
    ```
 
+正常な状態の応答は `Ok` です。
+
 ::: moniker-end
 
 サービスのトラブルシューティングが必要な場合は、サービス ログを取得します。
@@ -491,7 +493,7 @@ curl コマンドを使用すると、IoT Edge GitHub リポジトリから直�
    2. コピーしたリンクを次のコマンドで使用して、そのバージョンの ID サービスをインストールします。
 
       ```bash
-      curl -L <identity service link> -o aziot-identity-service.deb && sudo dpkg -i ./aziot-identity-service.deb
+      curl -L <identity service link> -o aziot-identity-service.deb && sudo apt-get install ./aziot-identity-service.deb
       ```
 
    3. IoT Edge デバイスのアーキテクチャに対応する **aziot-edge** ファイルを見つけます。 ファイル リンクを右クリックし、リンクのアドレスをコピーします。
@@ -499,7 +501,7 @@ curl コマンドを使用すると、IoT Edge GitHub リポジトリから直�
    4. コピーしたリンクを次のコマンドで使用して、そのバージョンの IoT Edge をインストールします。
 
       ```bash
-      curl -L <iotedge link> -o aziot-edge.deb && sudo dpkg -i ./aziot-edge.deb
+      curl -L <iotedge link> -o aziot-edge.deb && sudo apt-get install ./aziot-edge.deb
       ```
 
 <!-- end 1.2 -->

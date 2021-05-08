@@ -3,10 +3,10 @@ ms.service: container-service
 ms.topic: include
 ms.date: 08/07/2020
 ms.openlocfilehash: 8590c225aa4f637b10847d5fd53da40b1ec2f9c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "90085665"
 ---
 > [!IMPORTANT]

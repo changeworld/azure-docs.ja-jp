@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 40ec86030e136a06fe240e473a469681dcfa7c4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 81bbf0b49919db68407a85b9ea2f731c5f8e1d91
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557763"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769879"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する
 
@@ -61,7 +61,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ギャラリー名で許可されている文字は、英字 (大文字または小文字)、数字、ドット、およびピリオドです。 ギャラリー名にダッシュを含めることはできません。   ギャラリー名は、お使いのサブスクリプション内で一意にする必要があります。 
 
-[az sig create](/cli/azure/sig#az-sig-create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
+[az sig create](/cli/azure/sig#az_sig_create) を使用してイメージ ギャラリーを作成します。 次の例では、*myGalleryRG* という名前のリソース グループを "*米国東部*" に作成し、*myGallery* という名前のギャラリーを作成します。
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
@@ -70,13 +70,13 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="get-information-about-the-vm"></a>VM に関する情報を取得する
 
-利用できる VM は、[az vm list](/cli/azure/vm#az-vm-list) を使用して一覧表示できます。 
+利用できる VM は、[az vm list](/cli/azure/vm#az_vm_list) を使用して一覧表示できます。 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-VM の名前とそれが属しているリソース グループがわかったら、[az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) を使用して VM の ID を取得します。 
+VM の名前とそれが属しているリソース グループがわかったら、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) を使用して VM の ID を取得します。 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -92,7 +92,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 イメージ定義に指定できる値の詳細については、[イメージ定義](../shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-[az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。 
+[az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) を使用して、ギャラリー内にイメージ定義を作成します。 
 
 この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](../shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 
 
@@ -112,7 +112,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージ バージョンを作成します。  
+[az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用して、VM からイメージ バージョンを作成します。  
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 
@@ -140,7 +140,7 @@ az sig image-version create \
  
 ## <a name="create-the-vm"></a>VM の作成
 
-イメージが特殊化されたイメージであることを示す --specialized パラメーターを使用した [az vm create](/cli/azure/vm#az-vm-create) を使用して、VM を作成します。 
+イメージが特殊化されたイメージであることを示す --specialized パラメーターを使用した [az vm create](/cli/azure/vm#az_vm_create) を使用して、VM を作成します。 
 
 `--image` にイメージ定義 ID を指定して、使用可能なイメージの最新バージョンから VM を作成します。 また、`--image` にイメージ バージョン ID を指定して、特定のバージョンから VM を作成することもできます。 
 
@@ -158,7 +158,7 @@ az vm create --resource-group myResourceGroup \
 
 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サブスクリプション全体でイメージを共有できます。 イメージは、ギャラリー、イメージ定義、またはイメージ バージョンのレベルで共有できます。 イメージ バージョンへの読み取りアクセス許可があるユーザーは、サブスクリプション間でも、そのイメージ バージョンを使用して VM をデプロイできます。
 
-他のユーザーとは、ギャラリー レベルで共有することをお勧めします。 ギャラリーのオブジェクト ID を取得するには、[az sig show](/cli/azure/sig#az-sig-show) を使用します。
+他のユーザーとは、ギャラリー レベルで共有することをお勧めします。 ギャラリーのオブジェクト ID を取得するには、[az sig show](/cli/azure/sig#az_sig_show) を使用します。
 
 ```azurecli-interactive
 az sig show \
@@ -167,7 +167,7 @@ az sig show \
    --query id
 ```
 
-電子メール アドレスおよび [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) と共に、オブジェクト ID をスコープとして使用して、ユーザーに共有イメージ ギャラリーへのアクセスを付与します。 `<email-address>` と `<gallery iD>` は、実際の情報に置き換えてください。
+電子メール アドレスおよび [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) と共に、オブジェクト ID をスコープとして使用して、ユーザーに共有イメージ ギャラリーへのアクセスを付与します。 `<email-address>` と `<gallery iD>` は、実際の情報に置き換えてください。
 
 ```azurecli-interactive
 az role assignment create \

@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179267"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770973"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
 
-スキルセットとは、ディープ ラーニング モデルを使用して、区別されていない大きなテキストまたは画像ファイルから情報や構造を抽出し、Azure Cognitive Search でコンテンツをインデックス可能かつ検索可能にする AI ベースの機能です。 
+このクイックスタートでは、ポータルでのスキルセットのサポートについて説明します。ここでは、光学式文字認識 (OCR) とエンティティ認識を使用して、画像やアプリケーション ファイルから検索可能なテキスト コンテンツを作成する方法を示します。
 
-このクイックスタートでは、Azure クラウドのサービスとデータを組み合わせてスキルセットを作成します。 すべての準備が整ったら、Azure portal の **[データ インポート]** ウィザードを実行して、それをすべてまとめてプルします。 最終的な成果物は、AI 処理によって作成されたデータを投入した検索可能なインデックスで、ポータル ([Search エクスプローラー](search-explorer.md)) から照会することができます。
+準備として、いくつかのリソースを作成し、サンプル画像とアプリケーション コンテンツ ファイルをアップロードします。 すべての準備が整ったら、Azure portal の **[データ インポート]** ウィザードを実行して、それをすべてまとめてプルします。 最終的な成果物は、AI 処理によって作成されたデータを投入した検索可能なインデックスで、ポータル ([Search エクスプローラー](search-explorer.md)) から照会することができます。
+
+コードから始める場合は、次のようにします。 「[チュートリアル: REST と AI を使用して Azure BLOB から検索可能なコンテンツを生成する](cognitive-search-tutorial-blob.md)」または「[チュートリアル: .NET と AI を使用して Azure BLOB から検索可能なコンテンツを生成する](cognitive-search-tutorial-blob-dotnet.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,11 +46,11 @@ ms.locfileid: "98179267"
 
    + 帯域幅の料金を避けるため、リージョンは、Azure Cognitive Search と同じものを選択してください。 
 
-   + 後で別のチュートリアルのナレッジ ストア機能を試してみたい場合は、アカウントの種類として StorageV2 (General Purpose V2) を選択してください。 それ以外の場合、種類はどれでもかまいません。
+   + StorageV2 (汎用 V2) を選択します。
 
 1. Blob service ページを開き、コンテナーを作成します。 既定のパブリック アクセス レベルを使用できます。 
 
-1. コンテナーの **[アップロード]** をクリックして、最初の手順でダウンロードしたサンプル ファイルをアップロードします。 ネイティブ形式ではフルテキスト検索ができない画像やアプリケーション ファイルなど、さまざまな種類のコンテンツがあることがわかります。
+1. コンテナーで **[アップロード]** をクリックして、最初の手順でダウンロードしたサンプル ファイルをアップロードします。 ネイティブ形式ではフルテキスト検索ができない画像やアプリケーション ファイルなど、さまざまな種類のコンテンツがあることがわかります。
 
    :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Azure Blob Storage 内のソース ファイル" border="false":::
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772724"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259032"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -310,9 +310,11 @@ ADLS-NFS ストレージ ターゲットには、BLOB ストレージ ターゲ�
 
 * BLOB ストレージ ターゲットと同様に、[ストレージ アカウントにアクセス](#add-the-access-control-roles-to-your-account)するためのアクセス許可を Azure HPC Cache に付与する必要があります。
 * NFS ストレージ ターゲットと同様に、キャッシュ[使用モデル](#choose-a-usage-model)を設定する必要があります。
-* NFS 対応の BLOB コンテナーには NFS と互換性のある階層構造があるため、データの取り込みにキャッシュを使用する必要はありません。また、コンテナーは他の NFS システムから読み取ることができます。 ADLS-NFS コンテナーにデータを事前に読み込み、それをストレージ ターゲットとして HPC キャッシュに追加した後、HPC キャッシュの外部からデータにアクセスすることができます。 標準の BLOB コンテナーを HPC キャッシュ ストレージ ターゲットとして使用する場合、データは専用の形式で記述され、他の Azure HPC Cache 互換製品からのみアクセスできます。
+* NFS 対応の BLOB コンテナーには NFS と互換性のある階層構造があるため、データの取り込みにキャッシュを使用する必要はありません。また、コンテナーは他の NFS システムから読み取ることができます。 ADLS-NFS コンテナーにデータを事前に読み込み、それをストレージ ターゲットとして HPC Cache に追加すると、HPC Cache の外部からデータにアクセスできます。 標準の BLOB コンテナーを HPC Cache 上のストレージ ターゲットとして使用する場合、データは独自仕様の形式で書き込まれ、他の Azure HPC Cache 互換製品からのみアクセスできます。
 
 ADLS-NFS ストレージ ターゲットを作成する前に、NFS 対応のストレージ アカウントを作成する必要があります。 [Azure HPC Cache の前提条件](hpc-cache-prerequisites.md#nfs-mounted-blob-adls-nfs-storage-requirements-preview)に関するヒントと、[NFS を使用した BLOB ストレージのマウント](../storage/blobs/network-file-system-protocol-support-how-to.md)の手順に従ってください。 ストレージ アカウントを設定した後は、ストレージ ターゲットの作成時に新しいコンテナーを作成できます。
+
+この構成の詳細については、[Azure HPC Cache で NFS マウント済み BLOB ストレージを使用する](nfs-blob-considerations.md)方法に関するページを参照してください。
 
 ADLS-NFS ストレージ ターゲットを作成するには、Azure portal の **[ストレージ ターゲットの追加]** ページを開きます。 (それ以外の方法は開発中です。)
 
@@ -331,8 +333,6 @@ ADLS-NFS ストレージ ターゲットを作成するには、Azure portal の
 * **[使用モデル]** - ワークフローに基づいていずれかのデータ キャッシュ プロファイルを選択します ([前述の「使用モデルを選択する」](#choose-a-usage-model)を参照)。
 
 完了したら、 **[OK]** をクリックしてストレージ ターゲットを追加します。
-
-<!-- **** -->
 
 ## <a name="view-storage-targets"></a>ストレージ ターゲットを表示する
 

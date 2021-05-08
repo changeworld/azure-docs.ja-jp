@@ -6,16 +6,16 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: seo-lt-2019, sqldbrb=1, devx-track-csharp
 ms.topic: tutorial
-author: MightyPen
-ms.author: genemi
+author: rothja
+ms.author: jroth
 ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67d20a4f0f5d2dae769429c9c476899ea8099c43
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92671176"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551691"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>チュートリアル:C&#x23; と ADO.NET を使用して Azure SQL Database 内でリレーショナル データベースを設計する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

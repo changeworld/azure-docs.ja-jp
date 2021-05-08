@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879294"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
@@ -64,7 +64,7 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
     - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

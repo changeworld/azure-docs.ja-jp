@@ -3,13 +3,15 @@ title: クイック スタート:Azure PowerShell を使用して管理グルー
 description: このクイックスタートでは、Azure PowerShell を使用して、リソースを階層で整理する管理グループを作成します。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 216cfeb6e1389793afcfd27d8785a5f912db2c97
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 0291bb2bfb439ad09531066f6bad4e20a3f4c6bd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592536"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535975"
 ---
 # <a name="quickstart-create-a-management-group-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して管理グループを作成する
 

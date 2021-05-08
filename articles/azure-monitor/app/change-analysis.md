@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 0f541df091733c081c77e41ebff4d0d0d93dca96
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 70a9e3a69ec9e9a12e2d9ecb765bc995c82c00b6
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100573921"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010835"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -58,6 +58,21 @@ IP 構成ルール、TLS 設定、拡張機能のバージョンなどの設定�
 
 ![[Scan changes now]\(今すぐ変更をスキャン\) ボタンのスクリーンショット](./media/change-analysis/scan-changes.png)
 
+現在、サイト ルート **wwwroot** の下にあるテキストベースのファイルで次の拡張子が付くものは、すべてサポートされています。
+- *.json
+- *.xml
+- *.ini
+- *.yml
+- *.config
+- *.properties
+- *.html
+- *.cshtml
+- *.js
+- requirements.txt
+- Gemfile
+- Gemfile.lock
+- config.gemspec
+
 ### <a name="dependency-changes"></a>依存関係の変更
 
 リソースの依存関係の変更も、リソースで問題を引き起こす場合があります。 たとえば、Web アプリから Redis キャッシュが呼び出される場合、Redis キャッシュ SKU が Web アプリのパフォーマンスに影響を与える可能性があります。 別の例として、仮想マシンのネットワーク セキュリティ グループでポート 22 が閉じられた場合は、接続エラーが発生します。
@@ -87,85 +102,8 @@ Web アプリのゲスト内の変更については、Web アプリ内でコー
 ## <a name="cost"></a>コスト
 アプリケーション変更分析は無料のサービスであり、これが有効になっているサブスクリプションに対する課金コストは発生しません。 また、Azure リソース プロパティの変更をスキャンしても、サービスのパフォーマンスに影響はありません。 Web アプリのゲスト内のファイル変更に対して変更分析を有効にすると (あるいは、問題の診断と解決ツールを有効にすると)、Web アプリのパフォーマンスに影響が出ますが、それは無視しても構わない程度であり、また、課金コストは発生しません。
 
-## <a name="visualizations-for-application-change-analysis"></a>アプリケーション変更分析の視覚化
 
-### <a name="standalone-ui"></a>スタンドアロン UI
-
-Azure Monitor では、変更分析のためのスタンドアロン ウィンドウがあり、アプリケーションの依存関係とリソースに関する分析情報の変更を表示できます。
-
-Azure portal の検索バーで変更分析を検索し、エクスペリエンスを起動します。
-
-![Azure portal における変更分析の検索のスクリーンショット](./media/change-analysis/search-change-analysis.png)
-
-選択したサブスクリプションのすべてのリソースの、過去 24 時間の変更内容が表示されます。 ページ読み込みのパフォーマンスを最適化するために、サービスでは一度に 10 個のリソースが表示されます。 次のページをクリックして、その他のリソースを表示します。 この制限については、削除するよう取り組んでいる最中です。
-
-![Azure portal の変更分析ブレードのスクリーンショット](./media/change-analysis/change-analysis-standalone-blade.png)
-
-リソースをクリックすると、そのすべての変更が表示されます。 必要に応じて、変更をドリルダウンして JSON 形式の変更の詳細と分析情報を表示します。
-
-![変更の詳細のスクリーンショット](./media/change-analysis/change-details.png)
-
-フィードバックについては、ブレードにあるフィードバックの送信用のボタンを使用するか、changeanalysisteam@microsoft.com まで電子メールを送信してください。
-
-![変更分析ブレードのフィードバック ボタンのスクリーンショット](./media/change-analysis/change-analysis-feedback.png)
-
-#### <a name="multiple-subscription-support"></a>複数のサブスクリプションのサポート
-UI では、リソースの変更を表示する複数のサブスクリプションの選択がサポートされています。 次のようにサブスクリプション フィルターを使用します。
-
-![複数のサブスクリプションの選択をサポートするサブスクリプション フィルターのスクリーンショット](./media/change-analysis/multiple-subscriptions-support.png)
-
-### <a name="web-app-diagnose-and-solve-problems"></a>Web アプリに関する問題の診断と解決
-
-Azure Monitor では、変更分析はセルフサービスの **問題の診断と解決** エクスペリエンスにも組み込まれています。 このエクスペリエンスには、App Service アプリケーションの **[概要]** ページからアクセスします。
-
-![[概要] ボタンと [問題の診断と解決] ボタンのスクリーンショット](./media/change-analysis/change-analysis.png)
-
-### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>問題の診断と解決ツールのアプリケーション変更分析
-
-アプリケーション変更分析は、Web アプリの問題の診断と解決ツールに含まれているスタンドアロン検出機能です。 また、 **[アプリケーションのクラッシュ]** と **[Web App Down detectors]\(Web アプリのダウン検出\)** にも含まれています。 [問題の診断と解決] ツールを開くと、**Microsoft.ChangeAnalysis** リソース プロバイダーが自動的に登録されます。 次の手順に従って、ゲストでの Web アプリの変更追跡を有効にします。
-
-1. **[Availability and Performance]\(可用性とパフォーマンス\)** を選択します。
-
-    ![[Availability and Performance]\(可用性とパフォーマンス\) のトラブルシューティング オプションのスクリーンショット](./media/change-analysis/availability-and-performance.png)
-
-2. **[Application Changes]\(アプリケーションの変更\)** を選択します。 この機能は、 **[アプリケーションのクラッシュ]** でも使用できます。
-
-   ![[アプリケーションのクラッシュ] ボタンのスクリーンショット](./media/change-analysis/application-changes.png)
-
-3. このリンクから、Web アプリにスコープ指定された Application Change Aalysis UI につながります。 Web アプリのゲスト内の変更追跡が有効になっていない場合、バナーに従って、ファイルとアプリの設定の変更を取得します。
-
-   ![[アプリケーションのクラッシュ] オプションのスクリーンショット](./media/change-analysis/enable-changeanalysis.png)
-
-4. **変更分析** を有効にして **[保存]** を選択します。 ツールでは、すべての Web アプリが [App Service プラン] の下に表示されます。 プラン レベルのスイッチを使用して、プランの下にあるすべての Web アプリの変更分析をオンにできます。
-
-    !["変更分析を有効にする" ユーザー インターフェイスのスクリーンショット](./media/change-analysis/change-analysis-on.png)
-
-5. 変更データは、 **[Web アプリのダウン]** および **[アプリケーションのクラッシュ]** 検出機能の選択でも使用でき ます。 変更の種類を時系列でまとめたグラフと、その変更の詳細が表示されます。 既定では、当面の問題を解決できるように、過去 24 時間の変更が表示されます。
-
-     ![変更の差分ビューのスクリーンショット](./media/change-analysis/change-view.png)
-
-
-
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>仮想マシンの問題の診断と解決
-
-仮想マシンの問題の診断と解決ツールにアクセスします。  **[トラブルシューティング ツール]** に移動し、ページの下を参照して **[最近の変更の分析]** を選択し、仮想マシンの変更内容を確認します。
-
-![VM の問題の診断と解決のスクリーンショット](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
-
-![トラブルシューティング ツールの変更アナライザー](./media/change-analysis/analyze-recent-changes.png)
-
-### <a name="activity-log-change-history"></a>アクティビティ ログ変更履歴
-アクティビティ ログの[変更履歴の表示](../essentials/activity-log.md#view-change-history)機能では、アプリケーション変更分析サービス バックエンドを呼び出して、操作に関連付けられている変更を取得します。 **変更履歴** では、[Azure Resource Graph](../../governance/resource-graph/overview.md) が直接呼び出されていましたが、バックエンドが交換され、アプリケーション変更分析が呼び出されるようになったため、返される変更に、[Azure リソースグラフ](../../governance/resource-graph/overview.md)からのリソースレベルの変更、 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) からのリソース プロパティ、App Services Web アプリなどの PaaS サービスからのゲスト内の変更が含まれるようになります。 アプリケーション変更分析サービスで、ユーザーのサブスクリプションの変更をスキャンできるようにするには、リソース プロバイダーを登録する必要があります。 **[変更履歴]** タブに初めて入ると、ツールによって **Microsoft.ChangeAnalysis** リソース プロバイダーの登録が自動的に開始されます。 登録後、**Azure Resource Graph** からの変更がすぐに利用できるようになり、過去 14 日間が対象になります。 ほかのソースからの変更は、サブスクリプションのオンボードから 4 時間後に使用できるようになります。
-
-![アクティビティ ログ変更履歴の統合](./media/change-analysis/activity-log-change-history.png)
-
-### <a name="vm-insights-integration"></a>VM Insights の統合
-[VM Insights](../vm/vminsights-overview.md) を有効にしているユーザーは、CPU やメモリなどのメトリック グラフでスパイクを発生させた可能性がある仮想マシンの変更内容を表示して、その原因を考えることができます。 変更データは、VM Insights のサイド ナビゲーションバーに統合されています。 ユーザーは、VM で変更が発生したかどうかを表示し、 **[変更の調査]** をクリックして、アプリケーション変更分析スタンドアロン UI で変更の詳細を表示できます。
-
-[![VM insights の統合](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
-
-
-## <a name="enable-change-analysis-at-scale"></a>大規模な変更分析を有効にする
+## <a name="enable-change-analysis-at-scale-for-web-app-in-guest-file-and-environment-variable-changes"></a>Web アプリのゲスト内ファイルと環境変数の変更について大規模な変更分析を有効にする
 
 サブスクリプションに多数の Web アプリが含まれている場合、Web アプリのレベルでサービスを有効にすることは非効率的です。 サブスクリプション内のすべての Web アプリを有効にするには、次のスクリプトを実行します。
 

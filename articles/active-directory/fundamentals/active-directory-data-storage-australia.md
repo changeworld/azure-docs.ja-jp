@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 498b75a6541da97e57e23465ae6eb23a6c854727
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4bb095e93a3728835e26cbe283f79569c91b7487
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94836956"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479068"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリアとニュージーランドのお客様の識別データの保存
 
@@ -30,7 +30,7 @@ Microsoft 365 や Azure などの Microsoft Online サービスをサブスク�
 - Azure AD Directory の管理 
 - 認証
 
-その他のすべての Azure AD サービスでは、お客様のデータは、グローバル データセンターに格納されます。 サービスのデータセンターを特定するには、「[Azure Active Directory – お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」を参照してください。
+その他のすべての Azure AD サービスでは、お客様のデータは、グローバル データセンターに格納されます。 サービスのデータセンターを特定するには、「[Azure Active Directory – お客様のデータの場所](https://aka.ms/AADDataMap)」を参照してください。
 
 ## <a name="microsoft-azure-ad-multi-factor-authentication-mfa"></a>Microsoft Azure AD Multi-Factor Authentication (MFA)
 

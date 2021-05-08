@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 0bfdea6c0bbbe40e4c72ab9da70a1b16d4bc4d3a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 43a8004b6cdfe2e074304569b83360101784a87e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175670"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568003"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Data Science VM 用のディープ ラーニングと AI のフレームワーク
 以下の一覧では、DSVM でのディープ ラーニング フレームワークを示します。
@@ -27,7 +27,7 @@ ms.locfileid: "102175670"
 | サポートされるバージョン | |
 | サポートされている DSVM エディション      | Ubuntu 16.04    |
 | DSVM での構成/インストール方法  | Caffe は `/opt/caffe` にインストールされます。   サンプルは `/opt/caffe/examples` にあります。|
-| 実行方法      | X2Go を使用して VM にサインインした後、新しいターミナルを起動して次のように入力します。<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>新しいブラウザー ウィンドウでサンプルのノートブックが開きます。 バイナリは、/opt/caffe/build/install/bin にインストールされています。<br/><br/>Caffe のインストールされるバージョンは Python 2.7 を必要とします。既定でアクティブ化される Python 3.5 では機能しません。 Python 2.7 に切り替えるには、`source activate root` を実行して Anaconda 環境に切り替えます。|    
+| 実行方法      | X2Go を使用して VM にサインインした後、新しいターミナルを起動して次のように入力します。<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>新しいブラウザー ウィンドウでサンプルのノートブックが開きます。 バイナリは、/opt/caffe/build/install/bin にインストールされています。<br/><br/>Caffe のインストールされるバージョンは Python 2.7 を必要とします。既定でアクティブ化される Python 3.6 では機能しません。 Python 2.7 に切り替えるには、`source activate root` を実行して Anaconda 環境に切り替えます。|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
@@ -129,14 +129,14 @@ ms.locfileid: "102175670"
 | DSVM での構成/インストール方法  | [Linux](dsvm-tools-languages.md#python-linux-edition) では Python 3.5 に、[Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) では Python 3.6 でインストールされます |
 | 実行方法      | ターミナル: 適切な環境をアクティブ化した後、Python を実行します。 <br/> * Jupyter: [Jupyter](provision-vm.md) または [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine) に接続し、サンプル用の TensorFlow ディレクトリを開きます。   |
 
-## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
+## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/tfx/guide/serving)
 
 | カテゴリ | 値 |
 | ------------- | ------------- |
 | サポートされるバージョン | 1.12 |
 | サポートされている DSVM エディション      | Ubuntu 16.04 |
 | DSVM での構成/インストール方法  | tensorflow_model_server はターミナルで利用できます。 |
-| 実行方法      |  サンプルは[オンラインで](https://www.tensorflow.org/serving/)利用可能   |
+| 実行方法      |  サンプルは[オンラインで](https://www.tensorflow.org/tfx/guide/serving)利用可能   |
 
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)

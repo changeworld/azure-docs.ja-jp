@@ -3,12 +3,12 @@ title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: fd5a9ae60c578a3be7f70d82baae0a15e406b9db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0b17b8741d1701720de86d8039be3b6cd28ace5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99491488"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781903"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ
 
@@ -98,7 +98,7 @@ Azure Active Directory の全体管理者には、ロールを割り当てるア
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
+Azure CLI の場合は、[az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create) を使用します。
 
 ```azurecli-interactive
 az deployment tenant create \

@@ -3,12 +3,12 @@ title: サイドカー コンテナーで TLS を有効にする
 description: サイドカー コンテナーで Nginx を実行することで、Azure Container Instances 内で実行されるコンテナー グループに対して SSL または TLS エンドポイントを作成します
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 906a1f239d7050ea17fd7d1425138049ebf045c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96558081"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790979"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>サイドカー コンテナーで TLS を有効にする
 
@@ -193,13 +193,13 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="deploy-the-container-group"></a>コンテナー グループをデプロイする
 
-[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-[az container create](/cli/azure/container#az-container-create) コマンドでコンテナー グループをデプロイし、YAML ファイルを引数として渡します。
+[az container create](/cli/azure/container#az_container_create) コマンドでコンテナー グループをデプロイし、YAML ファイルを引数として渡します。
 
 ```azurecli
 az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
@@ -207,7 +207,7 @@ az container create --resource-group <myResourceGroup> --file deploy-aci.yaml
 
 ### <a name="view-deployment-state"></a>デプロイ状態の表示
 
-デプロイの状態を表示するには、次の [az container show](/cli/azure/container#az-container-show) コマンドを使用します。
+デプロイの状態を表示するには、次の [az container show](/cli/azure/container#az_container_show) コマンドを使用します。
 
 ```azurecli
 az container show --resource-group <myResourceGroup> --name app-with-ssl --output table

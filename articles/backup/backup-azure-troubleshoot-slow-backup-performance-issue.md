@@ -3,12 +3,12 @@ title: ファイルとフォルダーのバックアップが遅い場合のト�
 description: Azure Backup のパフォーマンスに関する問題の原因を診断するのに役立つトラブルシューティングの指針を示します。
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 791f0edf5f50d27147e402f09e7a3e4c2ea7ca43
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88824017"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518526"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 
@@ -21,7 +21,7 @@ ms.locfileid: "88824017"
 
 問題のトラブルシューティングを開始する前に、 [最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)をダウンロードしてインストールすることをお勧めします。 Backup エージェントは、さまざまな問題の解決、機能の追加、パフォーマンスの改善を目的として絶えず更新されています。
 
-また、一般的な構成の問題ではないことを確認するために、「 [Azure Backup サービス - FAQ](backup-azure-backup-faq.md) 」に目を通すよう強くお勧めします。
+また、一般的な構成の問題ではないことを確認するために、「 [Azure Backup サービス - FAQ](backup-azure-backup-faq.yml) 」に目を通すよう強くお勧めします。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -99,4 +99,4 @@ Backup エージェントを VM で実行している場合、パフォーマン
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.md)
+* [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.yml)

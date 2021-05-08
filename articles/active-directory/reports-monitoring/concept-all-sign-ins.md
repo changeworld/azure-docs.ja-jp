@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/23/2020
+ms.date: 03/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e6642e230fa809630751e224ff9384ea8524d1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319772"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552735"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory サインイン アクティビティ レポート - プレビュー
 
@@ -125,7 +125,12 @@ Azure Active Directory の従来のサインイン レポートには、対話�
 
 対話型ユーザー サインインは、ユーザーが Azure AD に認証要素を提供するか、Azure AD またはヘルパー アプリ (Microsoft Authenticator アプリなど) と直接やり取りするサインインです。 ユーザーが提供する要素としては、ユーザーが Azure AD またはヘルパー アプリに提供するパスワード、MFA チャレンジへの応答、生体認証要素、QR コードなどがあります。
 
-このレポートには、Azure AD と連携した ID プロバイダーからのフェデレーション サインインも含まれます。  
+> [!NOTE]
+> このレポートには、Azure AD と連携した ID プロバイダーからのフェデレーション サインインも含まれます。  
+
+
+
+注: 対話型ユーザー サインイン レポートには、以前は Microsoft Exchange クライアントからの非対話型サインインがいくつか含まれていました。 これらのサインインは非対話型であったにもかかわらず、補足表示の目的で対話型ユーザー サインイン レポートに含まれていました。 非対話型ユーザー サインイン レポートが 2020 年 11 月にパブリック プレビュー段階に入った時点で、こうした非対話型サインイン イベント ログは、正確さを高めるために非対話型ユーザー サインイン レポートに移されました。 
 
 
 **レポート サイズ:** 小 <br> 

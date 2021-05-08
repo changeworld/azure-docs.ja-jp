@@ -3,12 +3,12 @@ title: コンテナー インスタンスのエントリポイントをオーバ
 description: Azure コンテナー インスタンスのデプロイ時にコンテナー イメージのエントリポイントをオーバーライドするためのコマンド ラインを設定する
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5898decbf4108d48bb9e84019d659075b18fd043
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86169631"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771085"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>コンテナー インスタンスにコマンド ラインを設定して既定のコマンド ライン操作をオーバーライドする
 
@@ -118,8 +118,8 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 [aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625201"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768073"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
@@ -219,7 +219,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 
 1. まず、アラートがトリガーされる条件を構成します。
 
-    1. **[条件]** で、 **[条件の選択]** を選択します。 **[シグナル ロジックの構成]** ペインで、検索ボックスに「telemetry」と入力し、 **[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)** を選択します。
+    1. **[条件]** で、 **[条件の追加]** を選択します。 **[シグナル ロジックの構成]** ペインで、検索ボックスに「telemetry」と入力し、 **[Telemetry messages sent]\(送信済みテレメトリ メッセージ\)** を選択します。
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="メトリックの選択を示すスクリーンショット。":::
 
@@ -245,7 +245,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 
 1. 次に、アラートのアクションを構成します。
 
-    1. **[アラート ルールの作成]** ペインに戻り、 **[アクション]** で **[アクション グループの選択]** を選択します。 **[このアラート ルールにアタッチするアクション グループを選択する]** ペインで、 **[アクション グループの作成]** を選択します。
+    1. **[アラート ルールの作成]** ペインに戻り、 **[アクション]** で **[アクション グループの追加]** を選択します。 **[このアラート ルールにアタッチするアクション グループを選択する]** ペインで、 **[アクション グループの作成]** を選択します。
 
     1. **[アクション グループの作成]** ペインの **[基本]** タブで、アクション グループの名前と表示名を指定します。
 
@@ -313,7 +313,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 
 ## <a name="run-the-simulated-device-app"></a>シミュレーション済みデバイス アプリを実行する
 
-「[リソースを設定する](#set-up-resources)」で、IoT デバイスの使用をシミュレートするために使用するデバイス ID を登録しました。 このセクションでは、device-to-cloud メッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードし、これらのメッセージを IoT ハブに送信するようにアプリを構成して実行します。 
+「[リソースを設定する](#set-up-resources)」で、IoT デバイスの使用をシミュレートするために使用するデバイス ID を登録しました。 このセクションでは、device-to-cloud メッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードし、これらのメッセージを IoT ハブに送信するようにアプリを構成して実行します。
 
 > [!IMPORTANT]
 >
@@ -409,7 +409,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 
 このチュートリアルで作成したリソースをすべて削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 ここでは、IoT ハブ、Log Analytics ワークスペース、およびリソース グループ自体が削除されます。 メトリックのグラフをダッシュボードにピン留めしている場合は、それらを手動で削除する必要があります。各グラフの右上隅にある 3 つのドットをクリックし、 **[削除]** を選択します。 グラフを削除したら、必ず変更を保存してください。
 
-リソース グループを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを使います。
+リソース グループを削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを使います。
 
 ```azurecli-interactive
 az group delete --name ContosoResources

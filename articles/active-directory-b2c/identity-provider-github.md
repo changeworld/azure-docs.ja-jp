@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e2c82858b9f4b9846ff5371da347be942eed0a4f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 442894da23111877f4dd4f67363add0c8e52a4c9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488858"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028980"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して GitHub アカウントでのサインアップおよびサインインを設定する
 
@@ -41,10 +41,10 @@ ms.locfileid: "103488858"
 Azure Active Directory B2C (Azure AD B2C) で GitHub アカウントを使用したサインインを有効にするには、[GitHub Developer](https://github.com/settings/developers) ポータルでアプリケーションを作成する必要があります。 詳細については、「[OAuth アプリの作成](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app)」を参照してください。 まだ GitHub アカウントを持っていない場合は、[https://www.github.com/](https://www.github.com/) でサインアップできます。
 
 1. GitHub 資格情報を使用して [GitHub Developer](https://github.com/settings/developers) にサインインします。
-1. **OAuth アプリ** を選択し、**新規 OAuth アプリ** を選択します。
+1. **[OAuth Apps]\(OAuth アプリ\)** を選択し、**[New OAuth App]\(新規 OAuth アプリ\)** を選択します。
 1. **アプリケーション名** と **ホームページ URL** を入力します。
 1. **[Authorization callback URL]\(認証コールバック エンドポイント URL\)** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-domain-name` を実際のカスタム ドメインに、`your-tenant-name` を実際のテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用します。
-1. **[Register application (アプリケーションを登録する)]** をクリックします。
+1. **[Register application]\(アプリケーションを登録する\)** をクリックします。
 1. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 ID プロバイダーをテナントに追加するには、両方が必要です。
 
 ::: zone pivot="b2c-user-flow"
@@ -61,6 +61,9 @@ Azure Active Directory B2C (Azure AD B2C) で GitHub アカウントを使用し
 1. **[保存]** を選択します。
 
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>ユーザー フローに GitHub ID プロバイダーを追加する 
+
+この時点では、GitHub ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに GitHub ID プロバイダーを追加するには:
+
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. GitHub ID プロバイダーを追加するユーザー フローをクリックします。
@@ -205,7 +208,7 @@ GitHub の技術プロファイルを使用するには、**CreateIssuerUserId**
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[GitHub]** を選択して、GitHub アカウントでサインインします。
 

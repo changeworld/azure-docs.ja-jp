@@ -3,13 +3,13 @@ title: 受信/送信 IP アドレス
 description: Azure App Service で受信および送信 IP アドレスがどのように使用されるか、いつ変更されるかについて、およびアプリのアドレスを見つける方法について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746149"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104591369"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746149"
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>App Service での IP アドレスの動作
 
-App Service アプリは App Service プランで実行され、App Service プランは Azure インフラストラクチャ内のいずれかのデプロイ単位 (内部的には Web スペースと呼ばれます) にデプロイされます。 各デプロイ単位は、最大 5 つの仮想 IP アドレスに割り当てられます。これには、1 つのパブリック受信 IP アドレスと 4 つの送信 IP アドレスが含まれます。 同じデプロイ単位内のすべての App Service プランと、それらの中で実行されるアプリ インスタンスでは、同じ一連の仮想 IP アドレスが共有されます。 App Service Environment ([Isolated レベル](https://azure.microsoft.com/pricing/details/app-service/)の App Service プラン) の場合、App Service プランそのものがデプロイ単位になります。そのため、仮想 IP アドレスはその結果として専用となります。
+App Service アプリは App Service プランで実行され、App Service プランは Azure インフラストラクチャ内のいずれかのデプロイ単位 (内部的には Web スペースと呼ばれます) にデプロイされます。 各デプロイ単位は、一連の仮想 IP アドレスに割り当てられます。これには、1 つのパブリック受信 IP アドレスと一連の[送信 IP アドレス](#find-outbound-ips)が含まれます。 同じデプロイ単位内のすべての App Service プランと、それらの中で実行されるアプリ インスタンスでは、同じ一連の仮想 IP アドレスが共有されます。 App Service Environment ([Isolated レベル](https://azure.microsoft.com/pricing/details/app-service/)の App Service プラン) の場合、App Service プランそのものがデプロイ単位になります。そのため、仮想 IP アドレスはその結果として専用となります。
 
 App Service プランをデプロイ単位間で移動することは許可されていないため、通常はアプリに割り当てられている仮想 IP アドレスは同じままですが、これには例外があります。
 
@@ -51,7 +51,7 @@ nslookup <app-name>.azurewebsites.net
 
 - アプリを削除した後、別のリソース グループ内に再作成する (デプロイ単位が変更される場合があります)。
 - リソース グループ _と_ リージョンの組み合わせに含まれる最後のアプリケーションを削除した後、再作成する (デプロイ単位が変更される場合があります)。
-- アプリを下位レベル ( **Basic** 、 **Standard** 、および **Premium** ) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
+- アプリを下位レベル (**Basic**、**Standard**、および **Premium**) と **Premium V2** レベルの間でスケーリングする (IP アドレスはセットに追加するか、削除することができます)。
 
 アプリが使用できるすべての可能な送信 IP アドレスは、価格レベルに関係なく、`possibleOutboundIpAddresses` プロパティを調べるか、Azure portal の **[プロパティ]** ブレードの **[追加の送信 IP アドレス]** で確認できます。 「[IP アドレスを見つける](#find-outbound-ips)」を参照してください。
 
@@ -69,7 +69,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-アプリで考えられる " _すべて_ " の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
+アプリで考えられる "_すべて_" の送信 IP アドレスを見つけるには、価格レベルに関係なく、アプリの左側にあるナビゲーションで **[プロパティ]** をクリックします。 IP アドアレスは **[追加の送信 IP アドレス]** フィールドに表示されています。
 
 [Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行することで、同じ情報を見つけることができます。
 

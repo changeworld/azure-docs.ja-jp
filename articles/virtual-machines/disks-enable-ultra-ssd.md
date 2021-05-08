@@ -4,16 +4,16 @@ description: Azure VM 用の Ultra ディスクについて説明します。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/16/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 9c3c1acbc2606d882ad45744457137be5014bc4c
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 43dac1692dd6ee4ed1ab67a9b18ca69738e0a0f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093487"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580505"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
 
@@ -133,31 +133,31 @@ VM がプロビジョニングされたら、データ ディスクをパーテ�
 
 このセクションでは、データ ディスクとして Ultra ディスクを備えた仮想マシンをデプロイする方法について説明します。 仮想マシンのデプロイに関する知識があることを前提としています。そうでない場合は、「[クイックスタート: Azure portal で Windows 仮想マシンを作成する](./windows/quick-create-portal.md)」を参照してください。
 
-- [Azure portal](https://portal.azure.com/) にサインインし、[仮想マシン (VM) のデプロイ] に移動します。
-- [サポートされている VM サイズとリージョン](#ga-scope-and-limitations)を必ず選択してください。
-- **[可用性オプション]** で **[可用性ゾーン]** を選択します。
-- 任意の選択を行って、残りの項目を入力します。
-- **[ディスク]** を選択します。
+1. [Azure portal](https://portal.azure.com/) にサインインし、[仮想マシン (VM) のデプロイ] に移動します。
+1. [サポートされている VM サイズとリージョン](#ga-scope-and-limitations)を必ず選択してください。
+1. **[可用性オプション]** で **[可用性ゾーン]** を選択します。
+1. 任意の選択を行って、残りの項目を入力します。
+1. **[ディスク]** を選択します。
 
-![VM 作成フロー、[基本] ブレードのスクリーンショット。](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png" alt-text="VM 作成フロー、[基本] ブレードのスクリーンショット。" lightbox="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-create.png":::
 
-- [ディスク] ブレードで、 **[Ultra Disk の互換性を有効にする]** に対して **[はい]** を選択します。
-- **[新しいディスクの作成と接続]** を選択して、Ultra ディスクを今すぐ接続します。
+1. [ディスク] ブレードで、 **[Ultra Disk の互換性を有効にする]** に対して **[はい]** を選択します。
+1. **[新しいディスクの作成と接続]** を選択して、Ultra ディスクを今すぐ接続します。
 
-![VM 作成フロー、[ディスク] ブレードのスクリーンショット。Ultra が有効になっており、[新しいディスクの作成と接続] が強調表示されています。](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-vm-disk-enable.png" alt-text="VM 作成フロー、[ディスク] ブレードのスクリーンショット。Ultra が有効になっており、[新しいディスクの作成と接続] が強調表示されています。" :::
 
-- **[新しいディスクの作成]** ブレードで、名前を入力し、 **[サイズの変更]** を選択します。
+1. **[新しいディスクの作成]** ブレードで、名前を入力し、 **[サイズの変更]** を選択します。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-create-new-disk-flow.png" alt-text="[新しいディスクの作成] ブレードのスクリーンショット。[サイズの変更] が強調表示されています。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-create-disk.png" alt-text="[新しいディスクの作成] ブレードのスクリーンショット。[サイズの変更] が強調表示されています。":::
 
 
-- **[ストレージの種類]** を **[Ultra Disk]** に変更します。
-- **[カスタム ディスク サイズ (GiB)]** 、 **[ディスク IOPS]** 、および **[ディスク スループット]** を任意のものに変更します。
-- 両方のブレードで **[OK]** を選択します。
+1. **ディスク SKU** を **｢Ultra Disk** に変更します。
+1. **[カスタム ディスク サイズ (GiB)]** 、 **[ディスク IOPS]** 、および **[ディスク スループット]** を任意のものに変更します。
+1. 両方のブレードで **[OK]** を選択します。
 
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[ディスクサイズの選択] ブレードのスクリーンショット。ストレージの種類として選択された Ultra ディスクと、その他の値が強調表示されています。":::
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-select-ultra-disk-size.png" alt-text="[ディスクサイズの選択] ブレードのスクリーンショット。ストレージの種類として選択された Ultra ディスクと、その他の値が強調表示されています。":::
 
-- VM のデプロイを続行します。それは、他の VM をデプロイする場合と同じになります。
+1. VM のデプロイを続行します。それは、他の VM をデプロイする場合と同じになります。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -230,7 +230,21 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal では現在、512 バイトのセクター サイズの Ultra ディスクの作成がサポートされていません。 代わりに、Azure PowerShell モジュールまたは Azure CLI を使用して、512 バイトのセクター サイズの Ultra ディスクを作成できます。
+1. [Azure portal](https://portal.azure.com/) にサインインし、**ディスク** を検索して選択します。
+1. **[+ 新規]** を選択して新しいディスクを作成します。
+1. Ultra Disk をサポートするリージョンを選択し、可用性ゾーンを選択して、残りの値を必要に応じて入力します。
+1. **[サイズの変更]** を選択します。
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/create-managed-disk-basics-workflow.png" alt-text="ディスクの作成ブレード、リージョン、可用性ゾーン、サイズの変更が強調表示されているスクリーンショット。":::
+
+1. **[ディスク SKU]** で **[Ultra Disk]** を選択し、必要なパフォーマンスの値を入力して、 **[OK]** を選択します。
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-disk-size-ultra.png" alt-text="Ultra Disk 作成のスクリーンショット。":::
+
+1. **[基本]** ブレードで、 **[詳細設定]** タブを選択します。
+1. **[Logical sector size]\(論理セクターサイズ\)** で **[512]** を選択し、 **[確認と作成]** を選択します。
+
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-different-sector-size-ultra.png" alt-text="Ultra Disk の論理セクターサイズを 512 に変更するためのセレクターのスクリーンショット。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -303,32 +317,25 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 あるいは、既存の VM が Ultra ディスクを使用できるリージョン/可用性ゾーンに存在する場合は、新しい VM を作成しなくても Ultra ディスクを使用できます。 既存の VM 上で Ultra ディスクを有効にした後、データ ディスクとして接続します。 Ultra ディスクの互換性を有効にするには、VM を停止する必要があります。 VM を停止したら、互換性を有効にし、VM を再起動できます。 互換性が有効になったら、Ultra ディスクを接続できます。
 
-- VM に移動して停止し、割り当てが解除されるのを待ちます。
-- VM の割り当てが解除されたら、 **[ディスク]** を選択します。
-- **[編集]** を選択します。
+1. VM に移動して停止し、割り当てが解除されるのを待ちます。
+1. VM の割り当てが解除されたら、 **[ディスク]** を選択します。
+1. **[追加設定]** を選択します。
 
-![既存の VM ディスク ブレードのスクリーンショット。[編集] が強調表示されています。](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-ultra-disk-additional-settings.png" alt-text="[ディスク] ブレードのスクリーンショット、[追加設定] が強調表示されている。":::
 
-- **[Ultra Disk の互換性を有効にする]** に対して **[はい]** を選択します。
+1. **[Ultra Disk の互換性を有効にする]** に対して **[はい]** を選択します。
 
-![[Ultra Disk の互換性を有効にする] のスクリーンショット。](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/enable-ultra-disks-existing-vm.png" alt-text="[Ultra Disk の互換性を有効にする] のスクリーンショット。":::
 
-- **[保存]** を選択します。
-- **[データ ディスクの追加]** を選択し、 **[名前]** ドロップダウンから **[ディスクの作成]** を選択します。
+1. **[保存]** を選択します。
+1. **[新しいディスクを作成し接続する]** を選択し、新しいディスクの名前を入力します。
+1. **[ストレージの種類]** で **[Ultra Disk]** を選択します。
+1. **[サイズ (GiB)]** 、 **[最大 IOPS]** 、および **[最大スループット]** を任意のものに変更します。
+1. ディスクのブレードに戻ったら、 **[保存]** を選択します。
 
-![ディスク ブレードのスクリーンショット。新しいディスクを追加しています。](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/new-create-ultra-disk-existing-vm.png" alt-text="[ディスク] ブレードのスクリーンショット。新しい Ultra Disk を追加しています。":::
 
-- 新しいディスクの名前を入力し、 **[サイズの変更]** を選択します。
-- **[アカウントの種類]** を **[Ultra Disk]** に変更します。
-- **[カスタム ディスク サイズ (GiB)]** 、 **[ディスク IOPS]** 、および **[ディスク スループット]** を任意のものに変更します。
-
-    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/ultra-disk-select-new-disk.png" alt-text="[ディスクサイズの選択] ブレードのスクリーンショット。ストレージの種類として選択された Ultra ディスクと、その他の値が強調表示されています。":::
-
-- **[OK]** を選択し、 **[作成]** を選択します。
-- ディスクのブレードに戻ったら、 **[保存]** を選択します。
-- VM をもう一度起動します。
-
-![VM の [ディスク] ブレードのスクリーンショット。](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+1. VM をもう一度起動します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -444,15 +451,15 @@ Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 
 Ultra ディスクには、ユーザーがパフォーマンスを調整できる固有の機能があります。 これらの調整は、Azure portal から実行することも、ディスク上で実行することもできます。
 
-- VM に移動し、 **[ディスク]** を選択します。
-- パフォーマンスを変更する Ultra ディスクを選択します。
+1. VM に移動し、 **[ディスク]** を選択します。
+1. パフォーマンスを変更する Ultra ディスクを選択します。
 
-![VM の [ディスク] ブレードのスクリーンショット。Ultra ディスクが強調表示されています。](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/select-ultra-disk-to-modify.png" alt-text="VM の [ディスク] ブレードのスクリーンショット。Ultra ディスクが強調表示されています。":::
 
-- **[構成]** を選択し、変更を行います。
-- **[保存]** を選択します。
+1. **[Size + performance]\(サイズとパフォーマンス\)** を選択し、変更を行います。
+1. **[保存]** を選択します。
 
-![Ultra ディスクの [構成] ブレードのスクリーンショット。ディスク サイズ、iops、スループットが強調表示され、[保存] が強調表示されています。](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+    :::image type="content" source="media/virtual-machines-disks-getting-started-ultra-ssd/modify-ultra-disk-performance.png" alt-text="Ultra ディスクの [構成] ブレードのスクリーンショット。ディスク サイズ、iops、スループットが強調表示され、[保存] が強調表示されています。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

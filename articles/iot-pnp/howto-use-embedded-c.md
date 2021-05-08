@@ -7,12 +7,12 @@ ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d61ca10612a0935f8483745d164835d7498280c0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cfa71e02688d5bf63d894ae42dabab7da1d4174c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92042815"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057316"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>制約のあるデバイスに IoT プラグ アンド プレイを実装する
 

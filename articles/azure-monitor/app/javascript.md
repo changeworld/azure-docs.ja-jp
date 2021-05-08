@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b8824a0f73f3a79ab70810c529cb0ed9331a797
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102485488"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565267"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -107,8 +107,8 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 上記では、各構成オプションが新しい行に示されています。[省略可能] と示されている項目の既定値を上書きしたくない場合は、その行を削除することで、返されるページのサイズを最小限に抑えることができます。
 
 使用できる構成オプションは次のとおりです。
-
-| 名前 | 種類 | 説明
+ 
+| 名前 | Type | 説明
 |------|------|----------------
 | src | string **[必須]** | SDK の読み込み元の完全な URL。 この値は、動的に追加される &lt;script /&gt; タグの "src" 属性に使用されます。 パブリック CDN の場所を使用することも、プライベートにホストされている独自の場所を使用することもできます。
 | name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は `appInsights` です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
@@ -171,52 +171,87 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>構成
 ほとんどの構成フィールドは、既定値を false にできるように指定されています。 `instrumentationKey`以外のすべてのフィールドは省略可能です。
 
-| 名前 | Default | 説明 |
-|------|---------|-------------|
-| instrumentationKey | null | **必須**<br>Azure portal で入手したインストルメンテーション キー |
-| accountId | null | 省略可能なアカウント ID (アプリによってユーザーがアカウントにグループ化される場合)。 スペース、コンマ、セミコロン、等号、または縦棒は使用できません。 |
-| sessionRenewalMs | 1800000 | この時間 (ミリ秒単位) にわたってユーザーが非アクティブである場合に、セッションがログに記録されます。 既定値は 30 分です。 |
-| sessionExpirationMs | 86400000 | セッションがこの時間 (ミリ秒単位) にわたって継続する場合に、セッションがログに記録されます。 既定値は 24 時間です。 |
-| maxBatchSizeInBytes | 10000 | テレメトリ バッチの最大サイズ。 バッチがこの制限を超えると、すぐに送信され、新しいバッチが開始されます。 |
-| maxBatchInterval | 15000 | 送信前にテレメトリをバッチ処理する時間 (ミリ秒) |
-| disableExceptionTracking | false | true の場合、例外は自動収集されません。 既定値は false です。 |
-| disableTelemetry | false | true の場合、テレメトリは収集または送信されません。 既定値は false です。 |
-| enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部** デバッグ データはログに記録される **代わりに** 例外としてスローされます。 既定値は false です。 <br>**_注:_** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
-| loggingLevelConsole | 0 | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
-| loggingLevelTelemetry | 1 | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) |
-| diagnosticLogInterval | 10000 | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) |
-| samplingPercentage | 100 | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 |
-| autoTrackPageVisitTime | false | true の場合、ページビューに関して、前にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページビューについて新しいタイマーが開始されます。 既定値は false です。 |
-| disableAjaxTracking | false | true の場合、Ajax 呼び出しは自動収集されません。 既定値は false です。 |
-| disableFetchTracking | true | true の場合、フェッチ要求は自動収集されません。 既定値は true です。 |
-| overridePageViewDuration | false | true の場合、trackPageView の既定の動作が変わり、trackPageView の呼び出し時にページビュー期間の終了を記録します。 false の場合に、trackPageView にカスタム期間が指定されていないと、Navigation Timing API を使用してページ ビューのパフォーマンスが計算されます。 既定値は false です。 |
-| maxAjaxCallsPerView | 500 | 既定値: 500 - ページ ビュー 1 回あたりの Ajax 呼び出し数を監視し制御します。 -1 に設定すると、ページで発行されたすべて (無制限) の Ajax 呼び出しを監視します。 |
-| disableDataLossAnalysis | true | false の場合、まだ送信されていない項目について、内部テレメトリ センダー バッファーがスタートアップ時にチェックされます。 |
-| disableCorrelationHeaders | false | false の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての依存関係要求に追加され、サーバー側の対応する要求と関連付けられます。 既定値は false です。 |
-| correlationHeaderExcludedDomains |  | 特定のドメインの関連付けヘッダーを無効にします。 |
-| correlationHeaderDomains |  | 特定のドメインの関連付けヘッダーを有効にします。 |
-| disableFlushOnBeforeUnload | false | 既定値は false です。 true の場合、onBeforeUnload イベントによってトリガーされても、flush メソッドは呼び出されません。 |
-| enableSessionStorageBuffer | true | 既定値は true です。 true の場合、未送信のすべてのテレメトリを含むバッファーがセッション ストレージに格納されます。 バッファーはページの読み込み時に復元されます。 |
-| isCookieUseDisabled | false | 既定値は false です。 true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。 これにより、ユーザーとセッションの Cookie が無効になり、使用状況ブレードとエクスペリエンスが利用できなくなります。 |
-| cookieDomain | null | カスタム Cookie ドメイン。 これは、サブドメイン間で Application Insights Cookie を共有する場合に便利です。 |
-| isRetryDisabled | false | 既定値は false です。 false の場合、206 (部分的な成功)、408 (タイムアウト)、429 (要求が多すぎる)、500 (内部サーバー エラー)、503 (サービス利用不可)、および 0 (オフライン、検出された場合のみ) で再試行します。 |
-| isStorageUseDisabled | false | true の場合、SDK によってローカルおよびセッション ストレージに対するデータの格納や読み取りは行われません。 既定値は false です。 |
-| isBeaconApiDisabled | true | false の場合、SDK が [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
-| onunloadDisableBeacon | false | 既定値は false です。 タブが閉じられると、SDK により [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
-| sdkExtension | null | sdk 拡張機能の名前を設定します。 英字のみを使用できます。 拡張機能名はプレフィックスとして ai.internal.sdkVersion タグに付けられます (ext_javascript:2.0.0 など)。 既定値は Null です。 |
-| isBrowserLinkTrackingEnabled | false | 既定値は false です。 true の場合、SDK によってすべての[ブラウザー リンク](/aspnet/core/client-side/using-browserlink)要求が追跡されます。 |
-| appId | null | appId は、サーバー側の要求によってクライアント側で発生する AJAX 依存関係の相関関係のために使用されます。 Beacon API が有効になっているとき、これを自動的に使用することはできませんが、構成で手動で設定できます。 既定値は null です。 |
-| enableCorsCorrelation | false | truee の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての CORS 要求に追加され、送信される AJAX 依存関係がサーバー側の対応する要求と関連付けられます。 既定値は false です。 |
-| namePrefix | undefined | localStorage および Cookie 名の接尾語として使用される省略可能な値。
-| enableAutoRouteTracking | false | シングル ページ アプリケーション (SPA) でのルート変更を自動的に追跡します。 true の場合、ルートの変更ごとに Application Insights に新しいページビューが送信されます。 ハッシュ ルート変更 (`example.com/foo#bar`) も新しいページ ビューとして記録されます。
-| enableRequestHeaderTracking | false | true の場合、AJAX と Fetch の要求ヘッダーが追跡されます。既定値は false です。
-| enableResponseHeaderTracking | false | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。既定値は false です。
-| distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。
-| enableAjaxErrorStatusText | false | 既定値は false です。 true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。
-| enableAjaxPerfTracking | false | 既定値は false です。 ブラウザーの window.performance の追加のタイミングを検索し、レポートされる `ajax` (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。
-| maxAjaxPerfLookupAttempts | 3 | 既定値は 3 です。 window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。
-| ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
-| enableUnhandledPromiseRejectionTracking | false | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。
+| 名前 | 説明 | Default |
+|------|-------------|---------|
+| instrumentationKey | **必須**<br>Azure portal で入手したインストルメンテーション キー | string<br/>null |
+| accountId | 省略可能なアカウント ID (アプリによってユーザーがアカウントにグループ化される場合)。 スペース、コンマ、セミコロン、等号、または縦棒は使用できません。 | string<br/>null |
+| sessionRenewalMs | この時間 (ミリ秒単位) にわたってユーザーが非アクティブである場合に、セッションがログに記録されます。 | numeric<br/>1800000<br/>(30 分) |
+| sessionExpirationMs | セッションがこの時間 (ミリ秒単位) にわたって継続する場合に、セッションがログに記録されます。 | numeric<br/>86400000<br/>(24 時間) |
+| maxBatchSizeInBytes | テレメトリ バッチの最大サイズ。 バッチがこの制限を超えると、すぐに送信され、新しいバッチが開始されます。 | numeric<br/>10000 |
+| maxBatchInterval | 送信前にテレメトリをバッチ処理する時間 (ミリ秒) | numeric<br/>15000 |
+| disable&#8203;ExceptionTracking | true の場合、例外は自動収集されません。 | boolean<br/> false |
+| disableTelemetry | true の場合、テレメトリは収集または送信されません。 | boolean<br/>false |
+| enableDebug | true の場合、SDK ログ設定に関わらず、**内部** デバッグ データはログに記録される **代わりに** 例外としてスローされます。 既定値は false です。 <br>**_注:_** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 | boolean<br/>false |
+| loggingLevelConsole | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) | numeric<br/> 0 |
+| loggingLevelTelemetry | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2:すべて (エラーおよび警告) | numeric<br/> 1 |
+| diagnosticLogInterval | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) | numeric<br/> 10000 |
+| samplingPercentage | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 | numeric<br/>100 |
+| autoTrackPageVisitTime | true の場合、ページビューに関して、前にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページビューについて新しいタイマーが開始されます。 | boolean<br/>false |
+| disableAjaxTracking | true の場合、Ajax 呼び出しは自動収集されません。 | boolean<br/> false |
+| disableFetchTracking | true の場合、フェッチ要求は自動収集されません。|boolean<br/>true |
+| overridePageViewDuration | true の場合、trackPageView の既定の動作が変わり、trackPageView の呼び出し時にページビュー期間の終了を記録します。 false の場合に、trackPageView にカスタム期間が指定されていないと、Navigation Timing API を使用してページ ビューのパフォーマンスが計算されます。 |boolean<br/>
+| maxAjaxCallsPerView | 既定値: 500 - ページ ビュー 1 回あたりの Ajax 呼び出し数を監視し制御します。 -1 に設定すると、ページで発行されたすべて (無制限) の Ajax 呼び出しを監視します。 | numeric<br/> 500 |
+| disableDataLossAnalysis | false の場合、まだ送信されていない項目について、内部テレメトリ センダー バッファーがスタートアップ時にチェックされます。 | boolean<br/> true |
+| disable&#8203;CorrelationHeaders | false の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての依存関係要求に追加され、サーバー側の対応する要求と関連付けられます。 | boolean<br/> false |
+| correlationHeader&#8203;ExcludedDomains | 特定のドメインの関連付けヘッダーを無効にします。 | string[]<br/>undefined |
+| correlationHeader&#8203;ExcludePatterns | 正規表現を使用して関連付けヘッダーを無効にします。 | regex[]<br/>undefined |
+| correlationHeader&#8203;Domains | 特定のドメインの関連付けヘッダーを有効にします。 | string[]<br/>undefined |
+| disableFlush&#8203;OnBeforeUnload | true の場合、onBeforeUnload イベントによってトリガーされても、flush メソッドは呼び出されません。 | boolean<br/> false |
+| enableSessionStorageBuffer | true の場合、未送信のすべてのテレメトリを含むバッファーがセッション ストレージに格納されます。 バッファーはページの読み込み時に復元されます。 | boolean<br />true |
+| cookieCfg | Cookie の使用が有効な既定値になります。詳細については、[ICookieCfgConfig](#icookiemgrconfig) 設定を参照してください。 | [ICookieCfgConfig](#icookiemgrconfig)<br>(2.6.0 以降)<br/>undefined |
+| ~~isCookieUseDisabled~~<br>disableCookiesUsage | true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。 これにより、ユーザーとセッションの Cookie が無効になり、使用状況ブレードとエクスペリエンスが利用できなくなります。 disableCookiesUsage を優先するために isCookieUseDisable は非推奨とされます。両方とも指定した場合、disableCookiesUsage が優先されます。<br>(v2.6.0 以降) また、`cookieCfg.enabled` が定義されている場合は、これらの値よりも優先されます。core.getCookieMgr().setEnabled(true) を使用して初期化した後で、Cookie の使用を再度有効にすることができます。 | [`cookieCfg.enabled`](#icookiemgrconfig) の別名<br>false |
+| cookieDomain | カスタム Cookie ドメイン。 これは、サブドメイン間で Application Insights Cookie を共有する場合に便利です。<br>(v2.6.0 以降) `cookieCfg.domain` が定義されている場合は、この値よりも優先されます。 | [`cookieCfg.domain`](#icookiemgrconfig) の別名<br>null |
+| cookiePath | カスタム Cookie パス。 これは、アプリケーション ゲートウェイの背後で Application Insights の Cookie を共有する場合に便利です。<br>`cookieCfg.path` が定義されている場合は、この値よりも優先されます。 | [`cookieCfg.path`](#icookiemgrconfig) の別名<br>(2.6.0 以降)<br/>null |
+| isRetryDisabled | false の場合、206 (部分的な成功)、408 (タイムアウト)、429 (要求が多すぎる)、500 (内部サーバー エラー)、503 (サービス利用不可)、および 0 (オフライン、検出された場合のみ) で再試行します。 | boolean<br/>false |
+| isStorageUseDisabled | true の場合、SDK によってローカルおよびセッション ストレージに対するデータの格納や読み取りは行われません。 | boolean<br/> false |
+| isBeaconApiDisabled | false の場合、SDK が [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 | boolean<br/>true |
+| onunloadDisableBeacon | タブが閉じられると、SDK により [Beacon API](https://www.w3.org/TR/beacon) を使用して残りのすべてのテレメトリが送信されます。 | boolean<br/> false |
+| sdkExtension | sdk 拡張機能の名前を設定します。 英字のみを使用できます。 拡張機能名はプレフィックスとして ai.internal.sdkVersion タグに付けられます (ext_javascript:2.0.0 など)。 | string<br/> null |
+| isBrowserLink&#8203;TrackingEnabled | true の場合、SDK によってすべての[ブラウザー リンク](/aspnet/core/client-side/using-browserlink)要求が追跡されます。 | boolean<br/>false |
+| appId | appId は、サーバー側の要求によってクライアント側で発生する AJAX 依存関係の相関関係のために使用されます。 Beacon API が有効になっているとき、これを自動的に使用することはできませんが、構成で手動で設定できます。 |string<br/> null |
+| enable&#8203;CorsCorrelation | truee の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての CORS 要求に追加され、送信される AJAX 依存関係がサーバー側の対応する要求と関連付けられます。 | boolean<br/>false |
+| namePrefix | localStorage および Cookie 名の接尾語として使用される省略可能な値。 | string<br/>undefined |
+| enable&#8203;AutoRoute&#8203;Tracking | シングル ページ アプリケーション (SPA) でのルート変更を自動的に追跡します。 true の場合、ルートの変更ごとに Application Insights に新しいページビューが送信されます。 ハッシュ ルート変更 (`example.com/foo#bar`) も新しいページ ビューとして記録されます。| boolean<br/>false |
+| enableRequest&#8203;HeaderTracking | true の場合、AJAX と Fetch の要求ヘッダーが追跡されます。 | boolean<br/> false |
+| enableResponse&#8203;HeaderTracking | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。 | boolean<br/> false |
+| distributedTracingMode | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。| `DistributedTracingModes`or<br/>numeric<br/>(v2.6.0 以降) `DistributedTracingModes.AI_AND_W3C`<br />(v2.5.11 以前) `DistributedTracingModes.AI` |
+| enable&#8203;AjaxErrorStatusText | true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。 | boolean<br/> false |
+| enable&#8203;AjaxPerfTracking |ブラウザーの window.performance の追加のタイミングを検索し、レポートされる `ajax` (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。 | boolean<br/> false |
+| maxAjaxPerf&#8203;LookupAttempts | window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。| numeric<br/> 3 |
+| ajaxPerfLookupDelay | `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。 | numeric<br/> 25 ms |
+| enableUnhandled&#8203;PromiseRejection&#8203;Tracking | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。 | boolean<br/> false |
+| disable&#8203;InstrumentationKey&#8203;Validation | true の場合、インストルメンテーション キーの検証チェックはバイパスされます。 | boolean<br/>false |
+| enablePerfMgr | 有効にすると (true)、perfEvents を (doPerf() ヘルパーを使用して) 生成するためにインストルメント化されたコードのローカル perfEvents が作成されます。 これは、使用量に基づいて SDK 内で、または必要に応じて独自のインストルメント化されたコード内で、パフォーマンスの問題を識別するために使用できます。 [詳細については、基本ドキュメントを参照してください](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)。 v2.5.7 以降 | boolean<br/>false |
+| perfEvtsSendAll | _enablePerfMgr_ が有効になっていて、[Iperfmanager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) が [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts) perfEvent() を起動した場合、このフラグにより、すべてのイベントに対してイベントが発生 (そしてすべてのリスナーに送信) するか (true)、'parent' イベントに対してのみ発生するか (false &lt;既定値&gt;) が決定します。<br />親の [Iperfevent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) は、このイベントが作成された時点で他の IPerfEvent がまだ実行されておらず、その _parent_ プロパティが null でも未定義でもないイベントです。 v2.5.7 以降 |  boolean<br />false |
+| idLength | 新しいランダム セッションとユーザー ID の値を生成するために使用される既定の長さを識別します。 既定値は 22 です。前の既定値は 5 (v2.5.8 以下) でした。前の最大長を保持する必要がある場合は、この値を 5 に設定する必要があります。 |  numeric<br />22 |
+
+## <a name="cookie-handling"></a>Cookie の処理
+
+バージョン 2.6.0 から、Cookie の管理はインスタンスから直接使用できるようになり、初期化後に無効にしたり再度有効にしたりできます。
+
+`disableCookiesUsage` または `cookieCfg.enabled` 構成を使用して初期化中に無効にされた場合は、[ICookieMgr](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts) の `setEnabled` 関数を使用して再度有効にすることができます。
+
+インスタンス ベースの Cookie 管理では、以前の CoreUtils グローバル関数である `disableCookies()`、`setCookie(...)`、`getCookie(...)`、`deleteCookie(...)` も置き換えられます。 また、バージョン 2.6.0 の一部として導入された tree-shaking の強化のメリットを得るために、グローバル関数を使用しないようにする必要があります。
+
+### <a name="icookiemgrconfig"></a>ICookieMgrConfig
+
+バージョン 2.6.0 で追加されたインスタンス ベースの Cookie 管理用の Cookie 構成。
+
+| 名前 | 説明 | 型と既定値 |
+|------|-------------|------------------|
+| enabled | SDK による Cookie の使用が現在のインスタンスによって有効かどうかを示すブール値。 false の場合、この構成によって初期化される SDK のインスタンスは、Cookie のデータを格納したり読み取ったりしません。 | boolean<br/> true |
+| domain | カスタム Cookie ドメイン。 これは、サブドメイン間で Application Insights Cookie を共有する場合に便利です。 指定されていない場合は、ルートの `cookieDomain` 値からの値を使用します。 | string<br/>null |
+| path | Cookie に使用するパスを指定します。指定されていない場合、ルートの `cookiePath` 値からの任意の値が使用されます。 | string <br/> / |
+| getCookie | 指定された Cookie 値をフェッチする関数。指定されていない場合は、内部のクッキー解析およびキャッシュを使用します。 | `(name: string) => string` <br/> null |
+| setCookie | 指定した値で指定された Cookie を設定する関数。Cookie を追加または更新するときにのみ呼び出されます。 | `(name: string, value: string) => void` <br/> null |
+| delCookie | 指定された値で指定した Cookie を削除する関数。Cookie が追加されるのか削除されるのか判断するために値を解析する必要がないように setCookie とは別になっています。 指定されない場合は、内部の Cookie 解析およびキャッシュが使用されます。 | `(name: string, value: string) => void` <br/> null |
+
+### <a name="simplified-usage-of-new-instance-cookie-manager"></a>新しいインスタンス Cookie マネージャーの使用の簡略化
+
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).setEnabled(true/false);
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).set("MyCookie", "the%20encoded%20value");
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).get("MyCookie");
+- appInsights.[getCookieMgr()](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/ICookieMgr.ts).del("MyCookie");
 
 ## <a name="enable-time-on-page-tracking"></a>ページ滞在時間の追跡を有効にする
 

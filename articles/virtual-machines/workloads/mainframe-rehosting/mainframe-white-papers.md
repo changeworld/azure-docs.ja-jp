@@ -1,19 +1,20 @@
 ---
 title: Azure Virtual Machines および Azure Storage を使用したメインフレームのトピックに関する Azure のホワイトペーパー
 description: メインフレーム移行、ホスト変更、および IBM Z ベースのシステムの Microsoft Azure への移行に関するリソースを入手します。
-services: multiple
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03a075cb2098557d72f0d864da4df910f5bc5f8c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74224741"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954294"
 ---
 # <a name="azure-white-papers-about-mainframe-topics"></a>メインフレームのトピックに関する Azure のホワイトペーパー
 
@@ -33,7 +34,7 @@ Microsoft Azure でメインフレームのワークロードを実行するに�
 
 ### <a name="deploy-ibm-db2-purescale-on-azure"></a>[Azure 上に IBM DB2 pureScale をデプロイする](https://azure.microsoft.com/resources/deploy-ibm-db2-purescale-on-azure/)
 
-最近 Azure 上に IBM DB2 環境を再ホストした企業での体験を説明します。 このガイドは、AzureCAT および DMJ チームのメンバーによって作成されました。氏名は次のとおりです。Larry Mead 氏、Benjamin Guinebertière 氏、Alessandro Vozza 氏、および Jonathon Frost 氏。 この移行時に行ったステップについて説明します。 その結果は、IBM Db2 pureScale チームのメンバーによって確認されました。 GitHub で利用可能なインストール スクリプトは、チームが一般的な中規模の OLTP ワークロードに使用したアーキテクチャに基づいています。
+最近 Azure 上に IBM DB2 環境を再ホストした企業での体験を説明します。 このガイドは、AzureCAT および DMJ チームメンバー (Larry Mead 氏、Benjamin Guinebertière 氏、Alessandro Vozza 氏、および Jonathon Frost 氏) によって作成されました。 この移行時に行ったステップについて説明します。 その結果は、IBM Db2 pureScale チームのメンバーによって確認されました。 GitHub で利用可能なインストール スクリプトは、チームが一般的な中規模の OLTP ワークロードに使用したアーキテクチャに基づいています。
 
 ### <a name="install-tmaxsoft-openframe-on-azure"></a>[Azure 上に TmaxSoft OpenFrame をインストールする](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 

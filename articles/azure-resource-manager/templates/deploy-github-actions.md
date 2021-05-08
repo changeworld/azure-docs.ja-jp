@@ -4,12 +4,12 @@ description: GitHub Actions を使用して Azure Resource Manager テンプレ�
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 564a21d565fb80eba605eece95562a809a93246f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec29ae019555c54ccdcef9dd743706f8d6401bbd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471926"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781975"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub Actions を使用した ARM テンプレートのデプロイ
 
@@ -38,7 +38,7 @@ ms.locfileid: "103471926"
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
 
-[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
+[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
 
 リソース グループがまだない場合は、リソース グループを作成します。
 

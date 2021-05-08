@@ -4,12 +4,12 @@ description: Azure Portal を使用して、サーバーレス実行のための
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 8d394a6f71fc5d31bd72a67a876a24a500a7cf01
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732185"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385991"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -42,13 +42,11 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 1. **[関数]** ウィンドウの左側のメニューで、 **[関数]** を選択し、上部のメニューから **[追加]** を選択します。 
  
-1. **[新規関数]** ウィンドウで **[Http トリガー]** を選択します。
+1. **[関数の追加]** ウィンドウで、 **[Http トリガー]** テンプレートを選択します。
 
     ![HTTP トリガー関数の選択](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. **[新規関数]** ウィンドウで、 **[新規関数]** の既定の名前を受け入れるか、新しい名前を入力します。 
-
-1. **[承認レベル]** ドロップダウン リストから **[匿名]** を選択し、 **[関数の作成]** を選択します。
+1. **[テンプレートの詳細]** で、 **[新しい関数]** に `HttpExample` を使用し、 **[[承認レベル]](functions-bindings-http-webhook-trigger.md#authorization-keys)** ドロップダウン リストから **[匿名]** を選択し、 **[追加]** を選択します。
 
     Azure によって HTTP トリガー関数が作成されます。 ここで、HTTP 要求を送信することで、新しい関数を実行できます。
 
@@ -62,11 +60,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL の末尾にクエリ文字列の値 `?name=<your_name>` を追加し、Enter キーを押して要求を実行します。 
-
-    次の例は、ブラウザーでの応答を示しています。
-
-    ![ブラウザーでの関数の応答。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
+1. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL の末尾にクエリ文字列の値 `?name=<your_name>` を追加し、Enter キーを押して要求を実行します。 ブラウザーには、クエリ文字列値をエコー バックする応答メッセージが表示されるはずです。 
 
     要求 URL に [アクセス キー](functions-bindings-http-webhook-trigger.md#authorization-keys) (`?code=...`) が含まれていた場合は、関数を作成するときに **[匿名]** アクセス レベルではなく **[関数]** を選択することを示します。 この場合は、代わりに `&name=<your_name>` を追加する必要があります。
 
@@ -78,6 +72,6 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

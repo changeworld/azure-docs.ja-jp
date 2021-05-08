@@ -3,12 +3,12 @@ title: MARS エージェントを使用して Windows Server にファイルを�
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを使用して、Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7ca0787ec38e1bc22b62e756c7ee56c5c9e93493
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91813255"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517336"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>MARS エージェントを使用して Windows Server にファイルを復元する
 
@@ -107,7 +107,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
 5. サンプルのコンテナーに対応するコンテナー資格情報ファイルを指定し、 **[次へ]** を選択します。
 
-    コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure portal で[サンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
+    コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure portal で[サンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-)。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
 
 6. **[バックアップ サーバーの選択]** ページで、表示されているコンピューターの一覧からソース コンピューターを選択し、パスフレーズを指定します。 **[次へ]** を選択します。
 
@@ -145,4 +145,4 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
 * ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。
 
-* [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.md)を確認する。
+* [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.yml)を確認する。

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: bc2bec364f8d752b7416ecccf0b00d0fbec4c8e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102623187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729850"
 ---
 Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
@@ -265,14 +265,14 @@ Event Hub の出力バインドに次のパラメーター型を使用できま�
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)に用意されています。
+* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)に用意されています。
 
 `out string paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out string` の代わりに `ICollector<string>` または `IAsyncCollector<string>` を使用します。
 
 ### <a name="additional-types"></a>その他の型 
-5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)の代わりに [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
+5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)の代わりに [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
@@ -283,14 +283,14 @@ Event Hub の出力バインドに次のパラメーター型を使用できま�
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)に用意されています。
+* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)に用意されています。
 
 `out string paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out string` の代わりに `ICollector<string>` または `IAsyncCollector<string>` を使用します。
 
 ### <a name="additional-types"></a>その他の型 
-5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)の代わりに [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
+5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)の代わりに [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

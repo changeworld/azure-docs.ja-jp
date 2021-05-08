@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: 42fb9f5389cbc31e772dc9cf36b6a975c5e18d3c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98939309"
 ---
-# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>シナリオ:Apache Hive から Azure HDInsight の Apache Zookeeper への接続を確立できない
+# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>シナリオ: Apache Hive から Azure HDInsight の Apache Zookeeper への接続を確立できない
 
 この記事では、Azure HDInsight クラスターで Interactive Query コンポーネントを使用するときのトラブルシューティングの手順と問題の可能な解決策について説明します。
 
@@ -27,7 +27,7 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 Hive からZookeeper への接続を確立できないことがあります。これにより、Hive ビューを起動できません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. Zookeeper サービスが正常であることを確認します。
 

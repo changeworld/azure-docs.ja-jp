@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f20fa22dac3fba4d01cbc5e398bafa4113e94a96
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84737531"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780301"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
@@ -61,7 +61,7 @@ ms.locfileid: "84737531"
     az group create --name NetworkWatcherRG --location eastus
     ```
 
-2. [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) を使用してネットワーク ウォッチャーを作成します。 次の例では、*米国東部* リージョンにネットワーク ウォッチャーを作成します。
+2. [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) を使用してネットワーク ウォッチャーを作成します。 次の例では、*米国東部* リージョンにネットワーク ウォッチャーを作成します。
 
     ```azurecli-interactive
     az network watcher configure \
@@ -70,7 +70,7 @@ ms.locfileid: "84737531"
       --enabled true
     ```
 
-3. [az network watcher show-topology](/cli/azure/network/watcher#az-network-watcher-show-topology) を使用してトポロジを表示します。 次の例は、*MyResourceGroup* という名前のリソース グループのトポロジを示します。
+3. [az network watcher show-topology](/cli/azure/network/watcher#az_network_watcher_show_topology) を使用してトポロジを表示します。 次の例は、*MyResourceGroup* という名前のリソース グループのトポロジを示します。
 
     ```azurecli-interactive
     az network watcher show-topology --resource-group MyResourceGroup

@@ -4,18 +4,20 @@ description: Linux VM 上のシミュレートされた TPM を使用して Azur
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 6/30/2020
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175518"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481992"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 この記事では、トラステッド プラットフォーム モジュール (TPM) を使用して Linux IoT Edge デバイスに対して自動プロビジョニングをテストする方法について説明します。 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](../iot-dps/about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
 
@@ -147,7 +149,7 @@ Device Provisioning Service を実行した後、概要ページから **[ID ス
 DPS 内に登録を作成するときに、**デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
 
 > [!TIP]
-> Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)を作成し、**Edge 対応** フラグを使用して、デバイスが IoT Edge デバイスであることを指定できます。
+> Azure CLI では、[登録](/cli/azure/iot/dps/enrollment)を作成し、**Edge 対応** フラグを使用して、デバイスが IoT Edge デバイスであることを指定できます。
 
 1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
 
@@ -184,6 +186,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 ランタイムがデバイスにインストールされたら、デバイス プロビジョニング サービスと IoT Hub に接続するために使用される情報でデバイスを構成します。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
 1. 前のセクションで集めた DPS **ID スコープ** とデバイスの **登録 ID** を把握しておきます。
 
 1. IoT Edge デバイスで構成ファイルを開きます。
@@ -209,11 +214,52 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    # dynamic_reprovisioning: false
    ```
 
-   必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
-
 1. `scope_id` と `registration_id` の値を DPS およびデバイス情報で更新します。
 
+1. 必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
+
+1. ファイルを保存して閉じます。
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+1. 前のセクションで集めた DPS **ID スコープ** とデバイスの **登録 ID** を把握しておきます。
+
+1. IoT Edge デバイスで構成ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/aziot/config.toml
+   ```
+
+1. ファイルのプロビジョニング構成セクションを見つけます。 TPM プロビジョニング行のコメントを解除し、他にもプロビジョニング行があれば、それらのコメントが解除されていることを確認します。
+
+   ```toml
+   # DPS provisioning with TPM
+   [provisioning]
+   source = "dps"
+   global_endpoint = "https://global.azure-devices-provisioning.net"
+   id_scope = "<SCOPE_ID>"
+   
+   [provisioning.attestation]
+   method = "tpm"
+   registration_id = "<REGISTRATION_ID>"
+   ```
+
+1. `id_scope` と `registration_id` の値を DPS およびデバイス情報で更新します。
+
+1. 必要に応じて、ファイルの自動再プロビジョニング モード セクションを検索します。 `auto_reprovisioning_mode` パラメーターを使用して、デバイスの再プロビジョニング動作を、`Dynamic`、`AlwaysOnStartup`、または `OnErrorOnly` のいずれかに構成します。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
+
+1. ファイルを保存して閉じます。
+:::moniker-end
+<!-- end 1.2 -->
+
 ## <a name="give-iot-edge-access-to-the-tpm"></a>IoT Edge に TPM へのアクセス権を付与する
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 デバイスを自動的にプロビジョニングするには、IoT Edge ランタイムが TPM にアクセスする必要があります。
 
@@ -265,9 +311,68 @@ IoT Edge ランタイムに TPM へのアクセス権を付与するには、sys
    ```
 
    適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="restart-the-iot-edge-runtime"></a>IoT Edge ランタイムを再起動する
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge ランタイムは、デバイスの TPM へのアクセスを仲介する TPM サービスに依存しています。 デバイスを自動的にプロビジョニングするには、このサービスが TPM にアクセスする必要があります。
 
+TPM へのアクセス権を付与するには、systemd 設定をオーバーライドして、`aziottpm` サービスに root 特権を付与します。 サービス権限を昇格したくない場合は、次の手順を使用して、TPM へのアクセス権を手動で付与することもできます。
+
+1. デバイスで、TPM ハードウェア モジュールへのファイル パスを探してローカル変数として保存します。
+
+   ```bash
+   tpm=$(sudo find /sys -name dev -print | fgrep tpm | sed 's/.\{4\}$//')
+   ```
+
+2. IoT Edge ランタイムに tpm0 へのアクセス権を付与する新しいルールを作成します。
+
+   ```bash
+   sudo touch /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+3. 規則ファイルを開きます。
+
+   ```bash
+   sudo nano /etc/udev/rules.d/tpmaccess.rules
+   ```
+
+4. 次のアクセス情報を規則ファイルにコピーします。
+
+   ```input
+   # allow aziottpm access to tpm0
+   KERNEL=="tpm0", SUBSYSTEM=="tpm", OWNER="aziottpm", MODE="0600"
+   ```
+
+5. ファイルを保存して終了します。
+
+6. udev system をトリガーして、新しい規則を評価します。
+
+   ```bash
+   /bin/udevadm trigger $tpm
+   ```
+
+7. 規則が正常に適用されたことを確認します。
+
+   ```bash
+   ls -l /dev/tpm0
+   ```
+
+   成功した場合の出力は、次のようになります。
+
+   ```output
+   crw-rw---- 1 root aziottpm 10, 224 Jul 20 16:27 /dev/tpm0
+   ```
+
+   適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。
+:::moniker-end
+<!-- end 1.2 -->
+
+## <a name="restart-iot-edge-and-verify-successful-installation"></a>IoT Edge を再起動して正常にインストールされたことを確認する
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 デバイスで行ったすべての構成の変更が反映されるように、IoT Edge ランタイムを再起動します。
 
    ```bash
@@ -280,6 +385,12 @@ IoT Edge ランタイムが実行されていることを確認します。
    sudo systemctl status iotedge
    ```
 
+デーモンのログを調べます。
+
+```cmd/sh
+journalctl -u iotedge --no-pager --no-full
+```
+
 プロビジョニング エラーが発生した場合は、構成の変更がまだ有効になっていない可能性があります。 IoT Edge を再起動をもう一度試してください。
 
    ```bash
@@ -287,22 +398,40 @@ IoT Edge ランタイムが実行されていることを確認します。
    ```
 
 または、変更が新たな開始時に有効になる場合は、仮想マシンの再起動を試してください。
+:::moniker-end
+<!-- end 1.1 -->
 
-## <a name="verify-successful-installation"></a>インストールの成功を確認する
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+デバイスで行った構成の変更を適用します。
 
-ランタイムが正常に起動した場合は、IoT Hub に移動して、新しいデバイスが自動的にプロビジョニングされたことを確認できます。 これで、デバイスで IoT Edge モジュールを実行する準備ができました。
+   ```bash
+   sudo iotedge config apply
+   ```
 
-IoT Edge デーモンの状態を確認します。
+IoT Edge ランタイムが実行されていることを確認します。
 
-```cmd/sh
-systemctl status iotedge
-```
+   ```bash
+   sudo iotedge system status
+   ```
 
 デーモンのログを調べます。
 
-```cmd/sh
-journalctl -u iotedge --no-pager --no-full
-```
+   ```cmd/sh
+   sudo iotedge system logs
+   ```
+
+プロビジョニング エラーが発生した場合は、構成の変更がまだ有効になっていない可能性があります。 IoT Edge デーモンを再起動してみてください。
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+または、変更が新たな開始時に有効になる場合は、仮想マシンの再起動を試してください。
+:::moniker-end
+<!-- end 1.2 -->
+
+ランタイムが正常に起動した場合は、IoT Hub に移動して、新しいデバイスが自動的にプロビジョニングされたことを確認できます。 これで、デバイスで IoT Edge モジュールを実行する準備ができました。
 
 実行中のモジュールを一覧表示します。
 

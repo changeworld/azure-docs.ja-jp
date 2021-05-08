@@ -3,19 +3,18 @@ title: Azure Key Vault のファイアウォールと仮想ネットワークを
 description: Key Vault のファイアウォールと仮想ネットワークを構成する手順
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 13ead70f278f12866dbe00b53c487aebcc43304f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8352deb00f6954d862b9e44646cce1604e2c5428
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742638"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749620"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 
@@ -29,13 +28,14 @@ ms.locfileid: "101742638"
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault ファイアウォールを無効にする (既定値)
 
-既定では、新しいキー コンテナーを作成するとき、Azure Key Vault ファイアウォールは無効になります。 すべてのアプリケーションおよび Azure サービスから、キー コンテナーにアクセスし、キー コンテナーに要求を送信することができます。 なお、この構成は、お客様のキー コンテナー上で任意のユーザーが操作を行えるということを意味するものではありません。 キー コンテナーは、Azure Active Directory 認証およびアクセス ポリシーのアクセス許可を必要とすることで、キー コンテナーに格納されているシークレット、キー、および証明書に引き続き制限されます キー コンテナー認証の詳細については、[こちら](./authentication-fundamentals.md)のキー コンテナー認証の基礎に関するドキュメントを参照してください。
+既定では、新しいキー コンテナーを作成するとき、Azure Key Vault ファイアウォールは無効になります。 すべてのアプリケーションおよび Azure サービスから、キー コンテナーにアクセスし、キー コンテナーに要求を送信することができます。 なお、この構成は、お客様のキー コンテナー上で任意のユーザーが操作を行えるということを意味するものではありません。 キー コンテナーは、Azure Active Directory 認証およびアクセス ポリシーのアクセス許可を必要とすることで、キー コンテナーに格納されているシークレット、キー、および証明書に引き続き制限されます キー コンテナー認証の詳細については、[こちら](./authentication-fundamentals.md)のキー コンテナー認証の基礎に関するドキュメントを参照してください。 詳細については、「[ファイアウォールの向こう側にある Azure Key Vault へのアクセス](./access-behind-firewall.md)」を参照してください。
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault ファイアウォールを有効にする (信頼されたサービスのみ)
 
-Key Vault ファイアウォールを有効にすると、[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\) に対するオプションが表示されます。 信頼されたサービスのリストには、単一の Azure サービスがすべてが含まれるわけではありません。 たとえば、Azure DevOps は信頼されたサービスのリストに掲載されていません。 **これは、信頼されたサービスのリストに表示されないサービスが信頼されていない、またはセキュリティで保護されていないということを意味するものではありません。** 信頼されたサービスのリストには、サービス上で実行されるすべてのコードを Microsoft が制御するサービスが含まれます。 Azure DevOps などの Azure サービス内ではユーザーがカスタム コードを記述できるため、Microsoft はサービスの包括的承認を作成するオプションを提供していません。 さらに、サービスが、信頼されたサービスのリストに掲載されていたからといって、それがすべてのシナリオに対して許可されるわけではありません。
+Key Vault ファイアウォールを有効にすると、[Allow trusted Microsoft services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\) に対するオプションが表示されます。 信頼されたサービスのリストには、単一の Azure サービスがすべてが含まれるわけではありません。 たとえば、Azure DevOps は信頼されたサービスのリストに掲載されていません。 **これは、信頼されたサービスのリストに表示されないサービスが信頼されていない、またはセキュリティで保護されていないということを意味するものではありません。** 信頼されたサービスのリストには、サービス上で実行されるすべてのコードを Microsoft が制御するサービスが含まれます。 Azure DevOps などの Azure サービス内ではユーザーがカスタム コードを記述できるため、Microsoft はサービスの包括的承認を作成するオプションを提供していません。 さらに、サービスが、信頼されたサービスのリストに掲載されていたからといって、それがすべてのシナリオに対して許可されるわけではありません。 
 
 使おうとしているサービスが信頼されたサービスのリストにあるかどうかを判断するには、[こちら](./overview-vnet-service-endpoints.md#trusted-services)のドキュメントを参照してください。
+攻略ガイドについては、こちらの[ポータル、Azure CLI、PowerShell](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) 向けの手順に従ってください。
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault ファイアウォールを有効にする (IPv4 アドレスおよび範囲 - 静的 IP)
 
@@ -68,7 +68,7 @@ Key Vault ファイアウォールを介して Azure サービス全体を許可
 ご利用のキー コンテナー上でプライベート リンク接続を構成する方法については、[こちら](./private-link-service.md)のドキュメントを参照してください。
 
 > [!IMPORTANT]
-> ファイアウォール ルールを有効にした後は、要求が許可された仮想ネットワークまたは IPv4 アドレス範囲から送信された場合にのみ、ユーザーは Key Vault [データ プレーン](secure-your-key-vault.md#data-plane-access-control)の操作を実行できます。 これは、Azure portal から Key Vault にアクセスする場合にも適用されます。 ユーザーは Azure portal からキー コンテナーを参照できますが、クライアント マシンが許可リストに登録されていない場合、キー/シークレット/証明書を一覧表示できない場合があります。 これは、他の Azure サービスによる Key Vault 選択機能にも影響します。 ファイアウォール ルールでクライアント マシンが許可されていない場合、ユーザーはキー コンテナーを一覧表示できても、キーは一覧表示できないことがあります。
+> ファイアウォール ルールを有効にした後は、要求が許可された仮想ネットワークまたは IPv4 アドレス範囲から送信された場合にのみ、ユーザーは Key Vault [データ プレーン](security-overview.md#privileged-access)の操作を実行できます。 これは、Azure portal から Key Vault にアクセスする場合にも適用されます。 ユーザーは Azure portal からキー コンテナーを参照できますが、クライアント マシンが許可リストに登録されていない場合、キー/シークレット/証明書を一覧表示できない場合があります。 これは、他の Azure サービスによる Key Vault 選択機能にも影響します。 ファイアウォール ルールでクライアント マシンが許可されていない場合、ユーザーはキー コンテナーを一覧表示できても、キーは一覧表示できないことがあります。
 
 > [!NOTE]
 > 構成に関する次の制限事項に注意してください。

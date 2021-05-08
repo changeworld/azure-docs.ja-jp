@@ -3,12 +3,12 @@ title: Azure Relay の例外とその解決方法 | Microsoft Docs
 description: Azure Relay の例外と、それを解決するための推奨されるアクションの一覧。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 44eeba6eb7b8cfd4e81a923c2d9a3155f1709f2c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e3f9fe2e8aac826bd63d9842bd3380be10e1b87e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98625150"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313948"
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
 
@@ -80,7 +80,7 @@ The time allotted to this operation may have been a portion of a longer timeout.
     場合によっては、Relay サービスで要求の処理が遅れることがあります。 これは、トラフィックの多い時間帯などに発生することがあります。 これが発生した場合は、遅延の後、操作が成功するまで操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、[Azure のサービス状態のサイト](https://azure.microsoft.com/status/)を確認し、既知のサービス停止がないかどうかを確認してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Relay に関する FAQ](relay-faq.md)
+* [Azure Relay に関する FAQ](relay-faq.yml)
 * [Relay 名前空間の作成](relay-create-namespace-portal.md)
 * [Azure Relay と .NET の使用](relay-hybrid-connections-dotnet-get-started.md)
 * [Azure Relay と Node の使用](relay-hybrid-connections-node-get-started.md)

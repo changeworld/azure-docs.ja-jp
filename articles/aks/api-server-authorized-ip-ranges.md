@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 8fca3fe61e26a031e6ea09692c9ba0781bfca21f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890640"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769645"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -27,7 +27,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 
 API サーバーの許可された IP 範囲の機能には、次の制限があります。
 - API サーバーで許可される IP アドレス範囲が、2019 年 10 月のプレビューの範囲外に移動され後に作成されたクラスターでは、API サーバーで許可される IP アドレス範囲は *Standard* SKU のロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。 API サーバーで許可される IP アドレス範囲は、プライベート クラスターではサポートされません。
-- この機能は、[ノード プール内のノードごとのパブリック IP プレビュー機能](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)を使用するクラスターとは互換性がありません。
+- この機能は、[ノードごとのパブリック IP](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools) を使用するクラスターとは互換性がありません。
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API サーバーの許可された IP 範囲の概要
 
@@ -186,9 +186,9 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-show]: /cli/azure/aks#az_aks_show
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md
 [install-azure-cli]: /cli/azure/install-azure-cli

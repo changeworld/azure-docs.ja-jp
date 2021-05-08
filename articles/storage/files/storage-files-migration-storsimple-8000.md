@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 814a2f7e32f173111e45fff02f00c3e4d2a9a670
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601085"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075594"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 および 8600 から Azure File Sync への移行
 
@@ -65,11 +65,11 @@ Azure ファイル共有により、属性、アクセス許可、タイムス�
 
 移行が成功するには、"サービス データ暗号化キー" が必要です。 インベントリ内の各アプライアンスに対してこのキーを 1 つレコードから取得するには、今がよいタイミングです。
 
-レコード内にキーが見つからない場合は、アプライアンスからキーを取得できます。 各アプライアンスには一意の暗号化キーがあります。 キーを取得するには:
+レコード内にキーが見つからない場合は、アプライアンスから新しいキーを生成できます。 各アプライアンスには一意の暗号化キーがあります。
 
-* Azure portal で Microsoft Azure にサポート リクエストを提出します。 リクエストには、StorSimple デバイスのシリアル番号と、"サービス データ暗号化キー" を取得する要求が含まれている必要があります。
-* StorSimple サポート エンジニアから、仮想会議についてお願いする連絡があります。
-* 会議が始まる前に、[シリアル コンソール](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)または[リモート PowerShell セッション](../../storsimple/storsimple-8000-windows-powershell-administration.md#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)を使用して、StorSimple アプライアンスに接続してください。
+#### <a name="change-the-service-data-encryption-key"></a>サービス データ暗号化キーの変更
+
+[!INCLUDE [storage-files-migration-generate-key](../../../includes/storage-files-migration-generate-key.md)]
 
 > [!CAUTION]
 > StorSimple アプライアンスに接続する方法を決定するときは、次の点を考慮してください。

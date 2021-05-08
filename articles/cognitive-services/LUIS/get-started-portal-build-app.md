@@ -4,13 +4,13 @@ description: このクイックスタートでは、アプリの基本パーツ�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 03/26/2021
+ms.openlocfilehash: c2f2bafe68dd3f3dad704ba12cdd4d01bf4f6588
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436676"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278764"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "96436676"
 
 表示されたウィンドウで、次の情報を入力します。
 
-|名前  |説明  |
+|名前  |[説明]  |
 |---------|---------|
 |名前     | アプリの名前。 たとえば、"home automation"。 必須。        |
 |カルチャ     | アプリによって認識され、話される言語。 必須。   |
@@ -164,4 +164,4 @@ LUIS ポータル内のインタラクティブな **[テスト]** ウィンド�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [2.アプリのデプロイ](get-started-portal-deploy-app.md)
+> [アプリのデプロイ](get-started-portal-deploy-app.md)

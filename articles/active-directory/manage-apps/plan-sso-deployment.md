@@ -2,23 +2,23 @@
 title: Microsoft Azure Active Directory シングル サインオンのデプロイ計画
 description: 組織内での SSO を計画、デプロイ、管理できるようにガイドします。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/10/2020
-ms.author: baselden
+ms.author: iangithinji
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 3f395eaf21dce0077c1239ef2251973aeb5faa70
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258101"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375612"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -291,17 +291,12 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 
 - [Microsoft アプリケーションへのサインインに関する問題](./application-sign-in-problem-first-party-microsoft.md)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure アプリケーション ギャラリーのアプリケーションの SSO の問題
+#### <a name="sso-issues-for-applications"></a>アプリケーションの SSO の問題
 
-- [Azure アプリケーション ギャラリーのアプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
+- [アプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
 
-- [Azure アプリケーション ギャラリーのアプリケーションのフェデレーション SSO に関する問題](./application-sign-in-problem-federated-sso-gallery.md)   
+- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure アプリケーション ギャラリー以外のアプリケーションの SSO の問題
-
-- [Azure アプリケーション ギャラリー以外のアプリケーションのパスワード SSO に関する問題](./troubleshoot-password-based-sso.md) 
-
-- [Azure アプリケーション ギャラリー以外のアプリケーションのフェデレーション SSO に関する問題](./application-sign-in-problem-federated-sso-gallery.md)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: 9cef163c1b53360222ca32a827552fa361e9dd40
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5209e715fab422a50e31810b5eb0d370d5fc61cd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98874249"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792527"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -99,7 +99,7 @@ Azure Files を使用して、従来のオンプレミス ファイル サーバ
 
 1. [Azure にストレージ アカウントを作成します](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージを選択した場合は、障害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)」を参照してください。
 2. [ファイル共有を作成します](../storage/files/storage-how-to-create-file-share.md)。
-3. Azure ファイル サーバーで [File Sync を開始](../storage/files/storage-sync-files-deployment-guide.md)します。
+3. Azure ファイル サーバーで [File Sync を開始](../storage/file-sync/file-sync-deployment-guide.md)します。
 4. 同期グループを作成します。 同期グループ内のエンドポイントは、相互に同期を維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つは含まれている必要があります。 また、Windows サーバー上のパスを表すサーバー エンドポイントも 1 つ含まれている必要があります。
 5. Azure ファイル共有とオンプレミスのサーバーでファイルの同期が維持されます。
 6. オンプレミス環境で障害が発生した場合は、[復旧計画](site-recovery-create-recovery-plans.md)を使用してフェールオーバーを実行します。 [Azure ファイル共有をマウント](../storage/files/storage-how-to-use-files-windows.md)して仮想マシン内の共有にアクセスするスクリプトを追加します。
@@ -148,7 +148,7 @@ File Sync を使用するには、次の手順に従います。
 
 1. [Azure にストレージ アカウントを作成します](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージ (推奨) を選択した場合は、障害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)」を参照してください。
 2. [ファイル共有を作成します](../storage/files/storage-how-to-create-file-share.md)。
-3. オンプレミスのファイル サーバーに [File Sync をデプロイ](../storage/files/storage-sync-files-deployment-guide.md)します。
+3. オンプレミスのファイル サーバーに [File Sync をデプロイ](../storage/file-sync/file-sync-deployment-guide.md)します。
 4. 同期グループを作成します。 同期グループ内のエンドポイントは、相互に同期を維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つは含まれている必要があります。 また、オンプレミスの Windows サーバー上のパスを表すサーバー エンドポイントも 1 つ含まれている必要があります。
 5. Azure ファイル共有とオンプレミスのサーバーでファイルの同期が維持されます。
 6. オンプレミス環境で障害が発生した場合は、[復旧計画](site-recovery-create-recovery-plans.md)を使用してフェールオーバーを実行します。 Azure ファイル共有をマウントして仮想マシン内の共有にアクセスするスクリプトを追加します。

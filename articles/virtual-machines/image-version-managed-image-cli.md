@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1d0644b9ec9009fe5d1db7701834cb9788f86ab0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553784"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790169"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLI を使用してマネージド イメージをイメージ バージョンに複製する
 Shared Image Gallery に複製する既存のマネージド イメージがある場合は、マネージド イメージから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースのマネージド イメージを削除できます。 [PowerShell](image-version-managed-image-powershell.md) を使用して、マネージド イメージから Shared Image Gallery に移行することもできます。
@@ -43,7 +43,7 @@ Shared Image Gallery に複製する既存のマネージド イメージがあ�
 
 イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-[az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
+[az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) を使用して、ギャラリー内にイメージ定義を作成します。
 
 この例では、イメージ定義は *myImageDefinition* という名前で、[一般化された](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
@@ -65,7 +65,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、バージョンを作成します。 イメージ バージョンを作成するためにベースラインとして使用する、マネージド イメージの ID を渡す必要があります。 イメージの ID を取得するには、[az image list](/cli/azure/image?view#az-image-list) を使用します。 
+[az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用して、バージョンを作成します。 イメージ バージョンを作成するためにベースラインとして使用する、マネージド イメージの ID を渡す必要があります。 イメージの ID を取得するには、[az image list](/cli/azure/image?view#az_image_list) を使用します。 
 
 ```azurecli-interactive
 az image list --query "[].[name, id]" -o tsv

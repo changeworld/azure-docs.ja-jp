@@ -4,12 +4,12 @@ description: Azure コマンド ライン インターフェイスを使用し�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 44be66957aa745179ffe4cd00db75f1d47237dfc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028881"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771049"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -120,10 +120,10 @@ YAML ファイル、[Resource Manager テンプレート](https://github.com/Azu
 
 たとえば、YAML ファイルを使用する場合、Azure Container Instances に委任されたサブネットを持つ仮想ネットワークにデプロイできます。 次のプロパティを指定します。
 
-* `ipAddress`:コンテナー グループのプライベート IP アドレス設定。
+* `ipAddress`: コンテナー グループのプライベート IP アドレス設定。
   * `ports`:開くポート (もしあれば)。
   * `protocol`:開いたポートのプロトコル (TCP または UDP)。
-* `networkProfile`:VM の仮想ネットワークとサブネットのネットワーク設定。
+* `networkProfile`: VM の仮想ネットワークとサブネットのネットワーク設定。
   * `id`:`networkProfile` の完全な Resource Manager リソース ID。
 
 ネットワーク プロファイルの ID を取得するには、仮想ネットワークと委任されたサブネットを含んでいるリソース グループの名前を指定して、[az network profile list][az-network-profile-list] コマンドを実行します。
@@ -234,8 +234,8 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [aci-helloworld]: https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
-[az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
-[az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show
+[az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
+[az-network-profile-list]: /cli/azure/network/profile#az_network_profile_list
 [container-regions]: container-instances-region-availability.md

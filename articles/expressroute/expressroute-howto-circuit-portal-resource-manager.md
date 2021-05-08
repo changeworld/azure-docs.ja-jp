@@ -3,16 +3,18 @@ title: 'クイックスタート: ExpressRoute を使った回線の作成と変
 description: このクイックスタートでは、Azure portal を使用して、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除を行う方法について説明します。
 services: expressroute
 author: duongau
-ms.service: expressroute
-ms.topic: quickstart
-ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: b0fd844021e7398e061072d7939b782616580c1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 10/21/2020
+ms.topic: quickstart
+ms.service: expressroute
+ms.custom:
+- mode-portal
+ms.openlocfilehash: f62b60a9c33cd1b813b8f3307ec82d4242be168b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96185200"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534801"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>クイックスタート: ExpressRoute 回線の作成と変更
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: b4422c664071087ccae73a5b6f642b53dcca74bf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16c3ac10af7d39ec35cde1cd9d279bced54fd8aa
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103574647"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062507"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -98,7 +98,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 
 サポートされているシリーズと制限の詳細については、次の表を参照してください。
 
-| **サポートされている VM シリーズ**  | **制限事項** | **Category** | **サポートしているもの** |
+| **サポートされている VM シリーズ**  | **制限事項** | **カテゴリ** | **サポートしているもの** |
 |------------|------------|------------|------------|
 | D | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |
 | DDSv4 | [なし] : | 汎用 | コンピューティングのクラスターとインスタンス |

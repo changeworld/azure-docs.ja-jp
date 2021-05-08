@@ -1,36 +1,28 @@
 ---
-title: Windows Virtual Desktop での MSIX アプリのアタッチ (プレビュー) PowerShell - Azure
+title: Windows Virtual Desktop での MSIX アプリのアタッチ PowerShell - Azure
 description: PowerShell を使用して MSIX アプリのアタッチを Windows Virtual Desktop 用に設定する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 1196982fedc7321805e36cceed27c90e43a6e705
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99558329"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500585"
 ---
-# <a name="set-up-msix-app-attach-preview-using-powershell"></a>PowerShell を使用して MSIX アプリのアタッチ (プレビュー) を設定する
+# <a name="set-up-msix-app-attach-using-powershell"></a>PowerShell を使用して MSIX アプリのアタッチを設定する
 
-> [!IMPORTANT]
-> 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Azure portal に加え、MSIX アプリのアタッチ (プレビュー) を PowerShell で手動で設定することもできます。 この記事では、PowerShell を使用して MSIX アプリのアタッチを設定する方法について説明します。
+Azure portal に加え、PowerShell を使用して手動で MSIX アプリのアタッチを設定することもできます。 この記事では、PowerShell を使用して MSIX アプリのアタッチを設定する方法について説明します。
 
 ## <a name="requirements"></a>必要条件
-
->[!IMPORTANT]
->作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリ アタッチを有効にしてください。 承認されたリクエストがない場合、MSIX アプリ アタッチは機能しません。 リクエストの承認には、営業日に最大で 24 時間かかる可能性があります。 リクエストが受諾されて完了すると、電子メールが届きます。
 
 MSIX アプリ アタッチを構成するために必要な項目を次に示します。
 
 - 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 - 少なくとも 1 つのアクティブなセッション ホストが含まれている Windows Virtual Desktop ホスト プール。
-- このホスト プールは検証環境に存在している必要があります。
 - デスクトップ リモート アプリ グループ。
 - MSIX パッケージ化ツール。
 - MSIX のパッケージされたアプリケーションは、ファイル共有にアップロードされる MSIX イメージに展開されます。

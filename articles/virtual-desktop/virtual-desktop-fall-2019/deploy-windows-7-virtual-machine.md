@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 2659e14490cf7d0aab32d8783a744478027f0a58
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88005068"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444940"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする
 

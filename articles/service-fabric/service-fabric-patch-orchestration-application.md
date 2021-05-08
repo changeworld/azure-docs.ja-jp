@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614413"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448556"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -222,7 +222,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 | WUOperationTimeOutInMinutes | int <br>(既定値:*90*)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | WURescheduleCount     | int <br> (既定値:*5*)                  | 操作が繰り返し失敗する場合に、サービスで Windows 更新プログラムの再スケジュールを行う最大回数。          |
 | WURescheduleTimeInMinutes | int <br>(既定値:*30*) | 問題が解決しない場合に、サービスで Windows 更新プログラムの再スケジュールを行う間隔。 |
-| WUFrequency           | コンマ区切りの文字列 (既定値:*Weekly, Wednesday, 7:00:00*)     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>- Monthly, DD, HH:MM:SS (例:*Monthly, 5, 12:22:32*)。 _DD_ (日) フィールドに使用できる値は、1 から 28 の数字と _last_ です。 <br>- Weekly, Day, HH:MM:SS (例:*Weekly, Tuesday, 12:22:32*)  <br>- Daily, HH:MM:SS (例:*Daily, 12:22:32*)  <br>- Week, Day, HH:MM:SS (例:*2, Friday, 21:00:00* は、毎月第 2 週の金曜日の午後 9:00 UTC を示します) <br>- *None* は、Windows 更新プログラムが実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
+| WUFrequency           | コンマ区切りの文字列 (既定値:*Weekly, Wednesday, 7:00:00*)     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>- Monthly, DD, HH:MM:SS (例:*Monthly, 5, 12:22:32*)。 _DD_ (日) フィールドに使用できる値は、1 から 28 の数字と _last_ です。 <br>- Weekly, Day, HH:MM:SS (例:*Weekly, Tuesday, 12:22:32*)  <br>- Daily, HH:MM:SS (例:*Daily, 12:22:32*)  <br>- MonthlyByWeekAndDay, Week, Day, HH:MM:SS (例:*MonthlyByWeekAndDay, 2, Friday, 21:00:00* は、毎月第 2 週の金曜日の午後 9:00 UTC を示します) <br>- *None* は、Windows 更新プログラムが実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
 | AcceptWindowsUpdateEula | Boolean <br>(既定値: *true*) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
 
 > [!TIP]

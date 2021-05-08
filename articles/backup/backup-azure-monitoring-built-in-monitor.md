@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 2273b66be88cb22a15d0779ed2918ba3d94da1ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83ed5af00bb61d7a8929e710b52e60c33c0f479b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713373"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559215"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -130,7 +130,7 @@ Azure Backup は、Azure Monitor を介してアラートを提供し、ユー�
 - バックアップ エラー (バックアップ エラーに関するアラートを取得するには、プレビュー ポータルで **EnableAzureBackupJobFailureAlertsToAzureMonitor** という名前の AFEC フラグを登録する必要があります)
 - 復元エラー (復元エラーに関するアラートを取得するには、プレビュー ポータルで **EnableAzureBackupJobFailureAlertsToAzureMonitor** という名前の AFEC フラグを登録する必要があります)
 
-Azure Monitor アラートについて詳しくは、「[Azure のアラートの概要](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-overview)」を参照してください。
+Azure Monitor アラートについて詳しくは、「[Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/27/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c772b3f30b211cf83512ca2ff2f10325fb4bc1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98735092"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642883"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Equinix Federation App の統合
 
@@ -37,7 +37,10 @@ ms.locfileid: "98735092"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Equinix Federation App では、**SP** initiated SSO がサポートされます
+* Equinix Federation App では、**SP** Initiated SSO がサポートされます。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-equinix-federation-app-from-the-gallery"></a>ギャラリーからの Equinix Federation App の追加
 
@@ -70,20 +73,16 @@ Equinix Federation App で Azure AD SSO を構成してテストするには、�
 
 1. Azure portal の **Equinix Federation App** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`Equinix:<CUSTOM_IDENTIFIER>`
-
-    c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.equinix.com/sp/ACS.saml2` のパターンを使用して URL を入力します
+    **[サインオン URL]** ボックスに、`https://<customerprefix>customerportal.equinix.com` の形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Equinix Federation App クライアント サポート チーム](mailto:prodsecops@equinix.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 この値を取得するには、[Equinix Federation App クライアント サポート チーム](mailto:prodsecops@equinix.com)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -92,6 +91,7 @@ Equinix Federation App で Azure AD SSO を構成してテストするには、�
 1. **[Equinix Federation App のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -128,13 +128,14 @@ Equinix Federation App で Azure AD SSO を構成してテストするには、�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Equinix Federation App のサインオン URL にリダイレクトされます。 
+Equinix Federation App のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Equinix Federation App のサインオン URL に直接移動し、そこからログイン フローを開始します。
-
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Equinix Federation App] タイルをクリックすると、Equinix Federation App サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+ > [!NOTE]
+ > **[このアプリケーションをテストします]** リンクを使用するか、Equinix Federation App タイルをクリックして、Azure アプリケーションをテストしようとしても正しく動作しません。なぜなら、これは IdP-Initiated SSO であり、Equinix が既定ではサポートしていないためです。  マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Equinix Federation App を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Equinix Federation App を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+

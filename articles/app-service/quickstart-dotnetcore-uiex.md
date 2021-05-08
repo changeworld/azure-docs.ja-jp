@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff86bedf47395b50dc25e552b8b3ed4176e23b65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102214237"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769105"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -256,7 +256,7 @@ az login
     <li><code>az</code> コマンドが認識されない場合は、「<a href="#1-prepare-your-environment">環境を準備する</a>」の説明に従って Azure CLI がインストールされていることを確認してください。</li>
     <li><code>&lt;app-name&gt;</code> を Azure 全体で一意の名前で置き換えます ("<em>有効な文字は、<code>a-z</code>、<code>0-9</code>、および <code>-</code> です</em>")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。</li>
     <li><code>--sku F1</code> 引数を使用すると、Free 価格レベルで Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。</li>
-    <li>必要に応じて、引数 <code>--location &lt;location-name&gt;</code> を含めることができます。ここで、<code>&lt;location-name&gt;</code> は利用可能な Azure リージョンです。 <a href="/cli/azure/appservice#az-appservice-list-locations"><code>az account list-locations</code></a> コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。</li>
+    <li>必要に応じて、引数 <code>--location &lt;location-name&gt;</code> を含めることができます。ここで、<code>&lt;location-name&gt;</code> は利用可能な Azure リージョンです。 <a href="/cli/azure/appservice#az_appservice_list_locations"><code>az account list-locations</code></a> コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。</li>
     </ul>
     </details>
     
@@ -268,7 +268,7 @@ az login
     <ul>
     <li>既定のリソース グループを作成する。</li>
     <li>既定の App Service プランを作成する。</li>
-    <li>指定された名前で <a href="/cli/azure/webapp#az-webapp-create">App Service アプリを作成</a>する。</li>
+    <li>指定された名前で <a href="/cli/azure/webapp#az_webapp_create">App Service アプリを作成</a>する。</li>
     <li>現在の作業ディレクトリからアプリにファイルを <a href="/azure/app-service/deploy-zip">zip してデプロイ</a>する。</li>
     <li>実行中、リソースの作成、ログ記録、ZIP デプロイに関するメッセージが表示されます。</li>
     </ul>
@@ -302,14 +302,14 @@ http://<app_name>.azurewebsites.net
 
 <hr/> 
 
-## <a name="7-update-and-redeploy-the-code"></a>7.コードを更新して再デプロイする
+## <a name="7-update-and-redeploy-the-code&quot;></a>7.コードを更新して再デプロイする
 
 1. ローカル ディレクトリで、**_Startup.cs_ ファイルを開き** ます。 
 
 1. メソッド呼び出し `context.Response.WriteAsync` 内のテキストに **小さな変更を加え** ます。
 
     ```csharp
-    await context.Response.WriteAsync("Hello Azure!");
+    await context.Response.WriteAsync(&quot;Hello Azure!");
     ```
     
 1. **変更を保存** します。

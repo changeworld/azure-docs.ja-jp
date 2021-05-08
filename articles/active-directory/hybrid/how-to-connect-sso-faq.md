@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 52b450ecc8aff379dbdb8d58f9b7609cf730ad27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98107873"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731668"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -126,7 +126,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
    ウィザードの完了後、シームレス SSO はテナントで無効になります。 ただし、画面に次のようなメッセージが表示されます。
 
-   「シングル サインオンは現在無効ですが、クリーンアップを完了するために実行できる追加の手動手順があります。 詳細情報」
+   「シングル サインオンは現在無効ですが、クリーンアップを完了するために実行できる追加の手動手順があります。 [詳細をご覧ください](tshoot-connect-sso.md#step-3-disable-seamless-sso-for-each-active-directory-forest-where-youve-set-up-the-feature)」
 
    クリーンアップ プロセスを完了するには、Azure AD Connect が実行されているオンプレミス サーバーで手順 2 と 3 を手順を実行します。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: f19625f1d558071ccb29487efe56146756c7692c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 56b691b2755b5e248b16e338f8fd82864f5bf218
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560337"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>ご自分の Azure Stack Edge Pro GPU デバイスで Edge コンテナー レジストリを有効にする
 
@@ -294,4 +294,4 @@ Edge コンテナー レジストリ ストレージは、デバイス上の使�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。

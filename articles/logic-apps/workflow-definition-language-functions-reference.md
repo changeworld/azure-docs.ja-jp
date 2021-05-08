@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
-ms.date: 02/18/2021
-ms.openlocfilehash: 484ee9e67aa2adc11529f8a2239a813b3b12f7b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/30/2021
+ms.openlocfilehash: 53e96f4057b35fa6c849ec643ac1c9e0c7d5b402
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702489"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076549"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -145,7 +145,7 @@ ms.locfileid: "101702489"
 値の型または形式を変更するには、以下の変換関数を使用できます。 たとえば、値をブール値から整数に変更できます。 Logic Apps が変換時にコンテンツ タイプを処理する方法の詳細については、「[コンテンツ タイプを処理する](../logic-apps/logic-apps-content-type.md)」を参照してください。 各関数の完全なリファレンスについては、[アルファベット順の一覧](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)を参照してください。
 
 > [!NOTE]
-> Azure Logic Apps を使用すると、一部のデータ型間で値が自動的に変換されます。つまり、このような変換を手動で実行する必要がありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードおよびデコード関数を使用してこれらの変換を手動で実行する必要はありません。 ただし、デザイナーでこれらの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
 
 | 変換関数 | タスク |
 | ------------------- | ---- |
@@ -177,7 +177,7 @@ ms.locfileid: "101702489"
 
 ## <a name="implicit-data-type-conversions"></a>暗黙的なデータ型の変換
 
-Azure Logic Apps を使用すると、一部のデータ型間の変換が自動的または暗黙的に行われるため、これらの型を手動で変換する必要はありません。 たとえば、入力として文字列が想定されている場所で文字列以外の値を使用すると、Logic Apps によって文字列以外の値が文字列に自動的に変換されます。
+Azure Logic Apps を使用すると、一部のデータ型間の変換が自動的または暗黙的に行われるため、これらの変換を手動で行う必要はありません。 たとえば、入力として文字列が想定されている場所で文字列以外の値を使用すると、Logic Apps によって文字列以外の値が文字列に自動的に変換されます。
 
 たとえば、トリガーから出力として数値が返されるとします。
 
@@ -187,9 +187,11 @@ URL などの文字列入力が想定されている場所でこの数値出力�
 
 `@{triggerBody()?['123']}`
 
+<a name="base64-encoding-decoding"></a>
+
 ### <a name="base64-encoding-and-decoding"></a>Base64 のエンコードとデコード
 
-Logic Apps を使用すると、base64 エンコードまたはデコードが自動的または暗黙的に実行されるため、対応する式を使用してこれらの操作を手動で実行する必要はありません。
+Logic Apps を使用すると、base64 エンコードまたはデコードが自動的または暗黙的に実行されるため、対応する関数を使用してこれらの変換を手動で実行する必要はありません。
 
 * `base64(<value>)`
 * `base64ToBinary(<value>)`
@@ -200,7 +202,7 @@ Logic Apps を使用すると、base64 エンコードまたはデコードが�
 * `decodeDataUri(<value>)`
 
 > [!NOTE]
-> たとえば、式エディターを使用してこれらの式をロジック アプリに手動で追加し、Logic App Designer から離れてデザイナーに戻ると、デザイナーにはパラメーター値のみが表示されます。 式は、パラメーター値を編集しない場合にのみコード ビューに保持されます。 それ以外の場合は、Logic Apps によってコード ビューから式が削除され、パラメーター値のみが残ります。 この動作は、式が表示されるかどうかにのみ影響し、エンコードやデコードには影響しません。
+> これらの関数のいずれかを、ロジック アプリ デザイナーを使用して (たとえば、式エディターを使用して) ワークフローに手動で追加した場合、デザイナーから移動し、デザイナーに戻ると、デザイナーからその関数が消え、パラメーター値だけが残されます。 この動作は、関数のパラメーター値を編集せずに、この関数を使用するトリガーまたはアクションを選択した場合にも発生します。 この結果は、関数の可視性のみに影響し、その結果には影響しません。 コード ビューでは、関数への影響はありません。 ただし、関数のパラメーター値を編集すると、関数とその結果が両方ともコード ビューから削除され、関数のパラメーター値だけが残されます。
 
 <a name="math-functions"></a>
 
@@ -690,10 +692,10 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | 指定したプロパティを含む更新された JSON オブジェクト |
 ||||
 
-既存のプロパティに子プロパティを追加するには、次の構文を使用します。
+親プロパティを既存のプロパティに追加するには、`addProperty()` 関数ではなく、`setProperty()` 関数を使用します。 それ以外の場合、関数は子オブジェクトだけを出力として返します。
 
 ```
-addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+setProperty(<object>['<parent-property>'], '<parent-property>', addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 ```
 
 | パラメーター | 必須 | Type | 説明 |
@@ -741,7 +743,7 @@ addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName',
 この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの既存の `customerName` プロパティに `middleName` 子プロパティを追加します。 この関数は、指定された値を新しいプロパティに割り当て、更新されたオブジェクトを返します。
 
 ```
-addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne'))
 ```
 
 現在の JSON オブジェクトを次に示します。
@@ -944,7 +946,7 @@ array('hello')
 文字列の base64 エンコード バージョンを返します。
 
 > [!NOTE]
-> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードおよびデコード関数を使用してこれらの変換を手動で実行する必要はありません。 ただし、これらの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
 
 ```
 base64('<value>')
@@ -977,7 +979,7 @@ base64('hello')
 base64 エンコード文字列のバイナリ バージョンを返します。
 
 > [!NOTE]
-> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードおよびデコード関数を使用してこれらの変換を手動で実行する必要はありません。 ただし、デザイナーでこれらの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
 
 ```
 base64ToBinary('<value>')
@@ -1012,7 +1014,7 @@ base64ToBinary('aGVsbG8=')
 base64 エンコード文字列の文字列バージョンを返し、実質的に base64 の文字列をデコードします。 非推奨の [decodeBase64()](#decodeBase64) ではなく、この関数を使用してください。
 
 > [!NOTE]
-> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードおよびデコード関数を使用してこれらの変換を手動で実行する必要はありません。 ただし、デザイナーでこれらの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
 
 ```
 base64ToString('<value>')
@@ -1074,9 +1076,7 @@ binary('hello')
 
 ### <a name="body"></a>body
 
-実行時のアクションの `body` 出力を返します。
-`actions('<actionName>').outputs.body` の短縮形です。
-[actionBody()](#actionBody) および [actions()](#actions) をご覧ください。
+実行時のアクションの `body` 出力を返します。 `actions('<actionName>').outputs.body` の短縮形です。 [actionBody()](#actionBody) および [actions()](#actions) をご覧ください。
 
 ```
 body('<actionName>')
@@ -1194,6 +1194,15 @@ coalesce(null, null, null)
 
 2 つ以上の文字列を結合し、結合された文字列を返します。
 
+> [!NOTE]
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードまたはデコードを必要とするデータと共に `concat()` 関数を使用するときに、これらの変換を手動で実行する必要はありません。
+> 
+> * `concat('data:;base64,',<value>)`
+> * `concat('data:,',encodeUriComponent(<value>))`
+> 
+> ただし、デザイナーでこの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 
+> 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
+
 ```
 concat('<text1>', '<text2>', ...)
 ```
@@ -1222,9 +1231,7 @@ concat('Hello', 'World')
 
 ### <a name="contains"></a>contains
 
-コレクションに特定の項目があるかどうかを確認します。
-項目が見つかった場合は true を返し、見つからない場合は false を返します。
-この関数は、大文字と小文字を区別します。
+コレクションに特定の項目があるかどうかを確認します。 項目が見つかった場合は true を返し、見つからない場合は false を返します。 この関数は、大文字と小文字を区別します。
 
 ```
 contains('<collection>', '<value>')
@@ -1622,7 +1629,7 @@ dayOfYear('2018-03-15T13:27:36Z')
 データ URI (Uniform Resource Identifier) のバイナリ バージョンを返します。 `decodeDataUri()` ではなく、[dataUriToBinary()](#dataUriToBinary) を使うようにしてください。 どちらの関数も機能は同じですが、`dataUriToBinary()` をお勧めします。
 
 > [!NOTE]
-> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードおよびデコード関数を使用してこれらの変換を手動で実行する必要はありません。 ただし、デザイナーでこれらの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
 
 ```
 decodeDataUri('<value>')
@@ -1729,7 +1736,7 @@ div(11.0,5)
 URL の安全でない文字がエスケープ文字に置き換えられた、文字列の URI (Uniform Resource Identifier) エンコード バージョンを返します。 `encodeUriComponent()` ではなく、[uriComponent()](#uriComponent) を使うようにしてください。 どちらの関数も機能は同じですが、`uriComponent()` をお勧めします。
 
 > [!NOTE]
-> Azure Logic Apps を使用すると、base64 エンコードとデコードが自動的に実行されます。つまり、このような変換を手動で実行する必要はありません。 ただし、その場合、予期しない表示動作が発生する可能性があります。これは、実際の変換には影響せず、表示方法のみに影響します。 詳細については、「[暗黙的なデータ型の変換](#implicit-data-conversions)」を参照してください。
+> Azure Logic Apps を使用すると、base64 エンコードおよびデコードが自動的または暗黙的に実行されるため、エンコードおよびデコード関数を使用してこれらの変換を手動で実行する必要はありません。 ただし、デザイナーでこれらの関数を使用すると、デザイナーで予期しないレンダリング動作が発生する可能性があります。 関数のパラメーター値を編集しない場合、これらの動作は関数の可視性のみに影響を与え、その結果には影響しません。編集した場合は、関数とその結果がコードから削除されます。 詳細については、「[Base64 のエンコードとデコード](#base64-encoding-decoding)」を参照してください。
 
 ```
 encodeUriComponent('<value>')
@@ -4708,16 +4715,22 @@ workflow().<property>
 
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | いいえ | String | 値を取得するワークフロー プロパティの名前 <p>ワークフロー オブジェクトのプロパティ: **name**、**type**、**id**、**location**、**run**。 **run** プロパティの値は、次のプロパティを持つオブジェクトでもあります: **name**、**type**、**id**。 |
+| <*property*> | いいえ | String | 値を取得するワークフロー プロパティの名前 <p><p>既定では、ワークフロー オブジェクトには次のプロパティがあります: `name`、`type`、`id`、`location`、`run`、`tags`。 <p><p>- `run` プロパティ値は JSON オブジェクトであり、次のプロパティを含んでいます: `name`、`type`、`id`。 <p><p>- `tags` プロパティは JSON オブジェクトであり、[Azure Logic Apps のロジック アプリまたは Power Automate のフローに関連付けられているタグ](../azure-resource-manager/management/tag-resources.md)、およびそれらのタグの値を含んでいます。 タグの詳細については、[Azure での論理的な組織化のためのリソース、リソース グループ、およびサブスクリプションへのタグ付け](../azure-resource-manager/management/tag-resources.md)に関するページを参照してください。 <p><p>**注**: 既定では、ロジック アプリにはタグがありませんが、Power Automate のフローには `flowDisplayName` タグと `environmentName` タグがあります。 |
 |||||
 
-*例*
+*例 1*
 
 この例は、ワークフローの現在の実行の名前を返します。
 
-```
-workflow().run.name
-```
+`workflow().run.name`
+
+*例 2*
+
+Power Automate を使用する場合は、`tags` 出力プロパティを使用する `@workflow()` 式を作成して、フローの `flowDisplayName` または `environmentName` プロパティから値を取得できます。
+
+たとえば、リンクをたどってフローに戻るカスタム電子メール通知をフロー自体から送信することができます。 これらの通知に、電子メール タイトルにフローの表示名を含み、次の構文に従う HTML リンクを含めることができます。
+
+`<a href=https://flow.microsoft.com/manage/environments/@{workflow()['tags']['environmentName']}/flows/@{workflow()['name']}/details>Open flow @{workflow()['tags']['flowDisplayName']}</a>`
 
 <a name="xml"></a>
 

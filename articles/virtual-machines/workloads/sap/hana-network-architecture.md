@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92cfa5b2e399811754b57bda64569753ccfa6be8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b1e37b2de2a3d4be0250d3e900fe48a36e45240e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101668760"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309562"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -186,7 +186,7 @@ HANA L インスタンスと VM 間で転送されるデータは暗号化され
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>複数のリージョンでの HANA L インスタンス ユニットの使用
 
-ディザスター リカバリーの設定を実現するには、SHANA L インスタンス ユニットを複数の Azure リージョンに配置する必要があります。 既定では、Azure [グローバル Vnet ピアリング] を使用しても、2 つの異なるリージョン内の HANA L インスタンス テナント間の推移的なルーティングが機能しません。 ただし、Global Reach は、2 つの異なるリージョンにプロビジョニングした HANA L インスタンス ユニット間の通信パスを開きます。 ExpressRoute Global Reach のこの使用シナリオにより、次のことが可能になります。
+ディザスター リカバリーの設定を実現するには、HANA L インスタンス ユニットを複数の Azure リージョンに配置する必要があります。 既定では、Azure [グローバル Vnet ピアリング] を使用しても、2 つの異なるリージョン内の HANA L インスタンス テナント間の推移的なルーティングが機能しません。 ただし、Global Reach は、2 つの異なるリージョンにプロビジョニングした HANA L インスタンス ユニット間の通信パスを開きます。 ExpressRoute Global Reach のこの使用シナリオにより、次のことが可能になります。
 
  - 追加のプロキシまたはファイアウォールを使用しない HANA システム レプリケーション
  - システム コピーまたはシステム更新を実行するための 2 つの異なるリージョン内の HANA L インスタンス ユニット間でのバックアップのコピー

@@ -10,12 +10,12 @@ ms.author: dobett
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d2afd88500801f1e2b1e4da5a1e267bddfa69fc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f1053062302c9a00cf49cee1cd8de5ca6652b745
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96453021"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167704"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure IoT (モノのインターネット) とは
 
@@ -30,11 +30,11 @@ IoT デバイスは一般に、回路基板とそれに接続されたセンサ�
 * エレベーターの加速度計。
 * 室内のプレゼンス センサー。
 
-各種メーカーから提供されているさまざまなデバイスを使用して、ソリューションを構築することができます。 Azure IoT Hub での動作が認定されたデバイスの一覧については、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices)を参照してください。 プロトタイプの作成には、[MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) や [Raspberry Pi](https://www.raspberrypi.org/) などのデバイスを使用できます。 Devkit は、温度、気圧、湿度の組み込みセンサーに加え、ジャイロスコープ、加速度計、磁力計を備えています。 Raspberry Pi では、さまざまな種類のセンサーを取り付けることができます。 
+各種メーカーから提供されているさまざまなデバイスを使用して、ソリューションを構築することができます。 Azure IoT Hub での動作が認定されたデバイスの一覧については、[Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com)を参照してください。 プロトタイプの作成には、[MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) や [Raspberry Pi](https://www.raspberrypi.org/) などのデバイスを使用できます。 Devkit は、温度、気圧、湿度の組み込みセンサーに加え、ジャイロスコープ、加速度計、磁力計を備えています。 Raspberry Pi では、さまざまな種類のセンサーを取り付けることができます。 
 
 Microsoft では、オープンソースの [Device SDK](../iot-hub/iot-hub-devguide-sdks.md) を提供しており、それらの SDK を使用して、お手持ちのデバイスで動作するアプリを作成することが可能です。 IoT ソリューションの開発は、それらの [SDK によって単純化し、能率化](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)することができます。
 
-## <a name="communication"></a>通信
+## <a name="communication"></a>Communication
 
 通常、IoT デバイスは、クラウド内のバックエンド サービスに対し、センサーのテレメトリを送信します。 ただし、対応している通信の種類はそれだけではなく、たとえばバックエンド サービスからデバイスにコマンドを送信することもできます。 次に、device-to-cloud 通信と cloud-to-device 通信の例をいくつか示します。
 

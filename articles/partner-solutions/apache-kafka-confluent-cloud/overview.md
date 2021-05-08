@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fefbc21c385e3beacbf570c31ffbf97238c780fc
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98253288"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109086"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Apache Kafka on Confluent Cloud とは
 
@@ -56,6 +56,12 @@ Azure portal にサインインすると、ユーザーの資格情報が Conflu
 - **コミットメント プラン** では、最低利用額を契約することで、確約した Confluent Cloud 使用量に対する割引を受けることができます。
 
 使用する課金オプションは、サービスの作成時に指定します。
+
+## <a name="connector-to-azure-cosmos-db"></a>Azure Cosmos DB へのコネクタ
+
+Confluent ハブ クライアント内から、[Confluent ハブの一覧](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos)で推奨されているように Cosmos DB コネクタをインストールします。 
+
+コネクタを手動でインストールするには、最初に [Cosmos DB リリース ページ](https://github.com/microsoft/kafka-connect-cosmosdb/releases)から uber JAR をダウンロードします。 または、[ソース コードから独自の uber JAR を直接作成](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector)することもできます。 [コネクタを手動でインストール](https://docs.confluent.io/home/connect/install.html#install-connector-manually)するための Confluent ドキュメントに記載されているガイダンスに従って、インストールを完了します。  
 
 ## <a name="confluent-links"></a>Confluent リンク
 

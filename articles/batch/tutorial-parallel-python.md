@@ -5,12 +5,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48df2cb6ac103d1f03d2d64fce0d10a8f2f128e2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97106514"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043412"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル:Python API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -30,7 +30,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python バージョン 2.7 または 3.3 以降](https://www.python.org/downloads/)
+* [Python バージョン 2.7 または 3.6 以上](https://www.python.org/downloads/)
 
 * [pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャー
 

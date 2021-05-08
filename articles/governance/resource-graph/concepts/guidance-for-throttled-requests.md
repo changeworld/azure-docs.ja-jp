@@ -1,15 +1,15 @@
 ---
 title: スロットルされた要求に関するガイダンス
 description: Azure Resource Graph によって要求がスロットルされないように、グループ化、時間差処理、改ページ調整、およびクエリの並列処理を行う方法について説明します。
-ms.date: 01/27/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 891d5951670dd6022b66ae2936ee855f73f8b33a
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98917709"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283543"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -231,7 +231,7 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
 
 ## <a name="still-get-throttled"></a>スロットルが解消されない場合
 
-上記の推奨事項を実行してもスロットルされる場合は、チームにお問い合わせください ([resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com))。
+上記の推奨事項を実行してもスロットルされる場合は、[Azure Resource Graph チーム](mailto:resourcegraphsupport@microsoft.com)にお問い合わせください。
 
 次の詳細情報を提供してください。
 

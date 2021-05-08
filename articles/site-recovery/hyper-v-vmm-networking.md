@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery を使用したセカンダリ サイト へのフェールオーバー後の IP アドレス指定の設定
 description: Azure Site Recovery を使用したディザスター リカバリーとフェールオーバーの後に、セカンダリ オンプレミス サイトの VM に接続するように IP アドレス指定を設定する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1169748d7dae9990728dff91782a20d42e3c860b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87495945"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580248"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
 

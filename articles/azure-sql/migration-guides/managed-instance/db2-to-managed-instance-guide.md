@@ -1,6 +1,6 @@
 ---
-title: 'DB2 から SQL Managed Instance: 移行ガイド'
-description: このガイドに従って、DB2 データベースを Azure SQL Managed Instance に移行します。
+title: 'Db2 から Azure SQL Managed Instance: 移行ガイド'
+description: このガイドでは、SQL Server Migration Assistant for Db2 を使用して、IBM Db2 データベースを Azure SQL Managed Instance に移行する方法について説明します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
 ms.custom: ''
@@ -10,28 +10,28 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 15d94e17bea6a49bb5bf6fdb6c48252365676042
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359185"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228165"
 ---
-# <a name="migration-guide-db2-to-sql-managed-instance"></a>移行ガイド:DB2 から SQL Managed Instance
+# <a name="migration-guide-ibm-db2-to-azure-sql-managed-instance"></a>移行ガイド: IBM Db2 から Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
-このガイドでは、SQL Server Migration Assistant for DB2 を使用して、DB2 データベースを Azure SQL Managed Instance に移行する方法について説明します。 
+このガイドでは、SQL Server Migration Assistant for Db2 を使用して、IBM Db2 データベースを Azure SQL Managed Instance に移行する方法について説明します。 
 
-その他のシナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件 
 
-DB2 データベースを SQL Managed Instance に移行するには、以下が必要です。
+Db2 データベースを SQL Managed Instance に移行するには、以下が必要です。
 
-- ソース環境がサポートされていることを確認する。
-- [SQL Server Migration Assistant (SSMA) for DB2](https://www.microsoft.com/download/details.aspx?id=54254) をダウンロードする。
-- ターゲットの [Azure SQL Managed Instance](../../database/single-database-create-quickstart.md)。
-
+- [ソース環境がサポートされている](/sql/ssma/db2/installing-ssma-for-db2-client-db2tosql#prerequisites)ことを確認する。
+- [SQL Server Migration Assistant (SSMA) for Db2](https://www.microsoft.com/download/details.aspx?id=54254) をダウンロードする。
+- [Azure SQL Managed Instance](../../managed-instance/instance-create-quickstart.md) のターゲット インスタンス。
+- ソースとターゲットの両方への接続と、十分なアクセス許可。 
 
 ## <a name="pre-migration"></a>移行前
 
@@ -39,31 +39,31 @@ DB2 データベースを SQL Managed Instance に移行するには、以下が
 
 ### <a name="assess-and-convert"></a>評価と変換
 
-SQL Server Migration Assistant (SSMA) を使用して評価を作成します。 
+SQL Server Migration Assistant を使用して評価を作成します。 
 
 評価を作成するには、次の手順を行います。
 
-1. SQL Server Migration Assistant (SSMA) for DB2 を開きます。 
-1. **[ファイル]** を選択し、 **[新しいプロジェクト]** を選択します。 
-1. プロジェクト名とプロジェクトを保存する場所を指定し、ドロップダウンから移行ターゲットとして [Azure SQL Managed Instance] を選択します。 **[OK]** を選択します。 
+1. [SSMA for Db2](https://www.microsoft.com/download/details.aspx?id=54254) を開きます。 
+1. **[ファイル]**  >  **[新しいプロジェクト]** の順に選択します。 
+1. プロジェクト名とプロジェクトを保存する場所を指定します。 次に、ドロップダウンリストから移行ターゲットとして Azure SQL Managed Instance を選択し、 **[OK]** を選択します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/new-project.png" alt-text="プロジェクトの詳細を入力し、[OK] を選択して保存します。":::
-
-
-1. **[DB2 への接続]** ダイアログ ボックスで、DB2 接続の詳細の値を入力します。 
-
-   :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-db2.png" alt-text="DB2 インスタンスに接続する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/new-project.png" alt-text="指定するプロジェクトの詳細を示すスクリーンショット。":::
 
 
-1. 移行する DB2 スキーマを右クリックし、 **[レポートの作成]** を選択します。 これにより、HTML レポートが生成されます。 また、スキーマを選択した後、ナビゲーション バーから **[レポートの作成]** を選択することもできます。 
+1. **[Db2 への接続]** で、Db2 接続の詳細の値を入力します。 
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/create-report.png" alt-text="スキーマを右クリックし、[レポートの作成] を選択する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-db2.png" alt-text="Db2 インスタンスに接続するためのオプションを示すスクリーンショット。":::
 
-1. HTML レポートを確認し、変換の統計情報とエラーまたは警告を把握します。 また、Excel でレポートを開き、DB2 オブジェクトのインベントリとスキーマ変換の実行に必要な作業量を確認することもできます。 レポートの既定の場所は、SSMAProjects 内のレポート フォルダーです。
 
-   (例: `drive:\<username>\Documents\SSMAProjects\MyDB2Migration\report\report_<date>`)。 
+1. 移行する Db2 スキーマを右クリックし、 **[レポートの作成]** を選択します。 これにより、HTML レポートが生成されます。 また、スキーマを選択した後、ナビゲーション バーから **[レポートの作成]** を選択することもできます。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/report.png" alt-text="レポートを確認して、エラーや警告を特定する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/create-report.png" alt-text="レポートの作成方法を示すスクリーンショット。":::
+
+1. HTML レポートを確認し、変換の統計情報とエラーまたは警告を把握します。 また、Excel でレポートを開き、Db2 オブジェクトのインベントリとスキーマ変換の実行に必要な作業量を確認することもできます。 このレポートの既定の場所は、*SSMAProjects* 内のレポート フォルダーです。
+
+   たとえば、`drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>` です。 
+
+   :::image type="content" source="media/db2-to-managed-instance-guide/report.png" alt-text="エラーまたは警告を識別するために確認するレポートのスクリーンショット":::
 
 
 ### <a name="validate-data-types"></a>データ型を検証する
@@ -72,35 +72,36 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 
 1. メニューから **[ツール]** を選択します。 
 1. **[プロジェクトの設定]** を選択します。 
-1. **[Type mappings]\(型のマッピング\)** タブを選択します。 
+1. **[Type mappings]\(型のマッピング\)** タブを選択します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/type-mapping.png" alt-text="スキーマ、型マッピングの順に選択する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/type-mapping.png" alt-text="スキーマと型のマッピングの選択を示すスクリーンショット。":::
 
-1. **DB2 メタデータ エクスプローラー** でテーブルを選択することにより、各テーブルの型マッピングを変更できます。 
+1. **Db2 メタデータ エクスプローラー** でテーブルを選択し、各テーブルの型マッピングを変更します。 
 
-### <a name="schema-conversion"></a>スキーマ変換 
+### <a name="convert-schema"></a>スキーマの変換 
 
 スキーマを変換するには、次の手順を行います。
 
 1. (省略可能) 動的またはアドホック クエリをステートメントに追加します。 ノードを右クリックし、 **[Add statements]\(ステートメントの追加\)** を選択します。 
-1. **[Azure SQL Database に接続する]** を選択します。 
-    1. 接続の詳細を入力して、Azure SQL Managed Instance に接続します。  
-    1. ドロップダウンからターゲット データベースを選択します。 
-    1. **[接続]** を選択します。 
+1. **[Azure SQL Managed Instance に接続する]** を選択します。 
+    1. 接続の詳細を入力して、Azure SQL Managed Instance に接続します。 
+    1. ドロップダウン リストから自分のターゲット データベースを選択するか、新しい名前を指定します。これにより、データベースはターゲット サーバー上に作成されます。 
+    1. 認証の詳細を指定します。 
+    1. **[接続]** を選択します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-sql-managed-instance.png" alt-text="SQL Server に接続するための詳細を入力する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/connect-to-sql-managed-instance.png" alt-text="SQL Server への接続に必要な詳細を示すスクリーンショット。":::
 
 
-1. スキーマを右クリックして、 **[スキーマの変換]** を選択します。 または、スキーマを選択した後、上部のナビゲーション バーから **[スキーマの変換]** を選択することもできます。 
+1. スキーマを右クリックして、 **[スキーマの変換]** を選択します。 または、スキーマを選択した後、上部のナビゲーション バーから **[スキーマの変換]** を選択することもできます。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/convert-schema.png" alt-text="スキーマを右クリックして、[スキーマの変換] を選択する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/convert-schema.png" alt-text="スキーマの選択と変換を示すスクリーンショット。":::
 
-1. 変換が完了したら、スキーマの構造を比較し、確認して、潜在的な問題を特定し、推奨事項に基づいて対処します。 
+1. 変換が完了したら、スキーマの構造を比較、確認し、潜在的な問題を特定します。 推奨事項に基づいて問題に対処します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/compare-review-schema-structure.png" alt-text="スキーマの構造を比較し、確認して、潜在的な問題を特定し、推奨事項に基づいて対処する。":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/compare-review-schema-structure.png" alt-text="スキーマの構造を比較、確認し、潜在的な問題を特定するスクリーンショット。":::
 
-1. オフライン スキーマ修復の演習のために、プロジェクトをローカルに保存します。 **[ファイル]** メニューから **[プロジェクトの保存]** を選択します。 
-
+1. **[出力]** ペインで、 **[結果の確認]** を選択します。 **[エラー一覧]** ウィンドウで、エラーを確認します。 
+1. オフライン スキーマ修復の演習のために、プロジェクトをローカルに保存します。 **[ファイル]** メニューから **[プロジェクトの保存]** を選択します。 これにより、スキーマを SQL Managed Instance に発行する前に、ソースとターゲットのスキーマをオフラインで評価し、修復を実行する機会が得られます。
 
 ## <a name="migrate"></a>Migrate
 
@@ -108,26 +109,26 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 
 スキーマを発行し、データを移行するには、次の手順を行います。
 
-1. スキーマを発行する: **Azure SQL Managed Instance メタデータ エクスプローラー** の **[データベース]** ノードからデータベースを右クリックし、 **[データベースとの同期]** を選択します。
+1. スキーマを公開します。 **Azure SQL Managed Instance メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="データベースを右クリックし、[データベースとの同期] を選択する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/synchronize-with-database.png" alt-text="データベースと同期するオプションを示すスクリーンショット。":::
 
-1. データを移行する: **DB2 メタデータ エクスプローラー** からスキーマを右クリックし、 **[データの移行]** を選択します。 
+1. データを移行します。 **Db2 メタデータ エクスプローラー** で、移行するデータベースまたはオブジェクトを右クリックし、 **[データの移行]** を選択します。 または、ナビゲーション バーから **[データの移行]** を選択することもできます。 データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベースを展開し、 **[テーブル]** を展開して、テーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、このチェック ボックスをオフにします。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/migrate-data.png" alt-text="スキーマを右クリックし、データの移行を選択する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/migrate-data.png" alt-text="スキーマの選択とデータ移行の選択を示すスクリーンショット。":::
 
-1. DB2 と SQL Managed Instance の両方の接続の詳細を指定します。 
-1. **データ移行レポート** を確認します。 
+1. Db2 と SQL Managed Instance の両方の接続の詳細を指定します。 
+1. 移行が完了したら、**データ移行レポート** を表示します。  
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/data-migration-report.png" alt-text="データ移行レポートを確認する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/data-migration-report.png" alt-text="データ移行レポートを確認する場所を示すスクリーンショット。":::
 
-1. SQL Server Management Studio を使用して SQL Managed Instance に接続し、データとスキーマを確認して移行を検証します。 
+1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用して Azure SQL Managed Instance のインスタンスに接続します。 データとスキーマを確認することによって移行を検証します。
 
-   :::image type="content" source="media/db2-to-managed-instance-guide/compare-schema-in-ssms.png" alt-text="SSMS でスキーマを比較する":::
+   :::image type="content" source="media/db2-to-managed-instance-guide/compare-schema-in-ssms.png" alt-text="SQL Server Management Studio のスキーマの比較を示すスクリーンショット。":::
 
 ## <a name="post-migration"></a>移行後 
 
-移行段階が正常に完了したら、移行後の一連のタスクを実行し、確実にすべてが可能な限り円滑かつ効率的に機能するようにする必要があります。
+移行が完了したら、移行後の一連のタスクを実行し、すべてが可能な限り円滑かつ効率的に機能していることを確認する必要があります。
 
 ### <a name="remediate-applications"></a>アプリケーションを修復する 
 
@@ -136,23 +137,18 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行のテストア プローチは、次のアクティビティで構成されています。
+テストは、次のアクティビティで構成されます。
 
 1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
 1. **テスト環境を設定する**: テスト環境には、ソース データベースとターゲット データベースのコピーが含まれている必要があります。 必ずテスト環境を分離してください。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
 
-   > [!NOTE]
-   > 移行後の検証テストの開発と実行を支援するために、パートナーの [QuerySurge](https://www.querysurge.com/company/partners/microsoft) から入手できる Data Quality Solution を検討してください。 
-
-
-## <a name="leverage-advanced-features"></a>高度な機能を活用する 
+## <a name="advanced-features"></a>高度な機能 
 
 [組み込みの高可用性](../../database/high-availability-sla.md)、[脅威検出](../../database/azure-defender-for-sql.md)、[ワークロードの監視と調整](../../database/monitor-tune-overview.md)など、Azure SQL Managed Instance によって提供されるクラウドベースの高度な機能を活用してください。 
 
-
-一部の SQL Server 機能は、[データベース互換性レベル](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)を最新の互換性レベル (150) に変更した場合にのみ使用できます。 
+SQL Server の一部の機能は、[データベース互換レベル](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)を最新の互換性レベルに変更した場合にのみ使用できます。 
 
 ## <a name="migration-assets"></a>移行資産 
 
@@ -161,25 +157,24 @@ SQL Server Migration Assistant (SSMA) を使用して評価を作成します。
 |Asset  |説明  |
 |---------|---------|
 |[データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションとデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。|
-|[DB2 zOS データ資産の検出および評価パッケージ](https://github.com/Microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果をキャプチャできるように、*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
-|[IBM DB2 LUW インベントリ スクリプトと成果物](https://github.com/Microsoft/DataMigrationTeam/tree/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|この資産には、IBM DB2 LUW バージョン 11.1 システム テーブルにヒットし、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを提供し、結果を CSV 形式で格納する SQL クエリが含まれます。|
-|[Azure 上の DB2 LUW pureScale - 設定ガイド](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|このガイドは、DB2 実装計画の開始点として役立ちます。 業務要件は違っても、同じ基本パターンが適用されます。 このアーキテクチャ パターンは、Azure 上の OLAP アプリケーションにも使用できます。|
+|[Db2 zOS データ資産の検出および評価パッケージ](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|データベース上で SQL スクリプトを実行した後、結果をファイル システム上のファイルにエクスポートできます。 スプレッドシートなど、外部ツールで結果をキャプチャできるように、*.csv などの複数のファイル形式がサポートされています。 この方法を使用すると、ワークベンチをインストールしていないチームと結果を簡単に共有することができます。|
+|[IBM Db2 LUW インベントリ スクリプトと成果物](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|この資産には、IBM Db2 LUW バージョン 11.1 システム テーブルを対象とする、スキーマおよびオブジェクトの種類ごとのオブジェクトの数、各スキーマの "生データ" の概算値、および各スキーマのテーブルのサイズを提供し、結果を CSV 形式で格納する SQL クエリが含まれます。|
+|[Azure 上の Db2 LUW pureScale - 設定ガイド](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/DB2%20PureScale%20on%20Azure.pdf)|このガイドは、Db2 の実装計画の開始点として役立ちます。 業務要件は違っても、同じ基本パターンが適用されます。 このアーキテクチャ パターンは、Azure 上の OLAP アプリケーションにも使用できます。|
 
-これらのリソースは、Azure Data Group エンジニアリング チームがスポンサーである Data SQL Ninja プログラムの一部として開発されました。 Data SQL Ninja プログラムの中核となるのは、複雑なモダン化のブロックを解除して加速し、データ プラットフォームを Microsoft の Azure Data プラットフォームに移行する機会を獲得することです。 組織が Data SQL Ninja プログラムへの参加に関心があると思われる場合は、アカウント チームに連絡し、申請を提出するよう依頼してください。
-
+データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 
 ## <a name="next-steps"></a>次のステップ
 
-- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
+- さまざまなデータベースおよびデータ移行シナリオを支援するために使用できる Microsoft とサードパーティのサービスとツールについては、[データ移行のためのサービスとツール](../../../dms/dms-tools-matrix.md)に関するページをご覧ください。
 
 - Azure SQL Managed Instance の詳細については、以下を参照してください。
    - [SQL Managed Instance の概要](../../managed-instance/sql-managed-instance-paas-overview.md)
    - [Azure 総保有コスト計算ツール](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 
-- クラウド移行のためのフレームワークと導入サイクルの詳細については、以下を参照してください
+- クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
 
-- アプリケーション アクセス層を評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
-- データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。
+- アプリケーション アクセス レイヤーを評価するには、「[Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」をご覧ください。
+- データ アクセス層の A/B テストの実行方法の詳細については、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) に関するページをご覧ください。

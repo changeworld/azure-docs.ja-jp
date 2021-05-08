@@ -2,20 +2,20 @@
 title: Azure Storage インベントリを使用して BLOB データを管理する (プレビュー)
 description: Azure Storage インベントリは、ストレージ アカウント内のすべての BLOB データの概要を把握するのに役立つツールです。
 services: storage
-author: mhopkins-msft
+author: twooley
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.author: mhopkins
-ms.reviewer: yzheng
+ms.author: twooley
+ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 33d50d1a6b5e84d178b522851795bcc42f5fc169
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435122"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277268"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Azure Storage BLOB インベントリを使用して BLOB データを管理する (プレビュー)
 
@@ -37,6 +37,7 @@ BLOB インベントリのプレビューは、次のリージョンのストレ
 - カナダ東部
 - 米国東部
 - 米国東部 2
+- 西ヨーロッパ
 
 ### <a name="pricing-and-billing"></a>価格と課金
 
@@ -203,6 +204,15 @@ Azure portal の **[BLOB インベントリ]** セクションで **[コード �
 }
 ```
 
+## <a name="known-issues"></a>既知の問題
+
+このセクションでは、Azure Storage BLOB インベントリ機能の制限事項と既知の問題について説明します。
+
+### <a name="inventory-job-fails-to-complete"></a>インベントリ ジョブを完了できない
+
+何百万もの BLOB と階層型名前空間が有効になっているアカウントでは、インベントリ ジョブが 24 時間以内に完了しないことがあります。 これが発生した場合、インベントリ ファイルは作成されません。
+
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)
+- [コンテナーごとの BLOB の数と合計サイズを計算する](calculate-blob-count-size.md)
+- [Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)

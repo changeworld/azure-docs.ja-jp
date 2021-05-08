@@ -2,18 +2,18 @@
 title: Azure リソース ログでサポートされているサービスとスキーマ
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 09/01/2020
-ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 04/07/2020
+ms.openlocfilehash: 09415353d93313f1b3c4844202b59f577ef3838d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033097"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105767"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
 > [!NOTE]
-> リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が Azure リソースだけを含むようになったため、2019 年 10 月に変更されました。 また、収集できるリソース ログのカテゴリの一覧は、この記事に表示されていました。 これらは、[リソース ログのカテゴリ](resource-logs-categories.md)に移動しました。 
+> リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。 また、収集できるリソース ログのカテゴリの一覧は、この記事に表示されていました。 現在は、[リソース ログのカテゴリ](resource-logs-categories.md)にあります。 
 
 [Azure Monitor リソース ログ](../essentials/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
 
@@ -65,6 +65,7 @@ ms.locfileid: "102033097"
 | Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL のログ](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Azure Databricks の診断ログ](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |
+| DDoS Protection | [Azure DDoS Protection Standard のログ](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Azure Digital Twins | [Azure Digital Twins の診断を設定する](../../digital-twins/troubleshoot-diagnostics.md#log-schemas)
 | Event Hubs |[Azure Event Hubs のログ](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
@@ -76,13 +77,13 @@ ms.locfileid: "102033097"
 | Load Balancer |[Azure Load Balancer のログ分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS Protection | [Azure DDoS Protection Standard のログ](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 専用 | [Azure の Power BI Embedded のログ記録](/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../../backup/backup-azure-reports-data-model.md)|
 | 検索 |[検索トラフィックの分析の有効化と使用](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus のログ](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database のログ記録](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[ジョブのログ](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| ストレージ | [BLOB](/azure/storage/blobs/monitor-blob-storage-reference#resource-logs-preview)、[ファイル](/azure/storage/files/storage-files-monitoring-reference#resource-logs-preview)、[キュー](/azure/storage/queues/monitor-queue-storage-reference#resource-logs-preview)、[テーブル](/azure/storage/tables/monitor-table-storage-reference#resource-logs-preview) |
 | Traffic Manager | [Traffic Manager のログのスキーマ](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 仮想ネットワーク | スキーマは使用できません。 |
 | 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |

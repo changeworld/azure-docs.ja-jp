@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
-ms.date: 04/20/2020
-ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.date: 04/05/2021
+ms.openlocfilehash: a6fd603318a25e15d1d4dcc1e3eaf75f96fc5ade
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956062"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448629"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player クイックスタート
 Azure Media Player は簡単にセットアップできます。 たった数分で、Azure Media Services アカウントからメディア コンテンツの基本的な再生機能が利用できます。 このセクションでは、詳細は説明せず、基本的な手順を示します。 以降のセクションで、Azure Media Player を設定および構成する方法の詳細を説明します。  以下の組み込みをドキュメントの `<head>` に追加するだけです。
@@ -22,7 +22,7 @@ Azure Media Player は簡単にセットアップできます。 たった数分
 ```
 
 > [!IMPORTANT]
-> これは必要に応じて変更されることがあるため、運用環境では `latest` バージョンを使用 **しない** でください。 `latest` を Azure Media Player のバージョンに置き換えます。たとえば、`latest` を `1.0.0` に置き換えます。 Azure Media Player のバージョンは、[こちら](azure-media-player-changelog.md)から照会できます。
+> これは必要に応じて変更されることがあるため、運用環境では `latest` バージョンを使用 **しない** でください。 `latest` を Azure Media Player のバージョンに置き換えます。たとえば、`latest` を `1.0.0` に置き換えます。 Azure Media Player のバージョンは、[こちら](https://amp.azure.net/libs/amp/latest/docs/changelog.html)から照会できます。
 
 ## <a name="use-the-video-element"></a>video 要素を使用する
 

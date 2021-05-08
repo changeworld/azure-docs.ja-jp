@@ -3,12 +3,12 @@ title: パブリック レジストリ アクセスの構成
 description: 選択したパブリック IP アドレスまたはアドレス範囲から Azure Container Registry へのアクセスを有効にする IP ルールを構成します。
 ms.topic: article
 ms.date: 03/08/2021
-ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 00912f0e66c84feff40e6439d59ccdfa82a4ab6a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773064"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785838"
 ---
 # <a name="configure-public-ip-network-rules"></a>パブリック IP ネットワーク ルールを構成する
 
@@ -115,15 +115,15 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="next-steps"></a>次のステップ
 
-* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure コンテナー レジストリ用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
-* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
+* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure Container Registry 用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
+* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure Container Registry にアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az-acr-network-rule-add
-[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az-acr-network-rule-remove
-[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az-acr-network-rule-list
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-update]: /cli/azure/acr#az-acr-update
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add
+[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az_acr_network_rule_remove
+[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az_acr_network_rule_list
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-update]: /cli/azure/acr#az_acr_update
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md
 [azure-portal]: https://portal.azure.com

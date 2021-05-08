@@ -12,16 +12,21 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: 読者, 言語学習者, 絵の表示, 読解力の向上, コンテンツの読み取り, 翻訳
-ms.openlocfilehash: 0661bd5f917a2bf071f11393ad8ac9af53ddfe97
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631241"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801572"
 ---
 # <a name="what-is-immersive-reader"></a>Immersive Reader とは
 
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 イマーシブ リーダー クライアント ライブラリを使用すると、Microsoft Word および Microsoft One Note で使用されるものと同じテクノロジを利用して、Web アプリケーションを改良できます。 
+
+このドキュメントには、次のような記事が記載されています。  
+
+* **[クイックスタート](quickstarts/client-libraries.md)** は、サービスへの要求の実行方法を説明する概要手順です。
+* **[攻略ガイド](how-to-create-immersive-reader.md)** には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>イマーシブ リーダーを使用して読みのアクセシビリティを向上させる 
 
@@ -72,10 +77,3 @@ ms.locfileid: "92631241"
 イマーシブ リーダー クライアント ライブラリは、C#、JavaScript、Java (Android)、Kotlin (Android)、および Swift (iOS) で利用できます。 以下を使ってみてください。
 
 * [クイック スタート: イマーシブ リーダー クライアント ライブラリを使用する](quickstarts/client-libraries.md)
-
-## <a name="next-steps"></a>次のステップ
-
-Immersive Reader を使ってみましょう。
-
-* [イマーシブ リーダー クライアント ライブラリ リファレンス](./reference.md)を読みます
-* [GitHub でイマーシブ リーダー クライアント ライブラリ](https://github.com/microsoft/immersive-reader-sdk)を調べます

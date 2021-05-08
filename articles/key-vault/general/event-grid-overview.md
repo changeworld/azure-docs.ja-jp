@@ -3,18 +3,17 @@ title: Azure Event Grid での Key Vault の監視
 description: Azure Event Grid を使用して Key Vault のイベントをサブスクライブする
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ee38196f0b1a6e00d385dc0d2c88d45a4291d3b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fb6d57bb84f4a3b4c5c138be9306489191bfce8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90087438"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753364"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid"></a>Azure Event Grid での Key Vault の監視
 

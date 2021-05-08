@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26363031aea37c53cce098e2b6cbc2b4d93b918f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91535691"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307080"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Azure Time Series Insights Gen1 のデータ保有の概要
 
@@ -85,7 +85,7 @@ ms.locfileid: "91535691"
 イングレス再開時の動作:
 
 - イベント ソースが受信した順序でデータが流れる。
-- イベント ソースのリテンション期間ポリシーを超過した場合を除き、タイムスタンプに基づいてイベントに索引が付けられる。 イベント ソースのリテンション期間の構成については、「[Event Hubs のよく寄せられる質問](../event-hubs/event-hubs-faq.md)」を参照してください。
+- イベント ソースのリテンション期間ポリシーを超過した場合を除き、タイムスタンプに基づいてイベントに索引が付けられる。 イベント ソースのリテンション期間の構成については、「[Event Hubs のよく寄せられる質問](../event-hubs/event-hubs-faq.yml)」を参照してください。
 
 > [!IMPORTANT]
 > イングレスの一時停止を回避するために、通知を出すアラートを設定してください。 Azure イベント ソースの場合、既定のリテンション期間は 1 日のため、データが失われることがあります。 イングレスが一時停止すると、追加の措置を取らない限り、最も新しいデータが失われる可能性があります。 データ損失を回避するには、容量を増やすか、**古いデータを消去する** 動作に切り替える必要があります。

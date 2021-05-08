@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 03/29/2021
 ms.author: chrande
 ms.custom: devx-track-python
-ms.openlocfilehash: 91b04b05b810b2b0fc221943a73e81c49f7119dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cef397789d5ebcfa95c01e42dac9a80b9e1564e0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972471"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106944"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "95972471"
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。
-- [Python 3.5 以上](https://www.python.org/downloads/) ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラーを含む)
+- [Python 3.6 以降](https://www.python.org/downloads/) ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラーを含む)。
 - [Gremlin 用 Python ドライバー](https://github.com/apache/tinkerpop/tree/master/gremlin-python)。
 - [Git](https://git-scm.com/downloads).
 
@@ -56,16 +56,16 @@ ms.locfileid: "95972471"
 1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "./git-samples"
     ```
 
 2. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。  
 
     ```bash
-    cd "C:\git-samples"
+    cd "./git-samples"
     ```
 
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-python-getting-started.git
@@ -73,14 +73,14 @@ ms.locfileid: "95972471"
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、*C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* フォルダーの *connect.py* ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 スニペットはすべて、*C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* フォルダーの *connect.py* ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。
 
-* Gremlin の `client` は、*connect.py* の 104 行目で初期化されます。
+* Gremlin の `client` は *connect.py* の 155 行目で初期化されています。 必ず `<YOUR_DATABASE>` と `<YOUR_CONTAINER_OR_GRAPH>` を自分のアカウントのデータベース名とグラフ名の値で置き換えてください。
 
     ```python
     ...
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
-        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_COLLECTION_OR_GRAPH>", 
+        username="/dbs/<YOUR_DATABASE>/colls/<YOUR_CONTAINER_OR_GRAPH>", 
         password="<YOUR_PASSWORD>")
     ...
     ```
@@ -101,7 +101,7 @@ ms.locfileid: "95972471"
 
     :::image type="content" source="./media/create-graph-python/keys.png" alt-text="Azure portal の [キー] ページでアクセス キーを表示およびコピーする":::
 
-2. *connect.py* ファイルを開き、104 行目の `<YOUR_ENDPOINT>` に URI の値を貼り付けます。
+2. *connect.py* ファイルを開き、155 行目の `<YOUR_ENDPOINT>` に URI の値を貼り付けます。
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -145,7 +145,7 @@ ms.locfileid: "95972471"
 1. git ターミナル ウィンドウで、azure-cosmos-db-graph-python-getting-started フォルダーに `cd` で移動します。
 
     ```git
-    cd "C:\git-samples\azure-cosmos-db-graph-python-getting-started"
+    cd "./git-samples\azure-cosmos-db-graph-python-getting-started"
     ```
 
 2. git ターミナル ウィンドウで、次のコマンドを実行して 必要な Python パッケージをインストールします。

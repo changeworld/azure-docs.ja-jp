@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: ad1f14fc92433e8d9cb31de165645e4a5731f01a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a758a3e972e47baeba440639c1c6bcf34219d7c0
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019468"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121372"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -94,7 +94,7 @@ metadata:
 spec:
   containers:
   - name: hello
-    image: busybox
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
@@ -104,13 +104,14 @@ spec:
 kubectl apply -f aks-apparmor.yaml
 ```
 
-ポッドが展開されたら、[kubectl exec][kubectl-exec] コマンドを使用してファイルに書き込みます。 次の出力例に示すように、このコマンドは実行できません。
+ポッドを展開した状態で、*hello-apparmor* ポッドが "*ブロック済み*" と表示されていることを確認します。
 
 ```
-$ kubectl exec hello-apparmor touch /tmp/test
+$ kubectl get pods
 
-touch: /tmp/test: Permission denied
-command terminated with exit code 1
+NAME             READY   STATUS    RESTARTS   AGE
+aks-ssh          1/1     Running   0          4m2s
+hello-apparmor   0/1     Blocked   0          50s
 ```
 
 AppArmor の詳細については、[Kubernetes の AppArmor プロファイル][k8s-apparmor]に関する記事を参照してください。
@@ -121,12 +122,34 @@ AppArmor は任意の Linux アプリケーションで機能しますが、[sec
 
 seccomp の動作を確認するには、ファイルに対するアクセス許可の変更を防止するフィルターを作成します。 [SSH][aks-ssh] で AKS ノードに接続し、 */var/lib/kubelet/seccomp/prevent-chmod* という名前の seccomp フィルターを作成し、次の内容を貼り付けます。
 
-```
+```json
 {
   "defaultAction": "SCMP_ACT_ALLOW",
   "syscalls": [
     {
       "name": "chmod",
+      "action": "SCMP_ACT_ERRNO"
+    },
+    {
+      "name": "fchmodat",
+      "action": "SCMP_ACT_ERRNO"
+    },
+    {
+      "name": "chmodat",
+      "action": "SCMP_ACT_ERRNO"
+    }
+  ]
+}
+```
+
+バージョン 1.19 以降では、以下を構成する必要があります。
+
+```json
+{
+  "defaultAction": "SCMP_ACT_ALLOW",
+  "syscalls": [
+    {
+      "names": ["chmod","fchmodat","chmodat"],
       "action": "SCMP_ACT_ERRNO"
     }
   ]
@@ -145,7 +168,30 @@ metadata:
 spec:
   containers:
   - name: chmod
-    image: busybox
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
+    command:
+      - "chmod"
+    args:
+     - "777"
+     - /etc/hostname
+  restartPolicy: Never
+```
+
+バージョン 1.19 以降では、以下を構成する必要があります。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: chmod-prevented
+spec:
+  securityContext:
+    seccompProfile:
+      type: Localhost
+      localhostProfile: prevent-chmod
+  containers:
+  - name: chmod
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     command:
       - "chmod"
     args:

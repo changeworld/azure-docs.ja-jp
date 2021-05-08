@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/20/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 1ca8bc5c82540b0dc02959d26b452554ef294368
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200531"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606829"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -233,14 +233,14 @@ SSH を使用して HSM に接続されている場合、HSM が動作してい�
 
 ![PowerShell ウィンドウの出力を示すスクリーンショット。](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-この時点で、高可用性のためのリソースをすべて割り当て、2 つの HSM をデプロイし、アクセスと動作状態を検証しました。 以降の構成やテストでは、HSM デバイス自体の操作が多くなります。 そのため、Thales Luna Network HSM 7 の管理ガイド第 7 章の指示に従って、HSM を初期化し、パーティションを作成する必要があります。 Thales のカスタマー サポート ポータルで登録し、利用者 ID を取得すると、すべてのドキュメントとソフトウェアを Thales から直接ダウンロードして入手できます。 すべての必須コンポーネントを入手するには、クライアント ソフトウェア バージョン 7.2 をダウンロードします。
+この時点で、高可用性のためのリソースをすべて割り当て、2 つの HSM をデプロイし、アクセスと動作状態を検証しました。 以降の構成やテストでは、HSM デバイス自体の操作が多くなります。 そのため、Thales Luna 7 HSM の管理ガイド第 7 章の指示に従って、HSM を初期化し、パーティションを作成する必要があります。 [Thales のカスタマー サポート ポータル](https://supportportal.thalesgroup.com/csm)で登録し、利用者 ID を取得すると、すべてのドキュメントとソフトウェアを Thales から直接ダウンロードして入手できます。 すべての必須コンポーネントを入手するには、クライアント ソフトウェア バージョン 7.2 をダウンロードします。
 
 ## <a name="delete-or-clean-up-resources"></a>リソースの削除またはクリーンアップ
 
 HSM デバイスだけでの作業を完了したら、それをリソースとして削除し、空きプールに戻すことができます。 これを行う際の明らかな問題は、デバイス上にあるお客様の機密データです。 デバイスを "ゼロにする" 最善の方法は、HSM 管理者パスワードを 3 回間違えることです (注: これはアプライアンス管理者ではなく、実際の HSM 管理者です)。 キー マテリアルを保護するための安全対策として、デバイスがゼロの状態になるまでは、そのデバイスを Azure リソースとして削除することはできません。
 
 > [!NOTE]
-> Thales デバイスの構成に問題がある場合は、[Thales カスタマー サポート](https://safenet.gemalto.com/technical-support/)に問い合わせる必要があります。
+> Thales デバイスの構成に問題がある場合は、[Thales カスタマー サポート](https://supportportal.thalesgroup.com/csm)に問い合わせる必要があります。
 
 このリソース グループ内のすべてのリソースでの作業が完了したら、次のコマンドでそれらをすべて削除できます。
 

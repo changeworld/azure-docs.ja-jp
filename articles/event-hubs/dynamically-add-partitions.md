@@ -3,12 +3,12 @@ title: Azure Event Hubs でイベント ハブにパーティションを動的�
 description: この記事では、Azure Event Hubs でイベント ハブにパーティションを動的に追加する方法について説明します。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aeeee1bcefe58b006dac0b6913aaa609cbeefb8c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98625267"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775122"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs でイベント ハブ (Apache Kafka トピック) にパーティションを動的に追加する
 Event Hubs は、パーティション化されたコンシューマー パターンを使用してメッセージ ストリーミングを実現します。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。 パーティションは、イベント ハブで保持される順序付けされた一連のイベントです。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 パーティションの概要について詳しくは、「[パーティション](event-hubs-scalability.md#partitions)」を参照してください
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>CLI
-イベント ハブでパーティションを更新するには、[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update) CLI コマンドを使用します。 
+イベント ハブでパーティションを更新するには、[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az_eventhubs_eventhub_update) CLI コマンドを使用します。 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -105,4 +105,3 @@ Apache Kafka プロトコル経由で Event Hubs を使用する Kafka クライ
 
 ## <a name="next-steps"></a>次のステップ
 パーティションの詳細については、「[パーティション](event-hubs-scalability.md#partitions)」をご覧ください。
-

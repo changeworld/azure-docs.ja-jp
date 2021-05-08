@@ -1,23 +1,23 @@
 ---
-title: Apache Spark を Azure Cosmos DB に接続する
-description: Apache Spark を Azure Cosmos DB に接続できるようにする Azure Cosmos DB Spark コネクタについて説明します。
-author: tknandu
+title: Apache Spark 2 を Azure Cosmos DB に接続する
+description: Apache Spark を Azure Cosmos DB に接続できるようにする Azure Cosmos DB Spark 2 OLTP コネクタについて説明します。
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/21/2019
-ms.author: ramkris
-ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/06/2021
+ms.author: anfeldma
+ms.openlocfilehash: 9d4a1a7d359bac83159d0e5ca4bddfc5935394a5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97359559"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364276"
 ---
-# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
+# <a name="accelerate-big-data-analytics-by-using-the-apache-spark-v2-to-azure-cosmos-db-oltp-connector"></a>Apache Spark v2 - Azure Cosmos DB OLTP コネクタを使用したビッグ データ分析の高速化
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されているデータで [Spark](https://spark.apache.org/) ジョブを実行できます。 Cosmos は、バッチおよびストリーム処理に使用可能であり、低待機時間でのアクセスのためのサービス レイヤーとして使用できます。
+Cosmos DB Spark 2 OLTP コネクタを使用して、Azure Cosmos DB に格納されているデータで [Spark v2](https://spark.apache.org/) ジョブを実行できます。 Cosmos は、バッチおよびストリーム処理に使用可能であり、低待機時間でのアクセスのためのサービス レイヤーとして使用できます。
 
 このコネクタは、Azure 上でマネージド Spark クラスターを提供する [Azure Databricks](https://azure.microsoft.com/services/databricks) または [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) と一緒に使用できます。 サポートする Spark バージョンを次の表に示します。
 
@@ -33,7 +33,7 @@ Cosmos DB Spark コネクタを使用して、Azure Cosmos DB に格納されて
 > Cosmos DB Cassandra API の場合は、[Cassandra Spark コネクタ](https://github.com/datastax/spark-cassandra-connector)を使用してください。
 
 > [!IMPORTANT]
-> Azure Cosmos DB Spark コネクタは、[サーバーレス](serverless.md) アカウントでは現在サポートされていません。 このことは、サーバーレス オファーが一般公開されるときに解決されます。
+> Azure Cosmos DB Spark OLTP コネクタは、[サーバーレス](serverless.md) アカウントでは現在サポートされていません。 このことは、サーバーレス オファーが一般公開されるときに解決されます。
 
 ## <a name="quickstart"></a>クイック スタート
 

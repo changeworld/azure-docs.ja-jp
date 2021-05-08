@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ae342e7cbd8a9c2e126de7666d07f0664be407
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815387"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573644"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -53,8 +53,8 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 $destapp = New-AzWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcapp
 ```
 
-## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>App Service 環境への既存のアプリの複製
-シナリオ:米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しいアプリに複製したいと考えています。
+## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>App Service Environment への既存のアプリの複製
+シナリオ:米国中南部リージョンに既存のアプリがあり、ユーザーはそのコンテンツを既存の App Service Environment (ASE) の新しいアプリに複製したいと考えています。
 
 ソース アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース アプリの情報を取得できます (この場合の名前は `source-webapp`)。
 
@@ -123,11 +123,12 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * データベースの内容は複製されない
 * 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更される
 * Linux アプリでは利用できない
+* マネージド ID は複製されない
 
 ### <a name="references"></a>References
 * [App Service の複製](app-service-web-app-cloning.md)
 * [Azure App Service でアプリをバックアップする](manage-backup.md)
 * [Azure Resource Manager による Azure Traffic Manager プレビューのサポート](../traffic-manager/traffic-manager-powershell-arm.md)
-* [App Service 環境の概要](environment/intro.md)
+* [App Service Environment の概要](environment/intro.md)
 * [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)
 

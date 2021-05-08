@@ -1,14 +1,14 @@
 ---
-title: パターン:ポリシー定義の field プロパティ
+title: 'パターン: ポリシー定義の field プロパティ'
 description: この Azure Policy パターンでは、ポリシー定義内で field プロパティを使用する方法の例を示します。
-ms.date: 10/14/2020
+ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 267c687f78f0bbb100843faee40ab6f3d3cbb64c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b0b998084c9acf664d4e3e8dd9483af1ee986677
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072970"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093335"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy パターン: field プロパティ
 
@@ -24,7 +24,7 @@ ms.locfileid: "92072970"
 
 :::code language="json" source="~/policy-templates/patterns/pattern-fields.json" range="18-36" highlight="3,7,11":::
 
-**field** 演算子は[論理演算子](../concepts/definition-structure.md#logical-operators) **allOf** 内で 3 回使用されています。
+**field** 演算子は [論理演算子](../concepts/definition-structure.md#logical-operators) **allOf** 内で 3 回使用されています。
 
 - 最初の使用では、**notIn** 条件を持つ `location` プロパティを **listOfAllowedLocations** パラメーターに評価します。 **notIn** は、"_配列_" が想定されるときに機能しますが、実際にこのパラメーターは "_配列_" です。 作成または更新されるリソースの `location` が承認済みの一覧に含まれていない場合、この要素は true に評価されます。
 - 2 番目の使用でも `location` プロパティが評価されますが、**notEquals** 条件を使用して、リソースが "_グローバル_" かどうかを確認します。 作成または更新されるリソースの `location` が "_グローバル_" でない場合、この要素は true に評価されます。

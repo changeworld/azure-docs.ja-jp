@@ -3,18 +3,20 @@ title: クイックスタート - コンテナー インスタンスに Docker �
 description: このクイック スタートでは、Azure PowerShell を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 services: container-instances
 manager: gwallace
-ms.service: container-instances
-ms.topic: quickstart
 ms.date: 03/21/2019
-ms.custom: seodec18, mvc
-ms.openlocfilehash: c7002d8a83e58a9089ee3c3840b0397d63e2f198
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: quickstart
+ms.service: container-instances
+ms.custom:
+- mvc
+- mode-api
+ms.openlocfilehash: f9c6bac45e2e7fe18895a16831f840c3ae5a9f9d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89565584"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536156"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してコンテナー インスタンスを Azure にデプロイする
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用してコンテナー インスタンスを Azure にデプロイする
 
 サーバーレスの Docker コンテナーを Azure 内で簡単にすばやく実行するには、Azure Container Instances を使用します。 Azure Kubernetes Service のように完全なコンテナー オーケストレーション プラットフォームが不要な場合は、コンテナー インスタンス オンデマンドにアプリケーションをデプロイします。
 

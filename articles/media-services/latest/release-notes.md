@@ -9,20 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213098"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279036"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
-
->URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` をコピーして、お使いの RSS フィード リーダーに貼り付け、更新内容を確認するためにこのページに再度アクセスするタイミングに関する通知を受け取るようにしてください。
 
 常に最新の開発情報を把握していただけるよう、この記事では以下に関する情報を提供します。
 
@@ -31,12 +29,112 @@ ms.locfileid: "102213098"
 * バグの修正
 * 非推奨の機能
 
-## <a name="known-issues"></a>既知の問題
+## <a name="march-2021"></a>2021 年 3 月
 
-> [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用して、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)とジョブの表示、API へのアクセスに関する情報の取得、コンテンツの暗号化を行うことができます。 他のすべての管理タスク (変換とジョブの管理など) については、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
->
-> 詳細については、[Media Services v3 に関する Azure portal の制限事項](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)に関する記事を参照してください。
+### <a name="new-language-support-added-to-the-audioanalyzer-preset"></a>AudioAnalyzer プリセットに追加された新しい言語サポート
+
+AudioAnalyzer プリセット (基本と標準モードの両方) に、ビデオの文字起こしと字幕に使用できる言語が新しく追加されました。
+
+* 英語 (オーストラリア): en-AU
+* フランス語 (カナダ): fr-CA
+* アラビア語 (バーレーン) 現代標準: ar-BH
+* アラビア語 (エジプト): ar-EG
+* アラビア語 (イラク): ar-IQ
+* アラビア語 (イスラエル): ar-IL
+* アラビア語 (ヨルダン): ar-JO
+* アラビア語 (クウェート): ar-KW
+* アラビア語 (レバノン): ar-LB
+* アラビア語 (オマーン): ar-OM
+* アラビア語 (カタール): ar-QA
+* アラビア語 (サウジアラビア): ar-SA
+* デンマーク語: da-DK
+* ノルウェー語: nb-NO
+* スウェーデン語: sv-SE
+* フィンランド語: fi-FI
+* タイ語: th-TH
+* トルコ語: tr-TR
+
+[ビデオとオーディオ ファイルの概念の分析に関する記事](analyze-video-audio-files-concept.md)で、利用可能な最新の言語をご確認ください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="hevc-encoding-support-in-standard-encoder"></a>Standard Encoder での HEVC エンコードのサポート
+
+Standard Encoder で、8 ビットの HEVC (H.265) エンコードがサポートされるようになりました。 HEVC コンテンツは、'hev1' 形式を使用して、Dynamic Packager を通じて配信およびパッケージ化できます。  
+
+HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)で入手できます。
+カスタム エンコードに加えて、次の組み込み HEVC エンコード プリセットを新しく使用できるようになりました。
+
+- H265ContentAwareEncoding
+- H265AdaptiveStreaming
+- H265SingleBitrate720P
+- H265SingleBitrate1080p
+- H265SingleBitrate4K
+
+v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard Encoder で新しい HEVC エンコード サポートを使用するように移行する必要があります。
+
+### <a name="azure-media-services-v2-api-and-sdks-deprecation-announcement"></a>Azure Media Services v2 API と SDK の廃止に関するお知らせ
+
+#### <a name="update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024"></a>2024 年 2 月 29 日までに Azure Media Services REST API と SDK を v3 に更新してください
+
+.NET および Java 用のバージョン 3 の Azure Media Services REST API とクライアント SDK では、バージョン 2 よりも多くの機能を提供しているため、.NET および Java 用のバージョン 2 の Azure Media Services REST API とクライアント SDK を廃止する予定です。
+
+.NET および Java 用のバージョン 3 の Azure Media Services REST API とクライアント SDK の豊富なメリットを活用するために、早めに切り替えを行うことをお勧めします。
+バージョン 3 では次のものが提供されます。
+ 
+- 24 時間 365 日体制のライブ イベント サポート
+- ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
+- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+
+#### <a name="action-required"></a>必要な操作
+
+ワークロードの中断を最小限に抑えるために、[移行ガイド](./migrate-v-2-v-3-migration-introduction.md)を参照して、2024 年 2 月 29 日までにコードをバージョン 2 の API と SDK からバージョン 3 の API と SDK に移行してください。
+**2024 年 2 月 29 日以降** は、Azure Media Services は、バージョン 2 の REST API、ARM アカウント管理 API バージョン 2015-10-01、またはバージョン 2 の .NET クライアント SDK からのトラフィックを受け入れなくなります。 これには、バージョン 2 の API を呼び出す可能性があるサードパーティ製のオープンソースのクライアント SDK が含まれます。  
+
+公式の [Azure の更新情報に関するお知らせ](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/)をご確認ください。
+
+### <a name="standard-encoder-support-for-v2-api-features"></a>Standard Encoder での v2 API 機能のサポート
+
+新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 バージョンのエンコード API では次の機能を使用できるようになりました。
+
+- 新しい **Jobinputclip** サポートを使用して、複数の入力ファイルを結合できるようになりました。
+    - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)する方法を示しています。
+- オーディオ トラックのオプションにより、お客様は着信オーディオ トラックを選択してマップし、出力にルーティングしてエンコードできます
+    - **Audiotrackdescriptor** とトラックのオプションの詳細については、[REST API OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) に関するセクションを参照してください。
+- エンコードでのトラックの選択 - お客様は、ABR ソース ファイル、または複数のビットレート トラックを含むライブ アーカイブからトラックを選択できます。 ライブ イベント アーカイブ ファイルから MP4 を生成する場合に非常に便利です。
+    - [Videotrackdescriptor](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L1562) に関するセクションを参照してください
+- FaceDetector に追加された編集 (ぼかし) 機能
+    - FaceDetector プリセットの [Redact](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L634) と [Combined](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L649) の各モードを参照してください
+
+### <a name="new-client-sdk-releases-for-2020-05-01-version-of-the-azure-media-services-api"></a>2020-05-01 バージョンの Azure Media Services API の新しいクライアント SDK リリース
+
+使用可能な全言語の新しいクライアント SDK バージョン、および前述の機能を使用できるようになりました。
+パッケージ マネージャーを使用して、コード ベースで最新クライアント SDK に更新してください。
+
+- [.NET SDK パッケージ 3.0.4](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/)
+- [Node.js Typescript バージョン 8.1.0](https://www.npmjs.com/package/@azure/arm-mediaservices)
+- [Python azure-mgmt-media 3.1.0](https://pypi.org/project/azure-mgmt-media/)
+- [Java SDK 1.0.0-beta.2](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-mediaservices/1.0.0-beta.2/jar)
+
+### <a name="new-security-features-available-in-the-2020-05-01-version-of-the-azure-media-services-api"></a>2020-05-01 バージョンの Azure Media Services API で使用できる新しいセキュリティ機能
+
+- **[カスタマー マネージド キー](concept-use-customer-managed-keys-byok.md)** : "2020-05-01" バージョンの API を使用して作成されたアカウントに保存されているコンテンツ キーと他のデータは、アカウント キーを使用して暗号化されます。 お客様は、アカウント キーを暗号化するためのキーを提供できます。
+
+- **[信頼されたストレージ](concept-trusted-storage.md)** : Media Services は、Media Services アカウントに関連付けられているマネージド ID を使用して Azure Storage にアクセスするように構成できます。 マネージド ID を使用してストレージ アカウントにアクセスする場合、お客様は Media Services シナリオをブロックすることなく、より制限の厳しいネットワーク ACL をストレージ アカウントで構成できます。
+
+- **[マネージド ID](concept-managed-identities.md)** : お客様は、Media Services アカウントのシステム割り当てマネージド ID を有効にして、キーコンテナー (カスタマー マネージド キーの場合) とストレージ アカウント (信頼されるストレージの場合) にアクセスできるようにすることができます。
+
+### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Isomorphic SDK for JavaScript を使用した Typescript Node.js のサンプルの更新
+
+Node.js のサンプルは、最新の Isomorphic SDK を使用するように更新されています。 このサンプルでは、Typescript の使用方法が示されています。 また、Node.js/Typescript 用に、新しいライブ ストリーミング サンプルが追加されました。
+
+**[media-services-v3-node-tutorials](https://github.com/Azure-Samples/media-services-v3-node-tutorials)** Git Hub リポジトリで、最新のサンプルを確認してください。
+
+### <a name="new-live-stand-by-mode-to-support-faster-startup-from-warm-state"></a>ウォーム状態からの高速な起動をサポートする新しいライブ スタンバイ モード
+
+ライブ イベントで、"スタンバイ" に低コスト課金モードが適用されるようになりました。 このため、お客様は、"ホット プール" の作成時に、ライブ イベントをより低コストで事前割り当てすることができます。 その後、お客様は、スタンバイ ライブ イベントを使用することで、作成時のコールドな状態から開始するよりも速く実行中の状態に移行することができます。  このため、チャネルの開始にかかる時間が大幅に短縮され、低価格モードで実行されているマシンをホットプールに高速に割り当てることができます。
+最新の料金の詳細については、[こちら](https://azure.microsoft.com/pricing/details/media-services)を参照してください。
+スタンバイ状態とライブ イベントのその他の状態の詳細については、記事「[ライブ イベントの状態と課金](./live-event-states-billing-concept.md)」を参照してください。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -48,17 +146,17 @@ Azure Media Services は、ノルウェー東部リージョンの Azure portal 
 
 ### <a name="basic-audio-analysis"></a>Basic の音声分析
 
-音声分析のプリセットに、Basic モードの価格レベルが含まれるようになりました。 新しい Basic の音声アナライザー モードによって、音声の文字起こしの抽出、出力キャプションと字幕の書式設定の低コストのオプションが提供されます。 このモードを使用すると、音声からテキストへの文字起こし、VTT 字幕またはキャプション ファイルの生成が実行されます。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。 [サポートされている言語](analyzing-video-audio-files-concept.md#built-in-presets)のリストを参照してください。
+音声分析のプリセットに、Basic モードの価格レベルが含まれるようになりました。 新しい Basic の音声アナライザー モードによって、音声の文字起こしの抽出、出力キャプションと字幕の書式設定の低コストのオプションが提供されます。 このモードを使用すると、音声からテキストへの文字起こし、VTT 字幕またはキャプション ファイルの生成が実行されます。 このモードの出力には、キーワード、文字起こし、タイミング情報のみを含む Insights JSON ファイルなどがあります。 このモードには、自動言語検出と話者のダイアライゼーションは含まれていません。 [サポートされている言語](analyze-video-audio-files-concept.md#built-in-presets)のリストを参照してください。
 
 インデクサー v1 およびインデクサー v2 を使用しているお客様は、Basic の音声分析のプリセットに移行する必要があります。
 
-基本的な音声アナライザー モードの詳細については、[ビデオおよび音声のファイルの分析](analyzing-video-audio-files-concept.md)に関するページを参照してください。  REST API で Basic の音声アナライザー モードを使用する方法については、[基本的なオーディオ変換を作成する方法](how-to-create-basic-audio-transform.md)に関するページを参照してください。
+基本的な音声アナライザー モードの詳細については、[ビデオおよび音声のファイルの分析](analyze-video-audio-files-concept.md)に関するページを参照してください。  REST API で Basic の音声アナライザー モードを使用する方法については、[基本的なオーディオ変換を作成する方法](transform-create-basic-audio-how-to.md)に関するページを参照してください。
 
 ### <a name="live-events"></a>ライブ イベント
 
 ライブ イベントが停止したときに、ほとんどのプロパティの更新が許可されるようになりました。 さらに、ユーザーは、ライブ イベントの入力およびプレビューの URL に対して、静的ホスト名のプレフィックスを指定できます。 VanityUrl は、プロパティの意図をより適切に反映するために `useStaticHostName` と呼ばれるようになりました。
 
-ライブ イベントにスタンバイ状態が追加されました。  「[Media Services のライブ イベントとライブ出力](./live-events-outputs-concept.md)」を参照してください。
+ライブ イベントにスタンバイ状態が追加されました。  「[Media Services のライブ イベントとライブ出力](./live-event-outputs-concept.md)」を参照してください。
 
 ライブ イベントでは、さまざまな入力の縦横比の受信がサポートされています。 ストレッチ モードを使用すると、顧客が出力の拡張動作を指定できます。
 
@@ -72,9 +170,10 @@ Azure Media Services は、ノルウェー東部リージョンの Azure portal 
 ## <a name="august-2020"></a>2020 年 8 月
 
 ### <a name="dynamic-encryption"></a>動的暗号化
-レガシ PlayReady Protected Interoperable File Format (PIFF 1.1) 暗号化のサポートが Dynamic Packager で利用できるようになりました。 これにより、Microsoft が公開した Common Encryption 標準 (CENC) の早期ドラフトを実装した Samsung 製および LG 製のレガシ スマート TV セットのサポートが提供されます。  PIFF 1.1 形式は、Silverlight クライアント ライブラリによって以前サポートされていた暗号化形式としても知られています。 現在、この暗号化形式の唯一のユース ケース シナリオは、PIFF 1.1 暗号化によるスムーズ ストリーミングのみがサポートされている一部のリージョンで相当な数のスマート テレビが残っているレガシ スマート TV 市場をターゲットにすることです。 
 
-新しい PIFF 1.1 暗号化サポートを使用するには、ストリーミング ロケーターの URL パスで暗号化値を "piff" に変更します。 詳細については、[コンテンツ保護の概要](content-protection-overview.md)に関するページを参照してください。
+レガシ PlayReady Protected Interoperable File Format (PIFF 1.1) 暗号化のサポートが Dynamic Packager で利用できるようになりました。 これにより、Microsoft が公開した Common Encryption 標準 (CENC) の早期ドラフトを実装した Samsung 製および LG 製のレガシ スマート TV セットのサポートが提供されます。  PIFF 1.1 形式は、Silverlight クライアント ライブラリによって以前サポートされていた暗号化形式としても知られています。 現在、この暗号化形式の唯一のユース ケース シナリオは、PIFF 1.1 暗号化によるスムーズ ストリーミングのみがサポートされている一部のリージョンで相当な数のスマート テレビが残っているレガシ スマート TV 市場をターゲットにすることです。
+
+新しい PIFF 1.1 暗号化サポートを使用するには、ストリーミング ロケーターの URL パスで暗号化値を "piff" に変更します。 詳細については、[コンテンツ保護の概要](drm-content-protection-concept.md)に関するページを参照してください。
 例: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
 
 > [!NOTE]
@@ -88,11 +187,11 @@ Azure Media Services は、ノルウェー東部リージョンの Azure portal 
 
 ### <a name="protecting-your-content-with-media-services-and-azure-ad"></a>Media Services と Azure AD によるコンテンツの保護
 
-「[Azure AD を使用したエンド ツー エンドのコンテンツ保護](./azure-ad-content-protection.md)」というタイトルのチュートリアルを公開しました。
+「[Azure AD を使用したエンド ツー エンドのコンテンツ保護](./architecture-azure-ad-content-protection.md)」というタイトルのチュートリアルを公開しました。
 
 ### <a name="high-availability"></a>高可用性
 
-Media Services とビデオ オン デマンド (VOD) を使用した高可用性の[概要](./media-services-high-availability-encoding.md)と[サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)を公開しました。
+Media Services とビデオ オン デマンド (VOD) を使用した高可用性の[概要](./architecture-high-availability-encoding-concept.md)と[サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)を公開しました。
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -144,7 +243,7 @@ Media Services が次の Azure Government リージョンで一般公開され�
 
 ライブ文字起こしのパブリック プレビューが始まっており、米国西部 2 リージョンでご利用いただけます。
 
-ライブ文字起こしはアドオン機能としてライブ イベントと連動するように設計されています。  パススルーと Standard または Premium のエンコード ライブ イベントの両方でサポートされています。  この機能が有効になっている場合、このサービスでは Cognitive Services の[音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)機能を使用して、受信したオーディオの音声を文字起こししてテキストにします。 その後、このテキストは、MPEG-DASH および HLS プロトコルのビデオとオーディオで配信できるようになります。 課金は、"実行中" 状態のとき、ライブ イベントの追加コストとなる新しいアドオン メーターに基づきます。  ライブ文字起こしと課金の詳細については、「[ライブ文字起こし](live-transcription.md)」を参照してください。
+ライブ文字起こしはアドオン機能としてライブ イベントと連動するように設計されています。  パススルーと Standard または Premium のエンコード ライブ イベントの両方でサポートされています。  この機能が有効になっている場合、このサービスでは Cognitive Services の[音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)機能を使用して、受信したオーディオの音声を文字起こししてテキストにします。 その後、このテキストは、MPEG-DASH および HLS プロトコルのビデオとオーディオで配信できるようになります。 課金は、"実行中" 状態のとき、ライブ イベントの追加コストとなる新しいアドオン メーターに基づきます。  ライブ文字起こしと課金の詳細については、「[ライブ文字起こし](live-event-live-transcription-how-to.md)」を参照してください。
 
 > [!NOTE]
 > 現在、ライブ文字起こしは、米国西部 2 リージョンのプレビュー機能としてのみ提供されています。 現時点では英語 (en-us) 音声の文字起こしのみサポートされています。
@@ -152,7 +251,7 @@ Media Services が次の Azure Government リージョンで一般公開され�
 ### <a name="content-protection"></a>コンテンツの保護
 
 去る 9 月に限定リージョンで公開された "*トークン再生防止*" 機能が全リージョンで利用できるようになりました。
-Media Services をご利用のお客様は、キーまたはライセンスの要求に同じトークンを使用できる回数に上限を設定できるようになりました。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+Media Services をご利用のお客様は、キーまたはライセンスの要求に同じトークンを使用できる回数に上限を設定できるようになりました。 詳細については、「[トークン再生の防止](drm-content-protection-concept.md#token-replay-prevention)」を参照してください。
 
 ### <a name="new-recommended-live-encoder-partners"></a>新しいおすすめのライブ エンコーダー パートナー
 
@@ -211,7 +310,7 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 ### <a name="content-protection"></a>コンテンツの保護
 
-トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](content-protection-overview.md#token-replay-prevention)」を参照してください。
+トークン制限で保護されたコンテンツをストリーミングする場合、エンドユーザーはキー配信要求の一部として送信されるトークンを取得する必要があります。 *トークン再生の防止* 機能を使用すると、Media Services のユーザーは、同じトークンを使用してキーまたはライセンスを要求できる回数に制限を設定できます。 詳細については、「[トークン再生の防止](drm-content-protection-concept.md#token-replay-prevention)」を参照してください。
 
 7 月の時点では、プレビュー機能は米国中部と米国中西部でのみ利用できました。
 
@@ -225,8 +324,8 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 次の例を参照してください。
 
-* [.NET を使用してビデオをサブクリップする](subclip-video-dotnet-howto.md)
-* [REST を使用してビデオをサブクリップする](subclip-video-rest-howto.md)
+* [.NET を使用してビデオをサブクリップする](transform-subclip-video-dotnet-how-to.md)
+* [REST を使用してビデオをサブクリップする](transform-subclip-video-rest-how-to.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -235,13 +334,13 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 Media Services で出力されたテレメトリ データを Azure Monitor を使用して表示できるようになりました。
 
 * Azure Monitor の診断ログを使用して、Media Services のキー配信エンドポイントによって送信された要求を監視します。 
-* Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
+* Media Services の[ストリーミング エンドポイント](stream-streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
 
-詳細については、「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を参照してください。
+詳細については、「[Media Services のメトリックと診断ログの監視](monitoring/monitor-media-services-data-reference.md)」を参照してください。
 
 ### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>ダイナミック パッケージでの複数のオーディオ トラックのサポート 
 
-複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、[ダイナミック パッケージ](dynamic-packaging-overview.md)では、HLS 出力 (バージョン 4 以上) 用の複数のオーディオ トラックがサポートされるようになりました。
+複数のコーデックと言語を使用する複数のオーディオ トラックを持つ資産をストリーミングするとき、[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)では、HLS 出力 (バージョン 4 以上) 用の複数のオーディオ トラックがサポートされるようになりました。
 
 ### <a name="korea-regional-pair-is-open-for-media-services"></a>韓国のリージョン ペアで Media Services を提供開始 
 
@@ -253,7 +352,7 @@ Media Services が、韓国中部と韓国南部のリージョンで利用で�
 
 Media Services のパフォーマンス向上を含む更新が追加されました。
 
-* 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints.md)に関する記事を参照してください。
+* 処理でサポートされているファイルの最大サイズが更新されました。 [クォータと制限](limits-quotas-constraints-reference.md)に関する記事を参照してください。
 * [エンコードの速度の向上](concept-media-reserved-units.md)。
 
 ## <a name="april-2019"></a>2019 年 4 月
@@ -261,11 +360,11 @@ Media Services のパフォーマンス向上を含む更新が追加されま�
 ### <a name="new-presets"></a>新しいプリセット
 
 * [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) が組み込みのアナライザー プリセットに追加されました。
-* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](content-aware-encoding.md)に関する記事を参照してください。 
+* [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) が組み込みのエンコーダー プリセットに追加されました。 詳細については、[コンテンツに対応したエンコード](encode-content-aware-concept.md)に関する記事を参照してください。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
+動的パッケージが Dolby Atmos 対応になりました。 詳細については、「[ダイナミック パッケージによってサポートされているオーディオ コーデック](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)」を参照してください。
 
 資産またはアカウント フィルターの一覧を指定できるようになりました。これはストリーミング ロケーターに適用されます。 詳細については、[フィルターとストリーミング ロケーターの関連付け](filters-concept.md#associating-filters-with-streaming-locator)に関する記事を参照してください。
 
@@ -273,13 +372,13 @@ Media Services のパフォーマンス向上を含む更新が追加されま�
 
 Media Services v3 が Azure 国内クラウドでサポートされるようになりました。 まだすべてのクラウドですべての機能が使用できるわけではありません。 詳細については、「[Azure Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
 
-[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) イベントが Media Services の Azure Event Grid スキーマに追加されました。
+[Microsoft.Media.JobOutputProgress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) イベントが Media Services の Azure Event Grid スキーマに追加されました。
 
 ## <a name="january-2019"></a>2019 年 1 月
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard および MPI ファイル 
 
-Media Encoder Standard でエンコードして MP4 ファイルを生成すると、新しい .mpi ファイルが生成され、出力アセットに追加されます。 この MPI ファイルの目的は、[ダイナミック パッケージ](dynamic-packaging-overview.md)とストリーミングのシナリオのパフォーマンスを向上させることです。
+Media Encoder Standard でエンコードして MP4 ファイルを生成すると、新しい .mpi ファイルが生成され、出力アセットに追加されます。 この MPI ファイルの目的は、[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)とストリーミングのシナリオのパフォーマンスを向上させることです。
 
 MPI ファイルを変更または削除したり、サービスにこのようなファイルが存在するかどうかに依存しないようにしてください。
 
@@ -419,7 +518,7 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 .NET SDK には次の機能があります。
 
-* **Transforms** と **Job**: メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
+* **Transforms** と **Job**: メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial.md)」を参照してください。
 * **ストリーミング ロケーター**: コンテンツをエンドユーザー デバイスに公開およびストリーミングします。
 * **ストリーミング ポリシー** および **コンテンツ キー ポリシー**: コンテンツ配信時のキーの配信とコンテンツ保護 (DRM) を構成します。
 * **ライブ イベント** および **ライブ出力**: ライブ ストリーミング コンテンツの取り込みとアーカイブを構成します。

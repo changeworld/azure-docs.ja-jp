@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065322"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950486"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -306,7 +306,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |ruleSetVersion     | 使用されるルール セットのバージョン。 使用できる値は 2.2.9 と 3.0 です。     |
 |ruleId     | トリガーするイベントのルール ID。        |
 |message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
-|action     |  要求に対して実行されるアクション。 使用できる値は Matched と Blocked です。      |
+|action     |  要求に対して実行されるアクション。 使用可能な値は Blocked と Allowed (カスタム ルールの場合)、Matched (ルールが要求の一部と一致する場合)、Detected と Blocked (どちらも必須ルールの場合。WAF のモードが検出なのか防止なのかによって異なる)。      |
 |site     | ログの生成対象のサイト。 ルールがグローバルであるため、現時点では Global のみ表示されます。|
 |details     | トリガーするイベントの詳細。        |
 |details.message     | ルールの説明。        |

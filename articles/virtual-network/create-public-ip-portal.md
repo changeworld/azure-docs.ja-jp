@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: allensu
-ms.openlocfilehash: e6b7648188e2307da4ef40e0ab3daf6201f9d89d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1ac3f2fa1ef3f1a24077064ad3ad3f3c30c5f3f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694871"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048359"
 ---
 # <a name="create-a-public-ip-address-using-the-azure-portal"></a>Azure portal を使用してパブリック IP アドレスを作成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "101694871"
 
 > [!NOTE]
 > これらの選択は、[Availability Zones](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) を提供するリージョンで有効です。 </br>
-これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。 </br> 可用性ゾーンの詳細については、[可用性ゾーンの概要](https://docs.microsoft.com/azure/availability-zones/az-overview)に関するページを参照してください。
+これらのリージョンでは特定のゾーンも選択できますが、ゾーン障害に対する回復性はありません。 </br> 可用性ゾーンの詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md)に関するページを参照してください。
 
 \* = サービス レベルは、[リージョン間ロード バランサー](../load-balancer/cross-region-overview.md)機能 (現在はプレビュー) に関連しています。
 

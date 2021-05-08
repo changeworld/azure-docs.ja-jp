@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 04/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3665421ddbdd9cf079ff4aab9377fc9164a1599c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726838"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575362"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -32,6 +32,9 @@ Azure Storage アカウントのデータは、常にプライマリ リージ�
 
 - **ローカル冗長ストレージ (LRS)** は、プライマリ リージョンの 1 つの物理的な場所内で、データを同期的に 3 回コピーします。 LRS は最もコストのかからないレプリケーション オプションですが、高可用性を必要とするアプリケーションには推奨されません。
 - **ゾーン冗長ストレージ (ZRS)** は、プライマリ リージョンの 3 つの Azure 可用性ゾーン間でデータを同期的にコピーします。 高可用性を必要とするアプリケーションでは、プライマリ リージョンで ZRS を使用し、セカンダリ リージョンにもレプリケートすることをお勧めします。
+
+> [!NOTE]
+> Microsoft では、Azure Data Lake Storage Gen2 ワークロード用にプライマリ リージョンで ZRS を使用することをお勧めします。
 
 ### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
 
@@ -70,7 +73,7 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 
 | ストレージ アカウントの種類 | サポートされているリージョン | サポートされているサービス |
 |--|--|--|
-| 汎用 v2<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 南アフリカ北部<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
+| 汎用 v2<sup>1</sup> | (アフリカ) 南アフリカ北部<br /> (アジア太平洋) 東南アジア<br /> (アジア太平洋) オーストラリア東部<br /> (アジア太平洋) 東日本<br /> (カナダ) カナダ中部<br /> (ヨーロッパ) 北ヨーロッパ<br /> (ヨーロッパ) 西ヨーロッパ<br /> (ヨーロッパ) フランス中部<br /> (ヨーロッパ) ドイツ中西部<br /> (ヨーロッパ) 英国南部<br /> (南アメリカ) ブラジル南部<br /> (米国) 米国中部<br /> (米国) 米国東部<br /> (米国) 米国東部 2<br /> (米国) 米国中南部<br /> (米国) 米国西部<br /> (米国) 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
 | BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
 | FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
 
@@ -124,15 +127,30 @@ GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポ�
 
 GZRS と RA-GZRS は、次のリージョンでサポートされています。
 
-- 東南アジア
-- 北ヨーロッパ
-- 西ヨーロッパ
-- 東日本
-- 英国南部
-- 米国中部
-- 米国東部
-- 米国東部 2
-- 米国西部 2
+- (アフリカ) 南アフリカ北部
+- (アジア太平洋) 東アジア
+- (アジア太平洋) 東南アジア
+- (アジア太平洋) オーストラリア東部
+- (アジア太平洋) インド中部
+- (アジア太平洋) 東日本
+- (アジア太平洋) 韓国中部
+- (カナダ) カナダ中部
+- (ヨーロッパ) 北ヨーロッパ
+- (ヨーロッパ) 西ヨーロッパ
+- (ヨーロッパ) フランス中部
+- (ヨーロッパ) ドイツ中西部
+- (ヨーロッパ) ノルウェー東部
+- (ヨーロッパ) スイス北部
+- (ヨーロッパ) 英国南部
+- (中東) アラブ首長国連邦北部
+- (南アメリカ) ブラジル南部
+- (米国) 米国中部
+- (米国) 米国東部
+- (米国) 米国東部 2
+- (米国) 米国中北部
+- (米国) 米国中南部
+- (米国) 米国西部
+- (米国) 米国西部 2
 
 価格については、[BLOB](https://azure.microsoft.com/pricing/details/storage/blobs)、[Files](https://azure.microsoft.com/pricing/details/storage/files/)、[Queues](https://azure.microsoft.com/pricing/details/storage/queues/)、[Tables](https://azure.microsoft.com/pricing/details/storage/tables/) の価格の詳細を参照してください。
 

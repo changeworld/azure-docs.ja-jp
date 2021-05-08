@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 5/11/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: b6f0f77da639bceaea680f015dad5c0d3d6dbda6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e6cc45c3aedc013b63f9d7876b923e7db36ccd37
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465074"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512319"
 ---
 ストレージ アカウント用のプライベート エンドポイントを作成するには、まず、プライベート エンドポイントを追加するストレージ アカウントと仮想ネットワーク サブネットへの参照を取得する必要があります。 `<storage-account-resource-group-name>`、`<storage-account-name>`、`<vnet-resource-group-name>`、`<vnet-name>`、および `<vnet-subnet-name>` を、次のように置き換えます。
 

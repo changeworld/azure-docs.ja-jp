@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a7951543d548696c8de403d7980e1a41b678c6cd
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936789"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078670"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -235,7 +235,7 @@ PowerShell 関数におけるログは、通常の PowerShell のログと同様
 | ------------- | -------------- |
 | エラー | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | "_情報_" レベル ログへの書き込み |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`** <br/> "_情報_" レベル ログへの書き込み |
 | デバッグ | **`Write-Debug`** |
 | Trace | **`Write-Progress`** <br /> **`Write-Verbose`** |
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d7e2bd2987e7eaf7798093f3918f72b7e09a3cb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946145"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313488"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -40,7 +40,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされているプラ
 
 4. 検索結果から **Spark & Hive Tools** を選び、 **[インストール]** を選択します。
 
-   ![Spark & Hive for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-hdInsight-plugin.png" alt-text="Spark & Hive for Visual Studio Code の Python のインストール":::
 
 5. 必要に応じて **[再読み込み]** を選択します。
 
@@ -52,7 +52,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされているプラ
 
 2. **[エクスプローラー]** ビューで **HDexample** フォルダーを選択し、作業フォルダーの横にある **[新しいファイル]** アイコンを選択します。
 
-   ![Visual Studio Code の [新しいファイル] アイコン](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/visual-studio-code-new-file.png" alt-text="Visual Studio Code の [新しいファイル] アイコン":::
 
 3. `.hql` (Hive クエリ) または `.py` (Spark スクリプト) のいずれかのファイル拡張子を使用して、新しいファイルに名前を付けます。 この例では **HelloWorld.hql** を使用します。
 
@@ -64,7 +64,7 @@ Spark & Hive Tools は、Visual Studio Code でサポートされているプラ
 2. 次の文字列を検索します: **Azure:クラウド**。
 3. 一覧から国内のクラウドを選択します。
 
-   ![既定のログイン エントリの構成を設定する](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-login-entry-configuration.png" alt-text="既定のログイン エントリの構成を設定する":::
 
 ## <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
@@ -72,7 +72,7 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Azure:Sign In**」と入力します。
 
-   ![Spark & Hive Tools for Visual Studio Code のログイン](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png" alt-text="Spark & Hive Tools for Visual Studio Code のログイン":::
 
 2. サインインの手順に従って Azure にサインインします。 接続されると、Visual Studio Code ウィンドウの下部にあるステータス バーに Azure アカウント名が表示されます。  
 
@@ -84,7 +84,7 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 1. メニュー バーから、 **[表示]**  >  **[コマンド パレット...]** に移動し、「**Spark / Hive:Link a Cluster**」と入力します。
 
-   ![コマンド パレットの link cluster コマンド](./media/hdinsight-for-vscode/link-cluster-command.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/link-cluster-command.png" alt-text="コマンド パレットの link cluster コマンド":::
 
 2. リンクされるクラスターの種類として **[Azure HDInsight]** を選択します。
 
@@ -127,7 +127,7 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 3. **[OUTPUT]\(出力\)** ビューを確認します。 このビューには、リンクされたクラスターと、お使いの Azure サブスクリプションのすべてのクラスターが表示されます。
 
-   ![既定のクラスター構成を設定する](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="既定のクラスター構成を設定する":::
 
 ## <a name="set-the-default-cluster"></a>既定のクラスターを設定する
 
@@ -141,7 +141,7 @@ Visual Studio Code からクラスターにスクリプトを送信する前に�
 
 5. 現在のスクリプト ファイルの既定のクラスターとしてクラスターを選択します。 ツールによって、構成ファイルである **.VSCode\settings.json** が自動的に更新されます。
 
-   ![既定のクラスター構成を設定する](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-default-cluster-configuration.png" alt-text="既定のクラスター構成を設定する":::
 
 ## <a name="submit-interactive-hive-queries-and-hive-batch-scripts"></a>対話型 Hive クエリと Hive バッチ スクリプトを送信する
 
@@ -163,7 +163,7 @@ Spark & Hive Tools for Visual Studio Code を使用すると、対話型 Hive �
 
 6. 既定のクラスターを指定していない場合は、クラスターを選択します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 しばらくすると、新しいタブにクエリの結果が表示されます。
 
-   ![対話型 Apache Hive クエリの結果](./media/hdinsight-for-vscode/interactive-hive-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/interactive-hive-result.png" alt-text="対話型 Apache Hive クエリの結果":::
 
    - **[結果]** パネル:結果全体を CSV、JSON、または Excel ファイルとしてローカル パスに保存したり、複数の行だけを選択したりできます。
 
@@ -198,57 +198,57 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 4. PySpark/Synapse Pyspark カーネルをインストールするためのプロンプトが、ウィンドウの右下隅に表示されます。 PySpark/Synapse Pyspark のインストールを続行するには **[インストール]** ボタンをクリックします。この手順をスキップするには、 **[スキップ]** をクリックします。
 
-   ![PySpark のインストールをスキップするオプションを示すスクリーンショット。](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/install-the-pyspark-kernel.png" alt-text="PySpark のインストールをスキップするオプションを示すスクリーンショット。":::
 
 5. 後でインストールする必要がある場合は、 **[ファイル]**  >  **[基本設定]**  >  **[設定]** に移動し、 **[HDInsight:Pyspark のインストールをスキップする]** をオフにします。 
     
-    ![[Pyspark のインストールのスキップを有効にする] オプションを示すスクリーンショット。](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png" alt-text="[Pyspark のインストールのスキップを有効にする] オプションを示すスクリーンショット。":::
 
 6. 手順 4 でインストールが正常に完了した場合、ウィンドウの右下隅に "PySpark が正常にインストールされました" というメッセージ ボックスが表示されます。 **[再読み込み]** ボタンをクリックして、ウィンドウを再度読み込みます。
 
-   ![正常にインストールされた PySpark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png" alt-text="正常にインストールされた PySpark":::
 
 
 7. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** に移動するか、**Shift + Ctrl + P** キーボード ショートカットを使用して、「**Python: Select Interpreter to start Jupyter Server**」と入力します。
 
-   ![インタープリターを選択して Jupyter サーバーを起動する](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png" alt-text="インタープリターを選択して Jupyter サーバーを起動する":::
 
 8. 下の Python オプションを選択します。
 
-   ![下のオプションを選択する](./media/hdinsight-for-vscode/choose-the-below-option.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/choose-the-below-option.png" alt-text="下のオプションを選択する":::
     
 9. メニュー バーから、 **[表示]**  >  **[コマンド パレット]** に移動するか、**Shift + Ctrl + P** キーボード ショートカットを使用して、「**Developer: Reload Window**」と入力します。
 
-    ![ウィンドウを再度読み込む](./media/hdinsight-for-vscode/reload-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/reload-window.png" alt-text="ウィンドウを再度読み込む":::
 
 10. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
 11. すべてのコードを選択し、スクリプト エディターを右クリックして、 **[Spark: PySpark Interactive / Synapse:Pyspark Interactive]** を選択してクエリを送信します。 
 
-    ![PySpark Interactive のコンテキスト メニュー](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-right-click.png" alt-text="PySpark Interactive のコンテキスト メニュー":::
 
 12. 既定のクラスターを指定していない場合は、クラスターを選択します。 しばらくすると、**Python Interactive** の結果が新しいタブに表示されます。PySpark をクリックすると、カーネルが **PySpark / Synapse Pyspark** に切り替わり、コードが正常に実行されます。 Synapse Pyspark カーネルに切り替える場合は、Azure portal で自動設定を無効にすることが推奨されます。 そうしないと、クラスターをウェイクアップし、初めて使用するために Synapse カーネルを設定するのに時間がかかることがあります。 このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックも送信できます。
 
-    ![PySpark Interactive の Python Interactive ウィンドウ](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png" alt-text="PySpark Interactive の Python Interactive ウィンドウ":::
 
 13. 「 **%%info**」と入力し、Shift + Enter キーを押してジョブ情報を表示します (省略可能)。
 
-    ![PySpark Interactive: ジョブ情報の表示](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png" alt-text="PySpark Interactive: ジョブ情報の表示":::
 
 ツールでは **Spark SQL** クエリもサポートされています。
 
-  ![PySpark Interactive: 結果の表示](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png" alt-text="PySpark Interactive: 結果の表示":::
 
 
 ### <a name="perform-interactive-query-in-py-file-using-a--comment"></a>#%% コメントを使用して PY ファイルで対話型クエリを実行する
 
 1. ノートブックのエクスペリエンスを得るには、PY コードの前に **#%%** を追加します。
 
-   ![#%% を追加する](./media/hdinsight-for-vscode/run-cell.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell.png" alt-text="#%% を追加する":::
 
 2. **[セルの実行]** をクリックします。 しばらくすると、新しいタブに Python Interactive の結果が表示されます。PySpark をクリックしてカーネルを PySpark/Synapse PySpark に切り替えてから、 **[セルの実行]** を再度クリックすると、コードが正常に実行されます。
 
-   ![セルの実行結果](./media/hdinsight-for-vscode/run-cell-get-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-cell-get-results.png" alt-text="セルの実行結果":::
 
 ## <a name="leverage-ipynb-support-from-python-extension"></a>Python 拡張機能の IPYNB サポートを活用する
 
@@ -256,16 +256,16 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 2. **[セルの実行]** ボタンをクリックし、画面の指示に従って **既定の Spark プールを設定** します (ノートブックを開く前に毎回既定のクラスターまたはプールを設定することを強くお勧めします)。その後、ウィンドウを **再度読み込みます**。
 
-   ![既定の Spark プールを設定して再度読み込む](./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/set-the-default-spark-pool-and-reload.png" alt-text="既定の Spark プールを設定して再度読み込む":::
 
 3. [PySpark] をクリックしてカーネルを **PySpark / Synapse Pyspark** に切り替え、 **[セルの実行]** をクリックすると、しばらくしてから結果が表示されます。
 
-   ![ipynb の実行結果](./media/hdinsight-for-vscode/run-ipynb-file-results.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/run-ipynb-file-results.png" alt-text="ipynb の実行結果":::
 
 
 > [!NOTE]
 >
-> ["この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません"](#issues-changed) は解決されました。 **ms-python** を **最新バージョン** に更新してください。
+> [この拡張では 2021.3.684299474 バージョン以降の ms-toolsai.jupyter はサポートされていません。](#known-issues)これは既知の問題です。 Microsoft Jupyter 2021.3.684299474 には Synapse カーネルを使用してください。
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブを送信する
 
@@ -298,13 +298,13 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 4. お使いの Azure アカウントに[接続](#connect-to-an-azure-account)するか、クラスターをリンクします (まだ行っていない場合)。
 
-5. スクリプト エディターを右クリックし、 **[Spark:PySpark Batch]** 、または **[Synapse:PySpark Batch]** _ を選択します。
+5. スクリプト エディターを右クリックし、 **[Spark:PySpark Batch]** 、または [** Synapse:PySpark Batch***] を選択します。
 
 6. PySpark ジョブの送信先となるクラスター/spark プールを選択します。
 
-   ![Python ジョブの送信の結果の出力](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/submit-pythonjob-result.png" alt-text="Python ジョブの送信の結果の出力":::
 
-Python ジョブを送信すると、Visual Studio Code の _ *[出力]* * ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 バッチ ジョブを Apache Spark プールに送信すると、Spark の履歴 UI の URL と Spark ジョブ アプリケーション UI の URL も表示されます。 Web ブラウザーで URL を開いて、ジョブの状態を追跡することができます。
+Python ジョブを送信すると、Visual Studio Code の **[OUTPUT]\(出力\)** ウィンドウに送信ログが表示されます。 Spark UI URL と Yarn UI URL も表示されます。 バッチ ジョブを Apache Spark プールに送信すると、Spark の履歴 UI の URL と Spark ジョブ アプリケーション UI の URL も表示されます。 Web ブラウザーで URL を開いて、ジョブの状態を追跡することができます。
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity Broker (HIB) との統合
 
@@ -338,7 +338,7 @@ PySpark バッチ ジョブを実行するには、通常の手順に従って�
 
 - プロジェクトの設定:
 
-  ![HDInsight Apache Livy の構成](./media/hdinsight-for-vscode/hdi-apache-livy-config.png)
+  :::image type="content" source="./media/hdinsight-for-vscode/hdi-apache-livy-config.png" alt-text="HDInsight Apache Livy の構成":::
 
   >[!NOTE]
   >**driverMemory** と **executorMemory** の設定では、値と単位を設定します。 次に例を示します。1 g、1,024 m。
@@ -395,11 +395,11 @@ PySpark バッチ ジョブを実行するには、通常の手順に従って�
 
 5. Hive テーブルを右クリックします。 例: **hivesampletable**。 **[Preview]\(プレビュー\)** を選択します。
 
-   ![Spark & Hive for Visual Studio Code の Hive テーブルのプレビュー](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-hive-table.png" alt-text="Spark & Hive for Visual Studio Code の Hive テーブルのプレビュー":::
 
 6. **[結果のプレビュー]** ウィンドウが開きます。
 
-   ![Spark & Hive for Visual Studio Code の結果ウィンドウのプレビュー](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-results-window.png" alt-text="Spark & Hive for Visual Studio Code の結果ウィンドウのプレビュー":::
 
 - [結果] パネル
 
@@ -415,7 +415,7 @@ PySpark バッチ ジョブを実行するには、通常の手順に従って�
      >
      >Linux でテーブル データをコピーするには、xclip をインストールします。
      >
-     >![Linux の Spark & Hive for Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png)
+     >:::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-preview-linux-install-xclip.png" alt-text="Linux の Spark & Hive for Visual Studio Code":::
 
 ## <a name="additional-features"></a>その他の機能
 
@@ -423,12 +423,12 @@ Spark & Hive for Visual Studio Code では、次の機能もサポートされ�
 
 - **IntelliSense のオートコンプリート**。 キーワード、メソッド、変数、その他のプログラミング要素の候補がポップアップ表示されます。 オブジェクトの種類ごとに異なるアイコンで表されます：
 
-    ![Spark & Hive for Visual Studio Code の IntelliSense オブジェクト](./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-auto-complete-objects.png" alt-text="Spark & Hive Tools for Visual Studio Code の IntelliSense オブジェクト":::
 
 - **IntelliSense エラー マーカー**。 言語サービスにより、Hive スクリプトの編集エラーに下線が引かれます。     
 - **構文の強調表示**。 言語サービスにより、異なる色を使用して、変数、キーワード、データ型、関数、その他のプログラミング要素が区別されます。
 
-    ![Spark & Hive Tools for Visual Studio Code の構文の強調表示](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
+    :::image type="content" source="./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png" alt-text="Spark & Hive Tools for Visual Studio Code の構文の強調表示":::
 
 ## <a name="reader-only-role"></a>読み取り専用ロール
 
@@ -447,15 +447,15 @@ HDInsight クラスターにジョブを送信するときに、そのクラス�
 1. 有効な Ambari ユーザー名を入力します。
 2. 有効なパスワードを入力します。
 
-   ![Spark & Hive Tools for Visual Studio Code のユーザー名](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-username.png" alt-text="Spark & Hive Tools for Visual Studio Code のユーザー名":::
 
-   ![Spark & Hive Tools for Visual Studio Code のパスワード](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png)
+   :::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-password.png" alt-text="Spark & Hive Tools for Visual Studio Code のパスワード":::
 
    > [!NOTE]
    >
    >`Spark / Hive: List Cluster` を使用して、リンクされたクラスターを確認できます。
    >
-   >![Spark & Hive Tools for Visual Studio Code のリンクされた閲覧者](./media/hdinsight-for-vscode/list-cluster-result1.png)
+   >:::image type="content" source="./media/hdinsight-for-vscode/list-cluster-result1.png" alt-text="Spark & Hive Tools for Visual Studio Code のリンクされた閲覧者":::
 
 ## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
@@ -467,7 +467,7 @@ Azure HDInsight エクスプローラーを選択して Data Lake Storage Gen2 �
 
 Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを送信します。 Azure アカウントに Gen2 ストレージへの書き込みアクセス権がない場合は、ストレージ アクセス キーを入力するよう求められます。 アクセス キーが検証されると、ジョブは正常に送信されます。
 
-![Spark & Hive Tools for Visual Studio Code のアクセス キー](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
+:::image type="content" source="./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png" alt-text="Spark & Hive Tools for Visual Studio Code のアクセス キー":::
 
 > [!NOTE]
 >
@@ -485,9 +485,19 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
-## <a name="issues-changed"></a>問題の変更
+## <a name="known-issues"></a>既知の問題 
 
-この問題 ("この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません") は解決されたので、**ms-python** を **最新バージョン** に更新してください。
+ この拡張では、2021.3.684299474 バージョン以降の ms-toolsai.jupyter はサポートされていません。Microsoft Jupyter 2021.3.684299474 には、Synapse カーネルを使用してください。
+
+ 1. 拡張機能の自動更新を無効にします。
+
+      ![拡張機能の自動更新を無効にする](./media/hdinsight-for-vscode/disable-auto-updating-extension.png)
+
+2. 選択したバージョンの Microsoft Jupyter をインストールします。
+
+      ![選択したバージョンの Microsoft Jupyter](./media/hdinsight-for-vscode/selected-version-of-microsoft-jupyter.png)
+
+3. Microsoft Jupyter バージョン 2021.3.684299474 のインストール
 
 
 ## <a name="next-steps"></a>次のステップ

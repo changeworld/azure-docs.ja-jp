@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9434bd4042798dc05a33401e1884e11a73774936
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21f31a21921953148ae0438cee04d846706161cc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448338"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382931"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する
 
@@ -43,7 +43,7 @@ ms.locfileid: "102448338"
 
 ## <a name="scope"></a>スコープ
 
-スコープは、カスタム ID プロバイダーから収集する情報およびアクセス許可を定義します。 OpenID Connect 要求には、ID プロバイダーから ID トークンを受け取るために `openid` スコープ値を含める必要があります。 ID トークンがないと、ユーザーはカスタム ID プロバイダーを使用して Azure AD B2C にサインインすることはできません。 別のスコープをスペースで区切って追加することもできます。 使用可能な他のスコープについては、カスタム ID プロバイダーのドキュメントを参照してください。
+スコープは、ID プロバイダーから収集する情報およびアクセス許可、たとえば `openid profile` を定義します。 ID プロバイダーから ID トークンを受け取るには、`openid` スコープを指定する必要があります。 ID トークンがないと、ユーザーはカスタム ID プロバイダーを使用して Azure AD B2C にサインインすることはできません。 別のスコープをスペースで区切って追加することもできます。 使用可能な他のスコープについては、カスタム ID プロバイダーのドキュメントを参照してください。
 
 ## <a name="response-type"></a>応答の種類
 

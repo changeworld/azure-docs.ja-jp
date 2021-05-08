@@ -10,32 +10,35 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: alexeyo
-ms.openlocfilehash: c9af0cda14261e8eab7f1ecc05c50a289d7ddfdb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6971c6f0959135c7de1f41bcd49adde514f87941
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99559649"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625485"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>プライベート エンドポイント経由で Speech Services を使用する
 
 [Azure Private Link](../../private-link/private-link-overview.md) を利用すると、[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用して Azure のサービスに接続できます。 プライベート エンドポイントは、特定の[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)およびサブネット内でのみアクセス可能なプライベート IP アドレスです。
 
 この記事では、Azure Cognitive Services の Speech Services で Private Link とプライベート エンドポイントを設定して使用する方法について説明します。
+その後、この記事では、後でプライベート エンドポイントを削除しても引き続き Speech リソースを使用する方法について説明します。
 
 > [!NOTE]
 > 先に進む前に、[Cognitive Services で仮想ネットワークを使用する方法](../cognitive-services-virtual-networks.md)を確認してください。
 
-この記事では、[後でプライベート エンドポイントを削除しても引き続き Speech リソースを使用する方法](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints)についても説明します。
+
 
 ## <a name="create-a-custom-domain-name"></a>カスタム ドメイン名を作成する
 
 プライベート エンドポイントを使用するには、[Cognitive Services のカスタム サブドメイン名](../cognitive-services-custom-subdomains.md)が必要です。 次の指示のようにして、Speech リソース用に 1 つ作成します。
 
 > [!WARNING]
-> カスタム ドメイン名が有効になっている Speech リソースでは、Speech Services とのやり取りに別の方法が使用されます。 [プライベート エンドポイントが有効になっている](#use-a-speech-resource-with-a-custom-domain-name-and-a-private-endpoint-enabled)シナリオと、[プライベート エンドポイントが有効になって "*いない*"](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints) シナリオの両方に対して、アプリケーションのコードを調整することが必要になる場合があります。
+> カスタム ドメイン名を使用する Speech リソースは、Speech Services と別の方法でやりとりします。
+> 場合によっては、プライベート エンドポイントを持つ Speech リソースを使用するほか、プライベート エンドポイントを "_持たない_" Speech リソースも使用するようアプリケーション コードを調整する必要があります。
+> 両方のシナリオが必要になる理由は、カスタム ドメイン名への切り替えは元に戻すことが "_できない_" ためです。
 >
-> カスタム ドメイン名を有効にした場合、この操作を[元に戻すことはできません](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)。 [リージョン名](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)に戻る唯一の方法は、新しい Speech リソースを作成することです。
+> カスタム ドメイン名をオンにした場合、この操作を[元に戻すことはできません](../cognitive-services-custom-subdomains.md#can-i-change-a-custom-domain-name)。 [リージョン名](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)に戻る唯一の方法は、新しい Speech リソースを作成することです。
 >
 > [Speech Studio](https://speech.microsoft.com/) を使用して作成された多数のカスタム モデルおよびプロジェクトが Speech リソースに関連付けられている場合は、運用環境で使用されているリソースを変更する前に、テスト リソースで構成を試してみることを強くお勧めします。
 
@@ -119,7 +122,7 @@ subdomainName        : my-custom-name
 ```
 ## <a name="create-your-custom-domain-name"></a>カスタム ドメイン名を作成する
 
-選択した Speech リソースでカスタム ドメイン名を有効にするには、[Set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) コマンドレットを使用します。
+選択した Speech リソースでカスタム ドメイン名をオンにするには、[Set-AzCognitiveServicesAccount](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) コマンドレットを使用します。
 
 > [!WARNING]
 > 次のコードが正常に実行された後、Speech リソースのカスタム ドメイン名を作成します。 この名前は変更 "*できない*" ことに注意してください。
@@ -183,9 +186,9 @@ az rest --method post --url "https://management.azure.com/subscriptions/xxxxxxxx
   "type": null
 }
 ```
-## <a name="enable-a-custom-domain-name"></a>カスタム ドメイン名を有効にする
+## <a name="turn-on-a-custom-domain-name"></a>カスタム ドメイン名をオンにする
 
-選択した Speech リソースでカスタム ドメイン名を有効にするには、[az cognitiveservices account update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) コマンドを使用します。
+選択した Speech リソースでカスタム ドメイン名を使用するには、[az cognitiveservices account update](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_update) コマンドを使用します。
 
 Speech リソースが含まれている Azure サブスクリプションを選択します。 Azure アカウントにアクティブなサブスクリプションが 1 つしかない場合は、この手順を省略できます。 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` は、Azure サブスクリプション ID に置き換えてください。
 ```azurecli-interactive
@@ -202,13 +205,14 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 
 ***
 
-## <a name="enable-private-endpoints"></a>プライベート エンドポイントを有効にする
+## <a name="turn-on-private-endpoints"></a>プライベート エンドポイントをオンにする
 
-プライベート エンドポイント用に必要な更新が行われた仮想ネットワークにアタッチされている[プライベート DNS ゾーン](../../dns/private-dns-overview.md)を使用することをお勧めします。 プライベート DNS ゾーンは、プロビジョニング プロセスの間に既定で作成されます。 独自の DNS サーバーを使用している場合は、DNS の構成の変更が必要になることもあります。 
+プライベート エンドポイント用に必要な更新が行われた仮想ネットワークにアタッチされている[プライベート DNS ゾーン](../../dns/private-dns-overview.md)を使用することをお勧めします。 プロビジョニング プロセス中に、プライベート DNS ゾーンを作成できます。 独自の DNS サーバーを使用している場合は、DNS の構成の変更が必要になることもあります。
 
 運用環境の Speech リソース用にプライベート エンドポイントをプロビジョニングする "*前に*"、DNS 戦略を決定します。 また、DNS の変更をテストします (特に、独自の DNS サーバーを使用する場合)。
 
-以下の記事のいずれかを使用して、プライベート エンドポイントを作成します。 これらの記事では、プライベート エンドポイントで有効にするサンプル リソースとして Web アプリが使用されています。
+以下の記事のいずれかを使用して、プライベート エンドポイントを作成します。
+こちらの記事では、プライベート エンドポイントで使用できるようにするため、サンプル リソースとして Web アプリが使用されています。
 
 - [Azure portal を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-portal.md)
 - [Azure PowerShell を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-powershell.md)
@@ -271,18 +275,20 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 > [!NOTE]
 > 解決された IP アドレスは、仮想ネットワーク プロキシ エンドポイントを指しています。これにより、ネットワーク トラフィックが Cognitive Services リソースのプライベート エンドポイントにディスパッチされます。 この動作は、カスタム ドメイン名が有効になっていても、プライベート エンドポイントが有効になって *いない* リソースでは異なります。 詳細については、[このセクション](#dns-configuration)を参照してください。
 
-## <a name="adjust-existing-applications-and-solutions"></a>既存のアプリケーションとソリューションを調整する
+## <a name="adjust-an-application-to-use-a-speech-resource-with-a-private-endpoint"></a>プライベート エンドポイントを持つ Speech リソースを使用するよう、アプリケーションを調整する
 
-カスタム ドメインが有効になっている Speech リソースでは、Speech Services とのやり取りに別の方法を使用します。 これは、プライベート エンドポイントの有無に関係なく、カスタム ドメインが有効になっている Speech リソースに当てはまります。 このセクションの情報は、両方のシナリオに該当します。
+カスタム ドメインを持つ Speech リソースは、Speech Services と別の方法でやりとりします。 これは、プライベート エンドポイントの有無に関係なく、カスタム ドメインが有効になっている Speech リソースに当てはまります。 このセクションの情報は、両方のシナリオに該当します。
 
-### <a name="use-a-speech-resource-with-a-custom-domain-name-and-a-private-endpoint-enabled"></a>カスタム ドメイン名とプライベート エンドポイントが有効な Speech リソースを使用する
+このセクションの手順に従って、カスタム ドメイン名とプライベート エンドポイントを有効にした Speech リソースを使用するよう、既存のアプリケーションとソリューションを調整します。
 
 Speech リソースでカスタム ドメイン名とプライベート エンドポイントが有効になっている場合は、Speech Services とのやり取りに別の方法が使用されます。 このセクションでは、Speech Services REST API および [Speech SDK](speech-sdk.md) でこのようなリソースを使用する方法について説明します。
 
 > [!NOTE]
-> Speech リソースでプライベート エンドポイントは有効になっていないがカスタム ドメイン名は有効になっている場合も、Speech Services と対話する特別な方法があります。 この方法は、プライベート エンドポイントが有効な Speech リソースのシナリオとは異なります。 そのようなリソースがある場合は (たとえば、リソースで有効にしていたプライベート エンドポイントを削除した場合)、「[カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースを使用する](#use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints)」セクションを参照してください。
+> プライベート エンドポイントがない Speech リソースがカスタム ドメイン名を使用する場合も、Speech Services とやりとりする特別な方法があります。
+> この方法は、プライベート エンドポイントを使用する Speech リソースのシナリオとは異なります。 これを考慮することが重要な理由は、プライベート エンドポイントを後で削除する可能性があるためです。
+> この記事で後述する「_プライベート エンドポイントを持たない Speech リソースを使用するようにアプリケーションを調整する_」を参照してください。
 
-#### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-rest-apis"></a>カスタム ドメイン名とプライベート エンドポイントが有効な Speech リソース: REST API での使用
+### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-rest-apis"></a>カスタム ドメイン名とプライベート エンドポイントが有効な Speech リソース: REST API での使用
 
 このセクションでは、Speech リソースの DNS 名 (カスタム ドメイン) のサンプルとして `my-private-link-speech.cognitiveservices.azure.com` を使用します。
 
@@ -300,7 +306,7 @@ Speech to Text REST API v3.0 により使用されるエンドポイント セ�
 
 次のサブセクションでは、両方のケースについて説明します。
 
-##### <a name="speech-to-text-rest-api-v30"></a>Speech to Text REST API v3.0
+#### <a name="speech-to-text-rest-api-v30"></a>Speech to Text REST API v3.0
 
 通常、Speech リソースでは、[Speech to Text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) と通信するために、[Cognitive Services リージョン エンドポイント](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)が使用されます。 これらのリソースの名前付け形式は次のとおりです。 <p/>`{region}.api.cognitive.microsoft.com`.
 
@@ -313,9 +319,9 @@ https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions
 > [!NOTE]
 > Azure Government と Azure China のエンドポイントについては、[こちらの記事](sovereign-clouds.md)を参照してください。
 
-Speech リソースのカスタム ドメインを有効にした後 (プライベート エンドポイントに必要)、そのリソースでは基本的な REST API エンドポイントに次の DNS 名パターンが使用されます。 <p/>`{your custom name}.cognitiveservices.azure.com`.
+Speech リソースのカスタム ドメインを有効にした後 (プライベート エンドポイントに必要)、そのリソースでは基本的な REST API エンドポイントに次の DNS 名パターンが使用されます。 <p/>`{your custom name}.cognitiveservices.azure.com`
 
-つまり、この例の REST API エンドポイント名は次のようになります。 <p/>`my-private-link-speech.cognitiveservices.azure.com`.
+つまり、この例の REST API エンドポイント名は次のようになります。 <p/>`my-private-link-speech.cognitiveservices.azure.com`
 
 また、要求 URL の例は次のように変換する必要があります。
 ```http
@@ -330,7 +336,7 @@ Speech リソースのカスタム ドメイン名を有効にした後は、通
 >
 > Speech リソースのカスタム ドメインには、リソースがデプロイされるリージョンに関する情報は含まれて "*いません*"。 そのため、上で説明したアプリケーション ロジックは機能 "*しない*" ので、変更する必要があります。
 
-##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Speech to Text REST API for short audio と Text to Speech REST API
+#### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Speech to Text REST API for short audio と Text to Speech REST API
 
 [Speech to Text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) と [Text to Speech REST API](rest-text-to-speech.md) には、次の 2 種類のエンドポイントが使用されます。
 - 認証トークンを取得するために Cognitive Services REST API と通信するための [Cognitive Services リージョン エンドポイント](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)
@@ -366,13 +372,13 @@ https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices
 ```
 Speech SDK については、「[エンドポイント URL の構築](#construct-endpoint-url)」サブセクションの詳細な説明を参照してください。
 
-#### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk"></a>カスタム ドメイン名とプライベート エンドポイントが有効な Speech リソース: Speech SDK での使用方法
+### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk"></a>カスタム ドメイン名とプライベート エンドポイントが有効な Speech リソース: Speech SDK での使用方法
 
 カスタム ドメイン名とプライベート エンドポイントが有効になっている Speech リソースで Speech SDK を使用する場合は、アプリケーション コードを確認し、おそらくは変更することが必要になります。
 
 このセクションでは、Speech リソースの DNS 名 (カスタム ドメイン) のサンプルとして `my-private-link-speech.cognitiveservices.azure.com` を使用します。
 
-##### <a name="construct-endpoint-url"></a>エンドポイント URL の構築
+#### <a name="construct-endpoint-url"></a>エンドポイント URL の構築
 
 通常、SDK のシナリオ (および Speech to Text REST API for short audio と Text to Speech REST API のシナリオ) では、Speech リソースにより、異なるサービス内容ごとに専用のリージョン エンドポイントが使用されます。 これらのエンドポイントの DNS 名の形式は次のとおりです。
 
@@ -423,7 +429,7 @@ wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/
 https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
 
-次の同等の URL ではプライベート エンドポイントが有効になっており、Speech リソースのカスタム ドメイン名は `my-private-link-speech.cognitiveservices.azure.com` です。
+次の同等の URL ではプライベート エンドポイントを使用しており、Speech リソースのカスタム ドメイン名は `my-private-link-speech.cognitiveservices.azure.com` です。
 
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
@@ -431,7 +437,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservic
 
 例 1 と同じ原則が適用されますが、この場合の主要要素は `voice` になります。
 
-##### <a name="modifying-applications"></a>アプリケーションの変更
+#### <a name="modifying-applications"></a>アプリケーションの変更
 
 コードを変更するには、次の手順に従います。
 
@@ -494,13 +500,13 @@ https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservic
 
 この変更を行った後、アプリケーションで、プライベート エンドポイントが有効になっている Speech リソースを操作する必要があります。 プライベート エンドポイントのシナリオのサポートをいっそうシームレスにするための作業が行われています。
 
-### <a name="use-a-speech-resource-with-a-custom-domain-name-and-without-private-endpoints"></a>カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースを使用する
+## <a name="adjust-an-application-to-use-a-speech-resource-without-private-endpoints"></a>プライベート エンドポイントを持たない Speech リソースを使用するようにアプリケーションを調整する
 
 この記事では、Speech リソースのカスタム ドメインを有効にしたら "*元に戻すことはできない*" と繰り返し指摘してきました。 そのようなリソースで使用される Speech Services との通信方法は、[リージョンのエンドポイント名](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)を使用しているものとは異なります。
 
-このセクションでは、カスタム ドメイン名は有効になっているがプライベート エンドポイントは有効になって "*いない*" Speech リソースを、Speech Services REST API および [Speech SDK](speech-sdk.md) で使用する方法について説明します。 これは、プライベート エンドポイント シナリオで 1 回使用されたが、そのプライベート エンドポイントが削除されたリソースである場合があります。
+このセクションでは、カスタム ドメイン名を持つがプライベート エンドポイントが "*ない*" Speech リソースを、Speech Services REST API および [Speech SDK](speech-sdk.md) で使用する方法について説明します。 これは、プライベート エンドポイント シナリオで 1 回使用されたが、そのプライベート エンドポイントが削除されたリソースである場合があります。
 
-#### <a name="dns-configuration"></a>DNS の構成
+### <a name="dns-configuration"></a>DNS の構成
 
 プライベート エンドポイントが有効になっている Speech リソースのカスタム ドメイン DNS 名が、[パブリック ネットワークから解決](#resolve-dns-from-other-networks)される方法を思い出してください。 この場合、解決された IP アドレスは、仮想ネットワークのプロキシ エンドポイントを指しています。 そのエンドポイントは、プライベート エンドポイントが有効になっている Cognitive Services リソースにネットワーク トラフィックをディスパッチするために使用されます。
 
@@ -524,13 +530,13 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 ```
 [このセクション](#resolve-dns-from-other-networks)の出力と比較します。
 
-#### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-rest-apis"></a>カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースREST API での使用
+### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-rest-apis"></a>カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースREST API での使用
 
-##### <a name="speech-to-text-rest-api-v30"></a>Speech to Text REST API v3.0
+#### <a name="speech-to-text-rest-api-v30"></a>Speech to Text REST API v3.0
 
 Speech to Text REST API v3.0 の使用方法は、[プライベート エンドポイントが有効になっている Speech リソース](#speech-to-text-rest-api-v30)の場合と完全に同じです。
 
-##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Speech to Text REST API for short audio と Text to Speech REST API
+#### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Speech to Text REST API for short audio と Text to Speech REST API
 
 この場合、Speech to Text REST API for short audio と Text to Speech REST API の使用方法は、一般的な場合では違いはありませんが、例外が 1 つあります。 (下記の注を参照)。どちらの API も、[Speech to Text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) および [Text to Speech REST API](rest-text-to-speech.md) のドキュメントで説明されているように使用する必要があります。
 
@@ -539,7 +545,7 @@ Speech to Text REST API v3.0 の使用方法は、[プライベート エンド�
 >
 > 認証トークンを使用してそれを `Authorization` ヘッダーを介して特殊なエンドポイントに渡すことは、音声リソースの **[ネットワーク]** セクションで **[すべてのネットワーク]** アクセス オプションを有効にした場合に "*のみ*" 機能します。 それ以外の場合は、認証トークンを取得しようとすると、`Forbidden` または `BadRequest` エラーが発生します。
 
-#### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-speech-sdk"></a>カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースSpeech SDK での使用方法
+### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-speech-sdk"></a>カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースSpeech SDK での使用方法
 
 プライベート エンドポイントを "*使用せずに*"、カスタム ドメイン対応の音声リソースで Speech SDK を使用することは、[Speech SDK ドキュメント](speech-sdk.md)に記載されている一般的なケースと同じです。
 

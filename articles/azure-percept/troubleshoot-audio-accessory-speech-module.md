@@ -5,14 +5,14 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f34013bdb14481bfe872a9b3c4234d603bc2d7ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4fc7d7564ecd30326fbec832639b2a81d55e6d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102635571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605656"
 ---
 # <a name="azure-percept-audio-and-speech-module-troubleshooting"></a>Azure Percept Audio と音声モジュールのトラブルシューティング
 
@@ -20,7 +20,9 @@ ms.locfileid: "102635571"
 
 ## <a name="collecting-speech-module-logs"></a>音声モジュールのログを収集する
 
-これらのコマンドを実行するには、[Azure Percept DK Wi-Fi アクセス ポイントに接続して SSH で開発キットに接続](./how-to-ssh-into-percept-dk.md)し、SSH ターミナルでコマンドを入力します。
+これらのコマンドを実行するには、 [SSH で開発キットに接続](./how-to-ssh-into-percept-dk.md)し、コマンドを SSH クライアント プロンプトに入力します。
+
+音声モジュールのログを収集します。
 
 ```console
 sudo iotedge logs azureearspeechclientmodule
@@ -32,17 +34,23 @@ sudo iotedge logs azureearspeechclientmodule
 sudo [command] > [file name].txt
 ```
 
+.txt ファイルのアクセス許可を変更して、コピーできるようにします。
+
+```console
+sudo chmod 666 [file name].txt
+```
+
 出力を .txt ファイルにリダイレクトしたら、SCP を使用してファイルをホスト PC にコピーします。
 
 ```console
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-<local host file path> は、.txt ファイルのコピー先となるホスト PC 上の場所です。 <remote username> は、[オンボード エクスペリエンス](./quickstart-percept-dk-set-up.md)中に選択した SSH ユーザー名です。 Azure Percept DK オンボード エクスペリエンス中に SSH ログインを設定しなかった場合、リモートユーザー名は root になります。
+<local host file path> は、.txt ファイルのコピー先となるホスト PC 上の場所です。 <remote username> は、[セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に選択した SSH ユーザー名です。
 
 ## <a name="checking-runtime-status-of-the-speech-module"></a>音声モジュールのランタイムの状態を確認する
 
-**azureearspeechclientmodule** のランタイムの状態が **[running]\(実行中\)** になっているかどうかを確認します。 デバイス モジュールのランタイムの状態を特定するには、[Azure portal](https://portal.azure.com/) を開いて **[すべてのリソース]**  ->  **\<your IoT hub>**  ->  **[IoT Edge]**  ->  **\<your device ID>** に移動します。 **[モジュール]** タブをクリックすると、インストールされているすべてのモジュールのランタイムの状態が表示されます。
+**azureearspeechclientmodule** のランタイムの状態が **[running]\(実行中\)** になっているかどうかを確認します。 デバイス モジュールのランタイムの状態を特定するには、[Azure portal](https://portal.azure.com/) を開いて **[すべてのリソース]**  ->  **[お使いの IoT ハブ]**  ->  **[IoT Edge]**  ->  **[お使いのデバイス ID]** に移動します。 **[モジュール]** タブをクリックすると、インストールされているすべてのモジュールのランタイムの状態が表示されます。
 
 :::image type="content" source="./media/troubleshoot-audio-accessory-speech-module/over-the-air-iot-edge-device-page.png" alt-text="Azure portal のエッジ デバイス ページ。":::
 
@@ -50,10 +58,10 @@ scp [remote username]@[IP address]:[remote file path]/[file name].txt [local hos
 
 ## <a name="understanding-ear-som-led-indicators"></a>Ear SoM LED インジケーターについて
 
-LED インジケーターを使用して、デバイスの状態を把握できます。 通常、"*電源投入*" 後、モジュールの初期化が完了するまでに約 2 分かかります。 初期化の手順を終えると、次のことが確認できます。
+LED インジケーターを使用して、デバイスの状態を把握できます。 通常、デバイスの電源を入れてからモジュールが完全に初期化されるまでに約 2 分かかります。 初期化の手順を終えると、次のことが確認できます。
 
-1. 中央の 1 つの LED が白色 - デバイスの電源がオンです。
-2. 中央の 1 つの LED が白色で点滅 - 認証が進行中です。
+1. 中央の白色 LED が点灯 (静止): デバイスの電源がオンです。
+2. 中央の白色 LED が点灯 (点滅): 認証が進行中です。
 3. デバイスが認証されて使用できる状態になると、3 つの LED がすべて青色に変化します。
 
 |LED|LED の状態|Ear SoM 状態|

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: jeedes
 ms.openlocfilehash: f10f9840a34c9ca6525ed20060433a6db47a4b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92453806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exactcare-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ExactCare SSO の統合

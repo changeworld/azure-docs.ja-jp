@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
 ms.openlocfilehash: 66df23466694fe8b9caea4e56565cde6d8fd7416
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95018958"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>サブジェクト ドメインとデータ抽出を使用して LUIS アプリ スキーマを計画する
@@ -71,7 +71,7 @@ LUIS アプリはサブジェクト ドメインが中心です。 たとえば�
 * FlightAction
     * アクション
     * 出発地
-    * 宛先
+    * 到着地
 
 抽出しやすくするために、サブエンティティに特徴を追加します。 ユーザーの発話の中で表示したいボキャブラリと、予測応答で返されてほしい値に基づいて、特徴を選択します。
 

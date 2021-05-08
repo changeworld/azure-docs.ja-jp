@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/23/2021
-ms.openlocfilehash: dc309e85373193e4f5d431f543ff3e59ea5bebc7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739264"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103812"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する
 
@@ -178,7 +178,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
    ![ターゲット ストレージ アカウントを選択する場所を示すスクリーンショット。](./media/map-target.png "ターゲット ストレージ。") 
 
-1. スナップショットベースの共有では、データ プロバイダーがスナップショット スケジュールを使用して定期的にデータを更新する場合、 **[スナップショット スケジュール]** タブからスケジュールを有効にすることができます。スナップショット スケジュールの横にあるチェック ボックスをオンにします。 その後、**[有効化]** を選択します。
+1. スナップショットベースの共有では、データ プロバイダーがスナップショット スケジュールを使用して定期的にデータを更新する場合、 **[スナップショット スケジュール]** タブからスケジュールを有効にすることができます。スナップショット スケジュールの横にあるチェック ボックスをオンにします。 その後、**[有効化]** を選択します。 スケジュールされた最初のスナップショットが、スケジュールされた時刻から 1 分以内に開始され、以降のスナップショットがスケジュールされた時刻から数秒以内に開始されることに注意してください。
 
    ![スナップショット スケジュールを有効にする方法を示すスクリーンショット。](./media/enable-snapshot-schedule.png "スナップショット スケジュールを有効にします。")
 

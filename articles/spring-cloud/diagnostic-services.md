@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c354435f689f5182dd368fd53fdab28f1ab63d48
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218793"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259423"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -110,7 +110,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 > [!NOTE]
 > `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
-Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
+Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログのクエリを実行する場合には、[Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)に関するページを確認してください。
 
 ### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する
 

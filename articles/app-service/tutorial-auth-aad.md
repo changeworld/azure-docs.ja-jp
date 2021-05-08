@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8c3fca6cf7782c3aaac91388a8f8395e288f5ea5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e35a4abbcaf0cd2298d55c06de0ecfbef0dff354
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96558744"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765793"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -367,7 +367,7 @@ git push frontend master
 
 ### <a name="configure-cors"></a>CORS を構成する
 
-Cloud Shell で [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _\<back-end-app-name>_ および _\<front-end-app-name>_ のプレースホルダーを置き換えます。
+Cloud Shell で [`az webapp cors add`](/cli/azure/webapp/cors#az_webapp_cors_add) コマンドを使用して、クライアントの URL に対して CORS を有効にします。 _\<back-end-app-name>_ および _\<front-end-app-name>_ のプレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'

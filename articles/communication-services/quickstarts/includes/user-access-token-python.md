@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 68114893ed3db858d00ca7811b1a83395ff02507
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: db6e4a9c6d2829c7980164d5b79bd33e4b3fb6eb
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495324"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106113062"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Python](https://www.python.org/downloads/) 2.7、3.5 以降
+- [Python](https://www.python.org/downloads/) 2.7 または 3.6 以降。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services のリソースを作成する](../create-communication-resource.md)。
 
 ## <a name="setting-up"></a>設定
@@ -40,16 +40,16 @@ ms.locfileid: "103495324"
    from azure.communication.identity import CommunicationIdentityClient, CommunicationUserIdentifier
 
    try:
-      print('Azure Communication Services - Access Tokens Quickstart')
+      print("Azure Communication Services - Access Tokens Quickstart")
       # Quickstart code goes here
    except Exception as ex:
-      print('Exception:')
+      print("Exception:")
       print(ex)
    ```
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-引き続きアプリケーション ディレクトリで、`pip install` コマンドを使用して、Python 用の Azure Communication Services ID クライアント ライブラリ パッケージをインストールします。
+引き続きアプリケーション ディレクトリで、`pip install` コマンドを使用して、Python 用の Azure Communication Services ID SDK パッケージをインストールします。
 
 ```console
 pip install azure-communication-identity
@@ -64,7 +64,7 @@ pip install azure-communication-identity
 ```python
 # This code demonstrates how to fetch your connection string
 # from an environment variable.
-connection_string = os.environ['COMMUNICATION_SERVICES_CONNECTION_STRING']
+connection_string = os.environ["COMMUNICATION_SERVICES_CONNECTION_STRING"]
 
 # Instantiate the identity client
 client = CommunicationIdentityClient.from_connection_string(connection_string)
@@ -72,8 +72,8 @@ client = CommunicationIdentityClient.from_connection_string(connection_string)
 
 または、マネージド ID をセットアップしている場合は、[マネージド ID の使用](../managed-identity.md)に関する記事を参考に、マネージド ID で認証することもできます。
 ```python
-const endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"];
-var client = new CommunicationIdentityClient(endpoint, DefaultAzureCredential());
+endpoint = os.environ["COMMUNICATION_SERVICES_ENDPOINT"]
+client = CommunicationIdentityClient(endpoint, DefaultAzureCredential())
 ```
 
 ## <a name="create-an-identity"></a>ID の作成
@@ -92,7 +92,7 @@ print("\nCreated an identity with ID: " + identity.identifier)
 ```python
 # Issue an access token with the "voip" scope for an identity
 token_result = client.get_token(identity, ["voip"])
-expires_on = token_result.expires_on.strftime('%d/%m/%y %I:%M %S %p')
+expires_on = token_result.expires_on.strftime("%d/%m/%y %I:%M %S %p")
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token_result.token)
 ```
@@ -101,14 +101,14 @@ print(token_result.token)
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>ID を作成し、同じ要求内でアクセス トークンを発行する
 
-`create_user_with_token` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
+`create_user_and_token` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
 
 ```python
 # Issue an identity and an access token with the "voip" scope for the new identity
-identity_token_result = client.create_user_with_token(["voip"])
+identity_token_result = client.create_user_and_token(["voip"])
 identity = identity_token_result[0].identifier
 token = identity_token_result[1].token
-expires_on = identity_token_result[1].expires_on.strftime('%d/%m/%y %I:%M %S %p')
+expires_on = identity_token_result[1].expires_on.strftime("%d/%m/%y %I:%M %S %p")
 print("\nCreated an identity with ID: " + identity)
 print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
 print(token)

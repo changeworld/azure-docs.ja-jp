@@ -6,15 +6,15 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 98872cc1315d946c63825318d2b98460031e128a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98942917"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight での Apache HBase の概要
 
-[Apache HBase](https://hbase.apache.org/) は、[Google BigTable](https://cloud.google.com/bigtable/) をモデルにした、Apache Hadoop 上に構築されるオープンソースの NoSQL データベースです。 HBase は、大量のデータに対するランダム アクセスと強力な一貫性を、スキーマレス データベースで実現します。 データベースは列ファミリによって整理されます。
+[Apache HBase](https://hbase.apache.org/) は、[Google BigTable](https://cloud.google.com/bigtable/) をモデルにしている Apache Hadoop 上に構築されるオープン ソースの NoSQL データベースです。 HBase は、大量のデータに対するランダム アクセスと強力な一貫性を、スキーマレス データベースで実現します。 データベースは列ファミリによって整理されます。
 
 ユーザーの視点から見ると、HBase はデータベースに似ています。 データはテーブルの行および列内に格納され、行内のデータは列ファミリによってグループ化されます。 HBase はスキーマレス データベースです。 列とデータ型は、使用前に未定義にすることができます。 オープン ソース コードは、直線的な拡張により何千ものノード上でペタバイト級のデータを扱うことができます。 また、Hadoop 環境の分散アプリケーションによって提供されるデータ冗長性やバッチ処理などの機能も利用できます。
 
@@ -40,7 +40,7 @@ BigTable が開発され、さらにその機能を拡張する形で HBase が�
 |キー値ストア|HBase は、キー値ストアとして使用できるため、メッセージ システムの管理に適しています。 Facebook は、メッセージング システムに HBase を使用しており、インターネット通信データの保存と管理に効果を発揮しています。 WebTable は、HBase を使用して Web ページから抽出したテーブルを検索し管理します。|
 |センサー データ|HBase は、さまざまなソースから次々と収集されるデータの取り込みに適しています。 このデータには、ソーシャル分析と時系列が含まれます。 これにより、対話型ダッシュボードに最新の傾向やカウンターを反映させたり、監査ログ システムを管理したりできます。 ブルームバーグのトレーダー用ターミナルや Open Time Series Database (OpenTSDB) などがその例です。 OpenTSDB は、サーバー システムの正常性について収集されたメトリックを格納し、そのメトリックにアクセスできるようにします。|
 |リアルタイム クエリ|[Apache Phoenix](https://phoenix.apache.org/) は、Apache HBase 用の SQL クエリ エンジンです。 JDBC ドライバーとしてアクセスされ、SQL を使用して HBase テーブルの照会と管理を行うことができます。|
-|プラットフォームとしての HBase|HBase をデータストアとして使用することで、アプリケーションは HBase の最上層で実行できます。 この例には、Phoenix、OpenTSDB、`Kiji`、Titan があります。 アプリケーションを HBase と統合することもできます。 たとえば、次のようになります。[Apache Hive](https://hive.apache.org/)、Apache Pig、[Solr](https://lucene.apache.org/solr/)、Apache Storm、Apache Flume、[Apache Impala](https://impala.apache.org/)、Apache Spark、`Ganglia`、Apache Drill。|
+|プラットフォームとしての HBase|HBase をデータストアとして使用することで、アプリケーションは HBase の最上層で実行できます。 この例には、Phoenix、OpenTSDB、`Kiji`、Titan があります。 アプリケーションを HBase と統合することもできます。 この例には、[Apache Hive](https://hive.apache.org/)、Apache Pig、[Solr](https://lucene.apache.org/solr/)、Apache Storm、Apache Flume、[Apache Impala](https://impala.apache.org/)、Apache Spark、`Ganglia`、Apache Drill があります。|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e602f8bbdf6ad92acacac6688326a555a0420b6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219200"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042868"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
@@ -49,7 +49,7 @@ Azure 仮想マシン (VM) 間の接続について問題が発生すること�
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>手順 1:NIC の構成が正しいかどうかを確認する
 
-「[Azure Windows VM のネットワーク インターフェイスをリセットする方法](../virtual-machines/troubleshooting/reset-network-interface.md)」の手順に従います。 
+「[Azure Windows VM のネットワーク インターフェイスをリセットする方法](/troubleshoot/azure/virtual-machines/reset-network-interface)」の手順に従います。 
 
 ネットワーク インターフェイス (NIC) の変更後に問題が発生した場合は、次の手順を実行します。
 
@@ -62,8 +62,8 @@ Azure 仮想マシン (VM) 間の接続について問題が発生すること�
 
 **シングル NIC VM** 
 
-- [Windows VM の再デプロイ](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
-- [Linux VM の再デプロイ](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
+- [Windows VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows)
+- [Linux VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-linux)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>手順 2:ネットワーク トラフィックが NSG または UDR によってブロックされているかどうかを確認する
 
@@ -107,7 +107,7 @@ netstat -l
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>手順 8:VM ネットワーク共有への接続を試みる
 
-VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)に関するページを参照してください。
+VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](/troubleshoot/azure/virtual-machines/reset-network-interface#delete-the-unavailable-nics)に関するページを参照してください。
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>手順 9:VNET 間接続を確認する
 

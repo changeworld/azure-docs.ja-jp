@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a93ce1c4274f63a863880e932b247726639e5cd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3bc9378539e6a7f98e34d0a149848d0e892c224
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98612114"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306094"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>チュートリアル:単一のフォレストを単一の Azure AD テナントに統合する
 
@@ -88,7 +88,7 @@ ms.locfileid: "98612114"
 ![Azure Portal](media/how-to-install/install-6.png)</br>
 
 3.  **[Azure AD Connect cloud sync]\(Azure AD Connect クラウド同期\)** 画面で、 **[すべてのエージェントの確認]** をクリックします。
-![Azure AD のプロビジョニング](media/how-to-install/install-7.png)</br>
+![Azure A D のプロビジョニング](media/how-to-install/install-7.png)</br>
  
 4. **[On-premises provisioning agents]\(オンプレミス プロビジョニング エージェント\)** 画面に、インストールしたエージェントが表示されます。  該当するエージェントが存在し、 **[アクティブ]** としてマークされていることを確認します。
 ![プロビジョニング エージェント](media/how-to-install/verify-1.png)</br>
@@ -110,11 +110,11 @@ ms.locfileid: "98612114"
 4.  **[Manage cloud sync]\(クラウド同期の管理\)** を選択します。
 ![[Manage cloud sync]\(クラウド同期の管理\) リンクを示すスクリーンショット。](media/how-to-configure/manage-1.png)
 5.  **[新しい構成]** をクリックします。
-![[新しい構成] リンクが強調表示された [Azure AD Connect cloud sync]\(Azure AD Connect クラウド同期\) 画面のスクリーンショット。](media/tutorial-single-forest/configure-1.png)
+![[新しい構成] リンクが強調表示された [Azure A D Connect cloud sync]\(Azure A D Connect クラウド同期\) 画面のスクリーンショット。](media/tutorial-single-forest/configure-1.png)
 7.  構成画面で、**通知用メール アドレス** を入力し、セレクターを **[有効]** に移動して、 **[保存]** をクリックします。
 ![メール アドレスの入力を終え、[有効にする] を選択した状態の [構成] 画面のスクリーンショット。](media/how-to-configure/configure-2.png)
 1.  構成の状態が **[正常]** になります。
-![状態が [正常] と表示された [Azure AD Connect cloud sync]\(Azure AD Connect クラウド同期\) 画面のスクリーンショット。](media/how-to-configure/manage-4.png)
+![状態が [正常] と表示された [Azure A D Connect cloud sync]\(Azure A D Connect クラウド同期\) 画面のスクリーンショット。](media/how-to-configure/manage-4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>ユーザーが作成され、同期が実行されていることを確認する
 オンプレミスのディレクトリに存在していたユーザーが同期され、現在は Azure AD テナントに存在することを確認します。  これが完了するまでに数時間かかる場合があることに注意してください。  ユーザーが同期されていることを確認するには、以下を実行します。
@@ -125,13 +125,13 @@ ms.locfileid: "98612114"
 3. **[管理]** にある **[ユーザー]** を選択します。
 4. テナントに新しいユーザーが表示されていることを確認します。</br>
 
-## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
+## <a name="test-signing-in-with-one-of-your-users"></a>いずれかのユーザーでサインインをテストする
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
-2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。</br>
+2. テナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。</br>
    ![確認](media/tutorial-single-forest/verify-1.png)</br>
 
-これでハイブリッド ID 環境を正常に設定できました。この環境は、Azure で提供されるサービスをテストしたり理解したりするために使用できます。
+これで Azure AD Connect クラウド同期を使用してハイブリッド ID 環境が正常に構成されました。
 
 
 ## <a name="next-steps"></a>次のステップ 

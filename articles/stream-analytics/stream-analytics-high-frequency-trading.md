@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 03/16/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f632c916c3de61b94532e96be23da511ad5863ea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020419"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593035"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
 Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
@@ -349,7 +349,7 @@ simulation AS
 - 売りシグナルを受信し、かつ保有株がある場合には株式を売ります。
 - 保有株がない場合には空売りします。 
 
-ショート ポジションで、かつ買いシグナルを受信した場合は、信用買いをすることになります。 このシミュレーションでは、特定の株式のホールドまたはショートが 10 株になることはありません。 取引コストは 8 ドル固定です。
+ショート ポジションで、かつ買いシグナルを受信した場合は、信用買いをすることになります。 このシミュレーションでは、特定の株式を 10 株、保有または空売りします。 取引コストは 8 ドル固定です。
 
 ```javascript
 function main() {

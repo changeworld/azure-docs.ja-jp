@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 655ea1920fc80c8cd677281f09cfca21120e1d61
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989153"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726432"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -39,11 +39,13 @@ ms.locfileid: "99989153"
 
 シークレットをコンテナーに追加するには、いくつかの追加の手順を実行する必要があります。 このパスワードは、アプリケーションによって使用される可能性があります。 パスワードは **ExamplePassword** と呼ばれ、値 **hVFkk965BuUv** がその中に格納されます。
 
-次のコマンドを入力して、値 **hVFkk965BuUv** を保存する **ExamplePassword** という Key Vault にシークレットを作成します。
+下の Azure CLI [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) コマンドを使用して、値 **hVFkk965BuUv** を格納するシークレットを **ExamplePassword** という名前の Key Vault に作成します。
 
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
+
+## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault からシークレットを取得する
 
 これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 現在のバージョンを取得するには、 **"https://<your-unique-keyvault-name>.vault.azure.net/secrets/ExamplePassword"** を使用します。
 
@@ -64,5 +66,6 @@ az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyv
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
+- [複数行のシークレットを Key Vault に格納](multiline-secrets.md)する方法について確認する
 - [Azure CLI az keyvault コマンド](/cli/azure/keyvault)のリファレンスを参照する
 - [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

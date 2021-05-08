@@ -1,20 +1,20 @@
 ---
 title: BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、およびクエリを実行する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
-ms.date: 03/05/2021
+author: twooley
+ms.author: twooley
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: bfaee493c25f882b8beeed565a155db93efd0083
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2188aaea0cf5a4616291d3fdad839aefb2dbc413
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431756"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280702"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)
 
@@ -30,7 +30,7 @@ BLOB インデックス タグを使用すると、次のことができます�
 ストレージ アカウントに何百万もの BLOB があり、多数の異なるアプリケーションによってアクセスされるシナリオについて考えてみましょう。 1 つのプロジェクトからすべての関連データを検索する必要があります。 データは異なる名前付け規則を使用して複数のコンテナーに分散されている可能性があるので、スコープ内に何があるか確実にはわかりません。 ただし、アプリケーションを使用すると、すべてのデータにプロジェクトに基づくタグが付けられてアップロードされます。 何百万もの BLOB を検索して名前とプロパティを比較するのではなく、`Project = Contoso` を検出条件として使用できます。 BLOB インデックスにより、ストレージ アカウント全体のすべてのコンテナーがフィルター処理され、`Project = Contoso` から 50 個の BLOB のセットだけがすばやく検出されて返されます。
 
 > [!IMPORTANT]
-> Blob インデックス タグは、現在 "**プレビュー**" 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> BLOB インデックス タグは、現在 **プレビュー** 段階であり、すべてのパブリック リージョンで利用できます。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 BLOB インデックスの使用方法の例については、[BLOB インデックス タグを使用したデータの管理と検索](storage-blob-index-how-to.md)に関する記事を参照してください。
 
@@ -289,12 +289,7 @@ BLOB インデックス タグを使用できるのは、階層型名前空間 (
 
 インデックス タグは、Premium ストレージ アカウントでサポートされていません。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
-パブリック プレビューの場合、BLOB インデックス タグを使用できるのは次のリージョンだけです。
-
-- カナダ中部
-- カナダ東部
-- フランス中部
-- フランス南部
+BLOB インデックス タグは現在すべてのパブリック リージョンで利用できます。
 
 使い始めるには、[BLOB インデックス タグを使用したデータの管理と検索](storage-blob-index-how-to.md)に関する記事を参照してください。
 

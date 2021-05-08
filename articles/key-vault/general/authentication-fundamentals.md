@@ -7,18 +7,18 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a75ecac20c553f697585648c5654d375b85e5183
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100535197"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363429"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 認証の基礎
 
 Azure Key Vault を使用すると、シークレット、キー、証明書などのアプリケーションの資格情報を、中央のセキュリティ保護されたクラウド リポジトリに安全に格納して管理することができます。 Key Vault を使用すると、アプリケーションに資格情報を保存する必要がなくなります。 アプリケーションで実行時に Key Vault に対して認証を行うことで、資格情報を取得できます。
 
-管理者は、キー コンテナーにアクセスできるユーザーとアプリケーションを厳しく制御し、実行される操作を制限および監査することができます。 このドキュメントでは、Key Vault のアクセス モデルの基本的な概念について説明します。 入門レベルの知識が得られ、Key Vault に対してユーザーまたはアプリケーションの認証を行う方法が最初から最後までわかります。
+管理者は、キー コンテナーにアクセスできるユーザーとアプリケーションを厳しく制御し、実行される操作を制限および監査することができます。 このドキュメントでは、Key Vault のアクセス モデルの基本的な概念について説明します。 入門レベルの知識が得られ、キー コンテナーに対してユーザーまたはアプリケーションの認証を行う方法が最初から最後までわかります。
 
 ## <a name="required-knowledge"></a>必要な知識
 
@@ -104,7 +104,7 @@ Key Vault アクセス ポリシーを使用すると、キー コンテナー�
 > [!IMPORTANT]
 > 従来の Key Vault のアクセス ポリシーと Azure Active Directory のロールの割り当ては、互いに独立しています。 セキュリティ プリンシパルにサブスクリプション レベルで "共同作成者" ロールを割り当てても、サブスクリプションのスコープ内のすべてのキー コンテナーに対するデータ プレーン操作の実行が、そのセキュリティ プリンシパルに対して自動的に許可されることはありません。 セキュリティ プリンシパルは、データ プレーンの操作を実行するためのアクセス許可を、付与してもらうか、または自分でアクセス ポリシーに付与する必要があります。
 
-### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>データ プレーンのアクセス オプション 2: Key Vault 用の Azure RBAC (プレビュー)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault"></a>データ プレーンのアクセス オプション 2: Key Vault 用の Azure RBAC
 
 キー コンテナー データ プレーンへのアクセスを許可する新しい方法は、Key Vault 用の Azure ロールベースのアクセス制御 (Azure RBAC) を使用することです。
 

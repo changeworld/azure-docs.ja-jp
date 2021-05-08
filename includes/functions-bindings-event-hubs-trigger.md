@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 32f98eb9b98168bdab270ecff07446c31f8d706d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102608914"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729892"
 ---
 関数トリガーを使用して、イベント ハブのイベント ストリームに送信されたイベントに応答します。 トリガーを設定するには、基になるイベント ハブへの読み取りアクセスが必要です。 関数がトリガーされると、その関数に渡されるメッセージが文字列として型指定されます。
 
@@ -281,14 +281,14 @@ import azure.functions as func
 
 
 def main(event: func.EventHubEvent):
-    logging.info('Function triggered to process a message: ', event.get_body())
-    logging.info('  EnqueuedTimeUtc =', event.enqueued_time)
-    logging.info('  SequenceNumber =', event.sequence_number)
-    logging.info('  Offset =', event.offset)
+    logging.info(f'Function triggered to process a message: {event.get_body().decode()}')
+    logging.info(f'  EnqueuedTimeUtc = {event.enqueued_time}')
+    logging.info(f'  SequenceNumber = {event.sequence_number}')
+    logging.info(f'  Offset = {event.offset}')
 
     # Metadata
     for key in event.metadata:
-        logging.info(f'Metadata: {key} = ', event.metadata[key])
+        logging.info(f'Metadata: {key} = {event.metadata[key]}')
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -375,12 +375,12 @@ Java [関数ランタイム ライブラリ](/java/api/overview/azure/functions/
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)に用意されています。
+* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)に用意されています。
 
 ### <a name="additional-types"></a>その他の型 
-5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)の代わりに [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
+5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)の代わりに [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
@@ -391,12 +391,12 @@ Java [関数ランタイム ライブラリ](/java/api/overview/azure/functions/
 * `string`
 * `byte[]`
 * `POCO`
-* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)に用意されています。
+* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)に用意されています。
 
 ### <a name="additional-types"></a>その他の型 
-5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)の代わりに [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
+5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](/dotnet/api/microsoft.azure.eventhubs.eventdata)の代わりに [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs.eventdata) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
 
-- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
+- [EventBody](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -418,7 +418,7 @@ Java [関数ランタイム ライブラリ](/java/api/overview/azure/functions/
 
 Event Hubs トリガーには、いくつかの[メタデータ プロパティ](../articles/azure-functions/./functions-bindings-expressions-patterns.md)があります。 メタデータ プロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは、[EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) クラスに由来します。
 
-|プロパティ|種類|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` のインスタンスです。|
 |`EnqueuedTimeUtc`|`DateTime`|エンキューされた時刻 (UTC)。|

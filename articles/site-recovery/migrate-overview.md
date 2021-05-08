@@ -2,18 +2,15 @@
 title: Azure への移行について Azure Migrate と Site Recovery を比較する
 description: Site Recovery ではなく、Azure Migrate を移行に使用する利点の概要を示します。
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.author: raynew
-ms.openlocfilehash: 358efaa1493aa08fb76c9bb83e0e4289950e0969
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4d30b8b21bf3a0ea27467d2120b04a107f5a73f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87844322"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581403"
 ---
 # <a name="migrating-to-azure"></a>Azure への移行
 

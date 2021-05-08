@@ -3,18 +3,18 @@ title: IoT プラグ アンド プレイの概要 | Microsoft Docs
 description: IoT プラグ アンド プレイについて説明します。 IoT プラグ アンド プレイは、スマート IoT デバイスがその機能を宣言できるようにするオープン モデリング言語に基づいています。 IoT デバイスは、クラウド ソリューションに接続するとき、デバイス モデルと呼ばれるその宣言を提示します。 これで、クラウド ソリューションでは、デバイスを自動的に認識して、デバイスとのやり取りを開始できるようになります。すべてコードを記述することなく行うことができます。
 author: rido-min
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 03/21/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 91a09db16524ebc7e4c04069b69b1c42c67538c6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594571"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739712"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT プラグ アンド プレイとは
 
@@ -68,7 +68,7 @@ Windows または Linux ゲートウェイに接続されている既存のセ�
 
 ## <a name="device-certification"></a>デバイス認定
 
-[IoT プラグ アンド プレイ デバイス認定プログラム](howto-certify-device.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
+[IoT プラグ アンド プレイ デバイス認定プログラム](../certification/program-requirements-pnp.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
 ## <a name="next-steps"></a>次のステップ
 

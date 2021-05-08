@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: d8ef616ef059424846d5c42a91262881b8f6d30b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701809"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774815"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>AzureData Lake Storage Gen2 のアクセス制御リスト (ACL)
 
@@ -40,6 +40,7 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 |.NET |[Azure Data Lake Storage Gen2 で .NET を使用して ACL を設定する](data-lake-storage-acl-dotnet.md)|
 |Java|[Azure Data Lake Storage Gen2 で Java を使用して ACL を設定する](data-lake-storage-acl-java.md)|
 |Python|[Azure Data Lake Storage Gen2 で Python を使用して ACL を設定する](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)JavaScript (Node.js)|[Node.js の JavaScript SDK を使用して Azure Data Lake Storage Gen2 で ACL を設定する](data-lake-storage-directory-file-acl-javascript.md)|
 |PowerShell|[Azure Data Lake Storage Gen2 で PowerShell を使用して ACL を設定する](data-lake-storage-acl-powershell.md)|
 |Azure CLI|[Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を設定する](data-lake-storage-acl-cli.md)|
 |REST API |[Path - Update (パス - 更新)](/rest/api/storageservices/datalakestoragegen2/path/update)|
@@ -285,7 +286,7 @@ Azure ロールの割り当ては継承されます。 割り当ては、サブ�
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 は ACL の継承をサポートしていますか。
 
-親ディレクトリの下に作成される新しい子サブディレクトリやファイルについては、既定の ACL を使用して ACL を設定できます。 既存の子項目の ACL を更新するには、目的のディレクトリ階層に対して ACL を再帰的に追加、更新、または削除する必要があります。 詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御リスト (ACL) を再帰的に設定する](#set-access-control-lists)」を参照してください。 
+親ディレクトリの下に作成される新しい子サブディレクトリやファイルについては、既定の ACL を使用して ACL を設定できます。 既存の子項目の ACL を更新するには、目的のディレクトリ階層に対して ACL を再帰的に追加、更新、または削除する必要があります。 ガイダンスについては、この記事の「[ACL を設定する方法](#set-access-control-lists)」セクションを参照してください。 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>ディレクトリとその内容を再帰的に削除するのに必要なアクセス許可を教えてください
 

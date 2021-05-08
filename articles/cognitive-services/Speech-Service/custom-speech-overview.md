@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
 ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 13bf0f2430e0d58dd9ef28061aad897acf94ac3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5ffae530bcd8a7274b4b75c447591cf619012661
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493052"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387062"
 ---
 # <a name="what-is-custom-speech"></a>Custom Speech とは
 
@@ -81,7 +81,7 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 
 ## <a name="model-and-endpoint-lifecycle"></a>モデルとエンドポイントのライフサイクル
 
-普通は最新のモデルの方が正確性が高いため、古いモデルは時間の経過と共にあまり役に立たなくなります。 そのため、ベース モデルに加え、ポータルで作成されたカスタム モデルとエンドポイントは、適応に 1 年、デコードに 2 年の有効期限が与えられます。 詳しい説明は「[モデルとエンドポイントのライフサイクル](./how-to-custom-speech-model-and-endpoint-lifecycle.md)」の記事をご覧ください。
+普通は最新のモデルの方が正確性が高いため、古いモデルは時間の経過と共にあまり役に立たなくなります。 そのため、ベース モデルに加え、ポータルで作成されたカスタム モデルとエンドポイントは、適応に 1 年、デコードに 2 年の有効期限が与えられます。 詳しい説明については、「[モデルとエンドポイントのライフサイクル](./how-to-custom-speech-model-and-endpoint-lifecycle.md)」の記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

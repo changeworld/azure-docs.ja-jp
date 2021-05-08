@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
-ms.date: 02/26/2019
-ms.openlocfilehash: a51840daa2c8b19c323ad761ff6e6d1dcef15f75
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 03/24/2021
+ms.openlocfilehash: 4434c796a41126444b8785440427123e88e0b528
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497964"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107790"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Resource Health を使用して Azure SQL Database と Azure SQL Managed Instance の接続をトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,7 +61,7 @@ Resource Health の [正常性の履歴] セクションで、最大 14 日間�
 
 ### <a name="downtime-reasons"></a>ダウンタイムの理由
 
-お使いのデータベースでダウンタイムが発生すると、理由を判断するための分析が実行されます。 入手可能な場合、Resource Health の [正常性の履歴] セクションにダウンタイムの理由が報告されます。 ダウンタイムの理由は、通常、イベントの 30 分後に公開されます。
+お使いのデータベースでダウンタイムが発生すると、理由を判断するための分析が実行されます。 入手可能な場合、Resource Health の [正常性の履歴] セクションにダウンタイムの理由が報告されます。 ダウンタイムの理由は、通常、イベント後 45 分以内に公開されます。
 
 #### <a name="planned-maintenance"></a>Azure の計画メンテナンス
 
@@ -76,5 +76,5 @@ Azure インフラストラクチャでは、計画メンテナンス (データ
 - [一時的なエラーに対する再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)の詳細を確認します。
 - [SQL 接続エラーのトラブルシューティング、診断、および回避](troubleshoot-common-connectivity-issues.md)。
 - [Resource Health のアラートの構成](../../service-health/resource-health-alert-arm-template-guide.md)の詳細を確認します。
-- [Resource Health](../../application-gateway/resource-health-overview.md) の概要を確認します。
+- [Resource Health](../../service-health/resource-health-overview.md) の概要を確認します。
 - [Resource Health の FAQ](../../service-health/resource-health-faq.md) を確認します。

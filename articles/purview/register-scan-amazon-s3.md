@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: a0559028192b0a99aeffd45a3b2896f9c9d159be
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438730"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310200"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon S3 用 Azure Purview コネクタ
 
@@ -38,6 +38,7 @@ ms.locfileid: "102438730"
 
 - [Azure Purview を使用する、リソースのクォータの管理と引き上げ](how-to-manage-quotas.md)
 - [Azure Purview でサポートされているデータ ソースとファイルの種類](sources-and-scans.md)
+- [Purview アカウントのプライベート エンドポイントを使用する](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>ストレージとスキャンのリージョン
 
 次の表は、データが格納されているリージョンと Azure Purview によってスキャンされるリージョンのマップを示しています。
@@ -49,36 +50,41 @@ ms.locfileid: "102438730"
 | ストレージ リージョン | スキャン リージョン |
 | ------------------------------- | ------------------------------------- |
 | 米国東部 (オハイオ)                  | 米国東部 (オハイオ)                        |
-| 米国東部 ( バージニア北部)           | 米国東部 (オハイオ)                        |
+| 米国東部 ( バージニア北部)           | 米国東部 (オハイオ) または米国東部 ( バージニア北部)                       |
 | 米国西部 (北 カリフォルニア)         | 米国東部 (オハイオ)                        |
 | 米国西部 (オレゴン)                | 米国東部 (オハイオ)                        |
 | アフリカ (ケープタウン)              | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (香港)        | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (ムンバイ)           | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (大阪ローカル)      | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (ソウル)            | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (シンガポール)        | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (シドニー)           | ヨーロッパ (フランクフルト)                    |
-| アジア太平洋 (東京)            | ヨーロッパ (フランクフルト)                    |
+| アジア太平洋 (香港特別行政区)        | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                   |
+| アジア太平洋 (ムンバイ)           | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                   |
+| アジア太平洋 (大阪ローカル)      | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                   |
+| アジア太平洋 (ソウル)            | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                   |
+| アジア太平洋 (シンガポール)        | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                   |
+| アジア太平洋 (シドニー)           | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                  |
+| アジア太平洋 (東京)            | ヨーロッパ (フランクフルト) またはアジア太平洋 (シドニー)                 |
 | カナダ (中部)                | 米国東部 (オハイオ)                        |
 | 中国 (北京)                 | サポートされていません                    |
 | 中国 (Ningxia)                 | サポートされていません                   |
 | ヨーロッパ (フランクフルト)              | ヨーロッパ (フランクフルト)                    |
-| ヨーロッパ (アイルランド)                | ヨーロッパ (フランクフルト)                    |
-| ヨーロッパ (ロンドン)                 | ヨーロッパ (フランクフルト)                    |
+| ヨーロッパ (アイルランド)                | ヨーロッパ (フランクフルト) またはヨーロッパ (アイルランド)                   |
+| ヨーロッパ (ロンドン)                 | ヨーロッパ (フランクフルト) またはヨーロッパ (アイルランド)                   |
 | ヨーロッパ (ミラノ)                  | ヨーロッパ (フランクフルト)                    |
 | ヨーロッパ (パリ)                  | ヨーロッパ (フランクフルト)                    |
 | ヨーロッパ (ストックホルム)              | ヨーロッパ (フランクフルト)                    |
 | 中東 (バーレーン)           | ヨーロッパ (フランクフルト)                    |
 | 南米 (サンパウロ)       | 米国東部 (オハイオ)                        |
 | | |
+
 ## <a name="prerequisites"></a>前提条件
 
 Amazon S3 バケットを Purview データ ソースとして追加し、S3 データをスキャンする前に、次の前提条件を確実に実行します。
 
-- Azure Purview データ ソース管理者である必要があります。
-
-- バケットを Purview リソースとして追加するとき、[AWS ARN](#retrieve-your-new-role-arn)、[バケット名](#retrieve-your-amazon-s3-bucket-name)、および場合によっては [AWS アカウント ID](#locate-your-aws-account-id) の値が必要になります。
+> [!div class="checklist"]
+> * Azure Purview データ ソース管理者である必要があります。
+> * まだ持っていない場合は、[Purview アカウントを作成](#create-a-purview-account)します
+> * [AWS バケット スキャン用の Purview 資格情報を作成する](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [Purview で使用するための新しい AWS ロールを作成する](#create-a-new-aws-role-for-purview)
+> * 該当する場合は、[暗号化されている Amazon S3 バケットのスキャンを構成する](#configure-scanning-for-encrypted-amazon-s3-buckets)
+> * バケットを Purview リソースとして追加するとき、[AWS ARN](#retrieve-your-new-role-arn)、[バケット名](#retrieve-your-amazon-s3-bucket-name)、および場合によっては [AWS アカウント ID](#locate-your-aws-account-id) の値が必要になります。
 
 ### <a name="create-a-purview-account"></a>Purview アカウントを作成する
 
@@ -91,7 +97,7 @@ Amazon S3 バケットを Purview データ ソースとして追加し、S3 デ
 この手順では、AWS バケットをスキャンするときに使用する新しい Purview 資格情報を作成する方法について説明します。
 
 > [!TIP]
-> 新しい資格情報は、[スキャン構成](#create-a-scan-for-your-amazon-s3-bucket)時のプロセスの途中で作成することもできます。 その場合は、 **[資格情報]** フィールドで **[新規]** を選択します。
+> 新しい資格情報は、[スキャン構成](#create-a-scan-for-one-or-more-amazon-s3-buckets)時のプロセスの途中で作成することもできます。 その場合は、 **[資格情報]** フィールドで **[新規]** を選択します。
 >
 
 1. Purview で **[Management Center]\(管理センター\)** に移動し、 **[セキュリティとアクセス]** で **[資格情報]** を選択します。
@@ -110,9 +116,30 @@ Amazon S3 バケットを Purview データ ソースとして追加し、S3 デ
 
     完了したら **[作成]** を選択し、資格情報の作成を終了します。
 
-Purview 資格情報の詳細については、[Azure Purview パブリック プレビュー ドキュメント](manage-credentials.md)を参照してください。
+1. まだ行っていない場合は、次の手順である [Purview の新しい AWS ロールを作成](#create-a-new-aws-role-for-purview)するときに使用する **Microsoft アカウント ID** と **外部 ID** の値をコピーして貼り付けます。
+
+Purview の資格情報の詳細については、「[Azure Purview のソース認証用の資格情報](manage-credentials.md)」を参照してください。
 
 ### <a name="create-a-new-aws-role-for-purview"></a>Purview 用の新しい AWS ロールを作成する
+
+この手順では、AWS ロールを作成するときに、Azure アカウント ID と外部 ID の値を入力する必要があります。
+
+これらの値がない場合は、まず [Purview の資格情報](#create-a-purview-credential-for-your-aws-bucket-scan)でそれらを検索します。
+
+**Microsoft アカウント ID と外部 ID を検索するには**:
+
+1. Purview で、 **[Management Center]\(管理センター\)**  >  **[セキュリティとアクセス]**  >  **[資格情報]** に移動します。
+
+1. [AWS バケット スキャン用に作成した](#create-a-purview-credential-for-your-aws-bucket-scan)資格情報を選択し、ツールバーの **[編集]** を選択します。
+
+1. 右側に表示される **[資格情報の編集]** ペインで、AWS の関連フィールドに貼り付けるための **Microsoft アカウント ID** と **外部 ID** の値を、別のファイルにコピーするか、手元に用意しておきます。
+
+    次に例を示します。
+
+    [ ![Microsoft アカウント ID と外部 ID の値を検索します。](./media/register-scan-amazon-s3/locate-account-id-external-id.png) ](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
+
+
+**Purview 用の AWS ロールを作成するには**:
 
 1.  **アマゾン ウェブ サービス** コンソールを開き、 **[セキュリティ、アイデンティティ、コンプライアンス]** で **[IAM]** を選択します。
 
@@ -123,12 +150,8 @@ Purview 資格情報の詳細については、[Azure Purview パブリック �
     |フィールド  |説明  |
     |---------|---------|
     |**アカウント ID**     |    Microsoft アカウント ID を入力します。 例: `615019938638`     |
-    |**外部 ID**     |   [オプション] の **[Require external ID...]\(外部 ID が必要...\)** を選択し、指定フィールドに外部 ID を入力します。 <br>例: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`    <br><br>この外部 ID を確認するには、次のようにします。  |
+    |**外部 ID**     |   [オプション] の **[Require external ID...]\(外部 ID が必要...\)** を選択し、指定フィールドに外部 ID を入力します。 <br>例: `e7e2b8a3-0a9f-414f-a065-afaf4ac6d994`     |
     | | |
-
-    > [!NOTE]
-    > **Microsoft アカウント ID** と **外部 ID** の両方の値は、[Purview 資格情報を作成した](#create-a-purview-credential-for-your-aws-bucket-scan) Purview の **[Management Center]\(管理センター\)**  >  **[資格情報]** 領域で確認できます。
-    >
 
     次に例を示します。
 
@@ -137,6 +160,13 @@ Purview 資格情報の詳細については、[Azure Purview パブリック �
 1. **[ロールの作成] > [Attach permissions policies]\(アクセス許可ポリシーのアタッチ\)** 領域で、 **[S3]** に表示されるアクセス権限をフィルター処理します。 **AmazonS3ReadOnlyAccess** を選択してから、 **[次へ: タグ]** を選択します。
 
     ![新しい Amazon S3 スキャン ロールに ReadOnlyAccess ポリシーを選択します。](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > **AmazonS3ReadOnlyAccess** ポリシーは、S3 バケットのスキャンに必要な最小限のアクセス許可を提供します。また、他のアクセス許可を含めることもできます。
+    >
+    >バケットのスキャンに必要な最小限のアクセス許可のみを適用するには、新しいポリシーを作成し、1 つのバケットをスキャンするか、アカウント内のすべてのバケットをスキャンするかに応じて、「[AWS ポリシー用の最小限のアクセス許可](#minimum-permissions-for-your-aws-policy)」の一覧にあるアクセス許可を指定します。 
+    >
+    >**AmazonS3ReadOnlyAccess** の代わりに、新しいポリシーをロールに適用します。
 
 1. **[タグの追加 (オプション)]** 領域で、必要に応じて、この新しいロールのわかりやすいタグを作成できます。 有用なタグを使用して、作成する各ロールのアクセスを整理、追跡、制御できます。
 
@@ -218,7 +248,7 @@ AWS バケットは、複数の暗号化の種類をサポートしています�
 
 ### <a name="retrieve-your-new-role-arn"></a>新しいロール ARN を取得する
 
-[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-your-amazon-s3-bucket)場合は、AWS ロール ARN を記録して Purview にコピーする必要があります。
+[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)場合は、AWS ロール ARN を記録して Purview にコピーする必要があります。
 
 **ロール ARN を取得するには、次のようにします。**
 
@@ -228,11 +258,11 @@ AWS バケットは、複数の暗号化の種類をサポートしています�
 
     ![ロール ARN の値をクリップボードにコピーします。](./media/register-scan-amazon-s3/aws-copy-role-purview.png)
 
-1. この値を安全な場所に貼り付け、[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-your-amazon-s3-bucket)ときに使用できるようにします。
+1. この値を安全な場所に貼り付け、[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)ときに使用できるようにします。
 
 ### <a name="retrieve-your-amazon-s3-bucket-name"></a>Amazon S3 バケット名を取得する
 
-[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-your-amazon-s3-bucket)ときに、Amazon S3 バケットの名前を Purview にコピーする必要があります
+[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)ときに、Amazon S3 バケットの名前を Purview にコピーする必要があります
 
 **バケット名を取得するには、次のようにします。**
 
@@ -269,6 +299,8 @@ AWS アカウント ID とは、AWS コンソールにログインするため�
 
 この手順は、データ ソースとして Purview に登録する S3 バケットが 1 つのみの場合、または AWS アカウントに複数のバケットがあるが、Purview にそのすべてを登録するのではない場合に使用します。
 
+**バケットを追加するには**: 
+
 1. Amazon S3 URL の専用の Purview コネクタを使用して Purview ポータルを起動します。 この URL は、Amazon S3 Purview コネクタ製品管理チームから提供されています。
 
     ![Purview ポータルを起動します。](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -292,12 +324,15 @@ AWS アカウント ID とは、AWS コンソールにログインするため�
 
     完了したら、 **[完了]** を選択して登録を完了します。
 
-「[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-your-amazon-s3-bucket)」に進みます。
+「[1 つ以上の Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)」に進みます。
 
-## <a name="add-all-of-your-amazon-s3-buckets-as-purview-resources"></a>すべての Amazon S3 バケットを Purview リソースとして追加する
+## <a name="add-an-amazon-account-as-a-purview-resource"></a>Amazon アカウントを Purview リソースとして追加します。
 
-Amazon アカウントに複数の S3 バケットがあり、すべてを Purview データ ソースとして登録する場合は、この手順を使用します。
+Amazon アカウントに複数の S3 バケットがあり、それらすべてを Purview データ ソースとして登録する場合は、この手順を使用します。
 
+それらすべてを一度にスキャンしないようにする場合は、[スキャンを構成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)ときに、スキャン対象の特定のバケットを選択できます。
+
+**Amazon アカウントを追加するには**:
 1. Amazon S3 URL の専用の Purview コネクタを使用して Purview ポータルを起動します。 この URL は、Amazon S3 Purview コネクタ製品管理チームから提供されています。
 
     ![Amazon S3 専用の Purview ポータルのコネクタを起動する](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
@@ -321,9 +356,9 @@ Amazon アカウントに複数の S3 バケットがあり、すべてを Purvi
 
     完了したら、 **[完了]** を選択して登録を完了します。
 
-「[Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-your-amazon-s3-bucket)」に進みます。
+「[1 つ以上の Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)」に進みます。
 
-## <a name="create-a-scan-for-your-amazon-s3-bucket"></a>Amazon S3 バケットのスキャンを作成する
+## <a name="create-a-scan-for-one-or-more-amazon-s3-buckets"></a>1 つ以上の Amazon S3 バケットのスキャンを作成する
 
 バケットを Purview データ ソースとして追加したら、スケジュールされた間隔で、または直ちに実行するようにスキャンを構成できます。
 
@@ -339,9 +374,10 @@ Amazon アカウントに複数の S3 バケットがあり、すべてを Purvi
     |**名前**     |  スキャンのわかりやすい名前を入力するか、デフォルトを使用します。       |
     |**Type** |AWS アカウントを追加した場合にのみ表示され、すべてのバケットが含まれます。 <br><br>現在のオプションには、 **[すべて]**  >  **[Amazon S3]** のみが含まれます。 Purview のサポート マトリックスの拡大に応じて、より多くのオプションを選択できるようになります。 |
     |**資格情報**     |  ご自分のロール ARN の Purview 資格情報を選択します。 <br><br>**ヒント**: このとき、新しい資格情報を作成する場合は、 **[新規]** を選択します。 詳細については、「[AWS バケット スキャン用の Purview 資格情報を作成する](#create-a-purview-credential-for-your-aws-bucket-scan)」を参照してください。     |
-    |     |         |
+    | **Amazon S3**    |   AWS アカウントを追加した場合にのみ表示され、すべてのバケットが含まれます。 <br><br>スキャンするバケットを 1 つ以上選択するか、 **[すべて選択]** してアカウント内のすべてのバケットをスキャンします。      |
+    | | |
 
-    Purview により、ロール ARN が有効であること、バケット内のバケットとオブジェクトがアクセス可能であることが自動的にチェックされ、接続が成功した場合は続行します。
+    Purview により、ロール ARN が有効であること、バケットとバケット内のオブジェクトがアクセス可能であることが自動的にチェックされ、接続が成功した場合は続行します。
 
     > [!TIP]
     > 続行する前に自分で別の値を入力して接続をテストするには、右下にある **[テスト接続]** を選択してから **[続行]** を選択します。
@@ -395,6 +431,90 @@ Purview の他の領域を使用して、Amazon S3 バケットなど、デー�
     すべての Purview 分析情報レポートには、Amazon S3 のスキャン結果と、Azure データ ソースから得られたその他の結果が含まれます。 該当する場合、追加の **Amazon S3** 資産の種類がレポート フィルター オプションに追加されています。
 
     詳細については、「[Azure Purview の分析情報についての理解](concept-insights.md)」を参照してください。
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>AWS ポリシー用の最小限のアクセス許可
+
+S3 バケットをスキャンするときに使用する、[Purview 用の AWS ロールを作成する](#create-a-new-aws-role-for-purview)ための既定の手順では、**AmazonS3ReadOnlyAccess** ポリシーを使用します。
+
+**AmazonS3ReadOnlyAccess** ポリシーは、S3 バケットのスキャンに必要な最小限のアクセス許可を提供します。また、他のアクセス許可を含めることもできます。
+
+バケットのスキャンに必要な最小限のアクセス許可のみを適用するには、新しいポリシーを作成し、1 つのバケットをスキャンするか、アカウント内のすべてのバケットをスキャンするかに応じて、移行のセクションの一覧にあるアクセス許可を指定します。
+
+**AmazonS3ReadOnlyAccess** の代わりに、新しいポリシーをロールに適用します。
+
+### <a name="individual-buckets"></a>個々のバケット
+
+個々の S3 バケットをスキャンする場合、最小限の AWS アクセス許可は次のとおりです。
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+必ず特定のバケット名を使用してリソースを定義してください。 次に例を示します。
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>アカウント内のすべてのバケット
+
+AWS アカウント内のすべてのバケットをスキャンする場合、最小限の AWS アクセス許可は次のとおりです。
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+必ずワイルドカードを使用してリソースを定義してください。 次に例を示します。
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

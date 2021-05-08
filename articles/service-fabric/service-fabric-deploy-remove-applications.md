@@ -4,10 +4,10 @@ description: Azure Service Fabric でのアプリケーションの削除とデ�
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.openlocfilehash: d428a51c0bc224ca8706403ae176d46f1db82a32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785449"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する

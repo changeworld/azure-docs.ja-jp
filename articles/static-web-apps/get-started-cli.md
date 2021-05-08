@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 98b40218d168133193410174bcc158ab8698c381
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a95e1658c3633f4ae8d09b71e9d3b0c82446754a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225389"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727588"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用して最初の静的サイトを構築する
 
@@ -110,7 +110,7 @@ cd my-first-static-web-app
 
     - `<RESOURCE_GROUP_NAME>`: この値を既存の [Azure リソース グループ名](../azure-resource-manager/management/manage-resources-cli.md)に置き換えます。
 
-      - リソース グループを一覧表示する方法の詳細については、[az group](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_list) のドキュメントを参照してください。
+      - リソース グループを一覧表示する方法の詳細については、[az group](/cli/azure/group#az_group_list) のドキュメントを参照してください。
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`:この値を自分の GitHub ユーザー名に置き換えてください。
 

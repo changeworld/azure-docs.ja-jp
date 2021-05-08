@@ -4,10 +4,10 @@ description: Azure Service Bus を使用しているときに受け取る可能�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88064351"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure Service Bus での AMQP エラー

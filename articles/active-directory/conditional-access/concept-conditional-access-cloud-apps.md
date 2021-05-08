@@ -11,19 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3b4da4e21bca421b76f820c04ba68375be5ca0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 80ec5133ad12dda4a6883c663007b8b7fec2e81a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307773"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551936"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
 クラウド アプリまたは操作は、条件付きアクセス ポリシーの重要なシグナルです。 管理者は、条件付きアクセス ポリシーを使用して、特定のアプリケーションまたはアクションにコントロールを割り当てることができます。
 
 - 管理者は、組み込みの Microsoft アプリケーションおよび [Azure AD 統合アプリケーション](../manage-apps/what-is-application-management.md) (ギャラリー、ギャラリー以外、[アプリケーション プロキシ](../manage-apps/what-is-application-proxy.md)経由で公開されたアプリケーションなど) を含むアプリケーションの一覧から選択できます。
-- 管理者は、クラウド アプリケーションではなく、ユーザー アクションに基づいてポリシーを定義することを選択できます。 サポートされている唯一のアクションは、[セキュリティ情報の登録 (プレビュー)] です。これにより、条件付きアクセスは、[統合されたセキュリティ情報の登録エクスペリエンス](../authentication/howto-registration-mfa-sspr-combined.md)に関連したコントロールを適用できます。
+- 管理者は、クラウド アプリケーションではなく、ユーザー アクションに基づいてポリシーを定義することを選択できます。 2 つのユーザー操作がサポートされています
+   - セキュリティ情報の登録 (プレビュー)。これにより、[統合されたセキュリティ情報の登録エクスペリエンス](../authentication/howto-registration-mfa-sspr-combined.md)に関連したコントロールを適用できます。 
+   - デバイスの登録または参加 (プレビュー)。これにより、ユーザーがデバイスを Azure AD に[登録](../devices/concept-azure-ad-register.md)するか[参加](../devices/concept-azure-ad-join.md)させるときにコントロールを適用できます。 
 
 ![条件付きアクセス ポリシーを定義し、クラウド アプリを指定する](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
@@ -31,7 +33,7 @@ ms.locfileid: "93307773"
 
 既存の Microsoft クラウド アプリケーションの多くは、選択できるアプリケーションの一覧に含まれています。 
 
-管理者は、次の Microsoft のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。 Office 365 や Microsoft Azure Management などの一部のアプリには、複数の関連する子アプリやサービスが含まれています。 次の一覧は完全なものではなく、変更される可能性があります。
+管理者は、次の Microsoft のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。 Office 365 や Microsoft Azure Management などの一部のアプリには、複数の関連する子アプリやサービスが含まれています。 アプリは継続的に追加されるため、次の一覧は完全なものではなく、変更される可能性があります。
 
 - [Office 365](#office-365)
 - Azure Analysis Services
@@ -66,6 +68,8 @@ ms.locfileid: "93307773"
 - Skype for Business Online
 - 仮想プライベート ネットワーク (VPN)
 - Windows Defender ATP
+
+条件付きアクセスで使用できるアプリケーションは、オンボードと検証のプロセスを経ています。 これにはすべての Microsoft アプリが含まれているわけではありません。多くはバックエンド サービスであり、ポリシーを直接適用することは想定されていないためです。 探しているアプリケーションが見つからない場合、特定のアプリケーション チームに連絡するか、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) で要求を行うことができます。
 
 ### <a name="office-365"></a>Office 365
 
@@ -125,8 +129,15 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 
 ## <a name="user-actions"></a>ユーザー操作
 
-ユーザー操作とは、ユーザーが実行できるタスクです。 現在サポートされている唯一のアクションは、 **セキュリティに関する情報の登録** です。これにより、統合された登録が有効になったユーザーが自分のセキュリティに関する情報を登録しようとすると、条件付きアクセス ポリシーが適用されます。 詳細情報については、「[統合されたセキュリティ情報の登録](../authentication/concept-registration-mfa-sspr-combined.md)」を参照してください。
+ユーザー操作とは、ユーザーが実行できるタスクです。 現在、条件付きアクセスでは 2 つのユーザー操作がサポートされています。 
 
+- **セキュリティに関する情報の登録**: このユーザー操作により、統合された登録が有効になったユーザーが自分のセキュリティに関する情報を登録しようとすると、条件付きアクセス ポリシーが適用されます。 詳細情報については、「[統合されたセキュリティ情報の登録](../authentication/concept-registration-mfa-sspr-combined.md)」を参照してください。
+
+- **デバイスの登録または参加 (プレビュー)** : このユーザー操作により、ユーザーがデバイスを Azure AD に [登録](../devices/concept-azure-ad-register.md)するか [参加](../devices/concept-azure-ad-join.md)させるときに、管理者は条件付きアクセス ポリシーを適用することができます。 これにより、現在存在するテナント全体のポリシーではなく、デバイスを登録するか参加させるための多要素認証をきめ細かく構成できます。 このユーザー操作には、次の 3 つの重要な考慮事項があります。 
+   - `Require multi-factor authentication` は、このユーザー操作で使用できる唯一のアクセス制御であり、それ以外はすべて無効になっています。 この制限により、Azure AD デバイス登録に依存している、あるいは Azure AD デバイス登録に適用されないアクセス制御との競合を防ぐことができます。 
+   - `Client apps` および `Device state` 条件は、Azure AD デバイス登録に依存して条件付きアクセス ポリシーを適用するため、このユーザー操作では使用できません。
+   - このユーザー操作によって条件付きアクセスポリシーを有効にした場合、 **[Azure Active Directory]**  >  **[デバイス]**  >  **[デバイス設定]**  - `Devices to be Azure AD joined or Azure AD registered require Multi-Factor Authentication` を **[いいえ]** に設定する必要があります。 そうしないと、このユーザー操作による条件付きアクセス ポリシーが適切に適用されません。 このデバイス設定に関する詳細については、「[デバイス設定の構成](../devices/device-management-azure-portal.md#configure-device-settings)」を参照してください。 
+   
 ## <a name="next-steps"></a>次のステップ
 
 - [条件付きアクセス:条件](concept-conditional-access-conditions.md)

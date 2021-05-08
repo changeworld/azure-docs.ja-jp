@@ -3,12 +3,12 @@ title: Azure でのマイクロサービスの概要
 description: マイクロサービスでクラウド アプリケーションを構築することが現代のアプリケーション開発にとって重要である理由と Azure Service Fabric がそれを達成するためのプラットフォームを提供するしくみの概要
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46d4be7321057bd7a5ee19e0aca136c8c60d43bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575654"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044432"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>マイクロサービスの手法を使用してアプリケーションを構築する理由は何ですか
 
@@ -194,7 +194,7 @@ Service Fabric の目的は、マイクロサービス アプリケーション�
 
 * [マイクロサービス:クラウドによって実現されるアプリケーションの革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 * [Azure アーキテクチャ センター: Azure でのマイクロサービスの構築](/azure/architecture/microservices/)
-* [Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)
+* [Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](./service-fabric-best-practices-security.md)
 * [Service Fabric の用語の概要](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

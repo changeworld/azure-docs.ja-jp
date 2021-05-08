@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: c5c50787ef3e287d164e051ece26da4e83199d47
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3a26f7c63b639f9aeb6a8f526e77dacb37fb4d87
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102555637"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068066"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [顧客] ダッシュボード
 
@@ -163,6 +163,7 @@ _**表 1: データ用語の辞書**_
 | CommerceRootCustomer | コマース ルート顧客 | 1 つの課金アカウント ID を複数の Customer ID に関連付けることができます。<br>課金アカウント ID と Customer ID の 1 つの組み合わせを複数のコマーシャル マーケットプレース サブスクリプションと関連付けることができます。<br>コマース ルート顧客は、サブスクリプションの顧客の名前を示します。 | CommerceRootCustomer |
 | Customer ID | Customer ID | 顧客に割り当てられている一意の識別子。 顧客は 0 個以上の Azure Marketplace サブスクリプションを所持できます。 | CustomerId |
 | 課金アカウント ID | 課金アカウント ID | 請求書が生成されるアカウントの識別子。 **課金アカウント ID** を **customerID** にマップして、支払い取引レポートを、顧客、注文、使用状況のレポートに関連付けます。 | BillingAccountId |
+| [顧客の種類] | [顧客の種類] | このフィールドの値は顧客の種類を示します。 次の値を指定できます。<ul><li>個人</li> <li>organization</li></ul> | CustomerType |
 |||||
 
 ### <a name="customers-page-filters"></a>顧客ページ フィルター

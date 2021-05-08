@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3d29e99f3b539fdbea2a19df7ffc25d4e41a5376
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731260"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -20,11 +20,15 @@ ms.locfileid: "98880103"
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>仮想ネットワークは異なる Azure リージョン間でも接続できますか。
 
-はい。 リージョンにより制限されることはありません。 特定の仮想ネットワークから、同一リージョン内の別の仮想ネットワーク、または別の Azure リージョンに存在する別の仮想ネットワークに接続できます。 
+はい。 リージョンにより制限されることはありません。 特定の仮想ネットワークから、同一リージョン内の別の仮想ネットワーク、または別の Azure リージョンに存在する別の仮想ネットワークに接続できます。
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>異なるサブスクリプションの仮想ネットワークに接続することはできますか。
 
 はい。
+
+### <a name="can-i-specify-private-dns-servers-in-my-vnet-when-configuring-vpn-gateway"></a>VPN Gateway を構成するときに、自分の VNet にプライベート DNS サーバーを指定できますか。
+
+VNet の作成時に DNS サーバーを指定した場合、VPN Gateway では指定した DNS サーバーが使用されます。 DNS サーバーを指定する場合は、DNS サーバーが Azure に必要なドメイン名を解決できることを確認してください。
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>1 つの仮想ネットワークから複数のサイトに接続できますか。
 
@@ -32,7 +36,7 @@ Windows PowerShell および Azure REST API を使用して複数のサイトに
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>VPN ゲートウェイをアクティブ/アクティブとして設定する場合、追加のコストがかかりますか。
 
-いいえ。 
+いいえ。
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>クロスプレミス接続にはどのようなオプションがありますか。
 
@@ -70,13 +74,16 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
 
-いいえ。  Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
-1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
-1. ゲートウェイを削除します。
-   - [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [必要な種類の新しいゲートウェイを作成し、VPN のセットアップを完了します](./tutorial-site-to-site-portal.md#VNetGateway)。
+いいえ。 ゲートウェイの種類は、ポリシー ベースからルート ベースに変更することも、ルート ベースからポリシー ベースに変更することもできません。 ゲートウェイの種類を変更するには、ゲートウェイを削除してから再作成する必要があります。 このプロセスには約 60 分かかります。 新しいゲートウェイを作成するときに、元のゲートウェイの IP アドレスを保持することはできません。
+
+1. ゲートウェイに関連付けられているすべての接続を削除してください。
+
+1. ゲートウェイを削除するには、次のいずれかの記事を利用します。
+
+   * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   * [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   * [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. 目的のゲートウェイの種類を使用して新しいゲートウェイを作成してから、VPN の設定を行います。 手順については、[サイト間のチュートリアル](./tutorial-site-to-site-portal.md#VNetGateway)を参照してください。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' は必要ですか。
 
@@ -92,7 +99,7 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 
 ゾーン冗長とゾーン ゲートウェイ (名前に _AZ_ が入っているゲートウェイ SKU) は、どちらも _Standard SKU_ の Azure のパブリック IP リソースに依存しています。 Azure の Standard SKU のパブリック IP リソースでは、静的な割り当て方法を使用する必要があります。 そのため、使用する Standard SKU のパブリック IP リソースを作成するとすぐに、VPN ゲートウェイ用のパブリック IP アドレスが作成されます。
 
-非ゾーン冗長および非ゾーン ゲートウェイ (名前に _AZ_ が入って _いない_ ゲートウェイ SKU) の場合、VPN ゲートウェイの IP アドレスを作成する前に取得することはできません。 IP アドレスが変更されるのは、VPN ゲートウェイを削除してもう一度作成した場合だけです。
+ゾーン冗長および非ゾーン ゲートウェイ (名前に _AZ_ が入って _いない_ ゲートウェイ SKU) の場合、VPN ゲートウェイの IP アドレスを作成する前に取得することはできません。 IP アドレスが変更されるのは、VPN ゲートウェイを削除してもう一度作成した場合だけです。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>VPN Gateway に静的なパブリック IP アドレスを指定することはできますか。
 
@@ -121,11 +128,7 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 
 #### <a name="classic-deployment-model"></a>クラシック デプロイ モデル
 
-* Azure Portal: クラシック仮想ネットワーク、[VPN 接続]、[サイト対サイト VPN 接続]、ローカル サイト名、[ローカル サイト]、[クライアント アドレス空間] の順に移動します。 
-
-### <a name="can-i-configure-force-tunneling"></a>強制トンネリングを構成できますか。
-
-はい。 [強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)に関するページを参照してください。
+* Azure Portal: クラシック仮想ネットワーク、[VPN 接続]、[サイト対サイト VPN 接続]、ローカル サイト名、[ローカル サイト]、[クライアント アドレス空間] の順に移動します。
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN 接続で NAT-T を使用できますか。
 
@@ -193,6 +196,10 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>サイト間 VPN 接続と ExpressRoute の間のルーティングを有効にするにはどうすればいいですか。
+
+ExpressRoute に接続されているブランチと、サイト間 VPN 接続に接続されているブランチとの間のルーティングを有効にするには、[Azure Route Server](../route-server/expressroute-vpn-support.md) をセットアップする必要があります。
+
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>オンプレミス サイトや別の仮想ネットワークに向けてトラフィックを通過させるときに、Azure VPN Gateway を使用できますか。
 
 **Resource Manager デプロイ モデル**<br>
@@ -225,10 +232,13 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
-
-## <a name="bgp"></a><a name="bgp"></a>BGP
+## <a name="bgp-and-routing"></a><a name="bgp"></a>BGP とルーティング
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
+
+### <a name="can-i-configure-forced-tunneling"></a>強制トンネリングを構成できますか。
+
+はい。 [強制トンネリングについて](vpn-gateway-about-forced-tunneling.md)を参照してください。
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>クロスプレミス接続と VM
 
@@ -245,7 +255,6 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 ### <a name="how-do-i-troubleshoot-an-rdp-connection-to-a-vm"></a>VM に対する RDP 接続をトラブルシューティングする方法
 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
-
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>Virtual Network FAQ
 

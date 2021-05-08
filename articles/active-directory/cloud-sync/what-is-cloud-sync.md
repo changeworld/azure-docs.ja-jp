@@ -11,17 +11,17 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b880d70baf7c160f8235bd01a5000f83825c36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af4eaa5912cdf7463c81f501d71b69e934f8febb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98614526"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306009"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期とは
 Azure AD Connect クラウド同期は、ユーザー、グループ、連絡先を Azure AD に同期するためのハイブリッド ID の目標を満たすために設計された Microsoft の新しいオファリングです。  Azure AD Connect アプリケーションではなく Azure AD クラウド プロビジョニング エージェントを使用してこれを実現します。  ただし、これは Azure AD Connect 同期と共に使用することができ、次のような利点があります。
     
-- 複数のフォレストに接続されていない Active Directory フォレスト環境からの Azure AD テナントへの同期のサポート:一般的なシナリオには、合併と買収があります。買収した企業の AD フォレストが親企業の AD フォレストから分離されていて、以前は複数の AD フォレストがあった企業の AD フォレストがある場合などがあります。
+- 複数のフォレストに接続されていない Active Directory フォレスト環境からの Azure AD テナントへの同期のサポート: 一般的なシナリオには、合併と買収があります。買収した企業の AD フォレストが親企業の AD フォレストから分離されていて、以前は複数の AD フォレストがあった企業の AD フォレストがある場合などがあります。
 - 軽量プロビジョニングエージェントを使用したい簡易インストール：エージェントは AD から Azure AD へのブリッジとして機能し、すべての同期構成がクラウドで管理されます。 
 - 複数のプロビジョニングエージェントを使用して高可用性の展開を簡素化することができます。特に、AD から Azure AD へのパスワードハッシュ同期に依存している組織にとって重要です。
 - 最大 50,000 のメンバーを含む大規模なグループのサポート。 大規模なグループを同期するときは、OU スコープ フィルターのみを使用することをお勧めします。
@@ -30,7 +30,7 @@ Azure AD Connect クラウド同期は、ユーザー、グループ、連絡先
 ![What is Azure AD Connect](media/what-is-cloud-sync/architecture-1.png)
 
 ## <a name="how-is-azure-ad-connect-cloud-sync-different-from-azure-ad-connect-sync"></a>Azure AD Connect クラウド同期は、Azure AD Connect 同期とどのように違いますか。
-Azure AD Connect クラウド同期では、Microsoft Online Services で AD から Azure AD へのプロビジョニングが調整されます。 組織は、オンプレミスと IaaS ホスト環境で、Azure AD と AD の間のブリッジとして機能する軽量のエージェントをデプロイするだけです。 プロビジョニングの構成は Azure AD に格納され、サービスの一部として管理されます。
+Azure AD Connect クラウド同期では、Microsoft Online Services で AD から Azure AD へのプロビジョニングが調整されます。 組織は、オンプレミス環境または IaaS ホスト環境で、Azure AD と AD の間のブリッジとして機能する軽量のエージェントをデプロイするだけです。 プロビジョニングの構成は Azure AD に格納され、サービスの一部として管理されます。
 
 ## <a name="azure-ad-connect-cloud-sync-video"></a>Azure AD Connect クラウド同期のビデオ
 次の短いビデオでは、Azure AD Connect クラウド同期の概要をわかりやすく説明しています。
@@ -63,7 +63,7 @@ Azure AD Connect クラウド同期では、Microsoft Online Services で AD か
 | フェデレーションのサポート |●|●|
 | シームレス シングル サインオン|● |●|
 | ドメイン コントローラーへのインストールのサポート |● |● |
-| Windows Server 2012 および Windows Server 2012 R2 のサポート |● |● |
+| Windows Server 2016 のサポート|● |● |
 | ドメイン/OU/グループのフィルター処理 |● |● |
 | オブジェクトの属性値でのフィルター処理 |● | |
 | 最小の属性セットの同期 (MinSync) の許可 |● |● |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: e0cfc47b546c31e6b93d224e64de20b79baacfd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b3a06d2d441c918c4c109d9dc624ebfa1cd4c97
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98891298"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120828"
 ---
 # <a name="media-reserved-units"></a>メディア占有ユニット
 
@@ -52,8 +52,8 @@ Azure Media Services を使用してメディア占有ユニット (MRU) を管�
 
 ## <a name="next-step"></a>次のステップ
 [CLI を使用してメディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)
-[ビデオを分析する](analyze-videos-tutorial-with-api.md)
+[ビデオを分析する](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>関連項目
 
-* [クォータと制限](limits-quotas-constraints.md)
+* [クォータと制限](limits-quotas-constraints-reference.md)

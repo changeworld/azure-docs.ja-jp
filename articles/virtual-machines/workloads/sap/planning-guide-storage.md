@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 329e09221467c2602355e091876c95f305db3578
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673747"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302949"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -92,11 +92,11 @@ S/4HANA の SAP NetWeaver またはアプリケーション レイヤー用の A
 
 | 使用シナリオ | Standard HDD | Standard SSD | Premium Storage | Ultra Disk | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| スループットまたは IOPS SLA | no | no | はい | はい | はい |
+| スループットまたは IOPS SLA | no | いいえ | はい | はい | はい |
 | 読み取り待機時間 | high | 中から高 | low | ミリ秒未満 | ミリ秒未満 |
 | 書き込み待機時間 | high | 中から高  | 低 (ミリ秒未満<sup>1</sup>) | ミリ秒未満 | ミリ秒未満 |
 | HANA のサポート対象 | no | no | はい<sup>1</sup> | はい | はい |
-| ディスクのスナップショット可能 | はい | はい | はい | no | はい |
+| ディスクのスナップショット可能 | はい | はい | はい | いいえ | はい |
 | 可用性セット使用時の異なるストレージ クラスターへのディスクの割り当て | マネージド ディスクを使用 | マネージド ディスクを使用 | マネージド ディスクを使用 | 可用性セットを使用してデプロイした VM ではサポートされていないディスクの種類 | いいえ<sup>3</sup> |
 | Availability Zones を使用した配置 | はい | はい | はい | はい | Microsoft の関与が必要 |
 | ゾーン冗長 | マネージド ディスク非対応 | マネージド ディスク非対応 | マネージド ディスク非対応 | no | no |
@@ -236,6 +236,7 @@ SAP ワークロードの機能マトリックスは次のようになります�
     - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)
     - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](./high-availability-guide-rhel-netapp-files.md)
 - /hana/data および /hana/log ボリューム用に NFS v4.1 共有を使用し、かつ (または) /hana/shared ボリューム用に NFS v4.1 か NFS v3 ボリュームを使用した SAP HANA デプロイ (「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を参照)
+- Oracle データと redo ログ ボリューム用に [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) を使用した Oracle Linux ゲスト OS での Oracle のデプロイ。 詳細については、「[SAP ワークロード用の Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)」の記事を参照してください
 
 > [!NOTE]
 > Azure NetApp Files ベースの NFS または SMB 共有では、他の DBMS ワークロードはサポートされていません。 これが変更された場合は、更新プログラムと変更情報が提供されます。

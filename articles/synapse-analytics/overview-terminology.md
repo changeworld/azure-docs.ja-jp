@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 828f37030ae567cacbaad25849b7ba24c561c20c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b4b4e227a0bdfc449c73541dec5d13c1c6697bc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98132768"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313064"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure Synapse Analytics の用語
 
@@ -34,7 +34,7 @@ ms.locfileid: "98132768"
 
 **Synapse SQL** は、Synapse ワークスペースで T-SQL に基づいて分析するための機能です。 Synapse SQL には、専用とサーバーレスという 2 つの消費モデルがあります。  専用モデルの場合、**専用の SQL プール** を使用します。 ワークスペースには、このようなプールをいくらでも与えることができます。 サーバーレスモデルを使用するには、**サーバーレス SQL プール** を使用します。 ワークスペースごとにこのようなプールが 1 つ与えられます。
 
-Synapse Studio 内で、**SQL スクリプト** を作成および実行することによって、SQL プールを操作できます。
+Synapse Studio 内で、**SQL スクリプト** を実行することによって、SQL プールを操作できます。
 
 ## <a name="apache-spark-for-synapse"></a>Synapse 用の Apache Spark
 
@@ -50,7 +50,7 @@ Azure Synapse では、パイプラインを使用してデータ統合を提供
 
 * **パイプライン** は、1 つのタスクを連携して実行するアクティビティの論理的なグループです。
 * **アクティビティ** は、データのコピー、ノートブックや SQL スクリプトの実行など、データに対して実行する、パイプライン内のアクションを定義します。
-* **データ フロー** は、内部的に Synapse Spark を使用するデータ変換を実行するための、コードなしのエクスペリエンスを提供する、特定の種類のアクティビティです。
+* **データ フロー** は、内部的に Synapse Spark を使用するデータ変換を実行するための、ノーコードのエクスペリエンスを提供する、特定の種類のアクティビティです。
 * **トリガー** - パイプラインを実行します。 手動または自動で実行できます (スケジュール、タンブリング ウィンドウ、またはイベントベース)
 * **統合データセット** - アクティビティで入力および出力として使用されるデータを単にポイントまたは参照する、データの名前付きビュー。 リンクされたサービスに属します。
 

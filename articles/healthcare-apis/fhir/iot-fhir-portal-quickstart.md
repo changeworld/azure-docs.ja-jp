@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 11/13/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 91b3097e465458181074d1e450e69f267d0fe556
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026787"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443775"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -85,12 +85,12 @@ Azure IoT Connector for FHIR には、デバイス メッセージを FHIR ベ�
       "templateType": "IotJsonPathContent",
       "template": {
         "typeName": "heartrate",
-        "typeMatchExpression": "$..[?(@Body.HeartRate)]",
-        "patientIdExpression": "$.SystemProperties.iothub-connection-device-id",
+        "typeMatchExpression": "$..[?(@Body.telemetry.HeartRate)]",
+        "patientIdExpression": "$.Properties.iotcentral-device-id",
         "values": [
           {
             "required": "true",
-            "valueExpression": "$.Body.HeartRate",
+            "valueExpression": "$.Body.telemetry.HeartRate",
             "valueName": "hr"
           }
         ]
@@ -171,6 +171,11 @@ Azure では、IoT デバイスを接続し、管理するための幅広い IoT
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT データを Azure IoT Connector for FHIR (プレビュー) に接続する
 
 IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../../iot-central/core/howto-export-data.md)必要があります。 まず、宛先への接続を作成する必要があります。次に、データエクスポートジョブを作成して継続的に実行します。 
+
+> [!NOTE]
+> このセクションの IoT Central アプリの設定で、[ **データのエクスポート** ] と [データの **エクスポート] (レガシ)** を選択します。
+
+[![データエクスポート設定の IoT Central](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 新しい変換先の作成:
 - [ **変換** 先] タブに移動し、新しい変換先を作成します。

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099014"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022893"
 ---
 # <a name="managing-your-voice-assistant"></a>音声アシスタントを管理する
 
@@ -60,7 +60,7 @@ ms.locfileid: "102099014"
 
 音声アシスタントのカスタム キーワードは、[Speech Studio](https://speech.microsoft.com/) で作成できます。 基本的なカスタム キーワード モデルのトレーニングには最大 30 分かかります。
 
-カスタム キーワードの作成に関するガイダンスについては、[Speech Studio のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)に従ってください。 構成が完了すると、音声アシスタント アプリケーションで使用するための新しいキーワードが Project Santa Cruz ポータルで利用できるようになります。
+カスタム キーワードの作成に関するガイダンスについては、[Speech Studio のドキュメント](../cognitive-services/speech-service/custom-keyword-basics.md)に従ってください。 構成が完了すると、音声アシスタント アプリケーションで使用するための新しいキーワードが Project Santa Cruz ポータルで利用できるようになります。
 
 ## <a name="commands-configuration"></a>コマンドの構成
 
@@ -88,7 +88,7 @@ ms.locfileid: "102099014"
 
 音声アシスタントを実行するためのカスタム コマンドは、[Speech Studio](https://speech.microsoft.com/) で作成できます。
 
-カスタム コマンドの作成に関するガイダンスについては、[Speech Studio のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application)に従ってください。 構成が完了すると、音声アシスタントアプリケーション用の新しいコマンドが Azure Percept Studio で使用できるようになります。
+カスタム コマンドの作成に関するガイダンスについては、[Speech Studio のドキュメント](../cognitive-services/speech-service/quickstart-custom-commands-application.md)に従ってください。 構成が完了すると、音声アシスタントアプリケーション用の新しいコマンドが Azure Percept Studio で使用できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/09/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 82445ce7c1ebfc365459bbeba7e04d660221eaf2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551656"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577700"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -99,7 +99,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
   > [!NOTE]
-  > - 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-sql-pool.md)を参照してください。
+  > - 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md)を参照してください。
   > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
@@ -134,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>ストレージ保存先への監査
 
-ストレージ アカウントへの監査ログの書き込みを構成するには、 **[ストレージ]** を選択し、 **[容量の詳細]** を開きます。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 次に、 **[OK]** をクリックします 保持期間よりも古いログは削除されます。
+監査ログをストレージ アカウントに書き込むように構成するには、 **[監査]** セクションが表示されたら、 **[ストレージ]** を選択します。 ログを保存する Azure ストレージ アカウントを選択し、 **[詳細プロパティ]** を開いて保持期間を選択します。 **[保存]** をクリックします。 保持期間よりも古いログは削除されます。
 
-- リテンション期間の既定値は 0 (無制限のリテンション期間) です。 この値は、ストレージ アカウントを監査用に構成するときに **[ストレージ設定]** の **[リテンション期間 (日数)]** スライダーを移動して変更できます。
+- リテンション期間の既定値は 0 (無制限のリテンション期間) です。 この値は、ストレージ アカウントを監査用に構成するときに **[詳細プロパティ]** の **[保有期間 (日)]** スライダーを移動して変更できます。
   - リテンション期間を 0 (無制限のリテンション期間) から他の値に変更した場合、リテンション期間は、リテンション期間の値が変更された後に書き込まれたログにのみ適用されることに注意してください (リテンション期間が無制限に設定されている間に書き込まれたログは、リテンション期間が有効になった後も保持されます)。
 
   ![ストレージ アカウント](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics 保存先への監査
   
-Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、 **[OK]** をクリックします。
+Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択し、 **[OK]** をクリックします。 Log Analytics ワークスペースを作成していない場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)」を参照してください
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
@@ -151,7 +151,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
-イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ]** を選択して、 **[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、 **[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
+イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ]** を選択します。 ログが書き込まれるイベント ハブを選択し、 **[保存]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
    ![イベント ハブ](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -187,17 +187,16 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
-- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](./audit-log-format.md)」を参照してください。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure Storage Explorer](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](./audit-log-format.md)」を参照してください。
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
-    ![[データベース監査] ページで強調表示されている [監査ログの表示] ボタンを示すスクリーンショット。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![監査ログの表示](./media/auditing-overview/auditing-view-audit-logs.png)
 
     **[監査レコード]** が開きます。ここからログを参照できます。
 
   - **[監査レコード]** ページの上部にある **[フィルター]** をクリックすると、特定の日付を表示できます。
   - **[監査対象]** を切り替えると、"*サーバー監視ポリシー*" で作成された監査レコードと "*データベース監査ポリシー*" で作成された監査レコードを切り替えることができます。
-  - **[Show only audit records for SQL injections]\(SQL インジェクションの監査レコードのみを表示する\)** チェックボックスをオンにすると、SQL インジェクション関連の監査レコードのみを表示できます。
 
        ![監査レコードを表示するためのオプションを示すスクリーンショット。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -214,7 +213,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
 - Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細と、テンプレートへのアクセスについては、[Power BI での監査ログ データの分析](https://techcommunity.microsoft.com/t5/azure-database-support-blog/sql-azure-blob-auditing-basic-power-bi-dashboard/ba-p/368895)に関するページを参照してください。
-- ポータル経由で、あるいは [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
+- ポータル経由で、あるいは [Azure Storage Explorer](https://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
   - ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析します。
   - また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、 **[名前を付けて保存]** を選択してローカル フォルダーに保存します。
 
@@ -242,7 +241,7 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 監査ログを Azure Storage に書き込む場合、ご自身のキーを最新の情報に更新するときに、お使いの監査ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
 
-1. **[容量の詳細]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、 **[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
+1. **[ストレージ]** で **[詳細プロパティ]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** を選択します。 次に、監査構成ページの上部にある **[保存]** をクリックします。
 
     ![セカンダリ ストレージのアクセス キーを選択するためのプロセスを示すスクリーンショット。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. ストレージ構成ページに移動し、プライマリ アクセス キーを再生成します。

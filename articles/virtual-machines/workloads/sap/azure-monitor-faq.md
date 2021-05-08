@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 3732189c1d2e09b648a2fba0a39e7e4113a76d48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b84f07f637b0a8925dec96c8c609101247ffd64
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101675957"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377126"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Azure Monitor for SAP Solutions に関する FAQ (プレビュー)
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -60,13 +60,28 @@ SQL Server 2012 SP4 以降。
 プレビューは、サービス レベル アグリーメントから除外されています。 SAP ソリューション向け Azure Monitor のマーケットプレース イメージを通じて、完全なライセンス条項をお読みください。  
 
  - **このソリューションでランドスケープ全体を監視できますか?**  
-パブリック プレビューでは現在、HANA データベース、基になるインフラストラクチャ、高可用性クラスター、Microsoft SQL Server を監視できます。  
+現在、HANA データベース、基盤となるインフラストラクチャ、高可用性クラスター、Microsoft SQL Server、SAP Netweaver 高可用性、および SAP アプリケーション インスタンス可用性メトリック (パブリック プレビュー) を監視できます。  
 
  - **このサービスは SAP Solution Manager に代わるものですか?**  
 いいえ。 お客様は、引き続き SAP Solution Manager を使用してビジネス プロセスの監視を行うことができます。  
 
  - **SAP HANA Cockpit/Studio などの従来のソリューションより優れているこのサービスの価値はどのようなものですか?**  
 SAP ソリューション向け Azure Monitor は、HANA データベース固有のものではありません。 SAP ソリューション向け Azure Monitor では、AnyDB もサポートされています。  
+
+- **SAP NetWeaver のサポートされているバージョンを教えてください。**  
+SAP NetWeaver 7.0 以降。  
+
+- **どの SAP NetWeaver 構成がサポートされていますか?**  
+ABAP、Java、およびデュアルスタックの SAP NetWeaver アプリケーション サーバー構成がサポートされています。
+
+- **SAP NetWeaver アプリケーション監視のためにメソッドの保護を解除する必要があるのはなぜですか?**  
+SAP リリース 7.3 以降では、多くの Web サービス メソッドは既定で保護されます。 これらのメソッドを呼び出して可用性とパフォーマンスのメトリックを取得するには、GetQueueStatistic、ABAPGetWPTable、GetProcessList、EnqGetStatistic、および GetSystemInstancelist の各メソッドの保護を解除する必要があります。
+
+- **SAPCONTROL webmethod の保護を解除した場合、リスクはありますか?**  
+一般に、SAPCONTROL webmethod の保護を解除してもセキュリティ リスク ([こちら](https://launchpad.support.sap.com/#/notes/1439348)を参照) はありませんが、sapstartsrv のサーバー ポート (5XX13 / 5XX14) 経由での、保護が解除された webmethod へのアクセスを制限または禁止したい場合は、SAP のアクセス制御リスト (ACL) にフィルターを追加することによって実行できます。[OSS ノート](https://service.sap.com/sap/support/notes/1495075)に、これを実現するために必要な構成が説明されています。 
+
+- **SAP NetWeaver プロバイダーを設定するためのシステム構成を実行した後、SAP インスタンスを再起動する必要はありますか?**  
+はい。SAP 構成の変更によってメソッドの保護を解除した場合は、それぞれの SAP システムを再起動して、構成の変更が確実に更新されるようにする必要があります。  
 
 ## <a name="next-steps"></a>次のステップ
 

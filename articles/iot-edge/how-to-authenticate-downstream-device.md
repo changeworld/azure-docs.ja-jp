@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c799e38092c5983b4ad0e3daea6aae99934c7302
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 4702682dcd6af68242fd5a34d1fb2e0a9273da36
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200878"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482026"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub に対するダウンストリーム デバイスの認証を行う
 
@@ -76,7 +76,7 @@ Azure portal、Azure CLI、Visual Studio Code の IoT 拡張機能のいずれ�
    >
    >環境変数 **AuthenticationMode** を値 **CloudAndScope** に設定することで、以前の動作に戻るように IoT Edge ハブを構成できます。
 
-[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じ操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、対称キー認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
+[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じ操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/iot/hub/device-identity) コマンドを使用し、対称キー認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
@@ -131,7 +131,7 @@ X.509 自己署名認証 (拇印認証とも呼ばれます) の場合、お使�
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、X.509 自己署名認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
+[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/iot/hub/device-identity) コマンドを使用し、X.509 自己署名認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
@@ -175,7 +175,7 @@ X.509 証明機関 (CA) 署名認証の場合、お使いのダウンストリ�
    * Java:[SendEventX509.java](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/send-event-x509)
    * Python: [send_message_x509.py](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-device/samples/async-hub-scenarios/send_message_x509.py)
 
-[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンドを使用し、X.509 CA 署名認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
+[Azure CLI の IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)を使用しても同じデバイス作成操作を完了できます。 次の例では、[az iot hub device-identity](/cli/azure/iot/hub/device-identity) コマンドを使用し、X.509 CA 署名認証で新しい IoT デバイスが作成され、親デバイスが割り当てられます。
 
 ```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca

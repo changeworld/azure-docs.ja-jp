@@ -1,55 +1,68 @@
 ---
 title: Azure Percept DK の概要
 description: Azure Percept DK の詳細情報
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: b20448a88cee6c4ea4af0bcbfaa6ec465f2e28bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179376"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560966"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK の概要
 
-Azure Percept DK は、ビジョンおよびオーディオ AI 概念実証のために設計されたエッジ AI および IoT 開発キットです。 [Azure Percept Studio](./overview-azure-percept-studio.md) および [Azure Percept Audio](./overview-azure-percept-audio.md) と組み合わせると、さまざまなビジョンまたはオーディオ AI アプリケーション用のエッジ AI ソリューションを構築するための、非常に使いやすく強力なプラットフォームになります。 [Microsoft オンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で購入できます。
+Azure Percept DK は、[Azure Percept Studio](./overview-azure-percept-studio.md) を使用してビジョンおよびオーディオ AI のために設計されたエッジ AI 開発キットです。 Azure Percept DK は、[Microsoft オンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で購入できます。
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK デバイス。":::
+> [!div class="nextstepaction"]
+> [今すぐ購入](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-## <a name="key-features"></a>主な機能
+</br>
 
-- **AI をエッジで実行する機能**。 組み込みのハードウェア アクセラレータを使用すると、クラウドに接続しなくても、ビジョン AI モデルを実行できます。
-- **信頼のハードウェア ルート セキュリティを組み込み**。 詳細については、[Azure Percept のセキュリティ](./overview-percept-security.md)の概要を参照してください。
-- **[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)** およびその他の Azure サービスとシームレスに統合。 Azure IoT Hub、Azure Cognitive Services、[Live Video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) など
-- **オプションの [Azure Percept Audio](./overview-azure-percept-audio.md) とのシームレスな統合**
-- **主要な AI プラットフォームをサポート**。 ONNX や TensorFlow など。
-- **80/20 レーリング システムとの統合**。 運用環境でプロトタイプを簡単に構築できます。 [80/20 統合](./overview-8020-integration.md)について詳しくは、こちらをご覧ください。
+> [!VIDEO https://www.youtube.com/embed/Qj8NGn-7s5A]
+
+## <a name="key-features"></a>主要な機能
+
+- エッジで AI を実行します。 組み込みのハードウェア アクセラレータを使用すると、開発キットは、クラウドに接続しなくても、AI モデルを実行できます。
+
+- 信頼のハードウェア ルート セキュリティを組み込み。 詳細については、[Azure Percept のセキュリティ](./overview-percept-security.md)に関するページを参照してください。
+
+- [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) やその他の Azure サービス (Azure IoT Hub、Azure Cognitive Services、[Live Video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) など) とのシームレスな統合。
+
+- [Azure Percept Audio](./overview-azure-percept-audio.md) と互換性があります。AI オーディオ ソリューションを構築するためのオプションのアクセサリです。
+
+- ONNX や TensorFlow などのサードパーティ製 AI ツールのサポート。
+
+- 80/20 レール システムとの統合。これにより、デバイスのマウントを無制限に構成できます。 [80/20 統合](./overview-8020-integration.md)について詳しくは、こちらをご覧ください。
 
 ## <a name="hardware-components"></a>ハードウェア コンポーネント
 
-- Azure Percept DK 通信事業者ボード
+- Azure Percept DK キャリア ボード:
     - NXP iMX8m プロセッサ
     - トラステッド プラットフォーム モジュール (TPM) バージョン 2.0
-    - WiFi および Bluetooth 接続
-    - [データシート](./azure-percept-dk-datasheet.md)全体をご覧ください
-- Azure Percept Vision システム オン モジュール (SoM)
+    - Wi-Fi および Bluetooth 接続
+    - 詳細については、「[Azure Percept DK のデータシート](./azure-percept-dk-datasheet.md)」を参照してください。
+
+- Azure Percept Vision システム オン モジュール (SoM):
     - Intel Movidius Myriad X (MA2085) ビジョン処理ユニット (VPU)
-    - 2 つ目を追加する機能を備えた RGB カメラ センサー
-    - [データシート](./azure-percept-vision-datasheet.md)全体をご覧ください
+    - RGB カメラ センサー
+    - 詳細については、「[Azure Percept Vision のデータシート](./azure-percept-vision-datasheet.md)」を参照してください。
 
-## <a name="get-started-with-the-azure-percept-dk"></a>Azure Percept DK の使用を開始する
+## <a name="getting-started-with-azure-percept-dk"></a>Azure Percept DK の使用の開始
 
-- クイック スタートを完了する
+- 開発キットを次のように設定します。
     - [Azure Percept DK を箱から取り出して組み立てる](./quickstart-percept-dk-unboxing.md)
-    - [Azure Percept DK を設定し、最初のビジョン AI モデルを実行する](./quickstart-percept-dk-set-up.md)
-- これらのチュートリアルを使用して、概念実証の構築を開始する
+    - [Azure Percept DK セットアップ エクスペリエンスを完了する](./quickstart-percept-dk-set-up.md)
+
+- ビジョンとオーディオ ソリューションの構築を開始します。
     - [Azure Percept Studio でコードなしのビジョン ソリューションを作成する](./tutorial-nocode-vision.md)
-    - [Azure Percept Studio で音声アシスタントを作成する](./tutorial-no-code-speech.md)
+    - [Azure Percept Studio でコードなしの音声ソリューションを作成する](./tutorial-no-code-speech.md) (Azure Percept Audio アクセサリが必要)
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft のオンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で Azure Percept DK を注文します。
+> [!div class="nextstepaction"]
+> [Microsoft のオンライン ストアで Azure Percept DK を購入する](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

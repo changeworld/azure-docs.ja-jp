@@ -1,18 +1,19 @@
 ---
-title: Azure File Sync エージェントをデプロイする
-description: Azure File Sync エージェントをデプロイします。 移行ドキュメント間で共有される一般的なテキスト ブロック。
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: f038392f03b94aa2c2450531c9da4a11d9900295
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: include file
+ms.openlocfilehash: 7c1ea3fbf8e5cef4b1e8f8a2b0963fdd66584f5a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043183"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075590"
 ---
 このセクションでは、Azure File Sync エージェントをご利用の Windows Server インスタンスにインストールします。
 

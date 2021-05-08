@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e344c849a8e9021daea9caebacec3289b99d03e6
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928666"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256669"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Jumio と Azure Active Directory B2C を構成するチュートリアル
 
@@ -139,7 +139,7 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 1. ポリシー フォルダーの [Azure AD B2C ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies)に移動します。
 
-2. [この記事](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
+2. [この記事](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
 
 3. Azure AD B2C テナントのポリシーを構成します。
 
@@ -170,4 +170,4 @@ Jumio アカウントを作成したら、そのアカウントを使用して A
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4da0083a236900037b388798d825515e94613c20
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935089"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533693"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "97935089"
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:** [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md) を使用すると、Microsoft Graph を通じてセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
+**A:** [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md) を使用すると、Microsoft Graph を通じてセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
 
 ---
 

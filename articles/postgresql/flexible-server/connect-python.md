@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Python を使用して接続する - Azure Database for PostgreSQL - フレキシブル サーバー
 description: このクイックスタートでは、Azure Database for PostgreSQL - フレキシブル サーバーに接続してデータのクエリを実行するために使用できる、Python コード サンプルをいくつか紹介します。
-author: ambhatna
-ms.author: ambhatna
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 89dc36a9b1b1fee9ad10d55945c7fc17bf72f476
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 823dd6fc64da2c4900f5a0a35a6cd27a9a2b43ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90946191"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227486"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---flexible-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - フレキシブル サーバーに接続し、データのクエリを実行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "90946191"
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * Azure Database for PostgreSQL - フレキシブル サーバー。 フレキシブル サーバーの作成については、「[Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する](./quickstart-create-server-portal.md)」を参照してください。
-* [Python](https://www.python.org/downloads/) 2.7.9 以降または 3.4 以降。
+* [Python](https://www.python.org/downloads/) 2.7 または 3.6 以降。
 * 最新の [pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラー。
 
 ## <a name="preparing-your-client-workstation"></a>クライアント ワークステーションを準備する

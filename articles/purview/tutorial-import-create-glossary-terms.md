@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696081"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077535"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) で用語集の用語を作成してインポートする
 
@@ -138,10 +138,10 @@ ms.locfileid: "97696081"
 
    |設定|推奨値|
    |---------|-----------|
-   |属性名|is sensitive information|
-   |フィールドの種類|dropdown|Single choice (単一選択)|
-   |Mark as required (必須としてマーク)|このボックスをオンにします。|
-   |+ Add a choice (+ 選択肢の追加)| "Yes" と "No" の 2 つの選択肢を追加します。 "Yes" and "No".|
+   |属性名 |is sensitive information|
+   |フィールドの種類 | Single choice (単一選択)|
+   |Mark as required (必須としてマーク) | このボックスをオンにします。|
+   |+ Add a choice (+ 選択肢の追加) | "Yes" と "No" の 2 つの選択肢を追加します。 "Yes" と "No"。|
 
    :::image type="content" source="./media/tutorial-import-create-glossary-terms/add-new-attribute.png" alt-text="新しい属性を追加する。":::
 

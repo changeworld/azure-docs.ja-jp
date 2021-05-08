@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943049"
 ---
-# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Yarn ログを読み取ることができない
+# <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>シナリオ: Azure HDInsight で Apache Yarn ログを読み取ることができない
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -27,15 +27,15 @@ java.io.IOException: Not a valid BCFile.
 
 Apache Yarn ログは `IndexFile` 形式に集約されますが、これはファイル パーサーでサポートされていません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
 1. Ambari UI から **[YARN]**  >  **[Configs]/(構成/)**  >  **[Advanced]/(拡張/)**  >  **[Advanced yarn-site] /(拡張 YARN-サイト/)** に移動します。
 
-1. WASB ストレージの場合:`yarn.log-aggregation.file-formats` の既定値は `IndexedFormat,TFile` です。 値を `TFile` に変更します。
+1. WASB ストレージの場合: `yarn.log-aggregation.file-formats` の既定値 は `IndexedFormat,TFile` です。 値を `TFile` に変更します。
 
-1. ADLS ストレージの場合:`yarn.nodemanager.log-aggregation.compression-type` の既定値は `gz` です。 値を `none` に変更します。
+1. ADLS ストレージの場合: `yarn.nodemanager.log-aggregation.compression-type` の既定値 は `gz` です。 値を `none` に変更します。
 
 1. 変更を保存し、影響を受けるすべてのサービスを再起動します。
 

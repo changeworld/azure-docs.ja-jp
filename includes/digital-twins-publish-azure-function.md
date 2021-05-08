@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
 ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102630283"
 ---
 プロジェクトを Azure の関数アプリに発行するには、"*ソリューション エクスプローラー*" でプロジェクトを右クリックし、 **[発行]** を選択します。

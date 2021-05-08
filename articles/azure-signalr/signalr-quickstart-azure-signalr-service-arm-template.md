@@ -2,17 +2,20 @@
 title: 'クイックスタート: Azure SignalR サービスを作成する - ARM テンプレート'
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure SignalR Service を作成する方法について説明します。
 author: sffamily
-ms.service: signalr
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.topic: quickstart
+ms.service: signalr
+ms.custom:
+- subject-armqs
+- devx-track-azurecli
+- mode-arm
+ms.openlocfilehash: 075915f2a06e29eb5b80425913c6e7a2c476ff99
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841617"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536522"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>クイックスタート: ARM テンプレートを使用して Azure SignalR Service をデプロイする
 

@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d2b1a60856877c24d61379a688ea630e506a848
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97652146"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075238"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -63,8 +63,8 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 次のサンプルは、ロールベースのアクセス制御 (RBAC) を実装する方法を示しています。 RBAC は、Web アプリケーションの特定の機能のアクセス許可を特定のユーザーに制限するために使用されます。 **Azure AD グループ** に属しているか、特定のアプリケーション **ロール** が割り当てられているかに応じて、ユーザーには権限が与えられます。
 
-| プラットフォーム | サンプル |
-|--|--|
+| プラットフォーム | サンプル | 説明 |
+|--|--|--|
 | ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [dotnet-webapp-groupclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [dotnet-webapp-roleclaims](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Azure AD の **ロール** を承認に使用する .NET 4.5 MVC Web アプリ |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph または Web API を呼び出すデスクトップおよびモバイルのパブリック クライアント アプリケーション

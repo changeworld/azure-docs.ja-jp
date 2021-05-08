@@ -9,12 +9,12 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6ef3092c611e1eede2be1e0994ce69959a46f1d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f044e03fa3f8aece677e3918b2add8190041c7ac
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93340925"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589518"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でデータを期限切れにする
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -72,12 +72,6 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(20)})
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: 20.5}) //TTL value contains non-zero decimal part. 
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(2147483649)}) //TTL value is greater than Int32.MaxValue (2,147,483,648). 
 ``` 
-
-## <a name="how-to-activate-the-per-document-ttl-feature"></a>ドキュメントごとの TTL 機能をアクティブにする方法
-
-ドキュメントごとの TTL 機能は、Azure Cosmos DB の MongoDB 用 API でアクティブにできます。
-
-:::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="ポータルでのドキュメントごとの TTL 機能のアクティブ化を示すスクリーンショット":::
 
 ## <a name="next-steps"></a>次のステップ
 * [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../cosmos-db/time-to-live.md)

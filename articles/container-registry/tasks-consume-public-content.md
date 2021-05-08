@@ -7,10 +7,10 @@ ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
 ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96349284"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Azure Container Registry タスクを使用してパブリック コンテンツを使用および保守する方法
@@ -27,7 +27,7 @@ ms.locfileid: "96349284"
 
 ![パブリック コンテンツ ワークフローの使用](./media/tasks-consume-public-content/consuming-public-content-workflow.png)
 
-ゲート インポート ワークフローは、外部で管理されている成果物 (たとえば、[Docker Hub][docker-hub]、[GCR][gcr]、[Quay][quay]、[GitHub Container Registry][ghcr]、[Microsoft Container Registry][mcr]、他の [Azure コンテナー レジストリ][acr]などのパブリック レジストリをソースとするイメージ) に対する組織の依存を管理するために役立ちます。 
+ゲート インポート ワークフローは、外部で管理されている成果物 (たとえば、[Docker Hub][docker-hub]、[GCR][gcr]、[Quay][quay]、[GitHub Container Registry][ghcr]、[Microsoft Container Registry][mcr]、他の [Azure Container Registry][acr]などのパブリック レジストリをソースとするイメージ) に対する組織の依存を管理するために役立ちます。 
 
 パブリック コンテンツへの依存によってもたらされるリスクの背景と、Azure Container Registry を使用してリスクを軽減する方法については、[パブリック コンテンツを使用する OCI に関するブログ投稿][oci-consuming-public-content]と [Azure Container Registry を使用したパブリック コンテンツの管理](buffer-gate-public-content.md)に関するページを参照してください。
 
@@ -747,7 +747,7 @@ az group delete -n $ACI_RG --no-wait -y
 
 
 * [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](container-registry-image-tag-version.md)
-* [Azure コンテナー レジストリのコンテナー イメージをロックする](container-registry-image-lock.md)
+* [Azure Container Registry のコンテナー イメージをロックする](container-registry-image-lock.md)
 
 [install-cli]:                  /cli/azure/install-azure-cli
 [acr]:                          https://aka.ms/acr

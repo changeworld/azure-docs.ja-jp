@@ -4,15 +4,15 @@ description: Azure App Service におけるネットワーク機能について�
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593131"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889146"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -129,11 +129,15 @@ IP ベースのアクセス制限機能は、アプリに到達するために�
 ![Application Gateway でのサービス エンドポイントの使用方法を示す図。](media/networking-features/service-endpoints-appgw.png)
 
 アプリでサービス エンドポイントを構成する方法の詳細については、「[Azure App Service のアクセス制限][serviceendpoints]」を参照してください。
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>サービス タグに基づくアクセス制限規則 (プレビュー)
+
+#### <a name="access-restriction-rules-based-on-service-tags"></a>サービス タグに基づくアクセス制限規則
+
 [Azure サービス タグ][servicetags]は、Azure サービスの明確に定義された一連の IP アドレスです。 サービス タグは、さまざまな Azure サービスで使用される IP 範囲をグループ化します。また、さらに特定のリージョンにスコープ設定されることがよくあります。 これにより、特定の Azure サービスからの "*受信*" トラフィックをフィルター処理できます。 
 
 タグの完全な一覧と詳細については、上記のサービス タグのリンクを参照してください。 この機能を有効化する方法については、[アクセス制限の構成][iprestrictions]に関する記事を参照してください。
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>アクセス制限規則での HTTP ヘッダー フィルタリング (プレビュー)
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>アクセス制限規則での HTTP ヘッダー フィルタリング
+
 アクセス制限規則ごとに、追加の HTTP ヘッダー フィルタリングを追加できます。 これにより、受信要求をさらに検査し、特定の HTTP ヘッダー値に基づいてフィルター処理できます。 各ヘッダーには、1 つの規則につき最大 8 つの値を含めることができます。 現在サポートされている HTTP ヘッダーの一覧を次に示します。 
 * X-Forwarded-For
 * X-Forwarded-Host
@@ -143,6 +147,7 @@ IP ベースのアクセス制限機能は、アプリに到達するために�
 HTTP ヘッダー フィルタリングのユース ケースをいくつか示します。
 * ホスト名を転送するプロキシ サーバーからのトラフィックへのアクセスを制限する
 * サービス タグ規則と X-Azure-FDID ヘッダー制限を使用して、特定の Azure Front Door インスタンスへのアクセスを制限する
+
 ### <a name="private-endpoint"></a>プライベート エンドポイント
 
 プライベート エンドポイントは、Azure Private Link を使用して Web アプリにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントにより、お客様の仮想ネットワークからのプライベート IP アドレスを使用して、Web アプリが実質的に仮想ネットワークに取り込まれます。 この機能は、Web アプリへの "*受信*" フロー専用です。
@@ -210,7 +215,7 @@ App Service のゲートウェイが必要な VNet 統合機能を使用する�
 
 詳細については、[App Service VNet 統合][vnetintegration]に関する記事を参照してください。
 
-### <a name="app-service-environment"></a>App Service 環境 
+### <a name="app-service-environment"></a>App Service Environment 
 
 App Service Environment (ASE) は、仮想ネットワーク内で実行される Azure App Service のシングルテナント デプロイです。 この機能には、次のようなケースがあります。
 

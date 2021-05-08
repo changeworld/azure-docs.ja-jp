@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988976"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579452"
 ---
 # <a name="how-provisioning-works"></a>プロビジョニングのしくみ
 
@@ -138,7 +138,7 @@ ServiceNow、G Suite、Box など、アプリケーションの中には、ユ�
 プロビジョニング サービスでは、バックツーバック増分サイクルが、[各アプリケーションに固有のチュートリアル](../saas-apps/tutorial-list.md)で定義された間隔で無期限に実行され続けます。 増分サイクルは、次のいずれかのイベントが発生するまで続行されます。
 
 - Azure portal または適切な Microsoft Graph API コマンドを使用してサービスが手動で停止された。
-- Azure portal の **[Clear state and restart]\(状態を消去して再開\)** オプション、または適切な Microsoft Graph API コマンドを使用して、新しい初回サイクルがトリガーされた。 この操作では、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
+- Azure portal の **[プロビジョニングを再起動]** オプション、または適切な Microsoft Graph API コマンドを使用して、新しい初回サイクルがトリガーされます。 この操作では、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
 - 属性マッピングまたはスコープ フィルターの変更によって、新しい初回サイクルがトリガーされた。 また、この操作では、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
 - 高いエラー率によりプロビジョニング プロセスが検疫に移行し (以下を参照)、そのまま 4 週間を超えて検疫にとどまっている。 この場合、サービスは自動的に無効になります。
 

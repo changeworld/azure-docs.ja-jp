@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/03/2021
-ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/11/2021
+ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383383"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306315"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -76,9 +76,9 @@ Core Count プロパティと Compute Type プロパティは、実行時に入�
 
 ### <a name="data-flow-integration-runtime"></a>データ フロー統合ランタイム
 
-データ フロー アクティビティの実行に使用する統合ランタイムを選択します。 Data Factory では、4 つのワーカー コアを持ち、有効期限 (TTL) のない自動解決 Azure 統合ランタイムが既定で使用されます。 この IR は汎用目的のコンピューティングの種類で、ご使用のファクトリと同じリージョンで実行します。 データ フロー アクティビティを実行するための特定のリージョン、コンピューティングの種類、コア数、および TTL を定義する、独自の Azure 統合ランタイムを作成できます。
+データ フロー アクティビティの実行に使用する統合ランタイムを選択します。 既定では、Data Factory は 4 つのワーカー コアを持つ自動解決 Azure 統合ランライムを使用します。 この IR は汎用目的のコンピューティングの種類で、ご使用のファクトリと同じリージョンで実行します。 運用可能なパイプラインの場合、データ フロー アクティビティの実行用に特定のリージョン、コンピューティングの種類、コア数、および TTL を定義する独自の Azure 統合ランタイムを作成することをお勧めします。
 
-パイプライン実行の場合、クラスターはジョブ クラスターであり、実行が開始されるまでに数分かかります。 TTL が指定されていない場合は、すべてのパイプライン実行でこのスタートアップ時間が必要になります。 TTL を指定した場合、前回の実行後に指定された時間だけウォーム クラスター プールがアクティブのままになるため、スタートアップ時間が短縮されます。 たとえば、TTL が 60 分の場合、そのデータ フローを 1 時間に 1 回実行すると、クラスター プールはアクティブのままになります。 詳細については、[Azure 統合ランタイム](concepts-integration-runtime.md)に関するページを参照してください。
+General Purpose の最小コンピューティング タイプ (コンピューティング最適化は大規模なワークロードには推奨されません) が 8 + 8 (合計 16 個の v コア) の構成で、ほとんどの運用ワークロードの最小推奨は 10 分です。 TTL を小さい値に設定することにより、Azure IR は、コールド クラスターに数分の開始時間を発生させないウォーム クラスターを維持できます。 Azure IR データ フローの構成で [クイック再利用] を選択すると、データ フローの実行時間を短縮できます。 詳細については、[Azure 統合ランタイム](concepts-integration-runtime.md)に関するページを参照してください。
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 

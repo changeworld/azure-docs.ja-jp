@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753870"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578415"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 
@@ -33,6 +33,20 @@ ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```JavaScript
+const tokenRequest = {
+    scopes: [process.env.GRAPH_ENDPOINT + '.default'], // e.g. 'https://graph.microsoft.com/.default'
+};
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 MSAL Python では、構成ファイルは次のコード スニペットのようになります。
@@ -41,12 +55,6 @@ MSAL Python では、構成ファイルは次のコード スニペットのよ�
 {
     "scope": ["https://graph.microsoft.com/.default"],
 }
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```Java
-final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
 ---
@@ -96,30 +104,6 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 
 MSAL.NET では、`AcquireTokenForClient` によってアプリケーション トークン キャッシュが使用されます (他のすべての AcquireToken *XX* メソッドでは、ユーザー トークン キャッシュが使用されます)。`AcquireTokenSilent` は "*ユーザー*" トークン キャッシュを使用するため、`AcquireTokenForClient` を呼び出す前に `AcquireTokenSilent` を呼び出さないでください。 `AcquireTokenForClient` は *アプリケーション* トークン キャッシュそのものをチェックして、更新します。
 
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-# The pattern to acquire a token looks like this.
-result = None
-
-# First, the code looks up a token from the cache.
-# Because we're looking for a token for the current app, not for a user,
-# use None for the account parameter.
-result = app.acquire_token_silent(config["scope"], account=None)
-
-if not result:
-    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
-    result = app.acquire_token_for_client(scopes=config["scope"])
-
-if "access_token" in result:
-    # Call a protected API with the access token.
-    print(result["token_type"])
-else:
-    print(result.get("error"))
-    print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You might need this when reporting a bug.
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 このコードは、[MSAL Java dev サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)から抽出したものです。
@@ -167,6 +151,43 @@ private static IAuthenticationResult acquireToken() throws Exception {
      }
      return result;
  }
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+次のコード スニペットは、MSAL Node の機密クライアント アプリケーションでトークンを取得する方法を示しています。
+
+```JavaScript
+try {
+    const authResponse = await cca.acquireTokenByClientCredential(tokenRequest);
+    console.log(authResponse.accessToken) // display access token
+} catch (error) {
+    console.log(error);
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+# The pattern to acquire a token looks like this.
+result = None
+
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
+result = app.acquire_token_silent(config["scope"], account=None)
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+    result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token.
+    print(result["token_type"])
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 ---
@@ -241,12 +262,16 @@ Content: {
 
 このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=dotnet)に関する記事に進みます。
 
-# <a name="python"></a>[Python](#tab/python)
-
-このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=python)に関する記事に進みます。
-
 # <a name="java"></a>[Java](#tab/java)
 
 このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=java)に関する記事に進みます。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=nodejs)に関する記事に進みます。
+
+# <a name="python"></a>[Python](#tab/python)
+
+このシナリオの次の記事である [Web API の呼び出し](./scenario-daemon-call-api.md?tabs=python)に関する記事に進みます。
 
 ---

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a1ee632e3aaae7b858ab43b45f6e72aff8d1fb77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0629606f602b975b399855a681570ecdac9ec832
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361768"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256822"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -26,12 +26,6 @@ ISV パートナー ネットワークは、Microsoft のソリューション�
 >[GitHub の Azure Active Directory B2C コミュニティ サイト](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/)にも、コミュニティからのサンプル カスタム ポリシーが提供されています。
 
 ## <a name="identity-verification-and-proofing"></a>本人確認と証明
-
-お客様は、Azure AD B2C パートナーと共に、アカウントの登録またはアクセスを許可する前に、エンド ユーザーの本人確認と証明を有効にすることができます。 本人確認と証明により、ドキュメント、ナレッジベースの情報、および活性が確認できます。
-
-アーキテクチャの概要図でフローを示します。
-
-![ID 証明のフローを示す図](./media/partner-gallery/third-party-identity-proofing.png)
 
 Microsoft は、本人確認と証明に関して次の ISV と提携しています。
 
@@ -83,7 +77,7 @@ Microsoft は、セキュリティに関して次の ISV と提携していま�
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 
 ## <a name="next-steps"></a>次のステップ
 

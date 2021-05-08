@@ -4,12 +4,12 @@ description: タスクを管理するにはジョブ スケジュールを使用
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7da3c78e00f5d7e41a5396603cf4885a50cb6e5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4661c9fc22868870af147998467c9f355f30580e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146353"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219692"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>効率のためにジョブのスケジュールを設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "89146353"
 
 **[ジョブ スケジュール ID]** : このジョブ スケジュールの一意識別子。
 
-**表示名**:ジョブの表示名。一意である必要はありませんが、最大長は 1024 文字です。
+**[表示名]** : ジョブの表示名。一意である必要はありませんが、最大長は 1024 文字です。
 
 **[次の時刻までは実行しない]** : ジョブが実行される最も早い時刻を指定します。 これを設定しない場合、ジョブをすぐに実行できるようになります。
 
@@ -52,7 +52,7 @@ ms.locfileid: "89146353"
 
 **[ジョブ構成タスク]** : **[更新]** を選択して、ジョブ マネージャー タスクのほか、使用中の場合はジョブの準備タスクとリリース タスクにも名前を付けます。
 
-**[優先度]** :ジョブに優先順位を付けます。
+**[優先度]** : ジョブに優先順位を付けます。
 
 **[最大実時間]** : ジョブを実行できる最大時間を設定します。 その時間枠内で完了しないジョブは、Batch によって終了されます。 これを設定しない場合、ジョブの時間制限はありません。
 
@@ -77,7 +77,7 @@ Azure CLI を使用してジョブを管理するには、「[az batch job-sched
 
 
 
-[1]: ./media/batch-job-schedule/add_job_schedule-02.png
-[2]: ./media/batch-job-schedule/add_job_schedule-03.png
+[1]: ./media/batch-job-schedule/add-job-schedule-02.png
+[2]: ./media/batch-job-schedule/add-job-schedule-03.png
 
 

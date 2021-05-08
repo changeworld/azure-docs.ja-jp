@@ -4,14 +4,14 @@ description: Update 1.3 を実行する Azure StorSimple Virtual Array に関す
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 01/22/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452562"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657554"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1.3 のリリース ノート
 
@@ -31,6 +31,11 @@ Update 1.3 はソフトウェア バージョン 10.0.10319.0 に対応してい
 この更新プログラムには、次の機能強化が含まれています。KB4540725
 
 - トランスポート層セキュリティ (TLS) 1.2 は必須の更新プログラムであり、インストールする必要があります。 今回のリリースから、TLS 1.2 はすべての Azure portal 通信の標準プロトコルになります。
+  
+   次の警告が表示された場合は、続行する前にデバイスでソフトウェアを更新する必要があります。
+
+   1 つ以上の StorSimple デバイスで、古いソフトウェア バージョンが実行されています。 TLS 1.2 の最新の利用可能な更新プログラムは、必須の更新プログラムであり、これらのデバイスに直ちにインストールする必要があります。 TLS 1.2 はすべての Azure portal 通信に使用され、この更新プログラムがないと、デバイスは StorSimple サービスと通信できません。
+
 - ガベージ コレクションのバグ修正によって、デバイスとストレージ アカウントが 2 つの離れたリージョンにあるときに、ガベージ コレクション サイクルのパフォーマンスが向上します。
 - BLOB タイムアウトによるバックアップ エラーを修正します。
 - 更新された OS/.NET Framework のセキュリティ パッチ。
@@ -65,4 +70,4 @@ KB4575898 をダウンロードして、[ローカル Web UI を使用して更�
 - [StorSimple Virtual Array Update 0.4 のリリース ノート](./storsimple-virtual-array-update-04-release-notes.md)
 - [StorSimple Virtual Array Update 0.3 のリリース ノート](./storsimple-ova-update-03-release-notes.md)
 - [StorSimple Virtual Array Update 0.1 および 0.2 のリリース ノート](./storsimple-ova-update-01-release-notes.md)
-- [StorSimple Virtual Array 一般公開リリース ノート](/azure/storsimple/storsimple-ova-pp-release-notes)
+- [StorSimple Virtual Array 一般公開リリース ノート](./storsimple-virtual-array-update-06-release-notes.md)

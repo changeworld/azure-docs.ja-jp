@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c8ea1580047910cb2d6634aad885d61e99113f3
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98756082"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529978"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -191,6 +191,49 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 > [!TIP]
 > フロントエンド Web アプリケーションから SAML で保護された Web サービスを呼び出す場合、API を呼び出すだけで、ユーザーの既存のセッションで通常の対話型認証フローを開始できます。 サービス間の呼び出しでユーザー コンテキストを提供するために SAML トークンが必要なときのみ OBO フローを使用する必要があります。
+ 
+ ### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>共有シークレットを持つ OBO 要求を使用して SAML トークンを取得する
+
+サービス間の SAML アサーション要求には、次のパラメーターが含まれています。
+
+| パラメーター | Type | 説明 |
+| --- | --- | --- |
+| grant_type |required | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
+| assertion |required | 要求で使用されるアクセス トークンの値。|
+| client_id |required | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
+| client_secret |required | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
+| resource |required | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
+| requested_token_use |required | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
+| requested_token_type | required | 要求するトークンの種類を指定します。 アクセス先のリソースの要件に応じて、値は **urn:ietf:params:oauth:token-type:saml2** または **urn:ietf:params:oauth:token-type:saml1** のいずれかです。 |
+
+応答には、UTF8 および Base64url でエンコードされた SAML トークンが含まれています。
+
+- **OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData**:ターゲット アプリケーションで **SubjectConfirmationData** の受信者の値が必要な場合、その値はリソース アプリケーション構成内の非ワイルドカードの応答 URL である必要があります。
+- **SubjectConfirmationData ノード**:このノードは SAML 応答の一部ではないため、**InResponseTo** 属性を含めることはできません。 SAML トークンを受け取るアプリケーションは、**InResponseTo** 属性なしで SAML アサーションを受け入れることができる必要があります。
+
+- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)」を参照してください。
+
+### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
+
+| パラメーター | 説明 |
+| --- | --- |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer** タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
+| scope |トークンで付与されるアクセスのスコープ。 |
+| expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
+| expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
+| resource |受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 |
+| access_token |SAML アサーションを返すパラメーター。 |
+| refresh_token |更新トークン。 呼び出し元のサービスは、現在の SAML アサーションの期限が切れた後に、このトークンを使用して別のアクセス トークンを要求できます。 |
+
+- token_type:Bearer
+- expires_in:3296
+- ext_expires_in:0
+- expires_on:1529627844
+- resource: `https://api.contoso.com`
+- access_token: \<SAML assertion\>
+- issued_token_type: urn:ietf:params:oauth:token-type:saml2
+- refresh_token: \<Refresh token\>
+
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>中間層アプリケーションの同意の取得
 

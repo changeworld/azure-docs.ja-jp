@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 288b073c20b93bf1802f34f5dcd17b12430bb279
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427736"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716760"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -137,28 +137,12 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 - Azure ファイル共有:ポリシーを[作成](./backup-afs.md)および[変更](./manage-afs-backup.md#modify-policy)する方法。
 - SAP HANA:ポリシーを[作成](./backup-azure-sap-hana-database.md#create-a-backup-policy)および[変更](./sap-hana-db-manage.md#change-policy)する方法。
 - MARS:ポリシーを[作成](./backup-windows-with-mars-agent.md#create-a-backup-policy)および[変更](./backup-azure-manage-mars.md#modify-a-backup-policy)する方法。
-- [バックアップのスケジュールに、ワークロードの種類に基づく制限はありますか。](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
-- [アイテム保持ポリシーを変更した場合、既存の回復ポイントはどうなりますか。](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+- [バックアップのスケジュールに、ワークロードの種類に基づく制限はありますか。](./backup-azure-backup-faq.yml#are-there-limits-on-backup-scheduling-)
+- [アイテム保持ポリシーを変更した場合、既存の回復ポイントはどうなりますか。](./backup-azure-backup-faq.yml#what-happens-when-i-change-my-backup-policy-)
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>アーキテクチャ:組み込みの Azure VM バックアップ
 
-1. Azure VM のバックアップを有効にすると、指定したスケジュールに従ってバックアップが実行されます。
-1. 最初のバックアップ時に、バックアップ拡張機能が VM にインストールされます (VM が実行されている場合)。
-    - Windows VM の場合は、VMSnapshot 拡張機能がインストールされます。
-    - Linux VM の場合は、VMSnapshot Linux 拡張機能がインストールされます。
-1. この拡張機能によって、ストレージ レベルのスナップショットが取得されます。
-    - 実行されている Windows VM については、Backup は Windows ボリューム シャドウ コピー サービス (VSS) と連携して VM のアプリ整合性スナップショットを取得します。 既定では、Backup によって完全 VSS バックアップが取得されます。 Backup でアプリ整合性スナップショットを取得できない場合、ファイル整合性スナップショットが取得されます。
-    - Linux VM の場合、Backup ではファイル整合性スナップショットが取得されます。 アプリ整合性スナップショットの場合は、事前/事後スクリプトを手動でカスタマイズする必要があります。
-    - Backup は、各 VM ディスクを並行してバックアップすることで最適化されます。 バックアップ対象の各ディスクについては、Azure Backup でディスク上のブロックが読み取られ、変更されたデータのみが格納されます。
-1. スナップショットが取得された後、データはコンテナーに転送されます。
-    - 最後のバックアップ以降に変更されたデータのブロックのみがコピーされます。
-    - データは暗号化されません。 Azure Backup では、Azure Disk Encryption を使用して暗号化された Azure VM をバックアップできます。
-    - スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、バックアップに数時間かかる場合があります。 毎日のバックアップ ポリシーでは、VM のバックアップの合計時間は 24 時間未満になります。
-1. データがコンテナーに送信されると、復旧ポイントが作成されます。 既定では、スナップショットは 2 日間保持されてから削除されます。 この機能では、復元時間を削減して、これらのスナップショットから復元操作を行うことができます。 それにより、コンテナーからデータを変換して元の場所にコピーするために必要な時間が削減されます。 [Azure Backup のインスタント リストア機能](./backup-instant-restore-capability.md)に関するページを参照してください。
-
-Azure VM をバックアップするために、インターネット接続を明示的に許可する必要はありません。
-
-![Azure VM のバックアップ](./media/backup-architecture/architecture-azure-vm.png)
+[!INCLUDE [azure-vm-backup-process.md](../../includes/azure-vm-backup-process.md)]
 
 ## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>アーキテクチャ:オンプレミスの Windows Server マシンや Azure VM ファイルまたはフォルダーの直接バックアップ
 
@@ -167,7 +151,7 @@ Azure VM をバックアップするために、インターネット接続を�
 1. MARS エージェントでは、VSS を使用して、バックアップ用に選択されたボリュームの特定の時点のスナップショットを取得します。
     - MARS エージェントでは、Windows システムによる書き込み操作のみを使用してスナップショットがキャプチャされます。
     - エージェントではアプリケーションの VSS ライターは使用されないため、アプリ整合性スナップショットはキャプチャされません。
-1. VSS を使用してスナップショットを取得した後、MARS エージェントでは、バックアップの構成時に指定したキャッシュ フォルダーに仮想ハード ディスク (VHD) が作成されます。 エージェントでは、各データ ブロックのチェックサムも格納されます。
+1. VSS を使用してスナップショットを取得した後、MARS エージェントでは、バックアップの構成時に指定したキャッシュ フォルダーに仮想ハード ディスク (VHD) が作成されます。 エージェントでは、各データ ブロックのチェックサムも格納されます。 これらは、後続の増分バックアップで変更されたブロックを検出するために使用されます。
 1. 増分バックアップは、オンデマンド バックアップが実行されない限り、指定したスケジュールに従って実行されます。
 1. 増分バックアップでは、変更されたファイルが識別され、新しい VHD が作成されます。 VHD は圧縮および暗号化されて、コンテナーに送信されます。
 1. 増分バックアップが完了した後、新しい VHD は初期レプリケーション後に作成された VHD にマージされます。 このマージされた VHD では、進行中のバックアップの比較に使用される最新の状態が提供されます。

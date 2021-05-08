@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ebf835cad79f8c011be2fec91f6f4644ecd0941f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97357230"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284126"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Azure の複数の SQL VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "97357230"
 
 SQL Server VM を拡張機能に登録するには、以下のものが必要になります。 
 
-- [**Microsoft.SqlVirtualMachine** プロバイダーに登録されており](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp)、未登録の SQL Server 仮想マシンが含まれる [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
+- [**Microsoft.SqlVirtualMachine** プロバイダーに登録されており](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-resource-provider)、未登録の SQL Server 仮想マシンが含まれる [Azure サブスクリプション](https://azure.microsoft.com/free/)。 
 - 仮想マシンの登録に使用されるクライアント資格情報は、Azure ロールの **仮想マシンの共同作成者**、**共同作成者**、または **所有者** のいずれかに存在します。 
 - 最新バージョンの [Az PowerShell (5.0 以上)](/powershell/azure/new-azureps-module-az)。 
 

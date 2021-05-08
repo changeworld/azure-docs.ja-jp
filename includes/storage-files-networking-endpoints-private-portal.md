@@ -9,10 +9,10 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93375875"
 ---
 プライベート エンドポイントを作成するストレージ アカウントに移動します。 ストレージ アカウントの目次で **[プライベート エンドポイント接続]** を選択した後、 **[+ プライベート エンドポイント]** を選択して、新しいプライベート エンドポイントを作成します。 

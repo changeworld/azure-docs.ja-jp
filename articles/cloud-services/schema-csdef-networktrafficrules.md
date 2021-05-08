@@ -3,17 +3,18 @@ title: Azure Cloud Services (クラシック) の定義。NetworkTrafficRules �
 description: ロールの内部エンドポイントにアクセスできるロールを制限する NetworkTrafficRules について説明します。 サービス定義ファイルのロールと組み合わせて使用します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2c8ab53068b71652d03d03bf79a224fe5e34dff3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 499b0f2b7e02dabbde906e0d347a17389b2e5753
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98739770"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934106"
 ---
 # <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure Cloud Services (クラシック) 定義: NetworkTrafficRules スキーマ
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 412105e3262a3baf8780bd3bd1082508967ea486
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706811"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012586"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>方法: Face サービスを使用するときの待機時間を軽減する
 
@@ -86,6 +86,7 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 軽減策:
 - Face サブスクリプションを作成するときに、アプリケーションがホストされている場所に最も近いリージョンを選択します。
 - 複数のサービス メソッドを呼び出す必要がある場合、アプリケーションの設計がそれに対応している場合は、それらを並列に呼び出すことを検討します。 前のセクションの例を参照してください。
+- 待機時間が長く、ユーザー エクスペリエンスに影響を与える場合は、API 呼び出しを再試行する前に、タイムアウトしきい値 (最大 5 秒など) を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

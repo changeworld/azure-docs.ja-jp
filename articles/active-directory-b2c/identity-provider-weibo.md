@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb97ed6e43f70db4cce6a6f8013c8669a6a62a78
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 373c69d0d8e966f1b55f680ef58ff26826a14de5
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448083"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027909"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する
 
@@ -52,7 +52,7 @@ Azure Active Directory B2C (Azure AD B2C) で Weibo アカウントを持つユ�
 1. **[保存以上信息 (保存)]** を選択します。
 1. **[高级信息 (詳細情報)]** を選択します。
 1. OAuth2.0 の **[授权设置 (リダイレクト URL)]** フィールドの横の **[编辑 (編集)]** を選択します。
-1. OAuth2.0 の **[授权设置 (リダイレクト URL)]** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、テナント名が contoso の場合、URL を`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`に設定します。
+1. OAuth2.0 の **[授权设置 (リダイレクト URL)]** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。
 1. **[提交 (送信)]** を選択します。
 
 ::: zone pivot="b2c-user-flow"
@@ -211,7 +211,7 @@ GitHub の技術プロファイルを使用するには、**CreateIssuerUserId**
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[Weibo]** を選択して Weibo アカウントでサインインします。
 

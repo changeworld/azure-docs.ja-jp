@@ -5,12 +5,12 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ff5adf3ec974cc922d73cf5993a78722ca1b591
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea9d8a4899b0d725c9791192d68373b44acee11f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101723811"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168741"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -58,7 +58,7 @@ Runbook が、"No permission (アクセス許可なし)" または "Forbidden 40
 
 実行アカウントの Azure リソースに対するアクセス許可が、現在使用している Automation アカウントと同じでない可能性があります。 
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
 ご自身の実行アカウントに、お使いのスクリプトで使用されている[リソースにアクセスするためのアクセス許可がある](../../role-based-access-control/role-assignments-portal.md)ことを確認してください。
 
@@ -90,9 +90,9 @@ No certificate was found in the certificate store with thumbprint
    ```powershell
    $Cred = Get-Credential
    #Using Azure Service Management
-   Add-AzureAccount –Credential $Cred
+   Add-AzureAccount -Credential $Cred
    #Using Azure Resource Manager
-   Connect-AzAccount –Credential $Cred
+   Connect-AzAccount -Credential $Cred
    ```
 
 1. ローカルで認証に失敗した場合、Azure Active Directory (Azure AD) 資格情報が適切に設定されていません。 Azure AD アカウントを正しく設定するには、[Azure Active Directory を使用した Azure の認証](../automation-use-azure-ad.md)に関する記事を参照してください。
@@ -201,11 +201,11 @@ The subscription named <subscription name> cannot be found.
 
 1. スクリプトがスタンドアロンで動作することを確認するには、Azure Automation の外部でテストします。
 1. スクリプトで、`Select-*` コマンドレットを実行する前に [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットが実行されていることを確認します。
-1. Runbook の先頭に `Disable-AzContextAutosave –Scope Process` を追加します。 このコマンドレットにより、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
+1. Runbook の先頭に `Disable-AzContextAutosave -Scope Process` を追加します。 このコマンドレットにより、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
 1. それでもエラー メッセージが表示される場合は、`Connect-AzAccount` に `AzContext` パラメーターを追加するようにコードを変更してから、コードを実行します。
 
    ```powershell
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
@@ -242,7 +242,7 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
 * 間違ったサブスクリプションが参照されないようにするには、各 Runbook の開始時に次のコードを使用して、Automation Runbook でコンテキストの保存を無効にします。
 
    ```azurepowershell-interactive
-   Disable-AzContextAutosave –Scope Process
+   Disable-AzContextAutosave -Scope Process
    ```
 
 * Azure PowerShell コマンドレットでは、`-DefaultProfile` パラメーターがサポートされています。 この機能は、すべての Az および AzureRm コマンドレットに追加され、同じプロセスで複数の PowerShell スクリプトを実行できるようになりました。コンテキストと、各コマンドレットに使用するサブスクリプションを指定できます。 Runbook を使用する場合、Runbook の作成時 (つまり、あるアカウントでサインインしたとき) と、変更のたびに、Runbook にコンテキスト オブジェクトを保存してください。また、Az コマンドレットを指定するとき、コンテキストを参照してください。

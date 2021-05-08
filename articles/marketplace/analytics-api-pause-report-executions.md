@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 39b535278fef42818f572631cfa1cb1f923930a6
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583587"
 ---
 # <a name="pause-report-executions-api"></a>レポート実行の一時停止 API
@@ -27,7 +27,7 @@ ms.locfileid: "102583587"
 
 **要求ヘッダー**
 
-| ヘッダー | 種類 | 説明 |
+| ヘッダー | Type | 説明 |
 | ------------ | ------------- | ------------- |
 | 承認 | string | 必須。 `Bearer <token>` という形式の Azure Active Directory (Azure AD) アクセス トークン |
 | Content-Type | string | `Application/JSON` |
@@ -39,7 +39,7 @@ ms.locfileid: "102583587"
 
 **Query parameter (クエリ パラメーター)**
 
-| パラメーター名 | 必須 | 種類 | 説明 |
+| パラメーター名 | 必須 | Type | 説明 |
 | ------------ | ------------- | ------------- | ------------- |
 | `reportId` | はい | string | 変更されるレポートの ID |
 |||||
@@ -93,7 +93,7 @@ None
 | `CreatedTime` | レポートが作成された時刻。 時刻の形式は yyyy-MM-ddTHH:mm:ssZ です |
 | `ModifiedTime` | レポートが最後に変更された時刻。 時刻の形式は yyyy-MM-ddTHH:mm:ssZ です |
 | `StartTime` | レポートの実行が開始される時刻。 時刻の形式は yyyy-MM-ddTHH:mm:ssZ です |
-| `ReportStatus` | レポート実行の状態。 有効な値は、Paused、Active、および Inactive です。 |
+| `ReportStatus` | レポート実行のステータス。 有効な値は、一時停止、アクティブ、および非アクティブです。 |
 | `RecurrenceInterval` | レポートの作成中に指定された繰り返し間隔 |
 | `RecurrenceCount` | レポートの作成中に指定された繰り返し回数 |
 | `CallbackUrl` | 要求で指定されたコールバック URL |

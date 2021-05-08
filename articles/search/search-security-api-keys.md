@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 8b2e85744923fb2e7e474e049df1536aebc56f3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/08/2021
+ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99536935"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310667"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスの API キーを作成して管理する
+# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>Azure Cognitive Search に対する認証用に API キーを作成して管理する
 
-検索サービスへのすべての要求には、対象のサービス用に特に生成された読み取り専用の API キーが必要です。 この API キーは、その検索サービス エンドポイントへの受信アクセスを認証するための唯一のメカニズムであり、すべての要求で必要です。 
+検索サービスに接続する場合は、対象のサービス用に特別に生成された読み取り専用の API キーがすべての要求に含まれている必要があります。 この API キーは、その検索サービス エンドポイントへの受信アクセスを認証するための唯一のメカニズムであり、すべての要求で必要です。 
 
 + [REST ソリューション](search-get-started-rest.md)では、`api-key` は通常、要求ヘッダーで指定されます
 

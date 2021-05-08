@@ -7,12 +7,12 @@ ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9a7028dfaeb94e87366de7acfa8cebc4c2f4c767
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ac359e73ae71fd2163fb178caab4a2b5f908a008
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98746811"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057458"
 ---
 # <a name="extend-the-iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジの拡張
 [IoT プラグ アンド プレイ ブリッジ](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture)を使用すると、ゲートウェイに接続されている既存のデバイスを IoT Hub に接続できます。 ブリッジを使用して、接続されているデバイスに IoT プラグ アンド プレイ インターフェイスをマップします。 IoT プラグ アンド プレイ インターフェイスでは、デバイスによって送信されるテレメトリ、デバイスとクラウド間で同期されるプロパティ、およびデバイスによって応答されるコマンドが定義されます。 オープンソースのブリッジ アプリケーションを Windows または Linux のゲートウェイにインストールして構成することができます。 さらに、ブリッジを Azure IoT Edge ランタイム モジュールとして実行できます。

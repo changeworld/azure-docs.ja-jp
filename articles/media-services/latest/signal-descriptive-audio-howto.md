@@ -12,26 +12,26 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3d029f23a094646d20dd6ae8cb6560aeef4aed54
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954514"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277404"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>説明オーディオ トラックの通知
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-ナレーション トラックをビデオに追加することで、目が不自由なクライアントがナレーションを聞いて動画の内容を追うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
+ナレーション トラックをビデオに追加することで、目の不自由なお客様がナレーションを聞いて動画の内容を追うことができます。 Media Services v3 では、マニフェスト ファイルのオーディオ トラックに注釈を付けることによって、説明オーディオ トラックを通知します。
 
 この記事では、ビデオをエンコードし、説明オーディオを含む音声のみの MP4 ファイル (AAC コーデック) を出力アセットにアップロードし、.ism ファイルを編集して説明オーディオを含める方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](./create-account-howto.md)
+- [Media Services アカウントを作成する](./account-create-how-to.md)
 - 「[Azure CLI で Azure Media Services API にアクセスする](./access-api-howto.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
-- 「[ダイナミック パッケージ](dynamic-packaging-overview.md)」を確認してください。
+- 「[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)」を確認してください。
 - 「[ビデオのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)」のチュートリアルを確認してください。
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>入力アセットを作成し、ローカル ファイルをそれにアップロードする 
@@ -64,7 +64,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>アップロードされたファイルをエンコードする変換とジョブを作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transform と Job](./transform-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
 
 次の例では、変換を作成します (存在しない場合)。
 
@@ -80,7 +80,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 ジョブには通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態を取得します。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 
-詳細については、「[Event Grid イベントの処理](reacting-to-media-services-events.md)」を参照してください。
+詳細については、「[Event Grid イベントの処理](monitoring/reacting-to-media-services-events.md)」を参照してください。
 
 ## <a name="upload-the-audio-only-mp4-file"></a>オーディオのみの MP4 ファイルのアップロード
 
@@ -245,4 +245,4 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ビデオを分析する](analyze-videos-tutorial-with-api.md)
+[ビデオを分析する](analyze-videos-tutorial.md)

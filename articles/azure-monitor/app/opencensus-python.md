@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704414"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047424"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -19,7 +19,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 SDK でサポートされているのは、Python v2.7 および v3.4 から v3.7 のみです。
+- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 SDK では、Python のバージョン 2.7 および 3.6 以上をサポートしています。
 - Application Insights の[リソース](./create-new-resource.md)を作成します。 リソースの独自のインストルメンテーション キー (ikey) が割り当てられます。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Monitor 用の OpenCensus Python SDK を使用したインストルメント化

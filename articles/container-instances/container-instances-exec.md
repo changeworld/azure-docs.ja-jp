@@ -3,12 +3,12 @@ title: 実行中のコンテナー インスタンスでコマンドを実行す
 description: Azure Container Instances で現在実行されているコンテナーでコマンドを実行する方法について説明します
 ms.topic: article
 ms.date: 03/30/2018
-ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 42832910efff67f111c669793798d9ff0e413536
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "79225847"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790781"
 ---
 # <a name="execute-a-command-in-a-running-azure-container-instance"></a>実行中の Azure Container Instances でコマンドを実行する
 
@@ -89,6 +89,6 @@ Azure Container Instances は、現時点では [az container exec][az-container
 [Azure Container Instances でのコンテナーとデプロイに関する問題のトラブルシューティング](container-instances-troubleshooting.md)に関する記事で、他のトラブルシューティング ツールとデプロイの一般的な問題を確認します。
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec
 [azure-cli]: /cli/azure

@@ -16,12 +16,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 9d549d77b4a60f7543f69a9fd89e8b538c95d010
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ecad48592ecfb6723548a27997cfe1b81545b24a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102564613"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759601"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "102564613"
 > 
 
 
-- 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az-login) を使用して Azure アカウントにサインインしていることを確認します。
+- 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにサインインしていることを確認します。
 
 以下の例では、パラメーター名を `myResourceGroup`、`mystorageaccount`、`mydisks` などの独自の値に置き換えてください。
 
@@ -121,7 +121,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>VM の作成
 
-[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成し、マネージド ディスクを OS ディスクとしてアタッチ (--attach-os-disk) します。 次の例では、アップロードされた VHD から作成したマネージド ディスクを使用して *myNewVM* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成し、マネージド ディスクを OS ディスクとしてアタッチ (--attach-os-disk) します。 次の例では、アップロードされた VHD から作成したマネージド ディスクを使用して *myNewVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \

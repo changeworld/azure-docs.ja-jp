@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault と Azure Policy を統合する
 description: Azure Key Vault と Azure Policy の統合の方法について説明します
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 10/15/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cddc7b931bf59412d4a7ec8e6b0eecfe148f3d5e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92927755"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749278"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Azure Key Vault と Azure Policy を統合する
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 04/16/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: コンテンツ モデレーター, azure コンテンツ モデレーター, オンライン モデレーター, コンテンツ フィルター ソフトウェア, コンテンツ モデレーション サービス, コンテンツ モデレーション
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b0ff5a241a76cd49d104e4145df37515b43c4e27
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560375"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726198"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560375"
 Azure Content Moderator は、不快感を与える可能性がある内容、リスクのある内容、その他望ましくない可能性のある内容を管理できる AI サービスです。 テキスト、画像、動画をスキャンし、コンテンツ フラグを自動的に適用する AI 搭載コンテンツ モデレーション サービスと、人間のレビュー担当者からなるチーム用のオンライン モデレーター環境であるレビュー ツールが含まれています。
 
 法的規制に準拠したり、ユーザーに意図されている環境を維持したりするために、コンテンツ フィルタリング ソフトウェアをアプリに組み込むことがあります。
+
+このドキュメントには、次の種類の記事が含まれています。  
+
+* [**クイックスタート**](client-libraries.md)は、サービスへの要求の実行方法を説明する概要手順です。  
+* [**攻略ガイド**](try-text-api.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。  
+* [**概念**](text-moderation-api.md)では、サービスの機能と特徴について詳しく説明します。  
+* [**チュートリアル**](ecommerce-retail-catalog-moderation.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。  
 
 ## <a name="where-its-used"></a>使用場所
 

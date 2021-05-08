@@ -8,10 +8,10 @@ ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103493708"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>チュートリアル: サンプル クライアント アプリを使用して Azure Digital Twins グラフを作成する
@@ -275,7 +275,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 ## <a name="next-steps"></a>次のステップ 
 
-このチュートリアルでは、サンプル クライアント アプリケーションを使用してインスタンスにグラフを作成することで、Azure Digital Twins の使用を開始しました。 モデル、デジタル ツイン、およびリレーションシップを作成して、グラフを形成しました。 また、Azure Digital Twins によって回答できる環境についての質問の種類を理解するために、グラフに対していくつかのクエリを実行しました。
+このチュートリアルでは、サンプル クライアント アプリケーションを使用してインスタンスにグラフを作成することで、Azure Digital Twins の使用を開始しました。 モデル、デジタル ツイン、およびリレーションシップを作成して、グラフを形成しました。 また、Azure Digital Twins で回答できる環境についての質問の種類を理解するために、グラフに対していくつかのクエリを実行しました。
 
 次のチュートリアルに進み、Azure Digital Twins を他の Azure サービスと組み合わせて、データ ドリブンのエンド ツー エンドのシナリオを完了してください。
 > [!div class="nextstepaction"]

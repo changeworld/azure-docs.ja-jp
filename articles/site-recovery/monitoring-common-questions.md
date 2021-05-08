@@ -1,19 +1,16 @@
 ---
 title: Azure Site Recovery 監視に関する一般的な質問
 description: 組み込みの監視と Azure Monitor (Log Analytics) を使用する Azure Site Recovery 監視に関する一般的な質問への回答を得ます
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.date: 07/31/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 715fd3a30dcc37a26b07f2ca1c6a0f2ce168a23a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "82131163"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581713"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>Site Recovery 監視に関する一般的な質問
 

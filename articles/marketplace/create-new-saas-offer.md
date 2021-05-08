@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 09/02/2020
-ms.openlocfilehash: f689993ce56a1125a1d1de8f65ce05d01f776ea9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/19/2021
+ms.openlocfilehash: 74d30b7c42002c8f134520e0198774eba1519bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130070"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553840"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでの SaaS オファーの作成方法
 
@@ -22,6 +22,9 @@ ms.locfileid: "93130070"
 ## <a name="before-you-begin"></a>開始する前に
 
 [コマーシャル マーケットプレースの SaaS オファーを計画する](plan-saas-offer.md)をまだお読みになっていな場合は、お読みください。 SaaS アプリの技術的な要件、およびオファーを作成するときに必要となる情報と資産について説明されています。 コマーシャル マーケットプレースで単純なリスト ( **[問い合わせ]** リスト オプション) を公開する予定がない限り、SaaS アプリケーションは認証に関する技術的な要件を満たしている必要があります。
+
+> [!IMPORTANT]
+> 別の開発/テスト (DEV) オファーと別の運用 (PROD) オファーを作成することをお勧めします。 この記事では、PROD オファーの作成方法について説明します。 DEV オファーの作成の詳細については、「[開発とテストのプランの作成](create-saas-dev-test-offer.md)」をご覧ください。
 
 ## <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -53,7 +56,7 @@ ms.locfileid: "93130070"
    + 30 日間の無料試用版を提供するには、 **[無料試用版]** を選択し、表示される **[試用版 URL]** ボックスに、顧客が [Azure Active Directory (Azure AD) を使用したワンクリック認証](azure-ad-saas.md)で試用版を入手できる (*http* または *https* で始まる) URL を入力します。 たとえば、「 `https://contoso.com/trial/saas-app` 」のように入力します。
    + 潜在顧客からオファーの購入について連絡を受けるには、 **[問い合わせ]** を選択します。
 
-### <a name="enable-a-test-drive-optional"></a>体験版を有効にする (省略可能)
+## <a name="enable-a-test-drive-optional"></a>体験版を有効にする (省略可能)
 
 体験版は、構成済み環境に一定時間アクセスできるようにすることで、潜在顧客に対してオファーを紹介するのに最適な方法です。 体験版を提供すると、コンバージョン率が向上し、質の高い潜在顧客を獲得できます。 体験版の詳細については、「[体験版とは](./what-is-test-drive.md)」を参照してください。
 
@@ -64,14 +67,14 @@ ms.locfileid: "93130070"
 1.  **[体験版]** で、 **[体験版を有効にする]** チェック ボックスをオンにします。
 1.  表示される一覧から、体験版の種類を選択します。
 
-### <a name="configure-lead-management"></a>リード管理の構成
+## <a name="configure-lead-management"></a>リード管理の構成
 
 カスタマー リレーションシップ マネジメント (CRM) システムをコマーシャル マーケットプレースのオファーに接続して、顧客が興味を示したり製品をデプロイしたりしたときに顧客の連絡先情報を受け取ることができるようにします。 この接続は、オファーの作成中または作成後にいつでも変更できます。
 
 > [!NOTE]
 > Microsoft を通じてオファーを販売している場合、または **[問い合わせ]** リスト オプションを選択した場合は、リード管理を構成する必要があります。 詳細なガイダンスについては、「[コマーシャル マーケットプレース オファーからの潜在顧客](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
-#### <a name="to-configure-the-connection-details-in-partner-center"></a>パートナー センターで接続の詳細を構成するには
+### <a name="configure-the-connection-details-in-partner-center"></a>パートナー センターで接続の詳細を構成する
 
 1.  **[潜在顧客]** で、 **[接続]** リンクを選択します。
 1. **[接続の詳細]** ダイアログ ボックスで、一覧から潜在顧客の宛先を選択します。
@@ -85,6 +88,36 @@ ms.locfileid: "93130070"
 
 1. 指定した構成を検証するには、 **[検証]** リンクを選択します。
 1. ダイアログ ボックスを閉じるには、 **[OK]** を選択します。
+
+## <a name="configure-microsoft-365-app-integration"></a>Microsoft 365 アプリの統合を構成する
+
+SaaS オファーとそれに関連する Microsoft 365 アプリ消費の[統合された検出と配信](./plan-SaaS-offer.md)を、リンクをすることで行うことができます。
+
+### <a name="integrate-with-microsoft-api"></a>Microsoft API との統合
+
+1. SaaS オファーが Microsoft Graph API と統合されていない場合は、 **[いいえ]** を選択します。 引き続き、公開されている Microsoft 365 アプリ消費クライアントをリンクします。  
+
+1. SaaS オファーが Microsoft Graph API と統合されている場合は、 **[はい]** を選択し、Microsoft Graph API と統合するために作成して登録した Azure Active Directory アプリ ID を指定します。 
+
+### <a name="link-published-microsoft-365-app-consumption-clients"></a>公開された Microsoft 365 アプリ消費クライアントをリンクする
+
+1. SaaS オファーで動作する、公開された Office アドイン、Teams アプリ、または SharePoint Framework ソリューションがない場合は、 **[いいえ]** を選択します。
+
+1. SaaS オファーで動作する、公開された Office アドイン、Teams アプリ、または SharePoint Framework ソリューションがある場合は、 **[はい]** を選択し、 **[+別の AppSource リンクを追加]** を選択して新しいリンクを追加します。  
+
+1. 有効な AppSource リンクを指定してください。
+
+1. **[+別の AppSource リンクを追加]** を選択し、有効な AppSource リンクを指定して、すべてのリンクを追加し続けます。  
+
+1. SaaS オファーの一覧ページに、リンクされた製品が表示される順序は、ランク値によって示されます。これを変更するには、[=] アイコンを選択し、ホールドしながらアイコンを一覧で上下に移動させます。 
+
+1. 製品行の **[削除]** を選択すると、リンクされた製品を削除できます。  
+
+
+> [!IMPORTANT]
+> リンクされた製品を販売停止した場合、SaaS オファーで自動的にリンク解除されることはありません。リンクされた製品の一覧から削除し、SaaS オファーを再送信する必要があります。  
+
+ 
 
 ## <a name="next-steps"></a>次のステップ
 

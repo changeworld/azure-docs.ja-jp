@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 3ed349616ae6456913c19bb073f6e9ea28e7d549
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3218d8781377e76f05d10a8da2c954ac0b685a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100575126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641983"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する
 
@@ -25,8 +25,8 @@ Azure プライベート エンドポイントは、Azure Private Link の基本
 
 次の制限事項が適用されます。
 
-* ネットワーク セキュリティ グループ (NSG) はプライベート エンドポイントには適用されません
-* ユーザー定義ルート (UDR) はプライベート エンドポイントには適用されません
+* プライベート エンドポイントからのトラフィックによって、ネットワーク セキュリティ グループ (NSG) がバイパスされます
+* プライベート エンドポイントからのトラフィックによって、ユーザー定義ルート (UDR) がバイパスされます
 * サブネットにアタッチできるルート テーブルは 1 つです
 * ルート テーブルでは最大 400 ルートがサポートされます
 
@@ -35,7 +35,8 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 * TCP および UDP プロトコルの場合、[ネットワーク ルール内の FQDN](../firewall/fqdn-filtering-network-rules.md)
 * HTTP、HTTPS、MSSQL の場合、[アプリケーション ルール内の FQDN](../firewall/features.md#application-fqdn-filtering-rules) 
 
-プライベート エンドポイント経由で公開されるほとんどのサービスでは、HTTPS を使用します。 Azure SQL を使用する場合は、ネットワーク ルールよりもアプリケーション ルールを使用することをお勧めします。
+> [!IMPORTANT] 
+> フローの対称性を維持するために、プライベート エンドポイント宛てのトラフィックを検査する場合は、ネットワーク ルールよりもアプリケーション ルールを使用することをお勧めします。 ネットワーク ルールが使用されている場合、または Azure Firewall の代わりに NVA が使用されている場合は、プライベート エンドポイント宛てのトラフィックに対して SNAT を構成する必要があります。
 
 > [!NOTE]
 > SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql/database/connectivity-architecture.md#connection-policy)のみでサポートされます (ポート 1433)。 **プロキシ** モードを使用すると、*リダイレクト* と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりにファイアウォール ネットワーク ルールで FQDN を使ってアクセスをフィルター処理できます。
@@ -46,12 +47,9 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 このシナリオは、プライベート エンドポイントを使用して複数の Azure サービスにプライベートに接続するための、最も拡張性のあるアーキテクチャです。 プライベート エンドポイントがデプロイされるネットワーク アドレス空間を指すルートが作成されます。 この構成により、管理オーバーヘッドが軽減され、400 ルートの上限に達するのを防ぐことができます。
 
-仮想ネットワークがピアリングされている場合、クライアント仮想ネットワークからハブ仮想ネットワーク内の Azure Firewall に接続すると料金が発生します。
+仮想ネットワークがピアリングされている場合、クライアント仮想ネットワークからハブ仮想ネットワーク内の Azure Firewall に接続すると料金が発生します。 ハブ仮想ネットワーク内の Azure Firewall からピアリングされた仮想ネットワーク内のプライベート エンドポイントへの接続には、料金がかかりません。
 
 ピアリングされた仮想ネットワークとの接続に関連した料金の詳細については、[価格](https://azure.microsoft.com/pricing/details/private-link/)ページの FAQ セクションを参照してください。
-
->[!NOTE]
-> このシナリオは、アプリケーション ルールではなく、サード パーティの NVA または Azure Firewall ネットワーク ルールを使用して実装できます。
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>シナリオ 2: ハブとスポークのアーキテクチャ - プライベート エンドポイントと仮想マシン用の共有仮想ネットワーク
 
@@ -69,21 +67,15 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 
 全体のアーキテクチャによっては、400 ルートの上限に達する可能性があります。 可能な限り、シナリオ 1 を使用することをお勧めします。
 
-仮想ネットワークがピアリングされている場合、クライアント仮想ネットワークからハブ仮想ネットワーク内の Azure Firewall に接続すると料金が発生します。
+仮想ネットワークがピアリングされている場合、クライアント仮想ネットワークからハブ仮想ネットワーク内の Azure Firewall に接続すると料金が発生します。 ハブ仮想ネットワーク内の Azure Firewall からピアリングされた仮想ネットワーク内のプライベート エンドポイントへの接続には、料金がかかりません。
 
 ピアリングされた仮想ネットワークとの接続に関連した料金の詳細については、[価格](https://azure.microsoft.com/pricing/details/private-link/)ページの FAQ セクションを参照してください。
-
->[!NOTE]
-> このシナリオは、アプリケーション ルールではなく、サード パーティの NVA または Azure Firewall ネットワーク ルールを使用して実装できます。
 
 ## <a name="scenario-3-single-virtual-network"></a>シナリオ 3: 単一の仮想ネットワーク
 
 :::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="単一の仮想ネットワーク" border="true":::
 
-実装にはいくつかの制限があります。ハブとスポークのアーキテクチャへの移行はできません。 シナリオ 2 と同じ考慮事項が適用されます。 このシナリオでは、仮想ネットワークのピアリング料金は適用されません。
-
->[!NOTE]
-> サード パーティの NVA または Azure Firewall を使用してこのシナリオを実装する場合、SNAT トラフィックをプライベート エンドポイント宛てにするには、アプリケーション ルールではなくネットワーク ルールを使用する必要があります。 そうしないと、仮想マシンとプライベート エンドポイント間の通信は失敗します。
+ハブおよびスポーク アーキテクチャへの移行が不可能な場合は、このパターンを使用してください。 シナリオ 2 と同じ考慮事項が適用されます。 このシナリオでは、仮想ネットワークのピアリング料金は適用されません。
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>シナリオ 4: プライベート エンドポイントへのオンプレミス トラフィック
 
@@ -97,9 +89,6 @@ Azure Firewall では、次のいずれかを使用してトラフィックを�
 セキュリティの要件により、プライベート エンドポイントを介して公開されるサービスへのクライアント トラフィックをセキュリティ アプライアンス経由でルーティングする必要がある場合は、このシナリオをデプロイします。
 
 前出のシナリオ 2 と同じ考慮事項が適用されます。 このシナリオでは、仮想ネットワークのピアリング料金はありません。 オンプレミスのワークロードがプライベート エンドポイントにアクセスできるように DNS サーバーを構成する方法の詳細については、「[DNS フォワーダーを使用しているオンプレミスのワークロード](./private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)」を参照してください。
-
->[!NOTE]
-> サード パーティの NVA または Azure Firewall を使用してこのシナリオを実装する場合、SNAT トラフィックをプライベート エンドポイント宛てにするには、アプリケーション ルールではなくネットワーク ルールを使用する必要があります。 そうしないと、仮想マシンとプライベート エンドポイント間の通信は失敗します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -128,6 +117,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 手順の中で、各パラメーターを次のように置き換えます。
 
 ### <a name="azure-firewall-network"></a>Azure Firewall ネットワーク
+
 | パラメーター                   | 値                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -138,6 +128,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 | **\<subnet-address-range>** | 10.0.0.0/24          |
 
 ### <a name="virtual-machine-network"></a>仮想マシンのネットワーク
+
 | パラメーター                   | 値                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
@@ -148,13 +139,14 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 | **\<subnet-address-range>** | 10.1.0.0/24          |
 
 ### <a name="private-endpoint-network"></a>プライベート エンドポイント ネットワーク
+
 | パラメーター                   | 値                 |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myPEVNet         |
 | **\<region-name>**          | 米国中南部      |
 | **\<IPv4-address-space>**   | 10.2.0.0/16          |
-| **\<subnet-name>**          | PrivateEndpointSubnet    |        |
+| **\<subnet-name>**          | PrivateEndpointSubnet |
 | **\<subnet-address-range>** | 10.2.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
@@ -575,7 +567,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Address: 10.2.0.4
     ```
 
-2. [SQL Server コマンドライン ツール](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools)をインストールします。
+2. [SQL Server コマンドライン ツール](/sql/linux/quickstart-install-connect-ubuntu#tools)をインストールします。
 
 3. 次のコマンドを実行して SQL Server に接続します。 前の手順で SQL Server を作成したときに定義したサーバー管理者とパスワードを使用します。
 

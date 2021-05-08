@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92788623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639844"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Managed Instance のセキュリティ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
 
     ![SSMS オブジェクト エクスプローラーの [結果] タブのスクリーンショット。新しく追加されたログインの name、principal_id、sid、type、および type_desc が表示されています。](./media/aad-security-configure-tutorial/native-login.png)
 
-詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 ## <a name="grant-permissions-to-create-logins"></a>ログインを作成するためのアクセス許可を付与する
 
@@ -182,7 +182,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     GO
     ```
 
-1. [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) 構文を使用して、マネージド インスタンスにデータベースを作成します。 このデータベースは、次のセクションでユーザー ログインをテストする際に使用されます。
+1. [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文を使用して、マネージド インスタンスにデータベースを作成します。 このデータベースは、次のセクションでユーザー ログインをテストする際に使用されます。
     1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
     1. クエリ ウィンドウで、次の構文を使用して、**MyMITestDB** という名前のデータベースを作成します。
 
@@ -264,7 +264,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     > [!IMPORTANT]
     > AD サーバー プリンシパル (ログイン) から **USER** を作成するときは、user_name を **LOGIN** と同じ login_name として指定します。
 
-    詳細については、「[CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+    詳細については、「[CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 1. 新しいクエリ ウィンドウで、次の T-SQL コマンドを使用してテスト テーブルを作成します。
 

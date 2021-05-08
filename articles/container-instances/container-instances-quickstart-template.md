@@ -2,16 +2,19 @@
 title: クイックスタート - コンテナー インスタンスを作成する - Azure Resource Manager テンプレート
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
 services: azure-resource-manager
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
-ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- devx-track-js
+- mode-arm
+ms.openlocfilehash: 5e8b9e1b2a396bb20b35dd69efe26758ba0db543
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91309083"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537498"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure にコンテナー インスタンスをデプロイする
 

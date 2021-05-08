@@ -1,5 +1,5 @@
 ---
-title: マイ アプリ ポータルでのコレクション (プレビュー) - Azure AD
+title: '[マイ アプリ] ポータルのコレクションでアプリを整理する - Azure AD'
 description: '[マイ アプリ] でアプリ コレクションの作成、編集、削除、非表示、表示を行う方法について説明します。'
 services: active-directory
 author: curtand
@@ -8,22 +8,20 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/07/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 843f957ef8871f6372c1b08a5534f6e90098cc85
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ac5dede27262d3ce8bc44b4b278ed623063f8e1
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100095122"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209665"
 ---
-# <a name="user-collections-preview-in-my-apps"></a>[マイ アプリ] でのユーザー コレクション (プレビュー)
+# <a name="organize-apps-using-collections-from-my-apps"></a>[マイ アプリ] のコレクションを使用してアプリを整理する
 
 [マイ アプリ] は、すべての職場または学校アプリの起動と管理を一元的に行うことができる場所です。 アプリを整理し、必要なアプリを簡単に見つけられるようにするには、コレクションを作成します。
-
-[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 この記事では、以下のことを行う方法について説明します。
 
@@ -55,7 +53,7 @@ ms.locfileid: "100095122"
 
     :::image type="content" source="media/my-apps-portal-user-collections/3-add-apps.png" alt-text="一覧からコレクションへのアプリの追加":::
 
-1. その後は、アプリの順序変更や削除を行ったり、 **[アプリの追加]** を選択してコレクション用にアプリをさらに選択したりできます。 選択内容に問題がなければ、 **[新規作成]** を選択します。  
+1. **[新規作成]** ペインで、アプリの順序変更や削除を行ったり、 **[アプリの追加]** を選択してコレクション用にアプリをさらに選択したりできます。 選択内容に問題がなければ、 **[新規作成]** を選択します。  
 
     :::image type="content" source="media/my-apps-portal-user-collections/4-create-button.png" alt-text="[新規作成] ボタンを選択して、コレクションをマイ アプリに保存します":::
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100571583"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop の RDP Shortpath (プレビュー)
@@ -53,7 +53,7 @@ RDP Shortpath では、セッション ホストの証明書を使用して、�
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="RDP Shortpath ネットワーク接続の図" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>要件
+## <a name="requirements"></a>必要条件
 
 RDP Shortpath をサポートするには、Windows Virtual Desktop クライアントに、セッション ホストへの直接の通信経路が必要です。 直接の通信経路を取得するには、次のテクノロジのいずれかを使用します。
 

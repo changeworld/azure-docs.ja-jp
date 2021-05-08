@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 362704368958d2600d16cd907421917b824a59cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97108435"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256601"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LexisNexis を構成するためのチュートリアル
 
@@ -122,7 +122,7 @@ UI は、[オーシャン ブルー テンプレート](https://github.com/azure
 
 ### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>パート 7 - Azure AD B2C ポリシーを構成する
 
-この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)を参照して、[Local Accounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードし、Azure AD B2C テナント用に[ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy)を構成します。
+この[ドキュメント](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)を参照して、[Local Accounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードし、Azure AD B2C テナント用に[ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy)を構成します。
 
 >[!NOTE]
 >お使いの特定のテナントに関連付けるため、提供されているポリシーを更新してください。
@@ -155,4 +155,4 @@ UI は、[オーシャン ブルー テンプレート](https://github.com/azure
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

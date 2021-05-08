@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 84fd0c368bcf39af1bae90dc83336ffdb8489768
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92490103"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791519"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>チュートリアル:App Service と Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) を使用して Django アプリをデプロイする
 
@@ -105,7 +105,7 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 
 ターミナルで、現在の場所がアプリ コードを含むリポジトリのルート (`djangoapp`) であることを確認します。
 
-[`az webapp up`](/cli/azure/webapp#az-webapp-up) コマンドを使用して App Service アプリ (ホスト プロセス) を作成します。
+[`az webapp up`](/cli/azure/webapp#az_webapp_up) コマンドを使用して App Service アプリ (ホスト プロセス) を作成します。
 
 ```azurecli
 
@@ -129,7 +129,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - アプリの既定のログがまだ有効になっていない場合は、有効にします。
 - ビルド オートメーションを有効にし、ZIP デプロイを使用してリポジトリをアップロードします。
 - **az webapp vnet-integration** コマンドによって、Web アプリが postgres サーバーと同じ仮想ネットワークに追加されます。
-- アプリ コードでは、さまざまな環境変数でデータベース情報を検索することを想定しています。 App Service で環境変数を設定するには、[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して "アプリ設定" を作成します。
+- アプリ コードでは、さまざまな環境変数でデータベース情報を検索することを想定しています。 App Service で環境変数を設定するには、[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して "アプリ設定" を作成します。
 
 > [!TIP]
 > 多くの Azure CLI コマンドでは、リソース グループの名前や App Service プランなどの一般的なパラメーターが、ファイル *.azure/config* にキャッシュされます。このため、後のコマンドで同じパラメーターをすべて指定する必要はありません。 たとえば、変更を加えた後でアプリを再デプロイするには、パラメーターを指定せずに `az webapp up` を再実行するだけです。

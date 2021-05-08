@@ -1,5 +1,5 @@
 ---
-title: SQL Server から SQL Managed Instance:移行ガイド
+title: 'SQL Server から Azure SQL Managed Instance へ: 移行ガイド'
 description: このガイドでは SQL Server データベースの Azure SQL Managed Instance への移行を説明します。
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,14 +10,14 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 6dcbf4a570fb5cdb58c914ea5e4b1164ed6a76ca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1dcb72c30268dd82052e29232e79a485d86f72d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564492"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025307"
 ---
-# <a name="migration-guide-sql-server-to-sql-managed-instance"></a>移行ガイド:SQL Server から SQL Managed Instance
+# <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>移行ガイド: SQL Server から Azure SQL Managed Instance へ
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
 
 このガイドに従って、SQL Server データベースを Azure SQL Managed Instance に移行します。 
@@ -30,7 +30,7 @@ ms.locfileid: "103564492"
 - Compute Engine (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
 
-移行の詳細については、[移行の概要](sql-server-to-managed-instance-overview.md)に関するページを参照してください。 その他のシナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。
+移行の詳細については、[移行の概要](sql-server-to-managed-instance-overview.md)に関するページを参照してください。 その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
 
 :::image type="content" source="media/sql-server-to-managed-instance-overview/migration-process-flow-small.png" alt-text="移行プロセス フロー":::
 
@@ -40,6 +40,8 @@ SQL Server を Azure SQL Managed Instance に移行する場合、次の前提�
 
 - [移行方法](sql-server-to-managed-instance-overview.md#compare-migration-options)を選択し、選択した方法に必要な対応ツールを選択する
 - ソース SQL Server に接続できるコンピューターに [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) をインストールする
+- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可。 
+
 
 
 ## <a name="pre-migration"></a>移行前
@@ -210,7 +212,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 ## <a name="next-steps"></a>次のステップ
 
-- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールの一覧については、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
+- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 
 - Azure SQL Managed Instance の詳細については、次を参照してください。
    - [Azure SQL Managed Instance のサービス レベル](../../managed-instance/sql-managed-instance-paas-overview.md#service-tiers)

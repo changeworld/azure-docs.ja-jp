@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: 2cdd20a5d639f74916657edc3f73183a403204a5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944667"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Azure HDInsight での Apache Oozie のトラブルシューティング
@@ -17,13 +17,13 @@ Apache Oozie UI では、Oozie のログを見ることができます。 また
 
 1. Oozie Web UI でジョブを表示します。
 
-2. 特定のアクションでエラーまたは障害が発生した場合は、そのアクションを選択して、 **[Error Message]** フィールドにエラーの詳細情報が示されているかどうかを確認します。
+2. 特定のアクションでエラーまたは障害が発生した場合は、そのアクションを選択して、**[Error Message]** フィールドにエラーの詳細情報が示されているかどうかを確認します。
 
 3. 可能な場合は、アクションから URL を使って、アクションの詳細 (JobTracker ログなど) を表示します。
 
 発生する可能性のある具体的なエラーとその解決方法を次に示します。
 
-## <a name="ja009-cant-initialize-cluster"></a>JA009:クラスターを初期化できません
+## <a name="ja009-cant-initialize-cluster"></a>JA009: クラスターを初期化できません
 
 ### <a name="issue"></a>問題
 
@@ -37,13 +37,13 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 **job.xml** ファイルで使われている Azure Blob Storage アドレスに、ストレージ コンテナー名またはストレージ アカウント名が含まれていません。 Blob Storage アドレスは、`wasbs://containername@storageaccountname.blob.core.windows.net` という形式にする必要があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 ジョブが使う Blob Storage アドレスを変更します。
 
 ---
 
-## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002:Oozie では &lt;USER&gt; の偽装が許可されていません
+## <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie では &lt;USER&gt; の偽装が許可されていません
 
 ### <a name="issue"></a>問題
 
@@ -57,7 +57,7 @@ JA002: User: oozie is not allowed to impersonate <USER>
 
 現在のアクセス許可設定で、Oozie が指定されたユーザー アカウントを偽装することを許可していません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 Oozie では、 **`users`** グループ内のユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **`users`** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをグループに追加します。
 
@@ -84,7 +84,7 @@ Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], e
 
 Sqoop が、データベースにアクセスするために必要なデータベース ドライバーを読み込むことができません。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 Oozie ジョブから Sqoop を使うときは、ジョブが使う他のリソース (workflow.xml など) とともにデータベース ドライバーを含める必要があります。 また、workflow.xml の `<sqoop>...</sqoop>` セクションから、データベース ドライバーが格納されたアーカイブを参照します。
 

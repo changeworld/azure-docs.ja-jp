@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 99c36354334701dcd4c7c30c5fd5039c13885525
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97358718"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106039"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Dynamics 365 for Business Central オファーを作成する
 
 この記事では、新しい Dynamics 365 Business Central オファーの作成方法について説明します。 [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) はエンタープライズ リソース プランニング (ERP) サービスであり、財務、業務、サプライ チェーン、CRM、プロジェクト管理と電子商取引など、さまざまなビジネス プロセスを処理します。 Premium パッケージでは、クラシック デプロイ モデルと製造もサポートされています。 Dynamics 365 Business Central のすべてのオファーは、Microsoft の認定プロセスを通過する必要があります。
 
-開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](../create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 >[!NOTE]
 > オファーが公開されると、そのオファーに対する編集は、パブリケーションのためにオファーを再送信した後、パートナー センターとオンライン ストアでのみ更新されます。

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: fda59cc041cc540b95ababa6d56df6e69b0a8970
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: b1391f81c571879534258c289436d2d086b84bef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956164"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045945"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -191,7 +191,7 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 - [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上の IBM DB2 pureScale](ibm-db2-purescale-azure.md)
-- [トラブルシューティング](../../../troubleshooting/index.yml)
+- [トラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

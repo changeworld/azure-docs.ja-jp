@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 90e215ea445c8c700e351149e9c7a91d9a595252
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26b5331aa9242978f0f097c8e90bc807fc65f745
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96859523"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531944"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -365,8 +365,8 @@ Azure AD のサインイン アクティビティ、監査とリスク イベン
 
 #### <a name="logs-recommended-reading"></a>ログに関する推奨資料
 
-- [Azure Active Directory 監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
-- [Azure Active Directory サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory 監査 API リファレンス](/graph/api/resources/directoryaudit)
+- [Azure Active Directory サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin)
 - [Azure AD Reporting API と証明書を使ってデータを取得する](../reports-monitoring/tutorial-access-api-with-certificates.md)
 - [Azure Active Directory Identity Protection 用の Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)
 - [Office 365 管理アクティビティ API リファレンス](/office/office-365-management-api/office-365-management-activity-api-reference)

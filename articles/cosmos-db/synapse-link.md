@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: c22a4030bb44c1499995071849ca8942ae2110c3
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 123c443e1afaf8eaded7021b963b68b3d8a8f554
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864348"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483760"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB とは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -99,20 +99,6 @@ Azure Synapse Analytics でサポートされているさまざまな分析ラ�
 
 Azure Cosmos DB の Azure Synapse Analytics ランタイムによるサポートの詳細については、[Cosmos DB に対する Azure Synapse Analytics のサポート](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)に関するページを参照してください。
 
-## <a name="security"></a>セキュリティ
-
-Synapse Link を使用すると、Azure Cosmos DB 内のミッション クリティカルなデータに対して準リアルタイムで分析を実行できます。 重要なビジネス データがトランザクション ストアと分析ストアの両方に安全に格納されるようにすることは必要不可欠です。 Azure Synapse Link for Azure Cosmos DB は、次の機能によってこれらのセキュリティ要件を満たすように設計されています。
-
-* **プライベート エンドポイントを使用したネットワーク分離** - トランザクション ストアおよび分析ストア内のデータへのネットワーク アクセスを個別に制御できます。 ネットワークの分離は、Azure Synapse ワークスペースのマネージド仮想ネットワーク内で、ストアごとに別個のマネージド プライベート エンドポイントを使用して行われます。 詳細については、[分析ストアのプライベート エンドポイントを構成する](analytical-store-private-endpoints.md)方法に関する記事を参照してください。
-
-* **カスタマー マネージド キーを使用したデータの暗号化** - 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 詳細については、[カスタマー マネージド キーを構成する](how-to-setup-cmk.md)方法に関する記事を参照してください。
-
-* **セキュリティで保護されたキー管理** - Synapse Spark や Synapse サーバーレス SQL プールから分析ストア内のデータにアクセスするには、Synapse Analytics ワークスペース内で Azure Cosmos DB キーを管理する必要があります。 Spark ジョブや SQL スクリプトで Azure Cosmos DB アカウント キーをインラインで使用する代わりに、Azure Synapse Link にはより安全な機能が用意されています。
-
-  * Synapse サーバーレス SQL プールを使用するときは、アカウント キーが格納される SQL 資格情報を事前に作成し、`OPENROWSET` 関数でそれらを参照することによって、Azure Cosmos DB 分析ストアに対してクエリを実行できます。 詳細については、[Azure Synapse Link でのサーバーレス SQL プールを使用したクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
-
-  * Synapse Spark を使用するときは、Azure Cosmos DB データベースをポイントするリンク サービスのオブジェクトにアカウント キーを格納し、実行時に Spark 構成でこれを参照することができます。 詳細については、[Apache Spark を使用した専用 SQL プールへのデータのコピー](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md)に関する記事を参照してください。
-
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>どのようなときに Azure Synapse Link for Azure Cosmos DB を使用するか
 
 Synapse Link は、次の場合にお勧めします。
@@ -136,6 +122,21 @@ Synapse Link は、次の場合にお勧めします。
 * 分析ストアが有効になっているコンテナーの場合、現時点では分析ストアでのデータの自動バックアップと復元がサポートされていません。 データベース アカウントで Synapse Link が有効になっている場合、Azure Cosmos DB によって、コンテナーのトランザクション ストア (のみ) のデータをスケジュールされたバックアップ間隔で引き続き自動[バックアップ](./online-backup-and-restore.md)されます。 分析ストアが有効になっているコンテナーを新しいアカウントに復元すると、トランザクション ストアのみが有効な状態 (つまり分析ストアは有効でない状態) でコンテナーが復元されるので注意してください。
 
 * プロビジョニングされた Synapse SQL での Azure Cosmos DB 分析ストアへのアクセスは、現在使用できません。
+
+## <a name="security"></a>セキュリティ
+
+Synapse Link を使用すると、Azure Cosmos DB 内のミッション クリティカルなデータに対して準リアルタイムで分析を実行できます。 重要なビジネス データがトランザクション ストアと分析ストアの両方に安全に格納されるようにすることは必要不可欠です。 Azure Synapse Link for Azure Cosmos DB は、次の機能によってこれらのセキュリティ要件を満たすように設計されています。
+
+* **プライベート エンドポイントを使用したネットワーク分離** - トランザクション ストアおよび分析ストア内のデータへのネットワーク アクセスを個別に制御できます。 ネットワークの分離は、Azure Synapse ワークスペースのマネージド仮想ネットワーク内で、ストアごとに別個のマネージド プライベート エンドポイントを使用して行われます。 詳細については、[分析ストアのプライベート エンドポイントを構成する](analytical-store-private-endpoints.md)方法に関する記事を参照してください。
+
+* **カスタマー マネージド キーを使用したデータの暗号化** - 同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 詳細については、[カスタマー マネージド キーを構成する](how-to-setup-cmk.md)方法に関する記事を参照してください。
+
+* **セキュリティで保護されたキー管理** - Synapse Spark や Synapse サーバーレス SQL プールから分析ストア内のデータにアクセスするには、Synapse Analytics ワークスペース内で Azure Cosmos DB キーを管理する必要があります。 Spark ジョブや SQL スクリプトで Azure Cosmos DB アカウント キーをインラインで使用する代わりに、Azure Synapse Link にはより安全な機能が用意されています。
+
+  * Synapse サーバーレス SQL プールを使用するときは、アカウント キーが格納される SQL 資格情報を事前に作成し、`OPENROWSET` 関数でそれらを参照することによって、Azure Cosmos DB 分析ストアに対してクエリを実行できます。 詳細については、[Azure Synapse Link でのサーバーレス SQL プールを使用したクエリ](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)に関する記事を参照してください。
+
+  * Synapse Spark を使用するときは、Azure Cosmos DB データベースをポイントするリンク サービスのオブジェクトにアカウント キーを格納し、実行時に Spark 構成でこれを参照することができます。 詳細については、[Apache Spark を使用した専用 SQL プールへのデータのコピー](../synapse-analytics/synapse-link/how-to-copy-to-sql-pool.md)に関する記事を参照してください。
+
 
 ## <a name="pricing"></a>価格
 

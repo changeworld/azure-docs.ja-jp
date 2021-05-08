@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 24dafd63de1a37140c6a56547c4701729df1c8fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a8779c2829ecd2e8975ff56011bf5f73631f2de9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94566556"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772680"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLI で TLS 終端を使用してアプリケーション ゲートウェイを作成する
 
@@ -122,7 +122,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 
-この例では、アプリケーション ゲートウェイの既定のバックエンド プールにサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* と *appGatewayBackendPool* に関連付けられています。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az-vmss-create) を使用できます。
+この例では、アプリケーション ゲートウェイの既定のバックエンド プールにサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* と *appGatewayBackendPool* に関連付けられています。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az_vmss_create) を使用できます。
 
 ```azurecli-interactive
 az vmss create \

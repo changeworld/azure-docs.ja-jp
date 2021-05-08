@@ -1,22 +1,22 @@
 ---
-title: SQL API 用 Cosmos DB Apache Spark コネクタのリリース ノートとリソース
-description: リリース日、提供終了日、Azure Cosmos DB SQL Async Java SDK の各バージョン間の変更など、SQL API 用 Azure Cosmos DB Apache Spark コネクタについて説明します。
+title: SQL API 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタのリリース ノートとリソース
+description: リリース日、提供終了日、Azure Cosmos DB SQL Async Java SDK の各バージョン間の変更など、SQL API 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタについて説明します。
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd948814b4b647bcc3fbfe58b090b1e794504232
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93097160"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363633"
 ---
-# <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Azure Cosmos DB Apache Spark コネクタ:リリース ノートとリソース
+# <a name="azure-cosmos-db-apache-spark-2-oltp-connector-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタのリリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -30,7 +30,8 @@ ms.locfileid: "93097160"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark コネクタ](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP コネクタ](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
@@ -38,7 +39,7 @@ ms.locfileid: "93097160"
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
-コア (SQL) 用 Azure Cosmos DB Apache Spark コネクタを使用すると、ビッグ データ分析を高速化できます。 Spark コネクタにより、Azure Cosmos DB に格納されているデータに対して [Spark](https://spark.apache.org/) ジョブを実行できます。 バッチ処理とストリーム処理がサポートされています。
+Core (SQL) 用 Azure Cosmos DB Apache Spark 2 OLTP コネクタを使用すると、ビッグ データ分析を高速化できます。 Spark コネクタにより、Azure Cosmos DB に格納されているデータに対して [Spark](https://spark.apache.org/) ジョブを実行できます。 バッチ処理とストリーム処理がサポートされています。
 
 このコネクタは、Azure 上でマネージド Spark クラスターを提供する [Azure Databricks](https://azure.microsoft.com/services/databricks) または [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) と一緒に使用できます。 サポートされているバージョンを次の表に示します。
 

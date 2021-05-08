@@ -12,179 +12,173 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 70e2e77e008738ff7c2ed0981de5ee915614ab8d
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102504118"
 highlightedContent:
   items:
-  - title: Cognitive Services とは
-    itemType: overview
-    url: ./what-are-cognitive-services.md
-  - title: ドキュメントの最新情報
-    itemType: whats-new
-    url: whats-new-docs.md
-  - title: 開発オプション
-    itemType: concept
-    url: ./cognitive-services-development-options.md
-  - title: Cognitive Services と機械学習
-    itemType: concept
-    url: ./cognitive-services-and-machine-learning.md
-  - title: Cognitive Services のオンプレミス コンテナー
-    itemType: concept
-    url: ./containers/index.yml
-  - title: データベースでの Cognitive Services
-    itemType: concept
-    url: ./big-data/cognitive-services-for-big-data.md
-  - title: 言語のサポート
-    itemType: reference
-    url: ./language-support.md
-  - title: サポートとヘルプのオプション
-    itemType: reference
-    url: ./cognitive-services-support-options.md
+    - title: Cognitive Services とは
+      itemType: overview
+      url: ./what-are-cognitive-services.md
+    - title: ドキュメントの最新情報
+      itemType: whats-new
+      url: whats-new-docs.md
+    - title: 開発オプション
+      itemType: concept
+      url: ./cognitive-services-development-options.md
+    - title: Cognitive Services と機械学習
+      itemType: concept
+      url: ./cognitive-services-and-machine-learning.md
+    - title: Cognitive Services のオンプレミス コンテナー
+      itemType: concept
+      url: ./containers/index.yml
+    - title: データベースでの Cognitive Services
+      itemType: concept
+      url: ./big-data/cognitive-services-for-big-data.md
+    - title: 言語のサポート
+      itemType: reference
+      url: ./language-support.md
+    - title: サポート オプションとヘルプ オプション
+      itemType: reference
+      url: ./cognitive-services-support-options.md
 conceptualContent:
   items:
-  - title: 視覚
-    summary: 写真、動画、デジタル インク コンテンツの認識、識別、キャプションの追加、インデックスの作成、モデレートを行います。
-    links:
-    - url: ./computer-vision/index.yml
-      itemType: overview
-      text: Computer Vision
-    - url: ./custom-vision-service/index.yml
-      itemType: overview
-      text: Custom Vision
-    - url: ./face/index.yml
-      itemType: overview
-      text: Face
-    - url: ./form-recognizer/index.yml
-      itemType: overview
-      text: Form Recognizer
-    - url: ../media-services/video-indexer/index.yml
-      itemType: overview
-      text: Video Indexer
-  - title: Language
-    summary: お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。
-    links:
-    - url: ./immersive-reader/index.yml
-      itemType: overview
-      text: イマーシブ リーダー
-    - url: ./luis/index.yml
-      itemType: overview
-      text: Language Understanding (LUIS)
-    - url: ./qnamaker/index.yml
-      itemType: overview
-      text: QnA Maker
-    - url: ./text-analytics/index.yml
-      itemType: overview
-      text: Text Analytics
-    - url: ./translator/index.yml
-      itemType: overview
-      text: Translator
-  - title: 音声
-    summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
-    links:
-    - url: ./speech-service/index.yml
-      itemType: overview
-      text: Speech サービス
-    - url: https://speech.microsoft.com/
-      itemType: overview
-      text: Speech Studio を使用してカスタマイズする
-  - title: 決定
-    summary: 情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。
-    links:
-    - url: ./anomaly-detector/index.yml
-      itemType: overview
-      text: Anomaly Detector
-    - url: ./content-moderator/index.yml
-      itemType: overview
-      text: Content Moderator
-    - url: ./metrics-advisor/index.yml
-      itemType: overview
-      text: Metrics Advisor (プレビュー)
-    - url: ./personalizer/index.yml
-      itemType: overview
-      text: Personalizer
-  - title: 検索
-    summary: お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。
-    links:
-    - url: ./Bing-web-search/index.yml
-      itemType: overview
-      text: Bing Search API のハブ ページ
-  - title: Cognitive Service コンテナー
-    summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性もあります。
-    links:
-    - url: ./containers/index.yml
-      itemType: overview
-      text: Cognitive Services コンテナーのドキュメント
-    - url: ./cognitive-services-container-support.md
-      itemType: overview
-      text: Cognitive Service コンテナーとは
-    - url: ./containers/container-reuse-recipe.md
-      itemType: learn
-      text: 再利用するためのコンテナーを作成する
-    - url: ./containers/azure-container-instance-recipe.md
-      itemType: how-to-guide
-      text: Azure コンテナー インスタンスにコンテナーをデプロイして実行する
-    - url: ./containers/azure-kubernetes-recipe.md
-      itemType: deploy
-      text: Azure Kubernetes Service にデプロイする
-    - url: ./containers/docker-compose-recipe.md
-      itemType: get-started
-      text: Docker Compose を使用して複数のコンテナーをデプロイする
-    - url: ./containers/container-faq.yml
-      itemType: reference
-      text: Cognitive Services コンテナーに関する FAQ
-  - title: ビッグ データの Cognitive Services
-    summary: ビッグ データ向けの Cognitive Services により、開発者は、データベース内でコグニティブ サービスを使用して、大規模なデータセットにインテリジェントなアルゴリズムを適用できます。
-    links:
-    - url: ./big-data/cognitive-services-for-big-data.md
-      itemType: overview
-      text: ビッグ データの Cognitive Services
-    - url: ./big-data/getting-started.md
-      itemType: get-started
-      text: Azure Databricks と Azure Synapse Analytics 内で Cognitive Services を使用する
-    - url: ./big-data/samples-python.md
-      itemType: reference
-      text: Python サンプル
+    - title: 視覚
+      summary: 写真、動画、デジタル インク コンテンツの認識、識別、キャプションの追加、インデックスの作成、モデレートを行います。
+      links:
+        - url: ./computer-vision/index.yml
+          itemType: overview
+          text: Computer Vision
+        - url: ./custom-vision-service/index.yml
+          itemType: overview
+          text: Custom Vision
+        - url: ./face/index.yml
+          itemType: overview
+          text: Face
+        - url: ./form-recognizer/index.yml
+          itemType: overview
+          text: Form Recognizer
+        - url: ../media-services/video-indexer/index.yml
+          itemType: overview
+          text: Video Indexer
+    - title: Language
+      summary: お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。
+      links:
+        - url: ./immersive-reader/index.yml
+          itemType: overview
+          text: イマーシブ リーダー
+        - url: ./luis/index.yml
+          itemType: overview
+          text: Language Understanding (LUIS)
+        - url: ./qnamaker/index.yml
+          itemType: overview
+          text: QnA Maker
+        - url: ./text-analytics/index.yml
+          itemType: overview
+          text: Text Analytics
+        - url: ./translator/index.yml
+          itemType: overview
+          text: Translator
+    - title: 音声
+      summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
+      links:
+        - url: ./speech-service/index.yml
+          itemType: overview
+          text: Speech サービス
+        - url: 'https://speech.microsoft.com/'
+          itemType: overview
+          text: Speech Studio を使用してカスタマイズする
+    - title: 決定
+      summary: 情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。
+      links:
+        - url: ./anomaly-detector/index.yml
+          itemType: overview
+          text: Anomaly Detector
+        - url: ./content-moderator/index.yml
+          itemType: overview
+          text: Content Moderator
+        - url: ./metrics-advisor/index.yml
+          itemType: overview
+          text: Metrics Advisor (プレビュー)
+        - url: ./personalizer/index.yml
+          itemType: overview
+          text: Personalizer
+    - title: 検索
+      summary: お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。
+      links:
+        - url: ./Bing-web-search/index.yml
+          itemType: overview
+          text: Bing Search API のハブ ページ
+    - title: Cognitive Service コンテナー
+      summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性もあります。
+      links:
+        - url: ./containers/index.yml
+          itemType: overview
+          text: Cognitive Services コンテナーのドキュメント
+        - url: ./cognitive-services-container-support.md
+          itemType: overview
+          text: Cognitive Service コンテナーとは
+        - url: ./containers/container-reuse-recipe.md
+          itemType: learn
+          text: 再利用するためのコンテナーを作成する
+        - url: ./containers/azure-container-instance-recipe.md
+          itemType: how-to-guide
+          text: Azure コンテナー インスタンスにコンテナーをデプロイして実行する
+        - url: ./containers/azure-kubernetes-recipe.md
+          itemType: deploy
+          text: Azure Kubernetes Service にデプロイする
+        - url: ./containers/docker-compose-recipe.md
+          itemType: get-started
+          text: Docker Compose を使用して複数のコンテナーをデプロイする
+        - url: ./containers/container-faq.yml
+          itemType: reference
+          text: Cognitive Services コンテナーに関する FAQ
+    - title: ビッグ データの Cognitive Services
+      summary: ビッグ データ向けの Cognitive Services により、開発者は、データベース内でコグニティブ サービスを使用して、大規模なデータセットにインテリジェントなアルゴリズムを適用できます。
+      links:
+        - url: ./big-data/cognitive-services-for-big-data.md
+          itemType: overview
+          text: ビッグ データの Cognitive Services
+        - url: ./big-data/getting-started.md
+          itemType: get-started
+          text: Azure Databricks と Azure Synapse Analytics 内で Cognitive Services を使用する
+        - url: ./big-data/samples-python.md
+          itemType: reference
+          text: Python サンプル
 additionalContent:
   sections:
-  - title: その他のリソース
-    items:
-    - title: カスタマイズ用のポータル
-      links:
-      - text: Custom Translator
-        url: https://portal.customtranslator.azure.ai/
-      - text: Custom Vision
-        url: https://www.customvision.ai/
-      - text: Language Understanding (LUIS)
-        url: https://luis.ai
-      - text: QnA Maker
-        url: https://www.qnamaker.ai/
-      - text: Speech Studio
-        url: https://speech.microsoft.com/
-    - title: SDK と REST API
-      links:
-      - text: C#
-        url: /dotnet/api/overview/azure/cognitiveservices/client
-      - text: Go
-        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
-      - text: Java
-        url: /java/api/overview/azure/cognitiveservices/client
-      - text: JavaScript
-        url: /javascript/api/overview/azure/cognitive-services
-      - text: Python
-        url: /python/api/overview/azure/cognitive-services
-      - text: R
-        url: https://github.com/Azure/AzureCognitive
-      - text: Apache Spark とデータベース
-        url: ./big-data/cognitive-services-for-big-data.md
-      - text: Cognitive Services Management REST API
-        url: /rest/api/cognitiveservices/
-    - title: ツール
-      links:
-      - text: Azure CLI
-        url: /cli/azure/cognitiveservices
-      - text: PowerShell
-        url: /powershell/module/az.cognitiveservices/#cognitive_services
+    - title: その他のリソース
+      items:
+        - title: カスタマイズ用のポータル
+          links:
+            - text: Custom Translator
+              url: 'https://portal.customtranslator.azure.ai/'
+            - text: Custom Vision
+              url: 'https://www.customvision.ai/'
+            - text: Language Understanding (LUIS)
+              url: 'https://luis.ai'
+            - text: QnA Maker
+              url: 'https://www.qnamaker.ai/'
+            - text: Speech Studio
+              url: 'https://speech.microsoft.com/'
+        - title: SDK と REST API
+          links:
+            - text: C#
+              url: /dotnet/api/overview/azure/cognitiveservices/client
+            - text: Go
+              url: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices'
+            - text: Java
+              url: /java/api/overview/azure/cognitiveservices/client
+            - text: JavaScript
+              url: /javascript/api/overview/azure/cognitive-services
+            - text: Python
+              url: /python/api/overview/azure/cognitive-services
+            - text: R
+              url: 'https://github.com/Azure/AzureCognitive'
+            - text: Apache Spark とデータベース
+              url: ./big-data/cognitive-services-for-big-data.md
+            - text: Cognitive Services Management REST API
+              url: /rest/api/cognitiveservices/
+        - title: ツール
+          links:
+            - text: Azure CLI
+              url: /cli/azure/cognitiveservices
+            - text: PowerShell
+              url: /powershell/module/az.cognitiveservices/#cognitive_services

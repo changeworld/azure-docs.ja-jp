@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 71a2ad5b8d09812eb999ab75a3522caf5a8dd20a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3a099f1a3ab16c33baa8037e727d26f107a593a2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664553"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785546"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーの監視とスケーリングを行う
 このサンプル CLI スクリプトは、メトリックの照会後、単一の Azure Database for MariaDB サーバーのコンピューティングとストレージをスケーリングします。 コンピューティングはスケールアップまたはスケールダウンすることができます。 ストレージはスケールアップすることのみが可能です。
@@ -37,11 +37,11 @@ ms.locfileid: "98664553"
 
 | **コマンド** | **注** |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | データベースのホストとなる MariaDB サーバーを作成します。 |
-| [az mariadb server update](/cli/azure/mariadb/server#az-mariadb-server-update) | MariaDB サーバーのプロパティを更新します。 |
-| [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) | リソースのメトリック値を一覧表示します。 |
-| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) | データベースのホストとなる MariaDB サーバーを作成します。 |
+| [az mariadb server update](/cli/azure/mariadb/server#az_mariadb_server_update) | MariaDB サーバーのプロパティを更新します。 |
+| [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) | リソースのメトリック値を一覧表示します。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for MariaDB のコンピューティングとストレージ](../concepts-pricing-tiers.md)の詳細について学習します

@@ -67,6 +67,9 @@
         - name: レポートと監視
           tocHref: /azure/active-directory/reports-monitoring/
           topicHref: /azure/active-directory/reports-monitoring/
+        - name: 検証可能な資格情報
+          tocHref: /azure/active-directory/verifiable-credentials/
+          topicHref: /azure/active-directory/verifable-credentials/
     - name: Analysis Services
       tocHref: /azure/analysis-services/
       topicHref: /azure/analysis-services/
@@ -204,7 +207,13 @@
       topicHref: /azure/vmware-cloudsimple/
     - name: Azure Portal のドキュメント
       tocHref: /azure/azure-portal/
-      topicHref: /azure/azure-portal/\
+      topicHref: /azure/azure-portal/
+    - name: Azure Portal のドキュメント
+      tocHref: /azure/virtual-machines/
+      topicHref: /azure/azure-portal/index
+    - name: Azure Portal のドキュメント
+      tocHref: /power-bi
+      topicHref: /azure/azure-portal/index
     - name: モノのインターネット (IoT)
       tocHref: /azure/iot-fundamentals/
       topicHref: /azure/iot-fundamentals/
@@ -242,6 +251,9 @@
         - name: Azure Maps
           tocHref: /azure/azure-maps/
           topicHref: /azure/azure-maps/
+        - name: Azure Certified Device
+          tocHref: /azure/certification/
+          topicHref: /azure/certification/
     - name: リソース マネージャー
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
@@ -641,6 +653,8 @@
       tocHref: /azure/networking/
       topicHref: /azure/networking/
       items:
+        - name: Fundamentals
+          tocHref: /azure/networking/fundamentals
         - name: Application Gateway
           tocHref: /azure/application-gateway/
           topicHref: /azure/application-gateway/
@@ -759,6 +773,9 @@
         - name: 開発
           tocHref: /azure/security/develop/
           topicHref: /azure/security/develop/
+        - name: Journey
+          tocHref: /azure/security/journey
+          topicHref: /azure/security/journey
         - name: ベンチマーク
           tocHref: /azure/security/benchmarks/
           topicHref: /azure/security/benchmarks/
@@ -847,6 +864,9 @@
         - name: ファイル
           tocHref: /azure/storage/files/
           topicHref: /azure/storage/files/storage-files-introduction
+        - name: File Sync
+          tocHref: /azure/storage/file-sync/
+          topicHref: /azure/storage/file-sync/file-sync-introduction
         - name: キュー
           tocHref: /azure/storage/queues/
           topicHref: /azure/storage/queues/storage-queues-introduction

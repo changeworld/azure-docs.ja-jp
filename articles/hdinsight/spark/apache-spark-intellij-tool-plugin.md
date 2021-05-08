@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: ced066623d23c6894745374ace812454c52f3109
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 29fb96dc83ada329910844506838dee461321343
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103420019"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866337"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "103420019"
 * Azure HDInsight Spark クラスター リソースにアクセスする。
 * Scala Spark アプリケーションをローカルで開発して実行する。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 > [!div class="checklist"]
 > * Azure Toolkit for IntelliJ プラグインを使用する
 > * Apache Spark アプリケーションを開発する
@@ -46,11 +46,11 @@ Scala プラグインをインストールする手順:
 
 2. ようこそ画面で **[構成]**  >  **[プラグイン]** の順に移動し、 **[プラグイン]** ウィンドウを開きます。
 
-    ![IntelliJ IDEA で Scala プラグインを有効にする](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png" alt-text="IntelliJ IDEA で Scala プラグインを有効にする" border="true":::
 
 3. 新しいウィンドウに表示される Scala プラグインの **[インストール]** を選択します。  
 
-    ![IntelliJ IDEA で Scala プラグインをインストールする](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png" alt-text="IntelliJ IDEA で Scala プラグインをインストールする" border="true":::
 
 4. プラグインが正常にインストールされたら、IDE を再起動する必要があります。
 
@@ -66,7 +66,7 @@ Scala プラグインをインストールする手順:
    * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
    * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
-     ![IntelliJ IDEA の [New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png" alt-text="IntelliJ IDEA の [New Project]\(新しいプロジェクト\) ダイアログ ボックス" border="true":::
 
 5. **[次へ]** を選択します。
 
@@ -79,7 +79,7 @@ Scala プラグインをインストールする手順:
     |Project SDK (プロジェクト SDK)| IDEA を初めて使用するとき、このフィールドは空白の場合があります。  **[New]\(新規作成\)** を選択し、自分の JDK に移動します。|
     |Spark バージョン|作成ウィザードにより、Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、**Spark 2.3.0 (Scala 2.11.8)** を使用します。|
 
-    ![Apache Spark SDK を選択する](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-new-project.png" alt-text="Apache Spark SDK を選択する" border="true":::
 
 7. **[完了]** を選択します。  プロジェクトが使用可能になるまで数分かかる場合があります。
 
@@ -91,7 +91,7 @@ Scala プラグインをインストールする手順:
 
    c. アーティファクトの表示後、 **[キャンセル]** をクリックします。
 
-      ![ダイアログ ボックスの成果物情報](./media/apache-spark-intellij-tool-plugin/default-artifact-dialog.png)
+      :::image type="content" source="./media/apache-spark-intellij-tool-plugin/default-artifact-dialog.png" alt-text="ダイアログ ボックスの成果物情報" border="true":::
 
 9. 次の手順を行って、アプリケーション ソース コードを追加します。
 
@@ -99,11 +99,11 @@ Scala プラグインをインストールする手順:
 
     b. **[scala]** を右クリックし、 **[新規作成]**  >  **[Scala Class]\(Scala クラス\)** に移動します。
 
-   ![プロジェクトから Scala クラスを作成するためのコマンド](./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png" alt-text="プロジェクトから Scala クラスを作成するためのコマンド" border="true":::
 
    c. **[Create New Scala Class]\(新規 Scala クラスの作成\)** ダイアログ ボックスで、名前を指定し、 **[Kind]\(種類\)** ドロップダウン リストで **[Object]\(オブジェクト\)** を選択して、 **[OK]** をクリックします。
 
-     ![[Create New Scala Class]\(新規 Scala クラスの作成\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code-object.png)
+     :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code-object.png" alt-text="[Create New Scala Class]\(新規 Scala クラスの作成\) ダイアログ ボックス" border="true":::
 
    d. **myApp.scala** ファイルがメイン ビューで開きます。 既定のコードを次のコードに置き換えます。  
 
@@ -137,39 +137,39 @@ Scala プラグインをインストールする手順:
 
 1. メニュー バーから、 **[表示]**  >  **[ツール ウィンドウ]**  >  **[Azure Explorer]** に移動します。
 
-   ![IntelliJ IDEA で Azure Explorer を表示する](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png" alt-text="IntelliJ IDEA で Azure Explorer を表示する" border="true":::
 
 2. Azure Explorer から、 **[Azure]** ノードを右クリックし、 **[サインイン]** を選択します。
 
-   ![IntelliJ IDEA エクスプローラーで Azure を右クリックする](./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/explorer-rightclick-azure.png" alt-text="IntelliJ IDEA エクスプローラーで Azure を右クリックする" border="true":::
 
 3. **[Azure Sign In]\(Azure サインイン\)** ダイアログ ボックスで、 **[デバイスのログイン]** を選択してから、 **[サインイン]** を選択します。
 
-    ![IntelliJ IDEA の [Azure Sign In]\(Azure サインイン\) の [デバイスのログイン]](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer2.png" alt-text="IntelliJ IDEA の [Azure Sign In]\(Azure サインイン\) の [デバイスのログイン]" border="true":::
 
 4. **[Azure Device Login]\(Azure デバイスのログイン\)** ダイアログ ボックスで **[Copy&Open]\(コピーして開く\)** をクリックします。
 
-   ![IntelliJ IDEA の [Azure Device Login]\(Azure デバイスのログイン\)](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer5.png" alt-text="IntelliJ IDEA の [Azure デバイスのログイン]" border="true":::
 
 5. ブラウザー インターフェイスで、コードを貼り付けて **[次へ]** をクリックします。
 
-   ![Microsoft の HDI の [コードの入力] ダイアログ](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer6.png" alt-text="Microsoft の HDI の [コードの入力] ダイアログ" border="true":::
 
 6. 自分の Azure 資格情報を入力して、ブラウザーを閉じます。
 
-   ![Microsoft の HDI のメールの入力ダイアログ](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer7.png" alt-text="Microsoft の HDI のメールの入力ダイアログ" border="true":::
 
 7. サインイン後、 **[Select Subscriptions]\(サブスクリプションの選択\)** ダイアログ ボックスに、その資格情報に関連付けられているすべての Azure サブスクリプションの一覧が表示されます。 サブスクリプションを選択してから **[選択]** ボタンを選択します。
 
-    ![[サブスクリプションの選択] ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/Select-Subscriptions.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/Select-Subscriptions.png" alt-text="[サブスクリプションの選択] ダイアログ ボックス" border="true":::
 
 8. **Azure Explorer** から、 **[HDInsight]** を展開し、自分のサブスクリプションにある HDInsight Spark クラスターを表示します。
 
-    ![IntelliJ IDEA Azure Explorer のメイン ビュー](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer3.png" alt-text="IntelliJ IDEA Azure Explorer のメイン ビュー" border="true":::
 
 9. クラスターに関連付けられているリソース (ストレージ アカウントなど) を表示するには、クラスター名ノードをさらに展開します。
 
-    ![Azure Explorer のストレージ アカウント](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer4.png" alt-text="Azure Explorer のストレージ アカウント" border="true":::
 
 ### <a name="link-a-cluster"></a>クラスターのリンク
 
@@ -179,7 +179,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
 
 1. Azure Explorer から、 **[HDInsight]** ノードを右クリックし、 **[Link A Cluster]\(クラスターのリンク\)** を選択します。
 
-   ![Azure Explorer の [Link A Cluster]\(クラスターのリンク\) コンテキスト メニュー](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png" alt-text="Azure Explorer の [Link A Cluster]\(クラスターのリンク\) コンテキスト メニュー" border="true":::
 
 1. **[Link A Cluster]\(クラスターのリンク\)** ウィンドウで使用可能なオプションは、 **[Link Resource Type]\(リンクのリソースの種類\)** ドロップダウン リストから選択する値によって異なります。  値を入力して **[OK]** を選択します。
 
@@ -193,7 +193,7 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
         |[ユーザー名]| クラスターのユーザー名を入力します。既定値は admin です。|
         |Password| ユーザー名のパスワードを入力します。|
 
-        ![IntelliJ IDEA の [Link A Cluster]\(クラスターのリンク\) ダイアログ](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+        :::image type="content" source="./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png" alt-text="IntelliJ IDEA の [Link A Cluster]\(クラスターのリンク\) ダイアログ" border="true":::
 
     * **Livy サービス**  
   
@@ -207,15 +207,15 @@ Apache Ambari マネージド ユーザー名を使用して、HDInsight クラ�
         |[ユーザー名]| クラスターのユーザー名を入力します。既定値は admin です。|
         |Password| ユーザー名のパスワードを入力します。|
 
-        ![IntelliJ IDEA の Livy クラスターのリンク ダイアログ](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
+        :::image type="content" source="./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png" alt-text="IntelliJ IDEA の Livy クラスターのリンク ダイアログ" border="true":::
 
 1. **HDInsight** ノードからリンクされたクラスターを確認できます。
 
-   ![Azure Explorer のリンクされたクラスター 1](./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdinsight-linked-cluster.png" alt-text="Azure Explorer のリンクされたクラスター 1" border="true":::
 
 1. また、**Azure 用エクスプローラー** からクラスターのリンクを解除することもできます。
 
-   ![Azure Explorer からクラスターのリンクを解除する](./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-unlinked-cluster.png" alt-text="Azure Explorer からクラスターのリンクを解除する" border="true":::
 
 ## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターでの Spark Scala アプリケーションの実行
 
@@ -223,7 +223,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
 
 1. [Project]\(プロジェクト\) から **myApp** > **src** > **main** > **scala** > **myApp** に移動します。  **[myApp]** を右クリックし、 **[Submit Spark Application]\(Spark アプリケーションの送信\)** を選択します (多くの場合、リストの最下部にあります)。
 
-      ![[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\) コマンド](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
+      :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png" alt-text="[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\) コマンド" border="true":::
 
 2. **[Submit Spark Application]\(Spark アプリケーションの送信\)** ダイアログ ウィンドウで、 **[1.Spark on HDInsight]\(HDInsight 上の Spark\)** を選択します。
 
@@ -243,11 +243,11 @@ Scala アプリケーションを作成した後に、クラスターに送信�
     |ストレージ キー|ストレージ キーを入力します。|
     |ストレージ コンテナー|**[ストレージ アカウント]** と **[ストレージ キー]** の入力後、ドロップダウン リストからストレージ コンテナーを選択します。|
 
-    ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="[Spark Submission]\(Spark 送信\) ダイアログ ボックス" border="true":::
 
 4. **[SparkJobRun]** を選択して、選択したクラスターにプロジェクトを送信します。 **[Remote Spark Job in Cluster]\(クラスターのリモート Spark ジョブ\)** タブの下部には、ジョブの実行の進行状況が表示されます。 赤いボタンをクリックすると、アプリケーションを停止できます。
 
-    ![[Apache Spark Submission]\(Apache Spark 送信\) ウィンドウ](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png" alt-text="[Apache Spark Submission]\(Apache Spark 送信\) ウィンドウ" border="true":::
 
 ## <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>HDInsight クラスターで Apache Spark アプリケーションをローカルまたはリモートでデバッグする
 
@@ -261,19 +261,19 @@ Azure Toolkit for IntelliJ を使用してさまざまな操作を行うこと�
 
 1. Azure Explorer で **[HDInsight]**  > \<Your Cluster> >  **[ジョブ]** の順に移動します。
 
-    ![IntelliJ Azure Explorer のジョブ ビュー ノード](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png" alt-text="IntelliJ Azure Explorer のジョブ ビュー ノード" border="true":::
 
 2. 右側のウィンドウの **[Spark Job View (Spark ジョブ ビュー)]** タブに、クラスター上で実行されていたすべてのアプリケーションが表示されます。 詳細情報を確認したいアプリケーションの名前を選択します。
 
-    ![Spark ジョブ ビューのアプリケーションの詳細](./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-job-logs.png" alt-text="Spark ジョブ ビューのアプリケーションの詳細" border="true":::
 
 3. 実行中のジョブの基本情報が表示するには、ジョブ グラフにマウス ポインターを合わせます。 各ジョブについて生成されるステージのグラフと情報を確認するには、ジョブ グラフ上のノードを選択します。
 
-    ![Spark ジョブ ビューのジョブ ステージの詳細](./media/apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/Job-graph-stage-info.png" alt-text="Spark ジョブ ビューのジョブ ステージの詳細" border="true":::
 
 4. *Driver Stderr*、*Driver Stdout*、*Directory Info* などの頻繁に使用されるログを表示するには、 **[Log]\(ログ\)** タブを選択します。
 
-    ![Spark ジョブ ビューのログの詳細](./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-job-log-info.png" alt-text="Spark ジョブ ビューのログの詳細" border="true":::
 
 5. Spark 履歴 UI と YARN UI を (アプリケーション レベルで) 表示できます。 ウィンドウ上部のリンクを選択します。
 
@@ -320,7 +320,7 @@ WINUTILS.EXE の前提条件を満たしていることを確実にします。
     |環境変数|HADOOP_HOME の値が正しいことを確認します。|
     |WINUTILS.exe の場所|パスが正しいことを確認します。|
 
-    ![Local Console の構成の設定](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/console-set-configuration.png" alt-text="Local Console の構成の設定" border="true":::
 
 5. [Project]\(プロジェクト\) から **myApp** > **src** > **main** > **scala** > **myApp** に移動します。  
 
@@ -328,13 +328,13 @@ WINUTILS.EXE の前提条件を満たしていることを確実にします。
 
 7. 次に、依存関係を自動修正するかどうかを確認する 2 つのダイアログ ボックスが表示されます。 そうする場合は、 **[Auto Fix]\(自動修正\)** を選択します。
 
-    ![IntelliJ IDEA Spark の自動修正ダイアログ 1](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-console-autofix1.png" alt-text="IntelliJ IDEA Spark の自動修正ダイアログ 1" border="true":::
 
-    ![IntelliJ IDEA Spark の自動修正ダイアログ 2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png" alt-text="IntelliJ IDEA Spark の自動修正ダイアログ 2" border="true":::
 
 8. コンソールは次の図のようになります。 コンソール ウィンドウに「`sc.appName`」と入力し、Ctrl + Enter キーを押します。  結果が表示されます。 赤いボタンをクリックすると、ローカル コンソールを終了できます。
 
-    ![IntelliJ IDEA のローカル コンソールの結果](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/local-console-result.png" alt-text="IntelliJ IDEA のローカル コンソールの結果" border="true":::
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
 
@@ -351,7 +351,7 @@ WINUTILS.EXE の前提条件を満たしていることを確実にします。
     |Spark クラスター (Linux のみ)|アプリケーションを実行する HDInsight Spark クラスターを選択します。|
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
 
-    ![対話型コンソールセットの構成](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png" alt-text="対話型コンソールセットの構成" border="true":::
 
 5. [Project]\(プロジェクト\) から **myApp** > **src** > **main** > **scala** > **myApp** に移動します。  
 
@@ -359,13 +359,13 @@ WINUTILS.EXE の前提条件を満たしていることを確実にします。
 
 7. コンソールは次の図のようになります。 コンソール ウィンドウに「`sc.appName`」と入力し、Ctrl + Enter キーを押します。  結果が表示されます。 赤いボタンをクリックすると、ローカル コンソールを終了できます。
 
-    ![IntelliJ IDEA の対話型コンソールの結果](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/interactive-console-result.png" alt-text="IntelliJ IDEA の対話型コンソールの結果" border="true":::
 
 ### <a name="send-selection-to-spark-console"></a>選択項目の Spark コンソールへの送信
 
 一部のコードをローカルのコンソールまたは Livy Interactive Session Console(Scala) に送信して、スクリプトの結果を事前に確認すると便利です。 Scala ファイル内の一部のコードを強調表示し、 **[Send Selection To Spark Console]\(選択内容を Spark コンソールに送信\)** を右クリックします。 選択したコードがコンソールに送信されます。 結果は、コンソールのコードの後に表示されます。 コンソールでは、エラーが存在するかどうかがチェックされます。  
 
-   ![選択項目の Spark コンソールへの送信](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png" alt-text="選択項目の Spark コンソールへの送信" border="true":::
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity Broker (HIB) との統合
 
@@ -379,7 +379,7 @@ HDInsight ESP cluster with ID Broker (HIB) にジョブを送信するには、�
 
 必要なファイルは、ご利用のサインイン アカウントが名前になっているフォルダーにアップロードしてあります。アップロード パスは、構成ファイル内で確認できます。
 
-   ![構成内のアップロード パス](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png" alt-text="構成内のアップロード パス" border="true":::
 
 ### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with ID Broker (HIB) 上の Spark コンソール
 
@@ -398,16 +398,16 @@ HDInsight ESP cluster with ID Broker (HIB) 上で、Spark Local Console(Scala) �
 
 2. **Azure Explorer** で **[HDInsight]** を展開し、自分のサブスクリプションにある HDInsight クラスターを表示します。 **"Role:Reader"** とマークされているクラスターには、読み取り専用ロールのアクセス許可しかありません。
 
-    ![IntelliJ Azure Explorer の Role:Reader](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer15.png" alt-text="IntelliJ Azure Explorer の Role:Reader" border="true":::
 
 3. 読み取り専用ロールのアクセス許可があるクラスターを右クリックします。 コンテキスト メニューで **[Link this cluster]\(このクラスターをリンク\)** を選択して、クラスターをリンクします。 Ambari のユーザー名とパスワードを入力します。
 
-    ![IntelliJ Azure Explorer の [Link this cluster]\(このクラスターをリンク\)](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer11.png" alt-text="IntelliJ Azure Explorer の [Link this cluster]\(このクラスターをリンク\)" border="true":::
 
 4. クラスターが正常にリンクされると、HDInsight が更新されます。
    クラスターのステージはリンク状態になります。
   
-    ![IntelliJ Azure Explorer のリンク状態ダイアログ](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer8.png" alt-text="IntelliJ Azure Explorer のリンク状態ダイアログ" border="true":::
 
 ### <a name="link-cluster-by-expanding-jobs-node"></a>ジョブ ノードを展開してクラスターをリンクする
 
@@ -415,7 +415,7 @@ HDInsight ESP cluster with ID Broker (HIB) 上で、Spark Local Console(Scala) �
 
 2. **[Link this cluster]\(このクラスターをリンク\)** をクリックして、クラスターをリンクします。
 
-    ![[Cluster Job Access Denied]\(拒否されたクラスター ジョブ アクセス\) ダイアログ](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer9.png" alt-text="[Cluster Job Access Denied]\(拒否されたクラスター ジョブ アクセス\) ダイアログ" border="true":::
 
 ### <a name="link-cluster-from-rundebug-configurations-window"></a>[Run/Debug Configurations]\(実行/デバッグ構成\) ウィンドウからクラスターをリンクする
 
@@ -423,21 +423,21 @@ HDInsight ESP cluster with ID Broker (HIB) 上で、Spark Local Console(Scala) �
 
 2. **[Spark clusters(Linux only)]\(Spark クラスター (Linux のみ)\)** で、読み取り専用ロールのアクセス許可があるクラスターを選択します。 警告メッセージが表示されます。 **[Link this cluster]\(このクラスターをリンク\)** をクリックして、クラスターをリンクできます。
 
-   ![IntelliJ IDEA の実行/デバッグ構成の作成](./media/apache-spark-intellij-tool-plugin/create-configuration.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/create-configuration.png" alt-text="IntelliJ IDEA の実行/デバッグ構成の作成" border="true":::
 
 ### <a name="view-storage-accounts"></a>ストレージ アカウントを表示する
 
 * 読み取り専用ロールのアクセス許可があるクラスターで、**Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。 **[Azure Storage Explorer を開く]** をクリックして Storage Explorer を開くことができます。
 
-   ![IntelliJ IDEA の拒否されたストレージ アクセス](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer14.png" alt-text="IntelliJ IDEA の拒否されたストレージ アクセス" border="true":::
 
-   ![IntelliJ IDEA の拒否されたストレージ アクセス ボタン](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer10.png" alt-text="IntelliJ IDEA の拒否されたストレージ アクセス ボタン" border="true":::
 
 * リンクされたクラスターで、**Storage Accounts** ノードをクリックします。 **[Storage Access Denied]\(拒否されたストレージ アクセス\)** ウィンドウが表示されます。 **[Azure Storage Explorer を開く]** をクリックして Storage Explorer を開くことができます。
 
-   ![IntelliJ IDEA の拒否されたストレージ アクセス 2](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer13.png" alt-text="IntelliJ IDEA の拒否されたストレージ アクセス 2" border="true":::
 
-   ![IntelliJ IDEA の拒否されたストレージ アクセス 2 ボタン](./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin/intellij-view-explorer12.png" alt-text="IntelliJ IDEA の拒否されたストレージ アクセス 2 ボタン" border="true":::
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用できるように既存の IntelliJ IDEA アプリケーションを変換する
 
@@ -473,7 +473,7 @@ IntelliJ IDEA で作成した既存の Spark Scala アプリケーションを�
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
-![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png " alt-text="Azure portal で HDInsight クラスターを削除する" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,12 +4,12 @@ description: ポッドの水平オートスケーラー、クラスター オー
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b72ed7cefc6a16eb484e1337dbd64e5f069a2201
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f6d2121403361c4225a7e0e64411875d83d93194
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94686040"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305737"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -26,7 +26,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを実行すると、�
 
 レプリカ (ポッド) とノードを手動でスケーリングし、使用可能なリソースと状態の変化に対するアプリケーションの対応をテストできます。 手動によるリソースのスケーリングでは、ノード数などの固定コストを維持するために、使用する一定量のリソースを定義することもできます。 手動でスケーリングするには、レプリカまたはノードの数を定義します。 その後、そのレプリカまたはノードの数に基づき、Kubernetes API によって追加ポッドの作成またはノードのドレインのスケジュールが設定されます。
 
-ノードをスケールダウンすると、Kubernetes API によって、クラスターで使用されるコンピューティングの種類に関連付けられている Azure コンピューティング API が呼び出されます。 たとえば、VM Scale Sets 上に構築されたクラスターの場合は、VM Scale Sets API によって、削除するノードを選択するロジックが決められます。 スケールダウン時に削除対象のノードがどのように選択されるかの詳細については、[VMSS の FAQ](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed)を参照してください。
+ノードをスケールダウンすると、Kubernetes API によって、クラスターで使用されるコンピューティングの種類に関連付けられている Azure コンピューティング API が呼び出されます。 たとえば、VM Scale Sets 上に構築されたクラスターの場合は、VM Scale Sets API によって、削除するノードを選択するロジックが決められます。 スケールダウン時に削除対象のノードがどのように選択されるかの詳細については、[VMSS の FAQ](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#if-i-reduce-my-scale-set-capacity-from-20-to-15--which-vms-are-removed-)を参照してください。
 
 ポッドとノードの手動によるスケーリングを開始するには、「[チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング][aks-scale]」を参照してください。
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb14a6a82535ac5a7d36213b082d08aedbb44da5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 585e31ab566cc990af2819fcf9cdde0506560208
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99090622"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780175"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API 呼び出しを使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -60,13 +60,13 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 システム割り当てマネージド ID を有効にして仮想マシン スケール セットを作成するには、仮想マシン スケール セットを作成し、システム割り当てマネージド ID の種類の値を指定して Resource Manager エンドポイントを呼び出す CURL を使用するためのアクセス トークンを取得する必要があります。
 
-1. [az group create](/cli/azure/group/#az-group-create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
+1. [az group create](/cli/azure/group/#az_group_create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-2. 仮想マシン スケール セット用の[ネットワーク インターフェイス](/cli/azure/network/nic#az-network-nic-create)を作成します。
+2. 仮想マシン スケール セット用の[ネットワーク インターフェイス](/cli/azure/network/nic#az_network_nic_create)を作成します。
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
@@ -325,7 +325,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az account get-access-token
    ```
 
-2. 仮想マシン スケール セット用の[ネットワーク インターフェイス](/cli/azure/network/nic#az-network-nic-create)を作成します。
+2. 仮想マシン スケール セット用の[ネットワーク インターフェイス](/cli/azure/network/nic#az_network_nic_create)を作成します。
 
    ```azurecli-interactive
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic

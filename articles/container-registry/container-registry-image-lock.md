@@ -3,12 +3,12 @@ title: イメージのロック
 description: コンテナー イメージまたはリポジトリの属性を設定して、Azure コンテナー レジストリで削除や上書きができないようにします。
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "77659698"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772345"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
@@ -154,9 +154,8 @@ az acr repository update \
 削除操作の詳細については、「[Azure Container Registry のコンテナー イメージを削除する][container-registry-delete]」を参照してください。
 
 <!-- LINKS - Internal -->
-[az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-update]: /cli/azure/acr/repository#az_acr_repository_update
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-delete]: container-registry-delete.md
-

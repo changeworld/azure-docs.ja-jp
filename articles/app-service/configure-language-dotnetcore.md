@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5e4351529fb7b6a66f554182a195bc26f79c0e2b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655970"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889486"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET Core アプリを構成する
 
@@ -125,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-たとえば、App Service と *appsettings.json* で同じ名前のアプリ設定を構成した場合は、App Service の値が *appsettings.json* の値よりも優先されます。 ローカルの *appsettings.json* 値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の製品内でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
+たとえば、App Service と *appsettings.json* で同じ名前のアプリ設定を構成した場合は、App Service の値が *appsettings.json* の値よりも優先されます。 ローカルの *appsettings.json* 値ではアプリをローカルでデバッグできますが、App Service の値では実稼働設定の実稼働でアプリを実行できます。 接続文字列は同じように機能します。 これにより、コード リポジトリの外部にアプリケーション シークレットを保存し、コードを変更することなく適切な値にアクセスできます。
 
 > [!NOTE]
 > *appsettings. json* の [階層型の構成データ](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)は、.NET Core に標準の `:` 区切り記号を使用してアクセスされることに注意してください。 App Service で特定の階層型構成設定をオーバーライドするには、キーにアプリ設定名を同じ区切り形式で設定します。 [Cloud Shell](https://shell.azure.com) で次の例を実行できます。
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されるかどうかをアプリのロジックで認識する必要がある場合は、*Startup.cs* で Forwarded Headers Middleware を構成します。
+App Service では、[SSL 終端](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されるかどうかをアプリのロジックで認識する必要がある場合は、*Startup.cs* で Forwarded Headers Middleware を構成します。
 
 - `Startup.ConfigureServices` で、`X-Forwarded-For` ヘッダーと `X-Forwarded-Proto` ヘッダーを転送するように [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) を使ってミドルウェアを構成します。
 - ミドルウェアが App Service のロード バランサーを信頼できるようにするために、既知のネットワークにプライベート IP アドレス範囲を追加します。

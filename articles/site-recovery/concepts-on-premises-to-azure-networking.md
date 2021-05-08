@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
-ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b88ed44632aa255837d8fb499782e11c716d443
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89568780"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048189"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 
@@ -62,7 +62,7 @@ Azure VM への接続を確保するには、フェールオーバー前にオ�
 
 1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 オンプレミスのマシンに使用したパブリック IP アドレスと同じアドレスを Azure VM に使用することはできません。 [詳細情報](../virtual-network/virtual-network-public-ip-address.md)
 2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの受信接続が許可されていることを確認します。
-3. [[ブート診断]](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
+3. [[ブート診断]](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
 
 
 > [!NOTE]

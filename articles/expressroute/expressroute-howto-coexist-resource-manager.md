@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/06/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 15ec8417ba5e2858b45176f0a214f6126209f942
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3b6ed39c11e3f90b986ef904ff3f8e9ff3158d0d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574171"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -250,9 +250,9 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 
    ```azurepowershell-interactive
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
-   Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
+   Set-AzVirtualNetworkGateway -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. VPN ゲートウェイ用に、Azure に VPN ルート証明書をアップロードします。 この例では、次の PowerShell コマンドレットを実行しているローカル コンピューターにルート証明書が保存されていて、PowerShell をローカルで実行していることを前提としています。 Azure portal を使用して証明書をアップロードすることもできます。
+2. VPN ゲートウェイ用に、Azure に VPN [ルート証明書](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#Certificates)をアップロードします。 この例では、次の PowerShell コマンドレットを実行しているローカル コンピューターにルート証明書が保存されていて、PowerShell をローカルで実行していることを前提としています。 Azure portal を使用して証明書をアップロードすることもできます。
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

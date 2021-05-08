@@ -2,14 +2,14 @@
 title: Azure Resource Manager の概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
-ms.date: 09/01/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.custom: contperf-fy21q1,contperf-fy21q3-portal
+ms.openlocfilehash: 6cd9aa82ad2f8a821ae82a361b3f11b72ca25f7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97858520"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608546"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -91,7 +91,7 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 * リソース グループを削除すると、リソース グループ内のすべてのリソースも削除されます。 Azure Resource Manager によってこれらの削除がどのように調整されるかについては、「[Azure Resource Manager のリソース グループとリソースの削除](delete-resource-group.md)」を参照してください。
 
-* 各リソース グループには、リソースの種類のインスタンスを最大 800 個までデプロイできます。 一部のリソースの種類は、[800 インスタンスの制限から除外](resources-without-resource-group-limit.md)されています。
+* 各リソース グループには、リソースの種類のインスタンスを最大 800 個までデプロイできます。 一部のリソースの種類は、[800 インスタンスの制限から除外](resources-without-resource-group-limit.md)されています。 詳細については、「[リソース グループの制限](azure-subscription-service-limits.md#resource-group-limits)」を参照してください。
 
 * リソース グループの外部に存在するリソースもある。 これらのリソースは、[サブスクリプション](../templates/deploy-to-subscription.md)、[管理グループ](../templates/deploy-to-management-group.md)、または[テナント](../templates/deploy-to-tenant.md)にデプロイされます。 これらのスコープでは、特定のリソースの種類のみがサポートされます。
 
@@ -112,6 +112,8 @@ Azure Resource Manager サービスは、回復性と継続的な可用性を実
 この回復性は、Resource Manager 経由で要求を受信するサービスに適用されます。 たとえば、Key Vault はこの回復性からメリットを得られます。
 
 ## <a name="next-steps"></a>次のステップ
+
+* Azure のサービス全体に該当する制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」を参照してください。
 
 * リソースの移動の詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](move-resource-group-and-subscription.md)」を参照してください。
 

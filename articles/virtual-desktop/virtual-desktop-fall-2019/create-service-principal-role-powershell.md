@@ -6,13 +6,13 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
-manager: lizross
-ms.openlocfilehash: 91bb14a174d5bd5c16b38513825579097e1d6f7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 535ee2dace742a57877c9673e77bee64fd81c456
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89078530"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445042"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (classic) で PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 

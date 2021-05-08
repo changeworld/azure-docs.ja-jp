@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 02/28/2021
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9c3209895902a11ad0b9f29ff28e9ac7f845b101
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 594d38425be0304a9f7737bdfba60b29187a2e2d
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692727"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363514"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v3:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,8 @@ ms.locfileid: "101692727"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark コネクタ](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP コネクタ](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
@@ -40,7 +41,13 @@ ms.locfileid: "101692727"
 
 コア (SQL) 用 Spring Data Azure Cosmos DB バージョン 3 により、開発者は Spring アプリケーションで Azure Cosmos DB を使用できます。 Spring Data Azure Cosmos DB では、データベースとコレクションの操作、ドキュメントの操作、クエリの発行を行うための Spring Data インターフェイスが公開されています。 同期 API と非同期 (リアクティブ) API の両方とも、同じ Maven 成果物でサポートされています。 
 
-Spring Data Azure Cosmos DB は、Spring Data フレームワークに依存しています。 Azure Cosmos DB SDK チームから、Spring Data バージョン 2.2 および 2.3 用の Maven 成果物がリリースされます。
+> [!IMPORTANT]
+> Spring Data Azure Cosmos DB は、Spring Data フレームワークに依存しています。
+> 
+> azure-spring-data-cosmos バージョン 3.0.0 ～ 3.4.0 では、Spring Data version 2.2 および 2.3 がサポートされています。
+> 
+> azure-spring-data-cosmos バージョン 3.5.0 以降では、Spring Data version 2.4.3 以降がサポートされています。
+>
 
 [Spring Framework](https://spring.io/projects/spring-framework) は、Java アプリケーション開発を効率化するプログラミングおよび構成モデルです。 Spring では依存関係の挿入を使用して、アプリケーションの "プラミング" が効率化されます。 アプリケーションの構築とテストが簡潔になるため、多くの開発者が Spring を好んでいます。 [Spring Boot](https://spring.io/projects/spring-boot) は、Web アプリとマイクロサービスの開発を目的として、このプラミングの処理を拡張したものです。 [Spring Data](https://spring.io/projects/spring-data) は、Spring または Spring Boot アプリケーションのコンテキストから Azure Cosmos DB などのデータストアにアクセスするためのプログラミング モデルおよびフレームワークです。 
 
@@ -59,7 +66,7 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 
 ## <a name="get-started-fast"></a>すぐに開始
 
-  [Spring Boot Starter ガイド](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)に従って Spring Data Azure Cosmos DB を起動して実行します。 Spring Boot Starter のアプローチが、Spring Data Azure Cosmos DB コネクタの使用を開始するのにお勧めの方法です。
+  [Spring Boot Starter ガイド](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db)に従って Spring Data Azure Cosmos DB を起動して実行します。 Spring Boot Starter のアプローチが、Spring Data Azure Cosmos DB コネクタの使用を開始するのにお勧めの方法です。
 
   または、下に示すように、Spring Data Azure Cosmos DB の依存関係をお使いの `pom.xml` ファイルに追加できます。
 

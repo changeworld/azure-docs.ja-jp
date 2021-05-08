@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 5b9b0c6a0fe08ccff9da59539b926270cd0e1d44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032856"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563380"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -80,7 +80,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](logs/log-query-overview.md)」をご覧ください。
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータは削除できますか?
 データは、ワークスペースの[保有期間](logs/manage-cost-storage.md#change-the-data-retention-period)に従って削除されます。 プライバシーやコンプライアンス上の理由から、特定のデータを削除することが可能です。 詳細については、「[プライベート データをエクスポートして削除する方法](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
@@ -705,6 +705,10 @@ Kube システム名前空間内のコンテナーからのログ収集は、既
 
 エージェントをアップグレードする方法については、[エージェントの管理](containers/container-insights-manage-agent.md)に関する記事をご覧ください。
 
+### <a name="why-are-log-lines-larger-than-16kb-split-into-multiple-records-in-log-analytics"></a>ログ行が 16 KB を超えると Log Analytics で複数のレコードに分割されるのはなぜですか
+
+エージェントは、[Docker JSON ファイル ログ ドライバー](https://docs.docker.com/config/containers/logging/json-file/)を使用して、コンテナーの stdout と stderr を取り込みます。 このログ ドライバーは、[16 KB を超える](https://github.com/moby/moby/pull/22982)ログ行を stdout または stderr からファイルにコピーするときに、複数の行に分割します。
+
 ### <a name="how-do-i-enable-multi-line-logging"></a>複数行のログ記録を有効にするにはどうすればよいですか
 
 現在、Container insights では複数行のログ記録はサポートされていませんが、回避策はあります。 JSON 形式で書き込むようにすべてのサービスを構成することができ、Docker/Moby ではそれが単一行として書き込まれます。
@@ -821,6 +825,30 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 
 この条件下では、VM を開いて左側のウィンドウから **[Insights]\(インサイト\)** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が VM insights にオンボードされていない場合には、オプションは表示されません。 
 
+## <a name="sql-insights-preview"></a>SQL Insights (プレビュー)
+
+### <a name="what-versions-of-sql-server-are-supported"></a>どのバージョンの SQL Server がサポートされていますか
+SQL Server 2012 とそれ以降のすべてのバージョンがサポートされています。 詳細については、「[サポートされているバージョン](insights/sql-insights-overview.md#supported-versions)」を参照してください。
+
+### <a name="what-sql-resource-types-are-supported"></a>どのような SQL リソースの種類がサポートされていますか
+- Azure SQL データベース
+- Azure SQL Managed Instance
+- Azure Virtual Machines の SQL Server ([SQL 仮想マシン](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) プロバイダーに登録されている仮想マシンで実行されている SQL Server)
+- Azure VM ([SQL 仮想マシン](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) プロバイダーに登録されていない仮想マシンで実行されている SQL Server)
+
+サポートされていない、またはサポートが限られているシナリオの詳細については、「[サポートされているバージョン](insights/sql-insights-overview.md#supported-versions)」を参照してください。
+
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>SQL Server を実行する仮想マシンのオペレーティング システムは何がサポートされていますか
+[Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) と [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create) のドキュメントで指定されているすべてのオペレーティング システムは、Azure Virtual Machines の SQL Server に対応しています。
+
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>監視用の仮想マシンのオペレーティング システムは何がサポートされていますか
+現時点では、監視用の仮想マシンでサポートされているオペレーティングシステムは Ubuntu 18.04 だけです。
+
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>監視データは Log Analytics のどこに格納されますか
+すべての監視データは **InsightsMetrics** テーブルに格納されます。 **Origin** 列には、`solutions.azm.ms/telegraf/SqlInsights` という値があります。 **名前空間** 列には、`sqlserver_` で始まる値があります。
+
+### <a name="how-often-is-data-collected"></a>データはどのくらいの頻度で収集されますか 
+データ収集の頻度はカスタマイズできます。 既定の頻度の詳細については、「[SQL Insights によって収集されたデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights)」を参照してください。頻度をカスタマイズする手順については、 「[SQL 監視プロファイルの作成](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。

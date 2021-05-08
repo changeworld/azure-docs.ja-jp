@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ac90827fec65187088787971623483a96da77d7c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 309cf3882ade99de3f2e29a037d20ca50e35f490
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016238"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066672"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -178,6 +178,9 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 * シングルノード マルチ GPU 分散トレーニング ジョブをサポートする
 
 コンピューティング インスタンスは、テストまたはデバッグのシナリオのためのローカル推論配置ターゲットとして使用できます。
+
+> [!TIP]
+> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを[停止または再起動](how-to-create-manage-compute-instance.md#manage)する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 GB から 2 GB をクリアしてください。
 
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM はどうなったのか

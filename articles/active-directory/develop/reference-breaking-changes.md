@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 2/22/2021
+ms.date: 3/30/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eb75450527fc31d6ea4a9f9d60d676718ad79bda
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647423"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167585"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
@@ -35,9 +35,21 @@ ms.locfileid: "101647423"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>バグの修正: Azure AD によって、state パラメーターが 2 回 URL エンコードされることはなくなりました。
+
+**発効日**: 2021 年 5 月
+
+**影響を受けるエンドポイント**: v1.0 および v2.0 
+
+**影響を受けるプロトコル**: `/authorize` エンドポイントにアクセスするすべてのフロー (暗黙のフローおよび承認コードフロー)
+
+Azure AD の承認応答でバグが見つかり、修正されました。 認証の `/authorize` 段階では、応答に要求からの `state` パラメーターが含まれます。これにより、アプリの状態が維持され、CSRF 攻撃を防ぐことができます。 `state` パラメーターがエンコードされた応答に、このパラメーターを挿入する前に、Azure AD により、誤ってこのパラメーターがもう一度 URL エンコードされます。  これにより、アプリケーションが Azure AD からの応答を誤って拒否する可能性があります。 
+
+Azure AD によるこのパラメーターのダブルエンコードがなくなり、アプリで結果を正しく解析できるようになります。 この変更はすべてのアプリケーションに対して行われます。 
+
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>条件付きアクセスは、明示的に要求されたスコープに対してのみトリガーされる
 
-**有効日**: 2021 年 3 月
+**発効日**: 2021 年 5 月。ロールアウトは、4 月から徐々に開始されます。 
 
 **影響を受けるエンドポイント**: v2.0
 
@@ -48,6 +60,8 @@ ms.locfileid: "101647423"
 不要な条件付きアクセスのプロンプト数を減らすため、Azure AD では、要求されていないスコープがアプリケーションに提供される方法を変更し、明示的に要求されたスコープのみによって条件付きアクセスがトリガーされるようにします。 この変更によって、Azure AD の以前の動作 (つまり、要求されていなくてもすべてのアクセス許可を提供する) に依存しているアプリでは、要求するトークンにアクセス許可が不足することになり、問題が発生する可能性があります。
 
 今後、アプリでは、混合したアクセス許可 (要求されたものと、同意はあるが、条件付きアクセスのプロンプトが必要ないもの) が含まれたアクセス トークンを受け取ります。  アクセス トークンのスコープは、トークン応答の `scope` パラメーターに反映されます。 
+
+この変更は、この動作に対して、依存関係が確認されたものを除く、すべてのアプリを対象に行われます。  それらが追加の条件付きアクセス プロンプトに依存している可能性があるため、この変更から除外されている場合、開発者はアウトリーチを受け取ります。 
 
 **使用例**
 

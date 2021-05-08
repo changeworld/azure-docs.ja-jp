@@ -9,12 +9,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: 2e4a398ab71878134887fb8fba025cd8aa6122ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99492844"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750628"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する
 
@@ -32,7 +32,7 @@ API Management には、バックエンド サービスへのアクセスをセ�
 API Management のセキュリティ向上に役立つため、キー コンテナー証明書を使用することをお勧めします。
 
 * キー コンテナーに格納されている証明書は、サービス間で再利用できます
-* キー コンテナーに格納されている証明書には、きめ細かい[アクセス ポリシー](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)を適用できます
+* キー コンテナーに格納されている証明書には、きめ細かい[アクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)を適用できます
 * キー コンテナーで更新された証明書は、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の証明書が更新されます。 また、Azure portal または管理 REST API を使用して、証明書を手動で更新することもできます。
 
 ## <a name="prerequisites"></a>前提条件

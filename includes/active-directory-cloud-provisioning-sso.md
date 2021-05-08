@@ -6,28 +6,28 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 6d95e40623f17a39145778a2fc067dccc68fd872
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95559810"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>シングル サインオンを有効にする手順
 クラウド プロビジョニングはシングル サインオンで動作します。  現時点では、エージェントのインストール時に SSO を有効にするオプションはありませんが、以下の手順を使用して SSO を有効にし、使用することができます。 
 
-### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>手順 1:Azure AD Connect ファイルのダウンロードと抽出
+### <a name="step-1-download-and-extract-azure-ad-connect-files"></a>手順 1: Azure AD Connect ファイルのダウンロードと抽出
 1.  まず、最新バージョンの [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) をダウンロードします
 2.  管理者特権を使用してコマンド プロンプトを開き、ダウンロードした msi に移動します。
 3.  次のコマンドを実行します: `msiexec /a C:\filepath\AzureADConnect.msi /qb TARGETDIR=C:\filepath\extractfolder`
 4. ファイル パスおよび抽出フォルダーの名前に一致するように filepath と extractfolder を変更します。  これで、コンテンツが抽出フォルダーに配置されます。
 
-### <a name="step-2-import-the-seamless-sso-powershell-module"></a>手順 2:Seamless SSO PowerShell モジュールのインポート
+### <a name="step-2-import-the-seamless-sso-powershell-module"></a>手順 2: Seamless SSO PowerShell モジュールをインポートする
 
 1. [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
 2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーを参照します。
 3. `Import-Module .\AzureADSSO.psd1` コマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。
 
-### <a name="step-3-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>手順 3:シームレス SSO が有効になっている Active Directory フォレストのリストを取得する
+### <a name="step-3-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>手順 3: シームレス SSO が有効になっている Active Directory フォレストのリストを取得する
 
 1. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 2. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている Active Directory フォレストの一覧 ("ドメイン" リストを参照) が表示されます。

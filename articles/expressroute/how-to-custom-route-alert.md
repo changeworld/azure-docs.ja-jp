@@ -1,22 +1,22 @@
 ---
 title: ExpressRoute:アドバタイズされるルートのカスタム アラートを構成する方法
-description: この記事では、Azure Automation と Logic Apps を使用して、200 ルートの上限に達するのを防ぐために、ExpressRoute ゲートウェイからオンプレミス ネットワークにアドバタイズされるルートの数を監視する方法について説明します。
+description: この記事では、Azure Automation と Logic Apps を使用して、1000 件のルートの上限に達するのを防ぐために、ExpressRoute ゲートウェイからオンプレミス ネットワークにアドバタイズされるルートの数を監視する方法について説明します。
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: fed7663e2342a708aee70b9a54e6e0a6b6f97e8c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102504403"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654392"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 
-この記事では、Azure Automation と Logic Apps を使用して、ExpressRoute ゲートウェイからオンプレミス ネットワークにアドバタイズされるルートの数を常に監視する方法について説明します。 監視により、[200 ルートの制限](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering)を超えないようにすることができます。
+この記事では、Azure Automation と Logic Apps を使用して、ExpressRoute ゲートウェイからオンプレミス ネットワークにアドバタイズされるルートの数を常に監視する方法について説明します。 監視により、[1000 件のルートの制限](expressroute-faqs.md#how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering) を超えないようにすることができます。
 
 **Azure Automation** を使用すると、*Runbook* に格納されているカスタム PowerShell スクリプトの実行を自動化できます。 この記事の構成を使用する場合、Runbook には、1 つまたは複数の ExpressRoute ゲートウェイに対してクエリを行う PowerShell スクリプトが含まれます。 これは、リソース グループ、ExpressRoute ゲートウェイ名、オンプレミスでアドバタイズされたネットワーク プレフィックスの数を含むデータセットを収集します。
 
@@ -48,7 +48,7 @@ ms.locfileid: "102504403"
 
 * この記事で説明するカスタム アラートは、運用と制御を向上させるためのアドオンです。 ExpressRoute のネイティブ アラートに代わるものではありません。
 * ExpressRoute ゲートウェイに対するデータ収集はバックグラウンドで実行されます。 実行時間は予想よりも長くなる可能性があります。 ジョブがキューイングされるのを回避するために、ワークフローの繰り返しを適切に設定する必要があります。
-* スクリプトまたは Resource Manager テンプレートによるデプロイは、カスタム アラーム トリガーよりも速くなる可能性があります。 これにより、ExpressRoute ゲートウェイのネットワーク プレフィックス数が 200 ルートの上限を超えて増加する可能性があります。
+* スクリプトまたは Resource Manager テンプレートによるデプロイは、カスタム アラーム トリガーよりも速くなる可能性があります。 これにより、ExpressRoute ゲートウェイのネットワーク プレフィックス数が 1000 件のルートの上限を超えて増加することがあります。
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>アカウントを作成して構成する
 
@@ -409,7 +409,7 @@ JSON が解析されると、**JSON の解析データ操作** アクション�
 
    :::image type="content" source="./media/custom-route-alert-portal/peer-2.png" alt-text="numRoutesPeer2":::
 
-9. 2 つの動的変数 numRoute1 および numRoute2 のいずれかがしきい値を超える場合、ロジック条件は true になります。 この例では、しきい値は 160 (最大値 200 ルートの 80%) に固定されています。 しきい値は、要件に合わせて変更できます。 一貫性を確保するために、値は Runbook PowerShell スクリプトで使用されるのと同じ値にする必要があります。
+9. 2 つの動的変数 numRoute1 および numRoute2 のいずれかがしきい値を超える場合、ロジック条件は true になります。 この例では、しきい値は 800 (最大値 1000 ルートの 80%) に固定されています。 しきい値は、要件に合わせて変更できます。 一貫性を確保するために、値は Runbook PowerShell スクリプトで使用されるのと同じ値にする必要があります。
 
    :::image type="content" source="./media/custom-route-alert-portal/logic-condition.png" alt-text="ロジック条件":::
 

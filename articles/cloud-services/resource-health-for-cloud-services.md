@@ -3,17 +3,18 @@ title: Cloud Services (クラシック) 用の Resource Health
 description: この記事では、Microsoft Azure Cloud Services (クラシック) 用のリソース正常性チェック (RHC) のサポートについて説明します
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: resource-health
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 46a27e42d6b3440914ca0d32e1ae2138b128021e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743510"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935160"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) 用のリソース正常性チェック (RHC) のサポート
 

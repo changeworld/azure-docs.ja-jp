@@ -3,18 +3,18 @@ title: Android マップへのタイル レイヤーの追加 | Microsoft Azure 
 description: マップにタイル レイヤーを追加する方法について説明します。 Azure Maps Android SDK を使用して気象レーダーのオーバーレイをマップに追加する例を参照してください。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 2/26/2021
+ms.date: 3/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 6a920dc222cae4aedd77b667644de317637bbb69
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ac37a4e6d68decdf6780560963a0c534689e8dbb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102047504"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608987"
 ---
 # <a name="add-a-tile-layer-to-a-map-android-sdk"></a>マップにタイル レイヤーを追加する (Android SDK)
 
@@ -24,12 +24,12 @@ ms.locfileid: "102047504"
 
 * X、Y、ズーム表記 - ズーム レベルに基づいた、タイル グリッド内のタイルの列 (x)、行 (x) の位置です。
 * quadkey 表記 - x、y、ズーム情報を組み合わせて、タイルの一意の識別子である 1 つの文字列値にします。
-* 境界ボックス - 境界ボックス座標を使用して、[Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定できます。
+* 境界ボックス - 境界ボックス座標を使用して、[Web マッピング サービス (WMS)](https://www.opengeospatial.org/standards/wms) で一般的に使用されている `{west},{south},{east},{north}` の形式で画像を指定できます。
 
 > [!TIP]
 > TileLayer は、マップ上で大規模なデータ セットを視覚化する場合に適しています。 画像からタイル レイヤーを生成できるだけでなく、ベクター データもタイル レイヤーとしてレンダリングできます。 ベクター データをタイル レイヤーとしてレンダリングすることで、マップ コントロールで必要となるのはタイルの読み込みだけです。タイルは、それらが表すベクター データよりもはるかに小さいファイル サイズである可能性があります。 この手法は、何百万行ものデータをマップにレンダリングする必要がある場合によく使われています。
 
-タイル レイヤーに渡されるタイル URL は、TileJSON リソースへの http/https URL、または次のパラメーターを使用するタイル URL テンプレートにする必要があります。 
+タイル レイヤーに渡されるタイル URL は、TileJSON リソースへの http/https URL、または次のパラメーターを使用するタイル URL テンプレートにする必要があります。
 
 * `{x}` - タイルの X 位置。 `{y}` と `{z}` も必要です。
 * `{y}` - タイルの Y 位置。 `{x}` と `{z}` も必要です。
@@ -83,7 +83,83 @@ map.layers.add(layer, "labels")
 
 ![タイル レイヤーを表示している Android マップ](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="add-an-ogc-web-mapping-service-wms"></a>OGC Web マッピング サービス (WMS) を追加する
+
+Web マッピング サービス (WMTS) は、Open Geospatial Consortium (OGC) 標準で、マップ データのイメージを処理します。 Azure Maps で使用できるこの形式のオープン データセットは数多くあります。 この種類のサービスが `EPSG:3857` 座標参照系 (CRS) をサポートしている場合は、そのサービスをタイル レイヤーで使用できます。 WMS サービスを使用する場合は、幅と高さのパラメーターを、そのサービスでサポートされているものと同じ値に設定し、必ず `tileSize` オプションにも同じ値を設定してください。 書式設定された URL で、 `{bbox-epsg-3857}` プレースホルダーを使用してサービスの `BBOX` パラメーターを設定します。
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+TileLayer layer = new TileLayer(
+    tileUrl("https://mrdata.usgs.gov/services/gscworld?FORMAT=image/png&HEIGHT=1024&LAYERS=geology&REQUEST=GetMap&STYLES=default&TILED=true&TRANSPARENT=true&WIDTH=1024&VERSION=1.3.0&SERVICE=WMS&CRS=EPSG:3857&BBOX={bbox-epsg-3857}"),
+    tileSize(1024)
+);
+
+map.layers.add(layer, "labels");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://mrdata.usgs.gov/services/gscworld?FORMAT=image/png&HEIGHT=1024&LAYERS=geology&REQUEST=GetMap&STYLES=default&TILED=true&TRANSPARENT=true&WIDTH=1024&VERSION=1.3.0&SERVICE=WMS&CRS=EPSG:3857&BBOX={bbox-epsg-3857}"),
+    tileSize(1024)
+)
+
+map.layers.add(layer, "labels")
+```
+
+::: zone-end
+
+次のスクリーンショットは、上記のコードで、[アメリカ地質調査所 (USGS)](https://mrdata.usgs.gov/) の地質データの Web マッピング サービスを、地図上でラベルの下にオーバーレイしています。
+
+![WMS タイル レイヤーを表示している Android マップ](media/how-to-add-tile-layer-android-map/android-tile-layer-wms.jpg)
+
+## <a name="add-an-ogc-web-mapping-tile-service-wmts"></a>OGC Web マッピング タイル サービス (WMTS) を追加する
+
+Web マッピング タイル サービス (WMTS) は、Open Geospatial Consortium (OGC) 標準で、マップのタイルベースのオーバーレイを処理します。 Azure Maps で使用できるこの形式のオープン データセットは数多くあります。 この種類のサービスが `EPSG:3857` または `GoogleMapsCompatible` 座標参照系 (CRS) をサポートしている場合は、そのサービスをタイル レイヤーで使用できます。 WMTS サービスを使用する場合は、幅と高さのパラメーターを、そのサービスでサポートされているものと同じ値に設定し、必ず `tileSize` オプションにも同じ値を設定してください。 書式設定された URL で、以下のプレースホルダーを適宜置換します。
+
+* `{TileMatrix}` => `{z}`
+* `{TileRow}` => `{y}`
+* `{TileCol}` => `{x}`
+
+::: zone pivot="programming-language-java-android"
+
+``` java
+TileLayer layer = new TileLayer(
+    tileUrl("https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/WMTS/tile/1.0.0/USGSImageryOnly/default/GoogleMapsCompatible/{z}/{y}/{x}"),
+    tileSize(256),
+    bounds(-173.25000107492872, 0.0005794121990209753, 146.12527718104752, 71.506811402077),
+    maxSourceZoom(18)
+);
+
+map.layers.add(layer, "transit");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+val layer = TileLayer(
+    tileUrl("https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/WMTS/tile/1.0.0/USGSImageryOnly/default/GoogleMapsCompatible/{z}/{y}/{x}"),
+    tileSize(256),
+    bounds(-173.25000107492872, 0.0005794121990209753, 146.12527718104752, 71.506811402077),
+    maxSourceZoom(18)
+)
+
+map.layers.add(layer, "transit")
+```
+
+::: zone-end
+
+次のスクリーンショットは、上記のコードで、[アメリカ地質調査所 (USGS) 全国地図](https://viewer.nationalmap.gov/services/)の画像の Web マッピング タイル サービスを、地図上で道路とラベルの下にオーバーレイしています。
+
+![WMTS タイル レイヤーを表示している Android マップ](media/how-to-add-tile-layer-android-map/android-tile-layer-wmts.jpg)
+
+## <a name="next-steps"></a>次のステップ
 
 地図上で画像をオーバーレイする各種方法の詳細については、次の記事を参照してください。
 

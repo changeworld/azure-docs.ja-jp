@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 1fe36dc7b3c04f033c1b693b657e07bcf42e3223
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a26091d4985b6fdb17120c6fd70476a750c94a9
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715005"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714127"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>Microsoft Defender for Identity (旧称 Azure Advanced Threat Protection) からデータを接続する
 
@@ -34,7 +34,7 @@ ms.locfileid: "101715005"
 ## <a name="prerequisites"></a>前提条件
 
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
-- Microsoft Defender for Identity のプレビュー ユーザーになり、Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 詳細については、[Microsoft Defender for Identity の統合](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection)に関するページを参照してください。
+- Microsoft Defender for Identity のプレビュー ユーザーになり、Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 詳細については、[Microsoft Defender for Identity の統合](/cloud-app-security/mdi-integration)に関するページを参照してください。
 
 ## <a name="connect-to-microsoft-defender-for-identity"></a>Microsoft Defender for Identity に接続する
 
@@ -42,7 +42,7 @@ Microsoft Defender for Identity プレビュー バージョンが[お使いの�
 Microsoft Defender for Identity がデプロイされ、データの取り込みを行っている場合は、不審なアラートを Azure Sentinel に簡単にストリーム配信できます。 アラートが Azure Sentinel へのストリーミングを開始するには、最大で 24 時間かかる場合があります。
 
 
-1. Microsoft Defender for Identity を Azure Sentinel に接続するには、最初に Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 これを行う方法については、[Microsoft Defender for Identity の統合](https://www.microsoft.com/microsoft-365/identity/advance-threat-protection)に関するページを参照してください。
+1. Microsoft Defender for Identity を Azure Sentinel に接続するには、最初に Microsoft Defender for Identity と Microsoft Cloud App Security の統合を有効にする必要があります。 これを行う方法については、[Microsoft Defender for Identity の統合](/cloud-app-security/mdi-integration)に関するページを参照してください。
 
 1. Azure Sentinel で **[データ コネクタ]** を選択し、 **[Microsoft Defender for Identity (プレビュー)]** タイルをクリックします。
 

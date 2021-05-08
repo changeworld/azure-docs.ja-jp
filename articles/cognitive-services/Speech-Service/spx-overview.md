@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ddba62b37c200ade87dbb51042fe0cb084a9ef9a
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98539778"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106124"
 ---
 # <a name="what-is-the-speech-cli"></a>Speech CLI とは
 
@@ -36,7 +36,7 @@ Speech SDK を使用する場合
 
 * 音声認識 - 音声ファイルから、またはマイクからの直接のいずれかの音声テキスト変換、または記録された会話の書き起こしを行います。
 
-* 音声合成 - テキスト ファイルからの入力、またはコマンド ラインから直接入力のいずれかを使用して、テキスト読み上げの変換を行います。 [SSML 構成](speech-synthesis-markup.md)および[標準またはニューラルの音声](speech-synthesis-markup.md#standard-neural-and-custom-voices)のいずれかを使用して、音声出力の特性をカスタマイズします。
+* 音声合成 - テキスト ファイルからの入力、またはコマンド ラインから直接入力のいずれかを使用して、テキスト読み上げの変換を行います。 [SSML 構成](speech-synthesis-markup.md)および[標準またはニューラルの音声](speech-synthesis-markup.md#neural-and-custom-voices)のいずれかを使用して、音声出力の特性をカスタマイズします。
 
 * 音声翻訳 - ソース言語の音声をターゲット言語のテキストまたは音声に翻訳します。
 

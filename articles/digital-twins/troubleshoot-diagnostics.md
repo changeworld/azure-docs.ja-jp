@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/9/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c600ced8896a3847b80d854c9e230310cca4c98d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 797de242b4b4464c0bfb5ae18af05710ab36bce6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100588596"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285481"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
@@ -115,7 +115,7 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
 | フィールド名 | データ型 | 説明 |
 |-----|------|-------------|
 | `Time` | DateTime | このイベントが発生した日時 (UTC) |
-| `ResourceID` | String | イベントが発生したリソースの Azure Resource Manager リソース ID |
+| `ResourceId` | String | イベントが発生したリソースの Azure Resource Manager リソース ID |
 | `OperationName` | String  | イベント中に実行されるアクションの種類 |
 | `OperationVersion` | String | イベント中に使用される API バージョン |
 | `Category` | String | 出力されるリソースの種類 |

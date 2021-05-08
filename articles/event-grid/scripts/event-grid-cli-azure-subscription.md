@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe81be64ea4672d233564726cfdae5b60951057d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e523311c9df15e5801a65d69506d09a60b874d79
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87494334"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766769"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Azure CLI を使用した Azure サブスクリプションのイベントのサブスクライブ
 
@@ -36,7 +36,7 @@ ms.locfileid: "87494334"
 
 | コマンド | Notes |
 |---|---|
-| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | Event Grid のサブスクリプションを作成する。 |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Event Grid のサブスクリプションを作成する。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 拡張機能のバージョン | Event Grid のサブスクリプションを作成する。 |
 
 ## <a name="next-steps"></a>次のステップ

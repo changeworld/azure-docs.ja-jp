@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery プロセス サーバーを監視する
 description: この記事では、VMware VM/物理サーバーのディザスター リカバリーに使用される Azure Site Recovery プロセス サーバーを監視する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0dcee641a2de73238557a6a29173f71ee1c4312a
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86134741"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580561"
 ---
 # <a name="monitor-the-process-server"></a>プロセス サーバーを監視する
 

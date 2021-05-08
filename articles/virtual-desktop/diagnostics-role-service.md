@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 70676bd1a07acdfcbba071a906b390ed66d70074
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: cf654f07cbbd729fac8feb9e2f8f7ceff471ae6a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91279860"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446997"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Windows Virtual Desktop 問題を特定し、診断する
 

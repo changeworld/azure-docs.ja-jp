@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 12/21/2020
-ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.date: 03/31/2021
+ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722523"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109069"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -18,13 +18,27 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 既知の問題
 - バグの修正
 
+## <a name="march-2021"></a>2021 年 3 月
+
+バージョン 1.4
+
+## <a name="new-feature"></a>新機能
+
+- 現在限定プレビュー段階にあるプライベート エンドポイントのサポートを追加しました。
+- azcmagent 用の終了コードの詳細な一覧。
+- エージェントの構成パラメーターを、`--config` パラメーターを使用してファイルから読み取れるようになりました。
+
+## <a name="fixed"></a>固定
+
+ネットワーク エンドポイントのチェックが高速になりました。
+
 ## <a name="december-2020"></a>2020 年 12 月
 
 バージョン:1.3
 
 ### <a name="new-feature"></a>新機能
 
-Windows Server 2008 R2 のサポートを追加
+Windows Server 2008 R2 のサポートを追加。
 
 ### <a name="fixed"></a>固定
 

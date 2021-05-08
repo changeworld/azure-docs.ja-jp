@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 13d4bb94d3efb574895df6cfdf240cdeec77e539
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d19c656946817b06cd620d8a48073bed8299af7d
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99070196"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502260"
 ---
 Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) コマンドレットを使用して、前の手順で作成したリソース グループにキー コンテナーを作成します。 いくつかの情報を指定する必要があります。
 
@@ -22,7 +22,7 @@ Azure PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)
 - 場所: **EastUS**。
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "ContosoResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。

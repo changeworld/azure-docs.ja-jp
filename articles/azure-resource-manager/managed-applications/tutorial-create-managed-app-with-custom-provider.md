@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 228d1a8bcd97daebae873de4c69cbec238e0c995
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96437050"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312537"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 
@@ -349,7 +349,7 @@ az managedapp create \
 
 ## <a name="looking-for-help"></a>ヘルプを探しています
 
-Azure Managed Applications に関して不明な点がある場合には、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managedapps) で質問してみてください。 同様の質問が既に質問され回答されているため、投稿する前にまず確認してください。 `azure-managedapps` タグを追加して早く応答を受け取りましょう。
+Azure Managed Applications に関して不明な点がある場合には、azure-managed-app というタグを使用して [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-managed-app) で質問するか、azure-managed-application というタグを使用して [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-managed-applications.html) で質問してみてください。 同様の質問が既に質問され回答されているため、投稿する前にまず確認してください。 回答が得られるまでの時間を短縮するために、それぞれのタグを使用してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

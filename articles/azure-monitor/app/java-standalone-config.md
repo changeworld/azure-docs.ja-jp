@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32b1558bf4af2ee151fef33a8c0cbe7df82f1e84
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201755"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449972"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "102201755"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.2.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.3.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.0.2.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.0.3.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -61,7 +61,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用して、接続文字列を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_CONNECTION_STRING` を使用して接続文字列を設定することもできます (JSON 構成で指定されている接続文字列よりも優先されます)。
 
 接続文字列を設定しないと、Java エージェントが無効になります。
 
@@ -81,7 +81,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 
 クラウド ロール名が設定されていない場合は、アプリケーション マップのコンポーネントにラベルを付けるために、Application Insights リソースの名前が使用されます。
 
-環境変数 `APPLICATIONINSIGHTS_ROLE_NAME` を使用して、クラウド ロール名を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_ROLE_NAME` を使用してクラウド ロール名を設定することもできます (JSON 構成で指定されているクラウド ロール名よりも優先されます)。
 
 ## <a name="cloud-role-instance"></a>クラウド ロール インスタンス
 
@@ -98,7 +98,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_ROLE_INSTANCE` を使用して、クラウド ロール インスタンスを設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_ROLE_INSTANCE` を使用してクラウド ロール インスタンスを設定することもできます (JSON 構成で指定されているクラウド ロール インスタンスよりも優先されます)。
 
 ## <a name="sampling"></a>サンプリング
 
@@ -117,10 +117,21 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE` を使用してサンプリング率を設定することもできます (JSON 構成で指定されているサンプリング率よりも優先されます)。
 
 > [!NOTE]
 > サンプリング率には、N を整数として 100/N に近い割合を選択します。 サンプリングでは現在、その他の値はサポートされていません。
+
+## <a name="sampling-overrides-preview"></a>サンプリング オーバーライド (プレビュー)
+
+3\.0.3 以降、この機能はプレビュー段階にあります。
+
+サンプリング オーバーライドを使用すると、[既定のサンプリング率](#sampling)をオーバーライドできます。次に例を示します。
+* ノイズの多い正常性チェックでは、サンプリング率を 0 (または何らかの小さい値) に設定します。
+* ノイズの多い依存関係呼び出しでは、サンプリング率を 0 (または何らかの小さい値) に設定します。
+* 重要な要求の種類 (`/login` など) では、既定のサンプリングが低く構成されている場合でも、サンプリング率を 100 に設定します。
+
+詳細については、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)に関するドキュメントを参照してください。
 
 ## <a name="jmx-metrics"></a>JMX メトリック
 
@@ -151,9 +162,6 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 
 数値およびブール型の JMX メトリック値がサポートされています。 ブール型の JMX メトリックは、false の場合は `0` に、true の場合は `1` にマップされます。
 
-[//]: # "注: APPLICATIONINSIGHTS_JMX_METRICS に関する説明がここに記載されていません"
-[//]: # "env var に埋め込まれている json は整理されておらず、コード不要のアタッチ シナリオについてのみ記載する方がよいと考えられます"
-
 ## <a name="custom-dimensions"></a>カスタム ディメンション
 
 すべてのテレメトリにカスタム ディメンションを追加する場合は、次のようにします。
@@ -179,17 +187,23 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 要求、依存関係、トレースのテレメトリに適用されるルールを構成できます。次に例を示します。
  * 機密データをマスクする
  * 条件付きでカスタム ディメンションを追加する
- * 集計や表示に使用されるテレメトリ名を更新する
+ * スパン名を更新する。これは、Azure portal で同様のテレメトリを集計するために使用されます。
+ * インジェスト コストを制御するために特定のスパン属性を削除する。
 
 詳細については、[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)を確認してください。
+
+> [!NOTE]
+> インジェスト コストを制御するために特定の (全体の) スパンを削除しようとしている場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
 
 ## <a name="auto-collected-logging"></a>自動収集されるログ
 
 Log4j、Logback、java.util.logging は自動的にインストルメント化され、これらのログ記録フレームワークを介して実行されるログは自動収集されます。
 
-ログ記録は、最初にログ記録フレームワークの構成されたしきい値を満たし、次に Application Insights の構成されたしきい値も満たす場合にのみキャプチャされます。
+ログ記録は、ログ記録フレームワークに構成されているレベルを最初に満たし、次に Application Insights に構成されているレベルも満たす場合にのみキャプチャされます。
 
-既定の Application Insights のしきい値は `INFO` です。 このレベルを変更する場合:
+たとえば、パッケージ `com.example` から `WARN` (以上) をログに記録するようにログ記録フレームワークが構成されており、`INFO` (以上) をキャプチャするように Application Insights が構成されている場合、Application Insights では、パッケージ `com.example` から `WARN` (以上) しかキャプチャしません。
+
+Application Insights に構成されている既定のレベルは `INFO` です。 このレベルを変更する場合:
 
 ```json
 {
@@ -201,7 +215,7 @@ Log4j、Logback、java.util.logging は自動的にインストルメント化�
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` を使用してしきい値を設定することもできます。
+環境変数 `APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL` を使用してレベルを設定することもできます (JSON 構成で指定されているレベルよりも優先されます)。
 
 以下に、`applicationinsights.json` ファイルに指定できる有効な `level` 値と、それらが各種ログ フレームワークのログ レベルにどのように対応するかを示します。
 
@@ -242,9 +256,32 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
+## <a name="auto-collected-azure-sdk-telemetry"></a>自動収集 Azure SDK テレメトリ
+
+この機能はプレビュー段階にあります。
+
+最新の Azure SDK ライブラリの多くでは、テレメトリが生成されます。
+
+バージョン 3.0.3 以降では、このテレメトリの収集を有効にすることができます。
+
+```json
+{
+  "preview": {
+    "instrumentation": {
+      "azureSdk": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
+
+環境変数 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` を使用してこの機能を有効にすることもできます
+(JSON 構成で指定されている有効設定よりも優先されます)。
+
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>特定の自動収集テレメトリの抑制
 
-バージョン 3.0.2 以降では、こちらの構成オプションを使用して、特定の自動収集テレメトリを抑制できます。
+バージョン 3.0.3 以降では、こちらの構成オプションを使用して、特定の自動収集テレメトリを抑制できます。
 
 ```json
 {
@@ -253,6 +290,9 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
       "enabled": false
     },
     "jdbc": {
+      "enabled": false
+    },
+    "jms": {
       "enabled": false
     },
     "kafka": {
@@ -266,10 +306,28 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
     },
     "redis": {
       "enabled": false
+    },
+    "springScheduling": {
+      "enabled": false
     }
   }
 }
 ```
+
+これらの環境変数を使用して、これらのインストルメンテーションを抑制することもできます
+
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
+
+(JSON 構成で指定されている有効設定よりも優先されます)。
+
+> 注: より細かい制御を検討している (たとえば、すべての Redis 呼び出しではなく、一部の Redis 呼び出しを抑制する) 場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -284,7 +342,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 ```
 
 > [!NOTE]
-> ハートビート データは Application Insights の使用状況を追跡するためにも使用されるため、ハートビートの頻度を下げることはできません。
+> ハートビート データは Application Insights の使用状況の追跡にも使用されるため、間隔を 15 分より長くすることはできません。
 
 ## <a name="http-proxy"></a>HTTP Proxy
 
@@ -300,6 +358,30 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 ```
 
 グローバルの `-Dhttps.proxyHost` と `-Dhttps.proxyPort` が設定されている場合、Application Insights Java 3.0 によってそれらも考慮されます。
+
+## <a name="metric-interval"></a>メトリックの間隔
+
+この機能はプレビュー段階にあります。
+
+既定では、メトリックは 60 秒ごとにキャプチャされます。
+
+バージョン 3.0.3 以降では、この間隔を変更できます。
+
+```json
+{
+  "preview": {
+    "metricIntervalSeconds": 300
+  }
+}
+```
+
+この設定は、次のすべてのメトリックに適用されます。
+
+* 既定のパフォーマンス カウンター (CPU やメモリなど)
+* 既定のカスタム メトリック (ガベージ コレクションのタイミングなど)
+* 構成済み JMX メトリック ([上記を参照](#jmx-metrics))
+* Micrometer メトリック ([上記を参照](#auto-collected-micrometer-metrics-including-spring-boot-actuator-metrics))
+
 
 [//]: # "注: OpenTelemetry API が 1.0 になるまで、OpenTelemetry のサポートはプライベート プレビュー段階です"
 
@@ -343,13 +425,13 @@ Application Insights Java 3.0 は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.2.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.3.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 
 `maxHistory` は、(現在のログ ファイルに加えて) 保持される、ロールオーバーされたログ ファイルの数です。
 
-バージョン 3.0.2 以降では、環境変数 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` を使用して自己診断 `level` を設定することもできます。
+バージョン 3.0.2 以降では、環境変数 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` を使用して自己診断 `level` を設定することもできます (JSON 構成で指定されている自己診断レベルよりも優先されます)。
 
 ## <a name="an-example"></a>使用例
 

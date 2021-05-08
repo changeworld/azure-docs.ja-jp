@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 987b850d569c238902f57baaed4a2178f51bd79d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589618"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307947"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -52,7 +52,7 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
     > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 例として、Azure AD プリンシパルは、[Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) を使用した場合にのみファイルにアクセスできるほか、公開されているファイルにアクセスすることができます。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 データベース ユーザーが `OPENROWSET` 関数を使用するには `ADMINISTER BULK OPERATIONS` 権限が必要です。
 
@@ -138,9 +138,9 @@ unstructured_data_path をフォルダーとして指定すると、サーバー
 例のように、パスの末尾に /* を指定することで、フォルダーをスキャンするようサーバーレス SQL プールに指示できます: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。 また、Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、ファイル名が下線 (_) やピリオド (.) で始まるファイルが返されます。
+> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。
 
-次の例で unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、サーバーレス SQL プール クエリによって、mydata.txt および _hidden.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
+次の例で unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、サーバーレス SQL プール クエリによって、mydata.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
 ![外部テーブルの再帰型データ](./media/develop-openrowset/folder-traversal.png)
 
@@ -241,7 +241,7 @@ DATAFILETYPE = { 'char' | 'widechar' }
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
-データ ファイル内のデータのコード ページを指定します。 既定値は 65001 (UTF-8 エンコード) です。 このオプションの詳細については、[こちら](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)を参照してください。
+データ ファイル内のデータのコード ページを指定します。 既定値は 65001 (UTF-8 エンコード) です。 このオプションの詳細については、[こちら](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage)を参照してください。
 
 ## <a name="fast-delimited-text-parsing"></a>高速の区切りテキスト解析
 

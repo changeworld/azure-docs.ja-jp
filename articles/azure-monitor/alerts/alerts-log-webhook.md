@@ -6,12 +6,12 @@ ms.author: yalavi
 services: monitoring
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 228193066c45421c4dddee1802aba1feed59e9c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1834fb7478fbb9ed435dac4f1e4b43f83e5d2db1
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042676"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383571"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 
@@ -21,7 +21,7 @@ ms.locfileid: "102042676"
 > 現在、JSON ベースの Webhook は API バージョン `2020-05-01-preview` ではサポートされていません。
 
 > [!NOTE]
-> Webhook 統合には、[共通アラート スキーマ](../alerts/alerts-common-schema.md)を使用することをお勧めします。 共通アラート スキーマには、Azure Monitor のすべてのアラート サービスで、1 つの拡張可能で統合されたアラート ペイロードを使用できる利点があります。 カスタム JSON ペイロードが定義されているログ アラート ルールの場合、共通スキーマを有効にすると、ペイロード スキーマが[ここ](../alerts/alerts-common-schema-definitions.md#log-alerts)に記載されたものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあり、より大きいアラートには検索結果は含まれません。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、Log Analytics API を使用してクエリ結果にアクセスする必要があります。
+> Webhook 統合には、[共通アラート スキーマ](../alerts/alerts-common-schema.md)を使用することをお勧めします。 共通アラート スキーマには、Azure Monitor のすべてのアラート サービスで、1 つの拡張可能で統合されたアラート ペイロードを使用できる利点があります。 カスタム JSON ペイロードが定義されているログ アラート ルールの場合、共通アラート スキーマを有効にすると、ペイロード スキーマが[ここ](../alerts/alerts-common-schema-definitions.md#log-alerts)に記載されたものに戻ります。 つまり、カスタム JSON ペイロードを定義する場合、Webhook で共通のアラート スキーマを使用することはできません。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあり、より大きいアラートには検索結果は含まれません。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、Log Analytics API を使用してクエリ結果にアクセスする必要があります。
 
 ## <a name="webhook-payload-properties"></a>Webhook ペイロード プロパティ
 
@@ -87,65 +87,68 @@ Webhook アクションを使用して、1 つの HTTP POST 要求を呼び出�
 
 ```json
 {
-    "SubscriptionId": "12345a-1234b-123c-123d-12345678e",
-    "AlertRuleName": "AcmeRule",
-    "SearchQuery": "Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
-    "SearchIntervalStartTimeUtc": "2018-03-26T08:10:40Z",
-    "SearchIntervalEndtimeUtc": "2018-03-26T09:10:40Z",
-    "AlertThresholdOperator": "Greater Than",
-    "AlertThresholdValue": 0,
-    "ResultCount": 2,
-    "SearchIntervalInSeconds": 3600,
-    "LinkToSearchResults": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "LinkToFilteredSearchResultsUI": "https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
-    "LinkToSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
-    "LinkToFilteredSearchResultsAPI": "https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
-    "Description": "log alert rule",
-    "Severity": "Warning",
-    "AffectedConfigurationItems": [
-        "INC-Gen2Alert"
-    ],
-    "Dimensions": [
-        {
-            "name": "Computer",
-            "value": "INC-Gen2Alert"
-        }
-    ],
-    "SearchResult": {
-        "tables": [
+   "schemaId":"Microsoft.Insights/LogAlert",
+   "data":{
+      "SubscriptionId":"12345a-1234b-123c-123d-12345678e",
+      "AlertRuleName":"AcmeRule",
+      "SearchQuery":"Perf | where ObjectName == \"Processor\" and CounterName == \"% Processor Time\" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer",
+      "SearchIntervalStartTimeUtc":"2018-03-26T08:10:40Z",
+      "SearchIntervalEndtimeUtc":"2018-03-26T09:10:40Z",
+      "AlertThresholdOperator":"Greater Than",
+      "AlertThresholdValue":0,
+      "ResultCount":2,
+      "SearchIntervalInSeconds":3600,
+      "LinkToSearchResults":"https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+      "LinkToFilteredSearchResultsUI":"https://portal.azure.com/#Analyticsblade/search/index?_timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
+      "LinkToSearchResultsAPI":"https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+      "LinkToFilteredSearchResultsAPI":"https://api.loganalytics.io/v1/workspaces/workspaceID/query?query=Heartbeat&timespan=2020-05-07T18%3a11%3a51.0000000Z%2f2020-05-07T18%3a16%3a51.0000000Z",
+      "Description":"log alert rule",
+      "Severity":"Warning",
+      "AffectedConfigurationItems":[
+         "INC-Gen2Alert"
+      ],
+      "Dimensions":[
+         {
+            "name":"Computer",
+            "value":"INC-Gen2Alert"
+         }
+      ],
+      "SearchResult":{
+         "tables":[
             {
-                "name": "PrimaryResult",
-                "columns": [
-                    {
-                        "name": "$table",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Computer",
-                        "type": "string"
-                    },
-                    {
-                        "name": "TimeGenerated",
-                        "type": "datetime"
-                    }
-                ],
-                "rows": [
-                    [
-                        "Fabrikam",
-                        "33446677a",
-                        "2018-02-02T15:03:12.18Z"
-                    ],
-                    [
-                        "Contoso",
-                        "33445566b",
-                        "2018-02-02T15:16:53.932Z"
-                    ]
-                ]
+               "name":"PrimaryResult",
+               "columns":[
+                  {
+                     "name":"$table",
+                     "type":"string"
+                  },
+                  {
+                     "name":"Computer",
+                     "type":"string"
+                  },
+                  {
+                     "name":"TimeGenerated",
+                     "type":"datetime"
+                  }
+               ],
+               "rows":[
+                  [
+                     "Fabrikam",
+                     "33446677a",
+                     "2018-02-02T15:03:12.18Z"
+                  ],
+                  [
+                     "Contoso",
+                     "33445566b",
+                     "2018-02-02T15:16:53.932Z"
+                  ]
+               ]
             }
-        ]
-    },
-    "WorkspaceId": "12345a-1234b-123c-123d-12345678e",
-    "AlertType": "Metric measurement"
+         ]
+      },
+      "WorkspaceId":"12345a-1234b-123c-123d-12345678e",
+      "AlertType":"Metric measurement"
+   }
 }
 ```
 

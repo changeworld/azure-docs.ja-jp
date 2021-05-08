@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322003"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>SSIS コネクタを使用して Azure Blob Storage 間でデータを移動する
@@ -38,12 +38,12 @@ ms.locfileid: "93322003"
 この記事で説明するタスクを実行するには、Azure サブスクリプションと Azure Storage アカウントの設定が必要です。 データをアップロードまたはダウンロードするために、Azure Storage アカウント名とアカウント キーを確認しておく必要があります。
 
 * **Azure サブスクリプション** を設定するには、 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
-* **ストレージ アカウント** の作成と、アカウントとキー情報の取得についての手順については、 [Azure Storage アカウントについて](../../storage/common/storage-account-create.md)の記事を参照してください。
+* **ストレージ アカウント** の作成と、アカウントとキー情報の取得についての手順については、[Azure Storage アカウントについて](../../storage/common/storage-account-create.md)の記事を参照してください。
 
 **SSIS コネクタ** を使用するには、次のものをダウンロードする必要があります。
 
-* **SQL Server 2014 または 2016 Standard (またはそれ以降)** :インストールには SQL Server Integration Services が含まれます。
-* **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure** :これらのコネクタは、 [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
+* **SQL Server 2014 または 2016 Standard 以降**: インストールには SQL Server Integration Services が含まれます。
+* **Microsoft SQL Server 2014 または 2016 Integration Services Feature Pack for Azure**: これらのコネクタは、[SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) および [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) のページからそれぞれダウンロードできます。
 
 > [!NOTE]
 > SSIS は SQL Server と共にインストールされますが、Express バージョンには含まれていません。 SQL Server の各種エディションに含まれるアプリケーションについては、「[SQL Server のエディション](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)」をご覧ください
@@ -52,7 +52,7 @@ ms.locfileid: "93322003"
 
 SSIS のトレーニング資料については、 [SSIS の実践的トレーニング](https://www.microsoft.com/sql-server/training-certification)
 
-SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み込み) パッケージを作成する方法については、[SSIS チュートリアル:簡単な ETL パッケージの作成](/sql/integration-services/ssis-how-to-create-an-etl-package)に関する記事をご覧ください。
+SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み込み) パッケージを作成する方法については、「 [SSIS チュートリアル: 簡単な ETL パッケージの作成](/sql/integration-services/ssis-how-to-create-an-etl-package)」を参照してください。
 
 ## <a name="download-nyc-taxi-dataset"></a>NYC タクシー データセットをダウンロードする
 ここで説明する例では、一般公開されているデータセットである、 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセットを使用します。 このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。 データには、乗車の詳細データと料金データの 2 種類があります。 月ごとにファイルが用意されているため、24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
@@ -74,7 +74,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 | **TimeRangeFrom/TimeRangeTo** |時間範囲フィルターを指定します。 *TimeRangeFrom* から *TimeRangeTo* までの間に変更されたファイルが含まれます。 |
 
 > [!NOTE]
-> 転送を試す前に、 **AzureStorageConnection** の資格情報が正しく、 **BlobContainer** が存在することを確認する必要があります。
+> 転送を試す前に、**AzureStorageConnection** の資格情報が正しく、**BlobContainer** が存在することを確認する必要があります。
 > 
 > 
 

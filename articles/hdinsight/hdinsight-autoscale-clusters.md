@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942639"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863770"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
@@ -91,7 +91,7 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
     * ワーカー ノードの **[最小]** の数。
     * ワーカー ノードの **[最大]** の数。
 
-    ![ワーカー ノードの負荷ベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png" alt-text="ワーカー ノードの負荷ベースの自動スケーリングを有効にする":::
 
 ワーカー ノードの初期の数には、最小数から最大数までの数を指定する必要があります。 この値によって、クラスターが作成されるときのその初期サイズが定義されます。 ワーカー ノードの最小数は、3 以上に設定する必要があります クラスターを 3 つ未満のノードにスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。  詳細については、「[セーフ モードでスタックする](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)」を参照してください。
 
@@ -108,7 +108,7 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
 1. 条件を有効にする時刻と、クラスターのスケーリング後のノード数を編集します。
 1. 必要に応じて、さらに条件を追加します。
 
-    ![ワーカー ノードのスケジュールベースの作成を有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    :::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png" alt-text="ワーカー ノードのスケジュールベースの作成を有効にする":::
 
 ノードの数は、3 から条件追加前に入力したワーカー ノードの最大数の間にする必要があります。
 
@@ -116,7 +116,7 @@ Azure HDInsight の無料自動スケーリング機能を使用すると、以�
 
 **[ノード サイズ]** の下のドロップダウン リストから VM を選択して、ワーカー ノードの VM の種類を選択します。 ノードの種類ごとに VM の種類を選択すると、クラスター全体の概算のコスト範囲を表示できるようになります。 予算に合わせて VM の種類を調整します。
 
-![ワーカー ノードのノード サイズに対するスケジュールベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png" alt-text="ワーカー ノードのノード サイズに対するスケジュールベースの自動スケーリングを有効にする":::
 
 サブスクリプションには、リージョンごとに容量のクォータがあります。 ヘッド ノードのコアの総数とワーカー ノードの最大数の合計が容量のクォータを超えることはできません。 ただし、このクォータはソフト制限です。それを簡単に増やすためのサポート チケットをいつでも作成できます。
 
@@ -193,7 +193,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
 
 実行中のクラスターで自動スケーリングを有効にするには、 **[設定]** の **[クラスター サイズ]** を選択します。 次に、 **[自動スケーリングの有効化]** を選択します。 使用する自動スケーリングの種類を選択し、負荷ベースまたはスケジュール ベースのスケーリングのオプションを入力します。 最後に、 **[保存]** を選択します。
 
-![ワーカー ノードの実行中のクラスターに対するスケジュールベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png" alt-text="ワーカー ノードの実行中のクラスターに対するスケジュールベースの自動スケーリングを有効にする":::
 
 #### <a name="using-the-rest-api"></a>REST API の使用
 
@@ -217,7 +217,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 Azure portal に表示されるクラスターの状態は、自動スケーリング アクティビティの監視に役立ちます。
 
-![ワーカー ノードのクラスター状態に対する負荷ベースの自動スケーリングを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png" alt-text="ワーカー ノードのクラスター状態に対する負荷ベースの自動スケーリングを有効にする":::
 
 表示される可能性があるすべてのクラスター状態メッセージを、以下の一覧で説明します。
 
@@ -237,7 +237,7 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 
 **[監視]** で **[メトリック]** を選択します。 その後、 **[メトリックの追加]** を選択し、 **[メトリック]** ドロップダウン ボックスから **[Number of Active Workers]\(アクティブなワーカーの数\)** を選択します。 右上にあるボタンを選択して、時間の範囲を変更します。
 
-![ワーカー ノードのスケジュールベースの自動スケーリング メトリックを有効にする](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+:::image type="content" source="./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png" alt-text="ワーカー ノードのスケジュールベースの自動スケーリング メトリックを有効にする":::
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

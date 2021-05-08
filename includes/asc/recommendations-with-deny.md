@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 02/16/2021
+ms.date: 03/21/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fce7ba090d5aa86c85452ca41ce606d2fa52a6ee
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 5fc36e327a9530105182f0a23b3ef22ab324e01c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645393"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803616"
 ---
 - ファイアウォールと仮想ネットワークの構成があるストレージ アカウントへのアクセスを制限する必要がある
 - Automation アカウント変数は、暗号化する必要がある

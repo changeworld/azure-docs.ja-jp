@@ -1,25 +1,25 @@
 ---
-title: Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
-description: Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
-manager: eladz
+title: Power BI を使用してログとメトリックを視覚化する
+description: Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化します。
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 4056e892855c06ce6c412ec4a592ebcd97fc11a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2021
+ms.openlocfilehash: fbbeb861e50abfd393b416ddc46ff147fffb7b8e
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96325385"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581628"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Power BI を使用して Azure Cognitive Search のログとメトリックを視覚化する
-[Azure Cognitive Search](./search-what-is-azure-search.md) を使用すると、お使いの検索サービスに関する操作ログとサービス メトリックを Azure Storage アカウントに格納できます。 このページでは、Power BI テンプレート アプリを使用してその情報を視覚化する方法について説明します。 このアプリでは、検索、インデックス作成、操作、サービスのメトリックに関する情報など、お使いの検索サービスに関する詳細な分析情報が提供されます。
+
+[Azure Cognitive Search](./search-what-is-azure-search.md) は、操作ログとサービス メトリックを Azure Storage アカウントに送信できます。これらは、Power BI で視覚化できます。 この記事では、Power BI テンプレート アプリを使用してデータを視覚化する手順と方法について説明します。 このテンプレートでは、検索、インデックス作成、操作、サービスのメトリックに関する情報など、検索サービスに関する詳細な分析情報が得られます。
 
 Power BI テンプレート アプリである **Azure Cognitive Search: Analyze Logs and Metrics** を [Power BI アプリのマーケットプレース](https://appsource.microsoft.com/marketplace/apps)で見つけることができます。
 
-## <a name="how-to-get-started-with-the-app"></a>アプリの使用を開始する方法
+## <a name="set-up-the-app"></a>ツールをセットアップする
 
 1. 検索サービスに対してメトリックとリソースのログを有効にします。
 
@@ -67,7 +67,8 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
 
     :::image type="content" source="media/search-monitor-logs-powerbi/powerbi-search.png" alt-text="Azure Cognitive Search Power BI レポートのスクリーンショット。":::
 
-## <a name="how-to-change-the-app-parameters"></a>アプリのパラメーターを変更する方法
+## <a name="modify-app-parameters"></a>アプリのパラメーターを変更する
+
 別のストレージ アカウントのデータを視覚化する場合や、何日分のデータにクエリを実行するかを変更する場合は、次の手順に従って、**Days** パラメーターと **StorageAccount** パラメーターを変更します。
 
 1. Power BI アプリに移動し、Azure Cognitive Search アプリを見つけて、 **[アプリの編集]** ボタンを選択してワークスペースを表示します。
@@ -86,7 +87,8 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
 
 1. レポートを開くと、更新されたデータが表示されます。 また、最新のデータを表示するために、レポートを最新の情報に更新することが必要な場合もあります。
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting-report-issues"></a>トラブルシューティング レポートに関する問題
+
 データが表示されない場合は、次のトラブルシューティング手順に従います。
 
 1. レポートを開き、ページを最新の情報に更新して、最新のデータが表示されていることを確認します。 データを最新の情報に更新するオプションがレポートにあります。 これを選択して最新のデータを取得します。
@@ -98,8 +100,7 @@ Power BI テンプレート アプリである **Azure Cognitive Search: Analyze
 1. データセットがまだ更新中であるかどうかを確認します。 更新状態インジケーターは、上記の手順 8 に示されています。 まだ更新中の場合は、更新が完了するまで待ってから、レポートを開いて最新の状態に更新します。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Cognitive Search の詳細情報](./index.yml)
 
-[Power BI とは?](/power-bi/fundamentals/power-bi-overview)
-
-[Power BI サービスのデザイナー向けの基本的な概念](/power-bi/service-basic-concepts)
++ [検索操作とアクティビティの監視](search-monitor-usage.md)
++ [Power BI とは?](/power-bi/fundamentals/power-bi-overview)
++ [Power BI サービスのデザイナー向けの基本的な概念](/power-bi/service-basic-concepts)

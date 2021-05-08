@@ -3,7 +3,6 @@ title: チュートリアル - Azure portal を使用して Key Vault に証明�
 description: Azure Key Vault に証明書をインポートする方法を示すチュートリアル
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: b7b15c1c4952f6e0a606b1ed46f1588c536b4ae2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204084"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791969"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>チュートリアル:Azure Key Vault に証明書をインポートする
 
@@ -104,9 +103,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-[パラメーター](/cli/azure/keyvault/certificate#az-keyvault-certificate-import)の詳細を参照してください。
+[パラメーター](/cli/azure/keyvault/certificate#az_keyvault_certificate_import)の詳細を参照してください。
 
-証明書のインポート後は、[certificate show](/cli/azure/keyvault/certificate#az-keyvault-certificate-show) を使用して証明書を表示できます。
+証明書のインポート後は、[certificate show](/cli/azure/keyvault/certificate#az_keyvault_certificate_show) を使用して証明書を表示できます。
 
 
 ```azurecli
@@ -135,7 +134,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-[パラメーター](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)の詳細を参照してください。
+[パラメーター](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?)の詳細を参照してください。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

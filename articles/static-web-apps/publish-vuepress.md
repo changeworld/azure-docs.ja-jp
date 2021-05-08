@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
 ms.openlocfilehash: 6f0616df885a7f8fcd76337c810bc368aa02f3c8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100650450"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>チュートリアル:VuePress サイトを Azure Static Web Apps プレビューに発行する
@@ -111,9 +111,9 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** をクリックします
-1. **Static Web Apps** を検索します
+1. **[Static Web Apps]** を探します
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-1. **[作成]** をクリックします。
+1. **[作成]**
 
    :::image type="content" source="./media/publish-vuepress/create-in-portal.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 

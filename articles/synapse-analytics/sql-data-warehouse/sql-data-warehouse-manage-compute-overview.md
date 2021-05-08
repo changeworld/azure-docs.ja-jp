@@ -1,6 +1,6 @@
 ---
 title: 専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理する
-description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、専用 SQL プールを一時停止してコストを削減したりします。
+description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、専用 SQL プール (以前の SQL DW) を一時停止してコストを削減したりします。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4a2ce18f4a02ccaadf66a96049b00f3837b927e4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8c44e0570b08bba852d57fbb25da05d778ea8a0d
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677039"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960114"
 ---
 # <a name="manage-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) のコンピューティングを管理する
 
@@ -92,6 +92,7 @@ Azure Synapse Analytics で専用 SQL プール (旧称 SQL DW) におけるコ�
 - 一時停止の期間中、データ ウェアハウス ユニットのコストは 0 になります。
 - データ ストレージは影響を受けず、データはそのまま残ります。
 - 実行中またはキューに入れられたすべての操作が取り消されます。
+- DMV カウンターがリセットされます。
 
 専用 SQL プール (旧称 SQL DW) を再開する場合:
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470270"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789485"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 
@@ -119,7 +119,7 @@ GitHub Actions ビルド プロバイダーは、次の方法でカスタマイ�
 
 このオプション構成では、既定の認証が、生成されたワークフロー ファイル内の発行プロファイルに置き換えられます。
 
-1. [Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用して、サービス プリンシパルを作成します。 次の例では、 *\<subscription-id>* 、 *\<group-name>* 、および *\<app-name>* を独自の値に置き換えます。
+1. [Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用して、サービス プリンシパルを作成します。 次の例では、 *\<subscription-id>* 、 *\<group-name>* 、および *\<app-name>* を独自の値に置き換えます。
 
     ```azurecli-interactive
     az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \

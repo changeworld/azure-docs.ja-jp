@@ -7,10 +7,10 @@ author: peterpogorski
 ms.date: 02/15/2021
 ms.custom: references_regions
 ms.openlocfilehash: aa77896ba88d0ffd0a6f94a84603b5f4a1803357
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100633089"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric マネージド クラスターに関してよく寄せられる質問

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102511049"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073426"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。 分離されたサイズは、特定のハードウェア世代上に存続して動作し、そのハードウェア世代が廃止されると非推奨となります。
 
@@ -31,6 +31,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
+* Standard_DC8_v2
 
 
 > [!NOTE]
@@ -48,6 +49,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 | Standard_GS5  | 2022 年 2 月 15 日 |
 | Standard_E64i_v3  | 2022 年 2 月 15 日 |
 | Standard_E64is_v3  | 2022 年 2 月 15 日 |
+| Standard_DC8_v2 | 2022 年 2 月 15 日 |
 
 
 ## <a name="faq"></a>よく寄せられる質問
@@ -82,7 +84,7 @@ Azure Compute では、特定のハードウェアの種類に分離される、
 | Date | アクション |
 |---|---|
 | 2021 年 2 月 15 日<sup>1</sup> | G5/GS5/E64i_v3/E64is_v3 分離の提供終了に関するお知らせ |
-| 2022 年 2 月 15 日 | G5/GS5/E64i_v3/E64is_v3 分離保証が削除されます |
+| 2022 年 2 月 28 日 | G5/GS5/E64i_v3/E64is_v3 分離保証が削除されます |
 
 <sup>1</sup> これらのサイズを使用している既存のお客様には、次の手順に関する詳細な手順が記載されたお知らせのメールが届きます。  
 

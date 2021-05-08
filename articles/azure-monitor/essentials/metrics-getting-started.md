@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: e3d8d6529eb943566118cc67eab549cb32891cd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: df745e7612dbd5b5bb9029b89d7f74974270c2d1
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037236"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962715"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -45,7 +45,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
 
 > [!WARNING]
-> [Azure のほとんどのメトリックは 93 日間保存されます](../essentials/data-platform-metrics.md#retention-of-metrics)。 ただし、1 つのグラフでクエリできるデータは 30 日までです。 この制限は、[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)には適用されません。
+> [Azure のほとんどのメトリックは 93 日間保存されます](../essentials/data-platform-metrics.md#retention-of-metrics)。 ただし、1 つのグラフでクエリできるデータは 30 日までです。 グラフを[パン](metrics-charts.md#pan)すると、完全な保有期間を表示できます。 この 30 日の制限は、[ログベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)には適用されません。
 
 既定では、直近の 24 時間のメトリック データがグラフに表示されます。 ご利用のグラフ上で時間範囲を変更したり、ズームインまたはズーム アウトしたりするには、 **[時刻の選択]** パネルを使用します。 
 
@@ -63,6 +63,20 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 - **分割** を使用すると、グラフ内でディメンションの値ごとに個別のラインを表示するか、それとも値を集計して 1 本のラインとして表示するかを制御できます。 たとえば、すべてのサーバー インスタンスの応答時間を平均した 1 本のラインを表示することも、サーバーごとに個別のラインを表示することもできます。 個別のラインを表示する場合は、"*サーバー インスタンス*" ディメンションに対して分割を適用する必要があります。
 
 フィルター処理と分割が適用されたグラフの例については、[こちら](../essentials/metric-chart-samples.md)を参照してください。 その記事では、グラフを構成するために使用した手順が示されています。
+
+## <a name="share-your-metric-chart"></a>メトリック グラフを共有する
+現在、メトリック グラフの共有には 2 つの方法があります。 Excel とリンクを使用してメトリック グラフの情報を共有する方法について、以下に示します。
+ 
+### <a name="download-to-excel"></a>Excel へのダウンロード
+[共有] をクリックし、[Excel にダウンロード] を選択します。 ダウンロードはすぐに開始します。
+
+![Excel を使用してメトリック グラフを共有する方法に関連するスクリーンショット](./media/metrics-getting-started/share-excel.png)
+
+### <a name="share-a-link"></a>リンクの共有
+[共有] をクリックし、[リンクのコピー] を選択します。 リンクが正常にコピーされたことを示す通知が表示されます。
+
+![リンクを使用してメトリック グラフを共有する方法に関連するスクリーンショット](./media/metrics-getting-started/share-link.png)
+
 
 ## <a name="advanced-chart-settings"></a>グラフの詳細設定
 

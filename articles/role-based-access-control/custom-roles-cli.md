@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3d05ba65e0d3918f1651c36cd17700ebf74de76
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97369142"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778339"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Azure CLI を使用して Azure カスタム ロールを作成または更新する
 
@@ -41,7 +41,7 @@ ms.locfileid: "97369142"
 
 ## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
-割り当てに使用できるカスタム ロールを一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。 次の例では、現在のサブスクリプションのすべてのカスタム ロールを一覧表示します。
+割り当てに使用できるカスタム ロールを一覧表示するには、[az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用します。 次の例では、現在のサブスクリプションのすべてのカスタム ロールを一覧表示します。
 
 ```azurecli
 az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -66,7 +66,7 @@ az role definition list --custom-role-only true --output json --query '[].{roleN
 
 ## <a name="list-a-custom-role-definition"></a>カスタム ロールの定義の一覧表示
 
-カスタム ロールの定義を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。 これは、組み込みロールに使用するコマンドと同じです。
+カスタム ロールの定義を一覧表示するには、[az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用します。 これは、組み込みロールに使用するコマンドと同じです。
 
 ```azurecli
 az role definition list --name {roleName}
@@ -140,7 +140,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 
-カスタム ロールを作成するには、[az role definition create](/cli/azure/role/definition#az-role-definition-create) を使用します。 ロール定義には、JSON 記述を含むファイルへの JSON 記述またはパスを指定できます。
+カスタム ロールを作成するには、[az role definition create](/cli/azure/role/definition#az_role_definition_create) を使用します。 ロール定義には、JSON 記述を含むファイルへの JSON 記述またはパスを指定できます。
 
 ```azurecli
 az role definition create --role-definition {roleDefinition}
@@ -183,7 +183,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 
 ## <a name="update-a-custom-role"></a>カスタム ロールの更新
 
-カスタム ロールを更新するには、最初に [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用して、ロール定義を取得します。 次に、必要に応じてロール定義を変更します。 最後に、[az role definition update](/cli/azure/role/definition#az-role-definition-update) を使用して、更新されたロール定義を保存します。
+カスタム ロールを更新するには、最初に [az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用して、ロール定義を取得します。 次に、必要に応じてロール定義を変更します。 最後に、[az role definition update](/cli/azure/role/definition#az_role_definition_update) を使用して、更新されたロール定義を保存します。
 
 ```azurecli
 az role definition update --role-definition {roleDefinition}
@@ -228,7 +228,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 
 ## <a name="delete-a-custom-role"></a>カスタム ロールの削除
 
-カスタム ロールを削除するには、[az role definition delete](/cli/azure/role/definition#az-role-definition-delete) を使用します。 削除するロールを指定するには、ロール名またはロール ID を使用します。 ロール ID を決定するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
+カスタム ロールを削除するには、[az role definition delete](/cli/azure/role/definition#az_role_definition_delete) を使用します。 削除するロールを指定するには、ロール名またはロール ID を使用します。 ロール ID を決定するには、[az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用します。
 
 ```azurecli
 az role definition delete --name {roleNameOrId}

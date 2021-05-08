@@ -2,22 +2,22 @@
 title: Azure AD を使用し、グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 description: グループまたはチームのデータにアクセスするアプリケーションにグループ所有者とチーム所有者が同意できるかどうかを管理する方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 8d8604a1dd54ed819bb9e27c46d61a46466bf3da
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: be28148aacf270f2f3cfabad4cbd5f03afa05d3b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548803"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374422"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 

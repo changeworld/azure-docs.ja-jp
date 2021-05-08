@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージの有効期限
 description: この記事では、Azure Service Bus メッセージの有効期限と Time to Live について説明します。 このような期限が過ぎると、メッセージは配信されなくなります。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042829"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952322"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 メッセージが受信者に伝えるメッセージ、コマンド、または問い合わせの中のペイロードには、ほとんどの場合、何らかの形式のアプリケーション レベルの有効期限が適用されます。 有効期限が切れると、コンテンツの配信は停止され、要求された操作は実行されなくなります。
@@ -46,7 +46,7 @@ Service Bus のキュー、トピック、およびサブスクリプション�
  
 自動クリーンアップは、エンティティが動的に作成され、テストまたはデバッグの実行が中断されたことにより、使用後にクリーンアップされない、開発およびテストのシナリオで役立ちます。 また、アプリケーションが、応答キューなどの動的エンティティを作成し、Web サーバー プロセス、または比較的寿命の短い他のオブジェクトに応答を戻し、オブジェクト インスタンスが消去されたときに確実にこれらのエンティティをクリーン アップすることが困難な場合でも有用です。
 
-この機能は、名前空間の **auto delete on idle** プロパティを使用して有効にします。 このプロパティは、このプロパティはエンティティがアイドル状態 (未使用) であり続けると自動的に削除される期間を設定します。 このプロパティの最小値は 5 です。
+この機能は、名前空間の **auto delete on idle** プロパティを使用して有効にします。 このプロパティは、このプロパティはエンティティがアイドル状態 (未使用) であり続けると自動的に削除される期間を設定します。 このプロパティの最小値は 5 分です。
  
 ## <a name="idleness"></a>アイドル
 

@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098063"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564587"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) でのキャッシュ
 
@@ -26,6 +26,10 @@ ms.locfileid: "101098063"
 > Azure Front Door Standard/Premium (プレビュー) は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+## <a name="request-methods"></a>要求メソッド
+
+GET 要求メソッドのみが、Azure Front Door 上にキャッシュされたコンテンツを生成できます。 その他のすべての要求メソッドは、常にネットワーク経由でプロキシ化されます。
 
 ## <a name="delivery-of-large-files"></a>大きなファイルの配信
 

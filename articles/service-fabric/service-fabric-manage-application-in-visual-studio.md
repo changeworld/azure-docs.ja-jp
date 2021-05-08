@@ -4,10 +4,10 @@ description: Visual Studio を利用し、Azure Service Fabric のアプリケ�
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.openlocfilehash: 1fd9295a0dead180767febcc5339ef0a25cb1e48
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96574549"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Service Fabric アプリケーションの記述と管理が簡単にするための Visual Studio の利用

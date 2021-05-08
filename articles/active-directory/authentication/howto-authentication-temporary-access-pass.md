@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/31/2021
 ms.author: justinha
-author: inbarckms
+author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579384"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167364"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>パスワードレスの認証方法を登録するように Azure AD で一時アクセス パスを構成する (プレビュー)
 
 パスワードレスの認証方法 (FIDO2 や Microsoft Authenticator アプリを使用したパスワードレスの電話によるサインインなど) は、ユーザーがパスワードを使用せずに安全にサインインできるようにします。 ユーザーは、次の 2 つの方法のいずれかでパスワードレスの方法をブートストラップできます。
 
 - 既存の Azure AD 多要素認証方法を使用する 
-- 一時アクセス パスを使用する 
+- 一時アクセス パス (TAP) を使用する 
 
 一時アクセス パスは、管理者によって発行される期間限定のパスコードであり、強力な認証要件を満たし、パスワードレスの方法を含む他の認証方法をオンボードするために使用できます。 また、一時アクセス パスを使用すると、ユーザーが FIDO2 セキュリティ キーや Microsoft Authenticator アプリなどの強力な認証要素を紛失したり忘れたりした場合でも簡単に回復することができます。しかし、新しい強力な認証方法を登録するには、サインインする必要があります。
 
@@ -49,15 +49,15 @@ ms.locfileid: "104579384"
    次の表では、既定値と許可される値の範囲について説明します。
 
 
-   | 設定          | 既定値 | 使用できる値               | 説明                                                                                                                                                                                                                                                                 |   |
-   |------------------|----------------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    最短有効期間 | 1 時間         | 10 ～ 43200 分 (30 日) | 一時アクセス パスが有効である最短時間 (分)。                                                                                                                                                                                                                         |   |
-   | 最長有効期間 | 24 時間       | 10 ～ 43200 分 (30 日) | 一時アクセス パスが有効である最長時間 (分)。                                                                                                                                                                                                                         |   |
-   | 既定の有効期間 | 1 時間         | 10 ～ 43200 分 (30 日) | 既定値は、ポリシーによって構成される最短および最長の有効期間内で、個々のパスによってオーバーライドできます                                                                                                                                                |   |
-   | 1 回限りの使用     | False          | True/False                 | ポリシーが false に設定されている場合、テナントのパスは、その有効期間 (最大有効期間) 中に 1 回または複数回使用できます。 一時アクセス パス ポリシーで 1 回限りの使用を強制することで、テナントに作成されたすべてのパスが 1 回限りの使用として作成されます。 |   |
-   | 長さ           | 8              | 8 ～ 48 文字              | パスコードの長さを定義します。                                                                                                                                                                                                                                      |   |
+   | 設定 | 既定値 | 使用できる値 | 説明 |
+   |---|---|---|---|
+   | 最短有効期間 | 1 時間 | 10 ～ 43200 分 (30 日) | 一時アクセス パスが有効である最短時間 (分)。 |
+   | 最長有効期間 | 24 時間 | 10 ～ 43200 分 (30 日) | 一時アクセス パスが有効である最長時間 (分)。 |
+   | 既定の有効期間 | 1 時間 | 10 ～ 43200 分 (30 日) | 既定値は、ポリシーによって構成される最短および最長の有効期間内で、個々のパスによってオーバーライドできます。 |
+   | 1 回限りの使用 | False | True/False | ポリシーが false に設定されている場合、テナントのパスは、その有効期間 (最大有効期間) 中に 1 回または複数回使用できます。 一時アクセス パス ポリシーで 1 回限りの使用を強制することで、テナントに作成されたすべてのパスが 1 回限りの使用として作成されます。 |
+   | 長さ | 8 | 8 ～ 48 文字 | パスコードの長さを定義します。 |
 
-## <a name="create-a-temporary-access-pass-in-the-azure-ad-portal"></a>Azure AD ポータルで一時アクセス パスを作成する
+## <a name="create-a-temporary-access-pass"></a>一時アクセス パスを作成する
 
 ポリシーを有効にした後、Azure AD でユーザー用の一時アクセス パスを作成できます。 これらの役割で一時アクセス パスに関する次の操作を行うことができます。
 
@@ -66,9 +66,7 @@ ms.locfileid: "104579384"
 - 認証管理者は、メンバー (自分以外) の一時アクセス パスを作成、削除、表示することができます
 - グローバル管理者は (コード自体を読み取ることなく) ユーザーの一時アクセス パスの詳細を表示できます。
 
-一時アクセス パスを作成するには、次のようにします。
-
-1. グローバル管理者、特権認証管理者、または認証管理者のいずれかとしてポータルにサインインします。 
+1. グローバル管理者、特権認証管理者、または認証管理者のいずれかとして Azure portal にサインインします。 
 1. **[Azure Active Directory]** をクリックし、[ユーザー] を参照して、 *[Chris Green]* などのユーザーを選択してから、 **[認証方法]** を選択します。
 1. 必要に応じて、 **[新しいユーザー認証方法のエクスペリエンスを試す]** ためのオプションを選択します。
 1. **[認証方法の追加]** のオプションを選択します。
@@ -80,6 +78,30 @@ ms.locfileid: "104579384"
 1. 追加されると、一時アクセス パスの詳細が表示されます。 実際の一時アクセス パスの値をメモしておきます。 この値を、ユーザーに伝えます。 **[OK]** をクリックした後は、この値は表示できません。
    
    ![一時アクセス パスの詳細のスクリーンショット](./media/how-to-authentication-temporary-access-pass/details.png)
+
+次のコマンドは、PowerShell を使用して一時アクセス パスを作成して取得する方法を示しています。
+
+```powershell
+# Create a Temporary Access Pass for a user
+$properties = @{}
+$properties.isUsableOnce = $True
+$properties.startDateTime = '2021-03-11 06:00:00'
+$propertiesJSON = $properties | ConvertTo-Json
+
+New-MgUserAuthenticationTemporaryAccessPassMethod -UserId user2@contoso.com -BodyParameter $propertiesJSON
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM TAPRocks!
+
+# Get a user's Temporary Access Pass
+Get-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com
+
+Id                                   CreatedDateTime       IsUsable IsUsableOnce LifetimeInMinutes MethodUsabilityReason StartDateTime         TemporaryAccessPass
+--                                   ---------------       -------- ------------ ----------------- --------------------- -------------         -------------------
+c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True         60                NotYetValid           11/03/2021 6:00:00 AM
+
+```
 
 ## <a name="use-a-temporary-access-pass"></a>一時アクセス パスを使用する
 
@@ -108,6 +130,13 @@ ms.locfileid: "104579384"
 1. Azure AD ポータルで、 **[ユーザー]** を参照し、 *[TAP ユーザー]* などのユーザーを選択してから、 **[認証方法]** を選択します。
 1. 一覧に表示されている **[一時アクセス パス (プレビュー)]** の認証方法の右側で、 **[削除]** を選択します。
 
+PowerShell を使用することもできます。
+
+```powershell
+# Remove a user's Temporary Access Pass
+Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -TemporaryAccessPassAuthenticationMethodId c5dbd20a-8b8f-4791-a23f-488fcbde3b38
+```
+
 ## <a name="replace-a-temporary-access-pass"></a>一時アクセス パスを置き換える 
 
 - ユーザーは一時アクセス パスを 1 つだけ持つことができます。 パスコードは一時アクセス パスの開始時から終了時にかけて使用できます。
@@ -123,8 +152,8 @@ ms.locfileid: "104579384"
 
 - 1 回限りの一時アクセス パスを使用して FIDO2 や電話によるサインインなどのパスワードレスの方法を登録する場合、ユーザーは 1 回限りの一時アクセス パスでのサインインの登録を 10 分以内に完了する必要があります。 この制限は、複数回使用できる一時アクセス パスには適用されません。
 - ゲスト ユーザーは一時アクセス パスを使用してサインインすることはできません。
-- セルフサービス パスワード リセット (SSPR) 登録ポリシーの対象ユーザーは、一時アクセス パスを使用してサインインした後、SSPR 方法のいずれかを登録する必要があります。 ユーザーが FIDO2 キーのみを使用する場合は、SSPR ポリシーから除外するか、SSPR 登録ポリシーを無効にします。 
-- 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプターでは使用できません。
+- セルフサービス パスワード リセット (SSPR) 登録ポリシー *または* [Identity Protection の多要素認証登録ポリシー](../identity-protection/howto-identity-protection-configure-mfa-policy.md)の対象ユーザーは、一時アクセス パスを使用してサインインした後、認証方法を登録する必要があります。 これらのポリシーの対象ユーザーは、[統合された登録の中断モード](concept-registration-mfa-sspr-combined.md#combined-registration-modes)にリダイレクトされます。 現在、このエクスペリエンスでは、FIDO2 と電話によるサインインの登録はサポートされていません。 
+- 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプター、または Windows の設定/ Out of Box Experience (OOBE) の際には使用できません。 
 - テナントでシームレス SSO が有効になっている場合は、ユーザーにパスワードの入力が求められます。 ユーザーが一時アクセス パスを使用してサインインできるように、 **[代わりに一時アクセス パスを使用する]** リンクが使用可能になります。
 
   ![[代わりに一時アクセス パスを使用する] のスクリーンショット](./media/how-to-authentication-temporary-access-pass/alternative.png)

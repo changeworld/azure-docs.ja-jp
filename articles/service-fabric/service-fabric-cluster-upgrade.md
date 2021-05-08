@@ -1,30 +1,48 @@
 ---
 title: Azure Service Fabric クラスターのアップグレード
-description: Azure Service Fabric クラスターのバージョンまたは構成のアップグレードについて説明します。ここでは、クラスターの更新モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの実行、およびアップグレードの実行時に期待できる内容について説明します。
+description: Azure Service Fabric クラスターを更新するオプションについて説明します
 ms.topic: conceptual
-ms.date: 11/12/2018
-ms.openlocfilehash: 028c91f85a6e318f7ea686c1bcd50262eb7c6bf1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/26/2021
+ms.openlocfilehash: 636d4cb11f7cc6780d560d3d0043a89c69840a4f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96571030"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731116"
 ---
-# <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレードと更新
+# <a name="upgrading-and-updating-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのアップグレードと更新
 
-最新のシステムでは、アップグレード性を考慮した設計を行うことが、製品の長期的な成功を達成する鍵となります。 Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されます。 この記事では、何が自動的に管理され、何をお客様が構成できるかについて説明します。
+Azure Service Fabric クラスターはお客様が所有するリソースですが、一部は Microsoft によって管理されています。 この記事では、Azure Service Fabric クラスターをいつ、どのように更新するかの選択について説明します。
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>クラスター上で動作するファブリック バージョンの制御
+## <a name="automatic-versus-manual-upgrades"></a>自動と手動のアップグレード
 
-クラスターでは常に、[サポートされているバージョンのファブリック](service-fabric-versions.md)が実行されている状態にします。 Microsoft が Service Fabric の新バージョン リリースをアナウンスするたびに、その日から最短で 60 日後には、以前のバージョンがサポート期間の終了として指定されます。 新しいリリースは、[Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で発表されます。
+Service Fabric クラスターで[サポートされているランタイム バージョン](service-fabric-versions.md)が常に実行されていることが重要です。 Microsoft が Service Fabric の新バージョン リリースをアナウンスするたびに、その日から最短で 60 日後には、以前のバージョンが *サポート期間の終了* として指定されます。 新しいリリースは、[Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で発表されます。
 
-現在クラスターで実行されているバージョンの有効期間が終了する 14 日前に、正常性に関するイベントが生成され、クラスターの正常性が警告状態に移行します。 サポートされているバージョンのファブリックにアップグレードするまで、クラスターは警告状態のままとなります。
+現在クラスターで実行されているバージョンの有効期間が終了する 14 日前に、正常性に関するイベントが生成され、クラスターの正常性が "*警告*" 状態に移行します。 サポートされているランタイム バージョンにアップグレードするまで、クラスターは警告状態のままとなります。
 
-Microsoft からのリリース時に自動ファブリック アップグレードを受信するようにクラスターを設定するか、有効にするクラスターのサポートされるファブリック バージョンを選択することもできます。  詳細については、[クラスターの Service Fabric バージョンのアップグレード](service-fabric-cluster-upgrade-version-azure.md)に関するページをご覧ください。
+クラスターの設定でMicrosoft からリリースされる Service Fabric の自動アップグレードを受信するようにできます。また、現在サポートされているバージョンの一覧から手動で選択することもできます。 これらのオプションは、Service Fabric クラスター リソースの **[ファブリックのアップグレード]** セクションにあります。
 
-## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>自動アップグレード時の Fabric のアップグレード動作
+:::image type="content" source="./media/service-fabric-cluster-upgrade/fabric-upgrade-mode.png" alt-text="Azure portal のクラスター リソースの [ファブリックのアップグレード] セクションで、自動または手動のアップグレードを選択します。":::
 
-Microsoft は、Azure クラスターで実行されるファブリック コードと構成を管理します。 必要に応じて、ソフトウェアに対して自動的な監視付きアップグレードを実行します。 これらのアップグレードは、コード、構成、またはその両方で行うことができます。 これらのアップグレードからアプリケーションが影響を受けない、またはその影響を最小限にするために、アップグレードは次のフェーズで行われます。
+また、[Resource Manager テンプレートを使用して](service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)、クラスターのアップグレード モードの設定とランタイム バージョンの選択をすることもできます。
+
+自動アップグレードが推奨されるアップグレード モードである理由は、このオプションによってクラスターがサポートされている状態に維持され、最新の修正プログラムや機能を利用できるようになるためです。また、[Wave デプロイ](#wave-deployment-for-automatic-upgrades)方式を使用して、ワークロードの中断を最小限にする方法で更新をスケジュールすることもできます。
+
+## <a name="wave-deployment-for-automatic-upgrades"></a>Wave デプロイによる自動アップグレード
+
+Wave デプロイでは、アップグレードの成熟度レベルをワークロードに応じて選択することで、アップグレードによるクラスターの中断を最小限に抑えることができます。 たとえば、"*テスト*" -> "*ステージ*" -> "*運用*" の Wave デプロイ パイプラインをさまざまな Service Fabric クラスターに設定することで、ランタイム アップグレードを運用ワークロードに適用する前に、その互換性をテストできます。
+
+Wave デプロイをオプトインするには、次の Wave 値のいずれかをクラスターに (そのデプロイ テンプレート内で) 指定します。
+
+* **Wave 0**: クラスターは、新しい Service Fabric ビルドがリリースされるとすぐに更新されます。 テストおよび開発クラスターが対象です。
+* **Wave 1**: クラスターは、新しいビルドがリリースされてから 1 週間 (7 日) 後に更新されます。 運用前およびステージング クラスターが対象です。
+* **Wave 2**: クラスターは、新しいビルドがリリースされてから 2 週間 (14 日) 後に更新されます。 運用クラスターが対象です。
+
+クラスターのアップグレードが失敗した場合のヘルプへのリンクを含む電子メール通知を登録できます。 開始するには、「[Wave デプロイによる自動アップグレード](service-fabric-cluster-upgrade-version-azure.md#wave-deployment-for-automatic-upgrades)」を参照してください。
+
+## <a name="phases-of-automatic-upgrade"></a>自動アップグレードのフェーズ
+
+Microsoft は、Azure クラスターで実行される Service Fabric ランタイム コードと構成を管理します。 必要に応じて、ソフトウェアに対して自動監視付きアップグレードを実行します。 これらのアップグレードは、コード、構成、またはその両方で行うことができます。 これらのアップグレードによるアプリケーションへの影響を最小限に抑えるため、次のフェーズで行います。
 
 ### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>フェーズ 1:アップグレードが、すべてのクラスター正常性ポリシーを使用して実行される
 
@@ -38,7 +56,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 
 インフラストラクチャに関する理由でアップグレードに失敗した場合は、同じアップグレードが数回実行されます。 電子メールの送信日から *n* 日後に、フェーズ 2 に進みます。
 
-クラスター正常性ポリシーが満たされた場合は、アップグレードが成功したと見なされ、完了としてマークされます。 このフェーズの最初のアップグレードで成功することも、何回目かの再実行で成功することもあります。 実行が成功した場合、電子メールでの確認はありません。 これは、送信される電子メールが多くなりすぎないようにするためです。電子メールを受信するのは、正常でないことが起きた場合だけです。 クラスターのアップグレードの大半は、アプリケーションの可用性に影響することなく、成功すると思われます。
+クラスター正常性ポリシーが満たされた場合は、アップグレードが成功したと見なされ、完了としてマークされます。 この状況は最初のアップグレード中に起きることもあれば、このフェーズの何回目かのアップグレードで起きることもあります。 電子メールが過剰に送信されるのを回避するため、正常に実行されたことを確認する電子メールはありません。 電子メールが届いたということは、正常な動作ではなかったことを意味します。 クラスターのアップグレードの大半は、アプリケーションの可用性に影響することなく、成功すると思われます。
 
 ### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>フェーズ 2:アップグレードが、既定の正常性ポリシーのみを使用して実行される
 
@@ -56,7 +74,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 
 ### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>フェーズ 3: アップグレードが、アグレッシブな正常性ポリシーを使用して実行される
 
-このフェーズでのこれらの正常性ポリシーは、アプリケーションの正常性よりもアップグレードの完了のために調整されています。 このフェーズで終了するクラスター アップグレードは、ほとんどありません。 クラスターがこのフェーズに達すると、アプリケーションが正常な状態でなくなるか、可用性が失われたりする確率が高くなります。
+このフェーズでのこれらの正常性ポリシーは、アプリケーションの正常性よりもアップグレードの完了のために調整されています。 このフェーズで終了するクラスター アップグレードは、ほとんどありません。 クラスターがこのフェーズに達すると、アプリケーションが正常な状態でなくなったり、可用性が失われたりするおそれが高くなります。
 
 他の 2 つのフェーズと同様に、フェーズ 3 でもアップグレード ドメインが 1 つずつ処理されます。
 
@@ -66,52 +84,43 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 
 クラスター正常性ポリシーが満たされた場合は、アップグレードが成功したと見なされ、完了としてマークされます。 このフェーズの最初のアップグレードで成功することも、何回目かの再実行で成功することもあります。 実行が成功した場合、電子メールでの確認はありません。
 
-## <a name="manage-certificates"></a>証明書の管理
+## <a name="custom-policies-for-manual-upgrades"></a>手動アップグレードのカスタム ポリシー
+
+手動でクラスターをアップグレードするためのカスタム ポリシーを指定できます。 これらのポリシーは、新しいランタイム バージョンを選択するたびに適用されます。これにより、システムによってクラスターのアップグレードが開始されます。 ポリシーをオーバーライドしていない場合、既定の設定が使用されます。 詳しくは、[手動アップグレードのためのカスタム ポリシーの設定](service-fabric-cluster-upgrade-version-azure.md#custom-policies-for-manual-upgrades)に関する記事を参照してください。
+
+## <a name="other-cluster-updates"></a>その他のクラスター更新
+
+ランタイムのアップグレード以外にも、クラスターを最新の状態に保つために実行する必要がある、次のような多数の操作があります。
+
+### <a name="managing-certificates"></a>証明書の管理
 
 Service Fabric では、クラスターの作成時に指定した [X.509 server certificates](service-fabric-cluster-security.md) を使用して、クラスター ノード間の通信をセキュリティで保護し、クライアントを認証します。 [Azure Portal](https://portal.azure.com) からか、PowerShell または Azure CLI を使用して、クラスターとクライアントに対して証明書を追加、更新、または削除することができます。  詳細については、[証明書の追加または削除](service-fabric-cluster-security-update-certs-azure.md)に関するページを参照してください。
 
-## <a name="open-application-ports"></a>アプリケーション ポートを開く
+### <a name="opening-application-ports"></a>アプリケーション ポートを開く
 
 アプリケーション ポートは、ノードの種類に関連付けられた Load Balancer リソースのプロパティを変更することで変更できます。 Azure Portal を使用するか、PowerShell または Azure CLI を使用できます。 詳細については、[クラスターのアプリケーション ポートを開く](create-load-balancer-rule.md)ことに関するページを参照してください。
 
-## <a name="define-node-properties"></a>ノードのプロパティの定義
+### <a name="defining-node-properties"></a>ノードのプロパティの定義
 
 場合によっては、特定のワークロードが、クラスター内の特定のノードの種類だけで確実に実行されるようにしたいことがあります。 たとえば、ワークロードの中に GPU や SSD を必要とするものとしないものが混在している場合があります。 クラスター内のノードの種類ごとに、カスタム ノードのプロパティをクラスター ノードに追加できます。 配置の制約は、1 つまたは複数のノードのプロパティに選択される個々のサービスに接続されるステートメントです。 配置の制約で、サービスを実行する場所を定義します。
 
 配置の制約、ノードのプロパティの使用、およびプロパティの定義方法の詳細については、「[ノードのプロパティと配置の制約](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)」を参照してください。
 
-## <a name="add-capacity-metrics"></a>容量メトリックの追加
+### <a name="adding-capacity-metrics"></a>容量メトリックの追加
 
 ノードの種類ごとに、アプリケーションで負荷をレポートするために使用するカスタム容量メトリックを追加できます。 負荷をレポートする容量メトリックの使用方法については、Service Fabric クラスター リソース マネージャー ドキュメントの [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md) および [メトリックと負荷](service-fabric-cluster-resource-manager-metrics.md) に関するページをご覧ください。
 
-## <a name="set-health-policies-for-automatic-upgrades"></a>自動アップグレードに正常性ポリシーを設定する
-
-ファブリックのアップグレードには、カスタム正常性ポリシーを指定できます。 指定したポリシーは、クラスターのファブリック アップグレードが Automatic に設定されている場合、自動ファブリック アップグレードのフェーズ 1 に適用されます。
-クラスターのファブリック アップグレードを Manual に設定した場合は、新しいバージョンを選択するたびにこれらのポリシーが適用され、クラスターのファブリック アップグレードが開始されます。 ポリシーをオーバーライドしていない場合、既定の設定が使用されます。
-
-カスタム正常性ポリシーを指定したり、現在の設定を確認したりするには、[ファブリック アップグレード] ブレードでアップグレードの詳細設定を選択します。 具体的な方法については、次の図を参照してください。
-
-![Manage custom health policies][HealthPolices]
-
-## <a name="customize-fabric-settings-for-your-cluster"></a>クラスターのファブリック設定のカスタマイズ
+### <a name="customizing-settings-for-your-cluster"></a>クラスターの設定のカスタマイズ
 
 クラスターとノードのプロパティの信頼性レベルなど、多くの異なる構成設定は、クラスター上でカスタマイズできます。 詳細については、[Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)に関するページを参照してください。
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>クラスター ノードで OS に修正プログラムを適用する
+### <a name="upgrading-os-images-for-cluster-nodes"></a>クラスター ノードの OS イメージのアップグレード
 
-パッチ オーケストレーション アプリケーション (POA) は、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 [Windows 用のパッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)をクラスターにデプロイすることにより、常時サービスの稼働状態を維持しながら、調整された方法でパッチをインストールすることができます。
+Service Fabric クラスター ノードの OS イメージの自動アップグレードを有効にすることをお勧めします。 そのためには、いくつかのクラスター要件と実行手順があります。 もう 1 つのオプションは、パッチ オーケストレーション アプリケーション (POA) を使用することです。これは、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 これらのオプションについて詳しくは、「[Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用](service-fabric-patch-orchestration-application.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
-* [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-in-out.md)
+* [Service Fabric のアップグレードの管理](service-fabric-cluster-upgrade-version-azure.md)
+* [Service Fabric クラスター設定](service-fabric-cluster-fabric-settings.md)のカスタマイズ
+* [クラスターのスケールイン/アウト](service-fabric-cluster-scale-in-out.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-
-<!--Image references-->
-[CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png
-[AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes2.PNG
-[AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
-[HealthPolices]: ./media/service-fabric-cluster-upgrade/Manage_AutomodeWadvSettings.PNG
-[ARMUpgradeMode]: ./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG
-[Create_Manualmode]: ./media/service-fabric-cluster-upgrade/Create_Manualmode.PNG
-[Manage_Automaticmode]: ./media/service-fabric-cluster-upgrade/Manage_Automaticmode.PNG

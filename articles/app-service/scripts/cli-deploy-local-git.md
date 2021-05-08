@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 226eda2c4a1e58cda8119f1fb4e76866216e890b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0be7b057a54c23b15fc4e898687d434c18a956e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006261"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787857"
 ---
 # <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Azure CLI を使用して App Service アプリを作成し、ローカル Git リポジトリからコードをデプロイする
 
@@ -39,11 +39,11 @@ ms.locfileid: "97006261"
 
 | コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
-| [`az webapp deployment user set`](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) | App Service のアカウントレベルのデプロイ資格情報を設定します。 |
-| [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) | ローカル Git リポジトリのソース管理構成を作成します。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
+| [`az webapp deployment user set`](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) | App Service のアカウントレベルのデプロイ資格情報を設定します。 |
+| [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) | ローカル Git リポジトリのソース管理構成を作成します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

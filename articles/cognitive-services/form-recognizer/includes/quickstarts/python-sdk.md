@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: 445fdea4cb92ed8080528a41cf19ad774751b9ce
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102510836"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073533"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -49,7 +49,7 @@ pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> Form Recognizer 3.1.0 SDK は、API バージョン 2.1 プレビューを反映しています
+> Form Recognizer 3.1.0 SDK は、"_API バージョン 2.1 プレビュー 2_" を反映しています。 "_API バージョン 2.1 プレビュー 3_" には [**REST API**](../../quickstarts/client-library.md) を使用してください。
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -77,7 +77,7 @@ pip install azure-ai-formrecognizer
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成したり管理したりするときに使用します。 
+Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。フォーム フィールドとコンテンツを認識するためにサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成および管理するときに使用します。 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 

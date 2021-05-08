@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/09/2020
 ms.openlocfilehash: 2b784d7ab797376036a30c63d365fc0a45852a5f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93129289"
 ---
 Azure Marketplace のソリューション イメージのセキュリティは、高いレベルに維持してください。 セキュリティ構成と手順のチェックリストについては、「[Azure Marketplace イメージのセキュリティに関する推奨事項](../../security/fundamentals/azure-marketplace-images.md)」を参照してください。

@@ -6,10 +6,10 @@ ms.date: 09/24/2020
 ms.author: glenga
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1ff9606d10ac62e0bab15f970a964bfd0b08bee8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97506291"
 ---
 # <a name="c"></a>[C#](#tab/csharp)
@@ -22,7 +22,7 @@ ms.locfileid: "97506291"
 | Event Hubs |[トリガー](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=csharp#example) | |
 | IoT Hub |[トリガー](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp#example) | |
 | HTTP |[トリガー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#example) | [リンク](https://www.serverlesslibrary.net/?language=C%23&filtertext=http) |
-| ストレージ | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=C%23) |
+| Queue Storage | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=C%23) |
 | RabbitMQ |[トリガー](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=csharp#example) |
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=C%23) |
@@ -41,7 +41,7 @@ ms.locfileid: "97506291"
 | Event Hubs |[トリガー](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=java#example) | |
 | IoT Hub |[トリガー](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=java#example) | |
 | HTTP |[トリガー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=java#example) | [リンク](https://www.serverlesslibrary.net/?language=Java&filtertext=http) |
-| ストレージ | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=java#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Java) |
+| Queue Storage | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=java#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Java) |
 | RabbitMQ |[トリガー](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=java#example) |
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=java#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=java#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=java#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Java) |
@@ -60,7 +60,7 @@ ms.locfileid: "97506291"
 | Event Hubs |[トリガー](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=javascript#example) | |
 | IoT Hub |[トリガー](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=javascript#example) | |
 | HTTP |[トリガー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=javascript#example) | [リンク](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=http) |
-| ストレージ | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=javascript#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=JavaScript) |
+| Queue Storage | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=javascript#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=JavaScript) |
 | RabbitMQ |[トリガー](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=javascript#example) |
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=javascript#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=javascript#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=javascript#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=JavaScript) |
@@ -79,7 +79,7 @@ ms.locfileid: "97506291"
 | Event Hubs |[トリガー](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=powershell#example) | |
 | IoT Hub |[トリガー](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=powershell#example) | |
 | HTTP |[トリガー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=powershell#example) | [リンク](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=http) |
-| ストレージ | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=powershell#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=PowerShell) |
+| Queue Storage | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=powershell#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=PowerShell) |
 | RabbitMQ |[トリガー](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=powershell#example) |
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=powershell#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=powershell#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=powershell#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=PowerShell) |
@@ -98,7 +98,7 @@ ms.locfileid: "97506291"
 | Event Hubs |[トリガー](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=python#example) | |
 | IoT Hub |[トリガー](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=python#example) | |
 | HTTP |[トリガー](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=python#example) | [リンク](https://www.serverlesslibrary.net/?language=Python&filtertext=http) |
-| ストレージ | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=python#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Python) |
+| Queue Storage | [トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=python#example) | [リンク](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Python) |
 | RabbitMQ |[トリガー](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=python#example) |
 | SendGrid | [出力](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=python#example) | |
 | Service Bus |[トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=python#example)<br/>[出力](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=python#example) | [リンク](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Python) |

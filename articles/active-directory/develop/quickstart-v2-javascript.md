@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: cf5b24bb55f278d9d33916d2d54d3ee5a169c3e8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8e35342bd704f662d41f676f58e2cc14b54f29a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224403"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023386"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -112,7 +112,7 @@ ms.locfileid: "103224403"
 > - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
 >
 >    **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
-> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 `https://login.microsoftonline.com` 」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
+> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 `https://login.microsoftonline.com/` 」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
 > - `Enter_the_Tenant_info_here` には、次のオプションのいずれかが設定されます。
 >    - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を **テナント ID** または **テナント名** (例: `contoso.microsoft.com`) に置き換えます。
 >
@@ -121,7 +121,7 @@ ms.locfileid: "103224403"
 >    - アプリケーションで "*任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント*" がサポートされる場合は、この値を `common` に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を `consumers` に置き換えます。
 >
 >    **[サポートされているアカウントの種類]** 値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
->
+> - `Enter_the_Redirect_Uri_Here` は `http://localhost:3000/` です。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
@@ -147,7 +147,7 @@ ms.locfileid: "103224403"
 > [!div renderon="docs"]
 >
 > 各値の説明:
-> - *\<Enter_the_Graph_Endpoint_Here>* は、API 呼び出しの対象となるエンドポイントです。 メインまたはグローバル Microsoft Graph API サービスの場合は、単に「`https://graph.microsoft.com`」と入力します。 詳細については、[各国のクラウドのデプロイ](/graph/deployments)に関する記事をご覧ください。
+> - *\<Enter_the_Graph_Endpoint_Here>* は、API 呼び出しの対象となるエンドポイントです。 メインまたはグローバル Microsoft Graph API サービスの場合は、単に「`https://graph.microsoft.com/`」と入力します。 詳細については、[各国のクラウドのデプロイ](/graph/deployments)に関する記事をご覧ください。
 >
 > #### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
 
@@ -177,8 +177,8 @@ MSAL ライブラリは、ユーザーをサインインさせ、Microsoft ID �
 ```html
 <script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
 ```
-> [!TIP]
-> 上記のバージョンは、[MSAL.js のリリース](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)に関するページにある最新のリリース バージョンに置き換えることができます。
+
+上記のバージョンは、[MSAL.js のリリース](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)に関するページにある最新のリリース バージョンに置き換えることができます。
 
 別の方法として、Node.js がインストール済みの場合は、次のようにして最新バージョンを Node.js Package Manager (npm) を介してダウンロードすることもできます。
 
@@ -207,13 +207,13 @@ npm install msal
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-> |Where  | 説明 |
-> |---------|---------|
-> |`clientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID。|
-> |`authority`    | (省略可能) 先ほど構成に関するセクションで説明したように、アカウントの種類をサポートする機関 URL。 既定の機関は `https://login.microsoftonline.com/common`です。 |
-> |`redirectUri`     | アプリケーション登録の構成済みの応答およびリダイレクト URI。 例では、 `http://localhost:3000/`が使用されます。 |
-> |`cacheLocation`  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では sessionStorage です。   |
-> |`storeAuthStateInCookie`  | (省略可能) 認証フローの検証に必要な認証要求の状態をブラウザーの Cookie に格納するライブラリ。 この Cookie は、特定の[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)に対処するために、IE および Edge ブラウザー用に設定されます。 |
+|Where  | 説明 |
+|---------|---------|
+|`clientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID。|
+|`authority`    | (省略可能) 先ほど構成に関するセクションで説明したように、アカウントの種類をサポートする機関 URL。 既定の機関は `https://login.microsoftonline.com/common`です。 |
+|`redirectUri`     | アプリケーション登録の構成済みの応答およびリダイレクト URI。 例では、 `http://localhost:3000/`が使用されます。 |
+|`cacheLocation`  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では sessionStorage です。   |
+|`storeAuthStateInCookie`  | (省略可能) 認証フローの検証に必要な認証要求の状態をブラウザーの Cookie に格納するライブラリ。 この Cookie は、特定の[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)に対処するために、IE および Edge ブラウザー用に設定されます。 |
 
 使用できる構成オプションの詳細については、[クライアント アプリケーションの初期化](msal-js-initializing-client-applications.md)に関する記事を参照してください。
 
@@ -235,12 +235,11 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-> |Where  | 説明 |
-> |---------|---------|
-> | `scopes`   | (省略可能) サインイン時にユーザーの同意を得るために必要なスコープが含まれます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 |
+|Where  | 説明 |
+|---------|---------|
+| `scopes`   | (省略可能) サインイン時にユーザーの同意を得るために必要なスコープが含まれます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 |
 
-> [!TIP]
-> あるいは、`loginRedirect` メソッドを使用して、現在のページをポップアップ ウィンドウではなくサインイン ページにリダイレクトすることもできます。
+あるいは、`loginRedirect` メソッドを使用して、現在のページをポップアップ ウィンドウではなくサインイン ページにリダイレクトすることもできます。
 
 ### <a name="request-tokens"></a>トークンの要求
 
@@ -265,9 +264,9 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-> |Where  | 説明 |
-> |---------|---------|
-> | `scopes`   | API のアクセス トークンで返されるように要求されているスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "mail.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。|
+|Where  | 説明 |
+|---------|---------|
+| `scopes`   | API のアクセス トークンで返されるように要求されているスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "mail.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。|
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 

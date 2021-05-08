@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98703277"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209631"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -72,7 +72,7 @@ SSPR の使用を開始するには、次のチュートリアルをご覧くだ
 
 ## <a name="require-users-to-register-when-they-sign-in"></a>サインイン時にユーザーに登録を求める
 
-Azure AD を使用して任意のアプリケーションにサインインする場合は SSPR 登録を完了するようにユーザーに要求するオプションを有効にすることができます。 このワークフローには、次のアプリケーションが含まれます。
+Azure AD を使用して任意のアプリケーションにサインインするために最新の認証または Web ブラウザーを使用する場合は、SSPR 登録を完了するようにユーザーに要求するオプションを有効にすることができます。 このワークフローには、次のアプリケーションが含まれます。
 
 * Microsoft 365
 * Azure portal

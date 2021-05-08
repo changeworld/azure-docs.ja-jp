@@ -4,10 +4,10 @@ description: Azure Arc 対応サーバーをリージョン間で移行する方
 ms.date: 02/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: 251a347205d93af715add52db293d8000438df44
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101650177"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Azure Arc 対応サーバーをリージョン間で移行する方法

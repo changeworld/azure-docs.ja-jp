@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: f18977bb92b37546d5980134cba858b1f76b464c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6b88a7e6a9851018fce255fac0e39a30563b9bf4
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720017"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363837"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
 
@@ -58,7 +58,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
     ```
 
 1. **Spark1** という名前の Spark プールにアタッチします。 セルを実行します。
-1. **users** フォルダーをクリックします。 **parquet** ファイルをもう一度右クリックし、 **[New SQL script]\(新しい SQL スクリプト\)**  >  **[SELECT TOP 100 rows]\(上位 100 行の選択\)** の順に選択します。 次のような SQL スクリプトが作成されます。
+1. **users** フォルダーを選択します。 **parquet** ファイルをもう一度右クリックし、 **[New SQL script]\(新しい SQL スクリプト\)**  >  **[SELECT TOP 100 rows]\(上位 100 行の選択\)** の順に選択します。 次のような SQL スクリプトが作成されます。
 
     ```sql
     SELECT 

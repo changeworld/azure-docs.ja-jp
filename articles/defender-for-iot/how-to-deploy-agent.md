@@ -1,24 +1,14 @@
 ---
 title: セキュリティ エージェントを選択してデプロイする
 description: Defender for IoT セキュリティ エージェントを選択して IoT デバイスに展開する方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c71c92ffa79c844f3529265320b46eadd0c158cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447267"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778850"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -51,7 +41,7 @@ C ベースのセキュリティ エージェントはメモリ占有領域が�
 | **IoT Hub に対する [認証](concept-security-agent-authentication-methods.md)** | はい | はい |
 | **セキュリティ データの [収集](how-to-agent-configuration.md#supported-security-events)** | はい | はい |
 | **イベントの集計** | はい | はい |
-| **[セキュリティ モジュール ツイン](concept-security-module.md)によるリモート構成** | はい | はい |
+| **[Defender-IoT-micro-agent ツイン](concept-security-module.md)によるリモート構成** | はい | はい |
 
 ## <a name="security-agent-installation-guidelines"></a>セキュリティ エージェントのインストール ガイドライン
 

@@ -3,7 +3,7 @@ title: PowerShell サンプル - アプリケーション プロキシ アプリ
 description: アプリケーション ID (AppId)、名前 (DisplayName)、オブジェクト ID (ObjId) と共に Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0a5ee23a16c10a579c9b39ce3589028603ea7a3c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b9381d6f345888abe3f6314e253ae580155b97df
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550622"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375443"
 ---
 # <a name="get-all-application-proxy-apps-and-list-basic-information"></a>すべてのアプリケーション プロキシ アプリを取得し、基本情報を一覧表示する
 

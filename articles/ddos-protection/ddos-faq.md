@@ -3,7 +3,7 @@ title: Azure DDoS Protection Standard のよくあるご質問
 description: Azure DDoS Protection Standard についてよく寄せられる質問です。DDoS 攻撃に対する防御に役立ちます。
 services: virtual-network
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 584db62b20806c6864be478b2e18e2a9cab60a30
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98611119"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103302"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard のよくあるご質問
 

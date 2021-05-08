@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3442c3b6023edcde97aabcb13e91120ba6811027
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d94640e1c6a037893fb1ad9198b82195c46dd24
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91323075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768127"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
 
@@ -34,7 +34,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 1. サインインします。
 
-    CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+    CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用してサインインします。
 
     ```azurecli
     az login
@@ -56,7 +56,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
     Azure Blockchain Service は、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
-    このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、_myResourceGroup_ という名前のリソース グループを _eastus_ の場所に作成します。
+    このクイックスタートでは、次の [az group create](/cli/azure/group#az_group_create) コマンドを使用して、_myResourceGroup_ という名前のリソース グループを _eastus_ の場所に作成します。
 
     ```azurecli-interactive
     az group create \

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応クラスター構成に対して GitOps と Helm を使用します
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 75e2fcb25680817fc3e2bddabbbdd9c52b7dd059
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df9b40764ec463553659803749f282bbc4587bde
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121407"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449545"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-an-arc-enabled-kubernetes-cluster"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して Helm チャートをデプロイする
 
@@ -21,9 +21,17 @@ Helm は、Kubernetes アプリケーションのインストールとライフ�
 
 この記事では、Azure Arc 対応 Kubernetes で Helm を構成して使用する方法を説明します。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
-Azure Arc 対応 Kubernetes に接続されたクラスターが既に存在することを確認します。 接続されたクラスターが必要な場合は、[Azure Arc 対応 Kubernetes クラスターの接続に関するクイックスタート](./quickstart-connect-cluster.md)を参照してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- Azure Arc 対応 Kubernetes に接続された既存のクラスター。
+    - まだクラスターを接続していない場合は、[Azure Arc 対応 Kubernetes クラスターの接続に関するクイックスタート](quickstart-connect-cluster.md)をご覧ください。
+- この機能の利点とアーキテクチャについて理解していること。 詳細については、[Azure Arc 対応 Kubernetes での構成と GitOps に関する記事](conceptual-configurations.md)をご覧ください。
+- `k8s-configuration` Azure CLI 拡張機能バージョン 1.0.0 以降をインストールします。
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
 
 ## <a name="overview-of-using-gitops-and-helm-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes での GitOps および Helm の使用方法の概要
 

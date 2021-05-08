@@ -7,12 +7,12 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c65bc7e92d925f819a48fd8ab9a8160bc3eb72e3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3b84756f390930be5124c6bda54d07078d29053
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579314"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166923"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
@@ -62,13 +62,13 @@ Azure SignalR Service リソースの概要ペインでは、適切な集計の�
 
 クラシック モードは、既存のアプリケーションの下位互換性のために用意されているため、新しいアプリケーションには使用しないでください。
 
-サービス モードの詳細については、[このドキュメント](concept-service-mode.md)を参照してください。
+サービス モードの詳細については、「[Azure SignalR Service のサービス モード](concept-service-mode.md)」を参照してください。
 
 ## <a name="can-i-send-message-from-client-in-serverless-mode"></a>サーバーレス モードでクライアントからメッセージを送信できますか?
 
 SignalR インスタンスでアップストリームを設定すると、クライアントからメッセージを送信できます。 アップストリームは、SignalR Service からメッセージおよび接続イベントを受信できる一連のエンドポイントです。 アップストリームが設定されていない場合、クライアントからのメッセージは無視されます。
 
-アップストリームの詳細については、[このドキュメント](concept-upstream.md)を参照してください。
+アップストリームの詳細については、「[アップストリームの設定](concept-upstream.md)」を参照してください。
 
 アップストリームは現在、パブリック プレビュー段階にあります。
 

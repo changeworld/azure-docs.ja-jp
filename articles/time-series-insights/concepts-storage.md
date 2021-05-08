@@ -1,21 +1,21 @@
 ---
 title: ストレージの概要 - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 のデータ ストレージについて説明します。
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 748eaca93eaee5ec858ea43261995111cef8ceda
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98676853"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505197"
 ---
 # <a name="data-storage"></a>データ ストレージ
 
@@ -36,7 +36,7 @@ Azure Time Series Insights Gen2 環境を作成するときには、次のオプ
 [![ストレージの概要](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
 
 > [!WARNING]
-> コールド ストア データが存在する Azure Blob ストレージ アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
+> コールド ストア データが存在する Azure Blob Storage アカウントの所有者は、アカウント内のすべてのデータに対するフルアクセス権を持っています。 このアクセスには、書き込みおよび削除のアクセス許可が含まれます。 Azure Time Series Insights Gen2 によって書き込まれたデータを編集または削除しないでください。データが失われる原因になる可能性があります。
 
 ## <a name="data-availability"></a>データの可用性
 
@@ -87,7 +87,7 @@ Azure Time Series Insights Gen2 のファイルは削除しないでください
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet ファイル形式とフォルダー構造
 
-Parquet は、効率的なストレージとパフォーマンスのために設計されている、オープンソースの列指向ファイル形式です。 Azure Time Series Insights Gen2 では、Parquet を使用して、大規模な時系列 ID ベースのクエリ パフォーマンスを実現します。  
+Parquet は、効率的なストレージとパフォーマンスのために設計されている、オープンソースの列指向ファイル形式です。 Azure Time Series Insights Gen2 では、Parquet を使用して、大規模な時系列 ID ベースのクエリ パフォーマンスを実現します。
 
 Parquet ファイルの種類の詳細については、[Parquet のドキュメント](https://parquet.apache.org/documentation/latest/)を参照してください。
 

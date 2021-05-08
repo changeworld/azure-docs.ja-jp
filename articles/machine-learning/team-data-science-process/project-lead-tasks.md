@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9d9b2546553e03d1555cf4c587d699d9a4ea7e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96000982"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Process でのプロジェクト リーダーのタスク
@@ -45,7 +45,7 @@ ms.locfileid: "96000982"
 - チーム テンプレートとユーティリティの **リポジトリ**
 - プロジェクトのリポジトリを作成し、編集するための組織のアカウントに対する **アクセス許可**
 
-ローカル コンピューターまたは Data Science Virtual Machine (DSVM) でリポジトリをクローンしてその内容を変更したり、Azure ファイル ストレージを設定して DSVM にマウントしたりするには、次のチェックリストを検討することも必要です。
+ローカル コンピューターまたは Data Science Virtual Machine (DSVM) でリポジトリをクローンしてその内容を変更したり、Azure File Storage を設定して DSVM にマウントしたりするには、次のチェックリストを検討することも必要です。
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。

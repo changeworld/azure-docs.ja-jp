@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433303"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936310"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -158,7 +158,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 配信不能メッセージは、元のエンドポイントに配信されることを意図していた元のイベントのスキーマと一致します。
 
-次に、[ツイン作成通知](how-to-interpret-event-data.md#digital-twin-life-cycle-notifications)の配信不能メッセージの例を示します。
+次に、[ツイン作成通知](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications)の配信不能メッセージの例を示します。
 
 ```json
 {
@@ -237,6 +237,11 @@ CLI の使用および利用できるコマンドについて詳しくは、"[*A
 * ツインまたはリレーションシップが作成または削除されたときに発生するライフサイクル イベント
 
 イベント ルートにエンドポイントの **フィルター** を追加することで、送信されるイベントを制限できます。
+
+>[!NOTE]
+> フィルターは **大文字と小文字を区別** し、ペイロードの大文字と小文字と一致する必要があります。 
+>
+> テレメトリ フィルターの場合、これは、大文字と小文字の指定が、デバイスによって送信されたテレメトリ内の大文字と小文字の指定と一致する必要はあるが、必ずしもツインのモデル内に定義された大文字と小文字の指定に一致する必要はないことを意味します。 
 
 フィルターを追加するために、次の本文を含む PUT 要求を *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* に対して使用できます。
 

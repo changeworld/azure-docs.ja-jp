@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/11/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: e652d1374db12d797dc4505f07350e6e110d6408
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b202613e6f24a5cd549267a1c8928e8e68caa232
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674435"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303595"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性
 
@@ -208,7 +208,6 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
          1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS**)
          1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS**、**backend.QAS**、**health.QAS.ASCS**)
          1. **[HA ポート]** を選択します
-         1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
          * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **lb.QAS.ERS**)

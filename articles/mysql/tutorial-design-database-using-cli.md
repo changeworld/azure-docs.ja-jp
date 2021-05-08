@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:サーバーを設計する - Azure CLI - Azure Database for MySQL
+title: 'チュートリアル: サーバーを設計する - Azure CLI - Azure Database for MySQL'
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
 author: savjani
 ms.author: pariks
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 8546ba5c80a4c8909876ff755bc094f1aec96482
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 19779ffa8bab045e03161475646c802f464a7e41
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437084"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791609"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
+# <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Database for MySQL を設計する
 
 Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Community Edition のデータベース エンジンをベースとしたリレーショナル データベース サービスです。 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。
 
@@ -34,13 +34,13 @@ Azure Database for MySQL は、Microsoft クラウドにおける、MySQL Commun
 
 - この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az-account-set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
+複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#az_account_set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-[az group create](/cli/azure/group#az-group-create) コマンドで [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[az group create](/cli/azure/group#az_group_create) コマンドで [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`westus` の場所に `myresourcegroup` という名前のリソース グループを作成します。
 
@@ -201,7 +201,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 az group delete --name myresourcegroup
 ```
 
-新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) コマンドを実行してください。
+新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) コマンドを実行してください。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

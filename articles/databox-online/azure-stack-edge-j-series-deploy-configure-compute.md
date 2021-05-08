@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1dcf429ddc697dfbfdac721cb8de137b9382b234
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97935464"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058784"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro でデータを変換する
 
@@ -116,9 +115,9 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
-カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](azure-stack-edge-j-series-create-iot-edge-module.md)に関するページを参照してください。
+カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 この Edge デバイスにはカスタム モジュールがありません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](./azure-stack-edge-gpu-create-iot-edge-module.md)に関するページを参照してください。
 
-このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](azure-stack-edge-j-series-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
+このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](./azure-stack-edge-gpu-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
 
 1. **[Edge コンピューティング]、[開始]** の順に移動します。 **[モジュールの追加]** タイルで、シナリオの種類として **[シンプル]** を選択します。 **[追加]** を選択します。
 2. **[Configure and add module]\(モジュールの構成と追加\)** ブレードで、以下の値を入力します。

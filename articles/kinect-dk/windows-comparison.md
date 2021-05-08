@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, 比較, SDK, 相違点, ハードウェア, ソフトウェア
-ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1791767e842043bbb0eda058cc3ea92be90a00fb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87031577"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078300"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Azure Kinect と Kinect Windows v2 の比較
 
@@ -46,7 +46,7 @@ Azure Kinect DK ハードウェアおよびソフトウェア開発キットに�
 
 | **機能**| **Azure Kinect DK** | **Kinect for Windows** | **メモ** |
 |---------|---------|------------|---------|
-| **[奥行]** | ✔️ | ✔️ |    |   |
+| **[奥行]** | ✔️ | ✔️ |    | 
 | **IR** | ✔️ | ✔️ |  |
 | **Color** | ✔️ | ✔️ | 色形式は差に対応しており、Azure Kinect DK は次のカメラ コントロールをサポートします。露出、ホワイト バランス、輝度、コントラスト、彩度、シャープネス、およびゲイン制御 |
 | **オーディオ** | ✔️ | ✔️ | Azure Kinect DK のマイクには、Speech SDK または Windows ネイティブ API を使用してアクセスします |

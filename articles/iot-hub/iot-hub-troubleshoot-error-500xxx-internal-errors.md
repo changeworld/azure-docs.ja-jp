@@ -8,28 +8,28 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 1333a135f3e123757e268513f73e8329537e630b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1bf3c405f988edc2a75a2b54f664f7cbada7b158
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538206"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060994"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx 内部エラー
 
-この記事では、 **500xxx 内部エラー** の原因と解決策について説明します。
+この記事では、**500xxx 内部エラー** の原因と解決策について説明します。
 
 ## <a name="symptoms"></a>現象
 
 IoT Hub に対する要求が、500 から始まるエラー、または何らかの種類の "サーバー エラー" で失敗します。 次のような可能性があります。
 
-* **500001 ServerError** :IoT Hub はサーバー側の問題に遭遇しました。
+* **500001 ServerError**: IoT Hub はサーバー側の問題に遭遇しました。
 
-* **500008 GenericTimeout** :IoT Hub は、タイムアウトする前に接続要求を完了できませんでした。
+* **500008 GenericTimeout**: IoT Hub は、タイムアウトする前に接続要求を完了できませんでした。
 
-* **ServiceUnavailable (エラー コードなし)** :IoT Hub 内部エラーが発生しました。
+* **ServiceUnavailable (エラー コードなし)** : IoT Hub 内部エラーが発生しました。
 
-* **InternalServerError (エラー コードなし)** :IoT Hub 内部エラーが発生しました。
+* **InternalServerError (エラー コードなし)** : IoT Hub 内部エラーが発生しました。
 
 ## <a name="cause"></a>原因
 

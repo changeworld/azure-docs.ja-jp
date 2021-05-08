@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
-ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c21c576cbb99ccc96bf7edf733769a9b28b9344
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013365"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104612567"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +59,8 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 2. *\<Account name>*  -  **[コンテナー]** ページのツールバーで、 **[コンテナー]** を選択します。
 3. **[新しいコンテナー]** ダイアログ ボックスで、名前に「**adftutorial**」と入力し、 **[OK]** を選択します。 *\<Account name>*  -  **[コンテナー]** ページが更新され、コンテナーの一覧に **adftutorial** が含まれるようになります。
 
-   ![コンテナーの一覧](media/data-factory-quickstart-prerequisites/list-of-containers.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/list-of-containers.png" alt-text="コンテナーの一覧":::
+
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>BLOB コンテナーの入力フォルダーとファイルを追加する
 
@@ -82,7 +83,8 @@ Jane, Doe
 3. **[BLOB のアップロード]** ページで、 **[ファイル]** ボックスを選択し、**emp.txt** ファイルを参照して選択します。
 4. **[詳細設定]** の見出しを展開します。 次のようにページが表示されます。
 
-   ![[詳細設定] リンクの選択](media/data-factory-quickstart-prerequisites/upload-blob-advanced.png)
+   :::image type="content" source="media/data-factory-quickstart-prerequisites/upload-blob-advanced.png" alt-text="[詳細設定] リンクの選択":::
+
 5. **[アップロード先のフォルダー]** ボックスに「**input**」と入力します。
 6. **[アップロード]** ボタンを選択します。 一覧に **emp.txt** ファイルとアップロードの状態が表示されます。
 7. **[閉じる]** アイコン (**X**) を選択して、 **[BLOB のアップロード]** ページを閉じます。

@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 57a417948d23d40801eb34cf10aab1e6f17037e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102217399"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644083"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](./app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](./asp-net-exceptions.md)に表示されます。
@@ -24,7 +24,10 @@ ms.locfileid: "102217399"
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>アプリケーションに対して Application Insights スナップショット デバッガーを有効にする
 スナップショット コレクションは次のアプリケーションで使用できます。
 * .NET Framework 4.5 以降を実行している .NET Framework アプリケーションと ASP.NET アプリケーション。
-* Windows 上で動作している .NET core 2.0 アプリケーションと ASP.NET Core 2.0 アプリケーション。
+* Windows 上の .NET Core 2.1 (LTS) または 3.1 (LTS) で .NET Core および ASP.NET Core アプリケーションを実行しているアプリケーション。
+* Windows 上の .NET 5.0 アプリケーション。
+
+.NET Core 2.0、2.2、3.0 はサポートされていないため、使用しないことをお勧めします。
 
 次の環境がサポートされています。
 
@@ -121,7 +124,7 @@ Visual Studio 2017 のバージョン 15.2 (またはそれ以上) では、App 
 Azure Compute や他の種類の場合、シンボル ファイルがメイン アプリケーション .dll (通常は `wwwroot/bin`) の同じフォルダーにあるか、現在のパスで使用できることを確認してください。
 
 > [!NOTE]
-> 使用できるさまざまなシンボル オプションについて詳しくは、[Visual Studio のドキュメント](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+> 使用できるさまざまなシンボル オプションについて詳しくは、[Visual Studio のドキュメント](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output
 )をご覧ください。 最良の結果を得るために、"Full"、"ポータブル"、または "埋め込み" を使用することをお勧めします。
 
 ### <a name="optimized-builds"></a>最適化されたビルド

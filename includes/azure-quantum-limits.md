@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 01/08/2021
 ms.author: dasto
 ms.openlocfilehash: 2106a48a583f120f8b4dde4eb32a30f1a1b1d85b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98948071"
 ---
 ### <a name="provider-limits--quota"></a>プロバイダーの制限とクォータ

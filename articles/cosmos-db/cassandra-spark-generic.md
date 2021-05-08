@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93090513"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark から Azure Cosmos DB Cassandra API に接続する
@@ -26,7 +26,7 @@ ms.locfileid: "93090513"
 * 任意の Spark 環境 [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) | その他] をプロビジョニングします。
 
 ## <a name="dependencies-for-connectivity"></a>接続の依存関係
-* **Cassandra 用 Spark コネクタ:** Spark コネクタは、Azure Cosmos DB Cassandra API に接続するために使用されます。  [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) で、実際の Spark 環境の Spark および Scala のバージョンと互換性のあるコネクタのバージョンを指定して使用します。
+* **Cassandra 用スパークコネクタ:** Spark コネクタは、Azure Cosmos DB Cassandra API に接続するために使用されます。  [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) で、実際の Spark 環境の Spark および Scala のバージョンと互換性のあるコネクタのバージョンを指定して使用します。
 
 * **Cassandra API 用 Azure Cosmos DB ヘルパー ライブラリ:** Spark コネクタに加えて、Azure Cosmos DB の [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) という別のライブラリが必要です。 このライブラリには、カスタムの接続ファクトリと再試行ポリシー クラスが含まれています。
 
@@ -120,7 +120,7 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
  
 * [DDL 操作](cassandra-spark-ddl-ops.md)
 * [操作を作成/挿入する](cassandra-spark-create-ops.md)
-* [操作を読み取る](cassandra-spark-read-ops.md)
+* [操作を読み取ります。](cassandra-spark-read-ops.md)
 * [操作を Upsert する](cassandra-spark-upsert-ops.md)
 * [操作を削除する](cassandra-spark-delete-ops.md)
 * [集計操作](cassandra-spark-aggregation-ops.md)

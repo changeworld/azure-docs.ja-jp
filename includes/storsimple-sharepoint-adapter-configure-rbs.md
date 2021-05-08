@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 45b2ac73ffcb4b777572f9ad62d8aae0e8277e1c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95563192"
 ---
 > [!NOTE]
@@ -17,19 +17,19 @@ ms.locfileid: "95563192"
 > 
 
 #### <a name="to-configure-rbs"></a>RBS を構成するには
-1. [SharePoint サーバーの全体管理] ページを開き、 **[システム設定]** を参照します。 
-2. **[Azure StorSimple]** セクションで、 **[StorSimple アダプターの構成]** をクリックします。
+1. [SharePoint サーバーの全体管理] ページを開き、[**システム設定**] を参照します。 
+2. [**Azure StorSimple**] セクションの [**StorSimple アダプターの構成**] をクリックします。
    
     ![Configure the StorSimple Adapter](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS1-include.png) 
-3. **[StorSimple アダプターの構成]** ページで、次の手順を実行します。
+3. [**StorSimple アダプターの構成**] ページで、次の手順を実行します。
    
-   1. **[パスの編集を有効にする]** チェック ボックスがオンになっていることを確認します。
+   1. [**パスの編集を有効にする**] チェック ボックスがオンになっていることを確認します。
    2. ボックスに、BLOB ストアの汎用名前付け規則 (UNC) パスを入力します。
       
       > [!NOTE]
       > BLOB ストア ボリュームは、StorSimple デバイス上で構成されている iSCSI ボリュームでホストされている必要があります。
 
-   3. リモート記憶域用に構成する各コンテンツ データベースの下の **[有効]** をクリックします。
+   3. リモート ストレージ用に構成する各コンテンツ データベースで、下部にある [**有効にする**] ボタンをクリックします。
       
       > [!NOTE]
       > BLOB ストアは、すべての Web フロントエンド (WFE) サーバーで共有し、これらのサーバーから到達できる必要があります。また、SharePoint サーバー ファーム用に構成されているユーザー アカウントは、共有にアクセスできる必要があります。
@@ -40,22 +40,22 @@ ms.locfileid: "95563192"
       
       ![Configure StorSimple Adapter Enable Disable](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_ConfigureStorSimpleAdapterEnableDisableMessage-include.png)
 
-   4. **[更新]** をクリックして構成を適用します。 **[更新]** をクリックすると、すべての WFE サーバー上で RBS 構成状態が更新され、ファーム全体で RBS が有効になります。 次のメッセージが表示されます。
+   4. [**更新**] ボタンをクリックして構成を適用します。 [**更新**] ボタンをクリックすると、すべての WFE サーバーで RBS 構成状態が更新され、ファーム全体で RBS が有効になります。 次のメッセージが表示されます。
       
       ![Adapter configuration message](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > 大量のデータベース (200 以上) がある SharePoint ファームに対して RBS を構成している場合、[SharePoint サーバーの全体管理] Web ページがタイムアウトする可能性があります。その場合は、ページを更新します。 ページを更新しても構成プロセスに影響はありません。
+      > 大量のデータベース (200 を超える) がある SharePoint ファームに対して RBS を構成している場合、 [SharePoint サーバーの全体管理] Web ページがタイムアウトする可能性があります。その場合は、ページを更新します。 ページを更新しても構成プロセスに影響はありません。
 
 4. 構成を確認します。
    
-   1. SharePoint サーバーの全体管理 Web サイトにサインインし、 **[StorSimple アダプターの構成]** ページに移動します。
+   1. SharePoint サーバーの全体管理 Web サイトにサインインし、**[StorSimple アダプターの構成]** ページに移動します。
    2. 構成の詳細を表示して、入力した設定に一致しているかどうかを確認します。 
 5. RBS が正しく動作することを確認します。
    
    1. ドキュメントを SharePoint にアップロードします。 
    2. 構成した UNC パスを参照します。 RBS のディレクトリ構造が作成されていること、およびアップロードしたオブジェクトがそこに含まれていることを確認します。
-6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳細については、[コンテンツの SharePoint 2013 の RBS 内または RBS 外への移行][6]に関する記事または「[コンテンツを RBS 内または RBS 外に移行する (SharePoint Foundation 2010)][7]」をご覧ください。
+6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳しくは、 [コンテンツを SharePoint 2013 の RBS 外に移行する][6] または [コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)][7] をご覧ください。
 7. (省略可能) テスト インストールで、次のように、BLOB がコンテンツ データベースから移動されたことを確認できます。 
    
    1. SQL Management Studio を起動します。
@@ -113,7 +113,7 @@ ms.locfileid: "95563192"
    > [!WARNING]
    > RBS を有効にしていない場合は、コンテンツ データベースを StorSimple デバイスに移行することはお勧めしません。 このような構成はテストされていません。
    
-9. 次のステップへ進みます:[ガベージ コレクションを構成する](#configure-garbage-collection)。
+9. 次の「 [ガベージ コレクションを構成する](#configure-garbage-collection)」に進みます。
 
 [6]: /SharePoint/administration/migrate-content-into-or-out-of-rbs
 [7]: /previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14)

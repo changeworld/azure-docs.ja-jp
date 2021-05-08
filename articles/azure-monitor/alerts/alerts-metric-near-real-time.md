@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: c282e6890d56fe047b319f72e05cdc97de76cfcf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 04/08/2021
+ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038188"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107104883"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -29,14 +29,16 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 
 |リソースの種類  |サポートされるディメンション |マルチリソース アラート| 使用可能なメトリック|
 |---------|---------|-----|----------|
-|Microsoft.Aadiam/azureADMetrics | はい | いいえ | |
+|Microsoft.Aadiam/azureADMetrics | はい | いいえ | [Azure AD](../essentials/metrics-supported.md#microsoftaadiamazureadmetrics) |
 |Microsoft.ApiManagement/service | はい | いいえ | [API Management](../essentials/metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft.AppConfiguration/configurationStores |[はい] | いいえ | [App Configuration](../essentials/metrics-supported.md#microsoftappconfigurationconfigurationstores) |
-|Microsoft.AppPlatform/Spring | [はい] | いいえ | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
+|Microsoft.AppPlatform/spring | はい | いいえ | [Azure Spring Cloud](../essentials/metrics-supported.md#microsoftappplatformspring) |
 |Microsoft.Automation/automationAccounts | はい| いいえ | [Automation アカウント](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | いいえ | いいえ | [Azure VMware Solution](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | [はい] | いいえ | [Batch アカウント](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft.Cache/Redis | はい | はい | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft.BotService/botServices | はい | いいえ | [Bot Service](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
+|Microsoft.Cache/redis | はい | はい | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|microsoft.Cdn/profiles | はい | いいえ | [CDN プロファイル](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft.ClassicCompute/domainNames/slots/roles | いいえ | いいえ | [従来の Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | いいえ | いいえ | [従来の仮想マシン](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | [はい] | いいえ | [ストレージ アカウント (クラシック)](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccounts) |
@@ -45,8 +47,10 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.ClassicStorage/storageAccounts/queueServices | [はい] | いいえ | [ストレージ アカウント (クラシック) - Queues](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
 |Microsoft.ClassicStorage/storageAccounts/tableServices | [はい] | いいえ | [ストレージ アカウント (クラシック) - Tables](../essentials/metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft.CognitiveServices/accounts | はい | いいえ | [Cognitive Services](../essentials/metrics-supported.md#microsoftcognitiveservicesaccounts) |
+|Microsoft.Compute/cloudServices | はい | いいえ |  [Cloud Services](../essentials/metrics-supported.md#microsoftcomputecloudservices) |
+|Microsoft.Compute/cloudServices/roles | はい | いいえ |  [クラウド サービス ロール](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | はい | 可<sup>1</sup> | [Virtual Machines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
-|Microsoft.Compute/virtualMachineScaleSets | はい | いいえ |[仮想マシン スケール セット](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.Compute/virtualMachineScaleSets | はい | いいえ |[Virtual Machine Scale Sets](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft.ContainerInstance/containerGroups | はい| いいえ | [コンテナー グループ](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft.ContainerRegistry/registries | いいえ | いいえ | [コンテナー レジストリ](../essentials/metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft.ContainerService/managedClusters | はい | いいえ | [マネージド クラスター](../essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) |
@@ -56,9 +60,10 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.DataShare/accounts | [はい] | いいえ | [Data Shares](../essentials/metrics-supported.md#microsoftdatashareaccounts) |
 |Microsoft.DBforMariaDB/servers | いいえ | いいえ | [DB for MariaDB](../essentials/metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | いいえ | いいえ |[DB for MySQL](../essentials/metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/flexibleServers | はい | いいえ | [DB for PostgreSQL (フレキシブル サーバー)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft.DBforPostgreSQL/serverGroupsv2 | はい | いいえ | DB for PostgreSQL (ハイパースケール) |
 |Microsoft.DBforPostgreSQL/servers | いいえ | いいえ | [DB for PostgreSQL](../essentials/metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | いいえ | いいえ | [DB for PostgreSQL V2](../essentials/metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft.DBforPostgreSQL/flexibleServers | はい | いいえ | [DB for PostgreSQL (フレキシブル サーバー)](../essentials/metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft.Devices/IotHubs | はい | いいえ |[IoT Hub](../essentials/metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| はい | いいえ | [デバイス プロビジョニング サービス](../essentials/metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft.DigitalTwins/digitalTwinsInstances | はい | いいえ | [Digital Twins](../essentials/metrics-supported.md#microsoftdigitaltwinsdigitaltwinsinstances) |
@@ -75,6 +80,8 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Logic/integrationServiceEnvironments | はい | いいえ |[統合サービス環境](../essentials/metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft.Logic/workflows | いいえ | いいえ |[Logic Apps](../essentials/metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces | はい | いいえ | [Machine Learning](../essentials/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft.MachineLearningServices/workspaces/onlineEndpoints | はい | いいえ | Machine Learning - エンドポイント |
+|Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments | はい | いいえ | Machine Learning - エンドポイントのデプロイ |
 |Microsoft.Maps/accounts | はい | いいえ | [Maps アカウント](../essentials/metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft.Media/mediaservices | いいえ | いいえ | [Media Services](../essentials/metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft.Media/mediaservices/streamingEndpoints | はい | いいえ | [Media Services ストリーミング エンドポイント](../essentials/metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |

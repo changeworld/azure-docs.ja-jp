@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/01/2021
-ms.openlocfilehash: 4782e6c0ed866c467051fc1811a60df0010a3db1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743649"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562700"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge モジュールの認定前チェックリスト
 
@@ -55,7 +55,7 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 #### <a name="steps"></a>手順
 
 1. Putty を使用して、作成したデバイスと VM にアクセスできることを確認します。
-1. [IoT Edge ランタイム](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge)をデバイスにダウンロードします。
+1. [IoT Edge ランタイム](../iot-edge/how-to-install-iot-edge.md)をデバイスにダウンロードします。
 1. 手順 5 でコピーした接続文字列を config.yaml ファイルに貼り付けて更新します。
 1. `sudo systemctl restart iotedge` を使用して Edge モジュールを再起動します。
 1. `sudo iotedge list` を使用して、モジュールがデバイスにデプロイされたかどうかを確認します。実行状態になっている必要があります。
@@ -74,9 +74,10 @@ Edge モジュールが、Azure で作成された Edge デバイスにデプロ
 - リード管理の接続文字列が存在する。
 - プライバシー ポリシーが存在する
 - 使用条件が存在する
+- サポートされている IoT Edge デバイス リンクを [Azure IoT デバイス カタログ](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible)から追加する 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレースからモジュールをデプロイする](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal#deploy-from-azure-marketplace)
-- [パートナー センターで Edge モジュールを公開する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
-- [IoT Edge モジュールをデプロイする](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)  
+- [コマーシャル マーケットプレースからモジュールをデプロイする](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
+- [パートナー センターで Edge モジュールを公開する](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [IoT Edge モジュールをデプロイする](../iot-edge/quickstart-linux.md)

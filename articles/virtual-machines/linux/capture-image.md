@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 6b345f159ca30d93e43aae8fe34e7d469c57795b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dddbad2403734bc749497a7acca16b2a5b6076f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556657"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792257"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のマネージド イメージを作成する方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "102556657"
 
 * マネージド ディスクを使用する Resource Manager デプロイ モデルで作成された Azure VM。 Linux VM を作成していない場合は、[ポータル](quick-create-portal.md)、[Azure CLI](quick-create-cli.md)、または [Resource Manager](create-ssh-secured-vm-from-template.md) テンプレートを使うことができます。 必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](add-disk.md)し、更新プログラムを適用し、アプリケーションをインストールします。 
 
-* 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az-login) を使用して Azure アカウントにログインしています。
+* 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしています。
 
 ## <a name="prefer-a-tutorial-instead"></a>代わりにチュートリアルを利用する場合
 
@@ -40,7 +40,7 @@ ms.locfileid: "102556657"
 
 
 ## <a name="step-1-deprovision-the-vm"></a>手順 1:VM のプロビジョニングを解除する
-まず Azure VM エージェントで VM のプロビジョニングを解除し、マシン固有のファイルとデータを削除します。 ソース Linux VM で `-deprovision+user` パラメーターを指定して `waagent` コマンドを実行します。 詳細については、「[Azure Linux エージェント ユーザー ガイド](../extensions/agent-linux.md)」をご覧ください。
+まず Azure VM エージェントで VM のプロビジョニングを解除し、マシン固有のファイルとデータを削除します。 ソース Linux VM で `-deprovision+user` パラメーターを指定して `waagent` コマンドを実行します。 詳細については、「[Azure Linux エージェント ユーザー ガイド](../extensions/agent-linux.md)」をご覧ください。 これは、元に戻すことができない処理です。
 
 1. SSH クライアントを使って Linux VM に接続します。
 2. SSH のウィンドウで、次のコマンドを入力します。
@@ -77,7 +77,7 @@ Azure CLI を使用し、一般化されたものとして VM を設定し、イ
 
     一般化された VM は再起動できなくなります。
 
-3. [az image create](/cli/azure/image#az-image-create) で VM リソースのイメージを作成します。 次の例では、*myVM* という名前の VM リソースを使用して *myResourceGroup* という名前のリソース グループに含まれる *myImage* という名前のイメージを作成します。
+3. [az image create](/cli/azure/image#az_image_create) で VM リソースのイメージを作成します。 次の例では、*myVM* という名前の VM リソースを使用して *myResourceGroup* という名前のリソース グループに含まれる *myImage* という名前のイメージを作成します。
    
     ```azurecli
     az image create \
@@ -106,7 +106,7 @@ az vm create \
 
 ### <a name="creating-the-vm-in-another-resource-group"></a>別のリソース グループで VM を作成する 
 
-サブスクリプション内の任意のリソース グループでイメージから VM を作成できます。 イメージとは別のリソース グループに VM を作成するには、イメージに対する完全なリソース ID を指定します。 [az image list](/cli/azure/image#az-image-list) を実行すると、イメージの一覧が表示されます。 出力は次の例のようになります。
+サブスクリプション内の任意のリソース グループでイメージから VM を作成できます。 イメージとは別のリソース グループに VM を作成するには、イメージに対する完全なリソース ID を指定します。 [az image list](/cli/azure/image#az_image_list) を実行すると、イメージの一覧が表示されます。 出力は次の例のようになります。
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -114,7 +114,7 @@ az vm create \
    "name": "myImage",
 ```
 
-次の例では、[az vm create](/cli/azure/vm#az-vm-create) を実行し、イメージ リソース ID を指定してソース イメージとは別のリソース グループに VM を作成します。
+次の例では、[az vm create](/cli/azure/vm#az_vm_create) を実行し、イメージ リソース ID を指定してソース イメージとは別のリソース グループに VM を作成します。
 
 ```azurecli
 az vm create \
@@ -128,7 +128,7 @@ az vm create \
 
 ## <a name="step-4-verify-the-deployment"></a>手順 4:デプロイを検証する
 
-作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。 SSH を介して接続するには、[az vm show](/cli/azure/vm#az-vm-show) を実行して、VM の IP アドレスか FQDN を見つけます。
+作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。 SSH を介して接続するには、[az vm show](/cli/azure/vm#az_vm_show) を実行して、VM の IP アドレスか FQDN を見つけます。
 
 ```azurecli
 az vm show \

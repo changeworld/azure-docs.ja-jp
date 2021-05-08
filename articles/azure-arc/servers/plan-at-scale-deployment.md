@@ -1,18 +1,18 @@
 ---
-title: Azure Arc 対応サーバーの大規模デプロイを計画する方法
+title: Azure Arc 対応サーバーを計画およびデプロイする方法
 description: 多数のマシンを Azure Arc 対応サーバーに対して有効にして、Azure で、重要なセキュリティ、管理、監視の機能の構成を簡略化する方法について説明します。
-ms.date: 02/23/2021
+ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0e77fc00f94f2f46c60bb2c5dcecc10a4e2e3bc5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032230"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023284"
 ---
-# <a name="planing-for-an-at-scale-deployment-of-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーの大規模デプロイの計画
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc 対応サーバーの計画およびデプロイ
 
-IT インフラストラクチャ サービスまたはビジネス アプリケーションのデプロイは、どの企業にとっても難題です。 適切に実行し、うれしくない驚きや計画外のコストを回避するには、徹底的に計画を立てて可能な限り準備しておく必要があります。 Azure Arc 対応サーバーの大規模なデプロイを計画するには、大規模なデプロイをサポートするタスクを適切に完了するために満たす必要がある、設計とデプロイの条件を網羅する必要があります。
+IT インフラストラクチャ サービスまたはビジネス アプリケーションのデプロイは、どの企業にとっても難題です。 適切に実行し、うれしくない驚きや計画外のコストを回避するには、徹底的に計画を立てて可能な限り準備しておく必要があります。 Azure Arc 対応サーバーのデプロイを計画するには、その規模を問わず、タスクを適切に完了するために満たす必要がある、設計とデプロイの条件を網羅する必要があります。
 
 デプロイを円滑に進めるには、計画により、以下のことが明確に理解されるようにする必要があります。
 
@@ -57,7 +57,7 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 |タスク |Detail |Duration |
 |-----|-------|---------|
 | [リソース グループの作成](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Arc 対応サーバーだけを含み、これらのリソースの管理と監視を一元化する専用リソース グループ。 | 1 時間 |
-| マシンの整理に役立つ[タグ](../../azure-resource-manager/management/tag-resources.md)を適用する。 | Arc 対応サーバーの管理の複雑さを軽減し、管理上の意思決定を簡略化するのに役立つ、IT 面で調整された[タグ付け戦略](/cloud-adoption-framework/decision-guides/resource-tagging/)の評価と作成を行います。 | 1 日 |
+| マシンの整理に役立つ[タグ](../../azure-resource-manager/management/tag-resources.md)を適用する。 | Arc 対応サーバーの管理の複雑さを軽減し、管理上の意思決定を簡略化するのに役立つ、IT 面で調整された[タグ付け戦略](/azure/cloud-adoption-framework/decision-guides/resource-tagging/)の評価と作成を行います。 | 1 日 |
 | [Azure Monitor ログ](../../azure-monitor/logs/data-platform-logs.md)を設計してデプロイする | [設計とデプロイに関する考慮事項](../../azure-monitor/logs/design-logs-deployment.md)を評価して、ハイブリッド サーバーとマシンから収集したログ データを格納するために、組織が既存の Log Analytics ワークスペースを使用するか、別の Log Analytics ワークスペースを実装するかを決定します。<sup>1</sup> | 1 日 |
 | [Azure Policy](../../governance/policy/overview.md) ガバナンス計画を作成する | Azure Policy を使用して、サブスクリプションまたはリソース グループのスコープでハイブリッド サーバーとマシンのガバナンスを実装する方法を決定します。 | 1 日 |
 | [ロールベースのアクセス制御](../../role-based-access-control/overview.md) (RBAC) を構成する | Arc 対応サーバーを管理するためのアクセスと、他の Azure サービスやソリューションからのデータを表示する機能を、誰が持つかを制御するアクセス計画を作成します。 | 1 日 |
@@ -67,11 +67,11 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 
 ## <a name="phase-2-deploy-arc-enabled-servers"></a>フェーズ 2: Arc 対応サーバーをデプロイする
 
-次に、デプロイを準備し、エージェントのインストールを実行して、フェーズ 1 で構築した基盤への追加を行います。
+次に、Arc 対応サーバーの Connected Machine エージェントを準備してデプロイすることで、フェーズ 1 で準備した基盤に追加します。
 
 |タスク |Detail |Duration |
 |-----|-------|---------|
-| 定義済みのインストール スクリプトをダウンロードする | 自動デプロイの要件をサポートするために、Connected Machine エージェントの大規模なデプロイ用に事前に定義されたインストール スクリプトを見直してカスタマイズします。<br><br> 大規模なオンボード リソースのサンプル:<br><br> <ul><li> [大規模な基本的デプロイのスクリプト](onboard-service-principal.md)</ul></li> <ul><li>[VMware vSphere の Windows Server VM の大規模なオンボード](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[VMware vSphere の Linux VM の大規模なオンボード](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Ansible を使用した、AWS EC2 インスタンスの大規模なオンボード](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[PowerShell リモート処理を使用した大規模なデプロイ](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (Windows のみ)</ul></li>| 要件、組織のプロセス (変更およびリリース管理など)、使用されたオートメーションの方法に応じて 1 日以上。 |
+| 定義済みのインストール スクリプトをダウンロードする | 自動デプロイの要件をサポートするために、Connected Machine エージェントの大規模なデプロイ用に事前に定義されたインストール スクリプトを見直してカスタマイズします。<br><br> 大規模なオンボード リソースのサンプル:<br><br> <ul><li> [大規模な基本的デプロイのスクリプト](onboard-service-principal.md)</ul></li> <ul><li>[VMware vSphere の Windows Server VM の大規模なオンボード](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[VMware vSphere の Linux VM の大規模なオンボード](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Ansible を使用した、AWS EC2 インスタンスの大規模なオンボード](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[PowerShell リモート処理を使用した大規模なデプロイ](./onboard-powershell.md) (Windows のみ)</ul></li>| 要件、組織のプロセス (変更およびリリース管理など)、使用されたオートメーションの方法に応じて 1 日以上。 |
 | [サービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |サービス プリンシパルを作成し、Azure PowerShell を使用して、またはポータルから、非対話形式でコンピューターを接続します。| 1 時間 |
 | ターゲットのサーバーとマシンに Connected Machine エージェントをデプロイする |オートメーション ツールを使用してスクリプトをサーバーにデプロイし、サーバーを Azure に接続します。| リリース計画と、段階的ロールアウトを行うかどうかに応じて 1 日以上。 |
 

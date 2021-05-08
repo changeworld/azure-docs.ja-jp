@@ -4,15 +4,15 @@ description: このクイックスタートでは、Azure CLI を使用して、
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: b28c4457129985a1d5c47d251873eaa52a253f72
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e0fd5969a3c4f84b6e8f98e99335bf120179e7af
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102607970"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481091"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for MySQL - フレキシブル サーバーに接続してクエリを実行する
 
@@ -157,5 +157,6 @@ Your preference of  are now saved to local context. To learn more, type in `az l
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [サーバーを管理する](./how-to-manage-server-cli.md)
+* [暗号化された接続を使用して Azure Database for MySQL - フレキシブル サーバーに接続する](how-to-connect-tls-ssl.md)
+* [サーバーを管理する](./how-to-manage-server-cli.md)
 

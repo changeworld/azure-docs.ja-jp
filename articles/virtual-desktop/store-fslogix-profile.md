@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 1ff8c645b1ad670f3824920d39aa0c6bf9783408
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99526604"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445552"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
@@ -44,6 +44,26 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 |Azure Active Directory の統合|[Native Active Directory と Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
 
 ストレージ方法を選択したら、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」で Microsoft の価格設定に関する情報をご覧ください。
+
+## <a name="azure-files-tiers"></a>Azure Files のレベル
+
+Azure Files では、Premium と Standard の 2 種類のストレージ レベルが提供されています。 これらのレベルを使用すると、シナリオの要件を満たすためにファイル共有のパフォーマンスとコストを調整できます。
+
+- Premium ファイル共有は、ソリッドステート ドライブ (SSD) が基になっており、FileStorage ストレージ アカウント タイプでデプロイされます。 Premium ファイル共有では、入出力 (IO) 集中型のワークロードに対して、高いパフォーマンスと低遅延が一貫して提供されます。 
+
+- Standard ファイル共有は、ハード ディスク ドライブ (HDD) が基になっており、汎用バージョン 2 (GPv2) ストレージ アカウント タイプでデプロイされます。 Standard ファイル共有では、汎用のファイル共有や開発/テスト環境など、パフォーマンスの変動の影響を受けにくい IO ワークロードに対して、信頼性の高いパフォーマンスが提供されます。 Standard ファイル共有は、従量課金制の課金モデルでのみ利用できます。
+
+次の表に、ワークロードに基づいて、どのパフォーマンス レベルを使用すればよいかについて推奨事項を示します。 これらの推奨事項は、パフォーマンス目標、予算、および地域に関する考慮事項を満たすパフォーマンス レベルを選択するのに役立ちます。 これらの推奨事項は、[リモート デスクトップ ワークロード タイプ](/windows-server/remote/remote-desktop-services/remote-desktop-workloads)のシナリオ例に基づいています。 
+
+| ワークロードの種類 | 推奨されるファイル レベル |
+|--------|-----------|
+| Light (200 人未満のユーザー) | Standard ファイル共有 |
+| Light (200 人を超えるユーザー) | Premium ファイル共有、または複数のファイル共有を備えた Standard |
+|Medium|Premium ファイル共有|
+|ヘビー|Premium ファイル共有|
+|Power|Premium ファイル共有|
+
+Azure Files のパフォーマンスの詳細については、「[ファイル共有とファイルのスケール ターゲット](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)」を参照してください。 価格の詳細については、「[Azure Files の料金](https://azure.microsoft.com/pricing/details/storage/files/)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

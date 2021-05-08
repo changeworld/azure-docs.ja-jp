@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103492219"
 ---
 # <a name="ui-framework-capabilities"></a>UI フレームワークの機能
@@ -71,7 +71,7 @@ Azure Communication Services の UI フレームワークでは、一連の再�
 
 | コンポーネントの種類            | テーマ     | レイアウト                                                              | データ モデル |
 |---------------------------|------------|---------------------------------------------------------------------|-------------|
-| 複合コンポーネント       |     N/A    | N/A                                                                 |     N/A     |
+| 複合コンポーネント       |     N/A    | 該当なし                                                                 |     N/A     |
 | 基本コンポーネント            |     N/A    | コンポーネントのレイアウトは、外部のスタイルを使用して変更できます         |     N/A     |
 
 

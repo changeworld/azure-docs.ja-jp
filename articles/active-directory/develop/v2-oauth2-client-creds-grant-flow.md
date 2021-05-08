@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/2/2020
+ms.date: 4/1/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 96f7d7c94ce908d953a6941bfa237fe8da1dc482
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b3e27f266551eb7425d4801d14261a5e428e4c2
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98752669"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168112"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -25,7 +25,7 @@ RFC 6749 に明記されている [OAuth 2.0 クライアント資格情報の�
 
 この記事では、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。 可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
-OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
+OAuth 2.0 クライアント資格情報付与フローでは、Web サービス (Confidential クライアント) が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 高いレベルの保証では、Microsoft ID プラットフォームにより、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。  アプリケーション独自の資格情報が使用されているため、これらの資格情報を安全に保つ必要があります。この資格情報をソース コードで公開したり、Web ページに埋め込んだり、広く分散したネイティブ アプリケーションで使用したり "_しないで_" ください。 
 
 クライアント資格情報フローでは、アクセス許可は管理者によってアプリケーション自体に直接付与されます。 アプリがリソースにトークンを提示するとき、リソースはアプリ自体がアクションの実行を承認されていることを求めます。これは、認証に関与しているユーザーが存在しないためです。  この記事では、[API の呼び出しをアプリケーションに承認する](#application-permissions)ために必要な手順と、[その API を呼び出すために必要なトークンを取得する方法](#get-a-token)の両方について説明します。
 

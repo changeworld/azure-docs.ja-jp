@@ -4,12 +4,12 @@ description: Enterprise セキュリティ パッケージを使用して Azure 
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705706"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104863260"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -30,7 +30,7 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
 
 2. クラスター管理者のドメイン ユーザー名とパスワードを使用してログインします。
 
-    ![HDInsight ESP Ranger のホーム ページ](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="HDInsight ESP Ranger のホーム ページ" border="true":::
 
     現在、Ranger は Yarn および Hive でのみ機能します。
 
@@ -57,7 +57,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
     |ユーザーの選択|hiveuser1|
     |アクセス許可|select|
 
-    ![HDInsight ESP Ranger での Hive ポリシーの構成](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="HDInsight ESP Ranger での Hive ポリシーの構成" border="true":::。
 
     > [!NOTE]  
     > [Select User] にドメイン ユーザーが設定されていない場合は、Ranger が AAD と同期するまでしばらく待ってください。
@@ -101,7 +101,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 1. **[データ]** タブで **[データの取得]**  >  **[その他のデータ ソース]**  >  **[ODBC]** の順に移動して、 **[ODBC]** ウィンドウを起動します。
 
-    ![データ接続ウィザードを開く](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="データ接続ウィザードを開く" border="true":::
 
 1. ドロップダウン リストから、前のセクションで作成したデータ ソース名を選択して、 **[OK]** を選択します。
 

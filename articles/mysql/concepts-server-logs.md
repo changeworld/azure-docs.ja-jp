@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e3342b38f782b718cefd63295ef4d4d26b525058
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595948"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259049"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
@@ -45,7 +45,7 @@ Azure Database for MySQL の低速クエリ ログにアクセスするには、
 Azure Monitor 診断ログを使用すると、低速クエリ ログを Azure Monitor ログ (Log Analytics)、Azure Storage、または Event Hubs にパイプすることができます。 詳細については、[以下](concepts-server-logs.md#diagnostic-logs)を参照してください。
 
 ## <a name="local-server-storage-log-retention"></a>ローカル サーバー ストレージ ログの保持期間
-サーバーのローカル ストレージにログを記録する場合、ログは作成から最大 7 日間利用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。
+サーバーのローカル ストレージにログを記録する場合、ログは作成から最大 7 日間利用できます。 使用可能なログの合計サイズが 7 GB を超える場合、空き領域を利用できるようになるまで古いファイルから削除されます。サーバー ログの 7 GB のストレージ上限は、コストなしで使用可能であり、拡張することはできません。 
 
 ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
 

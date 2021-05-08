@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: f826c947b1e47c1c996a8e9102492e85adafa326
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215155"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606992"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -81,34 +81,15 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>サービス エンドポイントのセキュリティで保護されたリソースに接続する
 
-より高度なセキュリティを実現するために、サービス エンドポイントを使用して、仮想ネットワークに対する Azure サービス数を制限することができます。 次に、関数アプリをその仮想ネットワークと統合して、リソースにアクセスする必要があります。 この構成は、仮想ネットワークの統合をサポートするすべての計画でサポートされています。
+より高度なセキュリティを実現するために、サービス エンドポイントを使用して、仮想ネットワークに対する Azure サービス数を制限することができます。 次に、関数アプリをその仮想ネットワークと統合して、リソースにアクセスする必要があります。 この構成は、仮想ネットワークの統合をサポートするすべての[計画](functions-scale.md#networking-features)でサポートされています。
 
 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する 
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 この機能は現在、Standard および Premium が含まれている仮想ネットワークでサポートされているすべての SKU に対して機能します。ただし、仮想ネットワークが Premium SKU に対してのみ使用可能なフレックス スタンプは除きます。 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。 
 
-1. サービス エンドポイントが有効になっていないストレージ アカウントを使用して関数を作成します。
-1. ご使用の仮想ネットワークに接続するように関数を構成します。
-1. 別のストレージ アカウントを作成または構成します。  これがサービス エンドポイントで保護され、関数に接続されるストレージ アカウントになります。
-1. セキュリティで保護されたストレージ アカウントに[ファイル共有を作成](../storage/files/storage-how-to-create-file-share.md#create-file-share)します。
-1. ストレージ アカウントのサービス エンドポイントまたはプライベート エンドポイントを有効にします。  
-    * プライベート エンドポイント接続を使用する場合、ストレージ アカウントには、`file` と `blob` のサブリソース用のプライベート エンドポイントが必要です。  Durable Functions のような特定の機能を使用する場合は、プライベート エンドポイント接続を介して `queue` と `table` にアクセスできる必要もあります。
-    * サービス エンドポイントを使用する場合は、ストレージ アカウントに対して関数アプリ専用のサブネットを有効にします。
-1. 関数アプリのストレージ アカウントから、セキュリティで保護されたストレージ アカウントとファイル共有に、ファイルと BLOB の内容をコピーします。
-1. このストレージ アカウントの接続文字列をコピーします。
-1. 関数アプリの **[構成]** の下の **[アプリケーションの設定]** を次のように更新します。
-    - `AzureWebJobsStorage` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
-    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` をセキュリティで保護されたストレージ アカウントの接続文字列にします。
-    - `WEBSITE_CONTENTSHARE` をセキュリティで保護されたストレージ アカウントで作成されたファイル共有の名前にします。
-    - 名前が `WEBSITE_CONTENTOVERVNET` で値が `1` の新しい設定を作成します。
-    - ストレージ アカウントでプライベート エンドポイント接続が使用されている場合は、次の設定を確認または追加します。
-        - `WEBSITE_VNET_ROUTE_ALL` (値 `1`)
-        - `WEBSITE_DNS_SERVER` (値 `168.63.129.16`) 
-1. アプリケーションの設定を保存します。  
-
-関数アプリが再起動され、セキュリティで保護されたストレージ アカウントに接続されるようになります。
+この機能は、現在、専用 (App Service) プランおよび Premium プランのすべての Windows 仮想ネットワーク対応 SKU で使用できます。 従量課金プランはサポートされていません。 プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定する方法については、「[お使いのストレージ アカウントを仮想ネットワークに制限する](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network)」を参照してください。
 
 ## <a name="use-key-vault-references"></a>Key Vault 参照を使用する
 
@@ -121,7 +102,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。
 
 + Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
-+ App Service プランまたは App Service 環境で関数アプリを実行する。
++ App Service プランまたは App Service Environment で関数アプリを実行する。
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
@@ -173,6 +154,8 @@ Azure Functions で使用されるとき、各ハイブリッド接続は、単�
 送信 IP の制限は、Premium プラン、App Service プラン、App Service Environment で利用できます。 App Service Environment が展開されている仮想ネットワークの送信制限を構成することができます。
 
 Premium プランまたは App Service プランの関数アプリを仮想ネットワークと統合した場合でも、アプリは既定でインターネットへの送信呼び出しを行うことができます。 アプリケーション設定 `WEBSITE_VNET_ROUTE_ALL=1` を追加することで、ネットワーク セキュリティ グループ ルールをトラフィックの制限に使用できる仮想ネットワークに、送信トラフィックがすべて送信されます。
+
+仮想ネットワークを使用して送信 IP を制御する方法については、[Azure 仮想ネットワークの NAT ゲートウェイを使用した Azure Functions の送信 IP 制御に関するチュートリアル](functions-how-to-use-nat-gateway.md)を参照してください。 
 
 ## <a name="automation"></a>オートメーション
 次の API では、リージョンでの仮想ネットワーク統合をプログラミングで管理できます。

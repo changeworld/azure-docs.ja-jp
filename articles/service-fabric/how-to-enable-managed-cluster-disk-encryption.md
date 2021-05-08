@@ -4,10 +4,10 @@ description: ARM テンプレートを使用して、Windows の Azure Service F
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.openlocfilehash: b7e56ff8db9f94b8c6681a1a7d69a4751b3f43a5
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100641020"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-preview-nodes"></a>Service Fabric 管理対象クラスター (プレビュー) ノードのディスク暗号化を有効にする

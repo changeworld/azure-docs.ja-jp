@@ -3,19 +3,18 @@ title: Azure Key Vault のシークレットについて - Azure Key Vault
 description: Azure Key Vault のシークレットの概要。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6d4f3f744a85c14c42ffef1c894b237081e871f8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526641"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752428"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -133,5 +132,5 @@ Key Vault でアクセスを制御するための攻略ガイドについては�
 - [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
 - [キーについて](../keys/about-keys.md)
 - [証明書について](../certificates/about-certificates.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

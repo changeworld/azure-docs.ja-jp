@@ -3,12 +3,12 @@ title: Azure Relay とは | Microsoft Docs
 description: この記事では、Azure Relay サービスの概要について説明します。このサービスを使用すると、ファイアウォール接続を開いたり、ネットワーク インフラストラクチャ内に及ぶような変更を加えたりせずに、企業ネットワーク内で実行されるオンプレミスのサービスを利用するクラウド アプリケーションを開発できます。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b222942394b8a83e6f5d4447aa9ccfb33cdec21
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97955384"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314203"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォールでポートを開放したり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
@@ -80,5 +80,5 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 * [.NET HTTP 要求の概要](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Node WebSocket の概要](relay-hybrid-connections-node-get-started.md)
 * [Node HTTP 要求の概要](relay-hybrid-connections-http-requests-node-get-started.md)
-* [Relay に関する FAQ](relay-faq.md)
+* [Relay に関する FAQ](relay-faq.yml)
 

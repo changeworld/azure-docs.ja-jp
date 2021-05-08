@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 19d5a5214ae4d2d6c0a18b68863211aa1f6573c6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b3b4f7737320cc0359192f947271a0f4beb3c478
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878988"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502999"
 ---
 # <a name="azcopy"></a>azcopy
 
-AzCopy は、Azure Storage との間でデータを移動するコマンドライン ツールです。
+AzCopy は、Azure Storage との間でデータを移動するコマンドライン ツールです。 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
 ## <a name="synopsis"></a>概要
 
@@ -28,9 +28,9 @@ AzCopy は、Azure Storage との間でデータを移動するコマンドラ�
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する](storage-use-azcopy-migrate-on-premises-data.md)
 - [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>オプション
 

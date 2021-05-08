@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2ce3b362d02e7acb0a11e6d93b8e94ca8e4d04e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cb0312d905284f8c5a9817e9550d340bf6135032
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903532"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532199"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理で新しいアクセス パッケージを作成する
 
@@ -138,14 +138,15 @@ ms.locfileid: "96903532"
 
 Microsoft Graph を使用して、アクセス パッケージを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、次のことを行うことができます
 
-1. [カタログ内の accessPackageResources を一覧表示し](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta) を作成します。
-1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
-1. [accessPackage を作成します](/graph/tutorial-access-package-api?view=graph-rest-beta)。
-1. [accessPackageAssignmentPolicy を作成します](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta)。
-1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta) を作成します。
+1. [カタログ内の accessPackageResources を一覧表示し](/graph/api/accesspackagecatalog-list?tabs=http&view=graph-rest-beta&preserve-view=true)、カタログにまだ存在しないすべてのリソースに対して [accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?tabs=http&view=graph-rest-beta&preserve-view=true) を作成します。
+1. accessPackageCatalog 内の各 accessPackageResource の [accessPackageResourceRoles](/graph/api/accesspackage-list-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) を一覧表示します。 このロールの一覧は、後で accessPackageResourceRoleScope を作成するときにロールを選択するために使用されます。
+1. [accessPackage を作成します](/graph/tutorial-access-package-api&view=graph-rest-beta&preserve-view=true)。
+1. [accessPackageAssignmentPolicy を作成します](/graph/api/accesspackageassignmentpolicy-post?tabs=http&view=graph-rest-beta&preserve-view=true)。
+1. アクセス パッケージ内で必要なリソース ロールごとに [accessPackageResourceRoleScope](/graph/api/accesspackage-post-accesspackageresourcerolescopes?tabs=http&view=graph-rest-beta&preserve-view=true) を作成します。
 
 ## <a name="next-steps"></a>次の手順
 
 - [リンクを共有してアクセス パッケージを要求する](entitlement-management-access-package-settings.md)
 - [アクセス パッケージのリソースのロールを変更する](entitlement-management-access-package-resources.md)
 - [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-assignments.md)
+- [アクセス パッケージのアクセス レビューを作成する](entitlement-management-access-reviews-create.md)

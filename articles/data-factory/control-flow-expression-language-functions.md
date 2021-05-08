@@ -3,16 +3,16 @@ title: Azure Data Factory の式と関数
 description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 829afda7ba49d60e51f3a074d38e5a1d0ca924a4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: af365ef9b94702fa6634235a95a91297d6b7ae50
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050054"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107130"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 
@@ -161,6 +161,30 @@ ms.locfileid: "102050054"
     }
 }
 ```
+
+### <a name="replacing-special-characters"></a>特殊文字の置換
+
+編集が完了すると、動的コンテンツ エディターによってコンテンツ内の、二重引用符、円記号などの文字が自動的にエスケープされます。 replace() 関数で **\n**, **\t** を使用してライン フィードまたはタブを置換する場合、これにより問題が発生します。 コードビューで動的コンテンツを編集して式の余分な \ を削除するか、次の手順に従って、式言語を使用して特殊文字を置換することができます。
+
+1. 元の文字列値に対する URL エンコード
+1. URL エンコードされた文字列を置換します。たとえば、ライン フィード (%0A)、キャリッジ リターン (%0D)、水平タブ (%09) です。
+1. URL のデコード
+
+たとえば、値に改行文字が含まれる変数 *companyName* の場合、式 `@uriComponentToString(replace(uriComponent(variables('companyName')), '%0A', ''))` は改行文字を削除できます。 
+
+```json
+Contoso-
+Corporation
+```
+
+### <a name="escaping-single-quote-character"></a>一重引用符のエスケープ
+
+式関数は、文字列値パラメーターに一重引用符を使用します。 文字列関数で ' 文字をエスケープするには、2 つの一重引用符を使用します。 たとえば、式 `@concat('Baba', ''' ', 'book store')` は次の結果を返します。
+
+```
+Baba's book store
+```
+
 ### <a name="tutorial"></a>チュートリアル
 この[チュートリアル](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)では、パイプラインとアクティビティ間、およびアクティビティ間でパラメーターを渡す方法について説明します。
 
@@ -313,7 +337,7 @@ ms.locfileid: "102050054"
 add(<summand_1>, <summand_2>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*summand_1*>、<*summand_2*> | はい | 整数、浮動小数点数、または混合 | 加算する数値 |
 |||||
@@ -343,7 +367,7 @@ add(1, 1.5)
 addDays('<timestamp>', <days>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*days*> | はい | Integer | 追加する正または負の日数 |
@@ -385,7 +409,7 @@ addDays('2018-03-15T00:00:00Z', -5)
 addHours('<timestamp>', <hours>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*hours*> | はい | Integer | 追加する正または負の時間数 |
@@ -427,7 +451,7 @@ addHours('2018-03-15T15:00:00Z', -5)
 addMinutes('<timestamp>', <minutes>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*minutes*> | はい | Integer | 追加する正または負の分数 |
@@ -469,7 +493,7 @@ addMinutes('2018-03-15T00:20:00Z', -5)
 addSeconds('<timestamp>', <seconds>, '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*seconds*> | はい | Integer | 追加する正または負の秒数 |
@@ -512,7 +536,7 @@ addSeconds('2018-03-15T00:00:30Z', -5)
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*interval*> | はい | Integer | 追加する指定した時間単位の数 |
@@ -556,7 +580,7 @@ addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
 and(<expression1>, <expression2>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*> | はい | Boolean | 調べる式 |
 |||||
@@ -609,7 +633,7 @@ and(equals(1, 2), equals(1, 3))
 array('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 配列を作成するための文字列 |
 |||||
@@ -639,7 +663,7 @@ array('hello')
 base64('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 入力文字列 |
 |||||
@@ -669,7 +693,7 @@ base64 エンコード文字列のバイナリ バージョンを返します。
 base64ToBinary('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する base64 エンコード文字列 |
 |||||
@@ -703,7 +727,7 @@ base64 エンコード文字列の文字列バージョンを返し、実質的�
 base64ToString('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | デコードする base64 エンコード文字列 |
 |||||
@@ -733,7 +757,7 @@ base64ToString('aGVsbG8=')
 binary('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する文字列 |
 |||||
@@ -765,7 +789,7 @@ binary('hello')
 bool(<value>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | Any | 変換する値 |
 |||||
@@ -800,7 +824,7 @@ bool(0)
 coalesce(<object_1>, <object_2>, ...)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*object_1*>, <*object_2*>, ... | はい | 任意、型が混在してもかまいません | null かどうか調べる 1 つまたは複数の項目 |
 |||||
@@ -836,7 +860,7 @@ coalesce(null, null, null)
 concat('<text1>', '<text2>', ...)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text1*>, <*text2*>, ... | はい | String | 結合する少なくとも 2 つの文字列 |
 |||||
@@ -875,7 +899,7 @@ contains([<collection>], '<value>')
 * "*配列*" からの "*値*" の検索
 * "*ディクショナリ*" からの "*キー*" の検索
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列、ディクショナリ | 調べるコレクション |
 | <*value*> | はい | それぞれ文字列、配列、ディクショナリ | 検索する項目 |
@@ -912,7 +936,7 @@ contains('hello world', 'universe')
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
@@ -954,7 +978,7 @@ convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
@@ -997,7 +1021,7 @@ convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*sourceTimeZone*> | はい | String | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
@@ -1040,7 +1064,7 @@ convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
 createArray('<object1>', '<object2>', ...)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*>, ... | はい | 任意、ただし混在していてはなりません | 配列を作成する少なくとも 2 つの項目 |
 |||||
@@ -1070,7 +1094,7 @@ createArray('h', 'e', 'l', 'l', 'o')
 dataUri('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する文字列 |
 |||||
@@ -1102,7 +1126,7 @@ dataUri('hello')
 dataUriToBinary('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換するデータ URI |
 |||||
@@ -1137,7 +1161,7 @@ dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dataUriToString('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換するデータ URI |
 |||||
@@ -1167,7 +1191,7 @@ dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 dayOfMonth('<timestamp>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 |||||
@@ -1197,7 +1221,7 @@ dayOfMonth('2018-03-15T13:27:36Z')
 dayOfWeek('<timestamp>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 |||||
@@ -1227,7 +1251,7 @@ dayOfWeek('2018-03-15T13:27:36Z')
 dayOfYear('<timestamp>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 |||||
@@ -1259,7 +1283,7 @@ base64 エンコード文字列の文字列バージョンを返し、実質的�
 decodeBase64('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | デコードする base64 エンコード文字列 |
 |||||
@@ -1291,7 +1315,7 @@ decodeBase64('aGVsbG8=')
 decodeDataUri('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | デコードするデータ URI 文字列 |
 |||||
@@ -1326,7 +1350,7 @@ decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
 decodeUriComponent('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | エスケープ文字をデコードする文字列 |
 |||||
@@ -1357,7 +1381,7 @@ decodeUriComponent('http%3A%2F%2Fcontoso.com')
 div(<dividend>, <divisor>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | はい | 整数または浮動小数点数 | *divisor* によって除算される値。 |
 | <*divisor*> | はい | 整数または浮動小数点数 | *dividend* を除算する値。0 にすることはできません。 |
@@ -1391,7 +1415,7 @@ URL の安全でない文字がエスケープ文字に置き換えられた、�
 encodeUriComponent('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | URI エンコード形式に変換する文字列 |
 |||||
@@ -1423,7 +1447,7 @@ empty('<collection>')
 empty([<collection>])
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列、オブジェクト | 調べるコレクション |
 |||||
@@ -1459,7 +1483,7 @@ empty('abc')
 endsWith('<text>', '<searchText>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 調べる文字列。 |
 | <*searchText*> | はい | String | 検索する末尾の部分文字列 |
@@ -1501,7 +1525,7 @@ endsWith('hello world', 'universe')
 equals('<object1>', '<object2>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*> | はい | 各種 | 比較する値、式、またはオブジェクト |
 |||||
@@ -1536,7 +1560,7 @@ first('<collection>')
 first([<collection>])
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列 | 最初の項目を検索するコレクション |
 |||||
@@ -1570,7 +1594,7 @@ first(createArray(0, 1, 2))
 float('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する有効な浮動小数点数を含む文字列 |
 |||||
@@ -1600,7 +1624,7 @@ float('10.333')
 formatDateTime('<timestamp>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
@@ -1631,7 +1655,7 @@ formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
 getFutureTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | はい | Integer | 追加する指定した時間単位の数 |
 | <*timeUnit*> | はい | String | *間隔* と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
@@ -1675,7 +1699,7 @@ getFutureTime(5, 'Day', 'D')
 getPastTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | はい | Integer | 減算する指定した時間単位の数 |
 | <*timeUnit*> | はい | String | *間隔* と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
@@ -1721,7 +1745,7 @@ greater(<value>, <compareTo>)
 greater('<value>', '<compareTo>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値より大きいかどうかを調べる 1 番目の値 |
 | <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する値 |
@@ -1758,7 +1782,7 @@ greaterOrEquals(<value>, <compareTo>)
 greaterOrEquals('<value>', '<compareTo>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値以上かどうかを調べる 1 番目の値。 |
 | <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する値 |
@@ -1799,7 +1823,7 @@ guid()
 guid('<format>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | いいえ | String | 返される GUID の単一の[形式指定子](/dotnet/api/system.guid.tostring)。 規定の形式は "D" ですが、"N"、"D"、"B"、"P"、"X" も指定できます。 |
 |||||
@@ -1830,7 +1854,7 @@ guid('P')
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | はい | Boolean | 調べる式。 |
 | <*valueIfTrue*> | はい | Any | 式が true の場合に返す値 |
@@ -1862,7 +1886,7 @@ if(equals(1, 1), 'yes', 'no')
 indexOf('<text>', '<searchText>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 検索する部分文字列を含む文字列 |
 | <*searchText*> | はい | String | 検索する部分文字列 |
@@ -1893,7 +1917,7 @@ indexOf('hello world', 'world')
 int('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する文字列 |
 |||||
@@ -1923,7 +1947,7 @@ int('10')
 json('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | 文字列、XML | 変換する文字列または XML |
 |||||
@@ -1995,7 +2019,7 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ... | はい | 配列またはオブジェクト、両方ともは不可 | 共通項目 "*のみ*" を抽出するコレクション |
 |||||
@@ -2025,7 +2049,7 @@ intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8,
 join([<collection>], '<delimiter>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | Array | 結合する項目を含む配列 |
 | <*delimiter*> | はい | String | 結果の文字列内の各文字の間に挿入される区切り記号 |
@@ -2057,7 +2081,7 @@ last('<collection>')
 last([<collection>])
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列 | 最後の項目を検索するコレクション |
 |||||
@@ -2092,7 +2116,7 @@ last(createArray(0, 1, 2, 3))
 lastIndexOf('<text>', '<searchText>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 検索する部分文字列を含む文字列 |
 | <*searchText*> | はい | String | 検索する部分文字列 |
@@ -2124,7 +2148,7 @@ length('<collection>')
 length([<collection>])
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列 | 項目を数えるコレクション |
 |||||
@@ -2157,7 +2181,7 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値より小さいかどうかを調べる 1 番目の値 |
 | <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する項目 |
@@ -2194,7 +2218,7 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値以下かどうかを調べる 1 番目の値。 |
 | <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する項目 |
@@ -2230,7 +2254,7 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | はい | 整数、浮動小数点数、または両方 | 最大値を取得する数値のセット |
 | [<*number1*>, <*number2*>, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最大値を取得する数値の配列 |
@@ -2263,7 +2287,7 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | はい | 整数、浮動小数点数、または両方 | 最小値を取得する数値のセット |
 | [<*number1*>, <*number2*>, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最小値を取得する数値の配列 |
@@ -2296,7 +2320,7 @@ min(createArray(1, 2, 3))
 mod(<dividend>, <divisor>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | はい | 整数または浮動小数点数 | *divisor* によって除算される値。 |
 | <*divisor*> | はい | 整数または浮動小数点数 | *dividend* を除算する値。0 にすることはできません。 |
@@ -2327,7 +2351,7 @@ mod(3, 2)
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*multiplicand1*> | はい | 整数または浮動小数点数 | *multiplicand2* と乗算する値 |
 | <*multiplicand2*> | はい | 整数または浮動小数点数 | *multiplicand1* と乗算する値 |
@@ -2363,7 +2387,7 @@ mul(1.5, 2)
 not(<expression>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | はい | Boolean | 調べる式。 |
 |||||
@@ -2412,7 +2436,7 @@ not(equals(1, 1))
 or(<expression1>, <expression2>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*> | はい | Boolean | 調べる式 |
 |||||
@@ -2460,7 +2484,7 @@ or(equals(1, 2), equals(1, 3))
 rand(<minValue>, <maxValue>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*minValue*> | はい | Integer | 範囲に含まれる最小の整数 |
 | <*maxValue*> | はい | Integer | 関数が返すことのできる範囲内で最も大きい整数の次の整数 |
@@ -2491,7 +2515,7 @@ rand(1, 5)
 range(<startIndex>, <count>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*startIndex*> | はい | Integer | 最初の項目として配列を開始する整数値 |
 | <*count*> | はい | Integer | 配列内の整数の数 |
@@ -2522,7 +2546,7 @@ range(1, 4)
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 置換する部分文字列を含む文字列 |
 | <*oldText*> | はい | String | 置換前の部分文字列 |
@@ -2554,7 +2578,7 @@ replace('the old string', 'old', 'new')
 skip([<collection>], <count>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | Array | 項目を削除するコレクション |
 | <*count*> | はい | Integer | 先頭から削除する項目の数を示す正の整数 |
@@ -2585,7 +2609,7 @@ skip(createArray(0, 1, 2, 3), 1)
 split('<text>', '<delimiter>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 元の文字列で指定された区切り記号に基づいて部分文字列に分割する文字列 |
 | <*delimiter*> | はい | String | 区切り記号として使用する、元の文字列内の文字 |
@@ -2616,7 +2640,7 @@ split('a_b_c', '_')
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
@@ -2647,7 +2671,7 @@ startOfDay('2018-03-15T13:30:30Z')
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
@@ -2678,7 +2702,7 @@ startOfHour('2018-03-15T13:30:30Z')
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
@@ -2711,7 +2735,7 @@ startOfMonth('2018-03-15T13:30:30Z')
 startsWith('<text>', '<searchText>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 調べる文字列。 |
 | <*searchText*> | はい | String | 検索する開始文字列 |
@@ -2752,7 +2776,7 @@ startsWith('hello world', 'greetings')
 string(<value>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | Any | 変換する値 |
 |||||
@@ -2792,7 +2816,7 @@ string( { "name": "Sophie Owen" } )
 sub(<minuend>, <subtrahend>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*minuend*> | はい | 整数または浮動小数点数 | *subtrahend* を引く数値 |
 | <*subtrahend*> | はい | 整数または浮動小数点数 | *minuend* から引く数値 |
@@ -2824,7 +2848,7 @@ sub(10.3, .3)
 substring('<text>', <startIndex>, <length>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 文字を取得する文字列 |
 | <*startIndex*> | はい | Integer | 開始位置またはインデックスの値として使用する 0 以上の正の数 |
@@ -2857,7 +2881,7 @@ substring('hello world', 6, 5)
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
 | <*interval*> | はい | Integer | 減算する指定した時間単位の数 |
@@ -2901,7 +2925,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | はい | 文字列、配列 | 項目を取得するコレクション |
 | <*count*> | はい | Integer | 先頭から取得する項目の数を示す正の整数 |
@@ -2937,7 +2961,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 ticks('<timestamp>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプの文字列 |
 |||||
@@ -2957,7 +2981,7 @@ ticks('<timestamp>')
 toLower('<text>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 小文字形式で返される文字列 |
 |||||
@@ -2987,7 +3011,7 @@ toLower('Hello World')
 toUpper('<text>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 大文字形式で返される文字列 |
 |||||
@@ -3017,7 +3041,7 @@ toUpper('Hello World')
 trim('<text>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | はい | String | 先頭と末尾に削除する空白を含む文字列 |
 |||||
@@ -3049,7 +3073,7 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ...  | はい | 配列またはオブジェクト、両方ともは不可 | "*すべての*" 項目を取得するコレクション |
 |||||
@@ -3081,7 +3105,7 @@ URL の安全でない文字がエスケープ文字に置き換えられた、�
 uriComponent('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | URI エンコード形式に変換する文字列 |
 |||||
@@ -3111,7 +3135,7 @@ URI (Uniform Resource Identifier) コンポーネントのバイナリ バージ
 uriComponentToBinary('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する URI エンコード文字列 |
 |||||
@@ -3146,7 +3170,7 @@ URI (Uniform Resource Identifier) エンコード文字列の文字列バージ�
 uriComponentToString('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | デコードする URI エンコード文字列 |
 |||||
@@ -3178,7 +3202,7 @@ utcNow('<format>')
 
 必要に応じて、<*format*> パラメーターで異なる形式を指定できます。
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
@@ -3220,7 +3244,7 @@ JSON オブジェクトを含む文字列の XML バージョンを返します�
 xml('<value>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | はい | String | 変換する JSON オブジェクトを含む文字列 <p>JSON オブジェクトのルート プロパティは 1 つに限る必要があり、配列にはできません。 <br>二重引用符 (") のエスケープ文字としてはバックスラッシュ文字 (\\) を使います。 |
 |||||
@@ -3278,7 +3302,7 @@ XML で XPath (XML Path Language) 式と一致するノードまたは値を調�
 xpath('<xml>', '<xpath>')
 ```
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*xml*> | はい | Any | XPath 式の値に一致するノードまたは値を検索する XML 文字列 |
 | <*xpath*> | はい | Any | 一致する XML ノードまたは値の検索に使用する XPath 式 |

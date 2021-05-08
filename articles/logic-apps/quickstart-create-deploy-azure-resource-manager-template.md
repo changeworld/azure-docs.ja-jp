@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.date: 06/30/2020
-ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 04/01/2021
+ms.openlocfilehash: bdeb80dc487d8418e21a40a29e5d2baab49d7b05
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213999"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771895"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してロジック アプリ ワークフローを作成してデプロイする
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートでは、[**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) を確認できます。
 
-クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](../connectors/apis-list.md#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
+クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](../connectors/built-in.md)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
 
 このテンプレートでは、次の Azure リソースを作成します。
 
@@ -64,7 +64,7 @@ Azure Logic Apps の他のクイック スタート テンプレートについ�
 
 1. ポータルの **[テンプレートを使用したロジック アプリの作成]** ページで、これらの値を入力するか選択します。
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 |
    | **リソース グループ** | <*Azure-resource-group-name*> | 新規または既存の Azure リソース グループの名前。 この例では、`Check-Azure-Status-RG` を使用します。 |
@@ -186,7 +186,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    }
    ```
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | `location`| <*Azure-region*> | デプロイに使用する Azure リージョン。 この例では、`West US` を使用します。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | デプロイに使用するクイック スタート テンプレートの URL の場所: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-詳細については、[Azure CLI: az group delete](/cli/azure/group#az-group-delete) に関する記述を参照してください。
+詳細については、[Azure CLI: az group delete](/cli/azure/group#az_group_delete) に関する記述を参照してください。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

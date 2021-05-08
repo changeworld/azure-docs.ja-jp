@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87df7efcbab89c87a42e611f5fc1219239de6873
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255629"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530509"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化する
 
@@ -117,5 +117,5 @@ Teams と Outlook のメッセージの変更を追跡し、リアルタイム�
 
 ## <a name="related-articles"></a>関連記事
 
-- [同期に関する Microsoft Graph のドキュメントを確認する](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [同期に関する Microsoft Graph のドキュメントを確認する](/graph/api/resources/synchronization-overview)
 - [カスタム SCIM アプリと Azure AD の統合](use-scim-to-provision-users-and-groups.md)

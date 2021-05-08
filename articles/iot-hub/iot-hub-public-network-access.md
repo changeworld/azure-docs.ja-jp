@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/12/2021
-ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.date: 03/22/2021
+ms.openlocfilehash: fbbdaeb796dfa23906c8010a54af14eff6df0b97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517129"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026642"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT ハブのパブリック ネットワーク アクセスの管理
 
@@ -29,6 +29,10 @@ ms.locfileid: "100517129"
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="パブリック ネットワーク アクセスを無効にしている Azure portal を示す画像" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
 パブリック ネットワーク アクセスを有効にするには、 **[すべてのネットワーク]** 、 **[保存]** の順に選択します。
+
+## <a name="accessing-the-iot-hub-after-disabling-public-network-access"></a>パブリック ネットワーク アクセスを無効にした後の IoT Hub へのアクセス
+
+パブリック ネットワーク アクセスを無効にした後、IoT Hub には、[その VNet プライベート エンドポイントから Azure プライベート リンクを使用して](virtual-network-support.md)アクセスする必要があります。 この制限には、Azure portal からのアクセスも含まれます。なぜなら、IoT Hub サービスの API 呼び出しは、お使いのブラウザーと資格情報を使用して直接行われるからです。
 
 ## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>パブリック ネットワーク アクセスを無効にした後の IoT Hub エンドポイント、IP アドレス、およびポート
 

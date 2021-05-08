@@ -1,22 +1,18 @@
 ---
-title: センサー上でのアラートの操作
+title: センサー アラートについて
 description: アラートを使用して、ネットワークのセキュリティと操作を強化します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 11/30/2020
+ms.date: 3/29/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523551"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729424"
 ---
-# <a name="work-with-alerts-on-your-sensor"></a>センサー上でのアラートの操作
+# <a name="about-sensor-alerts"></a>センサー アラートについて
 
-アラートを使用して、ネットワークのセキュリティと操作を強化します。 アラートにより、次の情報が提供されます。
+アラートは、ネットワークのセキュリティと運用の強化に役立ちます。 アラートにより、次の情報が提供されます。
 
 - 承認されたネットワーク アクティビティからの逸脱
 
@@ -74,3 +70,4 @@ ms.locfileid: "100523551"
 [アラートで提供される情報の表示](how-to-view-information-provided-in-alerts.md)
 [アラート イベントの管理](how-to-manage-the-alert-event.md)
 [アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)
+[アラートの種類と説明](alert-engine-messages.md)

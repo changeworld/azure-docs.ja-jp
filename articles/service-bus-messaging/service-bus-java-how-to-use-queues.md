@@ -1,16 +1,21 @@
 ---
 title: Azure Service Bus キューを Java で使用する (azure-messaging-servicebus)
 description: このチュートリアルでは、Java を使用して、Azure Service Bus キューとの間でメッセージを送受信する方法について説明します。 新しい azure-messaging-servicebus パッケージを使用します。
-ms.devlang: Java
-ms.topic: quickstart
 ms.date: 02/13/2021
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 1fab8d3f603b3c2c7e3c307d3d2ce53590d7511c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.devlang: Java
+ms.custom:
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: e3998e812bb921ff8bea5e83199bc4e142ed2e83
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739765"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533427"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Azure Service Bus キューとの間でメッセージを送受信する (Java)
 このクイックスタートでは、Azure Service Bus キューとの間でメッセージを送受信する Java アプリを作成します。 

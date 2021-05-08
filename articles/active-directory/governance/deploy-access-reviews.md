@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3af783d7ff8be36c63af871ab4f2d214ca9f9405
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97932437"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532585"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -474,7 +474,7 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 ## <a name="use-the-access-reviews-api"></a>アクセス レビュー API の使用
 
-レビュー可能なリソースを操作および管理するには、[Graph API のメソッド](/graph/api/resources/accessreviews-root?view=graph-rest-beta)および[ロールとアプリケーションのアクセス許可の承認チェック](/graph/api/resources/accessreviews-root?view=graph-rest-beta)に関するページを参照してください。 Microsoft Graph API のアクセス レビュー関連のメソッドは、アプリケーションとユーザー両方のコンテキストで使用できます。 アプリケーション コンテキストでスクリプトを実行する場合、API の実行に使用するアカウント (サービス プリンシパル) には、アクセス レビュー情報をクエリするための "AccessReview.Read.All" アクセス許可が付与されている必要があります。
+レビュー可能なリソースを操作および管理するには、[Graph API のメソッド](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)および[ロールとアプリケーションのアクセス許可の承認チェック](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)に関するページを参照してください。 Microsoft Graph API のアクセス レビュー関連のメソッドは、アプリケーションとユーザー両方のコンテキストで使用できます。 アプリケーション コンテキストでスクリプトを実行する場合、API の実行に使用するアカウント (サービス プリンシパル) には、アクセス レビュー情報をクエリするための "AccessReview.Read.All" アクセス許可が付与されている必要があります。
 
 アクセス レビュー用の Graph API を使用して自動化するアクセス レビューのタスクで一般的なものは次のとおりです。
 

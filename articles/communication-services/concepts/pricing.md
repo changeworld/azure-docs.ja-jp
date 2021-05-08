@@ -9,23 +9,20 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495795"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091873"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 
 Azure Communication Services の価格は、一般に従量課金制モデルに基づきます。 以降の例に出現する価格はあくまで例であり、最新の Azure の価格は反映されていない可能性があります。
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>音声またはビデオによる通話と画面共有
 
-Azure Communication Services を使用すると、音声またはビデオによる通話と画面共有をアプリケーションに追加できます。 JavaScript、Objective-C (Apple)、Java (Android)、または .NET のクライアント ライブラリを使用して、アプリケーションにエクスペリエンスを埋め込むことができます。 [使用可能なクライアント ライブラリの完全な一覧](./sdk-options.md)を参照してください。
+Azure Communication Services を使用すると、音声またはビデオによる通話と画面共有をアプリケーションに追加できます。 JavaScript、Objective-C (Apple)、Java (Android)、または .NET SDK を使用して、アプリケーションにエクスペリエンスを埋め込むことができます。 [使用可能な SDK の完全な一覧](./sdk-options.md)を参照してください。
 
 ### <a name="pricing"></a>価格
 
@@ -33,9 +30,9 @@ Azure Communication Services を使用すると、音声またはビデオによ
 
 通話の各参加者は、通話に接続されている 1 分ごとに課金されます。 これは、ユーザーがビデオ通話、音声通話、画面共有のいずれを行っているかに関係なく当てはまります。
 
-### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-client-libraries"></a>価格の例:JS および iOS クライアント ライブラリを使用したオーディオまたはビデオによるグループ通話
+### <a name="pricing-example-group-audiovideo-call-using-js-and-ios-sdks"></a>価格の例: JS SDK および iOS SDK を使用して音声またはビデオによるグループ通話を行う
 
-Alice が、仕事仲間の Bob と Charlie とグループ通話を行いました。 Alice と Bob は JS クライアント ライブラリを使用し、Charlie は iOS クライアント ライブラリを使用しました。
+Alice が、仕事仲間の Bob と Charlie とグループ通話を行いました。 Alice と Bob は JS SDK を、Charlie は iOS SDK を使用しました。
 
 - この通話は合計 60 分間続きました。
 - Alice と Bob は通話全体に参加しました。 Alice は、自分のビデオを 5 分間オンにし、自分の画面を 23 分間共有しました。 Bob は、通話全体 (60 分間) にわたってビデオを表示し、自分の画面を 12 分間共有しました。
@@ -48,9 +45,44 @@ Alice が、仕事仲間の Bob と Charlie とグループ通話を行いまし
 
 **グループ通話の総コスト**: $0.48 + $0.172 = $0.652
 
-### <a name="pricing-example-a-user-of-the-communication-services-js-client-library-joins-a-scheduled-microsoft-teams-meeting"></a>価格の例:スケジュールされている Microsoft Teams 会議に Communication Services JS クライアント ライブラリのユーザーが参加する
 
-Alice は医師として、患者である Bob を診察する予定です。 Alice は Teams デスクトップ アプリケーションから診察に参加します。 Bob には、医療機関の Web サイトを使用して参加するためのリンクが送信されます。このリンクを通じて、Communication Services JS クライアント ライブラリを使用した診察に接続することができます。 Bob は携帯電話から Web ブラウザー (iPhone と Safari) を使用して診察に参加します。 仮想診察の間はチャットが利用できます。
+### <a name="pricing-example-outbound-call-from-app-using-js-sdk-to-a-pstn-number"></a>価格の例: JS SDK を使用してアプリから PSTN 番号への発信通話を行う
+
+Alice は、Bob の `+1-425` で始まる米国の電話番号に対し、アプリから PSTN 通話を行います。
+
+- Alice は JS SDK を使用してアプリを作成しました。
+- この通話は合計 5 分間続きます。
+
+**コストの計算**
+
+- アプリから Communication Services サーバーへの VoIP レッグの参加者 1 名 (Alice) x 10 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.04
+- Communication Services サーバーから米国電話番号への PSTN 発信レッグの参加者 1 名 (Charlie) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
+
+注: `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
+
+**グループ通話の総コスト**: $0.04 + $0.13 = $0.17
+
+
+### <a name="pricing-example-group-audio-call-using-js-sdk-and-1-pstn-leg"></a>価格の例: JS SDK と 1 PSTN レッグを使用してグループ音声通話を行う
+
+Alice と Bob は VOIP 通話を行っています。 Bob は、Charlie の PSTN 番号 (`+1-425` で始まる米国の電話番号) で、通話を Charlie にエスカレートしました。
+
+- Alice は JS SDK を使用してアプリを作成しました。 PSTN 番号で Charlie を呼び出すまでの通話時間は 10 分です。
+- Bob が Charlie の PSTN 番号に通話をエスカレートした後、3 人はさらに 10 分間通話しました。
+
+**コストの計算**
+
+- アプリから Communication Services サーバーへの VoIP レッグの参加者 2 名 (Alice と Bob) x 20 分 x $0.004 (1 参加者レッグ、1 分あたり) = $0.16
+- Communication Services サーバーから米国電話番号への PSTN 発信レッグの参加者 1 名 (Charlie) x 10 分 x $0.013 (1 参加者レッグ、1 分あたり) = $0.13
+
+注: `+1-425` に対する米国の混合料金は $0.013 です。 詳細については、 https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) のリンクを参照してください。
+
+**VoIP + エスカレーション通話の総コスト**: $0.16 + $0.13 = $.29
+
+
+### <a name="pricing-example-a-user-of-the-communication-services-javascript-sdk-joins-a-scheduled-microsoft-teams-meeting"></a>価格の例: スケジュールされている Microsoft Teams 会議に Communication Services JavaScript SDK のユーザーが参加する
+
+Alice は医師として、患者である Bob を診察する予定です。 Alice は Teams デスクトップ アプリケーションから診察に参加します。 Bob には、医療機関の Web サイトを使用して参加するためのリンクが送信されます。このリンクを通じて、Communication Services JavaScript SDK を使用した診察に接続することができます。 Bob は携帯電話から Web ブラウザー (iPhone と Safari) を使用して診察に参加します。 仮想診察の間はチャットが利用できます。
 
 - この通話は合計 30 分間続きます。
 - Alice と Bob は通話全体に参加します。 Alice は、通話が開始されてから 5 分後にビデオをオンにし、13 分間画面を共有します。 Bob は通話が終わるまでビデオをオンにします。
@@ -67,13 +99,13 @@ Alice は医師として、患者である Bob を診察する予定です。 Al
 \* Alice の参加は、Teams のライセンスによってカバーされています。 Azure の請求書には、Teams ユーザーが Communication Services ユーザーと交わしたチャット メッセージと時間 (分) が表示されますが、これはあくまで参考のためです。Teams クライアント側から送信されたメッセージと時間 (分) は課金されません。
 
 **診察の総コスト**:
-- Communication Services JS クライアント ライブラリを使用して参加するユーザー: $0.12 + $0.0024 = $0.1224
+- Communication Services JavaScript SDK を使用して参加するユーザー: $0.12 + $0.0024 = $0.1224
 - Teams デスクトップ アプリケーションで参加するユーザー: $0 (Teams ライセンスに含まれています)
 
 
 ## <a name="chat"></a>チャット
 
-Communication Services を使用すると、2 人以上のユーザー間でチャット メッセージを送受信する機能でアプリケーションを強化できます。 チャット クライアント ライブラリは、JavaScript、.NET、Python、および Java で使用できます。 クライアント ライブラリの詳細については、[こちらのページ](./sdk-options.md)を参照してください
+Communication Services を使用すると、2 人以上のユーザー間でチャット メッセージを送受信する機能でアプリケーションを強化できます。 Chat SDK は、JavaScript、.NET、Python、および Java で使用できます。 SDK の詳細については、[こちらのページ](./sdk-options.md)を参照してください
 
 ### <a name="price"></a>Price
 

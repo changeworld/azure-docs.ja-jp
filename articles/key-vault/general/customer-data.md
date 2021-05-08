@@ -3,18 +3,17 @@ title: Azure Key Vault の顧客データ機能 - Azure Key Vault | Microsoft Do
 description: 資格情報コンテナー、キー、シークレット、証明書、管理されたストレージ アカウントの作成および更新中に Azure Key Vault が受信する顧客データについて説明します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8806ff41edabcd3c0875d3c02360dc9a275e3878
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4d45c019a6ba073d7553c09784736959faf89d27
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96460818"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749782"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault の顧客データ機能
 

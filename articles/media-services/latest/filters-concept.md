@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6ba9a4d5ac427533c2ce005a74fe43b0ce80de79
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89291553"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109443"
 ---
 # <a name="filters"></a>フィルタ
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services には、定義済みのフィルターに基づいた[動的マニフェスト](filters-dynamic-manifest-overview.md)が用意されています。 
+コンテンツを顧客に配信する (イベントのライブ ストリーミングまたはビデオ オン デマンド) 際に、既定の資産のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services には、定義済みのフィルターに基づいた[動的マニフェスト](filters-dynamic-manifest-concept.md)が用意されています。 
 
 フィルターは、次のような操作を顧客に許可するサーバー側のルールです。 
 
@@ -141,12 +141,12 @@ Media Services では、**アカウント フィルター** と、コンテン�
 
 ## <a name="associating-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
-[ストリーミング ロケーター](/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](dynamic-packaging-overview.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 
+[ストリーミング ロケーター](/rest/api/media/streaminglocators/create#request-body)に対する[資産またはアカウント フィルター](filters-concept.md)の一覧を指定できます。 [ダイナミック パッケージャー](encode-dynamic-packaging-concept.md)では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-concept.md)が生成されます。 
 
 次の例を参照してください。
 
-* [フィルターをストリーミング ロケーターに関連付ける - .NET](filters-dynamic-manifest-dotnet-howto.md#associate-filters-with-streaming-locator)
-* [フィルターをストリーミング ロケーターに関連付ける - CLI](filters-dynamic-manifest-cli-howto.md#associate-filters-with-streaming-locator)
+* [フィルターをストリーミング ロケーターに関連付ける - .NET](filters-dynamic-manifest-dotnet-how-to.md#associate-filters-with-streaming-locator)
+* [フィルターをストリーミング ロケーターに関連付ける - CLI](filters-dynamic-manifest-cli-how-to.md#associate-filters-with-streaming-locator)
 
 ## <a name="updating-filters"></a>フィルターの更新
  
@@ -161,5 +161,5 @@ CDN が有効になっている場合は特に、アクティブに公開され�
 次の記事では、プログラムを使ってフィルターを作成する方法が紹介されています。  
 
 - [REST API を使用したフィルターの作成](filters-dynamic-manifest-rest-howto.md)
-- [.NET を使用したフィルターの作成](filters-dynamic-manifest-dotnet-howto.md)
-- [CLI を使用したフィルターの作成](filters-dynamic-manifest-cli-howto.md)
+- [.NET を使用したフィルターの作成](filters-dynamic-manifest-dotnet-how-to.md)
+- [CLI を使用したフィルターの作成](filters-dynamic-manifest-cli-how-to.md)

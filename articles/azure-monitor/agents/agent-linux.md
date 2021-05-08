@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 2c86086a636ea667cff4fc8a853c4ef20fa6ae04
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041843"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044959"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -41,7 +41,7 @@ Log Analytics エージェントでサポートされている Linux ディス�
 * 製造元のサポート終了日を超過したバージョンは、サポートされません。
 * VM イメージのみをサポートします。公式のディストリビューション発行元のイメージから派生したコンテナーでもサポートされません。
 * AMI の新しいバージョンはサポートされません。  
-* 既定で SSL 1.x を実行するバージョンのみが、サポートされます。
+* 既定で OpenSSL 1.x を実行するバージョンのみがサポートされます。
 
 >[!NOTE]
 >現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
@@ -50,7 +50,7 @@ Log Analytics エージェントでサポートされている Linux ディス�
 
 エージェント バージョン 1.13.27 以降では、Linux エージェントで Python 2 と 3 の両方がサポートされます。 常に最新のエージェントを使用することをお勧めします。 
 
-以前のバージョンのエージェントを使用している場合、既定では仮想マシンで python 2 が使用されている必要があります。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
+以前のバージョンのエージェントを使用している場合、既定では仮想マシンで Python 2 が使用されている必要があります。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
 
  - Red Hat、CentOS、Oracle: `yum install -y python2`
  - Ubuntu、Debian: `apt-get install -y python2`
@@ -91,7 +91,7 @@ OMS エージェントでは、Linux のカスタマイズが制限されてい�
 |Glibc |    GNU C ライブラリ | 2.5-12 
 |Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
 |Curl | cURL Web クライアント | 7.15.5 |
-|Python | | 2.6 以降または 3.3 以降
+|Python | | 2.7 または 3.6 以降
 |Python-ctypes | | 
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
 

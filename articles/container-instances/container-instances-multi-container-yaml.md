@@ -3,12 +3,12 @@ title: チュートリアル - 複数コンテナー グループをデプロイ
 description: このチュートリアルでは、複数のコンテナーを含むコンテナー グループを YAML ファイルと Azure CLI を使用して Azure Container Instances にデプロイする方法を説明します。
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 74269440357ee2d7ae36661618a31293346fa712
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97605163"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771265"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
@@ -181,9 +181,9 @@ Connection: keep-alive
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
-[az-group-create]: /cli/azure/group#az-group-create
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 [template-reference]: /azure/templates/microsoft.containerinstance/containergroups

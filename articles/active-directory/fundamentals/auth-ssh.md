@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b77ab0832fa19149c270d6ba5a6641069548cbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 315fe35a79ade39de9f541504fc2fe52754614de
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96172722"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749350"
 ---
 # <a name="ssh"></a>SSH  
 
@@ -56,5 +56,5 @@ SSH と Azure AD
 
 * [OAuth 2.0 デバイス コード フロー - Microsoft ID プラットフォーム](../develop/v2-oauth2-device-code.md)
 
-* [Azure Active Directory との統合 (akamai.com)](https://learn.akamai.com/webhelp/enterprise-application-access/enterprise-application-access/GUID-6B16172C-86CC-48E8-B30D-8E678BF3325F.html)
+* [Azure Active Directory との統合 (akamai.com)](https://learn.akamai.com/en-us/webhelp/enterprise-application-access/enterprise-application-access/GUID-6B16172C-86CC-48E8-B30D-8E678BF3325F.html)
 

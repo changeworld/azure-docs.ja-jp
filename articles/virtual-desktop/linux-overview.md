@@ -1,32 +1,34 @@
 ---
-title: Windows Virtual Desktop の Linux Support - Azure
-description: Windows Virtual Desktop の Linux Support の簡単な概要。
+title: Windows Virtual Desktop のシン クライアントサポート-Azure
+description: Windows Virtual Desktop のシン クライアント サポートの簡単な概要。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 04/01/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 502a89c5a2c0384e34ee35346332a4dd6adc38aa
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+manager: femila
+ms.openlocfilehash: 25f89b91aeb6e721c91356ef13b456455d4d3c98
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185429"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446062"
 ---
-# <a name="linux-support"></a>Linux Support
+# <a name="thin-client-support"></a>シン クライアントのサポート
 
-Linux シン クライアント パートナーによって提供される [Web クライアント](connect-web.md)または以下のサポートされているクライアントを使用して、Linux デバイスから Windows Virtual Desktop リソースにアクセスできます。 Microsoft は、多くのパートナーと協力して、より多くの Linux ベースのオペレーティング システムとデバイスで、Windows Virtual Desktop クライアントがサポートされるようにしています。 ここに記載されていない Linux プラットフォームで Windows Virtual Desktop のサポートが必要な場合は、[UserVoice ページ](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)からご連絡ください。
+パートナーによって提供される [Web クライアント](connect-web.md)または以下のサポートされているクライアントを使用して、シン クライアント デバイスから Windows Virtual Desktop リソースにアクセスできます。 Microsoft は、多くのパートナーと協力して、他のプラットフォーム上でも Windows Virtual Desktop クライアントがサポートされるようにしています。
 
-## <a name="connect-with-your-linux-device"></a>Linux デバイスで接続する
+## <a name="connect-with-your-thin-client-device"></a>シン クライアント デバイスと接続する
 
-Linux デバイス用 Windows Virtual Desktop クライアントは、次のパートナーによって承認されています。
+Windows Virtual Desktop クライアントは、次のパートナーによって承認されています。
 
 |Partner|パートナー向けドキュメント|パートナー サポート|
 |:------|:--------------------|:--------------|
-|![Dell のロゴ](./media/partners/dell.png)|[Dell クライアントのドキュメント](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell サポート](https://www.dell.com/support)|
-|![IGEL ロゴ](./media/partners/igel.png)|[IGEL クライアントのドキュメント](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL サポート](https://www.igel.com/support/)|
-|![NComputing ロゴ](./media/partners/ncomputing.png)|[NComputing クライアントのドキュメント](https://www.ncomputing.com/microsoft)|[NComputing のサポート](https://www.ncomputing.com/support/support-options)|
-|![Stratodesk ロゴ](./media/partners/stratodesk.png)|[Stratodesk クライアントのドキュメント](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk のサポート](https://www.stratodesk.com/support/)|
+|10ZiG |[10ZiG クライアントのドキュメント](https://www.10zig.com/about/microsoft-windows-virtual-desktop)|[10ZiG サポート](https://www.10zig.com/resources/support_faq)|
+|Dell |[Dell クライアントのドキュメント](https://www.delltechnologies.com/en-us/collaterals/unauth/data-sheets/products/thin-clients/dell-thinos-9-for-microsoft-wvd.pdf)|[Dell サポート](https://www.dell.com/support)|
+|HP |[HP クライアントのドキュメント](https://h20195.www2.hp.com/v2/GetDocument.aspx?docname=c07051097)|[HP サポート](https://support.hp.com/us-en/products/workstations-thin-clients)|
+|IGEL |[IGEL クライアントのドキュメント](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL サポート](https://www.igel.com/support/)|
+|NComputing |[NComputing クライアントのドキュメント](https://www.ncomputing.com/microsoft)|[NComputing のサポート](https://www.ncomputing.com/support/support-options)|
+|Stratodesk |[Stratodesk クライアントのドキュメント](https://www.stratodesk.com/kb/Microsoft_Windows_Virtual_Desktop_(WVD))|[Stratodesk のサポート](https://www.stratodesk.com/support/)|
 
 ## <a name="next-steps"></a>次のステップ
 

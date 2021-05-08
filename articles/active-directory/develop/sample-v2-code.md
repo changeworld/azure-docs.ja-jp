@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc740acb366212640015ca0fb527d34fade1097d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a19ca14a37bd24e499fdf0681b3510e9a4a8ea3f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010764"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075034"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)
 
@@ -61,7 +61,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 | -------- | ------------------- | --------------------------------- |
 | ![ASP.NET Core のロゴを示す画像](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [ASP.NET Core Web アプリのユーザーのサインインに関するチュートリアル](https://aka.ms/aspnetcore-webapp-sign-in) | [ASP.NET Core Web アプリが Microsoft Graph を呼び出す](https://aka.ms/aspnetcore-webapp-call-msgraph)フェーズと同じサンプル</p>高度なサンプル「[バックグラウンド アプリ、API、サービスから、ログインしているユーザーのトークン キャッシュへのアクセス](https://github.com/Azure-Samples/ms-identity-dotnet-advanced-token-cache)」 |
 | ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo_NETframework.png)</p>ASP.NET Core | [開発者向けの、AD FS から Azure AD へのアプリケーション移行プレイブック](https://github.com/Azure-Samples/ms-identity-dotnet-adfs-to-aad)。Active Directory フェデレーション サービス (AD FS) と統合されているアプリケーションを Azure Active Directory (Azure AD) に安全に移行する方法を学習 | |
-| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET クイック スタート](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+| ![この画像は ASP.NET Framework ロゴを示しています](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET クイック スタート](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> [msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp) |
 | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png)  |[Java サーブレットのチュートリアル - 第 1.1 章](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) AAD でのサインイン| |
 | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png)  |[Java サーブレットのチュートリアル - 第 1.2 章](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) B2C でのサインイン |
 | ![Java のロゴを示す画像](media/sample-v2-code/logo_java.png)  | | [Java サーブレットのチュートリアル - 第 2.1 章](https://github.com/Azure-Samples/ms-identity-java-servlet-webapp-authentication/blob/main/README.md) AAD でのサインインと Graph の呼び出し|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6f074ff389971fa56da7838a9a46ec5c4d42dc5a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688418"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739100"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -69,7 +69,7 @@ ms.locfileid: "101688418"
 
 CORS を使用すると、ブラウザーとサーバーは、やり取りを介して、特定のクロス オリジン要求 (たとえば、他のドメインに対して Web ページの JavaScript で実行された XMLHttpRequests 呼び出し) を許可するかどうかを決めることができます。 これにより、単に同一オリジンの要求を許可するよりも高い柔軟性が得られる一方、すべてのクロス オリジン要求を許可するよりも高いセキュリティを実現できます。
 
-開発者ポータルで対話型コンソールを有効にするには、CORS ポリシーを適用する必要があります。 詳細については、[開発者ポータルのドキュメント](./api-management-howto-developer-portal.md#cors)を参照してください。
+開発者ポータルで対話型コンソールを有効にするには、CORS ポリシーを適用する必要があります。 詳細については、[開発者ポータルのドキュメント](./developer-portal-faq.md#cors)を参照してください。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 

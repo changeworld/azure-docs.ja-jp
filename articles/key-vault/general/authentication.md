@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault に対する認証
 description: Azure Key Vault に対して認証を行う方法について説明します
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 08/27/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ed83d52d19df126ef9b0e68f984f88f5dfd40c42
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 7d219b752b894bbce9815911658c804ecb850ea1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492942"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753436"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
@@ -59,8 +59,6 @@ Key Vault は、2 つの異なる承認レベルで動作します。
     - [Azure Portal](../../role-based-access-control/role-assignments-portal.md)
     - [Azure CLI](../../role-based-access-control/role-assignments-cli.md)
     - [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-
-    現在、Key Vault では、Key Vault リソースに対する管理操作を許可する[共同作成者](../../role-based-access-control/built-in-roles.md#key-vault-contributor)ロールがサポートされています。 他の多くのロールは、現在プレビューの段階にあります。 「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」で説明されているように、カスタム ロールを作成することもできます。
 
     ロールに関する一般的な情報については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 

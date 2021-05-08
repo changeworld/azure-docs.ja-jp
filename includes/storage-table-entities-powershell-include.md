@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67180850"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,9 +18,9 @@ ms.locfileid: "67180850"
 
 テーブルが準備できたので、エンティティ、またはテーブル内の行を管理する方法を見てみましょう。 
 
-エンティティには最大 255 個のプロパティを指定できます。たとえば、**PartitionKey**、**RowKey**、**Timestamp** のようなプロパティです。 **PartitionKey** と **RowKey** の値は、ご自身で挿入および更新する必要があります。 **Timestamp** の値はサーバーによって管理されます。この値は変更できません。 **PartitionKey** と **RowKey** が組み合わさって、テーブル内の各エンティティを一意に識別します。
+エンティティは、最大 255 個のプロパティを含むことができます。これには、**PartitionKey**、**RowKey**、**Timestamp** の 3 個のシステム プロパティも含まれます。 **PartitionKey** と **RowKey** の値は、ご自身で挿入および更新する必要があります。 **Timestamp** の値はサーバーによって管理されます。この値は変更できません。 **PartitionKey** と **RowKey** が組み合わさって、テーブル内の各エンティティを一意に識別します。
 
-* **PartitionKey**:エンティティが格納されるパーティションを決定します。
+* **PartitionKey**: エンティティが格納されるパーティションを決定します。
 * **RowKey**: パーティション内のエンティティを一意に識別します。
 
 1 個のエンティティに対して最大 252 個のカスタム プロパティを定義できます。 
@@ -101,7 +101,7 @@ Get-AzTableRow -table $cloudTable `
 
 このクエリは、1 つのレコードを取得します。
 
-|フィールド|value|
+|フィールド|値|
 |----|----|
 | userid | 1 |
 | username | Chris |
@@ -118,7 +118,7 @@ Get-AzTableRow `
 
 このクエリは、1 つのレコードを取得します。
 
-|フィールド|value|
+|フィールド|値|
 |----|----|
 | userid | 1 |
 | username | Chris |
@@ -153,7 +153,7 @@ Get-AzTableRow -table $cloudTable `
 
 結果には、Jessie2 レコードが表示されます。
 
-|フィールド|value|
+|フィールド|値|
 |----|----|
 | userid | 2 |
 | username | Jessie2 |

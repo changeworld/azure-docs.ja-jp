@@ -3,12 +3,12 @@ title: Azure Relay ハイブリッド接続プロトコル ガイド | Microsoft
 description: この記事では、リスナーのクライアントとセンダーのロールを接続するためのハイブリッド接続リレーでのクライアント側の対話について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95eb6a66ac7580f115c85ddb258768b9eef62321
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97976964"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314220"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay ハイブリッド接続プロトコル
 
@@ -498,7 +498,7 @@ _namespace-address_ は、ハイブリッド接続のホストとなる Azure Re
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Relay に関する FAQ](relay-faq.md)
+* [Relay に関する FAQ](relay-faq.yml)
 * [名前空間を作成する](relay-create-namespace-portal.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)

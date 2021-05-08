@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: f437c43c1e9ad960910e7576db4b3ddf3f6623ec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 5ee73625963143bb12d0784d52316c65a41e61d8
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89230876"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448034"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>macOS クライアントを使用して Windows Virtual Desktop に接続する
 

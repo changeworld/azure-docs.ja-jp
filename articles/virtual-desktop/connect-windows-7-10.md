@@ -5,69 +5,88 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.custom: template-how-to
+ms.openlocfilehash: 625662a6b67e7d30e6320fe7831e4fa7793b9c30
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97368717"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447881"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
 
-> 適用先:Windows 10、Windows 10 IoT Enterprise、および Windows 7
+Windows デスクトップ クライアントを使用して、Windows 10、Windows 10 IoT Enterprise、Windows 7 を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。 
 
->[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)を参照してください。
-
-Windows デスクトップ クライアントを使用して、Windows 10、Windows 10 IoT Enterprise、Windows 7 を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。 クライアントでは、Window 8 または Windows 8.1 がサポートされていません。
+> [!IMPORTANT]
+> これは、Windows 8 または Windows 8.1 をサポートしていません。
+> 
+> Azure Resource Manager オブジェクトのみをサポートしています。Azure Resource Manager を使用せずにオブジェクトをサポートする場合は、「[Windows デスクトップ (クラシック) クライアントを使用して接続する](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md)」を参照してください。
+> 
+> これは、RemoteApp とデスクトップ接続 (RADC) クライアントまたはリモート デスクトップ接続 (MSTSC) クライアントをサポートしていません。
 
 ## <a name="install-the-windows-desktop-client"></a>Windows デスクトップ クライアントをインストールする
 
-ご自身の Windows バージョンに合ったクライアントを選択してください。
+お使いの Windows のバージョンに基づいてクライアントをダウンロードします。
 
 - [Windows (64 ビット)](https://go.microsoft.com/fwlink/?linkid=2068602)
 - [Windows 32 ビット](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-現在のユーザー用にのクライアントをインストールできます。この場合、管理者権限は必要ありません。または、管理者がクライアントをインストールして構成し、デバイス上のすべてのユーザーがアクセスできるようにすることができます。
+インストール中にアクセス権を指定するには、次のいずれかを選択します。
 
-インストールが完了すると、クライアントはスタート メニューから **リモート デスクトップ** を検索することにより起動できます。
+- **[Install just for you]\(自分専用にインストール\)**
+- **[Install for all users of this machine]\(このマシンのすべてのユーザー用にインストール\)** (管理者権限が必要です)
 
-> [!IMPORTANT]
-> Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
+インストール後にクライアントを起動するには、 **[スタート]** メニューを使用して、「**リモート デスクトップ**」を検索します。
 
 ## <a name="subscribe-to-a-workspace"></a>ワークスペースをサブスクライブする
 
-ワークスペースをサブスクライブするには、2 つの方法があります。 クライアントは、職場または学校のアカウントから利用可能なリソースを探索したり、クライアントがリソースを見つけられない場合にリソースの場所の URL を直接指定したりすることができます。 ワークスペースをサブスクライブした後は、次のいずれかの方法でリソースを起動できます。
+ワークスペースをサブスクライブするには、次のいずれかを選択します。
 
-- 接続センターにアクセスし、リソースをダブルクリックして起動します。
-- また、スタート メニューにアクセスし、ワークスペース名を含むフォルダーを探すか、検索バーにリソース名を入力することもできます。
+- 職場または学校アカウントを使用して、利用可能なリソースをクライアントに検出させる
+- 特定のリソース URL を使用する
 
-### <a name="subscribe-with-a-user-account"></a>ユーザー アカウントを使用してサブスクライブする
+サブスクライブしたリソースを起動するには、**接続センター** に移動し、リソースをダブルクリックします。
 
-1. クライアントのメイン ページから、 **[サブスクライブする]** を選択します。
-2. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
-3. リソースが接続センターに表示され、ワークスペース別にグループ化されます。
+> [!TIP]
+> **[スタート]** メニューからリソースを起動するには、ワークスペース名のフォルダーを検索するか、検索バーにリソース名を入力します。
 
->[!NOTE]
->Windows クライアントは自動的に既定の Windows Virtual Desktop (クラシック) になります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。
+### <a name="use-a-user-account"></a>ユーザー アカウントを使用する
 
-### <a name="subscribe-with-a-url"></a>URL を使用してサブスクライブする
+1. メイン ページで **[サブスクライブ]** を選択します。
+1. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
 
-1. クライアントのメイン ページから、 **[Subscribe with URL]** \(URL を使用してサブスクライブする\) を選択します。
-2. ワークスペース URL または電子メール アドレスを入力します。
-   - **ワークスペースの URL** を使用する場合は、管理者から提供されたものを使用します。 Windows Virtual Desktop からリソースにアクセスする場合は、次の URL のいずれかを使用できます。
-     - Windows Virtual Desktop (クラシック): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows Virtual Desktop: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
-     - Windows Virtual Desktop (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
-   - 代わりに **[メール アドレス]** フィールドを使用する場合、メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者が[メール検出](/windows-server/remote/remote-desktop-services/rds-email-discovery)を設定している場合)。
-3. **[次へ]** を選択します。
-4. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
-5. リソースがワークスペース別にグループ化された状態で接続センターに表示されるはずです。
+ワークスペース別にグループ化されたリソースが、**接続センター** に表示されます。
 
-## <a name="next-steps"></a>次のステップ
+   > [!NOTE]
+   > Windows クライアントは自動的に既定の Windows Virtual Desktop (クラシック) になります。 
+   > 
+   > ただし、クライアントがその他の Azure Resource Manager リソースを検出した場合、そのリソースが自動的に追加されるか、それらが利用可能であることがユーザーに通知されます。
 
-Windows デスクトップ クライアントの使用方法の詳細については、「[Windows デスクトップ クライアントの概要](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)」を参照してください。
+### <a name="use-a-specific-url"></a>特定の URL を使用する
 
-管理者の方で、Windows デスクトップの使用方法についてより詳細な情報を知りたい場合は、「[管理者のための Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)」を参照してください。
+1. メイン ページで **[Subscribe with URL]\(URL を使用してサブスクライブする\)** を選択します。
+1. "*ワークスペース URL*" または "*メール アドレス*" を入力してください。
+   - **ワークスペース URL** の場合は、管理者から提供された URL を使用します。
+
+   |使用可能なリソース|URL|
+   |-|-|
+   |Windows Virtual Desktop (クラシック)|`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`|
+   |Windows Virtual Desktop|`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`|
+   |Windows Virtual Desktop (US Gov)|`https://rdweb.wvd.azure.us/api/arm/feeddiscovery`|
+   
+   - **メール アドレス** の場合は、自分のメール アドレスを使用します。 
+      
+   管理者が[メール検出](/windows-server/remote/remote-desktop-services/rds-email-discovery)を有効にしている場合、クライアントはそのメール アドレスに関連付けられている URL を検索します。
+
+1. **[次へ]** を選択します。
+1. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
+
+ワークスペース別にグループ化されたリソースが、**接続センター** に表示されます。
+
+## <a name="next-steps"></a>次の手順
+
+クライアントの使用方法の詳細については、「[Windows デスクトップ クライアントの概要](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)」を参照してください。
+
+管理者の方で、クライアントの機能についてより詳細な情報を知りたい場合は、「[管理者のための Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)」を参照してください。

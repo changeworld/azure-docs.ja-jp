@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9873ec2113c0c5704ccca4fa10daf6ac8d572989
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677747"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107433"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -28,7 +28,8 @@ Azure SQL Database データ ソースでは、以下の機能がサポートさ
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-Azure Purview では、Azure SQL Database の[ビュー](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)のスキャンはサポートされていません。
+> * Azure Purview では、Azure SQL Database の[ビュー](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)のスキャンはサポートされていません。
+> * Azure Purview の [スキーマ] タブでは 300 を超える列がサポートされておらず、"Additional-Columns-Truncated (その他の列は切り詰められています)" と表示されます。 
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
@@ -100,7 +101,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
     ```
 
     > [!Note]
-    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)を確認してください。
+    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles)を確認してください。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する
 
@@ -157,7 +158,8 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 > [!NOTE]
-> スキャンを削除しても、以前の Azure SQL Database スキャンからアセットは削除されません。
+> * スキャンを削除しても、以前の Azure SQL Database スキャンからアセットは削除されません。
+> * Purview の [スキーマ] タブの説明を編集した後に、ソース テーブルが変更され、ソース テーブルを再スキャンした場合、アセットはスキーマの変更によって更新されなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 

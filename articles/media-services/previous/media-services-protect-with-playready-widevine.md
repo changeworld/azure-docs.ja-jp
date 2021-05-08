@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a0e8a513023c093157a3f14a64de9f87de543ab
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bd544b9eec0c1839ad94ede65e9d4ccde6df81dc
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009455"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063357"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady および Widevine に動的な Common Encryption を使用する
 
@@ -46,9 +46,9 @@ Media Services は、PlayReady および Widevine DRM のライセンスを配�
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) 形式と [JSON Web トークン](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT) 形式のトークンがサポートされます。 
 
-詳細については、「[コンテンツ キー承認ポリシーの構成](media-services-protect-with-aes128.md#configure_key_auth_policy)」を参照してください。
+詳細については、「[コンテンツ キー承認ポリシーの構成](media-services-portal-configure-content-key-auth-policy.md)」を参照してください。
 
-動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。 また、資産の配信ポリシーを構成する必要があります (このトピック内で後述します)。 次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。 そのため、単一のストレージ形式のファイルだけに対して保存と支払を行います。 Media Services は、クライアントからの各要求に応じて適切な HTTP 応答を作成して返します。
+動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産を作成します。 また、資産の配信ポリシーを構成する必要があります (このトピック内で後述します)。 次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。 そのため、単一のストレージ形式のファイルだけに対して保存と支払を行います。 Media Services は、クライアントからの各要求に応じて適切な HTTP 応答を作成して返します。
 
 この記事には、PlayReady や Widevine など、複数の DRM で保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 この記事では、承認ポリシーを使用する PlayReady ライセンス配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが PlayReady または Widevine のライセンスを受け取ることができるようになります。 また、DASH を介した PlayReady または Widevine DRM による動的な暗号化を使用する方法も説明します。
 

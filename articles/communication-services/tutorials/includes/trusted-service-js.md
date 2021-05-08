@@ -8,12 +8,12 @@ ms.author: ddematheu2
 ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
-ms.openlocfilehash: 41d959468e3183af00d2ab514e7c1bf0a134a1f8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 5b71a0581bf4f9d8239171e6abc56f87e7ae8183
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490478"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105152792"
 ---
 ## <a name="download-code"></a>コードをダウンロードする
 
@@ -76,7 +76,7 @@ module.exports = async function (context, req) {
 
 `Identity` ライブラリを使用して `User Access Tokens` を生成します。
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services ID クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services Identity SDK をインストールします。
 
 ```console
 
@@ -104,7 +104,7 @@ const connectionString = 'INSERT YOUR RESOURCE CONNECTION STRING'
 
 次に、元の関数を変更して `User Access Tokens` を生成します。
 
-`User Access Tokens` は、`createUser` メソッドからユーザーを作成することによって生成されます。 ユーザーが作成されたら、`issueToken` メソッドを使用して、Azure Functions から返されるそのユーザーのトークンを生成できます。
+`User Access Tokens` は、`createUser` メソッドからユーザーを作成することによって生成されます。 ユーザーが作成されたら、`getToken` メソッドを使用して、Azure Functions から返されるそのユーザーのトークンを生成できます。
 
 この例では、トークンのスコープを `voip` に構成します。 ご使用のアプリケーションに他のスコープが必要な場合があります。 詳しくは、[スコープ](../../quickstarts/access-tokens.md)に関するページを参照してください。
 
@@ -114,7 +114,7 @@ module.exports = async function (context, req) {
 
     const user = await tokenClient.createUser();
 
-    const userToken = await tokenClient.issueToken(user, ["voip"]);
+    const userToken = await tokenClient.getToken(user, ["voip"]);
 
     context.res = {
         body: userToken

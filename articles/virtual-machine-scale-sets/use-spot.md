@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 61bb87d84b96f988ae065a70b85d445fc8b96ccf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762949"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
 
@@ -44,9 +44,9 @@ Azure Spot Virtual Machine は、Microsoft Azure China 21Vianet を除き、任�
 現在サポートされている[オファーの種類](https://azure.microsoft.com/support/legal/offer-details/)は次のとおりです。
 
 -   Enterprise Agreement
--   従量課金制 (プラン コード: 003P)
--   スポンサー
-- クラウド サービス プロバイダー (CSP) については、[パートナー センター](https://docs.microsoft.com/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
+-   従量課金制プラン コード ( 003P)
+-   スポンサー (0036P および 0136P)
+- クラウド サービス プロバイダー (CSP) については、[パートナー センター](/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
@@ -82,7 +82,7 @@ Azure Spot Virtual Machines を使用してスケール セットを作成する
 
 **CLI の使用**
 
-[az feature register](/cli/azure/feature#az-feature-register) を使用して、サブスクリプションでのプレビューを有効にします。 
+[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SpotTryRestore 
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
@@ -202,7 +202,7 @@ Azure Spot Virtual Machine テンプレートのデプロイの場合は、`"api
 
 ## <a name="simulate-an-eviction"></a>削除をシミュレートする
 
-Azure スポット仮想マシンの[削除をシミュレート](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
+Azure スポット仮想マシンの[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
 
 次の情報をお客様の情報に置き換えてください。 
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: 0b4e116210cf68dc672122ad4ddc98f85067f3b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f5a9ff7661fda372631d1bb912b1c137b37c7e07
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688010"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363361"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Azure Automanage for VMs に関してよく寄せられる質問
 
@@ -104,7 +104,10 @@ VM が既存の Log Analytics ワークスペースにリンクされている�
 
 **Automanage ポータルで VM の状態が "失敗" になるのはなぜですか?**
 
-状態が "*失敗*" と表示される場合は、VM が配置されているリソース グループを使用してデプロイのトラブルシューティングを行うことができます。 **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+状態が "*失敗*" になっている場合は、次のいくつかの方法でデプロイのトラブルシューティングを行うことができます。
+* **[リソース グループ]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+* **[サブスクリプション]** に移動し、リソース グループを選択し、 **[デプロイ]** をクリックして、"*失敗*" 状態とエラーの詳細を確認します。
+* VM のアクティビティ ログにアクセスすることもできます。これには、"構成プロファイル割り当ての作成または更新" のエントリが含まれます。 これには、デプロイに関する詳細が含まれる場合もあります。
 
 **Automanage のトラブルシューティングのサポートを受けるにはどうすればよいですか?**
 

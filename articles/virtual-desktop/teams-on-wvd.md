@@ -3,20 +3,20 @@ title: Windows Virtual Desktop での Microsoft Teams - Azure
 description: Windows Virtual Desktop で Microsoft Teams を使用する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743119"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285260"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
 >[!IMPORTANT]
->Teams のメディア最適化は、Microsoft 365 Government (GCC) と　GCC-High　環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
+>Teams のメディア最適化は、Microsoft 365 Government (GCC) と　GCC-High　環境ではサポートされています。 Teams のメディア最適化は、Microsoft 365 DoD ではサポートされていません。
 
 >[!NOTE]
 >Microsoft Teams のメディア最適化は、Windows 10 マシン上の Windows デスクトップ クライアントのみ利用できます。 メディア最適化の利用には、Windows デスクトップ クライアントのバージョン 1.2.1026.0 以降が必要です。
@@ -120,7 +120,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 
 3. **[バージョン]** を選択します。
 
-      メディアの最適化が読み込まれている場合、バナーに **"WVD Media optimized" (WVD メディアは最適化されています)** と表示されます。 バナーに **"WVD Media not connected" (WVD メディアが接続されていません)** と表示された場合には、Teams アプリを終了し、もう一度やり直してください。
+      メディアの最適化が読み込まれている場合、バナーに **"Windows Virtual Desktop Media optimized" (Windows Virtual Desktop メディアは最適化されています)** と表示されます。 バナーに **"Windows Virtual Desktop Media not connected" (Windows Virtual Desktop メディアが接続されていません)** と表示された場合には、Teams アプリを終了し、もう一度やり直してください。
 
 4. ユーザー プロファイル画像を選択し、 **[設定]** を選択します。
 
@@ -149,10 +149,6 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 - New Meeting Experience (NME) は、現在、VDI 環境ではサポートされていません。
 
 Teams の既知の問題のうち、仮想環境に関係のないものについては、[組織における Teams のサポート](/microsoftteams/known-issues)に関するページを参照してください。
-
-## <a name="uservoice-site"></a>UserVoice サイト
-
-Windows Virtual Desktop 上の Microsoft Teams に関するフィードバックは、[UserVoice サイト](https://microsoftteams.uservoice.com/)からお送りください。
 
 ## <a name="collect-teams-logs"></a>Teams のログを収集する
 

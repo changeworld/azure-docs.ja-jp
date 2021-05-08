@@ -3,26 +3,32 @@ title: Azure Defender for Kubernetes - 利点と機能
 description: Azure Defender for Kubernetes の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 02/07/2021
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 83d0215ebca9d60d61937cb20bb82c7ccb30aac1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c500c7b7afb36ffbe04fb63551c3a7d17c1347d9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100629"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029082"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の概要
 
-Azure Kubernetes Service (AKS) は、コンテナー化されたアプリケーションを開発、デプロイ、管理するための Microsoft のマネージド サービスです。
+Azure Defender for Kubernetes は、Kubernetes クラスターの保護を、その実行環境に関係なく提供する Azure Defender プランです。 
+
+次の環境のクラスターを防御できます。
+
+- **Azure Kubernetes Service (AKS)** - コンテナー化されたアプリケーションを開発、デプロイ、管理するための Microsoft のマネージド サービスです。
+
+- **オンプレミス環境とマルチクラウド環境** - [Arc 対応 Kubernetes 用の拡張機能](defender-for-kubernetes-azure-arc.md)を使用します。
 
 Azure Security Center と AKS は、「[Security Center のコンテナーのセキュリティ](container-security.md)」で概説する環境のセキュリティ強化、ワークロード保護、実行時保護を提供する、クラウドネイティブな Kubernetes セキュリティ オファリングを形成します。
 
-Kubernetes クラスターの脅威を検出するには、**Azure Defender for Kubernetes** を有効にします。
+[Azure Defender for servers](defender-for-servers-introduction.md) と Log Analytics エージェントを有効にすると、Linux AKS ノードのホストレベルの脅威検出を使用できます。 ただし、クラスターが仮想マシン スケール セットにデプロイされている場合、Log Analytics エージェントは現在サポートされていません。
 
-[Azure Defender for servers](defender-for-servers-introduction.md) と Log Analytics エージェントを有効にすると、Linux AKS ノードのホストレベルの脅威検出を使用できます。 ただし、AKS クラスターが仮想マシン スケール セットにデプロイされている場合、Log Analytics エージェントは現在サポートされていません。
+
 
 ## <a name="availability"></a>可用性
 
@@ -36,9 +42,9 @@ Kubernetes クラスターの脅威を検出するには、**Azure Defender for 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の利点
 
-Azure Defender for Kubernetes は、Azure Kubernetes Service (AKS) によって取得されたログを使用して AKS のマネージド サービスを監視することで、**クラスターレベルの脅威の防止** を提供します。
+Azure Defender for Kubernetes は、クラスターのログを監視することで、**クラスターレベルの脅威の防止** を提供します。
 
-Azure Defender for Kubernetes によって監視されるセキュリティ イベントの例として、Kubernetes ダッシュボードの公開、高い特権ロールの作成、機密性の高いマウントの作成などがあります。 AKS クラスター レベルのアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-akscluster)を参照してください。
+Azure Defender for Kubernetes によって監視されるセキュリティ イベントの例として、Kubernetes ダッシュボードの公開、高い特権ロールの作成、機密性の高いマウントの作成などがあります。 クラスター レベルのアラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-akscluster)を参照してください。
 
 > [!TIP]
 > コンテナーのアラートをシミュレートするには、[こちらのブログ記事](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)の手順に従います。
@@ -46,14 +52,14 @@ Azure Defender for Kubernetes によって監視されるセキュリティ イ�
 また、Microsoft のセキュリティ研究員から成るグローバル チームも、脅威の状況を絶えず監視しています。 コンテナー固有のアラートや脆弱性は、それらが検出された時点で追加されます。
 
 >[!NOTE]
-> Security Center では、Azure Defender for Kubernetes を有効にした **後に** 発生する Azure Kubernetes Service のアクションやデプロイに関するセキュリティ アラートが生成されます。
+> ご利用のサブスクリプションで Defender for Kubernetes プランを有効にした後に生じたアクションやデプロイに対して、Azure Defender によってセキュリティのアラートが生成されます。
 
 
 
 
 ## <a name="azure-defender-for-kubernetes---faq"></a>Azure Defender for Kubernetes - よくあるご質問
 
-### <a name="can-i-still-get-aks-protections-without-the-log-analytics-agent"></a>Log Analytics エージェントを使用しなくても AKS 保護を利用できますか。
+### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>Log Analytics エージェントを使用しなくてもクラスターの保護を利用できますか。
 
 **Azure Defender for Kubernetes** プランでは、クラスター レベルで保護を提供します。 **Azure Defender for servers** の Log Analytics エージェントもデプロイすると、そのプランで提供されているノードの脅威の防止を利用できます。 詳細については、「[Azure Defender for servers の概要](defender-for-servers-introduction.md)」をご覧ください。
 
@@ -67,7 +73,7 @@ Azure Defender で AKS ノードを監視するには、それらのノードで
 AKS は管理サービスであり、Log Analytics エージェントは Microsoft マネージド拡張機能であるため、AKS クラスターでもサポートされています。
 
 ### <a name="if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too"></a>クラスターでコンテナー エージェントに対して Azure Monitor が既に実行されている場合、Log Analytics エージェントも必要ですか。
-Azure Defender で AKS ノードを監視するには、それらのノードで Log Analytics エージェントが実行されている必要があります。
+Azure Defender でノードを監視するには、それらのノードで Log Analytics エージェントが実行されている必要があります。
 
 クラスターでコンテナー エージェントに対して Azure Monitor が既に実行されている場合は、Log Analytics エージェントもインストールできます。この 2 つのエージェントは、問題なく一緒に動作できます。
 

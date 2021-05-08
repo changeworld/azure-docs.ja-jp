@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: c5df0a5fc054a12e3fa2ef1e352645c57c357b01
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353106"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798733"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -27,6 +27,9 @@ ms.locfileid: "94353106"
 
 * Azure Active Directory テナント
 * Salesforce.com テナント
+
+> [!Note]
+> ロールのインポートを行う場合、Azure Active Directory でロールを手動で編集することはできません。
 
 > [!IMPORTANT]
 > Salesforce.com の試用アカウントを使用している場合は、自動化されたユーザー プロビジョニングを構成できません。 試用アカウントの場合、アカウントを購入するまでは、必要な API にアクセスできません。 [無料の開発者アカウント](https://developer.salesforce.com/signup) を使用してこのチュートリアルを完了することで、この制限を回避できます。
@@ -77,7 +80,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 6. Salesforce のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし、 **[Settings]\(設定\)** をクリックします。
 
-    ![[Settings]\(設定\) リンクが選択された状態を示すスクリーンショット。](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
+    ![選択された [設定] リンクを示すスクリーンショット。](./media/salesforce-provisioning-tutorial/sf-my-settings.png "自動ユーザー プロビジョニングの有効化")
 
 7. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、 **[私のセキュリティ トークンのリセット]** をクリックします。
   

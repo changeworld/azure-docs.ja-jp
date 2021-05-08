@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77025080"
 ---
 # <a name="azure-network-connections-overview"></a>Azure ネットワーク接続の概要
@@ -61,7 +61,7 @@ CloudSimple ネットワークからのオンプレミス ネットワークと 
 * CloudSimple では、ExpressRoute 接続に既定のルートがアドバタイズ **されません**
 * オンプレミス ルーターで既定のルートをアドバタイズする場合、CloudSimple ネットワークと Azure 仮想ネットワークからのトラフィックでは、アドバタイズされた既定のルートが使用されます。  そのため、パブリック IP アドレスを使用して、Azure 上の仮想マシンにアクセスすることはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute を使用して Azure 仮想ネットワークを CloudSimple に接続する](virtual-network-connection.md)
 * [ExpressRoute を使用してオンプレミスから CloudSimple に接続する](on-premises-connection.md)

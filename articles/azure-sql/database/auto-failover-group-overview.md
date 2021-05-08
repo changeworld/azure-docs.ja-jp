@@ -5,19 +5,19 @@ description: 自動フェールオーバー グループを使用して、サー
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2, devx-track-azurecli
+ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 12/26/2020
-ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.date: 03/26/2021
+ms.openlocfilehash: f3bc1dfcfeeb6dda110f71ed7a1c53909153cf00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792502"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762157"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "97792502"
 - [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: フェールオーバー グループ](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: フェールオーバー グループ](scripts/add-database-to-failover-group-powershell.md)
-- [REST API: フェールオーバー グループ](/rest/api/sql/failovergroups)。
+- [REST API: フェールオーバー グループ](/rest/api/sql/failovergroups)
 
 フェールオーバー後は、データベースおよびサーバー、またはインスタンスの認証要件が確実に新しいプライマリで構成されるようにしてください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](active-geo-replication-security-configure.md)に関するページを参照してください。
 
@@ -115,7 +115,7 @@ ms.locfileid: "97792502"
 
   - データ損失が許容されない場合は、運用環境でディザスター リカバリー (DR) ドリルを行います
   - データベースを別のリージョンに再配置します
-  - 機能停止が軽減 (フェールバック) された後、データベースをプライマリ リージョンに返します。
+  - 機能停止が軽減 (フェールバック) された後、データベースをプライマリ リージョンに返します
 
 - **計画されていないフェールオーバー**
 
@@ -176,7 +176,13 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>読み取り専用ワークロードに読み取り専用リスナーを使用する
 
-データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に `ApplicationIntent=ReadOnly` を使用して、読み取りの意図を示すこともお勧めします。
+データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 `ApplicationIntent=ReadOnly` を使用して、接続文字列で読み取りの意図を示すこともお勧めします。
+
+> [!NOTE]
+> Premium、Business Critical、Hyperscale の各サービス レベルの SQL Database では、読み取り専用クエリのワークロードを軽減するために、[読み取り専用レプリカ](read-scale-out.md)の使用がサポートされています。この場合、接続文字列に `ApplicationIntent=ReadOnly` パラメーターが使用されます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
+>
+> - プライマリ ロケーションの読み取り専用レプリカに接続するには、`ApplicationIntent=ReadOnly` と `<fog-name>.database.windows.net` を使用します。
+> - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`ApplicationIntent=ReadOnly` と `<fog-name>.secondary.database.windows.net` を使用します。
 
 ### <a name="preparing-for-performance-degradation"></a>パフォーマンスの低下に対して準備する
 
@@ -267,7 +273,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 geo レプリケートされたセカンダリに直接接続するには、`<fog-name>.secondary.<zone_id>.database.windows.net` をサーバー URL として使用します。これにより、geo レプリケートされたセカンダリに直接接続されます。
 
 > [!NOTE]
-> Premium、Business Critical、および Hyperscale の各サービス レベルでは、SQL Database は[読み取り専用レプリカ](read-scale-out.md)の使用をサポートしており、1 つ以上の読み取り専用レプリカの容量を使用して読み取り専用クエリ ワークロードを実行できます。この場合、接続文字列で `ApplicationIntent=ReadOnly` パラメーターを使用します。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
+> Business Critical レベルの SQL Managed Instance では、読み取り専用クエリのワークロードを軽減するために、[読み取り専用レプリカ](read-scale-out.md)の使用がサポートされています。この場合、接続文字列で `ApplicationIntent=ReadOnly` パラメーターが使用されます。 geo レプリケートされたセカンダリを構成した場合は、この機能を使用して、プライマリ ロケーション、または geo レプリケートされたロケーションの読み取り専用レプリカに接続できます。
 >
 > - プライマリ ロケーションの読み取り専用レプリカに接続するには、`ApplicationIntent=ReadOnly` と `<fog-name>.<zone_id>.database.windows.net` を使用します。
 > - セカンダリ ロケーションの読み取り専用レプリカに接続するには、`ApplicationIntent=ReadOnly` と `<fog-name>.secondary.<zone_id>.database.windows.net` を使用します。
@@ -428,11 +434,11 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | コマンド | 説明 |
 | --- | --- |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | フェールオーバー グループの構成を取得します。 |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | フェールオーバー グループをサーバーから削除します。 |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az_sql_failover_group_show) | フェールオーバー グループの構成を取得します。 |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
@@ -466,11 +472,11 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | コマンド | 説明 |
 | --- | --- |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | フェールオーバー グループの構成を取得します。 |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | フェールオーバー グループをサーバーから削除します。 |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az_sql_failover_group_show) | フェールオーバー グループの構成を取得します。 |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 

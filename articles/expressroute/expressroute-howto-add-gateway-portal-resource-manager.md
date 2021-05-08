@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 6c6969fdf413c4eb5e7bbcf046fc397834d6c0a2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038919"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110327"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ ms.locfileid: "102038919"
 構成を開始する前に、これらの手順の[ビデオ](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)を表示できます。
 
 > [!IMPORTANT]
-> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[Azure VNet での IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview) に関するガイドラインに従ってください。
+> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[Azure VNet での IPv6](../virtual-network/ipv6-overview.md) に関するガイドラインに従ってください。
 > 
 > 
 
@@ -63,7 +63,7 @@ ms.locfileid: "102038919"
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="ゲートウェイ サブネットを追加する":::
 
-1. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。 /27 以上 (/26 や /25 など) のゲートウェイ サブネットを作成することをお勧めします。
+1. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。 /27 以上 (/26 や /25 など) のゲートウェイ サブネットを作成することをお勧めします。 ゲートウェイに 16 本の ExpressRoute 回線を接続するつもりであれば、/26 以上のゲートウェイ サブネットを作成する **必要があります**。
 
     デュアル スタックの仮想ネットワークを使用していて、ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、 **[IPv6 アドレス空間の追加]** をクリックし、**IPv6 アドレス範囲** の値を入力します。
 

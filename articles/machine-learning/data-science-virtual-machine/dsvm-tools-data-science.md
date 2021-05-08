@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100519560"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104888959"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上の機械学習ツールとデータ サイエンス ツール
 Azure Data Science Virtual Machine (DSVM) には、Python、R、Julia などの一般的な言語で使用できる、機械学習のための豊富な一連のツールやライブラリが備わっています。
@@ -99,7 +99,7 @@ DSVM には、DSVM 用の Anaconda Python ディストリビューションの�
 | サポートされているエディション     | Windows、Linux     |
 | 標準的な使用      | 一般的な機械学習ライブラリ      |
 | 構成またはインストール方法      |  GPU サポートと共にインストールされます   |
-| 使用または実行方法      | Python ライブラリ (2.7 および 3.5)、R パッケージ、パスの通ったコマンド ライン ツール (Windows では `C:\dsvm\tools\xgboost\bin\xgboost.exe`、Linux では `/dsvm/tools/xgboost/xgboost`) として    |
+| 使用または実行方法      | Python ライブラリ (2.7 および 3.6 以降)、R パッケージ、パスの通ったコマンド ライン ツール (Windows では `C:\dsvm\tools\xgboost\bin\xgboost.exe`、Linux では `/dsvm/tools/xgboost/xgboost`) として    |
 | サンプルへのリンク      | サンプルは、VM 上の Linux では `/dsvm/tools/xgboost/demo`、Windows では `C:\dsvm\tools\xgboost\demo` に含まれています。   |
 | 関連するツール      | LightGBM、MXNet   |
 

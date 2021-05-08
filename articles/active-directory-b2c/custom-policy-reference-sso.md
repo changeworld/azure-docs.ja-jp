@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095767"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075137"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのシングル サインオン管理
 
@@ -30,7 +30,7 @@ Azure AD B2C では、使用可能な多数の SSO セッション プロバイ�
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  なし       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 内部セッション マネージャー。      |       
-|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C と OAuth1、OAuth2、または OpenId Connect ID プロバイダーの間。        |         |
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C と OAuth1、OAuth2、または OpenId Connect ID プロバイダーの間。        | 
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | OAuth2 または OpenId Connect 証明書利用者アプリケーションと Azure AD B2C の間。        |        
 |[SamlSSOSessionProvider](#samlssosessionprovider)     | Azure AD B2C と SAML ID プロバイダーの間。 および、SAML サービス プロバイダー (証明書利用者アプリケーション) と Azure AD B2C の間。  |        
 

@@ -1,16 +1,16 @@
 ---
-title: Azure Monitor アラートによって複雑なアクションをトリガーする方法
+title: Azure Monitor アラートによって複雑なアクションをトリガーする
 description: Azure Monitor アラートを処理するためのロジック アプリのアクションを作成する方法を説明します。
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: a1371e00a6d4c5db609466e25c9d94aad5e73398
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f1e81dca6926ae9f57e428eb1cef761c588a78b6
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045719"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029847"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -34,15 +34,15 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 ## <a name="create-an-activity-log-alert-administrative"></a>アクティビティ ログ アラートを作成する:管理
 
-1. [ロジック アプリの作成](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)
+1. [ロジック アプリを作成](~/articles/logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
-2.  次のトリガーを選択します:**HTTP 要求の受信時**。
+1.  次のトリガーを選択します:**HTTP 要求の受信時**。
 
 1. **[HTTP 要求の受信時]** のダイアログで、 **[サンプルのペイロードを使用してスキーマを生成する]** を選択します。
 
     ![[HTTP 要求の受信時] ダイアログ ボックスのスクリーンショット。[サンプルのペイロードを使用してスキーマを生成する] オプションが選択されています。 ](~/articles/app-service/media/tutorial-send-email/generate-schema-with-payload.png)
 
-3.  次のサンプル ペイロードをコピーしてダイアログ ボックスに貼り付けます。
+1.  次のサンプル ペイロードをコピーしてダイアログ ボックスに貼り付けます。
 
     ```json
         {
@@ -81,19 +81,19 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
         }
     ```
 
-9. **ロジック アプリ デザイナー** により、ロジック アプリに送信する要求の **Content-Type** ヘッダーを **application/json** に設定する必要があることを示すポップアップ ウィンドウが表示されます。 ポップアップ ウィンドウを閉じます。 Azure Monitor アラートによってヘッダーが設定されます。
+1. **Logic Apps デザイナー** により、ロジック アプリに送信する要求の **Content-Type** ヘッダーを **application/json** に設定する必要があることを示すポップアップ ウィンドウが表示されます。 ポップアップ ウィンドウを閉じます。 Azure Monitor アラートによってヘッダーが設定されます。
 
     ![Content-Type ヘッダーの設定](media/action-groups-logic-app/content-type-header.png "Content-Type ヘッダーの設定")
 
-10. **[+** **新しいステップ]** 、 **[アクションの追加]** の順に選択します。
+1. **[+** **新しいステップ]** 、 **[アクションの追加]** の順に選択します。
 
     ![[アクションの追加]](media/action-groups-logic-app/add-action.png "アクションを追加する")
 
-11. Microsoft Teams コネクタを検索して選択します。 **[Microsoft Teams – メッセージの投稿]** アクションを選択します。
+1. Microsoft Teams コネクタを検索して選択します。 **[Microsoft Teams – メッセージの投稿]** アクションを選択します。
 
     ![Microsoft Teams アクション](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams アクション")
 
-12. Microsoft Teams アクションを構成します。 **Logic Apps デザイナー** により、職場または学校のアカウントを認証するよう求められます。 メッセージ送信先の **[Team Id] (チーム ID)** と **[Channel Id] (チャネル ID)** を選択します。
+1. Microsoft Teams アクションを構成します。 **Logic Apps デザイナー** により、職場または学校のアカウントを認証するよう求められます。 メッセージ送信先の **[Team Id] (チーム ID)** と **[Channel Id] (チャネル ID)** を選択します。
 
 13. 静的テキストと、動的コンテンツ内の \<fields\> への参照の組み合わせを使用してメッセージを構成します。 次のテキストをコピーして **[メッセージ]** フィールドに貼り付けます。
 
@@ -111,9 +111,9 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
     ![Microsoft Teams アクション:メッセージを投稿する](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams アクション:メッセージの投稿")
 
-14. **Logic Apps デザイナー** の上部にある **[保存]** を選択して、ロジック アプリを保存します。
+1. **Logic Apps デザイナー** の上部にある **[保存]** を選択して、ロジック アプリを保存します。
 
-15. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](./action-groups.md)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
+1. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](./action-groups.md)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
 
     ![アクション グループの更新](media/action-groups-logic-app/update-action-group.png "アクション グループの更新")
 

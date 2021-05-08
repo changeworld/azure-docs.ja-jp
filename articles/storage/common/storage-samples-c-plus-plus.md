@@ -1,18 +1,18 @@
 ---
 title: C++ を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 158f908dfd52a3365d19f65eb00faf1787893af5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d82b31cde0e8df5db2d073abcec8ea44f13bd0f0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92372903"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276673"
 ---
 # <a name="azure-storage-samples-using-v12-c-client-libraries"></a>v12 C++ クライアント ライブラリを使用した Azure Storage サンプル
 

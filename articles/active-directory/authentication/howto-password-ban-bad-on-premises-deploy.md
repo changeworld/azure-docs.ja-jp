@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8cae19bd07e1cc87a0aaa25e47cf5f431d566ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653815"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010581"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -88,7 +88,7 @@ Azure AD パスワード保護を複数のフォレストに展開するため�
 * Windows Server 2012 以降を実行している、ドメイン内のすべてのドメイン コントローラーで、キー配布サービスを有効にする必要があります。 既定では、このサービスは手動トリガーで開始して有効化されます。
 
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、Azure AD パスワード保護用のプロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー ポート 135 および RPC サーバー ポートにアクセスできるようにする必要があります。
-    * RPC サーバー ポートは、既定では動的 RPC ポートですが、[静的ポートを使用](#static)するように構成することができます。
+    * RPC サーバー ポートは、既定では範囲 (49152 - 65535) の動的 RPC ポートですが、[静的ポートを使用](#static)するように構成することができます。
 * Azure AD のパスワード保護プロキシ サービスがインストールされるすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
 
     |**エンドポイント**|**目的**|

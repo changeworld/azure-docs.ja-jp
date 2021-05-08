@@ -3,12 +3,12 @@ title: gitRepo ボリュームをコンテナー グループにマウントす�
 description: gitRepo ボリュームをマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7c1249e3120dd680c52bf74fb045bedf5202b9f2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86260712"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763723"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
@@ -115,5 +115,5 @@ Azure Container Instances にその他の種類のボリュームをマウント
 [pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec

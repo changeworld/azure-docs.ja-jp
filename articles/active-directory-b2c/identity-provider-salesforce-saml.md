@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e740fdb9cd232892dadfe98c4d739759be66bf55
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: cf2f0cdf8b7c540e569067d68374eef55d3479fe
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488722"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028198"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で SAML プロトコルを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -202,7 +202,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[Salesforce]** を選択して、Salesforce アカウントを使用してサインインします。
 

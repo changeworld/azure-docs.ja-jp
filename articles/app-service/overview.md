@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 668988ae34c2f97f3baca3f360c13e3ec3e30731
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 771c79f56a31c83f2152886ad6cf68367776f83f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586351"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767230"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -44,7 +44,7 @@ App Service では、サポートされているアプリケーション スタ�
 
 ### <a name="built-in-languages-and-frameworks"></a>組み込みの言語とフレームワーク
 
-App Service on Linux では、さまざまな言語に固有の組み込みイメージがサポートされています。 コードをデプロイするだけで済みます。 以下の言語がサポートされています。Node.js、Java (JRE 8 と JRE 11)、PHP、Python、.NET Core、および Ruby。 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) を実行して、最新の言語とサポートされているバージョンを表示します。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、カスタム コンテナーを使用してデプロイできます。
+App Service on Linux では、さまざまな言語に固有の組み込みイメージがサポートされています。 コードをデプロイするだけで済みます。 以下の言語がサポートされています。Node.js、Java (JRE 8 と JRE 11)、PHP、Python、.NET Core、および Ruby。 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) を実行して、最新の言語とサポートされているバージョンを表示します。 アプリケーションに必要なランタイムが組み込みイメージでサポートされていない場合は、カスタム コンテナーを使用してデプロイできます。
 
 古くなったランタイムは、ポータルの Web Apps の [作成] および [構成] ブレードから定期的に削除されます。 これらのランタイムは、管理している組織によって非推奨とされた場合や、重大な脆弱性が見つかった場合、ポータルに表示されません。 これらの選択肢は、最もうまく動作する最新のランタイムへと顧客を導くために非表示になります。 
 

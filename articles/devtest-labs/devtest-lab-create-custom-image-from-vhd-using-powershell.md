@@ -4,10 +4,10 @@ description: PowerShell を使用した VHD ファイルからの Azure DevTest 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b0712fdbec1ce23ad9e09d972e425cb7941107b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87288975"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>PowerShell を使用して VHD ファイルからカスタム イメージを作成する

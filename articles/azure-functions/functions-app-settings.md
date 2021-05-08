@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6fa8e2d9fb2270d53d8c0419ac7b4d88d79f30fd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425704"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773081"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -46,7 +46,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 既定では、[Functions プロキシ](functions-proxies.md)は、ショートカットを使用して、同じ関数アプリ内の関数にプロキシから直接 API 呼び出しを送信します。 このショートカットは、新しい HTTP 要求を作成する代わりに使用されます。 この設定を使用すると、そのショートカット動作を無効にすることができます。
 
-|Key|[値]|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接送信されません。 代わりに、要求は、関数アプリの HTTP フロントエンドに戻されます。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|ローカル関数アプリ内の関数を指すバックエンド URL を使用した呼び出しは、その関数に直接転送されます。 これが既定値です。 |
@@ -55,7 +55,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 この設定は、文字 `%2F` がバックエンド URL に挿入されたときにこれをルート パラメーターでスラッシュとしてデコードするかどうかを制御します。 
 
-|Key|[値]|説明|
+|Key|値|説明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|エンコードされたスラッシュを含むルート パラメーターがデコードされます。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|すべてのルート パラメーターは変更されずに渡されます。これは既定の動作です。 |
@@ -109,7 +109,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 ![関数アプリのランディング ページ](media/functions-app-settings/function-app-landing-page.png)
 
-## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
+## <a name="azurewebjobsdotnetreleasecompilation&quot;></a>AzureWebJobsDotNetReleaseCompilation
 
 `true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true` です。
 
@@ -117,7 +117,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
-## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
+## <a name=&quot;azurewebjobsfeatureflags&quot;></a>AzureWebJobsFeatureFlags
 
 有効にするベータ機能のコンマ区切りの一覧です。 これらのフラグで有効となるベータ機能は本番には適しませんが、公開前の実験的な使用には有効にすることができます。
 
@@ -125,9 +125,9 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
-## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
+## <a name=&quot;azurewebjobssecretstoragetype&quot;></a>AzureWebJobsSecretStorageType
 
-キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ ("Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 2 では BLOB、バージョン 1 ではファイル システムが使用されます。
+キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ (&quot;Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 2 では BLOB、バージョン 1 ではファイル システムが使用されます。
 
 |Key|値の例|
 |---|------------|
@@ -186,22 +186,24 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
-
-関数呼び出しを実行するために Python 言語ワーカーによって使用されるスレッドの最大数を指定します。Python バージョン `3.8` 以前では、既定値 `1` を使用します。 Python バージョン `3.9` 以降では、値は `None` に設定されます。 この設定は、実行中に設定されるスレッドの数を保証するものではないことに注意してください。 この設定により、Python では、スレッドの数を指定された値に増やすことができます。 この設定は、Python 関数アプリにのみ適用されます。 また、この設定は、コルーチンではなく、同期関数の呼び出しに適用されます。
-
-|Key|値の例|最大値|
-|---|------------|---------|
-|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell)、`python` (Python) です。
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、`dotnet`)。 Azure Functions Runtime のバージョン 2.x 以降では、特定の関数アプリでサポートできる言語は 1 つだけです。   
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
+|FUNCTIONS\_WORKER\_RUNTIME|node|
+
+有効な値:
+
+| 値 | 言語 |
+|---|---|
+| `dotnet` | [C# (クラス ライブラリ)](functions-dotnet-class-library.md)<br/>[C# (スクリプト)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (分離プロセス)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
@@ -212,6 +214,14 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
+
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
+
+関数呼び出しを実行するために Python 言語ワーカーによって使用されるスレッドの最大数を指定します。Python バージョン `3.8` 以前では、既定値 `1` を使用します。 Python バージョン `3.9` 以降では、値は `None` に設定されます。 この設定は、実行中に設定されるスレッドの数を保証するものではないことに注意してください。 この設定により、Python では、スレッドの数を指定された値に増やすことができます。 この設定は、Python 関数アプリにのみ適用されます。 また、この設定は、コルーチンではなく、同期関数の呼び出しに適用されます。
+
+|Key|値の例|最大値|
+|---|------------|---------|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
@@ -257,9 +267,17 @@ Windows 上で実行されている Premium プランまたは従量課金プラ
 
 デプロイ中、Azure Resource Manager を使用して関数アプリを作成するとき、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
 
+## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
+
+IP アドレスの解決時にアプリによって使用される DNS サーバーを設定します。 この設定は、[Azure DNS Private Zones](functions-networking-options.md#azure-dns-private-zones) や[プライベート エンドポイント](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)など、特定のネットワーク機能を使用する場合に必要になることがよくあります。   
+
+|Key|値の例|
+|---|------------|
+|WEBSITE\_DNS\_SERVER|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-関数アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
+アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
 
 > [!IMPORTANT]
 > この設定は、プレビューの段階です。  スケールアウトの制限に推奨される、[関数で最大にスケールアウトするためのアプリ プロパティ](./event-driven-scaling.md#limit-scale-out)が追加されています。
@@ -297,6 +315,14 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 |WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
+
+アプリからのすべての送信トラフィックが仮想ネットワーク経由でルーティングされるかどうかを示します。 設定値が `1` の場合は、すべてのトラフィックが仮想ネットワーク経由でルーティングされることを示します。 [リージョンでの仮想ネットワーク統合](functions-networking-options.md#regional-virtual-network-integration)の機能を使用する場合は、この設定を使用する必要があります。 また、[仮想ネットワーク NAT ゲートウェイを使用して静的な送信 IP アドレスを定義する](functions-how-to-use-nat-gateway.md)場合にも使用されます。 
+
+|Key|値の例|
+|---|------------|
+|WEBSITE\_VNET\_ROUTE\_ALL|1|
 
 ## <a name="next-steps"></a>次のステップ
 

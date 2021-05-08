@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 964fda8168867c115502c7262dc1d41e55075866
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dca5e36144fe17b39f76bb61543f59a1c6d7772
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91317652"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790188"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance---azure-cli-script-sample"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティング - Azure CLI スクリプト サンプル
 
@@ -58,8 +58,8 @@ az group delete --name MyResourceGroup --yes
 | [az network nsg create](/cli/azure/network/nsg) | ネットワーク セキュリティ グループ (NSG) を作成します。 |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | VM に対する着信 HTTP ポートと着信 HTTPS ポートを許可する NSG ルールを作成します。 |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| NSG とルート テーブルをサブネットに関連付けます。 |
-| [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| すべてのルートのルート テーブルを作成します。 |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| サブネットや VM 経由のインターネットでトラフィックをルーティングするルートを作成します。 |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| すべてのルートのルート テーブルを作成します。 |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| サブネットや VM 経由のインターネットでトラフィックをルーティングするルートを作成します。 |
 | [az vm create](/cli/azure/vm) | 仮想マシンを作成し、NIC をアタッチします。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。 |
 | [az group delete](/cli/azure/group) | リソース グループとそれに含まれるすべてのリソースを削除します。 |
 

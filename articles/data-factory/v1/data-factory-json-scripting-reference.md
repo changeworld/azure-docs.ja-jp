@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 91228b7f3243299f47c101e59d0c652749ff963d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104779734"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
@@ -5313,19 +5313,19 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
                 "typeProperties": {
                     "rootPath": "adfspark\\pyFiles",
                     "entryFilePath": "test.py",
-                    "getDebugInfo": "Always"
+                    "getDebugInfo&quot;: &quot;Always"
                 },
                 "outputs": [
                     {
-                        "name": "OutputDataset"
+                        "name&quot;: &quot;OutputDataset"
                     }
                 ],
                 "name": "MySparkActivity",
-                "linkedServiceName": "HDInsightLinkedService"
+                "linkedServiceName&quot;: &quot;HDInsightLinkedService"
             }
         ],
         "start": "2017-02-05T00:00:00",
-        "end": "2017-02-06T00:00:00"
+        "end&quot;: &quot;2017-02-06T00:00:00"
     }
 }
 ```

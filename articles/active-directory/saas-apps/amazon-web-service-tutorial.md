@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合 | Microsoft Docs
-description: Azure Active Directory と Amazon Web Services (AWS) の間でシングル サインオンを構成する方法について説明します。
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single-Account Access の統合 | Microsoft Docs'
+description: Azure Active Directory と AWS Single-Account Access の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/08/2020
+ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eb469c757e2898a9925dd7d3358cfe95734cb2e9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689013"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537726"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single-Account Access の統合
 
-このチュートリアルでは、Azure Active Directory (Azure AD) とアマゾン ウェブ サービス (AWS) を統合する方法について説明します。 Azure AD とアマゾン ウェブ サービス (AWS) を統合すると、以下を実行できます。
+このチュートリアルでは、AWS Single-Account Access と Azure Active Directory (Azure AD) を統合する方法について説明します。 AWS Single-Account Access を Azure AD と統合すると、次のことができます。
 
-* アマゾン ウェブ サービス (AWS) にアクセスできるユーザーを Azure AD で制御する。
-* ユーザーが自分の Azure AD アカウントを使用して自動的にアマゾン ウェブ サービス (AWS) にサインインできるようにする。
+* AWS Single-Account Access にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントで AWS Single-Account Access に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーのさまざまな AWS アプリケーションについて
@@ -31,11 +31,11 @@ ms.locfileid: "101689013"
 
 **AWS Single Sign-On**
 
-[AWS Single Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) は、2021 年 2 月に Azure AD アプリケーション ギャラリーに追加されました。 Microsoft Azure AD を通してサインインすると、複数の AWS アカウントや AWS アプリケーションへのアクセスを一元的に管理しやすくなります。 一度 Microsoft Azure AD と AWS SSO とのフェデレーションを行って、1 つの場所から AWS SSO を使用して、すべての AWS アカウントにわたってアクセス許可を管理します。 AWS SSO では、アクセス許可が自動的にプロビジョニングされ、それらは、ポリシーやアクセスの割り当てを更新するときに最新の状態に維持されます。 エンド ユーザーは、自分の Azure AD 資格情報を使用して認証し、AWS コンソール、コマンド ライン インターフェイス、AWS SSO 統合アプリケーションにアクセスすることができます。
+[AWS Single Sign-On](./aws-single-sign-on-tutorial.md) は、2021 年 2 月に Azure AD アプリケーション ギャラリーに追加されました。 Microsoft Azure AD を通してサインインすると、複数の AWS アカウントや AWS アプリケーションへのアクセスを一元的に管理しやすくなります。 一度 Microsoft Azure AD と AWS SSO とのフェデレーションを行って、1 つの場所から AWS SSO を使用して、すべての AWS アカウントにわたってアクセス許可を管理します。 AWS SSO では、アクセス許可が自動的にプロビジョニングされ、それらは、ポリシーやアクセスの割り当てを更新するときに最新の状態に維持されます。 エンド ユーザーは、自分の Azure AD 資格情報を使用して認証し、AWS コンソール、コマンド ライン インターフェイス、AWS SSO 統合アプリケーションにアクセスすることができます。
 
 **AWS Single-Account Access**
 
-[AWS Single-Account Access](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) は、これまで数年間にわたってお客様に使用されており、これを使用すると、Azure AD を 1 つの AWS アカウントにフェデレーションし、Azure AD を使用して AWS IAM ロールへのアクセスを管理できます。 AWS IAM 管理者は、各 AWS アカウントにロールとポリシーを定義します。 各 AWS アカウントのために、Azure AD 管理者は、AWS IAM へのフェデレーション、アカウントへのユーザーまたはグループの割り当て、ロールのアクセスを承認するアサーションを送信するための Azure AD の構成を行います。  
+[AWS Single-Account Access]() は、これまで数年間にわたってお客様に使用されており、これを使用すると、Azure AD を 1 つの AWS アカウントにフェデレーションし、Azure AD を使用して AWS IAM ロールへのアクセスを管理できます。 AWS IAM 管理者は、各 AWS アカウントにロールとポリシーを定義します。 各 AWS アカウントのために、Azure AD 管理者は、AWS IAM へのフェデレーション、アカウントへのユーザーまたはグループの割り当て、ロールのアクセスを承認するアサーションを送信するための Azure AD の構成を行います。  
 
 | 機能 | AWS Single Sign-On | AWS Single-Account Access |
 |:--- |:---:|:---:|
@@ -74,45 +74,48 @@ Azure AD ではこれらの値から **#** の値を削除し、正しい値 `ht
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * AWS シングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!Note]
+> ロールのインポートを行う際に、Azure AD でロールを手動で編集することは避けてください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* アマゾン ウェブ サービス (AWS) では、**SP と IDP** によって開始される SSO がサポートされます
+* AWS Single-Account Access では、**SP および IDP** によって開始される SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>ギャラリーからの Amazon Web Services (AWS) の追加
+## <a name="adding-aws-single-account-access-from-the-gallery"></a>ギャラリーからの AWS Single-Account Access の追加
 
-Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Amazon Web Services (AWS) を追加する必要があります。
+Azure AD への AWS Single-Account Access の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に AWS Single-Account Access を追加する必要があります。
 
 1. 職場アカウント、学校アカウント、または個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 1. Azure Active Directory の概要メニューで、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** を選択します。
 1. アプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**アマゾン ウェブ サービス (AWS)** 」と入力します。
-1. 結果パネルから **[アマゾン ウェブ サービス (AWS)]** を選択してそのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**AWS Single-Account Access**」と入力します。
+1. 結果のパネルから **[AWS Single-Account Access]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>アマゾン ウェブ サービス (AWS) の Azure AD SSO の構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-aws-single-account-access"></a>AWS Single-Account Access の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、アマゾン ウェブ サービス (AWS) に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーとアマゾン ウェブ サービス (AWS) の関連ユーザーの間で、リンク関係を確立する必要があります。
+**B.Simon** というテスト ユーザーを使用して、AWS Single-Account Access に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと AWS Single-Account Access の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-アマゾン ウェブ サービス (AWS) との Azure AD SSO を構成してテストするには、次の手順を行います。
+AWS Single-Account Access で Azure AD SSO を構成してテストするには、次の手順に従います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[アマゾン ウェブ サービス (AWS) の SSO の構成](#configure-amazon-web-services-aws-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[アマゾン ウェブ サービス (AWS) のテスト ユーザーの作成](#create-amazon-web-services-aws-test-user)** - アマゾン ウェブ サービス (AWS) で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-    1. **[アマゾン ウェブ サービス (AWS) でロール プロビジョニングを構成する方法](#how-to-configure-role-provisioning-in-amazon-web-services-aws)**
+1. **[AWS Single-Account Access の SSO の構成](#configure-aws-single-account-access-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[AWS Single-Account Access のテスト ユーザーの作成](#create-aws-single-account-access-test-user)** - AWS Single-Account Access で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+    1. **[AWS Single-Account Access でロール プロビジョニングを構成する方法](#how-to-configure-role-provisioning-in-aws-single-account-access)**
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. Azure portal の **アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **AWS Single-Account Access** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -151,7 +154,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     ![証明書のダウンロードのリンク](./media/amazon-web-service-tutorial/certificate.png)
 
-1. **[アマゾン ウェブ サービス (AWS) のセットアップ]** セクションで、要件に基づく適切な URL をコピーします。
+1. **[AWS Single-Account Access のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -170,17 +173,17 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、B.Simon にアマゾン ウェブ サービス (AWS) へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に AWS Single-Account Access へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で、 **[Amazon Web Services (AWS)]** を選択します。
+1. アプリケーション一覧で **[AWS Single-Account Access]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-amazon-web-services-aws-sso"></a>アマゾン ウェブ サービス (AWS) の SSO の構成
+## <a name="configure-aws-single-account-access-sso"></a>AWS Single-Account Access SSO の構成
 
 1. 別のブラウザー ウィンドウで、管理者として AWS 企業サイトにサインオンします。
 
@@ -343,7 +346,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     c. **[閉じる]** を選択します。
 
-### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>アマゾン ウェブ サービス (AWS) でロール プロビジョニングを構成する方法
+### <a name="how-to-configure-role-provisioning-in-aws-single-account-access"></a>AWS Single-Account Access でロール プロビジョニングを構成する方法
 
 1. Azure AD 管理ポータルの AWS アプリで、 **[プロビジョニング]** に移動します。
 
@@ -371,9 +374,9 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 > [!NOTE]
 > プロビジョニングの資格情報を保存したら、初回同期サイクルが実行されるまで待機する必要があります。 同期には通常、約 40 分かかります。 その状態は、 **[プロビジョニング]** ページ下部の **[現在の状態]** で確認できます。
 
-### <a name="create-amazon-web-services-aws-test-user"></a>アマゾン ウェブ サービス (AWS) テスト ユーザーの作成
+### <a name="create-aws-single-account-access-test-user"></a>AWS Single-Account Access のテスト ユーザーの作成
 
-このセクションの目的は、アマゾン ウェブ サービス (AWS) で B.Simon というユーザーを作成することです。 アマゾン ウェブ サービス (AWS) では、SSO 用にユーザーをシステムに作成する必要がないため、ここで操作を実行する必要はありません。
+このセクションの目的は、AWS Single-Account Access で B.Simon というユーザーを作成することです。 AWS Single-Account Access では、SSO 用にユーザーをシステムに作成する必要がないため、ここで操作を実行する必要はありません。
 
 ## <a name="test-sso"></a>SSO のテスト
 
@@ -381,26 +384,28 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できるアマゾン ウェブ サービス (AWS) のサインオン URL にリダイレクトされます。  
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AWS Single-Account Access のサインオン URL にリダイレクトされます。  
 
-* アマゾン ウェブ サービス (AWS) のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* AWS Single-Account Access のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定したアマゾン ウェブ サービス (AWS) に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した AWS Single-Account Access に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定したアマゾン ウェブ サービス (AWS) に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [AWS Single-Account Access] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AWS Single-Account Access に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="known-issues"></a>既知の問題
 
- * **[プロビジョニング]** セクションの **[マッピング]** サブセクションには、"読み込み中..." というメッセージが表示され、属性マッピングは表示されません。 現在サポートされている唯一のプロビジョニング ワークフローは、ユーザーまたはグループ割り当て時の選択のために、AWS から Azure AD にロールをインポートすることです。 このための属性マッピングは事前に決定されており、構成はできません。
+* AWS Single-Account Access プロビジョニング統合は、AWS パブリック クラウド エンドポイントに接続する場合にのみ使用できます。 AWS Single-Account Access プロビジョニング統合を使用して AWS Government 環境にアクセスすることはできません。
+ 
+* **[プロビジョニング]** セクションの **[マッピング]** サブセクションには、"読み込み中..." というメッセージが表示され、属性マッピングは表示されません。 現在サポートされている唯一のプロビジョニング ワークフローは、ユーザーまたはグループ割り当て時の選択のために、AWS から Azure AD にロールをインポートすることです。 このための属性マッピングは事前に決定されており、構成はできません。
 
- * **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [`servicePrincipal` オブジェクト](/graph/api/resources/serviceprincipal?view=graph-rest-beta)の `appRoles` プロパティに書き込まれます。
+* **[準備中]** セクションでは、1 つの AWS テナントに対して、一度に 1 セットの資格情報の入力だけがサポートされています。 インポートされたすべてのロールは、AWS テナントの Azure AD [`servicePrincipal` オブジェクト](/graph/api/resources/serviceprincipal)の `appRoles` プロパティに書き込まれます。
 
-   プロビジョニングのために複数の AWS テナント (`servicePrincipals` によって表される) をギャラリーから Azure AD に追加できます。 ただし、プロビジョニングに使用される複数の AWS `servicePrincipals` からインポートされたすべてのロールを、SSO に使用される単一の `servicePrincipal` に自動的に書き込むことができないという既知の問題があります。
+  プロビジョニングのために複数の AWS テナント (`servicePrincipals` によって表される) をギャラリーから Azure AD に追加できます。 ただし、プロビジョニングに使用される複数の AWS `servicePrincipals` からインポートされたすべてのロールを、SSO に使用される単一の `servicePrincipal` に自動的に書き込むことができないという既知の問題があります。
 
-   回避策として、[Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) を使用して、プロビジョニングが構成されている各 AWS `servicePrincipal` にインポートされたすべての `appRoles` を抽出できます。 その後、これらのロール文字列を、SSO が構成されている AWS `servicePrincipal` に追加できます。
+  回避策として、[Microsoft Graph API](/graph/api/resources/serviceprincipal) を使用して、プロビジョニングが構成されている各 AWS `servicePrincipal` にインポートされたすべての `appRoles` を抽出できます。 その後、これらのロール文字列を、SSO が構成されている AWS `servicePrincipal` に追加できます。
 
 * AWS から Azure AD へのインポート対象となるロールは、次の要件を満たす必要があります。
 
@@ -413,7 +418,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 ## <a name="next-steps"></a>次の手順
 
-アマゾン ウェブ サービス (AWS) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+AWS Single-Account Access を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png

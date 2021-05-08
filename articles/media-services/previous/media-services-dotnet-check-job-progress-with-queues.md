@@ -1,6 +1,6 @@
 ---
 title: Azure Queue Storage を使用して .NET で Media Services ジョブ通知を監視する | Microsoft Docs
-description: Azure キュー ストレージを使用して Media Services ジョブ通知を監視する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
+description: Azure Queue Storage を使用して Media Services ジョブ通知を監視する方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -16,13 +16,13 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dc6ab94b3685e55125032b0afa52076eae72ba5b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103016221"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure Queue Storage を使用して .NET で Media Services ジョブ通知を監視する
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 

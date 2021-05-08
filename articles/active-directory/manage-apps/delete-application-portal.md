@@ -2,20 +2,20 @@
 title: クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する
 description: このクイックスタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントからアプリケーションを削除します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 1/5/2021
-ms.author: kenwith
-ms.openlocfilehash: 187f4a1d524e0343130808aa4b4c18222fa982c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: iangithinji
+ms.openlocfilehash: 55607d520affe704cecd2e16fb64b3a65c04e167
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99259272"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374303"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する
 

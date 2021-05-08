@@ -11,10 +11,10 @@ ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102500531"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
@@ -39,7 +39,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 - 属性をユーザー フローで使用できるかどうか
 - 属性をカスタム ポリシーの [Azure AD 技術プロファイル](active-directory-technical-profile.md)で使用できるかどうか、およびどのセクション (&lt;InputClaims&gt;、&lt;OutputClaims&gt;、または &lt;PersistedClaims&gt;) で使用できるか
 
-|名前     |種類     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
+|名前     |Type     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|ユーザー アカウントが有効か無効か: アカウントが有効の場合は **true**、それ以外の場合は **false**。|はい|いいえ|Persisted、Output|
 |ageGroup        |String|ユーザーの年齢グループ。 指定できる値: null、Undefined、Minor、Adult、NotAdult。|はい|いいえ|Persisted、Output|
@@ -105,7 +105,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 
 Microsoft Graph API では、ローカル ID とフェデレーション ID の両方が、[objectIdentity](/graph/api/resources/objectidentity) 型のユーザー `identities` 属性に格納されます。 `identities` コレクションは、ユーザー アカウントへのサインインに使用される一連の ID を表します。 このコレクションにより、ユーザーは、関連付けられた任意の ID を使用してユーザー アカウントにサインインできます。 識別子属性には最大 10 個の [objectIdentity](/graph/api/resources/objectidentity) オブジェクトを含めることができます。 各オブジェクトには次のプロパティが含まれます。
 
-| 名前   | 種類 |説明|
+| 名前   | Type |説明|
 |:---------------|:--------|:----------|
 |signInType|string| お使いのディレクトリ内のユーザー サインインの種類を指定します。 ローカル アカウントの場合: `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`、または他の任意の種類。 ソーシャル アカウントは `federated` に設定する必要があります。|
 |発行者|string|ID の発行者を指定します。 ローカル アカウント (**signInType** が `federated` でない) の場合、このプロパティは、ローカル B2C テナントの既定のドメイン名 (`contoso.onmicrosoft.com` など) になります。 ソーシャル ID (**signInType** が `federated`) の場合、値は発行者の名前 (`facebook.com` など) になります。|

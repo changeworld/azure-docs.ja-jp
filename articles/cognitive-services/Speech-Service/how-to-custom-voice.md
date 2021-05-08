@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 45f4ca6349c14f21ce48a1fcf34b7fc8998dd278
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 99af0ee46e2827ac8a5749d58bb19cf85f96aa46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101733518"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577463"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -69,7 +69,9 @@ Azure アカウントと音声サービス サブスクリプションを作成�
 
 ## <a name="how-to-migrate-to-custom-neural-voice"></a>カスタム ニューラル音声に移行する方法
 
-ニューラル以外 (または標準) の Custom Voice を使用している場合は、次の手順に従って、カスタム ニューラル音声に移行することを検討してください。 カスタム ニューラル音声の使用に移行することで、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようになります。 
+Custom Voice の Standard レベルまたは非ニューラル トレーニング レベル (アダプティブ、統計的パラメトリック、連鎖性) は非推奨になります。 この発表は、2021 年 2 月 28 日より前のすべての既存の音声サブスクリプションに送信されています。 非推奨期間 (2021 年 3 月 1 日から 2024 年 2 月 29 日) は、既存の Standard レベルのユーザーは、作成済みのレベルニューラル モデルを引き続き使用できます。 すべての新規ユーザーまたは新規音声リソースは、ニューラル レベルまたはカスタム ニューラル音声に移行する必要があります。 2024 年 2 月 29 日以降、すべての Standard または非ニューラル カスタム音声はサポートされなくなります。 
+
+非ニューラルまたは Standard の Custom Voice を使用している場合は、次の手順に従って、カスタム ニューラル音声に即時に移行してください。 カスタム ニューラル音声の使用に移行することで、より自然な会話インターフェイスのためのよりリアルな音声を開発し、顧客とエンド ユーザーが責任ある方法で最新のテキスト読み上げテクノロジを使用できるようになります。 
 
 1. 詳細については、[アクセスの制限に対するポリシー](/legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)と[適用](https://aka.ms/customneural)に関する記事を参照してください。 カスタム ニューラル音声サービスへのアクセスは、Microsoft の資格基準に基づいて、Microsoft の独自の裁量の対象であることに注意してください。 お客様は、お客様のアプリケーションがレビューされ、「[責任ある AI の原則](https://microsoft.com/ai/responsible-ai)」と[倫理規定](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)に従ってこのテクノロジを使用することに合意した後にのみ、このテクノロジにアクセスできます。 
 2. アプリケーションが承認されると、"ニューラル" トレーニング機能にアクセスできるようになります。 アプリケーションで指定したのと同じ Azure サブスクリプションを使用して [Custom Voice ポータル](https://speech.microsoft.com/customvoice)にログインしていることを確認します。 

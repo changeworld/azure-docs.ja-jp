@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/29/2021
-ms.openlocfilehash: 6232c842514c10a5440e574621ca74e2f4867d86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8a500104a0273b9e131815c4dc832bd33729cd51
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99981673"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566593"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 
@@ -90,6 +90,6 @@ Database Migration Service の最初のインスタンスを作成する前に�
 ## <a name="next-steps"></a>次のステップ
 
 * [オフラインで SQL Server から Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)
-* [オンラインで SQL Server から Azure SQL Database に移行する](tutorial-sql-server-azure-sql-online.md)
+* [オンラインで SQL Server から Azure SQL Database に移行する](./tutorial-sql-server-to-azure-sql.md)
 * [オフラインで SQL Server を Azure SQL Managed Instance に移行する](tutorial-sql-server-to-managed-instance.md)
 * [オンラインで SQL Server を Azure SQL Managed Instance に移行する](tutorial-sql-server-managed-instance-online.md)

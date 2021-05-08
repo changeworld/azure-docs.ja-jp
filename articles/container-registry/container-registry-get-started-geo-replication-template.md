@@ -3,17 +3,19 @@ title: クイックスタート - geo レプリケーションされたレジス
 description: Azure Resource Manager テンプレートを使用して geo レプリケーション Azure コンテナー レジストリを作成する方法を説明します。
 services: azure-resource-manager
 author: dlepow
-ms.service: azure-resource-manager
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/06/2020
-ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.topic: quickstart
+ms.service: azure-resource-manager
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: c59c7897054b2ad65a76353e6d886af46cac91e0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91827033"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537434"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して geo レプリケーション コンテナー レジストリを作成する
 

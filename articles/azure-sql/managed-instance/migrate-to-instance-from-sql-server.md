@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: 49d37a5537ada260eae453bbb5f81716d42657a5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ccc6acfd27a1430a4f6a31886c06322c5c09e224
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565824"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628375"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance への SQL Server インスタンスの移行
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -78,7 +78,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-インメモリ テクノロジの詳細については、「[Azure SQL Database と Azure SQL Managed Instance でインメモリ テクノロジを使用してパフォーマンスを最適化する](https://docs.microsoft.com/azure/azure-sql/in-memory-oltp-overview)」を参照してください。
+インメモリ テクノロジの詳細については、「[Azure SQL Database と Azure SQL Managed Instance でインメモリ テクノロジを使用してパフォーマンスを最適化する](../in-memory-oltp-overview.md)」を参照してください。
 
 ### <a name="create-a-performance-baseline"></a>パフォーマンスのベースラインを作成する
 
@@ -89,7 +89,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 SQL Server インスタンスで測定する必要のあるパラメーターの一部を次に示します。
 
 - [SQL Server インスタンスでの CPU 使用率を監視](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)し、平均とピークの CPU 使用率を記録します。
-- [SQL Server インスタンスでのメモリ使用量を監視](/sql/relational-databases/performance-monitor/monitor-memory-usage)し、バッファー プール、プラン キャッシュ、列ストア プール、[インメモリ OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017) などのさまざまなコンポーネントで使用されるメモリの量を明らかにします。さらに、ページの予測保持期間メモリ パフォーマンス カウンターの平均値とピーク値を調べる必要があります。
+- [SQL Server インスタンスでのメモリ使用量を監視](/sql/relational-databases/performance-monitor/monitor-memory-usage)し、バッファー プール、プラン キャッシュ、列ストア プール、[インメモリ OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage) などのさまざまなコンポーネントで使用されるメモリの量を明らかにします。さらに、ページの予測保持期間メモリ パフォーマンス カウンターの平均値とピーク値を調べる必要があります。
 - [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) ビューまたは[パフォーマンス カウンター](/sql/relational-databases/performance-monitor/monitor-disk-usage)を使って、ソース SQL Server インスタンスでのディスク IO 使用率を監視ます。
 - SQL Server 2016 以降のバージョンから移行する場合は、動的管理ビューまたはクエリ ストアを調べることで、ワークロードとクエリのパフォーマンスまたは SQL Server インスタンスを監視します。 ワークロードで最も重要なクエリの平均継続時間と CPU 使用率を特定し、マネージド インスタンスで実行されているクエリと比較します。
 

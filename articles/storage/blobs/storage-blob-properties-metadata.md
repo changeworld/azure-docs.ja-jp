@@ -2,19 +2,19 @@
 title: .NET を使用して BLOB のプロパティとメタデータを管理する - Azure Storage
 description: .NET クライアント ライブラリを使用して、システム プロパティを設定および取得したり、Azure Storage アカウントの BLOB にカスタム メタデータを格納したりする方法について説明します。
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 09/25/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 24ec646c2928570c67a7f71481f2ca0191f1c8b9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95521531"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280209"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理
 

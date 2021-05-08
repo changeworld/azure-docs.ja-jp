@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91363207"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105035806"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -47,7 +47,15 @@ ms.locfileid: "91363207"
     その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、 **[クライアント ID]** や **[クライアント シークレット]** があります (これらのコントロールに関する情報は、記事の後半で取得します)。
 9. **[リダイレクト URL]** の内容をメモします。
     
-   ![Azure Portal で ID プロバイダーを追加するための手順](./media/api-management-howto-aad/api-management-with-aad001.png)  
+
+    :::image type="content" source="media/api-management-howto-aad/api-management-with-aad001.png" alt-text="Azure portal で ID プロバイダーを追加する":::
+    > [!NOTE]
+    > 2 つのリダイレクト URL があります。<br/>
+    > **リダイレクト URL** - API Management の最新の開発者ポータルを指し示します。<br/>
+    > **リダイレクト URL (非推奨のポータル)** - API Management の非推奨の開発者ポータルを指し示します。
+    >
+    > 最新の開発者ポータルのリダイレクト URL を使用することをお勧めします。
+   
 10. ブラウザーで別のタブを開きます。 
 11. Active Directory にアプリを登録するために、[Azure portal - [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) に移動します。
 12. **[管理]** の **[アプリの登録]** を選択します。

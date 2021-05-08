@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: lajanuar
-ms.openlocfilehash: 324fde5198fe3469e3979cf5cd102715118a49aa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dfd2b32094aae06675ea8ee9157370f9d2833e91
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467323"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518229"
 ---
 Form Recognizer は、次の要件を満たす入力ドキュメントを処理します。
 
@@ -22,6 +22,5 @@ Form Recognizer は、次の要件を満たす入力ドキュメントを処理�
 * トレーニング データ セットの合計サイズは、500 ページ以下にする必要があります。
 * PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
 * 紙のドキュメントからスキャンする場合、フォームは高品質のスキャンでなければなりません。
-* テキストでは、ラテン アルファベット (英語の文字) を使用する必要があります。
 * 教師なし学習 (ラベル付けされたデータ不使用) の場合、データには、キーと値を含める必要があります。
 * 教師なし学習 (ラベル付けされたデータ不使用) の場合、キーは、値の上または左に配置する必要があります。下や右に配置されていてはいけません。

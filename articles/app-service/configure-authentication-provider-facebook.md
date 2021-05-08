@@ -3,16 +3,16 @@ title: Facebook 認証を構成する
 description: App Service または Azure Functions アプリの ID プロバイダーとして Facebook 認証を構成する方法について説明します。
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 03/29/2021
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bc639eaea76b3309d6ed047e73c726040da19639
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80519957"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078011"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Facebook ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -52,29 +52,24 @@ ms.locfileid: "80519957"
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
-1. [Azure portal] にサインインし、ご自身の App Service アプリに移動します。
-1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
-1. **[Facebook]** を選択し、以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。 アプリケーションに必要な任意のスコープを有効にします。
-1. **[OK]** を選択します。
+1. [Azure portal] にサインインし、アプリに移動します。
+1. 左側のメニューで **[認証]** を選択します。 **[ID プロバイダーの追加]** をクリックします。
+1. [ID プロバイダー] ドロップダウンで **[Facebook]** を選択します。 以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。
 
-   ![モバイル アプリの Facebook 設定のスクリーンショット][0]
+    シークレットは、`FACEBOOK_PROVIDER_AUTHENTICATION_SECRET` という名前のスロット固定の[アプリケーション設定](./configure-common.md#configure-app-settings)として保存されます。 Azure Key Vault でシークレットを管理する場合は、[Key Vault 参照](./app-service-key-vault-references.md)を使用するように、この設定を後で更新することができます。
 
-    既定では、App Service で認証を行いますが、サイトのコンテンツと API への承認済みアクセスについては制限されません。 アプリ コードでユーザーを承認する必要があります。
-1. (省略可能) Facebook によって認証されたユーザーしかサイトにアクセスできないように制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Facebook]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていない要求はすべて、認証のために Facebook にリダイレクトされます。
+1. これがアプリケーション用に構成された最初の ID プロバイダーである場合は、「**App Service 認証設定**」のセクションも表示されます。 それ以外の場合は、次の手順に進むことができます。
+    
+    これらのオプションは、アプリケーションが認証されていない要求にどのように応答するかを決定し、既定の選択によって、この新しいプロバイダーにログインするためのすべての要求がリダイレクトされます。 **[認証設定]** の横にある **[編集]** を選択して、この動作を今すぐカスタマイズするか、後でメインの **[認証]** 画面からこれらの設定を調整することができます。 これらのオプションの詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」を参照してください。
 
-   > [!CAUTION]
-   > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページが与えられているアプリには適切でない場合があります。 このようなアプリケーションの場合は、アプリ自体が手動で認証を開始する、 **[匿名要求を許可する (操作不要)]** が推奨されることがあります。 詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」をご覧ください。
+1. (オプション) **[次へ: スコープ]** をクリックし、アプリケーションで必要な任意のスコープを追加します。 これらは、ブラウザーベースのフローのログイン時に要求されます。
+1. **[追加]** をクリックします。
 
-1. **[保存]** を選択します。
-
-これで、アプリで認証に Facebook を使用する準備ができました。
+これで、アプリで認証に Facebook を使用する準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
 
 ## <a name="next-steps"></a><a name="related-content"> </a>次の手順
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
-<!-- Images. -->
-[0]: ./media/app-service-mobile-how-to-configure-facebook-authentication/mobile-app-facebook-settings.png
 
 <!-- URLs. -->
 [Facebook Developers]: https://go.microsoft.com/fwlink/p/?LinkId=268286

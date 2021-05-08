@@ -17,12 +17,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c4f4ac6ab3825c82ac0cb8ef5c31f9396ef7b41f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130053"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533731"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -102,5 +102,5 @@ ms.locfileid: "93130053"
 ## <a name="next-steps"></a>次のステップ
 
 * [Reporting API の概要を把握します](concept-reporting-api.md)
-* [監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)
+* [監査 API リファレンス](/graph/api/resources/directoryaudit) 
+* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin)

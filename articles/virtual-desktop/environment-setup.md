@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 2c598be641ee09773e4d56ebc485e6a2fbe49191
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88002619"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446877"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
 

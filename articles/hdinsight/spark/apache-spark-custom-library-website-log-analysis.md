@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: d99bf914d3ef746fe328d2447426565fc15e52b4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940295"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866320"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する
 
@@ -30,11 +30,11 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 1. 新しい Notebook を作成します。 **[新規]** を選択し、 **[PySpark]** を選択します。
 
-    ![新しい Apache Jupyter Notebook を作成する](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook を作成します")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png " alt-text="新しい Apache Jupyter Notebook を作成する" border="true":::
 
 1. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部のノートブック名を選択し、わかりやすい名前を入力します。
 
-    ![Notebook の名前を指定する](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Notebook の名前を指定します")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png " alt-text="Notebook の名前を指定する" border="true":::
 
 1. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 次のスニペットを空のセルに貼り付けて、**Shift + Enter** キーを押します。
 
@@ -173,7 +173,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
    次のイメージのような結果が表示されます。
 
-   ![hdinsight jupyter sql クエリの出力](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL クエリ出力")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png " alt-text="hdinsight jupyter sql query output" border="true":::yter sql query output" border="true":::
 
    `%%sql` マジックについて詳しくは、「[%%sql マジックでサポートされるパラメーター](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)」をご覧ください。
 
@@ -191,7 +191,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
    次のイメージのような結果が表示されます。
 
-   ![apache spark web ログ分析プロット](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib output")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png " alt-text="apache spark web log analysis plot" border="true":::eb log analysis plot" border="true":::
 
 1. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 このアクションにより、Notebook がシャットダウンされ、閉じられます。
 

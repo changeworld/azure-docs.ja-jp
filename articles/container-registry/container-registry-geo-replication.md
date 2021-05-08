@@ -1,20 +1,20 @@
 ---
 title: レジストリの geo レプリケーション
-description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。 geo レプリケーションは、Premium サービス レベルの機能です。
+description: geo レプリケートされた Azure Container Registry の作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。 geo レプリケーションは、Premium サービス レベルの機能です。
 author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 3e5b064ec37b855186f633677e2b1a3f615a6736
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705168"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783865"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
-ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure コンテナー レジストリが単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。 
+ローカル プレゼンスやホット バックアップを必要とする企業は、複数の Azure リージョンからサービスを実行しています。 ベスト プラクティスとして、イメージが実行されている各リージョンにコンテナー レジストリを配置してネットワーク上の近い場所での操作を可能にすることで、高速で信頼性の高いイメージ レイヤー転送を実現します。 geo レプリケーションにより、Azure Container Registry が単一のレジストリとして機能することが可能になり、マルチマスター リージョン レジストリで複数のリージョンに対応できます。 
 
 geo レプリケートされたレジストリには次の利点があります。
 
@@ -22,9 +22,10 @@ geo レプリケートされたレジストリには次の利点があります�
 * ネットワーク上の近い場所のレジストリにアクセスできることで、リージョンのデプロイのパフォーマンスと信頼性が向上する
 * コンテナー ホストと同じまたは隣接するリージョンにあるレプリケートされたローカルのレジストリからイメージ レイヤーをプルすることで、データ転送コストを削減する
 * 複数のリージョンにまたがってレジストリを一元管理できる
+* リージョンの障害が発生した場合のレジストリの復元
 
 > [!NOTE]
-> コンテナー イメージのコピーを複数の Azure コンテナー レジストリに保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
+> コンテナー イメージのコピーを複数の Azure Container Registry に保持する必要がある場合、Azure Container Registry も[イメージのインポート](container-registry-import-images.md)をサポートします。 たとえば DevOps ワークフローでは、Docker コマンドを使用する必要なしに、開発レジストリから運用レジストリにイメージをインポートできます。
 >
 
 ## <a name="example-use-case"></a>ユース ケースの例
@@ -59,8 +60,9 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 * すべてのリージョンで同じイメージ URL (`contoso.azurecr.io/public/products/web:1.2`) が使用されるので、イメージのデプロイの 1 つの構成を管理すれば済む。
 * 1 つのレジストリにプッシュすれば済む。geo レプリケーションは、ACR が管理する。 ACR は一意のレイヤーのみをレプリケートし、リージョン間のデータ転送を削減する。 
 * 特定のレプリカ内のイベントを通知するように、リージョン [Webhook](container-registry-webhook.md) を構成する。
+* リージョンの障害に対して回復性がある高可用性レジストリを提供します。
 
-Azure Container Registry では、耐障害性と可用性に優れた Azure コンテナー レジストリを Azure リージョンに作成するため、[可用性ゾーン](zone-redundancy.md)もサポートされています。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
+Azure Container Registry では、耐障害性と可用性に優れた Azure Container Registry を Azure リージョンに作成するため、[可用性ゾーン](zone-redundancy.md)もサポートされています。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
@@ -103,7 +105,7 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 
 ## <a name="delete-a-replica"></a>レプリカの削除
 
-レジストリのレプリカを構成した後に、それが不要になった場合はいつでも削除できます。 Azure portal またはその他のツール (Azure CLI の[az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) コマンドなど) を使用してレプリカを削除します。
+レジストリのレプリカを構成した後に、それが不要になった場合はいつでも削除できます。 Azure portal またはその他のツール (Azure CLI の[az acr replication delete](/cli/azure/acr/replication#az_acr_replication_delete) コマンドなど) を使用してレプリカを削除します。
 
 Azure portal でレプリカを削除するには、次の手順に従います。
 
@@ -161,5 +163,5 @@ az acr replication update --name westus \
 > [!div class="nextstepaction"]
 > [Azure Container Registry の geo レプリケーション](container-registry-tutorial-prepare-registry.md)
 
-[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
-[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update
+[az-acr-replication-list]: /cli/azure/acr/replication#az_acr_replication_list
+[az-acr-replication-update]: /cli/azure/acr/replication#az_acr_replication_update

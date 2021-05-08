@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dcb959184e12ffa22ae25443087684123598e47
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98675188"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382465"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Microsoft Graph アプリケーションを登録する
 
@@ -56,31 +56,38 @@ OAuth 2.0 クライアント資格情報付与フローは現在 Azure AD B2C �
 1. **[登録]** を選択します。
 1. アプリケーションの概要ページに表示されている **[アプリケーション (クライアント) ID]** を記録します。 この値は、後の手順で使用します。
 
-### <a name="grant-api-access"></a>API アクセスの許可
+## <a name="grant-api-access"></a>API アクセスの許可
 
-次に、Microsoft Graph API の呼び出しによってテナント リソースを操作するための登録済みアプリケーションのアクセス許可を付与します。
+アプリケーションから Microsoft Graph のデータにアクセスするには、登録されているアプリケーションに関連する[アプリケーションのアクセス許可](https://docs.microsoft.com/graph/permissions-reference)を付与します。 アプリケーションの有効なアクセス許可は、そのアクセス許可が暗示する完全なレベルの権限になります。 たとえば、Azure AD B2C テナント内のすべてのユーザーを *作成*、*読み取り*、*更新*、*削除* するには、**User.ReadWrite.All** アクセス許可を追加します。 
+
+> [!NOTE]
+> **User.ReadWrite.All** アクセス許可には、ユーザー アカウントのパスワードを更新する機能は含まれていません。 アプリケーションでユーザー アカウントのパスワードを更新する必要がある場合は、[ユーザー管理者ロールを付与](#optional-grant-user-administrator-role)します。 [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator)ロールを付与する場合、**User.ReadWrite.All** は必要ありません。 ユーザー管理者ロールには、ユーザーの管理に必要なすべてが含まれています。
+
+アプリケーションに複数のアプリケーションのアクセス許可を与えることができます。 たとえば、アプリケーションで Azure AD B2C テナント内のグループを管理する必要がある場合は、**Group.ReadWrite.All** アクセス許可も追加します。 
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>クライアント シークレットを作成する
 
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+## <a name="optional-grant-user-administrator-role"></a>[省略可能] ユーザー管理者ロールを付与する
 
-これで、Azure AD B2C テナントでユーザーの "*作成*"、"*読み取り*"、"*更新*"、および "*削除*" を実行するアクセス許可を持つアプリケーションが用意されました。 次のセクションに進み、"*パスワードの更新*" アクセス許可を追加します。
+アプリケーションまたはスクリプトでユーザーのパスワードを更新する必要がある場合は、*ユーザー管理者* ロールをアプリケーションに割り当ててください。 [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator)ロールには、アプリケーションに付与する固定されたアクセス許可のセットがあります。 
 
-## <a name="enable-user-delete-and-password-update"></a>ユーザーの削除とパスワードの更新を有効にする
-
-*[ディレクトリ データの読み取りと書き込み]* アクセス許可には、ユーザーを削除したり、ユーザー アカウントのパスワードを更新したりする権限は含まれて **いません**。
-
-アプリケーションまたはスクリプトでユーザーを削除したりパスワードを更新したりする必要がある場合は、"*ユーザー管理者*" のロールをアプリケーションに割り当ててください。
+*ユーザー管理者* ロールを追加するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインし、 **[ディレクトリ + サブスクリプション]** フィルターを使用して Azure AD B2C テナントに切り替えます。
 1. **Azure AD B2C** を検索して選択します。
 1. **[管理]** で **[ロールと管理者]** を選択します。
-1. **[ユーザー管理者]** ロールを選択します。
+1. **[ユーザー管理者]** ロールを選択します。 
 1. **[割り当ての追加]** を選択します。
-1. **[選択]** テキスト ボックスに、前に登録したアプリケーションの名前 (たとえば、*managementapp1*) を入力します。 検索結果に表示されたらアプリケーションを選択します。
+1. **[選択]** テキスト ボックスに、前に登録したアプリケーションの名前または ID (たとえば、*managementapp1*) を入力します。 検索結果に表示されたら、アプリケーションを選択します。
 1. **[追加]** を選択します。 アクセス許可が完全に反映されるまでに数分かかる場合があります。
+
+## <a name="create-client-secret"></a>クライアント シークレットを作成する
+
+アプリケーションでは、トークンを要求するときに ID を証明するためにクライアント シークレットが必要です。 クライアント シークレットを追加するには、次の手順のようにします。
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+
 
 ## <a name="next-steps"></a>次のステップ
 

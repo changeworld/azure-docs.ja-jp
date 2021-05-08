@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 81e8cd5cf4af8da76ae4eb09bed5a4ee0368da4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8248b3ed21561340e963c848dee4430c48829ab1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467359"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285299"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
-Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と、ディープ ラーニング モデルを組み合わせて、英語で書かれたレシートから重要な情報を抽出します。
+Azure Form Recognizer を使用すると、事前構築済みのレシート モデルを使用して、販売レシートから情報を分析して抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と、ディープ ラーニング モデルを組み合わせて、英語で書かれたレシートから重要な情報を抽出します。
 
 ## <a name="understanding-receipts"></a>レシートについて
 

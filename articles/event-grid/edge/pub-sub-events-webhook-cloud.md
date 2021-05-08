@@ -9,13 +9,13 @@ ms.date: 07/08/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec7ecb77d37ed1cdf1d13aa7191f5d50e0008c20
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98790801"
 ---
-# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル:クラウドでイベントを発行してサブスクライブする
+# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>チュートリアル: クラウドでイベントを発行してサブスクライブする
 
 この記事では、Event Grid on IoT Edge を使用してイベントを発行およびサブスクライブするために必要なすべての手順について説明します。 このチュートリアルでは、Azure 関数をイベント ハンドラーとして使用します。 その他の送信先の種類については、「[イベント ハンドラー](event-handlers.md)」を参照してください。
 
@@ -57,7 +57,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-新しい関数で、右上の **[関数の URL の取得]** を選択し、既定値 ( **[関数キー]** ) を選択して、 **[コピー]** を選択します。 関数 URL は、このチュートリアルの後の方で使用します。
+新しい関数で、右上の **[関数の URL の取得]** を選択し、既定値 (**[関数キー]**) を選択して、**[コピー]** を選択します。 関数 URL は、このチュートリアルの後の方で使用します。
 
 > [!NOTE]
 > イベントへの反応と EventGrid イベント トリガーの使用に関するその他のサンプルとチュートリアルについては、[Azure Functions](../../azure-functions/functions-overview.md) のドキュメントを参照してください。
@@ -204,4 +204,4 @@ Azure portal で、関数の **[モニター]** オプションの下に、配�
 * [Linux](persist-state-linux.md) または [Windows](persist-state-windows.md) で Event Grid モジュールの永続化を設定します
 * [ドキュメント](configure-client-auth.md)に従って、クライアント認証を構成します
 * この[チュートリアル](forward-events-event-grid-cloud.md)に従って、クラウド内の Azure Event Grid にイベントを転送します
-* [エッジでのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)
+* [Edge でのトピックとサブスクリプションの監視](monitor-topics-subscriptions.md)

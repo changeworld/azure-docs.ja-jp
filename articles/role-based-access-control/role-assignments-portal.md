@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b159d9ca7d8d7739d623bb3a48752b4d03e24bc
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555275"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385967"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる
 
@@ -66,7 +66,7 @@ Azure Active Directory で管理者ロールを割り当てる必要がある場
 
     [ロールの割り当ての追加] ウィンドウが開きます。
 
-   ![[ロールの割り当ての追加] ウィンドウ](./media/shared/add-role-assignment.png)
+   ![[ロールの割り当ての追加] ページ](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="step-3-select-the-appropriate-role"></a>手順 3: 適切なロールを選択する
 

@@ -3,14 +3,14 @@ title: Hybrid Runbook Worker での Azure Automation Runbook の実行
 description: この記事では、Hybrid Runbook Worker を利用し、ローカル データセンターまたはその他のクラウド プロバイダーのコンピューターで Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/29/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: a6827f8629423b9ed3adc362d3d05fd740e25a65
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 796ac876537aa06253ad6eeec99adaf48de61c79
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633310"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167262"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -56,10 +56,10 @@ Azure Virtual Machines 上の Hybrid Runbook Worker では、マネージド ID 
 Hybrid Runbook Worker 上の Azure リソースに対してマネージド ID を使用するには、次の手順のようにします。
 
 1. Azure VM を作成します。
-2. VM で Azure リソース用のマネージド ID を構成します。 「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)」をご覧ください。
-3. Resource Manager で VM にリソース グループへのアクセス権を付与します。 「[Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)」をご覧ください。
-4. Hybrid Runbook Worker を VM にインストールします。 「[Windows Hybrid Runbook Worker をデプロイする](automation-windows-hrw-install.md)」または「[Linux Hybrid Runbook Worker を展開する](automation-linux-hrw-install.md)」を参照してください。
-5. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットと `Identity` パラメーターを使用して Azure リソースに対する認証を行うように、Runbook を更新します。 この構成により、実行アカウントを使用し、関連するアカウントを管理を実行する必要性が減ります。
+1. VM で Azure リソース用のマネージド ID を構成します。 「[Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)」をご覧ください。
+1. Resource Manager で VM にリソース グループへのアクセス権を付与します。 「[Windows VM のシステム割り当てマネージド ID を使用して Resource Manager にアクセスする](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)」をご覧ください。
+1. Hybrid Runbook Worker を VM にインストールします。 「[Windows Hybrid Runbook Worker をデプロイする](automation-windows-hrw-install.md)」または「[Linux Hybrid Runbook Worker を展開する](automation-linux-hrw-install.md)」を参照してください。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットと `Identity` パラメーターを使用して Azure リソースに対する認証を行うように、Runbook を更新します。 この構成により、実行アカウントを使用し、関連するアカウントを管理を実行する必要性が減ります。
 
     ```powershell
     # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -76,20 +76,24 @@ Hybrid Runbook Worker 上の Azure リソースに対してマネージド ID �
 
 Runbook でローカル リソースに独自の認証を提供するのではなく、Hybrid Runbook Worker グループに対して実行アカウントを指定することができます。 実行アカウントを指定するには、ローカル リソースにアクセスできる[資格情報資産](./shared-resources/credentials.md)を定義する必要があります。 これらのリソースには証明書ストアが含まれており、すべての Runbook はグループ内の Hybrid Runbook Worker 上でこれらの資格情報を使用して実行されます。
 
-資格情報のユーザー名は、次の形式にする必要があります。
+- 資格情報のユーザー名は、次の形式にする必要があります。
 
-* ドメイン\ユーザー名
-* username@domain
-* ユーザー名 (オンプレミス コンピューターのローカルのアカウントの場合)
+   * ドメイン\ユーザー名
+   * username@domain
+   * ユーザー名 (オンプレミス コンピューターのローカルのアカウントの場合)
+
+- PowerShell Runbook **Export-RunAsCertificateToHybridWorker** を使用するには、ローカル コンピューターに Azure Automation 用 Az モジュールをインストールする必要があります。
+
+#### <a name="use-a-credential-asset-to-specify-a-run-as-account"></a>資格情報資産を使用して実行アカウントを指定する
 
 Hybrid Runbook Worker グループの実行アカウントを指定するには、以下の手順のようにします。
 
 1. ローカル リソースに対するアクセス権を持つ [資格情報資産](./shared-resources/credentials.md) を作成します。
-2. Azure ポータルで Automation アカウントを開きます。
-3. **[ハイブリッド Worker グループ]** を選択し、特定のグループを選択します。
-4. **[すべての設定]** を選択し、 **[ハイブリッド Worker グループの設定]** を選択します。
-5. **[実行者]** の値を **[既定]** から **[カスタム]** に変更します。
-6. 資格情報を選択し、 **[保存]** をクリックします。
+1. Azure ポータルで Automation アカウントを開きます。
+1. **[ハイブリッド Worker グループ]** を選択し、特定のグループを選択します。
+1. **[すべての設定]** を選択し、 **[ハイブリッド Worker グループの設定]** を選択します。
+1. **[実行者]** の値を **[既定]** から **[カスタム]** に変更します。
+1. 資格情報を選択し、 **[保存]** をクリックします。
 
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>実行アカウントの証明書のインストール
 
@@ -178,11 +182,11 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 実行アカウントの準備を完了するには、次のようにします。
 
 1. **Export-RunAsCertificateToHybridWorker** Runbook を、 **.ps1** という拡張子でコンピューターに保存します。
-2. それをお使いの Automation アカウントにインポートします。
-3. Runbook を編集し、`Password` 変数の値をご自身のパスワードに変更します。
-4. Runbook を発行します。
-5. 実行アカウントを使用して Runbook の実行と認証を行う Hybrid Runbook Worker グループを対象に、Runbook を実行します。 
-6. ジョブ ストリームを調べて、ローカル コンピューターのストアへの証明書のインポートの試行が報告された後に複数の行があることを確認します。 この動作は、サブスクリプションで定義されている Automation アカウントの数と、認証がどの程度成功したかによって異なります。
+1. それをお使いの Automation アカウントにインポートします。
+1. Runbook を編集し、`Password` 変数の値をご自身のパスワードに変更します。
+1. Runbook を発行します。
+1. 実行アカウントを使用して Runbook の実行と認証を行う Hybrid Runbook Worker グループを対象に、Runbook を実行します。 
+1. ジョブ ストリームを調べて、ローカル コンピューターのストアへの証明書のインポートの試行が報告された後に複数の行があることを確認します。 この動作は、サブスクリプションで定義されている Automation アカウントの数と、認証がどの程度成功したかによって異なります。
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker での署名済み Runbook の使用
 
@@ -264,16 +268,16 @@ GPG のキーリングとキー ペアを作成するには、Hybrid Runbook Wor
 1. sudo アプリケーションを使用し、**nxautomation** アカウントとしてサインインします。
 
     ```bash
-    sudo su – nxautomation
+    sudo su - nxautomation
     ```
 
-2. **nxautomation** を使用して、GPG のキー ペアを生成します。 GPG で手順が示されます。 名前、メール アドレス、有効期限、パスフレーズを指定する必要があります。 その後、コンピューターのエントロピがキーを生成するのに十分になるまで待ちます。
+1. **nxautomation** を使用して、GPG のキー ペアを生成します。 GPG で手順が示されます。 名前、メール アドレス、有効期限、パスフレーズを指定する必要があります。 その後、コンピューターのエントロピがキーを生成するのに十分になるまで待ちます。
 
     ```bash
     sudo gpg --generate-key
     ```
 
-3. sudo を使って GPG ディレクトリを生成したため、次のコマンドを使ってその所有者を **nxautomation** に変更する必要があります。
+1. sudo を使って GPG ディレクトリを生成したため、次のコマンドを使ってその所有者を **nxautomation** に変更する必要があります。
 
     ```bash
     sudo chown -R nxautomation ~/.gnupg
@@ -300,7 +304,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 署名の検証を構成したら、次の GPG コマンドを使用して Runbook に署名します。
 
 ```bash
-gpg –-clear-sign <runbook name>
+gpg --clear-sign <runbook name>
 ```
 
 署名された Runbook は **<runbook name>.asc** という名前になります。
@@ -316,7 +320,7 @@ Azure portal で Runbook を開始するときは、 **[実行場所を選択し
 PowerShell を使用して Runbook を開始する場合は、`RunOn` パラメーターを [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) コマンドレットで使用します。 次の例では、Windows PowerShell を使用して、MyHybridGroup という名前の Hybrid Runbook Worker グループで **Test-Runbook** という名前の Runbook を開始しています。
 
 ```azurepowershell-interactive
-Start-AzAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
+Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -RunOn "MyHybridGroup"
 ```
 
 ## <a name="logging"></a>ログ記録

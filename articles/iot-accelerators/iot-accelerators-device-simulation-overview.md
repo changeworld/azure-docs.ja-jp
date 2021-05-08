@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 7be0278fd8870395b8495168eb9723780eba4b26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 27a23ff924c2fa9e9e35fec010ca2a177868eacc
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96852372"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713914"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>デバイス シミュレーション ソリューション アクセラレータの概要
 
@@ -32,11 +32,11 @@ IoT ソリューションを開発するプロセスで不可欠なものは、�
 
 任意の IoT ハブに接続されている 1 台から数千台のデバイスに対するシミュレーションを実行できます。 テストに役立つように、必要に応じて IoT ハブとデバイス シミュレーションをスタンドアロン環境にデプロイできます。
 
-デバイス シミュレーションは無料です。 ただし、デバイス シミュレーションはクラウド上の Azure サブスクリプション内にデプロイされ、Azure リソースを消費します。 デバイス シミュレーションが要件に合わない場合は、コピーして修正するための[ソース コードを GitHub から入手する](https://github.com/Azure/device-simulation-dotnet)こともできます。
+デバイス シミュレーションは無料です。 ただし、デバイス シミュレーションはクラウド上の Azure サブスクリプション内にデプロイされ、Azure リソースを消費します。 デバイス シミュレーションが要件に合わない場合は、コピーして修正するための[ソース コードを GitHub から入手する](https://github.com/Azure/azure-iot-pcs-device-simulation)こともできます。
 
 ## <a name="sample-simulations"></a>サンプル シミュレーション
 
-デバイス シミュレーションをデプロイすると、いくつかのサンプル シミュレーションとサンプル デバイスが取得されます。 これらのサンプルを使用して、デバイス シミュレーションの使用方法を確認できます。 最初に、[サンプル シミュレーション](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)を実行します。 [用意されている多数のサンプル デバイスのいずれかを使用して独自のシミュレーションを作成する](iot-accelerators-device-simulation-create-simulation.md)こともできます。
+デバイス シミュレーションをデプロイすると、いくつかのサンプル シミュレーションとサンプル デバイスが取得されます。 これらのサンプルを使用して、デバイス シミュレーションの使用方法を確認できます。 最初に、[サンプル シミュレーション](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)を実行します。 [用意されている多数のサンプル デバイスのいずれかを使用して独自のシミュレーションを作成する](iot-accelerators-device-simulation-create-simulation.md)こともできます。
 
 ![シミュレーションの構成](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
@@ -63,4 +63,4 @@ IoT ソリューションを開発するプロセスで不可欠なものは、�
 この記事では、デバイス シミュレーション ソリューション アクセラレータとその機能について説明しました。 ソリューション アクセラレータをデプロイするには、GitHub リポジトリにアクセスします。
 
 > [!div class="nextstepaction"]
-> [Azure で IoT デバイス シミュレーションをデプロイして実行する](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)」に進みます。
+> [Azure で IoT デバイス シミュレーションをデプロイして実行する](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)」に進みます。

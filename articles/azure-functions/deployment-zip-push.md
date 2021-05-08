@@ -3,12 +3,12 @@ title: Azure Functions の zip プッシュ デプロイ
 description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb6867d7719f9650acb00f80ac3a933713ce0e23
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018441"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777653"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 
@@ -66,7 +66,7 @@ Azure Functions には、Azure App Service によって提供されている、�
 
 ## <a name="deploy-by-using-azure-cli"></a><a name="cli"></a>Azure CLI を使用したデプロイ
 
-プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
+プッシュ デプロイは、Azure CLI を使用してトリガーすることもできます。 その場合は、[az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az_functionapp_deployment_source_config_zip) コマンドを使用して、.zip ファイルを関数アプリにプッシュ デプロイします。 このコマンドを使用するには、Azure CLI バージョン 2.0.21 以降を使用する必要があります。 使用している Azure CLI のバージョンを確認するには、`az --version` コマンドを使用します。
 
 次のコマンドでは、`<zip_file_path>` プレース ホルダーを .zip ファイルの場所へのパスに置き換えてください。 また、`<app_name>` を関数アプリの一意の名前に置き換え、`<resource_group>` をリソース グループの名前に置き換えます。
 

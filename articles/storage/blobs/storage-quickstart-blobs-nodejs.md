@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Azure Blob Storage ライブラリ v12 - JavaScript
 description: このクイックスタートでは、JavaScript 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 0883fd1546ac3b55ec4211e5048569556858de29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6e26a375ebdc97026de09511b0bc0f11fe073e41
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179920"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280124"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>クイック スタート:Node.js の JavaScript v12 SDK を使用して BLOB を管理する
 
@@ -314,6 +314,6 @@ Done
 > [!div class="nextstepaction"]
 > [JavaScript 開発者センターの Azure](/azure/developer/javascript/)
 
-* Azure BLOB ストレージを使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
+* Azure Blob Storage を使用する Web アプリをデプロイする方法については、「[チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする](./storage-upload-process-images.md?preserve-view=true&tabs=javascript)」を参照してください。
 * Blob Storage のサンプル アプリの詳細については、[Azure Blob Storage クライアント ライブラリ v12 JavaScript サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) ページを参照してください。
 * 詳細については、[JavaScript 用 Azure Blob Storage クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)に関するページを参照してください。

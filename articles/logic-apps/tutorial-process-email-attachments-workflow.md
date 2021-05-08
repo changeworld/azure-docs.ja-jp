@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 02/27/2020
-ms.openlocfilehash: bd1715dc0a3767bc5826154616bbdc97c7b61dd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 7809ba52b270f07da9e04bc18c7c12e2268f1b73
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99576365"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792239"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -47,7 +47,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 * [無料の Microsoft Azure Storage Explorer](https://storageexplorer.com/) のダウンロードとインストール。 ストレージ コンテナーが正しく設定されているかどうかをこのツールでチェックすることができます。
 
-* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/managed.md)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
 
 ## <a name="set-up-storage-to-save-attachments"></a>添付ファイルの保存先ストレージを設定する
 
@@ -104,7 +104,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
       ![完成したストレージ コンテナー](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container#az-storage-container-create) を使用して作成することもできます。
+   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container#az_storage_container_create) を使用して作成することもできます。
 
 次に、このストレージ アカウントに Storage Explorer を接続します。
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102441590"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
@@ -208,7 +208,7 @@ https://contoso.blob.core.windows.net/container01?sv=2020-04-08&st=2021-03-02T00
 
 Storage Explorer では、Azure Storage エミュレーターに接続できます。 現在、次の 2 つの エミュレーターがサポートされています。
 
-* [Azure ストレージ エミュレーター](storage/common/storage-use-emulator.md) (Windows のみ)
+* [Azure Storage Emulator](storage/common/storage-use-emulator.md) (Windows のみ)
 * [Azurite](https://github.com/azure/azurite) (Windows、macOS、または Linux)
 
 エミュレーターが既定のポートでリッスンしている場合は、 **[ローカルで接続済み]**  >  **[ストレージアカウント]**  >  **[エミュレーター - 既定のポート]** のノードを使用して、エミュレーターにアクセスできます。
