@@ -3,12 +3,12 @@ title: Container insights エージェントを管理する方法 | Microsoft Do
 description: この記事では、Container insights によって使用されるコンテナー化された Log Analytics エージェントで、最も一般的なメンテナンス タスクを管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 2a0c32ef797a953eca794e16fe0ace5e967f339f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b485f4d49f0dd80f712d96779098c26be3f6de1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101713798"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442577"
 ---
 # <a name="how-to-manage-the-container-insights-agent"></a>Container insights エージェントを管理する方法
 
@@ -79,21 +79,6 @@ curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
 export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 bash upgrade-monitoring.sh --resource-id $ azureAroV4ClusterResourceId
 ```
-
-このコマンドでサービス プリンシパルを使用する方法の詳細については、「[Azure Arc 対応 Kubernetes クラスターの監視を有効にする](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script)」の **サービス プリンシパルの使用** に関する箇所を参照してください。
-
-### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 上のエージェントのアップグレード
-
-次のコマンドを実行して、Azure Arc 対応 Kubernetes クラスター上のエージェントをアップグレードします。
-
-```console
-curl -o upgrade-monitoring.sh -L https://aka.ms/upgrade-monitoring-bash-script
-export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
-bash upgrade-monitoring.sh --resource-id $azureArcClusterResourceId
-```
-
-このコマンドでサービス プリンシパルを使用する方法の詳細については、「[Azure Arc 対応 Kubernetes クラスターの監視を有効にする](container-insights-enable-arc-enabled-clusters.md#enable-using-bash-script)」の **サービス プリンシパルの使用** に関する箇所を参照してください。
-
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>コンテナーの環境変数コレクションを無効にする方法
 

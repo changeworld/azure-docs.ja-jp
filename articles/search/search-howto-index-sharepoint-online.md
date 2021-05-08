@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102498899"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048869"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>Cognitive Search で SharePoint Online のインデックス作成を構成する方法 (プレビュー)
 
@@ -147,7 +147,7 @@ api-key: [admin key]
 
 ```
 
-詳細については、[インデックスの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関する記事をご覧ください。
+詳細については、[インデックスの作成 (REST API)](/rest/api/searchservice/create-index) に関する記事をご覧ください。
 
 ### <a name="step-5-create-an-indexer"></a>手順 5: インデクサーを作成する
 インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
@@ -226,7 +226,7 @@ Content-Type: application/json
 api-key: [admin key]
 ```
 
-インデクサーの状態の詳細については、「[インデクサーの状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)」を参照してください。
+インデクサーの状態の詳細については、「[インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)」を参照してください。
 
 ## <a name="updating-the-data-source"></a>データ ソースの更新
 データ ソース オブジェクトに対する更新がない場合、ユーザーの介入なしにスケジュールに基づいてインデクサーを実行できます。 ただし、Azure Cognitive Search データ ソース オブジェクトが更新された場合、インデクサーを実行するには、必ずもう一度ログインする必要があります。 たとえば、データ ソース クエリを変更した場合は、`https://microsoft.com/devicelogin` と新しいコードを使用してもう一度ログインする必要があります。
@@ -241,7 +241,7 @@ api-key: [admin key]
     api-key: [admin key]
     ```
 
-    インデクサー実行要求の詳細については、「[インデクサーの実行](https://docs.microsoft.com/rest/api/searchservice/run-indexer)」を参照してください。
+    インデクサー実行要求の詳細については、「[インデクサーの実行](/rest/api/searchservice/run-indexer)」を参照してください。
 
 1.  インデクサーの状態を確認します。 前回のインデクサーの実行で、`https://microsoft.com/devicelogin` にアクセスするよう伝えるエラーが発生した場合は、そのページにアクセスし、新しいコードを指定します。 
 
@@ -251,7 +251,7 @@ api-key: [admin key]
     api-key: [admin key]
     ```
 
-    インデクサーの状態の詳細については、「[インデクサーの状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)」を参照してください。
+    インデクサーの状態の詳細については、「[インデクサーの状態の取得](/rest/api/searchservice/get-indexer-status)」を参照してください。
 
 1.  ログイン
 
@@ -359,7 +359,7 @@ api-key: [admin key]
 "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Cognitive Search では、インデックスを作成するドキュメントのサイズが制限されています。 これらの制限は、[Azure Cognitive Search サービスの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に関する記事で文書化されています。 サイズが大きいドキュメントは、既定ではエラーとして扱われます。 ただし、`indexStorageMetadataOnlyForOversizedDocuments` 構成パラメーターを true に設定した場合、サイズが大きいドキュメントのストレージ メタデータのインデックスも作成することができます。
+Azure Cognitive Search では、インデックスを作成するドキュメントのサイズが制限されています。 これらの制限は、[Azure Cognitive Search サービスの制限](./search-limits-quotas-capacity.md)に関する記事で文書化されています。 サイズが大きいドキュメントは、既定ではエラーとして扱われます。 ただし、`indexStorageMetadataOnlyForOversizedDocuments` 構成パラメーターを true に設定した場合、サイズが大きいドキュメントのストレージ メタデータのインデックスも作成することができます。
 
 ```http
 "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }

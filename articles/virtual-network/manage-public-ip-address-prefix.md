@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 2e32faad698fbf316d51123cc8b7845a3b262c7f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 173fa3a8288ccceb07048e83fcec35d67b2fd35f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98938649"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783433"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 
@@ -58,7 +58,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
+|CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
 >[!NOTE]
@@ -82,7 +82,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create)|
+|CLI|[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)|
 
 ## <a name="view-or-delete-a-prefix"></a>プレフィックスの表示または削除
@@ -97,7 +97,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) (パブリック IP アドレスの一覧表示)、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) (設定の表示)、[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) (更新)、[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) (削除)|
+|CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_list) (パブリック IP アドレスの一覧表示)、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_show) (設定の表示)、[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_update) (更新)、[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_delete) (削除)|
 |PowerShell|[Get-AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix) (パブリック IP アドレス オブジェクトの取得とその設定の表示)、[Set-AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix) (設定の更新)、[Remove-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix) (削除)|
 
 ## <a name="permissions"></a>アクセス許可

@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/15/2021
-ms.openlocfilehash: bc8317e3402fa0185186c06ed1f89e062e99fd5e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 536b9092a7bddd353b58874e7aa97291839bafcc
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654747"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589535"
 ---
 # <a name="getting-started-with-azure-iot-embedded-device-development"></a>Azure IoT 組み込みデバイス開発の概要
 
@@ -40,4 +40,4 @@ ms.locfileid: "100654747"
 
 ## <a name="next-steps"></a>次のステップ
 このガイドのデバイス固有のクイックスタートを完了したら、Azure RTOS の概要リポジトリにあるその他のデバイス固有の記事とサンプルを確認してください。
-* [Azure RTOS と Azure IoT の概要](https://github.com/azure-rtos/getting-started)
+* [Azure RTOS と Azure IoT の概要](https://github.com/azure-rtos/getting-started#getting-started-with-azure-rtos-and-azure-iot)

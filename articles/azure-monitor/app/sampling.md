@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a03dab43c12b372fc52e7516821fe7aef22d2e16
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589543"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305244"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -184,7 +184,7 @@ public void ConfigureServices(IServiceCollection services)
 サンプリング動作をカスタマイズするには、次に示すように、`TelemetryProcessorChainBuilder` の拡張メソッドを使用します。
 
 > [!IMPORTANT]
-> このメソッドを使用してサンプリングを構成する場合は、`AddApplicationInsightsTelemetry()`を呼び出すときに `aiOptions.EnableAdaptiveSampling` プロパティを `false` に設定してください。
+> このメソッドを使用してサンプリングを構成する場合は、`AddApplicationInsightsTelemetry()`を呼び出すときに `aiOptions.EnableAdaptiveSampling` プロパティを `false` に設定してください。 この変更を行った後は、成立しているカスタマイズを含むアダプティブ サンプリングを再度有効にするために、以下のコード ブロックの指示に **厳密** に従う必要があります。 そうしないと、データ インジェストが過剰になる可能性があります。 必ず、変更後のサンプリング設定をテストし、適切な[日単位のデータの上限](pricing.md#set-the-daily-cap)を設定して、コスト抑制に役立てます。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility

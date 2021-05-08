@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 09/29/2020
+ms.date: 03/19/2021
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d42611705b7756ed2fd0c7a488339f0f638fb5b4
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370187"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802167"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -47,7 +47,7 @@ Privileged Identity Management では、時間ベースおよび承認ベース�
 
 ## <a name="what-can-i-do-with-it"></a>これによってできること
 
-Privileged Identity Management を設定すると、左側のナビゲーション メニューに **[タスク]** 、 **[管理]** 、 **[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、 **Azure AD ロール** の管理、 **Azure リソース** ロールの管理、特権アクセス グループなどのオプションを選択することになります。 管理対象を選択すると、そのオプションに対する適切な一連のオプションが表示されます。
+Privileged Identity Management を設定すると、左側のナビゲーション メニューに **[タスク]** 、 **[管理]** 、 **[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、**Azure AD ロール** の管理、**Azure リソース** ロールの管理、特権アクセス グループなどのオプションを選択することになります。 管理対象を選択すると、そのオプションに対する適切な一連のオプションが表示されます。
 
 ![Azure portal での Privileged Identity Management のスクリーンショット](./media/pim-configure/pim-quickstart.png)
 
@@ -92,8 +92,8 @@ Privileged Identity Management とそのドキュメントについてより深�
 | アクティブ化済み | State | ロールの割り当ての資格を持ち、ロールをアクティブ化するためのアクションを実行して、アクティブになったユーザー。  アクティブになったユーザーは、事前構成済みの期間、そのロールを使用することができ、その期間の経過後は再度アクティブ化する必要があります。 |
 | 永続的に有資格 | Duration | ロールをアクティブ化する資格が常にユーザーにあるロールの割り当て。 |
 | 永続的にアクティブ | Duration | 何もアクションを実行しなくても、ユーザーがロールを常に使用できるロールの割り当て。 |
-| 有効期限付きの有資格 | Duration | ユーザーに、指定された開始日と終了日の範囲内でロールをアクティブ化する資格があるロールの割り当て。 |
-| 有効期限付きアクティブ | Duration | 指定された開始日と終了日の範囲内であれば、何もアクションを実行しなくてもユーザーがロールを使用できるロールの割り当て。 |
+| 期限付きで有資格 | Duration | ユーザーに、開始日から終了日の間だけロールをアクティブ化する資格があるロールの割り当て。 |
+| 期限付きでアクティブ | Duration | ユーザーが、開始日から終了日の間だけロールを使用できるロールの割り当て。 |
 | Just-In-Time (JIT) アクセス |  | 悪意のあるユーザーまたは未承認ユーザーがアクセス許可の期限が切れた後にアクセスできないように、ユーザーに特権タスクを実行する一時的なアクセス許可を与えるモデル。 ユーザーが必要な場合にのみ、アクセスが許可されます。 |
 | 最小特権アクセスの原則 |  | すべてのユーザーに、実行権限があるタスクを実行するのに必要な最小特権のみを与える、推奨されるセキュリティ プラクティス。 このプラクティスではグローバル管理者の数を最小限にし、代わりに特定のシナリオで特定の管理者ロールが使用されます。 |
 

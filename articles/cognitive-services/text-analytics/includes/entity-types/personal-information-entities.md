@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 97167485dae155670f0eb83fc3ef9cb658952251
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749889"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097856"
 ---
 > [!NOTE]
 > 保護されている医療情報 (PHI) を検出するには、`domain=phi` パラメーターとモデル バージョン `2020-04-01` 以降を使用します。
@@ -54,8 +54,17 @@ ms.locfileid: "101749889"
         **詳細**
 
         人の名前。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`Person` を `pii-categories` パラメーターに追加します。 検出されると、`Person` が API 応答で返されます。
       
     :::column-end:::
+    
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="category-persontype"></a>カテゴリ:PersonType
@@ -74,8 +83,17 @@ ms.locfileid: "101749889"
         **詳細**
 
         人物の職種または職務。
+
+        このエンティティ カテゴリを取得するには、`PersonType` を `pii-categories` パラメーターに追加します。 検出されると、`PersonType` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="category-phonenumber"></a>カテゴリ:PhoneNumber
@@ -93,8 +111,18 @@ ms.locfileid: "101749889"
         **詳細**
 
         電話番号 (米国および EU の電話番号のみ)。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`PhoneNumber` を `pii-categories` パラメーターに追加します。 検出されると、`PhoneNumber` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt` `pt-br`
+      
+   :::column-end:::
+
 :::row-end:::
 
 
@@ -112,9 +140,19 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。
+        企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`Organization` を `pii-categories` パラメーターに追加します。 検出されると、`Organization` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+
 :::row-end:::
 
 #### <a name="subcategories"></a>サブカテゴリー
@@ -125,15 +163,25 @@ ms.locfileid: "101749889"
     :::column span="":::
         **エンティティのサブカテゴリ**
 
-        医療
+        医療    
 
     :::column-end:::
     :::column span="2":::
         **詳細**
 
         医療関係の企業および団体。
+
+        このエンティティ カテゴリを取得するには、`OrganizationMedical` を `pii-categories` パラメーターに追加します。 検出されると、`OrganizationMedical` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -144,8 +192,17 @@ ms.locfileid: "101749889"
     :::column span="2":::
 
         証券取引団体。 
+
+        このエンティティ カテゴリを取得するには、`OrganizationStockExchange` を `pii-categories` パラメーターに追加します。 検出されると、`OrganizationStockExchange` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -156,8 +213,16 @@ ms.locfileid: "101749889"
     :::column span="2":::
 
         スポーツ関連の組織。
+
+        このエンティティ カテゴリを取得するには、`OrganizationSports` を `pii-categories` パラメーターに追加します。 検出されると、`OrganizationSports` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
 
 :::row-end:::
 
@@ -176,9 +241,19 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        完全な郵送先住所。
+        完全な郵送先住所。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`Address` を `pii-categories` パラメーターに追加します。 検出されると、`Address` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
 ### <a name="category-email"></a>カテゴリ:Email
@@ -195,10 +270,19 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        メール アドレス。
+        メール アドレス。 `domain=phi` でも返されます。
+      
+        このエンティティ カテゴリを取得するには、`Email` を `pii-categories` パラメーターに追加します。 検出されると、`Email` が API 応答で返されます。
+
+    :::column-end:::
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
+
 
 ### <a name="category-url"></a>カテゴリ:URL
 
@@ -214,9 +298,19 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        Web サイトへの URL。 
+        Web サイトへの URL。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`URL` を `pii-categories` パラメーターに追加します。 検出されると、`URL` が API 応答で返されます。
       
     :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
 ### <a name="category-ip"></a>カテゴリ:IP
@@ -233,7 +327,16 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        ネットワーク IP アドレス。 
+        ネットワーク IP アドレス。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`IP` を `pii-categories` パラメーターに追加します。 検出されると、`IP` が API 応答で返されます。
+      
+    :::column-end:::
+
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
@@ -253,8 +356,16 @@ ms.locfileid: "101749889"
         **詳細**
 
         日付と時刻。 
+
+        このエンティティ カテゴリを取得するには、`DateTime` を `pii-categories` パラメーターに追加します。 検出されると、`DateTime` が API 応答で返されます。
       
     :::column-end:::
+:::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="subcategories"></a>サブカテゴリー
@@ -271,7 +382,15 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        カレンダーの日付。
+        カレンダーの日付。 `domain=phi` でも返されます。
+
+        このエンティティ カテゴリを取得するには、`Date` を `pii-categories` パラメーターに追加します。 検出されると、`Date` が API 応答で返されます。
+      
+    :::column-end:::
+    :::column span="2":::
+      **サポートされているドキュメントの言語**
+      
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
       
     :::column-end:::
 :::row-end:::
@@ -291,6 +410,14 @@ ms.locfileid: "101749889"
         **詳細**
 
         数値と数量です。
+
+        このエンティティ カテゴリを取得するには、`Quantity` を `pii-categories` パラメーターに追加します。 検出されると、`Quantity` が API 応答で返されます。
+      
+    :::column-end:::
+    :::column span="2":::
+      **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
@@ -309,9 +436,17 @@ ms.locfileid: "101749889"
     :::column span="2":::
         **詳細**
 
-        年齢。
+        年齢。 
+
+        このエンティティ カテゴリを取得するには、`Age` を `pii-categories` パラメーターに追加します。 検出されると、`Age` が API 応答で返されます。
       
     :::column-end:::
+    :::column span="2":::
+        **サポートされているドキュメントの言語**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="azure-information"></a>Azure の情報
@@ -329,33 +464,36 @@ ms.locfileid: "101749889"
         **詳細**
 
         Azure Cosmos DB サーバーの認証キー。   
+
+        このエンティティ カテゴリを取得するには、`AzureDocumentDBAuthKey` を `pii-categories` パラメーターに追加します。 検出されると、`AzureDocumentDBAuthKey` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+      **サポートされているドキュメントの言語**
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        Azure IAAS データベース接続文字列および Azure SQL 接続文字列
+        Azure IAAS データベース接続文字列および Azure SQL 接続文字列。
+        
 
     :::column-end:::
     :::column span="2":::
 
         Azure IaaS (サービスとしてのインフラストラクチャ) データベースの接続文字列と SQL 接続文字列。
+
+        このエンティティ カテゴリを取得するには、`AzureIAASDatabaseConnectionAndSQLString` を `pii-categories` パラメーターに追加します。 検出されると、`AzureIAASDatabaseConnectionAndSQLString` が API 応答で返されます。
       
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column span="":::
 
-        Azure SQL 接続文字列
+      `en` 
 
     :::column-end:::
-    :::column span="2":::
-
-        Azure SQL Database 内のデータベースの接続文字列。
-      
-    :::column-end:::
-
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -367,6 +505,13 @@ ms.locfileid: "101749889"
 
         Azure IoT の接続文字列。 
       
+        このエンティティ カテゴリを取得するには、`AzureIoTConnectionString` を `pii-categories` パラメーターに追加します。 検出されると、`AzureIoTConnectionString` が API 応答で返されます。
+
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -378,7 +523,14 @@ ms.locfileid: "101749889"
     :::column span="2":::
 
         Azure 発行設定のパスワード。
+
+        このエンティティ カテゴリを取得するには、`AzurePublishSettingPassword` を `pii-categories` パラメーターに追加します。 検出されると、`AzurePublishSettingPassword` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -390,7 +542,14 @@ ms.locfileid: "101749889"
     :::column span="2":::
 
         Redis Cache の接続文字列。
+
+        このエンティティ カテゴリを取得するには、`AzureRedisCacheString` を `pii-categories` パラメーターに追加します。 検出されると、`AzureRedisCacheString` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -402,7 +561,14 @@ ms.locfileid: "101749889"
     :::column span="2":::
 
         Azure SaaS (サービスとしてのソフトウェア) の接続文字列。
+
+        このエンティティ カテゴリを取得するには、`AzureSAS` を `pii-categories` パラメーターに追加します。 検出されると、`AzureSAS` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -414,7 +580,14 @@ ms.locfileid: "101749889"
     :::column span="2":::
 
         Azure Service Bus の接続文字列。
+
+        このエンティティ カテゴリを取得するには、`AzureServiceBusString` を `pii-categories` パラメーターに追加します。 検出されると、`AzureServiceBusString` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -425,8 +598,15 @@ ms.locfileid: "101749889"
     :::column-end:::
     :::column span="2":::
 
-       Azure Storage アカウントのアカウント キー。 
+        Azure Storage アカウントのアカウント キー。 
+
+        このエンティティ カテゴリを取得するには、`AzureStorageAccountKey` を `pii-categories` パラメーターに追加します。 検出されると、`AzureStorageAccountKey` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -437,8 +617,15 @@ ms.locfileid: "101749889"
     :::column-end:::
     :::column span="2":::
 
-       Azure Storage アカウントの汎用アカウント キー。
+        Azure Storage アカウントの汎用アカウント キー。
+
+        このエンティティ カテゴリを取得するには、`AzureStorageAccountGeneric` を `pii-categories` パラメーターに追加します。 検出されると、`AzureStorageAccountGeneric` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -449,8 +636,15 @@ ms.locfileid: "101749889"
     :::column-end:::
     :::column span="2":::
 
-       SQL Server を実行するコンピューターの接続文字列。
+        SQL Server を実行するコンピューターの接続文字列。
+
+        このエンティティ カテゴリを取得するには、`SQLServerConnectionString` を `pii-categories` パラメーターに追加します。 検出されると、`SQLServerConnectionString` が API 応答で返されます。
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 

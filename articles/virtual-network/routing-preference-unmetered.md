@@ -6,19 +6,18 @@ documentationcenter: na
 author: KumudD
 manager: mtillman
 ms.service: virtual-network
-Customer intent: As an Azure customer, I want to learn more about enabling routing preference for my CDN origin resources.
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 1fcc918e5b4b54a415fed0f38d210aeeaa62c008
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6276ec1a1c3f52b6574ee60d40e743a183086eb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678721"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060586"
 ---
 # <a name="what-is-routing-preference-unmetered"></a>従量制課金なしのルーティング優先設定とは
 
@@ -45,4 +44,4 @@ Azure の配信元から CDN プロバイダーに送信されるネットワー
 
 * [Azure PowerShell を使用して VM 用にルーティング優先設定を構成する](configure-routing-preference-virtual-machine-powershell.md)
 * [Azure CLI を使用して VM 用にルーティング優先設定を構成する](configure-routing-preference-virtual-machine-cli.md)
-* [ストレージ アカウントのルーティング優先設定を構成する](/azure/storage/common/network-routing-preference)
+* [ストレージ アカウントのルーティング優先設定を構成する](../storage/common/network-routing-preference.md)

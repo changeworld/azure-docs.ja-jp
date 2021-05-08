@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 5066264777c66369205489fb27a6f9206c5da521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cb85bc1da7d98d3e2ad46229588a91d971ce014
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708001"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567292"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure Monitor ログの概要
 Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)からログとパフォーマンス データを収集して整理する Azure Monitor の機能です。 Azure サービスからの[プラットフォーム ログ](../essentials/platform-logs-overview.md)、[仮想マシン エージェント](../agents/agents-overview.md)からのログとパフォーマンス データ、[アプリケーション](../app/app-insights-overview.md)からの使用状況とパフォーマンス データなど、さまざまなソースからのデータを 1 つのワークスペースに統合し、何百万ものレコードを迅速に分析できる高度なクエリ言語を使用してまとめて分析することができます。 特定のレコードのセットを取得するだけの単純なクエリを実行することも、高度なデータ分析を実行して監視データの重要なパターンを特定することもできます。 Log Analytics を使用してログ クエリとその結果を対話形式で操作したり、アラート ルールでそれらを使用して問題が事前に通知されるようにしたり、ブックやダッシュボードでその結果を視覚化したりします。
@@ -23,7 +23,7 @@ Azure Monitor ログは、[監視対象のリソース](../monitor-reference.md)
 ## <a name="what-can-you-do-with-azure-monitor-logs"></a>Azure Monitor のログでできること
 次の表に、Azure Monitor でログを使用できるさまざまな方法のいくつかを示します。
 
-|  |  |
+|  | 説明 |
 |:---|:---|
 | **分析** | Azure portal で [Log Analytics](./log-analytics-tutorial.md) を使用して[ログ クエリ](./log-query-overview.md)を書き、強力な分析エンジンを使用してログ データを対話形式で分析します。 |
 | **Alert** | クエリの結果が特定の結果に一致するときに、通知を送信するか[自動化されたアクション](../alerts/action-groups.md)を実行する、[ログ警告ルール](../alerts/alerts-log.md)を構成します。 |

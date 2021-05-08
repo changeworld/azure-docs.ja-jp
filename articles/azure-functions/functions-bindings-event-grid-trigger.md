@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 17968f2c137eef51eecdb6c7098c7056944dc970
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98250130"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782191"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -446,7 +446,7 @@ Azure Portal を使ってサブスクリプションを作成する方法につ�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI](/cli/azure/get-started-with-azure-cli) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) コマンドを使います。
+[Azure CLI](/cli/azure/get-started-with-azure-cli) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) コマンドを使います。
 
 このコマンドには、関数を呼び出すエンドポイント URL が必要です。 バージョン固有の URL パターンの例を次に示します。
 
@@ -571,7 +571,7 @@ Event Grid トリガーをローカルにテストするには、クラウド内
 1. [要求を生成](#generate-a-request)し、ビューアー アプリから要求本文をコピーします。
 1. Event Grid トリガー関数の localhost URL に[要求を手動で投稿](#manually-post-the-request)します。
 
-テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
+テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update) Azure CLI コマンドを使います。
 
 ### <a name="create-a-viewer-web-app"></a>ビューアー Web アプリを作成する
 

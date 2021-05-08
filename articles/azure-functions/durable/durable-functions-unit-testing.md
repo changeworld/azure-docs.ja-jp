@@ -3,12 +3,12 @@ title: Azure Durable Functions の単体テスト
 description: Durable Functions の単体テストを行う方法について説明します。
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 89b6419e95b3971b0d272490e19354f300204e1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fe5a25e0296eb183ef2426e12f7bdee35633ec78
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491046"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076634"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 
@@ -33,13 +33,13 @@ ms.locfileid: "103491046"
 
 次のインターフェイスを介してモックがサポートされています。
 
-* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationClient)、[IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.IDurableEntityClient)、[IDurableClient](/dotnet/api/microsoft.azure.webjobs.IDurableClient)
+* [IDurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient)、[IDurableEntityClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentityclient)、[IDurableClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableclient)
 
-* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.IDurableOrchestrationContext)
+* [IDurableOrchestrationContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext)
 
-* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.IDurableActivityContext)
+* [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)
   
-* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.IDurableEntityContext)
+* [IDurableEntityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableentitycontext)
 
 これらのインターフェイスは、Durable Functions でサポートされているさまざまなトリガーおよびバインドで使用できます。 Azure Functions を実行しているとき、Functions ランタイムは、これらのインターフェイスの具象実装を使用して関数コードを実行します。 単体テストでは、これらのインターフェイスのモック バージョンを渡してビジネス ロジックをテストすることができます。
 

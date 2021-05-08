@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 993baa521530ffa6a702f8324a1691850687c366
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a08d82103986435593cd73a0728e7426f205a90d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101668692"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307539"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -171,7 +171,6 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
          1. 新しいロード バランサー規則の名前を入力します (例: **nw1-lb**)
          1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **nw1-frontend**)。 **nw-backend** と **nw1-hp**)
          1. **[HA ポート]** を選択します。
-         1. アイドル タイムアウトを 30 分に増やします
          1. **Floating IP を有効にします**
          1. [OK] をクリックします
          * 上記の手順を繰り返して、NW2 の負荷分散規則を作成します

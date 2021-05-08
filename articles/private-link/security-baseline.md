@@ -4,19 +4,23 @@ description: Azure Private Link セキュリティ ベースラインでは、Az
 author: msmbaldwin
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 03/16/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7dacec1521787e55ee4c7fd5f08b9e56d9dd4842
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8fcbfa745a78d335606c11dcbd8851a235407b9d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101736000"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588530"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure Private Link の Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインは、[Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)のガイダンスを Azure Private Link に適用します。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Private Link に適用できる関連ガイダンスによって定義されています。 Azure Private Link に適用できない **制御** は、除外されています。 Azure Private Link を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Virtual Network セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Azure Private Link に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。
+内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure Private Link に適用できる関連ガイダンスによって定義されています。 Azure Private Link に適用できない **制御** は、除外されています。
+
+ 
+Azure Private Link を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Private Link セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -28,13 +32,13 @@ ms.locfileid: "101736000"
 
 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
@@ -52,15 +56,15 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Private Link のログ記録と監視](private-link-overview.md#logging-and-monitoring)
+- [Private Link のログ記録と監視](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
 
 - [ネットワーク セキュリティ グループの診断ログ](../virtual-network/virtual-network-nsg-manage-log.md)
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
@@ -68,25 +72,25 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-- [Private Link のログ記録と監視](private-link-overview.md#logging-and-monitoring)
-
-**Azure Security Center の監視**: はい
+- [Private Link のログ記録と監視](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
 **ガイダンス**: Private Link に関連するログでは、Azure Monitor 内の組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 ログの長期またはアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#configure-logging)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
@@ -100,9 +104,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
@@ -116,11 +120,11 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
 
-## <a name="identity-and-access-control"></a>ID とアクセスの制御
+**Azure Security Center の監視**: なし
+
+## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
 *詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
@@ -128,13 +132,13 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 **ガイダンス**: 明示的な割り当てとクエリの実行が可能である Azure Active Directory (Azure AD) 組み込みの管理者ロールを使用します。 Azure AD PowerShell モジュールを実行してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
-
-**Azure Security Center の監視**: はい
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
@@ -142,35 +146,35 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 また、Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity Management の特権ロール、および Azure Resource Manager を使用して、Just-In-Time/Just-Enough-Access を有効にします。
 
-- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
-
-**Azure Security Center の監視**: はい
+- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory シングル サインオン (SSO) を使用する
 
-**ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory でシングル サインオンを使用します。
+**ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory (Azure AD) でシングル サインオンを使用します。
 
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](../active-directory/manage-apps/what-is-single-sign-on.md)
+- [Azure AD でのアプリケーションへのシングル サインオン](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証 (MFA) を有効にし、Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証を有効にし、Security Center の ID およびアクセス管理の推奨事項に従います。
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
@@ -178,15 +182,17 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティに関するログとアラート
 
-**ガイダンス**:Azure Active Directory (Azure AD) のリスク検出機能を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 Security Center のリスク検出アラートを Azure Monitor に取り込み、アクション グループを使用してカスタムのアラートまたは通知を構成します。
+**ガイダンス**:Azure Active Directory (Azure AD) のリスク検出機能を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 
+
+Security Center のリスク検出アラートを Azure Monitor に取り込み、アクション グループを使用してカスタムのアラートまたは通知を構成します。
 
 - [Azure Security Center のリスク検出 (疑わしいアクティビティ) について](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -194,9 +200,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
@@ -204,9 +210,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
@@ -214,21 +220,21 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory-domain-services/tutorial-create-instance.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**: Azure Active Directory では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
+**ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、ロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
+- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: 非アクティブ化された資格情報へのアクセスの試行を監視する
 
@@ -238,11 +244,11 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
 
-### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウントのサインイン動作の偏差に関するアラートを生成する
+**Azure Security Center の監視**: なし
+
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウント サインイン動作の偏差に関するアラートを生成する
 
 **ガイダンス**: Azure Active Directory (Azure AD) のリスクおよび Identity Protection 機能を使用して、ネットワーク リソースのユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 
 
@@ -254,9 +260,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-protection"></a>データ保護
 
@@ -264,11 +270,11 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
-**ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 
+**ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。
 
-ビジネス要件に基づいて、アプリケーションやエンタープライズ環境で Azure リソースへのアクセス レベルを制限します。 
+ビジネス要件に基づいて、アプリケーションやエンタープライズ環境で Azure リソースへのアクセス レベルを制限します。
 
-Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを制御します。
+Azure ロールベースのアクセス制御 (Azure AD) を使用して、Azure リソースへのアクセスを制御します。
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
@@ -276,9 +282,9 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
@@ -286,13 +292,13 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azu
 
 該当する場合、保存時と転送時の暗号化に関する Security Center の推奨事項に従います。
 
-- [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
-
-**Azure Security Center の監視**: はい
+- [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 **責任**: 共有
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
+**Azure Security Center の監視**: なし
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する 
 
 **ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用してデータとリソースへのアクセスを制御します。それ以外の場合は、サービス固有のアクセス制御方法を使用します。
 
@@ -308,21 +314,21 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [Private Link サービスのプロパティ](private-link-service-overview.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
 **ガイダンス**: Azure Monitor アクティビティ ログのアラートを使用して、Private Link サービスやエンドポイントなど、重要な Azure リソースに変更が加えられたときにアラートが作成されるようにします。 
 
-- [ネットワーク セキュリティ グループの診断ログ](private-link-overview.md#logging-and-monitoring)
+- [ネットワーク セキュリティ グループの診断ログ](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
 
 - [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
@@ -330,19 +336,19 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
-**ガイダンス**: Azure Resource Graph を使用して、Private Link サービスやサブスクリプション内のエンドポイントなど、すべてのネットワーク リソースをクエリして検出します。 
+**ガイダンス**: Azure Resource Graph を使用して、Private Link サービスやサブスクリプション内のエンドポイントなど、すべてのネットワーク リソースをクエリして検出します。
 
 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
+- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
@@ -350,9 +356,9 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
@@ -366,17 +372,17 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**: 組織のニーズに基づき、承認された Azure リソースとコンピューティング リソース用のソフトウェアのインベントリを作成します。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
@@ -394,9 +400,9 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [プライベート リンク用の Azure Policy サンプルの組み込み](../governance/policy/samples/built-in-policies.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="67-remove-unapproved-azure-resources"></a>6.7:承認されていない Azure リソースを削除する
 
@@ -404,27 +410,25 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
 **ガイダンス**: 次の組み込みのポリシー定義を使用して、顧客のサブスクリプション内に作成できるリソースの種類に制限を適用するには、Azure Policy を使用します。
-
 - 許可されないリソースの種類
-
 - 許可されるリソースの種類
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
 - [プライベート リンク用の Azure Policy サンプルの組み込み](../governance/policy/samples/built-in-policies.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11:Azure Resource Manager を操作するユーザーの機能を制限する
 
@@ -432,9 +436,9 @@ Private Link の "可視性" 設定を使用してサービスの公開を制御
 
 - [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
@@ -448,7 +452,7 @@ Azure Resource Manager には JavaScript Object Notation (JSON) でテンプレ�
 
 Azure リソースの安全な構成基準として Security Center からの推奨事項を実装します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
+- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
@@ -458,9 +462,9 @@ Azure リソースの安全な構成基準として Security Center からの推
 
 - [セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
@@ -480,23 +484,23 @@ Azure リソース全体にセキュリティで保護された設定を適用�
 
 - [プライベート リンク用の Azure Policy サンプルの組み込み](../governance/policy/samples/built-in-policies.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 
+**ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。
 
 Azure Active Directory (Azure AD) (アクセスに関して Azure DevOps と統合されている場合)、または Active Directory (Team Foundation Server と統合されている場合) で定義されている特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与するか、それらのアクセス許可を拒否します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
+- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
@@ -508,13 +512,13 @@ Azure Active Directory (Azure AD) (アクセスに関して Azure DevOps と統�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
+- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 - [プライベート リンク用の Azure Policy サンプルの組み込み](../governance/policy/samples/built-in-policies.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
@@ -524,13 +528,13 @@ Azure Active Directory (Azure AD) (アクセスに関して Azure DevOps と統�
 
 - [プライベート リンク用の Azure Policy サンプルの組み込み](../governance/policy/samples/built-in-policies.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳しくは、「[Azure Security ベンチマーク:データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
@@ -548,15 +552,15 @@ Azure Automation を使用して、Azure Resource Manager テンプレートの�
 
 - [Azure Automation の概要](../automation/automation-intro.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、すべてのカスタマー マネージド キーをバックアップする
 
-**ガイダンス**: Azure Resource Manager を使用して、Private Link サービス、エンドポイント、関連リソースをデプロイします。 Azure Resource Manager には、Private Link エンドポイントと関連リソースを復元するためのバックアップとして使用できるテンプレートをエクスポートする機能があります。  
+**ガイダンス**: Azure Resource Manager を使用して、Private Link サービス、エンドポイント、関連リソースをデプロイします。 Azure Resource Manager には、Private Link エンドポイントと関連リソースを復元するためのバックアップとして使用できるテンプレートをエクスポートする機能があります。
 
-Azure Automation を使用して、Azure Resource Manager テンプレートのエクスポート API を定期的に呼び出します。  
+Azure Automation を使用して、Azure Resource Manager テンプレートのエクスポート API を定期的に呼び出します。
 
 Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
@@ -570,39 +574,39 @@ Azure Key Vault 内のカスタマー マネージド キーをバックアッ�
 
 - [Azure Automation の概要](../automation/automation-intro.md)
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
-**ガイダンス**: ビジネス要件に応じて、分離サブスクリプションに対して Azure Resource Manager テンプレートのデプロイを定期的に実行できることを確認します。 
+**ガイダンス**: ビジネス要件に応じて、分離サブスクリプションに対して Azure Resource Manager テンプレートのデプロイを定期的に実行できることを確認します。
 
 また、バックアップされたカスタマー マネージド キーの復元も確認します。
 
 - [ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
-**ガイダンス**: Azure DevOps を使用して、Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。 
+**ガイダンス**: Azure DevOps を使用して、Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。
 
 Azure Active Directory (Azure AD) (リソースへのアクセスに関して Azure DevOps と統合されている場合)、または Active Directory (Team Foundation Server と統合されている場合) で定義されている特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与するか、それらのアクセス許可を拒否します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
+- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="incident-response"></a>インシデント対応
 
@@ -620,9 +624,9 @@ Azure Active Directory (Azure AD) (リソースへのアクセスに関して Az
 
 - [お客様は、独自のインシデント対応計画の作成に役立つ NIST の「コンピューター セキュリティ インシデント対応ガイド」を利用することもできます](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
@@ -636,9 +640,9 @@ Azure Active Directory (Azure AD) (リソースへのアクセスに関して Az
 
 - [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
@@ -646,9 +650,9 @@ Azure Active Directory (Azure AD) (リソースへのアクセスに関して Az
 
 - [NIST の出版物 - IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
@@ -658,9 +662,9 @@ Azure Active Directory (Azure AD) (リソースへのアクセスに関して Az
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
@@ -672,9 +676,9 @@ Azure Active Directory (Azure AD) (リソースへのアクセスに関して Az
 
 - [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
@@ -682,9 +686,9 @@ Azure Active Directory (Azure AD) (リソースへのアクセスに関して Az
 
 - [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
@@ -700,11 +704,11 @@ Microsoft が管理しているクラウド インフラストラクチャ、サ
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
-- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
+- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: f4940da47b832c2b3c39ab2fa225a229d1d730bf
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98930043"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062711"
 ---
 # <a name="manage-spark-application-dependencies"></a>Spark アプリケーションの依存関係を管理する
 
@@ -43,7 +43,7 @@ Spark カーネルの Jupyter Notebook で Scala の Spark セッションが開
 
 Maven リポジトリでパッケージを見つけたら、**GroupId**、**ArtifactId**、および **Version** の値を収集します。 3 つの値をコロン ( **:** ) で区切って連結します。
 
-   ![パッケージ スキーマを連結する](./media/apache-spark-manage-dependencies/spark-package-schema.png "パッケージ スキーマを連結する")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="パッケージ スキーマの連結" border="true":::
 
 収集した値が、クラスターに一致することを確認します。 この例では、Scala 2.11 用の Spark Cosmos DB コネクタ パッケージと、HDInsight 3.6 Spark クラスター用の Spark 2.3 を使用しています。 わからない場合は、Spark カーネルのコード セルで `scala.util.Properties.versionString` を実行して、クラスターの Scala バージョンを取得します。 `sc.version` を実行して、クラスターの Spark バージョンを取得します。
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用する
 [Azure Toolkit for IntelliJ プラグイン](./apache-spark-intellij-tool-plugin.md)では、Spark Scala アプリケーションを HDInsight クラスターに送信するための UI エクスペリエンスが提供されます。 Spark アプリケーションの送信時の jar ライブラリ パスを構成するために、`Referenced Jars` および `Referenced Files` プロパティが用意されています。 [HDInsight で Azure Toolkit for IntelliJ プラグインを使用する方法](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)の詳細を確認してください。
 
-![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="[Spark Submission]\(Spark 送信\) ダイアログ ボックス" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>クラスターの Jar ライブラリ
 場合によっては、すべてのアプリケーションを既定で同じ依存関係で設定できるように、クラスター レベルで jar の依存関係を構成することがあります。 この方法では、Spark のドライバーおよびエグゼキューターのクラスパスに jar パスを追加します。
@@ -89,11 +89,11 @@ import com.microsoft.azure.cosmosdb.spark._
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![Spark の既定の構成の変更](./media/apache-spark-manage-dependencies/change-spark-default-config.png "Spark の既定の構成の変更")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="Spark の既定の構成値の変更" border="true":::
 
 3. 変更した構成を保存し、影響を受けるサービスを再起動します。
 
-   ![影響を受けるサービスの再起動](./media/apache-spark-manage-dependencies/restart-impacted-services.png "影響を受けるサービスの再起動")
+   :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="影響を受けるサービスの再起動" border="true":::
 
 [スクリプト操作](../hdinsight-hadoop-customize-cluster-linux.md)を使用すると、この手順を自動化できます。 [Hive カスタム ライブラリの追加](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)のスクリプト操作が参考になります。 Spark のサービス構成を変更する場合は、構成ファイルを直接変更するのではなく、Ambari API を使用してください。 
 

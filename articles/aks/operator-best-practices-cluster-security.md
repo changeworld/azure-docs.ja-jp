@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: a56cf35fe3780aa53b12581358bd91fe44e8c8a1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a758a3e972e47baeba440639c1c6bcf34219d7c0
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585062"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121372"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -122,12 +122,34 @@ AppArmor は任意の Linux アプリケーションで機能しますが、[sec
 
 seccomp の動作を確認するには、ファイルに対するアクセス許可の変更を防止するフィルターを作成します。 [SSH][aks-ssh] で AKS ノードに接続し、 */var/lib/kubelet/seccomp/prevent-chmod* という名前の seccomp フィルターを作成し、次の内容を貼り付けます。
 
-```
+```json
 {
   "defaultAction": "SCMP_ACT_ALLOW",
   "syscalls": [
     {
       "name": "chmod",
+      "action": "SCMP_ACT_ERRNO"
+    },
+    {
+      "name": "fchmodat",
+      "action": "SCMP_ACT_ERRNO"
+    },
+    {
+      "name": "chmodat",
+      "action": "SCMP_ACT_ERRNO"
+    }
+  ]
+}
+```
+
+バージョン 1.19 以降では、以下を構成する必要があります。
+
+```json
+{
+  "defaultAction": "SCMP_ACT_ALLOW",
+  "syscalls": [
+    {
+      "names": ["chmod","fchmodat","chmodat"],
       "action": "SCMP_ACT_ERRNO"
     }
   ]
@@ -144,6 +166,29 @@ metadata:
   annotations:
     seccomp.security.alpha.kubernetes.io/pod: localhost/prevent-chmod
 spec:
+  containers:
+  - name: chmod
+    image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
+    command:
+      - "chmod"
+    args:
+     - "777"
+     - /etc/hostname
+  restartPolicy: Never
+```
+
+バージョン 1.19 以降では、以下を構成する必要があります。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: chmod-prevented
+spec:
+  securityContext:
+    seccompProfile:
+      type: Localhost
+      localhostProfile: prevent-chmod
   containers:
   - name: chmod
     image: mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11

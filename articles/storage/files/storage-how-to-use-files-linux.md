@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673689"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952339"
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、[SMB カーネル クライアント](https://wiki.samba.org/index.php/LinuxCIFS)を使用して Linux ディストリビューションにマウントできます。 この記事では、Azure ファイル共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
@@ -94,7 +94,7 @@ uname -r
     企業ネットワーク上でポート 445 を開くことができない場合、または ISP によってブロックされている場合は、VPN 接続または ExpressRoute を使用してポート 445 を回避することができます。 詳細については、[直接の Azure ファイル共有アクセスのネットワークに関する考慮事項](storage-files-networking-overview.md)に関するページを参照してください。
 
 ## <a name="mounting-azure-file-share"></a>Azure ファイル共有のマウント
-Linux ディストリビューションで Azure ファイル共有を使用するには、Azure ファイル共有のマウント ポイントとして機能するディレクトリを作成する必要があります。 マウント ポイントは Linux システム上のどこにでも作成できますが、一般的な規則では /mnt の下に作成します。 マウント ポイントの後、`mount` コマンドを使用して Azure ファイル共有にアクセスします。
+Linux ディストリビューションで Azure ファイル共有を使用するには、Azure ファイル共有のマウント ポイントとして機能するディレクトリを作成する必要があります。 マウント ポイントは Linux システム上のどこにでも作成できますが、一般的な規則では /mount の下に作成します。 マウント ポイントの後、`mount` コマンドを使用して Azure ファイル共有にアクセスします。
 
 必要に応じて、同じ Azure ファイル共有を複数のマウント ポイントにマウントできます。
 
@@ -106,7 +106,7 @@ Linux ディストリビューションで Azure ファイル共有を使用す�
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ Linux ディストリビューションで Azure ファイル共有を使用す�
 Azure ファイル共有の使用を完了したら、`sudo umount $mntPath` を使用して共有を解除できます。
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>`/etc/fstab` を使って Azure ファイル共有の永続的なマウント ポイントを作成する
-1. **マウント ポイントのフォルダーを作成します**。マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、一般的な規則では /mnt の下に作成します。 たとえば、次のコマンドは新しいディレクトリを作成し、`<your-resource-group>`、`<your-storage-account>`、`<your-file-share>` をお使いの環境に適した情報に置き換えます。
+1. **マウント ポイント用のフォルダーを作成します**。マウント ポイント用のフォルダーはファイル システム上のどこにでも作成できますが、/mount 下にこれを作成するのが一般的な規則です。 たとえば、次のコマンドは新しいディレクトリを作成し、`<your-resource-group>`、`<your-storage-account>`、`<your-file-share>` をお使いの環境に適した情報に置き換えます。
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```

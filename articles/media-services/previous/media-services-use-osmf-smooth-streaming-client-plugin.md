@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70042a5c4c27ec5d163e5f05089ae50b92140c28
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e41e33b5f30cd861ae8715e0ad7f6694f8854198
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011257"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046931"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Open Source Media Framework 用 Microsoft スムーズ ストリーミング プラグインを使用する方法
 
@@ -34,7 +34,7 @@ OSMF 用 SS には、次に示す 2 つのバージョンのプラグインが�
 * OSMF 用 Static スムーズ ストリーミング プラグイン (.swc)
 * OSMF 用 Dynamic スムーズ ストリーミング プラグイン (.swf)
 
-このドキュメントでは、OSMF および OSMF プラグインに関する一般的な実務知識を持つ読者を想定しています。OSMF の詳細については、 [OSMF の公式サイト](http://osmf.org/)にあるドキュメントを参照してください。
+このドキュメントでは、OSMF および OSMF プラグインに関する一般的な実務知識を持つ読者を想定しています。OSMF の詳細については、 OSMF の公式サイトにあるドキュメントを参照してください。
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>OSMF 2.0 用スムーズ ストリーミング プラグイン
 このプラグインは、オンデマンド スムーズ ストリーミング コンテンツの読み込みおよび再生を次の機能でサポートしています。
@@ -59,10 +59,10 @@ OSMF プラグインは、静的 (コンパイル時) または動的 (実行時
 * 静的読み込み: 静的に読み込むには、静的ライブラリ (SWC) ファイルが必要です。 静的プラグインは参照としてプロジェクトに追加され、コンパイル時に最終的な出力ファイル内部でマージされます。
 * 動的読み込み: 動的に読み込むには、プリコンパイル済み (SWF) ファイルが必要です。 動的プラグインはランタイムに読み込まれ、プロジェクト出力(コンパイル済み出力) には含まれません。 動的プラグインは HTTP および FILE プロトコルを使用して読み込むことができます。
 
-静的読み込みと動的読み込みの詳細については、 [OSMF 公式サイトのプラグインに関するページ](http://osmf.org/dev/osmf/OtherPDFs/osmf_plugin_dev_guide.pdf)を参照してください。
+静的読み込みと動的読み込みの詳細については、 [OSMF 公式サイトのプラグインに関するページ](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_PluginsPlanning.htm)を参照してください。
 
 ### <a name="ss-for-osmf-static-loading"></a>OSMF 用 SS の静的読み込み
-次のコード スニペットは、OSMF 用 SS プラグインを静的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。 OSMF 用 SS をコードに含める前に、プロジェクト参照に静的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" が含まれていることを確認してください。
+次のコード スニペットは、OSMF 用 SS プラグインを静的に読み込み、OSMF MediaFactory クラスを使用して基本的なビデオを再生する方法を示しています。 OSMF 用 SS をコードに含める前に、プロジェクト参照に静的プラグイン "MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc" が含まれていることを確認してください。 
 
 ```csharp
 package 
@@ -337,7 +337,7 @@ package
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media Playback と OSMF 用 SS 動的プラグイン
 OSMF 用スムーズ ストリーミング動的プラグインには、 [Strobe Media Playback (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/)との互換性があります。 OSMF 用 SS プラグインを使用すると、スムーズ ストリーミング コンテンツ再生機能を SMP に追加することができます。 これには、"MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf" を Web サーバーにコピーし、次に示す手順を使用して HTTP 読み込みを行ってください。
 
-1. [Strobe Media Playback セットアップ ページ](http://osmf.org/dev/2.0gm/setup.html)に移動します。 
+1. [Strobe Media Playback セットアップ ページ](http://www.koopman.me/bob3/setup.html)に移動します。 
 2. [src] をスムーズ ストリーミング ソース (例: http:\//devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) に設定します。 
 3. 必要な構成変更を行い、[Preview and Update] をクリックします。
    
@@ -394,7 +394,7 @@ OSMF 用スムーズ ストリーミング動的プラグインには、 [Strobe
 2. HTML ページを保存して、Web サーバーに発行します。 Flash&reg; Player 対応の好みのインターネット ブラウザー (Internet Explorer、Chrome、Firefox など) を使用して、発行済みの Web ページに移動します。
 3. Adobe&reg; Flash&reg; Player でスムーズ ストリーミング コンテンツをお楽しみください。
 
-全般的な OSMF 開発の詳細については、 [OSMF 公式サイトの開発に関するページ](http://osmf.org/resources.html)を参照してください。
+全般的な OSMF 開発の詳細については、 [OSMF 公式サイトの開発に関するページ](https://www.adobe.com/devnet/video/articles1/osmf_overview.html)を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

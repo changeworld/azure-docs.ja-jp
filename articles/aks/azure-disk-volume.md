@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のポッドで使用するための
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 7d8a038926fc6bf3234b43a82c0259ba633df11e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 617ad75eda766963a91fe3d41b1dbfefae62b41b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506652"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776215"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
@@ -133,13 +133,13 @@ AKS クラスターと Azure ディスクの操作の詳細については、[Az
 [managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-group-list]: /cli/azure/group#az-group-list
-[az-resource-show]: /cli/azure/resource#az-resource-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az_resource_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [azure-files-volume]: azure-files-volume.md
 [operator-best-practices-storage]: operator-best-practices-storage.md

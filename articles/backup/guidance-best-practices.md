@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 0b3f70061be4d158ae717a97779d6ab0445f5858
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 14476533cf896434182e1d63f89c6a1279b36362
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100593341"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519065"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -261,4 +261,4 @@ Azure Backup サービスの機能には、コストを効果的に管理しな�
 Azure Backup を使用するための出発点として、次の記事を読むことをお勧めします。
 
 * [Azure Backup の概要](backup-overview.md)
-* [よく寄せられる質問](backup-azure-backup-faq.md)
+* [よく寄せられる質問](backup-azure-backup-faq.yml)

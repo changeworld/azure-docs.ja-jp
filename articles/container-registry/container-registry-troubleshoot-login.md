@@ -3,12 +3,12 @@ title: レジストリ ログインのトラブルシューティング
 description: Azure Container Registry にログインするときの一般的な問題の現象、原因、対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052080"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780733"
 ---
 # <a name="troubleshoot-registry-login"></a>レジストリ ログインのトラブルシューティング
 
@@ -36,7 +36,7 @@ Azure Container Registry にログインするときに発生する可能性の�
 
 ## <a name="further-diagnosis"></a>詳しい診断 
 
-[az acr check-health](/cli/azure/acr#az-acr-check-health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、Docker 構成エラーや Azure Active Directory ログインの問題を診断します。 
+[az acr check-health](/cli/azure/acr#az_acr_check_health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、Docker 構成エラーや Azure Active Directory ログインの問題を診断します。 
 
 コマンドの例については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
 
@@ -64,7 +64,7 @@ Azure Kubernetes Service でレジストリを使用しているときに問題�
 docker login myregistry.azurecr.io
 ```
 
-[az acr login](/cli/azure/acr#az-acr-login) を Azure Active Directory ID と共に使用する場合は、まず [Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)し、次にレジストリの Azure リソース名を指定します。 リソース名は、*myregistry* (ドメイン サフィックスはなし) のように、レジストリの作成時に指定された名前です。 例:
+[az acr login](/cli/azure/acr#az_acr_login) を Azure Active Directory ID と共に使用する場合は、まず [Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)し、次にレジストリの Azure リソース名を指定します。 リソース名は、*myregistry* (ドメイン サフィックスはなし) のように、レジストリの作成時に指定された名前です。 例:
 
 ```azurecli
 az acr login --name myregistry
@@ -72,7 +72,7 @@ az acr login --name myregistry
 
 関連リンク:
 
-* [az acr ログインは成功するが、Docker が "権限がありません: 認証が必要です" というエラーで失敗する](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required )
+* [az acr ログインは成功するが、Docker が "権限がありません: 認証が必要です" というエラーで失敗する](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 
 ### <a name="confirm-credentials-to-access-registry"></a>レジストリにアクセスするための資格情報を確認する
 
@@ -94,7 +94,7 @@ az acr login --name myregistry
 * [リポジトリスコープのトークンを使用したログイン](container-registry-repository-scoped-permissions.md)
 * [管理者アカウントを使用したログイン](container-registry-authentication.md#admin-account)
 * [Azure AD 認証と承認のエラー コード](../active-directory/develop/reference-aadsts-error-codes.md)
-* [az acr login](/cli/azure/acr#az-acr-login) リファレンス
+* [az acr login](/cli/azure/acr#az_acr_login) リファレンス
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>資格情報がレジストリへのアクセスが許可されていることを確認する
 
@@ -125,7 +125,7 @@ Azure CLI を使用してポータルまたはレジストリ管理でレジス�
 
 関連リンク:
 
-* [サービス プリンシパルの資格情報のリセット](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset)
+* [サービス プリンシパルの資格情報のリセット](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset)
 * [トークンのパスワードを再生成する](container-registry-repository-scoped-permissions.md#regenerate-token-passwords)
 * [Azure AD での個々のログイン](container-registry-authentication.md#individual-login-with-azure-ad)
 

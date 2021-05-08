@@ -4,12 +4,12 @@ description: このクイックスタートでは、Batch .NET クライアン�
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 9087261865b07d32afab65012e04ea478cb60611
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88921649"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168248"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
@@ -108,7 +108,7 @@ stderr:
 
 ### <a name="preliminaries"></a>準備
 
-ストレージ アカウントを操作するために、アプリでは .NET 用 Azure Storage クライアント ライブラリを使用します。 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) を使用してアカウントへの参照を作成し、それを基にして [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) を作成します。
+ストレージ アカウントを操作するために、アプリでは .NET 用 Azure Storage クライアント ライブラリを使用します。 [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) を使用してアカウントへの参照を作成し、それを基にして [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) を作成します。
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

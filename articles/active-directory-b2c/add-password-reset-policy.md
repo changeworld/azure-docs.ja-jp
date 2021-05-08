@@ -8,16 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/22/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fa34e8ea71c307b75a3f345861f8ed99d131b3fd
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447930"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798395"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -34,6 +35,9 @@ ms.locfileid: "102447930"
 ![パスワードのリセット フロー](./media/add-password-reset-policy/password-reset-flow.png)
 
 パスワードのリセット フローは、サインイン用のパスワードが指定されている[電子メール アドレス](identity-provider-local.md#email-sign-in)または[ユーザー名](identity-provider-local.md#username-sign-in)を使用する Azure AD B2C のローカル アカウントに適用されます。
+
+> [!TIP]
+> セルフサービス パスワード リセットのフローを使用すると、ユーザーがパスワードを忘れてしまい、パスワードのリセットを望む場合に、パスワードを変更できます。 ユーザーがパスワードを知っていて、それを変更することを望む場合に対応できるようにするため、[パスワード変更フロー](add-password-change-policy.md)を構成することを検討してください。
 
 ランダムなパスワードを使用してユーザーを Azure AD B2C に移行した後には、一般に、最初のサインイン時にユーザーに電子メール アドレスを確認させ、パスワードをリセットさせることを行います。 管理者がユーザーのパスワードを変更した後に、ユーザーにパスワードのリセットを強制することも一般的です。この機能を有効にするには、[パスワードの強制的なリセット](force-password-reset.md)に関するページを参照してください。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 19c39632a1ed040636372d6bad53bf6859960b94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6aa960eb7aed7a579c3fc95748b6e32601201a61
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732039"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305125"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Windows Azure Diagnostics 拡張機能から Azure Event Hubs にデータを送信する
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Azure の外部の場所にデータを転送できるように、Windows Azure Diagnostic (WAD) 拡張機能から [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にデータを送信する方法について説明します。
@@ -177,7 +177,7 @@ Azure Diagnostics では常に、ログとメトリックが Azure Storage ア�
 
 * [Event Hubs の概要](../../event-hubs/event-hubs-about.md)
 * [イベント ハブの作成](../../event-hubs/event-hubs-create.md)
-* [Event Hubs の FAQ](../../event-hubs/event-hubs-faq.md)
+* [Event Hubs の FAQ](../../event-hubs/event-hubs-faq.yml)
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png

@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:機械学習の使用を開始する - Python
 titleSuffix: Azure Machine Learning
-description: このチュートリアルでは、個人用の開発環境で実行されている Azure Machine Learning SDK for Python の使用を開始する方法について説明します。
+description: 個人用の開発環境で実行されている Azure Machine Learning SDK for Python の使用を開始する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
-ms.custom: devx-track-python
+ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: 5d61f330c823aff755a25e637bb58c132aa58100
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 69340245cdebda570b526afd4f11ac8314384b43
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369133"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210620"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>チュートリアル:個人の開発環境で Azure Machine Learning の使用を開始する (パート 1/4)
 
@@ -30,16 +30,18 @@ ms.locfileid: "100369133"
 > * コードのディレクトリ構造を設定します。
 > * Azure Machine Learning ワークスペースを作成します。
 > * ローカルの開発環境を構成します。
-> * コンピューティング クラスターを設定します。
+> * モデルをトレーニングするためのクラウドベースのリソースであるコンピューティング クラスターをセットアップします。
 
-> [!NOTE]
-> このチュートリアル シリーズでは、**バッチ ジョブ** を送信するうえで必要な Azure Machine Learning の概念を重点的に取り上げます。バッチ ジョブでは、コードがクラウドに送信されてユーザーの対話式操作を介さずにバックグラウンドで実行されます。 これは、繰り返し実行したい完成したスクリプトやコードのほか、多くのコンピューティング処理を要する機械学習タスクに役立ちます。 探索的ワークフローに関心がある場合は、代わりに [Azure Machine Learning コンピューティング インスタンスで Jupyter または RStudio](tutorial-1st-experiment-sdk-setup.md) を使用することができます。
+このチュートリアル シリーズでは、**バッチ ジョブ** を送信するうえで必要な Azure Machine Learning の概念を重点的に取り上げます。バッチ ジョブでは、コードがクラウドに送信されてユーザーの対話式操作を介さずにバックグラウンドで実行されます。 これは、繰り返し実行したい完成したスクリプトやコードのほか、多くのコンピューティング処理を要する機械学習タスクに役立ちます。
+
+Azure Machine Learning の始め方としては、Jupyter ノートブックの使用もお勧めです。  「[チュートリアル: Jupyter Notebook で Azure Machine Learning の作業を開始する](tutorial-1st-experiment-sdk-setup.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [Azure Machine Learning](https://aka.ms/AMLFree) をお試しいただけます。
 - Python の仮想環境を管理してパッケージをインストールするための [Anaconda](https://www.anaconda.com/download/) または [Miniconda](https://www.anaconda.com/download/)。  
 - Conda を使い慣れていない場合は、「[Conda の使用を開始する](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html)」をご覧ください。
+- Python スクリプトを作成するための任意の IDE またはテキスト エディター。
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK をインストールする
 

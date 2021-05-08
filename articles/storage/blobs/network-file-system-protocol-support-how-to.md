@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8ed63a508447104f9073c986debfae73ba7de89f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102428645"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490456"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
@@ -82,7 +82,7 @@ NFS 3.0 を使用してコンテナーをマウントするには、その機能
 
 |設定 | Premium パフォーマンス | Standard パフォーマンス  
 |----|---|---|
-|場所|利用可能なすべてのリージョン |次のいずれかのリージョン:オーストラリア東部、韓国中部、米国中南部   
+|場所|利用可能なすべてのリージョン |次のいずれかのリージョン: オーストラリア東部、韓国中部、米国東部、米国中南部   
 |パフォーマンス|Premium| Standard
 |アカウントの種類|BlockBlobStorage| 汎用 v2
 |レプリケーション|ローカル冗長ストレージ (LRS)| ローカル冗長ストレージ (LRS)

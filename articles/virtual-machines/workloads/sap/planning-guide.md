@@ -8,15 +8,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 8bc289e90470ae9bc8b1996ac08c3144ea78de35
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102504714"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258794"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -588,7 +588,11 @@ Azure Virtual Network 内の VM には、固定または予約済み IP アド�
 > [!NOTE]
 > Azure を使用して個々の vNIC に静的 IP アドレスを割り当てる必要があります。 ゲスト OS 内の静的 IP アドレスを vNIC に割り当てないでください。 Azure Backup Service のような一部の Azure サービスは、少なくともプライマリ vNIC が、静的 IP アドレスではなく、DHCP に設定されていることに依存します。 「[Azure 仮想マシンのバックアップのトラブルシューティング](../../../backup/backup-azure-vms-troubleshoot.md#networking)」というドキュメントも参照してください。
 >
->
+
+
+##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP ホスト名仮想化のセカンダリ IP アドレス
+各 Azure 仮想マシンのネットワーク インターフェイス カードには複数の IP アドレスを割り当てることができます。このセカンダリ IP は、必要に応じて DNS A または PTR レコードにマップされる SAP 仮想ホスト名に使用できます。 セカンダリ IP アドレスは、[こちらの記事](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)に従って Azure vNIC IP 構成に割り当てる必要があります。また、セカンダリ IP が DHCP 経由で割り当てられないように、OS 内で構成する必要があります。 各セカンダリ IP は、vNIC のバインド先と同じサブネットからのものである必要があります。 Pacemaker クラスターなどのセカンダリ IP 構成では Azure Load Balancer のフローティング IP の使用は[サポートされていません]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations)。この場合、Load Balancer の IP によって SAP 仮想ホスト名が有効になります。 仮想ホスト名の使用についての一般的なガイダンスについては、SAP ノート [#962955](https://launchpad.support.sap.com/#/notes/962955) も参照してください。
+
 
 ##### <a name="multiple-nics-per-vm"></a>VM あたり複数の NIC
 
@@ -1657,7 +1661,7 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 ##### <a name="configuring-the-transport-domain"></a>移送ドメインの構成
 
-「 [Configuring the Transport Domain Controller (移送ドメイン コントローラー)](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm)」の説明に従って、移送ドメイン コントローラーとして指定したシステムに移送ドメインを構成します。 システム ユーザー TMSADM が作成され、必要な RFC 宛先が生成されます。 トランザクション SM59 を使用してこれらの RFC 接続を確認できます。 ホスト名の解決が、移送ドメイン全体で有効になっている必要があります。
+「 [Configuring the Transport Domain Controller (移送ドメイン コントローラー)](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Configuring%20the%20Transport%20Domain%20Controller)」の説明に従って、移送ドメイン コントローラーとして指定したシステムに移送ドメインを構成します。 システム ユーザー TMSADM が作成され、必要な RFC 宛先が生成されます。 トランザクション SM59 を使用してこれらの RFC 接続を確認できます。 ホスト名の解決が、移送ドメイン全体で有効になっている必要があります。
 
 方法:
 
@@ -1670,12 +1674,12 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 移送ドメインに SAP システムを含めるシーケンスは次のようになります。
 
-* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。 ダイアログ ボックスから [Other Configuration]\(その他の構成) を選択し、[Include System in Domain]\(ドメインにシステムを含める) で続行します。 ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](https://help.sap.com/erp2005_ehp_04/helpdata/en/44/b4a0c17acc11d1899e0000e829fbbd/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」)。 移送ドメインに含められるのをシステムが待機します。
+* Azure の DEV システムで移送システム (Client 000) に移動し、トランザクション STMS を呼び出します。 ダイアログ ボックスから [Other Configuration]\(その他の構成) を選択し、[Include System in Domain]\(ドメインにシステムを含める) で続行します。 ターゲット ホストとしてドメイン コントローラーを指定します (「[移送ドメインに SAP システムを含める](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0c17acc11d1899e0000e829fbbd.html?q=Including%20SAP%20Systems%20in%20the%20Transport%20Domain)」)。 移送ドメインに含められるのをシステムが待機します。
 * 次に、セキュリティ上の理由から、ドメイン コントローラーに戻って要求を確認する必要があります。 待機中のシステムの [System Overview]\(システムの概要) と [Approve]\(承認) を選択します。 次に、プロンプトを確認すると、構成が配布されます。
 
 これで、SAP システムに、移送ドメイン内の他のすべての SAP システムに関する必要な情報が含まれました。 同時に、新しい SAP システムのアドレス データが他のすべての SAP システムに送信され、SAP システムが、移送コントロール プログラムの移送プロファイルに入力されました。 RFC と、ドメインの移送ディレクトリへのアクセスが起動するかどうかを確認します。
 
-通常どおり、「 [Change and Transport System](https://help.sap.com/saphelp_nw70ehp3/helpdata/en/48/c4300fca5d581ce10000000a42189c/content.htm?frameset=/en/44/b4a0b47acc11d1899e0000e829fbbd/frameset.htm)」のドキュメントの説明に従って、移送システムの構成を続行します。
+通常どおり、「 [Change and Transport System](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/3bdfba3692dc635ce10000009b38f839.html)」のドキュメントの説明に従って、移送システムの構成を続行します。
 
 方法:
 
@@ -1687,13 +1691,13 @@ SAP Change and Transport System (TMS) は、ランドスケープでシステム
 
 サイト間接続のクロスプレミス シナリオでは、オンプレミスと Azure 間で引き続き相当な遅延が発生する場合があります。 開発およびテスト システムから運用システムにオブジェクトを移送するシーケンスに従った場合、または移送およびサポート パッケージをさまざまなシステムに適用することを検討している場合は、お気付きのとおり、セントラル移送ディレクトリの場所によっては、一部のシステムでセントラル移送ディレクトリ内のデータの読み取りまたは書き込みに大きな遅延が発生します。 この状況は SAP ランドスケープ構成と同様で、ここでは、さまざまなシステムが互いに距離が非常に離れたさまざまなデータ センターを通じて分散されます。
 
-こうした遅延を解消し、移送ディレクトリに対する読み取りまたは書き込みでシステムを遅延なく動作させるには、2 つの STMS 移送ドメイン (オンプレミス用と Azure のシステム用) をセットアップして、移送ドメインをリンクできます。 SAP TMS のこの概念の背景にある原理を説明した、こちらのドキュメント (<https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm>) を確認してください。
+こうした遅延を解消し、移送ディレクトリに対する読み取りまたは書き込みでシステムを遅延なく動作させるには、2 つの STMS 移送ドメイン (オンプレミス用と Azure のシステム用) をセットアップして、移送ドメインをリンクできます。 SAP TMS のこの概念の背景にある原理を説明した、こちらの[ドキュメント](https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm) を確認してください。
+
 
 方法:
 
-* それぞれの場所 (オンプレミスと Azure) でトランザクション STMS を使ってトランスポート ドメインを設定する - <https://help.sap.com/saphelp_nw70ehp3/helpdata/en/44/b4a0b47acc11d1899e0000e829fbbd/content.htm>
-* ドメイン リンクを使ってドメインをリンクし、2 つのドメイン間のリンクを確認します。
-  <https://help.sap.com/saphelp_nw73ehp1/helpdata/en/a3/139838280c4f18e10000009b38f8cf/content.htm>
+* それぞれの場所 (オンプレミスと Azure) でトランザクション STMS を使って[トランスポート ドメインを設定する](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain)
+* [ドメイン リンクを使ってドメインをリンク](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/14c795388d62e450e10000009b38f889.html?q=Link%20the%20domains%20with%20a%20domain%20link)し、2 つのドメイン間のリンクを確認します。
 * リンクされたシステムに構成を配布します。
 
 #### <a name="rfc-traffic-between-sap-instances-located-in-azure-and-on-premises-cross-premises"></a>Azure とオンプレミスに配置された SAP インスタンス間の RFC トラフィック (クロスプレミス)

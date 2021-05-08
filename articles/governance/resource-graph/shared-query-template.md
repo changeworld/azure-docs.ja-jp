@@ -3,13 +3,15 @@ title: クイック スタート:テンプレートを使用して共有クエ�
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、OS 別に仮想マシンをカウントする Resource Graph 共有クエリを作成します。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.openlocfilehash: 8d631ffcb14af93f10e578097470efc6156287d5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: ac736d4371531bb38a8cd2cf095acbdfbc7c08a1
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594318"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535785"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して共有クエリを作成する
 

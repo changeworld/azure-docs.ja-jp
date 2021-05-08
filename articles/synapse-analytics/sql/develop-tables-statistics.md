@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 218803d0b7e1f5add2f033a7ce01e0a8f6ffc956
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104594786"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 
@@ -90,9 +90,9 @@ table_name は、表示する統計が格納されているテーブルの名前
 
 ただし、データ ウェアハウスに 1 つの国または地域しか含まれておらず、新しい国または地域のデータを取り込む場合は、国または地域列の統計を更新する必要があります。
 
-統計更新のレコメンデーションは次の通りです｡
+統計更新のレコメンデーションは次のとおりです｡
 
-|||
+|Type|推奨|
 |-|-|
 | **統計の更新の頻度**  | 控えめ: 毎日 </br> データを読み込むか変換した後 |
 | **サンプリング** |  行数が 10 億未満の場合は、既定のサンプリング (20%) が使用されます。 </br> 10 億行を超えると、2% のサンプリングが使用されます。 |
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>次のステップ
 
-専用 SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[ワークロードの監視](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)と[専用 SQL プールのベスト プラクティス](best-practices-sql-pool.md#maintain-statistics)に関するページを参照してください。
+専用 SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[ワークロードの監視](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)と[専用 SQL プールのベスト プラクティス](best-practices-dedicated-sql-pool.md#maintain-statistics)に関するページを参照してください。
 
-サーバーレス SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[サーバーレス SQL プールのベスト プラクティス](best-practices-sql-on-demand.md)に関するページを参照してください。
+サーバーレス SQL プールのクエリのパフォーマンスをさらに向上させる方法については、[サーバーレス SQL プールのベスト プラクティス](best-practices-serverless-sql-pool.md)に関するページを参照してください。

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802915"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
@@ -132,7 +132,7 @@ AutoML でクロス検証を適用して[モデルのオーバーフィットを
 ----|----|---
 Prophet (プレビュー)|Prophet は、強い季節的影響や複数の季節の履歴データを持つ時系列に最適です。 このモデルを利用するには、`pip install fbprophet` を使用してローカルにインストールします。 | 正確かつ高速で、時系列における外れ値、不足データ、および大幅な変化に対して有効です。
 自動 ARIMA (プレビュー)|自己回帰和分移動平均 (ARIMA) は、データが静的な場合に最適です。 これは、平均や分散などの統計的特性がセット全体で一定であることを意味します。 たとえば、コインを投げた場合、今日、明日、来年のいつ投げても、表が出る確率は 50% です。| 過去の値は将来の値を予測するために使用されるため、単変量系列に最適です。
-ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測タスクに対応するように設計されたニューラル ネットワーク モデルであり、データ内の非線形のローカル傾向とグローバル傾向と、時系列間の関係がキャプチャされます。|データの複雑な傾向を活用し、最大のデータセットに合わせて簡単にスケーリングできます。
+ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測タスクに対応するように設計されたニューラル ネットワーク モデルです。 データ内の非線形のローカルおよびグローバル傾向と、時系列間の関係がキャプチャされます。|データの複雑な傾向を活用し、最大のデータセットに合わせて簡単にスケーリングできます。
 
 ### <a name="configuration-settings"></a>構成設定
 
@@ -146,11 +146,12 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 |`forecast_horizon`|予測する今後の期間の数を定義します。 horizon とは、時系列頻度の単位です。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
 |`enable_dnn`|[予測 DNN を有効にします]()。||
 |`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。||
-|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。||
+|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。 [頻度] について詳しくご覧ください。(#frequency--target-data-aggregation)||
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 ||
 |`feature_lags`| `target_lags` が設定され、`feature_lags` が `auto` に設定されている場合、遅延する機能が自動 ML によって自動的に決定されます。 機能のタイム ラグを有効にすると、精度の向上に役立つ場合があります。 既定では、機能のタイム ラグは無効になっています。 ||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
-|`short_series_handling_config`| 短い時系列処理を有効にして、データの不足によるエラーがトレーニング中に発生しないようにします。 短い時系列処理は、既定で `auto` に設定されています。 [短い系列の処理](#short-series-handling)に関する詳細を確認してください。|
+|`short_series_handling_config`| 短い時系列処理を有効にして、データの不足によるエラーがトレーニング中に発生しないようにします。 短い時系列処理は、既定で `auto` に設定されています。 [短い系列の処理](#short-series-handling)に関する詳細を確認してください。||
+|`target_aggregation_function`| `freq` パラメーターによって指定された頻度に一致するように時系列のターゲット列を集計するために使用される関数。 `target_aggregation_function` を使用するには、`freq` パラメーターを設定する必要があります。 既定値は `None` です。ほとんどのシナリオでは、`sum` の使用で十分です。<br> [ターゲット列の集計](#frequency--target-data-aggregation)について詳しくご覧ください。 
 
 
 次のコードによって、以下の処理が実行されます。 
@@ -258,12 +259,36 @@ Azure Machine Learning Studio を実験に使用している場合は、[Studio 
 
 ディープ ラーニングの有効化やターゲットのローリング ウィンドウ集計の指定など、予測タスクに対して追加のオプションの構成を使用できます。 
 
+### <a name="frequency--target-data-aggregation"></a>頻度とターゲット データの集計
+
+頻度の `freq` パラメーターを活用すると、不規則なデータ、つまり時間単位または日単位のデータなど、設定された周期に従っていないデータによって引き起こされる障害を回避するのに役立ちます。 
+
+非常に不規則なデータやさまざまなビジネス ニーズに対しては、ユーザーは必要に応じて目的の予測頻度 `freq` を設定し、`target_aggregation_function` を指定して時系列のターゲット列を集計することができます。 `AutoMLConfig` オブジェクトでこれらの 2 つの設定を活用すると、データの準備にかかる時間を節約するのに役立ちます。 
+
+`target_aggregation_function` パラメーターを使用すると、次のようになります。
+* ターゲット列の値が、指定された操作に基づいて集計されます。 通常、ほとんどのシナリオでは `sum` が適しています。
+
+* データ内の数値予測列は、合計、平均、最小値、最大値で集計されます。 その結果、自動 ML では、末尾に集計関数名が付いた新しい列が生成され、選択した集計操作が適用されます。 
+
+* カテゴリ予測列の場合、データは、ウィンドウ内で最も目立つカテゴリであるモードで集計されます。
+
+* 日付予測列は、最小値、最大値、モードで集計されます。 
+
+ターゲット列の値に対してサポートされている集計操作は次のとおりです。
+
+|機能 | description
+|---|---
+|`sum`| ターゲット値の合計
+|`mean`| ターゲット値の中間または平均
+|`min`| ターゲットの最小値  
+|`max`| ターゲットの最大値  
+
 ### <a name="enable-deep-learning"></a>ディープ ラーニングを有効にする
 
 > [!NOTE]
 > 自動機械学習での予測における DNN サポートは **プレビュー** 段階です。また、ローカルの実行はサポートされていません。
 
-深層ニューラル ネットワーク (DNN) を使用してディープ ラーニングを活用し、モデルのスコアを向上させることもできます。 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
+深層ニューラル ネットワーク (DNN) を使用したディープ ラーニングを利用し、モデルのスコアを向上させることもできます。 自動 ML のディープ ラーニングを使用すると、一変量および多変量の時系列データを予測できます。
 
 ディープ ラーニング モデルには、3 つの組み込み機能があります。
 1. 入力から出力への任意のマッピングから学習できる
@@ -283,10 +308,10 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Azure Machine Learning Studio で作成された AutoML 実験用の DNN を有効にするには、[Studio 入門にあるタスクの種類の設定に関するページ](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)を参照してください。
 
-DNN を利用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) をご参照ください。
+DNN を使用した詳細なコード例については、[飲料生産予測 ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)をご参照ください。
 
 ### <a name="target-rolling-window-aggregation"></a>ターゲットのローリング ウィンドウ集計
-多くの場合、予測器が持つことができる最高の情報はターゲットの最近の値です。  ターゲットのローリング ウィンドウ集計を使用すると、データ値のローリング集計を特徴として追加できます。 これらの追加の特徴を追加のコンテキスト データとして生成および使用すると、トレーニング モデルの精度が向上します。
+多くの場合、予測器が持つことができる最高の情報はターゲットの最近の値です。  ターゲットのローリング ウィンドウ集計を使用すると、データ値のローリング集計を特徴として追加できます。 これらの特徴を追加のコンテキスト データとして生成および使用すると、トレーニング モデルの精度が向上します。
 
 たとえば、エネルギー需要を予測するとします。 3 日間のローリング ウィンドウの特徴を追加して、暖房が入っている空間の熱変化を考慮することもできます。 この例では、`AutoMLConfig` コンストラクターで `target_rolling_window_size= 3` を設定して、このウィンドウを作成します。 
 
@@ -349,7 +374,7 @@ best_run, fitted_model = local_run.get_output()
 ```python
 label_query = test_labels.copy().astype(np.float)
 label_query.fill(np.nan)
-label_fcst, data_trans = fitted_pipeline.forecast(
+label_fcst, data_trans = fitted_model.forecast(
     test_data, label_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
@@ -373,7 +398,7 @@ day_datetime,store,week_of_year
 01/01/2019,A,1
 ```
 
-必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.predict(test_data)` を実行して将来の値を予測します。
+必要な手順を繰り返して、この将来のデータをデータフレームに読み込んで、`best_run.forecast(test_data)` を実行して将来の値を予測します。
 
 > [!NOTE]
 > `target_lags` や `target_rolling_window_size` が有効になっている場合、サンプル内の予測は、自動 ML を使用した予測ではサポートされません。

@@ -4,12 +4,12 @@ description: この記事では、Azure Service Bus メッセージの配信を�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e3a940f8aa9e72d9b09e9c0a3305521c6f17dfb0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 997aab36652b08864892f1171e2b8588ec5f06b4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98622047"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306111"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 
@@ -22,7 +22,7 @@ ms.locfileid: "98622047"
 つまり遅延は、処理の延期が必要なメッセージをメッセージ ストアに確実に保持しながら、到着した順序から処理できる順序に並べ直すのに役立ちます。
 
 > [!NOTE]
-> 遅延メッセージは、[有効期限が切れた後](./service-bus-dead-letter-queues.md#exceeding-timetolive)に、配信不能キューに自動的に移動されません。 この動作は仕様によるものです。
+> 遅延メッセージは、[有効期限が切れた後](./service-bus-dead-letter-queues.md#time-to-live)に、配信不能キューに自動的に移動されません。 この動作は仕様によるものです。
 
 ## <a name="message-deferral-apis"></a>メッセージ遅延 API
 

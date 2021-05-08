@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582070"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581184"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
 
@@ -32,27 +32,33 @@ ms.locfileid: "104582070"
 トラステッド起動を有効にして仮想マシンを作成します。
 
 1. Azure [Portal](https://aka.ms/TL_preview) にサインインします。
-1. 「**仮想マシン**」を検索します。
-1. **[サービス]** で、 **[仮想マシン]** を選択します。
-1. **[仮想マシン]** ページで、 **[追加]** を選択してから、 **[仮想マシン]** を選択します。
-1. **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
-1. **[リソース グループ]** で **[新規作成]** を選択し、リソース グループの名前を入力するか、ドロップダウンから既存のリソース グループを選択します。
-1. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、[トラステッド起動](trusted-launch.md#public-preview-limitations)がサポートされているリージョンを選択します。
-1. **[イメージ]** で、[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 イメージの第 1 世代のバージョンしか表示されない場合がありますが、それでもかまわないので、次のステップに進みます。
+   > [!NOTE] 
+   > ポータルのリンクは、トラステッド起動プレビューに固有のものです。
+   >  
+2. 「**仮想マシン**」を検索します。
+3. **[サービス]** で、 **[仮想マシン]** を選択します。
+4. **[仮想マシン]** ページで、 **[追加]** を選択してから、 **[仮想マシン]** を選択します。
+5. **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
+6. **[リソース グループ]** で **[新規作成]** を選択し、リソース グループの名前を入力するか、ドロップダウンから既存のリソース グループを選択します。
+7. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、[トラステッド起動](trusted-launch.md#public-preview-limitations)がサポートされているリージョンを選択します。
+8. **[イメージ]** で、Gen 2 の[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 
+   > [!TIP]
+   > ドロップダウンに目的の Gen 2 バージョンのイメージが表示されない場合は、 **[すべてのイメージを表示]** を選択し、 **[VM 生成]** フィルターを変更して Gen 2 のイメージのみを表示するようにします。 一覧でイメージを見つけて、 **[選択]** ドロップダウンを使用して Gen 2 バージョンを選択します。
+ 
 1. ページの上部にある **[詳細設定]** タブを選択してそれに切り替えます。
-1. **[VM の生成]** セクションまで下にスクロールし、 **[Gen 2]** を選択します。
+1. **[VM の生成]** セクションまで下にスクロールします。 **[Gen 2]** が選択されていることを確認します。
 1. 引き続き **[詳細設定]** タブで、 **[Trusted launch]\(トラステッド起動\)** まで下にスクロールして、 **[Trusted launch]\(トラステッド起動\)** チェック ボックスをオンにします。 これにより、さらに [Secure boot]\(セキュア ブート\) と [vTPM] の 2 つのオプションが表示されるようになります。 自分のデプロイに合った適切なオプションを選択します。
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="トラステッド起動のオプションを示すスクリーンショット。":::
 
-1. **[基本]** タブに戻り、 **[イメージ]** の下に次のメッセージが表示されていることを確認します: "**This image supports trusted launch preview. (このイメージは、トラステッド起動のプレビューをサポートしています。) Configure in the Advanced tab ([詳細設定] タブで構成します)** "。これで、第 2 世代のイメージが選択されるはずです。
+12. **[基本]** タブに戻り、 **[イメージ]** の下に次のメッセージが表示されていることを確認します: "**This image supports trusted launch preview. (このイメージは、トラステッド起動のプレビューをサポートしています。) Configure in the Advanced tab ([詳細設定] タブで構成します)** "。これで、第 2 世代のイメージが選択されるはずです。
 
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="これがトラステッド起動をサポートする第 2 世代イメージであることを確認するメッセージを示すスクリーンショット。":::
 
-1.  トラステッド起動がサポートされている VM サイズを選択します。 [サポートされているサイズ](trusted-launch.md#public-preview-limitations)の一覧を参照してください。
-1.  **[管理者アカウント]** の情報を入力した後、 **[受信ポートの規則]** を指定します。
-1.  ページの下部にある **[確認および作成]** を選択します
-1.  **[仮想マシンの作成]** ページで、デプロイしようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
+13. トラステッド起動がサポートされている VM サイズを選択します。 [サポートされているサイズ](trusted-launch.md#public-preview-limitations)の一覧を参照してください。
+14. **[管理者アカウント]** の情報を入力した後、 **[受信ポートの規則]** を指定します。
+15. ページの下部にある **[確認および作成]** を選択します
+16. **[仮想マシンの作成]** ページで、デプロイしようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
 
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="トラステッド起動のオプションが含まれる検証ページのスクリーンショット。":::
 
@@ -64,10 +70,10 @@ VM がデプロイされるまでに数分かかります。
 クイックスタート テンプレートを使用して、トラステッド起動 VM をデプロイできます。
 
 **Linux**:    
-[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
 **Windows**:    
-[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fprash200%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+[![Azure へのデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>表示および更新する
 

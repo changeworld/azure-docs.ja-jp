@@ -1,7 +1,7 @@
 ---
 title: 共有デバイス モードの概要
 titleSuffix: Microsoft identity platform | Azure
-description: 現場担当者のためにデバイスの共有を有効にするための共有デバイス モードについて説明します。
+description: 現場担当者向けにデバイスの共有を有効にできる共有デバイス モードについて説明します。
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562085"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612400"
 ---
 # <a name="overview-of-shared-device-mode"></a>共有デバイス モードの概要
 
-共有デバイス モードは Azure Active Directory の機能であり、この機能を使用すると、現場担当者をサポートするアプリケーションを作成し、それらに展開されるデバイスで共有デバイス モードを有効にすることができます。
+共有デバイス モードは、Azure Active Directory の機能です。この機能を使用すると、現場担当者をサポートするアプリケーションを構築して、彼らに展開されるデバイスで共有デバイス モードを有効にすることができます。
 
 >[!IMPORTANT]
-> この機能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+> iOS デバイスの共有デバイス モード[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="what-are-firstline-workers"></a>現場担当者とは
+## <a name="what-are-frontline-workers"></a>現場担当者とは。
 
-現場担当者とは、小売従業員、メンテナンスおよびフィールド エージェント、医療担当者、およびコンピューターを使用していないユーザーや共同作業に会社の電子メールを使用していないユーザーです。 以下のセクションでは、現場担当者のサポートに関する側面と課題について説明した後、組織の現場担当者がアプリケーションを使用できるようにする Microsoft の機能の概要を紹介します。
+現場担当者とは、小売業の従業員、メンテナンス業者、保険募集人、医療従事者など、コンピューターを使用しないユーザーや、共同作業をするために会社の電子メールを使用しないユーザーのことです。 次のセクションでは、現場担当者のサポートに関する側面と課題について説明した後、組織の現場担当者によるアプリケーションの使用を可能にする Microsoft の機能について紹介します。
 
-### <a name="challenges-of-supporting-firstline-workers"></a>現場担当者のサポートに関する課題
+### <a name="challenges-of-supporting-frontline-workers"></a>現場担当者のサポートに関する課題
 
-現場担当者のワークフローを有効にする場合、一般的なインフォメーション ワーカーでは通常発生しない課題が含まれます。 そのような課題には、高い離職率や、組織の主要な生産性向上ツールに関する習熟度の低さが含まれることがあります。 現場担当者を強化するため、組織ではさまざまな戦略が採用されています。 たとえば、従業員が個人の電話でビジネス アプリを使用する個人所有機器の持ち込み (BYOD) 戦略を採用する企業や、iPad や Android タブレットなどの共有デバイスを従業員に提供する企業があります。
+現場担当者のワークフローを有効にすると、一般的なインフォメーション ワーカーには通常発生しない課題が生じます。 そのような課題には、高い離職率や、組織の主要な生産性向上ツールに関する習熟度の低さが含まれることがあります。 現場担当者の力を高めるために、組織ではさまざまな戦略が採用されています。 たとえば、従業員が個人の電話でビジネス アプリを使用する個人所有機器の持ち込み (BYOD) 戦略を採用する企業や、iPad や Android タブレットなどの共有デバイスを従業員に提供する企業があります。
 
 ### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>1 人のユーザー向けに設計されたデバイスでの複数ユーザーのサポート
 
@@ -50,9 +50,9 @@ Azure Active Directory では、**共有デバイス モード** と呼ばれる
 前に説明したように、共有デバイス モードは、次のことを可能にする Azure Active Directory の機能です。
 
 * 現場担当者をサポートするアプリケーションを構築する
-* デバイスを現場担当者に展開して共有デバイス モードを有効にする
+* 現場担当者にデバイスを展開し、共有デバイス モードを有効にする
 
-### <a name="build-applications-that-support-firstline-workers"></a>現場担当者をサポートするアプリケーションを構築する
+### <a name="build-applications-that-support-frontline-workers"></a>現場担当者をサポートするアプリケーションを構築する
 
 Microsoft 認証ライブラリ (MSAL) と [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を使用して、"*共有デバイス モード*" と呼ばれるデバイスの状態を有効にすることにより、アプリケーションで現場担当者をサポートすることができます。 デバイスが共有デバイス モードになると、デバイスでのユーザーの状態に基づいてデバイスの動作を変更し、ユーザーのデータを保護できるようにするための情報が、Microsoft によってアプリケーションに提供されます。
 
@@ -69,9 +69,9 @@ Microsoft 認証ライブラリ (MSAL) と [Microsoft Authenticator アプリ](.
 
 共有デバイス モードをサポートするようにアプリケーションを変更する方法の詳細については、この記事の最後にある「[うｔぎのステップ](#next-steps)」セクションを参照してください。
 
-### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>デバイスを現場担当者に展開して共有デバイス モードを有効にする
+### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>現場担当者にデバイスを展開し、共有デバイス モードを有効にする
 
-アプリケーションで共有デバイス モードがサポートされるようになり、必要なデータとセキュリティの変更が組み込まれたら、そのアプリケーションを現場担当者が使用できることを通知できます。
+アプリケーションで共有デバイス モードがサポートされるようになり、必要なデータとセキュリティの変更が組み込まれたら、そのアプリケーションを現場担当者が使用できるようになったことを通知できます。
 
 組織のデバイス管理者は、Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションを使用して、デバイスとアプリケーションを店舗や職場に展開することができます。 プロビジョニング プロセスの一部として、デバイスを "*共有デバイス*" としてマークします。 管理者は、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を展開し、構成パラメーターを使用して共有デバイス モードを設定することにより、共有デバイス モードを構成します。 これらの手順を実行すると、共有デバイス モードをサポートするすべてのアプリケーションでは、Microsoft Authenticator アプリケーションを使用して、ユーザーの状態が管理され、デバイスと組織にセキュリティ機能が提供されるようになります。
 

@@ -21,7 +21,7 @@ Media Services リソースと Media Services API へのアクセスが承認さ
 * **サービス プリンシパル認証**: サービスの認証に使用されます (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス)。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリの場合、サービス プリンシパルで Media Services に接続する中間層が常にあるはずです。
 * **ユーザー認証**: Media Services リソースを操作するアプリを使用しているユーザーを認証するために使用されます。 対話型アプリでは、最初に、ユーザーにユーザー資格情報の入力を求める必要があります。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。
 
-Media Services API では、REST API 要求を行うユーザーまたはアプリは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者** または **所有者** のロールを使用することが必要です。 **閲覧者** ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List** だけです。詳細については、「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
+Media Services API では、REST API 要求を行うユーザーまたはアプリは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者** または **所有者** のロールを使用することが必要です。 **閲覧者** ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List** だけです。詳細については、「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](security-rbac-concept.md)」を参照してください。
 
 サービス プリンシパルを作成する代わりに、Azure リソースに対するマネージド ID を使い、Azure Resource Manager で Media Services API にアクセスすることを検討してください。 Azure リソースに対するマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
@@ -52,7 +52,7 @@ Azure AD アプリを作成するためのアクセス許可を自分が持っ�
 
 Azure AD サービス プリンシパルを使った接続方法を示す次のサンプルを参照してください。
 
-* [REST を使用して接続する](media-rest-apis-with-postman.md)  
+* [REST を使用して接続する](setup-postman-rest-how-to.md)  
 * [Java を使用して接続する](configure-connect-java-howto.md)
 * [.NET を使用して接続する](configure-connect-dotnet-howto.md)
 * [Node.js を使用して接続する](configure-connect-nodejs-howto.md)
@@ -128,7 +128,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
 
-[Azure Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
+[Azure Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)に関するページを参照してください。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

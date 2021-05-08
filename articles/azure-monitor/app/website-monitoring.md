@@ -2,14 +2,14 @@
 title: クイック スタート:Azure Monitor Application Insights を使用して Web サイトを監視する
 description: このクイックスタートでは、Azure Monitor Application Insights を使用したクライアント (ブラウザー) 側の Web サイト監視を設定する方法について説明します。
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488581"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654938"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>クイック スタート:Azure Monitor Application Insights を使って Web サイトの監視を開始する
 
@@ -60,9 +60,9 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 ## <a name="configure-application-insights-sdk"></a>Application Insights SDK を構成する
 
-1. **[概要]**  >  **[基本]** の順に選択し、ご自分のアプリケーションの **インストルメンテーション キー** をコピーします。
+1. **[概要]** を選択し、アプリケーションの **接続文字列** をコピーします。 この例では、接続文字列のインストルメンテーション キー部分 `InstrumentationKey=00000000-0000-0000-0000-000000000000;` のみが必要です。
 
-   ![新しい Application Insights リソースのフォーム](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="インストルメンテーション キーと接続文字列が含まれた [概要] ページのスクリーンショット。":::
 
 1. ``hello_world.html`` ファイルの閉じる ``</head>`` タグの前に、次のスクリプトを追加します。
 
@@ -76,7 +76,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
     > [!NOTE]
     > 現在のスニペット (上に示されています) はバージョン "5" で、バージョンは sv:"#" としてスニペット内でエンコードされています。[現在のバージョンと構成の詳細は、GitHub で入手できます](https://go.microsoft.com/fwlink/?linkid=2156318)。
-   
+
 1. ``hello_world.html`` を編集し、インストルメンテーション キーを追加します。
 
 1. ローカル ブラウザー セッションで、``hello_world.html`` を開きます。 この操作によって、単一のページ ビューが作成されます。 ブラウザーを最新の情報に更新して、複数のテスト ページ ビューを生成することができます。
@@ -95,7 +95,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
    概要ページの 4 つの既定のグラフでは、サーバー側のアプリケーション データが対象になっています。 ここではクライアント (ブラウザー) 側の JavaScript SDK との対話をインストルメント化しているため、この特定のビューは、サーバー側の SDK もインストールされない限り、適用されません。
 
-1. **[Analytics]** ![アプリケーション マップ アイコン](media/website-monitoring/006.png) を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Analytics** が開きます。 クライアント側のブラウザー要求に関連しているデータを表示するには、次のクエリを実行します。
+1. **[ログ]** を選択します。  この操作により、Application Insights で収集されたすべてのデータを分析するための豊かなクエリ言語を備えた **ログ** が開きます。 クライアント側のブラウザー要求に関連しているデータを表示するには、次のクエリを実行します。
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
     | render timechart
     ```
 
-   ![一定の期間にわたるユーザー要求に関する Analytics グラフ](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="一定期間にわたるユーザー要求に関する Log Analytics グラフのスクリーンショット。":::
 
-1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[ブラウザー]** を選択し、 **[パフォーマンス]** を選択します。  Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](./transaction-diagnostics.md)にアクセスできます。
+1. **[概要]** ページに戻ります。 **[調査]** ヘッダーで、 **[パフォーマンス]** を選択し、次に **[ブラウザー]** タブを選択します。Web サイトのパフォーマンスに関するメトリックが表示されます。 Web サイトのエラーと例外を分析するための対応するビューがあります。 **[サンプル]** を選択して、[エンドツーエンドのトランザクションの詳細](./transaction-diagnostics.md)にアクセスできます。
 
-   ![サーバー メトリックのグラフ](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="ブラウザー メトリック グラフが含まれた [パフォーマンス] タブのスクリーンショット。":::
 
-1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]**](./usage-segmentation.md) を選択し、[ユーザー動作分析ツール](./usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。 ライブの Web サイトの場合、ユーザーの分布はこのようになります。
-
-     ![ユーザーのグラフ](./media/website-monitoring/usage-users.png)
+1. Application Insights のメイン メニューの **[使用状況]** ヘッダーにある [ **[ユーザー]**](./usage-segmentation.md) を選択し、[ユーザー動作分析ツール](./usage-overview.md)の調査を開始します。 1 台のマシンからテストを行っているため、1 人のユーザーのデータのみが表示されます。
 
 1. 複数のページがある、より複雑な Web サイトでは、[**User Flows**](./usage-flows.md) ツールを使用して、Web サイトのさまざまな部分を辿る訪問者の経路を追跡できます。
-
-   ![User Flows の視覚化](./media/website-monitoring/user-flows.png)
 
 Web サイトを監視するためのより高度な構成については、[JavaScript SDK の API リファレンス](./javascript.md)を参照してください。
 

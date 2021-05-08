@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997457"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800875"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>クイックスタート: Azure App Configuration を使用した Python アプリの作成
 
@@ -22,7 +22,7 @@ ms.locfileid: "91997457"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- Python 2.7 または 3.5 以降 - Windows での Python の設定について詳しくは、「[Windows での Python に関するドキュメント]( https://docs.microsoft.com/windows/python/)」を参照してください
+- Python 2.7 または 3.6 以降 - Windows での Python の設定について詳しくは、[Windows での Python に関するドキュメント]( https://docs.microsoft.com/windows/python/)を参照してください
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
@@ -102,7 +102,7 @@ ms.locfileid: "91997457"
 このセクションのサンプル コード スニペットでは、Python 用の App Configuration クライアント ライブラリを使用して一般的な操作を実行する方法を示します。 前に作成した *app-configuration-quickstart.py* ファイルの `try` ブロックにこれらのコード スニペットを追加します。
 
 > [!NOTE]
-> App Configuration クライアント ライブラリは、キー値オブジェクトを `ConfigurationSetting` として参照します。 そのため、この記事では、App Configuration ストア内の**キー値**が**構成設定**として参照されます。
+> App Configuration クライアント ライブラリは、キー値オブジェクトを `ConfigurationSetting` として参照します。 そのため、この記事では、App Configuration ストア内の **キー値** が **構成設定** として参照されます。
 
 * [App Configuration ストアに接続する](#connect-to-an-app-configuration-store)
 * [構成設定を取得する](#get-a-configuration-setting)

@@ -2,21 +2,21 @@
 title: ETL の代わりに ELT を設計する
 description: Azure Synapse Analytics 内に専用 SQL プールの柔軟なデータ読み込み戦略を実装します。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/20/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 04bd4767445f9378aedb303e63bf463f44e40034
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8a8f857dcfdc271a3aaad71f4b9c26d474033383
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602198"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566105"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールのデータ読み込み戦略
 

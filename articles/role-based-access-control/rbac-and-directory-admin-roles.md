@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/04/2021
+ms.date: 03/31/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 24ff39fba5ce4b484f23595a9f7d718b12faae10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd5533f4bc8420ee6d8900e8a17dfe7099d7945f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037270"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107199"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール
 
@@ -115,7 +115,7 @@ Azure portal では、Azure AD ロールの一覧が **[ロールと管理者]**
 | --- | --- |
 | Azure のリソースへのアクセスの管理 | Azure Active Directory リソースへのアクセスを管理する |
 | カスタム ロールをサポートする | カスタム ロールをサポートする |
-| スコープを複数のレベル (管理グループ、サブスクリプション、リソース グループ、リソース) で指定できる | スコープはテナント レベルで |
+| スコープを複数のレベル (管理グループ、サブスクリプション、リソース グループ、リソース) で指定できる | [スコープ](../active-directory/roles/custom-overview.md#scope)をテナントレベル (組織全体)、管理単位、または個々のオブジェクトごと (たとえば、特定のアプリケーションなど) で指定できる |
 | ロール情報には、Azure portal、Azure CLI、Azure PowerShell、Azure Resource Manager テンプレート、REST API でアクセスできる | ロール情報には、Azure 管理ポータル、Microsoft 365 管理センター、Microsoft Graph、AzureAD PowerShell でアクセスできる |
 
 ### <a name="do-azure-roles-and-azure-ad-roles-overlap"></a>Azure ロールと Azure AD ロールは重なり合うか

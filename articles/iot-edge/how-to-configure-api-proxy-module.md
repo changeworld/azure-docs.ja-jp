@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1070a4c8daecfedae513f2fd8738c27abfb33078
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f55c3a1f699f8a087eb97eaba347a3f21c124cc9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200577"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307318"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>ゲートウェイ階層のシナリオ用に API プロキシ モジュールを構成する (プレビュー)
 
@@ -34,7 +34,7 @@ API プロキシ モジュールを使用すると、下位レイヤーのデバ
 
 ## <a name="deploy-the-proxy-module"></a>プロキシ モジュールをデプロイする
 
-API プロキシ モジュールは、Microsoft Container Registry (MCR) `mcr.microsoft.com/azureiotedge-api-proxy:latest` から入手できます。
+API プロキシ モジュールは、Microsoft Container Registry (MCR) `mcr.microsoft.com/azureiotedge-api-proxy:1.0` から入手できます。
 
 API プロキシ モジュールは、Azure Marketplace から直接デプロイすることもできます。[IoT Edge API プロキシ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.azureiotedge-api-proxy?tab=Overview)。
 

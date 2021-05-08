@@ -1,27 +1,23 @@
 ---
-title: Windows Virtual Desktop での MSIX アプリのアタッチ (プレビュー) のファイル共有の設定 - Azure
+title: Windows Virtual Desktop での MSIX アプリのアタッチのファイル共有の設定 - Azure
 description: Windows Virtual Desktop の MSIX アプリのアタッチ用にファイル共有を設定する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97930788"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717659"
 ---
-# <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>MSIX アプリのアタッチ (プレビュー) 用にファイル共有を設定する
-
-> [!IMPORTANT]
-> 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX アプリのアタッチ用にファイル共有を設定する
 
 すべての MSIX イメージは、読み取り専用アクセス許可を持つホスト プール内のユーザーがアクセスできるネットワーク共有上に格納する必要があります。
 
-MSIX アプリのアタッチ (プレビュー) は、ファイル共有が使用する記憶域ファブリックの種類には依存していません。 MSIX アプリのアタッチ共有に関する考慮事項は、FSLogix 共有のものと同じです。 ストレージの要件の詳細については、「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」をご覧ください。
+MSIX アプリのアタッチは、ファイル共有が使用する記憶域ファブリックの種類には依存していません。 MSIX アプリのアタッチ共有に関する考慮事項は、FSLogix 共有のものと同じです。 ストレージの要件の詳細については、「[Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション](store-fslogix-profile.md)」をご覧ください。
 
 ## <a name="performance-requirements"></a>パフォーマンス要件
 
@@ -81,7 +77,7 @@ MSIX アプリケーションを Azure Files に格納している場合は、�
 
 4. ストレージ アカウントを作成します。
 
-5. 「[Azure ファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md#create-file-share)」の手順に従って、ストレージ アカウントにファイル共有を作成します。
+5. 「[Azure ファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md#create-a-file-share)」の手順に従って、ストレージ アカウントにファイル共有を作成します。
 
 6. 「[パート 1: Azure ファイル共有に対する AD DS 認証を有効にする](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)」の手順に従って、ストレージ アカウントを AD DS に参加させます。
 

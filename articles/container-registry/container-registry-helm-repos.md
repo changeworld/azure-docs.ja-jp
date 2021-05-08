@@ -3,12 +3,12 @@ title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
 ms.date: 06/12/2020
-ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86537869"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223083"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
@@ -31,7 +31,7 @@ Azure Container Registry で Helm グラフをホストするには、Helm3 を�
 * Helm CLI で `helm chart` コマンドを使用して、レジストリ内の Helm グラフをプッシュ、プル、および管理します
 * `helm install` を使用して、ローカル リポジトリ キャッシュから Kubernetes クラスターにグラフをインストールします。
 > [!NOTE]
-> Helm 3 以降、Helm 2 クライアントで使用する [az acr helm][az-acr-helm] コマンドは非推奨となります。 [製品ロードマップ](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)をご覧ください。 以前に "Helm 2" グラフをデプロイした場合は、「[Migrating Helm v2 to v3 (Helm v2 から v3 への移行)](https://helm.sh/docs/topics/v2_v3_migration/)」を参照してください。
+> Helm 3 以降、Helm 2 クライアントで使用する [az acr helm][az-acr-helm] コマンドは非推奨となります。 コマンドが削除される少なくとも 3 か月前に通知が提供されます。 以前に "Helm 2" グラフをデプロイした場合は、「[Migrating Helm v2 to v3 (Helm v2 から v3 への移行)](https://helm.sh/docs/topics/v2_v3_migration/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

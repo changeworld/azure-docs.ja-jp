@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f8bc517e70ac84cc7507a958213c7ca4e53d864
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91323426"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313047"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>Azure PowerShell で Key Vault 証明書を使用して TLS 終端を構成する
 
@@ -61,7 +61,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
 ### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>アプリケーション ゲートウェイに使用されるキー コンテナー、ポリシー、証明書を作成する
 
 ```azurepowershell
-$keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
+$keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location
 Set-AzKeyVaultAccessPolicy -VaultName $kv -PermissionsToSecrets get -ObjectId $identity.PrincipalId
 
 $policy = New-AzKeyVaultCertificatePolicy -ValidityInMonths 12 `
@@ -72,8 +72,6 @@ $certificate = Add-AzKeyVaultCertificate -VaultName $kv -Name "cert1" -Certifica
 $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
-> [!NOTE]
-> TLS 終端が正しく機能するには、-EnableSoftDelete フラグを使用する必要があります。 [ポータルからの Key Vault の論理的な削除](../key-vault/general/soft-delete-overview.md#soft-delete-behavior)を構成している場合、保持期間は 90 日 (既定値) で維持する必要があります。 Application Gateway では、まだ異なる保有期間をサポートしていません。 
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

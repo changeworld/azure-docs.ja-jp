@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b323bf920bd884e821d03bf2def37471775e720
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96465605"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312707"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R の技術仕様
 
@@ -24,41 +24,44 @@ Azure Stack Edge Pro R デバイスのハードウェア コンポーネント�
 
 Azure Stack Edge Pro R デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
-| 仕様       | 値                  |
-|---------------------|------------------------|
-| CPU    | 2 X 10 コア CPU Intel Xeon Silver 4114 |
-| メモリ              | 256 GB RAM (2,666 MT/秒)     |
-
+| 仕様  | 値                                             |
+|----------------|---------------------------------------------------|
+| CPU の種類       | Dual Intel Xeon Silver 4114 CPU                   |
+| CPU: Raw       | 合計コア数 20、合計 vCPU 数 40                    |
+| CPU: 使用可能    | vCPU 数 32                                          |
+| メモリの種類    | Dell 互換 16 GB RDIMM、2666 MT/秒、デュアル ランク |
+| メモリ: Raw    | 256 GB RAM (16 x 16 GB)                           |
+| メモリ: 使用可能 | 230 GB RAM                                        |
 
 ## <a name="compute-acceleration-specifications"></a>コンピューティング アクセラレーション仕様
 
 Kubernetes、ディープ ラーニング、機械学習のシナリオを可能にするすべてのデバイスには、グラフィックス プロセッシング ユニット (GPU) が搭載されています。
 
-| 仕様           | 値                  |
+| 仕様           | 値                      |
 |-------------------------|----------------------------|
-| GPU   | nVidia T4 GPU x 1 <br> 詳細については、「[NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)」を参照してください。| 
+| GPU   | nVidia T4 GPU x 1 <br> 詳細については、「[NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/)」を参照してください。 | 
 
 ## <a name="power-supply-unit-specifications"></a>電源装置の仕様
 
 Azure Stack Edge Pro R デバイスは 100-240 V の電源装置 (PSU) 2 つと高性能ファンを備えています。 2 つの PSU によって電源が冗長構成になります。 1 台の PSU に障害が発生した場合、障害が発生したモジュールが交換されるまで、デバイスはもう一方の PSU で通常どおり動作し続けます。 次の表は PSU の技術仕様をまとめたものです。
 
-| 仕様           | 550 W PSU                  |
-|-------------------------|----------------------------|
-| 最大出力電力    | 550 W                      |
-| 放熱量 (最大)                   | 2891 BTU/時                |
-| 頻度               | 50/60 Hz                   |
-| 選択電圧範囲 | オート レンジ: 115-230 V AC |
-| ホット プラグ可能           | はい                        |
+| 仕様              | 550 W PSU                  |
+|----------------------------|----------------------------|
+| 最大出力電力       | 550 W                      |
+| 放熱量 (最大) | 2891 BTU/時                |
+| 頻度                  | 50/60 Hz                   |
+| 選択電圧範囲    | オート レンジ: 115-230 V AC |
+| ホット プラグ可能              | はい                        |
 
 ## <a name="network-specifications"></a>ネットワーク仕様
 
-Azure Stack Edge Pro R デバイスには、PORT1 から PORT4 までの 4 つのネットワーク インターフェイスがあります。 
+Azure Stack Edge Pro R デバイスには、PORT1 から PORT4 までの 4 つのネットワーク インターフェイスがあります。
 
 
-|仕様  |説明                              |
+|仕様         |説明                       |
 |----------------------|----------------------------------|
-|ネットワーク インターフェイス    |**2 x 1 Gbe RJ45** <br> ポート 1 は、初期セットアップの管理インターフェイスとして使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセット時には、インターフェイスは静的 IP に戻ります。 <br>別のインターフェイスのポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。     |
-|ネットワーク インターフェイス    |**2 x 25 Gbe SFP28** <br> これらのデータ インターフェイス ポート 3 とポート 4 は、DHCP (既定) または静的 として構成できます。            |
+|ネットワーク インターフェイス    |**2 x 1 GbE RJ45** <br> ポート 1 は、初期セットアップの管理インターフェイスとして使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセットすると、インターフェイスは静的 IP に戻ります。 <br>もう 1 つのインターフェイス、ポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 |
+|ネットワーク インターフェイス    |**2 x 25 GbE SFP28** <br> ポート 3 とポート 4 にあるこれらのデータ インターフェイスは、DHCP (既定) または静的として構成できます。 |
 
 Azure Stack Edge Pro R デバイスには、次のネットワーク ハードウェアがあります。
 
@@ -69,16 +72,16 @@ Azure Stack Edge Pro R デバイスには、次のネットワーク ハード�
 | Parameter           | Description                 |
 |-------------------------|----------------------------|
 | Model    | ConnectX®-4 Lx EN network interface card                      |
-| Model Description               | 25GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
+| Model Description               | 25 GbE dual-port SFP28; PCIe3.0 x8; ROHS R6                    |
 | Device Part Number (XR2) | MCX4421A-ACAN  |
 | PSID (R640)           | MT_2420110034                         |-->
 <!-- confirm w/ Ravi what is this-->
 
-これらのネットワーク カードでサポートされているケーブル、スイッチ、およびトランシーバーの完全な一覧については、以下を参照してください。[Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。
+これらのネットワーク カードでサポートされているケーブル、スイッチ、およびトランシーバーの一覧については、[Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)を参照してください。
 
 ## <a name="storage-specifications"></a>Storage の仕様
 
-Azure Stack Edge Pro R デバイスには、8 つのデータ ディスクと 2 M.2 SATA ディスクが搭載されており、オペレーティング システム ディスクとして機能します。 詳細については、[M.2 SATA ディスク](https://en.wikipedia.org/wiki/M.2)に関するページを参照してください。
+Azure Stack Edge Pro R デバイスには、8 個のデータ ディスクと 2 個の M.2 SATA ディスク (オペレーティング システム ディスクとして機能する) が搭載されています。 詳細については、[M.2 SATA ディスク](https://en.wikipedia.org/wiki/M.2)に関するページを参照してください。
 
 #### <a name="storage-for-1-node-device"></a>1 ノード デバイスのストレージ
 
@@ -89,7 +92,7 @@ Azure Stack Edge Pro R デバイスには、8 つのデータ ディスクと 2 
 |    ソリッド ステート ドライブ (SSD) の数     |    8                  |
 |    単一の SSD 容量                     |    8 TB               |
 |    合計容量                          |    64 TB              |
-|    合計の使用可能な容量*                  |    最大 42 TB          |
+|    合計の使用可能な容量*                  |    最大 42 TB            |
 
 **容量の一部は内部仕様のために予約されています。*
 
@@ -148,7 +151,7 @@ The following table lists the dimensions of the 4U UPS case:
 
 |     エンクロージャ                                 |     Weight          |
 |-----------------------------------------------|---------------------|
-|    1 ノード デバイスとエンド キャップ付きの堅牢なケースの重さの合計     |    最大 114 ポンド。          |
+|    1 ノード デバイスとエンド キャップ付きの堅牢なケースの重さの合計     |    最大 114 ポンド          |
 
 <!--#### For the 4-node system
 

@@ -4,12 +4,12 @@ description: Azure CLI を使用して Azure Blockchain Service を管理する�
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87170859"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768055"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
 
@@ -27,7 +27,7 @@ CLI をインストールしてローカルで使用する場合は、[Azure CLI
 
 1. サインインします。
 
-    CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+    CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用してサインインします。
 
     ```azurecli
     az login

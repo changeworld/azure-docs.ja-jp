@@ -4,14 +4,14 @@ description: C# ASP.NET アプリを Azure と Azure SQL Database にデプロ�
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 03/18/2021
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: a427fbc6fad1566ae10e11b61de981aded32e64a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 533bd817b704db9976624b356a9950a9c48b8339
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000279"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606021"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>チュートリアル:Azure SQL Database を使用して Azure に ASP.NET アプリをデプロイする
 
@@ -42,49 +42,56 @@ ms.locfileid: "92000279"
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-* [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
-* *dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
+1. [サンプル プロジェクトをダウンロードします](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip)。
+
+1. *dotnet-sqldb-tutorial-master.zip* ファイルを抽出 (解凍) します。
 
 このサンプル プロジェクトには、[Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) を使用した基本的な [ASP.NET MVC](https://www.asp.net/mvc) "作成、読み取り、更新、削除" (CRUD) アプリが含まれています。
 
 ### <a name="run-the-app"></a>アプリを実行する
 
-Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイルを開きます。
+1. Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイルを開きます。
 
-デバッグせずにアプリを実行するには、`Ctrl+F5` キーを押します。 アプリが既定のブラウザーに表示されます。 **[新規作成]** リンクを選択し、いくつかの *To Do* アイテムを作成します。
+1. デバッグせずにアプリを実行するには、`Ctrl+F5` キーを押します。 アプリが既定のブラウザーに表示されます。
 
-![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
+1. **[新規作成]** リンクを選択し、いくつかの *To Do* アイテムを作成します。
 
-**[編集]** 、 **[詳細]** 、 **[削除]** リンクをテストします。
+    ![[新しい ASP.NET プロジェクト] ダイアログ ボックス](media/app-service-web-tutorial-dotnet-sqldatabase/local-app-in-browser.png)
+
+1. **[編集]** 、 **[詳細]** 、 **[削除]** リンクをテストします。
 
 アプリはデータベース コンテキストを使用してデータベースに接続します。 このサンプルでは、データベース コンテキストは `MyDbConnection` という接続文字列を使用します。 この接続文字列は *Web.config* ファイルで設定され、*Models/MyDatabaseContext.cs* ファイルで参照されます。 この接続文字列名は、このチュートリアルの後半で Azure アプリを Azure SQL Database に接続するために使用します。
 
 ## <a name="publish-aspnet-application-to-azure"></a>ASP.NET アプリケーションを Azure に発行する
 
-**ソリューション エクスプローラー**で **DotNetAppSqlDb** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. **ソリューション エクスプローラー** で **DotNetAppSqlDb** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-![ソリューション エクスプローラーから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
+    ![ソリューション エクスプローラーから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-ターゲットとして **[Azure]** を選択し、[次へ] をクリックし、 **[Azure App Service (Windows)]** が選択されていることを確認してもう一度 [次へ] をクリックします。
+1. ターゲットとして **[Azure]** を選択し、 **[次へ]** をクリックします。
 
-![プロジェクトの概要ページから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-to-app-service.png)
+1. **[Azure App Service (Windows)]** が選択されていることを確認し、 **[次へ]** をクリックします。
 
-### <a name="sign-in-to-azure"></a>Azure へのサインイン
+#### <a name="sign-in-and-add-an-app"></a>サインインしてアプリを追加する
 
-**[発行]** ダイアログのアカウント マネージャーのドロップ ダウンで **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。
+1. **[発行]** ダイアログのアカウント マネージャーのドロップ ダウンで **[アカウントの追加]** をクリックします。
 
-![Azure へのサインイン](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+1. Azure サブスクリプションにサインインします。 既に Microsoft アカウントにサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインインしている Microsoft アカウントが Azure サブスクリプションを備えていない場合は、正しいアカウントをクリックして追加します。
 
-> [!NOTE]
-> 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
+1. **[App Service インスタンス]** ペインで **[+]** をクリックします。
 
-### <a name="configure-the-web-app-name"></a>Web アプリ名を構成する
+    ![Azure へのサインイン](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
+
+#### <a name="configure-the-web-app-name"></a>Web アプリ名を構成する
 
 生成された Web アプリ名をそのまま使用するか、別の一意の名前に変更することができます (有効な文字は `a-z`、`0-9`、および `-` です)。 この Web アプリ名は、アプリの既定の URL の一部として使用されます (既定の URL は `<app_name>.azurewebsites.net` で、`<app_name>` が Web アプリ名です)。 この Web アプリ名は、Azure のすべてのアプリで一意である必要があります。
 
+> [!NOTE]
+> まだ **[作成]** は選択しないでください。
+
 ![[App Service の作成] ダイアログ](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
 
-### <a name="create-a-resource-group"></a>リソース グループを作成する
+#### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 [!INCLUDE [resource-group](../../includes/resource-group.md)]
 
@@ -92,17 +99,15 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
    ![[リソース グループ] の横にある [新規] をクリックする](media/app-service-web-tutorial-dotnet-sqldatabase/new_rg2.png)
 
-2. リソース グループに **myResourceGroup** という名前を付けます。
+1. リソース グループに **myResourceGroup** という名前を付けます。
 
-### <a name="create-an-app-service-plan"></a>App Service プランを作成する
+#### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-1. **[App Service プラン]** の横にある **[新規]** をクリックします。
+1. **[ホスティング プラン]** の隣にある **[新規]** をクリックします。
 
-2. **[App Service プランの構成]** ダイアログ ボックスで、新しい App Service プランを次の設定で構成します。
-
-   ![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
+1. **[App Service プランの構成]** ダイアログ ボックスで、新しい App Service プランを次の設定で構成し、 **[OK]** をクリックします。
 
    | 設定  | 推奨値 | 詳細情報 |
    | ----------------- | ------------ | ----|
@@ -110,24 +115,32 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
    |**場所**| 西ヨーロッパ | [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) |
    |**[サイズ]**| Free | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)|
 
-3. 構成したリソースが **[発行]** ダイアログに表示されます。 **[完了]** をクリックします。
+   ![Create App Service plan](./media/app-service-web-tutorial-dotnet-sqldatabase/configure-app-service-plan.png)
+
+1. **[作成]** をクリックして、Azure リソースが作成されるまで待ちます。
+
+1. 構成したリソースが **[発行]** ダイアログに表示されます。 **[完了]** をクリックします。
 
    ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
 
-### <a name="create-a-server"></a>サーバーの作成
+#### <a name="create-a-server-and-database"></a>サーバーとデータベースを作成する
 
 データベースを作成するには、[論理 SQL サーバー](../azure-sql/database/logical-servers.md)が必要です。 論理 SQL サーバーは、1 つのグループとして管理される一連のデータベースを含む論理コンストラクトです。
 
-1. **[接続済みサービス]** の下で [SQL Server データベース] の横にある **[構成]** をクリックします。
+1. **[発行]** ダイアログで、下の **[サービスの依存関係]** セクションまでスクロールします。 **[SQL Server データベース]** の横にある **[構成]** をクリックします。
 
-   ![SQL Database の作成](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
+   ![SQL Database の依存関係を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sqldb-dependency.png)
 
-2. **[Azure SQL データベース]** ダイアログで、 **[データベース サーバー]** の隣にある **[新規]** をクリックします。
+1. **[Azure SQL Database]** を選択し、 **[次へ]** をクリックします。
 
-   一意のサーバー名が生成されます。 この名前はサーバーの既定の URL (`<server_name>.database.windows.net`) の一部として使用されます。 これは、Azure SQL のすべてのサーバーで一意である必要があります。 サーバー名は変更できますが、このチュートリアルでは生成された名前をそのまま使用します。
+1. **[Configure Azure SQL Database]\(Azure SQL Database の構成\)** ダイアログで **[+]** をクリックします。
 
-3. 管理者のユーザー名とパスワードを追加します。 パスワードの複雑さの要件については、「[パスワード ポリシー](/sql/relational-databases/security/password-policy)」をご覧ください。
+1. **[データベース サーバー]** の横にある **[新規]** をクリックします。
+
+   サーバー名が生成されます。 この名前はサーバーの既定の URL (`<server_name>.database.windows.net`) の一部として使用されます。 これは、Azure SQL のすべてのサーバーで一意である必要があります。 サーバー名は変更できますが、このチュートリアルでは生成された名前をそのまま使用します。
+
+1. 管理者のユーザー名とパスワードを追加します。 パスワードの複雑さの要件については、「[パスワード ポリシー](/sql/relational-databases/security/password-policy)」をご覧ください。
 
    このユーザー名とパスワードを覚えておいてください。 これらは、後でサーバーを管理する際に必要になります。
 
@@ -136,70 +149,73 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
    > [!IMPORTANT]
    > (Visual Studio および App Service で) 接続文字列のパスワードがマスクされていても、それがどこかに保持されているのは事実であり、アプリの攻撃対象領域が増えることになります。 App Service では、[マネージド サービス ID](overview-managed-identity.md) を使用して、コードやアプリの構成にシークレットを保持する必要性をなくすことで、このリスクを排除できます。 詳細については、「[次のステップ](#next-steps)」を参照してください。
 
-4. **[OK]** をクリックします。 **[SQL Database の構成]** ダイアログはまだ閉じないでください。
+1. **[OK]** をクリックします。
 
-### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL Database でデータベースを作成する
-
-1. **[Azure SQL Database]** ダイアログで:
-
-   * 生成された既定の **[データベース名]** をそのまま使用します。
-   * **［作成］** を選択します
+1. **[Azure SQL Database]** ダイアログの **[データベース名]** は、生成された既定の名前のままにします。 **[作成]** を選択して、データベース リソースが作成されるまで待ちます。
 
     ![データベースを構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-2. **[データベース接続文字列名]** に「_MyDbConnection_」と入力します。 この名前は、_Models/MyDatabaseContext.cs_ で参照されている接続文字列と一致する必要があります。
+#### <a name="configure-database-connection"></a>データベース接続を構成する
 
-3. 手順 3 の「[サーバーの作成](#create-a-server)」で使用した管理者のユーザー名とパスワードをデータベースのユーザー名とパスワードにそれぞれ入力します。
+1. ウィザードでデータベース リソースの作成が完了したら、 **[次へ]** をクリックします。
+
+1. **[データベース接続文字列名]** に「_MyDbConnection_」と入力します。 この名前は、_Models/MyDatabaseContext.cs_ で参照されている接続文字列と一致する必要があります。
+
+1. **[データベース接続ユーザー名]** と **[データベース接続パスワード]** に、[サーバーの作成](#create-a-server-and-database)で使用した管理者のユーザー名とパスワードを入力します。
+
+1. **[Azure アプリの設定]** が選択されていることを確認し、 **[完了]** をクリックします。
 
     ![データベース接続文字列を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-connection.png)
 
-4. **[完了]** を選択します。
+1. 構成ウィザードの完了を待って **[閉じる]** をクリックします。
 
-ウィザードで Azure リソースの作成が完了したら、 **[発行]** をクリックし、ASP.NET アプリを Azure に発行します。 既定のブラウザーが、デプロイされたアプリの URL を参照した状態で起動します。
+#### <a name="deploy-your-aspnet-app"></a>ASP.NET アプリをデプロイする
 
-いくつかの To Do アイテムを追加します。
+1. **[発行]** タブで再び上へスクロールし、 **[発行]** をクリックします。 ASP.NET アプリが Azure にデプロイされると、 既定のブラウザーが、デプロイされたアプリの URL を参照した状態で起動します。
 
-![Azure アプリに発行された ASP.NET アプリケーション](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
+1. いくつかの To Do アイテムを追加します。
 
-お疲れさまでした。 データ主導の ASP.NET アプリケーションを Azure App Services でライブ実行することができました。
+    ![Azure アプリに発行された ASP.NET アプリケーション](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
+
+    お疲れさまでした。 データ主導の ASP.NET アプリケーションを Azure App Services でライブ実行することができました。
 
 ## <a name="access-the-database-locally"></a>データベースにローカルでアクセスする
 
-Visual Studio では、**SQL Server オブジェクト エクスプローラー**を使用して、新しいデータベースの確認と管理を簡単に行うことができます。
+Visual Studio では、**SQL Server オブジェクト エクスプローラー** を使用して、Azure の新しいデータベースの確認と管理を簡単に行うことができます。 新しいデータベースのファイアウォールは、作成した App Service アプリに対しては既に開放されていますが、ローカル コンピューター (Visual Studio など) からアクセスするためには、ローカル コンピューターのパブリック IP アドレスに対してファイアウォールを開放する必要があります。 お使いのパブリック IP アドレスがインターネット サービス プロバイダーによって変更された場合、Azure データベースに再度アクセスするためには、ファイアウォールを再構成する必要があります。
 
-### <a name="create-a-database-connection"></a>データベース接続を作成する
+#### <a name="create-a-database-connection"></a>データベース接続を作成する
 
-**[表示]** メニューの **[SQL Server オブジェクト エクスプローラー]** を選択します。
+1. **[表示]** メニューの **[SQL Server オブジェクト エクスプローラー]** を選択します。
 
-**SQL Server オブジェクト エクスプローラー**の上部で、 **[SQL Server の追加]** ボタンをクリックします。
+1. **SQL Server オブジェクト エクスプローラー** の上部で、 **[SQL Server の追加]** ボタンをクリックします。
 
-### <a name="configure-the-database-connection"></a>データベース接続を構成する
+#### <a name="configure-the-database-connection"></a>データベース接続を構成する
 
-**[接続]** ダイアログで、**Azure** ノードを展開します。 Azure 上のすべての SQL Database が一覧表示されます。
+1. **[接続]** ダイアログで、**Azure** ノードを展開します。 Azure 上のすべての SQL Database が一覧表示されます。
 
-前に作成したデータベースを選択します。 前に作成した接続が、一番下に自動的に入力されます。
+1. 前に作成したデータベースを選択します。 前に作成した接続が、一番下に自動的に入力されます。
 
-前に作成したデータベース管理者のパスワードを入力し、 **[接続]** をクリックします。
+1. 前に作成したデータベース管理者のパスワードを入力し、 **[接続]** をクリックします。
 
-![Visual Studio からデータベース接続を構成する](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
+    ![Visual Studio からデータベース接続を構成する](./media/app-service-web-tutorial-dotnet-sqldatabase/connect-to-sql-database.png)
 
-### <a name="allow-client-connection-from-your-computer"></a>コンピューターからのクライアント接続を許可する
+#### <a name="allow-client-connection-from-your-computer"></a>コンピューターからのクライアント接続を許可する
 
 **[新しいファイアウォール規則の作成]** ダイアログが開かれています。 既定では、サーバーはお使いの Azure アプリなどの Azure サービスからデータベースへの接続のみを許可します。 Azure の外部からデータベースに接続するには、サーバー レベルでファイアウォール規則を作成します。 ファイアウォール規則で、ローカル コンピューターのパブリック IP アドレスを許可します。
 
 ダイアログには、既にコンピューターのパブリック IP アドレスが入力されています。
 
-**クライアント IP を追加**するための項目が選択されていることを確認し、 **[OK]** をクリックします。
+1. **クライアント IP を追加** するための項目が選択されていることを確認し、 **[OK]** をクリックします。
 
-![ファイアウォール規則の作成](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
+    ![ファイアウォール規則の作成](./media/app-service-web-tutorial-dotnet-sqldatabase/sql-set-firewall.png)
 
-Visual Studio で SQL データベース インスタンスのファイアウォール設定の作成が完了すると、**SQL Server オブジェクト エクスプローラー**に接続が表示されます。
+    Visual Studio で SQL データベース インスタンスのファイアウォール設定の作成が完了すると、**SQL Server オブジェクト エクスプローラー** に接続が表示されます。
 
-ここでは、クエリの実行やビューとストアド プロシージャの作成など、最も一般的なデータベース操作を実行できます。
+    ここでは、クエリの実行やビューとストアド プロシージャの作成など、最も一般的なデータベース操作を実行できます。
 
-接続を展開し、 **[データベース]** 、 >  **[&lt;お使いのデータベース>]** 、 >  **[テーブル]** の順に選択します。 `Todoes` テーブルを右クリックし、 **[データの表示]** を選択します。
+1. 接続を展開し、 **[データベース]** 、 >  **[&lt;お使いのデータベース>]** 、 >  **[テーブル]** の順に選択します。 `Todoes` テーブルを右クリックし、 **[データの表示]** を選択します。
 
-![SQL Database オブジェクトを確認する](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
+    ![SQL Database オブジェクトを確認する](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
 ## <a name="update-app-with-code-first-migrations"></a>Code First Migrations を使用してアプリを更新する
 
@@ -207,121 +223,119 @@ Visual Studio の使い慣れたツールを使用して、Azure でデータベ
 
 Entity Framework Code First Migrations の使用方法の詳細については、「[Getting Started with Entity Framework 6 Code First using MVC 5 (MVC 5 を使用した Entity Framework 6 Code First の概要)](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)」をご覧ください。
 
-### <a name="update-your-data-model"></a>データ モデルを更新する
+#### <a name="update-your-data-model"></a>データ モデルを更新する
 
 コード エディターで _Models\Todo.cs_ を開きます。 `ToDo` クラスに次のプロパティを追加します。
 
 ```csharp
 public bool Done { get; set; }
 ```
-
-### <a name="run-code-first-migrations-locally"></a>Code First Migrations をローカルで実行する
+    
+#### <a name="run-code-first-migrations-locally"></a>Code First Migrations をローカルで実行する
 
 いくつかのコマンドを実行して、ローカル データベースを更新します。
 
-**[ツール]** メニューで、 **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順にクリックします。
+1. **[ツール]** メニューで、 **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順にクリックします。
 
-[パッケージ マネージャー コンソール] ウィンドウで、Code First Migrations を有効にします。
+1. [パッケージ マネージャー コンソール] ウィンドウで、Code First Migrations を有効にします。
 
-```powershell
-Enable-Migrations
-```
+    ```powershell
+    Enable-Migrations
+    ```
+    
+1. 移行を追加します。
 
-移行を追加します。
+    ```powershell
+    Add-Migration AddProperty
+    ```
+    
+1. ローカル データベースを更新します。
 
-```powershell
-Add-Migration AddProperty
-```
-
-ローカル データベースを更新します。
-
-```powershell
-Update-Database
-```
-
-`Ctrl+F5` キーを押してアプリを実行します。 編集、詳細、作成のリンクをテストします。
+    ```powershell
+    Update-Database
+    ```
+    
+1. `Ctrl+F5` キーを押してアプリを実行します。 編集、詳細、作成のリンクをテストします。
 
 エラーが発生せずにアプリケーションが読み込まれたら、Code First Migrations は成功です。 ただし、ページはまだ変わっていないように見えます。これは、この新しいプロパティがまだアプリケーション ロジックで使用されていないためです。
 
-### <a name="use-the-new-property"></a>新しいプロパティを使用する
+#### <a name="use-the-new-property"></a>新しいプロパティを使用する
 
 `Done` プロパティを使用するために、コードにいくつかの変更を加えます。 このチュートリアルでは、わかりやすくするために `Index` ビューと `Create` ビューのみを変更して、実際のプロパティを確認します。
 
-_Controllers\TodosController.cs_ を開きます。
+1. _Controllers\TodosController.cs_ を開きます。
 
-52 行目にある `Create()` メソッドを探し、`Bind` 属性内のプロパティの一覧に `Done` を追加します。 完了すると、`Create()` メソッドのシグネチャは次のコードのようになります。
+1. 52 行目にある `Create()` メソッドを探し、`Bind` 属性内のプロパティの一覧に `Done` を追加します。 完了すると、`Create()` メソッドのシグネチャは次のコードのようになります。
 
-```csharp
-public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
-```
+    ```csharp
+    public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo todo)
+    ```
+    
+1. _Views\Todos\Create.cshtml_ を開きます。
 
-_Views\Todos\Create.cshtml_ を開きます。
+1. Razor コードでは、`model.Description` を使用する `<div class="form-group">` 要素、`model.CreatedDate` を使用する別の `<div class="form-group">` 要素が表示されます。 これら 2 つの要素の直後に、次のように、`model.Done` を使用する別の `<div class="form-group">` 要素を追加します。
 
-Razor コードでは、`model.Description` を使用する `<div class="form-group">` 要素、`model.CreatedDate` を使用する別の `<div class="form-group">` 要素が表示されます。 これら 2 つの要素の直後に、次のように、`model.Done` を使用する別の `<div class="form-group">` 要素を追加します。
-
-```csharp
-<div class="form-group">
-    @Html.LabelFor(model => model.Done, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        <div class="checkbox">
-            @Html.EditorFor(model => model.Done)
-            @Html.ValidationMessageFor(model => model.Done, "", new { @class = "text-danger" })
+    ```csharp
+    <div class="form-group">
+        @Html.LabelFor(model => model.Done, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Done)
+                @Html.ValidationMessageFor(model => model.Done, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-</div>
-```
+    ```
+    
+1. _Views\Todos\Index.cshtml_ を開きます。
 
-_Views\Todos\Index.cshtml_ を開きます。
+1. 空の `<th></th>` 要素を探します。 この要素のすぐ上に、次の Razor コードを追加します。
 
-空の `<th></th>` 要素を探します。 この要素のすぐ上に、次の Razor コードを追加します。
+    ```csharp
+    <th>
+        @Html.DisplayNameFor(model => model.Done)
+    </th>
+    ```
+    
+1. `Html.ActionLink()` ヘルパー メソッドを含む `<td>` 要素を探します。 この `<td>` の _上_ に、次の Razor コードで別の `<td>` 要素を追加します。
 
-```csharp
-<th>
-    @Html.DisplayNameFor(model => model.Done)
-</th>
-```
+    ```csharp
+    <td>
+        @Html.DisplayFor(modelItem => item.Done)
+    </td>
+    ```
+    
+    これだけで、`Index` ビューと `Create` ビューの変更を確認できます。
 
-`Html.ActionLink()` ヘルパー メソッドを含む `<td>` 要素を探します。 この `<td>` の _上_ に、次の Razor コードで別の `<td>` 要素を追加します。
-
-```csharp
-<td>
-    @Html.DisplayFor(modelItem => item.Done)
-</td>
-```
-
-これだけで、`Index` ビューと `Create` ビューの変更を確認できます。
-
-`Ctrl+F5` キーを押してアプリを実行します。
+1. `Ctrl+F5` キーを押してアプリを実行します。
 
 これで、To Do 項目を追加し、 **[完了]** チェック ボックスをオンにすることができるようになります。 そうすると、完了済みの項目としてホームページに表示されます。 `Edit` ビューを変更していないため、`Edit` ビューには `Done` フィールドが表示されないことに注意してください。
 
-### <a name="enable-code-first-migrations-in-azure"></a>Azure で Code First Migrations を有効にする
+#### <a name="enable-code-first-migrations-in-azure"></a>Azure で Code First Migrations を有効にする
 
 データベースの移行を含むコードの変更に成功したので、Azure アプリに発行し、SQL Database も Code First Migrations を使用して更新します。
 
-前と同じように、プロジェクトを右クリックし、 **[発行]** を選択します。
+1. 前と同じように、プロジェクトを右クリックし、 **[発行]** を選択します。
 
-**[構成]** をクリックして発行設定を開きます。
+1. **[その他の操作]**  >  **[編集]** をクリックして発行設定を開きます。
 
-![発行の設定を開く](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
+    ![発行の設定を開く](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 
-ウィザードで **[次へ]** をクリックします。
+1. **[MyDatabaseContext]** ボックスの一覧で、Azure SQL Database のデータベース接続を選択します。
 
-SQL Database の接続文字列が **[MyDatabaseContext (MyDbConnection)]** に入力されていることを確認します。 ドロップダウン リストから **myToDoAppDb** データベースを選択する必要があります。
+1. **[Code First Migrations を実行する (アプリケーション開始時に実行)]** チェック ボックスをオンにし、 **[保存]** をクリックします。
 
-**[Code First Migrations を実行する (アプリケーション開始時に実行)]** チェック ボックスをオンにし、 **[保存]** をクリックします。
+    ![Azure アプリで Code First Migrations を有効にする](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
 
-![Azure アプリで Code First Migrations を有効にする](./media/app-service-web-tutorial-dotnet-sqldatabase/enable-migrations.png)
-
-### <a name="publish-your-changes"></a>変更を発行する
+#### <a name="publish-your-changes"></a>変更を発行する
 
 Azure アプリで Code First Migrations を有効にしたので、コードの変更を発行します。
 
-発行ページで **[発行]** をクリックします。
+1. 発行ページで **[発行]** をクリックします。
 
-再度、To Do 項目を追加してみてください。その後、 **[完了]** を選択すると、完了済みの項目としてホームページに表示されます。
+1. 再度、To Do 項目を追加してみてください。その後、 **[完了]** を選択すると、完了済みの項目としてホームページに表示されます。
 
-![Code First Migration の手順後の Azure アプリ](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+    ![Code First Migration の手順後の Azure アプリ](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 既存のすべての To Do 項目がまだ表示されています。 ASP.NET アプリケーションを再発行しても、SQL データベースの既存のデータは消失しません。 また、Code First Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
 
@@ -333,49 +347,47 @@ _Controllers\TodosController.cs_ を開きます。
 
 各アクションが `Trace.WriteLine()` メソッドで開始されます。 このコードは、Azure アプリにトレース メッセージを追加する方法を示すために追加されています。
 
-### <a name="open-server-explorer"></a>サーバー エクスプローラーを開く
+#### <a name="enable-log-streaming"></a>ログ ストリーミングを有効にする
 
-**[表示]** メニューで、 **[サーバー エクスプローラー]** を選択します。 **サーバー エクスプローラー**で、Azure アプリのログ記録を構成できます。
+1. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 
-### <a name="enable-log-streaming"></a>ログ ストリーミングを有効にする
+1. **Cloud Explorer** で、自分のアプリがある Azure サブスクリプションを展開し、 **[App Service]** を展開します。
 
-**サーバー エクスプローラー**で、 **[Azure]**  >  **[App Service]** の順に展開します。
+1. Azure アプリを右クリックし、 **[ストリーミング ログの表示]** を選択します。
 
-最初に Azure アプリを作成したときに作成した **myResourceGroup** リソース グループを展開します。
+    ![ログ ストリーミングを有効にする](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
-Azure アプリを右クリックし、 **[ストリーミング ログの表示]** を選択します。
+    ログが **[出力]** ウィンドウにストリーミングされるようになりました。
 
-![ログ ストリーミングを有効にする](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
+    ![出力ウィンドウでのログ ストリーミング](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
-ログが **[出力]** ウィンドウにストリーミングされるようになりました。
+    しかし、トレース メッセージはまだ表示されません。 最初に **[ストリーミング ログの表示]** を選択する際、Azure アプリによってトレース レベルが `Error` に設定されるためです。このレベルでは、エラー イベントのみが (`Trace.TraceError()` メソッドによって) 記録されます。
 
-![出力ウィンドウでのログ ストリーミング](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
+#### <a name="change-trace-levels"></a>トレース レベルを変更する
 
-しかし、トレース メッセージはまだ表示されません。 最初に **[ストリーミング ログの表示]** を選択する際、Azure アプリによってトレース レベルが `Error` に設定されるためです。このレベルでは、エラー イベントのみが (`Trace.TraceError()` メソッドによって) 記録されます。
+1. トレース レベルを変更して別のトレース メッセージを出力するには、**Cloud Explorer** に戻ります。
 
-### <a name="change-trace-levels"></a>トレース レベルを変更する
+1. アプリをもう一度右クリックし、 **[ポータルで開く]** を選択します。
 
-トレース レベルを変更して別のトレース メッセージを出力するには、**サーバー エクスプローラー**に戻ります。
+1. アプリのポータル管理ページで、左側のメニューから **[App Service ログ]** を選択します。
 
-Azure アプリを再度右クリックし、 **[表示の設定]** を選択します。
+1. **[Application Logging (File System)]\(アプリケーション ログ記録 (ファイル システム)\)** の **[レベル]** から **[詳細]** を選択します。 **[保存]** をクリックします。
 
-**[Application Logging (File System) (アプリケーションのログ記録 (ファイル システム))]** ボックスの一覧の **[詳細]** をクリックします。 **[保存]** をクリックします。
+    ![トレース レベルを [詳細] に変更する](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
-![トレース レベルを [詳細] に変更する](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
+    > [!TIP]
+    > 異なるトレース レベルを試しながら、各レベルでどのような種類のメッセージが表示されるかを確認することができます。 たとえば、 **[情報]** レベルを指定した場合、`Trace.TraceInformation()`、`Trace.TraceWarning()`、`Trace.TraceError()` で作成されたすべてのログが表示されますが、`Trace.WriteLine()` で作成されたログは除外されます。
 
-> [!TIP]
-> 異なるトレース レベルを試しながら、各レベルでどのような種類のメッセージが表示されるかを確認することができます。 たとえば、 **[情報]** レベルを指定した場合、`Trace.TraceInformation()`、`Trace.TraceWarning()`、`Trace.TraceError()` で作成されたすべてのログが表示されますが、`Trace.WriteLine()` で作成されたログは除外されます。
+1. ブラウザーでアプリにもう一度アクセスし (*http://&lt;アプリ名>.azurewebsites.net*)、Azure の To Do リスト アプリケーションの周囲をクリックしてみます。 Visual Studio の **[出力]** ウィンドウにトレース メッセージがストリーミングされます。
 
-ブラウザーでアプリにもう一度アクセスし (*http://&lt;アプリ名>.azurewebsites.net*)、Azure の To Do リスト アプリケーションの周囲をクリックしてみます。 Visual Studio の **[出力]** ウィンドウにトレース メッセージがストリーミングされます。
-
-```console
-Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
-Application: 2017-04-06T23:30:43  PID[8132] Verbose     GET /Todos/Create
-Application: 2017-04-06T23:30:53  PID[8132] Verbose     POST /Todos/Create
-Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
-```
-
-### <a name="stop-log-streaming"></a>ログ ストリーミングを停止する
+    ```console
+    Application: 2017-04-06T23:30:41  PID[8132] Verbose     GET /Todos/Index
+    Application: 2017-04-06T23:30:43  PID[8132] Verbose     GET /Todos/Create
+    Application: 2017-04-06T23:30:53  PID[8132] Verbose     POST /Todos/Create
+    Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
+    ```
+    
+#### <a name="stop-log-streaming"></a>ログ ストリーミングを停止する
 
 ログ ストリーミング サービスを停止するには、 **[出力]** ウィンドウの **[監視の停止]** ボタンをクリックします。
 

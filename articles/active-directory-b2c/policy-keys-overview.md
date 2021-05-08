@@ -7,17 +7,28 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a41717e9be0918dead9f77a5f5472494d734b38a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953357"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717533"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のポリシー キーの概要
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Azure Active Directory B2C (Azure AD B2C) は、シークレットと証明書をポリシー キーの形式で保存して、統合対象のサービスとの信頼を確立します。 これらの信頼は次のもので構成されます。
 
@@ -28,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) は、シークレットと証明書�
  この記事では、Azure AD B2C によって使用されるポリシーキーについて理解しておく必要がある事項について説明します。
 
 > [!NOTE]
-> 現時点では、ポリシー キーの構成は[カスタム ポリシー](./custom-policy-get-started.md)のみに制限されています。
+> 現時点では、ポリシー キーの構成は[カスタム ポリシー](./user-flow-overview.md)のみに制限されています。
 
 Azure portal の **[ポリシー キー]** メニューで、サービス間の信頼を確立するためのシークレットと証明書を構成できます。 キーは、対称または非対称にすることができます。 "*対称*" 暗号化 (秘密キー暗号化) では、データの暗号化と復号化の両方に共有シークレットが使用されます。 "*非対称*" 暗号化 (公開キー暗号化) は、キーのペアを使用する暗号化システムであり、証明書利用者アプリケーションと共有される公開キーと、Azure AD B2C のみが認識する秘密キーで構成されます。
 
@@ -89,3 +100,5 @@ Azure AD B2C キーセットに複数のキーがある場合は、次の条件�
 ## <a name="next-steps"></a>次の手順
 
 - Microsoft Graph を使用して[キーセット](microsoft-graph-operations.md#trust-framework-policy-keyset)と[ポリシー キー](microsoft-graph-operations.md#trust-framework-policy-key)のデプロイを自動化する方法を学習します。
+
+::: zone-end

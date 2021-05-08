@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: d52430c87d99f8837c78fcff89d8b214e45350ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: adc78dceb5269d65bcf76dc99af309fb5e28f450
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98934933"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774115"
 ---
 # <a name="manage-public-ip-addresses"></a>パブリック IP アドレスの管理
 
@@ -83,15 +83,15 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
    
 |操作|Azure portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|表示 | パブリック IP の **[概要]** セクション内 |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) でパブリック IP アドレス オブジェクトを取得してその設定を表示| [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) で設定を表示|
-|List | **[パブリック IP アドレス]** カテゴリ |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) で 1 つ以上のパブリック IP アドレス オブジェクトを取得してその設定を表示|[az network public-ip list](/cli/azure/network/public-ip#az-network-public-ip-list) でパブリック IP アドレスを一覧表示|
-|変更 | 関連付けが解除された IP の場合、 **[構成]** を選択してアイドル タイムアウト、DNS 名ラベルを変更するか、基本 IP の割り当てを静的から動的に変更  |[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) で設定を更新 |[az network public-ip update](/cli/azure/network/public-ip#az-network-public-ip-update) で更新 |
+|表示 | パブリック IP の **[概要]** セクション内 |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) でパブリック IP アドレス オブジェクトを取得してその設定を表示| [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) で設定を表示|
+|List | **[パブリック IP アドレス]** カテゴリ |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) で 1 つ以上のパブリック IP アドレス オブジェクトを取得してその設定を表示|[az network public-ip list](/cli/azure/network/public-ip#az_network_public_ip_list) でパブリック IP アドレスを一覧表示|
+|変更 | 関連付けが解除された IP の場合、 **[構成]** を選択してアイドル タイムアウト、DNS 名ラベルを変更するか、基本 IP の割り当てを静的から動的に変更  |[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) で設定を更新 |[az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update) で更新 |
 
    - **[削除]** :パブリック IP を削除するには、パブリック IP オブジェクトが IP 構成または仮想マシンの NIC に関連付けられていない必要があります。 詳細については、以下の表を参照してください。
 
 |リソース|Azure portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[仮想マシン](./remove-public-ip-address-vm.md)|**[関連付けの解除]** を選択して NIC 構成から IP アドレスの関連付けを解除してから、 **[削除]** を選択します。|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) で NIC 構成から IP アドレスの関連付けを解除。[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) で削除|[az network public-ip update --remove](/cli/azure/network/public-ip#az-network-public-ip-update) で NIC 構成から IP アドレスの関連付けを解除。[az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) で削除 |
+|[仮想マシン](./remove-public-ip-address-vm.md)|**[関連付けの解除]** を選択して NIC 構成から IP アドレスの関連付けを解除してから、 **[削除]** を選択します。|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress) で NIC 構成から IP アドレスの関連付けを解除。[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) で削除|[az network public-ip update --remove](/cli/azure/network/public-ip#az_network_public_ip_update) で NIC 構成から IP アドレスの関連付けを解除。[az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete) で削除 |
 |ロード バランサーのフロントエンド | 使用されていないパブリック IP アドレスに移動し、 **[関連付け]** を選択し、関連するフロントエンド IP 構成を持つロード バランサーを選択して置き換え (その後、古い IP を VM の場合と同じ方法で削除できます)  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) で新しいフロントエンド IP 構成をパブリック ロード バランサーに関連付け。[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) で削除。[Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) を使用してフロントエンド IP 構成を削除することも可能 (複数ある場合) |[az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update) で新しいフロントエンド IP 構成をパブリック ロード バランサーに関連付け。[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) で削除。[az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) を使用してフロントエンド IP 構成を削除することも可能 (複数ある場合)|
 |ファイアウォール|該当なし| [Deallocate()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall) でファイアウォールの割り当てを解除し、すべての IP 構成を削除 | [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) で IP を削除 (しかし、最初に PowerShell を使用して割り当てを解除することが必要)|
 

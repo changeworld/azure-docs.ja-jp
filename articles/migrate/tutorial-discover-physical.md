@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 4f6dc61b0e05fcb16a03a1183518069b98aa575f
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 17740763777372a5eaed6941974c120860839279
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771415"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382711"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
@@ -80,6 +80,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 アプライアンスが物理サーバーへのアクセスに使用できるアカウントを設定します。
 
 - **Windows サーバー** の場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+    > [!Note]
+    > Windows Server 2008 および 2008 R2 の場合は、サーバーに WMF 3.0 がインストールされていることと、サーバーにアクセスするために使用されるドメインおよびローカル アカウントが、Performance Monitor Users、Performance Log Users、および WinRMRemoteWMIUsers グループに追加されていることを確認してください。
+
 - **Linux サーバー** の場合、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
 
 **コマンド** | **目的**
@@ -103,7 +106,7 @@ chmod a+r /sys/class/dmi/id/product_uuid | BIOS の GUID を収集するため
    ![プロジェクト名とリージョンのボックス](./media/tutorial-discover-physical/new-project.png)
 
 7. **［作成］** を選択します
-8. プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate: Discovery and Assessment** ツールは、新しいプロジェクトに既定で追加されます。
+8. プロジェクトがデプロイされるまで数分待ちます。 **Azure Migrate の検出および評価** ツールは、新しいプロジェクトに既定で追加されます。
 
 ![既定で追加された Server Assessment ツールを示すページ](./media/tutorial-discover-physical/added-tool.png)
 
@@ -120,9 +123,9 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 2. Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
 3. ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
 4. PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
-5. アプライアンスを初めて構成し、プロジェクト キーを使用してプロジェクトに登録します。
+5. 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
 
-### <a name="1-generate-the-project-key"></a>1. プロジェクト キーを生成する
+### <a name="1-generate-the-project-key"></a>1.プロジェクト キーを生成する
 
 1. **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[検出]** を選択します。
 2. **[サーバーの検出]**  >  **[Are your servers virtualized?]\(サーバーは仮想化されていますか?\)** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
@@ -206,7 +209,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
         - サポートされるのは HTTP プロキシのみです。
         - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**:Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**: Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
@@ -231,7 +234,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 1. **[ステップ 1:Provide credentials for discovery of Windows and Linux physical or virtual servers]\(Windows および Linux 物理サーバーまたは仮想サーバーを検出するための資格情報を指定する\)** で、 **[資格情報の追加]** をクリックします。
 1. Windows サーバーの場合、ソースの種類として **[Windows サーバー]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
-1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux Server (Password-based)]\(Linux サーバー (パスワードベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
+1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux サーバー (パスワードベース)]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
 1. Linux サーバーで SSH キーベースの認証を使用している場合は、ソースの種類として **[Linux Server (SSH key-based)]\(Linux サーバー (SSH キーベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名を追加します。SSH 秘密キー ファイルを参照して選択します。 **[Save]** をクリックします。
 
     - Azure Migrate では、RSA、DSA、ECDSA、ed25519 の各アルゴリズムを使用して、ssh-keygen コマンドによって生成された SSH 秘密キーがサポートされています。
@@ -247,7 +250,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 
     - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **IP アドレスまたは FQDN** を追加して、 **[保存]** をクリックします。
-    - **[Add multiple items]\(複数の項目を追加\)** を選択した場合は、テキスト ボックスでサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 ** 追加したレコードを確認し、 **[保存]** をクリックします。
+    - **[複数の項目を追加]** を選択した場合は、テキスト ボックスでサーバーの **[IP アドレスまたは FQDN]** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 ** 追加したレコードを確認し、 **[保存]** をクリックします。
     - **[Import CSV]\(CSV のインポート\)** _(既定で選択)_ を選択した場合は、CSV テンプレート ファイルをダウンロードし、そのファイルにサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** および資格情報のフレンドリ名を入力します。 その後、ファイルをアプライアンスにインポートし、ファイル内のレコードを **[Verify]\(検証\)** して、 **[保存]** をクリックします。
 
 1. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。

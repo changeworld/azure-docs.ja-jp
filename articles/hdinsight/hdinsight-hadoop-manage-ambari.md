@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
 ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104866490"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
@@ -46,7 +46,7 @@ Ambari Web UI に接続するときに、そのページに対する認証が求
 
 :::image type="content" source="./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png" alt-text="Apache Ambari ダッシュボードの概要":::
 
-|アイテム |説明 |
+|Item |説明 |
 |---|---|
 |Ambari ロゴ|ダッシュボードを表示します。これを使用してクラスターを監視できます。|
 |クラスター名 # ops|進行中の Ambari 操作の数が表示されます。 クラスター名または **[# ops]** を選択すると、バックグラウンドでの操作の一覧が表示されます。|

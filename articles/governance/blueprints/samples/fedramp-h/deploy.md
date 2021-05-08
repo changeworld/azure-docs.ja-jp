@@ -1,14 +1,14 @@
 ---
 title: FedRAMP High ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む FedRAMP High ブループリント サンプルのデプロイ手順。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 53d48eff79f7227373c1e7dfb0c34ef17a00e125
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0ba321bb0048499e12eec55fbc55d67b0a1289f9
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100594774"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386704"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルをデプロイする
 

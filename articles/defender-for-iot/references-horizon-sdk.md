@@ -4,10 +4,10 @@ description: Azure Defender for IoT 開発者は Horizon SDK を使用すると�
 ms.date: 1/13/2021
 ms.topic: article
 ms.openlocfilehash: 500f1d78a6a2ab91284c993a5c56ef8e679db83f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104782488"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizon の独自プロトコル dissector

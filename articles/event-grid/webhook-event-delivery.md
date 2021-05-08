@@ -3,12 +3,12 @@ title: webhook のイベント配信
 description: この記事では、WebHook を使用する場合の WebHook イベント配信とエンドポイント検証について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 42ba36a21d307ca85d9cdae850c0c9a991e4f30e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87461240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968001"
 ---
 # <a name="webhook-event-delivery"></a>Webhook のイベント配信
 Webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid サービスは、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに POST します。

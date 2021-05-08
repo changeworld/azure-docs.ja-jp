@@ -8,12 +8,12 @@ ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a30b4b056d56e096f80b9494ab80a585fff76e66
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489929"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107031129"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -134,7 +134,7 @@ IoT Edge では複数のオペレーティング システム、デバイス ア
 
 ### <a name="linux"></a>Linux
 
-次の表のすべての言語について、IoT Edge では AMD64 および ARM32 Linux デバイスの開発をサポートしています。
+次の表のすべての言語について、IoT Edge では AMD64 および ARM32 Linux コンテナーの開発をサポートしています。
 
 | 開発言語 | 開発ツール |
 | -------------------- | ----------------- |
@@ -145,16 +145,30 @@ IoT Edge では複数のオペレーティング システム、デバイス ア
 | Python | Visual Studio Code |
 
 >[!NOTE]
->Linux ARM64 デバイスの開発とデバッグは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でサポートされています。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
+>Linux ARM64 コンテナーの開発とデバッグは、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)でサポートされています。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 ### <a name="windows"></a>Windows
 
-次の表のすべての言語について、IoT Edge では AMD64 Windows デバイスの開発がサポートされています。
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+次の表のすべての言語について、IoT Edge では AMD64 Windows コンテナーの開発がサポートされています。
 
 | 開発言語 | 開発ツール |
 | -------------------- | ----------------- |
 | C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (デバッグ機能なし)<br>Visual Studio 2017/2019 |
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+IoT Edge 1.1 LTS は、Windows コンテナーをサポートする最後のリリース チャネルです。 バージョン 1.2 以降では、Windows コンテナーはサポートされません。
+
+Windows コンテナーを使用した開発の詳細については、この記事の [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) バージョンを参照してください。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="next-steps"></a>次のステップ
 

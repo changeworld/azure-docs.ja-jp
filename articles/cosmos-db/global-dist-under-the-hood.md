@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 1b47ad27abbe59eceabd15d091f88f4659d8dad6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 592a9b89379094c88881c3c8485c7e38a1613b34
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102486388"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219486"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,7 +61,7 @@ Cosmos DB のグローバル分散は、*レプリカ セット* と *パーテ�
 
 ## <a name="conflict-resolution"></a>競合の解決
 
-更新の伝達、競合解決、因果関係の追跡に関する Microsoft の設計は、以前の[エピデミック アルゴリズム](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)と [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) システムからヒントを得ています。 Cosmos DB のシステム設計ではカーネルの概念が引き続き採用され、通信に便利な参照フレームが導入されていますが、Cosmos DB システムに適用されるときに大幅な変更が加えられています。 以前のシステムには、Cosmos DB が動作するために必要なリソース管理もスケールも備わっておらず、Cosmos DB がお客様に提供するさまざまな機能 (有界整合性制約の一貫性など) や厳密で包括的な SLA も提供されていなかったので、このような変更が必要とされていました。  
+更新の伝達、競合解決、因果関係の追跡に関する Microsoft の設計は、以前の[エピデミック アルゴリズム](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)と [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf) システムからヒントを得ています。 Cosmos DB のシステム設計ではカーネルの概念が引き続き採用され、通信に便利な参照フレームが導入されていますが、Cosmos DB システムに適用されるときに大幅な変更が加えられています。 以前のシステムには、Cosmos DB が動作するために必要なリソース管理もスケールも備わっておらず、Cosmos DB がお客様に提供するさまざまな機能 (有界整合性制約の一貫性など) や厳密で包括的な SLA も提供されていなかったので、このような変更が必要とされていました。  
 
 パーティション セットは複数のリージョンで分散され、Cosmos DB の (マルチリージョン書き込み) レプリケーション プロトコルに従って、特定のパーティション セットを構成する物理パーティション間でデータをレプリケートするという点を思い出してください。 (パーティション セットの) それぞれの物理パーティションは書き込みを承諾し、対象リージョンに対してローカルなクライアントに対して通常読み取りを行います。 リージョン内の物理パーティションで承諾された書き込みは耐久性の高い状態でコミットされ、クライアントに対して確認応答する前に物理パーティションで高可用になります。 これらは仮の書き込みで、アンチエントロピ チャネルを使用してパーティション セットの他の物理パーティションに伝達されます。 クライアントは、要求ヘッダーを引き渡すことによって、仮の書き込みまたはコミット済みの書き込みを要求できます。 アンチエントロピ伝達 (伝達頻度も含む) は、パーティション セットのトポロジ、物理パーティション間のリージョンの近接度、構成されている整合性レベルに基づいて動的に行われます。 パーティション セット内では、Cosmos DB は動的に選択されたアービター パーティションが含まれるプライマリ コミット スキーマに従います。 アービターの選択は動的で、オーバーレイのトポロジに基づくパーティション セットの再構成において不可欠な部分です。 コミット済み書き込み (複数行/バッチ更新を含む) は順序どおりに実行されることが保証されます。 
 

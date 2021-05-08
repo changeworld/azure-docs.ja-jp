@@ -3,13 +3,13 @@ title: PowerShell を使用して Azure portal ダッシュボードを作成す
 description: Azure PowerShell を使用して Azure portal でダッシュボードを作成する方法について説明します。
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/25/2021
+ms.openlocfilehash: cd001a8259c54f1d86aab5983da1413c8163008c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745742"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557447"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>クイック スタート:PowerShell を使用して Azure portal ダッシュボードを作成する
 
@@ -104,7 +104,7 @@ Azure ダッシュボードはリソースであるため、JSON として表す
 ```azurepowershell-interactive
 $myPortalDashboardTemplateUrl = 'https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json'
 
-$myPortalDashboardTemplatePath = "$env:TEMP\portal-dashboard-template-testvm.json"
+$myPortalDashboardTemplatePath = "$HOME\portal-dashboard-template-testvm.json"
 
 Invoke-WebRequest -Uri $myPortalDashboardTemplateUrl -OutFile $myPortalDashboardTemplatePath -UseBasicParsing
 ```
@@ -146,19 +146,7 @@ New-AzPortalDashboard @DashboardParams
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-Azure portal 内から VM に関するデータを表示できることを確認します。
-
-1. Azure portal で、 **[ダッシュボード]** を選択します。
-
-   ![Azure portal でダッシュボードに移動する](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. ダッシュボード ページで、 **[Simple VM Dashboard]\(シンプル VM ダッシュボード\)** を選択します。
-
-   ![シンプル VM ダッシュボードに移動する](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. ダッシュボードを確認します。 一部のコンテンツは静的ですが、VM のパフォーマンスを示すグラフもあることがわかります。
-
-   ![シンプル VM ダッシュボードを確認する](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -170,6 +158,7 @@ VM と関連付けられているダッシュボードを削除するには、�
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroupName
+Remove-Item -Path "$HOME\portal-dashboard-template-testvm.json"
 ```
 
 ## <a name="next-steps"></a>次のステップ

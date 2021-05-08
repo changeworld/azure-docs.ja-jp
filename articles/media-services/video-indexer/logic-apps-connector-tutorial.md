@@ -8,16 +8,16 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: caff6a2496e907da1bdc140860c47476d1842df4
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880913"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600677"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>チュートリアル: Logic Apps および Power Automate と共に Video Indexer コネクタを使用する
 
-Azure Media Services [Video Indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) では、サーバー間の通信とクライアントとサーバーの間の通信の両方がサポートされています。Video Indexer のユーザーは、この API を利用して、ビデオとオーディオの分析情報を各自のアプリケーション ロジックに簡単に統合し、新しいエクスペリエンスと収益化の可能性を開くことができます。
+Azure Media Services [Video Indexer v2 REST API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Video) では、サーバー間の通信とクライアントとサーバーの間の通信の両方がサポートされています。Video Indexer のユーザーは、この API を利用して、ビデオとオーディオの分析情報を各自のアプリケーション ロジックに簡単に統合し、新しいエクスペリエンスと収益化の可能性を開くことができます。
 
 統合をさらに容易にするために、Microsoft では、この API との互換性を備えた  [Logic Apps](https://azure.microsoft.com/services/logic-apps/)  および  [Power Automate](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)  コネクタをサポートしています。 コネクタを使用することで、コードを 1 行も記述せずに、大量のビデオ ファイルやオーディオ ファイルにインデックスを付け、そこから効果的に分析情報を抽出するカスタム ワークフローを設定できます。 さらに、統合のためにコネクタを使用すると、ワークフローの正常性を確認しやすくなり、簡単にデバッグできるようになります。  
 

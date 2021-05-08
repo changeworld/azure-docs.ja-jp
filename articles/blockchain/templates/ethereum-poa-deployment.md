@@ -5,12 +5,12 @@ ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 70c9498bae9117585963e111bea4f1e127cab232
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4b12a9b3b830fcc4f45cb5e957232fee5a756a3
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097943"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078647"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
@@ -169,8 +169,8 @@ Transaction Permission Contract\(トランザクションのアクセス許可�
 監視 | 監視を有効にするオプション | 有効化
 既存の Azure Monitor ログへの接続 | 新しい Azure Monitor ログ インスタンスを作成するか、既存のインスタンスに参加するオプション | 新規作成
 場所 | 新しいインスタンスがデプロイされるリージョン | 米国東部
-既存のログ分析ワークスペース ID (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスのワークスペース ID||NA
-既存のログ分析主キー (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスへの接続に使用される主キー||NA
+既存のログ分析ワークスペース ID (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスのワークスペース ID|NA
+既存のログ分析主キー (既存の Azure Monitor ログへの接続 = 既存に参加)|既存の Azure Monitor ログ インスタンスへの接続に使用される主キー|NA
 
 **[OK]** を選択します。
 

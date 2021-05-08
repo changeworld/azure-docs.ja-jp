@@ -1,14 +1,14 @@
 ---
 title: NIST SP 800-53 R4 ブループリント サンプルの概要
 description: NIST SP 800-53 R4 のブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の NIST SP 800-53 R4 コントロールを評価するのに役立ちます。
-ms.date: 01/27/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: cff59a53642bcaf0828d9d6a99052bca4d651f31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9fc387fc444acf5c2ead4cc8983013a50d42907f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577135"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386109"
 ---
 # <a name="nist-sp-800-53-r4-blueprint-sample"></a>NIST SP 800-53 R4 ブループリント サンプル
 

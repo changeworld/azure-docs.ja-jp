@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: mathapli
 ms.author: mathapli
 ms.date: 01/18/2021
-ms.openlocfilehash: adcd91d58b3bb5fde3ffa81c828c58d4b6db48d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7a9fa4a6f44e88caa6f98d5e1c56adaa065fa29a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721159"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558711"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>仮想マシンの認定に関するトラブルシューティング
 
@@ -620,11 +620,10 @@ Bash 履歴を削除するには:
 * バージョン 2.8 以上の Python 
 
 
-詳細については、[VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)に関するページをご覧ください。
+詳細については、[VM 拡張機能](../virtual-machines/extensions/diagnostics-linux.md)に関するページをご覧ください。
      
 ## <a name="next-steps"></a>次の手順
 
 - [VM オファーのプロパティを構成する](azure-vm-create-properties.md)
 - [マーケットプレースのアクティブな報奨](partner-center-portal/marketplace-rewards.md)
 - 改善に関するご質問またはご意見につきましては、[パートナー センターのサポート](https://aka.ms/marketplacepublishersupport)までご連絡ください。
- 

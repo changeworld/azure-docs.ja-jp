@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: aca27b89a3b92b410fa560c8b4bd7eb3d4e0a935
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f8eddd5d346003af0c2b41d65fc0aa09c86f48c7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93346776"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167449"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
@@ -39,14 +39,14 @@ IoT Edge でサポートされているすべてのレベル 1 プラットフ�
 
 - [GitHub Manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。
 
-- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/)に追加します。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://devicecatalog.azure.com/devices?certificationBadgeTypes=IoTEdgeCompatible)に追加します。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
 
 お使いになっているモジュールは、IoT Edge でサポートされているレベル 1 のプラットフォーム ([Azure IoT Edge サポート](../../iot-edge/support.md)に記録されているもの) のサブセットを少なくとも 1 つサポートする必要があります。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - 複数のプラットフォームがサポートされている場合は、GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである最新のタグとバージョン タグ (1.0.1 など) を指定します。 マニフェスト タグは、1 つのプラットフォームのみがサポートされている場合は省略できます。
-- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)から少なくとも 1 つの IoT Edge デバイスに追加します。
+- [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)でオファーの一覧タブを使用し、「**有用なリンク**」セクションのリンクを [Azure IoT Edge 認定デバイス カタログ](https://devicecatalog.azure.com/)から少なくとも 1 つの IoT Edge デバイスに追加します。
 
 :::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="これは、パートナー センター内の「オファーの一覧」セクションのイメージです":::
 
@@ -54,7 +54,7 @@ IoT Edge でサポートされているすべてのレベル 1 プラットフ�
 
 対象の IoT Edge デバイス上の IoT Edge モジュールのサイズ (CPU、RAM、ストレージ、GPU など) は、次の要件を満たす必要があります。
 
-- モジュールは、[Azure IoT Edge 認定デバイス カタログ](https://catalog.azureiotsolutions.com/)から少なくとも 1 つの IoT Edge デバイスで動作する必要があります。
+- モジュールは、[Azure IoT Edge 認定デバイス カタログ](https://devicecatalog.azure.com/)から少なくとも 1 つの IoT Edge デバイスで動作する必要があります。
 
 - ハードウェアの最低要件をオファーの説明の最後の段落に記載する必要があります ([パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace)のオファーの一覧タブ)。 必要に応じて、推奨されるハードウェア要件が大幅に異なる場合は、要件を一覧にすることもできます。 たとえば、プランの説明の最後に次のセクションを追加します。
 

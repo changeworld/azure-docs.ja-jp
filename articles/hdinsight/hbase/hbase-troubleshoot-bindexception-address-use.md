@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/16/2019
 ms.openlocfilehash: c0a7bc7629b5c2a2e458ba94d62e341f578fdd25
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946396"
 ---
-# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>シナリオ:BindException - アドレスが Azure HDInsight で既に使用されている
+# <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>シナリオ: BindException - アドレスが Azure HDInsight で既に使用されている
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -41,9 +41,9 @@ Caused by: java.net.BindException: Address already in use
 
 1. このように突然シャットダウンされるために、リージョン サーバーのプロセスが強制終了されても、プロセスに関連付けられているポートが解放されない場合があり、最終的に `AddressBindException` が発生します。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
-再起動を開始する前に HBase リージョン サーバーの負荷を軽減します。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase:テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/) に関するページを参照してください。
+再起動を開始する前に HBase リージョン サーバーの負荷を軽減します。 また、最初にすべてのテーブルをフラッシュしておくことをお勧めします。 テーブルをフラッシュする方法については、[HDInsight HBase: テーブルをフラッシュして Apache HBase クラスターの再起動時間を短縮する方法](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/)に関するページをご覧ください。
 
 または、ワーカー ノードで次のコマンドを使用してリージョン サーバーを手動で再起動します。
 

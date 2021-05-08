@@ -8,42 +8,42 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706964"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105512"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
 このチュートリアルでは、[ARM テンプレート](../azure-resource-manager/templates/overview.md)を使ってクラウド サービス (延長サポート) のデプロイを作成する方法を説明します。 
 
-> [!IMPORTANT]
-> Cloud Services (延長サポート) は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-
 ## <a name="before-you-begin"></a>始める前に
 
 1. クラウド サービス (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認し、関連するリソースを作成します。
 
-2. [Azure portal](/azure/azure-resource-manager/management/manage-resource-groups-portal) または [PowerShell](/azure/azure-resource-manager/management/manage-resource-groups-powershell) を使用して、新しいリソース グループを作成します。 既存のリソース グループを使用する場合は、この手順は省略可能です。
+2. [Azure portal](../azure-resource-manager/management/manage-resource-groups-portal.md) または [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md) を使用して、新しいリソース グループを作成します。 既存のリソース グループを使用する場合は、この手順は省略可能です。
+
+3. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
+静的 IP を使用する場合は、サービス構成ファイル (.cscfg) で予約済み IP として参照する必要があります。 既存の IP アドレスを使用する場合は、この手順をスキップし、ARM テンプレートのロード バランサーの構成設定に IP アドレスの情報を直接追加します。
  
-3. [Azure portal](/azure/storage/common/storage-account-create?tabs=azure-portal) または [PowerShell](/azure/storage/common/storage-account-create?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。
+4. [Azure portal](../storage/common/storage-account-create.md?tabs=azure-portal) または [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。
 
-4. [Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob)、[AzCopy](/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json)、または [PowerShell](/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
+5. [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)、[AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、または [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
 
-5. (省略可能) キー コンテナーを作成し、証明書をアップロードします。
+6. (省略可能) キー コンテナーを作成し、証明書をアップロードします。
 
-    -  クラウド サービスに証明書を関連付けると、サービスとの間にセキュリティで保護された通信を実現できます。 証明書を使用するためには、サービス構成 (.cscfg) ファイル内でその証明書の拇印を指定したうえで、キー コンテナーにアップロードする必要があります。 キー コンテナーは、[Azure portal](/azure/key-vault/general/quick-create-portal) または [PowerShell](/azure/key-vault/general/quick-create-powershell) を使用して作成できます。
+    -  クラウド サービスに証明書を関連付けると、サービスとの間にセキュリティで保護された通信を実現できます。 証明書を使用するためには、サービス構成 (.cscfg) ファイル内でその証明書の拇印を指定したうえで、キー コンテナーにアップロードする必要があります。 キー コンテナーは、[Azure portal](../key-vault/general/quick-create-portal.md) または [PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。
     - 関連付けるキー コンテナーは、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。
     - また、Cloud Services (延長サポート) リソースが Key Vault から証明書を取得できるようにするために、関連付けるキー コンテナーで適切なアクセス許可を有効にする必要があります。 詳細については、[証明書とキー コンテナー](certificates-and-key-vault.md)に関するページを参照してください。
     - 以下の手順に示した ARM テンプレートの OsProfile セクションで、キー コンテナーを参照する必要があります。
 
 ## <a name="deploy-a-cloud-service-extended-support"></a>クラウド サービス (延長サポート) をデプロイする
 
+> [!NOTE]
+> ARM テンプレートとパラメーター ファイルは、[Azure portal](https://portal.azure.com) を使用することで簡単かつ迅速に生成できます。 Powershell でクラウド サービスを作成するには、ポータルを通じて、[生成された ARM テンプレートをダウンロード](generate-template-portal.md)します。
+ 
 1. 仮想ネットワークを作成します。 仮想ネットワークの名前は、サービス構成 (.cscfg) ファイル内の参照と一致している必要があります。 既存の仮想ネットワークを使用する場合は、ARM テンプレートからこのセクションを削除してください。
 
     ```json
@@ -138,7 +138,7 @@ ms.locfileid: "101706964"
     ```
  
 
-4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、クラウド サービス (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで適切なアクセス許可を有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
+4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで "[Azure Virtual Machines (展開用)]" に対する "アクセス ポリシー" を (ポータル上で) 有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
      
     ```json
     "osProfile": { 
@@ -188,7 +188,9 @@ ms.locfileid: "101706964"
     ```
 
 6. (省略可能) クラウド サービスに拡張機能を追加する拡張機能プロファイルを作成します。 この例では、リモート デスクトップ拡張機能と Microsoft Azure Diagnostics 拡張機能を追加します。
-    
+   > [!Note] 
+   > リモート デスクトップのパスワードは、長さが 8 から 123 文字であり、パスワードの複雑さに関する次の要件のうち 3 つ以上を満たしている必要があります。1) 大文字が含まれている 2) 小文字が含まれている 3) 数字が含まれている 4) 特殊文字が含まれている 5) 制御文字は使用できない
+
     ```json
         "extensionProfile": {
           "extensions": [
@@ -346,7 +348,7 @@ ms.locfileid: "101706964"
           }
         },
         {
-          "apiVersion": "2020-10-01-preview",
+          "apiVersion": "2021-03-01",
           "type": "Microsoft.Compute/cloudServices",
           "name": "[variables('cloudServiceName')]",
           "location": "[parameters('location')]",

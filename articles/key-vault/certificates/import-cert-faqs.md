@@ -3,19 +3,18 @@ title: よく寄せられる質問 - Azure Key Vault 証明書のインポート
 description: Azure Key Vault 証明書のインポートに関してよく寄せられる質問にお答えします。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 97dfc2db837f728b8cb4ece9a064f99006c9996b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202167"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767819"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault 証明書のインポートに関する FAQ
 
@@ -28,7 +27,7 @@ ms.locfileid: "102202167"
 証明書インポート操作の場合、Azure Key Vault では次の 2 つの証明書ファイル形式が受け付けられます: PEM と PFX。 公開部分のみの PEM ファイルがありますが、Azure Key Vault では、秘密キーを含む PEM または PFX ファイルが必要であり、それだけが受け付けられます。 詳細については、「[証明書を Key Vault にインポートする](./tutorial-import-certificate.md#import-a-certificate-to-key-vault)」を参照してください。
 
 ### <a name="after-i-import-a-password-protected-certificate-to-key-vault-and-then-download-it-why-cant-i-see-the-password-thats-associated-with-it"></a>パスワードで保護された証明書を Key Vault にインポートした後、それをダウンロードすると、それに関連付けられているパスワードが表示されないのはなぜですか?
-    
+     
 証明書が Key Vault にインポートされて保護された後は、関連付けられているパスワードは保存されません。 パスワードは、インポート操作の間に 1 回だけ必要です。 これは設計によるものですが、いつでも証明書をシークレットとして取得し、[Azure PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx) を使用してパスワードを追加することにより、Base64 から PFX に変換することができます。
 
 ### <a name="how-can-i-resolve-a-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-to-key-vault"></a>"パラメーターが正しくありません" というエラーを解決するにはどうすればよいですか? Key Vault にインポートに対してサポートされている証明書の形式は何ですか?
@@ -42,8 +41,8 @@ ms.locfileid: "102202167"
 いいえ。Azure Resource Manager (ARM) テンプレートを使用して証明書の操作を実行することはできません。 推奨される回避策は、Azure API、Azure CLI、または PowerShell での証明書インポート方法を使用することです。 既存の証明書がある場合は、それをシークレットとしてインポートできます。
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal を使用して証明書をインポートすると、"問題が発生しました" というエラーが発生します。 詳しく調査するにはどうすればよいですか?
-    
-さらにわかりやすいエラーを表示するには、[Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) または [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) を使用して証明書ファイルをインポートします。
+     
+さらにわかりやすいエラーを表示するには、[Azure CLI](/cli/azure/keyvault/certificate#az_keyvault_certificate_import) または [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate) を使用して証明書ファイルをインポートします。
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>次のエラーはどうすれば解決できますか: "エラーの種類: アクセスが拒否されたか、ユーザーに証明書をインポートする権限がない" ?
     

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: db303d1e7bd5a9cb7b8441f0a5da634a13113066
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5d5aaf84482dae6786ac7fd9f9ee837efca71b34
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948012"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104935"
 ---
 Bing Web Search クライアント ライブラリを使用すると、Python アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 
@@ -21,9 +21,9 @@ Bing Web Search クライアント ライブラリを使用すると、Python �
 
 
 ## <a name="prerequisites"></a>前提条件
-Bing Web Search SDK は、Python 2.7、3.3、3.4、3.5、および 3.6 と互換性があります。 このクイック スタートには仮想環境を使用することをお勧めします。
+Bing Web Search SDK は、Python 2.7 または 3.6 以上と互換性があります。 このクイック スタートには仮想環境を使用することをお勧めします。
 
-* Python 2.7、3.3、3.4、3.5、または 3.6
+* Python 2.7 または 3.6 以降
 * Python 2.7 向けの [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * Python 3.x 向けの [venv](https://pypi.python.org/pypi/virtualenv)
 

@@ -3,14 +3,14 @@ title: Azure Automation で変数を管理する
 description: この記事では、Runbook および DSC 構成内の変数を操作する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/01/2020
+ms.date: 03/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6db0c82c034aab97deee1be4aa8bdc54368521bc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 74b808b941c00c9c47fbff31223274318ebeb2a0
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98131527"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169387"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -41,7 +41,7 @@ Azure portal を使用して変数を作成する場合、変数値を入力す�
 * Boolean
 * [Null]
 
-変数は、指定されているデータ型に限定されません。 別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 `Not defined` を指定した場合、変数の値は Null に設定されます。 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) コマンドレットまたは内部 `Set-AutomationVariable` コマンドレットを使用して値を設定する必要があります。
+変数は、指定されているデータ型に限定されません。 別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 `Not defined` を指定した場合、変数の値は Null に設定されます。 [Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) コマンドレットまたは内部 `Set-AutomationVariable` コマンドレットを使用して値を設定する必要があります。 `Set-AutomationVariable` は、Azure sandbox 環境内または Windows Hybrid Runbook Worker 上での実行が意図された Runbook で使用します。
 
 Azure portal を使用して、複合型の変数の値を作成したり変更したりすることはできません。 ただし、Windows PowerShell を使用すると、任意の型の値を指定できます。 複合型は、PSObject 型 [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) ではなく、複合オブジェクト型の [Newtonsoft.Json.Linq.JProperty](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm) として取得されます。
 
@@ -56,10 +56,17 @@ PowerShell を使用して Automation 変数を作成および管理するため
 
 | コマンドレット | 説明 |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | 既存の変数の値を取得します。 値が単純型である場合、その同じ型が取得されます。 それが複合型の場合は、`PSCustomObject` 型が取得されます。 <br>**注:** 暗号化された変数の値を取得するために、このコマンドレットを使用することはできません。 それを行う唯一の方法は、Runbook または DSC 構成で内部 `Get-AutomationVariable` コマンドレットを使用することです。 「[変数にアクセスするための内部コマンドレット](#internal-cmdlets-to-access-variables)」を参照してください。 |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | 既存の変数の値を取得します。 値が単純型である場合、その同じ型が取得されます。 それが複合型の場合は、`PSCustomObject` 型が取得されます。 <sup>1</sup>|
 |[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | 新しい変数を作成し、その値を設定します。|
 |[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| 既存の変数を削除します。|
 |[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| 既存の変数の値を設定します。 |
+
+<sup>1</sup> 暗号化された変数の値を取得するために、このコマンドレットを使用することはできません。 それを行う唯一の方法は、Runbook または DSC 構成で内部 `Get-AutomationVariable` コマンドレットを使用することです。 たとえば、暗号化された変数の値を表示するには、Runbook を作成して変数を取得し、それを出力ストリームに書き込むことができます。
+
+```powershell
+$encryptvar = Get-AutomationVariable -Name TestVariable
+Write-output "The encrypted value of the variable is: $encryptvar"
+```
 
 ## <a name="internal-cmdlets-to-access-variables"></a>変数にアクセスするための内部コマンドレット
 
@@ -71,14 +78,7 @@ Runbook および DSC 構成内の変数にアクセスするための内部コ�
 |`Set-AutomationVariable`|既存の変数の値を設定します。|
 
 > [!NOTE]
-> Runbook または DSC 構成で、`Get-AutomationVariable` の `Name` パラメーターに変数を使用することは避けてください。 これらの変数を使用すると、デザイン時に、Runbook と Automation 変数との間の依存関係の検出が複雑になる可能性があります。
-
-`Get-AutomationVariable` は、PowerShell では機能せず、Runbook または DSC 構成でのみ機能します。 たとえば、暗号化された変数の値を表示するには、Runbook を作成して変数を取得し、それを出力ストリームに書き込むことができます。
-
-```powershell
-$mytestencryptvar = Get-AutomationVariable -Name TestVariable
-Write-output "The encrypted value of the variable is: $mytestencryptvar"
-```
+> Runbook または DSC 構成で、`Get-AutomationVariable` コマンドレットの `Name` パラメーターに変数を使用することは避けてください。 変数を使用すると、デザイン時に、Runbook と Automation 変数との間の依存関係の検出が複雑になる可能性があります。
 
 ## <a name="python-functions-to-access-variables"></a>変数にアクセスするための Python 関数
 
@@ -116,43 +116,53 @@ Runbook または DSC 構成では、`New-AzAutomationVariable` コマンドレ�
 次の例は、文字列型の変数を作成してから、その値を返す方法を示しています。
 
 ```powershell
+$rgName = "ResourceGroup01"
+$accountName = "MyAutomationAccount"
+$variableValue = "My String"
+
 New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" 
-–AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable' `
-–Encrypted $false –Value 'My String'
+-AutomationAccountName "MyAutomationAccount" -Name 'MyStringVariable' `
+-Encrypted $false -Value 'My String'
 $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
+-AutomationAccountName "MyAutomationAccount" -Name 'MyStringVariable').Value
 ```
 
 次の例は、複合型の変数を作成してから、そのプロパティを取得する方法を示しています。 ここでは、[Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) のプロパティのサブセットを指定し、仮想マシン オブジェクトを使用しています。
 
 ```powershell
-$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01" | Select Name, Location, Extensions
-New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
+$rgName = "ResourceGroup01"
+$accountName = "MyAutomationAccount"
+
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" -Name "VM01" | Select Name, Location, Extensions
+New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" -AutomationAccountName "MyAutomationAccount" -Name "MyComplexVariable" -Encrypted $false -Value $vm
 
 $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable"
+-AutomationAccountName "MyAutomationAccount" -Name "MyComplexVariable"
 
-$vmName = $vmValue.Name
-$vmExtensions = $vmValue.Extensions
+$vmName = $vmValue.Value.Name
+$vmTags = $vmValue.Value.Tags
 ```
 
 ## <a name="textual-runbook-examples"></a>テキスト形式の Runbook の例
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-次の例は、テキスト形式の Runbook で変数を設定し取得する方法を示しています。 この例では、`NumberOfIterations` と `NumberOfRunnings` という名前の整数型の変数と、`SampleMessage` という名前の文字列型の変数を作成することを想定しています。
+次の例は、テキスト形式の Runbook で変数を設定し取得する方法を示しています。 このサンプルでは、**numberOfIterations** および **numberOfRunnings** という名前の整数変数と、**sampleMessage** という名前の文字列変数を作成することを想定しています。
 
 ```powershell
-$NumberOfIterations = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
-$NumberOfRunnings = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
-$SampleMessage = Get-AutomationVariable -Name 'SampleMessage'
+$rgName = "ResourceGroup01"
+$accountName = "MyAutomationAccount"
 
-Write-Output "Runbook has been run $NumberOfRunnings times."
+$numberOfIterations = Get-AutomationVariable -Name "numberOfIterations"
+$numberOfRunnings = Get-AutomationVariable -Name "numberOfRunnings"
+$sampleMessage = Get-AutomationVariable -Name "sampleMessage"
 
-for ($i = 1; $i -le $NumberOfIterations; $i++) {
-    Write-Output "$i`: $SampleMessage"
+Write-Output "Runbook has been run $numberOfRunnings times."
+
+for ($i = 1; $i -le $numberOfIterations; $i++) {
+    Write-Output "$i`: $sampleMessage"
 }
-Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
+Set-AutomationVariable -Name numberOfRunnings -Value ($numberOfRunnings += 1)
 ```
 
 # <a name="python-2"></a>[Python 2](#tab/python2)
@@ -207,7 +217,7 @@ except AutomationAssetNotFound:
 
 ## <a name="graphical-runbook-examples"></a>グラフィカルな Runbook の例
 
-グラフィカルな Runbook では、内部コマンドレット `Get-AutomationVariable` または `Set-AutomationVariable` のアクティビティを追加できます。 グラフィカル エディターの [ライブラリ] ペインで各変数を右クリックし、目的のアクティビティを選択するだけです。
+グラフィカル Runbook では、**Get-AutomationVariable** または **Set-AutomationVariable** 内部コマンドレットのアクティビティを追加できます。 グラフィカル エディターの [ライブラリ] ペインで各変数を右クリックし、目的のアクティビティを選択するだけです。
 
 ![キャンバスへの変数の追加](../media/variables/runbook-variable-add-canvas.png)
 
@@ -217,6 +227,8 @@ except AutomationAssetNotFound:
 
 ## <a name="next-steps"></a>次のステップ
 
-* 変数にアクセスするためのコマンドレットの詳細については、「[Azure Automation でモジュールを管理する](modules.md)」を参照してください。
-* Runbook の一般的な情報については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」を参照してください。
-* DSC 構成の詳細については、「[Azure Automation State Configuration の概要](../automation-dsc-overview.md)」を参照してください。
+- 変数にアクセスするためのコマンドレットの詳細については、「[Azure Automation でモジュールを管理する](modules.md)」を参照してください。
+
+- Runbook の一般的な情報については、「[Azure Automation での Runbook の実行](../automation-runbook-execution.md)」を参照してください。
+
+- DSC 構成の詳細については、「[Azure Automation State Configuration の概要](../automation-dsc-overview.md)」を参照してください。

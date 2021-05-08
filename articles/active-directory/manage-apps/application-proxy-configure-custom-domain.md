@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 49edab5ed20749cb705d160e5cdc46a16bdee951
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dadb23b9a8d00d484a9c42db9007d8c5b94b4c78
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258033"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306791"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -90,7 +90,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
    
    ![クリックし、証明書をアップロードします。](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。 証明書が有効でない場合、またはパスワードに問題がある場合は、エラー メッセージが表示されます。 [アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md#application-configuration)のページに、試すことができるトラブルシューティング手順がいくつかあります。
+7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。 証明書が有効でない場合、またはパスワードに問題がある場合は、エラー メッセージが表示されます。 [アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml#application-configuration)のページに、試すことができるトラブルシューティング手順がいくつかあります。
    
    ![証明書のアップロード](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    

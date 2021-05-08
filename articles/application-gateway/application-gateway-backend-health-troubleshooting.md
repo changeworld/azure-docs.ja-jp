@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592757"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786328"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -24,7 +24,7 @@ ms.locfileid: "99592757"
 
 ### <a name="how-to-check-backend-health"></a>バックエンドの正常性を確認する方法
 
-バックエンド プールの正常性を確認するには、Azure portal の **[バックエンド正常性]** ページを使用できます。 また、[Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)、または [REST API](/rest/api/application-gateway/applicationgateways/backendhealth) を使用することもできます。
+バックエンド プールの正常性を確認するには、Azure portal の **[バックエンド正常性]** ページを使用できます。 また、[Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az_network_application_gateway_show_backend_health)、または [REST API](/rest/api/application-gateway/applicationgateways/backendhealth) を使用することもできます。
 
 これらのいずれかの方法で取得される状態は、次のいずれかになります。
 
@@ -176,12 +176,12 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 | **Error** | **アクション** |
 | --- | --- |
-| probe 状態コードの不一致: 401 を受信 | バックエンド サーバーで認証が必要かどうかを確認します。 Application Gateway の probe では、認証用の資格情報を渡すことはできません。 probe 状態コードの照合で \"HTTP 401\" を許可するか、サーバーが認証を必要としないパスに対して probe を実行します。 | |
-| probe 状態コードの不一致: 403 を受信 | アクセスは禁止されています。 バックエンド サーバーでパスへのアクセスが許可されているかどうかを確認します。 | |
-| probe 状態コードの不一致: 404 を受信 | ページが見つかりません。 バックエンド サーバーでホスト名のパスにアクセスできるかどうかを確認します。 ホスト名またはパス パラメーターをアクセス可能な値に変更します。 | |
-| probe 状態コードの不一致: 405 を受信 | Application Gateway の probe 要求で HTTP GET メソッドが使用されています。 対象のサーバーでこのメソッドが許可されているかどうかを確認します。 | |
-| probe 状態コードの不一致: 500 を受信 | 内部サーバー エラー。 バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 | |
-| probe 状態コードの不一致: 503 を受信 | Service unavailable. (サービス利用不可。) バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 | |
+| probe 状態コードの不一致: 401 を受信 | バックエンド サーバーで認証が必要かどうかを確認します。 Application Gateway の probe では、認証用の資格情報を渡すことはできません。 probe 状態コードの照合で \"HTTP 401\" を許可するか、サーバーが認証を必要としないパスに対して probe を実行します。 |
+| probe 状態コードの不一致: 403 を受信 | アクセスは禁止されています。 バックエンド サーバーでパスへのアクセスが許可されているかどうかを確認します。 |
+| probe 状態コードの不一致: 404 を受信 | ページが見つかりません。 バックエンド サーバーでホスト名のパスにアクセスできるかどうかを確認します。 ホスト名またはパス パラメーターをアクセス可能な値に変更します。 |
+| probe 状態コードの不一致: 405 を受信 | Application Gateway の probe 要求で HTTP GET メソッドが使用されています。 対象のサーバーでこのメソッドが許可されているかどうかを確認します。 |
+| probe 状態コードの不一致: 500 を受信 | 内部サーバー エラー。 バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 |
+| probe 状態コードの不一致: 503 を受信 | Service unavailable. (サービス利用不可。) バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 |
 
 または、応答が正当なものであると判断したうえで、Application Gateway が他の状態コードを正常として受け入れるようにする場合は、カスタム probe を作成できます。 この方法は、バックエンド Web サイトで認証が必要な場合に役立ちます。 プローブ要求にユーザーの資格情報が含まれないために要求が失敗し、バックエンド サーバーから HTTP 401 状態コードが返されます。
 

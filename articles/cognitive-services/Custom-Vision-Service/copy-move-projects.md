@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 7d58a8239c728f70efe3584c2649e196dffd791f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1def60843df55a80e8b7d28d7eb61e262a560111
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501092"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044154"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Custom Vision プロジェクトをコピーして移動する
 
@@ -31,7 +31,7 @@ Custom Vision プロジェクトを作成してトレーニングした後、プ
 - 2 つの Azure Custom Vision リソース。 これらがない場合、Azure portal に移動し、[新しい Custom Vision リソースを作成してください](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true)。
 - Custom Vision リソースのトレーニング キーとエンドポイント URL。 これらの値は Azure portal 上のリソースの **[概要]** タブにあります。
 - 作成済みの Custom Vision プロジェクト。 これを行う手順については、「[分類器の構築](./getting-started-build-a-classifier.md)」を参照してください。
-* [PowerShell バージョン 6.0 以降](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンドライン ユーティリティ。
+* [PowerShell バージョン 6.0 以降](/powershell/scripting/install/installing-powershell-core-on-windows)、または同様のコマンドライン ユーティリティ。
 
 ## <a name="process-overview"></a>プロセスの概要
 

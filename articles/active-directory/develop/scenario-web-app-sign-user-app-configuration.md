@@ -12,27 +12,23 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: cafd42653ca220670081cff102ba8be2de58f4a1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582249"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779955"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
 ユーザーをサインインさせる Web アプリのコードを構成する方法について説明します。
 
-## <a name="libraries-for-protecting-web-apps"></a>Web アプリを保護するためのライブラリ
+## <a name="microsoft-libraries-supporting-web-apps"></a>Web アプリをサポートしている Microsoft ライブラリ
 
 <!-- This section can be in an include for web app and web APIs -->
-Web アプリ (および Web API) を保護するために使用されるライブラリは次のとおりです。
+次の Microsoft ライブラリは、Web アプリ (および Web API) を保護するために使用されます。
 
-| プラットフォーム | ライブラリ | 説明 |
-|----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [Identity Model Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | ASP.NET および ASP.NET Core によって直接使用される .Net 用 Microsoft ID モデル拡張機能は、.NET Framework と .NET Core の両方で実行される DLL のセットを提案します。 ASP.NET または ASP.NET Core Web アプリから、**TokenValidationParameters** クラスを使用してトークン検証を制御できます (特に、一部のパートナー シナリオで)。 実際には、この複雑さは [Microsoft.Identity.Web](https://aka.ms/ms-identity-web) ライブラリにカプセル化されています。 |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java Web アプリケーションのサポート |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python Web アプリケーションのサポート |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 目的のプラットフォームに対応するタブを選択してください。
 
@@ -51,6 +47,12 @@ Web アプリ (および Web API) を保護するために使用されるライ�
 # <a name="java"></a>[Java](#tab/java)
 
 この記事および以下のコード スニペットは、MSAL Java の [Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp) サンプルから抜粋されています。
+
+完全な実装の詳細については、このサンプルをご覧ください。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+この記事および以下のコード スニペットは、MSAL Node の [Node.js Web アプリケーションのユーザー サインイン](https://github.com/Azure-Samples/ms-identity-node) サンプルから抜粋されています。
 
 完全な実装の詳細については、このサンプルをご覧ください。
 
@@ -83,7 +85,7 @@ ASP.NET Core では、これらの設定は [appsettings.json](https://github.co
     // - "https://login.microsoftonline.com/" for Azure public cloud
     // - "https://login.microsoftonline.us/" for Azure US government
     // - "https://login.microsoftonline.de/" for Azure AD Germany
-    // - "https://login.chinacloudapi.cn/" for Azure AD China operated by 21Vianet
+    // - "https://login.partner.microsoftonline.cn/common" for Azure AD China operated by 21Vianet
     "Instance": "https://login.microsoftonline.com/",
 
     // Azure AD audience among:
@@ -176,6 +178,37 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
 Azure portal では、アプリケーションの **[認証]** ページで登録する応答 URI は、アプリケーションで定義される `redirectUri` インスタンスと一致している必要があります。 つまり、`http://localhost:8080/msal4jsample/secure/aad` および `http://localhost:8080/msal4jsample/graph/me` である必要があります。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+ここでは、構成パラメーターが `index.js` に存在します。
+
+```javascript
+
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+const config = {
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/",
+        clientSecret: "Enter_the_Client_Secret_Here"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+```
+
+Azure portal では、アプリケーションの [認証] ページで登録する応答 URI は、アプリケーションで定義される redirectUri インスタンスと一致している必要があります (`http://localhost:3000/redirect`)。
+
+> [!NOTE]
+> このクイックスタートでは、わかりやすくするために、構成ファイルにクライアント シークレットを格納することをお勧めします。 運用アプリでは、キー コンテナーや環境変数など、他の方法を使用してシークレットを格納できます。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -319,6 +352,15 @@ Java サンプルでは、Spring フレームワークが使用されていま�
 
 このメソッドによってトリガーされる認証コード フローの詳細については、「[Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)」を参照してください。
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+const msal = require('@azure/msal-node');
+
+// Create msal application object
+const cca = new msal.ConfidentialClientApplication(config);
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python サンプルでは Flask が使用されます。 Flask と MSAL Python の初期化は、[app.py#L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28) で行われます。
@@ -354,6 +396,10 @@ Session(app)
 # <a name="java"></a>[Java](#tab/java)
 
 このシナリオの次の記事である[サインインとサインアウト](./scenario-web-app-sign-user-sign-in.md?tabs=java)に関する記事に進みます。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+このシナリオの次の記事である「[サインイン](./scenario-web-app-sign-user-sign-in.md?tabs=nodejs)」に関する記事に進みます。
 
 # <a name="python"></a>[Python](#tab/python)
 

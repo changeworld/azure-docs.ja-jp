@@ -2,20 +2,20 @@
 title: ソース管理の統合
 description: Azure Repos (Git および GitHub) を使用したネイティブなソース管理の統合による、専用 SQL プールのエンタープライズ クラスのデータベース DevOps エクスペリエンス。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
 ms.date: 08/23/2019
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 0864ab90f35e4af0443b418bc139ee5f8a7db665
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 53adbc0288c28c3b18632539c3f812bbca82da92
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585538"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566156"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを対象としたソース管理の統合
 

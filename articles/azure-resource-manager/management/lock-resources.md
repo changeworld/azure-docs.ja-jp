@@ -2,14 +2,14 @@
 title: 変更されないようにリソースをロックする
 description: Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28c31681b8fbe981cd51db294c91276dfd65d71f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102619173"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768725"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -32,13 +32,15 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 
 ロックを適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 ロックにより、Azure Resource Manager API への POST 要求を必要とする操作を防ぐことができます。 ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
 
-* 読み取り専用ロックを **ストレージ アカウント** に対して設定すると、ユーザーがアカウント キーを一覧表示できなくなります。 Azure Storage の[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は、アカウント キーへのアクセスを保護する POST 要求によって処理されます。これにより、ストレージ アカウントのデータに完全にアクセスできるようになります。 ストレージ アカウントに対して読み取り専用ロックが設定されている場合、アカウント キーを持っていないユーザーは、BLOB またはキュー データへのアクセスに Azure AD 資格情報を使用する必要があります。 読み取り専用ロックによって、ストレージ アカウントまたはデータ コンテナー (BLOB コンテナーまたはキュー) にスコープが設定されている Azure RBAC ロールの割り当てもできなくなります。
+* 読み取り専用ロックを **ストレージ アカウント** に対して設定すると、ユーザーがアカウント キーを一覧表示できなくなります。 Azure ストレージ の[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は、アカウント キーへのアクセスを保護する POST 要求によって処理されます。これにより、ストレージ アカウントのデータに完全にアクセスできるようになります。 ストレージ アカウントに対して読み取り専用ロックが設定されている場合、アカウント キーを持っていないユーザーは、BLOB またはキュー データへのアクセスに Azure AD 資格情報を使用する必要があります。 読み取り専用ロックによって、ストレージ アカウントまたはデータ コンテナー (BLOB コンテナーまたはキュー) にスコープが設定されている Azure RBAC ロールの割り当てもできなくなります。
 
 * **ストレージ アカウント** に削除不可のロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 この種類のロックでは、ストレージ アカウント自体が削除されないように保護するだけであり、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイルのデータは保護されません。 
 
 * **ストレージ アカウント** に読み取り専用ロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 この種類のロックでは、ストレージ アカウント自体が削除または変更されないように保護するだけであり、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイルのデータは保護されません。 
 
 * 読み取り専用ロックを **App Service** リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
+
+* **App Service プラン** を含む **リソース グループ** に対する読み取り専用ロックを設定すると、[プランのスケールアップやスケールアウト](../../app-service/manage-scale-up.md)はできません。
 
 * 読み取り専用ロックを、**仮想マシン** を含む **リソース グループ** に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
 
@@ -276,7 +278,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-デプロイされているリソースを Azure CLI でロックするには、[az lock create](/cli/azure/lock#az-lock-create) コマンドを使います。
+デプロイされているリソースを Azure CLI でロックするには、[az lock create](/cli/azure/lock#az_lock_create) コマンドを使います。
 
 リソースをロックするには、対象となるリソースの名前とそのリソース タイプ、リソース グループ名を指定します。
 
@@ -290,7 +292,7 @@ az lock create --name LockSite --lock-type CanNotDelete --resource-group example
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-ロックについての情報を取得するには、[az lock list](/cli/azure/lock#az-lock-list) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
+ロックについての情報を取得するには、[az lock list](/cli/azure/lock#az_lock_list) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
 
 ```azurecli
 az lock list

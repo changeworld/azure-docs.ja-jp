@@ -7,10 +7,10 @@ ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "102050122"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>クイック スタート:Visual Studio を使用して Azure で初めての関数を作成する
@@ -21,7 +21,7 @@ ms.locfileid: "102050122"
 
 ## <a name="1-prepare-your-environment"></a>1.環境を準備する
 
-+ アクティブなサブスクリプションがある Azure アカウントを作成します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> with an active <abbr title="Azure 内のリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ アクティブなサブスクリプションがある Azure アカウントを作成します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> アクティブ <abbr title="Azure 内のリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Visual Studio 2019](https://azure.microsoft.com/downloads/) をインストールします。インストールの過程で **[Azure の開発]** ワークロードを選択してください。 
 
@@ -108,7 +108,7 @@ ms.locfileid: "102050122"
     
     + **選択**  <abbr title="リソースが割り当てられている特定の Azure データ センターの地理的な呼称。利用可能なリージョンの一覧については、[リージョン](https://azure.microsoft.com/regions/)に関するページを参照してください。">location</abbr> ドロップダウンから
     
-    + ドロップダウンから Azure ストレージ アカウントを **選択** します。<abbr="Functions Runtime には Azure ストレージ アカウントが必須です。 [新規] を選択して汎用ストレージ アカウントを構成します。 または、ストレージ アカウントの要件を満たす既存のアカウントを選択することもできます。"></abbr> account from the drop-down
+    + ドロップダウンから Azure ストレージ アカウントを **選択** します。<abbr="Functions Runtime には Azure ストレージ アカウントが必須です。 [新規] を選択して汎用ストレージ アカウントを構成します。 または、ストレージ アカウントの要件を満たす既存のアカウントを選択することもできます。"></abbr> ドロップダウンから選択したアカウント
 
     ![[App Service の作成] ダイアログ](../../includes/media/functions-vstools-publish/functions-visual-studio-publish.png)
 

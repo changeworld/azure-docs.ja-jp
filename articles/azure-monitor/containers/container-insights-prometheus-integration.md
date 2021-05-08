@@ -3,12 +3,12 @@ title: Container insights の Prometheus 統合を構成する | Microsoft Docs
 description: この記事では、Kubernetes クラスターで Prometheus からメトリックをスクレイピングするために、Container insights エージェントを構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 8affeb472b9452e4d234e99e5ea6bb4509770fac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 149cdc8613d5034989c7660608a29309353cdabe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731733"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109643"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-container-insights"></a>Container insights で Prometheus メトリックのスクレイピングを構成する
 
@@ -48,7 +48,7 @@ URL を指定すると、Container insights によりエンドポイントのみ
 |------|-----|-----------|-------|-------------|
 | クラスター全体 | | | | メトリックのエンドポイントを収集するには、次の 3 つの方法のいずれかを指定します。 |
 | | `urls` | String | コンマ区切りの配列 | HTTP エンドポイント (指定された IP アドレスまたは有効な URL パス)。 (例: `urls=[$NODE_IP/metrics]`)。 $NODE_IP は、Container insights の特定のパラメーターであり、ノードの IP アドレスの代わりに使用できます。 すべて大文字である必要があります。) |
-| | `kubernetes_services` | String | コンマ区切りの配列 | kube-state-metrics からメトリックを収集する Kubernetes サービスの配列。 例: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`。|
+| | `kubernetes_services` | String | コンマ区切りの配列 | kube-state-metrics からメトリックを収集する Kubernetes サービスの配列。 ここでは完全修飾ドメイン名を使用する必要があります。 例: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace.svc.cluster.local:9100/metrics]`。|
 | | `monitor_kubernetes_pods` | Boolean | true または false | クラスター全体の設定で `true` に設定すると、Container insights エージェントにより、次の Prometheus 注釈についてクラスター全体の Kubernetes ポッドが収集されます。<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boolean | true または false | ポッドの収集を有効にします。 `monitor_kubernetes_pods` が `true` に設定されていること。 |
 | | `prometheus.io/scheme` | String | http または https | 既定値は HTTP 経由での収集です。 必要であれば、`https`に設定します。 | 

@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: ''
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 57024d6cb23ab273aa69bf59f4ec436a6f873a05
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 50a9f9cd59ebeecae89580c878442eb20788f462
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193375"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104593647"
 ---
 # <a name="reference-trigger-metadata-in-pipeline-runs"></a>パイプライン実行でのトリガー メタデータの参照
 
@@ -22,7 +22,7 @@ ms.locfileid: "102193375"
 
 パイプラインでは、それを呼び出したトリガーからメタデータを認識し、読み取ることが必要になる場合があります。 たとえば、タンブリング ウィンドウ トリガーの実行では、期間の開始時刻と終了時刻に基づいて、パイプラインによって異なるデータ スライスまたはフォルダーが処理されます。 Azure Data Factory では、パラメーター化と[システム変数](control-flow-system-variables.md)を使用して、トリガーからパイプラインにメタデータを渡します。
 
-このパターンは、トリガーによって期間の開始時刻と終了時刻が提供される[タンブリング ウィンドウ トリガー](how-to-create-tumbling-window-trigger.md)に特に役立ちます。
+このパターンは、トリガーがウィンドウの開始時刻と終了時刻を提供する [タンブリング ウィンドウ トリガー](how-to-create-tumbling-window-trigger.md)、トリガーが [カスタム定義 _データ_ フィールド](../event-grid/event-schema.md)の値を解析および処理する[カスタム イベント トリガー](how-to-create-custom-event-trigger.md)で特に便利です。
 
 > [!NOTE]
 > 提供されるメタデータ情報は、トリガーの種類ごとに異なります。 詳細については、[システム変数](control-flow-system-variables.md)に関するページを参照してください

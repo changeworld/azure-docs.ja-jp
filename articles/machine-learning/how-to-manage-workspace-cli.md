@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2021
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: b6b23e792aaef4d70e9ffc9be3667f0abef49e81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102489550"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220217"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 
@@ -50,14 +50,6 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 その他の認証方法については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
-
-## <a name="install-the-machine-learning-extension"></a>機械学習拡張機能をインストールする
-
-機械学習拡張機能インストールするには、次のコマンドを使用します。
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 

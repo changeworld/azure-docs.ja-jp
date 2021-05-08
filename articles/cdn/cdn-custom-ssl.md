@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 275afc504a5e7b92ae3274c02372eee6b488c782
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102616402"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058954"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -172,15 +172,18 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
 3. [証明書の管理の種類] で、 **[Use my own certificate]\(独自の証明書を使用する\)** を選択します。 
 
-    ![証明書の構成](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="CDN エンドポイントの証明書を構成する方法を示すスクリーンショット。":::
 
-4. キー コンテナー、証明書 (シークレット)、証明書のバージョンを選択します。
+4. キー コンテナー、証明書またはシークレット、証明書またはシークレットのバージョンを選択します。
 
     Azure CDN に次の情報が一覧表示されます。 
     - サブスクリプション ID に対するキー コンテナー アカウント。 
-    - 選択したキー コンテナーの下の証明書 (シークレット)。 
-    - 利用可能な証明書バージョン。 
+    - 選択したキー コンテナーの下の証明書またはシークレット。 
+    - 利用可能な証明書またはシークレットのバージョン。
  
+    > [!NOTE]
+    > キー コンテナーで新しいバージョンの証明書を利用できるようになったときに、証明書を自動的に最新バージョンにローテーションするには、証明書またはシークレットのバージョンを "最新" に設定してください。 特定のバージョンが選択されている場合、新しいバージョンを手動で再選択して、証明書をローテーションする必要があります。 新しいバージョンの証明書またはシークレットがデプロイされるまで、最大で 24 時間かかります。 
+   
 5. **[オン]** を選択して HTTPS を有効にします。
   
 6. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。

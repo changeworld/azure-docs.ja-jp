@@ -3,16 +3,18 @@ title: 'クイック スタート: Azure PowerShell を使用してルート サ
 description: このクイック スタートでは、Azure PowerShell を使用して、ルート サーバーを作成して構成する方法について学習します。
 services: route-server
 author: duongau
-ms.service: route-server
-ms.topic: quickstart
-ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: a3ab3a801872cc20b4e41bbff02ad6474c3bab8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/02/2021
+ms.topic: quickstart
+ms.service: route-server
+ms.custom:
+- mode-api
+ms.openlocfilehash: 608ec3755fcd231d5cc89bbc28a01ce172978144
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655208"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538706"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用してルート サーバーを作成および構成する
 

@@ -1,14 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
-ms.date: 10/05/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577122"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104598543"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -26,7 +26,7 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 
 ## <a name="evaluation-triggers"></a>評価のトリガー
 
-完了した評価サイクルの結果は、`PolicyStates` および `PolicyEvents` 操作を通じて `Microsoft.PolicyInsights` リソース プロバイダーで使用可能です。 Azure Policy Insights REST API の操作の詳細については、「[Azure Policy Insights](/rest/api/policy-insights/)」を参照してください。
+完了した評価サイクルの結果は、`PolicyStates` および `PolicyEvents` 操作を通じて `Microsoft.PolicyInsights` リソース プロバイダーで使用可能です。 Azure Policy Insights REST API の操作の詳細については、「[Azure Policy Insights](/rest/api/policy/)」を参照してください。
 
 割り当てられたポリシーとイニシアティブの評価は、次のようなさまざまなイベントの結果として発生します。
 
@@ -237,13 +237,13 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 
 ## <a name="command-line"></a>コマンド ライン
 
-ポータルで入手できるのと同じ情報を、REST API ([ARMClient](https://github.com/projectkudu/ARMClient) などを使用)、Azure PowerShell、Azure CLI を使用して取得できます。 REST API の完全な詳細については、[Azure Policy Insights](/rest/api/policy-insights/) リファレンスを参照してください。 REST API のリファレンス ページには、各操作に緑色の [使ってみる] ボタンがあり、ブラウザーで直接試すことができます。
+ポータルで入手できるのと同じ情報を、REST API ([ARMClient](https://github.com/projectkudu/ARMClient) などを使用)、Azure PowerShell、Azure CLI を使用して取得できます。 REST API の完全な詳細については、[Azure Policy](/rest/api/policy/) リファレンスを参照してください。 REST API のリファレンス ページには、各操作に緑色の [使ってみる] ボタンがあり、ブラウザーで直接試すことができます。
 
 REST API の例については、ARMClient または同様のツールを使用して Azure に対する認証を処理します。
 
 ### <a name="summarize-results"></a>結果の要約
 
-REST API を使用すると、コンテナー、定義、または割り当てごとに要約を実行できます。 Azure Policy Insights の [[Summarize For Subscription]\(サブスクリプションの要約\)](/rest/api/policy-insights/policystates/summarizeforsubscription) を使用した、サブスクリプション レベルでの要約の例を次に示します。
+REST API を使用すると、コンテナー、定義、または割り当てごとに要約を実行できます。 Azure Policy Insights の [[Summarize For Subscription]\(サブスクリプションの要約\)](/rest/api/policy/policystates/summarizeforsubscription) を使用した、サブスクリプション レベルでの要約の例を次に示します。
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -353,7 +353,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-ポリシー イベントについてクエリを実行する方法の詳細については、[Azure Policy のイベント](/rest/api/policy-insights/policyevents)に関する API リファレンスの記事を参照してください。
+ポリシー イベントについてクエリを実行する方法の詳細については、[Azure Policy のイベント](/rest/api/policy/policyevents)に関する API リファレンスの記事を参照してください。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -648,7 +648,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-`$policyEvents` オブジェクトの出力は次のようになります。
+`$policyEvents` オブジェクトの出力は次の出力のようになります。
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

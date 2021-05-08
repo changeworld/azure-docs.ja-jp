@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/29/2020
-ms.openlocfilehash: d59f08fc061bace55a7cd3d774380046055828ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eddcab2c0a34ef437e4f2f1e2203fee9065133a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618612"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781885"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Azure SQL Database または Azure SQL Managed Instance 内のデータベースに BACPAC ファイルをインポートする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ BACPAC ファイルから [Azure SQL Managed Instance](../managed-instance/sql-m
 
 1. ストレージ アカウントと BACPAC ファイルのコンテナーを選択してから、インポート元の BACPAC ファイルを選択します。
 
-1. 新しいデータベースのサイズ (通常、元のサイズと同じ) を指定し、インポート先の SQL Server 資格情報を指定します。 Azure SQL Database 内の新しいデータベースに使用できる値の一覧については、[データベースの作成](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)に関するページをご覧ください。
+1. 新しいデータベースのサイズ (通常、元のサイズと同じ) を指定し、インポート先の SQL Server 資格情報を指定します。 Azure SQL Database 内の新しいデータベースに使用できる値の一覧については、[データベースの作成](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)に関するページをご覧ください。
 
    ![データベース インポート 2](./media/database-import/sql-server-import-database-settings.png)
 
@@ -89,7 +89,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [SQL Managed Instance ](../managed-instance/sql-managed-instance-paas-overview.md)では現在、Azure PowerShell を使用した BACPAC ファイルからインスタンス データベースへのデータベースの移行はサポートされていません。 SQL Managed Instance にインポートするには、SQL Server Management Studio または SQLPackage を使用します。
 
 > [!NOTE]
-> portal または Powershell から送信されたインポート/エクスポート要求を処理するマシンは、bacpac ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズの DB でも大きく異なり、最大 3 倍のデータベースのサイズが必要になります。 インポート/エクスポート要求のみを実行するマシンには、450 GB のローカル ディスク領域があります。 結果として、一部の要求が「十分なディスク領域が存在しない」のエラーで失敗する場合があります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、SqlPackage を使用してこの問題を回避します。
+> portal または Powershell から送信されたインポート/エクスポート要求を処理するマシンは、bacpac ファイルとデータ層アプリケーション フレームワーク (DacFX) によって生成された一時ファイルを格納する必要があります。 必要なディスク領域は、同じサイズの DB でも大きく異なり、最大 3 倍のデータベースのサイズが必要になります。 インポート/エクスポート要求のみを実行するマシンには、450 GB のローカル ディスク領域があります。 結果として、一部の要求が "十分なディスク領域が存在しない" のエラーで失敗する場合があります。 この場合の回避策は、十分なローカル ディスク領域を持つマシンで sqlpackage.exe を実行することです。 150 GB を超えるデータベースをインポート/エクスポートする場合は、SqlPackage を使用してこの問題を回避します。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -128,7 +128,7 @@ $importStatus
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az-sql-db-import](/cli/azure/sql/db#az-sql-db-import) コマンドを使用して、Azure にデータベースのインポート要求を送信します。 データベースのサイズによって、インポートが完了するまでに時間がかかる場合があります。 DTU ベースのプロビジョニング モデルでは、レベルごとにデータベースの最大サイズを選択できます。 データベースをインポートする際は、[これらのサポートされている値のいずれか](/sql/t-sql/statements/create-database-transact-sql)を使用してください。 
+[az-sql-db-import](/cli/azure/sql/db#az_sql_db_import) コマンドを使用して、Azure にデータベースのインポート要求を送信します。 データベースのサイズによって、インポートが完了するまでに時間がかかる場合があります。 DTU ベースのプロビジョニング モデルでは、レベルごとにデータベースの最大サイズを選択できます。 データベースをインポートする際は、[これらのサポートされている値のいずれか](/sql/t-sql/statements/create-database-transact-sql)を使用してください。 
 
 ```azurecli
 # get the storage account key
@@ -147,7 +147,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="cancel-the-import-request"></a>インポート要求を取り消す
 
-[データベース操作のキャンセル API](https://docs.microsoft.com/rest/api/sql/databaseoperations/cancel) または PowerShell の [Stop-AzSqlDatabaseActivity コマンド](https://docs.microsoft.com/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)を使用します。ここでは、PowerShell コマンドの例を示します。
+[データベース操作のキャンセル API](/rest/api/sql/databaseoperations/cancel) または PowerShell の [Stop-AzSqlDatabaseActivity コマンド](/powershell/module/az.sql/Stop-AzSqlDatabaseActivity)を使用します。ここでは、PowerShell コマンドの例を示します。
 
 ```cmd
 Stop-AzSqlDatabaseActivity -ResourceGroupName $ResourceGroupName -ServerName $ServerName -DatabaseName $DatabaseName -OperationId $Operation.OperationId

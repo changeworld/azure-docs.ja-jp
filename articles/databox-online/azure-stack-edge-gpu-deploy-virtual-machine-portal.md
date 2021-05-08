@@ -6,15 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6054e7e79acaa6abf304508221c63143b9d14a45
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 139b543160b679ba063a0633f9091e7bc0ef1fc1
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102436534"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074853"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Azure portal を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -52,7 +51,7 @@ Azure portal、テンプレート、Azure PowerShell コマンドレット、お
 
 Azure portal を使用してデバイスで VM の作成と管理を開始する前に、次のことを確認してください。
 
-1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](azure-stack-edge-j-series-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」
+1. 次の説明に従って Azure Stack Edge Pro デバイスでネットワーク設定を完了していること。「[手順 1: Azure Stack Edge Pro デバイスを構成する](./azure-stack-edge-gpu-connect-resource-manager.md#step-1-configure-azure-stack-edge-pro-device)」
 
     1. コンピューティング用のネットワーク インターフェイスを有効にしていること。 このネットワーク インターフェイスの IP を使用して、VM デプロイ用の仮想スイッチを作成します。 デバイスのローカル UI で、 **[Compute]\(コンピューティング\)** に移動します。 仮想スイッチの作成に使用するネットワーク インターフェイスを選択します。
 
@@ -127,9 +126,10 @@ VM イメージを作成した後に VM を作成するには、次の手順に�
     |パラメーター |説明  |
     |---------|---------|
     |仮想マシン名     |         |
+    |エッジ リソース グループ     | VM に関連付けられているすべてのリソースの新しいリソース グループを作成します。        |
     |Image     | デバイスで使用可能な VM イメージから選択します。        |
     |サイズ     | [サポートされる VM のサイズ](azure-stack-edge-gpu-virtual-machine-sizes.md)から選択します。        |
-    |ユーザー名     | 既定のユーザー名 *azureuser* を使用します。        |
+    |ユーザー名     | 管理者が VM にサインインするには、既定のユーザー名 *azureuser* を使用します。        |
     |認証の種類    | SSH 公開キーまたはユーザー定義のパスワードから選択します。       |
     |パスワード     | 仮想マシンにサインインするパスワードを入力します。 パスワードは 12 文字以上で、定義された[複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。        |
     |[パスワードの確認入力]    | パスワードをもう一度入力します。        |
@@ -149,11 +149,7 @@ VM イメージを作成した後に VM を作成するには、次の手順に�
 
         ![VM の追加 4](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-2.png)
 
-    1.  上記の手順を繰り返して、ディスクを追加します。 ディスクが作成されると、 **[ディスク]** タブに表示されます。
-
-        ![VM の追加 5](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-disks-3.png)
-
-        **[次へ: ネットワーク]** を選択します。
+    1.  上記の手順を繰り返して、ディスクを追加します。 ディスクが作成されると、 **[ディスク]** タブに表示されます。 **[次へ: ネットワーク]** を選択します。
 
 1. **[ネットワーク]** タブで、VM のネットワーク接続を構成します。
 
@@ -168,26 +164,32 @@ VM イメージを作成した後に VM を作成するには、次の手順に�
 
     **確認と作成** を選択します。
 
+1. **[詳細設定]** タブで、カスタム データまたは cloud-init を指定して VM をカスタマイズできます。 
+
+    cloud init を使用すると、最初の起動時に VM をカスタマイズできます。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりします。 初回起動処理中に cloud-init が実行されるので、構成を適用するための追加手順は必要ありません。 cloud init の詳細については、「[cloud-init の概要](../virtual-machines/linux/tutorial-automate-vm-deployment.md#cloud-init-overview)」を参照してください。
+
+    ![VM の追加 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-advanced-1.png)    
+
 1. **[確認と作成]** タブで、VM の仕様を確認し、 **[作成]** を選択します。
 
-    ![VM の追加 7](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
+    ![VM の追加 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-review-create-1.png)
 
 1. VM の作成が開始され、最大 20 分かかることがあります。 **[Deployments]\(デプロイ\)** にアクセスして、VM の作成を監視することができます。
 
-    ![VM の追加 8](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
+    ![VM の追加 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-deployments-page-1.png)
 
     
 1. VM が正常に作成されると、 **[概要]** ページが更新されて新しい VM が表示されます。
 
-    ![VM の追加 9](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
+    ![VM の追加 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-overview-page-1.png)
 
 1. 新しく作成された VM を選択し、 **[仮想マシン]** にアクセスします。
 
-    ![VM の追加 10](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
+    ![VM の追加 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-page-1.png)
 
     VM を選択すると、詳細が表示されます。 
 
-    ![VM の追加 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
+    ![VM の追加 12](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
 ## <a name="connect-to-a-vm"></a>VM への接続
 

@@ -1,17 +1,17 @@
 ---
 title: IntelliJ を使用して Azure Functions に Java 関数を作成する
 description: IntelliJ を使用して、HTTP によってトリガーされる単純な Java 関数を作成する方法について説明します。この関数は後に、Azure のサーバーレス環境で実行するために公開します。
-author: jeffhollan
+author: yucwan
 ms.topic: how-to
 ms.date: 07/01/2018
-ms.author: jehollan
+ms.author: yucwan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45fb62b446e6b589dc0cb9287a8aebe7f4e699b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708817"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543646"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>IntelliJ を使用して Azure で初めての Java 関数を作成する
 
@@ -104,17 +104,9 @@ IntelliJ を使用して Java 関数を作成し、Azure に公開するには�
 
     ![Azure にプロジェクトをデプロイする](media/functions-create-first-java-intellij/deploy-functions-to-azure.png)
 
-1. まだ関数アプリがない場合は、 *[No available function, click to create a new one]\(使用可能な関数がありません。クリックして新規作成します\)* をクリックします。
+1. まだ関数アプリがない場合は、 *[関数]* 行で、 *+* をクリックします。 関数アプリの名前を入力し、適切なプラットフォームを選択します。ここでは、既定値をそのまま使用できます。 *[OK]* をクリックすると、先ほど作成した新しい関数アプリが自動的に選択されます。 *[Run]\(実行\)* をクリックして関数をデプロイします。
 
     ![Create function app in Azure](media/functions-create-first-java-intellij/deploy-functions-create-app.png)
-
-1. 関数アプリの名前を入力して適切なサブスクリプション、プラットフォーム、リソース グループ、App Service プランを選択します。こちらで、リソース グループや App Service プランを作成することもできます。 次に、アプリの設定を変更せずに *[OK]* をクリックして新しい関数アプリが作成されるまで数分待ちます。 *[Creating New Function App]\(新しい関数アプリを作成しています\)* 進行状況バーが消えます。
-
-    ![Azure への関数アプリのデプロイでのアプリの作成ウィザード](media/functions-create-first-java-intellij/deploy-functions-create-app-wizard.png)
-
-1. デプロイする関数アプリを選択します (作成した新しい関数アプリが自動的に選択されます)。 *[Run]\(実行\)* をクリックして関数をデプロイします。
-
-    ![スクリーンショットに、[Azure Functions のデプロイ] ダイアログボックスが示されています。](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![Azure への関数アプリのデプロイのログ](media/functions-create-first-java-intellij/deploy-functions-log.png)
 

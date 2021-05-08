@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d572509b3b2b3a0fc69f207d005984ee07ce34a4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100389180"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076821"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Azure Private Link
 
@@ -54,7 +54,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
    - セルフホステッド統合ランタイムと Azure Data Factory サービス間のコマンド通信をプライベート ネットワーク環境内で安全に実行できます。 セルフホステッド統合ランタイムと Azure Data Factory サービス間のトラフィックは Private Link を経由します。 
 - **現在、サポートされていません**:
    - テスト接続、フォルダー リストやテーブル リストの参照、スキーマの取得、データのプレビューなど、セルフホステッド統合ランタイムを使用したインタラクティブな作成が Private Link を経由します。
-   - 自動更新を有効にした場合、セルフホステッド統合ランタイムの新しいバージョンを Microsoft ダウンロード センターから自動的にダウンロードできます。
+   - 自動更新を有効にする場合に Microsoft ダウンロード センターから自動的にダウンロードできる、セルフホステッド統合ランタイムの新しいバージョンは、この時点ではサポートされていません。
 
    > [!NOTE]
    > 現在サポートされていない機能については、引き続き、前述の仮想ネットワーク内のドメインとポートまたは企業ファイアウォールを構成する必要があります。 

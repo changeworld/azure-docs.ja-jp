@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95f2e47d3cf0b967f42b988b565da3643796534d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98784310"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490762"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
@@ -2413,11 +2413,11 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 トリガーのコンカレンシー制御を有効にすると、トリガー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)まで並列実行されます。 既定のコンカレンシー制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティを使用すると、並行して実行できる新しいワークフロー インスタンスの最大数が制御されます。
 
-トリガーに対するコンカレンシーを有効にする場合の考慮事項のいくつかを次に示します。
-
-* コンカレンシーが有効になっていると、[配列のバッチ解除](#split-on-debatch)のために [SplitOn 上限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)が大幅に下がります。 項目数がこの上限を超えると、SplitOn 機能は無効になります。
+トリガーでコンカレンシーを有効にする前に確認するいくつかの考慮事項を次に示します。
 
 * コンカレンシー制御を有効にした後にコンカレンシーを無効にすることはできません。
+
+* コンカレンシーが有効になっていると、[配列のバッチ解除](#split-on-debatch)のために [SplitOn 上限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)が大幅に下がります。 項目数がこの上限を超えると、SplitOn 機能は無効になります。
 
 * コンカレンシーを有効にすると、実行時間の長いロジック アプリ インスタンスによって、新しいロジック アプリ インスタンスが待機状態になることがあります。 この状態により、Azure Logic Apps で新しいインスタンスが作成されなくなります。この状態は、同時実行の数が、指定された同時実行の最大数よりも少ない場合でも発生します。
 
@@ -2450,9 +2450,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 #### <a name="edit-in-code-view"></a>コード ビューで編集する 
 
-基になるトリガー定義で、`1` から `50` までの範囲の値を持つことができる `runtimeConfiguration.concurrency.runs` プロパティを追加します。
+基になるトリガーの定義で、`runtimeConfiguration.concurrency.runs` プロパティを追加し、[トリガーのコンカレンシーの制限](logic-apps-limits-and-config.md#concurrency-debatching)に基づいて値を設定します。 ワークフローを順番に実行するには、プロパティの値を `1` に設定します。
 
-同時実行を 10 個のインスタンスに制限する例を次に示します。
+この例では、同時実行の数を 10 インスタンスに制限しています。
 
 ```json
 "<trigger-name>": {

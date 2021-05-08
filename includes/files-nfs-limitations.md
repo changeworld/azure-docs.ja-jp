@@ -9,10 +9,10 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103439042"
 ---
 プレビュー段階では、NFS には次の制限事項があります。

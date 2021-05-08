@@ -8,13 +8,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/23/2021
+ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183201"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047353"
 ---
 # <a name="configure-maintenance-window-preview"></a>メンテナンス期間の構成 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "102183201"
 別のメンテナンス期間に変更する機能は、すべてのサービス レベルまたはすべてのリージョンで使用できるわけではありません。 可用性の詳細については、[メンテナンス期間の可用性](maintenance-window.md#availability)に関するページを参照してください。
 
 > [!Important]
-> メンテナンス期間の構成は、Azure SQL リソースのサービス レベルの変更と同様に、時間のかかる非同期操作です。 操作の終了時に発生する短いフェールオーバーを除いて、操作中にリソースを使用できます。これは、長時間のトランザクションが中断された場合でも、通常は最大 8 秒です。 フェールオーバーの影響を最小限に抑えるには、ピーク時以外に操作を実行する必要があります。
+> メンテナンス期間の構成は、Azure SQL リソースのサービス レベルの変更と同様に、時間のかかる非同期操作です。 操作の終了時に発生する短い再構成を除いて、操作中にリソースを使用できます。これは、長時間のトランザクションが中断された場合でも、通常は最大 8 秒です。 再構成の影響を最小限に抑えるには、ピーク時以外に操作を実行してください。
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>データベースの作成時にメンテナンス期間を構成する 
 
@@ -257,7 +257,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 ## <a name="configure-maintenance-window-for-existing-databases"></a>既存のデータベースのメンテナンス期間を構成する
 
 
-メンテナンス期間の選択をデータベースに適用すると、Azure によって必要な変更が適用されるため、場合によっては、短いフェールオーバー (数秒) が発生することがあります。
+メンテナンス期間の選択をデータベースに適用すると、Azure によって必要な変更が適用されるため、場合によっては、短い再構成 (数秒) が発生することがあります。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/30/2021
 ms.author: justinha
-ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bcd3ebef027ec72728be21b0fe1504236f553ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101689064"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058172"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のレプリカ セットの概念と機能
 
@@ -54,7 +54,7 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 
 マネージド ドメインの既定の SKU は *Enterprise* SKU で、複数のレプリカ セットをサポートします。 *Standard* SKU に変更した場合に追加のレプリカ セットを作成するには、マネージド ドメインを *Enterprise* または *Premium* に [アップグレード](change-sku.md)します。
 
-サポートされるレプリカ セットの最大数は、マネージド ドメインを作成したときに作成された最初のレプリカを含めて 4 つです。
+サポートされるレプリカ セットの最大数は、マネージド ドメインを作成したときに作成された最初のレプリカを含めて 5 つです。
 
 各レプリカ セットに対する課金は、ドメイン構成 SKU に基づきます。 たとえば、*Enterprise* SKU を使用し、3 つのレプリカ セットがあるマネージド ドメインがある場合、3 つのレプリカ セットごとに、1 時間単位でサブスクリプションに請求されます。
 
@@ -66,7 +66,7 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 
 ### <a name="how-many-replica-sets-can-i-create"></a>レプリカ セットはいくつ作成できますか?
 
-最大 4 つのレプリカ セットを作成できます。つまり、マネージド ドメインの初期レプリカ セットに加えて、3 つのレプリカ セットを追加できます。
+最大 5 つのレプリカ セットを作成できます。つまり、マネージド ドメインの初期レプリカ セットに加えて、4 つのレプリカ セットを追加できます。
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>ユーザーとグループの情報はレプリカ セットにどのように同期されますか?
 

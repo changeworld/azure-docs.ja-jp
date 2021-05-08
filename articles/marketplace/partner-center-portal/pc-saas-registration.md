@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93130019"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048342"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -48,7 +48,7 @@ Azure AD (Active Directory) の詳細については、[認証の概要](../../a
 **Azure AD アプリ ID** は自分の公開元 ID に関連付けられているため、自分のすべてのプランで同じ "*アプリ ID*" が使用されるようにしてください。
 
 >[!Note]
->公開元がパートナー センターに 2 つの異なるアカウントを持っている場合は、2 つの異なる Azure AD アプリ ID を使用する必要があります。  パートナー センターの各パートナー アカウントでは、このアカウントを使用して公開されるすべての SaaS プランに対して、一意の Azure AD アプリ ID を使用する必要があります。
+>公開元がパートナー センターに 2 つ以上の異なるアカウントを持っている場合、Azure AD アプリの登録の詳細は 1 つのアカウントでのみ使用できます。 別の公開元アカウントのプランに同じテナント ID、アプリ ID のペアを使用することはサポートされません。
 
 ## <a name="how-to-get-the-publishers-authorization-token"></a>公開元の承認トークンを取得する方法
 

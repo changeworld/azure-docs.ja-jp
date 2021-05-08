@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 38ec7949b5fc04852568e9e69f35f212b1edee5d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201044"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313336"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -22,11 +22,40 @@ ms.locfileid: "103201044"
 
 この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
 
-## <a name="service-fabric-72"></a>Service Fabric 7.2
+## <a name="service-fabric-80"></a>Service Fabric 8.0
 
-Service Fabric ランタイムの 7.2 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
+Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
 
 ### <a name="key-announcements"></a>重要な発表
+
+- Windows 向け .NET 5 に対するサポートの **一般提供**
+- [ステートレス NodeType](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) の **一般提供**
+- ステートレス サービス インスタンスを移動する機能
+- パラメーター化された DefaultLoad をアプリケーション マニフェストに追加する機能
+- シングルトン レプリカのアップグレード - 一部のクラスター レベル設定をアプリケーション レベルで定義する機能
+- ノード タグに基づくスマート配置の機能
+- クラスターの正常性に影響を与える異常ノードの割合のしきい値を定義する機能
+- 読み込まれた上位のサービスに対してクエリを実行する機能
+- 新しいエラー コードに対して新しい間隔を追加する機能
+- サービス インスタンスを完了としてマークする機能
+- 自動アップグレードに対するウェーブベースのデプロイ モデルのサポート
+- コンテナ化されたアプリケーションに対する readiness probe を追加
+- UseSeparateSecondaryMoveCost が既定で true に設定
+- 安全に解放できるようになったらすぐに参照を解放するように StateManager を修正
+- ユーザー シークレットの格納中は、セントラル シークレット サービスの削除をブロック
+
+
+### <a name="service-fabric-80-releases"></a>Service Fabric 8.0 リリース
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2021 年 4 月 8 日 | [Azure Service Fabric 8.0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-8-0-release/ba-p/2260016)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_80.md)|
+
+
+## <a name="previous-versions"></a>以前のバージョン
+
+### <a name="service-fabric-72"></a>Service Fabric 7.2
+
+#### <a name="key-announcements"></a>重要な発表
 
 - **プレビュー**:[**Service Fabric マネージド クラスター**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572)がパブリック プレビューになりました。 Service Fabric マネージド クラスターは、Service Fabric クラスターを構成する基になるリソースを単一の ARM リソースにカプセル化することで、クラスターのデプロイと管理を簡素化することを目的としています。 詳細については、[Service Fabric マネージド クラスターの概要](./overview-managed-cluster.md)に関する記事を参照してください。
 - **プレビュー**:[**ノード数よりも多くの数のインスタンスを持つステートレス サービスのサポート**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)がパブリック プレビューになりました。 配置ポリシーを使用すると、1 つのノードにパーティションの複数のステートレス インスタンスを作成できます。
@@ -40,7 +69,7 @@ Service Fabric ランタイムの 7.2 リリースでは、ツールと SDK の�
 - **RunToCompletion**:Service Fabric は、ゲスト実行可能ファイルの実行完了の概念をサポートしています。 この更新により、レプリカの実行が完了すると、このレプリカに割り当てられたクラスター リソースが解放されます。
 - [**リソース ガバナンスのサポートの強化**](./service-fabric-resource-governance.md): CPU およびメモリ リソースの要求と制限の仕様が許可されるようになります。
 
-### <a name="service-fabric-72-releases"></a>Service Fabric 7.2 リリース
+#### <a name="service-fabric-72-releases"></a>Service Fabric 7.2 リリース
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
 | 2020 年 10 月 21 日 | [Azure Service Fabric 7.2](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-release/ba-p/1805653)  | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72-releasenotes.md)|
@@ -51,13 +80,12 @@ Service Fabric ランタイムの 7.2 リリースでは、ツールと SDK の�
 | 2021 年 2 月 17 日 | [Azure Service Fabric 7.2 の 6 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 | 2021 年 3 月 10 日 | [Azure Service Fabric 7.2 の 7 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-seventh-refresh-release/ba-p/2201100) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU7-releasenotes.md)
 
-## <a name="previous-versions"></a>以前のバージョン
 
 ### <a name="service-fabric-71"></a>Service Fabric 7.1
 
 Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危機が発生しているため、お客様が直面している困難な状況を考慮して、クラスターが自動アップグレードを受け取るように設定されていても自動的にアップグレードしません。 予期しない中断を防ぎ、お客様が最適なタイミングでアップグレードを適用できるよう、あらためてお知らせするまでの間、自動アップグレードを一時停止します。
 
-7\.1 への更新は、[Azure portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) を使用するか、[Azure Resource Manager デプロイ](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template)によって行うことができます。
+7\.1 への更新は、[Azure portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) を使用するか、[Azure Resource Manager デプロイ](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)によって行うことができます。
 
 自動アップグレードを有効にした Service Fabric クラスターには、Microsoft が標準的なロールアウト手順を再開した時点で、7.1 更新プログラムが自動で届き始めます。 標準ロールアウトを開始する際は、別途、[Service Fabric テクノロジ コミュニティ サイト](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で事前にお知らせいたします。
 また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](./service-fabric-versions.md#supported-versions)で公開しています。 
@@ -72,7 +100,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
       -  全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
 - [**Service Fabric アプリケーションのサービス エンドポイント証明書をサブジェクトの共通名**](./service-fabric-service-manifest-resources.md)で宣言可能。
 - [**コンテナー化されたサービスの正常性プローブをサポート**](./probes-codepackage.md): コンテナー化されたアプリケーションに対する Liveness Probe メカニズムがサポートされます。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。 
-- [コンテナー](/azure/service-fabric/service-fabric-containers-overview)と [ゲスト実行可能](/azure/service-fabric/service-fabric-guest-executables-introduction)アプリケーションの [**初期化子コード パッケージをサポート**](./initializer-codepackages.md)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
+- [コンテナー](./service-fabric-containers-overview.md)と [ゲスト実行可能](./service-fabric-guest-executables-introduction.md)アプリケーションの [**初期化子コード パッケージをサポート**](./initializer-codepackages.md)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
 - **FabricObserver と ClusterObserver** は、SF クラスターのさまざまな側面に関連した Service Fabric テレメトリをキャプチャするステートレス アプリケーションです。 そのどちらのアプリケーションも運用環境の Windows クラスターへのデプロイに対応しており、ApplicationInsights、EventSource、LogAnalytics の実装済みのサポートを利用してさまざまなテレメトリをキャプチャできます。
     - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) - すべてのノード上で実行され、正常性イベントを生成します。ユーザーによって構成されたリソース使用量のしきい値に達すると、テレメトリが出力されます。 このリリースでは、監視、データ管理、正常性イベントの詳細、構造化テレメトリ全体にわたり、何点か機能強化が行われています。
      - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) - 1 つのノード上で動作し、クラスター レベルの正常性テレメトリをキャプチャします。 このリリースの ClusterObserver は、ノードの状態も監視し、ユーザーが指定した所定の時間、ダウン、無効化中、無効のいずれかの状態が続くと、テレメトリを出力します。

@@ -3,18 +3,17 @@ title: 仮想ネットワークの作成 - クイック スタート - Azure CLI
 titlesuffix: Azure Virtual Network
 description: このクイック スタートでは、Azure CLI を使用して仮想ネットワークを作成する方法について説明します。 仮想ネットワークでは、Azure リソースが互いに通信を行ったり、インターネットと通信したりできるようになります。
 author: KumudD
-Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
 ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3f4cd0a09c64c8c89116bf3a7dec40bae9f05f71
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 407207c0dcb6270f08fb511a01e6e4e835b9fab9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199069"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776755"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用した仮想ネットワークの作成
 
@@ -84,6 +83,8 @@ az vm create \
   --generate-ssh-keys
 ```
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ### <a name="azure-cli-output-message"></a>Azure CLI の出力メッセージ
 
 VM の作成には数分かかります。 Azure で VM が作成された後、Azure CLI では次のような出力が返されます。
@@ -104,7 +105,7 @@ VM の作成には数分かかります。 Azure で VM が作成された後、
 
 ## <a name="vm-public-ip"></a>VM のパブリック IP
 
-**myVM2** のパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。
+**myVM2** のパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。
 
 ```azurecli-interactive
 az network public-ip show \

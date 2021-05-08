@@ -4,14 +4,14 @@ description: Azure HPC Cache ストレージ ターゲットを編集する方�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0c505937d4adbe2596e91ed7269676e60ada8253
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772589"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258913"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 
@@ -151,7 +151,10 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 ### <a name="change-the-usage-model"></a>使用モデルを変更する
 
-使用モデルは、キャッシュによってデータが保持される方法に影響します。 詳細については、「[使用モデルを選択する](hpc-cache-add-storage.md#choose-a-usage-model)」を参照してください。
+使用モデルは、キャッシュによってデータが保持される方法に影響します。 詳細については、「[キャッシュ使用モデルについて](cache-usage-models.md)」を参照してください。
+
+> [!NOTE]
+> 使用モデルを変更する場合は、NLM エラーを回避するために、クライアントの再マウントが必要になることがあります。 詳細については、「[NLM のクライアントを再マウントするタイミングを把握する](cache-usage-models.md#know-when-to-remount-clients-for-nlm)」を参照してください。
 
 NFS ストレージ ターゲットの使用モデルを変更するには、次のいずれかの方法を使用します。
 

@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - Web アプリから Teams 会議に参加する
-description: このチュートリアルでは、JavaScript 用 Azure Communication Services 通話クライアント ライブラリを使用して Teams 会議に参加する方法について説明します
+description: このチュートリアルでは、JavaScript 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 43f6241f0da0ecc9c68cf60e9f1a0482509374f3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6747d1d3cfba1c9e2bee7a8a7a48d67d6bed9f8e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488002"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564643"
 ---
-このクイックスタートでは、JavaScript 用 Azure Communication Services 通話クライアント ライブラリを使用して Teams 会議に参加する方法について説明します。
+このクイックスタートでは、JavaScript 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -112,8 +112,8 @@ teamsMeetingJoinButton.addEventListener("click", () => {
 
 ## <a name="get-the-teams-meeting-link"></a>Teams 会議のリンクを取得する
 
-Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)で詳しく説明されています。
-Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
+Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
+Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
 
 ## <a name="run-the-code"></a>コードの実行
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
 ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101711503"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
@@ -317,7 +317,7 @@ Application Insights では、テレメトリ モジュールを使用して、�
 * `DependencyTrackingTelemetryModule` - 送信 HTTP 呼び出しと SQL 呼び出しから [DependencyTelemetry](./asp-net-dependencies.md) を収集します。
 * `PerformanceCollectorModule` - Windows PerformanceCounters を収集します。
 * `QuickPulseTelemetryModule` - Live Metrics ポータルで表示するテレメトリを収集します。
-* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
+* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service Environment について、(カスタム メトリックとして送信される) ハート ビートを収集します。
 * `AzureInstanceMetadataTelemetryModule` - アプリケーションがホストされる Azure VM 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
 * `EventCounterCollectionModule` - [EventCounter](eventcounters.md) を収集します。 このモジュールは新機能であり、SDK バージョン 2.8.0 以降で使用できます。
 

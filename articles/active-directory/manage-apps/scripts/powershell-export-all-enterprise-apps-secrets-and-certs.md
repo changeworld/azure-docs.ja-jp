@@ -2,21 +2,21 @@
 title: PowerShell のサンプル - Azure Active Directory テナントのエンタープライズ アプリのシークレットと証明書をエクスポートします。
 description: Azure Active Directory テナントで指定したエンタープライズ アプリのすべてのシークレットと証明書をエクスポートする PowerShell の例。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: 20caefe74a7c047fb8690bb1d9e6f4eb9da7e9b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 536197ebc5df94447f3937773e0447e47961bd92
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102635197"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378603"
 ---
 # <a name="export-secrets-and-certificates-for-enterprise-apps"></a>エンタープライズ アプリのシークレットと証明書をエクスポートする
 この PowerShell スクリプトの例では、指定したエンタープライズ アプリのすべてのシークレット、証明書、所有者をディレクトリから CSV ファイルにエクスポートします。

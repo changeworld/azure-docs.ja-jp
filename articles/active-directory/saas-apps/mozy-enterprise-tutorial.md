@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 97294bdd088f50a46786c3568f4230706f750c4c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dfeb99fdbd5cf2b0784982b385d46c3a16901ec8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92520950"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル: Azure Active Directory と Mozy Enterprise の統合
 
@@ -104,7 +104,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
     **[サインオン URL]** ボックスに、`https://<tenantname>.Mozyenterprise.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Mozy Enterprise クライアント サポート チーム](https://support.mozy.com/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Mozy Enterprise クライアント サポート チーム](https://www.safenames.net/about-us/contact-us)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -120,13 +120,13 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
     c. ログアウト URL
 
-### <a name="configure-mozy-enterprise-single-sign-on"></a>Mozy Enterprise でシングル サインオンを構成する
+### <a name="configure-mozy-enterprise-single-sign-on&quot;></a>Mozy Enterprise でシングル サインオンを構成する
 
 1. 別の Web ブラウザーのウィンドウで、Mozy Enterprise の企業サイトに管理者としてログインします。
 
 2. **[構成]** セクションで、 **[認証ポリシー]** をクリックします。
    
-    ![[構成] で [認証ポリシー] が選択されていることを示すスクリーンショット。](./media/mozy-enterprise-tutorial/ic777314.png "[認証ポリシー]")
+    ![[構成] で [認証ポリシー] が選択されていることを示すスクリーンショット。](./media/mozy-enterprise-tutorial/ic777314.png &quot;[認証ポリシー]")
 
 3. **[認証ポリシー]** セクションで、次の手順に従います。
    
@@ -199,7 +199,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-mozy-enterprise-test-user"></a>Mozy Enterprise テスト ユーザーの作成
+### <a name="create-mozy-enterprise-test-user&quot;></a>Mozy Enterprise テスト ユーザーの作成
 
 Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。 Mozy Enterprise の場合、プロビジョニングは手動で行います。
 
@@ -212,7 +212,7 @@ Azure AD ユーザーが Mozy Enterprise にログインできるようにする
 
 2. **[ユーザー]** をクリックして、 **[新規ユーザーの追加]** をクリックします。
    
-    ![ユーザー](./media/mozy-enterprise-tutorial/ic777317.png "ユーザー")
+    ![ユーザー](./media/mozy-enterprise-tutorial/ic777317.png &quot;ユーザー")
    
     >[!NOTE]
     >**[新規ユーザーの追加]** オプションは、 **[認証ポリシー]** で **[Mozy]** が選択されている場合にのみ表示されます。 SAML 認証が構成されている場合、ユーザーはシングル サインオンでの初回ログイン時に自動的に追加されます。

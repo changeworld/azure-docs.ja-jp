@@ -2,17 +2,17 @@
 title: Linux ベースの Azure 仮想マシン上で実行される DH2i DxEnterprise を使用して Always On 可用性グループを設定する
 description: Linux Azure 仮想マシン上でクラスター マネージャーに DH2i DxEnterprise を使用し、SQL Server の可用性グループによって高可用性を確保します
 ms.date: 03/04/2021
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sql
 ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 0500f4143ad7cbdaaa8406af2b242e0d40b1caa2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 56002aaa977b94b0fabee4f17343f483706eb77d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219284"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449428"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>チュートリアル - Linux ベースの Azure 仮想マシン上で実行される DH2i DxEnterprise を使用して 3 ノードの Always On 可用性グループを設定する
 
@@ -39,22 +39,22 @@ DxEnterprise の詳細については、[DH2i DxEnterprise](https://dh2i.com/dxe
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure に 4 つの VM を作成します。 [Azure portal に Linux 仮想マシンを作成するクイックスタート](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)の記事に従って Linux ベースの仮想マシンを作成します。 同様に、Windows ベースの仮想マシンを作成する場合は、記事「[クイックスタート: Azure portal で Windows 仮想マシンを作成する](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)」を参照してください。
-- クラスターに参加する Linux ベースの VM すべてに .NET 3.1 をインストールします。 選択した Linux オペレーティング システムに応じて、[こちら](https://docs.microsoft.com/dotnet/core/install/linux)にまとめられている手順に従ってください。
+- Azure に 4 つの VM を作成します。 [Azure portal に Linux 仮想マシンを作成するクイックスタート](../../../virtual-machines/linux/quick-create-portal.md)の記事に従って Linux ベースの仮想マシンを作成します。 同様に、Windows ベースの仮想マシンを作成する場合は、記事「[クイックスタート: Azure portal で Windows 仮想マシンを作成する](../../../virtual-machines/windows/quick-create-portal.md)」を参照してください。
+- クラスターに参加する Linux ベースの VM すべてに .NET 3.1 をインストールします。 選択した Linux オペレーティング システムに応じて、[こちら](/dotnet/core/install/linux)にまとめられている手順に従ってください。
 - 可用性グループ管理機能に対応した有効な DxEnterprise ライセンスが必要になります。 詳細については、[DxEnterprise 無料試用版](https://dh2i.com/trial/)に関するページで無料試用版の入手方法をご確認ください。
 
 ## <a name="install-sql-server-on-all-the-azure-vms-that-will-be-part-of-the-availability-group"></a>可用性グループに含めるすべての Azure VM に SQL Server をインストールする
 
-このチュートリアルでは、可用性グループを実行する 3 ノードの Linux ベース クラスターを設定します。 選択した Linux プラットフォームに応じて、[Linux への SQL Server のインストール](https://docs.microsoft.com/sql/linux/sql-server-linux-overview#install)に関するドキュメントに従ってください。 このチュートリアルでは、[SQL Server ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)もインストールするようお勧めします。
+このチュートリアルでは、可用性グループを実行する 3 ノードの Linux ベース クラスターを設定します。 選択した Linux プラットフォームに応じて、[Linux への SQL Server のインストール](/sql/linux/sql-server-linux-overview#install)に関するドキュメントに従ってください。 このチュートリアルでは、[SQL Server ツール](/sql/linux/sql-server-linux-setup-tools)もインストールするようお勧めします。
  
 > [!NOTE]
-> 選択した Linux OS が、[DH2i DxEnterprise (「最小システム要件」セクションを参照)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) と [Microsoft SQL Server](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms) の両方でサポートされる一般的なディストリビューションであることを確認してください。
+> 選択した Linux OS が、[DH2i DxEnterprise (「最小システム要件」セクションを参照)](https://dh2i.com/wp-content/uploads/DxEnterprise-v20-Admin-Guide.pdf) と [Microsoft SQL Server](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms) の両方でサポートされる一般的なディストリビューションであることを確認してください。
 >
 > この例では、DH2i DxEnterprise と Microsoft SQL Server の両方でサポートされている Ubuntu 18.04 を使用します。
 
 このチュートリアルでは、Windows VM に SQL Server はインストールしません。このノードはクラスターには参加せず、DxAdmin を使用してクラスターを管理する目的でのみ使用されるためです。
 
-この手順が完了した時点で、可用性グループに参加することになる Linux ベースの 3 つの VM すべてに SQL Server と [SQL Server ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) (任意) がインストールされているはずです。
+この手順が完了した時点で、可用性グループに参加することになる Linux ベースの 3 つの VM すべてに SQL Server と [SQL Server ツール](/sql/linux/sql-server-linux-setup-tools) (任意) がインストールされているはずです。
  
 ## <a name="install-dxenterprise-on-all-the-vms-and-configure-the-cluster"></a>すべての VM に DxEnterprise をインストールしてクラスターを構成する
 
@@ -84,7 +84,7 @@ Windows VM に DxAdmin クライアント ツールだけをインストール�
 この手順を終えた時点で、Linux VM 上には DxEnterprise クラスターが作成され、Windows クライアント マシンには DxAdmin クライアントがインストールされているはずです。 
 
 > [!NOTE]
-> いずれか 1 つのノードを "*構成のみモード*" ([こちら](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes)を参照) として追加して自動フェールオーバーを有効にした 3 ノード クラスターを作成することもできます。 
+> いずれか 1 つのノードを "*構成のみモード*" ([こちら](/sql/database-engine/availability-groups/windows/availability-modes-always-on-availability-groups#SupportedAvModes)を参照) として追加して自動フェールオーバーを有効にした 3 ノード クラスターを作成することもできます。 
 
 ## <a name="create-the-virtual-hosts-to-provide-failover-support-and-high-availability"></a>フェールオーバーのサポートと高可用性を提供する仮想ホストを作成する
 
@@ -100,7 +100,7 @@ DxAdmin を実行する Windows クライアント マシンに接続し、前�
 
 ## <a name="create-the-internal-azure-load-balancer-for-listener-optional"></a>リスナー用の内部 Azure ロード バランサーを作成する (省略可)
 
-この手順 (省略可) では、可用性グループ リスナーの IP アドレスを保持する Azure ロード バランサーを作成して構成できます。 Azure Load Balancer の詳細については、[Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) に関するページを参照してください。 DxAdmin を使用して Azure ロード バランサーと可用性グループ リスナーを構成する場合は、DxEnterprise の [Azure Load Balancer クイック スタート ガイド](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)に従ってください。
+この手順 (省略可) では、可用性グループ リスナーの IP アドレスを保持する Azure ロード バランサーを作成して構成できます。 Azure Load Balancer の詳細については、[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) に関するページを参照してください。 DxAdmin を使用して Azure ロード バランサーと可用性グループ リスナーを構成する場合は、DxEnterprise の [Azure Load Balancer クイック スタート ガイド](https://dh2i.com/docs/20-0/dxenterprise/dh2i-dxenterprise-20-0-software-azure-load-balancer-quick-start-guide/)に従ってください。
 
 この手順を終えた時点で、可用性グループ リスナーが作成されて、内部 Azure ロード バランサーにマップされているはずです。
 
@@ -121,7 +121,7 @@ DxEnterprise 内での操作について詳しくは、[DxEnterprise 管理者�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Linux 上の可用性グループ](https://docs.microsoft.com/sql/linux/sql-server-linux-availability-group-overview)の詳細
-- [クイックスタート: Azure portal で Linux 仮想マシンを作成する](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
-- [クイック スタート:Azure Portal で Windows 仮想マシンを作成する](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
-- [SQL Server 2019 on Linux でサポートされるプラットフォーム](https://docs.microsoft.com/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)
+- [Linux 上の可用性グループ](/sql/linux/sql-server-linux-availability-group-overview)の詳細
+- [クイックスタート: Azure portal で Linux 仮想マシンを作成する](../../../virtual-machines/linux/quick-create-portal.md)
+- [クイック スタート:Azure Portal で Windows 仮想マシンを作成する](../../../virtual-machines/windows/quick-create-portal.md)
+- [SQL Server 2019 on Linux でサポートされるプラットフォーム](/sql/linux/sql-server-linux-release-notes-2019#supported-platforms)

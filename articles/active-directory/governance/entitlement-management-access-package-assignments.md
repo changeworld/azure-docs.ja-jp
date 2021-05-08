@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18bc7ca9e108a35fd27f7b3155f186221a8caae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e00fe3761824462252ce4984beb754385f3eca9
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980061"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532149"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
@@ -58,7 +58,7 @@ Azure AD エンタイトルメント管理を使用し、ユーザーをアク�
 
 ### <a name="viewing-assignments-programmatically"></a>プログラムによる割り当ての表示
 
-Microsoft Graph を使用して、アクセス パッケージの割り当てを取得することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignments をリストする](/graph/api/accesspackageassignment-list?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、アクセス パッケージの割り当てを取得することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignments をリストする](/graph/api/accesspackageassignment-list?view=graph-rest-beta&preserve-view=true)ことができます。
 
 ## <a name="directly-assign-a-user"></a>ユーザーを直接割り当てる
 
@@ -90,7 +90,7 @@ Microsoft Graph を使用して、アクセス パッケージの割り当てを
 
 ### <a name="directly-assigning-users-programmatically"></a>プログラムによるユーザーの直接割り当て
 
-Microsoft Graph を使用して、アクセス パッケージにユーザーを直接割り当てることもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignmentRequest を作成する](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、アクセス パッケージにユーザーを直接割り当てることもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageAssignmentRequest を作成する](/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta&preserve-view=true)ことができます。
 
 ## <a name="remove-an-assignment"></a>割り当ての削除
 

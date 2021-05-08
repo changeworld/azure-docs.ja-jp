@@ -1,62 +1,66 @@
 ---
 title: BLOB のバージョン管理
 titleSuffix: Azure Storage
-description: Blob Storage のバージョン管理では、以前のバージョンのオブジェクトが自動的に維持され、タイムスタンプで識別されます。 以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+description: Blob Storage のバージョン管理では、以前のバージョンのオブジェクトが自動的に維持され、それらはタイムスタンプで識別されます。 以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 692a820bea69071485a973a988ae91bd70b74f35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100380816"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305057"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
-Blob Storage のバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
-
-BLOB のバージョン管理はストレージ アカウントに対して有効になり、ストレージ アカウント内のすべての BLOB に適用されます。 ストレージ アカウントに対して BLOB のバージョン管理を有効にした後、Azure Storage によって、ストレージ アカウント内のすべての BLOB のバージョンが自動的に維持されます。
-
-Microsoft では、優れたデータ保護を実現するために、BLOB のバージョン管理を使用して以前のバージョンの BLOB を維持することをお勧めします。 可能であれば、BLOB スナップショットではなく、BLOB のバージョン管理を使用して、以前のバージョンを維持するようにしてください。 BLOB スナップショットでは、以前のバージョンの BLOB が維持されるという点で似たような機能が提供されますが、スナップショットはアプリケーションを使用して手動で維持する必要があります。
-
-BLOB のバージョン管理を有効にする方法については、「[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)」を参照してください。
-
-> [!IMPORTANT]
-> ストレージ アカウントやコンテナーが誤って削除された場合、BLOB のバージョン管理はその復旧には役立ちません。 ストレージ アカウントが誤って削除されないようにするには、ストレージ アカウント リソースに対してロックを構成します。 Azure リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。 コンテナーが誤って削除されないようにするには、ストレージ アカウントに対してコンテナーの論理的な削除を構成します。 詳細については、「[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)」を参照してください。
+Blob Storage のバージョン管理を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。 BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
+## <a name="recommended-data-protection-configuration"></a>推奨されるデータ保護の構成
+
+BLOB のバージョン管理は、BLOB データの包括的なデータ保護戦略の一部です。 BLOB データの最適な保護のために、Microsoft では次のデータ保護機能をすべて有効にすることをお勧めしています。
+
+- BLOB のバージョン管理。以前のバージョンの BLOB が自動的に維持されます。 BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。 BLOB のバージョン管理を有効にする方法については、「[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)」をご覧ください。
+- コンテナーの論理的な削除。削除されたコンテナーを復元します。 コンテナーの論理的な削除を有効にする方法については、「[コンテナーの論理的な削除を有効にして管理する](soft-delete-container-enable.md)」をご覧ください。
+- BLOB の論理的な削除。削除された BLOB、スナップショット、またはバージョンを復元します。 BLOB の論理的な削除も有効にする方法については、[BLOB の論理的な削除の有効化と管理](soft-delete-blob-enable.md)に関する記事をご覧ください。
+
+データ保護に関する Microsoft の推奨事項の詳細については、「[データ保護の概要](data-protection-overview.md)」を参照してください。
+
 ## <a name="how-blob-versioning-works"></a>BLOB のバージョン管理のしくみ
 
-バージョンによって、指定された時点での BLOB の状態がキャプチャされます。 ストレージ アカウントに対して BLOB のバージョン管理が有効になっている場合、BLOB が変更または削除されるたびに、Azure Storage によって新しいバージョンの BLOB が自動的に作成されます。
+バージョンによって、指定された時点での BLOB の状態がキャプチャされます。 各バージョンはバージョン ID で識別されます。 ストレージ アカウントに対して BLOB のバージョン管理が有効になっている場合、BLOB が最初に作成されたときと、その BLOB が後で変更されるたびに、一意の ID を持つ新しいバージョンが Azure Storage によって自動的に作成されます。
 
-バージョン管理が有効になっている BLOB を作成すると、新しい BLOB が現在のバージョンの BLOB (またはベース BLOB) になります。 その後、その BLOB を変更すると、変更される前の BLOB の状態をキャプチャするバージョンが Azure Storage によって作成されます。 変更された BLOB は、新しい現在のバージョンになります。 BLOB を変更するたびに、新しいバージョンが作成されます。
+バージョン ID によって、現在のバージョンまたは以前のバージョンを識別することができます。 BLOB には、一度に 1 つの現在のバージョンのみを含めることができます。
 
-次の図は、書き込み操作と削除操作でバージョンがどのように作成され、以前のバージョンがどのように現在のバージョンに昇格されるかを示しています。
+新しい BLOB を作成すると、1 つのバージョンが存在することになり、そのバージョンが現在のバージョンになります。 既存の BLOB を変更すると、現在のバージョンが以前のバージョンになります。 更新された状態を取り込むために新しいバージョンが作成され、その新しいバージョンが現在のバージョンになります。 ある BLOB を削除すると、その BLOB の現在のバージョンが前のバージョンになり、現在のバージョンは存在しなくなります。 その BLOB の以前のすべてのバージョンが保持されます。
+
+次の図は、書き込み操作でバージョンがどのように作成され、以前のバージョンがどのように現在のバージョンに昇格されるかを示しています。
 
 :::image type="content" source="media/versioning-overview/blob-versioning-diagram.png" alt-text="BLOB のバージョン管理のしくみを示す図":::
 
-BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)」を参照してください。
-
-バージョン管理が有効になっている BLOB を削除すると、削除される前の BLOB の状態をキャプチャするバージョンが Azure Storage によって作成されます。 その後、現在のバージョンの BLOB は削除されますが、BLOB のバージョンは保持されるため、必要に応じて再作成することができます。 
-
 BLOB のバージョンは変更できません。 既存の BLOB のバージョンの内容やメタデータを変更することはできません。
 
-BLOB のバージョン管理は、汎用 v2、ブロック BLOB、Blob Storage の各アカウントで使用できます。 階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
+BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)」を参照してください。
+
+BLOB のバージョン管理は、汎用 v2、Premium ブロック BLOB、および従来の BLOB ストレージ アカウントで使用できます。 階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
 
 バージョン 2019-10-10 以降の Azure Storage REST API では、BLOB のバージョン管理がサポートされています。
 
+> [!IMPORTANT]
+> ストレージ アカウントやコンテナーが誤って削除された場合、BLOB のバージョン管理はその復旧には役立ちません。 ストレージ アカウントが誤って削除されないようにするには、ストレージ アカウント リソースに対してロックを構成します。 ストレージ アカウントのロックの詳細については、「[Azure Resource Manager のロックをストレージ アカウントに適用する](../common/lock-account-resource.md)」を参照してください。
+
 ### <a name="version-id"></a>バージョン ID
 
-各 BLOB のバージョンは、バージョン ID によって識別されます。 バージョン ID の値は、BLOB が書き込まれたか更新された時点のタイムスタンプです。 バージョン ID は、バージョンの作成時に割り当てられます。
+各 BLOB のバージョンは、一意のバージョン ID によって識別されます。 バージョン ID の値は、BLOB が更新された時点のタイムスタンプです。 バージョン ID は、バージョンの作成時に割り当てられます。
 
-バージョン ID を指定することにより、特定のバージョンの BLOB に対する読み取りや削除の操作を実行できます。 バージョン ID を省略した場合、現在のバージョン (ベース BLOB) に対して操作が行われます。
+バージョン ID を指定することにより、特定のバージョンの BLOB に対する読み取りや削除の操作を実行できます。 バージョン ID を省略した場合、現在のバージョンに対して操作が行われます。
 
 書き込み操作を呼び出して BLOB を作成または変更すると、Azure Storage によって、応答で *x-ms-version-id* ヘッダーが返されます。 このヘッダーには、書き込み操作で作成された現在のバージョンの BLOB のバージョン ID が含まれています。
 
@@ -66,40 +70,21 @@ BLOB のバージョン管理は、汎用 v2、ブロック BLOB、Blob Storage 
 
 BLOB のバージョン管理が有効になっている場合、BLOB に対する各書き込み操作で新しいバージョンが作成されます。 書き込み操作には [Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob)、および [Set Blob Metadata](/rest/api/storageservices/set-blob-metadata) が含まれます。
 
-書き込み操作で新しい BLOB が作成された場合、結果として得られる BLOB が現在のバージョンの BLOB となります。 書き込み操作で既存の BLOB が変更された場合は、現在のバージョンである更新された BLOB に新しいデータがキャプチャされ、BLOB の以前の状態を保存するバージョンが Azure Storage によって作成されます。
+書き込み操作で新しい BLOB が作成された場合、結果として得られる BLOB が現在のバージョンの BLOB となります。 書き込み操作で既存の BLOB が変更された場合、現在のバージョンが以前のバージョンになり、更新された BLOB を取り込むために新しい現在のバージョンが作成されます。
 
-わかりやすくするために、この記事に示されている図では、バージョン ID がシンプルな整数値として示されています。 実際には、バージョン ID はタイムスタンプです。 現在のバージョンは青色で示され、以前のバージョンは灰色で示されます。
-
-次の図は、書き込み操作が BLOB のバージョンにどのように影響するかを示しています。 BLOB が作成されると、その BLOB が現在のバージョンになります。 同じ BLOB が変更されると、BLOB の以前の状態を保存するために新しいバージョンが作成され、更新された BLOB が現在のバージョンになります。
+次の図は、書き込み操作が BLOB のバージョンにどのように影響するかを示しています。 わかりやすくするために、この記事に示されている図では、バージョン ID がシンプルな整数値として示されています。 実際には、バージョン ID はタイムスタンプです。 現在のバージョンは青色で示され、以前のバージョンは灰色で示されます。
 
 :::image type="content" source="media/versioning-overview/write-operations-blob-versions.png" alt-text="書き込み操作がバージョン管理された BLOB にどのように影響するかを示す図。":::
 
 > [!NOTE]
 > ストレージ アカウントに対してバージョン管理を有効にする前に作成された BLOB には、バージョン ID はありません。 BLOB が変更されると、その変更された BLOB が現在のバージョンになり、更新前の BLOB の状態を保存するためにバージョンが作成されます。 バージョンには、その作成時刻であるバージョン ID が割り当てられます。
 
-### <a name="versioning-on-delete-operations"></a>削除操作でのバージョン管理
+ストレージ アカウントで BLOB のバージョン管理が有効になっている場合、ブロック BLOB に対するすべての書き込み操作で新しいバージョンの作成がトリガーされます。ただし、[Put Block](/rest/api/storageservices/put-block) 操作は除きます。
 
-BLOB を削除すると、現在のバージョンの BLOB が以前のバージョンになり、ベース BLOB が削除されます。 BLOB が削除されるときに、既存の以前のバージョンの BLOB はすべて保持されます。
-
-バージョン ID を指定せずに [Delete Blob](/rest/api/storageservices/delete-blob) 操作を呼び出すと、ベース BLOB が削除されます。 特定のバージョンを削除するには、削除操作に対してそのバージョンの ID を指定します。
-
-次の図は、バージョン管理された BLOB に対する削除操作の影響を示しています。
-
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="バージョン管理された BLOB の削除を示す図。":::
-
-新しいデータを BLOB に書き込むと、新しいバージョンの BLOB が作成されます。 次の図に示すように、既存のバージョンは影響を受けません。
-
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="削除後のバージョン管理された BLOB の再作成を示す図。":::
-
-### <a name="blob-types"></a>BLOB の種類
-
-ストレージ アカウントで BLOB のバージョン管理が有効になっている場合、ブロック BLOB に対するすべての書き込みおよび削除操作で新しいバージョンの作成がトリガーされます。ただし、[Put Block](/rest/api/storageservices/put-block) 操作は除きます。
-
-ページ BLOB と追加 BLOB の場合、書き込みおよび削除操作のサブセットによってのみ、バージョンの作成がトリガーされます。 記録される操作には次のようなものがあります。
+ページ BLOB と追加 BLOB の場合、書き込み操作のサブセットによってのみ、バージョンの作成がトリガーされます。 記録される操作には次のようなものがあります。
 
 - [Put Blob](/rest/api/storageservices/put-blob)
 - [Put Block List](/rest/api/storageservices/put-block-list)
-- [Delete Blob](/rest/api/storageservices/delete-blob)
 - [Set Blob Metadata](/rest/api/storageservices/set-blob-metadata)
 - [Copy Blob](/rest/api/storageservices/copy-blob)
 
@@ -109,6 +94,20 @@ BLOB を削除すると、現在のバージョンの BLOB が以前のバージ
 - [Append Block](/rest/api/storageservices/append-block) (追加 BLOB)
 
 すべてのバージョンの BLOB が、同じ BLOB の種類である必要があります。 BLOB に以前のバージョンがある場合、BLOB とそのすべてのバージョンを最初に削除しない限り、ある種類の BLOB を別の種類で上書きすることはできません。
+
+### <a name="versioning-on-delete-operations"></a>削除操作でのバージョン管理
+
+バージョン ID を指定せずに [Delete Blob](/rest/api/storageservices/delete-blob) 操作を呼び出すと、現在のバージョンが以前のバージョンになり、現在のバージョンは存在しなくなります。 既存の以前のバージョンの BLOB はすべて保持されます。
+
+次の図は、バージョン管理された BLOB に対する削除操作の影響を示しています。
+
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="バージョン管理された BLOB の削除を示す図。":::
+
+特定のバージョンの BLOB を削除するには、削除操作に対してそのバージョンの ID を指定します。 ストレージ アカウントに対しても BLOB の論理的な削除が有効になっている場合は、論理的な削除の保有期間が経過するまで、そのバージョンはシステムで保持されます。
+
+新しいデータを BLOB に書き込むと、新しい現在のバージョンの BLOB が作成されます。 次の図に示すように、既存のバージョンは影響を受けません。
+
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="削除後のバージョン管理された BLOB の再作成を示す図。":::
 
 ### <a name="access-tiers"></a>アクセス層
 
@@ -132,27 +131,29 @@ BLOB のバージョン管理を無効にしても、既存の BLOB、バージ�
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB のバージョン管理と論理的な削除
 
-最適なデータ保護を提供するために、BLOB のバージョン管理と BLOB の論理的な削除は連動します。 論理的な削除を有効にする場合は、Azure Storage で論理的に削除された BLOB を保持する期間を指定します。 論理的に削除された BLOB のバージョンはシステムで維持され、論理的な削除の保有期間内に削除を取り消すことができます。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)に関するページを参照してください。
+最適なデータ保護のため、Microsoft ではストレージ アカウントのバージョン管理と BLOB の論理的な削除の両方を有効にすることをお勧めしています。 BLOB の論理的な削除の詳細については、[Azure Storage BLOB の論理的な削除](./soft-delete-blob-overview.md)に関するページを参照してください。
+
+### <a name="overwriting-a-blob"></a>BLOB の上書き
+
+ストレージ アカウントに対して BLOB のバージョン管理と BLOB の論理的な削除の両方が有効になっている場合、BLOB を上書きすると、新しいバージョンが自動的に作成されます。 新しいバージョンは論理的に削除されず、論理的な削除の保有期間が過ぎても削除されません。 論理的に削除されたスナップショットは作成されません。
 
 ### <a name="deleting-a-blob-or-version"></a>BLOB またはバージョンの削除
 
-論理的な削除では、BLOB のバージョンを削除するための追加の保護が提供されます。 ストレージ アカウントに対してバージョン管理と論理的な削除の両方が有効になっている場合、BLOB を削除すると、削除の直前に BLOB の状態を保存するための新しいバージョンが Azure Storage によって作成され、現在のバージョンが削除されます。 新しいバージョンは論理的に削除されず、論理的な削除の保有期間が過ぎても削除されません。
+ストレージ アカウントに対してバージョン管理と論理的な削除の両方が有効になっている場合、ある BLOB を削除すると、その BLOB の現在のバージョンが以前のバージョンになります。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。 削除された BLOB に対しては、論理的な削除の保有期間は適用されません。
 
-以前のバージョンの BLOB を削除すると、そのバージョンは論理的に削除されます。 論理的に削除されたバージョンは、ストレージ アカウントの論理的な削除の設定で指定された保有期間を通して保持され、論理的な削除の保有期間が過ぎると完全に削除されます。
+論理的な削除では、BLOB のバージョンを削除するための追加の保護が提供されます。 以前のバージョンの BLOB を削除すると、そのバージョンは論理的に削除されます。 論理的に削除されたバージョンは、論理的な削除の保有期間が経過するまで保持され、経過すると完全に削除されます。
 
-以前のバージョンの BLOB を削除するには、バージョン ID を指定して明示的に削除します。
+以前のバージョンの BLOB を削除するには、**Delete Blob** 操作を呼び出し、バージョン ID を指定します。
 
 次の図は、BLOB または BLOB のバージョンを削除した場合の動作を示しています。
 
 :::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="論理的な削除が有効になっているバージョンの削除を示す図。":::
 
-ストレージ アカウントに対してバージョン管理と論理的な削除の両方が有効になっている場合、BLOB または BLOB のバージョンが変更または削除されるときに、論理的に削除されたスナップショットは作成されません。
-
 ### <a name="restoring-a-soft-deleted-version"></a>論理的に削除されたバージョンの復元
 
-論理的に削除された BLOB のバージョンは、論理的な削除の保有期間が有効になっている間に、[Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を呼び出すことで復元できます。 **Undelete Blob** 操作では、論理的に削除されたすべてのバージョンの BLOB が復元されます。
+[Undelete Blob](/rest/api/storageservices/undelete-blob) 操作を使用すると、論理的に削除されたバージョンを論理的な削除の保有期間中に復元できます。 **Undelete Blob** 操作では常に、BLOB の論理的に削除されたすべてのバージョンが復元されます。 論理的に削除された 1 つのバージョンのみを復元することはできません。
 
-**Undelete Blob** 操作で論理的に削除されたバージョンを復元しても、どのバージョンも現在のバージョンに昇格されません。 現在のバージョンを復元するには、最初に論理的に削除されたすべてのバージョンを復元してから、[Copy Blob](/rest/api/storageservices/copy-blob) 操作を使用して以前のバージョンをコピーし、BLOB を復元します。
+**Undelete Blob** 操作で論理的に削除されたバージョンを復元しても、どのバージョンも現在のバージョンに昇格されません。 現在のバージョンを復元するには、まず論理的に削除されたすべてのバージョンを復元してから、[Copy Blob](/rest/api/storageservices/copy-blob) 操作を使用して以前のバージョンを新しい現在のバージョンにコピーします。
 
 次の図は、**Undelete Blob** 操作で論理的に削除された BLOB のバージョンを復元する方法と、**Copy Blob** 操作で現在のバージョンの BLOB を復元する方法を示しています。
 
@@ -193,8 +194,8 @@ BLOB のバージョン管理は、誤削除や悪意のある削除からデー
 
 | 説明 | Blob service の操作 | 必要な Azure RBAC データ アクション | Azure の組み込みロールのサポート |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| 現在のバージョンの BLOB の削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | ストレージ BLOB データ共同作成者 |
-| バージョンの削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | ストレージ BLOB データ所有者 |
+| 現在のバージョンの削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | ストレージ BLOB データ共同作成者 |
+| 以前のバージョンの削除 | Delete Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | ストレージ BLOB データ所有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Shared Access Signature (SAS) パラメーター
 

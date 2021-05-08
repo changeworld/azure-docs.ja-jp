@@ -2,13 +2,13 @@
 title: Azure CLI とテンプレートを使用してリソースをデプロイする
 description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは、Resource Manager テンプレートまたは Bicep ファイルに定義されています。
 ms.topic: conceptual
-ms.date: 03/04/2021
-ms.openlocfilehash: d0c48a5cf05d6cec495a7a96e181910a0849a1ac
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.date: 03/25/2021
+ms.openlocfilehash: f616a40f2683268f0cc26314fcc88ecca23bdbcf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521698"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782065"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
 
@@ -24,13 +24,13 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 
 リソース グループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 使用するコマンドは、デプロイのスコープに応じて異なります。
 
-* **リソース グループ** にデプロイするには、[az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) を使用します。
+* **リソース グループ** にデプロイするには、[az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) を使用します。
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
   ```
 
-* **サブスクリプション** にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) を使用します。
+* **サブスクリプション** にデプロイするには、[az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create) を使用します。
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
@@ -38,7 +38,7 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 
   サブスクリプション レベルでのデプロイの詳細については、「[サブスクリプション レベルでリソース グループとリソースを作成する](deploy-to-subscription.md)」を参照してください。
 
-* **管理グループ** にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
+* **管理グループ** にデプロイするには、[az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create) を使用します。
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
@@ -46,7 +46,7 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 
   管理グループ レベルでのデプロイの詳細については、「[管理グループ レベルでリソースを作成する](deploy-to-management-group.md)」を参照してください。
 
-* **テナント** にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create) を使用します。
+* **テナント** にデプロイするには、[az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create) を使用します。
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
@@ -85,9 +85,11 @@ az deployment group create \
 ## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
 
 > [!NOTE]
-> 現在、Azure CLI ではリモート Bicep ファイルのデプロイはサポートされていません。 リモート Bicep ファイルをデプロイするには、まず CLI Bicep を使用して、Bicep ファイルを JSON テンプレートにコンパイルします。
+> 現在、Azure CLI ではリモート Bicep ファイルのデプロイはサポートされていません。 [Bicep CLI](./bicep-install.md#development-environment) を使用して、Bicep ファイルを JSON テンプレートにコンパイルし、その JSON ファイルをリモートの場所に読み込みます。
 
 ARM テンプレートをローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
+
+[!INCLUDE [Deploy templates in private GitHub repo](../../../includes/resource-manager-private-github-repo-templates.md)]
 
 存在しないリソース グループにデプロイする場合、リソース グループを作成する必要があります。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 名前の末尾をピリオドにすることはできません。
 

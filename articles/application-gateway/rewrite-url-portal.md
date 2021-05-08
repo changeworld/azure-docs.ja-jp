@@ -2,24 +2,24 @@
 title: Azure Application Gateway を使用して URL とクエリ文字列を書き換える - Azure portal
 description: Azure portal を使用して、URL とクエリ文字列を書き換えるように Azure Application Gateway を構成する方法について説明します
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 7/16/2020
-ms.author: surmb
-ms.openlocfilehash: ec58c6f97efdbcb91071bcea98bbbc614833246d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/05/2021
+ms.author: azhussai
+ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215775"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384759"
 ---
-# <a name="rewrite-url-with-azure-application-gateway---azure-portal-preview"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal (プレビュー)
+# <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal
 
 この記事では、Azure portal を使用して、URL を書き換えるように [Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md) インスタンスを構成する方法を説明します。
 
 >[!NOTE]
-> URL 書き換え機能はプレビュー段階であり、Application Gateway の Standard_v2 および WAF_v2 SKU でのみ使用できます。 運用環境での使用はお勧めしません。 プレビューの詳細については、[使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページを参照してください。
+> URL 書き換え機能は、Application Gateway の Standard_v2 および WAF_v2 SKU でのみ使用できます。 WAF が有効なゲートウェイで URL 書き換えが構成されている場合、書き換え済みの要求ヘッダーと URL で WAF 評価が実行されます。 [詳細情報](rewrite-http-headers-url.md#using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

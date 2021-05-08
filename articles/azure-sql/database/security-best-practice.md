@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c16764d1ce985755b6a3042873cc18b09b697bcf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96459667"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551613"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,7 +91,7 @@ ID の中央管理には、次のような利点があります。
 - グループ割り当てを使用して Azure AD プリンシパルにリソースへのアクセス権を割り当てます。Azure AD グループを作成し、グループにアクセス権を付与し、個々のメンバーをグループに追加します。 データベースに、Azure AD グループをマップする包含データベース ユーザーを作成します。 データベース内のアクセス許可を割り当てるには、適切なアクセス許可があるデータベース ロールを、Azure AD グループに関連付けられているユーザーに付与します。
   - 「[SQL による Azure Active Directory 認証の構成と管理](authentication-aad-configure.md)」と[Azure AD を使用した SQL の認証](authentication-aad-overview.md)に関する記事を参照してください。
   > [!NOTE]
-  > SQL Managed Instance では、マスター データベースの Azure AD プリンシパルにマップされるログインを作成することもできます。 「[CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+  > SQL Managed Instance では、マスター データベースの Azure AD プリンシパルにマップされるログインを作成することもできます。 「[CREATE LOGIN (Transact-SQL)](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 - Azure AD グループを使用するとアクセス許可の管理が簡素化され、グループ所有者とリソース所有者の両方が、グループへのメンバーの追加またはグループからのメンバーの削除を行うことができます。
 
@@ -136,7 +136,7 @@ Azure AD Multi-Factor Authentication では、複数の形式の認証が要求�
 
 - パスワードが対話形式で要求され、その後に Multi-Factor Authentication 認証が適用される Azure SQL Database と Azure SQL Managed Instance には Azure AD 対話型認証モードを使用します。
   - SSMS でユニバーサル認証を使用します。 [Azure SQL Database、SQL Managed Instance、Azure Synapse で多要素 Azure AD 認証を使用する (Multi-Factor Authentication の SSMS サポート)](authentication-mfa-ssms-overview.md) に関する記事を参照してください。
-  - SQL Server Data Tools (SSDT) でサポートされている対話型認証を使用します。 「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory?view=azuresqldb-current)」という記事を参照してください。
+  - SQL Server Data Tools (SSDT) でサポートされている対話型認証を使用します。 「[SQL Server Data Tools (SSDT) での Azure Active Directory のサポート](/sql/ssdt/azure-active-directory?view=azuresqldb-current&preserve-view=true)」という記事を参照してください。
   - Multi-Factor Authentication をサポートする他の SQL ツールを使用します。
     - データベースをエクスポート/抽出/デプロイするための SSMS ウィザードのサポート  
     - [sqlpackage.exe](/sql/tools/sqlpackage): オプション "/ua"
@@ -196,7 +196,7 @@ Azure AD Multi-Factor Authentication では、複数の形式の認証が要求�
 
 - パスワードやシークレットを回避できない場合は、ユーザー パスワードとアプリケーション シークレットを Azure Key Vault に保存し、Key Vault のアクセス ポリシーを使用してアクセスを管理します。
 
-- アプリ開発フレームワークによっては、アプリ内のシークレットを保護するための、フレームワーク固有のメカニズムが提供されている場合もあります。 次に例を示します。[ASP.NET Core アプリ](/aspnet/core/security/app-secrets?tabs=windows&view=aspnetcore-2.1)。
+- アプリ開発フレームワークによっては、アプリ内のシークレットを保護するための、フレームワーク固有のメカニズムが提供されている場合もあります。 次に例を示します。[ASP.NET Core アプリ](/aspnet/core/security/app-secrets?tabs=windows)。
 
 ### <a name="use-sql-authentication-for-legacy-applications"></a>レガシ アプリケーションに対して SQL 認証を使用する
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 90fbc41edbfea0ea99d436906d3052e43bfb4fb8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425296"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043878"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
@@ -29,13 +29,13 @@ HTTP 経由で公開されるすべての Cognitive Services エンドポイン�
 * HTTP の呼び出しに使用される言語 (およびプラットフォーム) では、要求の一部として TLS 1.2 を指定する必要があります
   * 言語とプラットフォームによっては、TLS の指定は暗黙的または明示的に行われます
 
-.NET ユーザーの場合は、<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">トランスポート層セキュリティに関するベスト プラクティス</a>を検討してください。
+.NET ユーザーの場合は、<a href="/dotnet/framework/network-programming/tls" target="_blank">トランスポート層セキュリティに関するベスト プラクティス</a>を検討してください。
 
 ## <a name="authentication"></a>認証
 
 認証については、よく誤解されることがいくつかあります。 認証と承認は混同されることがよくあります。 ID も、セキュリティの主要なコンポーネントです。 ID は、<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">プリンシパル</a>に関する情報のコレクションです。 ID プロバイダー (IdP) は、認証サービスに対して ID を提供します。 認証とは、ユーザーの ID を検証することです。 承認とは、特定の ID に対してリソースへのアクセス権と特権を指定することです。 Cognitive Services のいくつかのオファリングには、Azure ロールベースのアクセス制御 (Azure RBAC) が含まれています。 Azure RBAC を使用すると、プリンシパルの手動管理に関する手続きの一部を簡略化できます。 詳しくは、[Azure リソースに対する Azure ロールベースのアクセス制御](../role-based-access-control/overview.md)に関する記事を参照してください。
 
-サブスクリプション キー、アクセス トークン、Azure Active Directory (AAD) での認証について詳しくは、「<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure Cognitive Services に対する要求の認証</a>」をご覧ください。
+サブスクリプション キー、アクセス トークン、Azure Active Directory (AAD) での認証について詳しくは、「<a href="/azure/cognitive-services/authentication" target="_blank">Azure Cognitive Services に対する要求の認証</a>」をご覧ください。
 
 ## <a name="environment-variables-and-application-configuration"></a>環境変数とアプリケーションの構成
 
@@ -113,7 +113,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-詳細については、<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` </a> を参照してください。
+詳細については、<a href="/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable`</a> に関する記事を参照してください。
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-詳細については、<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` </a> を参照してください。
+詳細については、<a href="/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv`</a> に関する記事を参照してください。
 
 ```cpp
 #include <stdlib.h>

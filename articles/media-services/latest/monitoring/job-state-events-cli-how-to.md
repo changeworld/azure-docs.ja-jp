@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 47d079aa5038a5ef09df30f0561c258bfbf6a9f7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 967b509ff4832bb8c70c5802699d62f1b209c516
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608800"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959655"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLI を使用した Event Grid による Media Services イベントの作成と監視
 
@@ -34,7 +34,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
     現在、一部の [Media Services v3 CLI](/cli/azure/ams) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
 
-- [Media Services アカウントを作成する](../create-account-howto.md)
+- [Media Services アカウントを作成する](../account-create-how-to.md)
 
     Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
 

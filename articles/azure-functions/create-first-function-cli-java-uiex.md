@@ -5,14 +5,13 @@ ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
 - devx-track-java
-- devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 32d91f01fcebec3e1ae0d19b1bff29a71f41c0d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a270f482438129b7b07506744bf3f9489b242900
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050428"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787487"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -196,7 +195,7 @@ Windows ではなく Linux で実行される関数アプリを作成するに�
     az login
     ```
 
-    [az login](/cli/azure/reference-index#az-login) コマンドで Azure アカウントにサインインします。
+    [az login](/cli/azure/reference-index#az_login) コマンドで Azure アカウントにサインインします。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell

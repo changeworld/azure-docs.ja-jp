@@ -6,21 +6,21 @@ author: vermagit
 ms.topic: include
 ms.service: virtual-machines
 ms.subservice: hpc
-ms.date: 03/05/2021
+ms.date: 03/19/2021
 ms.author: amverma
 ms.custom: include file
-ms.openlocfilehash: 3ed618d60a575fa6c747e1ddf9ebcc083cddbb20
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: fcc879ace2e2c6ed87b8f826775817467ec9563d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103439091"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104773533"
 ---
 ## <a name="get-started"></a>作業を開始する
 
-- InfiniBand 対応の H シリーズおよび N シリーズの VM における HPC の[概要](../overview.md)
-- HPC VM イメージと [VM の構成](../configure.md)
-- [InfiniBand の有効化](../enable-infiniband.md)
-- [MPI の設定](../setup-mpi.md)
-- [クラスター構成オプション](../../../sizes-hpc.md#cluster-configuration-options)
-- [配置に関する考慮事項](../../../sizes-hpc.md#deployment-considerations)
+- InfiniBand 対応の H シリーズおよび N シリーズの VM における HPC の[概要](../overview.md)。
+- [VM](../configure.md) およびサポートされている [OS と VM イメージ](../configure.md#vm-images)を構成する。
+- HPC VM イメージ、VM 拡張機能、または手動インストールによって [InfiniBand を有効](../enable-infiniband.md)にする。
+- コード スニペットと推奨事項を含む、[MPI を設定](../setup-mpi.md)する。
+- [クラスター構成オプション](../../../sizes-hpc.md#cluster-configuration-options)。
+- [デプロイに関する考慮事項](../../../sizes-hpc.md#deployment-considerations)。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4d1dd358c03d051be4be5733d9e729d1d7ef5b0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551472"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026174"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -97,7 +97,7 @@ Azure Diagnostics 拡張機能は、次のような場合に使用します。
 - アーカイブのため、または [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などのツールで分析したりするために Azure Storage にデータを送信する。
 - [Azure Monitor メトリック](../essentials/data-platform-metrics.md)にデータを送信して、[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)で分析したり、凖リアルタイムの[メトリック アラート](../alerts/alerts-metric-overview.md)や[自動スケーリング](../autoscale/autoscale-overview.md) (Windows のみ) などの機能を活用したりする。
 - [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
-- [ブート診断](../../virtual-machines/troubleshooting/boot-diagnostics.md)を収集して VM ブートの問題を調査する。
+- [ブート診断](/troubleshoot/azure/virtual-machines/boot-diagnostics)を収集して VM ブートの問題を調査する。
 
 Azure Diagnostics 拡張機能の制限事項は次のとおりです。
 

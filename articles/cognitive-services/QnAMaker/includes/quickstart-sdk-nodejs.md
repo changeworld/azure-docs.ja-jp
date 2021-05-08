@@ -4,12 +4,12 @@ description: このクイックスタートでは、Node.js 用 QnA Maker クラ
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: e76acd0f7b776ccad69b0616846988c5ba816a2d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0d0522be53ec9b1008f18725308c91a19ee24156
+ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948220"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105609429"
 ---
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/version-1)
 
@@ -122,23 +122,28 @@ index.js という名前のファイルを作成し、次のライブラリを�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/version-1)
 
-> [!IMPORTANT]
-> Azure portal に移動し、前提条件で作成した QnA Maker リソースのキーとエンドポイントを探します。 それらは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
+- サブスクリプション キーとオーサリング キーは同じ意味で使用しています。 オーサリング キーの詳細については、「[QnA Maker のキー](../concepts/azure-resources.md?tabs=v1#keys-in-qna-maker)」を参照してください。
 
-- これらの値を格納するために、QNA_MAKER_SUBSCRIPTION_KEY、QNA_MAKER_ENDPOINT、および QNA_MAKER_RUNTIME_ENDPOINT という名前の環境変数を作成します。
-- QNA_MAKER_ENDPOINT の値の形式は `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` です。 
-- QNA_MAKER_RUNTIME_ENDPOINT の値の形式は `https://YOUR-RESOURCE-NAME.azurewebsites.net` です。
+- QNA_MAKER_ENDPOINT の値の形式は `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` です。 Azure portal に移動し、前提条件で作成した QnA Maker リソースを探します。 **[リソース管理]** の **[Keys and Endpoint]\(キーとエンドポイント\)** ページをクリックし、オーサリング (サブスクリプション) キーと QnA Maker のエンドポイントを見つけます。
+
+ ![QnA Maker 作成エンドポイント](../media/keys-endpoint.png)
+
+- QNA_MAKER_RUNTIME_ENDPOINT の値の形式は `https://YOUR-RESOURCE-NAME.azurewebsites.net` です。 Azure portal に移動し、前提条件で作成した QnA Maker リソースを探します。 **[オートメーション]** の **[テンプレートのエクスポート]** ページをクリックして、ランタイム エンドポイントを見つけます。
+
+ ![QnA Maker のランタイム エンドポイント](../media/runtime-endpoint.png)
+   
 - 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../key-vault/general/overview.md) で安全なキー記憶域を確保できます。
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/qnamaker_quickstart.js?name=Resourcevariables)]
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/version-2)
 
-> [!IMPORTANT]
-> Azure portal に移動し、前提条件で作成した QnA Maker リソースのキーとエンドポイントを探します。 それらは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
+- サブスクリプション キーとオーサリング キーは同じ意味で使用しています。 オーサリング キーの詳細については、「[QnA Maker のキー](../concepts/azure-resources.md?tabs=v2#keys-in-qna-maker)」を参照してください。
 
-- これらの値を格納するために、QNA_MAKER_SUBSCRIPTION_KEY と QNA_MAKER_ENDPOINT という名前の環境変数を作成します。
-- QNA_MAKER_ENDPOINT の値の形式は `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` です。 
+- QNA_MAKER_ENDPOINT の値の形式は `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` です。 Azure portal に移動し、前提条件で作成した QnA Maker リソースを探します。 **[リソース管理]** の **[Keys and Endpoint]\(キーとエンドポイント\)** ページをクリックし、オーサリング (サブスクリプション) キーと QnA Maker のエンドポイントを見つけます。
+
+ ![QnA Maker 作成エンドポイント](../media/keys-endpoint.png)
+ 
 - 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](../../../key-vault/general/overview.md) で安全なキー記憶域を確保できます。
 
 [!code-javascript[Set the resource key and resource name](~/cognitive-services-quickstart-code/javascript/QnAMaker/sdk/preview-sdk/quickstart.js?name=Resourcevariables)]
@@ -151,7 +156,7 @@ index.js という名前のファイルを作成し、次のライブラリを�
 
 [QnA Maker](/javascript/api/@azure/cognitiveservices-qnamaker/) では、2 種類のオブジェクト モデルが使用されます。
 * **[QnAMakerClient](#qnamakerclient-object-model)** は、ナレッジ ベースを作成、管理、公開、ダウンロードするためのオブジェクトです。
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** は、GenerateAnswer API を使用してナレッジ ベースを照会したり、Train API を使用して ([アクティブ ラーニング](../concepts/active-learning-suggestions.md)の一環として) 提案された新しい質問を送信したりするためのオブジェクトです。
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** は、GenerateAnswer API を使用してナレッジ ベースを照会したり、Train API を使用して ([アクティブ ラーニング](../how-to/use-active-learning.md)の一環として) 提案された新しい質問を送信したりするためのオブジェクトです。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/version-2)
 

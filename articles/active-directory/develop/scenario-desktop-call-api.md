@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 51619fe049d580c21b338af2f86b2afea6765b04
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b5b52b679506a5c8b4d183c9ad5925c20238621c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756526"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798920"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Web API を呼び出すデスクトップ アプリ:Web API を呼び出す
 
@@ -28,19 +28,6 @@ ms.locfileid: "98756526"
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
-
-<!--
-More includes will come later for Python and Java
--->
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-endpoint = "url to the API"
-http_headers = {'Authorization': 'Bearer ' + result['access_token'],
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'}
-data = requests.get(endpoint, headers=http_headers, stream=False).json()
-```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -126,6 +113,43 @@ catch(MsalUiRequiredException ex)
                   .ExecuteAsync();
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+[Axios](https://www.npmjs.com/package/axios)などの HTTP クライアントを使用し、"*認可ベアラー*" としてアクセス トークンを使用して API エンドポイント URI を呼び出します。
+
+```javascript
+const axios = require('axios');
+
+async function callEndpointWithToken(endpoint, accessToken) {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    };
+
+    console.log('Request made at: ' + new Date().toString());
+
+    const response = await axios.default.get(endpoint, options);
+
+    return response.data;
+}
+
+```
+
+<!--
+More includes will come later for Python and Java
+-->
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+endpoint = "url to the API"
+http_headers = {'Authorization': 'Bearer ' + result['access_token'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'}
+data = requests.get(endpoint, headers=http_headers, stream=False).json()
+```
+
 ---
 
 ## <a name="next-steps"></a>次のステップ

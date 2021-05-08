@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d9f80de5a18e27de4a9f8e85613e3c2eee6c111c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 55802b04e10f06c7e362033f97d24c4e20c12c62
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96853477"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566491"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
@@ -58,7 +58,7 @@ SDK サンプルで、Azure から提供される API キーを使用する予�
 
 ![ビデオ フレームのサムネイル 1](images/ams-video-frame-thumbnails-1.PNG) | ![ビデオ フレームのサムネイル 2](images/ams-video-frame-thumbnails-2.PNG) | ![ビデオ フレームのサムネイル 3](images/ams-video-frame-thumbnails-3.PNG) |
 | :---: | :---: | :---: |
-[フレーム 1](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame1-00-17.PNG) | [フレーム 2](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-2-01-04.PNG) | [フレーム 3](https://blobthebuilder.blob.core.windows.net/sampleframes/ams-video-frame-3-02-24.PNG) |
+フレーム 1 | フレーム 2 | フレーム 3 |
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 

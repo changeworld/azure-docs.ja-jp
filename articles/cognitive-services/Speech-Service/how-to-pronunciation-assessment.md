@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: dc1ab8bd1a851f7fafd5c001ac73e66973e1b64c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d1b5e490b7c8212e6103e3d169c1b5491d01dde
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051890"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167432"
 ---
 # <a name="pronunciation-assessment"></a>発音評価
 
@@ -28,7 +28,7 @@ ms.locfileid: "102051890"
 この記事では、`PronunciationAssessmentConfig` を設定し、Speech SDK を利用して `PronunciationAssessmentResult` を取得する方法について説明します。
 
 > [!NOTE]
-> 発音評価機能では現在、言語 `en-US` のみがサポートされています。
+> 発音評価機能では現在、すべての[音声テキスト変換のリージョン](regions.md#speech-to-text-text-to-speech-and-translation)で使用できる `en-US` 言語がサポートされています。 `en-GB` および `zh-CN` 言語のサポートはプレビュー段階です。これは `westus`、`eastasia`、`centralindia` の各リージョンで利用できます。
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Speech SDK による発音評価
 
@@ -194,9 +194,63 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 | `PronunciationScore` | 特定の音声の発音品質を示す全体的なスコア。 これは、重み付きの `AccuracyScore`、`FluencyScore`、および `CompletenessScore` から集計されます。 |
 | `ErrorType` | この値は、`ReferenceText` と比較して、単語が省略されているか、挿入されているか、発音が正しくないかを示します。 指定できる値は、`None` (この単語にエラーがないことを意味します)、`Omission`、`Insertion`、および `Mispronunciation` です。 |
 
+### <a name="sample-responses"></a>応答のサンプル
+
+JSON での一般的な発音評価の結果:
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "400000",
+  "Duration": "11000000",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "good morning",
+        "ITN" : "good morning",
+        "MaskedITN" : "good morning",
+        "Display" : "Good morning.",
+        "PronunciationAssessment":
+        {
+            "PronScore" : 84.4,
+            "AccuracyScore" : 100.0,
+            "FluencyScore" : 74.0,
+            "CompletenessScore" : 100.0,
+        },
+        "Words": [
+            {
+              "Word" : "Good",
+              "Offset" : 500000,
+              "Duration" : 2700000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            },
+            {
+              "Word" : "morning",
+              "Offset" : 5300000,
+              "Duration" : 900000,
+              "PronunciationAssessment":
+              {
+                "AccuracyScore" : 100.0,
+                "ErrorType" : "None"
+              }
+            }
+        ]
+      }
+  ]
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 <!-- TODO: update JavaScript sample links after release -->
+
+* 発音評価の[ビデオによる紹介](https://www.youtube.com/watch?v=cBE8CUHOFHQ)と[ビデオ チュートリアル](https://www.youtube.com/watch?v=zFlwm7N4Awc)を視聴する
+
+* [発音評価のデモ](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment/BrowserJS)を試す
 
 ::: zone pivot="programming-language-csharp"
 * 読み方の評価については、GitHub の[サンプル コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L949)を参照してください。
@@ -219,3 +273,5 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 ::: zone-end
 
 * [Speech SDK のリファレンス ドキュメント](speech-sdk.md)
+
+* [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください

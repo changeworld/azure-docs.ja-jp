@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 40fbe4d08676d7cc56478d3740424fccaa7addc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103562197"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311228"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -28,6 +28,10 @@ ms.locfileid: "103562197"
 *アプリが停止する直前、コンソール アプリや Web アプリでデータが失われます。*
 
 * SDK チャネルでは、バッファにテレメトリが保存され、一括送信されます。 アプリケーションがシャットダウンするとき、場合によっては、[Flush()](api-custom-events-metrics.md#flushing-data) を明示的に呼び出す必要があります。 `Flush()` の動作は、使用されている実際の[チャネル](telemetry-channels.md#built-in-telemetry-channels)に依存します。
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Application Insights SDK によって収集された要求カウントが、アプリケーションの IIS ログ カウントと一致しない
+
+インターネット インフォメーション サービス (IIS) は、IIS に到達したすべての要求の数をログに記録します。これは本質的に、アプリケーションに到達した要求の総数とは異なる可能性があります。 このため、SDK によって収集された要求カウントが IIS ログの合計数と一致するとは限りません。 
 
 ## <a name="no-data-from-my-server"></a>サーバーからデータを取得できない
 *Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*
@@ -282,7 +286,9 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 ## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
 
-Linux ベースの環境で特に役立つ可能性があるトラブルシューティングのためにログを収集する別の方法は、[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) です
+別の方法として、お客様はクロスプラットフォームの .NET Core ツール [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) を使用してログを収集することもできます。これが、トラブルシューティングにさらに役立つ可能性があります。 これは、Linux ベースの環境では特に便利です。
+
+[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) をインストールしたら、bash で次のコマンドを実行します。
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -294,4 +300,3 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights に関する Microsoft Q&A 質問ページ](/answers/topics/azure-monitor.html)
-

@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 2d0c0e7322ecb92fd371f5bf7924a370dd29fe85
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9e5fbdfca80d19f026a014a89ffbf137bacb521c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102583567"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639582"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>最初の API 呼び出しを行って、コマーシャル マーケットプレース分析データにアクセスする
 
@@ -50,7 +50,7 @@ curl --location --request POST 'https://login.microsoftonline.com/{TenantId}/oau
 }
 ```
 
-アプリケーションの Azure AD トークンを取得する方法の詳細については、[Store サービスを使用した分析データへのアクセス](https://docs.microsoft.com/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token)に関するページを参照してください。
+アプリケーションの Azure AD トークンを取得する方法の詳細については、[Store サービスを使用した分析データへのアクセス](/windows/uwp/monetize/access-analytics-data-using-windows-store-services#step-2-obtain-an-azure-ad-access-token)に関するページを参照してください。
 
 ## <a name="programmatic-api-call"></a>プログラムによる API 呼び出し
 
@@ -337,5 +337,5 @@ Curl
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Swagger API URL](https://partneranalytics-api.azure-api.net/analytics/cmp/swagger/index.html) を使用して API を試すことができます
+- [Swagger API URL](https://swagger.io/docs/specification/api-host-and-base-path/) を使用して API を試すことができます
 - [プログラムによるアクセスのパラダイム](analytics-programmatic-access.md)

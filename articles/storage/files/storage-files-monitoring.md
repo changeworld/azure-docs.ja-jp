@@ -10,12 +10,12 @@ ms.date: 3/02/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 16a899b7f0e40c2eee91d1dd445f0992572a9dda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 620ee3bc5978da4b274aed9a412679ae0835f0b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418166"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759829"
 ---
 # <a name="monitoring-azure-files"></a>Azure Files の監視
 
@@ -212,7 +212,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 ログをストレージ アカウントにアーカイブすることを選択した場合は、ストレージ アカウントに送信されるログの量に対して課金されます。 具体的な料金については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)」ページの「**プラットフォーム ログ**」セクションを参照してください。
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true}]'
@@ -234,7 +234,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 ログをイベント ハブにストリーミングすることを選択した場合は、イベント ハブに送信されるログの量に対して課金されます。 具体的な料金については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)」ページの「**プラットフォーム ログ**」セクションを参照してください。
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -248,7 +248,7 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -308,7 +308,7 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
 
-ストレージ アカウントまたは Azure Files サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) コマンドを使用します。
+ストレージ アカウントまたは Azure Files サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) コマンドを使用します。
  
 この例では、`<resource-ID>` プレースホルダーをストレージ アカウント全体のリソース ID または Azure Files サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
 
@@ -318,7 +318,7 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 #### <a name="read-account-level-metric-values"></a>アカウント レベルのメトリック値を読み取る
 
-ストレージ アカウントまたは Azure Files サービスのメトリック値を読み取ることができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) コマンドを使用します。
+ストレージ アカウントまたは Azure Files サービスのメトリック値を読み取ることができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H

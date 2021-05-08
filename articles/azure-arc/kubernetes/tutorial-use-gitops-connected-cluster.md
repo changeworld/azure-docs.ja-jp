@@ -6,13 +6,13 @@ ms.author: shasb
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.custom: template-tutorial , devx-track-azurecli
+ms.openlocfilehash: 0f1172ffa0d29734e7ec005bf2812eeca215aa0d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121475"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484168"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>チュートリアル: GitOps を使用して Azure Arc 対応 Kubernetes クラスターに構成をデプロイする 
 
@@ -30,6 +30,14 @@ ms.locfileid: "102121475"
 - Azure Arc 対応 Kubernetes に接続された既存のクラスター。
     - まだクラスターを接続していない場合は、[Azure Arc 対応 Kubernetes クラスターの接続に関するクイックスタート](quickstart-connect-cluster.md)をご覧ください。
 - この機能の利点とアーキテクチャについて理解していること。 詳細については、[Azure Arc 対応 Kubernetes での構成と GitOps に関する記事](conceptual-configurations.md)をご覧ください。
+- `k8s-configuration` Azure CLI 拡張機能バージョン 1.0.0 以降をインストールします。
+  
+  ```azurecli
+  az extension add --name k8s-configuration
+  ```
+
+    >[!TIP]
+    > `k8s-configuration` 拡張機能が既にインストールされている場合は、次のコマンドを使用して最新バージョンに更新できます - `az extension update --name k8s-configuration`
 
 ## <a name="create-a-configuration"></a>構成を作成する
 
@@ -141,7 +149,7 @@ Flux オペレーターは、SSH 接続を確立する前に Git リポジトリ
 >[!NOTE]
 >* Helm オペレーター チャートのバージョン 1.2.0 以上では、HTTPS Helm リリースのプライベート認証をサポートしています。
 >* HTTPS Helm リリースは、AKS マネージド クラスターではサポートされていません。
->* Flux でプロキシを介して Git リポジトリにアクセスする必要がある場合は、Azure Arc エージェントのプロキシ設定を更新する必要があります。 詳細については、「[送信プロキシ サーバーを使用して接続する](./connect-cluster.md#connect-using-an-outbound-proxy-server)」を参照してください。
+>* Flux でプロキシを介して Git リポジトリにアクセスする必要がある場合は、Azure Arc エージェントのプロキシ設定を更新する必要があります。 詳細については、「[送信プロキシ サーバーを使用して接続する](./quickstart-connect-cluster.md#connect-using-an-outbound-proxy-server)」を参照してください。
 
 
 ## <a name="additional-parameters"></a>追加のパラメーター

@@ -4,13 +4,13 @@ description: 意図とエンティティが含まれる発話テキストから�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/13/2021
+ms.openlocfilehash: dd7d113b1c23a0afec82a346e0f7baa1254ebbed
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95025995"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500143"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -242,7 +242,7 @@ LUIS での [トークンのサポート](luis-language-support.md#tokenization)
 
 ### <a name="new-and-emerging-names"></a>新しい名前
 
-一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これらの種類の名前は、最も困難な種類のデータ抽出です。 **[簡易エンティティ](luis-concept-entity-types.md#simple-entity)** から始めて、[フレーズ リスト](luis-concept-feature.md)を追加します。 エンドポイントの発話を定期的に[確認](./luis-how-to-review-endpoint-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。
+一部のアプリでは、製品や企業などの新しい名前を検索できる必要があります。 これらの種類の名前は、最も困難な種類のデータ抽出です。 **[簡易エンティティ](luis-concept-entity-types.md)** から始めて、[フレーズ リスト](luis-concept-feature.md)を追加します。 エンドポイントの発話を定期的に[確認](./luis-how-to-review-endpoint-utterances.md)して、適切に予測されていないすべての名前にラベルを付けます。
 
 ## <a name="patternany-entity-data"></a>Pattern.any エンティティ データ
 

@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6de027f317072512bd9893303d3a79d0f34f3e3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aebc1013dcead6c32dab55512ce915e25f60f94a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101747744"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047577"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>Azure Object Anchors についてよく寄せられる質問
 
@@ -78,7 +78,7 @@ Azure Object Anchors を使用すると、アプリケーションで 3D モデ�
  1. 正確なレンダリングを行うために、目のキャリブレーションを実行します。
  2. 部屋に豊富な視覚テクスチャと良好な照明を用意します。
  3. オブジェクトを動かさず、可能であれば乱雑さから遠ざけます。
- 4. 必要に応じて、HoloLens デバイスの[空間マッピング](https://docs.microsoft.com/windows/mixed-reality/spatial-mapping) キャッシュをクリアします。
+ 4. 必要に応じて、HoloLens デバイスの[空間マッピング](/windows/mixed-reality/spatial-mapping) キャッシュをクリアします。
  5. オブジェクトの周りを歩いてオブジェクトをスキャンします。 オブジェクトの大部分を観察するようにします。
  6. オブジェクトをカバーする十分に大きい検索領域を設定します。
  7. 検出中、オブジェクトは静止したままである必要があります。

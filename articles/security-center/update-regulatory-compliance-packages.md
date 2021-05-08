@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 768f686889663d9b1af4b88d84b361ac9460a5a0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381734"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738956"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
@@ -38,7 +38,7 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Security Center では、どのような規制コンプライアンス標準を使用できますか?
 
-既定で、すべてのサブスクリプションに **Azure セキュリティ ベンチマーク** が割り当てられています。 これは、Microsoft が作成した、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 [Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
+既定で、すべてのサブスクリプションに **Azure セキュリティ ベンチマーク** が割り当てられています。 これは、Microsoft が作成した、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 [Azure セキュリティ ベンチマークの詳細を確認してください](https://docs.microsoft.com/security/benchmark/azure/introduction)。
 
 次のような標準も追加できます。
 
@@ -122,6 +122,6 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 関連資料については、次のページを参照してください。
 
-- [Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)
+- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)
 - [Security Center の規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md) - Security Center および外部のツールを使用して規制コンプライアンス データを追跡およびエクスポートする方法について説明します。
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)

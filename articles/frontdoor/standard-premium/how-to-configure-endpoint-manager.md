@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: qixwang
 ms.openlocfilehash: 241f4a61e8d8c8de7a5573e8de534cb927a71b30
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101097907"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-preview-endpoint-with-endpoint-manager"></a>エンドポイント マネージャーを使用して Azure Front Door Standard/Premium (プレビュー) エンドポイントを構成する

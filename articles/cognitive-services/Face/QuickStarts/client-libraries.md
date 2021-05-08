@@ -14,10 +14,10 @@ ms.author: pafarley
 ms.custom: devx-track-python, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 画像による顔検索, 顔認識検索, 顔認識, 顔認識アプリ
 ms.openlocfilehash: ae3a5571019fedce4c255b942b1a5139c2f9795b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555161"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>クイック スタート:Face クライアント ライブラリを使用する

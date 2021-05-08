@@ -2,21 +2,21 @@
 title: 専用 SQL プールで Azure Stream Analytics を使用する
 description: リアルタイム ソリューション開発のために Azure Synapse の専用 SQL プールで Azure Stream Analytics を使用するためのヒント。
 services: synapse-analytics
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 0c7f139b50cd43e3e8862fda3f5401a853ced8d0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "96458224"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566581"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールで Azure Stream Analytics を使用する
 
@@ -52,8 +52,8 @@ Azure portal から Stream Analytics ジョブにアクセスし、**ジョブ �
 
 * *[出力のエイリアス]* :このジョブの出力のフレンドリ名を入力します。
 * *サブスクリプション*:
-  * 専用 SQL プールが Stream Analytics ジョブと同じサブスクリプション内にある場合は、 **[Azure Synapse Analytics をサブスクリプションから選択する]** をクリックします。
-  専用 SQL プールが別のサブスクリプションにある場合は、[Azure Synapse Analytics の設定を手動で行う] をクリックします。
+  * 専用 SQL プールが Stream Analytics ジョブと同じサブスクリプション内にある場合は、***[Azure Synapse Analytics をサブスクリプションから選択する]*** をクリックします。
+  * 専用 SQL プールが別のサブスクリプションにある場合は、[Azure Synapse Analytics の設定を手動で行う] をクリックします。
 * *データベース*:次に、ドロップ ダウン リストから同期先にデータベースを選択します。
 * *User Name*:データベースの書き込みアクセス許可を持つアカウントのユーザー名を指定します。
 * *パスワード*:指定したユーザー アカウントのパスワードを入力します。
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>手順 5.
 
-Azure Portal の Stream Analytics ジョブで、ジョブ名をクリックします。  _*_[出力の詳細]_*_ ペインで *_[テスト]_* ボタンをクリックします。
+Azure Portal の Stream Analytics ジョブで、ジョブ名をクリックします。  _ *_[出力の詳細]_** ペインで * **[テスト]** _ ボタンをクリックします。
 
 ![出力の詳細上の [テスト] ボタン](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) データベースへの接続が成功すると、ポータルに通知が表示されます。
 
 ### <a name="step-6"></a>手順 6.
 
-_*_[ジョブ トポロジ]_*_ の下にある _*_[クエリ]_*_ メニューをクリックし、クエリを変更して、作成したストリーム出力にデータを挿入します。  クエリをテストするには _*_[Test selected query]\(選択したクエリをテストする\)_*_ をクリックします。  クエリ テストが成功した場合は _*_[クエリの保存]_*_ ボタンをクリックします。
+_*_[ジョブ トポロジ]_*_ の下にある * **[クエリ]** _ メニューをクリックし、クエリを変更して、作成したストリーム出力にデータを挿入します。  クエリをテストするには _*_[Test selected query]\(選択したクエリをテストする\)_*_ をクリックします。  クエリ テストが成功した場合は _ *_[クエリの保存]_** ボタンをクリックします。
 
 ![クエリを保存する](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>手順 7.
 
-Azure Stream Analytics ジョブを開始します。  _*_[概要]_*_ メニューの _*_[開始]_*_ ボタンをクリックします。
+Azure Stream Analytics ジョブを開始します。  _ *_[概要]_** メニューの * **[開始]** _ ボタンをクリックします。
 
 ![Stream Analytics ジョブを開始する](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-[ジョブの開始] ウィンドウの *_[開始]_* ボタンをクリックします。
+[ジョブの開始] ウィンドウの ***[開始]*** ボタンをクリックします。
 
 ![[開始] をクリックする](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

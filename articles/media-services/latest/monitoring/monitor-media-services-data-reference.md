@@ -6,17 +6,18 @@ ms.author: inhenkel
 manager: femila
 ms.topic: reference
 ms.service: media-services
+ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 866b2faf473f06fc3f85cdb434d6555504a7f6a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598186"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121168"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services データ参照の監視
 
-この記事では、Media Services の監視に役立つデータについて説明します。 Azure Monitor でサポートされているすべてのプラットフォーム メトリックの詳細については、「[Azure Monitor のサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」を参照してください。
+この記事では、Media Services の監視に役立つデータについて説明します。 Azure Monitor でサポートされているすべてのプラットフォーム メトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../../../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
 ## <a name="media-services-metrics"></a>Media Services メトリック
 
@@ -43,7 +44,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 |StreamingPolicyQuota|ストリーミング ポリシーのクォータ|アカウント内のストリーミング ポリシーのクォータです。|
 |StreamingPolicyQuotaUsedPercentage|ストリーミング ポリシーのクォータの使用率|ストリーミング ポリシーのクォータのうち、既に使用されている割合です。|
 
-[アカウントのクォータと制限事項](../limits-quotas-constraints.md)もご確認ください。
+[アカウントのクォータと制限事項](../limits-quotas-constraints-reference.md)もご確認ください。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
 
@@ -59,7 +60,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 ## <a name="metric-dimensions"></a>メトリック ディメンション
 
-メトリック ディメンションの詳細については、「[多次元メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)」を参照してください。
+メトリック ディメンションの詳細については、「[多次元メトリック](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)」を参照してください。
 
 <!--**PLACEHOLDER** for dimensions table.-->
 
@@ -67,7 +68,7 @@ Media Services では、次のリソースの監視メトリックがサポー�
 
 ## <a name="media-services-diagnostic-logs"></a>Media Services の診断ログ
 
-診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](https://docs.microsoft.com/azure/azure-monitor/essentials/platform-logs-overview.md)に関するページをご覧ください。
+診断ログからは、Azure リソースの操作に関するデータが豊富かつ頻繁に提供されます。 詳細については、[Azure リソースからのログ データを収集して使用する方法](../../../azure-monitor/essentials/platform-logs-overview.md)に関するページをご覧ください。
 
 Media Services では、次の診断ログがサポートされています。
 
@@ -81,7 +82,7 @@ Media Services では、次の診断ログがサポートされています。
 
 ## <a name="schemas"></a>スキーマ
 
-診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](https://docs.microsoft.com/azure/azure-monitor/essentials/resource-logs-schema.md)」をご覧ください。
+診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../../azure-monitor/essentials/resource-logs-schema.md)」をご覧ください。
 
 ## <a name="key-delivery-log-schema-properties"></a>キー配信ログのスキーマのプロパティ
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 0763dd238dcbc361e693aef893c10af9304e9f25
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92513888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>チュートリアル: Azure Active Directory と Pacific Timesheet の統合
@@ -41,7 +41,7 @@ Pacific Timesheet と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Pacific Timesheet では、 **IDP** によって開始される SSO がサポートされます
+* Pacific Timesheet では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-pacific-timesheet-from-the-gallery"></a>ギャラリーからの Pacific Timesheet の追加
 
@@ -61,13 +61,13 @@ Azure AD への Pacific Timesheet の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Pacific Timesheet** 」と入力し、結果ウィンドウで **Pacific Timesheet** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Pacific Timesheet**」と入力し、結果ウィンドウで **Pacific Timesheet** を選択してから **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Pacific Timesheet](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Pacific Timesheet で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Pacific Timesheet で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Pacific Timesheet 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Pacific Timesheet で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -142,7 +142,7 @@ Pacific Timesheet で Azure AD シングル サインオンを構成するには
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。

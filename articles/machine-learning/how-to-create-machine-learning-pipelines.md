@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 188df9564905443b8f975eb743b24885b5d03c32
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38fd5b779c3a8ae71c2e4fafcaf65921b1be3f93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618204"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642271"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
@@ -89,7 +89,7 @@ from azureml.core import Dataset
 my_dataset = Dataset.File.from_files([(def_blob_store, 'train-images/')])
 ```
 
-中間データ (またはステップの出力) は、[OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.output_dataset_config.outputfiledatasetconfig) オブジェクトによって表されます。 ステップの出力として `output_data1` が作成されます。 このデータは、必要に応じて `register_on_complete` を呼び出して、データセットとして登録できます。 あるステップで `OutputFileDatasetConfig` を作成し、別のステップでそれを入力として使用する場合、ステップ間のデータの依存関係によって、パイプラインで暗黙的な実行順序が作成されます。
+中間データ (またはステップの出力) は、[OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig) オブジェクトによって表されます。 ステップの出力として `output_data1` が作成されます。 このデータは、必要に応じて `register_on_complete` を呼び出して、データセットとして登録できます。 あるステップで `OutputFileDatasetConfig` を作成し、別のステップでそれを入力として使用する場合、ステップ間のデータの依存関係によって、パイプラインで暗黙的な実行順序が作成されます。
 
 `OutputFileDatasetConfig` オブジェクトはディレクトリを返し、既定では、ワークスペースの既定のデータストアに出力を書き込みます。
 
@@ -247,7 +247,7 @@ pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 
 ### <a name="use-a-dataset"></a>データセットを使用する 
 
-Azure Blob storage、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットは、任意のパイプライン ステップへの入力として使用できます。 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) または [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) に出力を書き込むことができます。また、特定のデータストアにデータを書き込む場合は、[OutputFileDatasetConfig](/python/api/azureml-pipeline-core/azureml.data.outputfiledatasetconfig) を使用します。 
+Azure Blob storage、Azure Files、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、および Azure Database for PostgreSQL から作成されたデータセットは、任意のパイプライン ステップへの入力として使用できます。 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) または [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep) に出力を書き込むことができます。また、特定のデータストアにデータを書き込む場合は、[OutputFileDatasetConfig](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) を使用します。 
 
 > [!IMPORTANT]
 > `OutputFileDatasetConfig` を使用してデータストアに出力データを書き戻すことができるのは、Azure BLOB、Azure ファイル共有、ADLS Gen 1、および Gen 2 データストアだけです。 

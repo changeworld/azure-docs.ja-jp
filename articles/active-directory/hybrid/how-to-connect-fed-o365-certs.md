@@ -16,22 +16,29 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8e81cb9018d817fb206915a81fdc3bdd60f6b08c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686871"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611890"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>概要
 Azure Active Directory (Azure AD) と Active Directory Federation Services (AD FS) とのフェデレーションが正常に機能するためには、AD FS が Azure AD に提示するセキュリティ トークンに署名するときに使う証明書が、Azure AD 側の構成内容と一致している必要があります。 完全に一致していないと、信頼関係が失われる可能性があります。 証明書の情報は、AD FS と (エクストラネット アクセスに使用される) Web アプリケーション プロキシをデプロイするときに Azure AD によって同期されます。
+
+> [!NOTE]
+> この記事では、フェデレーション証明書の管理に関する情報を提供します。  緊急ローテーションに関する情報については、「[AD FS 証明書の緊急ローテーション](how-to-connect-emergency-ad-fs-certificate-rotation.md)」を参照してください
 
 この記事では、トークン署名証明書を管理し、Azure AD との同期状態を維持する方法について詳しく説明します。以下のケースを想定しています。
 
 * Web アプリケーション プロキシをデプロイしていないため、エクストラネットではフェデレーション メタデータを利用できない。
 * トークン署名証明書に AD FS の既定の構成を使用していない。
 * サード パーティの ID プロバイダーを使用している。
+
+> [!IMPORTANT]
+> Microsoft では、証明書を保護し、セキュリティで保護するために、ハードウェア セキュリティ モジュール (HSM) を使用することを強く推奨します。
+> 詳細については、AD FS をセキュリティ保護するためのベスト プラクティスの「[ハードウェア セキュリティ モジュール](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#hardware-security-module-hsm)」を参照してください。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>トークン署名証明書に使用する AD FS の既定の構成
 通常、トークン署名証明書とトークン暗号化解除証明書は自己署名証明書であり、有効期間は 1 年です。 AD FS には **AutoCertificateRollover** と呼ばれる自動更新プロセスが既定で含まれています。 AD FS 2.0 以降を使用している場合、Microsoft 365 と Azure AD により、証明書は期限切れになる前に自動的に更新されます。

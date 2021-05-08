@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6ef268b349d5a21cdbadd55ffd2199a35f650e5b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94989124"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376292"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -93,12 +93,12 @@ DNS エイリアスを管理するために使用されている PowerShell コ�
 
 コード例で使用されているコマンドレットは次のとおりです。
 
-- [New-AzSqlServerDNSAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias):Azure SQL Database サービス システムに新しい DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
-- [Get-AzSqlServerDNSAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias):サーバー 1 に割り当てられているすべての DNS エイリアスを取得して一覧表示します。
-- [Set-AzSqlServerDNSAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias):エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
-- [Remove-AzSqlServerDNSAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):エイリアスの名前を使用して、サーバー 2 から DNS エイリアスを削除します。
+- [New-AzSqlServerDnsAlias](/powershell/module/az.Sql/New-azSqlServerDnsAlias): Azure SQL Database サービス システムに新しい DNS エイリアスを作成します。 このエイリアスはサーバー 1 を参照します。
+- [Get-AzSqlServerDnsAlias](/powershell/module/az.Sql/Get-azSqlServerDnsAlias): サーバー 1 に割り当てられているすべての DNS エイリアスを取得して一覧表示します。
+- [Set-AzSqlServerDnsAlias](/powershell/module/az.Sql/Set-azSqlServerDnsAlias): エイリアスによって参照されるように構成されているサーバー名を、サーバー 1 から サーバー 2 に変更します。
+- [Remove-AzSqlServerDnsAlias](/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): エイリアスの名前を使用して、サーバー 2 から DNS エイリアスを削除します。
 
-## <a name="limitations-during-preview"></a>プレビュー期間中の制限事項
+## <a name="limitations"></a>制限事項
 
 DNS エイリアスには、現在、次の制限事項があります。
 
@@ -113,7 +113,7 @@ DNS エイリアスには、現在、次の制限事項があります。
 
 - [Azure SQL Database によるビジネス継続性の概要](business-continuity-high-availability-disaster-recover-hadr-overview.md)。ディザスター リカバリーについても解説しています。
 - [Azure REST API リファレンス](/rest/api/azure/)
-- [サーバー DNS エイリアス API](/rest/api/sql/serverdnsaliases)
+- [サーバー DNS エイリアス API](/rest/api/sql/2020-11-01-preview/serverdnsaliases)
 
 ## <a name="next-steps"></a>次のステップ
 

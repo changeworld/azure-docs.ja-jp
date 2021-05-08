@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用してバックエンド ストレージ�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760542"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798529"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>集約された名前空間を設定する
 
@@ -30,6 +30,8 @@ Azure portal の **[名前空間]** ページには、クライアントがキ�
 ## <a name="add-or-edit-namespace-paths"></a>名前空間のパスを追加または編集する
 
 クライアントがストレージ ターゲットにアクセスするには、少なくとも 1 つの名前空間パスを作成する必要があります (クライアント アクセスの詳細については、「[Azure HPC Cache をマウントする](hpc-cache-mount.md)」を参照してください)。
+
+ストレージ ターゲットを最近追加した場合や、アクセス ポリシーをカスタマイズした場合は、名前空間のパスを作成する前に 1 ～ 2 分かかることがあります。
 
 ### <a name="blob-namespace-paths"></a>BLOB 名前空間パス
 
@@ -132,6 +134,30 @@ Azure CLI を使用する場合は、ストレージ ターゲットを作成す
 update コマンドで使用するオプションは "create" コマンドに似ていますが、ストレージ システムの情報 (IP アドレスまたはホスト名) を渡さず、使用モデルがオプションである点が異なります。 ``--junction`` オプションの構文の詳細については、「[新しい NFS ストレージ ターゲットを追加する](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)」を参照してください。
 
 ---
+
+### <a name="adls-nfs-namespace-paths-preview"></a>ADLS-NFS 名前空間パス (プレビュー)
+
+通常の BLOB ストレージ ターゲットと同様に、ADLS-NFS ストレージ ターゲットは 1 つのエクスポートしか持たないため、1 つの名前空間パスしか持てません。
+
+次の手順に従って、Azure portal でパスを設定または変更します。
+
+**[名前空間]** 設定ページを読み込みます。
+
+* **新しいパスの追加:** 上部にある **[+ 追加]** ボタンをクリックし、編集パネルに情報を入力します。
+
+  ![ADLS-NFS ストレージ ターゲットが選択された名前空間の追加の編集フィールドのスクリーンショット。 エクスポートとサブディレクトリのパスは、/ に設定されており、編集することはできません。](media/namespace-add-adls.png)
+
+  * このストレージ ターゲットへのアクセスにクライアントが使用するパスを入力します。
+
+  * このパスに使用するアクセス ポリシーを選択します。 「[クライアント アクセス ポリシーの使用](access-policies.md)」でクライアント アクセスのカスタマイズについて詳しく確認します。
+
+  * ドロップダウン リストからストレージ ターゲットを選択します ADLS-NFS ストレージ ターゲットに既に名前空間パスがある場合は、選択できません。
+
+  * ADLS-NFS ターゲットの場合、エクスポートおよびサブディレクトリのパスは自動的に ``/`` に設定されます。
+
+* **既存のパスの変更:** 名前空間パスをクリックします。 編集パネルが開きます。 パスとアクセス ポリシーを変更することはできますが、別のストレージ ターゲットに変更することはできません。
+
+* **名前空間パスの削除:** パスの左側にあるチェックボックスをオンにして、 **[削除]** ボタンをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

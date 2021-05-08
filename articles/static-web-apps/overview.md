@@ -5,26 +5,26 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e81f0a9e4fc50cf0d80f2905b9328af3c721865c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92320490"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166405"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
-Azure Static Web Apps は、GitHub リポジトリから Azure に完全なスタック Web アプリを自動的に構築してデプロイするサービスです。
+Azure Static Web Apps は、コード リポジトリから Azure にフル スタックの Web アプリを自動的にビルドしてデプロイするサービスです。
 
-:::image type="content" source="media/overview/static-apps-overview.png" alt-text="Static Web Apps の概要":::
+:::image type="content" source="media/overview/azure-static-web-apps-overview.png" alt-text="Azure Static Web Apps の概要図":::
 
-Azure Static Web Apps のワークフローは、開発者の日常のワークフローに合わせて調整されています。 アプリは、GitHub との対話に基づいて構築およびデプロイされます。
+Azure Static Web Apps のワークフローは、開発者の日常のワークフローに合わせて調整されています。 アプリは、コードの変更に基づいてビルドおよびデプロイされます。
 
-Azure Static Web Apps リソースを作成すると、選択したブランチを監視する GitHub Actions ワークフローがアプリのソース コード リポジトリに設定されます。 コミットをプッシュするたび、または監視対象のブランチへの pull request を受け入れるたびに、GitHub Action ではアプリとその API が自動的にビルドされて Azure にデプロイされます。
+Azure Static Web Apps リソースを作成すると、Azure は GitHub または Azure DevOps と直接やり取りして、選択したブランチを監視します。 コミットをプッシュするたび、または監視対象のブランチへの pull request を受け入れるたびに、自動的にビルドが実行されて、自分のアプリと API が Azure にデプロイされます。
 
-通常、静的 Web アプリは、Angular、React、Svelte、Vue、Blazor などのライブラリとフレームワークを使用して構築されます。 これらのアプリには、アプリケーションを構成する HTML、CSS、JavaScript、およびイメージ アセットが含まれます。 従来の Web サーバーでは、これらのアセットは、必要な API エンドポイントと共に 1 台のサーバーから提供されます。
+通常、静的 Web アプリは、Angular、React、Svelte、Vue、Blazor など、サーバー側のレンダリングが不要なライブラリとフレームワークを使用して構築されます。 これらのアプリには、アプリケーションを構成する HTML、CSS、JavaScript、およびイメージ アセットが含まれます。 従来の Web サーバーでは、これらのアセットは、必要な API エンドポイントと共に 1 台のサーバーから提供されます。
 
 Static Web Apps では、静的アセットは従来の Web サーバーから分離され、世界各地の地理的に分散したポイントから提供されます。 この分散により、ファイルがエンド ユーザーに物理的に近づくため、ファイルの提供が大幅に高速になります。 さらに、API エンドポイントは[サーバーレス アーキテクチャ](../azure-functions/functions-overview.md)を使用してホストされます。これにより、完全なバックエンド サーバーが不要になります。
 
@@ -32,7 +32,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 - HTML、CSS、JavaScript、画像などの静的コンテンツの **Web ホスティング**。
 - Azure Functions によって提供される **統合 API** サポート。
-- リポジトリの変更によってビルドとデプロイがトリガーされる **ファーストクラスの GitHub 統合**。
+- リポジトリの変更によってビルドとデプロイがトリガーされる **ファーストクラスの GitHub 統合および Azure DevOps 統合**。
 - コンテンツをユーザーの近くに配置する、**グローバルに分散** された静的コンテンツ。
 - 自動的に更新される **無料の SSL 証明書**。
 - ブランド化されたカスタマイズをアプリに提供する **カスタム ドメイン**。

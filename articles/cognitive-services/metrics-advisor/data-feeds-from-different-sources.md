@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
-ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd01256d94fbcb18fe8437be00c84e49d98f7d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606149"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>さまざまなデータ ソースからデータ フィードを Metrics Advisor に追加する
 
-この記事を使用して、さまざまな種類のデータ ソースを Metrics Advisor に接続するための設定と要件を理解してください。 Metrics Advisor でデータを使用するための主要な概念については、[データをオンボードする](how-tos/onboard-your-data.md)方法を必ずお読みください。 
+この記事を使用して、さまざまな種類のデータ ソースを Metrics Advisor に接続するための設定と要件を理解してください。 Metrics Advisor でデータを使用するための主要な概念については、[データをオンボードする](how-tos/onboard-your-data.md)方法を必ずお読みください。 \
 
 ## <a name="supported-authentication-types"></a>サポートされている認証の種類
 
@@ -51,7 +51,7 @@ ms.locfileid: "96348621"
 |[**MySQL**](#mysql) | Basic |
 |[**PostgreSQL**](#pgsql)| Basic|
 
-**資格情報エンティティ** を作成し、それを使用してデータ ソースへの認証を行います。 以降のセクションでは、"*基本*" 認証に必要なパラメーターを指定します。 
+資格情報エンティティ**を作成し、それを使用してデータ ソースへの認証を行います。 以降のセクションでは、"*基本*" 認証に必要なパラメーターを指定します。 
 
 ## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
 
@@ -212,15 +212,14 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
 
-* **接続文字列**:Azure Table Storage から接続文字列を取得する方法については、[接続文字列の表示とコピー](../../storage/common/storage-account-keys-manage.md?tabs=azure-portal&toc=%2fazure%2fstorage%2ftables%2ftoc.json#view-account-access-keys)に関する記事を参照してください。
+* **接続文字列**: SAS (Shared Access Signature) URL を作成し、ここに入力してください。 SAS URL を生成する最も簡単な方法は、Azure portal を使用することです。 Azure portal を使用すると、グラフィカルに移動できます。 Azure portal を使用して SAS URL を作成するには、まず、[設定] セクションでアクセスするストレージ アカウントに移動し、[Shared Access Signature] をクリックします。 少なくとも "テーブル" と "オブジェクト" のチェックボックスをオンにし、[SAS と接続文字列を生成する] ボタンをクリックします。 テーブル サービスの SAS URL は、コピーして Metrics Advisor ワークスペースのテキスト ボックスに入力する必要があります。
 
 * **[テーブル名]** : クエリ対象のテーブルを指定します。 これは、Azure Storage アカウント インスタンスにあります。 **[Table service]** セクションで **[テーブル]** をクリックします。
 
-* **クエリ**: クエリで `@StartTime` を使用できます。 `@StartTime` は、スクリプト内で yyyy-MM-ddTHH:mm:ss 形式の文字列に置き換えられます。
+* **クエリ**: クエリで `@StartTime` を使用できます。 `@StartTime` は、スクリプト内で yyyy-MM-ddTHH:mm:ss 形式の文字列に置き換えられます。 ヒント: Azure ストレージ エクスプローラーを使用して、特定の時間範囲でクエリを作成し、問題なく実行されることを確認してから、置換を実行します。
 
     ``` mssql
-    let StartDateTime = datetime(@StartTime); let EndDateTime = StartDateTime + 1d; 
-    SampleTable | where Timestamp >= StartDateTime and Timestamp < EndDateTime | project Timestamp, Market, RPM
+    date ge datetime'@StartTime' and date lt datetime'@EndTime'
     ```
 
 ## <a name="span-ideselasticsearchspan"></a><span id="es">Elasticsearch</span>
@@ -232,7 +231,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP 要求</span>
 
-* **要求 URL**:JSON を返すことができる HTTP URL。 プレースホルダー %Y、%m、%d、%h、%M がサポートされています。%Y = 形式 yyyy の年、%m = MM 形式の月、%d = dd 形式の日、%h = HH 形式の時間、%M = mm 形式の分です。 (例: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`)。
+* **要求 URL**: JSON を返すことができる HTTP URL。 プレースホルダー %Y、%m、%d、%h、%M がサポートされています。%Y = 形式 yyyy の年、%m = MM 形式の月、%d = dd 形式の日、%h = HH 形式の時間、%M = mm 形式の分です。 (例: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`)。
 * **HTTP 要求メソッド**:GET または POST を使用します。
 * **要求ヘッダー**:基本認証を追加できます。 
 * **要求ペイロード**:JSON ペイロードのみがサポートされています。 このペイロードでは、プレースホルダー @StartTime がサポートされています。 応答は、次の JSON 形式である必要があります: [{"timestamp":"2018-01-01T00:00:00Z", "market":"en-us", "count":11, "revenue":1.23}, {"timestamp":"2018-01-01T00:00:00Z", "market":"zh-cn", "count":22, "revenue":4.56}].(例: 2020-06-21T00:00:00Z のデータが取り込まれると、@StartTime = 2020-06-21T00:00:00.0000000+00:00 になります)

@@ -10,14 +10,14 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: 0d142c477e1de2a2a34a8abfd948800cc0b607ee
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 8fe8b853fe07af40603950a61c0dd2a1df74d14e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622345"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644308"
 ---
-Communication Services JavaScript SMS クライアント ライブラリを使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
+Communication Services JavaScript SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
@@ -57,7 +57,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services SMS クライアント ライブラリをインストールします。
+JavaScript 用の Azure Communication Services SMS SDK をインストールするには、`npm install` コマンドを使用します。
 
 ```console
 npm install @azure/communication-sms --save
@@ -67,20 +67,20 @@ npm install @azure/communication-sms --save
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Node.js 用 Azure Communication Services SMS クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+Node.js 用 Azure Communication Services SMS SDK が備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | SmsClient | このクラスは、すべての SMS 機能に必要となります。 サブスクリプション情報を使用してこれをインスタンス化し、そのインスタンスを使用して SMS を送信します。 |
-| SmsSendResult               | このクラスには、SMS サービスからの結果が含まれます。                                          |
-| SmsSendOptions | このインターフェイスには、配信レポートを構成するためのオプションが用意されています。 `enableDeliveryReport` が `true` に設定されている場合、配信が成功したときにイベントが生成されます。 |
 | SmsSendRequest | このインターフェイスは、sms 要求を作成するためのモデルです (例: 発信および着信電話番号と sms コンテンツの構成)。 |
+| SmsSendOptions | このインターフェイスには、配信レポートを構成するためのオプションが用意されています。 `enableDeliveryReport` が `true` に設定されている場合、配信が成功したときにイベントが生成されます。 |
+| SmsSendResult               | このクラスには、SMS サービスからの結果が含まれます。                                          |
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-クライアント ライブラリから **SmsClient** をインポートし、接続文字列を使用してインスタンス化します。 次のコードは、`COMMUNICATION_SERVICES_CONNECTION_STRING` という名前の環境変数からリソースの接続文字列を取得します。 [リソースの接続文字列を管理する](../../create-communication-resource.md#store-your-connection-string)方法を参照してください。
+SDK から **SmsClient** をインポートし、接続文字列を使用してインスタンス化します。 次のコードは、`COMMUNICATION_SERVICES_CONNECTION_STRING` という名前の環境変数からリソースの接続文字列を取得します。 [リソースの接続文字列を管理する](../../create-communication-resource.md#store-your-connection-string)方法について確認してください。
 
-次のコードを **send-sms.js** に追加します。
+**send-sms.js** という名前のファイルを作成して開き、次のコードを追加します。
 
 ```javascript
 const { SmsClient } = require('@azure/communication-sms');
@@ -95,7 +95,7 @@ const smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-1n-sms-message"></a>1:N の SMS メッセージを送信する
 
-受信者の一覧に SMS メッセージを送信するには、受信者の電話番号の一覧を使用して SmsClient から `send` 関数を呼び出します (1 人の受信者にメッセージを送信する場合は、一覧に 1 つの番号のみを含めます)。 **send-sms.js** の末尾に次のコードを追加します。
+受信者の一覧に SMS メッセージを送信するには、受信者の電話番号の一覧を使用して SmsClient から `send` 関数を呼び出します (1 人の受信者にメッセージを送信する場合は、一覧に 1 つの番号のみを含めます)。 **send-sms.js** の末尾にこのコードを追加します。
 
 ```javascript
 async function main() {
@@ -118,7 +118,10 @@ async function main() {
 
 main();
 ```
-`<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number>` はメッセージの送信先の電話番号で置き換える必要があります。
+`<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` と `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
+
+> [!WARNING]
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
 
 ## <a name="send-a-1n-sms-message-with-options"></a>オプションを使用して 1:N の SMS メッセージを送信する
 
@@ -127,12 +130,12 @@ main();
 ```javascript
 
 async function main() {
-  await smsClient.send({
+  const sendResults = await smsClient.send({
     from: "<from-phone-number>",
     to: ["<to-phone-number-1>", "<to-phone-number-2>"],
     message: "Weekly Promotion!"
   }, {
-    //Optional parameter
+    //Optional parameters
     enableDeliveryReport: true,
     tag: "marketing"
   });
@@ -150,6 +153,11 @@ async function main() {
 
 main();
 ```
+
+`<from-phone-number>` は Communication Services リソースに関連付けられている、SMS が有効になっている電話番号で置き換え、`<to-phone-number-1>` と `<to-phone-number-2>` はメッセージの送信先の電話番号で置き換える必要があります。
+
+> [!WARNING]
+> 電話番号は、E.164 国際標準形式になっている必要があります (例: +14255550123)。
 
 `enableDeliveryReport` パラメーターは、配信レポートを構成するために使用できる省略可能なパラメーターです。 これは、SMS メッセージが配信されたときにイベントを生成する場合に便利です。 SMS メッセージの配信レポートを構成するには、[SMS イベントの処理](../handle-sms-events.md)に関するクイックスタートを参照してください。
 `tag` は、配信レポートにタグを適用するために使用できる省略可能なパラメーターです。

@@ -8,19 +8,18 @@ author: asudbring
 manager: KumudD
 ms.service: virtual-network
 ms.subservice: nat
-Customer intent: As an IT administrator, I want to learn more about Virtual Network NAT, its NAT gateway resources, and what I can use them for.
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3a4e9649d921c6af34d99ab290adb96be3ad1282
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91667199"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058529"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 

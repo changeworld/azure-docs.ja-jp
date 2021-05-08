@@ -19,7 +19,7 @@ ms.locfileid: "92280860"
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、アプリとサービス全体のワークフローを自動化するのに役立つクラウド サービスです。 Logic Apps を Azure Digital Twins API に接続すると、Azure Digital Twins とそのデータに関するそのような自動化されたフローを作成できます。
 
-現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された [カスタム Azure Digital Twins Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) を使用して、 [**カスタム Logic Apps コネクタ**](../logic-apps/custom-connector-overview.md)を作成します。
+現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された [Azure Digital Twins custom Swaggers](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) を使用して、 [**Logic Apps カスタム コネクタ**](../logic-apps/custom-connector-overview.md)を作成します。
 
 > [!NOTE]
 > 上記のリンクされたカスタム Swagger サンプルには、複数のバージョンの Swagger が含まれています。 最新バージョンは、最新の日付のサブフォルダーにありますが、サンプルに含まれていた以前のバージョンも引き続きサポートされます。
@@ -70,9 +70,9 @@ _[証明書とシークレット]_ ページで、 _[有効期限]_ および _[
 
 作成したインスタンス内のツインの " **_ツイン ID_** " が必要になります。
 
-## <a name="create-custom-logic-apps-connector"></a>カスタム Logic Apps コネクタを作成する
+## <a name="create-custom-logic-apps-connector"></a>Logic Apps カスタム コネクタを作成する
 
-このステップでは、Azure Digital Twins API 用の[カスタム Logic Apps コネクタ](../logic-apps/custom-connector-overview.md)を作成します。 これを行った後は、次のセクションでロジック アプリを作成するときに、Azure Digital Twins を接続できるようになります。
+このステップでは、Azure Digital Twins API 用の[Logic Apps カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成します。 これを行った後は、次のセクションでロジック アプリを作成するときに、Azure Digital Twins を接続できるようになります。
 
 Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 *[+ 追加]* をクリックします。
 
@@ -92,7 +92,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、作成したコネクタを Azure Digital Twins に接続するように構成します。
 
-まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 *[ZIP のダウンロード]* ボタンを押し、 [**このリンク**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)から **Azure Digital Twins Custom Swaggers (Logic Apps コネクタ)** サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* フォルダーに移動し、解凍します。 
+まず、Logic Apps で動作するように変更された Azure Digital Twins custom Swaggers をダウンロードします。 *[Download ZIP]* ボタンを押し、 [**このリンク**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)から **Azure Digital Twins Custom Swaggers (Logic Apps コネクタ)** サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* フォルダーに移動し、解凍します。 
 
 このチュートリアル用のカスタム Swagger は _**Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps **_ フォルダー内に配置されます。このフォルダーには、 *stable* と *preview* という名前のサブフォルダーが含まれています。どちらも、日付別に編成された異なるバージョンの Swagger を保持しています。最新の日付のフォルダーには、Swagger の最新のコピーが含まれます。どちらのバージョンを選択した場合でも、Swagger ファイルには _** digitaltwins.json**_ という名前が付けられています。
 

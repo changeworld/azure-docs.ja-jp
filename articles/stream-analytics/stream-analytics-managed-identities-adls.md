@@ -5,16 +5,16 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 03/16/2021
 ms.custom: seodec18
-ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d5b406d260b1c6518d9227c51d84ab7eb3754329
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020351"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104598152"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する
 
 Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力でのマネージド ID 認証をサポートします。 ID は、特定の Stream Analytics ジョブを表す Azure Active Directory に登録済みのマネージド アプリケーションであり、対象のリソースを認証するために使用できます。 マネージド ID は、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性などのユーザー ベースの認証方法の制限を排除します。 さらに、マネージド ID は、Azure Data Lake Storage Gen1 に出力する Stream Analytics ジョブのデプロイの自動化で役に立ちます。
 
@@ -36,7 +36,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
  
    サービス プリンシパルは、Stream Analytics ジョブと同じ名前を持ちます。 たとえば、ジョブの名前が **MyASAJob** であれば、作成されるサービス プリンシパルの名前も **MyASAJob** になります。
 
-3. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、**[マネージド ID]** を選択します。
+3. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、 **[マネージド ID]** を選択します。
 
 4. 残りのプロパティを入力します。 ADLS 出力の作成の詳細については、[Stream Analytics を使用した Data Lake Store 出力の作成](../data-lake-store/data-lake-store-stream-analytics.md)に関する記事を参照してください。 操作が終了したら、 **[OK]** をクリックします。
 
@@ -70,7 +70,7 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
    ![Stream Analytics ジョブ構成のマネージド ID](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、**[マネージド ID]** を選択します。
+2. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、 **[マネージド ID]** を選択します。
 
    ![ADLS 出力のマネージド ID](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 

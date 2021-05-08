@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7ea409163a6ce28f65799163bd3217d47569751
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993401"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220591"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -65,7 +65,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 | *settingsClassName*<br/>*settingsMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、接続文字列を指定します。 *settingsClassName* は、*settingsMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*settingsMethodName* で指定するメソッドは、戻り値の型が **string** の public、static、および void (パラメーターを取らない) である必要があります。 このメソッドは、実際の接続文字列を返します。 |
 | *loggingClassName*<br/>*loggingMethodName* | string<br/>string | *該当なし* | *これらの属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>これらの属性を使用して、セッション状態/出力キャッシュからのログと StackExchange.Redis からのログを提供することにより、アプリケーションをデバッグします。 *loggingClassName* は、*loggingMethodName* で指定されたメソッドを含むアセンブリ修飾クラス名である必要があります。<br/><br/>*loggingMethodName* で指定するメソッドは、戻り値の型が **System.IO.TextWriter** の public、static、および void (パラメーターを取らない) である必要があります。 |
 | *applicationName* | string | 現在のプロセスのモジュール名または "/" | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>Redis Cache で使用するアプリ名プレフィックス。 お客様は、異なる目的で同じ Redis Cache を使用できます。 セッション キーが競合しないようにするために、アプリケーション名をプレフィックスとして付けることができます。 |
-| *throwOnError* | boolean | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |>*Microsoft.Web.Redis.RedisSessionStateProvider.LastException*。 |
+| *throwOnError* | boolean | true | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>エラーが発生したときに例外をスローするかどうか。<br/><br/>*throwOnError* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*throwOnError* に関する注意事項](#notes-on-throwonerror)」を参照してください。 |
 | *retryTimeoutInMilliseconds* | 正の整数 | 5000 | *SessionStateProvider のみ*<br/>*この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>操作が失敗したときに再試行する時間の長さ。 この値が *operationTimeoutInMilliseconds* より小さい場合、プロバイダーは再試行しません。<br/><br/>*retryTimeoutInMilliseconds* の詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*retryTimeoutInMilliseconds* に関する注意事項](#notes-on-retrytimeoutinmilliseconds)」を参照してください。 |
 | *redisSerializerType* | string | *該当なし* | Microsoft.Web.Redis.ISerializer を実装し、値をシリアル化および逆シリアル化するカスタム ロジックを含むクラスのアセンブリ修飾型名を指定します。 詳細については、「[属性に関する注意事項](#attribute-notes)」セクションの「[*redisSerializerType*](#about-redisserializertype) について」を参照してください。 |
 

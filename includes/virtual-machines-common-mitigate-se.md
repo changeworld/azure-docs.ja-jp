@@ -9,13 +9,13 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96509141"
 ---
-**ドキュメントの最終更新日**:2019 年 11 月 12 日午前 10:00 (PST)。
+**ドキュメントの最終更新日**: 2019 年 11 月 12 日午前 10:00 (PST)。
 
 投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
@@ -72,7 +72,7 @@ Azure 上で実行するアプリケーションを他の Azure ユーザーか�
 そうした追加的なセキュリティ機能を有効にするためには、対象のオペレーティング システムが最新の状態にあることが必要です。 投機的実行のサイドチャネルに関しては、さまざまな軽減策が既定で有効になっていますが、ここで説明する追加的な機能は手動で有効にする必要があり、またパフォーマンスに影響を及ぼすことがあります。 
 
 
-**ステップ 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](../articles/virtual-machines/acu.md)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
+**手順 1: VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM サイズに移す必要があります。 ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](../articles/virtual-machines/acu.md)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 VM でハイパースレッディングが有効になっているかどうかを確認するには、VM 内で Windows コマンド ラインを使用して以下のスクリプトを参照してください。
 
 対話型インターフェイスを起動するには、`wmic` と入力します。 次に、以下を入力して、VM 上の物理および論理プロセッサの量を表示します。
 
@@ -83,7 +83,7 @@ CPU Get NumberOfCores,NumberOfLogicalProcessors /Format:List
 論理プロセッサの数が物理プロセッサ (コア) よりも多い場合は、ハイパースレッディングが有効になっています。  ハイパースレッド化された VM を実行している場合は、[Azure サポートに問い合わせて](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)、ハイパースレッディングを無効にしてください。  ハイパースレッディングが無効になると、**VM の完全な再起動が必要になります**。 VM コア数が減少した理由については、「[コア数](#core-count)」を参照してください。
 
 
-**手順 2**:手順 1 と並行して [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。
+**手順 2**: 手順 1 と並行して [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の手順に従い、[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell モジュールを使って、保護が有効になっていることを確認します。
 
 > [!NOTE]
 > このモジュールをダウンロード済みであっても、インストールするのは最新バージョンであることが必要です。
@@ -105,10 +105,10 @@ Windows OS support for TAA mitigation is enabled: True
 
 
 
-**手順 3**:カーネル仮想アドレス シャドウ処理 (KVAS) とブランチ ターゲット インジェクション (BTI) の OS サポートを有効にするには、[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーを使用して保護を有効にします。 再起動が必要となります。
+**手順 3**: カーネル仮想アドレス シャドウ処理 (KVAS) とブランチ ターゲット インジェクション (BTI) の OS サポートを有効にするには、[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`Session Manager` のレジストリ キーを使用して保護を有効にします。 再起動が必要となります。
 
 
-**手順 4**:[入れ子式の仮想化](../articles/virtual-machines/windows/nested-virtualization.md)でデプロイする場合 (D3 と E3 のみ):これらの手順は、Hyper-V ホストとして使用している VM 内で適用されます。
+**手順 4**: [入れ子になった仮想化](../articles/virtual-machines/windows/nested-virtualization.md)を使ったデプロイの場合 (D3 と E3 のみ): これらの手順は、Hyper-V ホストとして使用している VM 内でのみ当てはまります。
 
 1.  [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) の指示に従い、`MinVmVersionForCpuBasedMitigations` のレジストリ キーを使用して保護を有効にします。
 2.  [こちら](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)の手順に従って、ハイパーバイザーのスケジューラの種類を `Core` に設定します。
@@ -119,7 +119,7 @@ Windows OS support for TAA mitigation is enabled: True
 <a name="linux"></a>追加的なセキュリティ機能一式を内部で有効にするためには、対象のオペレーティング システムが完全に最新の状態にあることが必要です。 一部の軽減策については、既定で有効になります。 次のセクションで説明している内容は、既定でオフになっている機能や、ハードウェア サポート (マイクロコード) に依存している機能が対象となります。 これらの機能を有効にすると、パフォーマンスに影響が生じることがあります。 詳しい手順については、オペレーティング システムの提供元のドキュメントを参照してください。
 
 
-**ステップ 1:VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](../articles/virtual-machines/acu.md)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lscpu` コマンドを実行します。 
+**手順 1: VM 上でハイパースレッディングを無効にする** - ハイパースレッド化された VM 上で信頼されていないコードを実行しているお客様は、ハイパースレッディングを無効にするか、ハイパースレッド化されていない VM に移す必要があります。  ハイパースレッド化された VM サイズの一覧については[こちらのドキュメント](../articles/virtual-machines/acu.md)を参照してください (ここで、vCPU とコアの比率は 2:1 です)。 ハイパースレッド化された VM を実行しているかどうかを確認するには、Linux VM で `lscpu` コマンドを実行します。 
 
 `Thread(s) per core = 2` の場合、ハイパースレッディングが有効になっています。 
 
@@ -145,7 +145,7 @@ NUMA node(s):          1
 
 
 
-**手順 2**:以下のいずれかの投機的実行サイド チャネルの脆弱性を軽減する場合は、お使いのオペレーティング システム プロバイダーのドキュメントを参照してください。   
+**手順 2**: 以下のいずれかの投機的実行サイド チャネルの脆弱性を軽減する場合は、お使いのオペレーティング システム プロバイダーのドキュメントを参照してください。   
  
 - [Redhat およびCentOS](https://access.redhat.com/security/vulnerabilities) 
 - [SUSE](https://www.suse.com/support/kb/?doctype%5B%5D=DT_SUSESDB_PSDB_1_1&startIndex=1&maxIndex=0) 

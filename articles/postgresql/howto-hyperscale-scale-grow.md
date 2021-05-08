@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 59e6e73c99569b0a35c56d65c1a7ccdfcb394c0f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/07/2021
+ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026422"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012531"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループをスケーリングする
 
@@ -21,6 +21,11 @@ Azure Database for PostgreSQL - Hyperscale (Citus) では、増加した負荷�
 ## <a name="add-worker-nodes"></a>ワーカー ノードの追加
 
 ノードを追加するには、ハイパースケール (Citus) サーバー グループの **[コンピューティングとストレージ]** タブに移動します。  **[ワーカー ノードの数]** のスライダーをドラッグすると、値が変化します。
+
+> [!NOTE]
+>
+> [Basic レベル (プレビュー)](concepts-hyperscale-tiers.md) で作成された Hyperscale (Citus) サーバー グループにはワーカーが備わっていません。 ワーカーの数を増やすと、サーバー グループは自動的に Standard レベルに移行されます。
+> サーバー グループを Standard レベルに移行した後、Basic レベルにダウングレードすることはできません。
 
 :::image type="content" source="./media/howto-hyperscale-scaling/01-sliders-workers.png" alt-text="リソースのスライダー":::
 

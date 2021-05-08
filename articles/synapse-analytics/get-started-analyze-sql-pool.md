@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 0def1f957842417c3936e3f1c7bb5bc023109818
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654630"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536323"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
@@ -43,49 +43,55 @@ ms.locfileid: "104654630"
 1. スクリプトの上にある [接続先] ドロップダウン リストで、"SQLPOOL1" プール (このチュートリアルの[ステップ 1](./get-started-create-workspace.md) で作成したプール) を選択します。
 1. 次のコードを入力します。
     ```
-    CREATE TABLE [dbo].[Trip]
-    (
-        [DateID] int NOT NULL,
-        [MedallionID] int NOT NULL,
-        [HackneyLicenseID] int NOT NULL,
-        [PickupTimeID] int NOT NULL,
-        [DropoffTimeID] int NOT NULL,
-        [PickupGeographyID] int NULL,
-        [DropoffGeographyID] int NULL,
-        [PickupLatitude] float NULL,
-        [PickupLongitude] float NULL,
-        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-        [DropoffLatitude] float NULL,
-        [DropoffLongitude] float NULL,
-        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-        [PassengerCount] int NULL,
-        [TripDurationSeconds] int NULL,
-        [TripDistanceMiles] float NULL,
-        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-        [FareAmount] money NULL,
-        [SurchargeAmount] money NULL,
-        [TaxAmount] money NULL,
-        [TipAmount] money NULL,
-        [TollsAmount] money NULL,
-        [TotalAmount] money NULL
-    )
+    IF NOT EXISTS (SELECT * FROM sys.objects O JOIN sys.schemas S ON O.schema_id = S.schema_id WHERE O.NAME = 'NYCTaxiTripSmall' AND O.TYPE = 'U' AND S.NAME = 'dbo')
+    CREATE TABLE dbo.NYCTaxiTripSmall
+        (
+         [DateID] int,
+         [MedallionID] int,
+         [HackneyLicenseID] int,
+         [PickupTimeID] int,
+         [DropoffTimeID] int,
+         [PickupGeographyID] int,
+         [DropoffGeographyID] int,
+         [PickupLatitude] float,
+         [PickupLongitude] float,
+         [PickupLatLong] nvarchar(4000),
+         [DropoffLatitude] float,
+         [DropoffLongitude] float,
+         [DropoffLatLong] nvarchar(4000),
+         [PassengerCount] int,
+         [TripDurationSeconds] int,
+         [TripDistanceMiles] float,
+         [PaymentType] nvarchar(4000),
+         [FareAmount] numeric(19,4),
+         [SurchargeAmount] numeric(19,4),
+         [TaxAmount] numeric(19,4),
+         [TipAmount] numeric(19,4),
+         [TollsAmount] numeric(19,4),
+         [TotalAmount] numeric(19,4)
+        )
     WITH
-    (
+        (
         DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
-    );
+         CLUSTERED COLUMNSTORE INDEX
+         -- HEAP
+        )
+    GO
 
-    COPY INTO [dbo].[Trip]
-    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    COPY INTO dbo.NYCTaxiTripSmall
+    (DateID 1, MedallionID 2, HackneyLicenseID 3, PickupTimeID 4, DropoffTimeID 5,
+    PickupGeographyID 6, DropoffGeographyID 7, PickupLatitude 8, PickupLongitude 9, 
+    PickupLatLong 10, DropoffLatitude 11, DropoffLongitude 12, DropoffLatLong 13, 
+    PassengerCount 14, TripDurationSeconds 15, TripDistanceMiles 16, PaymentType 17, 
+    FareAmount 18, SurchargeAmount 19, TaxAmount 20, TipAmount 21, TollsAmount 22, 
+    TotalAmount 23)
+    FROM 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet'
     WITH
     (
-        FILE_TYPE = 'CSV',
-        FIELDTERMINATOR = '|',
-        FIELDQUOTE = '',
-        ROWTERMINATOR='0X0A',
-        COMPRESSION = 'GZIP'
+        FILE_TYPE = 'PARQUET'
+        ,MAXERRORS = 0
+        ,IDENTITY_INSERT = 'OFF'
     )
-    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 1. [実行] ボタンをクリックして、スクリプトを実行します。
 1. このスクリプトは 60 秒以内に終了します。 200 万行の NYC タクシー データを **dbo.Trip** というテーブルに読み込みます。
@@ -94,7 +100,7 @@ ms.locfileid: "104654630"
 
 1. Synapse Studio で、 **[データ]** ハブに移動します。
 1. **[SQLPOOL1]**  >  **[テーブル]** の順に移動します。 
-3. **dbo.Trip** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\)**  >  **[Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
+3. **dbo.NYCTaxiTripSmall** テーブルを右クリックし、 **[New SQL Script]\(新しい SQL スクリプト\)**  >  **[Select TOP 100 Rows]\(上位 100 行の選択\)** を選択します。
 4. 新しい SQL スクリプトが作成されて実行されるまで待ちます。
 5. SQL スクリプトの上部の **Connect to** が自動的に **SQLPOOL1** という SQL プールに設定されることに注意してください。
 6. SQL スクリプトのテキストをこのコードで置き換えて実行します。
@@ -103,7 +109,7 @@ ms.locfileid: "104654630"
     SELECT PassengerCount,
           SUM(TripDistanceMiles) as SumTripDistance,
           AVG(TripDistanceMiles) as AvgTripDistance
-    FROM  dbo.Trip
+    FROM  dbo.NYCTaxiTripSmall
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
     ORDER BY PassengerCount;
@@ -112,9 +118,6 @@ ms.locfileid: "104654630"
     このクエリは、合計乗車距離と平均乗車距離が乗客数とどのように関係しているかを示します。
 1. SQL スクリプトの結果ウィンドウで、 **[ビュー]** を **[グラフ]** に変更して、結果を折れ線グラフとして視覚的に表示します。
     
-    > [!NOTE]
-    > ワークスペース対応の専用 SQL プール (以前の SQL DW) は、データ ハブ内のツール ヒントを介して識別できます。
-
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]

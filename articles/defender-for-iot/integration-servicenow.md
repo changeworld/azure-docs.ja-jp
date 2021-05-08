@@ -1,19 +1,14 @@
 ---
 title: ServiceNow の統合について
-titleSuffix: Azure Defender for IoT
 description: ServiceNow 用 Defender for IoT ICS 管理アプリケーションを使用することで、SOC アナリストは産業環境に展開された特殊な OT プロトコルと IoT デバイスを多次元で可視性し、疑わしい動作や異常な動作を迅速に検出するための ICS 対応の行動分析することが可能になります。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557051"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786007"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>ServiceNow 用 Defender for IoT ICS 管理アプリケーション
 
@@ -153,7 +148,7 @@ Defenders for IoT のアラートは、セキュリティ インシデントと�
 
 ### <a name="send-defender-for-iot-device-attributes"></a>Defender for IoT デバイスの属性を送信する
 
-この記事では、さまざまなデバイス属性を ServiceNow テーブルにプッシュするように Defender for IoT を構成する方法について説明します。 ServiceNow にプッシュされる情報の種類の詳細については、"*_インベントリ情報_*" を参照してください。
+この記事では、さまざまなデバイス属性を ServiceNow テーブルにプッシュするように Defender for IoT を構成する方法について説明します。 ServiceNow にプッシュされる情報の種類の詳細については、***インベントリ情報*** を参照してください。
 
 属性を ServiceNow に送信するには、オンプレミスの管理コンソールを ServiceNow インスタンスにマップする必要があります。 こうすることで、Defender for IoT プラットフォームからインスタンスへ通信し、認証できるようになります。
 
@@ -161,7 +156,7 @@ ServiceNow インスタンスを追加するには、次の手順を実行しま
 
 1. Defender for IoT のオンプレミスの管理コンソールにサインインします。
 
-1. オンプレミスの管理コンソールの [統合] セクションで、 *[システム設定]* 、 **[ServiceNow]** の順に選択します。
+1. オンプレミスの管理コンソールの [統合] セクションで、 **[システム設定]** 、 **[ServiceNow]** の順に選択します。
 
       :::image type="content" source="media/integration-servicenow/servicenow.png" alt-text="[ServiceNow] ボタンを選択します。":::
 
@@ -359,4 +354,4 @@ Defender for IoT アプリケーションにアクセスするには、次の手
 
 ## <a name="next-steps"></a>次の手順
 
-[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を確認する。
+[アラート情報を転送する](how-to-forward-alert-information-to-partners.md)方法を学習します。

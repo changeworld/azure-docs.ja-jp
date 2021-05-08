@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4c2d1cd1c73b377d85501fd31d0f5a1893df5183
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d58e4303078733eb1014171271d27907ff7a95b0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102487425"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286268"
 ---
 # <a name="camera-placement-guide"></a>カメラ配置ガイド
 
-この記事では、空間分析 (パブリック プレビュー) のカメラ配置に関する推奨事項について説明します。 これには、含まれているすべての操作に対する高さ、角度、およびカメラと焦点間の距離に関する具体的な推奨事項に加えて、一般的なガイドラインが含まれます。 
+この記事では、空間分析 (パブリック プレビュー) のカメラ配置に関する推薦事項について説明します。 これには、含まれているすべての操作に対する高さ、角度、およびカメラと焦点間の距離に関する具体的な推奨事項に加えて、一般的なガイドラインが含まれます。 
 
 > [!NOTE]
 > このガイドは、Axis M3045-V カメラ用に設計されています。 このカメラでは、解像度 1920 x 1080、106 度の水平視野、59 度の垂直視野、および修正された 2.8 mm の焦点距離を使用しています。 以下の原則はすべてのカメラに適用されますが、カメラの高さやカメラと焦点間の距離に関する具体的なガイドラインは、他のカメラで使用するために調整する必要があります。 
@@ -37,7 +37,7 @@ ms.locfileid: "102487425"
 
 ## <a name="height-focal-point-distance-and-angle"></a>高さ、焦点距離、および角度
 
-空間分析用にカメラを設置する方法を決定する際には、次の 3 つの点を考慮する必要があります。
+空間分析用カメラの設置方法を決定する際には、次の 3 つの点を考慮する必要があります。
 - カメラの高さ
 - カメラと焦点間の距離
 - 床面に対するカメラの角度
@@ -158,6 +158,6 @@ _カメラと焦点間の距離_ とは、地表で測定した、焦点 (また
 ## <a name="next-steps"></a>次のステップ
 
 * [人数カウント Web アプリをデプロイする](spatial-analysis-web-app.md)
-* [空間分析操作の構成](./spatial-analysis-operations.md)
+* [空間分析の操作を構成する](./spatial-analysis-operations.md)
 * [ロギングおよびトラブルシューティング](spatial-analysis-logging.md)
 * [ゾーンとラインの配置ガイド](spatial-analysis-zone-line-placement.md)

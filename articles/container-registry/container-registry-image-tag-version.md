@@ -5,16 +5,16 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dfd29f2265e599f3cc7c412b81c3b7b93af40db
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "75445748"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109715"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>コンテナー イメージのタグ付けとバージョン管理に関する推奨事項
 
-コンテナー イメージをコンテナー レジストリにプッシュしてデプロイする場合、イメージのタグ付けやバージョン管理には戦略が必要です。 この記事では 2 つのアプローチを取り上げ、コンテナー ライフサイクルにおいてそれぞれが適合するシナリオについて説明します。
+コンテナー イメージをコンテナー レジストリにプッシュして、その後、デプロイする場合、イメージのタグ付けやバージョン管理には戦略が必要です。 この記事では 2 つのアプローチを取り上げ、コンテナー ライフサイクルにおいてそれぞれが適合するシナリオについて説明します。
 
 * **安定したタグ** - たとえば、メジャー バージョンまたはマイナー バージョンを示すために再利用するタグ (例: *mycontainerimage:1.0*)。
 * **一意のタグ** - レジストリにプッシュするイメージごとに異なるタグ (*mycontainerimage:abc123* など)。

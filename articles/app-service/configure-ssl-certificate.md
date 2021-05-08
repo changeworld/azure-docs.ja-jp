@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d6f6db34239cf8c77b6e43d4426d889fa12c0690
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 99dc8cb2acf06faae16df6d3a48c4d38b1be46d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051346"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577786"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -331,7 +331,7 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 任意の時点で証明書の自動更新をオンにするには、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページで証明書を選択し、左側のナビゲーションで **[自動更新の設定]** をクリックします。 既定では、App Service 証明書の有効期間は 1 年です。
 
-**[オン]** を選択して、 **[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 60 日前に自動更新を開始できます。
+**[オン]** を選択して、 **[保存]** をクリックします。 自動更新をオンにすると、証明書は有効期限の 30 日前に自動更新を開始できます。
 
 ![App Service 証明書を更新する](./media/configure-ssl-certificate/auto-renew-app-service-cert.png)
 
@@ -377,11 +377,11 @@ App Service 証明書の削除は最終的なものであり、元に戻すこ�
 
 これで、App Service 証明書を削除できるようになりました。 左側のナビゲーションから **[概要]**  >  **[削除]** を選択します。 確認ダイアログで、証明書の名前を入力し、 **[OK]** を選択します。
 
-## <a name="automate-with-scripts"></a>スクリプトで自動化する
+## <a name="automate-with-scripts&quot;></a>スクリプトで自動化する
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name=&quot;azure-cli&quot;></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 

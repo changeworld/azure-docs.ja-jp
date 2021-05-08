@@ -8,22 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/20/2020
+ms.date: 03/31/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e724b3517d9e5a63d8699e9f66c51cf41f02012
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92309680"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092519"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、これら 2 つの概念の違いについて説明するとともに、Azure と Azure AD B2C に対してそれらがどのように適用されるかを比較します。
 
-Azure AD B2C は **世界中で一般提供** されており、**データの保存場所** としては **米国、ヨーロッパ、またはアジア太平洋** を選択することができます。
+Azure AD B2C は **世界中で一般提供** されており、**データの保存場所** としては **米国、ヨーロッパ、またはアジア太平洋** を選択することができます。 Azure AD B2C は、オーストラリアで **パブリック プレビュー** 段階にあります。
 
 [利用可能なリージョン](#region-availability)とは、サービスを使用できる場所を指します。
 
@@ -53,11 +53,15 @@ Azure AD B2C では、ユーザー データが米国、ヨーロッパ、また
 
 次の国/地域の場合、データは **アジア太平洋** に保存されます。
 
-> アフガニスタン (AF)、香港特別行政区 (HK)、インド (IN)、インドネシア (ID)、日本 (日本)、韓国 (韓国)、マレーシア (MY)、フィリピン (PH)、シンガポール (SG)、スリランカ (LK)、台湾 (TW)、タイ (TH)。
+> アフガニスタン (AF)、香港特別行政区 (HK)、インド (IN)、インドネシア (ID)、日本 (日本)、韓国 (韓国)、マレーシア (MY)、フィリピン (PH)、シンガポール (SG)、スリランカ (LK)、台湾 (TW)、タイ (TH)
+
+次の国/地域の場合、データは **オーストラリア** (プレビュー) に保存されます。
+
+> オーストラリアとニュージーランド
 
 以下の国/地域については今後追加されていく予定です。 差し当たって、上記のいずれかの国/地域を選ぶことによって Azure AD B2C を使用することができます。
 
-> アルゼンチン、オーストラリア、ブラジル、チリ、コロンビア、エクアドル、イラク、ニュージーランド、パラグアイ、ペルー、ウルグアイ、ベネズエラ
+> アルゼンチン、ブラジル、チリ、コロンビア、エクアドル、イラク、パラグアイ、ペルー、ウルグアイ、ベネズエラ
 
 ## <a name="remote-profile-solution"></a>リモート プロファイルのソリューション
 
@@ -66,18 +70,6 @@ Azure AD B2C の[カスタム ポリシー](custom-policy-overview.md)を使用�
 - サインイン時に、ローカルまたはソーシャル アカウントを使用して資格情報を検証した後、Azure AD B2C によって REST API が呼び出されます。これにより、ユーザーの一意の識別子がユーザーのプライマリ キー (電子メール アドレスまたはユーザーの objectId) として送信されます。 REST API によって、リモート データベースからデータが読み取られ、ユーザー プロファイルが返されます。  
 
 サインアップ、プロファイルの編集、またはサインインを完了すると、Azure AD B2C のアクセス トークンにはユーザー プロファイルが含まれ、これがアプリケーションに返されます。 詳細については、GitHub の [Azure AD B2C リモート プロファイルのサンプル ソリューション](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile)に関するページを参照してください。
-
-## <a name="preview-tenant"></a>プレビュー テナント
-
-Azure AD B2C のプレビュー期間中に B2C テナントを作成した場合は、通常、 **[テナントの種類]** が **[Preview tenant (プレビュー テナント)]** になります。
-
-その場合は、開発とテストの目的のみにテナントを使用する必要があります。 運用アプリケーションにはプレビュー テナントを使わないでください。
-
-プレビュー B2C テナントから運用スケール B2C テナントへの **移行パスはありません**。 運用アプリケーション用の新しい B2C テナントを作成する必要があります。
-
-プレビュー B2C テナントを削除し、同じドメイン名で運用スケール B2C テナントを作成する場合、既知の問題があります。 *運用スケール B2C テナントは異なるドメイン名で作成する必要があります*。
-
-![[テナントの種類] (プレビュー テナント) のスクリーンショット。](./media/data-residency/preview-b2c-tenant.png)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,12 +3,12 @@ title: Azure CLI を使用して DevTest Labs で仮想マシンを作成して�
 description: Azure DevTest Labs を使って Azure CLI で仮想マシンを作成して管理する方法を説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ee6bf607fe1b66cece0e7ddb25a2da2830258b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 95e0add8ce14e47c609b1ae951673c261316293f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201466"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763543"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 このクイック スタートでは、ラボで開発用コンピューターを作成、起動、接続、更新、およびクリーンアップする方法について説明します。 
@@ -48,7 +48,7 @@ az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTe
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-**image-type** パラメーターを **formula** に設定することで、数式に基づいて仮想マシンを作成することもできます。 仮想マシンに特定の仮想ネットワークを選択する必要がある場合は、**vnet-name** パラメーターと **subnet** パラメーターを使用します。 詳しくは、「[az lab vm create](/cli/azure/lab/vm#az-lab-vm-create)」をご覧ください。
+**image-type** パラメーターを **formula** に設定することで、数式に基づいて仮想マシンを作成することもできます。 仮想マシンに特定の仮想ネットワークを選択する必要がある場合は、**vnet-name** パラメーターと **subnet** パラメーターを使用します。 詳しくは、「[az lab vm create](/cli/azure/lab/vm#az_lab_vm_create)」をご覧ください。
 
 ## <a name="verify-that-the-vm-is-available"></a>VM が使用可能であることを確認します。
 VM を起動して接続する前に、VM が利用可能であることを確認するには、`az lab vm show` コマンドを使用します。 

@@ -3,12 +3,12 @@ title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dc7418d9e93fb50590c5e2502b3a3ffb3847273f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74e00921a1170a7750f4a2d239bb778150ac2cae
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043310"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781939"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM テンプレートを使用した管理グループへのデプロイ
 
@@ -75,7 +75,7 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI の場合は、[az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create) を使用します。
+Azure CLI の場合は、[az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create) を使用します。
 
 ```azurecli-interactive
 az deployment mg create \

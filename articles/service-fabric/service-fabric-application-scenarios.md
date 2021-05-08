@@ -3,12 +3,12 @@ title: アプリケーションのシナリオと設計
 description: Service Fabric のクラウド アプリケーションのカテゴリの概要 ステートフル サービスとステートレス サービスを使用したアプリケーションの設計について説明します。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c3cc931a85b91fc02b8086ca5c2481153691e54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d9459e6e0168657cf8e9062331fec0237f58c70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575671"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045758"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
 
@@ -68,9 +68,9 @@ Service Fabric のステートフル サービスは、データベースや他�
 
 * Service Fabric の [Reliable Services](service-fabric-reliable-services-quick-start.md) プログラミング モデルと [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルで、ステートレス サービスとステートフル サービスの構築を始めます。
 * [Azure でのマイクロサービスの構築](/azure/architecture/microservices/)に関するガイダンスについては、Azure アーキテクチャ センターをご覧ください。
-* アプリケーションの設計のガイダンスについては、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)」をご覧ください。
+* アプリケーションの設計のガイダンスについては、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](./service-fabric-best-practices-security.md)」をご覧ください。
 
-* 次の用語も参照:
+* 関連項目:
   * [マイクロサービスについて](service-fabric-overview-microservices.md)
   * [サービスの状態を定義し、管理する](service-fabric-concepts-state.md)
   * [サービスの可用性](service-fabric-availability-services.md)

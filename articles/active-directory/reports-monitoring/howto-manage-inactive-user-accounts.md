@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98660666"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535101"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
@@ -47,10 +47,9 @@ ms.locfileid: "98660666"
 
 - **日付別のユーザー**:このシナリオでは、指定した日付よりも前の lastSignInDateTime を持つユーザーの一覧を要求します。 `https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 
-
-
-
-
+> [!NOTE]
+> すべてのユーザーの最後のサインイン日のレポートを生成する必要がある場合があります。その場合、次のシナリオを使用できます。
+> **すべてのユーザーの最後のサインイン日時**: このシナリオでは、すべてのユーザーの一覧と、それぞれのユーザーの最後の lastSignInDateTime を要求します。`https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>知っておくべきこと
 
@@ -58,7 +57,7 @@ ms.locfileid: "98660666"
 
 ### <a name="how-can-i-access-this-property"></a>このプロパティにアクセスするにはどうすればよいですか?
 
-[Microsoft Graph](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) API のリソースの種類 [signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta) によって **lastSignInDateTime** プロパティが表示されます。   
+[Microsoft Graph](/graph/overview#whats-in-microsoft-graph) API のリソースの種類 [signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta&preserve-view=true) によって **lastSignInDateTime** プロパティが表示されます。   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Get-AzureAdUser コマンドレットで LastSignInDateTime プロパティを使用できますか?
 
@@ -91,5 +90,5 @@ LastSignInDateTime タイムスタンプを生成するには、サインイン�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
-* [監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)
+* [監査 API リファレンス](/graph/api/resources/directoryaudit) 
+* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin)

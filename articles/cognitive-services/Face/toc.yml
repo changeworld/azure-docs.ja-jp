@@ -5,36 +5,26 @@
   items:
     - name: Face サービスとは
       href: Overview.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
     - name: 新機能
       href: releasenotes.md
 - name: クイックスタート
-  items:
-    - name: クライアント ライブラリまたは REST API を使用する
-      href: Quickstarts/client-libraries.md
-- name: チュートリアル
-  items:
-    - name: クライアント SDK の使用
-      items:
-        - name: C#
-          href: Tutorials/FaceAPIinCSharpTutorial.md
-- name: 概念
-  items:
-    - name: 顔検出
-      href: concepts/face-detection.md
-    - name: 顔認識
-      href: concepts/face-recognition.md
+  href: Quickstarts/client-libraries.md
+- name: サンプル
+  href: /samples/browse/?products=azure&term=face
 - name: 操作方法ガイド
   items:
-    - name: 顔を検出する
+    - name: 顔を検出して分析する
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: 顔認識モデル バージョンを指定する
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: 顔検出モデル バージョンを指定する
+      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: グループに顔を追加する
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: HeadPose 属性を使用する
       href: Face-API-How-to-Topics/how-to-use-headpose.md
-    - name: 顔認識モデルを指定する
-      href: Face-API-How-to-Topics/specify-recognition-model.md
-    - name: 顔検出モデルを指定する
-      href: Face-API-How-to-Topics/specify-detection-model.md
     - name: Face サービスを使用するときの待機時間を軽減する
       href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: 大規模なフィーチャーを使用する
@@ -43,58 +33,65 @@
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: 顔データを移行する
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-    - name: コンテナーの使用
+    - name: Face コンテナーを使用する
       items:
+        - name: Cognitive Services コンテナーのドキュメント
+          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
+        - name: コンテナーの概要
+          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: コンテナーのインストールと実行
           href: face-how-to-install-containers.md
         - name: コンテナーを構成する
           href: face-resource-container-config.md
         - name: Container Instances の使用
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: Cognitive Services コンテナーのドキュメント
-          href: ../containers/index.yml
-- name: シナリオの詳細
-  items:
-    - name: 顔登録
+          href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+    - name: エンタープライズ対応
       items:
-        - name: 概要
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/face/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: encrypt-data-at-rest.md
+        - name: Azure AD 認証を使用する
+          href: ../authentication.md?context=/azure/cognitive-services/face/context/context
+- name: 概念
+  items:
+    - name: 顔検出
+      href: concepts/face-detection.md
+    - name: 顔認識
+      href: concepts/face-recognition.md
+- name: チュートリアル
+  items:
+    - name: Face サービスにユーザーを追加する
+      items:
+        - name: ユーザーを追加するためのベスト プラクティス
           href: enrollment-overview.md
-        - name: 操作方法ガイド
-          items:
-            - name: React を使用した登録アプリの構築
-              href: build-enrollment-app.md
+        - name: ユーザーを追加するための React アプリを構築する
+          href: build-enrollment-app.md
 - name: リファレンス
   items:
-    - name: Face API
+    - name: Face REST API
       href: APIReference.md
-    - name: SDK
-      items:
-        - name: .NET
-          href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Python
-          href: /python/api/azure-cognitiveservices-vision-face/
-        - name: Java
-          href: /java/api/overview/azure/cognitiveservices/client/faceapi
-        - name: Node.js
-          href: /javascript/api/@azure/cognitiveservices-face
-        - name: Go
-          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+    - name: .NET
+      href: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/@azure/cognitiveservices-face
+    - name: Python
+      href: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
-    - name: サンプル
+    - name: エンタープライズ対応
       items:
-        - name: Face のサンプル
-          href: /samples/browse/?products=azure&term=face
-    - name: 料金と制限
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
-    - name: Azure のロードマップ
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 学習モジュール
+      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
+    - name: サポート オプションとヘルプ オプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
+    - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encrypt-data-at-rest.md

@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed9b18144bb727af751fbcbbdd5cc6631afc40f
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185389"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105727231"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間で空間アンカーを共有する
 
@@ -86,7 +86,7 @@ Visual Studio Code でサービスをデプロイする前に、リソース グ
 
 Visual Studio Code を開いてから、*Sharing\SharingServiceSample* フォルダーでプロジェクトを開きます。 
 
-Visual Studio Code を介して共有サービスをデプロイするには、「<a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">Visual Studio Code で ASP.NET Core アプリを Azure に公開する</a>」の手順に従ってください。 "Visual Studio Code で開く" セクションから開始します。 デプロイおよび発行するプロジェクトは既にあるので、前の手順の説明に従って別の ASP.NET プロジェクトを作成することは行わないでください。SharingServiceSample。
+Visual Studio Code を介して共有サービスをデプロイするには、「<a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2&preserve-view=true#open-it-with-visual-studio-code" target="_blank">Visual Studio Code で ASP.NET Core アプリを Azure に公開する</a>」の手順に従ってください。 "Visual Studio Code で開く" セクションから開始します。 デプロイおよび発行するプロジェクトは既にあるので、前の手順の説明に従って別の ASP.NET プロジェクトを作成することは行わないでください。SharingServiceSample。
 
 ---
 

@@ -3,7 +3,6 @@ title: クイックスタート - Azure portal を使用してキー コンテ�
 description: Azure portal を使用して Azure キー コンテナーを作成する方法を示すクイックスタート
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936279"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749674"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してキー コンテナーを作成する
 

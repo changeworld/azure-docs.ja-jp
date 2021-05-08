@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 506c764250347bfccc3f80dcb055f1203583748c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83681d2bb3622857fb9141a3cec79d92d278a814
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016527"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568751"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -249,10 +249,10 @@ VM を復元した後の注意点がいくつかあります:
 - バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合は、拡張機能を再インストールしてください。
 - バックアップされた VM が静的 IP アドレスを持っていた場合、復元された VM は競合を回避するために動的 IP アドレスを持つことになります。 [復元された VM に静的 IP アドレスを追加する](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)ことができます。
 - 復元された VM には可用性セットがありません。 ディスクの復元オプションを使用する場合、提供されているテンプレートまたは PowerShell を使用してディスクから VM を作成するときに[可用性セットを指定する](../virtual-machines/windows/tutorial-availability-sets.md)ことができます。
-- Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM で VMAccess 拡張機能を使用して、[パスワードをリセット](../virtual-machines/troubleshooting/reset-password.md)してください。 これらのディストリビューションでは SSH キーを使用することを推奨しているため、復元後にパスワードをリセットする必要はありません。
+- Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM で VMAccess 拡張機能を使用して、[パスワードをリセット](/troubleshoot/azure/virtual-machines/reset-password)してください。 これらのディストリビューションでは SSH キーを使用することを推奨しているため、復元後にパスワードをリセットする必要はありません。
 - 復元された VM に、ドメイン コントローラーとのリレーションシップが破損しているためにアクセスできない場合は、次の手順に従って VM を起動します。
   - 回復した VM にデータ ディスクとして OS ディスクを接続します。
-  - Azure エージェントが応答していないことが判明した場合は、この[リンク](../virtual-machines/troubleshooting/install-vm-agent-offline.md)に従って VM エージェントを手動でインストールしてください。
+  - Azure エージェントが応答していないことが判明した場合は、この[リンク](/troubleshoot/azure/virtual-machines/install-vm-agent-offline)に従って VM エージェントを手動でインストールしてください。
   - VM でシリアル コンソール アクセスを有効にして、VM へのコマンドライン アクセスを許可します
 
   ```cmd

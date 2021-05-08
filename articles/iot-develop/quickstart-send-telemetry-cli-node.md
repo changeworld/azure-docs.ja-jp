@@ -6,13 +6,13 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 01/11/2021
-ms.openlocfilehash: 97fcff4706d6da968c93426f85569fed9af95aac
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/25/2021
+ms.openlocfilehash: 3d42ac814678136c2f6342cd1064e3c3ff394507
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197811"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777241"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>クイックスタート: デバイスから IoT ハブにテレメトリを送信する (Node.js)
 
@@ -36,7 +36,7 @@ ms.locfileid: "102197811"
 ## <a name="use-the-nodejs-sdk-to-send-messages"></a>Node.js SDK を使用してメッセージを送信する
 このセクションでは、Node.js SDK を使用して、シミュレートされたデバイスから IoT ハブにメッセージを送信します。 
 
-1. 新しいターミナル ウィンドウを開きます。 このターミナルを使用して Node.js SDK をインストールし、Node.js のサンプル コードを操作します。 これで 2 つのターミナルを開いたことになります。1 つは Node.js を操作するために今開いたターミナル、もう 1 つは、前のセクションで Azure CLI コマンドを入力するために使用した CLI シェルです。 
+1. 新しいターミナル ウィンドウを開きます。 このターミナルを使用して Node.js SDK をインストールし、Node.js のサンプル コードを操作します。 これで 2 つのターミナルを開いたことになります。1 つは Node.js を操作するために今開いたターミナル、もう 1 つは、前のセクションで Azure CLI コマンドを入力するために使用した CLI シェルです。
 
 1. [Azure IoT Node.js SDK デバイス サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)をローカル コンピューターにコピーします。
 
@@ -44,142 +44,79 @@ ms.locfileid: "102197811"
     git clone https://github.com/Azure/azure-iot-sdk-node
     ```
 
-1. *azure-iot-sdk-node/device/samples* フォルダーに移動します。
+1. *azure-iot-sdk-node/device/samples/pnp* フォルダーに移動します。
 
     ```console
-    cd azure-iot-sdk-node/device/samples
+    cd azure-iot-sdk-node/device/samples/pnp
     ```
+
 1. Azure IoT Node.js SDK および必要な依存関係をインストールします。
 
     ```console
     npm install
     ```
+
     このコマンドを実行すると、*package.json* ファイルに指定されている適切な依存関係が device/samples ディレクトリにインストールされます。
 
-1. デバイスの接続文字列を `DEVICE_CONNECTION_STRING` という環境変数として設定します。 使用する文字列値は、前のセクションで、シミュレートされた Node.js デバイスを作成した後に取得した文字列です。 
+1. シミュレートされたデバイスを Azure IoT に接続できるよう、次の両方の環境変数を設定します。
+    * `IOTHUB_DEVICE_CONNECTION_STRING` という環境変数を設定します。 変数の値には、前のセクションで保存したデバイス接続文字列を使用します。
+    * `IOTHUB_DEVICE_SECURITY_TYPE` という環境変数を設定します。 変数には、リテラル文字列値 `connectionString` を使用します。
 
     **Windows (cmd)**
 
     ```console
-    set DEVICE_CONNECTION_STRING=<your connection string here>
+    set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
+    ```
+    ```console
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
     ```
 
     > [!NOTE]
-    > Windows CMD では、接続文字列を囲む引用符は入力しません。
+    > Windows CMD では、各変数の文字列値を囲む引用符は入力しません。
 
-    **Linux (bash)**
+    **PowerShell**
 
-    ```bash
-    export DEVICE_CONNECTION_STRING="<your connection string here>"
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    ```
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
     ```
 
+    **Bash (Linux または Windows)**
+
+    ```bash
+    export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
+    ```
+    ```bash
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
 1. 開いている CLI シェルで、[az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) コマンドを実行し、シミュレートされた IoT デバイス上のイベントの監視を開始します。  イベント メッセージは、到着した時点でターミナルに出力されます。
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
     ```
 
-1. Node.js ターミナルで、インストールされているサンプルファイル *simple_sample_device.js* のコードを実行します。 このコードは、シミュレートされた IoT デバイスにアクセスして、IoT ハブにメッセージを送信します。
+1. インストールされたサンプル ファイル *simple_thermostat.js* のコードを Node.js ターミナルで実行します。 このコードは、シミュレートされた IoT デバイスにアクセスして、IoT ハブにメッセージを送信します。
 
     Node.js サンプルをターミナルから実行するには、次のようにします。
     ```console
-    node ./simple_sample_device.js
+    node ./simple_thermostat.js
     ```
-
-    サンプルの Node.js コードは、必要に応じて JavaScript IDE から実行することができます。
-    ```javascript
-    'use strict';
-
-    const Protocol = require('azure-iot-device-mqtt').Mqtt;
-    // Uncomment one of these transports and then change it in fromConnectionString to test other transports
-    // const Protocol = require('azure-iot-device-amqp').AmqpWs;
-    // const Protocol = require('azure-iot-device-http').Http;
-    // const Protocol = require('azure-iot-device-amqp').Amqp;
-    // const Protocol = require('azure-iot-device-mqtt').MqttWs;
-    const Client = require('azure-iot-device').Client;
-    const Message = require('azure-iot-device').Message;
-
-    // String containing Hostname, Device Id & Device Key in the following formats:
-    //  "HostName=<iothub_host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
-    const deviceConnectionString = process.env.DEVICE_CONNECTION_STRING;
-    let sendInterval;
-
-    function disconnectHandler () {
-    clearInterval(sendInterval);
-    client.open().catch((err) => {
-        console.error(err.message);
-    });
-    }
-
-    // The AMQP and HTTP transports have the notion of completing, rejecting or abandoning the message.
-    // For example, this is only functional in AMQP and HTTP:
-    // client.complete(msg, printResultFor('completed'));
-    // If using MQTT calls to complete, reject, or abandon are no-ops.
-    // When completing a message, the service that sent the C2D message is notified that the message has been processed.
-    // When rejecting a message, the service that sent the C2D message is notified that the message won't be processed by the device. the method to use is client.reject(msg, callback).
-    // When abandoning the message, IoT Hub will immediately try to resend it. The method to use is client.abandon(msg, callback).
-    // MQTT is simpler: it accepts the message by default, and doesn't support rejecting or abandoning a message.
-    function messageHandler (msg) {
-    console.log('Id: ' + msg.messageId + ' Body: ' + msg.data);
-    client.complete(msg, printResultFor('completed'));
-    }
-
-    function generateMessage () {
-    const windSpeed = 10 + (Math.random() * 4); // range: [10, 14]
-    const temperature = 20 + (Math.random() * 10); // range: [20, 30]
-    const humidity = 60 + (Math.random() * 20); // range: [60, 80]
-    const data = JSON.stringify({ deviceId: 'myFirstDevice', windSpeed: windSpeed, temperature: temperature, humidity: humidity });
-    const message = new Message(data);
-    message.properties.add('temperatureAlert', (temperature > 28) ? 'true' : 'false');
-    return message;
-    }
-
-    function errorCallback (err) {
-    console.error(err.message);
-    }
-
-    function connectCallback () {
-    console.log('Client connected');
-    // Create a message and send it to the IoT Hub every two seconds
-    sendInterval = setInterval(() => {
-        const message = generateMessage();
-        console.log('Sending message: ' + message.getData());
-        client.sendEvent(message, printResultFor('send'));
-    }, 2000);
-
-    }
-
-    // fromConnectionString must specify a transport constructor, coming from any transport package.
-    let client = Client.fromConnectionString(deviceConnectionString, Protocol);
-
-    client.on('connect', connectCallback);
-    client.on('error', errorCallback);
-    client.on('disconnect', disconnectHandler);
-    client.on('message', messageHandler);
-
-    client.open()
-    .catch(err => {
-    console.error('Could not connect: ' + err.message);
-    });
-
-    // Helper function to print results in the console
-    function printResultFor(op) {
-    return function printResult(err, res) {
-        if (err) console.log(op + ' error: ' + err.toString());
-        if (res) console.log(op + ' status: ' + res.constructor.name);
-    };
-    }
-    ```
+    > [!NOTE]
+    > このコード サンプルでは、Azure IoT プラグ アンド プレイを使用しており、手動構成なしでソリューションにスマート デバイスを統合できます。  既定では、このドキュメントのほとんどのサンプルで IoT プラグ アンド プレイが使用されています。 IoT PnP の利点と、それを使用するケースと使用しないケースについて詳しくは、「[IoT プラグ アンド プレイとは](../iot-pnp/overview-iot-plug-and-play.md)」を参照してください。
 
 シミュレートされたテレメトリ メッセージを Node.js コードがデバイスから IoT ハブに送信すると、イベントを監視している CLI シェルにそのメッセージが表示されます。
 
 ```output
+Starting event monitor, use ctrl-c to stop...
 event:
   component: ''
-  interface: ''
+  interface: dtmi:com:example:Thermostat;1
   module: ''
-  origin: <your device name>
-  payload: '{"deviceId":"myFirstDevice","windSpeed":11.853592092144627,"temperature":22.62484121157508,"humidity":66.17960805575937}'
+  origin: <your device ID>
+  payload:
+    temperature: 36.87027777131555
 ```
 
 デバイスが安全に接続され、Azure IoT Hub にテレメトリを送信するようになりました。
@@ -191,12 +128,12 @@ event:
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
 
 名前でリソース グループを削除するには、以下の手順を実行します。
-1. [az group delete](/cli/azure/group#az-group-delete) コマンドを実行します。 このコマンドにより、作成したリソース グループ、IoT Hub、デバイスの登録が削除されます。
+1. [az group delete](/cli/azure/group#az_group_delete) コマンドを実行します。 このコマンドにより、作成したリソース グループ、IoT Hub、デバイスの登録が削除されます。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. [az group list](/cli/azure/group#az-group-list) コマンドを実行して、リソース グループが削除されていることを確認します。  
+1. [az group list](/cli/azure/group#az_group_list) コマンドを実行して、リソース グループが削除されていることを確認します。  
 
     ```azurecli
     az group list

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 0775df0d5ca1061bff127ba5491040a90ddb8597
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576139"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447014"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>診断機能に Log Analytics を使用する
 

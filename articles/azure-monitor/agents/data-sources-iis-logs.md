@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: 484e49219b94f5974661b1e76f533236666ebcfb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 87cb19daa23c9fcca601771a9fe168b98be02627
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050734"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586269"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Azure Monitor で Log Analytics エージェントを使用して IIS ログを収集する
 インターネット インフォメーション サービス (IIS) では、Log Analytics エージェントが収集して [Azure Monitor ログ](../data-platform.md)に格納できるログ ファイル内に、ユーザー アクティビティが格納されます。
@@ -60,6 +60,8 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | sSiteName |IIS サイトの名前。 |
 | TimeGenerated |エントリがログに記録された日付と時刻。 |
 | TimeTaken |要求の処理にかかった時間 (ミリ秒) |
+| csHost | ホスト名。 |
+| csBytes | サーバーが受信したバイト数。 |
 
 ## <a name="log-queries-with-iis-logs"></a>IIS ログでのログ クエリ
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。

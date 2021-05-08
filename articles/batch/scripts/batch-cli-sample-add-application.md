@@ -4,12 +4,12 @@ description: このサンプルでは、Azure Batch プールまたはタスク�
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 414a401168b1b378ed33f4904607243de0267d22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06afb59a76e763c25e943c3be1531372a6bd2aa1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94565808"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765269"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例: Azure Batch アカウントへのアプリケーションの追加
 
@@ -36,16 +36,16 @@ az group delete --name myResourceGroup
 このスクリプトでは、次のコマンドを使用します。
 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Batch アカウントを作成します。 |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az batch application create](/cli/azure/batch/application#az-batch-application-create) | アプリケーションを作成します。  |
-| [az batch application package create](/cli/azure/batch/application/package#az-batch-application-package-create) | アプリケーション パッケージを指定されたアプリケーションに追加します。  |
-| [az batch application set](/cli/azure/batch/application#az-batch-application-set) | アプリケーションのプロパティを更新します。  |
-| [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。 |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az batch application create](/cli/azure/batch/application#az_batch-application-create) | アプリケーションを作成します。  |
+| [az batch application package create](/cli/azure/batch/application/package#az_batch-application-package-create) | アプリケーション パッケージを指定されたアプリケーションに追加します。  |
+| [az batch application set](/cli/azure/batch/application#az_batch-application-set) | アプリケーションのプロパティを更新します。  |
+| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

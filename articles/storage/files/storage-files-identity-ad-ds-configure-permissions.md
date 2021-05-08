@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.openlocfilehash: 698b4ebedfc9b41e8c5732a0a81226a971d65585
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103470763"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>パート 3: SMB 経由でディレクトリとファイル レベルのアクセス許可を構成する 
@@ -28,17 +28,17 @@ Azure RBAC によって共有レベルのアクセス許可を割り当てたら
 | 組み込みのロール  | NTFS アクセス許可  | 結果のアクセス  |
 |---------|---------|---------|
 |記憶域ファイル データの SMB 共有の閲覧者 | フル コントロール、変更、読み取り、書き込み、実行 | 読み取り & 実行  |
-|     |   Read |     Read  |
+|     |   読み取り |     読み取り  |
 |記憶域ファイル データの SMB 共有の共同作成者  |  フル コントロール    |  変更、読み取り、書き込み、実行 |
 |     |  変更         |  変更    |
 |     |  読み取り & 実行 |  読み取り & 実行 |
-|     |  Read           |  Read    |
-|     |  Write          |  Write   |
+|     |  読み取り           |  読み取り    |
+|     |  書き込み          |  書き込み   |
 |記憶域ファイル データの SMB 共有の管理者特権共同作成者 | フル コントロール  |  変更、読み取り、書き込み、編集、実行 |
 |     |  変更          |  変更 |
 |     |  読み取り & 実行  |  読み取り & 実行 |
-|     |  Read            |  Read   |
-|     |  Write           |  Write  |
+|     |  読み取り            |  読み取り   |
+|     |  書き込み           |  書き込み  |
 
 
 

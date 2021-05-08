@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: a393cf978318c39081805cae7e38c3386ff156f5
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010705"
 ---
 | 言語/フレームワーク | プロジェクト<br/>GitHub                                                                                                    | Package                                                                      | 取得<br/>started                             | ユーザーのサインイン                                         | Web API へのアクセス                                                 | 一般提供 (GA) *または*<br/>パブリック プレビュー<sup>1</sup> |

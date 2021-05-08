@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7596aa4cef6c4bc601c15018e8ede4265f395eb7
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76990506"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312860"
 ---
 # <a name="manage-multiple-tenants"></a>複数のテナントの管理
 
@@ -45,7 +45,7 @@ ms.locfileid: "76990506"
 * テナントごとに複数の Video Indexer (および関連する Media Services) アカウントがあるため、管理が困難になります。
 
 > [!TIP]
-> [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)でシステムの管理者ユーザーを作成し、Authorization API を使用して、関連する[アカウント アクセス トークン](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)をテナントに提供します。
+> [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)でシステムの管理者ユーザーを作成し、Authorization API を使用して、関連する[アカウント アクセス トークン](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account-Access-Token)をテナントに提供します。
 
 ## <a name="single-video-indexer-account-for-all-users"></a>すべてのユーザーに対して単一の Video Indexer アカウント
 
@@ -55,7 +55,7 @@ ms.locfileid: "76990506"
 
 このオプションでは、テナントによってモデルをフィルター処理することにより、テナント間でカスタマイズ モデル (ユーザー、言語、ブランド) を共有または分離することができます。
 
-[ビデオをアップロードする](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)ときに、テナントごとに異なるパーティション属性を指定することができます。 これにより、[検索 API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?) での分離が可能になります。 検索 API でパーティション属性を指定することにより、指定したパーティションのみの結果を取得します。 
+[ビデオをアップロードする](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)ときに、テナントごとに異なるパーティション属性を指定することができます。 これにより、[検索 API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos) での分離が可能になります。 検索 API でパーティション属性を指定することにより、指定したパーティションのみの結果を取得します。 
 
 ### <a name="considerations"></a>考慮事項
 

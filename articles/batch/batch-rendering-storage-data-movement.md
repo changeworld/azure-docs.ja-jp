@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a18ee6961cb601b0fa9db7213eb6115afa20096
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147311"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765199"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション
 
@@ -126,7 +126,7 @@ Batch で使用するには、タスク間の接続を保持することはで�
 
 Azure Files は、azcopy、Azure CLI、Storage Explorer、Azure PowerShell、Batch Explorer など、Azure Storage をサポートするすべての主要な API やツールでサポートされています。
 
-[Azure File Sync](../storage/files/storage-sync-files-planning.md) は、オンプレミスのファイル システムと Azure ファイル共有間でファイルを自動的に同期できます。
+[Azure File Sync](../storage/file-sync/file-sync-planning.md) は、オンプレミスのファイル システムと Azure ファイル共有間でファイルを自動的に同期できます。
 
 ## <a name="next-steps"></a>次のステップ
 

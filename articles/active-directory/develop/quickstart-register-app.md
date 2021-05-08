@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: c72ae2a2e6dbd2278bdd78f26c145386be22764e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 7b7adde8a6e60042bec7695e4553d6470e548316
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175432"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055690"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -56,7 +56,10 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 
     :::image type="content" source="media/quickstart-register-app/portal-02-app-reg-01.png" alt-text="[アプリケーションの登録] ペインを示す、Web ブラウザー内の Azure portal のスクリーンショット。":::
 
-登録が完了すると、Azure portal に、アプリの登録の **[概要]** ペインが表示されます。 **[アプリケーション (クライアント) ID]** の値を確認します。 この値は、"*クライアント ID*" とも呼ばれ、Microsoft ID プラットフォーム内のアプリケーションを一意に識別します。
+登録が完了すると、Azure portal に、アプリの登録の **[概要]** ペインが表示されます。 **[アプリケーション (クライアント) ID]** の値を確認します。 この値は、"*クライアント ID*" とも呼ばれ、Microsoft ID プラットフォーム内のアプリケーションを一意に識別します。 
+
+> [!IMPORTANT]
+> 新しいアプリの登録は、既定ではユーザーに対して非表示になっています。 ユーザーがアプリを [[マイ アプリ] ページ](../user-help/my-apps-portal-end-user-access.md)で表示するための準備を整えたら、これを有効にすることができます。 アプリを有効にするには、Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** に移動し、アプリを選択します。 次に、 **[プロパティ]** ページで **[ユーザーに表示しますか?]** を [はい] に切り替えます。
 
 アプリケーションのコード (より一般的には、アプリケーションで使用される認証ライブラリ) でも、このクライアント ID を使用します。 この ID は、ID プラットフォームから受信するセキュリティ トークンの検証過程で使用されます。
 
@@ -89,7 +92,7 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
     | **シングルページ アプリケーション** | アプリの **リダイレクト URI** を入力します。 この URI は、認証後に Microsoft ID プラットフォームによってユーザーのクライアントがリダイレクトされ、セキュリティ トークンが送信される場所です。<br/><br/>JavaScript や、Angular、Vue.js、React.js、Blazor WebAssembly などのフレームワークを使用してクライアント側 Web アプリを構築している場合は、このプラットフォームを選択します。 |
     | **iOS / macOS** | アプリの **バンドル ID** を入力します。 これは、 **[ビルド設定]** または *Info.plist* 内の Xcode で検索します。<br/><br/>**バンドル ID** を指定すると、リダイレクト URI が自動的に生成されます。 |
     | **Android** | アプリの **パッケージ名** を入力します。 これは、*AndroidManifest.xml* ファイル内で検索します。 また、**署名ハッシュ** も生成して入力します。<br/><br/>これらの設定を指定すると、リダイレクト URI が自動的に生成されます。 |
-    | **モバイル アプリケーションとデスクトップ アプリケーション** | **推奨されるリダイレクト URI** のいずれかを選択します。 または、**カスタム リダイレクト URI** を指定します。<br/><br/>デスクトップ アプリケーションの場合は、次をお勧めします<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>最新の Microsoft Authentication Library (MSAL) を使用していない、またはブローカーを使用していないモバイル アプリケーションには、このプラットフォームを選択します。 また、デスクトップ アプリケーションにも、このプラットフォームを選択します。 |
+    | **モバイル アプリケーションとデスクトップ アプリケーション** | **推奨されるリダイレクト URI** のいずれかを選択します。 または、**カスタム リダイレクト URI** を指定します。<br/><br/>埋め込みブラウザーを使用するデスクトップ アプリケーションの場合は、次を推奨します<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>システム ブラウザーを使用するデスクトップ アプリケーションの場合は、次を推奨します<br/>`http://localhost`<br/><br/>最新の Microsoft Authentication Library (MSAL) を使用していない、またはブローカーを使用していないモバイル アプリケーションには、このプラットフォームを選択します。 また、デスクトップ アプリケーションにも、このプラットフォームを選択します。 |
 1. **[構成する]** を選択して、プラットフォームの構成を完了します。
 
 ### <a name="redirect-uri-restrictions"></a>リダイレクト URI の制限

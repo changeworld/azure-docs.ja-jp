@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175109"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579741"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -81,7 +81,7 @@ Web アプリケーション、モバイル アプリケーション、または
   - **[テナント]** - この設定が既定値です。 この設定を使用すると、B2C テナント内の複数のアプリケーションとユーザー フローで同じユーザー セッションを共有できます。 たとえば、ユーザーがあるアプリケーションにサインインすると、そのユーザーは別のアプリケーションにもシームレスにサインインしてアクセスできます。
   - **[アプリケーション]** - この設定により、ユーザー セッションをあるアプリケーションに対して、他のアプリケーションとは独立に排他的に維持できます。 たとえば、ユーザーが Contoso Groceries に既にサインインしているかどうかに関係なく、Contoso Pharmacy にサインインできるようにする場合は、この設定を使用できます。
   - **[ポリシー]** - この設定により、ユーザー セッションをあるポリシーに対して、そのユーザー フローを使用するアプリケーションとは独立に排他的に維持できます。 たとえば、あるユーザーが既にサインインし、多要素認証 (MFA) の手順を完了している場合は、ユーザー フローに関連付けられたセッションが期限切れになっていない限り、そのユーザーは複数のアプリケーションのよりセキュリティの高い部分にアクセスできます。
-  - **[無効]** - この設定は、ユーザー フローを実行するたびに、ユーザーにユーザー体験全体を強制的に実行させます。
+  - **[抑制]** - この設定は、ユーザー フローを実行するたびに、ユーザーにユーザー体験全体を強制的に実行させます。
 - **[サインインしたままにする] (KMSI)**  - 永続的な Cookie を使用することにより、セッションの有効期間が延長されます。 この機能が有効になっており、これをユーザーが選択した場合は、ユーザーがブラウザーを閉じて再び開いても、セッションはアクティブのままです。 セッションは、ユーザーがサインアウトしたときにのみ取り消されます。サインインしたままにする機能 (KMSI 機能) は、ローカル アカウントでのサインインにのみ適用されます。 KMSI 機能は、セッションの有効期間よりも優先されます。
 
 ::: zone pivot="b2c-user-flow"
@@ -249,7 +249,7 @@ KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を [�
 ::: zone-end
 ::: zone pivot="b2c-custom-policy"
 3. フェデレーション ID プロバイダーからのサインアウトが試みられます。
-   - OpenID Connect - ID プロバイダーの既知の構成エンドポイントで `end_session_endpoint` の場所が指定されている場合。
+   - OpenID Connect - ID プロバイダーの既知の構成エンドポイントで `end_session_endpoint` の場所が指定されている場合。 サインアウト要求で `id_token_hint` パラメーターが渡されません。 フェデレーション ID プロバイダーでこのパラメーターが必要な場合、サインアウト要求は失敗します。
    - OAuth2 - [ID プロバイダーのメタデータ](oauth2-technical-profile.md#metadata)に `end_session_endpoint` の場所が含まれている場合。
    - SAML - [ID プロバイダーのメタデータ](identity-provider-generic-saml.md)に `SingleLogoutService` の場所が含まれている場合。
 4. 必要に応じて、他のアプリケーションからのサインアウトが行われます。 詳しくは、「[シングル サインアウト](#single-sign-out)」セクションをご覧ください。

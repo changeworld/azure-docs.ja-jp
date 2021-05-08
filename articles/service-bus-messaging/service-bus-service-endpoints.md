@@ -2,14 +2,14 @@
 title: Azure Service Bus 用の仮想ネットワーク サービス エンドポイントを構成する
 description: この記事では、Microsoft.ServiceBus サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
 ms.topic: article
-ms.date: 02/12/2021
+ms.date: 03/29/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b5aba6c5ad4e1e6d0c90b99ebcdf441bb35cc39
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100559569"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960454"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Service Bus 名前空間へのアクセスを許可する
 Service Bus と[仮想ネットワーク (VNet) サービス エンドポイント][vnet-sep]の統合により、メッセージング機能へのアクセスを、仮想ネットワークにバインドされている仮想マシンなどのワークロードから保護し、ネットワーク トラフィック パスを両端で保護できます。
@@ -18,16 +18,14 @@ Service Bus と[仮想ネットワーク (VNet) サービス エンドポイン�
 
 その結果、メッセージング サービス エンドポイントの監視可能なネットワーク アドレスがパブリック IP 範囲内にあるにもかかわらず、サブネットにバインドされたワークロードとそれぞれの Service Bus 名前空間の間にプライベートな分離された関係が確立されます。
 
-仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。 例外として、ネットワーク サービス エンドポイントが有効になっている場合でも、特定の信頼できるサービスからの Service Bus リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
+## <a name="important-points"></a>重要なポイント
+- 仮想ネットワークは、[Premium レベル](service-bus-premium-messaging.md)の Service Bus 名前空間でのみサポートされます。 Service Bus で VNet サービス エンドポイントを使用するときには、Standard レベルと Premium レベルの Service Bus 名前空間が混在するアプリケーションでこれらのエンドポイントを有効にしないでください。 これは Standard レベルでは VNet がサポートされないためです。 エンドポイントは、Premium レベルの名前空間のみに制限されます。
+- 仮想ネットワーク統合を実装すると、他の Azure サービスが Service Bus と対話するのを防ぐことができます。 例外として、ネットワーク サービス エンドポイントが有効になっている場合でも、特定の **信頼できるサービス** からの Service Bus リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
 
-仮想ネットワーク上には、次の Microsoft サービスが必要です
-- Azure App Service
-- Azure Functions
-
-仮想ネットワークは、[Premium レベル](service-bus-premium-messaging.md)の Service Bus 名前空間でのみサポートされます。 Service Bus で VNet サービス エンドポイントを使用するときには、Standard レベルと Premium レベルの Service Bus 名前空間が混在するアプリケーションでこれらのエンドポイントを有効にしないでください。 これは Standard レベルでは VNet がサポートされないためです。 エンドポイントは、Premium レベルの名前空間のみに制限されます。
-
-> [!IMPORTANT]
-> 指定された IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に少なくとも 1 つの IP 規則または仮想ネットワーク規則を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
+    仮想ネットワーク上には、次の Microsoft サービスが必要です
+    - Azure App Service
+    - Azure Functions
+- ある仮想ネットワークの指定された IP アドレスまたはサブネットからのトラフィックのみを許可するには、名前空間に **少なくとも 1 つの IP 規則または仮想ネットワーク規則** を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet の統合によって有効になる高度なセキュリティのシナリオ 
 

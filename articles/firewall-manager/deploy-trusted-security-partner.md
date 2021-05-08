@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2021
 ms.author: victorh
-ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96485724"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109511"
 ---
 # <a name="deploy-a-security-partner-provider"></a>セキュリティ パートナー プロバイダーのデプロイ
 
@@ -90,28 +90,25 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
    
 2. Azure の Azure Virtual WAN ポータルで、トンネル作成の状態を確認できます。 トンネルが Azure とパートナー ポータルの両方で **[connected]\(接続済み\)** と表示されたら、次の手順に進み、ルートを設定してパートナーにインターネット トラフィックを送信するブランチと VNet を選択します。
 
-## <a name="configure-route-settings"></a>ルート設定の構成
+## <a name="configure-security-with-firewall-manager"></a>Firewall Manager を使用してセキュリティを構成する
 
 1. [Azure Firewall Manager] -> [Secured Hubs]\(セキュリティ保護付きハブ) を参照します。 
 2. ハブを選択します。 ハブの状態には、「**セキュリティ接続保留中**」ではなく、「**プロビジョニング済み**」と表示されます。
 
    サード パーティ プロバイダーがハブに接続できることを確認してください。 VPN ゲートウェイのトンネルは、 **[connected]\(接続済み\)** 状態である必要があります。 この状態は、以前の状態と比較して、ハブとサード パーティ パートナー間の接続の正常性をより反映します。
-3. ハブを選択し、 **[Route Settings]\(ルート設定\)** に移動します。
+3. ハブを選択し、 **[セキュリティ構成]** に移動します。
 
    ハブにサード パーティ プロバイダーをデプロイすると、ハブが *セキュリティ保護付き仮想ハブ* に変換されます。 これにより、サード パーティ プロバイダーがハブへの 0.0.0.0/0 (既定) ルートをアドバタイズします。 ただし、どの接続がこの既定のルートを取得すべきかを選択しない限り、VNet 接続とハブに接続されているサイトはこのルートを取得しません。
-4. **[Internet traffic]\(インターネット トラフィック\)** で、 **[VNet-to-Internet]\(VNet - インターネット間\)** または **[Branch-to-Internet]\(ブランチ - インターネット間\)** 、あるいはその両方を選択し、ルートがサード パーティによって送信されるように構成します。
+4. Azure Firewall を介した **インターネット トラフィック** と信頼されたセキュリティ パートナーを介した **プライベート トラフィック** を設定して、仮想 WAN のセキュリティを構成します。 これにより、仮想 WAN 内の個々の接続が自動的に保護されます。
 
-   これはハブにルーティングする必要があるトラフィックの種類のみを指定しますが、VNet またはブランチのルートには影響しません。 これらのルートは、既定ではハブにアタッチされているすべての VNet およびブランチには反映されません。
-5. **[secure connections]\(セキュリティ保護付きの接続\)** を選択し、これらのルートを設定する接続を選択する必要があります。 これは、サード パーティ プロバイダーへのインターネット トラフィックの送信を開始できる VNet およびブランチを指定します。
-6. **[Route Settings]\(ルート設定\)** から、[Internet traffic]\(インターネット トラフィック\) の **[Secure connections]\(セキュリティ保護付きの接続\)** を選択し、セキュリティで保護する VNet またはブランチ (Virtual WAN 内の *サイト*) を選択します。 **[Secure Internet traffic]\(セキュリティで保護されたインターネット トラフィック\)** を選択します。
-   ![[Secure Internet traffic]\(セキュリティ保護付きのインターネット トラフィック\)](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. [ハブ] ページに戻ります。 ハブの **セキュリティ パートナー プロバイダー** の状態は、 **[Secured]\(セキュリティ保護付き\)** となっているはずです。
+   :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="セキュリティ構成":::
+5. さらに、組織により、仮想ネットワークとブランチ オフィスでパブリック IP 範囲が使用されている場合は、**プライベート トラフィック プレフィックス** を使用してこれらの IP プレフィックスを明示的に指定する必要があります。 パブリック IP アドレスのプレフィックスは、個別に、または集合として指定できます。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>サード パーティのサービス経由のブランチまたは VNet のインターネット トラフィック
 
 次に、VNet 仮想マシンまたはブランチ サイトがインターネットにアクセスできるかどうかを確認し、トラフィックがサード パーティのサービスに送信されていることを検証します。
 
-ルート設定の手順が完了すると、VNet の仮想マシンとブランチサイトの両方で、サード パーティのサービス ルートに 0/0 が送信されます。 これらの仮想マシンに RDP または SSH 接続することはできません。 サインインするには、ピアリングされた VNet に [Azure Bastion](../bastion/bastion-overview.md) サービスをデプロイします。
+ルート設定の手順が完了すると、VNet の仮想マシンとブランチ サイトの両方で、サード パーティのサービス ルートに 0/0 が送信されます。 これらの仮想マシンに RDP または SSH 接続することはできません。 サインインするには、ピアリングされた VNet に [Azure Bastion](../bastion/bastion-overview.md) サービスをデプロイします。
 
 ## <a name="next-steps"></a>次のステップ
 

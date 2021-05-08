@@ -4,13 +4,13 @@ ms.service: media-services
 ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
-ms.custom: CLI
-ms.openlocfilehash: a6349188a2c6b4da68009df93fbea5fa6eabacf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: CLI, devx-track-azurecli
+ms.openlocfilehash: ff8bfbeea8bd22619375e88081da0cf9c0770fc9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102245025"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511628"
 ---
 <!-- ### Create a storage account -->
 
@@ -20,7 +20,7 @@ Media Services アカウントの作成では、Azure Storage アカウント �
 
 この例では、General Purpose v2、Standard LRS アカウントを作成します。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 詳細については、[ストレージ アカウント](/cli/azure/storage/account)に関するページを参照してください。
 
-Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 以下のスクリプトの `storageaccountforams` は、実際の値に置き換えてください。 `amsResourceGroup` は、前の手順で、リソース グループに指定した値と一致させる必要があります。 ストレージ アカウント名は 24 文字未満にする必要があります。
+Media Services アカウントに関連付けるストレージ アカウントは、以下のコマンドで作成します。 次のスクリプトで、`storageaccountforams` を 24 文字未満の一意の名前に置き換えます。 `amsResourceGroup` は、前の手順で、リソース グループに指定した値と一致させる必要があります。
 
 ```azurecli
 az storage account create --name storageaccountforams --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup

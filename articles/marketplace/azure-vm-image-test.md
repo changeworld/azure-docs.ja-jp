@@ -7,12 +7,12 @@ ms.topic: how-to
 author: kriti-ms
 ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: 9ffba221625c57332cd695125651d92adc11cf60
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 467b7d605b57c479d84fc995b4e0dc53b3ac5275
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200375"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558297"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 
@@ -28,7 +28,7 @@ Shared Image Gallery イメージから VM をデプロイするには、次の�
 1. [確認および作成] をクリックします。 検証に成功したら、[作成] をクリックします
 
 > [!NOTE]
-> vhd ファイルから VM を作成する必要がある場合は、[Azure Resource Manager テンプレートを準備する](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#prepare-an-azure-resource-manager-template)か、[PowerShell を使用して Azure VM をデプロイする](https://docs.microsoft.com/azure/marketplace/azure-vm-image-test#deploy-an-azure-vm-using-powershell)手順に従います。
+> vhd ファイルから VM を作成する必要がある場合は、[Azure Resource Manager テンプレートを準備する](#connect-the-certification-tool-to-a-vm-image)か、[PowerShell を使用して Azure VM をデプロイする](#how-to-use-powershell-to-consume-the-self-test-api)手順に従います。
 
 この記事では、商業マーケットプレースで仮想マシン (VM) イメージをテストして送信し、Azure Marketplace の最新の公開要件を満たしていることを確認する方法について説明します。
 

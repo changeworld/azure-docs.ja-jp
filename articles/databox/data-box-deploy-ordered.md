@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102522395"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770900"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **Azure へのサインイン**
 
-Windows PowerShell コマンド ウィンドウを開き、[az login](/cli/azure/reference-index#az-login) コマンドを使用して Azure にサインインします。
+Windows PowerShell コマンド ウィンドウを開き、[az login](/cli/azure/reference-index#az_login) コマンドを使用して Azure にサインインします。
 
 ```azurecli
 PS C:\Windows> az login
@@ -790,7 +790,7 @@ Azure Data Box の注文をキャンセルするには、[`az databox job cancel
    |resource-group [必須]| 削除する注文に関連付けられているリソース グループの名前。 リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 | "myresourcegroup"|
    |name [必須]| 削除する注文の名前。 | "mydataboxorder"|
    |reason [必須]| 注文のキャンセル理由。 | "間違った情報を入力したので注文をキャンセルする必要がありました。" |
-   |はい| 確認のダイアログを表示しません。 | --yes (-y)| --yes -y |
+   |はい| 確認のダイアログを表示しません。 | --yes (-y)| 
    |debug| 詳細ログにデバッグ情報を追加します。 | --debug |
    |help| このコマンドのヘルプ情報を表示します。 | --help -h |
    |only-show-errors| エラーのみを表示し、警告は抑制します。 | --only-show-errors |
@@ -827,7 +827,7 @@ Azure Data Box の注文をキャンセルした場合は、[`az databox job del
    |resource-group [必須]| 削除する注文に関連付けられているリソース グループの名前。 リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 | "myresourcegroup"|
    |name [必須]| 削除する注文の名前。 | "mydataboxorder"|
    |subscription| Azure サブスクリプションの名前または ID (GUID)。 | "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" |
-   |はい| 確認のダイアログを表示しません。 | --yes (-y)| --yes -y |
+   |はい| 確認のダイアログを表示しません。 | --yes (-y)|
    |debug| 詳細ログにデバッグ情報を追加します。 | --debug |
    |help| このコマンドのヘルプ情報を表示します。 | --help -h |
    |only-show-errors| エラーのみを表示し、警告は抑制します。 | --only-show-errors |

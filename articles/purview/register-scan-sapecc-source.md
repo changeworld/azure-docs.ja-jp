@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: b72538c61d1a68bca655b0d9529f654068727f86
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af3f54778882df9aaa06297f291c12a0f4b1577c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101696070"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046047"
 ---
 # <a name="register-and-scan-sap-ecc-source-preview"></a>SAP ECC ソースを登録してスキャンする (プレビュー)
 
@@ -25,7 +25,7 @@ SAP ECC ソースでは、SAP ECC インスタンスからメタデータを抽�
 ## <a name="prerequisites"></a>前提条件
 
 1.  最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。
-    詳細については、「[セルフホステッド統合ランタイムを作成して共有する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。
+    詳細については、「[セルフホステッド統合ランタイムを作成して共有する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
 
 2.  セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 
@@ -80,7 +80,7 @@ SAP ECC ソースでサポートされている認証は **基本認証** のみ
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 [統合ランタイム] をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](https://docs.microsoft.com/azure/purview/manage-integration-runtimes)に記載されている手順を使用して、セルフホステッド統合ランタイムを作成します。
+1.  管理センターで、 [統合ランタイム] をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを作成します。
 
 2.  **[ソース]** に移動します
 

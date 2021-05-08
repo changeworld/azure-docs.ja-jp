@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633d0b9e454fe2906d98624ac2cdbcc9a8b6c7fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216650"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022264"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure Storage の仮想ネットワーク サービス エンドポイント ポリシー
 
@@ -109,6 +109,8 @@ Virtual Network (VNet) のサービス エンドポイント ポリシーを使�
   - アカウントが、サブネット上のサービス エンドポイント ポリシーと **クラシック ストレージ アカウント** ではないことを確認します。
 - マネージド Azure サービスが、サブネット上でサービス エンドポイント ポリシーを適用した後に動作を停止した場合
   - 現時点では、管理サービスはサービス エンドポイント ポリシーでサポートされていません。 *最新情報はこのページでお伝えしますのでしばらくお待ちください*。
+- サブネットでサービス エンドポイント ポリシーを適用した後に動作が停止したマネージド ストレージ アカウントにアクセスする
+  - マネージド ストレージ アカウントは、サービス エンドポイント ポリシーでサポートされていません。 構成されている場合、ポリシーは既定ですべてのマネージド ストレージ アカウントへのアクセスを拒否します。 アプリケーションからマネージド ストレージ アカウントにアクセスする必要がある場合は、エンドポイント ポリシーをこのトラフィックに使用しないでください。
 
 ## <a name="provisioning"></a>プロビジョニング
 

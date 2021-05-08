@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cdb22805e2e68893d3883272b66c2cfac13c807e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573604"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721870"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Azure portal を使用して、ホストでの暗号化を使用したエンドツーエンドの暗号化を有効にする
 
@@ -27,9 +27,6 @@ ms.locfileid: "99573604"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>サポートされているリージョン
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
 
@@ -37,7 +34,24 @@ ms.locfileid: "99573604"
 
 ## <a name="prerequisites"></a>前提条件
 
-VM または仮想マシン スケール セットに対してホストでの暗号化を使用できるようにするには、サブスクリプションで機能が有効になっている必要があります。 サブスクリプション ID と共に encryptionAtHost@microsoft.com にメールを送信して、サブスクリプションに対して機能を有効にします。
+VM または VMSS に対して EncryptionAtHost プロパティを使用する前に、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションに対して機能を有効にしてください。
+
+1. **Azure ポータル**:[Azure portal](https://portal.azure.com) から Cloud Shell アイコンを選択します。
+
+    ![Azure portal から Cloud Shell を起動するアイコン](../Cloud-Shell/media/overview/portal-launch-icon.png)
+    
+2.  次のコマンドを実行して、サブスクリプションに対して機能を登録します
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+3.  この機能を試す前に、下のコマンドを使用して、登録状態が Registered であることを確認してください (数分かかります)。
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 [提供されているリンク](https://aka.ms/diskencryptionupdates)を使用して Azure portal にサインインします。
 

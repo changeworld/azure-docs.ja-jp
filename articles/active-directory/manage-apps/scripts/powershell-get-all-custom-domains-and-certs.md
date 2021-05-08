@@ -3,7 +3,7 @@ title: PowerShell サンプル - カスタム ドメインを使用している�
 description: カスタム ドメインを使用しているすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションと証明書情報を一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 8325da81fd78762f0ffdcae4eebe93fe567580d0
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ec424d59fe7fee59c226ad51c74e6c106a4a5fc7
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550938"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377634"
 ---
 # <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>カスタム ドメインを使用しているすべてのアプリケーション プロキシ アプリと証明書情報を取得する
 

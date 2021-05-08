@@ -3,14 +3,14 @@ title: Availability Zones をまたがるクラスターのデプロイ
 description: Availability Zones をまたがる Azure Service Fabric クラスターを作成する方法について説明します。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9cc2a9d189e7a781dc6ba64a65af022150392485
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714954"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727764"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -33,9 +33,21 @@ Availability Zones 間で分散された Service Fabric クラスターでは、
 * 仮想マシン スケール セットをデプロイするサブネットによって参照されている NSG。
 
 >[!NOTE]
-> Service Fabric ではゾーンをまたがる単一の仮想マシン スケール セットがサポートされないため、仮想マシン スケール セットの単一の配置グループ プロパティが true に設定されている必要があります。
+> 仮想マシン スケール セットの単一の配置グループ プロパティを true に設定する必要があります。
 
- ![Azure Service Fabric 可用性ゾーンのアーキテクチャを示す図。][sf-architecture]
+Azure Service Fabric 可用性ゾーンのアーキテクチャを示す図 ![Azure Service Fabric 可用性ゾーンのアーキテクチャを示す図。][sf-architecture]
+
+ゾーンにまたがる仮想マシン スケール セット内の FD と UD の形式を示すサンプル ノード リスト
+
+ ![ゾーンにまたがる仮想マシン スケール セット内の FD と UD の形式を示すサンプル ノード リスト。][sf-multi-az-nodes]
+
+**ゾーン間でのサービス レプリカの分散**: ゾーンにまたがる nodeTypes にサービスがデプロイされている場合、レプリカが必ず別々のゾーンに存在するように配置されます。 これらの各 nodeTypes に存在するノード上の障害ドメインはゾーン情報を使用して構成されているため、このことが保証されます (つまり、 FD = fd:/zone1/1 ... といった具合です)。 たとえば、サービスに 5 個のレプリカまたはインスタンスがある場合、分散は 2-2-1 となり、ランタイムは AZ 間での均等な分散を試みます。
+
+**ユーザー サービス レプリカの構成**: クロス可用性ゾーン nodeTypes にデプロイされたステートフル ユーザー サービスは、レプリカ数のターゲット値 9、最小値 5 という構成値を使用して構成する必要があります。 この構成は、1 つのゾーンがダウンした場合でも 6 つのレプリカが他の 2 つのゾーンで稼働しているため、サービスを機能させることができます。 このようなシナリオでは、アプリケーションのアップグレードも実行できます。
+
+**クラスターの ReliabilityLevel**: これにより、クラスター内のシード ノードの数と、システム サービスのレプリカ サイズも定義されます。 ゾーンの回復性が有効になるように、ノードがゾーンにまたがって分散されるため、クロス可用性ゾーンのセットアップではより多くのノードを使用します。このため、高い信頼性値によってより多くのシード ノードとシステム サービス レプリカが存在することになり、ゾーン間で均等に分散されることが保証されます。その結果、ゾーンで障害が発生した場合に、クラスターとシステム サービスへの影響を回避できます。 "ReliabilityLevel = Platinum" を使用すると、クラスター内のゾーン間に 9 つのシード ノードが分散され、各ゾーンに 3 つのシードが割り当てられるため、クロス可用性ゾーンのセットアップにはこれをお勧めします。
+
+**ゾーン ダウンのシナリオ**: ゾーンがダウンすると、そのゾーン内のすべてのノードがダウン状態として表示されます。 これらのノードのサービス レプリカもダウンします。 他のゾーンにレプリカがあるため、正常に動作しているゾーンにプライマリ レプリカがフェールオーバーすることで、サービスは引き続き応答します。 ターゲット レプリカ数にまだ到達しておらず、かつ VM 数が最小ターゲット レプリカ サイズを上回っているため、サービスは警告状態として表示されます。 その後、Service Fabric ロード バランサーは、構成されているターゲット レプリカの数と一致するように、作業ゾーンでレプリカを起動します。 この時点で、サービスは正常と表示されます。 ダウンしたゾーンが復帰すると、負荷分散によってすべてのサービス レプリカがすべてのゾーンに均等に分散されます。
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 ### <a name="public-ip-and-load-balancer-resource"></a>パブリック IP とロード バランサーのリソース
@@ -336,6 +348,8 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 前述のソリューションでは、AZ ごとに 1 つの nodeType が使用されています。 次のソリューションでは、ユーザーは、同じ nodeType に 3 つの AZ をデプロイできます。
 
+**この機能は現在プレビュー段階であるため、現在のところ、運用環境ではサポートされていません。**
+
 完全なサンプル テンプレートは、[ここ](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure)にあります。
 
 ![Azure Service Fabric 可用性ゾーンのアーキテクチャ][sf-multi-az-arch]
@@ -345,7 +359,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 最初の値は、**zones** プロパティで、仮想マシン スケール セットに存在する Availability Zones を指定します。
 * 2 つ目の値は、"singlePlacementGroup" プロパティで、true に設定する必要があります。 **3 つの AZ にまたがるスケールセットでは、"singlePlacementGroup = true" の場合でも、最大 300 VM までスケールアップできます。**
-* 3 つ目の値は、"zoneBalance" です。これを指定すると、厳密なゾーン バランシングが確実に行われます。 ゾーン間で VM が不均衡に分散されないようにするには、これを "true" にする必要があります。 ゾーン間で VM が不均衡に分散しているクラスターでは、ゾーン ダウンのシナリオに対処できる可能性が低くなります。 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing) について確認します。
+* 3 つ目の値は、"zoneBalance" です。これを指定すると、厳密なゾーン バランシングが確実に行われます。 これは "true" に設定する必要があります。 これにより、ゾーン間での VM の分散が不均衡になることがなくなり、いずれかのゾーンがダウンしたときに、他の 2 つのゾーンに十分な VM が確保され、クラスターは中断されることなく実行され続けます。 VM の分散が不均衡なクラスターの場合、ゾーンがダウンしたときに、そのゾーンにほとんどの VM が含まれている可能性があるため、中断される可能性があります。 ゾーン間で VM の分散が不均衡になっていると、サービス配置関連の問題が発生したり、インフラストラクチャの更新がスタックしたりすることもあります。 [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing) について確認します。
 * FaultDomain と UpgradeDomain のオーバーライドは、構成する必要はありません。
 
 ```json
@@ -363,7 +377,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 ```
 
 >[!NOTE]
-> * **SF クラスターには少なくとも 1 つのプライマリ nodeType が必要です。プライマリ nodeTypes の DurabilityLevel は、Silver 以上である必要があります。**
+> * **Service Fabric クラスターには少なくとも 1 つのプライマリ nodeType が必要です。プライマリ nodeTypes の DurabilityLevel は、Silver 以上である必要があります。**
 > * AZ 拡張仮想マシン スケール セットは、durabilityLevel に関係なく、少なくとも 3 つの可用性ゾーンで構成する必要があります。
 > * AZ 拡張仮想マシン スケール セットには、持続性が Silver の VM が少なくとも 15 台必要です。
 > * AZ 拡張仮想マシン スケール セットには、持続性が Bronze の VM が少なくとも 6 台必要です。
@@ -373,13 +387,13 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 * 最初の値は **multipleAvailabilityZones** であり、nodeType には true に設定する必要があります。
 * 2 番目の値は **sfZonalUpgradeMode** であり、省略可能です。 AZ が複数ある nodeType がクラスター内に既に存在する場合、このプロパティを変更することはできません。
-      プロパティは、アップグレード ドメイン内の VM の論理グループ化を制御します。
-          値が "Parallel" に設定されている場合:ノードの種類の下にある VM は、5 UD のゾーン情報を無視して UD にグループ化されます。
-          値が省略されているか、"Hierarchical" に設定されている場合:VM は、最大 15 の UD に、ゾーン分布を反映するようにグループ化されます。 3 つのゾーンそれぞれに 5 つの UD があります。
-          このプロパティは、ServiceFabric アプリケーションおよびコード アップグレードのアップグレード動作を定義するだけです。 基になる仮想マシン スケール セットのアップグレードは、引き続きすべての AZ で並列に実行されます。
-      このプロパティは、複数のゾーンが有効になっていないノード型の UD 分布には影響しません。
+  プロパティは、アップグレード ドメイン内の VM の論理グループ化を制御します。
+  **値が "Parallel" に設定されている場合:** nodeType の下にある VM は、5 UD のゾーン情報を無視して UD にグループ化されます。 この結果、すべてのゾーンの UD0 が同時にアップグレードされます。 このデプロイ モードはアップグレードの場合は高速ですが、更新プログラムを一度に 1 ゾーンずつ適用する必要があるとしている SDP のガイドラインに沿っていないため、推奨されません。
+  **値が省略されているか、"Hierarchical" に設定されている場合:** VM は、最大 15 の UD に、ゾーン分布を反映するようにグループ化されます。 3 つのゾーンそれぞれに 5 つの UD があります。 これにより、更新はゾーンごとに実行され、1 つ目のゾーン内で 5 UD が完了して初めて次のゾーンへと移動し、ゆっくりと 15 UD (3 ゾーン、5 UD) すべてが更新されます。クラスターとユーザー アプリケーションの観点からは、こちらの方がより安全です。
+  このプロパティは、ServiceFabric アプリケーションおよびコード アップグレードのアップグレード動作を定義するだけです。 基になる仮想マシン スケール セットのアップグレードは、引き続きすべての AZ で並列に実行されます。
+  このプロパティは、複数のゾーンが有効になっていないノード型の UD 分布には影響しません。
 * 3 つ目の値は **vmssZonalUpgradeMode = Parallel** です。 これは、複数の AZ を持つ nodeType が追加された場合にクラスターで構成される *必須* のプロパティです。 このプロパティは、一度にすべての AZ で並列に発生する仮想マシン スケール セットの更新のアップグレード モードを定義します。
-      現時点では、このプロパティは Parallel にのみ設定できます。
+  現時点では、このプロパティは Parallel にのみ設定できます。
 * Service Fabric クラスター リソース apiVersion は、"2020-12-01-preview" 以上である必要があります。
 * クラスター コード バージョンが "7.2.445" 以上である必要があります。
 
@@ -408,7 +422,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 >[!NOTE]
 > * パブリック IP と Load Balancer リソースは、この記事で既に説明したように、Standard SKU を使用する必要があります。
 > * nodeType の "multipleAvailabilityZones" プロパティは、nodeType の作成時にのみ定義できます。後で変更することはできません。 このため、既存の nodeTypes をこのプロパティで構成することはできません。
-> * "SfZonalUpgradeMode" を省略した場合、または "Hierarchical" に設定した場合、クラスター内のアップグレード ドメインが増えるにつれて、クラスターとアプリケーションのデプロイ速度が低下します。 15 のアップグレード ドメインのアップグレード期間に組み入れるようにアップグレード ポリシーのタイムアウトを適切に調整することが重要です。
+> * "SfZonalUpgradeMode" を省略した場合、または "Hierarchical" に設定した場合、クラスター内のアップグレード ドメインが増えるにつれて、クラスターとアプリケーションのデプロイ速度が低下します。 15 のアップグレード ドメインのアップグレード期間に組み入れるようにアップグレード ポリシーのタイムアウトを適切に調整することが重要です。 アプリとクラスターの両方のアップグレード ポリシーを更新して、デプロイが Azure リソース サービスのデプロイ タイムアウト (12 時間) を超えないようにする必要があります。 つまり、デプロイに、15 UD で 12 時間を超えないようにする必要があるので、 UD あたり 40 分以内ということになります。
 > * 1 ゾーン ダウン シナリオでクラスターが存続できるようにするには、クラスターを **reliabilityLevel = Platinum** に設定してください。
 
 >[!NOTE]
@@ -426,3 +440,4 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
+[sf-multi-az-nodes]: ./media/service-fabric-cross-availability-zones/sf-multi-az-nodes.png

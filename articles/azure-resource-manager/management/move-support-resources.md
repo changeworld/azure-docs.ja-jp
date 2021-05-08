@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 01/11/2021
-ms.openlocfilehash: ae59bcc65f296a10c68b88f5f6a1ecbc923f8856
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.date: 04/08/2021
+ms.openlocfilehash: f3832a32f15debd8737aa16b0a9347b435a238c0
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103232598"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227451"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -850,7 +850,7 @@ ms.locfileid: "103232598"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
-> | flexibleServers | はい | はい |
+> | flexibleServers | いいえ | いいえ |
 > | servers | はい | はい |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL

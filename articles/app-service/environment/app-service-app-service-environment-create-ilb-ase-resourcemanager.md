@@ -135,7 +135,7 @@ Azure Resource Manager テンプレートを送信した後、変更が適用さ
 ただし、パブリック マルチテナント サービスで実行されているアプリと同様に、開発者が個々のアプリに対してカスタム ホスト名を設定し、各アプリに固有の SNI TLS/SSL 証明書バインドを構成することもできます。  
 
 ## <a name="getting-started"></a>作業の開始
-App Service 環境の使用を開始するには、「 [App Service 環境の概要](app-service-app-service-environment-intro.md)
+App Service Environment の使用を開始するには、「[App Service Environment の概要](app-service-app-service-environment-intro.md)
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

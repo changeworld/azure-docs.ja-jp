@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 6c29bf87c5f0ecaaeb6d608069791431a949c89b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103009965"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628953"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -127,6 +127,9 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 コンピューティング インスタンスを開始、停止、再起動、削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。
 
+> [!TIP]
+> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを停止または再起動する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 から 2 GB をクリアしてください。
+
 # <a name="python"></a>[Python](#tab/python)
 
 次の例では、コンピューティング インスタンスの名前は **instance** になります
@@ -225,6 +228,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 * 特定のコンピューティング インスタンスに関する詳細を取得する (IP アドレス、リージョンなど)。
 
 ---
+
 
 [Azure RBAC](../role-based-access-control/overview.md) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー サインインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
 

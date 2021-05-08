@@ -1,22 +1,24 @@
 ---
 title: クイック スタート - Azure Communication Services を使用して Android アプリに VOIP 通話を追加する
-description: このチュートリアルでは、Android 用の Azure Communication Services 通話クライアント ライブラリを使用する方法について説明します
-author: matthewrobertson
-ms.author: marobert
-ms.date: 08/11/2020
+description: このチュートリアルでは、Android 用 Azure Communication Services Calling SDK の使用方法について説明します
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a387261b392ea6718941f5eabe889e0c1a41fd5a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 38194ed7290d6cd9c4889d27ff458f950603c5be
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750608"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106072852"
 ---
-このクイックスタートでは、Android 用の Azure Communication Services 通話クライアント ライブラリを使用して、通話を開始する方法について説明します。
+このクイックスタートでは、Android 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
+
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
 
 > [!NOTE]
-> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.8 を使用します。
+> このドキュメントでは、Calling SDK のバージョン 1.0.0-beta.8 を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +39,7 @@ Android Studio で、[Start a new Android Studio project]\(新しい Android Stu
 
 :::image type="content" source="../media/android/studio-blank-activity.png" alt-text="プロジェクト テンプレート画面で [Empty Activity]\(空のアクティビティ\) オプションが選択された状態を示すスクリーンショット。":::
 
-最小クライアント ライブラリである"API 26:Android 8.0 (Oreo)" 以上を選択します。
+[Minimum SDK]\(最小 SDK\) として "API 26: Android 8.0 (Oreo)" 以上を選択します。
 
 :::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="プロジェクト テンプレート画面 2 で [Empty Activity]\(空のアクティビティ\) オプションが選択された状態を示すスクリーンショット。":::
 
@@ -110,8 +112,8 @@ dependencies {
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--Our calling client library depends on the Apache HTTP client library.
-When targeting Android client library 28+, this library needs to be explicitly referenced.
+        <!--Our Calling SDK depends on the Apache HTTP SDK.
+When targeting Android SDK 28+, this library needs to be explicitly referenced.
 See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apache-p-->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity android:name=".MainActivity">
@@ -260,11 +262,11 @@ private void getAllPermissions() {
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Azure Communication Services 通話クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+Azure Communication Services Calling SDK の主な機能のいくつかは、次のクラスとインターフェイスによって処理されます。
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
+| CallClient| CallClient は、Calling SDK へのメイン エントリ ポイントです。|
 | CallAgent | CallAgent は、通話を開始および管理するために使用します。 |
 | CommunicationUserCredential | CommunicationUserCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。|
 | CommunicationIdentifier | CommunicationIdentifier は、呼び出しの一部となる可能性があるさまざまな種類の参加者として使用されます。|
@@ -305,7 +307,7 @@ private void startCall() {
     
     StartCallOptions options = new StartCallOptions();
 
-    callAgent.call(
+    callAgent.startCall(
         getApplicationContext(),
         new CommunicationUserIdentifier[] {new CommunicationUserIdentifier(calleeId)},
         options);

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cee71557e60be9fdd94099453d9b8617c4b3b5ba
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: f28ddfc272e6f95106595958cacfe732b2bfc3cc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877618"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258692"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -37,7 +37,7 @@ Azure Spring Cloud は、Azure Monitor、Application Insights、および Log An
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
-米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
+米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国南部、東南アジア、オーストラリア東部、カナダ中部、アラブ首長国連邦北部、インド中部、韓国中部、東アジア、東日本、南アフリカ北部、中国東部 2 (Mooncake)。 [詳細情報](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>指定されたリージョン外に格納されている顧客データはありますか?
 

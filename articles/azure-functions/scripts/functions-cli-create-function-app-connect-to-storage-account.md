@@ -4,12 +4,12 @@ description: Azure CLI スクリプトのサンプル - Azure Storage に接続�
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 539c3a7dd95045b2e569dbb339be0e5a0c845902
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934409"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786288"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>名前付きストレージ アカウント接続を使用して関数アプリを作成する 
 
@@ -35,11 +35,11 @@ ms.locfileid: "97934409"
 
 | コマンド | Notes |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | 任意の場所にリソース グループを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../consumption-plan.md)で関数アプリを作成します。 |
-| [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | アカウント用の接続文字列を取得します。 |
-| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 関数アプリのアプリ設定として接続文字列を設定します。 |
+| [az group create](/cli/azure/group#az_group_create) | 任意の場所にリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | サーバーレスの[従量課金プラン](../consumption-plan.md)で関数アプリを作成します。 |
+| [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) | アカウント用の接続文字列を取得します。 |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | 関数アプリのアプリ設定として接続文字列を設定します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

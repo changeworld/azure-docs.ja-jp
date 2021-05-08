@@ -10,12 +10,12 @@ ms.date: 02/09/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 60676310f3176c86e2dcb752428eb27730c63fc3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3640a03f8ac814fec2823a761e651ab386438c5c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444270"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327450"
 ---
 <a name="HOLTop"></a>
 
@@ -64,7 +64,7 @@ npm init
 `@azure/ai-text-analytics` NPM パッケージをインストールします。
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.3
+npm install --save @azure/ai-text-analytics@5.1.0-beta.5
 ```
 
 > [!TIP]
@@ -208,39 +208,42 @@ ID: 0
 ```javascript
 async function sentimentAnalysisWithOpinionMining(client){
 
-    const sentimentInput = [
-        {
-            text: "The food and service were unacceptable, but the concierge were nice",
-            id: "0",
-            language: "en"
-        }
-    ];
-    const sentimentResult = await client.analyzeSentiment(sentimentInput, { includeOpinionMining: true });
+  const sentimentInput = [
+    {
+      text: "The food and service were unacceptable, but the concierge were nice",
+      id: "0",
+      language: "en"
+    }
+  ];
+  const results = await client.analyzeSentiment(sentimentInput, { includeOpinionMining: true });
 
-    sentimentResult.forEach(document => {
-        console.log(`ID: ${document.id}`);
-        console.log(`\tDocument Sentiment: ${document.sentiment}`);
-        console.log(`\tDocument Scores:`);
-        console.log(`\t\tPositive: ${document.confidenceScores.positive.toFixed(2)} \tNegative: ${document.confidenceScores.negative.toFixed(2)} \tNeutral: ${document.confidenceScores.neutral.toFixed(2)}`);
-        console.log(`\tSentences Sentiment(${document.sentences.length}):`);
-        document.sentences.forEach(sentence => {
-            console.log(`\t\tSentence sentiment: ${sentence.sentiment}`)
-            console.log(`\t\tSentences Scores:`);
-            console.log(`\t\tPositive: ${sentence.confidenceScores.positive.toFixed(2)} \tNegative: ${sentence.confidenceScores.negative.toFixed(2)} \tNeutral: ${sentence.confidenceScores.neutral.toFixed(2)}`);
-            console.log("\tMined opinions");
-            for (const { aspect, opinions } of sentence.minedOpinions) {
-                console.log(`\t\tAspect text: ${aspect.text}`);
-                console.log(`\t\tAspect sentiment: ${aspect.sentiment}`);
-                console.log(`\t\tAspect Positive: ${aspect.confidenceScores.positive.toFixed(2)} \tNegative: ${aspect.confidenceScores.negative.toFixed(2)}`);
-                console.log("\t\tAspect opinions:");
-                for (const { text, sentiment, confidenceScores } of opinions) {
-                    console.log(`\t\tOpinion text: ${text}`);
-                    console.log(`\t\tOpinion sentiment: ${sentiment}`);
-                    console.log(`\t\tOpinion Positive: ${confidenceScores.positive.toFixed(2)} \tNegative: ${confidenceScores.negative.toFixed(2)}`);
-                }
-            }
-        });
-    });
+  for (let i = 0; i < results.length; i++) {
+    const result = results[i];
+    console.log(`- Document ${result.id}`);
+    if (!result.error) {
+      console.log(`\tDocument text: ${sentimentInput[i].text}`);
+      console.log(`\tOverall Sentiment: ${result.sentiment}`);
+      console.log("\tSentiment confidence scores:", result.confidenceScores);
+      console.log("\tSentences");
+      for (const { sentiment, confidenceScores, opinions } of result.sentences) {
+        console.log(`\t- Sentence sentiment: ${sentiment}`);
+        console.log("\t  Confidence scores:", confidenceScores);
+        console.log("\t  Mined opinions");
+        for (const { target, assessments } of opinions) {
+          console.log(`\t\t- Target text: ${target.text}`);
+          console.log(`\t\t  Target sentiment: ${target.sentiment}`);
+          console.log("\t\t  Target confidence scores:", target.confidenceScores);
+          console.log("\t\t  Target assessments");
+          for (const { text, sentiment } of assessments) {
+            console.log(`\t\t\t- Text: ${text}`);
+            console.log(`\t\t\t  Sentiment: ${sentiment}`);
+          }
+        }
+      }
+    } else {
+      console.error(`\tError: ${result.error}`);
+    }
+  }
 }
 sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 ```
@@ -250,36 +253,32 @@ sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 ### <a name="output"></a>出力
 
 ```console
-ID: 0
-        Document Sentiment: positive
-        Document Scores:
-                Positive: 0.84  Negative: 0.16  Neutral: 0.00
-        Sentences Sentiment(1):
-                Sentence sentiment: positive
-                Sentences Scores:
-                Positive: 0.84  Negative: 0.16  Neutral: 0.00
-        Mined opinions
-                Aspect text: food
-                Aspect sentiment: negative
-                Aspect Positive: 0.01   Negative: 0.99
-                Aspect opinions:
-                Opinion text: unacceptable
-                Opinion sentiment: negative
-                Opinion Positive: 0.01  Negative: 0.99
-                Aspect text: service
-                Aspect sentiment: negative
-                Aspect Positive: 0.01   Negative: 0.99
-                Aspect opinions:
-                Opinion text: unacceptable
-                Opinion sentiment: negative
-                Opinion Positive: 0.01  Negative: 0.99
-                Aspect text: concierge
-                Aspect sentiment: positive
-                Aspect Positive: 1.00   Negative: 0.00
-                Aspect opinions:
-                Opinion text: nice
-                Opinion sentiment: positive
-                Opinion Positive: 1.00  Negative: 0.00
+- Document 0
+        Document text: The food and service were unacceptable, but the concierge were nice
+        Overall Sentiment: positive
+        Sentiment confidence scores: { positive: 0.84, neutral: 0, negative: 0.16 }
+        Sentences
+        - Sentence sentiment: positive
+          Confidence scores: { positive: 0.84, neutral: 0, negative: 0.16 }
+          Mined opinions
+                - Target text: food
+                  Target sentiment: negative
+                  Target confidence scores: { positive: 0.01, negative: 0.99 }
+                  Target assessments
+                        - Text: unacceptable
+                          Sentiment: negative
+                - Target text: service
+                  Target sentiment: negative
+                  Target confidence scores: { positive: 0.01, negative: 0.99 }
+                  Target assessments
+                        - Text: unacceptable
+                          Sentiment: negative
+                - Target text: concierge
+                  Target sentiment: positive
+                  Target confidence scores: { positive: 1, negative: 0 }
+                  Target assessments
+                        - Text: nice
+                          Sentiment: positive
 ```
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
@@ -717,30 +716,38 @@ ID: 0
 `beginAnalyze()` 関数を呼び出す `analyze_example()` という名前の新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。
 
 ```javascript
-const documents = [
-  "Microsoft was founded by Bill Gates and Paul Allen.",
-];
-
 async function analyze_example(client) {
-  console.log("== Analyze Sample ==");
+  const documents = [
+    "Microsoft was founded by Bill Gates and Paul Allen.",
+  ];
 
-  const tasks = {
-    entityRecognitionTasks: [{ modelVersion: "latest" }]
+  const actions = {
+    recognizeEntitiesActions: [{ modelVersion: "latest" }],
   };
-  const poller = await client.beginAnalyze(documents, tasks);
-  const resultPages = await poller.pollUntilDone();
+  const poller = await client.beginAnalyzeBatchActions(documents, actions, "en");
 
+  console.log(
+    `The analyze batch actions operation was created on ${poller.getOperationState().createdOn}`
+  );
+  console.log(
+    `The analyze batch actions operation results will expire on ${
+      poller.getOperationState().expiresOn
+    }`
+  );
+  const resultPages = await poller.pollUntilDone();
   for await (const page of resultPages) {
-    const entitiesResults = page.entitiesRecognitionResults![0];
-    for (const doc of entitiesResults) {
-      console.log(`- Document ${doc.id}`);
-      if (!doc.error) {
-        console.log("\tEntities:");
-        for (const entity of doc.entities) {
-          console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
+    const entitiesAction = page.recognizeEntitiesResults[0];
+    if (!entitiesAction.error) {
+      for (const doc of entitiesAction.results) {
+        console.log(`- Document ${doc.id}`);
+        if (!doc.error) {
+          console.log("\tEntities:");
+          for (const entity of doc.entities) {
+            console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
+          }
+        } else {
+          console.error("\tError:", doc.error);
         }
-      } else {
-        console.error("  Error:", doc.error);
       }
     }
   }
@@ -752,7 +759,8 @@ analyze_example(textAnalyticsClient);
 ### <a name="output"></a>出力
 
 ```console
-== Analyze Sample ==
+The analyze batch actions operation was created on Fri Mar 12 2021 09:53:49 GMT-0800 (Pacific Standard Time)
+The analyze batch actions operation results will expire on Sat Mar 13 2021 09:53:49 GMT-0800 (Pacific Standard Time)
 - Document 0
         Entities:
         - Entity Microsoft of type Organization
@@ -760,7 +768,7 @@ analyze_example(textAnalyticsClient);
         - Entity Paul Allen of type Person
 ```
 
-また、分析操作を使用して、PII とキー フレーズ抽出を検出することもできます。 GitHub で「[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript) と [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/typescript/src) のサンプルを分析する」を参照してください。
+分析操作を使用して PII を検出したり、リンクされたエンティティを認識したり、キー フレーズ抽出を実行したりすることもできます。 GitHub で「[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript) と [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) のサンプルを分析する」を参照してください。
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 

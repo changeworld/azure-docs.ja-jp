@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: b108e757ed9fe9ab7038cae4240f0f749ac19675
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036046"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065703"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro の配置を準備する 
 
@@ -47,8 +46,8 @@ Azure Stack Edge Pro の配置では、最初に環境を準備する必要が�
 |**[6.Azure Stack Edge Pro のセキュリティ設定を構成する](azure-stack-edge-gpu-deploy-configure-certificates.md)** |デバイス用に証明書を構成します。 デバイスで生成された証明書を使用するか、独自の証明書を使用します。   |
 |**[7.Azure Stack Edge Pro をアクティブにする](azure-stack-edge-gpu-deploy-activate.md)** |サービスからのアクティブ化キーを使用して、デバイスをアクティブ化します。 デバイスは、SMB または NFS 共有を設定するか、REST 経由で接続できる状態になります。 |
 |**[8.コンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)** |デバイスでコンピューティング ロールを構成します。 Kubernetes クラスターも作成されます。 |
-|**[9A. Edge 共有でデータを転送する](azure-stack-edge-j-series-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
-|**[9B. Edge ストレージ アカウントでデータを転送する](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |ストレージ アカウントを追加し、REST API を使用して Blob Storage に接続します。 |
+|**[9A. Edge 共有でデータを転送する](./azure-stack-edge-gpu-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
+|**[9B. Edge ストレージ アカウントでデータを転送する](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)** |ストレージ アカウントを追加し、REST API を使用して Blob Storage に接続します。 |
 
 
 これで、Azure Stack Edge Pro デバイスのソフトウェア構成に関する情報の収集を開始できます。

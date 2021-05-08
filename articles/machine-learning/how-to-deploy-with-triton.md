@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 2966b685e1904102467bf16994ea781556544047
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0bb17ded6822c477fe2107c66711af5e2dc384d3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519199"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107841"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -31,6 +31,9 @@ Triton は、"*推論用に最適化された*" フレームワークです。 G
 
 > [!TIP]
 > このドキュメントに記載されているコード スニペットは説明を目的としたものであり、完全なソリューションとなっていない場合があります。 動作するコード例については、[Azure Machine Learning での Triton のエンドツーエンドのサンプル](https://aka.ms/triton-aml-sample)を参照してください。
+
+> [!NOTE]
+> [NVIDIA Triton Inference Server](https://aka.ms/nvidia-triton-docs) は、Azure Machine Learning に統合されたオープンソースのサードパーティ製ソフトウェアです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -97,7 +100,7 @@ models
         - model_1
             - model_version
                 - model_file
-                - config_file
+            - config_file
         - model_2
             ...
 ```
@@ -114,6 +117,11 @@ az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
 `az ml model register` に関する詳細については、[リファレンス ドキュメント](/cli/azure/ext/azure-cli-ml/ml/model)を参照してください。
+
+Azure Machine Learning にモデルを登録するときに、`--model-path  -p` パラメーターの値は Triton の親フォルダーの名前である必要があります。  
+上記の例では `--model-path` は 'models' です。
+
+この例の `--name  -n` パラメーターの値 'my_triton_model' は、Azure Machine Learning ワークスペースに認識されるモデル名になります。 
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -364,13 +372,17 @@ local_service.delete()
 
 
 ---
+## <a name="troubleshoot"></a>トラブルシューティング
+
+* [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md): モデルのデプロイ時に発生する可能性のある一般的なエラーのトラブルシューティングと解決、回避方法について説明します。
+
+* デプロイ ログで **TritonServer を開始できなかった** ことが示されている場合は、[Nvidia のオープンソースのドキュメント](https://github.com/triton-inference-server/server)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning での Triton のエンドツーエンドのサンプルを参照する](https://aka.ms/aml-triton-sample)
 * [Triton クライアントの例](https://aka.ms/nvidia-client-examples)を確認する
 * [Triton 推論サーバーのドキュメント](https://aka.ms/nvidia-triton-docs)を読む
-* [失敗したデプロイのトラブルシューティング](how-to-troubleshoot-deployment.md)
 * [Azure Kubernetes Service にデプロイする](how-to-deploy-azure-kubernetes-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)

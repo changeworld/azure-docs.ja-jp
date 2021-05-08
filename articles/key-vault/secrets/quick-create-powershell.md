@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f3b770a5790d5e9554c7bf5d7d24f1eeccff7662
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 5e3b78dfb8f08f1a596ad12884ec088cd36c4a98
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072221"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582452"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -57,7 +57,7 @@ Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -UserPrincip
 $secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
-その後、次の PowerShell コマンドを入力して、Key Vault に **ExamplePassword** というシークレットを作成します。その値は、**hVFkk965BuUv** にします。
+その後、Azure PowerShell の [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) コマンドレットを使用して **ExamplePassword** という名前の Key Vault に値 **hVFkk965BuUv** でシークレットを作成します。
 
 
 ```azurepowershell-interactive
@@ -96,5 +96,6 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
+- [複数行のシークレットを Key Vault に格納](multiline-secrets.md)する方法について確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/#key_vault)のリファレンスを参照する
 - [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

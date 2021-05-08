@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672279"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607417"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure Dedicated Host 予約によるコスト削減
 
@@ -29,7 +29,7 @@ Azure Dedicated Host の予約インスタンスにコミットすると、コ�
 
 次に、Azure Dedicated Host でそれがサポートされているかどうかを確認します。 [Azure Dedicated Host の価格](https://aka.ms/ADHPricing)ページには、専用ホスト SKU の完全な一覧、CPU 情報、およびさまざまな価格オプション (予約インスタンスを含む) があります。
 
-VM シリーズをサポートする複数の SKU (異なる種類) が見つかる場合があります。 ホストの容量 (vCPU の数) を比較して、最適な SKU を特定します。 予約は、同じ VM シリーズ (DSv3_Type1 と DSv3_Type2 など) をサポートする複数の専用ホスト SKU に適用できますが、異なる VM シリーズ (DSv3 と ESv3 など) には適用できないことに注意してください。
+選択された VM シリーズをサポートする複数の SKU (異なる種類) が見つかる場合があります。 ホストの容量 (vCPU の数) を比較して、最適な SKU を特定します。 予約は、同じ VM シリーズ (DSv3_Type1 と DSv3_Type2 など) をサポートする複数の専用ホスト SKU に適用できますが、異なる VM シリーズ (DSv3 と ESv3 など) には適用できないことに注意してください。
 
 
 

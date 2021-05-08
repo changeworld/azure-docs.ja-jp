@@ -5,17 +5,17 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 03/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 59246c3739ad4de27e65641cc9d2154b33a6ee5e
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 86e9b13ce56e1924b0e24a7f4971da18620617de
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008435"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043633"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API コネクタをサインアップ ユーザー フローに追加する (プレビュー)
 
@@ -51,14 +51,24 @@ HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義�
 > [!IMPORTANT]
 > この機能はプレビュー段階であり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-クライアント証明書の認証は証明書ベースの相互認証であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure AD B2C は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、SSL ハンドシェイクの一部として発生します。 適切な証明書を持つサービスのみが、REST API サービスにアクセスできます。 クライアント証明書は、X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
+クライアント証明書の認証は証明書ベースの相互認証方法であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure AD B2C は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、SSL ハンドシェイクの一部として発生します。 これにより、API サービスはアクセスを、適切な証明書を持つサービスのみに制限できます。 クライアント証明書は、PKCS12 (PFX) X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
 
+証明書を作成するには、[Azure Key Vault](../key-vault/certificates/create-certificate.md) を使用できます。これには、自己署名証明書のオプションと、署名された証明書の証明書発行者プロバイダーとの統合があります。 推奨設定には次が含まれます。
+- **[サブジェクト]** : `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **[コンテンツの種類]** : `PKCS #12`
+- **[有効期間のアクション タイプ]** : `Email all contacts at a given percentage lifetime` または `Email all contacts a given number of days before expiry`
+- **[キーの種類]** : `RSA`
+- **[キー サイズ]** : `2048`
+- **[エクスポート可能な秘密キー]** : `Yes` (pfx ファイルをエクスポートできるようにするため)
 
-証明書を作成するには、[Azure Key Vault](../key-vault/certificates/create-certificate.md) を使用できます。これには、自己署名証明書のオプションと、署名された証明書の証明書発行者プロバイダーとの統合があります。 その後、[証明書をエクスポート](../key-vault/certificates/how-to-export-certificate.md)し、API コネクタ構成で使用するためにアップロードできます。 パスワードは、パスワードで保護されている証明書ファイルにのみ必要です。 PowerShell の [New-SelfSignedCertificate](./secure-rest-api.md#prepare-a-self-signed-certificate-optional) コマンドレットを使用して自己署名証明書を生成することもできます。
+これで、[証明書をエクスポート](../key-vault/certificates/how-to-export-certificate.md)できます。 別の選択肢として、PowerShell の [New-SelfSignedCertificate](../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) コマンドレットを使用して自己署名証明書を生成することもできます。
 
-Azure App Service と Azure Functions については、[TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、API エンドポイントから証明書を有効化および検証する方法をご覧ください。
+証明書を取得したら、それを API コネクタ構成の一部としてアップロードできます。 パスワードは、パスワードで保護されている証明書ファイルにのみ必要です。
 
-証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 既存の API コネクタに新しい証明書をアップロードするには、**API コネクタ (プレビュー)** で API コネクタを選択し、 **[新しい証明書のアップロード]** をクリックします。 開始日は過ぎていても有効期限が切れていない、直近でアップロードされた証明書が、Azure AD B2C によって自動的に使用されます。
+API エンドポイントを保護するために、API では、送信されたクライアント証明書に基づいて承認が実装される必要があります。 Azure App Service と Azure Functions については、[TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、*API コードから証明書を有効化および検証* する方法をご覧ください。  また、Azure API Management を使用し、ポリシー式を使用して、必要な値に対する[クライアント証明書のプロパティを確認](
+../api-management/api-management-howto-mutual-certificates-for-clients.md)することもできます。
+
+証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 新しい証明書を生成して、上記の手順を繰り返す必要があります。 API サービスでは、新しい証明書がデプロイされている間、一時的に古い証明書と新しい証明書を受け入れることができます。 既存の API コネクタに新しい証明書をアップロードするには、 **[API コネクタ]** で API コネクタを選択し、 **[新しい証明書のアップロード]** をクリックします。 開始日が過ぎていて有効期限が切れていない、直近でアップロードされた証明書が、Azure Active Directory によって自動的に使用されます。
 
 ### <a name="api-key"></a>API キー
 一部のサービスは、開発時に HTTP エンドポイントへのアクセスを難読化するために "API キー" メカニズムを使用しています。 [Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) に対しては、`code` を **エンドポイント URL** にクエリ パラメーターとして含めることで、これを実現できます。 たとえば、`https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b> です。 
@@ -254,7 +264,7 @@ Content-type: application/json
 }
 ```
 
-| パラメーター                                          | 種類              | 必須 | 説明                                                                                                                                                                                                                                                                            |
+| パラメーター                                          | Type              | 必須 | 説明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | action                                             | String            | はい      | 値は `Continue` とする必要があります。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | いいえ       | 戻り値を使用すると、ユーザーから収集された値を上書きすることができます。 また、 **[アプリケーション要求]** として選択されている場合は、値をトークンで返すことができます。                                              |
@@ -274,7 +284,7 @@ Content-type: application/json
 
 ```
 
-| パラメーター   | 種類   | 必須 | 説明                                                                |
+| パラメーター   | Type   | 必須 | 説明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | String | はい      | API のバージョン。                                                    |
 | action      | String | はい      | 値は `ShowBlockPage` とする必要があります                                              |
@@ -298,11 +308,11 @@ Content-type: application/json
 }
 ```
 
-| パラメーター   | 種類    | 必須 | 説明                                                                |
+| パラメーター   | Type    | 必須 | 説明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | String  | はい      | API のバージョン。                                                    |
 | action      | String  | はい      | 値は `ValidationError` とする必要があります。                                           |
-| status      | Integer | はい      | ValidationError 応答の値 `400` である必要があります。                        |
+| status      | Integer/String | はい      | ValidationError 応答の値は、`400` または `"400"` である必要があります。  |
 | userMessage | String  | はい      | ユーザーに表示するメッセージ。                                            |
 
 > [!NOTE]

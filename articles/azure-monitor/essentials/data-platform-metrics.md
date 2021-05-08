@@ -7,14 +7,14 @@ manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2019
+ms.date: 02/20/2021
 ms.author: bwren
-ms.openlocfilehash: 8ecfd74a4d486a83add490501c2f7af4a4003b85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3c99002a4f8613ff40a116eeceded4b3bada1c15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700976"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936157"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor メトリックの概要
 Azure Monitor メトリックは、[監視対象のリソース](../monitor-reference.md)から時系列データベースに数値データを収集する Azure Monitor の機能です。 メトリックは、一定の間隔で収集される数値であり、特定の時刻におけるシステムの何らかの特性を表しています。 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 メトリック エクスプローラーを使用すると、対話形式で分析することができます。値がしきい値を超えるときにアラートで事前に通知したり、ブックやダッシュボードで視覚化したりすることができます。
@@ -27,13 +27,13 @@ Azure Monitor メトリックは、[監視対象のリソース](../monitor-refe
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Azure Monitor のメトリックでできること
 Azure Monitor のメトリックを使用できるさまざまな方法を次の表に示します。
 
-|  |  |
+|  | 説明 |
 |:---|:---|
 | **分析** | [メトリックス エクスプローラー](metrics-charts.md)を使用して、収集されたメトリックをグラフで分析し、異なるリソースからのメトリックを比較します。 |
 | **Alert** | メトリックがしきい値を超えたときに、通知を送信または[自動化されたアクション](../alerts/action-groups.md)を実行する[メトリック アラート ルール](../alerts/alerts-metric.md)を構成します。 |
 | **視覚化** | メトリックス エクスプローラーのグラフを [Azure ダッシュボード](../app/tutorial-app-dashboards.md)にピン留めします。<br>[ブック](../visualize/workbooks-overview.md)を作成して、複数のデータのセットを対話型のレポートにまとめます。クエリの結果を [Grafana](../visualize/grafana-plugin.md) にエクスポートし、そのダッシュボードを利用して他のデータ ソースと組み合わせます。 |
 | **自動化** |  [自動スケーリング](../autoscale/autoscale-overview.md)を使用して、しきい値を超えるメトリック値に基づいてリソースを増加または減少させます。 |
-| **取得** | [PowerShell コマンドレット](/powershell/module/az.applicationinsights)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](./rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
+| **取得** | [PowerShell コマンドレット](/powershell/module/az.monitor)を使用して、コマンド ラインからメトリック値にアクセスします。<br>[REST API](./rest-api-walkthrough.md) を使用して、カスタム アプリケーションからメトリック値にアクセスします。<br>[CLI](/cli/azure/monitor/metrics) を使用して、コマンド ラインからメトリック値にアクセスします。 |
 | **エクスポート** | [メトリックをログにルーティング](./resource-logs.md#send-to-azure-storage)して、Azure Monitor メトリックのデータと Azure Monitor ログのデータを一緒に分析し、93 日間より長くメトリック値を保存します。<br>メトリックを [Event Hub](./stream-monitoring-data-event-hubs.md) にストリーミングして、外部システムにルーティングします。 |
 | **Archive** | コンプライアンス、監査、オフライン レポートの目的で、リソースのパフォーマンスや正常性の履歴を[アーカイブ](./platform-logs-overview.md)します。 |
 
@@ -104,7 +104,7 @@ Azure Monitor メトリックによって収集されるデータは、タイム
 Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。
 
 **ゲスト OS メトリック**
--   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](../agents/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックの保有期間は 14 日です。
+-   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](../agents/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックは少なくとも 14 日間は保持されます。ただし、実際の有効期限はストレージ アカウントに記載されていません。 パフォーマンス上の理由により、ポータルでは、表示されるデータの量をボリュームに基づいて制限しています。 したがって、作成されるデータの量があまり多くない場合、ポータルにより取得される実際の日数は 14 日間より長くなる場合があります。  
 -   **Azure Monitor メトリックに送信されるゲスト OS メトリック**。 これらは [Windows Diagnostic 拡張機能 (WAD)](../agents/diagnostics-extension-overview.md) によって収集され、[Azure Monitor データ シンク](../agents/diagnostics-extension-overview.md#data-destinations)に送信されるか、Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を介して収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
 -   **Log Analytics エージェントによって収集されるゲスト OS メトリック**。 これらは、Log Analytics エージェントによって収集され、Log Analytics ワークスペースに送信されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 31 日で、最大 2 年間まで延長できます。
 

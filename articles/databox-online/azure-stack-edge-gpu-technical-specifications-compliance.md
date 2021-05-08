@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e0eb976f655308082671afe2dc1923f082a3373b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034746"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303170"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>GPU を備えた Azure Stack Edge Pro の技術仕様とコンプライアンス 
 
@@ -23,10 +23,14 @@ ms.locfileid: "102034746"
 
 Azure Stack Edge Pro デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
-| 仕様           | 値                  |
-|-------------------------|----------------------------|
-| CPU                     | 2 X Intel Xeon Silver 4214 (Cascade Lake) CPU<br> 24 個の物理コア (CPU あたり 12 個)<br>48 個の論理コア (vCPU) (CPU あたり 24 個)       |
-| メモリ                  | 128 (8x16 GB) GB RAM <br> Dell 互換 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC 登録済み RDIMM       |
+| 仕様  | 値                                                                       |
+|----------------|-----------------------------------------------------------------------------|
+| CPU の種類       | Dual Intel Xeon Silver 4214 (Cascade Lake) CPU                              |
+| CPU: 生       | 合計コア数 24、合計 vCPU 数 48                                              |
+| CPU: 使用可能    | 40 vCPU                                                                    |
+| メモリの種類    | Dell 互換 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC 登録済み RDIMM |
+| メモリ: 生    | 128 GB RAM (8 x 16 GB)                                                      |
+| メモリ: 使用可能 | 102 GB RAM                                                                  |
 
 
 ## <a name="compute-acceleration-specifications"></a>コンピューティング アクセラレーション仕様
@@ -44,7 +48,7 @@ Azure Stack Edge Pro デバイスは 100-240 V の電源装置 (PSU) 2 つと高
 
 | 仕様           | 750 W PSU                  |
 |-------------------------|----------------------------|
-| 最大出力電力    | 750 W                     |
+| 最大出力電力    | 750 W                      |
 | 頻度               | 50/60 Hz                   |
 | 選択電圧範囲 | オート レンジ: 100-240 V AC |
 | ホット プラグ可能           | はい                        |
@@ -56,11 +60,11 @@ Azure Stack Edge Pro デバイスには、PORT1 から PORT6 までの 6 つの�
 
 | 仕様           | 説明                 |
 |-------------------------|----------------------------|
-|  ネットワーク インターフェイス    | **1 GbE インターフェイス x 2** - 1 つの管理インターフェイスのポート 1 は初期セットアップに使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセット時には、インターフェイスは静的 IP に戻ります。 <br>別のインターフェイスのポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>**25 GbE インターフェイス x 4** – これらのデータ インターフェイス (ポート 3 からポート 6) は、DHCP (既定) または静的 としてユーザーが構成できます。 また、これらは 10 GbE インターフェイスとしても動作可能です。  | 
+|  ネットワーク インターフェイス    | **1 GbE インターフェイス x 2** - 1 つの管理インターフェイスのポート 1 は初期セットアップに使用され、既定では静的です。 初期セットアップが完了したら、任意の IP アドレスでデータ用のインターフェイスを使用できます。 ただし、リセット時には、インターフェイスは静的 IP に戻ります。 <br>別のインターフェイスのポート 2 はユーザー構成可能であり、データ転送に使用でき、既定で DHCP です。 <br>**25-GbE インターフェイス x 4** – これらのデータ インターフェイス (ポート 3 からポート 6) は、DHCP (既定) または静的としてユーザーが構成できます。 また、これらは 10-GbE インターフェイスとしても動作可能です。  | 
 
 Azure Stack Edge Pro デバイスには、次のネットワーク ハードウェアがあります。
 
-* **カスタム Microsoft Qlogic Cavium 25G NDC アダプター** - ポート 1 からポート 4。
+* **カスタム Microsoft `Qlogic` Cavium 25G NDC アダプター** - ポート 1 からポート 4。
 * **Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター** - ポート 5 とポート 6。
 
 Mellanox カードの詳細を次に示します。
@@ -74,7 +78,7 @@ Mellanox カードの詳細を次に示します。
 
 これらのネットワーク カードでサポートされているケーブル、スイッチ、およびトランシーバーの完全な一覧については、以下を参照してください。
 
-- [Qlogic Cavium 25G NDC アダプターの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
+- [`Qlogic` Cavium 25G NDC アダプターの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
 - [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
 
 ## <a name="storage-specifications"></a>Storage の仕様

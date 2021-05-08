@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104951472"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
@@ -145,10 +145,10 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 
 ![接続文字列が JSON コードで入れ子になったリソースとしてどのように定義されるかが示されています。](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-`config/connectionstrings` の `properties` 要素では、各接続文字列が `"<name>" : {"value": "…", "type": "…"}` という特定の形式で、名前と値のペアとしても定義されています。 `type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
+`config/connectionstrings` の `properties` 要素では、各接続文字列が `"<name>&quot; : {&quot;value&quot;: &quot;…&quot;, &quot;type&quot;: &quot;…&quot;}` という特定の形式で、名前と値のペアとしても定義されています。 `type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
 
 > [!TIP]
-> 接続文字列の種類の最終的な一覧については、Azure PowerShell で次のコマンドを実行します:\[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> 接続文字列の種類の最終的な一覧については、Azure PowerShell で次のコマンドを実行します:\[Enum]::GetNames(&quot;Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 40fcdae9a94b2b48eb4c665f4e0c9c3e58962f4b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576783"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557566"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -68,7 +68,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 **IPv6** | サポートされていません。
 **ターゲット ディスク** | VM は、Azure のマネージド ディスク (Standard HDD、Standard SSD、Premium SSD) にのみ移行できます。
 **同時レプリケーション** | 1 つのアプライアンスがある vCenter Server ごとに最大 300 の VM を同時にレプリケートします。 追加の[スケールアウト アプライアンス](./how-to-scale-out-for-migration.md)がデプロイされている場合、vCenter Server ごとに最大 500 の VM を同時にレプリケートします。 
-**Azure VM エージェントの自動インストール (Windows および Linux エージェント)** | Windows Server 2008 R2 以降でサポートされています。 <br/> RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 でサポートされています。 これらの Linux オペレーティング システムに[必要なパッケージ](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)の一覧をご確認ください。
+**Azure VM エージェントの自動インストール (Windows および Linux エージェント)** | Windows Server 2008 R2 以降でサポートされています。 <br/> RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 でサポートされています。 これらの Linux オペレーティング システムに[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧をご確認ください。
 
 > [!TIP]
 >  Azure portal を使用すると、最大 10 個の VM を一度に選択してレプリケーションを構成できます。 より多くの VM をレプリケートするために、ポータルを使用して、レプリケートする VM を 10 個の VM の複数のバッチで追加するか、Azure Migrate PowerShell インターフェイスを使用してレプリケーションを構成することができます。 同時レプリケーションがサポートされている VM の最大数を超えて同時レプリケーションを構成しないようにしてください。

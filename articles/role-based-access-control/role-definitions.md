@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: ''
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 03/22/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5b2ec3289d187997763ee0d9280a777d4fa1f396
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602463"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801759"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure ロールの定義について
 
@@ -63,7 +59,7 @@ assignableScopes []
 | プロパティ | 説明 |
 | --- | --- |
 | `Name`</br>`roleName` | ロールの表示名です。 |
-| `Id`</br>`name` | ロールの一意の ID です。 |
+| `Id`</br>`name` | ロールの一意の ID です。 組み込みロールは、クラウド全体で同じロール ID を持ちます。 |
 | `IsCustom`</br>`roleType` | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` または `CustomRole` に設定します。 組み込みロールの場合は `false` または `BuiltInRole` に設定します。 |
 | `Description`</br>`description` | ロールの説明です。 |
 | `Actions`</br>`actions` | ロールで実行できる管理操作を指定する文字列の配列。 |

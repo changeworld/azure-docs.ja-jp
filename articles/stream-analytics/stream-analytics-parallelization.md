@@ -25,8 +25,8 @@ Stream Analytics のジョブ定義には少なくとも、入力、クエリ、
 
 ### <a name="inputs"></a>入力
 Azure Stream Analytics のすべての入力では、パーティション分割を利用できます。
--   EventHub (互換性レベルが 1.1 以上の場合、PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
--   IoT Hub (互換性レベルが 1.1 以上の場合、PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
+-   EventHub (互換性レベルが 1.1 以下の場合、PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
+-   IoT Hub (互換性レベルが 1.1 以下の場合、PARTITION BY キーワードを使用してパーティション キーを明示的に設定する必要があります)
 -   BLOB ストレージ
 
 ### <a name="outputs"></a>出力

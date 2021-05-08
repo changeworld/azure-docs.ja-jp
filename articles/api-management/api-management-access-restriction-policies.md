@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/26/2021
 ms.author: apimpm
 ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101688248"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
@@ -68,7 +68,7 @@ ms.locfileid: "101688248"
 | failed-check-error-message | ヘッダーが存在しないかヘッダーが無効な値である場合に HTTP 応答本文で返されるエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。 | はい      | 該当なし     |
 | failed-check-httpcode      | ヘッダーが存在しないかヘッダーが無効な値である場合に返される HTTP 状態コード。                                                                                        | はい      | 該当なし     |
 | header-name                | チェックする HTTP ヘッダーの名前。                                                                                                                                  | はい      | 該当なし     |
-| ignore-case                | True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。                                    | はい      | 該当なし     |
+| ignore-case                | True または False に設定できます。 True に設定した場合、ヘッダー値と許容される値セットとの比較時に大文字と小文字は区別されません。                                    | はい      | なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -136,14 +136,14 @@ ms.locfileid: "101688248"
 
 | 名前           | 説明                                                                                           | 必須 | Default |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| name           | レート制限の適用対象になる API の名前。                                                | はい      | 該当なし     |
-| calls          | `renewal-period` で指定された期間中に許可される最大の呼び出し合計数。 | はい      | 該当なし     |
+| name           | レート制限の適用対象になる API の名前。                                                | はい      | なし     |
+| calls          | `renewal-period` で指定された期間中に許可される最大の呼び出し合計数。 | はい      | なし     |
 | renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                              | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
-| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | なし  |
 | remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
-| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -213,13 +213,13 @@ ms.locfileid: "101688248"
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
 | counter-key         | レート制限ポリシーに使用するキー。                                                             | はい      | 該当なし     |
-| increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | 該当なし     |
+| increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | なし     |
 | renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                           | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
-| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | なし  |
 | remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
-| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -265,8 +265,8 @@ ms.locfileid: "101688248"
 
 | 名前                                      | 説明                                                                                 | 必須                                           | Default |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | 該当なし     |
-| ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | 該当なし     |
+| address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | なし     |
+| ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -324,9 +324,9 @@ ms.locfileid: "101688248"
 | 名前           | 説明                                                                                               | 必須                                                         | Default |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | クォータを適用する API または操作の名前。                                             | はい                                                              | 該当なし     |
-| bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
-| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
-| renewal-period | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。 | はい                                                              | 該当なし     |
+| bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
+| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
+| renewal-period | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。 | はい                                                              | なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -386,11 +386,11 @@ ms.locfileid: "101688248"
 
 | 名前                | 説明                                                                                               | 必須                                                         | Default |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| bandwidth           | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
+| bandwidth           | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
 | counter-key         | クォータ ポリシーに使用するキー。                                                                      | はい                                                              | 該当なし     |
-| increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)             | いいえ                                                               | 該当なし     |
-| renewal-period      | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。                                                   | はい                                                              | 該当なし     |
+| increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)             | いいえ                                                               | なし     |
+| renewal-period      | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。                                                   | はい                                                              | なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -575,7 +575,7 @@ ms.locfileid: "101688248"
 | require-signed-tokens           | ブール型。 トークンに署名が必要かどうかを指定します。                                                                                                                                                                                                                                                                                                                                                                                           | いいえ                                                                               | true                                                                              |
 | separator                       | 文字列。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。                                                                                                                                                                                                                                                                                                                                          | いいえ                                                                               | 該当なし                                                                               |
 | url                             | Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 応答は、URL で定義されている仕様に従っている必要があります:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。 | はい                                                                              | 該当なし                                                                               |
-| output-token-variable-name      | 文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前                                                                                                                                                                                                                                                                                     | いいえ                                                                               | 該当なし                                                                               |
+| output-token-variable-name      | 文字列 をオンにします。 成功したトークンの検証において、[`Jwt`](api-management-policy-expressions.md) 型のオブジェクトとしてトークン値を受け取るコンテキスト変数の名前                                                                                                                                                                                                                                                                                     | いいえ                                                                               | なし                                                                               |
 
 ### <a name="usage"></a>使用法
 

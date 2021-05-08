@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df89d53e6b5043c1ef3caa1c92f2abaae542d6ec
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577045"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599011"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>IoT Central アプリケーションの全体的な正常性状態を監視する
 
@@ -54,7 +54,7 @@ IoT Central で現在使用できるメトリックの一覧については、�
 
 - IoT Central の[標準料金プラン](https://azure.microsoft.com/pricing/details/iot-central/)には、2 つのデバイスとさまざまなメッセージ クォータが無料で含まれています。 無料の項目は課金から除外されますが、メトリックには引き続きカウントされます。
 
-- IoT Central は、アプリケーション内のデバイス テンプレートごとに 1 つのテスト デバイス ID を自動生成します。 このデバイス ID は、デバイス テンプレートの **[テスト デバイスの管理]** ページに表示されます。 ソリューション ビルダーは、これらのテスト デバイス ID を使用するコードを生成することによって、公開する前に[デバイス テンプレートを検証](./overview-iot-central.md#create-device-templates)することができます。 これらのデバイスは課金から除外されますが、メトリックには引き続きカウントされます。
+- IoT Central は、アプリケーション内のデバイス テンプレートごとに 1 つのテスト デバイス ID を自動生成します。 このデバイス ID は、デバイス テンプレートの **[テスト デバイスの管理]** ページに表示されます。 ソリューション ビルダーは、これらのテスト デバイス ID を使用するコードを生成することによって、公開する前にデバイス テンプレートを検証することができます。 これらのデバイスは課金から除外されますが、メトリックには引き続きカウントされます。
 
 - メトリックはデバイスからクラウドへの通信のサブセットを示す場合がありますが、デバイスとクラウド間のすべての通信は、[課金のメッセージとしてカウントされます](https://azure.microsoft.com/pricing/details/iot-central/)。
 

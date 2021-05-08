@@ -4,13 +4,13 @@ description: Apache Beeline クライアントに接続して、HDInsight での
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.date: 05/27/2020
-ms.openlocfilehash: ab5dedf6718dad4f16fde59d905e2e59be5c495f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/07/2021
+ms.openlocfilehash: 5dcb6168a263be11410126ff08bd8b015da5af46
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944470"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103438"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>HDInsight での Apache Beeline に接続するか、ローカルでインストールする
 
@@ -77,7 +77,9 @@ Apache Spark は独自の HiveServer2 実装を提供します。これは Spark
 
 #### <a name="through-public-or-private-endpoints"></a>パブリック エンドポイントまたはプライベート エンドポイント経由
 
-使用される接続文字列は少し異なります。 `httpPath=/hive2` が含まるのではなく、`httpPath/sparkhive2`を使用します。 `clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 ESP クラスターには、完全な UPN (例: user@domain.com) を使用します。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
+使用される接続文字列は少し異なります。 `httpPath=/hive2` が含まるのではなく、`httpPath/sparkhive2`を使用します。 `clustername` を、使用する HDInsight クラスターの名前に置き換えます。 `admin` をクラスターのクラスター ログイン アカウントに置き換えます。 `password` をクラスター ログイン アカウントのパスワードに置き換えます。
+> [!NOTE]
+> ESP クラスターの場合、`admin` を完全な UPN (たとえば、user@domain.com) に置き換えます。 
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'

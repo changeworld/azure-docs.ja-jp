@@ -9,19 +9,16 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e1b7e091fe09bc2c093cc84473bd07917347f26d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657044"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220796"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-Azure Communication Services のチャットと通話のクライアント ライブラリにより、リアルタイムのメッセージング チャネルが作成されます。これは、効率的で信頼性の高い方法で、接続されたクライアントにシグナリング メッセージをプッシュすることを可能にします。 これにより、複雑な HTTP ポーリング ロジックを実装することなく、豊富なリアルタイム通信機能をアプリケーションに組み込むことができます。 ただしモバイル アプリケーションでは、このシグナリング チャネルは、アプリケーションがフォアグラウンドでアクティブになっているときにのみ接続されたままになります。 アプリケーションがバックグラウンドで実行されているときに、ユーザーが電話の着信またはチャット メッセージを受け取るようにするには、プッシュ通知を使用する必要があります。
+Azure Communication Services のチャットと通話の SDK により、リアルタイムのメッセージング チャネルが作成されます。これは、効率的で信頼性の高い方法で、接続されたクライアントにシグナリング メッセージをプッシュすることを可能にします。 これにより、複雑な HTTP ポーリング ロジックを実装することなく、豊富なリアルタイム通信機能をアプリケーションに組み込むことができます。 ただしモバイル アプリケーションでは、このシグナリング チャネルは、アプリケーションがフォアグラウンドでアクティブになっているときにのみ接続されたままになります。 アプリケーションがバックグラウンドで実行されているときに、ユーザーが電話の着信またはチャット メッセージを受け取るようにするには、プッシュ通知を使用する必要があります。
 
 プッシュ通知を使用すると、アプリケーションからユーザーのモバイル デバイスに情報を送信できます。 プッシュ通知を使用すると、ダイアログを表示したり、音を鳴らしたり、電話の着信の UI を表示したりすることができます。 Azure Communication Services は [Azure Event Grid](../../event-grid/overview.md) および [Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) と統合されます。これにより、アプリにプッシュ通知を追加することができます。
 
@@ -70,13 +67,24 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 #### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>Azure portal を使用した通知ハブのリンク
 
-ポータルで、Azure Communication Services リソースに移動します。 Communication Services リソース内で Communication Services ページの左側のメニューから [プッシュ通知] を選択し、前にプロビジョニングした通知ハブを接続します。 ここでは、接続文字列とリソース ID を指定する必要があります。
+1. ポータルで、お使いの Azure Communication Services リソースに移動します。
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure portal 内のプッシュ通知の設定を示すスクリーンショット。":::
+1. Communication Services リソース内で Communication Services ページの左側のメニューから **[プッシュ通知]** を選択し、前にプロビジョニングした通知ハブを接続します。
+
+1. **[Connect notification hub]\(通知ハブの接続\)** を選択します。 接続できる通知ハブの一覧が表示されます。
+ 
+1. このリソースに使用する通知ハブを選択します。
+ 
+   - 新しいハブを作成する必要がある場合は、 **[新しい通知ハブの作成]** を選択して、このリソース用にプロビジョニングされた新しいハブを取得します。
+
+   :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Azure portal 内のプッシュ通知の設定を示すスクリーンショット。":::
+
+リンクした接続状態の通知ハブが表示されます。
+
+リソースに別のハブを使用する場合は、 **[切断]** を選択し、手順を繰り返して別の通知ハブをリンクします。
 
 > [!NOTE]
-> Azure Notification ハブの接続文字列が更新されている場合は、Communication Services リソースも更新する必要があります。
-ハブのリンク方法に関する変更は、最大 ``10`` 分以内にデータ プレーン (つまり、通知の送信時) に反映されます。 これは、以前に送信された通知があった **場合**、ハブが初めてリンクされるときにも当てはまります。
+> ハブのリンク方法に関する変更は、最大 10 分以内にデータ プレーン (つまり、通知の送信時) に反映されます。 変更前に通知が送信されている **場合** は、ハブが初めてリンクされるときにこれと同じ動作が適用されます。
 
 ### <a name="device-registration"></a>デバイス登録
 

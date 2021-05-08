@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5df7088551e7e7f616077342b762baca179f8640
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123362"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256074"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
@@ -59,10 +59,10 @@ Azure AD を使用すると、グループに対して isAssignableToRole とい
 - *Azure AD P2 ライセンス供与されたお客様のみ*:Azure AD と Privileged Identity Management (PIM) の両方を使用して、グループをアクティブとしてロールに割り当てないでください。 具体的に言うと、作成時にはロール割り当て可能グループにロールを割り当てません。"*そして*" PIM を使用して後でそのグループにロールを割り当てます。 これにより、ユーザーが PIM でアクティブなロールの割り当てを確認できなくなる問題や、その PIM 割り当てを削除できなくなる問題が発生します。 このシナリオでは、資格のある割り当ては影響を受けません。 この割り当てを試みると、次のような予期しない動作が発生する可能性があります。
   - ロールの割り当ての終了時刻が正しく表示されない可能性があります。
   - PIM ポータルで、 **[自分のロール]** に、割り当ての付与を行った方法の数 (1 つまたは複数のグループを介して、および直接) に関係なく、1 つのロールの割り当てのみが表示される可能性があります。
-- **[マネージド ユーザー サインインの段階的なロールアウトを有効にする]** 機能は、グループを介した割り当てをサポートしていません。
 - *Azure AD P2 ライセンス供与されたお客様のみ*: グループを削除した後でも、PIM UI でそのロールの有資格メンバーとして表示されます。 機能的には問題ありません。これは、Azure portal のキャッシュの問題にすぎません。  
 - グループ メンバーシップによるロールの割り当てには、新しい [Exchange 管理センター](https://admin.exchange.microsoft.com/)を使用してください。 以前の Exchange 管理センターでは、この機能はまだサポートされていません。 Exchange PowerShell コマンドレットは想定どおりに動作します。
 - Azure Information Protection ポータル (クラシック ポータル) では、グループを介したロール メンバーシップがまだ認識されません。 [統合型の秘密度ラベル付けプラットフォームに移行](/azure/information-protection/configure-policy-migrate-labels)してから、Office 365 Security & Compliance センターを使用して、グループの割り当てを使用してロールを管理することができます。
+- [アプリ管理センター](https://config.office.com/)では、この機能はまだサポートされていません。 ユーザーに直接 Office アプリ管理者ロールを割り当てます。
 
 これらの問題は現在修正中です。
 

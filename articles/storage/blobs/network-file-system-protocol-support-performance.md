@@ -9,19 +9,19 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: de511fa30caa608c2dc87b6c0ba166ed56ff9499
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614328"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490184"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項 (プレビュー)
 
 Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 この記事には、ストレージ要求のパフォーマンスを最適化するのに役立つ推奨事項が含まれています。 Azure Blob Storage での NFS 3.0 のサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
 
 > [!NOTE]
-> Azure Blob Storage での NFS 3.0 プロトコルのサポートはパブリック プレビューの段階にあります。 次のリージョンでは、Standard パフォーマンス レベルを持つ GPV2 ストレージ アカウントがサポートされています。オーストラリア東部、韓国中部、米国中南部。 プレビューでは、すべてのパブリック リージョンで、Premium パフォーマンス レベルを持つブロック BLOB もサポートされています。
+> Azure Blob Storage での NFS 3.0 プロトコルのサポートはパブリック プレビューの段階にあります。 次のリージョンでは、Standard パフォーマンス レベルを持つ GPV2 ストレージ アカウントがサポートされています。オーストラリア東部、韓国中部、米国東部、米国中南部。 プレビューでは、すべてのパブリック リージョンで、Premium パフォーマンス レベルを持つブロック BLOB もサポートされています。
 
 ## <a name="add-clients-to-increase-throughput"></a>スループット向上のためにクライアントを追加する 
 
@@ -46,7 +46,7 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 > [!div class="mx-imgBorder"]
 > ![相対パフォーマンス](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="avoid-frequent-overwrites-on-date"></a>日付が頻繁に上書きされないようにする
+## <a name="avoid-frequent-overwrites-on-data"></a>データが頻繁に上書きされないようにする
 
 新規書き込み操作より、上書き操作の方が完了するまでに時間がかかります。 これは、NFS の上書き操作 (特に、部分的なインプレース ファイル編集) が、読み取り、変更、書き込み操作といういくつかの基になる BLOB 操作を組み合わせたものであるためです。 そのため、頻繁にインプレース編集が必要なアプリケーションは、NFS が有効になっている BLOB ストレージ アカウントには適していません。 
 

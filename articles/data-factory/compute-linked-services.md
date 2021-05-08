@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 71e02ea1265a81da7dd2e85549f6d1390a46311a
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: b9f7cce39e4f51aea7fc4db5ca37ee054f42c5cb
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952237"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078657"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -21,7 +21,7 @@ ms.locfileid: "104952237"
 
 次の表は、Data Factory でサポートされているコンピューティング環境と、その環境で実行できるアクティビティの一覧です。 
 
-| Compute 環境                                          | activities                                                   |
+| Compute 環境                                          | Activities                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [On-demand HDInsight クラスター](#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](#azure-hdinsight-linked-service) | [Hive](transform-data-using-hadoop-hive.md)、[Pig](transform-data-using-hadoop-pig.md)、[Spark](transform-data-using-spark.md)、[MapReduce](transform-data-using-hadoop-map-reduce.md)、[Hadoop Streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Custom](transform-data-using-dotnet-custom-activity.md)     |
@@ -436,14 +436,15 @@ Azure Machine Learning のリンクされたサービスを作成して、Azure 
 ```
 
 ### <a name="properties"></a>Properties
+
 | プロパティ               | 説明                              | 必須                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | Type                   | type プロパティは次の値に設定されます。**AzureMLService**。 | はい                                      |
 | subscriptionId         | Azure サブスクリプション ID              | はい                                      |
 | resourceGroupName      | name | はい                                      |
 | mlWorkspaceName        | Azure Machine Learning ワークスペースの名前 | はい  |
-| servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | いいえ |
-| servicePrincipalKey    | アプリケーションのキーを取得します。           | いいえ |
+| servicePrincipalId     | アプリケーションのクライアント ID を取得します。     | はい |
+| servicePrincipalKey    | アプリケーションのキーを取得します。           | はい |
 | tenant                 | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | UpdateResourceEndpoint が指定されている場合は必須です |
 | connectVia             | このリンク サービスにアクティビティをディスパッチするために使用される統合ランタイムです。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用することができます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 

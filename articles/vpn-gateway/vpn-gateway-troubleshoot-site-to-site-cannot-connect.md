@@ -1,20 +1,20 @@
 ---
-title: 接続できない Azure サイト間 VPN 接続のトラブルシューティング titleSuffixAzure VPN Gateway
+title: '接続できない Azure サイト間 VPN 接続のトラブルシューティング: Azure VPN Gateway'
 description: 突然停止して再接続できないサイト間 VPN 接続をトラブルシューティングする方法を説明します。
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 674b8ab8266921a4eef8bbf212f3c556b1e587d7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658351"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867289"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング:Azure サイト間 VPN が動作を停止して接続できない
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
 
 オンプレミスのネットワークと Azure 仮想ネットワークの間にサイト間 VPN 接続を構成した後、VPN 接続が突然動作を停止して再接続できません。 この記事では、この問題の解決に役立つトラブルシューティング手順について説明します。 
 
@@ -81,9 +81,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>手順 5. オンプレミス VPN デバイスの外部インターフェイスのアドレスを確認する
 
-- VPN デバイスのインターネット接続 IP アドレスが Azure の **[ローカル ネットワーク]** の定義に含まれていると、散発的に接続が切れることがあります。
-- デバイスの外部インターフェイスは、インターネットに直接接続されている必要があります。 インターネットとデバイスとの間にネットワーク アドレス変換またはファイアウォールを配置することはできません。
-- 仮想 IP が割り当てられるようにファイアウォール クラスタリングを構成するには、クラスターを分割し、ゲートウェイから対話できるパブリック インターフェイスに直接 VPN アプライアンスを公開する必要があります。
+VPN デバイスのインターネット接続 IP アドレスが Azure の **[ローカル ネットワーク]** の定義に含まれていると、散発的に接続が切れることがあります。
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>手順 6. サブネットが完全に一致することを確認する (Azure のポリシー ベースのゲートウェイ)
 
@@ -110,5 +108,5 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 
 ## <a name="next-steps"></a>次のステップ
 
--   [仮想ネットワークへのサイト間接続を構成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+-   [仮想ネットワークへのサイト間接続を構成する](./tutorial-site-to-site-portal.md)
 -   [サイト間 VPN 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)

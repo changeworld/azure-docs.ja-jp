@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: d2fe8f32ec854e1e6db644a039e6a249cfbddcaa
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642508"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -71,7 +71,7 @@ IoT Hub は、バッチが特定のサイズに達するか、または一定の
 
 任意のファイル名前付け規則を使用可能ですが、一覧で示されているすべてのトークンを使う必要があります。 書き込むデータがない場合、IoT ハブは空の BLOB に書き込みます。
 
-パーティションを前提にすることなくすべての BLOB またはファイルが確実に読み取られるようにするために、BLOB またはファイルは一覧表示してから反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 ガイダンスとして次のサンプルを参照してください。
+パーティションを前提にすることなくすべての BLOB またはファイルが確実に読み取られるようにするために、BLOB またはファイルは一覧表示してから反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover)中にパーティションの範囲が変わる可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path) を使用してファイルの一覧を列挙できます。 ガイダンスとして次のサンプルを参照してください。
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

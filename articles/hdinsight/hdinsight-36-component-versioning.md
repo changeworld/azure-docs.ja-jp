@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 0180f94109d01443390da363d9e09c5ad0b26d18
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 32b287c3d7b1974db5a079d1ee84aaafad3faed7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727690"
 ---
 # <a name="hdinsight-36-component-versions"></a>HDInsight 3.6 のコンポーネントのバージョン
 
@@ -19,20 +19,22 @@ ms.locfileid: "103496118"
 
 ## <a name="support-for-hdinsight-36"></a>HDInsight 3.6 のサポート
 
+2021 年 7 月 1 日以降、Microsoft は特定の種類の HDI 3.6 クラスターに対する Basic サポートを提供します。
 次の表は、HDInsight 3.6 クラスターの種類のサポート期間の一覧です。
 
-| クラスターの種類                    | Framework のバージョン | 現在のサポート有効期限        | 新しいサポート有効期限 |
-|---------------------------------|-------------------|-----------------------------------|-----------------------------|
-| HDInsight 3.6 Hadoop            | 2.7.3             | 2020 年 12 月 31 日                      | 2021 年 6 月 30 日               |
-| HDInsight 3.6 Spark             | 2.3               | 2020 年 12 月 31 日                      | 2021 年 6 月 30 日               |
-| HDInsight 3.6 Spark             | 2.2               | 2020 年 6 月 30 日に廃止          |                             |
-| HDInsight 3.6 Spark             | 2.1               | 2020 年 6 月 30 日に廃止          |                             |
-| HDInsight 3.6 Kafka             | 1.1               | 2020 年 12 月 31 日                      | 2021 年 6 月 30 日               |
-| HDInsight 3.6 Kafka             | 1.0               | 2020 年 6 月 30 日に廃止         |                             |
-| HDInsight 3.6 HBase             | 1.1               | 2020 年 12 月 31 日                      | 2021 年 6 月 30 日               |
-| HDInsight 3.6 Interactive Query | 2.1               | 2020 年 12 月 31 日                      | 2021 年 6 月 30 日               |
-| HDInsight 3.6 Storm             | 1.1               | 2020 年 12 月 31 日                      | 2021 年 6 月 30 日               |
-| HDInsight 3.6  ML Services      | 9.3               | 2020 年 12 月 31 日                      | 2020 年 12 月 31 日                |
+| クラスターの種類                    | Framework のバージョン | Standard サポートの有効期限       | Basic サポートの有効期限 | 提供終了日 |
+|---------------------------------|-------------------|-----------------------------------|------------------------------|-----------------|
+| HDInsight 3.6 Hadoop            | 2.7.3             | 2021 年 6 月 30 日                     | 2022 年 4 月 3 日                | 2022 年 4 月 4 日 |
+| HDInsight 3.6 Spark             | 2.3               | 2021 年 6 月 30 日                     | 2022 年 4 月 3 日                | 2022 年 4 月 4 日 |
+| HDInsight 3.6 Kafka             | 1.1               | 2021 年 6 月 30 日                     | 2022 年 4 月 3 日                | 2022 年 4 月 4 日 |
+| HDInsight 3.6 HBase             | 1.1               | 2021 年 6 月 30 日                     | 2022 年 4 月 3 日                | 2022 年 4 月 4 日 |
+| HDInsight 3.6 Interactive Query | 2.1               | 2021 年 6 月 30 日                     | 2022 年 4 月 3 日                | 2022 年 4 月 4 日 |
+| HDInsight 3.6 Storm             | 1.1               | 2021 年 6 月 30 日                     | 2022 年 4 月 3 日                | 2022 年 4 月 4 日 |
+| HDInsight 3.6  ML Services      | 9.3               | -                                 | -                            | 2020 年 12 月 31 日 |
+| HDInsight 3.6 Spark             | 2.2               | -                                 | -                            | 2020 年 6 月 30 日 |
+| HDInsight 3.6 Spark             | 2.1               | -                                 | -                            | 2020 年 6 月 30 日 |
+| HDInsight 3.6 Kafka             | 1.0               | -                                 | -                            | 2020 年 6 月 30 日 |
+
 ## <a name="apache-components-available-with-hdinsight-version-36"></a>HDInsight バージョン 3.6 で使用できる Apache のコンポーネント
 
 HDInsight 3.6 に関連付けられている OSS コンポーネントのバージョンを、次の表にまとめます。

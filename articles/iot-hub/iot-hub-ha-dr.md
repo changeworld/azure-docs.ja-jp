@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 10a3360f30d211336e4ce861b124a307c85fb150
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92151677"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308253"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
 
@@ -64,7 +64,7 @@ IoT Hub のフェールオーバー操作が完了すると、デバイスおよ
 >
 > - Azure Functions または Azure Stream Analytics を使用して組み込みイベント エンドポイントを接続する場合は、**再起動** が必要になる場合があります。 これは、フェールオーバー中に以前のオフセットが無効になるためです。
 >
-> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) を使用してファイルの一覧を列挙できます。 詳細については、「[ルーティング エンドポイントとしての Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)」を参照してください。
+> - ストレージにルーティングするときは、パーティションを想定せずにすべての BLOB またはファイルを確実に読み取るために、BLOB またはファイルの一覧を取得したうえでそれらを反復処理することをお勧めします。 Microsoft が開始するフェールオーバー中や手動フェールオーバー中にパーティションの範囲が変化する可能性があります。 [List Blobs API](/rest/api/storageservices/list-blobs) を使用して BLOB の一覧を、または [List ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/filesystem/list) を使用してファイルの一覧を列挙できます。 詳細については、「[ルーティング エンドポイントとしての Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint)」を参照してください。
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft が開始するフェールオーバー
 

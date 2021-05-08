@@ -4,14 +4,14 @@ description: HDInsight での Apache Ambari の古いアラートについて、
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 22985f295e504a2d73015f1dc96064f89be47bd7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104866932"
 ---
-# <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari の古いアラート
+# <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での Apache Ambari の古いアラート
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -19,7 +19,7 @@ ms.locfileid: "98946718"
 
 Apache Ambari UI では、次のようなアラートが表示される場合があります。
 
-![Apache Ambari の古いアラートの例](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
+:::image type="content" source="./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png" alt-text="Apache Ambari の古いアラートの例" border="true":::
 
 ## <a name="cause"></a>原因
 
@@ -33,7 +33,7 @@ Ambari エージェントでは、多くのリソースの正常性が継続的�
 
 * クラスター内の少数のホストが多数のコンポーネントをホストしているため、多くのアラートの実行を要求されています。 コンポーネントの数が多い場合、アラート ジョブがスケジュールされた間隔で実行されない可能性があります。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 Ambari の古いアラートに関する問題を解決するには、次の方法を試してください。
 
@@ -43,15 +43,15 @@ Ambari の古いアラートに関する問題を解決するには、次の方�
 
 1. Apache Ambari UI で、 **[アラート]** タブを選択します。
 1. 目的のアラート定義名を選択します。
-1. 定義から、 **[Edit]\(編集\)** を選択します。
+1. 定義から、**[Edit]\(編集\)** を選択します。
 1. **[Check Interval]\(チェック間隔\)** の値を大きくし、 **[保存]** を選択します。
 
 ### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Ambari Server Alerts のアラート間隔の時間を長くする
 
 1. Apache Ambari UI で、 **[アラート]** タブを選択します。
-1. **[Groups]\(グループ\)** ドロップダウン リストで、 **[AMBARI Default]\(AMBARI の既定値\)** を選択します。
+1. **[Groups]\(グループ\)** ドロップダウン リストで、**[AMBARI Default]\(AMBARI の既定値\)** を選択します。
 1. **[Ambari Server Alerts]** アラートを選択します。
-1. 定義から、 **[Edit]\(編集\)** を選択します。
+1. 定義から、**[Edit]\(編集\)** を選択します。
 1. **[Check Interval]\(チェック間隔\)** の値を大きくします。
 1. **[Interval Multiplier]\(間隔の乗数\)** の値を大きくし、 **[保存]** を選択します。
 

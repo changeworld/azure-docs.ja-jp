@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: 光学式文字認識のドキュメント
+summary: クラウドベースの OCR API を使用すると、開発者は画像内にあるテキストを読み取り、構造化されたコンテンツを返す高度なアルゴリズムにアクセスできます。 クイックスタート、チュートリアル、サンプルを使用して、複数の言語で書かれた印刷および手書きのテキストを抽出する方法について説明します。
+metadata:
+  title: 光学式文字認識のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: クラウドベースの OCR API を使用すると、開発者は画像内にあるテキストを読み取り、構造化されたコンテンツを返す高度なアルゴリズムにアクセスできます。 クイックスタート、チュートリアル、サンプルを使用して、複数の言語で書かれた印刷および手書きのテキストを抽出する方法について説明します。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 03/31/2021
+  ms.openlocfilehash: 4a2951933c60ef34404ccea49d4fb536d014d5a4
+  ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/13/2021
+  ms.locfileid: "107377553"
+landingContent:
+- title: 光学式文字認識について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: OCR の概要
+      url: overview-ocr.md
+  - linkListType: quickstart
+    links:
+    - text: OCR クイックスタート
+      url: quickstarts-sdk/client-library.md
+- title: OCR を使用した開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Read API を呼び出す
+      url: Vision-API-How-to-Topics/call-read-api.md
+    - text: Read 2.x から Read 3.x へのアップグレード
+      url: upgrade-api-versions.md
+- title: 読み取り OCR コンテナーの使用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: コンテナーのインストールと実行
+      url: computer-vision-how-to-install-containers.md
+  - linkListType: how-to-guide
+    links:
+    - text: コンテナーを構成する
+      url: computer-vision-resource-container-config.md
+    - text: Kubernetes と Helm での使用
+      url: deploy-computer-vision-on-premises.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 言語のサポート
+      url: language-support.md
+    - text: OCR (Read) v3.2
+      url: https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005
+    - text: OCR (Read) v3.1
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

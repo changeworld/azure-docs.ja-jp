@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 980c98b6b222ca4a0bb5d2ba2ae53f38de12c931
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98945446"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight での Apache Hadoop のトラブルシューティングに関する記事のインデックス
@@ -18,11 +18,11 @@ ms.locfileid: "98945446"
 
 ## <a name="out-of-memory-error"></a>メモリ不足のエラー
 
-* [HDInsight における Apache Hive メモリ不足エラーの解決](hdinsight-hadoop-hive-out-of-memory-error-oom.md):Hive クエリによるメモリ不足 (OOM) エラーを修正します。 顧客シナリオに、多数の大きなテーブルへのクエリが含まれています。
+* [HDInsight での Apache Hive メモリ不足エラーの修正](hdinsight-hadoop-hive-out-of-memory-error-oom.md): Hive クエリのメモリ不足エラー (OOM) を修正します。 顧客シナリオに、多数の大きなテーブルへのクエリが含まれています。
 
 ## <a name="apache-hive-query-performance"></a>Apache Hive クエリのパフォーマンス
 
-* [HDInsight の Apache Hadoop に対する Apache Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md):この記事では、Hive クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
+* [HDInsight の Apache Hadoop に対する Apache Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md): この記事では、Hive クエリに適用することができる一般的な Hive パフォーマンス最適化方法のほとんどについて説明します。
 * [Azure HDInsight を使用した Apache Hive のトラブルシューティング](hdinsight-troubleshoot-hive.md)。
 
 ## <a name="more-troubleshooting-articles"></a>その他のトラブルシューティングの記事

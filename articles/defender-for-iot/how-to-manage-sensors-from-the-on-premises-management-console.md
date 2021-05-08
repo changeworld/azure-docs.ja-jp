@@ -4,10 +4,10 @@ description: センサーのバージョンの更新、センサーへのシス�
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 4706fbcf58b8e5f5eed6532f9a08f65c7716e07e
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781927"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>管理コンソールからセンサーを管理する

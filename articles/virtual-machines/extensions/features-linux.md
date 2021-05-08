@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: b6a834ede381ee319d3ff7678f49febd11e34a5d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102559772"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785093"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -65,7 +65,7 @@ Linux エージェントは複数の OS で実行されますが、拡張機能�
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 
-Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を確認するには、[az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list) を使用します。 次の例では、*westus* の場所で利用できるすべての拡張機能が表示されています:
+Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を確認するには、[az vm extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list) を使用します。 次の例では、*westus* の場所で利用できるすべての拡張機能が表示されています:
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -79,7 +79,7 @@ Azure VM 拡張機能は既存の VM で実行できます。これは、構成�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します。 例のリソース グループ名、VM 名、および実行するスクリプト (https:\//raw.githubusercontent.com/me/project/hello.sh) を実際の情報に置き換えます。 
+[az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) コマンドにより、Azure VM 拡張機能を既存の VM に対して実行できます。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して Custom Script 拡張機能を実行します。 例のリソース グループ名、VM 名、および実行するスクリプト (https:\//raw.githubusercontent.com/me/project/hello.sh) を実際の情報に置き換えます。 
 
 ```azurecli
 az vm extension set `
@@ -245,7 +245,7 @@ waagent --version
 
 ```bash
 WALinuxAgent-2.2.17 running on ubuntu 16.04
-Python: 3.5.2
+Python: 3.6.0
 Goal state agent: 2.2.18
 ```
 
@@ -277,7 +277,7 @@ Goal state agent: 2.2.18
 
 #### <a name="identifying-if-the-extension-is-set-with-autoupgrademinorversion-on-a-vm"></a>拡張機能が autoUpgradeMinorVersion を使って VM 上に設定されているかどうかを識別する
 
-拡張機能が 'autoUpgradeMinorVersion' を使ってプロビジョニングされたかどうかは、VM モデルから判断できます。 確認するには、[az vm show](/cli/azure/vm#az-vm-show) を使用して、次のようにリソース グループと VM の名前を指定します:
+拡張機能が 'autoUpgradeMinorVersion' を使ってプロビジョニングされたかどうかは、VM モデルから判断できます。 確認するには、[az vm show](/cli/azure/vm#az_vm_show) を使用して、次のようにリソース グループと VM の名前を指定します:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM
@@ -346,7 +346,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 ### <a name="view-extension-status"></a>拡張機能の状態表示
 
-VM 拡張機能が VM に対して実行された後は、次のように、拡張機能のステータスを返す [az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) を使用します:
+VM 拡張機能が VM に対して実行された後は、次のように、拡張機能のステータスを返す [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) を使用します:
 
 ```azurecli
 az vm get-instance-view \
@@ -379,7 +379,7 @@ az vm get-instance-view \
 
 ### <a name="rerun-a-vm-extension"></a>VM 拡張機能の再実行
 
-VM 拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、次のように [az vm extension delete](/cli/azure/vm/extension#az-vm-extension-delete) を使用します:
+VM 拡張機能の再実行が必要な場合があります。 拡張機能を再実行するには、その拡張機能を削除し、その後任意の実行方法で拡張機能を再実行します。 拡張機能を削除するには、次のように [az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete) を使用します:
 
 ```azurecli
 az vm extension delete \

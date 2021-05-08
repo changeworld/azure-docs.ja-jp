@@ -1,17 +1,17 @@
 ---
 title: 計画メンテナンス通知 - Azure Database for PostgreSQL - 単一サーバー
 description: この記事では、Azure Database for PostgreSQL - 単一サーバーの計画メンテナンス通知機能について説明します
-author: ambhatna
-ms.author: ambhatna
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 250ddf9f92559acd810aaed65d50ae45f2d7adc9
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98735743"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227469"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 単一サーバーの計画メンテナンス通知
 

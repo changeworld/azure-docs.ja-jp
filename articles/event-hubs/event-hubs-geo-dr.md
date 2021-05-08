@@ -3,12 +3,12 @@ title: geo ディザスター リカバリー - Azure Event Hubs| Microsoft Docs
 description: Azure Event Hubs で地理的リージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602640"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311211"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -205,7 +205,7 @@ Event Hubs の詳細については、次のリンクを参照してください
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
     - [JavaScript](event-hubs-node-get-started-send.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs の FAQ](event-hubs-faq.yml)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png

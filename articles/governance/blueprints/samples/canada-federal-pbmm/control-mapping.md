@@ -4,10 +4,10 @@ description: カナダ連邦の PBMM ブループリント サンプルのコン
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: 440b07db514d8af0cf7f4177a6bac497eead2b37
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99627216"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
@@ -287,7 +287,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 - SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL Server での脅威検出のデプロイ
+- SQL サーバーでの脅威検出のデプロイ
 
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
