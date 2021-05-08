@@ -3,12 +3,13 @@ title: SKU が使用できないエラー
 description: Azure Resource Manager でリソースをデプロイするときに、SKU が使用できないことを示すエラーのトラブルシューティングを行う方法について説明します。
 ms.topic: troubleshooting
 ms.date: 04/14/2021
-ms.openlocfilehash: 3baedf6a5c9f2dbfd3ddf666b458fac649fce2ac
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2ed04cd3839b8146d7e988b571113a737f38801f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503900"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318731"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
 

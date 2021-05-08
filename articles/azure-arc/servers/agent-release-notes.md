@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/27/2021
+ms.openlocfilehash: c223b5dd75ac82706a2b35268813391899170f73
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109069"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071543"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -18,17 +18,28 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 既知の問題
 - バグの修正
 
+## <a name="april-2021"></a>2021 年 4 月
+
+バージョン 1.5
+
+### <a name="new-feature"></a>新機能
+
+- Red Hat Enterprise Linux 8 および CentOS Linux 8 のサポートが追加されました。
+- エラーおよび詳細出力を stderr に送る新しい `-useStderr` パラメーター。
+- 出力結果を JSON 形式 (-useStderr と共に使用するとき) で送る新しい `-json` パラメーター。
+- 他のインスタンス メタデータとして製造元、モデル、SQL Server がインストールされているかどうか (ブール値)、クラスター リソース ID (Azure Stack HCI ノードの場合) を収集します。
+ 
 ## <a name="march-2021"></a>2021 年 3 月
 
 バージョン 1.4
 
-## <a name="new-feature"></a>新機能
+### <a name="new-feature"></a>新機能
 
 - 現在限定プレビュー段階にあるプライベート エンドポイントのサポートを追加しました。
 - azcmagent 用の終了コードの詳細な一覧。
 - エージェントの構成パラメーターを、`--config` パラメーターを使用してファイルから読み取れるようになりました。
 
-## <a name="fixed"></a>固定
+### <a name="fixed"></a>固定
 
 ネットワーク エンドポイントのチェックが高速になりました。
 

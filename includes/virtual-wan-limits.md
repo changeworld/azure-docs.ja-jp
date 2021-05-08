@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 85c66aa6a8f0cb0efa231acee44f8fa02169d27b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b19bf7faa454c812a5a83bc5a4d5349d32632094
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88602578"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108213169"
 ---
 | リソース |  制限 |
 | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "88602578"
 | ハブあたりのポイント対サイトのユーザー数| 10,000 |
 | Azure Virtual WAN ユーザー VPN (ポイント対サイト) ゲートウェイあたりのスループットの合計 | 20 Gbps |
 | Virtual WAN の ExpressRoute ゲートウェイあたりのスループットの合計 | 20 Gbps |
-| ハブあたりの ExpressRoute 回線接続 | 4 |
+| ハブあたりの ExpressRoute 回線接続 | 8 |
 | ハブあたりの VNet 接続  | 500 から Virtual WAN 内のハブの総数を差し引いた値 |
 | Virtual WAN のハブ ルーターあたりのスループットの合計 | VNet 間の転送に対して 50 Gbps |
 | 単一の Virtual WAN ハブに接続されたすべての VNet にわたる VM ワークロード | 2000 

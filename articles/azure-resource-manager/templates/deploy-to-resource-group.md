@@ -3,12 +3,13 @@ title: リソースをリソース グループにデプロイする
 description: Azure Resource Manager テンプレートでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 1d636be9ffab5a4398e3e12867e601ce6df382bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8768b3a5c8cdd2ac552c03faefcb1a31d5ef5857
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889792"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319217"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM テンプレートを使用したリソース グループへのデプロイ
 

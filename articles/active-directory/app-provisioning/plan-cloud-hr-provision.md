@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9171226de7c975e75139af92798ea78419428f0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256713"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175426"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -204,7 +204,7 @@ Azure AD Connect プロビジョニング エージェントのデプロイ ト�
 
 クラウド人事アプリから Active Directory へのユーザー プロビジョニング ソリューションを使用するには、Windows 2012 R2 以降を実行し、1 つ以上の Azure AD Connect プロビジョニング エージェントをデプロイする必要があります。 サーバーは、4 GB 以上の RAM と .NET 4.7.1 以降のランタイムを備えている必要があります。 ホスト サーバーが、ターゲット Active Directory ドメインへのネットワーク アクセスを持っていることを確認します。
 
-オンプレミス環境を準備するために、Azure AD Connect プロビジョニング エージェントの構成ウィザードは、エージェントを Azure AD テナントに登録し、[ポートを開き](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)、[URL へのアクセスを許可し](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)、[アウトバウンド HTTPS プロキシ構成](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)をサポートします。
+オンプレミス環境を準備するために、Azure AD Connect プロビジョニング エージェントの構成ウィザードは、エージェントを Azure AD テナントに登録し、[ポートを開き](../app-proxy/application-proxy-add-on-premises-application.md#open-ports)、[URL へのアクセスを許可し](../app-proxy/application-proxy-add-on-premises-application.md#allow-access-to-urls)、[アウトバウンド HTTPS プロキシ構成](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)をサポートします。
 
 プロビジョニング エージェントは、サービス アカウントを使用して Active Directory ドメインと通信します。 エージェントをインストールする前に、次の要件を満たす Active Directory ユーザーとコンピューターにサービス アカウントを作成します。
 

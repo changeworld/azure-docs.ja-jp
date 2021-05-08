@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 9656da8be086724482f129efab323e02b73e117e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cefa1461691f384603f464e0d0a4ea8ceb8bc90
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98954964"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071723"
 ---
 # <a name="single-page-application-move-to-production"></a>シングルページ アプリケーション：運用環境に移行する
 
@@ -36,10 +36,10 @@ Azure Storage サービスと Azure App Service でそれぞれ SPA プロジェ
 
 - [Node.js Web API (Azure AD)](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2): **passport-azure-ad** を使用してバックエンド Web API (Node.js) 用のアクセス トークンを検証する方法。
 
-- [Azure AD B2C を使用する SPA](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp): **MSAL.js** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリにユーザーをサインインさせる方法。
+- [Azure AD B2C を使用する SPA](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa): **MSAL.js** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリにユーザーをサインインさせる方法。
 
 - [Node.js Web API (Azure AD B2C)](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi): **passport-azure-ad** を使用して、**Azure Active Directory B2C** (Azure AD B2C) に登録されているアプリ用のアクセス トークンを検証する方法。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [JavaScript SPA チュートリアル](./tutorial-v2-javascript-spa.md): ユーザーをサインインさせ、**MSAL.js** を使用して **Microsoft Graph API** を呼び出すためのアクセス トークンを取得する方法について詳細を確認します。
+- [JavaScript SPA チュートリアル](./tutorial-v2-javascript-auth-code.md): ユーザーをサインインさせ、**MSAL.js** を使用して **Microsoft Graph API** を呼び出すためのアクセス トークンを取得する方法について詳細を確認します。

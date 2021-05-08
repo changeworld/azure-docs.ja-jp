@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: af2766d5692f232970c3c7c735d4c34abebe9c3c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552599"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070391"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -408,9 +408,12 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>テイント、ラベル、またはタグをノード プールに指定する
 
-### <a name="setting-nodepool-taints"></a>ノード プールのテイントの設定
-
 ノード プールを作成するときに、テイント、ラベル、タグをそのノード プールに追加できます。 テイント、ラベル、タグを追加すると、そのノード プール内のすべてのノードもそのテイント、ラベル、タグを取得します。
+
+> [!IMPORTANT]
+> ノードへの テイント、ラベル、タグの追加は、`az aks nodepool` を使用してノードプール全体に対して行う必要があります。 `kubectl` を使用して、テイント、ラベル、またはタグをノード プール内の個々のノードに適用する ことはお勧めできません。  
+
+### <a name="setting-nodepool-taints"></a>ノード プールのテイントの設定
 
 テイントが指定されたノード プールを作成するには、[az aks nodepool add][az-aks-nodepool-add] を使用します。 名前 *taintnp* を指定し、`--node-taints` パラメーターを使用してテイントに *sku=gpu:NoSchedule* を指定します。
 

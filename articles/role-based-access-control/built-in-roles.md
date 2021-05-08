@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 04/09/2021
+ms.date: 04/26/2021
 ms.custom: generated
-ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 4e2df06b67ee9148d3c74700ebfadd72bff8392f
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752392"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069977"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -137,6 +137,7 @@ ms.locfileid: "107752392"
 > | [Cognitive Services Custom Vision Reader](#cognitive-services-custom-vision-reader) | プロジェクトでの読み取り専用のアクション。 閲覧者がこのプロジェクトを作成または更新することはできません。 | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
 > | [Cognitive Services Custom Vision Trainer](#cognitive-services-custom-vision-trainer) | プロジェクトの表示、作成、およびモデルの公開、非公開、エクスポートを含む、モデルのトレーニングを行うことができます。 トレーナーがこのプロジェクトを作成または削除することはできません。 | 0a5ae4ab-0d65-4eeb-be61-29fc9b54394b |
 > | [Cognitive Services データ閲覧者 (プレビュー)](#cognitive-services-data-reader-preview) | Cognitive Services データを読み取ります。 | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | [Cognitive Services Face Recognizer](#cognitive-services-face-recognizer) | Face API に対する類似の操作の検出、検証、識別、グループ化、検索を実行できるようにします。 このロールでは、作成または削除操作は許可されません。そのため、"最小特権" のベスト プラクティスに従えば、推論機能のみを必要とするエンドポイントに適しています。 | 9894cab4-e18a-44aa-828b-cb588cd6f2d7 |
 > | [Cognitive Services Metrics Advisor Administrator](#cognitive-services-metrics-advisor-administrator) | システム レベルの構成を含む、プロジェクトへのフル アクセス。 | cb43c632-a144-4ec5-977c-e80c4affc34a |
 > | [Cognitive Services QnA Maker エディター](#cognitive-services-qna-maker-editor) | KB の作成、編集、インポート、およびエクスポートが可能になります。 KB を公開または削除することはできません。 | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Cognitive Services QnA Maker 閲覧者](#cognitive-services-qna-maker-reader) | KB のみ、読み取りとテストが可能になります。 | 466ccd10-b268-4a11-b098-b4849f024126 |
@@ -2744,7 +2745,7 @@ Azure Maps アカウントからマップ関連データを読み取るための
 Azure Spring Cloud データへの読み取りアクセスを許可します。[詳細](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | "*なし*" |  |
 > | **NotActions** |  |
@@ -2887,7 +2888,7 @@ AAD の認証オプションを使用して、アプリ サーバーが SignalR 
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | ClientToken に署名するための一時的な AccessKey を生成します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | AccessTokens に署名するための AccessKey を生成します。このキーは、既定では 90 分で有効期限が切れます。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | サーバー接続を開始します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
@@ -2977,7 +2978,7 @@ AAD の認証オプションを使用して、アプリがサーバーレス モ
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | クライアント接続を開始するための ClientToken を生成します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | クライアントが ASRS に接続するための AccessToken を生成します。このトークンは、既定では 5 分で有効期限が切れます。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -3016,8 +3017,8 @@ Azure SignalR Service REST API へのフル アクセス
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | ClientToken に署名するための一時的な AccessKey を生成します。 |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | クライアント接続を開始するための ClientToken を生成します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | AccessTokens に署名するための AccessKey を生成します。このキーは、既定では 90 分で有効期限が切れます。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | クライアントが ASRS に接続するための AccessToken を生成します。このトークンは、既定では 5 分で有効期限が切れます。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | ハブ内のすべてのクライアント接続にメッセージをブロードキャストします。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | メッセージをグループにブロードキャストします。 |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
@@ -5707,6 +5708,53 @@ Cognitive Services データを読み取ります。
 }
 ```
 
+### <a name="cognitive-services-face-recognizer"></a>Cognitive Services Face Recognizer
+
+Face API に対する類似の操作の検出、検証、識別、グループ化、検索を実行できるようにします。 このロールでは、作成または削除操作は許可されません。そのため、"最小特権" のベスト プラクティスに従えば、推論機能のみを必要とするエンドポイントに適しています。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/detect/action | 画像内の人間の顔を検出して、顔を示す四角形を返します。必要に応じて、FaceId、ランドマーク、および属性も返します。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/verify/action | 2 つの顔が同一人物に属しているか 1 つの顔が 1 人の人物に属しているかを確認します。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/identify/action | 1 対多の識別により、人物グループまたは大規模人物グループから、特定のクエリの人物の顔に最も近い一致を見つけます。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/group/action | 顔の類似性に基づいて候補の顔をグループ分けします。 |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/Face/findsimilars/action | 与えられたクエリの顔の faceId に対して、faceId 配列、顔リスト、または大規模顔リストから類似の顔を検索します。 faceId |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you perform detect, verify, identify, group, and find similar operations on Face API. This role does not allow create or delete operations, which makes it well suited for endpoints that only need inferencing capabilities, following 'least privilege' best practices.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/9894cab4-e18a-44aa-828b-cb588cd6f2d7",
+  "name": "9894cab4-e18a-44aa-828b-cb588cd6f2d7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.CognitiveServices/accounts/Face/detect/action",
+        "Microsoft.CognitiveServices/accounts/Face/verify/action",
+        "Microsoft.CognitiveServices/accounts/Face/identify/action",
+        "Microsoft.CognitiveServices/accounts/Face/group/action",
+        "Microsoft.CognitiveServices/accounts/Face/findsimilars/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Cognitive Services Face Recognizer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cognitive-services-metrics-advisor-administrator"></a>Cognitive Services Metrics Advisor Administrator
 
 システム レベルの構成を含む、プロジェクトへのフル アクセス。 [詳細情報](../cognitive-services/metrics-advisor/how-tos/alerts.md)
@@ -6021,7 +6069,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理およびコンテンツ操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6080,7 +6128,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 コンテンツ操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6133,7 +6181,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 コンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6182,7 +6230,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6235,7 +6283,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6284,7 +6332,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作およびコンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7019,7 +7067,7 @@ Azure Stack の登録を管理できます。
 EventGrid 操作を管理できます。
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/* | Event Grid リソースの作成と管理 |
@@ -7813,7 +7861,7 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 Azure Sentinel Automation 共同作成者です。[詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/read | トリガーを読み取ります。 |
@@ -8210,7 +8258,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-contributor"></a>Key Vault Contributor
 
-キー コンテナーを管理しますが、Azure RBAC でのロール割り当ては許可されず、シークレット、キー、証明書へのアクセスも許可されません。 [詳細情報](../key-vault/general/security-overview.md)
+キー コンテナーを管理しますが、Azure RBAC でのロール割り当ては許可されず、シークレット、キー、証明書へのアクセスも許可されません。 [詳細情報](../key-vault/general/security-features.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -9584,7 +9632,7 @@ Runbook のジョブを作成する方法については、Runbook のプロパ�
 クラスター ユーザーの資格情報アクションを一覧表示します。
 
 > [!div class="mx-tableFixed"]
-> | Actions | 説明 |
+> | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |

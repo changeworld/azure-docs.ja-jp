@@ -7,12 +7,12 @@ ms.date: 4/12/2021
 author: sakthi-vetrivel
 ms.author: suvetriv
 keywords: aro、OpenShift、az aro、Red Hat、CLI、RACI、サポート
-ms.openlocfilehash: 4bb00cb533d0065a992831f09ed8280c96efcdee
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 477fe40dc565bf5e20627b4f4cd0d53273240ec3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537006"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319613"
 ---
 # <a name="overview-of-responsibilities-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift の責任の概要
 
@@ -583,7 +583,7 @@ ID 管理とアクセス管理には、適切なユーザーのみがクラス�
 
 <li>お客様がオペレーターまたは外部イメージを使用して、Red Hat、コミュニティ、サードパーティ、独自、またはその他のサービスをクラスターに追加した場合、お客様はそれらのサービスについて、および問題をトラブルシューティングするために適切なプロバイダー (Red Hat など) と連携することについて責任を持つ。
 
-<li>提供されているツールと機能を使用して、<a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">構成とデプロイ</a>、<a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">最新状態の保持</a>、<a href="https://docs.openshift.com/aro/4/applications/working-with-quotas.html">リソース要求と制限の設定</a>、<a href="https://docs.openshift.com/aro/4/getting_started/scaling-your-cluster.html">アプリを実行する十分なリソースを確保するためのクラスターのサイズ変更</a>、<a href="https://docs.openshift.com/aro/4/administering_a_cluster/">アクセス許可の設定</a>、他のサービスとの統合、<a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">お客様がデプロイするイメージ ストリームまたはテンプレートの管理</a>、<a href="https://docs.openshift.com/aro/4/cloud_infrastructure_access">外部サービス</a>、データの保存、バックアップ、復元、および高可用性と回復性ワークロードの管理を行う。
+<li>提供されているツールと機能を使用して、<a href="https://docs.openshift.com/aro/4/architecture/understanding-development.html#application-types">構成とデプロイ</a>、<a href="https://docs.openshift.com/aro/4/applications/deployments/deployment-strategies.html">最新状態の保持</a>、<a href="https://docs.openshift.com/dedicated/4/applications/working-with-quotas.html">リソース要求と制限の設定</a>、<a href="https://docs.openshift.com/dedicated/4/getting_started/scaling-your-cluster.html">アプリを実行する十分なリソースを確保するためのクラスターのサイズ変更</a>、<a href="https://docs.openshift.com/dedicated/4/administering_a_cluster/cluster-admin-role.html">アクセス許可の設定</a>、他のサービスとの統合、<a href="https://docs.openshift.com/aro/4/openshift_images/images-understand.html">お客様がデプロイするイメージ ストリームまたはテンプレートの管理</a>、<a href="https://docs.openshift.com/dedicated/4/cloud_infrastructure_access/dedicated-understanding-aws.html">外部サービス</a>、データの保存、バックアップ、復元、および高可用性と回復性ワークロードの管理を行う。
 
 <li>メトリック収集およびアラート作成のためのソフトウェアのインストールと操作など、Azure Red Hat OpenShift で実行されるアプリケーションの監視について責任を持つ。
 </li>

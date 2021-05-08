@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b4bb58f106f3255ec6cd80b14b175ff413bc0dc6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 9455045bb03ad03d2e5cf31a27696850f2d31bed
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725802"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886426"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -321,7 +321,7 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 `GenerateOtp` 技術プロファイルによってメール アドレスのコードが生成されます。 `VerifyOtp` 技術プロファイルによって、メール アドレスに関連付けられているコードが検証されます。 ワンタイム パスワードの形式と有効期間の構成を変更できます。 OTP 技術プロファイルの詳細については、[ワンタイム パスワード技術プロファイルの定義](one-time-password-technical-profile.md)に関するページを参照してください。
 
 > [!NOTE]
-> Web.TPEngine.Providers.OneTimePasswordProtocolProvider プロトコルによって生成される OTP コードは、ブラウザー セッションに関連付けられています。 つまり、ユーザーはさまざまなブラウザー セッションで、それぞれ対応するセッションに対して有効な一意の OTP コードを生成できます。 これに対して、組み込みのユーザー フローによって生成される OTP コードはブラウザー セッションに依存しないため、ユーザーが新しいブラウザー セッションで新しい OTP コードを生成すると、それによって前の OTP コードが置き換えられます。
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider プロトコルによって生成される OTP コードは、ブラウザー セッションに関連付けられています。 つまり、ユーザーはさまざまなブラウザー セッションで、それぞれ対応するセッションに対して有効な一意の OTP コードを生成できます。 一方、組み込みの電子メール プロバイダーで生成される OTP コードはブラウザーのセッションとは独立しているため、ブラウザーの新しいセッションで新たに OTP コードを生成すると、前の OTP コードが置き換えられます。
 
 次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 

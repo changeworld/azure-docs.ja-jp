@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 04/05/2021
+ms.date: 04/27/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 923c084066b8e40dd8c17541222e9f44c6cc6147
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552795"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124072"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセス レビューを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "106552795"
 
 ## <a name="prerequisite-license"></a>事前に必要なライセンス
 
-[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. PIM のライセンスについての詳細は、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] PIM のライセンスについての詳細は、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
 
 > [!Note]
 >  現時点では、アクセス レビューのスコープを、Azure AD へのアクセス権を持つサービス プリンシパルと、テナントで Azure Active Directory Premium P2 エディションがアクティブになっている Azure リソース ロール (プレビュー) に設定できます。 サービス プリンシパルのライセンス モデルは、この機能の一般提供のために終了する予定です。このため、追加のライセンスが必要になる場合があります。
@@ -105,6 +105,10 @@ ms.locfileid: "106552795"
     - **[アクセスの削除]** - ユーザーのアクセスを削除します
     - **[アクセスを承認する]** - ユーザーのアクセスを承認します
     - **[推奨事項の実行]** - ユーザーの継続的なアクセスの拒否または承認に関するシステムの推奨事項を実行します
+
+1. レビュー完了の更新を受け取るために、追加のユーザーまたはグループに通知を送信することができます (プレビュー)。 この機能を使用すると、レビュー作成者以外の関係者をレビューの進行状況で更新できます。 この機能を使用するには、 **[ユーザーまたはグループを選択する]** を選択し、完了の状態を受け取るユーザーまたはグループを追加します。
+
+    ![完了設定時 - 通知を受信するユーザーを追加する](./media/pim-resource-roles-start-access-review/upon-completion-settings-additional-receivers.png) 
 
 ### <a name="advanced-settings"></a>詳細設定
 

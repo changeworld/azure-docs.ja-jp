@@ -11,12 +11,12 @@ ms.date: 03/02/2019
 ms.author: iangithinji
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1acfff8a9152c767b61463bed0165d5ae390f649
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 9ad4cb5cdee3af68f7212b696dec10980ee89818
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375000"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318911"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 
@@ -77,7 +77,7 @@ ID は、クラウドとオンプレミスのアプリケーション間のす�
 
 |機能  |説明|推奨 |
 |---------|---------|---------|
-|アプリケーション プロキシ|現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。|オンプレミスのお使いのアプリ用に[リモートアクセス](./application-proxy.md)をセットアップします。 |
+|アプリケーション プロキシ|現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。 クラウド内の SaaS アプリとオンプレミスの企業アプリにアクセスする必要があります。 Azure AD アプリケーション プロキシを使用すると、コストが高く複雑な仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ) を使用することなく、この堅牢なアクセスが可能になります。|オンプレミスのお使いのアプリ用に[リモートアクセス](../app-proxy/application-proxy.md)をセットアップします。 |
 |F5、Akamai、Zscaler|ビジネス プロセスにとってまだ非常に重要であるのに、Azure AD を使用する前は保護できなかったレガシ アプリケーションを、既存のネットワークとデリバリー コントローラーを使用して容易に保護できます。 お客様はおそらく、これらのアプリケーションの保護を開始するために必要なものはすべて既に所有しています。| Akamai、Citrix、F5、または Zscaler を使用している場合は、 [事前構築されたソリューション](./secure-hybrid-access.md)をご確認ください。 | 
 
 ## <a name="related-articles"></a>関連記事

@@ -10,24 +10,24 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 8b3bc99d4391e2079d1b0ecc39011f1b2afc4440
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 557c2591b0bd5406266e5f833ca8c5c4fb581e47
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096038"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125357"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
 
-Microsoft Spark Utilities (MSSparkUtils) は、一般的なタスクをより簡単に実行できるようにする組み込みパッケージです。 MSSparkUtils を使用すると、ファイル システムを操作し、環境変数を取得し、シークレットを操作できます。 MSSparkUtils は、`PySpark (Python)`、`Scala`、および `.NET Spark (C#)` ノートブックと Synapse パイプラインで使用できます。
+Microsoft Spark Utilities (MSSparkUtils) は、一般的なタスクをより簡単に実行できるようにする組み込みパッケージです。 MSSparkUtils を使用すると、ファイル システムを操作し、環境変数を取得し、ノートブックをまとめてチェーン化し、シークレットを操作できます。 MSSparkUtils は、`PySpark (Python)`、`Scala`、および `.NET Spark (C#)` ノートブックと Synapse パイプラインで使用できます。
 
 ## <a name="pre-requisites"></a>前提条件
 
 ### <a name="configure-access-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 へのアクセスを構成する 
 
-Synapse ノートブックでは、Azure Active Directory (Azure AD) パススルーを使用して、ADLS Gen2 アカウントにアクセスします。 ADLS Gen2 アカウント (またはフォルダー) にアクセスするには、**Storage Blob データ共同作成者** である必要があります。 
+Synapse ノートブックでは、Azure Active Directory (AAD) パススルーを使用して、ADLS Gen2 アカウントにアクセスします。 ADLS Gen2 アカウント (またはフォルダー) にアクセスするには、**Storage Blob データ共同作成者** である必要があります。 
 
-Synapse パイプラインでは、ワークスペース ID (MSI) を使用してストレージ アカウントにアクセスします。 パイプライン アクティビティで MSSparkUtils を使用するには、ADLS Gen2 アカウント (またはフォルダー) にアクセスするために、ワークスペース ID が **Storage Blob データ共同作成者** である必要があります。
+Synapse パイプラインでは、ワークスペースの管理サービス ID (MSI) を使用してストレージ アカウントにアクセスします。 パイプライン アクティビティで MSSparkUtils を使用するには、ADLS Gen2 アカウント (またはフォルダー) にアクセスするために、ワークスペース ID が **Storage Blob データ共同作成者** である必要があります。
 
 Azure AD とワークスペースの MSI が ADLS Gen2 アカウントにアクセスできることを確認するには、次の手順に従います。
 1. [Azure portal](https://portal.azure.com/) と、アクセスしたいストレージ アカウントを開きます。 アクセスしたい特定のコンテナーに移動できます。
@@ -41,7 +41,7 @@ Synapse Spark を使用して ADLS Gen2 のデータにアクセスするには�
 
 ### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob Storage へのアクセスを構成する  
 
-Synapse は、**Shared Access Signature (SAS)** を利用して Azure Blob Storage にアクセスします。 コードの SAS キーが公開されないようにするには、Synapse ワークスペースで、アクセスしたい Azure Blob Storage アカウントにリンクされたサービスを新しく作成することをお勧めします。
+Synapse は、[**Shared Access Signature (SAS)** ](../../storage/common/storage-sas-overview.md) を利用して Azure Blob Storage にアクセスします。 コードの SAS キーが公開されないようにするには、Synapse ワークスペースで、アクセスしたい Azure Blob Storage アカウントにリンクされたサービスを新しく作成することをお勧めします。
 
 Azure Blob Storage アカウントにリンクされたサービスを新しく追加するには、次の手順に従います。
 
@@ -392,7 +392,7 @@ FS.Put("file path", "content to write", true) // Set the last parameter as True 
 :::zone pivot = "programming-language-python"
 
 ```python
-mssparkutils.fs.append('file path','content to append',True) # Set the last parameter as True to create the file if it does not exist
+mssparkutils.fs.append("file path", "content to append", True) # Set the last parameter as True to create the file if it does not exist
 ```
 ::: zone-end
 
@@ -407,7 +407,7 @@ mssparkutils.fs.append("file path","content to append",true) // Set the last par
 :::zone pivot = "programming-language-csharp"
 
 ```csharp
-FS.Append("file path","content to append",true) // Set the last parameter as True to create the file if it does not exist
+FS.Append("file path", "content to append", true) // Set the last parameter as True to create the file if it does not exist
 ```
 
 ::: zone-end
@@ -437,6 +437,178 @@ mssparkutils.fs.rm("file path", true) // Set the last parameter as True to remov
 FS.Rm("file path", true) // Set the last parameter as True to remove all files and directories recursively 
 ```
 
+::: zone-end
+
+:::zone pivot = "programming-language-python"
+
+## <a name="notebook-utilities"></a>Notebook のユーティリティ 
+
+MSSparkUtils Notebook ユーティリティを使用して、ノートブックを実行したり、値を持つノートブックを終了したりできます。 次のコマンドを実行して、使用可能なメソッドの概要を取得します。
+
+```python
+mssparkutils.notebook.help()
+```
+
+結果の取得:
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>ノートブックの実行
+ノートブックを実行し、その終了値を返します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 参照されているノートブックは、ノートブックがこの機能を呼び出す Spark プールで実行されます。  
+
+```python
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+次に例を示します。
+
+```python
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>ノートブックを終了する
+値を指定してノートブックを終了します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 
+
+- `exit()`関数ノートブックを対話形式で呼び出すと、Azure Synapse は例外をスローし、サブシーケンス セルの実行をスキップして、Spark セッションを維持します。
+
+- Synapse パイプラインで `exit()` 関数を呼び出す ノートブックを調整すると、Azure Synapse は終了値を返し、パイプラインの実行を完了して、Spark セッションを停止します。  
+
+- 参照されているノートブックで `exit()` 関数を呼び出すと、Azure Synapse は参照されているノートブックでさらに実行を停止し、その `run()` 関数を呼び出すノートブックで次のセルを続けて実行します。 たとえば、Notebook1 には 3 つのセルがあり、 2 番目のセルで `exit()` 関数を呼び出します。 Notebook2 は 5 つのセルを持ち 、3 番目のセルに `run(notebook1)` を呼び出します。 Notebook2 を実行すると、`exit()` 関数がヒットしたときに 2 番目のセルで Notebook1 が停止します。 Notebook2 は、4 番目のセルと 5 番目のセルを引き続き実行します。 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+次に例を示します。
+
+**Sample1** ノートブックは次の 2 つのセルを持つ **folder/** 下を検索します。 
+- セル 1 は、既定値が 10 に設定された **入力** パラメーターを定義します。
+- セル2は、終了値として **入力** を使用してノートブック を終了します。 
+
+![サンプル ノートブックのスクリーンショット](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+既定値を使用して、別のノートブックで **Sample1** を実行できます。
+
+```python
+
+exitVal = mssparkutils.notebook.run("folder/Sample1")
+print (exitVal)
+
+```
+結果は次のようになります。
+
+```
+Sample1 run success with input is 10
+```
+
+別のノートブックで **Sample1** を実行して、**入力** 値を 20 に設定できます。
+
+```python
+exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print (exitVal)
+```
+
+結果は次のようになります。
+
+```
+Sample1 run success with input is 20
+```
+::: zone-end
+
+
+:::zone pivot = "programming-language-scala"
+
+## <a name="notebook-utilities"></a>Notebook のユーティリティ 
+
+MSSparkUtils Notebook ユーティリティを使用して、ノートブックを実行したり、値を持つノートブックを終了したりできます。 次のコマンドを実行して、使用可能なメソッドの概要を取得します。
+
+```scala
+mssparkutils.notebook.help()
+```
+
+結果の取得:
+```
+The notebook module.
+
+exit(value: String): void -> This method lets you exit a notebook with a value.
+run(path: String, timeoutSeconds: int, arguments: Map): String -> This method runs a notebook and returns its exit value.
+
+```
+
+### <a name="run-a-notebook"></a>ノートブックの実行
+ノートブックを実行し、その終了値を返します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 参照されているノートブックは、ノートブックがこの機能を呼び出す Spark プールで実行されます。  
+
+```scala
+
+mssparkutils.notebook.run("notebook path", <timeoutSeconds>, <parameterMap>)
+
+```
+
+次に例を示します。
+
+```scala
+mssparkutils.notebook.run("folder/Sample1", 90, {"input": 20 })
+```
+
+### <a name="exit-a-notebook"></a>ノートブックを終了する
+値を指定してノートブックを終了します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 
+
+- `exit()`関数ノートブックを対話形式で呼び出すと、Azure Synapse は例外をスローし、サブシーケンス セルの実行をスキップして、Spark セッションを維持します。
+
+- Synapse パイプラインで `exit()` 関数を呼び出す ノートブックを調整すると、Azure Synapse は終了値を返し、パイプラインの実行を完了して、Spark セッションを停止します。  
+
+- 参照されているノートブックで `exit()` 関数を呼び出すと、Azure Synapse は参照されているノートブックでさらに実行を停止し、その `run()` 関数を呼び出すノートブックで次のセルを続けて実行します。 たとえば、Notebook1 には 3 つのセルがあり、 2 番目のセルで `exit()` 関数を呼び出します。 Notebook2 は 5 つのセルを持ち 、3 番目のセルに `run(notebook1)` を呼び出します。 Notebook2 を実行すると、`exit()` 関数がヒットしたときに 2 番目のセルで Notebook1 が停止します。 Notebook2 は、4 番目のセルと 5 番目のセルを引き続き実行します。 
+
+
+```python
+mssparkutils.notebook.exit("value string")
+```
+
+次に例を示します。
+
+**Sample1** ノートブックは **mssparkutils/folder/** 下にあり、以下の 2 つのセルを持ちます。 
+- セル 1 は、既定値が 10 に設定された **入力** パラメーターを定義します。
+- セル2は、終了値として **入力** を使用してノートブック を終了します。 
+
+![サンプル ノートブックのスクリーンショット](./media/microsoft-spark-utilities/spark-utilities-run-notebook-sample.png)
+
+既定値を使用して、別のノートブックで **Sample1** を実行できます。
+
+```scala
+
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1")
+print(exitVal)
+
+```
+結果は次のようになります。
+
+```
+exitVal: String = Sample1 run success with input is 10
+Sample1 run success with input is 10
+```
+
+
+別のノートブックで **Sample1** を実行して、**入力** 値を 20 に設定できます。
+
+```scala
+val exitVal = mssparkutils.notebook.run("mssparkutils/folder/Sample1", 90, {"input": 20 })
+print(exitVal)
+```
+
+結果は次のようになります。
+
+```
+exitVal: String = Sample1 run success with input is 20
+Sample1 run success with input is 20
+```
 ::: zone-end
 
 

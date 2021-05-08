@@ -1,19 +1,19 @@
 ---
 title: VLAN/サブネットの作成 - Azure VMware Solution by CloudSimple
 description: Azure VMware Solution by CloudSimple - プライベート クラウドの VLAN/サブネットを作成して管理し、ファイアウォール規則を適用する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 06bebcb7369f6604fc79c1d3d0a4a6afa8b0a1da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86dfc14f92f3afc1632cf6e5c033cf682f2ddc67
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97896313"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176956"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>プライベート クラウドの VLAN/サブネットを作成して管理する
 
