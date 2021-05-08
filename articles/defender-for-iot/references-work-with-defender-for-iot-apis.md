@@ -3,12 +3,12 @@ title: Defender for IoT の API を操作する
 description: 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e3659d8d5e6829651012dae02ca74c5ecacaf0c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752734"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829964"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -622,8 +622,8 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 | **engine** | String | いいえ | Protocol Violation、Policy Violation、Malware、Anomaly、または Operational |
 | **sourceDevice** | 数値 | はい | デバイス ID |
 | **destinationDevice** | 数値 | はい | デバイス ID |
-| **sourceDeviceAddress** | 数値 | はい | IP、MAC、Null |
-| **destinationDeviceAddress** | 数値 | はい | IP、MAC、Null |
+| **sourceDeviceAddress** | 数値 | はい | IP, MAC |
+| **destinationDeviceAddress** | 数値 | はい | IP, MAC |
 | **remediationSteps** | String | はい | アラートに記載されている修復手順 |
 | **additionalInformation** | 追加情報オブジェクト | はい | - |
 
@@ -2056,12 +2056,12 @@ response:
 | **engine** | String | いいえ | Protocol Violation、Policy Violation、Malware、Anomaly、または Operational |
 | **sourceDevice** | 数値 | はい | デバイス ID |
 | **destinationDevice** | 数値 | はい | デバイス ID |
-| **sourceDeviceAddress** | 数値 | はい | IP、MAC、Null |
-| **destinationDeviceAddress** | 数値 | はい | IP、MAC、Null |
+| **sourceDeviceAddress** | 数値 | はい | IP, MAC |
+| **destinationDeviceAddress** | 数値 | はい | IP, MAC |
 | **remediationSteps** | String | はい | アラートに表示される修復手順|
-| **sensorName** | String | はい | コンソールでユーザーが定義したセンサーの名前|
-|**zoneName** | String | はい | コンソールでセンサーに関連付けられたゾーンの名前|
-| **SiteName** | String | はい | コンソールでセンサーに関連付けられたサイトの名前 |
+| **sensorName** | String | はい | ユーザーが定義したセンサーの名前 |
+|**zoneName** | String | はい | センサーに関連付けられているゾーンの名前|
+| **SiteName** | String | はい | センサーに関連付けられているサイトの名前 |
 | **additionalInformation** | 追加情報オブジェクト | はい | - |
 
 次の情報には /api/v2/ が必要であることにご注意ください。

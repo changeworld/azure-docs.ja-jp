@@ -3,12 +3,12 @@ title: Azure Service Bus のメッセージ セッションを有効にする | 
 description: この記事では、Azure portal、PowerShell、CLI、プログラミング言語 (C#、Java、Python、JavaScript) を使用して、メッセージ セッションを有効にする方法について説明します
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: dc2667b746a57c7f2e4ac5faec88c4540bed1180
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 53791bb7dc1dec9bdf6c2c4aa8dda14728c2c465
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755095"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989146"
 ---
 # <a name="enable-message-sessions-for-an-azure-service-bus-queue-or-a-subscription"></a>Azure Service Bus のキューまたはサブスクリプションのメッセージ セッションを有効にする
 Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および **要求 - 応答** のパターンで使用できます。 詳細については、「[メッセージ セッション](message-sessions.md)」を参照してください。 この記事では、Service Bus のキューまたはサブスクリプションのセッションを有効にするさまざまな方法について説明します。 
@@ -203,12 +203,12 @@ New-AzServiceBusSubscription -ResourceGroup myresourcegroup `
 ## <a name="next-steps"></a>次のステップ
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [Java 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [.NET 用の Azure.Messaging.ServiceBus サンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET 用の Microsoft.Azure.ServiceBus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java 用の azure-servicebus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

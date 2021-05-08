@@ -3,12 +3,12 @@ title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージの重複を検出する方法について説明します。 重複したメッセージは無視して、破棄することができます。
 ms.topic: article
 ms.date: 04/19/2021
-ms.openlocfilehash: baeda3509cb5646c658f79fb11610ecfdd1ffd3d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0b4c90885c9da817e4f78eea883e2d39e65b2480
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751276"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989290"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -53,13 +53,13 @@ Azure portal、PowerShell、CLI、Resource Manager テンプレート、.NET、J
 
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [Java 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [.NET 用の Azure.Messaging.ServiceBus サンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET 用の Microsoft.Azure.ServiceBus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java 用の azure-servicebus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)
 

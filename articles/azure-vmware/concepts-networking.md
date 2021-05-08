@@ -3,12 +3,12 @@ title: 概念 - ネットワークの相互接続性
 description: Azure VMware Solution におけるネットワークと相互接続性の重要な側面とユース ケースについて説明します。
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 4c964151c49e2fea56031dd24bacf4655753a18d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7222a9de7eb92b3cdd571ad70adf7ab107be73cd
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491811"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951175"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution におけるネットワークと相互接続性の概念
 
@@ -67,7 +67,7 @@ Azure 仮想ネットワークを、Azure VMware Solution のプライベート 
 
 Azure VMware Solution のネットワークと相互接続性の概念について理解したら、次の事項の学習に進むことができます。
 
-- [Azure VMware Solution のストレージの概念](concepts-storage.md)。
+- [Azure VMware Solution のストレージの概念](concepts-storage.md)
 - [Azure VMware Solution の ID の概念](concepts-identity.md)
 - [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
 
@@ -75,5 +75,5 @@ Azure VMware Solution のネットワークと相互接続性の概念につい�
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
-[concepts-upgrades]: ./concepts-upgrades.md
+[concepts-upgrades]: ./concepts-private-clouds-clusters#host-maintenance-and-lifecycle-management
 [concepts-storage]: ./concepts-storage.md

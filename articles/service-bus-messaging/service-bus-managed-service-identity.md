@@ -2,13 +2,13 @@
 title: Azure Service Bus での Azure リソースのマネージド ID
 description: この記事では、Azure Service Bus エンティティ (キュー、トピック、サブスクリプション) にアクセスするためにマネージド ID を使用する方法について説明します。
 ms.topic: article
-ms.date: 01/21/2021
-ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: cdf23e5ad944d686c4cfebf257b4ae70458d1207
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785435"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988732"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -91,13 +91,8 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
 
 この設定を有効にすると、ご利用の Azure Active Directory (Azure AD) に新しいサービス ID が作成され、App Service ホストに構成されます。
 
-> [!NOTE]
-> マネージド ID を使用する場合、接続文字列は `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity` の形式にする必要があります。
-
-ここで、このサービス ID をご利用の Service Bus リソースの必要なスコープ内のロールに割り当てます。
-
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
-Service Bus 名前空間にロールを割り当てるには、Azure portal で名前空間に移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
+ここで、サービス ID をご利用の Service Bus リソースの必要なスコープ内のロールに割り当てます。 Service Bus 名前空間にロールを割り当てるには、Azure portal で名前空間に移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
 
 > [!NOTE]
 > 次の手順では、Service Bus 名前空間にサービス ID のロールを割り当てます。 同じ手順に従って、他のサポートされているスコープ (リソース グループとサブスクリプション) でロールを割り当てることができます。 
@@ -127,7 +122,7 @@ Service Bus 名前空間にロールを割り当てるには、Azure portal で�
 
 Default.aspx ページはランディング ページです。 コードは Default.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Service Bus に接続してメッセージを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。
 
-[MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) オブジェクトを初期化する方法に注意してください。 共有アクセス トークン (SAS) トークン プロバイダーを使用するのではなく、コードで `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` を呼び出してマネージド ID のトークン プロバイダーを作成します。 そのため、保持および使用するシークレットはありません。 マネージド ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン プロバイダーによって自動的に処理されます。 これは SAS を使用するよりも単純なモデルです。
+TokenCredential を受け取るコンストラクターを使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient?view=azure-dotnet) オブジェクトを初期化する方法に注意してください。 DefaultAzureCredential は TokenCredential から派生したもので、ここで渡すことができます。 そのため、保持および使用するシークレットはありません。 マネージド ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン資格情報によって自動的に処理されます。 これは SAS を使用するよりも単純なモデルです。
 
 これらの変更を行ったら、アプリケーションを発行して実行します。 適切な発行データを簡単に取得するには、Visual Studio で発行プロファイルをダウンロードしてインポートします。
 

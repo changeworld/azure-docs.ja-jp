@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103812"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819270"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する
 
@@ -19,7 +19,7 @@ ms.locfileid: "107103812"
 
 Azure Data Share では、ストレージ アカウントからのスナップショットベースの共有がサポートされています。 この記事では、Azure Blob Storage、Azure Data Lake Storage Gen1、および Azure Data Lake Storage Gen2 からデータを共有および受信する方法について説明します。
 
-Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 現時点では、ブロック BLOB のみがサポートされています。 これらのソースから共有されているデータは、Azure Data Lake Gen2 または Azure Blob Storage で受信できます。
+Azure Data Share では、Azure Data Lake Gen1 および Azure Data Lake Gen2 からのファイル、フォルダー、ファイル システムの共有がサポートされています。 また、Azure Blob Storage からの BLOB、フォルダー、コンテナーの共有もサポートされています。 ブロック、追加、またはページの BLOB を共有できます。これらは、ブロック BLOB として受信されます。 これらのソースから共有されているデータは、Azure Data Lake Gen2 または Azure Blob Storage で受信できます。
 
 ファイル システム、コンテナー、またはフォルダーがスナップショットベースの共有で共有されている場合、データ コンシューマーは共有データの完全なコピーを作成することを選択できます。 または、増分スナップショット機能を使用して、新しいファイルまたは更新されたファイルのみをコピーすることもできます。 増分スナップショットの機能は、ファイルの最終更新時刻に基づいています。 
 

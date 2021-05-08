@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 9de41835e33d50a670a44089cb10d44cc57e92a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728076"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818706"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Azure Active Directory を使用して Azure Cosmos DB アカウントのロールベースのアクセス制御を構成する (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -333,6 +333,7 @@ Azure Cosmos DB RBAC をアプリケーションで使用するには、Azure Co
 - [.NET の場合](/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [Java の場合](/java/api/overview/azure/identity-readme#credential-classes)
 - [JavaScript の場合](/javascript/api/overview/azure/identity-readme#credential-classes)
+- REST API の場合
 
 次の例では、`ClientSecretCredential` インスタンスでサービス プリンシパルを使用しています。
 
@@ -379,6 +380,12 @@ const client = new CosmosClient({
     aadCredentials: servicePrincipal
 });
 ```
+
+### <a name="in-rest-api"></a>REST API の場合
+
+Azure Cosmos DB RBAC は現在、REST API の 2021-03-15 バージョンでサポートされています。 [Authorization ヘッダー](/rest/api/cosmos-db/access-control-on-cosmosdb-resources)を構築するときは、次の例に示すように、**type** パラメーターを **aad** に設定し、ハッシュ署名 **(sig)** を **OAuth トークン** に設定します。
+
+`type=aad&ver=1.0&sig=<token-from-oauth>`
 
 ## <a name="auditing-data-requests"></a>データ要求の監査
 

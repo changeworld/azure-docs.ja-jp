@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 68c617b6e9345910bfd913e61e227a8e6c401bbc
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 4847fd88a96e96788f8e6ebdb4ee3cfa7f15fbdc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576042"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135457"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
 Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
@@ -20,7 +20,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 * ステートレス ノード タイプは Service Fabric ランタイム バージョン 7.1.409 以上でのみサポートされています
 
 
-サンプル テンプレートを使用できます。[Service Fabric のステートレス ノード タイプのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)
+サンプル テンプレートを使用できます。[Service Fabric のステートレス ノード タイプのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Service Fabric クラスターでステートレス ノード タイプを有効化する
 クラスター リソースで 1 つまたは複数のノード タイプをステートレスとして設定するには、**isStateless** プロパティを **true** に設定します。 ステートレス ノード タイプで Service Fabric クラスターをデプロイする場合は、クラスター リソースに少なくとも 1 つのプライマリ ノード タイプがあるようにしてください。
@@ -116,7 +116,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
                 "Enabled": true
             },
         },
-        "typeHandlerVersion": "1.0"
+        "typeHandlerVersion": "1.1"
     }
     },
     {
@@ -138,7 +138,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 ```
 
 ## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>複数の Availability Zones を持つステートレス ノード タイプの構成
-複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
+複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
 
 * 複数の配置グループを有効にする必要がある場合は、**singlePlacementGroup** :  **false** を設定します。
 * **upgradeMode** : **Rolling** を設定して、上述したようにアプリケーション正常性拡張機能または正常性プローブを追加します。
@@ -272,4 +272,3 @@ Basic SKU で Load Balancer と IP を使用していたクラスターを移行
 ## <a name="next-steps"></a>次の手順 
 * [Reliable Service](service-fabric-reliable-services-introduction.md)
 * [ノード タイプと仮想マシン スケール セット](service-fabric-cluster-nodetypes.md)
-

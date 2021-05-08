@@ -7,16 +7,16 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5942368ba1709127b815a35676b716955c1bee8f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629531"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819090"
 ---
-# <a name="how-to-configure-virtual-machine-offer-properties"></a>仮想マシン オファーのプロパティを構成する方法
+# <a name="configure-virtual-machine-offer-properties"></a>仮想マシン オファーのプロパティの構成
 
-**[プロパティ]** ページで (パートナー センターの左ナビゲーション メニューから選択)、Azure Marketplace で仮想マシン (VM) オファーをグループ化するのに使用されるカテゴリ、アプリケーションのバージョン、オファーをサポートする法的契約を定義します。
+**[プロパティ]** ページで (左ナビゲーション メニューから選択)、Azure Marketplace で仮想マシン (VM) オファーをグループ化するのに使用されるカテゴリ、アプリケーションのバージョン、オファーをサポートする法的契約を定義します。
 
 ## <a name="select-a-category"></a>[カテゴリの選択]
 
@@ -75,7 +75,7 @@ ms.locfileid: "94629531"
 
 ### <a name="use-your-own-terms-and-conditions"></a>独自の使用条件を使用する
 
-標準契約ではなく、独自の使用条件を指定することもできます。 顧客は、オファーを試す前にこれらの条件に同意する必要があります。
+標準契約を使用するのでなく、独自の使用条件を指定することもできます。 顧客は、オファーを試す前にこれらの条件に同意する必要があります。
 
 1. **[法的情報]** で **[Microsoft コマーシャル マーケットプレース向けの標準契約を使用する]** チェックボックスの選択を解除します。
 1. **[使用条件]** ボックスに、最大 10,000 万文字のテキストを入力します。

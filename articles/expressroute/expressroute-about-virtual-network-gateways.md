@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 796e35be12939920f9392e6f3ce4cae660415f80
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 62f51922399a300b9ed803c3ee2d380dcab615b8
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504699"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987526"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute の仮想ネットワーク ゲートウェイについて
 
@@ -36,12 +36,18 @@ ms.locfileid: "106504699"
 ### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>ゲートウェイ SKU の推定パフォーマンス
 次の表は、ゲートウェイの種類と、予測されるパフォーマンスを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
+> [!IMPORTANT]
+> アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。
+>
+>
+
+> [!NOTE]
+> 同じ仮想ネットワークに接続できる同じピアリングの場所からの ExpressRoute 回線の最大数は、すべてのゲートウェイに対して 4 です。
+>
+>
+
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
-> [!IMPORTANT]
-> * 仮想ネットワーク内の VM の数には、リモート ExpressRoute ゲートウェイを使用するピアリングされた仮想ネットワーク内の VM も含まれます。
-> * アプリケーションのパフォーマンスは複数の要因によって異なります。これらの要因には、エンド ツー エンドの待機時間、アプリケーションが起動するトラフィック フローの数などがあります。 テーブルの数値は、アプリケーションが理想的な環境で理論上達成できる上限を表しています。
->
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>ゲートウェイ サブネット
 

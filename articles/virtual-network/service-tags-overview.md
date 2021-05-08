@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/14/2021
+ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 4a18e0f257ac8d7b7d981d53249cf29f2f8f38bd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1b068fd00402fc281001e8572f9e03662c8ffd55
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790151"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951794"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -92,6 +92,7 @@ ms.locfileid: "107790151"
 | **DataFactory**  | Azure Data Factory | 両方 | いいえ | いいえ |
 | **DataFactoryManagement** | Azure Data Factory の管理トラフィック。 | 送信 | いいえ | いいえ |
 | **Dynamics365ForMarketingEmail** | Dynamics 365 のマーケティング電子メール サービスのアドレス範囲。 | 送信 | はい | いいえ |
+| **EOPExternalPublishedIPs** | このタグは、セキュリティ/コンプライアンス センター PowerShell に使用される IP アドレスを表します。 詳細については、[EXO V2 モジュールを使用したセキュリティ/コンプライアンス センター PowerShell への接続](https://docs.microsoft.com/powershell/exchange/connect-to-scc-powershell)に関するページを参照してください。 <br/><br/> *注: 現在、このタグは Azure portal で構成することはできません。* | 両方 | いいえ | はい |
 | **EventHub** | Azure Event Hubs。 | 送信 | はい | はい |
 | **GatewayManager** | Azure VPN Gateway と Application Gateway 専用デプロイのための管理トラフィック。 | 受信 | いいえ | いいえ |
 | **GuestAndHybridManagement** | Azure Automation とゲスト構成。 | 送信 | いいえ | はい |

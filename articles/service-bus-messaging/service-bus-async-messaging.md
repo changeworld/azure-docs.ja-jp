@@ -2,13 +2,13 @@
 title: Service Bus の非同期メッセージング |Microsoft Docs
 description: Azure Service Bus が、キュー、トピック、およびサブスクリプションを使用して、ストア アンド フォワード メカニズムを通じて非同期をサポートする方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e37c18b95bca7ef1e6e8f0d74976bb73b214624a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.openlocfilehash: 32fbbe997819de42eb63b4efd40024cce6087b96
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500633"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988822"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
 
@@ -41,7 +41,7 @@ ms.locfileid: "102500633"
 Service Bus には、これらの問題に対する数多くの緩和策が用意されています。 以降のセクションでは、個々の問題とそれぞれの緩和策について説明します。
 
 ### <a name="throttling"></a>Throttling
-Service Bus では、調整によりメッセージ レートを協調管理できます。 それぞれの Service Bus ノードが、個別に複数のエンティティを格納します。 これらの各エンティティにより、CPU、メモリ、ストレージ、その他のファセットに関してシステムへの要求が行われます。 これらのいずれかのファセットで、定義されたしきい値を超える使用が検出されると、Service Bus によって特定の要求が拒否される可能性があります。 呼び出し元は [ServerBusyException][ServerBusyException] を受け取り、10 秒後に再試行します。
+Service Bus では、調整によりメッセージ レートを協調管理できます。 それぞれの Service Bus ノードが、個別に複数のエンティティを格納します。 これらの各エンティティにより、CPU、メモリ、ストレージ、その他のファセットに関してシステムへの要求が行われます。 これらのいずれかのファセットで、定義されたしきい値を超える使用が検出されると、Service Bus によって特定の要求が拒否される可能性があります。 呼び出し元は、サーバー ビジー例外を受け取り、10 秒後に再試行します。
 
 緩和策として、コードでエラーを読み取り、メッセージの再試行を少なくとも 10 秒間停止します。 顧客アプリケーションのさまざまな部分でエラーが発生する可能性があるため、各部分が独立して再試行ロジックを実行する必要があります。 コードでキューまたはトピックに対してパーティション化を有効にすることにより、調整される可能性を低減できます。
 
@@ -51,27 +51,10 @@ Azure 内の他のコンポーネントで、サービスの問題が発生す�
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>単一のサブシステムでの Service Bus の障害。
 どのアプリケーションでも、状況によっては Service Bus の内部コンポーネントに不整合が生じる場合があります。 Service Bus がこれを検出すると、アプリケーションからデータを収集し、何が起こったかを診断する手助けとします。 データが収集されると、アプリケーションは一貫性のある状態に戻すために再起動されます。 このプロセスは比較的迅速に発生し、エンティティが使用できない状態は最大で数分続きます。ただし、通常のダウンタイムはこれよりもはるかに短くなります。
 
-このような状況では、クライアント アプリケーションは [System.TimeoutException][System.TimeoutException] または [MessagingException][MessagingException] 例外を生成します。 Service Bus には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。 再試行期間が終了してもメッセージが配信されない場合は、「[故障と障害の扱い][handling outages and disasters]」の記事に記載されている他の方法を試すことができます。
+このような場合、クライアント アプリケーションによってタイムアウト例外またはメッセージング例外が生成されます。 Service Bus には、自動化されたクライアント再試行ロジックという形で、この問題の軽減策が備わっています。 再試行期間が終了してもメッセージが配信されない場合は、「[故障と障害の扱い][handling outages and disasters]」の記事に記載されている他の方法を試すことができます。
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus での非同期メッセージングの基本について学習しました。詳細については、「[故障と障害の扱い][handling outages and disasters]」をお読みください。
 
-[ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
-[System.TimeoutException]: /dotnet/api/system.timeoutexception
-[MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
-[Microsoft.ServiceBus.Messaging.MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[MessageReceiver]: /dotnet/api/microsoft.servicebus.messaging.messagereceiver
-[QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
-[TopicClient]: /dotnet/api/microsoft.servicebus.messaging.topicclient
-[Microsoft.ServiceBus.Messaging.PairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.pairednamespaceoptions
-[MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
-[PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero
-[IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
-[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception
-[BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
 [handling outages and disasters]: service-bus-outages-disasters.md

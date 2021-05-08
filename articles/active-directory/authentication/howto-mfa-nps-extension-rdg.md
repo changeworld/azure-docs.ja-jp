@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f50792ec45570f7e90893a97150ea26b63ebf9c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743379"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829838"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -112,9 +112,11 @@ NPS 拡張機能をインストールするには、Azure AD の GUID が必要�
 「[Azure AD Multi-Factor Authentication とは何ですか](../user-help/multi-factor-authentication-end-user-first-time.md)」に記載されている手順に従って、ユーザー アカウントで MFA 用のデバイスを正しく構成します。
 
 > [!IMPORTANT]
-> リモート デスクトップ ゲートウェイのサインイン動作では、Azure AD Multi-Factor Authentication で確認コードを入力するオプションは提供されていません。 ユーザー アカウントは、電話による確認、またはプッシュ通知を使用した Microsoft Authenticator アプリ用に構成されている必要があります。
+> リモート デスクトップ ゲートウェイのサインインでは、Azure AD Multi-Factor Authentication で確認コードを入力することはできません。 ユーザー アカウントは、電話による確認、またはプッシュ通知を使用した Microsoft Authenticator アプリ用に構成されている必要があります。
 >
-> これら 2 つの認証方法のいずれかがユーザーに対して構成されていない場合、Azure AD Multi-Factor Authentication チャレンジを完了して、リモート デスクトップ ゲートウェイにサインインすることはできません。
+> 電話による確認も、プッシュ通知をサポートしている Microsoft Authenticator アプリも構成していないユーザーは、Azure AD Multi-Factor Authentication のチャレンジとリモート デスクトップ ゲートウェイへのサインインを完了できません。
+>
+> 確認コードを入力する手段がないため、SMS テキストはリモート デスクトップ ゲートウェイには使用できません。
 
 ## <a name="install-and-configure-nps-extension"></a>NPS 拡張機能のインストールと構成
 
