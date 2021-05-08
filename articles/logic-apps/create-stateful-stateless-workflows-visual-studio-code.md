@@ -67,17 +67,17 @@ Visual Studio Code でまず、Azure Logic Apps (プレビュー) 拡張機能�
 
 #### <a name="windows"></a>Windows
 
-Windows を使用している場合、Visual Studio Code でロジック アプリ プロジェクトをローカルでビルドして実行するには、次の手順に従って Azure ストレージ エミュレーターを設定してください。
+Windows を使用している場合、Visual Studio Code でロジック アプリ プロジェクトをローカルでビルドして実行するには、次の手順に従って Azure Storage Emulator を設定してください。
 
-1. [Azure ストレージ エミュレーター 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179) をダウンロードしてインストールします。
+1. [Azure Storage Emulator 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179) をダウンロードしてインストールします。
 
 1. まだローカル SQL DB (無料の [SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658) など) をインストールしていない場合は、インストールして、エミュレーターを実行できるようにする必要があります。
 
-   詳細については、「[開発とテストに Azure ストレージ エミュレーターを使用する](../storage/common/storage-use-emulator.md)」を参照してください。
+   詳細については、「[開発とテストに Azure Storage Emulator を使用する](../storage/common/storage-use-emulator.md)」を参照してください。
 
 1. プロジェクトを実行する前に、エミュレーターを起動していることを確認してください。
 
-   ![実行中の Azure ストレージ エミュレーターを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+   ![実行中の Azure Storage Emulator を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
 
 #### <a name="macos-and-linux"></a>macOS、Linux
 
