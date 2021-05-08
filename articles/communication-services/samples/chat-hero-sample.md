@@ -9,30 +9,24 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5547e49cd7ea7f6c0cc97b5559564b64e0deda7c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487831"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168843"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
-
-<!----
-> [!WARNING]
-> links to our Hero Sample repo need to be updated when the sample is publicly available.
----->
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
-> [このサンプルは GitHub で入手できます。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+> [このサンプルは **GitHub** で入手できます。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 
-Azure Communication Services の **グループ チャットのヒーロー サンプル** は、Communication Services のチャット Web クライアント ライブラリーを使用して、グループ通話エクスペリエンスを構築する方法を示します。
+Azure Communication Services の **グループ チャットのヒーロー サンプル** は、Communication Services Chat Web SDK を使用して、グループ通話エクスペリエンスを構築する方法を示しています。
 
-このサンプルのクイックスタートでは、サンプルをローカル コンピューターで実行する前に、サンプルがどのように動作するかを学習します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
+このサンプルのクイックスタートでは、サンプルがどのように動作するかを学習した後で、サンプルをローカル コンピューターで実行します。 次に、独自の Azure Communication Services リソースを使用して、サンプルを Azure にデプロイします。
 
 
 ## <a name="overview"></a>概要
@@ -111,7 +105,7 @@ Communication Services サブスクリプションをクリーンアップして
 詳細については、次の記事を参照してください。
 
 - [チャットの概念](../concepts/chat/concepts.md)について学習する
-- [チャット クライアント ライブラリ](../concepts/chat/sdk-features.md)について理解する
+- [Chat SDK](../concepts/chat/sdk-features.md) について理解する
 - [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する
 
 ## <a name="additional-reading"></a>その他の情報

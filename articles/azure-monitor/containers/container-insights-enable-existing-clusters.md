@@ -4,12 +4,12 @@ description: Container insights を使用して、自分のサブスクリプシ
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: e84e1c4ad3aa3950a433218255ccac3d91435231
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fba12fb8dd5c6c91883a88d4acfdca6c6d332c24
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101717674"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109626"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -21,6 +21,8 @@ ms.locfileid: "101717674"
 * Terraform
 * Azure Portal で [Azure Monitor から](#enable-from-azure-monitor-in-the-portal)、または [AKS クラスターから直接](#enable-directly-from-aks-cluster-in-the-portal)
 * Azure PowerShell コマンドレット `New-AzResourceGroupDeployment` または Azure CLI を使用して、[提供されている Azure Resource Manager テンプレート](#enable-using-an-azure-resource-manager-template)で。
+
+既存の AKS クラスターを別のサブスクリプションの Azure Log Analytics ワークスペースに接続している場合は、Microsoft.ContainerService リソース プロバイダーを、Log Analytics ワークスペースが作成されたサブスクリプションに登録する必要があります。 詳細については、「[リソース プロバイダーを登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」 を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

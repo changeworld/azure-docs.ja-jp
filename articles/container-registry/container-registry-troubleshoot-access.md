@@ -2,26 +2,27 @@
 title: レジストリに関するネットワークの問題のトラブルシューティング
 description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699608"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220115"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
-この記事は、仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときに発生する可能性のある問題のトラブルシューティングに役立ちます。 
+この記事は、仮想ネットワーク内またはファイアウォールやプロキシ サーバーの内側で Azure コンテナー レジストリにアクセスするときに発生する可能性のある問題のトラブルシューティングに役立ちます。 
 
 ## <a name="symptoms"></a>現象
 
 次のうち 1 つ以上が含まれる場合があります。
 
 * イメージをプッシュまたはプルできず、エラー `dial tcp: lookup myregistry.azurecr.io` が発生する
+* イメージをプッシュまたはプルできず、エラー `Client.Timeout exceeded while awaiting headers` が発生する
 * イメージをプッシュまたはプルできず、Azure CLI エラー `Could not connect to the registry login server` が発生する
 * レジストリから Azure Kubernetes Service または別の Azure サービスにイメージをプルできない
-* HTTPS プロキシの背後にあるレジストリにアクセスできず、エラー `Error response from daemon: login attempt failed with status: 403 Forbidden` が発生する
+* HTTPS プロキシの背後にあるレジストリにアクセスできず、エラー `Error response from daemon: login attempt failed with status: 403 Forbidden` または `Error response from daemon: Get <registry>: proxyconnect tcp: EOF Login failed` が発生する
 * 仮想ネットワーク設定を構成できず、エラー `Failed to save firewall and virtual network settings for container registry` が発生する
 * Azure portal でレジストリ設定にアクセスまたは表示できないか、Azure CLI を使用してレジストリを管理できない
 * 仮想ネットワークの設定またはパブリック アクセス規則を追加または変更できない
@@ -41,7 +42,7 @@ ms.locfileid: "101699608"
 
 コマンドの例については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
 
-Azure Kubernetes Service でレジストリを使用しているときに問題が発生した場合は、[az aks check-acr](/cli/azure/aks#az_aks_check_acr) コマンドを実行して、AKS クラスターからレジストリにアクセスできることを確認します。
+Azure Kubernetes Service と統合レジストリを使用しているときに問題が発生する場合は、[az aks check-acr](/cli/azure/aks#az_aks_check_acr) コマンドを実行して、AKS クラスターがレジストリに到達できることを確認します。
 
 > [!NOTE]
 > また、レジストリの認証または承認に問題がある場合にも、ネットワーク接続の現象が発生することがあります。 「[レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md)」を参照してください。
@@ -57,7 +58,7 @@ Azure Kubernetes Service でレジストリを使用しているときに問題�
 
 geo レプリケートされたレジストリの場合は、リージョンのレプリカごとにデータ エンドポイントへのアクセスを構成します。
 
-HTTPS プロキシの背後で、Docker クライアントと Docker デーモンの両方をプロキシの動作用に確実に構成します。
+HTTPS プロキシの背後で、Docker クライアントと Docker デーモンの両方をプロキシの動作用に確実に構成します。 Docker デーモンのプロキシ設定を変更する場合は、必ずデーモンを再起動してください。 
 
 ContainerRegistryLoginEvents テーブルのレジストリ リソース ログは、ブロックされている接続試行の診断に役立ちます。
 

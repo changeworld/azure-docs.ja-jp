@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39012e1f5a0282da7dda6bab216719e31fdc5061
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94989192"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752176"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,11 +114,11 @@ SQL Database、SQL Managed Instance、Azure Synapse Analytics では、すべて
 
 [SQL Database、SQL Managed Instance、Azure Synapse Analytics の Transparent Data Encryption (TDE)](transparent-data-encryption-tde-overview.md) ではセキュリティ層が追加されており、生ファイルまたはバックアップへの未認可またはオフライン アクセスから保存データを保護するのに役立ちます。 一般的なシナリオには、ディスク ドライブやバックアップ テープなどのハードウェアまたはメディアの、データ センターでの盗用や非セキュアな破棄が含まれます。 TDE では、アプリケーション開発者が既存のアプリケーションを変更する必要がない、AES 暗号化アルゴリズムを使用して、データベース全体を暗号化します。
 
-Azure では、新しく作成されたすべてのデータベースが既定で暗号化され、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。  証明書のメンテナンスとローテーションはサービスによって管理され、ユーザーによる入力は必要ありません。 暗号化キーの制御を望まれるお客様は、[Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) でキーを管理できます。
+Azure では、新しく作成されたすべてのデータベースが既定で暗号化され、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。  証明書のメンテナンスとローテーションはサービスによって管理され、ユーザーによる入力は必要ありません。 暗号化キーの制御を望まれるお客様は、[Azure Key Vault](../../key-vault/general/security-overview.md) でキーを管理できます。
 
 ### <a name="key-management-with-azure-key-vault"></a>Azure Key Vault のキー管理
 
- [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) の [Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK) サポートを利用することで、お客様は、 [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) (Azure のクラウドベースの外部キー管理システム) を使用して、キーの管理とローテーションの所有権を取得できます。 キー コンテナーへのデータベースのアクセスが取り消された場合、データベースを暗号化解除して、メモリに読み込むことはできません。 Azure Key Vault ではキーの一元管理プラットフォームを提供し、厳しく監視されたハードウェア セキュリティ モジュール (HSM) を利用します。また、キー管理とデータ管理の職務の分離を可能にすることで、セキュリティ コンプライアンス要件の遵守を支援します。
+ [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) の [Bring Your Own Key](transparent-data-encryption-byok-overview.md) (BYOK) サポートを利用することで、お客様は、 [Azure Key Vault](../../key-vault/general/security-overview.md) (Azure のクラウドベースの外部キー管理システム) を使用して、キーの管理とローテーションの所有権を取得できます。 キー コンテナーへのデータベースのアクセスが取り消された場合、データベースを暗号化解除して、メモリに読み込むことはできません。 Azure Key Vault ではキーの一元管理プラットフォームを提供し、厳しく監視されたハードウェア セキュリティ モジュール (HSM) を利用します。また、キー管理とデータ管理の職務の分離を可能にすることで、セキュリティ コンプライアンス要件の遵守を支援します。
 
 ### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (使用時の暗号化)
 

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 1/12/2020
+ms.date: 04/01/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b010070b7a45c24037c6de4648574c01b017d759
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98132066"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107399"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM 用の Azure Portal での完全修飾ドメイン名の作成
 
@@ -25,11 +25,12 @@ ms.locfileid: "98132066"
 
 
 1. ポータルで VM を選択します。 
-1. 左側のメニューで **[構成]** を選択します。
-1. **[DNS 名ラベル]** の下に、使用するプレフィックスを入力します。
-1. ページの最上部で **[保存]** を選択します。
-1. 左側のメニューの **[概要]** を選択して、VM の概要ブレードに戻ります。 
-1. *[DNS 名]* が正しく表示されていることを確認します。 
+1. 左側のメニューで **[プロパティ]** を選択します。
+1. **[パブリック IP アドレス/DNS 名ラベル]** で、使用する IP アドレスを選択します。
+2. **[DNS 名ラベル]** の下に、使用するプレフィックスを入力します。
+3. ページの最上部で **[保存]** を選択します。
+4. 左側のメニューの **[概要]** を選択して、VM の概要ブレードに戻ります。
+5. **[DNS 名]** が正しく表示されていることを確認します。 
 
 ## <a name="next-steps"></a>次のステップ
 

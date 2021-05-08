@@ -4,19 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: このクイックスタートを使用して、Python で Bing Local Business Search API の使用を開始します。
 services: cognitive-services
 author: aahill
+ms.author: aahi
 manager: nitinme
+ms.date: 05/12/2020
+ms.topic: quickstart
 ms.service: cognitive-services
 ms.subservice: bing-local-business
-ms.topic: quickstart
-ms.date: 05/12/2020
-ms.author: aahi
-ms.custom: devx-track-python
-ms.openlocfilehash: ff06d29c613b626c48c347628992576fc29b3a89
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: adbf3d9abddf01ba67046cfa433ffd46f713ff83
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430141"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536663"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>クイック スタート:Python で Bing Local Business Search API にクエリを送信する
 

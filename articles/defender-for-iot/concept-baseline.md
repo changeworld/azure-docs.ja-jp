@@ -4,10 +4,10 @@ description: Azure Defender for IoT のベースラインの概念について�
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: 1b8b9d62918e40262da6b3df48d0fece842e050f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104779360"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>Azure Defender for IoT のベースラインとカスタム チェック

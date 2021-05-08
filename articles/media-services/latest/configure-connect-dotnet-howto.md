@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 8946f6e94dd26db45622bc7609fb2375d59bb57e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455384"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492530"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -29,7 +29,7 @@ ms.locfileid: "102455384"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください
+- [Media Services アカウントを作成する](./account-create-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください
 - .NET の開発に使用するツールをインストールします。 この記事の手順では、[Visual Studio 2019 Community エディション](https://www.visualstudio.com/downloads/)を使用する方法を示します。 Visual Studio Code を使用できます。「[Working with C# (C# の使用)](https://code.visualstudio.com/docs/languages/csharp)」をご覧ください。 または、別のコード エディターを使用できます。
 
 > [!IMPORTANT]
@@ -237,14 +237,14 @@ namespace ConsoleApp1
 
 - [チュートリアル: ビデオのアップロード、エンコード、ストリーミング - .NET](stream-files-tutorial-with-api.md) 
 - [チュートリアル: Media Services v3 によるライブ ストリーミング - .NET](stream-live-tutorial-with-api.md)
-- [チュートリアル: Media Services v3 でビデオを分析する - .NET](analyze-videos-tutorial-with-api.md)
+- [チュートリアル: Media Services v3 でビデオを分析する - .NET](analyze-videos-tutorial.md)
 - [ローカル ファイルからジョブの入力を作成する - .NET](job-input-from-local-file-how-to.md)
 - [HTTPS URL からジョブの入力を作成する - .NET](job-input-from-http-how-to.md)
-- [カスタム変換を使用してエンコードする - .NET](customize-encoder-presets-how-to.md)
-- [AES-128 動的暗号化とキー配信サービスを使用する - .NET](protect-with-aes128.md)
-- [DRM 動的暗号化とライセンス配信サービスを使用する - .NET](protect-with-drm.md)
-- [既存のポリシーから署名キーを取得する - .NET](get-content-key-policy-dotnet-howto.md)
-- [Media Services を使用してフィルターを作成する - .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [カスタム変換を使用してエンコードする - .NET](transform-custom-presets-how-to.md)
+- [AES-128 動的暗号化とキー配信サービスを使用する - .NET](drm-playready-license-template-concept.md)
+- [DRM 動的暗号化とライセンス配信サービスを使用する - .NET](drm-protect-with-drm-tutorial.md)
+- [既存のポリシーから署名キーを取得する - .NET](drm-get-content-key-policy-dotnet-how-to.md)
+- [Media Services を使用してフィルターを作成する - .NET](filters-dynamic-manifest-dotnet-how-to.md)
 - [Azure Functions v2 と Media Services v3 の高度なビデオ オンデマンドの例](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>関連項目

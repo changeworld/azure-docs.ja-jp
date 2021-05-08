@@ -4,12 +4,12 @@ description: .NET 5.0 を使用して C# 関数を作成およびデバッグし
 ms.date: 03/03/2021
 ms.topic: how-to
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 9751d5d354d738a64d6b02e8153464491d78ec14
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 6403e5d898b76d459a9712f7847e81e5442deeda
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201360"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075350"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>Azure Functions を使用した .NET 5 関数の開発と発行 
 
@@ -160,7 +160,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
 
 1. ブラウザーのアドレス バーに、次のようなローカル関数の URL を入力し、要求を実行します。 
 
-    <http://localhost:7071/api/HttpExample>
+    `http://localhost:7071/api/HttpExample`
 
     要求からのトレース出力が実行中のターミナルに書き込まれることを確認できます。 コードの実行は、関数コードで設定したすべてのブレーク ポイントで停止します。
 

@@ -6,15 +6,15 @@ author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 03/17/2021
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455646"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772093"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
   * [.Net Core 3.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-  * [Azure CLI](/cli/azure/install-azure-cli)。
+  * [Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 ## <a name="create-resources-and-assign-permissions"></a>リソースを作成してアクセス許可を割り当てる
 
@@ -50,11 +50,18 @@ Windows、Mac、Linux:
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure CLI を使用して Azure にサインインするには、次のように入力します。
+次のコマンドを使用して Azure にサインインします。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az login
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Connect-AzAccount
+```
+---
 
 ## <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
 
@@ -74,13 +81,14 @@ az login
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
-[az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
+次の例を使用して、仮想マシンのシステム割り当て ID を作成します。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-システムによって割り当てられた ID が次のコードに表示されていることにご注意ください。 上記のコマンドの出力は次のようになります。 
+システムによって割り当てられた ID が次のコードに表示されていることにご注意ください。 上記のコマンドの出力は次のようになります。
 
 ```output
 {
@@ -89,12 +97,36 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 }
 ```
 
-## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
-[az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
-```azurecli
-az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
+```azurepowershell
+$vm = Get-AzVM -Name <NameOfYourVirtualMachine>
+Update-AzVM -ResourceGroupName <YourResourceGroupName> -VM $vm -IdentityType SystemAssigned
 ```
+
+PrincipalId が次のコードに表示されていることにご注意ください。 上記のコマンドの出力は次のようになります。 
+
+
+```output
+PrincipalId          TenantId             Type             UserAssignedIdentities
+-----------          --------             ----             ----------------------
+xxxxxxxx-xx-xxxxxx   xxxxxxxx-xxxx-xxxx   SystemAssigned
+```
+---
+
+## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
+[az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+```azurecli
+az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions  get list set delete
+```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -ResourceGroupName <YourResourceGroupName> -VaultName '<your-unique-key-vault-name>' -ObjectId '<VMSystemAssignedIdentity>' -PermissionsToSecrets  get,list,set,delete
+```
+---
 
 ## <a name="sign-in-to-the-virtual-machine"></a>仮想マシンにサインインする
 
@@ -153,7 +185,7 @@ using Azure.Security.KeyVault.Secrets;
         static void Main(string[] args)
         {
             string secretName = "mySecret";
-
+            string keyVaultName = "<your-key-vault-name>";
             var kvUri = "https://<your-key-vault-name>.vault.azure.net";
             SecretClientOptions options = new SecretClientOptions()
             {

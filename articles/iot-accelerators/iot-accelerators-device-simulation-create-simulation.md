@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: e0d7310c4863c8dd431b991a2c249f2d8e257aeb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: df658a95069f39026daab7afb14c5f1d0f47c5a5
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96852355"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713896"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>チュートリアル: IoT デバイス シミュレーションを作成して実行する
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを実行するには、Azure サブスクリプションにデバイス シミュレーションのインスタンスがデプロイされている必要があります。
 
-まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)に関する記事を参照してください。
 
 ## <a name="view-simulations"></a>シミュレーションを表示する
 

@@ -3,15 +3,15 @@ title: Azure Advisor Windows Virtual Desktop のチュートリアル - Azure
 description: Windows Virtual Desktop の Azure Advisor の推奨事項を解決する方法。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 666f882dec6c00b9fe5421485afded1fbd57d961
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90033032"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448306"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor の推奨事項を解決する方法
 
@@ -72,10 +72,6 @@ ms.locfileid: "90033032"
 仮想マシン (VM) が正しく機能するようにするには、特定の URL のブロックを解除する必要があります。 「[安全な URL リスト](safe-url-list.md)」でその一覧を確認できます。 URL がブロック解除されていない場合、VM は正常に機能しません。
 
 この推奨事項を解決するには、「[安全な URL リスト](safe-url-list.md)」のすべての URL のブロックを解除してください。 サービス タグまたは FQDN タグを使用して、URL のブロックを解除することもできます。
-
-## <a name="propose-new-recommendations"></a>新しい推奨事項を提案する
-
-推奨事項に関するアイデアを送信することによって、Azure Advisor の品質向上にご協力ください。 お客様の推奨事項によって、他のユーザーが困難な状況を解決できる可能性があります。 提案を送信するには、[UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations)にアクセスし、送信フォームに記入してください。 フォームに記入するときは、できるだけ詳しい情報を提供してください。
 
 ## <a name="next-steps"></a>次のステップ
 

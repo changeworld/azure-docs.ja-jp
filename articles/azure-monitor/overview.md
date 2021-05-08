@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 544d6937e412e3e1cfc2cf4e520c02f3f804fc8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047164"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937245"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -60,7 +60,7 @@ Azure Monitor は[さまざまなソース](monitor-reference.md)からデータ
 - **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 
 - **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。
 
-Azure サブスクリプションを作成して仮想マシンや Web アプリなどのリソースを追加すると、Azure Monitor は即座にデータの収集を開始します。  リソースが作成または変更されると、[アクティビティ ログ](essentials/platform-logs-overview.md)が記録されます。 リソースの状況や消費しているリソースは、[メトリック](data-platform.md)からわかります。 
+Azure サブスクリプションを作成して仮想マシンや Web アプリなどのリソースを追加すると、Azure Monitor は即座にデータの収集を開始します。  リソースが作成または変更されると、[アクティビティ ログ](essentials/platform-logs-overview.md)が記録されます。 リソースの状況や消費しているリソースは、[メトリック](essentials/data-platform-metrics.md)からわかります。 
 
 データの収集をリソースの内部動作にまで拡張するには[診断を有効](essentials/platform-logs-overview.md)にします。  ゲスト オペレーティング システムからテレメトリを収集したければ、コンピューティング リソースに[エージェントを追加](agents/agents-overview.md)します。 
 
@@ -144,7 +144,7 @@ Azure Monitor のメトリックとログの読み取りや書き込み、生成
 ## <a name="next-steps"></a>次のステップ
 各項目の詳細情報
 
-* [メトリックとログ](https://docs.microsoft.com/azure/azure-monitor/data-platform#metrics) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
+* [メトリックとログ](./data-platform.md#metrics) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
 * [データ ソース](agents/data-sources.md) アプリケーションのさまざまなコンポーネントでテレメトリを送信する方法については、こちらをご覧ください。
 * [ログ クエリ](logs/log-query-overview.md) 収集したデータを分析する場合は、こちらをご覧ください。
 * クラウドのアプリケーションとサービスを監視するための[ベスト プラクティス](/azure/architecture/best-practices/monitoring)。

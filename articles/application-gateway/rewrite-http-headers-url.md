@@ -2,17 +2,17 @@
 title: Azure Application Gateway で HTTP ヘッダーと URL を書き換える | Microsoft Docs
 description: この記事では、Azure Application Gateway での HTTP ヘッダーと URL の書き換えの概要を説明します
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: surmb
-ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/05/2021
+ms.author: azhussai
+ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726514"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490966"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Application Gateway で HTTP ヘッダーと URL を書き換える
 
@@ -38,7 +38,7 @@ Azure portal を使用して Application Gateway で要求ヘッダーと応答�
 
 要求と応答では、接続とアップグレードのヘッダーを除くすべてのヘッダーを書き換えることができます。 また、アプリケーション ゲートウェイを使用してカスタム ヘッダーを作成し、ゲートウェイを経由してルーティングされる要求と応答にヘッダーを追加することもできます。
 
-### <a name="url-path-and-query-string-preview"></a>URL パスとクエリ文字列 (プレビュー)
+### <a name="url-path-and-query-string"></a>URL パスとクエリ文字列
 
 Application Gateway の URL 書き換え機能を使用すると、次のことができます。
 
@@ -51,9 +51,6 @@ Application Gateway の URL 書き換え機能を使用すると、次のこと�
 Azure portal を使用して Application Gateway で URL を書き換える方法については、[こちら](rewrite-url-portal.md)を参照してください。
 
 ![Application Gateway を使用して URL を書き換えるプロセスを説明する図。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
-
->[!NOTE]
-> URL 書き換え機能はプレビュー段階であり、Application Gateway の Standard_v2 および WAF_v2 SKU でのみ使用できます。 運用環境での使用はお勧めしません。 プレビューの詳細については、[使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページを参照してください。
 
 ## <a name="rewrite-actions"></a>書き換えアクション
 
@@ -129,7 +126,20 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | ssl_enabled               | 接続が TLS モードで動作する場合は “オン”。 それ以外の場合は、空の文字列です。 |
 | uri_path                  | Web クライアントがアクセスする必要があるホスト内の特定のリソースを識別します。 これは、引数を含まない要求 URI の部分です。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、uri_path 値は `/article.aspx` になります |
 
- 
+### <a name="mutual-authentication-server-variables-preview"></a>相互認証サーバー変数 (プレビュー)
+
+Application Gateway は、相互認証のシナリオに対して次のサーバー変数をサポートしています。 これらのサーバー変数は、上記の他のサーバー変数と同じように使用します。 
+
+|   変数名    |                   説明                                           |
+| ------------------------- | ------------------------------------------------------------ |
+| client_certificate        | 確立された SSL 接続用のクライアント証明書 (PEM 形式)。 |
+| client_certificate_end_date| クライアント証明書の終了日。 |
+| client_certificate_fingerprint| 確立された SSL 接続用のクライアント証明書の SHA1 フィンガープリント。 |
+| client_certificate_issuer | 確立された SSL 接続用のクライアント証明書の "発行者の DN" 文字列。 |
+| client_certificate_serial | 確立された SSL 接続用のクライアント証明書のシリアル番号。  |
+| client_certificate_start_date| クライアント証明書の開始日。 |
+| client_certificate_subject| 確立された SSL 接続のクライアント証明書の "サブジェクトの DN" 文字列。 |
+| client_certificate_verification| クライアント証明書検証の結果: *SUCCESS*、*FAILED:<reason>* 、証明書が存在しない場合は *NONE*。 | 
 
 ## <a name="rewrite-configuration"></a>書き換えの構成
 
@@ -148,6 +158,25 @@ Application Gateway では、サーバー変数を使用して、サーバー、
       * **URL パス**:パスの書き換え後の値。 
       * **URL クエリ文字列**:クエリ文字列の書き換え後の値。 
       * **パス マップの再評価**:URL パス マップを再評価するかどうかを決定するために使用します。 オフのままにすると、元の URL パスが使用され、URL パス マップのパス パターンと照合されます。 True に設定すると、URL パス マップが再評価され、書き換えられたパスと一致するかどうかがチェックされます。 このスイッチを有効にすると、書き換え後に要求を別のバックエンド プールにルーティングする際に役立ちます。
+
+## <a name="rewrite-configuration-common-pitfall"></a>書き込み構成に関する一般的な落とし穴
+
+* 基本要求ルーティング規則では、[パス マップの再評価] を有効にすることはできません。 これは、基本的なルーティング規則の無限評価ループを防ぐためです。
+
+* パスベースのルーティング規則の無限評価ループを防ぐために、パスベースのルーティング規則に対して [パス マップの再評価] が有効になっていない 1 つ以上の条件付き書き換え規則または書き換え規則が必要です。
+
+* ループがクライアントの入力に基づいて動的に作成された場合、受信要求は 500 エラー コードで終了します。 Application Gateway は、このようなシナリオでパフォーマンスを低下させずに、引き続き他の要求を処理します。
+
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Web アプリケーション ファイアウォール (WAF_v2 SKU) で URL 書き換えまたはホスト ヘッダー書き換えを使用する
+
+URL 書き換えまたはホスト ヘッダー書き換えを構成すると、要求ヘッダーまたは URL パラメーターの変更後 (書き換え後) に WAF 評価が行われます。 また、Application Gateway で URL 書き換えまたはホスト ヘッダー書き換え構成を削除すると、ヘッダー書き換えの前 (事前書き換え) に WAF 評価が行われます。 この順序により、バックエンド プールによって受信される最終的な要求に WAF ルールが適用されます。
+
+たとえば、`"Accept" : "text/html"` ヘッダーに対して、次のヘッダー書き換えルールがあるとします。ヘッダーの値 `"Accept"` が `"text/html"` と等しい場合は、値を `"image/png"` に書き換えます。
+
+ここでは、ヘッダー書き換えが構成されているだけで、WAF の評価が `"Accept" : "text/html"` に行われます。 ただし、URL 書き換えやホスト ヘッダー書き換えを構成する場合は、WAF の評価は `"Accept" : "image/png"` に行われます。
+
+>[!NOTE]
+> URL 書き換え操作では、WAF Application Gateway の CPU 使用率がわずかに増加することが予想されます。 WAF Application Gateway で URL 書き換えルールを有効にした後、[CPU 使用率メトリック](high-traffic-support.md)を短時間監視することをお勧めします。
 
 ### <a name="common-scenarios-for-header-rewrite"></a>ヘッダーの書き換えの一般的なシナリオ
 

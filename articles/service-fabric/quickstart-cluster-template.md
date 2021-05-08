@@ -2,17 +2,19 @@
 title: Azure Resource Manager テンプレートを使用して Service Fabric クラスターを作成する
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して、Azure Service Fabric テスト クラスターを作成します。
 author: erikadoyle
-ms.service: service-fabric
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 07/29/2020
-ms.openlocfilehash: 359b527733ee8eebf7e1e7d12c40a0c74ec1c9bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: service-fabric
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: cb3758ae837dc03789371d00f768b257a9ef295d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460305"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535309"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Service Fabric クラスターを作成する
 

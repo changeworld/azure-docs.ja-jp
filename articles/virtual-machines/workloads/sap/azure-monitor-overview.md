@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: a88ad3930e114bdf9f3c3c340f92f164215d59c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c561a9a786765ccfdaf00abf4e0d9c8cc550cb9a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671997"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377210"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP ソリューション向け Azure Monitor (プレビュー)
 
@@ -22,7 +22,7 @@ SAP ソリューション向け Azure Monitor を使用するお客様は、Azur
 
 SAP ソリューション向け Azure Monitor は、Azure Marketplace を通じて提供されます。 シンプルで直感的なセットアップ エクスペリエンスが提供されており、SAP ソリューション向け Azure Monitor 用のリソース (**SAP Monitor リソース** と呼ばれます) をわずか数回のクリックでデプロイできます。
 
-お客様は、コンポーネントに対応する **プロバイダー** を追加することにより、Azure Virtual Machines、高可用性クラスター、SAP HANA データベースなど、SAP ランドスケープのさまざまなコンポーネントを監視できます。
+お客様は、コンポーネントに対応する **プロバイダー** を追加することにより、Azure Virtual Machines、高可用性クラスター、SAP HANA データベース、SAP NetWeaver など、SAP ランドスケープのさまざまなコンポーネントを監視できます。
 
 サポートされているインフラストラクチャ:
 
@@ -70,6 +70,13 @@ Microsoft SQL Server 利用統計情報:
 - 実行中の I/O 数、永続メモリの読み取り/書き込みバイト数。 
 - ネットワーク パケットの入出力、ネットワークの入出力バイト数 
 
+SAP NetWeaver テレメトリ:
+
+- Dispatcher、ICM、Gateway、Message Server、Enqueue Server、IGS Watchdog のインスタンス プロセスの可用性を含む、SAP システムおよびアプリケーション サーバーの可用性
+- 作業プロセス使用率の統計と傾向
+- エンキュー ロックの統計と傾向
+- キュー使用率の統計と傾向
+
 ## <a name="data-sharing-with-microsoft"></a>Microsoft とのデータ共有
 
 SAP ソリューション向け Azure Monitor では、SAP on Azure のお客様のサポートを強化するために、システム メタデータが収集されます。 PII/EUII は収集されません。
@@ -102,8 +109,8 @@ SAP ソリューション向け Azure Monitor では、SAP on Azure のお客様
 ### <a name="architecture-highlights"></a>アーキテクチャのハイライト
 
 アーキテクチャの主な特徴を次に示します。
- - **複数インスタンス** - お客様は、SAP ソリューション向け Azure Monitor の単一のリソースを使用して、VNET 内の複数の SAP SID を対象に、特定のコンポーネントの種類 (HANA DB、HA クラスター、Microsoft SQL Server など) の複数のインスタンスに対するモニターを作成できます。
- - **複数プロバイダー** - 上のアーキテクチャの図では、例として SAP HANA プロバイダーが示されています。 同様に、お客様は、対応するコンポーネント (HANA DB、HA クラスター、Microsoft SQL Server など) 用に追加のプロバイダーを構成して、それらのコンポーネントからデータを収集できます。
+ - **複数インスタンス** - お客様は、Azure Monitor for SAP Solutions の単一のリソースを使用して、VNET 内の複数の SAP SID を対象に、特定のコンポーネントの種類 (HANA DB、HA クラスター、Microsoft SQL Server、SAP NetWeaver など) の複数のインスタンスに対するモニターを作成できます。
+ - **複数プロバイダー** - 上のアーキテクチャの図では、例として SAP HANA プロバイダーが示されています。 同様に、お客様は、対応するコンポーネント (HANA DB、HA クラスター、Microsoft SQL Server、SAP NetWeaver など) 用に追加のプロバイダーを構成して、それらのコンポーネントからデータを収集できます。
  - **オープンソース** - SAP ソリューション向け Azure Monitor のソース コードは、[GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions) で入手できます。 お客様は、プロバイダーのコードを参照し、製品の詳細を確認したり、フィードバックを投稿または共有したりできます。
  - **拡張可能なクエリ フレームワーク** - 利用統計情報を収集するための SQL クエリは、[JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json) で記述されています。 さらに多くの利用統計情報を収集するための SQL クエリを簡単に追加できます。 お客様は、このドキュメントの最後にあるリンクを通じてフィードバックを残すか、アカウント チームに連絡することで、SAP ソリューション向け Azure Monitor に追加する特定の利用統計情報を要求できます。
 

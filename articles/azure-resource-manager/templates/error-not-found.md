@@ -2,13 +2,13 @@
 title: リソースが見つからないエラー
 description: リソースが見つからない場合のエラーを解決する方法について説明します。 このエラーは、Azure Resource Manager テンプレートをデプロイするとき、または管理アクションを実行するときに発生する可能性があります。
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 03/23/2021
+ms.openlocfilehash: 5e3a72eaad99721cec9500956179a3ae9d9cf8d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526248"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762139"
 ---
 # <a name="resolve-resource-not-found-errors"></a>リソースが見つからないエラーを解決する
 
@@ -43,7 +43,7 @@ Resource Manager でリソースのプロパティを取得する必要があり
 * リソース グループ名
 * サブスクリプション
 
-PowerShell または Azure CLI を使用している場合は、リソースが含まれているサブスクリプションでコマンドを実行しているかどうかを確認します。 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) または [az account set](/cli/azure/account#az-account-set) を使用して、サブスクリプションを変更できます。 多くのコマンドにも、現在のコンテキストとは異なるサブスクリプションを指定できるサブスクリプション パラメーターが用意されています。
+PowerShell または Azure CLI を使用している場合は、リソースが含まれているサブスクリプションでコマンドを実行しているかどうかを確認します。 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) または [az account set](/cli/azure/account#az_account_set) を使用して、サブスクリプションを変更できます。 多くのコマンドにも、現在のコンテキストとは異なるサブスクリプションを指定できるサブスクリプション パラメーターが用意されています。
 
 プロパティを確認するのが難しい場合は、[ポータル](https://portal.azure.com)にサインインします。 使用しようとしているリソースを検索し、リソース名、リソース グループ、およびサブスクリプションを調べます。
 
@@ -133,3 +133,9 @@ Reference 関数では、`Full` を使用して、マネージド ID を含む�
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>解決策 6 - リソースを削除した後
+
+リソースを削除すると、短時間ですが、リソースがポータルにまだ表示されるものの、実際には使用できなくなる場合があります。 リソースを選択すると、リソースが見つからないというエラーが表示されます。 ポータルを最新の情報に更新して、最新のビューを取得します。
+
+しばらく待っても問題が解決しない場合は、[サポートにお問い合わせ](https://azure.microsoft.com/support/options/)ください。

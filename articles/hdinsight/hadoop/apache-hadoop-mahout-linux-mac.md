@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: c31ffaf094801bdd49e5800bd338a15d8b8315f6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c3484c1e65eb70be484a4a2eebda21a41dbf1ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946493"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936871"
 ---
 # <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Azure HDInsight で Apache Mahout を使用してレコメンデーションを生成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "98946493"
 
 Mahout は、Apache Hadoop の[機械学習](https://en.wikipedia.org/wiki/Machine_learning)ライブラリの 1 つです。 Mahout には、フィルター処理、分類、クラスタリングなどデータを処理するためのアルゴリズムが含まれています。 この記事では、リコメンデーション エンジンを使用し、友人たちが鑑賞した映画に基づいて映画のリコメンデーションを生成します。
 
-HDInsight に含まれる Mahout のバージョンについて詳しくは、[HDInsight のバージョンと Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)に関する記事を参照してください。
+Mahout は HDInsight 3.6 では使用できますが、HDInsight 4.0 では使用できません。 HDInsight に含まれる Mahout のバージョンについては、「[HDInsight 3.6 のコンポーネントのバージョン](../hdinsight-36-component-versioning.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

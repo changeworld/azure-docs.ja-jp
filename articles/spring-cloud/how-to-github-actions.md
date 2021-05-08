@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8400fcacbfa4c76aceb079b788255e3d3b83ce33
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c52279108a8fd8d5a7ac8bbd7c8eb215097b21b0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877451"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791357"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD
 
@@ -340,5 +340,5 @@ jobs:
 ## <a name="next-steps"></a>次のステップ
 
 * [Spring Cloud GitHub アクションの Key Vault](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory のサービス プリンシパル](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)
+* [Azure Active Directory のサービス プリンシパル](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 * [GitHub Actions for Azure](https://github.com/Azure/actions/)

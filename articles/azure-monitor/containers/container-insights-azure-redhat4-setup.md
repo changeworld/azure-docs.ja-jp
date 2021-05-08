@@ -3,12 +3,12 @@ title: Container Insights を使用して Azure Red Hat OpenShift v4.x を構成
 description: この記事では、Azure Red Hat OpenShift バージョン 4 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 11c702d1f46725a12e90a01dc1b38467344a1123
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506414"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784643"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Container Insights を使用して Azure Red Hat OpenShift v4.x を構成する
 
@@ -20,7 +20,7 @@ Container Insights は、Azure Kubernetes Service (AKS) と AKS エンジン ク
 
 この記事で説明するサポートされている方法を使用して、1 つ以上の既存の Azure Red Hat OpenShift v4.x のデプロイに対して Container insights を有効にできます。
 
-既存のクラスターの場合は、[Azure CLI でこの Bash スクリプト](/cli/azure/openshift#az-openshift-create&preserve-view=true)を実行します。
+既存のクラスターの場合は、[Azure CLI でこの Bash スクリプト](/cli/azure/openshift#az_openshift_create&preserve-view=true)を実行します。
 
 ## <a name="supported-and-unsupported-features"></a>サポートされている機能とサポートされていない機能
 
@@ -34,6 +34,8 @@ Container insights では、次の機能を除き、「[Container insights の�
 - Azure CLI バージョン 2.0.72 以降  
 
 - [Helm 3](https://helm.sh/docs/intro/install/) CLI ツール
+
+- [OpenShift CLI](https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html) の最新バージョン
 
 - [Bash バージョン 4](https://www.gnu.org/software/bash/)
 

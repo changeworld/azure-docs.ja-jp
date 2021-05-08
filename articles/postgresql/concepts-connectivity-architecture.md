@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/11/2021
-ms.openlocfilehash: 104e6503ba47d17c17cfec2b4e62ec3f69f18330
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f7463b6234c03a9ed79f1c4a9fb310db7067a428
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200027"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043565"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続アーキテクチャ
 この記事では、Azure Database for PostgreSQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for PostgreSQL データベース インスタンスに転送されるかについて説明します。
@@ -99,7 +99,7 @@ Azure Database for PostgreSQL への接続は、受信接続を Microsoft のク
 ### <a name="how-can-you-validate-if-your-connections-are-going-to-old-gateway-nodes-or-new-gateway-nodes"></a>接続先が以前のゲートウェイ ノードと新しいゲートウェイ ノードのどちらであるかを検証するにはどうすればよいですか?
 サーバーの FQDN に対して ping を実行します (例: ``ping xxx.postgres.database.azure.com``)。 返された IP アドレスが、上のドキュメントの「ゲートウェイ IP アドレス (使用停止予定)」の下に一覧表示されている IP のいずれかである場合は、接続が以前のゲートウェイを通過していることを意味します。 反対に、返された IP アドレスが「ゲートウェイ IP アドレス」の下に一覧表示されている IP のいずれかである場合は、接続が新しいゲートウェイを通過していることを意味します。
 
-また、[PSPing](https://docs.microsoft.com/sysinternals/downloads/psping) または TCPPing を使用して、クライアント アプリケーションからポート 3306 でデータベース サーバーをテストし、返される IP アドレスが使用停止予定の IP アドレスのいずれかでないことを確認することもできます
+また、[PSPing](/sysinternals/downloads/psping) または TCPPing を使用して、クライアント アプリケーションからポート 3306 でデータベース サーバーをテストし、返される IP アドレスが使用停止予定の IP アドレスのいずれかでないことを確認することもできます
 
 ### <a name="how-do-i-know-when-the-maintenance-is-over-and-will-i-get-another-notification-when-old-ip-addresses-are-decommissioned"></a>メンテナンスの終了を知る方法はありますか? また、以前の IP アドレスが使用停止になったときには別の通知が届きますか?
 メンテナンス作業の開始時期をお知らせする電子メールが届きます。 メンテナンスには、すべてのリージョン内の移行する必要があるサーバーの数に応じて、最大で 1 か月かかることがあります。 FQDN を使用するか、上の表の新しい IP アドレスを使用してデータベース サーバーに接続するように、お使いのクライアントを準備してください。 

@@ -12,23 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 382cdf87016044748685e5e64ff04ebac53f018d
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199137"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310021"
 ---
-# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する (プレビュー)
+# <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
 この記事では、IoT Edge ゲートウェイとダウンストリーム IoT Edge デバイス間の信頼関係接続を確立する手順について説明します。
-
->[!NOTE]
->この機能には、Linux コンテナーを実行している IoT Edge バージョン 1.2 (プレビュー段階) が必要です。
->
->この記事は、IoT Edge バージョン 1.2 の最新のプレビュー リリースを反映しています。 デバイスで [1.2.0-rc4](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc4) 以降のバージョンが実行されていることを確認します。 デバイスで最新のプレビュー バージョンを取得する手順については、[Azure IoT Edge For Linux (バージョン 1.2) のインストール](how-to-install-iot-edge.md)または [IoT Edge をバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関する記事を参照してください。
 
 ゲートウェイのシナリオでは、IoT Edge デバイスはゲートウェイとダウンストリーム デバイスの両方になることができます。 複数の IoT Edge ゲートウェイを階層化して、デバイスの階層を作成することができます。 ダウンストリーム (または子) デバイスは、そのゲートウェイ (または親) デバイスを介してメッセージの認証や送受信を行うことができます。
 
@@ -130,7 +125,7 @@ IoT Edge は自分のデバイスに既にインストールされている必�
 1. この IoT Edge デバイスに **ルート CA 証明書** をインストールします。
 
    ```bash
-   sudo cp <path>/<root ca certificate>.pem /usr/local/share/ca-certificates/<root ca certificate>.pem
+   sudo cp <path>/<root ca certificate>.pem /usr/local/share/ca-certificates/<root ca certificate>.pem.crt
    ```
 
 1. 証明書ストアを更新します。
@@ -162,13 +157,13 @@ IoT Edge は自分のデバイスに既にインストールされている必�
 
 1. **信頼バンドル証明書** セクションを見つけます。 コメント解除し、ファイルの URI を使用して、`trust_bundle_cert` パラメーターをデバイスのルート CA 証明書に更新します。
 
-1. この機能はパブリック プレビュー段階にありますが、起動したときに IoT Edge エージェントのパブリック プレビュー バージョンが使用されるように IoT Edge デバイスを構成する必要があります。
+1. IoT Edge デバイスが起動時に正しいバージョンの IoT Edge エージェントを使用することを確認します。
 
-   **既定の Edge エージェント** セクションを見つけ、イメージ値をパブリック プレビュー イメージに更新します。
+   「**既定の Edge エージェント**」セクションを見つけて、イメージの値が IoT Edge バージョン 1.2 であることを確認します。 それ以外の場合は、次のように更新します。
 
    ```toml
    [agent.config]
-   image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4"
+   image: "mcr.microsoft.com/azureiotedge-agent:1.2"
    ```
 
 1. 構成ファイルで、**Edge CA 証明書** セクションを見つけます。 このセクションの行をコメント解除し、IoT Edge デバイス上の証明書とキー ファイルにファイル URI パスを指定します。
@@ -200,21 +195,6 @@ IoT Edge は自分のデバイスに既にインストールされている必�
 
    >[!TIP]
    >IoT Edge チェック ツールでは、コンテナーを使用していくつかの診断チェックが実行されます。 ダウンストリーム IoT Edge デバイスでこのツールを使用する場合は、それが `mcr.microsoft.com/azureiotedge-diagnostics:latest` にアクセスできることを確認するか、コンテナー イメージをプライベート コンテナー レジストリ内に入れてください。
-
-## <a name="configure-runtime-modules-for-public-preview"></a>パブリック プレビュー用にランタイム モジュールを構成する
-
-この機能はパブリック プレビュー段階にありますが、IoT Edge ランタイム モジュールのパブリック プレビュー バージョンが使用されるように IoT Edge デバイスを構成する必要があります。 前のセクションで、起動時に edgeAgent を構成する手順について説明しています。 また、デバイスのデプロイでランタイム モジュールを構成する必要もあります。
-
-1. パブリック プレビュー イメージが使用されるように edgeHub モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
-
-1. EdgeHub モジュールに対して次の環境変数を構成します。
-
-   | 名前 | 値 |
-   | - | - |
-   | `experimentalFeatures__enabled` | `true` |
-   | `experimentalFeatures__nestedEdgeEnabled` | `true` |
-
-1. パブリック プレビュー イメージが使用されるように edgeAgent モジュールを構成します: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`。
 
 ## <a name="network-isolate-downstream-devices"></a>ネットワークでダウンストリーム デバイスを分離する
 
@@ -250,6 +230,8 @@ ISA-95 標準に準拠するものなど、一部のネットワーク アーキ
 ゲートウェイ階層の最上位レイヤーの IoT Edge デバイスには、デバイスで実行する可能性があるワークロード モジュールに加えて、デプロイする必要がある一連の必須モジュールがあります。
 
 API プロキシ モジュールは、ほとんどの一般的なゲートウェイ シナリオを処理するためにカスタマイズするように設計されています。 この記事では、基本的構成でそれらのモジュールを設定する例を示します。 詳細情報と例については、[ゲートウェイ階層シナリオ用の API プロキシ モジュールの構成](how-to-configure-api-proxy-module.md)に関する記事を参照してください。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com) で、IoT ハブに移動します。
 1. ナビゲーション メニューから **[IoT Edge]** を選択します。
@@ -337,6 +319,109 @@ API プロキシ モジュールは、ほとんどの一般的なゲートウェ
 1. **[確認と作成]** を選択して、最終手順に進みます。
 1. **[作成]** を選択して、ご自身のデバイスにデプロイします。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. [Azure Cloud Shell](https://shell.azure.com/) で、デプロイ JSON ファイルを作成します。 次に例を示します。
+
+   ```json
+   {
+       "modulesContent": {
+           "$edgeAgent": {
+               "properties.desired": {
+                   "modules": {
+                       "dockerContainerRegistry": {
+                           "settings": {
+                               "image": "registry:latest",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5000/tcp\":[{\"HostPort\":\"5000\"}]}}}"
+                           },
+                           "type": "docker",
+                           "version": "1.0",
+                           "env": {
+                               "REGISTRY_PROXY_REMOTEURL": {
+                                   "value": "The URL for the container registry you want this registry module to map to. For example, https://myregistry.azurecr"
+                               },
+                               "REGISTRY_PROXY_USERNAME": {
+                                   "value": "Username to authenticate to the container registry."
+                               },
+                               "REGISTRY_PROXY_PASSWORD": {
+                                   "value": "Password to authenticate to the container registry."
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always"
+                       },
+                       "IoTEdgeAPIProxy": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-api-proxy:1.0",
+                               "createOptions": "{\"HostConfig\": {\"PortBindings\": {\"443/tcp\": [{\"HostPort\":\"443\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {
+                               "NGINX_DEFAULT_PORT": {
+                                   "value": "443"
+                               },
+                               "DOCKER_REQUEST_ROUTE_ADDRESS": {
+                                   "value": "registry:5000"
+                               }
+                           },
+                           "status": "running",
+                           "restartPolicy": "always",
+                           "version": "1.0"
+                       }
+                   },
+                   "runtime": {
+                       "settings": {
+                           "minDockerVersion": "v1.25"
+                       },
+                       "type": "docker"
+                   },
+                   "schemaVersion": "1.1",
+                   "systemModules": {
+                       "edgeAgent": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2",
+                               "createOptions": ""
+                           },
+                           "type": "docker"
+                       },
+                       "edgeHub": {
+                           "settings": {
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2",
+                               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
+                           },
+                           "type": "docker",
+                           "env": {},
+                           "status": "running",
+                           "restartPolicy": "always"
+                       }
+                   }
+               }
+           },
+           "$edgeHub": {
+               "properties.desired": {
+                   "routes": {
+                       "route": "FROM /messages/* INTO $upstream"
+                   },
+                   "schemaVersion": "1.1",
+                   "storeAndForwardConfiguration": {
+                       "timeToLiveSecs": 7200
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   このデプロイ ファイルは、ポート 443 でリッスンするように API プロキシ モジュールを構成します。 ポートのバインドが競合しないようにするには、このファイルで、ポート 443 でリッスンしないように edgeHub モジュールを構成します。 代わりに、API プロキシ モジュールは、すべての edgeHub トラフィックをポート 443 でルーティングします。
+
+1. 次のコマンドを入力して、IoT Edge デバイスへのデプロイを作成します。
+
+   ```bash
+   az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
+   ```
+
+---
+
 ### <a name="deploy-modules-to-lower-layer-devices"></a>下位レイヤーのデバイスにモジュールをデプロイする
 
 ゲートウェイ階層の下位レイヤーにある IoT Edge デバイスには、デバイスで実行する可能性があるワークロード モジュールに加えて、デプロイする必要がある 1 つの必須モジュールがあります。
@@ -347,7 +432,7 @@ API プロキシ モジュールは、ほとんどの一般的なゲートウェ
 
 下位レイヤーのデバイスがクラウドに接続できなくても、通常どおりにモジュール イメージをプルできるようにする必要がある場合は、これらの要求を処理するようにゲートウェイ階層の最上位レイヤーのデバイスを構成する必要があります。 最上位レイヤーのデバイスは、コンテナー レジストリにマップされている Docker **レジストリ** モジュールを実行する必要があります。 そこで、コンテナー要求がルーティングされるように API プロキシ モジュールを構成します。 これらの詳細については、この記事の前のセクションで説明しています。 この構成では、下位レイヤーのデバイスは、クラウド コンテナー レジストリではなく、最上位レイヤーで実行されているレジストリを指している必要があります。
 
-たとえば、下位レイヤーのデバイスは、`mcr.microsoft.com/azureiotedge-api-proxy:latest` を呼び出すのではなく、`$upstream:443/azureiotedge-api-proxy:latest` を呼び出す必要があります。
+たとえば、下位レイヤーのデバイスは、`mcr.microsoft.com/azureiotedge-api-proxy:1.0` を呼び出すのではなく、`$upstream:443/azureiotedge-api-proxy:1.0` を呼び出す必要があります。
 
 **$upstream** パラメーターは、下位レイヤー デバイスの親を指しています。したがって、要求は、コンテナー要求をレジストリ モジュールにルーティングするプロキシ環境がある最上位レイヤーに到達するまで、すべてのレイヤーを経由してルーティングされます。 この例の `:443` ポートは、親デバイスの API プロキシ モジュールがリッスンしているポートに置き換える必要があります。
 
@@ -369,7 +454,7 @@ name = "edgeAgent"
 type = "docker"
 
 [agent.config]
-image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc4"
+image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2"
 ```
 
 ローカル コンテナー レジストリを使用している場合、またはデバイスでコンテナー イメージを手動で提供している場合は、それに応じて構成ファイルを更新してください。

@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c21d8696c0c4edd743aab6cbe7866d27ce46a314
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044296"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>チュートリアル: Postman で署名して要求を行う
 このチュートリアルでは、Postman を設定して使用することで、HTTP を使って Azure Communication Services (ACS) サービスに対して要求を行います。 このチュートリアルを終了すると、ACS と Postman を使用して SMS メッセージを正常に送信し、Postman で ACS 内の他の API を探索できるようになります。
@@ -68,7 +68,7 @@ Postman では、さまざまな方法で要求を整理できます。 この�
 
 ### <a name="creating-a-pre-request-script"></a>要求前スクリプトを作成する
 
-次の手順では、Postman 内に要求前スクリプトを作成します。 要求前スクリプトは、Postman の各要求の前に実行され、ユーザーに代わって要求パラメーターを修正または変更できるスクリプトです。 これを使用して HTTP 要求に署名し、ACS のサービスで承認できるようにします。 署名の要件の詳細については、[認証に関するガイドを参照](https://docs.microsoft.com/rest/api/communication/authentication)してください。
+次の手順では、Postman 内に要求前スクリプトを作成します。 要求前スクリプトは、Postman の各要求の前に実行され、ユーザーに代わって要求パラメーターを修正または変更できるスクリプトです。 これを使用して HTTP 要求に署名し、ACS のサービスで承認できるようにします。 署名の要件の詳細については、[認証に関するガイドを参照](/rest/api/communication/authentication)してください。
 
 このスクリプトをコレクション内に作成することで、コレクション内の任意の要求で実行されるようにします。 これを行うには、コレクションのタブで、[Pre-request Script]\(要求前スクリプト\) サブタブをクリックします。
 
@@ -186,7 +186,7 @@ pm.request.headers.upsert({
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Postman の正符号ボタン。":::
 
-これにより、Postman 内に要求のための新しいタブが作成されます。 作成したら、それを構成する必要があります。 SMS Send API に対して要求を行うので、[詳細についてこちらの API のドキュメント](https://docs.microsoft.com/rest/api/communication/sms/send)を参照してください。 それでは Postman の要求を構成します。
+これにより、Postman 内に要求のための新しいタブが作成されます。 作成したら、それを構成する必要があります。 SMS Send API に対して要求を行うので、[詳細についてこちらの API のドキュメント](/rest/api/communication/sms/send)を参照してください。 それでは Postman の要求を構成します。
 
 まず、要求の種類を `POST` に設定し、要求の URL フィールドに「`{{endpoint}}/sms?api-version=2021-03-07`」と入力します。 この URL では、前に作成した `endpoint` 変数を使用して、ACS リソースに自動的に送信されるようにします。
 
@@ -238,8 +238,8 @@ pm.request.headers.upsert({
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ACS API を探索する](https://docs.microsoft.com/rest/api/communication/)
-> [認証の詳細を参照する](https://docs.microsoft.com/rest/api/communication/authentication)
+> [ACS API を探索する](/rest/api/communication/)
+> [認証の詳細を参照する](/rest/api/communication/authentication)
 > [Postman の詳細を参照する](https://learning.postman.com/)
 
 次の記事もご覧ください。

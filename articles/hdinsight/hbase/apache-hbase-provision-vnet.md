@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: 9f179981aa39402681b4830d58a29f5b1259c7e2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a9a1788473cb31f8e78aac0bbd5979b3d681ad32
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946117"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867595"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure 仮想ネットワーク内の HDInsight 上に Apache HBase クラスターを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "98946117"
 * トラフィックが複数のゲートウェイやロード バランサーを経由しないためパフォーマンスが向上します。
 * 機密情報は、パブリック エンドポイントに公開されることなく、より安全な方法で処理できます。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>仮想ネットワークに Apache HBase クラスターを作成する
 
@@ -31,12 +31,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 > [!NOTE]  
 > 一部のプロパティは、テンプレートにハードコーディングされています。 次に例を示します。
 >
-> * **[場所]** :米国東部 2
-> * **クラスターのバージョン**:3.6
-> * **クラスターの worker ノードの数**:2
+> * **場所**: 米国東部 2
+> * **クラスターのバージョン**: 3.6
+> * **クラスターのワーカー ノードの数**: 2
 > * **既定のストレージ アカウント**: 一意の文字列
-> * **仮想ネットワーク名**:CLUSTERNAME-vnet
-> * **仮想ネットワークのアドレス空間**:10.0.0.0/16
+> * **仮想ネットワーク名**: クラスター名-vnet
+> * **仮想ネットワークのアドレス空間**: 10.0.0.0/16
 > * **サブネット名**: subnet1
 > * **[サブネットのアドレス範囲]** : 10.0.0.0/24
 >
@@ -44,7 +44,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. 次の画像を選択して Azure Portal でテンプレートを開きます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)にあります。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 1. **[カスタム デプロイ]** ダイアログで **[テンプレートの編集]** を選択します。
 
@@ -75,7 +75,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 サービスとしてのインフラストラクチャ (IaaS) 仮想マシンを同じ Azure 仮想ネットワークと同じサブネットに対して作成します。 新しい IaaS 仮想マシンの作成手順については、「[Create a Virtual Machine Running Windows Server (Windows Server を実行する仮想マシンの作成)](../../virtual-machines/windows/quick-create-portal.md)」をご覧ください。 このドキュメントの手順に従う場合は、ネットワーク構成に以下の値を使用する必要があります。
 
-* **仮想ネットワーク**:CLUSTERNAME-vnet
+* **仮想ネットワーク**: クラスター名-vnet
 * **サブネット**: subnet1
 
 > [!IMPORTANT]  
@@ -104,26 +104,11 @@ Java アプリケーションを使用して HBase にリモートで接続す�
 
 返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 次に例を示します。
 
-```
+```json
 "host_name" : "hn0-hbaseg.hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net"
 ```
 
 クラスター名で始まるドメイン名の部分は、DNS サフィックスです。 たとえば、「 `hjfrnszlumfuhfk4pi1guh410c.bx.internal.cloudapp.net` 」のように入力します。
-
-<!--
-3.    Change the primary DNS suffix configuration of the virtual machine. This enables the virtual machine to automatically resolve the host name of the HBase cluster without explicit specification of the suffix. For example, the *workernode0* host name will be correctly resolved to workernode0 of the HBase cluster.
-
-    To make the configuration change:
-
-    1. RDP into the virtual machine.
-    2. Open **Local Group Policy Editor**. The executable is gpedit.msc.
-    3. Expand **Computer Configuration**, expand **Administrative Templates**, expand **Network**, and then click **DNS Client**.
-    - Set **Primary DNS Suffix** to the value obtained in step 2:
-
-        ![hdinsight.hbase.primary.dns.suffix](./media/apache-hbase-provision-vnet/hdi-primary-dns-suffix.png)
-    4. Click **OK**.
-    5. Reboot the virtual machine.
--->
 
 ### <a name="verify-communication-inside-virtual-network"></a>仮想ネットワーク内の通信を確認する
 

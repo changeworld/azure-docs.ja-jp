@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c19eb58e32fec66e5fe698c82133c8583f67b8b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715498"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775135"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -35,7 +35,7 @@ ms.locfileid: "101715498"
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](/cli/azure/hdinsight#az-hdinsight-create) を参照してください。
+2. 環境変数を設定します。 この記事での変数の使用は Bash に基づきます。 その他の環境では、若干の調整が必要となります。 クラスターの作成に使用できるパラメーターの完全な一覧については、[az-hdinsight-create](/cli/azure/hdinsight#az_hdinsight_create) を参照してください。
 
     |パラメーター | Description |
     |---|---|
@@ -61,7 +61,7 @@ ms.locfileid: "101715498"
     export componentVersion=Hadoop=2.7
     ```
 
-3. 次のコマンドを入力して、[リソース グループを作成します](/cli/azure/group#az-group-create)。
+3. 次のコマンドを入力して、[リソース グループを作成します](/cli/azure/group#az_group_create)。
 
     ```azurecli-interactive
     az group create \
@@ -71,7 +71,7 @@ ms.locfileid: "101715498"
 
     グループの作成先として有効な場所は、`az account list-locations` コマンドで一覧表示できます。`name` 値に表示されるいずれかの場所を使用してください。
 
-4. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](/cli/azure/storage/account#az-storage-account-create)。
+4. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](/cli/azure/storage/account#az_storage_account_create)。
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -84,7 +84,7 @@ ms.locfileid: "101715498"
         --sku Standard_LRS
     ```
 
-5. 次のコマンドを入力して、[Azure ストレージ アカウントからプライマリ キーを抽出し](/cli/azure/storage/account/keys#az-storage-account-keys-list)、それを変数に保存します。
+5. 次のコマンドを入力して、[Azure ストレージ アカウントからプライマリ キーを抽出し](/cli/azure/storage/account/keys#az_storage_account_keys_list)、それを変数に保存します。
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -93,7 +93,7 @@ ms.locfileid: "101715498"
         --query [0].value -o tsv)
     ```
 
-6. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](/cli/azure/storage/container#az-storage-container-create)。
+6. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](/cli/azure/storage/container#az_storage_container_create)。
 
     ```azurecli-interactive
     az storage container create \
@@ -102,7 +102,7 @@ ms.locfileid: "101715498"
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. 次のコマンドを入力して、[HDInsight クラスターを作成します](/cli/azure/hdinsight#az-hdinsight-create)。
+7. 次のコマンドを入力して、[HDInsight クラスターを作成します](/cli/azure/hdinsight#az_hdinsight_create)。
 
     ```azurecli-interactive
     az hdinsight create \

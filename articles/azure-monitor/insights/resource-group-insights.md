@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ab2c56b5e5cfc3dcb7411db27e7faabb2589be6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704329"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567404"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -43,7 +43,7 @@ Azure Resource Health を表示するには、表の上の **[Azure Resource Hea
 
 リソース グループの分析情報ページには、問題の診断に役立つその他のツールがいくつか用意されています
 
-   |         |          |
+   | ツール | 説明 |
    | ---------------- |:-----|
    | [**アラート**](../alerts/alerts-overview.md)      |  アラートを表示、作成、管理します。 |
    | [**メトリック**](../data-platform.md) | メトリック ベースのデータを視覚化し、探索します。    |

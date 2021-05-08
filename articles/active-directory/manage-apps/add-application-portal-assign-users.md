@@ -2,20 +2,20 @@
 title: クイック スタート:Azure Active Directory を ID プロバイダーとして使用するアプリにユーザーを割り当てる
 description: このクイックスタートでは、ID プロバイダーとして Azure AD を使用するように設定したアプリをユーザーが使用できるようにする手順を説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/01/2020
-ms.author: kenwith
-ms.openlocfilehash: 53dd2d15565149c3a9888ba063a6194ae033d8e0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: iangithinji
+ms.openlocfilehash: eb6797fdfb57a503b6dece9f2dfdc3cb0c67feef
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258373"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375340"
 ---
 # <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>クイック スタート:Azure AD を ID プロバイダーとして使用しているアプリにユーザーを割り当てる
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020538"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics の機能の比較
@@ -23,7 +23,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 ## <a name="cloud-job-features"></a>クラウド ジョブの機能
 
 
-|機能  |ポータル  |Visual Studio  |Visual Studio Code  |
+|特徴量  |ポータル  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |クロス プラットフォーム     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
 |スクリプトの作成     |はい         |はい         |はい         |
@@ -53,7 +53,7 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 
 ## <a name="iot-edge-job-features"></a>IoT Edge ジョブの機能
 
-|機能  |ポータル  |Visual Studio  |Visual Studio Code  |
+|特徴量  |ポータル  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |ジョブの作成     |はい         |はい         |いいえ         |
 |ソース管理     |いいえ         |はい         |いいえ         |
@@ -71,9 +71,9 @@ Azure Stream Analytics では、[Azure portal](stream-analytics-quick-create-por
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics on IoT Edge](stream-analytics-edge.md)
-* [チュートリアル:Azure Stream Analytics IoT Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
+* [チュートリアル: Azure Stream Analytics IoT Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
 * [Visual Studio Tools を使用して Stream Analytics IoT Edge ジョブを作成する](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)
-* [Explore Azure Stream Analytics with Visual Studio Code (Preview)](visual-studio-code-explore-jobs.md) (Visual Studio Code で Azure Stream Analytics の詳細を確認する (プレビュー))
+* [Visual Studio Code で使用する Azure Stream Analytics の詳細 (プレビュー)](visual-studio-code-explore-jobs.md)
 
 

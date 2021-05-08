@@ -7,12 +7,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 05/08/2019
-ms.openlocfilehash: de897f6350893f6188c9a97480c0a849fc142fb1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7d312e4a00cdd2b62ee219df807f30c22f0c9790
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375869"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773948"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 
@@ -66,6 +66,9 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | 引数           | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
 | defines             | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ       |
 | queryTimeout        | クエリのタイムアウト値 (分単位)。 HDInsight クラスターで Enterprise セキュリティ パッケージが有効になっているときに適用できます。 | いいえ       |
+
+>[!NOTE]
+>queryTimeout の既定値は 120 分です。 
 
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 

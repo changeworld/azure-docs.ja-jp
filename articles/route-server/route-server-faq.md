@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/08/2021
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6eed0ed3e936b0e9a534c82a3105c2ed37cab3d5
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932371"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
 
@@ -36,6 +36,9 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Azure Route Server では NVA と VM の間でデータ トラフィックがルーティングされますか。
 
 いいえ。 Azure Route Server では、NVA との間でのみ BGP ルートが交換されます。 データ トラフィックは、NVA と、選択した VM の間で直接送受信されます。
+
+### <a name="does-azure-route-server-store-customer-data"></a>Azure Route Server では、顧客データは保存されますか。
+いいえ。 Azure Route Server が行うのは、BGP ルートを NVA と交換し、それらを仮想ネットワークに伝達することのみです。
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>Azure Route Server が複数の NVA から同じルートを受信した場合、仮想ネットワーク内の VM に対してルートのすべてのコピー (ただし、それぞれ次ホップが異なる) がプログラムされますか。
 

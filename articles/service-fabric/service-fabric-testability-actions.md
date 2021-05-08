@@ -2,14 +2,14 @@
 title: Azure マイクロサービスでの障害をシミュレートする
 description: この記事は、Microsoft Azure Service Fabric の Testability アクションについて説明します。
 ms.topic: conceptual
-ms.date: 06/07/2017
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c57f54096a9593f5ab25a5722d3f2d2b9878b511
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f8221d92ded33350b182cce5d28dd889beae4a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732875"
 ---
 # <a name="testability-actions"></a>Testability アクション
 Azure Service Fabric では、信頼性の低いインフラストラクチャをシミュレートするため、さまざまな現実世界の障害と状態遷移をシミュレートする方法を開発者に提供します。 これらは、Testability アクションとして公開されます。 これらのアクションは、特定のフォールト インジェクション、状態遷移、検証を発生させる低レベルの API です。 これらのアクションを組み合わせて、サービスに対する包括的なテスト シナリオを記述することができます。
@@ -34,6 +34,7 @@ Testability アクションは、次の 2 つに大きく分類されます。
 | InvokeQuorumLoss |特定のステートフル サービス パーティションをクォーラム損失状態にします。 |InvokeQuorumLossAsync |Invoke-ServiceFabricQuorumLoss |グレースフル |
 | MovePrimary |ステートフル サービスの指定したプライマリ レプリカを、指定したクラスター ノードに移動します。 |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |グレースフル |
 | MoveSecondary |ステートフル サービスの現在のセカンダリ レプリカを、別のクラスター ノードに移動します。 |MoveSecondaryAsync |Move-ServiceFabricSecondaryReplica |グレースフル |
+| MoveInstance | ステートレス サービスの現在のインスタンスを、別のクラスター ノードに移動します。 | MoveInstanceAsync | Move-ServiceFabricInstance | グレースフル |
 | RemoveReplica |クラスターからレプリカを削除することで、レプリカ障害をシミュレートします。 レプリカを閉じてロールを "None" に移行し、すべての状態をクラスターから削除します。 |RemoveReplicaAsync |Remove-ServiceFabricReplica |グレースフル |
 | RestartDeployedCodePackage |クラスター内のノードにデプロイされているコード パッケージを再起動することで、コード パッケージ プロセス障害をシミュレートします。 そのプロセスでホストされているすべてのユーザー サービス レプリカを再起動するコード パッケージ プロセスを中止します。 |RestartDeployedCodePackageAsync |Restart-ServiceFabricDeployedCodePackage |アングレースフル |
 | RestartNode |ノードを再起動することで、Service Fabric のクラスター ノード障害をシミュレートします。 |RestartNodeAsync |Restart-ServiceFabricNode |アングレースフル |

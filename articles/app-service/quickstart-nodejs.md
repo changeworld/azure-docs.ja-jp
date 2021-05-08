@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-nodejs-uiex
-ms.openlocfilehash: 6c6f0543dcfbecd16ba4176272f928ffd0eb54de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b1ff02d6a9b3e8c7b7abaf1b185a9becd2be12b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735116"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105835"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -313,11 +313,11 @@ code .
 
 このセクションでは、実行中の App Service アプリのログを表示 (または "tail") する方法について説明します。 アプリでの `console.log` の呼び出しはすべて、Visual Studio Code の出力ウィンドウに表示されます。
 
-**Azure App Service** エクスプローラーでアプリを探して右クリックし、 **[ストリーミング ログの表示]** を選択します。
+**[AZURE APP SERVICE]** エクスプローラーでアプリを探して右クリックし、 **[Start Streaming Logs]\(ログのストリーム配信を開始する\)** を選択します。
 
 ログ ストリームへの接続と共に VS Code の出力ウィンドウが開きます。
 
-![ストリーミング ログの表示](./media/quickstart-nodejs/view-logs.png)
+![[Start Streaming Logs]\(ログのストリーム配信を開始する\)](./media/quickstart-nodejs/view-logs.png)
 
 :::image type="content" source="./media/quickstart-nodejs/enable-restart.png" alt-text="[はい] ボタンが選択されている、ファイルのログを有効にし、Web アプリを再起動するための VS Code プロンプトのスクリーンショット。":::
 

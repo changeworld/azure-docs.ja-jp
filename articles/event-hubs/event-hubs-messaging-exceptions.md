@@ -3,12 +3,12 @@ title: Azure Event Hubs - 例外 (レガシ)
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b7c5016214bfa3e5813417177e5d113299e0284f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100390897"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311925"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs メッセージングの例外 - .NET (レガシ)
 このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 
@@ -142,4 +142,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [Event Hubs の概要](./event-hubs-about.md)
 * [Event Hub を作成する](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs の FAQ](event-hubs-faq.yml)

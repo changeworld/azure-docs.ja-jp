@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88962079"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Environment を Azure Application Gateway と統合する #
@@ -37,18 +37,18 @@ Azure Application Gateway は、レイヤー 7 負荷分散、TLS/SSL オフロ�
 
 Application Gateway を ILB App Service Environment と統合するには、次のものが必要です。
 
-* ILB App Service Environment。
+* ILB App Service Environment 。
 * ILB App Service Environment で実行するアプリ。
 * ILB App Service Environment のアプリで使うインターネット ルーティング可能なドメイン名。
-* ILB App Service Environment が使う ILB アドレス。 この情報は、App Service Environment ポータルの **[設定]**  >  **[IP アドレス]** にあります。
+* ILB App Service Environment が使う ILB アドレス。 この情報は、 App Service Environment ポータルの **[設定]**  >  **[IP アドレス]** にあります。
 
     ![ILB App Service Environment で使われる IP アドレスの一覧の例][9]
     
 * 後で Application Gateway を指すために使われるパブリック DNS 名。 
 
-ILB App Service 環境の作成方法について詳しくは、[ILB App Service 環境の作成と使用][ilbase]に関するページをご覧ください。
+ILB App Service Environment の作成方法について詳しくは、[ILB App Service Environment の作成と使用][ilbase]に関するページをご覧ください。
 
-この記事では、App Service Environment が展開されているのと同じ Azure 仮想ネットワークに Application Gateway を作成するものとします。 Application Gateway の作成を始める前に、ゲートウェイをホストするために使うサブネットを選択または作成します。 
+この記事では、 App Service Environment が展開されているのと同じ Azure 仮想ネットワークに Application Gateway を作成するものとします。 Application Gateway の作成を始める前に、ゲートウェイをホストするために使うサブネットを選択または作成します。 
 
 GatewaySubnet という名前ではないサブネットを使う必要があります。 Application Gateway を GatewaySubnet に配置した場合、後で仮想ネットワーク ゲートウェイを作成できなくなります。 
 

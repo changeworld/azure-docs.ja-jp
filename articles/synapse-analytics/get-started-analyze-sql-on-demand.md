@@ -9,17 +9,17 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/15/2021
+ms.openlocfilehash: c6f2dfe0d4846227400ac9b3c7ac3e6ead8f0b57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588020"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567555"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してデータを分析する
 
-このチュートリアルでは、Spark データベース内のデータを使用して、サーバーレス SQL プールでデータを分析する方法について説明します。 
+このチュートリアルでは、サーバーレス SQL プールでデータを分析する方法について説明します。 
 
 ## <a name="the-built-in-serverless-sql-pool"></a>組み込みのサーバーレス SQL プール
 
@@ -27,9 +27,7 @@ ms.locfileid: "104588020"
 
 各ワークスペースは、**組み込み** と呼ばれる、事前構成されたサーバーレス SQL プールを備えています。 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Blob Storage の NYC タクシー データを分析する
-
-このセクションでは、サーバーレス SQL プールを使用して、Azure Blob Storage アカウント内の NYC タクシーのデータを分析します。
+## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してニューヨーク市のタクシー データを分析する
 
 1. Synapse Studio で、 **[開発]** ハブに移動します。
 1. 新しい SQL スクリプトを作成します。
@@ -37,14 +35,14 @@ ms.locfileid: "104588020"
 
     ```
     SELECT
-        TOP 100 *
+        TOP 100 *
     FROM
         OPENROWSET(
-            BULK     'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-            FORMAT = 'parquet'
-        ) AS [result];
+            BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
+            FORMAT='PARQUET'
+        ) AS [result]
     ```
-1. **[実行]**
+1. **[実行]** をクリックします。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2f3d1d47bd26167253296f06af5470818760850
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a532ae9485efa9571137130d32ba0827728e8094
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257982"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166872"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -68,11 +68,23 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 ### <a name="dns-updates"></a>DNS の更新
 
-カスタム ドメインを使用する場合、アプリケーション プロキシ エンドポイントの外部 URL を指す外部 URL 用の CNAME レコードで DNS エントリ (例: `*.adventure-works.com`) を作成します。ワイルドカード アプリケーションでは、CNAME レコードが関連する外部 URL を指す必要があります。
+カスタム ドメインを使用する場合、アプリケーション プロキシ エンドポイントの外部 URL を指す外部 URL 用の CNAME レコードで DNS エントリ (例: `*.adventure-works.com`) を作成します。 ワイルドカード アプリケーションでは、CNAME レコードが関連する外部 URL を指す必要があります。
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
 CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) が含まれます。
+
+### <a name="using-connector-groups-assigned-to-an-app-proxy-cloud-service-region-other-than-the-default-region"></a>既定のリージョン以外のアプリケーション プロキシ クラウド サービス リージョンに割り当てられているコネクタ グループを使用する
+既定のテナント リージョンとは異なるリージョンにコネクタがインストールされている場合、これらのアプリケーションにアクセスするパフォーマンスを向上させるために、コネクタ グループが最適化されているリージョンを変更すると有益な場合があります。 詳細については、「[最も近いアプリケーション プロキシ クラウド サービスを使用するようにコネクタ グループを最適化する](application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)」を参照してください。
+ 
+ワイルドカード アプリケーションに割り当てられているコネクタ グループが **既定のリージョンとは異なるリージョン** を使用している場合は、CNAME レコードを更新して、地域固有の外部 URL を指定する必要があります。 次の表を使用して、関連する URL を決定します。
+
+| コネクタの割り当て済みリージョン | 外部 URL |
+| ---   | ---         |
+| アジア | `<yourAADTenantId>.asia.tenant.runtime.msappproxy.net`|
+| オーストラリア  | `<yourAADTenantId>.aus.tenant.runtime.msappproxy.net` |
+| ヨーロッパ  | `<yourAADTenantId>.eur.tenant.runtime.msappproxy.net`|
+| 北米  | `<yourAADTenantId>.nam.tenant.runtime.msappproxy.net` |
 
 ## <a name="considerations"></a>考慮事項
 

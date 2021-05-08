@@ -1,30 +1,27 @@
 ---
-title: Windows Virtual Desktop プレビューの用語集を監視する - Azure
+title: Windows Virtual Desktop の用語集を監視する - Azure
 description: Windows Virtual Desktop 向けの Azure Monitor に関連する用語と概念に関する用語集。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/29/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 29c49ceb3647964030f53c94276e831dc0f648c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 8ed4c2cffffca79ea545358b8ad639118e87e013
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576622"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448204"
 ---
-# <a name="azure-monitor-for-windows-virtual-desktop-preview-glossary"></a>Windows Virtual Desktop 向けの Azure Monitor (プレビュー) の用語集
-
->[!IMPORTANT]
->Windows Virtual Desktop 向けの Azure Monitor は現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Windows Virtual Desktop 向けの Azure Monitor の用語集
 
 この記事では、Windows Virtual Desktop 向けの Azure Monitor (プレビュー) に関連する主な用語と概念を挙げ、簡単に説明します。
 
 ## <a name="alerts"></a>アラート
 
-サブスクリプションで構成し、[重大度 1](#severity-1-alerts) として分類されているアクティブな Azure Monitor のアラートは、すべて概要ページに表示されます。 アラートの設定方法については、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」を参照してください。
+サブスクリプションで構成し、[重大度 0](#severity-0-alerts) として分類されているアクティブな Azure Monitor のアラートは、すべて概要ページに表示されます。 アラートの設定方法については、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」を参照してください。
 
 ## <a name="available-sessions"></a>使用可能なセッション
 
@@ -40,7 +37,7 @@ ms.locfileid: "100576622"
 
 ## <a name="daily-alerts"></a>毎日のアラート数
 
-過去 24 時間にトリガーされた[重大度 1 のアラート](#severity-1-alerts)の合計数。
+毎日トリガーされるアラートの総数。
 
 ## <a name="daily-connections-and-reconnections"></a>毎日の接続数と再接続数
 
@@ -78,7 +75,7 @@ Windows Virtual Desktop 向けの Azure Monitor にエラーまたはアラー�
 
 ## <a name="input-delay"></a>入力遅延
 
-Windows Virtual Desktop 向けの Azure Monitor の "入力遅延" は、各セッションのプロセス パフォーマンス カウンターごとの入力遅延を意味します。 <aka.ms/azmonwvdi> のホスト パフォーマンス ページでは、このパフォーマンス カウンターが、30 秒ごとにレポートをサービスに送信するように構成されています。 この 30 秒の間隔は "サンプル" と呼ばれ、その期間で最悪のケースを報告します。 中央値と p95 の値には、すべてのサンプルにおける中央値と 95 パーセンタイルが反映されます。
+Windows Virtual Desktop 向けの Azure Monitor の "入力遅延" は、各セッションのプロセス パフォーマンス カウンターごとの入力遅延を意味します。 [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks) のホスト パフォーマンス ページでは、このパフォーマンス カウンターが、30 秒ごとにレポートをサービスに送信するように構成されています。 この 30 秒の間隔は "サンプル" と呼ばれ、その期間で最悪のケースを報告します。 中央値と p95 の値には、すべてのサンプルにおける中央値と 95 パーセンタイルが反映されます。
 
 **[ホスト別の入力遅延]** で、そのホストに対してページ内の他のすべてのビジュアルをフィルター処理するセッション ホスト行を選択することができます。 また、プロセス名を選択して、時間グラフの中央値の入力遅延をフィルター処理することもできます。
 
@@ -114,16 +111,11 @@ Windows Virtual Desktop 向けの Azure Monitor の "入力遅延" は、各セ�
 |PhysicalDisk(\*)\\Avg.Disk sec/Read|30 秒|
 |PhysicalDisk(\*)\\Avg.Disk sec/Transfer|30 秒|
 |PhysicalDisk(\*)\\Avg.Disk sec/Write|30 秒|
-|Process(\*)\\% Processor Time|20 秒|
-|Process(\*)\\% User Time|30 秒|
-|Process(\*)\\Thread Count|30 秒|
-|Process(\*)\\ IO Write Operations/sec|30 秒|
-|Process(\*)\\ IO Read Operations/sec|30 秒|
 |Processor Information(_Total)\\% Processor Time|30 秒|
 |Terminal Services(\*)\\Active Sessions|60 秒|
 |Terminal Services(\*)\\Inactive Sessions|60 秒|
 |Terminal Services(\*)\\Total Sessions|60 秒|
-|\*User Input Delay per Process(\*)\\Max Input Dela|30 秒|
+|\*User Input Delay per Process(\*)\\Max Input Delay|30 秒|
 |\*User Input Delay per Session(\*)\\Max Input Delay|30 秒|
 |RemoteFX Network(\*)\\Current TCP RTT|30 秒|
 |RemoteFX Network(\*)\\Current UDP Bandwidth|30 秒|
@@ -149,13 +141,13 @@ Windows Virtual Desktop 向けの Azure Monitor の "入力遅延" は、各セ�
 
 ## <a name="round-trip-time-rtt"></a>ラウンドトリップ時間 (RTT)
 
-ラウンドトリップ時間 (RTT) は、エンドユーザーの場所と VM の Azure リージョンとの間の接続のラウンドトリップ時間の推定値です。 待機時間が最も短い場所を確認するには、[Windows Virtual Desktop エクスペリエンス見積もりツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)で目的の場所を検索してください。
+ラウンドトリップ時間 (RTT) は、エンドユーザーの場所とセッション ホストの Azure リージョンとの間の接続のラウンドトリップ時間の推定値です。 待機時間が最も短い場所を確認するには、[Windows Virtual Desktop エクスペリエンス見積もりツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)で目的の場所を検索してください。
 
 ## <a name="session-history"></a>セッションの履歴
 
 **[セッション]** 項目には、すべてのセッションの状態と、接続されているか、接続解除されているかが表示されます。 **[アイドル セッション]** には、接続解除されたセッションのみが表示されます。
 
-## <a name="severity-1-alerts"></a>重大度 1 のアラート
+## <a name="severity-0-alerts"></a>重大度 0 のアラート
 
 すぐに対処する必要がある最も緊急度の高い項目。 このような問題に対処しないと、Windows Virtual Desktop のデプロイが動作しなくなる可能性があります。
 
@@ -171,11 +163,11 @@ Windows Virtual Desktop 向けの Azure Monitor の "入力遅延" は、各セ�
 
 これは、各仮想マシン コアのユーザー数です。 時間の経過と共にコアあたりの最大ユーザー数を追跡することで、コアごとの高い、低い、または変化するユーザー数で環境が一貫して実行されるかを判断できます。 アクティブになっているユーザーの数を把握することで、環境を効率的に準備し、スケーリングすることができます。
 
-## <a name="windows-events"></a>Windows イベント
+## <a name="windows-event-logs"></a>Windows イベント ログ
 
-Windows イベント ログは、Windows 仮想マシン上で Log Analytics エージェントによって収集されるデータ ソースです。 システムやアプリケーションなどの標準ログのイベントに加えて、監視が必要なアプリケーションによって作成されるカスタム ログも収集できます。
+Windows イベント ログは、Windows 仮想マシン上の Log Analytics エージェントによって収集されるデータ ソースです。 システムやアプリケーションなどの標準ログのイベントに加えて、監視が必要なアプリケーションによって作成されるカスタム ログも収集できます。
 
-次の表に、Windows Virtual Desktop 向けの Azure Monitor に必要な Windows イベントを示します。
+次の表に、Windows Virtual Desktop 向けの Azure Monitor に必要な Windows イベント ログを示します。
 
 |イベント名|イベントの種類|
 |---|---|
@@ -186,14 +178,14 @@ Windows イベント ログは、Windows 仮想マシン上で Log Analytics エ
 | Microsoft-FSLogix-Apps/Operational|エラー、警告、情報|
 |Microsoft-FSLogix-Apps/Admin|エラー、警告、情報|
 
-Windows イベントの詳細については、[Windows イベント レコードのプロパティ](../azure-monitor/agents/data-sources-windows-events.md)に関するページを参照してください。
+Windows イベント ログの詳細については、[Windows イベント レコードのプロパティ](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Windows Virtual Desktop 向けの Azure Monitor を開始するには、次の記事をご確認ください。
+- 開始するには、[Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)をご覧ください。
+- データ ストレージのコストを見積もり、測定、管理には、[Azure Monitor コストを見積もる](azure-monitor-costs.md)をご覧ください。
+- 問題が発生した場合のヘルプや既知の問題については、[トラブルシューティング ガイド](troubleshoot-azure-monitor.md)をご覧ください。
 
-- [Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)
-- [Windows Virtual Desktop 向けの Azure Monitor のトラブルシューティング](troubleshoot-azure-monitor.md)
 
 また、Azure Advisor を設定して、一般的なイシューを解決または回避する方法を判断することもできます。 詳細については、「[Windows Virtual Desktop で Azure Advisor を使用する](azure-advisor.md)」を参照してください。
 
@@ -203,4 +195,4 @@ Windows Virtual Desktop 向けの Azure Monitor を開始するには、次の�
    
 - フィードバックを残す方法については、「[Windows Virtual Desktop のトラブルシューティングの概要、フィードバック、およびサポート](troubleshoot-set-up-overview.md#report-issues)」を参照してください。
 
-- また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)、または [UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)にお寄せいただくこともできます。
+- また、Windows Virtual Desktop についてのフィードバックは、[Windows Virtual Desktop フィードバック ハブ](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)にお寄せいただくこともできます。

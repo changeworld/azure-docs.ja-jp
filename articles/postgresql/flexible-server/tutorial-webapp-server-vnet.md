@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546570"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657588"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>チュートリアル:仮想ネットワークに Azure Database for PostgreSQL - フレキシブル サーバーと App Service Web アプリを作成する
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546570"
 
 このチュートリアルでは、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) と Azure App Service Web アプリを作成する方法について説明します。
 
-このチュートリアルでは次のことを行います。
+このチュートリアルで学習する内容は次のとおりです。
 >[!div class="checklist"]
 > * 仮想ネットワークに PostgreSQL フレキシブル サーバーを作成する
+> * App Service に委任するサブネットを作成する
 > * Web アプリを作成する
 > * Web アプリを仮想ネットワークに追加する
 > * Web アプリから Postgres に接続する 
@@ -41,10 +42,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、 **az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>新しい仮想ネットワークに PostgreSQL フレキシブル サーバーを作成する
@@ -68,14 +69,21 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>App Service エンドポイントのサブネットを作成する
+次に、App Service Web アプリのエンドポイントに委任されるサブネットが必要です。 次のコマンドを実行して、データベース サーバーが作成された同じ仮想ネットワーク内に新しいサブネットを作成します。 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+このコマンドの後、仮想ネットワーク名とサブネット名をメモしておいてください。作成後、Web アプリの VNET 統合ルールを追加するために必要になります。 
 
 ## <a name="create-a-web-app"></a>Web アプリの作成
-このセクションでは App Service アプリでアプリ ホストを作成し、このアプリを Postgres データベースに接続して、そのホストにコードをデプロイします。 ターミナルで、アプリケーション コードのリポジトリのルートにいることを確認します。
+このセクションでは App Service アプリでアプリ ホストを作成し、このアプリを Postgres データベースに接続して、そのホストにコードをデプロイします。 ターミナルで、アプリケーション コードのリポジトリのルートにいることを確認します。 Basic プランでは VNET 統合はサポートされていないことに注意してください。 Standard または Premium を使用してください。 
 
 az webapp up コマンドを使用して、App Service アプリ (ホスト プロセス) を作成します。
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,7 +93,6 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
 - リソース グループがまだ存在していない場合は作成します。 (このコマンドでは、先ほどデータベースを作成したのと同じリソース グループを使用します)。
-- Basic 価格レベル (B1) で App Service プラン ```testappserviceplan``` を作成します (存在しない場合)。 --plan と --sku は省略可能です。
 - App Service アプリが存在しない場合は作成します。
 - アプリの既定のログがまだ有効になっていない場合は、有効にします。
 - ビルド オートメーションを有効にし、ZIP デプロイを使用してリポジトリをアップロードします。
@@ -94,7 +101,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 **az webapp vnet-integration** コマンドを使用して、リージョンの仮想ネットワーク統合を webapp に追加します。 <vnet-name> と <subnet-name> を、フレキシブル サーバーで使用している仮想ネットワークとサブネット名に置き換えます。
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>データベースに接続するための環境変数を構成する

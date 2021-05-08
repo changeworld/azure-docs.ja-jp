@@ -2,13 +2,13 @@
 title: サポートされているコンテンツの形式
 description: Docker と互換性のあるコンテナー イメージ、Helm チャート、OCI イメージ、OCI 成果物など、Azure Container Registry でサポートされているコンテンツ形式について説明します。
 ms.topic: article
-ms.date: 08/30/2019
-ms.openlocfilehash: b2a54c65d149a27ed9eae85c3308d657ed3471a3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/02/2021
+ms.openlocfilehash: 218d98f3f16e8d0ca76a24692afbb2b69606564b
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100008334"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223066"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry 内でサポートされているコンテンツの形式
 
@@ -34,7 +34,7 @@ OCI 成果物の詳細については、GitHub 上の[ストレージとして�
 
 ## <a name="helm-charts"></a>Helm チャート
 
-Azure Container Registry では、Kubernetes 用のアプリケーションをすばやく管理およびデプロイするために使用されるパッケージ形式である [Helm チャート](https://helm.sh/)のリポジトリをホストすることができます。 [Helm クライアント](https://docs.helm.sh/using_helm/#installing-helm) バージョン 2 (2.11.0 以降) がサポートされています。
+Azure Container Registry では、Kubernetes 用のアプリケーションをすばやく管理およびデプロイするために使用されるパッケージ形式である [Helm チャート](https://helm.sh/)のリポジトリをホストすることができます。 [Helm クライアント](https://docs.helm.sh/using_helm/#installing-helm)のバージョン 3 をお勧めします。 「[Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル](container-registry-helm-repos.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

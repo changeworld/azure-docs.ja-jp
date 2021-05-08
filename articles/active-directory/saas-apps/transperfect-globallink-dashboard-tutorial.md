@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2021
 ms.author: jeedes
 ms.openlocfilehash: ad720f5e625d2054a5c79b47c9659d4d10d251e4
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104955110"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-transperfect-globallink-dashboard"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と TransPerfect GlobalLink Dashboard の統合

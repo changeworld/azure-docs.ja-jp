@@ -10,12 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 1f656a41b0f447b90f58ec14173e418a2defb72e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98786007"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484831"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報があるリソースを対象にシークレットのローテーションを自動化する
 
@@ -53,11 +54,17 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 
     ![リソース グループの作成方法を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-1.png)
 
-これで 1 つのキー コンテナーと 2 つのストレージ アカウントが作成されます。 この設定は、Azure CLI でこのコマンドを実行して検証できます。
-
+これで 1 つのキー コンテナーと 2 つのストレージ アカウントが作成されます。 この設定は、Azure CLI または Azure PowerShell でこのコマンドを実行して検証できます。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az resource list -o table -g vaultrotation
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzResource -Name 'vaultrotation*' | Format-Table
+```
+---
 
 結果として得られる出力は次のようになります。
 
@@ -111,49 +118,97 @@ vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storag
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>ストレージ アカウントのアクセス キーを Key Vault に追加する
 
 まず、**シークレットの管理** 権限をユーザー プリンシパルに付与するようにアクセス ポリシーを設定します。
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -UserPrincipalName <email-address-of-user> --name vaultrotation-kv -PermissionsToSecrets set,delete,get,list
+```
+---
 
 これで、ストレージ アカウントのアクセス キーを値とする新しいシークレットを作成できます。 さらに、ローテーション関数でストレージ アカウントにキーを再生成できるよう、ストレージ アカウントのリソース ID、シークレットの有効期間、シークレットに追加するキーの ID も必要となります。
 
 ストレージ アカウントのリソース ID を調べます。 この値は、`id` プロパティで確認できます。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 キーの値を取得できるよう、ストレージ アカウントのアクセス キーを一覧表示します。
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage 
+az storage account keys list -n vaultrotationstorage
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 有効期限を明日、有効期間を 60 日間に設定し、ストレージ アカウントのリソース ID を指定して、キー コンテナーにシークレットを追加します。取得した `key1Value` と `storageAccountResourceId` の値を使用して、このコマンドを実行します。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
 az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key1'
+    ProviderAddress='<storageAccountResourceId>'
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 上記のシークレットでは、数分以内に `SecretNearExpiry` イベントがトリガーされます。 このイベントによって関数がトリガーされ、有効期限が 60 日に設定されたシークレットがローテーションされます。 この構成では、"SecretNearExpiry" イベントが 30 日ごと (有効期限の 30 日前) にトリガーされ、ローテーション関数によって key1 と key2 が交互にローテーションされます。
 
 アクセス キーが再生成されたことは、ストレージ アカウント キーと Key Vault のシークレットを取得して比較することで確認できます。
 
 シークレットの情報を得るには、このコマンドを使用します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey -AsPlainText
+```
+---
 
 `CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。
 
 ![1 つ目のストレージ アカウントに対する a z keyvault secret show コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 アクセス キーを取得して値を比較します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
+
 キーの `value` がキー コンテナー内のシークレットと同じであることに注意してください。
 
 ![1 つ目のストレージ アカウントに対する a z storage account keys list コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-5.png)
@@ -185,36 +240,77 @@ az storage account keys list -n vaultrotationstorage
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>別のストレージ アカウントのアクセス キーを Key Vault に追加する
 
 ストレージ アカウントのリソース ID を調べます。 この値は、`id` プロパティで確認できます。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account show -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccount -Name vaultrotationstorage -ResourceGroupName vaultrotation | Select-Object -Property *
+```
+---
 
 キー 2 の値を取得できるよう、ストレージ アカウントのアクセス キーを一覧表示します。
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-az storage account keys list -n vaultrotationstorage2 
+az storage account keys list -n vaultrotationstorage2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrotation
+```
+---
 
 有効期限を明日、有効期間を 60 日間に設定し、ストレージ アカウントのリソース ID を指定して、キー コンテナーにシークレットを追加します。取得した `key2Value` と `storageAccountResourceId` の値を使用して、このコマンドを実行します。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
+$tags = @{
+    CredentialId='key2';
+    ProviderAddress='<storageAccountResourceId>';
+    ValidityPeriodDays='60'
+}
+Set-AzKeyVaultSecret -Name storageKey2 -VaultName vaultrotation-kv -SecretValue $secretVaule -Tag $tags -Expires $tomorrowDate
+```
+---
 
 シークレットの情報を得るには、このコマンドを使用します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzKeyVaultSecret -VaultName vaultrotation-kv -Name storageKey2 -AsPlainText
+```
+---
 
 `CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。
 
 ![2 つ目のストレージ アカウントに対する a z keyvault secret show コマンドの出力を示すスクリーンショット。](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 アクセス キーを取得して値を比較します。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az storage account keys list -n vaultrotationstorage 
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+Get-AzStorageAccountKey -Name vaultrotationstorage -ResourceGroupName vaultrotation
+```
+---
 
 キーの `value` がキー コンテナー内のシークレットと同じであることに注意してください。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 03/01/2021
+ms.date: 04/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0f3b81ac12d0ae96dde0397bc01a4570d992ea9
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727483"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310174"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R の技術仕様
 
@@ -24,31 +24,35 @@ Microsoft Azure Stack Edge Mini R デバイスのハードウェア コンポー
 
 Azure Stack Edge Mini R デバイスには、コンピューティングとメモリについて次のような仕様があります。
 
-| 仕様           | 値                  |
-|-------------------------|------------------------|
-| CPU    | 16 コア CPU、Intel Xeon-D 1577 |
-| メモリ              | 48 GB RAM (2400 MT/s)                  |
+| 仕様           | 値                           |
+|-------------------------|---------------------------------|
+| CPU の種類                | Intel Xeon-D 1577               |
+| CPU: Raw                | 合計コア数 16、合計 vCPU 数 32  |
+| CPU: 使用可能             | vCPU 24 個                        |
+| メモリの種類             | 16 GB 2400 MT/s SODIMM          |
+| メモリ: Raw             | 48 GB RAM (3 x 16 GB)           |
+| メモリ: 使用可能          | 32 GB RAM                       |
 
 
 ## <a name="compute-acceleration-specifications"></a>コンピューティング アクセラレーション仕様
 
 Vision Processing Unit (VPU) がすべての Azure Stack Edge Mini R デバイスに搭載されており、これにより Kubernetes、ディープ ニューラル ネットワーク、Computer Vision ベースのアプリケーションが使用可能になります。
 
-| 仕様           | 値                  |
-|-------------------------|------------------------|
-| コンピューティング アクセラレーション カード         | Intel Movidius Myriad X VPU <br> 詳細については、「[Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX)」をご覧ください。 |
+| 仕様             | 値                  |
+|---------------------------|------------------------|
+| コンピューティング アクセラレーション カード | Intel Movidius Myriad X VPU <br> 詳細については、「[Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX)」をご覧ください。 |
 
 
 ## <a name="storage-specifications"></a>Storage の仕様
 
 Azure Stack Edge Mini R デバイスには、1 つのデータ ディスクと (オペレーティング システムの記憶域として機能する) 1 つのブート ディスクがあります。 次の表にデバイスのストレージ容量の詳細を示します。
 
-|     仕様                          |     値             |
-|--------------------------------------------|-----------------------|
-|    ソリッド ステート ドライブ (SSD) の数     |    2 x 1 TB ディスク <br> 1 つのデータ ディスクと 1 つのブート ディスク                  |
-|    単一の SSD 容量                     |    1 TB (テラバイト)               |
-|    合計容量 (データのみ)              |    1 TB (テラバイト)              |
-|    合計の使用可能な容量*                  |    最大 750 GB        |
+|     仕様                          |     値                                              |
+|--------------------------------------------|--------------------------------------------------------|
+|    ソリッド ステート ドライブ (SSD) の数     |    2 x 1 TB ディスク <br> 1 つのデータ ディスクと 1 つのブート ディスク |
+|    単一の SSD 容量                     |    1 TB (テラバイト)                                                |
+|    合計容量 (データのみ)              |    1 TB (テラバイト)                                                |
+|    合計の使用可能な容量*                  |    最大 750 GB                                            |
 
 **容量の一部は内部仕様のために予約されています。*
 
@@ -59,8 +63,8 @@ Azure Stack Edge Mini R デバイスには、ネットワークについて次�
 
 |仕様  |値  |
 |---------|---------|
-|ネットワーク インターフェイス    |2 x 10 Gbe SFP+ <br> ローカル UI にはポート 3 とポート 4 として表示されます。           |
-|ネットワーク インターフェイス    |2 x 1 Gbe RJ45 <br> ローカル UI にはポート 1 とポート 2 として表示されます。          |
+|ネットワーク インターフェイス    |10 Gbe SFP+ x 2 個 <br> ローカル UI にはポート 3 とポート 4 として表示されます。           |
+|ネットワーク インターフェイス    |2 x 1 GbE RJ45 <br> ローカル UI にはポート 1 とポート 2 として表示されます。          |
 |Wi-Fi   |802.11ac         |
 
 
@@ -85,9 +89,9 @@ Azure Stack Edge Mini R デバイスには、電源装置によって充電さ�
 追加の [2590 型バッテリ](https://www.bren-tronics.com/bt-70791ck.html)をオンボード バッテリと組み合わせて使用すると、充電の間のデバイスの使用を延長することができます。 このバッテリは、使用する国で適用される安全性、輸送、および環境のすべての規制に準拠している必要があります。
 
 
-| 仕様           | 値                      |
-|-------------------------|----------------------------|
-| オンボード バッテリの容量 | 73 WHr                    |
+| 仕様            | 値                      |
+|--------------------------|----------------------------|
+| オンボード バッテリの容量 | 73 Wh                     |
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>エンクロージャの寸法と重量
 
@@ -99,18 +103,18 @@ Azure Stack Edge Mini R デバイスには、電源装置によって充電さ�
 
 |     エンクロージャ     |     mm     |     インチ     |
 |-------------------|---------------------|----------------|
-|    [高さ]         |    68            |    2.68          |
-|    幅          |    208          |      8.19          |
-|    長さ          |   259           |    10.20          |
+|    [高さ]         |    68               |    2.68        |
+|    幅          |    208              |      8.19      |
+|    長さ          |   259              |    10.20       |
 
 
 ### <a name="enclosure-weight"></a>エンクロージャの重量
 
 次の表に、バッテリを含むデバイスの重量を示します。
 
-|     エンクロージャ                                 |     Weight          |
-|-----------------------------------------------|---------------------|
-|    デバイスの総重量     |    7 ポンド          |
+|     エンクロージャ                     |     Weight          |
+|-----------------------------------|---------------------|
+|    デバイスの総重量     |     7 ポンド           |
 
 ## <a name="enclosure-environment-specifications"></a>エンクロージャの環境仕様
 

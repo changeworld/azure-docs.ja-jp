@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a195567117378a118b9bea8d15a7cb0a661d284a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738142"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303527"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -52,8 +52,8 @@ Translator を使用すると、90 のテキスト翻訳言語および方言の
 | 中国語 (繁体字) | `zh-Hant` |
 | クロアチア語 | `hr` |
 | チェコ語 | `cs` |
-| ダリー語 | `prs` |
 | デンマーク語 | `da` |
+| ダリー語 | `prs` |
 | オランダ語 | `nl` |
 | 英語 | `en` |
 | エストニア語 | `et` |
@@ -340,6 +340,7 @@ Languages メソッドを使用して、翻訳でサポートされている言�
 | ハンガリー語      | `hu`          |
 | アイスランド語 | `is` |
 | インドネシア語|   `id`    |
+| イヌクティトット語|    `iu`    |
 | アイルランド語 | `ga`  |
 | イタリア語      | `it`          |
 | 日本語      | `ja`          |

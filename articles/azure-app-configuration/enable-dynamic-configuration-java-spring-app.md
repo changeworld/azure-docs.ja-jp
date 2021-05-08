@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.custom: devx-track-java
 ms.author: mametcal
-ms.openlocfilehash: 076ab0bb7dbc85a31b626a24d977e6fea558143e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 590f221b0a4980d462267dd8c3a73ca7d02583fd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636540"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625519"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで動的構成を使用する
 
@@ -89,6 +89,7 @@ public void myConfigurationRefreshCheck() {
     ```
 
 1. 動的構成をテストするには、アプリケーションに関連付けられている Azure App Configuration ポータルを開きます。 **[構成エクスプローラー]** を選択し、表示されたキーの値を更新します。次に例を示します。
+
     | Key | 値 |
     |---|---|
     | /application/config.message | Hello - Updated |

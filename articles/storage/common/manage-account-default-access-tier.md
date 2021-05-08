@@ -1,19 +1,19 @@
 ---
 title: Azure Storage アカウントの既定のアクセス層を管理する
 description: GPv2 または Blob Storage アカウントの既定のアクセス層を変更する方法を説明します
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/11/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 637f748882b3ac84127c8b71761a06629e1e0957
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 026ab6be1fd4ef79f818f796c4725f6613a9bc6d
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100653834"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277387"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Azure Storage アカウントの既定のアクセス層を管理する
 

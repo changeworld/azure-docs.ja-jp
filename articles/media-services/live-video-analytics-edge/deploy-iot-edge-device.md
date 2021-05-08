@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101718932"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280294"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -25,7 +25,7 @@ ms.locfileid: "101718932"
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
 * [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)
-* [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
+* [Azure Media Services アカウントを作成します](../latest/account-create-how-to.md)
 
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国東部、米国中部、米国中北部、東日本、米国西部、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
     * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします
@@ -38,7 +38,7 @@ ms.locfileid: "101718932"
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを設定する
 
-Live Video Analytics を使用して、継続的にビデオをクラウドに記録し、後でそれを再生する前に、[クエリ API](playback-recordings-how-to.md#query-api) を使用する場合、[Premium ストリーミング エンドポイント](../latest/streaming-endpoint-concept.md#types)を使用するように Media Service を更新することをお勧めします。  
+Live Video Analytics を使用して、継続的にビデオをクラウドに記録し、後でそれを再生する前に、[クエリ API](playback-recordings-how-to.md#query-api) を使用する場合、[Premium ストリーミング エンドポイント](../latest/stream-streaming-endpoint-concept.md#types)を使用するように Media Service を更新することをお勧めします。  
 
 これは省略可能な手順です。 次の Azure CLI コマンドを使用して、それを行うことができます。
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: wiassaf, sstein
-ms.date: 02/26/2019
-ms.openlocfilehash: 1a74a2f44ac9b03e39e9fea48a3428b82111a48c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: 4434c796a41126444b8785440427123e88e0b528
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472003"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107790"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Resource Health を使用して Azure SQL Database と Azure SQL Managed Instance の接続をトラブルシューティングする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,5 +76,5 @@ Azure インフラストラクチャでは、計画メンテナンス (データ
 - [一時的なエラーに対する再試行ロジック](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)の詳細を確認します。
 - [SQL 接続エラーのトラブルシューティング、診断、および回避](troubleshoot-common-connectivity-issues.md)。
 - [Resource Health のアラートの構成](../../service-health/resource-health-alert-arm-template-guide.md)の詳細を確認します。
-- [Resource Health](../../application-gateway/resource-health-overview.md) の概要を確認します。
+- [Resource Health](../../service-health/resource-health-overview.md) の概要を確認します。
 - [Resource Health の FAQ](../../service-health/resource-health-faq.md) を確認します。

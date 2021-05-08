@@ -1,18 +1,19 @@
 ---
 title: クイックスタート - Python API を使用して Azure Batch ジョブを実行する
 description: このクイックスタートでは、Batch Python クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを実行します。 Batch サービスの主要概念について説明します。
-ms.topic: quickstart
 ms.date: 08/17/2020
+ms.topic: quickstart
 ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+- mode-api
+ms.openlocfilehash: 75f83e0ea4823796ace348084bab0915babc8979
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511016"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535558"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>クイック スタート:Python API を使用して Azure Batch ジョブを実行する
 
@@ -28,7 +29,7 @@ Python API を使用してアプリから Azure Batch ジョブを実行する�
 
 - Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- [Python](https://python.org/downloads) バージョン 2.7 または 3.3 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)
+- [Python](https://python.org/downloads) バージョン 2.7 または 3.6 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

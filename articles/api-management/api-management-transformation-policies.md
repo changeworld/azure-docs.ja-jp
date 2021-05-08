@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 48f8445e30bd186681d1a4384d16f228a3382473
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491758"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012439"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -366,7 +366,7 @@ or
 > [!IMPORTANT]
 > `set-body` ポリシーで使用される Liquid の実装は、「C# mode」で構成されます。 これは、フィルター処理などを実行する際に特に重要です。 たとえば、日付フィルターを使用するには、次のような Pascal 形式と C# date 形式を使用する必要があります。
 >
-> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ssZ"}}
 
 > [!IMPORTANT]
 > Liquid テンプレートを使用して XML 本文に正しくバインドするには、`set-header` ポリシーを使用して、Content-Type を application/xml、text/xml (または任意の種類の終了 +xml) に設定します。JSON 本文の場合は、application/json、text/json (または任意の種類の終了 +json) にする必要があります。

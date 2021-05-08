@@ -3,16 +3,16 @@ title: IoT Edge for Linux on Windows にデプロイする - Azure
 description: この記事では、IoT Edge for Linux on Windows デバイスにデプロイする方法に関するガイダンスを取り上げます。
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: 9ec28c62ca804137ede3cd60d1980e55fbaa2807
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d5c3d89ae7447b062714ad90be117a6426a39581
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618136"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561085"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>IoT Edge for Linux on Windows (EFLOW) デバイスにデプロイする
 
-この記事では、[IoT Edge for Linux on Windows (EFLOW)](https://docs.microsoft.com/azure/iot-edge/iot-edge-for-linux-on-windows) がインストールされているエッジ デバイスに Live Video Analytics をデプロイする方法について説明します。 このドキュメントの手順を終えると、ビデオでの動きを検出してそのようなイベントをクラウド内の IoT ハブに出力する[メディア グラフ](media-graph-concept.md)を実行できるようになります。 そのメディア グラフを、高度なシナリオに対応するよう置き換えれば、Live Video Analytics の強力な機能を Windows ベースの IoT Edge デバイスで利用することができます。
+この記事では、[IoT Edge for Linux on Windows (EFLOW)](../../iot-edge/iot-edge-for-linux-on-windows.md) がインストールされているエッジ デバイスに Live Video Analytics をデプロイする方法について説明します。 このドキュメントの手順を終えると、ビデオでの動きを検出してそのようなイベントをクラウド内の IoT ハブに出力する[メディア グラフ](media-graph-concept.md)を実行できるようになります。 そのメディア グラフを、高度なシナリオに対応するよう置き換えれば、Live Video Analytics の強力な機能を Windows ベースの IoT Edge デバイスで利用することができます。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -21,7 +21,7 @@ ms.locfileid: "102618136"
     > [!NOTE]
     > サービス プリンシパルを作成するためのアクセス許可を与えられた Azure サブスクリプションが必要です (**owner role** には、そのアクセス許可があります)。 適切なアクセス許可がない場合は、適切なアクセス許可をアカウント管理者に申請してください。
 * 開発用マシン上の [Visual Studio Code](https://code.visualstudio.com/)。 [Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)があることを確認します。
-* [EFLOW の概要](https://aka.ms/AzEFLOW-docs)に関するページを参照してください。
+* [EFLOW の概要](../../iot-edge/iot-edge-for-linux-on-windows.md)に関するページを参照してください。
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -29,9 +29,9 @@ ms.locfileid: "102618136"
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="IoT Edge for Linux on Windows (EFLOW) の図":::
 
-1. Windows デバイスに [EFLOW をインストール](https://aka.ms/AzEFLOW-install)します。 
+1. Windows デバイスに [EFLOW をインストール](../../iot-edge/how-to-install-iot-edge-on-windows.md)します。 
 
-    1. Windows PC を使用している場合、[Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview) 開始ページにある接続の一覧に、Windows Admin Center を実行している PC を表すローカル ホスト接続が表示されます。 
+    1. Windows PC を使用している場合、[Windows Admin Center](/windows-server/manage/windows-admin-center/overview) 開始ページにある接続の一覧に、Windows Admin Center を実行している PC を表すローカル ホスト接続が表示されます。 
     1. その他の管理対象のサーバー、PC、またはクラスターもここに表示されます。
     1. Windows Admin Center を使用して、ローカル デバイスまたはリモート マネージド デバイス上に、Azure EFLOW をインストールして管理できます。 このガイドでは、ローカル ホスト接続が、Azure IoT Edge for Linux on Windows のデプロイにおけるターゲット デバイスとして使用されました。 そのため、localhost も IoT Edge デバイスとして表示されています。
 
@@ -110,4 +110,3 @@ ms.locfileid: "102618136"
 * [ライブ ビデオの AI](use-your-model-quickstart.md#overview) を実行します (前提条件である設定は、上記で既に完了しているのでスキップしてかまいません)。
 * [VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)を使用して、その他のメディア グラフを確認します。
 * RTSP シミュレーターを使用する代わりに、RTSP をサポートする [IP カメラ](https://en.wikipedia.org/wiki/IP_camera)を使用します。 RTSP をサポートする IP カメラは、[ONVIF 準拠製品](https://www.onvif.org/conformant-products/)のページで見つけることができます。 プロファイル G、S、または T に準拠しているデバイスを探します。
-

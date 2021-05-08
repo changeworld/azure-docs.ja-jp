@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory External Identities の新機能
 description: Azure Active Directory External Identities の新規および更新されたドキュメント。
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,39 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: dda3f7c8f4a9a21e16ebab7d243a004c01a40eed
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b0654992831dcda65c3d5f53cc22aef0afd4d277
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453668"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449751"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory External Identities:新機能
 
 Azure Active Directory External Identities のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 External Identities サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [External Identities 用の Microsoft アカウント (MSA) ID プロバイダー (プレビュー)](microsoft-account.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [API コネクタをユーザー フローに追加する](self-service-sign-up-add-api-connector.md)
+- [Azure Active Directory B2B のゲスト ユーザー アクセスとは](what-is-b2b.md)
+- [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](user-properties.md)
+- [チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する](tutorial-bulk-invite.md)
+- [カスタム承認ワークフローをセルフサービス サインアップに追加する](self-service-sign-up-add-approvals.md)
+- [ゲスト ユーザーの引き換え状態をリセットする](reset-redemption-status.md)
+- [API コネクタを使用してセルフサービス サインアップをカスタマイズおよび拡張する](api-connectors-overview.md)
+- [Azure Active Directory B2B コラボレーションの FAQ](faq.md)
+- [Azure Active Directory B2B コラボレーションの招待の利用](redemption-experience.md)
+- [外部 ID に対する ID プロバイダー](identity-providers.md)
+- [セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)](self-service-sign-up-user-flow.md)
+- [電子メール ワンタイム パスコード認証](one-time-passcode.md)
+- [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 

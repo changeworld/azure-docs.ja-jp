@@ -1,19 +1,19 @@
 ---
 title: Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 description: Azure Blob Storage のホット、クール、およびアーカイブ アクセス層について説明します。 階層制御がサポートされるストレージ アカウントを確認します。
-author: mhopkins-msft
-ms.author: mhopkins
-ms.date: 01/11/2021
+author: twooley
+ms.author: twooley
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 957973cc4f53dba10ed9d635c8e3f69fd66ee33b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928796"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278424"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 
@@ -86,7 +86,7 @@ BLOB がアーカイブ ストレージ内にある間、BLOB データはオフ
 - 長期間格納しておく必要があり、ほとんどアクセスされることがない、コンプライアンスおよびアーカイブ データ
 
 > [!NOTE]
-> アーカイブ層は、ZRS、GZRS、RA-GZRS アカウントではサポートされていません。 ストレージ アカウントのアーカイブ ストレージ層に BLOB が含まれている場合、LRS から GRS への移行はサポートされません。
+> アーカイブ層は、ZRS、GZRS、RA-GZRS アカウントではサポートされていません。 LRS から GRS への移行は、アカウントが LRS に設定されている間に、アーカイブ層に移動された BLOB がない限りサポートされます。 アカウントが LRS になってから 30 日以内に更新が完了し、アカウントが LRS に設定されている間に、BLOB がアーカイブ層に移動されなかった場合は、アカウントを GRS に戻すことができます。
 
 ## <a name="account-level-tiering"></a>アカウント レベルの階層制御
 
@@ -100,7 +100,9 @@ BLOB がアーカイブ ストレージ内にある間、BLOB データはオフ
 
 BLOB レベルの階層制御では、[Put Blob](/rest/api/storageservices/put-blob) または [Put Block List](/rest/api/storageservices/put-block-list) 操作を使用して、選択したアクセス層にデータをアップロードし、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作または[ライフサイクル管理](#blob-lifecycle-management)機能を使用して、オブジェクト レベルでデータの層を変更できます。 必要なアクセス層にデータをアップロードし、その後、使用パターンの変化に応じて、アカウント間でデータを移動することなく、BLOB のアクセス層をホット、クール、アーカイブに簡単に変更することができます。 すべての階層変更要求はすぐに発生し、ホットとクール間の層の変更は瞬時に行われます。 アーカイブ層からの BLOB のリハイドレートには、数時間かかる場合があります。
 
-BLOB 層が最後に変更された時間は、BLOB の **アクセス層変更時間** プロパティを介して公開されます。 ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。
+BLOB 層が最後に変更された時間は、BLOB の **アクセス層変更時間** プロパティを介して公開されます。 **アクセス層変更時間** は BLOB レベルのプロパティであり、既定のアカウント層が変更されても更新されません。 アカウント プロパティと BLOB プロパティは別です。 アカウントの既定のアクセス層が変更されるたびにストレージ アカウント内のすべての BLOB の **アクセス層変更時間** を更新することは非常にコスト高です。
+
+ホット層またはクール層の BLOB を上書きするとき、作成時に新しい BLOB アクセス層を明示的に設定しない限り、新しく作成された BLOB では上書きされた BLOB の階層を引き継ぎます。 BLOB がアーカイブ層にあると、上書きできないため、このシナリオでは、同じ BLOB をアップロードすることは許可されません。
 
 > [!NOTE]
 > アーカイブ ストレージと BLOB レベルの階層制御では、ブロック BLOB のみがサポートされます。

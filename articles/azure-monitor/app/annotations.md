@@ -3,12 +3,12 @@ title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: 776efd56aaa523d1c2621c51cba0446a42bb7411
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9132e65e4705fd9125d97a5e095fe5f0850229a2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461914"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011052"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -96,7 +96,10 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
 注釈マーカーを選択すると、要求元、ソース管理のブランチ、リリース パイプライン、環境を含む、リリースに関する詳細が表示されます。
 
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell からカスタム注釈を作成する
-Azure DevOps を使わずに、GitHub の CreateReleaseAnnotation PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。
+Azure DevOps を使わずに、CreateReleaseAnnotation PowerShell スクリプトを使って、任意のプロセスから注釈を作成できます。
+
+> [!IMPORTANT]
+> PowerShell 7.1 を使用している場合は、26 行目の末尾に `-SkipHttpErrorCheck` を追加します。 たとえば、`$request = Invoke-WebRequest -Uri $fwLink -MaximumRedirection 0 -UseBasicParsing -ErrorAction Ignore -SkipHttpErrorCheck` です。
 
 1. CreateReleaseAnnotation.ps1 のローカル コピーを作成します。
 
@@ -256,8 +259,8 @@ Azure DevOps を使わずに、GitHub の CreateReleaseAnnotation PowerShell ス
 
 過去に関する注釈を作成する場合など、スクリプトを変更できます。
 
+
 ## <a name="next-steps"></a>次のステップ
 
 * [作業項目を作成する](./diagnostic-search.md#create-work-item)
 * [PowerShell でのオートメーション](./powershell.md)
-

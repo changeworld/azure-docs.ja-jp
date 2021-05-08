@@ -3,17 +3,19 @@ title: 'クイックスタート: Azure ファイアウォールとファイア�
 description: このクイックスタートでは、Azure ファイアウォールとファイアウォール ポリシーをデプロイします。
 services: firewall-manager
 author: vhorne
-ms.service: firewall-manager
-ms.topic: quickstart
-ms.custom: subject-armqs
-ms.date: 02/17/2021
 ms.author: victorh
-ms.openlocfilehash: 9cc263d311bd550a92a0c8f14ab5ce86d72e9ee3
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.date: 02/17/2021
+ms.topic: quickstart
+ms.service: firewall-manager
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 43853d9e0b955167905af4777d533114a1d1f2ba
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633633"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529862"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>クイックスタート: Azure ファイアウォールとファイアウォール ポリシーを作成する - ARM テンプレート
 

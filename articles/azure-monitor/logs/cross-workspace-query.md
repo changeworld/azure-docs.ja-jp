@@ -4,13 +4,13 @@ description: この記事では、サブスクリプション内の複数のワ�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/22/2020
-ms.openlocfilehash: 57ed43b25c9031138a91f0870d316e1ae7a07a5b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/11/2021
+ms.openlocfilehash: 19cc85751fc5e4a165b646ac89d9d6b6e90c4408
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030969"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379555"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>複数のワークスペースとアプリにまたがるログ クエリを Azure Monitor で実行する
 
@@ -27,7 +27,7 @@ Azure Monitor Logs では、同じリソース グループ、別のリソース
 ## <a name="cross-resource-query-limits"></a>リソース間のクエリの制限 
 
 * 1 回のクエリに含めることができる Application Insights リソースと Log Analytics ワークスペースの数は 100 個に制限されています。
-* リソース間のクエリは、ビュー デザイナーでサポートされていません。 Log Analytics でクエリを作成し、それを Azure ダッシュボードにピン留めして、[ログ クエリを視覚化](../visualize/tutorial-logs-dashboards.md)できます。 
+* リソース間のクエリは、ビュー デザイナーでサポートされていません。 Log Analytics でクエリを作成し、それを Azure ダッシュボードにピン留めして、[ログ クエリを視覚化](../visualize/tutorial-logs-dashboards.md)したり、[Workbooks](../visualize/workbooks-overview.md) に含めたりできます。
 * ログ アラートのクロスリソース クエリは現行の [scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) でのみサポートされています。 レガシ Log Analytics Alerts API を使用している場合、[現行の API に切り替える](../alerts/alerts-log-api-switch.md)必要があります。
 
 
@@ -41,6 +41,9 @@ Azure Monitor Logs では、同じリソース グループ、別のリソース
 
 * リソース名 - 人間が判読できるワークスペースの名前。"*コンポーネント名*" と呼ばれることもあります。 
 
+    >[!IMPORTANT]
+    >アプリとワークスペースの名前が一意ではないため、この識別子はあいまいである可能性があります。 参照は、修飾名、ワークスペース ID、または Azure リソース ID を使って行うことをお勧めします。
+
     `workspace("contosoretail-it").Update | count`
 
 * 修飾名 - ワークスペースの "完全な名前"。*subscriptionName/resourceGroup/componentName* の形式で、サブスクリプション名、リソース グループ、およびコンポーネント名から構成されます。 
@@ -48,8 +51,7 @@ Azure Monitor Logs では、同じリソース グループ、別のリソース
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
     >[!NOTE]
-    >Azure サブスクリプション名が一意ではない場合、この識別子はあいまいである可能性があります。 
-    >
+    >Azure サブスクリプション名が一意ではない場合、この識別子はあいまいである可能性があります。
 
 * ワークスペース ID - ワークスペース ID は、グローバル一意識別子 (GUID) として表される、各ワークスペースに割り当てられた一意で不変の識別子です。
 

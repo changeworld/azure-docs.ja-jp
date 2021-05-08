@@ -3,13 +3,13 @@ title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.date: 03/16/2021
+ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652396"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774875"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -42,7 +42,7 @@ Azure portal で **[ヘルプとサポート]** にアクセスできます。 �
 
 Azure portal 内の任意の場所からサポート リクエストを開始するには、次の操作を行います。
 
-1. **[?]** を グローバル ヘッダーで選択します。 次に、 **[ヘルプとサポート]** を選択します。
+1. **[?]** を グローバル ヘッダーで、 **[ヘルプとサポート]** を選択します。
 
    ![ヘルプとサポート](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 

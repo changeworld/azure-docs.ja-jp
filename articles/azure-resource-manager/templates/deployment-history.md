@@ -4,12 +4,12 @@ description: Azure Resource Manager のデプロイ操作を、ポータル、Po
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 00e0c51244d5c191d4c9f05f689b90ece81ec5a4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e7ed2096a696efdc9a2654a8fd0c294c82cbd4f7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91284620"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781867"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ履歴の表示
 
@@ -61,13 +61,13 @@ Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName Ex
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループのデプロイを一覧表示するには、[az deployment group list](/cli/azure/group/deployment#az-deployment-group-list) を使用します。
+リソース グループのデプロイを一覧表示するには、[az deployment group list](/cli/azure/group/deployment#az_deployment_group_list) を使用します。
 
 ```azurecli-interactive
 az deployment group list --resource-group ExampleGroup
 ```
 
-特定のデプロイを取得するには、[az deployment group show](/cli/azure/group/deployment#az-deployment-group-show) を使用します。
+特定のデプロイを取得するには、[az deployment group show](/cli/azure/group/deployment#az_deployment_group_show) を使用します。
 
 ```azurecli-interactive
 az deployment group show --resource-group ExampleGroup --name ExampleDeployment
@@ -147,7 +147,7 @@ Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -Deployme
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループにデプロイするためのデプロイ操作を表示するには、[az deployment operation group list](/cli/azure/deployment/operation/group#az-deployment-operation-group-list) コマンドを使用します。 Azure CLI 2.6.0 以降である必要があります。
+リソース グループにデプロイするためのデプロイ操作を表示するには、[az deployment operation group list](/cli/azure/deployment/operation/group#az_deployment-operation-group-list) コマンドを使用します。 Azure CLI 2.6.0 以降である必要があります。
 
 ```azurecli-interactive
 az deployment operation group list --resource-group ExampleGroup --name ExampleDeployment
@@ -214,4 +214,3 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/
 * 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](common-deployment-errors.md)に関するページを参照してください。
 * 履歴でのデプロイの管理方法の詳細については、「[デプロイ履歴からの自動削除](deployment-history-deletions.md)」を参照してください。
 * デプロイを実行する前に検証するには、 [Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](deploy-powershell.md)に関するページを参照してください。
-

@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ed87a5a744defb15d4a898aeabdce5267b7431fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98875451"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775657"
 ---
 # <a name="manage-your-function-app"></a>お使いの Function App の管理 
 
@@ -46,14 +46,14 @@ Azure Functions では、 Function App に個々の関数の実行コンテキ�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) コマンドでは、次の例のように、既存のアプリケーションの設定を返します。
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list) コマンドでは、次の例のように、既存のアプリケーションの設定を返します。
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドでは、アプリケーション設定を追加または更新します。 次の例では、`CUSTOM_FUNCTION_APP_SETTING` という名前のキーと `12345` の値で設定を作成しています。
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) コマンドでは、アプリケーション設定を追加または更新します。 次の例では、`CUSTOM_FUNCTION_APP_SETTING` という名前のキーと `12345` の値で設定を作成しています。
 
 
 ```azurecli-interactive
@@ -260,7 +260,7 @@ App Service 用の高度なツール (Kudu とも呼ばれます) を使用す�
 
 ワイルドカード (`*`) を使用すると、他のすべてのドメインは無視されます。 
 
-許可されたオリジンの一覧にドメインを追加するには、[`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) コマンドを使用します。 次の例では、contoso.com ドメインが追加されます。
+許可されたオリジンの一覧にドメインを追加するには、[`az functionapp cors add`](/cli/azure/functionapp/cors#az_functionapp_cors_add) コマンドを使用します。 次の例では、contoso.com ドメインが追加されます。
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -268,7 +268,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-現在許可されているオリジンを列挙するには、[`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) コマンドを使用します。
+現在許可されているオリジンを列挙するには、[`az functionapp cors show`](/cli/azure/functionapp/cors#az_functionapp_cors_show) コマンドを使用します。
 
 ### <a name="authentication"></a><a name="auth"></a>認証
 

@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: e9f8d4797907cfdc4e7184580e31ac3cb3975b66
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 050356dc74641e7e7154d6a3976e6cc8d5f4ce3d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739884"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063612"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの MySQL インスタンスから [Azure Database for MySQL](../mysql/index.yml) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL に移行します。
+
+> [!IMPORTANT]
+> "MySQL を Azure Database for MySQL に移行する" オンライン移行シナリオは、2021 年 6 月 1 日に、並列化された高パフォーマンスのオフライン移行シナリオで置き換えられます。 オンライン移行では、この新しいオファリングを[データイン レプリケーション](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)と共に使用できます。 または、データイン レプリケーションと共に [MyDumper や MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用してオンライン移行を行うこともできます。 
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]

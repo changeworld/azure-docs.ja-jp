@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 335056260ddea0c15db761df109e69333ef474f3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452375"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641385"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azure Stack Edge に関する Azure セキュリティ ベースライン
 
@@ -38,7 +38,7 @@ Azure Stack Edge を完全に Azure セキュリティ ベンチマークにマ�
 
 追加情報については、参照先のリンクをご覧ください。
  
-- [Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [クイックスタート - GPU 搭載の Azure Stack Edge Pro を使い始める](azure-stack-edge-gpu-quickstart.md)
 
@@ -54,7 +54,7 @@ Azure Stack Edge を完全に Azure セキュリティ ベンチマークにマ�
 
 - [Azure PowerShell を使用して Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の Azure VPN を構成する](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [チュートリアル:Azure Stack Edge Pro R 用の証明書を構成する](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -68,7 +68,7 @@ Azure Stack Edge を完全に Azure セキュリティ ベンチマークにマ�
 
 - [Azure PowerShell を使用して Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の Azure VPN を構成する](azure-stack-edge-mini-r-configure-vpn-powershell.md)
 
-- [Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する](azure-stack-edge-j-series-configure-tls-settings.md)
+- [Azure Stack Edge Pro GPU デバイスにアクセスする Windows クライアント上で TLS 1.2 を構成する](./azure-stack-edge-gpu-configure-tls-settings.md)
 
 - [チュートリアル:Azure Stack Edge Pro R 用の証明書を構成する](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)
 
@@ -298,7 +298,7 @@ Azure Stack Edge Pro デバイスは、データをローカルで処理し、�
 
 **ガイダンス**:許可されているユーザー (たとえば "EdgeArmUser") だけが、ローカル Azure Resource Manager を介して Azure Stack Edge デバイス API にアクセスできます。 ユーザー アカウントのパスワードは、Azure portal でのみ管理できます。 
 
-- [Azure Resource Manager パスワードを設定する](azure-stack-edge-j-series-set-azure-resource-manager-password.md)
+- [Azure Resource Manager パスワードを設定する](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)
 
 **Azure Security Center の監視**: 現在は使用できません
 

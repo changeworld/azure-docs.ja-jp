@@ -3,16 +3,16 @@ title: Azure Data Factory でのパイプラインの実行とトリガー
 description: この記事では、オンデマンドで、またはトリガーを作成して、Azure Data Factory でパイプラインを実行する方法に関する情報を提供します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: bd36b589424a0d890fc5e1bbab3f234e9b3264c6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 271dbd87950018cebbd23841d32324afa42511e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100374781"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785803"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 
@@ -323,13 +323,8 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 タンブリング ウィンドウ トリガーの詳細と例については、[タンブリング ウィンドウ トリガーの作成](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
-## <a name="event-based-trigger"></a>イベントベースのトリガー
-
-イベントベースのトリガーは、ファイルの到着、ファイルの削除などのイベントに応答して、Azure Blob Storage 内でパイプラインを実行します。
-
-イベントベースのトリガーの詳細については、「[Create a trigger that runs a pipeline in response to an event (イベントに応答してパイプラインを実行するトリガーの作成)](how-to-create-event-trigger.md)」を参照してください。
-
 ## <a name="examples-of-trigger-recurrence-schedules"></a>トリガーの繰り返しのスケジュールの例
+
 このセクションでは、繰り返しのスケジュールの例を示します。 **schedule** オブジェクトとその要素に焦点を当てています。
 
 各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで **monthDays** の変更を指定することはできません。 これらの種類の制限については、前のセクションの表で説明されています。
@@ -364,6 +359,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
 ## <a name="trigger-type-comparison"></a>トリガーの種類の比較
+
 タンブリング ウィンドウ トリガーとスケジュール トリガーは、どちらも時間のハートビートに対して動作します。 これらはどのように違うのでしょうか。
 
 > [!NOTE]
@@ -380,7 +376,17 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **システム変数** | @trigger().scheduledTime および @trigger().startTime と共に、**WindowStart** および **WindowEnd** システム変数の使用もサポートします。 ユーザーは、トリガー定義のトリガー システム変数として `trigger().outputs.windowStartTime` および `trigger().outputs.windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` と `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z` です。 | 既定の @trigger().scheduledTime および @trigger().startTime 変数のみがサポートされます。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 |
 
+## <a name="event-based-trigger"></a>イベントベースのトリガー
+
+イベントベースのトリガーは、イベントに応答してパイプラインを実行します。 イベントベースのトリガーには、2 つの種類があります。
+
+* _ストレージ イベント トリガー_ は、ファイルの到着や Azure Blob Storage アカウント内のファイルの削除など、ストレージ アカウントで発生したイベントに対してパイプラインを実行します。
+* _カスタム イベント トリガー_ は、Event Grid の [カスタム トピック](../event-grid/custom-topics.md)を処理します。
+
+イベントベースのトリガーの詳細については、[ストレージ イベント トリガー](how-to-create-event-trigger.md)および[カスタム イベント トリガー](how-to-create-custom-event-trigger.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
+
 次のチュートリアルを参照してください。
 
 - [クイック スタート: .NET SDK を使用してデータ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)

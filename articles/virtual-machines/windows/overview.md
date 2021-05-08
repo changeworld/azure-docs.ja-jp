@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2432cc49d770471979e089a496b9d0351eec26fd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 07562641ef866074dcf14cb01afd4d7ce071e467
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102550333"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311007"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -50,7 +50,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | --- | --- |
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
-| REST API |[場所の一覧表示](/rest/api/resources/subscriptions)操作を使用します。 |
+| REST API |[場所の一覧表示](/rest/api/resources/subscriptions/listlocations)操作を使用します。 |
 | Azure CLI |[az account list-locations](/cli/azure/account) 操作を使用します。 |
 
 ## <a name="availability"></a>可用性

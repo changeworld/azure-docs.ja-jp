@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 148b24aea42072f1901c76c7a09a126340ef9951
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792635"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784373"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のマネージド API リファレンス
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -60,18 +60,18 @@ Azure PowerShell を使用してマネージド インスタンスを作成お�
 
 | コマンドレット | 説明 |
 | --- | --- |
-|[az sql mi create](/cli/azure/sql/mi#az-sql-mi-create) |マネージド インスタンスを作成します。|
-|[az sql mi list](/cli/azure/sql/mi#az-sql-mi-list)|使用可能なマネージド インスタンスを一覧表示します。|
-|[az sql mi show](/cli/azure/sql/mi#az-sql-mi-show)|マネージド インスタンスの詳細を取得します。|
-|[az sql mi update](/cli/azure/sql/mi#az-sql-mi-update)|マネージド インスタンスを更新します。|
-|[az sql mi delete](/cli/azure/sql/mi#az-sql-mi-delete)|マネージド インスタンスを削除します。|
+|[az sql mi create](/cli/azure/sql/mi#az_sql_mi_create) |マネージド インスタンスを作成します。|
+|[az sql mi list](/cli/azure/sql/mi#az_sql_mi_list)|使用可能なマネージド インスタンスを一覧表示します。|
+|[az sql mi show](/cli/azure/sql/mi#az_sql_mi_show)|マネージド インスタンスの詳細を取得します。|
+|[az sql mi update](/cli/azure/sql/mi#az_sql_mi_update)|マネージド インスタンスを更新します。|
+|[az sql mi delete](/cli/azure/sql/mi#az_sql_mi_delete)|マネージド インスタンスを削除します。|
 |[az sql mi op list](/cli/azure/sql/mi/op#az_sql_mi_op_list)|マネージド インスタンス上で実行された管理操作の一覧を取得します。|
 |[az sql mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|マネージド インスタンスで実行された特定の管理操作を取得します。|
 |[az sql mi op cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|マネージド インスタンスで実行された特定の管理操作を取り消します。|
-|[az sql midb create](/cli/azure/sql/midb#az-sql-midb-create) |マネージド データベースを作成します。|
-|[az sql midb list](/cli/azure/sql/midb#az-sql-midb-list)|使用可能なマネージド データベースを一覧表示します。|
-|[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)|マネージド データベースを復元します。|
-|[az sql midb delete](/cli/azure/sql/midb#az-sql-midb-delete)|マネージド データベースを削除します。|
+|[az sql midb create](/cli/azure/sql/midb#az_sql_midb_create) |マネージド データベースを作成します。|
+|[az sql midb list](/cli/azure/sql/midb#az_sql_midb_list)|使用可能なマネージド データベースを一覧表示します。|
+|[az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore)|マネージド データベースを復元します。|
+|[az sql midb delete](/cli/azure/sql/midb#az_sql_midb_delete)|マネージド データベースを削除します。|
 
 ## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL:インスタンス データベースを作成して構成する
 

@@ -1,7 +1,6 @@
 ---
 title: データ管理パートナー
 description: Azure Synapse Analytics をサポートするソリューションを提供するサードパーティのデータ管理パートナーの一覧。
-services: synapse-analytics
 author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d58deccb124e451106f43ae30c2fe910b3d41b54
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b8d900b004dbadd7a8909de14caec16f8617aeb8
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634118"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566615"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics データ管理パートナー
 

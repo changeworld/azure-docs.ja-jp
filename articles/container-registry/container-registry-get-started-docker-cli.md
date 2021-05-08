@@ -4,12 +4,12 @@ description: Docker CLI を使用した、Azure のプライベート コンテ�
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99987764"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783829"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Docker CLI を使用した、Azure のコンテナー レジストリへの最初のイメージのプッシュ
 
@@ -24,7 +24,7 @@ ms.locfileid: "99987764"
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
 
-プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az-acr-login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az_acr_login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
 
 ```azurecli
 az login
@@ -114,7 +114,7 @@ Nginx イメージが不要になった場合は、[docker rmi](https://docs.doc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
+Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest

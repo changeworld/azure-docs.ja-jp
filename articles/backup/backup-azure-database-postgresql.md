@@ -2,14 +2,14 @@
 title: Azure Database for PostgreSQL のバックアップ
 description: 長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー) について説明します。
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4730cad32203642f0d1b84529a5822d7595d6bf8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737574"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375089"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -135,10 +135,9 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
 1. **保持** の設定を定義します。 保持規則を 1 つ以上追加できます。 各保持規則は、特定のバックアップの入力と、それらのバックアップのデータ ストアと保持期間を前提とします。
 
-1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。**バックアップ データ ストア** (Standard レベル) または **アーカイブ データ ストア** (プレビュー)。 次の **2 つの階層化オプション** のいずれかを選択することで、2 つのデータ ストア間でバックアップを階層化するタイミングを定義できます。
+1. バックアップの格納先として、次の 2 つのデータ ストア (または階層) のいずれかを選択できます。**バックアップ データ ストア** (Standard レベル) または **アーカイブ データ ストア** (プレビュー)。
 
-    - バックアップとアーカイブの両方のデータ ストアに同時にバックアップ コピーを作成する場合は、 **[今すぐ]** コピーすることを選択します。
-    - バックアップ データ ストアでバックアップが期限切れになったときにそのバックアップをアーカイブ データ ストアに移動する場合は、 **[On-expiry]\(期限切れ時\)** に移動することを選択します。
+   **[On-expiry]\(期限切れ時\)** を選択すると、バックアップ データ ストアで期限切れになったときにバックアップをアーカイブ データ ストアに移動できます。
 
 1. 他の保持規則が存在しない場合、**既定の保持規則** が適用されます。既定値は 3 か月です。
 
@@ -197,7 +196,21 @@ Azure Backup と Azure Database Services を連携させることで、バック
 
     ![ファイルとして復元](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. 回復ポイントがアーカイブ層にある場合は、復元する前に回復ポイントをリハイドレートする必要があります。
+   
+   ![リハイドレートの設定](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   リハイドレートに必要な次の追加パラメーターを指定します。
+   - **Rehydration priority \(リハイドレートの優先順位\):** 既定値は **Standard** です。
+   - **Rehydration duration \(リハイドレート期間\):** 最大リハイドレート期間は 30 日間、最小リハイドレート期間は 10 日間です。 既定値は **15** です。
+   
+   回復ポイントは、指定されたリハイドレート期間、**バックアップ データ ストア** に格納されます。
+
+
 1. 情報を確認し、 **[復元]** を選択します。 これにより、対応する復元ジョブがトリガーされます。このジョブは **[バックアップ ジョブ]** で追跡できます。
+
+>[!NOTE]
+>Azure Database for PostgreSQL のアーカイブ サポートは、限定パブリック プレビュー段階です。
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>バックアップと復元を構成するための前提条件のアクセス許可
 
@@ -220,7 +233,7 @@ Azure Backup は、厳密なセキュリティ ガイドラインに準拠して
 
 ### <a name="stop-protection"></a>保護の停止
 
-バックアップ項目の保護を停止できます。 これにより、そのバックアップ項目に関連付けられている復旧ポイントも削除されます。 既存の復旧ポイントを保持しながら、保護を停止するオプションはまだ提供されていません。
+バックアップ項目の保護を停止できます。 これにより、そのバックアップ項目に関連付けられている復旧ポイントも削除されます。 少なくとも 6 か月間、回復ポイントがアーカイブ層に含まれていない場合は、これらの回復ポイントを削除すると早期削除コストが発生します。 既存の復旧ポイントを保持しながら、保護を停止するオプションはまだ提供されていません。
 
 ![保護の停止](./media/backup-azure-database-postgresql/stop-protection.png)
 
@@ -254,21 +267,17 @@ PostgreSQL データベースへのセキュリティで保護された接続を
 
     ![[アクセス制御] ペイン](./media/backup-azure-database-postgresql/access-control-pane.png)
 
-1. **[ロールの割り当てを追加する]** を選択します。
+1. **[ロールの割り当ての追加]** を選択します。
 
     ![ロールの割り当ての追加](./media/backup-azure-database-postgresql/add-role-assignment.png)
 
 1. 開いた右側のコンテキスト ペインで、次の情報を入力します。<br>
 
-    **役割:** Reader<br>
-    **[アクセスの割り当て先]** : **[バックアップ コンテナー]** を選択します<br>
-    ドロップダウン リストに **[バックアップ コンテナー]** オプションが表示されない場合は、 **[Azure AD のユーザー、グループ、サービス プリンシパル]** オプションを選択します。<br>
+   - **ロール:** ドロップダウン リストから **[閲覧者]** ロールを選択します。<br>
+   - **アクセスの割り当て先:** ドロップダウン リストから **[ユーザー、グループ、またはサービス プリンシパル]** オプションを選択します。<br>
+   - **選択:** このサーバーとそのデータベースをバックアップする先のバックアップ コンテナーの名前を入力します。<br>
 
-    ![ロールの選択](./media/backup-azure-database-postgresql/select-role.png)
-
-    **選択:** このサーバーとそのデータベースをバックアップする先のバックアップ コンテナーの名前を入力します。<br>
-
-    ![バックアップ コンテナーの名前を入力する](./media/backup-azure-database-postgresql/enter-backup-vault-name.png)
+    ![ロールの選択](./media/backup-azure-database-postgresql/select-role-and-enter-backup-vault-name.png)
 
 ### <a name="usererrorbackupuserauthfailed"></a>UserErrorBackupUserAuthFailed
 

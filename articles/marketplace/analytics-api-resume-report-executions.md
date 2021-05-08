@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 4a11783b28352cb62c5a3c0d38e45dcdc47a8d86
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583551"
 ---
 # <a name="resume-report-executions-api"></a>レポート実行の再開 API
@@ -27,7 +27,7 @@ ms.locfileid: "102583551"
 
 **要求ヘッダー**
 
-| ヘッダー | 種類 | 説明 |
+| ヘッダー | Type | 説明 |
 | ------------ | ------------- | ------------- |
 | 承認 | string | 必須。 `Bearer <token>` という形式の Azure Active Directory (Azure AD) アクセス トークン |
 | Content-Type | string | `Application/JSON` |
@@ -39,7 +39,7 @@ ms.locfileid: "102583551"
 
 **クエリ パラメーター**
 
-| パラメーター名 | 必須 | 種類 | 説明 |
+| パラメーター名 | 必須 | Type | 説明 |
 | ------------ | ------------- | ------------- | ------------- |
 | `reportId` | はい | string | 変更されるレポートの ID |
 |||||

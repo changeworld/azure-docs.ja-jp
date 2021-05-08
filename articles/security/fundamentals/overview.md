@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: TomSh
-ms.openlocfilehash: a62326d99eee8407b65c0c640b4db8a6f051c758
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b5f9df4e6f682b5d1e9e3cd35affe6e4191e3d53
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101190"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047781"
 ---
 # <a name="introduction-to-azure-security"></a>Azure のセキュリティの概要
 
@@ -201,6 +201,14 @@ Azure のネットワークは、セキュリティで保護されたリモー�
 - [オンプレミス ネットワークから Azure Virtual Network への専用 WAN リンクによる接続](../../expressroute/expressroute-introduction.md)
 
 - [Azure Virtual Network どうしの接続](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+### <a name="azure-private-link"></a>Azure Private Link
+
+[Azure Private Link](https://azure.microsoft.com/services/private-link/) では、仮想ネットワークの[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有/パートナー サービスにプライベートにアクセスできます。 Azure Private Link を使用した設定と消費は、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。 仮想ネットワークから Azure サービスへのトラフィックは常に、Microsoft Azure のバックボーン ネットワーク上に残ります。
+
+[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用することで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 Azure プライベート エンドポイントでは、VNet のプライベート IP アドレスを使用して、Azure Private Link を使用するサービスにプライベートで安全に接続し、サービスを実質的に VNet に取り込みます。 Azure でサービスを使用するために、パブリック インターネットへの仮想ネットワークの公開は不要になりました。 
+
+仮想ネットワークに独自のプライベート リンク サービスを作成することもできます。 [Azure Private Link サービス](../../private-link/private-link-service-overview.md)は、Azure Private Link を使用する独自のサービスに対する参照です。 Azure Standard Load Balancer の背後で実行されている自分のサービスで Private Link アクセスを有効にすると、自分のサービスのコンシューマーが独自の仮想ネットワークからプライベートにアクセスできるようになります。 顧客は、自分の仮想ネットワーク内にプライベート エンドポイントを作成し、それをこのサービスにマッピングすることができます。 Azure でサービスをレンダリングするために、パブリック インターネットにサービスを公開する必要はありません。 
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

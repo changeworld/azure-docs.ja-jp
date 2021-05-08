@@ -11,28 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc, seodec18
-ms.date: 12/07/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 0e07839c3c5ce542335eeadc92e6a3c98fe87856
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90970208"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606982"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Azure Dedicated HSM とは何か
 
 Azure Dedicated HSM は、Azure 内に暗号化キーの保管場所を提供する Azure サービスです。 Dedicated HSM は、最も厳格なセキュリティ要件に適合しています。 これは、FIPS 140-2 レベル 3 検証済みデバイスを必要としていて、HSM アプライアンスを完全かつ独占的に制御する必要のあるお客様にとって、理想的なソリューションです。 
 
- HSM デバイスは、複数の Azure リージョン全体にグローバルにデプロイされます。 高可用性を確保するために、これらを一対のデバイスとして容易にプロビジョニングして構成することができます。 HSM デバイスを複数のリージョン全体にプロビジョニングすることで、リージョン レベルのフェールオーバーに対応することもできます。 Microsoft では、Gemalto の [SafeNet Luna Network HSM 7 (Model A790)](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) アプライアンスを使用して Dedicated HSM サービスを提供しています。 このデバイスは、最高レベルのパフォーマンスと暗号統合オプションを備えています。 
+ HSM デバイスは、複数の Azure リージョン全体にグローバルにデプロイされます。 高可用性を確保するために、これらを一対のデバイスとして容易にプロビジョニングして構成することができます。 HSM デバイスを複数のリージョン全体にプロビジョニングすることで、リージョン レベルのフェールオーバーに対応することもできます。 Microsoft は、[Thales Luna 7 HSM model A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) アプライアンスを使用して Dedicated HSM サービスを提供しています。 このデバイスは、最高レベルのパフォーマンスと暗号統合オプションを備えています。 
 
-プロビジョニングした HSM デバイスは、お客様の仮想ネットワークに直接接続されます。 また、ポイント対サイトまたはサイト間の VPN 接続を構成することで、オンプレミスのアプリケーションや管理ツールからもアクセスできます。 お客様には、HSM デバイスを構成して管理するためのソフトウェアとドキュメントが Gemalto のサポート ポータルを通じて提供されます。
+プロビジョニングした HSM デバイスは、お客様の仮想ネットワークに直接接続されます。 また、ポイント対サイトまたはサイト間の VPN 接続を構成することで、オンプレミスのアプリケーションや管理ツールからもアクセスできます。 お客様には、HSM デバイスを構成して管理するためのソフトウェアとドキュメントが [Thales のカスタマー サポート ポータル](https://supportportal.thalesgroup.com/csm)を通じて提供されます。
 
 ## <a name="why-use-azure-dedicated-hsm"></a>Azure Dedicated HSM を使用する理由
 
 ### <a name="fips-140-2-level-3-compliance"></a>FIPS 140-2 レベル 3 準拠
 
-多くの組織には、暗号化キーの保管に関して [FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 要件への準拠を規定した、厳しい業界規制が存在します。 Microsoft のマルチテナント Azure Key Vault サービスが現在対応しているのは、FIPS 140-2 レベル 2 認定のみです。 Azure Dedicated HSM は、金融サービス業や行政機関など、FIPS 140-2 レベル 3 要件への準拠が求められる組織の実際のニーズを満たします。
+多くの組織には、[FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 認証済みの HSM に暗号化キーを格納することを義務付ける厳しい業界規制が存在します。 Azure Dedicated HSM と、新しいシングルテナント オファリングである [Azure Key Vault Managed HSM (プレビュー)](https://docs.microsoft.com/azure/key-vault/managed-hsm) により、金融サービス業界、行政機関など、さまざまな業界のユーザーが FIPS 140-2 レベル 3 の要件を満たすことができます。 Microsoft のマルチテナント [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) サービスでは現在、FIPS 140-2 レベル 2 認証済み HSM が使用されています。 
 
 ### <a name="single-tenant-devices"></a>シングルテナント デバイス
 
@@ -48,7 +48,7 @@ Microsoft のお客様の多くは、暗号の保管デバイスのシングル 
 
 ### <a name="high-performance"></a>高性能
 
-Gemalto デバイスがこのサービスに選ばれたのには、さまざまな理由があります。 幅広い暗号アルゴリズムのサポート、さまざまなオペレーティング システムのサポート、広範な API のサポートが提供されます。 デプロイされた特定のモデルは、RSA-2048 の場合に毎秒 10,000 操作という優れたパフォーマンスを発揮します。 一意のアプリケーションのインスタンスについて、10 個のパーティションを使用することができます。 短い待ち時間、大容量、高スループットのデバイスです。
+Thales デバイスがこのサービスに選ばれたのには、さまざまな理由があります。 幅広い暗号アルゴリズムのサポート、さまざまなオペレーティング システムのサポート、広範な API のサポートが提供されます。 デプロイされた特定のモデルは、RSA-2048 の場合に毎秒 10,000 操作という優れたパフォーマンスを発揮します。 一意のアプリケーションのインスタンスについて、10 個のパーティションを使用することができます。 短い待ち時間、大容量、高スループットのデバイスです。
 
 ### <a name="unique-cloud-based-offering"></a>他にはないクラウドベースのオファリング
 
@@ -72,7 +72,7 @@ Azure Dedicated HSM は、次のようなシナリオには適していません
 
 ### <a name="it-depends"></a>場合による
 
-Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な要件の組み合わせや、妥協できる点とできない点によって左右されます。 その例が FIPS 140-2 レベル 3 要件です。 この要件は共通のもので、現在のところ Dedicated HSM がこれを満たす唯一の選択肢となります。 こうした義務付けられている要件が該当しないようであれば、たいていは、Azure Key Vault か Dedicated HSM のどちらかを選ぶことになります。 意思決定を行う前にお客様自身の要件を評価してください。
+Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な要件の組み合わせや、妥協できる点とできない点によって左右されます。 その例が FIPS 140-2 レベル 3 要件です。 これは一般的な要件であり、現在それを満たすための選択肢は、Azure Dedicated HSM と、新しいシングル テナント オファリングである [Azure Key Vault Managed HSM (プレビュー)](https://docs.microsoft.com/azure/key-vault/managed-hsm) のみです。 こうした義務付けられている要件が該当しないようであれば、たいていは、Azure Key Vault か Azure Dedicated HSM のどちらかを選ぶことになります。 意思決定を行う前にお客様自身の要件を評価してください。
 
 次のような状況に該当する場合は、選択肢を比較検討する必要があります。 
 
@@ -85,7 +85,7 @@ Azure Dedicated HSM が適しているかどうかは、発生し得る複雑な
 
 これは非常に特殊なサービスです。 そのため、このドキュメント セットの主要な概念について、価格、サポート、サービス レベル アグリーメントを含めて十分に理解しておくことをお勧めします。 
 
-既存の仮想ネットワーク環境に HSM をプロビジョニングする際には、[Gemalto 統合ガイド](https://safenet.gemalto.com/partners/microsoft/)が役立ちます。 また、デプロイ アーキテクチャの設定方法を決める際に役立つ攻略ガイドも用意されています。
+既存の仮想ネットワーク環境に HSM をプロビジョニングする際には、[Thales 統合ガイド](https://cpl.thalesgroup.com/partners/overview)が役立ちます。 また、デプロイ アーキテクチャの設定方法を決める際に役立つ攻略ガイドも用意されています。
 
 * [高可用性](high-availability.md)
 * [物理的なセキュリティ](physical-security.md)

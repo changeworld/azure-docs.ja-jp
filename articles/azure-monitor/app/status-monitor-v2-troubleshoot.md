@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf3d8fd1566f3d71541aab7648680063e85079bf
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505581"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121831"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights Agent (旧称 Status Monitor v2) のトラブルシューティング
 
@@ -152,8 +152,6 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 3. 管理者特権のコマンド コンソールで、`iisreset /start` コマンドを実行して IIS を起動します。
 4. アプリの参照を試みます。
 5. アプリが読み込まれたら、PerfView に戻り、**[Stop Collection]\(収集の停止\)** を選択します。
-
-
 
 ## <a name="next-steps"></a>次の手順
 

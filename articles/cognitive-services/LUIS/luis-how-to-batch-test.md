@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/29/2020
-ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/13/2021
+ms.openlocfilehash: 9fe4f21a5c9e9e26a2f94b8a60cba47916842fe3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98787014"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501792"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
 
@@ -208,7 +208,7 @@ LUIS では、LUIS ポータルと REST API を使用してバッチ テスト�
 
 バッチ テストのために、*データ セット* と呼ばれる発話のバッチ ファイルを送信します。 データ セットは JSON 形式のファイルで、ラベル付きの発話が最大 1,000 件含まれます。 アプリでは、最大 10 個のデータ セットをテストできます。 さらにテストする必要がある場合は、データ セットを削除し、新しいものを追加します。 バッチ ファイル データ内に対応するエンティティが存在しない場合でも、モデル内のすべてのカスタム エンティティがバッチ テストのエンティティのフィルターに表示されます。
 
-バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#types-of-entities)すべてと共に、予期される意図の予測が必要です。
+バッチ ファイルは、発話で構成されます。 各発話には、検出されると予期されている[機械学習によるエンティティ](luis-concept-entity-types.md#machine-learned-ml-entity)すべてと共に、予期される意図の予測が必要です。
 
 ### <a name="batch-syntax-template-for-intents-with-entities"></a>エンティティがある意図のバッチ構文テンプレート
 

@@ -4,12 +4,12 @@ description: この記事では、Apache Ambari で SendGrid を使用してメ�
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946968"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867204"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Ambari のメール通知を構成する
 
@@ -33,15 +33,15 @@ ms.locfileid: "98946968"
 
 1. [概要] ページから **[管理]** を選択して、ご利用のアカウントの SendGrid Web ページに移動します。
 
-    ![Azure portal の SendGrid の概要](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="Azure portal の SendGrid の概要":::
 
 1. 左側のメニューからご利用のアカウント名に移動し、 **[アカウントの詳細]** を選択します。
 
-    ![SendGrid ダッシュボードのナビゲーション](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="SendGrid ダッシュボードのナビゲーション":::
 
 1. **[アカウントの詳細]** ページで **[ユーザー名]** を記録します。
 
-    ![SendGrid のアカウントの詳細](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="SendGrid のアカウントの詳細":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>Ambari のメール通知を構成する
 
@@ -51,7 +51,7 @@ ms.locfileid: "98946968"
 
 1. **[Manage Alert Notifications]\(アラート通知の管理\)** ウィンドウから **+** アイコンを選択します。
 
-    ![[Manage Alert Notifications]\(アラート通知の管理\) ダイアログ ボックスを示すスクリーンショット。](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="[Manage Alert Notifications]\(アラート通知の管理\) ダイアログ ボックスを示すスクリーンショット。":::
 
 1. **[Create Alert Notification]\(アラート通知の作成\)** ダイアログから次の情報を入力します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "98946968"
     |Password Confirmation (パスワードの確認入力)|パスワードを再入力します。|
     |Start TLS (TLS の開始)|このチェック ボックスをオンにします。|
 
-    ![[Create Alert Notification]\(アラート通知の作成\) ダイアログ ボックスを示すスクリーンショット。](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="[Create Alert Notification]\(アラート通知の作成\) ダイアログ ボックスを示すスクリーンショット。":::
 
     **[保存]** を選択します。 **[Manage Alert Notifications]\(アラート通知の管理\)** ウィンドウに戻ります。
 

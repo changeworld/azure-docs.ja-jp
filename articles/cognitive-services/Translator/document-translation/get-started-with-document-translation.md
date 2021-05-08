@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486660"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612383"
 ---
 # <a name="get-started-with-document-translation-preview"></a>ドキュメント翻訳を使ってみる (プレビュー)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486660"
 ## <a name="prerequisites"></a>前提条件
 
 > [!NOTE]
-> 通常、Azure portal で Cognitive Service リソースを作成するときは、マルチサービスのサブスクリプション キーまたは単一サービスのサブスクリプション キーを作成するという選択肢があります。 ただし、ドキュメント翻訳は現在 Translator (単一サービス) リソースでのみサポートされているため、Cognitive Services (マルチサービス) リソースには含まれて **いません**。
+>
+> 1. 通常、Azure portal で Cognitive Service リソースを作成するときは、マルチサービスのサブスクリプション キーまたは単一サービスのサブスクリプション キーを作成するという選択肢があります。 ただし、ドキュメント翻訳は現在 Translator (単一サービス) リソースでのみサポートされているため、Cognitive Services (マルチサービス) リソースには含まれて **いません**。
+> 2. ドキュメント翻訳は、現在、**S1 Standard サービス プラン** でご利用いただけます。 「[Cognitive Services の価格 - Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/)」を _参照_ してください。
+>
 
 作業を開始するには、以下が必要です。
 
@@ -30,14 +33,12 @@ ms.locfileid: "102486660"
 
 * [**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。
 
-* 記入済みの [**ドキュメント翻訳 (プレビュー) フォーム**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u)。Azure サブスクリプションで新しいドキュメント翻訳機能を使用できるようにします。
-
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>カスタム ドメイン名とサブスクリプション キーを取得する
 
 > [!IMPORTANT]
 >
-> * ドキュメント翻訳への HTTP 要求を行うために、Azure portal リソースの _[キーとエンドポイント]_ ページのエンドポイントも、グローバル Translator エンドポイント `api.cognitive.microsofttranslator.com` も使用することはありません。
 > * **ドキュメント翻訳サービスへのすべての API 要求には、カスタム ドメイン エンドポイントが必要です**。
+> * ドキュメント翻訳への HTTP 要求を行うために、Azure portal リソースの _[キーとエンドポイント]_ ページのエンドポイントも、グローバル Translator エンドポイント `api.cognitive.microsofttranslator.com` も使用することはありません。
 
 ### <a name="what-is-the-custom-domain-endpoint"></a>カスタム ドメイン エンドポイントとは
 
@@ -92,7 +93,7 @@ Translator サービスへの要求には、アクセス認証を受けるため
 
 * 新しいプロジェクトを作成します。
 * Program.cs を以下の C# コードで置き換えます。
-* エンドポイント、 サブスクリプション キー、コンテナー URL の値を Program.cs で設定します。
+* エンドポイント、サブスクリプション キー、コンテナー URL の値を Program.cs に設定します。
 * JSON データを処理するには、[.NET CLI を使用して Newtonsoft.Json パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)を追加します。
 * プロジェクト ディレクトリからプログラムを実行します。
 
@@ -100,7 +101,7 @@ Translator サービスへの要求には、アクセス認証を受けるため
 
 * 新しい Node.js プロジェクトを作成します。
 * `npm i axios` を使用して Axios ライブラリをインストールします。
-* 次のコードをコピーして、プロジェクトに貼り付けます。
+* 下のコードをコピーして、プロジェクトに貼り付けます。
 * エンドポイント、サブスクリプション キー、コンテナー URL の値を設定します。
 * プログラムを実行します。
 
@@ -173,7 +174,7 @@ gradle run
 * エンドポイント、サブスクリプション キー、コンテナー URL の値を設定します。
 * "go" という拡張子でファイルを保存します。
 * Go がインストールされているコンピューターのコマンド プロンプトを開きます。
-* ファイルをビルドします (例: "go build example-code.go")。
+* ファイルをビルドします。 例: 'go build example-code.go'。
 * ファイルを実行します (例: "example-code")。
 
  ---
@@ -206,26 +207,49 @@ gradle run
 ## <a name="post-a-translation-request"></a>翻訳要求を POST する
 
 <!-- markdownlint-disable MD024 -->
-### <a name="post-request-body-without-optional-glossaryurl"></a>省略可能な glossaryURL を使用せずに要求本文を POST する
+### <a name="post-request-body-to-translate-all-documents-in-a-container"></a>コンテナー内のすべてのドキュメントを翻訳するための POST 要求本文
 
 ```json
 {
     "inputs": [
         {
             "source": {
-                "sourceUrl": "<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-                "storageSource": "AzureBlob",
-                "filter": {
-                    "prefix": "News",
-                    "suffix": ".txt"
-                },
-                "language": "en"
+                "sourceUrl": https://my.blob.core.windows.net/source-en?sv=2019-12-12&st=2021-03-05T17%3A45%3A25Z&se=2021-03-13T17%3A45%3A00Z&sr=c&sp=rl&sig=SDRPMjE4nfrH3csmKLILkT%2Fv3e0Q6SWpssuuQl1NmfM%3D
             },
             "targets": [
                 {
-                    "targetUrl": "<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-                    "storageSource": "AzureBlob",
-                    "category": "general",
+                    "targetUrl": https://my.blob.core.windows.net/target-fr?sv=2019-12-12&st=2021-03-05T17%3A49%3A02Z&se=2021-03-13T17%3A49%3A00Z&sr=c&sp=wdl&sig=Sq%2BYdNbhgbq4hLT0o1UUOsTnQJFU590sWYo4BOhhQhs%3D,
+                    "language": "fr"
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+### <a name="post-request-body-to-translate-a-specific-document-in-a-container"></a>コンテナー内の特定のドキュメントを翻訳するための POST 要求本文
+
+* "storageType": "File" が指定されていることを確認してください
+* (コンテナーではなく) 特定の BLOB またはドキュメントに対して、ソース URL と SAS トークンが作成されていることを確認してください 
+* ターゲット URL の一部としてターゲット ファイル名が指定されていることを確認してください (ただし、SAS トークンはコンテナー用のままです)。
+* 下のサンプル要求では、1 つのドキュメントが 2 つのターゲット言語に翻訳されています
+
+```json
+{
+    "inputs": [
+        {
+            "storageType": "File",
+            "source": {
+                "sourceUrl": https://my.blob.core.windows.net/source-en/source-english.docx?sv=2019-12-12&st=2021-01-26T18%3A30%3A20Z&se=2021-02-05T18%3A30%3A00Z&sr=c&sp=rl&sig=d7PZKyQsIeE6xb%2B1M4Yb56I%2FEEKoNIF65D%2Fs0IFsYcE%3D
+            },
+            "targets": [
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-Spanish.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
+                    "language": "es"
+                },
+                {
+                    "targetUrl": https://my.blob.core.windows.net/target/try/Target-German.docx?sv=2019-12-12&st=2021-01-26T18%3A31%3A11Z&se=2021-02-05T18%3A31%3A00Z&sr=c&sp=wl&sig=AgddSzXLXwHKpGHr7wALt2DGQJHCzNFF%2F3L94JHAWZM%3D,
                     "language": "de"
                 }
             ]
@@ -234,40 +258,6 @@ gradle run
 }
 ```
 
-### <a name="post-request-body-with-optional-glossaryurl"></a>省略可能な glossaryURL を使用して要求本文を POST する
-
-```json
-{
-  "inputs":[
-    {
-      "source":{
-        "sourceUrl":"<https://YOUR-SOURCE-URL-WITH-READ-LIST-ACCESS-SAS>",
-        "storageSource":"AzureBlob",
-        "filter":{
-          "prefix":"News",
-          "suffix":".txt"
-        },
-        "language":"en"
-      },
-      "targets":[
-        {
-          "targetUrl":"<https://YOUR-SOURCE-URL-WITH-WRITE-LIST-ACCESS-SAS>",
-          "storageSource":"AzureBlob",
-          "category":"general",
-          "language":"de",
-          "glossaries":[
-            {
-              "glossaryUrl":"<https://YOUR-GLOSSARY-URL-WITH-READ-LIST-ACCESS-SAS>",
-              "format":"xliff",
-              "version":"1.2"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
 
 > [!IMPORTANT]
 >
@@ -1246,7 +1236,7 @@ func main() {
 
 ## <a name="content-limits"></a>コンテンツの制限
 
-次の表に、ドキュメント翻訳に送信するデータの制限を示します。
+下の表に、ドキュメント翻訳に送信するデータの制限を示します (プレビュー)。
 
 |属性 | 制限|
 |---|---|

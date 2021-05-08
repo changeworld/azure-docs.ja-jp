@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 87007d3df3fe44ab04a330b09b8e495ec4b47e54
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 32b00e031e3cf865093c267084117a8704b6e272
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97865964"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800172"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Azure CLI から Azure コンテナー インスタンス リソースを作成する
 
-次の YAML は、Azure コンテナー インスタンス リソースを定義します。 内容をコピーして新しいファイルに貼り付け、`my-aci.yaml` という名前を付け、コメント付きの値を独自の値に置き換えます。 有効な YAML については、[テンプレートの形式][template-format]を参照してください。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ][repositories-and-images]を参照してください。 コンテナー インスタンスの YAML リファレンスの詳細については、「[YAML リファレンス: Azure Container Instances][aci-yaml-ref]」を参照してください。
+次の YAML は、Azure コンテナー インスタンス リソースを定義します。 内容をコピーして新しいファイルに貼り付け、`my-aci.yaml` という名前を付け、コメント付きの値を独自の値に置き換えます。 有効な YAML については、[テンプレートの形式][template-format]を参照してください。 使用可能なイメージ名と対応するリポジトリについては、[コンテナーのリポジトリとイメージ][repositories-and-images]を参照してください。 コンテナー インスタンスの YAML リファレンスの詳細については、「[YAML リファレンス: Azure Container Instances][aci-yaml-ref]」をご覧ください。
 
 ```YAML
 apiVersion: 2018-10-01
@@ -77,7 +77,7 @@ az container create -g <resource-group> -f my-aci.yaml
 > [!TIP]
 > YAML は場所と一致するように適切に調整する必要があるので、パブリック プレビューの Azure Cognitive Service のサービスの場所に十分注意してください。
 
-[azure-container-create]: /cli/azure/container#az-container-create
+[azure-container-create]: /cli/azure/container#az_container_create
 [template-format]: /azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
 [aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
 [repositories-and-images]: ../container-image-tags.md

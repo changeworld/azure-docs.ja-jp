@@ -3,12 +3,12 @@ title: Azure Lab Services でラボを管理する | Microsoft Docs
 description: クラスルーム ラボを作成して構成したり、すべてのラボを表示したり、登録リンクをラボ ユーザーと共有したり、ラボを削除したりする方法について説明します。
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c6acb9609abac15b9ff92250e3d5d44c585881cc
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96434211"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481805"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>Azure Lab Services でラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのラボを表示する方法についても説明します。 
@@ -18,7 +18,7 @@ ms.locfileid: "96434211"
 
 ## <a name="create-a-classroom-lab"></a>クラスルーム ラボを作成する
 
-1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。 Internet Explorer 11 はまだサポートされていません。 
+1. [Azure Lab Services Web サイト](https://labs.azure.com)に移動します。
 1. **[サインイン]** を選択して、資格情報を入力します。 ラボ アカウントに **ラボの作成者** のメンバーである **ユーザー ID** を入力または作成し、パスワードを入力します。 Azure Lab Services では、組織アカウントと Microsoft アカウントがサポートされています。 
 1. **[New lab]\(新しいラボ\)** を選択します。 
     

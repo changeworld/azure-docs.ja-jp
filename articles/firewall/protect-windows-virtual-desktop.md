@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94654985"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566028"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する
 
@@ -54,7 +54,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンが正常に機�
 - ネットワーク ルール コレクションを作成して次のルールを追加します。
 
    - DNS を許可 – TCP および UDP ポート 53 の * に、ADDS プライベート IP アドレスからのトラフィックを許可します。
-   - KMS を許可 – Windows Virtual Desktop 仮想マシンから Windows Activation Service の TCP ポート 1688 へのトラフィックを許可します。 宛先 IP アドレスの詳細については、「[強制トンネリングを使用したライセンス認証の問題](../virtual-machines/troubleshooting/custom-routes-enable-kms-activation.md#solution)」を参照してください。
+   - KMS を許可 – Windows Virtual Desktop 仮想マシンから Windows Activation Service の TCP ポート 1688 へのトラフィックを許可します。 宛先 IP アドレスの詳細については、「[強制トンネリングを使用したライセンス認証の問題](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution)」を参照してください。
 
 > [!NOTE]
 > 一部のデプロイでは、DNS ルールを必要としない場合があります。たとえば Azure Active Directory ドメイン コントローラーは、DNS クエリを 168.63.129.16 の Azure DNS に転送します。

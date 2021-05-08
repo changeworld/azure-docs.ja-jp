@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプル
 description: ブループリント アーティファクト パラメーターの詳細を含む DoD 影響レベル 4 ブループリント サンプルのデプロイ手順です。
-ms.date: 01/08/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ce0d2d162bf77c147e0e4bc26e68964cd50f4372
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594806"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378450"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルをデプロイする
 
@@ -19,7 +19,7 @@ Azure Blueprints 国防総省影響レベル 4 (DoD IL4) のブループリン�
 > - サンプルのコピーを **発行済み** としてマークする
 > - ブループリントのコピーを既存のサブスクリプションに割り当てる
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+Azure Government サブスクリプションをお持ちでない場合は、開始する前に[試用版サブスクリプション](https://azure.microsoft.com/global-infrastructure/government/request/)を申請してください。
 
 ## <a name="create-blueprint-from-sample"></a>サンプルからブループリントを作成する
 

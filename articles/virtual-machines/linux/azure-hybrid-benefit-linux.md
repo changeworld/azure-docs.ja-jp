@@ -4,7 +4,7 @@ description: Azure ハイブリッド特典が、Azure で実行されている 
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
-manager: westonh
+manager: rochakm
 ms.service: virtual-machines
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 774f4be6a5aa0e0e772086c52938881c6637b261
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695483"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588192"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
 
@@ -39,7 +39,7 @@ RHEL または SLES VM で特典を有効にした後で、PAYG VM で通常発�
 
 Azure ハイブリッド特典は、Azure Marketplace のすべての RHEL および SLES PAYG イメージで使用できます。 この特典は、現時点では Azure Marketplace の RHEL または SLES BYOS イメージまたはカスタム イメージでは使用できません。
 
-Linux VM で予約インスタンス、Azure Dedicated Host インスタンス、および SQL ハイブリッド特典を既に使用している場合は、Azure ハイブリッド特典の対象になりません。
+Linux VM でAzure Dedicated Host インスタンスおよび SQL ハイブリッド特典を既に使用している場合は、Azure ハイブリッド特典の対象になりません。
 
 ## <a name="get-started"></a>はじめに
 
@@ -90,11 +90,8 @@ SUSE の特典の使用を開始するには:
 1. 左側の **[構成]** オプションに移動します。 [ライセンス] セクションが表示されます。 AHB 変換を有効にするには、[はい] ラジオ ボタンをオンにし、[確認] チェックボックスをオンにします。
 ![作成後の AHB の [構成] ブレード](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
-
 >[!NOTE]
 > RHEL または SLES PAYG Marketplace イメージの **カスタム スナップショット** または **共有イメージ (SIG)** を作成した場合、Azure ハイブリッド特典を有効にするのに使用できるのは Azure CLI のみです。 これは既知の制限事項であり、現時点では、Azure portal にこの機能を提供するタイムラインはありません。
-
-
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Azure CLI で特典を有効または無効にする
 
@@ -179,6 +176,15 @@ Red Hat サブスクリプションのコンプライアンス、ソフトウェ
 
 SLES VM での Azure ハイブリッド特典の使用方法について、および SLES PAYG から BYOS への移行または SLES BYOS から PAYG への移行については、「[SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)」 (SUSE Linux Enterprise と Azure ハイブリッド特典) を参照してください。 
 
+## <a name="azure-hybrid-benefit-on-reserved-instances-is-in-preview"></a>予約インスタンスの Azure ハイブリッド特典はプレビュー段階です
+
+Azure の予約 (Azure Reserved Virtual Machine Instances) を使用すると、複数の製品に対するプランを 1 年分または 3 年分コミットすることで、コストを削減できます。 詳細については、[こちらの予約インスタンス](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)を参照してください。 Azure ハイブリッド特典は、[予約仮想マシンインスタンス (RI)](https://review.docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation) のプレビューで使用できます。 これは、RI を使用して割引料金でコンピューティング コストを購入した場合、RHEL および SUSE のライセンス コストに AHB 特典を適用できることを意味しています。 RI インスタンスに AHB 特典を適用する手順は、通常の VM の場合とまったく同じです。
+![RI 向け AHB](./media/azure-hybrid-benefit/reserved-instances.png)
+
+>[!NOTE]
+>Azure Marketplace で既に RHEL または SUSE PAYG ソフトウェアの予約を購入している場合は、予約期間が終了するのを待ってから、Azure ハイブリッド特典を使用してください。
+
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 *Q:`RHEL_BYOS` の種類のライセンスを SLES イメージと共に使用する、またはその逆は可能ですか。*
 
@@ -206,11 +212,11 @@ A: はい、できます。 RHEL VM にはライセンスの種類 `RHEL_BYOS` �
 
 *Q:RHEL および SLES の仮想マシン スケール セットで Azure ハイブリッド特典を使用できますか。*
 
-A:いいえ、できません。 現時点では、仮想マシン スケール セットは RHEL および SLES の Azure ハイブリッド特典の範囲内にありません。
+A: はい、RHEL および SLES の仮想マシン スケール セットで の Azure ハイブリッド特典はプレビュー段階です。 [この特典について、およびこれを使用する方法については、こちらを参照](/azure/virtual-machine-scale-sets/azure-hybrid-benefit-linux)してください。 
 
 *Q:RHEL および SLES の予約インスタンスで Azure ハイブリッド特典を使用できますか。*
 
-A:いいえ、できません。 現時点では、予約インスタンスは RHEL および SLES の Azure ハイブリッド特典の範囲内にありません。
+A: はい、RHEL および SLES の予約インスタンスでの Azure ハイブリッド特典はプレビュー段階です。 [この特典について、およびこれを使用する方法については、こちらを参照](#azure-hybrid-benefit-on-reserved-instances-is-in-preview)してください。
 
 *Q:RHEL イメージの SQL Server 用にデプロイされた仮想マシンで Azure ハイブリッド特典を使用できますか。*
 

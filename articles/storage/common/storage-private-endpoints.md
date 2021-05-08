@@ -3,19 +3,19 @@ title: プライベート エンドポイントを使用する
 titleSuffix: Azure Storage
 description: 仮想ネットワークからストレージ アカウントへのセキュリティで保護されたアクセスのためのプライベート エンドポイントの概要。
 services: storage
-author: santoshc
+author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.author: santoshc
+ms.date: 03/16/2021
+ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 4ee0b71b63735d8417c11cba8d2a551c8da8b47f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564290"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600464"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
@@ -53,22 +53,27 @@ VNet 内のアプリケーションは、プライベート エンドポイン�
 
 ## <a name="creating-a-private-endpoint"></a>プライベート エンドポイントの作成
 
+Azure portal を使用してプライベート エンドポイントを作成する方法については、「[Azure portal のストレージ アカウント エクスペリエンスから非公開でストレージ アカウントに接続する](../../private-link/tutorial-private-endpoint-storage-portal.md)」を参照してください。
+
+PowerShell または Azure CLI を使用してプライベート エンドポイントを作成するには、これらの記事のいずれかを参照してください。 どちらの方法でも、Azure Web アプリはターゲット サービスとして機能しますが、プライベート リンクを作成する手順は、Azure Storage アカウントの場合と同じです。
+
+- [Azure CLI を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-cli.md)
+
+- [Azure PowerShell を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-powershell.md)
+
+
+
 プライベート エンドポイントを作成するときは、ストレージ アカウントと、その接続先のストレージ サービスを指定する必要があります。 
 
-アクセスする必要があるストレージ リソースごとに (つまり、[BLOB](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[Files](../files/storage-files-introduction.md)、[キュー](../queues/storage-queues-introduction.md)、[Table](../tables/table-storage-overview.md)、または[静的な Web サイト](../blobs/storage-blob-static-website.md)) 別々のプライベート エンドポイントが必要です。 Data Lake Storage Gen2 ストレージ リソース用にプライベート エンドポイントを作成する場合は、BLOB ストレージ リソース用にも作成する必要があります。 これは、Data Lake Storage Gen2 エンドポイントをターゲットとする操作が、BLOB エンドポイントにリダイレクトされる可能性があるためです。 両方のリソースにプライベート エンドポイントを作成することによって、操作が正常に完了するようにします。
+アクセスする必要があるストレージ リソースごとに (つまり、[BLOB](../blobs/storage-blobs-overview.md)、[Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[Files](../files/storage-files-introduction.md)、[キュー](../queues/storage-queues-introduction.md)、[Table](../tables/table-storage-overview.md)、または[静的な Web サイト](../blobs/storage-blob-static-website.md)) 別々のプライベート エンドポイントが必要です。 プライベート エンドポイントでは、これらのストレージ サービスは、関連付けられたストレージ アカウントの **ターゲット サブリソース** として定義されます。 
+
+Data Lake Storage Gen2 ストレージ リソース用にプライベート エンドポイントを作成する場合は、BLOB ストレージ リソース用にも作成する必要があります。 これは、Data Lake Storage Gen2 エンドポイントをターゲットとする操作が、BLOB エンドポイントにリダイレクトされる可能性があるためです。 両方のリソースにプライベート エンドポイントを作成することによって、操作が正常に完了するようにします。
 
 > [!TIP]
 > RA-GRS アカウントでの読み取りパフォーマンスを向上させるために、ストレージ サービスのセカンダリ インスタンスに対して別個のプライベート エンドポイントを作成します。
 > 必ず汎用 v2 (Standard または Premium) ストレージ アカウントを作成してください。
 
 geo 冗長ストレージ向けに構成されているストレージ アカウントを使用してセカンダリ リージョンに読み取りアクセスするには、サービスのプライマリ インスタンスとセカンダリ インスタンスの両方に、別々のプライベート エンドポイントが必要です。 **フェールオーバー** 用のセカンダリ インスタンスのプライベート エンドポイントを作成する必要はありません。 プライベート エンドポイントは、フェールオーバー後、新しいプライマリ インスタンスに自動的に接続されます。 ストレージ冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
-
-ストレージ アカウントのプライベート エンドポイントを作成する方法の詳細情報については、次の記事を参照してください。
-
-- [Azure portal のストレージ アカウント エクスペリエンスから非公開でストレージ アカウントに接続する](../../private-link/tutorial-private-endpoint-storage-portal.md)
-- [Azure portal でプライベート リンク センターを使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-portal.md)
-- [Azure CLI を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-cli.md)
-- [Azure PowerShell を使用してプライベート エンドポイントを作成する](../../private-link/create-private-endpoint-powershell.md)
 
 <a id="connecting-to-private-endpoints"></a>
 
@@ -89,7 +94,7 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、ストレージ アカウント "StorageAccountA" の DNS リソース レコードは次のようになります。
 
-| 名前                                                  | 種類  | 値                                                 |
+| 名前                                                  | Type  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -99,7 +104,7 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 
 StorageAccountA の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内のクライアントによって解決されると、次のようになります。
 
-| 名前                                                  | 種類  | 値                                                 |
+| 名前                                                  | Type  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -111,16 +116,16 @@ StorageAccountA の DNS リソース レコードは、プライベート エン
 > [!TIP]
 > カスタムまたはオンプレミスの DNS サーバーを使用している場合は、`privatelink` サブドメインのストレージ アカウント名をプライベート エンドポイントの IP アドレスに解決するように DNS サーバーを構成する必要があります。 これを行うには、VNet のプライベート DNS ゾーンに `privatelink` サブドメインを委任するか、DNS サーバー上で DNS ゾーンを構成し、DNS A レコードを追加します。
 
-ストレージ サービスのプライベート エンドポイントに推奨される DNS ゾーン名は次のとおりです。
+ストレージ サービスのプライベート エンドポイントに推奨される DNS ゾーン名、および関連付けられたエンドポイント ターゲット サブリソースは次のとおりです。
 
-| ストレージ サービス        | ゾーン名                            |
-| :--------------------- | :----------------------------------- |
-| Blob service           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
-| File service           | `privatelink.file.core.windows.net`  |
-| Queue サービス          | `privatelink.queue.core.windows.net` |
-| Table service          | `privatelink.table.core.windows.net` |
-| 静的な Web サイト        | `privatelink.web.core.windows.net`   |
+| ストレージ サービス        | ターゲット サブリソース | ゾーン名                            |
+| :--------------------- | :------------------ | :----------------------------------- |
+| Blob service           | blob (blob)                | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | dfs                 | `privatelink.dfs.core.windows.net`   |
+| File service           | file                | `privatelink.file.core.windows.net`  |
+| Queue サービス          | queue               | `privatelink.queue.core.windows.net` |
+| Table service          | table               | `privatelink.table.core.windows.net` |
+| 静的な Web サイト        | web                 | `privatelink.web.core.windows.net`   |
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
 
@@ -144,6 +149,12 @@ Azure Storage のプライベート エンドポイントに関する以下の�
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>プライベート エンドポイントがあるサブネットのネットワーク セキュリティ グループ規則
 
 現在、プライベート エンドポイントの[ネットワーク セキュリティ グループ](../../virtual-network/network-security-groups-overview.md) (NSG) 規則とユーザー定義ルートを構成することはできません。 プライベート エンドポイントをホストするサブネットに適用される NSG 規則は、プライベート エンドポイントに適用されません。 これらは、他のエンドポイント (ネットワーク インターフェイス コントローラーなど) にのみ適用されます。 この問題の限定的な回避策として、ソース サブネットでプライベート エンドポイントのアクセス規則を実装できます。ただし、この方法では、管理オーバーヘッドが高くなる可能性があります。
+
+### <a name="copying-blobs-between-storage-accounts"></a>ストレージ アカウント間で BLOB をコピーする
+
+Azure REST API を使用する場合、または REST API を使用するツールを使用する場合にのみ、プライベート エンドポイントを使用してストレージ アカウント間で BLOB をコピーできます。 このようなツールには、AzCopy、Storage Explorer、Azure PowerShell、Azure CLI、Azure Blob Storage SDK などがあります。 
+
+BLOB ストレージ リソースをターゲットとするプライベート エンドポイントのみがサポートされます。 Data Lake Storage Gen2 またはファイル リソースを対象とするプライベート エンドポイントは、まだサポートされていません。 また、Network File System (NFS) プロトコルを使用したストレージ アカウント間でのコピーは、まだサポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
 

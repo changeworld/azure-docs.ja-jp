@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 03/22/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102506703"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800348"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -23,7 +23,7 @@ Microsoft は、Azure サービスを常に使用できるようにする作業�
 
 Azure Storage では、geo 冗長ストレージ アカウントのアカウント フェールオーバーがサポートされています。 アカウントのフェールオーバーでは、プライマリ エンドポイントが使用できなくなった場合に、ストレージ アカウントのフェールオーバー プロセスを開始できます。 フェールオーバーでは、セカンダリ エンドポイントが更新されて、ストレージ アカウントのプライマリ エンドポイントになります。 フェールオーバーが完了すると、クライアントは新しいプライマリ エンドポイントへの書き込みを開始できます。
 
-アカウント フェールオーバーは、Azure Resource Manager デプロイを使用する汎用 v1、汎用 v2、および BLOB Storage アカウントの種類で使用できます。 アカウントのフェールオーバーはすべてのパブリック リージョンでサポートされていますが、現時点ではソブリン クラウドまたは各国のクラウドでは使用できません。
+アカウント フェールオーバーは、Azure Resource Manager デプロイを使用する汎用 v1、汎用 v2、および BLOB Storage アカウントの種類で使用できます。 アカウントのフェールオーバーはすべてのパブリック リージョンでサポートされていますが、現時点ではソブリン クラウドまたは各国のクラウドでは使用できません。 階層型名前空間が有効になっているストレージ アカウントでは、アカウントのフェールオーバーはサポートされていません。
 
 この記事では、アカウントのフェールオーバーに関する概念とプロセスについて、および顧客への影響が最小限になるようにストレージ アカウントの復旧を準備する方法について説明します。 Azure portal または PowerShell でアカウントのフェールオーバーを開始する方法については、[アカウントのフェールオーバーの開始](storage-initiate-account-failover.md)に関するページを参照してください。
 
@@ -67,6 +67,8 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 ## <a name="understand-the-account-failover-process"></a>アカウントのフェールオーバー プロセスを理解する
 
 お客様が管理するアカウントのフェールオーバーでは、何らかの理由でプライマリが使用できなくなった場合、ストレージ アカウント全体をセカンダリ リージョンにフェールオーバーすることができます。 セカンダリ リージョンへのフェールオーバーを強制的に実行すると、クライアントは、フェールオーバー完了後にセカンダリ エンドポイントへのデータの書き込みを開始することができます。 フェールオーバーには、通常、約 1 時間かかります。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ### <a name="how-an-account-failover-works"></a>アカウントのフェールオーバーのしくみ
 

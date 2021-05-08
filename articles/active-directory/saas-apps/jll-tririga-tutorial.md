@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: jeedes
 ms.openlocfilehash: b33db1b766d99aeb8d0a08f6396b5384948f118e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98736871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jll-tririga"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JLL TRIRIGA の統合

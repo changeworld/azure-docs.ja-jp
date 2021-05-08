@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-azurecli
 ms.date: 02/26/2020
-ms.openlocfilehash: b17c5a2abc036c16ff3ce36b81428f9149e36b4b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 14b88700f3968e3bfdc788abb2fc9ce90634068e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942852"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770347"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI を使用した Azure HDInsight クラスターの管理
 
@@ -39,7 +39,7 @@ az login
 
 ## <a name="list-clusters"></a>クラスターを一覧表示する
 
-[az hdinsight list](/cli/azure/hdinsight#az-hdinsight-list) を使用して、クラスターを一覧表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` を自分のリソース グループの名前に置き換えてから、そのコマンドを入力します。
+[az hdinsight list](/cli/azure/hdinsight#az_hdinsight_list) を使用して、クラスターを一覧表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` を自分のリソース グループの名前に置き換えてから、そのコマンドを入力します。
 
 ```azurecli-interactive
 # List all clusters in the current subscription
@@ -57,7 +57,7 @@ az hdinsight list --resource-group RESOURCE_GROUP_NAME --query "[].{clusterName:
 
 ## <a name="show-cluster"></a>クラスターの表示
 
-[az hdinsight show](/cli/azure/hdinsight#az-hdinsight-show) を使用して、指定したクラスターに関する情報を表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
+[az hdinsight show](/cli/azure/hdinsight#az_hdinsight_show) を使用して、指定したクラスターに関する情報を表示します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
 
 ```azurecli-interactive
 az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -65,7 +65,7 @@ az hdinsight show --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
 
 ## <a name="delete-clusters"></a>クラスターの削除
 
-[az hdinsight delete](/cli/azure/hdinsight#az-hdinsight-delete) を使用して、指定したクラスターを削除します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
+[az hdinsight delete](/cli/azure/hdinsight#az_hdinsight_delete) を使用して、指定したクラスターを削除します。 次のコマンドを編集して `RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えてから、そのコマンドを入力します。
 
 ```azurecli-interactive
 az hdinsight delete --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME
@@ -79,7 +79,7 @@ az group delete --name RESOURCE_GROUP_NAME
 
 ## <a name="scale-clusters"></a>クラスターのスケール
 
-[az hdinsight resize](/cli/azure/hdinsight#az-hdinsight-resize) を使用して、指定した HDInsight クラスターのサイズを指定のサイズに変更します。 次のコマンドを編集して、`RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えます。 `WORKERNODE_COUNT` を、お使いのクラスターに必要なワーカー ノードの数に置き換えます。 クラスターのスケーリングの詳細については、[HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)に関するページを参照してください。 次のコマンドを入力します。
+[az hdinsight resize](/cli/azure/hdinsight#az_hdinsight_resize) を使用して、指定した HDInsight クラスターのサイズを指定のサイズに変更します。 次のコマンドを編集して、`RESOURCE_GROUP_NAME` と `CLUSTER_NAME` を関連する情報に置き換えます。 `WORKERNODE_COUNT` を、お使いのクラスターに必要なワーカー ノードの数に置き換えます。 クラスターのスケーリングの詳細については、[HDInsight クラスターのスケーリング](./hdinsight-scaling-best-practices.md)に関するページを参照してください。 次のコマンドを入力します。
 
 ```azurecli-interactive
 az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --workernode-count WORKERNODE_COUNT

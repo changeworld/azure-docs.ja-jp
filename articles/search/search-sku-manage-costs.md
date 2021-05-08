@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98539558"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580611"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのコストの見積りと管理を行う方法
 
@@ -64,7 +64,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 最小構成を超える場合は、レプリカとパーティションを互いに独立して追加できます。 レプリカおよびパーティションによって容量が徐々に増加すると、 **(レプリカ数 x パーティション数 x 課金レート)** という式に基づいて料金が増加します。この場合、課金されるレートは、選択した価格レベルによって異なります。
 
-検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください (容量を 2 倍にすると、コストは 2 倍以上になります)。 数式による計算の例については、「[レプリカとパーティションを割り当てる方法](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)」を参照してください。
+検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください (容量を 2 倍にすると、同じレベルのコストは 2 倍以上になります)。 また、ある時点で、より高いレベルに切り替えると、ほぼ同じ価格でより優れた、より高速なパフォーマンスが得られます。 詳細および例については、「[Standard S2 レベルにアップグレードする](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier)」を参照してください。
 
 ### <a name="bandwidth-charges"></a>帯域幅の料金
 

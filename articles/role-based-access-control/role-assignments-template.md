@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556023"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771877"
 ---
 # <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる
 
@@ -31,7 +31,7 @@ ms.locfileid: "100556023"
 
 ### <a name="user"></a>User
 
-ユーザーの ID を取得するには、[Get-AzADUser](/powershell/module/az.resources/get-azaduser) または [az ad user show](/cli/azure/ad/user#az-ad-user-show) コマンドを使用します。
+ユーザーの ID を取得するには、[Get-AzADUser](/powershell/module/az.resources/get-azaduser) または [az ad user show](/cli/azure/ad/user#az_ad_user_show) コマンドを使用します。
 
 ```azurepowershell
 $objectid = (Get-AzADUser -DisplayName "{name}").id
@@ -43,7 +43,7 @@ objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 
 ### <a name="group"></a>グループ
 
-グループの ID を取得するには、[Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) または [az ad group show](/cli/azure/ad/group#az-ad-group-show) コマンドを使用します。
+グループの ID を取得するには、[Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) または [az ad group show](/cli/azure/ad/group#az_ad_group_show) コマンドを使用します。
 
 ```azurepowershell
 $objectid = (Get-AzADGroup -DisplayName "{name}").id
@@ -67,7 +67,7 @@ objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectI
 
 ### <a name="application"></a>Application
 
-サービス プリンシパルの ID (アプリケーションによって使用される ID) を取得するには、[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) または [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) コマンドを使用します。 サービス プリンシパルの場合は、アプリケーション ID **ではなく**、オブジェクト ID を使用します。
+サービス プリンシパルの ID (アプリケーションによって使用される ID) を取得するには、[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) または [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) コマンドを使用します。 サービス プリンシパルの場合は、アプリケーション ID **ではなく**、オブジェクト ID を使用します。
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id

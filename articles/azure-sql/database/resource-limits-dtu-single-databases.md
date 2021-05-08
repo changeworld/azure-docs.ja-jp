@@ -10,24 +10,36 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/20/2019
-ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/09/2021
+ms.openlocfilehash: 3afc2a1e3b279e7c4fd350e96787454e01e01f79
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92790255"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303221"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU 購入モデルを使用した単一データベースのリソース制限 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、DTU 購入モデルを使用した Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
 
-エラスティック プールに対する DTU 購入モデルのリソース制限については、[エラスティック プールに対する DTU リソースの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。 仮想コア リソースの制限については、[単一データベースに対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。 さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
+* サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
+* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[単一データベースに対する DTU リソースの制限](resource-limits-dtu-single-databases.md)と [DTU リソースによるエラスティック プールの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。
+* 仮想コア リソースの制限については、[Azure SQL Database に対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
+* さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
+
+各読み取り専用レプリカには、DTU、ワーカー、セッションなどの独自のリソースがあります。 読み取り専用の各レプリカには、この記事で後述するリソース制限が適用されます。 
+
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>単一データベース:ストレージ サイズとコンピューティング サイズ
 
-次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 [Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](single-database-manage.md#transact-sql-t-sql)、[PowerShell](single-database-manage.md#powershell)、[Azure CLI](single-database-manage.md#the-azure-cli)、または [REST API](single-database-manage.md#rest-api) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
+次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 次を使用して、単一データベースのサービス レベル、コンピューティング サイズ、およびストレージ量を設定できます。
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) ([ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) を使用)
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](single-database-scale.md)に関するページを参照してください
@@ -103,7 +115,7 @@ ms.locfileid: "92790255"
 > [!IMPORTANT]
 > 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。
 > [!NOTE]
-> `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
+> `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -5,6 +5,10 @@
   items:
     - name: Form Recognizer とは
       href: overview.md
+    - name: 言語のサポート
+      href: language-support.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
@@ -21,6 +25,8 @@
       href: /samples/azure/azure-sdk-for-java/formrecognizer-java-samples
     - name: 'Python: Form Recognizer クライアント ライブラリ SDK'
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
+    - name: JavaScript 用 Form Recognizer クライアント ライブラリ SDK
+      href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成
@@ -44,6 +50,14 @@
           href: ../containers/index.yml
     - name: モデルのバックアップと復旧
       href: disaster-recovery.md
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: encrypt-data-at-rest.md
+        - name: Azure AD 認証を使用する
+          href: ../authentication.md?context=/azure/cognitive-services/form-recognizer/context/context
 - name: 概念
   items:
     - name: Layout API
@@ -59,7 +73,7 @@
       href: concept-business-cards.md
     - name: Invoices
       href: concept-invoices.md
-    - name: 身分証明書
+    - name: ID ドキュメント
       href: concept-identification-cards.md
 - name: チュートリアル
   items:
@@ -89,17 +103,15 @@
           href: /javascript/api/overview/azure/ai-form-recognizer-readme
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
-    - name: 料金と制限
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
-    - name: リージョン別の提供状況
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
-    - name: 言語のサポート
-      href: language-support.md
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encrypt-data-at-rest.md
+    - name: プライバシーと Cookie
+      href: 'https://privacy.microsoft.com/en-US/privacystatement'

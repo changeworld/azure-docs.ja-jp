@@ -3,12 +3,12 @@ title: 専用イベント ハブの概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、イベント ハブのシングル テナント デプロイを提供する専用の Azure Event Hubs の概要について説明します。
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 721acf354c7d14c1362b4f760982af37d59115f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715617"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310769"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -71,4 +71,4 @@ Event Hubs Dedicated の詳細については、Microsoft の営業担当者ま�
 
 - [Azure portal を使用して Event Hubs クラスターを作成する](https://aka.ms/eventhubsclusterquickstart) 
 - [Event Hubs Dedicated の価格](https://azure.microsoft.com/pricing/details/event-hubs/)。 Microsoft の営業担当者または Microsoft サポートに連絡して、Event Hubs Dedicated 容量の詳細を確認することもできます。
-- 「[Event Hubs の FAQ](event-hubs-faq.md)」では、Event Hubs の価格の情報について説明し、よく寄せられる質問のいくつかに回答します。
+- 「[Event Hubs の FAQ](event-hubs-faq.yml)」では、Event Hubs の価格の情報について説明し、よく寄せられる質問のいくつかに回答します。

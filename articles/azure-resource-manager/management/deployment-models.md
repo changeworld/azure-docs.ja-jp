@@ -2,13 +2,13 @@
 title: Resource Manager デプロイとクラシック デプロイ
 description: Resource Manager デプロイ モデルとクラシック (あるいはサービス管理) デプロイ モデルの違いについて説明します。
 ms.topic: conceptual
-ms.date: 02/06/2020
-ms.openlocfilehash: da260db84de0cc8bd092eb95491b7cc38df93a12
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/12/2021
+ms.openlocfilehash: c2009034c431e53d162cb0f2c1f0d9815c8d1942
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96185846"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306937"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について
 
@@ -17,7 +17,7 @@ ms.locfileid: "96185846"
 
 この記事では、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルについて学習します。 Resource Manager デプロイ モデルとクラシック デプロイ モデルは、Azure ソリューションのデプロイと管理における 2 種類の異なる方法です。 異なる 2 種類の API セットを使用することで、デプロイしたリソースには重要な相違点が存在する可能性があります。 これらの 2 つのモデルに互換性はありません。 この記事では、その相違点について説明します。
 
-リソースのデプロイと管理を簡単にするために、すべての新しいリソースに Resource Manager を利用することが推奨されています。 可能であれば、Resource Manager を使用して既存のリソースを再度デプロイすることをお勧めします。
+リソースのデプロイと管理を簡単にするために、すべての新しいリソースに Resource Manager を利用することが推奨されています。 可能であれば、Resource Manager を使用して既存のリソースを再度デプロイすることをお勧めします。 Cloud Services を使用した場合は、ソリューションを [Cloud Services (延長サポート)](../../cloud-services-extended-support/overview.md) に移行することができます。
 
 これまでに Resource Manager を使用したことがない場合は、まず「[Azure Resource Manager の概要](overview.md)」で定義されている用語をご確認ください。
 
@@ -40,7 +40,7 @@ Resource Manager が追加されたとき、すべてのリソースが遡及的
 
 次の 3 種類のシナリオに注意してください。
 
-1. Cloud Services では、Resource Manager デプロイ モデルはサポートされていません。
+1. [Cloud Services (クラシック)](../../cloud-services/cloud-services-choose-me.md) では、Resource Manager デプロイ モデルはサポートされていません。 [Cloud Services (延長サポート)](../../cloud-services-extended-support/overview.md) では、Resource Manager デプロイ モデルがサポートされています。
 2. 仮想マシン、ストレージ アカウント、仮想ネットワークでは、Resource Manager デプロイ モデルとクラシック デプロイ モデルの両方がサポートされています。
 3. その他のすべての Azure サービスでは、Resource Manager がサポートされています。
 
@@ -95,7 +95,7 @@ SRP: ストレージ リソース プロバイダー、CRP: コンピューテ�
 
 仮想マシンをホストする従来のソリューションは次のとおりです。
 
-* 仮想マシンをホストするためのコンテナーとして機能する必須のクラウド サービス (コンピューティング) 仮想マシンにはネットワーク インターフェイス カードが自動的に提供され、IP アドレスは Azure によって割り当てられます。 さらに、クラウド サービスには、外部のロード バランサーのインスタンス、パブリック IP アドレス、および Windows ベースの仮想マシンのリモート デスクトップとリモート PowerShell トラフィックと Linux ベースの仮想マシン用の Secure Shell (SSH) トラフィックを許可する既定のエンドポイントが含まれています。
+* Cloud Services (クラシック) は、仮想マシン (コンピューティング) をホストするためのコンテナーとして機能します。 仮想マシンにはネットワーク インターフェイス カードが自動的に提供され、IP アドレスは Azure によって割り当てられます。 さらに、クラウド サービスには、外部のロード バランサーのインスタンス、パブリック IP アドレス、および Windows ベースの仮想マシンのリモート デスクトップとリモート PowerShell トラフィックと Linux ベースの仮想マシン用の Secure Shell (SSH) トラフィックを許可する既定のエンドポイントが含まれています。
 * オペレーティング システム、一時データ ディスク、追加データ ディスク (ストレージ) を含む、仮想マシンの仮想ハード ディスクを格納するのに必要なストレージ アカウント。
 * 追加のコンテナーとして機能するオプションの仮想ネットワーク。ここで、サブネット化構造を作成し、仮想マシンが配置されているサブネット (ネットワーク) を選択することができます。
 

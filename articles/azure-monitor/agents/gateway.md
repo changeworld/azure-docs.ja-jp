@@ -5,18 +5,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0c26a7f53609193bf373c3f7f9b1037405d4e518
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102509032"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122137"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
-
->[!NOTE]
->Microsoft Operations Management Suite (OMS) から Microsoft Azure Monitor への移行に伴って用語が変更されます。 この記事では、OMS ゲートウェイは Azure Log Analytics ゲートウェイと呼ばれます。 
->
 
 この記事では、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Azure Monitor ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。 
 
@@ -89,6 +85,9 @@ Log Analytics ゲートウェイは、次の言語で利用できます。
 Log Analytics ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0、1.1、1.2 のみをサポートします。  Secure Sockets Layer (SSL) はサポートされません。  Log Analytics へのデータの転送時のセキュリティを保証するため、少なくとも TLS 1.2 を使用するようにゲートウェイを構成してください。 以前のバージョンの TLS または SSL には脆弱性が存在します。 現在、これらは下位互換性を維持するために残されていますが、使用は避けてください。  
 
 詳細については、「[TLS 1.2 を使用して安全にデータを送信する](../logs/data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
+
+>[!NOTE]
+>ゲートウェイは、データが格納されない転送プロキシです。 エージェントは Azure Monitor との接続を確立すると、ゲートウェイの有無にかかわらず同じ暗号化フローに従います。 データは、クライアントとエンドポイントとの間で暗号化されます。 ゲートウェイはトンネルにすぎないため、送信されている内容を検査することはできません。
 
 ### <a name="supported-number-of-agent-connections"></a>サポートされるエージェント接続の数
 

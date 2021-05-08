@@ -8,18 +8,18 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e391ca79c9dcf9ab533a7e67961c654b5f8630b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879328"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103370"
 ---
-# <a name="how-to-plan-a-virtual-machine-offer"></a>仮想マシンのオファーを計画する方法
+# <a name="plan-a-virtual-machine-offer"></a>仮想マシン オファーの計画
 
 この記事では、仮想マシン (VM) のオファーをコマーシャル マーケットプレースに発行するためのさまざまなオプションと要件について説明します。 VM オファーは、Azure Marketplace を通じてデプロイおよび課金される取引可能なオファーです。
 
-開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成](./partner-center-portal/create-account.md)し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ### <a name="technical-fundamentals"></a>技術的基礎
 
@@ -102,7 +102,7 @@ VM オファーで使用可能なライセンス オプションは次のとお�
 
 詳細については、「[コマーシャル マーケットプレース オファーのプランと価格](plans-pricing.md)」および「[Microsoft コマーシャル マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
 
-## <a name="test-drives"></a>体験版
+## <a name="test-drive"></a>体験版
 
 VM の体験版を有効にすることを選択できます。 体験版を使用すると、顧客は、一定期間、構成済み環境にアクセスできます。 どの公開オプションでも体験版を有効にできますが、この機能には追加の要件があります。 体験版の詳細については、「[体験版とは](what-is-test-drive.md)」を参照してください。 さまざまな種類の体験版の構成については、「[体験版の技術的な構成](test-drive-technical-configuration.md)」を参照してください。
 

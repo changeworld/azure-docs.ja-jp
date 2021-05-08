@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6e1c7e15ff77fd75ff2fb70a6741ea2dd9a4cab8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 342c535cadb1a2d3f2d18478d8941d9ea61bdf72
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040245"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448969"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK からのアップグレード
 
@@ -45,72 +45,12 @@ Application Insights 2.x エージェントを使用していた場合は、2.x 
 
 :::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="http メソッドが前に付けられた操作名":::
 
-次のスニペットでは、以前の動作をレプリケートするために組み合わせる 3 つのテレメトリ プロセッサを構成します。
-テレメトリ プロセッサにより、次の操作が順番に実行されます。
+3\.0.3 以降では、以下を使用して、この 2.x の動作を戻すことができます。
 
-1. 最初のテレメトリ プロセッサは、スパン プロセッサ (種類は `span`) であり、`requests` と `dependencies` に適用されます。
-
-   これは、`http.method` という名前の属性を持ち、`/` で始まるスパン名を持つすべてのスパンと一致します。
-
-   次に、そのスパン名が、`tempName` という名前の属性に抽出されます。
-
-2. 2 番目のテレメトリ プロセッサも、スパン プロセッサです。
-
-   これは、`tempName` という名前の属性を持つすべてのスパンと一致します。
-
-   次に、スペースで区切られた 2 つの属性 `http.method` と `tempName` を連結することで、スパン名が更新されます。
-
-3. 最後のテレメトリ プロセッサは、属性プロセッサ (種類は `attribute`) であり、属性 (現在は `requests`、`dependencies`、`traces`) を持つすべてのテレメトリに適用されます。
-
-   これは、`tempName` という名前の属性を持つすべてのテレメトリと一致します。
-
-   次に、カスタム ディメンションとして報告されないように、`tempName` という名前の属性が削除されます。
-
-```
+```json
 {
   "preview": {
-    "processors": [
-      {
-        "type": "span",
-        "include": {
-          "matchType": "regexp",
-          "attributes": [
-            { "key": "http.method", "value": "" }
-          ],
-          "spanNames": [ "^/" ]
-        },
-        "name": {
-          "toAttributes": {
-            "rules": [ "^(?<tempName>.*)$" ]
-          }
-        }
-      },
-      {
-        "type": "span",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "name": {
-          "fromAttributes": [ "http.method", "tempName" ],
-          "separator": " "
-        }
-      },
-      {
-        "type": "attribute",
-        "include": {
-          "matchType": "strict",
-          "attributes": [
-            { "key": "tempName" }
-          ]
-        },
-        "actions": [
-          { "key": "tempName", "action": "delete" }
-        ]
-      }
-    ]
+    "httpMethodInOperationName": true
   }
 }
 ```

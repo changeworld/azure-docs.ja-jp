@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cc9ad0c694be8f95ddcffbc3d952d59b83f89f3
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86998895"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077212"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>オンプレミスから CloudSimple プライベート クラウド環境およびアプリケーションにアクセスする
 
@@ -43,7 +43,7 @@ Azure ExpressRoute またはサイト間 VPN を使用して、オンプレミ�
 | 389 (TCP/UDP) | プライベート クラウドの管理ネットワーク | オンプレミスの Active Directory ドメイン コントローラー     | ユーザー認証のため、プライベートクラウドの vCenter サーバーから Active Directory ドメイン コントローラーへの LDAP 通信に必要です。                |
 | 636 (TCP)     | プライベート クラウドの管理ネットワーク | オンプレミスの Active Directory ドメイン コントローラー     | ユーザー認証のため、プライベートクラウドの vCenter サーバーから Active Directory ドメイン コントローラーへのセキュリティで保護された LDAP (LDAPS) 通信に必要です。 |
 | 3268 (TCP)    | プライベート クラウドの管理ネットワーク | オンプレミスの Active Directory グローバル カタログ サーバー | マルチドメイン コントローラーのデプロイでの LDAP 通信に必要です。                                                                        |
-| 3269 (TCP)    | プライベート クラウドの管理ネットワーク | オンプレミスの Active Directory グローバル カタログ サーバー | マルチドメイン コントローラーのデプロイでの LDAPS 通信に必要です。                                                                       |                                           |
+| 3269 (TCP)    | プライベート クラウドの管理ネットワーク | オンプレミスの Active Directory グローバル カタログ サーバー | マルチドメイン コントローラーのデプロイでの LDAPS 通信に必要です。                                                                       |
 
 ## <a name="common-ports-required-for-accessing-workload-virtual-machines"></a>ワークロード仮想マシンへのアクセスに必要な一般的なポート
 

@@ -15,10 +15,10 @@ ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103574779"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>Connect Health を使用した Azure AD での AD FS サインイン - プレビュー
@@ -32,7 +32,7 @@ Connect Health for AD FS エージェントでは、要求とエラーの詳細 
 * Azure AD サインインを表示するためのグローバル管理者またはレポート閲覧者ロール
 
 ## <a name="what-data-is-displayed-in-the-report"></a>レポートに表示されるデータ
-使用可能なデータによって、Azure AD サインインに使用できるのと同じデータがミラーリングされます。サインインの種類 (Azure AD または AD FS) に基づいて、情報を含む 5 つのタブを使用できます。 Connect Health では、サーバーのバージョンに依存する AD FS のイベントを関連付け、それらを AD FS スキーマと照合します。 
+使用可能なデータは、Azure AD サインインに使用できるものと同じデータを反映します。Azure AD または AD FS のいずれかのサインインの種類に基づいて、情報が記載された 5 つのタブが使用できます。 Connect Health では、サーバーのバージョンに依存する AD FS のイベントを関連付け、それらを AD FS スキーマと照合します。 
 
 
 
@@ -46,13 +46,13 @@ Connect Health for AD FS エージェントでは、要求とエラーの詳細 
 * サインイン識別子
 
 #### <a name="authentication-method-information"></a>認証方法の情報
-[認証] タブには、次の値が表示される可能性があります。認証方法は、AD FS の監査ログから取得されます。
+認証タブには、次の値が表示される場合があります。認証方法は、AD FS の監査ログから取得されます。
 
 |認証方法|説明|
 |-----|-----|
 |フォーム|ユーザー名/パスワード認証|
 |Windows|Windows 統合認証|
-|証明書|スマート カードまたは VirtualSmart 証明書による認証|
+|Certificate|スマート カードまたは VirtualSmart 証明書による認証|
 |WindowsHelloForBusiness|このフィールドは、Windows Hello for Business での認証のためのものです。 (Microsoft Passport 認証)|
 |Device | デバイス認証がイントラネットまたはエクストラネットからの "プライマリ" 認証として選択されており、デバイス認証が実行された場合に表示されます。  このシナリオでは、別のユーザー認証はありません。| 
 |フェデレーション|AD FS では認証は行われませんでしたが、それがサードパーティの ID プロバイダーに送信されました|
@@ -94,14 +94,14 @@ Log Analytics は AD FS サインインに対して有効にすることがで�
 ***レポートに表示される可能性があるエラーはどのようなものですか?***
 サインイン レポートや説明に表示される AD FS に関連したエラーの完全な一覧については、[AD FS ヘルプのエラー コード リファレンス](https://adfshelp.microsoft.com/References/ConnectHealthErrorCodeReference)を参照してください
 
-***サインインの [ユーザー] セクションに "00000000-0000-0000-0000-000000000000" が表示されています。これはどういう意味でしょうか?***
+***サインインの "ユーザー" セクションに "00000000-0000-0000-0000-000000000000" が表示されます。これはどういう意味ですか。***
 サインインが失敗し、試行された UPN が既存の UPN に一致しない場合、[ユーザー]、[ユーザー名]、[ユーザー ID] の各フィールドは "00000000-0000-0000-0000-000000000000" になり、[サインイン識別子] にはユーザーが入力した試行された値が入力されます。 これらの場合、サインインしようとしているユーザーは存在しません。
 
 ***オンプレミスのイベントを Azure AD サインイン レポートに関連付けるにはどうすればよいですか?***
 AD FS 用の Azure AD Connect Health エージェントでは、サーバーのバージョンに依存する AD FS のイベント ID を関連付けます。 これらのイベントは、AD FS サーバーのセキュリティ ログで使用可能になります。 
 
 ***一部の AD FS サインインの [アプリケーション ID] や [アプリケーション名] に NotSet または NotApplicable が表示されるのはなぜですか?***
-AD FS サインイン レポートでは、OAuth サインインの [アプリケーション ID] フィールドに OAuth ID が表示されます。WS-Fed と WS-Trust のサインイン シナリオでは、[アプリケーション ID] は NotSet または NotApplicable になり、[リソース ID] フィールドにはリソース ID と証明書利用者の識別子が表示されます。
+AD FS サインイン レポートには、OAuth のサインイン用の [アプリケーション ID] フィールドに OAuth ID が表示されます。WS-Fed の WS-Trust サインイン シナリオでは、アプリケーション ID は NotSet または NotApplicable になり、リソース ID と証明書利用者 ID が [リソース ID] フィールドに表示されます。
 
 ***プレビュー段階のレポートには他にも何か既知の問題がありますか?***
 このレポートには、[基本情報] タブの [認証要件] フィールドに、サインインには関係なく、AD FS サインインに対して単一要素認証の値が入力されるという既知の問題があります。 さらに、[認証の詳細] タブの [要件] フィールドには [プライマリまたはセカンダリ] が表示されますが、[プライマリ] または [セカンダリ] の認証の種類を区別するための修正作業が進行中です。

@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101687908"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799583"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -42,6 +42,9 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 このリリースでは、Windows および Linux マシンで次の VM 拡張機能がサポートされています。
 
 Azure Connected Machine エージェント パッケージと拡張機能エージェント コンポーネントの詳細については、[エージェントの概要](agent-overview.md#agent-component-details)に関する記事を参照してください。
+
+> [!NOTE]
+> Arc 対応サーバーでは、最近 DSC VM 拡張機能のサポートがなくなりました。 代わりに、カスタム スクリプト拡張機能を使用してサーバーやマシンの展開後の構成を管理することをお勧めします。
 
 ### <a name="windows-extensions"></a>Windows の拡張機能
 

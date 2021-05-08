@@ -1,15 +1,15 @@
 ---
 title: Azure ダッシュボードでカスタムのマークダウン タイルを使用する
 description: マークダウン タイルを Azure ダッシュボードに追加して、静的コンテンツを表示する方法について説明します
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745759"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774458"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する
 
@@ -21,7 +21,7 @@ ms.locfileid: "96745759"
 
    ![ポータルのサイドバーを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. カスタム ダッシュボードを既に作成している場合は、ダッシュボード ビューで、ドロップダウンを使用して、カスタムのマークダウン タイルが表示されるダッシュボードを選択します。 編集アイコンを選択して、**タイル ギャラリー** を開きます。
+1. [ダッシュボード] ビューで、カスタムのマークダウン タイルが表示されるはずのダッシュボードを選択し、 **[編集]** を選択します。
 
    ![ダッシュボード編集ビューを示すスクリーンショット](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -53,8 +53,8 @@ ms.locfileid: "96745759"
 マークダウン タイルでは、プレーン テキスト、マークダウン構文、HTML コンテンツの任意の組み合わせを使用できます。 Azure portal により "_マーク済_" というオープンソース ライブラリが使用され、コンテンツがタイルに表示される HTML に変換されます。 "_マーク済_" によって生成される HTML が、レンダリングされる前にポータルによって事前処理されます。 この手順は、独自のカスタマイズが、セキュリティまたはポータルのレイアウトに影響しないことを確認するのに役立ちます。 事前処理中に、潜在的な脅威となる HTML のすべての部分が削除されます。 次の種類のコンテンツは、ポータルによって許可されていません。
 
 * JavaScript – `<script>` タグとインライン JavaScript 評価が削除されます。
-* iframe - `<iframe>` タグが削除されます。
-* スタイル - `<style>` タグが削除されます。 HTML 要素のインライン スタイル属性は、公式にはサポートされていません。 一部のインライン スタイル要素が動作する場合がありますが、ポータルのレイアウトに干渉した場合、いつでもその動作は停止します。 [マークダウン] タイルは、ポータルの既定のスタイルを使用する基本的な静的コンテンツを対象としています。
+* iframe - `<iframe>` タグは削除されます。
+* スタイル - `<style>` タグは削除されます。 HTML 要素のインライン スタイル属性は、公式にはサポートされていません。 一部のインライン スタイル要素が動作する場合がありますが、ポータルのレイアウトに干渉した場合、いつでもその動作は停止します。 [マークダウン] タイルは、ポータルの既定のスタイルを使用する基本的な静的コンテンツを対象としています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,10 +9,10 @@ ms.date: 10/23/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92516998"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>クラスターでは何ができますか?
@@ -35,7 +35,7 @@ Event Hubs クラスターの場合、どれだけの容量を取り込んでス
 
 ### <a name="can-i-scale-updown-my-cluster"></a>クラスターをスケールアップ/ダウンできますか?
 
-作成後、クラスターは 4 時間以上の使用に対して課金されます。 セルフサービス エクスペリエンスのプレビュー リリースでは、 **[技術]**  >  **[クォータ]**  >  **[Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)** でクラスターをスケールアップまたはスケールダウンする[サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を Event Hubs チームに送ることができます。 クラスターのスケールダウンが要求するまで、最大で 7 日かかる場合があります。 
+作成後、クラスターは 4 時間以上の使用に対して課金されます。 セルフサービス エクスペリエンスのプレビュー リリースでは、 **[技術]**  >  **[クォータ]**  >  **[Request to Scale Up or Scale Down Dedicated Cluster]\(Dedicated Cluster のスケールアップまたはスケールダウンを要求する\)** でクラスターをスケールアップまたはスケールダウンする [サポート リクエスト](https://ms.portal.azure.com/#create/Microsoft.Support)を Event Hubs チームに送ることができます。 クラスターのスケールダウンが要求するまで、最大で 7 日かかる場合があります。 
 
 ### <a name="how-does-geo-dr-work-with-my-cluster"></a>geo DR はクラスターでどのように機能しますか?
 

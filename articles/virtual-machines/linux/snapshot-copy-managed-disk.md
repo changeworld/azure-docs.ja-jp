@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d041f864c6c8cd3ae9c522d79447d71c86f9ac04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab19bb1c6cc43334a3d0d427b6aff6ced2d6cc69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98875606"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789665"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>ポータルまたは Azure CLI を使用してスナップショットを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "98875606"
 
 次の手順は、**az snapshot create** コマンドと **--source-disk** パラメターを使用してスナップショットを取得する方法を示しています。 次の例では、*myResourceGroup* リソース グループに *myVM* という名前の VM があるものとします。
 
-[az vm show](/cli/azure/vm#az-vm-show) を使用して、ディスク ID を取得します。
+[az vm show](/cli/azure/vm#az_vm_show) を使用して、ディスク ID を取得します。
 
 ```azurecli-interactive
 osDiskId=$(az vm show \
@@ -36,7 +36,7 @@ osDiskId=$(az vm show \
    -o tsv)
 ```
 
-[az snapshot create](/cli/azure/snapshot#az-snapshot-create) を使用して、*osDisk-backup* という名前のスナップショットを取得します。
+[az snapshot create](/cli/azure/snapshot#az_snapshot_create) を使用して、*osDisk-backup* という名前のスナップショットを取得します。
 
 ```azurecli-interactive
 az snapshot create \
@@ -48,7 +48,7 @@ az snapshot create \
 > [!NOTE]
 > スナップショットをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、 **--sku Standard_ZRS** パラメーターを含める必要があります。
 
-[az snapshot list](/cli/azure/snapshot#az-snapshot-list) を使用して、スナップショットの一覧を表示できます。
+[az snapshot list](/cli/azure/snapshot#az_snapshot_list) を使用して、スナップショットの一覧を表示できます。
 
 ```azurecli-interactive
 az snapshot list \

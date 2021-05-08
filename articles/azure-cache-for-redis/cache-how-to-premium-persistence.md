@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 58148e3a20ba41ae9707543be290f2d632cb1185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d11d17f90dcd6335fcaf6bd48a44037777a087e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375291"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601387"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスのデータ永続化の構成
 
@@ -19,7 +19,7 @@ ms.locfileid: "100375291"
 
 Azure Cache for Redis では、以下のモデルを使用した Redis 永続化を提供しています。
 
-* **RDB 永続化** - RDB (Redis データベース) 永続化が構成されている場合、Azure Cache for Redis は、構成可能なバックアップ頻度に基づき Redis バイナリ形式でそのスナップショットをディスクに保持します。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。 RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
+* **RDB 永続化** - RDB (Redis データベース) 永続化が構成されている場合、Azure Cache for Redis は、構成可能なバックアップ頻度に基づき Redis バイナリ形式でそのスナップショットをディスク (Azure Storage アカウント内) に保持します。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。 RDB 永続化の[長所](https://redis.io/topics/persistence#rdb-advantages)と[短所](https://redis.io/topics/persistence#rdb-disadvantages)について、詳細をご確認ください。
 * **AOF 永続化** - AOF (追加専用ファイル) 永続化が構成されている場合、Azure Cache for Redis では、すべての書き込み操作をログに保存します。このログは最低でも 1 秒に 1 回、Azure ストレージ アカウントに保存されます。 プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、保存されている書き込み操作を使用してキャッシュが再構築されます。 AOF 永続化の[長所](https://redis.io/topics/persistence#aof-advantages)と[短所](https://redis.io/topics/persistence#aof-disadvantages)について、詳細をご確認ください。
 
 永続化では、自分が所有して管理している Azure Storage アカウントに Redis データが書き込まれます。 その構成は、キャッシュの作成中に **[New Azure Cache for Redis]\(新規 Azure Cache for Redis\)** ブレードから、および既存の Premium キャッシュ用の **[リソース] メニュー** で行います。

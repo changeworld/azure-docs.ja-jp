@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: f11693b34048b11c02668e086561b9a6521a5213
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98121527"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627950"
 ---
 # <a name="visualize-data"></a>データの視覚化
 Azure Synapse は、データ ウェアハウスやビッグ データ分析システム全体にわたって分析情報を取得する時間を早める統合分析サービスです。 データの視覚化は、ご利用のデータに関する分析情報を取得するうえで重要なコンポーネントです。 大規模および小規模のデータを、人間が理解しやすくするのに役立ちます。 また、データのグループ内のパターン、傾向、および外れ値を容易に検出できるようになります。 
@@ -34,6 +34,7 @@ Azure Synapse notebook を使用する場合は、グラフのオプションを
    ![built-in-charts](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. これで、次の値を指定して、視覚化をカスタマイズできるようになりました。
+
    | 構成 | 説明 |
    |--|--| 
    | [グラフの種類] | ```display``` 関数では、横棒グラフ、散布図、折れ線グラフなど、さまざまな種類のグラフがサポートされています。 |
@@ -62,14 +63,14 @@ Azure Synapse Analytics ノートブックでは、```displayHTML``` 関数を�
 上の視覚化を作成するには、次のコードを実行します。
 
 ```python
-displayHTML("""<!DOCTYPE html>
-<meta charset="utf-8">
+displayHTML("&quot;&quot;<!DOCTYPE html>
+<meta charset=&quot;utf-8&quot;>
 
 <!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
+<script src=&quot;https://d3js.org/d3.v4.js&quot;></script>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<div id=&quot;my_dataviz&quot;></div>
 <script>
 
 // set the dimensions and margins of the graph
@@ -78,7 +79,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 40},
   height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select(&quot;#my_dataviz")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -148,44 +149,6 @@ svg
 ## <a name="popular-libraries"></a>人気の高いライブラリ
 データの視覚化に関して言えば、Python には、さまざまな機能を多数備えた複数のグラフ ライブラリが用意されています。 既定では、Azure Synapse Analytics のすべての Apache Spark プールに、厳選された人気の高いオープンソース ライブラリのセットが含まれています。 また、Azure Synapse Analytics ライブラリ管理機能を使用して、ライブラリおよびバージョンをさらに追加したり、管理したりすることもできます。 
 
-### <a name="bokeh"></a>Bokeh
-```displayHTML(df)``` を使用して、HTML または対話型のライブラリ (**ボケ** など) をレンダリングすることができます。 
-
-次の図は、**ボケ** を使用して、マップ上にグリフをプロットする例です。
-
-   ![bokeh-example](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png#lightbox)
-
-上の図を描画するには、次のサンプル コードを実行します。
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-```
-
 ### <a name="matplotlib"></a>Matplotlib
 各ライブラリの組み込みのレンダリング関数を使用すれば、Matplotlib のような標準のプロット ライブラリをレンダリングすることができます。
 
@@ -216,11 +179,88 @@ plt.legend()
 plt.show()
 ```
 
+
+### <a name="bokeh"></a>Bokeh
+```displayHTML(df)``` を使用して、HTML または対話型のライブラリ (**ボケ** など) をレンダリングすることができます。 
+
+次の図は、**ボケ** を使用して、マップ上にグリフをプロットする例です。
+
+   ![bokeh-example](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png#lightbox)
+
+上の図を描画するには、次のサンプル コードを実行します。
+
+```python
+from bokeh.plotting import figure, output_file
+from bokeh.tile_providers import get_provider, Vendors
+from bokeh.embed import file_html
+from bokeh.resources import CDN
+from bokeh.models import ColumnDataSource
+
+tile_provider = get_provider(Vendors.CARTODBPOSITRON)
+
+# range bounds supplied in web mercator coordinates
+p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
+           x_axis_type="mercator&quot;, y_axis_type=&quot;mercator")
+p.add_tile(tile_provider)
+
+# plot datapoints on the map
+source = ColumnDataSource(
+    data=dict(x=[ -8800000, -8500000 , -8800000],
+              y=[4200000, 4500000, 4900000])
+)
+
+p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
+
+# create an html document that embeds the Bokeh plot
+html = file_html(p, CDN, "my plot1")
+
+# display this html
+displayHTML(html)
+```
+
+
+### <a name="plotly"></a>Plotly
+**displayHTML()** を使用して、HTML または対話型のライブラリ (**Plotly** など) をレンダリングすることができます。
+
+下の図を描画するには、次のサンプル コードを実行します。
+
+   ![plotly 例](./media/apache-spark-development-using-notebooks/synapse-plotly-image.png#lightbox)
+
+
+```python
+from urllib.request import urlopen
+import json
+with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
+    counties = json.load(response)
+
+import pandas as pd
+df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
+                   dtype={"fips": str})
+
+import plotly.express as px
+
+fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',
+                           color_continuous_scale="Viridis",
+                           range_color=(0, 12),
+                           scope="usa",
+                           labels={'unemp':'unemployment rate'}
+                          )
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
+# create an html document that embeds the Plotly plot
+h = plotly.offline.plot(fig, output_type='div')
+
+# display this html
+displayHTML(h)
+```
+
+
 ### <a name="additional-libraries"></a>その他のライブラリ 
 これらのライブラリ以外に、Azure Synapse Analytics ランタイムには、データの視覚化によく使用される、次のライブラリのセットも含まれています。
 - [Matplotlib](https://matplotlib.org/)
 - [Bokeh](https://bokeh.org/)
 - [Seaborn](https://seaborn.pydata.org/) 
+- [Plotly](https://plotly.com/)
 
 利用可能なライブラリとバージョンの最新情報については、Azure Synapse Analytics ランタイムの[ドキュメント](./spark/../apache-spark-version-support.md)を参照してください。
 

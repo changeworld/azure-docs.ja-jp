@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: e2371f3de8ed73250bca6639e6c749811c5559ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed29def305bfa33a0a947a331775de89275e5f7f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100572609"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220868"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -40,6 +40,8 @@ Log Analytics ワークスペースに接続されているマシンでは、[Lo
 
 > [!NOTE]
 > Change Tracking とインベントリでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](../how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの VM を管理する機能には影響しません。
+
+サービス プロバイダーは、[Azure Lighthouse](../../lighthouse/overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、一度に複数の Azure Active Directory (Azure AD) テナントを対象にして大規模に操作を実行できるため、自分が担当するテナントに対して変更履歴とインベントリなどの管理タスクをより効率的に実行できます。 変更履歴とインベントリを使用すると、同じテナント内や、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を使用して複数のテナント内の、複数のサブスクリプションのマシンを管理できます。
 
 ## <a name="current-limitations"></a>現在の制限
 

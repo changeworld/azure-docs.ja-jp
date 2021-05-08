@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c258ac62617cb6ac954e0b8c59928225c7f477b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935577"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML 実行のログとメトリックを監視および表示する
 
@@ -110,15 +110,16 @@ metrics.get('metric-name')
 
 ![Azure Machine Learning Studio での実行の詳細](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="view-log-files-for-a-run"></a>実行のログ ファイルを表示する 
+### <a name="view-and-download-log-files-for-a-run"></a>実行のログ ファイルを表示およびダウンロードする 
 
 ログ ファイルは、Azure ML ワークロードをデバッグするための必須リソースです。 特定の実行にドリルダウンして、そのログと出力を表示します。  
 
 1. **[実験]** タブに移動します。
 1. 特定の実行の runID を選択します。
 1. ページの上部にある **[出力とログ]** を選択します。
+2. **[すべてダウンロード]** を選択して、すべてのログを zip フォルダーにダウンロードします。
 
-:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="実行の [出力とログ] セクションのスクリーンショット":::
+:::image type="content" source="media/how-to-monitor-view-training-logs/download-logs.png" alt-text="実行の [出力とログ] セクションのスクリーンショット。":::
 
 次の表は、このセクションに表示されるフォルダー内のログ ファイルの内容を示しています。
 

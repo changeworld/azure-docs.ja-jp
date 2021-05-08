@@ -2,20 +2,20 @@
 title: Azure Active Directory でユーザーをアプリに割り当てる方法を理解する
 description: ID 管理のために Azure Active Directory を使用するアプリにユーザーを割り当てる方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
-ms.author: kenwith
-ms.openlocfilehash: 161df0446c9478ca0f2b135c1e426f3786b164fc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: iangithinji
+ms.openlocfilehash: 84700bca6ff306dbcce01a837c312c4c0c90066d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257442"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376411"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Azure Active Directory でユーザーをアプリに割り当てる方法を理解する
 この記事では、ユーザーがテナントでアプリケーションに割り当てられる方法について説明します。

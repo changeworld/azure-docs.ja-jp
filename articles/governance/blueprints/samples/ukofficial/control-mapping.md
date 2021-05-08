@@ -4,10 +4,10 @@ description: UK OFFICIAL および UK NHS のブループリント サンプル�
 ms.date: 02/05/2021
 ms.topic: sample
 ms.openlocfilehash: bf10bcf7064306094664c1ff560187ef77645d4d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99627568"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
@@ -69,7 +69,7 @@ ms.locfileid: "99627568"
 - Azure DDoS Protection Standard を有効にする必要がある
 - SQL Managed Instance の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 - SQL Server の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
-- SQL Server での脅威検出のデプロイ
+- SQL サーバーでの脅威検出のデプロイ
 - Windows Server 用の既定の Microsoft IaaSAntimalware 拡張機能のデプロイ
 
 ## <a name="9-secure-user-management"></a>9 ユーザー管理のセキュリティ保護 

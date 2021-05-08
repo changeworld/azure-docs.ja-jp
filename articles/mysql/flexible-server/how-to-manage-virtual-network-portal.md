@@ -1,17 +1,17 @@
 ---
 title: 仮想ネットワークを管理する - Azure portal - Azure Database for MySQL - フレキシブル サーバー
 description: Azure portal を使用した Azure Database for MySQL - フレキシブル サーバーの仮想ネットワークの作成と管理
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 28506ea5afe085e9f52e40495d9931ae0aeddf32
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4906ce9f562910f0a087cd25167457ec1fb301ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90930878"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109998"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL - フレキシブル サーバーの仮想ネットワークの作成と管理
 

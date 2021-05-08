@@ -1,5 +1,5 @@
 ---
-title: チュートリアル`:` マネージド ID を使用して Azure Key Vault にアクセスする - Windows - Azure AD
+title: 'チュートリアル: マネージド ID を使用して Azure Key Vault にアクセスする - Windows - Azure AD'
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f29c9daba80ffc57b96cf5bd82690dea9ac6429
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 92ded2d327fd7c75633bf7ef6b7dd3041725c921
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093742"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378263"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 

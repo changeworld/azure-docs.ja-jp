@@ -3,7 +3,7 @@ title: Azure DDoS Protection Standard のレポートとフロー ログ
 description: レポートとフロー ログを構成する方法について説明します。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f8e3df927b74cff7e4dc8bf1456600740c07088
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100591871"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567680"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS 診断ログの表示と構成
 
@@ -130,7 +130,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 この[テンプレート](https://aka.ms/ddosdiaglogs)を使用すると、定義されたスコープ内のすべてのパブリック IP ログに対して診断ログを自動的に有効にする Azure Policy 定義を作成できます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FPolicy%20-%20DDOS%20Enable%20Diagnostic%20Logging%2FAzure%20Policy%2FDDoSLogs.json)
 
 ## <a name="view-log-data-in-workbooks"></a>ブック内のログ データを表示する
 
@@ -144,7 +144,7 @@ Azure DDoS Protection Standard には、次の診断ログを使用できます�
 
 [この Azure Resource Manager (ARM) テンプレート](https://aka.ms/ddosworkbook)を使用して、攻撃分析ブックをデプロイできます。 このブックを使用すると、複数のフィルター可能なパネルにわたって攻撃データを視覚化して、危機にさらされているものを簡単に把握できます。 
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FWorkbook%20-%20Azure%20DDOS%20monitor%20workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS Protection のブック](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 

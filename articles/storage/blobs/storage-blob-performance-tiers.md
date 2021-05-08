@@ -1,19 +1,19 @@
 ---
 title: ブロック BLOB ストレージのパフォーマンス レベル - Azure Storage
 description: Azure ブロック BLOB ストレージの Premium と Standard のパフォーマンス レベルの違いについて説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: cf0b5d29e0dc375a07fe024ef0763c8200275055
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4affed8a1226f02970928b2c227b0295167959de
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880710"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277099"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -71,8 +71,8 @@ Standard パフォーマンスでは、最もコスト効率の高い方法で�
 
 Blob ストレージのライフサイクル管理には、ルールベースのポリシーが豊富に用意されています。
 
-- **Premium**:データは、そのライフサイクルの終了時に期限切れになります。
-- **Standard**:データを最適なアクセス層に移行し、そのライフサイクルの終了時にデータを期限切れにします
+- **Premium**: データは、そのライフサイクルの終了時に有効期限が切れます。
+- **Standard**: データは、最適なアクセス層に移行され、そのライフサイクルの終了時に有効期限が切れます。
 
 詳細については、「[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください。
 

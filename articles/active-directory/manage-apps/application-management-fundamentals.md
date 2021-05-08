@@ -2,10 +2,8 @@
 title: アプリケーション管理:ベスト プラクティスと推奨事項 | Microsoft Docs
 description: Azure Active Directory でアプリケーションを管理するためのベスト プラクティスと推奨事項について説明します。 自動プロビジョニングの使用と、アプリケーション プロキシを使用したオンプレミス アプリの発行について説明します。
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
-editor: ''
+author: iantheninja
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: kenwith
+ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23c688d9b2e118ef29303d435bb83ef02ad36105
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b9b7f312781fd4f14c5e403ad72e5978f4d01487
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99259136"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379325"
 ---
 # <a name="application-management-best-practices"></a>アプリケーション管理のベスト プラクティス
 

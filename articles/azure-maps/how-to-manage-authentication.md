@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 955b541bdb4ae38066f1eb4d2f09363ec51be1d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895768"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864076"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -47,23 +47,23 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
 | [信頼済みデーモンまたは非対話型クライアント アプリケーション](./how-to-secure-daemon-app.md)        | 共有キー     | 該当なし           | Medium             | 高               |
 | [信頼済みデーモンまたは非対話型クライアント アプリケーション](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | Medium             |
-| [対話型のシングル サインオンを使用する Web シングル ページ アプリケーション](./how-to-secure-spa-users.md) | Azure AD       | 高          | Medium             | Medium             |
-| [非対話型サインオンを使用する Web シングル ページ アプリケーション](./how-to-secure-spa-app.md)      | Azure AD       | 高          | Medium             | Medium             |
+| [対話型のシングル サインオンを使用する Web シングル ページ アプリケーション](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | Medium             |
+| [非対話型サインオンを使用する Web シングル ページ アプリケーション](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | Medium             |
 | [対話型シングル サインオンを使用する Web アプリケーション](./how-to-secure-webapp-users.md)          | Azure AD       | 高          | 高               | Medium             |
-| [IoT デバイスまたは入力の制約付きデバイス](./how-to-secure-device-code.md)                     | Azure AD       | 高          | Medium             | Medium             |
+| [IoT デバイスまたは入力の制約付きデバイス](./how-to-secure-device-code.md)                     | Azure AD       | 高          | 中             | Medium             |
 
 各シナリオの詳細な構成情報については、表のリンクを参照してください。
 
 ## <a name="view-role-definitions"></a>ロール定義を表示する
 
-Azure Maps に使用できる Azure ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「 *Azure Maps* 」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
+Azure Maps に使用できる Azure ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
 
 > [!div class="mx-imgBorder"]
 > ![使用可能なロールの表示](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>ロールの割り当てを表示する
 
-Azure Maps に対するアクセス権が付与されているユーザーやアプリを表示するには、 **[アクセス制御 (IAM)]** に移動します。 そこで、 **[ロールの割り当て]** を選択してから、「 **Azure Maps** 」でフィルター処理します。
+Azure Maps に対するアクセス権が付与されているユーザーやアプリを表示するには、 **[アクセス制御 (IAM)]** に移動します。 そこで、 **[ロールの割り当て]** を選択してから、「**Azure Maps**」でフィルター処理します。
 
 > [!div class="mx-imgBorder"]
 > ![アクセス権が付与されているユーザーやアプリの表示](./media/how-to-manage-authentication/how-to-view-amrbac.png)
@@ -78,6 +78,31 @@ Azure AD トークン エンドポイントからトークンを要求します�
 | Azure Government クラウド | `https://login.microsoftonline.us`  | `https://atlas.microsoft.com/` |
 
 Azure AD からユーザーやサービス プリンシパルのアクセス トークンを要求する方法の詳細については、[Azure AD の認証シナリオ](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照し、[シナリオ](./how-to-manage-authentication.md#determine-authentication-and-authorization)の表から特定のシナリオを確認してください。
+
+## <a name="manage-and-rotate-shared-keys"></a>共有キーの管理とローテーション
+
+Azure Maps サブスクリプション キーは、Azure Maps アカウントのルート パスワードに似ています。 サブスクリプション キーは常に慎重に保護してください。 キーを安全に管理およびローテーションするには、Azure Key Vault を使用します。 アクセス キーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーンテキストで保存したりしないでください。 キーが侵害された可能性があると思われる場合は、キーをローテーションしてください。
+
+> [!NOTE]
+> 要求を承認するには、可能であれば、共有キーの代わりに、Azure Active Directory (Azure AD) を使用することをお勧めします。 Azure AD では、共有キーよりも優れたセキュリティと使いやすさが実現されます。
+
+### <a name="manually-rotate-subscription-keys"></a>サブスクリプション キーを手動でローテーションする
+
+Azure Maps アカウントのセキュリティを確保するために、サブスクリプション キーを定期的にローテーションすることをお勧めします。 可能であれば、Azure Key Vault を使用してアクセスキーを管理してください。 Key Vault を使用していない場合は、キーを手動でローテーションする必要があります。
+
+キーをローテーションさせることができるように、2 つのサブスクリプション キーが割り当てられます。 2 つのキーにより、アプリケーションがプロセス全体を通じて Azure Maps へのアクセスを確実に維持できるようにします。
+
+Azure portal で Azure Maps サブスクリプション キーをローテーションするには、次の手順に従います。
+
+1. アプリケーション コードを、Azure Maps アカウントの 2 次キーを参照するように更新してデプロイします。
+2. [Azure portal](https://portal.azure.com/) で Azure Maps アカウントに移動します。
+3. **[設定]** で **[認証]** を選択します。
+4. Azure Maps アカウントの主キーを再生成するには、主キーの隣にある **[再生成]** ボタンを選択します。
+5. 新しい主キーを参照するようにアプリケーション コードを更新してデプロイします。
+6. 同様に、 2 次キーを再生成します。
+
+> [!WARNING]
+> Microsoft では、すべてのアプリケーションで、同時にいずれかのキーのみを使用することをお勧めします。 キー 1 を使用する場所とキー 2 を使用する場所がある場合、キーを循環させると、一部のアプリケーションがアクセス権を失います。
 
 ## <a name="next-steps"></a>次のステップ
 

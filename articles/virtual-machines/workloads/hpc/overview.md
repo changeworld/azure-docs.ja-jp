@@ -6,14 +6,14 @@ ms.author: amverma
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: overview
-ms.date: 07/29/2020
+ms.date: 03/18/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 15d05632e5ebf6e45a61adebbbbf647efca2a1a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65b37a8c07e083f5e9809812e2d4446cc48717d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666883"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720595"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand 対応の H シリーズおよび N シリーズの VM でのハイ パフォーマンス コンピューティング
 
@@ -32,19 +32,19 @@ InfiniBand 対応の VM での InfiniBand のセットアップについて詳�
 
 ### <a name="message-passing-interface"></a>Message Passing Interface
 
-SR-IOV が有効な H シリーズと N シリーズでは、ほとんどすべての MPI ライブラリとバージョンがサポートされています。 サポートされている MPI ライブラリの中でも最も一般的なものは次のとおりです: Intel MPI、OpenMPI、MPICH、MVAPICH2、Platform MPI、およびすべてのリモート ダイレクト メモリ アクセス (RDMA) の動詞。
+SR-IOV が有効な H シリーズと N シリーズでは、ほとんどすべての MPI ライブラリとバージョンがサポートされています。 最も一般的に使用される MPI ライブラリは、Intel MPI、OpenMPI、HPC-X、MVAPICH2、MPICH、Platform MPI などです。 すべてのリモート ダイレクト メモリ アクセス (RDMA) 動詞がサポートされています。
 サポートされているさまざまな MPI ライブラリのインストールと最適な構成の詳細については、[MPI のセットアップ](setup-mpi.md)に関するページを参照してください。
 
 ## <a name="get-started"></a>はじめに
 
 最初のステップでは、VM の仕様と [RDMA の機能](../../sizes-hpc.md#rdma-capable-instances)に基づいて、ワークロードに最適な [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md)の VM の種類を選択します。
 2 番目に、InfiniBand を有効にして VM を構成します。 これを行うには、ドライバーが組み込まれている最適化された VM イメージの使用など、さまざまな方法があります。詳細については、[Linux 用の最適化](configure.md)に関するページおよび「[InfiniBand の有効化](enable-infiniband.md)」を参照してください。
-3 番目に、分散ノードのワークロードの場合、MPI を選択して構成することが重要です。 詳細については、[MPI のセットアップ](setup-mpi.md)に関するページを参照してください。
-4 番目に、パフォーマンスとスケーラビリティのため、[HB シリーズの概要](hb-series-overview.md)や [HC シリーズの概要](hc-series-overview.md)に関するページなど、VM ファミリに固有のガイダンスに従って、ワークロードを最適に構成します。
+3 番目に、分散ノードのワークロードの場合、MPI を適切に選択して構成することが重要です。 詳細については、[MPI のセットアップ](setup-mpi.md)に関するページを参照してください。
+4 番目に、パフォーマンスとスケーラビリティのため、VM ファミリに固有のガイダンスに従って、ワークロードを最適に構成します。ガイダンスには、[HBv3 シリーズの概要](hbv3-series-overview.md)、[HC シリーズの概要](hc-series-overview.md)に関するページなどがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
 - InfiniBand 対応の [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md)の VM の[構成と最適化](configure.md)について学習します。
-- [HB シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)に関するページを参照して、パフォーマンスとスケーラビリティのためにワークロードを最適に構成する方法を学習します。
-- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- [HBv3 シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)に関するページを参照して、パフォーマンスとスケーラビリティのためにワークロードを最適に構成する方法を学習します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

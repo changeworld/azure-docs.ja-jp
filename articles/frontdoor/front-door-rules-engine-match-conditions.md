@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: duau
-ms.openlocfilehash: a352624fc802e4224aa1b60768c064c0054cdfd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 23c3afc9d222c7964c3f957b810a545a737a3262
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035876"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068202"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door ルール エンジンの一致条件
 

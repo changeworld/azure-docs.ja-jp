@@ -5,14 +5,14 @@ keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 03/22/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f32f58bebc0a7d64443259981590e368b109b19b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790869"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278951"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -23,6 +23,13 @@ Language Understanding (LUIS) は、カスタムの機械学習インテリジ�
 LUIS のクライアント アプリケーションは、ユーザーと自然言語でコミュニケーションを行ってタスクを完了する会話型アプリケーションであれば、どれでもかまいません。 クライアント アプリケーションの例として、ソーシャル メディア アプリ、AI チャットボット、音声対応デスクトップ アプリケーションがあります。
 
 ![Cognitive Services Language Understanding (LUIS) と連携する 3 つのクライアント アプリケーションの概念図](./media/luis-overview/luis-entry-point.png "Cognitive Services Language Understanding (LUIS) と連携する 3 つのクライアント アプリケーションの概念図")
+
+このドキュメントには、次の種類の記事が含まれています。  
+
+* [**クイックスタート**](luis-get-started-create-app.md)は、サービスへの要求の実行方法を説明する概要手順です。  
+* [**攻略ガイド**](luis-how-to-start-new-app.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。  
+* [**概念**](artificial-intelligence.md)では、サービスの機能と特徴について詳しく説明します。  
+* [**チュートリアル**](tutorial-intents-only.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。  
 
 ## <a name="use-luis-in-a-chat-bot"></a>チャット ボットでの LUIS の使用
 
@@ -60,7 +67,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 
 **[意図](luis-concept-intent.md "意図")** と呼ばれる、ユーザーの意図のカテゴリを使用してモデルを設計します。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md "発話")** の例が必要です。 それぞれの発話からデータが得られますが、それらのデータは[機械学習エンティティ](luis-concept-entity-types.md#effective-machine-learned-entities "機械学習エンティティ")を使って抽出する必要があります。
 
-|ユーザーの発話例|Intent|抽出された日付|
+|ユーザーの発話例|Intent|抽出されたデータ|
 |-----------|-----------|-----------|
 |`Book a flight to Seattle?`|BookFlight|Seattle|
 |`When does your store open?`|StoreHoursAndLocation|open|
@@ -139,8 +146,6 @@ LUIS は、既存の LUIS リソースの一部として Text Analytics の機�
 
 * サービスとドキュメントの[最新情報](whats-new.md "新機能")
 * [意図](luis-concept-intent.md "意図")と[エンティティ](luis-concept-entity-types.md "entities")を使用する[アプリを計画する](luis-how-plan-your-app.md "アプリの計画")。
-* [予測エンドポイントに対してクエリを実行する](luis-get-started-get-intent-from-browser.md "予測エンドポイントに対してクエリを実行する")。
-* LUIS の[開発者向けリソース](developer-reference-resource.md "開発者向けリソース")。
 
 [bot-framework]: /bot-framework/
 [flow]: /connectors/luis/

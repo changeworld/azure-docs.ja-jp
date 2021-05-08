@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 02/09/2021
 ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100416792"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>マッピング データ フローを使用して Delta Lake のデータを変換する
@@ -68,11 +68,11 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
     ![新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。](media/tutorial-data-flow/activity2.png)
 
-## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
+## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>データ フロー キャンバスでの変換ロジックの作成
 
 このチュートリアルでは、2 つのデータ フローを生成します。 最初のデータ フローは、上記のムービーの CSV ファイルから新しい Delta Lake を生成するためにシンクする単純なソースです。 最後に、以下のフロー デザインを作成して、Delta Lake のデータを更新します。
 
-![最終的なフロー](media/data-flow/data-flow-tutorial-6.png "最終的なフロー")
+![最終的なフロー](media/data-flow/data-flow-tutorial-6.png &quot;最終的なフロー")
 
 ### <a name="tutorial-objectives"></a>チュートリアルの目標
 

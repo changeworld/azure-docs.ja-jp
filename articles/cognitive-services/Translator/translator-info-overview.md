@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
 ms.subservice: translator-text
-ms.date: 02/15/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, テキスト翻訳, 機械翻訳, 翻訳サービス
-ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec76aa7554110b7440eb825f2d5e86ae2da6baa2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727976"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657724"
 ---
 # <a name="what-is-the-translator-service"></a>Translator サービスとは
 
-Translator はクラウドベースの機械翻訳サービスであり、インテリジェント アプリを構築するたに使用されるコグニティブ API の [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) ファミリに含まれています。 Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 これにより、[90 の言語と方言](./language-support.md)で多言語ユーザー エクスペリエンスを追加できます。 また、これは、任意のオペレーティング システムを備えた任意のハードウェア プラットフォームでテキスト翻訳に使用できます。
+Translator はクラウドベースの機械翻訳サービスであり、インテリジェント アプリを構築するたに使用されるコグニティブ API の [Azure Cognitive Services](../../index.yml?panel=ai&pivot=products) ファミリに含まれています。 Translator は、皆さんのアプリケーションや Web サイト、ツール、ソリューションに簡単に統合することができます。 これを使用すると、[90 の言語と方言](./language-support.md)での多言語ユーザー エクスペリエンスを追加できます。また、どのオペレーティング システムでのテキスト翻訳にも使用できます。
+
+このドキュメントには、次の種類の記事が含まれています。  
+
+* [**クイックスタート**](quickstart-translator.md)は、サービスへの要求の実行方法を説明する概要手順です。  
+* [**攻略ガイド**](translator-how-to-signup.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。  
+* [**概念**](character-counts.md)では、サービスの機能と特徴について詳しく説明します。  
+* [**チュートリアル**](tutorial-wpf-translation-csharp.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。  
+
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 
@@ -45,11 +53,9 @@ NMT モデルは、API のコアにあって、エンドユーザーからは見
 
 ## <a name="improve-translations-with-custom-translator"></a>Custom Translator による翻訳の改善
 
- Translator サービスの拡張機能である Custom Translator を Translator と組み合わせて使用することで、ニューラル翻訳システムをカスタマイズでき、特定の用語やスタイルの翻訳を改善できます。
+ Translator サービスの拡張機能である[カスタム翻訳ツール](customization.md)は、ニューラル翻訳システムをカスタマイズしたり、特定の用語やスタイルに関して翻訳を改善したりするために使用できます。
 
 Custom Translator を使用すると、独自のビジネスや業界で使用される用語を処理する翻訳システムを構築できます。 カスタマイズされた翻訳システムは、通常の Translator でカテゴリ パラメーターを使用して、既存のアプリケーション、ワークフロー、Web サイト、デバイスと簡単に統合できます。
-
-[Custom Translator](customization.md) の詳細についてご確認ください。
 
 ## <a name="next-steps"></a>次のステップ
 

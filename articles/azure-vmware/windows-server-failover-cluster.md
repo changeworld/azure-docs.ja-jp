@@ -3,12 +3,12 @@ title: ネイティブ共有ディスクを使用する Azure VMware Solution vS
 description: Azure VMware Solution 上に Windows Server Failover Cluster (WSFC) を設定し、WSFC 機能を必要とするソリューションを活用します。
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: d667eef00fcad0e3f5243c6ab580e2e8371c6793
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518995"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562241"
 ---
 # <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>ネイティブ共有ディスクを使用する Azure VMware Solution vSAN 上の Windows Server Failover Cluster
 
@@ -30,7 +30,7 @@ WSFC クラスターは、Cluster-Across-Box (CAB) と呼ばれる別の Azure V
 
 この記事では、Windows Server 2016 および Windows Server 2019 上の WSFC に焦点を当てています。 Windows Server の古いバージョンは、[メインストリーム サポート](https://support.microsoft.com/lifecycle/search?alpha=windows%20server)対象ではないため、ここでは考慮しません。
 
-まず、[WSFC を作成](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster)する必要があります。 WSFC の詳細については、「[Windows Server のフェールオーバー クラスタリング](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)」を参照してください。 Azure VMware Solution での WSFC デプロイの詳細については、この記事に記載されている情報を使用してください。
+まず、[WSFC を作成](/windows-server/failover-clustering/create-failover-cluster)する必要があります。 WSFC の詳細については、「[Windows Server のフェールオーバー クラスタリング](/windows-server/failover-clustering/failover-clustering-overview)」を参照してください。 Azure VMware Solution での WSFC デプロイの詳細については、この記事に記載されている情報を使用してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,10 +49,10 @@ Azure VMware Solution では、仮想化された WSFC に対するネイティ�
 
 現時点で、次の構成がサポートされています。
 
-- Microsoft Windows Server 2012 以降。
-- クラスター 1 つあたり最大 5 台のフェールオーバー クラスタリング ノード。
-- VM 1 台あたり最大 4 つの PVSCSI アダプター。
-- PVSCSI アダプター 1 つあたり最大 64 個のディスク。
+- Microsoft Windows Server 2012 以降
+- クラスターあたり最大 5 個のフェールオーバー クラスタリング ノード
+- VM あたり最大 4 つの PVSCSI アダプター
+- PVSCSI アダプターあたり最大 64 個のディスク
 
 ## <a name="virtual-machine-configuration-requirements"></a>仮想マシンの構成要件
 
@@ -150,7 +150,7 @@ Azure VMware Solution では、仮想化された WSFC に対するネイティ�
 
 ## <a name="related-information"></a>関連情報
 
-- [Windows Server のフェールオーバー クラスタリング](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Windows Server のフェールオーバー クラスタリング](/windows-server/failover-clustering/failover-clustering-overview)
 - [vSphere での Microsoft クラスタリングのガイドライン (1037959) (vmware.com)](https://kb.vmware.com/s/article/1037959)
 - [フェールオーバー クラスタリングと Microsoft Cluster Service のセットアップについて (vmware.com)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.mscs.doc/GUID-1A2476C0-CA66-4B80-B6F9-8421B6983808.html)
 - [vSAN 6.7 U3 - WSFC と共有ディスクおよび SCSI-3 Persistent Reservations (vmware.com)](https://blogs.vmware.com/virtualblocks/2019/08/23/vsan67-u3-wsfc-shared-disksupport/)
@@ -162,5 +162,5 @@ Azure VMware Solution での WSFC の設定について理解したので、次�
 
 - WSFC 機能を必要とするアプリケーションを追加して新しい WSFC を設定する (例: SQL Server と SAP ASCS)。
 - バックアップ ソリューションを設定する。
-  - [Azure VMware Solution 向けの Azure Backup Server の設定](https://docs.microsoft.com/azure/azure-vmware/set-up-backup-server-for-azure-vmware-solution)
-  - [Azure VMware Solution 仮想マシンのバックアップ ソリューション](https://docs.microsoft.com/azure/azure-vmware/ecosystem-back-up-vms)
+  - [Azure VMware Solution 向けの Azure Backup Server の設定](./set-up-backup-server-for-azure-vmware-solution.md)
+  - [Azure VMware Solution 仮想マシンのバックアップ ソリューション](./ecosystem-back-up-vms.md)

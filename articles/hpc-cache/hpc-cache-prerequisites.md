@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775767"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258879"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -27,7 +27,7 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 
   [![ビデオのサムネイル画像:Azure HPC Cache:しくみ (クリックするとビデオ ページに移動します)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
-* [前提条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) - NAS ストレージ、Azure BLOB ストレージ、ネットワーク アクセス、およびクライアント アクセスの要件について説明します
+* [前提条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) - NAS ストレージ、Azure Blob Storage、ネットワーク アクセス、およびクライアント アクセスの要件について説明します
 
   [![ビデオのサムネイル画像:Azure HPC Cache:前提条件 (クリックするとビデオ ページに移動します)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 
@@ -197,6 +197,8 @@ Azure HPC Cache では、NFS プロトコルでマウントされた BLOB コン
    * 「[アクセス許可](#permissions)」で前述のように、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与えます。 ストレージ ターゲットを初めて作成するときに、この操作を行うことができます。 「[ストレージ ターゲットの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)」の手順に従い、必要なアクセス ロールをキャッシュに与えます。
 
      ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
+
+Azure HPC Cache での ADLS-NFS ストレージ ターゲットの使用の詳細については、[Azure HPC Cache での NFS でマウントされた BLOB ストレージの使用](nfs-blob-considerations.md)に関する記事を参照してください。
 
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLI アクセスを設定する (省略可能)
 

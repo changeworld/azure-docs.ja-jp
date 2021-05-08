@@ -3,12 +3,12 @@ title: クイック スタート:セキュリティ モジュール ツインを
 description: このクイックスタートでは、Azure Defender for IoT で使用する Defender for IoT モジュール ツインを作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 1/21/2021
-ms.openlocfilehash: 2ee88bd23b7d125ef9244f8ff630ee5eb8cdd015
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 27447f00546ab0d01a33b286f4bb1fbc810c260b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782675"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384563"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
@@ -16,7 +16,7 @@ ms.locfileid: "104782675"
 
 ## <a name="prerequisites"></a>前提条件
 
-なし
+- なし
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>azureiotsecurity モジュール ツインについて
 

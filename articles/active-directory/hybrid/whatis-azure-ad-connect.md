@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8e1af1848405441088796d2e3b42e7b52eedba8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: afc3d1d84d7b50cdaa7031230d7085e9f611c6c6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98065118"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304972"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) Connect Health では、オンプレミス ID 
 * それぞれのシナリオに適した最新の機能が手に入ります。 Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。詳細については、「 [ハイブリッド ID ディレクトリ統合ツールの比較](plan-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
 
 ## <a name="why-use-azure-ad-connect-health"></a>Azure AD Connect Health を使用する理由
-Azure AD を使用すると、クラウドとオンプレミスの両方のリソースに共通の ID でアクセスできるため、ユーザーの生産性が向上します。 ユーザーがこれらのリソースにアクセスできるように、環境を確実に信頼できるものにすることが課題となります。  Azure AD Connect Health は、オンプレミスの ID インフラストラクチャを監視して把握し、この環境の信頼性を確保するのに役立ちます。 オンプレミスの各 ID サーバーにエージェントをインストールするぐらいにシンプルです。
+Azure AD で認証を行うと、クラウドとオンプレミスの両方のリソースに共通の ID でアクセスできるため、ユーザーの生産性が向上します。 ユーザーがこれらのリソースにアクセスできるように、環境を確実に信頼できるものにすることが課題となります。  Azure AD Connect Health は、オンプレミスの ID インフラストラクチャを監視して把握し、この環境の信頼性を確保するのに役立ちます。 オンプレミスの各 ID サーバーにエージェントをインストールするぐらいにシンプルです。
 
 Azure AD Connect Health for AD FS では、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 上の AD FS 2.0 がサポートされています。 また、エクストラネット アクセスの認証をサポートする AD FS プロキシまたは Web アプリケーション プロキシ サーバーの監視もサポートの対象に含まれます。 Health エージェントの簡単で迅速なインストールにより、Azure AD Connect Health for AD FS は一連の重要な機能を提供します。
 

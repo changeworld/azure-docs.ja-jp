@@ -9,10 +9,10 @@ ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101712608"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
@@ -62,8 +62,8 @@ Azure Import/Export サービスでは、次の一覧のストレージの種類
 
 |ジョブ  |ストレージ サービス |サポートされています  |サポートされていません  |
 |---------|---------|---------|---------|
-|[インポート]     |  Azure BLOB ストレージ <br><br> Azure File ストレージ       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
-|エクスポート     |   Azure BLOB ストレージ       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
+|[インポート]     |  Azure Blob Storage <br><br> Azure File Storage       | ブロック BLOB と ページ BLOB をサポート <br><br> Files をサポート          |
+|エクスポート     |   Azure Blob Storage       | ブロック BLOB、ページ BLOB、および追加 BLOB をサポート         | Azure Files はサポートされない
 
 
 ## <a name="supported-hardware"></a>サポートされるハードウェア

@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176860"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306383"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
 段階的なロールアウトにより、ドメインを切り替える前に、Azure AD Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
     
@@ -79,7 +79,7 @@ ms.locfileid: "102176860"
 - 管理者は、セキュリティ グループを使用してクラウド認証をロールアウトできます。 オンプレミスの Active Directory セキュリティグループを使用しているときに、同期の待機時間を回避するには、クラウド セキュリティ グループを使用するようお勧めします。 次の条件が適用されます：
 
     - 機能ごとに最大 10 個のグループを使用できます。 つまり、*パスワードハッシュ同期*、*パススルー認証*、*シームレス SSO*  に対して、それぞれ 10 個のグループを使用できます。
-    - 入れ子になったグループは *サポートされていません*。 このスコープはパブリックプレビューにも適用されます。
+    - 入れ子になったグループは *サポートされていません*。 
     - 動的グループは、段階的なロールアウトでは *サポートされていません*。
     - グループ内の連絡先オブジェクトがグループ フォームの追加をブロックします。
 
@@ -92,13 +92,13 @@ ms.locfileid: "102176860"
 - すべてのバージョンの Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得 (ユーザーのオンプレミス UPN がルーティング可能でない場合)。 このシナリオは、段階的なロールアウトのモードでは WS-Trust エンドポイントにフォールバックしますが、段階的な移行が完了し、ユーザーのサインオンがフェデレーション サーバーに依存しなくなったときに機能しなくなります。
 
   >[!NOTE]
-  >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法に関する記事を参照してください
+  >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso)方法に関する記事を参照してください。
   
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
 
 段階的なロールアウトを使用して *パスワードハッシュ同期* サインインをテストするには、次のセクションの作業前の指示に従ってください。
 
-使用する PowerShell コマンドレットの詳細については、「[Azure AD 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)」を参照してください。
+使用する PowerShell コマンドレットの詳細については、「[Azure AD 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout)」を参照してください。
 
 ## <a name="pre-work-for-password-hash-sync"></a>パスワード ハッシュ同期の事前作業
 
@@ -168,19 +168,19 @@ PowerShell を使用して、Active Directory Domain Services フォレストで
 
 次の操作を行います。
 
-1. UX のプレビューにアクセスするには、[Azure AD ポータル](https://aka.ms/stagedrolloutux)にサインインします。
+1. UX にアクセスするには、[Azure AD ポータル](https://aka.ms/stagedrolloutux)にサインインします。
 
-2. **[マネージド ユーザー サインインの段階的なロールアウトを有効にする (プレビュー)]**  をクリックします。
+2. **[マネージド ユーザー サインインの段階的なロールアウトを有効にする]** を選択します。
 
    たとえば、*オプション A* を有効にする場合は、次の図に示すように、**パスワードハッシュ同期** と **シームレス シングル サインオン**  コントロールを **[有効]** にします。
 
-   ![Azure AD Connect ページ](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   ![「段階的なロールアウト機能を有効にする (プレビュー) 」ページ](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. 各グループを機能に追加して、*パススルー認証* と *シームレス SSO* を有効にします。 UX のタイムアウトを回避するには、最初に、セキュリティ グループに含まれるメンバーが 200 人以下であることを確認してください。
 
-   ![[パスワードハッシュ同期のグループを管理する (プレビュー) ] ページ](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >グループ内のメンバーは、段階的なロールアウトに対して自動的に有効になります。 段階的なロールアウトでは、入れ子になったグループと動的グループはサポートされていません。
@@ -251,9 +251,9 @@ A:いいえ。この機能は、クラウド認証をテストする目的で設
 
 **Q:PowerShell を使用して段階的なロールアウトを実行できますか？**
 
-A:はい。 PowerShell を使用して段階的なロールアウトを実行する方法については、「[Azure AD プレビュー」](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)を参照してください。
+A:はい。 PowerShell を使用して段階的なロールアウトを実行する方法については、「[Azure AD プレビュー」](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Active Directory 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure Active Directory 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [サインイン方法をパスワード ハッシュ同期に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [サインイン方法をパススルー認証に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

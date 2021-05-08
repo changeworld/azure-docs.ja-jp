@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/03/2020
-ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e2625fff802e71f797bf6970e763f2bf11c393e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573988"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104584178"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>部分的な用語検索と特殊文字を含むパターン (ハイフン、ワイルドカード、正規表現、パターン)
 
@@ -85,7 +85,7 @@ Azure Cognitive Search では、インデックス内のトークン化された
 | [言語アナライザー](index-add-language-analyzers.md) | 複合語または文字列のハイフン、母音の変化、および動詞の形を保持します。 クエリ パターンにダッシュが含まれている場合は、言語アナライザーを使用するだけで十分な場合があります。 |
 | [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | フィールド全体の内容は、1 つの用語としてトークン化されます。 |
 | [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | 空白文字のみを区切ります。 ダッシュまたはその他の文字を含む用語は、1 つのトークンとして扱われます。 |
-| [カスタム アナライザー](index-add-custom-analyzers.md) | (推薦) カスタム アナライザーを作成すると、トークナイザーとトークン フィルターの両方を指定できます。 前述のアナライザーはそのまま使用する必要があります。 カスタム アナライザーでは、使用するトークナイザーとトークン フィルターを選択できます。 <br><br>推奨される組み合わせは、[小文字のトークン フィルター](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)と[キーワード トークナイザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)です。 定義済みの[キーワード アナライザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)単体では大文字のテキストを小文字に変換できないため、クエリが失敗する可能性があります。 カスタム アナライザーには、小文字のトークン フィルターを追加するためのメカニズムが用意されています。 |
+| [カスタム アナライザー](index-add-custom-analyzers.md) | (推薦) カスタム アナライザーを作成すると、トークナイザーとトークン フィルターの両方を指定できます。 前述のアナライザーはそのまま使用する必要があります。 カスタム アナライザーでは、使用するトークナイザーとトークン フィルターを選択できます。 <br><br>推奨される組み合わせは、[小文字のトークン フィルター](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)と[キーワード トークナイザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)です。 組み込み[キーワード アナライザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)単体では大文字のテキストを小文字に変換できないため、クエリが失敗する可能性があります。 カスタム アナライザーには、小文字のトークン フィルターを追加するためのメカニズムが用意されています。 |
 
 Postman のような Web API テスト ツールを使用している場合は、[テスト アナライザーの REST 呼び出し](/rest/api/searchservice/test-analyzer)を追加して、トークン化された出力を検査できます。
 
@@ -160,9 +160,9 @@ Postman のような Web API テスト ツールを使用している場合は�
 
 ### <a name="use-built-in-analyzers"></a>組み込みアナライザーを使用する
 
-組み込みまたは定義済みのアナライザーは、フィールド定義の `analyzer` プロパティに名前を使用して指定できます。インデックスに追加の構成は必要ありません。 次の例では、フィールドに `whitespace` アナライザーを設定する方法を示します。 
+組み込みアナライザーは、フィールド定義の `analyzer` プロパティに名前を使用して指定できます。インデックスに追加の構成は必要ありません。 次の例では、フィールドに `whitespace` アナライザーを設定する方法を示します。 
 
-他のシナリオと、他の組み込みアナライザーの詳細については、[定義済みアナライザー リスト](./index-add-custom-analyzers.md#predefined-analyzers-reference)に関するページを参照してください。 
+他のシナリオと、他の組み込みアナライザーの詳細については、[組み込みアナライザー](./index-add-custom-analyzers.md#built-in-analyzers)に関するページを参照してください。 
 
 ```json
     {

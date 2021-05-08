@@ -3,7 +3,6 @@ title: Azure クイック スタート - Azure portal を使用して Key Vault 
 description: Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う方法を紹介したクイック スタート
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ba5b375f75d2655045e62583679839c8dd2a5720
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936670"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752446"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -82,7 +81,7 @@ Key Vault に関する他のクイック スタートとチュートリアルは
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
-- 「[キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)」を参照する
+- 「[キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)」を参照する
 - [App Service Web アプリで Key Vault を使用する](../general/tutorial-net-create-vault-azure-web-app.md)方法に関するページを参照する
 - [VM にデプロイされたアプリケーションで Key Vault を使用する](../general/tutorial-net-virtual-machine.md)方法に関するページを参照する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する

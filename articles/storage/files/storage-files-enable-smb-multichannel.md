@@ -4,15 +4,15 @@ description: Azure Premium ファイル共有で SMB マルチチャネルを有
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732542"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718983"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>FileStorage アカウントで SMB マルチチャネルを有効にする (プレビュー) 
 
@@ -66,7 +66,7 @@ FileStorage アカウントを作成したら、次の手順に従って、ス�
 1. **[ファイル サービス]** の下の **[ファイル共有]** を選択し、 **[ファイル共有の設定]** を選択します。
 1. **[SMB マルチチャネル]** を **[オン]** にし (または、 **[オフ]** にして無効にし)、 **[保存]** を選択します。
 
-:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="ストレージ アカウントのスクリーンショット、SMB マルチチャネルがオンになっています。":::
+:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="ストレージ アカウントのスクリーンショット、SMB マルチチャネルがオンになっています。"  lightbox="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png":::
 
 [SMB マルチチャネル] オプションが **[ファイル共有の設定]** の下に表示されないか、構成の更新中に設定更新失敗のエラーが発生した場合は、サブスクリプションが登録されていることと、アカウントの種類とレプリケーションがサポートされている [サポート対象リージョン](#regional-availability)のいずれかに自分のアカウントが存在することを確認してください。
 

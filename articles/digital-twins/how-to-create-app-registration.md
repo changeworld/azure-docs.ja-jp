@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: acb5457f10c54a741a738dd8a1008e703b0f23b0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051023"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478813"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Azure Digital Twins で使用するアプリ登録を作成する
 
-Azure Digital Twins インスタンスを使用する場合、カスタム クライアント アプリや [Azure Digital Twins Explorer](quickstart-adt-explorer.md) のようなサンプルなどのクライアント アプリケーションを使用してそのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するためには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **アプリの登録** が含まれます。
+Azure Digital Twins インスタンスを使用する場合、カスタム クライアント アプリや [Azure Digital Twins Explorer](quickstart-azure-digital-twins-explorer.md) のようなサンプルなどのクライアント アプリケーションを使用してそのインスタンスを操作することが一般的です。 これらのアプリケーションを操作するためには、Azure Digital Twins で認証する必要があります。また、アプリで使用できる [認証メカニズム](how-to-authenticate-client.md)には、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **アプリの登録** が含まれます。
 
 これは、すべての認証シナリオで必要とされるわけではありません。 ただし、**クライアント ID** や **テナント ID** など、アプリの登録が必要な認証方法またはコード サンプルを使用している場合は、この記事で設定方法を確認できます。
 

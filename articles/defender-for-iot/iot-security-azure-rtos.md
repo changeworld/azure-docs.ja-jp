@@ -4,10 +4,10 @@ description: Azure RTOS 用の Defender-IoT-micro-agent のサポートと、Azu
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.openlocfilehash: 8f162cc7e284abc9f1fdc08a10e62369855017c4
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785905"
 ---
 # <a name="overview-defender-for-iot-defender-iot-micro-agent-for-azure-rtos-preview"></a>概要: Azure RTOS 用の Defender for IoT Defender-IoT-micro-agentt (プレビュー)

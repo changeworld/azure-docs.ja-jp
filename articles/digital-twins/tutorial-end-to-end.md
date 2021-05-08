@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 30b30697750a0b9068cfcde19ea4bf9c474f9ad9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f1653158f7a181ad2d61bc726ba7765eab934341
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424578"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107467"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -121,33 +121,51 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
+関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスとインスタンスのホスト名にアクセスするためのアクセス許可を付与する必要があります。 これは次のように構成します。
 
-次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールを付与します。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。
+### <a name="configure-permissions-for-the-function-app"></a>関数アプリのアクセス許可を構成する
 
-Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。 プレースホルダーにリソースの詳細を入力します (お使いの Azure Digital Twins インンスタンスの URL は、*https://* で始まるホスト名であることに注意してください)。
+関数アプリから Azure Digital Twins インスタンスにアクセスできるようにするには、次の 2 つの設定を構成する必要があります。 これらはどちらも、[Azure Cloud Shell](https://shell.azure.com) のコマンドを使用して実行できます。 
+
+#### <a name="assign-access-role"></a>アクセス ロールの割り当て
+
+最初の設定によって、関数アプリに Azure Digital Twins インスタンスの **Azure Digital Twins データ所有者** ロールが付与されます。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。 
+
+1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の **principalId** フィールドを書き留めてください。
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > 結果が空の場合は、ID の詳細を表示する代わりに、次のコマンドを使用して関数の新しいシステム マネージド ID を作成します。
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > これで、出力には、次の手順で必要な **principalId** 値を含む、ID の詳細が表示されます。 
+
+1. **principalId** 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの **Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)** ロールに割り当てます。
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+このコマンドを実行すると、作成したロールの割り当てに関する情報が出力されます。 これで関数アプリに、Azure Digital Twins インスタンスのデータへのアクセス許可が付与されました。
+
+#### <a name="configure-application-settings"></a>アプリケーション設定の構成
+
+2 番目の設定では、Azure Digital Twins インスタンスの URL を使用して、関数の **環境変数** を作成します。 関数コードでは、これを使用してインスタンスを参照します。 環境変数の詳細については、「[*お使いの関数アプリの管理*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。 
+
+次のコマンドを実行して、プレースホルダーにリソースの詳細を設定します。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
 出力は、Azure 関数の設定の一覧です。ここには、**ADT_SERVICE_URL** というエントリが含まれているはずです。
 
-次のコマンドを使用して、システムによって管理される ID を作成します。 出力内で **principalId** フィールドを探します。
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-出力の **principalId** 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールに割り当てます。
-
-[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-このコマンドを実行すると、作成したロールの割り当てに関する情報が出力されます。 これで関数アプリに、Azure Digital Twins インスタンスへのアクセス許可が付与されました。
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>IoT Hub デバイスからのシミュレートされたテレメトリを処理する
 
@@ -408,7 +426,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
 
     この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index)を使用して個別に削除できます。
 

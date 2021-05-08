@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 03/31/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568048597f83616ed07954af744c94761250b5c0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 44016d81b18e8df7b6e2ed7c14559cf19ac0c07d
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471610"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106638"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory の認証方法 - OATH トークン 
 
@@ -45,19 +45,19 @@ OATH ハードウェア トークンはパブリック プレビュー段階で�
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,2234567abcdef1234567abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,2234567abcdef2234567abcdef,60,Contoso,HardwareKey
 ```  
 
 > [!NOTE]
 > CSV ファイルにヘッダー行が含まれていることを確認します。 UPN に単一引用符が含まれている場合は、もう 1 つの単一引用符でエスケープします。 たとえば、UPN が my'user@domain.com である場合、ファイルをアップロードするときに my''user@domain.com に変更します。
 
-CSV ファイルとして適切な形式が整ったら、管理者は Azure portal にサインインして、 **[Azure Active Directory] > [セキュリティ] > [MFA] > [OATH トークン]** の順に移動し、作成した CSV ファイルをアップロードできます。
+CSV ファイルとして適切な形式が整ったら、グローバル管理者は Azure portal にサインインして、 **[Azure Active Directory] > [セキュリティ] > [MFA] > [OATH トークン]** の順に移動し、作成した CSV ファイルをアップロードできます。
 
 CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンを選択して、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。 ダウンロードした CSV ファイル内のフィールド名は、アップロードされたバージョンとは異なります。  
 
 すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。トークンの **[アクティブ化]** を選択し、トークンに表示されている OTP を入力します。 5 分ごとに最大 200 の OATH トークンをアクティブにできます。 
 
-ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。 ハードウェア OATH トークンは、リソース テナントのゲスト ユーザーに割り当てることはできません。
 
 ## <a name="next-steps"></a>次の手順
 

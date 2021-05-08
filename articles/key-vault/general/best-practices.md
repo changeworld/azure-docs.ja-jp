@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e81cbd7e6584f4a280ab9507a989b52d3b188f2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e4ec2749cec8444382e2b6e7c856e74c57ebb59
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99072518"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777169"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 
@@ -24,7 +24,7 @@ ms.locfileid: "99072518"
 
 ## <a name="control-access-to-your-vault"></a>コンテナーへのアクセスの制御
 
-Azure Key Vault は、暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは機密性が高く、ビジネス上重要であるため、承認されたアプリケーションとユーザーだけを許可することで、ご利用のキー コンテナーへのアクセスをセキュリティで保護する必要があります。 この[記事](secure-your-key-vault.md)では、Key Vault アクセス モデルの概要について説明します。 認証と承認について、およびご利用のキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
+Azure Key Vault は、暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは機密性が高く、ビジネス上重要であるため、承認されたアプリケーションとユーザーだけを許可することで、ご利用のキー コンテナーへのアクセスをセキュリティで保護する必要があります。 この[記事](security-overview.md)では、Key Vault アクセス モデルの概要について説明します。 認証と承認について、およびご利用のキー コンテナーへのアクセスをセキュリティで保護する方法について説明します。
 
 コンテナーへのアクセスを制御している間の推奨事項としては次のようなものがあります。
 1. サブスクリプション、リソース グループ、および Key Vaults (Azure RBAC) へのアクセスをロックダウンする
@@ -44,9 +44,9 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 ### <a name="azure-cli-backup-commands"></a>Azure CLI バックアップ コマンド
 
-* [証明書のバックアップ](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [キーのバックアップ](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [シークレットのバックアップ](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
+* [証明書のバックアップ](/cli/azure/keyvault/certificate#az_keyvault_certificate_backup)
+* [キーのバックアップ](/cli/azure/keyvault/key#az_keyvault_key_backup)
+* [シークレットのバックアップ](/cli/azure/keyvault/secret#az_keyvault_secret_backup)
 
 
 ## <a name="turn-on-logging"></a>ログ記録の有効化

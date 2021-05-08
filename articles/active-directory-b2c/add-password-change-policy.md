@@ -8,20 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: cd63144074577d4ff3564da41e672dd1ca226dcb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629130"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257162"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウントでサインインしているユーザーが、電子メールでの確認による ID の証明なしでパスワードを変更できます。 パスワード変更フローでは、次の手順を行います。
+
+1. ユーザーはローカル アカウントにサインインします。 セッションがまだアクティブである場合、Azure AD B2C によってユーザーが認可され、次の手順にスキップします。
+1. ユーザーは **古いパスワード** を確認し、**新しいパスワード** を作成して確認します。
+
+![パスワード変更フロー](./media/add-password-change-policy/password-change-flow.png)  
+
+> [!TIP]
+> パスワード変更フローを使用すると、ユーザーがパスワードを知っていて、パスワードの変更を望む場合にのみ、パスワードを変更できます。 ユーザーがパスワードを忘れた場合に備えて、[セルフサービス パスワード リセット](add-password-reset-policy.md)を有効にしておくことをお勧めします。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -31,18 +41,9 @@ ms.locfileid: "97629130"
 
 ::: zone pivot="b2c-custom-policy"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウントでサインインしているユーザーが、電子メールでの確認による信頼性の証明なしでパスワードを変更できます。 パスワード変更フローでは、次の手順を行います。
-
-1. ローカル アカウントでサインインします。 セッションがまだアクティブである場合、Azure AD B2C によってユーザーが承認され、次の手順にスキップします。
-1. ユーザーは **古いパスワード** を確認し、**新しいパスワード** を作成して確認する必要があります。
-
-![パスワード変更フロー](./media/add-password-change-policy/password-change-flow.png)
-
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
+* 「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」にある手順を完了する。
 * まだそうしていない場合は、[Azure Active Directory B2C に Web アプリケーションを登録](tutorial-register-applications.md)します。
 
 ## <a name="add-the-elements"></a>要素を追加する

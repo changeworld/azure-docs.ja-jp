@@ -3,16 +3,16 @@ title: リソース、サブスクリプション、管理グループ、セキ�
 description: サブスクリプションまたは管理グループからのセキュリティの推奨事項を除外する規則を作成し、セキュリティ スコアに対する影響を防ぐ方法について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 01/22/2021
+ms.date: 03/11/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 374ddaa088fba9ae7035f170562e06b7f07eae47
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5ab729f5aa94c7137203c25319a5b830448d00a7
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709378"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968205"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>セキュリティ スコアからのリソースと推奨事項の除外 
 
@@ -30,13 +30,14 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 ## <a name="availability"></a>可用性
 
-|側面|詳細|
-|----|:----|
-|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
-|価格:|これは、Azure Defender のお客様が追加コストなしで利用できる Azure Policy の Premium 機能です。 他のユーザーについては、将来、料金が適用されることがあります。|
-|必要なロールとアクセス許可:|**サブスクリプションの所有者** または **ポリシーの共同作成者** (除外対象を作成する場合)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
-|||
+| 側面                          | 詳細                                                                                                                                                                                                                                                                                                                            |
+|---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| リリース状態:                  | プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
+| 価格:                        | これは、Azure Defender のお客様が追加コストなしで利用できる Azure Policy の Premium 機能です。 他のユーザーについては、将来、料金が適用されることがあります。                                                                                                                                                                 |
+| 必要なロールとアクセス許可: | **サブスクリプションの所有者** または **ポリシーの共同作成者** (除外対象を作成する場合)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。                                            |
+| 制限事項:                    | 除外は、Security Center の既定のイニシアチブ、Azure セキュリティ ベンチマーク、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 カスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。 |
+| クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)                                                                                                                                                                                         |
+|                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>除外対象の定義
 
@@ -44,6 +45,9 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 
 - 特定の **推奨事項** をマークするか、"軽減済み" または "リスク承認済み" としてマークします。 サブスクリプション、複数のサブスクリプション、または管理グループ全体に対して推奨設定の除外を作成することができます。
 - 特定の推奨事項について、**1 つまたは複数のリソース** を "軽減済み" または "リスク承認済み" としてマークします。
+
+> [!NOTE]
+> 除外は、Security Center の既定のイニシアチブ、Azure セキュリティ ベンチマーク、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 サブスクリプションに割り当てられているカスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。
 
 > [!TIP]
 > API を使用して除外を作成することもできます。 JSON の例と関連する構造の説明については、「[Azure Policy 適用除外の構造](../governance/policy/concepts/exemption-structure.md)」を参照してください。
@@ -161,7 +165,7 @@ Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理�
 
 
 
-## <a name="exemption-rule-faq"></a>除外規則に関する FAQ
+## <a name="faq---exemption-rules"></a>FAQ - 除外規則
 
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>複数のポリシー イニシアチブに 1 つの推奨事項がある場合はどうなりますか。
 

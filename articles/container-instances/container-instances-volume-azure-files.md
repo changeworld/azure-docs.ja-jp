@@ -2,23 +2,27 @@
 title: Azure Files ボリュームをコンテナー グループにマウントする
 description: Azure Files ボリュームをマウントして、Azure Container Instances で状態を保持する方法について説明します
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 03/24/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c541d4faa8728d99fd07396bc056a3e69dc93fe8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97954976"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763741"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
 既定では、Azure Container Instances はステートレスです。 コンテナーが再起動されるか、クラッシュまたは停止すると、そのすべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事に示すように、Azure Container Instances では [Azure Files](../storage/files/storage-files-introduction.md) で作成された Azure ファイル共有をマウントすることができます。 Azure Files は、Azure Storage でホストされ、業界標準の Server Message Block (SMB) プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Container Instances で Azure ファイル共有を使用することで、 Azure 仮想マシンで Azure ファイル共有を使用するのと同様のファイル共有機能を提供します。
 
+## <a name="limitations"></a>制限事項
+
+* Azure Files 共有は、Linux コンテナーにのみマウントできます。 Linux と Windows コンテナー グループの機能サポートの違いについての詳細は、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページを参照してください。
+* Azure ファイル共有ボリュームのマウントでは、Linux コンテナーを "*ルート*" として実行している必要があります。
+* Azure ファイル共有ボリュームのマウントは、CIFS サポートに限定されています。
+
 > [!NOTE]
-> Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 現在のプラットフォームの違いについては[概要](container-instances-overview.md#linux-and-windows-containers)を参照してください。
->
-> Azure Files 共有をコンテナー インスタンスにマウントすることは、Docker の[バインド マウント](https://docs.docker.com/storage/bind-mounts/)に似ています。 ファイルまたはディレクトリが存在するコンテナー ディレクトリに共有をマウントする場合、これらのファイルまたはディレクトリはマウントによって隠され、コンテナーの実行中はアクセスできなくなることに注意してください。
+> Azure Files 共有をコンテナー インスタンスにマウントすることは、Docker の[バインド マウント](https://docs.docker.com/storage/bind-mounts/)に似ています。 ファイルまたはディレクトリが存在するコンテナー ディレクトリに共有をマウントする場合、ファイルまたはディレクトリはマウントによって隠され、コンテナーの実行中はアクセスできなくなります。
 >
 
 > [!IMPORTANT]
@@ -286,6 +290,6 @@ Azure Container Instances にその他の種類のボリュームをマウント
 [storage-explorer]: https://storageexplorer.com
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create

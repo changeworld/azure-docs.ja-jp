@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d965ec2f846f09dd61342b3961e7ea8106f6a19f
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 6f54bd88e58ccfef068900fc3c7b249cde1c233d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104954889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558552"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -1002,9 +1002,9 @@ API Management のサービスのバックアップと復元の機能では、�
 
 - [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-- [API Management のバックアップ操作を呼び出す方法](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+- [API Management のバックアップ操作を呼び出す方法](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-- [API Management の復元操作を呼び出す方法](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+- [API Management の復元操作を呼び出す方法](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **責任**: Customer
 

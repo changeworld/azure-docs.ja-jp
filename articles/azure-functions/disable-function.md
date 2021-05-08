@@ -2,14 +2,14 @@
 title: Azure Functions で関数を無効にする方法
 description: Azure Functions で関数を無効または有効にする方法を学びます。
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.date: 03/15/2021
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551045"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777583"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -20,13 +20,26 @@ ms.locfileid: "99551045"
 > [!NOTE]  
 > この記事で説明されている方法を使用して、HTTP によってトリガーされる機能を無効にしても、ご利用のローカル コンピューター上で実行すると、エンドポイントにアクセスできる可能性があります。  
 
-## <a name="use-the-azure-cli"></a>Azure CLI の使用
+## <a name="disable-a-function"></a>関数の無効化
 
-Azure CLI でアプリの設定を作成および変更するには、[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドを使います。 `AzureWebJobs.QueueTrigger.Disabled` という名前のアプリの設定を作成して `true` に設定することにより `QueueTrigger` という名前の関数を無効にするコマンドを次に示します。 
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用します。 `AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定の値を変更することでこれらのボタンは機能します。 この関数固有設定は、初めて無効にしたときに作成されます。 
+
+![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
+
+ローカル プロジェクトから関数アプリに公開しても、引き続きポータルを使用して関数アプリ内の関数を無効にすることができます。 
+
+> [!NOTE]  
+> ポータルに統合されたテスト機能では、`Disabled` 設定が無視されます。 つまり、ポータルの **[テスト]** ウィンドウから開始した場合、関数は無効にされていても実行されます。 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Azure CLI でアプリの設定を作成および変更するには、[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) コマンドを使います。 `AzureWebJobs.QueueTrigger.Disabled` という名前のアプリの設定を作成して `true` に設定することにより `QueueTrigger` という名前の関数を無効にするコマンドを次に示します。 
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <myFunctionApp> \
---resource-group <myResourceGroup> \
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
@@ -38,16 +51,55 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-## <a name="use-the-portal"></a>ポータルを使用する
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-関数の **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用することもできます。 `AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定の値を変更することでこれらのボタンは機能します。 この関数固有設定は、初めて無効にしたときに作成されます。 
+[`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting) コマンドでは、アプリケーション設定を追加または更新します。 `AzureWebJobs.QueueTrigger.Disabled` という名前のアプリの設定を作成して `true` に設定することにより `QueueTrigger` という名前の関数を無効にするコマンドを次に示します。 
 
-![[関数の状態] スイッチ](media/disable-function/function-state-switch.png)
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "true"}
+```
 
-ローカル プロジェクトから関数アプリに公開しても、引き続きポータルを使用して関数アプリ内の関数を無効にすることができます。 
+関数を再度有効にするには、値 `false` を指定して同じコマンドを再実行します。
 
-> [!NOTE]  
-> ポータルに統合されたテスト機能では、`Disabled` 設定が無視されます。 つまり、ポータルの **[テスト]** ウィンドウから開始した場合、関数は無効にされていても実行されます。 
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "false"}
+```
+---
+
+## <a name="functions-in-a-slot"></a>スロット内の関数
+
+既定では、アプリの設定はデプロイ スロットで実行されているアプリにも適用されます。 ただし、スロット固有のアプリの設定を設定することによって、スロットで使用されるアプリの設定を上書きすることができます。 たとえば、関数を運用環境で有効にする必要があるものの、タイマーによってトリガーされる関数など、デプロイ テスト時には有効にしないものです。 
+
+ステージング スロットでのみ関数を無効にするには、次のようにします。
+
+# <a name="portal"></a>[ポータル](#tab/portal)
+
+関数アプリのスロット インスタンスに移動します。 **[デプロイ]** の下にある [**デプロイ スロット]** を選択し、スロットを選択して、スロット インスタンスの **[関数]** を選択します。  関数を選択してから、 **[概要]** ページの **[有効にする]** ボタンと **[無効にする]** ボタンを使用します。 `AzureWebJobs.<FUNCTION_NAME>.Disabled` アプリ設定の値を変更することでこれらのボタンは機能します。 この関数固有設定は、初めて無効にしたときに作成されます。 
+
+また、スロット インスタンスの **[構成]** に `true` の値を持つ `AzureWebJobs.<FUNCTION_NAME>.Disabled` という名前のアプリの設定を直接追加することもできます。 スロット固有のアプリの設定を追加する場合は、必ず **[デプロイ スロットの設定]** ボックスをオンにしてください。 これにより、スワップ中にスロットで設定値が維持されます。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+関数を再度有効にするには、値 `false` を指定して同じコマンドを再実行します。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+Azure PowerShell では、現在、この機能はサポートされていません。
+
+---
+
+詳細については、「[Azure Functions デプロイ スロット](functions-deployment-slots.md)」を参照してください。
 
 ## <a name="localsettingsjson"></a>local.settings.json
 

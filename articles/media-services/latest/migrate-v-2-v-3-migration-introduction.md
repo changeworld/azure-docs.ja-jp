@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3514a7c809e939ea2c45afa5ab60539232b8781f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32e502ff175a9222faa0eb79fb53f2cc3f76bfb7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98953293"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559742"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>Media Services v2 から v3 への移行の概要
 
@@ -79,7 +79,3 @@ Media Services V2 のアプリケーションが、独自のものである場�
 - [パッケージとデリバリー](migrate-v-2-v-3-migration-scenario-based-publishing.md)
 - [コンテンツ保護](migrate-v-2-v-3-migration-scenario-based-content-protection.md)
 - [メディア占有ユニット (MRU)](migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

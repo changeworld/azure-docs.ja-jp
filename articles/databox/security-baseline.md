@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a05a4692bb4a09213532ed29b2501f6b8056857
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 63b99cdeb7606798caa1b1d997dbb9f609c033b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721992"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562190"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>Azure Data Box 用の Azure セキュリティ ベースライン
 
@@ -88,7 +88,7 @@ Azure Data Box を完全に Azure セキュリティ ベンチマークにマッ
 
 - [ブック用に Azure RBAC を構成する方法](../sentinel/quickstart-get-visibility.md)
 
-- [注文に対するアクセス制御のセットアップ方法を理解する](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [注文に対するアクセス制御のセットアップ方法を理解する](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **責任**: Customer
 
@@ -172,7 +172,7 @@ Azure Data Box を完全に Azure セキュリティ ベンチマークにマッ
 
 Data Box アプライアンスの場合、これはリアルタイムではサポートされません。 ジョブの終了時にログを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -190,7 +190,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 Azure Data Box サービス ログは Log Analytics ワークスペースに書き込まれません。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -216,7 +216,7 @@ Azure Data Box サービス ログは Log Analytics ワークスペースに書�
 
 **ガイダンス**: まもなく利用可能になります。カスタマー ロックボックスは、Azure Data Box ではまだサポートされていません。 
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **責任**: Customer
 
@@ -254,7 +254,7 @@ Azure Data Box サービス ログは Log Analytics ワークスペースに書�
 
 - [Azure Data Box の使用を開始する方法を理解する](data-box-quickstart-portal.md)
 
-- [アクセス制御の設定方法を理解する](https://docs.microsoft.com/azure/databox/data-box-logs#set-up-access-control-on-the-order)
+- [アクセス制御の設定方法を理解する](./data-box-logs.md#set-up-access-control-on-the-order)
 
 **責任**: Customer
 
@@ -281,7 +281,7 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 **ガイダンス**: Azure Data Box およびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -459,5 +459,5 @@ Azure Data Box では、保存データの AES 256 ビット暗号化が実装�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

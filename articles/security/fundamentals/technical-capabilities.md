@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54be25317717bcf98b9e296d5c9ed59643cd334e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735779"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044755"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 この記事では、クラウド内のデータ、リソース、アプリケーションを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure のセキュリティ サービスの概要を提供します。
@@ -278,7 +278,7 @@ Azure ネットワークは、Azure Virtual Network 上のネットワーク ト
 
 Azure は [ExpressRoute](../../expressroute/expressroute-introduction.md) を使用してオンプレミス ネットワークおよび Azure Virtual Network への専用の WAN リンクの接続をサポートします。 Azure とユーザー サイト間のリンクは、パブリック インターネットを経由しない専用接続を使用します。 Azure アプリケーションが複数のデータセンターで実行されている場合は、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用して、アプリケーションのインスタンスにユーザーからの要求をインテリジェントにルーティングできます。 また、サービスがインターネットからアクセス可能な場合、Azure 内で実行されていないサービスへトラフィックをルーティングすることもできます。
 
-Azure では、[Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview) により、Azure Virtual Network から PaaS リソース (Azure Storage や SQL Database など) へのプライベートで安全な接続もサポートされています。 PaaS リソースは、仮想ネットワーク内の[プライベート エンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)にマップされます。 仮想ネットワーク内のプライベート エンドポイントと PaaS リソースとの間のリンクには、Microsoft のバックボーン ネットワークが使用され、パブリック インターネットを経由することはありません。 パブリック インターネットにサービスを公開する必要はありません。 Azure Private Link を使用して、仮想ネットワーク内にある Azure でホストされた顧客所有のサービスやパートナー サービスにアクセスすることもできます。  さらに、Azure Private Link を使用すると、仮想ネットワーク内に独自の[プライベート リンク サービス](https://docs.microsoft.com/azure/private-link/private-link-service-overview)を作成し、顧客の仮想ネットワーク内でプライベートに顧客に配信することができます。 Azure Private Link を使用した設定と消費は、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
+Azure では、[Azure Private Link](../../private-link/private-link-overview.md) により、Azure Virtual Network から PaaS リソース (Azure Storage や SQL Database など) へのプライベートで安全な接続もサポートされています。 PaaS リソースは、仮想ネットワーク内の[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)にマップされます。 仮想ネットワーク内のプライベート エンドポイントと PaaS リソースとの間のリンクには、Microsoft のバックボーン ネットワークが使用され、パブリック インターネットを経由することはありません。 パブリック インターネットにサービスを公開する必要はありません。 Azure Private Link を使用して、仮想ネットワーク内にある Azure でホストされた顧客所有のサービスやパートナー サービスにアクセスすることもできます。  さらに、Azure Private Link を使用すると、仮想ネットワーク内に独自の[プライベート リンク サービス](../../private-link/private-link-service-overview.md)を作成し、顧客の仮想ネットワーク内でプライベートに顧客に配信することができます。 Azure Private Link を使用した設定と消費は、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
 
 ## <a name="virtual-machine-security"></a>仮想マシンのセキュリティ
 

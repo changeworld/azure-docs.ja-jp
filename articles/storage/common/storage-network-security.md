@@ -5,16 +5,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 62f61549ffd6312b94589b9cabbc347edafd0ff2
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 5e8123c252d99b2999eeef42fecae189a05e382b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601969"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778123"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -25,7 +25,7 @@ Azure Storage では、多層型セキュリティ モデルが提供されて�
 ネットワーク規則が有効なときにストレージ アカウントにアクセスするアプリケーションでも、要求に対する適切な承認が必要です。 認可は、BLOB とキューに対する Azure Active Directory (Azure AD) の資格情報、有効なアカウント アクセス キー、または SAS トークンでサポートされています。
 
 > [!IMPORTANT]
-> ストレージ アカウントのファイアウォール規則を有効にすると、Azure Virtual Network (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。
+> ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。
 >
 > サービス インスタンスがホストされているサブネットからのトラフィックを許可することで、VNet 内で動作する Azure サービスにアクセス権を付与できます。 また、以下で説明する例外メカニズムによって、限られた数のシナリオを有効にすることもできます。 Azure portal を通してストレージ アカウントからデータにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューター上にいる必要があります。
 
@@ -244,24 +244,31 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](../..
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>インターネットの IP 範囲からのアクセスを許可する
 
-パブリック インターネットの特定の IP アドレス範囲からのアクセスを許可するように、ストレージ アカウントを構成できます。 この構成では、特定のインターネット ベースのサービスとオンプレミスのネットワークにアクセスを許可し、一般的なインターネット トラフィックをブロックします。
+IP ネットワーク規則を作成すると、IP ネットワーク規則を使用して特定のパブリック インターネット IP アドレス範囲からのアクセスを許可できます。 各ストレージ アカウントでは、最大 200 個の規則を設定できます。 これらの規則は、特定のインターネット ベースのサービスとオンプレミスのネットワークにアクセスを許可し、一般的なインターネット トラフィックをブロックします。
 
-許可するインターネット アドレスの範囲は、[CIDR 表記法](https://tools.ietf.org/html/rfc4632)を使って *16.17.18.0/24* の形式で、または *16.17.18.19* のように個々の IP アドレスとして、指定できます。
+IP アドレスの範囲には、次の制限が適用されます。
 
-   > [!NOTE]
-   > 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。
+- IP ネットワーク規則は、**パブリック インターネット** の IP アドレスに対してのみ許可されます。 
 
-IP ネットワーク ルールは、**パブリック インターネット** の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、_10.*_ 、_172.16.*_  - _172.31.*_ 、_192.168.*_ で始まるアドレスが含まれます。
+  プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、_10.*_ 、_172.16.*_  - _172.31.*_ 、_192.168.*_ で始まるアドレスが含まれます。
 
-   > [!NOTE]
-   > IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。
+- 許可するインターネット アドレスの範囲は、[CIDR 表記法](https://tools.ietf.org/html/rfc4632)を使って *16.17.18.0/24* の形式で、または *16.17.18.19* のように個々の IP アドレスとして、指定する必要があります。 
 
-  > [!NOTE]
-  > ストレージ アカウントと同じリージョンでデプロイされたサービスでは、プライベート Azure IP アドレスが通信に使用されます。 そのため、特定の Azure サービスへのアクセスを、そのパブリック送信 IP アドレスの範囲に基づいて制限することはできません。
+- 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。 
 
-ストレージ ファイアウォール規則の構成では、IPv4 アドレスのみがサポートされています。
+- ストレージ ファイアウォール規則の構成では、IPv4 アドレスのみがサポートされています。
 
-各ストレージ アカウントでは、最大 200 個の IP ネットワーク規則を設定できます。
+IP ネットワーク規則は、次の場合には使用できません。
+
+- ストレージ アカウントと同じ Azure リージョン内のクライアントへのアクセスを制限する。
+  
+  IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。 
+
+- サービス エンドポイントがある VNet 内の[ペアになっているリージョン](../../best-practices-availability-paired-regions.md)のクライアントへのアクセスを制限する。
+
+- ストレージ アカウントと同じリージョンにデプロイされている Azure サービスへのアクセスを制限する。
+
+  ストレージ アカウントと同じリージョンでデプロイされたサービスでは、プライベート Azure IP アドレスが通信に使用されます。 そのため、特定の Azure サービスへのアクセスを、そのパブリック送信 IP アドレスの範囲に基づいて制限することはできません。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>オンプレミスのネットワークからのアクセスの構成
 
@@ -564,7 +571,7 @@ az storage account network-rule list \
 | Azure DevTest Labs       | Microsoft.DevTestLab       | カスタム イメージの作成とアーティファクトのインストール [詳細については、こちらを参照してください](../../devtest-labs/devtest-lab-overview.md)。 |
 | Azure Event Grid         | Microsoft.EventGrid        | Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](../../event-grid/overview.md#event-sources)と[キューへの発行](../../event-grid/event-handlers.md)について確認してください。 |
 | Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細については、こちらを参照してください](../../event-hubs/event-hubs-capture-overview.md)。 |
-| Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md) |
+| Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../file-sync/file-sync-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細については、こちらを参照してください](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。 |
 | Azure Import Export      | Microsoft.ImportExport     | Azure Storage Import/Export サービスを使用すると、Azure Storage にデータをインポートしたり、Azure Storage からデータをエクスポートしたりできます。 [詳細については、こちらを参照してください](../../import-export/storage-import-export-service.md)。  |
 | Azure Monitor            | Microsoft.Insights         | リソース ログ、Azure Active Directory サインインと監査ログ、Microsoft Intune ログなど、セキュリティで保護されたストレージ アカウントへの監視データの書き込みを許可します。 [詳細については、こちらを参照してください](../../azure-monitor/roles-permissions-security.md)。 |

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561070"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774370"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>VM とイメージの Linux エージェントを無効化または削除する
 
@@ -32,7 +32,7 @@ Azure プラットフォームでは、VM の構成、監視、セキュリテ�
 
 ## <a name="disabling-extension-processing"></a>拡張機能の処理の無効化
 
-必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する **必要があります**。たとえば、Azure CLI を使用すると、[一覧を表示](/cli/azure/vm/extension#az-vm-extension-list)して [削除](/cli/azure/vm/extension#az-vm-extension-delete)できます。
+必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する **必要があります**。たとえば、Azure CLI を使用すると、[一覧を表示](/cli/azure/vm/extension#az_vm_extension_list)して [削除](/cli/azure/vm/extension#az_vm_extension_delete)できます。
 
 ```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -156,7 +156,7 @@ Linux エージェントが含まれていないイメージから VM を作成�
 > 
 > 上記の操作を行わないと、プラットフォームは拡張機能の構成を送信しようと試み、40 分後にタイムアウトします。
 
-拡張機能が無効になっている VM をデプロイする場合は、[--enable-agent](/cli/azure/vm#az-vm-create) を指定して Azure CLI を実行できます。
+拡張機能が無効になっている VM をデプロイする場合は、[--enable-agent](/cli/azure/vm#az_vm_create) を指定して Azure CLI を実行できます。
 
 ```azurecli
 az vm create \

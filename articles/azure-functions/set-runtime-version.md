@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンをターゲットにす�
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 Azure でホストされる Function App のランタイム バージョンを指定する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e9aa5546b5f07b724fe22bc1e20a2e97feb2aec2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a9f8fca1c39fd0251df3e3a8da3d789aae4d3d6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435564"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779275"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
@@ -106,7 +106,7 @@ az functionapp config appsettings set --name <FUNCTION_APP> \
 
 `<FUNCTION_APP>` をお使いの関数アプリの名前に置き換えます。 また、`<RESOURCE_GROUP>` をお使いの関数アプリのリソース グループの名前に置き換えます。 また、`<VERSION>` を特定のバージョンか、`~3`、`~2`、または `~1` に置き換えます。
 
-前のコード例で **[試してみる]** を選択し、[Azure Cloud Shell](../cloud-shell/overview.md) でコマンドを実行します。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)実行して、このコマンドを実行することもできます。 ローカルで実行する場合は、最初に [az login](/cli/azure/reference-index#az-login) を実行してサインインする必要があります。
+前のコード例で **[試してみる]** を選択し、[Azure Cloud Shell](../cloud-shell/overview.md) でコマンドを実行します。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)実行して、このコマンドを実行することもできます。 ローカルで実行する場合は、最初に [az login](/cli/azure/reference-index#az_login) を実行してサインインする必要があります。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -165,7 +165,7 @@ az functionapp config set --name <FUNCTION_APP> \
 
 `<FUNCTION_APP>` をお使いの関数アプリの名前に置き換えます。 また、`<RESOURCE_GROUP>` をお使いの関数アプリのリソース グループの名前に置き換えます。 また、上記のように、`<LINUX_FX_VERSION>` を特定のイメージの値に置き換えます。
 
-このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
+このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az_login)を実行してサインインした後に、このコマンドを実行することもできます。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

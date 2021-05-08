@@ -8,13 +8,13 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.custom: amqp
+ms.openlocfilehash: 65fd6e5b4d494f8e8486d72079b9fa97a175894b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463087"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376887"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>チュートリアル: Azure IoT Edge デバイスを構成する
 

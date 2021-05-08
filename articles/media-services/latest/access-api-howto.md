@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6b59276cc340f133c0f270e8ab95051b3c392e1c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e45a0eefff3a6a7f7dd37bde3ee3bffaedd93dcd
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581288"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166617"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する
 
@@ -38,7 +38,7 @@ Azure AD 認証を使用して Azure Media Services API にアクセスする場
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。
-- Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](create-account-howto.md)」を参照してください。
+- Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](account-create-how-to.md)」を参照してください。
 
 ## <a name="portal"></a>[ポータル](#tab/portal/)
 

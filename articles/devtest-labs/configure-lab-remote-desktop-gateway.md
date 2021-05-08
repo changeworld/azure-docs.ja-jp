@@ -3,12 +3,12 @@ title: Azure DevTest Labs でリモート デスクトップ ゲートウェイ�
 description: RDP ポートを公開せずにラボ VM に安全にアクセスできるようにするために、リモート デスクトップ ゲートウェイを使用して Azure DevTest Labs でラボを構成する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b15d4d39199c1a30eae292ece67f4553b656f530
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695695"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639602"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します
 Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想マシン (VM) に安全にアクセスできるようにするために、ラボ用のリモート デスクトップ ゲートウェイを構成できます。 ラボは、ラボ ユーザーがアクセスできるすべての仮想マシンを表示および接続するための中央の場所を提供します。 **[仮想マシン]** ページの **[接続]** ボタンにより、そのマシンに接続するために開くことができるマシン固有の RDP ファイルが作成されます。 ラボをリモート デスクトップ ゲートウェイに接続することで、RDP 接続をさらにカスタマイズして保護できます。 
@@ -36,7 +36,7 @@ DevTest Labs のトークン認証機能を使用するには、ゲートウェ�
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>リモート デスクトップ ゲートウェイ マシンの要件
 - HTTPS トラフィックを処理するには、TLS/SSL 証明書がゲートウェイ マシンにインストールされている必要があります。 証明書は、ゲートウェイ ファームのロード バランサーの完全修飾ドメイン名 (FQDN)、またはマシンが 1 台しかない場合はマシン自体の FQDN と一致する必要があります。 ワイルドカード TLS/SSL 証明書は機能しません。  
 - 署名証明書がゲートウェイ マシンにインストールされている必要があります。 署名証明書は [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) スクリプトを使用して作成します。
-- リモート デスクトップ ゲートウェイのトークン認証をサポートする[プラグ可能認証](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)モジュールをインストールします。 このようなモジュールの 1 つの例に、[System Center Virtual Machine Manager (VMM) のイメージ](/system-center/vmm/install-console?view=sc-vmm-1807)に付属している `RDGatewayFedAuth.msi` があります。 System Center の詳細については、[System Center のドキュメント](/system-center/)と[価格の詳細](https://www.microsoft.com/cloud-platform/system-center-pricing)を参照してください。  
+- リモート デスクトップ ゲートウェイのトークン認証をサポートする[プラグ可能認証](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)モジュールをインストールします。 このようなモジュールの 1 つの例に、[System Center Virtual Machine Manager (VMM) のイメージ](/system-center/vmm/install-console?view=sc-vmm-1807&preserve-view=true)に付属している `RDGatewayFedAuth.msi` があります。 System Center の詳細については、[System Center のドキュメント](/system-center/)と[価格の詳細](https://www.microsoft.com/cloud-platform/system-center-pricing)を参照してください。  
 - ゲートウェイ サーバーで `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` に対する要求を処理できます。
 
     ゲートウェイのホスト名は、ゲートウェイ ファームのロード バランサーの FQDN、またはマシンが 1 台しかない場合はマシン自体の FQDN です。 `{lab-machine-name}` は接続を試みているラボ マシンの名前であり、`{port-number}` は接続が確立されるポートです。  既定では、このポートは 3389 です。  ただし、仮想マシンが DevTest Labs の[共有 IP](devtest-lab-shared-ip.md) 機能を使用している場合、このポートは異なります。
@@ -105,14 +105,14 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
-    $cer.Import(‘path-to-certificate’);
+    $cer.Import('path-to-certificate');
     $hash = $cer.GetCertHashString()
     ```
 
     PowerShell を使用して Base64 エンコードを取得するには、次のコマンドを使用します。
 
     ```powershell
-    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
+    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes('path-to-certificate'))
     ```
 3. [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) からファイルをダウンロードします。
 

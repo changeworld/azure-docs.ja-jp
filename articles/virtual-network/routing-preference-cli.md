@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 58b91c105ed48617b64356904942f5ab6b461cda
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101665954"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776557"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLI を使用してパブリック IP アドレスのルーティング優先設定を構成する
 
@@ -40,14 +40,14 @@ ms.locfileid: "101665954"
 - この記事では、Azure CLI のバージョン 2.0.49 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、Azure の **米国東部** リージョンにリソース グループを作成します。
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、Azure の **米国東部** リージョンにリソース グループを作成します。
 
 ```azurecli
   az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-次に示すような形式の [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) コマンドを使用し、種類が **インターネット** のルーティング優先設定でパブリック IP アドレスを作成します。
+次に示すような形式の [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) コマンドを使用し、種類が **インターネット** のルーティング優先設定でパブリック IP アドレスを作成します。
 
 次のコマンドを実行すると、**米国東部** Azure リージョンに **インターネット** をルーティング優先設定にして新しいパブリック IP アドレスが作成されます。
 
@@ -71,4 +71,3 @@ az network public-ip create \
 
 - [パブリック IP アドレスでのルーティング優先設定](routing-preference-overview.md)について詳しく学習する。 
 - [Azure CLI を使用して VM 用にルーティング優先設定を構成する](configure-routing-preference-virtual-machine-cli.md)。
-

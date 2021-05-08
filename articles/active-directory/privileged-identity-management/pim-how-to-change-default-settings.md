@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 676fdf264cb930069425a330c3da9cd753bf8e0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708485"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567035"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -64,14 +64,14 @@ Azure AD ロールに対する要求を承認または拒否するには、こ�
 
 このような **資格のある** 割り当て期間のオプションからいずれかを選択することができます。
 
-| | |
+| | 説明 |
 | --- | --- |
 | **永続的に資格のある割り当てを許可する** | 全体管理者と特権ロール管理者は、永続的に資格のある割り当てを割り当てることができます。 |
 | **次の後に、資格のある割り当ての有効期限が切れる** | 全体管理者と特権ロール管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような **アクティブな** 割り当て期間のオプションからいずれかを選択することができます。
 
-| | |
+| | 説明 |
 | --- | --- |
 | **永続するアクティブな割り当てを許可する** | 全体管理者と特権ロール管理者は、永続的にアクティブな割り当てを割り当てることができます。 |
 | **アクティブ割り当ては次の期間後に期限切れになる** | 全体管理者と特権ロール管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |

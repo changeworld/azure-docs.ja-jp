@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a285f26a406caa88d91da5647b3b79cffc9b614f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bd83367ae073e03f03188cdf62cb60faaad7ac97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217416"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026455"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger の有効化やスナップショットの表示に関する問題のトラブルシューティング
 アプリケーションで Application Insights スナップショット デバッガーを有効にしても、例外のスナップショットが表示されない場合は、こちらの手順を使用してトラブルシューティングを行うことができます。
@@ -20,7 +20,7 @@ ms.locfileid: "102217416"
 
 ## <a name="make-sure-youre-using-the-appropriate-snapshot-debugger-endpoint"></a>適切なスナップショット デバッガー エンドポイントを使用していることを確認する
 
-現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみです。
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) と [Azure China](/azure/china/resources-developer-guide) のみです。
 
 Application Insights SDK を使用する App Service とアプリケーションでは、次の定義されているように、サポートされているスナップショット デバッガーのオーバーライドを使用して接続文字列を更新する必要があります。
 
@@ -28,7 +28,7 @@ Application Insights SDK を使用する App Service とアプリケーション
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-その他の接続のオーバーライドの詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)を参照してください。
+その他の接続のオーバーライドの詳細については、[Application Insights のドキュメント](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides)を参照してください。
 
 Function App の場合は、サポートされている次のオーバーライドを使用して `host.json` を更新する必要があります。
 
@@ -135,7 +135,7 @@ App Service の Kudu 管理サイトを使用して、この状態ページの�
 
 ## <a name="check-the-uploader-logs"></a>アップローダー ログの確認
 
-スナップショットの作成後、ミニダンプ ファイル (.dmp) がディスク上に作成されます。 個別アップローダー プロセスでは、そのミニダンプ ファイルを作成し、これを関連する PDB と共に Application Insights のスナップショット デバッガーのストレージにアップロードします。 ミニダンプは、正常にアップロードされた後、ディスクから削除されます。 アップローダー プロセスのログ ファイルは、ディスク上に保持されます。 App Service 環境では、これらのログは `D:\Home\LogFiles` にあります。 App Service の Kudu 管理サイトを使用すると、これらのログ ファイルを検索できます。
+スナップショットの作成後、ミニダンプ ファイル (.dmp) がディスク上に作成されます。 個別アップローダー プロセスでは、そのミニダンプ ファイルを作成し、これを関連する PDB と共に Application Insights のスナップショット デバッガーのストレージにアップロードします。 ミニダンプは、正常にアップロードされた後、ディスクから削除されます。 アップローダー プロセスのログ ファイルは、ディスク上に保持されます。 App Service Environment では、これらのログは `D:\Home\LogFiles` にあります。 App Service の Kudu 管理サイトを使用すると、これらのログ ファイルを検索できます。
 
 1. Azure Portal で App Service アプリケーションを開きます。
 2. **[高度なツール]** を選択するか、「**Kudu**」を検索します。

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
-ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2b22746b7a78349580220f4aa7579876fd21c33
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033301"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074592"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure プラットフォーム ログの概要
 プラットフォーム ログでは、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 これらは自動的に生成されますが、特定のプラットフォーム ログを保持するための 1 つ以上の送信先に転送するように構成する必要があります。 この記事では、提供される情報の内容や収集と分析のための構成方法など、プラットフォーム ログの概要について説明します。
@@ -45,8 +45,8 @@ ms.locfileid: "102033301"
 
 | 到着地 | 説明 |
 |:---|:---|
-| Log Analytics ワークスペース | すべての Azure リソースのログをまとめて分析し、[ログ クエリ](../logs/log-query-overview.md)と[ログ アラート](../alerts/alerts-log.md)を含めて、[Azure Monitor ログ](../logs/data-platform-logs.md)に使用できるすべての機能を活用します。 ログ クエリの結果を Azure ダッシュボードにピン留めするか、対話型のレポートの一部としてブックに含めます。 |  |
-| イベント ハブ | たとえば、サードパーティ製の SIEM やカスタム テレメトリ プラットフォームなど、Azure の外部のプラットフォーム ログ データを送信します。
+| Log Analytics ワークスペース | すべての Azure リソースのログをまとめて分析し、[ログ クエリ](../logs/log-query-overview.md)と[ログ アラート](../alerts/alerts-log.md)を含めて、[Azure Monitor ログ](../logs/data-platform-logs.md)に使用できるすべての機能を活用します。 ログ クエリの結果を Azure ダッシュボードにピン留めするか、対話型のレポートの一部としてブックに含めます。 | 
+| イベント ハブ | たとえば、サードパーティ製の SIEM やカスタム テレメトリ プラットフォームなど、Azure の外部のプラットフォーム ログ データを送信します。 |
 | Azure Storage | 監査やバックアップのためにログをアーカイブします。 |
 
 - アクティビティ ログまたはリソース ログの診断設定の作成の詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../essentials/diagnostic-settings.md)」を参照してください。 

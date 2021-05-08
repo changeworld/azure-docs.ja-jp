@@ -3,12 +3,12 @@ title: Azure Arc を使用してハイブリッド インフラストラクチ�
 description: Azure の外部で顧客のマシンと Kubernetes クラスターを効果的に管理する方法について説明します。
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: ec32389cd7444405580530a00c8b7c5bc48bcd56
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: da7f016b507f8f876d27f6924f87f078a7806563
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419332"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563601"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Azure Arc を使用してハイブリッド インフラストラクチャを大規模に管理する
 
@@ -35,11 +35,11 @@ Azure portal で委任されたサブスクリプションのリソースを表�
 
 ## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes を使用してハイブリッド Kubernetes クラスターを大規模に管理する
 
-[Azure Arc を使用して顧客のサブスクリプションに接続されている](../../azure-arc/kubernetes/connect-cluster.md) Kubernetes クラスターは、Azure で実行されている場合と同様に管理できます。
+[Azure Arc を使用して顧客のサブスクリプションに接続されている](../../azure-arc/kubernetes/quickstart-connect-cluster.md) Kubernetes クラスターは、Azure で実行されている場合と同様に管理できます。
 
 顧客が [Kubernetes クラスターを Azure Arc にオンボードするためにサービス プリンシパル アカウント](../../azure-arc/kubernetes/create-onboarding-service-principal.md)を作成した場合は、このサービス プリンシパル アカウントにアクセスしてクラスターをオンボードおよび管理することができます。 これを実行できるのは、サービス プリンシパル アカウントを含むサブスクリプションが [Azure Lighthouse](onboard-customer.md) にオンボードされたときに、"Kubernetes クラスター - Azure Arc のオンボード" Azure 組み込みロールを付与された管理テナントのユーザーです。
 
-接続されたクラスターの GitOps を使用して、[構成](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)と [Helm Chart](../../azure-arc/kubernetes/use-gitops-with-helm.md) をデプロイできます。
+接続されたクラスターの GitOps を使用して、[構成](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md)と [Helm Chart](../../azure-arc/kubernetes/use-gitops-with-helm.md) をデプロイできます。
 
 接続されたクラスターを Azure Monitor を使用して監視し、[Azure Policy を使用してクラスター構成を大規模に適用することもできます](../../azure-arc/kubernetes/use-azure-policy.md)。
 

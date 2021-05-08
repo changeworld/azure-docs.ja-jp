@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 285c6c05a1a216303ee9d8019093c963cad60aa0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3e0632b2ad1ac237d8899e9d3bdc7f1d3350fa76
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946486"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057934"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>チュートリアル:HDInsight での Power BI を使用した Apache Spark データの分析
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     出力は次のようになります。
 
-    ![Spark でのテーブルの表示](./media/apache-spark-use-bi-tools/apache-spark-show-tables.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-show-tables.png" alt-text="Spark でのテーブルの表示" border="true":::
 
     このチュートリアルを開始する前に Notebook を閉じると、`hvactemptable` はクリーンアップされるため、出力に含まれません。  BI ツールからアクセスできるのは、metastore に保存された Hive テーブル (**isTemporary** 列に **False** と表示される) のみです。 このチュートリアルでは、作成した **hvac** テーブルに接続します。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     出力は次のようになります。
 
-    ![Spark での hvac テーブルの行の表示](./media/apache-spark-use-bi-tools/apache-spark-select-limit.png)
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-select-limit.png" alt-text="Spark での hvac テーブルの行の表示" border="true":::
 
 3. ノートブックの **[File]\(ファイル\)** メニューの **[Close and Halt]\(閉じて停止\)** を選びます。 Notebook をシャットダウンしてリソースを解放します。
 
@@ -72,11 +72,11 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
 2. **[ホーム]** タブから、 **[データの取得]**  >  **[その他...]** に移動します。
 
-    ![HDInsight Apache Spark から Power BI Desktop にデータを取得](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Apache Spark BI から Power BI にデータを取得")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png " alt-text="HDInsight Apache Spark から Power BI Desktop にデータを取得" border="true":::
 
 3. 検索ボックスに「`Spark`」と入力し、 **[Azure HDInsight Spark]** 、 **[接続]** の順に選択します。
 
-    ![Apache Spark BI から Power BI にデータを取得](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Apache Spark BI から Power BI にデータを取得")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png " alt-text="Apache Spark BI から Power BI にデータを取得" border="true":::
 
 4. **[サーバー]** テキスト ボックスにクラスター URL を (`mysparkcluster.azurehdinsight.net` の形式で) 入力します。
 
@@ -88,7 +88,7 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
 7. `hvac` テーブルを選択し、データのプレビューが表示されるのを待ってから、 **[読み込み]** を選択します。
 
-    ![Spark クラスターのユーザー名とパスワード](./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png "Spark クラスターのユーザー名とパスワード")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-table.png " alt-text="Spark クラスターのユーザー名とパスワード" border="true":::
 
     Spark クラスターに接続し、`hvac` テーブルからデータを読み込むために必要な情報が Power BI Desktop に整いました。 **[フィールド]** ウィンドウにテーブルとその列が表示されます。
 
@@ -98,21 +98,21 @@ Spark を操作する最初のステップでは、Power BI Desktop のクラス
 
     2. **[BuildingID]** フィールドを **軸** にドラッグし、 **[ActualTemp]** と **[TargetTemp]** の各フィールドを **値** にドラッグします。
 
-        ![値の列を追加](./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png "値の列を追加")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-add-value-columns.png " alt-text="値の列の追加" border="true":::
 
         図は次のようになります。
 
-        ![面グラフの合計](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "面グラフの合計")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png " alt-text="面グラフの合計" border="true":::
 
         既定では、**ActualTemp** および **TargetTemp** の合計が表示されます。 [視覚化] ウィンドウ内の **ActualTemp** と **TragetTemp** の横にある下矢印を選択すると、 **[合計]** が選択されていることを確認できます。
 
     3. [視覚化] ウィンドウ内の **ActualTemp** と **TragetTemp** の横にある下矢印を選択し、 **[平均]** を選択して、各ビルの実際の温度と目標温度の平均を取得します。
 
-        ![値の平均](./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png "値の平均")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-average-of-values.png " alt-text="値の平均" border="true":::
 
         次のスクリーンショットのようにデータが視覚化されます。 グラフの上にカーソルを移動すると、関連データを含むツール ヒントが表示されます。
 
-        ![面グラフ](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "面グラフ")
+        :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png " alt-text="面グラフ" border="true":::
 
 9. **[ファイル]**  >  **[保存]** に移動し、ファイルの名前 `BuildingTemperature` を入力して **[保存]** を選択します。
 
@@ -124,31 +124,31 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. **[ホーム]** タブで **[発行]** を選択します。
 
-    ![Power BI Desktop から発行する](./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png "Power BI Desktop から発行する")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish.png " alt-text="Power BI Desktop から発行する" border="true":::
 
 1. データセットを発行してレポートするワークスペースを選択して、 **[選択]** をクリックします。 次の図では、既定値の **[マイ ワークスペース]** が選択されています。
 
-    ![データセットを発行してレポートするワークスペースの選択](./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png "データセットを発行してレポートするワークスペースの選択")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-select-workspace.png " alt-text="データセットを発行してレポートするワークスペースの選択" border="true":::
 
 1. 発行に成功したら、 **[Open 'BuildingTemperature.pbix' in Power BI]\('BuildingTemperature.pbix' を Power BI で開く\)** を選択します。
 
-    ![発行の成功、クリックして資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png "発行の成功、クリックして資格情報を入力")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-publish-success.png " alt-text="発行の成功、クリックして資格情報を入力" border="true":::
 
 1. Power BI サービスで、 **[資格情報を入力する]** を選択します。
 
-    ![Power BI サービスで資格情報を入力](./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png "Power BI サービスで資格情報を入力")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-enter-credentials.png " alt-text="Power BI サービスで資格情報を入力" border="true":::
 
 1. **[資格情報を編集]** を選択します。
 
-    ![Power BI サービスで資格情報を編集](./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png "Power BI サービスで資格情報を編集")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-edit-credentials.png " alt-text="Power BI サービスで資格情報を編集" border="true":::
 
 1. HDInsight のログイン アカウント情報を入力し、 **[サインイン]** を選択します。 既定のアカウント名は *admin* です。
 
-    ![Spark クラスターへのサインイン](./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png "Spark クラスターへのサインイン")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-sign-in.png " alt-text="Spark クラスターへのサインイン" border="true":::
 
 1. 左ペインで **[ワークスペース]**  >  **[マイ ワークスペース]**  >  **[レポート]** の順に移動して、 **[BuildingTemperature]** を選択します。
 
-    ![左側のペインのレポートの下に一覧表示されたレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png "左側のペインのレポートの下に一覧表示されたレポート")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-left-pane.png " alt-text="左側のペインのレポートの下に一覧表示されたレポート" border="true":::
 
     左ウィンドウ枠の **[データセット]** にも **[BuildingTemperature]** が表示されます。
 
@@ -156,11 +156,11 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
 
 1. 視覚エフェクトにカーソルを合わせ、右上隅のピン アイコンを選択します。
 
-    ![Power BI サービスのレポート](./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png "Power BI サービスのレポート")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-service-report.png " alt-text="Power BI サービスのレポート" border="true":::
 
 1. [新しいダッシュボード] を選択して、名前 `Building temperature` を入力し、 **[ピン留め]** を選択します。
 
-    ![新しいダッシュボードにピン留め](./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png "新しいダッシュボードにピン留め")
+    :::image type="content" source="./media/apache-spark-use-bi-tools/apache-spark-bi-pin-dashboard.png " alt-text="新しいダッシュボードにピン留めする" border="true":::
 
 1. レポートで、 **[ダッシュボードへ移動]** を選択します。
 

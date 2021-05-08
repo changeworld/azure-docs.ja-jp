@@ -2,22 +2,25 @@
 title: 'クイックスタート: PowerShell を使用してゲスト ユーザーを追加する - Azure AD'
 description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を送信する方法について説明します。
 services: active-directory
-ms.service: active-directory
-ms.subservice: B2B
-ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: mimart
 author: msmimart
+ms.author: mimart
 manager: celestedg
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.date: 08/28/2018
+ms.topic: quickstart
+ms.service: active-directory
+ms.subservice: B2B
+ms.custom:
+- it-pro
+- seo-update-azuread-jan
+- mode-api
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 765d8ea99167512e553cef9cc6f7fed583eff469
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87910599"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529820"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>クイック スタート: PowerShell を使用してゲスト ユーザーを追加する
 

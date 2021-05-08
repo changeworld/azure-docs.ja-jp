@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f02c9ad10e2b03bddc7c3ca2cfb54932464b69a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97901234"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731753"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview を使用してフロントエンド フレームワークとライブラリを構成する
 
@@ -52,6 +52,7 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 | [Polymer](https://www.polymer-project.org/) | `build/default` | 該当なし |
 | [Preact](https://preactjs.com/) | `build` | 該当なし |
 | [React](https://reactjs.org/) | `build` | 該当なし |
+| [RedwoodJS](https://redwoodjs.com/) | `web/dist` | `yarn rw build` |
 | [Stencil](https://stenciljs.com/) | `www` | 該当なし |
 | [Svelte](https://svelte.dev/) | `public` | 該当なし |
 | [Three.js](https://threejs.org/) | `/` | 該当なし |

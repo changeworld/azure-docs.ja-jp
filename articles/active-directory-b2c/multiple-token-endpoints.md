@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2ab93a8742d210969ef6ad10683bed92221c1a57
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491571"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256703"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWIN ベースの Web API を b2clogin.com またはカスタム ドメインに移行する
 
-この記事では、[Open Web Interface for .NET (OWIN)](http://owin.org/) が実装されている Web API で複数のトークン発行者のサポートを有効にする方法について説明します。 複数のトークン エンドポイントのサポートは、Azure Active Directory B2C (Azure AD B2C) API とそのアプリケーションをあるドメインから別のドメインに移行する場合に便利です。 たとえば、*login.microsoftonline.com* から *b2clogin.com*、または[カスタム ドメイン](custom-domain.md)に移行するような場合です。
+この記事では、[Open Web Interface for .NET (OWIN)](http://owin.org/) が実装されている Web API で複数のトークン発行者のサポートを有効にする方法について説明します。 複数のトークン エンドポイントのサポートは、Azure Active Directory B2C (Azure AD B2C) API とそのアプリケーションをあるドメインから別のドメインに移行する場合に便利です。 たとえば、*login.microsoftonline.com* から *b2clogin.com*、または [カスタム ドメイン](custom-domain.md)に移行するような場合です。
 
 b2clogin.com、login.microsoftonline.com、またはカスタム ドメインによって発行されたトークンを受け入れるように API にサポートを追加することにより、Web アプリケーションを段階的に移行してから、login.microsoftonline.com で発行されたトークンのサポートを API から削除することができます。
 
@@ -30,7 +30,7 @@ b2clogin.com、login.microsoftonline.com、またはカスタム ドメインに
 
 この記事の手順を続ける前に、次の Azure AD B2C リソースを用意しておく必要があります。
 
-* お使いのテナントに作成された[ユーザー フロー](tutorial-create-user-flows.md)または[カスタム ポリシー](custom-policy-get-started.md)
+* お使いのテナントに作成された[ユーザー フロー](tutorial-create-user-flows.md?pivots=b2c-user-flow)または[カスタム ポリシー](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 
 ## <a name="get-token-issuer-endpoints"></a>トークン発行者のエンドポイントを取得する
 

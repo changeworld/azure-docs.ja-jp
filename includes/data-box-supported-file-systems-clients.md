@@ -3,16 +3,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 09/30/2020
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 586f02b47ad00625a865dcacef1f39b7c9acffa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d2bae6c2228af969f1ac5ea4d32b42a89fd881
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767877"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611934"
 ---
 | **プロトコル** | **バージョン** |
 | --- | --- |
 | SMB | 3.0 および 2.0 |
-| NFS | 4\.1 までのすべてのバージョン (4.1 も含まれます)|
+| NFS | 4\.1 までのすべてのバージョン (4.1 も含まれます)<br>NFS 共有の場合、IBM Database 2 (DB2) Export ツールを使用して Advanced Interactive Executive (AIX) ホストから Data Box にデータをコピーすることはサポートされていません。|

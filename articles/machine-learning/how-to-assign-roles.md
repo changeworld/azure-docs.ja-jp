@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 01/20/2020
+ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624542"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612621"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -464,12 +464,13 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用している
 - 同じ Azure Active Directory ユーザーに 2 つのロールの割り当てがあり、Actions/NotActions のセクションが競合している場合、あるロールの NotActions に一覧表示されている操作は、他のロールで Actions としても一覧表示されている場合、有効にならない可能性があります。 Azure がロールの割り当てを解析する方法の詳細については、「[ユーザーがリソースへのアクセス権を持っているどうかを Azure RBAC が特定する方法](../role-based-access-control/overview.md#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)」を参照してください。
 
 - VNet 内にコンピューティング リソースをデプロイするには、次のアクションのアクセス許可を明示的に付与する必要があります。
-    - VNet リソースに対する `Microsoft.Network/virtualNetworks/join/action`。
+    - VNet リソースに対する `Microsoft.Network/virtualNetworks/*/read`。
     - サブネット リソースに対する `Microsoft.Network/virtualNetworks/subnet/join/action`。
     
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください。
 
 - 新しいロールの割り当てがスタック全体のキャッシュされたアクセス許可に対して有効になるには、最大で 1 時間かかることがあります。
+- 現在、[条件付きアクセス](../role-based-access-control/conditional-access-azure-management.md)は Azure Machine Learning ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

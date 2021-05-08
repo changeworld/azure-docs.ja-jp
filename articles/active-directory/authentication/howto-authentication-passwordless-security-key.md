@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a29a2a7e379e253b52813eb7a76f669abbf668
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653832"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275806"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>パスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -89,6 +89,8 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 ### <a name="security-key-provisioning"></a>セキュリティ キーのプロビジョニング
 
 管理者がセキュリティ キーをプロビジョニングし、それをプロビジョニング解除することはできません。
+
+**注:** win10 20H2 バージョンに固有のハイブリッド Azure AD 参加済みマシンで、FIDO2 のキャッシュされたログオンが失敗します (LOS から DC が使用できない場合)。 これは、現在、エンジニアリングで調査中です。
 
 ### <a name="upn-changes"></a>UPN の変更
 

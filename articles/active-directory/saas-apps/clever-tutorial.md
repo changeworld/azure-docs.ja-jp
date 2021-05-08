@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 29384457f946eff5708c319e14161d670adf6ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98729893"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563839"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Clever の統合
 
@@ -118,7 +118,7 @@ Clever で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-clever-sso"></a>Clever の SSO の構成
 
-[リンク](https://support.clever.com/hc/articles/205889768-Single-Sign-On-SSO-Log-in-with-Office-365-Azure-)に記載されている手順に従って、Clever 側でシングル サインオンを構成します。
+[リンク](https://support.clever.com/hc/s/articles/205889768)に記載されている手順に従って、Clever 側でシングル サインオンを構成します。
 
 ### <a name="create-clever-test-user"></a>Clever テスト ユーザーの作成
 

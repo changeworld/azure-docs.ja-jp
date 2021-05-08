@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 792f4f81d84b61f0f78c53e62168921221b4f330
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9d61e9ff753c37268be19e95db9450e2cd923d96
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503166"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279682"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>手順 3 - V3 REST API またはクライアント SDK に移行するための設定
 
@@ -43,9 +43,9 @@ V2 アカウントを管理するために、以前に 2015-10-01 バージョ�
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>テスト用の新しいメディア サービス アカウントを作成する
 
-Azure portal を使用して[環境を設定する](how-to-set-azure-subscription.md?tabs=portal)ためのクイックスタートの手順に従ってください。 このテスト アカウントで使用する新しい Azure AD アプリケーション ID とシークレットを生成するには、API アクセスとサービス プリンシパル認証を選択します。
+Azure portal を使用して[環境を設定する](setup-azure-subscription-how-to.md?tabs=portal)ためのクイックスタートの手順に従ってください。 このテスト アカウントで使用する新しい Azure AD アプリケーション ID とシークレットを生成するには、API アクセスとサービス プリンシパル認証を選択します。
 
-[メディア サービス アカウントを作成する](create-account-howto.md?tabs=portal)。
+[メディア サービス アカウントを作成する](account-create-how-to.md?tabs=portal)。
 [Media Services API にアクセスするための資格情報を取得する](access-api-howto.md?tabs=portal)。
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>任意のクライアント SDK をダウンロードして環境を設定する
@@ -66,7 +66,7 @@ Azure portal を使用して[環境を設定する](how-to-set-azure-subscriptio
 
 ## <a name="rest"></a>[REST](#tab/rest)
 
-Media Services v3 REST API 呼び出し用に [Postman](./media-rest-apis-with-postman.md) を使用します。
+Media Services v3 REST API 呼び出し用に [Postman](./setup-postman-rest-how-to.md) を使用します。
 [REST API リファレンス ページ](/rest/api/media/)を参照してください。
 
 Postman コレクションの 2020-05-01 バージョン文字列を使用する必要があります。
@@ -143,7 +143,3 @@ class Program
 [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media) SDK をダウンロードします。
 
 ---
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

@@ -3,17 +3,17 @@ title: 'ML スタジオ (クラシック): Azure Machine Learning に移行す�
 description: Azure Machine Learning でクライアント アプリケーションとパイプライン エンドポイントを統合します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: bf0624e0667c9fc6998fb28898a3376ca409180d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fc7e222d400c2ded602e3d26d504896302fff014
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565654"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311789"
 ---
 # <a name="consume-pipeline-endpoints-from-client-applications"></a>クライアント アプリケーションからパイプライン エンドポイントを使用する
 

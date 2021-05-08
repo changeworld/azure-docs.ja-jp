@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 505859075ce58c5db6873544123710a11135651a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bcb37c624f53d961020de022569a621ca1dfaba1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198610"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788995"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して IoT Hub デバイス プロビジョニング サービス (DPS) を設定する
 
@@ -136,7 +136,7 @@ Azure アカウントにサインインしてサブスクリプションを選�
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-1. デプロイを確認するには、次に示す[リソースを一覧表示するコマンド](/cli/azure/resource#az-resource-list)を実行し、その出力で新しいプロビジョニング サービスと IoT ハブを探します。
+1. デプロイを確認するには、次に示す[リソースを一覧表示するコマンド](/cli/azure/resource#az_resource_list)を実行し、その出力で新しいプロビジョニング サービスと IoT ハブを探します。
 
     ```azurecli
      az resource list -g "${projectName}rg"
@@ -171,4 +171,3 @@ az group delete --name "${projectName}rg"
 
 > [!div class="nextstepaction"]
 > [デバイスをプロビジョニングするためのクイックスタート](./quick-create-simulated-device-symm-key.md)
-

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 03/26/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 6dd9d65ee56bcbf8ca1da72f7d99d4545c5d7fbb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72667ab562a9e12d233f45dc50efc9b70d2141b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100095003"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642115"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -39,11 +39,12 @@ ms.locfileid: "100095003"
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 
-次の Web ブラウザーのいずれかから、**マイ アプリ** ポータルにアクセスできます。
+次の Web ブラウザーのいずれかから、**マイ アプリ** ポータルにアクセスできます。 Microsoft では、オペレーティング システムと互換性のある最新ブラウザーを使うことをお勧めしています。
 
-- Microsoft Edge (モバイル バージョンの Edge がサポートされる唯一のモバイル ブラウザーです)
-- Google Chrome
-- Mozilla Firefox、バージョン 26.0 以降
+- Microsoft Edge (最新バージョン、デスクトップおよびモバイル)
+- Safari (最新バージョン、Mac および iOS)
+- Chrome (最新バージョン、デスクトップ、およびモバイル)
+- Firefox (最新バージョン)
 
 お使いのコンピューター上で、または iOS または Android モバイル デバイス上のモバイル バージョンの Edge ブラウザーから、マイ アプリ ポータルにアクセスして使用できます。
 

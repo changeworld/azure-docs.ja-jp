@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 500ac99cd35cfdf601be75a19a1d43f84795cbe8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db1d0558f93b203af1605663533847d32afbcffb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006428"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782551"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLI を使用して App Service アプリのスケジュールされたバックアップを作成する
 
@@ -38,15 +38,15 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | Azure ストレージ コンテナーを作成します。 |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | Azure ストレージ コンテナーの SAS トークンを生成します。  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az-webapp-config-backup-update) | App Service アプリに対して新しいバックアップ スケジュールを構成します。 |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az-webapp-config-backup-show) | App Service アプリのバックアップ スケジュールを表示します。 |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | App Service アプリのバックアップの一覧を取得します。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az storage account create`](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
+| [`az storage container create`](/cli/azure/storage/container#az_storage_container_create) | Azure ストレージ コンテナーを作成します。 |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az_storage_container_generate_sas) | Azure ストレージ コンテナーの SAS トークンを生成します。  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup#az_webapp_config_backup_update) | App Service アプリに対して新しいバックアップ スケジュールを構成します。 |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup#az_webapp_config_backup_show) | App Service アプリのバックアップ スケジュールを表示します。 |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | App Service アプリのバックアップの一覧を取得します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

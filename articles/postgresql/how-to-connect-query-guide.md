@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
-ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1506ce311fe443247050a36e1b9fa4600360ac6e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92546553"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604143"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server への接続とクエリの概要
 
@@ -44,7 +44,6 @@ PostgreSQL では拡張機能を使用してデータベースの機能を拡張
 - [Postgres 11 の拡張機能](./concepts-extensions.md#postgres-11-extensions)
 - [Postgres 10 の拡張機能](./concepts-extensions.md#postgres-10-extensions)
 - [Postgres 9.6 の拡張機能](./concepts-extensions.md#postgres-96-extensions)
-- [Postgres 9.5 の拡張機能](./concepts-extensions.md#postgres-95-extensions)
 
 詳細については、[単一サーバーで PostgreSQL 拡張機能を使用する方法](concepts-extensions.md)に関するページを参照してください。
 

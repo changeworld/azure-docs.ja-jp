@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888863"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779239"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 
@@ -27,7 +27,7 @@ Azure CLI の環境を準備します。
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Azure CLI の例では、`REST` 要求に `az rest` を使用しています。 詳細については、「[az rest](/cli/azure/reference-index#az-rest)」を参照してください。
+Azure CLI の例では、`REST` 要求に `az rest` を使用しています。 詳細については、「[az rest](/cli/azure/reference-index#az_rest)」を参照してください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -52,7 +52,7 @@ Azure CLI の例では、`REST` 要求に `az rest` を使用しています。 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-この例では、リソース グループ、場所、プロバイダーの関数アプリ名を入力するように求められます。 これらの名前は変数に格納され、他のコマンドで使用されます。 リソースは、[az group create](/cli/azure/group#az-group-create) コマンドと [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) コマンドでデプロイします。
+この例では、リソース グループ、場所、プロバイダーの関数アプリ名を入力するように求められます。 これらの名前は変数に格納され、他のコマンドで使用されます。 リソースは、[az group create](/cli/azure/group#az_group_create) コマンドと [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) コマンドでデプロイします。
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97936449"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551783"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) を使用すると、組織では、デバイ�
 
 ビデオ:[デバイス コントロールを使用した条件付きアクセス](https://youtu.be/NcONUf-jeS4)
 
-FAQ:「[Azure AD デバイス管理の FAQ](faq.md)」および「[設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md)」 
+FAQ:「[Azure AD デバイス管理の FAQ](faq.yml)」および「[設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md)」 
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
@@ -239,9 +239,9 @@ Hybrid Azure AD Join がデバイスにとって最適なソリューション�
 
 | デバイス管理ツール| Azure AD 登録済み| Azure AD 参加| ハイブリッド Azure AD 参加|
 | - | - | - | - |
-| [モバイル デバイス管理 (MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>例:Microsoft Intune| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|  |
-| [Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理](/mem/configmgr/comanage/overview) <br>(Windows 10 以降)| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|  |
-| [グループ ポリシー](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Windows のみ)| | | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)|  |
+| [モバイル デバイス管理 (MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>例:Microsoft Intune| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| 
+| [Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理](/mem/configmgr/comanage/overview) <br>(Windows 10 以降)| | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| 
+| [グループ ポリシー](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Windows のみ)| | | ![これらの値にチェックマーク。](./media/plan-device-deployment/check.png)| 
 
 
 

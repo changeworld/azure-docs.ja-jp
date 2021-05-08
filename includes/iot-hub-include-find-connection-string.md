@@ -9,10 +9,10 @@ ms.date: 11/02/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 8d7ac457041474f4e774414b1d5e6f9ed09dc856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67181272"
 ---
 <!-- this tells how to get the connection string for your hub -->
@@ -24,7 +24,7 @@ ms.locfileid: "67181272"
    
 2. **[共有アクセス ポリシー]** から **[iothubowner]** ポリシーを選びます。 
 
-3. 後で使用するために、 **[共有アクセス キー]** の **[接続文字列 --- 主キー]** をコピーします。
+3. 後で使用するために、**[共有アクセス キー]** の **[接続文字列 --- 主キー]** をコピーします。
 
     ![接続文字列を取得する方法を示す画面](./media/iot-hub-include-find-connection-string/iot-hub-get-connection-string.png)
 

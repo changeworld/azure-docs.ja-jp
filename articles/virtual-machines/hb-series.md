@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: f0f5d8f5e5e7077c3438005b58d6ed1a132219f4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: db3a50108fb8c08371653c08164764cc0a3d492e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566024"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309749"
 ---
 # <a name="hb-series"></a>HB シリーズ
 
@@ -24,6 +24,7 @@ HB シリーズ VM は、100 Gb/秒の Mellanox EDR InfiniBand を特徴とし�
 [ACU](acu.md): 199-216<br>
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
@@ -35,7 +36,10 @@ HB シリーズ VM は、100 Gb/秒の Mellanox EDR InfiniBand を特徴とし�
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 228 | 263 | 2.0 | 2.55 | 2.55 | 100 | All | 700 | 4 | 8 |
 
-基になる[アーキテクチャ](./workloads/hpc/hb-series-overview.md)と、HB シリーズ VM の予想される[パフォーマンス](./workloads/hpc/hb-series-performance.md)をご確認ください。
+詳細については、下記を参照してください。
+- [アーキテクチャと VM トポロジ](./workloads/hpc/hb-series-overview.md)
+- サポート対象 OS など、サポート対象の[ソフトウェア スタック](./workloads/hpc/hb-series-overview.md#software-specifications)
+- HB シリーズ VM の予想される[パフォーマンス](./workloads/hpc/hb-series-performance.md)
 
 [!INCLUDE [hpc-include.md](./workloads/hpc/includes/hpc-include.md)]
 

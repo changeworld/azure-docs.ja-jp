@@ -1,17 +1,17 @@
 ---
 title: 接続ライブラリ - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL-Single Server に接続してクエリするアプリケーションをコーディングするときに使用できる、いくつかのライブラリとドライバーについて説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 45081c6ba161686498398f2c4ccae8b4cff4c0d1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e182ef6c5fb7bf1b76424fffdbc862775e93e29c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91704312"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606302"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の接続ライブラリ
 この記事では、Azure Database for PostgreSQL に接続およびクエリを実行するアプリケーションの開発に使用できるライブラリとドライバーを紹介します。

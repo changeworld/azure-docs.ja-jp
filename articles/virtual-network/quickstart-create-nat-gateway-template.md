@@ -6,7 +6,6 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-Customer intent: I want to create a NAT gateway by using an Azure Resource Manager template so that I can provide outbound connectivity for my virtual machines.
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
@@ -16,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 68e08b0f029e6297beee85135b4af1e4575d5470
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea214cb98e1f75daccf783333a67c6d1b0eacfeb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97703791"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776608"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>クイックスタート: NAT ゲートウェイの作成 - ARM テンプレート
 
@@ -113,7 +112,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 **Azure CLI**
 
-リソース グループとそこに含まれているすべてのリソースは、不要になったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して削除できます。
+リソース グループとそこに含まれているすべてのリソースは、不要になったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して削除できます。
 
 ```azurecli-interactive
   az group delete \

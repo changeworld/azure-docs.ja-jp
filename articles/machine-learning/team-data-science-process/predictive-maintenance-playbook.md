@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 1e939b86eeadfee276378488cfcb40c07f28684d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880660"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308576"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -439,15 +439,16 @@ Microsoft Azure では、一般的な AI の概念や実践に関するコンテ
 
 | トレーニング用のリソース  | 可用性 |
 |:-------------------|--------------|
-| [ツリーおよびランダム フォレストを使用した PdM のラーニング パス](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | パブリック | 
-| [ディープ ラーニングを使用した PdM のラーニング パス](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | パブリック |
-| [Azure の AI 開発者](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | パブリック |
-| [Microsoft AI スクール](https://aischool.microsoft.com/learning-paths) | パブリック |
-| [GitHub からの Azure AI ラーニング](https://github.com/Azure/connectthedots/blob/master/readme.md) | パブリック |
+| [Microsoft Docs: データ科学者ロール](https://docs.microsoft.com/learn/roles/data-scientist) | パブリック |
+| [Microsoft Docs: AI エンジニア ロール](https://docs.microsoft.com/learn/roles/ai-engineer) | パブリック |
+| [Microsoft Docs: データ エンジニア ロール](https://docs.microsoft.com/learn/roles/data-engineer) | パブリック |
+| [Microsoft AI スクール](https://www.microsoft.com/ai/ai-school) | パブリック |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | パブリック |
-| [Microsoft AI YouTube ウェビナー](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | パブリック |
+| [Microsoft: 人工知能および分析に関する YouTube のプレイリスト](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | パブリック |
 | [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | パブリック |
-| [LearnAI@MS](https://learnanalytics.microsoft.com) | パートナー |
+| [AI プラットフォームの概要](https://azure.microsoft.com/overview/ai-platform/) | パブリック |
+| [AI ラボ](https://www.microsoft.com/ai/ai-lab) | パブリック |
+| [Microsoft AI](https://www.microsoft.com/AI) | パブリック |
 | [Microsoft Partner Network](https://partner.microsoft.com/training/training-center) | パートナー |
 
 さらに、MIT などの教育機関やその他の教育的企業によって、AI に関する無料の MOOCS (Massive Open Online Courses) がオンラインで提供されています。

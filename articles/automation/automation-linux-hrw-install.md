@@ -3,14 +3,14 @@ title: Azure Automation への Linux Hybrid Runbook Worker のデプロイ
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: d4d9bcd16e36e76808f19f7fbd43dd0d3e7550c3
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182334"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030051"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -106,6 +106,31 @@ Linux Hybrid Runbook Worker でサポートされている Azure Automation の 
 Hybrid Runbook Worker のネットワーク要件については、[ネットワークの構成](automation-hybrid-runbook-worker.md#network-planning)に関するページを参照してください。
 
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker をインストールする
+
+Hybrid Runbook Worker をデプロイするには、2 つの方法があります。 Azure portal の Runbook ギャラリーから Runbook をインポートして実行するか、一連の PowerShell コマンドを手動で実行して同じタスクを実行することができます。
+
+### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook ギャラリーから Runbook をインポートするには
+
+インポートの手順の詳細については、「[Azure portal を使用して GitHub から Runbook をインポートする](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Linux HybridWorker** です。
+
+Runbook では、次のパラメーターが使用されます。
+
+| パラメーター | Status | 説明 |
+| ------- | ----- | ----------- |
+| `Location` | Mandatory | Log Analytics ワークスペースの場所。 |
+| `ResourceGroupName` | Mandatory | Automation アカウントのリソース グループ。 |
+| `AccountName` | Mandatory | Hybrid Run Worker が登録される Automation アカウントの名前。 |
+| `CreateLA` | Mandatory | true の場合、`WorkspaceName` の値を使用して Log Analytics ワークスペースを作成します。 false の場合、`WorkspaceName` の値は既存のワークスペースを参照する必要があります。 |
+| `LAlocation` | オプション | Log Analytics ワークスペースが作成される場所、または既に存在する場所。 |
+| `WorkspaceName` | オプション | 作成または使用する Log Analytics ワークスペースの名前。 |
+| `CreateVM` | Mandatory | true の場合、新しい VM の名前として `VMName` の値を使用します。 false の場合は、`VMName` を使用して既存の VM を検索し、登録します。 |
+| `VMName` | オプション | `CreateVM` の値に応じて、作成または登録された仮想マシンの名前。 |
+| `VMImage` | オプション | 作成する VM イメージの名前。 |
+| `VMlocation` | オプション | 作成または登録されている VM の場所。 この場所が指定されていない場合、`LAlocation` の値が使用されます。 |
+| `RegisterHW` | Mandatory | true の場合は、ハイブリッド worker として VM を登録します。 |
+| `WorkerGroupName` | Mandatory | ハイブリッド worker グループの名前。 |
+
+### <a name="manually-run-powershell-commands"></a>PowerShell コマンドを手動で実行する
 
 Linux Hybrid Runbook Worker をインストールして構成するには、次の手順のようにします。
 

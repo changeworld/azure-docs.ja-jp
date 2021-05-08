@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 60b49e5b6e103a85d79cf8495f2743b22e434c96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b365e347802824e855797afb8c68e5249bf0adb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100586798"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579622"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>チュートリアル:Bastion を構成し、ブラウザーを介して Windows VM に接続する
 
@@ -37,6 +37,10 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * ポート: Windows VM に接続するには、お使いの Windows VM で次のポートを開いておく必要があります。
   * 受信ポート:RDP (3389)
+
+ >[!NOTE]
+ >現時点では、Azure プライベート DNS ゾーンでの Azure Bastion の使用はサポートされていません。 開始する前に、Bastion リソースをデプロイする予定の仮想ネットワークが、プライベート DNS ゾーンにリンクされていないことを確認してください。
+ >
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

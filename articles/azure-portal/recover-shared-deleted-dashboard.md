@@ -1,18 +1,18 @@
 ---
 title: Azure portal で削除されたダッシュボードを復旧する
 description: Azure portal で発行されたダッシュボードを削除した場合、そのダッシュボードを復旧できます。
-ms.date: 01/21/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 095964691a3cb22f8a805af2e8fe37af4c47cb28
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 96d330872327f8719e7cc4287415d86fd0ae5fd4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559717"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Azure portal で削除されたダッシュボードを復旧する
 
-パブリック Azure クラウドを使用していて、Azure portal で "_発行された_" ダッシュボードを削除した場合は、削除から 14 日以内であればそのダッシュボードを回復できます。 Azure Government クラウドを使用している場合、またはダッシュボードが発行されていない場合は、回復できないため、再構築する必要があります。 ダッシュボードの発行の詳細については、「[ダッシュボードの発行](azure-portal-dashboard-share-access.md#publish-dashboard)」を参照してください。 発行されたダッシュボードを復旧するには、次の手順に従います。
+グローバル Azure クラウドを使用していて、Azure portal で _発行された_ ダッシュボードを削除した場合は、削除から 14 日以内であればそのダッシュボードを回復できます。 Azure Government クラウドを使用している場合、またはダッシュボードが発行されていない場合は、回復できないため、再構築する必要があります。 ダッシュボードの発行の詳細については、「[ダッシュボードの発行](azure-portal-dashboard-share-access.md#publish-a-dashboard)」を参照してください。 発行されたダッシュボードを復旧するには、次の手順に従います。
 
 1. [Azure portal] メニューで、 **[リソース グループ]** を選択し、ダッシュボードを発行したリソース グループを選択します (既定では、**ダッシュボード** という名前です)。
 

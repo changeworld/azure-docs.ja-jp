@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 4bf792dd02e7cddcc40ef868e4a602fdb03ab3c6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052281"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515279"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -167,7 +167,7 @@ Insights は、特定のアプリケーションやサービスを監視する�
 |Virtual Network | はい | はい | [はい](insights/network-insights-overview.md) |  |
 |Virtual Network - NSG フロー ログ | いいえ | はい | いいえ |  |
 |VPN Gateway | はい | はい | いいえ |  |
-|Windows Virtual Desktop | いいえ | いいえ | いいえ |  |
+|Windows Virtual Desktop | いいえ | はい | いいえ |  |
 
 ## <a name="virtual-machine-agents"></a>仮想マシンのエージェント
 次の表に、仮想マシンのゲスト オペレーティング システムからデータを収集し、Monitor にデータを送信できるエージェントを示します。 各エージェントで異なるデータを収集し、Azure Monitor のメトリックまたはログに送信できます。 

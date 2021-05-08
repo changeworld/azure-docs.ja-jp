@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/06/2020
-ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/06/2021
+ms.openlocfilehash: 381ee45bd678ef22222483675ddf001e16970628
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879226"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552055"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
 この記事では、商用マーケットプレースで利用できるオファーの種類について説明します。 商用マーケットプレースで提示されたオファーの構造 (メタデータ、成果物、およびその他のコンテンツを含む) は、*オファーの種類* によって定義されます。
 
 [公開オプションを決定](determine-your-listing-type.md)した後、パートナー センターでオファーの作成を開始する前に、オファーの種類を選択する必要があります。 オファーの種類は、公開するソリューション、アプリ、またはサービスの種類および Microsoft の製品とサービスとの連携方法に対応します。
+
+> [!NOTE]
+> オファーの種類を選択した後、オファーを別の種類に変更することはできません。 別のオファーの種類を作成するには、新しいオファーを作成する必要があります。
 
 1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、リスト オプション、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。
 

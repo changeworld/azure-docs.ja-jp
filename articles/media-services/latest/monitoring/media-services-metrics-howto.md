@@ -14,24 +14,24 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 306381465919d3fde7135315b69d450a496c2898
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7f8aa7e8cd38de37f5d3757804f7836612ad64cb
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608789"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227757"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、[Media Services のメトリックと診断ログの監視](monitor-media-services-data-reference.md)に関するページを参照してください。
+[Azure Monitor](/azure/azure-monitor/overview) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、[Media Services のメトリックと診断ログの監視](monitor-media-services-data-reference.md)に関するページを参照してください。
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、Azure CLI を使ってクエリを実行したりできます。 この記事では、Azure portal のグラフと Azure CLI を使用してメトリックを監視する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](../create-account-howto.md)
+- [Media Services アカウントを作成する](../account-create-how-to.md)
 - 「[Media Services のメトリックと診断ログの監視](monitor-media-services-data-reference.md)」を確認する
 
 ## <a name="view-metrics-in-azure-portal"></a>Azure portal でメトリックを表示する
@@ -69,8 +69,8 @@ az monitor metrics list --resource \
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Monitor のメトリック](https://docs.microsoft.com/azure/azure-monitor/data-platform.md)
-- [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-metric.md)。
+- [Azure Monitor のメトリック](/azure/azure-monitor/data-platform)
+- [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](/azure/azure-monitor/alerts/alerts-metric)。
 
 ## <a name="next-steps"></a>次のステップ
 

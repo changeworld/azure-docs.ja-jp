@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: how-to
 ms.openlocfilehash: dd4966ee75e9dc0ff401823e4291f8d299c8893c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93122896"
 ---
 # <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>Visual Studio Code を使用してライブ ストリーム入力に対して Stream Analytics クエリをローカルでテストする
@@ -25,11 +25,11 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 ## <a name="define-a-live-stream-input"></a>ライブ ストリーム入力を定義する
 
-1. Stream Analytics プロジェクトの **[Inputs]** フォルダーを右クリックします。 次に、コンテキスト メニューから **[ASA: 入力の追加]** を選択します。
+1. Stream Analytics プロジェクトの **[入力]** フォルダーを右クリックします。 次に、コンテキスト メニューから **[ASA: 入力の追加]** を選択します。
 
-   ![Input フォルダーから入力を追加する](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
+   ![入力フォルダーから入力を追加する](./media/quick-create-visual-studio-code/add-input-from-inputs-folder.png)
 
-   または、 **Ctrl + Shift + P** キーを選択してコマンド パレットを開き、 **[ASA: 入力の追加]** を入力します。
+   または、**Ctrl + Shift + P** キーを選択してコマンド パレットを開き、 **[ASA: 入力の追加]** を入力します。
 
    ![Visual Studio Code で Stream Analytics 入力を追加する](./media/quick-create-visual-studio-code/add-input.png)
 
@@ -65,9 +65,9 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 右側のウィンドウに結果が表示され、3 秒ごとに最新の情報に更新されます。 **[実行]** を選択して、もう一度テストすることができます。 **[フォルダーで開く]** を選択して、エクスプローラーで結果ファイルを表示し、Visual Studio Code や Excel のようなツールで開くこともできます。 結果ファイルは JSON 形式でのみ使用できることに注意してください。
 
-出力の作成を開始するジョブの既定の時刻は、 **[Now]\(今すぐ\)** に設定されています。 この時刻は、結果ウィンドウの **[Output start time]\(出力の開始時刻\)** ボタンを選択してカスタマイズできます。
+出力の作成を開始するジョブの既定の時刻は、**[Now]\(今すぐ\)** に設定されています。 この時刻は、結果ウィンドウの **[Output start time]\(出力の開始時刻\)** ボタンを選択してカスタマイズできます。
 
-![ローカル実行の結果を表示する](./media/vscode-local-run-live-input/vscode-livetesting.gif)
+![ローカル実行の結果を表示](./media/vscode-local-run-live-input/vscode-livetesting.gif)
 
 ## <a name="next-steps"></a>次のステップ
 

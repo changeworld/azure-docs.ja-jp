@@ -11,16 +11,45 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 68136cc259e0be4a2f9449aa9ec15f4a14a63890
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687330"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074983"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Microsoft ID プラットフォームで最近削除されたアプリケーションを復元または削除する](quickstart-restore-app.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Microsoft ID プラットフォームの管理者の同意](v2-admin-consent.md)
+- [MSAL.NET を使用した Xamarin Android の構成要件とトラブルシューティングのヒント](msal-net-xamarin-android-considerations.md)
+- [Web API を呼び出すデーモン アプリ - トークンを取得する](scenario-daemon-acquire-token.md)
+- [Web API を呼び出すデーモン アプリ - コードの構成](scenario-daemon-app-configuration.md)
+- [Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し](scenario-daemon-call-api.md)
+- [Web API を呼び出すデーモン アプリ - 運用環境への移行](scenario-daemon-production.md)
+- [Web API を呼び出すデスクトップ アプリ:トークンを取得する](scenario-desktop-acquire-token.md)
+- [Web API を呼び出すデスクトップ アプリ:コード構成](scenario-desktop-app-configuration.md)
+- [Web API を呼び出すデスクトップ アプリ:Web API を呼び出す](scenario-desktop-call-api.md)
+- [方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)](active-directory-claims-mapping.md)
+- [Python 用の MSAL でのログ記録](msal-logging-python.md)
+- [Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)](apple-sso-plugin.md)
+- [クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する](quickstart-v2-aspnet-webapp.md)
+- [クイック スタート:Microsoft でのサインインを ASP.NET Core Web アプリに追加する](quickstart-v2-aspnet-core-webapp.md)
+- [クイックスタート: コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph API を呼び出す](quickstart-v2-netcore-daemon.md)
+- [クイックスタート:Microsoft ID プラットフォームを使用して ASP.NET Core Web API を保護する](quickstart-v2-aspnet-core-web-api.md)
+- [クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する](quickstart-v2-angular.md)
+- [開発者向けのサポート オプションとヘルプ オプション](developer-support-help-options.md)
+- [ユーザーをサインインさせる Web アプリ:コード構成](scenario-web-app-sign-user-app-configuration.md)
+- [ユーザーをサインインさせる Web アプリ:サインインとサインアウト](scenario-web-app-sign-user-sign-in.md)
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -65,25 +94,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [トークンの有効期間ポリシーを構成する (プレビュー)](configure-token-lifetimes.md)
 - [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)
 - [Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)
-
-## <a name="december-2020"></a>2020 年 12 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [クイック スタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp-calls-graph.md)
-- [MSAL.NET におけるエラーと例外の処理](msal-error-handling-dotnet.md)
-- [iOS および macOS 用の MSAL におけるエラーと例外の処理](msal-error-handling-ios.md)
-- [Java 用の MSAL におけるエラーと例外の処理](msal-error-handling-java.md)
-- [MSAL.js におけるエラーと例外の処理](msal-error-handling-js.md)
-- [Python 用の MSAL におけるエラーと例外の処理](msal-error-handling-python.md)
-- [SAML と OIDC または OAuth を使用した Microsoft ID プラットフォーム のトークン交換のシナリオ](scenario-token-exchange-saml-oauth.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
-- [チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する](tutorial-v2-aspnet-daemon-web-app.md)
-- [ユーザーをサインインさせる Web アプリ:アプリの登録](scenario-web-app-sign-user-app-registration.md)
-- [Microsoft ID プラットフォームと暗黙的な許可のフロー](v2-oauth2-implicit-grant-flow.md)
-- [Microsoft ID プラットフォーム アクセス トークン](access-tokens.md)
-- [Web API を呼び出す Web API:アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)
-

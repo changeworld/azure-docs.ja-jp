@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 105fd185900692669fdc40e0c47a03474524e250
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c389cfd2af6fe83ec232e5f205041676ba46bd2a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101731104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558195"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services の Azure セキュリティ ベースライン
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (クラシック) を Azure Resource Manager 仮�
 
 - [ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md)
 
-- [仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [仮想ネットワーク ピアリング](./cloud-services-connectivity-and-networking-faq.md#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **責任**: Customer
 
@@ -89,11 +89,11 @@ Cloud Services の既定の URL または名前 (例: *.cloudapp.net) への着�
 
 従来のサブスクリプション管理者の割り当てに対して、拒否の適用ルールを構成します。 既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。 通信を制限するには、サービス定義ファイル内で、NetworkTrafficRules 要素を ServiceDefinition 要素に追加する必要があります。
 
-- [自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にするにはどうすればよいですか](./cloud-services-connectivity-and-networking-faq.md#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS protection](https://docs.microsoft.com/azure/cloud-services/cloud-services-connectivity-and-networking-faq#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS protection](./cloud-services-connectivity-and-networking-faq.md#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
-- [特定の IP アドレスをブロックする](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common#block-a-specific-ip-address)
+- [特定の IP アドレスをブロックする](./cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
 **責任**: Customer
 
@@ -175,9 +175,9 @@ Azure のプラットフォーム ログであるアクティビティ ログか
 
 診断設定を作成して、Azure Monitor、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティ ログを送信します。 Azure Cloud Services の重要なリソースが変更されたときに通知アラートが送信されるように、Azure Monitor を構成します。 
 
-- [Azure アクティビティ ログ](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)
 
-- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Traffic Manager の監視](../traffic-manager/traffic-manager-monitoring.md)
 
@@ -193,7 +193,7 @@ Azure のプラットフォーム ログであるアクティビティ ログか
 
 **ガイダンス**:Microsoft は、Azure Cloud Services 用の Azure リソースのタイム ソースを保持しています。 お客様は、環境内で使用されているタイム サーバーへのアクセス (UDP プロトコルでポート 123 を使用) を許可するネットワーク ルールを作成することが必要になる場合があります。
 
-- [NTP サーバー アクセス](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [NTP サーバー アクセス](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
 
 **責任**: 共有
 
@@ -233,7 +233,7 @@ Azure Cloud Services の可用性、パフォーマンス、障害、および�
 
 - [デプロイ前に Visual Studio で診断を有効にする](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
-- [変更履歴を表示する](/azure/azure-monitor/platform/activity-log#view-change-history)
+- [変更履歴を表示する](../azure-monitor/essentials/activity-log.md#view-change-history)
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 
@@ -261,7 +261,7 @@ Azure Cloud Services の可用性、パフォーマンス、障害、および�
 
 Azure Cloud Services で診断を有効にすると、Azure Diagnostics 拡張機能を使用して、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 Set-azureservicediagnosticsextension コマンドレットを使用して既に実行されているクラウド サービスの診断構成を有効化または更新するか、診断拡張機能を使用してクラウド サービスを自動的にデプロイします。 必要に応じて、Application Insights SDK をインストールします。 パフォーマンス カウンターを Azure Monitor に送信します。
 
-Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 診断データは永続的に保存されないため、Microsoft Azure ストレージ エミュレーターまたは Azure Storage に転送します。 ストレージに保持されたら、Visual Studio のサーバー エクスプローラー、Microsoft Azure Storage Explorer、Azure Management Studio などの利用可能なツールのいずれかを使用して表示できます。 診断拡張機能で、diagnostics.wadcfgx という名前の構成ファイル (ロールごと) を使用して、診断メトリックを監視するように構成します。 
+Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 診断データは永続的に保存されないため、Microsoft Azure Storage Emulator または Azure Storage に転送します。 ストレージに保持されたら、Visual Studio のサーバー エクスプローラー、Microsoft Azure Storage Explorer、Azure Management Studio などの利用可能なツールのいずれかを使用して表示できます。 診断拡張機能で、diagnostics.wadcfgx という名前の構成ファイル (ロールごと) を使用して、診断メトリックを監視するように構成します。 
 
 - [クラウド サービスの監視の概要](cloud-services-how-to-monitor.md)
 
@@ -269,7 +269,7 @@ Azure 診断拡張機能では、データを収集して Azure Storage アカ�
 
 - [PowerShell を使用した Azure Cloud Services での診断の有効化](cloud-services-diagnostics-powershell.md)
 
-- [Azure Storage への診断データの保存と表示](https://docs.microsoft.com/azure/cloud-services/diagnostics-extension-to-storage?&amp;preserve-view=true)
+- [Azure Storage への診断データの保存と表示](./diagnostics-extension-to-storage.md?preserve-view=)
 
 **責任**: Customer
 
@@ -289,7 +289,7 @@ Azure 診断拡張機能では、データを収集して Azure Storage アカ�
 
 **ガイダンス**:Azure 向けの Microsoft Antimalware によって、Azure Cloud Services および仮想マシンが保護されます。 お客様は、Web アプリケーション ファイアウォール、ネットワーク ファイアウォール、マルウェア対策、侵入検出/防御システム (IDS または IPS) などのサード パーティ製のセキュリティ ソリューションを必要に応じてデプロイすることができます。
 
-- [Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure の基本的な IPS/IDS と DDoS が提供する機能には何がありますか](./cloud-services-configuration-and-management-faq.md#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **責任**: Customer
 
@@ -315,7 +315,7 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 従来のサブスクリプション管理ロールの違いを確認します。 
 
-- [3 つの従来のサブスクリプション管理ロールの違い](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [3 つの従来のサブスクリプション管理ロールの違い](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **責任**: Customer
 
@@ -325,7 +325,7 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 **ガイダンス**:使用可能なロールと、Azure Cloud Services リソースの操作と管理に必要なアクセス許可に基づいて、専用管理アカウントの使用に関する標準的な操作手順を作成することをお勧めします。
 
-- [従来のサブスクリプション管理ロールの違い](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles#classic-subscription-administrator-roles)
+- [従来のサブスクリプション管理ロールの違い](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
 **責任**: Customer
 
@@ -389,7 +389,7 @@ Azure Cloud Services の証明書要素の "permissionLevel" を編集して、�
 
 - [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [WebRole スキーマ](https://docs.microsoft.com/azure/cloud-services/schema-csdef-webrole#Certificate)
+- [WebRole スキーマ](./schema-csdef-webrole.md#Certificate)
 
 **責任**: Customer
 
@@ -465,9 +465,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 さらに、Application Insights を使用すると、Azure Cloud Services アプリの可用性、パフォーマンス、障害、および使用状況を監視できます。 この場合は、Application Insights SDK からのデータと、Azure Cloud Services からの Azure Diagnostics のデータが組み合わせて使用されます。
 
-- [Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する](/azure/azure-monitor/platform/alerts-classic-portal)
+- [Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する](../azure-monitor/alerts/alerts-classic-portal.md)
 
-- [メトリック アラートの概要](/azure/azure-monitor/platform/alerts-metric-overview) 
+- [メトリック アラートの概要](../azure-monitor/alerts/alerts-metric-overview.md) 
 
 - [Azure クラウド サービス (クラシック) 向けの Application Insights](../azure-monitor/app/cloudservices.md)
 
@@ -493,7 +493,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Cloud Services (クラシック) の構成方法](cloud-services-how-to-configure-portal.md)
 
-- [ゲスト OS バージョンの管理](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-configure-portal#manage-guest-os-version)
+- [ゲスト OS バージョンの管理](./cloud-services-how-to-configure-portal.md#manage-guest-os-version)
 
 **責任**: 共有
 
@@ -523,7 +523,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 サポート ドキュメント:
 
-- [Azure リソースのリスク評価](https://docs.microsoft.com/azure/security/fundamentals/ddos-best-practices#risk-evaluation-of-your-azure-resources)
+- [Azure リソースのリスク評価](../security/fundamentals/ddos-best-practices.md#risk-evaluation-of-your-azure-resources)
 
 **責任**: Customer
 
@@ -805,7 +805,7 @@ Azure Cloud Services で使用される資格情報などのシークレット�
 
 また、Azure Cloud Services で使用される証明書の秘密キーをセキュリティで保護されたストレージに格納することをお勧めします。
 
-- [PowerShell からリモート デスクトップを構成する](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [PowerShell からリモート デスクトップを構成する](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **責任**: Customer
 
@@ -820,7 +820,7 @@ Azure Cloud Services で使用される資格情報などのシークレット�
 
 Azure Cloud Services で使用される証明書の秘密キーをセキュリティで保護されたストレージの場所に格納します。
 
-- [PowerShell からリモート デスクトップを構成する](https://docs.microsoft.com/azure/cloud-services/cloud-services-role-enable-remote-desktop-powershell#configure-remote-desktop-from-powershell)
+- [PowerShell からリモート デスクトップを構成する](./cloud-services-role-enable-remote-desktop-powershell.md#configure-remote-desktop-from-powershell)
 
 **責任**: Customer
 
@@ -840,9 +840,9 @@ Azure Cloud Services のスタートアップ タスクで PowerShell スクリ�
 
 自動化されたインテリジェントなエンドツーエンドのソリューションである Azure Security Center で、適応型アプリケーション制御機能を選択します。 マルウェアからコンピューターを保護し、悪意のあるアプリケーション (マルウェア対策ソリューションでは見逃される可能性のあるものを含む) の実行が試行されるのをブロックまたは警告することができます。
 
-- [Azure Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください](https://docs.microsoft.com/azure/cloud-services/cloud-services-configuration-and-management-faq#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Azure Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください](./cloud-services-configuration-and-management-faq.md#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
-- [マルウェア対策のデプロイ シナリオ](https://docs.microsoft.com/azure/security/fundamentals/antimalware#antimalware-deployment-scenarios)
+- [マルウェア対策のデプロイ シナリオ](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 
 - [アダプティブ アプリケーション制御](../security-center/security-center-adaptive-application.md)
 
@@ -940,5 +940,5 @@ Azure Cloud Services のスタートアップ タスクで PowerShell スクリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

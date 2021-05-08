@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0f08ca84597b08b9a236b7bfb0fc9c849423a752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cd90e994e620960e0d974ef7609a67f8a5eb58b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93335893"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448544"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを照会する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,19 +26,19 @@ ms.locfileid: "93335893"
 たとえば、`DeviceId` に対する等値フィルターが含まれる次のようなクエリについて考えます。 `DeviceId` でパーティション分割されたコンテナーに対してこのクエリを実行すると、1 つの物理パーティションにフィルターされます。
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001'
 ```
 
 前の例と同様に、このクエリでも 1 つのパーティションにフィルターされます。 `Location` に対するフィルターを追加しても、これは変わりません。
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
+SELECT * FROM c WHERE c.DeviceId = 'XMS-0001' AND c.Location = 'Seattle'
 ```
 
 次に示すクエリでは、パーティション キーに対する範囲フィルターがあり、1 つの物理パーティションにスコープされません。 インパーティション クエリにするには、クエリにパーティション キーを含む等値フィルターが必要です。
 
 ```sql
-    SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
+SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 ```
 
 ## <a name="cross-partition-query"></a>クロスパーティション クエリ
@@ -46,7 +46,7 @@ ms.locfileid: "93335893"
 次のクエリには、パーティション キー (`DeviceId`) に対するフィルターがありません。 そのため、各パーティションのインデックスに対して実行されるすべての物理パーティションにファンアウトする必要があります。
 
 ```sql
-    SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle`
 ```
 
 各物理パーティションには、独自のインデックスがあります。 そのため、コンテナーに対してクロスパーティション クエリを実行すると、実質的には物理パーティション "*ごと*" に 1 つのクエリが実行されることになります。 Azure Cosmos DB によって、異なる物理パーティションに対する結果が自動的に集計されます。

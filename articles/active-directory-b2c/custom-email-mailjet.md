@@ -8,19 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/09/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48e823b19c1c6d30e73a7a673cbeab82a4d007a9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489221"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256958"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
-Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 [DisplayControls](display-controls.md) (現在プレビュー段階)、およびサードパーティの電子メール プロバイダーである Mailjet を使用することで、独自の電子メール テンプレートや *From:* のアドレスと件名を使用できるだけでなく、ローカライズやカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 サード パーティの電子メール プロバイダーである Mailjet を使用すると、独自の電子メール テンプレート、および *From:* アドレスと件名を使用でき、ローカライズとカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 カスタム メール確認では、[Mailjet](https://Mailjet.com)、[SendGrid](./custom-email-sendgrid.md)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、Mailjet を使用するソリューションの設定について説明します。
 
@@ -576,3 +587,5 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 
 - [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - カスタム REST API や任意の HTTP ベース SMTP メール プロバイダーの使用方法については、「[Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する](restful-technical-profile.md)」を参照してください。
+
+::: zone-end

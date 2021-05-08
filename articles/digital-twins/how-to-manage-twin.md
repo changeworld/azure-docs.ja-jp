@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e20cd09ce3d9eb1937819da79cea17bdd14a07dc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433269"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954651"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -127,13 +127,13 @@ ms.locfileid: "102433269"
 }
 ```
 
-デジタル ツインの定義済みプロパティは、デジタル ツインの最上位プロパティとして返されます。 DTDL 定義に含まれていないメタデータやシステム情報は、`$` プレフィックス付きで返されます。 メタデータ プロパティは次のとおりです。
-* この Azure Digital Twins インスタンスのデジタル ツインの ID (`$dtId`)。
-* Web サーバーによって割り当てられた標準 HTTP フィールド (`$etag`)。
-* `$metadata` セクションのその他のプロパティ。 これには以下が含まれます。
-    - デジタル ツインのモデルの DTMI。
-    - 書き込み可能な各プロパティの同期の状態。 これは、サービスとデバイスの状態が異なる可能性がある場合 (デバイスがオフラインの場合など) に、デバイスで最も役立ちます。 現在、このプロパティは IoT Hub に接続されている物理デバイスにのみ適用されます。 メタデータ セクションのデータにより、プロパティの完全な状態と、最終変更のタイムスタンプを把握できます。 同期の状態の詳細については、デバイスの状態の同期に関する[こちらの IoT Hub チュートリアル](../iot-hub/tutorial-device-twins.md)をご覧ください。
-    - IoT Hub や Azure Digital Twins などのサービス固有のメタデータ。 
+デジタル ツインの定義済みプロパティは、デジタル ツインの最上位プロパティとして返されます。 DTDL 定義に含まれていないメタデータやシステム情報は、`$` プレフィックス付きで返されます。 メタデータ プロパティには以下の値が含まれます。
+* `$dtId`: この Azure Digital Twins インスタンスのデジタル ツインの ID
+* `$etag`: Web サーバーによって割り当てられた標準 HTTP フィールド。 これはツインが更新されるたびに新しい値に更新されます。これは、前回のチェックからサーバー上でツインのデータが更新されているかどうかを判断するのに役立ちます。 `If-Match` を使用すると、 エンティティの etag が指定された etag と一致する場合にのみ完了する更新と削除を実行できます。 これらの操作の詳細については、 [DigitalTwins Update](/rest/api/digital-twins/dataplane/twins/digitaltwins_update) と [DigitalTwins Delete](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete)のドキュメントを参照してください。
+* `$metadata`: 次を含むその他のプロパティのセット:
+  - デジタル ツインのモデルの DTMI。
+  - 書き込み可能な各プロパティの同期の状態。 これは、サービスとデバイスの状態が異なる可能性がある場合 (デバイスがオフラインの場合など) に、デバイスで最も役立ちます。 現在、このプロパティは IoT Hub に接続されている物理デバイスにのみ適用されます。 メタデータ セクションのデータにより、プロパティの完全な状態と、最終変更のタイムスタンプを把握できます。 同期の状態の詳細については、デバイスの状態の同期に関する[こちらの IoT Hub チュートリアル](../iot-hub/tutorial-device-twins.md)をご覧ください。
+  - IoT Hub や Azure Digital Twins などのサービス固有のメタデータ。 
 
 `BasicDigitalTwin` などのシリアル化ヘルパー クラスの詳細については、"[*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
 

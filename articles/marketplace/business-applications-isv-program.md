@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/19/2020
-ms.openlocfilehash: ce9927a66da64d64e83f10e3dfd906005635e5ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4cd22418c4f8a2f9504baf665c67a4a57f7f6f5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99507538"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103387"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立系ソフトウェア ベンダー (ISV) コネクト プログラム オンボード ガイド
 
@@ -25,7 +25,7 @@ ms.locfileid: "99507538"
 
 ## <a name="set-up-your-microsoft-partner-center-account"></a>Microsoft パートナー センター アカウントを設定する
 
-ISV コネクト プログラムのアカウントを設定して管理するには、次の記事の手順を実行します: 「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](./partner-center-portal/create-account.md)」。 この記事では、新しいアカウントを作成するためのすべての手順と、新しい発行元をコマーシャル マーケットプレース プログラムに追加する方法について説明します。
+ISV コネクト プログラムのアカウントを設定して管理するには、次の記事の手順を実行します: 「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](create-account.md)」。 この記事では、新しいアカウントを作成するためのすべての手順と、新しい発行元をコマーシャル マーケットプレース プログラムに追加する方法について説明します。
 
 > [!NOTE]
 > この手順では、パートナー センターで "*所有者*" または "*マネージャー*" のロールが必要です。

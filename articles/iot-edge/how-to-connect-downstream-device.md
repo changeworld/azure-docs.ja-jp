@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 44fe128658b90d2327f17f22b2a33aaa1d4da1fc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046127"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199629"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 この記事では、ダウンストリーム デバイスと IoT Edge の透過的ゲートウェイの間で信頼できる接続を確立するための手順について説明します。 透過的ゲートウェイのシナリオでは、1 台以上のデバイスが、IoT Hub への接続を維持する単一のゲートウェイ デバイスを経由してメッセージを渡すことができます。
 
@@ -44,7 +46,19 @@ ms.locfileid: "102046127"
 
 ## <a name="prepare-a-downstream-device"></a>ダウンストリーム デバイスを準備する
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Hub クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。 ただし、別の IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Hub クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。
+
+この記事では、ダウンストリーム デバイスとして IoT デバイスを接続する手順について説明します。 ダウンストリーム デバイスとして IoT Edge デバイスがある場合は、「[ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-iot-edge-device.md)」を参照してください。
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >IoT Hub に登録されている IoT デバイスでは、[モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)を使用して、1 つのデバイス上のさまざまなプロセス、ハードウェア、または機能を分離できます。 IoT Edge ゲートウェイでは、x.509 証明書認証ではなく、対称キー認証を使用したダウンストリーム モジュール接続がサポートされます。

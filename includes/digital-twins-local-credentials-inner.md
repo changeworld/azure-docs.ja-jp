@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/22/2020
 ms.author: baanders
 ms.openlocfilehash: fb148551db798207a52bd7aef629da79dd3341e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102212818"
 ---
 このサンプルでは、`DefaultAzureCredential` を使用して、ローカル環境から資格情報が検索されます。たとえば、ローカルの [Azure CLI](/cli/azure/install-azure-cli) や Visual Studio または Visual Studio Code での Azure サインインなどです。 このため、サンプルの資格情報を設定するために、これらのメカニズムのいずれかを使用して、*Azure にローカルでサインイン* する必要があります。

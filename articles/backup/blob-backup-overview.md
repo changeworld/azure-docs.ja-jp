@@ -3,12 +3,12 @@ title: Azure Blob の運用バックアップの概要
 description: Azure Blob の運用バックアップについて説明します (プレビュー)。
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: b10191c8a01d3cc7a92dee8ca9bf59a506497a60
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743576"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558756"
 ---
 # <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Azure Blob の運用バックアップの概要 (プレビュー)
 
@@ -22,7 +22,7 @@ BLOB の運用バックアップは、**ローカル バックアップ** ソリ
 
 運用バックアップでは、BLOB プラットフォームの機能を使用してデータが保護され、必要なときに回復できます。
 
-- **ポイントインタイム リストア**: [BLOB のポイントインタイム リストア](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview)により、BLOB データを以前の状態に復元できます。 次に、**論理的な削除**、**変更フィード**、**BLOB のバージョン管理** を使用して、指定した期間データが保持されます。 運用バックアップによって、指定した期間だけデータを保持する基になる機能に加えて、ポイントインタイム リストアの有効化が管理されます。
+- **ポイントインタイム リストア**: [BLOB のポイントインタイム リストア](../storage/blobs/point-in-time-restore-overview.md)により、BLOB データを以前の状態に復元できます。 次に、**論理的な削除**、**変更フィード**、**BLOB のバージョン管理** を使用して、指定した期間データが保持されます。 運用バックアップによって、指定した期間だけデータを保持する基になる機能に加えて、ポイントインタイム リストアの有効化が管理されます。
 
 - **削除ロック**: 削除ロックにより、ストレージ アカウントが誤って削除されたり、承認されていないユーザーによって削除されたりすることを防ぎます。 運用バックアップを構成すると、削除ロックも自動的に適用され、ストレージ アカウントの削除によるデータ損失の可能性が減少します。
 
@@ -63,9 +63,9 @@ BLOB の運用バックアップは、**ローカル バックアップ** ソリ
 
 BLOB の運用バックアップを使用する場合、管理料金やインスタンス料金は発生しません。 ただし、次の料金が発生します。
 
-- 復元は BLOB のポイントインタイム リストアを使用して行われ、処理済みデータの量に基づいて料金が発生します。 詳細については、[ポイントインタイム リストアの価格](https://docs.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing)に関する記事を参照してください。
+- 復元は BLOB のポイントインタイム リストアを使用して行われ、処理済みデータの量に基づいて料金が発生します。 詳細については、[ポイントインタイム リストアの価格](../storage/blobs/point-in-time-restore-overview.md#pricing-and-billing)に関する記事を参照してください。
 
-- [BLOB の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)、[Azure Blob Storage の変更フィードのサポート](https://docs.microsoft.com/azure/storage/blobs/storage-blob-change-feed)、および [BLOB のバージョン管理](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)によるデータの保持。
+- [BLOB の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)、[Azure Blob Storage の変更フィードのサポート](../storage/blobs/storage-blob-change-feed.md)、および [BLOB のバージョン管理](../storage/blobs/versioning-overview.md)によるデータの保持。
 
 ## <a name="next-steps"></a>次のステップ
 

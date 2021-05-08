@@ -6,21 +6,20 @@ documentationcenter: na
 author: KumudD
 manager: mtillman
 ms.service: virtual-network
-Customer intent: As an Azure customer, I want to learn more about routing choices for my internet egress traffic.
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 56fd9898065dd55b9a56547a775f7f2aa4a56156
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44edd9273730ff7ba81a3ad5af2408ff6b7b7a5c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101693732"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060637"
 ---
-# <a name="what-is-routing-preference"></a>ルーティング設定とは
+# <a name="what-is-routing-preference"></a>ルーティング優先設定とは
 
 Azure のルーティング優先設定を使用すると、Azure とインターネットにトラフィックをルーティングする方法を選択できます。 Microsoft ネットワーク経由または ISP ネットワーク (パブリック インターネット) 経由のどちらでトラフィックをルーティングするかを選択できます。 これらのオプションはそれぞれ "*コールド ポテト ルーティング*" および "*ホット ポテト ルーティング*" とも呼ばれます。 エグレス データ転送の料金は、ルーティングの選択によって異なります。 パブリック IP アドレスを作成するときに、ルーティング オプションを選択できます。 パブリック IP アドレスは、仮想マシン、仮想マシン スケール セット、インターネットに接続するロード バランサーなどのリソースに関連付けることができます。また、BLOB、Files、Web、Azure Data Lake などの Azure Storage リソースに対してルーティング優先設定を設定することもできます。 既定では、すべての Azure サービスについて、トラフィックは Microsoft グローバル ネットワーク経由でルーティングされます。
 

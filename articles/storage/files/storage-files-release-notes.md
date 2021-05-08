@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/3/2021
+ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5549fc3b63b76c6158ae7399e6d94a43d2d4f28f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c046129293fcfbcea8ecaf98da72b9126dd540a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435190"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030340"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -25,6 +25,8 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
+| V12 リリース- [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 2021 年 3 月 26 日 | サポート対象 - フライティング |
+| V11.3 リリース - [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 2021 年 4 月 7 日 | サポートされています |
 | V11.2 リリース - [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021 年 2 月 2 日 | サポートされています |
 | V11.1 リリース - [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 2020 年 11 月 4 日 | サポートされています |
 | V10.1 リリース - [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | サポートされています - エージェント バージョンは 2021 年 6 月 7 日に有効期限が切れます |
@@ -47,6 +49,96 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-12000"></a>エージェント バージョン 12.0.0.0
+次のリリース ノートは、(2021 年 3 月 26 日にリリースされた) Azure File Sync エージェントのバージョン 12.0.0.0 を対象としています。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題
+- ネットワーク アクセス ポリシーとプライベート エンドポイント接続を構成するための新しいポータル エクスペリエンス
+    - ポータルを使用して、ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にしたり、プライベート エンドポイント接続を承認、拒否、および削除したりできるようになりました。 ネットワーク アクセス ポリシーとプライベート エンドポイント接続を構成するには、ストレージ同期サービス ポータルを開き、[設定] セクションにアクセスして、[ネットワーク] をクリックします。
+ 
+- 64 KiB を超えるボリューム クラスター サイズのクラウド階層化のサポート
+    - クラウドの階層化では、Server 2019 で最大 2 MiB のボリューム クラスター サイズがサポートされるようになりました。 詳細については、「[階層化するファイルの最小ファイル サイズはどのくらいですか。](https://docs.microsoft.com/azure/storage/files/storage-sync-choose-cloud-tiering-policies#minimum-file-size-for-a-file-to-tier)」を参照してください。
+ 
+- Azure File Sync サービスとストレージ アカウントの帯域幅と待機時間を測定する
+    - Test-StorageSyncNetworkConnectivity コマンドレットを使用して、Azure File Sync サービスとストレージ アカウントの待機時間と帯域幅を測定できるようになりました。 このコマンドレットを実行すると、既定では、Azure File Sync サービスとストレージ アカウントの待機時間が測定されます。  "-MeasureBandwidth" パラメーターを使用すると、ストレージ アカウントへのアップロードとダウンロードの帯域幅が測定されます。
+ 
+        たとえば、Azure File Sync サービスとストレージ アカウントの帯域幅と待機時間を測定するには、次の PowerShell コマンドを実行します。
+ 
+        ```powershell
+        Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+        Test-StorageSyncNetworkConnectivity -MeasureBandwidth 
+        ``` 
+ 
+- サーバー エンドポイントの作成に失敗した場合にポータルに表示されるエラー メッセージの改善
+    - お客様からのフィードバックを基に、サーバー エンドポイントの作成に失敗したときのエラー メッセージとガイダンスを改善しました。
+ 
+- さまざまなパフォーマンスと信頼性の向上
+    - Azure ファイル共有で変更されたファイルを検出するための変更検出のパフォーマンスが向上しました。
+    - 調整同期セッションのパフォーマンスが向上しました。 
+    - 同期の機能強化により、ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED と ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED のエラーが減少しました。
+    - クラウドを使った階層化が有効になっているときに、/B パラメーターを指定した Robocopy を使用して階層化ファイルをコピーすると、データが破損するバグを修正しました。
+    - ボリュームでデータ重複除去が有効になっている場合に Server 2019 でファイルが階層化されない原因となるバグを修正しました。
+    - ファイルが 2 GiB より大きい場合に AFSDiag でファイルの圧縮に失敗する原因となるバグを修正しました。
+
+### <a name="evaluation-tool"></a>評価ツール
+Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](./storage-sync-files-planning.md#evaluation-cmdlet)」セクションを参照してください。 
+
+### <a name="agent-installation-and-server-configuration"></a>エージェントのインストールとサーバー構成
+Windows Server で Azure File Sync エージェントをインストールして構成する方法の詳細については、「[Planning for an Azure File Sync deployment (Azure File Sync のデプロイの計画)](storage-sync-files-planning.md)」および [Azure File Sync をデプロイする方法](storage-sync-files-deployment-guide.md)に関するページを参照してください。
+
+- 既存の Azure File Sync エージェントがインストールされているサーバーでは、再起動が必要です。
+- エージェント インストール パッケージは、引き上げられた (管理者) 特権でインストールする必要があります。
+- Nano Server のデプロイ オプションでは、このエージェントはサポートされません。
+- このエージェントがサポートされるのは、Windows Server 2019、Windows Server 2016 および Windows Server 2012 R2 のみです。
+- エージェントには、少なくとも 2 GiB のメモリが必要です。 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MiB 以上のメモリで VM を構成する必要があります。 詳細については、「[推奨されるシステム リソース](./storage-sync-files-planning.md#recommended-system-resources)」を参照してください。
+- Storage Sync Agent (FileSyncSvc) サービスは、システム ボリューム情報 (SVI) ディレクトリが圧縮されているボリュームに配置されたサーバーのエンドポイントをサポートしません。 この構成は、予期しない結果になります。
+
+### <a name="interoperability"></a>相互運用性
+- 階層化されたファイルにアクセスするウイルス対策やバックアップなどのアプリケーションは、オフライン属性を考慮してそれらのファイルのコンテンツの読み取りをスキップする場合を除き、望ましくない再呼び出しを行う可能性があります。 詳細については、「[Troubleshoot Azure File Sync (Azure File Sync のトラブルシューティング)](storage-sync-files-troubleshoot.md)」を参照してください。
+- ファイル スクリーンによってファイルがブロックされた場合、File Server Resource Manager (FSRM) ファイル スクリーンが頻繁に同期エラーを引き起こす可能性があります。
+- Azure File Sync エージェントがインストールされているサーバー上での sysprep の実行はサポートされていません。予期しない結果になる可能性があります。 Azure File Sync エージェントは、サーバー イメージの展開と sysprep ミニ セットアップの完了後にインストールされます。
+
+### <a name="sync-limitations"></a>同期の制限事項
+次の項目は同期されませんが、システムの残りの部分は引き続き正常に動作します。
+- サポートされていない文字を含むファイル。 サポートされていない文字の一覧については、[トラブルシューティング ガイド](storage-sync-files-troubleshoot.md#handling-unsupported-characters)のページを参照してください。
+- 末尾がピリオドのファイルまたはディレクトリ。
+- 2,048 文字を超えるパス。
+- 監査に使用されるセキュリティ記述子のシステム アクセス制御リスト (SACL) 部分。
+- 拡張属性。
+- 代替データ ストリーム。
+- 再解析ポイント。
+- ハード リンク。
+- 圧縮がサーバー ファイルに設定されている場合、変更が他のエンドポイントからそのファイルに同期されるときに、圧縮は保持されません。
+- サービスがデータを読み取ることを妨げる、EFS (またはその他のユーザー モードの暗号化) で暗号化されたファイル。
+
+    > [!Note]  
+    > 転送中のデータは、Azure File Sync によって常に暗号化されます。 データは常に暗号化されて Azure に保存されます。
+ 
+### <a name="server-endpoint"></a>サーバー エンドポイント
+- サーバー エンドポイントは、NTFS ボリューム上にのみ作成できます。 ReFS、FAT、FAT32 などのファイル システムは、現在 Azure File Sync でサポートされていません。
+- システム ボリュームでは、クラウドの階層化はサポートされていません。 システム ボリュームにサーバー エンドポイントを作成するには、サーバー エンドポイントを作成するときにクラウドの階層化を無効にします。
+- フェールオーバー クラスタリングは、クラスター化ディスクでのみサポートされ、クラスターの共有ボリューム (CSV) ではサポートされません。
+- サーバー エンドポイントを入れ子にすることはできません。 同じボリューム上に、別のエンドポイントと並列に共存させることはできます。
+- サーバー エンドポイントの場所内に OS またはアプリケーションのページング ファイルを格納しないでください。
+- サーバーの名前を変更した場合、ポータル内のサーバー名は更新されません。
+
+### <a name="cloud-endpoint"></a>クラウド エンドポイント
+- Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回起動されます。 Azure ファイル共有で変更されたファイルを直ちに同期したければ、[Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell コマンドレットを使用すると、Azure ファイル共有における変更の検出を手動で開始できます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。
+- ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
+
+    > [!Note]  
+    > クラウド エンドポイントを作成するときは、ストレージ同期サービスとストレージ アカウントが同じ Azure AD テナントに存在する必要があります。 クラウド エンドポイントが作成された後、ストレージ同期サービスとストレージ アカウントを別の Azure AD テナントに移動できます。
+
+### <a name="cloud-tiering"></a>クラウドの階層化
+- 階層化されたファイルが Robocopy を使用して別の場所にコピーされた場合、その結果のファイルは階層化されません。 誤ってオフライン属性が Robocopy によるコピー操作の対象となり、オフライン属性が設定される場合があります。
+- robocopy を使用してファイルをコピーする場合は、/MIR オプションを使用してファイルのタイムスタンプを保存します。 これにより、必ず最近アクセスされたファイルより先に、古いファイルが階層化されます。
+
+## <a name="agent-version-11300"></a>エージェント バージョン 11.3.0.0
+次のリリース ノートは、2021 年 4 月 7 日にリリースされた Azure File Sync エージェントのバージョン 11.3.0.0 を対象としています。 これらは、バージョン 11.1.0.0 に関して記載されているリリース ノートへの追記です。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題 
+クラウドを使った階層化が有効になっているときに、/B パラメーターを指定した Robocopy を使用して階層化ファイルをコピーすると、データが破損するバグを修正しました。
 
 ## <a name="agent-version-11200"></a>エージェント バージョン 11.2.0.0
 次のリリース ノートは、2021 年 2 月 2 日にリリースされた Azure File Sync エージェントのバージョン 11.2.0.0 を対象としています。 これらは、バージョン 11.1.0.0 に関して記載されているリリース ノートへの追記です。

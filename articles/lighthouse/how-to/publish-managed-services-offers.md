@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 02/17/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: b906ba9961ae4f77ca16890fd0a9036123343111
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: f59d9708925b52bcf9432663fe6d3137a54b37ad
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092148"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107450"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -16,7 +16,7 @@ ms.locfileid: "101092148"
 
 ## <a name="publishing-requirements"></a>発行要件
 
-オファーを作成して発行するには、[パートナー センターの有効なアカウント](../../marketplace/partner-center-portal/create-account.md)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)の手順に従って、パートナー センターのアカウントを作成し、コマーシャル マーケットプレース プログラムに登録します。
+オファーを作成して発行するには、[パートナー センターの有効なアカウント](../../marketplace/create-account.md)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)の手順に従って、パートナー センターのアカウントを作成し、コマーシャル マーケットプレース プログラムに登録します。
 
 [マネージド サービス オファーの認定要件](/legal/marketplace/certification-policies#700-managed-services)に従って、マネージド サービス オファーを発行するには、[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)を取得しているか、または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) である必要があります。 また、顧客がオファーをデプロイするたびに、[CRM システムにレコードを作成するリードのターゲットを入力する](../../marketplace/plan-managed-service-offer.md#customer-leads)必要があります。
 
@@ -26,13 +26,14 @@ ms.locfileid: "101092148"
 
 |**考慮事項**  |**マネージド サービス オファー**  |**ARM テンプレート**  |
 |---------|---------|---------|
-|[パートナー センター アカウント](../../marketplace/partner-center-portal/create-account.md)が必要   |はい         |いいえ        |
+|[パートナー センター アカウント](../../marketplace/create-account.md)が必要   |はい         |いいえ        |
 |[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) が必要      |はい         |いいえ         |
 |新規顧客は Azure Marketplace を通して利用可能     |はい     |いいえ       |
 |特定の顧客に対してオファーを制限できる     |はい (プライベート オファーを使用する場合のみ。これは、クラウド ソリューション プロバイダー (CSP) プログラムのリセラーを通して確立されたサブスクリプションでは使用できません)         |はい         |
 |顧客が Azure portal で同意する必要がある     |はい     |いいえ   |
 |オートメーションを使用して複数のサブスクリプション、リソースグループ、または顧客をオンボードできる |いいえ     |はい    |
 |新しい組み込みロールと Azure Lighthouse 機能への即座のアクセス     |常にではない (しばらく延期の後に一般公開)         |はい         |
+|お客様は、Azure portal で更新されたオファーを確認し、同意することができる | はい | いいえ |
 
 > [!NOTE]
 > マネージド サービス オファーは、Azure Government およびその他の国内クラウドでは利用できない場合があります。
@@ -62,6 +63,8 @@ ms.locfileid: "101092148"
 > 委任は、オンボード対象の (またはオンボード対象のリソース グループを含む) サブスクリプションに対して、`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客のテナント内のゲスト以外のアカウントで実行する必要があります。 サブスクリプションを委任できるユーザーを見つけるには、顧客のテナント内のユーザーが Azure portal 上でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)することができます。
 
 顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任した後、そのサブスクリプションに **Microsoft.ManagedServices** リソース プロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
+
+更新されたバージョンのオファーを発行する場合、お客様は [Azure portal で変更を確認し、新しいバージョンを受け入れる](view-manage-service-providers.md#update-service-provider-offers)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

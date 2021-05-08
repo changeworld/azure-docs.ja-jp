@@ -16,10 +16,10 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98733302"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -196,15 +196,15 @@ node ServiceClient.js "{your service connection string}"
 
 ![バックエンド アプリケーションからの出力を示し、更新が送信される方法が強調表示されているスクリーンショット。](./media/tutorial-device-twins/BackEnd1.png)
 
-## <a name="receive-state-information"></a>状態情報を受信する
+## <a name="receive-state-information&quot;></a>状態情報を受信する
 
 バックエンド アプリケーションは、デバイスからの状態情報を報告されたプロパティとして受信します。 デバイスは報告されたプロパティを設定し、ハブに送信します。 バックエンド アプリケーションは、ハブに格納されているデバイス ツインから、報告されたプロパティの現在の値を読み取ることができます。
 
-### <a name="send-reported-properties-from-a-device"></a>デバイスから報告されたプロパティを送信する
+### <a name=&quot;send-reported-properties-from-a-device&quot;></a>デバイスから報告されたプロパティを送信する
 
 報告されたプロパティ値の更新をパッチとして送信できます。 次のスニペットは、シミュレートされたデバイスが送信するパッチのテンプレートを示しています。 シミュレートされたデバイスは、パッチのフィールドを更新してからハブに送信します。
 
-[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 "Reported properties patches")]
+[!code-javascript[Reported properties patches](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=reportedpatch&highlight=2 &quot;Reported properties patches")]
 
 シミュレートされたデバイスは、次の関数を使用して、報告されたプロパティを含むパッチをハブに送信します。
 

@@ -2,34 +2,38 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: mikben
-manager: mikben
+author: ddematheu2
+manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
 ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
-ms.author: mikben
-ms.openlocfilehash: 1318c47bcded47159006977db09604bb53674973
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.author: dademath
+ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487936"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498798"
 ---
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
 
-Azure Communication Services の **Group Calling Hero Sample for iOS** は、Communication Services の Calling iOS クライアント ライブラリを使用して、音声とビデオを含むグループ通話エクスペリエンスを構築する方法を示します。 このサンプル クイックスタートでは、サンプルを設定して実行する方法について説明します。 背景情報については、サンプルの概要を参照してください。
+Azure Communication Services の **iOS 用のグループ通話のヒーロー サンプル** は、Communication Services Calling iOS SDK を使用して、音声とビデオを含むグループ通話エクスペリエンスを構築する方法を示しています。 このサンプル クイックスタートでは、サンプルを設定して実行する方法について説明します。 背景情報については、サンプルの概要を参照してください。
+
+## <a name="download-code"></a>コードをダウンロードする
+
+[GitHub](https://github.com/Azure-Samples/communication-services-ios-calling-hero) でこのサンプルのプロジェクトを見つけてください。 [Teams の相互運用機能](../../concepts/teams-interop.md)を使用したサンプルのバージョンは、別の[ブランチ](https://github.com/Azure-Samples/communication-services-ios-calling-hero/tree/feature/teams_interop)にあります。
 
 ## <a name="overview"></a>概要
 
-このサンプルはネイティブ iOS アプリケーションであり、音声通話とビデオ通話の両機能を備えた通話エクスペリエンスを実現するために、Azure Communication Services iOS クライアント ライブラリが使用されています。 このアプリケーションは、サーバー側コンポーネントを使用してアクセス トークンをプロビジョニングします。そのアクセス トークンを使用して、Azure Communication Services クライアント ライブラリが初期化されます。 サーバー側コンポーネントを構成する際は、[Azure Functions を使用した信頼できるサービス](../../tutorials/trusted-service-tutorial.md)についてのチュートリアルに従ってください。
+このサンプルはネイティブ iOS アプリケーションであり、音声通話とビデオ通話の両機能を備えた通話エクスペリエンスを実現するために、Azure Communication Services iOS SDK が使用されています。 このアプリケーションは、サーバー側コンポーネントを使用してアクセス トークンをプロビジョニングします。それを使用して、Azure Communication Services SDK が初期化されます。 サーバー側コンポーネントを構成する際は、[Azure Functions を使用した信頼できるサービス](../../tutorials/trusted-service-tutorial.md)についてのチュートリアルに従ってください。
 
 サンプルは次のようになります。
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="サンプル アプリケーションのランディング ページを示すスクリーンショット。":::
 
-[Start new call]\(新しい通話を開始\) ボタンを押すと、iOS アプリケーションによって新しい通話が作成され、それに参加します。 このアプリケーションでは、既存の通話の ID を指定することで、Azure Communication Services の既存の通話に参加することもできます。
+[Start new call]\(新しい通話を開始\) ボタンを押すと、iOS アプリケーションによって新しい通話が作成され、それに参加します。 このアプリケーションでは、既存の通話の ID を指定することで、Azure Communication Services の既存の通話に参加することができます。
 
 通話に参加すると、カメラとマイクへのアクセスをアプリケーションに許可するよう求められます。 さらに、表示名を入力するように求められます。
 
@@ -51,7 +55,7 @@ Azure Communication Services の **Group Calling Hero Sample for iOS** は、Com
 - アクティブなサブスクリプションが含まれる Azure アカウント。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
 - [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532) を実行しており、有効な開発者証明書がキーチェーンにインストールされている Mac。
 - Azure Communication Services リソース。 詳細については、[Azure Communication リソースの作成](../../quickstarts/create-communication-resource.md)に関するページを参照してください。
-- [信頼済みサービスのロジック](../../tutorials/trusted-service-tutorial.md)を実行してアクセス トークンをフェッチする Azure 関数。
+- [認証エンドポイント](../../tutorials/trusted-service-tutorial.md)を実行してアクセス トークンをフェッチする Azure 関数。
 
 ## <a name="running-sample-locally"></a>サンプルをローカルで実行する
 
@@ -60,8 +64,8 @@ Azure Communication Services の **Group Calling Hero Sample for iOS** は、Com
 ### <a name="before-running-the-sample-for-the-first-time"></a>サンプルを初めて実行する前
 
 1. `pod install` を実行して依存関係をインストールします。
-2. XCode で `ACSCall.xcworkspace` を開きます。
-3. `AppSettings.plist` を更新します。 `acsTokenFetchUrl` キーの値を、認証エンドポイントの URL に設定します。
+2. XCode で `AzureCalling.xcworkspace` を開きます。
+3. `AppSettings.plist` を更新します。 `communicationTokenFetchUrl` キーの値を、認証エンドポイントの URL に設定します。
 
 ### <a name="run-sample"></a>サンプルを実行する
 
@@ -69,9 +73,9 @@ XCode でサンプルをビルドして実行します。
 
 ## <a name="optional-securing-an-authentication-endpoint"></a>(省略可) 認証エンドポイントのセキュリティを確保する
 
-このサンプルはデモンストレーション上、既定では、パブリックにアクセスできるエンドポイントを使用して、Azure Communication Services トークンをフェッチします。 運用のシナリオでは、セキュリティを確保した独自のエンドポイントを使用して独自のトークンをプロビジョニングすることをお勧めします。
+このサンプルはデモンストレーション上、既定では、パブリックにアクセスできるエンドポイントを使用して、Azure Communication Services のアクセス トークンをフェッチします。 運用のシナリオでは、セキュリティを確保した独自のエンドポイントを使用して独自のトークンをプロビジョニングすることをお勧めします。
 
-別途構成を行うことにより、このサンプルは、**Azure Active Directory** (Azure AD) で保護されたエンドポイントへの接続をサポートし、Azure Communication Services のトークンをフェッチするアプリにユーザー ログインを要求することができます。 以下の手順を参照してください。
+別途構成を行うことにより、このサンプルは、**Azure Active Directory** (Azure AD) で保護されたエンドポイントへの接続をサポートし、Azure Communication Services のアクセス トークンをフェッチするアプリにユーザー ログインを要求することができます。 以下の手順を参照してください。
 
 1. アプリの Azure Active Directory 認証を有効にします。  
    - [アプリを Azure Active Directory に登録する (iOS または macOS プラットフォームの設定を使用)](../../../active-directory/develop/tutorial-v2-ios.md) 
@@ -81,7 +85,7 @@ XCode でサンプルをビルドして実行します。
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure portal における Azure Active Directory の構成。":::
 
 3. Xcode で `AppSettings.plist` を開き、次のキー値を追加します。
-   - `acsTokenFetchUrl`:Azure Communication Services トークンを要求するための URL 
+   - `communicationTokenFetchUrl`:Azure Communication Services トークンを要求するための URL 
    - `isAADAuthEnabled`:Azure Communication Services トークン認証を要求するかどうかを示すブール値
    - `aadClientId`:アプリケーション (クライアント) ID
    - `aadTenantId`:ディレクトリ (テナント) ID
@@ -94,11 +98,16 @@ Communication Services サブスクリプションをクリーンアップして
 
 ## <a name="next-steps"></a>次の手順
 
+>[!div class="nextstepaction"]
+>[GitHub からサンプルをダウンロードする](https://github.com/Azure-Samples/communication-services-ios-calling-hero)
+
 詳細については、次の記事を参照してください。
 
-- [Calling クライアント ライブラリ](../../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
+- [Calling SDK の使用法](../../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
 
 ### <a name="additional-reading"></a>その他の情報
 
+- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
 - [サンプル](./../overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
+- [Azure Communication の通話機能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) - Calling iOS SDK の詳細 - [Azure Communication iOS Calling SDK](https://github.com/Azure/Communication/releases/)

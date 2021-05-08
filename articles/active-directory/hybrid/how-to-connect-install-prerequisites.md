@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e758933b80efbf36dc263b7bd7d2d3c45a59a9f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426792"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107913"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -37,7 +37,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * Azure AD テナントでは、既定で 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、このオブジェクトの制限が 300,000 個に増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限をさらに増加させるためにサポート ケースを開きます。 500,000 個を超えるオブジェクトが必要な場合は、Microsoft 365、Azure AD Premium、または Enterprise Mobility + Security などのライセンスが必要です。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
-* Azure AD および Microsoft 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
+* [Azure AD および Microsoft 365 に同期する](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac)前に、[IdFix](https://github.com/Microsoft/idfix) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
 * [Azure AD で有効にできるオプションの同期機能](how-to-connect-syncservice-features.md)について確認し、どの機能を有効にする必要があるかを検討してください。
 
 ### <a name="on-premises-active-directory"></a>オンプレミスの Active Directory

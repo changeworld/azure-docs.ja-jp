@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 276dd7aa1925fefaaa94dfdd5d7a5baba5164f56
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790259"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、SMB および NFS ファイル システム プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
@@ -103,7 +103,7 @@ Azure File Sync エージェントは Azure ファイル共有に接続してい
 
 Azure File Sync の場合、2 つのステージで重要です。
 
-1. **最初の 1 回限りのプロビジョニング**:最初のプロビジョニングのパフォーマンスを最適化するには、「[Azure File Sync でのオンボード](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)」で最適な展開の詳細をご覧ください。
+1. **最初の 1 回限りのプロビジョニング**:最初のプロビジョニングのパフォーマンスを最適化するには、「[Azure File Sync でのオンボード](../file-sync/file-sync-deployment-guide.md#onboarding-with-azure-file-sync)」で最適な展開の詳細をご覧ください。
 2. **継続的な同期**:Azure ファイル共有に初期データがシードされた後、Azure File Sync は複数のエンドポイントの同期を維持します。
 
 各ステージでの展開の計画に役立つように、次の構成のシステムで行われた内部テストにおいて観察された結果を以下に示します。
@@ -134,7 +134,7 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 **Windows Server から Azure ファイル共有への初回データ同期**: データはすべて Windows Server 上にあるため、Azure File Sync デプロイの多くは空の Azure ファイル共有から始まります。 そのような場合、初回クラウド変更の列挙が速く、Windows Server から Azure ファイル共有への変更同期に時間の多くが費やされます。 
 
-同期によって Azure ファイル共有にデータがアップロードされますが、ローカルのファイル サーバー上ではダウンタイムがありません。管理者は[ネットワーク上限を設定](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits)し、バックグラウンドのデータ アップロードに使用される帯域幅の量を制限できます。
+同期によって Azure ファイル共有にデータがアップロードされますが、ローカルのファイル サーバー上ではダウンタイムがありません。管理者は[ネットワーク上限を設定](../file-sync/file-sync-server-registration.md#set-azure-file-sync-network-limits)し、バックグラウンドのデータ アップロードに使用される帯域幅の量を制限できます。
 
 初回同期は通常、同期グループあたり毎秒 20 ファイルという初回アップロード率に制限されます。 顧客は以下の数式で時間 (日数) を割り出し、すべてのデータを Azure にアップロードする時間を見積もりできます。  
 
@@ -164,4 +164,4 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 ## <a name="see-also"></a>関連項目
 - [Azure Files のデプロイの計画](storage-files-planning.md)
-- [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
+- [Azure File Sync のデプロイの計画](../file-sync/file-sync-planning.md)

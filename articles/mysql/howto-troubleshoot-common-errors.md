@@ -7,14 +7,16 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bfcfee0f5dab2d978eb1856bdc915c270d43ed6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98631369"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109796"
 ---
-# <a name="common-errors"></a>一般的なエラー
+# <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql-service"></a>Azure Database for MySQL サービスへの移行中または移行後によく発生するエラー
+
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 Azure Database for MySQL は、MySQL のコミュニティ バージョンを利用したフル マネージド サービスです。 マネージド サービス環境での MySQL エクスペリエンスは、独自の環境で MySQL を実行する場合と異なることがあります。 この記事では、初めて Azure Database for MySQL サービスへの移行や開発を行うときにユーザーが遭遇する可能性のある一般的なエラーについて説明します。
 
@@ -48,7 +50,7 @@ BEGIN
 END;
 ```
 
-**解決方法**:このエラーを解決するには、ポータルの [[サーバー パラメーター]](howto-server-parameters.md) ブレードから log_bin_trust_function_creators を 1 に設定し、DDL ステートメントを実行するか、スキーマをインポートして目的のオブジェクトを作成し、作成後に log_bin_trust_function_creators パラメーターを以前の値に戻します。
+**解決方法**: このエラーを解決するには、ポータルの [[サーバー パラメーター]](howto-server-parameters.md) ブレードから log_bin_trust_function_creators を 1 に設定するか、DDL ステートメントを実行するか、またはスキーマをインポートして目的のオブジェクトを作成します。 サーバーの log_bin_trust_function_creators を 1 のままにすることで、今後このエラーの発生を防ぐことができます。 Microsoft では、log_bin_trust_function_creators を設定することをお勧めします。bin ログが脅威にさらされずに済むため、[MySQL コミュニティのドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)で大きく取り上げられている Azure DB for MySQL サービスのセキュリティ リスクが最小限で済みます。
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>ERROR 1227 (42000) at line 101 (エラー 1227 (42000)、行 101): Access denied; you need (at least one of) the SUPER privilege(s) for this operation. (アクセスが拒否されました。この操作には、(少なくとも 1 つの) SUPER 権限が必要です。) Operation failed with exitcode 1 (終了コード 1 で操作に失敗しました)
 
@@ -84,6 +86,14 @@ DELIMITER ;
 
 > [!Tip] 
 > DEFINER= ステートメントを置き換えるには、sed または perl を使用してダンプ ファイルまたは SQL スクリプトを変更します
+
+#### <a name="error-1227-42000-at-line-18-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation"></a>ERROR 1227 (42000) at line 18 (エラー 1227 (42000)、行 18): Access denied; you need (at least one of) the SUPER privilege(s) for this operation. (アクセスが拒否されました。この操作には、(少なくとも 1 つの) SUPER 権限が必要です。)
+
+GTID が有効にされている MySQL サーバーからターゲット Azure Database for MySQL サーバーにダンプ ファイルをインポートしようとすると、上記のエラーが発生することがあります。 Mysqldump では、GTID が使用されているサーバーからのダンプ ファイルに SET @@SESSION.sql_log_bin=0 ステートメントが追加されます。これによって、ダンプ ファイルがリロードされている間のバイナリ ログが無効になります。
+
+**解決策**: インポート中のこのエラーを解決するには、万全を期すために、mysqldump ファイルにある以下の行を削除するかコメント アウトしてから、再度インポートを実行してください。 
+
+SET @MYSQLDUMP_TEMP_LOG_BIN = @@SESSION.SQL_LOG_BIN; SET @@SESSION.SQL_LOG_BIN= 0; SET @@GLOBAL.GTID_PURGED=''; SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 
 ## <a name="common-connection-errors-for-server-admin-login"></a>サーバー管理者ログインの一般的な接続エラー
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99524670"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305975"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -52,6 +52,9 @@ CAE を使用するようにアプリケーションを準備する方法につ�
 
 このプロセスにより、これらの重大なイベントのいずれかが発生してから数分以内に、Microsoft 365 クライアント アプリから組織の SharePoint Online ファイル、電子メール、予定表、タスク、および Teams にアクセスできなくなるというシナリオが可能になります。 
 
+> [!NOTE] 
+> Teams では、ユーザー リスク イベントはまだサポートされていません。
+
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件付きアクセス ポリシーの評価 (プレビュー)
 
 Exchange と SharePoint は、重要な条件付きアクセス ポリシーを同期できます。これにより、これらのポリシーをサービス自体内で評価できます。
@@ -59,11 +62,11 @@ Exchange と SharePoint は、重要な条件付きアクセス ポリシーを�
 このプロセスにより、ネットワークの場所が変更された場合はただちに、Microsoft 365 クライアント アプリまたは SharePoint Online から組織のファイル、電子メール、予定表、タスクにアクセスできなくなるというシナリオが可能になります。
 
 > [!NOTE]
-> アプリとリソース プロバイダーのすべての組み合わせがサポートされているわけではありません。 次の表を参照してください。 Office は Word、Excel、PowerPoint を示します
+> アプリとリソース プロバイダーのすべての組み合わせがサポートされているわけではありません。 次の表を参照してください。 Office は Word、Excel、PowerPoint を示します。
 
 | | Outlook Web | Outlook Win32 | Outlook iOS | Outlook Android | Outlook Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **SharePoint Online** | サポートされています | サポートされています | サポートされていません | サポートされていません | サポートされています |
+| **SharePoint Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
 | **Exchange Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
 
 | | Office Web アプリ | Office Win32 アプリ | Office for iOS | Office for Android | Office for Mac |
@@ -71,23 +74,20 @@ Exchange と SharePoint は、重要な条件付きアクセス ポリシーを�
 | **SharePoint Online** | サポートされていません | サポートされています | サポートされています | サポートされています | サポートされています |
 | **Exchange Online** | サポートされていません | サポートされています | サポートされています | サポートされています | サポートされています |
 
+| | OneDrive Web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **SharePoint Online** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+
 ### <a name="client-side-claim-challenge"></a>クライアント側の要求チャレンジ
 
 継続的アクセス評価を行う前に、クライアントは、期限切れになっていない限り、常にキャッシュからアクセス トークンを再生しようとします。 CAE では、リソース プロバイダーが期限切れになっていない場合も、トークンを拒否できる新しいケースが導入されています。 キャッシュされたトークンの有効期限が切れていない場合でも、クライアントにキャッシュをバイパスするように通知するために、**要求チャレンジ** と呼ばれるメカニズムが導入されました。これは、トークンが拒否されたため、Azure AD から新しいアクセス トークンの発行を受ける必要があることを示します。 CAE で要求チャレンジを認識するには、クライアントの更新が必要です。 次のアプリケーションの最新バージョンで、要求チャレンジがサポートされています。
 
-- Outlook Windows
-- Outlook iOS
-- Outlook Android
-- Outlook Mac
-- Outlook Web アプリ
-- Teams for Windows (Teams リソースの場合のみ)
-- Teams iOS (Teams リソースの場合のみ)
-- Teams Android (Teams リソースの場合のみ)
-- Teams Mac (Teams リソースの場合のみ)
-- Windows 版 Word/Excel/PowerPoint
-- iOS 版 Word/Excel/PowerPoint
-- Android 版 Word/Excel/PowerPoint
-- Mac 版 Word/Excel/PowerPoint
+| | Web | Win32 | iOS | Android | Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Outlook** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+| **Teams** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
+| **Office** | サポートされていません | サポートされています | サポートされています | サポートされています | サポートされています |
+| **OneDrive** | サポートされています | サポートされています | サポートされています | サポートされています | サポートされています |
 
 ### <a name="token-lifetime"></a>トークンの有効期間
 
@@ -142,7 +142,7 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 CAE では、IP ベースの名前付きの場所についてのみ分析情報を得られます。 [MFA の信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) や国ベースの場所など、他の場所の設定について分析情報は得られません。 ユーザーの場所が MFA の信頼できる IP または信頼できる場所 (MFA の信頼できる IP、国の場所など) である場合、ユーザーが別の場所に移動した後は CAE は適用されません。 このような場合は、即時 IP 適用チェックなしで 1 時間の CAE トークンが発行されます。
 
 > [!IMPORTANT]
-> 継続的アクセス評価のために場所を構成する場合は、[IP ベースの条件付きアクセスの場所の条件](../conditional-access/location-condition.md#preview-features)のみ使用し、ID プロバイダーとリソース プロバイダーが認識できる **IPv4 と IPv6 の両方を含む** すべての IP アドレスを構成してください。 Azure AD Multi-Factor Authentication のサービス設定ページにある国の場所の条件や信頼できる IP 機能は使用しないでください。
+> 継続的アクセス評価のために場所を構成する場合は、[IP ベースの条件付きアクセスの場所の条件](../conditional-access/location-condition.md)のみ使用し、ID プロバイダーとリソース プロバイダーが認識できる **IPv4 と IPv6 の両方を含む** すべての IP アドレスを構成してください。 Azure AD Multi-Factor Authentication のサービス設定ページにある国の場所の条件や信頼できる IP 機能は使用しないでください。
 
 ### <a name="ip-address-configuration"></a>IP アドレスの構成
 
@@ -163,17 +163,17 @@ ID プロバイダーとリソース プロバイダーがそれぞれ異なる 
 
 Office 更新プログラム チャネルの詳細については、[Microsoft 365 アプリの更新プログラム チャネルの概要](/deployoffice/overview-update-channels)に関する記事を参照してください。 組織で Web アカウント マネージャー (WAM) を無効にしないことをお勧めします。
 
-### <a name="policy-change-timing"></a>ポリシー変更のタイミング
+### <a name="group-membership-and-policy-update-effective-time"></a>グループ メンバーシップとポリシー更新が有効になる時間
 
-Azure AD とリソース プロバイダーの間でレプリケーションの遅延が発生する可能性があるため、管理者によって行われたポリシーの変更が Exchange Online で有効になるまでに最大 2 時間かかることがあります。
+管理者が行ったグループ メンバーシップとポリシーの更新は、有効になるまで最大 1 日かかることがあります。 ポリシーの更新に関していくつかの最適化が行われ、遅延が 2 時間に短縮されています。 ただし、まだすべてのシナリオに対応しているわけではありません。 
 
-例:管理者が、特定範囲の IP アドレスから電子メールにアクセスできないようブロックするポリシーを午前 11 時に追加したとします。この IP 範囲のユーザーが、午後 1 時まで電子メールに引き続きアクセスできる可能性があります。
+緊急時に、更新されたポリシーまたはグループ メンバーシップの変更を特定のユーザーに対して直ちに適用する必要がある場合は、こちらの [PowerShell コマンド](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)、またはユーザー プロファイル ページの "セッションの取り消し" を使用してユーザーのセッションを取り消す必要があります。これにより、更新されたポリシーが直ちに適用されます。
 
 ### <a name="coauthoring-in-office-apps"></a>Office アプリでの共同編集
 
 複数のユーザーが同じドキュメントに対して同時に共同作業を行っている場合、ユーザー失効またはポリシー変更のイベントに基づいて、ドキュメントへのユーザーのアクセスが CAE によって直ちに取り消されることはありません。 この場合、ユーザーは、ドキュメントを閉じた後、Word、Excel、または PowerPoint を終了した後、あるいは 10 時間後にアクセス許可を完全に失います。
 
-この時間を短縮するために、SharePoint 管理者は、[SharePoint Online でネットワークの場所のポリシーを構成する](/sharepoint/control-access-based-on-network-location)ことで、SharePoint Online および OneDrive for Business に保存されているドキュメントの共同編集セッションの最大有効期間を必要に応じて短縮できます。 この構成が変更されると、共同編集セッションの最長有効期間は 15 分に短縮されます。この期間は、SharePoint Online の PowerShell コマンド "Set-SPOTenant –IPAddressWACTokenLifetime" を使用してさらに調整できます。
+この時間を短縮するために、SharePoint 管理者は、[SharePoint Online でネットワークの場所のポリシーを構成する](/sharepoint/control-access-based-on-network-location)ことで、SharePoint Online および OneDrive for Business に保存されているドキュメントの共同編集セッションの最大有効期間を必要に応じて短縮できます。 この構成が変更されると、共同編集セッションの最長有効期間は 15 分に短縮されます。また、SharePoint Online の PowerShell コマンド "Set-SPOTenant –IPAddressWACTokenLifetime" を使用してさらに調整できます。
 
 ### <a name="enable-after-a-user-is-disabled"></a>ユーザーが無効になった後にそのユーザーを有効にする
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6835d06015923a70301c95370c76efbd0c2163e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98223671"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776737"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -115,7 +115,7 @@ NetworkInterfaces
 
 Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にログインする必要もあります。
 
-[az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) を使用して、ネットワーク インターフェイスに対して有効なセキュリティ規則を取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なセキュリティ規則を取得します。
+[az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg) を使用して、ネットワーク インターフェイスに対して有効なセキュリティ規則を取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* という名前のネットワーク インターフェイスの有効なセキュリティ規則を取得します。
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -176,7 +176,7 @@ az vm show \
 | 宛先ポート範囲 | 80                                                                                 |
 | Protocol                | TCP                                                                                |
 | アクション                  | Allow                                                                              |
-| 優先度                | 100                                                                                |
+| Priority                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
 この規則を作成した後は、ポート 80 でインターネットからの受信が許可されるようになります。これは、トラフィックを拒否している *DenyAllInBound* という名前の既定のセキュリティ規則より、この規則の優先順位の方が高いためです。 方法については、「[セキュリティ規則を作成する](manage-network-security-group.md#create-a-security-rule)」をご覧ください。 ネットワーク インターフェイスとサブネットに異なる NSG が関連付けられている場合は、両方の NSG に同じ規則を作成する必要があります。
