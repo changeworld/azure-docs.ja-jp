@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2021
 ms.author: bagol
-ms.openlocfilehash: a835ea7b5e79ecc9b2d26dc6955984d0d0ff2906
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 6d41c33cfb05808a2b6b83c01b59ce0edbe5b628
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107380269"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140139"
 ---
 # <a name="connect-windows-virtual-desktop-data-to-azure-sentinel"></a>Azure Sentinel への Windows Virtual Desktop データの接続
 
@@ -35,7 +35,7 @@ Azure Sentinel の Windows Virtual Desktop データには、次の種類のデ�
 |Data  |説明  |
 |---------|---------|
 |**Windows イベント ログ**     |  WVD 環境からの Windows イベント ログは、WVD 環境外にある他の Windows マシンの Windows イベント ログと同じ方法で、Azure Sentinel 対応の Log Analytics ワークスペースにストリーミングされます。 <br><br>Windows コンピューターに Log Analytics エージェントをインストールし、Log Analytics ワークスペースに送信する Windows イベント ログを構成します。<br><br>詳細については、次を参照してください。<br>- [Windows コンピューターに Log Analytics エージェントをインストールする](/azure/azure-monitor/agents/agent-windows)<br>- [Log Analytics エージェントを使用して Windows イベント ログのデータ ソースを収集する](/azure/azure-monitor/agents/data-sources-windows-events)<br>- [Windows セキュリティ イベントの接続](connect-windows-security-events.md)       |
-|**Microsoft Defender for Endpoint (MDE) のアラート**     |  Windows Virtual Desktop 用に MDE を構成するには、他の Windows エンドポイントと同じ手順を使用します。 <br><br>詳細については、次を参照してください。 <br>- [Microsoft Defender for Endpoint の展開をセットアップする](/windows/security/threat-protection/microsoft-defender-atp/production-deployment)<br>- [Microsoft 365 Defender から Azure Sentinel にデータを接続する](connect-microsoft-365-defender.md)       |
+|**Microsoft Defender for Endpoint アラート**     |  Windows Virtual Desktop 用に Defender for Endpoint を構成するには、他の Windows エンドポイントと同じ手順を使用します。 <br><br>詳細については、次を参照してください。 <br>- [Microsoft Defender for Endpoint の展開をセットアップする](/windows/security/threat-protection/microsoft-defender-atp/production-deployment)<br>- [Microsoft 365 Defender から Azure Sentinel にデータを接続する](connect-microsoft-365-defender.md)       |
 |**Windows Virtual Desktop 診断**     | Windows Virtual Desktop 診断は Windows Virtual Desktop PaaS サービスの機能であり、Windows Virtual Desktop ロールが割り当てられているユーザーがサービスを使用するたびに情報をログに記録します。 <br><br>各ログには、そのアクティビティで Windows Virtual Desktop ロールが関係している情報、そのセッション中に表示されるすべてのエラー メッセージ、テナント情報、ユーザー情報が格納されます。 <br><br>診断機能は、ユーザーと管理者の両方のアクションのアクティビティ ログを作成します。 <br><br>詳細については、[Windows Virtual Desktop の診断機能での Log Analytics の使用](/azure/virtual-desktop/virtual-desktop-fall-2019/diagnostics-log-analytics-2019)に関するページを参照してください。        |
 |     |         |
 
@@ -43,13 +43,13 @@ Azure Sentinel の Windows Virtual Desktop データには、次の種類のデ�
 
 Azure Sentinel への Windows Virtual Desktop データの取り込みを開始するには、Windows Virtual Desktop のドキュメントに記載されている手順に従います。
 
-詳細については、[Log Analytics ワークスペースへの Windows Virtual Desktop データのプッシュ](/azure/virtual-desktop/diagnostics-log-analytics)に関するページを参照してください。
+詳細については、[Log Analytics ワークスペースへの Windows Virtual Desktop データのプッシュ](../virtual-desktop/diagnostics-log-analytics.md)に関するページを参照してください。
 
 ## <a name="find-your-data"></a>データの検索
 
 接続が正常に確立されたら、Azure Sentinel で Log Analytics データに対するクエリを実行します。
 
-例については、[Windows Virtual Desktop のドキュメント](/azure/virtual-desktop/diagnostics-log-analytics)にあるサンプル クエリをご覧ください。
+例については、[Windows Virtual Desktop のドキュメント](../virtual-desktop/diagnostics-log-analytics.md)にあるサンプル クエリをご覧ください。
 
 
 Azure Sentinel では、 **[全般]**  >  **[ログ]**  >  **[WINDOWS VIRTUAL DESKTOP]** 領域に、組み込みのクエリも用意されています。
@@ -59,4 +59,4 @@ Azure Sentinel では、 **[全般]**  >  **[ログ]**  >  **[WINDOWS VIRTUAL DE
 ## <a name="next-steps"></a>次の手順
 
 
-詳細については、[Azure Monitor for Windows Virtual Desktop の用語](/azure/virtual-desktop/azure-monitor-glossary)を参照してください。
+詳細については、[Azure Monitor for Windows Virtual Desktop の用語](../virtual-desktop/azure-monitor-glossary.md)を参照してください。

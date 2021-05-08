@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - Private Cloud 上で ID ソースとして Azure AD を使用する
 description: CloudSimple Private Cloud 上で ID プロバイダーとして Azure AD を追加し、Azure から CloudSimple にアクセスするユーザーを認証する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20e854b38aa45e410c5f6ddae51ee4d1bf0b088e
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898608"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182572"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>CloudSimple Private Cloud 上で vCenter の ID プロバイダーとして Azure AD を使用する
 

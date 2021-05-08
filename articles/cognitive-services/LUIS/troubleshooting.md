@@ -4,13 +4,13 @@ description: この記事では、Language Understanding (LUIS) についてよ�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
-ms.date: 04/13/2021
-ms.openlocfilehash: 97b7c02a418a87a0700414e19bc939bda899d073
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/16/2021
+ms.openlocfilehash: 593e02520d3e6ae87550257381dbc47aa068a242
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503824"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951542"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -91,7 +91,7 @@ LUIS ポータルでは、抽出するエンティティのテキストにラベ
 
 無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。
 
-このエラーを解決するには、高いレベルに[価格レベルを変更](luis-how-to-azure-subscription.md#change-the-pricing-tier)するか、[新しいリソースを作成](get-started-portal-deploy-app.md#create-the-endpoint-resource)して[アプリに割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。
+このエラーを解消するには、[価格レベルを上位のレベルに変更する](luis-how-to-azure-subscription.md#change-the-pricing-tier)か、[新しいリソースを作成](luis-get-started-create-app.md#sign-in-to-luis-portal)してアプリに割り当てる必要があります。
 
 このエラーの解決方法は次のとおりです。
 
@@ -262,7 +262,7 @@ Microsoft の取り組みと、Azure サービスでのデータ管理とアク�
 最初に、問題が LUIS に関連するものか、または LUIS ミドルウェアの外で起きているものかを切り分ける必要があります。
 
 #### <a name="resolve-issue-in-luis"></a>LUIS での問題を解決する
-[LUIS エンドポイント](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
+[LUIS エンドポイント](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
 
 * `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-the-pricing-tier)を変更する必要があることを、示しています。
 

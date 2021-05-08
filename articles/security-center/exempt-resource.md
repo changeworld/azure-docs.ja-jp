@@ -3,16 +3,16 @@ title: リソース、サブスクリプション、管理グループ、セキ�
 description: サブスクリプションまたは管理グループからのセキュリティの推奨事項を除外する規則を作成し、セキュリティ スコアに対する影響を防ぐ方法について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 03/11/2021
+ms.date: 04/21/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 13abb35d0fa9ad3ee949b6edf5205de601a02956
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: f125b94725ba9d34aa0962ed38b16fb474dc5b2b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718559"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140247"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>セキュリティ スコアからのリソースと推奨事項の除外 
 
@@ -35,7 +35,7 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 | リリース状態:                  | プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
 | 価格:                        | これは、Azure Defender のお客様が追加コストなしで利用できる Azure Policy の Premium 機能です。 他のユーザーについては、将来、料金が適用されることがあります。                                                                                                                                                                 |
 | 必要なロールとアクセス許可: | **所有者** または **リソース ポリシーの共同作成者** (除外対象を作成するため)<br>規則を作成するには、Azure Policy でポリシーを編集するためのアクセス許可が必要です。<br>詳細については、「[Azure Policy における RBAC アクセス許可](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)」を参照してください。                                            |
-| 制限事項:                    | 除外は、Security Center の既定のイニシアチブ、[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 カスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。 |
+| 制限事項:                    | 除外は、Security Center の既定のイニシアチブ、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)、または提供されている規制標準イニシアチブに含まれる推奨事項に対してのみ作成できます。 カスタム イニシアチブから生成された推奨事項を除外することはできません。 [ポリシー、イニシアチブ、推奨事項](security-policy-concept.md)の間の関係に関する詳細を参照してください。 |
 | クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
@@ -117,6 +117,14 @@ Azure Security Center でセキュリティに関する推奨事項を調査す�
 - プレイブックの詳細については、テクニカル コミュニティのブログ投稿「[How to keep track of Resource Exemptions in Azure Security Center (Azure Security Center でリソースの除外を追跡する方法)](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)」を参照してください
 - ARM テンプレートは、[Azure Security Center GitHub リポジトリ](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)にあります。
 - 必要なすべてのコンポーネントをデプロイするには、[こちらの自動化されたプロセス](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json)を使用してください
+
+## <a name="use-the-inventory-to-find-resources-that-have-exemptions-applied"></a>インベントリを使用して除外が適用されているリソースを検索する
+
+Azure Security Center の資産インベントリ ページを使用すると、Security Center に接続したリソースのセキュリティ態勢が 1 つのページに表示されます。 詳細については、「[資産インベントリを使用してリソースの調査と管理を行う](asset-inventory.md)」を参照してください。
+
+インベントリ ページにある多くのフィルターを使用して、リソースの一覧を、特定のシナリオに最も関係が深いものに絞り込むことができます。 そのようなフィルターの 1 つに **[適用除外を含む]** があります。 1 つまたは複数の推奨から除外されたすべてのリソースを検索するには、このフィルターを使用します。
+
+:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Security Center のアセット インベントリ ページと、適用除外されたリソースを検索するためのフィルター":::
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Azure Resource Graph を使用して除外対象の推奨事項を検索する

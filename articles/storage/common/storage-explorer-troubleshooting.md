@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: dfc8fe0f1b4bc043feecd5c76340d48bc5421854
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: dbd4e9c6e8a58738ac0a8db6c64133301d1aebe5
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568541"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950588"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -137,11 +137,20 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
 
 アカウントで満たす必要がある条件付きアクセス ポリシーがある場合は、 **[サインイン方法の選択]** 設定の値に **[既定の Web ブラウザー]** を使用していることを確認してください。 この設定の詳細については、[サインインする場所の変更](./storage-explorer-sign-in.md#changing-where-sign-in-happens)に関するページを参照してください。
 
+### <a name="browser-complains-about-http-redirect-during-sign-in"></a>サインイン中に発生する HTTP リダイレクトに関するブラウザーのエラー
+
+Web ブラウザーで Storage Explorer によってサインインが行われると、サインイン プロセスの最後に `localhost` へのリダイレクトが実行されます。 場合によっては、ブラウザーで、HTTPS ではなく HTTP でリダイレクトが実行されていることを示す警告またはエラーが発生する場合があります。 また、HTTPS でのリダイレクトを強制的に実行しようとするブラウザーもあります。 これらのいずれかが発生した場合、ブラウザーに応じてさまざまなオプションがあります。
+- 警告を無視します。
+- `localhost` の例外を追加します。
+- グローバルに、または `localhost` に対してのみ、HTTPS の強制を無効にします。
+
+これらのどのオプションも実行できない場合は、[サインインを実行する場所を変更](./storage-explorer-sign-in.md#changing-where-sign-in-happens)こともできます。
+
 ### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>トークンを取得できず、テナントがフィルターで除外されている
 
 テナントがフィルターで除外されているためにトークンを取得できないというエラー メッセージが表示された場合は、フィルターで除外したテナント内のリソースにアクセスしようとしていることを意味します。テナントをフィルターから解除するには、 **[アカウント パネル]** に移動して、エラーに指定されたテナントのチェックボックスがオンになっていることを確認します。 Storage Explorer でのテナントのフィルター処理の詳細については、[アカウントの管理](./storage-explorer-sign-in.md#managing-accounts)に関するページを参照してください。
 
-## <a name="authentication-library-failed-to-start-properly"></a>認証ライブラリを正常に開始できない
+### <a name="authentication-library-failed-to-start-properly"></a>認証ライブラリを正常に開始できない
 
 起動時に Storage Explorer の認証ライブラリを正常に開始できなかったことを示すエラー メッセージが表示された場合は、インストール環境ですべての[前提条件](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites)が満たされていることを確認しします。 このエラー メッセージの原因としては、前提条件が満たされていないことが考えられます。
 
@@ -486,12 +495,12 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 
 一般的には、次の手順に従ってログを収集できます。
 
-1. [設定] > [サインイン] > [check Verbose Authentication Logging]\(詳細な認証ログの確認\) の順に移動します。 認証ライブラリの問題により Storage Explorer の起動に失敗する場合、これはお客様の代わりに行われます。
+1. **[設定] (左側の歯車アイコン)**  >  **[アプリケーション]**  >  **[サインイン]** の順に移動して、 **[詳細な認証ログ]** を確認します。 認証ライブラリの問題により Storage Explorer の起動に失敗する場合、これはお客様の代わりに行われます。
 2. Storage Explorer を閉じます。
 1. 省略可能または推奨: `logs` フォルダーから既存のログを消去します。 こうすることで、送信する必要がある情報量を減らすことができます。
 4. Storage Explorer を開いて問題を再現します
 5. Storage Explorer を閉じます
-6. `log` フォルダーの内容を圧縮します。
+6. `logs` フォルダーの内容を圧縮します。
 
 ### <a name="azcopy-logs"></a>AzCopy ログ
 
@@ -526,7 +535,7 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 14. [Copy to File…]\(ファイルへコピー\) をクリックします
 15. エクスポート ウィザードで、次のオプションを選択します
     - Base-64 でエンコードされた X.509
-    - ファイル名の場合は、 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs を参照して、任意のファイル名で保存できます
+    - ファイル名の場合は、 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs を参照してから、これを任意のファイル名で保存できます
 16. 証明書ウィンドウを閉じます
 17. Storage Explorer を開始します
 18. [Edit]\(編集\) > [Configure Proxy]\(プロキシの構成\) に移動します

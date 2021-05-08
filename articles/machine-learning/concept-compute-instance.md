@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 309cf3882ade99de3f2e29a037d20ca50e35f490
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8bc3c3dfba8414381c4bc26508e96d12925df7ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066672"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135781"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -34,7 +34,7 @@ Azure Machine Learning コンピューティング インスタンスは、デ�
 
 |主な利点|説明|
 |----|----|
-|生産性|統合ノートブックや次のツールを Azure Machine Learning Studio で使用して、モデルを構築およびデプロイすることができます。<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio (プレビュー)<br/>コンピューティング インスタンスは Azure Machine Learning ワークスペースおよびスタジオと完全に統合されています。 ワークスペース内の他のデータ サイエンティストとノートブックやデータを共有できます。<br/> コンピューティング インスタンスで [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) を使用することもできます。
+|生産性|統合ノートブックや次のツールを Azure Machine Learning Studio で使用して、モデルを構築およびデプロイすることができます。<br/>-  Jupyter<br/>-  JupyterLab<br/>- VS Code (プレビュー)<br/>-  RStudio (プレビュー)<br/>コンピューティング インスタンスは Azure Machine Learning ワークスペースおよびスタジオと完全に統合されています。 ワークスペース内の他のデータ サイエンティストとノートブックやデータを共有できます。<br/> コンピューティング インスタンスで [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) を使用することもできます。
 |マネージドおよび安全|セキュリティ占有領域を削減し、エンタープライズ セキュリティ要件へのコンプライアンスを追加できます。 コンピューティング インスタンスでは、厳格な管理ポリシーと安全なネットワーク構成が提供されます。<br/><br/>- Resource Manager テンプレートまたは Azure Machine Learning SDK からの自動プロビジョニング<br/>- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [仮想ネットワークのサポート](./how-to-secure-training-vnet.md#compute-instance)<br/>- SSH アクセスを有効または無効にする SSH ポリシー<br/>TLS 1.2 対応 |
 |ML &nbsp;用&nbsp;に事前構成済み|事前に構成された最新の ML パッケージ、ディープ ラーニング フレームワーク、GPU ドライバーを使用して、セットアップ タスクの時間を節約できます。|
 |フル カスタマイズが可能|Azure VM の種類 (GPU を含む) や永続的な低レベル カスタマイズ (パッケージやドライバーのインストールなど) が広範にサポートされているので、高度なシナリオに簡単に対応できます。 |
@@ -148,6 +148,8 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 コンピューティング インスタンスの作成に適用されるリージョンあたりの専用コア数は、VM ファミリ クォータ別およびリージョン合計クォータ別に、Azure Machine Learning コンピューティング クラスターのクォータと統合され、共有されます。 コンピューティング インスタンスを停止しても、コンピューティング インスタンスを再起動できるように、クォータは解放されません。
 
+コンピューティング インスタンスには P10 OS ディスクが付属しています。 一時ディスクの種類は、選択された VM サイズによって異なります。 現在、OS ディスクの種類を変更することはできません。
+
 
 ### <a name="create-on-behalf-of-preview"></a>代理作成 (プレビュー)
 
@@ -180,17 +182,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 コンピューティング インスタンスは、テストまたはデバッグのシナリオのためのローカル推論配置ターゲットとして使用できます。
 
 > [!TIP]
-> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを[停止または再起動](how-to-create-manage-compute-instance.md#manage)する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 GB から 2 GB をクリアしてください。
-
-
-## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM はどうなったのか
-
-Notebook VM は、コンピューティング インスタンスに置き換えられつつあります。  
-
-ワークスペースのファイル共有に格納されているノートブック ファイルと、ワークスペースのデータストア内にあるデータには、コンピューティング インスタンスからアクセスできます。 ただし、以前に Notebook VM にインストールしたカスタム パッケージは、コンピューティング インスタンスに再インストールする必要があります。 コンピューティング クラスターの作成に適用されるクォータ制限は、コンピューティング インスタンスの作成にも適用されます。
-
-新しい Notebook VM を作成できません。 ただし、既に作成した Notebook VM には引き続きアクセスでき、フル機能で使用することができます。 コンピューティング インスタンスは、既存の Notebook VM と同じワークスペース内に作成できます。
-
+> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足し、使用できない状態になった場合は、JupyterLab ターミナルからファイルまたはフォルダーを削除して OS ディスク (/ にマウントされている /dev/sda1/ ファイル システム) 上の少なくとも 5 GB のディスク領域をクリアしてから、sudo の再起動を実行してください。 JupyterLab ターミナルにアクセスするには、 https://ComputeInstanceName.AzureRegion.instances.azureml.ms/lab (コンピューティング インスタンスと Azure リージョンの名前を置き換えます) に移動し、[ファイル] -> [新規] -> [ターミナル] の順にクリックします。 コンピューティング インスタンスを[停止または再起動する](how-to-create-manage-compute-instance.md#manage)前に、少なくとも 5 GB をクリアしてください。 ターミナルで df -h を実行することによって、使用可能なディスク領域を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

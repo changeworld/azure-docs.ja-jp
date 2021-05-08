@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/28/2021
 ms.author: lajanuar
-ms.openlocfilehash: cd9cf0e4a2abec1ad29d5b34f3d6f473ca5bf71d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: dc537f76790a50c33cc7925633d4ce79692e5f66
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564517"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108284926"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -1097,8 +1097,6 @@ JSON 出力で `200 (Success)` 応答を受信します。
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your ID document URL}` を、レシートの画像の URL アドレスに置き換えます。
 1. `{subscription key}` を、前の手順からコピーしたサブスクリプション キーに置き換えます。
-
-### <a name="v21-previewtabv2-1"></a>[v2.1 プレビュー](#tab/v2-1
 
 ```bash
 curl -i -X POST "https://{endpoint}/formrecognizer/v2.1-preview.3/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your  ID document URL}'}"

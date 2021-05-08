@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 6629beacb5c3edc6fe1d21509051b915c0894479
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5b5e1491d7f76cd4cff76d0c9a1af4daa49fa483
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109694"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813004"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) での高可用性の概念
 
@@ -69,6 +69,9 @@ HA の正常性は、概要ページで継続的に監視され、報告され�
 
 ### <a name="failover-process---unplanned-events"></a>フェールオーバー プロセス - 予定外のイベント
 予定外のサービス ダウンタイムとしては、データベースの可用性に影響を与えるソフトウェアのバグや、コンピューティング、ネットワーク、ストレージ障害などのインフラストラクチャの障害、停電があります。 データベースが使用できなくなった場合、スタンバイ レプリカへのレプリケーションは停止され、スタンバイ レプリカがアクティブ化されてプライマリ データベースになります。 DNS が更新された後、クライアントはデータベース サーバーに再接続され、操作を開始します。 全体的なフェールオーバー時間は、60 から 120 秒になると予想されます。 ただし、フェールオーバーの時点でのプライマリ データベース サーバー内のアクティビティ (大規模なトランザクションや復旧時間など) によっては、フェールオーバーがこれより長くなる可能性があります。
+
+### <a name="forced-failover"></a>強制フェールオーバー
+Azure Database for MySQL 強制フェールオーバーによって手動で強制的にフェールオーバーできるため、この機能をアプリケーション シナリオでテストして、障害が発生した場合に備えることができます。 強制フェールオーバーでトリガーされるフェールオーバーによりスタンバイ レプリカがアクティブになってプライマリ サーバーになることで、スタンバイ サーバーはプライマリ サーバーに切り替わります。このとき DNS レコードが更新されることで、同じデータベース サーバー名が使用されます。 最初のプライマリ サーバーは再起動して、スタンバイ レプリカに切り替わります。 クライアント接続は切断されて、操作を再開するためには再接続が必要になります。 現在のワークロードと最後のチェックポイントに応じて、全体的なフェールオーバーの時間が測定されます。 一般には、60 秒から 120 秒の範囲であると予想されます。
 
 ## <a name="schedule-maintenance-window"></a>メンテナンス期間のスケジュール 
 

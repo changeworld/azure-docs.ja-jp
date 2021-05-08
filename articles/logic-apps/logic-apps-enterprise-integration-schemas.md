@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/27/2021
+ms.openlocfilehash: 39fc84e9a83f7417836c895481da27a0d00cc71f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75979373"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137186"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証する
 
@@ -183,6 +183,14 @@ ms.locfileid: "75979373"
 1. **[スキーマ]** ページが開いたら、スキーマを選択し、 **[削除]** を選択します。
 
 1. スキーマの削除を確定するには、 **[はい]** を選択します。
+
+## <a name="limitations"></a>制限事項
+
+通常、ワークフローで統合アカウントを使用していて、XML を検証する場合は、スキーマを追加するか、そのアカウントにアップロードします。 統合アカウントに含まれていないスキーマを参照またはインポートしている場合は、要素 `xsd:redefine` を使用すると次のエラーが表示されることがあります。
+
+`An error occurred while processing the XML schemas: ''SchemaLocation' must successfully resolve if <redefine> contains any child other than <annotation>.'.`
+
+このエラーを解決するには、要素 `xsd:import` または `xsd:include` を `xsd:redefine` の代わりにを使用するか、URI を使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

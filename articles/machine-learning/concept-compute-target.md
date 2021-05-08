@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 16c3ac10af7d39ec35cde1cd9d279bced54fd8aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f421274513cc3d76f7e8c1119cf98e4e5d36b1f9
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062507"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950275"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -38,23 +38,9 @@ Azure Machine Learning では、異なるコンピューティング先に対し
 
 ## <a name="compute-targets-for-inference"></a><a name="deploy"></a>推論のコンピューティング先
 
-次のコンピューティング リソースを使用してモデル デプロイをホストできます。
+推論を実行すると、Azure Machine Learning によって、モデルおよびそれを使用するために必要な関連リソースをホストする Docker コンテナーが作成されます。 それから、このコンテナーをコンピューティング先で使用します。
 
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
-推論を実行すると、Azure Machine Learning によって、モデルおよびそれを使用するために必要な関連リソースをホストする Docker コンテナーが作成されます。 このコンテナーはその後、次のいずれかのデプロイ シナリオで使用されます。
-
-* リアルタイムの推論に使用される "*Web サービス*" として。 Web サービスのデプロイでは、次のいずれかのコンピューティング先が使用されます。
-
-    * [ローカル コンピューター](how-to-attach-compute-targets.md#local)
-    * [Azure Machine Learning コンピューティング インスタンス](how-to-create-manage-compute-instance.md)
-    * [Azure Container Instances](how-to-attach-compute-targets.md#aci)
-    * [Azure Kubernetes Service](how-to-create-attach-kubernetes.md)
-    * Azure Functions (プレビュー)。 Functions へのデプロイは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Functions を使用してデプロイされます。 詳細については、「[Azure Functions に機械学習モデルをデプロイする (プレビュー)](how-to-deploy-functions.md)」を参照してください。
-
-* データのバッチを定期的に処理するために使用される "_バッチ推論_" エンドポイントとして。 バッチ推論には、[Azure Machine Learning コンピューティング クラスター](how-to-create-attach-compute-cluster.md)が使用されます。
-
-* _IoT デバイス_ に (プレビュー)。 IoT デバイスへのデプロイでは、Azure Machine Learning のみに依存して Docker コンテナーが構築されます。 そこから、Azure IoT Edge を使用してデプロイされます。 詳細については、[IoT Edge モジュールとしてのデプロイ (プレビュー)](../iot-edge/tutorial-deploy-machine-learning.md) に関する記事を参照してください。
+[!INCLUDE [aml-deploy-target](../../includes/aml-compute-target-deploy.md)]
 
 [モデルをコンピューティング ターゲットにデプロイする場所と方法](how-to-deploy-and-where.md)に関するページを参照してください。
 

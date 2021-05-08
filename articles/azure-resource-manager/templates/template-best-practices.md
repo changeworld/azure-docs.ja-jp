@@ -2,13 +2,13 @@
 title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレート (ARM テンプレート) を作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/23/2021
+ms.openlocfilehash: a9b7530f7d9e3e86a3f2137cda5fcefa5e101c23
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219945"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950192"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -16,7 +16,7 @@ ms.locfileid: "106219945"
 
 ## <a name="template-limits"></a>テンプレートの制限
 
-テンプレートのサイズを 4 MB に、各パラメーター ファイルのサイズを 64 KB に制限します。 4 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。
+テンプレートのサイズを 4 MB に制限します。 4 MB の制限は、反復的なリソースの定義と変数およびパラメーターの値で拡張された後のテンプレートの最終的な状態に適用されます。 パラメーター ファイルも 4 MB に制限されます。 要求の合計サイズが大きすぎると、4 MB 未満のテンプレートまたはパラメーター ファイルでエラーが発生する場合があります。 要求が大きくなりすぎないようにテンプレートを簡素化する方法については、「[ジョブのサイズ超過に関するエラーを解決する](error-job-size-exceeded.md)」を参照してください。
 
 また、以下のように制限されます。
 

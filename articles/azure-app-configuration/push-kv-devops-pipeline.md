@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: e1a4fb52a5f9622758e9ed805bf9380f5f608870
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 669dd99b24d605953a5bbf99a1612a07874b642f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068254"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137763"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -33,12 +33,10 @@ ms.locfileid: "106068254"
 1. **[パイプライン]** で、 **[サービス接続]** を選択し、右上にある **[新しいサービス接続]** を選択します。
 1. **[Azure Resource Manager]** を選択します。
 ![[新しいサービス接続] ドロップダウン リストからの [Azure Resource Manager] の選択を示すスクリーンショット。](./media/new-service-connection.png)
-1. **[認証方法]** ダイアログで、 **[サービス プリンシパル (自動)]** を選択します。
-    > [!NOTE]
-    > **[マネージド ID]** 認証は、App Configuration タスクでは現在サポートされていません。
+1. **[認証方法]** ダイアログで、 **[サービス プリンシパル (自動)]** を選択して新しいサービス プリンシパルを作成するか、 **[サービス プリンシパル (手動)]** を選択して[既存のサービス プリンシパルを使用](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops#use-spn)します。
 1. サブスクリプションとリソースを入力します。 サービス接続に名前を付けます。
 
-サービス接続が作成されたので、それに割り当てるサービス プリンシパルの名前を見つけます。 次の手順では、このサービス プリンシパルに新しいロールの割り当てを追加します。
+新しいサービス プリンシパルを作成した場合、サービス接続に割り当てられているサービス プリンシパルの名前を探します。 次の手順では、このサービス プリンシパルに新しいロールの割り当てを追加します。
 
 1. **[プロジェクトの設定]**  >  **[サービス接続]** の順に移動します。
 1. 前のセクションで作成したサービス接続を選択します。

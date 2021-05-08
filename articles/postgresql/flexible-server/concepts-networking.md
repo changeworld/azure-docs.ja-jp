@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/21/2021
-ms.openlocfilehash: a6f049670a6860bbc195b92458945d1a53029b4f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/22/2021
+ms.openlocfilehash: 5b832ca7f1b5fb8a6b0044ca299c75f01a2d0f32
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732804"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987050"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>ネットワークの概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーのネットワ�
 > [!NOTE]
 > サーバーを作成した後にネットワーク オプションを変更することはできません。 
 
-* **プライベート アクセス (VNet 統合)** – お使いの [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) 内にフレキシブル サーバーをデプロイできます。 Azure の仮想ネットワークでは、非公開の、セキュリティで保護されたネットワーク通信が提供されます。 仮想ネットワーク内のリソースでは、プライベート IP アドレスを通した通信が可能です。
+* **プライベート アクセス (VNet 統合)** - [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) にフレキシブル サーバーを展開できます。 Azure の仮想ネットワークでは、非公開の、セキュリティで保護されたネットワーク通信が提供されます。 仮想ネットワーク内のリソースでは、プライベート IP アドレスを通した通信が可能です。
 
    以下の機能が必要な場合は、VNet 統合オプションを選択します。
    * プライベート IP アドレスを使用して、同じ仮想ネットワーク内の Azure リソースからフレキシブル サーバーに接続する
@@ -50,6 +50,13 @@ Azure Database for PostgreSQL - フレキシブル サーバーのネットワ�
 ## <a name="private-access-vnet-integration"></a>プライベート アクセス (VNet 統合)
 仮想ネットワーク (vnet) 統合を使用したプライベート アクセスでは、PostgreSQL フレキシブル サーバーに対する非公開で、セキュリティで保護された通信が提供されます。
 
+:::image type="content" source="./media/how-to-manage-virtual-network-portal/flexible-pg-vnet-diagram.png" alt-text="フレキシブル サーバー Postgres VNET":::
+
+上の図では、
+1. 委任されたサブネット、VNET **VNet-1** の 10.0.1.0/24 にフレキシブル サーバーを導入しています。
+2. 同じ VNET の異なるサブネットに展開したどのアプリケーションからでも、そのフレキシブル サーバーに直接アクセスできます。
+3. 別の VNET である **VNet-2** に展開したアプリケーションからは、フレキシブル サーバーに直接アクセスできません。 それらからフレキシブル サーバーに直接アクセスするためには、[プライベート DNS ゾーン VNET ピアリング](#private-dns-zone-and-vnet-peering) を実行する必要があります。
+   
 ### <a name="virtual-network-concepts"></a>仮想ネットワークの概念
 PostgreSQL フレキシブル サーバーで仮想ネットワークを使用する場合、次の概念について十分に理解しておく必要があります。
 
@@ -57,14 +64,25 @@ PostgreSQL フレキシブル サーバーで仮想ネットワークを使用�
 
     ご利用の仮想ネットワークは、フレキシブル サーバーと同じ Azure リージョンに存在する必要があります。
 
-
 * **委任されたサブネット** - 仮想ネットワークには、サブネット (サブネットワーク) が含まれています。 サブネットを使用すると、仮想ネットワークをより小さなアドレス空間に分割できます。 Azure リソースは、仮想ネットワーク内の特定のサブネットにデプロイされます。 
 
    PostgreSQL フレキシブル サーバーは、PostgreSQL フレキシブル サーバー専用に **委任された** サブネット内に存在する必要があります。 この委任は、Azure Database for PostgreSQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。 サブネットを委任するには、その委任プロパティを Microsoft.DBforPostgreSQL/flexibleServers として割り当てます。
 
-   フレキシブル サーバーに委任されたサブネット用に、`Microsoft.Storage` をサービス エンドポイントに追加します。 
+* **ネットワーク セキュリティ グループ (NSG)** - ネットワーク セキュリティ グループのセキュリティ規則を利用して、仮想ネットワーク サブネットとネットワーク インターフェイスを出入りするネットワーク トラフィックの種類をフィルター処理できます。 詳しくは、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)のドキュメントをご覧ください。
 
-* **ネットワーク セキュリティ グループ (NSG)** ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。 詳細については、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)に関するページを参照してください。
+* **プライベート DNS 統合** - 使用中の VNET または同一リージョン内でピアリングしている VNET でプライベート DNS ゾーンをリンクしている場合、Azure プライベート DNS ゾーンを統合することにより、それらの VNET 内でプライベート DNS の名前解決ができます。 詳しくは、[プライベート DNS ゾーンのドキュメント](https://docs.microsoft.com/azure/dns/private-dns-overview)をご覧ください。
+
+プライベート アクセス (VNet 統合) を使用するフレキシブル サーバーを [Azure portal](how-to-manage-virtual-network-portal.md) または [Azure CLI](how-to-manage-virtual-network-cli.md) で作成する方法を参照してください。
+
+> [!NOTE]
+> カスタム DNS サーバーを使用する場合は、Azure Database for PostgreSQL - フレキシブル サーバーの FQDN を解決する DNS フォワーダーを使用する必要があります。 「[独自の DNS サーバーを使用する名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
+
+### <a name="private-dns-zone-and-vnet-peering"></a>プライベート DNS ゾーンと VNET ピアリング
+
+プライベート DNS ゾーンの設定と VNET ピアリングはそれぞれ独立しています。
+
+* 既定では、指定されたサーバー名を使用して、新しいプライベート DNS ゾーンをサーバーごとに自動プロビジョニングします。 ただし、フレキシブル サーバーで使用する専用のプライベート DNS ゾーンを作成したい場合は、[プライベート DNS の概要](https://docs.microsoft.com/azure/dns/private-dns-overview)のドキュメントをご覧ください。
+* 別の VNET でプロビジョニングされたクライアントからフレキシブル サーバーに接続したい場合は、プライベート DNS ゾーンをその VNET にリンクする必要があります。 [仮想ネットワークのリンク方法](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)のドキュメントをご覧ください。
 
 
 ### <a name="unsupported-virtual-network-scenarios"></a>サポートされない仮想ネットワークのシナリオ
@@ -73,10 +91,6 @@ PostgreSQL フレキシブル サーバーで仮想ネットワークを使用�
 * サブネットにリソースを配置すると、そのサブネットのサイズ (アドレス空間) を増やすことはできません
 * 複数のリージョンにまたがる Vnet のピアリングはサポートされていません
 
-プライベート アクセス (VNet 統合) を使用するフレキシブル サーバーを [Azure portal](how-to-manage-virtual-network-portal.md) または [Azure CLI](how-to-manage-virtual-network-cli.md) で作成する方法を参照してください。
-
-> [!NOTE]
-> カスタム DNS サーバーを使用する場合は、Azure Database for PostgreSQL - フレキシブル サーバーの FQDN を解決する DNS フォワーダーを使用する必要があります。 「[独自の DNS サーバーを使用する名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」をご覧ください。
 
 ## <a name="public-access-allowed-ip-addresses"></a>パブリック アクセス (許可された IP アドレス)
 パブリック アクセスの方法には、次のような特性があります。
@@ -100,7 +114,7 @@ IP アドレスへのアクセス許可を付与することは、ファイア�
 ### <a name="troubleshooting-public-access-issues"></a>パブリック アクセスに関する問題のトラブルシューティング
 Microsoft Azure Database for PostgreSQL サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
 
-* **許可一覧に変更が反映されない:** Azure Database for PostgreSQL サーバーのファイアウォール構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
+* **許可リストの変更が反映されない:** Azure Database for PostgreSQL サーバーのファイアウォールの構成に対する変更が反映されるまでに 5 分程度かかる場合があります。
 
 * **認証に失敗した:** ユーザーが Azure Database for PostgreSQL サーバーに対するアクセス許可を持っていないか、使用されたパスワードが正しくない場合、Azure Database for PostgreSQL サーバーへの接続は拒否されます。 ファイアウォール設定を作成しても、クライアントはサーバーへの接続を試行できるようになるだけです。 各クライアントは、必要なセキュリティ資格情報を提供する必要があることに変わりはありません。
 

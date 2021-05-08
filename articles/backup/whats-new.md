@@ -2,13 +2,13 @@
 title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
-ms.date: 11/11/2020
-ms.openlocfilehash: 68e0e5cc0876840c30ab9e428a2b96bd7d667756
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 04/22/2021
+ms.openlocfilehash: 09a1008871df61cdf38097b692b99237f97057b9
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516333"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326508"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -18,6 +18,8 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 
 ## <a name="updates-summary"></a>更新の概要
 
+- 2021 年 4 月
+  - [Azure Backup のためのカスタマー マネージド キーを使用した暗号化の強化 (プレビュー)](#enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview)
 - 2021 年 3 月
   - [Azure Disk Backup の一般提供開始](#azure-disk-backup-is-now-generally-available)
   - [バックアップ センターの一般提供開始](#backup-center-is-now-generally-available)
@@ -89,7 +91,7 @@ Azure Backup では、Azure Resource Manager (ARM) テンプレートを使用�
 
 Azure VM でホストされている SAP HANA データベースの増分バックアップが、Azure Backup でサポートされるようになりました。 これにより、SAP HANA データのバックアップを、いっそう高速に、コスト効率よく行うことができます。
 
-詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/sap-hana-faq-backup-azure-vm.yml#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
+詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/azure/backup/sap-hana-faq-backup-azure-vm#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
 
 ## <a name="backup-center-in-preview"></a>バックアップ センター (プレビュー段階)
 
@@ -153,6 +155,22 @@ Azure Storage を使用すると、さまざまな冗長性オプションによ
 
 詳細については、「[Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除](soft-delete-sql-saphana-in-azure-vm.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview"></a>Azure Backup のためのカスタマー マネージド キーを使用した暗号化の強化 (プレビュー)
+
+Azure Backup では、カスタマー マネージド キーを使用して暗号化を管理するための拡張機能 (プレビュー) が提供されるようになりました。 Azure Backup を使用することで、独自のキーを取り入れて Recovery Service コンテナー内のバックアップ データを暗号化できるため、制御性が向上します。
+
+- Recovery Services コンテナー内のデータ暗号化を管理するためのキーの権限を付与するユーザー割り当てマネージド ID をサポートしています。
+- Recovery Services コンテナーを作成しながらカスタマー マネージド キーによる暗号化が可能です。
+  >[!NOTE]
+  >この機能は現在、制限付きのプレビュー段階です。 サインアップするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u)に記入して、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までご連絡ください。
+- Azure ポリシーを使用して、カスタマー マネージド キーを使用した暗号化の監査と適用を行うことができます。
+>[!NOTE]
+>- 上記の機能は Azure portal のみでサポートされています。 PowerShell は現在サポートされていません。<br>Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
+>- 監査ポリシーを使用して、2021 年 4 月 1 日以降に有効になったカスタマー マネージド キーにより、暗号化された資格情報コンテナーを監査できます。  
+>- この日付より前に CMK 暗号化が有効になっている資格情報コンテナーの場合は、ポリシーの適用に失敗したり、不正な結果が表示されることがあります (つまり、CMK 暗号化が有効になっているにもかかわらず、これらのコンテナーが非準拠として報告される場合があります)。 [詳細については、こちらを参照してください](encryption-at-rest-with-cmk.md#using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview)。
+
+詳細については、[カスタマー マネージド キーを使用した Azure Backup の暗号化](encryption-at-rest-with-cmk.md)に関する記事を参照してください。 
+
+## <a name="next-steps"></a>次の手順
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

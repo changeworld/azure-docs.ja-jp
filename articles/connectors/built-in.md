@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
-ms.openlocfilehash: 045d7391c9c3c2870efddc0aed4ae7590db938d2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bfeaf070268dde315858c045bd1b941dc1bdb26a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796336"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136159"
 ---
 # <a name="built-in-triggers-and-actions-for-logic-apps"></a>Logic Apps の組み込みのトリガーとアクション
 
 
 [組み込みのトリガーとアクション](apis-list.md)により、[ワークフローのスケジュールと構造の制御](#control-workflow)、[独自のコードの実行](#run-code-from-workflows)、[データの管理または操作](#manage-or-manipulate-data)、ワークフロー内の他のタスクの実行を行う手段が提供されます。 [マネージド コネクタ](managed.md)とは異なり、多くの組み込み操作は、特定のサービス、システム、またはプロトコルに関連付けられていません。 たとえば、繰り返しトリガーを使用すると、ほぼどのようなワークフローでもスケジュールに従って開始できます。 または、要求トリガーを使用することで、呼び出されるまでワークフローを待機させることもできます。 すべての組み込み操作は Logic Apps サービスでネイティブに実行され、ほとんどの場合、その使用前に接続を作成する必要はありません。 
 
-また、Logic Apps には、Azure Service Bus、Azure Functions、SQL、AS2 など、少数のサービス、システム、プロトコル用の組み込み操作も用意されています。 数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+また、Logic Apps には、 Azure Functions、Azure App Services、Azure API Management、AS2 など、少数のサービス、システム、プロトコル用の組み込み操作も用意されています。 この選択内容は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 たとえば、シングルテナントのロジックアプリを作成する場合は、Azure Service Bus、Azure Event Hubs、SQL Server、MQ で組み込みの操作を使用できます。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
 
 次の一覧では、[組み込みのトリガーとアクション](#understand-triggers-and-actions)で実行できるタスクの一部についてのみ説明します。
 
@@ -135,7 +135,7 @@ Logic Apps には、ワークフローで独自のコードを実行するため
         [![Logic Apps 内の Azure Functions のアイコン][azure-functions-icon]][azure-functions-doc]
         \
         \
-        [**Azure Functions**][azure-functions-doc]
+        [**Azure 関数**][azure-functions-doc]
         \
         \
         [Azure でホストされている関数](../azure-functions/functions-overview.md)を呼び出して、ワークフロー内で独自の "*コード スニペット*" (C# または Node.js) を実行します。
@@ -208,10 +208,10 @@ Logic Apps では、ワークフローでアクションを構成および制御
         アクティブに実行中のロジック アプリ ワークフローを停止します。 
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Until アクションのアイコン][until-icon]][until-doc]
+        [![Logic Apps 内の [期限] アクションのアイコン][until-icon]][until-doc]
         \
         \
-        [**Until**][until-doc]
+        [**期限**][until-doc]
         \
         \
         指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。
