@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 42842b00120b7e918ca5b790cce92a74ab1b99d5
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 625f69b0088ffe6931410afc6f2a825c3156fd70
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107260095"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209951"
 ---
 # <a name="event-notifications"></a>イベント通知
 
@@ -117,7 +117,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 ライフサイクル通知の本文に含まれるフィールドを次に示します。
 
-| Name | 値 |
+| 名前 | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は、個別のイベントごとに一意です。 |
 | `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
@@ -312,4 +312,4 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 ## <a name="next-steps"></a>次のステップ
 
 エンドポイントとルートを使用して、さまざまな宛先にイベントを配信する方法について説明します。
-* “[*イベント ルートの概念*](concepts-route-events.md)”
+* “[イベント ルートの概念](concepts-route-events.md)”

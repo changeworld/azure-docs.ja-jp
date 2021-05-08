@@ -6,13 +6,14 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 45173a74c0e3189c1f356aea2f8024ff15409f32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768797"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866199"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 
@@ -34,7 +35,7 @@ ms.locfileid: "107768797"
 
 + アクティブなサブスクリプションが含まれる Azure アカウントを取得します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> アクティブ <abbr title="Azure でのリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [.NET Core SDK 3.1](https://www.microsoft.com/net/download) をインストールします
++ [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download) をインストールします
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x をインストールします。
 

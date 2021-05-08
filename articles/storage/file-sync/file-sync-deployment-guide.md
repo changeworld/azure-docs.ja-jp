@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 989bcbb7e509b9b7692f067af2989fcad94b6ad1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 64b9ce78f05e1c8d14317f33f21758a86baeabd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796023"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869187"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -88,7 +88,7 @@ Azure File Sync を使用すると、オンプレミスのファイル サーバ
 
     ターミナルに表示される手順に従って、認証プロセスを完了します。
 
-1. Azure CLI 拡張機能 [az filesync](/cli/azure/ext/storagesync/storagesync) をインストールする
+1. Azure CLI 拡張機能 [az filesync](/cli/azure/storagesync) をインストールする
 
    ```azurecli
    az extension add --name storagesync
@@ -380,7 +380,7 @@ New-AzStorageSyncCloudEndpoint `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az storagesync sync-group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) コマンドを使用して、新しい同期グループを作成します。  すべての CLI コマンドでリソース グループを既定に設定するには、[az configure](/cli/azure/reference-index#az_configure) を使用します。
+[az storagesync sync-group](/cli/azure/storagesync/sync-group#az_storagesync_sync_group_create) コマンドを使用して、新しい同期グループを作成します。  すべての CLI コマンドでリソース グループを既定に設定するには、[az configure](/cli/azure/reference-index#az_configure) を使用します。
 
 ```azurecli
 az storagesync sync-group create --resource-group myResourceGroupName \
@@ -388,7 +388,7 @@ az storagesync sync-group create --resource-group myResourceGroupName \
                                  --storage-sync-service myStorageSyncServiceName \
 ```
 
-[az storagesync sync-group cloud-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) コマンドを使用して、新しいクラウド エンドポイントを作成します。
+[az storagesync sync-group cloud-endpoint](/cli/azure/storagesync/sync-group/cloud-endpoint#az_storagesync_sync_group_cloud_endpoint_create) コマンドを使用して、新しいクラウド エンドポイントを作成します。
 
 ```azurecli
 az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
@@ -402,10 +402,12 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ---
 
 ## <a name="create-a-server-endpoint"></a>サーバー エンドポイントを作成する
-サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 サーバー エンドポイントは (マウントされた共有ではなく) 登録されたサーバー上のパスであり、クラウドの階層化を使用するには、パスが非システム ボリューム上にある必要があります。 ネットワーク接続ストレージ (NAS) はサポートされていません。
+サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 サーバー エンドポイントは、次の条件に従います。
 
-> [!NOTE]
-> ボリューム上でサーバー エンドポイントを確立した後もパスまたはドライブ文字を変更することはサポートされていません。 登録済みサーバーで最終的なパスを使用していることを確認します。
+- サーバー エンドポイントは (マウントされた共有ではなく) 登録済みサーバー上のパスである必要があります。 ネットワーク接続ストレージ (NAS) はサポートされていません。
+- サーバー エンドポイントがシステム ボリューム上に存在してもかまいませんが、システム ボリューム上のサーバー エンドポイントではクラウド階層化を使用できません。
+- ボリューム上でサーバー エンドポイントを確立した後もパスまたはドライブ文字を変更することはサポートされていません。 登録済みサーバーで最終的なパスを使用していることを確認します。
+- 登録済みサーバーは複数のサーバー エンドポイントをサポートできますが、同期グループには、常に登録済みサーバーあたり 1 つのサーバー エンドポイントしか含めることができません。 同期グループ内のその他のサーバー エンドポイントは、異なる登録済みサーバー上に存在する必要があります。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 サーバー エンドポイントを追加するには、新しく作成した同期グループに移動し、 **[サーバー エンドポイントの追加]** を選びます。
@@ -462,7 +464,7 @@ if ($cloudTieringDesired) {
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az storagesync sync-group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) コマンドを使用して、新しいサーバー エンドポイントを作成します。
+[az storagesync sync-group server-endpoint](/cli/azure/storagesync/sync-group/server-endpoint#az_storagesync_sync_group_server_endpoint_create) コマンドを使用して、新しいサーバー エンドポイントを作成します。
 
 ```azurecli
 # Create a new sync group server endpoint 

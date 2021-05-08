@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ビュー デザイナーからブックへの変換の例
 description: Azure Monitor のビューからブックへの移行の例。
-author: austonli
-ms.author: aul
+author: shijatsu
+ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: bd57838dd3cceae308b55dd2d7fdbb55cec79ec4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a984fa1b94f64566ef5ea057c78e68e1d962bace
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043356"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318173"
 ---
 # <a name="view-designer-conversion-examples"></a>ビュー デザイナーの変換の例
 

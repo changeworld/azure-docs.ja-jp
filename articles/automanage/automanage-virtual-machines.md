@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 970c0a2705bc9a559eb531c8b44780053343a712
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363378"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209717"
 ---
-# <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
+# <a name="preview-azure-automanage-for-virtual-machines"></a>プレビュー: Azure Automanage for virtual machines
 
 この記事では、Azure Automanage for virtual machines について説明します。これには次のような利点があります。
 
@@ -24,7 +24,6 @@ ms.locfileid: "107363378"
 - Azure のベスト プラクティスに従って、各サービスを自動的に構成する
 - ドリフトを監視し、検出されたら修正する
 - 簡単なエクスペリエンス (ポイント、クリック、設定、消去) を提供する
-
 
 ## <a name="overview"></a>概要
 
@@ -183,6 +182,12 @@ Azure portal でそれを行うには、自動管理されている VM がすべ
 
 
 何よりもまず、仮想マシンは、オンボードされて構成されているどのサービスからも、オフボードされることはありません。 そのため、それらのサービスによって発生する料金は引き続き課金されます。 必要な場合は、オフボードする必要があります。 Automanage のすべての動作は直ちに停止します。 たとえば、VM でドリフトは監視されなくなります。
+
+## <a name="automanage-and-azure-disk-encryption"></a>Automanage と Azure Disk Encryption
+Automanage は、Azure Disk Encryption (ADE) が有効になっている VM と互換性があります。
+
+運用環境を使用する場合、Azure Backup にもオンボードされます。 ADE と Azure Backup を正しく使用するために、前提条件が 1 つあります。
+* ADE が有効な VM を Automanage の運用環境にオンボードする前に、[こちらのドキュメント](../backup/backup-azure-vms-encryption.md#before-you-start)の「**開始する前に**」セクションに記載されている手順を実行済みであることを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

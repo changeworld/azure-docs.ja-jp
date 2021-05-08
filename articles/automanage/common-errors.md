@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 6ee0164dd8243d30cf691350352757f2503e34c8
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 1625c4a73252f202a45dbdefba1576776ea843a0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862977"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209547"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Automanage の一般的なオンボード エラーのトラブルシューティング
 Automanage は、サービスへのマシンのオンボードに失敗する場合があります。 このドキュメントでは、デプロイの失敗をトラブルシューティングする方法について説明し、デプロイが失敗する可能性があるいくつかの一般的な理由を示し、軽減策として考えられる次の手順について説明します。
@@ -38,9 +38,9 @@ Automanage は、サービスへのマシンのオンボードに失敗する場
 :-----|:-------------|
 Automanage アカウントのアクセス許可が不十分なエラー | このエラーは、新しい Automanage アカウントを含むサブスクリプションを新しいテナントに最近移動した場合に起こる可能性があります。 このエラーを解決する手順については、[こちら](./repair-automanage-account.md)を参照してください。
 ワークスペース リージョンがリージョン マッピング要件に一致しない | マシンが現在リンクされている Log Analytics ワークスペースが、サポートされる Automation リージョンにマップされていないため、Automanage がマシンをオンボードできませんでした。 既存の Log Analytics ワークスペースと Automation アカウントが、[サポートされているリージョン マッピング](../automation/how-to/region-mappings.md)に配置されていることを確認します。
-"'System deny assignment created by managed application' (マネージド アプリケーションによって作成されたシステム拒否割り当て) という名前の拒否割り当てによりアクセスが拒否されました" | リソースに対して [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) が作成されたため、Automanage がリソースへアクセスできませんでした。 この denyAssignment は、[ブループリント](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking)または[マネージド アプリケーション](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview)のいずれかによって作成された可能性があります。
-"OS Information: Name='(null)', ver='(null)', agent status='Not Ready'. (OS 情報: 名前 ='(null)'、バージョン ='(null)'、エージェントの状態 ='準備中'。)" | [サポートされる最小エージェント バージョン](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)が実行されていること、エージェントが実行されていること ([linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) と [windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent))、およびエージェントが最新の状態であること ([linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) と [windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)) を確認します。
-"Unable to determine the OS for the VM OS Name:, ver . (VM OS 名前:、バージョン の OS を特定できません。) Please check that the VM Agent is running, the current status is Ready. (VM エージェントが実行中であること、現在の状態が [準備完了] であることを確認してください。)" | [サポートされる最小エージェント バージョン](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version)が実行されていること、エージェントが実行されていること ([linux](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) と [windows](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/windows-azure-guest-agent))、およびエージェントが最新の状態であること ([linux](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) と [windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)) を確認します。
+"'System deny assignment created by managed application' (マネージド アプリケーションによって作成されたシステム拒否割り当て) という名前の拒否割り当てによりアクセスが拒否されました" | リソースに対して [denyAssignment](../role-based-access-control/deny-assignments.md) が作成されたため、Automanage がリソースへアクセスできませんでした。 この denyAssignment は、[ブループリント](../governance/blueprints/concepts/resource-locking.md)または[マネージド アプリケーション](../azure-resource-manager/managed-applications/overview.md)のいずれかによって作成された可能性があります。
+"OS Information: Name='(null)', ver='(null)', agent status='Not Ready'. (OS 情報: 名前 ='(null)'、バージョン ='(null)'、エージェントの状態 ='準備中'。)" | [サポートされる最小エージェント バージョン](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)が実行されていること、エージェントが実行されていること ([linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) と [windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent))、およびエージェントが最新の状態であること ([linux](../virtual-machines/extensions/update-linux-agent.md) と [windows](../virtual-machines/extensions/agent-windows.md)) を確認します。
+"Unable to determine the OS for the VM OS Name:, ver . (VM OS 名前:、バージョン の OS を特定できません。) Please check that the VM Agent is running, the current status is Ready. (VM エージェントが実行中であること、現在の状態が [準備完了] であることを確認してください。)" | [サポートされる最小エージェント バージョン](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)が実行されていること、エージェントが実行されていること ([linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) と [windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent))、およびエージェントが最新の状態であること ([linux](../virtual-machines/extensions/update-linux-agent.md) と [windows](../virtual-machines/extensions/agent-windows.md)) を確認します。
 "VM has reported a failure when processing extension 'IaaSAntimalware' (拡張機能 'IaaSAntimalware' の処理中に VM によってエラーがレポートされました)" | VM に別のマルウェア対策またはウイルス対策オファリングが既にインストールされていないことを確認します。 それでも解決しない場合は、サポートにご連絡ください。
 ASC ワークスペース: Automanage は現在、"_この場所_" では Log Analytics サービスをサポートいません。 | [サポートされているリージョン](./automanage-virtual-machines.md#supported-regions)に VM があることを確認してください。
 ポリシー違反に起因してテンプレートのデプロイが失敗しました。 詳細をご覧ください。 | Automanage への VM のオンボードを妨げるポリシーがあります。 Automanage にオンボードする VM が含まれているサブスクリプションまたはリソース グループに適用されているポリシーを確認します。

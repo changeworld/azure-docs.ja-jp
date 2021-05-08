@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alsin
-ms.openlocfilehash: b79e061ae00c42ed2ec2ac39f5653a868f09a15f
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 02c122486ad9ca702e518445761fef05675c9067
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368529"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209699"
 ---
 # <a name="automanage-accounts"></a>Automanage アカウント
 
@@ -46,7 +46,7 @@ ARM テンプレートを使用して Automanage アカウントを作成する�
 1. Automanage アカウントを作成する
 1. アカウントが操作を実行できるように、十分なアクセス許可を付与する
     1. この手順で作成したアカウントのオブジェクト ID が必要になります。
-        1. アカウントのサービス プリンシパルの詳細 (オブジェクト ID を含む) を見つける手順については、[こちら](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal#view-the-service-principal)を参照してください。
+        1. アカウントのサービス プリンシパルの詳細 (オブジェクト ID を含む) を見つける手順については、[こちら](../active-directory/managed-identities-azure-resources/how-to-view-managed-identity-service-principal-portal.md#view-the-service-principal)を参照してください。
     1. サービス プリンシパルが見つかったら、**オブジェクト ID** をコピーします。 これは、次のアクセス許可を委任するために必要となるため、保存します。
 
 #### <a name="1-create-automanage-account-does-not-grant-permissions-to-it"></a>1. Automanage アカウントを作成する (アクセス許可は付与しない)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a46d3e8362d48225e5fec11213bfbff370252d8e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c86166c2e38e3fec251707626f5cf9ebab938299
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782677"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209213"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -108,7 +108,7 @@ New Supported Version List
 
 新しい **マイナー** バージョンの Kubernetes の場合:
   * AKS では、新しいバージョンのリリース予定日と、その旧バージョンの非推奨予定日を含む事前通知を、削除日の 30 日前までに [AKS リリース ノート](https://aka.ms/aks/releasenotes)で公開します。
-  * 推奨されなくなった API が原因で、新しいバージョンによってクラスターで問題が発生した場合、AKS は、[Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) を使用してユーザーに警告します。 Azure Advisor は、現在サポートされていない場合にも、ユーザーに警告するために使用されます。
+  * 推奨されなくなった API が原因で、新しいバージョンによってクラスターで問題が発生した場合、AKS は、[Azure Advisor](../advisor/advisor-overview.md) を使用してユーザーに警告します。 Azure Advisor は、現在サポートされていない場合にも、ユーザーに警告するために使用されます。
   * AKS によって、AKS とポータルのアクセス権を持つすべてのユーザーが使用できる[サービスの正常性通知](../service-health/service-health-overview.md)が発行され、サブスクリプション管理者宛にバージョンの削除予定日が記載されたメールが送信されます。
 
     > [!NOTE]
@@ -154,7 +154,7 @@ az aks get-versions --location eastus --output table
 
 **Kubernetes の新バージョンについては、Microsoft からどのように通知されますか?**
 
-AKS チームは、Kubernetes の新バージョンの予定日の事前発表を、ドキュメントや [GitHub](https://github.com/Azure/AKS/releases) で公開します。また、サポート対象外となるクラスターを所有するサブスクリプション管理者に電子メールで通知します。  AKS は、発表に加えて、[Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) を使用して、Azure Portal 内で顧客に通知し、サポート対象外となるユーザーに警告します。また、アプリケーションや開発プロセスに影響する API が推奨されなくなることも警告します。 
+AKS チームは、Kubernetes の新バージョンの予定日の事前発表を、ドキュメントや [GitHub](https://github.com/Azure/AKS/releases) で公開します。また、サポート対象外となるクラスターを所有するサブスクリプション管理者に電子メールで通知します。  AKS は、発表に加えて、[Azure Advisor](../advisor/advisor-overview.md) を使用して、Azure Portal 内で顧客に通知し、サポート対象外となるユーザーに警告します。また、アプリケーションや開発プロセスに影響する API が推奨されなくなることも警告します。 
 
 **サポートを利用し続けるには、どのくらいの頻度で Kubernetes のバージョンをアップグレードする必要がありますか?**
 

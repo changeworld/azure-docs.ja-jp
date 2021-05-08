@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4dab08983fc1348ca49e728a65d48aa65fe19a47
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: c38db60c89b02e932c0a381daff1013b17008f54
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105716"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208835"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-cli"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "107105716"
 
 この記事では、[Azure Digital Twins インスタンス用のプライベート エンドポイントを使用して Private Link を有効にする](concepts-security.md#private-network-access-with-azure-private-link-preview)さまざまな方法について説明します (現在プレビュー段階)。 Azure Digital Twins インスタンス用のプライベート エンドポイントを構成することで、Azure Digital Twins インスタンスをセキュリティで保護して公開されないようにすることに加え、[Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) からのデータ流出を回避できます。
 
-この記事では、[**Azure CLI**](/cli/azure/what-is-azure-cli) を使用したプロセスについて説明します。
+この記事では、[Azure CLI](/cli/azure/what-is-azure-cli) を使用したプロセスについて説明します。
 
 この記事では、次の手順を説明します。 
 1. Private Link を有効にし、Azure Digital Twins インスタンス用のプライベート エンドポイントを構成します。
@@ -28,7 +28,7 @@ ms.locfileid: "107105716"
 
 ## <a name="prerequisites"></a>前提条件
 
-プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [**Azure Virtual Network (VNet)**](../virtual-network/virtual-networks-overview.md) が必要です。 VNet がまだない場合は、Azure Virtual Network のいずれかの[クイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
+プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)  が必要です。 VNet がまだない場合は、Azure Virtual Network のいずれかの[クイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
 
 ## <a name="manage-private-endpoints-for-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンス用のプライベート エンドポイントを管理する 
 
@@ -41,7 +41,7 @@ ms.locfileid: "107105716"
 
 ### <a name="add-a-private-endpoint-to-an-existing-instance"></a>既存のインスタンスにプライベート エンドポイントを追加する
 
-プライベート エンドポイントを作成し、それを Azure Digital Twins インスタンスにリンクするには、[**az network private-endpoint create**](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) コマンドを使用します。 `--private-connection-resource-id` パラメーターで、 Azure Digital Twins インスタンスを、その完全修飾 ID を使用して識別します。
+プライベート エンドポイントを作成し、それを Azure Digital Twins インスタンスにリンクするには、[az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) コマンドを使用します。 `--private-connection-resource-id` パラメーターで、 Azure Digital Twins インスタンスを、その完全修飾 ID を使用して識別します。
 
 次の例では、必要なパラメーターのみ指定したコマンドを使用して、プライベート エンドポイントを作成しています。
 
@@ -49,25 +49,25 @@ ms.locfileid: "107105716"
 az network private-endpoint create --connection-name {private_link_service_connection} -n {name_for_private_endpoint} -g {resource_group} --subnet {subnet_ID} --private-connection-resource-id "/subscriptions/{subscription_ID}/resourceGroups/{resource_group}/providers/Microsoft.DigitalTwins/digitalTwinsInstances/{Azure_Digital_Twins_instance_name}" 
 ```
 
-必須と省略可能な各パラメーターの完全な一覧、およびプライベート エンドポイント作成の追加の例については、[**az network private-endpoint create** のリファレンス ドキュメント](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)を参照してください。
+必須と省略可能な各パラメーターの完全な一覧、およびプライベート エンドポイント作成の追加の例については、[az network private-endpoint create のリファレンス ドキュメント](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)を参照してください。
 
 ### <a name="manage-private-endpoint-connections-on-the-instance"></a>インスタンスのプライベート エンドポイント接続を管理する
 
-Azure Digital Twins インスタンスに対してプライベート エンドポイントを作成した後、[**az dt network private-endpoint connection**](/cli/azure/dt/network/private-endpoint/connection) コマンドを使用して、インスタンスに対するプライベート エンドポイント **接続** を引き続き管理できます。 操作には以下が含まれます。
+Azure Digital Twins インスタンスに対してプライベート エンドポイントを作成した後、[az dt network private-endpoint connection](/cli/azure/dt/network/private-endpoint/connection) コマンドを使用して、インスタンスに対するプライベート エンドポイント **接続** を引き続き管理できます。 操作には以下が含まれます。
 * プライベート エンドポイント接続を表示する
 * プライベート エンドポイント接続の状態を設定する
 * プライベート エンドポイント接続を削除する
 * インスタンスのすべてのプライベート エンドポイント接続を一覧表示する
 
-詳細と例については、[**az dt network private-endpoint** のリファレンス ドキュメント](/cli/azure/dt/network/private-endpoint)を参照してください。
+詳細と例については、[az dt network private-endpoint のリファレンス ドキュメント](/cli/azure/dt/network/private-endpoint)を参照してください。
 
 ### <a name="manage-other-private-link-information-on-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスの他の Private Link 情報を管理する
 
-[**az dt network private-link**](/cli/azure/dt/network/private-link) コマンドを使用して、インスタンスの Private Link の状態に関する追加情報を取得できます。 操作には以下が含まれます。
+[az dt network private-link](/cli/azure/dt/network/private-link) コマンドを使用して、インスタンスの Private Link の状態に関する追加情報を取得できます。 操作には以下が含まれます。
 * Azure Digital Twins インスタンスに関連付けられている Private Link を一覧表示する
 * インスタンスに関連付けられている Private Link を表示する
 
-詳細と例については、[**az dt network private-link** のリファレンス ドキュメント](/cli/azure/dt/network/private-link)を参照してください。
+詳細と例については、[az dt network private-link のリファレンス ドキュメント](/cli/azure/dt/network/private-link)を参照してください。
 
 ## <a name="disable--enable-public-network-access-flags"></a>パブリック ネットワーク アクセス フラグを無効または有効にする
 
@@ -116,4 +116,4 @@ armclient PATCH /subscriptions/<your-Azure-subscription-ID>/resourceGroups/<yo
 ## <a name="next-steps"></a>次のステップ
 
 Azure 用 Private Link の詳細を確認します。 
-* [*Azure Private Link サービスとは*](../private-link/private-link-service-overview.md)
+* [Azure Private Link サービスとは](../private-link/private-link-service-overview.md)

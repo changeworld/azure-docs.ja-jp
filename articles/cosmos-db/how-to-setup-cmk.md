@@ -4,14 +4,14 @@ description: Azure Key Vault で Azure Cosmos DB アカウントのカスタマ�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/01/2021
+ms.date: 04/23/2021
 ms.author: thweiss
-ms.openlocfilehash: 1b1fc0b51c1cd2a99ec97bec9f588699a893ceca
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4ea11b23c7a45fb263a3716c051e960c72a7b300
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222624"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065405"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -243,18 +243,29 @@ az cosmosdb show \
 
 1. [上記](#add-access-policy)で説明したように、新しいアクセス ポリシーを Azure Key Vault アカウントに追加しますが、Azure Cosmos DB のファーストパーティ ID ではなく、前の手順でコピーした `principalId` を使用します。
 
-1. Azure Key Vault 内の暗号化キーにアクセスするときは、Azure Cosmos DB アカウントを更新して、システムによって割り当てられたマネージド ID を使用するように指定します。 これを行うには、アカウントの Azure Resource Manager テンプレートにこのプロパティを指定します。
+1. Azure Key Vault 内の暗号化キーにアクセスするときは、Azure Cosmos DB アカウントを更新して、システムによって割り当てられたマネージド ID を使用するように指定します。 これを行うには、以下を実行します。
 
-   ```json
-   {
-       "type": " Microsoft.DocumentDB/databaseAccounts",
-       "properties": {
-           "defaultIdentity": "SystemAssignedIdentity",
-           // ...
-       },
-       // ...
-   }
-   ```
+   - アカウントの Azure Resource Manager テンプレートにこのプロパティを指定します。
+
+     ```json
+     {
+         "type": " Microsoft.DocumentDB/databaseAccounts",
+         "properties": {
+             "defaultIdentity": "SystemAssignedIdentity",
+             // ...
+         },
+         // ...
+     }
+     ```
+
+   - Azure CLI を使用して自身のアカウントを更新します。
+
+     ```azurecli
+     resourceGroupName='myResourceGroup'
+     accountName='mycosmosaccount'
+     
+     az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
+     ```
 
 1. その後、必要に応じて、Azure Cosmos DB のファーストパーティ ID を Azure Key Vault アクセス ポリシーから削除できます。
 

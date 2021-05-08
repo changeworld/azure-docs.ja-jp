@@ -3,12 +3,12 @@ title: Azure NetApp Files および Azure VMware Solution
 description: Azure NetApp Files および Azure VMware Solution VM を使用して、オンプレミス サーバー、Azure VMware Solution VM、クラウド インフラストラクチャの間でデータを移行および同期します。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 2f2e8fdeb777e7e4b2b4e89c1bb36b51c3083257
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09b9ba2ff6b95e12558b1ac49e401ce6dede4942
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575425"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870987"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files および Azure VMware Solution
 
@@ -107,7 +107,7 @@ Azure NetApp Files の魅力的なユース ケースのほんの一部を次に
 
 Azure NetApp Files とご利用の Azure VMware Solution ワークロードの統合について理解したので、次のことについて確認する必要がある可能性があります。
 
-- [Azure NetApp Files のリソース制限](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)。
-- [Azure NetApp Files のネットワーク計画のガイドライン](../azure-netapp-files/azure-netapp-files-network-topologies.md)。
-- [Azure NetApp Files ボリュームのリージョン間レプリケーション](../azure-netapp-files/cross-region-replication-introduction.md)。 
-- [Azure NetApp Files についての FAQ](../azure-netapp-files/azure-netapp-files-faqs.md)。
+- [Azure NetApp Files のリソース制限](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
+- [Azure NetApp Files のネットワーク計画のガイドライン](../azure-netapp-files/azure-netapp-files-network-topologies.md)
+- [Azure NetApp Files ボリュームのリージョン間レプリケーション](../azure-netapp-files/cross-region-replication-introduction.md) 
+- [Azure NetApp Files についての FAQ](../azure-netapp-files/azure-netapp-files-faqs.md)

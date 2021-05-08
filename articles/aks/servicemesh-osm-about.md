@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: b0a37400d02ff324e7191bb0b04243d7f16090bd
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e3bf6748157e53093cc848ffaff37df7c711e64c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877158"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209267"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS アドオン (プレビュー)
 
@@ -54,7 +54,7 @@ OSM では、次のシナリオで AKS のデプロイを支援できます。
 
 ## <a name="osm-service-quotas-and-limits-preview"></a>OSM サービスのクォータと制限 (プレビュー)
 
-サービスのクォータと制限に関する OSM プレビューの制限については、AKS の[「クォータと地域の制限」ページ](https://docs.microsoft.com/azure/aks/quotas-skus-regions)を参照してください。
+サービスのクォータと制限に関する OSM プレビューの制限については、AKS の[「クォータと地域の制限」ページ](./quotas-skus-regions.md)を参照してください。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -118,7 +118,7 @@ az group create --name <myosmaksgroup> --location <eastus2>
 次に、OSM アドオンが有効になっている新しい AKS クラスターをデプロイします。
 
 > [!NOTE]
-> 次の AKS デプロイ コマンドでは OS エフェメラル ディスクを使用することに注意してください。 [AKS のエフェメラル OS ディスク](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)の詳細については、こちらを参照してください
+> 次の AKS デプロイ コマンドでは OS エフェメラル ディスクを使用することに注意してください。 [AKS のエフェメラル OS ディスク](./cluster-configuration.md#ephemeral-os)の詳細については、こちらを参照してください
 
 ```azurecli-interactive
 az aks create -n osm-addon-cluster -g <myosmaksgroup> --kubernetes-version 1.19.6 --node-osdisk-type Ephemeral --node-osdisk-size 30 --network-plugin azure --enable-managed-identity -a open-service-mesh
@@ -1544,7 +1544,7 @@ Forwarding from [::1]:8080 -> 14001
 #### <a name="deploy-a-new-application-gateway"></a>新しい Application Gateway のデプロイ
 
 > [!NOTE]
-> 既存の AKS クラスターに対して Application Gateway イングレス コントローラー アドオンを有効にするための既存のドキュメントを参照しています。 OSM の資料に合うようにいくつかの変更が行われました。 この件に関する詳細なドキュメントについては、[こちら](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)を参照してください。
+> 既存の AKS クラスターに対して Application Gateway イングレス コントローラー アドオンを有効にするための既存のドキュメントを参照しています。 OSM の資料に合うようにいくつかの変更が行われました。 この件に関する詳細なドキュメントについては、[こちら](../application-gateway/tutorial-ingress-controller-add-on-existing.md)を参照してください。
 
 ここでは、_myCluster_ という AKS クラスターへのトラフィックの負荷分散に使用する既存の Application Gateway があることをシミュレートするため、新しい Application Gateway をデプロイします。 Application Gateway の名前は _myApplicationGateway_ になりますが、最初に、_myPublicIp_ という名前のパブリック IP リソースと、アドレス空間が 11.0.0.0/8 の _myVnet_ という名前の新しい仮想ネットワークと、アドレス空間が 11.1.0.0/16 の _mySubnet_ というサブネットを作成し、_myPublicIp_ を使用して Application Gateway を _mySubnet_ にデプロイする必要があります。
 
@@ -1701,7 +1701,7 @@ curl -H 'Host: bookbuyer.contoso.com' http://$appGWPIP/
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-- [AGIC トラブルシューティングのドキュメント](https://docs.microsoft.com/azure/application-gateway/ingress-controller-troubleshoot)
+- [AGIC トラブルシューティングのドキュメント](../application-gateway/ingress-controller-troubleshoot.md)
 - [その他のトラブルシューティング ツールは、AGIC の GitHub リポジトリで入手可能](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/troubleshootings/troubleshooting-installing-a-simple-application.md)
 
 ## <a name="open-service-mesh-osm-monitoring-and-observability-using-azure-monitor-and-applications-insights"></a>Azure Monitor と Application Insights を使用した Open Service Mesh (OSM) の監視

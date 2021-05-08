@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9eabd64abc4c8fbbc187f45ceb59ea2f786558bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8724434b4ff354a7fc9fc1ed979348ec3023af80
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937964"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209753"
 ---
 # <a name="migrate-to-azure-app-service"></a>Azure App Service に移行する
 
@@ -26,4 +26,4 @@ Azure App Service Migration Assistant を使用すると、次のことが簡単
 
 [Web アプリを Azure App Service に移行する方法を確認してください](https://www.youtube.com/watch?v=9LBUmkUhmXU)。
 
-次のステップ: [オンプレミスの Web アプリケーションを Azure App Service に移行する](https://docs.microsoft.com/learn/modules/migrate-app-service-migration-assistant/)
+次のステップ: [オンプレミスの Web アプリケーションを Azure App Service に移行する](/learn/modules/migrate-app-service-migration-assistant/)

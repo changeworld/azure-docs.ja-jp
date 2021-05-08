@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b33658ff67c306085a36104679bcc855d0a3f58
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101703093"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208925"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー):Azure portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "101703093"
 
 この記事では、[Azure Digital Twins インスタンスのシステム割り当て ID](concepts-security.md#managed-identity-for-accessing-other-resources-preview) (現時点ではプレビュー段階) を有効にし、[Event Hubs](../event-hubs/event-hubs-about.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) 、[Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)などのサポートされている送信先にイベントを転送するときに、その ID を使用します。
 
-この記事では、[**Azure portal**](https://portal.azure.com) を使用したプロセスについて説明します。
+この記事では、[Azure portal](https://portal.azure.com) を使用したプロセスについて説明します。
 
 この記事では、次の手順を説明します。 
 
@@ -38,7 +38,7 @@ Azure Digital Twins インスタンスでシステム割り当て ID を有効�
 
 ### <a name="add-a-system-managed-identity-during-instance-creation"></a>インスタンスの作成時にシステム マネージド ID を追加する
 
-このセクションでは、現在作成中の Azure Digital Twins インスタンスで、システム マネージド ID を有効にする方法について説明します。 このセクションでは、作成プロセスのマネージド ID ステップを中心に説明します。新しい Azure Digital Twins インスタンスの作成に関する完全なチュートリアルについては、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。
+このセクションでは、現在作成中の Azure Digital Twins インスタンスで、システム マネージド ID を有効にする方法について説明します。 このセクションでは、作成プロセスのマネージド ID ステップを中心に説明します。新しい Azure Digital Twins インスタンスの作成に関する完全なチュートリアルについては、[インスタンスと認証を設定する方法](how-to-set-up-instance-portal.md)に関するページを参照してください。
 
 システム マネージド ID オプションは、インスタンスのセットアップの **[詳細]** タブにあります。
 
@@ -85,7 +85,7 @@ Azure Digital Twins インスタンス用のシステム割り当て ID が作�
 | Azure Service Bus | Azure Service Bus データ送信者 |
 | [Azure ストレージ コンテナー] | ストレージ BLOB データ共同作成者 |
 
-Azure Digital Twins でのルーティングでサポートされているエンドポイント、ルート、送信先の種類の詳細については、[*イベント ルートの概念*](concepts-route-events.md)に関するページを参照してください。
+Azure Digital Twins でのルーティングでサポートされているエンドポイント、ルート、送信先の種類の詳細については、[イベント ルートの概念](concepts-route-events.md)に関するページを参照してください。
 
 ### <a name="assign-the-role"></a>ロールを割り当てる
 
@@ -145,4 +145,4 @@ ID は、それを使用するエンドポイントとは別に管理されて�
 ## <a name="next-steps"></a>次のステップ
 
 Azure AD でのマネージド ID の詳細について確認します。 
-* [*Azure リソースのマネージド ID*](../active-directory/managed-identities-azure-resources/overview.md)
+* [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)

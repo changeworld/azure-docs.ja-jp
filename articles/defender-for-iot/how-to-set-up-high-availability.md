@@ -3,12 +3,12 @@ title: 高可用性のセットアップ
 description: オンプレミス管理コンソールに高可用性アプライアンスをインストールすることによって、Defender for IoT デプロイの回復性を高めます。 高可用性デプロイでは、マネージド センサーによってアクティブなオンプレミス管理コンソールに継続的に報告されます。
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.openlocfilehash: d0e09cd37fbae91d1903ca8f175c0592b567da6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f341dee00574422ec325871ff97d6f3e8644ac48
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781655"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208997"
 ---
 # <a name="about-high-availability"></a>高可用性について
 
@@ -87,7 +87,7 @@ ms.locfileid: "104781655"
 2. プライマリ上で次のコマンドを実行します。
 
 ```azurecli-interactive
-sudo cyberx-management-trusted-hosts-add -ip <Secondary IP>
+sudo cyberx-management-trusted-hosts-add -ip <Secondary IP> -token <primary token>
 ```
 
 >[!NOTE]

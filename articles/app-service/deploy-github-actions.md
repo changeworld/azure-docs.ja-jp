@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: aa4475ccedfb19ece540337f493bcc5ed64af035
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c17b18f42a5b07252874aef812a50746e069c1a9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832466"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209735"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 
@@ -24,7 +24,7 @@ ms.locfileid: "107832466"
 - GitHub アカウント。 ない場合は、[無料](https://github.com/join)でサインアップしてください。  
 - 作業中の Azure App Service アプリ。 
     - .NET:[Azure に ASP.NET Core Web アプリを作成する](quickstart-dotnetcore.md)
-    - ASP.NET:[Azure に ASP.NET Framework Web アプリを作成する](quickstart-dotnet-framework.md)
+    - ASP.NET:[Azure に ASP.NET Framework Web アプリを作成する](./quickstart-dotnetcore.md?tabs=netframework48)
     - JavaScript:[Azure App Service での Node.js Web アプリの作成](quickstart-nodejs.md)  
     - Java:[Azure App Service で Java アプリを作成する](quickstart-java.md)
     - Python: [Azure App Service で Python アプリを作成する](quickstart-python.md)

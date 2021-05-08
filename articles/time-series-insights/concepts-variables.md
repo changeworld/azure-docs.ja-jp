@@ -6,12 +6,12 @@ ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/22/2021
-ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01184a4eb2aac81bbcabcebf89ef10afeabddbe8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736736"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872967"
 ---
 # <a name="time-series-model-variables"></a>時系列モデルの変数
 
@@ -32,7 +32,7 @@ ms.locfileid: "98736736"
 | 変数のプロパティ | 説明 |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
-| 変数の値 | デバイスまたはセンサーからの計算、またはタイム シリーズ式を使用して変換された計算に使用されるテレメトリ値。 数値の種類の変数は、*Double* 型である必要があります。|
+| 変数の値 | デバイスまたはセンサーからの計算、またはタイム シリーズ式を使用して変換された計算に使用されるテレメトリ値。 数値の種類の変数は、受信データのデータ型に合わせて `Double` または `Long` のいずれかである必要があります。|
 | 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ* と *線形* 補間オプションを数値変数に使用できます。 |
 | 変数の集計 | [数値変数の種類に対してサポートされている集計関数](/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)を使用した計算を実行します。 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "98736736"
 | 変数のプロパティ | 説明 |
 | --- | ---|
 | 変数のフィルター | フィルターは、計算対象として考慮する行の数を制限するための、オプションの条件付きの句です。 |
-| 変数の値 | デバイスまたはセンサーからの計算に使用されるテレメトリ値。 カテゴリ別の種類の変数は、*Long* または *String* である必要があります。 |
+| 変数の値 | デバイスまたはセンサーからの計算に使用されるテレメトリ値。 カテゴリ別の種類の変数は、受信データのデータ型に合わせて `Long` または `String` のいずれかである必要があります。 |
 | 変数の補間 | 補間は、既存のデータを使用してシグナルを再構築する方法を指定します。 *ステップ* 補間オプションは、カテゴリ別変数に使用できます。 |
 | 変数のカテゴリ | カテゴリによって、デバイスまたはセンサーからの値とラベルの間のマッピングが作成されます。 |
 | 変数の既定のカテゴリ | 既定のカテゴリは、"categories" プロパティでマップされていないすべての値を対象としています。 |

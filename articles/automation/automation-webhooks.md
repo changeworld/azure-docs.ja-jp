@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 03/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 338fb56c4af5c24b7b746ffd6508c2fe7d52b131
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: cd3d903aead4877fac9e5472f1ac9d579da979d2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830198"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209573"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 
@@ -138,7 +138,7 @@ Runbook ジョブの完了時期と Webhook からの完了状態は、クライ
 
 ### <a name="use-a-webhook-from-an-arm-template"></a>ARM テンプレートから Webhook を使用する
 
-Automation Webhook は、[Azure Resource Manager (ARM) テンプレート](/azure/azure-resource-manager/templates/overview)から呼び出すこともできます。 ARM テンプレートは、`POST` 要求を発行し、他のクライアントと同様にリターン コードを受け取ります。 「[Webhook を使用する](#use-a-webhook)」を参照してください。
+Automation Webhook は、[Azure Resource Manager (ARM) テンプレート](../azure-resource-manager/templates/overview.md)から呼び出すこともできます。 ARM テンプレートは、`POST` 要求を発行し、他のクライアントと同様にリターン コードを受け取ります。 「[Webhook を使用する](#use-a-webhook)」を参照してください。
 
    > [!NOTE]
    > セキュリティ上の理由から、URI はテンプレートが初めてデプロイされたときにのみ返されます。
