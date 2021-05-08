@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rajap
 ms.author: rajap
 ms.date: 12/11/2019
-ms.openlocfilehash: 379047532542fdb45a4378687a4c6b99f6cdcd77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73dc8430b6af09c849df28e23d27e4ec16e81962
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96444420"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318695"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする
 

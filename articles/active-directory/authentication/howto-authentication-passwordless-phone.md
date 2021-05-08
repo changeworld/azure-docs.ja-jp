@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d586294f101c271f139867d0046576dc9a32f076
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653475"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861789"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
@@ -38,6 +38,7 @@ Microsoft Authenticator アプリでパスワードなしの電話によるサ�
 
 - 検証方法としてプッシュ通知が許可されている Azure AD Multi-Factor Authentication。
 - iOS 8.0 以降、または Android 6.0 以降を実行しているデバイスにインストールされている最新バージョンの Microsoft Authenticator。
+- Microsoft Authenticator アプリがインストールされているデバイスを、Azure AD テナント内で個々のユーザーに登録する必要があります。 
 
 > [!NOTE]
 > Azure AD PowerShell を使用して Microsoft Authenticator のパスワードなしのサインインを有効にした場合は、それがディレクトリ全体に対して有効になっています。 この新しい方法の使用を有効にすると、それが PowerShell ポリシーよりも優先されます。 新しい "*認証方法*" メニューを使用して、テナント内のすべてのユーザーに対して有効にすることをお勧めします。そうしないと、新しいポリシーに含まれていないユーザーは、パスワードなしでサインインできなくなります。

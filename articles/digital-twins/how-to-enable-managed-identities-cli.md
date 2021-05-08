@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e9eb5950b5cf7d4e7d0270deed72866ee28e3962
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 374c4764689447b855476128ee31e2077211a794
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106906"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208907"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-cli"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー)Azure CLI
 
@@ -20,7 +20,7 @@ ms.locfileid: "107106906"
 
 この記事では、[Azure Digital Twins インスタンスのシステム割り当て ID](concepts-security.md#managed-identity-for-accessing-other-resources-preview) (現時点ではプレビュー段階) を有効にし、[Event Hubs](../event-hubs/event-hubs-about.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) 、[Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)などのサポートされている送信先にイベントを転送するときに、その ID を使用します。
 
-この記事では、[**Azure CLI**](/cli/azure/what-is-azure-cli) を使用したプロセスについて説明します。
+この記事では、[Azure CLI](/cli/azure/what-is-azure-cli) を使用したプロセスについて説明します。
 
 この記事では、次の手順を説明します。 
 
@@ -83,7 +83,7 @@ Azure Digital Twins インスタンス用のシステム割り当て ID が作�
 | Azure Service Bus | Azure Service Bus データ送信者 |
 | [Azure ストレージ コンテナー] | ストレージ BLOB データ共同作成者 |
 
-Azure Digital Twins でのルーティングでサポートされているエンドポイント、ルート、送信先の種類の詳細については、[*イベント ルートの概念*](concepts-route-events.md)に関するページを参照してください。
+Azure Digital Twins でのルーティングでサポートされているエンドポイント、ルート、送信先の種類の詳細については、[イベント ルートの概念](concepts-route-events.md)に関するページを参照してください。
 
 ### <a name="assign-the-role"></a>ロールを割り当てる
 
@@ -97,9 +97,9 @@ Azure Digital Twins でのルーティングでサポートされているエン
 az dt create -n {instance_name} -g {resource_group} --assign-identity --scopes "/subscriptions/<subscription ID>/resourceGroups/<resource_group>/providers/Microsoft.EventHub/namespaces/<Event_Hubs_namespace>/eventhubs/<event_hub_name>" --role MyCustomRole
 ```
 
-このコマンドを使用したロールの割り当てのその他の例については、[**az dt create** のリファレンス ドキュメント](/cli/azure/dt#az_dt_create)を参照してください。
+このコマンドを使用したロールの割り当てのその他の例については、[az dt create のリファレンス ドキュメント](/cli/azure/dt#az_dt_create)を参照してください。
 
-また、ロールを作成および管理するために、[**az role assignment**](/cli/azure/role/assignment) コマンド グループも使用できます。 これは、create コマンドでロールの割り当てをグループ化したくない場合の追加のシナリオをサポートするために使用できます。
+また、ロールを作成および管理するために、[az role assignment](/cli/azure/role/assignment) コマンド グループも使用できます。 これは、create コマンドでロールの割り当てをグループ化したくない場合の追加のシナリオをサポートするために使用できます。
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用してエンドポイントを作成する
 
@@ -125,4 +125,4 @@ ID は、それを使用するエンドポイントとは別に管理されて�
 ## <a name="next-steps"></a>次のステップ
 
 Azure AD でのマネージド ID の詳細について確認します。 
-* [*Azure リソースのマネージド ID*](../active-directory/managed-identities-azure-resources/overview.md)
+* [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)

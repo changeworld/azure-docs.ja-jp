@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b65aff45cc304f59e45fc3bed925b93ee6c622fd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b70bebc6f3aa809abf616b1d0ab2c68f85d9710
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788405"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164743"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure Queue Storage の監視
 
@@ -108,7 +108,7 @@ Azure Monitor のメトリックとログでは、Azure Resource Manager スト�
    > ![[診断設定] ページのアーカイブ ストレージ](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
 2. **[ストレージ アカウント]** ドロップダウン リストで、ログのアーカイブ先とするストレージ アカウントを選択し、 **[OK]** ボタンをクリックして、 **[保存]** ボタンを選択します。
- 
+
    [!INCLUDE [no retention policy](../../../includes/azure-storage-logs-retention-policy.md)]
 
    > [!NOTE]
@@ -553,7 +553,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間に発生した 10 件の最も一般的なエラーの一覧を表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by StatusText
@@ -562,7 +562,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間で最も多く発生したエラーの原因となった上位 10 件の操作を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText !contains "Success"
     | summarize count() by OperationName
@@ -571,7 +571,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間でエンドツーエンドの待機時間が最も長かった上位 10 個の操作を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | top 10 by DurationMs desc
@@ -580,7 +580,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間にサーバー側の調整エラーの原因となったすべての操作を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
     | project TimeGenerated, OperationName, StatusCode, StatusText
@@ -588,7 +588,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間の匿名アクセスを含むすべての要求を一覧表示します。
 
-    ```Kusto
+    ```kusto
     StorageBlobLogs
     | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
     | project TimeGenerated, OperationName, AuthenticationType, Uri
@@ -596,7 +596,7 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 - 過去 3 日間に使用された操作の円グラフを作成します。
 
-    ```Kusto
+    ```kusto
     StorageQueueLogs
     | where TimeGenerated > ago(3d)
     | summarize count() by OperationName

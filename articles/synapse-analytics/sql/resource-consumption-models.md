@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 03144d478be0053ac77709132b08cdf17b062fb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddd49f26194c52cf0218f21d915ff078aee70c6b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666302"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164671"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL のリソースの使用
 
@@ -72,7 +72,7 @@ CREATE DATABASE mySQLDW
 - Gen1 データ ウェアハウスは、データ ウェアハウス単位 (DWU) で測定されます。
 - Gen2 データ ウェアハウスは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます。
 
-DWU と cDWU はいずれも、コンピューティングのスケール アップとスケール ダウン、データ ウェアハウスの使用が不要になった場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。  
+DWU と cDWU はいずれも、コンピューティングのスケール アップとスケール ダウン、データ ウェアハウスの使用が不要になった場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。
 
 データ ウェアハウス ユニットを増やすと、コンピューティング リソースが直線的に増加します。 Gen2 は最適なクエリ パフォーマンスと最大のスケールを提供します。 Gen2 システムは、キャッシュも最大限に活用します。
 
@@ -137,7 +137,7 @@ DWU を変更するには、次の手順に従います。
 
 DWU を変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービスレベル目標を DW1000 に設定します。
 
-```Powershell
+```powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
@@ -152,7 +152,7 @@ DWU を変更するには、次の手順に従います。
 1. サーバーに関連付けられている master データベースに接続します。
 2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azure-sqldw-latest&preserve-view=true) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000c に設定します。
 
-```Sql
+```sql
 ALTER DATABASE MySQLDW
 MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 ;
@@ -208,7 +208,7 @@ AND       major_resource_id = 'MySQLDW'
 
 ### <a name="the-scaling-workflow"></a>スケーリングのワークフロー
 
-スケール操作を開始すると、システムはまず、すべての開いているセッションを強制終了し、すべての開いているトランザクションをロールバックして整合性のある状態を確保します。 スケール操作の場合、このトランザクションのロールバックが完了した後でのみスケーリングが行われます。  
+スケール操作を開始すると、システムはまず、すべての開いているセッションを強制終了し、すべての開いているトランザクションをロールバックして整合性のある状態を確保します。 スケール操作の場合、このトランザクションのロールバックが完了した後でのみスケーリングが行われます。
 
 - スケールアップ操作の場合、システムはすべてのコンピューティング ノードをデタッチし、追加のコンピューティング ノードをプロビジョニングした後、ストレージ レイヤーに再アタッチします。
 - スケールダウン操作の場合、システムはすべてのコンピューティング ノードをデタッチした後、必要なノードのみをストレージ レイヤーに再アタッチします。

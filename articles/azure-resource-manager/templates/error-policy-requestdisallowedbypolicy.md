@@ -5,12 +5,13 @@ author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8ef38591fb47f7d7dcfce96551c756b11a42b2a9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75474273"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318821"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー
 
@@ -51,12 +52,12 @@ Azure CLI では、ポリシー定義の名前を指定します。
 az policy definition show --name regionPolicyAssignment
 ```
 
-## <a name="solution"></a>解決策
+## <a name="solution"></a>解答
 
 セキュリティやコンプライアンスについて、サブスクリプション管理者はリソースのデプロイ方法を制限するポリシーを割り当てることができます。 たとえば、サブスクリプションには、パブリック IP アドレス、ネットワーク セキュリティ グループ、ユーザー定義ルート、またはルート テーブルの作成を禁止するポリシーがある場合があります。 **[現象]** セクションのエラー メッセージは、ポリシーの名前を示します。
 この問題を解決するには、リソース ポリシーを確認し、それらのポリシーに準拠しているリソースのデプロイ方法を決定します。
 
-詳細については、次の記事を参照してください。
+詳細については、以下の記事を参照してください。
 
-- [Azure Policy とは](../../governance/policy/overview.md)
+- [Azure Policy とは何ですか。](../../governance/policy/overview.md)
 - [コンプライアンスを強制するポリシーの作成と管理](../../governance/policy/tutorials/create-and-manage.md)

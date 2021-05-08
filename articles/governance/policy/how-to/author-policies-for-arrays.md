@@ -3,12 +3,12 @@ title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8953b67d0935ac81cffa20ee8fc48d6d9b091861
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305193"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165427"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -147,7 +147,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 上記の条件をより汎用的にするには、リテラル配列ではなく、パラメーター参照を使用します。
 
- ```json
+```json
 {
     "count": {
         "value": "[parameters('patterns')]",

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/19/2021
 ms.author: iangithinji
 ms.reviewer: secherka, mifarca, shchaur, shravank, sureshja
-ms.openlocfilehash: 0868c942a023662a1a6d3053477d85b0245fef4b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 653a9291cea6b65692ef2a34e2710ed947152a76
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376241"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318497"
 ---
 # <a name="azure-active-directory-azure-ad-application-management-certificates-frequently-asked-questions"></a>Azure Active Directory (Azure AD) アプリケーションの管理証明書に関してよく寄せられる質問
 
@@ -55,11 +55,11 @@ Azure AD では、証明書署名オプションと証明書署名アルゴリ�
 
 ## <a name="i-need-to-replace-the-certificate-for-azure-ad-application-proxy-applications-and-need-more-instructions"></a>Azure AD アプリケーション プロキシ アプリケーションの証明書を置き換える必要があります。手順について教えてください。
 
-Azure AD アプリケーション プロキシ アプリケーションの証明書を置き換えるには、[PowerShell のサンプル - アプリケーション プロキシ アプリケーションでの証明書の置換](scripts/powershell-get-custom-domain-replace-cert.md)に関するページを参照してください。
+Azure AD アプリケーション プロキシ アプリケーションの証明書を置き換えるには、[PowerShell のサンプル - アプリケーション プロキシ アプリケーションでの証明書の置換](../app-proxy/scripts/powershell-get-custom-domain-replace-cert.md)に関するページを参照してください。
 
 ## <a name="how-do-i-manage-certificates-for-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインの証明書を管理するにはどうすればよいですか?
 
-カスタム ドメインを使用するようにオンプレミス アプリを構成するには、検証済みの Azure Active Directory カスタム ドメイン、カスタム ドメインの PFX 証明書、および構成するオンプレミス アプリが必要です。 詳細については、[Azure AD アプリケーション プロキシのカスタム ドメイン](application-proxy-configure-custom-domain.md)に関するページを参照してください。 
+カスタム ドメインを使用するようにオンプレミス アプリを構成するには、検証済みの Azure Active Directory カスタム ドメイン、カスタム ドメインの PFX 証明書、および構成するオンプレミス アプリが必要です。 詳細については、[Azure AD アプリケーション プロキシのカスタム ドメイン](../app-proxy/application-proxy-configure-custom-domain.md)に関するページを参照してください。 
 
 ## <a name="i-need-to-update-the-token-signing-certificate-on-the-application-side-where-can-i-get-it-on-azure-ad-side"></a>アプリケーション側でトークン署名証明書を更新する必要があります。 Azure AD 側のどこで入手できますか?
 

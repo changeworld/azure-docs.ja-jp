@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: 5050e7014d9f1f804f7103938ff3dcb43915c549
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: e1d74795fd25019e205f4b7b1d2bac1b67107e2d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738938"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878580"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
@@ -24,10 +24,10 @@ Azure Data Lake Tools for VS Code では、Windows、Linux、および macOS が
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
-MacOS および Linux の場合 :
+MacOS および Linux の場合:
 
-- [.NET Core SDK 5.0](https://www.microsoft.com/net/download/core)
-- [Mono 6.12.x](https://www.mono-project.com/download/)
+- [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
+- [Mono 5.2.x](https://www.mono-project.com/download/)
 
 ## <a name="install-azure-data-lake-tools"></a>Azure Data Lake Tools をインストールする
 
