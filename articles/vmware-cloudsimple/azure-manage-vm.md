@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - Azure でプライベート クラウド VM を管理する
 description: ディスクの追加、VM 容量の変更、ネットワーク インターフェイスの追加など、Azure portal で CloudSimple プライベート クラウドVM を管理する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c505ad4edb6ee13a81e3d575ad11e1bf526166df
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895191"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182554"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Azure で CloudSimple プライベート クラウドの仮想マシンを管理する
 

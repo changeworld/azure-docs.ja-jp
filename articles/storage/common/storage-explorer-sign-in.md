@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: chuye
-ms.openlocfilehash: ef02842d189746a1801d97f91b92f249947c832d
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 26ce15bfe474f96aaef17f186f56e36ce42b7239
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568667"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950534"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Storage Explorer にサインインする
 
@@ -48,7 +48,7 @@ Azure アカウント全体を削除する場合は、アカウントの横に�
 
 既定では、OS の **既定の Web ブラウザー** でサインインが行われます。 既定の Web ブラウザーを使用してサインインすると、MFA などの CA ポリシーで保護されたリソースへのアクセス方法が効率化されます。 何らかの理由で、OS の **既定の Web ブラウザー** でのサインインが機能しない場合、Storage Explorer によるサインインの実行場所や方法を変更できます。
 
-**[設定]**  >  **[アプリケーション]**  >  **[サインイン]** で、 **[Sign in with]\(以下を使用してサインイン\)** 設定を見つけます。 次の 3 つのオプションがあります。
+**[設定] (左側の歯車アイコン)**  >  **[アプリケーション]**  >  **[サインイン]** で、 **[サインイン方法の選択]** 設定を探します。 次の 3 つのオプションがあります。
 - **[Default Web Browser]\(既定の Web ブラウザー\)** : OS の **既定の Web ブラウザー** でサインインが実行されます。 このオプションが推奨されています。
 - **[Integrated Sign-In]\(統合サインイン\)** : Storage Explorer のウィンドウでサインインが実行されます。 このオプションは、一度に複数の Microsoft アカウント (MSA) を使用してログインする場合に便利です。 このオプションを選択した場合、一部の CA ポリシーで問題が発生する可能性があります。
 - **[Device Code Flow]\(デバイス コード フロー\)** : Storage Explorer によって、ブラウザー ウィンドウに入力するコードが提供されます。 このオプションは推奨されません。 デバイス コード フローは、多くの CA ポリシーと互換性がありません。
@@ -56,3 +56,8 @@ Azure アカウント全体を削除する場合は、アカウントの横に�
 ## <a name="troubleshooting-sign-in-issues"></a>サインインの問題のトラブルシューティング
 
 サインインに問題がある場合、またはサインイン後に Azure アカウントで問題が発生した場合は、[Storage Explorer トラブルシューティング ガイドのサインインに関するセクション](./storage-explorer-troubleshooting.md#sign-in-issues)を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+* [Storage Explorer を使用して Azure Blob Storage リソースを管理する](../../vs-azure-tools-storage-explorer-blobs.md)
+* [サインインに関する問題のトラブルシューティング](./storage-explorer-troubleshooting.md#sign-in-issues)

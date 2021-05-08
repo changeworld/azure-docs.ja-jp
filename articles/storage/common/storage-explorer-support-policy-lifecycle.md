@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: dc89631208c6a72c4b48d49260f584149d6c4260
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8899d9c8b7cddf25fc7171d6add7705ad86d9632
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679937"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950516"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure Storage Explorer のサポート ライフサイクルとポリシー
 
@@ -41,6 +41,9 @@ Storage Explorer は、[モダン ライフサイクル ポリシー](https://su
 
 | Storage Explorer のバージョン  | リリース日       | サポート終了日 |
 |:-------------------------:|:------------------:|:-------------------:|
+| v1.19.0                   | 2021 年 4 月 15 日     | 2022 年 4 月 15 日      |
+| v1.18.1                   | 2021 年 3 月 4 日      | 2022 年 3 月 4 日       |
+| v1.18.0                   | 2021 年 3 月 1 日      | 2022 年 3 月 1 日       |
 | v1.17.0                   | 2020 年 12 月 15 日  | 2021 年 12 月 15 日   |
 | v1.16.0                   | 2020 年 11 月 10 日  | 2021 年 11 月 10 日   |
 | v1.15.1                   | 2020 年 9 月 2 日  | 2021 年 9 月 2 日   |

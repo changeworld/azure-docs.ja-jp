@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple へのアクセス - ポータル
 description: Azure portal から VMware Solution by CloudSimple にアクセスする方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0aa7a9a1f19a9d4fb2c555b08753e0b57c657974
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f872259eee6d75ce2e3a4ed6c5c0e15286fcdb0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895157"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182716"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal から VMware Solution by CloudSimple にアクセスする
 

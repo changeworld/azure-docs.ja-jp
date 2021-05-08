@@ -3,15 +3,15 @@ title: 接続時に仮想マシンを起動 - Azure
 description: 接続時に仮想マシンを起動機能を構成する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/13/2021
+ms.date: 04/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 05500ded7512b54446d153e37233e4889b3107ff
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389810"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949190"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>接続時に仮想マシンを起動 (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "107389810"
 > 現在、接続時に仮想マシンを起動機能はパブリック プレビューの段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-接続時に仮想マシン (VM) を起動 (プレビュー) 機能を使用すると、VM を使用していないときはその割り当てを解除できるため、コストを節約できます。 VM を再び使用する必要が生じたときは、VM を再び有効にするだけで済みます。
+接続時に仮想マシン (VM) を起動 (プレビュー) 機能を使用すると、エンド ユーザーは必要時にのみ VM をオンにできるため、コストの節約になります。 必要でないときは VM をオフにすることができます。
 
 >[!NOTE]
 >Windows Virtual Desktop (クラシック) では、この機能はサポートされていません。
@@ -32,6 +32,8 @@ ms.locfileid: "107389810"
 
 - [Web クライアント](connect-web.md)
 - [Windows クライアント (バージョン1.2748 以降)](connect-windows-7-10.md)
+- [Android クライアント (バージョン 10.0.10 以降)](connect-android.md)
+- [macOS クライアント (バージョン 10.6.4 以降)](connect-macos.md)
 
 更新プログラムとクライアント サポートに関するお知らせについては、[Tech Community フォーラム](https://aka.ms/wvdtc)のページをご覧ください。
 

@@ -3,18 +3,18 @@ title: Azure Cost Management でクラウド投資を最適化する
 description: この記事は、クラウドへの投資から最大限の価値を得て、コストを削減し、コストのかかる部分を評価するのに役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: fc9b6c4edc5d08c30b1eadb5084155b10d0e55a3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e333b4aadce33e5303820951051ce83c7e65eaf9
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601517"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222386"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Cost Management を使用してクラウドへの投資を最適化する方法
 
@@ -91,7 +91,7 @@ Cost Management 内でのエクスペリエンスを最大化する最初の手�
 #### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 か月間の人気の無料サービス
-- $200 のクレジットで 30 日間サービス群をじっくり検討
+- 200 米国ドルのクレジットが請求通貨で付与され、30 日間サービスを体験可能
 - 25 個以上のサービスがいつでも無料
 
 #### <a name="pay-as-you-go"></a>[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p)

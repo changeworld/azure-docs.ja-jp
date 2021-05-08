@@ -4,21 +4,23 @@ description: このクイック スタートでは、Azure PowerShell を使用�
 services: route-server
 author: duongau
 ms.author: duau
-ms.date: 03/02/2021
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom:
 - mode-api
-ms.openlocfilehash: 608ec3755fcd231d5cc89bbc28a01ce172978144
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7c28ad86b9194c8120b463581177f659a13d5c2b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538706"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949025"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用してルート サーバーを作成および構成する
 
 この記事は、PowerShell を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Azure Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上でそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
+
+:::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure PowerShell を使用した Route Server デプロイ環境の図。" border="false":::
 
 > [!IMPORTANT]
 > Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。

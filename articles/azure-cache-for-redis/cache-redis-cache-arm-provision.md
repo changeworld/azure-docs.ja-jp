@@ -6,13 +6,13 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.date: 08/18/2020
-ms.openlocfilehash: 81940d23ebfcc017455974981649023351b6eeb3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.date: 04/28/2021
+ms.openlocfilehash: 321dc2aed6ee507ad2ac4987d630b782052884b2
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835058"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277284"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Cache for Redis を作成する
 
@@ -22,7 +22,7 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cache%2Fredis-cache%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-redis-cache/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-redis-cache/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cache/redis-cache/azuredeploy.json":::
 
 このテンプレートでは、次のリソースが定義されています。
 
@@ -52,7 +52,7 @@ Azure Cache for Redis をデプロイする Azure Resource Manager テンプレ�
 
 1. Azure にサインインし、テンプレートを開くには次の画像を選択します。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cache%2Fredis-cache%2Fazuredeploy.json)
 1. 次の値を選択または入力します。
 
     * **[サブスクリプション]** : データ共有とその他のリソースの作成に使用する Azure サブスクリプションを選択します。

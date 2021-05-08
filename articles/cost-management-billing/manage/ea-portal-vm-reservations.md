@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6303a94cec9efc01815b6dc6c697abdfe0f84227
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98597965"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220902"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -96,7 +96,7 @@ Azure EA のお客様がお持ちの Azure 前払いが全額使用されてい�
 
 ### <a name="reserved-instance-expiration"></a>予約インスタンスの有効期限
 
-予約の 30 日前および有効期限の 30 日前にメールで通知が送付されます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[予約仮想マシン インスタンス プラン](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。
+予約の有効期限の 30 日前と有効期限が切れたときに、メール通知が届きます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[予約仮想マシン インスタンス プラン](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

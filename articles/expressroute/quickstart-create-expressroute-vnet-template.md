@@ -11,12 +11,12 @@ ms.service: expressroute
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 3dc1d5f5ec3dfb004468deb2bec80927c7ec189d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6c31f55d5b208437170f9a69ff7bbe1d6b836201
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529887"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277446"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート ピアリングによる ExpressRoute 回線を作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "107529887"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-expressroute-private-peering-vnet%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Fexpressroute-private-peering-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートでは、サービス プロバイダーに *Equinix* を使用して ExpressRoute 回線を作成します。 この回線には、帯域幅 *50 Mbps*、ピアリングの場所を "*ワシントン DC*" とする *Premium SKU* が使用されます。 プライベート ピアリングは、プライマリ サブネット *192.168.10.16/30* とセカンダリ サブネット *192.168.10.20/30* を使用して有効化されます。 また、"*HighPerformance ExpressRoute ゲートウェイ*" と共に仮想ネットワークが作成されます。
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/expressroute-private-peering-vnet/azuredeploy.json":::
 
 テンプレートでは、複数の Azure リソースが定義されています。
 
@@ -58,7 +58,7 @@ ExpressRoute に関連するテンプレートをさらに探すには、「[Azu
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-expressroute-private-peering-vnet/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/expressroute-private-peering-vnet/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 

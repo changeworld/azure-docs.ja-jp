@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - VM テンプレートを使用して Azure に仮想マシンを作成する
 description: CloudSimple プライベート クラウドの VMware インフラストラクチャ上の VM テンプレートを使用して Azure に仮想マシンを作成する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad998c1def91a0e2a6ff74c25e4e1cc972df1474
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898761"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108182662"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware インフラストラクチャ上の VM テンプレートを使用して Azure に仮想マシンを作成する
 

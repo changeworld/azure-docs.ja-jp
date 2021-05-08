@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:REST API を使用した新しいポリシー割り当て
 description: このクイックスタートでは、REST API を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 01/29/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6353c24b6c1e641a236837036a0105d6c5e02d2
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99219979"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326275"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>クイック スタート:REST API を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 

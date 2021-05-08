@@ -3,18 +3,18 @@ title: クイック スタート:Azure Maps を使った対話型のマップ検
 description: 'クイックスタート: 対話型の検索可能なマップを作成する方法について説明します。 Azure Maps アカウントを作成して主キーを取得し、Web SDK を使用してマップ アプリケーションを設定する方法をご覧ください'
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/10/2020
+ms.date: 04/26/2021
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 24a834c87fe34d90dec5961bb3f8d376c6e5e62d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b8cd04d5c4c45bdd7fed1a0b78e20d4bfdd5817
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373217"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326725"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>クイック スタート:Azure Maps を使用して対話形式の検索マップを作成する
 
