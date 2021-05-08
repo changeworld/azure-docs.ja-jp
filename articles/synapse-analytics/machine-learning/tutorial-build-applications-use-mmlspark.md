@@ -7,23 +7,23 @@ ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: ''
 ms.date: 03/08/2021
-author: ruxu
+author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: a3899b83133b3f951547fae0b11c044bfa85a5fc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589601"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227723"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>チュートリアル: Microsoft Machine Learning for Apache Spark を使用して機械学習アプリケーションを構築する (プレビュー)
 
 この記事では、Microsoft Machine Learning for Apache Spark ([MMLSpark](https://github.com/Azure/mmlspark)) を使用して機械学習アプリケーションを作成する方法について説明します。 MMLSpark によって Apache Spark の分散機械学習ソリューションが拡張され、[Azure Cognitive Services](../../cognitive-services/big-data/cognitive-services-for-big-data.md)、[OpenCV](https://opencv.org/)、[LightGBM](https://github.com/Microsoft/LightGBM) などの多くのディープ ラーニング ツールとデータ サイエンス ツールが追加されます。  MMLSpark を使用すると、効果的で拡張性の高い予測と分析のモデルをさまざまな Spark データ ソースから構築できます。
 Synapse Spark には、次のような組み込みの MMLSpark ライブラリが用意されています。
 
-- [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit) – 機械学習用のライブラリ サービスであり、ツイートの感情分析などのテキスト分析を可能にします。
-- [Cognitive Services on Spark](../../cognitive-services/big-data/cognitive-services-for-big-data.md) - 異常検出などの認知データ モデリング サービスのソリューション設計を得るために、Azure Cognitive Services の機能を SparkML パイプラインに組み合わせます。
-- [LightBGM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) – Face ID 検出などの予測分析のモデルのトレーニングを可能にする機械学習モデルです。
+- [Vowpal Wabbit](https://github.com/Azure/mmlspark/blob/master/docs/vw.md) – 機械学習用のライブラリ サービスであり、ツイートの感情分析などのテキスト分析を可能にします。
+- [Cognitive Services on Spark](https://github.com/Azure/mmlspark/blob/master/docs/cogsvc.md) - 異常検出などの認知データ モデリング サービスのソリューション設計を得るために、Azure Cognitive Services の機能を SparkML パイプラインに組み合わせます。
+- [LightGBM](https://github.com/Azure/mmlspark/blob/master/docs/lightgbm.md) - LightGBM は、ツリー ベースの学習アルゴリズムを使用する勾配ブースティング フレームワークです。 分散と効率の向上を目指して設計されています。
 - Conditional KNN - 条件付きクエリを使用したスケーラブル KNN モデル。
 - [HTTP on Spark](https://github.com/Azure/mmlspark/blob/master/docs/http.md) – Spark と HTTP プロトコルベースのアクセシビリティを統合するための分散マイクロサービス オーケストレーションを可能にします。
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、[開始する�
 
 
 ## <a name="get-started"></a>開始
-はじめに、mmlspark をインポートし、サービス キーを構成します。
+はじめに、mmlspark をインポートし、サービス キーを構成します。 
 
 ```python
 import mmlspark
@@ -59,13 +59,16 @@ service_key =  "ADD_YOUR_SUBSCRIPION_KEY"
 bing_search_key = "ADD_YOUR_SUBSCRIPION_KEY" 
 # An Anomaly Dectector subscription key
 anomaly_key =  "ADD_YOUR_SUBSCRIPION_KEY" 
+# Your linked key vault for Synapse workspace
+key_vault = "YOUR_KEY_VAULT_NAME"
 
 
-cognitive_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", service_key)
-bingsearch_service_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", bing_search_key)
-anomalydetector_key = mssparkutils.credentials.getSecret("keyvaultForSynapse", anomaly_key)
+cognitive_service_key = mssparkutils.credentials.getSecret(key_vault, service_key)
+bingsearch_service_key = mssparkutils.credentials.getSecret(key_vault, bing_search_key)
+anomalydetector_key = mssparkutils.credentials.getSecret(key_vault, anomaly_key)
 
 ```
+
 
 ## <a name="text-analytics-sample"></a>Text Analytics のサンプル
 

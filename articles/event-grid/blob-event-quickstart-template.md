@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92093652"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
@@ -74,7 +74,7 @@ Web アプリをもう一度表示し、その Web アプリにサブスクリ�
 
 BLOB ストレージのイベントをトリガーするには、ファイルをアップロードします。 このファイルは、特定のコンテンツを必要としません。 この記事では、testfile.txt という名前のファイルがあると仮定していますが、任意のファイルを使用できます。
 
-ファイルを Azure BLOB ストレージにアップロードすると、Event Grid から、サブスクライブ時に構成したエンドポイントにメッセージが送信されます。 メッセージは JSON 形式であり、1 つまたは複数のイベントの配列が含まれています。 次の例の JSON メッセージには、1 つのイベントの配列が含まれています。 Web アプリを表示して、BLOB 作成イベントが受信されたことを確認します。
+ファイルを Azure Blob Storage にアップロードすると、Event Grid から、サブスクライブ時に構成したエンドポイントにメッセージが送信されます。 メッセージは JSON 形式であり、1 つまたは複数のイベントの配列が含まれています。 次の例の JSON メッセージには、1 つのイベントの配列が含まれています。 Web アプリを表示して、BLOB 作成イベントが受信されたことを確認します。
 
 ![結果の表示](./media/blob-event-quickstart-portal/view-results.png)
 

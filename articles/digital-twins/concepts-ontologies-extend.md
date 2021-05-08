@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: e5973f58887b212919ad739232faafddcf9e735c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b38b4910773c433ed63fd2082c5cbefce81e0e9e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100563358"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480232"
 ---
 # <a name="extending-ontologies"></a>オントロジの拡張 
 
@@ -28,7 +28,7 @@ DTDL ベースの RealEstateCore オントロジでは、Space 階層を使用�
 
 下の図は、階層の一部を示しています。 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-original.png" alt-text="RealEstateCore の Space 階層の一部を示すフロー図。最上位レベルには、Space という要素があります。これは、&quot;extends&quot; 矢印によって 1 レベル下の Room に接続されています。Room は、2 つの &quot;extends&quot; 矢印によって 1 レベル下の ConferenceRoom と Office に接続されています。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-original.png" alt-text="RealEstateCore の Space 階層の一部を示すフロー図。最上位レベルには、Space という要素があります。これは、&quot;extends&quot; 矢印によって 1 レベル下の Room に接続されています。Room は、2 つの &quot;extends&quot; 矢印によって 1 レベル下の ConferenceRoom と Office に接続されています。"::: 
 
 RealEstateCore オントロジの詳細については、"[*概念: 業界標準のオントロジの採用*](concepts-ontologies-adopt.md#realestatecore-smart-building-ontology)" に関する記事を参照してください。
 
@@ -51,7 +51,7 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 フォーカス ルーム インターフェイスを追加した後、拡張された階層には、新しい部屋の種類が示されます。 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-1.png" alt-text="RealEstateCore の Space 階層を示すフロー図 (上記の図に新しい要素が追加されています)。ConferenceRoom と Office がある最下位レベルに、FocusRoom という名前の新しい要素があります (これも、Room からの &quot;extends&quot; 矢印で接続されています)"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="RealEstateCore の Space 階層を示すフロー図 (上記の図に新しい要素が追加されています)。ConferenceRoom と Office がある最下位レベルに、FocusRoom という名前の新しい要素があります (これも、Room からの &quot;extends&quot; 矢印で接続されています)"::: 
 
 ### <a name="add-additional-capabilities-to-existing-interfaces"></a>既存のインターフェイスに機能をさらに追加する 
 
@@ -69,7 +69,7 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 上に示した階層の一部を拡張すると、拡張した階層は下の図のようになります。 ここでは、拡張した Space インターフェイスは、デジタル ツインを 3D 描画に関連付ける ID を格納する `drawingId` プロパティを追加します。 さらに、ConferenceRoom インターフェイスは、会議室のオンライン状態を格納する "online" プロパティを追加します。 継承によって、ConferenceRoom インターフェイスには、RealEstateCore ConferenceRoom インターフェイスのすべての機能だけでなく、拡張された Space インターフェイスのすべての機能も含まれます。 
 
-:::image type="content" source="media/concepts-extending-ontologies/RealEstateCore-extended-2.png" alt-text="拡張された RealEstateCore の Space 階層を示すフロー図 (上記の図にさらに新しい要素が追加されています)。Room はそのレベルを Space 要素と共有するようになりました。この Space 要素は、&quot;extends&quot; 矢印によって 1 レベル下の新しい Room 要素 (ConferenceRoom と Office の横) に接続されています。新しい要素は、追加の &quot;extends&quot; リレーションシップによって既存のオントロジに接続されています。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-2.png" alt-text="拡張された RealEstateCore の Space 階層を示すフロー図 (上記の図にさらに新しい要素が追加されています)。Room はそのレベルを Space 要素と共有するようになりました。この Space 要素は、&quot;extends&quot; 矢印によって 1 レベル下の新しい Room 要素 (ConferenceRoom と Office の横) に接続されています。新しい要素は、追加の &quot;extends&quot; リレーションシップによって既存のオントロジに接続されています。"::: 
 
 ## <a name="using-the-extended-space-hierarchy"></a>拡張した Space 階層を使用する 
 
@@ -77,7 +77,7 @@ RealEstateCore オントロジの詳細については、"[*概念: 業界標準
 
 各デジタル ツインのモデルは、下の図に示すように、拡張した階層のインターフェイスになります。 
  
-:::image type="content" source="media/concepts-extending-ontologies/ontology-with-models.png" alt-text="拡張した RealEstateCore の Space 階層からの抜粋。Space (最上位レベル)、1 つの Room (中間レベル)、ConferenceRoom、Office、FocusRoom (下位レベル) が含まれます。モデルの名前は、各要素に接続されています (たとえば、Room は Room101 というモデルに接続されています)。"::: 
+:::image type="content" source="media/concepts-ontologies-extend/ontology-with-models.png" alt-text="拡張した RealEstateCore の Space 階層からの抜粋。Space (最上位レベル)、1 つの Room (中間レベル)、ConferenceRoom、Office、FocusRoom (下位レベル) が含まれます。モデルの名前は、各要素に接続されています (たとえば、Room は Room101 というモデルに接続されています)。"::: 
 
 モデル ID (`IS_OF_MODEL` 演算子) を使用してデジタル ツインのクエリを実行する場合は、拡張した階層のモデル ID を使用する必要があります。 たとえば、「 `SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:com:example:Office;1')` 」のように入力します。 
 

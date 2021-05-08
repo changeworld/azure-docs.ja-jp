@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8b6a7c3e05b26cbda80ebf1a3fc0d4fed8255e6b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa9c8e1d5579538df11358edc08eb7e2043cea74
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91950807"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285843"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
 **光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、Cognitive Services の [Computer Vision](../cognitive-services/computer-vision/overview.md) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
-+ 英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語については、新しい["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
-+ その他のすべての言語については、["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API が使用されます。
++ 英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語については、新しい["Read"](../cognitive-services/computer-vision/overview-ocr.md#read-api) API が使用されます。
++ その他のすべての言語については、[レガシ OCR](../cognitive-services/computer-vision/overview-ocr.md#ocr-api) API が使用されます。
 
 **OCR** スキルはイメージファイルからテキストを抽出します｡ サポートされているファイル形式は以下の通りです｡
 
@@ -43,8 +43,8 @@ ms.locfileid: "91950807"
 
 | パラメーター名     | 説明 |
 |--------------------|-------------|
-| `detectOrientation`   | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
-| `defaultLanguageCode` | <p>   入力テキストの言語コード。 以下の言語がサポートされています。 <br/> zh-Hans (簡体中国語) <br/> zh-Hant (繁体字中国語) <br/>cs (チェコ語) <br/>da (デンマーク語) <br/>nl (オランダ語) <br/>en (英語) <br/>fi (フィンランド語)  <br/>fr (フランス語) <br/>  de (ドイツ語) <br/>el (ギリシア語) <br/> hu (ハンガリー語) <br/> it (イタリア語) <br/>  ja (日本語) <br/> ko (韓国語) <br/> nb (ノルウェー語) <br/>   pl (ポーランド語) <br/> pt (ポルトガル語) <br/>  ru (ロシア語) <br/>  es (スペイン語) <br/>  sv (スウェーデン語) <br/>  tr (トルコ語) <br/> ar (アラビア語) <br/> ro (ルーマニア語) <br/> sr-Cyrl (セルビア語キリル文字) <br/> sr-Latn (セルビア語ローマ字) <br/>  sk (スロバキア語) <br/>  unk (不明) <br/><br/> 言語コードが指定されないか null の場合､言語は英語に設定されます。 言語が明示的に "unk" に設定されている場合、言語は自動検出されます。 </p> |
+| `detectOrientation`    | イメージの向きの自動検出を有効にします。 <br/> 有効な値: true / false｡|
+| `defaultLanguageCode` | <p>    入力テキストの言語コード。 以下の言語がサポートされています。 <br/> zh-Hans (簡体中国語) <br/> zh-Hant (繁体字中国語) <br/>cs (チェコ語) <br/>da (デンマーク語) <br/>nl (オランダ語) <br/>en (英語) <br/>fi (フィンランド語)  <br/>fr (フランス語) <br/>  de (ドイツ語) <br/>el (ギリシア語) <br/> hu (ハンガリー語) <br/> it (イタリア語) <br/>  ja (日本語) <br/> ko (韓国語) <br/> nb (ノルウェー語) <br/>   pl (ポーランド語) <br/> pt (ポルトガル語) <br/>  ru (ロシア語) <br/>  es (スペイン語) <br/>  sv (スウェーデン語) <br/>  tr (トルコ語) <br/> ar (アラビア語) <br/> ro (ルーマニア語) <br/> sr-Cyrl (セルビア語キリル文字) <br/> sr-Latn (セルビア語ローマ字) <br/>  sk (スロバキア語) <br/>  unk (不明) <br/><br/> 言語コードが指定されないか null の場合､言語は英語に設定されます。 言語が明示的に "unk" に設定されている場合、言語は自動検出されます。 </p> |
 | `lineEnding` | 検出された各行の間で使用される値。 指定できる値"Space"、"CarriageReturn"、"LineFeed"。  既定は "Space" です。 |
 
 以前は、スキルで "印刷" テキストまたは "手書き" テキストを抽出するかどうかを指定する "textExtractionAlgorithm" というパラメーターがありました。  最新の Read API アルゴリズムはどちらのタイプのテキストも一度に抽出できるようになっているため、このパラメーターは非推奨となり、不要になりました。  スキル定義に既にこのパラメーターが含まれている場合、削除する必要はありませんが、今後は不使用となります。今後は、その設定に関係なく、両方のタイプのテキストが抽出されます。
@@ -57,9 +57,9 @@ ms.locfileid: "91950807"
 
 
 ## <a name="skill-outputs"></a>スキルの出力
-| 出力名     | 説明                   |
+| 出力名      | 説明                   |
 |---------------|-------------------------------|
-| `text`            | イメージから抽出されたプレーン テキスト｡   |
+| `text`             | イメージから抽出されたプレーン テキスト｡   |
 | `layoutText`    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型。|
 
 

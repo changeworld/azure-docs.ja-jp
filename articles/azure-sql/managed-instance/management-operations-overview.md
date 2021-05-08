@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bd66c10bb1d6316bbe90e7ba4092d79c6a43a75d
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91323194"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285286"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Azure SQL Managed Instance の管理操作の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -70,12 +70,14 @@ Azure SQL Managed Instance には、新しいマネージド インスタンス�
 |操作  |実行時間の長いセグメント  |推定所要時間  |
 |---------|---------|---------|
 |インスタンスのプロパティ変更 (管理者パスワード、Azure AD ログイン、Azure ハイブリッド特典フラグ)|該当なし|最大 1 分。|
-|インスタンスのストレージのスケールアップとスケールダウン (General Purpose サービス レベル)|データベース ファイルのアタッチ|操作の 90% は 5 分以内に完了。|
+|インスタンスのストレージのスケールアップとスケールダウン (General Purpose サービス レベル)|実行時間の長いセグメントはありません<sup>1</sup>|操作の 99% は 5 分以内に完了。|
 |インスタンスのストレージのスケールアップとスケールダウン (Business Critical サービス レベル)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)。|
 |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更<br>- データベース ファイルのアタッチ|操作の 90% は 2.5 時間以内に完了。|
 |インスタンスのコンピューティング (仮想コア) のスケールアップとスケールダウン (Business Critical)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)。|
 |インスタンスのサービス レベルの変更 (General Purpose から Business Critical、またはその逆へ)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)。|
 | | | 
+
+<sup>1</sup> General Purpose マネージド インスタンス ストレージのスケーリングが、操作の最後にフェールオーバーを引き起こすことはありません。 この場合、操作は、メタ データの更新と送信された要求の応答の伝達とから成ります。
 
 **カテゴリ: 削除**
 
@@ -90,6 +92,9 @@ Azure SQL Managed Instance には、新しいマネージド インスタンス�
 ## <a name="instance-availability"></a>インスタンスの可用性
 
 SQL Managed Instance は、**更新操作中の利用が可能です**。ただし、更新の最後に実行されるフェールオーバーによって短いダウンタイムが発生します。 [高速データベース復旧](../accelerated-database-recovery.md)のおかげで、実行時間の長いトランザクションが中断された場合でも、通常は最大で 10 秒です。
+
+> [!NOTE]
+> General Purpose マネージド インスタンス ストレージのスケーリングが、更新の最後にフェールオーバーを引き起こすことはありません。
 
 デプロイおよび削除の操作中は、SQL Managed Instance はクライアント アプリケーションに対して利用不可能になります。
 

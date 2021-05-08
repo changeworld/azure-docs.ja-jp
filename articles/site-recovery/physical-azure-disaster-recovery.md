@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery を使用してオンプレミスの物理サーバーのディザスター リカバリーを設定する
 description: Azure Site Recovery サービスを使用して Azure にオンプレミス Windows/Linux サーバーのディザスター リカバリーを設定する方法について説明します。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
-ms.author: raynew
-ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5775f8ed9b657502f4865f3c4f311ea0dcd269ea
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87927285"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581552"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 

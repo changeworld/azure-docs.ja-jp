@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルを作成してデプロイする
 description: Azure リソースをデプロイするための最初の Bicep ファイルを作成します。 このチュートリアルでは、Bicep ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632579"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306682"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>チュートリアル: 最初の Azure Resource Manager Bicep ファイルを作成およびデプロイする
 
@@ -31,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="editor"></a>エディター
 
-Bicep ファイルを作成するには、優れたエディターが必要です。 Visual Studio Code と Bicep 拡張機能の組み合わせをお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する](quickstart-create-bicep-use-visual-studio-code.md)」を参照してください。
+Bicep ファイルを作成するには、優れたエディターが必要です。 Visual Studio Code と Bicep 拡張機能の組み合わせをお勧めします。 これらのツールをインストールする必要がある場合は、[Bicep 開発環境の構成](./bicep-install.md#development-environment)に関するセクションを参照してください。
 
 ### <a name="command-line-deployment"></a>コマンド ライン デプロイ
 
-Bicep ファイルをデプロイするには、最新の Azure PowerShell または最新の Azure CLI も必要です。 インストール手順については、以下を参照してください。
+Azure CLI または Azure PowerShell を使用して、Bicep ファイルをデプロイできます。 Azure CLI には、2.20.0 以降のバージョンが必要です。Azure PowerShell には、5.6.0 以降のバージョンが必要です。 インストール手順については、以下を参照してください。
 
 - [Azure PowerShell をインストールするには](/powershell/azure/install-az-ps)
 - [Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)
@@ -57,7 +57,7 @@ Bicep について学習を始める準備が整いました。
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -85,6 +85,10 @@ Bicep について学習を始める準備が整いました。
         以前の API バージョン ([storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts) など) を表示した場合、用意されているプロパティが少ないことがわかります。
 
         リソースの API バージョンを変更することにした場合は、そのバージョンのプロパティを評価したうえで、適宜 Bicep ファイルを調整してください。
+
+    詳細については、「[Bicep の構造](./bicep-file.md)」を参照してください。
+
+    name プロパティにはコメントがあります。  単一行のコメントには `//` を、複数行のコメントには `/* ... */` を使用します
 
 1. `{provide-unique-name}` (中かっこ `{}` を含む) を一意のストレージ アカウント名に置き換えます。
 

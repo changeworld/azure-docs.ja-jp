@@ -11,10 +11,10 @@ ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
 ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200697"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
@@ -76,7 +76,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | items | JSON 配列 | `id` および `filter` の組を含む配列。 |
@@ -185,7 +185,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
@@ -199,7 +199,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -302,7 +302,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -323,7 +323,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -381,7 +381,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |

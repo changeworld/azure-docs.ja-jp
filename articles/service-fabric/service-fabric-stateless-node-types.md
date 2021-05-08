@@ -5,14 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: eb19005019a6e4e878f6b0bd6a145048d4a2804c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 74680f7b56ad98851e2839b53c1f9e92b6c6c23a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563778"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030013"
 ---
-# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ (プレビュー)
+# <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ
 Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
 
 * プライマリ ノード タイプをステートレスに構成することはできません
@@ -23,7 +23,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 サンプル テンプレートを使用できます。[Service Fabric のステートレス ノード タイプのテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Service Fabric クラスターでステートレス ノード タイプを有効化する
-クラスター リソースで 1 つまたは複数のノード タイプをステートレスとして設定するには、**isStateless** プロパティを "true" に設定します。 ステートレス ノード タイプで Service Fabric クラスターをデプロイする場合は、クラスター リソースに少なくとも 1 つのプライマリ ノード タイプがあるようにしてください。
+クラスター リソースで 1 つまたは複数のノード タイプをステートレスとして設定するには、**isStateless** プロパティを **true** に設定します。 ステートレス ノード タイプで Service Fabric クラスターをデプロイする場合は、クラスター リソースに少なくとも 1 つのプライマリ ノード タイプがあるようにしてください。
 
 * Service Fabric クラスター リソース apiVersion は、"2020-12-01-preview" 以上である必要があります。
 
@@ -44,7 +44,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateless": false,
+        "isStateless": false, // Primary Node Types cannot be stateless
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -72,16 +72,15 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 ステートレス ノード タイプを有効にするには、基になる仮想マシン スケール セットのリソースを次の方法で構成する必要があります。
 
 * 値 **singlePlacementGroup** プロパティは、100 台を超える VM に拡張する場合は **false** に設定する必要があります。
-* スケール セットの **upgradePolicy** の **モード** は、**Rolling** に設定する必要があります。
+* スケール セットの **upgradeMode** は、**Rolling** に設定する必要があります。
 * ローリング アップグレード モードを使用するには、アプリケーション正常性拡張機能または正常性プローブが構成されている必要があります。 次に示すように、ステートレス ノード タイプの既定の構成を使用して正常性プローブを構成します。 アプリケーションがノード タイプにデプロイされると、正常性プローブまたは正常性拡張機能のポートを変更して、アプリケーションの正常性を監視できます。
 
 >[!NOTE]
-> ステートレス ノード タイプが、複数のゾーンにまたがる仮想マシン スケール セットに基づいている場合は、プラットフォーム障害ドメイン数を 5 に更新する必要があります。 詳細は、こちらの[テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)を参照してください。
-> 
-> **platformFaultDomainCount:5**
+> ステートレスなノード タイプで自動スケーリングを使用している間、スケールダウン操作後は、ノードの状態は自動的には消去されません。 自動スケーリング時にダウン ノードのノードの状態を消去するには、[Service Fabric 自動スケーリング ヘルパー](https://github.com/Azure/service-fabric-autoscale-helper)を使用することをお勧めします。
+
 ```json
 {
-    "apiVersion": "2018-10-01",
+    "apiVersion": "2019-03-01",
     "type": "Microsoft.Compute/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType1Name')]",
     "location": "[parameters('computeLocation')]",
@@ -92,8 +91,9 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
           "automaticOSUpgradePolicy": {
             "enableAutomaticOSUpgrade": true
           }
-        }
-    }
+        },
+        "platformFaultDomainCount": 5
+    },
     "virtualMachineProfile": {
     "extensionProfile": {
     "extensions": [
@@ -136,6 +136,18 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
     ]
 }
 ```
+
+## <a name="configuring-stateless-node-types-with-multiple-availability-zones"></a>複数の Availability Zones を持つステートレス ノード タイプの構成
+複数の Availability Zones にまたがるステートレス ノード タイプを構成するには、次のようないくつかの変更と共に、[こちら](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set)のドキュメントに従ってください。
+
+* 複数の配置グループを有効にする必要がある場合は、**singlePlacementGroup** :  **false** を設定します。
+* **upgradeMode** : **Rolling** を設定して、上述したようにアプリケーション正常性拡張機能または正常性プローブを追加します。
+* 仮想マシン スケール セットに **platformFaultDomainCount** : **5** を設定します。
+
+>[!NOTE]
+> クラスターで構成されている VMSSZonalUpgradeMode に関係なく、仮想マシン スケール セットの更新は、複数のゾーンにまたがるステートレス ノード タイプでは常に一度に 1 つの可用性ゾーンに対して順次行われます。これは、ローリング アップグレード モードが使用されるためです。
+
+複数の Availability Zones を持つステートレス ノード タイプの構成に関する参照情報については、[テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-2-NodeTypes-Windows-Stateless-CrossAZ-Secure)を参照してください
 
 ## <a name="networking-requirements"></a>ネットワーク要件
 ### <a name="public-ip-and-load-balancer-resource"></a>パブリック IP とロード バランサーのリソース
@@ -184,7 +196,7 @@ Service Fabric ノード タイプには、ある時点でステートフル サ
 ```
 
 >[!NOTE]
-> パブリック IP およびロード バランサー リソースへの SKU のインプレース変更を行うことはできません。 Basic SKU のある既存のリソースから移行する場合は、この記事の移行のセクションを参照してください。
+> パブリック IP およびロード バランサー リソースへの SKU のインプレース変更を行うことはできません。 
 
 ### <a name="virtual-machine-scale-set-nat-rules"></a>仮想マシン スケール セットの NAT 規則
 ロード バランサーのインバウンド NAT 規則は、仮想マシン スケール セットの NAT プールと一致する必要があります。 各仮想マシン スケール セットに一意のインバウンド NAT プールが必要です。
@@ -243,7 +255,7 @@ Standard Load Balancer および Standard パブリック IP では、Basic SKU 
 
 
 
-### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Basic SKU Load Balancer と Basic SKU IP を使用したクラスターからステートレス ノード タイプの使用に移行する
+## <a name="migrate-to-using-stateless-node-types-in-a-cluster"></a>クラスターでステートレス ノード タイプの使用に移行する
 すべての移行シナリオで、新しいステートレス専用ノード タイプを追加する必要があります。 既存のノード タイプをステートレス専用に移行することはできません。
 
 Basic SKU で Load Balancer と IP を使用していたクラスターを移行するには、まず Standard SKU を使用したまったく新しい Load Balancer と IP リソースを作成する必要があります。 これらのリソースをインプレースで更新することはできません。
@@ -256,9 +268,6 @@ Basic SKU で Load Balancer と IP を使用していたクラスターを移行
 * 仮想マシン スケール セットをデプロイするサブネットによって参照されている NSG。
 
 リソースのデプロイが完了したら、元のクラスターから削除したいノード タイプのノードを無効にしていくことができます。
-
->[!NOTE]
-> Bronze の持続性を備えたステートレスなノードタイプで自動スケーリングを使用している間、スケールダウン操作後は、ノードの状態は自動的には消去されません。 自動スケーリング時にダウン ノードのノードの状態を消去するには、[Service Fabric 自動スケーリング ヘルパー](https://github.com/Azure/service-fabric-autoscale-helper)を使用することをお勧めします。
 
 ## <a name="next-steps"></a>次の手順 
 * [Reliable Service](service-fabric-reliable-services-introduction.md)

@@ -2,19 +2,25 @@
 title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
-ms.date: 01/08/2021
-ms.openlocfilehash: 6736118f0713a27a91618173e06423530e6f10cb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/12/2021
+ms.openlocfilehash: d132773ff35d53dc373c759326efc8179f4993d6
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563115"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366540"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
 既定では、各リソース グループにはリソースの種類のインスタンスを最大 800 個までデプロイできます。 ただし、一部のリソースの種類は、800 インスタンスの制限から除外されています。 この記事では、リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。 他のすべてのリソースの種類は、800 インスタンスに制限されます。
 
 リソースの種類によっては、800 インスタンスの制限を解除するためにサポートに連絡する必要があります。 この記事では、それらのリソースの種類について注記されています。
+
+
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+
+* resourceHealthAlertRules
+* smartDetectorAlertRules
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -75,6 +81,7 @@ ms.locfileid: "103563115"
 
 * flexibleServers
 * serverGroups
+* serverGroupsv2
 * servers
 * serversv2
 
@@ -107,7 +114,7 @@ ms.locfileid: "103563115"
 ## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 * machines - 最大 5,000 インスタンスをサポートします
-* extensions - 無制限の数の VM 拡張機能インスタンスをサポートします
+* machines/extensions - 無制限の数の VM 拡張機能インスタンスをサポートします
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
@@ -129,6 +136,7 @@ ms.locfileid: "103563115"
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/volumeGroups
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -179,6 +187,7 @@ ms.locfileid: "103563115"
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
+* autoScaleVCores - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 * capacities - 既定では、800 インスタンスに制限されています。 この制限を増やすには、サポートにご連絡ください。
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay

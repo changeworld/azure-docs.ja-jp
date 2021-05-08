@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bc329feffbf22d63774ab0f3779d62d3ccf53adb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96929992"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774127"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure App Configuration ストアに格納されているキー/値を操作する
 
@@ -83,9 +83,9 @@ az appconfig kv list --name $appConfigName
 
 | command | Notes |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | キーと値のペアを作成または更新します。 |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | App Configuration ストア内のキーと値のペアを一覧表示します。 |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | キーと値のペアを削除します。 |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az_appconfig_kv_set) | キーと値のペアを作成または更新します。 |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az_appconfig_kv_list) | App Configuration ストア内のキーと値のペアを一覧表示します。 |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az_appconfig_kv_delete) | キーと値のペアを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

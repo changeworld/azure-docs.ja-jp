@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 01854e7636f53ec1faab157b51cc84f3539582b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596724"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277404"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>説明オーディオ トラックの通知
 
@@ -29,9 +29,9 @@ ms.locfileid: "104596724"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](./create-account-howto.md)
+- [Media Services アカウントを作成する](./account-create-how-to.md)
 - 「[Azure CLI で Azure Media Services API にアクセスする](./access-api-howto.md)」の手順に従い、資格情報を保存します。 API にアクセスするために必要となります。
-- 「[ダイナミック パッケージ](dynamic-packaging-overview.md)」を確認してください。
+- 「[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)」を確認してください。
 - 「[ビデオのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)」のチュートリアルを確認してください。
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>入力アセットを作成し、ローカル ファイルをそれにアップロードする 
@@ -64,7 +64,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 
 ## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>アップロードされたファイルをエンコードする変換とジョブを作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transform と Job](./transform-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。 
 
 次の例では、変換を作成します (存在しない場合)。
 
@@ -245,4 +245,4 @@ Azure Media Player はテストには使用できますが、運用環境では�
 
 ## <a name="next-steps"></a>次のステップ
 
-[ビデオを分析する](analyze-videos-tutorial-with-api.md)
+[ビデオを分析する](analyze-videos-tutorial.md)

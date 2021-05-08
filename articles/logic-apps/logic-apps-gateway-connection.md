@@ -4,18 +4,18 @@ description: Azure でデータ ゲートウェイ リソースを作成する�
 services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
-ms.topic: article
-ms.date: 01/20/2021
-ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.topic: conceptual
+ms.date: 03/24/2021
+ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99218996"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763311"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
-["*オンプレミス データ ゲートウェイ*" をローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した後、ロジック アプリからオンプレミスのデータ ソースにアクセスするには、その前に Azure でゲートウェイ インストール用のゲートウェイ リソースを作成する必要があります。 その後は、Azure Logic Apps で利用できる[オンプレミスのコネクタ](../connectors/apis-list.md#on-premises-connectors)に使用するトリガーとアクションで、このゲートウェイ リソースを選択できます。 Azure Logic Apps では、データ ゲートウェイを介した読み取り操作と書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
+["*オンプレミス データ ゲートウェイ*" をローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した後、ロジック アプリからオンプレミスのデータ ソースにアクセスするには、その前に Azure でゲートウェイ インストール用のゲートウェイ リソースを作成する必要があります。 その後は、Azure Logic Apps で利用できる[オンプレミスのコネクタ](../connectors/managed.md#on-premises-connectors)に使用するトリガーとアクションで、このゲートウェイ リソースを選択できます。 Azure Logic Apps では、データ ゲートウェイを介した読み取り操作と書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](/data-integration/gateway/service-gateway-onprem#considerations)があります。
 
 この記事では、以前に[ローカル コンピューターにインストールされたゲートウェイ](../logic-apps/logic-apps-gateway-install.md)の Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの詳細については、「[ゲートウェイのしくみ](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
 
@@ -33,7 +33,7 @@ ms.locfileid: "99218996"
 
 ## <a name="supported-data-sources"></a>サポートされるデータ ソース
 
-Azure Logic Apps では、オンプレミス データ ゲートウェイで、これらのデータ ソースの[オンプレミス コネクタ](../connectors/apis-list.md#on-premises-connectors)がサポートされます。
+Azure Logic Apps では、オンプレミス データ ゲートウェイで、これらのデータ ソースの[オンプレミス コネクタ](../connectors/managed.md#on-premises-connectors)がサポートされます。
 
 * BizTalk Server 2016
 * ファイル システム

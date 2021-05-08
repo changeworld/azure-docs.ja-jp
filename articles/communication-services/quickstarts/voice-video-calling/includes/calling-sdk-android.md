@@ -4,13 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8d4e573cefd595669d9cb2cf9a7b83595eea7971
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 45a772b4a1d65b67f918107fd33135a56f6302f2
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622337"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106073159"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
+
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
@@ -23,9 +26,8 @@ ms.locfileid: "103622337"
 ### <a name="install-the-package"></a>パッケージをインストールする
 
 > [!NOTE]
-> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.8 を使用します。
+> このドキュメントでは、Calling SDK のバージョン 1.0.0-beta.8 を使用します。
 
-<!-- TODO: update with instructions on how to download, install and add package to project -->
 プロジェクト レベルの build.gradle を見つけて、`buildscript` および `allprojects` の下のリポジトリの一覧に `mavenCentral()` を追加します
 ```groovy
 buildscript {
@@ -59,11 +61,11 @@ dependencies {
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Azure Communication Services 通話クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+Azure Communication Services Calling SDK の主な機能のいくつかは、次のクラスとインターフェイスによって処理されます。
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
+| CallClient| CallClient は、Calling SDK へのメイン エントリ ポイントです。|
 | CallAgent | CallAgent は、通話を開始および管理するために使用します。 |
 | CommunicationTokenCredential | CommunicationTokenCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。|
 | CommunicationIdentifier | CommunicationIdentifier は、呼び出しの一部となる可能性があるさまざまな種類の参加者として使用されます。|
@@ -224,10 +226,10 @@ Firebase Cloud Messaging から通知メッセージを受信するには、Andr
 
 プッシュ通知を登録するには、アプリケーションは、デバイス登録トークンを使用して *CallAgent* インスタンスの `registerPushNotification()` を呼び出す必要があります。
 
-デバイス登録トークンを取得するには、お使いのアプリケーション モジュールの *build.gradle* ファイルの `dependencies` セクションに次の行を追加して、Firebase クライアント ライブラリを追加します。
+デバイス登録トークンを取得するには、お使いのアプリケーション モジュールの *build.gradle* ファイルの `dependencies` セクションに次の行を追加して、Firebase SDK を追加します。
 
 ```
-    // Add the client library for Firebase Cloud Messaging
+    // Add the SDK for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
@@ -244,7 +246,7 @@ Firebase Cloud Messaging から通知メッセージを受信するには、Andr
 apply plugin: 'com.google.gms.google-services'
 ```
 
-ツール バーの *[今すぐ同期]* を選択します。 次のコード スニペットを追加し、クライアント アプリケーション インスタンス用に Firebase Cloud Messaging クライアント ライブラリで生成されたデバイス登録トークンを取得します。メイン Activity のヘッダーには、インスタンス用に次の import を必ず追加するようにしてください。 これらは、スニペットでトークンを取得するために必要です。
+ツール バーの *[今すぐ同期]* を選択します。 次のコード スニペットを追加し、クライアント アプリケーション インスタンス用に Firebase Cloud Messaging SDK で生成されたデバイス登録トークンを取得します。メイン Activity のヘッダーには、インスタンス用に下の import を必ず追加するようにしてください。 これらは、スニペットでトークンを取得するために必要です。
 
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -272,7 +274,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-着信通話プッシュ通知用の通話サービス クライアント ライブラリに、デバイス登録トークンを登録します。
+着信通話プッシュ通知用の通話サービス SDKに、デバイス登録トークンを登録します。
 
 ```java
 String deviceRegistrationToken = "<Device Token from previous section>";
@@ -288,7 +290,7 @@ catch(Exception e) {
 
 着信通話プッシュ通知を受信するには、ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
 
-Firebase Cloud Messaging からペイロードを取得するには、*FirebaseMessagingService* Firebase クライアント ライブラリ クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
+Firebase Cloud Messaging からペイロードを取得するには、*FirebaseMessagingService* Firebase SDK クラスを拡張し、`onMessageReceived` メソッドをオーバーライドする、新しいサービスをまず作成 ([ファイル] > [新規] > [サービス] > [サービス]) します。 このメソッドは、Firebase Cloud Messaging によってアプリケーションにプッシュ通知が配信されると呼び出されるイベント ハンドラーです。
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -318,7 +320,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- ペイロードを取得したら、*CallAgent* インスタンスで *handlePushNotification* メソッドを呼び出すことによって処理されるように、*Communication Services* のクライアント ライブラリにそれを渡して内部 *IncomingCallInformation* オブジェクトに解析することができます。 `CallAgent` インスタンスを作成するには、`CallClient` クラスで `createCallAgent(...)` メソッドを呼び出します。
+- ペイロードを取得したら、*CallAgent* インスタンスで *handlePushNotification* メソッドを呼び出すことによって処理されるように、*Communication Services* の SDK にそれを渡して内部 *IncomingCallInformation* オブジェクトに解析することができます。 `CallAgent` インスタンスを作成するには、`CallClient` クラスで `createCallAgent(...)` メソッドを呼び出します。
 
 ```java
 try {

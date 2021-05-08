@@ -1,17 +1,17 @@
 ---
 title: 読み取りレプリカ - Azure Database for MySQL - フレキシブル サーバー
 description: 'Azure Database for MySQL フレキシブル サーバーの読み取りレプリカについて次の内容を説明します: レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e51b9667e3bb20a6bd463d3286888085a927f2c0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98251303"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109660"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカ
 

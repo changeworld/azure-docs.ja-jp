@@ -3,15 +3,15 @@ title: 事業継続とディザスター リカバリー
 description: データを保護する戦略を設計し、破壊的なイベントから迅速に復旧し、重要なビジネス機能に必要なリソースを復元し、Azure Logic Apps の事業継続を維持します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: f974a99c59b19b5df7bf6ffcc66c2dc133743f0a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89658210"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790541"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps の事業継続とディザスター リカバリー
 
@@ -46,7 +46,7 @@ ms.locfileid: "89658210"
 
 * どちらのロジック アプリのインスタンスもホスト型は同じです。 そのため、どちらのインスタンスもグローバル マルチテナント Azure のリージョンに展開されるか、または ISE に展開されます。これにより、ロジック アプリは Azure 仮想ネットワーク内のリソースに直接アクセスできるようになります。 ペアになっているリージョンのベストプラクティスと詳細については、「[事業継続とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」を参照してください。
 
-  たとえば、プライマリ ロジック アプリが ISE で実行され、[ISE でバージョンのコネクタ](../connectors/apis-list.md#ise-connectors)、HTTP アクションを使用して Azure 仮想ネットワーク内のリソースを呼び出すか、またはその両方の場合、プライマリとセカンダリの両方の場所を ISE にする必要があります。 このシナリオでは、セカンダリ ロジック アプリも、セカンダリの場所でプライマリ ロジック アプリと同様のセットアップが必要です。
+  たとえば、プライマリ ロジック アプリが ISE で実行され、[ISE でバージョンのコネクタ](../connectors/managed.md#ise-connectors)、HTTP アクションを使用して Azure 仮想ネットワーク内のリソースを呼び出すか、またはその両方の場合、プライマリとセカンダリの両方の場所を ISE にする必要があります。 このシナリオでは、セカンダリ ロジック アプリも、セカンダリの場所でプライマリ ロジック アプリと同様のセットアップが必要です。
 
   > [!NOTE]
   > より高度なシナリオでは、マルチテナント Azure と ISE の両方を場所として混在させることができます。 ただし、 [ISE とマルチテナント Azureでのロジック アプリの実行方法の違い](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)について考慮し、理解しておく必要があります。

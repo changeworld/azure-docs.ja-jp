@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: d8a6fd458cdcf79cdeb693b25acf72d4ec48def7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 629b48a378dd029d9952270e3c71762a5bb7aa82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102507519"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306723"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>モデルの変換に Azure Blob Storage を使用する
 
@@ -29,7 +29,7 @@ ms.locfileid: "102507519"
 
 - [Azure Portal](https://portal.azure.com)
 - [az コマン ドライン](/cli/azure/install-azure-cli)
-- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK (C#、Python ...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Azure Remote Rendering が自分のストレージ アカウントにアクセスできることを確認する
@@ -53,7 +53,7 @@ SAS URI は、次のいずれかを使用して生成できます。
 - az PowerShell モジュール
   - 「[PowerShell スクリプトの例](../../samples/powershell-example-scripts.md)」を参照
 - [az コマン ドライン](/cli/azure/install-azure-cli)
-- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
   - コンテナーを右クリックして [Shared Access Signature の取得] を選択する (入力コンテナーに対しては読み取りとリスト アクセス、出力コンテナーに対しては書き込みアクセス)
 - SDK (C#、Python ...)
 
@@ -71,6 +71,9 @@ SAS URI は、次のいずれかを使用して生成できます。
 - [Azure Storage REST API の使用](/rest/api/storageservices/blob-service-rest-api)
 
 変換のためにデータをアップロードする方法の例については、「[PowerShell スクリプトの例](../../samples/powershell-example-scripts.md#script-conversionps1)」の「Conversion.ps1」を参照してください。
+
+> [!Note]
+> 入力モデルをアップロードする場合は、サービスで [Windows のパスの長さの制限](https://docs.mxicrosoft.com/windows/win32/fileio/maximum-file-path-limitation)に関する問題を回避するために、ファイル名やフォルダー構造が長くならないように注意する必要があります。 
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>変換されたモデルの SAS URI を取得する
 

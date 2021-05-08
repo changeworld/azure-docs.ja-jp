@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 1eb3728e9697cefc3621221e4a918656efcba3c6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.custom: devx-track-python, devx-track-azurepowershell
+ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936636"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766355"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -24,14 +24,14 @@ Python 用 Azure Key Vault シークレット クライアント ライブラリ
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Python 2.7 以降または 3.5.3 以降](/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 以降または 3.6 以降](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
 
 ## <a name="set-up-your-local-environment"></a>ローカル環境を設定する
-このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/python/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -80,17 +80,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-
 
 このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
 
-Windows
-```cmd
-set KEY_VAULT_NAME=<your-key-vault-name>
-````
-Windows PowerShell
-```powershell
-$Env:KEY_VAULT_NAME="<your-key-vault-name>"
-```
-
-macOS または Linux
-```cmd
+```bash
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
@@ -180,7 +170,7 @@ retrieved_secret = client.get_secret(secretName)
 
 シークレット値は `retrieved_secret.value` に含まれています。
 
-また、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) を使用してシークレットを取得することもできます。
+また、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) を使用してシークレットを取得することもできます。
 
 ### <a name="delete-a-secret"></a>シークレットを削除します
 
@@ -193,7 +183,7 @@ deleted_secret = poller.result()
 
 `begin_delete_secret` メソッドは非同期であり、ポーラー オブジェクトを返します。 ポーラーの `result` メソッドを呼び出して、その完了を待機します。
 
-シークレットが削除されたことを確認するには、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) を使用します。
+シークレットが削除されたことを確認するには、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) を使用します。
 
 削除されると、シークレットは削除されたが回復可能な状態がしばらく維持されます。 コードをもう一度実行する場合は、別のシークレット名を使用します。
 
@@ -210,7 +200,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault の概要](../general/overview.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
 - [Key Vault のセキュリティの概要](../general/security-overview.md)
 - [Key Vault を使用した認証](../general/authentication.md)

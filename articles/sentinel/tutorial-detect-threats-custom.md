@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f0a94daef8c5db820a17fe8cb50eda616bcf260
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453937"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105042800"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>チュートリアル:脅威を検出するためのカスタム分析規則を作成する
 
@@ -64,7 +64,7 @@ Azure Sentinel に[データソースを接続](quickstart-onboard.md)した後�
 
    :::image type="content" source="media/tutorial-detect-threats-custom/set-rule-logic-tab-1-new.png" alt-text="クエリ ルールのロジックと設定を構成する" lightbox="media/tutorial-detect-threats-custom/set-rule-logic-tab-all-1-new.png":::
 
-- もう 1 つ、異常な数のリソースが [Azure アクティビティ](../azure-monitor/platform/activity-log.md)で作成されたときにアラートを発するサンプル クエリを次に示します。
+- もう 1 つ、異常な数のリソースが [Azure アクティビティ](../azure-monitor/essentials/activity-log.md)で作成されたときにアラートを発するサンプル クエリを次に示します。
 
     ```kusto
     AzureActivity

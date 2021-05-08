@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: irenehua
 ms.openlocfilehash: 7a2e0531427343a2ec267de54cee05b5eb25889f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99592281"
 ---
 # <a name="add-rules-for-azure-load-balancer-with-virtual-machine-scale-sets"></a>Azure Load Balancer と仮想マシン スケール セットの規則の追加

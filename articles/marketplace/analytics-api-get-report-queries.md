@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: e2be43e8402e5179fb62d810fe7b9f41e704c49d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583613"
 ---
 # <a name="get-report-queries-api"></a>レポート クエリの取得 API
@@ -97,5 +97,5 @@ None
 | `User` | クエリを作成したユーザーの ID |
 | `CreatedTime` | クエリの作成時刻 |
 | `TotalCount` | Value 配列内のデータセットの数 |
-| `StatusCode` | 結果コード。 200、400、401、403、500 の値になる可能性があります。 |
+| `StatusCode` | 結果コード。 200、400、401、403、500 の値になる可能性があります |
 |||

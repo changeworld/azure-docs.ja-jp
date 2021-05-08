@@ -1,14 +1,14 @@
 ---
 title: トラブルシューティングのためにブラウザー トレースをキャプチャする
 description: Azure portal での問題のトラブルシューティングに役立つように、ブラウザー トレースからネットワーク情報をキャプチャします。
-ms.date: 05/11/2020
+ms.date: 03/25/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63bc3e93187274db607b5f60216de461729801dc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745997"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563491"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>トラブルシューティングのためにブラウザー トレースをキャプチャする
 
@@ -190,7 +190,7 @@ Google Chrome と Microsoft Edge (Chromium) はどちらも、[Chromium オー�
 
     ![ブラウザー トレース結果のスクリーンショット](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. 予期しないポータルの動作を再現した後、 **[HAR のエクスポート/インポート]** を選択して **[HAR 形式ですべて保存]** を選択します。
+1. 予期しないポータルの動作を再現した後、 **[HAR 形式ですべて保存]** を選択します。
 
     ![[Export HAR]\(HAR のエクスポート\) のスクリーンショット](media/capture-browser-trace/firefox-network-export-har.png)
 

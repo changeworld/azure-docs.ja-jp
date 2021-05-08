@@ -3,13 +3,13 @@ title: Azure Resource Manager テンプレートを使用して Azure portal ダ
 description: Azure Resource Manager テンプレートを使用して Azure portal ダッシュボードを作成する方法について説明します。
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745725"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658329"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure portal でダッシュボードを作成する
 
@@ -30,9 +30,13 @@ Azure portal のダッシュボードでは、お使いのクラウド リソー
 
 このクイックスタートの次の部分で作成するダッシュボードには既存の VM が必要です。 次の手順に従って VM を作成します。
 
-1. Azure portal で、[Cloud Shell] を選択します。
+1. Azure portal で、 **[Cloud Shell]** を選択します。
 
     ![Azure portal リボンから [Cloud Shell] を選択する](media/quick-create-template/cloud-shell.png)
+
+1. **[Cloud Shell]** ウィンドウで **[PowerShell]** を選択します。
+
+    ![ターミナル ウィンドウで PowerShell を選択します](media/quick-create-template/powershell.png)
 
 1. 次のコマンドをコピーし、コマンド プロンプトに入力してリソース グループを作成します。
 
@@ -85,19 +89,7 @@ Azure portal のダッシュボードでは、お使いのクラウド リソー
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-ダッシュボードが正常に作成されたことと、VM からデータを表示できることを確認します。
-
-1. Azure portal で、 **[ダッシュボード]** を選択します。
-
-    ![Azure portal でダッシュボードに移動する](media/quick-create-template/navigate-to-dashboards.png)
-
-1. ダッシュボード ページで、 **[Simple VM Dashboard]\(シンプル VM ダッシュボード\)** を選択します。
-
-    ![シンプル VM ダッシュボードに移動する](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. ARM テンプレートによって作成されたダッシュボードを確認します。 一部のコンテンツが静的であるが、冒頭で作成した VM のパフォーマンスを示すグラフもあることがわかります。
-
-    ![シンプル VM ダッシュボードを確認する](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

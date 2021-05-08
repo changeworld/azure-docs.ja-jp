@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0152dc5102fd3f77418448234cab1234d25b97c6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: d683548c32baa37f9657541d90d7a58561a1d723
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008153"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445025"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (classic) における委任されたアクセス
 

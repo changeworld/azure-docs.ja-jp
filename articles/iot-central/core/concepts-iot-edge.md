@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 1a464b9e039f256fae52c32d828b1ec39a20a228
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123277"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102608633"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -74,8 +74,6 @@ IoT Edge のゲートウェイ パターンの詳細については、「[IoT Ed
 ダウンストリーム デバイスからは、複数のカスタム モジュールを通して IoT Edge ゲートウェイ デバイスに接続できます。 次の図は、Modbus カスタム モジュール、BLE カスタム モジュール、"*IoT Edge ハブ*" モジュールを通して接続しているダウンストリーム デバイスを示したものです。
 
 :::image type="content" source="media/concepts-iot-edge/gateway-two-modules-transparent.png" alt-text="複数のカスタム モジュールを使用した接続の図" border="false":::
-
-<!-- To do: add link to how to configure gateway article? -->
 
 ## <a name="iot-edge-devices-and-iot-central"></a>IoT Edge デバイスと IoT Central
 
@@ -286,7 +284,7 @@ IoT Edge ランタイムを実行できる場所については、「[Azure IoT 
 
 IoT Edge デバイスをゲートウェイ デバイスにするよう選択した場合は、ゲートウェイ デバイスに接続するデバイスのデバイス モデルにダウンストリーム リレーションシップを追加できます。
 
-<!-- TODO - add link to Edge Gateway how-to -->
+詳細については、[IoT Edge の透過的なゲートウェイを使用してデバイスを接続する方法](how-to-connect-iot-edge-transparent-gateway.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

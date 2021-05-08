@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 0d02b46345af13770f77a7dac452127a665e01fd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9b555d7972e88df85e08dbcb1737231755c21361
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94696746"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448850"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer の TCP リセットおよびアイドルのタイムアウト
 
@@ -58,7 +58,6 @@ TCP keep-alive は、バッテリーの寿命に制約がないシナリオに�
 ## <a name="limitations"></a>制限事項
 
 - TCP リセットが送信されるのは、ESTABLISHED 状態の TCP 接続時のみです。
-- TCP リセットは、HA ポートが構成されている内部 Load Balancers には送信されません。
 - TCP アイドル タイムアウトは、UDP プロトコルの負荷分散規則には影響しません。
 
 ## <a name="next-steps"></a>次の手順

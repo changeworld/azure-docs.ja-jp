@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201656"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048206"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service の一般的な問題に関するトラブルシューティング ガイド
 
@@ -19,14 +19,14 @@ ms.locfileid: "98201656"
 
 ## <a name="access-token-too-long"></a>アクセス トークンが長すぎる
 
-### <a name="possible-errors"></a>考えられるエラー:
+### <a name="possible-errors"></a>考えられるエラー
 
 * クライアント側の `ERR_CONNECTION_`
 * 414 URI が長すぎます
 * 413 ペイロードが大きすぎます
 * アクセス トークンは 4K より長くてはいけません。 413 要求のエンティティが大きすぎます
 
-### <a name="root-cause"></a>根本原因:
+### <a name="root-cause"></a>根本原因
 
 HTTP/2 の場合、1 つのヘッダーの最大長は **4 K** であるため、ブラウザーを使用して Azure サービスにアクセスする場合、この制限についてエラー `ERR_CONNECTION_` が発生します。
 
@@ -34,18 +34,19 @@ HTTP/1.1 の場合や C# クライアントの場合、URI の最大長は **12 
 
 SDK バージョン **v.1.0.6** 以降では、生成されたアクセス トークンが **4 K** よりも大きいと、`/negotiate` によって `413 Payload Too Large` がスローされます。
 
-### <a name="solution"></a>解決方法:
+### <a name="solution"></a>解決策
 
 既定では、`context.User.Claims` からの要求は、**ASRS** (**A** zure **S** ignal **R** **S** ervice) に対する JWT アクセス トークンの生成時に含められます。そのため、クライアントが `Hub` に接続するときに、要求は保持されていて、**ASRS** から `Hub` に渡すことができます。
 
-場合によっては、アプリ サーバー用の大量の情報を格納するために `context.User.Claims` が利用されます。そのほとんどは、`Hub` では使用されず、その他のコンポーネントによって使用されます。
+場合によっては、アプリ サーバー用の大量の情報を格納するために `context.User.Claims` が使用されます。そのほとんどは、`Hub` では使用されず、その他のコンポーネントによって使用されます。
 
 生成されたアクセス トークンはネットワーク経由で渡され、WebSocket/SSE 接続の場合、アクセス トークンはクエリ文字列を通して渡されます。 そのためベスト プラクティスとして、ハブが必要とするときに、**必要な** 要求だけを、クライアントから **ASRS** を介してアプリ サーバーに渡すことをお勧めします。
 
 アクセス トークン内の **ASRS** に渡す要求をカスタマイズする場合は、`ClaimsProvider` があります。
 
 ASP.NET Core の場合:
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 ASP.NET の場合:
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -67,13 +69,13 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 ## <a name="tls-12-required"></a>TLS 1.2 が必要
 
-### <a name="possible-errors"></a>考えられるエラー:
+### <a name="possible-errors"></a>考えられるエラー
 
 * ASP.NET の "利用可能なサーバーがありません" というエラー [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET の "接続がアクティブではありません。サービスにデータを送信できません。" というエラー [#324](https://github.com/Azure/azure-signalr/issues/324)
-* "https://<API endpoint> に対する HTTP 要求の発行中にエラーが発生しました。 このエラーは、HTTPS の場合に HTTP.SYS でサーバー証明書が正しく構成されていないという事実のためだと考えられます。 このエラーは、クライアントとサーバーの間でセキュリティ バインドが一致していないことが原因の場合もあります。"
+* "https://<API endpoint> に対する HTTP 要求の発行中にエラーが発生しました。 このエラーは、HTTPS の場合に HTTP.SYS でサーバー証明書が正しく構成されていないことが原因と考えられます。 このエラーは、クライアントとサーバーの間でセキュリティ バインドが一致していないことが原因の場合もあります。"
 
-### <a name="root-cause"></a>根本原因:
+### <a name="root-cause"></a>根本原因
 
 Azure サービスでは、セキュリティ上の懸念のため、TLS 1.2 のみがサポートされています。 .NET Framework の使用時には、TLS 1.2 が既定のプロトコルではない可能性があります。 結果として、ASRS へのサーバー接続を正常に確立できません。
 
@@ -93,16 +95,18 @@ Azure サービスでは、セキュリティ上の懸念のため、TLS 1.2 の
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="例外のスロー":::
 
 2. ASP.NET の場合は、次のコードを現在の `Startup.cs` に追加して詳細なトレースを有効にし、ログからエラーを確認することもできます。
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>解決方法:
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>解決策
 
 次のコードを現在の Startup に追加します。
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
@@ -170,7 +174,7 @@ ASP.NET SignalR の場合、[クライアント接続が切断される](#client
 
 [トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 "ネゴシエート時のエラー":Azure SignalR サービスはまだ接続されていません。後でもう一度試してください。
+## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 "ネゴシエート時のエラー": Azure SignalR サービスはまだ接続されていません。後でもう一度試してください
 
 ### <a name="root-cause"></a>根本原因
 
@@ -180,18 +184,21 @@ ASP.NET SignalR の場合、[クライアント接続が切断される](#client
 
 サーバー側のトレースを有効にして、サーバーが Azure SignalR Service への接続を試みたときのエラーの詳細を確認します。
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>ASP.NET Core SignalR に対するサーバー側のログ記録を有効にする
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>ASP.NET Core SignalR に対するサーバー側のログ記録を有効にする
 
-ASP.NET Core SignalR のサーバー側ログは、ASP.NET Core フレームワークで提供されている `ILogger` ベースの[ログ記録](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1)と統合されています。 サーバー側のログ記録は、`ConfigureLogging` を使用して有効にできます。以下に使用例を示します。
-```cs
+ASP.NET Core SignalR のサーバー側ログは、ASP.NET Core フレームワークで提供されている `ILogger` ベースの[ログ記録](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true)と統合されています。 サーバー側のログ記録は、`ConfigureLogging` を使用して有効にできます。以下に使用例を示します。
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Azure SignalR のロガー カテゴリは常に `Microsoft.Azure.SignalR` で始まります。 Azure SignalR からの詳細なログを有効にするには、**appsettings.json** ファイルで次のように、先行するプレフィックスを `Debug` レベルに構成します。
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Azure SignalR のロガー カテゴリは常に `Microsoft.Azure.SignalR` で�
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>ASP.NET SignalR に対するサーバー側のトレースを有効にする
 
 バージョンが `1.0.0` 以上の SDK を使用する場合、`web.config` に以下を追加すればトレースを有効にできます。([詳細](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102))
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -242,7 +250,7 @@ Azure SignalR のロガー カテゴリは常に `Microsoft.Azure.SignalR` で�
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>根本原因:
+### <a name="root-cause"></a>根本原因
 
 クライアント接続は、さまざまな状況で切断される可能性があります。
 * 受信要求によって `Hub` が例外をスローする場合。
@@ -268,13 +276,13 @@ Azure SignalR のメトリックで、クライアント接続が長期にわた
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="絶えず増加するクライアント接続":::
 
-### <a name="root-cause"></a>根本原因:
+### <a name="root-cause"></a>根本原因
 
 SignalR クライアント接続の `DisposeAsync` がまったく呼び出されておらず、接続が開いたままになっています。
 
 ### <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
-1. SignalR クライアントが閉じたことが **ない** かどうかを確認します。
+SignalR クライアントが閉じたことが **ない** かどうかを確認します。
 
 ### <a name="solution"></a>解決策
 
@@ -282,7 +290,7 @@ SignalR クライアント接続の `DisposeAsync` がまったく呼び出さ�
 
 次に例を示します。
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -324,21 +332,95 @@ finally
 
 このセクションでは、サーバー接続の切断に至るいくつかの考えられる原因について説明し、根本原因を特定する方法に関するガイダンスをいくつか示します。
 
-### <a name="possible-errors-seen-from-server-side"></a>サーバー側から確認される可能性のあるエラー:
+### <a name="possible-errors-seen-from-the-server-side"></a>サーバー側から確認される可能性のあるエラー
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>根本原因:
+### <a name="root-cause"></a>根本原因
 
 サーバーとサービスの間の接続は、**ASRS** (**A** zure **S** ignal **R** **S** ervice) によって閉じられます。
 
+ping タイムアウトの場合は、サーバー側での CPU 使用率が高いか、スレッド プールが枯渇したことが原因である可能性があります。
+
+ASP.NET SignalR では、SDK 1.6.0 で既知の問題が修正されました。 お使いの SDK を最新バージョンにアップグレードしてください。
+
+## <a name="thread-pool-starvation"></a>スレッド プールの枯渇
+
+サーバーが逼迫している場合は、メッセージの処理を行っているスレッドがないことを意味します。 すべてのスレッドが特定のメソッドで応答していません。
+
+通常、このシナリオは、 async over sync、または async メソッドの `Task.Result`/`Task.Wait()` によって発生します。
+
+[ASP.NET Core パフォーマンスのベスト プラクティス](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls)に関する記事を参照してください。
+
+[スレッド プールの枯渇](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)の詳細について確認してください。
+
+### <a name="how-to-detect-thread-pool-starvation"></a>スレッド プールの枯渇を検出する方法
+
+スレッド数を確認してください。 その時点でスパイクが発生していない場合は、これらの手順を実行します。
+* Azure App Service を使用している場合は、メトリックでスレッド数を確認します。 `Max` の集計を確認します。
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Azure App Service の [最大スレッド数] ペインのスクリーンショット。":::
+
+* .NET Framework を使用している場合は、サーバー VM のパフォーマンス モニターで[メトリック](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters)を確認できます。
+* コンテナーで .NET Core を使用している場合は、「[コンテナーでの診断の収集](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers)」を参照してください。
+
+コードを使用して、スレッド プールの枯渇を検出することもできます。
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+それをサービスに追加します。
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+その後、サーバー接続が ping タイムアウトによって切断されたときにログを確認します。
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>スレッド プールの枯渇の根本原因を見つける方法
+
+スレッド プールの枯渇の根本原因を見つけるには、次のようにします。
+
+* メモリをダンプし、呼び出し履歴を分析します。 詳細については、[メモリ ダンプの収集と分析](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/)に関するページを参照してください。
+* スレッド プールの枯渇が検出されたときに、[clrmd](https://github.com/microsoft/clrmd) を使用してメモリをダンプします。 その後、呼び出し履歴をログに記録します。
+
 ### <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
-1. アプリ サーバー側のログを開き、通常とは異なる何かが発生したかどうかを確認します
-2. アプリ サーバー側のイベント ログで、アプリ サーバーが再起動されたかどうかを確認します
-3. Microsoft へのイシューを作成して概算時間を提供し、リソース名をメールで送信します
+1. アプリ サーバー側のログを開き、通常とは異なる何かが発生したかどうかを確認します。
+2. アプリ サーバー側のイベント ログで、アプリ サーバーが再起動されたかどうかを確認します。
+3. イシューを作成します。 概算時間を提供し、リソース名を Microsoft にメールで送信します。
 
 [トラブルシューティングに関する問題やフィードバックがある場合は、お知らせください。](https://aka.ms/asrs/survey/troubleshooting)
 

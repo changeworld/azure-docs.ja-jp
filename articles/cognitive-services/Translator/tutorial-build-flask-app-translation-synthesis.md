@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: c04bac76453d565abb99a971386b9ce0461b88ae
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 6ec951e57b40ae1440f541c02b26e7788b3cf151
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102172081"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105043735"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 
@@ -49,7 +49,7 @@ Flask は、Web アプリケーションを作成するためのマイクロフ�
 
 このチュートリアルに必要なソフトウェアとサブスクリプション キーを確認しましょう。
 
-* [Python 3.5.2 以降](https://www.python.org/downloads/)
+* [Python 3.6 以降](https://www.python.org/downloads/)
 * [Git ツール](https://git-scm.com/downloads)
 * IDE またはテキスト エディター ([Visual Studio Code](https://code.visualstudio.com/)、[Atom](https://atom.io/) など)  
 * [Chrome](https://www.google.com/chrome/browser/) または [Firefox](https://www.mozilla.org/firefox)
@@ -104,7 +104,7 @@ Flask Web アプリを作成する前に、プロジェクトの作業ディレ�
 
 2. 仮想環境をアクティブ化するコマンドは、プラットフォーム/シェルによって異なります。   
 
-   | プラットフォーム | Shell | command |
+   | プラットフォーム | Shell | コマンド |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | Bash | `source venv/Scripts/activate` |

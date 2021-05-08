@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703683"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587646"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -167,6 +167,18 @@ hdbuserstore list
 
 >[!NOTE]
 > `/usr/sap/{SID}/home/.hdb/` の下に固有の一連の SSFS ファイルがあることを確認してください。 このパスにはフォルダーが 1 つしか存在しません。
+
+事前登録スクリプトの実行を完了するために必要な手順の概要を次に示します。
+
+|担当者  |ソース  |実行対象  |説明  |
+|---------|---------|---------|---------|
+|```<sid>```adm (OS)     |  HANA OS       |   チュートリアルを読み、事前登録スクリプトをダウンロードする      |   [上記の前提条件](#prerequisites)を読み、[こちら](https://aka.ms/scriptforpermsonhana)から事前登録スクリプトをダウンロードします  |
+|```<sid>```adm (OS) と SYSTEM ユーザー (HANA)    |      HANA OS   |   hdbuserstore Set コマンドを実行する      |   例: hdbuserstore Set SYSTEM hostname>:3```<Instance#>```13 SYSTEM ```<password>``` **注:**  IP アドレスまたは FQDN ではなく、必ずホスト名を使用ください      |
+|```<sid>```adm (OS)    |   HANA OS      |  hdbuserstore List コマンドを実行する       |   結果に次のような既定のストアが含まれているかどうかを確認します: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|root (OS)     |   HANA OS        |    Azure Backup HANA 事前登録スクリプトを実行する      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```adm (OS)    |  HANA OS       |   hdbuserstore List コマンドを実行する      |    結果に次のような新しい行が結果に含まれているかどうかを確認します: ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+事前登録スクリプトが正常に実行されたことを確認したら、[接続要件](#set-up-network-connectivity)の確認に進み、次に Recovery Services コンテナーから[バックアップを構成](#discover-the-databases)できます。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 

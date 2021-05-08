@@ -3,13 +3,12 @@ title: Azure Site Recovery サービスに関する一般的な質問
 description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
 ms.topic: conceptual
 ms.date: 7/14/2020
-ms.author: raynew
-ms.openlocfilehash: 9db91a15c0ee5c982f73f36a36f12b38b969a125
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 974a119efaa69440aed6e6f9c3ac26ba26d7da16
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99820198"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581171"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -93,7 +92,7 @@ DR ドリルに対しては、別個のコストはかかりません。 テス�
 
 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、仮想マシンまたは物理サーバーでの実行内容に関するどのような情報を持つこともありません。

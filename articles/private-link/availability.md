@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 26485c84749b7d4c91159476b3f683c2b0f3831b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 866eb9feb152c0094cd5281fe4820ccc4589386f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103555172"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778321"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -96,7 +96,7 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 |:-------------------|:-----------------|:----------------|:--------|
 | Azure Blob storage (Data Lake Storage Gen2 を含む)       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Blob Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Files | すべてのパブリック リージョン<br/> すべての Government リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/files/storage-files-networking-endpoints.md)   |
-| Azure File Sync | すべてのパブリック リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/files/storage-sync-files-networking-endpoints.md)   |
+| Azure File Sync | すべてのパブリック リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/file-sync/file-sync-networking-endpoints.md)   |
 | Azure Queue Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Queue storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md) |
 | Azure Table Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Table Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | 以下を除くすべてのパブリック リージョン:ドイツ中部、ドイツ北東部 <br/> すべての Government リージョン  | | GA <br/> [Azure Batch のプライベート エンドポイントを作成する方法を確認します。](../batch/private-connectivity.md) |

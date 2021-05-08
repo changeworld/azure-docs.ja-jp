@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: b9926d5d6a70d959c0baacd9602341bb69abe924
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ea9ed2c74651a7719533340a24c4741d4e25b805
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097246"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605724"
 ---
 # <a name="display-feature-information"></a>機能情報を表示する
 
@@ -75,6 +75,9 @@ map.events.add((OnFeatureClick) (features) -> {
     String msg = features.get(0).getStringProperty("title");
 
     //Do something with the message.
+
+    //Return a boolean indicating if event should be consumed or continue bubble up.
+    return false;
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
@@ -93,6 +96,9 @@ map.events.add(OnFeatureClick { features: List<Feature> ->
     val msg = features[0].getStringProperty("title")
 
     //Do something with the message.
+
+    //Return a boolean indicating if event should be consumed or continue bubble up.
+    return false
 }, layer.getId()) //Limit this event to the symbol layer.
 ```
 
@@ -112,6 +118,9 @@ map.events.add((OnFeatureClick) (features) -> {
 
     //Display a toast message with the title information.
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+    //Return a boolean indicating if event should be consumed or continue bubble up.
+    return false;
 }, layer.getId());    //Limit this event to the symbol layer.
 ```
 
@@ -127,6 +136,9 @@ map.events.add(OnFeatureClick { features: List<Feature> ->
 
     //Display a toast message with the title information.
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+
+    //Return a boolean indicating if event should be consumed or continue bubble up.
+    return false
 }, layer.getId()) //Limit this event to the symbol layer.
 ```
 
@@ -210,6 +222,9 @@ map.events.add((OnFeatureClick)(feature) -> {
 
     //Open the popup.
     popup.open();
+
+    //Return a boolean indicating if event should be consumed or continue bubble up.
+    return false;
 });
 ```
 
@@ -255,6 +270,9 @@ map.events.add(OnFeatureClick { feature: List<Feature> ->
 
     //Open the popup.
     popup.open()
+
+    //Return a boolean indicating if event should be consumed or continue bubble up.
+    return false
 })
 ```
 

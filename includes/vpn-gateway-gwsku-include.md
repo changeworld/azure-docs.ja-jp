@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010811"
 ---
 仮想ネットワーク ゲートウェイを作成する場合、使用するゲートウェイの SKU を指定する必要があります。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 Azure Availability Zones における仮想ネットワーク ゲートウェイの SKU については、[Azure Availability Zones でのゲートウェイの SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md) に関するページを参照してください。
@@ -33,7 +33,7 @@ ms.locfileid: "96010811"
 
 | **SKU**| **機能**|
 | ---    | ---         |
-|**Basic** (\*\*)   | **ルートベースの VPN**: S2S/接続用に 10 個のトンネル。RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシーベースの VPN**: (IKEv1): 1 つの S2S/接続トンネル、P2S なし|
+|**Basic** (\*\*)   | **ルート ベースの VPN**: S2S/接続用に 10 個のトンネル。RADIUS 認証なし (P2S)、IKEv2 なし (P2S)<br>**ポリシー ベースの VPN**: (IKEv1): 1 S2S/接続トンネル、P2S なし|
 | **Basic を除くすべての Generation1 および Generation2 SKU** | **ルートベース VPN**: 最大 30 トンネル ( * )、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
 |        |             |
 

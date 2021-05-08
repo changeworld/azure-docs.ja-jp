@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 3383af447f40ea984bce9cbc956f22ee6c5af200
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583594"
 ---
 # <a name="get-report-api"></a>レポートの取得 API
@@ -96,7 +96,7 @@ None
 | `CreatedTime` | レポートが作成された時刻。 時刻の形式は yyyy-MM-ddTHH:mm:ssZ です |
 | `ModifiedTime` | レポートが最後に変更された時刻。 時刻の形式は yyyy-MM-ddTHH:mm:ssZ です |
 | `StartTime` | 実行が開始される時刻。 時刻の形式は yyyy-MM-ddTHH:mm:ssZ です |
-| `ReportStatus` | レポート実行の状態。 有効な値は、Paused、Active、および Inactive です。 |
+| `ReportStatus` | レポート実行のステータス。 有効な値は、一時停止、アクティブ、および非アクティブです。 |
 | `RecurrenceInterval` | レポートの作成中に指定された繰り返し間隔 |
 | `RecurrenceCount` | レポートの作成中に指定された繰り返し回数 |
 | `CallbackUrl` | 要求で指定されたコールバック URL |

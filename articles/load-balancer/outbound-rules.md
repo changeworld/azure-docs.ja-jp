@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 339bbd7edf48737113de360812165dc8148c5b93
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033155"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375867"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Azure Load Balancer のアウトバウンド規則
 
@@ -36,11 +36,11 @@ ms.locfileid: "97033155"
 アウトバウンド規則によって以下を制御できます。
 
 * **どの仮想マシンがどのパブリック IP アドレスに変換されるか。**
-     * 2 つの規則により、バックエンド プール A によって IP アドレス A と B が使用され、バックエンド プール B によって IP アドレス C と D が使用されます。
+     * バックエンドプール 1 では青色の IP アドレス 1 と 2 を使用し、バックエンドプール 2 では黄色の IP プレフィックスを使用する 2 つのルールがあります。
 * **アウトバウンド SNAT ポートの割り当て方法。**
-     * バックエンド プール B は送信接続を行う唯一のプールであり、バックエンド プール B にすべての SNAT ポートを提供し、バックエンド プール A には何も提供しません。
+     * バックエンド プール 2 がアウトバウンド接続を行う唯一のプールである場合、バックエンド プール 2 にすべての SNAT ポートを提供し、バックエンド プール 1 には何も提供しません。
 * **アウトバウンド変換の提供対象となるプロトコル。**
-     * バックエンド プール B には、送信用の UDP ポートが必要です。 バックエンド プール A には TCP が必要です。 TCP ポートを A に、UDP ポートを B に提供します。
+     * バックエンド プール 2 にアウトバウンド用の UDP ポートが必要で、バックエンド プール 1 に TCP が必要な場合は、TCP ポートを 1 に、UDP ポートを 2 に提供します。
 * **アウトバウンド接続のアイドル タイムアウトの時間 (4 分から 120 分)。**
      * キープアライブを使用した長期の接続がある場合は、長期の接続用にアイドル ポートを最大 120 分間予約します。 古い接続が破棄され、新しい接続用にポートが 4 分以内に解放されることを想定します 
 * **アイドル タイムアウト時に TCP リセットを送信するかどうか。**
@@ -135,7 +135,7 @@ NSG が AZURE_LOADBALANCER 既定タグからの正常性プローブ要求を�
 5. フロントエンドを使用して VM のアウトバウンド NAT を有効にするように、パブリック ロード バランサーのアウトバウンド規則を構成します。 アウトバウンドに負荷分散規則を使用することは推奨されません。負荷分散規則のアウトバウンド SNAT を無効にしてください。
 
 
-### <a name="scenario-2-modify-snatport-allocation"></a><a name="scenario2out"></a>シナリオ 2:[SNAT](load-balancer-outbound-connections.md) ポートの割り当てを変更する
+### <a name="scenario-2-modify-snat-port-allocation"></a><a name="scenario2out"></a>シナリオ 2:[SNAT](load-balancer-outbound-connections.md) ポートの割り当てを変更する
 
 
 #### <a name="details"></a>詳細
@@ -144,19 +144,19 @@ NSG が AZURE_LOADBALANCER 既定タグからの正常性プローブ要求を�
 アウトバウンド規則を使用して、[バックエンド プール サイズに基づく SNAT ポートの自動割り当て](load-balancer-outbound-connections.md#preallocatedports)を調整できます。 
 
 
-SNAT の不足が発生する場合は、用意される [SNAT](load-balancer-outbound-connections.md) ポートの数を既定の 1,024 個から増やします。 
+SNAT 不足が発生した場合は、[SNAT](load-balancer-outbound-connections.md) ポートの数を既定値の 1,024 よりも増やします。 
 
 
-パブリック IP アドレスごとに、最大 64,000 個のエフェメラル ポートが提供されます。 バックエンド プール内の VM の数によって、各 VM に配布されるポートの数が決まります。 バックエンド プール内の 1 つの VM は、最大 64,000 個のポートにアクセスできます。 2 つの VM の場合、アウトバウンド規則を使用して最大 32,000 個の [SNAT](load-balancer-outbound-connections.md) ポートを提供できます (2 x 32,000 = 64,000)。 
+パブリック IP アドレスごとに、最大 64,000 個のエフェメラル ポートが提供されます。 バックエンド プール内の VM の数によって、各 VM に配布されるポートの数が決まります。 バックエンド プール内の 1 つの VM は、最大 64,000 個のポートにアクセスできます。 2 つの VM の場合、アウトバウンド規則を使用して最大 32,000 個の [SNAT](load-balancer-outbound-connections.md) ポートを提供することができます (2 x 32,000 = 64,000)。 
 
 
-アウトバウンド規則を使用すると、既定で提供される SNAT ポートを調整できます。 既定の [SNAT](load-balancer-outbound-connections.md) ポートの割り当てよりも多く、または少なく提供します。 1 つのアウトバウンド規則を構成するフロントエンドのパブリック IP アドレスごとに、[SNAT](load-balancer-outbound-connections.md) ポートとして使用するための一時ポートが最大 64,000 個提供されます。 
+アウトバウンド規則を使用すると、既定で提供される SNAT ポートを調整できます。 既定の [SNAT](load-balancer-outbound-connections.md) ポートの割り当てよりも多くまたは少なく提供します。 1 つのアウトバウンド規則を構成するフロントエンドのパブリック IP アドレスごとに、[SNAT](load-balancer-outbound-connections.md) ポートとして使用する最大 64,000 個のエフェメラル ポートが提供されます。 
 
 
-ロード バランサーでは、8 の倍数で [SNAT](load-balancer-outbound-connections.md) ポートが提供されます。 8 で割り切れない値を指定すると、その構成操作は拒否されます。 各負荷分散規則とインバウンド NAT 規則は、8 つのポートの範囲を使用します。 負荷分散規則またはインバウンド NAT 規則が別の規則と同じ 8 つの範囲を共有する場合、追加のポートは使用されません。
+ロード バランサーは、[SNAT](load-balancer-outbound-connections.md) ポートを 8 の倍数で提供します。 8 で割り切れない値を指定すると、その構成操作は拒否されます。 各負荷分散規則とインバウンド NAT 規則は、8 つのポートの範囲を使用します。 負荷分散規則またはインバウンド NAT 規則が別の規則と同じ 8 つの範囲を共有する場合、追加のポートは使用されません。
 
 
-パブリック IP アドレスの数に基づく使用可能な [SNAT](load-balancer-outbound-connections.md) ポートよりも多くのポートを指定しようとすると、その構成操作は拒否されます。 たとえば、VM ごとに 10,000 個のポートを指定し、バックエンド プール内の 7 つの VM が 1 つのパブリック IP を共有する場合、構成は拒否されます。 7 を 10,000 に乗算した値が 64,000 個のポート制限を超えています。 このシナリオに対応するには、アウトバウンド規則のフロントエンドにパブリック IP アドレスを追加します。 
+パブリック IP アドレスの数に基づく使用可能な [SNAT](load-balancer-outbound-connections.md) ポートの数よりも多くのポートを提供しようとすると、その構成操作は拒否されます。 たとえば、VM ごとに 10,000 個のポートを指定し、バックエンド プール内の 7 つの VM が 1 つのパブリック IP を共有する場合、構成は拒否されます。 7 を 10,000 に乗算した値が 64,000 個のポート制限を超えています。 このシナリオに対応するには、アウトバウンド規則のフロントエンドにパブリック IP アドレスを追加します。 
 
 
 ポート数に 0 を指定して、[既定のポート割り当て](load-balancer-outbound-connections.md#preallocatedports)に戻します。 最大インスタンス数に達するまで、最初の 50 VM インスタンスは 1,024 ポートを取得し、51 から 100 の VM インスタンスは 512 ポートを取得します。 SNAT ポートの既定の割り当ての詳細については、[SNAT ポートの割り当てについての表](./load-balancer-outbound-connections.md#preallocatedports)を参照してください。
@@ -195,7 +195,7 @@ SNAT の不足が発生する場合は、用意される [SNAT](load-balancer-ou
 
 
 
-プレフィックスまたはパブリック IP を使用して [SNAT](load-balancer-outbound-connections.md) ポートをスケーリングします。 アウトバウンド接続の送信元を許可リストまたは拒否リストに追加します。
+プレフィックスまたはパブリック IP を使用して、[SNAT](load-balancer-outbound-connections.md) ポートをスケーリングします。 アウトバウンド接続の送信元を許可リストまたは拒否リストに追加します。
 
 
 

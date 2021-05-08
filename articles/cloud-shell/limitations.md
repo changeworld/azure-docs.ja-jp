@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74951481"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
@@ -45,7 +45,7 @@ Cloud Shell では、Microsoft Edge、Microsoft Internet Explorer、Google Chrom
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>特定のユーザーがアクティブにできるシェルは 1 つだけである
 
-ユーザーは、一度に 1 種類のシェル (**Bash** または **PowerShell**) だけを起動できます。 ただし、Bash または PowerShell の複数のインスタンスを同時に実行できます。 メニューを使用して Bash と PowerShell の間でスワップを行うと、Cloud Shell が再起動し、既存セッションが終了します。 別の方法として、PowerShell で `bash` と入力して Bash を実行でき、PowerShell で `pwsh` と入力して Bash を実行できます。
+ユーザーは、一度に 1 種類のシェル (**Bash** または **PowerShell**) だけを起動できます。 ただし、Bash または PowerShell の複数のインスタンスを同時に実行できます。 メニューを使用して Bash と PowerShell の間でスワップを行うと、Cloud Shell が再起動し、既存セッションが終了します。 別の方法として、PowerShell で `bash` と入力して Bash を実行でき、Bash で `pwsh` と入力して PowerShell を実行できます。
 
 ### <a name="usage-limits"></a>Usage limits (使用状況の制限)
 

@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 584748b23f526e6f03b543b8298927e3f202f743
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 04/05/2021
+ms.openlocfilehash: b67edd55906385f1eddeb576b5f4c97b18e10153
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82138914"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448493"
 ---
 # <a name="azure-media-player-demos"></a>Azure Media Player のデモ
 

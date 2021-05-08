@@ -3,26 +3,21 @@ title: ディスク暗号化が有効になっているプールを作成する
 description: ディスク暗号化構成を使用して、プラットフォーム マネージド キーでノードを暗号化する方法について説明します。
 author: pkshultz
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 04/16/2021
 ms.author: peshultz
-ms.custom: references_regions
-ms.openlocfilehash: 41fc827459b454e2bcb120a925cdab8fcd46e310
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01d2ea03768a09c1ad4e019b9e8ed43a26443637
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99055316"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728520"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>ディスク暗号化が有効になっているプールを作成する
 
 [仮想マシンの構成](nodes-and-pools.md#virtual-machine-configuration)を使用して Azure Batch プールを作成する場合、ディスク暗号化構成を指定することによって、プラットフォーム マネージド キーでプール内のコンピューティング ノードを暗号化できます。
 
 この記事では、ディスク暗号化が有効になっている Batch プールを作成する方法について説明します。
-
-> [!IMPORTANT]
-> 現在、Azure Batch のプラットフォーム マネージド キーを使用したホストでの暗号化のサポートは、米国東部、米国西部 2、米国中南部、US Gov バージニア、US Gov アリゾナの各リージョンでパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>ディスク暗号化構成が指定されたプールを使用する理由
 

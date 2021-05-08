@@ -4,12 +4,12 @@ description: タグを適用して、課金や管理のために Azure リソー
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb93673b643fd13efe9ffea148c5fb1d072f9e05
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e755a378fd71ea2763cc3e43477876fa3e8c5d5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896225"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934191"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>タグを使用して Azure リソースと整理階層を整理する
 
@@ -684,10 +684,10 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 Azure REST API でタグを操作するには、次のように使用します。
 
-* [Tags - スコープを指定して作成または更新する](/rest/api/resources/tags/createorupdateatscope) (PUT 操作)
-* [Tags - スコープを指定して更新する](/rest/api/resources/tags/updateatscope) (PATCH 操作)
-* [Tags - スコープを指定して取得する](/rest/api/resources/tags/getatscope) (GET 操作)
-* [Tags - スコープを指定して削除する](/rest/api/resources/tags/deleteatscope) (DELETE 操作)
+* [Tags - スコープを指定して作成または更新する](/rest/api/resources/resources/tags/createorupdateatscope) (PUT 操作)
+* [Tags - スコープを指定して更新する](/rest/api/resources/resources/tags/updateatscope) (PATCH 操作)
+* [Tags - スコープを指定して取得する](/rest/api/resources/resources/tags/getatscope) (GET 操作)
+* [Tags - スコープを指定して削除する](/rest/api/resources/resources/tags/deleteatscope) (DELETE 操作)
 
 ## <a name="inherit-tags"></a>タグを継承する
 

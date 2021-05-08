@@ -1,16 +1,16 @@
 ---
 title: リンクされた Log Analytics ワークスペースでサポートされるリージョン
 description: この記事では、Azure Automation の特定の機能に関連している、Automation アカウントと Log Analytics ワークスペースとの間でサポートされているリージョン マッピングについて説明します。
-ms.date: 02/17/2021
+ms.date: 04/01/2021
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0599dcb57b46d1e48b4035acac8b64edbbe06912
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4ac2a575c9fe551d5b1b396ab06b2735a749f9da
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101720173"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221876"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>リンクされた Log Analytics ワークスペースでサポートされるリージョン
 
@@ -38,30 +38,44 @@ VM を別のリージョンのワークスペースに接続する場合は、�
 |EastUS2<sup>2</sup>|EastUS|
 |WestUS|WestUS|
 |WestUS2|WestUS2|
+|NorthCentralUS|NorthCentralUS|
 |CentralUS|CentralUS|
 |SouthCentralUS|SouthCentralUS|
 |WestCentralUS|WestCentralUS|
+|**ブラジル**||
+|BrazilSouth|BrazilSouth|
 |**カナダ**||
 |CanadaCentral|CanadaCentral|
+|**中国**||
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |**アジア太平洋**||
-|AustraliaEast|AustraliaEast|
-|AustraliaSoutheast|AustraliaSoutheast|
 |EastAsia|EastAsia|
 |SoutheastAsia|SoutheastAsia|
+|**インド**||
 |CentralIndia|CentralIndia|
-|ChinaEast2<sup>3</sup>|ChinaEast2|
+|**日本**||
 |JapanEast|JapanEast|
+|**オーストラリア**||
+|AustraliaEast|AustraliaEast|
+|AustraliaSoutheast|AustraliaSoutheast|
+|**韓国**||
+|KoreaCentral|KoreaCentral|
+|**ノルウェー**||
+|NorwayEast|NorwayEast|
 |**ヨーロッパ**||
 |NorthEurope|NorthEurope|
-|FranceCentral|FranceCentral|
-|UKSouth|UKSouth|
 |西ヨーロッパ|西ヨーロッパ|
+|**フランス**||
+|FranceCentral|FranceCentral|
+|**イギリス**
+|UKSouth|UKSouth|
+|**スイス**||
 |SwitzerlandNorth|SwitzerlandNorth|
+|**アラブ首長国連邦**||
+|UAENorth|UAENorth|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
 |USGovArizona<sup>3</sup>|USGovArizona|
-
-
 
 <sup>1</sup> EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、正確なリージョン間のマッピングではありませんが、適切なマッピングです。
 

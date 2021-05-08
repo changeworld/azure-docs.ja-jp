@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3336a086fbe8f4291f752836a610cd80b773ec2d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98790818"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482270"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digital Twins の高可用性とディザスター リカバリー
 
@@ -73,4 +73,4 @@ HA/DR のベスト プラクティスについては、このトピックの次�
 Azure Digital Twins ソリューションの概要については、次を参照してください。
  
 * [*Azure Digital Twins とは*](overview.md)
-* [*クイック スタート:サンプル シナリオを精査する*](quickstart-adt-explorer.md)
+* [*クイック スタート:サンプル シナリオを精査する*](quickstart-azure-digital-twins-explorer.md)

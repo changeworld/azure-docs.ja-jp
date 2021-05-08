@@ -14,12 +14,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bcfb21ab15355653780355f1b5e459bc806ec8c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c00824e7fb0529cd14e3d7b757d513ee739fe283
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90600723"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504415"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
@@ -70,7 +70,7 @@ Privileged Identity Management の設定が済んだら、使用してみるこ�
 | タスク + 管理 | 説明 |
 | --- | --- |
 | **自分のロール**  | 自分に割り当てられている適格でアクティブなロールの一覧が表示されます。 ここでは、割り当てられている適格なロールをアクティブにできます。 |
-| **個人の要求** | 適格なロール割り当てのアクティブ化の保留中要求が表示されます。 |
+| **保留中の要求** | 適格なロール割り当てのアクティブ化の保留中要求が表示されます。 |
 | **申請の承認** | ディレクトリ内のユーザーによる適格なロールのアクティブ化要求のうち、自分が承認するものの一覧が表示されます。 |
 | **アクセスのレビュー** | 自分に完了が割り当てられているアクティブなアクセス レビューが一覧表示されます (自分自身のアクセスをレビューするものと、他のユーザーのアクセスをレビューするものの両方)。 |
 | **Azure AD ロール** | Azure AD ロールの割り当てを管理するための、特権ロール管理者向けのダッシュボードと設定が表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、組織全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。 |

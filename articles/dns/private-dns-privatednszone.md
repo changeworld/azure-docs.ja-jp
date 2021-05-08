@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: 9eaa320e79f1d595303c6d9fe1399df12cb6c52b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e04d7525cbd0c707ba0050f31414c2472602d1b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94954411"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311415"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>プライベート Azure DNS ゾーンとは
 
@@ -30,7 +30,7 @@ Azure プライベート DNS は、信頼性が高くセキュリティで保護
 ## <a name="restrictions"></a>制限
 
 * 単一ラベルのプライベート DNS ゾーンはサポートされていません。 プライベート DNS ゾーンには、2 つ以上のラベルが必要です。 たとえば、contoso.com にはドットで区切られた 2 つのラベルがあります。 プライベート DNS ゾーンは、最大 34 個のラベルを持つことができます。
-* プライベート DNS ゾーンにゾーンの委任 (NS レコード) を作成することはできません。 子ドメインを使用する場合は、ドメインをプライベート DNS ゾーンとして直接作成し、親ゾーンからネームサーバーの委任を設定せずに、仮想ネットワークにリンクすることができます。
+* プライベート DNS ゾーンにゾーンの委任 (NS レコード) を作成することはできません。 子ドメインを使用する場合は、ドメインをプライベート DNS ゾーンとして直接作成できます。 その後、親ゾーンからネームサーバーの委任を設定せずに、仮想ネットワークにリンクすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -38,4 +38,4 @@ Azure プライベート DNS は、信頼性が高くセキュリティで保護
 
 * [プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関しては、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを参照してください。
 
-* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事をご覧ください。特定の種類の操作で期待できる固有の動作についても説明があります。
+* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事をご覧ください。

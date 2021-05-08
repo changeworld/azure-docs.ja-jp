@@ -4,7 +4,7 @@ titleSuffix: Azure App Configuration
 description: このチュートリアルでは、プッシュ更新を使用して、.NET Core アプリの構成データを動的に更新する方法を学習します
 services: azure-app-configuration
 documentationcenter: ''
-author: abarora
+author: GrantMeStrength
 manager: zhenlan
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
-ms.author: abarora
-ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: jken
+ms.openlocfilehash: f330e69d37ac36e2a374e81fbffc6235c86feedd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101701520"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625723"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>チュートリアル:.NET Core アプリでプッシュ更新による動的な構成を使用する
 

@@ -2,13 +2,13 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/23/2021
+ms.openlocfilehash: b55c022c35c43be6818bb3c551d5db85b1927ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652484"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781849"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -54,6 +54,12 @@ lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv -
 az lock delete --ids $lockid
 ```
 
+## <a name="required-permissions"></a>必要なアクセス許可
+
+削除は、テンプレートをデプロイしたユーザーの ID で要求されます。 デプロイを削除するには、ユーザーは、 **[Microsoft.Resources/deployments/delete]** アクションへのアクセス権を持っている必要があります。 ユーザーが必要なアクセス許可を持っていない場合、デプロイは履歴から削除されません。
+
+現在のユーザーが必要なアクセス許可を持っていない場合は、次のデプロイ時に自動的に削除が試行されます。
+
 ## <a name="opt-out-of-automatic-deletions"></a>自動削除のオプトアウト
 
 履歴の自動削除をオプトアウトできます。 **このオプションは、デプロイ履歴を自分で管理する場合にのみ使用してください。** 履歴の 800 デプロイという上限は依然、適用されます。 800 デプロイを超えると、エラーが表示され、デプロイに失敗します。
@@ -78,7 +84,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName Disabl
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI の場合、[az feature register](/cli/azure/feature#az-feature-register) を使用します。
+Azure CLI の場合、[az feature register](/cli/azure/feature#az_feature_register) を使用します。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -90,7 +96,7 @@ az feature register --namespace Microsoft.Resources --name DisableDeploymentGroo
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
-自動削除を再び有効にするには、[az feature unregister](/cli/azure/feature#az-feature-unregister) を使用します。
+自動削除を再び有効にするには、[az feature unregister](/cli/azure/feature#az_feature_unregister) を使用します。
 
 ```azurecli-interactive
 az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming

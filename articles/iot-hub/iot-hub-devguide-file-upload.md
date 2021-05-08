@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d106021d90304a06ea7c08494d626511bb903df0
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90019531"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553041"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -44,7 +44,13 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 [IoT Hub でデバイスからクラウドにファイルをアップロードする方法](iot-hub-csharp-csharp-file-upload.md)に関する操作ガイドに、ファイルのアップロード プロセスの完全な手順が示されています。 これらの操作ガイドには、Azure portal を使用してストレージ アカウントを IoT ハブに関連付ける方法が説明されています。
 
 > [!NOTE]
-> [Azure IoT SDK](iot-hub-devguide-sdks.md) では、SAS URI の取得、ファイルのアップロード、および IoT Hub へのアップロード完了の通知を自動的に処理します。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) では、共有アクセス署名 URI の取得、ファイルのアップロード、および IoT Hub へのアップロード完了の通知を自動的に処理します。 ファイアウォールによって BLOB ストレージ エンドポイントへのアクセスがブロックされていても、IoT Hub エンドポイントへのアクセスが許可されている場合、ファイルのアップロード プロセスは失敗し、IoT C# デバイス SDK に対して次のエラーが表示されます。
+>
+> `---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond`
+>
+> ファイルのアップロード機能を機能させるには、デバイスで IoT Hub エンドポイントと BLOB ストレージ エンドポイントの両方にアクセスできる必要があります。
+> 
+
 
 ## <a name="initialize-a-file-upload"></a>ファイルのアップロードの初期化
 IoT Hub には、ファイルをアップロードするためのストレージの SAS URI を要求する、特にデバイス向けのエンドポイントがあります。 ファイルのアップロード プロセスを開始するために、デバイスは以下の JSON 本文を含む POST 要求を `{iot hub}.azure-devices.net/devices/{deviceId}/files` に送信します。

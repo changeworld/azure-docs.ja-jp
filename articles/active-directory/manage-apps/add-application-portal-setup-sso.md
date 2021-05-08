@@ -2,20 +2,20 @@
 title: クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する
 description: このクイックスタートでは、Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定するプロセスについて説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
-ms.author: kenwith
-ms.openlocfilehash: 44a838bdce4721d24bd0bdbb45ac7b36ceb34e71
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.author: iangithinji
+ms.openlocfilehash: 802cc744063ba2bf1110915ae9b22c9c00e09cfa
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102488371"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378909"
 ---
 # <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する
 

@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: cbc4bbf73c65d4d7eddad556f3776bc0bbd653ba
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431263"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169234"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -151,6 +151,8 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
     `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
+    フィールドに api-version を含めることを強くお勧めします。 そうしないと、予期しない動作が発生するおそれがあります。 
+    
 * **[Password]** フィールドには、SAS トークンを使用します。 SAS トークンの形式は、HTTPS プロトコルや AMQP プロトコルの場合と同じです。
 
   `SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`
@@ -448,7 +450,7 @@ MQTT プロトコルについて詳しくは、[MQTT のドキュメント](http
 
 IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
 
-* [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsolutions.com/)
+* [IoT デバイス カタログ向けの Azure 認定](https://devicecatalog.azure.com/)
 * [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
 * [Event Hubs との比較](iot-hub-compare-event-hubs.md)
 * [スケーリング、HA、および DR](iot-hub-scaling.md)

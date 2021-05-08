@@ -6,16 +6,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 3766d41959383d802e50aafbf59b9841d1c8d74e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933221"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870689"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
-既定では、HDInsight 上の Apache Kafka では、自動的にトピックを作成できません。 Apache Ambari を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
+既定では、HDInsight 上の Apache Kafka では、自動的にトピックは作成されません。 Apache Ambari を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
 
 ## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
@@ -25,34 +25,34 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 1. **クラスター ダッシュボード** 上で **[Ambari ホーム]** を選択します。
 
-    ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png" alt-text="クラスター ダッシュボードが選ばれたポータルの画像" border="true":::
 
     認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。 代わりに、`https://CLUSTERNAME.azurehdinsight.net/` から直接 Amabri に接続することもできます。その際、`CLUSTERNAME` はご自身の Kafka クラスターの名前になります。
 
 1. ページの左側にある一覧で Kafka サービスを選びます。
 
-    ![Apache Ambari のサービス一覧タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-service-list.png" alt-text="Apache Ambari のサービス一覧タブ" border="true":::
 
 1. ページ中央の [Configs]\(構成\) を選択します。
 
-    ![Apache Ambari のサービス構成タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-service-config.png" alt-text="Apache Ambari のサービス構成タブ" border="true":::
 
 1. [フィルター] フィールドに値「`auto.create`」を入力します。
 
-    ![Apache Ambari の検索フィルター フィールド](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png" alt-text="Apache Ambari の検索フィルター フィールド" border="true":::
 
     プロパティの一覧にこの設定フィルターが適用されて、`auto.create.topics.enable` 設定が表示されます。
 
-1. `auto.create.topics.enable` の値を `true` に変更して、 **[保存]** を選択します。 ノートを追加して、もう一度 **[保存]** を選択します。
+1. `auto.create.topics.enable` の値を `true` に変更して、**[保存]** を選択します。 ノートを追加して、もう一度 **[保存]** を選択します。
 
-    ![auto.create.topics.enable エントリの画像](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png" alt-text="auto.create.topics.enable エントリの画像" border="true":::
 
-1. Kafka サービスを選び、 __[Restart]\(再起動\)__ を選んで、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選びます。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
+1. Kafka サービスを選択し、 __[Restart]\(再起動\)__ を選択して、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
-    ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    :::image type="content" source="./media/apache-kafka-auto-create-topics/restart-all-affected.png" alt-text="Apache Ambari の影響を受けるものをすべて再起動" border="true":::
 
 > [!NOTE]  
-> Ambari REST API を使って Ambari の値を設定することもできます。 現在の構成の取得やその変更のために複数の REST 呼び出しを行う必要があるため、通常はこの方法の方が困難です。詳細については、[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)に関するページを参照してください。
+> Ambari REST API を使って Ambari の値を設定することもできます。 複数の REST を呼び出して現在の構成の取得や変更などを行う必要があるため、これは一般的により困難になります。詳細については、「[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)」を参照してください。
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 

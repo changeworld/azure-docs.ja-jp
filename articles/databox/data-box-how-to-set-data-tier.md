@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92125066"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box または Azure Data Box Heavy を使用して適切な Azure Storage BLOB 層にデータを送信する
@@ -33,7 +33,7 @@ Azure アーカイブ層はオフラインであり、ストレージ コスト�
 
 Data Box または Data Box Heavy のデータは、ストレージ アカウントに関連付けられているストレージ層にアップロードされます。 ストレージ アカウントの作成時、アクセス層をホットまたはコールドとして指定できます。 このデータは、ワークロードのアクセス パターンとコストに応じて、既定の層から別のストレージ層に移動できます。
 
-オブジェクト ストレージ データの階層制御は、BLOB ストレージ アカウントまたは General Purpose v2 (GPv2) アカウントでのみ可能です。 General Purpose v1 (GPv1) アカウントは階層制御をサポートしていません。 データに対して適切なストレージ層を選択するには、「[Azure Blob ストレージ:Premium ストレージ層、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
+オブジェクト ストレージ データの階層制御は、BLOB ストレージ アカウントまたは General Purpose v2 (GPv2) アカウントでのみ可能です。 General Purpose v1 (GPv1) アカウントは階層制御をサポートしていません。 データに対して適切なストレージ層を選択するには、「[Azure Blob Storage:Premium ストレージ層、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
 
 ## <a name="set-a-default-blob-tier"></a>既定の BLOB 層を設定する
 
@@ -47,7 +47,7 @@ Data Box または Data Box Heavy の注文時にアカウントの新規作成�
 
 Data Box デバイスのデータを既定の層にアップロードした後、そのデータを既定以外の層に移動することもできます。 データを既定以外の層に移動するには、2 つの方法があります。
 
-- **Azure BLOB ストレージ ライフ サイクル管理** - ポリシー ベースのアプローチを使用して、データを自動的に階層制御したり、ライフ サイクル終了時に期限切れにしたりできます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
+- **Azure Blob Storage ライフ サイクル管理** - ポリシー ベースのアプローチを使用して、データを自動的に階層制御したり、ライフ サイクル終了時に期限切れにしたりできます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
 - **スクリプト** - Azure PowerShell でスクリプトを使用して、BLOB レベルの階層制御を有効にできます。 BLOB に対する層を設定するには、`SetBlobTier` 操作を呼び出します。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Azure PowerShell を使用して、BLOB 層を設定する

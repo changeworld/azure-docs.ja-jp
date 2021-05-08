@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a925d3f55395d094c7f19f65de4b72fd20a11a41
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 756258db1c6e91002bf3a7c2bd0f71f921ce655d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213676"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769933"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する
 
@@ -102,7 +102,7 @@ ms.locfileid: "102213676"
 
    `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
 
-3. [az feature register](/cli/azure/feature#az-feature-register) コマンドを使用して、クエリ アクセラレーション機能を登録します。
+3. [az feature register](/cli/azure/feature#az_feature_register) コマンドを使用して、クエリ アクセラレーション機能を登録します。
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-登録が完了したことを確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを使用します。
+登録が完了したことを確認するには、[az feature](/cli/azure/feature#az_feature_show) コマンドを使用します。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース プロバイダーを登録するには、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用します。
+リソース プロバイダーを登録するには、[az provider register](/cli/azure/provider#az_provider_register) コマンドを使用します。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -178,7 +178,7 @@ Update-Module -Name Az
    cd myProject
    ```
 
-2. `dotnet add package` コマンドを使用して、.NET パッケージ用 Azure Blob ストレージ クライアント ライブラリの `12.5.0-preview.6` バージョン以降をインストールします。 
+2. `dotnet add package` コマンドを使用して、.NET パッケージ用 Azure Blob Storage クライアント ライブラリの `12.5.0-preview.6` バージョン以降をインストールします。 
 
    ```console
    dotnet add package Azure.Storage.Blobs -v 12.8.0

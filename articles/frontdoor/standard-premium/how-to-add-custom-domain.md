@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 164e06024844fb5262586450b737db9c807e373a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 69e216c8893f9361a18354e5d165ecc0499601aa
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101097963"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387923"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Azure portal を使用して Azure Front Door Standard/Premium SKU (プレビュー) にカスタム ドメインを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "101097963"
 
 アプリケーションの配信に Azure Front Door Standard/Premium を使用している場合、独自のドメイン名がエンド ユーザーの要求で示されるようにしたいときは、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
 
-Azure Front Door Standard/Premium プロファイルを作成すると、既定のフロントエンド ホストにサブドメイン azurefd.net が含まれるようになります。 このサブドメインは、Azure Front Door Standard/Premium がバックエンドからコンテンツを配信するときに URL に既定で含まれます。 たとえば、「 `https://contoso-frontend.azurefd.net/activeusers.htm` 」のように入力します。 便宜を図るため、Azure Front Door には、カスタム ドメインを既定のホストと関連付けるオプションが用意されています。 このオプションを使用する場合、URL の中で Azure Front Door Standard/Premium 所有のドメイン名の代わりにカスタム ドメインを使用してコンテンツを配信します。 たとえば、「 https://www.contoso.com/photo.png 」のように入力します。
+Azure Front Door Standard/Premium プロファイルを作成すると、既定のフロントエンド ホストにサブドメイン azurefd.net が含まれるようになります。 このサブドメインは、Azure Front Door Standard/Premium がバックエンドからコンテンツを配信するときに URL に既定で含まれます。 たとえば、「 `https://contoso-frontend.azurefd.net/activeusers.htm` 」のように入力します。 便宜を図るため、Azure Front Door には、カスタム ドメインを既定のホストと関連付けるオプションが用意されています。 このオプションを使用する場合、URL の中で Azure Front Door Standard/Premium 所有のドメイン名の代わりにカスタム ドメインを使用してコンテンツを配信します。 たとえば、「https://www.contoso.com/photo.png」のように入力します。
 
 > [!IMPORTANT]
 > Azure Front Door Standard/Premium (プレビュー) は現在、パブリック プレビュー段階です。
@@ -38,6 +38,9 @@ Azure Front Door Standard/Premium プロファイルを作成すると、既定�
 * Azure を使用して [DNS ドメイン](../../dns/dns-overview.md)をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。 DNS ドメインを処理するためにドメイン プロバイダーを使用している場合は、このようにしないと、要求された DNS TXT レコードを入力して手動でドメインを検証する必要があります。
 
 ## <a name="add-a-new-custom-domain"></a>新しいカスタム ドメインの追加
+
+> [!NOTE]
+> パブリック プレビューでは、Azure DNS を使用して Apex ドメインを作成することは、Azure Front Door Standard および Premium ではサポートされていません。 APEX ドメインを Azure Front Door Standard および Premium に使用できるようにする CNAME フラット化または DNS 追跡をサポートする他の DNS プロバイダーがあります。
 
 カスタム ドメインは、ポータルの [ドメイン] セクションで管理します。 カスタム ドメインを作成し、エンドポイントに関連付ける前に検証することができます。 カスタム ドメインとそのサブドメインは、一度に 1 つのエンドポイントにのみ関連付けることができます。 ただし、同じカスタム ドメインの別のサブドメインを別の Front Door に使用することはできます。 また、異なるサブドメインがあるカスタム ドメインを同じ Front Door エンドポイントにマップすることもできます。
 

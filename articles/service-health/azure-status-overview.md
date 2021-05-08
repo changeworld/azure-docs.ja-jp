@@ -4,10 +4,10 @@ description: Azure サービスの正常性をグローバルに確認できる�
 ms.topic: overview
 ms.date: 06/11/2019
 ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "82732552"
 ---
 # <a name="azure-status-overview"></a>Azure の状態の概要

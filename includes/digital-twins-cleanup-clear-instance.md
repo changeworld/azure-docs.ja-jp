@@ -5,11 +5,11 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 2/4/2021
 ms.author: baanders
-ms.openlocfilehash: 10ecd986afa5e9046058862245fa083b2c8f4145
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6cfcc4bcf5a86726f020df9962a695e019f29fff
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244988"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107108849"
 ---
-* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/dt) という CLI コマンドを使用して、目的の要素を削除することができます。

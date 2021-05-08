@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 1ea87d40430dbf3edabd557b80ab1456b49f4605
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 821c50b5cb48bddb586c3589326a7f31c7bafded
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102507876"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604534"
 ---
 # <a name="availability-options-for-azure-virtual-machines"></a>Azure Virtual Machines の可用性オプション
 この記事では、Azure 仮想マシン (VM) の可用性オプションの概要を説明します。
@@ -57,6 +57,6 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 - オンプレミス VM、Azure Stack VM、物理サーバー。
 
 ## <a name="next-steps"></a>次のステップ
-- [可用性ゾーンに仮想マシンを作成する](/linux/create-cli-availability-zone.md)
-- [可用性セットに仮想マシンを作成する](/linux/tutorial-availability.md)
+- [可用性ゾーンに仮想マシンを作成する](/azure/virtual-machines/linux/create-cli-availability-zone)
+- [可用性セットに仮想マシンを作成する](/azure/virtual-machines/linux/tutorial-availability-sets)
 - [仮想マシン スケール セットを作成する](../virtual-machine-scale-sets/quick-create-portal.md)

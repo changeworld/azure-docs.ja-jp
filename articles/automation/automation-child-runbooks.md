@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0dd5cf5209924972080af6d22429252338754de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 338de996b06769b9d2891c7208b9050cc3acc7ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99491250"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167296"
 ---
 # <a name="create-modular-runbooks"></a>モジュラー Runbook を作成する
 
@@ -56,15 +56,15 @@ Runbook の発行順序は、PowerShell ワークフロー Runbook とグラフ�
 次の例では、複合オブジェクト、整数値、およびブール値を受け入れるテスト用の子 Runbook を開始します。 子 Runbook の出力は、変数に割り当てられます。 この場合は、子 Runbook は PowerShell ワークフロー Runbook です。
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = PSWF-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 次に示すのは、子として PowerShell Runbook を使用する場合の例です。
 
 ```azurepowershell-interactive
-$vm = Get-AzVM –ResourceGroupName "LabRG" –Name "MyVM"
-$output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
+$vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
+$output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 ## <a name="start-a-child-runbook-using-a-cmdlet"></a>コマンドレットを使用して子 Runbook を開始する
@@ -84,7 +84,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 子 Runbook を別のジョブとして開始するときにサブスクリプションのコンテキストが失われることがあります。 子 Runbook で特定の Azure サブスクリプションに対して Az モジュール コマンドレットを実行するには、そのサブスクリプションに対する子の認証が、親 Runbook とは独立して行われる必要があります。
 
-同じ Automation アカウント内のジョブを複数のサブスクリプションで使用する場合、あるジョブのサブスクリプションを選択すると、他のジョブ用に現在選択されているサブスクリプションのコンテキストも変わる可能性があります。 この状況を回避するには、各 Runbook の先頭で `Disable-AzContextAutosave –Scope Process` を使用します。 このアクションだけで、コンテキストがその Runbook の実行に保存されます。
+同じ Automation アカウント内のジョブを複数のサブスクリプションで使用する場合、あるジョブのサブスクリプションを選択すると、他のジョブ用に現在選択されているサブスクリプションのコンテキストも変わる可能性があります。 この状況を回避するには、各 Runbook の先頭で `Disable-AzContextAutosave -Scope Process` を使用します。 このアクションだけで、コンテキストがその Runbook の実行に保存されます。
 
 ### <a name="example"></a>例
 
@@ -92,7 +92,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext
-Disable-AzContextAutosave –Scope Process
+Disable-AzContextAutosave -Scope Process
 
 # Connect to Azure with Run As account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
@@ -108,11 +108,11 @@ $AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.Subscr
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
 Start-AzAutomationRunbook `
-    –AutomationAccountName 'MyAutomationAccount' `
-    –Name 'Test-ChildRunbook' `
+    -AutomationAccountName 'MyAutomationAccount' `
+    -Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
     -AzContext $AzureContext `
-    –Parameters $params –Wait
+    -Parameters $params -Wait
 ```
 
 ## <a name="next-steps"></a>次のステップ

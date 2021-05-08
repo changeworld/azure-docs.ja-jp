@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b58a1ae2a20afb357f6363077e70b692256d2ce7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8d39d54498872201afe2f705da1fc5654d8befb2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013501"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645005"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 
@@ -42,7 +42,8 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
 **メディア エンコーダー プレミアム ワークフロー** のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。 これらのファイルは .workflow 拡張子を持ち、 [ワークフロー デザイナー](media-services-workflow-designer.md) ツールで作成されます。
 
-既定のワークフロー ファイルは [こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手することもできます。 フォルダーにはこれらのファイルの説明も含まれています。
+既定のワークフロー ファイルは [こちら](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md
+)から入手することもできます。 フォルダーにはこれらのファイルの説明も含まれています。
 
 ワークフロー ファイルは、アセットとして Media Services アカウントにアップロードする必要があり、このアセットをエンコード タスクに渡す必要があります。
 

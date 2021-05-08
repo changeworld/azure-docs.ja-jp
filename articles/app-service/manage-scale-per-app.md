@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74672349"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
@@ -140,4 +140,4 @@ App Service プランは、**PerSiteScaling** プロパティを true に設定�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure App Service プランの詳細な概要](overview-hosting-plans.md)
-- [App Service 環境の概要](environment/app-service-app-service-environment-intro.md)
+- [App Service Environment の概要](environment/app-service-app-service-environment-intro.md)

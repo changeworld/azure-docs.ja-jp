@@ -2,14 +2,14 @@
 title: 認証/承認の高度な使用方法
 description: App Service でさまざまなシナリオに合わせて認証および承認機能をカスタマイズし、ユーザーの要求とさまざまなトークンを取得する方法について説明します。
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 03/29/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9335bb62e494fab50f7beadf3d7bbc423d80cf14
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180872"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775729"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -18,10 +18,9 @@ ms.locfileid: "102180872"
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
 * [チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する](tutorial-auth-aad.md)
-* [Azure Active Directory ログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
+* [Microsoft ID プラットフォームのログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](configure-authentication-provider-facebook.md)
 * [Google ログインを使用するようにアプリを構成する方法](configure-authentication-provider-google.md)
-* [Microsoft アカウント ログインを使用するようにアプリを構成する方法](configure-authentication-provider-microsoft.md)
 * [Twitter ログインを使用するようにアプリを構成する方法](configure-authentication-provider-twitter.md)
 * [OpenID Connect プロバイダーを使用してログインするようにアプリを構成する方法 (プレビュー)](configure-authentication-provider-openid-connect.md)
 * [Sign in with Apple を使用してログインするようにアプリを構成する方法 (プレビュー)](configure-authentication-provider-apple.md)
@@ -37,8 +36,7 @@ ms.locfileid: "102180872"
 サインイン ページ、ナビゲーション バー、またはアプリのその他の任意の場所で、有効にした各プロバイダーへのサインイン リンク (`/.auth/login/<provider>`) を追加します。 次に例を示します。
 
 ```html
-<a href="/.auth/login/aad">Log in with Azure AD</a>
-<a href="/.auth/login/microsoftaccount">Log in with Microsoft Account</a>
+<a href="/.auth/login/aad">Log in with the Microsoft Identity Platform</a>
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
@@ -159,7 +157,6 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Facebook トークン | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
-| Microsoft アカウント | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
@@ -175,7 +172,6 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
 - **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/authentication/faq) に関するページを参照してください)。
-- **Microsoft アカウント**: [Microsoft アカウント認証設定を構成する](configure-authentication-provider-microsoft.md)場合は、`wl.offline_access` スコープを選択します。
 - **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
     2. 左側のブラウザーで、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettings** に移動します。 
@@ -280,14 +276,26 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 
 他のいずれのレベルでも必要な承認が提供されない場合、またはお使いのプラットフォームまたは ID プロバイダーがサポートされていない場合、[ユーザーの要求](#access-user-claims)に基づいてユーザーを承認するカスタム コードを記述する必要があります。
 
-## <a name="updating-the-configuration-version-preview"></a>構成バージョンの更新 (プレビュー)
+## <a name="updating-the-configuration-version"></a>構成バージョンの更新
 
-認証および承認機能用の管理 API には、2 つのバージョンがあります。 Azure portal での "認証 (プレビュー)" エクスペリエンスには、プレビュー V2 バージョンが必要です。 V1 の API が既に使用されているアプリは、いくつかの変更が行われた後に、V2 バージョンにアップグレードできます。 具体的には、シークレット構成を、スロット固定のアプリケーション設定に移動する必要があります。 Microsoft アカウント プロバイダーの構成も、V2 では現在サポートされていません。
+認証および承認機能用の管理 API には、2 つのバージョンがあります。 Azure portal での "認証" エクスペリエンスには、V2 バージョンが必要です。 V1 の API が既に使用されているアプリは、いくつかの変更が行われた後に、V2 バージョンにアップグレードできます。 具体的には、シークレット構成を、スロット固定のアプリケーション設定に移動する必要があります。 これは、アプリのポータルの [認証] セクションから自動的に実行されるようにすることができます。
 
 > [!WARNING]
-> V2 プレビューに移行すると、Azure portal、Azure CLI、Azure PowerShell の既存のエクスペリエンスなど、一部のクライアントを介したアプリケーションに対する App Service の認証または承認機能の管理が無効になります。 これを元に戻すことはできません。 プレビュー期間中は、運用ワークロードの移行は推奨されず、サポートもされていません。 このセクションの手順は、テスト アプリケーションのみを対象に実行してください。
+> V2 に移行すると、Azure portal、Azure CLI、Azure PowerShell の既存のエクスペリエンスなど、一部のクライアントを介したアプリケーションに対する App Service の認証または承認機能の管理が無効になります。 これを元に戻すことはできません。
 
-### <a name="moving-secrets-to-application-settings"></a>シークレットをアプリケーション設定に移動
+V2 API では、V1 で行われていたように、個別のプロバイダーとして Microsoft アカウントを作成したり編集したりすることはできません。 むしろ、集中型 [Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md)を活用して、Azure AD と個人の両方の Microsoft アカウントを使用してユーザーをサインインさせます。 V2 API に切り替えるときは、V1 の Azure Active Directory 構成を使用して Microsoft ID プラットフォーム プロバイダーが構成されます。 V1 Microsoft アカウント プロバイダーは移行プロセスで持ち越されて、引き続き通常どおり動作しますが、新しい Microsoft ID プラットフォーム モデルに移行することをお勧めします。 詳細については、「[Microsoft アカウント プロバイダーの登録のサポート](#support-for-microsoft-account-provider-registrations)」を参照してください。
+
+自動化された移行プロセスでは、プロバイダーのシークレットがアプリケーション設定内に移動され、構成の残りの部分は新しい形式に変換されます。 自動移行を使用するには:
+
+1. ポータル内でアプリに移動し、 **[認証]** メニュー オプションを選択します。
+1. アプリが V1 モデルを使用して構成されている場合は、 **[アップグレード]** ボタンが表示されます。
+1. 確認プロンプトで説明を確認します。 移行を実行する準備ができたら、プロンプトで **[アップグレード]** をクリックします。
+
+### <a name="manually-managing-the-migration"></a>移行を手動で管理する
+
+次の手順では、上記で説明した自動バージョンを使用しない場合に、アプリケーションを V2 API に手動で移行することができます。
+
+#### <a name="moving-secrets-to-application-settings"></a>シークレットをアプリケーション設定に移動
 
 1. V1 API を使用して既存の構成を取得します。
 
@@ -351,7 +359,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
            "allowedExternalRedirectUrls": null,
            "defaultProvider": "AzureActiveDirectory",
            "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
-           "clientSecret": null,
+           "clientSecret": "",
            "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
            "clientSecretCertificateThumbprint": null,
            "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
@@ -397,9 +405,7 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 
 これで、ID プロバイダーのシークレットをアプリケーション設定として格納するためにアプリが移行されました。
 
-### <a name="support-for-microsoft-account-registrations"></a>Microsoft アカウント登録のサポート
-
-V2 API では、現在、Microsoft アカウントは個別のプロバイダーとしてサポートされていません。 むしろ、集中型 [Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md)を活用し、個人の Microsoft アカウントを使用してユーザーをサインインさせます。 V2 API に切り替えるときは、V1 の Azure Active Directory 構成を使用して Microsoft ID プラットフォーム プロバイダーが構成されます。
+#### <a name="support-for-microsoft-account-provider-registrations"></a>Microsoft アカウント プロバイダーの登録のサポート
 
 既存の構成に Microsoft アカウント プロバイダーが含まれており、Azure Active Directory プロバイダーが含まれていない場合は、構成を Azure Active Directory プロバイダーに切り替えてから、移行を実行できます。 これを行うには、次の手順を実行します。
 
@@ -413,12 +419,10 @@ V2 API では、現在、Microsoft アカウントは個別のプロバイダー
 1. この時点で、構成は正常にコピーされましたが、既存の Microsoft アカウント プロバイダーの構成はそのまま残っています。 それを削除する前に、アプリのすべての部分で、ログイン リンクなどを使用して Azure Active Directory プロバイダーが参照されていることを確認してください。アプリのすべての部分が想定どおりに動作することを確認します。
 1. AAD Azure Active Directory プロバイダーに対して機能することを検証したら、Microsoft アカウント プロバイダーの構成を削除できます。
 
-一部のアプリでは、Azure Active Directory と Microsoft アカウント用に別々の登録が既に存在している場合があります。 現時点では、これらのアプリを移行することはできません。 
-
 > [!WARNING]
 > AAD アプリの登録で[サポートされているアカウントの種類](../active-directory/develop/supported-accounts-validation.md)を変更することにより、この 2 つの登録を集中させることができます。 ただし、これにより、Microsoft アカウント ユーザーに対して新しい同意プロンプトが強制され、それらのユーザーの ID 要求の構造が異なるものになる場合があります。特に、新しいアプリ ID が使用されてから、`sub` で値が変化します。 この方法は、十分に理解している場合を除き、推奨されません。 代わりに、V2 API でこの 2 つの登録に対するサポートが提供されるのを待つことをお勧めします。
 
-### <a name="switching-to-v2"></a>V2 への切り替え
+#### <a name="switching-to-v2"></a>V2 への切り替え
 
 上記の手順を実行したら、Azure portal でアプリに移動します。 [認証 (プレビュー)] セクションを選択します。 
 
@@ -648,7 +652,7 @@ V2 API では、現在、Microsoft アカウントは個別のプロバイダー
 
 ##### <a name="from-the-azure-cli"></a>Azure CLI から
 
-Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
+Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth#az_webapp_auth_show) コマンドで現在のミドルウェア バージョンを表示します。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -679,7 +683,7 @@ CLI 出力に `runtimeVersion` フィールドが表示されます。 次の出
 
 #### <a name="update-the-current-runtime-version"></a>現在のランタイム バージョンの更新
 
-Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
+Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth#az_webapp_auth_update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \
@@ -689,7 +693,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>` をご自分のアプリの名前に置き換えます。 また、`<my_resource_group>` をアプリのリソース グループの名前に置き換えます。 また、`<version>` を 1.x ランタイムの有効なバージョン、または最新バージョンの `~1` に置き換えます。 さまざまなランタイム バージョンのリリース ノートを [こちら] (https://github.com/Azure/app-service-announcements) ) で検索して、ピン留め先となるバージョンを特定することができます。
 
-このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
+このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az_login)を実行してサインインした後に、このコマンドを実行することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 

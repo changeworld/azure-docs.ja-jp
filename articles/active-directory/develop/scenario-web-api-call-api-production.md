@@ -1,5 +1,6 @@
 ---
-title: Web API の呼び出す Web API を運用環境へ移行する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出す Web API を運用環境に移行する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web API を運用環境に移行する方法を学びます。
 services: active-directory
 author: jmprieur
@@ -11,23 +12,23 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: aea3a173fd07b66021d35142a84499ae9c66c014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ab5baef925b7c8589dd7852b6ff8058d67ba745
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518200"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675874"
 ---
 # <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Web API を呼び出す Web API:運用環境に移行する
 
-Web API を呼び出すトークンを取得したら、アプリを運用環境に移行することができます。
+Web API を呼び出すトークンを取得したら、アプリケーションを運用環境に移行する場合に考慮すべき点がいくつかあります。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>詳細情報
+## <a name="next-steps"></a>次のステップ
 
 独自の Web API から Web API を呼び出す方法の基本を確認したので、次のチュートリアルをご検討ください。このチュートリアルでは、Web API を呼び出す保護された Web API を構築するために使用されるコードについて説明しています。
 
 | サンプル | プラットフォーム | 説明 |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) の第 1 章 | ASP.NET Core Web API, Desktop (WPF) | ASP.NET Core Web API が Microsoft Graph を呼び出します。これは、Microsoft ID プラットフォーム (v2.0) を使用して WPF アプリケーションから呼び出します。 |
+| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) の第 1 章 | ASP.NET Core Web API, Desktop (WPF) | ASP.NET Core Web API が Microsoft Graph を呼び出します。これは、Microsoft ID プラットフォームを使用して WPF アプリケーションから呼び出します。 |

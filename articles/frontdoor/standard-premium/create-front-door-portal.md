@@ -4,20 +4,19 @@ description: このクイックスタートでは、Azure portal で Azure Front
 services: frontdoor
 author: duongau
 manager: KumudD
-Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 04/16/2021
 ms.author: duau
-ms.openlocfilehash: 18956948a32a79c1435bf4fc1554b09480c9010c
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 8c6fe355621b4f096814268dea8fd2fc8e1166a7
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101100719"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552871"
 ---
 # <a name="quickstart-create-an-azure-front-door-standardpremium-profile---azure-portal"></a>クイックスタート : Azure Front Door Standard/Premium プロファイルを作成する - Azure portal
 
@@ -58,7 +57,7 @@ ms.locfileid: "101100719"
     | **[エンドポイント名]** | グローバルに一意のエンドポイント名を入力します。 |
     | **配信元の種類** | 配信元のリソースの種類を選択します。 この例では、Private Link が有効になっている配信元として、App Service を選択します。 |
     | **配信元のホスト名** | 配信元のホスト名を入力します。 |
-    | **Private Link を有効にする** | Azure Front Door と配信元の間でプライベート接続を使用する場合に選択します。 詳細については、[プライベート リンクのガイダンス](concept-private-link.md)と[プライベート リンクの有効化](how-to-enable-private-link.md)に関するページをご覧ください。
+    | **Private Link を有効にする** | Azure Front Door と配信元の間でプライベート接続を使用する場合に選択します。 詳細については、[プライベート リンクのガイダンス](concept-private-link.md)と[プライベート リンクの有効化](./how-to-enable-private-link-web-app.md)に関するページをご覧ください。
     | **キャッシュ** | Azure Front Door のエッジ POP と Microsoft ネットワークを使用して、コンテンツをユーザーにより近い場所でグローバルにキャッシュする場合は、このチェック ボックスをオンにします。 |
     | **WAF ポリシー** | この機能を有効にする場合は、 **[新規作成]** を選択するか、ドロップダウンから既存の WAF ポリシーを選択します。 |
 
@@ -148,7 +147,7 @@ ms.locfileid: "101100719"
     
     :::image type="content" source="../media/create-front-door-portal/front-door-custom-create-add-endpoint.png" alt-text="エンドポイントの追加のスクリーンショット。":::
 
-1. 次に、2 つの Web アプリを含む配信元グループを追加します。  **[+ 追加]**  を選択して  **[配信元グループの追加]** ページを開きます。 [名前] には、「 *myOrignGroup*」と入力し、 **[+ Add an origin]\(+ 配信元の追加\)** を選択します。
+1. 次に、2 つの Web アプリを含む配信元グループを追加します。  **[+ 追加]**  を選択して  **[配信元グループの追加]** ページを開きます。 [名前] には、「 *myOriginGroup*」と入力し、 **[+ Add an origin]\(+ 配信元の追加\)** を選択します。
  
      :::image type="content" source="../media/create-front-door-portal/front-door-custom-create-add-origin-group.png" alt-text="配信元グループの追加のスクリーンショット。":::
 

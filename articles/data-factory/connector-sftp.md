@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 9b8402e5ae4d0358d17342d30ddf36f5e1228f65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393464"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104592032"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする
 
@@ -34,8 +34,8 @@ SFTP コネクタは、以下のアクティビティに対してサポートさ
 
 具体的には、SFTP コネクタでは以下がサポートされます。
 
-- *基本* 認証または *SshPublicKey* 認証を使用した SFTP サーバーとの間のファイルのコピー。
-- そのままでのファイルのコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析または生成によるファイルのコピー。
+- **基本** 認証、**SSH 公開キー** 認証、または **多要素** 認証を使用した SFTP サーバー間でのファイルのコピー。
+- ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析または生成する。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,8 +58,8 @@ SFTP のリンクされたサービスでは、以下のプロパティがサポ
 | port | SFTP サーバーがリッスンしているポート。<br/>指定できる値は整数で、既定値は *22* です。 |いいえ |
 | skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。<br/>使用できる値は *true* と *false* (既定値) です。  | いいえ |
 | hostKeyFingerprint | ホスト キーのフィンガープリントを指定します。 | はい ("skipHostKeyValidation" が false に設定されている場合)。  |
-| authenticationType | 認証の種類を指定します。<br/>指定できる値は *Basic* と *SshPublicKey* です。 詳細については、「[基本認証を使用する](#use-basic-authentication)」セクションを参照してください。 JSON の例については、「[SSH 公開キー認証を使用する](#use-ssh-public-key-authentication)」セクションを参照してください。 |はい |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 統合ランタイムが指定されていない場合、サービスでは既定の Azure Integration Runtime が使用されます。 |いいえ |
+| authenticationType | 認証の種類を指定します。<br/>使用可能な値は、*Basic*、*SshPublicKey*、*MultiFactor* です。 詳細については、「[基本認証を使用する](#use-basic-authentication)」セクションを参照してください。 JSON の例については、「[SSH 公開キー認証を使用する](#use-ssh-public-key-authentication)」セクションを参照してください。 |はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 統合ランタイムが指定されていない場合は、サービスでは既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 ### <a name="use-basic-authentication"></a>基本認証を使用する
 
@@ -75,7 +75,6 @@ SFTP のリンクされたサービスでは、以下のプロパティがサポ
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -117,7 +116,6 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -161,6 +159,43 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
             "passPhrase": {
                 "type": "SecureString",
                 "value": "<pass phrase>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of integration runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-multi-factor-authentication"></a>Multi-Factor Authentication の使用
+
+基本認証と SSH 公開キー認証の組み合わせである多要素認証を使用するには、前のセクションで説明したユーザー名、パスワード、および秘密キーの情報を指定します。
+
+**例: 多要素認証**
+
+```json
+{
+    "name": "SftpLinkedService",
+    "properties": {
+        "type": "Sftp",
+        "typeProperties": {
+            "host": "<host>",
+            "port": 22,
+            "authenticationType": "MultiFactor",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            },
+            "privateKeyContent": {
+                "type": "SecureString",
+                "value": "<base64 encoded private key content>"
+            },
+            "passPhrase": {
+                "type": "SecureString",
+                "value": "<passphrase for private key>"
             }
         },
         "connectVia": {
@@ -231,12 +266,12 @@ SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で
 | オプション 3: ファイルの一覧<br>- fileListPath | 指定されたファイル セットをコピーすることを示します。 コピーするファイルの一覧を含むテキスト ファイルをポイントします (データセットで構成されているパスへの相対パスを使用して、行ごとに 1 つのファイルが記載されています)。<br/>このオプションを使用する場合は、データセット内でファイル名を指定しないでください。 その他の例については、「[ファイル リストの例](#file-list-examples)」を参照してください。 |いいえ |
 | ***追加設定*** |  | |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が true に設定されていて、シンクがファイル ベースのストアである場合、空のフォルダーまたはサブフォルダーはシンクでコピーも作成もされません。 <br>使用可能な値: *true* (既定値) および *false*。<br>`fileListPath` を構成する場合、このプロパティは適用されません。 |いいえ |
-| deleteFilesAfterCompletion | コピー先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを指定します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルは既にコピー先にコピーされてソースから削除されているのに対して、他のファイルはまだソース ストアに残っています。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
-| modifiedDatetimeStart    | ファイルは、*最終変更日時* の属性に基づいてフィルター処理されます。 <br>最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で、UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
+| deleteFilesAfterCompletion | 宛先ストアに正常に移動した後、バイナリ ファイルをソース ストアから削除するかどうかを示します。 ファイルの削除はファイルごとに行われるので、コピー操作が失敗した場合、一部のファイルが既に宛先にコピーされソースからは削除されているが、他のファイルはまだソース ストアに残っていることがわかります。 <br/>このプロパティは、バイナリ ファイルのコピー シナリオでのみ有効です。 既定値: false。 |いいえ |
+| modifiedDatetimeStart    | ファイルは、*最終変更日時* の属性に基づいてフィルター処理されます。 <br>最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は *2018-12-01T05:00:00Z* の形式で UTC タイム ゾーンに適用されます。 <br> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。  `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。  `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。<br/>`fileListPath` を構成する場合、このプロパティは適用されません。 | いいえ                                            |
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                            |
-| enablePartitionDiscovery | パーティション分割されているファイルの場合、ファイル パスからのパーティションを解析し、追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
-| partitionRootPath | パーティション検出が有効になっている場合、パーティション分割されているフォルダーをデータ列として読み取るために絶対ルート パスを指定します。<br/><br/>指定されない場合、既定では、<br/>- ソースでファイルのデータセットまたはリストにあるファイル パスを使用するとき、パーティション ルート パスはデータセットに構成されているパスになります。<br/>- ワイルドカード フォルダー フィルターを使用するとき、パーティション ルート パスは最初のワイルドカードの前のサブパスになります。<br/><br/>たとえば、データセットのパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティション ルート パスを "root/folder/year=2020" として指定する場合、コピー アクティビティによって、ファイル内の列に加え、さらに 2 つの列、`month` と `day` がそれぞれ値 "08" と "27" で生成されます。<br/>- パーティション ルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections | ストレージ ストアに同時に接続できる接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ値を指定します。 | いいえ                                            |
+| enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
+| partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ                                            |
 
 **例:**
 
@@ -289,7 +324,7 @@ SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` の下の *type* プロパティは、*SftpWriteSettings* に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
-| maxConcurrentConnections | ストレージ ストアに同時に接続できる接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ値を指定します。 | いいえ       |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。 | いいえ       |
 | useTempFileRename | 一時ファイルにアップロードしてそれらの名前を変更するか、ターゲットのフォルダーまたはファイルの場所に直接書き込むかを指定します。 Azure Data Factory の既定では、最初に一時ファイルに書き込み、その後、アップロードが完了したらそれらの名前を変更します。 このシーケンスは、(1) 同じファイルに書き込み中の他のプロセスがある場合に、ファイルの破損に至る可能性がある競合を回避し、(2) 転送中に元のバージョンのファイルが確実に存在するようにするのに役立ちます。 実際の SFTP サーバーで名前の変更操作がサポートされていない場合は、このオプションを無効にして、ターゲット ファイルへの同時書き込みが発生しないようにします。 詳細については、この表の末尾にあるトラブルシューティングのヒントを参照してください。 | いいえ。 既定値は " *[はい]* " です。 |
 | operationTimeout | SFTP サーバーに対する各書き込み要求がタイムアウトになるまでの待機時間。規定値は 60 分 (01:00:00) です。|いいえ |
 
@@ -365,7 +400,7 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->以下のモデルは、下位互換性のために引き続き現状のままサポートされます。 Azure Data Factory の作成用 UI は新しいモデルを生成するように切り替えられているため、前に説明した新しいモデルを使用することをお勧めします。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 Azure Data Factory の作成用 UI は新しいモデルを生成するように切り替えられているため、前に説明した新しいモデルを使用することをお勧めします。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -422,7 +457,7 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの *type* プロパティを *FileSystemSource* に設定する必要があります |はい |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 recursive が *true* に設定されていて、シンクがファイル ベースのストアである場合、シンクでは空のフォルダーとサブフォルダーはコピーも作成もされません。<br/>指定できる値は *true* (既定値) と *false* です | いいえ |
-| maxConcurrentConnections | ストレージ ストアに同時に接続できる接続の数。 データ ストアへのコンカレント接続を制限する場合にのみ値を指定します。 | いいえ |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 **例:**
 

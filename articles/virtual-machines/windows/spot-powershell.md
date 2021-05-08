@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096447"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802745"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure スポット仮想マシンをデプロイする
 
@@ -76,20 +76,53 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>削除をシミュレートする
 
-Azure スポット仮想マシンの[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対するアプリケーションの応答をテストすることができます。 
+REST、PowerShell、または CLI を使用して、Azure スポット仮想マシンの削除をシミュレートし、突然の削除に対してアプリケーションがどの程度適切に応答するかをテストすることができます。
 
-次の情報をお客様の情報に置き換えてください。 
+ほとんどの場合、アプリケーションの自動テストに役立てることができるように、REST API [仮想マシン - 削除のシミュレーション](/rest/api/compute/virtualmachines/simulateeviction)を使用します。 REST では、`Response Code: 204` はシミュレートされた削除が成功したことを意味します。 シミュレートされた削除と[スケジュールされたイベント サービス](scheduled-events.md)を組み合わせることで、VM が削除されたときにアプリケーションがどのように応答するかを自動化できます。
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+スケジュールされた実行中のイベントを確認するには、[Azure Friday - Azure Scheduled Events を使用した VM のメンテナンスの準備](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)に関するページをご覧ください。
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>クイック テスト
+
+シミュレートされた削除がどのように動作するかを簡単に確認するには、スケジュールされたイベント サービスに対してクエリを実行し、PowerShell を使用して、削除をシミュレートするときに、どのように表示されるかを確認してみましょう。
+
+スケジュールされたイベント サービスは、初めてイベントを要求したときに、サービスに対して有効になります。 
+
+VM にリモートでログインし、コマンド プロンプトを開きます。 
+
+VM のコマンド プロンプトで、次のように入力します。
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` は、シミュレートされた削除が成功したことを意味します。 
+この最初の応答には最大 2 分かかることがあります。 これ以降は、ほぼ瞬時に出力が表示されます。
+
+Az PowerShell モジュールがインストールされているコンピューター (ローカル コンピューターなど) から、[Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) を使用して削除をシミュレートします。 リソース グループ名と VM 名を実際の名前に置き換えます。 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+要求が正常に行われた場合、応答の出力は `Status: Succeeded` になります。
+
+スポット仮想マシンへのリモート接続にすぐに戻り、スケジュールされたイベントのエンドポイントに対して、もう一度クエリを実行します。 詳細情報が含まれる出力が得られるまで、次のコマンドを繰り返します。
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+スケジュールされたイベント サービスが削除通知を受け取ると、次のような応答が返されます。
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+`"EventType":"Preempt"`、およびリソースが VM リソース `"Resources":["myspotvm"]` であることを確認できます。 
+
+`"NotBefore"` 値を確認することで、VM がいつ削除されるかを確認することもできます。 VM は `NotBefore` で指定した時刻より前に削除されないため、これはアプリケーションで正常に終了するための時間になります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

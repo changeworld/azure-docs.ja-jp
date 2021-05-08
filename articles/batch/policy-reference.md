@@ -1,15 +1,15 @@
 ---
 title: Azure Batch 用の組み込みポリシー定義
 description: Azure Batch 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/17/2021
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: e20e80e58890b7edde4cee4dace7b625b1247b9f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e013d27d2c8e813fc2eb6d0f288a98e0867d8889
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587571"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497246"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-batch"></a>Azure Batch 用の Azure Policy 組み込み定義
 

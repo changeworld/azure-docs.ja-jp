@@ -4,14 +4,14 @@ description: Azure Data Factory でのコピー アクティビティの実行�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 03/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4aefeea33e61b6ee2541e929dbeb3fc36343cac5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388296"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771381"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティを監視する
 
@@ -59,7 +59,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | rowsCopied | シンクにコピーされた行の数。 このメトリックは、ファイルを解析せずにそのままコピーする場合には適用されません (たとえば、ソースとシンクのデータセットがバイナリ形式の場合や、同じ設定を持つ他の形式の種類の場合)。  | Int64 値 (単位なし) |
 | rowsSkipped | スキップされた互換性のない行の数。 `enableSkipIncompatibleRow` を true に設定することにより、互換性のない行をスキップすることができます。 | Int64 値 (単位なし) |
 | copyDuration | コピーの実行の持続期間。 | Int32 値 (秒単位) |
-| throughput | データ転送率。 | 浮動小数点数 (KB/秒単位) |
+| throughput | `dataRead` を `copyDuration` で除算して計算されたデータ転送の比率。 | 浮動小数点数 (KB/秒単位) |
 | sourcePeakConnections | コピー アクティビティの実行中にソース データ ストアに対して確立されたコンカレント接続の最大数。 | Int32 値 (単位なし) |
 | sinkPeakConnections| コピー アクティビティの実行中にシンク データ ストアに対して確立されたコンカレント接続の最大数。| Int32 値 (単位なし) |
 | sqlDwPolyBase | データを Azure Synapse Analytics にコピーするときに PolyBase を使用するかどうかを指定します。 | Boolean |

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 93e605cb20d593750100ec8e340a7ad74c4dd385
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bb38b72af6e7c649c0904c41d3052b15a4c36955
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97587895"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770059"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバー (プレビュー) のアプリを構築する
 
@@ -139,7 +139,7 @@ php artisan serve
 PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>MySQL フレキシブル サーバー (プレビュー) を作成する
-このステップでは、[Azure Database for MySQL フレキシブル サーバー](../index.yml) (パブリック プレビュー) に MySQL データベースを作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。 [Azure Cloud Shell](../../cloud-shell/overview.md) で、[`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) コマンドを使用してサーバーを作成します。
+このステップでは、[Azure Database for MySQL フレキシブル サーバー](../index.yml) (パブリック プレビュー) に MySQL データベースを作成します。 その後、このデータベースに接続するように PHP アプリケーションを構成します。 [Azure Cloud Shell](../../cloud-shell/overview.md) で、[`az flexible-server create`](/cli/azure/mysql/server#az_mysql_flexible_server_create) コマンドを使用してサーバーを作成します。
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
@@ -280,7 +280,7 @@ git commit -m "database.php updates"
 
 FTP およびローカルの Git では、"デプロイ ユーザー" を使用して Azure Web アプリにデプロイできます。 デプロイ ユーザーを構成すると、すべての Azure デプロイでこのユーザーを使用できます。 アカウントレベルのデプロイのユーザー名とパスワードは、Azure サブスクリプションの資格情報とは異なります。
 
-デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 _&lt;username>_ と _&lt;password>_ を、デプロイ ユーザーのユーザー名とパスワードに置き換えます。
+デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) コマンドを実行します。 _&lt;username>_ と _&lt;password>_ を、デプロイ ユーザーのユーザー名とパスワードに置き換えます。
 
 ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。
 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。
@@ -293,7 +293,7 @@ JSON の出力では、パスワードは null として表示されます。 "�
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。 次の例では、myAppServicePlan という名前の App Service プランを、Free 価格レベル (--sku F1) で Linux コンテナー (--is-linux) に作成します。
+Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) コマンドを使用して、リソース グループに App Service プランを作成します。 次の例では、myAppServicePlan という名前の App Service プランを、Free 価格レベル (--sku F1) で Linux コンテナー (--is-linux) に作成します。
 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 
@@ -303,7 +303,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 myAppServicePlan App Service プランに [Web アプリ](../../app-service/overview.md#app-service-on-linux)を作成します。
 
-Cloud Shell では、[az webapp create](/cli/azure/webapp#az-webapp-create) コマンドを使用できます。 次の例では、 _&lt;app-name>_ を、グローバルに一意のアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes) を実行します。
+Cloud Shell では、[az webapp create](/cli/azure/webapp#az_webapp_create) コマンドを使用できます。 次の例では、 _&lt;app-name>_ を、グローバルに一意のアプリ名に置き換えます (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes --linux](/cli/azure/webapp#az_webapp_list_runtimes) を実行します。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -334,7 +334,7 @@ Git デプロイが有効な、空の新しい Web アプリが作成されま�
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;app-name>_ と _&lt;mysql-server-name>_ を置き換えます。
 
@@ -365,7 +365,7 @@ Laravel には App Service のアプリケーション キーが必要です。 
 php artisan key:generate --show
 ```
 
-Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;app-name>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
+Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;app-name>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"

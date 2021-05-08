@@ -8,18 +8,21 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: cb0f9ef64cb8032c02f2ccd4b42028103b6d3ec6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ed81ca2c8f409b7f6c4a6f30f9bf75e594c6c208
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93397928"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221706"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway に TLS ポリシーのバージョンと暗号スイートを構成する
 
 Application Gateway に TLS/SSL ポリシーのバージョンと暗号スイートを構成する方法について説明します。 TLS ポリシーのバージョンと有効な暗号スイートの別の構成を含む定義済みポリシーを、一覧から選択できます。 また、お客様の要件に基づいて、[カスタム TLS ポリシー](#configure-a-custom-tls-policy)を定義することもできます。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Application Gateway でのセキュリティを強化するために、TLS プロトコルの最小バージョンとして TLS 1.2 を使用することをお勧めします。 
 
 ## <a name="get-available-tls-options"></a>使用可能な TLS オプションを取得する
 
@@ -217,4 +220,6 @@ $SetGW = Set-AzApplicationGateway -ApplicationGateway $AppGW
 
 ## <a name="next-steps"></a>次のステップ
 
-HTTP トラフィックを HTTPS エンドポイントにリダイレクトする方法については、「[Application Gateway のリダイレクトの概要](./redirect-overview.md)」をご覧ください。
+HTTP トラフィックを HTTPS エンドポイントにリダイレクトする方法については、「[Application Gateway のリダイレクトの概要](./redirect-overview.md)」をご覧ください。 
+
+[ポータルを使用したリスナー固有 SSL ポリシーの設定](./application-gateway-configure-listener-specific-ssl-policy.md)に関するページで、リスナー固有の SSL ポリシーの設定方法を確認してください。

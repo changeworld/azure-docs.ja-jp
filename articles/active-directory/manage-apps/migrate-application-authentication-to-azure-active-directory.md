@@ -2,24 +2,22 @@
 title: アプリケーション認証を Azure Active Directory に移行する
 description: このホワイトペーパーでは、Azure AD へのアプリケーション認証の移行の計画と利点について詳しく説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 02/05/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e05a7af3f0b95470432b4fb9602e1b41da9f72f
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 3458f358c12ef33a337e50066e83b6e59273ccf1
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952968"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376751"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -481,7 +479,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **オンプレミスで実行するアプリケーション** – [Azure AD アプリケーション プロキシに関する](./application-proxy.md)詳細を確認し、完全な [Azure AD アプリケーション プロキシのデプロイ計画](https://aka.ms/AppProxyDPDownload)を使用して、すぐに作業を開始します。
 
-- **開発中のアプリ** – 詳細な[統合](../develop/quickstart-register-app.md)と[登録](../develop/quickstart-register-app.md)のガイダンスを参照してください。
+- **開発中のアプリ** – 詳細な [統合](../develop/quickstart-register-app.md)と [登録](../develop/quickstart-register-app.md)のガイダンスを参照してください。
 
 移行後に、ユーザーにデプロイが成功したことを知らせ、行う必要がある新しい手順について通知することができます。
 

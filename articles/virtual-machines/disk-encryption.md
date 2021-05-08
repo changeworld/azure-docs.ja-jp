@@ -2,26 +2,26 @@
 title: Azure Managed Disks のサーバー側暗号化
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。また、マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。
 author: roygara
-ms.date: 03/02/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014385"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721853"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
-サーバー側暗号化 (SSE) によってデータが保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 SSE では、Azure マネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で暗号化します。 
+ほとんどの Azure マネージド ディスクは Azure Storage 暗号化によって暗号化されています。暗号化では、サーバー側暗号化 (SSE) を使用してデータを保護し、組織のセキュリティとコンプライアンスのコミットメントを満たすことができます。 Azure Storage 暗号化では、Azure マネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で保存時に自動的に暗号化されます。 ただし、ホストでの暗号化が有効になっているディスクは、Azure Storage によって暗号化されません。 ホストでの暗号化が有効になっているディスクの場合、VM をホストしているサーバーがデータの暗号化を提供し、暗号化されたデータは Azure Storage に送信されます。
 
 Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-サーバー側での暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 
+Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](/azure/storage/common/storage-service-encryption)」をご参照ください。
 
 > [!NOTE]
 > 一時ディスクはマネージド ディスクではなく、ホストで暗号化を有効にしない限り、SSE によって暗号化されません。

@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
-ms.openlocfilehash: 3d200cd9bccecf03f5313058189e134082a1a357
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 13095824122f1d4b59ecde445efa1ea8bfa60dcd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742621"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063578"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>チュートリアル:DMS を使用して RDS MySQL を Azure Database for MySQL にオンラインで移行する
 
 Azure Database Migration Service を使用して、RDS MySQL インスタンスから [Azure Database for MySQL](../mysql/index.yml) にデータベースを移行することができます。移行中、ソース データベースはオンラインのままになります。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを RDS MySQL のインスタンスから Azure Database for MySQL に移行します。
+
+> [!IMPORTANT]
+> "RDS MySQL を Azure Database for MySQL に移行する" オンライン移行シナリオは、2021 年 6 月 1 日に、並列化された高パフォーマンスのオフライン移行シナリオで置き換えられます。 オンライン移行では、この新しいオファリングを[データイン レプリケーション](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)と共に使用できます。 または、データイン レプリケーションと共に [MyDumper や MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用してオンライン移行を行うこともできます。 
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]

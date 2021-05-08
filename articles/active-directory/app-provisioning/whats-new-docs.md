@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーションのプロビジョニングの新機能
 description: Azure Active Directory アプリケーションのプロビジョニングの新規および更新されたドキュメント。
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: abee58607a5492548e4d64f44c15fd365876f3f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8bb8dfbaf7ee1758811016dd3ddf08367a44bfae
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102453684"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443510"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 
 Azure Active Directory アプリケーションのプロビジョニングに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 プロビジョニング サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [アプリ プロビジョニングの拡張属性の同期](user-provisioning-sync-attributes-for-mapping.md)
+- [検疫状態のアプリケーションのプロビジョニング](application-provisioning-quarantine-status.md)
+- [Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する](configure-automatic-user-provisioning-portal.md)
+- [Azure AD で属性マッピングの式を記述するためのリファレンス](functions-for-customizing-application-data.md)
+- [チュートリアル: サンプル SCIM エンドポイントを開発する](use-scim-to-build-users-and-groups-endpoints.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 

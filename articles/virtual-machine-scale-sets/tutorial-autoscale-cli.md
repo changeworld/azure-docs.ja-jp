@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 68f311a949d6c7663c5602c444d1b7b9af09dcad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b7fdf6d4893a6f6a970223671b28fdae6db3ef3d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96016728"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762989"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -55,7 +55,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>自動スケール プロファイルの定義
 
-スケール セットで自動スケールを有効にするには、最初に自動スケール プロファイルを定義します。 このプロファイルでは、スケール セット容量の既定値、最小値、および最大値が定義されます。 これらの制限により、VM インスタンスが継続的に作成されないようにしてコストを制御し、許容されるパフォーマンスと、スケールイン イベントに残るインスタンスの最小数のバランスをとることができます。 [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) を使用して、自動スケール プロファイルを作成します。 次の例では、既定および最小の容量として *2* つの VM インスタンスを設定し、最大の容量として *10* を定義しています。
+スケール セットで自動スケールを有効にするには、最初に自動スケール プロファイルを定義します。 このプロファイルでは、スケール セット容量の既定値、最小値、および最大値が定義されます。 これらの制限により、VM インスタンスが継続的に作成されないようにしてコストを制御し、許容されるパフォーマンスと、スケールイン イベントに残るインスタンスの最小数のバランスをとることができます。 [az monitor autoscale create](/cli/azure/monitor/autoscale#az_monitor_autoscale_create) を使用して、自動スケール プロファイルを作成します。 次の例では、既定および最小の容量として *2* つの VM インスタンスを設定し、最大の容量として *10* を定義しています。
 
 ```azurecli-interactive
 az monitor autoscale create \
@@ -72,7 +72,7 @@ az monitor autoscale create \
 
 アプリケーションの需要が増加すると、スケール セット内の VM インスタンスに対する負荷が増加します。 この増加した負荷が短期的な需要ではなく持続したものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされると、スケール セットはロード バランサーを通じてそれらへのトラフィックの分散を開始します。 監視するメトリック (CPU やディスクなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
 
-CPU に対する負荷の平均が 5 分間にわたって 70% を上回った場合に、スケール セット内の VM インスタンスの数を増やすルールを [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) を使用して作成してみましょう。 ルールがトリガーされると、VM インスタンスの数が 3 つ増えます。
+CPU に対する負荷の平均が 5 分間にわたって 70% を上回った場合に、スケール セット内の VM インスタンスの数を増やすルールを [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az_monitor_autoscale_rule_create) を使用して作成してみましょう。 ルールがトリガーされると、VM インスタンスの数が 3 つ増えます。
 
 ```azurecli-interactive
 az monitor autoscale rule create \
@@ -86,7 +86,7 @@ az monitor autoscale rule create \
 
 夜間や週末は、アプリケーションの需要が低下する可能性があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションによって、現在の需要を満たすのに必要な数のインスタンスのみが実行されるようになるため、スケール セットの実行コストが削減されます。
 
-CPU に対する負荷の平均が 5 分間にわたって 30% を下回った場合に、スケールセット内の VM インスタンスの数を減らす別のルールを [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) を使用して作成します。 次の例では、VM インスタンスの数を 1 つスケールインするルールを定義します。
+CPU に対する負荷の平均が 5 分間にわたって 30% を下回った場合に、スケールセット内の VM インスタンスの数を減らす別のルールを [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az_monitor_autoscale_rule_create) を使用して作成します。 次の例では、VM インスタンスの数を 1 つスケールインするルールを定義します。
 
 ```azurecli-interactive
 az monitor autoscale rule create \

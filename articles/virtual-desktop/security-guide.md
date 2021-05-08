@@ -5,13 +5,13 @@ author: heidilohr
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0ddbd4b798d37498af92cec40af6a80a88115fab
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+manager: femila
+ms.openlocfilehash: fb0935ca2ffcad93ba47ccd207603dd870dc26b0
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014895"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445705"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 

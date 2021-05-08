@@ -2,20 +2,20 @@
 title: Azure Active Directory でアプリケーションへのユーザーのアクセスを削除する方法
 description: Azure Active Directory でアプリケーションへのユーザーのアクセスを削除する方法について説明します
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: kenwith
-ms.openlocfilehash: e6a6c00811a7b87156802897db62a4a10130f130
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: iangithinji
+ms.openlocfilehash: 958abc5f9be443d66037a6d9fe8d8779e6e37e0e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257357"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379589"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>アプリケーションへのユーザー アクセスの削除方法
 

@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102517873"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530312"
 ---
 # <a name="cloud-sync-troubleshooting"></a>クラウド同期のトラブルシューティング
 
@@ -197,7 +197,7 @@ Azure portal を使用して、プロビジョニング ジョブを再起動し
 
   ![プロビジョニングを再開する](media/how-to-troubleshoot/quarantine-3.png)
 
-- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
+- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
   - エスクロー。検疫状態を発生させるエスクロー カウンターを再起動します。
   - 検疫。アプリケーションを検疫から削除します。
   - ウォーターマーク。 

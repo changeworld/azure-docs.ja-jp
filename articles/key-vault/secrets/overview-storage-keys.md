@@ -7,15 +7,14 @@ ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499222"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766319"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 > [!IMPORTANT]
@@ -68,14 +67,14 @@ Azure CLI の [az role assignment create](/cli/azure/role/assignment) コマン�
 
 - `--role`:"Storage Account Key Operator Service Role" の Azure ロールを渡します。 このロールは、アクセス スコープをお使いのストレージ アカウントに制限します。 従来のストレージ アカウントには、"従来のストレージ アカウント キー オペレーターのサービス ロール" を渡します。
 - `--assignee`:値 "https://vault.azure.net" を渡します。これは Azure パブリック クラウドのキー コンテナーの URL です。 (Azure Goverment クラウドの場合、"--asingee-object-id" を代わりに使用します。「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」を参照してください)
-- `--scope`:ストレージ アカウントのリソース ID を渡します。これは `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` という形式で指定します。 サブスクリプション ID を検索するには、Azure CLI の [az account list](/cli/azure/account?#az-account-list) コマンドを使用します。ストレージ アカウント名とストレージ アカウント リソース グループを検索するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az-storage-account-list) コマンドを使用します。
+- `--scope`:ストレージ アカウントのリソース ID を渡します。これは `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` という形式で指定します。 サブスクリプション ID を検索するには、Azure CLI の [az account list](/cli/azure/account?#az_account_list) コマンドを使用します。ストレージ アカウント名とストレージ アカウント リソース グループを検索するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az_storage_account_list) コマンドを使用します。
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>マネージド ストレージ アカウントにユーザー アカウントのアクセス許可を与える
 
-Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az-keyvault-set-policy) コマンドレットを使用して、Key Vault アクセス ポリシーを更新し、ストレージ アカウントのアクセス許可をユーザー アカウントに付与します。
+Azure CLI [az keyvault-set-policy](/cli/azure/keyvault?#az_keyvault_set_policy) コマンドレットを使用して、Key Vault アクセス ポリシーを更新し、ストレージ アカウントのアクセス許可をユーザー アカウントに付与します。
 
 ```azurecli-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -86,11 +85,11 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 ストレージ アカウントのアクセス許可は、Azure portal のストレージ アカウントの [アクセス ポリシー] ページで使用できないことに注意してください。
 ### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault のマネージド ストレージ アカウントを作成する
 
- Azure CLI の [az keyvault storage](/cli/azure/keyvault/storage?#az-keyvault-storage-add) コマンドを使用して、Key Vault マネージド ストレージ アカウントを作成します。 90 日間の再生成期間を設定します。 交換時期になると、Key Vault はアクティブでないキーを再生成し、新しく作成されたキーをアクティブとして設定します。 SAS トークンを発行するために使用されるキーは常に 1 つだけで、これがアクティブなキーです。 コマンドで次のパラメーター値を設定します。
+ Azure CLI の [az keyvault storage](/cli/azure/keyvault/storage?#az_keyvault_storage_add) コマンドを使用して、Key Vault マネージド ストレージ アカウントを作成します。 90 日間の再生成期間を設定します。 交換時期になると、Key Vault はアクティブでないキーを再生成し、新しく作成されたキーをアクティブとして設定します。 SAS トークンを発行するために使用されるキーは常に 1 つだけで、これがアクティブなキーです。 コマンドで次のパラメーター値を設定します。
 
-- `--vault-name`:キー コンテナーの名前を渡します。 キー コンテナーの名前を検索するには、Azure CLI の [az keyvault list](/cli/azure/keyvault?#az-keyvault-list) コマンドを使用します。
-- `-n`:ストレージ アカウントの名前を渡します。 ストレージ アカウントの名前を確認するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az-storage-account-list) コマンドを使用します。
-- `--resource-id`:ストレージ アカウントのリソース ID を渡します。これは `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` という形式で指定します。 サブスクリプション ID を検索するには、Azure CLI の [az account list](/cli/azure/account?#az-account-list) コマンドを使用します。ストレージ アカウント名とストレージ アカウント リソース グループを検索するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az-storage-account-list) コマンドを使用します。
+- `--vault-name`:キー コンテナーの名前を渡します。 キー コンテナーの名前を検索するには、Azure CLI の [az keyvault list](/cli/azure/keyvault?#az_keyvault_list) コマンドを使用します。
+- `-n`:ストレージ アカウントの名前を渡します。 ストレージ アカウントの名前を確認するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az_storage_account_list) コマンドを使用します。
+- `--resource-id`:ストレージ アカウントのリソース ID を渡します。これは `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` という形式で指定します。 サブスクリプション ID を検索するには、Azure CLI の [az account list](/cli/azure/account?#az_account_list) コマンドを使用します。ストレージ アカウント名とストレージ アカウント リソース グループを検索するには、Azure CLI の [az storage account list](/cli/azure/storage/account?#az_storage_account_list) コマンドを使用します。
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -109,7 +108,7 @@ Shared Access Signature トークンを生成するように Key Vault に指示
 
 ### <a name="create-a-shared-access-signature-token"></a>Shared Access Signature トークンの作成
 
-Azure CLI の [az storage account generate-sas](/cli/azure/storage/account?#az-storage-account-generate-sas) コマンドを使用して、Shared Access Signature 定義を作成します。 この操作には `storage` と `setsas` のアクセス許可が必要です。
+Azure CLI の [az storage account generate-sas](/cli/azure/storage/account?#az_storage_account_generate_sas) コマンドを使用して、Shared Access Signature 定義を作成します。 この操作には `storage` と `setsas` のアクセス許可が必要です。
 
 
 ```azurecli-interactive
@@ -125,7 +124,7 @@ az storage account generate-sas --expiry 2020-01-01 --permissions rw --resource-
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Shared Access Signature 定義の生成
 
-Azure CLI の[az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az-keyvault-storage-sas-definition-create) コマンドを使用して、前の手順の出力を `--template-uri` パラメーターに渡し、Shared Access Signature 定義を作成します。  `-n` パラメーターには任意の名前を指定できます。
+Azure CLI の[az keyvault storage sas-definition create](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_create) コマンドを使用して、前の手順の出力を `--template-uri` パラメーターに渡し、Shared Access Signature 定義を作成します。  `-n` パラメーターには任意の名前を指定できます。
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>

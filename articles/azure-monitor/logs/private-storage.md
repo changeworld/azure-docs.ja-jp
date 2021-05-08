@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 69b5927c73dac14c76b94a4ee5bbb21449f8ec98
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047454"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025358"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 
@@ -50,7 +50,7 @@ AMPLS の構成手順の詳細については、「[Azure Private Link を使用
 * Azure Monitor によるストレージ アカウントへのアクセスが許可されていること。 選択したネットワークのみにストレージ アカウントへのアクセスを許可することにした場合は、次の例外を選択する必要があります。"信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します"。
 ![ストレージ アカウント信頼 MS サービスの画像](./media/private-storage/storage-trust.png)
 * ワークスペースで他のネットワークからのトラフィックも処理する場合は、関連するネットワークまたはインターネットからの受信トラフィックを許可するように、ストレージ アカウントを構成する必要があります。
-* エージェントとストレージ アカウント間の TLS バージョンを調整する - TLS 1.2 以上を使用してデータを Log Analytics に送信することをお勧めします。 [プラットフォーム固有のガイダンス](https://docs.microsoft.com/azure/azure-monitor/logs/data-security#sending-data-securely-using-tls-12)を確認し、必要に応じて、[TLS 1.2 を使用するようにエージェントを構成](https://docs.microsoft.com/azure/azure-monitor/agents/agent-windows#configure-agent-to-use-tls-12)します。 何らかの理由でそれが不可能な場合は、TLS 1.0 を受け入れるようにストレージ アカウントを構成します。
+* エージェントとストレージ アカウント間の TLS バージョンを調整する - TLS 1.2 以上を使用してデータを Log Analytics に送信することをお勧めします。 [プラットフォーム固有のガイダンス](./data-security.md#sending-data-securely-using-tls-12)を確認し、必要に応じて、[TLS 1.2 を使用するようにエージェントを構成](../agents/agent-windows.md#configure-agent-to-use-tls-12)します。 何らかの理由でそれが不可能な場合は、TLS 1.0 を受け入れるようにストレージ アカウントを構成します。
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>CMK データ暗号化のためのカスタマー マネージド ストレージ アカウントの使用
 ストレージ アカウント内の保存データはすべて、Azure Storage によって暗号化されます。 既定では、Microsoft のマネージド キー (MMK) を使用してデータを暗号化します。しかし、Azure Storage では、Azure Key Vault の CMK を使用してストレージ データを暗号化することもできます。 独自のキーを Azure Key Vault にインポートするか、または Azure Key Vault API を使用してキーを生成することができます。

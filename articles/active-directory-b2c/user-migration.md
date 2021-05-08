@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2d4a61f653c5bedb31223d2eb3d37b92a076821
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3e60b80a4ebeaef7d31d4c0c1d9d4bfc41ec3a56
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010169"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256210"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>ユーザーを Azure AD B2C に移行する
 
@@ -43,7 +43,7 @@ ms.locfileid: "103010169"
 - パスワードが (ハッシュ関数を使用した場合のように) 一方向の暗号化形式で格納されている。
 - パスワードがレガシの ID プロバイダーによって、ユーザーがアクセスできない方法で格納されている。 たとえば、ID プロバイダーが Web サービスを呼び出して資格情報を検証している場合。
 
-シームレスな移行フローではユーザー アカウントの事前移行がやはり必要ですが、その後、[カスタム ポリシー](custom-policy-get-started.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
+シームレスな移行フローではユーザー アカウントの事前移行がやはり必要ですが、その後、[カスタム ポリシー](user-flow-overview.md)を使用して [REST API](custom-policy-rest-api-intro.md) (ユーザーが作成したもの) へのクエリを実行し、最初のサインイン時に各ユーザーのパスワードを設定します。
 
 このため、シームレスな移行フローには、*事前移行* と *資格情報の設定* の 2 つのフェーズがあります。
 

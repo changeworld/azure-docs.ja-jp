@@ -3,12 +3,12 @@ title: タスク実行ログの表示 - タスク
 description: ACR タスクによって生成された実行ログを表示および管理する方法。
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ce5f33853be2aa48bcfd1916c7f8b94b9702f38c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93027178"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781057"
 ---
 # <a name="view-and-manage-task-run-logs"></a>タスク実行ログを表示および管理する
 
@@ -18,9 +18,9 @@ ms.locfileid: "93027178"
 
 ## <a name="view-streamed-logs"></a>ストリーム配信されるログを表示する
 
-タスクを手動でトリガーすると、ログ出力が直接コンソールにストリーム配信されます。 たとえば、[az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run)、または [az acr task run](/cli/azure/acr/task#az-acr-task-run) コマンドを使用して手動でタスクをトリガーする場合、コンソールにストリーム配信されたログ出力が表示されます。 
+タスクを手動でトリガーすると、ログ出力が直接コンソールにストリーム配信されます。 たとえば、[az acr build](/cli/azure/acr#az_acr_build)、[az acr run](/cli/azure/acr#az_acr_run)、または [az acr task run](/cli/azure/acr/task#az_acr_task_run) コマンドを使用して手動でタスクをトリガーする場合、コンソールにストリーム配信されたログ出力が表示されます。 
 
-次の [az acr run](/cli/azure/acr#az-acr-run) サンプル コマンドは、同じレジストリからプルされたコンテナーを実行するタスクを手動でトリガーします。
+次の [az acr run](/cli/azure/acr#az_acr_run) サンプル コマンドは、同じレジストリからプルされたコンテナーを実行するタスクを手動でトリガーします。
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
@@ -58,7 +58,7 @@ Run ID: cf4 was successful after 5s
 
 ## <a name="view-stored-logs"></a>保存されたログを表示する 
 
-Azure Container Registry では、すべてのタスクの実行ログが保存されます。 保存されている実行ログは、Azure portal で表示できます。 または [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用して、選択したログを表示します。 既定では、ログは 30 日間保持されます。
+Azure Container Registry では、すべてのタスクの実行ログが保存されます。 保存されている実行ログは、Azure portal で表示できます。 または [az acr task logs](/cli/azure/acr/task#az_acr_task_logs) コマンドを使用して、選択したログを表示します。 既定では、ログは 30 日間保持されます。
 
 たとえばソースコードの更新でタスクが自動的にトリガーされる場合、保存されているログへのアクセスが、実行ログを表示する *唯一* の方法になります。 自動タスク トリガーには、ソース コードのコミットまたは pull request、基本イメージの更新、およびタイマー トリガーが含まれます。
 
@@ -70,7 +70,7 @@ Azure Container Registry では、すべてのタスクの実行ログが保存�
 
 ![タスク実行ログイン ポータルを表示する](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-Azure CLI を使用してログを表示するには、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) を実行して、実行 ID、タスク名、またはビルド タスクで作成される特定のイメージを指定します。 タスク名が指定されている場合、コマンドは最後に作成された実行のログを表示します。
+Azure CLI を使用してログを表示するには、[az acr task logs](/cli/azure/acr/task#az_acr_task_logs) を実行して、実行 ID、タスク名、またはビルド タスクで作成される特定のイメージを指定します。 タスク名が指定されている場合、コマンドは最後に作成された実行のログを表示します。
 
 次の例では、ID *cf4* の実行のログを出力します。
 
@@ -83,7 +83,7 @@ az acr task logs --registry mycontainerregistry1220 \
 
 タスク実行ログをローカル ファイル システムに保存することも、Azure Storage などの代替アーカイブ ソリューションを使用することもできます。
 
-たとえば、ローカルの *tasklogs* ディレクトリを作成し、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) の出力をローカル ファイルにリダイレクトします。
+たとえば、ローカルの *tasklogs* ディレクトリを作成し、[az acr task logs](/cli/azure/acr/task#az_acr_task_logs) の出力をローカル ファイルにリダイレクトします。
 
 ```azurecli
 mkdir ~/tasklogs
@@ -101,13 +101,13 @@ az acr task logs --registry mycontainerregistry1220 \
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-update]: /cli/azure/acr/task#az_acr_task_update
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

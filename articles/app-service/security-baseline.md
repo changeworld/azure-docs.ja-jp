@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3193acf8ef19cdac97f6733a657610801d614f32
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 7607b1726900423498a58502494c015f62da8829
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952305"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559436"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service 用の Azure セキュリティ ベースライン
 
@@ -43,7 +43,7 @@ Web アプリケーション ファイアウォール (WAF) が有効になっ�
 
 サブスクリプションと仮想ネットワーク全体でアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、および記録するために、Azure Firewall を実装することを検討してください。 Azure Firewall では、仮想ネットワーク リソースに静的パブリック IP アドレスが使用されます。これにより、外部ファイアウォールは、仮想ネットワークからのトラフィックを識別できます。 
 
-- [App Service 環境をロックする](environment/firewall-integration.md)
+- [App Service Environment をロックする](environment/firewall-integration.md)
 
 - [Open Web Application Security Project (OWASP) の上位 10 の脆弱性の保護](https://owasp.org/www-project-top-ten/)
 
@@ -59,7 +59,7 @@ Web アプリケーション ファイアウォール (WAF) が有効になっ�
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Network**:
 
@@ -83,7 +83,7 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Network**:
 
@@ -110,9 +110,9 @@ Azure Firewall を使用して、トラフィックを送信し、サブスク�
 
 Application Service Environment アプリと同様に、すべてのアプリケーション トラフィックを Azure Firewall デバイス経由で外部に送信し、アプリのログを監視します。
 
-さらに、「App Service 環境をロックする」というドキュメントで推奨事項を確認し、それに従ってください。
+さらに、「App Service Environment をロックする」というドキュメントで推奨事項を確認し、それに従ってください。
 
-- [App Service 環境をロックする](environment/firewall-integration.md)
+- [App Service Environment をロックする](environment/firewall-integration.md)
 
 - [Azure Application Gateway 上の Azure Web Application Firewall](../web-application-firewall/ag/ag-overview.md)
 
@@ -122,7 +122,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Web**:
 
@@ -130,7 +130,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
-**ガイダンス**:「App Service 環境をロックする」というドキュメントの説明に従って App Service Environment を保護します。 Azure Security Center の統合された脅威インテリジェンス機能を適用して、既知の悪意のあるパブリック IP アドレス、または未使用のパブリック IP アドレスとの通信を拒否します。 アクセス制限を使用して Application Gateway への受信トラフィックを保護します。 
+**ガイダンス**:「App Service Environment をロックする」というドキュメントの説明に従って App Service Environment を保護します。 Azure Security Center の統合された脅威インテリジェンス機能を適用して、既知の悪意のあるパブリック IP アドレス、または未使用のパブリック IP アドレスとの通信を拒否します。 アクセス制限を使用して Application Gateway への受信トラフィックを保護します。 
 
 インターネットに接続するパブリック エンドポイントを使用して、マルチテナント App Service (Isolated レベルではないアプリ) を保護します。 仮想ネットワーク内の特定のサブネットからのトラフィックのみを許可し、他のすべてのトラフィックをブロックします。 アクセス制限を使用して、許可される受信トラフィックをロック ダウンするようにネットワーク アクセス制御リスト (IP 制限) を構成します。
 
@@ -144,11 +144,11 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [App Service Environment 向けに Web アプリケーション ファイアウォール (WAF) を構成する方法](environment/app-service-app-service-environment-web-application-firewall.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](environment/firewall-integration.md)
+- [「App Service Environment をロックする」の説明に従って ASE を保護する](environment/firewall-integration.md)
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Network**:
 
@@ -162,7 +162,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Network**:
 
@@ -172,7 +172,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 **ガイダンス**:App Service Environment でアプリのトラフィックを管理します。
 
-- 「App Service 環境をロックする」の説明に従って App Service Environment を保護する
+- 「App Service Environment をロックする」の説明に従って App Service Environment を保護する
 - インターネットに接続するアプリの前面に Azure Web Application Firewall を備えた Application Gateway を配置する
 - HTTPS を介してのみアプリにアクセスできるように設定する
 
@@ -192,7 +192,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integrationEnvironment:)
+- [「App Service Environment をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integration)
 
 **責任**: Customer
 
@@ -229,7 +229,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [ポータルで Application Gateway を使用してエンド ツー エンド TLS を構成する方法](../application-gateway/end-to-end-ssl-portal.md)
 
-- [「App Service 環境をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integrationEnvironment:)
+- [「App Service Environment をロックする」の説明に従って ASE を保護する](/azure/app-service/environment/firewall-integration)
 
 **責任**: Customer
 
@@ -245,7 +245,7 @@ Application Service Environment アプリと同様に、すべてのアプリケ
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restriction)
+- [Azure App Service のアクセス制限](/azure/app-service/app-service-ip-restrictions)
 
 **責任**: Customer
 
@@ -313,7 +313,7 @@ App Service とその他の Azure リソースの Azure アクティビティ �
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Web**:
 
@@ -623,7 +623,7 @@ Microsoft では、App Service 用の基になるインフラストラクチャ�
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Web**:
 
@@ -1006,7 +1006,7 @@ Azure リソースの構成を自動的に適用するには、Azure Policy の 
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Web**:
 

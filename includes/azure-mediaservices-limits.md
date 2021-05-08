@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 09/16/2020
 ms.author: jroth
-ms.openlocfilehash: c315c071aeb36eea0bd1af84b1344cf2fef5f703
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4bdd5332b3c10cf375c7c04ede25137328714a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329663"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073170"
 ---
 >[!NOTE]
 >固定されないリソースの場合は、サポート チケットを開いてクォータの増加を要求してください。 上限を高くするために追加の Azure Media Services アカウントを作成することはしないでください。
@@ -41,7 +41,7 @@ ms.locfileid: "91329663"
 
 <sup>3</sup> ジョブ エンティティの一覧を要求すると、要求ごとに最大 1,000 件のジョブが返されます。 送信したすべてのジョブを追跡するには、[OData システム クエリ オプション](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))に関する記事で説明されている top または skip クエリを使用します。
 
-<sup>4</sup> ロケーターはユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。 詳しくは、[Azure Media Services でのコンテンツの保護](../articles/media-services/previous/media-services-content-protection-overview.md)に関する記事をご覧ください。
+<sup>4</sup> ロケーターはユーザーごとのアクセス制御を管理するようには設計されていません。 個々のユーザーに異なるアクセス権限を付与するには、デジタル著作権管理 (DRM) ソリューションを使用します。 詳しくは、[Azure Media Services でのコンテンツの保護](../articles/media-services/latest/drm-content-protection-concept.md)に関する記事をご覧ください。
 
 <sup>5</sup> ストレージ アカウントは、同じ Azure サブスクリプションからのものである必要があります。
 

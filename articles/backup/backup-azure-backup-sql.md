@@ -3,12 +3,12 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 03763c3bee5ee4ca5239c49c99fdbeedc242b24d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96327051"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515177"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
@@ -196,4 +196,4 @@ SQL Server データベースなどの保護されたエンティティを Azure
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure Backup に関する FAQ](backup-azure-backup-faq.md) を参照してください。
+詳細については、[Azure Backup に関する FAQ](backup-azure-backup-faq.yml) を参照してください。

@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e34876c76259b8274e0b0ef9059659802eb55cf1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181433"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765451"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "102181433"
 
 Azure portal を介して SQL Server VM の Azure Marketplace イメージをデプロイすると、その SQL Server VM が自動的に拡張機能に登録されます。 ただし、Azure 仮想マシンに SQL Server を自分でインストールすること、またはカスタム VHD から Azure 仮想マシンをプロビジョニングすることを選択する場合は、機能面のすべての利点と管理の容易性を活用できるようにするために、SQL Server VM を SQL IaaS Agent 拡張機能に登録する必要があります。 
 
-SQL IaaS Agent 拡張機能を利用するには、最初に [サブスクリプションを **Microsoft.SqlVirtualMachine** プロバイダーに登録する](#register-subscription-with-rp)必要があります。これにより、SQL IaaS 拡張機能は、その特定のサブスクリプション内にリソースを作成できます。
+SQL IaaS Agent 拡張機能を利用するには、最初に [サブスクリプションを **Microsoft.SqlVirtualMachine** プロバイダーに登録する](#register-subscription-with-resource-provider)必要があります。これにより、SQL IaaS 拡張機能は、その特定のサブスクリプション内にリソースを作成できます。
 
 > [!IMPORTANT]
 > SQL IaaS Agent 拡張機能を使用すると、Azure 仮想マシン内で SQL Server を使用する際に、お客様に追加のメリットを提供するという明確な目的のためにデータが収集されます。 Microsoft は、お客様の事前の同意なく、ライセンスの監査にこのデータを使用することはありません。 詳細については、「[SQL Server のプライバシーの補足情報](/sql/sql-server/sql-server-privacy#non-personal-data)」を参照してください。
@@ -50,9 +50,9 @@ SQL Server VM を拡張機能に登録するには、以下のものが必要に
 - [Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell (最低 5.0)](/powershell/azure/install-az-ps) の最新バージョン。 
 
 
-## <a name="register-subscription-with-rp"></a>リソースプロバイダーを使用してサブスクリプションを登録する
+## <a name="register-subscription-with-resource-provider"></a>リソース プロバイダーにサブスクリプションを登録する
 
-SQL Server VM を SQL IaaS Agent 拡張機能に登録するには、最初にサブスクリプションを **Microsoft.SqlVirtualMachine** プロバイダーに登録する必要があります。 これにより、SQL IaaS Agent 拡張機能は、サブスクリプション内にリソースを作成できます。  これは Azure portal、Azure CLI、または Azure PowerShell を使用して実行できます。
+SQL Server VM を SQL IaaS Agent 拡張機能に登録するには、最初にサブスクリプションを **Microsoft.SqlVirtualMachine** リソース プロバイダーに登録する必要があります。 これにより、SQL IaaS Agent 拡張機能は、サブスクリプション内にリソースを作成できます。  これは Azure portal、Azure CLI、または Azure PowerShell を使用して実行できます。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -304,7 +304,7 @@ Azure portal を使用して拡張機能から SQL Server VM の登録を解除�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して拡張機能から SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
+Azure CLI を使用して拡張機能から SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm#az_sql_vm_delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
 
 
 ```azurecli-interactive

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: ffe2f2b7f94d546cdfe393170da2fd2ca6ac0149
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6c54f935ed05451df5922ff1a3d564c775703700
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490995"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029354"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge での証明書の使用方法について理解する
 
@@ -25,7 +25,7 @@ IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デ
 >[!NOTE]
 >この記事では、IoT Edge デバイス上のさまざまなコンポーネント間、または IoT Edge デバイスとリーフ デバイスとの間の接続をセキュリティで保護するために使用される証明書について説明します。 また、証明書を使用して、IoT Hub に対して IoT Edge デバイスを認証することもできます。 これらの認証証明書は異なりますが、この記事では説明されません。 証明書を使用してデバイスを認証する方法の詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)」を参照してください。
 
-この記事では、IoT Edge 証明書が運用、開発、およびテストのシナリオでどのように動作可能であるかについて説明します。 スクリプトが異なる (PowerShell と bash) 場合でも、Linux と Windows での概念は同じです。
+この記事では、IoT Edge 証明書が運用、開発、およびテストのシナリオでどのように動作可能であるかについて説明します。
 
 ## <a name="iot-edge-certificates"></a>IoT Edge 証明書
 

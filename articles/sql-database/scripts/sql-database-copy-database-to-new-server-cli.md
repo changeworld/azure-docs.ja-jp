@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e22d28215c06de96d31faec71f4fb595bb74a4a6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 88032183825443aa3a3945530e2203e5500248a6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87495269"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791321"
 ---
 # <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>CLI を使用して Azure SQL Database のデータベースを新しいサーバーにコピーする
 
@@ -55,7 +55,7 @@ az group delete --name $targetResource
 
 | コマンド | 説明 |
 |---|---|
-| [az sql db copy](/cli/azure/sql/db#az-sql-db-copy) | 現在の時刻でのスナップショットを使用するデータベースのコピーを作成します。 |
+| [az sql db copy](/cli/azure/sql/db#az_sql_db_copy) | 現在の時刻でのスナップショットを使用するデータベースのコピーを作成します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

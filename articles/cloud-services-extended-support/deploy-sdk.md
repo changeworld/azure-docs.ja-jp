@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b63f42ccc0a9d8d138e38a262db528fd36ea701a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123039"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166889"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Azure SDK を使用して Cloud Services (延長サポート) をデプロイする
 
@@ -156,7 +156,8 @@ ms.locfileid: "102123039"
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. パブリック IP アドレスを作成し、(必要に応じて) そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 静的 IP を使用する場合は、サービス構成ファイルで予約済み IP として参照する必要があります。
+7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
+静的 IP を使用する場合は、サービス構成 (.cscfg) ファイルで予約済み IP として参照する必要があります
 
     ```csharp
     PublicIPAddress publicIPAddressParams = new PublicIPAddress(name: “ContosIp”) 
@@ -171,7 +172,7 @@ ms.locfileid: "102123039"
     PublicIPAddress publicIpAddress = m_NrpClient.PublicIPAddresses.CreateOrUpdate(resourceGroupName, publicIPAddressName, publicIPAddressParams);
     ```
 
-8. ネットワーク プロファイル オブジェクトを作成し、プラットフォームで作成されたロード バランサーのフロントエンドにパブリック IP アドレスを関連付けます。
+8. ネットワーク プロファイル オブジェクトを作成し、ロード バランサーのフロントエンドにパブリック IP アドレスを関連付けます。 Azure プラットフォームにより、クラウド サービス リソースと同じサブスクリプションに "クラシック" SKU ロード バランサー リソースが自動的に作成されます。 ロード バランサー リソースは、ARM の読み取り専用リソースです。 リソースに対する更新は、クラウド サービス デプロイ ファイル (.cscfg および .csdef) を介してのみサポートされます
 
     ```csharp
     LoadBalancerFrontendIPConfiguration feipConfiguration = new LoadBalancerFrontendIPConfiguration() 

@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/06/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 81953f573c47d229fcaccd7c11f62155acd2f119
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97968301"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063646"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>チュートリアル:詳細なデプロイ フローのために Azure Stack Edge Pro でデータを変換する
 
@@ -140,7 +139,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
 
 4. サンプルのルートをコピーして保存します。 このサンプルのルートを変更して後で IoT Hub で使います。
 
-    `"sampleroute": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
+    `"sampleroute&quot;: &quot;FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/modulename/inputs/input1\")"`
 
     ![トリガーを追加する 4](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-4.png)
 
@@ -218,7 +217,7 @@ Azure Stack Edge Pro でコンピューティングを構成するために、Io
     *route* は、前にコピーした次のルート文字列に置き換えることができます。 この例では、クラウド共有にデータをプッシュするローカル共有の名前を入力します。 `modulename` は、モジュールの名前に置き換えます。 **[次へ]** を選択します。
         
     ```
-    "route": "FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
+    "route&quot;: &quot;FROM /* WHERE topic = 'mydbesmbedgelocalshare1' INTO BrokeredEndpoint(\"/modules/filemove/inputs/input1\")"
     ```
 
     ![[ルートの指定] セクション](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-8.png)

@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783389"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566661"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory でパラメーター、式、関数を使用する方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "104783389"
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure Data Factory UI とパラメーター
 
-ADF ユーザー インターフェイスで Azure Data Factory パラメーターを初めて使用する場合は、視覚的な説明として[リンクされたサービス用の Data Factory UI](https://docs.microsoft.com/azure/data-factory/parameterize-linked-services#data-factory-ui) と[パラメーターを備えたメタデータ ドリブン パイプライン用の Data Factory UI](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization#data-factory-ui) に関するページをご覧ください。
+ADF ユーザー インターフェイスで Azure Data Factory パラメーターを初めて使用する場合は、視覚的な説明として[リンクされたサービス用の Data Factory UI](./parameterize-linked-services.md#data-factory-ui) と[パラメーターを備えたメタデータ ドリブン パイプライン用の Data Factory UI](./how-to-use-trigger-parameterization.md#data-factory-ui) に関するページをご覧ください。
 
 ## <a name="parameter-and-expression-concepts"></a>パラメーターと式の概念 
 
@@ -313,11 +313,11 @@ ADF ユーザー インターフェイスで Azure Data Factory パラメータ�
 
 ### <a name="detailed--mapping-data-flow-pipeline-with-parameters"></a>パラメーターを備えたマッピング データ フロー パイプラインの詳細 
 
-データ フローでパラメーターを使用する方法の包括的な例については、[パラメーターを備えたマッピング データ フロー](https://docs.microsoft.com/azure/data-factory/parameters-data-flow)に関するページをご覧ください。
+データ フローでパラメーターを使用する方法の包括的な例については、[パラメーターを備えたマッピング データ フロー](./parameters-data-flow.md)に関するページをご覧ください。
 
 ### <a name="detailed-metadata-driven-pipeline-with-parameters"></a>パラメーターを備えたメタデータ ドリブン パイプラインの詳細
 
-パラメーターを使用してメタデータ ドリブン パイプラインを設計する方法の詳細については、[パラメーターを備えたメタデータ ドリブン パイプライン](https://docs.microsoft.com/azure/data-factory/how-to-use-trigger-parameterization)に関するページをご覧ください。 これは、パラメーターの一般的なユース ケースです。
+パラメーターを使用してメタデータ ドリブン パイプラインを設計する方法の詳細については、[パラメーターを備えたメタデータ ドリブン パイプライン](./how-to-use-trigger-parameterization.md)に関するページをご覧ください。 これは、パラメーターの一般的なユース ケースです。
 
 
 ## <a name="next-steps"></a>次のステップ

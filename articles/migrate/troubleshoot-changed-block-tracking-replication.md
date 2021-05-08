@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98071376"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568660"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -292,7 +292,7 @@ _エラー メッセージ:An internal error occurred. [Error message] (内部�
 
 ### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>エラー メッセージ:An internal error occurred. [Snapshot Disk size invalid] (内部エラーが発生しました。[スナップショット ディスクのサイズが無効です])
 
-これは、スナップショットによって示されたディスク サイズがゼロになる VMware の既知の問題です。 [VMware KB](https://go.microsoft.com/fwlink/?linkid=2138972) に示されている解決方法に従ってください。
+これは、スナップショットによって示されたディスク サイズがゼロになる VMware の既知の問題です。 [VMware KB](https://kb.vmware.com/s/) に示されている解決方法に従ってください。
 
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>エラー メッセージ:An internal error occurred. [Memory allocation failed. Out of memory.] (内部エラーが発生しました。[メモリの割り当てが失敗しました。 メモリ不足です。])
 

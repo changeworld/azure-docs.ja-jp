@@ -1,26 +1,24 @@
 ---
-title: .NET を使用して BLOB を一覧表示する - Azure Storage
-description: .NET クライアント ライブラリを使用して、Azure Storage アカウントのコンテナー内の BLOB を一覧表示する方法について説明します。 サンプル コードは、ディクショナリまたはフォルダーで整理されているかのように BLOB をフラット リスト (階層) で一覧表示する方法を示しています。
+title: .Azure Storage API を使用して BLOB を一覧表示する
+description: Azure Storage クライアント ライブラリを使用して、ストレージ アカウント内の BLOB を一覧表示する方法について説明します。 サンプル コードは、ディクショナリまたはフォルダーで整理されているかのように BLOB をフラット リスト (階層) で一覧表示する方法を示しています。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 03/24/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff20b8bd0aab94cadadddbb7a4b7b32b1db1ee85
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95543070"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046944"
 ---
-# <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
+# <a name="list-blobs-with-azure-storage-client-libraries"></a>Azure Storage クライアント ライブラリを使用して BLOB を一覧表示する
 
 BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。
-
-この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage)を使用して BLOB を一覧表示する方法について説明します。  
 
 ## <a name="understand-blob-listing-options"></a>BLOB の一覧表示オプションについて
 
@@ -45,7 +43,9 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 - [CloudBlobContainer.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
 - [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-これらのメソッドのオーバーロードを使用すると、一覧表示操作によって BLOB がどのように返されるかを管理するための、追加のオプションを指定できます。 以降のセクションでは、これらのオプションについて説明します。
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+- [ContainerClient.list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-)
 
 ---
 
@@ -61,13 +61,25 @@ BLOB の一覧をフィルター処理するには、`prefix` パラメーター
 
 結果と共に BLOB メタデータを返すことができます。
 
-- .NET v12 SDK を使用している場合は、[BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) 列挙型の **Metadata** 値を指定します。
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-- .NET v11 SDK を使用している場合は、[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
+[BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) の **Metadata** 値を指定します。
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) 列挙型の **Metadata** 値を指定します。 Azure Storage は、返される各 BLOB にメタデータを追加します。そのため、BLOB のメタデータを取得するために、いずれかの **FetchAttributes** メソッドをこのコンテキストで呼び出す必要はありません。
+
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+[list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) を呼び出すときに、`include=` パラメーターに `metadata` を指定します。
+
+---
 
 ### <a name="list-blob-versions-or-snapshots"></a>BLOB のバージョンまたはスナップショットをリストに表示する
 
-.NET v12 クライアント ライブラリを使用して BLOB のバージョンまたはスナップショットをリストに表示するには、 **[バージョン]** または **[スナップショット]** フィールドで [[BlobStates]](/dotnet/api/azure.storage.blobs.models.blobstates) パラメーターを指定します。 バージョンとスナップショットは、古いものから新しいものの順に列挙されます。 バージョンをリストに表示する方法の詳細については、[BLOB のバージョンをリストに表示する](versioning-enable.md#list-blob-versions)方法に関するページをご覧ください。
+- .NET v12 クライアント ライブラリを使用して BLOB のバージョンまたはスナップショットをリストに表示するには、 **[バージョン]** または **[スナップショット]** フィールドで [[BlobStates]](/dotnet/api/azure.storage.blobs.models.blobstates) パラメーターを指定します。 バージョンとスナップショットは、古いものから新しいものの順に列挙されます。 バージョンをリストに表示する方法の詳細については、[BLOB のバージョンをリストに表示する](versioning-enable.md#list-blob-versions)方法に関するページをご覧ください。
+
+- Python v12 クライアント ライブラリを使用してスナップショットの数を一覧表示するには、[list_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) を呼び出すときに、`include=` パラメーターに `num_snapshots` を指定します。
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 
@@ -135,11 +147,15 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_ListBlobs":::
+
 ---
 
 出力例は次のようになります。
 
-```
+```console
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt
 Blob name: FolderA/blob3.txt
@@ -153,7 +169,7 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 
 ## <a name="use-a-hierarchical-listing"></a>階層的な一覧表示を使用する
 
-一覧表示操作を階層的に呼び出すと、Azure Storage は、階層の最初のレベルに仮想ディレクトリと BLOB を返します。 各仮想ディレクトリの [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) プロパティは、再帰呼び出しでプレフィックスを渡して次のディレクトリを取得できるように設定されます。
+一覧表示操作を階層的に呼び出すと、Azure Storage は、階層の最初のレベルに仮想ディレクトリと BLOB を返します。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -164,6 +180,8 @@ BLOB を階層的に一覧表示するには、[BlobContainerClient.GetBlobsByHi
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+各仮想ディレクトリの [Prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) プロパティは、再帰呼び出しでプレフィックスを渡して次のディレクトリを取得できるように設定されます。
 
 BLOB を階層的に一覧表示するには、一覧表示メソッドの `useFlatBlobListing` パラメーターを **false** に設定します。
 
@@ -222,11 +240,19 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
+# <a name="python-v12"></a>[Python v12](#tab/python)
+
+BLOB 階層を一覧表示するには、[walk_blobs](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.containerclient#walk-blobs-name-starts-with-none--include-none--delimiter--------kwargs-) メソッドを呼び出します。
+
+次の例では、階層型の一覧表示を使用し、オプションのセグメント サイズを指定して、指定したコンテナー内の BLOB を一覧表示し、BLOB 名をコンソール ウィンドウに出力します。
+
+:::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/list_blobs.py" id="Snippet_WalkHierarchy":::
+
 ---
 
 出力例は次のようになります。
 
-```
+```console
 Virtual directory prefix: FolderA/
 Blob name: FolderA/blob1.txt
 Blob name: FolderA/blob2.txt

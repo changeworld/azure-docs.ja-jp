@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360379"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670003"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Kibana と Grafana を使用してログとメトリックを表示する
 
@@ -22,43 +22,51 @@ Web ダッシュボードである Kibana と Grafana は、Azure Arc 対応デ�
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="retrieve-the-ip-address-of-your-cluster"></a>クラスターの IP アドレスを取得する
 
-ダッシュボードにアクセスするには、クラスターの IP アドレスを取得する必要があります。 正しい IP アドレスを取得する方法は、選択した Kubernetes のデプロイ方法によって異なります。 以下のオプションの手順に従って、適切なものを見つけてください。
+## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Azure Arc 上の Azure SQL Managed Instance を監視する
 
-### <a name="azure-virtual-machine"></a>Azure 仮想マシン
+Azure Arc 対応 SQL Managed Instance のログと監視ダッシュボードにアクセスするには、次の `azdata` CLI コマンドを実行します。
 
-パブリック IP アドレスを取得するには、次のコマンドを使用します。
+```bash
 
-```azurecli
-az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
+azdata arc sql endpoint list -n <name of SQL instance>
+
+```
+関連する Grafana ダッシュボードは次のとおりです。
+
+* "Azure SQL Managed Instance メトリック"
+* "ホスト ノード メトリック"
+* "ホスト ポッド メトリック"
+
+
+> [!NOTE]
+>  ユーザー名とパスワードの入力を求められたら、Azure Arc データ コントローラーの作成時に指定したユーザー名とパスワードを入力します。
+
+> [!NOTE]
+>  プレビューで使用される証明書は自己署名証明書であるため、証明書の警告が表示されます。
+
+
+## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>Azure Arc で Azure Database for PostgreSQL Hyperscale を監視する
+
+PostgreSQL Hyperscale のログと監視ダッシュボードにアクセスするには、次の `azdata` CLI コマンドを実行します。
+
+```bash
+
+azdata arc postgres endpoint list -n <name of postgreSQL instance>
+
 ```
 
-### <a name="kubeadm-cluster"></a>Kubeadm クラスター
+関連する postgreSQL ダッシュボードは次のとおりです。
 
-クラスターの IP アドレスを取得するには、次のコマンドを使用します。
+* "Postgres メトリック"
+* "Postgres テーブル メトリック"
+* "ホスト ノード メトリック"
+* "ホスト ポッド メトリック"
 
-```console
-kubectl cluster-info
-```
-
-
-### <a name="aks-or-other-load-balanced-cluster"></a>AKS または他の負荷分散クラスター
-
-AKS または他の負荷分散クラスターで環境を監視するには、管理プロキシサービスの IP アドレスを取得する必要があります。 **外部 IP** アドレスを取得するには、次のコマンドを使用します。
-
-```console
-kubectl get svc mgmtproxy-svc-external -n <namespace>
-
-#Example:
-#kubectl get svc mgmtproxy-svc-external -n arc
-NAME                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)           AGE
-mgmtproxy-svc-external   LoadBalancer   10.0.186.28   52.152.148.25   30777:30849/TCP   19h
-```
 
 ## <a name="additional-firewall-configuration"></a>追加のファイアウォール構成
 
-Kibana と Grafana のエンドポイントにアクセスするには、ファイアウォールでポートを開くことが必要な場合があります。
+データ コントローラーがデプロイされている場所によっては、Kibana と Grafana の各エンドポイントにアクセスするために、ファイアウォールでポートを開く必要がある場合があります。
 
 以下では、Azure VM に対してこれを行う方法の例を示します。 スクリプトを使用して Kubernetes をデプロイした場合は、これを行う必要があります。
 
@@ -78,44 +86,6 @@ NSG の名前を取得したら、次のコマンドを使用して規則を追�
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 
-## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Azure Arc 上の Azure SQL Managed Instance を監視する
-
-IP アドレスを取得し、ポートを公開したので、Grafana と Kibana にアクセスできるはずです。
-
-> [!NOTE]
->  ユーザー名とパスワードの入力を求められたら、Azure Arc データ コントローラーの作成時に指定したユーザー名とパスワードを入力します。
-
-> [!NOTE]
->  プレビューで使用される証明書は自己署名証明書であるため、証明書の警告が表示されます。
-
-Azure SQL Managed Instance のログと監視のダッシュボードにアクセスするには、次の URL パターンを使用します。
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-関連するダッシュボードは次のとおりです。
-
-* "Azure SQL Managed Instance メトリック"
-* "ホスト ノード メトリック"
-* "ホスト ポッド メトリック"
-
-## <a name="monitor-azure-database-for-postgresql-hyperscale---azure-arc"></a>Azure Database for PostgreSQL Hyperscale を監視する - Azure Arc
-
-PostgreSQL Hyperscale のログと監視のダッシュボードにアクセスするには、次の URL パターンを使用します。
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-関連するダッシュボードは次のとおりです。
-
-* "Postgres メトリック"
-* "Postgres テーブル メトリック"
-* "ホスト ノード メトリック"
-* "ホスト ポッド メトリック"
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Monitor へのメトリックとログのアップロード](upload-metrics-and-logs-to-azure-monitor.md)を試す

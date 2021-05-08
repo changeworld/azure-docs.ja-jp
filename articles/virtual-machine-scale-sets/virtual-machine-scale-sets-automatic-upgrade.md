@@ -5,16 +5,16 @@ author: avirishuv
 ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
+ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: avverma
+ms.openlocfilehash: 047eab6cb90caa18362830c8c74656f76865a9ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684612"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762877"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -79,7 +79,7 @@ OS の自動アップグレードには、次の特徴があります。
 ### <a name="service-fabric-requirements"></a>Service Fabric の要件
 
 Service Fabric を使用している場合は、次の条件が満たされていることを確認します。
--   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)は Silver または Gold であり、Bronze ではありません。
+-   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)はシルバーまたはゴールドであり、ブロンズではありません (OS の自動アップグレードがサポートされるステートレス専用ノードタイプを除く)。
 -   スケール セット モデル定義の Service Fabric 拡張機能には、TypeHandlerVersion 1.1 以降が必要です。
 -   持続性レベルは、スケール セット モデル定義の Service Fabric クラスターと Service Fabric 拡張機能で同じである必要があります。
 - 追加の正常性プローブやアプリケーション正常性拡張機能を使用する必要はありません。
@@ -130,7 +130,7 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-スケール セットに自動 OS イメージ アップグレードを構成するには、[az vmss update](/cli/azure/vmss#az-vmss-update) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
+スケール セットに自動 OS イメージ アップグレードを構成するには、[az vmss update](/cli/azure/vmss#az_vmss_update) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例では、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの自動アップグレードを構成しています。
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -163,7 +163,7 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 ```
 
 > [!NOTE]
-> Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric で OS 自動アップグレードを利用するには、クラスターが、Silver 以上の耐久性レベルを使用するように構成されている必要があります。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を参照してください。
+> Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric で OS の自動アップグレードを利用するには、シルバー以上の持続性レベルを使用するように、クラスターのノードタイプが構成されている必要があります。 ブロンズ持続性レベルの場合、OS の自動アップグレードは、ステートレス ノードタイプでのみサポートされます。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を参照してください。
 
 ### <a name="keep-credentials-up-to-date"></a>資格情報を最新に保つ
 スケール セットが外部のリソースにアクセスするときに資格情報を使用する場合、たとえば、VM 拡張機能がストレージ アカウントの SAS トークンを使用するように構成されている場合には、資格情報が最新であることを確認してください。 証明書やトークンなどの資格情報の期限が切れている場合は、アップグレードは失敗し、VM の最初のバッチは障害が発生した状態になります。
@@ -237,7 +237,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OS
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
+[az vmss get-os-upgrade-history](/cli/azure/vmss#az_vmss_get_os_upgrade_history) を使用して、スケール セットの OS アップグレード履歴を確認します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セットの OS アップグレード状態を確認する方法を説明したものです。
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -285,7 +285,7 @@ Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetNam
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-スケール セットの OS アップグレード履歴を確認するには、[az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
+スケール セットの OS アップグレード履歴を確認するには、[az vmss rolling-upgrade start](/cli/azure/vmss/rolling-upgrade#az_vmss_rolling_upgrade_start) を使用します。 Azure CLI 2.0.47 以上を使用してください。 次の例は、*myResourceGroup* というリソース グループ内の *myScaleSet* というスケール セット上でローリング OS アップグレードを開始する方法を説明したものです。
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

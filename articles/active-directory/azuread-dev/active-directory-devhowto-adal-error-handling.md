@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: da47893839322f06cebfbee40902414040bb87d8
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85383736"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075204"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -197,7 +197,7 @@ AcquireToken エラーを処理する場合、エラー処理は、プラット�
 
 ネイティブ アプリケーションのエラー処理は 2 つのケースで定義できます。
 
-|  |  |
+| ケース | 説明  |
 |------|-------------|
 | **ケース 1**:<br>再試行できないエラー (ほとんどの場合) | 1.すぐに再試行しないでください。 具体的なエラーに基づいて再試行を呼び出す UI ([もう一度サインインを試行]、[Download Azure AD broker application]\(Azure AD ブローカー アプリケーションをダウンロード\) など) をエンドユーザーに提示します。 |
 | **ケース 2**:<br>再試行可能なエラー | 1.エンド ユーザーが成功する状態となった可能性があるため再試行を 1 回実行します。<br><br>2.再試行に失敗した場合は、具体的なエラーに基づいて再試行を呼び出す UI ([もう一度サインインを試行]、[Download Azure AD broker app]\(Azure AD ブローカー アプリをダウンロード\) など) をエンドユーザーに提示します。 |
@@ -371,7 +371,7 @@ AcquireToken で adal.js を使ってシングルページ アプリケーショ
 
 失敗した AcquireToken には次のケースがあります。
 
-|  |  |
+| ケース | 説明  |
 |------|-------------|
 | **ケース 1**:<br>対話型の要求で解決可能 | 1.login() に失敗した場合は、すぐに再試行を実行しないでください。 ユーザー操作で再試行が要求された後でのみ再試行します。|
 | **ケース 2**:<br>対話型の要求で解決できない。 エラーは再試行可能。 | 1.エンド ユーザーが成功する状態となった可能性があるため再試行を 1 回実行します。<br><br>2.再試行に失敗した場合は、具体的なエラーに基づいて再試行を呼び出せるアクション ([もう一度サインインを試行]) をエンド ユーザーに提示します。 |

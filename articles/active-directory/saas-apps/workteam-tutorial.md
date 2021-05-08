@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workteam の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Workteam の統合 | Microsoft Docs'
 description: Azure Active Directory と Workteam の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 077af1e8add63aac9f3d866c5d665ad4a47b133f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520049"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workteam の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Workteam の統合
 
 このチュートリアルでは、Workteam と Azure Active Directory (Azure AD) を統合する方法について説明します。 Workteam を Azure AD と統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Workteam では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Workteam では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
 ## <a name="adding-workteam-from-the-gallery"></a>ギャラリーからの Workteam の追加
 
@@ -49,7 +49,7 @@ Azure AD への Workteam の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「 **Workteam** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Workteam**」と入力します。
 1. 結果のパネルから **[Workteam]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-workteam"></a>Workteam の Azure AD シングル サインオンの構成とテスト
@@ -69,7 +69,7 @@ Workteam で Azure AD SSO を構成してテストするには、次の構成要
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Workteam** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Workteam** アプリケーション統合ページで、**[管理]** セクションを探して、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
@@ -121,21 +121,21 @@ Workteam で Azure AD SSO を構成してテストするには、次の構成要
 
 ### <a name="configure-workteam-sso"></a>Workteam の SSO の構成
 
-1. Workteam 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能** をインストールする必要があります。
+1. Workteam 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **マイアプリによるセキュリティで保護された Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
-2. ブラウザーに拡張機能を追加した後、 **[Workteam のセットアップ]** をクリックすると、Workteam アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Workteam にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+2. ブラウザーに拡張機能を追加した後、**[Workteam のセットアップ]** をクリックすると、Workteam アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して Workteam にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
 
     ![セットアップの構成](common/setup-sso.png)
 
 3. Workteam を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Workteam 企業サイトにサインインして、次の手順を実行します。
 
-4. 右上隅にある **プロファイル ロゴ** をクリックし、 **[Organization settings]\(組織の設定\)** をクリックします。 
+4. 右上隅にある **プロファイル ロゴ** をクリックし、**[Organization settings]\(組織の設定\)** をクリックします。 
 
     ![Workteam の設定](./media/workteam-tutorial/tutorial_workteam_settings.png)
 
-5. **[AUTHENTICATION]\(認証\)** セクションで、 **設定ロゴ** をクリックします。
+5. **[AUTHENTICATION]\(認証\)** セクションで、**設定ロゴ** をクリックします。
 
      ![Workteam - Azure](./media/workteam-tutorial/tutorial_workteam_azure.png)
 
@@ -161,7 +161,7 @@ Azure AD ユーザーが Workteam にサインインできるようにするに�
 
 1. セキュリティ管理者として Workteam にサインインします。
 
-2. **[Organization settings]\(組織の設定\)** ページで、上部中央の **[USERS]\(ユーザー\)** をクリックし、 **[NEW USER]\(新しいユーザー\)** をクリックします。
+2. **[Organization settings]\(組織の設定\)** ページで、上部中央の **[USERS]\(ユーザー\)** をクリックし、**[NEW USER]\(新しいユーザー\)** をクリックします。
 
     ![Workteam - ユーザー](./media/workteam-tutorial/tutorial_workteam_user.png)
 
@@ -169,7 +169,7 @@ Azure AD ユーザーが Workteam にサインインできるようにするに�
 
     ![Workteam の新しいユーザー](./media/workteam-tutorial/tutorial_workteam_newuser.png)
 
-    a. **[Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **B.Simon** )。
+    a. **[Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **B.Simon**)。
 
     b. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `B.Simon\@contoso.com`)。
 

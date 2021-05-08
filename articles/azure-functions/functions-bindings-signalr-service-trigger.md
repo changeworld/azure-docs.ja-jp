@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97763517"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions における SignalR Service のトリガー バインド
@@ -193,7 +193,7 @@ InvocationContext には、SignalR サービスから送信されるメッセー
 |InvocationContext のプロパティ | 説明|
 |------------------------------|------------|
 |引数| *messages* カテゴリで使用可能。 「[呼び出しメッセージ](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)」の *arguments* が格納されています|
-|Error| *disconnected* イベントで使用可能。 接続がエラーなしで閉じられた場合、またはエラー メッセージが含まれている場合は、空になる場合があります。|
+|エラー| *disconnected* イベントで使用可能。 接続がエラーなしで閉じられた場合、またはエラー メッセージが含まれている場合は、空になる場合があります。|
 |ハブ| メッセージが属しているハブの名前。|
 |カテゴリ| メッセージのカテゴリ。|
 |Event| メッセージのイベント。|

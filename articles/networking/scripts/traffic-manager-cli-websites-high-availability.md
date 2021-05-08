@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
 ms.author: allensu
-ms.openlocfilehash: 90fcba21ad6f44b5a420cb15b95ef278f9b5b9b0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 00964a49940b208144167e9fe1ff4248f46e35fa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211075"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763201"
 ---
 # <a name="route-traffic-for-high-availability-of-applications---azure-cli"></a>高可用性アプリケーションのためのトラフィックのルーティング - Azure CLI
 
@@ -45,11 +45,11 @@ az group delete --name myResourceGroup2 --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、Web アプリ、Traffic Manager プロファイル、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az appservice plan create](/cli/azure/appservice/plan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az webapp create](/cli/azure/webapp#az-webapp-create) | App Service プラン内に Azure Web アプリを作成します。 |
+| [az webapp create](/cli/azure/webapp#az_webapp_create) | App Service プラン内に Azure Web アプリを作成します。 |
 | [az network traffic-manager profile create](/cli/azure/network/traffic-manager/profile) | Azure Traffic Manager プロファイルを作成します。 |
 | [az network traffic-manager endpoint create](/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
 

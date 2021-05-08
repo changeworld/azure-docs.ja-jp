@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 04/09/2021
 ms.author: tisande
-ms.openlocfilehash: d5d5bc0a108cd08283ea29ce3bdc2de49310c5aa
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ad43d83782a2c7e9eb5cc20128be89a45f0213d1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499562"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312180"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL クエリの使用を開始する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB の読み取り負荷の高いワークロードのほとんど�
 
 ## <a name="upload-sample-data"></a>サンプル データのアップロード
 
-SQL API Cosmos DB アカウントで、[データ エクスプローラー](./data-explorer.md)を開き、`Families` というコンテナーを作成します。 作成した後、データ構造のブラウザーを使用してそれを検索し、開きます。 `Families` コンテナーでは、コンテナーの名前のすぐ下に `Items` オプションが表示されます。 このオプションを開くと、画面の中央にあるメニュー バーに "新しい項目" を作成するためのボタンが表示されます。 この機能を使用して、下の JSON 項目を作成します。
+SQL API Cosmos DB アカウントで、[データ エクスプローラー](./data-explorer.md)を開き、`Families` というコンテナーを作成します。 コンテナーを作成した後、データ構造のブラウザーを使用して、それを検索し開きます。 `Families` コンテナーでは、コンテナーの名前のすぐ下に `Items` オプションが表示されます。 このオプションを開くと、画面の中央にあるメニュー バーに "新しい項目" を作成するためのボタンが表示されます。 この機能を使用して、下の JSON 項目を作成します。
 
 ### <a name="create-json-items"></a>JSON 項目を作成する
 

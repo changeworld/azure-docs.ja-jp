@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8400eb051c09fac4cb88863ad2fac12d2ca0a1b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94563751"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789884"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Azure CLI を使用して Azure 通知ハブを作成する
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Notification Hubs は、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。  リソース グループを使用すると、関連する Azure リソースを整理して管理できます。  リソース グループの詳細については、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」を参照してください。
 
-このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、**spnhubrg** という名前のリソース グループを **eastus** の場所に作成します。
+このクイックスタートでは、次の [az group create](/cli/azure/group#az_group_create) コマンドを使用して、**spnhubrg** という名前のリソース グループを **eastus** の場所に作成します。
 
 ```azurecli
 az group create --name spnhubrg --location eastus

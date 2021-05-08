@@ -4,17 +4,17 @@ description: Azure Queue Storage からのデータを監視するためのロ�
 author: normesta
 services: azure-monitor
 ms.author: normesta
-ms.date: 10/02/2020
+ms.date: 04/20/2021
 ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: subject-monitoring
+ms.openlocfilehash: 506f5a46688f597b8ac5db341c5bbe5eb5fb67c8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576683"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763147"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue Storage 監視データのリファレンス
 
@@ -42,7 +42,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | ------------------- | ----------------- |
 | **QueueCapacity** | ストレージ アカウントによって使用されている Queue Storage の量。 <br><br> 単位: `Bytes` <br> 集計の種類: `Average` <br> 値の例: `1024` |
 | **QueueCount** | ストレージ アカウントのキューの数。 <br><br> 単位: `Count` <br> 集計の種類: `Average` <br> 値の例: `1024` |
-| **QueueMessageCount** | ストレージ アカウント内のキュー メッセージの概数。 <br><br> 単位: `Count` <br> 集計の種類: `Average` <br> 値の例: `1024` |
+| **QueueMessageCount** | ストレージ アカウントの期限が切れていないキュー メッセージの数。 <br><br> 単位: `Count` <br> 集計の種類: `Average` <br> 値の例: `1024` |
 
 ### <a name="transaction-metrics"></a>トランザクション メトリック
 

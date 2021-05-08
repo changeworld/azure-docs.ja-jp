@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e6dac1ab7350caeb29e23b21eace433568b38ea
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031635"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802269"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>ブロック BLOB のポイントインタイム リストア
 
@@ -47,15 +47,17 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 > ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
 
 > [!CAUTION]
-> ポイントインタイム リストアでは、ブロック BLOB に対する復元操作のみがサポートされます。 コンテナーに対する操作は復元できません。 [Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーは復元操作を使って復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。
+> ポイントインタイム リストアでは、ブロック BLOB に影響する操作に対する復元のみがサポートされます。 コンテナーに影響する操作は復元できません。 たとえば、[Delete Container](/rest/api/storageservices/delete-container) 操作を呼び出してストレージ アカウントからコンテナーを削除した場合、そのコンテナーはポイントインタイム リストア操作で復元できません。 後で復元が必要になる可能性がある場合は、コンテナー全体を削除するのではなく、個々の BLOB を削除してください。
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>ポイントインタイム リストアの前提条件
 
 ポイントインタイム リストアを有効にするには、ポイントインタイム リストアで次の Azure Storage 機能が有効になっている必要があります。
 
-- [論理的な削除](./soft-delete-blob-overview.md)
+- [論理的な削除](soft-delete-blob-overview.md)
 - [変更フィード](storage-blob-change-feed.md)
 - [BLOB のバージョン管理](versioning-overview.md)
+
+これらの機能を有効にすると、追加料金が発生することがあります。 ポイントインタイム リストアおよび前提条件の機能を有効にする前に、課金への影響を把握するようにしてください。
 
 ### <a name="retention-period-for-point-in-time-restore"></a>ポイントインタイム リストアの保有期間
 
@@ -88,6 +90,8 @@ Azure Storage では、要求された復元ポイント (UTC 時刻で指定) �
 > ブロック BLOB を 2020 年 9 月 22 日より前の時点に復元すると、ポイントインタイム リストアのプレビュー制限が有効になります。 一般公開されているポイントインタイム リストア機能を利用するには、2020 年 9 月 22 日以降の復元ポイントを選択することをお勧めします。
 
 ## <a name="pricing-and-billing"></a>価格と課金
+
+ポイントインタイム リストアを有効にするのに料金はかかりません。 ただし、ポイントインタイム リストアを有効にすると、BLOB のバージョン管理、論理的な削除、変更フィードも有効になり、それぞれに追加料金が発生することがあります。
 
 ポイントインタイム リストアの課金は、復元操作を実行するために処理されるデータの量によって異なります。 処理されるデータの量は、復元ポイントから現在の時点までの間に発生した変更の数に基づいています。 たとえば、ストレージ アカウントのブロック BLOB データの変更数が比較的一定であると仮定した場合、1 日前に戻す復元操作のコストは、10 日前に戻す復元の 1/10 になります。
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
 ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652404"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Azure API Management 診断の概要

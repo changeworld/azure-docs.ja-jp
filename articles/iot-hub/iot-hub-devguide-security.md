@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 04/15/2021
 ms.custom:
 - amqp
 - mqtt
@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97825132"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567181"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -385,7 +385,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 デバイスは X.509 証明書またはセキュリティ トークンのいずれかを使用できますが、両方一緒に使用することはできません。 X.509 証明書認証の場合は、既存の証明書の有効期限が切れたときに証明書のロールオーバーを処理するための戦略が用意されていることを確認します。
 
-次の機能は、X.509 CA 認証を使用するデバイスではサポートされません。
+X.509 証明機関 (CA) の認証を使用するデバイスの次の機能は、まだ一般提供されていません。また、[プレビュー モードを有効にする必要があります](iot-hub-preview-mode.md)。
 
 * HTTPS、WebSocket 経由の MQTT、WebSockets プロトコル経由の AMQP。
 * ファイルのアップロード (すべてのプロトコル)。

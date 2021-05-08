@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 02/02/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89079865"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>誤って削除されたファイル共有の削除を取り消す PowerShell スクリプト

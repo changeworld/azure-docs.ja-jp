@@ -37,7 +37,7 @@
           href: batch-transcription.md
         - name: v2.0 から v3.0 への移行
           href: migrate-v2-to-v3.md
-        - name: 発音を評価する
+        - name: 発音評価を使用する
           href: how-to-pronunciation-assessment.md
         - name: カスタマイズ
           items:
@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: リソース
       items:
-        - name: 標準の音声サポート
-          href: language-support.md#standard-voices
         - name: ニューラルの音声サポート
           href: language-support.md#neural-voices
         - name: リージョンのサポート
@@ -249,7 +247,7 @@
     - name: 意図認識の概要
       href: intent-recognition.md
     - name: 意図認識のクイックスタート
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: 操作方法ガイド
       items:
         - name: LUIS、C# を使って音声から意図を認識する
@@ -456,7 +454,92 @@
                   href: windows-voice-assistants-best-practices.md
                 - name: サンプルとよく寄せられる質問
                   href: windows-voice-assistants-faq.md
-- name: ツール
+- name: 操作方法ガイド
+  items:
+    - name: ログの有効化
+      href: how-to-use-logging.md
+    - name: メモリ使用量の追跡
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: プライベート エンドポイントを有効化
+      href: speech-services-private-link.md
+    - name: VNet サービス エンドポイントの有効化
+      href: speech-service-vnet-service-endpoint.md
+    - name: Linux 用 OpenSSL の構成
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7 の構成
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: コンテナーの使用
+      items:
+        - name: Speech コンテナーをインストールおよび実行する
+          displayName: 'containers,install container,run container'
+          href: speech-container-howto.md
+        - name: Speech コンテナーを構成する
+          displayName: 'containers,configure containers,container config,configuration'
+          href: speech-container-configuration.md
+        - name: 音声コンテナーを使用したバッチ処理
+          href: speech-container-batch-processing.md
+        - name: Speech コンテナーと Kubernetes および Helm
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+          href: speech-container-howto-on-premises.md
+        - name: Azure Container Instances 上の Speech コンテナー
+          displayName: 'ACI,azure container instances,container instances,containers'
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: コンテナーの FAQ
+          href: speech-container-faq.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
+    - name: 移行
+      items:
+        - name: Bing Speech から
+          href: how-to-migrate-from-bing-speech.md
+        - name: Translator Speech API から
+          href: how-to-migrate-from-translator-speech-api.md
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/speech-service/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: speech-encryption-of-data-at-rest.md
+- name: デバイス
+  items:
+    - name: Speech Devices のドキュメント
+      href: index-devices.yml
+    - name: 概要
+      items:
+        - name: Speech Devices SDK とは
+          href: speech-devices-sdk.md
+        - name: Speech Devices SDK の取得
+          href: get-speech-devices-sdk.md
+        - name: Speech Devices SDK のサンプル (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
+    - name: ハードウェア
+      items:
+        - name: マイク配列の推奨事項
+          href: speech-devices-sdk-microphone.md
+        - name: Roobo v1 の詳細
+          href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 の詳細
+          href: speech-devices-sdk-roobo-v2.md
+    - name: 操作方法ガイド
+      items:
+        - name: マイク配列を構成する方法
+          href: how-to-devices-microphone-array-configuration.md
+    - name: クイック スタート
+      items:
+        - name: Speech Devices SDK を使用する
+          href: speech-devices-sdk-quickstart.md
+    - name: リソース
+      items:
+        - name: Speech Devices SDK のトラブルシューティング
+          href: speech-devices-sdk-troubleshooting.md
+    - name: リファレンス
+      items:
+        - name: Speech Devices SDK のリリース ノート
+          href: devices-sdk-release-notes.md
+- name: リソース
   items:
     - name: Speech SDK
       items:
@@ -505,86 +588,13 @@
           href: 'https://speech.microsoft.com'
         - name: Speech Studio を使用してカスタム コマンド アプリを作成する
           href: ./quickstart-custom-commands-application.md
-- name: デプロイ
-  items:
-    - name: ログの有効化
-      href: how-to-use-logging.md
-    - name: メモリ使用量の追跡
-      href: how-to-track-speech-sdk-memory-usage.md
-    - name: プライベート エンドポイントを有効化
-      href: speech-services-private-link.md
-    - name: Linux 用 OpenSSL の構成
-      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-      href: how-to-configure-openssl-linux.md
-    - name: RHEL/CentOS 7 の構成
-      href: how-to-configure-rhel-centos-7.md
-      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
-    - name: コンテナー
+    - name: エンタープライズ対応
       items:
-        - name: Speech コンテナーをインストールおよび実行する
-          displayName: 'containers,install container,run container'
-          href: speech-container-howto.md
-        - name: Speech コンテナーを構成する
-          displayName: 'containers,configure containers,container config,configuration'
-          href: speech-container-configuration.md
-        - name: 音声コンテナーを使用したバッチ処理
-          href: speech-container-batch-processing.md
-        - name: Speech コンテナーと Kubernetes および Helm
-          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-          href: speech-container-howto-on-premises.md
-        - name: Azure Container Instances 上の Speech コンテナー
-          displayName: 'ACI,azure container instances,container instances,containers'
-          maintainContext: true
-          href: ../containers/azure-container-instance-recipe.md
-        - name: コンテナーの FAQ
-          href: speech-container-faq.md
-        - name: Cognitive Services コンテナーのドキュメント
-          href: ../containers/index.yml
-- name: デバイス
-  items:
-    - name: Speech Devices のドキュメント
-      href: index-devices.yml
-    - name: 概要
-      items:
-        - name: Speech Devices SDK とは
-          href: speech-devices-sdk.md
-        - name: Speech Devices SDK の取得
-          href: get-speech-devices-sdk.md
-        - name: Speech Devices SDK のサンプル (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-    - name: ハードウェア
-      items:
-        - name: マイク配列の推奨事項
-          href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 の詳細
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Roobo v2 の詳細
-          href: speech-devices-sdk-roobo-v2.md
-    - name: 操作方法ガイド
-      items:
-        - name: マイク配列を構成する方法
-          href: how-to-devices-microphone-array-configuration.md
-    - name: クイック スタート
-      items:
-        - name: Speech Devices SDK を使用する
-          href: speech-devices-sdk-quickstart.md
-    - name: リソース
-      items:
-        - name: Speech Devices SDK のトラブルシューティング
-          href: speech-devices-sdk-troubleshooting.md
-    - name: リファレンス
-      items:
-        - name: Speech Devices SDK のリリース ノート
-          href: devices-sdk-release-notes.md
-- name: 移行
-  items:
-    - name: Bing Speech から
-      href: how-to-migrate-from-bing-speech.md
-    - name: Translator Speech API から
-      href: how-to-migrate-from-translator-speech-api.md
-- name: リソース
-  items:
-    - name: サポートとヘルプのオプション
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger ドキュメント
       href: swagger-documentation.md
@@ -593,10 +603,6 @@
       href: sovereign-clouds.md
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: speech-encryption-of-data-at-rest.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
     - name: プライバシーと Cookie

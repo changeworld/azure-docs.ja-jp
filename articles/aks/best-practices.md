@@ -3,19 +3,24 @@ title: Azure Kubernetes Service (AKS) に関するベスト プラクティス
 description: Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス集
 services: container-service
 ms.topic: article
-ms.date: 12/07/2018
-ms.openlocfilehash: e8f9c1946567ac3c3ea1045a216d6b0486fd959a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/09/2021
+ms.openlocfilehash: f4bd109ce6827de26b1649380b6f6a2ba7c10e17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94686261"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105903"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの構築および管理のためのクラスター オペレーターと開発者のベスト プラクティス
 
-Azure Kubernetes Service (AKS) でのアプリケーションを構築して実行するには、いくつかの重要な考慮事項を理解して実装する必要があります。 これらの領域には、マルチ テナント機能とスケジューラ機能、クラスターとポッドのセキュリティ、または事業継続とディザスター リカバリーが含まれます。 次のベスト プラクティスは、クラスター オペレーターと開発者がこれらの各領域に関する考慮事項を理解して適切な機能を実装しやすいようにグループ化されています。
+Azure Kubernetes Service (AKS) でアプリケーションを正常にビルドして実行するには、次のような重要な考慮事項を理解して実装する必要があります。
+* マルチテナントとスケジューラの機能。
+* クラスターおよびポッドのセキュリティ。
+* 事業継続とディザスター リカバリー。 
 
-これらのベスト プラクティスと概念に関する記事は、Global Black Belt (GBB) を含む、AKS 製品グループ、エンジニアリング チーム、およびフィールド チームが連携して記述しています。
+
+AKS 製品グループ、エンジニアリング チーム、およびフィールド チーム (Global Black Belt (GBB) を含む) は、次のベスト プラクティスと概念に関する記事の執筆、グループ化に貢献しました。 その目的は、クラスターのオペレーターと開発者が上記の考慮事項を理解し、適切な機能を実装できるようにすることです。
+
 
 ## <a name="cluster-operator-best-practices"></a>クラスター オペレーターのベスト プラクティス
 

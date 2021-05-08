@@ -2,13 +2,13 @@
 title: カスタマー マネージド キーを使用したバックアップ データの暗号化
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
-ms.date: 07/08/2020
-ms.openlocfilehash: 474f4238276f460abde3d600422e309171875a0c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/01/2021
+ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716739"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167892"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -33,7 +33,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 
 - この機能は [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) とは関係がありません。こちらでは、BitLocker (Windows の場合) と DM-Crypt (Linux の場合) を使った、VM のディスクに対するゲストベースの暗号化を使用します
 
-- Recovery Services コンテナーは、**同じリージョン** にある Azure キー コンテナーに格納されているキーを使用した場合にのみ暗号化できます。 また、キーは **RSA 2048 キー** に限定され、**有効な** 状態である必要があります。
+- Recovery Services コンテナーは、**同じリージョン** にある Azure キー コンテナーに格納されているキーを使用した場合にのみ暗号化できます。 また、キーは **RSA キー** に限定され、**有効** 状態である必要があります。
 
 - 現在、CMK で暗号化された Recovery Services コンテナーをリソース グループとサブスクリプションの間で移動することは、サポートされていません。
 - 既にカスタマー マネージド キーを使用して暗号化された Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID および CMK (新しいテナント内にあるはずです) を再作成および再構成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
@@ -42,6 +42,9 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 
     >[!NOTE]
     >Az モジュール 5.3.0 以上を使用して、Recovery Services コンテナーでのバックアップ用のカスタマー マネージド キーを使用します。
+    
+    >[!Warning]
+    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br></br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
 
 自分の Recovery Services コンテナーを作成して構成していない場合は、[こちらで方法を確認](backup-create-rs-vault.md)してください。
 
@@ -59,22 +62,32 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 
 意図した結果を得るには、これらすべての手順を、上記の順序で実行する必要があります。 各手順については、以下で詳しく説明します。
 
-### <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Recovery Services コンテナーのマネージド ID を有効にする
+## <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Recovery Services コンテナーのマネージド ID を有効にする
 
-Azure Backup では、システム割り当てマネージド ID を使用して、Azure キー コンテナーに格納されている暗号化キーにアクセスする Recovery Services コンテナーを認証します。 Recovery Services コンテナーのマネージド ID を有効にするには、次の手順に従います。
+Azure Backup では、システム割り当てマネージド ID とユーザー割り当てマネージド ID を使用して、Azure Key Vault に格納されている暗号化キーにアクセスする Recovery Services コンテナーを認証します。 Recovery Services コンテナーのマネージド ID を有効にするには、次の手順に従います。
 
 >[!NOTE]
 >マネージド ID は、いったん有効にしたら (一時的にであっても) 無効に **しないでください**。 マネージド ID を無効にすると、動作に一貫性がなくなる可能性があります。
+
+### <a name="enable-system-assigned-managed-identity-for-the-vault"></a>コンテナーのシステム割り当てマネージド ID を有効にする
 
 **ポータルの場合:**
 
 1. ご自身の Recovery Services コンテナー、 **[ID]** の順に移動します
 
-    ![Identity settings](./media/encryption-at-rest-with-cmk/managed-identity.png)
+    ![Identity settings](media/encryption-at-rest-with-cmk/enable-system-assigned-managed-identity-for-vault.png)
 
-1. **[状態]** を **[On]** に変更し、 **[保存]** を選択します。
+1. **[システム割り当て済み]** タブに移動します。
 
-1. オブジェクト ID が生成されます。これがコンテナーのシステム割り当てマネージド ID です。
+1. **[状態]** を **[オン]** に変更します。
+
+1. **[保存]** をクリックして、コンテナーの ID を有効にします。
+
+オブジェクト ID が生成されます。これがコンテナーのシステム割り当てマネージド ID です。
+
+>[!NOTE]
+>マネージド ID は、いったん有効にしたら (一時的にであっても) 無効にしないでください。 マネージド ID を無効にすると、動作に一貫性がなくなる可能性があります。
+
 
 **PowerShell の場合:**
 
@@ -98,7 +111,28 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Azure キー コンテナー内の暗号化キーにアクセスするためのアクセス許可を Recovery Services コンテナーに割り当てる
+### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>ユーザー割り当てマネージド ID をコンテナーに割り当てる
+
+Recovery Services コンテナーのユーザー割り当てマネージド ID を割り当てるには、次の手順を実行します。
+
+1.  ご自身の Recovery Services コンテナー、 **[ID]** の順に移動します
+
+    ![ユーザー割り当てマネージド ID をコンテナーに割り当てる](media/encryption-at-rest-with-cmk/assign-user-assigned-managed-identity-to-vault.png)
+
+1.  **[ユーザー割り当て済み]** タブに移動します。
+
+1.  **[+追加]** をクリックして、ユーザー割り当てマネージド ID を追加します。
+
+1.  開いた **[ユーザー割り当てマネージド ID の追加]** ブレードで、ID のサブスクリプションを選択します。
+
+1.  一覧から ID を選択します。 ID またはリソース グループの名前でフィルター処理することもできます。
+
+1.  完了したら、 **[追加]** をクリックして ID の割り当てを完了します。
+
+## <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Azure キー コンテナー内の暗号化キーにアクセスするためのアクセス許可を Recovery Services コンテナーに割り当てる
+
+>[!Note]
+>ユーザー割り当て ID を使用する場合は、同じアクセス許可をユーザー割り当て ID に割り当てる必要があります。
 
 次に、Recovery Services コンテナーに対して、暗号化キーが格納されている Azure キー コンテナーにアクセスする許可を与える必要があります。 これを行うには、Recovery Services コンテナーのマネージド ID がキー コンテナーにアクセスできるようにします。
 
@@ -120,7 +154,7 @@ Type        : SystemAssigned
 
 1. **[保存]** を選択して、Azure キー コンテナーのアクセス ポリシーに加えた変更を保存します。
 
-### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
+## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Azure キー コンテナーで論理的な削除と消去保護を有効にする
 
 暗号化キーを格納している Azure キー コンテナーで、**論理的な削除と消去保護を有効にする** 必要があります。 これは、次に示すように、Azure キー コンテナーの UI から行うことができます (または、これらのプロパティはキー コンテナーの作成時に設定することができます)。 これらのキー コンテナーのプロパティの詳細については、[こちら](../key-vault/general/soft-delete-overview.md)を参照してください。
 
@@ -160,7 +194,7 @@ Type        : SystemAssigned
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
-### <a name="assign-encryption-key-to-the-rs-vault"></a>RS コンテナーに暗号化キーを割り当てる
+## <a name="assign-encryption-key-to-the-rs-vault"></a>RS コンテナーに暗号化キーを割り当てる
 
 >[!NOTE]
 > 先に進む前に、次の点を確認してください。
@@ -172,7 +206,7 @@ Type        : SystemAssigned
 
 上記の内容を確認したら、引き続きコンテナーの暗号化キーを選択します。
 
-#### <a name="to-assign-the-key-in-the-portal"></a>ポータルでキーを割り当てるには
+### <a name="to-assign-the-key-in-the-portal"></a>ポータルでキーを割り当てるには
 
 1. ご自身の Recovery Services コンテナー、 **[プロパティ]** の順に移動します
 
@@ -192,7 +226,7 @@ Type        : SystemAssigned
     1. キーの選択ペインで、キー コンテナーのキーを参照して選択します。
 
         >[!NOTE]
-        >キーの選択ペインを使用して暗号化キーを指定すると、キーの新しいバージョンが有効になるたびにキーが自動ローテーションされます。
+        >キーの選択ペインを使用して暗号化キーを指定すると、キーの新しいバージョンが有効になるたびにキーが自動ローテーションされます。 暗号化キーの自動ローテーションの有効化については、[こちら](#enabling-auto-rotation-of-encryption-keys)を参照してください。
 
         ![Key Vault からのキーの選択](./media/encryption-at-rest-with-cmk/key-vault.png)
 
@@ -206,7 +240,7 @@ Type        : SystemAssigned
 
     ![アクティビティ ログ](./media/encryption-at-rest-with-cmk/activity-log.png)
 
-#### <a name="to-assign-the-key-with-powershell"></a>PowerShell を使用してキーを割り当てるには
+### <a name="to-assign-the-key-with-powershell"></a>PowerShell を使用してキーを割り当てるには
 
 [Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) コマンドを使用して、カスタマー マネージド キーを使用した暗号化を有効にし、使用する暗号化キーの割り当てまたは更新を行います。
 
@@ -249,8 +283,8 @@ InfrastructureEncryptionState : Disabled
 > 保護の構成に進むには、次の手順を **正しく** 完了している必要があります。
 >
 >1. バックアップ コンテナーを作成した
->1. バックアップ コンテナーのシステム割り当てマネージド ID を有効にした
->1. キー コンテナーの暗号化キーにアクセスするためのアクセス許可をバックアップ コンテナーに割り当てた
+>1. Recovery Services コンテナーのシステム割り当てマネージド ID を有効にした。または、ユーザー割り当てマネージド ID をコンテナーに割り当てた
+>1. キー コンテナーから暗号化キーにアクセスするために、バックアップ コンテナー (またはユーザー当てマネージド ID) にアクセス許可を割り当てた
 >1. キー コンテナーで論理的な削除と消去保護を有効にした
 >1. バックアップ コンテナーに有効な暗号化キーを割り当てた
 >
@@ -311,6 +345,44 @@ $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -Storag
 ### <a name="restoring-sap-hanasql-databases-in-azure-vms"></a>Azure VM での SAP HANA または SQL データベースの復元
 
 Azure VM で実行されているバックアップ SAP HANA または SQL データベースから復元を行うと、復元されたデータは、ターゲットの保存場所で使用される暗号化キーを使用して暗号化されます。 これは、VM のディスクの暗号化に使用される、カスタマー マネージド キーである可能性も、プラットフォーム マネージド キーである可能性もあります。
+
+## <a name="additional-topics"></a>関連トピック
+
+### <a name="enable-encryption-using-customer-managed-keys-at-vault-creation-in-preview"></a>コンテナーの作成時にカスタマー マネージド キーを使用して暗号化を有効にする (プレビュー)
+
+>[!NOTE]
+>カスタマー マネージド キーを使用してコンテナー作成時に暗号化を有効にすることは、限定パブリック プレビュー段階であり、サブスクリプションを許可リストに登録する必要があります。 プレビューにサインアップするには、[フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u)に記入し、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までご連絡ください。
+
+サブスクリプションが許可リストに登録されている場合は、 **[バックアップの暗号化]** タブが表示されます。 これにより、新しい Recovery Services コンテナーの作成時にカスタマー マネージド キーを使用してバックアップで暗号化を有効にできます。 暗号化を有効にするには、次の手順に従います。
+
+1. **[基本]** タブの隣にある **[バックアップの暗号化]** タブで、暗号化に使用する暗号化キーと ID を指定します。
+
+   ![コンテナー レベルでの暗号化を有効にする](media/encryption-at-rest-with-cmk/enable-encryption-using-cmk-at-vault.png)
+
+
+   >[!NOTE]
+   >設定は Backup にのみ適用され、省略可能です。
+
+1. 暗号化の種類として **[カスタマー マネージド キーの使用]** を選択します。
+
+1. 暗号化に使用するキーを指定するには、適切なオプションを選択します。
+
+   暗号化キーの URI を指定することも、キーを参照して選択することもできます。 **[キー コンテナーを選択する]** オプションを使用してキーを指定すると、暗号化キーの自動ローテーションが自動的に有効になります。 自動ローテーションについては、[こちら](#enabling-auto-rotation-of-encryption-keys)を参照してください。 
+
+1. カスタマー マネージド キーを使用して暗号化を管理するには、ユーザー割り当てマネージド ID を指定します。 **[選択]** をクリックして、必要な ID を参照して選択します。
+
+1. 完了したら、タグの追加 (オプション) に進み、コンテナーの作成を続行します。
+
+### <a name="enabling-auto-rotation-of-encryption-keys"></a>暗号化キーの自動ローテーションの有効化
+
+バックアップの暗号化に使用する必要があるカスタマー マネージド キーを指定する場合は、次の方法を使用して指定します。
+
+- キーの URI を入力する
+- キー コンテナーから選ぶ
+
+**[キー コンテナーから選ぶ]** オプションを使用すると、選択したキーの自動ローテーションを有効にできます。 これにより、次のバージョンに手動で更新する手間を省くことができます。 ただし、このオプションを使用すると、次のようになります。
+- キー バージョンの更新が有効になるまでに最大で 1 時間かかる場合があります。
+- キーの新しいバージョンが有効になると、キーの更新が有効になった後、少なくとも 1 回の後続バックアップ ジョブまで、古いバージョンも使用可能 (有効な状態) になります。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

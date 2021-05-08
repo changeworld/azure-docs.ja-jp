@@ -13,10 +13,10 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.openlocfilehash: e8a8b952d917db3a7eefd2e0371d41287c5be944
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102612475"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
@@ -341,7 +341,7 @@ CI/CD Azure パイプライン全体は、次のステージで構成されて�
     * Databricks への配置 + ADF への配置
     * 統合テスト
 
-お持ちのターゲット環境数と同数の "***配置** _" ステージ数があります。 各 "*_配置_*" ステージには、並列で実行される 2 つの[配置](/azure/devops/pipelines/process/deployment-jobs)と、配置後にその環境でソリューションをテストするために実行される[ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml)が含まれています。
+お持ちのターゲット環境数と同数の "***配置** _" ステージ数があります。 各 "*_配置_*" ステージには、並列で実行される 2 つの [配置](/azure/devops/pipelines/process/deployment-jobs)と、配置後にその環境でソリューションをテストするために実行される [ジョブ](/azure/devops/pipelines/process/phases?tabs=yaml)が含まれています。
 
 パイプラインのサンプル実装は、次の ***yaml*** スニペットにまとめられています。
 

@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 711b516d1ba1154e574b0d8bbd8d86a02d7df018
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 179b1b64656d3f97778e183d57797e4b3660fece
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87497819"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775441"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Azure CLI でマネージド リソース グループ内のリソースを取得し、VM のサイズを変更します
 
@@ -34,9 +34,9 @@ ms.locfileid: "87497819"
 
 | コマンド | Notes |
 |---|---|
-| [az managedapp list](/cli/azure/managedapp#az-managedapp-list) | マネージド アプリケーションの一覧を表示します。 クエリの値を指定して結果にフォーカスします。 |
-| [az resource list](/cli/azure/resource#az-resource-list) | リソースの一覧を表示します。 リソース グループとクエリの値を指定して結果にフォーカスします。 |
-| [az vm resize](/cli/azure/vm#az-vm-resize) | 仮想マシンのサイズを更新します。 |
+| [az managedapp list](/cli/azure/managedapp#az_managedapp_list) | マネージド アプリケーションの一覧を表示します。 クエリの値を指定して結果にフォーカスします。 |
+| [az resource list](/cli/azure/resource#az_resource_list) | リソースの一覧を表示します。 リソース グループとクエリの値を指定して結果にフォーカスします。 |
+| [az vm resize](/cli/azure/vm#az_vm_resize) | 仮想マシンのサイズを更新します。 |
 
 
 ## <a name="next-steps"></a>次のステップ

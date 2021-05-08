@@ -1,33 +1,27 @@
 ---
-title: 機械学習モデルでの不公平性を軽減する (プレビュー)
+title: 機械学習の公平性 (プレビュー)
 titleSuffix: Azure Machine Learning
-description: 機械学習モデルでの公平性と、Fairlearn Python パッケージを使用してより公平なモデルを構築する方法について説明します。
+description: 機械学習の公平性と、Fairlearn Python パッケージを使用して不公平性を評価および軽減する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 01/26/2021
+ms.date: 04/02/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 45c63780eac021301e5b01c0ff8abea7d704a4cf
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101659683"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220523"
 ---
-# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>機械学習モデルでの不公平性を軽減する (プレビュー)
+# <a name="machine-learning-fairness-preview"></a>機械学習の公平性 (プレビュー)
 
-機械学習での公平性と、[Fairlearn](https://fairlearn.github.io/) オープンソース Python パッケージを使用して、機械学習モデルでの不公平性の問題を軽減する方法について説明します。 機械学習モデルを構築するとき、公平性の問題を理解し公平性を評価するよう努力しなかった場合、不公平な結果を生成するモデルが構築されることがあります。
+機械学習の公平性と、[Fairlearn](https://fairlearn.github.io/) オープンソース Python パッケージを使用して、機械学習モデルでの不公平性の問題を評価し、軽減する方法について説明します。 
 
-以下に示す Fairlearn オープンソース パッケージの[ユーザー ガイド](https://fairlearn.github.io/main/user_guide/index.html)の要約には、これを使用して、構築する AI システムの公平性を評価する方法が記載されています。  また、Fairlearn オープンソース パッケージには、観察される公平性の問題を軽減したり、削減したりするのに役立つオプションも用意されています。  Azure Machine Learning でのトレーニング中に AI システムの公平性の評価を有効にするには、[操作方法](how-to-machine-learning-fairness-aml.md)と[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)に関するページを参照してください。
-
-
-## <a name="what-is-fairness-in-machine-learning-models"></a>機械学習システムでの公平性とは
-
->[!NOTE]
-> 公平性は、社会技術に関する課題です。 正当性や適正手続きなど、公平性の多くの側面は、定量的な公平性のメトリックではキャプチャされません。 また、多くの定量的な公平性のメトリックをすべて同時に満たすことはできません。 Fairlearn オープンソース パッケージの目的は、人間がさまざまな影響と軽減の戦略を評価できるようにすることです。 最終的には、人工知能および機械学習モデルを構築する人間のユーザーが、シナリオに適した妥協点を見つけることになります。
+## <a name="what-is-machine-learning-fairness"></a>機械学習の公平性とは
 
 人工知能および機械学習システムでは、不公平な動作が示されることがあります。 不公平な動作を定義する方法の 1 つとして、人への危害や影響があります。 AI システムでは、さまざまな種類の危害が発生する可能性があります。 詳細については、[Kate Crawford による NeurIPS 2017 基調講演](https://www.youtube.com/watch?v=fMym_BKWQzk)を参照してください。
 
@@ -42,6 +36,9 @@ AI システムの不公平な動作を減らすには、これらの害を評�
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Fairlearn を使用した公平性の評価と軽減
 
 Fairlearn はオープンソースの Python パッケージです。機械学習システムの開発者は、これを使用して、システムの公平性を評価し、不公平性を軽減できます。
+
+>[!NOTE]
+> 公平性は、社会技術に関する課題です。 正当性や適正手続きなど、公平性の多くの側面は、定量的な公平性のメトリックではキャプチャされません。 また、多くの定量的な公平性のメトリックをすべて同時に満たすことはできません。 Fairlearn オープンソース パッケージの目的は、人間がさまざまな影響と軽減の戦略を評価できるようにすることです。 最終的には、人工知能および機械学習モデルを構築する人間のユーザーが、シナリオに適した妥協点を見つけることになります。
 
 Fairlearn オープンソース パッケージには、次の 2 つのコンポーネントがあります。
 
@@ -90,8 +87,6 @@ Fairlearn オープンソース パッケージでは、次の種類の不均衡
 |均等な確率  | 割り当てとサービス品質の害を診断する | 二項分類        |
 |機会均等 | 割り当てとサービス品質の害を診断する | 二項分類        |
 |境界グループの損失     |  サービス品質の害を軽減する | 回帰 |
-
-
 
 ### <a name="mitigation-algorithms"></a>軽減アルゴリズム
 

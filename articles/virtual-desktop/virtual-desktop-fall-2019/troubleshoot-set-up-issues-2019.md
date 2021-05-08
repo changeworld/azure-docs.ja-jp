@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 12be4611f0583c6da630b9e5a0e4b5a82ebfa650
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95014834"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444277"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのテナントとホスト プールの作成
 
@@ -31,11 +31,11 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 > [!div class="mx-imgBorder"]
 > ![Windows 10 Enterprise for Virtual Desktops, Version 1809 を選択するスクリーンショット。](../media/AzureMarketPlace.png)
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Windows Virtual Desktop テナントの作成
+## <a name="creating-windows-virtual-desktop-tenant&quot;></a>Windows Virtual Desktop テナントの作成
 
 このセクションでは、Windows Virtual Desktop テナントを作成するときの潜在的な問題について説明します。
 
-### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>エラー:AADSTS650052 アプリにはサービスへのアクセスが必要です。
+### <a name=&quot;error-aadsts650052-the-app-needs-access-to-a-service&quot;></a>エラー:AADSTS650052 アプリにはサービスへのアクセスが必要です。
 
 未処理エラーの例:
 
@@ -406,7 +406,7 @@ GitHub の Azure Resource Manager テンプレートを実行している場合�
 
 ### <a name="error-vmsubnet-not-available-when-configuring-virtual-networks"></a>エラー: 仮想ネットワークを構成するときに vmSubnet を使用できません
 
-**原因:** WVD Marketplace テンプレートでは、テンプレートに指定されている VM の合計数と同じ数以上の IP アドレスを持つサブネットのみが UI に表示されます。 サブネットで使用できる IP アドレスの実際の数は、デプロイされている新しい VM の数と同じであれば十分ですが、現在の UI ではこの数を計算できません。
+**原因:** Windows Virtual Desktop Marketplace テンプレートでは、テンプレートに指定されている VM の合計数と同じ数以上の IP アドレスが含まれるサブネットのみが UI に表示されます。 サブネットで使用できる IP アドレスの実際の数は、デプロイされている新しい VM の数と同じであれば十分ですが、現在の UI ではこの数を計算できません。
 
 **解決策:** Marketplace UI を使用しないで、追加されている VM の数と同じ数以上の IP アドレスを持つサブネットを指定できます。これは、[既存のデプロイを再デプロイする](expand-existing-host-pool-2019.md#redeploy-from-azure)か、[GitHub から基になる ARM テンプレートを使用してデプロイする](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)ときに、"**existingSubnetName**" パラメーターでサブネット名を指定して実行できます。
 

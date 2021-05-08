@@ -7,10 +7,10 @@ ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.openlocfilehash: 9a82b305adec1385bf659987ea39df6bb953cd70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100370973"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
@@ -262,7 +262,7 @@ else
 
 -   送信先が Azure Storage であるポート 445 (Azure Files に格納されている SSIS パッケージを実行する場合にのみ必要)。
 
-    Azure Firewall を使用する場合は、Storage サービス タグでネットワーク規則を指定できます。それ以外の場合は、ファイアウォール アプライアンスの特定の azure ファイル ストレージとして送信先を許可することができます。
+    Azure Firewall を使用する場合は、Storage サービス タグでネットワーク規則を指定できます。それ以外の場合は、ファイアウォール アプライアンスの特定の Azure File Storage として送信先を許可することができます。
 
 > [!NOTE]
 > Azure SQL と Storage の場合、サブネット上で仮想ネットワーク サービス エンドポイントを構成すると、Azure-SSIS IR と、同じリージョン内の Azure SQL、または同じリージョンあるいはペアのリージョン内の Azure Storage との間のトラフィックが、ファイアウォール アプライアンスではなく、Microsoft Azure バックボーン ネットワークに直接ルーティングされます。

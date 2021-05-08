@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 03/08/2021
-ms.openlocfilehash: b5893ab7c616c30d4febf957c21da56caf7c9673
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4334166f435612370e7e0b7b380814fe85075f78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631372"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046625"
 ---
 # <a name="cognitive-services-docs-whats-new-for-february-1-2021---february-28-2021"></a>Cognitive Services ドキュメント: 2021 年 2 月 1 日から 2021 年 2 月 28 日までの最新情報
 
@@ -28,25 +28,25 @@ ms.locfileid: "102631372"
 
 ### <a name="new-articles"></a>新しい記事
 
-- [Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)](/azure/cognitive-services/containers/container-faq)
+- [Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)](./containers/container-faq.yml)
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](/azure/cognitive-services/containers/container-image-tags)
+- [Azure Cognitive Services コンテナー イメージ タグとリリース ノート](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [サンプル ラベル付けツールのデプロイ](/azure/cognitive-services/form-recognizer/deploy-label-tool)
-- [Form Recognizer とは](/azure/cognitive-services/form-recognizer/overview)
-- [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [サンプル ラベル付けツールのデプロイ](./form-recognizer/deploy-label-tool.md)
+- [Form Recognizer とは](./form-recognizer/overview.md)
+- [サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング](./form-recognizer/quickstarts/label-tool.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Text Analytics API v3 の言語のサポート](/azure/cognitive-services/text-analytics/language-support)
-- [Text Analytics REST API を呼び出す方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Text Analytics API v3 の言語のサポート](./text-analytics/language-support.md)
+- [Text Analytics REST API を呼び出す方法](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d193d30428d24ccf65c3f70885192acad2fdc9f
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99051111"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228331"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>対称キー登録グループを使用してデバイスをプロビジョニングする方法
 
@@ -30,6 +30,16 @@ ms.locfileid: "99051111"
 > [!NOTE]
 > この記事で使用されているサンプルは、C で記述されています。[C# デバイス プロビジョニングの対称キーのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)も使用できます。 このサンプルを使用するには、[azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) リポジトリをダウンロードまたは複製し、サンプル コードのインラインの手順に従います。 この記事の手順に従って、ポータルを使用して対称キー登録グループを作成し、サンプルの実行に必要な ID スコープと登録グループのプライマリ キーとセカンダリ キーを検索できます。 また、サンプルを使用して個別登録を作成することもできます。
 
+## <a name="prerequisites"></a>前提条件
+
+* [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するクイック スタートが完了していること。
+
+Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
+
+* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+
+* [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
+
 ## <a name="overview"></a>概要
 
 一意の登録 ID は、そのデバイスを識別する情報に基づいてデバイスごとに定義されます。 たとえば、MAC アドレスまたはシリアル番号などです。
@@ -40,16 +50,6 @@ ms.locfileid: "99051111"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
-## <a name="prerequisites"></a>前提条件
-
-* [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するクイック スタートが完了していること。
-
-Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
-
-* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
-
-* [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 ## <a name="prepare-an-azure-iot-c-sdk-development-environment"></a>Azure IoT C SDK の開発環境を準備する
 
@@ -283,6 +283,15 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="next-steps"></a>次のステップ
 
-* 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-* [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
-* プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください
+* 再プロビジョニングの詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [IoT Hub デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)
+
+> [!div class="nextstepaction"]
+> [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+
+* プロビジョニング解除の詳細については、次の記事を参照してください。
+
+> [!div class="nextstepaction"]
+> [自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)

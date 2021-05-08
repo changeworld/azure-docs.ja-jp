@@ -4,12 +4,12 @@ description: この記事では Azure Event Grid のトピックまたはドメ�
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f8a9ac46596b1c2611ce9df387ac995e8149e7b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 85546e99a8c431dc75b1af3d5044e06a18cf226d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425347"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770509"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインに対してプライベート エンドポイントを構成する
 [プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用すると、パブリック インターネットを経由せずに[プライベート リンク](../private-link/private-link-overview.md)上で安全に仮想ネットワークからトピックおよびドメインへ直接、イベントのイングレスを行えるようになります。 プライベート エンドポイントは、トピックまたはドメインの VNet アドレス空間からの IP アドレスを使用します。 概念の詳細については、[ネットワーク セキュリティ](network-security.md)に関する記事をご覧ください。
@@ -121,7 +121,7 @@ ms.locfileid: "102425347"
 
 
 ## <a name="use-azure-cli"></a>Azure CLI の使用
-プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) メソッドを使用します。
+プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -135,12 +135,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
+例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
 
 - `private-connection-resource-id` には、**トピック** または **ドメイン** のリソース ID を指定します。 前の例では、種類にトピックを使用しています。
 - `group-ids` の場合、`topic` または `domain` を指定します。 前の例では、`topic` を使用しています。 
 
-プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) メソッドを使用します。
+プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?#az_network_private_endpoint_delete) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>
@@ -165,7 +165,7 @@ az extension add -n eventgrid
 ```
 
 ### <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
-プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) メソッドを使用します。
+プライベート エンドポイントを作成するには、次の例で示すように、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint create \
@@ -179,12 +179,12 @@ az network private-endpoint create \
     --group-ids topic
 ```
 
-例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az-network-private-endpoint-create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
+例で使用するパラメーターの説明については、[az network private-endpoint create](/cli/azure/network/private-endpoint?#az_network_private_endpoint_create) のドキュメントを参照してください。 この例では、次の点に注意してください。 
 
 - `private-connection-resource-id` には、**トピック** または **ドメイン** のリソース ID を指定します。 前の例では、種類にトピックを使用しています。
 - `group-ids` の場合、`topic` または `domain` を指定します。 前の例では、`topic` を使用しています。 
 
-プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?#az-network-private-endpoint-delete) メソッドを使用します。
+プライベート エンドポイントを削除するには、次の例で示すように、[az network private-endpoint delete](/cli/azure/network/private-endpoint?#az_network_private_endpoint_delete) メソッドを使用します。
 
 ```azurecli-interactive
 az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --name <PRIVATE ENDPOINT NAME>

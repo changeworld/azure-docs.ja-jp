@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b1ec89db7bc12ffbd21c6e302e065449eba3ac20
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212469"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366489"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -46,7 +46,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 - **アプリケーションのみ**: このアプリケーションは、サービス プリンシパルまたはマネージド ID を表します。 この ID は、キー コンテナーの証明書、キー、またはシークレットに定期的にアクセスする必要があるアプリケーションの最も一般的なシナリオです。 このシナリオが機能するには、アプリケーションの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定 _しない_ ようにするか、または `null` にする必要があります。
 - **ユーザーのみ**: ユーザーは、テナントに登録されている任意のアプリケーションからキー コンテナーにアクセスします。 この種類のアクセスの例として、Azure PowerShell や Azure portal があります。 このシナリオが機能するには、ユーザーの `objectId` をアクセス ポリシーで指定する必要があり、`applicationId` を指定 _しない_ ようにするか、または `null` にする必要があります。
-- **アプリケーションとユーザー** (_複合 ID_ とも呼ばれます): ユーザーは、特定のアプリケーションからキー コンテナーにアクセスする必要があり、_かつ_ そのアプリケーションは On-Behalf-Of 認証 (OBO) フローを使用してそのユーザーを偽装する必要があります。 このシナリオが機能するには、`applicationId` と `objectId` の両方をアクセス ポリシーで指定する必要があります。 `applicationId` によってその必要なアプリケーションが識別され、`objectId` によってそのユーザーが識別されます。 現時点では、このオプションはデータ プレーンの Azure RBAC (プレビュー) では使用できません。
+- **アプリケーションとユーザー** (_複合 ID_ とも呼ばれます): ユーザーは、特定のアプリケーションからキー コンテナーにアクセスする必要があり、_かつ_ そのアプリケーションは On-Behalf-Of 認証 (OBO) フローを使用してそのユーザーを偽装する必要があります。 このシナリオが機能するには、`applicationId` と `objectId` の両方をアクセス ポリシーで指定する必要があります。 `applicationId` によってその必要なアプリケーションが識別され、`objectId` によってそのユーザーが識別されます。 現時点では、このオプションはデータ プレーンの Azure RBAC では使用できません。
 
 すべての種類のアクセスで、アプリケーションは Azure AD を使用して認証します。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../../active-directory/develop/authentication-vs-authorization.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
 
@@ -58,14 +58,14 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 ## <a name="resource-endpoints"></a>リソースのエンドポイント
 
-アプリケーションによって、エンドポイントを介してプレーンにアクセスされます。 2 つのプレーンに対するアクセス制御は独立して機能します。 キー コンテナー内のキーを使用するためのアクセスをアプリケーションに許可する場合は、Key Vault アクセス ポリシーまたは Azure RBAC (プレビュー) を使用してデータ プレーンのアクセスを許可します。 ユーザーに対して Key Vault のプロパティおよびタグの読み取りアクセスは許可するが、データ (キー、シークレット、証明書) へのアクセスは許可しない場合は、Azure RBAC を使用して管理プレーンのアクセスを許可します。
+アプリケーションによって、エンドポイントを介してプレーンにアクセスされます。 2 つのプレーンに対するアクセス制御は独立して機能します。 キー コンテナー内のキーを使用するためのアクセスをアプリケーションに許可する場合は、Key Vault アクセス ポリシーまたは Azure RBAC を使用してデータ プレーンのアクセスを許可します。 ユーザーに対して Key Vault のプロパティおよびタグの読み取りアクセスは許可するが、データ (キー、シークレット、証明書) へのアクセスは許可しない場合は、Azure RBAC を使用して管理プレーンのアクセスを許可します。
 
 次の表に、管理プレーンとデータ プレーンのエンドポイントを示します。
 
 | アクセス&nbsp; プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム&nbsp; |
 | --- | --- | --- | --- |
 | 管理プレーン | **グローバル:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | キー コンテナーの作成、読み取り、更新、削除<br><br>Key Vault アクセス ポリシーの設定<br><br>Key Vault タグの設定 | Azure RBAC |
-| データ プレーン | **グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | キー: 暗号化、暗号化解除、キーのラップ、キーのラップ解除、署名、確認、取得、一覧表示、作成、更新、インポート、削除、回復、バックアップ、復元、消去<br><br> 証明書: 連絡先の管理、発行者の取得、発行者の一覧表示、発行者の設定、発行者の削除、発行者の管理、取得、一覧表示、作成、インポート、更新、削除、回復、バックアップ、復元、消去<br><br>  シークレット: 取得、一覧表示、設定、削除、回復、バックアップ、復元、消去 | Key Vault アクセス ポリシーまたは Azure RBAC (プレビュー)|
+| データ プレーン | **グローバル:**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | キー: 暗号化、暗号化解除、キーのラップ、キーのラップ解除、署名、確認、取得、一覧表示、作成、更新、インポート、削除、回復、バックアップ、復元、消去<br><br> 証明書: 連絡先の管理、発行者の取得、発行者の一覧表示、発行者の設定、発行者の削除、発行者の管理、取得、一覧表示、作成、インポート、更新、削除、回復、バックアップ、復元、消去<br><br>  シークレット: 取得、一覧表示、設定、削除、回復、バックアップ、復元、消去 | Key Vault アクセス ポリシーまたは Azure RBAC |
 
 ## <a name="management-plane-and-azure-rbac"></a>管理プレーンと Azure RBAC
 
@@ -103,7 +103,7 @@ Key Vault のアクセス ポリシーの使用の詳細については、「[Ke
 Key Vault アクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 
 >
 
-## <a name="data-plane-and-azure-rbac-preview"></a>データ プレーンと Azure RBAC (プレビュー)
+## <a name="data-plane-and-azure-rbac"></a>データ プレーンと Azure RBAC
 
 Azure のロールベースのアクセス制御は、Azure Key Vault データ プレーンへのアクセスを制御するための代替アクセス許可モデルであり、個々のキー コンテナーで有効にすることができます。 Azure RBAC アクセス許可モデルは排他的であり、いったん設定すると、コンテナー アクセス ポリシーは非アクティブになります。 Azure Key Vault によって、キー、シークレット、または証明書にアクセスするために使用される一般的なアクセス許可セットを含む Azure 組み込みロールが定義されます。
 

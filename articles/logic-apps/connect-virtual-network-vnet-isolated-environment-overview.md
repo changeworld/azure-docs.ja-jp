@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/11/2021
-ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 3070083040424b877159955dc2138f15319f05c8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100374730"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766391"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
@@ -33,7 +33,7 @@ ISE を作成すると、Azure によってその ISE が Azure 仮想ネット�
 
 * 仮想ネットワーク内にあるリソース、または仮想ネットワークに接続されているリソースへの直接アクセス
 
-  ISE で作成して実行するロジック アプリでは、[ISE で実行される特別に設計されたコネクタ](../connectors/apis-list.md#ise-connectors)を使用できます。 オンプレミスのシステムまたはデータ ソース用の ISE コネクタが存在する場合は、[オンプレミスのデータ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用しなくても、直接接続できます。 詳細については、このトピックの後の方の「[専用とマルチテナント](#difference)」および「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
+  ISE で作成して実行するロジック アプリでは、[ISE で実行される特別に設計されたコネクタ](../connectors/managed.md#ise-connectors)を使用できます。 オンプレミスのシステムまたはデータ ソース用の ISE コネクタが存在する場合は、[オンプレミスのデータ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)を使用しなくても、直接接続できます。 詳細については、このトピックの後の方の「[専用とマルチテナント](#difference)」および「[オンプレミス システムへのアクセス](#on-premises)」のセクションを参照してください。
 
 * 仮想ネットワーク外にあるリソース、または仮想ネットワークに接続されていないリソースへの継続的なアクセス
 
@@ -53,7 +53,7 @@ ISE にロジック アプリを作成して実行すると、マルチテナン
 
 * HTTP のような組み込みのトリガーとアクションには、**CORE** というラベルが表示され、これらはロジック アプリと同じ ISE で実行されます。
 
-* **ISE** というラベルが表示されるマネージド コネクタは、ISE 用に特別に設計されており、"*常にロジック アプリと同じ ISE で実行されます*"。 たとえば、以下に [ISE のバージョンを提供するコネクタ](../connectors/apis-list.md#ise-connectors)をいくつか示します。<p>
+* **ISE** というラベルが表示されるマネージド コネクタは、ISE 用に特別に設計されており、"*常にロジック アプリと同じ ISE で実行されます*"。 たとえば、以下に [ISE のバージョンを提供するコネクタ](../connectors/managed.md#ise-connectors)をいくつか示します。<p>
 
   * Azure Blob Storage、Azure File Storage、Azure Table Storage
   * Azure Service Bus、Azure Queues、Azure Event Hubs
@@ -79,7 +79,7 @@ ISE 内で実行されるロジック アプリは、これらの項目を使用
 
 * オンプレミスのシステムまたはデータ ソース用の **ISE** コネクタ (使用可能な場合)
 
-  ISE コネクタを使用できる場合は、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)なしで、システムまたはデータ ソースに直接アクセスできます。 ただし、ISE から SQL Server にアクセスし、Windows 認証を使用する必要がある場合は、コネクタの ISE 以外のバージョンとオンプレミス データ ゲートウェイを使用する必要があります。 コネクタの ISE バージョンでは、Windows 認証はサポートされていません。 詳細については、「[ISE コネクタ](../connectors/apis-list.md#ise-connectors)」および「[統合サービス環境から接続する](../connectors/apis-list.md#integration-service-environment)」のセクションを参照してください。
+  ISE コネクタを使用できる場合は、[オンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-connection.md)なしで、システムまたはデータ ソースに直接アクセスできます。 ただし、ISE から SQL Server にアクセスし、Windows 認証を使用する必要がある場合は、コネクタの ISE 以外のバージョンとオンプレミス データ ゲートウェイを使用する必要があります。 コネクタの ISE バージョンでは、Windows 認証はサポートされていません。 詳細については、「[ISE コネクタ](../connectors/managed.md#ise-connectors)」および「[統合サービス環境から接続する](../connectors/managed.md#integration-account-connectors)」のセクションを参照してください。
 
 * カスタム コネクタ
 

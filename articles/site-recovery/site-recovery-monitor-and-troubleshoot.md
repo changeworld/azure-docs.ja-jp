@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery の監視 | Microsoft Docs
 description: ポータルを使って、Azure Site Recovery でのレプリケーションの問題と動作の監視およびトラブルシューティングを行います
-author: raynew
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: raynew
-ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a80f68c230bfed5caad4fd5ce474d8d06fd3d093
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023569"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579320"
 ---
 # <a name="monitor-site-recovery"></a>Site Recovery の監視
 
@@ -36,7 +33,7 @@ ms.locfileid: "96023569"
 
 2. ダッシュボードから、さまざまな領域にドリルダウンすることができます。 
 
-    ![ドリルダウンできるダッシュボード上の領域を示すスクリーンショット。](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)。
+    ![ドリルダウンできるダッシュボード上の領域を示すスクリーンショット。](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
 3. **[レプリケートされたアイテム]** で **[すべて表示]** をクリックすると、コンテナー内のすべてのサーバーが表示されます。
 4. ドリルダウンするには、各セクションの状態の詳細をクリックします。

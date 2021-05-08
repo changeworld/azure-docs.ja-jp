@@ -2,21 +2,22 @@
 title: 接続のトラブルシューティング - Azure Database for PostgreSQL - Single Server
 description: Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
-author: niklarin
-ms.author: nlarin
+author: sunilagarwal
+ms.author: sunila
+ms.reviewer: ''
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7fe8c4b751be174a91a0e2e94991bc63b4b1e5c7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96014620"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504245"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server への接続に関する問題のトラブルシューティング
 
-接続の問題は、次をはじめとするさまざまなにことよって発生する可能性があります。
+接続の問題は、次をはじめとするさまざまな原因によって発生する可能性があります。
 
 * ファイアウォールの設定
 * 接続のタイムアウト
@@ -47,10 +48,10 @@ ms.locfileid: "96014620"
 アプリケーションが Azure Database for PostgreSQL への接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
 * サーバーのファイアウォールの構成:Azure Database for PostgreSQL サーバーのファイアウォールが、プロキシ サーバーやゲートウェイなど、クライアントからの接続を許可するように構成されていることを確認します。
-* クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、PostgreSQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。
+* クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、自分が接続できないサーバーの IP アドレスとポートや、PostgreSQL などのアプリケーション名も許可されている必要があります。
 * ユーザー エラー:接続文字列のサーバー名の間違いや、ユーザー名に *\@servername* サフィックスがないなど、接続パラメーターを誤って入力している可能性があります。
-* "_Server is not configured to allow ipv6 connections (ipv6 接続を許可するようにサーバーが構成されていません)_ " というエラーが表示された場合は、Basic レベルでは、VNet サービス エンドポイントはサポートされていないことに注意してください。 Basic サーバーに接続しようとしているサブネットから Microsoft.Sql エンドポイントを削除する必要があります。
-* "_sslmode value "***" invalid when SSL support is not compiled in error (SSL サポートがエラーでコンパイルされていないときに sslmode 値 "***" は無効です)_ " 接続エラーが表示されている場合は、PostgreSQL クライアントが SSL をサポートしていないことを意味します。 おそらく、クライアント側の libpq が "--with-openssl" フラグでコンパイルされていません。 SSL がサポートされている PostgreSQL クライアントを使用して接続してみてください。 
+* "_Server is not configured to allow ipv6 connections (ipv6 接続を許可するようにサーバーが構成されていません)_ " というエラーが表示された場合は、Basic レベルでは、VNet サービス エンドポイントがサポートされていないことに注意してください。 Basic サーバーに接続しようとしているサブネットから Microsoft.Sql エンドポイントを削除する必要があります。
+* "_sslmode value "***" invalid when SSL support is not compiled (SSL サポートがコンパイルされていない場合 sslmode 値 "***" は無効です)_ " 接続エラーが表示されている場合は、PostgreSQL クライアントが SSL をサポートしていないことを意味します。 おそらく、クライアント側の libpq が "--with-openssl" フラグでコンパイルされていません。 SSL がサポートされている PostgreSQL クライアントを使用して接続してみてください。 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
 

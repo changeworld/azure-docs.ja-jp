@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: abd96e513aadf44d0f313670e1437ebd16aa410c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 92fa93d64798f67f28ca0020731c63b7922866fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006380"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782371"
 ---
 # <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>CLI を使用して App Service アプリを SQL Database に接続する
 
@@ -38,13 +38,13 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
-| [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) | サーバーを作成します。  |
-| [`az sql db create`](/cli/azure/sql/db#az-sql-db-create) | 新しいデータベースを作成します。 |
-| [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) | データベースへの接続文字列を生成します。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
+| [`az sql server create`](/cli/azure/sql/server#az_sql_server_create) | サーバーを作成します。  |
+| [`az sql db create`](/cli/azure/sql/db#az_sql_db_create) | 新しいデータベースを作成します。 |
+| [`az sql db show-connection-string`](/cli/azure/sql/db#az_sql_db_show-connection_string) | データベースへの接続文字列を生成します。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

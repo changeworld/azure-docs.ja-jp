@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/25/2021
 ms.author: jeedes
 ms.openlocfilehash: b83ec6b63d908483801a28ba89227c8431401424
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104589278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル: Azure Active Directory と AppDynamics の統合
@@ -92,7 +92,7 @@ AppDynamics に対して Azure AD SSO を構成してテストするには、次
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -104,7 +104,7 @@ AppDynamics に対して Azure AD SSO を構成してテストするには、次
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に AppDynamics へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -116,13 +116,13 @@ AppDynamics に対して Azure AD SSO を構成してテストするには、次
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-appdynamics-sso"></a>AppDynamics SSO の構成
+## <a name=&quot;configure-appdynamics-sso&quot;></a>AppDynamics SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として AppDynamics 企業サイトにログインします。
 
 1. 上部のツール バーで、[**設定**] をクリックし、[**管理**] をクリックします。
 
-    ![管理](./media/appdynamics-tutorial/settings.png "管理")
+    ![管理](./media/appdynamics-tutorial/settings.png &quot;管理")
 
 1. [**認証プロバイダー**] タブをクリックします。
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: f7f8082cc9120345336610d5cb49741140d3b606
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/30/2021
+ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557014"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772507"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルおよびステートレスのワークフローを作成する
 
@@ -67,17 +67,17 @@ Visual Studio Code でまず、Azure Logic Apps (プレビュー) 拡張機能�
 
 #### <a name="windows"></a>Windows
 
-Windows を使用している場合、Visual Studio Code でロジック アプリ プロジェクトをローカルでビルドして実行するには、次の手順に従って Azure ストレージ エミュレーターを設定してください。
+Windows を使用している場合、Visual Studio Code でロジック アプリ プロジェクトをローカルでビルドして実行するには、次の手順に従って Azure Storage Emulator を設定してください。
 
-1. [Azure ストレージ エミュレーター 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179) をダウンロードしてインストールします。
+1. [Azure Storage Emulator 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179) をダウンロードしてインストールします。
 
 1. まだローカル SQL DB (無料の [SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658) など) をインストールしていない場合は、インストールして、エミュレーターを実行できるようにする必要があります。
 
-   詳細については、「[開発とテストに Azure ストレージ エミュレーターを使用する](../storage/common/storage-use-emulator.md)」を参照してください。
+   詳細については、「[開発とテストに Azure Storage Emulator を使用する](../storage/common/storage-use-emulator.md)」を参照してください。
 
 1. プロジェクトを実行する前に、エミュレーターを起動していることを確認してください。
 
-   ![実行中の Azure ストレージ エミュレーターを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+   ![実行中の Azure Storage Emulator を示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
 
 #### <a name="macos-and-linux"></a>macOS、Linux
 
@@ -101,8 +101,8 @@ macOS または Linux を使用している場合、Visual Studio Code でロジ
 1. 接続文字列を安全な場所に保存します。 Visual Studio Code でロジック アプリ プロジェクトを作成した後、プロジェクトのルート レベル フォルダーにある **local.settings.json** ファイルにこの文字列を追加する必要があります。
 
    > [!IMPORTANT]
-   > Docker コンテナーへのデプロイを計画している場合は、デプロイに使用する Docker ファイルにもこの接続文字列を追加する必要があります。
-
+   > Docker コンテナーへのデプロイを計画している場合は、デプロイに使用する Docker ファイルにもこの接続文字列を使用する必要があります。 運用環境のシナリオでは、たとえば、キー コンテナーを使用して、このようなシークレットや機密情報を保護し、セキュリティで保護するようにしてください。
+  
 ### <a name="tools"></a>ツール
 
 * [Visual Studio Code 1.30.1 (2019 年 1 月) 以降](https://code.visualstudio.com/) (無料)。 また、Visual Studio Code 用の次のツールをダウンロードしてインストールします (まだインストールしていない場合)。
@@ -305,6 +305,9 @@ macOS または Linux を使用している場合、Visual Studio Code でロジ
       }
       ```
 
+      > [!IMPORTANT]
+      > 運用環境のシナリオでは、たとえば、キー コンテナーを使用して、このようなシークレットや機密情報を保護し、セキュリティで保護するようにしてください。
+
    1. 完了したら、変更を保存してください。
 
 <a name="enable-built-in-connector-authoring"></a>
@@ -357,7 +360,7 @@ macOS または Linux を使用している場合、Visual Studio Code でロジ
    ![[Azure でコネクタを有効にする] の一覧が開き、[Azure のコネクタを使用する] が選択されているエクスプローラー ウィンドウを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
    > [!NOTE]
-   > ステートレスなワークフローでは、現在、トリガーではなく Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)に対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることもできますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
+   > ステートレスなワークフローでは、現在、トリガーではなく Azure にデプロイされている [マネージド コネクタ](../connectors/managed.md)に対する *アクション* のみがサポートされています。 ステートレスなワークフローにおいて Azure のコネクタを有効にすることもできますが、デザイナーには選択できるマネージド コネクタ トリガーは表示されません。
 
 1. **[サブスクリプションの選択]** の一覧で、ロジック アプリ プロジェクトに使用する Azure サブスクリプションを選択します。
 
@@ -1205,7 +1208,10 @@ Docker に慣れていない場合は、次のトピックをご確認くださ�
 
 * Docker コンテナーを構築するときに使用するワークフロー用の Docker ファイル
 
-  たとえば、このサンプル Docker ファイルを使用すると、ロジック アプリがデプロイされます。 Azure portal へのロジック アプリの発行に使用された Azure ストレージ アカウントのアクセス キーを含む接続文字列が指定されます。 この文字列を見つけるには、「[ストレージ アカウントの接続文字列を取得する](#find-storage-account-connection-string)」を参照してください。
+  たとえば、次に示すサンプル Docker ファイルでは、ロジック アプリがデプロイされ、Azure portal へのロジック アプリの発行に使用された Azure ストレージ アカウントのアクセス キーを含む接続文字列が指定されます。 この文字列を見つけるには、「[ストレージ アカウントの接続文字列を取得する](#find-storage-account-connection-string)」を参照してください。 詳細については、「[Docker ファイルの記述に関するベスト プラクティス](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)」を参照してください。
+  
+  > [!IMPORTANT]
+  > 運用環境のシナリオでは、たとえば、キー コンテナーを使用して、このようなシークレットや機密情報を保護し、セキュリティで保護するようにしてください。 Docker ファイルの場合は、 「[BuildKit でイメージをビルドする](https://docs.docker.com/develop/develop-images/build_enhancements/)」を参照し、 [Docker Secrets を使用して機密データを管理](https://docs.docker.com/engine/swarm/secrets/)します。
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1219,8 +1225,6 @@ Docker に慣れていない場合は、次のトピックをご確認くださ�
 
    RUN cd /home/site/wwwroot
    ```
-
-   詳細については、「[Docker ファイルの記述に関するベスト プラクティス](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)」を参照してください
 
 <a name="find-storage-account-connection-string"></a>
 

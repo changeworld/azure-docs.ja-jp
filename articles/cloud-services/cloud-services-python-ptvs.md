@@ -8,12 +8,12 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2822f719928515efc70eeed3d7c182e347627418
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743289"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045520"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -28,7 +28,7 @@ ms.locfileid: "98743289"
 * [Azure SDK Tools for VS 2013][Azure SDK Tools for VS 2013] または  
 [Azure SDK Tools for VS 2015][Azure SDK Tools for VS 2015] または  
 [Azure SDK Tools for VS 2017][Azure SDK Tools for VS 2017]
-* [Python 2.7 (32 ビット)][Python 2.7 32-bit] または [Python 3.5 (32 ビット)][Python 3.5 32-bit]
+* [Python 2.7 32 ビット][Python 2.7 32-bit]または [Python 3.8 32 ビット][Python 3.8 32-bit]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
@@ -71,7 +71,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 
 セットアップ スクリプトの一番の問題は、Python がインストールされないことです。 最初に、2 つの[スタートアップ タスク](cloud-services-startup-tasks.md)を [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイルに定義します。 最初のタスク (**PrepPython.ps1**) は、Python ランタイムをダウンロードしてインストールします。 2 番目のタスク (**PipInstaller.ps1**) は、pip を実行して、すべての依存関係をインストールします。
 
-以下のスクリプトは、Python 3.5 を対象に書かれています。 Python のバージョン 2.x を使用する場合は、2 つのスタートアップ タスクとランタイム タスクの **PYTHON2** 変数ファイルを **on** に設定してください: `<Variable name="PYTHON2" value="<mark>on</mark>" />`。
+以下のスクリプトは、Python 3.8 を対象に書かれています。 Python のバージョン 2.x を使用する場合は、2 つのスタートアップ タスクとランタイム タスクの **PYTHON2** 変数ファイルを **on** に設定してください: `<Variable name="PYTHON2" value="<mark>on</mark>" />`。
 
 ```xml
 <Startup>
@@ -167,7 +167,7 @@ Web ロールまたは worker ロールは、既存のクラウド サービス�
 次に、**PrepPython.ps1** ファイルと **PipInstaller.ps1** ファイルをロールの **./bin** フォルダーに作成します。
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-このスクリプトは、Python をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 がインストールされ、それ以外の場合は Python 3.5 がインストールされます。
+このスクリプトは、Python をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 がインストールされ、それ以外の場合は Python 3.8 がインストールされます。
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -186,12 +186,12 @@ if (-not $is_emulated){
 
     if (-not $?) {
 
-        $url = "https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe"
-        $outFile = "${env:TEMP}\python-3.5.2-amd64.exe"
+        $url = "https://www.python.org/ftp/python/3.8.8/python-3.8.8-amd64.exe"
+        $outFile = "${env:TEMP}\python-3.8.8-amd64.exe"
 
         if ($is_python2) {
-            $url = "https://www.python.org/ftp/python/2.7.12/python-2.7.12.amd64.msi"
-            $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
+            $url = "https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi"
+            $outFile = "${env:TEMP}\python-2.7.18.amd64.msi"
         }
 
         Write-Output "Not found, downloading $url to $outFile$nl"
@@ -214,7 +214,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-このスクリプトは、pip を呼び出し、**requirements.txt** ファイル内のすべての依存関係をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.5 が使用されます。
+このスクリプトは、pip を呼び出し、**requirements.txt** ファイル内のすべての依存関係をインストールします。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.8 が使用されます。
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -249,7 +249,7 @@ if (-not $is_emulated){
 
 **bin\LaunchWorker.ps1** は本来多くの準備作業を行うために作成されていますが、実際には機能しません。 このファイルの内容を次のスクリプトに置き換えます。
 
-このスクリプトは、Python プロジェクトの **worker.py** ファイルを呼び出します。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.5 が使用されます。
+このスクリプトは、Python プロジェクトの **worker.py** ファイルを呼び出します。 **PYTHON2** 環境変数を **on** に設定すると Python 2.7 が使用され、それ以外の場合は Python 3.8 が使用されます。
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -364,4 +364,4 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Azure SDK Tools for VS 2015]: https://go.microsoft.com/fwlink/?LinkId=746481
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
-[Python 3.5 32-bit]: https://www.python.org/downloads/
+[Python 3.8 32-bit]: https://www.python.org/downloads/

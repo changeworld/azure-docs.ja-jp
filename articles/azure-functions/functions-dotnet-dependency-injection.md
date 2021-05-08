@@ -4,15 +4,15 @@ description: .NET 関数にサービスを登録して使用するために、�
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32cd2760eadc94466cdf55883611c78ac0cf24e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98955090"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608121"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -21,6 +21,11 @@ Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイ
 - Azure Functions の依存関係挿入は、.NET Core の依存関係挿入機能を基盤としています。 [.NET Core 依存関係挿入](/aspnet/core/fundamentals/dependency-injection)について理解しておくことをお勧めします。 依存関係のオーバーライド方法と、従量課金プランで Azure Functions により構成値を読み取る方法に違いがあります。
 
 - 依存関係の挿入のサポートは、Azure Functions 2.x から開始されます。
+
+- 依存関係の挿入パターンは、C# 関数が[インプロセス](functions-dotnet-class-library.md)で実行されるか、[アウトプロセス](dotnet-isolated-process-guide.md)で実行されるかによって異なります。  
+
+> [!IMPORTANT]
+> この記事のガイダンスは、ランタイムでインプロセスで実行される [C# クラス ライブラリ関数](functions-dotnet-class-library.md)にのみ適用されます。 このカスタム依存関係挿入モデルは [.NET 分離関数](dotnet-isolated-process-guide.md)には適用されないため、.NET 5.0 関数はアウトプロセスで実行できます。 .NET 分離プロセス モデルは、通常の ASP.NET Core 依存関係挿入パターンに基づきます。 詳細については、.NET 分離プロセス ガイドの「[依存関係の挿入](dotnet-isolated-process-guide.md#dependency-injection)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

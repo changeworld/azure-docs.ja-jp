@@ -4,16 +4,16 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/13/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: fd4443e4ef6bcecacc03ce190bbf438288c9ec60
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601187"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364058"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -45,20 +45,20 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 
 
 ## <a name="azure-regions-with-availability-zones"></a>Azure のリージョンと Availability Zones
-
+ 
 
 | アメリカ           | ヨーロッパ               | アフリカ              | アジア太平洋   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| ブラジル南部       | フランス中部       | 南アフリカ北部* | 東日本     |
-| カナダ中部     | ドイツ中西部 |                     | 東南アジア |
-| 米国中部         | 北ヨーロッパ         |                     | オーストラリア東部 |
-| 米国東部            | 英国南部             |                     |                |
-| 米国東部 2          | 西ヨーロッパ          |                     |                |
+| ブラジル南部       | フランス中部       | 南アフリカ北部* | オーストラリア東部 |
+| カナダ中部     | ドイツ中西部 |                     | インド中部* |
+| 米国中部         | 北ヨーロッパ         |                     | 東日本     |
+| 米国東部            | 英国南部             |                     | 韓国中部* |
+| 米国東部 2          | 西ヨーロッパ          |                     | 東南アジア |
 | 米国中南部 |                      |                     |                |
-| US Gov バージニア州     |                      |                     |                |
+| US Gov バージニア州    |                      |                     |                |
 | 米国西部 2        |                      |                     |                |
-
+| 米国西部 3*       |                      |                     |                |
 
 \* これらのリージョンの Availability Zones および利用可能なサービス サポートの詳細については、Microsoft の営業またはカスタマー担当者にお問い合わせください。 Availability Zones のサポートが今後予定されているリージョンについては、「[Azure の地域](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)」を参照してください。
 
@@ -80,124 +80,136 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 
 |     製品                                                    | 回復性             |
 |-----------------------------------------------------------------|:----------------------------:|
-|     ストレージ アカウント                                           | :large_blue_diamond:  |
-|     Application Gateway (V2)                                  | :large_blue_diamond:  |
-|     Azure Backup                                                | :large_blue_diamond:  |
-|     Azure Cosmos DB                                           | :large_blue_diamond:  |
-|     Azure Data Lake Storage Gen 2                             | :large_blue_diamond:  |
-|     Azure Express Route                                       | :large_blue_diamond:  |
-|     Azure パブリック IP                                           | :large_blue_diamond:  |
-|     Azure SQL Database (General Purpose レベル)                 | :large_blue_diamond:  |
-|     Azure SQL Database (Premium & Business Critical レベル)     | :large_blue_diamond:  |
-|     Disk Storage                                                | :large_blue_diamond:  |
-|     Event Hubs                                                  | :large_blue_diamond:  |
-|     Key Vault                                                   | :large_blue_diamond:  |
-|     Load Balancer                                               | :large_blue_diamond:  |
-|     Service Bus                                                 | :large_blue_diamond:  |
-|     Service Fabric                                            | :large_blue_diamond:  |
-|     ストレージ: ホット/クール BLOB ストレージ レベル                      | :large_blue_diamond:  |
-|     ストレージ: Managed Disks                                    | :large_blue_diamond:  |
-|     Virtual Machines Scale Sets                               | :large_blue_diamond:  |
-|     Virtual Machines                                          | :large_blue_diamond:  |
-|     Virtual Machines:Av2 シリーズ                              | :large_blue_diamond:  |
-|     Virtual Machines:Bs シリーズ                               | :large_blue_diamond:  |
-|     Virtual Machines:DSv2 シリーズ                             | :large_blue_diamond:  |
-|     Virtual Machines:DSv3 シリーズ                             | :large_blue_diamond:  |
-|     Virtual Machines:Dv2 シリーズ                              | :large_blue_diamond:  |
-|     Virtual Machines:Dv3 シリーズ                              | :large_blue_diamond:  |
-|     Virtual Machines:ESv3 シリーズ                             | :large_blue_diamond:  |
-|     Virtual Machines:Ev3 シリーズ                              | :large_blue_diamond:  |
-|     Virtual Machines: F シリーズ                                | :large_blue_diamond:  |
-|     Virtual Machines: FS シリーズ                               | :large_blue_diamond:  |
-|     仮想ネットワーク                                           | :large_blue_diamond:  |
-|     VPN Gateway                                                 | :large_blue_diamond:  |
+|     [Application Gateway (V2)](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)                                  | :large_blue_diamond:  |
+|     [Azure Backup](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)                                                | :large_blue_diamond:  |
+|     [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/high-availability#availability-zone-support)                                           | :large_blue_diamond:  |
+|     [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)                             | :large_blue_diamond:  |
+|     [Azure Express Route](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)                                       | :large_blue_diamond:  |
+|     [Azure パブリック IP](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)                                           | :large_blue_diamond:  |
+|     Azure SQL Database ([General Purpose レベル](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla))                 | :large_blue_diamond:  |
+|     Azure SQL Database ([Premium & Business Critical レベル](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla))     | :large_blue_diamond:  |
+|     [Disk Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                                                | :large_blue_diamond:  |
+|     [Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)                                                  | :large_blue_diamond:  |
+|     [Key Vault](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)                                                   | :large_blue_diamond:  |
+|     [Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)                                               | :large_blue_diamond:  |
+|     [Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-geo-dr#availability-zones)                                                 | :large_blue_diamond:  |
+|     [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#:~:text=An%20Availability%20Zone%20is%20a%20unique%20physical%20location,zones.%20This%20will%20ensure%20high-availability%20of%20your%20applications)                                            | :large_blue_diamond:  |
+|     [ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                                           | :large_blue_diamond:  |
+|     ストレージ: [ホット/クール BLOB ストレージ レベル](https://docs.microsoft.com/azure/storage/common/storage-redundancy)                      | :large_blue_diamond:  |
+|     ストレージ: [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)                                    | :large_blue_diamond:  |
+|     [Virtual Machines Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/scripts/cli-sample-zone-redundant-scale-set)                               | :large_blue_diamond:  |
+|     [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                          | :large_blue_diamond:  |
+|     Virtual Machines: [Av2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
+|     Virtual Machines: [Bs シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [DSv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | :large_blue_diamond:  |
+|     Virtual Machines: [DSv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                            | :large_blue_diamond:  |
+|     Virtual Machines: [Dv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | :large_blue_diamond:  |
+|     Virtual Machines: [Dv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
+|     Virtual Machines: [ESv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                             | :large_blue_diamond:  |
+|     Virtual Machines: [Ev3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
+|     Virtual Machines: [F シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | :large_blue_diamond:  |
+|     Virtual Machines: [FS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#make-your-images-highly-available) | :large_blue_diamond:  |
+|     [仮想ネットワーク](https://docs.microsoft.com/azure/vpn-gateway/create-zone-redundant-vnet-gateway)                                         | :large_blue_diamond:  |
+|     [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                                             | :large_blue_diamond:  |
 
 
 **メインストリーム サービス**
 
-| 製品                                        | 回復性 |
-|-------------------------------------------------|:------------:|
-| App Service Environment                        |      :large_blue_diamond:  |
-| Azure Active Directory Domain Services          |      :large_blue_diamond:  |
-| Azure Bastion                                   |      :large_blue_diamond:  |
-| Azure Cache for Redis                           |      :large_blue_diamond:  |
-| Azure Cognitive Services: Text Analytics        |      :large_blue_diamond:  |
-| Azure Data Explorer                             |      :large_blue_diamond:  |
-| Azure Database for MySQL – フレキシブル サーバー      |      :large_blue_diamond:  |
-| Azure Database for PostgreSQL – フレキシブル サーバー |      :large_blue_diamond:  |
-| Azure DDoS Protection                           |      :large_blue_diamond:  |
-| Azure Disk Encryption                           |      :large_blue_diamond:  |
-| Azure Firewall                                  |      :large_blue_diamond:  |
-| Azure Firewall Manager                          |      :large_blue_diamond:  |
-| Azure Kubernetes Service (AKS)                  |      :large_blue_diamond:  |
-| Azure Private Link                              |      :large_blue_diamond:  |
-| Azure Red Hat OpenShift                         |      :large_blue_diamond:  |
-| Azure Site Recovery                             |      :large_blue_diamond:  |
-| Azure SQL: 仮想マシン                      |      :large_blue_diamond:  |
-| Azure Search                                    |      :large_blue_diamond:  |
-| Azure Web アプリケーション ファイアウォール                  |      :large_blue_diamond:  |
-| Container Registry                              |      :large_blue_diamond:  |
-| Event Grid                                      |      :large_blue_diamond:  |
-| Network Watcher                                 |      :large_blue_diamond:  |
-| Network Watcher: Traffic Analytics              |      :large_blue_diamond:  |
-| Power BI Embedded                               |      :large_blue_diamond:  |
-| Premium Blob Storage                            |      :large_blue_diamond:  |
-| ストレージ: Azure Premium Files                    |      :large_blue_diamond:  |
-| 仮想マシン: Azure Dedicated Host          |      :large_blue_diamond:  |
-| Virtual Machines: Ddsv4 シリーズ                  |      :large_blue_diamond:  |
-| Virtual Machines: Ddv4 シリーズ                   |      :large_blue_diamond:  |
-| Virtual Machines: Dsv4 シリーズ                   |      :large_blue_diamond:  |
-| Virtual Machines: Dv4 シリーズ                    |      :large_blue_diamond:  |
-| Virtual Machines: Edsv4 シリーズ                  |      :large_blue_diamond:  |
-| Virtual Machines: Edv4 シリーズ                   |      :large_blue_diamond:  |
-| Virtual Machines: Esv4 シリーズ                   |      :large_blue_diamond:  |
-| Virtual Machines: Ev4 シリーズ                    |      :large_blue_diamond:  |
-| Virtual Machines: Fsv2 シリーズ                   |      :large_blue_diamond:  |
-| Virtual Machines: M シリーズ                      |      :large_blue_diamond:  |
-| Virtual WAN                                     |      :large_blue_diamond:  |
-| 仮想 WAN: ExpressRoute                       |      :large_blue_diamond:  |
-| 仮想 WAN: ポイント対サイト VPN Gateway          |      :large_blue_diamond:  |
-| 仮想 WAN: サイト間 VPN Gateway           |      :large_blue_diamond:  |
+
+|     製品                                                    | 回復性             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     [App Service Environment](https://docs.microsoft.com/azure/app-service/environment/zone-redundancy)                                    | :large_blue_diamond:  |
+|     [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview)                      | :large_blue_diamond:  |
+|     [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview)                                               | :large_blue_diamond:  |
+|     [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)                              | :large_blue_diamond:  |
+|     [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-performance-optimization#availability-zones)               | :large_blue_diamond:  |
+|     Azure Cognitive Services: [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)                    | :large_blue_diamond:  |
+|     [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)                               | :large_blue_diamond:  |
+|     Azure Database for MySQL – [フレキシブル サーバー](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability)                  | :large_blue_diamond:  |
+|     Azure Database for PostgreSQL – [フレキシブル サーバー](https://docs.microsoft.com/azure/postgresql/flexible-server/overview)             | :large_blue_diamond:  |
+|     [Azure DDoS Protection](https://docs.microsoft.com/azure/ddos-protection/ddos-faq)                                       | :large_blue_diamond:  |
+|     [Azure Disk Encryption](https://docs.microsoft.com/azure/virtual-machines/disks-redundancy)                                       | :large_blue_diamond:  |
+|     [Azure Firewall](https://docs.microsoft.com/azure/firewall/deploy-availability-zone-powershell#:~:text=For%20more%20information%20about%20Azure%20Firewall%20Availability%20Zones%2C,This%20creates%20a%20zone-redundant%20IP%20address%20by%20default)                                              | :large_blue_diamond:  |
+|     [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/quick-firewall-policy)                                      | :large_blue_diamond:  |
+|     [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/availability-zones)                              | :large_blue_diamond:  |
+|     [Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)                                          | :large_blue_diamond:  |
+|     [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)                                         | :large_blue_diamond:  |
+|     Azure SQL: [仮想マシン](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla)                                  | :large_blue_diamond:  |
+|     [Azure Web アプリケーション ファイアウォール](https://docs.microsoft.com/azure/firewall/deploy-availability-zone-powershell#:~:text=For%20more%20information%20about%20Azure%20Firewall%20Availability%20Zones%2C,This%20creates%20a%20zone-redundant%20IP%20address%20by%20default)                              | :large_blue_diamond:  |
+|     [コンテナー レジストリ](https://docs.microsoft.com/azure/container-registry/zone-redundancy)                                          | :large_blue_diamond:  |
+|     [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)                                                  | :large_blue_diamond:  |
+|     [Network Watcher](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
+|     Network Watcher: [Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
+|     [Power BI Embedded](https://docs.microsoft.com/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
+|     [Premium Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-performance-tiers#:~:text=Table%201%20%20%20%20Area%20%20,%20%20Currently%20supports%20only%20locally-redundan%20...%20)                                        | :large_blue_diamond:  |
+|     ストレージ: [Azure Premium Files](https://docs.microsoft.com/azure/storage/files/storage-files-planning)                                | :large_blue_diamond:  |
+|     仮想マシン: [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                     | :large_blue_diamond:  |
+|     Virtual Machines: [Ddsv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
+|     Virtual Machines: [Ddv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Dsv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Dv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | :large_blue_diamond:  |
+|     Virtual Machines: [Edsv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
+|     Virtual Machines: [Edv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Esv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [Ev4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                | :large_blue_diamond:  |
+|     Virtual Machines: [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |
+|     Virtual Machines: [M シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                                  | :large_blue_diamond:  |
+|     [Virtual WAN](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
+|     Virtual WAN: [ExpressRoute](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
+|     Virtual WAN: [ポイント対サイト VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                      | :large_blue_diamond:  |
+|     Virtual WAN: [サイト間 VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)                       | :large_blue_diamond:  |
+
+
+**専用サービス**
+
+|     製品                                                    | 回復性             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure Red Hat OpenShift                                     | :large_blue_diamond:  |
+|     Cognitive Services:Anomaly Detector                        | :large_blue_diamond:  |
+|     Cognitive Services:Form Recognizer                         | :large_blue_diamond:  |
+|     ストレージ: Ultra Disk                                         | :large_blue_diamond:  |
 
 
 **リージョン依存なし**
 
-|     製品                                  |     回復性    |
-|-----------------------------------------------|:-------------------:|
-|     Azure DNS                                 |     :globe_with_meridians:             |
-|     Azure Active Directory                  |     :globe_with_meridians:             |
-|     Azure Advanced Threat Protection          |     :globe_with_meridians:             |
-|     Azure Advisor                             |     :globe_with_meridians:             |
-|     Azure Blueprint                          |     :globe_with_meridians:             |
-|     Azure Bot Services                        |     :globe_with_meridians:             |
-|     Azure Front Door                          |     :globe_with_meridians:             |
-|     Azure Defender for IoT                  |     :globe_with_meridians:             |
-|     Azure Front Door                           |     :globe_with_meridians:             |
-|     Azure Information Protection            |     :globe_with_meridians:             |
-|     Azure Lighthouse                        |     :globe_with_meridians:             |
-|     Azure Managed Applications              |     :globe_with_meridians:             |
-|     Azure Maps                                |     :globe_with_meridians:             |
-|     Azure Policy                              |     :globe_with_meridians:             |
-|     Azure Resource Graph                    |     :globe_with_meridians:             |
-|     Azure Sentinel                            |     :globe_with_meridians:             |
-|     Azure Stack                               |     :globe_with_meridians:             |
-|     Azure Stack Edge                        |     :globe_with_meridians:             |
-|     Cloud Shell                               |     :globe_with_meridians:             |
-|     Content Delivery Network                  |     :globe_with_meridians:             |
-|     Cost Management                           |     :globe_with_meridians:             |
-|     Microsoft Azure 用カスタマー ロックボックス    |     :globe_with_meridians:             |
-|     Intune                                    |     :globe_with_meridians:             |
-|     Microsoft Azure Peering Service         |     :globe_with_meridians:             |
-|     Microsoft Azure portal                  |     :globe_with_meridians:             |
-|     Microsoft Cloud App Security              |     :globe_with_meridians:             |
-|     Microsoft Graph                           |     :globe_with_meridians:             |
-|     Security Center                         |     :globe_with_meridians:             |
-|     Traffic Manager                         |     :globe_with_meridians:             |
+|     製品                                                    | 回復性             |
+|-----------------------------------------------------------------|:----------------------------:|
+|     Azure DNS                                                   | :globe_with_meridians: |
+|     Azure Active Directory                                    | :globe_with_meridians: |
+|     Azure Advanced Threat Protection                            | :globe_with_meridians: |
+|     Azure Advisor                                               | :globe_with_meridians: |
+|     Azure Blueprint                                            | :globe_with_meridians: |
+|     Azure Bot Services                                          | :globe_with_meridians: |
+|     Azure Front Door                                            | :globe_with_meridians: |
+|     Azure Defender for IoT                                    | :globe_with_meridians: |
+|     Azure Front Door                                            | :globe_with_meridians: |
+|     Azure Information Protection                              | :globe_with_meridians: |
+|     Azure Lighthouse                                          | :globe_with_meridians: |
+|     Azure Managed Applications                                | :globe_with_meridians: |
+|     Azure Maps                                                  | :globe_with_meridians: |
+|     Azure Performance Diagnostics                               | :globe_with_meridians: |
+|     Azure Policy                                                | :globe_with_meridians: |
+|     Azure Resource Graph                                      | :globe_with_meridians: |
+|     Azure Sentinel                                              | :globe_with_meridians: |
+|     Azure Stack                                                 | :globe_with_meridians: |
+|     Azure Stack Edge                                          | :globe_with_meridians: |
+|     Cloud Shell                                                 | :globe_with_meridians: |
+|     Content Delivery Network                                    | :globe_with_meridians: |
+|     Cost Management                                             | :globe_with_meridians: |
+|     Microsoft Azure 用カスタマー ロックボックス                      | :globe_with_meridians: |
+|     Intune                                                      | :globe_with_meridians: |
+|     Microsoft Azure Peering Service                           | :globe_with_meridians: |
+|     Microsoft Azure portal                                    | :globe_with_meridians: |
+|     Microsoft Cloud App Security                                | :globe_with_meridians: |
+|     Microsoft Graph                                             | :globe_with_meridians: |
+|     Security Center                                           | :globe_with_meridians: |
+|     Traffic Manager                                           | :globe_with_meridians: |
 
 
 ## <a name="pricing-for-vms-in-availability-zones"></a>Availability Zones の VM の料金
 
-Availability Zones にデプロイされる仮想マシンに追加のコストは発生しません。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
+Azure Availability Zones は、Azure サブスクリプションで使用できます。 詳細については、「[帯域幅の料金に関するページ](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
 
 
 ## <a name="get-started-with-availability-zones"></a>Availability Zones の使用を開始する

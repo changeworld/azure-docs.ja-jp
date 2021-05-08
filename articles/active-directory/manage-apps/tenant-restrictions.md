@@ -2,22 +2,22 @@
 title: テナント制限を使用して SaaS アプリへのアクセスを管理する - Azure AD
 description: テナント制限を使用して、どのユーザーが自分の Azure AD テナントに基づいてアプリにアクセスできるかを管理する方法。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/23/2021
-ms.author: kenwith
+ms.date: 4/6/2021
+ms.author: iangithinji
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 941bf61f3387abf19be58bdd4d8861ab123e244f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589329"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376581"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -97,6 +97,8 @@ login.microsoftonline.com、login.microsoft.com、login.windows.net へのすべ
 
 たとえば、Contoso ネットワーク上のユーザーが、Outlook Online などの共有 SaaS アプリケーションの Fabrikam インスタンスにアクセスしようとしているとします。 Fabrikam が Contoso インスタンスの許可されていないテナントである場合、ユーザーには、IT 部門の承認のない組織に属するリソースにアクセスしようとしていることを示すアクセス拒否メッセージが表示されます。
 
+![テナント制限のエラー メッセージ (2021 年 4 月以降)](./media/tenant-restrictions/error-message.png)
+
 ### <a name="admin-experience"></a>管理者エクスペリエンス
 
 テナント制限の構成は企業プロキシ インフラストラクチャで実行されますが、管理者は、直接 Azure Portal でテナント制限レポートにアクセスできます。 レポートを表示するには、次の操作を行います。
@@ -113,14 +115,14 @@ Restricted-Access-Context テナント以外のテナントに属するユーザ
 
 Azure Portal の他のレポートと同様に、フィルターを使用してレポートの範囲を指定できます。 特定の時間間隔、ユーザー、アプリケーション、クライアント、または状態についてフィルター処理できます。 **[列]** ボタンを選択すると、次のフィールドの任意の組み合わせでデータを表示することを選択できます。
 
-- **ユーザー** - このフィールドでは、個人を特定できる情報を削除することができます。これは、`00000000-0000-0000-0000-000000000000` に設定されます。 
+- **ユーザー** - このフィールドでは、個人データを削除することができます。これは、`00000000-0000-0000-0000-000000000000` に設定されます。 
 - **Application**
 - **状態**
 - **Date**
 - **日付 (UTC)** - UTC は協定世界時
 - **IP アドレス**
 - **Client**
-- **ユーザー名** - このフィールドでは、個人を特定できる情報を削除することができます。これは、`{PII Removed}@domain.com` に設定されます
+- **ユーザー名** - このフィールドでは、個人データを削除することができます。これは、`{PII Removed}@domain.com` に設定されます
 - **場所**
 - **ターゲット テナント ID**
 
@@ -207,7 +209,7 @@ Fiddler を構成したら、 **[File]** メニューに移動し、 **[Capture 
 
 ### <a name="configuration-for-consumer-apps"></a>コンシューマー アプリの構成
 
-`Restrict-Access-To-Tenants` ヘッダーは許可リストとして機能しますが、Microsoft アカウント (MSA) ブロックは拒否シグナルとして機能し、ユーザーがコンシューマー アプリケーションにサインインできないように Microsoft アカウント プラットフォームに指示します。 このシグナルを送信するために、[上記](#proxy-configuration-and-requirements)と同じ企業プロキシまたはファイアウォールを使用して `login.live.com` にアクセスするトラフィックに `sec-Restrict-Tenant-Access-Policy` ヘッダーが挿入されます。 ヘッダーの値は、`restrict-msa` である必要があります。 このヘッダーが存在し、コンシューマー アプリがユーザーに直接サインインしようとすると、そのサインインはブロックされます。
+`Restrict-Access-To-Tenants` ヘッダーは許可リストとして機能しますが、Microsoft アカウント (MSA) ブロックは拒否シグナルとして機能し、コンシューマー アプリケーションにサインインすることをユーザーに許可しないように Microsoft アカウント プラットフォームに指示します。 このシグナルを送信するために、[上記](#proxy-configuration-and-requirements)と同じ企業プロキシまたはファイアウォールを使用して `login.live.com` にアクセスするトラフィックに `sec-Restrict-Tenant-Access-Policy` ヘッダーが挿入されます。 ヘッダーの値は、`restrict-msa` である必要があります。 このヘッダーが存在し、コンシューマー アプリがユーザーに直接サインインしようとすると、そのサインインはブロックされます。
 
 現時点では、login.live.com は Azure AD とは別にホストされているため、コンシューマー アプリケーションへの認証は[管理ログ](#admin-experience)に表示されません。
 

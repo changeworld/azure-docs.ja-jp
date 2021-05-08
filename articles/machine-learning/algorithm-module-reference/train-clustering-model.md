@@ -1,5 +1,5 @@
 ---
-title: クラスタリング モデルのトレーニング:モジュール リファレンス
+title: 'Train Clustering Model (クラスタリング モデルのトレーニング): モジュール リファレンス'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning で Train Clustering Model (クラスタリング モデルのトレーニング) モジュールを使用して、クラスタリング モデルをトレーニングする方法について説明します。
 services: machine-learning
@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0dfde6fef7cc91edf2101095018bc031d392c4ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: ea6673a04bf9f5f568c660658e51036f2d2712e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898178"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654732"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
 
@@ -29,7 +29,7 @@ ms.locfileid: "90898178"
   
 ## <a name="how-to-use-train-clustering-model"></a>クラスタリング モデルのトレーニングの使用方法  
 
-1.  **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをデザイナーの自分のパイプラインに追加します。 このモジュールは、**Machine Learning モジュール**の **[トレーニング]** カテゴリにあります。  
+1.  **Train Clustering Model (クラスタリング モデルのトレーニング)** モジュールをデザイナーの自分のパイプラインに追加します。 このモジュールは、**Machine Learning モジュール** の **[トレーニング]** カテゴリにあります。  
   
 2. [K-Means Clustering (K-Means クラスタリング)](k-means-clustering.md) モジュール、または互換性のあるクラスタリング モデルを作成する別のカスタム モジュールを追加し、クラスタリング モデルのパラメーターを設定します。  
     
@@ -39,7 +39,7 @@ ms.locfileid: "90898178"
 
     ラベルが使用可能な場合は、特徴として使用することも、除外することもできます。  
   
-6. トレーニング データを新しいクラスター ラベルとともに出力する場合は、 **[Check for append or uncheck for result only]\(追加をチェックまたは結果のみをチェック解除\)** オプションを選択します。
+6. トレーニング データを新しいクラスター ラベルとともに出力する場合は、**[Check for append or uncheck for result only]\(追加をチェックまたは結果のみをチェック解除\)** オプションを選択します。
 
     このオプションの選択を解除すると、クラスターの割り当てだけが出力されます。 
 
@@ -52,6 +52,9 @@ ms.locfileid: "90898178"
 + トレーニングされたモデルのスナップショットを保存するには、 **[モデルのトレーニング]** モジュールの右側のパネルにある **[出力]** タブを選択します。 **[データセットの登録]** アイコンを選択して、再利用可能なモジュールとしてモデルを保存します。
 
 + モデルからスコアを生成するには、「[クラスターへのデータの割り当て](assign-data-to-clusters.md)」を使用します。
+
+> [!NOTE]
+> トレーニング済みのモデルをデザイナーに配置する必要がある場合は、**Score Model (モデルのスコア付け)** ではなく、[Assign Data to Clusters (クラスターへのデータの割り当て)](assign-data-to-clusters.md) が、推論パイプラインの [Web Service Output (Web サービスの出力) モジュール](web-service-input-output.md)の入力に接続されていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

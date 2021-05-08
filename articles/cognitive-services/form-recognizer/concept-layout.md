@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cc19d5652f416657cbcd339de61379265587b4e7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467019"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505384"
 ---
 # <a name="form-recognizer-layout-service"></a>Form Recognizer レイアウト サービス
 
-Azure Form Recognizer を使用すると、レイアウト サービスを使用して、ドキュメントからテキスト、テーブル、選択マーク、構造情報を抽出できます。 Layout API を使用すると、お客様はさまざまな形式のドキュメントを受け取り、ドキュメントの構造化されたデータ表現を返すことができます。 これは、Microsoft の強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。 
+Azure Form Recognizer を使用すると、レイアウト サービスを使用して、ドキュメントからテキスト、テーブル、選択マーク、構造情報を抽出できます。 Layout API を使用すると、お客様はさまざまな形式のドキュメントを受け取り、ドキュメントの構造化されたデータ表現を返すことができます。 これは、Microsoft の強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。 
 
 ## <a name="what-does-the-layout-service-do"></a>レイアウト サービスの機能
 
@@ -32,7 +32,7 @@ Layout API を使用すると、非常に優れた精度でドキュメントか
 Form Recognizer のレイアウト サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
 
 > [!div class="nextstepaction"]
-> [Form OCR テスト ツール (FOTT)](https://fott-preview.azurewebsites.net)
+> [Form Recognizer を試す](https://fott-preview.azurewebsites.net)
 
 Form Recognizer Layout API を試すには、Azure サブスクリプション ([無料で作成](https://azure.microsoft.com/free/cognitive-services)) と [Form Recognizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) エンドポイントおよびキーが必要です。 
 
@@ -48,7 +48,7 @@ Form Recognizer Layout API を試すには、Azure サブスクリプション (
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/prebuilt/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.3/layout/analyzeResults/44a436324-fc4b-4387-aa06-090cfbf0064f` |
 
 ### <a name="natural-reading-order-output-latin-only"></a>自然な読み取り順序の出力 (ラテンのみ)
 

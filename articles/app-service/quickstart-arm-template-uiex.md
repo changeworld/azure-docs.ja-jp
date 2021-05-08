@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: bce6bfb61eb59d1fa66c550a133ac8b6f8d7f2c5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179087"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769007"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "102179087"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -85,7 +85,7 @@ ms.locfileid: "102179087"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -133,7 +133,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <ul>
 <li>既定の <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>.</li>
 <li>既定の <abbr title="アプリをホストする Web サーバー ファームの場所、サイズ、機能を指定するプラン。">App Service プラン</abbr>.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create"> <abbr title="Web アプリの表現。アプリのコード、DNS ホスト名、証明書、関連リソースが含まれています。">App Service アプリ</abbr>指定された名前で </a></li>
+<li><a href="/cli/azure/webapp#az_webapp_create"> <abbr title="Web アプリの表現。アプリのコード、DNS ホスト名、証明書、関連リソースが含まれています。">App Service アプリ</abbr>指定された名前で </a></li>
 </ul>
 </details>
 
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>異なる言語スタックはどのようにしてデプロイすればよいですか?</summary>
 別の言語スタックをデプロイするには、 <abbr title="このテンプレートは、.NET Core、.NET Framework、PHP、Node.js、静的 HTML アプリと互換性があります。">言語パラメーター</abbr> 適切な値 Java の場合は、<a href="/azure/app-service/quickstart-java-uiex">Java アプリの作成</a>に関する記事を参照してください。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | language   | string  | ".net"                       | プログラミング言語スタック (.net、php、node、html) |
 
@@ -191,4 +191,3 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 - [PHP と MySQL](tutorial-php-mysql-app.md)
 - [Java を使用して Azure SQL データベースに接続する](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 - [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain-uiex.md)
-

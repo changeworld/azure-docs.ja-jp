@@ -1,19 +1,23 @@
-- name: Metrics Advisor
+- name: Metrics Advisor のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
   items:
     - name: Metrics Advisor とは
       href: overview.md
+    - name: 価格
+      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
   items:
-    - name: Web ポータルを使用する
+    - name: Web ポータル
       href: quickstarts/web-portal.md
-    - name: REST API またはクライアント ライブラリを使用する
+    - name: REST API とクライアント ライブラリ
       href: quickstarts/rest-api-and-client-library.md
-- name: 方法
+- name: サンプル
+  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
+- name: 操作方法ガイド
   items:
     - name: データをオンボードする
       href: how-tos/onboard-your-data.md
@@ -31,13 +35,17 @@
       href: how-tos/anomaly-feedback.md
     - name: メトリック グラフを作成する
       href: how-tos/metrics-graph.md
+    - name: エンタープライズ対応
+      items:
+        - name: カスタマー マネージド キーを使用する
+          href: encryption.md
+- name: 概念
+  items:
+    - name: Metrics Advisor の主な用語
+      href: glossary.md
 - name: リファレンス
   items:
-    - name: 用語集
-      href: glossary.md
-    - name: よく寄せられる質問
-      href: faq.md
-    - name: Metrics Advisor API
+    - name: Metrics Advisor REST API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI リファレンス
       href: /cli/azure/cognitiveservices#az_cognitiveservices_list
@@ -45,13 +53,11 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: 価格
-      href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encryption.md

@@ -1,18 +1,18 @@
 ---
 title: 接続プールを説明するための Java サンプル
 description: この記事では、接続プールを説明するための Java サンプルの一覧を示します。
-author: ambhatna
+author: savjani
+ms.author: pariks
 ms.custom: devx-track-java
-ms.author: ambhatna
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: b108dc8a04825826d7e0887d8fd5884b122827f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3d7977bc0943317cb52ba0bf98e2d1240a9031d2
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87314698"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226474"
 ---
 # <a name="java-sample-to-illustrate-connection-pooling"></a>接続プールを説明するための Java サンプル
 

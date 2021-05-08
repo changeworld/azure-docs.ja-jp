@@ -2,13 +2,13 @@
 title: テンプレートでのユーザー定義関数
 description: Azure Resource Manager テンプレート (ARM テンプレート) でユーザー定義関数を定義して使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 9c7480958e6315c8aea1fd8d12613bcf9d606723
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/12/2021
+ms.openlocfilehash: 802ac6e1c70db8caa58aecde3efe814430c79682
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100379626"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307777"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM テンプレートでのユーザー定義関数
 
@@ -107,6 +107,7 @@ ms.locfileid: "100379626"
 * 関数は、関数内で定義されているパラメーターのみを使用できます。 ユーザー定義関数内で [parameters](template-functions-deployment.md#parameters) 関数を使用する場合は、その関数のパラメーターに制限されます。
 * 関数は、その他のユーザー定義関数を呼び出すことはできません。
 * 関数では、[reference](template-functions-resource.md#reference) 関数、またはいずれの [list](template-functions-resource.md#list) 関数も使用できません。
+* 関数では、[dateTimeAdd](template-functions-date.md#datetimeadd) 関数を使用できません。
 * 関数のパラメーターでは既定値を指定できません。
 
 ## <a name="next-steps"></a>次のステップ

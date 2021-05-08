@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06b37e8b25d932115384124a45156c801fb9708f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53ad6dd922c1ccebd79aebcd2966b23b38de00e7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361674"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776899"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Azure CLI で BLOB データへのアクセスの承認方法を選択する
 
@@ -63,7 +63,7 @@ Azure Storage 拡張機能は、BLOB データの操作でサポートされて�
     > [!IMPORTANT]
     > Azure ロールの割り当ての反映には数分かかることがあります。
 
-1. [az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してコンテナーを作成します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
+1. [az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してコンテナーを作成します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
     ```azurecli
     az storage container create \

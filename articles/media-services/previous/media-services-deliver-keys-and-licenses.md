@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10ff568ede601c57369f8c942ed61cb7a39ba703
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f2d965ec17fb605362c1e8cd8ef781a6bd2029d0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103465710"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067386"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services を使用して DRM ライセンスまたは AES キーを配信する
 
@@ -54,7 +54,7 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
     ```
  
 ## <a name="net-code-example"></a>.NET コード例
-次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 オンプレミスのサーバーを構成するには、コンテンツ キー、キー ID、およびライセンス取得 URL が必要です。 オンプレミスのサーバーを構成したら、自分のストリーミング サーバーからストリーミングを実行できます。 暗号化されたストリームは Media Services ライセンス サーバーを参照するため、プレーヤーは Media Services にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを Media Services ライセンス サーバーが検証します。 トークンが有効な場合は、ライセンス サーバーからプレーヤーにライセンスが配信されます。 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」をご覧ください。
+次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 オンプレミスのサーバーを構成するには、コンテンツ キー、キー ID、およびライセンス取得 URL が必要です。 オンプレミスのサーバーを構成したら、自分のストリーミング サーバーからストリーミングを実行できます。 暗号化されたストリームは Media Services ライセンス サーバーを参照するため、プレーヤーは Media Services にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを Media Services ライセンス サーバーが検証します。 トークンが有効な場合は、ライセンス サーバーからプレーヤーにライセンスが配信されます。 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)」をご覧ください。
 
 ```csharp
 using System;
@@ -357,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>関連項目
 * [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)
-* [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)
+* [AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)

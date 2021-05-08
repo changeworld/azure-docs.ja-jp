@@ -1,14 +1,14 @@
 ---
 title: アプリケーションをレンダリングする
 description: Azure Batch では任意のレンダリング アプリケーションを使用できます。 ただし、Azure Marketplace の VM イメージは、事前インストールされている一般的なアプリケーションで使用します。
-ms.date: 02/12/2021
+ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 18fc142d2fa9c819b9872c64ef7aae4c73cc2428
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: c98e2e0a81051dad47c201de9eda9f89cc311cf2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635338"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103496645"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>VM イメージを Batch レンダリングするために事前インストールされているアプリケーション
 
@@ -17,6 +17,9 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 該当する場合、事前インストールされているレンダリング アプリケーションを従量課金制ライセンスで使用できます。 Batch のプールが作成されたら、必要なアプリケーションを指定し、1 分ごとに VM とアプリケーションの両方の料金が発生します。 アプリケーションの料金は、[Azure Batch の料金ページ](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)で確認できます。
 
 一部のアプリケーションは Windows でのみサポートされますが、ほとんどは Windows と Linux の両方でサポートされます。
+
+> [!IMPORTANT]
+> レンダリング VM イメージと従量課金ライセンスは、[非推奨となっており、2024 年 2 月 29 日に廃止されます](https://azure.microsoft.com/updates/azure-batch-rendering-vm-images-licensing-will-be-retired-on-29-february-2024/)。 レンダリングにバッチを使用するには、[カスタム VM イメージと標準アプリケーション ライセンスを使用してください](batch-rendering-functionality.md#batch-pools-using-custom-vm-images-and-standard-application-licensing)。
 
 ## <a name="applications-on-latest-centos-7-rendering-image"></a>最新の CentOS 7 レンダリング イメージのアプリケーション
 

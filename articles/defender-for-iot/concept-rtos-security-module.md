@@ -3,12 +3,12 @@ title: Azure RTOS 用の Defender-IoT-micro-agent の基本についての概念
 description: Azure RTOS 用の Defender-IoT-micro-agent の概念とワークフローについての基本を説明します。
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 83557930aeeccbb557382583e4d6666a000ce52c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 04b86d401bcb9fc919c36b28cf4f80ea3bfd7030
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779275"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750484"
 ---
 # <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Azure RTOS 用の Defender-IoT-micro-agent (プレビュー段階)
 
@@ -16,7 +16,7 @@ ms.locfileid: "104779275"
 
 ## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Azure RTOS IoT Defender-IoT-micro-agent
 
-Azure RTOS 用の Defender-IoT-micro-agent では、NetX Duo オファリングの一部として、Azure RTOS デバイス向けの包括的なセキュリティ ソリューションが提供されます。 NetX Duo オファリングには Azure RTOS と組み込みの Azure IoT Defender-IoT-micro-agent が付属しており、アクティブ化されると、リアルタイムのオペレーティング システム デバイスでの一般的な脅威への対応が提供されます。 
+Azure RTOS 用の Defender-IoT-micro-agent では、NetX Duo オファリングの一部として、Azure RTOS デバイス向けの包括的なセキュリティ ソリューションが提供されます。 NetX Duo オファリングには Azure RTOS と組み込みの Azure IoT Defender-IoT-micro-agent が付属しており、アクティブ化されると、リアルタイムのオペレーティング システム デバイスでの一般的な脅威への対応が提供されます。
 
 Azure RTOS 用の Defender-IoT-micro-agent はバックグラウンドで実行され、各顧客の IoT Hub への一意の接続を使用してセキュリティ メッセージが送信されると同時に、シームレスなユーザー エクスペリエンスが提供されます。 Azure RTOS 用の Defender-IoT-micro-agent は、既定で有効になっています。  
 

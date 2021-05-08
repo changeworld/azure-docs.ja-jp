@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 2c693c9e972cdfc66cce0d52323c113b6006bd97
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab3fdd24446448e9c21a1e4867c26c960f814c7a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444844"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958103"
 ---
 Go 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -22,7 +22,7 @@ Go 用 Face サービス クライアント ライブラリは、次の目的で
 
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
-* [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
+* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
 * [顔を識別する](#identify-a-face)
 
 [リファレンス ドキュメント](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK のダウンロード](https://github.com/Azure/azure-sdk-for-go)
@@ -106,7 +106,7 @@ touch sample-app.go
 * [クライアントを認証する](#authenticate-the-client)
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
-* [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
+* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
 * [顔を識別する](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
@@ -161,7 +161,7 @@ touch sample-app.go
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_similar_print)]
 
 
-## <a name="create-and-train-a-person-group"></a>人物グループを作成してトレーニングする
+## <a name="create-and-train-a-persongroup"></a>PersonGroup を作成してトレーニングする
 
 このシナリオの手順を実行するには、プロジェクトのルート ディレクトリに画像 (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images ) を保存する必要があります。
 
@@ -202,11 +202,11 @@ touch sample-app.go
 識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
 
 > [!IMPORTANT]
-> この例を実行するには、まず、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」のコードを実行する必要があります。
+> この例を実行するには、まず、「[PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)」のコードを実行する必要があります。
 
 ### <a name="get-a-test-image"></a>テスト画像を取得する
 
-次のコードは、プロジェクトのルートから画像 _test-image-person-group.jpg_ を探して、プログラムのメモリに読み込みます。 この画像は、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」で使用した画像と同じリポジトリにあります (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images )。
+次のコードは、プロジェクトのルートから画像 _test-image-person-group.jpg_ を探して、プログラムのメモリに読み込みます。 この画像は、「[PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)」で使用した画像と同じリポジトリにあります (https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images )。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 

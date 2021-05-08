@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505938"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520022"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -560,7 +560,7 @@ Azure において、アプリケーション サーバーおよび接続され�
 
 **Azure NetApp Files** に対しては、オンデマンドのスナップショットを作成し、スナップショット ポリシーを使用して自動スナップショット作成のスケジュールを設定できます。 スナップショット コピーによって、ANF ボリュームの特定時点のコピーが提供されます。 詳細については、「[Azure NetApp Files を使用して、スナップショットを管理する](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)」を参照してください。
 
-**Azure Files** バックアップは、ネイティブの [Azure Backup](../../../backup/backup-overview.md) サービスと統合されています。これにより、バックアップと復元の機能が VM のバックアップと共に一元化され、運用作業が簡単になります。 詳細については、「[Azure ファイル共有のバックアップについて](../../../backup/azure-file-share-backup-overview.md)」と[よくあるご質問 (Azure Files のバックアップ)](../../../backup/backup-azure-files-faq.md) に関するページを参照してください。
+**Azure Files** バックアップは、ネイティブの [Azure Backup](../../../backup/backup-overview.md) サービスと統合されています。これにより、バックアップと復元の機能が VM のバックアップと共に一元化され、運用作業が簡単になります。 詳細については、「[Azure ファイル共有のバックアップについて](../../../backup/azure-file-share-backup-overview.md)」と[よくあるご質問 (Azure Files のバックアップ)](../../../backup/backup-azure-files-faq.yml) に関するページを参照してください。
 
 #### <a name="backup--restore-for-cms-database"></a>CMS データベースのバックアップと復元
 

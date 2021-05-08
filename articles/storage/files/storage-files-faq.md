@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470895"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785309"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -90,7 +90,7 @@ ms.locfileid: "103470895"
 
 * <a id="afs-region-availability"></a>
   **Azure File Sync は、どのリージョンでサポートされていますか。**  
-    提供されているリージョンの一覧は、Azure File Sync プランニング ガイドの「[利用可能なリージョン](storage-sync-files-planning.md#azure-file-sync-region-availability)」セクションでご覧いただけます。 パブリック リージョン以外のリージョンも含め、今後サポート対象リージョンを拡大していく予定です。
+    提供されているリージョンの一覧は、Azure File Sync プランニング ガイドの「[利用可能なリージョン](../file-sync/file-sync-planning.md#azure-file-sync-region-availability)」セクションでご覧いただけます。 パブリック リージョン以外のリージョンも含め、今後サポート対象リージョンを拡大していく予定です。
 
 * <a id="cross-domain-sync"></a>
   **同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
@@ -119,28 +119,28 @@ ms.locfileid: "103470895"
 
 * <a id="sizeondisk-versus-size"></a>
   **ファイルの "*ディスク上のサイズ*" プロパティが、Azure File Sync を使用した後の "*サイズ*" プロパティと一致しないのはどうしてですか。**  
-  「[Azure File Sync のクラウドを使った階層化について](storage-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)」を参照してください。
+  「[Azure File Sync のクラウドを使った階層化について](../file-sync/file-sync-cloud-tiering-overview.md#tiered-vs-locally-cached-file-behavior)」を参照してください。
 
 * <a id="is-my-file-tiered"></a>
   **ファイルが階層化されているかどうかは、どうやって判断できますか。**  
-  [Azure File Sync の階層化ファイルの管理方法](storage-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)に関する記事を参照してください。
+  「[クラウドの階層化について](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-check-if-your-files-are-being-tiered)」を参照してください。
 
 * <a id="afs-recall-file"></a>**使用したいファイルが階層化されています。ローカルで使用するためにこのファイルをディスクに再現するには、どうすればよいですか。**  
-  [Azure File Sync の階層化ファイルの管理方法](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)に関する記事を参照してください。
+  「[クラウドの階層化について](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk)」を参照してください。
 
 * <a id="afs-force-tiering"></a>
   **ファイルまたはディレクトリを強制的に階層化するには、どうすればよいですか。**  
-  [Azure File Sync の階層化ファイルの管理方法](storage-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)に関する記事を参照してください。
+  「[クラウドの階層化について](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-force-a-file-or-directory-to-be-tiered)」を参照してください。
 
 * <a id="afs-effective-vfs"></a>
   **ボリューム上に複数のサーバー エンドポイントがある場合、*ボリュームの空き領域* はどのように解釈されますか。**  
-  [Azure File Sync のクラウドを使った階層化ポリシーの選択](storage-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)に関するページを参照してください。
+  「[クラウドの階層化について](../file-sync/file-sync-cloud-tiering-policy.md#multiple-server-endpoints-on-a-local-volume)」を参照してください。
   
 * <a id="afs-tiered-files-tiering-disabled"></a>
   **クラウドを使った階層化を無効にしたのですが、サーバー エンドポイントの場所に階層化されたファイルがあるのはなぜでしょうか。**  
     階層化されたファイルがサーバー エンドポイントの場所に存在する理由には、次の 2 つがあります。
 
-    - 新しいサーバー エンドポイントを既存の同期グループに追加するときに、最初に名前空間を呼び戻すオプション、または初期ダウンロード モードで名前空間のみを呼び戻すオプションを選択すると、ファイルはローカルにダウンロードされるまで階層化された状態で表示されます。 これを回避するには、初期ダウンロード モードで、階層化されたファイルを回避するオプションを選択します。 手動でファイルを呼び戻すには、[Invoke-StorageSyncFileRecall](storage-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) コマンドレットを使用します。
+    - 新しいサーバー エンドポイントを既存の同期グループに追加するときに、最初に名前空間を呼び戻すオプション、または初期ダウンロード モードで名前空間のみを呼び戻すオプションを選択すると、ファイルはローカルにダウンロードされるまで階層化された状態で表示されます。 これを回避するには、初期ダウンロード モードで、階層化されたファイルを回避するオプションを選択します。 手動でファイルを呼び戻すには、[Invoke-StorageSyncFileRecall](../file-sync/file-sync-how-to-manage-tiered-files.md#how-to-recall-a-tiered-file-to-disk) コマンドレットを使用します。
 
     - サーバー エンドポイントでクラウドの階層化が有効になっていて、その後無効になった場合、ファイルはアクセスされるまで階層化されたままになります。
 
@@ -150,11 +150,11 @@ ms.locfileid: "103470895"
 
     この動作は Azure File Sync 固有ではありません。Windows エクスプローラーでは、オフライン属性セットが設定されているすべてのファイルに対して "グレーの X" が表示されます。 この X のアイコンは、SMB 経由でファイルにアクセスすると表示されます。 この動作の詳しい説明については、[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105) を参照してください。
 
-    階層化されたファイルの管理方法については、[階層化されたファイルの管理方法](storage-sync-how-to-manage-tiered-files.md)に関する記事を参照してください。
+    階層化されたファイルの管理方法については、[階層化されたファイルの管理方法](../file-sync/file-sync-how-to-manage-tiered-files.md)に関する記事を参照してください。
 
 * <a id="afs-files-excluded"></a>
   **Azure File Sync によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
-  「[スキップされるファイル](storage-sync-files-planning.md#files-skipped)」を参照してください。
+  「[スキップされるファイル](../file-sync/file-sync-planning.md#files-skipped)」を参照してください。
 
 * <a id="afs-os-support"></a>
   **Windows Server 2008 R2、Linux、または自分のネットワーク接続ストレージ (NAS) デバイスで Azure File Sync を使用することはできますか。**  
@@ -162,7 +162,7 @@ ms.locfileid: "103470895"
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
-    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、ファイル エクスプローラーおよび他の Windows の API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
+    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、ファイル エクスプローラーおよび他の Windows の API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](../file-sync/file-sync-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
   **サーバーで Azure File Sync に関する問題 (同期、クラウド階層化など) が発生しています。サーバー エンドポイントを削除して再作成する必要がありますか。**  
@@ -170,7 +170,7 @@ ms.locfileid: "103470895"
     
 * <a id="afs-resource-move"></a>
   **ストレージ同期サービスやストレージ アカウントを、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できますか。**  
-   はい。ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
+   はい。ストレージ同期サービスやストレージ アカウントは、別のリソース グループ、サブスクリプション、または Azure AD テナントに移動できます。 ストレージ同期サービスまたはストレージ アカウントを移動した後、Microsoft.StorageSync アプリケーションにストレージ アカウントへのアクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します。](../file-sync/file-sync-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)」を参照してください)。
 
     > [!Note]  
     > クラウド エンドポイントを作成するときは、ストレージ同期サービスとストレージ アカウントが同じ Azure AD テナントに存在する必要があります。 クラウド エンドポイントが作成された後、ストレージ同期サービスとストレージ アカウントを別の Azure AD テナントに移動できます。
@@ -183,6 +183,10 @@ ms.locfileid: "103470895"
     File Sync で管理されているファイル共有に対して Azure Backup を有効にした場合、ファイル ACL をバックアップ復元ワークフローの一部として引き続き復元できます。 これは、共有全体または個々のファイル/ディレクトリに対して機能します。
 
     File Sync によって管理されるファイル共有の自己管理型バックアップ ソリューションの一部としてスナップショットを使用している場合、2020 年 2 月 24 日より前に作成された ACL が NTFS ACL に正しく復元されないことがあります。 この問題が発生した場合は、Azure サポートに連絡することを検討してください。
+
+* <a id="afs-lastwritetime"></a>
+  **Azure File Sync ではディレクトリの LastWriteTime が同期されますか。**  
+    いいえ。Azure File Sync ではディレクトリの LastWriteTime が同期されません。 これは仕様です。
     
 ## <a name="security-authentication-and-access-control"></a>セキュリティ、認証、およびアクセス制御
 * <a id="ad-support"></a>
@@ -490,4 +494,4 @@ ms.locfileid: "103470895"
 ## <a name="see-also"></a>関連項目
 * [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)
 * [Linux での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)
-* [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)
+* [Azure File Sync のトラブルシューティング](../file-sync/file-sync-troubleshoot.md)

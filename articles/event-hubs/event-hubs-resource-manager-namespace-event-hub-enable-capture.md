@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレートを使用して、1 つの
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17157e05e4ad123ba2bbdffa199c111df9f8912e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1b7ce00c1db0866b1965ed6d1bba31aa28f8bc24
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100653025"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304938"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
@@ -421,7 +421,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [Event Hubs の概要](./event-hubs-about.md)
 * [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs の FAQ](event-hubs-faq.yml)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs

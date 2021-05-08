@@ -4,13 +4,13 @@ description: Azure App Service のデプロイ資格情報の種類と、それ�
 ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
-ms.custom: seodec18
-ms.openlocfilehash: c7d3c7c8b5da40a4e9ccd9085af5a850b9ebc3dd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: b77a26f61e1168846156de990806bbed2f7c41e3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052349"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789539"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 ローカル コンピューターからのアプリのデプロイをセキュリティで保護するために、[Azure App Service](./overview.md) では、[ローカル Git デプロイ](deploy-local-git.md)と [FTP/S デプロイ](deploy-ftp.md)に対して 2 種類の資格情報がサポートされています。 これらの資格情報は Azure サブスクリプションの資格情報とは異なります。
@@ -24,7 +24,7 @@ ms.locfileid: "102052349"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-[az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
+[az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) コマンドを実行します。 \<username> と \<password> を、デプロイ ユーザーのユーザー名とパスワードで置き換えます。 
 
 - ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。 
 - パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。 

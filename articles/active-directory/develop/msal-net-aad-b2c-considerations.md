@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: bdb9e12fdf721204ce98d23e5d5aeea535ddf23d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdbba1618815dbc8b52195169b7de2bcec2986d8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100574796"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255581"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
@@ -178,7 +178,7 @@ Azure AD B2C シナリオでは、これらの両方の要求が欠落する可�
 
 推奨される回避策は、前に説明した[ポリシーによるキャッシュ](#acquire-a-token-to-apply-a-policy)を使用することです。
 
-また、Azure AD B2C で[カスタム ポリシー](../../active-directory-b2c/custom-policy-get-started.md)を使用している場合は、`tid` 要求を使用することもできます。 カスタム ポリシーは、[要求の変換](../../active-directory-b2c/claims-transformation-technical-profile.md)を使用して、アプリケーションに追加の要求を返すことができます。
+また、Azure AD B2C で[カスタム ポリシー](../../active-directory-b2c/user-flow-overview.md)を使用している場合は、`tid` 要求を使用することもできます。 カスタム ポリシーは、[要求の変換](../../active-directory-b2c/claims-transformation-technical-profile.md)を使用して、アプリケーションに追加の要求を返すことができます。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
 

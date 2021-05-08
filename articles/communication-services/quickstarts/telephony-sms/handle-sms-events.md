@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - SMS イベントの処理
+title: クイックスタート - 配信レポートと受信メッセージの SMS イベントを処理する
 titleSuffix: An Azure Communication Services quickstart
 description: Azure Communication Services を使用して SMS イベントを処理する方法について説明します。
 author: mikben
@@ -9,17 +9,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7a88d8a0065ca7f5cb054d23295e5cfbc23489ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728591"
 ---
-# <a name="quickstart-handle-sms-events"></a>クイック スタート:SMS イベントの処理
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+# <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>クイックスタート: 配信レポートと受信メッセージの SMS イベントを処理する
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
@@ -117,6 +114,7 @@ Communication Services サブスクリプションをクリーンアップして
 > [SMS を送信する](../telephony-sms/send.md)
 
 次のことも実行できます。
+
 
  - [イベント処理の概念の詳細を確認する](../../../event-grid/event-schema-communication-services.md)
  - [Event Grid の詳細を確認する](../../../event-grid/overview.md)

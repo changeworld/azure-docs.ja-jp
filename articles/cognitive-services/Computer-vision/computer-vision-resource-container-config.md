@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: ee2e4fca697c086b95e83feb9d40ce8e07dc344c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102611897"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308644"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>読み取り OCR Docker コンテナーを構成する
 
@@ -34,8 +34,8 @@ ms.locfileid: "102611897"
 |必須|設定|目的|
 |--|--|--|
 |いいえ|ReadEngineConfig:ResultExpirationPeriod| v2.0 コンテナーのみ。 結果の有効期限 (時間)。 既定値は 48 時間です。 この設定によって、システムが認識結果をクリアするタイミングが指定されます。 たとえば、`resultExpirationPeriod=1` の場合、プロセスの 1 時間後に、システムによって認識結果がクリアされます。 `resultExpirationPeriod=0` の場合、結果が取得された後に、システムによって認識結果がクリアされます。|
-|いいえ|Cache:Redis| v2.0 コンテナーのみ。 結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合は、キャッシュが "*必要*" です。|
-|いいえ|Queue:RabbitMQ|v2.0 コンテナーのみ。 タスクをディスパッチするための RabbitMQ を有効にします。 この設定は、ロード バランサーの背後に複数の読み取りコンテナーが配置されている場合に便利です。|
+|いいえ|Cache:Redis| v2.0 コンテナーのみ。 結果を格納するための Redis ストレージを有効にします。 ロード バランサーの背後に複数の Read OCR コンテナーが配置されている場合は、キャッシュが *必要* です。|
+|いいえ|Queue:RabbitMQ|v2.0 コンテナーのみ。 タスクをディスパッチするための RabbitMQ を有効にします。 この設定は、ロード バランサーの背後に複数の Read OCR コンテナーが配置されている場合に便利です。|
 |いいえ|Queue:Azure:QueueVisibilityTimeoutInMilliseconds | v3.x コンテナーのみ。 別のワーカーが処理しているときにメッセージが非表示になる時間。 |
 |いいえ|Storage::DocumentStore::MongoDB|v2.0 コンテナーのみ。 永続的な結果ストレージ用に MongoDB を有効にします。 |
 |いいえ|Storage:ObjectStore:AzureBlob:ConnectionString| v3.x コンテナーのみ。 Azure BLOB ストレージの接続文字列。 |
@@ -62,11 +62,11 @@ ms.locfileid: "102611897"
 
 * Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
 
-次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
+次の表に示したように、エンドポイント URI には、忘れずに `vision/<version>` ルーティングを追加してください。 
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -119,16 +119,16 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 
 ## <a name="container-docker-examples"></a>コンテナーの Docker の例
 
-次の Docker の例は、読み取りコンテナーに関するものです。
+次の Docker の例は、Read OCR コンテナーに関するものです。
 
 
-# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>基本的な例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

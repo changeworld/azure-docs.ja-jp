@@ -6,19 +6,22 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 1/12/2021
-ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: references_regions
+ms.date: 04/07/2021
+ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98165613"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388705"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL - Hyperscale (Citus) の構成オプション
 
 ## <a name="compute-and-storage"></a>コンピューティングとストレージ
  
 Hyperscale (Citus) サーバー グループ内のワーカー ノードおよびコーディネーター ノードのコンピューティングおよびストレージ設定を別々に選択できます。  コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 プロビジョニングのストレージ サイズは、Hyperscale (Citus) サーバー グループのコーディネーターおよびワーカー ノードに利用できる容量を参照します。 ストレージには、データベース ファイル、一時ファイル、トランザクション ログ、および Postgres サーバー ログが含まれます。
+
+### <a name="standard-tier"></a>Standard レベル
  
 | リソース              | ワーカー ノード           | コーディネーター ノード      |
 |-----------------------|-----------------------|-----------------------|
@@ -70,13 +73,47 @@ Hyperscale (Citus) クラスター全体で集計された IOPS は次の値に�
 | 19           | 29,184              | 58,368            | 116,812           |
 | 20           | 30,720              | 61,440            | 122,960           |
 
+### <a name="basic-tier-preview"></a>Basic レベル (プレビュー)
+
+> [!IMPORTANT]
+> Hyperscale (Citus) Basic レベルは現在プレビュー段階です。  このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+>
+> その他の新機能については、[Hyperscale (Citus) のプレビュー機能](hyperscale-preview-features.md)に関するページで全一覧をご覧いただけます。
+
+Hyperscale (Citus) [Basic レベル](concepts-hyperscale-tiers.md)は、ノードが 1 つだけのサーバー グループです。  コーディネーターとワーカー ノードは区別されないため、コンピューティングとストレージのリソースを選択するのはそれほど複雑ではありません。
+
+| リソース              | 使用可能なオプション     |
+|-----------------------|-----------------------|
+| コンピューティング、仮想コア       | 2、4、8               |
+| 仮想コアあたりのメモリ、GiB | 4                     |
+| ストレージ サイズ、GiB     | 128、256、512         |
+| ストレージの種類          | 汎用 (SSD) |
+| IOPS                  | 最大 3 IOPS/GiB      |
+
+1 つの Hyperscale (Citus) ノードの RAM の合計容量は、選択した仮想コアの数に基づいています。
+
+| 仮想コア | GiB RAM |
+|--------|---------|
+| 2      | 8       |
+| 4      | 16      |
+| 8      | 32      |
+
+プロビジョニングするストレージの合計容量によって、Basic レベルのノードで使用できる I/O 容量も決まります。
+
+| ストレージ サイズ、GiB | 最大 IOPS |
+|-------------------|--------------|
+| 128               | 384          |
+| 256               | 768          |
+| 512               | 1,536        |
+
 ## <a name="regions"></a>リージョン
 Hyperscale (Citus) サーバー グループは次の Azure リージョンで使用できます。
 
 * アメリカ合衆国:
+    * ブラジル南部
     * カナダ中部
     * 米国中部
-    * 米国東部
+    * 米国東部 *
     * 米国東部 2
     * 米国中北部
     * 米国西部 2
@@ -86,42 +123,14 @@ Hyperscale (Citus) サーバー グループは次の Azure リージョンで�
     * 韓国中部
     * 東南アジア
 * ヨーロッパ:
+    * フランス中部
     * 北ヨーロッパ
     * 英国南部
     * 西ヨーロッパ
 
+(\* = [プレビュー機能](hyperscale-preview-features.md)をサポートしています)
+
 これらのリージョンの一部は、Azure サブスクリプションによっては最初はアクティブ化されていない可能性があります。 上の一覧のリージョンを使用したいが、サブスクリプションに表示されない場合、またはこの一覧にないリージョンを使用したい場合は、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を開いてください。
-
-## <a name="limits-and-limitations"></a>制限と制限事項
-
-次のセクションでは、Hyperscale (Citus) サービスの容量と機能の制限について説明します。
-
-### <a name="maximum-connections"></a>最大接続数
-
-すべての PostgreSQL 接続は (アイドル接続であっても) 10 MB 以上のメモリを使用するため、同時接続数を制限することが重要です。 ノードを正常に保つために Microsoft が選択した制限は次のとおりです。
-
-* コーディネーター ノード
-   * 最大接続数: 該当なし
-   * 最大ユーザー接続数: 297
-* ワーカー ノード
-   * 最大接続数: 600
-   * 最大ユーザー接続数: 597
-
-これらの制限を超えて接続しようとすると、エラーが発生して失敗します。 ノードの監視用に 3 つの接続がシステムによって予約されます。そのため、ユーザー クエリに使用できる接続が接続の合計数よりも 3 つ少なくなります。
-
-新しい接続の確立には時間がかかります。 これは、短時間の接続を多数要求するほとんどのアプリケーションの妨げになります。 アイドル状態のトランザクションを減らす一方で、既存の接続を再利用するために、接続プーラーを使用することをお勧めします。 詳細については、[ブログ投稿](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717)を参照してください。
-
-### <a name="storage-scaling"></a>ストレージのスケーリング
-
-コーディネーターおよびワーカー ノードのストレージは、スケールアップ (拡張) できますが、スケールダウン (縮小) することはできません。
-
-### <a name="storage-size"></a>ストレージ サイズ
-
-コーディネーターおよびワーカー ノードでは、最大 2 TiB のストレージがサポートされます。 ノードとクラスターのサイズについては、[上記](#compute-and-storage)の使用可能なストレージ オプションと IOPS 計算を参照してください。
-
-### <a name="database-creation"></a>データベースの作成
-
-Azure portal では、Hyperscale (Citus) サーバー グループごとに 1 つのデータベース (`citus` データベース) のみに接続するための資格情報が提供されます。 現在、別のデータベースを作成することはできないため、CREATE DATABASE コマンドはエラーで失敗します。
 
 ## <a name="pricing"></a>価格
 最新の料金情報については、サービスの[料金ページ](https://azure.microsoft.com/pricing/details/postgresql/)を参照してください。

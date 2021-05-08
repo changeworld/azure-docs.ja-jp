@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: 空間分析のドキュメント
+summary: 空間分析サービスを使用すると、組織は特定の領域内におけるユーザーの動きと存在を理解することで、物理的な空間の価値を最大限に高めることができます。 CCTV または監視カメラからビデオを取り込み、AI 操作を実行してビデオ ストリームから分析情報を抽出し、他のシステムで使用するイベントを生成することができます。
+metadata:
+  title: 空間分析のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: 空間分析サービスを使用すると、組織は特定の領域内におけるユーザーの動きと存在を理解することで、物理的な空間の価値を最大限に高めることができます。 CCTV または監視カメラからビデオを取り込み、AI 操作を実行してビデオ ストリームから分析情報を抽出し、他のシステムで使用するイベントを生成することができます。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 30/31/2021
+  ms.openlocfilehash: b57a90d1897fc7dce92cdebd0c0f81e9f59854b7
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287495"
+landingContent:
+- title: 空間分析について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空間分析の概要
+      url: intro-to-spatial-analysis-public-preview.md
+  - linkListType: quickstart
+    links:
+    - text: ホスト マシンの設定とコンテナーの実行
+      url: spatial-analysis-container.md
+- title: 空間分析を使用した開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 操作を構成する
+      url: spatial-analysis-operations.md
+  - linkListType: concept
+    links:
+    - text: ゾーンとラインの配置
+      url: spatial-analysis-zone-line-placement.md
+    - text: カメラの配置
+      url: spatial-analysis-camera-placement.md
+    - text: ロギングおよびトラブルシューティング
+      url: spatial-analysis-logging.md
+- title: AI の責任ある使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空間分析の透明性に関するメモ
+      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+  - linkListType: concept
+    links:
+    - text: AI デプロイでの責任ある使用
+      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+    - text: 開示設計のガイドライン
+      url: /legal/cognitive-services/computer-vision/disclosure-design?context=/azure/cognitive-services/computer-vision/context/context
+    - text: データ、プライバシー、セキュリティ
+      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

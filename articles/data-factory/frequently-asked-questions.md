@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2027e3555a7eb616ad024ec00bf6b0f8f452167c
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739336"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258522"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -226,86 +226,11 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>データ フローにセルフホステッド統合ランタイムは使用できますか?
 
-セルフホステッド IR は ADF パイプライン コンストラクトであり、コピー アクティビティと共に使用して、オンプレミスまたは VM ベースのデータ ソースおよびシンクに対してデータを取得または移動することができます。 その変換済みデータをオンプレミスのストアに戻すには、最初にコピーを使ってデータをステージングしてから、変換用のデータ フロー、後続のコピーの順に使用します。
+セルフホステッド IR は ADF パイプライン コンストラクトであり、コピー アクティビティと共に使用して、オンプレミスまたは VM ベースのデータ ソースおよびシンクに対してデータを取得または移動することができます。 セルフホステッド IR に使用する仮想マシンは、保護されたデータ ストアと同じ VNET 内に配置して、ADF からそれらのデータ ストアにアクセスすることもできます。 データ フローを使用すると、代わりにマネージド VNET で Azure IR を使用して、これらと同じ最終結果を得ることができます。
 
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>データ フロー コンピューティング エンジンは複数のテナントにサービスを提供しますか?
 
 クラスターが共有されることはありません。 運用環境で実行されるジョブごとの分離が保証されています。 デバッグ シナリオの場合、1 人のユーザーが 1 つのクラスターを取得し、そのユーザーによって開始されるそのクラスターにすべてのデバッグが送られます。
-
-## <a name="wrangling-data-flows"></a>ラングリング データ フロー
-
-### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>ラングリング データ フローでサポートされているリージョンを教えてください。
-
-現在、ラングリング データ フローは、次のリージョンで作成されたデータ ファクトリでサポートされています。
-
-* オーストラリア東部
-* カナダ中部
-* インド中部
-* 米国東部
-* 米国東部 2
-* 東日本
-* 北ヨーロッパ
-* 東南アジア
-* 米国中南部
-* 英国南部
-* 米国中西部
-* 西ヨーロッパ
-* 米国西部
-* 米国西部 2
-
-### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>ラングリング データ フローに制限や制約はありますか?
-
-データセット名に使用できるのは英数字のみです。 次のデータ ストアがサポートされています。
-
-* アカウント キー認証を使用した Azure Blob Storage の DelimitedText データセット
-* アカウント キーまたはサービス プリンシパル認証を使用した Azure Data Lake Storage Gen2 の DelimitedText データセット
-* サービス プリンシパル認証を使用した Azure Data Lake Storage Gen1 の DelimitedText データセット
-* SQL 認証を使用した Azure SQL Database と Data Warehouse。 下の「サポートされている SQL の型」を参照してください。 データ ウェアハウスの PolyBase やステージングはサポートされていません。
-
-現時点では、ラングリング データ フローで、リンクされたサービス Key Vault 統合はサポートされていません。
-
-### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>マッピング データ フローとラングリング データ フローの違いを教えてください。
-
-データ フローのマッピングには、コーディングなしでデータを大規模に変換する機能が備わっています。 データ フロー キャンバスで一連の変換を構築することで、データ変換ジョブを設計できます。 任意の数のソースの変換から始め、その後にデータ変換手順を実行します。 シンクを使ってデータ フローを完了し、結果を宛先に書き込みます。 データ フローのマッピングは、シンクとソース内の既知のスキーマと不明なスキーマの両方でのデータのマップや変換に最適です。
-
-ラングリング データ フローを使うと、Spark の実行を通じて Power Query Online マッシュアップ エディターを大規模に使用して、アジャイルなデータ準備と探索を行うことができます。 データ レイクの使用が増加するなか、単にデータセットを探索したり、レイクにデータセットを作成したりしたい場合があります。 既知のターゲットにマッピングするのでなければ、 ラングリング データ フローは、それほど厳格でないモデルベースの分析シナリオで使用されます。
-
-### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power Platform データフローとラングリング データ フローの違いを教えてください。
-
-Power Platform データフローを使用すると、ユーザーはさまざまなデータソースのデータを Common Data Service や Azure Data Lake にインポートして変換し、PowerApps アプリケーション、Power BI レポート、フロー自動化を構築できます。 Power Platform データフローでは、Power BI や Excel と同様に、確立された Power Query データ準備エクスペリエンスが使用されます。 また、Power Platform データフローを使用すると、組織内での再利用が容易になり、オーケストレーションを自動的に処理できます (たとえば、前のデーターフローが更新されると、別のデータフローに依存しているデータフローを自動的に更新する)。
-
-マネージド データ統合サービスである Azure Data Factory (ADF) を使用すると、データ エンジニアやデータ統合担当者は、複雑なハイブリッド抽出-変換-読み込み (ETL) や抽出-読み込み-変換 (ELT) ワークフローを作成できます。 ラングリング データ フローを ADF で使用すると、ユーザーはコーディング不要でサーバーレスの環境を利用でき、それによりクラウドのデータ準備が簡素化され、あらゆるデータ サイズにスケーリングすることができます。インフラストラクチャの管理は必要ありません。 データの準備と整形を行うために (また、Power Platform データフロー、Excel、Power BI でも)、Power Query データ準備テクノロジが使用されます。 ランダリング データ フローはすべての複雑な処理を管理し、ビッグ データ統合の課題を調整できるように作成されており、ユーザーは Spark の実行を通じてすばやく大規模にデータを準備できます。 ユーザーは、ブラウザーベースのインターフェイスを使用して回復性のあるデータ パイプラインをアクセシビリティの高いビジュアル環境に作成し、ADF によって複雑な Spark の実行を処理できます。 ADF 監視ポータルから、パイプラインのスケジュールを作成して、データ フロー実行を監視できます。 ADF の機能豊富な可用性監視機能とアラートにより、データ可用性に関する SLA を簡単に管理でき、組み込みの継続的インテグレーションとデプロイ機能を活用してフローを管理された環境内に保存し、管理することができます。 また、アラートとビューの実行プランを策定して、データ フローの調整中にロジックが計画どおりに実行されているかどうかを検証できます。
-
-### <a name="supported-sql-types"></a>サポートされている SQL の型
-
-ラングリング データ フローでは、SQL で次のデータ型がサポートされています。 サポートされていないデータ型を使用すると、検証エラーが表示されます。
-
-* short
-* double
-* real
-* float
-* char
-* nchar
-* varchar
-* nvarchar
-* 整数 (integer)
-* INT
-* bit
-* boolean
-* smallint
-* tinyint
-* bigint
-* long
-* text
-* date
-* DATETIME
-* datetime2
-* smalldatetime
-* timestamp
-* UNIQUEIDENTIFIER
-* xml
-
-その他のデータ型も今後サポートされる予定です。
 
 ## <a name="next-steps"></a>次のステップ
 

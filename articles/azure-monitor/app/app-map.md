@@ -6,10 +6,10 @@ ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
 ms.openlocfilehash: db8c84334bfce52d34b9fadf73bb2b070fa93a70
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100007110"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
@@ -87,7 +87,7 @@ ms.locfileid: "100007110"
 アプリケーション マップでは、**クラウド ロール名** プロパティを使用して、マップ上のコンポーネントが識別されます。 クラウド ロール名を手動で設定またはオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
 > [!NOTE]
-> Application Insights SDK または Agent では、Azure App Service 環境のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
+> Application Insights SDK または Agent では、Azure App Service Environment のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 

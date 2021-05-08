@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/03/2021
-ms.openlocfilehash: d60810c291984e0f57df1968f69678de8179273c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1362d8c1f15b64b9d76b28fd354cdae8919504b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558280"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -120,7 +120,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 - クエリ ストアが割り当てられた記憶域スペースを使用したため、実行を停止した
 
 この問題を修正するには、次の手順を検討してください。
-- クエリ ストアをクリーンアップするか、T-SQL を使用してデータ保持期間を "auto" に変更します。 クエリ ストアに推奨される保持期間とキャプチャ ポリシーを構成する方法については、[こちら](/azure/azure-sql/database/query-performance-insight-use#recommended-retention-and-capture-policy)を参照してください。
+- クエリ ストアをクリーンアップするか、T-SQL を使用してデータ保持期間を "auto" に変更します。 クエリ ストアに推奨される保持期間とキャプチャ ポリシーを構成する方法については、[こちら](./query-performance-insight-use.md#recommended-retention-and-capture-policy)を参照してください。
 - SQL Server Management Studio (SSMS) を使用して、次の手順を行います。
   - Azure SQL Database に接続する
   - データベースを右クリックする

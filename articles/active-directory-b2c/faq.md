@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: d84c5fff41a7f00405c29ab4b4921ed2e28bdfde
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517992"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580098"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -103,7 +103,7 @@ Azure AD B2C のローカル アカウントのパスワード ユーザー フ�
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>アプリで Azure AD B2C ページを iFrame 内で開くことはできますか。
 
-いいえ。セキュリティ上の理由から、Azure AD B2C ページを iFrame 内で開くことはできません。 このサービスは、iFrame を禁止するためにブラウザーと通信します。 一般のセキュリティ コミュニティと OAUTH2 仕様では、ID エクスペリエンスに iFrame を使用しないことを推奨しています。これは、クリックジャッキングの危険があるためです。
+この機能はパブリック プレビュー段階にあります。 詳細については、「[埋め込みサインイン エクスペリエンス](https://docs.microsoft.com/azure/active-directory-b2c/embedded-login)」を参照してください。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C は Microsoft Dynamics のような CRM システムと連携しますか。
 
@@ -131,7 +131,7 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
 
-現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。 ただし、b2clogin.com では[ニュートラルな最上位ドメイン](b2clogin.md)が提供されているため、マイクロソフトに言及することなく外部の表示を実装できます。
+この機能は、パブリック プレビューで使用できます。 詳細については、[Azure AD B2C カスタムドメインに関するページ](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow)を参照してください。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 

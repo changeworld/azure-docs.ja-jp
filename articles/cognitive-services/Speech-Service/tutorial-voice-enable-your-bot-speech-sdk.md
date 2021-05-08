@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d91bfee228b946ff564f6d080976f9ce5c12caa4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426265"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552310"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -83,7 +83,7 @@ Microsoft Bot Framework を使用してボットを作成し、それを Azure �
 このチュートリアルで別のリージョンを使用する場合は、次の要因によって選択肢が制限される可能性があります。
 
 * [サポートされている Azure リージョン](regions.md#voice-assistants)を使用してください。
-* Direct Line Speech チャネルでは、標準音声とニューラル音声を持つテキスト読み上げサービスが使用されます。 ニューラル音声は、[特定の Azure リージョンに限定](regions.md#standard-and-neural-voices)されています。
+* Direct Line Speech チャネルでは、ニューラル音声と標準音声を備えたテキスト読み上げサービスを使用します。 ニューラルおよび標準音声はすべて、これらの [Azure リージョン](regions.md#neural-and-standard-voices)で使用できます。
 
 リージョンについて詳しくは、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」をご覧ください。
 
@@ -328,7 +328,7 @@ Windows 音声アシスタント クライアントには、ボットへの接�
 |エラー (AuthenticationFailure) :認証エラー (401) で WebSocket をアップグレードできませんでした。 Check for correct subscription key (or authorization token) and region name (正しいサブスクリプション キー (または認証トークン) とリージョン名があることを確認してください)| アプリの [設定] ページで、Speech サブスクリプション キーとそのリージョンが正しく入力されていることを確認します。<br>音声キーとキーのリージョンが正しく入力されていることを確認します。 |
 |エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:We could not connect to the bot before sending a message (メッセージを送信する前にボットに接続できませんでした) | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
 |エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1002。 エラーの詳細:サーバーが状態コード '101' を返すはずが、状態コード '503' を返しました | [[Enable Streaming Endpoint]\(ストリーミング エンドポイントを有効にする\) ボックスをオンにした](#register-the-direct-line-speech-channel)か、[ **[Web ソケット]** を [オン] に切り替えた](#enable-web-sockets)ことを確認します。<br>Azure App Service が実行されていることを確認します。 その場合は、App Service を再起動してみてください。|
-|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](./regions.md#standard-and-neural-voices)」をご覧ください。|
+|エラー (ConnectionFailure) :Connection was closed by the remote host. (リモート ホストにより、接続が切断されました。) エラー コード:1011。 エラーの詳細:応答状態コードは成功を示していません:500 (InternalServerError)| ボットによって、出力アクティビティ [[音声入力]](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) フィールドにニューラル音声が指定されましたが、Speech サブスクリプション キーに関連付けられている Azure リージョンではニューラル音声がサポートされていません。 「[標準およびニューラル音声](./regions.md#neural-and-standard-voices)」を参照してください。|
 
 発生している問題が表に記載されていない場合は、「[音声アシスタント: よく寄せられる質問](faq-voice-assistants.md)」をご覧ください。 このチュートリアルのすべての手順を実行しても問題が解決しない場合は、[Voice Assistant の GitHub ページ](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)で新しい問題を入力してください。
 
@@ -475,7 +475,7 @@ Windows 音声アシスタント クライアントのソース コード内で�
 ## <a name="see-also"></a>関連項目
 
 * ボットの応答時間を向上させるために、[近くの Azure リージョン](https://azure.microsoft.com/global-infrastructure/locations/)にデプロイする
-* [高品質なニューラル TTS 音声をサポートする Azure リージョン](./regions.md#standard-and-neural-voices)にデプロイする
+* [高品質なニューラル TTS 音声をサポートする Azure リージョン](./regions.md#neural-and-standard-voices)にデプロイする
 * Direct Line Speech チャネルに関連付けられている価格:
   * [Bot Service pricing](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Speech サービス](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)

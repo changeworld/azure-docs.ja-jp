@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/05/2021
+ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719051"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774920"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>自動化タスクを作成して Azure リソースを管理し、コストを監視する (プレビュー)
 
@@ -150,7 +150,7 @@ ms.locfileid: "101719051"
 
    **[ロジック アプリの実行]** ウィンドウが開き、基になる実行されたワークフローが表示されます。
 
-   * ワークフローは、常に [*トリガー*](../connectors/apis-list.md#triggers-actions)で開始されます。 このタスクでは、ワークフローは [**繰り返し** トリガー](../connectors/connectors-native-recurrence.md)で開始されます。
+   * ワークフローは、常に [*トリガー*](../connectors/apis-list.md#triggers)で開始されます。 このタスクでは、ワークフローは [**繰り返し** トリガー](../connectors/connectors-native-recurrence.md)で開始されます。
 
    * 各ステップには、状態と実行継続時間が表示されます。 継続時間が 0 秒のステップは、実行が 1 秒未満であったものです。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c707a6522d037ba3926b55579e501eadd2764416
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89470155"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798274"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -89,7 +89,7 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
-|Python     |2.7 および 3.5 (既定)|
+|Python     |2.7 および 3.7 (既定)|
 
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>

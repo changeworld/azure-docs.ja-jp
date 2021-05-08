@@ -4,10 +4,10 @@ description: Azure DevTest Labs で Azure PowerShell を使用して仮想マシ
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102499256"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する

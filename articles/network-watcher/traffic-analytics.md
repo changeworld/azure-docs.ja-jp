@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 8d877f666e03bbbe2b9d4f01bc9059b95f9a1f6b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095352"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385277"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -78,7 +78,8 @@ NSG のトラフィック分析は、次のサポートされているどのリ�
       米国東部 2  
       米国東部 2 EUAP  
       フランス中部  
-      ドイツ中西部 東日本  
+      ドイツ中西部  
+      東日本  
       西日本  
       韓国中部  
       韓国南部  
@@ -130,9 +131,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
    :::column span="":::
       米国東部 2  
       米国東部 2 EUAP  
-      フランス中部  
-      ドイツ中西部  
-      東日本  
+      フランス中部 東日本  
       韓国中部  
       米国中北部  
       北ヨーロッパ  

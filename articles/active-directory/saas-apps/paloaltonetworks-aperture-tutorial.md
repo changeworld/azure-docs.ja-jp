@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 42a6bc9bfb06f1c80b719bdda686ae111a8884ab
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97963623"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - Aperture の統合
 
-このチュートリアルでは、Palo Alto Networks - Aperture と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Palo Alto Networks - Aperture と Azure AD の統合には、次のメリットがあります。
+このチュートリアルでは、Palo Alto Networks - Aperture と Azure Active Directory (Azure AD) を統合する方法について説明します。 Palo Alto Networks - Aperture を Azure AD と統合すると、次のことができます。
 
-* Palo Alto Networks - Aperture にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで Palo Alto Networks - Aperture に自動的にサインイン (シングル サインオン) できるように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Palo Alto Networks - Aperture にアクセスできるユーザーを Azure AD で制御します。
+* ユーザーが自分の Azure AD アカウントを使用して Palo Alto Networks - Aperture に自動的にサインインできるようにします。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と Palo Alto Networks - Aperture の統合を構成するには、次のアイテムが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Palo Alto Networks - Aperture でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Palo Alto Networks - Aperture でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Palo Alto Networks - Aperture では、**SP** と **IDP** によって開始される SSO がサポートされます
+* Palo Alto Networks - Aperture では、**SP** および **IDP** Initiated SSO がサポートされます。
 
-## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - Aperture の追加
+## <a name="add-palo-alto-networks---aperture-from-the-gallery"></a>ギャラリーからの Palo Alto Networks - Aperture の追加
 
 Azure AD への Palo Alto Networks - Aperture の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Palo Alto Networks - Aperture を追加する必要があります。
 
@@ -59,10 +58,10 @@ Azure AD への Palo Alto Networks - Aperture の統合を構成するには、�
 Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[Configure Palo Alto Networks - Aperture の SSO の構成](#configure-palo-alto-networks---aperture-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Palo Alto Networks - Aperture テスト ユーザーの作成](#create-palo-alto-networks---aperture-test-user)** - Palo Alto Networks - Aperture で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
+    1. **[Palo Alto Networks - Aperture テスト ユーザーの作成](#create-palo-alto-networks---aperture-test-user)** - Palo Alto Networks - Aperture で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -77,15 +76,11 @@ Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[基本的な SAML 構成] のスクリーンショット。テキスト ボックスの [識別子] と [応答 URL] が強調表示され、[保存] アクションが選択されています。](common/idp-intiated.png)
-
     a. **[識別子]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    ![[Palo Alto Networks - Aperture のドメインと URL] のシングル サインオン情報 SP](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in` という形式で URL を入力します。
 
@@ -130,15 +125,15 @@ Palo Alto Networks - Aperture で Azure AD シングル サインオンを構成
 
 2. 上部のメニュー バーで **[設定]** をクリックします。
 
-    ![[設定] タブ](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
+    ![[設定] タブ](./media/paloaltonetworks-aperture-tutorial/settings.png)
 
 3. **[アプリケーション]** に移動し、メニューの左にある **[認証]** をクリックします。
 
-    ![[認証] タブ](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
+    ![[認証] タブ](./media/paloaltonetworks-aperture-tutorial/authentication.png)
     
 4. **[認証]** ページで、次の手順を実行します。
     
-    ![[認証] タブ](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
+    ![[認証] タブ](./media/paloaltonetworks-aperture-tutorial/tab.png)
 
     a。 **[Single Sign-On]\(シングル サインオン\)** フィールドの **[Enable Single Sign-On(Supported SSP Providers are Okta, Onelogin)]\(シングル サインオンを有効にする (サポートされている SSP プロバイダーは Okta、Onelogin)\)** をオンにします。
 

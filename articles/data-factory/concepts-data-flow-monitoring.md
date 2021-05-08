@@ -3,17 +3,16 @@ title: マッピング データ フローの監視
 description: Azure Data Factory でマッピング データ フローを視覚的に監視する方法
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/22/2020
-ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/11/2021
+ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96004877"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309069"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
@@ -77,9 +76,15 @@ ms.locfileid: "96004877"
 }
 ```
 
-### <a name="post-processing-time"></a>後処理時間
+### <a name="sink-processing-time"></a>シンク処理時間
 
 マップでシンク変換アイコンを選択すると、右側のスライドイン パネルの下部に "後処理時間" という追加のデータ ポイントが表示されます。 これは、データが読み込まれ、変換され、書き込まれた "*後に*"、Spark クラスターでジョブを実行するために費やされた時間です。 この時間には、接続プールの終了、ドライバーのシャットダウン、ファイルの削除、ファイルの結合などが含まれます。フローで "ファイルの移動" や "1 つのファイルへの出力" などの操作を実行すると、後処理時間の値が増加することがあります。
+
+* ステージ書き込み期間: Synapse SQL のステージング場所にデータを書き込む時間
+* テーブル操作 SQL 期間: 一時テーブルからターゲット テーブルへのデータ移動にかかった時間
+* 事前 SQL 期間と事後 SQL 期間: 事前および事後のSQL コマンドの実行にかかった時間
+* 事前コマンド期間と事後コマンド期間: ファイル ベースのソースまたはシンクに対するすべての事前および事後の操作の実行にかかった時間。 たとえば、処理後にファイルを移動または削除します。
+* マージ期間: ファイルのマージにかかった時間。1 つのファイルに書き込むとき、または "列データとしてのファイル名" が使用されるときに、ファイル ベースのシンクにファイルのマージが使用されます。 このメトリックでかなりの時間がかかる場合は、これらのオプションを使用しないようにしてください。
   
 ## <a name="error-rows"></a>エラー行数
 

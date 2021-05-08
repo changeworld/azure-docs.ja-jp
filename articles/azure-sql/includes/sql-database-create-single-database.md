@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0568860c387aa1239ec56005e404606272ae8275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178076"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107799974"
 ---
 このステップでは、AdventureWorksLT サンプル データを使用する[論理 SQL サーバー](../database/logical-servers.md)と[単一データベース](../database/single-database-overview.md)を作成します。 データベースを作成するには、Azure portal のメニューと画面を使用するか、Azure Cloud Shell で Azure CLI または PowerShell スクリプトを使用します。
 
@@ -149,13 +149,13 @@ az sql db create \
 
 前述のコードでは、次の Azure CLI コマンドを使用しています。
 
-| コマンド | 説明 |
+| command | 説明 |
 |---|---|
-| [az account set](/cli/azure/account#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | データベースとエラスティック プールをホストするサーバーを作成します。 |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | サーバーレベルのファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | データベースを作成します。 |
+| [az account set](/cli/azure/account#az_account_set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | データベースとエラスティック プールをホストするサーバーを作成します。 |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_create) | サーバーレベルのファイアウォール規則を作成します。 |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | データベースを作成します。 |
 
 他の Azure SQL Database の Azure CLI サンプルについては、[Azure CLI サンプル](../database/az-cli-script-samples-content-guide.md)に関するページをご覧ください。
 
@@ -237,7 +237,7 @@ Azure Cloud Shell で次のコード サンプルを実行するには、コー�
 
 前述のコードでは、次の PowerShell コマンドレットを使用しています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |

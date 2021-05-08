@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646556"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587818"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
-このサンプル チュートリアルでは、[Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) を Azure Active Directory (AD) B2C と統合する方法についてのガイダンスを提供します。
+このサンプル チュートリアルでは、[Microsoft Dynamics 365 Fraud Protection](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) を Azure Active Directory (AD) B2C と統合する方法についてのガイダンスを提供します。
 
 Microsoft DFP は、新規アカウントの作成やクライアントのエコシステムへのログインが不正なものであるかどうかを評価する機能をクライアントに提供します。 Microsoft DFP での評価は、新しい偽のアカウントを作成したり、既存のアカウントを侵害したりする疑いのある試みを、ブロックまたはチャレンジするために使用できます。 アカウント保護には、人工知能によるデバイス フィンガープリント、リアルタイム リスク評価用の API、クライアントのビジネス ニーズに応じてリスク戦略を最適化するためのルールとリストのエクスペリエンス、クライアントのエコシステムで不正行為の防止の有効性と傾向を監視するためのスコアカードが含まれます。
 
@@ -68,7 +68,7 @@ Microsoft DFP 統合には次のコンポーネントが含まれます。
 ## <a name="set-up-the-solution"></a>ソリューションのセットアップ
 
 1. Azure AD B2C へのフェデレーションを可能にするように構成された、[Facebook アプリケーションを作成](./identity-provider-facebook.md#create-a-facebook-application)します。
-2. 作成した [Facebook シークレット](./custom-policy-get-started.md#create-the-facebook-key)を Identity Experience Framework ポリシー キーとして追加します。
+2. 作成した [Facebook シークレット](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key)を Identity Experience Framework ポリシー キーとして追加します。
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Microsoft DFP でのアプリケーションの構成
 
@@ -85,7 +85,7 @@ Microsoft DFP を使用するように [Azure AD テナントを設定](/dynamic
 
 ### <a name="deploy-the-azure-ad-b2c-api-code"></a>Azure AD B2C API コードのデプロイ
 
-[提供されている API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API)を Azure サービスにデプロイします。 このコードは、[Visual Studio から発行](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)できます。
+[提供されている API コード](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API)を Azure サービスにデプロイします。 このコードは、[Visual Studio から発行](/visualstudio/deployment/quickstart-deploy-to-azure)できます。
 
 CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clogin.com` の追加
 
@@ -102,8 +102,8 @@ CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clog
 | :-------- | :------------| :-----------|
 |FraudProtectionSettings:InstanceId | Microsoft DFP 構成 |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft デバイス フィンガープリント カスタマー ID |     |
-| FraudProtectionSettings:ApiBaseUrl |  Microsoft DFP Portal からのベース URL   | 実稼働 API を呼び出すには、"-int" を削除します。
-|  TokenProviderConfig:リソース | https://api.dfp.dynamics-int.com |   実稼働 API を呼び出すには、"-int" を削除します。  |
+| FraudProtectionSettings:ApiBaseUrl |  Microsoft DFP Portal からのベース URL   | 実稼働 API を呼び出すには、"-int" を削除します。|
+|  TokenProviderConfig:リソース  | ベース URL - https://api.dfp.dynamics-int.com     | 実稼働 API を呼び出すには、"-int" を削除します。|
 |   TokenProviderConfig:ClientId       |Fraud Protection マーチャント Azure AD クライアント アプリケーション ID      |       |
 | TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Fraud Protection マーチャント Azure AD テナント オーソリティ |
 | TokenProviderConfig:CertificateThumbprint* | マーチャント Azure AD クライアント アプリケーションに対する認証に使用する、証明書のサムプリント |
@@ -126,8 +126,8 @@ CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clog
 |  {your_tenant_extensions_appid}   |  テナントのストレージ アプリケーションのアプリ ID   |  01234567-89ab-cdef-0123-456789abcdef  |
 |   {your_tenant_extensions_app_objectid}  | テナントのストレージ アプリケーションのオブジェクト ID    | 01234567-89ab-cdef-0123-456789abcdef   |
 |   {your_app_insights_instrumentation_key}  |   App Insights インスタンスのインストルメンテーション キー *  |   01234567-89ab-cdef-0123-456789abcdef |
-|  {your_ui_base_url}   | UI ファイルが提供される App Service のエンドポイント    | https://yourapp.azurewebsites.net/B2CUI/GetUIPage   |
-|   {your_app_service_url}  | App Service の URL    |  https://yourapp.azurewebsites.net  |
+|  {your_ui_base_url}   | UI ファイルが提供される App Service のエンドポイント    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
+|   {your_app_service_url}  | App Service の URL    |  `https://yourapp.azurewebsites.net`  |
 |   {your-facebook-app-id}  |  Azure AD B2C とのフェデレーション用に構成した Facebook アプリのアプリ ID   | 000000000000000   |
 |  {your-facebook-app-secret}   |  Facebook のアプリ シークレットを保存した際のポリシー キーの名前   | B2C_1A_FacebookAppSecret   |
 
@@ -148,7 +148,7 @@ userID の値は、対応する Azure AD B2C 構成値 (ObjectID) のものと�
 
 1. ポリシー フォルダーの [Azure AD B2C ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)に移動します。
 
-2. この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
+2. この[ドキュメント](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
 
 3. Azure AD B2C テナントのポリシーを構成します。
 
@@ -184,4 +184,4 @@ userID の値は、対応する Azure AD B2C 構成値 (ObjectID) のものと�
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

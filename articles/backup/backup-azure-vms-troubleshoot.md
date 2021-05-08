@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンのバックアップと�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d09081533cdb2de5ee97cb000e9844b41a85ac3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831552"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559368"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -139,7 +139,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 解決方法:
 
-* VM ディスク全体に負荷を分散させることができるかどうかを確認します。 これにより、1 つのディスクの負荷が軽減されます。 [ストレージ レベルで診断メトリックを有効にすることによって、IOPS 調整を確認](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)できます。
+* VM ディスク全体に負荷を分散させることができるかどうかを確認します。 これにより、1 つのディスクの負荷が軽減されます。 [ストレージ レベルで診断メトリックを有効にすることによって、IOPS 調整を確認](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)できます。
 * バックアップ ポリシーを変更して、VM の負荷が最も低いオフピーク時間帯にバックアップを実行します。
 * より高い IOPS をサポートするように Azure ディスクをアップグレードします。 [詳しくはこちらをご覧ください](../virtual-machines/disks-types.md)
 
@@ -371,12 +371,12 @@ VM 上のすべてのドライブで BitLocker をオフにして、VSS の問�
 #### <a name="windows-vms---set-up-the-agent"></a>Windows VM - エージェントの設定
 
 * [エージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを完了するには、管理者特権が必要です。
-* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)して、エージェントがインストールされたことを示します。 この手順は、Azure Resource Manager 仮想マシンの場合は必要ありません。
+* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)して、エージェントがインストールされたことを示します。 この手順は、Azure Resource Manager 仮想マシンの場合は必要ありません。
 
 #### <a name="linux-vms---set-up-the-agent"></a>Linux VM - エージェントの設定
 
 * ディストリビューション リポジトリから最新バージョンのエージェントをインストールします。 パッケージ名について詳しくは、[Linux エージェント リポジトリ](https://github.com/Azure/WALinuxAgent)をご覧ください。
-* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)し、エージェントがインストールされていることを確認します。 このステップは、Resource Manager 仮想マシンの場合は必要ありません。
+* クラシック デプロイ モデルを使用して作成された仮想マシンの場合は、[VM のプロパティを更新](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)し、エージェントがインストールされていることを確認します。 このステップは、Resource Manager 仮想マシンの場合は必要ありません。
 
 ### <a name="update-the-vm-agent"></a>VM エージェントの更新
 

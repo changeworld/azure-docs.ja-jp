@@ -3,13 +3,13 @@ title: Azure Kubernetes Service (AKS) で複数のノード プールを使用�
 description: Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する方法について学習します
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 02/11/2021
+ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218487"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552599"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -134,7 +134,7 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 * クラスター作成後、VNet を拡張する場合、元の cidr の外でサブネットを追加する前に、クラスターを更新する必要があります (マネージド クラスター操作があれば、それを実行しますが、ノード プール操作は数に入りません)。 元々は許可していましたが、エージェント プールを追加すると AKS でエラーが出るようになっています。 クラスターを調整する方法がわからない場合、サポート チケットを提出してください。 
 * Calico ネットワーク ポリシーはサポートされていません。 
 * Azure ネットワーク ポリシーはサポートされていません。
-* Kube-proxy からは隣接する cidr が 1 つ求められ、3 つの最適化にそれが使用されます。 詳細については、この [K.E.P](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) と [こちら](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)の --cluster-cidr を参照してください。 azure cni では、最初のノード プールのサブネットが kube-proxy に与えられます。 
+* Kube-proxy からは隣接する cidr が 1 つ求められ、3 つの最適化にそれが使用されます。 詳細については、この [K.E.P](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) と [こちら](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)の --cluster-cidr を参照してください。 azure cni では、最初のノード プールのサブネットが kube-proxy に与えられます。 
 
 専用サブネットを持つノード プールを作成するには、ノード プールを作成する際に、サブネットのリソース ID を追加パラメーターとして渡します。
 
@@ -716,33 +716,11 @@ az deployment group create \
 
 Resource Manager テンプレートで定義するノード プール設定および操作に応じて、AKS クラスターの更新には数分かかる場合があります。
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>ノード プールのノードごとにパブリック IP を割り当てる (プレビュー)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>ノード プールのノードごとにパブリック IP を割り当てる
 
-> [!WARNING]
-> ノードごとにパブリック IP を割り当てる機能を使用するには、CLI プレビュー版拡張機能 0.4.43 以上をインストールする必要があります。
+AKS ノードは、通信用に独自のパブリック IP アドレスを必要としません。 ただし、シナリオでは、ノード プール内のノードが専用のパブリック IP アドレスを受け取ることが必要な場合があります。 一般的なシナリオとしては、ゲームのワークロードがあります。この場合、ホップを最小限に抑えるために、コンソールをクラウド仮想マシンに直接接続する必要があります。 このシナリオは、ノード パブリック IP を使用することにより、AKS で実現することができます。
 
-AKS ノードは、通信用に独自のパブリック IP アドレスを必要としません。 ただし、シナリオでは、ノード プール内のノードが専用のパブリック IP アドレスを受け取ることが必要な場合があります。 一般的なシナリオとしては、ゲームのワークロードがあります。この場合、ホップを最小限に抑えるために、コンソールをクラウド仮想マシンに直接接続する必要があります。 このシナリオは、プレビュー機能であるノード パブリック IP (プレビュー) を登録することにより、AKS で実現することができます。
-
-最新の aks-preview 拡張機能をインストールして更新するには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-ノード パブリック IP 機能を登録するには、次の Azure CLI コマンドを使用します。
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-機能の登録には数分かかる場合があります。  状態を確認するには、次のコマンドを使用します。
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-登録が正常に完了したら、新しいリソース グループを作成します。
+最初に、新しいリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
@@ -760,12 +738,37 @@ az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-p
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> プレビュー期間中、Azure Instance Metadata Service は、現在 Standard レベルの VM SKU のパブリック IP アドレスの取得をサポートしていません。 この制限のため、kubectl コマンドを使用して、ノードに割り当てられているパブリック IP アドレスを表示することはできません。 ただし、IP は割り当てられ、意図したとおりに機能します。 ノードのパブリック IP は、仮想マシン スケール セット内のインスタンスに接続されます。
+### <a name="use-a-public-ip-prefix"></a>パブリック IP プレフィックスを使用する
+
+[パブリック IP プレフィックスを使用することには、多くの利点][public-ip-prefix-benefits]があります。 AKS は、新しいクラスターの作成時またはノード プールの追加時にリソース ID をフラグ `node-public-ip-prefix` と共に渡すことによって、ノードの既存のパブリック IP プレフィックスからのアドレスの使用をサポートします。
+
+まず、[az network public-ip prefix create][az-public-ip-prefix-create] を使用してパブリック IP プレフィックスを作成します。
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+出力を表示し、プレフィックスの `id` を確認します。
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+最後に、新しいクラスターを作成するとき、または新しいノード プールを追加するときに、フラグ `node-public-ip-prefix` を使用して、プレフィックスのリソース ID を渡します。
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>ノードのパブリック IP を検索する
 
 ノードのパブリック IP は、さまざまな方法で見つけることができます。
 
-* Azure CLI コマンド [az vmss list-instance-public-ips][az-list-ips] を使用
+* Azure CLI コマンド [az vmss list-instance-public-ips][az-list-ips] を使用。
 * [PowerShell または Bash コマンド][vmss-commands]を使用。 
 * 仮想マシン スケール セット内のインスタンスを表示して、Azure portal 内のパブリック IP を表示することも可能です。
 
@@ -818,20 +821,20 @@ Windows Server コンテナー ノード プールを作成して使用するに
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +847,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

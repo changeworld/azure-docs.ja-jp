@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 330131ea7e9a364a31d25a6f3f0a75b1adbeb27a
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ae94ac9719a827a2d1af258398988f0972e61b3a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799889"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305516"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -27,9 +27,9 @@ ms.locfileid: "104799889"
 
 ## <a name="networking-faqs"></a>ネットワークに関する FAQ
 
-### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS データ パスはインターネットを経由しますか?  
+### <a name="does-the-data-path-for-nfs-or-smb-go-over-the-internet"></a>NFS または SMB 用のデータ パスはインターネットを経由しますか?  
 
-いいえ。 NFS データ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
+いいえ。 NFS または SMB 用のデータ パスはインターネットを経由しません。 Azure NetApp Files は、サービスが使用可能な Azure Virtual Network (VNet) にデプロイされている Azure のネイティブ サービスです。 Azure NetApp Files は、委任されたサブネットを使用し、VNet 上に直接ネットワーク インターフェイスをプロビジョニングします。 
 
 詳細については、「[Azure NetApp Files のネットワーク計画のガイドライン](./azure-netapp-files-network-topologies.md)」を参照してください。  
 
@@ -82,7 +82,21 @@ Azure Dedicated HSM を使用したカスタマー マネージド キー (Bring
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Azure NetApp Files で Azure RBAC を使用できますか?
 
-はい。Azure NetApp Files では、Azure RBAC の機能がサポートされています。
+はい。Azure NetApp Files では、Azure RBAC の機能がサポートされています。 組み込みの Azure ロールに加え、Azure NetApp Files 用に[カスタム ロールを作成](../role-based-access-control/custom-roles.md)できます。 
+
+Azure NetApp Files のアクセス許可の詳細な一覧については、「Azure リソース プロバイダーの操作」で「[`Microsoft.NetApp`](../role-based-access-control/resource-provider-operations.md#microsoftnetapp)」を参照してください。
+
+### <a name="are-azure-activity-logs-supported-on-azure-netapp-files"></a>Azure NetApp Files で Azure アクティビティ ログはサポートされていますか?
+
+Azure NetApp Files は Azure のネイティブ サービスです。 Azure NetApp Files に対する PUT、POST、および DELETE API がすべてログに記録されます。 たとえば、スナップショットを作成したユーザー、ボリュームを変更したユーザーといったアクティビティがログに表示されます。
+
+API 操作の詳細な一覧については、「[Azure NetApp Files REST API](/rest/api/netapp/)」を参照してください。
+
+### <a name="can-i-use-azure-policies-with-azure-netapp-files"></a>Azure NetApp Files で Azure のポリシーを使用できますか?
+
+はい、[カスタム Azure ポリシー](../governance/policy/tutorials/create-custom-policy-definition.md)を作成することができます。 
+
+ただし、Azure NetApp Files インターフェイスに Azure ポリシー (カスタム名前付けポリシー) を作成することはできません。 「[Azure NetApp Files のネットワーク計画のガイドライン](azure-netapp-files-network-topologies.md#considerations)」を参照してください。
 
 ## <a name="performance-faqs"></a>パフォーマンスに関する FAQ
 
@@ -192,6 +206,14 @@ SMB クライアントで報告されるボリューム サイズは、Azure Net
 
 ベスト プラクティスとして、コンピューターのクロック同期の最大許容値を 5 分に設定します。 詳細については、[コンピューターのクロック同期の最大許容値](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11))に関するページをご覧ください。 
 
+### <a name="can-i-manage-smb-shares-sessions-and-open-files-through-computer-management-console-mmc"></a>コンピューターの管理コンソール (MMC) を使用して、`SMB Shares`、`Sessions`、および `Open Files` を管理できますか?
+
+コンピューターの管理コンソール (MMC) を使用した `SMB Shares`、`Sessions`、および `Open Files` の管理は、現在サポートされていません。
+
+### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>ポータルを使用して SMB ボリュームの IP アドレスを取得するにはどうすればよいですか?
+
+ボリュームの概要ペインの **[JSON ビュー]** リンクを使用して、 **[プロパティ]**  ->  **[mountTargets]** の下で **[startIp]** 識別子を探します。
+
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Azure NetApp Files の容量プールとボリュームの使用状況を監視するには、どうすればよいですか? 
@@ -204,9 +226,9 @@ Azure NetApp Files には、容量プールとボリュームの使用状況の�
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>ディレクトリがサイズ制限に近づいているかどうかを確認するにはどうすればよいですか?
 
-クライアントから `stat` コマンドを使用することで、ディレクトリがディレクトリ メタデータのサイズ上限 (320 MB) に近づいているかどうかを確認できます。
+クライアントから `stat` コマンドを使用することで、ディレクトリがディレクトリ メタデータのサイズ上限 (320 MB) に近づいているかどうかを確認できます。   
 
-320 MB のディレクトリの場合、ブロック数は 655360、各ブロック サイズは 512 バイトです  (つまり、320 x 1024 x 1024/512)。  
+320 MB のディレクトリの場合、ブロック数は 655,360、各ブロック サイズは 512 バイトです  (つまり、320 x 1,024 x 1,024/512)。320 MB のディレクトリの場合、この数値は最大約 400 万ファイルに換算できます。 ただし、ASCII 以外の文字を含むファイルがディレクトリ内にどの程度存在するかといった要因によっては、実際の最大ファイル数が少なくなる場合があります。 そのため、次のように `stat` コマンドを使用して、ディレクトリが上限に近づいているかどうかを確認する必要があります。  
 
 例 :
 

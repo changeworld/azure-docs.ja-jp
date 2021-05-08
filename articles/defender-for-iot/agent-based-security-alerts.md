@@ -4,10 +4,10 @@ description: Defender for IoT デバイスの機能とサービスを使用し�
 ms.topic: conceptual
 ms.date: 2/16/2021
 ms.openlocfilehash: b586eb4bebfc584e6cec4c27df859dbebb817e2d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784936"
 ---
 # <a name="defender-for-iot-devices-security-alerts"></a>Defender for IoT デバイスのセキュリティ アラート

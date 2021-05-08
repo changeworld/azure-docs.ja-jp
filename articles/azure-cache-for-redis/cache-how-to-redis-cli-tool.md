@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: e4f5fc7290b45f65067f6711f70476e13a010223
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 042db51ab51e9da586f028b8aa99e66ffaa36639
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183388"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775675"
 ---
 # <a name="use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Azure Cache for Redis での Redis コマンドライン ツールの使用
 
@@ -27,7 +27,7 @@ Windows プラットフォームでこのツールを利用するには､[Redis
 
 キャッシュにアクセスするために必要な情報を収集する方法は 3 通りあります｡
 
-1. Azure CLI から [az redis list-keys](/cli/azure/redis#az-redis-list-keys) を使用する
+1. Azure CLI から [az redis list-keys](/cli/azure/redis#az_redis_list_keys) を使用する
 2. Azure PowerShell から [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-AzRedisCacheKey) を使用する
 3. Azure Portal を使用する
 

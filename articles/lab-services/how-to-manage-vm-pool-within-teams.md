@@ -4,10 +4,10 @@ description: Teams からの Azure Lab Services の VM プールを管理する�
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: b838e0561bb48b20450e49aaef37baf3c9ecb4d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91946534"
 ---
 # <a name="manage-a-vm-pool-in-lab-services-from-teams"></a>Teams からの Lab Services の VM プールを管理する

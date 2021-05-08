@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9916ad6d3b6cb1a63d34004915666226b7836490
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6e8bb4cf715c6cb8d0729399c1985376de18687b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740353"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561289"
 ---
 # <a name="azure-security-baseline-for-azure-policy"></a>Azure Policy 用の Azure セキュリティ ベースライン
 
@@ -30,9 +30,9 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **ガイダンス**:Azure Policy では、アクティビティ ログ (自動的に有効になります) を使用して、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が記録されます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure でのログ記録とログのさまざまな種類について](../../../azure-monitor/essentials/platform-logs-overview.md)
 
 **責任**: Customer
 
@@ -48,7 +48,7 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.GuestConfiguration**:
 
@@ -74,7 +74,7 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Policy へのアクセスを制御します。
 
-- [Azure Policy における Azure RBAC アクセス許可](https://docs.microsoft.com/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy)
+- [Azure Policy における Azure RBAC アクセス許可](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 - [Azure RBAC を構成する方法](../../../role-based-access-control/role-assignments-portal.md)
 
@@ -86,7 +86,7 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 **ガイダンス**: Azure Monitor とアクティビティ ログを使用して、Azure Policy が変更された場合のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -128,5 +128,5 @@ Azure Policy では、"_責任_" の代わりに "_所有権_" という用語�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../../../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../../../security/benchmarks/security-baselines-overview.md)の詳細について学習する

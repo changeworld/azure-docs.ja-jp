@@ -4,17 +4,26 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: d1a67a131a94bc017eaf2199546ef08f0291cd54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6745d1f7d97a8f4d08078bf93b61762ab04aad46
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244706"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "106072898"
 ---
 **mySecret** という名前で値が **Success!** のシークレットを作成しましょう。 シークレットとしては、パスワード、SQL 接続文字列、または安全性とアプリケーションから利用できることの両方を維持する必要がある他の情報などがあります。 
 
-シークレットを新しく作成したキー コンテナーに追加するには、Azure CLI の [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) コマンドを使用します。
+新しく作成したキー コンテナーにシークレットを追加するには、次のコマンドを使用します。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "mySecret" --value "Success!"
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$secret = ConvertTo-SecureString -String 'Success!' -AsPlainText
+Set-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret -SecretValue $secret
+```
+---

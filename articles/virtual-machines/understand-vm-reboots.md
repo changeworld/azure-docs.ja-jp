@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: af371a8f7da5ef32e95d4096b69c5d52ce3e3700
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9342e0c39b558cf8b6ff5773d623ce55062f9ab5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510401"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607475"
 ---
 # <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
@@ -34,7 +34,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 * [Availability Zones](../availability-zones/az-overview.md) を使用してデータセンターの障害から保護する
 * 冗長性実現のために複数の仮想マシンを[可用性セット](availability-set-overview.md)内に構成する
-* [Linux のスケジュールされたイベント](/linux/scheduled-events.md)または [Windows のスケジュールされたイベント](/windows/scheduled-events.md)を使用して、VM に影響するイベントに事前に対応する
+* [Linux のスケジュールされたイベント](/azure/virtual-machines/linux/scheduled-events)または [Windows のスケジュールされたイベント](/azure/virtual-machines/windows/scheduled-events)を使用して、VM に影響するイベントに事前に対応する
 * 各アプリケーション層に対して別々の可用性セットを構成する
 * [ロード バランサー](../load-balancer/load-balancer-overview.md)と可用性ゾーンまたはセットを結合する
 

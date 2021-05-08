@@ -1,18 +1,16 @@
 ---
 title: Azure Site Recovery を使用して Hyper-V VM から Azure へのディザスター リカバリーを準備する
 description: Azure Site Recovery を使用して、オンプレミス Hyper-V VM の Azure へのディザスター リカバリーを準備する方法について説明します。
-author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8704dd17f0386254f65d1c0e783c5f8786b8ae98
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86135662"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580306"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス Hyper-V サーバーを準備する
 

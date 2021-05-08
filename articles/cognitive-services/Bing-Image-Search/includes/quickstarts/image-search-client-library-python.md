@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: d5d47f097fa216d69b8ed59fdb057378724c2228
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625310"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105103995"
 ---
 このクイックスタートでは、Bing Image Search クライアント ライブラリを使用して最初の画像検索を行います。このクライアント ライブラリは、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Python アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示します。
 
@@ -21,7 +21,7 @@ ms.locfileid: "94625310"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Python 2.7 または 3.4](https://www.python.org/) 以降。
+* [Python 2.7 または 3.6 以降](https://www.python.org/)。
 
 * Python 用 [Azure Image Search クライアント ライブラリ](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/)
     * `pip install azure-cognitiveservices-search-imagesearch` を使用してインストールする

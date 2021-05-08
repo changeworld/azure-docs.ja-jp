@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 24d955b0d1c53f57f5927f9e893b6ecd75fb3ca8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7eca7d8f3cd40f4a3961f0ac478fba290be3041
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561893"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279665"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -175,10 +175,6 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 > [!IMPORTANT]
 > 既存のストレージ アカウントまたは BLOB のアクセス レベルを変更すると、追加料金が発生する場合があります。 詳細については、「[ストレージ アカウントの課金](#storage-account-billing)」を参照してください。
 
-## <a name="encryption"></a>暗号化
-
-ストレージ アカウント内のすべてのデータは、サービス側で暗号化されます。 暗号化の詳細については、「[保存データ向け Azure Storage Service Encryption](storage-service-encryption.md)」をご覧ください。
-
 ## <a name="storage-account-endpoints"></a>ストレージ アカウント エンドポイント
 
 ストレージ アカウントは、データ用の一意の名前空間を Azure 内に用意します。 Azure Storage 内に格納されるすべてのオブジェクトには、一意のアカウント名を含むアドレスが割り当てられます。 アカウント名と Azure Storage サービス エンドポイントの組み合わせによって、ストレージ アカウント用のエンドポイントが形成されます。
@@ -200,22 +196,17 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 
 BLOB 用のカスタム ドメインを使用するようにストレージ アカウントを構成することもできます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。  
 
-## <a name="control-access-to-account-data"></a>アカウント データへのアクセスの制御
+## <a name="migrating-a-storage-account"></a>ストレージ アカウントの移行
 
-既定では、アカウントのデータはアカウント所有者だけが使用できます。 データにアクセスできるユーザーと、各ユーザーに付与するアクセス許可を制御できます。
+次の表は、ストレージ アカウントの移動、アップグレード、または移行に関するガイダンスをまとめたものです。
 
-ストレージ アカウントに対して行われるすべての要求は、承認される必要があります。 サービスのレベルには、要求には有効な *Authorization* ヘッダーが含まれている必要があります。 具体的には、このヘッダーには、サービスが要求を実行する前に検証するために必要なすべての情報が含まれています。
-
-次の方法のいずれかを使用して、ストレージ アカウント内のデータへのアクセス権を付与できます。
-
-- **Azure Active Directory:** Azure Active Directory (Azure AD) の資格情報を使用して、ユーザー、グループ、またはその他の ID による BLOB データとキュー データへのアクセスを認証します。 ID の認証が成功した場合、Azure AD は、Azure Blob Storage または Queue Storage に対する要求の承認で使用されるトークンを返します。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。
-- **共有キーによる承認:** ストレージ アカウント アクセス キーを使用して、アプリケーションが実行時に Azure Storage にアクセスするために使用する接続文字列を構成します。 接続文字列内の値を使用して、Azure Storage に渡される "*承認*" ヘッダーが作成されます。 詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
-- **共有アクセス署名:** Shared Access Signature (SAS) は、ストレージ アカウント内のリソースへの委任アクセスを可能にするトークンです。 SAS トークンは、URL 上の Azure Storage への要求を認可するために必要なすべての情報をカプセル化します。 SAS の作成時には、SAS がリソースに認めるアクセス許可と、そのアクセス許可の有効期間 SAS がクライアントに付与するアクセス許可を指定できます。 SAS トークンには、Azure AD 資格情報または共有キーを使用して署名できます。 詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](storage-sas-overview.md)」を参照してください。
-
-> [!NOTE]
-> Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。
->
-> Azure Storage の BLOB アプリケーションとキュー アプリケーションでは、できる限り Azure AD 承認を使用することをお勧めします。
+| 移行シナリオ | 説明 |
+|--|--|
+| ストレージ アカウントを別のサブスクリプションに移動する | Azure Resource Manager には、リソースを別のサブスクリプションに移動するためのオプションが用意されています。 詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。 |
+| ストレージ アカウントを別のリソース グループに移動する | Azure Resource Manager には、リソースを別のリソース グループに移動するためのオプションが用意されています。 詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。 |
+| ストレージ アカウントを別のリージョンに移動する | ストレージ アカウントを移動するには、別のリージョンにストレージ アカウントのコピーを作成します。 その後、AzCopy または選択した他のツールを使用して、そのアカウントにデータを移動します。 詳細については、「[Azure ストレージ アカウントを別のリージョンに移動する](storage-account-move.md)」をご覧ください。 |
+| 汎用 v2 ストレージ アカウントにアップグレードする | 汎用 v1 ストレージ アカウントまたは BLOB ストレージ アカウントは、汎用 v2 ストレージ アカウントにアップグレードすることができます。 この操作は元に戻すことができません。 詳細については、「[汎用 v2 ストレージ アカウントにアップグレードする](storage-account-upgrade.md)」を参照してください。 |
+| クラシック ストレージ アカウントを Azure Resource Manager に移行する | Azure Resource Manager デプロイ モデルは、機能、スケーラビリティ、およびセキュリティに関して、クラシック デプロイ モデルよりも優れています。 クラシック ストレージ アカウントを Azure Resource Manager に移行する方法の詳細については、「**プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行**」の「[ストレージ アカウントの移行](../../virtual-machines/migration-classic-resource-manager-overview.md#migration-of-storage-accounts)」をご覧ください。 |
 
 ## <a name="copying-data-into-a-storage-account"></a>ストレージ アカウントへのデータのコピー
 
@@ -239,6 +230,10 @@ Azure Storage REST API の詳細については、「[Azure Storage Services RES
 
 > [!IMPORTANT]
 > クライアント側の暗号化を使用して暗号化された BLOB には、BLOB と共に暗号化関連メタデータが格納されます。 クライアント側の暗号化で暗号化された BLOB をコピーする場合は、コピー操作の際に BLOB メタデータ、特に暗号化関連のメタデータが保持されるようにしてください。 暗号化メタデータなしで BLOB をコピーした場合、BLOB コンテンツを再度取得することはできません。 暗号化関連メタデータの詳細については、[Azure Storage のクライアント側の暗号化](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+
+## <a name="encryption"></a>暗号化
+
+ストレージ アカウント内のすべてのデータは、サービス側で暗号化されます。 暗号化の詳細については、「[保存データ向け Azure Storage Service Encryption](storage-service-encryption.md)」をご覧ください。
 
 ## <a name="storage-account-billing"></a>ストレージ アカウントの課金
 

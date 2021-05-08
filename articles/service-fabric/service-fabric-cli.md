@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff322cb3633616e9004bc8fa25b048b6f1263008
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681806"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046336"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -22,7 +22,7 @@ Azure Service Fabric コマンド ライン インターフェイス (CLI) は�
 
 インストール前に、ご使用の環境に Python と pip の両方がインストールされていることを確認してください。 詳細については、[pip のクイックスタート ドキュメント](https://pip.pypa.io/en/latest/quickstart/)と公式の [Python インストール ドキュメント](https://wiki.python.org/moin/BeginnersGuide/Download)を参照してください。
 
-この CLI では、Python のバージョン 2.7、3.5、3.6、3.7 をサポートしています。 Python 2.7 は間もなくサポート終了となるため、Python 3.x の利用をお勧めします。
+CLI は、Python 3.x を推奨する Python バージョン 2.7 および 3.6 以降をサポートしています。
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric のターゲット ランタイム
 
@@ -58,11 +58,11 @@ Service Fabric CLI リリースの詳細については、[GitHub のドキュ�
 
 Windows 10、Windows Server 2016、Windows Server 2012 R2 については、標準的な公式インストール手順を使用してください。 Python インストーラーを実行すると、既定で pip もインストールされます。
 
-1. [Python の公式ダウンロード ページ](https://www.python.org/downloads/)に移動し、最新バージョンの Python 3.7 をダウンロードします。
+1. [Python の公式ダウンロード ページ](https://www.python.org/downloads/)に移動し、最新バージョンの Python 3.x をダウンロードします。
 
 2. インストーラーを起動します。
 
-3. プロンプトの一番下の **[Add Python 3.7 to PATH]\(Python 3.7 を PATH に追加\)** を選択します。
+3. プロンプトの一番下の **[Add Python 3.x to PATH]\(Python 3.x を PATH に追加\)** を選択します。
 
 4. **[Install Now]\(今すぐインストール\)** を選択してインストールを完了します。
 
@@ -118,8 +118,8 @@ sudo pip3 install sfctl
 Service Fabric CLI を Red Hat にインストールするには、次のコマンドを実行します。
 
 ```bash
-sudo yum install -y python34
-sudo yum install python34-setuptools
+sudo yum install -y python38
+sudo yum install python38-setuptools
 sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
@@ -135,7 +135,7 @@ MacOS では、[HomeBrew パッケージ マネージャー](https://brew.sh)の
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-次に、ターミナルから次のコマンドを実行して Python 3.7、pip、Service Fabric CLI をインストールします。
+次に、ターミナルから次のコマンドを実行して最新の Python 3.x、pip、Service Fabric CLI をインストールします。
 
 ```bash
 brew install python3

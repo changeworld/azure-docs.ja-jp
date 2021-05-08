@@ -1,14 +1,14 @@
 ---
 title: レジストリ、リポジトリ、イメージ、成果物について
-description: Azure コンテナー レジストリ、リポジトリ、コンテナー イメージなどの主要な成果物の概念について紹介します。
+description: Azure Container Registry、リポジトリ、コンテナー イメージなどの主要な成果物の概念について紹介します。
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 991be79b10b6061f2034eb19e4e139af65aef3cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578083"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784085"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>レジストリ、リポジトリ、成果物について
 
@@ -66,7 +66,7 @@ Docker 対応コンテナー イメージに加え、Azure Container Registry �
 
 安全な分離を確保し潜在的なレイヤー操作から保護するために、レイヤーはレジストリ間で共有されません。
 
-### <a name="manifest"></a>Manifest
+### <a name="manifest"></a>マニフェスト
 
 コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 コンテンツがプッシュされるときにレジストリによって生成されるマニフェストは、コンテンツを一意に示し、レイヤーを指定します。 Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。 
 
@@ -77,17 +77,17 @@ Linux `hello-world` イメージの基本的なマニフェストは、次のよ
     "schemaVersion": 2,
     "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
     "config": {
-        "mediaType": "application/vnd.docker.container.image.v1+json",
-        "size": 1510,
-        "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
-      },
+      "mediaType": "application/vnd.docker.container.image.v1+json",
+      "size": 1510,
+      "digest": "sha256:fbf289e99eb9bca977dae136fbe2a82b6b7d4c372474c9235adc1741675f587e"
+    },
     "layers": [
-        {
-          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
-          "size": 977,
-          "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
-        }
-      ]
+      {
+        "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+        "size": 977,
+        "digest": "sha256:2c930d010525941c1d56ec53b97bd057a67ae1865eebf042686d2a2d18271ced"
+      }
+    ]
   }
   ```
 
@@ -147,7 +147,7 @@ Docker またはその他のクライアント ツールを使用したプッシ
     
   **ダイジェストによるアドレス**: `[loginServerUrl]/[repository@sha256][:digest]`  
 
-Docker またはその他のクライアント ツールを使用して、成果物を Azure コンテナー レジストリにプルまたはプッシュする場合は、レジストリの完全修飾 URL ("*ログイン サーバー*" 名とも呼ばれます) を使用します。 Azure クラウドでは、Azure コンテナー レジストリの完全修飾 URL の形式は `myregistry.azurecr.io` (すべて小文字) です。
+Docker またはその他のクライアント ツールを使用して、成果物を Azure Container Registry にプルまたはプッシュする場合は、レジストリの完全修飾 URL ("*ログイン サーバー*" 名とも呼ばれます) を使用します。 Azure クラウドでは、Azure Container Registry の完全修飾 URL の形式は `myregistry.azurecr.io` (すべて小文字) です。
 
 > [!NOTE]
 > * `myregistry.azurecr.io:443` のように、レジストリ ログイン サーバーの URL にポート番号を指定することはできません。 
@@ -184,6 +184,4 @@ Azure Container Registry での[レジストリ ストレージ](container-regis
 Azure Container Registry に対して[イメージをプッシュおよびプル](container-registry-get-started-docker-cli.md)する方法を確認します。
 
 <!-- LINKS - Internal -->
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
-
-
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests

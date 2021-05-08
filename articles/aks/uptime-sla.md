@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 846446b4c19c066afe789bf636d68ad37b20709e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176333"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779563"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) のアップタイム SLA
 
@@ -37,9 +37,6 @@ ms.locfileid: "102176333"
 * [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.8.0 以降をインストールします
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>アップタイム SLA を使用した新しいクラスターの作成
-
-> [!NOTE]
-> 現時点では、アップタイム SLA を有効にした場合、これをクラスターから削除することはできません。
 
 アップタイム SLA を使用して新しいクラスターを作成するには、Azure CLI を使用します。
 
@@ -107,6 +104,15 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
   },
   ```
 
+## <a name="opt-out-of-uptime-sla"></a>アップタイム SLA のオプト アウト
+
+クラスターを更新して Free レベルに変更し、アップタイム SLA からオプト アウトできます。
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
+
 ## <a name="clean-up"></a>クリーンアップ
 
 課金されないようにするために、作成したすべてのリソースをクリーンアップします。 クラスターを削除するには、[`az group delete`][az-group-delete] コマンドを使用して AKS リソース グループを削除します。
@@ -131,10 +137,10 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
 [availability-zones]: ./availability-zones.md
-[az-aks-create]: /cli/azure/aks?#az-aks-create
+[az-aks-create]: /cli/azure/aks?#az_aks_create
 [limit-egress-traffic]: ./limit-egress-traffic.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [az-aks-update]: /cli/azure/aks#az_aks_update
-[az-group-delete]: /cli/azure/group#az-group-delete
+[az-group-delete]: /cli/azure/group#az_group_delete
 [private-clusters]: private-clusters.md

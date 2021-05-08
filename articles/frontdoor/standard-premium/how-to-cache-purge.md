@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: aacbf2ceab8580727b1885bf6533cd74a7c4e60a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101097935"
 ---
 # <a name="cache-purging-in-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) のキャッシュの消去
@@ -55,4 +55,4 @@ Azure Front Door Standard/Preium のキャッシュの消去は、大文字と�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Front Door Standard/Premium を作成する](create-front-door-portal.md)方法について学習します。
+[Front Door Standard または Premium を作成する](create-front-door-portal.md)方法について学習します。

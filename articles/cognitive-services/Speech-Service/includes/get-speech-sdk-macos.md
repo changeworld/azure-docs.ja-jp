@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 4a4705647b90d29f47e37b88531f3432c6a2f448
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b68fb8cf5458081f96febbac75fd393a80345f60
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434560"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043241"
 ---
 MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin. Mac は、.NET 開発者向けの完全な macOS SDK を公開しC#を使用してネイティブ Mac アプリケーションを構築します。 詳細については、<a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin.Mac</a>を参照してください。
+        Xamarin. Mac は、.NET 開発者向けの完全な macOS SDK を公開しC#を使用してネイティブ Mac アプリケーションを構築します。 詳細については、<a href="/xamarin/mac/" target="_blank">Xamarin.Mac</a>を参照してください。
     :::column-end:::
     :::column:::
         <br>

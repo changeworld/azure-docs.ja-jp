@@ -7,36 +7,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8461a77d06a63c2ac319323a91b5577ca4dce1cf
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "74079492"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567032"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Cloud Explorer for Visual Studio を使用してデバイスと IoT Hub 間でメッセージを送受信する
 
 ![エンド ツー エンド ダイアグラム](./media/iot-hub-visual-studio-cloud-device-messaging/e-to-e-diagram.png)
 
+この記事では、Cloud Explorer for Visual Studio を使用して、device-to-cloud メッセージの監視と cloud-to-device メッセージの送信を行う方法について説明します。 D2C メッセージは、デバイスが収集し、IoT Hub に送信するセンサー データである可能性があります。 C2D メッセージは、IoT Hub がデバイスに送信するコマンドである可能性があります。 たとえば、デバイスに接続されている LED を点滅させます。
+
 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) は、Azure リソースを表示し、そのプロパティを調べ、Visual Studio 内から開発者が重要な操作を実行できる、Visual Studio の便利な拡張機能です。 この記事では、Cloud Explorer を使用して、デバイスとハブ間でメッセージを送受信する方法を中心に説明します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-learn"></a>学習内容
-
-この記事では、Cloud Explorer for Visual Studio を使用して、device-to-cloud メッセージの監視と cloud-to-device メッセージの送信を行う方法について説明します。 D2C メッセージは、デバイスが収集し、IoT Hub に送信するセンサー データである可能性があります。 C2D メッセージは、IoT Hub がデバイスに送信するコマンドである可能性があります。 たとえば、デバイスに接続されている LED を点滅させます。
-
-## <a name="what-you-do"></a>作業内容
-
-この記事では、次のタスクを実行します。
-
-- Cloud Explorer for Visual Studio を使用して、デバイスからクラウドへのメッセージを監視します。
-
-- Cloud Explorer for Visual Studio を使用して、クラウドからデバイスへのメッセージを送信します。
-
-## <a name="what-you-need"></a>必要なもの
-
-次の前提条件を満たす必要があります。
+## <a name="prerequisites"></a>前提条件
 
 - 有効な Azure サブスクリプション
 

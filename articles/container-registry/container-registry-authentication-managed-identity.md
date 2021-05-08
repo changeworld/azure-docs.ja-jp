@@ -3,16 +3,16 @@ title: マネージド ID による認証
 description: ユーザー割り当てまたはシステム割り当て Azure マネージド ID を使用して、プライベート コンテナー レジストリ内のイメージへのアクセス権を付与します。
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: e6c0d21f7bdefa94241655225589a52c02110f70
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 213f49356fdc2444f8bc2cb4635e96015aff0a61
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041469"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781543"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure マネージド ID を使用して Azure コンテナー レジストリに対して認証する 
 
-レジストリの資格情報を提供したり管理したりすることなく、別の Azure リソースから Azure コンテナー レジストリに対して認証するには、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用します。 たとえば、パブリック レジストリを使用するように簡単にコンテナー レジストリからコンテナー イメージにアクセスするには、Linux VM 上でユーザー割り当てまたはシステム割り当てマネージド ID を設定します。
+レジストリの資格情報を提供したり管理したりすることなく、別の Azure リソースから Azure コンテナー レジストリに対して認証するには、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用します。 たとえば、パブリック レジストリを使用するように簡単にコンテナー レジストリからコンテナー イメージにアクセスするには、Linux VM 上でユーザー割り当てまたはシステム割り当てマネージド ID を設定します。 または、[マネージド ID](../aks/use-managed-identity.md) を使用して、ポッドのデプロイのために Azure Container Registry からコンテナー イメージをプルするように、Azure Kubernetes Service クラスターを設定します。
 
 この記事では、マネージド ID および次の操作を行う方法について詳細に説明します。
 
@@ -27,23 +27,14 @@ Azure リソースを作成するために、この記事では Azure CLI バー
 
 ## <a name="why-use-a-managed-identity"></a>マネージド ID を使用する理由
 
-Azure リソースのマネージド ID は、Azure サービスに Azure Active Directory (Azure AD) で自動的に管理される ID を提供します。 マネージド ID を使用して、[特定の Azure リソース](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) (仮想マシンを含む) を構成できます。 次に、その ID を使用して、コードまたはスクリプトで資格情報を渡すことなく他の Azure リソースにアクセスします。
+Azure リソースのマネージド ID 機能に慣れていない場合は、こちらの[概要](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
 
-マネージド ID には、次の 2 種類があります。
+マネージド ID を使用して、選択した Azure リソースを設定した後、他のセキュリティ プリンシパルと同様に、その ID に別のリソースへの必要なアクセス権を付与します。 たとえば、マネージド ID に、Azure 内のプライベート レジストリに対するプル、プッシュとプル、またはその他のアクセス許可を持つロールを割り当てます。 (レジストリ ロールの完全な一覧については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」を参照してください。)ID には 1 つ以上のリソースへのアクセス権を付与できます。
 
-* *ユーザー割り当て ID*。これは複数のリソースに割り当て、必要なだけ永続化させることができます。 ユーザー割り当て ID は、現在プレビューの段階です。
+次に、その ID を使用して、コードで資格情報を渡すことなく [Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証します。 シナリオに応じて、マネージド ID を使用して認証する方法を選択します。 その ID を使用して仮想マシンから Azure コンテナー レジストリにアクセスするには、Azure Resource Manager に対して認証します。 
 
-* *システム管理 ID*。これは、1 つの仮想マシンなどの特定のリソースに固有の ID であり、そのリソースの有効期間だけ持続されます。
-
-マネージド ID を使用して Azure リソースを設定した後、他のセキュリティ プリンシパルと同様に、その ID に別のリソースへの必要なアクセス権を付与します。 たとえば、マネージド ID に、Azure 内のプライベート レジストリに対するプル、プッシュとプル、またはその他のアクセス許可を持つロールを割り当てます。 (レジストリ ロールの完全な一覧については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」を参照してください。)ID には 1 つ以上のリソースへのアクセス権を付与できます。
-
-次に、その ID を使用して、コードで資格情報を渡すことなく [Azure AD 認証をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)に対して認証します。 その ID を使用して仮想マシンから Azure コンテナー レジストリにアクセスするには、Azure Resource Manager に対して認証します。 シナリオに応じて、マネージド ID を使用して認証する方法を選択します。
-
-* HTTP または REST 呼び出しを使用して、プログラムで [Azure AD アクセス トークンを取得する](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)
-
-* [Azure SDK](../active-directory/managed-identities-azure-resources/how-to-use-vm-sdk.md) を使用する
-
-* ID で [Azure CLI または PowerShell にサインインする](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md)。 
+> [!NOTE]
+> 現時点では、Azure Web App for Containers や Azure Container Instances などのサービスは、コンテナー リソース自体をデプロイするためにコンテナー イメージをプルするときの Azure Container Registry での認証にマネージド ID を使用できません。 ID は、コンテナーが実行された後にのみ使用できます。 Azure Container Registry のイメージを使用してこれらのリソースをデプロイするには、[サービス プリンシパル](container-registry-auth-service-principal.md)などの別の認証方法をお勧めします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
@@ -230,8 +221,6 @@ az acr login --name myContainerRegistry
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
-> [!NOTE]
-> システム割り当てのマネージド サービス ID は ACR とやりとりする目的で使用できます。App Service では、システム割り当てのマネージド サービス ID を使用できます。 しかし、これらを組み合わせることはできません。App Service では、ACR と通信する目的で MSI を使用できないためです。 唯一の方法は ACR で管理者を有効にし、管理者のユーザー名とパスワードを使用することです。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -253,13 +242,13 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-vm-create]: /cli/azure/vm#az-vm-create
-[az-vm-show]: /cli/azure/vm#az-vm-show
-[az-vm-identity-assign]: /cli/azure/vm/identity#az-vm-identity-assign
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-identity-show]: /cli/azure/identity#az-identity-show
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-vm-create]: /cli/azure/vm#az_vm_create
+[az-vm-show]: /cli/azure/vm#az_vm_show
+[az-vm-identity-assign]: /cli/azure/vm/identity#az_vm_identity_assign
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-identity-show]: /cli/azure/identity#az_identity_show
 [azure-cli]: /cli/azure/install-azure-cli

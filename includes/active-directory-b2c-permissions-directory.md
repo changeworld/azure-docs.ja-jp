@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 04/05/2021
 ms.author: mimart
-ms.openlocfilehash: f8c972bdb9195008c2983d3993e8d9369749b284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a2382146cd8b85b8eef54b924a206dda7107b0f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85200191"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382464"
 ---
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/) 
 
@@ -19,8 +19,9 @@ ms.locfileid: "85200191"
 1. **[Microsoft API]** タブを選択し、 **[Microsoft Graph]** を選択します。
 1. **[アプリケーションのアクセス許可]** を選択します。
 1. 適切なアクセス許可グループを展開し、管理アプリケーションに付与するアクセス許可のチェック ボックスをオンにします。 次に例を示します。
+    * **[User]\(ユーザー\)**  >  **[User.ReadWrite.All]** : ユーザー移行またはユーザー管理のシナリオの場合。
+    * **[Group]\(グループ\)**  >  **[Group.ReadWrite.All]** : グループの作成、グループ メンバーシップの読み取りと更新、グループの削除を行う場合。
     * **[AuditLog]**  >  **[AuditLog.Read.All]** :ディレクトリの監査ログを読み取る場合。
-    * **[Directory]\(ディレクトリ\)**  >  **[Directory.ReadWrite.All]** :ユーザー移行またはユーザー管理のシナリオの場合。
     * **[Policy]\(ポリシー\)**  >  **[Policy.ReadWrite.TrustFramework]** :継続的インテグレーション/継続的デリバリー (CI/CD) のシナリオの場合。 たとえば、Azure Pipelines を使用したカスタム ポリシーの展開などです。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
 1. **[<テナント名> に管理者の同意を与えます]** を選択します。

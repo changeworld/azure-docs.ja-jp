@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: 7fc1822c219c6c881e3d788f6b0e56675cecc466
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0939216e1d96e898d7c45b9e7a3ec72453b263d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102445123"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958017"
 ---
 Python 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -22,7 +22,7 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
-* [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
+* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
 * [顔を識別する](#identify-a-face)
 * [顔を確認する](#verify-faces)
 
@@ -86,7 +86,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 * [クライアントを認証する](#authenticate-the-client)
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
-* [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
+* [PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)
 * [顔を識別する](#identify-a-face)
 * [顔を確認する](#verify-faces)
 
@@ -133,7 +133,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_findsimilar_print)]
 
-## <a name="create-and-train-a-person-group"></a>人物グループを作成してトレーニングする
+## <a name="create-and-train-a-persongroup"></a>PersonGroup を作成してトレーニングする
 
 次のコードでは、3 つの異なる **Person** オブジェクトを持つ **PersonGroup** を作成します。 各 **Person** が例の画像のセットに関連付けられ、各人物を認識できるようにトレーニングが行われます。 
 
@@ -174,7 +174,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
 
 > [!IMPORTANT]
-> この例を実行するには、まず、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」のコードを実行する必要があります。
+> この例を実行するには、まず、「[PersonGroup を作成してトレーニングする](#create-and-train-a-persongroup)」のコードを実行する必要があります。
 
 ### <a name="get-a-test-image"></a>テスト画像を取得する
 

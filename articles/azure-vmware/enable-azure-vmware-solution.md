@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
 ms.openlocfilehash: 5d154f5c63ffccdbf1729e641133b54be478d884
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653170"
 ---
 # <a name="request-host-quota-and-enable-azure-vmware-solution"></a>ホスト クォータを要求し、Azure VMware Solution を有効にする

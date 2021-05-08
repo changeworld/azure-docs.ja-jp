@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182657"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449133"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
-Azure Static Web Apps では、GitHub リポジトリからアプリをビルドすることによって、運用環境に Web サイトが発行されます。 このクイックスタートでは、Visual Studio Code 拡張機能を使用して、Web アプリケーションを Azure Static Web Apps にデプロイします。
+Azure Static Web Apps では、コード リポジトリからアプリをビルドすることによって、Web サイトを発行します。 このクイックスタートでは、Visual Studio Code 拡張機能を使用して、Azure Static Web Apps にアプリケーションをデプロイします。
 
 Azure サブスクリプションを持っていない場合は、[無料試用版アカウントを作成できます](https://azure.microsoft.com/free)。
 
@@ -43,7 +43,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
     > [!NOTE]
     > Azure と GitHub へのサインインが必要です。 Visual Studio Code から Azure と GitHub にまだサインインしていない場合は、拡張機能により、作成プロセス中に両方にサインインするように求められます。
 
-1. マウス ポインターを _[Static Web Apps]_ ラベルの上に置き、**プラス記号** を選択します。
+1. _[Static Web Apps]_ ラベルで、**プラス記号** を選択します。
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="アプリケーション名":::
 
@@ -53,45 +53,34 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="静的 Web アプリを作成する":::
 
-1. **main** ブランチを選択して **Enter** キーを押します。
+1. アプリケーションの種類に一致するプリセットを選択します。
 
-    :::image type="content" source="media/getting-started/extension-branch.png" alt-text="ブランチ名":::
+    # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーション プリセット: フレームワークなし":::
 
-1. アプリケーション コードの場所として **/** を選択し、**Enter** キーを押します。
+    アプリケーション ファイルの場所として「 **./** 」と入力します
 
-    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション コードの場所":::
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション ファイルの場所":::
 
-1. 拡張機能により、アプリケーション内の API の場所の入力が求められます。 この記事では API を実装しません。
-
-    **[Skip for now]\(後で確認する\)** を選択し、**Enter** キーを押します。
+    Azure Functions API の場所として **[Skip for now]\(今はしない\)** を選択します
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API の場所":::
 
-1. アプリで運用環境用にファイルを構築する場所を選択します。
+    ビルドの出力場所として「 **./** 」と入力します
 
-    # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
-
-    ボックスをクリアし、**Enter** キーを押します。
-
-    :::image type="content" source="media/getting-started/extension-artifact-no-framework.png" alt-text="アプリ ファイルのパス":::
+    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="アプリケーション ビルドの出力場所":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    「**dist/angular-basic**」と入力し、**Enter** キーを押します。
-
-    :::image type="content" source="media/getting-started/extension-artifact-angular.png" alt-text="Angular アプリのファイル パス":::
+    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="アプリケーションプ リセット: Angular":::
 
     # <a name="react"></a>[React](#tab/react)
 
-    「**build**」と入力し、**Enter** キーを押します。
-
-    :::image type="content" source="media/getting-started/extension-artifact-react.png" alt-text="React アプリのファイル パス":::
+    :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="アプリケーションプ リセット: React":::
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    「**dist**」と入力し、**Enter** キーを押します。
-
-    :::image type="content" source="media/getting-started/extension-artifact-vue.png" alt-text="Vue アプリのファイル パス":::
+    :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="アプリケーションプ リセット: Vue":::
 
     ---
 
@@ -103,11 +92,13 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-confirmation.png" alt-text="作成された確認":::
 
-1. Visual Studio Code エクスプローラー ウィンドウで、自分のサブスクリプション名が表示されているノードに移動して展開します。 デプロイが完了するまでに数分かかる場合があるので注意してください。 その後、[Static Web Apps] セクションに戻り、アプリの名前を選択して、[my-first-static-web-app] を右クリックし、[ポータルで開く] を選択すると、Azure portal でアプリが表示されます。
+    次に、 **[Open Actions in GitHub]\(GitHub でアクションを開く\)** ボタンをクリックします。 このページには、アプリケーションのビルドの状態が表示されます。
 
-    :::image type="content" source="media/getting-started/extension-open-in-portal.png" alt-text="ポータルを開く":::
+    GitHub アクションが完了したら、発行された Web サイトを参照できます。
 
-[!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
+1. ブラウザーで Web サイトを表示するには、Static Web Apps 拡張機能でプロジェクトを右クリックし、 **[Browse Site]\(サイトの参照\)** を選択します。
+
+    :::image type="content" source="media/getting-started/extension-browse-site.png" alt-text="サイトの参照":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

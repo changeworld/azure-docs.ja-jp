@@ -1,19 +1,19 @@
 ---
 title: Azure Storage アカウントの BLOB のアクセス層を管理する
 description: GPv2 または Blob Storage アカウントの BLOB の層を変更する方法について説明します
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/11/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 183593022c934eaf52ffe18649c23e8deced34d8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cd46f5b5a8847150bd56c1daeaac470f9afd2d19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98166457"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278543"
 ---
 # <a name="manage-the-access-tier-of-a-blob-in-an-azure-storage-account"></a>Azure Storage アカウントの BLOB のアクセス層を管理する
 

@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 2/7/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: 1f19366ac8fd7aedadcca0287540262516ad060c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 3/30/2021
+ms.reviewer: lagayhar
+ms.openlocfilehash: e048e788e674e90a62b15784c590c07e5d36b816
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726184"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078402"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -25,7 +25,7 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ## <a name="pricing-model"></a>価格モデル
 
-[Azure Application Insights][start] の価格は **従量課金制** モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 [Live Metrics Stream](./live-stream.md) を使用するためのデータ ボリューム料金はありません。
+[Azure Application Insights][start] の価格は **従量課金制** モデルであり、取り込まれたデータの量に基づき、データを長期保有してもかかる場合があります。 Application Insights の各リソースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ ボリュームは、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。 データ ボリュームは GB 単位 (10^9 バイト) で測定されます。 [Live Metrics Stream](./live-stream.md) を使用するためのデータ ボリューム料金はありません。
 
 [複数ステップ Web テスト](./availability-multistep.md)に対しては、追加料金が発生します。 複数ステップ Web テストは、一連のアクションを実行する Web テストです。 単一ページの "*ping テスト*" については、個別の料金はかかりません。 Ping テストと複数ステップ テストからのテレメトリについては、アプリの他のテレメトリと同じ料金が請求されます。
 
@@ -43,7 +43,10 @@ Application Insights をまだ使用していない場合は、[Azure Monitor �
 
 ### <a name="data-collection-when-using-sampling"></a>サンプリングを使用する場合のデータ収集
 
-ASP.NET SDK の[アダプティブ サンプリング](sampling.md#adaptive-sampling)を使用すると、データ ボリュームが自動的に調整されて、既定の Application Insights 監視に対して指定されている最大トラフィック レート内に維持されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が構成されている秒あたりイベント数レベルを下回っている限り、サンプリング プロセッサによって項目がドロップされることはありません。 量の多いアプリケーションの場合、既定のしきい値である 5 イベント/秒では、アダプティブ サンプリングによって 1 日あたりのイベント数は 432,000 に制限されます。 標準的な平均イベント サイズである 1 KB を使用すると、アプリケーションがホストされているノードごとに、1 か月 (31 日) あたり 13.4 GB のテレメトリに対応します (サンプリングは各ノードに対してローカルに行われるため)。 
+ASP.NET SDK の[アダプティブ サンプリング](sampling.md#adaptive-sampling)を使用すると、データ ボリュームが自動的に調整されて、既定の Application Insights 監視に対して指定されている最大トラフィック レート内に維持されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が構成されている秒あたりイベント数レベルを下回っている限り、サンプリング プロセッサによって項目がドロップされることはありません。 量の多いアプリケーションの場合、既定のしきい値である 5 イベント/秒では、アダプティブ サンプリングによって 1 日あたりのイベント数は 432,000 に制限されます。 サンプリングは各ノードに対してローカルに行われるため、標準的な平均イベント サイズである 1 KB を使用すると、アプリケーションがホストされているノードごとに、1 か月 (31 日) あたり 13.4 GB のテレメトリに対応します。
+
+> [!NOTE]
+> Azure Monitor ログ データのサイズは、GB 単位で計算されます (1 GB = 10 ^ 9 バイト)。
 
 アダプティブ サンプリングがサポートされていない SDK の場合は、[インジェスト サンプリング](./sampling.md#ingestion-sampling)を使用できます。この機能では、保持するデータの割合に基づいて、または Web サーバーと Web ブラウザーから送信されるトラフィックを減らすために [ASP.NET、ASP.NET Core、および Java の Web サイトでは固定レートのサンプリング](sampling.md#fixed-rate-sampling)で、Application Insights によってデータが受信されたときにサンプリングされます
 

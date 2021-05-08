@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1d8cdf68d8f1f692637dc26f7ffcf50041ff6801
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90931491"
 ---
 # <a name="monitoring-log-analytics-billing-information-azure-portal-postgresql-hyperscale"></a>監視、ログ分析、課金情報、Azure portal (PostgreSQL Hyperscale)

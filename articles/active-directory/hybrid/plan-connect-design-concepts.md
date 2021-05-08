@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89279654"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
@@ -140,7 +140,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 3. Azure AD の管理者資格情報を入力し、[**次へ**] をクリックします。
 
-4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして次に進みます。
+4. オンプレミスの Active Directory で ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして、続行します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 

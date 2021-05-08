@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/26/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e60c829831bde3b454ab180d1a39ec46cb346963
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db60c26ed50dae3b4b28a6c44d152a921eb96a69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627559"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -29,7 +29,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 ![ハイブリッド ネットワークでのファイアウォール](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 * 変数を宣言する
 * ファイアウォールのハブ仮想ネットワークを作成する
@@ -42,7 +42,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 * 仮想マシンの作成
 * ファイアウォールをテストする
 
-このチュートリアルを完了する代わりに Azure portal を使用する場合は、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-portal.md)」を参照してください。
+このチュートリアルの実行に、代わりに Azure portal を使用する場合は、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-portal.md)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -61,9 +61,9 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 これらのルートの作成方法については、この記事の「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
 
 >[!NOTE]
->Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
+>Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet によってオンプレミス ネットワークへの BGP を介した既定のルートが学習される場合は、Azure Firewall を強制トンネリング モードで構成する必要があります。 これが既存の Azure Firewall であり、強制トンネリング モードで再構成できない場合は、AzureFirewallSubnet で 0.0.0.0/0 UDR を追加し、**NextHopType** 値を **Internet** に設定して、直接のインターネット接続を維持することをお勧めします。
 >
->Azure Firewall は、強制トンネリングをサポートするように構成できます。 詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
+>詳細については、「[Azure Firewall 強制トンネリング](forced-tunneling.md)」を参照してください。
 
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
@@ -292,7 +292,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>接続を確認する
 
-*Get-AzVirtualNetworkGatewayConnection* コマンドレットを使用して、接続が成功したことを確認できます。 *-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
+*Get-AzVirtualNetworkGatewayConnection* コマンドレットを使用して、接続が成功したことを確認できます。*-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1

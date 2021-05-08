@@ -1,5 +1,5 @@
 ---
-title: CLI:アプリを Redis に接続する
+title: 'CLI: アプリを Redis に接続する'
 description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、Azure Cache for Redis にアプリを接続する方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: e4d9fc6e597fb51f607a3e2833ae6ddd7d9281fc
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 24658525ca1248aa82732a31eb9a40df1403203c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006340"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782423"
 ---
 # <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>CLI を使用して Azure Cache for Redis に App Service アプリを接続する
 
@@ -36,14 +36,14 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、App Service アプリ、Azure Cache for Redis、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
-| [`az redis create`](/cli/azure/redis#az-redis-create) | 新しい Azure Cache for Redis インスタンスを作成します。 |
-| [`az redis list-keys`](/cli/azure/redis#az-redis-list-keys) | Azure Cache for Redis インスタンスのアクセス キーを一覧表示します。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
+| [`az redis create`](/cli/azure/redis#az_redis-create) | 新しい Azure Cache for Redis インスタンスを作成します。 |
+| [`az redis list-keys`](/cli/azure/redis#az_redis_list_keys) | Azure Cache for Redis インスタンスのアクセス キーを一覧表示します。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | App Service アプリのアプリ設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

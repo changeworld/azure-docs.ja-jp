@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 638b8f24f8cf72f5c6a594a3c5a6eaacf469df8f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84807030"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056676"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS クラスター用の Application Gateway 上の LetsEncrypt.org に証明書を使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "84807030"
     次のスクリプトを実行して、`cert-manager` Helm Chart をインストールします。 リセットすると、以下のようになります。
 
     - AKS に新しい `cert-manager` 名前空間が作成される
-    - 次の CRD が作成される:Certificate、Challenge、ClusterIssuer、Issuer、Order
+    - 次の CRDs を作成します: Certificate、Challenge、ClusterIssuer、Issuer、Order
     - cert-manager チャートが ([docs.cert-manager.io](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#steps) から) インストールされる
 
     ```bash
@@ -47,11 +47,23 @@ ms.locfileid: "84807030"
     helm repo update
 
     # Install the cert-manager Helm chart
+    # Helm v3+
+    helm install \
+      cert-manager jetstack/cert-manager \
+      --namespace cert-manager \
+      --version v1.0.4 \
+      # --set installCRDs=true
+
+    # Helm v2
     helm install \
       --name cert-manager \
       --namespace cert-manager \
-      --version v0.8.0 \
-      jetstack/cert-manager
+      --version v1.0.4 \
+      jetstack/cert-manager \
+      # --set installCRDs=true
+      
+    #To automatically install and manage the CRDs as part of your Helm release, 
+    #   you must add the --set installCRDs=true flag to your Helm installation command.
     ```
 
 2. ClusterIssuer リソース
@@ -127,7 +139,7 @@ ms.locfileid: "84807030"
     EOF
     ```
 
-    数秒後に、自動的に発行された **ステージング**`Lets Encrypt` 証明書を使用して、Application Gateway HTTPS URL を介して `guestbook` サービスにアクセスできるようになります。
+    数秒後に、自動的に発行された **ステージング** `Lets Encrypt` 証明書を使用して、Application Gateway HTTPS URL を介して `guestbook` サービスにアクセスできるようになります。
     ブラウザーから、無効な証明機関について警告される場合があります。 ステージング証明書は `CN=Fake LE Intermediate X1` から発行されます。 これは、システムが想定どおりに機能し、運用環境の証明書を準備できたことを示します。
 
 4. 運用証明書

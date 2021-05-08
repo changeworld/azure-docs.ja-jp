@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: aa2c5801e61fb73219934c5d38e894520c41ab26
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.date: 04/01/2021
+ms.openlocfilehash: 7ffcb93493ada36df59c0a8305e941176e8320b8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104784035"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121474"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -335,7 +335,7 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
 * データセットに型固有のカスタマイズを使用できますが、\* レベルの構成を明示的に指定しなくても構成を指定できます。 前の例では、`typeProperties` の下にあるすべてのデータセット プロパティがパラメーター化されます。
 
 > [!NOTE]
-> **Azure のアラートとマトリックス** は、パイプライン用に構成されている場合、ARM デプロイのパラメーターとして現在サポートされていません。 新しい環境にアラートとマトリックスを再適用するには、 [Data Factory の監視、アラート、およびマトリックス](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)に関するページに従ってください。
+> **Azure のアラートとマトリックス** は、パイプライン用に構成されている場合、ARM デプロイのパラメーターとして現在サポートされていません。 新しい環境にアラートとマトリックスを再適用するには、 [Data Factory の監視、アラート、およびマトリックス](./monitor-using-azure-monitor.md#data-factory-metrics)に関するページに従ってください。
 > 
 
 ### <a name="default-parameterization-template"></a>既定のパラメーター化テンプレート
@@ -697,6 +697,9 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 デプロイ後スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+> [!NOTE]
+> `-deleteDeployment` フラグは、ARM のデプロイ履歴から ADF デプロイ エントリを削除することを指定するために使用されます。
 
 ![Azure PowerShell タスク](media/continuous-integration-deployment/continuous-integration-image11.png)
 

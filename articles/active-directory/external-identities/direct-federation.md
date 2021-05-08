@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 830119a5b3a7781e8b12e3d4df870f539a2cd63a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687245"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364908"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -33,12 +33,12 @@ ms.locfileid: "101687245"
  - 取引先組織との直接フェデレーションを設定してゲスト ユーザーを招待し、それ以降にその取引先組織が Azure AD に移行した場合、ご自身のテナント内に直接フェデレーション ポリシーが存在する限り、既に招待を利用済みのゲスト ユーザーは、引き続き直接フェデレーションを使用します。
  - 取引先組織との直接フェデレーションを削除すると、直接フェデレーションを現在使用しているすべてのゲスト ユーザーがサインインできなくなります。
 
-これらのどのシナリオでも、ご自身のディレクトリからゲスト ユーザー アカウントを削除してから再招待することで、ゲスト ユーザーの認証方法を更新できます。
+これらのいずれのシナリオでも、[利用状態をリセットする](reset-redemption-status.md)ことで、ゲスト ユーザーの認証方法を更新できます。
 
 直接フェデレーションは、contoso.com や fabrikam.com などのドメイン名前空間に関連付けられます。 組織では、AD FS またはサード パーティの IdP との直接フェデレーション構成を確立するときに、これらの Idp に 1 つまたは複数のドメイン名前空間を関連付けます。 
 
 ## <a name="end-user-experience"></a>エンド ユーザー エクスペリエンス 
-直接フェデレーションを使用すると、ご自身の Azure AD テナントに、ゲスト ユーザーが各自の組織アカウントを使用してサインインします。 共有リソースへのアクセス時にサインインを求められると、直接フェデレーションのユーザーは IdP にリダイレクトされます。 サインインが成功した後、Azure AD に戻ってリソースにアクセスします。 直接フェデレーションのユーザーの更新トークン有効期間は 12 時間です。これは、Azure AD での[パススルー更新トークンの既定の長さ](../develop/active-directory-configurable-token-lifetimes.md#exceptions)です。 連携した IdP で SSO が有効な場合、ユーザーは SSO を体験することになり、初回認証後にサインインを求めるメッセージは表示されません。
+直接フェデレーションを使用すると、ご自身の Azure AD テナントに、ゲスト ユーザーが各自の組織アカウントを使用してサインインします。 共有リソースへのアクセス時にサインインを求められると、直接フェデレーションのユーザーは IdP にリダイレクトされます。 サインインが成功した後、Azure AD に戻ってリソースにアクセスします。 直接フェデレーションのユーザーの更新トークン有効期間は 12 時間です。これは、Azure AD での[パススルー更新トークンの既定の長さ](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties)です。 連携した IdP で SSO が有効な場合、ユーザーは SSO を体験することになり、初回認証後にサインインを求めるメッセージは表示されません。
 
 ## <a name="sign-in-endpoints"></a>サインインのエンドポイント
 
@@ -89,7 +89,7 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>直接フェデレーションは、部分的に同期されたテナントに起因するサインインの問題に対応していますか。
 いいえ。このシナリオでは、[電子メールのワンタイム パスコード](one-time-passcode.md)機能を使用する必要があります。 "部分的に同期されたテナント" とは、オンプレミスのユーザー ID がクラウドに完全には同期されていないパートナーの Azure AD テナントのことです。 クラウド上に ID がまだ存在していないゲストが、B2B の招待を利用しようとした場合、そのゲストはサインインできません。 ワンタイム パスコード機能であれば、このゲストをサインインさせることができます。 直接フェデレーション機能は、IdP によって管理される独自の組織アカウントをゲストが持っているが、その組織に Azure AD の存在がまったくないというシナリオに対応しています。
 ### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>組織で直接フェデレーションを構成した場合、各ゲストに個別の招待を送り、ゲストはその招待を利用する必要がありますか。
-直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されません。 ご自身のディレクトリからゲスト ユーザー アカウントを削除してから再招待することで、ゲスト ユーザーの認証方法を更新できます。
+直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されません。 ゲスト ユーザーの認証方法を更新するには、[利用状態をリセット](reset-redemption-status.md)します。
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>手順 1:取引先組織の ID プロバイダーを構成する
 最初に、取引先組織において、必須の要求と証明書利用者信頼を指定して ID プロバイダーを構成する必要があります。 
 
@@ -212,7 +212,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>直接フェデレーションを削除する方法
-直接フェデレーション設定を削除できます。 実行した場合、既に招待を利用済みの直接フェデレーションのゲスト ユーザーは、サインインできなくなります。 しかし、ディレクトリから削除し、再招待することで、リソースへのアクセス権をもう一度付与することができます。 Azure AD ポータルで ID プロバイダーとの直接フェデレーションを削除するには:
+直接フェデレーション設定を削除できます。 実行した場合、既に招待を利用済みの直接フェデレーションのゲスト ユーザーは、サインインできなくなります。 ただし、[ユーザーの利用状態をリセットする](reset-redemption-status.md)ことで、リソースへのアクセスを再度許可することができます。 Azure AD ポータルで ID プロバイダーとの直接フェデレーションを削除するには:
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
 2. **[外部 ID]** を選択します。

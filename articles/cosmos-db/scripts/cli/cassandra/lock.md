@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 94ff29d2c3272b61ff09fa0e564fcf2fcd281130
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b2c1e663c659935e7e820f30a281099058a4cf34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94566046"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771013"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-cassandra-api-keyspace-and-table-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos Cassandra API のキースペースとテーブルを保護するリソース ロックを作成する
 [!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
@@ -34,10 +34,10 @@ ms.locfileid: "94566046"
 
 | コマンド | Notes |
 |---|---|
-| [az lock create](/cli/azure/lock#az-lock-create) | ロックを作成します。 |
-| [az lock list](/cli/azure/lock#az-lock-list) | ロック情報を一覧表示します。 |
-| [az lock show](/cli/azure/lock#az-lock-show) | ロックのプロパティを表示します。 |
-| [az lock delete](/cli/azure/lock#az-lock-delete) | ロックを削除します。 |
+| [az lock create](/cli/azure/lock#az_lock_create) | ロックを作成します。 |
+| [az lock list](/cli/azure/lock#az_lock_list) | ロック情報を一覧表示します。 |
+| [az lock show](/cli/azure/lock#az_lock_show) | ロックのプロパティを表示します。 |
+| [az lock delete](/cli/azure/lock#az_lock_delete) | ロックを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

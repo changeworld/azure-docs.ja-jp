@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: df9efef1000ab6a824c869e6684ab1424e8462f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f01a1204aefbcaabe0ddac254b24bc014c3d5a64
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654528"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -54,7 +54,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成
 
-ソリューション ダッシュボードで **[構成]** をクリックして、[DNS 分析構成] ページを開きます。 次の 2 種類の構成変更を行うことができます。
+Azure portal の Log Analytics ワークスペースで、 **[ワークスペースの概要]** を選択し、 **[DNS Analytics]** タイルをクリックします。 ソリューション ダッシュボードで **[構成]** をクリックして、[DNS 分析構成] ページを開きます。 次の 2 種類の構成変更を行うことができます。
 
 - **許可リストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスの許可リストが保持されています。 この許可リストのドメイン名のサフィックスと一致するドメイン名に解決されるルックアップ クエリは、ソリューションでは処理されません。 許可リストに含まれるドメイン名を処理しないことで、Azure Monitor に送信されるデータを最適化できます。 既定の許可リストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
 

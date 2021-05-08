@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: c0bd2f6a021baae80dafcc3d544e1062d8e022e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94653336"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN タグの概要
@@ -33,7 +33,7 @@ FQDN タグは、よく知られている Microsoft サービスに関連付け�
 |Windows Update     |「[ソフトウェアの更新用にファイアウォールを構成する方法](/mem/configmgr/sum/get-started/install-a-software-update-point)」で説明されているように、Microsoft Update への発信アクセスを許可します。|
 |Windows 診断|すべての [Windows 診断のエンドポイント](/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)への発信アクセスを許可します。|
 |Microsoft Active Protection Service (MAPS)|[MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/) への発信アクセスを許可します。|
-|App Service Environment (ASE)|ASE プラットフォーム トラフィックへの発信アクセスを許可します。 このタグの対象には、ASE によって作成されたお客様固有のストレージ エンドポイントおよび SQL エンドポイントは含まれません。 これらは、[サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用して有効にするか、手動で追加する必要があります。<br><br>Azure Firewall と ASE の統合の詳細については、「[App Service 環境をロックする](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)」を参照してください。|
+|App Service Environment (ASE)|ASE プラットフォーム トラフィックへの発信アクセスを許可します。 このタグの対象には、ASE によって作成されたお客様固有のストレージ エンドポイントおよび SQL エンドポイントは含まれません。 これらは、[サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用して有効にするか、手動で追加する必要があります。<br><br>Azure Firewall と ASE の統合の詳細については、「[App Service Environment をロックする](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)」を参照してください。|
 |Azure Backup|Azure Backup サービスへの発信アクセスを許可します。|
 |Azure HDInsight|HDInsight プラットフォーム トラフィックへの発信アクセスを許可します。 このタグでは、HDInsight からのお客様固有のストレージ トラフィックまたは SQL トラフィックは対象になりません。 [サービス エンドポイント](../virtual-network/tutorial-restrict-network-access-to-resources.md)を使用してこれらを有効にするか、手動で追加します。|
 |WindowsVirtualDesktop (WVD)|Windows Virtual Desktop プラットフォームの送信トラフィックを許可します。 このタグの対象には、WVD によって作成されたデプロイ固有のストレージと Service Bus エンドポイントは含まれません。 また、DNS および KMS ネットワーク ルールが必要です。 Azure Firewall と WVD の統合の詳細については、[Azure Firewall を使用して Window Virtual Desktop のデプロイを保護する](protect-windows-virtual-desktop.md)方法に関する記事を参照してください。|

@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: error-reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 89f063ab50cfd880552e80a77ba798e4d06de5b3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/05/2021
+ms.openlocfilehash: 77bd59782d12d7d73e6e882e929ae9a4c95250a7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709582"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449887"
 ---
 # <a name="error-codes"></a>エラー コード #
 

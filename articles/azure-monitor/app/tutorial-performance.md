@@ -1,18 +1,17 @@
 ---
 title: Azure Application Insights を使用してパフォーマンスに関する問題を診断する | Microsoft Docs
 description: Azure Application Insights を使用して、アプリケーションのパフォーマンスに関する問題を検出して診断するためのチュートリアルです。
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
-ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36a581cb958639f4e9d88a8828b341ef1a1919d7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100597654"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383220"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 

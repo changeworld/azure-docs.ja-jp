@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98698069"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105582286"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -27,7 +27,7 @@ ms.locfileid: "98698069"
 
 1. 以下のオプションの 1 つを選択します。
 
-    |  |  |
+    |  | 説明 |
     | --- | --- |
     | **特定のユーザーとグループ** | 指定したディレクトリ内のユーザーとグループのみがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 |
     | **All members (excluding guests) (すべてのメンバー (ゲストを除く))** | ディレクトリ内のすべてのメンバー ユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 このオプションには、ディレクトリに招待したゲスト ユーザーは含まれません。 |
@@ -62,7 +62,7 @@ ms.locfileid: "98698069"
 
 1. 以下のオプションの 1 つを選択します。
 
-    |  |  |
+    |  | 説明 |
     | --- | --- |
     | **Specific connected organizations (特定の接続済み組織)** | 管理者が以前に追加した組織の一覧から選択する場合は、このオプションを選択します。 選択された組織のすべてのユーザーは、このアクセス パッケージを要求できます。 |
     | **All connected organizations (すべての接続済み組織)** | すべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 |

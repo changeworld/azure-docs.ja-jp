@@ -2,207 +2,152 @@
 title: Azure Static Web Apps 用にローカル開発環境を設定する
 description: Azure Static Web Apps 用のローカル開発環境を設定する方法について説明します
 services: static-web-apps
-author: burkeholland
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: how-to
-ms.date: 05/08/2020
-ms.author: buhollan
+ms.date: 04/02/2021
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91326169"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588787"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビュー用にローカル開発環境を設定する
 
-Azure Static Web Apps インスタンスは、異なる 2 種類のアプリケーションで構成されています。 1 つ目は、静的コンテンツ用の Web アプリです。 多くの場合、Web アプリはフロントエンドのフレームワークやライブラリ、または静的サイト ジェネレーターを使用して作成されます。 2 つ目の側面は API です。これは、充実したバックエンド開発環境を提供する Azure Functions アプリです。
+Azure Static Web Apps サイトには、クラウドに発行されると、同じアプリケーションであるかのように連携して動作する多くのサービスがあります。 次のようなサービスがあります。
 
-クラウド内で実行されている場合、Azure Static Web Apps では、`api` ルートへの要求が Web アプリから Azure Functions アプリにシームレスにマップされ、CORS 構成は必要ありません。 ローカルでは、この動作を模倣するためにアプリケーションを構成する必要があります。
+- 静的 Web アプリ
+- Azure Functions API
+- 認証と承認のサービス
+- ルーティングと構成のサービス
 
-この記事では、ローカル開発用の推奨されるベストプラクティスについて説明します。これには以下の概念が含まれます。
+これらのサービスは相互に通信する必要があり、Azure Static Web Apps によってクラウドでこの統合が処理されます。
 
-- 静的コンテンツ用の Web アプリの設定
-- アプリケーションの API の Azure Functions アプリの構成
-- アプリケーションのデバッグと実行
-- アプリのファイルとフォルダーの構造に関するベストプラクティス
+ただし、ローカルで実行している場合、これらのサービスは自動的に関連付けられません。
+
+Azure で使用した場合と同様のエクスペリエンスを提供するために、[Azure Static Web Apps CLI](https://github.com/Azure/static-web-apps-cli) には次のサービスが用意されています。
+
+- ローカルの静的サイト サーバー
+- フロントエンド フレームワーク開発サーバーへのプロキシ
+- API エンドポイントへのプロキシ (Azure Functions Core Tools を通じて利用可能)
+- モックの認証と承認サーバー
+- ローカル ルートと構成設定の適用
+
+## <a name="how-it-works"></a>しくみ
+
+次のグラフは、要求がローカルで処理される方法を示しています。
+
+:::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Azure Static Web Apps CLI の要求と応答のフロー":::
+
+> [!IMPORTANT]
+> CLI によって処理されるアプリケーションにアクセスするには、`http://localhost:4280` に移動します。
+
+- ポート `4280` に対して行われた **要求** は、要求の種類に応じて適切なサーバーに転送されます。
+
+- HTML や CSS などの **静的コンテンツ** 要求は、内部 CLI 静的コンテンツ サーバーによって、またはデバッグのためにフロントエンド フレームワーク サーバーによって処理されます。
+
+- **認証と承認** 要求は、アプリにフェイク ID プロファイルを提供するエミュレーターによって処理されます。
+
+- **Functions Core Tools ランタイム** では、サイトの API への要求が処理されます。
+
+- すべてのサービスからの **応答** は、すべて 1 つのアプリケーションであるかのようにブラウザーに返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Visual Studio Code](https://code.visualstudio.com/)
-- Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
-- Visual Studio Code 用 [Live Server 拡張機能](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
-  - フロントエンド JavaScript フレームワーク、または静的サイト ジェネレーターの CLI を使用していない場合にのみ必要です
+- **既存の Azure Static Web Apps サイト**: お持ちでない場合は、[vanilla-api](https://github.com/staticwebdev/vanilla-api/generate?return_to=/staticwebdev/vanilla-api/generate) スターター アプリから開始してください。
+- **npm を含む [Node.js](https://nodejs.org)** : [npm](https://www.npmjs.com/) へのアクセスを含む [Node.js LTS](https://nodejs.org) バージョンを実行します。
+- **[Visual Studio Code](https://code.visualstudio.com/)** : API アプリケーションのデバッグに使用されますが、CLI には必要ありません。
 
-## <a name="run-projects-locally"></a>ローカルでプロジェクトを実行する
+## <a name="get-started"></a>作業開始
 
-Azure Static Web App をローカルで実行する場合、プロジェクトに API が含まれているかどうかに応じて、3 つのプロセスが伴います。
+ターミナルで、既存の Azure Static Web Apps サイトのルート フォルダーを開きます。
 
-- ローカル Web サーバーの実行
-- API の実行
-- Web プロジェクトと API の接続
+1. CLI をインストールします。
 
-Web サイトの構築方法によっては、ブラウザーでアプリケーションを実行するためにローカル Web サーバーが必要になる場合と、ならない場合があります。 フロントエンド JavaScript フレームワークと静的サイト ジェネレーターを使用する場合、この機能はそれぞれの CLI (コマンド ライン インターフェイス) に組み込まれています。 次のリンクは、フレームワーク、ライブラリ、およびジェネレーターの選択に応じた CLI リファレンスに移動します。
+    `npm install -g @azure/static-web-apps-cli`
 
-### <a name="javascript-frameworks-and-libraries"></a>JavaScript フレームワークとライブラリ
+1. アプリケーションで必要な場合は、アプリをビルドします。
 
-- [Angular CLI](https://angular.io/cli)
-- [Vue CLI](https://cli.vuejs.org/guide/creating-a-project.html)
-- [React CLI](https://create-react-app.dev/)
+    `npm run build`、またはプロジェクトに対応する同等のコマンドを実行します。
 
-### <a name="static-site-generators"></a>静的サイト ジェネレーター
+1. アプリの出力ディレクトリに移動します。 多くの場合、出力フォルダーには _build_ のような名前が付けられています。
 
-- [Gatsby CLI](https://www.gatsbyjs.org/docs/gatsby-cli/)
-- [Hugo](https://gohugo.io/getting-started/quick-start/)
-- [Jekyll](https://jekyllrb.com/docs/usage/)
+1. CLI を起動します。
 
-CLI ツールを使用してサイトにサービスを提供する場合は、[API の実行](#run-api-locally)に関するセクションまでスキップできます。
+    `swa start`
 
-### <a name="running-a-local-web-server-with-live-server"></a>Live Server を使用してローカル Web サーバーを実行する
+1. http://localhost:4280 に移動して、ブラウザーでアプリを表示します。
 
-Visual Studio Code 用 Live Server 拡張機能には、静的コンテンツを提供するローカル開発用 Web サーバーが用意されています。
+### <a name="other-ways-to-start-the-cli"></a>CLI を起動するその他の方法
 
-#### <a name="create-a-repository"></a>リポジトリを作成する
+| 説明 | コマンド |
+|--- | --- |
+| 特定のフォルダーを処理する | `swa start ./output-folder` |
+| 実行中のフレームワーク開発サーバーを使用する | `swa start http://localhost:3000` |
+| フォルダー内の Functions アプリを起動する | `swa start ./output-folder --api ./api` |
+| 実行中の Functions アプリを使用する | `swa start ./output-folder --api http://localhost:7071` |
 
-1. GitHub にログインしていることを確認し、[https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) に移動して、このテンプレートを使用して **vanilla-api** という名前の新しい GitHub プロジェクトを作成します。
+## <a name="authorization-and-authentication-emulation"></a>承認と認証のエミュレーション
 
-    :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub の新しいリポジトリ ウィンドウ":::
+Azure Static Web Apps CLI は、Azure で実装されている[セキュリティ フロー](./authentication-authorization.md)をエミュレートします。 ユーザーがログインするときに、アプリに返されるフェイク ID プロファイルを定義できます。
 
-1. Visual Studio Code を開きます。
+たとえば、`/.auth/login/github` に移動しようとすると、ID プロファイルを定義できるページが返されます。
 
-1. **F1** キーを押してコマンド パレットを開きます。
+> [!NOTE]
+> エミュレーターは、GitHub だけでなく、あらゆるセキュリティ プロバイダーで動作します。
 
-1. 検索ボックスに「**clone**」と入力して、 **[Git:Clone]\(Git: クローン\)** を選択します。
+:::image type="content" source="media/local-development/auth-emulator.png" alt-text="ローカルの認証と承認のエミュレーター":::
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="Visual Studio Code での git clone オプション":::
+エミュレーターによって、次の[クライアント プリンシパル](./user-information.md#client-principal-data)の値を指定できるページが提供されます。
 
-1. **[リポジトリの URL]** に次の値を入力します。
+| 値 | 説明 |
+| --- | --- |
+| **ユーザー名** | セキュリティ プロバイダーに関連付けられているアカウント名。 この値は、クライアント プリンシパルの `userDetails` プロパティとして表示され、値を指定しない場合に自動生成されます。 |
+| **[ユーザー ID]** | CLI によって自動生成される値。  |
+| **ロール** | ロール名のリスト。各名前は新しい行に表示されます。  |
 
-   ```http
-   git@github.com:<YOUR_GITHUB_ACCOUNT>/vanilla-api.git
-   ```
+ログインすると、次のようになります。
 
-1. 新しいプロジェクト用のフォルダーの場所を選択します。
+- `/.auth/me` エンドポイント、または関数エンドポイントを使用して、ユーザーの[クライアント プリンシパル](./user-information.md)を取得できます。
 
-1. クローンされたリポジトリを開くようにメッセージが表示されたら、 **[開く]** を選択します。
+- `./auth/logout` に移動すると、クライアント プリンシパルがクリアされ、モック ユーザーがログアウトします。
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="新しいウィンドウで開く":::
+## <a name="debugging"></a>デバッグ
 
-Visual Studio Code により、クローンされたプロジェクトがエディターで開かれます。
+静的 Web アプリには、2 つのデバッグ コンテキストがあります。 1 つ目は静的コンテンツ サイト用で、2 つ目は API 関数用です。 Static Web Apps CLI でこれらのコンテキストのいずれかまたは両方に開発サーバーを使用できるようにすることで、ローカル デバッグを実行できます。
 
-### <a name="run-the-website-locally-with-live-server"></a>Live Server を使用してローカルで Web サイトを実行する
+次の手順では、両方のデバッグ コンテキストで開発サーバーを使用する一般的なシナリオを示します。
 
-1. **F1** キーを押してコマンド パレットを開きます。
+1. 静的サイト開発サーバーを起動します。 このコマンドは、使用しているフロントエンド フレームワークに固有のものですが、多くの場合、`npm run build`、`npm start`、または `npm run dev` のようなコマンドの形式になります。
 
-1. 検索ボックスに「**Live Server**」と入力して、 **[Live Server:Open with Live Server]\(Live Server: Live Server で開く\)** を選択します
+1. Visual Studio Code で API アプリケーション フォルダーを開き、デバッグ セッションを開始します。
 
-    ブラウザー タブが開き、アプリケーションが表示されます。
+1. 静的サーバーと API サーバーのアドレスを順番にリストして、`swa start` コマンドに渡します。
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="ブラウザーで実行されているシンプルな静的サイト":::
+    `swa start http://localhost:<DEV-SERVER-PORT-NUMBER> --api=http://localhost:7071`
 
-    このアプリケーションでは、`api/message` エンドポイントに対して HTTP 要求が行われます。 このアプリケーションの API 部分を開始する必要があるため、現時点ではこの要求は失敗します。
+次のスクリーンショットは、一般的なデバッグ シナリオでのターミナルを示しています。
 
-### <a name="run-api-locally"></a>ローカルで API を実行する
+静的コンテンツ サイトは、`npm run dev` を使用して実行されています。
 
-Azure Static Web Apps の API では、Azure Functions が利用されています。 Azure Static Web Apps プロジェクトに API を追加する方法の詳細については、[Azure Functions を使用した Azure Static Web Apps への API の追加](add-api.md)に関する記事をご覧ください。
+:::image type="content" source="media/local-development/run-dev-static-server.png" alt-text="静的サイト開発サーバー":::
 
-API 作成プロセスの一環として、Visual Studio Code の起動構成が作成されます。 この構成は _.vscode_ フォルダーに配置されます。 このフォルダーには、API をローカルでビルドして実行するために必要なすべての設定が含まれています。
+Azure Functions API アプリケーションにより、Visual Studio Code でデバッグ セッションが実行されています。
 
-1. Visual Studio Code で、**F5** キーを押して API を開始します。
+:::image type="content" source="media/local-development/visual-studio-code-debugging.png" alt-text="Visual Studio Code API のデバッグ":::
 
-1. 新しいターミナル インスタンスが開き、API ビルド プロセスからの出力が表示されます。
+Static Web Apps CLI が両方の開発サーバーを使用して起動されます。
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="Visual Studio Code ターミナルで実行されている API":::
+:::image type="content" source="media/local-development/static-web-apps-cli-terminal.png" alt-text="Azure Static Web Apps CLI のターミナル":::
 
-   Visual Studio Code のステータス バーがオレンジ色になりました。 この色は、API が実行中であり、デバッガーがアタッチされていることを示します。
+ポート `4280` を経由する要求は、静的コンテンツ開発サーバー、または API デバッグ セッションのいずれかにルーティングされるようになりました。
 
-1. 次に、**Ctrl/Cmd** キーを押し、ターミナル内の URL をクリックして、API を呼び出すブラウザー ウィンドウを開きます。
+ポートとサーバー アドレスをカスタマイズする方法のガイダンスを含む、さまざまなデバッグ シナリオの詳細については、[Azure Static Web Apps CLI リポジトリ](https://github.com/Azure/static-web-apps-cli)に関するページを参照してください。
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="API 呼び出しの結果を表示するブラウザー":::
-
-### <a name="debugging-the-api"></a>API のデバッグ
-
-1. Visual Studio Code で _api/GetMessage/index.js_ ファイルを開きます。
-
-1. 2 行目の左側の余白をクリックして、ブレークポイントを設定します。 ブレークポイントが設定されていることを示す赤い点が表示されます。
-
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Visual Studio Code でのブレークポイント":::
-
-1. ブラウザーで、<http://127.0.0.1:7071/api/message> で実行されるページを更新します。
-
-1. Visual Studio Code でブレークポイントがヒットし、プログラムの実行が一時停止されます。
-
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Visual Studio Code でのブレークポイントのヒット":::
-
-   API に対する完全な[デバッグ エクスペリエンスを Visual Studio Code で利用できます](https://code.visualstudio.com/Docs/editor/debugging)。
-
-1. デバッグ バーの **[続行]** ボタンを押して、実行を続行します。
-
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="Visual Studio Code の [続行] ボタン":::
-
-### <a name="calling-the-api-from-the-application"></a>アプリケーションからの API の呼び出し
-
-デプロイされると、Azure Static Web Apps では、これらの要求が _api_ フォルダー内のエンドポイントに自動的にマップされます。 このマッピングにより、アプリケーションから API への要求が次の例のようになることが保証されます。
-
-```javascript
-let response = await fetch("/api/message");
-```
-
-アプリケーションを JavaScript フレームワーク CLI を使用して構築するかどうかによって、アプリケーションをローカルで実行する際に `api` ルートへのパスを構成する方法が 2 つあります。
-
-- 環境構成ファイル (JavaScript フレームワークとライブラリに推奨)
-- ローカル プロキシ
-
-### <a name="environment-configuration-files"></a>環境構成ファイル
-
-CLI のあるフロントエンド フレームワークを使用してアプリを構築する場合は、環境構成ファイルを使用する必要があります。 各フレームワークまたはライブラリによって、これらの環境構成ファイルを処理する方法が異なります。 アプリケーションをローカルで実行するときに使用する開発用の構成ファイルと、アプリケーションを運用環境で実行するときに使用する運用環境用の構成ファイルを用意するのが一般的です。 使用する JavaScript フレームワークまたは静的サイト ジェネレーターの CLI では、Azure Static Web Apps によってアプリがビルドされるときに、ローカルでの開発用ファイルと運用ファイルの使用が自動的に認識されます。
-
-開発用構成ファイルでは、API へのパスを指定できます。これは、サイトの API がローカルで実行されているローカルの場所 `http:127.0.0.1:7071` を指します。
-
-```
-API=http:127.0.0.1:7071/api
-```
-
-運用構成ファイルでは、API へのパスを `api` として指定します。 これにより、アプリケーションを運用環境で実行したときに、"yoursite.com/api" を使用して api を呼び出すことができます。
-
-```
-API=api
-```
-
-これらの構成値は、Web アプリの JavaScript で Node 環境変数として参照できます。
-
-```js
-let response = await fetch(`${process.env.API}/message`);
-```
-
-CLI を使用して開発モードでサイトを実行したり、運用環境用のサイトを構築したりする場合、`process.env.API` の値は適切な構成ファイルの値に置き換えられます。
-
-フロントエンド JavaScript フレームワークおよびライブラリ用に環境ファイルを構成する方法の詳細については、次の記事を参照してください。
-
-- [Angular 環境変数](https://angular.io/guide/build#configuring-application-environments)
-- [React - カスタム環境変数の追加](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-- [Vue - モードと環境変数](https://cli.vuejs.org/guide/mode-and-env.html)
-
-[!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
-
-##### <a name="restart-live-server"></a>Live Server の再起動
-
-1. Visual Studio Code で、**F1** キーを押してコマンド パレットを開きます。
-
-1. 「**Live Server**」と入力して、 **[Live Server:Stop Live Server]\(Live Server: Live Server を停止する\)** を選択します。
-
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Visual Studio コマンド パレットでの Live Server の停止コマンド":::
-
-1. **F1** キーを押してコマンド パレットを開きます。
-
-1. 「**Live Server**」と入力して、**Live Server:Open with Live Server** を選択して Live Server を起動します。
-
-1. `http://locahost:3000` で実行されているアプリケーションを更新します。 ブラウザーには、API から返されたメッセージが表示されるようになりました。
-
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="ブラウザーに Hello from API が表示される":::
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [アプリケーションの設定の構成](application-settings.md)
+> [アプリケーションの作成](configuration.md)

@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: chrande
-ms.openlocfilehash: 1818838a68c2712336a3515b2a82b5fdd518d237
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8865a16c2840b65f432de679c6dd63b285b1f760
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661173"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771817"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>MongoDB 用 Azure Cosmos DB API アカウントの API バージョンをアップグレードする
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -67,42 +67,35 @@ ms.locfileid: "101661173"
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法
 
-1. Azure portal に移動し、MongoDB 用 Azure Cosmos DB API アカウントの概要ブレードに移動します。 現在のサーバーが、想定したバージョンであることを確認します。
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/1.png" alt-text="MongoDB アカウントを使用した Azure portal の概要" border="false":::
+1. Azure Cosmos DB API for MongoDB アカウントに移動します。 **[概要]** ウィンドウを開き、現在の **サーバーのバージョン** が 3.2 または 3.6 であることを確認します。
 
-2. 左側のオプションで、[`Features`] ブレードを選択します。 これにより、データベース アカウントで使用できるアカウント レベルの機能が表示されます。
+    :::image type="content" source="./media/mongodb-version-upgrade/check-current-version.png" alt-text="Azure portal から MongoDB アカウントの現在のバージョンを確認します。" border="true":::
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure portal で機能ブレードが強調表示された MongoDB アカウントの概要" border="false":::
+1. 左側のメニューから、`Features` ウィンドウを開きます。 このウィンドウに、データベース アカウントで使用できるアカウント レベルの機能が表示されます。
 
-3. `Upgrade Mongo server version` 行をクリックします。 このオプションが表示されない場合は、アカウントがこのアップグレードに適合していない可能性があります。 これに該当する場合は、[サポート チケット](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)をご提出ください。
+1. `Upgrade MongoDB server version` 行を選択します。 このオプションが表示されない場合は、アカウントがこのアップグレードに適合していない可能性があります。 これに該当する場合は、[サポート チケット](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)をご提出ください。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="オプションを含む機能ブレード。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/upgrade-server-version.png" alt-text="[機能] ブレードを開き、アカウントをアップグレードします。" border="true":::
 
-4. アップグレードについて表示されている情報を確認します。 プロセスを開始する準備ができ次第、[`Enable`] をクリックします。
+1. アップグレードについて表示されている情報を確認します。 `Set server version to 4.0` (または現在のバージョンに応じて 3.6) を選択します。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="展開されたアップグレード ガイダンス。" border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/select-upgrade.png" alt-text="アップグレードのガイダンスを確認し、アップグレードを選択します。" border="true":::
 
-5. プロセスを開始すると、[`Features`] メニューにアップグレードの状態が表示されます。 状態は `Pending` から `In Progress` になり、`Upgraded` になります。 このプロセスは、データベース アカウントの既存の機能や操作には影響しません。
+1. アップグレードを開始すると、 **[機能]** メニューがグレー表示になり、状態が *[保留中]* に設定されます。 アップグレードは、完了するまで約 15 分かかります。 このプロセスは、データベース アカウントの既存の機能や操作には影響しません。 完了すると、 **[MongoDB サーバー バージョンの更新]** の [状態] にアップグレードされたバージョンが表示されます。 要求の処理中に問題が発生した場合は、[サポートにお問い合わせください](https://azure.microsoft.com/en-us/support/create-ticket/)。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="アップグレードの開始後の状態。" border="false":::
+1. アカウントをアップグレードした後の考慮事項を次に示します。
 
-6. アップグレードが完了すると、状態が `Upgraded` と表示されます。 それをクリックすると、プロセスを終了するために必要な次の手順とアクションの詳細が表示されます。 要求の処理中に問題が発生した場合は、[サポートにお問い合わせください](https://azure.microsoft.com/en-us/support/create-ticket/)。
+    1. 3\.2 からアップグレードする場合は、 **[概要]** ウィンドウに戻り、アプリケーションで使用する新しい接続文字列をコピーします。 3\.2 を実行している古い接続文字列は中断されません。 一貫性のあるエクスペリエンスを確保するには、すべてのアプリケーションで新しいエンドポイントを使用する必要があります。
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="アップグレードされたアカウントの状態。" border="false":::
-
-7. 
-    1. 3\.2 からアップグレードする場合は、`Overview` ブレードに戻り、アプリケーションで使用する新しい接続文字列をコピーします。 3\.2 を実行している古い接続文字列は中断されません。 一貫性のあるエクスペリエンスを確保するには、すべてのアプリケーションで新しいエンドポイントを使用する必要があります。
-    2. 3\.6 からアップグレードした場合、既存の接続文字列は、指定されたバージョンにアップグレードされて引き続き使用されます。
-
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="新しい概要ブレード。" border="false":::
-
+    1. 3.6 からアップグレードした場合、既存の接続文字列は、指定されたバージョンにアップグレードされて引き続き使用されます。
 
 ## <a name="how-to-downgrade"></a>ダウングレードする方法
-「アップグレードする方法」セクションにある同じ手順に従って、アカウントを 4.0 から 3.6 にダウングレードすることもできます。 
+
+「アップグレードする方法」セクションにある同じ手順に従って、アカウントを 4.0 から 3.6 にダウングレードすることもできます。
 
 3\.2 から (4.0 または 3.6 に) アップグレードした後で 3.2 にダウングレードしたい場合は、アップグレード後もバージョン 3.2. を実行しているアクティブなホスト `accountname.documents.azure.com` で、以前 (3.2) の接続文字列に戻すだけでかまいません。
-
 
 ## <a name="next-steps"></a>次のステップ
 

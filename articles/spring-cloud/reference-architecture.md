@@ -7,10 +7,10 @@ ms.author: akaleshian
 ms.service: spring-cloud
 description: この参照アーキテクチャは、Azure Spring Cloud を使用するための一般的なエンタープライズ ハブとスポーク設計を使用した基盤です。
 ms.openlocfilehash: 74183ca2decf8487e5c41cf36d5784538021077f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104877499"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud の参照アーキテクチャ

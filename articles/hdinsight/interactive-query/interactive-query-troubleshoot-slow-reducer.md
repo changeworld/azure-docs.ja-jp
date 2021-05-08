@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
 ms.openlocfilehash: f9b6e0d862d17badb1caa672852214cdd86abb49
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98930809"
 ---
-# <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>シナリオ:Azure HDInsight でレジューサーが遅い
+# <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>シナリオ: Azure HDInsight でレジューサーが遅い
 
 この記事では、Azure HDInsight クラスターで Interactive Query コンポーネントを使用するときのトラブルシューティングの手順と問題の可能な解決策について説明します。
 
@@ -29,11 +29,11 @@ ms.locfileid: "98930809"
 
 `true` の値は、パーティション数が多く、データ スキューが発生していない場合に意味があります。 このような場合、1 つのレジューサーで各パーティションが処理され、後続のクエリのパフォーマンスが向上するように、マップ フェーズの結果が書き出されます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. 複数のパーティションに正規化するようにデータのパーティションを再分割してみます。
 
-1. 1 の手順を実行できない場合は、beeline セッションで config の値を false に設定してから、クエリを再試行します。 `set hive.optimize.sort.dynamic.partition=false` クラスター レベルで値を false に設定することは推奨されません。 `true` の値が最適なので、データとクエリの性質に基づいて必要に応じてこのパラメーターを設定します。
+1. 1 の手順を実行できない場合は、beeline セッションで config の値を false に設定してから、クエリを再試行します。 `set hive.optimize.sort.dynamic.partition=false`. クラスター レベルで値を false に設定することは推奨されません。 `true` の値が最適なので、データとクエリの性質に基づいて必要に応じてこのパラメーターを設定します。
 
 ## <a name="next-steps"></a>次のステップ
 

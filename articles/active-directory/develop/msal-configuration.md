@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92275598"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
@@ -30,7 +30,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 ### <a name="general-settings"></a>全般設定
 
-| プロパティ | データ型 | 必須 | メモ |
+| プロパティ | データ型 | 必須 | Notes |
 |-----------|------------|-------------|-------|
 | `client_id` | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのクライアント ID |
 | `redirect_uri`   | String | はい | [アプリケーション登録ページ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)からのアプリのリダイレクト URI |
@@ -107,7 +107,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="authority-properties"></a>機関のプロパティ
 
-| プロパティ | データ型  | 必須 | メモ |
+| プロパティ | データ型  | 必須 | Notes |
 |-----------|-------------|-----------|--------|
 | `type` | String | はい | ご利用のアプリがターゲットとする対象ユーザーまたはアカウントの種類をミラー化します。 指定できる値: `AAD`、`B2C` |
 | `audience` | Object | いいえ | Type=`AAD` の場合にのみ適用されます。 ご利用のアプリがターゲットとする ID を指定します。 ご利用のアプリの登録からの値を使用します |
@@ -116,7 +116,7 @@ Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON �
 
 #### <a name="audience-properties"></a>対象ユーザーのプロパティ
 
-| プロパティ | データ型  | 必須 | メモ |
+| プロパティ | データ型  | 必須 | Notes |
 |-----------|-------------|------------|-------|
 | `type` | String | はい | ご利用のアプリでターゲットとする対象ユーザーを指定します。 指定できる値: `AzureADandPersonalMicrosoftAccount`、`PersonalMicrosoftAccount`、`AzureADMultipleOrgs`、`AzureADMyOrg` |
 | `tenant_id` | String | はい | `"type":"AzureADMyOrg"` の場合にのみ必要です。 他の `type` 値の場合は省略可能です。 これには、`contoso.com` などのテナント ドメインや、`72f988bf-86f1-41af-91ab-2d7cd011db46` などのテナント ID にすることができます |

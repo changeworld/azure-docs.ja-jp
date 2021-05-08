@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから Azure Backup Recovery Services コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 28a0c4d5f643b980d93df2592da38f5da12dd01a
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: bb6be070ac0fb408ac37c8ae7b003b54da5d6dea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520461"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773659"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -48,6 +48,7 @@ ms.locfileid: "100520461"
   - **MABS または DPM 管理サーバー**:コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[バックアップ管理サーバー]** に移動します。 DPM または Azure Backup Server (MABS) を使用している場合は、ここに一覧表示されるすべての項目を、それらのバックアップ データと一緒に削除または登録解除する必要があります。 [これらの手順に従って](#delete-protected-items-on-premises)管理サーバーを削除します。
 
 - **手順 4**:登録されているすべてのストレージ アカウントが確実に削除されるようにする必要があります。 コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[ストレージ アカウント]** に移動します。 ここに一覧表示されるストレージ アカウントがある場合は、それらすべての登録を解除する必要があります。 アカウントの登録を解除する方法については、「[ストレージアカウントの登録を解除する](manage-afs-backup.md#unregister-a-storage-account)」を参照してください。
+- **手順 5**: コンテナーに対して作成されたプライベート エンドポイントがないことを確認します。 コンテナーのダッシュボード メニューの [設定] にある **[プライベート エンドポイント接続]** に移動します。作成または作成しようとしたプライベート エンドポイント接続がある場合は、コンテナーの削除を始める前に削除してください。 
 
 これらの手順を完了したら、引き続き[コンテナーを削除](#delete-the-recovery-services-vault)できます。
 
@@ -73,6 +74,7 @@ ms.locfileid: "100520461"
 
          ![[バックアップ データの削除] ウィンドウ。](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
+   このオプションを選択すると、スケジュールされたバックアップが削除され、オンデマンド バックアップも削除されます。
 3. 次の **[通知]** アイコンを確認します: ![[通知] アイコン。](./media/backup-azure-delete-vault/messages.png) プロセスが完了すると、サービスによって次のメッセージが表示されます。*バックアップを停止し、"* バックアップ アイテム *" のバックアップ データを削除しています*。 *操作は正常に完了しました*。
 4. **[バックアップ アイテム]** メニューで **[更新]** を選択して、バックアップ アイテムが削除されたことを確認します。
 
@@ -318,7 +320,7 @@ Recovery Services コンテナーの削除について、[詳細を学習](/powe
                              [--yes]
     ```
 
-    詳細については、こちらの [記事](/cli/azure/backup/protection#az-backup-protection-disable)を参照してください。
+    詳細については、こちらの [記事](/cli/azure/backup/protection#az_backup_protection_disable)を参照してください。
 
 - 既存の Recovery Services コンテナーを削除します。
 

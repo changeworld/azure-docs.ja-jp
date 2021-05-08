@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 216410d423a70037588a6fb596771a702a13c003
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09ae46ec6455b6998bcf4da5648d2ceaef4d5b19
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472241"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644788"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>CSV から Azure SQL Database または SQL Managed Instance へのデータの読み込み (フラット ファイル)
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ bcp コマンドライン ユーティリティを使用して、CSV ファイ�
 * インストールされた bcp コマンド ライン ユーティリティ
 * インストールされた sqlcmd コマンド ライン ユーティリティ
 
-bcp ユーティリティと sqlcmd ユーティリティは [Microsoft sqlcmd ドキュメント][https://docs.microsoft.com/sql/tools/sqlcmd-utility?view=sql-server-ver15 ] からダウンロードできます。
+bcp および sqlcmd ユーティリティは [[Microsoft sqlcmd ドキュメント]](/sql/tools/sqlcmd-utility?view=sql-server-ver15&preserve-view=true) からダウンロードできます。
 
 ### <a name="data-in-ascii-or-utf-16-format"></a>ASCII または UTF-16 形式のデータ
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9a7e16bf85293a412baf5015af825377438ebb7b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96493680"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778501"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーを管理する
 
@@ -26,13 +26,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure CLI バージョン 2.0 以降をローカルで実行する必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-[az login](/cli/azure/reference-index#az-login) コマンドを使用して、お使いのアカウントにサインインします。 
+[az login](/cli/azure/reference-index#az_login) コマンドを使用して、お使いのアカウントにサインインします。 
 
 ```azurecli-interactive
 az login
 ```
 
-[az account list](/cli/azure/account) コマンドを使用して、お使いのサブスクリプションを選択します。 **az login** の出力の **id** 値を書き留めておき、次のコマンドで **subscription** 引数の値として使用します。 複数のサブスクリプションがある場合は、リソースが課金対象になるサブスクリプションを選択してください。 すべてのサブスクリプションを識別するには、[az account list](/cli/azure/account#az-account-list) コマンドを使用します。
+[az account list](/cli/azure/account) コマンドを使用して、お使いのサブスクリプションを選択します。 **az login** の出力の **id** 値を書き留めておき、次のコマンドで **subscription** 引数の値として使用します。 複数のサブスクリプションがある場合は、リソースが課金対象になるサブスクリプションを選択してください。 すべてのサブスクリプションを識別するには、[az account list](/cli/azure/account#az_account_list) コマンドを使用します。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>サーバーの削除
 
-Azure Database for PostgreSQL フレキシブル サーバーを削除するには、[az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) コマンドを実行します。
+Azure Database for PostgreSQL フレキシブル サーバーを削除するには、[az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az_postgresql_flexible_server_delete) コマンドを実行します。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

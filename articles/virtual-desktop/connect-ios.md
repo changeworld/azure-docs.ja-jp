@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 02/08/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 87bb2cc53ce056552e8f44aac4ade96e603a8787
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: dc094f62cb4c2d0b22d80835c273c48c613122d4
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89230043"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448051"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-ios-client"></a>iOS クライアントを使用して Windows Virtual Desktop に接続する
 

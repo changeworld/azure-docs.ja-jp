@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 85bcdb319431f1079cdbc8b94f0313f1dd6b67d6
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602003"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587614"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -39,11 +39,11 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Computer Vision](./computer-vision/index.yml "Computer Vision")|Computer Vision サービスを使用すると、画像を処理して情報を返すための高度なコグニティブ アルゴリズムにアクセスできます。|
-|[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Custom Vision Service を使用すると、カスタム画像分類器を構築できます。|
-|[Face](./face/index.yml "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。|
-|[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。|
+|[Computer Vision](./computer-vision/index.yml "Computer Vision")|Computer Vision サービスを使用すると、画像を処理して情報を返すための高度なコグニティブ アルゴリズムにアクセスできます。 サービスを開始するには、[Computer Vision のクイックスタート](./computer-vision/quickstarts-sdk/client-library.md)に関する記事をご覧ください。|
+|[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Custom Vision Service を使用すると、独自の画像分類器を構築、デプロイ、改良できます。 画像分類器は、視覚特性に基づいて画像にラベルを適用する AI サービスです。 |
+|[Face](./face/index.yml "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。 サービスを開始するには、[Face のクイックスタート](./face/quickstarts/client-libraries.md)に関する記事をご覧ください。|
+|[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。 開始するには、[Form Recognizer のクイックスタート](./form-recognizer/quickstarts/client-library.md)に関する記事をご覧ください。|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。 開始するには、[Video Indexer のクイックスタート](/azure/media-services/video-indexer/video-indexer-get-started)に関する記事をご覧ください。|
 
 ## <a name="speech-apis"></a>Speech API
 
@@ -59,20 +59,20 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。|
-|[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。|
-|[Text Analytics](./text-analytics/index.yml "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。|
+|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 開始するには、[LUIS のクイックスタート](./luis/get-started-portal-build-app.md)に関する記事をご覧ください。|
+|[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。 開始するには、[QnA Maker のクイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md)に関する記事をご覧ください。|
+|[Text Analytics](./text-analytics/index.yml "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。 開始するには、[Text Analytics のクイックスタート](./text-analytics/quickstarts/client-libraries-rest-api.md)に関する記事をご覧ください。|
 |[Translator](./translator/index.yml "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
-| [Immersive Reader](./immersive-reader/index.yml "イマーシブ リーダー") | Immersive Reader は、スクリーン リーダーや読解機能をアプリケーションに追加するものです。 |
+| [Immersive Reader](./immersive-reader/index.yml "イマーシブ リーダー") | Immersive Reader は、スクリーン リーダーや読解機能をアプリケーションに追加するものです。 サービスを開始するには、[イマーシブ リーダーのクイックスタート](./immersive-reader/quickstarts/client-libraries.md)をご覧ください。 |
 
 ## <a name="decision-apis"></a>Decision API
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。|
-|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。|
-|[Metrics Advisor](./metrics-advisor/index.yml) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。|
-|[Personalizer](./personalizer/index.yml "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。|
+|[Anomaly Detector](./anomaly-detector/index.yml "Anomaly Detector") |Anomaly Detector では、時系列データを監視し、その中の異常を検出できます。 開始するには、[Anomaly Detector のクイックスタート](./anomaly-detector/quickstarts/client-libraries.md)に関する記事をご覧ください。|
+|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Content Moderator は、不快感を与えたり、望ましくなかったり、危険であったりする可能性があるコンテンツを監視します。 開始するには、[Content Moderator のクイックスタート](./content-moderator/client-libraries.md)に関する記事をご覧ください。|
+|[Metrics Advisor](./metrics-advisor/index.yml) (プレビュー) | Metrics Advisor には、多変量の時系列データに対するカスタマイズ可能な異常検出機能と、そのサービスの使用を支援するあらゆる機能を備えた Web ポータルがあります。 開始するには、[Metrics Advisor のクイックスタート](./metrics-advisor/quickstarts/rest-api-and-client-library.md)に関する記事をご覧ください。 |
+|[Personalizer](./personalizer/index.yml "Personalizer")|Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにします。 開始するには、[Personalizer のクイックスタート](./personalizer/quickstart-personalizer-sdk.md)に関する記事をご覧ください。|
 
 ## <a name="search-apis"></a>検索 API
 
@@ -92,7 +92,16 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Bing Local Business Search](/azure/cognitive-services/bing-local-business-search/ "Bing Local Business Search")| Bing Local Business Search API を使用すると、アプリケーションでは検索クエリに基づいて地元企業に関する連絡先や場所の情報を検索できます。|
 |[Bing Spell Check](/azure/cognitive-services/bing-spell-check/ "Bing Spell Check")|Bing Spell Check を使用して、コンテキストに応じた文法およびスペル チェックを実行できます。|
 
-## <a name="development-options"></a>開発オプション 
+## <a name="get-started-with-cognitive-services"></a>Cognitive Services の概要
+
+まず、以下の方法で Cognitive Services リソースを作成します。それぞれの方法については、ハンズオン クイックスタートをご覧ください。
+
+* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
+* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
+* [Azure SDK クライアント ライブラリ](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
+* [Azure Resource Manager (ARM) テンプレート](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) テンプレート")
+
+## <a name="using-cognitive-services-in-different-development-environments"></a>さまざまな開発環境で Cognitive Services を使用する
 
 Azure と Cognitive Services を使用すると、いくつかの開発オプションを利用できます。以下はその例です。
 
@@ -102,15 +111,6 @@ Azure と Cognitive Services を使用すると、いくつかの開発オプシ
 * ビッグ データ シナリオ用の Apache Spark、Azure Databricks、Azure Synapse Analytics、Azure Kubernetes Service などのツール。 
 
 詳細については、「[Cognitive Services の開発オプション](./cognitive-services-development-options.md)」を参照してください。
-
-## <a name="learn-with-the-quickstarts"></a>クイックスタートで学習する
-
-まず、以下の方法で Cognitive Services リソースを作成します。それぞれの方法については、ハンズオン クイックスタートをご覧ください。
-
-* [Azure Portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure portal")
-* [Azure CLI](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
-* [Azure SDK クライアント ライブラリ](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
-* [Azure Resource Manager (ARM) テンプレート](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager (ARM) テンプレート")
 
 <!--
 ## Subscription management
@@ -128,7 +128,7 @@ Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-vi
 
 ## <a name="containers-for-cognitive-services"></a>Cognitive Services のコンテナー
 
- Cognitive Services には、Azure クラウドまたはオンプレミスへのデプロイ用にコンテナーが用意されています。 詳細については、[Cognitive Services のコンテナー](cognitive-services-container-support.md "Cognitive Services コンテナー")に関するページを参照してください。
+ Azure Cognitive Services には、Docker コンテナーがいくつか用意されており、これにより、Azure で使用できるものと同じ API をオンプレミスで使用できます。 これらのコンテナーを使用すると、コンプライアンス、セキュリティ、またはその他の運用上の理由でデータに対して Cognitive Services を使用することが柔軟に可能になります。 詳細については、[Cognitive Services のコンテナー](cognitive-services-container-support.md "Cognitive Services コンテナー")に関するページを参照してください。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
@@ -154,3 +154,4 @@ Cognitive Services には、インテリジェント アプリケーションの
 
 * [Cognitive Services アカウントを作成する](cognitive-services-apis-create-account.md "Cognitive Services アカウントを作成する")
 * [Cognitive Services ドキュメントの新着情報](whats-new-docs.md "Cognitive Services ドキュメントの新着情報")
+* [Cognitive Services のコストを計画および管理する](plan-manage-costs.md)

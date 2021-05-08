@@ -10,10 +10,10 @@ ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
 ms.openlocfilehash: 0c182e1093c29206d27a0e55a46dd9a5607fa6ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101701707"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-logs-classic"></a>Azure Storage Analytics ログを有効にして管理する (クラシック)
@@ -26,7 +26,7 @@ ms.locfileid: "101701707"
 > - [Azure Blob Storage の監視](../blobs/monitor-blob-storage.md)
 > - [Azure Files の監視](../files/storage-files-monitoring.md)
 > - [Azure Queue Storage の監視](../queues/monitor-queue-storage.md)
-> - [Azure Table ストレージの監視](../tables/monitor-table-storage.md)
+> - [Azure Table Storage の監視](../tables/monitor-table-storage.md)
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
@@ -283,7 +283,7 @@ AzCopy の使用を開始するには、「[AzCopy を使ってみる](storage-u
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-特定のファイルをダウンロードする方法の詳細については、「[AzCopy v10 を使用して Azure BLOB ストレージから BLOB をダウンロードする](./storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+特定のファイルをダウンロードする方法の詳細については、「[AzCopy v10 を使用して Azure Blob Storage から BLOB をダウンロードする](./storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルでは、多くのログ読み取りツールで解析できる区切り記号付きテキスト形式が使用されています (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
 

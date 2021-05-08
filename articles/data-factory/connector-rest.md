@@ -4,21 +4,21 @@ description: Azure Data Factory パイプラインで Copy アクティビティ
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 779a8745688e6a1fb8a15bc9119c6fbc1803ca2c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369885"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078929"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory の Copy アクティビティを使用して、REST エンドポイントとの間でデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
-この REST コネクタ、[REST コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
+この REST コネクタ、[HTTP コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
 - **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
 - **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタの前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
@@ -57,7 +57,8 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 | type | **type** プロパティには **RestService** を設定する必要があります。 | はい |
 | url | REST サービスのベース URL。 | はい |
 | enableServerCertificateValidation | エンドポイントに接続するときに、サーバー側の TLS/SSL 証明書を検証するかどうか。 | いいえ<br /> (既定値は **true** です)。 |
-| authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。 | はい |
+| authenticationType | REST サービスへの接続に使用される認証の種類。 使用できる値は、**Anonymous**、**Basic**、**AadServicePrincipal**、および **ManagedServiceIdentity** です。 ユーザー ベースの OAuth はサポートされていません。 `authHeader` プロパティで認証ヘッダーを追加で構成することもできます。 それぞれのプロパティとサンプルについては、以下の対応するセクションを参照してください。| はい |
+| authHeaders | 追加の認証用 HTTP 要求ヘッダー。<br/> たとえば、API キー認証を使うには、認証の種類として "匿名" を選択し、ヘッダーに API キーを指定します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 ### <a name="use-basic-authentication"></a>基本認証を使用する
@@ -150,6 +151,35 @@ REST のリンクされたサービスでは、次のプロパティがサポー
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-authentication-headers"></a>認証ヘッダーの使用
+
+また、組み込みの認証の種類と共に、認証用の要求ヘッダーを構成できます。
+
+**例: API キー認証の使用**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -464,8 +494,8 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 5. **[Web]** アクティビティを選択します。 **[設定]** で、対応する **[URL]** 、 **[Method]** (メソッド)、 **[Headers]** (ヘッダー)、および **[Body]** (本文) を指定して、データのコピー元となるサービスのログイン API から OAuth ベアラー トークンを取得します。 テンプレート内のプレースホルダーは、Azure Active Directory (AAD) OAuth のサンプルを示しています。 AAD 認証が REST コネクタによってネイティブにサポートされていることに注意してください。OAuth フローの一例を次に示します。 
 
     | プロパティ | 説明 |
-    |:--- |:--- |:--- |
-    | URL |OAuth ベアラー トークンの取得元の URL を指定します。 たとえば、このサンプルでは https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token です |. 
+    |:--- |:--- |
+    | URL |OAuth ベアラー トークンの取得元の URL を指定します。 たとえば、このサンプルでは https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token です |
     | Method | HTTP メソッド。 使用できる値は **Post** と **Get** です。 | 
     | ヘッダー | [ヘッダー] はユーザー定義であり、HTTP 要求内で 1 つのヘッダー名を参照します。 | 
     | Body | HTTP 要求の本文。 | 
@@ -475,7 +505,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 6. **[データのコピー]** アクティビティで *[ソース]* タブを選択すると、前の手順で取得したベアラー トークン (access_token) が、[追加ヘッダー] で **[認証]**  として [データのコピー] アクティビティに渡されることを確認できます。 パイプラインの実行を開始する前に、次のプロパティの設定を確認してください。
 
     | プロパティ | 説明 |
-    |:--- |:--- |:--- | 
+    |:--- |:--- |
     | 要求メソッド | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | 
     | 追加ヘッダー | 追加の HTTP 要求ヘッダー。| 
 

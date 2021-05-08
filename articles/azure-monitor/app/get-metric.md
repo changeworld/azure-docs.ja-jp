@@ -2,21 +2,20 @@
 title: Azure Monitor Application Insights の Get-Metric
 description: GetMetric() 呼び出しを効果的に使用し、Azure Monitor Application Insights で .NET および .NET Core アプリケーション用にローカルで事前集計されたメトリックをキャプチャする方法を学習する
 ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22baa1ae9554601a72ffdb848b87d99281067967
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101719782"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384291"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET および .NET Core でのカスタム メトリックの収集
 
 Azure Monitor Application Insights の .NET および .NET Core SDK には、カスタム メトリックを収集する 2 つの異なるメソッド (`TrackMetric()` と `GetMetric()`) があります。 これら 2 つのメソッドの主な違いは、ローカル集計です。 `TrackMetric()` には事前集計はありませんが、`GetMetric()` には事前集計があります。 推奨される方法は集計を使用することであるため、`TrackMetric()` は、カスタム メトリックを収集するための推奨メソッドではなくなりました。 この記事では、GetMetric() メソッドの使用方法と、そのしくみの背後にある論理的根拠についていくつか説明します。
 
-## <a name="trackmetric-versus-getmetric"></a>TrackMetric と GetMetric
+## <a name="pre-aggregating-vs-non-pre-aggregating-api"></a>事前集計 API と非事前集計 API
 
 `TrackMetric()` では、メトリックを示す未加工のテレメトリを送信します。 値ごとに単一のテレメトリ項目を送信することは、非効率的です。 また、すべての `TrackMetric(item)` がテレメトリ初期化子とプロセッサの完全な SDK パイプラインを通過するため、`TrackMetric()` はパフォーマンスの点でも非効率的です。 `TrackMetric()` とは異なり、`GetMetric()` ではローカル事前集計が自動的に処理され、1 分の一定間隔で集計されたサマリー メトリックのみが送信されます。 したがって、一部のカスタム メトリックを秒またはミリ秒単位で厳密に監視する必要がある場合、1 分ごとに監視するだけのストレージとネットワーク トラフィックのコストのみが発生している間にそのようにすることができます。 また、これにより、集計されたメトリックに対して送信する必要があるテレメトリ項目の合計数が大幅に減少するため、調整が発生するリスクが大幅に軽減されます。
 
@@ -204,13 +203,13 @@ _FormFactor_ ディメンションごとにメトリック集計を表示しま�
 
 ![フォーム ファクター](./media/get-metric/formfactor.png)
 
-### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>3 個を超えるディメンションがある場合に MetricIdentifier を使用する方法
+### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions&quot;></a>3 個を超えるディメンションがある場合に MetricIdentifier を使用する方法
 
 現在、10 個のディメンションがサポートされていますが、3 個を超えるディメンションでは `MetricIdentifier` を使用する必要があります。
 
 ```csharp
-// Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
-// MetricIdentifier id = new MetricIdentifier("[metricNamespace]","[metricId],"[dim1]","[dim2]","[dim3]","[dim4]","[dim5]");
+// Add &quot;using Microsoft.ApplicationInsights.Metrics;&quot; to use MetricIdentifier
+// MetricIdentifier id = new MetricIdentifier(&quot;[metricNamespace]&quot;,&quot;[metricId],&quot;[dim1]&quot;,&quot;[dim2]&quot;,&quot;[dim3]&quot;,&quot;[dim4]&quot;,&quot;[dim5]");
 MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold", "FormFactor", "GraphicsCard", "MemorySpeed", "BatteryCapacity", "StorageCapacity");
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
@@ -286,7 +285,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` は、メトリックに含めることができるデータ時系列の最大数です。 この上限に達すると、`TrackValue()` に対する呼び出しは追跡されなくなります。
+* `seriesCountLimit` は、メトリックに含めることができるデータ時系列の最大数です。 この上限に達すると、`TrackValue()` が呼び出されます。この結果、通常、新しい系列によって false が返されます。
 * `valuesPerDimensionLimit` では、同じようにディメンションごとに個別の値の数を制限します。
 * `restrictToUInt32Values` では、負でない整数値のみを追跡するかどうかを決定します。
 

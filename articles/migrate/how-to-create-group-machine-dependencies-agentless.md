@@ -1,24 +1,24 @@
 ---
-title: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定する
-description: Azure Migrate Server Assessment でエージェントレスの依存関係の分析を設定します。
+title: Azure Migrate でエージェントレスの依存関係の分析を設定する
+description: Azure Migrate でエージェントレスの依存関係の分析を設定します。
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: c3aa2aea764af8469152b007e60427724fea398a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7966750d7c3e0f12bb9404a4d78bbc27e4075c52
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045855"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786585"
 ---
 # <a name="analyze-server-dependencies-agentless"></a>サーバーの依存関係を分析する (エージェントレス)
 
-この記事では、Azure Migrate:Server Assessment を使用してエージェントレスの依存関係分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行に関してサーバー間の依存関係を特定し、把握するのに役立ちます。
+この記事では、Azure Migrate: 検出および評価ツールを使用してエージェントレスの依存関係の分析を設定する方法について説明します。 [依存関係の分析](concepts-dependency-visualization.md)は、評価や Azure への移行に関してサーバー間の依存関係を特定し、把握するのに役立ちます。
 
 > [!IMPORTANT]
-> エージェントレスの依存関係分析は現在、Azure Migrate:Server Assessment ツールで検出された VMware 環境で実行されているサーバーではプレビュー段階です。
+> エージェントレスの依存関係の分析は現在、Azure Migrate: 検出および評価ツールで検出された VMware 環境で実行されているサーバーではプレビュー段階です。
 > このプレビューはカスタマー サポートの対象であり、運用ワークロードで使用できます。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
@@ -30,7 +30,7 @@ ms.locfileid: "102045855"
 
 ## <a name="before-you-start"></a>開始する前に
 
-- Azure Migrate:Server Assessment ツールが追加された [Azure Migrate プロジェクトを作成した](./create-manage-projects.md)ことを確実にします。
+- [プロジェクトを作成](./create-manage-projects.md)し、Azure Migrate: 検出および評価ツールを追加したことを確認します。
 - 「[VMware の要件](migrate-support-matrix-vmware.md#vmware-requirements)」を確認し、依存関係の分析を実行します。
 - アプライアンスを設定する前に、[アプライアンスの要件](migrate-support-matrix-vmware.md#azure-migrate-appliance-requirements)を確認します。
 - サーバーで依存関係分析を有効にする前に、[依存関係分析の要件を確認](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)します。
@@ -41,7 +41,7 @@ ms.locfileid: "102045855"
 2. アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government クラウド](migrate-appliance.md#government-cloud-urls)でアクセスする必要がある Azure の URL について確認します。
 3. 検出および評価中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---vmware)します。
 4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-vmware.md#port-access-requirements)します。
-5. [Azure Migrate アプライアンスを展開](how-to-set-up-appliance-vmware.md)して検出を開始します。 アプライアンスをデプロイするには、OVA テンプレートをダウンロードして VMware にインポートし、vCenter Server で実行されるサーバーを作成します。 アプライアンスをデプロイした後、それを Azure Migrate プロジェクトに登録し、検出を開始するように構成する必要があります。
+5. [Azure Migrate アプライアンスを展開](how-to-set-up-appliance-vmware.md)して検出を開始します。 アプライアンスをデプロイするには、OVA テンプレートをダウンロードして VMware にインポートし、vCenter Server で実行されるサーバーを作成します。 アプライアンスをデプロイした後、プロジェクトに登録し、検出を開始するように構成する必要があります。
 6. アプライアンスを構成するときに、アプライアンス構成マネージャーで以下を指定する必要があります。
     - 接続先の vCenter Server の詳細。
     - VMware 環境内のサーバーを検出する場合に対象となる vCenter Server 資格情報。
@@ -50,7 +50,7 @@ ms.locfileid: "102045855"
 ## <a name="verify-permissions"></a>アクセス許可の確認
 
 - 検出と評価のために [vCenter Server の読み取り専用アカウントを作成する](./tutorial-discover-vmware.md#prepare-vmware)必要があります。 読み取り専用アカウントには、依存関係データを収集するときにサーバーとやりとりするために、 **[Virtual Machines]**  >  **[ゲスト操作]** に対して有効になっている特権が必要です。
-- サーバー評価で依存関係データを収集するためにサーバーにアクセスできるようにするには、ユーザー アカウントが必要です。 Windows および Linux サーバーに対するアカウント要件については、[こちら](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)を参照してください。
+- Azure Migrate で依存関係データを収集するためにサーバーにアクセスできるようにするには、ユーザー アカウントが必要です。 Windows および Linux サーバーに対するアカウント要件については、[こちら](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)を参照してください。
 
 ### <a name="add-credentials-and-initiate-discovery"></a>資格情報を追加して検出を開始する
 
@@ -67,7 +67,7 @@ ms.locfileid: "102045855"
 
 依存関係の検出を有効にするサーバーを選択します。
 
-1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
+1. **[Azure Migrate: 検出および評価]** で、 **[検出済みサーバー]** をクリックします。
 2. 検出を確認する **[アプライアンス名]** を選択します。
 1. **[依存関係 (エージェントレス)]** 列でサーバーの検証状態を確認できます。
 1. **[依存関係の分析]** ドロップダウンをクリックします。
@@ -81,7 +81,7 @@ ms.locfileid: "102045855"
 
 ## <a name="visualize-dependencies"></a>依存関係を視覚化する
 
-1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
+1. **[Azure Migrate: 検出および評価]** で、 **[検出済みサーバー]** をクリックします。
 1. 検出を確認する **[アプライアンス名]** を選択します。
 1. 依存関係を確認するサーバーを検索します。
 1. **[依存関係 (エージェントレス)]** 列の **[依存関係の表示]** をクリックします。
@@ -100,7 +100,7 @@ ms.locfileid: "102045855"
 
 ## <a name="export-dependency-data"></a>依存関係データをエクスポートする
 
-1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
+1. **[Azure Migrate: 検出および評価]** で、 **[検出済みサーバー]** をクリックします。
 2. **[依存関係の分析]** ドロップダウンをクリックします。
 3. **[アプリケーションの依存関係のエクスポート]** をクリックします。
 4. **[アプリケーションの依存関係のエクスポート]** ページで、目的のサーバーが検出されているアプライアンスを選びます。
@@ -132,7 +132,7 @@ Destination process (依存先プロセス) | 宛先サーバー上のプロセ�
 
 依存関係の検出を停止するサーバーを選択します。
 
-1. **Azure Migrate:Server Assessment** で、 **[Discovered servers]\(検出済みサーバー\)** をクリックします。
+1. **[Azure Migrate: 検出および評価]** で、 **[検出済みサーバー]** をクリックします。
 1. 検出を確認する **[アプライアンス名]** を選択します。
 1. **[依存関係の分析]** ドロップダウンをクリックします。
 1. **[サーバーの削除]** をクリックします。
@@ -157,7 +157,7 @@ GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-p
     Connect-AzAccount -EnvironmentName AzureUSGovernment
     ```
 
-2. Azure Migrate プロジェクトを作成したサブスクリプションを選択します 
+2. プロジェクトを作成したサブスクリプションを選択します 
 
     ```PowerShell
     select-azsubscription -subscription "Fabrikam Demo Subscription"
@@ -171,7 +171,7 @@ GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-p
 
 ### <a name="enable-or-disable-dependency-data-collection"></a>依存関係データの収集を有効または無効にする
 
-1. 次のコマンドを使用して、Azure Migrate プロジェクト内の検出されたサーバーの一覧を取得します。 下の例では、プロジェクト名は FabrikamDemoProject で、それが属しているリソース グループは FabrikamDemoRG です。 サーバーの一覧は FabrikamDemo_VMs.csv に保存されます
+1. 次のコマンドを使用して、プロジェクト内の検出されたサーバーの一覧を取得します。 下の例では、プロジェクト名は FabrikamDemoProject で、それが属しているリソース グループは FabrikamDemoRG です。 サーバーの一覧は FabrikamDemo_VMs.csv に保存されます
 
     ```PowerShell
     Get-AzMigDiscoveredVMwareVMs -ResourceGroupName "FabrikamDemoRG" -ProjectName "FabrikamDemoProject" -OutputCsvFile "FabrikamDemo_VMs.csv"
@@ -212,7 +212,7 @@ Azure Migrate には、一度に多数のサーバーのネットワーク接続
         Connect-AzAccount -EnvironmentName AzureUSGovernment
         ```
 
-    - Azure Migrate プロジェクトを作成したサブスクリプションを選択します
+    - プロジェクトを作成したサブスクリプションを選択します
 
         ```PowerShell
         select-azsubscription -subscription "Fabrikam Demo Subscription"

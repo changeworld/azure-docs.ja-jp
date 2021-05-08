@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225185"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791915"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>チュートリアル: Azure CLI を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -54,7 +54,7 @@ az login
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#az-group-create) を使用して、次のようにリソース グループを作成します。
+[az group create](/cli/azure/group#az_group_create) を使用して、次のようにリソース グループを作成します。
 
 * 名前は **myResourceGroupLB-CR** にします。
 * 場所は **westus** にします。
@@ -157,7 +157,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 このセクションでは、リージョン間ロード バランサーをテストします。 Web ブラウザーで、パブリック IP アドレスに接続します。  いずれかのリージョン ロード バランサーのバックエンド プールにある仮想マシンを停止し、フェールオーバーを観察します。
 
-1. ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用します。
+1. ロード バランサーのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。
 
     ```azurecli-interactive
       az network public-ip show \
@@ -174,7 +174,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除します。
+必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
   az group delete \

@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 6d6b7122963b51619f26b8d02a8be4ad39261afb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 21f22f9aa31210b1690d0be562643d94901ce58a
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147701"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079048"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -42,7 +42,7 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 
 * device-to-cloud メッセージは最大 256 KB で、バッチとしてグループ化して送信を最適化できます。 バッチは最大で 256 KB です。
 
-* IoT Hub では、任意のパーティション分割は許可されていません。 D2C メッセージは、発信元の **deviceId**に基づいてパーティション分割されます。
+* IoT Hub では、任意のパーティション分割は許可されていません。 D2C メッセージは、発信元の **deviceId** に基づいてパーティション分割されます。
 
 * 「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」で説明されているように、IoT Hub ではデバイスごとに認証とアクセス制御を行うことができます。
 
@@ -71,7 +71,7 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 | message-id |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式:ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  |はい|
 | sequence-number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 |いいえ|
 | to |[C2D](iot-hub-devguide-c2d-guidance.md) メッセージで指定される宛先。 |いいえ|
-| absolute-expiry-time |メッセージの有効期限の日時。 |いいえ|   |
+| absolute-expiry-time |メッセージの有効期限の日時。 |いいえ| 
 | correlation-id |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 |はい|
 | user-id |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 |はい|
 | iothub-ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 |はい|

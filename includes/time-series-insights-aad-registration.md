@@ -9,14 +9,14 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 10/02/2020
-ms.openlocfilehash: 0ce9575f078058c821ffffe1b9fe45eed5a4ad94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 22411e5a80f555a3ead05d39466a7a175923d9bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101724177"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104235"
 ---
-* [[プラットフォームの構成]](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#configure-platform-settings) 設定の手順 4 で適切なプラットフォームを選択したら、ユーザー インターフェイスの右側のサイド パネルで **[リダイレクト URI]** と **[アクセス トークン]** を構成します。
+* [[プラットフォームの構成]](../articles/active-directory/develop/quickstart-register-app.md#configure-platform-settings) 設定の手順 4 で適切なプラットフォームを選択したら、ユーザー インターフェイスの右側のサイド パネルで **[リダイレクト URI]** と **[アクセス トークン]** を構成します。
 
     * **[リダイレクト URI]** は、認証要求で指定されたアドレスと一致する必要があります。
 
@@ -41,4 +41,4 @@ ms.locfileid: "101724177"
 
     [![お使いのアプリで必要な API のアクセス許可の種類を指定する](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png)](media/time-series-insights-aad-registration/active-directory-app-permission-grant.png#lightbox)
 
-* アプリケーションから環境の API をそのまま呼び出す場合は、[資格情報を追加します](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app#add-credentials)。 資格情報により、アプリケーションはそれ自体として認証され、実行時にユーザーによる操作は必要ありません。
+* アプリケーションから環境の API をそのまま呼び出す場合は、[資格情報を追加します](../articles/active-directory/develop/quickstart-register-app.md#add-credentials)。 資格情報により、アプリケーションはそれ自体として認証され、実行時にユーザーによる操作は必要ありません。

@@ -2,23 +2,18 @@
 title: メディア占有ユニット (MRU) をスケーリングする - CLI
 description: このトピックでは、CLI を使用して、Azure Media Services でのメディア処理をスケーリングする方法について説明します。
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: c5fa3aa8397ea6e13500717f035c414af8de8e3d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102213812"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121678"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>メディア占有ユニットをスケーリングする方法
 
@@ -26,9 +21,12 @@ ms.locfileid: "102213812"
 
 この記事では、エンコードを高速化するためにメディア占有ユニット (MRU) をスケーリングする方法について説明します。
 
+> [!WARNING]
+> このコマンドは、API の 2020-05-01 バージョン以降で作成された Media Services アカウントでは機能しなくなります。 これらのアカウントでは、メディア占有ユニットは不要になりました。負荷に基づいてシステムによって自動的にスケールアップとスケールダウンが行われるためです。 Azure portal で MRU を管理するオプションが表示されない場合は、2020-05-01 API 以降で作成されたアカウントを使用しています。
+
 ## <a name="prerequisites"></a>前提条件
 
-[Media Services アカウントを作成する](./create-account-howto.md)
+[Media Services アカウントを作成する](./account-create-how-to.md)
 
 [メディア占有ユニット](concept-media-reserved-units.md)について理解する。
 
@@ -48,8 +46,8 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="next-step"></a>次のステップ
 
-[ビデオを分析する](analyze-videos-tutorial-with-api.md)
+[ビデオを分析する](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>関連項目
 
-* [クォータと制限](limits-quotas-constraints.md)
+* [クォータと制限](limits-quotas-constraints-reference.md)

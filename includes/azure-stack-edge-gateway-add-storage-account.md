@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c7e011cf8445164e0931f71e390813c9134dd89
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: cf67ea58c4c13756fdc6e437883f12124ca47eb9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200958"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104162"
 ---
 1. [Azure portal](https://portal.azure.com/) で Azure Stack Edge リソースを選択し、 **[概要]** に移動します。 デバイスがオンラインになっている必要があります。 **[Cloud storage gateway]\(クラウド ストレージ ゲートウェイ\) > [ストレージ アカウント]** に移動します。
 
@@ -35,4 +35,4 @@ ms.locfileid: "103200958"
 
     ![ストレージ アカウントの追加 2](media/azure-stack-edge-gateway-add-storage-account/add-storage-account-4.png)
 
-    アクセス キーを取得するには、[Azure Resource Manager を使用してデバイスのローカル API に接続](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)します。 
+    アクセス キーを取得するには、[Azure Resource Manager を使用してデバイスのローカル API に接続](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)します。

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: ee663423071458605f37f07293693dbc91f592bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100362116"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks による変換
@@ -22,9 +22,9 @@ ms.locfileid: "100362116"
 
 - **検証** は、コピーおよび分析ジョブをトリガーする前に、ソース データセットがダウンストリームで使用できる状態にします。
 
-- **データ コピー** は、ソース データセットを Azure Databricks ノートブックに DBFS としてマウントされているシンク ストレージにコピーします。 このようにして、データセットを Spark で直接使用することができます。
+- **データ コピー** は、ソース データセットを Azure Databricks Notebook に DBFS としてマウントされているシンク ストレージにコピーします。 このようにして、データセットを Spark で直接使用することができます。
 
-- **ノートブック** によって、データセットを変換する Databricks ノートブックがトリガーされます。 また、処理されたフォルダーまたは Azure Synapse Analytics にデータセットが追加されます。
+- **ノートブック** によって、データセットを変換する Databricks Notebook がトリガーされます。 また、処理されたフォルダーまたは Azure Synapse Analytics にデータセットが追加されます。
 
 わかりやすくするために、このチュートリアルのテンプレートではスケジュールされたトリガーを作成しません。 必要に応じて、1 つを追加できます。
 
@@ -142,7 +142,7 @@ ms.locfileid: "100362116"
 
        ![ノートブック パス](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-    1. **[基本パラメーター]** セレクターを展開し、パラメーターが次のスクリーンショットに示されている内容と一致していることを確認します。 これらのパラメーターは Data Factory から Databricks ノートブックに渡されます。
+    1. **[基本パラメーター]** セレクターを展開し、パラメーターが次のスクリーンショットに示されている内容と一致していることを確認します。 これらのパラメーターは Data Factory から Databricks Notebook に渡されます。
 
        ![基本パラメーター](media/solution-template-Databricks-notebook/base-parameters.png)
 

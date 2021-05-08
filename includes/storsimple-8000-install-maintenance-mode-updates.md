@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67181371"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用したメンテナンス モードの更新プログラムのインストール
 
-StorSimple デバイスにメンテナンス モードの更新プログラムを適用すると、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスが停止されます。 このモードを開始または終了するときに、両方のコントローラーが再起動します。 このモードを終了すると、すべてのサービスが再開され、正常な状態になります (これには数分かかることがあります)。
+StorSimple デバイスにメンテナンス モードの更新プログラムを適用すると、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスが停止されます。 このモードを開始または終了するときに、両方のコントローラーが再起動します。 このモードを終了すると、すべてのサービスが再開され、正常な状態になります  (これには数分かかることがあります)。
 
 > [!IMPORTANT]
 > * メンテナンス モードを開始する前に、Azure Portal で両方のデバイス コントローラーが正常であることを確認してください。 コントローラーが正常な状態でない場合は次の手順を [Microsoft サポートにお問い合わせください](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)。
 > * メンテナンス モードになっているときは、1 つのコントローラーを最初に更新してから、他のコントローラーを更新する必要があります。
 
-1. PuTTY を使ってシリアル コンソールに接続します。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter**キーを押します。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。
+1. PuTTY を使ってシリアル コンソールに接続します。 詳細については、[PuTTy を使用してシリアル コンソールに接続する方法](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。 コマンド プロンプトで **Enter** キーを押します。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択します。
 
 2. コントローラーをメンテナンス モードにするには、次のように入力します。
     
@@ -51,4 +51,4 @@ StorSimple デバイスにメンテナンス モードの更新プログラム�
 
     メンテナンス モードを終了すると、コントローラーが再起動します。
 
-7. Azure Portal に戻ります。 メンテナンス モードの更新プログラムがインストールされたことがポータルに表示されるまでに、24 時間かかる可能性があります。
+7. Azure portal に戻ります。 メンテナンス モードの更新プログラムがインストールされたことがポータルに表示されるまでに、24 時間かかる可能性があります。

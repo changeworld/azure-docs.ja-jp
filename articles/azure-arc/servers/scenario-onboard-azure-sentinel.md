@@ -4,10 +4,10 @@ description: Azure Arc 対応サーバーを Azure Sentinel に追加し、そ�
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2364ba72ac5b10ec4e1f433cc6d591c3ca389ecd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584739"
 ---
 # <a name="onboard-azure-arc-enabled-servers-to-azure-sentinel"></a>Azure Arc 対応サーバーを Azure Sentinel にオンボードする

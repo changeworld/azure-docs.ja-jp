@@ -10,16 +10,29 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 78746e7623f58af5ae9df829b48245295dc39f01
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e42096fc32a504ae329d3b179004b6a123de4469
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487102"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365639"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="computer-vision-v32-ga"></a>Computer Vision v3.2 GA
+
+Computer Vision API v3.2 の一般提供が開始されました。次の点が更新されています。
+* 改善された画像のタグ付けモデル: ビジュアル コンテンツを分析し、画像に表示されているオブジェクト、アクション、およびコンテンツに基づいて、関連するタグを生成します。 これは、[Tag Image API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) を介して利用できます。 詳細については、画像分析の[使用法ガイド](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)および[概要](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)に関するページを参照してください。
+* 更新されたコンテンツ モデレーション モデル: アダルト コンテンツの存在を検出し、成人向け、わいせつ、または不快なビジュアル コンテンツを含む画像をフィルター処理するためのフラグを提供します。 これは、[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) を介して利用できます。 詳細については、画像分析の[使用法ガイド](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)および[概要](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)に関するページを参照してください。
+* [73 言語で利用可能な OCR (Read)](./language-support.md#optical-character-recognition-ocr)。これには、簡易字中国語と繁体字中国語、日本語、韓国語、ラテン語系の言語が含まれます。
+* [OCR (Read)](./overview-ocr.md) は、オンプレミス デプロイ用の[ディストリビューションレス コンテナー](./computer-vision-how-to-install-containers.md?tabs=version-3-2)としても利用できます。
+
+> [!div class="nextstepaction"]
+> [Computer Vision v3.2 GA に関するページを参照してください](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -40,7 +53,7 @@ Computer Vision API v3.2 パブリック プレビューが更新されました
 * 複数ページから成るドキュメントで選択ページのみのテキストを抽出。
 * オンプレミス デプロイ用の[ディストリビューションレス コンテナー](./computer-vision-how-to-install-containers.md?tabs=version-3-2)として利用可能。
 
-Read API については、[こちら](concept-recognizing-text.md)を参照してください。
+詳細については、[Read API の攻略ガイド](Vision-API-How-to-Topics/call-read-api.md)を参照してください。
 
 > [!div class="nextstepaction"]
 > [Read API v3.2 パブリック プレビューを使用する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/5d986960601faab4bf452005)
@@ -59,7 +72,7 @@ Read API については、[こちら](concept-recognizing-text.md)を参照し�
 * **破壊的変更**:*personZoneEvent* イベントの名前が *personZoneEnterExitEvent* に変更されました。 人がゾーンに出入りするときに *personcrossingpolygon* イベントが発生し、交差したゾーンの番号付き側に方向情報を提供します。
 * ビデオの URL を、すべての操作で "Private Parameter/obfuscated" として指定できます。 難読化はオプションになり、`KEY` および `IV` が環境変数として指定されている場合にのみ機能します。
 * 既定では、すべての操作で較正が有効になっています。 無効にするには、`do_calibration: false` を設定します。
-* `enable_recalibration` パラメーターによる自動再較正 (既定では無効) のサポートを追加しました。詳細については、「[空間分析操作](./spatial-analysis-operations.md)」参照してください
+* `enable_recalibration` パラメーターによる自動再較正 (既定では無効) のサポートを追加しました。詳細については、「[空間分析操作](./spatial-analysis-operations.md)」を参照してください
 * カメラ較正のパラメーターを `DETECTOR_NODE_CONFIG` にします。 詳細については、「[空間分析操作](./spatial-analysis-operations.md)」を参照してください。
 
 
@@ -83,7 +96,7 @@ Computer Vision の Read API v3.1 パブリック プレビューで次の機能
 
 * この Read API のプレビュー バージョンでは、英語、オランダ語、フランス語、ドイツ語、イタリア語、日本語、ポルトガル語、簡体字中国語、およびスペイン語がサポートされています。
 
-詳細については、[Read API の概要](concept-recognizing-text.md)に関する記事を参照してください。
+詳細については、[Read API の攻略ガイド](Vision-API-How-to-Topics/call-read-api.md)を参照してください。
 
 > [!div class="nextstepaction"]
 > [Read API v3.1 パブリック プレビュー 2 の詳細を確認する](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)
@@ -95,18 +108,20 @@ Computer Vision の Read API v3.1 パブリック プレビューでは、簡体
 
 * この Read API のプレビュー バージョンでは、英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、簡体字中国語、およびスペイン語がサポートされています。
 
-詳細については、[Read API の概要](concept-recognizing-text.md)に関する記事を参照してください。
+詳細については、[Read API の攻略ガイド](Vision-API-How-to-Topics/call-read-api.md)を参照してください。
 
 > [!div class="nextstepaction"]
 > [Read API v3.1 パブリック プレビュー 1 の詳細を確認する](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020 年 5 月
-Computer Vision API v3.0 が一般提供になり、[Read API](concept-recognizing-text.md) が更新されています。
+Computer Vision API v3.0 が一般提供になり、Read API が更新されています。
 
 * 英語、オランダ語、フランス語、ドイツ語、イタリア語、ポルトガル語、およびスペイン語のサポート
 * 精度の向上
 * 抽出された各単語の信頼度スコア
 * 新しい出力形式
+
+詳細については、[OCR の概要](overview-ocr.md)に関するページを参照してください。
 
 ## <a name="march-2020"></a>2020 年 3 月
 

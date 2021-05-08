@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 8e1fc816e32e563161e1604bdcd7a7006353e4ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 175473f5abd74fa208962fd94852e9ddedfaf7e3
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047385"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105810"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 を使用して Log Analytics ワークスペースを作成する
 
@@ -107,7 +107,7 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 
 2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)のリファレンスを参照してください。
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。   
-4. これでこのテンプレートをデプロイする準備が整いました。 テンプレートがあるフォルダーから以下のコマンドを使用します。 ワークスペース名の入力を求められたら、すべての Azure サブスクリプションでグローバルに一意の名前を指定します。
+4. これでこのテンプレートをデプロイする準備が整いました。 テンプレートがあるフォルダーから以下のコマンドを使用します。 ワークスペース名の入力を求められたら、リソース グループで一意の名前を指定します。
 
     ```azurecli
     az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
@@ -120,7 +120,7 @@ Azure CLI 2.0 は、コマンド ラインやスクリプトで Azure リソー�
 ## <a name="troubleshooting"></a>トラブルシューティング
 過去 14 日間に削除され、[論理的な削除状態](../logs/delete-workspace.md#soft-delete-behavior)になっているワークスペースを作成した場合は、ワークスペースの構成に応じて、操作の結果が異なる可能性があります。
 1. 削除されたワークスペースと同じワークスペース名、リソース グループ、サブスクリプション、リージョンを指定した場合は、データ、構成、および接続されたエージェントを含むワークスペースが復旧されます。
-2. 同じワークスペース名を使用していて、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、*ワークスペース名 'workspace-name' が一意ではない*、または *競合している* というエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
+2. ワークスペース名は、各リソース グループ内で一意である必要があります。 既に存在しているワークスペース名を使用する場合は、リソース グループ内の論理的な削除でも、*ワークスペース名 'workspace-name' が一意ではない*、または *競合* しているというエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
    * ワークスペースを[回復します](../logs/delete-workspace.md#recover-workspace)
    * ワークスペースを[完全に削除](../logs/delete-workspace.md#permanent-workspace-delete)します
    * 同じワークスペース名を使用して新しいワークスペースを作成します

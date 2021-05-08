@@ -3,12 +3,12 @@ title: Event Grid ソースとしての Azure Media Services
 description: Azure Event Grid で Media Services イベント用に用意されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1f2f62f0a5ceed0e000c8bb7690fff009593bf82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5772a2332e1864d0b8df0d4e102006b29b6a61e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591930"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120114"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Media Services
 
@@ -514,7 +514,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 | `encoderPort` | string | このストリームの送信元であるエンコーダーのポート。 |
 | `resultCode` | string | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
 
-エラーの結果コードは、[ライブ イベントのエラー コード](../media-services/latest/live-event-error-codes.md)で確認できます。
+エラーの結果コードは、[ライブ イベントのエラー コード](../media-services/latest/live-event-error-codes-reference.md)で確認できます。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -639,7 +639,7 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 | `encoderPort` | string | このストリームの送信元であるエンコーダーのポート。 |
 | `resultCode` | string | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
 
-エラーの結果コードは、[ライブ イベントのエラー コード](../media-services/latest/live-event-error-codes.md)で確認できます。
+エラーの結果コードは、[ライブ イベントのエラー コード](../media-services/latest/live-event-error-codes-reference.md)で確認できます。
 
 正常な切断の結果コードは次のとおりです。
 
@@ -1118,4 +1118,4 @@ Media Services では、以下の種類の **ライブ** イベントも出力�
 
 - [メディア サービス イベントを含む EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Media Services イベントの定義](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [ライブ イベントのエラー コード](../media-services/latest/live-event-error-codes.md)
+- [ライブ イベントのエラー コード](../media-services/latest/live-event-error-codes-reference.md)

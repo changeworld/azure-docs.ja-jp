@@ -6,15 +6,15 @@ ms.topic: article
 ms.author: danlep
 ms.date: 11/20/2020
 ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95024740"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Azure Container Registry を使用してパブリック コンテンツを管理する
 
-この記事では、[Azure コンテナー レジストリ](container-registry-intro.md)などのローカル レジストリを使用して、Docker Hub のコンテナー イメージなどのパブリック コンテンツのコピーを管理するための手法とワークフローの概要について説明します。 
+この記事では、[Azure Container Registry](container-registry-intro.md)などのローカル レジストリを使用して、Docker Hub のコンテナー イメージなどのパブリック コンテンツのコピーを管理するための手法とワークフローの概要について説明します。 
 
 
 ## <a name="risks-with-public-content"></a>パブリック コンテンツに関するリスク
@@ -64,11 +64,11 @@ App Service や Azure Container Instances を含むいくつかの Azure サー�
 * **イメージ レジストリのパスワード**: \<Docker Hub token>
 * **イメージ**: docker.io/\<repo name\>:\<tag>
 
-## <a name="import-images-to-an-azure-container-registry"></a>Azure コンテナー レジストリへのイメージのインポート
+## <a name="import-images-to-an-azure-container-registry"></a>Azure Container Registry へのイメージのインポート
  
-パブリック イメージのコピーの管理を始めるために、Azure コンテナー レジストリを作成できます (まだない場合)。 レジストリの作成には、[Azure CLI](container-registry-get-started-azure-cli.md)、[Azure portal](container-registry-get-started-portal.md)、[Azure PowerShell](container-registry-get-started-powershell.md)、またはその他のツールを使用します。 
+パブリック イメージのコピーの管理を始めるために、Azure Container Registry を作成できます (まだない場合)。 レジストリの作成には、[Azure CLI](container-registry-get-started-azure-cli.md)、[Azure portal](container-registry-get-started-portal.md)、[Azure PowerShell](container-registry-get-started-powershell.md)、またはその他のツールを使用します。 
 
-推奨されている 1 回限りの手順として、基本イメージとその他のパブリック コンテンツを Azure コンテナー レジストリに[インポート](container-registry-import-images.md)してください。 Azure CLI の [az acr import](/cli/azure/acr#az_acr_import) コマンドは、Docker Hub や Microsoft Container Registry などのパブリック レジストリから、および他のプライベート コンテナー レジストリからのイメージのインポートに対応しています。 
+推奨されている 1 回限りの手順として、基本イメージとその他のパブリック コンテンツを Azure Container Registry に[インポート](container-registry-import-images.md)してください。 Azure CLI の [az acr import](/cli/azure/acr#az_acr_import) コマンドは、Docker Hub や Microsoft Container Registry などのパブリック レジストリから、および他のプライベート コンテナー レジストリからのイメージのインポートに対応しています。 
 
 `az acr import` では、Docker のローカル インストールは不要です。 Azure CLI のローカル インストールを使用するか、Azure Cloud Shell 内で直接実行できます。 任意の種類の OS のイメージ、マルチアーキテクチャ イメージ、または Helm チャートなどの OCI 成果物がサポートされます。
 

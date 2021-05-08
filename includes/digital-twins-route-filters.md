@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 811e59e8fd2fea1d8ee90014d4a5ea11229eec63
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98859870"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257308"
 ---
 | フィルター名 | 説明 | フィルター テキスト スキーマ | サポート状況の値 | 
 | --- | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "98859870"
 | データ スキーマ | DTDL モデル ID | `dataschema = '<model-dtmi-ID>'` | **テレメトリの場合**: データ スキーマは、テレメトリを生成するツインまたはコンポーネントのモデル ID です。 たとえば、`dtmi:example:com:floor4;2` のように指定します。 <br>**通知の場合 (作成/削除)** :データ スキーマには、`$body.$metadata.$model` の通知本文でアクセスできます。 <br>**通知の場合 (更新)** :データ スキーマには、`$body.modelId` の通知本文でアクセスできます|
 | Content type | データ値のコンテンツ タイプ | `datacontenttype = '<contentType>'` | コンテンツ タイプは`application/json` です。 |
 | 仕様バージョン | 使用しているイベント スキーマのバージョン | `specversion = '<version>'` | バージョンは `1.0` である必要があります。 これは、CloudEvents スキーマ バージョン 1.0 を示しています。 |
-| 通知本文 | 通知の `data` フィールドの任意のプロパティを参照します | `$body.<property>` | 「[*イベント データについて*](../articles/digital-twins/how-to-interpret-event-data.md)」で通知の例を参照してください。 `data` フィールドの任意のプロパティは、`$body` を使用して参照できます
+| 通知本文 | 通知の `data` フィールドの任意のプロパティを参照します | `$body.<property>` | 通知の例については、「[*概念: イベント通知*](../articles/digital-twins/concepts-event-notifications.md)」をご覧ください。 `data` フィールドの任意のプロパティは、`$body` を使用して参照できます
 
 上記のデータへの参照によって返される値としては、次のデータ型がサポートされています。
 

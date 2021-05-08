@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 536cd01fbcf2c5d18a8c12030b709427d9bb91b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9ec434b9b6da3b3b80a3afddbb432ddeece2b389
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98703608"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788549"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Azure CLI を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
 
@@ -65,7 +65,7 @@ Azure CLI を使用してユーザー委任 SAS を作成すると、SAS への�
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>コンテナー用にユーザー委任 SAS を作成する
 
-Azure CLI でコンテナー用にユーザー委任 SAS を作成するには、[az storage container generate-sas](/cli/azure/storage/container#az-storage-container-generate-sas) コマンドを呼び出します。
+Azure CLI でコンテナー用にユーザー委任 SAS を作成するには、[az storage container generate-sas](/cli/azure/storage/container#az_storage_container_generate_sas) コマンドを呼び出します。
 
 コンテナーでユーザー委任 SAS に対してサポートされているアクセス許可には、追加、作成、削除、一覧表示、読み取り、書き込みがあります。 アクセス許可は、単独で指定することも、組み合わせて指定することもできます。 これらのアクセス許可の詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-user-delegation-sas)」を参照してください。
 
@@ -89,7 +89,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>BLOB 用のユーザー委任 SAS を作成する
 
-Azure CLI で BLOB 用にユーザー委任 SAS を作成するには、[az storage blob generate-sas](/cli/azure/storage/blob#az-storage-blob-generate-sas) コマンドを呼び出します。
+Azure CLI で BLOB 用にユーザー委任 SAS を作成するには、[az storage blob generate-sas](/cli/azure/storage/blob#az_storage_blob_generate_sas) コマンドを呼び出します。
 
 BLOB でユーザー委任 SAS に対してサポートされているアクセス許可には、追加、作成、削除、読み取り、書き込みがあります。 アクセス許可は、単独で指定することも、組み合わせて指定することもできます。 これらのアクセス許可の詳細については、「[ユーザー委任 SAS を作成する](/rest/api/storageservices/create-user-delegation-sas)」を参照してください。
 
@@ -119,7 +119,7 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="revoke-a-user-delegation-sas"></a>ユーザー委任 SAS を取り消す
 
-Azure CLI からユーザー委任 SAS を取り消すには、[az storage account revoke-delegation-keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) コマンドを呼び出します。 このコマンドにより、指定したストレージ アカウントに関連付けられているすべてのユーザー委任キーが取り消されます。 これらのキーに関連付けられているすべての共有アクセス署名が無効になります。
+Azure CLI からユーザー委任 SAS を取り消すには、[az storage account revoke-delegation-keys](/cli/azure/storage/account#az_storage_account_revoke_delegation_keys) コマンドを呼び出します。 このコマンドにより、指定したストレージ アカウントに関連付けられているすべてのユーザー委任キーが取り消されます。 これらのキーに関連付けられているすべての共有アクセス署名が無効になります。
 
 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 

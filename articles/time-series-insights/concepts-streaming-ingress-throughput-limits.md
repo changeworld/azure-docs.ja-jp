@@ -1,21 +1,21 @@
 ---
 title: ストリーミング インジェストのスループットの制限 - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 におけるイングレス スループットの制限について説明します。
-author: lyrana
-ms.author: lyhughes
-manager: dpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 72b78f49ed8b7016b92262de7256492fa6d5d7d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98676803"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306519"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>ストリーミング インジェストのスループットの制限
 
@@ -59,7 +59,7 @@ Azure Time Series Insights Gen2 環境を計画するときは、Azure Time Seri
 
 *パーティション* は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。
 
-Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)」を参照してください。
+Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)」を参照してください。
 
 > [!NOTE]
 > Azure Time Series Insights Gen2 で使用されるほとんどの IoT Hub には、4 つのパーティションのみが必要です。

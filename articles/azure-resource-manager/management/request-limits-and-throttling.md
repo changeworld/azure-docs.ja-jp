@@ -4,12 +4,12 @@ description: サブスクリプションの上限に達したときに、Azure R
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024627"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
@@ -58,7 +58,7 @@ Microsoft.Network リソース プロバイダーでは、次の調整制限が�
 
 ### <a name="compute-throttling"></a>コンピューティング調整
 
-コンピューティング操作の調整制限の詳細については、[「API の調整エラーのトラブルシューティング」のコンピューティング](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)に関する説明を参照してください。
+コンピューティング操作の調整制限の詳細については、[「API の調整エラーのトラブルシューティング」のコンピューティング](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors)に関する説明を参照してください。
 
 仮想マシン スケール セット内の仮想マシン インスタンスを確認するには、[仮想マシン スケール セットの操作](/rest/api/compute/virtualmachinescalesetvms)を使用します。 たとえば、[仮想マシン スケール セット VM - 一覧](/rest/api/compute/virtualmachinescalesetvms/list)をパラメーターと共に使用して、仮想マシン インスタンスの電源状態を確認します。 この API を使うと、要求の数を減らすことができます。
 
@@ -98,7 +98,7 @@ Azure SDK を使用している場合は、SDK に自動再試行構成が含ま
 | x-ms-ratelimit-remaining-tenant-resource-requests |テナント スコープの残りのリソースの種類の要求数。<br /><br />このヘッダーはテナント レベルの要求専用であり、サービスが既定の上限をオーバーライドした場合にのみ追加されます。 Resource Manager は、テナントの読み取り要求数または書き込み要求数の代わりにこの値を追加します。 |
 | x-ms-ratelimit-remaining-tenant-resource-entities-read |テナント スコープの残りのリソースの種類収集要求数。<br /><br />このヘッダーはテナント レベルの要求専用であり、サービスが既定の上限をオーバーライドした場合にのみ追加されます。 |
 
-リソース プロバイダーからは、残りの要求に関する情報と共に応答ヘッダーが返されることもあります。 コンピューティング リソース プロバイダーから返される応答ヘッダーの詳細については、「[呼び出しレートの情報提供応答ヘッダー](../../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers)」を参照してください。
+リソース プロバイダーからは、残りの要求に関する情報と共に応答ヘッダーが返されることもあります。 コンピューティング リソース プロバイダーから返される応答ヘッダーの詳細については、「[呼び出しレートの情報提供応答ヘッダー](/troubleshoot/azure/virtual-machines/troubleshooting-throttling-errors#call-rate-informational-response-headers)」を参照してください。
 
 ## <a name="retrieving-the-header-values"></a>ヘッダー値の取得
 

@@ -3,12 +3,12 @@ title: YAML リファレンス - ACR タスク
 description: YAML で ACR タスク用のタスクを定義するための参照 (タスクのプロパティ、ステップの種類、ステップのプロパティ、およびビルトイン変数など)。
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 126fcbce0569b2be6d9302cbbb718fa11e3e8046
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88067585"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780949"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -629,6 +629,6 @@ alias:
 [acr-tasks]: https://github.com/Azure-Samples/acr-tasks
 
 <!-- LINKS - Internal -->
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-configure]: /cli/azure/reference-index#az-configure
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-configure]: /cli/azure/reference-index#az_configure

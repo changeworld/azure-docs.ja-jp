@@ -7,7 +7,6 @@ documentationcenter: network-watcher
 author: damendo
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -17,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 5dac16e5cc1e88d833bf6d3c2660570fcf8b8e9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2ca7a3b25b1355e21782c1d9f736d20a14cbd4ac
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785453"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
@@ -38,13 +37,13 @@ ms.locfileid: "102216957"
 
 ## <a name="create-a-vm"></a>VM の作成
 
-VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az-group-create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+VM を作成する前に、その VM を含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 次の例では、*myVm* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 次の例では、*myVm* という名前の VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -62,7 +61,7 @@ Network Watcher を使用してネットワーク通信をテストするには�
 
 ### <a name="enable-network-watcher"></a>ネットワーク ウォッチャーを有効にする
 
-米国東部リージョンで既にネットワーク ウォッチャーを有効にしている場合は、「[次ホップの使用](#use-next-hop)」に進んでください。 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) コマンドを使用して、米国東部リージョンにネットワーク ウォッチャーを作成します。
+米国東部リージョンで既にネットワーク ウォッチャーを有効にしている場合は、「[次ホップの使用](#use-next-hop)」に進んでください。 [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) コマンドを使用して、米国東部リージョンにネットワーク ウォッチャーを作成します。
 
 ```azurecli-interactive
 az network watcher configure \
@@ -73,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>次ホップの使用
 
-Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) を使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを確認します。
+Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[az network watcher show-next-hop](/cli/azure/network/watcher#az_network_watcher_show_next_hop) を使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを確認します。
 
 VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 
@@ -105,7 +104,7 @@ az network watcher show-next-hop \
 
 ## <a name="view-details-of-a-route"></a>ルートの詳細の表示
 
-さらに詳細にルーティングを分析するには、[az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) コマンドを使用して、ネットワーク インターフェイスの有効なルートを確認します。
+さらに詳細にルーティングを分析するには、[az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table) コマンドを使用して、ネットワーク インターフェイスの有効なルートを確認します。
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -155,7 +154,7 @@ az network nic show-effective-route-table \
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、[az group delete](/cli/azure/group#az-group-delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

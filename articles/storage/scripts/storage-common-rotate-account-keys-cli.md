@@ -11,10 +11,10 @@ ms.date: 10/20/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 08e1b3837863b197f8463a0d969e78afab2b9858
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92370408"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>ストレージ アカウントを作成してアカウント アクセス キーのローテーションを行う
@@ -52,4 +52,4 @@ az group delete --name myResourceGroup
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他のストレージ CLI サンプル スクリプトは、[Azure Blob ストレージ用の Azure CLI サンプル](../blobs/storage-samples-blobs-cli.md)のページにあります。
+その他のストレージ CLI サンプル スクリプトは、[Azure Blob Storage 用の Azure CLI サンプル](../blobs/storage-samples-blobs-cli.md)のページにあります。

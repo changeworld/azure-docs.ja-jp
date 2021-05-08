@@ -8,15 +8,15 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/05/2020
+ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 30e4fede72df8eaf922745e7781c9e0d11f7ddb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee767cbeafcce604ecb4a79ce0fdf21c70bbb47c
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210820"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219639"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 
@@ -70,12 +70,6 @@ SP を作成し、ワークスペースへのアクセス権を付与する最�
     Azure のサブスクリプションが複数ある場合、`az account set -s <subscription name or ID>` コマンドを使用してサブスクリプションを設定できます。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/cli/azure/manage-azure-subscriptions-azure-cli)」をご覧ください。
 
     その他の認証方法については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
-
-1. Azure Machine Learning 拡張機能をインストールします。
-
-    ```azurecli-interactive
-    az extension add -n azure-cli-ml
-    ```
 
 1. サービス プリンシパルを作成します。 次の例では、**ml auth** という名前の SP が作成されます。
 

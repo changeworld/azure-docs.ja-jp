@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 40e17e518baec40d31918d24ab5b61da741f540a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/08/2021
+ms.openlocfilehash: a1dbe409eb5479c4027834cd33e095d12c31e238
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700475"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210195"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -177,11 +177,18 @@ ms.locfileid: "101700475"
 > | galleries/images/versions | image | 32-bit integer | 数字とピリオド。 |
 > | images | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
 > | スナップショット | resource group | 1 ～ 80 | 英数字、アンダースコア、ピリオド、およびハイフン。<br><br>英数字で開始します。 英数字またはアンダースコアで終了します。 |
-> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows VM の場合、ピリオドを含めたり、末尾をハイフンにしたりすることはできません。<br><br>Linux VM の場合、末尾をピリオドまたはハイフンにすることはできません。 |
-> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `\/"'[]:|<>+=;,?*@&`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachines | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>Windows VM の場合、ピリオドを含めたり、末尾をハイフンにしたりすることはできません。<br><br>Linux VM の場合、末尾をピリオドまたはハイフンにすることはできません。 |
+> | virtualMachineScaleSets | resource group | 1-15 (Windows)<br>1-64 (Linux)<br><br>下記の「注意」を参照。 | スペースまたは次の文字は使用できません:<br> `~ ! @ # $ % ^ & * ( ) = + _ [ ] { } \ | ; : . ' " , < > / ?`<br><br>アンダースコアで開始することはできません。 末尾をピリオドまたはハイフンにすることはできません。 |
 
 > [!NOTE]
 > Azure 仮想マシンには、リソース名とホスト名の 2 つの異なる名前があります。 ポータルで仮想マシンを作成すると、両方の名前に同じ値が使用されます。 前の表に記載されている制限事項は、ホスト名に適用されます。 実際のリソース名の最大文字数は 64 文字です。
+
+## <a name="microsoftcommunication"></a>Microsoft.Communication
+
+> [!div class="mx-tableFixed"]
+> | Entity | Scope | 長さ | 有効な文字 |
+> | --- | --- | --- | --- |
+> | communicationServices | グローバル | 1 ～ 63 | 英数字、ハイフン、およびアンダースコア。 |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
@@ -706,10 +713,12 @@ ms.locfileid: "101700475"
 > | --- | --- | --- | --- |
 > | certificates | resource group | 1-260 | 次は使用できません:<br>`/` <br><br>末尾をスペースまたはピリオドにすることはできません。  | 
 > | serverfarms | resource group | 1-40 | 英数字とハイフン。 |
-> | sites | グローバル | 2 から 60 | 英数字とハイフンを含みます。<br><br>先頭または末尾をハイフンにすることはできません。 |
+> | sites | グローバルまたはドメインごと。 下記の「注意」を参照。 | 2 から 60 | 英数字とハイフンを含みます。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | sites/slots | site | 2 ～ 59 | 英数字とハイフン。 |
 
 > [!NOTE]
+> Web サイトには、グローバルに一意の URL が必要です。 ホスティング プランを使用する Web サイトを作成する場合、URL は `http://<app-name>.azurewebsites.net` になります。 アプリ名はグローバルに一意である必要があります。 App Service Environment を使用する Web サイトを作成する場合、アプリ名は、[App Service Environment のドメイン](../../app-service/environment/using-an-ase.md#app-access)内で一意である必要があります。 どちらの場合も、サイトの URL はグローバルに一意です。
+>
 > Azure Functions の名前付けルールと制限事項は、Microsoft.Web/sites と同じです。
 
 ## <a name="next-steps"></a>次のステップ

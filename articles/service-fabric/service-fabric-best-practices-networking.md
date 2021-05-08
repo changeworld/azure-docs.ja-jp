@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: de6a80f73a97a5732f00e10107fff2330038210a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732566"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122018"
 ---
 # <a name="networking"></a>ネットワーク
 
@@ -62,7 +62,7 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 ここでの基本的なルールは、Azure マネージド Service Fabric クラスターのセキュリティ ロックダウンに対する最小限のものです。 次のポートを開かなかったり、IP/URL を許可しなかったりすると、クラスターの適切な動作が妨げられ、サポートされない可能性があります。 このルール セットでは、[OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)を使用する必要があります。そうでない場合は、追加のポートを開く必要があります。
 
 ### <a name="inbound"></a>着信 
-|Priority   |名前               |Port        |Protocol  |source             |到着地       |アクション   
+|Priority   |名前               |Port        |Protocol  |source             |宛先       |アクション   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |Azure              |19080       |TCP       |インターネット           |VirtualNetwork    |Allow
 |3910       |Client             |19000       |TCP       |インターネット           |VirtualNetwork    |Allow
@@ -87,7 +87,7 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 
 * **アプリケーション**。 アプリケーション ポートの範囲は、アプリケーションのエンドポイント要求に対応できるように十分な大きさにする必要があります。 この範囲は、マシン上の動的なポートの範囲 (つまり、構成で設定されている ephemeralPorts の範囲) とは排他的である必要があります。 Service Fabric では、新しいポートが必要なときはこれらのポートが常に使用され、ノード上でこれらのポートに対してファイアウォールを開く処理が行われます。
 
-* **SMB**。 SMB プロトコルは、2 つのシナリオのために ImageStore サービスによって使用されています。 このポートは、ノードで ImageStore からパッケージをダウンロードするため、およびこれらをレプリカ間でレプリケートするために必要です。 
+* **SMB**。 省略可能。ランタイム バージョン 7.1 以降では、既定で SMB は使用されなくなりました。 SMB プロトコルは、2 つのシナリオのために ImageStore サービスによって使用されています。 このポートは、ノードで ImageStore からパッケージをダウンロードするため、およびこれらをレプリカ間でレプリケートするために必要です。 
 
 * **RDP**。 省略可能。ジャンプボックスのシナリオでインターネットまたは VirtualNetwork から RDP が必要な場合。 
 
@@ -97,7 +97,7 @@ Service Fabric クラスターは、[高速ネットワークを導入した Lin
 
 ### <a name="outbound"></a>送信
 
-|Priority   |名前               |Port        |Protocol  |source             |到着地       |アクション   
+|Priority   |名前               |Port        |Protocol  |source             |宛先       |アクション   
 |---        |---                |---         |---       |---                |---               |---
 |3900       |ネットワーク            |Any         |TCP       |VirtualNetwork     |VirtualNetwork    |Allow
 |3910       |リソース プロバイダー  |443         |TCP       |VirtualNetwork     |ServiceFabric     |Allow

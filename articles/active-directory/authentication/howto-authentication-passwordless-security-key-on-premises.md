@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db1b559bb4f6a1f8866116c287df5b814500210b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef56db4ef67515d14f8462db2975e68a1a86f238
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101647474"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959859"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -193,6 +193,8 @@ Microsoft はこの機能を一般提供 (GA) するため、この機能に取�
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>FIDO を使用してサインインし、資格情報プロンプトが表示された後、自分の NTLM ネットワーク リソースへの SSO を取得できません
 
 時間内に応答してリソース要求を処理できるように、十分な数のドメイン コントローラーに修正プログラムが適用されていることを確認してください。 機能を実行しているドメイン コントローラーが表示できるかどうかを確認するには、`nltest /dsgetdc:contoso /keylist /kdc` の出力を確認します。
+
+注: nltest コマンドのこの /Keylist スイッチは、クライアント windows 10 v2004 以降にあります
 
 ## <a name="next-steps"></a>次のステップ
 

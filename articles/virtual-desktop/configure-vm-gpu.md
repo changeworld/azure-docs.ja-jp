@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: c3a23276ce19f6d7b4cf341bac155ec84363fe5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018343"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709465"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
@@ -23,10 +23,10 @@ Windows Virtual Desktop では、アプリのパフォーマンスとスケー�
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>GPU で最適化する Azure 仮想マシンの適切なサイズを選択する
 
-Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、アプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。
+Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、ほとんどのアプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。
 
 >[!NOTE]
->Azure の NC、NCv2、NCv3、ND、および NDv2 シリーズの VM は通常、Windows Virtual Desktop のセッション ホストには適していません。 これらの VM は、NVIDIA CUDA を使用して構築されたものなど、特殊な高パフォーマンスのコンピューティング ツールまたは機械学習ツール向けに設計されています。 NVIDIA GPU を使用した一般的なアプリとデスクトップの高速化には、NVIDIA GRID ライセンスが必要です。これは、推奨される VM サイズで Azure によって提供されますが、NC/ND シリーズ VM 用に個別に配置する必要があります。
+>Azure の NC、NCv2、NCv3、ND、および NDv2 シリーズの VM は通常、Windows Virtual Desktop のセッション ホストには適していません。 これらの VM は、NVIDIA CUDA を使用して構築されたものなど、特殊な高パフォーマンスのコンピューティング ツールまたは機械学習ツール向けに設計されています。 ほとんどのアプリまたは Windows ユーザー インターフェイスでは、GPU アクセラレーションはサポートされていません。
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>ホスト プールを作成し、仮想マシンをプロビジョニングして、アプリ グループを構成する
 
@@ -41,9 +41,10 @@ Windows Virtual Desktop では、次のオペレーティング システムで 
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>サポートされているグラフィック ドライバーを仮想マシンにインストールする
 
-Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)」の手順に従って、手動で、または Azure VM 拡張機能を使用して適切なグラフィック ベンターのドライバーをインストールします。
+Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、適切なグラフィック ドライバーをインストールする必要があります。 「[サポートされているオペレーティング システムとドライバー](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)」の手順に従って、ドライバーをインストールします。 サポートされているのは、Azure によって配布されたドライバーのみです。
 
-Windows Virtual Desktop でサポートされているのは、Azure によって配布されたドライバーのみです。 NVIDIA GPU が搭載されている Azure NV シリーズの VM の場合は、NVIDIA Tesla (CUDA) ドライバーではなく、[NVIDIA GRID ドライバー](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)のみが、汎用アプリとデスクトップ用の GPU アクセラレーションをサポートしています。
+* Azure NV シリーズまたは NVv3 シリーズの VM の場合、NVIDIA CUDA ドライバーではなく NVIDIA GRID ドライバーでのみ、ほとんどのアプリと Windows ユーザー インターフェイスの GPU アクセラレータがサポートされます。 ドライバーを手動でインストールする場合は、必ず GRID ドライバーをインストールしてください。 Azure VM 拡張機能を使用してドライバーをインストールすることを選択した場合は、これらの VM サイズに応じて、GRID ドライバーが自動的にインストールされます。
+* Azure NVv4 シリーズ VM の場合は、Azure によって提供される AMD ドライバーをインストールします。 Azure VM 拡張機能を使用して自動的にインストールすることも、手動でインストールすることもできます。
 
 ドライバーをインストールした後は、VM を再起動する必要があります。 上記の説明の検証手順を使って、グラフィック ドライバーが正常にインストールされたことを確認します。
 

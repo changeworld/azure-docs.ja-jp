@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181485"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802303"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように SolarWinds Service Desk (旧称 Samanage) を構成する
 
@@ -57,6 +57,9 @@ SolarWinds Service Desk との既存の統合がある場合は、今後の変�
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。 
 * Professional パッケージを使用する [SolarWinds Service Desk テナント](https://www.samanage.com/pricing/)。
 * 管理者のアクセス許可を持つ SolarWinds Service Desk のユーザー アカウント。
+
+> [!Note]
+> ロールのインポートを行う場合、Azure Active Directory でロールを手動で編集することはできません。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
 1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。

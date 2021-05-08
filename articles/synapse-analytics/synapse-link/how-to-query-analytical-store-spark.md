@@ -2,19 +2,20 @@
 title: Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
 description: Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する方法
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
 ms.date: 09/15/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.custom: cosmos-db
+ms.openlocfilehash: 4a8367ea41ea96d8a412af965346684737d190fe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671283"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627576"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
 
@@ -28,6 +29,10 @@ Azure Cosmos DB との対話中に、次の機能がサポートされます。
 * また、Synapse Apache Spark では、ソースおよびシンクとしての Azure Cosmos DB を使用した Spark の構造化ストリーミングもサポートされています。 
 
 次のセクションで、上の機能の構文について説明します。 Azure Synapse Analytics ワークスペースのジェスチャは、すぐに使い始めることができるように設計されています。 ジェスチャは、Synapse ワークスペースの **[データ]** タブで Azure Cosmos DB コンテナーを右クリックすると表示されます。 ジェスチャを使用すると、コードをすばやく生成し、ニーズに合わせて調整することができます。 ジェスチャは、1 回のクリックでデータを検出するのにも最適です。
+
+> [!IMPORTANT]
+> 分析スキーマには、データの読み込み操作での予期しない動作につながる可能性のある、いくつかの制約があることに注意してください。
+> たとえば、分析スキーマではトランザクション スキーマの最初の 1,000 個のプロパティしか使用できない、スペースを含むプロパティは使用できない、などです。予期しない結果が生じた場合は、詳細について[分析ストア スキーマの制約](../../cosmos-db/analytical-store-introduction.md#schema-constraints)を参照してください。
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアに対してクエリを実行する
 

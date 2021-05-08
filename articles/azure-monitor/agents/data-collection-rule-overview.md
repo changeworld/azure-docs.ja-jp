@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a0c5e9f89b983871224e79c2fc4f518a15d42a6f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039616"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586337"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor のデータ収集ルール (プレビュー)
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
@@ -81,6 +81,10 @@ ms.locfileid: "102039616"
   - syslog ファシリティからアラート、重大、および緊急イベントを収集します。
 - 変換先
   - すべてのデータを centralWorkspace という名前の Log Analytics ワークスペースに送信します。
+
+> [!NOTE]
+> データ収集ルールでイベント コレクションを指定するために使用される Xpath の説明については、「[カスタム XPath クエリによるデータ収集の制限](data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)」を参照してください。
+
 
 ```json
 {

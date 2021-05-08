@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b817cfc347ee79ff7c9cbb4124e3f2b7e4d2b7ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 006bcc6c0cffe6f7c08b16057325a499e44f06be
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644257"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257910"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Keyless を構成する
 
@@ -83,7 +83,7 @@ ID プロバイダーを構成するには、次の手順を実行します。
 1. **[ID プロバイダーの種類]**  >  **[OpenID Connect (Preview)]\(OpenID Connect (プレビュー))** の順に選択します
 2. フォームに入力して、ID プロバイダーを設定します。
 
-   |プロパティ | 値 |
+   |プロパティ | [値] |
    |:-----| :-----------|
    | 名前   | Keyless |
    | メタデータ URL | ホストされている Keyless Authentication アプリの URI を挿入し、その後に特定のパスを入力します ('https://keyless.auth/.well-known/openid-configuration ' など)。 |
@@ -159,4 +159,4 @@ ID プロバイダーを構成するには、次の手順を実行します。
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

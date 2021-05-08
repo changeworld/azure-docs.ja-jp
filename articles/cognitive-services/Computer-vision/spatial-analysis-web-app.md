@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6d3be90cc81b1bcd9a55fc8e53cb9f2238e8c6de
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98183474"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285979"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>方法:人数カウント Web アプリをデプロイする
 
@@ -172,7 +172,7 @@ docker tag rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0 [desired local
 docker push [desired local image name]
 ```
 
-コンテナーをインストールするには、新しい Azure Web App for Containers を作成し、必要なパラメーターを入力します。 次に、 **[Docker]** タブに移動し、 **[単一コンテナー]** 、 **[Azure Container Registry]** の順に選択します。 上記でイメージをプッシュした Azure Container Registry のインスタンスを使用します。
+コンテナーをインストールするには、新しい Azure App Service を作成し、必要なパラメーターを入力します。 次に、 **[Docker]** タブに移動し、 **[単一コンテナー]** 、 **[Azure Container Registry]** の順に選択します。 上記でイメージをプッシュした Azure Container Registry のインスタンスを使用します。
 
 ![イメージの詳細を入力する](./media/spatial-analysis/solution-app-create-screen.png)
 
@@ -189,7 +189,7 @@ docker push [desired local image name]
 
 ### <a name="test-the-app"></a>アプリのテスト
 
-Azure Web アプリに移動し、デプロイが成功したことと、Web アプリが実行されていることを確認します。 構成済みの URL (`<yourapp>.azurewebsites.net`) に移動して、実行中のアプリを表示します。
+Azure サービスに移動し、デプロイが成功したことと、Web アプリが実行されていることを確認します。 構成済みの URL (`<yourapp>.azurewebsites.net`) に移動して、実行中のアプリを表示します。
 
 ![展開をテスト](./media/spatial-analysis/solution-app-output.png)
 
@@ -198,7 +198,7 @@ Azure Web アプリに移動し、デプロイが成功したことと、Web ア
 
 ## <a name="next-steps"></a>次のステップ
 
-* [空間分析操作の構成](./spatial-analysis-operations.md)
+* [空間分析の操作を構成する](./spatial-analysis-operations.md)
 * [ロギングおよびトラブルシューティング](spatial-analysis-logging.md)
 * [カメラの配置ガイド](spatial-analysis-camera-placement.md)
 * [ゾーンとラインの配置ガイド](spatial-analysis-zone-line-placement.md)

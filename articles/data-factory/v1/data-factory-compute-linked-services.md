@@ -3,16 +3,16 @@ title: Azure Data Factory バージョン 1 でサポートされるコンピュ
 description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 07e13036a427ff7ff4f0cbbd2dfd6fbe272bf915
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5f6fbcb73b4139c0a80ea8352071d8683c401d6e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377195"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782947"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory バージョン 1 でサポートされるコンピューティング環境
 > [!NOTE]
@@ -362,7 +362,7 @@ Data Lake Analytics のリンクされたサービスについては、サービ
 | servicePrincipalKey | アプリケーションのキーです。           | はい      |
 | tenant              | アプリケーションが配置されているテナントの情報 (ドメイン名またはテナント ID)。 この情報を取得するには、Azure Portal の右上隅にマウス ポインターを移動します。 | はい      |
 
-**例:サービス プリンシパルの認証**
+**例: サービス プリンシパル認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -389,7 +389,7 @@ Data Lake Analytics のユーザー資格情報認証については、次のプ
 | authorization | Data Factory エディターで、 **[承認する]** を選択します。 自動生成された認可 URL をこのプロパティに割り当てる資格情報を入力します。 | はい      |
 | sessionID     | OAuth 認可セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい      |
 
-**例:ユーザー資格情報認証**
+**例: ユーザー資格情報認証**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",

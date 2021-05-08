@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
 ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200632"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
@@ -310,7 +310,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 統合ターミナルで、デプロイが正常に作成されていることをデプロイ ID によって確認できます。
 
-端末で `docker ps` コマンドを実行して、コンテナーの状態を確認できます。 Visual Studio Code と IoT Edge ランタイムが同じマシン上で実行されている場合は、Visual Studio Code の Docker ビューでも状態を確認することができます。
+ターミナルで `docker ps` コマンドを実行して、コンテナーの状態を確認できます。 Visual Studio Code と IoT Edge ランタイムが同じマシン上で実行されている場合は、Visual Studio Code の Docker ビューでも状態を確認することができます。
 
 ### <a name="expose-the-ip-and-port-of-the-module-for-the-debugger"></a>モジュールの IP とポートをデバッガー用に公開する
 

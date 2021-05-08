@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5a637a6f355be32f82878a52a30c77d020190651
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 26538f48213d025c6fe71fb55abb17a025a23b45
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211619"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025681"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service で .NET アプリでスナップショット デバッガーを有効にする
 
@@ -56,13 +56,13 @@ ms.locfileid: "102211619"
 
 ## <a name="enable-snapshot-debugger-for-other-clouds"></a>他のクラウドに対してスナップショット デバッガーを有効にする
 
-現在、エンドポイントの変更が必要なリージョンは [Azure Government](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#application-insights) と [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) のみであり、Application Insights の接続文字列が利用されます。
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) と [Azure China](/azure/china/resources-developer-guide) のみであり、Application Insights の接続文字列が利用されます。
 
 |接続文字列プロパティ    | 米国政府のクラウド | China Cloud |   
 |---------------|---------------------|-------------|
 |SnapshotEndpoint         | `https://snapshot.monitor.azure.us`    | `https://snapshot.monitor.azure.cn` |
 
-その他の接続のオーバーライドの詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net#connection-string-with-explicit-endpoint-overrides)を参照してください。
+その他の接続のオーバーライドの詳細については、[Application Insights のドキュメント](./sdk-connection-string.md?tabs=net#connection-string-with-explicit-endpoint-overrides)を参照してください。
 
 ## <a name="disable-snapshot-debugger"></a>スナップショット デバッガーを無効にする
 
@@ -120,4 +120,3 @@ Azure App Service の場合、Azure Resource Manager テンプレート内でア
 
 [Enablement UI]: ./media/snapshot-debugger/enablement-ui.png
 [snapshot-debugger-app-setting]:./media/snapshot-debugger/snapshot-debugger-app-setting.png
-

@@ -6,12 +6,12 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3a52d7ea8c940a33f4fbd2b9ad69f4f889615e7f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d4508572d284347af9df961b324f44ec1518f88
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934341"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786119"
 ---
 # <a name="create-a-function-app-for-serverless-code-execution"></a>サーバーレス コード実行用の関数アプリを作成する 
 
@@ -37,9 +37,9 @@ ms.locfileid: "97934341"
 
 | コマンド | Notes |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Azure Storage アカウントを作成します。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Function App を作成します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Azure Storage アカウントを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Function App を作成します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

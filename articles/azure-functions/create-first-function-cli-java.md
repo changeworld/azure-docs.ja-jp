@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 0ef52da8400cfadfaaa26664d984d8b898a3b9a3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1a1571e83e33ee0aec40df4cf68b3d01b6ef5f04
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729302"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787505"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Java 関数を作成する
 
@@ -152,11 +152,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     > [!NOTE]  
     > HttpExample が上記のように表示されない場合、プロジェクトのルート フォルダー以外からホストを起動したと考えられます。 その場合は **Ctrl** + **C** キーを使用してホストを停止し、プロジェクトのルート フォルダーに移動して、前出のコマンドを再度実行してください。
 
-1. この出力から `HttpExample` 関数の URL をブラウザーにコピーし、クエリ文字列 `?name=<YOUR_NAME>` を追加して、URL 全体を `http://localhost:7071/api/HttpExample?name=Functions` のようにします。 `Hello Functions` のようなメッセージがブラウザーに表示されます。
-
-    ![ブラウザーでローカルに関数を実行した結果](./media/functions-create-first-azure-function-azure-cli/function-test-local-browser.png)
-    
-    要求を行うと、プロジェクトを起動したターミナルにもログ出力が表示されます。
+1. この出力から `HttpExample` 関数の URL をブラウザーにコピーし、クエリ文字列 `?name=<YOUR_NAME>` を追加して、URL 全体を `http://localhost:7071/api/HttpExample?name=Functions` のようにします。 ブラウザーには、クエリ文字列値をエコー バックするメッセージが表示されるはずです。 要求を行うと、プロジェクトを起動したターミナルにもログ出力が表示されます。
 
 1. 完了したら、**Ctrl** + **C** キーを押し、`y` を選択して関数ホストを停止してください。
 
@@ -174,7 +170,7 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     az login
     ```
 
-    [az login](/cli/azure/reference-index#az-login) コマンドで Azure アカウントにサインインします。
+    [az login](/cli/azure/reference-index#az_login) コマンドで Azure アカウントにサインインします。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell

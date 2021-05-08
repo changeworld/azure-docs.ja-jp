@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b6bc00af8d54c8748dd82b934974282e0e8da0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426962"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560490"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求設定を変更する
 
@@ -85,7 +85,7 @@ ms.locfileid: "102426962"
 
 1. 以下のオプションの 1 つを選択します。
 
-    |  |  |
+    |  | 説明 |
     | --- | --- |
     | **特定のユーザーとグループ** | 指定したディレクトリ内のユーザーとグループのみがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 |
     | **All members (excluding guests) (すべてのメンバー (ゲストを除く))** | ディレクトリ内のすべてのメンバー ユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 このオプションには、ディレクトリに招待したゲスト ユーザーは含まれません。 |
@@ -122,7 +122,7 @@ ms.locfileid: "102426962"
 
 1. 以下のオプションの 1 つを選択します。
 
-    |  |  |
+    |  | 説明 |
     | --- | --- |
     | **Specific connected organizations (特定の接続済み組織)** | 管理者が以前に追加した組織の一覧から選択する場合は、このオプションを選択します。 選択された組織のすべてのユーザーは、このアクセス パッケージを要求できます。 |
     | **構成済みの接続されたすべての組織** | 構成済みのすべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 構成済みのすべての組織のユーザーに公開されるアクセス パッケージを要求できるのは、構成済みの接続された組織のユーザーのみです。 |

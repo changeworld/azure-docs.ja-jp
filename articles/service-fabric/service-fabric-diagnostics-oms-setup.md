@@ -1,16 +1,14 @@
 ---
 title: Azure Monitor ログを使用して監視を設定する
 description: イベントを視覚化および分析するように Azure Monitor ログを設定して Azure Service Fabric クラスターを監視する方法について説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: srrengar
-ms.openlocfilehash: ba62ac80b2f8d318d0d13e81e88cc63a8d893a2b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 79dbc38f9d177bc3decf11673a68ce434f9a83bc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100570351"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625961"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>クラスターに Azure Monitor ログを設定する
 

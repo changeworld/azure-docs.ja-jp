@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: 1b6805434f8c697c1ea13925ee681fdc7b5f1a29
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f5c51630d111bd68e311a93100abb8266e2a8e27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704754"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787433"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
 
@@ -180,7 +180,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     az login
     ```
 
-    [az login](/cli/azure/reference-index#az-login) コマンドで Azure アカウントにサインインします。
+    [az login](/cli/azure/reference-index#az_login) コマンドで Azure アカウントにサインインします。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -199,7 +199,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
  
-    [az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。
+    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -222,7 +222,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    [az storage account create](/cli/azure/storage/account#az-storage-account-create) コマンドでストレージ アカウントを作成します。 
+    [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドでストレージ アカウントを作成します。 
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

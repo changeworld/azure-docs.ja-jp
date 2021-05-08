@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:Azure HDInsight で Apache HBase にクエリを実行する - HBase シェル
+title: 'クイックスタート: Azure HDInsight で Apache HBase にクエリを実行する - HBase シェル'
 description: このクイックスタートでは、Apache HBase シェルを使用して Apache HBase クエリを実行する方法について説明します。
 keywords: hdinsight、hadoop、HBase
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98844a7dab673fb98dcdb639fbc48c0f6035fbba
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942936"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865113"
 ---
-# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>クイック スタート:HBase を使用して Azure HDInsight で Apache HBase を実行する
+# <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>クイックスタート: Azure HDInsight で HBase シェルを使用して Apache HBase にクエリを実行する
 
 このクイックスタートでは、Apache HBase シェルを使用して HBase テーブルを作成し、データを挿入し、テーブルのクエリを実行する方法について説明します。
 
@@ -29,11 +29,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 多くの場合、データは次のような表形式で表示されます。
 
-![HDInsight Apache HBase の表形式データ](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+:::image type="content" source="./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png" alt-text="HDInsight Apache HBase の表形式データ" border="true":::
 
 HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) では、同じデータが次のように表示されます。
 
-![HDInsight Apache HBase の BigTable データ](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+:::image type="content" source="./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png" alt-text="HDInsight Apache HBase の BigTable データ" border="true":::
 
 SSH を使用して HBase クラスターに接続し、Apache HBase シェルを使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。
 

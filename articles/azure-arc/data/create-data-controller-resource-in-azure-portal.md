@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 03/02/2021
+ms.date: 04/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 9c928040aa2ff5a6ebfb7102c03450d3d7297b59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12d0997e677bcca423f32951e99a6202855104ad
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686480"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030868"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Azure portal で Azure Arc データ コントローラーを作成する
 
@@ -26,24 +26,23 @@ Azure portal を使用して Azure Arc データ コントローラーを作成�
 
 Azure Arc の作成エクスペリエンスの多くは、作成または管理されるリソースが Azure インフラストラクチャの外部にある場合でも、Azure portal で開始されます。 このような場合のユーザー エクスペリエンス パターンでは、特に Azure とご使用の環境の間に直接的な接続がない場合は、Azure portal を使用してスクリプトを生成します。このスクリプトは、Azure へのセキュリティで保護された接続を確立するために、環境内でダウンロードして実行できます。 たとえば、Azure Arc 対応サーバーでは、このパターンに従って [Arc 対応サーバーを作成します](../servers/onboard-portal.md)。
 
-現時点では、プレビューで Azure Arc 対応データ サービスの間接接続モードのみがサポートされているため、ダウンロードして、Kubernetes クラスターに対して Azure Data Studio で実行できるノートブックを生成するために、Azure portal を使用できます。 今後、直接接続モードを使用できるようになると、Azure portal からデータ コントローラーを直接プロビジョニングできます。 [接続モード](connectivity.md)の詳細については、こちらを参照してください。
+Azure Arc 対応データ サービスの間接接続モードを使用すると、Azure portal を使用してノートブックを生成できます。これをダウンロードして、Kubernetes クラスターに対して Azure Data Studio で実行することができます。 
+
+直接接続モードを使用する場合は、Azure portal からデータ コントローラーを直接プロビジョニングできます。 [接続モード](connectivity.md)の詳細については、こちらを参照してください。
 
 ## <a name="use-the-azure-portal-to-create-an-azure-arc-data-controller"></a>Azure portal を使用して Azure Arc データ コントローラーを作成する
 
 Azure portal と Azure Data Studio を使用して Azure Arc データ コントローラーを作成するには、次の手順に従います。
 
 1. 最初に、[Azure portal マーケットプレース](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/azure%20arc%20data%20controller)にログインします。  "Azure Arc データ コントローラー" が表示されるように、マーケットプレースの検索結果がフィルター処理されます。
-2. 最初のステップで検索条件が入力されなかった場合は、 検索結果で "Azure Arc データ コントローラー" をクリックしてください。
-3. マーケットプレースから [Azure データ コントローラー] タイルを選択します。
-4. **[作成]** ボタンをクリックします。
-5. Azure Arc データ コントローラーを作成するための要件を確認し、Azure Data Studio や kubectl など、不足している前提条件ソフトウェアがあれば、それらをインストールします。
-6. **[データ コントローラーの詳細]** ボタンをクリックします。
-7. Azure portal で作成する他のリソースと同じように、サブスクリプション、リソース グループ、Azure の場所を選択します。 この場合、Azure の場所には、リソースに関するメタデータが格納される場所を選択します。  リソース自体は、選択するインフラストラクチャ上に作成されます。 必ずしも Azure インフラストラクチャを使用する必要はありません。
-8. データ コレクターの名前を入力します。
-9. データ コントローラーの接続モードを選択します。 [接続モードと要件](./connectivity.md)の詳細について確認してください。 
-
-   > [!NOTE] 
-   > **直接** 接続モードを選択した場合、「[サービス プリンシパルの作成](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)」の説明に従って、サービス プリンシパルの資格情報が環境変数を使用して設定されていることを確認してください。 
+1. 最初のステップで検索条件が入力されなかった場合は、 検索結果で "Azure Arc データ コントローラー" をクリックしてください。
+1. マーケットプレースから [Azure データ コントローラー] タイルを選択します。
+1. **[作成]** ボタンをクリックします。
+1. 間接接続モードを選択します。 [接続モードと要件](./connectivity.md)の詳細について確認してください。 
+1. Azure Arc データ コントローラーを作成するための要件を確認し、Azure Data Studio や kubectl など、不足している前提条件ソフトウェアがあれば、それらをインストールします。
+1. **[次: データ コントローラーの詳細]** ボタンをクリックします。
+1. Azure portal で作成する他のリソースと同じように、サブスクリプション、リソース グループ、Azure の場所を選択します。 この場合、Azure の場所には、リソースに関するメタデータが格納される場所を選択します。  リソース自体は、選択するインフラストラクチャ上に作成されます。 必ずしも Azure インフラストラクチャを使用する必要はありません。
+1. データ コレクターの名前を入力します。
 
 1. デプロイ構成ファイルを選択します。
 1. **[Azure Studio で開く]** ボタンをクリックします。

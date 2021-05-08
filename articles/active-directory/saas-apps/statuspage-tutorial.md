@@ -9,38 +9,37 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6bc2508220a8c0193efb55eb6cd11f7e151c80be
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98729636"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284601"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と StatusPage の統合
 
-このチュートリアルでは、StatusPage と Azure Active Directory (Azure AD) を統合する方法について説明します。
-StatusPage と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、StatusPage と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と StatusPage を統合すると、次のことができます。
 
-* StatusPage にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントで StatusPage に自動的にサインイン (シングル サインオン) するように設定できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* StatusPage にアクセスできるユーザーを Azure AD で制御する。
+* ユーザーが自分の Azure AD アカウントを使用して StatusPage に自動的にサインインできるようにする。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 StatusPage と Azure AD の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* StatusPage でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* StatusPage でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* StatusPage では、**IDP** Initiated SSO がサポートされます
+* StatusPage では、**IDP** Initiated SSO がサポートされます。
 
-## <a name="adding-statuspage-from-the-gallery"></a>ギャラリーからの StatusPage の追加
+## <a name="add-statuspage-from-the-gallery"></a>ギャラリーからの StatusPage の追加
 
 Azure AD への StatusPage の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に StatusPage を追加する必要があります。
 
@@ -65,13 +64,13 @@ StatusPage で Azure AD SSO を構成してテストするには、次の手順�
     1. **[StatusPage のテスト ユーザーの作成](#create-statuspage-test-user)** - StatusPage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **AskYourTeam** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -85,7 +84,7 @@ StatusPage で Azure AD SSO を構成してテストするには、次の手順�
     | `https://<subdomain>.statuspage.io/` |
     |
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
 
      | [応答 URL] |
     |--------------|
@@ -152,17 +151,17 @@ StatusPage で Azure AD SSO を構成してテストするには、次の手順�
 
 1. メイン ツール バーで、 **[Manage Account]** をクリックします。
 
-    ![StatusPage 企業サイトから選択された [Manage Account]\(アカウントの管理\) のスクリーンショット。](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![StatusPage 企業サイトから選択された [Manage Account]\(アカウントの管理\) のスクリーンショット。](./media/statuspage-tutorial/account.png)
 
 1. **[Single Sign-on]** タブをクリックします。
 
-    ![[Single Sign-on]\(シングル サインオン\) タブのスクリーンショット。](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![[Single Sign-on]\(シングル サインオン\) タブのスクリーンショット。](./media/statuspage-tutorial/tab.png)
 
 1. [SSO Setup] ページで、次の手順に従います。
 
-    ![[S S O Setup ]\(S S O の設定\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![[S S O Setup ]\(S S O の設定\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/statuspage-tutorial/setup.png)
 
-    ![[Save Configuration]\(構成を保存\) ボタンを示すスクリーンショット。](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![[Save Configuration]\(構成を保存\) ボタンを示すスクリーンショット。](./media/statuspage-tutorial/configuration.png)
 
     a. **[SSO Target URL]\(SSO ターゲット URL\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
@@ -182,25 +181,25 @@ StatusPage では、ジャストインタイム プロビジョニングがサ�
 
 1. 上部のメニューで **[Manage Account]** をクリックします。
 
-    ![StatusPage 企業サイトから選択された [Manage Account]\(アカウントの管理\) のスクリーンショット。](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![StatusPage 企業サイトから選択された [Manage Account]\(アカウントの管理\) のスクリーンショット。](./media/statuspage-tutorial/account.png)
 
 1. **[チーム メンバー]** タブをクリックします。
   
-    ![[チーム メンバー] タブのスクリーンショット。](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![[チーム メンバー] タブのスクリーンショット。](./media/statuspage-tutorial/sandbox.png) 
 
 1. **[チーム メンバーの追加]** をクリックします。
   
-    ![[チーム メンバーの追加] ボタンのスクリーンショット。](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![[チーム メンバーの追加] ボタンのスクリーンショット。](./media/statuspage-tutorial/team.png) 
 
 1. プロビジョニングする有効なユーザーの **電子メール アドレス**、**名**、**姓** を、対応するテキスト ボックスに入力します。 
 
-    ![[ユーザーの追加] ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![[ユーザーの追加] ダイアログ ボックスを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/statuspage-tutorial/user.png) 
 
 1. **[Role]** で **[Client Administrator]** を選択します。
 
 1. **[アカウントの作成]** をクリックします。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 

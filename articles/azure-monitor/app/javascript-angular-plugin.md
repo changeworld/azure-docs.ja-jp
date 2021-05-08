@@ -8,18 +8,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: lagayhar
-ms.openlocfilehash: d45d8bed328dc91dfeeabd6ce878074fa1218623
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ac83d0c43026b431370fab1d8c49aec1adf6659
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737020"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312724"
 ---
 # <a name="angular-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の Angular プラグイン
 
 Application Insights JavaScript SDK の Angular プラグインを使用すると、以下が有効になります。
 
 - ルーターの変更の追跡
+- キャッチされない例外の追跡
 
 > [!WARNING]
 > Angular プラグインは、ECMAScript 3 (ES3) と互換性がありません。
@@ -62,6 +63,24 @@ export class AppComponent {
         appInsights.loadAppInsights();
     }
 }
+```
+
+キャッチされない例外を追跡するには、次のように `app.module.ts` で ApplicationinsightsAngularpluginErrorService を設定します。
+
+```js
+import { ApplicationinsightsAngularpluginErrorService } from '@microsoft/applicationinsights-angularplugin-js';
+
+@NgModule({
+  ...
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ApplicationinsightsAngularpluginErrorService
+    }
+  ]
+  ...
+})
+export class AppModule { }
 ```
 
 ## <a name="next-steps"></a>次のステップ

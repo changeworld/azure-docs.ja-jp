@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b664dd406a1ab90b4ea5e85005a69935f345c609
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034661"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869380"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのサーバーの概念
 
@@ -55,7 +55,14 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 
-Azure Database for MySQL フレキシブル サーバーを管理するには、[Azure portal](./quickstart-create-server-portal.md) または [Azure CLI](./quickstart-create-server-cli.md) を使用できます。
+[Azure portal](./quickstart-create-server-portal.md) または [Azure CLI](./quickstart-create-server-cli.md) を使用して、Azure Database for MySQL フレキシブル サーバーの作成、削除、サーバー パラメーター構成 (my.cnf)、スケーリング、ネットワーク、セキュリティ、高可用性、バックアップと復元、監視を管理できます。 また、Azure Database for MySQL サーバーではスーパー ユーザー特権がサポートされていませんが、必要となる特定のデータベース管理タスクを実行するための以下のストアド プロシージャが用意されています。
+
+|**ストアド プロシージャ名**|**入力パラメーター**|**出力パラメーター**|**使用上の注意**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
+|*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
+|*mysql.az_load_timezone*|該当なし|なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
+
 
 ## <a name="next-steps"></a>次のステップ
 

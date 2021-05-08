@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 399bb001432759556cd0ba8bf15f7738dd4edb7c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988229"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781489"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure コンテナー レジストリを使用して OCI 成果物をプッシュおよびプルする
 
@@ -46,7 +46,7 @@ Stdin からパスワードを読み取るには、`--password-stdin` を使用�
 
 コンテナー レジストリに対して成果物のプッシュとプルを行うために、ご自分の ID で Azure CLI に[サインイン](/cli/azure/authenticate-azure-cli)します。
 
-次に、Acure CLI コマンド [az acr login](/cli/azure/acr#az-acr-login) を使用して、レジストリにアクセスします。 たとえば、"*myregistry*" という名前のレジストリに対して認証を行うには、次のように入力します。
+次に、Acure CLI コマンド [az acr login](/cli/azure/acr#az_acr_login) を使用して、レジストリにアクセスします。 たとえば、"*myregistry*" という名前のレジストリに対して認証を行うには、次のように入力します。
 
 ```azurecli
 az login
@@ -173,7 +173,7 @@ az acr login --name myregistry
 oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
 ```
 
-[az acr build](/cli/azure/acr#az-acr-build) コマンドを実行して、新しい成果物をビルド コンテキストとして使用する hello-world イメージをビルドします。
+[az acr build](/cli/azure/acr#az_acr_build) コマンドを実行して、新しい成果物をビルド コンテキストとして使用する hello-world イメージをビルドします。
 
 ```azurecli
 az acr build --registry myregistry --image builds/hello-world:v1 \
@@ -194,5 +194,5 @@ az acr build --registry myregistry --image builds/hello-world:v1 \
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-acr-repository-show]: /cli/azure/acr/repository?#az-acr-repository-show
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-repository-show]: /cli/azure/acr/repository?#az_acr_repository_show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete

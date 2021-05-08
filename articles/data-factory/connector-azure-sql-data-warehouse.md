@@ -5,13 +5,13 @@ ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364292"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104597523"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics のデータをコピーおよび変換する
 
@@ -270,8 +270,8 @@ Azure Synapse Analytics からデータをコピーするには、コピー ア�
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | ***`partitionSettings` の下:*** | | |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される **整数型または日付/日時型** (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定しない場合は、テーブルのインデックスまたは主キーが自動的に検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
-| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
-| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定しない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
+| partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定しない場合、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-azure-synapse-analytics)」セクションを参照してください。 | いいえ |
 
 **以下の点に注意してください。**
 
@@ -390,6 +390,7 @@ Azure Synapse Analytics にデータをコピーするには、コピー アク�
 | preCopyScript     | コピー アクティビティの毎回の実行で、データを Azure Synapse Analytics に書き込む前に実行する SQL クエリを指定します。 前に読み込まれたデータをクリーンアップするには、このプロパティを使います。 | いいえ                                            |
 | tableOption | ソースのスキーマに基づいて[自動的にシンク テーブルを作成する](copy-activity-overview.md#auto-create-sink-tables)かどうかを指定します (存在しない場合)。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
 | disableMetricsCollection | Data Factory では、コピーのパフォーマンスの最適化とレコメンデーションを目的として、Azure Synapse Analytics DWU などのメトリックが収集されます。これにより、マスター DB への追加アクセスが発生します。 この動作に不安がある場合は、`true` を指定してオフにします。 | いいえ (既定値は `false`) |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics シンクの例
 
@@ -520,7 +521,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
    4. `nullValue` が既定値のままか、**空の文字列** ("") に設定されており、`treatEmptyAsNull` が既定値のままか、true に設定されている。
    5. `encodingName` が既定値のままか、**utf-8** に設定されている。
    6. `quoteChar`、`escapeChar`、および `skipLineCount` が指定されていない。 PolyBase では、ヘッダー行のスキップがサポートされます。これは、ADF で `firstRowAsHeader` として構成できます。
-   7. `compression` が **圧縮なし**、**GZip**、または **Deflate** である。
+   7. `compression` は、**圧縮無し**、 **``GZip``** 、または **Deflate** に設定できます。
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定する必要があります。
 
@@ -615,7 +616,7 @@ Azure Synapse Analytics の PolyBase では、Azure Blob、Azure Data Lake Stora
 
 ### <a name="best-practices-for-using-polybase"></a>PolyBase の使用に関するベスト プラクティス
 
-次のセクションでは、[Azure Synapse Analytics のベスト プラクティス](../synapse-analytics/sql/best-practices-sql-pool.md)に関する記事に記載されているもの以外のベスト プラクティスについて説明します。
+次のセクションでは、[Azure Synapse Analytics のベスト プラクティス](../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)に関する記事に記載されているもの以外のベスト プラクティスについて説明します。
 
 #### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 
@@ -709,7 +710,7 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
 
 2. 形式設定は次のとおりです。
 
-   1. **Parquet** の場合: `compression` が **圧縮なし**、**Snappy**、または **GZip** である。
+   1. **Parquet** の場合: `compression` は **圧縮なし**、**Snappy**、または **``GZip``** に設定できます。
    2. **ORC** の場合: `compression` が **圧縮なし**、 **```zlib```** 、または **Snappy** である。
    3. **区切りテキスト** の場合:
       1. `rowDelimiter` が **単一の文字** または " **\r\n**" として明示的に設定されており、既定値がサポートされていない。
@@ -717,7 +718,7 @@ COPY ステートメントを使用する場合、次の構成がサポートさ
       3. `encodingName` が既定値のままか、**utf-8 または utf-16** に設定されている。
       4. `escapeChar` が `quoteChar` と同じである必要があり、空ではない。
       5. `skipLineCount` が既定値のままか、0 に設定されている。
-      6. `compression` が **圧縮なし** または **GZip** である。
+      6. `compression` は **圧縮なし** または **``GZip``** に設定できます。
 
 3. ソースがフォルダーの場合は、コピー アクティビティの `recursive` を true に設定し、`wildcardFilename` が `*` である必要があります。 
 
@@ -821,7 +822,7 @@ Azure Synapse Analytics に固有の設定は、シンク変換の **[設定]** 
 - [再作成]:テーブルが削除され、再作成されます。 新しいテーブルを動的に作成する場合に必要です。
 - [切り詰め]:ターゲット テーブルのすべての行が削除されます。
 
-**[Enable staging]\(ステージングの有効化\):** Azure Synapse Analytics に書き込むときに、[PolyBase](/sql/relational-databases/polybase/polybase-guide) を使用するかどうかを指定します。 ステージング ストレージは[データ フローの実行アクティビティ](control-flow-execute-data-flow-activity.md)で構成されます。 
+**ステージングを有効にする:** これにより、copy コマンドを使用して Azure Synapse Analytics SQL プールに読み込むことができます。ほとんどの Synpase シンクでは、この方法をお勧めします。 ステージング ストレージは[データ フローの実行アクティビティ](control-flow-execute-data-flow-activity.md)で構成されます。 
 
 - ストレージのリンクされたサービスに対してマネージド ID 認証を使用する場合は、[Azure Blob](connector-azure-blob-storage.md#managed-identity) と [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) に必要な各構成について確認してください。
 - Azure Storage が VNet サービス エンドポイントを使用して構成されている場合は、ストレージ アカウントで [allow trusted Microsoft service]\(信頼された Microsoft サービスを許可する\) を有効にしたマネージド ID 認証を使用する必要があります。詳細については「[Azure Storage で VNet サービス エンドポイントを使用した場合の影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)」を参照してください。
@@ -862,7 +863,7 @@ Azure Synapse Analytics との間でデータをコピーする場合、Azure Sy
 | Float                                 | Double                         |
 | image                                 | Byte[]                         |
 | INT                                   | Int32                          |
-| money                                 | Decimal                        |
+| money                                 | Decimal (10 進数型)                        |
 | nchar                                 | String, Char[]                 |
 | numeric                               | Decimal (10 進数型)                        |
 | nvarchar                              | String, Char[]                 |

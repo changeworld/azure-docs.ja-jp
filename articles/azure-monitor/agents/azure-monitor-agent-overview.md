@@ -4,13 +4,14 @@ description: 仮想マシンのゲスト オペレーティング システム�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/16/2021
+ms.custom: references_regions
+ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039599"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608216"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
 Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
@@ -59,6 +60,35 @@ Azure Monitor エージェントのパブリック プレビュー中は、次�
   - *.ingest.monitor.azure.com
   - *.control.monitor.azure.com
 
+
+## <a name="supported-regions"></a>サポートされているリージョン
+Azure Monitor エージェントでは、現在、次のリージョンのリソースがサポートされています。
+
+- 東アジア
+- 東南アジア
+- オーストラリア中部
+- オーストラリア東部
+- オーストラリア南東部
+- カナダ中部
+- 北ヨーロッパ
+- 西ヨーロッパ
+- フランス中部
+- ドイツ中西部
+- インド中部
+- 東日本
+- 韓国中部
+- 南アフリカ北部
+- スイス北部
+- 英国南部
+- 英国西部
+- 米国中部
+- 米国東部
+- 米国東部 2
+- 米国中北部
+- 米国中南部
+- 米国西部
+- 米国西部 2
+- 米国中西部
 
 ## <a name="coexistence-with-other-agents"></a>他のエージェントとの共存
 Azure Monitor エージェントは、既存のエージェントと共存させることができるため、評価または移行中にそれらの既存の機能を使用し続けることができます。 これは、既存のソリューションのサポートにおけるパブリック プレビューの制限のため、特に重要です。 ただし、重複データの収集では注意する必要があります。これにより、クエリ結果にずれが生じ、データ インジェストと保持に追加料金が発生する可能性があるためです。

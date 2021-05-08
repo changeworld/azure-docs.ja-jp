@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 32c331b10fcc73b5449588595370f8f69ef9893c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 140709a0ddb548c126ceca208fdeef2db77616bf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872049"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761801"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight でエンドツーエンドのデータ パイプラインを作成して売上の分析情報を導き出す
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    指定するリージョンがわからない場合は、[az account list-locations](/cli/azure/account#az-account-list-locations) コマンドで、サブスクリプションに対してサポートされているリージョンの一覧を取得できます。
+    指定するリージョンがわからない場合は、[az account list-locations](/cli/azure/account#az_account_list_locations) コマンドで、サブスクリプションに対してサポートされているリージョンの一覧を取得できます。
 
     このコマンドによって次のリソースがデプロイされます。
 

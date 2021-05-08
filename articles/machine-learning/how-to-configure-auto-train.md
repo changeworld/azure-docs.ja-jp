@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 755386bfa36b18796eccec0020efe9136e0215cd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563489"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068151"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -47,6 +47,9 @@ ms.locfileid: "103563489"
     * コンピューティング インスタンスを作成します。これにより、SDK が自動的にインストールされ、ML ワークフロー用に事前構成されます。 詳細については、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」を参照してください。 
 
     * SDK の[既定のインストール](/python/api/overview/azure/ml/install#default-install)が含まれる、[`automl` パッケージを自分でインストール](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)します。
+    
+    > [!WARNING]
+    > Python 3.8 は `automl` と互換性がありません。 
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
@@ -217,7 +220,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="primary-metrics-for-classification-scenarios"></a>分類シナリオの主要メトリック 
 
-`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、非常に小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動機械学習の完了後、ビジネス ニーズに最も適したメトリックに基づいて、優先されるモデルを選択できます。
+`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動機械学習の完了後、ビジネス ニーズに最も適したメトリックに基づいて、優先されるモデルを選択できます。
 
 | メトリック | ユース ケースの例 |
 | ------ | ------- |
@@ -386,16 +389,113 @@ run = experiment.submit(automl_config, show_output=True)
 
 ## <a name="explore-models-and-metrics"></a>モデルとメトリックを探索する
 
-トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[モデルの追跡と評価](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)に関するセクションをご覧ください。
+自動 ML では、トレーニング結果を監視および評価するためのオプションが提供されます。 
 
-実行のたびに提供されるパフォーマンス グラフおよびメトリックの定義と例については、「[自動化機械学習の結果を評価する](how-to-understand-automated-ml.md)」を参照してください。 
+* トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[自動 ML の実行を監視する方法](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)に関する記事を参照してください。
 
-特徴量化の概要を確認し、特定のモデルに追加された機能を理解するには、「[特徴量化の透過性](how-to-configure-auto-features.md#featurization-transparency)」を参照してください。 
+* 実行のたびに提供されるパフォーマンス グラフおよびメトリックの定義と例については、「[自動化機械学習実験の結果を評価する](how-to-understand-automated-ml.md)」を参照してください。 
 
+* 特徴量化の概要を確認し、特定のモデルに追加された機能を理解するには、「[特徴量化の透過性](how-to-configure-auto-features.md#featurization-transparency)」を参照してください。 
+
+次のカスタム コード ソリューションを使用して、ハイパーパラメーター、スケーリングと正規化の手法、および特定の自動 ML の実行に適用されるアルゴリズムを表示できます。 
+
+次の例では、自動 ML のトレーニング パイプラインにおける各手順のハイパーパラメーターを出力するカスタム メソッド `print_model()` を定義しています。
+ 
+```python
+from pprint import pprint
+
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()   
+```
+
+同じ実験ノートブック内から送信およびトレーニングされたローカルまたはリモートの実行については、`get_output()` メソッドを使用して最適なモデルを渡すことができます。 
+
+```python
+best_run, fitted_model = run.get_output()
+print(best_run)
+         
+print_model(fitted_model)
+```
+
+次の出力は、以下のことを示しています。
+ 
+* トレーニングの前にデータをスケーリングおよび正規化するために、StandardScalerWrapper 手法が使用された。
+
+* XGBoostClassifier アルゴリズムが最適な実行として識別され、ハイパーパラメーターの値も表示される。 
+
+```python
+StandardScalerWrapper
+{'class_name': 'StandardScaler',
+ 'copy': True,
+ 'module_name': 'sklearn.preprocessing.data',
+ 'with_mean': False,
+ 'with_std': False}
+
+XGBoostClassifier
+{'base_score': 0.5,
+ 'booster': 'gbtree',
+ 'colsample_bylevel': 1,
+ 'colsample_bynode': 1,
+ 'colsample_bytree': 0.6,
+ 'eta': 0.4,
+ 'gamma': 0,
+ 'learning_rate': 0.1,
+ 'max_delta_step': 0,
+ 'max_depth': 8,
+ 'max_leaves': 0,
+ 'min_child_weight': 1,
+ 'missing': nan,
+ 'n_estimators': 400,
+ 'n_jobs': 1,
+ 'nthread': None,
+ 'objective': 'multi:softprob',
+ 'random_state': 0,
+ 'reg_alpha': 0,
+ 'reg_lambda': 1.6666666666666667,
+ 'scale_pos_weight': 1,
+ 'seed': None,
+ 'silent': None,
+ 'subsample': 0.8,
+ 'tree_method': 'auto',
+ 'verbose': -10,
+ 'verbosity': 1}
+```
+
+ワークスペース内にある異なる実験からの既存の実行については、調査する特定の実行 ID を取得し、それを `print_model()` メソッドに渡す必要があります。 
+
+```python
+from azureml.train.automl.run import AutoMLRun
+
+ws = Workspace.from_config()
+experiment = ws.experiments['automl-classification']
+automl_run = AutoMLRun(experiment, run_id = 'AutoML_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx')
+
+automl_run
+best_run, model_from_aml = automl_run.get_output()
+
+print_model(model_from_aml)
+
+```
 > [!NOTE]
 > 自動 ML のアルゴリズムには特有のランダム性があり、推奨モデルの最終的なメトリック スコア (精度など) にわずかな変動が生じる可能性があります。 自動 ML によって、トレーニングとテストの分割、トレーニングと検証の分割、クロス検証などのデータに対する操作も必要に応じて実行されます。 そのため、同じ構成設定とプライマリ メトリックを使用して実験を複数回実行した場合、これらの要因により、各実験の最終的なメトリック スコアに変動が見られる可能性があります。 
 
 ## <a name="register-and-deploy-models"></a>モデルを登録してデプロイする
+
 モデルは登録できます。そのため、後で使用するためにモデルに戻ることができます。 
 
 自動化された ML 実行からモデルを登録するには、[`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) メソッドを使用します。 

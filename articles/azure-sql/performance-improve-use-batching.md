@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f45e7d1515f0d6fc4467b36d95242ef8697c75d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92792601"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641389"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>バッチ処理を使用して Azure SQL Database アプリケーションと Azure SQL Managed Instance アプリケーションのパフォーマンスを強化する方法
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -93,7 +93,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-実際には、両方の例にトランザクションが使われています。 1 つ目の例では、個々の呼び出しがそれぞれ暗黙的なトランザクションとなっています。 2 つ目の例では、トランザクションを明示的に指定して、その中にすべての呼び出しを投入しています。 [write-ahead トランザクション ログ](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)のドキュメントによれば、トランザクションがコミットされたときにログ レコードがディスクにフラッシュされます。 したがって、より多くの呼び出しをトランザクションに含めることで、その分、トランザクションがコミットされるまでの間、トランザクション ログへの書き込みを先送りすることができます。 実質的に、サーバーのトランザクション ログに対する書き込みに関して、バッチ処理を有効にしたことになります。
+実際には、両方の例にトランザクションが使われています。 1 つ目の例では、個々の呼び出しがそれぞれ暗黙的なトランザクションとなっています。 2 つ目の例では、トランザクションを明示的に指定して、その中にすべての呼び出しを投入しています。 [write-ahead トランザクション ログ](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15&preserve-view=true#WAL)のドキュメントによれば、トランザクションがコミットされたときにログ レコードがディスクにフラッシュされます。 したがって、より多くの呼び出しをトランザクションに含めることで、その分、トランザクションがコミットされるまでの間、トランザクション ログへの書き込みを先送りすることができます。 実質的に、サーバーのトランザクション ログに対する書き込みに関して、バッチ処理を有効にしたことになります。
 
 以下の表は、いくつかのアドホック テストの結果です。 同じ連続挿入の実行結果をトランザクションを使った場合と使わなかった場合とで比較しています。 総合的な評価を行うために、テストは 2 種類行いました。1 つ目のテストは、ノート PC からリモートで Microsoft Azure 内のデータベースに対して実行しています。 2 つ目のテストは、同じ Microsoft Azure データセンター (米国西部) に存在するクラウド サービスとデータベースから実行しています。 以下の表は、トランザクションを使った場合と使わなかった場合の連続挿入にかかる時間をミリ秒単位で示しています。
 
@@ -368,7 +368,7 @@ Azure SQL Database アプリケーションと Azure SQL Managed Instance アプ
 
 データベースのパフォーマンスに関する一般的な指針は、バッチ処理にも当てはまります。 たとえば、大きなプライマリ キーや多数の非クラスター化インデックスが存在するテーブルでは、挿入操作のパフォーマンスが低下します。
 
-テーブル値パラメーターでストアド プロシージャを使っている場合、その冒頭で **SET NOCOUNT ON** をコマンドを使用してください。 通常、プロシージャで処理された行数が返されますが、このステートメントを記述することで、その出力を抑制することができます。 ただし、テストした限りでは、 **SET NOCOUNT ON** を使ったからといって、パフォーマンスが向上することも、低下することもありませんでした。 テストに使ったストアド プロシージャは、テーブル値パラメーターからの単一の **INSERT** コマンドを含んだ単純なものでした。 もっと複雑なストアド プロシージャであれば、このステートメントが有利に作用する可能性があります。 とはいえ、 **SET NOCOUNT ON** をストアド プロシージャに追加するだけで、自動的にパフォーマンスが向上するとは考えないでください。 その効果を理解するためには、 **SET NOCOUNT ON** ステートメントを記述した場合とそうでない場合とでストアド プロシージャをテストする必要があります。
+テーブル値パラメーターでストアド プロシージャを使っている場合、その冒頭で **SET NOCOUNT ON** をコマンドを使用してください。 通常、プロシージャで処理された行数が返されますが、このステートメントを記述することで、その出力を抑制することができます。 ただし、テストした限りでは、 **SET NOCOUNT ON** を使ったからといって、パフォーマンスが向上することも、低下することもありませんでした。 テストに使ったストアド プロシージャは、テーブル値パラメーターからの単一の **INSERT** コマンドを含んだ単純なものでした。 もっと複雑なストアド プロシージャであれば、このステートメントが有利に作用する可能性があります。 とはいえ、**SET NOCOUNT ON** をストアド プロシージャに追加するだけで、自動的にパフォーマンスが向上するとは考えないでください。 その効果を理解するためには、 **SET NOCOUNT ON** ステートメントを記述した場合とそうでない場合とでストアド プロシージャをテストする必要があります。
 
 ## <a name="batching-scenarios"></a>バッチ処理のシナリオ
 

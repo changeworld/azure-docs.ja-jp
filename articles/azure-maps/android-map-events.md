@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 86d1b9ec8a507a5cfaa5502efcb239bceabca665
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: ebe61e5956dc0f35794211a336eb7d884ee18d76
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097348"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608903"
 ---
 # <a name="interact-with-the-map-android-sdk"></a>マップを操作する (Android SDK)
 
@@ -30,13 +30,13 @@ ms.locfileid: "102097348"
 | `OnCameraMove`         | `()`                 | ユーザーの操作またはメソッドの結果として、ビュー間でのアニメーション化された遷移中に繰り返し発生します。 |
 | `OnCameraMoveCanceled` | `()`                 | カメラに対する移動要求が取り消されたときに発生します。 |
 | `OnCameraMoveStarted`  | `(int reason)`       | ユーザーの操作またはメソッドの結果として、マップでビュー間の遷移が開始される直前に発生します。 イベント リスナーの `reason` 引数は、カメラの移動がどのように開始されたかに関する詳細を示す整数値を返します。 考えられる理由を次のリストに示します。<ul><li>1: ジェスチャ</li><li>2: 開発者のアニメーション</li><li>3: API アニメーション</li></ul>   |
-| `OnClick`              | `(double lat, double lon)` | マップが、マップ上の同じ位置で押されて解放されたときに発生します。 |
-| `OnFeatureClick`       | `(List<Feature>)`    | マップが、フィーチャー上の同じ位置で押されて解放されたときに発生します。  |
+| `OnClick`              | `(double lat, double lon): boolean` | マップが、マップ上の同じ位置で押されて解放されたときに発生します。 このイベント ハンドラーにより、イベントを処理する必要があるか、または他のイベント リスナーに渡す必要があるかを示すブール値が返されます。 |
+| `OnFeatureClick`       | `(List<Feature>): boolean`    | マップが、フィーチャー上の同じ位置で押されて解放されたときに発生します。 このイベント ハンドラーにより、イベントを処理する必要があるか、または他のイベント リスナーに渡す必要があるかを示すブール値が返されます。 |
 | `OnLayerAdded` | `(Layer layer)` | レイヤーがマップに追加されたときに発生します。 |
 | `OnLayerRemoved` | `(Layer layer)` | レイヤーがマップから削除されたときに発生します。 |
 | `OnLoaded` | `()` | 必要なリソースがすべてダウンロードされ、マップの最初の視覚的に完全なレンダリングが行われた直後に発生します。 |
-| `OnLongClick`          | `(double lat, double lon)` | マップが、マップ上の同じ位置で押され、一瞬そのまま保持されてから、解放されたときに発生します。 |
-| `OnLongFeatureClick `  | `(List<Feature>)`    | マップが、フィーチャー上の同じ位置で押され、一瞬そのまま保持されてから、解放されたときに発生します。 |
+| `OnLongClick`          | `(double lat, double lon): boolean` | マップが、マップ上の同じ位置で押され、一瞬そのまま保持されてから、解放されたときに発生します。 このイベント ハンドラーにより、イベントを処理する必要があるか、または他のイベント リスナーに渡す必要があるかを示すブール値が返されます。 |
+| `OnLongFeatureClick `  | `(List<Feature>): boolean`    | マップが、フィーチャー上の同じ位置で押され、一瞬そのまま保持されてから、解放されたときに発生します。 このイベント ハンドラーにより、イベントを処理する必要があるか、または他のイベント リスナーに渡す必要があるかを示すブール値が返されます。 |
 | `OnReady`              | `(AzureMap map)`     | マップが最初に読み込まれたとき、またはアプリの向きが変更されて、必要最小限のマップ リソースが読み込まれ、プログラムを使用してマップを操作できる状態になったときに発生します。 |
 | `OnSourceAdded` | `(Source source)` | `DataSource` または `VectorTileSource` がマップに追加されたときに発生します。 |
 | `OnSourceRemoved` | `(Source source)` | `DataSource` または `VectorTileSource` がマップから削除されたときに発生します。 |
@@ -49,10 +49,16 @@ ms.locfileid: "102097348"
 ```java
 map.events.add((OnClick) (lat, lon) -> {
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnFeatureClick) (features) -> {
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 });
 
 map.events.add((OnCameraMove) () -> {
@@ -67,10 +73,16 @@ map.events.add((OnCameraMove) () -> {
 ```kotlin
 map.events.add(OnClick { lat: Double, lon: Double -> 
     //Map clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnFeatureClick { features: List<Feature?>? -> 
     //Feature clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return false
 })
 
 map.events.add(OnCameraMove {
@@ -103,11 +115,17 @@ map.layers.add(layer);
 //Add a feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnFeatureClick) (features) -> {
     //One or more features clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 
 //Add a long feature click event to the map and pass the layer ID to limit the event to the specified layer.
 map.events.add((OnLongFeatureClick) (features) -> {
     //One or more features long clicked.
+
+    //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+    return true;
 }, layer);
 ```
 
@@ -131,6 +149,9 @@ map.layers.add(layer)
 map.events.add(
     OnFeatureClick { features: List<Feature?>? -> 
         //One or more features clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )
@@ -139,6 +160,9 @@ map.events.add(
 map.events.add(
     OnLongFeatureClick { features: List<Feature?>? -> 
          //One or more features long clicked.
+
+        //Return true indicating if event should be consumed and not passed further to other listeners registered afterwards, false otherwise.
+        return false
     },
     layer
 )

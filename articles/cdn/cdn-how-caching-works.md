@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a4688c196551f3ab6b5713d8939f53af161d1e3
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010165"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505010"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -75,6 +75,7 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 - クライアントから CDN POP への HTTP 要求で使用すると、`Cache-Control` は、既定ですべての Azure CDN プロファイルによって無視されます。
 - クライアントから CDN POP への HTTP 応答で使用された場合は、次のようになります。
      - **Azure CDN Standard/Premium from Verizon** と **Microsoft Azure CDN Standard** はすべての `Cache-Control` ディレクティブをサポートします。
+     - **Azure CDN Standard/Premium From Verizon** および **Azure CDN Standard from Microsoft** では、[RFC 7234 - ハイパーテキスト転送プロトコル (HTTP/1.1): キャッシュ (ietf.org)](https://tools.ietf.org/html/rfc7234#section-5.2.2.8) に記載の Cache-Control ディレクティブのキャッシュ動作が優先されます。
      - **Azure CDN Standard from Akamai** は、次の `Cache-Control` ディレクティブのみをサポートし、その他はすべて無視します。
          - `max-age`:キャッシュは、指定された秒数だけコンテンツを格納できます。 たとえば、「 `Cache-Control: max-age=5` 」のように入力します。 このディレクティブは、コンテンツが新鮮であると見なされる最大時間を指定します。
          - `no-cache`:コンテンツをキャッシュします。ただし、毎回キャッシュから配信する前に、そのコンテンツを検証します。 `Cache-Control: max-age=0` と同等です。

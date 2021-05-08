@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97795430"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492003"
 ---
 # <a name="what-are-device-templates"></a>デバイス テンプレートとは
 
@@ -39,70 +39,122 @@ Azure IoT Central のデバイス テンプレートは、アプリケーショ�
 
 ソリューション開発者は、デバイス モデルを含む JSON ファイルをエクスポートすることもできます。 デバイス開発者は、この JSON ドキュメントを使用して、デバイスが IoT Central アプリケーションと通信する方法を理解することができます。
 
-デバイス モデルを定義する JSON ファイルでは、[デジタル ツイン定義言語 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)を使用します。 IoT Central では、JSON ファイルに、個別のファイルではなく、インラインで定義されたインターフェイスがあるデバイス モデルが含まれていると想定しています。
+デバイス モデルを定義する JSON ファイルでは、[デジタル ツイン定義言語 (DTDL) V2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)を使用します。 IoT Central では、JSON ファイルに、個別のファイルではなく、インラインで定義されたインターフェイスがあるデバイス モデルが含まれていると想定しています。 詳細については、[IoT Plug and Play モデリング ガイド](../../iot-pnp/concepts-modeling-guide.md)を参照してください。
 
 一般的な IoT デバイスは次のように構成されています。
 
 - カスタム パーツ。デバイスを一意にするパーツです。
 - 標準パーツ。すべてのデバイスに共通するパーツです。
 
-デバイス モデルでは、これらのパーツは "_インターフェイス_" と呼ばれます。 インターフェイスは、デバイスが実装する各パーツの詳細を定義します。 インターフェイスは、デバイス モデル間で再利用できます。 DTDL では、コンポーネントは別の DTDL ファイルで定義されているインターフェイスを参照します。
+デバイス モデルでは、これらのパーツは "_インターフェイス_" と呼ばれます。 インターフェイスは、デバイスが実装する各パーツの詳細を定義します。 インターフェイスは、デバイス モデル間で再利用できます。 DTDL のコンポーネントで別のインターフェイスが参照されており、それが別の DTDL ファイルまたはファイルの別のセクションで定義されている場合があります。
 
-次の例は、温度コントローラー デバイスのデバイスモデルの概要を示しています。 既定のコンポーネントには、`workingSet`、`serialNumber`、`reboot` の定義が含まれています。 デバイス モデルには、`thermostat` と `deviceInformation` のインターフェイスも含まれます。
+次の例は、[温度コントローラー デバイス](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/temperaturecontroller-2.json)のデバイス モデルの概要を示したものです。 既定のコンポーネントには、`workingSet`、`serialNumber`、`reboot` の定義が含まれています。 デバイス モデルには、2 つの `thermostat` コンポーネントと 1 つの `deviceInformation` コンポーネントも含まれています。 簡潔にするため、3 つのコンポーネントの内容は削除されています。
 
 ```json
-{
-  "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:TemperatureController;1",
-  "@type": "Interface",
-  "displayName": "Temperature Controller",
-  "description": "Device with two thermostats and remote reboot.",
-  "contents": [
-    {
-      "@type": [
-        "Telemetry", "DataSize"
-      ],
-      "name": "workingSet",
-      "displayName": "Working Set",
-      "description": "Current working set of the device memory in KiB.",
-      "schema": "double",
-      "unit" : "kibibyte"
-    },
-    {
-      "@type": "Property",
-      "name": "serialNumber",
-      "displayName": "Serial Number",
-      "description": "Serial number of the device.",
-      "schema": "string"
-    },
-    {
-      "@type": "Command",
-      "name": "reboot",
-      "displayName": "Reboot",
-      "description": "Reboots the device after waiting the number of seconds specified.",
-      "request": {
-        "name": "delay",
-        "displayName": "Delay",
-        "description": "Number of seconds to wait before rebooting the device.",
-        "schema": "integer"
+[
+  {
+    "@context": [
+      "dtmi:iotcentral:context;2",
+      "dtmi:dtdl:context;2"
+    ],
+    "@id": "dtmi:com:example:TemperatureController;2",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": [
+          "Telemetry",
+          "DataSize"
+        ],
+        "description": {
+          "en": "Current working set of the device memory in KiB."
+        },
+        "displayName": {
+          "en": "Working Set"
+        },
+        "name": "workingSet",
+        "schema": "double",
+        "unit": "kibibit"
+      },
+      {
+        "@type": "Property",
+        "displayName": {
+          "en": "Serial Number"
+        },
+        "name": "serialNumber",
+        "schema": "string",
+        "writable": false
+      },
+      {
+        "@type": "Command",
+        "commandType": "synchronous",
+        "description": {
+          "en": "Reboots the device after waiting the number of seconds specified."
+        },
+        "displayName": {
+          "en": "Reboot"
+        },
+        "name": "reboot",
+        "request": {
+          "@type": "CommandPayload",
+          "description": {
+            "en": "Number of seconds to wait before rebooting the device."
+          },
+          "displayName": {
+            "en": "Delay"
+          },
+          "name": "delay",
+          "schema": "integer"
+        }
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat1"
+        },
+        "name": "thermostat1",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "thermostat2"
+        },
+        "name": "thermostat2",
+        "schema": "dtmi:com:example:Thermostat;2"
+      },
+      {
+        "@type": "Component",
+        "displayName": {
+          "en": "DeviceInfo"
+        },
+        "name": "deviceInformation",
+        "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1"
       }
-    },
-    {
-      "@type" : "Component",
-      "schema": "dtmi:com:example:Thermostat;1",
-      "name": "thermostat",
-      "displayName": "Thermostat",
-      "description": "Thermostat One."
-    },
-    {
-      "@type": "Component",
-      "schema": "dtmi:azure:DeviceManagement:DeviceInformation;1",
-      "name": "deviceInformation",
-      "displayName": "Device Information interface",
-      "description": "Optional interface with basic device hardware information."
+    ],
+    "displayName": {
+      "en": "Temperature Controller"
     }
-  ]
-}
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:example:Thermostat;2",
+    "@type": "Interface",
+    "displayName": "Thermostat",
+    "description": "Reports current temperature and provides desired temperature control.",
+    "contents": [
+      ...
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:azure:DeviceManagement:DeviceInformation;1",
+    "@type": "Interface",
+    "displayName": "Device Information",
+    "contents": [
+      ...
+    ]
+  }
+]
 ```
 
 インターフェイスには、いくつかの必須フィールドがあります。
@@ -132,7 +184,7 @@ DTDL を使用すると、デバイスの機能を記述することができま
 ```json
 {
   "@context": "dtmi:dtdl:context;2",
-  "@id": "dtmi:com:example:Thermostat;1",
+  "@id": "dtmi:com:example:Thermostat;2",
   "@type": "Interface",
   "displayName": "Thermostat",
   "description": "Reports current temperature and provides desired temperature control.",
@@ -143,8 +195,8 @@ DTDL を使用すると、デバイスの機能を記述することができま
         "Temperature"
       ],
       "name": "temperature",
-      "displayName" : "Temperature",
-      "description" : "Temperature in degrees Celsius.",
+      "displayName": "Temperature",
+      "description": "Temperature in degrees Celsius.",
       "schema": "double",
       "unit": "degreeCelsius"
     },
@@ -157,7 +209,7 @@ DTDL を使用すると、デバイスの機能を記述することができま
       "schema": "double",
       "displayName": "Target Temperature",
       "description": "Allows to remotely specify the desired target temperature.",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "writable": true
     },
     {
@@ -167,7 +219,7 @@ DTDL を使用すると、デバイスの機能を記述することができま
       ],
       "name": "maxTempSinceLastReboot",
       "schema": "double",
-      "unit" : "degreeCelsius",
+      "unit": "degreeCelsius",
       "displayName": "Max temperature since last reboot.",
       "description": "Returns the max temperature since last device reboot."
     },
@@ -183,7 +235,7 @@ DTDL を使用すると、デバイスの機能を記述することができま
         "schema": "dateTime"
       },
       "response": {
-        "name" : "tempReport",
+        "name": "tempReport",
         "displayName": "Temperature Report",
         "schema": {
           "@type": "Object",
@@ -199,17 +251,17 @@ DTDL を使用すると、デバイスの機能を記述することができま
               "schema": "double"
             },
             {
-              "name" : "avgTemp",
+              "name": "avgTemp",
               "displayName": "Average Temperature",
               "schema": "double"
             },
             {
-              "name" : "startTime",
+              "name": "startTime",
               "displayName": "Start Time",
               "schema": "dateTime"
             },
             {
-              "name" : "endTime",
+              "name": "endTime",
               "displayName": "End Time",
               "schema": "dateTime"
             }

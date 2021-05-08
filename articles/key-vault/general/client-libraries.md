@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c5b07c1059e146aaf3c3c2a26038514eb614a3cc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 37e67ad869af23b51497e1497865f620bae612aa
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505921"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749188"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Azure Key Vault 用クライアント ライブラリ
 
@@ -35,4 +35,4 @@ Azure Key Vault 用クライアント ライブラリを使用すると、.NET�
 
 - 「[Azure Key Vault 開発者ガイド](developers-guide.md)」を参照する
 - [Key Vault に対する認証](authentication.md)の詳細を参照する
-- [キー コンテナーへのアクセスをセキュリティで保護する方法](secure-your-key-vault.md)の詳細を参照する
+- [キー コンテナーへのアクセスをセキュリティで保護する方法](security-overview.md)の詳細を参照する

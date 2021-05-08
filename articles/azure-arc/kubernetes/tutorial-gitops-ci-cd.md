@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121611"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076311"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する
 
@@ -37,12 +37,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 このチュートリアルでは、Azure DevOps、Azure Repos および Pipelines、Azure CLI について理解していることを前提としています。
 
 * [Azure DevOps Services](https://dev.azure.com/) にサインインします。
-* [前のチュートリアル](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster)を完了し、CI/CD 環境用に GitOps をデプロイする方法を学習します。
-* この機能の[利点とアーキテクチャ](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-configurations)について理解します。
+* [前のチュートリアル](./tutorial-use-gitops-connected-cluster.md)を完了し、CI/CD 環境用に GitOps をデプロイする方法を学習します。
+* この機能の[利点とアーキテクチャ](./conceptual-configurations.md)について理解します。
 * 以下が用意されていることを確認します。
-  * **arc-cicd-cluster** という名前の[接続済みの Azure Arc 対応 Kubernetes クラスター](https://docs.microsoft.com/azure/azure-arc/kubernetes/quickstart-connect-cluster#connect-an-existing-kubernetes-cluster)。
-  * [AKS 統合](https://docs.microsoft.com/azure/aks/cluster-container-registry-integration)または[非 AKS クラスター認証](https://docs.microsoft.com/azure/container-registry/container-registry-auth-kubernetes)を使用して接続された Azure Container Registry (ACR)。
-  * [Azure Repos](https://docs.microsoft.com/azure/devops/repos/get-started/what-is-repos) および [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-get-started) に対する "ビルド管理者" および "プロジェクト管理者" アクセス許可。
+  * **arc-cicd-cluster** という名前の [接続済みの Azure Arc 対応 Kubernetes クラスター](./quickstart-connect-cluster.md#connect-an-existing-kubernetes-cluster)。
+  * [AKS 統合](../../aks/cluster-container-registry-integration.md)または[非 AKS クラスター認証](../../container-registry/container-registry-auth-kubernetes.md)を使用して接続された Azure Container Registry (ACR)。
+  * [Azure Repos](/azure/devops/repos/get-started/what-is-repos) および [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started) に対する "ビルド管理者" および "プロジェクト管理者" アクセス許可。
 * 次の Azure Arc 対応 Kubernetes CLI 拡張機能 (バージョン 1.0.0 以上) をインストールします。
 
   ```azurecli
@@ -58,7 +58,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>アプリケーションおよび GitOps リポジトリを Azure Repos にインポートする
 
-[アプリケーション リポジトリ](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#application-repo)と [GitOps リポジトリ](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd#gitops-repo)を Azure Repos にインポートします。 このチュートリアルでは、次のサンプル リポジトリを使用します。
+[アプリケーション リポジトリ](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#application-repo)と [GitOps リポジトリ](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd#gitops-repo)を Azure Repos にインポートします。 このチュートリアルでは、次のサンプル リポジトリを使用します。
 
 * **arc-cicd-demo-src** アプリケーション リポジトリ
    * URL: https://github.com/Azure/arc-cicd-demo-src
@@ -67,7 +67,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    * URL: https://github.com/Azure/arc-cicd-demo-gitops
    * Azure Vote アプリを格納するクラスター リソースのベースとして機能します。
 
-[Git リポジトリのインポート](https://docs.microsoft.com/azure/devops/repos/git/import-git-repository)の詳細を確認してください。
+[Git リポジトリのインポート](/azure/devops/repos/git/import-git-repository)の詳細を確認してください。
 
 >[!NOTE]
 > アプリケーション リポジトリと GitOps リポジトリ用に 2 つの異なるリポジトリをインポートして使用すると、セキュリティとシンプルさを向上させることができます。 アプリケーションおよび GitOps リポジトリのアクセス許可と可視性は、個別に調整できます。
@@ -77,7 +77,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 アプリを継続的にデプロイするには、GitOps を使用してアプリケーション リポジトリをクラスターに接続します。 **arc-cicd-demo-gitops** GitOps リポジトリには、**arc-cicd-cluster** クラスターでアプリを稼働させるための基本的なリソースが含まれています。
 
-最初の GitOps リポジトリには、デプロイ環境に対応する **dev** および **stage** 名前空間を作成する[マニフェスト](https://github.com/Azure/arc-cicd-demo-gitops/blob/master/arc-cicd-cluster/manifests/namespaces.yml)のみが含まれています。
+最初の GitOps リポジトリには、デプロイ環境に対応する **dev** および **stage** 名前空間を作成する [マニフェスト](https://github.com/Azure/arc-cicd-demo-gitops/blob/master/arc-cicd-cluster/manifests/namespaces.yml)のみが含まれています。
 
 作成した GitOps 接続により、自動的に以下のことが行われます。
 * マニフェスト ディレクトリ内でマニフェストを同期します。
@@ -86,7 +86,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 この CI/CD ワークフローでは、アプリをデプロイするための追加のマニフェストがマニフェスト ディレクトリに取り込まれます。
 
 
-1. Azure Repos で、新しくインポートした **arc-cicd-demo-gitops** リポジトリに対する[新しい GitOps 接続を作成](https://docs.microsoft.com/azure/azure-arc/kubernetes/tutorial-use-gitops-connected-cluster)します。
+1. Azure Repos で、新しくインポートした **arc-cicd-demo-gitops** リポジトリに対する [新しい GitOps 接続を作成](./tutorial-use-gitops-connected-cluster.md)します。
 
    ```azurecli
    az k8sconfiguration create \
@@ -172,7 +172,7 @@ kubectl create secret docker-registry <secret-name> \
 ## <a name="create-environment-variable-groups"></a>環境変数グループを作成する
 
 ### <a name="app-repo-variable-group"></a>アプリ リポジトリの変数グループ
-**az-vote-app-dev** という名前の[変数グループを作成](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups)します。 次の値を設定します。
+**az-vote-app-dev** という名前の [変数グループを作成](/azure/devops/pipelines/library/variable-groups)します。 次の値を設定します。
 
 | 変数 | 値 |
 | -------- | ----- |
@@ -182,13 +182,13 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_REPO | GitOps リポジトリの Git 接続文字列 |
-| PAT | ソースの読み取り/書き込みアクセス許可が付与されている[作成済みの PAT トークン](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?#create-a-pat)。 これは、後で `stage` 変数グループを作成する際に使用するために保存します。 |
+| PAT | ソースの読み取り/書き込みアクセス許可が付与されている[作成済みの PAT トークン](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate#create-a-pat)。 これは、後で `stage` 変数グループを作成する際に使用するために保存します。 |
 | SRC_FOLDER | `azure-vote` | 
 | TARGET_CLUSTER | `arc-cicd-cluster` |
 | TARGET_NAMESPACE | `dev` |
 
 > [!IMPORTANT]
-> PAT をシークレットの種類としてマークします。 アプリケーションでは、[Azure KeyVault](https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)のシークレットをリンクすることを検討してください。
+> PAT をシークレットの種類としてマークします。 アプリケーションでは、[Azure KeyVault](/azure/devops/pipelines/library/variable-groups#link-secrets-from-an-azure-key-vault)のシークレットをリンクすることを検討してください。
 >
 ### <a name="stage-environment-variable-group"></a>環境変数グループをステージする
 
@@ -255,7 +255,7 @@ GitOps リポジトリに対するテンプレートとマニフェストの変�
 1. 承認者とオプションのメッセージを指定します。
 1. もう一度 **[作成]** を選択し、手動による承認チェックの追加を完了します。
 
-詳細については、[承認とチェックの定義](https://docs.microsoft.com/azure/devops/pipelines/process/approvals)に関するチュートリアルを参照してください。
+詳細については、[承認とチェックの定義](/azure/devops/pipelines/process/approvals)に関するチュートリアルを参照してください。
 
 次に CD パイプラインが実行されると、そのパイプラインは GitOps PR の作成後に一時停止します。 変更が正常に同期され、基本的な機能が渡されることを確認します。 変更が次の環境に流れるように、パイプラインからのチェックを承認します。
 
@@ -291,7 +291,7 @@ GitOps リポジトリに対するテンプレートとマニフェストの変�
 パイプライン実行が完了すると、アプリケーション コードとそれをデプロイするテンプレートの品質を保証したことになります。 これで、PR を承認して完了できるようになりました。 CD パイプラインをトリガーする前に、この CI は再度実行され、テンプレートとマニフェストが再生成されます。
 
 > [!TIP]
-> 実際の環境では、PR が品質チェックに必ず合格するように忘れずにブランチ ポリシーを設定してください。 詳細については、[ブランチ ポリシーの設定](https://docs.microsoft.com/azure/devops/repos/git/branch-policies)に関する記事を参照してください。
+> 実際の環境では、PR が品質チェックに必ず合格するように忘れずにブランチ ポリシーを設定してください。 詳細については、[ブランチ ポリシーの設定](/azure/devops/repos/git/branch-policies)に関する記事を参照してください。
 
 ## <a name="cd-process-approvals"></a>CD プロセスの承認
 
@@ -338,4 +338,4 @@ CI パイプラインの実行が成功すると、デプロイ プロセスを�
 概念に関する記事に進み、Azure Arc 対応 Kubernetes での GitOps と構成の詳細を確認してください。
 
 > [!div class="nextstepaction"]
-> [GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-cicd)
+> [GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/conceptual-gitops-ci-cd)

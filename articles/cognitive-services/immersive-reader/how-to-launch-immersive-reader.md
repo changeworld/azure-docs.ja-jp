@@ -12,10 +12,10 @@ ms.author: metang
 ms.custom: devx-track-js
 zone_pivot_groups: immersive-reader-how-to-guides
 ms.openlocfilehash: 63aa9fc0c68e2cfa3e649cbe1eb7bfbddf9a77ff
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102620297"
 ---
 # <a name="how-to-launch-the-immersive-reader"></a>イマーシブ リーダーの起動方法

@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92548226"
 ---
 **ピアリング** リソースが正常にデプロイされたら、次の手順に従って表示することができます。
 
-1. **[リソース グループ]** に移動し、 **ピアリング** リソースの作成時に選択したリソース グループを選択します。 リソース グループが多すぎる場合は、 **フィルター** ボックスを使用します。
+1. **[リソース グループ]** に移動し、**ピアリング** リソースの作成時に選択したリソース グループを選択します。 リソース グループが多すぎる場合は、**フィルター** ボックスを使用します。
 
     > [!div class="mx-imgBorder"]
     > ![リソース グループ](../media/setup-direct-get-resourcegroup.png)

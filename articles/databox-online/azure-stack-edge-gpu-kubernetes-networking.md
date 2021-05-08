@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 1a0fc569b7d552101c1e0bd1a065b2a91ebfa3c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 139eeaa83629f3ef51f8eda414622f7da54dfab4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439614"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560252"
 ---
 # <a name="kubernetes-networking-in-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ネットワーク
 
@@ -86,4 +86,4 @@ Azure Stack Edge Pro 上で Kubernetes ネットワークを構成するには�
 
 - [Azure Stack Edge Pro で IoT Edge を介してステートレス アプリケーションを外部に公開する](azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md)。
 
-- [Azure Stack Edge Pro で kubectl を介してステートレス アプリケーションを外部に公開する](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [Azure Stack Edge Pro で kubectl を介してステートレス アプリケーションを外部に公開する](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。

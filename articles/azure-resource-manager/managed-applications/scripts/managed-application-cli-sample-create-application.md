@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a9912f5134c3596740ef53f23531d57fe9467682
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3ea2baa897efb5c1a01b32e92e76a69c9d1f231c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87497870"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775495"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Azure CLI を使用してサービス カタログのマネージド アプリケーションをデプロイする
 
@@ -34,7 +34,7 @@ ms.locfileid: "87497870"
 
 | コマンド | Notes |
 |---|---|
-| [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | マネージド アプリケーションを作成します。 テンプレートの定義 ID とパラメーターを指定します。 |
+| [az managedapp create](/cli/azure/managedapp#az_managedapp_create) | マネージド アプリケーションを作成します。 テンプレートの定義 ID とパラメーターを指定します。 |
 
 
 ## <a name="next-steps"></a>次のステップ

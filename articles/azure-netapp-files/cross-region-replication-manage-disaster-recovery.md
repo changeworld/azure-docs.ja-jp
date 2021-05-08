@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5b1c1a5216b7a1ad5b23167e776f2b0bbb0a578f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243207"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590995"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>リージョン間レプリケーションを使用したディザスター リカバリーの管理 
 
@@ -38,10 +38,10 @@ ms.locfileid: "95243207"
 1. レプリケーションのピアリングを中断するには、コピー先のボリュームを選択します。 [ストレージ サービス] の **[レプリケーション]** をクリックします。  
 
 2.  続行する前に、次のフィールドを確認してください。  
-    * ミラーの状態に、確実に **[Mirrored]\(ミラー化\)** と表示されているようにします。   
-        ミラーの状態が [Uninitialized]\(未初期化\) と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。
-    * リレーションシップの状態に、確実に **[Idle]\(アイドル状態\)** と表示されているようにします。   
-        リレーションシップの状態が [Transferring]\(転送中\) と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。   
+    * ミラーの状態に、***[Mirrored]\(ミラー化\)*** と表示されていることを確認します。   
+        ミラーの状態が *[Uninitialized]\(未初期化\)* と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。
+    * リレーションシップの状態に ***[Idle]\(アイドル状態\)*** と表示されていることを確認します。   
+        リレーションシップの状態が *[Transferring]\(転送中\)* と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。   
 
     「[レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)」を参照してください。 
 
@@ -80,10 +80,10 @@ ms.locfileid: "95243207"
 1. レプリケーション ピアリングを中断します。  
     a. *コピー先* のボリュームを選択します。 [ストレージ サービス] の **[レプリケーション]** をクリックします。  
     b. 続行する前に、次のフィールドを確認してください。   
-    * ミラーの状態に、確実に **[Mirrored]\(ミラー化\)** と表示されているようにします。   
-    ミラーの状態が [uninitialized]\(未初期化\) と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。  
-    * リレーションシップの状態に、確実に **[Idle]\(アイドル状態\)** と表示されているようにします。   
-    リレーションシップの状態が [Transferring]\(転送中\) と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。    
+    * ミラーの状態に、***[Mirrored]\(ミラー化\)*** と表示されていることを確認します。   
+    ミラーの状態が *[uninitialized]\(未初期化\)* と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。  
+    * リレーションシップの状態に ***[Idle]\(アイドル状態\)*** と表示されていることを確認します。   
+    リレーションシップの状態が *[Transferring]\(転送中\)* と表示されている場合は、レプリケーションのピアリングを中断しないようにしてください。    
 
         「[レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)」を参照してください。 
 
@@ -102,6 +102,7 @@ ms.locfileid: "95243207"
 * [リージョン間レプリケーション](cross-region-replication-introduction.md)
 * [リージョン間レプリケーションを使用するための要件と考慮事項](cross-region-replication-requirements-considerations.md)
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
+* [リージョン間レプリケーションの宛先ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
 * [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)

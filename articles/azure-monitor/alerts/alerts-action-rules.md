@@ -2,17 +2,17 @@
 title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/08/2021
+ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471678"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304819"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
-アクション ルールを使用すると、Azure Resource Manager の任意のスコープ (Azure サブスクリプション、リソース グループ、ターゲット リソース) で、アクションを定義または抑制できます。 さまざまなフィルターを使用して、操作するアラート インスタンスの特定のサブセットを絞り込むことができます。
+アクション ルールを使用すると、発生したアラートのアクション グループを追加または抑制することができます。 1 つのルールでは、ターゲット リソースのさまざまなスコープを対象にできます。たとえば (特定の仮想マシンのような) 特定のリソースに関するアラートや、サブスクリプション内の任意のリソースで発生したアラートなどです。 必要に応じて、さまざまなフィルターを追加して、ルールの対象となるアラートを制御したり、そのスケジュールを定義したりすることができます。たとえば、業務時間外または計画メンテナンス期間中にのみ有効にすることができます。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ ms.locfileid: "103471678"
 アクション ルールを使うと、このプロセスを簡略化できます。 アクションをまとめて定義することで、構成されたスコープで生成されるすべてのアラートに対してアクション グループをトリガーできます。 前の例では、チームは **ContosoRG** に、その中で生成されたすべてのアラートに対して同じアクション グループをトリガーする 1 つのアクション ルールを定義できるようになります。
 
 > [!NOTE]
-> アクション ルールは、現在、Azure Service Health アラートには適用されません。
+> アクション ルールは、Azure Service Health のアラートには適用されません。
 
 ## <a name="configuring-an-action-rule"></a>アクション ルールの構成
 
@@ -67,7 +67,7 @@ Azure Monitor の **アラート** ランディング ページから **[アク�
 
 * **Severity**  
 このルールは、選択した重大度のアラートにのみ適用されます。  
-たとえば、**severity = Sev1** は、ルールが Sev1 の重大度のアラートにのみ適用されることを意味します。
+たとえば、**severity = "Sev1"** は、ルールが Sev1 の重大度のアラートにのみ適用されることを意味します。
 * **サービスの監視**  
 このルールは、選択した監視サービスから通知されたアラートにのみ適用されます。  
 たとえば、**monitor service = "Azure Backup"** は、ルールがバックアップ アラート (Azure Backup から通知される) のみに適用されることを意味します。
@@ -79,15 +79,22 @@ Azure Monitor の **アラート** ランディング ページから **[アク�
 たとえば、**alert rule ID = "/subscriptions/SubId1/resourceGroups/RG1/providers/microsoft.insights/metricalerts/API-Latency"** は、このルールが "API-Latency" メトリック アラート ルールから通知されたアラートにのみ適用されることを意味します。  
 _注意 - 適切なアラート ルール ID を取得するには、CLI からアラート ルールを一覧表示するか、ポータルで特定のアラート ルールを開き、[プロパティ] をクリックして、[リソース ID] の値をコピーします。_
 * **監視条件**  
-このルールは、指定した監視条件 (**発生** または **解決済み**) のアラート イベントにのみ適用されます。
+このルールは、指定した監視条件 ( **[発生]** または **[解決済み]** ) のアラート イベントにのみ適用されます。
 * **説明**  
 このルールは、[アラートの説明] フィールドに特定の文字列が含まれているアラートにのみ適用されます。 そのフィールドには、アラート ルールの説明が含まれています。  
-たとえば、**説明に 'prod' が含まれている** 場合、ルールが、その説明に "prod" という文字列を含むアラートのみに一致することを意味します。
+たとえば、**説明に "prod" が含まれている** 場合、ルールが、その説明に "prod" という文字列を含むアラートのみに一致することを意味します。
 * **[アラートのコンテキスト (ペイロード)]**  
 このルールは、[アラートのコンテキスト] フィールドに 1 つ以上の特定の値が含まれているアラートにのみ適用されます。  
-たとえば、 **[アラートのコンテキスト (ペイロード)] に 'Computer-01' が含まれている** 場合、ルールが、ペイロードに文字列 "Computer-01" が含まれているアラートにのみ適用されることを意味します。
+たとえば、 **[アラートのコンテキスト (ペイロード)] に "Computer-01" が含まれている** 場合、ルールが、ペイロードに文字列 "Computer-01" が含まれているアラートにのみ適用されることを意味します。
 
-ルールに複数のフィルターを設定すると、そのすべてが適用されます。 たとえば、**resource type' = Virtual Machines** と **severity' = Sev0** を設定した場合、ルールは、仮想マシン上の Sev0 アラートに対してのみ適用されます。
+> [!NOTE]
+> 各フィルターには、最大 5 つの値を含めることができます。  
+> たとえば、監視サービスのフィルターには、最大 5 つのサービス名を含めることができます。
+
+
+
+
+ルールに複数のフィルターを設定すると、そのすべてが適用されます。 たとえば、**resource type = "Virtual Machines"** と **severity = "Sev0"** を設定した場合、ルールは、仮想マシン上の Sev0 アラートに対してのみ適用されます。
 
 ![アクション ルール フィルター](media/alerts-action-rules/action-rules-new-rule-creation-flow-filters.png)
 
@@ -308,7 +315,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 同じスコープに対しては抑制が常に優先されます。
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>2 つの個別のアクション ルールで 1 つのリソースが監視されていると、どうなりますか? 受け取る通知は 1 つですか、2 つですか? ここでは、次のシナリオの **VM2** を例に説明します。
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>2 つのアクション ルールの対象となるリソースがある場合はどうなりますか? 受け取る通知は 1 つですか、2 つですか? ここでは、次のシナリオの **VM2** を例に説明します。
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

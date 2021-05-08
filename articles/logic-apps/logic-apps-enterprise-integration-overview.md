@@ -7,17 +7,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
-ms.date: 08/01/2019
-ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: 09d253aae4c054db5efdc252f62986044e1d366b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86536404"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771859"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ソリューション
 
-組織の間に企業間 (B2B) ソリューションとシームレスな通信を実現するために、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で Enterprise Integration Pack (EIP) を使用して、自動化されたスケーラブルなエンタープライズ統合ワークフローを構築することができます。 組織どうしは、異なるプロトコルと形式を使用していても、メッセージを電子的に交換することができます。 異なる形式は、EIP によって、組織のシステムで処理できる、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準プロトコルをサポートする形式に変換されます。 また、暗号化とデジタル署名の両方を使用してメッセージのセキュリティを向上させることもできます。 EIP では、これらの[エンタープライズ統合コネクタ](../connectors/apis-list.md#integration-account-connectors)と次の業界標準がサポートされています。
+組織の間に企業間 (B2B) ソリューションとシームレスな通信を実現するために、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で Enterprise Integration Pack (EIP) を使用して、自動化されたスケーラブルなエンタープライズ統合ワークフローを構築することができます。 組織どうしは、異なるプロトコルと形式を使用していても、メッセージを電子的に交換することができます。 異なる形式は、EIP によって、組織のシステムで処理できる、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準プロトコルをサポートする形式に変換されます。 また、暗号化とデジタル署名の両方を使用してメッセージのセキュリティを向上させることもできます。 EIP では、これらの[エンタープライズ統合コネクタ](../connectors/managed.md#enterprise-connectors)と次の業界標準がサポートされています。
 
 * 電子データ交換 (EDI)
 * Enterprise Application Integration (EAI)

@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: a0c3a3cbaa71d627f54550cf92c067afbb1eb3f0
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786211"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120913"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ Activities | 実行されるアクティビティ。 | アクティビティの�
 **isSequential** が False に設定されている場合、このアクティビティは最大 20 の同時実行反復処理と並行して反復処理します。 この設定は、慎重に使用する必要があります。 同時実行反復処理が同じフォルダーではあっても、異なるファイルへの書き込みである場合、このアプローチは適切です。 同時実行反復処理がまったく同じファイルへの同時書き込みである場合、このアプローチはエラーの原因になる可能性があります。 
 
 ## <a name="iteration-expression-language"></a>反復処理の式言語
-ForEach アクティビティでは、反復処理される配列をプロパティ **items** として指定します。 ForEach アクティビティで 1 つの列挙を反復処理するには、`@item()` を使用します。 たとえば、**items** が配列: [1, 2, 3] である場合、`@item()` は最初の反復処理で 1 を、2 番目の反復処理で 2 を、3 番目の反復処理で 3 を返します。
+ForEach アクティビティでは、反復処理される配列をプロパティ **items** として指定します。 ForEach アクティビティで 1 つの列挙を反復処理するには、`@item()` を使用します。 たとえば、**items** が配列: [1, 2, 3] である場合、`@item()` は最初の反復処理で 1 を、2 番目の反復処理で 2 を、3 番目の反復処理で 3 を返します。 また、`@range(0,10)` like 式を使用して、0 から 9 までの10 回の反復処理を行うこともできます。
 
 ## <a name="iterating-over-a-single-activity"></a>1 つのアクティビティを反復処理する
 **シナリオ:** Azure BLOB 内の同じソース ファイルから Azure BLOB 内の複数の宛先ファイルにコピーします。

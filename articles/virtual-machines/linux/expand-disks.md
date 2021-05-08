@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 72778c431c561f5345dde3d6803e814d6fdebfba
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c27b042b78931fd58e43e4bbb06699abe510f385
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549126"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762553"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
@@ -23,13 +23,13 @@ ms.locfileid: "102549126"
 > ディスクのサイズ変更操作を実行する前に、ファイル システムが正常な状態であること、ディスク パーティション テーブルの種類で新しいサイズがサポートされていること、およびデータがバックアップされていることを、常に確認します。 詳細については、[Azure Backup のクイックスタート](../../backup/quick-backup-vm-portal.md)に関する記事を参照してください。 
 
 ## <a name="expand-an-azure-managed-disk"></a>Azure マネージド ディスクの拡張
-最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az-login) を使用して Azure アカウントにサインインしていることを確認します。
+最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにサインインしていることを確認します。
 
 この記事では、少なくとも 1 つのデータ ディスクが接続され、準備ができている Azure の既存の VM が必要です。 使用できる VM をまだ用意していない場合は、[データ ディスク付きの VM の作成と準備](tutorial-manage-disks.md#create-and-attach-disks)に関するページを参照してください。
 
 以下のサンプルでは、*myResourceGroup* や *myVM* などのパラメーター名を各自の値に置き換えてください。
 
-1. 仮想ハード ディスクに対する操作は、実行中の VM では実行できません。 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
+1. 仮想ハード ディスクに対する操作は、実行中の VM では実行できません。 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -38,7 +38,7 @@ ms.locfileid: "102549126"
     > [!NOTE]
     > 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。 `az vm stop` で VM を停止すると、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。
 
-1. [az disk list](/cli/azure/disk#az-disk-list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
+1. [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
 
     ```azurecli
     az disk list \
@@ -47,7 +47,7 @@ ms.locfileid: "102549126"
         --output table
     ```
 
-    [az disk update](/cli/azure/disk#az-disk-update) を使用して、必要なディスクを拡張します。 次の例では、*myDataDisk* という名前のマネージド ディスクを *200* GB に拡張します。
+    [az disk update](/cli/azure/disk#az_disk_update) を使用して、必要なディスクを拡張します。 次の例では、*myDataDisk* という名前のマネージド ディスクを *200* GB に拡張します。
 
     ```azurecli
     az disk update \
@@ -59,7 +59,7 @@ ms.locfileid: "102549126"
     > [!NOTE]
     > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズに切り上げられます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../managed-disks-overview.md)」をご覧ください。
 
-1. [az vm start](/cli/azure/vm#az-vm-start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
+1. [az vm start](/cli/azure/vm#az_vm_start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -69,7 +69,7 @@ ms.locfileid: "102549126"
 ## <a name="expand-a-disk-partition-and-filesystem"></a>ディスク パーティションとファイル システムの拡張
 拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張します。
 
-1. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#az-vm-show) で、VM のパブリック IP アドレスを確認できます。
+1. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#az_vm_show) で、VM のパブリック IP アドレスを確認できます。
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --output tsv

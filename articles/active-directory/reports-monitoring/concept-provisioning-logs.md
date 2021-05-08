@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 468e885bab6aab4becb5aaaec7b4d52ce5ef5e07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500548"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535984"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Azure portal のプロビジョニング ログの概要 (プレビュー)
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 - 次のセクションの説明に従って、Azure portal からログにアクセスします。
 - プロビジョニング ログを [Azure Monitor](../app-provisioning/application-provisioning-log-analytics.md) にストリーミングします。 この方法を使用すると、データ保持期間を延長でき、カスタムのダッシュボード、アラート、クエリを作成できます。
-- [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) のクエリを実行して、プロビジョニング ログを見つけます。
+- [Microsoft Graph API](/graph/api/resources/provisioningobjectsummary) のクエリを実行して、プロビジョニング ログを見つけます。
 - プロビジョニング ログを CSV または JSON ファイルとしてダウンロードします。
 
 ## <a name="access-the-logs-from-the-azure-portal"></a>Azure portal からログにアクセスする
@@ -251,7 +251,7 @@ JSON ファイルは、ダウンロードのサイズを削減するために、
 |InsufficientRights、MethodNotAllowed、NotPermitted、Unauthorized| Azure AD はターゲット アプリケーションによって認証されましたが、更新を実行する権限がありませんでした。 ターゲット アプリケーションによって提供された手順と、それぞれのアプリケーションの[チュートリアル](../saas-apps/tutorial-list.md)を確認してください。|
 |UnprocessableEntity|ターゲット アプリケーションが予期しない応答を返しました。 ターゲット アプリケーションの構成が正しくないか、ターゲット アプリケーションに関するサービスの問題によって、その動作が妨げられている可能性があります。|
 |WebExceptionProtocolError |ターゲット アプリケーションへの接続時に HTTP プロトコル エラーが発生しました。 することはありません。 この試行は 40 分で自動的に中止されます。|
-|InvalidAnchor|プロビジョニング サービスによって以前作成または照合されたユーザーは存在しなくなりました。 そのユーザーが存在することを確認してください。 すべてのユーザーの新たな照合を強制するには、Microsoft Graph API を使用して[ジョブを再起動](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)します。 <br><br>プロビジョニングを再開すると初期サイクルがトリガーされ、完了するまで時間がかかる場合があります。 また、プロビジョニングを再開することで、プロビジョニング サービスによって操作に使用されるキャッシュも削除されます。 これは、テナント内のすべてのユーザーとグループを再評価する必要があること、および特定のプロビジョニング イベントが削除される可能性があることを意味します。|
+|InvalidAnchor|プロビジョニング サービスによって以前作成または照合されたユーザーは存在しなくなりました。 そのユーザーが存在することを確認してください。 すべてのユーザーの新たな照合を強制するには、Microsoft Graph API を使用して[ジョブを再起動](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true)します。 <br><br>プロビジョニングを再開すると初期サイクルがトリガーされ、完了するまで時間がかかる場合があります。 また、プロビジョニングを再開することで、プロビジョニング サービスによって操作に使用されるキャッシュも削除されます。 これは、テナント内のすべてのユーザーとグループを再評価する必要があること、および特定のプロビジョニング イベントが削除される可能性があることを意味します。|
 |NotImplemented | ターゲット アプリから予期しない応答が返されました。 アプリの構成が正しくないか、ターゲット アプリに関するサービスの問題によって、その動作が妨げられている可能性があります。 ターゲット アプリケーションによって提供された手順と、それぞれのアプリケーションの[チュートリアル](../saas-apps/tutorial-list.md)を確認してください。 |
 |MandatoryFieldsMissing、MissingValues |必須の値がないため、ユーザーを作成できませんでした。 ソース レコード内の不足している属性値を修正するか、一致する属性の構成を調べて、必須フィールドが省略されていないことを確認してください。 一致する属性の構成に関する[詳細を確認](../app-provisioning/customize-application-attributes.md)してください。|
 |SchemaAttributeNotFound |ターゲット アプリケーションに存在しない属性が指定されたため、操作を実行できませんでした。 属性のカスタマイズに関する[ドキュメント](../app-provisioning/customize-application-attributes.md)を参照し、構成が正しいことを確認してください。|
@@ -269,4 +269,4 @@ JSON ファイルは、ダウンロードのサイズを削減するために、
 
 * [ユーザー プロビジョニングの状態を確認する](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](../app-provisioning/application-provisioning-config-problem.md)
-* [プロビジョニング ログの Graph API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [プロビジョニング ログの Graph API](/graph/api/resources/provisioningobjectsummary)

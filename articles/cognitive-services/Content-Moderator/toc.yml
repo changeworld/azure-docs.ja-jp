@@ -82,6 +82,12 @@
       items:
         - name: レビュー、ワークフロー、ジョブ
           href: review-api.md
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/content-moderator/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: encrypt-data-at-rest.md
 - name: 概念
   items:
     - name: 画像のモデレート
@@ -114,19 +120,21 @@
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: リソース
   items:
-    - name: Azure ウェビナー シリーズ
-      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
-    - name: リージョンのサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
     - name: Microsoft Learn モジュール
       href: /learn/browse/?terms=content+moderator
-    - name: サポートとヘルプのオプション
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/content-moderator/context/context
+    - name: Azure ウェビナー シリーズ
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
     - name: Azure Government とグローバル Azure
       href: ../../azure-government/compare-azure-government-global-azure.md
     - name: Azure の更新情報
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encrypt-data-at-rest.md

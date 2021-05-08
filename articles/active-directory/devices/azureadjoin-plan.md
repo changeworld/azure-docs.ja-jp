@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3acaf4929158b24ff50655aa18c05b41aeec4b53
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: dc20ca3f3cf6197f8a3ed3a7e0362046f129d369
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435452"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305873"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -168,13 +168,11 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
 
-デバイスにオンプレミスのドメイン コントローラーへのアクセス権がある場合、ユーザーには Azure AD 参加済みデバイスからの SSO があります。
+デバイスにオンプレミスのドメイン コントローラーへのアクセス権がある場合、ユーザーには Azure AD 参加済みデバイスからの SSO があります。 この動作のしくみは[こちら](azuread-join-sso.md)を参照してください
 
 ### <a name="printers"></a>プリンター
 
-プリンターの場合は、Azure AD 参加済みデバイス上でプリンターを検出するために[ハイブリッド クラウド印刷](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)をデプロイする必要があります。 
-
-プリンターは、クラウドのみの環境内では自動的に検出できませんが、ユーザーはプリンターの UNC パスを使用してそれらを直接追加することもできます。 
+オンプレミスの依存関係を持たないクラウドベースの印刷管理ソリューションを使用するには、[ユニバーサル印刷](/universal-print/fundamentals/universal-print-whatis)をデプロイすることをお勧めします。 
 
 ### <a name="on-premises-applications-relying-on-machine-authentication"></a>マシン認証に依存するオンプレミスのアプリケーション
 
@@ -221,7 +219,7 @@ Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済
 
 ## <a name="configure-your-device-settings"></a>デバイス設定を構成する
 
-Azure portal では、組織内の Azure AD 参加済みデバイスのデプロイを制御することができます。 関連設定を構成するには、 **[Azure Active Directory]** ページで `Devices > Device settings` を選択します。
+Azure portal では、組織内の Azure AD 参加済みデバイスのデプロイを制御することができます。 関連設定を構成するには、 **[Azure Active Directory]** ページで `Devices > Device settings` を選択します。 [詳細情報](device-management-azure-portal.md)
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>ユーザーはデバイスを Azure AD に参加させることができます
 
@@ -235,11 +233,13 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 
 ![Azure AD 参加済みデバイス上の追加のローカル管理者](./media/azureadjoin-plan/02.png)
 
-### <a name="require-multi-factor-auth-to-join-devices"></a>デバイスを参加させるには多要素認証が必要
+### <a name="require-multi-factor-authentication-mfa-to-join-devices"></a>デバイスを参加させるには多要素認証 (MFA) が必要
 
 デバイスを Azure AD に参加させるときにユーザーに MFA の実行を要求する場合は、 **[はい]** を選択します。 ユーザーが MFA を使用して Azure AD にデバイスを参加させる場合は、デバイス自体が第 2 要素になります。
 
 ![デバイスを参加させるには多要素認証が必要](./media/azureadjoin-plan/03.png)
+
+**推奨事項:** デバイスを参加させるために MFA を適用するには、条件付きアクセスでユーザー操作「[デバイスの登録または参加](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#user-actions)」を使用します。
 
 ## <a name="configure-your-mobility-settings"></a>モビリティ設定の構成
 

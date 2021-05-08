@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 9/21/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a7b673dc8dfeb2ebf86aec5b7449df91c2ffd635
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13baf8f033338e242610d7b8c4eec14806cd5ec5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534058"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770023"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>チュートリアル:仮想ネットワークに Azure Database for MySQL - フレキシブル サーバー (プレビュー) と App Service Web アプリを作成する
 
@@ -22,22 +22,30 @@ ms.locfileid: "92534058"
 
 このチュートリアルでは、MySQL フレキシブル サーバー (プレビュー) を使用して、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に Azure App Service Web アプリを作成する方法について説明します。
 
+このチュートリアルで学習する内容は次のとおりです。
+>[!div class="checklist"]
+> * 仮想ネットワークに MySQL フレキシブル サーバーを作成する
+> * App Service に委任するサブネットを作成する
+> * Web アプリを作成する
+> * Web アプリを仮想ネットワークに追加する
+> * Web アプリから Postgres に接続する 
+
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-[az login](/cli/azure/reference-index#az-login) コマンドを使用して、アカウントにログインする必要があります。 対応するサブスクリプション名のコマンド出力で **id** プロパティを確認します。
+[az login](/cli/azure/reference-index#az_login) コマンドを使用して、アカウントにログインする必要があります。 対応するサブスクリプション名のコマンド出力で **id** プロパティを確認します。
 
 ```azurecli
 az login
 ```
 
-複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、 **az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
+複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。 サブスクリプション ID プレースホルダーへのサブスクリプションを、**az login** 出力の **サブスクリプション ID** プロパティに置き換えます。
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーを作成する
@@ -46,7 +54,7 @@ az account set --subscription <subscription id>
 ```azurecli
 az mysql flexible-server create --resource-group myresourcegroup --location westus2
 ```
-このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
+新しく作成した仮想ネットワークの接続文字列と名前をコピーします。 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
 - リソース グループがまだ存在していない場合は作成します。
 - サーバー名が指定されていない場合は、それが生成されます。
@@ -57,6 +65,14 @@ az mysql flexible-server create --resource-group myresourcegroup --location west
 > [!NOTE]
 > 指定されていない場合に生成されるパスワードをメモしておいてください。 パスワードを忘れた場合は、``` az mysql flexible-server update``` コマンドを使用してパスワードをリセットする必要があります。
 
+## <a name="create-subnet-for-app-service-endpoint"></a>App Service エンドポイントのサブネットを作成する
+次に、App Service Web アプリのエンドポイントに委任されるサブネットが必要です。 次のコマンドを実行して、データベース サーバーが作成されたのと同じ仮想ネットワーク内に新しいサブネットを作成します。 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+このコマンドの後、仮想ネットワーク名とサブネット名をメモしておいてください。作成後、Web アプリの VNET 統合ルールを追加するために必要になります。 
+
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
 このセクションでは App Service アプリにアプリ ホストを作成し、このアプリを MySQL データベースに接続します。 ターミナルで、アプリケーション コードのリポジトリのルートにいることを確認します。
@@ -64,12 +80,13 @@ az mysql flexible-server create --resource-group myresourcegroup --location west
 az webapp up コマンドを使用して、App Service アプリ (ホスト プロセス) を作成します。
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
 > - --location 引数には、前のセクションでデータベースに使用したのと同じ場所を使用します。
 > - _&lt;app-name>_ を、Azure 全体で一意の名前に置き換えます (サーバー エンドポイントは https://\<app-name>.azurewebsites.net)。 <app-name> に使用できる有効な文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+> - App Service の Basic レベルでは、VNET 統合はサポートされていません。 Standard または Premium を使用してください。 
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
@@ -84,7 +101,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 **az webapp vnet-integration** コマンドを使用して、リージョンの仮想ネットワーク統合を webapp に追加します。 _&lt;vnet-name>_ と _&lt;subnet-name_ を、フレキシブル サーバーで使用している仮想ネットワークとサブネット名に置き換えます。
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>データベースに接続するための環境変数を構成する

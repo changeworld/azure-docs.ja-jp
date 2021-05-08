@@ -4,12 +4,12 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 081e06fbd6506c76a068d7207e29efb66502a9dd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: edc58ed4af3475a45804e3833424bec79d50ff89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726055"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641548"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -113,6 +113,10 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 
 **[Enable autoscale]\(自動スケールを有効にする\)** をクリックし、 **[保存]** をクリックすることで、いつでも自動スケールに戻すことができます。
 
+### <a name="cool-down-period-effects"></a>クールダウン期間の効果
+
+自動スケーリングでは、インスタンスの目まぐるしく繰り返されるアップ/ダウン スケーリングを意味する、"フラッピング" を防ぐためにクールダウン期間を使用します。  詳細については、[自動スケーリングの評価手順](autoscale-understanding-settings.md#autoscale-evaluation)に関するページを参照してください。  フラッピングに関するその他の重要な情報および自動スケーリング エンジンの監視方法の解釈については、「[自動スケールのベスト プラクティス](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types)」および[自動スケールのトラブルシューティング](autoscale-troubleshoot.md)に関するページを、それぞれ参照してください。 
+
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>正常なインスタンスにトラフィックをルーティングする (App Service)
 
 <a id="health-check-path"></a>
@@ -136,6 +140,7 @@ Azure Web アプリを複数のインスタンスにスケールアウトする�
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+
 
 <!--Reference-->
 [1]:https://portal.azure.com

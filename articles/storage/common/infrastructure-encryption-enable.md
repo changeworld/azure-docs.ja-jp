@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 23b3ca919be030490cca06f31dac623d7f80be44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92746583"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790385"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>データの二重暗号化のためにインフラストラクチャ暗号化を有効にしてストレージ アカウントを作成する
 
@@ -58,21 +58,21 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az-feature-register) コマンドを呼び出します。
+Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az_feature_register) コマンドを呼び出します。
 
 ```azurecli
 az feature register --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを呼び出します。
+Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az_feature_show) コマンドを呼び出します。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage \
     --name AllowRequireInfraStructureEncryption
 ```
 
-登録が承認されたら、Azure Storage リソース プロバイダーを再登録する必要があります。 Azure CLI でリソース プロバイダーを再登録するには、[az provider register](/cli/azure/provider#az-provider-register) コマンドを呼び出します。
+登録が承認されたら、Azure Storage リソース プロバイダーを再登録する必要があります。 Azure CLI でリソース プロバイダーを再登録するには、[az provider register](/cli/azure/provider#az_provider_register) コマンドを呼び出します。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'
@@ -122,7 +122,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 
 Azure CLI を使用して、インフラストラクチャ暗号化が有効なストレージ アカウントを作成するには、Azure CLI バージョン 2.8.0 以降がインストールされていることを確認します。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-次に、[az storage account create](/cli/azure/storage/account#az-storage-account-create) コマンドを呼び出して汎用 v2 ストレージ アカウントを作成し、`--require-infrastructure-encryption option` を含めてインフラストラクチャ暗号化を有効にします。
+次に、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを呼び出して汎用 v2 ストレージ アカウントを作成し、`--require-infrastructure-encryption option` を含めてインフラストラクチャ暗号化を有効にします。
 
 次の例は、読み取りアクセス geo 冗長ストレージ (RA-GRS) 用に構成され、データの二重暗号化のためにインフラストラクチャ暗号化が有効な汎用 v2 ストレージ アカウントを作成する方法を示しています。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
@@ -197,7 +197,7 @@ $account.Encryption.RequireInfrastructureEncryption
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してストレージ アカウントでインフラストラクチャ暗号化が有効なことを確認するには、[az storage account show](/cli/azure/storage/account#az-storage-account-show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `encryption` プロパティ内の `requireInfrastructureEncryption` フィールドを探し、それが `true` に設定されていることを確認します。
+Azure CLI を使用してストレージ アカウントでインフラストラクチャ暗号化が有効なことを確認するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出します。 このコマンドによって、ストレージ アカウントのプロパティとその値のセットが返されます。 `encryption` プロパティ内の `requireInfrastructureEncryption` フィールドを探し、それが `true` に設定されていることを確認します。
 
 次の例では、`requireInfrastructureEncryption` プロパティの値を取得します。 山かっこ内のプレースホルダー値は、実際の値に置き換えてください。
 

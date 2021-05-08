@@ -10,12 +10,12 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 10262b168b91370956c9559ba688c72213ba7618
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 64a112fd29ee9e3fbb82d9b54322415569b3ff85
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870995"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209538"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>Azure Synapse Link でサーバーレス SQL プールを使用して Azure Cosmos DB データのクエリを実行する
 
@@ -33,22 +33,31 @@ Azure Cosmos DB のクエリを実行する場合、[SELECT](/sql/t-sql/queries/
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET とキー](#tab/openrowset-key)
 
-Azure Cosmos DB 分析ストア内のデータのクエリと分析をサポートするため、サーバーレス SQL プールでは次の `OPENROWSET` 構文を使用します。
+Azure Cosmos DB 分析ストア内のデータのクエリと分析をサポートするため、サーバーレス SQL プールを使用します。 サーバーレス SQL プールでは `OPENROWSET` SQL 構文が使用されているため、まずは Azure Cosmos DB 接続文字列を次の形式に変換する必要があります。
 
 ```sql
 OPENROWSET( 
        'CosmosDB',
-       '<Azure Cosmos DB connection string>',
+       '<SQL connection string for Azure Cosmos DB>',
        <Container name>
     )  [ < with clause > ] AS alias
 ```
 
-Azure Cosmos DB の接続文字列には、Azure Cosmos DB のアカウント名、データベース名、データベース アカウント マスター キー、および `OPENROWSET` 関数に対するオプションのリージョン名を指定します。
+Azure Cosmos DB 用の SQL 接続文字列は、Azure Cosmos DB のアカウント名、データベース名、データベース アカウント マスター キー、および `OPENROWSET` 関数に対するオプションのリージョン名を指定します。 この情報の一部は、標準の Azure Cosmos DB 接続文字列から取得できます。
 
-接続文字列は次のような形式です。
+標準の Azure Cosmos DB 接続文字列形式からの変換:
+
+```
+AccountEndpoint=https://<database account name>.documents.azure.com:443/;AccountKey=<database account master key>;
+```
+
+SQL 接続文字列の形式は次のとおりです。
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
+
+リージョンは省略可能です。 省略した場合、コンテナーのプライマリ リージョンが使用されます。
 
 `OPENROWSET` の構文では、引用符を使用しないで Azure Cosmos DB のコンテナー名を指定します。 コンテナー名に特殊文字 (ダッシュ "-" など) が含まれている場合、`OPENROWSET` 構文では名前を角かっこ (`[]`) で囲む必要があります。
 
@@ -59,13 +68,14 @@ Azure Cosmos DB の接続文字列には、Azure Cosmos DB のアカウント名
 ```sql
 OPENROWSET( 
        PROVIDER = 'CosmosDB',
-       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       CONNECTION = '<SQL connection string for Azure Cosmos DB without account key>',
        OBJECT = '<Container name>',
        [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
     )  [ < with clause > ] AS alias
 ```
 
-この場合、Azure Cosmos DB 接続文字列にはキーが含まれません。 接続文字列は次のような形式です。
+この場合、Azure Cosmos DB 用の SQL 接続文字列にはキーが含まれません。 接続文字列は次のような形式です。
+
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>'
 ```
@@ -165,6 +175,7 @@ FROM OPENROWSET(
 Azure Cosmos DB のこのようなフラットな JSON ドキュメントは、Synapse SQL では行と列のセットとして表すことができます。 `OPENROWSET` 関数を使用すると、読み取り対象のプロパティのサブセットと列の厳密な型を、`WITH` 句で指定できます。
 
 ### <a name="openrowset-with-key"></a>[OPENROWSET とキー](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -173,7 +184,9 @@ FROM OPENROWSET(
        Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
+
 ### <a name="openrowset-with-credential"></a>[OPENROWSET と資格情報](#tab/openrowset-credential)
+
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
@@ -186,7 +199,9 @@ FROM OPENROWSET(
       OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+   
 ```
+
 ---
 このクエリの結果は次の表のようになります。
 
@@ -256,7 +271,7 @@ WITH (  paper_id    varchar(8000),
 このクエリの結果は次の表のようになります。
 
 | paper_id | title | metadata | 作成者 |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | bb11206963e831f… | Supplementary Information An eco-epidemi… | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
 | bb1206963e831f1… | The Use of Convalescent Sera in Immune-E… | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
 | bb378eca9aac649… | Tylosema esculentum (Marama) Tuber and B… | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 

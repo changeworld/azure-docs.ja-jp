@@ -4,12 +4,12 @@ description: Azure Custom Vision を使用して、おもちゃのトラック�
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e6b911ad555c4ce10a9576861e1c2e650e63cd94
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1abf123883a89bb41909e8aa67aedfadffc3d37e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698809"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561204"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
@@ -77,7 +77,7 @@ ms.locfileid: "101698809"
 
 この図は、このチュートリアルでのシグナルの流れを示しています。 [エッジ モジュール](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)は、リアルタイム ストリーミング プロトコル (RTSP) サーバーをホストする IP カメラをシミュレートします。 [RTSP ソース](media-graph-concept.md#rtsp-source) ノードは、このサーバーからビデオ フィードをプルし、[HTTP 拡張プロセッサ](media-graph-concept.md#http-extension-processor)ノードにビデオ フレームを送信します。
 
-HTTP 拡張ノードは、プロキシの役割を果たします。  これは、`samplingOptions` フィールドを使用して設定された受信ビデオフ レームをサンプリングし、ビデオ フレームを指定された画像の種類に変換します。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに、REST 経由で転送します。 この例では、このエッジ モジュールは Custom Vision を使用して構築された、おもちゃのトラックの検出モデルです。 HTTP 拡張プロセッサ ノードは、検出結果を収集し、イベントを [Azure IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 その後、このノードはこれらのイベントを [IoT Edge ハブ](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)に送信します。
+HTTP 拡張ノードは、プロキシの役割を果たします。  これは、`samplingOptions` フィールドを使用して設定された受信ビデオフ レームをサンプリングし、ビデオ フレームを指定された画像の種類に変換します。 次に、その画像を、HTTP エンドポイントの背後で AI モデルを実行する別のエッジ モジュールに、REST 経由で転送します。 この例では、このエッジ モジュールは Custom Vision を使用して構築された、おもちゃのトラックの検出モデルです。 HTTP 拡張プロセッサ ノードは、検出結果を収集し、イベントを [Azure IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 その後、このノードはこれらのイベントを [IoT Edge ハブ](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)に送信します。
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Custom Vision のおもちゃ検出モデルを構築してデプロイする 
 

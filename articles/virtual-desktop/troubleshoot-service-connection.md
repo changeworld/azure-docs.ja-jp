@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 68468276546eade7c068f1aa48d3ac65fc8aadaa
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98539080"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445382"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
 

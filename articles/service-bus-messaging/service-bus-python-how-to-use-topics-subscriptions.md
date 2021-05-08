@@ -3,17 +3,19 @@ title: Azure Service Bus のトピックとサブスクリプションを Python
 description: この記事では、Python を使用してトピックにメッセージを送信したり、サブスクリプションからメッセージを受信したりする方法について説明します。
 documentationcenter: python
 author: spelluru
-ms.devlang: python
-ms.topic: quickstart
-ms.date: 11/18/2020
 ms.author: spelluru
-ms.custom: devx-track-python
-ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 11/18/2020
+ms.topic: quickstart
+ms.devlang: python
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98630049"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537162"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (Python)
 この記事では、Python を使用して Service Bus トピックにメッセージを送信したり、そのトピックのサブスクリプションからメッセージを受信したりする方法について説明します。 

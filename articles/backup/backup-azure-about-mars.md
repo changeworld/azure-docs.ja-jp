@@ -3,12 +3,12 @@ title: MARS エージェントについて
 description: MARS エージェントでサポートされるバックアップ シナリオについて説明します
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9e01694aca386482f9ff7ba52593c88326ba3d62
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87562601"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517744"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントについて
 
@@ -68,4 +68,4 @@ MARS エージェントでは、次の復元シナリオがサポートされて
 
 [MARS エージェントのサポート マトリックス](./backup-support-matrix-mars-agent.md)
 
-[MARS エージェントに関する FAQ](./backup-azure-file-folder-backup-faq.md)
+[MARS エージェントに関する FAQ](./backup-azure-file-folder-backup-faq.yml)
