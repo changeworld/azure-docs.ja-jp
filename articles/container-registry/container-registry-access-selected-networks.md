@@ -115,8 +115,8 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="next-steps"></a>次のステップ
 
-* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure コンテナー レジストリ用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
-* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
+* 仮想ネットワーク内のプライベート エンドポイントを使用してレジストリへのアクセスを制限するには、「[Azure Container Registry 用に Azure Private Link を構成する](container-registry-private-link.md)」を参照してください。
+* クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure Container Registry にアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
 
 [az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az_acr_network_rule_add
