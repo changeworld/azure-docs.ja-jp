@@ -401,7 +401,7 @@ speechConfig!.setPropertyTo(
 | なし、または値が指定されていない場合 | 0 ミリ秒        |
 | x-weak                        | 250 ミリ秒      |
 | weak                          | 500 ミリ秒      |
-| 中                        | 750 ミリ秒      |
+| medium                        | 750 ミリ秒      |
 | strong                        | 1000 ミリ秒     |
 | x-strong                      | 1250 ミリ秒     |
 
