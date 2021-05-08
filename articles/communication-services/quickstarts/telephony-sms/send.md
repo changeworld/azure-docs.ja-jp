@@ -24,7 +24,7 @@ ms.locfileid: "105726398"
 
 > [!IMPORTANT]
 > 米国の電話番号との間で携帯ショートメール (SMS) メッセージを送受信することができます。 他の地域の電話番号はまだ、Communication Services の SMS ではサポートされていません。
-> 詳細については、 **[電話番号の種類](../../concepts/telephony-sms/plan-solution.md)** に関すページを参照してください。
+> 詳細については、 **[電話番号の種類](../../concepts/telephony-sms/plan-solution.md)** に関するページを参照してください。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Send SMS with .NET SDK](./includes/send-sms-net.md)]
