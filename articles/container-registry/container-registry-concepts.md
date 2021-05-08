@@ -1,6 +1,6 @@
 ---
 title: レジストリ、リポジトリ、イメージ、成果物について
-description: Azure コンテナー レジストリ、リポジトリ、コンテナー イメージなどの主要な成果物の概念について紹介します。
+description: Azure Container Registry、リポジトリ、コンテナー イメージなどの主要な成果物の概念について紹介します。
 ms.topic: article
 ms.date: 01/29/2021
 ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
@@ -66,7 +66,7 @@ Docker 対応コンテナー イメージに加え、Azure Container Registry �
 
 安全な分離を確保し潜在的なレイヤー操作から保護するために、レイヤーはレジストリ間で共有されません。
 
-### <a name="manifest"></a>Manifest
+### <a name="manifest"></a>マニフェスト
 
 コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 コンテンツがプッシュされるときにレジストリによって生成されるマニフェストは、コンテンツを一意に示し、レイヤーを指定します。 Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。 
 
@@ -147,7 +147,7 @@ Docker またはその他のクライアント ツールを使用したプッシ
     
   **ダイジェストによるアドレス**: `[loginServerUrl]/[repository@sha256][:digest]`  
 
-Docker またはその他のクライアント ツールを使用して、成果物を Azure コンテナー レジストリにプルまたはプッシュする場合は、レジストリの完全修飾 URL ("*ログイン サーバー*" 名とも呼ばれます) を使用します。 Azure クラウドでは、Azure コンテナー レジストリの完全修飾 URL の形式は `myregistry.azurecr.io` (すべて小文字) です。
+Docker またはその他のクライアント ツールを使用して、成果物を Azure Container Registry にプルまたはプッシュする場合は、レジストリの完全修飾 URL ("*ログイン サーバー*" 名とも呼ばれます) を使用します。 Azure クラウドでは、Azure Container Registry の完全修飾 URL の形式は `myregistry.azurecr.io` (すべて小文字) です。
 
 > [!NOTE]
 > * `myregistry.azurecr.io:443` のように、レジストリ ログイン サーバーの URL にポート番号を指定することはできません。 
