@@ -324,7 +324,7 @@ db_server = os.environ['DATABASE_SERVER']
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[SSL 終端](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
