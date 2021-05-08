@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531920"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951722"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -201,7 +201,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL データ同期サービスのコストはどのくらいですか?
 
-SQL データ同期サービスそのものに対しては課金されません。 ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+SQL データ同期サービスそのものに対しては課金されません。 ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳細については、[データ転送の料金](https://azure.microsoft.com/pricing/details/bandwidth/)に関するページを参照してください。
 
 ### <a name="what-regions-support-data-sync"></a>データ同期はどのリージョンでサポートされていますか?
 

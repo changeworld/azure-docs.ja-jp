@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 ms.date: 04/22/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: debe8e1f93148ab46a06eafd1b2671b560aa94db
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c25107bf5701b4e730924417e01c5e2486317c8e
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947917"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330946"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>ARM テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートでは、ポリシー割り当てを作成し、"_マネージド ディスクを使用していない VM の監査_" という組み込みのポリシー定義を割り当てます。 使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](./samples/index.md)に関する記事をご覧ください。
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/quickstarts/microsoft.authorization/azurepolicy-assign-builtinpolicy-resourcegroup/)からのものです。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/azurepolicy-assign-builtinpolicy-resourcegroup/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json":::
 

@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/25/2021
-ms.openlocfilehash: 72ab685b58f7d940fe4d682cacba6212fe80ced8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.openlocfilehash: 82f6d69629f397cb5222a82677bf27ed880aa20f
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933085"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988012"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
@@ -73,11 +73,11 @@ ms.locfileid: "105933085"
 
 ### <a name="error-code-df-executor-invalidtype"></a>エラー コード:DF-Executor-InvalidType
 - **メッセージ**:パラメーターの型が、渡された値の型と一致していることを確認してください。 パイプラインからの float パラメーターの引き渡しは現在、サポートされていません。
-- **原因**: 宣言された型のデータ型に、実際のパラメーター値との互換性がありません。
+- **原因**: 宣言された型と実際のパラメーター値の間でデータ型に互換性がありません。
 - **推奨事項**: データ フローに渡されたパラメーター値が、宣言された型と一致することをご確認ください。
 
 ### <a name="error-code-df-executor-parseerror"></a>エラー コード:DF-Executor-ParseError
-- **メッセージ**:式を解析できません
+- **メッセージ**: 式を解析できません。
 - **原因**: 書式が正しくないため、式によって解析エラーが生成されました。
 - **推奨事項**: 式の書式をご確認ください。
 
@@ -101,7 +101,7 @@ ms.locfileid: "105933085"
 
 - **メッセージ**:リンクされたサービスのアクセス キーが正しいことを確認してください
 - **原因**: アカウント名またはアクセス キーが正しくありません。
-- **推奨事項**:リンクされたサービスで指定されたアカウント名またはアクセス キーが正しいことを確認してください。 
+- **推奨事項**:リンク サービスで指定されたアカウント名またはアクセス キーが正しいことを確認してください。 
 
 ### <a name="error-code-df-executor-columnunavailable"></a>エラー コード:DF-Executor-ColumnUnavailable
 - **メッセージ**: 式に使用されている列名が利用できないか、または無効です。
@@ -116,7 +116,7 @@ ms.locfileid: "105933085"
 
  ### <a name="error-code-df-executor-storeisnotdefined"></a>エラー コード:DF-Executor-StoreIsNotDefined
 - **メッセージ**: ストアの構成が定義されていません。 このエラーは、パイプラインでの無効なパラメーター割り当てが原因である可能性があります。
-- **原因**: 不明です。
+- **原因**: 無効なストア構成が指定されています。
 - **推奨事項**: パイプラインでのパラメーター値の割り当てをご確認ください。 パラメーター式に無効な文字が含まれているおそれがあります。
 
 
@@ -138,185 +138,349 @@ ms.locfileid: "105933085"
 
 ### <a name="error-code-df-xml-invalidvalidationmode"></a>エラー コード: DF-Xml-InvalidValidationMode
 - **メッセージ**: 無効な xml 検証モードが指定されています。
+- **原因**: 無効な XML 検証モードが指定されています。
 - **推奨事項**: パラメーター値を確認し、適切な検証モードを指定します。
 
 ### <a name="error-code-df-xml-invaliddatafield"></a>エラー コード: DF-Xml-InvalidDataField
 - **メッセージ**: 破損レコードのフィールドは、文字列型および null 許容型である必要があります。
-- **推奨事項**: ソース プロジェクトの列 `\"_corrupt_record\"` に文字列データ型が含まれていることを確認してください。
+- **原因**: XML ソースに、列の無効なデータ型が指定されています `\"_corrupt_record\"`。
+- **推奨事項**: XML ソースの列 `\"_corrupt_record\"` に文字列データ型と Null 許容が含まれていることを確認してください。
 
 ### <a name="error-code-df-xml-malformedfile"></a>エラー コード: DF-Xml-MalformedFile
-- **メッセージ**: 'FailFastMode' の xml の形式が正しくありません。
+- **メッセージ**: FAILFAST モードのパスの形式が正しくない XML です。
+- **原因**: FAILFAST モードのパスの形式が正しくない形式に誤りがある XML です。
 - **推奨事項**: XML ファイルの内容を適切な形式に更新します。
 
-### <a name="error-code-df-xml-invaliddatatype"></a>エラー コード: DF-Xml-InvalidDataType
-- **メッセージ**: XML 要素にはサブ要素または属性があるため、変換できません。
-
 ### <a name="error-code-df-xml-invalidreferenceresource"></a>エラー コード: DF-Xml-InvalidReferenceResource
-- **メッセージ**: xml データ ファイル内の参照リソースを解決できません。
+- **メッセージ**: XML データ ファイル内の参照リソースを解決できません。
+- **原因**: XML データ ファイル内の参照リソースを解決できません。
 - **推奨事項**: XML データ ファイル内の参照リソースを確認する必要があります。
 
 ### <a name="error-code-df-xml-invalidschema"></a>エラー コード: DF-Xml-InvalidSchema
 - **メッセージ**: スキーマの検証に失敗しました。
+- **原因**: XML ソースに無効なスキーマが指定されています。
+- **推奨事項**: XML ソースのスキーマ設定を調べて、ソース データのサブセット スキーマであることを確認します。
 
 ### <a name="error-code-df-xml-unsupportedexternalreferenceresource"></a>エラー コード: DF-Xml-UnsupportedExternalReferenceResource
 - **メッセージ**: xml データ ファイル内の外部参照リソースはサポートされていません。
+- **原因**: XML データ ファイル内の外部参照リソースはサポートされていません。
 - **推奨事項**: 外部参照リソースが現在サポートされていない場合は、XML ファイルの内容を更新します。
 
 ### <a name="error-code-df-gen2-invalidaccountconfiguration"></a>エラー コード: DF-GEN2-InvalidAccountConfiguration
 - **メッセージ**: アカウント キーまたは tenant/spnId/spnCredential/spnCredentialType または miServiceUri/miServiceToken のいずれかを指定する必要があります。
-- **推奨事項**: 関連する GEN2 リンク サービスで、適切なアカウントを構成します。
+- **原因**: ADLS Gen2 のリンク サービスに無効な資格情報が指定されています。
+- **推奨事項**: 適切な資格情報を構成するように、ADLS Gen2 のリンク サービスを更新します。
 
 ### <a name="error-code-df-gen2-invalidauthconfiguration"></a>エラー コード: DF-GEN2-InvalidAuthConfiguration
-- **メッセージ**: 3 つの認証方法 (Key、ServicePrincipal、MI) のうち 1 つだけを指定できます。 
-- **推奨事項**: 関連する GEN2 リンク サービスで、適切な認証方法を選択します。
+- **メッセージ**: 3 つの認証方法 (Key、ServicePrincipal、MI) のうち 1 つだけを指定できます。
+- **原因**: ADLS gen2 のリンク サービスに無効な認証方法が指定されています。
+- **推奨事項**: ADLS Gen2 のリンク サービスを更新して、キー、ServicePrincipal、および MI の 3 つの認証方法のいずれかを設定します。
 
 ### <a name="error-code-df-gen2-invalidserviceprincipalcredentialtype"></a>エラー コード: DF-GEN2-InvalidServicePrincipalCredentialType
-- **メッセージ**: ServicePrincipalCredentialType が無効です。
-
-### <a name="error-code-df-gen2-invaliddatatype"></a>エラー コード: DF-GEN2-InvalidDataType
-- **メッセージ**: クラウドの種類が無効です。
+- **メッセージ**: サービス プリンシパルの資格情報の種類が無効です。
+- **原因**: サービス プリンシパルの資格情報の種類が無効です。
+- **推奨事項**: ADLS Gen2 のリンク サービスを更新して、適切にサービス プリンシパルの資格情報の種類を設定してください。
 
 ### <a name="error-code-df-blob-invalidaccountconfiguration"></a>エラー コード: DF-Blob-InvalidAccountConfiguration
 - **メッセージ**: アカウント キーまたは sas_token のいずれかを指定する必要があります。
+- **原因**: Azure Blob のリンク サービスに無効な資格情報が指定されています。
+- **推奨事項**: Azure Blob のリンク サービスには、アカウント キーまたは SAS トークンを使用します。
 
 ### <a name="error-code-df-blob-invalidauthconfiguration"></a>エラー コード: DF-InvalidAuthConfiguration
 - **メッセージ**: 2 つの認証方法 (Key、SAS) のうち 1 つだけを指定できます。
-
-### <a name="error-code-df-blob-invaliddatatype"></a>エラー コード: DF-Blob-InvalidDataType
-- **メッセージ**: クラウドの種類が無効です。
+- **原因**: リンク サービスに無効な認証メソッドが指定されています。
+- **推奨事項**: Azure Blob のリンク サービスには、キーまたは SAS 認証を使用します。
 
 ### <a name="error-code-df-cosmos-partitionkeymissed"></a>エラー コード: DF-Cosmos-PartitionKeyMissed
 - **メッセージ**: 更新操作と削除操作には、パーティション キーのパスを指定する必要があります。
-- **推奨事項**: Cosmos シンクの設定で提供パーティション キーを使用します。
+- **原因**: Azure Cosmos DB シンクで、パーティションキーのパスが見つかりません。
+- **推奨事項**: Azure Cosmos DB シンクの設定で提供パーティション キーを使用します。
 
 ### <a name="error-code-df-cosmos-invalidpartitionkey"></a>エラー コード: DF-Cosmos-InvalidPartitionKey
 - **メッセージ**: 更新操作と削除操作では、パーティション キーのパスを空にすることはできません。
-- **推奨事項**: Cosmos シンクの設定で提供パーティション キーを使用します。
+- **原因**: 更新操作と削除操作では、パーティション キーのパスを空にすることはできません。
+- **推奨事項**: Azure Cosmos DB シンクの設定で提供パーティション キーを使用します。
+
 
 ### <a name="error-code-df-cosmos-idpropertymissed"></a>エラー コード: DF-Cosmos-IdPropertyMissed
 - **メッセージ**: 削除操作と更新操作には、'id' プロパティをマップする必要があります。
-- **推奨事項**: Cosmos シンクの設定で、入力データに `id` 列が含まれていることを確認します。 含まれていない場合は、**変換の選択または派生** を使用して、シンクの前にこの列を生成します。
+- **原因**: 更新操作と削除操作で `id` プロパティが不明です。
+- **推奨事項**: Cosmos DB シンクの設定で、入力データに `id` 列が含まれていることを確認します。 含まれていない場合は、**変換の選択または派生** を使用して、シンクの前にこの列を生成します。
 
 ### <a name="error-code-df-cosmos-invalidpartitionkeycontent"></a>エラー コード: DF-Cosmos-InvalidPartitionKeyContent
 - **メッセージ**: パーティション キーは/で始まっている必要があります。
-- **推奨事項**: Cosmos シンクの設定で、パーティション キーが `/` で始まっていることを確認します (例: `/movieId`)。
+- **原因**: 無効なパーティションキーが指定されています。
+- **推奨事項**: Cosmos DB シンクの設定で、パーティション キーが `/` で始まっていることを確認します (例: `/movieId`)。
 
 ### <a name="error-code-df-cosmos-invalidpartitionkey"></a>エラー コード: DF-Cosmos-InvalidPartitionKey
 - **メッセージ**: 削除操作および更新操作のためのパーティション キーがシンクでマップされていません。
-- **推奨事項**: Cosmos シンクの設定で、コンテナーのパーティション キーと同じパーティション キーを使用します。
+- **原因**: 無効なパーティションキーが指定されています。
+- **推奨事項**: Cosmos DB シンクの設定で、コンテナーのパーティション キーと同じ適切なパーティション キーを使用します。
 
 ### <a name="error-code-df-cosmos-invalidconnectionmode"></a>エラー コード: DF-Cosmos-InvalidConnectionMode
-- **メッセージ**: connectionMode が無効です。
-- **推奨事項**: Cosmos の設定で、サポートされているモードが **Gateway** と **DirectHttps** であることを確認します。
+- **メッセージ**: 接続モードが無効です。
+- **原因**: 無効な接続モードが指定されています。
+- **推奨事項**: Cosmos DB の設定で、サポートされているモードが **Gateway** と **DirectHttps** であることを確認します。
 
 ### <a name="error-code-df-cosmos-invalidaccountconfiguration"></a>エラー コード: DF-Cosmos-InvalidAccountConfiguration
 - **メッセージ**: accountName または accountEndpoint のいずれかを指定する必要があります。
+- **原因**: 無効なアカウント情報が指定されています。
+- **推奨事項**: Cosmos DB のリンク サービスで、アカウント名またはアカウントのエンドポイントを指定します。
 
 ### <a name="error-code-df-github-writenotsupported"></a>エラー コード: DF-Github-WriteNotSupported
 - **メッセージ**: Github ストアで書き込みが許可されていません。
-
+- **原因**: GitHub ストアは読み取り専用です。
+- **推奨事項**: ストア エンティティ定義は他の場所にあります。
+  
 ### <a name="error-code-df-pgsql-invalidcredential"></a>エラー コード: DF-PGSQL-InvalidCredential
 - **メッセージ**: ユーザー/パスワードを指定する必要があります。
-- **推奨事項**: 関連する postgresql リンク サービスに適切な資格情報が設定されていることを確認します。
+- **原因**: ユーザー/パスワードが見つかりません。
+- **推奨事項**: 関連する PostgreSQL リンク サービスに適切な資格情報が設定されていることを確認します。
 
 ### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>エラー コード: DF-Snowflake-InvalidStageConfiguration
 - **メッセージ**: Snowflake 読み取り/書き込み操作では、BLOB ストレージ タイプのみをステージとして使用できます。
+- **原因**: Snowflake に無効なステージング構成が用意されています。
+- **推奨事項**: Snowflake ステージング設定を更新して、Azure Blob のリンク サービスのみが使用されるようにします。
 
 ### <a name="error-code-df-snowflake-invalidstageconfiguration"></a>エラー コード: DF-Snowflake-InvalidStageConfiguration
 - **メッセージ**: Snowflake のステージ プロパティは、Azure BLOB + SAS 認証で指定する必要があります。
+- **原因**: Snowflake に無効なステージング構成が用意されています。
+- **推奨事項**: Azure BLOB + SAS 認証のみが Snowflake ステージング設定で指定されていることを確認します。
 
 ### <a name="error-code-df-snowflake-invaliddatatype"></a>エラー コード: DF-Snowflake-InvalidDataType
 - **メッセージ**: spark 型は Snowflake ではサポートされていません。
-- **推奨事項**: **変換の派生** を使用して、Snowflake シンクの前に入力データの関連列を文字列型に変更します。 
+- **原因**: Snowflake に無効なデータ型が提供されています。
+- **推奨事項**: Snowflake シンクを適用する前に、派生変換を使用して、入力データの関連列を文字列型に更新してください。
 
 ### <a name="error-code-df-hive-invalidblobstagingconfiguration"></a>エラー コード: DF-Hive-InvalidBlobStagingConfiguration
 - **メッセージ**: BLOB ストレージのステージング プロパティを指定する必要があります。
+- **原因**: Hive に無効なステージング構成が用意されています。
+- **推奨事項**: ステージングとして使用される関連する Blob のリンク サービスで、アカウントキー、アカウント名、コンテナーが適切に設定されているかどうかを確認してください。
 
 ### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>エラー コード: DF-Hive-InvalidGen2StagingConfiguration
 - **メッセージ**: ADLS Gen2 ストレージのステージングは、サービス プリンシパルのキー資格情報のみをサポートしています。
-- **推奨事項**: ステージングとして使用される ADLS Gen2 リンク サービスに、サービス プリンシパルのキー資格情報が適用されていることを確認します。
+- **原因**: Hive に無効なステージング構成が用意されています。
+- **推奨事項**: ステージングとして使用される関連 ADLS Gen2 のリンク サービスを更新してください。 現時点では、サービス プリンシパル キー資格情報のみがサポートされています。
 
 ### <a name="error-code-df-hive-invalidgen2stagingconfiguration"></a>エラー コード: DF-Hive-InvalidGen2StagingConfiguration
 - **メッセージ**: ADLS Gen2 ストレージのステージング プロパティを指定する必要があります。 キーまたは tenant/spnId/spnKey または miServiceUri/miServiceToken のいずれかが必要です。
-- **推奨事項**: 関連する ADLS Gen2 リンク サービスに、ハイブでステージングとして使用される適切な資格情報を適用します。 
+- **原因**: Hive に無効なステージング構成が用意されています。
+- **推奨事項**: 関連する ADLS Gen2 のリンク サービスを、Hive でステージングとして使用される適切な資格情報で更新します。
 
 ### <a name="error-code-df-hive-invaliddatatype"></a>エラー コード: DF-Hive-InvalidDataType
 - **メッセージ**: サポートされていない列です。
-- **推奨事項**: 入力データの列を、ハイブでサポートされているデータ型と一致するように更新します。
+- **原因**: サポートされていない列が指定されています。
+- **推奨事項**: 入力データの列を、Hive でサポートされているデータ型と一致するように更新します。
 
 ### <a name="error-code-df-hive-invalidstoragetype"></a>エラー コード: DF-Hive-InvalidStorageType
 - **メッセージ**: ストレージの種類には、blob または gen2 を指定できます。
+- **原因**: サポートされているのは、Azure Blob または ADLS Gen2 ストレージの種類のみです。
+- **推奨事項**: Azure Blob または ADLS Gen2 から適切にストレージの種類を選択します。
 
 ### <a name="error-code-df-delimited-invalidconfiguration"></a>エラー コード: DF-Delimited-InvalidConfiguration
 - **メッセージ**: 空の行またはカスタム ヘッダーのいずれかを指定する必要があります。
-- **推奨事項**: CSV の設定で、空の行またはカスタム ヘッダーを指定します。
+- **原因**: 無効な区切られた構成が指定されています。
+- **推奨事項**: CSV 設定を更新して、空の行またはカスタム ヘッダーのいずれかを指定してください。
 
 ### <a name="error-code-df-delimited-columndelimitermissed"></a>エラー コード: DF-Delimited-ColumnDelimiterMissed
 - **メッセージ**: 解析には列区切り記号が必要です。
-- **推奨事項**: CSV の設定に列区切り記号があることを確認します。
+- **原因**: 列区切り記号が見つかりません。
+- **推奨事項**: CSV 設定で、解析に必要な列区切り記号があることを確認します。 
 
 ### <a name="error-code-df-mssql-invalidcredential"></a>エラー コード: DF-MSSQL-InvalidCredential
 - **メッセージ**: user/pwd または tenant/spnId/spnKey または miServiceUri/miServiceToken のいずれかを指定する必要があります。
-- **推奨事項**: 関連する MSSQL リンク サービスに、適切な資格情報を適用します。
+- **原因**: MSSQL のリンク サービスに無効な資格情報が指定されています。
+- **推奨事項**: 関連する MSSQL リンク サービスを適切な資格情報で更新し、 **user/pwd** または **tenant/spnId/spnKey** または **miServiceUri/miServiceToken** のいずれかを指定する必要があります。
 
 ### <a name="error-code-df-mssql-invaliddatatype"></a>エラー コード: DF-MSSQL-InvalidDataType
 - **メッセージ**: サポートされていないフィールドです。
+- **原因**: サポートされていないフィールドが指定されています。
 - **推奨事項**: 入力データの列を、MSSQL でサポートされているデータ型と一致するように変更します。
 
 ### <a name="error-code-df-mssql-invalidauthconfiguration"></a>エラー コード: DF-MSSQL-InvalidAuthConfiguration
 - **メッセージ**: 3 つの認証方法 (Key、ServicePrincipal、MI) のうち 1 つだけを指定できます。
+- **原因**: MSSQL リンク サービスに無効な認証メソッドが指定されています。
 - **推奨事項**: 関連する MSSQL リンク サービスでは、3 つの認証方法 (Key、ServicePrincipal、MI) のうち 1 つだけを指定できます。
 
 ### <a name="error-code-df-mssql-invalidcloudtype"></a>エラー コード: DF-MSSQL-InvalidCloudType
 - **メッセージ**: クラウドの種類が無効です。
+- **原因**: 無効なクラウドの種類が指定されています。
 - **推奨事項**: 関連する MSSQL リンク サービスで、クラウドの種類を確認します。
 
 ### <a name="error-code-df-sqldw-invalidblobstagingconfiguration"></a>エラー コード: DF-SQLDW-InvalidBlobStagingConfiguration
 - **メッセージ**: BLOB ストレージのステージング プロパティを指定する必要があります。
+- **原因**: 無効な blob ストレージのステージング設定が指定されています
+- **推奨事項**: ステージングに使用する Blob リンク サービスに正しいプロパティがあるかどうかを確認してください。
 
 ### <a name="error-code-df-sqldw-invalidstoragetype"></a>エラー コード: DF-SQLDW-InvalidStorageType
 - **メッセージ**: ストレージの種類には、blob または gen2 を指定できます。
+- **原因**: ステージング用に無効なストレージの種類が指定されています。
+- **推奨事項**: ステージングに使用されるリンク サービスのストレージの種類を確認し、Blob または Gen2 であることを確認します。
 
 ### <a name="error-code-df-sqldw-invalidgen2stagingconfiguration"></a>エラー コード: DF-SQLDW-InvalidGen2StagingConfiguration
 - **メッセージ**: ADLS Gen2 ストレージのステージングは、サービス プリンシパルのキー資格情報のみをサポートしています。
+- **原因**: ADLS gen2 ストレージ ステージングに無効な資格情報が指定されています。
+- **推奨事項**: ステージングに使用する Gen2 のリンク サービスのサービス プリンシパル キー資格情報を使用します。
+ 
 
 ### <a name="error-code-df-sqldw-invalidconfiguration"></a>エラー コード: DF-SQLDW-InvalidConfiguration
 - **メッセージ**: ADLS Gen2 ストレージのステージング プロパティを指定する必要があります。 キーまたは tenant/spnId/spnCredential/spnCredentialType または miServiceUri/miServiceToken のいずれかが必要です。
+- **原因**: 無効な ADLS Gen2 ステージング プロパティが指定されています。
+- **推奨事項**: ADLS Gen2 ストレージ ステージング設定を更新して、 **キー** または **tenant/spnId/spnCredential/spnCredentialType** または **miServiceUri/miServiceToken** のいずれかを設定してください。
 
 ### <a name="error-code-df-delta-invalidconfiguration"></a>エラー コード: DF-DELTA-InvalidConfiguration
 - **メッセージ**: タイムスタンプとバージョンを同時に設定することはできません。
+- **原因**: タイムスタンプとバージョンを同時に設定することはできません。
+- **推奨事項**: 差分設定でタイムスタンプまたはバージョンを設定します。
 
 ### <a name="error-code-df-delta-keycolumnmissed"></a>エラー コード: DF-DELTA-KeyColumnMissed
 - **メッセージ**: 挿入不可能な操作には、キー列を指定する必要があります。
+- **原因**: 挿入不可能な操作に対してキー列が見つかりません。
+- **推奨**: デルタ シンクのキー列を指定して、挿入不可能な操作を行うようにします。
 
 ### <a name="error-code-df-delta-invalidtableoperationsettings"></a>エラー コード: DF-DELTA-InvalidTableOperationSettings
 - **メッセージ**: 再作成オプションと切り詰めオプションの両方を指定することはできません。
+- **原因**: 再作成オプションと切り詰めオプションの両方を同時に指定することはできません。
+- **推奨事項**: 差分設定を更新して、再作成または切り捨て操作を行います。
 
 ### <a name="error-code-df-excel-worksheetconfigmissed"></a>エラー コード: DF-Excel-WorksheetConfigMissed
 - **メッセージ**: Excel シートの名前またはインデックスが必要です。
+- **原因**: 無効な Excel ワークシート構成が指定されています。
 - **推奨事項**: パラメーター値を確認し、Excel データを読み取るシート名またはインデックスを指定してください。
 
 ### <a name="error-code-df-excel-invalidworksheetconfiguration"></a>エラー コード: DF-Excel-InvalidWorksheetConfiguration
 - **メッセージ**: Excel シートの名前とインデックスが同時に存在することはできません。
+- **原因**: Excel シートの名前とインデックスが同時に提供されます。
 - **推奨事項**: パラメーター値を確認し、Excel データを読み取るシート名またはインデックスを指定してください。
 
 ### <a name="error-code-df-excel-invalidrange"></a>エラー コード: DF-Excel-InvalidRange
 - **メッセージ**: 無効な範囲が指定されています。
+- **原因**:無効な範囲が指定されています。
 - **推奨事項**: パラメーター値を確認し、 [「Azure Data Factory での Excel 形式」の「データセットのプロパティ」](./format-excel.md#dataset-properties)に従って有効な範囲を指定してください。
 
 ### <a name="error-code-df-excel-worksheetnotexist"></a>エラー コード: DF-Excel-WorksheetNotExist
 - **メッセージ**: Excel ワークシートが存在しません。
+- **原因**: 無効なワークシート名またはインデックスが指定されています。
 - **推奨事項**: パラメーター値を確認し、Excel データを読み取る有効なシート名またはインデックスを指定してください。
 
 ### <a name="error-code-df-excel-differentschemanotsupport"></a>エラー コード: DF-Excel-DifferentSchemaNotSupport
 - **メッセージ**: スキーマが異なる Excel ファイルの読み取りは、現時点ではサポートされていません。
+- **原因**: スキーマが異なる Excel ファイルの読み取りは、現時点ではサポートされていません。
+- **推奨事項**: この問題を解決するには、次のいずれかのオプションを適用してください。
+    1. **ForEach** +  **データ フロー** アクティビティを使用して、Excel ワークシートを 1 つずつ読み取ります。 
+    1. データを読み取る前に、各ワークシート スキーマを更新して、同じ列を手動で作成します。
 
 ### <a name="error-code-df-excel-invaliddatatype"></a>エラー コード: DF-Excel-InvalidDataType
 - **メッセージ**: データ型はサポートされていません。
+- **原因**: このデータ型はサポートされていません。
+- **推奨**: 関連する入力データ列のデータ型を **' string '** に変更してください。
 
 ### <a name="error-code-df-excel-invalidfile"></a>エラー コード: DF-Excel-InvalidFile
 - **メッセージ**: 無効な Excel ファイルが指定されていますが、.xlsx と .xls のみがサポートされています。
+- **原因**: 無効な Excel ファイルが指定されています。
+- **推奨事項**: `.xls` データを読み取る前に、ワイルドカードを使用してフィルター処理し、`.xlsx` Excel ファイルを取得します。
 
+### <a name="error-code-df-executor-outofmemorysparkbroadcasterror"></a>エラー コード: DF-Executor-OutOfMemorySparkBroadcastError
+- **メッセージ**: 左/右オプションを使用して明示的にブロードキャストされたデータセットは、ノードのメモリに収まらないほど小さくする必要があります。 この問題を回避したり、より高いメモリを持つ統合ランタイムを使用したりする場合は、結合/存在/参照変換のブロードキャスト オプションを「オフ」に選択できます。
+- **原因**: ブロードキャストされたテーブルのサイズがノード メモリの制限を超えています。
+- **推奨事項**: ブロードキャストの左/右オプションは、ノードのメモリに収めることができる小さいデータセットのサイズに対してのみ使用してください。そのため、ノード サイズを適切に構成するか、[ブロードキャスト] オプションをオフにしてください。
+
+### <a name="error-code-df-mssql-invalidfirewallsetting"></a>エラー コード: DF-MSSQL-InvalidFirewallSetting
+- **メッセージ**: ホストに TCP/IP 接続できませんでした。 SQL Server のインスタンスがホストで実行されており、ポートで TCP/IP 接続を受け入れることを確認してください。 ポートへの TCP 接続がファイアウォールでブロックされていないことを確認してください。
+- **原因**: SQL データベースのファイアウォール設定によって、データ フローへのアクセスがブロックされています。
+- **推奨事項**: SQL データベースのファイアウォール設定を確認し、Azure のサービスとリソースにこのサーバーへのアクセスを許可してください。
+
+### <a name="error-code-df-executor-acquirestoragememoryfailed"></a>エラー コード: DF-Executor-AcquireStorageMemoryFailed
+- **メッセージ**: ストレージ メモリへのアンロール メモリの転送に失敗しました。 クラスターの実行中にメモリが不足しました。 コア数が多い統合ランタイム、またはメモリが最適化されたコンピューティングの種類を使用して、もう一度やり直してください。
+- **原因**: クラスターのメモリが不足しています。
+- **推奨**: コア数が多い統合ランタイム、またはメモリが最適化されたコンピューティングの種類を使用して、もう一度やり直してください。
+
+### <a name="error-code-df-cosmos-deletedatafailed"></a>エラー コード: DF-Cosmos-DeleteDataFailed
+- **メッセージ**: 3 回再試行した後に cosmos からデータを削除できませんでした。
+- **原因**: Cosmos コレクションのスループットは小さいため、Cosmo に存在しないスロットリングまたは行データを満たすことになります。
+- **推奨事項**: この問題を解決するには、次の操作を行ってください。
+    1. エラーが404の場合は、関連する行データが Cosmos コレクションに存在することを確認します。 
+    1. エラーがスロットリングである場合は、Cosmos collection スループットを増やすか、自動スケールに設定してください。
+
+### <a name="error-code-df-sqldw-errorrowsfound"></a>エラー コード: DF-SQLDW-ErrorRowsFound
+- **メッセージ**: sql シンクへの書き込み中にエラー/無効な行が見つかりました。 エラー/無効な行は、構成されている場合に、拒否されたデータ ストレージの場所に書き込まれます。
+- **原因**: SQL シンクへの書き込み時にエラーまたは無効な行が見つかりました。
+- **推奨事項**: エラー行が構成されている場合は、拒否されたデータの保存場所にあることを確認してください。
+
+### <a name="error-code-df-sqldw-exporterrorrowfailed"></a>エラー コード: DF-SQLDW-ExportErrorRowFailed
+- **メッセージ**: エラー行をストレージに書き込んでいるときに例外が発生しました。
+- **原因**: エラー行をストレージに書き込んでいるときに例外が発生しました。
+- **推奨事項**: 拒否されたデータのリンク サービスの構成を確認してください。
+
+### <a name="error-code-df-executor-fieldnotexist"></a>エラー コード: DF-Executor-FieldNotExist
+- **メッセージ**: struct のフィールドが存在しません。
+- **原因**: 式で使用されているフィールド名が無効か、使用できません。
+- **推奨事項**: 式に使用されている列名をご確認ください。
+
+### <a name="error-code-df-xml-invalidelement"></a>エラー コード: DF-Xml-InvalidElement
+- **メッセージ**: XML 要素には、変換できないサブ要素または属性があります。
+- **原因**: XML 要素には、変換できないサブ要素または属性があります。
+- **推奨**: XML 要素に右のサブ要素または属性が含まれるように、XML ファイルを更新します。
+
+### <a name="error-code-df-gen2-invalidcloudtype"></a>エラー コード: DF-GEN2-InvalidCloudType
+- **メッセージ**: クラウドの種類が無効です。
+- **原因**: 無効なクラウドの種類が指定されています。
+- **推奨事項**: 関連する ADLS Gen2 リンク サービスで、クラウドの種類を確認します。
+
+### <a name="error-code-df-blob-invalidcloudtype"></a>エラー コード: DF-Blob-InvalidCloudType
+- **メッセージ**: クラウドの種類が無効です。
+- **原因**: 無効なクラウドの種類が指定されています。
+- **推奨事項**: 関連する Azure Blob リンク サービスで、クラウドの種類を確認します。
+
+### <a name="error-code-df-cosmos-failtoresetthroughput"></a>エラー コード: DF-Cosmos-FailToResetThroughput
+- **メッセージ**: 別のスケール操作が進行中のため、Cosmos DB スループットのスケール操作を実行できません。しばらくしてから、もう一度やり直してください。
+- **原因**: 別のスケール操作が進行中のため、Cosmos DB のスループットスケール操作を実行できません。
+- **推奨事項**: Cosmos アカウントにログインし、コンテナーのスループットを自動スケールに手動で変更するか、データ フローの後にカスタムアクティビティを追加してスループットをリセットしてください。
+
+### <a name="error-code-df-executor-invalidpath"></a>エラー コード: DF-Executor-InvalidPath
+- **メッセージ**: パスはどのファイルにも解決されません。 ファイル/フォルダーが存在し、非表示になっていないことを確認してください。
+- **原因**: 無効なファイルまたはフォルダーのパスが指定されています。このパスが見つからないか、アクセスできません。
+- **推奨事項**: ファイルまたはフォルダーのパスを確認し、それが存在し、ストレージ内でアクセスできることを確認してください。
+
+### <a name="error-code-df-executor-invalidpartitionfilenames"></a>エラー コード: DF-Executor-InvalidPartitionFileNames
+- **メッセージ**: ファイル名オプションがパーティションごとに設定されている間は、ファイル名に空の値を指定することはできません。
+- **原因**: 無効なパーティション ファイル名が指定されています。
+- **推奨事項**: シンク設定でファイル名の正しい値を確認してください。
+
+### <a name="error-code-df-executor-invalidoutputcolumns"></a>エラー コード: DF-Executor-InvalidOutputColumns
+- **Message**: 結果には 0 個の出力列があります。 少なくとも 1 つの列がマップされていることを確認してください。
+- **下人**: マップされている列がありません。
+- **推奨事項**: シンク スキーマを確認して、少なくとも 1 つの列がマップされていることを確認してください。
+
+### <a name="error-code-df-executor-invalidinputcolumns"></a>エラー コード: DF-Executor-InvalidInputColumns
+- **メッセージ**: ソース データのスキーマにソース構成の列が見つかりません。
+- **原因**: ソースに無効な列が指定されています。
+- **推奨事項**: ソース構成の列を確認し、ソース データのスキーマのサブセットであることを確認します。
+
+### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>エラー コード: DF-AdobeIntegration-InvalidMapToFilter
+- **メッセージ**: カスタム リソースでは、キー/Id を 1 つだけフィルターにマップできます。
+- **原因**: 無効な構成が指定されています。
+- **推奨事項**: AdobeIntegration の設定で、カスタム リソースがフィルターにマップされたキー/ID を 1 つだけ持つことを確認します。
+
+### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>エラー コード: DF-AdobeIntegration-InvalidPartitionConfiguration
+- **メッセージ**: 単一パーティションのみサポートされています。 パーティション スキーマには、RoundRobin または Hash を指定できます。
+- **原因**: 無効なパーティション構成が指定されています。
+- **推奨事項**: AdobeIntegration の設定で、1 つのパーティションのみが設定されていて、パーティション スキーマが、RoundRobin またはハッシュを丸めている可能性があることを確認します。
+
+### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>エラー コード: DF-AdobeIntegration-KeyColumnMissed
+- **メッセージ**: 挿入不可能な操作には、キーを指定する必要があります。
+- **原因**: キー列が見つかりません。
+- **推奨事項**: AdobeIntegration 設定を更新して、挿入不可能な操作に対してキー列が指定されていることを確認します。
+
+### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>エラー コード: DF-AdobeIntegration-InvalidPartitionType
+- **メッセージ**: パーティションの種類は roundRobin である必要があります。
+- **原因**: 無効なパーティションの種類が指定されています。
+- **推奨事項**: AdobeIntegration の設定を更新して、パーティションの種類が RoundRobin になるようにしてください。
+
+### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>エラー コード: DF-AdobeIntegration-InvalidPrivacyRegulation
+- **メッセージ**: 現在サポートされているプライバシー規則は gdpr のみです。
+- **原因**: 無効なプライバシー構成が指定されています。
+- **推奨事項**: AdobeIntegration 設定を更新してください。プライバシー ' GDPR ' のみがサポートされています。
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>その他のトラブルシューティングのヒント
 - **問題**: 予期しない例外が発生し、実行が失敗しました。

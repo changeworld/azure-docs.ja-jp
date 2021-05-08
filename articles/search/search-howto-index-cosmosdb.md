@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB データを検索する
+title: SQL、MongoDB、または Cassandra API を使用した Azure Cosmos DB データの検索
 titleSuffix: Azure Cognitive Search
 description: Azure Cosmos DB から Azure Cognitive Search での検索可能なインデックスにデータをインポートします。 インデクサーにより、選択したデータ ソース (Azure Cosmos DB など) のデータ インジェストが自動化されます。
 author: mgottein
@@ -9,24 +9,25 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e75aff253c710c97863594e0e112c53e1e9a85a
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98119477"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988408"
 ---
-# <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
+# <a name="how-to-index-data-available-through-cosmos-db-sql-mongodb-or-cassandra-api-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB SQL、MongoDB、または Cassandra API で使用可能なデータにインデックスを付ける方法
 
 > [!IMPORTANT] 
 > SQL API は一般提供されています。
-> MongoDB API、Gremlin API、Cassandra API のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 
+> MongoDB API と Cassandra API のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。  
+> プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力して行うことができます。 
 > [REST API プレビュー バージョン](search-api-preview.md)にはこれらの機能が用意されています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 > [!WARNING]
 > Azure Cognitive Search でサポートされるのは、[インデックス作成ポリシー](../cosmos-db/index-policy.md)が [[常に]](../cosmos-db/index-policy.md#indexing-mode) に設定されている Cosmos DB コレクションだけです。 [遅延] インデックス作成ポリシーを使用したコレクションのインデックス作成はお勧めできず、データが失われることがあります。 インデックス作成が無効になっているコレクションはサポートされません。
 
-この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために Azure Cosmos DB [インデクサー](search-indexer-overview.md)を構成する方法を説明します。 このワークフローでは、Azure Cognitive Search インデックスを作成して、Azure Cosmos DB から抽出された既存のテキストと共に読み込みます。 
+この記事では、コンテンツを抽出して Azure Cognitive Search で検索できるようにするために Azure Cosmos DB [インデクサー](search-indexer-overview.md)を構成する方法を説明します。 このワークフローでは、Azure Cognitive Search インデックスを作成して、Azure Cosmos DB から抽出された既存のテキストと共に読み込みます。
 
 用語が混乱を招く可能性があるため、[Azure Cosmos DB のインデックス作成](../cosmos-db/index-overview.md)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)はそれぞれのサービスに固有の異なる操作であることに注意してください。 Azure Cognitive Search のインデックス作成を開始するには、Azure Cosmos DB データベースが既に存在していて、データが格納されている必要があります。
 
@@ -36,7 +37,7 @@ Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスの�
 
 + [MongoDB API (プレビュー)](../cosmos-db/mongodb-introduction.md) では、データ ソースとインデクサーの作成に[ポータル](#cosmos-indexer-portal)または [REST API バージョン 2020-06-30-Preview](search-api-preview.md) を作成できます。
 
-+ [Cassandra API (プレビュー)](../cosmos-db/cassandra-introduction.md) と [Gremlin API (プレビュー)](../cosmos-db/graph-introduction.md) では、データ ソースとインデクサーの作成に使用できるのは [REST API バージョン 2020-06-30-Preview](search-api-preview.md) のみになります。
++ [Cassandra API (プレビュー)](../cosmos-db/cassandra-introduction.md) では、データ ソースとインデクサーの作成に使用できるのは [REST API バージョン 2020-06-30-Preview](search-api-preview.md) のみになります。
 
 
 > [!Note]
@@ -54,19 +55,19 @@ Azure Cosmos DB 項目のインデックスを作成する最も簡単な方法�
 
 待機時間を短くし、帯域幅の課金を回避するために、Azure Cognitive Search と Azure Cosmos DB の両方に同じリージョンまたは場所を使用することをお勧めします。
 
-### <a name="1---prepare-source-data"></a>1 - ソース データを準備する
+### <a name="step-1---prepare-source-data"></a>ステップ 1 - ソース データの準備
 
-Cosmos DB アカウント、SQL API、MongoDB API (プレビュー)、または Gremlin API (プレビュー) にマップされた Azure Cosmos DB データベース、およびデータベース内のコンテンツが必要です。
+Cosmos DB アカウント、SQL API または MongoDB API (プレビュー) にマップされた Azure Cosmos DB データベース、およびデータベース内のコンテンツが必要です。
 
 Cosmos DB データベースにデータが含まれることを確認してください。 [データのインポート ウィザード](search-import-data-portal.md)では、メタデータが読み取られ、インデックス スキーマを推論するためにデータのサンプリングが実行されますが、Cosmos DB からもデータが読み込まれます。 このデータが見つからない場合、ウィザードは "データ ソースからインデックス スキーマを削除するときにエラーが発生しました:データソース 'emptycollection' がデータを返さなかったため、プロトタイプ インデックスを構築できませんでした" というエラーで停止します。
 
-### <a name="2---start-import-data-wizard"></a>2 - データのインポート ウィザードを開始する
+### <a name="step-2---start-import-data-wizard"></a>ステップ 2 - データのインポート ウィザードを開始する
 
 Azure Cognitive Search サービス ページのコマンド バーから [ウィザードを開始](search-import-data-portal.md)できます。このほか、Cosmos DB SQL API に接続する場合には、Cosmos DB アカウントの左側のナビゲーション ペインにある **[設定]** セクションで **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** をクリックする方法も利用できます。
 
    ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
 
-### <a name="3---set-the-data-source"></a>3 - データ ソースを設定する
+### <a name="step-3---set-the-data-source"></a>ステップ 3 - データ ソースを設定する
 
 **データソース** のページでは、ソースが次のように指定された **Cosmos DB** になっている必要があります。
 
@@ -75,7 +76,7 @@ Azure Cognitive Search サービス ページのコマンド バーから [ウ�
 + **Cosmos DB アカウント** は、次のいずれかの形式にする必要があります。
     1. Cosmos DB からの `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;` の形式のプライマリまたはセカンダリ接続文字列。
         + バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション** は、Azure portal の Cosmos DB アカウントに `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;ApiKind=MongoDb` の形式を使用します
-        + **Gremlin グラフと Cassandra テーブル** の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。
+        + **Cassandra テーブル** の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。
     1.  アカウント キーを含まない `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;(ApiKind=[api-kind];)` の形式のマネージド ID 接続文字列。 この接続文字列形式を使用するには、[マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する](search-howto-managed-identities-cosmos-db.md)ための手順に従います。
 
 + **[Database]** は、アカウントからの既存のデータベースです。 
@@ -86,13 +87,13 @@ Azure Cognitive Search サービス ページのコマンド バーから [ウ�
 
    ![Cosmos DB データ ソースの定義](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB データ ソースの定義")
 
-### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - ウィザードの [コンテンツのエンリッチ] ページをスキップする
+### <a name="step-4---skip-the-enrich-content-page-in-the-wizard"></a>ステップ 4 - ウィザードの [コンテンツのエンリッチ] ページをスキップする
 
-コグニティブ スキル (またはエンリッチメント) の追加は、インポート要件ではありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略してください。
+コグニティブ スキル (またはエンリッチメント) の追加は、インポート要件ではありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略てきます。
 
 手順をスキップするには、ページの下部にある [次へ] と [スキップ] の青いボタンをクリックします。
 
-### <a name="5---set-index-attributes"></a>5 - インデックスの属性を設定する
+### <a name="step-5---set-index-attributes"></a>ステップ 5 - インデックスの属性を設定する
 
 **[インデックス]** ページには、フィールドとデータ型およびインデックスの属性を設定するための一連のチェック ボックスが一覧表示されます。 このウィザードで、メタデータに基づいてソース データをサンプリングすることで、フィールドの一覧を生成できます。 
 
@@ -104,7 +105,7 @@ Azure Cognitive Search サービス ページのコマンド バーから [ウ�
 
    ![Cosmos DB インデックスの定義](media/search-howto-index-cosmosdb/cosmosdb-index-schema.png "Cosmos DB インデックスの定義")
 
-### <a name="6---create-indexer"></a>6 - インデクサーを作成する
+### <a name="step-6---create-indexer"></a>ステップ 6 - インデクサーを作成する
 
 完全に指定すると、ウィザードによって検索サービスに 3 つの異なるオブジェクトが作成されます。 データ ソース オブジェクトとインデックス オブジェクトは、Azure Cognitive Search サービスに名前付きリソースとして保存されます。 最後のステップでは、インデクサー オブジェクトが作成されます。 インデクサーに名前を付けると、インデクサーはスタンドアロン リソースとして存在することができ、同じウィザードのシーケンスで作成されるインデックス オブジェクトやデータ ソース オブジェクトとは独立して、スケジュールを設定したり管理したりできます。
 
@@ -125,21 +126,21 @@ Azure Cognitive Search サービス ページのコマンド バーから [ウ�
 
 ## <a name="use-rest-apis"></a>REST API の使用
 
-REST API を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースを作成し、インデックスを作成して、インデクサーを作成する) で、Azure Cosmos DB データのインデックスを作成できます。 Cosmos DB からのデータ抽出は、インデクサーの作成要求を送信した時点で発生します。 この要求が完了すると、クエリ可能なインデックスが作成されます。 
+REST API を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースを作成し、インデックスを作成して、インデクサーを作成する) で、Azure Cosmos DB データのインデックスを作成できます。 次のプロセスでは、Create Indexer 要求を送信すると、Cosmos DB からのデータ抽出が開始されます。
 
 > [!NOTE]
-> Cosmos DB Gremlin API または Cosmos DB Cassandra API からデータのインデックスを作成するためには、まず[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力し、限定プレビュー機能に対するアクセスを要求する必要があります。 要求が処理されると、[REST API バージョン 2020-06-30-Preview](search-api-preview.md) を使ってデータ ソースを作成する手順の案内が届きます。
+> Cosmos DB Cassandra API からデータのインデックスを作成するためには、まず[こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)に必要事項を入力し、限定プレビュー機能に対するアクセスを要求する必要があります。 要求が処理されると、[REST API バージョン 2020-06-30-Preview](search-api-preview.md) を使ってデータ ソースを作成する手順の案内が届きます。
 
 この記事の前の方で、[Azure Cosmos DB のインデックス作成](../cosmos-db/index-overview.md)と [Azure Cognitive Search のインデックス作成](search-what-is-an-index.md)が異なる操作であると説明しました。 Cosmos DB のインデックス作成では、既定ですべてのドキュメントのインデックスが自動的に作成されます (Cassandra API の場合を除きます)。 インデックスの自動作成を無効にすると、ドキュメント ID を使用したクエリまたは自己リンクでのみドキュメントにアクセスできるようになります。 Azure Cognitive Search のインデックス作成では、Azure Cognitive Search によってインデックスが作成されるコレクションで、Cosmos DB の自動インデックス作成が有効になっている必要があります。 Cosmos DB Cassandra API インデクサーのプレビューにサインアップした場合には、Cosmos DB のインデックス作成の設定手順に関する案内が届きます。
 
 > [!WARNING]
 > Azure Cosmos DB とは、次世代の DocumentDB です。 以前の API バージョン **2017-11-11** では、`documentdb` 構文を使用できました。 つまり、データ ソースの種類を `cosmosdb` または `documentdb` として指定することができました。 API バージョン **2019-05-06** 以降では、この記事で説明するように、Azure Cognitive Search API とポータルの両方で `cosmosdb` 構文のみがサポートされるようになりました。 つまり、Cosmos DB エンドポイントに接続する場合場合、データ ソースの種類は `cosmosdb` でなければなりません。
 
-### <a name="1---assemble-inputs-for-the-request"></a>1 - 要求に対する入力をアセンブルする
+### <a name="step-1---assemble-inputs-for-the-request"></a>ステップ 1 - 要求に対する入力をアセンブルする
 
 要求ごとに、Azure Cognitive Search サービス名と管理者キーを (POST ヘッダーに) 指定し、BLOB ストレージのストレージ アカウント名とキーを指定する必要があります。 [Postman](search-get-started-rest.md) または [Visual Studio Code](search-get-started-vs-code.md) を使用して、Azure Cognitive Search に HTTP 要求を送信できます。
 
-次の 4 つの値をメモ帳にコピーして、要求に貼り付けることができるようにします。
+要求で使用する次の 3 つの値をコピーします。
 
 + Azure Cognitive Search サービス名
 + Azure Cognitive Search の管理者キー
@@ -149,11 +150,11 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 
 1. Azure Cognitive Search のポータル ページで、[概要] ページから Search サービスの URL をコピーします。
 
-2. 左側のナビゲーション ウィンドウで **[キー]** をクリックし、プライマリまたはセカンダリのいずれかのキー (どちらも働きは同じです) をコピーします。
+2. 左側のナビゲーション ウィンドウで **[キー]** をクリックし、プライマリまたはセカンダリのいずれかのキーをコピーします。
 
 3. Cosmos ストレージ アカウントのポータル ページに切り替えます。 左側のナビゲーション ウィンドウで、 **[設定]** の **[キー]** をクリックします。 このページには、1 つの URI、2 組の接続文字列、および 2 組のキーが表示されます。 接続文字列のいずれかをメモ帳にコピーします。
 
-### <a name="2---create-a-data-source"></a>2 - データ ソースを作成する
+### <a name="step-2---create-a-data-source"></a>ステップ 2 - データ ソースを作成する
 
 **データ ソース** は、インデックスを作成するデータ、資格情報、およびデータの変更を識別するためのポリシー (コレクション内の変更または削除されたドキュメントなど) を指定します。 データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
 
@@ -185,8 +186,8 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 |---------|-------------|
 | **name** | 必須。 データ ソース オブジェクトを表す名前を選択します。 |
 |**type**| 必須。 `cosmosdb`である必要があります。 |
-|**credentials** | 必須。 Cosmos DB 接続文字列形式またはマネージド ID 接続文字列形式のいずれかに従う必要があります。<br/><br/>**SQL コレクション** の場合、接続文字列は次のいずれかの形式に従います。 <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<li>アカウント キーを含まない `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;` の形式のマネージド ID 接続文字列。 この接続文字列形式を使用するには、[マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する](search-howto-managed-identities-cosmos-db.md)ための手順に従います。<br/><br/>バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション** は、接続文字列に次のいずれかの形式を使用します。 <li>`AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<li>アカウント キーを含まない `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.DocumentDB/databaseAccounts/<your cosmos db account name>/;ApiKind=MongoDb;` の形式のマネージド ID 接続文字列。 この接続文字列形式を使用するには、[マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する](search-howto-managed-identities-cosmos-db.md)ための手順に従います。<br/><br/>**Gremlin グラフと Cassandra テーブル** の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/><br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Cognitive Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
-| **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
+|**credentials** | 必須。 Cosmos DB の接続文字列でなければなりません。<br/><br/>**SQL コレクション** の接続文字列の形式は次のとおりです: `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>バージョン 3.2 およびバージョン 3.6 の場合、**MongoDB コレクション** は、接続文字列に `AccountEndpoint=https://<Cosmos DB account name>.documents.azure.com;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb` の形式を使用します<br/><br/>**Cassandra テーブル** の場合には、[インデクサーの限定プレビュー](https://aka.ms/azure-cognitive-search/indexer-preview)にサインアップして、プレビュー機能に対するアクセス権と、資格情報の形式に関する情報を入手してください。<br/><br/>エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Cognitive Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。|
+| **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API および Cassandra API では現在、クエリがサポートされていません。 |
 | **dataChangeDetectionPolicy** | 推奨。 「[変更されたドキュメントのインデックス作成](#DataChangeDetectionPolicy)」セクションを参照してください。|
 |**dataDeletionDetectionPolicy** | 省略可能。 「[削除されたドキュメントのインデックス作成](#DataDeletionDetectionPolicy)」セクションを参照してください。|
 
@@ -194,7 +195,7 @@ REST API を使用して、Azure Cognitive Search のすべてのインデクサ
 SQL クエリを指定すると、ネストされたプロパティや配列のフラット化、JSON プロパティのプロジェクション、インデックスを作成するデータのフィルター処理を行うことができます。 
 
 > [!WARNING]
-> **MongoDB API**、**Gremlin API**、**Cassandra API** については、カスタム クエリがサポートされていません。`container.query` パラメーターは null を設定するか、省略する必要があります。 カスタム クエリを使用する必要がある場合は、[ユーザーの声](https://feedback.azure.com/forums/263029-azure-search) Web サイトでお知らせください。
+> **MongoDB API** および **Cassandra API** については、カスタム クエリがサポートされていません。`container.query` パラメーターは null を設定するか、省略する必要があります。 カスタム クエリを使用する必要がある場合は、[ユーザーの声](https://feedback.azure.com/forums/263029-azure-search) Web サイトでお知らせください。
 
 ドキュメントのサンプル:
 
@@ -234,7 +235,7 @@ SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts"
 SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
 ```
 
-### <a name="3---create-a-target-search-index"></a>3 - ターゲット検索インデックスを作成する 
+### <a name="step-3---create-a-target-search-index"></a>ステップ 3 - ターゲット検索インデックスを作成する 
 
 まだない場合は、[ターゲットの Azure Cognitive Search インデックスを作成](/rest/api/searchservice/create-index)します。 次の例では、ID と説明のフィールドを持つインデックスを作成します。
 
@@ -254,6 +255,7 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
          "name": "description",
          "type": "Edm.String",
          "filterable": false,
+         "searchable": true,
          "sortable": false,
          "facetable": false,
          "suggestions": true
@@ -280,7 +282,7 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 | GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
 | その他の JSON オブジェクト |該当なし |
 
-### <a name="4---configure-and-run-the-indexer"></a>4 - インデクサーを構成して実行する
+### <a name="step-4---configure-and-run-the-indexer"></a>ステップ 4 - インデクサーを構成して実行する
 
 インデックスとデータ ソースを作成したら、インデクサーを作成できます。
 

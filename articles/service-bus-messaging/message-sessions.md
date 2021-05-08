@@ -3,12 +3,12 @@ title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
 ms.topic: article
 ms.date: 04/19/2021
-ms.openlocfilehash: e22dfb2aa7372a227f70fd2bfa8f72d2161cda17
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f3b6eae7b7f4d609df5067187595230aa6b86dba
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750754"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987166"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
 Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および **要求 - 応答** のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
@@ -85,15 +85,15 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [Java 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [.NET 用の Azure.Messaging.ServiceBus サンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET 用の Microsoft.Azure.ServiceBus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java 用の azure-servicebus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
 
 [1]: ./media/message-sessions/sessions.png
 

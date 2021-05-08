@@ -7,12 +7,12 @@ ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 5730b0c7e522f7496f578ffebf716957fcaa56b0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9056dd0be8e84fdff6934b2aecbd4a553f540811
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788934"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331578"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>継続的インテグレーションおよびデリバリーの自動発行
 
@@ -120,7 +120,7 @@ npm パッケージはさまざまな方法で使用できますが、主な利�
             "build":"node node_modules/@microsoft/azure-data-factory-utilities/lib/index"
         },
         "dependencies":{
-            "@microsoft/azure-data-factory-utilities":"^0.1.3"
+            "@microsoft/azure-data-factory-utilities":"^0.1.5"
         }
     } 
     ```

@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: a6225fec30a87ca0bbe57e414733bc21489f87ad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0aee0030937a6e11860907e27b775c2671137f71
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577446"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331108"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux 用 OpenSSL の構成
 
@@ -53,7 +54,7 @@ export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
 
 ## <a name="certificate-revocation-checks"></a>証明書失効の確認
-Speech SDK は、Speech Service に接続するときに、Speech Service で使用される TLS 証明書が失効していないことを確認します。 この確認を行うため、Speech SDK は Azure で使用される証明機関の CRL 配布ポイントにアクセスする必要があります。 可能性がある CRL のダウンロード場所の一覧については、[このドキュメント](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)を参照してください。 証明書が失効しているか、CRL をダウンロードできない場合、Speech SDK は接続を中止し、Canceled イベントを発生させます。
+Speech SDK は、Speech Service に接続するときに、Speech Service で使用される TLS 証明書が失効していないことを確認します。 この確認を行うため、Speech SDK は Azure で使用される証明機関の CRL 配布ポイントにアクセスする必要があります。 可能性がある CRL のダウンロード場所の一覧については、[このドキュメント](../../security/fundamentals/tls-certificate-changes.md)を参照してください。 証明書が失効しているか、CRL をダウンロードできない場合、Speech SDK は接続を中止し、Canceled イベントを発生させます。
 
 Speech SDK が使用されているネットワークが CRL のダウンロード場所へのアクセスを許可しない方法で構成されている場合は、CRL チェックを無効にするか、CRL を取得できない場合は失敗ではないように設定できます。 この構成は、認識エンジン オブジェクトの作成に使用される構成オブジェクトを介して行われます。
 

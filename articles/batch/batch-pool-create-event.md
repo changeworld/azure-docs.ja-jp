@@ -3,18 +3,18 @@ title: Azure Batch プール作成イベント
 description: プールが作成されると生成される Batch プール作成イベントのリファレンスです。 ログの内容はプールに関する一般的な情報です。
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e75b56a6fd5de5fd17107c3960004e0edb1b799
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97609005"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988264"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
  プールが作成されるとイベントが生成されます。 ログの内容はプールに関する一般的な情報です。 プールのターゲット サイズがコンピューティング ノード 0 を上回る場合、イベントの直後にプール サイズ変更イベントが開始されます。
 
- 次の例は、`CloudServiceConfiguration` プロパティを使用して作成されたプールのプール作成イベントの本文を示しています。
+ 次の例は、プール作成イベントの本文を示しています。
 
 ```
 {
@@ -49,13 +49,13 @@ ms.locfileid: "97609005"
 }
 ```
 
-|要素|Type|Notes|
+|要素|Type|メモ|
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`displayName`|String|プールの表示名。|
 |`vmSize`|String|プール内の仮想マシンのサイズ。 プール内の仮想マシンのサイズはすべて同じです。 <br/><br/> クラウド サービスのプール (cloudServiceConfiguration で作成されたプール) で利用可能な仮想マシンのサイズについては、[クラウド サービスのサイズ](../cloud-services/cloud-services-sizes-specs.md)を参照してください。 Batch は、`ExtraSmall` を除くすべての Cloud Services VM サイズに対応しています。<br/><br/> Virtual Machines Marketplace から、イメージを使用して利用可能なプール (virtualMachineConfiguration で作成されたプール) の VM サイズについては、[仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) または[仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。|
 |`imageType`|String|イメージの配置方法。 サポートされる値は `virtualMachineConfiguration` または `cloudServiceConfiguration` です。|
-|[`cloudServiceConfiguration`](#bk_csconf)|複合型|プールのクラウドサービス構成。|
+|[`cloudServiceConfiguration`](#bk_csconf)|複合型|プールのクラウド サービス構成。|
 |[`virtualMachineConfiguration`](#bk_vmconf)|複合型|プールの仮想マシン構成。|
 |[`networkConfiguration`](#bk_netconf)|複合型|プールのネットワーク構成。|
 |`resizeTimeout`|Time|最終のサイズ変更時に指定されたプールに対するコンピューティング ノードのタイムアウト割り当て。  (プール作成時の初回サイズ設定もサイズ変更とカウントされます。)|
@@ -69,7 +69,10 @@ ms.locfileid: "97609005"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
-|要素名|Type|Notes|
+> [!WARNING]
+> Cloud Services 構成プールは[非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)とされます。 代わりに、仮想マシン構成プールを使用してください。
+
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |`osFamily`|String|プール内の仮想マシンにインストールする Azure ゲスト OS ファミリ。<br /><br /> 次のいずれかの値になります。<br /><br /> **2** – OS ファミリ 2、Windows Server 2008 R2 SP1 に相当。<br /><br /> **3** – OS ファミリ 3、Windows Server 2012 に相当。<br /><br /> **4** – OS ファミリ 4、Windows Server 2012 R2 に相当。<br /><br /> 詳細については、[Azure ゲスト OS リリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)を参照してください。|
 |`targetOSVersion`|String|プール内の仮想マシンにインストールされる Azure ゲスト OS バージョン。<br /><br /> 既定値は **\*** で、規定ファミリの最新オペレーティング システムのバージョンを指定します。<br /><br /> その他の許可値については、[Azure ゲスト OS リリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)を参照してください。|
@@ -84,7 +87,7 @@ ms.locfileid: "97609005"
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a>imageReference
 
-|要素名|Type|Notes|
+|要素名|Type|メモ|
 |------------------|----------|-----------|
 |`publisher`|String|イメージの発行元。|
 |`offer`|String|イメージのプラン。|
@@ -99,6 +102,6 @@ ms.locfileid: "97609005"
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a>NetworkConfiguration
 
-|要素名|Type|Notes|
+|要素名|Type|メモ|
 |------------------|--------------|----------|
 |`subnetId`|String|プールのコンピューティング ノードが作成される、サブネットのリソース識別子を指定します。|

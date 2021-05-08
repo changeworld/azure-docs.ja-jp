@@ -3,7 +3,7 @@ title: Azure Active Directory アクセス レビューのデプロイの計画
 description: アクセス レビューのデプロイを成功させるための計画ガイド
 services: active-directory
 documentationCenter: ''
-author: BarbaraSelden
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
-ms.author: barclayn
+ms.date: 04/16/2021
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af783d7ff8be36c63af871ab4f2d214ca9f9405
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: e17fe0c0ca5f1399c78def37ea7640ba8dfa395e
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532585"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988228"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -71,9 +71,12 @@ ms.locfileid: "107532585"
 
 * [How to create Access Reviews in Azure AD](https://youtu.be/6KB3TZ8Wi40) (Azure AD でアクセス レビューを作成する方法)
 
+* [How to create automatic Access Reviews for all guest users with access to Microsoft 365 groups in Azure AD](https://www.youtube.com/watch?v=3D2_YW2DwQ8) (Azure AD の Microsoft 365 グループへのアクセス権を持つすべてのゲスト ユーザーに対して自動アクセス レビューを作成する方法)
+
 * [How to enable Access Reviews in Azure AD](https://youtu.be/X1SL2uubx9M) (Azure AD でアクセス レビューを有効にする方法)
 
 * [How to review access using My Access](https://youtu.be/tIKdQhdHLXU) (マイ アクセスを使ってアクセスをレビューする方法)
+
 
 ### <a name="licenses"></a>ライセンス
 
@@ -136,17 +139,13 @@ ms.locfileid: "107532585"
 
 #### <a name="customize-email-communication"></a>メールによるコミュニケーションのカスタマイズ
 
-レビューをスケジュールするときは、このレビューを実行するユーザーを指名します。 これらのレビュー担当者は、新しいレビューが割り当てられたことの通知と、割り当てられたレビューの期限が切れる前のリマインダーをメールで受け取ります。
-
-管理者は、レビューが期限切れになるまでの中間点で、または期限切れの 1 日前にこの通知を送信するよう選択できます。 
+レビューをスケジュールするときは、このレビューを実行するユーザーを指名します。 これらのレビュー担当者は、新しいレビューが割り当てられたことの通知と、割り当てられたレビューの期限が切れる前のリマインダーをメールで受け取ります。 
 
 レビュー担当者に送信するメールをカスタマイズし、レビューへの対応を促すカスタムの短いメッセージを含めることができます。 追加のテキストは、次のように使用することを推奨します。
 
 * コンプライアンスまたは IT 部門が差出人であることがわかるよう、レビュー担当者宛ての個人的なメッセージを含めます。
 
-* レビューの期待内容に関する内部情報へのハイパーリンクまたは参照と、追加の参考資料またはトレーニング資料を含めます。
-
-* [アクセスの自己レビューを実行する方法](review-your-access.md)の説明へのリンクを含めます。 
+* レビューで何を見てもらいたいかという関係者内部の情報を提供し、追加的な参考文献または教材を紹介する。
 
   ![レビュー担当者のメール](./media/deploy-access-review/2-plan-reviewer-email.png)
 
@@ -197,7 +196,6 @@ ms.locfileid: "107532585"
 | Azure の特権ロール (リソース)| グローバル管理者<p>ユーザー管理者<p>リソースの所有者| 作成者 |
 | アクセス パッケージ| グローバル管理者<p>アクセス パッケージの作成者| 全体管理者のみ |
 
-
 詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>リソースへのアクセスをレビューするのは誰か?
@@ -209,6 +207,8 @@ ms.locfileid: "107532585"
 * アクセス レビューの管理者によって個別に選択された委任のセット。
 
 * 継続的なアクセスの必要性を各自で自己証明するエンド ユーザー。
+
+* マネージャーは、直属の部下によるリソースへのアクセスをレビューします。 
 
 アクセス レビューを作成するとき、管理者は 1 人以上のレビュー担当者を選択できます。 すべてのレビュー担当者が、レビューを開始および実行し、リソースに継続的にアクセスするユーザーを選択または削除することができます。 
 
@@ -238,7 +238,6 @@ ms.locfileid: "107532585"
 
 * 実行されたアクションに基づいてどのような通知を送信するか?
 
-
 **アクセス レビュー計画の例**
 
 | コンポーネント| 値 |
@@ -246,14 +245,10 @@ ms.locfileid: "107532585"
 | **レビューするリソース**| Microsoft Dynamics へのアクセス |
 | **レビュー頻度**| 月 1 回 |
 | **レビュー実行者**| Dynamics ビジネス グループのプログラム マネージャー |
-| **通知**| レビューの 24 時間前にエイリアス Dynamics-Pms にメールを送信<p>レビュー担当者の確実な対応を促すカスタム メッセージを含める |
+| **通知**| レビュー開始時に、エイリアス Dynamics プログラム マネージャーへ送信されるメール<p>レビュー担当者の確実な対応を促すカスタム メッセージを含める |
 | **タイムライン**| 通知から 48 時間 |
 |**自動アクション**| セキュリティ グループ dynamics-access からユーザーを削除することにより、90 日以内に対話形式のサインインがないアカウントからアクセスを削除。 <p>*期限内にレビューが行われなかった場合、上記のアクションを実行。* |
 | **手動アクション**| レビュー担当者は必要に応じて、自動アクションの前に削除の承認を実行可能。 |
-| **通信**| 削除される内部 (メンバー) ユーザーには、削除の理由とアクセス権の復元方法を説明するメールを送信。 |
-
-
- 
 
 ### <a name="automate-actions-based-on-access-reviews"></a>アクセス レビューに基づくアクションの自動化
 
@@ -318,6 +313,8 @@ ms.locfileid: "107532585"
 
 * グループのメンバー (自己証明)
 
+* マネージャーは直属の部下によるアクセスをレビューします 
+
 ### <a name="group-ownership"></a>グループ所有権
 
 メンバーシップのレビューは、アクセスが必要なユーザーを最もよく知る立場にあるグループの所有者が行うことを推奨します。 グループの所有権は、グループの種類によって異なります。
@@ -335,19 +332,11 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 ### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>条件付きアクセス ポリシーの除外グループのメンバーシップをレビューする 
 
-ネットワークを安全な状態に維持するように設計された条件付きアクセス ポリシーをすべてのユーザーに適用すべきでない場合があります。 たとえば、ユーザーが企業ネットワーク上にいる場合にのみサインインできるようにする条件付きアクセス ポリシーを、出張の多い営業チームに適用することはできません。 その場合は、営業チームのメンバーを別のグループに配置し、そのグループを条件付きアクセス ポリシーから除外します。 
+「[Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する](conditional-access-exclusion.md)」で、除外グループのメンバーシップをレビューする方法を説明しています。
 
-除外するのが妥当でないメンバーが要件から除外される潜在的なリスクがあるため、このようなグループ メンバーシップを定期的にレビューしてください。
+### <a name="review-guest-users-group-memberships"></a>ゲスト ユーザーのグループ メンバーシップをレビューする
 
-[Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する](conditional-access-exclusion.md)ことができます。
-
-### <a name="review-external-users-group-memberships"></a>外部ユーザーのグループ メンバーシップのレビュー
-
-手動操作とそれに伴うミスの可能性を最小化するために、[動的グループ](../enterprise-users/groups-create-rule.md)を使用し、ユーザーの属性に基づいてグループ メンバーシップを割り当てることを検討してください。 外部ユーザー用に 1 つ以上の動的グループを作成できます。 内部のスポンサーが、グループのメンバーシップのレビュー担当者を務めることができます。 
-
-注:アクセス レビューの結果としてグループから削除された外部ユーザーは、テナントから削除されません。 
-
-手動またはスクリプトによってテナントから削除できます。
+「[Azure AD のアクセス レビューによるゲスト アクセスの管理](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)」でゲスト ユーザーのグループ メンバーシップをレビューする方法を説明しています。
 
 ### <a name="review-access-to-on-premises-groups"></a>オンプレミス グループへのアクセスのレビュー
 
@@ -405,7 +394,7 @@ Azure AD ポータルで手動で、または Microsoft Graph 経由でスクリ
 
 * すべての Microsoft 365 と Dynamics のサービス管理ロール
 
-ここで選択するロールには、永続的なロールと資格のあるロールが含まれます。 
+レビューするロールには、永続的および臨時に割り当てたものが含まれます。 
 
 [レビュー担当者] セクションで、全ユーザーをレビューする担当者 (複数可) を選びます。 メンバー自身にそのアクセス権をレビューしてもらうことができます。
 
@@ -425,7 +414,6 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 | [アクセス レビューの実行](entitlement-management-access-reviews-review-access.md)| アクセス パッケージに割り当てられている他のユーザーのアクセス レビューを実行します。 |
 | [割り当てられたアクセス パッケージを自己レビューする](entitlement-management-access-reviews-self-review.md)| 割り当てられたアクセス パッケージの自己レビュー |
 
-
 > [!NOTE]
 > 自己レビューを行い、アクセスが不要になったと申告したエンド ユーザーは、すぐにアクセス パッケージから削除されるわけではありません。 レビューが終了するか、管理者がレビューを停止すると、アクセス パッケージから削除されます。
 
@@ -440,7 +428,6 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 | [アクセスの自己レビュー](review-your-access.md)| グループまたはアプリケーションに対する自身のアクセス権をメンバーがレビューします |
 | [アクセス レビューを完了する](complete-access-review.md)| アクセス レビューを表示して結果を適用します |
 | [オンプレミスのグループに対してアクションを実行する](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)| オンプレミス グループのアクセス レビューに対して動作するサンプル PowerShell スクリプト。 |
-
 
 ### <a name="review-azure-ad-roles"></a>Azure AD ロールのレビュー
 

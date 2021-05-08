@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 04/23/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 830119a5b3a7781e8b12e3d4df870f539a2cd63a
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 88a6d054f64201bec04ee18f492f7ba69c3cc810
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364908"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987598"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -178,7 +178,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>PowerShell を使用して Azure AD で直接フェデレーションを構成するには
 
-1. 最新バージョンの Azure AD PowerShell for Graph モジュールをインストールします ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。 (詳細な手順が必要な場合は、ゲスト ユーザー追加のクイックスタートに、「[最新の AzureADPreview モジュールをインストールする](b2b-quickstart-invite-powershell.md#install-the-latest-azureadpreview-module)」セクションがあります。) 
+1. 最新バージョンの Azure AD PowerShell for Graph モジュールをインストールします ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。 (詳細な手順が必要な場合は、[PowerShell モジュール](b2b-quickstart-invite-powershell.md#prerequisites)のガイダンスがクイックスタートに含まれています。)
 2. 次のコマンドを実行します。 
    ```powershell
    Connect-AzureAD

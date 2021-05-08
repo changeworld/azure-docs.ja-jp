@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: f06c1a055b2f08259bf5318afe3c969d763bbbd3
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 35ef2ea3f03ca86aea34f736de4317d75a44ae59
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818622"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330514"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -37,9 +37,6 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 > [!NOTE]
 > 以下の一覧でサポートされるようになっているシナリオが、ユーザー インターフェイスに表示されない場合は、追加情報について [Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) エイリアスにお問い合わせください。
-
-> [!IMPORTANT]
-> Azure Database Migration Service で現在サポートされているプライベート プレビューのすべてのシナリオを確認するには、[DMS プレビュー サイト](https://aka.ms/dms-preview)を参照してください。
 
 ### <a name="offline-one-time-migration-support"></a>オフライン (1 回限り) の移行のサポート
 
