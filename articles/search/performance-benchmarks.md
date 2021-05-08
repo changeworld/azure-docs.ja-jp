@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 9f4473d6c8a584bf60e5c8fe2d69d6a56a55e71d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5f7617fdfea68c8005c8a33ec782edc2bbe01f4b
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107956"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930779"
 ---
 # <a name="azure-cognitive-search-performance-benchmarks"></a>Azure Cognitive Search のパフォーマンス ベンチマーク
 
@@ -182,6 +182,24 @@ Azure Cognitive Search のパフォーマンスにベンチマークを設定す
 | 20%  | 45 ms  | 31 ms  | 55 ミリ秒   | 73 ミリ秒 | 84 ms | 109 ms |
 | 50%  | 63 ms  | 39 ms  | 81 ms   | 106 ミリ秒 | 123 ms | 163 ms |
 | 80%  | 115 ms  | 73 ミリ秒  | 145 ms   | 191 ms | 224 ms | 291 ms |
+
+### <a name="s3-performance"></a>S3 のパフォーマンス
+
+#### <a name="queries-per-second"></a>秒間クエリ
+
+次のグラフは、サービスが長時間にわたって処理できる最高のクエリ負荷を、1 秒あたりのクエリ数 (QPS) で示しています。
+
+![最も保守がしやすい QPS ドキュメント検索 S3](./media/performance-benchmarks/s3-docsearch-qps.png)
+
+#### <a name="query-latency"></a>クエリの待機時間
+
+クエリの待機時間は、サービスの負荷によって異なり、高い負荷の下にあるサービスでは、クエリの平均待機時間が長くなります。 次の表は、3 つの異なる使用レベルのクエリ待機時間の 25、50、75、90、95、99 番目のパーセンタイルを示しています。
+
+| 最大 QPS の割合  | 平均待機時間 | 25% | 75% | 90% | 95% | 99%|
+|---|---|---|---| --- | --- | --- |
+| 20%  | 43 ms  | 29 ms  | 53 ms   | 74 ミリ秒 | 86 ms | 111 ms |
+| 50%  | 65 ms  | 37 ms  | 85 ms   | 111 ms | 128 ms | 164 ms |
+| 80%  | 126 ms  | 83 ms  | 162 ms   | 205 ms | 233 ms | 281 ms |
 
 ## <a name="takeaways"></a>重要なポイント
 

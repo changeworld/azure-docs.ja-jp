@@ -3,18 +3,18 @@ title: Azure IoT Hub Device Provisioning Service - 対称キーの構成証明
 description: この記事では、IoT Device Provisioning Service (DPS) を使用する対称キーの構成証明の概念について概説します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 994c2c3124d6822f047af942268ad7a401d5a976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0455fe634b44465b4b16d48145fcf51f733f121d
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90531561"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929365"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
@@ -74,7 +74,73 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 
 「[対称キーを使用してレガシ デバイスをプロビジョニングする方法](how-to-legacy-device-symm-key.md)」では、この正確な例が使用されています。
 
-デバイスの登録 ID を定義した後は、登録グループの対称キーを使用して、登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ハッシュを計算し、派生デバイス キーを生成します。 登録 ID のハッシュは、次の C# コードを使用して実行できます。
+デバイスの登録 ID を定義した後は、登録グループの対称キーを使用して、登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ハッシュを計算し、派生デバイス キーを生成します。 次のタブでは、派生デバイス キーを計算する方法の例を示しています。  
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI 用の IoT 拡張機能には、派生デバイス キーを生成するための [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) コマンドが用意されています。 このコマンドは、PowerShell または Bash シェルの Windows ベースまたは Linux システムから使用できます。
+
+`--key` 引数の値を、登録グループの **主キー** に置き換えます。
+
+`--registration-id` 引数の値を登録 ID に置き換えます。
+
+```azurecli
+az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+結果の例:
+
+```azurecli
+"Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc="
+```
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
+
+**KEY** 引数の値を、登録グループの **主キー** に置き換えます。
+
+**REG_ID** の値を登録 ID に置き換えます。
+
+```powershell
+$KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
+$REG_ID='sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6'
+
+$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+$hmacsha256.key = [Convert]::FromBase64String($KEY)
+$sig = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID))
+$derivedkey = [Convert]::ToBase64String($sig)
+echo "`n$derivedkey`n"
+```
+
+```powershell
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
+
+**KEY** 引数の値を、登録グループの **主キー** に置き換えます。
+
+**REG_ID** の値を登録 ID に置き換えます。
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+# <a name="csharp"></a>[csharp](#tab/csharp)
+
+登録 ID のハッシュは、次の C# コードを使用して実行できます。
 
 ```csharp
 using System; 
@@ -96,6 +162,8 @@ public static class Utils
 ```csharp
 String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(masterKey), registrationId);
 ```
+
+---
 
 その後、結果のデバイス キーを使用して、構成証明に使用する SAS トークンを生成します。 登録グループ内の各デバイスが、一意の派生キーから生成されたセキュリティ トークンを使用して構成証明を行う必要があります。 登録グループの対称キーを構成証明書に直接使用することはできません。
 

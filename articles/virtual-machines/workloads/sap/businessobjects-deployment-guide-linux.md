@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: b16a2d9f779232e59eb883f6a254be22990f5c78
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: faaed05a52708ed1c2563e6476a1e86faa02dcf7
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520022"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946784"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
-この記事では、Azure 上に Linux 向け SAP BOBI プラットフォームをデプロイする戦略について説明します。 この例には、Premium SSD マネージド ディスクをインストール ディレクトリとする 2 つの仮想マシンが構成されています。 CMS データベースには Azure Database for MySQL が使用され、ファイル リポジトリ サーバーの Azure NetApp Files は両方のサーバーで共有されます。 既定の Tomcat Java Web アプリケーションと BI プラットフォーム アプリケーションは、両方の仮想マシンに一緒にインストールされます。 ユーザー要求の負荷を分散するために、ネイティブの TLS/SSL オフロード機能を備えた Application Gateway が使用されます。
+この記事では、Azure 上に Linux 向け SAP BusinessObjects BI プラットフォームをデプロイする戦略について説明します。 この例には、Premium SSD マネージド ディスクをインストール ディレクトリとする 2 つの仮想マシンが構成されています。 CMS データベースには Azure Database for MySQL が使用され、ファイル リポジトリ サーバーの Azure NetApp Files は両方のサーバーで共有されます。 既定の Tomcat Java Web アプリケーションと BI プラットフォーム アプリケーションは、両方の仮想マシンに一緒にインストールされます。 ユーザー要求の負荷を分散するために、ネイティブの TLS/SSL オフロード機能を備えた Application Gateway が使用されます。
 
 この種類のアーキテクチャは、小規模なデプロイまたは非運用環境で効果的です。 運用環境または大規模なデプロイの場合は、Web アプリケーション用に個別のホストを使用できます。また、複数の BOBI アプリケーション ホストを使用して、サーバーでより多くの情報を処理できるようにすることもできます。
 
@@ -288,17 +288,33 @@ Azure portal にサインインし、こちらの [Azure Database for MySQL の�
 
 6. Azure Database for MySQL のバックアップは、既定ではローカル冗長です。そのため、geo 冗長ストレージにサーバーのバックアップが必要な場合は、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
 
-> [!NOTE]
-> サーバー作成後に [[バックアップ冗長オプション]](../../../mysql/concepts-backup.md#backup-redundancy-options) を変更することはサポートされていません。
+>[!Important]
+>サーバー作成後に [[バックアップ冗長オプション]](../../../mysql/concepts-backup.md#backup-redundancy-options) を変更することはサポートされていません。
 
-### <a name="configure-connection-security"></a>接続のセキュリティを構成する
+>[!Note]
+>プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for MySQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
-既定では、作成されたサーバーはファイアウォールで保護され、パブリックにアクセスすることはできません。 SAP BI プラットフォーム アプリケーション サーバーが実行されている仮想ネットワークへのアクセスを可能にするには、次の手順に従います。  
+### <a name="configure-private-link"></a>Private Link を構成する
 
-1. Azure portal で対象のサーバー リソースに移動し、そのサーバー リソースの左側のメニューから **[接続のセキュリティ]** を選択します。
-2. **[Azure サービスへのアクセスを許可]** には **[はい]** を選択します。
-3. [VNET ルール] で、 **[既存の仮想ネットワークを追加]** を選択します。 SAP BI プラットフォーム アプリケーション サーバーの仮想ネットワークとサブネットを選択します。 また、[MySQL Workbench](../../../mysql/connect-workbench.md) を Azure Database for MySQL に接続できるジャンプ ボックスまたはその他のサーバーへのアクセスを可能にする必要もあります。 MySQL Workbench を使用して CMS および監査データベースを作成します。
-4. 仮想ネットワークが追加されたら、 **[保存]** を選択します。
+このセクションでは、SAP BOBI 仮想マシンがプライベート エンドポイント経由で Azure database for MySQL サービスに接続できるようにするプライベート リンクを作成します。 Azure Private Link により、プライベート仮想ネットワーク (VNet) 内に Azure サービスが導入されます。
+
+1. 前のセクションで作成した Azure Database for MySQL を選択します。
+2. **[セキュリティ]**  >  **[プライベート エンドポイント接続]** に移動します。
+3. **[プライベート エンドポイント接続]** セクションで、 **[プライベート エンドポイント]** を選択します。
+4. **[サブスクリプション]** 、 **[リソース グループ]** 、 **[場所]** を選択します。
+5. プライベート エンドポイントの **[名前]** を入力します。
+6. **[リソース]** セクションで、以下の選択を行います。
+   - [リソースの種類] - Microsoft.DBforMySQL/servers
+   - [リソース] - 前のセクションで作成した MySQL データベース
+   - [対象サブリソース] - mysqlServer。
+7. **[ネットワーク]** セクションで、SAP BusinessObjects BI アプリケーションをデプロイする **[仮想ネットワーク]** と **[サブネット]** を選択します。
+   >[!NOTE]
+   >サブネットで有効なネットワーク セキュリティ グループ (NSG) がある場合、それはこのサブネットのプライベート エンドポイントに対してのみ無効になります。 このサブネット上の他のリソースには引き続き NSG が強制されます。
+8. **[プライベート DNS ゾーンと統合する]** は、**既定値 (はい)** をそのまま使用します。
+9.  ドロップダウンからお使いの **プライベート DNS ゾーン** を選択します。
+10. **[確認と作成]** を選択して、プライベート エンドポイントを作成します。
+
+詳細については、「[Azure Database for MySQL 用の Private Link](../../../mysql/concepts-data-access-security-private-link.md)」を参照してください
 
 ### <a name="create-cms-and-audit-database"></a>CMS および監査データベースの作成
 
@@ -317,7 +333,7 @@ Azure portal にサインインし、こちらの [Azure Database for MySQL の�
    # auditbl1 is the database name of Audit database. You can provide the name you want for CMS database.
    CREATE SCHEMA `auditbl1` DEFAULT CHARACTER SET utf8;
    ```
-   
+
 4. スキーマに接続するためのユーザー アカウントを作成します。
 
    ```sql
@@ -398,9 +414,9 @@ SAP BOBI アプリケーション サーバーからデータベースへのア�
 
 **[A]** :この手順はすべてのホストに適用されます。
 
-1. **[A]** Linux のフレーバー (SLES または RHEL) に基づいて、カーネル パラメーターを設定し、必要なライブラリをインストールする必要があります。 「[Business Intelligence プラットフォーム インストール ガイド (UNIX)](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US)」の「**システム要件**」のセクションを参照してください。
+1. **[A]** Linux のフレーバー (SLES または RHEL) に基づいて、カーネル パラメーターを設定し、必要なライブラリをインストールする必要があります。 「[Business Intelligence プラットフォーム インストール ガイド (UNIX)](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3)」の「**システム要件**」のセクションを参照してください。
 
-2. **[A]** コンピューターのタイム ゾーンが確実に正しく設定されているようにします。 インストール ガイドの[「追加の UNIX および Linux 要件」のセクション](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html)を参照してください。
+2. **[A]** コンピューターのタイム ゾーンが確実に正しく設定されているようにします。 インストール ガイドの[「追加の UNIX および Linux 要件」のセクション](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/46b143336e041014910aba7db0e91070.html)を参照してください。
 
 3. **[A]** ソフトウェアのバックグラウンド プロセスを実行できるユーザー アカウント (**bl1** adm) とグループ (sap sys) を作成します。 このアカウントを使用してインストールを実行し、ソフトウェアを実行します。 このアカウントにルート特権は必要ありません。
 
@@ -502,6 +518,24 @@ select version();
 
 ## <a name="post-installation"></a>インストール後
 
+SAP BOBI プラットフォームの複数インスタンスのインストール後に、アプリケーションの高可用性をサポートするには、追加の構成後手順を行う必要があります。
+
+### <a name="configuring-cluster-name"></a>クラスター名の構成
+
+SAP BOBI プラットフォームの複数インスタンスのデプロイでは、1 つのクラスターで複数の CMS サーバーを一緒に実行します。 1 つのクラスターは、共通の CMS システム データベースに対して連携する 2 つ以上の CMS サーバーで構成されます。 CMS で実行されているノードで障害が発生した場合、別の CMS があるノードで BI プラットフォームの要求の処理が続けられます。 SAP BOBI プラットフォームの既定の設定では、クラスター名に、インストールした最初の CMS のホスト名が反映されます。
+
+Linux でクラスター名を構成するには、「[SAP Business Intelligence プラットフォーム管理者ガイド](https://help.sap.com/viewer/2e167338c1b24da9b2a94e68efd79c42/4.3)」に記載されている手順に従います。 クラスター名を構成した後、SAP Note [1660440](https://launchpad.support.sap.com/#/notes/1660440) に従って、CMC または BI ラウンチパッドのサインイン ページで既定のシステム エントリを設定します。
+
+### <a name="configure-input-and-output-filestore-location-to-azure-netapp-files"></a>Azure NetApp Files に対する入力と出力の Filestore の場所を構成する
+
+Filestore とは、実際の SAP BusinessObjects ファイルが存在するディスク ディレクトリのことです。 SAP BOBI プラットフォーム用のファイル リポジトリ サーバーの既定の場所は、ローカル インストール ディレクトリ内にあります。 複数インスタンスのデプロイでは、すべてのストレージ層サーバーからアクセスできるように、Azure NetApp Files などの共有ストレージに Filestore を設定することが重要です。
+
+1. 作成されていない場合は、前のセクション「**Azure NetApp Files のプロビジョニング**」で説明されている手順に従って、Azure NetApp Files に NFS ボリュームを作成します。
+
+2. 前のセクション「**Azure NetApp Files ボリュームのマウント**」で説明されているように、NFS ボリュームをマウントします
+
+3. SAP Note [2512660](https://launchpad.support.sap.com/#/notes/0002512660) に従って、ファイル リポジトリ (入力と出力) のパスを変更します。
+
 ### <a name="tomcat-clustering---session-replication"></a>Tomcat クラスタリング - セッション レプリケーション
 
 Tomcat を使用すると、セッション レプリケーションとフェールオーバーのために、2 つ以上のアプリケーション サーバーのクラスタリングがサポートされます。 SAP BOBI プラットフォーム セッションはシリアル化されています。アプリケーション サーバーで障害が発生した場合でも、Tomcat の別のインスタンスへのユーザー セッションのシームレスなフェールオーバーが可能です。
@@ -514,31 +548,40 @@ SAP ノート [2808640](https://launchpad.support.sap.com/#/notes/2808640) に�
 
 SAP BOBI の複数インスタンス デプロイの場合、Java Web アプリケーション サーバー (Web 層) が 2 つ以上のホストで実行されています。 Web サーバー間でユーザー負荷を均等に分散するために、エンド ユーザーと Web サーバーの間にロード バランサーを使用できます。 Azure で Azure Load Balancer または Azure Application Gateway を使用して、Web アプリケーション サーバーへのトラフィックを管理できます。 各オファリングの詳細について次のセクションで説明します。
 
-#### <a name="azure-load-balancer-network-based-load-balancer"></a>Azure Load Balancer (ネットワークベースのロード バランサー)
+1. [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) は、ハイ パフォーマンスで低遅延のレイヤー 4 (TCP、UDP) ロード バランサーであり、正常な仮想マシン間でトラフィックを分散します。 Load Balancer の正常性プローブによって、各 VM の特定のポートが監視され、稼働している仮想マシンにのみトラフィックが分散されます。 SAP BI プラットフォームをインターネットからアクセスできるようにするかどうかに応じて、パブリック ロード バランサーまたは内部ロード バランサーのいずれかを選択できます。 ゾーン冗長であるため、可用性ゾーン全体で高可用性が確保されます。
 
-[Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) は、ハイ パフォーマンスで低遅延のレイヤー 4 (TCP、UDP) ロード バランサーであり、正常な仮想マシン間でトラフィックを分散します。 Load Balancer の正常性プローブによって、各 VM の特定のポートが監視され、稼働している仮想マシンにのみトラフィックが分散されます。 SAP BI プラットフォームをインターネットからアクセスできるようにするかどうかに応じて、パブリック ロード バランサーまたは内部ロード バランサーのいずれかを選択できます。 ゾーン冗長であるため、可用性ゾーン全体で高可用性が確保されます。
+   次の図の内部ロード バランサーのセクションを参照してください。Web アプリケーション サーバーは、既定の Tomcat HTTP ポートであるポート 8080 で実行され、正常性プローブによって監視されます。 そのため、エンド ユーザーからの受信要求は、バックエンド プール内の Web アプリケーション サーバー (azusbosl1 または azusbosl2) にリダイレクトされます。 Load Balancer で TLS/SSL 終端 (TLS/SSL オフロードとも呼ばれます) はサポートされていません。 Azure Load Balancer を使用して Web サーバー間でトラフィックを分散する場合は、Standard Load Balancer を使用することをお勧めします。
 
-次の図の内部ロード バランサーのセクションを参照してください。Web アプリケーション サーバーは、既定の Tomcat HTTP ポートであるポート 8080 で実行され、正常性プローブによって監視されます。 そのため、エンド ユーザーからの受信要求は、バックエンド プール内の Web アプリケーション サーバー (azusbosl1 または azusbosl2) にリダイレクトされます。 Load Balancer で TLS/SSL 終端 (TLS/SSL オフロードとも呼ばれます) はサポートされていません。 Azure Load Balancer を使用して Web サーバー間でトラフィックを分散する場合は、Standard Load Balancer を使用することをお勧めします。
+   > [!NOTE]
+   > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。
 
-> [!NOTE]
-> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。
+   ![Web サーバー間でトラフィックを分散するための Azure Load Balancer](media/businessobjects-deployment-guide/businessobjects-deployment-load-balancer.png)
 
-![Web サーバー間でトラフィックを分散するための Azure Load Balancer](media/businessobjects-deployment-guide/businessobjects-deployment-load-balancer.png)
+2. [Azure Application Gateway (AGW)](../../../application-gateway/overview.md) によって、サービスとしてのアプリケーション デリバリー コントローラー (ADC) が提供されます。これは、アプリケーションでユーザー トラフィックを 1 つ以上の Web アプリケーション サーバーに転送するために使用されます。 TLS/SSL オフロード、Web Application Firewall (WAF)、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能がアプリケーションに提供されます。
 
-#### <a name="azure-application-gateway-web-application-load-balancer"></a>Azure Application Gateway (Web アプリケーション ロード バランサー)
+   Application Gateway によって、SAP BI プラットフォームのアプリケーション Web トラフィックがバックエンド プール (azusbosl1 または azusbos2) 内の指定されたリソースに転送されます。 ユーザーはリスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 次の図では、プライベート フロントエンド IP アドレス (10.31.3.20) を持つ Application Gateway がユーザーのエントリ ポイントとして機能し、それによって受信 TLS/SSL (HTTPS - TCP/443) 接続が処理され、TLS/SSL の暗号化が解除され、暗号化されていない要求 (HTTP - TCP/8080) がバックエンド プール内のサーバーに渡されます。 組み込みの TLS/SSL 終端機能を使用することで、Application Gateway で 1 つの TLS/SSL 証明書を維持するだけで済み、操作が簡単になります。
 
-[Azure Application Gateway (AGW)](../../../application-gateway/overview.md) によって、サービスとしてのアプリケーション デリバリー コントローラー (ADC) が提供されます。これは、アプリケーションでユーザー トラフィックを 1 つ以上の Web アプリケーション サーバーに転送するために使用されます。 TLS/SSL オフロード、Web Application Firewall (WAF)、Cookie ベースのセッション アフィニティなど、レイヤー 7 のさまざまな負荷分散機能がアプリケーションに提供されます。
+   ![Web サーバー間でトラフィックを分散するための Application Gateway](media/businessobjects-deployment-guide/businessobjects-deployment-application-gateway.png)
 
-Application Gateway によって、SAP BI プラットフォームのアプリケーション Web トラフィックがバックエンド プール (azusbosl1 または azusbos2) 内の指定されたリソースに転送されます。 ユーザーはリスナーをポートに割り当て、ルールを作成し、リソースをバックエンド プールに追加します。 次の図では、プライベート フロントエンド IP アドレス (10.31.3.20) を持つ Application Gateway がユーザーのエントリ ポイントとして機能し、それによって受信 TLS/SSL (HTTPS - TCP/443) 接続が処理され、TLS/SSL の暗号化が解除され、暗号化されていない要求 (HTTP - TCP/8080) がバックエンド プール内のサーバーに渡されます。 組み込みの TLS/SSL 終端機能を使用することで、Application Gateway で 1 つの TLS/SSL 証明書を維持するだけで済み、操作が簡単になります。
+   SAP BOBI Web サーバー用に Application Gateway を構成するには、SAP ブログの「[Load Balancing SAP BOBI Web Servers using Azure Application Gateway](https://blogs.sap.com/2020/09/17/sap-on-azure-load-balancing-web-application-servers-for-sap-bobi-using-azure-application-gateway/)」(Azure Application Gateway を使用した SAP BOBI Web サーバーの負荷分散) を参照してください。
 
-![Web サーバー間でトラフィックを分散するための Application Gateway](media/businessobjects-deployment-guide/businessobjects-deployment-application-gateway.png)
+   > [!NOTE]
+   > Azure Application Gateway を使用して Web サーバーへのトラフィックの負荷を分散することをお勧めします。それにより、SSL オフロードや、サーバーでの暗号化と解読のオーバーヘッドを削減する SSL 管理の一元化、トラフィック分散のためのラウンドロビン アルゴリズム、Web アプリケーション ファイアウォール (WAF) 機能、高可用性などのような機能が提供されます。
 
-SAP BOBI Web サーバー用に Application Gateway を構成するには、SAP ブログの「[Load Balancing SAP BOBI Web Servers using Azure Application Gateway](https://blogs.sap.com/2020/09/17/sap-on-azure-load-balancing-web-application-servers-for-sap-bobi-using-azure-application-gateway/)」(Azure Application Gateway を使用した SAP BOBI Web サーバーの負荷分散) を参照してください。
+## <a name="sap-businessobjects-bi-platform-reliability-on-azure"></a>Azure での SAP BusinessObjects BI プラットフォームの信頼性
 
-> [!NOTE]
-> Azure Application Gateway を使用して Web サーバーへのトラフィックの負荷を分散することをお勧めします。それにより、SSL オフロードや、サーバーでの暗号化と解読のオーバーヘッドを削減する SSL 管理の一元化、トラフィック分散のためのラウンドロビン アルゴリズム、Web アプリケーション ファイアウォール (WAF) 機能、高可用性などのような機能が提供されます。
+SAP BusinessObjects BI プラットフォームには、特定のタスクと操作用に最適化されたさまざまな階層が含まれています。 いずれか 1 つの層のコンポーネントが使用できなくなると、SAP BOBI アプリケーションがアクセス不能になるか、アプリケーションの特定の機能が動作しなくなります。 そのため、ビジネスの中断なくアプリケーションが稼働し続けるには、各層が高い信頼性を持つように設計されている必要があります。
 
-### <a name="sap-businessobjects-bi-platform---back-up-and-restore"></a>SAP BusinessObjects BI プラットフォーム - バックアップと復元
+このガイドでは、Azure のネイティブ機能と SAP BOBI プラットフォームの構成の組み合わせにより、SAP デプロイの可用性を向上させる方法について説明します。 このセクションでは、Azure での SAP BOBI プラットフォームの信頼性に関する次のオプションについて重点的に説明します。
+
+- **バックアップと復元:** データとアプリケーションのコピーを別の場所に定期的に作成するプロセスです。 それにより、元のデータまたはアプリケーションが失われたり破損したりした場合に、以前の状態に復元または復旧できます。
+
+- **高可用性:** 高可用性プラットフォームには、Azure リージョン内のあらゆるものが少なくとも 2 つずつ存在し、いずれかのサーバーが使用できなくなった場合でもアプリケーションが稼働し続けます。
+- **ディザスター リカバリー:** 何らかの自然災害によって Azure リージョン全体が使用できなくなるなどの致命的な損失が発生した場合に、アプリケーションの機能を復元するプロセスです。
+
+このソリューションの実装は、Azure のシステム設定の種類によって異なります。 そのため、バックアップと復元、高可用性、ディザスター リカバリー ソリューションは、お客様がビジネス要件に基づいて調整する必要があります。
+
+## <a name="back-up-and-restore"></a>バックアップと復元
 
 バックアップと復元は、データとアプリケーションのコピーを別の場所に定期的に作成するプロセスです。 それにより、元のデータまたはアプリケーションが失われたり破損したりした場合に、以前の状態に復元または復旧できます。 また、それはビジネス ディザスター リカバリー戦略の不可欠な要素でもあります。
 
@@ -550,7 +593,7 @@ SAP BOBI プラットフォームの包括的なバックアップと復元の�
 
 次のセクションでは、SAP BOBI プラットフォームの各コンポーネントのバックアップと復元の戦略を実装する方法について説明します。
 
-#### <a name="backup--restore-for-sap-bobi-installation-directory"></a>SAP BOBI インストール ディレクトリのバックアップと復元
+### <a name="backup--restore-for-sap-bobi-installation-directory"></a>SAP BOBI インストール ディレクトリのバックアップと復元
 
 Azure において、アプリケーション サーバーおよび接続されているすべてのディスクをバックアップする最も簡単な方法は、[Azure Backup](../../../backup/backup-overview.md) サービスを使用することです。 それにより、VM 上のデータが誤って破壊されることを防ぐために、独立した、分離されたバックアップが提供されます。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーリングはシンプルで、バックアップは最適化され、必要に応じて簡単に復元することができます。
 
@@ -558,30 +601,21 @@ Azure において、アプリケーション サーバーおよび接続され�
 
 #### <a name="backup--restore-for-file-repository-server"></a>ファイル リポジトリ サーバーのバックアップと復元
 
-**Azure NetApp Files** に対しては、オンデマンドのスナップショットを作成し、スナップショット ポリシーを使用して自動スナップショット作成のスケジュールを設定できます。 スナップショット コピーによって、ANF ボリュームの特定時点のコピーが提供されます。 詳細については、「[Azure NetApp Files を使用して、スナップショットを管理する](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)」を参照してください。
+Linux での SAP BOBI のデプロイに基づいて、Azure NetApp Files を SAP BOBI プラットフォームの Filestore にすることができます。 Filestore に使用するストレージに基づいて、バックアップと復元に関する次のオプションを選択します。
 
-**Azure Files** バックアップは、ネイティブの [Azure Backup](../../../backup/backup-overview.md) サービスと統合されています。これにより、バックアップと復元の機能が VM のバックアップと共に一元化され、運用作業が簡単になります。 詳細については、「[Azure ファイル共有のバックアップについて](../../../backup/azure-file-share-backup-overview.md)」と[よくあるご質問 (Azure Files のバックアップ)](../../../backup/backup-azure-files-faq.yml) に関するページを参照してください。
+- **Azure NetApp Files** の場合、オンデマンドのスナップショットを作成し、スナップショット ポリシーを使用して自動スナップショット作成のスケジュールを設定できます。 スナップショット コピーによって、ANF ボリュームの特定時点のコピーが提供されます。 詳細については、「[Azure NetApp Files を使用して、スナップショットを管理する](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)」を参照してください。
 
-#### <a name="backup--restore-for-cms-database"></a>CMS データベースのバックアップと復元
+- NFS サーバーを別に作成した場合は、バックアップと復元の戦略が同じように実装されていることを確認します。
 
-Azure Database for MySQL は、Azure の DBaaS オファリングであり、サーバーのバックアップが自動的に作成され、ユーザーが構成したローカル冗長ストレージまたは geo 冗長ストレージに保存されます。 Azure Database for MySQL によって、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) が作成されます。 これらのバックアップを使用すると、サーバーを、構成済みのバックアップ保持期間内の任意の時点に復元できます。 既定のバックアップ保持期間は 7 日間です。これは最大 3 日間まで[必要に応じて構成](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+#### <a name="backup--restore-for-cms-and-audit-database"></a>CMS および監査データベースのバックアップと復元
 
-これらのバックアップ ファイルはユーザーに公開されておらず、エクスポートできません。 これらのバックアップは、Azure Database for MySQL の復元操作にのみ使用できます。 [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) を使用して、データベースをコピーできます。 詳細については、「[Azure Database for MySQL でのバックアップと復元](../../../mysql/concepts-backup.md)」を参照してください。
+Linux 仮想マシン上で実行されている SAP BOBI プラットフォームの場合、Azure での SAP BusinessObjects BI プラットフォームの計画および実装ガイドの[サポート マトリックス](businessobjects-deployment-guide.md#support-matrix)に記載されている、任意のサポートされているデータベースで、CMS と監査データベースを実行できます。 そのため、CMS および監査データ ストアに使用されているデータベースに基づいて、バックアップと復元の戦略を採用することが重要です。
 
-Virtual Machines にインストールされているデータベースの場合、HANA データベースに対して標準のバックアップ ツールまたは [Azure Backup](../../../backup/sap-hana-db-about.md) を使用できます。 また、Azure のサービスとツールで要件が満たされない場合は、他のバックアップ ツールまたはスクリプトを使用してディスク バックアップを作成できます。
+1. Azure Database for MySQL は、Azure の DBaaS オファリングであり、サーバーのバックアップが自動的に作成され、ユーザーが構成したローカル冗長ストレージまたは geo 冗長ストレージに保存されます。 Azure Database for MySQL によって、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) が作成されます。 これらのバックアップを使用すると、サーバーを、構成済みのバックアップ保持期間内の任意の時点に復元できます。 既定のバックアップ保持期間は 7 日間です。これは最大 3 日間まで[必要に応じて構成](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 これらのバックアップ ファイルはユーザーに公開されておらず、エクスポートできません。 これらのバックアップは、Azure Database for MySQL の復元操作にのみ使用できます。 [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) を使用して、データベースをコピーできます。 詳細については、「[Azure Database for MySQL でのバックアップと復元](../../../mysql/concepts-backup.md)」を参照してください。
 
-## <a name="sap-businessobjects-bi-platform-reliability"></a>SAP BusinessObjects BI プラットフォームの信頼性
+2. Azure 仮想マシンにインストールされているデータベースの場合、サポートされているデータベース用の、標準のバックアップ ツールまたは [Azure Backup](../../../backup/sap-hana-db-about.md) サービスを使用できます。 また、Azure のサービスとツールが要件を満たさない場合は、すべての SAP BOBI プラットフォーム コンポーネントのバックアップと回復のためのエージェントが用意されている、サードパーティ製のバックアップ ツールを使用できます。
 
-SAP BusinessObjects BI プラットフォームには、特定のタスクと操作用に最適化されたさまざまな階層が含まれています。 いずれか 1 つの層のコンポーネントが使用できなくなると、SAP BOBI アプリケーションがアクセス不能になるか、アプリケーションの特定の機能が動作しなくなります。 そのため、ビジネスの中断なくアプリケーションが稼働し続けるには、各層が高い信頼性を持つように設計されている必要があります。
-
-このセクションでは、SAP BOBI プラットフォームの次のオプションについて重点的に説明します。
-
-- **高可用性:** 高可用性プラットフォームには、Azure リージョン内のあらゆるものが少なくとも 2 つずつ存在し、いずれかのサーバーが使用できなくなった場合でもアプリケーションが稼働し続けます。
-- **ディザスター リカバリー:** 何らかの自然災害によって Azure リージョン全体が使用できなくなるなどの致命的な損失が発生した場合に、アプリケーションの機能を復元するプロセスです。
-
-このソリューションの実装は、Azure のシステム設定の種類によって異なります。 そのため、高可用性およびディザスター リカバリー ソリューションは、お客様がビジネス要件に基づいて調整する必要があります。
-
-### <a name="high-availability"></a>高可用性
+## <a name="high-availability"></a>高可用性
 
 高可用性は、IT の中断を最小限に抑えることができる一連のテクノロジを表し、同じデータ センター内の冗長性、フォールト トレランス、またはフェールオーバーで保護されたコンポーネントを通じてアプリケーションやサービスのビジネス継続性を提供することで実現されます。 ここの例では、データ センターは 1 つの Azure リージョン内にあります。 このセクションの手順を補完する [SAP のための高可用性アーキテクチャとシナリオ](sap-high-availability-architecture-scenarios.md)に関する記事から、Azure に用意されている SAP アプリケーション向けのさまざまな高可用性の手法と推奨事項について最初の分析情報が提供されます。
 
@@ -592,7 +626,7 @@ SAP BOBI プラットフォームのサイズ設定の結果に基づいて、�
 
 次のセクションでは、SAP BOBI プラットフォームの各コンポーネントで高可用性を実現する方法について説明します。
 
-#### <a name="high-availability-for-application-servers"></a>アプリケーション サーバーの高可用性
+### <a name="high-availability-for-application-servers"></a>アプリケーション サーバーの高可用性
 
 BI および Web アプリケーション サーバーの場合、個別に (または一緒に) インストールされているかどうかにかかわらず、特定の高可用性ソリューションは必要ありません。 さまざまな Azure 仮想マシンに BI および Web サーバーの複数のインスタンスを構成することで、冗長性による高可用性を実現できます。
 
@@ -605,35 +639,38 @@ BI および Web アプリケーション サーバーの場合、個別に (ま
 
 詳細については、[Linux 仮想マシンの可用性の管理](../../availability.md)に関するページを参照してください。
 
-#### <a name="high-availability-for-cms-database"></a>CMS データベースの高可用性
+>[!Important]
+>Azure Availability Zones と Azure 可用性セットの概念は、相互に排他的です。 つまり、2つまたはそれ以上の VM を、特定の可用性ゾーンまたは Azure 可用性セットのどちらか一方にデプロイできますが、 両方にすることはできません。
 
-Azure Database as a Service (DBaaS) サービスを CMS データベースとして使用している場合は、高可用性フレームワークが既定で提供されます。 ユーザーは、高可用性、冗長性、回復性の各機能が最初から備わっているリージョンとサービスを選択するだけで済み、追加のコンポーネントを構成する必要がありません。 Azure でサポートされている DBaaS オファリングの SLA の詳細については、[Azure Database for MySQL の高可用性](../../../mysql/concepts-high-availability.md)および [Azure SQL Database の高可用性](../../../azure-sql/database/high-availability-sla.md)に関するページを参照してください。
+### <a name="high-availability-for-cms-database"></a>CMS データベースの高可用性
+
+Azure Database as a Service (DBaaS) サービスを CMS および監査データベースとして使用している場合は、ローカル冗長高可用性フレームワークが既定で提供されています。 ユーザーは、高可用性、冗長性、回復性の各機能が最初から備わっているリージョンとサービスを選択するだけで済み、追加のコンポーネントを構成する必要がありません。 SAP BOBI プラットフォームのデプロイ戦略が可用性ゾーンをまたがっている場合は、CMS および監査データベースに対してゾーン冗長を実現する必要があります。 Azure でサポートされている DBaaS オファリング用の高可用性オファリングの詳細については、「[Azure Database for MySQL での高可用性](../../../mysql/concepts-high-availability.md)」および [Azure SQL Database の高可用性](../../../azure-sql/database/high-availability-sla.md)に関する記事を参照してください
 
 CMS データベースのその他の DBMS デプロイについては、[SAP ワークロードのための DBMS デプロイ ガイド](dbms_guide_general.md)のページを参照してください。さまざまな DBMS デプロイと、それぞれの高可用性を実現する分析情報が明解に説明されています。
 
-#### <a name="high-availability-for-file-repository-server"></a>ファイル リポジトリ サーバーの高可用性
+### <a name="high-availability-for-filestore"></a>Filestore の高可用性
 
-ファイル リポジトリ サーバー (FRS) とは、レポート、ユニバース、接続などの内容が格納されているディスク ディレクトリを指します。 それは、そのシステムのすべてのアプリケーション サーバー間で共有されます。 そのため、高可用性を確保する必要があります。
+Filestore とは、レポート、ユニバース、接続などの内容が格納されているディスク ディレクトリのことです。 それは、そのシステムのすべてのアプリケーション サーバー間で共有されます。 そのため、他の SAP BOBI プラットフォーム コンポーネントと共に、高可用性が確保されるようにする必要があります。
 
-Azure を使用すると、高可用性と高い耐久性を実現するように設計された [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) のいずれかをファイル共有のために選択できます。 詳細については、Azure Files の「[冗長性](../../../storage/files/storage-files-planning.md#redundancy)」セクションを参照してください。
+Linux 上で実行されている SAP BOBI プラットフォームの場合、高可用性と高い耐久性を実現するように設計された [Azure Premium Files](../../../storage/files/storage-files-introduction.md) または [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) をファイル共有のために選択できます。 詳細については、Azure Files の「[冗長性](../../../storage/files/storage-files-planning.md#redundancy)」セクションを参照してください。
 
-> [!NOTE]
-> Azure Files の SMB プロトコルは一般公開されていますが、Azure Files の NFS プロトコル サポートは現在プレビューの段階です。 詳細については、「[Azure Files での NFS 4.1 サポートのプレビューが開始されました](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)」を参照してください。
+> [!Important]
+> Azure Files の SMB プロトコルは一般公開されていますが、Azure Files の NFS プロトコル サポートは現在プレビューの段階です。 詳細については、「[Azure Files での NFS 4.1 サポートのプレビューが開始されました](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)」を参照してください。
 
-このファイル共有サービスはすべてのリージョンで使用できるわけではないため、最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/)」のサイトを参照してください。 お客様のリージョンでサービスを利用できない場合は、NFS サーバーを作成し、そのファイル システムを SAP BOBI アプリケーションと共有できます。 しかし、高可用性を考慮する必要もあります。
+このファイル共有サービスはすべてのリージョンで使用できるわけではないため、最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」のサイトを参照してください。 お客様のリージョンでサービスを利用できない場合は、NFS サーバーを作成し、そのファイル システムを SAP BOBI アプリケーションと共有できます。 しかし、高可用性を考慮する必要もあります。
 
-#### <a name="high-availability-for-load-balancer"></a>ロード バランサーの高可用性
+### <a name="high-availability-for-load-balancer"></a>ロード バランサーの高可用性
 
 Web サーバー全体でトラフィックを分散するには、Azure Load Balancer または Azure Application Gateway のいずれかを使用できます。 デプロイ用に選択した SKU に基づいて、どちらのロード バランサーの冗長性も実現できます。
 
 - Azure Load Balancer の場合、Standard Load Balancer フロントエンドをゾーン冗長として構成することで冗長性を実現できます。 詳細については、「[Standard Load Balancer と可用性ゾーン](../../../load-balancer/load-balancer-standard-availability-zones.md)」を参照してください。
 - Application Gateway の場合、デプロイ中に選択した層の種類に基づいて高可用性を実現できます。
-  - v1 SKU を使用すると、2 つ以上のインスタンスをデプロイした場合に高可用性シナリオがサポートされます。 Azure は、これらのインスタンスを更新ドメインと障害ドメインに分散させ、全インスタンスで同時に障害が発生しないようにします。 そのため、この SKU によって、ゾーン内で冗長性を実現できます。
-  - v2 SKU を使用すると、新しいインスタンスが障害ドメインと更新ドメインに自動的に分散されます。 ゾーン冗長を選択した場合は、ゾーン障害回復性を提供するために、最新のインスタンスが可用性ゾーンにも分散されます。 詳細については、「[自動スケーリングとゾーン冗長 Application Gateway v2](../../../application-gateway/application-gateway-autoscaling-zone-redundant.md)」を参照してください。
+   -  v1 SKU を使用すると、2 つ以上のインスタンスをデプロイした場合に高可用性シナリオがサポートされます。 Azure は、これらのインスタンスを更新ドメインと障害ドメインに分散させ、全インスタンスで同時に障害が発生しないようにします。 そのため、この SKU によって、ゾーン内で冗長性を実現できます。
+   -  v2 SKU を使用すると、新しいインスタンスが障害ドメインと更新ドメインに自動的に分散されます。 ゾーン冗長を選択した場合は、ゾーン障害回復性を提供するために、最新のインスタンスが可用性ゾーンにも分散されます。 詳細については、「[自動スケーリングとゾーン冗長 Application Gateway v2](../../../application-gateway/application-gateway-autoscaling-zone-redundant.md)」を参照してください。
 
-#### <a name="reference-high-availability-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI プラットフォームの高可用性の参照アーキテクチャ
+### <a name="reference-high-availability-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI プラットフォームの高可用性の参照アーキテクチャ
 
-以下の参照アーキテクチャは、可用性セットを使用した SAP BOBI プラットフォームのセットアップを示しています。これにより、ゾーン内での VM の冗長性と可用性が提供されます。 このアーキテクチャには、SAP BOBI プラットフォーム向けのさまざまな Azure サービス (Azure Application Gateway、Azure NetApp Files、Azure Database for MySQL など) が使用されています。組み込みの冗長性が提供されるため、異なる複数の高可用性ソリューションを管理する複雑さが軽減されます。
+次の参照アーキテクチャでは、Linux サーバーで実行されている可用性セットを使用した SAP BOBI プラットフォームのセットアップについて説明します。 このアーキテクチャには、SAP BOBI プラットフォーム向けのさまざまな Azure サービス (Azure Application Gateway、Azure NetApp Files (Filestore)、Azure Database for MySQL (CMS および監査データベース) など) が使用されています。組み込みの冗長性が提供されるため、異なる複数の高可用性ソリューションを管理する複雑さが軽減されます。
 
 次の図では、受信トラフィック (HTTPS - TCP/443) は Azure Application Gateway v1 SKU を使用して負荷分散されています。これにより、2 つ以上のインスタンスにデプロイした場合に高可用性が実現されます。 冗長性を確保するために、Web サーバー、管理サーバー、処理サーバーの複数のインスタンスが別々の仮想マシンにデプロイされ、各層が別々の可用性セットにデプロイされます。 Azure NetApp Files には、データ センター内に冗長性が組み込まれているため、ファイル リポジトリ サーバーの ANF ボリュームでの高可用性が実現されます。 CMS データベースは、高可用性が最初から備わっている Azure Database for MySQL (DBaaS) 上にプロビジョニングされます。 詳細については、「[Azure Database for MySQL での高可用性](../../../mysql/concepts-high-availability.md)」を参照してください。
 
@@ -643,33 +680,50 @@ Web サーバー全体でトラフィックを分散するには、Azure Load Ba
 
 いくつかの Azure リージョンには可用性ゾーンが用意されています。これは、電源、冷却、ネットワークが独立して提供されることを意味します。 これにより、お客様は 2 つか 3 つの可用性ゾーンにまたがってアプリケーションをデプロイできます。 AZs 全体で高可用性を実現することを考えているお客様は、複数の可用性ゾーンにまたがって SAP BOBI プラットフォームをデプロイし、アプリケーションの各コンポーネントが確実にゾーン冗長になるようにしてください。
 
-### <a name="disaster-recovery"></a>障害復旧
+## <a name="disaster-recovery"></a>障害復旧
 
-このセクションの手順では、SAP BOBI プラットフォームのディザスター リカバリー保護を用意する方法について説明します。 それにより、SAP のディザスター リカバリー アプローチ全体の主要なリソースを表す [SAP のディザスター リカバリー](../../../site-recovery/site-recovery-sap.md) ドキュメントを補完します。
+このセクションの手順では、Linux 上で実行されている SAP BOBI プラットフォームのディザスター リカバリー保護を用意する方法について説明します。 それにより、SAP のディザスター リカバリー アプローチ全体の主要なリソースを表す [SAP のディザスター リカバリー](../../../site-recovery/site-recovery-sap.md) ドキュメントを補完します。 SAP BusinessObjects BI プラットフォームの場合は、SAP Note [2056228](https://launchpad.support.sap.com/#/notes/2056228) を参照してください。ここでは、DR 環境を安全に実装するための方法について説明されています。
 
-#### <a name="reference-disaster-recovery-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI プラットフォームのディザスター リカバリーの参照アーキテクチャ
+- プライマリ システムからコンテンツを昇格および配布するための、ライフサイクル管理 (LCM) またはフェデレーションの完全または選択的な使用。
+- CMS と FRS の内容の定期的なコピー。
 
-この参照アーキテクチャにおいては、冗長なアプリケーション サーバーを使用した SAP BOBI プラットフォームの複数インスタンス デプロイが実行されています。 ディザスター リカバリーを行うために、すべての層をセカンダリ リージョンにフェールオーバーする必要があります。 各層では、さまざまな戦略を利用して、ディザスター リカバリーの保護を提供しています。
+このガイドでは、DR 環境を実装する 2 番目のオプションについて説明します。 ディザスター リカバリーに使用できるすべての構成オプションを網羅した一覧については説明しませんが、Azure のネイティブ サービスと SAP BOBI プラットフォームの構成の組み合わせを使用するソリューションについて説明します。
+
+>[!Important]
+>SAP BusinessObjects BI プラットフォームの各コンポーネントの可用性をセカンダリ リージョンに織り込む必要があり、ディザスター リカバリー戦略全体を徹底的にテストする必要があります。
+
+### <a name="reference-disaster-recovery-architecture-for-sap-businessobjects-bi-platform"></a>SAP BusinessObjects BI プラットフォームのディザスター リカバリーの参照アーキテクチャ
+
+この参照アーキテクチャにおいては、冗長なアプリケーション サーバーを使用した SAP BOBI プラットフォームの複数インスタンス デプロイが実行されています。 ディザスター リカバリーの場合、SAP BOBI プラットフォームのすべてのコンポーネントをセカンダリ リージョンにフェールオーバーする必要があります。 次の図では、Azure NetApp Files が Filestore として使用され、Azure Database for MySQL が CMS および監査リポジトリとして使用され、Azure Application Gateway がトラフィックの負荷分散に使用されています。 各コンポーネントのディザスター リカバリー保護を実現する方法は異なります。詳細については、次のセクションで説明します。
 
 ![SAP BusinessObjects BI プラットフォームのディザスター リカバリー](media/businessobjects-deployment-guide/businessobjects-deployment-disaster-recovery.png)
 
-#### <a name="load-balancer"></a>Load Balancer
+### <a name="load-balancer"></a>Load Balancer
 
-Load Balancer は、SAP BOBI プラットフォームの Web アプリケーション サーバー間でトラフィックを分散するために使用されます。 Azure Application Gateway の DR を実現するには、セカンダリ リージョン上にアプリケーション ゲートウェイの並列セットアップを実装します。
+Load Balancer は、SAP BOBI プラットフォームの Web アプリケーション サーバー間でトラフィックを分散するために使用されます。 Azure では、Azure Load Balancer または Azure Application Gateway を使用して、Web サーバー間にトラフィックを負荷分散できます。 ロード バランサー サービスの DR を実現するには、セカンダリ リージョンに別の Azure Load Balancer または Azure Application Gateway を実装する必要があります。 DR フェールオーバー後に同じ URL を保持するには、セカンダリ リージョンで実行されている負荷分散サービスを指すように、DNS のエントリを変更する必要があります。
 
-#### <a name="virtual-machines-running-web-and-bi-application-servers"></a>Web および BI アプリケーション サーバーを実行している仮想マシン
+### <a name="virtual-machines-running-web-and-bi-application-servers"></a>Web および BI アプリケーション サーバーを実行している仮想マシン
 
-Azure Site Recovery サービスを使用して、Web および BI アプリケーション サーバーを実行している仮想マシンをセカンダリ リージョン上でレプリケートできます。 災害や障害が発生したときに、レプリケートされた環境に簡単にフェールオーバーして作業を続けることができるように、セカンダリ リージョン上でサーバーをレプリケートします。
+[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) サービスを使用して、Web および BI アプリケーション サーバーを実行している仮想マシンをセカンダリ リージョン上でレプリケートできます。 災害や障害が発生したときに、レプリケートされた環境に簡単にフェールオーバーして作業を続けることができるように、サーバーとそれにアタッチされているすべてのマネージド ディスクがセカンダリ リージョンにレプリケートされます。 Azure ディザスター リカバリー データ センターへのすべての SAP アプリケーション仮想マシンのレプリケートを開始するには、[仮想マシンを Azure にレプリケートする](../../../site-recovery/azure-to-azure-tutorial-enable-replication.md)方法に関するセクションの手順に従います。
 
-#### <a name="file-repository-servers"></a>ファイル リポジトリ サーバー
+### <a name="file-repository-servers"></a>ファイル リポジトリ サーバー
+
+Filestore は、レポートや BI ドキュメントなどの実際のファイルが格納されているディスク ディレクトリです。 Filestore 内のすべてのファイルが DR リージョンと同期されていることが重要です。 Linux で実行されている SAP BOBI プラットフォームに使用しているファイル共有サービスの種類に基づいて、コンテンツを同期するために必要な DR 戦略を採用する必要があります。
 
 - **Azure NetApp Files** によって NFS および SMB ボリュームが提供されるため、ファイルベースの任意のコピー ツールを使用して、Azure リージョン間でデータをレプリケートできます。 別のリージョンにある ANF ボリュームをコピーする方法の詳細については、[Azure NetApp Files に関するよくあるご質問](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region)のページを参照してください。
 
-  Azure NetApp Files リージョン間レプリケーションを使用できます。これは現在[プレビュー](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)段階であり、NetApp SnapMirror® テクノロジが活用されています。 そのため、変更されたブロックだけが、圧縮された効率的な形式でネットワーク経由で送信されます。 この独自のテクノロジによってリージョン間でのレプリケーションに必要なデータ量が最小化されることで、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。 詳細については、「[リージョン間レプリケーションを使用するための要件と考慮事項](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)」を参照してください。
+  Azure NetApp Files リージョン間レプリケーションを使用できます。これは現在[プレビュー](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)段階であり、NetApp SnapMirror® テクノロジが活用されています。 そのため、変更されたブロックだけが、圧縮された効率的な形式でネットワーク経由で送信されます。 この独自のテクノロジによってリージョン間でのレプリケーションに必要なデータ量が最小化されることで、データ転送コストが削減されます。 また、レプリケーションにかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。 詳細については、「[リージョン間レプリケーションを使用するための要件と考慮事項](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)」を参照してください。
 
 - **Azure Premium Files** を使用する場合、ローカル冗長 (LRS) およびゾーン冗長ストレージ (ZRS) のみがサポートされます。 Azure Premium Files の DR 戦略を使用する場合、[AzCopy](../../../storage/common/storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー](../../../storage/common/storage-disaster-recovery-guidance.md)」を参照してください。
 
-#### <a name="cms-database"></a>CMS データベース
+   > [!Important]
+   > Azure Files の SMB プロトコルは一般公開されていますが、Azure Files の NFS プロトコル サポートは現在プレビューの段階です。 詳細については、「[Azure Files での NFS 4.1 サポートのプレビューが開始されました](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)」を参照してください。
+
+### <a name="cms-database"></a>CMS データベース
+
+DR リージョンの CMS および監査データベースは、プライマリ リージョンで実行されているデータベースのコピーである必要があります。 データベースの種類に応じて、ビジネスに必要な RTO と RPO に基づいて、データベースを DR リージョンにコピーすることが重要です。
+
+#### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
 Azure Database for MySQL には、障害が発生した場合にデータベースを回復するための複数のオプションが用意されています。 ご自身のビジネスに適したオプションを選択してください。
 

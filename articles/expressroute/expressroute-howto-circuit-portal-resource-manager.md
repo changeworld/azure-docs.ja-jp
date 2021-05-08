@@ -4,21 +4,23 @@ description: このクイックスタートでは、Azure portal を使用して
 services: expressroute
 author: duongau
 ms.author: duau
-ms.date: 10/21/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: expressroute
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f62b60a9c33cd1b813b8f3307ec82d4242be168b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 68c700067727895a69034c6a1e87ec2b1a01a532
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534801"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946938"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>クイックスタート: ExpressRoute 回線の作成と変更
 
 このクイックスタートでは、Azure portal と Azure Resource Manager デプロイ モデルを使用して ExpressRoute 回線を作成する方法について説明します。 状態の確認、および回線の更新、削除、プロビジョニング解除を行うこともできます。
+
+:::image type="content" source="media/expressroute-howto-circuit-portal-resource-manager/environment-diagram.png" alt-text="Azure portal を使用する ExpressRoute 回線のデプロイ環境の図。" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
 

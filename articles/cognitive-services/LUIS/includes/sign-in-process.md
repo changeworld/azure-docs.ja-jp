@@ -6,14 +6,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 10/30/2020
+ms.date: 04/23/2021
 ms.topic: include
-ms.openlocfilehash: e006f804b8ab6411f4949424147acf567dc2ed24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 727178c2851e43c787c2b1fcf1e7bb349b3ea4f5
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97371315"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948362"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
@@ -21,15 +21,16 @@ ms.locfileid: "97371315"
 
 LUIS の新しいユーザーは、次の手順に従う必要があります。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、国/地域を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。 次の 2 つの方法でサインアップできます。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、国/地域を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。 そうでない場合は、Azure リソースの使用によって開始します。そのようにすると、LUIS アカウントを新規または既存の Azure 作成リソースにリンクすることができます。 <!---This is equivalent to signing up already migrated. You won't need to go through the [migration process](../luis-migration-authoring.md#what-is-migration) later on.-->
+<!---
+    * Using a trial key. This allows you to sign in to LUIS with a trial resource that you don't need to set up. If you choose this option, you will eventually be required to [migrate your account](../luis-migration-authoring.md#migration-steps) and link your applications to an authoring resource.
+-->
 
-    * Azure リソースの使用 (推奨) - LUIS アカウントを新規または既存の Azure 作成リソースにリンクすることができます。 これは、既に移行済みのサインアップと同じです。 後で[移行プロセス](../luis-migration-authoring.md#what-is-migration)を実行する必要はありません。
+2. 表示された **[Choose an authoring]\(作成の選択\)** ウィンドウで、Azure サブスクリプションと LUIS 作成リソースを見つけます。 リソースがない場合は、新しいものを作成できます。
 
-    * 試用キーの使用。 これにより、設定する必要のない試用版リソースを使って LUIS にサインインできます。 このオプションを選択した場合は、最終的に[アカウントを移行](../luis-migration-authoring.md#migration-steps)し、アプリケーションを作成リソースにリンクする必要があります。
-
-1. 表示された **[Choose an authoring]\(作成の選択\)** ウィンドウで、Azure サブスクリプションと LUIS 作成リソースを見つけます。 リソースがない場合は、新しいものを作成できます。
-
-    :::image type="content" source="../media/luis-how-to-azure-subscription/choose-authoring-resource.png" alt-text="Language Understanding の作成リソースの種類を選択します。":::
+    <!---:::image type="content" source="../media/luis-how-to-azure-subscription/choose-authoring-resource.png" alt-text="Choose a type of Language Understanding authoring resource.":::
+    -->
+    ![Language Understanding の作成リソースの種類を選択します。](../media/luis-how-to-azure-subscription/choose-authoring-resource.png)
     
     新しい作成リソースを作成するときは、次の情報を指定します。
     * **[テナント名]** - Azure サブスクリプションが関連付けられているテナント。

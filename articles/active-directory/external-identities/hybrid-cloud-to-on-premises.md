@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b832e7b8aef92e14435ba78303bfc26a9a14e23
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131022"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180448"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 以下の両方を行う必要があります。
 
 - 「[SAML ベースのシングル サインオンの構成](../manage-apps/configure-saml-single-sign-on.md)」で説明されているように、SAML を使用してアプリを統合します。 **[サインオン URL]** 値に使用する URL をメモしておきます。
--  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../manage-apps/application-proxy-add-on-premises-application.md)」を参照してください。 
+-  Azure AD アプリケーション プロキシを使用して、**Azure Active Directory** を認証ソースとして構成して、オンプレミス アプリを発行します。 手順については、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../app-proxy/application-proxy-add-on-premises-application.md)」を参照してください。 
 
    **[内部 URL]** 設定を構成するときは、ギャラリー以外のアプリケーション テンプレートで指定したサインオン URL を使用します。 このような方法で、ユーザーは組織の境界外からアプリにアクセスできるようになります。 アプリケーション プロキシは、オンプレミス アプリの SAML シングル サインオンを実行します。
  
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 統合 Windows 認証と Kerberos の制約付き委任を使用してセキュリティで保護されたオンプレミス アプリケーションへのアクセス権を B2B ユーザーに付与するには、次のコンポーネントが必要です。
 
-- **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../manage-apps/application-proxy-add-on-premises-application.md)を参照してください。
+- **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../app-proxy/application-proxy-add-on-premises-application.md)を参照してください。
 - **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
 
    > [!NOTE]

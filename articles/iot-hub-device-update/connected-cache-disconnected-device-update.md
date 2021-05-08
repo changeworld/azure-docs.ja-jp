@@ -7,12 +7,12 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e2b27934f58402ecfb7dabf5560dc43e45f3f7dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e216d42ff1f279d87e657126514fcfb50960f806
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101678642"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811906"
 ---
 # <a name="understand-support-for-disconnected-device-updates"></a>切断されたデバイスの更新のサポートについて
 
@@ -20,7 +20,7 @@ ms.locfileid: "101678642"
 
 ## <a name="how-does-microsoft-connected-cache-preview-for-device-update-for-azure-iot-hub-work"></a>Device Update for Azure IoT Hub 用の Microsoft 接続キャッシュ プレビューのしくみ
 
-Microsoft 接続キャッシュは、Device Update for Azure IoT Hub コンテンツ用に公開されたコンテンツのインテリジェントな透過的キャッシュであり、パッケージ リポジトリなどの他のソースにあるコンテンツもキャッシュするようにカスタマイズできます。 Microsoft 接続キャッシュは、配信の最適化クライアントによって要求された正確なファイル範囲に対し、クライアント要求によってウォーミングされるコールド キャッシュであり、コンテンツの事前シードは行われません。 次に示す図とステップバイステップの記述で、Microsoft 接続キャッシュが Device Update for Azure IoT Hub インフラストラクチャ内でどのように機能するかを説明します。
+Microsoft 接続キャッシュ プレビューは、Device Update for Azure IoT Hub コンテンツ用に公開されたコンテンツのインテリジェントな透過的キャッシュであり、パッケージ リポジトリなどの他のソースにあるコンテンツもキャッシュするようにカスタマイズできます。 Microsoft 接続キャッシュは、配信の最適化クライアントによって要求された正確なファイル範囲に対し、クライアント要求によってウォーミングされるコールド キャッシュであり、コンテンツの事前シードは行われません。 次に示す図とステップバイステップの記述で、Microsoft 接続キャッシュが Device Update for Azure IoT Hub インフラストラクチャ内でどのように機能するかを説明します。
 
 >[!Note]
 >このフローの定義においては、IoT Edge ゲートウェイがインターネットに接続されていることを前提としています。 ダウンストリームの IoT Edge ゲートウェイ (Nested Edge) のシナリオでは、"Content Delivery Network" (CDN) を親 IoT Edge ゲートウェイでホストされている MCC と見なすことができます。

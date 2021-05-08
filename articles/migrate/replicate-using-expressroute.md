@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dd2a4ee0ba8ef5b64e52e7d840874a98a0e72939
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558620"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930841"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure Migrate: Server Migration を使用して ExpressRoute 経由でデータをレプリケートする
 
@@ -32,8 +32,9 @@ Azure Migrate の Server Migration ツールを使用すると、オンプレミ
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-private-peering"></a>ExpressRoute 回線を使用してプライベート ピアリングでデータをレプリケートする
 
-> [!NOTE]
-> プライベート ピアリング回線経由のレプリケーションは、現時点では [VMware 仮想マシンを Azure にエージェントレス移行する](./tutorial-migrate-vmware.md)場合にのみサポートされています。 他の[レプリケーション方法](./migrate-services-overview.md#azure-migrate-server-migration-tool)についてのプライベート エンドポイントのサポートは、間もなく利用できるようになります。
+> [!Note]
+> この記事では、 [**VMware 仮想マシンを Azure にエージェントレスで移行**](./tutorial-migrate-vmware.md)するためにプライベート ピアリング回線を使用してレプリケートする方法について説明します。 [ **他のレプリケーション方法**](./migrate-services-overview.md#azure-migrate-server-migration-tool)でプライベート エンドポイント サポートを使用するには、[**この記事**](./how-to-use-azure-migrate-with-private-endpoints.md)を確認してください。  
+ 
 
 VMware 仮想マシンを Azure に移行するエージェントレス方式では、Azure Migrate アプライアンスは最初に、ご利用のサブスクリプションのストレージ アカウント (キャッシュ ストレージ アカウント) にレプリケーション データをアップロードします。 次に、Azure Migrate サービスによって、キャッシュ ストレージ アカウントのレプリケート済みデータが、ご利用のサブスクリプションのレプリカ マネージド ディスクに移動されます。 プライベート ピアリング回線をレプリケーションに使用するには、プライベート エンドポイントを作成し、キャッシュ ストレージ アカウントの使用にアタッチします。 プライベート エンドポイントでは、ご使用の仮想ネットワーク (VNet) の 1 つ以上のプライベート IP アドレスが使用され、ストレージ アカウントが実質的に VNet に取り込まれます。 プライベート エンドポイントを使用すると、Azure Migrate アプライアンスは ExpressRoute プライベート ピアリングを使用してキャッシュ ストレージ アカウントに接続し、プライベート IP アドレスでデータを直接転送できます。 <br/>  
 

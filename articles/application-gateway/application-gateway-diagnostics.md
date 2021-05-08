@@ -8,12 +8,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a2571706d3b1341d6eb3751e50b699043b376767
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950486"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320657"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 37ecd06c4e3e71234e8fb1b6bad0cd05482dd31b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: f603a4b44b555382e4178d90522ae41fa2388663
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727850"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947719"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 
@@ -101,7 +101,7 @@ COM ポートのリダイレクトを構成するには、次の RDP プロパ�
 
 セミコロン区切りの一覧 (`drivestoredirect:s:C:;E:;` など) を使用して、特定のドライブを選択することもできます。
 
-Web クライアントのファイル転送を構成するには、`drivestoredirect:s:*` を設定します。
+Web クライアントのファイル転送を有効にするには、`drivestoredirect:s:*` を設定します。 この RDP プロパティに他の値を設定した場合、Web クライアントのファイル転送は無効になります。
 
 ### <a name="printer-redirection"></a>プリンターのリダイレクト
 

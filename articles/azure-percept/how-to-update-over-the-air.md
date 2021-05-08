@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a3f586f853201534bbaa613e8538d55485ffe147
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: e5d431d4594a89d4bfcd3b4f09c57b5cdd61b547
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063119"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929491"
 ---
 # <a name="update-your-azure-percept-dk-over-the-air-ota"></a>Azure Percept DK を無線 (OTA) で更新する
 
@@ -30,7 +30,7 @@ Device Update for IoT Hub を使用して無線 (OTA) で Azure Percept DK の�
 > [!NOTE]
 > 既に更新プログラムをインポートしてある場合は、「**デバイス更新プログラム グループを作成する**」に直接進むことができます。
 
-1. [Azure Percept デバイス用の適切なマニフェスト ファイル (.json) および更新ファイル (.swu) をダウンロードします](https://go.microsoft.com/fwlink/?linkid=2155625)。
+1. 最新の[マニフェスト ファイル (.json)](https://go.microsoft.com/fwlink/?linkid=2155625) と [Azure Percept デバイスの更新ファイル (.swu)](https://go.microsoft.com/fwlink/?linkid=2161538) をダウンロードします。
 
 1. Azure Percept デバイスに使用している Azure IoT Hub に移動します。 左側のメニュー パネルで、 **[デバイスの自動管理]** の下にある **[デバイスの更新プログラム]** を選択します。
 

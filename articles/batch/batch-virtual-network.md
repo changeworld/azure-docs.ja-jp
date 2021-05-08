@@ -4,12 +4,12 @@ description: コンピューティング ノードがネットワーク内の他
 ms.topic: how-to
 ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f376c62a8fda4a84ec8385fb623fa304bb8c035e
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629310"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947503"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -53,9 +53,11 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 
 強制トンネリングが有効になっている VNet でプールのノードが機能することを確認するには、そのサブネットに次の[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md) (UDR) を追加する必要があります。
 
-- Batch サービスは、タスクをスケジュールする目的でノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとに UDR を追加します。 Batch サービスの IP アドレスの一覧を取得するには、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」を参照してください。
+- Batch サービスは、タスクをスケジュールする目的でノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとに UDR を追加します。 Batch サービスの IP アドレスは `BatchNodeManagement.<region>` サービス タグにあります。 IP アドレスの一覧を取得するには、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」を参照してください。
 
-- Azure Storage への送信トラフィック (具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL) がオンプレミス ネットワークによってブロックされていないことを確認します。
+- 宛先ポート 443 での Azure Batch サービスへの送信 TCP トラフィックが、オンプレミス ネットワークによってブロックされていないことを確認します。 これらの Azure Batch サービスの宛先 IP アドレスは、上記でルートに対して使用した、`BatchNodeManagement.<region>` サービス タグにあるものと同じです。
+
+- 宛先ポート 443 での Azure Storage への送信 TCP トラフィック (具体的には、`*.table.core.windows.net`、`*.queue.core.windows.net`、`*.blob.core.windows.net` の形式の URL) が、オンプレミス ネットワークによってブロックされていないことを確認します。
 
 - 仮想ファイル マウントを使用する場合は、[ネットワーク要件](virtual-file-mount.md#networking-requirements)を調べ、必要なトラフィックがブロックされていないことを確認します。
 
