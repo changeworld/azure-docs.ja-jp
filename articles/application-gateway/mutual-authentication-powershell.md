@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: caya
-ms.openlocfilehash: 95534760c09ca9e1f7f09d6079886216127c7eb0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fdebc0cf22b317fa33b5d65383ef3bcc9b57e905
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230940"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315977"
 ---
 # <a name="configure-mutual-authentication-with-application-gateway-through-powershell-preview"></a>PowerShell を使用して Application Gateway での相互認証を構成する (プレビュー)
 この記事では、PowerShell を使用して、アプリケーション ゲートウェイで相互認証を構成する方法について説明します。 相互認証とは、Application Gateway にアップロードされるクライアント証明書を使用して、要求を送信するクライアントを Application Gateway が認証することを意味します。 

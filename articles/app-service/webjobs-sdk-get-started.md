@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7df6eabbecca9538de3c45bf1c9fc7ca6e4334bd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91652042"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205379"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -311,7 +311,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>App Service アプリと Application Insights のインスタンスの作成
 
-1. 使用できる App Service アプリがまだない場合は、[作成](quickstart-dotnet-framework.md)します。 アプリを作成するときに、接続されている Application Insights リソースも作成できます。 これを行うと、アプリ内で自動的に `APPINSIGHTS_INSTRUMENTATIONKEY` が設定されます。
+1. 使用できる App Service アプリがまだない場合は、[作成](./quickstart-dotnetcore.md?tabs=netframework48)します。 アプリを作成するときに、接続されている Application Insights リソースも作成できます。 これを行うと、アプリ内で自動的に `APPINSIGHTS_INSTRUMENTATIONKEY` が設定されます。
 
 1. 使用できる Application Insights リソースがまだない場合は、[作成](../azure-monitor/app/create-new-resource.md )します。 **[アプリケーションの種類]** を **[全般]** に設定し、「**インストルメンテーション キーをコピー**」の後のセクションをスキップします。
 
@@ -514,7 +514,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
    Executed 'Functions.ProcessQueueMessage' (Succeeded, Id=5a2ac479-de13-4f41-aae9-1361f291ff88)
    ```
 
-## <a name="add-an-output-binding"></a>出力バインディングを追加する
+## <a name="add-an-output-binding&quot;></a>出力バインディングを追加する
 
 出力バインディングでは、データを書き込むコードを簡略化します。 この例では、サイズをログに記録する代わりに BLOB のコピーを書き込むことで、前の例を変更します。 BLOB ストレージのバインドは、前にインストールした Azure Storage の拡張機能パッケージに含まれます。
 
@@ -522,7 +522,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
    ```cs
    public static void ProcessQueueMessage(
-       [QueueTrigger("queue")] string message,
+       [QueueTrigger(&quot;queue")] string message,
        [Blob("container/{queueTrigger}", FileAccess.Read)] Stream myBlob,
        [Blob("container/copy-{queueTrigger}", FileAccess.Write)] Stream outputBlob,
        ILogger logger)

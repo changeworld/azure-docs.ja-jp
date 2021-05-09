@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: c9829b49662c90df685388691c04b201a7010eb8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 18f8ac52c84fa93a74f9b822322c07c13e082b0e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765217"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206369"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API に Go アプリケーションを接続する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,14 +22,13 @@ ms.locfileid: "107765217"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 >  
 
 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。 このクイック スタートでは、Azure Cloud Shell を利用して Azure Cosmos DB アカウントを作成し、管理し、GitHub から既存のサンプル アプリケーションを複製し、Azure Cosmos DB と連動するようにそれを構成します。 
 
-サンプル アプリケーションは、Go で記述されたコマンドライン ベースの `todo` 管理ツールです。 Azure Cosmos DB の MongoDB 用 API は [MongoDB ワイヤ プロトコルと互換性があり](./mongodb-introduction.md#wire-protocol-compatibility)、あらゆる MongoDB クライアント ドライバーでそれと接続できるようになります。 このアプリケーションでは、Azure Cosmos DB データベースにデータが格納されることがアプリケーションでは意識されないよう、[MongoDB 用 Go ドライバー](https://github.com/mongodb/mongo-go-driver)が使用されます。
+サンプル アプリケーションは、Go で記述されたコマンドライン ベースの `todo` 管理ツールです。 Azure Cosmos DB の MongoDB 用 API は [MongoDB ワイヤ プロトコルと互換性があり](./mongodb-introduction.md)、あらゆる MongoDB クライアント ドライバーでそれと接続できるようになります。 このアプリケーションでは、Azure Cosmos DB データベースにデータが格納されることがアプリケーションでは意識されないよう、[MongoDB 用 Go ドライバー](https://github.com/mongodb/mongo-go-driver)が使用されます。
 
 ## <a name="prerequisites"></a>前提条件
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free)。 または、Azure サブスクリプションなしで、[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)こともできます。 [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) を使用することもできます。接続文字列には、`.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` を使用してください。

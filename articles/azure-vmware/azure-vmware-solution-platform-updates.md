@@ -2,17 +2,22 @@
 title: Azure VMware Solution のプラットフォーム更新プログラム
 description: Azure VMware Solution のプラットフォーム更新プログラムについて説明します。
 ms.topic: reference
-ms.date: 03/24/2021
-ms.openlocfilehash: da6317d49edd3f40e1a8f2518f91fe353bbae285
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/26/2021
+ms.openlocfilehash: ea6edff8408dc710d8c5bfe3b95555243b4ddd52
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045214"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007504"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Azure VMware Solution のプラットフォーム更新プログラム
 
-Azure VMware Solution の重要な更新プログラムが 2021 年 3 月から適用されます。 メンテナンスのタイムラインが記載された通知が Azure Service Health 経由で届きます。 詳細については、「[Ａzure VMware Solution のプライベート クラウドの更新とアップグレード](concepts-upgrades.md)」をご覧ください。
+Azure VMware Solution の重要な更新プログラムが 2021 年 3 月から適用されます。 メンテナンスのタイムラインが記載された通知が Azure Service Health 経由で届きます。 詳細については、「[ホストのメンテナンスとライフサイクル管理](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management)」を参照してください。
+
+## <a name="april-26-2021"></a>2021 年 4 月 26 日
+すべての新しい Azure VMware Solution プライベート クラウドが、VMware vCenter バージョン 6.7U3l および NSX-T バージョン 2.5.2 と一緒にデプロイされるようになりました。 新しいプライベート クラウドには、NSX-T 3.1.1 は使用されません。これは、お客様の VM 接続に影響する NSX-T 3.1.1 の問題が特定されたためです。 
+
+VMware 推奨の軽減策が、Azure VMware Solution で NSX-T 3.1.1 を現在実行している既存のすべてのプライベート クラウドに適用されました。 この回避策は、お客様の VM 接続には影響しないことが確認されています。
 
 ## <a name="march-24-2021"></a>2021 年 3 月 24 日
 すべての新しい Azure VMware Solution プライベート クラウドは、VMware vCenter バージョン 6.7U3l と NSX-T バージョン 3.1.1 と一緒にデプロイされます。 既存のプライベート クラウドは、**2021 年 6 月まで** に上記のリリースに更新およびアップグレードされます。
@@ -23,7 +28,7 @@ Azure VMware Solution の重要な更新プログラムが 2021 年 3 月から�
 
 - Azure VMware Solution サービスのメンテナンス作業を **2021 年 3 月 19 日** まで実施し、プライベート クラウド内の vCenter サーバーを vCenter Server 6.7 Update 3l バージョンに更新します。
 
-- VMware vCenter は、この期間中は利用できなくなります。  そのため、VM を管理 (停止、開始、作成、削除) したり、プライベートクラウドのスケーリング (サーバーとクラスターの追加や削除) を行ったりすることはできません。 ただし、VMware High Availability (HA) は、既存の VM を保護するために動作し続けます。 
+- VMware vCenter は、この期間中は利用できなくなるため、VM は管理 (停止、開始、作成、削除) できません。また、プライベート クラウドのスケーリング (サーバーとクラスターの追加または削除) もできません。 ただし、VMware High Availability (HA) は、既存の VM を保護するために動作し続けます。 
  
 この vCenter バージョンの詳細については、[VMware vCenter Server 6.7 Update 3l のリリースノート](https://docs.vmware.com/en/VMware-vSphere/6.7/rn/vsphere-vcenter-server-67u3l-release-notes.html)を参照してください。
 

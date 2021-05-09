@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 04/06/2021
+ms.date: 04/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7098a6f31b78d8a37b4c6104f6027313df33ae7b
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: f2b7fac28d1da7f74091e78808eef7604e6c74f1
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504815"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001908"
 ---
-このカテゴリには **49 個** の推奨事項があります。
+このカテゴリには **51 個** の推奨事項があります。
 
 |推奨 |Description |重大度 |
 |---|---|---|
@@ -60,8 +60,10 @@ ms.locfileid: "106504815"
 |仮想マシンを新しい Azure Resource Manager リソースに移行する必要がある |仮想マシン (クラシック) は非推奨になったので、これらの VM を Azure Resource Manager に移行する必要があります。<br>Azure Resource Manager には現在、完全な IaaS 機能とその他の強化機能が含まれるため、2020 年 2 月 28 日に Azure Service Manager (ASM) を介した IaaS 仮想マシン (VM) の管理を非推奨にしました。 この機能は、2023 年 3 月 1 日に完全に廃止される予定です。<br><br>このツールと移行に関する利用可能なリソースと情報は次のとおりです。<br><a href='https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'>仮想マシン (クラシック) の非推奨の概要、移行の段階的なプロセス、利用可能な Microsoft リソース。</a><br><a href='https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-deep-dive?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json'>Azure Resource Manager 移行ツールへの移行に関する詳細情報。</a><br><a href='https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps'>PowerShell を使用して Azure Resource Manager 移行ツールに移行</a>します。<br />(関連ポリシー:[仮想マシンを新しい Azure Resource Manager リソースに移行する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1d84d5fb-01f6-4d12-ba4f-4a26081d403d)) |高 |
 |仮想マシンのゲスト構成拡張機能はシステム割り当てマネージド ID を使用してデプロイする必要がある |ゲスト構成拡張機能には、システム割り当てマネージド ID が必要です。 このポリシーのスコープ内の Azure 仮想マシンは、ゲスト構成拡張機能がインストールされていても、システム割り当てマネージド ID がなければ非準拠になります。 <a href='https://aka.ms/gcpol'>詳細情報</a><br />(関連ポリシー:[ゲスト構成拡張機能はシステム割り当てマネージド ID を持つ Azure 仮想マシンにデプロイする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fd26f7642-7545-4e18-9b75-8c9bbdee3a9a)) |Medium |
 |コンテナーのセキュリティ構成の脆弱性を修復する必要がある |Docker がインストールされているマシンでセキュリティ構成の脆弱性を修復し、コンテナーを攻撃から保護します。<br />(関連ポリシー:[コンテナーのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe8cbc669-f12d-49eb-93e7-9273119e9933)) |高 |
+|Linux マシンのセキュリティ構成の脆弱性を修復する必要がある (ゲスト構成を利用) |Linux マシン上のセキュリティ構成の脆弱性を修復し、攻撃から保護します。<br />(関連ポリシー: [Linux マシンでは Azure セキュリティ ベースラインの要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ffc9b3da7-8347-4380-8e70-0a0361d8dedd)) |低 |
 |使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある |マシンでセキュリティ構成の脆弱性を修復し、マシンを攻撃から保護します。<br />(関連ポリシー:[マシンのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15)) |低 |
 |仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある |仮想マシン スケール セットのセキュリティ構成の脆弱性を修復し、攻撃から保護します。<br />(関連ポリシー:[仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f3c735d8a-a4ba-4a3a-b7cf-db7754cf57f4)) |高 |
+|Windows マシンのセキュリティ構成の脆弱性を修復する必要がある (ゲスト構成を利用) |Windows マシン上のセキュリティ構成の脆弱性を修復し、攻撃から保護します。<br />(関連ポリシーはありません) |低 |
 |仮想マシンの脆弱性を修復する必要がある |Azure Security Center の組み込みの脆弱性評価ソリューション (Qualys を利用) で検出された、お使いの仮想マシンの脆弱性の検出結果をモニターします。<br />(関連ポリシー:[脆弱性評価ソリューションを仮想マシンで有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)) |低 |
 |マシンで Windows Defender Exploit Guard を有効にする必要がある |Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントを使用します。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。<br />(関連ポリシー:[Windows Defender Exploit Guard が有効になっていない Windows マシンを監査する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fbed48b13-6647-468e-aa2f-1af1d3f4dd40)) |中 |
 |Windows Web サーバーはセキュリティで保護された通信プロトコルを使用するように構成される必要がある |インターネット経由で通信する情報のプライバシーを保護するために、お客様の Web サーバーでは業界標準の暗号化プロトコルであるトランスポート層セキュリティ (TLS) の最新バージョンを使用する必要があります。 TLS によって、セキュリティ証明書を使用してマシン間の接続が暗号化されることにより、ネットワーク経由の通信がセキュリティで保護されます。 TLS 1.3 は、以前のバージョンTLS 1.0 から 1.2 と SSL 2 から 3 (すべて従来のプロトコルと見なされている) よりも高速でより安全です。<br />(関連ポリシー: [セキュリティで保護された通信プロトコルを使用していない Windows Web サーバーを監査する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5752e6d6-1206-46d8-8ab1-ecc2f71a8112)) |高 |

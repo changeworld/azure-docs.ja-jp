@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7264791654bf1b646338f0d429930b63f0cc3a06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b85e16d546989200adbfc37c2ef656022ad87cef
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96449928"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163465"
 ---
 # <a name="restore-a-deleted-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の削除された専用 SQL プール (旧称 SQL DW) を復元する
 
@@ -43,7 +43,7 @@ ms.locfileid: "96449928"
 7. 復元されたデータ ウェアハウスがオンラインになっていることを確認します。
 8. 復元が完了したら、「[復旧後のデータベースの構成](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)」の手順に従って、復旧されたデータ ウェアハウスを構成できます。
 
-```Powershell
+```powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net

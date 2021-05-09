@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: af7d126bfdc9ff8edf6b498747fab9c7f497a0f4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: cf7e990fccd4b1d649a66495799e8590d80f7f5c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484848"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合
 
@@ -134,8 +134,8 @@ Symantec Web Security Service (WSS) 側にシングル サインオンを構成�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Symantec Web Security Service (WSS) に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Symantec Web Security Service (WSS)] タイルをクリックすると、SSO を設定した Symantec Web Security Service (WSS) に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Symantec Web Security Service (WSS)] タイルをクリックすると、SSO を設定した Symantec Web Security Service (WSS) に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Symantec Web Security Service (WSS) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Symantec Web Security Service (WSS) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

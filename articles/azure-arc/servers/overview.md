@@ -2,14 +2,14 @@
 title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル, ハイブリッド
-ms.date: 02/18/2021
+ms.date: 04/21/2021
 ms.topic: overview
-ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023335"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831998"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -25,9 +25,9 @@ Azure の外部でホストされているハイブリッド マシンでこの�
 
 - [Azure Defender for servers](../../security-center/defender-for-servers-introduction.md) が有効になっているサーバーに対し、Azure Automation の[変更履歴とインベントリ](../../automation/change-tracking/overview.md)および [Azure Security Center のファイルの整合性の監視](../../security-center/security-center-file-integrity-monitoring.md)を使用して、監視対象サーバー上にインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンの構成の変更について、レポートします。
 
-- [Azure Monitor for VMs](../../azure-monitor/vm/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出してそのプロセスや、アプリケーションが通信する他のリソースとの依存関係を監視します。
+- [VM insights](../../azure-monitor/vm/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出して、そのプロセスや、アプリケーションが通信する他のリソースとの依存関係を監視します。
 
-- Azure 以外の Windows または Linux マシンでサポートされている [Azure VM 拡張機能](manage-vm-extensions.md)を使用して、Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) や Azure Monitor Log Analytics ワークスペースなどの他の Azure サービスによるデプロイを簡略化します。 これには、カスタム スクリプト拡張機能を使用した、デプロイ後の構成またはソフトウェアのインストールの実行が含まれます。
+- Azure 以外の Windows または Linux マシンでサポートされている [Azure VM 拡張機能](manage-vm-extensions.md)を使用して、Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) や Azure Monitor Log Analytics ワークスペースなどの他の Azure サービスを使用してデプロイを簡略化します。 これには、カスタム スクリプト拡張機能を使用した、デプロイ後の構成またはソフトウェアのインストールの実行が含まれます。
 
 - Azure Automation で [Update Management](../../automation/update-management/overview.md) を使用して、Windows と Linux サーバーのオペレーティング システムの更新プログラムを管理します
 

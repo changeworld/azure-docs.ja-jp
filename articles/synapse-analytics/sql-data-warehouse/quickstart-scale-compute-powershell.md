@@ -14,12 +14,12 @@ ms.custom:
 - seo-lt-2019
 - devx-track-azurepowershell
 - mode-api
-ms.openlocfilehash: 73718f0e8e82e7d35ed1ced98f45c1e125a55a00
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4a178c1104870eb59634537ee659925bdb6abda3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534241"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163681"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする
 
@@ -74,7 +74,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 Data Warehouse ユニットを変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell コマンドレットを使用します。 次の例では、サーバー **sqlpoolservername** 上のリソース グループ **resourcegroupname** においてホストされているデータベース **mySampleDataWarehouse** の Data Warehouse ユニットを DW300c に設定します。
 
-```Powershell
+```powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
 ```
 
@@ -127,4 +127,4 @@ $database | Select-Object DatabaseName,Status
 ここでは、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする方法について学習しました。 専用 SQL プール (以前の SQL DW) に関する理解をさらに深めるために、データの読み込みに関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
->[専用 SQL プールにデータを読み込む](load-data-from-azure-blob-storage-using-copy.md)
+> [専用 SQL プールにデータを読み込む](load-data-from-azure-blob-storage-using-copy.md)

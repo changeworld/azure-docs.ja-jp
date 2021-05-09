@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a9997fac66dd49af04f4ed78737118d605e27072
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718415"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829892"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -62,22 +62,26 @@ Defender for Endpoint を Security Center と統合すると、次の追加機�
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender for Endpoint 独自の Security Center" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Microsoft Defender for Endpoint のテナントの場所
+## <a name="what-are-the-requirements-for-the-microsoft-defender-for-endpoint-tenant"></a>Microsoft Defender for Endpoint テナントの要件
 
-Azure Security Center を使用してサーバーを監視すると、Microsoft Defender for Endpoint テナントが自動的に作成されます。 Defender for Endpoint によって収集されたデータは、プロビジョニング時に識別されたテナントの地理的な場所に格納されます。 偽名フォームの顧客データは、米国の中央のストレージおよび処理システムにも格納される可能性があります。 
+Azure Security Center を使用してサーバーを監視すると、Microsoft Defender for Endpoint テナントが自動的に作成されます。 
 
-場所を構成した後は、その場所を変更することはできません。 Microsoft Defender for Endpoint のライセンスを所有していて、データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
+- **場所:** Defender for Endpoint により収集されたデータは、プロビジョニング時に特定されるテナントの所属地域に保存されます。 偽名フォームの顧客データは、米国の中央のストレージおよび処理システムにも格納される可能性があります。 場所を構成した後は、その場所を変更することはできません。 Microsoft Defender for Endpoint のライセンスを所有していて、データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
+- **サブスクリプションの移動:** Azure のサブスクリプションを Azure テナント間で移動させた場合、いくつかの準備作業を手動で行って、Security Center から Defender for Endpoint を展開できるようにする必要があります。 詳細については、[Microsoft サポートにお問い合わせください](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 
 ## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Microsoft Defender for Endpoint 統合を有効にする
 
-### <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>[前提条件]
 
 お使いのマシンが Defender for Endpoint に必要な要件を満たしていることを確認します。
 
-1. 「[デバイス プロキシとインターネット接続の設定を構成する](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)」で説明されているネットワーク設定を構成します。
-1. オンプレミスのマシンに対して Defender for Endpoint をデプロイする場合は、「[Azure Arc 対応サーバーでハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の説明に従って Azure Arc に接続します。
-1. Windows Server 2019 マシンのみの場合は、マシンで有効なエージェントが実行されていて、MicrosoftMonitoringAgent 拡張機能があることを確認します。
+1. 適切な方法でコンピューターを Azure に接続していることを確認します。
+
+    - **Windows** Server の場合は[デバイス プロキシとインターネット接続の設定を構成する](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)方法に関する記事の説明に従ってネットワーク設定を構成します
+    - **オンプレミス** のコンピューターの場合は [Azure Arc 対応サーバーにハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)方法に関する記事を参考にして、コンピューターを Azure Arc に接続します
+    - **Windows Server 2019** と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) のコンピューターの場合は、そのコンピューターで Log Analytics のエージェントを実行していることと、MicrosoftMonitoringAgent 拡張機能が入っていることを確認します。
+    
 1. **Azure Defender for servers** を有効にします。 「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
 1. ご利用のサーバーに Microsoft Defender for Endpoints のライセンスが既に供与されデプロイ済みの場合は、「[Windows サーバーのオフボード](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)」で説明されている手順を使用して削除します。
 1. Azure テナント間でサブスクリプションを移動した場合は、手動による準備手順も必要になります。 詳細については、[Microsoft サポートにお問い合わせください](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。

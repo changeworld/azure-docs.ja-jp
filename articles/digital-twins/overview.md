@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: d03a4865c8db52f74f4130c458fec3028f5b95a4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a64564887fa2738fd3c0586d1040be3c95193927
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481669"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205793"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -30,7 +30,7 @@ Azure Digital Twins で提供される機能の概要を次に示します。
 
 ### <a name="open-modeling-language"></a>オープン モデリング言語
 
-Azure Digital Twins では、[**モデル**](concepts-models.md)と呼ばれるカスタム ツイン型を使用して、物理環境の人、場所、および物を表すデジタルエン ティティを定義します。 
+Azure Digital Twins では、[モデル](concepts-models.md)と呼ばれるカスタム ツイン型を使用して、物理環境の人、場所、および物を表すデジタルエン ティティを定義します。 
 
 これらのモデル定義は、ビジネスを説明するための特殊なボキャブラリと考えることができます。 たとえば、ビル管理ソリューションでは、"建物"、"階数"、"エレベーター" などのモデルを定義できます。 その後、これらのモデルに基づいて **デジタル ツイン** を作成して、特定の環境を表すことができます。
 
@@ -46,7 +46,7 @@ DTDL は、[IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plu
 
 Azure Digital Twins のデジタル モデルは、現実世界のライブの最新の表現です。 カスタム DTDL モデルのリレーションシップを使用して、ご自分の環境を表す **ライブ グラフ** にツインを接続します。
 
-Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [**Azure Digital Twins explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
+Azure Digital Twins グラフの視覚化は、サンプル アプリケーション [Azure Digital Twins explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) を使用して確認できます。
 
 次に、視覚化の例を示します。
 
@@ -102,6 +102,6 @@ Azure Digital Twins の **サービスの制限** については、こちらを
 
 ## <a name="next-steps"></a>次のステップ
 
-* クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認します。[*クイック スタート:サンプル シナリオを精査する*](quickstart-azure-digital-twins-explorer.md)"。
+* クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認します。[クイック スタート:サンプル シナリオを精査する](quickstart-azure-digital-twins-explorer.md)"。
 
-* または、Azure Digital Twins の概念についての [*概念: カスタム モデル*](concepts-models.md)に関するページを参照してください。
+* または、Azure Digital Twins の概念についての[概念: カスタム モデル](concepts-models.md)に関するページを参照してください。

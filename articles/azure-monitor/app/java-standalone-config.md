@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 997a4e115f8632544b2f73aef498d40dceb0d459
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 8457d64b541bd012dc85cf9964f09e69b10e962c
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449972"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006694"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -256,13 +256,13 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry"></a>自動収集 Azure SDK テレメトリ
+## <a name="auto-collected-azure-sdk-telemetry-preview"></a>自動収集 Azure SDK テレメトリ (プレビュー)
 
-この機能はプレビュー段階にあります。
+最新の Azure SDK ライブラリの多くでは、テレメトリが生成されます ([全一覧](./java-in-process-agent.md#azure-sdks-preview)を参照)。
 
-最新の Azure SDK ライブラリの多くでは、テレメトリが生成されます。
+Application Insights Java 3.0.3 以降、このテレメトリのキャプチャを有効にすることができます。
 
-バージョン 3.0.3 以降では、このテレメトリの収集を有効にすることができます。
+この機能を無効にする場合:
 
 ```json
 {
@@ -276,8 +276,7 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
-環境変数 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` を使用してこの機能を有効にすることもできます
-(JSON 構成で指定されている有効設定よりも優先されます)。
+この機能は、環境変数 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` を `true` に設定することでも有効にできます (これは、json 構成で指定されている有効化よりも優先されます)。
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>特定の自動収集テレメトリの抑制
 
@@ -314,7 +313,7 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
-これらの環境変数を使用して、これらのインストルメンテーションを抑制することもできます
+これらの環境変数を `false` に設定することで、これらのインストルメンテーションを抑制することもできます。
 
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
@@ -357,7 +356,7 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 }
 ```
 
-グローバルの `-Dhttps.proxyHost` と `-Dhttps.proxyPort` が設定されている場合、Application Insights Java 3.0 によってそれらも考慮されます。
+Application Insights Java 3.0 では、グローバル システム プロパティの `https.proxyHost` と `https.proxyPort` (および必要に応じて `http.nonProxyHosts`) が設定されている場合、それらが考慮されます。
 
 ## <a name="metric-interval"></a>メトリックの間隔
 

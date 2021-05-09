@@ -4,14 +4,15 @@ description: この記事では、Azure Database for PostgreSQL - Hyperscale (Ci
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: dee7257a296f523dbc9040d65fe68c14edf928f6
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 336b8ff034122373c9bd824d76c110c808e73010
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106787"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315581"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) での予定メンテナンス
 

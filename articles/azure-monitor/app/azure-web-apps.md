@@ -3,13 +3,13 @@ title: Azure App Services のパフォーマンスを監視する | Microsoft Do
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 9471e4b18fba17fe564536ee8d6bd450a0c383ef
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
+ms.openlocfilehash: e8c794e056dca42a06bdf6b7deb274e7f5f5bfd4
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142695"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315905"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 

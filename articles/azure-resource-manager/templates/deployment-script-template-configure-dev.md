@@ -7,12 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7a7c60ab9b3c9490c7731b3011ea9feb7ee0c02f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200939"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316463"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトの開発環境を構成する
 

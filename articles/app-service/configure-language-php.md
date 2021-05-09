@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c40bc01553b9e848d668c0a699e9dcc9929f079e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 94cbe0fa6669546cee8e989a6db2fcbb428cb9d0
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779329"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829442"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service 向けの PHP アプリを構成する
 
@@ -28,6 +28,9 @@ ms.locfileid: "107779329"
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query phpVersion
 ```
 
+> [!NOTE]
+> 開発スロットに対処するには、`--slot` パラメーターの後にスロット名を指定して含めます。
+
 サポートされているすべての PHP バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
@@ -44,6 +47,9 @@ az webapp list-runtimes | grep php
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
+> [!NOTE]
+> 開発スロットに対処するには、`--slot` パラメーターの後にスロット名を指定して含めます。
+
 サポートされているすべての PHP バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
@@ -59,7 +65,7 @@ az webapp list-runtimes --linux | grep PHP
 PHP バージョンを 7.4 に設定するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
-az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
+az webapp config set --resource-group <resource-group-name> --name <app-name> --php-version 7.4
 ```
 
 ::: zone-end
@@ -69,7 +75,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 PHP バージョンを 7.2 に設定するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
-az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
+az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PHP|7.2"
 ```
 
 ::: zone-end

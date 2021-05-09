@@ -3,12 +3,13 @@ title: デプロイ クォータの超過
 description: リソース グループ履歴でデプロイが 800 を超えたときのエラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a59c4e3a4cfc4cea9ef30b08fa6ab220f2447efc
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87987054"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316409"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>デプロイ数が 800 を超えたときのエラーを解決する
 

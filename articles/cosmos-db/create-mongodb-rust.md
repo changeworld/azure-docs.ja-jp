@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/12/2021
-ms.openlocfilehash: 91e7bafe98b1aceaf8fe27b07029291a48a31351
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a6c2b0a106b08d8aad880b0b5f18879ac5645b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555654"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206261"
 ---
 # <a name="quickstart-connect-a-rust-application-to-azure-cosmos-dbs-api-for-mongodb"></a>クイックスタート: Azure Cosmos DB の MongoDB 用 API に Rust アプリケーションを接続する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,13 +22,12 @@ ms.locfileid: "102555654"
 > * [.NET](create-mongodb-dotnet.md)
 > * [Java](create-mongodb-java.md)
 > * [Node.js](create-mongodb-nodejs.md)
-> * [Python](./mongodb-introduction.md)
 > * [Xamarin](create-mongodb-xamarin.md)
 > * [Golang](create-mongodb-go.md)
 > * [Rust](create-mongodb-rust.md)
 >
 
-Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。 この記事で紹介するサンプルは、[MongoDB 用 Rust ドライバー](https://github.com/mongodb/mongo-rust-driver)を使用した単純なコマンドライン ベースのアプリケーションです。 Azure Cosmos DB の MongoDB 用 API は [MongoDB ワイヤ プロトコルと互換性がある](./mongodb-introduction.md#wire-protocol-compatibility)ため、あらゆる MongoDB クライアント ドライバーから接続することができます。
+Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。 この記事で紹介するサンプルは、[MongoDB 用 Rust ドライバー](https://github.com/mongodb/mongo-rust-driver)を使用した単純なコマンドライン ベースのアプリケーションです。 Azure Cosmos DB の MongoDB 用 API は [MongoDB ワイヤ プロトコルと互換性がある](./mongodb-introduction.md)ため、あらゆる MongoDB クライアント ドライバーから接続することができます。
 
 MongoDB Rust ドライバーを使用して Azure Cosmos DB の MongoDB 用 API を操作する方法を、サンプル コードに実装されている CRUD (Create、Read、Update、Delete) 操作を通じて見ていきましょう。 最後に、ローカルからアプリケーションを実行して、その動作を確認することができます。
 

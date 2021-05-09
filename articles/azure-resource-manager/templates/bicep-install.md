@@ -3,12 +3,13 @@ title: Bicep の開発およびデプロイ環境のセットアップ
 description: Bicep の開発環境とデプロイ環境の構成方法
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 0e62e6a4633bee09fcbe8b783118cc95ccd5702e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 08880e1f41ef3fdaacc119cd6c4c1ed191425285
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626103"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316517"
 ---
 # <a name="install-bicep-preview"></a>Bicep (プレビュー) のインストール
 
@@ -96,7 +97,7 @@ az bicep upgrade
 特定のバージョンをインストールするには、以下を実行します。
 
 ```bash
-az bicep install --version v0.3.126
+az bicep install --version v0.3.255
 ```
 
 > [!IMPORTANT]
@@ -158,10 +159,10 @@ bicep --help
 
 ```sh
 # Add the tap for bicep
-brew tap azure/bicep https://github.com/azure/bicep
+brew tap azure/bicep
 
 # Install the tool
-brew install azure/bicep/bicep
+brew install bicep
 ```
 
 ##### <a name="macos-manual-install"></a>macOS での手動インストール

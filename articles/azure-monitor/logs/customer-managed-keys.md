@@ -4,13 +4,14 @@ description: Azure Key Vault キーを使用して Log Analytics ワークスペ
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/10/2021
-ms.openlocfilehash: 4033421095ead47e2bd1e97c4f2f42672644d7df
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.date: 04/21/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c9f59c5c4410bbb3a8f53a53b0febaa2b04ba2aa
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364857"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315993"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -105,7 +106,7 @@ Authorization: Bearer <token>
 
 ## <a name="storing-encryption-key-kek"></a>暗号化キー (KEK) の格納
 
-Azure Key Vault を作成するか既存のものを使用して、データの暗号化に使用するキーを生成またはインポートします。 キーを保護し、Azure Monitor のデータへのアクセスを保護するには、Azure Key Vault を回復可能として構成する必要があります。 この構成は Key Vault のプロパティで確認できます。 *[論理的な削除]* と *[Purge protection]\(消去保護\)* の両方を有効にしてください。
+クラスターが配置されているリージョンで Azure Key Vault を作成するか、既存のものを使用し、ログの暗号化に使用するキーを生成するかインポートします。 キーを保護し、Azure Monitor のデータへのアクセスを保護するには、Azure Key Vault を回復可能として構成する必要があります。 この構成は Key Vault のプロパティで確認できます。 *[論理的な削除]* と *[Purge protection]\(消去保護\)* の両方を有効にしてください。
 
 ![論理的な削除と消去保護の設定](media/customer-managed-keys/soft-purge-protection.png)
 
@@ -163,14 +164,13 @@ Key Vault でアクセス ポリシーを作成し、クラスターにアクセ
 
 このステップでは、データの暗号化に使用されるキーのバージョンで Azure Monitor ストレージを更新します。 更新すると、新しいキーを使用してストレージ キー (AEK) のラップとラップ解除が行われます。
 
-Azure Key Vault で現在のバージョンのキーを選択して、キー識別子の詳細を取得します。
+>[!IMPORTANT]
+>- キーの交換は自動にすることも、明示的なキーの更新を必須とすることもできます。クラスターでキー識別子の詳細を更新する前に、「[キーの交換](#key-rotation)」を参考に、自分に適した手法を判断してください。
+>- クラスターの更新では、同じ操作に ID とキー識別子の詳細の両方を含めることをしないでください。 両方の更新が必要な場合、更新は 2 つの連続する操作で行ってください。
 
 ![Key Vault アクセス許可を付与する](media/customer-managed-keys/key-identifier-8bit.png)
 
 クラスターの KeyVaultProperties を、キー識別子の詳細で更新します。
-
->[!NOTE]
->キーの交換では、自動ローテーションまたは明示的なキー バージョンの更新という 2 つのモードがサポートされています。自分にとって最適な方法を決定するには、「[キーの交換](#key-rotation)」を参照してください。
 
 操作は非同期であり、完了するまでに時間がかかることがあります。
 
@@ -417,6 +417,8 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 - クラスターの別のリソース グループまたはサブスクリプションへの移動は、現時点ではサポートされていません。
 
 - お使いの Azure Key Vault、クラスター、ワークスペースは、同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
+
+- クラスターの更新では、同じ操作に ID とキー識別子の詳細の両方を含めることをしないでください。 両方の更新が必要な場合、更新は 2 つの連続する操作で行ってください。
 
 - ロックボックスは、現在、中国では使用できません。 
 

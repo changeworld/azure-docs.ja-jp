@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eeba3cb579c6ef9158379403a3206f99a2cfb060
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447082"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830630"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Windows Virtual Desktop のデータとメタデータの場所
 
@@ -25,7 +25,7 @@ ms.locfileid: "106447082"
 >Microsoft が、お客様またはお客様のユーザーがユーザーとアプリ固有のデータにアクセスできるリージョンを制御または制限することはありません。
 
 >[!IMPORTANT]
->Windows Virtual Desktop では、テナント名、ホスト プール名、アプリ グループ名、ユーザー プリンシパル名などのグローバル メタデータ情報をデータセンターに格納します。 顧客はサービス オブジェクトを作成するたびに、サービス オブジェクトの場所を入力する必要があります。 入力した場所によって、オブジェクトのメタデータが格納される場所が決まります。 顧客が Azure リージョンを選択すると、メタデータが関連する地域に格納されます。 すべての Azure リージョンと関連する地域の一覧については、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
+>Windows Virtual Desktop では、ワークスペース名、ホスト プール名、アプリ グループ名、ユーザー プリンシパル名などのグローバル メタデータ情報をデータセンターに格納します。 顧客はサービス オブジェクトを作成するたびに、サービス オブジェクトの場所を入力する必要があります。 入力した場所によって、オブジェクトのメタデータが格納される場所が決まります。 顧客が Azure リージョンを選択すると、メタデータが関連する地域に格納されます。 すべての Azure リージョンと関連する地域の一覧については、「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
 
 現在、以下の地域にメタデータを格納することがサポートされています。
 

@@ -5,12 +5,12 @@ description: テイントと容認、ノード セレクターとアフィニテ
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 27b32d7d10b691ed806e4d7aa31a095630d2bfc9
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 971916c3fc903ff5d69db2e0f82fd884acf807b3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103625"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831584"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -42,13 +42,18 @@ Kubernetes スケジューラでは、テイントと容認を使用して、ノ
 * **テイント** をノードに適用して、特定のポッドのみをノードにスケジュールできることを示します。
 * 次に、ポッドに **容認** を適用して、ノードのテイントを *容認* できるようにします。
 
-ポッドを AKS クラスターにデプロイすると、Kubernetes によってテイントが容認と一致するノードでのみポッドがスケジュールされます。 たとえば、GPU をサポートするノード用のノード プールが AKS クラスターにあるとします。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定すると、Kubernetes スケジューラによってノード上で未定義の容認を使用したポッドがスケジュールされることが制限されます。
+ポッドを AKS クラスターにデプロイすると、Kubernetes によってテイントが容認と一致するノードでのみポッドがスケジュールされます。 たとえば、GPU をサポートしているノードのプールを AKS クラスターに追加した場合を考えてください。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定すると、Kubernetes スケジューラによってノード上で未定義の容認を使用したポッドがスケジュールされることが制限されます。
 
-```console
-kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
 ```
 
-ノードにテイントを適用したら、そのノードでのスケジュールを可能にする容認をポッドの仕様で定義します。 次の例では、前のステップでノードに適用したテイントを許容するための `sku: gpu` と `effect: NoSchedule` を定義しています。
+ノード プールのノードにテイントを適用した上で、それらのノード対してスケジュールできるよう、ポッドの仕様で容認を指定します。 次の例では、`sku: gpu` と `effect: NoSchedule` を指定することで、前のステップでノード プールに適用したテイントを容認するように設定してます。
 
 ```yaml
 kind: Pod
@@ -115,16 +120,22 @@ AKS でノード プールをスケーリングするとき、テイントと容
 > 
 > ノード セレクター、ノードのアフィニティ、またはポッド間のアフィニティを使用して、ノード上のポッドのスケジュールを制御します。 これらの設定を使用すると、Kubernetes のスケジューラは、ノードのハードウェアなどによって、ワークロードを論理的に分離できます。
 
-テイントと容認は、ハードカット オフでリソースを論理的に分離します。 ポッドがノードのテイントを許容していない場合、そのノードはノード上でスケーリングされていません。 
+テイントと容認は、ハードカット オフでリソースを論理的に分離します。 ポッドがノードのテイントを許容していない場合、そのノードはノード上でスケーリングされていません。
 
-または、ノード セレクターを使用することもできます。 たとえば、ローカルにアタッチされた SSD ストレージや大容量のメモリを示すラベルをノードに付けてから、ポッドの仕様でノード セレクターを定義します。 Kubernetes は一致するノード上にこれらのポッドをスケジュールします。 
+または、ノード セレクターを使用することもできます。 たとえば、ローカルにアタッチされた SSD ストレージや大容量のメモリを示すラベルをノードに付けてから、ポッドの仕様でノード セレクターを定義します。 Kubernetes は一致するノード上にこれらのポッドをスケジュールします。
 
 容認とは異なり、一致するノード セレクターのないポッドは、ラベルが付いているノードでもスケジュールできます。 この動作により、ノード上にある未使用のリソースを消費できますが、一致するノード セレクターが定義されているポッドが優先されます。
 
-大容量メモリを装備したノードの例を見てみましょう。 これらのノードでは、大量のメモリを要求するポッドが優先されます。 リソースがアイドル状態にならないようにするために、他のポッドの実行も許可されます。
+大容量メモリを装備したノードの例を見てみましょう。 これらのノードでは、大量のメモリを要求するポッドが優先されます。 リソースがアイドル状態にならないようにするために、他のポッドの実行も許可されます。 次のサンプル コマンドでは、*hardware=highmem* というラベルを持つノード プールを、*myResourceGroup* の *myAKSCluster* に追加します。 このノード プールでは、すべてのノードにこのラベルが付けられます。
 
-```console
-kubectl label node aks-nodepool1 hardware=highmem
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels hardware=highmem \
+    --no-wait
 ```
 
 ポッドの仕様に、ノードで設定されているラベルと一致するノード セレクターを定義する `nodeSelector` プロパティを追加します。

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4948e17d1e0e782a8fa18c3eb5a2185e816a459a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8b32413d59abce8bc9d6d523071a701368511fc
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631406"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163663"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -42,7 +42,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
    - [Azure Marketplace のカスタム テンプレート](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)を使用します。これにより、最初からテンプレートを作成したり、既存の共通テンプレートまたは[クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)に基づいてテンプレートを作成したりできます。
    - [元のデプロイ](../../azure-resource-manager/templates/export-template-portal.md)または[デプロイの現在の状態](../../azure-resource-manager/templates/export-template-portal.md)からテンプレートをエクスポートすることによって、既存のリソース グループから派生させます。
    - ローカルの [JSON エディター (VS Code など)](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) を使用してから、PowerShell または CLI を使用してアップロードおよびデプロイします。
-   - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)を使用して、テンプレートを作成およびデプロイします。  
+   - Visual Studio の [Azure リソース グループ プロジェクト](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)を使用して、テンプレートを作成およびデプロイします。
 
 選択するオプションにかかわらず、初めてのデプロイ時も再デプロイ時もテンプレートの構文は同じです。 新規または既存の VM での、システムまたはユーザー割り当てマネージド ID の有効化も同様に行われます。 また、既定で Azure Resource Manager はデプロイに対して[増分更新](../../azure-resource-manager/templates/deployment-modes.md)を行います。
 
@@ -58,17 +58,15 @@ VM でシステム割り当てマネージド ID を有効にするには、お�
 
 2. システム割り当てマネージド ID を有効にするには、テンプレートをエディターに読み込み、`resources` セクション内で対象の `Microsoft.Compute/virtualMachines` リソースを探し、`"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルに `"identity"` プロパティを追加します。 次の構文を使用します。
 
-   ```JSON
+   ```json
    "identity": {
        "type": "SystemAssigned"
    },
    ```
 
-
-
 3. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
 
-   ```JSON
+   ```json
     "resources": [
         {
             //other resource provider properties...
@@ -95,7 +93,7 @@ VM のシステム割り当て ID にロールを割り当てるには、お使�
 
    `parameters` セクションの下に、以下を追加します。
 
-    ```JSON
+    ```json
     "builtInRoleType": {
         "type": "string",
         "defaultValue": "Reader"
@@ -107,13 +105,13 @@ VM のシステム割り当て ID にロールを割り当てるには、お使�
 
     `variables` セクションの下に、以下を追加します。
 
-    ```JSON
+    ```json
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
     `resources` セクションの下に、以下を追加します。
 
-    ```JSON
+    ```json
     {
         "apiVersion": "2017-09-01",
         "type": "Microsoft.Authorization/roleAssignments",
@@ -135,7 +133,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
 1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。
 
-2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 システム割り当てマネージド ID のみが割り当てられた VM がある場合は、ID の種類を `None` に変更することで無効にすることができます。  
+2. テンプレートを[エディター](#azure-resource-manager-templates)に読み込み、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 システム割り当てマネージド ID のみが割り当てられた VM がある場合は、ID の種類を `None` に変更することで無効にすることができます。
 
    **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
 
@@ -143,27 +141,27 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
    **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
 
-   `apiVersion` が `2017-12-01` であり、VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。  
+   `apiVersion` が `2017-12-01` であり、VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。
 
 次の例は、ユーザー割り当てマネージド ID が割り当てられていない VM からシステム割り当てマネージド ID を削除する方法を示しています。
 
- ```JSON
- {
-     "apiVersion": "2018-06-01",
-     "type": "Microsoft.Compute/virtualMachines",
-     "name": "[parameters('vmName')]",
-     "location": "[resourceGroup().location]",
-     "identity": {
-         "type": "None"
-     }
- }
- ```
+```json
+{
+    "apiVersion": "2018-06-01",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[parameters('vmName')]",
+    "location": "[resourceGroup().location]",
+    "identity": {
+        "type": "None"
+    }
+}
+```
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
 このセクションでは、Azure Resource Manager テンプレートを使用して、Azure VM にユーザー割り当てマネージド ID を割り当てます。
 
-> [!Note]
+> [!NOTE]
 > Azure Resource Manager テンプレートを使用してユーザー割り当てマネージド ID を作成するには、「[Create a user-assigned managed identity (ユーザー割り当てマネージド ID を作成する)](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)」をご覧ください。
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Azure VM にユーザー割り当てマネージド ID を割り当てる
@@ -176,7 +174,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
    `apiVersion` が `2018-06-01` の場合、ユーザー割り当てマネージド ID は `userAssignedIdentities` ディクショナリ形式で格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの `variables` セクションに定義された変数に格納する必要があります。
 
-   ```JSON
+   ```json
     {
         "apiVersion": "2018-06-01",
         "type": "Microsoft.Compute/virtualMachines",
@@ -195,7 +193,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
    `apiVersion` が `2017-12-01` の場合、ユーザー割り当てマネージド ID は `identityIds` 配列に格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの `variables` セクションに定義された変数に格納する必要があります。
 
-   ```JSON
+   ```json
    {
        "apiVersion": "2017-12-01",
        "type": "Microsoft.Compute/virtualMachines",
@@ -212,9 +210,9 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
 3. 完了すると、テンプレートの `resource` セクションに次のセクションが追加され、テンプレートは次のようになります。
 
-   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**    
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
 
-   ```JSON
+   ```json
      "resources": [
         {
             //other resource provider properties...
@@ -231,9 +229,10 @@ VM からシステム割り当てマネージド ID を削除するには、お�
         }
     ] 
    ```
+
    **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
 
-   ```JSON
+   ```json
    "resources": [
         {
             //other resource provider properties...

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 04/20/2021
-ms.openlocfilehash: bfeaf070268dde315858c045bd1b941dc1bdb26a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a718e7c7b771f66ed8337e53fec49e5939ab0442
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136159"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315761"
 ---
 # <a name="built-in-triggers-and-actions-for-logic-apps"></a>Logic Apps の組み込みのトリガーとアクション
 
@@ -208,10 +208,10 @@ Logic Apps では、ワークフローでアクションを構成および制御
         アクティブに実行中のロジック アプリ ワークフローを停止します。 
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の [期限] アクションのアイコン][until-icon]][until-doc]
+        [![Logic Apps 内の Until アクションのアイコン][until-icon]][until-doc]
         \
         \
-        [**期限**][until-doc]
+        [**Until**][until-doc]
         \
         \
         指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。
@@ -318,7 +318,7 @@ Logic Apps では、データ出力とその形式を操作するための組み
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Logic Apps から呼び出しできるカスタム API の作成](/logic-apps/logic-apps-create-api-app)
+> [Logic Apps から呼び出しできるカスタム API の作成](../logic-apps/logic-apps-create-api-app.md)
 
 <!-- Built-ins icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png

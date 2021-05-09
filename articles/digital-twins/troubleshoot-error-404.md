@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/13/2021
-ms.openlocfilehash: e3fe3ad22098d796faa309ff3509c318a7e1df4d
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: bc635d742fb9edf53a6cd3244b7e8aa34c8d7148
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107590543"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205659"
 ---
 # <a name="service-request-failed-status-404-sub-domain-not-found"></a>サービス要求が失敗しました。 状態: 404 Sub-Domain not found
 
@@ -46,4 +46,4 @@ Azure Digital Twins では、すべての認証ユーザーが Azure Digital Twi
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins のセキュリティとアクセス許可の詳細を確認します。
-* [*概念:Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)
+* [概念:Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)
