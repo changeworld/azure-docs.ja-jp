@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a80a357b58ec7b17cc0da3e8247a668faf7ee413
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89268606"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286476"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 
@@ -93,7 +93,7 @@ Enterprise State Roaming を使用して Microsoft クラウドと同期され�
 ## <a name="next-steps"></a>次のステップ
 
 * [Enterprise State Roaming の概要](enterprise-state-roaming-overview.md)
-* [設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md)
+* [設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.yml)
 * [設定を同期させるためのグループ ポリシーと MDM の設定](enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 ローミング設定リファレンス](enterprise-state-roaming-windows-settings-reference.md)
 * [トラブルシューティング](enterprise-state-roaming-troubleshooting.md)

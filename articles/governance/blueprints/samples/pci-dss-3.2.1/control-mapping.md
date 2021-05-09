@@ -3,12 +3,12 @@ title: PCI-DSS v3.2.1 ブループリント サンプルのコントロール
 description: Payment Card Industry Data Security Standard v3.2.1 ブループリント サンプルの Azure Policy と Azure RBAC へのコントロール マッピング。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 028981e7c6fc6e3886781d33079dcdfa0aebcc39
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7011f0b55e73f193fb85881ed18812de97876fda
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386084"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166669"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
@@ -65,7 +65,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 このブループリントでは、所有者アクセス許可、書き込みアクセス許可、または読み取りアクセス許可を持つ外部アカウントと、所有者アクセス許可や書き込みアクセス許可を持つ、多要素認証が有効になっていない従業員アカウントを監査するための [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、アクセス特権を制限および制御することができます。 Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースにアクセスするユーザーを管理できます。 カスタム Azure RBAC 規則ではエラーが発生しやすいため、カスタム Azure RBAC 規則の実装状況を把握しておくと、実装の必要性や適切性の確認に役立ちます。 このブループリントでは、SQL Server に対する Azure Active Directory 認証の使用を監査する [Azure Policy](../../../policy/overview.md) 定義も割り当てられます。 Azure Active Directory 認証を使用すると、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます  
 。
- 
+
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある

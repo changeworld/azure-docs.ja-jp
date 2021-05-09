@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 0163204e0ba953c34adf3f1b44bd385cb517fed5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e73a5112babdeb9e5fe7b4b5062c7a15325dca30
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133585"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289140"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 

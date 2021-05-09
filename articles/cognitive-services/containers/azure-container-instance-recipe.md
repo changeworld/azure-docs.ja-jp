@@ -5,17 +5,17 @@ description: Azure コンテナー インスタンスに Cognitive Services コ�
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: aahi
-ms.openlocfilehash: 4641723ed1ad334ab9f960728f4986b03fd0ac99
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d37b01750c1d5cd900378fcb5ea7f4d1ffb0d597
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065890"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287250"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Azure コンテナー インスタンスにコンテナーをデプロイして実行する
 

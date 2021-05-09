@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4baaf2de6fbe4a56f64d449644b8594217dc432c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97f43ee22ade532ab8efd633c0c332b78e73263f
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172739"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181150"
 ---
 # <a name="remote-desktop-gateway-services"></a>リモート デスクトップ ゲートウェイ サービス
 
@@ -46,5 +46,5 @@ ms.locfileid: "96172739"
 
 * [Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md) 
 
-* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)
+* [Azure AD でアプリケーション プロキシを使用したリモート アクセスを行うためにオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)
 

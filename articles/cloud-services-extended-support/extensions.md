@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 6db43acda679c6c1c1edd6336f693cc4757b6d45
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 58377252e163894cdfee83d9c68146a9131f94c5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220919"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288780"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>Cloud Services (延長サポート) の拡張機能
 
@@ -40,9 +40,9 @@ ms.locfileid: "106220919"
 ## <a name="anti-malware-extension"></a>マルウェア対策の拡張機能
 Azure のアプリケーションまたはサービスでは、PowerShell コマンドレットを使用して Azure Cloud Services 向けの Microsoft マルウェア対策を有効化および構成できます。 Microsoft Antimalware は、Windows Server 2012 R2 以前を実行している Cloud Services プラットフォームに無効状態でインストールされているので、Azure アプリケーションで有効化する必要があることに注意してください。 Windows Server 2016 以降では、Windows Defender が既定で有効になっているため、これらのコマンドレットを使用してマルウェア対策を構成できます。
 
-詳細については、[延長サポート (CS-ES) を使用した Azure Cloud Service への Microsoft Antimalware の追加](https://docs.microsoft.com/azure/security/fundamentals/antimalware-code-samples#add-microsoft-antimalware-to-azure-cloud-service-using-extended-support)に関する記事を参照してください
+詳細については、[延長サポート (CS-ES) を使用した Azure Cloud Service への Microsoft Antimalware の追加](../security/fundamentals/antimalware-code-samples.md#add-microsoft-antimalware-to-azure-cloud-service-using-extended-support)に関する記事を参照してください
 
-Azure のマルウェア対策の詳細については、[こちら](https://docs.microsoft.com/azure/security/fundamentals/antimalware)を参照してください
+Azure のマルウェア対策の詳細については、[こちら](../security/fundamentals/antimalware.md)を参照してください
 
 
 

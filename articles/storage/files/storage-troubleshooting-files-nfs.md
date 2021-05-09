@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 4c87887f77d5f227fe4d4cdee220397289878d7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ba070f0ed04885b79a56284f08a2467f6fcf51b
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574467"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324079"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS ファイル共有に関するトラブルシューティング
 
@@ -130,11 +130,11 @@ NFS パッケージがインストールされているかどうかを確認す�
 
 ```
 sudo apt update
-sudo apt install-nfscommon
+sudo apt install nfs-common
 ```
 ##### <a name="fedora-red-hat-enterprise-linux-8-centos-8"></a>Fedora、Red Hat Enterprise Linux 8+、CentOS 8+
 
-dnf パッケージ マネージャーを使用します (`sudo dnf install nfs-common`)。
+dnf パッケージ マネージャーを使用します (`sudo dnf install nfs-utils`)。
 
 以前のバージョンの Red Hat Enterprise Linux と CentOS では、yum パッケージ マネージャーを使用します (`sudo yum install nfs-common`)。
 
@@ -160,6 +160,10 @@ wc -c を使用すると、常にサーバーから最新の値がフェッチ�
 
 #### <a name="workaround-2-use-noac-mount-flag"></a>対処法 2:"noac" マウント フラグを使用する
 mount コマンドで "noac" フラグを使用して、ファイル システムを再マウントします。 これにより、常にサーバーからすべてのメタデータ値がフェッチされます。 この回避策を使用すると、すべてのメタデータ操作に関するわずかなパフォーマンス オーバーヘッドが発生する可能性があります。
+
+
+## <a name="unable-to-mount-an-nfs-share-that-is-restored-back-from-soft-deleted-state"></a>論理的に削除された状態から復元された NFS 共有をマウントできない
+プレビュー期間中、プラットフォームで完全にサポートされていないにもかかわらず NFS 共有が論理的に削除されるという既知の問題があります。 これらの共有は、有効期限が切れると定期的に削除されます。 "共有の削除を取り消して、論理的な削除を無効にして、共有を削除する" フローによって早期に削除することもできます。 ただし、共有の復旧と使用を試みると、アクセスが拒否されるか、アクセス許可が拒否されるか、クライアントで NFS I/O エラーが発生します。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

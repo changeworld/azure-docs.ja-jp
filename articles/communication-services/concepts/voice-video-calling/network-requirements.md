@@ -9,12 +9,12 @@ ms.author: nmurav
 ms.date: 3/23/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 22bf8af89771e57621a0d8851ca31bb750b7cda2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7ec360d961c0960dc941c48626c3aeb3f7367ec
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108351"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289014"
 ---
 # <a name="ensure-high-quality-media-in-azure-communication-services"></a>Azure Communication Services で高品質なメディアを確保する
 
@@ -78,13 +78,13 @@ Azure Communication Services の接続では、高品質なマルチメディア
 
 | ネットワーク最適化タスク | 詳細 |
 | :-- | :-- |
-| ネットワークを計画する | このドキュメントには、通話用のネットワークに関する最小要件が記載されています。 [ネットワークを計画するための Teams サンプル](https://docs.microsoft.com/microsoftteams/tutorial-network-planner-example)を参照してください |
+| ネットワークを計画する | このドキュメントには、通話用のネットワークに関する最小要件が記載されています。 [ネットワークを計画するための Teams サンプル](/microsoftteams/tutorial-network-planner-example)を参照してください |
 | 外部名前解決 | Azure Communications Services SDK を実行しているすべてのコンピューターが、Azure Communication Services によって提供されるサービスを検出するために外部 DNS クエリを解決できるようにするほか、アクセスがファイアウォールによって妨げられていることのないようにします。 SDK が *.skype.com、*.microsoft.com、*.azure.net、*.azureedge.net、*.office.com、*.trouter.io のアドレスを解決できることを確認してください  |
 | セッション永続化の維持 | UDP 用のマップ済みネットワーク アドレス変換 (NAT) アドレスまたはポートが、ファイアウォールによって変更されないようにします
-NAT プール サイズの検証 | ユーザーの接続に必要なネットワーク アドレス変換 (NAT) プール サイズを検証します。 複数のユーザーとデバイスが[ネットワーク アドレス変換 (NAT) またはポート アドレス変換 (PAT)](https://docs.microsoft.com/office365/enterprise/nat-support-with-office-365) を使用して Azure Communication Services にアクセスする場合は、パブリックにルーティング可能な各 IP アドレスの背後に隠されているデバイスが、サポートされる数を超過しないようにします。 ポート不足を防ぐために、適切なパブリック IP アドレスが NAT プールに割り当てられるようにしてください。 ポート不足は、内部のユーザーとデバイスが Azure Communication Services に接続できなくなる原因となります |
-| 侵入の検出と防止に関するガイダンス | アウトバウンド接続にセキュリティ レイヤーを追加するために[侵入検出](https://docs.microsoft.com/azure/network-watcher/network-watcher-intrusion-detection-open-source-tools)または防止システム (IDS または IPS) が自分の環境にデプロイされている場合は、Azure Communication Services の URL をすべて許可します |
-| 分割トンネル VPN の構成 | 仮想プライベート ネットワーク (VPN) をバイパスする Teams トラフィックに代替パスを用意することをお勧めします。これは一般に[分割トンネル VPN](https://docs.microsoft.com/windows/security/identity-protection/vpn/vpn-routing) と呼ばれます。 分割トンネリングでは、Azure Communications Services のトラフィックが VPN を経由せず、Azure に直接送信されます。 VPN をバイパスすると、メディアの品質に良い影響があり、VPN デバイスと組織のネットワークの負荷が減少します。 分割トンネル VPN を実装する際は、お客様の VPN ベンダーと協力してください。 VPN のバイパスが推奨されるその他の理由は以下のとおりです。 <ul><li> VPN は通常、リアルタイム メディアをサポートする設計または構成になっていません。</li><li> また VPN では、(Azure Communication Services に必要である) UDP がサポートされていない可能性があります</li><li>さらに VPN では、既に暗号化されているメディア トラフィックの上に追加の暗号化レイヤーを導入します。</li><li>VPN デバイス経由のヘアピン トラフィックが原因で、Azure Communication Services への接続が効率的でない可能性があります。</li></ul>|
-| QoS の実装 | [サービスの品質 (QoS) を使用](https://docs.microsoft.com/microsoftteams/qos-in-teams)して、パケットの優先順位付けを構成します。 これにより、通話の品質が向上するほか、通話の品質の監視とトラブルシューティングが行いやすくなります。 QoS は、マネージド ネットワークのすべてのセグメントで実装される必要があります。 ネットワークが適切にプロビジョニングされ帯域幅が確保されている場合も、予定外のネットワーク イベントが発生した際に QoS によってリスクが緩和されます。 QoS を使用すると、そういった予定外のイベントが品質に悪影響を及ぼすことのないように、音声トラフィックが優先順位付けされます。 | 
+NAT プール サイズの検証 | ユーザーの接続に必要なネットワーク アドレス変換 (NAT) プール サイズを検証します。 複数のユーザーとデバイスが[ネットワーク アドレス変換 (NAT) またはポート アドレス変換 (PAT)](/office365/enterprise/nat-support-with-office-365) を使用して Azure Communication Services にアクセスする場合は、パブリックにルーティング可能な各 IP アドレスの背後に隠されているデバイスが、サポートされる数を超過しないようにします。 ポート不足を防ぐために、適切なパブリック IP アドレスが NAT プールに割り当てられるようにしてください。 ポート不足は、内部のユーザーとデバイスが Azure Communication Services に接続できなくなる原因となります |
+| 侵入の検出と防止に関するガイダンス | アウトバウンド接続にセキュリティ レイヤーを追加するために[侵入検出](../../../network-watcher/network-watcher-intrusion-detection-open-source-tools.md)または防止システム (IDS または IPS) が自分の環境にデプロイされている場合は、Azure Communication Services の URL をすべて許可します |
+| 分割トンネル VPN の構成 | 仮想プライベート ネットワーク (VPN) をバイパスする Teams トラフィックに代替パスを用意することをお勧めします。これは一般に[分割トンネル VPN](/windows/security/identity-protection/vpn/vpn-routing) と呼ばれます。 分割トンネリングでは、Azure Communications Services のトラフィックが VPN を経由せず、Azure に直接送信されます。 VPN をバイパスすると、メディアの品質に良い影響があり、VPN デバイスと組織のネットワークの負荷が減少します。 分割トンネル VPN を実装する際は、お客様の VPN ベンダーと協力してください。 VPN のバイパスが推奨されるその他の理由は以下のとおりです。 <ul><li> VPN は通常、リアルタイム メディアをサポートする設計または構成になっていません。</li><li> また VPN では、(Azure Communication Services に必要である) UDP がサポートされていない可能性があります</li><li>さらに VPN では、既に暗号化されているメディア トラフィックの上に追加の暗号化レイヤーを導入します。</li><li>VPN デバイス経由のヘアピン トラフィックが原因で、Azure Communication Services への接続が効率的でない可能性があります。</li></ul>|
+| QoS の実装 | [サービスの品質 (QoS) を使用](/microsoftteams/qos-in-teams)して、パケットの優先順位付けを構成します。 これにより、通話の品質が向上するほか、通話の品質の監視とトラブルシューティングが行いやすくなります。 QoS は、マネージド ネットワークのすべてのセグメントで実装される必要があります。 ネットワークが適切にプロビジョニングされ帯域幅が確保されている場合も、予定外のネットワーク イベントが発生した際に QoS によってリスクが緩和されます。 QoS を使用すると、そういった予定外のイベントが品質に悪影響を及ぼすことのないように、音声トラフィックが優先順位付けされます。 | 
 | WiFi の最適化 | VPN と同様に、WiFi ネットワークは必ずしもリアルタイム メディアをサポートするように設計または構成されていません。 Azure Communication Services をサポートするよう WiFi ネットワークを計画 (または最適化) することは、高品質なデプロイを実現するうえで重要な考慮事項です。 次の点を考慮します。 <ul><li>QoS または WiFi Multimedia (WMM) を実装して、メディア トラフィックが WiFi ネットワーク経由で適切に優先順位付けされるようにします。</li><li>WiFi バンドとアクセス ポイントの場所を計画および最適化します。 2\.4 GHz 帯でもアクセス ポイントの配置によっては適切なエクスペリエンスを実現できるかもしれませんが、アクセス ポイントは、この帯で動作する他のコンシューマー デバイスの影響を頻繁に受けます。 5 GHz 帯の方が密度が高いため、リアルタイム メディアに適しています。ただし、対象範囲を十分なものにするためにアクセス ポイントを増やす必要があります。 さらに、エンドポイントもこの帯をサポートする必要があります。そのため、これらの帯を利用するよう構成します。</li><li>デュアルバンド WiFi ネットワークを使用している場合は、バンド ステアリングの実装を検討します。 バンド ステアリングは、デュアルバンドのお客様が 5 GHz 帯を使用するようにする技術で、WiFi ベンダーによって実装されます。</li><li>同じチャネルのアクセス ポイントが互いに近すぎると、信号の重複と意図しない競合が発生し、結果としてユーザー エクスペリエンスが低下するおそれがあります。 互いに隣り合うアクセス ポイントが、重複しないチャネルに配置されるようにします。</li></ul> ワイヤレス ベンダー各社は、そのワイヤレス ソリューションをデプロイするうえで独自の推奨事項を持っています。 固有のガイダンスについては、ご自分の WiFi ベンダーにご相談ください。|
 
 
@@ -92,12 +92,12 @@ NAT プール サイズの検証 | ユーザーの接続に必要なネットワ
 ### <a name="operating-system-and-browsers-for-javascript-sdks"></a>オペレーティング システムとブラウザー (JavaScript SDK 向け)
 
 Azure Communication Services の音声およびビデオ SDK では、特定のオペレーティング システムとブラウザーがサポートされます。
-通話 SDK でサポートされるオペレーティング システムとブラウザーについては、[通話の概念説明ドキュメント](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)を参照してください。
+通話 SDK でサポートされるオペレーティング システムとブラウザーについては、[通話の概念説明ドキュメント](./calling-sdk-features.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 次のドキュメントもご覧ください。
 
-- [通話ライブラリ](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)について学習する
-- [クライアント - サーバー アーキテクチャ](https://docs.microsoft.com/azure/communication-services/concepts/client-and-server-architecture)について学習する
-- [通話フローのトポロジ](https://docs.microsoft.com/azure/communication-services/concepts/call-flows)について学習する
+- [通話ライブラリ](./calling-sdk-features.md)について学習する
+- [クライアント - サーバー アーキテクチャ](../client-and-server-architecture.md)について学習する
+- [通話フローのトポロジ](../call-flows.md)について学習する

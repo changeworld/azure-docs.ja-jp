@@ -9,12 +9,12 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 58203730793202649c401d96182469fa1eac6ef1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 2e56e3d6b5f29996d8fe9606ac9a1b3778201803
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286758"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288726"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) に移行するときの一般的なエラーと既知の問題
 
@@ -42,8 +42,8 @@ ms.locfileid: "106286758"
 | エラー メッセージ | 詳細 | 
 |---|---|
 | API バージョン '2020-10-01-preview' の名前空間 '`Microsoft.Compute`' でリソースの種類が見つかりませんでした。 | パブリック プレビューにアクセスするには、CloudServices 機能フラグの[サブスクリプションを登録](in-place-migration-overview.md#setup-access-for-migration)してください。 | 
-| サーバーで内部エラーが発生しました。 要求をやり直してください。 | 操作を再試行するか、[Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
-| The server encountered an unexpected error while trying to allocate network resources for the cloud service. (クラウド サービス用のネットワーク リソースを割り当てようとしているときに、サーバーで予期しないエラーが発生しました。) 要求をやり直してください。 | 操作を再試行するか、[Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
+| サーバーで内部エラーが発生しました。 要求をやり直してください。 | 操作を再試行するか、[Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
+| The server encountered an unexpected error while trying to allocate network resources for the cloud service. (クラウド サービス用のネットワーク リソースを割り当てようとしているときに、サーバーで予期しないエラーが発生しました。) 要求をやり直してください。 | 操作を再試行するか、[Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
 | クラウド サービス <クラウド サービス名> でのデプロイ <デプロイ名> は、移行する仮想ネットワーク内に存在する必要があります。 | デプロイが仮想ネットワーク内にありません。 詳細については、[こちら](in-place-migration-technical-details.md#migration-of-deployments-not-in-a-virtual-network)のドキュメントを参照してください。 | 
 | クラウド サービス <クラウド サービス名> でのデプロイ <デプロイ名> の移行は、リージョン <リージョン名> 内にあるため、サポートされていません。 許可されたリージョン: <使用可能なリージョンの一覧>。 | 移行はリージョンでまだサポートされていません。 | 
 | ロール <ロール名> に関連付けられているサブネットがないため、クラウド サービス <クラウド サービス名> のデプロイ <デプロイ名> を移行できません。 すべてのロールをサブネットに関連付けてから、クラウド サービスの移行をもう一度お試しください。 | 移行の前にサブネットに配置することで、Cloud Services (クラシック) のデプロイを更新します。 |  
@@ -62,11 +62,11 @@ ms.locfileid: "106286758"
 | Default VNet destination option not implemented. (既定の VNet 宛先オプションが実装されていません。) | REST 要求本文の DestinationVirtualNetwork プロパティでは、"Default" 値はサポートされていません。 | 
 | The deployment {0} cannot be migrated because the CSPKG is not available. (CSPKG を使用できないため、デプロイ {0} を移行できません。) | デプロイをアップグレードしてから、もう一度試してください。 | 
 | ID '{0}' のサブネットがホストされるサービス '{2}' の展開 '{1}' 以外の場所にあります。 サブネットの場所は '{3}' であり、ホストされるサービスの場所は '{4}' です。  展開と同じ場所のサブネットを指定してください。 | 移行の前に、サブネットとクラウド サービスの両方が同じ場所になるように、クラウド サービスを更新します。 | 
-| HostedService {1} のデプロイ {0} の移行は、中止の処理中のため、その処理が正常に完了するまで変更できません。 | 中止が完了するのを待つか、または中止を再試行します。 [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) を使用するか、それ以外についてはサポートに問い合わせてください。 | 
+| HostedService {1} のデプロイ {0} の移行は、中止の処理中のため、その処理が正常に完了するまで変更できません。 | 中止が完了するのを待つか、または中止を再試行します。 [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、それ以外についてはサポートに問い合わせてください。 | 
 | HostedService {1} 内の展開 {0} は、移行の準備ができていません。 | コミット操作を実行する前に、クラウド サービスで準備を実行します。 | 
-| UnknownExceptionInEndExecute: Contract.Assert failed: rgName is null or empty: Exception received in EndExecute that is not an RdfeException. (UnknownExceptionInEndExecute: Contract.Assert が失敗しました: rgName が null または空です: RdfeException ではない EndExecute で例外を受け取りました。) |   [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
-| UnknownExceptionInEndExecute: A task was canceled: Exception received in EndExecute that is not an RdfeException. (UnknownExceptionInEndExecute: タスクが取り消されました: rgName が null または空です: RdfeException ではない EndExecute で例外を受け取りました。) | [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
-| XrpVirtualNetworkMigrationError: Virtual network migration failure. (XrpVirtualNetworkMigrationError: 仮想ネットワークの移行失敗。) | [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
+| UnknownExceptionInEndExecute: Contract.Assert failed: rgName is null or empty: Exception received in EndExecute that is not an RdfeException. (UnknownExceptionInEndExecute: Contract.Assert が失敗しました: rgName が null または空です: RdfeException ではない EndExecute で例外を受け取りました。) |   [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
+| UnknownExceptionInEndExecute: A task was canceled: Exception received in EndExecute that is not an RdfeException. (UnknownExceptionInEndExecute: タスクが取り消されました: rgName が null または空です: RdfeException ではない EndExecute で例外を受け取りました。) | [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
+| XrpVirtualNetworkMigrationError: Virtual network migration failure. (XrpVirtualNetworkMigrationError: 仮想ネットワークの移行失敗。) | [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html) を使用するか、サポートに問い合わせてください。 | 
 | HostedService {1} 内の展開 {0} は仮想ネットワーク {2} に属しています。 仮想ネットワーク {2} をこの HostedService {1} に移行してください。 | 「[仮想ネットワークの移行](in-place-migration-technical-details.md#virtual-network-migration)」を参照してください。 | 
 | Azure Resource Manager にあるリソース名のための現在のクォータは、移行を完了するには不十分です。 現在のクォータは {0}、必要な追加分は {1} です。 クォータを増やすサポート リクエストを提出し、クォータが増えてから移行をもう一度お試しください。    | 適切なチャネルに従ってクォータの引き上げを要求します。 <br>[ネットワーク リソースのクォータの引き上げ](../azure-portal/supportability/networking-quota-requests.md) <br>[コンピューティング リソースのクォータの引き上げ](../azure-portal/supportability/per-vm-quota-requests.md) | 
 

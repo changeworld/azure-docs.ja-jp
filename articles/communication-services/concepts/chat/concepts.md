@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 292f430a1b08d59efdf05405437b3d1aa49ea2b7
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 05d20b8c07e618c7d8aef8bce7c437c1b3d392ac
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168597"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290076"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念 
 
@@ -84,7 +84,7 @@ Communication Services は、明示的に削除されるまで、チャットの
  - `participantsAdded` - ユーザーがチャット スレッドの参加者として追加されたとき。     
  - `participantsRemoved` - 既存の参加者がチャット スレッドから削除されたとき。
 
-リアルタイム通知を使用すると、ユーザーにリアルタイムのチャット エクスペリエンスを提供できます。 Communication Services は、ユーザーが不在のため見逃したメッセージに対してプッシュ通知を送信するために Azure Event Grid と統合されており、自分のカスタム アプリ通知サービスに接続できるチャット関連のイベント (投稿操作) を発行します。 詳細については、[サーバー イベント](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)に関する記事をご覧ください。
+リアルタイム通知を使用すると、ユーザーにリアルタイムのチャット エクスペリエンスを提供できます。 Communication Services は、ユーザーが不在のため見逃したメッセージに対してプッシュ通知を送信するために Azure Event Grid と統合されており、自分のカスタム アプリ通知サービスに接続できるチャット関連のイベント (投稿操作) を発行します。 詳細については、[サーバー イベント](../../../event-grid/event-schema-communication-services.md?bc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure%2fbread%2ftoc.json&toc=https%3a%2f%2fdocs.microsoft.com%2fen-us%2fazure%2fcommunication-services%2ftoc.json)に関する記事をご覧ください。
 
 
 ## <a name="build-intelligent-ai-powered-chat-experiences"></a>AI を活用したインテリジェントなチャット エクスペリエンスを構築する   

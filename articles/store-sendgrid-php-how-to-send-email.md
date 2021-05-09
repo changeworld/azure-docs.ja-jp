@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed13dd922595a051db77426281f062efd5176f57
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023790"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166730"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP から SendGrid 電子メール サービスを使用する方法
 
@@ -28,6 +28,7 @@ ms.locfileid: "96023790"
 紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、および **添付ファイルの追加** です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid 電子メール サービスとは
+
 SendGrid は、信頼性の高い[トランザクション メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベースの電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。 SendGrid の一般的な使用シナリオを次に示します。
 
 * 顧客に受信通知を自動送信する
@@ -118,6 +119,7 @@ SendGrid SMTP API を使用して電子メールを送信するには、*Swift M
 ```
 
 ### <a name="web-api"></a>Web API
+
 PHP の [curl 関数][curl function] で SendGrid Web API を使用して電子メールを送信します。
 
 ```php
@@ -309,7 +311,7 @@ SendGrid では、 *フィルター* を使用することでその他の電子�
 php composer.phar require sendgrid/sendgrid 2.1.1
 ```
 
-### <a name="example"></a>例  
+### <a name="example"></a>例
 
 ```php
 <?php
@@ -404,7 +406,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  $response = $sendgrid->send($email);
 
  print_r($response);
- ```
+```
 
 ## <a name="next-steps"></a>次の手順
 

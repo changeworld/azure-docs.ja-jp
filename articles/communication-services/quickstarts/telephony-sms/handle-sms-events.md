@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7a88d8a0065ca7f5cb054d23295e5cfbc23489ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb46adc6de32befd554047eded18ca16ab76dde1
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728591"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286764"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>クイックスタート: 配信レポートと受信メッセージの SMS イベントを処理する
 
@@ -65,7 +65,7 @@ Azure Portal で次の操作を行います。
 
 **システム トピック名** の入力を求められた場合は、一意の文字列を自由に指定してかまいません。 このフィールドはエクスペリエンスに影響を与えず、内部テレメトリの目的で使用されます。
 
-[Azure Communication Services でサポートされているイベント](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の完全な一覧を確認してください。
+[Azure Communication Services でサポートされているイベント](../../../event-grid/event-schema-communication-services.md)の完全な一覧を確認してください。
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="SMS Received および SMS Delivery Report Received のイベントの種類が選択されていることを示すスクリーンショット。":::
 
@@ -90,7 +90,7 @@ Azure Portal で次の操作を行います。
 - `SMS Received` イベントは、Communication Services の電話番号がテキスト メッセージを受信したときに生成されます。 イベントをトリガーするには、お使いの電話から、Communication Services リソースに接続されている電話番号にメッセージを送信するだけです。
 - `SMS Delivery Report Received` イベントは、Communication Services の電話番号を使用してユーザーに SMS を送信したときに生成されます。 イベントをトリガーするには、[送信された SMS](../telephony-sms/send.md) のオプションで `Delivery Report` を有効にする必要があります。 `Delivery Report` を使用して、お使いの電話にメッセージを送信してみてください。 このアクションを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
-[Azure Communication Services でサポートされているイベント](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の完全な一覧を確認してください。
+[Azure Communication Services でサポートされているイベント](../../../event-grid/event-schema-communication-services.md)の完全な一覧を確認してください。
 
 ### <a name="receiving-sms-events"></a>SMS イベントの受信
 
@@ -100,7 +100,7 @@ Azure Portal で次の操作を行います。
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="SMS Delivery Report Event の Event Grid スキーマを示すスクリーンショット。":::
 
-詳細については、[イベント スキーマとその他のイベントの概念](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)に関する記事を参照してください。
+詳細については、[イベント スキーマとその他のイベントの概念](../../../event-grid/event-schema-communication-services.md)に関する記事を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

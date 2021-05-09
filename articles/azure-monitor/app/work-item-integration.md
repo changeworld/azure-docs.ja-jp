@@ -1,23 +1,18 @@
 ---
-title: 作業項目の統合 (プレビュー) - Application Insights
+title: 作業項目の統合 - Application Insights
 description: Application Insights データが埋め込まれた作業項目を GitHub または Azure DevOps で作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 02/9/2021
-ms.openlocfilehash: ba0a67bad3ba47191414d6b406ab6cb4e6b7da78
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/22/2021
+ms.openlocfilehash: 57eae6b0cda7a0f77a83ecbe453aca56eaf2504b
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731920"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930423"
 ---
-# <a name="work-item-integration-preview"></a>作業項目の統合 (プレビュー)
+# <a name="work-item-integration"></a>作業項目の統合 
 
 作業項目の統合機能を使用すると、関連する Application Insights データが埋め込まれている作業項目を GitHub または Azure DevOps で簡単に作成できます。
-
-> [!IMPORTANT]
-> 現在、作業項目の統合はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="create-and-configure-a-work-item-template"></a>作業項目テンプレートの作成と構成
 
@@ -32,6 +27,8 @@ ms.locfileid: "101731920"
 2. **[テンプレートの新規作成]** を選択した後、追跡システムを選択し、ブックに名前を設定し、選択した追跡システムにリンクして、このテンプレートを格納するリージョンを選択できます (既定は Application Insights リソースがあるリージョンです)。 URL パラメーターは、 `https://github.com/myusername/reponame` や `https://mydevops.visualstudio.com/myproject` など、リポジトリの既定の URL です。
 
     :::image type="content" source="./media/work-item-integration/create-workbook.png" alt-text=" [作業項目ブック テンプレートの新規作成]のスクリーンショット。":::
+
+    テンプレート自体から、特定の作業項目のプロパティを直接設定できます。 これには、バージョン コントロール プロバイダーに基づき、担当者、イテレーション パス、プロジェクトなどが含まれます。
 
 ## <a name="create-a-work-item"></a>作業項目の作成
 

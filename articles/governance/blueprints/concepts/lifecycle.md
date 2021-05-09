@@ -1,14 +1,14 @@
 ---
 title: ブループリントのライフサイクルの概要
 description: ブループリントの更新と削除を含む、ブループリント定義のライフサイクルの順番と各ステージの詳細について説明します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 721a198b5732af01c6712e86bc0c8e8ef543b404
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac495c7d04c0aafdbc6f1851e52d04405a7a3e8f
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918519"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323431"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 

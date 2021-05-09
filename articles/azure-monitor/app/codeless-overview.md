@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ead123338a410daf53569ff577dfc8c728a8ddf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df6271f8c036d708b93d7312076f3eee585cfcba
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708494"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287286"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションまたはコードなしアタッチとは
 
@@ -27,7 +27,6 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 |Azure App Service on Windows           | GA、OnBD*       | GA、オプトイン      | 進行中     | 進行中     | サポートされていません   |
 |Azure App Service on Linux             | 該当なし             | サポートされていません   | 進行中     | パブリック プレビュー  | サポートされていません   |
-|Azure App Service on AKS               | 該当なし             | 設計中       | 設計中       | 設計中       | サポートされていません   |
 |Azure Functions - 基本                | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       | GA、OnBD*       |
 |Azure Functions Windows - 依存関係 | サポートされていません   | サポートされていません   | パブリック プレビュー  | サポートされていません   | サポートされていません   |
 |Azure Kubernetes Service               | 該当なし             | 設計中       | エージェント経由   | 設計中       | サポートされていません   |
