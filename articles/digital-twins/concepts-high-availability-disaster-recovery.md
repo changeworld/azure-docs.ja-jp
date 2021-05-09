@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 41edef58910fe2b772831ef083e5aca8bb52a321
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ee2bd4ab66b7a67be04c1a710caa12c57c705d19
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482270"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209969"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digital Twins の高可用性とディザスター リカバリー
 
@@ -24,7 +24,7 @@ Azure Digital Twins では、次の機能オプションがサポートされて
 * *リージョン内 HA* -サービスのアップタイムを実現するために組み込まれている冗長性
 * *リージョン間 DR* -予期しないデータ センターの障害が発生した場合の Azure geo ペア リージョンへのフェールオーバー
 
-HA/DR の設計に関する一般的な Azure ガイダンスについては、[*ベスト プラクティス*](#best-practices)に関するセクションも参照してください。
+HA/DR の設計に関する一般的な Azure ガイダンスについては、[ベスト プラクティス](#best-practices)に関するセクションも参照してください。
 
 ## <a name="intra-region-ha"></a>リージョン内 HA
  
@@ -65,12 +65,12 @@ Service Health イベントを表示するには...
 ## <a name="best-practices"></a>ベスト プラクティス
 
 HA/DR のベスト プラクティスについては、このトピックの次の Azure ガイダンスを参照してください。 
-* [*Azure ビジネス継続性テクニカル ガイダンス*](/azure/architecture/framework/resiliency/overview)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 
-* 「[*Disaster recovery and high availability for Azure applications*](/azure/architecture/framework/resiliency/backup-and-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
+* [Azure ビジネス継続性テクニカル ガイダンス](/azure/architecture/framework/resiliency/overview)に関する記事では、ビジネス継続性とディザスター リカバリーについて考慮する際に役立つ一般的なフレームワークについて説明しています。 
+* 「[Disaster recovery and high availability for Azure applications](/azure/architecture/framework/resiliency/backup-and-recovery)」(Azure アプリケーションのディザスター リカバリーと高可用性) では、高可用性 (HA) とディザスター リカバリー (DR) を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
 
 ## <a name="next-steps"></a>次の手順 
 
 Azure Digital Twins ソリューションの概要については、次を参照してください。
  
-* [*Azure Digital Twins とは*](overview.md)
-* [*クイック スタート:サンプル シナリオを精査する*](quickstart-azure-digital-twins-explorer.md)
+* [Azure Digital Twins とは](overview.md)
+* [クイック スタート:サンプル シナリオを精査する](quickstart-azure-digital-twins-explorer.md)

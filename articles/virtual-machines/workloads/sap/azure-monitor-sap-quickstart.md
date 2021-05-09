@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: 908de54ee66772f3eb648895529c843675c3bf15
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a9208101777cd88f0237e661a414550759a069b0
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538645"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007383"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -147,7 +147,7 @@ Azure portal (https://portal.azure.com) にサインインする
 1. ドロップダウンから [OS (Linux)] を選択します 
 
    >[!IMPORTANT]
-   > OS (Linux) プロバイダーを構成するには、監視する各ホスト (BareMetal または VM) に最新バージョンの Node_Exporter がインストールされていることを確認します。 最新バージョンを見つけるには、こちらの[リンク](https://prometheus.io/download/#node_exporter)を使用してください。 詳細については、「 [Node_Exporter](https://github.com/prometheus/node_exporter)」を参照してください
+   > OS (Linux) プロバイダーを構成するには、監視する各ホスト (BareMetal または VM) に最新バージョンの Node_Exporter がインストールされていることを確認します。 [最新版の Node Exporter](https://prometheus.io/download/#node_exporter) をインストールしてください。 詳細については、[こちら](https://github.com/prometheus/node_exporter)をご覧ください
 
 2. 名前を入力します。これは、BareMetal インスタンスの識別子になります。
 3. Node Exporter エンドポイントを http://IP:9100/metrics の形式で入力します。

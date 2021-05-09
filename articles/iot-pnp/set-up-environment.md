@@ -7,12 +7,12 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5446f8481439dabffe67f9b00b5f65b1da495746
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 28eedc02adad479a20bc54fb8b342035f3d5cb15
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742655"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325771"
 ---
 # <a name="quickstart-set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>クイックスタート: IoT プラグ アンド プレイのクイックスタートとチュートリアル用に環境を設定する
 
@@ -22,9 +22,7 @@ IoT プラグ アンド プレイのクイックスタートとチュートリ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-Azure CLI をローカルにインストールする必要がないようにするために、Azure Cloud Shell を使用してクラウド サービスを設定できます。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-h3](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
 ## <a name="create-the-resources"></a>リソースの作成
 

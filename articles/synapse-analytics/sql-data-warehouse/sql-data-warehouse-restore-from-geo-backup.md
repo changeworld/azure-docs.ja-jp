@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4683bd84873506483209f4a0eb3751a1b163ed48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 497a9fdec541640d021d194940b9e688125d188b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96449834"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163430"
 ---
 # <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics で専用 SQL プールを geo リストアする
 
@@ -45,7 +45,7 @@ Geo バックアップから復元するには、[Get-AzSqlDatabaseGeoBackup](/p
 7. geo リストアされたデータ ウェアハウスの状態を確認します。
 8. 復元が完了した後にデータ ウェアハウスを構成する方法については、「[復旧後のデータベースの構成]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)」を参照してください。
 
-```Powershell
+```powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net

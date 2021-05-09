@@ -1,29 +1,25 @@
 ---
 title: Azure Security Center の規制コンプライアンス ダッシュボードの使用
 description: Security Center の規制コンプライアンス ダッシュボードで規制基準を追加および削除する方法について説明します
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: f1fe1f15d2a2a2a3da7a7978b2d7645db65beae1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738956"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146691"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする
 
 Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 **規制コンプライアンス ダッシュボード** では、特定のコンプライアンス要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
 
+> [!TIP]
+> Security Center の規制コンプライアンス ダッシュボードの詳細については、[よくあるご質問](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)を参照してください。
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Security Center では、規制コンプライアンス標準はどのように表されますか?
 
@@ -38,15 +34,17 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Security Center では、どのような規制コンプライアンス標準を使用できますか?
 
-既定で、すべてのサブスクリプションに **Azure セキュリティ ベンチマーク** が割り当てられています。 これは、Microsoft が作成した、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 [Azure セキュリティ ベンチマークの詳細を確認してください](https://docs.microsoft.com/security/benchmark/azure/introduction)。
+既定で、すべてのサブスクリプションに **Azure セキュリティ ベンチマーク** が割り当てられています。 これは、Microsoft が作成した、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 [Azure セキュリティ ベンチマークの詳細を確認してください](/security/benchmark/azure/introduction)。
 
 次のような標準も追加できます。
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-v2020
 - UK OFFICIAL および UK NHS
 - カナダ連邦の PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC レベル 3
+- New Zealand ISM Restricted
 
 標準は、使用可能になるとダッシュボードに追加されます。
 
@@ -71,13 +69,15 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 1. **[規制コンプライアンス標準の追加]** ページで、以下を含む使用可能な標準を検索できます。
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NIST SP 800 171**
     - **SWIFT CSP CSCF v2020**
     - **UKO および UK NHS**
     - **カナダ連邦の PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC レベル 3**
+    - **New Zealand ISM Restricted**
     
     ![Azure Security Center の規制コンプライアンス ダッシュボードへの規制基準の追加](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
@@ -122,6 +122,6 @@ Microsoft では規制基準自体を追跡し、一部のパッケージの適�
 
 関連資料については、次のページを参照してください。
 
-- [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)
 - [Security Center の規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md) - Security Center および外部のツールを使用して規制コンプライアンス データを追跡およびエクスポートする方法について説明します。
 - [セキュリティ ポリシーの操作](tutorial-security-policy.md)

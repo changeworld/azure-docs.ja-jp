@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/05/2021
-ms.custom: references_regions
-ms.openlocfilehash: 6f6c67e0e9ef1dd2a4092033a9479801cd0e8e7d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 472700f50175c115305bad332efa6b0e77fb74ce
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449309"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315293"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) を有効にする
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。

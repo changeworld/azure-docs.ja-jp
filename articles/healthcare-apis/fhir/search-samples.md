@@ -1,29 +1,26 @@
 ---
-title: FHIR 用 Azure API の検索例
+title: Azure API for FHIR を検索する
 description: さまざまな検索パラメーター、修飾子、およびその他の FHIR 検索ツールを使用して検索する方法
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 04/20/2021
-ms.author: ginle
-ms.openlocfilehash: edbbfe81b4926689e0a431a28ac91e9f07e8e944
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 05/03/2021
+ms.author: cavoeg
+ms.openlocfilehash: 33dcd9ace7af6d4ff820654fef20aa0a5aa3ff9d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322595"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756793"
 ---
 # <a name="fhir-search-examples"></a>FHIR 検索の例
 
-次に、FHIR 検索操作の使用例を示します。これには、検索パラメーターと修飾子、チェーンと逆チェーン検索、複合検索、検索結果に対する次のエントリセットの表示、POST 要求を使用した検索などが含まれます。 検索の詳細については、「 [FHIR 検索の概要](overview-of-search.md)」を参照してください。
+次に、FHIR 検索操作の使用例を示します。これには、検索パラメーターと修飾子、チェーンと逆チェーン検索、複合検索、検索結果に対する次のエントリセットの表示、要求を使用した検索などが含まれ `POST` ます。 検索の詳細については、「 [FHIR 検索の概要](overview-of-search.md)」を参照してください。
    
 ## <a name="search-result-parameters"></a>検索結果のパラメーター
 
 ### <a name="_include"></a>_include
-
-> [!NOTE]
-> **_include** と **_revinclude** は100の項目に制限されています。
 
 `_include` リソースの指定されたパラメーターを含むリソースを検索します。 たとえば、リソース全体を検索して、 `MedicationRequest` 特定の患者の規定 (パラメーター) に関する情報が含まれているものだけを見つけることができ `reference` `patient` ます。
 
@@ -31,6 +28,9 @@ ms.locfileid: "108322595"
  GET [your-fhir-server]/MedicationRequest?_include=MedicationRequest:patient
 
 ```
+
+> [!NOTE]
+> **_include** と **_revinclude** は100の項目に制限されています。
 
 ### <a name="_revinclude"></a>_revinclude
 
@@ -216,7 +216,7 @@ content-type: application/x-www-form-urlencoded
 name=John
 
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 >[!div class="nextstepaction"]
 >[FHIR 検索の概要](overview-of-search.md)

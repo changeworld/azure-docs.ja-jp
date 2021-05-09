@@ -4,22 +4,22 @@ description: Azure Analysis Services サーバーに Power BI を使って接続
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 4/20/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5a430c5bb24032a2665ad078311dcb5137d2bb9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500922"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816034"
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 
 Azure でサーバーを作成して、表形式モデルを展開すると、社内のユーザーはすぐに接続してデータの分析を開始できるようになります。 
 
-> [!TIP]
-> 必ず最新バージョンの [Power BI Desktop](https://powerbi.microsoft.com/desktop/) を使用してください。
+> [!NOTE]
+> Power BI Desktop モデルを Power BI サービスに公開する場合は、Azure Analysis Services サーバーで、Case-Sensitive 照合順序サーバーのプロパティが選択されていない (既定) ことを確認します。 Case-Sensitive サーバーのプロパティは、SQL Server Management Studio を使用して設定できます。
 > 
 > 
   

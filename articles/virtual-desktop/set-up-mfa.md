@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7ebf38226ff725865104707a3f28e7ce51a86c31
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 719b4579d97992cdfc3563ccb72b31809569182c
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445654"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898263"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows Virtual Desktop 向け Azure 多要素認証の有効化
 
@@ -67,7 +67,7 @@ Windows Virtual Desktop 用の Windows クライアントは、Windows Virtual D
    > 
    > Windows Virtual Desktop (クラシック) を使用している場合、条件付きアクセス ポリシーによってすべてのアクセスがブロックされ、Windows Virtual Desktop のアプリ ID のみが除外されている場合は、アプリ ID 9cdead84-a844-4324-93f2-b2e6bb768d07 をポリシーに追加することでこれを修正できます。 このアプリ ID を追加しないと、Windows Virtual Desktop (クラシック) リソースのフィード検出はブロックされます。
 
-10. **[条件]**  >  **[クライアント アプリ]** に移動して、ポリシーを適用する場所を選択します。
+10. **[条件]**  >  **[クライアント アプリ]** に移動します。 **[構成]** で、 **[はい]** を選択し、ポリシーを適用する場所を選択します。
     
     - ポリシーを Web クライアントに適用する場合は、 **[ブラウザー]** を選択します。
     - ポリシーを他のクライアントに適用する場合は、 **[モバイル アプリとデスクトップ クライアント]** を選択します。

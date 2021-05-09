@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c27287f661c133641f7b3da45784478c8fc597e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98610371"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016009"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Azure Purview のデータ プレーンでのロールベースのアクセス制御
 

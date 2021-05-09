@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/23/2021
 ms.custom: devx-track-csharp
 ms.devlang: dotnet
-ms.openlocfilehash: 504116f9bbed178889cd2e6d370c0c912da0ad00
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 0f4f2b2c87f295aa98257521c420902a4e7302f7
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107981960"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163591"
 ---
 # <a name="4---net-search-integration-cheat-sheet"></a>4 - .NET 検索統合のチート シート
 
@@ -85,7 +85,7 @@ Suggest 関数 API は、コンポーネント初期化の一部として、Reac
 
 ## <a name="azure-function-get-specific-document"></a>Azure 関数: 特定のドキュメントを取得する 
 
-`Lookup` [API](https://github.com/Azure-Samples/azure-search-dotent-samples/blob/master/search-website/api/Lookup.cs) は ID を受け取り、検索インデックスからドキュメント オブジェクトを返します。 
+`Lookup` [API](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/search-website/api/Lookup.cs) は ID を受け取り、検索インデックスからドキュメント オブジェクトを返します。 
 
 :::code language="csharp" source="~/azure-search-dotnet-samples/search-website/api/Lookup.cs" highlight="19-21, 42" :::
 

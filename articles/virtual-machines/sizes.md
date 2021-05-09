@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: f2a4083e8cbbdbfbf971c441d8942b48e712c472
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a32ac9d8ffd7782c8bb15831ac3e75419716bc65
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107740028"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896515"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure の仮想マシンのサイズ
 
@@ -28,7 +28,7 @@ ms.locfileid: "107740028"
 | [メモリの最適化](sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Ev4、Esv4、Edv4、Edsv4、Mv2、M、DSv2、Dv2 | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 | [ストレージの最適化](sizes-storage.md) | Lsv2 | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
 | [GPU](sizes-gpu.md) | NC、NCv2、NCv3、NCasT4_v3、ND、NDv2、NV、NVv3、NVv4 | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。 |
-| [ハイ パフォーマンス コンピューティング](sizes-hpc.md) | HB、HBv2、HC、H | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
+| [ハイ パフォーマンス コンピューティング](sizes-hpc.md) | HB、HBv2、HBv3、HC、H | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
 
 - さまざまなサイズの価格については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) または [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/Windows/#Windows) の価格に関するページをご覧ください。
 - 各 Azure リージョンで利用可能な VM サイズについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。

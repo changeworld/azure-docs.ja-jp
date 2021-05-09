@@ -6,19 +6,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: e1eed3f9449843e6c2dd8c77719402e709fdeb23
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 60d25c0567bec06311cd391c3181c2ab21742839
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327420"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313359"
 ---
 このクイックスタートでは、iOS 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
-
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
-
-> [!NOTE]
-> このドキュメントでは、Calling SDK のバージョン 1.0.0-beta.9 を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,9 +42,7 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
    use_frameworks!
 
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.9'
-     pod 'AzureCommunication', '~> 1.0.0-beta.9'
-     pod 'AzureCore', '~> 1.0.0-beta.9'
+     pod 'AzureCommunicationCalling', '~> 1.0.0'
    end
    ```
 
@@ -146,13 +139,12 @@ do {
 self.callClient = CallClient()
 
 // Creates the call agent
-self.callClient?.createCallAgent(userCredential: userCredential) { (agent, error) in
+self.callClient?.createCallAgent(userCredential: userCredential!) { (agent, error) in
     if error != nil {
         print("ERROR: It was not possible to create a call agent.")
         return
     }
-
-    if let agent = agent {
+    else {
         self.callAgent = agent
         print("Call agent successfully created.")
     }
@@ -173,7 +165,13 @@ func startCall()
         if granted {
             // start call logic
             let callees:[CommunicationIdentifier] = [CommunicationUserIdentifier(identifier: self.callee)]
-            self.call = self.callAgent?.startCall(participants: callees, options: StartCallOptions())
+            self.call = self.callAgent?.startCall(participants: callees, options: StartCallOptions()) { (call, error) in
+                if (error == nil) {
+                    self.call = call
+                } else {
+                    print("Failed to get call object")
+                }
+            }
         }
     }
 }

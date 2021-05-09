@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce6a33b569a86cd539de99264dd8e7f583559a6f
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99051500"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018333"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用を開始する
 
@@ -216,16 +216,7 @@ State Configuration でマネージド ノードの整合性チェックが実�
 
 ## <a name="unregister-a-node"></a>ノードを登録解除する
 
-ノードを State Configuration で管理する必要がなくなった場合は、ノードの登録を解除できます。
-
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-1. Automation アカウント ページで、 **[構成管理]** の **[状態の構成 (DSC)]** をクリックします。
-1. [状態の構成 (DSC)] ページで、 **[ノード]** タブをクリックします。
-1. **[ノード]** ページで、登録解除するノードの名前をクリックします。
-1. そのノードのペインで、 **[登録解除]** をクリックします。
-
-    ![[登録解除] ボタンが強調表示されている [ノード] 詳細ページのスクリーンショット](./media/automation-dsc-getting-started/UnregisterNode.png)
+ノードを State Configuration で管理する必要がなくなった場合は、ノードの登録を解除できます。 「[Automation の状態の構成から構成とノードを削除する方法](./how-to/remove-desired-state-configuration-package.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,20 +6,22 @@ author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: overview
-ms.date: 09/28/2020
+ms.date: 05/04/2021
 ms.author: ginle
-ms.openlocfilehash: daa71a6df0ad412823736b3ee094cfd3945af492
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e1f5159ae192d4be7aa683b68c6a994725089a7f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220851"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756865"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>保存状態のカスタマー マネージド キーを構成する
 
 新しい Azure API for FHIR アカウントを作成すると、既定では、Microsoft マネージド キーを使用してデータが暗号化されます。 これで、独自のキーを使用して第 2 のデータ暗号化レイヤーを追加できるようになります。このキーは、自分で選んで管理することが可能です。
 
-Azure では通常、これを実現するために、お客様の Azure Key Vault にある暗号化キーが使用されます。 現在、その機能が提供される例として、Azure SQL、Azure Storage、Cosmos DB があります。 Azure API for FHIR は、このサポートを Cosmos DB から利用します。 アカウントを作成するときに、Azure Key Vault キーの URI を指定することもできます。 このキーは、DB アカウントのプロビジョニング時に、Cosmos DB に渡されます。 FHIR 要求が送信されると、Cosmos DB はキーを取得し、それを使用してデータの暗号化または暗号化解除を実行します。 まずは、次のリンク先を参照してください。
+Azure では通常、これを実現するために、お客様の Azure Key Vault にある暗号化キーが使用されます。 現在、その機能が提供される例として、Azure SQL、Azure Storage、Cosmos DB があります。 Azure API for FHIR は、このサポートを Cosmos DB から利用します。 アカウントを作成するときに、Azure Key Vault キーの URI を指定することもできます。 このキーは、DB アカウントのプロビジョニング時に、Cosmos DB に渡されます。 FHIR 要求が送信されると、Cosmos DB はキーを取得し、それを使用してデータの暗号化または暗号化解除を実行します。 
+
+開始するには、次のリンクを参照してください。
 
 - [Azure サブスクリプション用の Azure Cosmos DB リソース プロバイダーを登録する](../../cosmos-db/how-to-setup-cmk.md#register-resource-provider) 
 - [Azure Key Vault インスタンスを構成する](../../cosmos-db/how-to-setup-cmk.md#configure-your-azure-key-vault-instance)
@@ -28,24 +30,30 @@ Azure では通常、これを実現するために、お客様の Azure Key Vau
 
 ## <a name="using-azure-portal"></a>Azure Portal の使用
 
-Azure portal で Azure API for FHIR アカウントを作成すると、[追加の設定] タブの [データベースの設定] に [データの暗号化] 構成オプションが表示されます。既定では、[サービス マネージド キー] オプションが選択されます。 
+Azure portal で FHIR アカウント用の Azure API を作成すると、[**追加の設定**] タブの [**データベースの設定**] の [データの **暗号化**] 構成オプションが表示されます。既定では、[サービスによって管理されるキー] オプションが選択されます。
+
+> [!Important]
+> Data encryption オプションは、FHIR 用の Azure API が作成された場合にのみ使用でき、その後は変更できません。 ただし、[ **顧客が管理するキー** ] オプションが選択されている場合は、暗号化キーを表示および更新できます。 
+
 
 キーの選択から、自分のキーを選択することもできます。
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-keypicker.png" alt-text="キーの選択":::
 
-または、ここで、[カスタマー マネージド キー] オプションを選択することで、自分の Azure Key Vault キーを指定できます。 ここには、キーの URI を入力できます。
+また、[ **ユーザーが管理するキー** ] オプションを選択して、Azure Key Vault キーを指定することもできます。
+ 
+キー URI は次のように入力することもできます。
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-create.png" alt-text="Azure API for FHIR の作成":::
 
-既存の FHIR アカウントの場合は、次に示すように、[データベース] ブレードでキー暗号化の選択肢 (サービスまたはカスタマー マネージド キー) が表示されます。 この構成オプションは、選択後に変更することはできません。 ただし、キーを変更したり更新したりすることはできます。
+> [!Important]
+> Azure Key Vault のすべてのアクセス許可が適切に設定されていることを確認します。 詳細については、「 [アクセスポリシーを Azure Key Vault インスタンスに追加する](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk#add-access-policy)」を参照してください。 また、Key Vault のプロパティで、論理的な削除が有効になっていることを確認します。 これらの手順を完了しないと、デプロイエラーが発生します。 詳細については、「 [キーコンテナーで論理的な削除が有効になっていることを確認し、論理削除を有効にする](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete)」を参照してください。
+
+既存の FHIR アカウントの場合は、次に示すように、[**データベース**] ブレードでキー暗号化の選択 (**サービス管理キー** または **顧客管理キー**) を表示できます。 選択した構成オプションは変更できません。 ただし、キーを変更したり更新したりすることはできます。
 
 :::image type="content" source="media/bring-your-own-key/bring-your-own-key-database.png" alt-text="[データベース]":::
 
 さらに、指定したキーの新しいバージョンを作成することができます。その後、サービスが中断されることなく、既存のデータはその新しいバージョンで暗号化されます。 また、キーへのアクセス権を削除することで、データへのアクセス権を削除することもできます。 キーが無効になると、クエリがエラーになります。 キーが再度有効になると、クエリが再び正常に実行されるようになります。
-
-
-
 
 ## <a name="using-azure-powershell"></a>Azure PowerShell の使用
 
@@ -137,7 +145,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure portal、PowerShell、CLI、Resource Manager テンプレートを使用して、保存時のカスタマー マネージド キーを構成する方法について説明しました。 その他の質問については、Azure Cosmos DB の FAQ セクションをご覧ください。 
+この記事では、Azure portal、PowerShell、CLI、および Resource Manager テンプレートを使用して、保存時にお客様が管理するキーを構成する方法について説明しました。 詳細については、Azure Cosmos DB FAQ のセクションを参照してください。 
  
 >[!div class="nextstepaction"]
 >[Cosmos DB: カスタマー マネージド キーを設定する方法](../../cosmos-db/how-to-setup-cmk.md#frequently-asked-questions)

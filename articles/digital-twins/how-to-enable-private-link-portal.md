@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 1/25/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2545915edf9e39b63100a2bb16bd34fa6777675c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff1589eb496cbc4482aaf93dfd4f0faeeda5e9cd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100473463"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208871"
 ---
 # <a name="enable-private-access-with-private-link-preview-azure-portal"></a>Private Link を使用してプライベート アクセスを有効にする (プレビュー):Azure portal
 
@@ -20,7 +20,7 @@ ms.locfileid: "100473463"
 
 この記事では、[Azure Digital Twins インスタンス用のプライベート エンドポイントを使用して Private Link を有効にする](concepts-security.md#private-network-access-with-azure-private-link-preview)さまざまな方法について説明します (現在プレビュー段階)。 Azure Digital Twins インスタンス用のプライベート エンドポイントを構成することで、Azure Digital Twins インスタンスをセキュリティで保護して公開されないようにすることに加え、[Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md) からのデータ流出を回避できます。
 
-この記事では、[**Azure portal**](https://portal.azure.com) を使用したプロセスについて説明します。
+この記事では、[Azure portal](https://portal.azure.com) を使用したプロセスについて説明します。
 
 この記事では、次の手順を説明します。 
 1. Private Link を有効にし、Azure Digital Twins インスタンス用のプライベート エンドポイントを構成します。
@@ -28,7 +28,7 @@ ms.locfileid: "100473463"
 
 ## <a name="prerequisites"></a>前提条件
 
-プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [**Azure Virtual Network (VNet)**](../virtual-network/virtual-networks-overview.md) が必要です。 VNet がまだない場合は、Azure Virtual Network のいずれかの[クイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
+プライベート エンドポイントをセットアップする前に、エンドポイントをデプロイできる [Azure Virtual Network (VNet)](../virtual-network/virtual-networks-overview.md)  が必要です。 VNet がまだない場合は、Azure Virtual Network のいずれかの[クイックスタート](../virtual-network/quick-create-portal.md)に従って、これを設定できます。
 
 ## <a name="add-a-private-endpoint-for-an-azure-digital-twins-instance"></a>Azure Digital Twins インスタンス用のプライベート エンドポイントを追加する 
 
@@ -43,7 +43,7 @@ ms.locfileid: "100473463"
 
 ### <a name="add-a-private-endpoint-during-instance-creation"></a>インスタンスの作成時にプライベート エンドポイントを追加する
 
-このセクションでは、現在作成中の Azure Digital Twins インスタンスでプライベート エンドポイントを備えた Private Link を有効にします。 このセクションでは、作成プロセスのネットワーク ステップを中心に説明します。新しい Azure Digital Twins インスタンスの作成に関する完全なチュートリアルについては、[*インスタンスと認証を設定する方法*](how-to-set-up-instance-portal.md)に関するページを参照してください。
+このセクションでは、現在作成中の Azure Digital Twins インスタンスでプライベート エンドポイントを備えた Private Link を有効にします。 このセクションでは、作成プロセスのネットワーク ステップを中心に説明します。新しい Azure Digital Twins インスタンスの作成に関する完全なチュートリアルについては、[インスタンスと認証を設定する方法](how-to-set-up-instance-portal.md)に関するページを参照してください。
 
 Private Link のオプションは、インスタンスのセットアップの **[ネットワーク]** タブにあります。
 
@@ -148,4 +148,4 @@ Azure Digital Twins インスタンスの構成によって、すべてのパブ
 ## <a name="next-steps"></a>次のステップ
 
 Azure 用 Private Link の詳細を確認します。 
-* [*Azure Private Link サービスとは*](../private-link/private-link-service-overview.md)
+* [Azure Private Link サービスとは](../private-link/private-link-service-overview.md)

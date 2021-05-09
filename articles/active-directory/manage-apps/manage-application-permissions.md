@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: iangithinji
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd137030e4e1f3e88f47ec5ba78b3bde08fe068
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 7e8cf0459ecdf93251d1d59a9396b6ee11b7701c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107373980"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160819"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
 
@@ -32,14 +32,13 @@ ms.locfileid: "107373980"
 アプリケーションへのアクセスを制限するには、ユーザーの割り当てが必要で、その後、アプリケーションにユーザーまたはグループを割り当てる必要があります。  詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
 
 アクションを実行するためのコンテキスト PowerShell スクリプトを取得するには、Azure AD ポータルにアクセスします。
- 
+
 1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** の順に選択します。
 3. アクセスを制限するアプリケーションを選択します。
 4. **[アクセス許可]** を選択します。 コマンド バーで **[アクセス許可の確認]** を選択します。
 
 ![[アクセス許可の確認] ウィンドウのスクリーンショット。](./media/manage-application-permissions/review-permissions.png)
-
 
 ## <a name="control-access-to-an-application"></a>アプリケーションへのアクセスを制御する
 
@@ -86,8 +85,7 @@ PowerShell スクリプトを使用すると、このアプリケーションに
 
 または、アプリケーションを無効にして、ユーザーのアクセスをブロックし、アプリケーションのデータへのアクセスを停止します。
 
-
-## <a name="disable-a-malicious-application"></a>悪意のあるアプリケーションを無効にする 
+## <a name="disable-a-malicious-application"></a>悪意のあるアプリケーションを無効にする
 
 アプリケーションを無効にして、ユーザーのアクセスをブロックし、アプリケーションがデータにアクセスできないようにすることをお勧めします。 代わりにアプリケーションを削除した場合、ユーザーはアプリケーションに再同意し、データへのアクセス権を付与できるようになります。
 
@@ -98,7 +96,6 @@ PowerShell スクリプトを使用すると、このアプリケーションに
 
 ### <a name="powershell-commands"></a>PowerShell コマンド
 
-
 サービス プリンシパル オブジェクト ID を取得します。
 
 1. 全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者として [Azure portal](https://portal.azure.com) にサインインします。
@@ -106,12 +103,14 @@ PowerShell スクリプトを使用すると、このアプリケーションに
 3. アクセスを制限するアプリケーションを選択します。
 4. **[プロパティ]** を選択し、オブジェクト ID をコピーします。
 
-```powershell
-$sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-$sp.ObjectId
-```
+   ```powershell
+   $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+   $sp.ObjectId
+   ```
+
 アプリケーションに割り当てられているすべてのユーザーを削除します。
- ```powershell
+
+```powershell
 Connect-AzureAD
 
 # Get Service Principal using objectId
@@ -128,7 +127,7 @@ $assignments | ForEach-Object {
         Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
     }
 }
- ```
+```
 
 アプリケーションに付与されているアクセス許可を取り消します。
 
@@ -154,7 +153,9 @@ $spApplicationPermissions | ForEach-Object {
     Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
 }
 ```
+
 更新トークンを無効にします。
+
 ```powershell
 Connect-AzureAD
 
@@ -169,7 +170,9 @@ $assignments | ForEach-Object {
     Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
 }
 ```
+
 ## <a name="next-steps"></a>次のステップ
+
 - [アプリケーションの同意の管理と同意要求の評価](manage-consent-requests.md)
 - [ユーザーの同意の構成](configure-user-consent.md)
 - [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple プライベート クラウドの縮小
 description: 既存の vSphere クラスターからノードを削除するか、クラスター全体を削除することで、CloudSimple でプライベート クラウドを動的に縮小する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a99b9b56f17b78a98f37d47dcefab26dd9c859de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cad88e2b151efb17516fb22a1132fe7d7825454e
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899135"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181096"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの縮小
 
