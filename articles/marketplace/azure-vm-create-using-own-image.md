@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 04/16/2021
-ms.openlocfilehash: 47fe7b42b68ae42f74a74e5fc69c8d1041d3bf8d
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.date: 04/23/2021
+ms.openlocfilehash: 2ed498c528e3e0a86644588c4c7b26b0dd057128
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727126"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946243"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>独自のイメージを使用して仮想マシンを作成する方法
 
@@ -54,7 +54,9 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 
 Azure にイメージを取り込むには、次の 3 つの方法があります。
 
-1. VHD を Shared Image Gallery (SIG) にアップロードする。
+1. 以下のいずれかに、Vhd をアップロードします。
+    1. 共有イメージ ギャラリー
+    1. 共有イメージギャラリーの共有イメージとして
 1. VHD を Azure ストレージ アカウントにアップロードする。
 1. マネージド イメージから VHD を抽出する (イメージ作成サービスを使用している場合)。
 

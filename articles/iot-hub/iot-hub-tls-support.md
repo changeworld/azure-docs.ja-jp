@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: 6a02b97957cc0599e2960cba551b536e83d1a902
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3fed568d1e5b85fcfaf5c88eb736e876e9748088
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222557"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930715"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT Hub でのトランスポート層セキュリティ (TLS) のサポート
 
@@ -30,7 +30,7 @@ IoT Hub サーバー側の証明書の更新中に、IoT Hub サービス側で�
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>楕円曲線暗号 (ECC) サーバー TLS 証明書 (プレビュー)
 
-IoT Hub ECC サーバー TLS 証明書は、パブリック プレビューとして提供されています。 ECC 証明書の検証 (ECC のみの暗号スイートを使用) を使用すると、RSA 証明書と同様のセキュリティが提供されると同時に、コンピューティング、メモリ、および帯域幅の使用が最大 40% 削減されます。 このような削減は、IoT デバイスにとって重要です。そのプロファイルおよびメモリのサイズが小さくなるためであり、ネットワーク帯域幅が制限された環境でのユース ケースに対応することができます。 
+IoT Hub ECC サーバー TLS 証明書は、パブリック プレビューとして提供されています。 ECC 証明書の検証 (ECC のみの暗号スイートを使用) を使用すると、RSA 証明書と同様のセキュリティが提供されると同時に、コンピューティング、メモリ、および帯域幅の使用が最大 40% 削減されます。 このような削減は、IoT デバイスにとって重要です。そのプロファイルおよびメモリのサイズが小さくなるためであり、ネットワーク帯域幅が制限された環境でのユース ケースに対応することができます。 ECC サーバー証明書のルートは、DigiCert グローバルルート G3 です。
 
 IoT Hub の ECC サーバー証明書をプレビューするには、次のようにします。
 

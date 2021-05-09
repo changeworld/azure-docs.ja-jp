@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: fa919acb527084d19ab88b2e7895d4e6ab0b72d3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 169c3e7be60d5bf1efb7046aa92316a472fd4518
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609073"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930859"
 ---
 # <a name="azure-percept-audio-button-and-led-behavior"></a>Azure Percept Audio のボタンと LED の動作
 

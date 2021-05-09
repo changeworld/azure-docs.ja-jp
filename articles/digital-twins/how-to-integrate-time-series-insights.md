@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1ac9a0bc83c2a33becb5348862e5a572dddf3ac2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5aa74920919e7af98368d08bfea892494273f946
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133927"
+ms.locfileid: "108208637"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -23,14 +23,14 @@ ms.locfileid: "108133927"
 ## <a name="prerequisites"></a>前提条件
 
 Time Series Insights との関係を設定する前に、次のリソースを設定する必要があります。
-* **IoT ハブ**。 手順については、"*IoT Hub のテレメトリの送信*" に関するクイックスタートの「[*IoT Hub の作成*](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)」セクションを参照してください。
+* **IoT ハブ**。 手順については、"IoT Hub のテレメトリの送信" に関するクイックスタートの「*[IoT Hub の作成](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)*」セクションを参照してください。
 * **Azure Digital Twins インスタンス**。
-手順については、[*方法: Azure Digital Twins インスタンスと認証の設定*](./how-to-set-up-instance-portal.md)に関するページを参照してください。
+手順については、[方法: Azure Digital Twins インスタンスと認証の設定](./how-to-set-up-instance-portal.md)に関するページを参照してください。
 * **Azure Digital Twins インスタンス内のモデルとツイン**。
-Time Series Insights で追跡されているデータを表示するには、ツインの情報を数回更新する必要があります。 手順については、"*IoT ハブの取り込み方法*" に関する記事の「[*モデルとツインの追加*](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)」セクションを参照してください。
+Time Series Insights で追跡されているデータを表示するには、ツインの情報を数回更新する必要があります。 手順については、"IoT ハブの取り込み方法" に関する記事の「*[モデルとツインの追加](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)*」セクションを参照してください。
 
 > [!TIP]
-> この記事では、簡略化のため、Time Series Insights に表示されるデジタル ツインの変化する値を手動で更新しています。 ただし、シミュレートされたライブ データを使ってこの記事を完了したい場合は、シミュレートされたデバイスからの IoT テレメトリ イベントに基づいてデジタル ツインを更新する Azure 関数を設定できます。 手順については、デバイス シミュレーターを実行し、データ フローが動作することを確認する最終手順を含め、"[*IoT Hub データの取り込み方法*](how-to-ingest-iot-hub-data.md)" に関する記事に従ってください。
+> この記事では、簡略化のため、Time Series Insights に表示されるデジタル ツインの変化する値を手動で更新しています。 ただし、シミュレートされたライブ データを使ってこの記事を完了したい場合は、シミュレートされたデバイスからの IoT テレメトリ イベントに基づいてデジタル ツインを更新する Azure 関数を設定できます。 手順については、デバイス シミュレーターを実行し、データ フローが動作することを確認する最終手順を含め、"[IoT Hub データの取り込み方法](how-to-ingest-iot-hub-data.md)" に関する記事に従ってください。
 >
 > 後で、デバイス シミュレーターの実行を開始する場所を示す別のヒントを探して、手動のデジタル ツイン更新コマンドを送信する代わりに、Azure 関数によって自動的にツインが更新されるようにします。
 
@@ -49,7 +49,7 @@ Time Series Insights で追跡されているデータを表示するには、�
 
 ## <a name="create-event-hub-namespace"></a>イベント ハブの名前空間の作成
 
-イベント ハブを作成する前に、まず、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[*クイック スタート:Azure portal を使用したイベント ハブの作成*](../event-hubs/event-hubs-create.md)」。 イベント ハブがサポートされているリージョンを確認するには、"[*リージョン別の利用可能な Azure 製品*](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)" に関するページを参照してください。
+イベント ハブを作成する前に、まず、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[クイック スタート:Azure portal を使用したイベント ハブの作成](../event-hubs/event-hubs-create.md)」。 イベント ハブがサポートされているリージョンを確認するには、"[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)" に関するページを参照してください。
 
 ```azurecli-interactive
 az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> -l <region>
@@ -162,7 +162,7 @@ az eventhubs eventhub authorization-rule keys list --resource-group <your-resour
 
 ### <a name="step-1-create-function-app"></a>手順 1: 関数アプリを作成する
 
-最初に、Visual Studio で新しい関数アプリ プロジェクトを作成します。 それを行う方法については、"*データを処理するために関数を設定する方法*" に関する記事の「[**Visual Studio で関数アプリを作成する**](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)」セクションを参照してください。
+最初に、Visual Studio で新しい関数アプリ プロジェクトを作成します。 それを行う方法については、"データを処理するために関数を設定する方法" に関する記事の「*[Visual Studio で関数アプリを作成する](how-to-create-azure-function.md#create-a-function-app-in-visual-studio)*」セクションを参照してください。
 
 ### <a name="step-2-add-a-new-function"></a>手順 2: 新しい関数を追加する
 
@@ -187,13 +187,13 @@ Time Series Insights へのデバイス テレメトリ イベントを更新す
 
 *ProcessDTUpdatetoTSI.cs* 関数を使用して、プロジェクトを Azure の関数アプリに発行します。
 
-それを行う方法については、「*データを処理するために関数を設定する方法*」に関する記事の「[**関数アプリを Azure に発行する**](how-to-create-azure-function.md#publish-the-function-app-to-azure)」セクションを参照してください。
+それを行う方法については、「データを処理するために関数を設定する方法」に関する記事の「*[関数アプリを Azure に発行する](how-to-create-azure-function.md#publish-the-function-app-to-azure)*」セクションを参照してください。
 
 後で 2 つのイベント ハブ用にアプリ設定を構成する際に使用するために、関数アプリ名を保存します。
 
 ### <a name="step-5-security-access-for-the-function-app"></a>手順 5: 関数アプリのセキュリティ アクセス
 
-次に、Azure Digital Twins インスタンスにアクセスできるように、関数に **アクセス ロールを割り当て** て、**アプリケーション設定を構成** します。 それを行う方法については、"*データを処理するために関数を設定する方法*" に関する記事の「[**関数アプリのセキュリティ アクセスを設定する**](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)」セクションを参照してください。
+次に、Azure Digital Twins インスタンスにアクセスできるように、関数に **アクセス ロールを割り当て** て、**アプリケーション設定を構成** します。 それを行う方法については、"データを処理するために関数を設定する方法" に関する記事の「*[関数アプリのセキュリティ アクセスを設定する](how-to-create-azure-function.md#set-up-security-access-for-the-function-app)*」セクションを参照してください。
 
 ### <a name="step-6-configure-app-settings-for-the-two-event-hubs"></a>手順 6: 2 つのイベント ハブ用にアプリ設定を構成する
 
@@ -213,7 +213,7 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
 
-このセクションでは、Time Series ハブからデータを受信するように Time Series Insights インスタンスを設定します。 このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorial-set-up-environment.md)" に関するページを参照してください。 Time Series Insights 環境を作成するには、下の手順に従います。
+このセクションでは、Time Series ハブからデータを受信するように Time Series Insights インスタンスを設定します。 このプロセスの詳細については、"[チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定](../time-series-insights/tutorial-set-up-environment.md)" に関するページを参照してください。 Time Series Insights 環境を作成するには、下の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) で "*Time Series Insights の環境*"を検索し、 **[追加]** ボタンを選択します。 Time Series 環境を作成するには、次のオプションを選択します。
 
@@ -222,7 +222,7 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
     * **環境名** - Time Series 環境の名前を指定します。
     * **場所** - 場所を選択します。
     * **レベル** - **Gen2(L1)** の価格レベルを選択します。
-    * **プロパティ名** - 「 **$dtId**」と入力します (ID 値の選択の詳細については、「[*タイム シリーズ ID の選択に関するベスト プラクティス*](../time-series-insights/how-to-select-tsid.md)」をお読みください)。
+    * **プロパティ名** - 「 **$dtId**」と入力します (ID 値の選択の詳細については、「[タイム シリーズ ID の選択に関するベスト プラクティス](../time-series-insights/how-to-select-tsid.md)」をお読みください)。
     * **ストレージ アカウント** - ストレージ アカウント名を指定します。
     * **ウォーム ストアを有効にする** - このフィールドは、 *[はい]* の設定のままにします。
 
@@ -261,7 +261,7 @@ az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermost
 **異なる Temperature 値を使用して少なくともさらに 4 回コマンドを繰り返し**、後で Time Series Insights 環境で観察できるいくつかのデータ ポイントを作成します。
 
 > [!TIP]
-> 手動でデジタル ツインの値を更新するのではなく、シミュレートされたライブ データを使用してこの記事を完了したい場合は、まず、「[*前提条件*](#prerequisites)」セクションのヒントを完了して、シミュレートされたデバイスからツインを更新する Azure 関数を設定してください。
+> 手動でデジタル ツインの値を更新するのではなく、シミュレートされたライブ データを使用してこの記事を完了したい場合は、まず、「[前提条件](#prerequisites)」セクションのヒントを完了して、シミュレートされたデバイスからツインを更新する Azure 関数を設定してください。
 その後、デバイスをすぐに実行して、シミュレートされたデータの送信と、そのデータ フローを使用したデジタル ツインの更新を開始できます。
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>Time Series Insights でデータを視覚化する
@@ -288,9 +288,9 @@ az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermost
 
 デジタル ツインは、Time Series Insights にフラット階層として既定で格納されますが、モデル情報と組織の複数レベルの階層を使用して強化することができます。 このプロセスの詳細については、以下を参照してください。 
 
-* [*チュートリアル:モデルを定義して適用する*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
+* [チュートリアル:モデルを定義して適用する](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Azure Digital Twins に既に格納されているモデルとグラフ データを使用して、この情報を自動的に提供するカスタム ロジックを作成できます。 ツイン グラフの情報の管理、アップグレード、および取得について詳しくは、以下の参照情報をご覧ください。
 
-* [*方法: デジタル ツインを管理する*](./how-to-manage-twin.md)
-* [*方法: ツイン グラフにクエリを実行する*](./how-to-query-graph.md)
+* [方法: デジタル ツインを管理する](./how-to-manage-twin.md)
+* [ツイン グラフにクエリを実行する方法](./how-to-query-graph.md)

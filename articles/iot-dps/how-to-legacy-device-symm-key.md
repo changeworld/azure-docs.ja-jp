@@ -3,17 +3,17 @@ title: 対称キーを使用してデバイスをプロビジョニングする 
 description: デバイス プロビジョニング サービス (DPS) インスタンスで対称キーを使用してデバイスをプロビジョニングする方法
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/28/2021
+ms.date: 04/23/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: 5d193d30428d24ccf65c3f70885192acad2fdc9f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 754db21fa8e14045696f1af2bcfe375fb1161d94
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228331"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930571"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>対称キー登録グループを使用してデバイスをプロビジョニングする方法
 
@@ -150,7 +150,23 @@ sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 > [!WARNING]
 > 各デバイスのデバイス コードには、そのデバイスの対応する派生デバイス キーのみ含める必要があります。 デバイス コードにはグループのマスター キーを含めないでください。 マスター キーが盗まれた場合、それで認証されるすべてのデバイスのセキュリティが危険にさらされる可能性があります。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+Azure CLI 用の IoT 拡張機能には、派生デバイス キーを生成するための [`compute-device-key`](/cli/azure/iot/dps?view=azure-cli-latest&preserve-view=true#az_iot_dps_compute_device_key) コマンドが用意されています。 このコマンドは、PowerShell または Bash シェルの Windows ベースまたは Linux システムから使用できます。
+
+`--key` 引数の値を、登録グループの **主キー** に置き換えます。
+
+`--registration-id` 引数の値を登録 ID に置き換えます。
+
+```azurecli
+az iot dps compute-device-key --key 8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw== --registration-id sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+```
+
+結果の例:
+
+```azurecli
+"Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc="
+```
 # <a name="windows"></a>[Windows](#tab/windows)
 
 Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。

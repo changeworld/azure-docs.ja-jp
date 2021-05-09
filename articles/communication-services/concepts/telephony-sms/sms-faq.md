@@ -9,12 +9,12 @@ ms.author: prakulka
 ms.date: 03/26/2021
 ms.topic: reference
 ms.service: azure-communication-services
-ms.openlocfilehash: 1ba7c730542adb74356d71f2482cce57e633cb65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cd35ccc7399580c0bc83d8668ea932c3a800f700
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645775"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290562"
 ---
 # <a name="sms-faq"></a>SMS に関する FAQ
 
@@ -43,7 +43,7 @@ SMS の転送率の制限:
 
 ## <a name="how-can-i-receive-messages-using-azure-communication-services"></a>Azure Communication Services を使用してメッセージを受信するにはどのようにしますか?
 
-Azure Communication Services のお客様は、Azure Event Grid を使用して着信メッセージを受信できます。 メッセージを受信するように Event Grid を設定するには、こちらの[クイックスタート](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/handle-sms-events)に従います。
+Azure Communication Services のお客様は、Azure Event Grid を使用して着信メッセージを受信できます。 メッセージを受信するように Event Grid を設定するには、こちらの[クイックスタート](../../quickstarts/telephony-sms/handle-sms-events.md)に従います。
 
 ## <a name="can-i-sendreceive-long-messages-2048-chars"></a>長いメッセージ (2048 文字超) は送受信できますか?
 
@@ -56,4 +56,4 @@ Azure Communication Services は、SMS での長いメッセージの送受信�
 ## <a name="can-i-send-messages-to-multiple-recipients"></a>複数の受信者にメッセージを送信できますか?
 
 
-はい。1 つの要求を複数の受信者に送信できます。 複数の受信者にメッセージを送信するには、こちらの[クイックスタート](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/send?pivots=programming-language-csharp)に従います。
+はい。1 つの要求を複数の受信者に送信できます。 複数の受信者にメッセージを送信するには、こちらの[クイックスタート](../../quickstarts/telephony-sms/send.md?pivots=programming-language-csharp)に従います。

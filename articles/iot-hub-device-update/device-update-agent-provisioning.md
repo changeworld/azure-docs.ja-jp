@@ -6,21 +6,21 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 812de4850c6c3577346915a0072ea11c60f7ba73
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 03338033d62d857c5286dc80ed6614aeb8a65ab7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365452"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133711"
 ---
 # <a name="device-update-agent-provisioning"></a>デバイス更新エージェントのプロビジョニング
 
-デバイス更新モジュール エージェントは、他のシステム プロセス、および同じ論理デバイスの一部として IoT Hub に接続されている [IoT Edge モジュール](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)と平行して実行できます。 このセクションでは、デバイス更新エージェントをモジュール ID としてプロビジョニングする方法について説明します。 
+デバイス更新モジュール エージェントは、他のシステム プロセス、および同じ論理デバイスの一部として IoT Hub に接続されている [IoT Edge モジュール](../iot-edge/iot-edge-modules.md)と平行して実行できます。 このセクションでは、デバイス更新エージェントをモジュール ID としてプロビジョニングする方法について説明します。 
 
 
 ## <a name="module-identity-vs-device-identity"></a>モジュール ID とデバイス ID
 
-IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作成できます。 モジュールの ID ごとに、モジュール ツインは暗黙的に生成されます。 デバイス側では、IoT Hub デバイス SDK を使用して、それぞれが IoT Hub への独立した接続を確立するモジュールを作成できます。 モジュール ID とモジュール ツインは、デバイス ID とデバイス ツインと同様の機能を、より細かい粒度で提供します。 [IoT Hub でのモジュール ID の詳細を参照してください](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作成できます。 モジュールの ID ごとに、モジュール ツインは暗黙的に生成されます。 デバイス側では、IoT Hub デバイス SDK を使用して、それぞれが IoT Hub への独立した接続を確立するモジュールを作成できます。 モジュール ID とモジュール ツインは、デバイス ID とデバイス ツインと同様の機能を、より細かい粒度で提供します。 [IoT Hub でのモジュール ID の詳細を参照してください](../iot-hub/iot-hub-devguide-module-twins.md)
 
 
 ## <a name="support-for-device-update"></a>デバイス更新のサポート
@@ -45,7 +45,7 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 
 ## <a name="prerequisites"></a>前提条件  
 
-[パッケージ ベースの更新](https://docs.microsoft.com/azure/iot-hub-device-update/understand-device-update#support-for-a-wide-range-of-update-artifacts)用に IoT デバイスまたは IoT Edge デバイスを設定する場合は、次の手順に従って packages.microsoft.com をコンピューターのリポジトリに追加します。
+[パッケージ ベースの更新](./understand-device-update.md#support-for-a-wide-range-of-update-artifacts)用に IoT デバイスまたは IoT Edge デバイスを設定する場合は、次の手順に従って packages.microsoft.com をコンピューターのリポジトリに追加します。
 
 1. デバイス更新エージェントをインストールするコンピューターまたは IoT デバイスにログオンします。
 
@@ -77,27 +77,27 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 
 ### <a name="on-iot-edge-enabled-devices"></a>IoT Edge 対応デバイスの場合
 
-[IoT Edge 対応デバイス](https://docs.microsoft.com/azure/iot-edge)でデバイス更新エージェントをプロビジョニングするには、次の手順に従います。
+[IoT Edge 対応デバイス](../iot-edge/index.yml)でデバイス更新エージェントをプロビジョニングするには、次の手順に従います。
 
-1. 手順に従って [Azure IoT Edge ランタイムをインストールしてプロビジョニング](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true)します。
+1. 手順に従って [Azure IoT Edge ランタイムをインストールしてプロビジョニング](../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11)します。
 
 1. デバイス更新のイメージの更新エージェントをインストールします。
-    - 基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) を使用して、異なるバージョンに対してイメージの更新のロールアウトを試行するためのサンプル イメージを [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) で提供しています。 [IoT Hub デバイスにイメージをフラッシュする方法](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。  
+    - [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。  
 
 1. デバイス更新のパッケージの更新エージェントをインストールします。  
     - packages.miscrosoft.com の最新のエージェントのバージョンの場合: 次のコマンドを使用して、デバイス上のパッケージ リストを更新し、デバイス更新エージェント パッケージとその依存関係をインストールします。   
-    ```shell
-    sudo apt-get update
-    ```
+        ```shell
+        sudo apt-get update
+        ```
     
-    ```shell
-    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
-    ```
+        ```shell
+        sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+        ```
     
     - [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) の今後のリリース候補のバージョンの場合: デバイス更新エージェントをインストールするコンピューターに .dep ファイルをダウンロードして、次のコマンドを実行します。
-     ```shell
-    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
-     ```
+        ```shell
+        sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+        ```
     
 1. これで、IoT Edge デバイスでデバイス更新エージェントを開始する準備ができました。 
 
@@ -115,7 +115,7 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
         ```
         
 1. IoT ID サービスをプロビジョニングして IoT デバイス情報を取得します。
-    * 構成テンプレートのカスタム コピーを作成して、プロビジョニング情報を追加できるようにします。 ターミナルに次のコマンドを入力します。
+    1. 構成テンプレートのカスタム コピーを作成して、プロビジョニング情報を追加できるようにします。 ターミナルに次のコマンドを入力します。
       
         ```shell
         sudo cp /etc/aziot/config.toml.template /etc/aziot/config.toml 
@@ -147,7 +147,7 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
     sudo aziotctl config apply
     ```
     
-1.  最後に、デバイス更新エージェントをインストールします。 基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) を使用して、異なるバージョンに対してイメージの更新のロールアウトを試行するためのサンプル イメージを [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) で提供しています。 [IoT Hub デバイスにイメージをフラッシュする方法](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。
+1.  最後に、デバイス更新エージェントをインストールします。 [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。
 
 1.  これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
 
@@ -155,7 +155,7 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
 
 テスト用または制約のあるデバイスの場合、デバイス更新エージェントを IoT ID サービスを使用せずに構成することもできます。 (モジュールまたはデバイスから) 接続文字列を使用してデバイス更新エージェントをプロビジョニングするには、次の手順に従います。
 
-1.  基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) を使用して、異なるバージョンに対してイメージの更新のロールアウトを試行するためのサンプル イメージを [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) で提供しています。 [IoT Hub デバイスにイメージをフラッシュする方法](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。
+1.  [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) にサンプル画像を提供しており、swUpdate ファイルは、Raspberry Pi B3+ ボードにフラッシュできる基本イメージであり、.gz ファイルは、Device Update for IoT Hub を使用してインポートする更新プログラムです。 [IoT Hub デバイスにイメージをフラッシュする方法](/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。
 
 1.  コンピューターまたは IoT Edge デバイス/IoT デバイスにログオンします。
     
@@ -231,4 +231,3 @@ Device Update for IoT Hub の簡単なデモンストレーションとして、
 - [パッケージ更新: Ubuntu Server 18.04 x64 パッケージ エージェントの使用を開始する](device-update-ubuntu-agent.md)
 
 - [Azure リアルタイム オペレーティング システムでの Device Update for Azure IoT Hub のチュートリアル](device-update-azure-real-time-operating-system.md)
-
