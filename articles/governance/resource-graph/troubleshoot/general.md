@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: Azure Resource Graph を使用して Azure リソースのクエリを実行する際に発生するさまざまな SDK に関する問題をトラブルシューティングする方法について説明します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 0d783b9cb4fa30e3c3e0ff82536b4878c29c7a0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54b680169c38cd4517c225e6452c02de8ecd4dd2
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98916704"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325807"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Resource Graph 使用時のエラーのトラブルシューティング
 

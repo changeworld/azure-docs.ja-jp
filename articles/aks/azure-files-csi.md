@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: a83d2222862db6bc3e3ff86ba4074114c1a872e5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 2595dc95e4e7f489553548b7cfbf4f64bb9c82af
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776161"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166129"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 
@@ -20,7 +20,7 @@ CSI は、Kubernetes のコンテナー化されたワークロードに任意�
 
 CSI ドライバーがサポートされる AKS クラスターを作成するには、「[AKS の Azure ディスクおよび Azure Files で CSI ドライバーを有効にする](csi-storage-drivers.md)」を参照してください。
 
->[!NOTE]
+> [!NOTE]
 > *ツリー内ドライバー* とは、プラグインの新しい CSI ドライバーに対し、コア Kubernetes コードの一部である現在のストレージ ドライバーを指します。
 
 ## <a name="use-a-persistent-volume-with-azure-files"></a>Azure Files を使用した永続ボリュームを使用する
@@ -121,10 +121,8 @@ volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 
 [このチュートリアルの始めに動的に作成した](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes) PVC (`pvc-azurefile`) から、[ボリューム スナップショット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) を作成します。
 
-
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml
-
 
 volumesnapshot.snapshot.storage.k8s.io/azurefile-volume-snapshot created
 ```
@@ -167,7 +165,7 @@ PVC で大きいボリュームを要求できます。 PVC オブジェクト�
 
 AKS では、組み込みの `azurefile-csi` ストレージ クラスは既に拡張をサポートしているので、[このストレージ クラスで前に作成した PVC](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes) を使用します。 この PVC は 100 Gi のファイル共有を要求しました。 これを確認するには、次のコマンドを実行します。
 
-```console 
+```console
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
 
 Filesystem                                                                                Size  Used Avail Use% Mounted on
@@ -194,8 +192,8 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
-
 ## <a name="nfs-file-shares"></a>NFS ファイル共有
+
 [Azure Files では、NFS v4.1 プロトコルがサポートされるようになりました](../storage/files/storage-files-how-to-create-nfs-shares.md)。 Azure Files での NFS 4.1 のサポートによって、サービスとしてのフル マネージド NFS ファイル システムがお客様に提供されます。これは、可用性が高く耐久性に優れた、分散型で回復力のあるストレージ プラットフォーム上に構築されています。
 
  このオプションは、インプレース データ更新を使用するランダム アクセス ワークロードに合わせて最適化されており、完全な POSIX ファイル システムのサポートを提供します。 このセクションでは、AKS クラスター上で NFS 共有を Azure File CSI ドライバーと共に使用する方法について説明します。
@@ -256,9 +254,10 @@ storageclass.storage.k8s.io/azurefile-csi created
 ```
 
 ### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>NFS でサポートされるファイル共有を使用してデプロイを作成する
+
 [kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する[ステートフル セット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)の例をデプロイできます。
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
@@ -276,9 +275,8 @@ accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-55660
 ...
 ```
 
->[!NOTE]
+> [!NOTE]
 > NFS ファイル共有は Premium アカウントにあるため、ファイル共有の最小サイズは 100 GB であることに注意してください。 ストレージ サイズが小さい PVC を作成すると、「ファイル共有を作成できませんでした...サイズ (5)...」というエラーが発生する場合があります。
-
 
 ## <a name="windows-containers"></a>Windows コンテナー
 
@@ -286,7 +284,7 @@ Azure Files の CSI ドライバーは、Windows のノードとコンテナー�
 
 Windows ノード プールを追加したら、`azurefile-csi` などの組み込みのストレージ クラスを使用するか、カスタムのストレージ クラスを作成します。 [kubectl apply][kubectl-apply] コマンドを使用して次のコマンドをデプロイすることにより、タイムスタンプをファイル `data.txt` に保存する [Windows ベースのステートフル セット](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml)の例をデプロイできます。
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
 statefulset.apps/busybox-azurefile created
@@ -309,7 +307,6 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 - Azure ディスクで CSI ドライバーを使用する方法を学習するには、[Azure ディスクでの CSI ドライバーの使用](azure-disk-csi.md)に関するページを参照してください。
 - ストレージのベスト プラクティスの詳細については、「[Azure Kubernetes Service のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]」を参照してください。
 
-
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -318,7 +315,6 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 [managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 [smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
-
 
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md

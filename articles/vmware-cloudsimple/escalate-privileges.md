@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple 特権のエスカレート
 description: プライベート クラウドの vCenter で管理機能を実行するために CloudSimple のアクセス許可をエスカレートする方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d481717a79856583d23f61107678d2ecd1af68d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38c4e9e9128cc9b68a06582863e7026e63fba6d5
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895729"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176884"
 ---
 # <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>プライベート クラウドの vCenter で管理機能を実行するために CloudSimple の特権をエスカレートする
 
@@ -22,7 +22,7 @@ CloudSimple の特権アプローチは、通常の操作を実行するため�
 特権をエスカレートする理由には、次のようなものがあります。
 
 * ID ソースの構成
-* ユーザー管理
+* [ユーザー管理]
 * 分散ポート グループの削除
 * VCenter ソリューション (バックアップ アプリなど) のインストール
 * サービス アカウントの作成

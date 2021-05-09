@@ -5,13 +5,13 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7f35f1e82723829f6c0b1190730c5e5fab56fbc8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 3765229fccb00f6e19fd3cf2b6b1a39919abcf05
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143865"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321809"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>チュートリアル:カスタム アクションおよびリソースを備えたマネージド アプリケーションを作成する
 

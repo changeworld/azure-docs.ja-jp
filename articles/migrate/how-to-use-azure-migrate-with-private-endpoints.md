@@ -6,18 +6,18 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.openlocfilehash: 97d4f0a387b75c9b23f64992a8ef39bc0bad17f0
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 02952ab57eeaaec8700ffa97101060558370dd64
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715303"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147123"
 ---
 # <a name="using-azure-migrate-with-private-endpoints"></a>プライベート エンドポイントで Azure Migrate を使用する  
 
-この記事では、[Azure Private Link](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) を使用したプライベート ネットワーク上で、Azure Migrate を使用してサーバーの検出、評価、移行を行う方法について説明します。 
+この記事では、[Azure Private Link](../private-link/private-endpoint-overview.md) を使用したプライベート ネットワーク上で、Azure Migrate を使用してサーバーの検出、評価、移行を行う方法について説明します。 
 
-Azure Private Link を使用すると、ExpressRoute のプライベート ピアリングまたはサイト間 VPN 接続で [Azure Migrate: Discovery and Assessment](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-discovery-and-assessment-tool) および [Azure Migrate: Server Migration](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) ツールを使用して、Azure Migrate サービスにプライベートかつ安全に接続することができます。 
+Azure Private Link を使用すると、ExpressRoute のプライベート ピアリングまたはサイト間 VPN 接続で [Azure Migrate: Discovery and Assessment](./migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) および [Azure Migrate: Server Migration](./migrate-services-overview.md#azure-migrate-server-migration-tool) ツールを使用して、Azure Migrate サービスにプライベートかつ安全に接続することができます。 
 
 プライベート エンドポイントの接続方法は、公衆ネットワークを経由することなく Azure Migrate サービスやその他の Azure リソースにアクセスするという組織的な要件がある場合に推奨されます。 また、既にある ExpressRoute プライベート ピアリング回線を使用するためにプライベート リンクのサポートを利用すれば、帯域幅や待ち時間の要件も満たしやすくなります。 
 
@@ -31,25 +31,25 @@ Azure Private Link を使用すると、ExpressRoute のプライベート ピ�
 
 **デプロイ** | **詳細** | **ツール** 
 --- | --- | ---
-**検出と評価** | 任意のプラットフォーム上で動作するサーバーの検出と評価を大規模にエージェントレスで行います。ハイパーバイザー プラットフォーム ([VMware vSphere](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) や [Microsoft Hyper-V](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v) など)、パブリック クラウド ([AWS](https://docs.microsoft.com/azure/migrate/tutorial-discover-aws) や [GCP](https://docs.microsoft.com/azure/migrate/tutorial-discover-gcp) など)、さらに[ベアメタル サーバー](https://docs.microsoft.com/azure/migrate/tutorial-discover-physical)が対象となります。 | Azure Migrate: Discovery and Assessment  <br/> 
+**検出と評価** | 任意のプラットフォーム上で動作するサーバーの検出と評価を大規模にエージェントレスで行います。ハイパーバイザー プラットフォーム ([VMware vSphere](./tutorial-discover-vmware.md) や [Microsoft Hyper-V](./tutorial-discover-hyper-v.md) など)、パブリック クラウド ([AWS](./tutorial-discover-aws.md) や [GCP](./tutorial-discover-gcp.md) など)、さらに[ベアメタル サーバー](./tutorial-discover-physical.md)が対象となります。 | Azure Migrate: Discovery and Assessment  <br/> 
 **ソフトウェア インベントリ** | VMware VM 上で実行されているアプリ、ロール、機能を検出します。 | Azure Migrate: Discovery and Assessment  
-**依存関係の視覚化** | 依存関係分析機能を使用して、サーバー間の依存関係を特定、把握します。 <br/> Azure Migrate のプライベート リンク サポートでは、[エージェントレスの依存関係の視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies-agentless)がネイティブでサポートされます。 <br/>[エージェントベースの依存関係の視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)には、インターネット接続が必要となります。 エージェントベースの依存関係の視覚化にプライベート エンドポイントを使用する[方法](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security)を参照してください。 | Azure Migrate: Discovery and Assessment |
-**移行** | [エージェントレスの Hyper-V 移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)を実行するか、エージェントベースの方法を使用して [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理サーバー](./tutorial-migrate-physical-virtual-machines.md)、[AWS で実行されている VM](./tutorial-migrate-aws-virtual-machines.md)、[GCP で実行されている VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-gcp-virtual-machines)、または別の仮想化プロバイダー上で実行されている VM を移行します。 | Azure Migrate: Server Migration
+**依存関係の視覚化** | 依存関係分析機能を使用して、サーバー間の依存関係を特定、把握します。 <br/> Azure Migrate のプライベート リンク サポートでは、[エージェントレスの依存関係の視覚化](./how-to-create-group-machine-dependencies-agentless.md)がネイティブでサポートされます。 <br/>[エージェントベースの依存関係の視覚化](./how-to-create-group-machine-dependencies.md)には、インターネット接続が必要となります。 エージェントベースの依存関係の視覚化にプライベート エンドポイントを使用する[方法](../azure-monitor/logs/private-link-security.md)を参照してください。 | Azure Migrate: Discovery and Assessment |
+**移行** | [エージェントレスの Hyper-V 移行](./tutorial-migrate-hyper-v.md)を実行するか、エージェントベースの方法を使用して [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理サーバー](./tutorial-migrate-physical-virtual-machines.md)、[AWS で実行されている VM](./tutorial-migrate-aws-virtual-machines.md)、[GCP で実行されている VM](./tutorial-migrate-gcp-virtual-machines.md)、または別の仮想化プロバイダー上で実行されている VM を移行します。 | Azure Migrate: Server Migration
  
 >[!Note]
 >
-> [エージェントレスの VMware 移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware)には、インターネット アクセスまたは ExperessRoute Microsoft ピアリングによる接続が必要です。 <br/> ExpressRoute プライベート ピアリングまたはサイト間 (S2S) VPN 接続でプライベート エンドポイントを使用してレプリケーションを実行する[方法](https://docs.microsoft.com/azure/migrate/replicate-using-expressroute)を参照してください。  <br/><br/> 
+> [エージェントレスの VMware 移行](./tutorial-migrate-vmware.md)には、インターネット アクセスまたは ExperessRoute Microsoft ピアリングによる接続が必要です。 <br/> ExpressRoute プライベート ピアリングまたはサイト間 (S2S) VPN 接続でプライベート エンドポイントを使用してレプリケーションを実行する[方法](./replicate-using-expressroute.md)を参照してください。  <br/><br/> 
    
 #### <a name="other-integrated-tools"></a>その他の統合ツール
 
-移行ツールによっては、公衆ネットワーク アクセスが無効になっていると、利用状況データを Azure Migrate プロジェクトにアップロードできない場合があります。 他の Microsoft オファリングまたは外部の[独立系ソフトウェア ベンダー (ISV)](https://docs.microsoft.com/azure/migrate/migrate-services-overview#isv-integration) のオファリングからデータを受信するには、すべてのネットワークからのトラフィックを許可するように Azure Migrate プロジェクトを構成する必要があります。 
+移行ツールによっては、公衆ネットワーク アクセスが無効になっていると、利用状況データを Azure Migrate プロジェクトにアップロードできない場合があります。 他の Microsoft オファリングまたは外部の[独立系ソフトウェア ベンダー (ISV)](./migrate-services-overview.md#isv-integration) のオファリングからデータを受信するには、すべてのネットワークからのトラフィックを許可するように Azure Migrate プロジェクトを構成する必要があります。 
 
 
 Azure Migrate プロジェクトの公衆ネットワーク アクセスを有効にするには、Azure portal で Azure Migrate の **プロパティ ページ** に移動し、 **[いいえ]** を選択して、 **[保存]** を選択します。
 
 ![ネットワーク アクセス モードの変更方法を示す図](./media/how-to-use-azure-migrate-with-private-endpoints/migration-project-properties.png)
 
-### <a name="other-considerations"></a>その他の考慮事項   
+### <a name="other-considerations"></a>その他の注意事項   
 
 **考慮事項** | **詳細**
 --- | --- 
@@ -58,7 +58,7 @@ Azure Migrate プロジェクトの公衆ネットワーク アクセスを有�
 
 ## <a name="create-a-project-with-private-endpoint-connectivity"></a>プライベート エンドポイント接続を使用してプロジェクトを作成する
 
-こちらの[記事](https://docs.microsoft.com/azure/migrate/create-manage-projects#create-a-project-for-the-first-time)を参照して、新しい Azure Migrate プロジェクトを設定します。 
+こちらの[記事](./create-manage-projects.md#create-a-project-for-the-first-time)を参照して、新しい Azure Migrate プロジェクトを設定します。 
 
 > [!Note]
 > 既存の Azure Migrate プロジェクトの接続方法をプライベート エンドポイント接続に変更することはできません。
@@ -89,35 +89,39 @@ Azure Migrate プロジェクトのプライベート エンドポイントを�
     > リソースの作成中に [マシンの検出] ページを閉じないでください。  
     - この手順では、キー コンテナー、ストレージ アカウント、Recovery Services コンテナー (エージェントレス VMware 移行の場合のみ) のほか、いくつかの内部リソースが Azure Migrate によって作成され、各リソースにプライベート エンドポイントがアタッチされます。 プライベート エンドポイントは、プロジェクトの作成時に選択した仮想ネットワーク内に作成されます。  
     - プライベート エンドポイントが作成されると、Azure Migrate リソース用の DNS CNAME リソース レコードが、"privatelink" というプレフィックスが付いたサブドメイン内のエイリアスに更新されます。 また、既定では、"privatelink" サブドメインに対応するプライベート DNS ゾーンもリソースの種類ごとに作成され、関連付けられたプライベート エンドポイントの DNS A レコードが挿入されます。 これにより、ソース ネットワークに存在する Azure Migrate アプライアンスおよびその他のソフトウェア コンポーネントは、プライベート IP アドレス上にある Azure Migrate リソースのエンドポイントに到達できるようになります。  
-    - また、Azure Migrate は、移行プロジェクトの[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を有効にし、ストレージ アカウントに安全にアクセスするためのアクセス許可をそのマネージド ID に付与します。  
+    - また、Azure Migrate は、移行プロジェクトの[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にし、ストレージ アカウントに安全にアクセスするためのアクセス許可をそのマネージド ID に付与します。  
 
 4. キーが正常に生成されたら、そのキーの詳細をコピーして、アプライアンスの構成と登録を行います。   
 
-#### <a name="download-the-appliance-installer-file"></a>アプライアンスのインストーラー ファイルをダウンロードする
+#### <a name="download-the-appliance-installer-file"></a>アプライアンスのインストーラー ファイルをダウンロードする  
 
 Azure Migrate の検出および評価では、軽量の Azure Migrate アプライアンスを使用します。 このアプライアンスによって、サーバー検出が実行され、サーバーの構成とパフォーマンス メタデータが Azure Migrate に送信されます。
 
-アプライアンスを設定するには、インストーラー スクリプトを含んだ ZIP ファイルをポータルからダウンロードします。 アプライアンスのホストとなるサーバー上に ZIP ファイルをコピーします。
+アプライアンスを設定するには、インストーラー スクリプトを含んだ ZIP ファイルをポータルからダウンロードします。 アプライアンスのホストとなるサーバー上に ZIP ファイルをコピーします。 ZIP ファイルのダウンロード後、ファイルのセキュリティを確認し、インストーラー スクリプトを実行してアプライアンスをデプロイします。 
 
-選択したシナリオ (VMware、Hyper-V、物理など) の[ハードウェア要件](https://docs.microsoft.com/azure/migrate/migrate-appliance)をサーバーが満たしていること、また、サーバーが必要な Azure URL ([パブリック](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity) クラウドおよび[政府機関向け](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity)クラウド) に接続できることを確認します。
+以下、各シナリオのダウンロード リンクを、そのハッシュ値と共に示します。
 
-ZIP ファイルのダウンロード後、ファイルのセキュリティを確認し、インストーラー スクリプトを実行してアプライアンスをデプロイします。
+シナリオ | ダウンロード リンク | ハッシュ値
+--- | --- | ---
+Hyper-V | [AzureMigrateInstaller-HyperV-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160557) | 17EFA01E3A7683F1CE2A08E3A9197A27D8BD2CC03C3AB5C6E00E4261A822BDB3
+物理 | [AzureMigrateInstaller-Physical-Public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160558) | 01028F92C2095452F2DDCB89986CDC1F177AAC58E150A5B219A69CF1B7DA3BE0
+VMware | [AzureMigrateInstaller-VMware-public-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160648) | 66D3217AEC1DE51D84EC608B22BDDA605EC9C4FBAB06FC69FEC985886627C224
+VMware スケールアウト | [AzureMigrateInstaller-VMware-Public-Scaleout-PrivateLink.zip](https://go.microsoft.com/fwlink/?linkid=2160811) | 42C1E8D5CF428E35E5B98E4E7465DD08439F0FD5C319340CE3E3ADC3DC1717A6
 
-#### <a name="verify-file-security"></a>ファイルのセキュリティを確認する
+#### <a name="verify-security"></a>セキュリティを確認する
 
-ZIP ファイルをデプロイする前に、それが安全であることを確認します。
+圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
-1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。 
+1. ファイルをダウンロードしたサーバーで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
-    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-PrivateEndPoint.zip SHA256```
-3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
-    **アルゴリズム** | **ダウンロード** | **SHA256**
-    --- | --- | ---
-    VMware (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    Hyper-V (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
-    物理またはその他 (85.8 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2116601) | 85b74d93dfcee43412386141808d82147916330e6669df94c7969fe1b3d0fe72
+    - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink.zip SHA256 ```
+
+3.  前出の表のハッシュ値を比較して、アプライアンスの最新バージョンを検証します。
+
+選択したシナリオ (VMware、Hyper-V、物理など) の[ハードウェア要件](./migrate-appliance.md)をサーバーが満たしていること、また、サーバーが必要な Azure URL ([パブリック](./migrate-appliance.md#public-cloud-urls-for-private-link-connectivity) クラウドおよび[政府機関向け](./migrate-appliance.md#government-cloud-urls-for-private-link-connectivity)クラウド) に接続できることを確認します。
+
 
 #### <a name="run-the-script"></a>スクリプトを実行する
 
@@ -126,7 +130,7 @@ ZIP ファイルをデプロイする前に、それが安全であることを�
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
 4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-public-PrivateLink> .\AzureMigrateInstaller.ps1```
    
 5. スクリプトが正常に実行されると、アプライアンスの構成マネージャーが起動し、アプライアンスを構成できるようになります。 問題が発生した場合は、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log で、スクリプトログを確認してください。
 
@@ -142,39 +146,39 @@ ZIP ファイルをデプロイする前に、それが安全であることを�
    - **接続**: 必要な URL へのアクセスがアプライアンスによってチェックされます。 サーバーでプロキシを使用する場合は、次の操作を行います。
      - **[プロキシの設定]** を選択し、プロキシ アドレス (`http://ProxyIPAddress` または `http://ProxyFQDN`) とリッスン ポートを指定します。
      - プロキシで認証が必要な場合は、資格情報を指定します。 サポートされるのは HTTP プロキシのみです。
-     - 必要に応じて、プロキシ サーバーをバイパスする URL または IP アドレスのリストを追加できます。 ExpressRoute プライベート ピアリングを使用している場合は、これらの [URL](https://docs.microsoft.com/azure/migrate/replicate-using-expressroute#configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations) を必ずバイパスするようにしてください。
+     - 必要に応じて、プロキシ サーバーをバイパスする URL または IP アドレスのリストを追加できます。 ExpressRoute プライベート ピアリングを使用している場合は、これらの [URL](./replicate-using-expressroute.md#configure-proxy-bypass-rules-on-the-azure-migrate-appliance-for-vmware-agentless-migrations) を必ずバイパスするようにしてください。
      - プロキシ サーバーの詳細を更新した場合やプロキシをバイパスするために URL または IP アドレスを追加した場合は、 **[保存]** を選択して構成を登録する必要があります。
      
         > [!Note]
-        > 接続チェック中に aka.ms/* リンクでエラーが発生し、アプライアンスからインターネット経由でこの URL にアクセスできないようにしたい場合は、[**こちら**](https://docs.microsoft.com/azure/migrate/migrate-appliance#turn-off-auto-update)の手順に従って、アプライアンスの自動更新サービスを無効にする必要があります。 自動更新を無効にすると、aka.ms/* URL の接続チェックがスキップされます。 
+        > 接続チェック中に aka.ms/* リンクでエラーが発生し、アプライアンスからインターネット経由でこの URL にアクセスできないようにしたい場合は、[**こちら**](./migrate-appliance.md#turn-off-auto-update)の手順に従って、アプライアンスの自動更新サービスを無効にする必要があります。 自動更新を無効にすると、aka.ms/* URL の接続チェックがスキップされます。 
 
    - **時刻同期**:検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
    - **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** を選択して、アプライアンス サーバーで実行されているサービスの状態とバージョンを確認できます。
         > [!Note]
-        > アプライアンスの自動更新サービスを無効にした場合は、[**こちら**](https://docs.microsoft.com/azure/migrate/migrate-appliance#manually-update-an-older-version)の手順に従って、アプライアンスのサービスを手動で最新版に更新することができます。
+        > アプライアンスの自動更新サービスを無効にした場合は、[**こちら**](./migrate-appliance.md#manually-update-an-older-version)の手順に従って、アプライアンスのサービスを手動で最新版に更新することができます。
    - **VDDK のインストール**: ("_VMware アプライアンスでのみ必要_") VMware vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが、アプライアンスによってチェックされます。 インストールされていない場合は、**インストール手順** に記載されているとおりに、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。
 
 #### <a name="register-the-appliance-and-start-continuous-discovery"></a>アプライアンスを登録して継続的な検出を開始する
 
-前提条件の確認が完了したら、[VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware#register-the-appliance-with-azure-migrate)、[Hyper-V VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#register-the-appliance-with-azure-migrate)、[物理サーバー](https://docs.microsoft.com/azure/migrate/tutorial-discover-physical#register-the-appliance-with-azure-migrate)、[AWS VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-aws#register-the-appliance-with-azure-migrate)、[GCP VM](https://docs.microsoft.com/azure/migrate/tutorial-discover-gcp#register-the-appliance-with-azure-migrate) のシナリオごとの手順に従って、アプライアンスを登録し、継続的な検出を開始します。
+前提条件の確認が完了したら、[VMware VM](./tutorial-discover-vmware.md#register-the-appliance-with-azure-migrate)、[Hyper-V VM](./tutorial-discover-hyper-v.md#register-the-appliance-with-azure-migrate)、[物理サーバー](./tutorial-discover-physical.md#register-the-appliance-with-azure-migrate)、[AWS VM](./tutorial-discover-aws.md#register-the-appliance-with-azure-migrate)、[GCP VM](./tutorial-discover-gcp.md#register-the-appliance-with-azure-migrate) のシナリオごとの手順に従って、アプライアンスを登録し、継続的な検出を開始します。
 
 
 >[!Note]
 > アプライアンスの登録中や検出の開始時に DNS 解決の問題が発生した場合は、Azure Migrate アプライアンスをホストするオンプレミス サーバーから、ポータルの **[キーの生成]** ステップで作成した Azure Migrate リソースに到達できることを確認してください。 [ネットワーク接続の確認方法の詳細を参照してください](#troubleshoot-network-connectivity)。
 
 ### <a name="assess-your-servers-for-migration-to-azure"></a>Azure への移行に備えてサーバーを評価する
-検出が完了したら、Azure Migrate: Discovery and Assessment ツールを使用して、Azure VM または Azure VMware Solution (AVS) への移行に備えてサーバー ([VMware VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vm)、[Hyper-V VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v)、[物理サーバー](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vm)、[AWS VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-aws)、[GCP VM](https://docs.microsoft.com/azure/migrate/tutorial-assess-gcp)) を評価します。 
+検出が完了したら、Azure Migrate: Discovery and Assessment ツールを使用して、Azure VM または Azure VMware Solution (AVS) への移行に備えてサーバー ([VMware VM](./tutorial-assess-vmware-azure-vm.md)、[Hyper-V VM](./tutorial-assess-hyper-v.md)、[物理サーバー](./tutorial-assess-vmware-azure-vm.md)、[AWS VM](./tutorial-assess-aws.md)、[GCP VM](./tutorial-assess-gcp.md)) を評価します。 
 
-Azure Migrate: Discovery and Assessment ツールで、インポートしたコンマ区切り値 (CSV) ファイルを使用して、[オンプレミス マシンを評価](https://docs.microsoft.com/azure/migrate/tutorial-discover-import#prepare-the-csv)することもできます。   
+Azure Migrate: Discovery and Assessment ツールで、インポートしたコンマ区切り値 (CSV) ファイルを使用して、[オンプレミス マシンを評価](./tutorial-discover-import.md#prepare-the-csv)することもできます。   
 
 ## <a name="migrate-servers-to-azure-using-azure-private-link"></a>Azure Private Link を使用してサーバーを Azure に移行する
 
-以降のセクションでは、ExpressRoute プライベート ピアリングまたは VPN 接続を使用した移行に Azure Migrate と[プライベート エンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)を使用するために必要な手順を説明します。  
+以降のセクションでは、ExpressRoute プライベート ピアリングまたは VPN 接続を使用した移行に Azure Migrate と[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用するために必要な手順を説明します。  
 
-この記事では、Azure プライベート エンドポイントを使用して [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理サーバー](./tutorial-migrate-physical-virtual-machines.md)、[AWS で実行されている VM](./tutorial-migrate-aws-virtual-machines.md)、[GCP で実行されている VM](https://docs.microsoft.com/azure/migrate/tutorial-migrate-gcp-virtual-machines)、または別の仮想化プロバイダー上で実行されている VM を移行するためのエージェントベースのレプリケーションの概念実証のデプロイ パスを示しています。 プライベート リンクを使用した[エージェントレスの Hyper-V 移行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)も、同様の方法で実行できます。
+この記事では、Azure プライベート エンドポイントを使用して [VMware VM](./tutorial-migrate-vmware-agent.md)、[Hyper-V VM](./tutorial-migrate-physical-virtual-machines.md)、[物理サーバー](./tutorial-migrate-physical-virtual-machines.md)、[AWS で実行されている VM](./tutorial-migrate-aws-virtual-machines.md)、[GCP で実行されている VM](./tutorial-migrate-gcp-virtual-machines.md)、または別の仮想化プロバイダー上で実行されている VM を移行するためのエージェントベースのレプリケーションの概念実証のデプロイ パスを示しています。 プライベート リンクを使用した[エージェントレスの Hyper-V 移行](./tutorial-migrate-hyper-v.md)も、同様の方法で実行できます。
 
 >[!Note]
->[エージェントレスの VMware 移行](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical)には、インターネット アクセスまたは ExperessRoute Microsoft ピアリングによる接続が必要です。 
+>[エージェントレスの VMware 移行](./tutorial-assess-physical.md)には、インターネット アクセスまたは ExperessRoute Microsoft ピアリングによる接続が必要です。 
 
 ### <a name="set-up-a-replication-appliance-for-migration"></a>移行に備えてレプリケーション アプライアンスを設定する 
 
@@ -182,7 +186,7 @@ Azure Migrate: Discovery and Assessment ツールで、インポートしたコ�
 
 ![レプリケーションのアーキテクチャ](./media/how-to-use-azure-migrate-with-private-endpoints/replication-architecture.png)
 
-このツールは、レプリケーション アプライアンスを使用して、サーバーを Azure にレプリケートします。 [レプリケーション アプライアンス用のマシンの準備と設定](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#prepare-a-machine-for-the-replication-appliance)は、この記事を使用して行います。
+このツールは、レプリケーション アプライアンスを使用して、サーバーを Azure にレプリケートします。 [レプリケーション アプライアンス用のマシンの準備と設定](./tutorial-migrate-physical-virtual-machines.md#prepare-a-machine-for-the-replication-appliance)は、この記事を使用して行います。
 
 レプリケーション アプライアンスの設定後は、次の手順に従って、移行に必要なリソースを作成してください。 
 
@@ -196,11 +200,11 @@ Azure Migrate: Discovery and Assessment ツールで、インポートしたコ�
 
 4. レプリケーション アプライアンスを登録する前に、レプリケーション アプライアンスをホストするマシンからコンテナーのプライベート リンク FQDN に到達できることを確認します。 [ネットワーク接続の確認方法の詳細を参照してください](#troubleshoot-network-connectivity)。 
 
-5. 接続を確認したら、アプライアンスのセットアップおよびキー ファイルをダウンロードし、インストール プロセスを実行して、Azure Migrate にそのアプライアンスを登録します。 [こちらの詳細な手順](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#set-up-the-replication-appliance)を確認してください。 レプリケーション アプライアンスの設定後、これらの手順に従って、移行対象のマシンに[モビリティ サービスをインストール](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#install-the-mobility-service)します。 
+5. 接続を確認したら、アプライアンスのセットアップおよびキー ファイルをダウンロードし、インストール プロセスを実行して、Azure Migrate にそのアプライアンスを登録します。 [こちらの詳細な手順](./tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance)を確認してください。 レプリケーション アプライアンスの設定後、これらの手順に従って、移行対象のマシンに[モビリティ サービスをインストール](./tutorial-migrate-physical-virtual-machines.md#install-the-mobility-service)します。 
 
 ### <a name="replicate-servers-to-azure-using-azure-private-link"></a>Azure Private Link を使用して Azure にサーバーをレプリケートする 
 
-今度は、[これらの手順](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#replicate-machines)に従って、レプリケーションの対象となるサーバーを選択します。  
+今度は、[これらの手順](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)に従って、レプリケーションの対象となるサーバーを選択します。  
 
 **[レプリケート]**  >  **[ターゲット設定]**  >  **[キャッシュ/レプリケーション ストレージ アカウント]** のドロップダウンを使用して、プライベート リンク経由でレプリケートするためのストレージ アカウントを選択します。  
 
@@ -260,7 +264,7 @@ Recovery Services コンテナーの詳細は、Azure Migrate: Server Migration 
 
 ### <a name="create-a-private-endpoint-for-the-storage-account-optional"></a>ストレージ アカウントのプライベート エンドポイントを作成する (省略可)
 
-プライベート ピアリングによる ExpressRoute を使用してレプリケートを行うには、キャッシュ ストレージ アカウントまたはレプリケーション ストレージ アカウントの [プライベート エンドポイントを作成](https://docs.microsoft.com/azure/private-link/tutorial-private-endpoint-storage-portal#create-storage-account-with-a-private-endpoint)します (対象サブリソース: **_BLOB_**)。 
+プライベート ピアリングによる ExpressRoute を使用してレプリケートを行うには、キャッシュ ストレージ アカウントまたはレプリケーション ストレージ アカウントの [プライベート エンドポイントを作成](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint)します (対象サブリソース: **_BLOB_**)。 
 
 >[!Note]
 >
@@ -268,7 +272,7 @@ Recovery Services コンテナーの詳細は、Azure Migrate: Server Migration 
 
 ストレージ アカウント用のプライベート エンドポイントは、Azure Migrate プロジェクトのプライベート エンドポイントと同じ仮想ネットワーク内、またはそのネットワークに接続されている別の仮想ネットワーク内に作成する必要があります。 
 
-**[はい]** を選択して、プライベート DNS ゾーンと統合します。 プライベート DNS ゾーンは、プライベート リンク上で、仮想ネットワークからストレージ アカウントに接続をルーティングする際に利用されます。 **[はい]** を選択すると、仮想ネットワークに DNS ゾーンが自動的にリンクされ、作成された新しい IP と完全修飾ドメイン名の解決に必要な DNS レコードが追加されます。 詳細については、[プライベート DNS ゾーン](https://docs.microsoft.com/azure/dns/private-dns-overview)をご覧ください。
+**[はい]** を選択して、プライベート DNS ゾーンと統合します。 プライベート DNS ゾーンは、プライベート リンク上で、仮想ネットワークからストレージ アカウントに接続をルーティングする際に利用されます。 **[はい]** を選択すると、仮想ネットワークに DNS ゾーンが自動的にリンクされ、作成された新しい IP と完全修飾ドメイン名の解決に必要な DNS レコードが追加されます。 詳細については、[プライベート DNS ゾーン](../dns/private-dns-overview.md)をご覧ください。
 
 プライベート エンドポイントを作成しているユーザーがストレージ アカウントの所有者でもある場合、プライベート エンドポイントは自動承認されます。 そうでない場合、ストレージ アカウントの所有者がプライベート エンドポイントの使用を承認する必要があります。 要求されたプライベート エンドポイント接続を承認または拒否するには、ストレージ アカウント ページの **[ネットワーク]** にある **[プライベート エンドポイント接続]** に移動します。
 
@@ -284,7 +288,7 @@ Recovery Services コンテナーの詳細は、Azure Migrate: Server Migration 
 >
 > - Hyper-V VM を Azure に移行するケースで、レプリケーション ストレージ アカウントの種類が _Premium_ である場合、キャッシュ ストレージ アカウントには、_Standard_ タイプの別のストレージ アカウントを選択する必要があります。 このケースでは、レプリケーション ストレージ アカウントとキャッシュ ストレージ アカウントの両方のプライベート エンドポイントを作成する必要があります。  
 
-その後、[レプリケーションの確認と開始](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#replicate-machines)および[移行の実行](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#run-a-test-migration)に関する手順に従ってください。  
+その後、[レプリケーションの確認と開始](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)および[移行の実行](./tutorial-migrate-physical-virtual-machines.md#run-a-test-migration)に関する手順に従ってください。  
 
 ## <a name="troubleshoot-network-connectivity"></a>ネットワーク接続のトラブルシューティング 
 
@@ -304,7 +308,7 @@ Recovery Services コンテナーの詳細は、Azure Migrate: Server Migration 
 
 ### <a name="verify-dns-resolution"></a>DNS 解決を確認する 
 
-オンプレミス アプライアンス (またはレプリケーション プロバイダー) が Azure Migrate リソースにアクセスする際は、その完全修飾プライベート リンク ドメイン名 (FQDN) が使用されます。 ソース環境からプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。 ネットワーク接続の問題をトラブルシューティングする際に役立つ可能性のある DNS 構成のシナリオについては、[こちらの記事を参照](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder)してください。  
+オンプレミス アプライアンス (またはレプリケーション プロバイダー) が Azure Migrate リソースにアクセスする際は、その完全修飾プライベート リンク ドメイン名 (FQDN) が使用されます。 ソース環境からプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。 ネットワーク接続の問題をトラブルシューティングする際に役立つ可能性のある DNS 構成のシナリオについては、[こちらの記事を参照](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)してください。  
 
 プライベート リンク接続を検証するには、Migrate アプライアンスのホストとなるオンプレミス サーバーから Azure Migrate リソース エンドポイント (プライベート リンク リソースの FQDN) の DNS 解決を実行し、その FQDN がプライベート IP アドレスに解決されることを確認します。 プライベート エンドポイントの詳細とプライベート リンク リソースの FQDN の情報は、Discovery and Assessment と Server Migration のプロパティ ページで入手できます。 **[DNS 設定のダウンロード]** を選択すると、その一覧が表示されます。   
 
@@ -326,7 +330,7 @@ Recovery Services コンテナーの詳細は、Azure Migrate: Server Migration 
 
 DNS 解決が正しくない場合は、これらの手順を実行します。  
 
-- カスタム DNS を使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)を参照してください。
+- カスタム DNS を使用している場合は、カスタム DNS の設定を確認し、DNS 構成が正しいことを確認します。 ガイダンスについては、[プライベート エンドポイントの概要に関する記事の「DNS の構成」](../private-link/private-endpoint-overview.md#dns-configuration)を参照してください。
 - Azure に用意されている DNS サーバーを使用する場合は、以降のセクションを参照して、引き続きトラブルシューティングを行います。  
 
 > [!Tip]
@@ -347,7 +351,7 @@ Azure Migrate では、"privatelink" サブドメインに対応するプライ�
 
 ![DNS 構成のスクリーンショット](./media/how-to-use-azure-migrate-with-private-endpoints/dns-configuration.png)  
 
-DNS ゾーンが存在しない場合は (下図)、[新しいプライベート DNS ゾーン リソースを作成](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)してください。  
+DNS ゾーンが存在しない場合は (下図)、[新しいプライベート DNS ゾーン リソースを作成](../dns/private-dns-getstarted-portal.md)してください。  
 
 ![プライベート DNS ゾーンを作成する](./media/how-to-use-azure-migrate-with-private-endpoints/create-dns-zone.png) 
 
@@ -358,7 +362,7 @@ Azure portal でプライベート DNS ゾーン リソースに移動し、左�
 
 ![仮想ネットワーク リンクを表示する](./media/how-to-use-azure-migrate-with-private-endpoints/virtual-network-links.png) 
 
-これにより、リンクの一覧が表示されます。どれにも、自分のサブスクリプション内の仮想ネットワークの名前が表示されています。 プライベート エンドポイント リソースが含まれる仮想ネットワークが、この一覧に表示される必要があります。 そのようになっていない場合は、[この記事に従って](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)、プライベート DNS ゾーンを仮想ネットワークにリンクしてください。    
+これにより、リンクの一覧が表示されます。どれにも、自分のサブスクリプション内の仮想ネットワークの名前が表示されています。 プライベート エンドポイント リソースが含まれる仮想ネットワークが、この一覧に表示される必要があります。 そのようになっていない場合は、[この記事に従って](../dns/private-dns-getstarted-portal.md#link-the-virtual-network)、プライベート DNS ゾーンを仮想ネットワークにリンクしてください。    
 
 プライベート DNS ゾーンを仮想ネットワークにリンクすると、その仮想ネットワークから発信された DNS 要求で、プライベート DNS ゾーン内の DNS レコードが検索されるようになります。 プライベート エンドポイントが作成された仮想ネットワークへのアドレス解決が正しく実行されるためには、これが必要です。   
 
@@ -385,7 +389,7 @@ Azure portal でプライベート DNS ゾーン リソースに移動し、左�
 - ネットワーク ピアリング。使用される DNS サーバーと、トラフィックのルーティング方法に影響を与える可能性があります。  
 - カスタム ゲートウェイ (NAT) ソリューション。DNS クエリからのトラフィックなど、トラフィックのルーティング方法に影響を与える可能性があります。
 
-詳細については、[プライベート エンドポイント接続の問題に関するトラブルシューティング ガイド](https://docs.microsoft.com/azure/private-link/troubleshoot-private-endpoint-connectivity)を参照してください。  
+詳細については、[プライベート エンドポイント接続の問題に関するトラブルシューティング ガイド](../private-link/troubleshoot-private-endpoint-connectivity.md)を参照してください。  
 
 ## <a name="next-steps"></a>次のステップ 
-- [移行プロセスを完了](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#complete-the-migration)し、[移行後のベスト プラクティス](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines#post-migration-best-practices)を確認してください。
+- [移行プロセスを完了](./tutorial-migrate-physical-virtual-machines.md#complete-the-migration)し、[移行後のベスト プラクティス](./tutorial-migrate-physical-virtual-machines.md#post-migration-best-practices)を確認してください。

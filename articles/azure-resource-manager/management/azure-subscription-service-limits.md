@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 8aad2f885c39d6f5ecd237a6167363b0efe8cef4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030825"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290410"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -366,7 +366,7 @@ SQL Database の制限については、[単一データベースの SQL Databas
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics の制限
 
-Azure Synapse Analytics の制限については、[Azure Synaplse リソースの制限](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)に関する記事を参照してください。
+[!INCLUDE [synapse-analytics-limits](../../../includes/synapse-analytics-limits.md)]
 
 ## <a name="azure-files-and-azure-file-sync"></a>Azure Files と Azure File Sync
 Azure Files と Azure File Sync の制限については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../../storage/files/storage-files-scale-targets.md)」を参照してください。

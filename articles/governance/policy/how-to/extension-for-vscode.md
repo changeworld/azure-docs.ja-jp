@@ -1,22 +1,22 @@
 ---
 title: Visual Studio Code 用の Azure Policy 拡張機能
 description: Visual Studio Code 用の Azure Policy 拡張機能を使用して Azure Resource Manager エイリアスを検索する方法について説明します。
-ms.date: 01/11/2021
+ms.date: 04/25/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe0d22aeb307f82034d697e8564f8fccab61a81
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98107941"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133837"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code 用の Azure Policy 拡張機能を使用する
 
-> Azure Policy 拡張機能のバージョン **0.1.1** 以降に適用されます
+> Azure Policy 拡張機能のバージョン **0.1.2** 以降に適用する
 
-Visual Studio Code 用の Azure Policy 拡張機能を使用して[エイリアス](../concepts/definition-structure.md#aliases)を検索し、リソースとポリシーを確認し、オブジェクトをエクスポートし、ポリシー定義を評価する方法について説明します。 最初に、Visual Studio Code で Azure Policy 拡張機能をインストールする方法を説明します。 次に、エイリアスを検索する方法について説明します。
+Visual Studio Code 用の Azure Policy 拡張機能を使用して[エイリアス](../concepts/definition-structure.md#aliases)を検索し、リソースとポリシー定義を確認し、オブジェクトをエクスポートし、ポリシー定義を評価する方法について説明します。 最初に、Visual Studio Code で Azure Policy 拡張機能をインストールする方法を説明します。 次に、エイリアスを検索する方法について説明します。
 
-Visual Studio Code 用の Azure Policy 拡張機能は Windows にインストールできます。
+Visual Studio Code 用の Azure Policy 拡張機能は Linux、Mac および Windows にインストールできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は Windows にインスト�
 ## <a name="using-the-policy-extension"></a>Azure Policy 拡張機能の使用
 
 > [!NOTE]
-> Visual Studio Code 用の Azure Policy 拡張機能で表示されたポリシーに対してローカルで行われた変更は、Azure に同期されません。
+> Visual Studio Code 用の Azure Policy 拡張機能で表示されたポリシー定義に対してローカルで行われた変更は、Azure に同期されません。
 
 ### <a name="connect-to-an-azure-account"></a>Azure アカウントに接続する
 
@@ -70,7 +70,7 @@ Visual Studio Code 用の Azure Policy 拡張機能は Windows にインスト�
 
 ### <a name="select-subscriptions"></a>[サブスクリプション] を選択する
 
-初めてサインインすると、Azure Policy 拡張機能によって既定のサブスクリプション リソースとポリシーのみが読み込まれます。 リソースやポリシーの表示に対してサブスクリプションを追加または削除するには、次の手順を行います。
+初めてサインインすると、Azure Policy 拡張機能によって既定のサブスクリプション リソースとポリシー定義のみが読み込まれます。 リソースやポリシー定義の表示に対してサブスクリプションを追加または削除するには、次の手順を行います。
 
 1. コマンド パレットまたはウィンドウのフッターからサブスクリプション コマンドを開始します。
 
@@ -105,7 +105,7 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Resources: Search Resources**」と入力します。
+     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure Policy: Search Resources**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -124,9 +124,9 @@ Azure Policy 拡張機能では、 **[リソース]** ウィンドウに、選�
 > [!NOTE]
 > この VS Code 拡張機能では、Resource Manager モードのプロパティの評価のみがサポートされています。 これらのモードの詳細については、[モードの定義](../concepts/definition-structure.md#mode)を参照してください。
 
-### <a name="search-for-and-view-policies-and-assignments"></a>ポリシーと割り当てを検索して表示する
+### <a name="search-for-and-view-policy-definitions-and-assignments"></a>ポリシーの定義と割り当てを検索して表示する
 
-Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り当ての一覧が、 **[ポリシー]** ウィンドウでの表示対象として選択されたサブスクリプションのツリービューの形で表示されます。 1 つのサブスクリプションに数百または数千のポリシーまたは割り当てがあるお客様は、ポリシーまたは割り当てを見つけやすい検索方法を好む場合があります。 Azure Policy 拡張機能を使用すると、次の手順で特定のポリシーまたは割り当てを検索できるようになります。
+Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り当ての一覧が、 **[ポリシー]** ウィンドウでの表示対象として選択されたサブスクリプションのツリービューの形で表示されます。 1 つのサブスクリプションに数百または数千のポリシー定義または割り当てがあるお客様は、ポリシー定義または割り当てを見つけやすい検索方法を好む場合があります。 Azure Policy 拡張機能を使用すると、次の手順で特定のポリシーまたは割り当てを検索できるようになります。
 
 1. Azure Policy 拡張機能またはコマンド パレットから検索インターフェイスを開始します。
 
@@ -136,7 +136,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 
    - コマンド パレット:
 
-     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Policies: Search Policies**」と入力します。
+     メニュー バーから、 **[表示]** > **[コマンド パレット]** の順に移動し、「**Azure Policy: Search Policies**」と入力します。
 
 1. 表示するサブスクリプションが複数選択されている場合は、フィルターを使用して検索するサブスクリプションを選択します。
 
@@ -170,7 +170,7 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 1. **[評価]** ペインの上部で、評価の実行アイコンを選択します。 Visual Studio Code の新しいペインが開き、結果の評価の詳細が JSON 形式で表示されます。
 
 > [!NOTE]
-> [AuditIfNotExists](../concepts/effects.md#auditifnotexists) または [DeployIfNotExists](../concepts/effects.md#deployifnotexists) ポリシー定義の場合は、 **[評価]** ペインでプラス アイコンを使用して、存在を確認するために "_関連する_" リソースを選択します。
+> [AuditIfNotExists](../concepts/effects.md#auditifnotexists) または [DeployIfNotExists](../concepts/effects.md#deployifnotexists) ポリシー定義については、 **[評価]** ウィンドウのプラス記号アイコンを使用するか、コマンド パレットで **[Azure Policy:存在を確認するためにリソースを選択してください (if-not-exists ポリシーを使用する場合のみ)]** チェックボックスをオンにして、既存の確認をするための _関連_ するリソースを選択します。
 
 評価結果には、ポリシー定義とポリシー割り当てに関する情報が、**policyEvaluations.evaluationResult** プロパティと共に表示されます。 出力は次の例のようになります。
 
@@ -205,6 +205,6 @@ Azure Policy 拡張機能では、ポリシーの種類とポリシーの割り�
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
 - 「[Policy の効果について](../concepts/effects.md)」を確認します。
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
+- [プログラムによってポリシー定義を作成する](programmatically-create.md)方法を理解します。
 - [準拠していないリソースを修復する](remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

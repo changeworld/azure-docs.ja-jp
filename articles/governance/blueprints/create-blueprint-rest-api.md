@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:REST API を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 37f67e6db753969344b8c442de78b867dd41ecd6
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558977"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323827"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0629606f602b975b399855a681570ecdac9ec832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 9703ef0caa5df967033001cbeb241d1649eb2a11
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256822"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930276"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -61,17 +61,34 @@ Microsoft は、ロールベースのアクセス制御に関して次の ISV �
 | ![N8Identity ロゴのスクリーンショット](./media/partner-gallery/n8identity-logo.png) | [N8Identity](./partner-n8identity.md) はサービスとしての ID ガバナンス プラットフォームであり、Microsoft Azure で実行されている顧客アカウントの移行とカスタマー サービス要求 (CSR) の管理に対処するためのソリューションを提供します。 |
 | ![Saviynt ロゴのスクリーンショット](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-Saviynt.md) クラウドネイティブ プラットフォームを使用すると、インテリジェントな分析とアプリケーション間の統合により、セキュリティ、コンプライアンス、およびガバナンスの向上が促進され、IT 最新化の効率が高まります。 |
 
-## <a name="security"></a>セキュリティ
+## <a name="secure-hybrid-access-to-on-premises-application"></a>オンプレミス アプリケーションへのハイブリッド アクセスをセキュリティで保護する
 
-Microsoft は、セキュリティに関して次の ISV と提携しています。
+Microsoft は、次の ISV と提携して、オンプレミス アプリケーションへの安全なハイブリッド アクセスを提供しています。 
+
+| ISV パートナー | 説明と統合のチュートリアル |
+|:-------------------------|:--------------|
+| ![Ping ロゴのスクリーンショット](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) を使用すると、複数のクラウドにわたってオンプレミスのレガシ アプリケーションへの安全なハイブリッド アクセスが可能になります。 |
+| ![Strata ロゴのスクリーンショット](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) は、一貫性のあるアクセス ポリシーを適用し、ID の同期を維持し、レガシ ID システムから Azure AD B2C によって提供される標準ベースの認証とアクセス制御にアプリケーションを簡単に移行できるようにすることで、オンプレミスのアプリケーションへの、セキュリティで保護されたハイブリッド アクセスを提供します。 |
+| ![Zscaler ロゴのスクリーンショット](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) は、VPN のコスト、手間、セキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産への、セキュリティで保護されたポリシーベースのアクセスを実現します。 |
+
+## <a name="fraud-protection"></a>不正行為からの保護
+
+Microsoft は、不正行為の検出と防止のために、次の ISV と提携しています。 
 
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
 | ![Arkose Labs ロゴのスクリーンショット](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) は、組織がボット攻撃、アカウント乗っ取り攻撃、および不正なアカウント開設を防ぐのに役立つ不正行為防止ソリューション プロバイダーです。 |
+| ![BioCatch ロゴのスクリーンショット](./media/partner-gallery/biocatch-logo.png) | [BioCatch](./partner-biocatch.md) は、ユーザーの物理的およびコグニティブ デジタル動作を分析して、正当な顧客とサイバー犯罪者を見分ける分析情報を生成する不正防止ソリューション プロバイダーです。 |
 | ![Microsoft Dynamics 365 ロゴのスクリーンショット](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Microsoft Dynamics 365 Fraud Protection](./partner-dynamics-365-fraud-protection.md) は、組織がデバイス フィンガープリンティングによる不正なアカウント開設を防ぐのに役立つソリューションです。 |
-| ![Ping ロゴのスクリーンショット](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) を使用すると、複数のクラウドにわたってオンプレミスのレガシ アプリケーションへの安全なハイブリッド アクセスが可能になります。 |
-| ![Strata ロゴのスクリーンショット](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) は、一貫性のあるアクセス ポリシーを適用し、ID の同期を維持し、レガシ ID システムから Azure AD B2C によって提供される標準ベースの認証とアクセス制御にアプリケーションを簡単に移行できるようにすることで、オンプレミスのアプリケーションへの、セキュリティで保護されたハイブリッド アクセスを提供します。 |
-| ![Zscaler ロゴのスクリーンショット](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) は、VPN のコスト、手間、セキュリティ上のリスクが生じることなく、非公開のアプリケーションおよび資産への、セキュリティで保護されたポリシーベースのアクセスを実現します。 |
+
+## <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール 
+
+Microsoft は、Web アプリケーション ファイアウォール (WAF) に関して、次の ISV と提携しています。 
+
+| ISV パートナー | 説明と統合のチュートリアル |
+|:-------------------------|:--------------|
+| ![Cloudflare ロゴのスクリーンショット](./media/partner-gallery/cloudflare-logo.png) | [Cloudflare](./partner-cloudflare.md) は、SQLi や XSS など、脆弱性を悪用する悪意のある攻撃から組織を保護する WAF プロバイダーです。 |
+
 
 ## <a name="additional-information"></a>関連情報
 

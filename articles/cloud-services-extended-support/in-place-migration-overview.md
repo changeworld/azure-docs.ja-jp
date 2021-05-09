@@ -9,25 +9,25 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 96315899f80d0bd02ac3d2108b7cd76876025218
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: f3b41bed481ff36ec1f2fef8e699e57f6138474c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286736"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285936"
 ---
 # <a name="migrate-azure-cloud-services-classic-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (クラシック) を Azure Cloud Services (延長サポート) に移行する
 
 この記事では、プラットフォームでサポートされる移行ツールの概要と、それを使用して [Azure Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) を [Azure Cloud Services (延長サポート)](overview.md) に移行する方法について説明します。
 
-移行ツールで利用される API とそのエクスペリエンスは、[仮想マシン (クラシック) の移行](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)と同じです。 
+移行ツールで利用される API とそのエクスペリエンスは、[仮想マシン (クラシック) の移行](../virtual-machines/migration-classic-resource-manager-overview.md)と同じです。 
 
 > [!IMPORTANT]
 > 移行ツールを使用した Cloud Services (クラシック) から Cloud Services (延長サポート) への移行は現在、パブリック プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 移行についてサポートが必要な場合は、次のリソースを参照してください。 
 
-- [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-cloud-services-extended-support.html):移行に対する Microsoft とコミュニティによるサポート。
+- [Microsoft Q&A](/answers/topics/azure-cloud-services-extended-support.html):移行に対する Microsoft とコミュニティによるサポート。
 - [Azure の移行のサポート](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/%7B%22pesId%22:%22e79dcabe-5f77-3326-2112-74487e1e5f78%22,%22supportTopicId%22:%22fca528d2-48bd-7c9f-5806-ce5d5b1d226f%22%7D):移行中の技術的支援のための専用サポート チーム。 テクニカル サポートを利用していないお客様は、この移行に特化して提供される[無料サポート機能](https://aka.ms/cs-migration-errors)を利用できます。
 - 会社または組織がマイクロソフトと提携している場合、またはクラウド ソリューション アーキテクトやテクニカル アカウント マネージャーなどのマイクロソフトの担当者と協力している場合、移行に関する追加のリソースについてはマイクロソフトに問い合わせてください。
 - Cloud Services (延長サポート) 製品チームにフィードバックを提供したり、問題を提起したりするには、[こちらのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR--AgudUMwJKgRGMO84rHQtUQzZYNklWUk4xOTFXVFBPOFdGOE85RUIwVC4u)を使用してください。 
@@ -68,7 +68,7 @@ ms.locfileid: "106286736"
     ```
 
 ## <a name="how-is-migration-for-cloud-services-classic-different-from-virtual-machines-classic"></a>Cloud Services (クラシック) の移行と Virtual Machines (クラシック) の違い
-Azure Service Manager により、2 つの異なるコンピューティング製品がサポートされています。[Azure Virtual Machines (クラシック)](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/tutorial-classic) と [Azure Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) (Web と worker ロール) です。 2 つの製品は、クラウド サービス内でデプロイの種類が異なります。 Azure Cloud Services (クラシック) には、Web と worker ロールでのデプロイを含むクラウド サービスが使用されます。 Azure Virtual Machines (クラシック) には、IaaS VM でのデプロイを含むクラウド サービスが使用されます。
+Azure Service Manager により、2 つの異なるコンピューティング製品がサポートされています。[Azure Virtual Machines (クラシック)](/previous-versions/azure/virtual-machines/windows/classic/tutorial-classic) と [Azure Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) (Web と worker ロール) です。 2 つの製品は、クラウド サービス内でデプロイの種類が異なります。 Azure Cloud Services (クラシック) には、Web と worker ロールでのデプロイを含むクラウド サービスが使用されます。 Azure Virtual Machines (クラシック) には、IaaS VM でのデプロイを含むクラウド サービスが使用されます。
 
 デプロイの種類が違うため、サポートされているシナリオの一覧は Cloud Services (クラシック) と Virtual Machines (クラシック) で異なります。
 
@@ -113,7 +113,7 @@ Azure Service Manager により、2 つの異なるコンピューティング�
 
 | サービス | 構成 | コメント | 
 |---|---|---|
-| [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) | Azure Active Directory Domain Services が含まれる仮想ネットワーク。 | クラウド サービスのデプロイと Azure AD Domain Services の両方が含まれる仮想ネットワークがサポートされています。 お客様は、最初に Azure AD Domain Services を個別に移行してから、クラウド サービスのデプロイだけが含まれる残りの仮想ネットワークを移行する必要があります |
+| [Azure AD Domain Services](../active-directory-domain-services/migrate-from-classic-vnet.md) | Azure Active Directory Domain Services が含まれる仮想ネットワーク。 | クラウド サービスのデプロイと Azure AD Domain Services の両方が含まれる仮想ネットワークがサポートされています。 お客様は、最初に Azure AD Domain Services を個別に移行してから、クラウド サービスのデプロイだけが含まれる残りの仮想ネットワークを移行する必要があります |
 | クラウド サービス | 1 つのスロットにだけデプロイされたクラウド サービス。 | 運用またはステージング スロットのデプロイを含む Cloud Services を移行できます |
 | クラウド サービス | 公開された仮想ネットワーク内にないデプロイ (既定の仮想ネットワークのデプロイ) | クラウド サービスは、公開された仮想ネットワークまたは非公開の仮想ネットワークに配置するか、仮想ネットワークに配置しないことができます。  非公開の仮想ネットワーク内と公開された仮想ネットワーク内の Cloud Services は、移行がサポートされています。 お客様は Validate API を使用して、デプロイが既定の仮想ネットワーク内にあるかどうか、したがって移行できるかどうかを判断できます。 |
 |クラウド サービス | XML 拡張機能 (BGInfo、Visual Studio デバッガー、Web 配置、リモート デバッグ)。 | すべての xml 拡張機能は、移行がサポートされています 
@@ -127,13 +127,13 @@ Azure Service Manager により、2 つの異なるコンピューティング�
 
 | リソース | 次の手順、回避策 | 
 |---|---|
-| 自動スケーリング ルール | 移行は行われますが、ルールは削除されます。 Cloud Services への移行後に[ルールを再作成](https://docs.microsoft.com/azure/cloud-services-extended-support/configure-scaling)します (延長サポート)。 | 
-| 警告 | 移行は行われますが、警告は削除されます。 Cloud Services への移行後に[ルールを再作成](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-alerts)します (延長サポート)。 | 
+| 自動スケーリング ルール | 移行は行われますが、ルールは削除されます。 Cloud Services への移行後に[ルールを再作成](./configure-scaling.md)します (延長サポート)。 | 
+| 警告 | 移行は行われますが、警告は削除されます。 Cloud Services への移行後に[ルールを再作成](./enable-alerts.md)します (延長サポート)。 | 
 | VPN Gateway | 移行を開始する前に VPN Gateway を削除し、移行の完了後に VPN Gateway を作成し直します。 | 
 | ExpressRoute ゲートウェイ (仮想ネットワークと同じサブスクリプション内にある場合のみ) | 移行を開始する前に ExpressRoute ゲートウェイを削除し、移行の完了後にゲートウェイを作成し直します。 | 
-| Quota  | クォータは移行されません。 検証を成功させるには、移行の前に Azure Resource Manager で[新しいクォータを要求](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-resource-quota#solution)します。 | 
+| Quota  | クォータは移行されません。 検証を成功させるには、移行の前に Azure Resource Manager で[新しいクォータを要求](../azure-resource-manager/templates/error-resource-quota.md#solution)します。 | 
 | アフィニティ グループ | サポートされていません。 移行前にアフィニティ グループを削除します。  | 
-| [仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用する仮想ネットワーク| ピアリングされた仮想ネットワークを別の仮想ネットワークに移行する前に、ピアリングを削除し、仮想ネットワークを Resource Manager に移行して、ピアリングを作成し直します。 これにより、アーキテクチャによってはダウンタイムが発生する可能性があります。 | 
+| [仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を使用する仮想ネットワーク| ピアリングされた仮想ネットワークを別の仮想ネットワークに移行する前に、ピアリングを削除し、仮想ネットワークを Resource Manager に移行して、ピアリングを作成し直します。 これにより、アーキテクチャによってはダウンタイムが発生する可能性があります。 | 
 | App Service 環境を含む仮想ネットワーク | サポートされていません | 
 | HDInsight サービスを含む仮想ネットワーク | サポートされていません。 
 | Azure API Management デプロイを含む仮想ネットワーク | サポートされていません。 <br><br> 仮想ネットワークを移行するには、API Management のデプロイの仮想ネットワークを変更します。 これは、ダウンタイムのない操作です。 | 
@@ -150,7 +150,7 @@ Azure Service Manager により、2 つの異なるコンピューティング�
 | 予約済み IP アドレスを使用している運用とステージング両方のスロットのデプロイを含むデプロイの移行 | サポートされていません。 | 
 | 異なる仮想ネットワーク内にある運用とステージングのデプロイの移行|2 スロットのクラウド サービスを移行するには、ステージング スロットを削除する必要があります。 ステージング スロットを削除した後、Azure Resource Manager の独立したクラウド サービス (延長サポート) として、運用スロットを移行します。 その後、新しい Cloud Services (延長サポート) のデプロイを、スワップ可能なプロパティが有効になっている移行されたデプロイにリンクすることができます。 古いステージング スロットのデプロイのデプロイ ファイルを再利用して、この新しいスワップ可能なデプロイを作成できます。 | 
 | 空のクラウド サービス (デプロイのないクラウド サービス) の移行 | サポートされていません。 | 
-| リモート デスクトップ プラグインとリモート デスクトップ拡張機能が含まれるデプロイの移行 | オプション 1: 移行前にリモート デスクトップ プラグインを削除します。 そのためには、デプロイ ファイルの変更が必要です。 その後、移行を行います。 <br><br> オプション 2: リモート デスクトップ拡張機能を削除して、デプロイを移行します。 移行後に、プラグインを削除して拡張機能をインストールします。 そのためには、デプロイ ファイルの変更が必要です。 <br><br> 移行の前に、プラグインと拡張機能を削除します。 Cloud Services (延長サポート) での[プラグインの使用は推奨されません](https://docs.microsoft.com/azure/cloud-services-extended-support/deploy-prerequisite#required-service-definition-file-csdef-updates)。| 
+| リモート デスクトップ プラグインとリモート デスクトップ拡張機能が含まれるデプロイの移行 | オプション 1: 移行前にリモート デスクトップ プラグインを削除します。 そのためには、デプロイ ファイルの変更が必要です。 その後、移行を行います。 <br><br> オプション 2: リモート デスクトップ拡張機能を削除して、デプロイを移行します。 移行後に、プラグインを削除して拡張機能をインストールします。 そのためには、デプロイ ファイルの変更が必要です。 <br><br> 移行の前に、プラグインと拡張機能を削除します。 Cloud Services (延長サポート) での[プラグインの使用は推奨されません](./deploy-prerequisite.md#required-service-definition-file-csdef-updates)。| 
 | PaaS と IaaS 両方のデプロイが含まれる仮想ネットワーク |サポートされていません <br><br> PaaS または IaaS どちらかデプロイを、別の仮想ネットワークに移動します。 これはダウンタイムの原因になります。 | 
 従来のロール サイズ (Small や ExtraLarge など) を使用しているクラウド サービスのデプロイ。 | 移行は完了しますが、ロールのサイズは最新のロール サイズを使用するように更新されます。 コストまたは SKU のプロパティは変更されず、この変更のために仮想マシンは再起動されません。 これらの新しい最新のロール サイズを参照するように、すべてのデプロイ成果物を更新します。 詳細については、[使用可能な VM サイズ](available-sizes.md)に関する記事を参照してください|
 | 異なる仮想ネットワークへのクラウド サービスの移行 | サポートされていません <br><br> 1. 移行の前に、別のクラシック仮想ネットワークにデプロイを移動します。 これはダウンタイムの原因になります。 <br> 2. 新しい仮想ネットワークを Azure Resource Manager に移行します。 <br><br> または <br><br> 1. 仮想ネットワークを Azure Resource Manager に移行します <br>2. クラウド サービスを新しい仮想ネットワークに移動します。 これはダウンタイムの原因になります。 | 
@@ -169,9 +169,9 @@ Azure Service Manager により、2 つの異なるコンピューティング�
 - Small、Large、ExtraLarge などの従来のサイズは、新しいサイズの名前 (Standard_A*) に置き換えられます。 サイズの名前を、.csdef ファイルで使用されている新しい名前に変更する必要があります。 詳細については、[Cloud Services (延長サポート) のデプロイの前提条件](deploy-prerequisite.md#required-service-definition-file-csdef-updates)に関する記事を参照してください
 
 - デプロイ ファイルの最新のコピーを取得するには、Get API を使用します。 
-    - [ポータル](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell#export-resource-groups-to-templates)、[CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli#export-resource-groups-to-templates)、[Rest API](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate) を使用して、テンプレートを取得します 
-    - [PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) または [Rest API](https://docs.microsoft.com/rest/api/compute/cloudservices/rest-get-package) を使用して、.csdef ファイルを取得します。 
-    - [PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) または [Rest API](https://docs.microsoft.com/rest/api/compute/cloudservices/rest-get-package) を使用して、.cscfg ファイルを取得します。 
+    - [ポータル](../azure-resource-manager/templates/export-template-portal.md)、[PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)、[CLI](../azure-resource-manager/management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Rest API](/rest/api/resources/resourcegroups/exporttemplate) を使用して、テンプレートを取得します 
+    - [PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) または [Rest API](/rest/api/compute/cloudservices/rest-get-package) を使用して、.csdef ファイルを取得します。 
+    - [PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) または [Rest API](/rest/api/compute/cloudservices/rest-get-package) を使用して、.cscfg ファイルを取得します。 
     
  
 

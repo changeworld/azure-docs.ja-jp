@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f18d9cb2a1bf76986a5c77477085f2f12ab728ae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92f9c3baaa8260bdc154f8752b56a63cf1444ebe
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771805"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140409"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -134,9 +134,9 @@ Azure サービスでプライベート エンドポイントを使用する場�
 
 
 ## <a name="next-steps"></a>次のステップ
-- [ポータルを使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
-- [PowerShell を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
-- [CLI を使用して SQL Database 用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
+- [ポータルを使用して Azure Web Apps 用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
+- [PowerShell を使用して Azure Web Apps 用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
+- [CLI を使用して Azure Web Apps 用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)
 - [ポータルを使用してストレージ アカウント用のプライベート エンドポイントを作成する](./tutorial-private-endpoint-storage-portal.md)
 - [ポータルを使用して Azure Cosmos アカウント用のプライベート エンドポイントを作成する](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Azure PowerShell を使用して独自の Private Link サービスを作成する](create-private-link-service-powershell.md)

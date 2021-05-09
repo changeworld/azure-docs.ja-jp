@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 796ac876537aa06253ad6eeec99adaf48de61c79
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ab4e623e91987e7fa415b94ff8278a1de4c03700
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167262"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945973"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -246,6 +247,9 @@ Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
 Runbook が署名されたら、Automation アカウントにインポートし、署名ブロックで発行する必要があります。 Runbook をインポートする方法については、「[Runbook のインポート](manage-runbooks.md#import-a-runbook)」を参照してください。
+
+>[!NOTE]
+>Runbook コードでは、コメントも含め、プレーンテキスト文字のみを使用します。 Áやñなど、分音記号付きの文字 (á や ñ など) を使用すると、エラーが発生します。 Azure Automation によってコードがダウンロードされると、文字が疑問符に置き換えられ、署名が "署名ハッシュの検証に失敗しました" というメッセージで失敗します。
 
 ## <a name="work-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker での署名された Runbook の使用
 

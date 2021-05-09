@@ -11,12 +11,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ea087513cf628c42362a295c51913b0a31c6db3f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951940"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285702"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインをセキュリティで保護するために、弱い暗号およびパスワード ハッシュ同期を無効にする
 

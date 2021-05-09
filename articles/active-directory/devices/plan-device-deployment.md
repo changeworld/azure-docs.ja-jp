@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa18b619c785ad23e1da037621597684b1c5c63
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a7158a42a61ccba736e94f22714cc3b30f7f1cc5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551783"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286944"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) を使用すると、組織では、デバイ�
 
 ビデオ:[デバイス コントロールを使用した条件付きアクセス](https://youtu.be/NcONUf-jeS4)
 
-FAQ:「[Azure AD デバイス管理の FAQ](faq.yml)」および「[設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.md)」 
+FAQ:「[Azure AD デバイス管理の FAQ](faq.yml)」および「[設定とデータのローミングに関する FAQ](enterprise-state-roaming-faqs.yml)」 
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 
