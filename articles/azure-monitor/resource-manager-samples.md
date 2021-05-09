@@ -6,12 +6,13 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
-ms.openlocfilehash: ac2ed571359958feddd4d7952ea3b5f549688c77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3a56ff7a53151030b1c0aec8d11906c09a499a63
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046977"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319379"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Azure Monitor 用の Resource Manager テンプレートのサンプル
 

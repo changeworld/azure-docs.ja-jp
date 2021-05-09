@@ -3,12 +3,12 @@ title: 専用イベント ハブの概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、イベント ハブのシングル テナント デプロイを提供する専用の Azure Event Hubs の概要について説明します。
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: fe63b074bfdd01191d81dfb7024af5532a87a12f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 7f4693857f2c963623cb7ab7c132781d1061f5d7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310769"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017465"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -31,10 +31,12 @@ ms.locfileid: "107310769"
 
 専用クラスターによって、完全なスケールで容量が保証されます。 トラフィックのバーストに対応できる十分な耐久性を備えたストレージと 1 秒未満の待機時間により、ギガバイト単位のストリーミング データまでイングレスできます。 
 
-#### <a name="inclusive-and-exclusive-access-to-features"></a>機能への包括アクセスと排他アクセス 
-専用オファリングには、追加コストなしでのキャプチャや、BYOK (Bring Your Own Key) などの近日導入される機能への排他アクセスなどの機能があります。 また、負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は、サービスによって管理されます。 そのため、インフラストラクチャのメンテナンスにかかる時間が短縮され、クライアント側の機能を構築するためにより多くの時間を費やすことができます。  
+#### <a name="inclusive-and-exclusive-access-to-features"></a>機能への包括アクセスと排他アクセス
+
+専用オファリングには、追加コストなしでのキャプチャや、BYOK (Bring Your Own Key) などの機能への排他アクセスなどの機能があります。 また、負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は、サービスによって管理されます。 そのため、インフラストラクチャのメンテナンスにかかる時間が短縮され、クライアント側の機能を構築するためにより多くの時間を費やすことができます。  
 
 #### <a name="cost-savings"></a>コスト削減
+
 高いイングレス量 (> 100 スループット ユニット) により、Standard オファリングで同等の量のスループット ユニットを購入するより、クラスターのコストが大幅に減ります。
 
 

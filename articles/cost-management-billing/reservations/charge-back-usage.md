@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 4fb15a7e677d566454d5d487c1cf69767d7f3a30
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4059318e6b8052f3b0221c87e8a357cfc8679e44
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368746"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532766"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>Azure Reservation コストのチャージ バック
 
@@ -33,7 +33,7 @@ ms.locfileid: "100368746"
 
 [![チャージバックに使用できる予約リソース コストを示す例](./media/charge-back-usage/amortized-reservation-costs.png)](./media/charge-back-usage/amortized-reservation-costs.png#lightbox)
 
-Azure portal で予約使用率のコストを表示する方法を示すビデオを以下に示します。
+このビデオでは、Azure portal のサブスクリプション、リソース グループ、およびリソース レベルで予約の使用コストを確認する方法について説明しています。
 
  > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4sQOw] 
 

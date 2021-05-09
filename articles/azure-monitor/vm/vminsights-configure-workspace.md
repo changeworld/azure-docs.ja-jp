@@ -2,16 +2,16 @@
 title: VM insights の Log Analytics ワークスペースの構成
 description: VM insights によって使用される Log Analytics ワークスペースを作成して構成する方法について説明します。
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: 5a0e04772cfc1c9be77c0ad8b32b0e93be8b9f54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0a4b6e1f90e24b3289b453e849b4ad979b10e202
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046722"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319919"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>VM insights の Log Analytics ワークスペースの構成
 VM insights では、Azure Monitor 内の 1 つ以上の Log Analytics ワークスペースからデータを収集します。 エージェントをオンボードする前に、ワークスペースを作成して構成する必要があります。 この記事では、ワークスペースの要件と、それを VM insights 用に構成するための要件について説明します。

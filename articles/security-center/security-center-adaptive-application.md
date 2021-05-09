@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/07/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: de5c5fbb6673d022517bba2486ed4aa1f739d19b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439580"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834622"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -237,10 +237,17 @@ REST API から使用できる関数をいくつか以下に示します。
 
 ## <a name="faq---adaptive-application-controls"></a>FAQ - 適応型アプリケーション制御
 
+- [アプリケーション制御を強制するためのオプションはありますか。](#are-there-any-options-to-enforce-the-application-controls)
+- [お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?](#why-do-i-see-a-qualys-app-in-my-recommendeded-applications)
+
 ### <a name="are-there-any-options-to-enforce-the-application-controls"></a>アプリケーション制御を強制するためのオプションはありますか。
 現時点では、利用できる強制オプションはありません。 適応型アプリケーション制御では、安全なものとして定義したもの以外のアプリケーションが実行されると、**セキュリティ アラート** が表示されることを想定しています。 これらにはさまざまな利点があり (「[適応型アプリケーション制御の利点とは](#what-are-the-benefits-of-adaptive-application-controls)」)、このページに示すように高度なカスタマイズが可能です。
 
- 
+### <a name="why-do-i-see-a-qualys-app-in-my-recommendeded-applications"></a>お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?
+[Azure Defender for servers](defender-for-servers-introduction.md) には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このスキャナーの詳細およびデプロイ方法の手順については、「[Defender の統合された脆弱性評価ソリューション](deploy-vulnerability-assessment-vm.md)」を参照してください。
+
+Security Center にスキャナーをデプロイするときにアラートが生成されないようにするには、適応型アプリケーション制御の推奨許可リストに、すべてのコンピューターのスキャナーが含まれていることを確認します。 
+
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure と Azure 以外のマシンで実行されるアプリケーションの許可リストを定義するために、Azure Security Center で適応型アプリケーション制御を使用する方法を学習しました。 Security Center の他のいくつかのクラウド ワークロード保護機能の詳細については、次のページを参照してください。

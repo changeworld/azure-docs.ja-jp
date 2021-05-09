@@ -3,12 +3,13 @@ title: お使いのハイブリッド Kubernetes クラスターの監視を停�
 description: この記事では、Container insights でお使いのハイブリッド Kubernetes クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e8708d6b860683cc96a806160ccc7c8e33949ab2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: bd13c3e3c3a1aca3253bc43377a15324db2cc4fb
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713696"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319937"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>お使いのハイブリッド クラスターの監視を停止する方法
 

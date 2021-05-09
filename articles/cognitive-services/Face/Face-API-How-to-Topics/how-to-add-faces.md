@@ -1,5 +1,5 @@
 ---
-title: 例:顔を PersonGroup に追加する方法 - Face
+title: '例: 顔を PersonGroup に追加する - Face'
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Azure Cognitive Services Face サービスを使用して PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。
 services: cognitive-services
@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad669f700fdad6df7306403b3b487d86d6724d10
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303763"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016979"
 ---
 # <a name="add-faces-to-a-persongroup"></a>顔を PersonGroup に追加する
 
 このガイドでは、PersonGroup オブジェクトに膨大な数の人と顔を追加する方法を説明します。 この同じ戦略は、LargePersonGroup、FaceList、および LargeFaceList の各オブジェクトにも適用されます。 このサンプルは Azure Cognitive Services Face .NET クライアント ライブラリを使用して C# で記述されています。
 
-## <a name="step-1-initialization"></a>手順 1:初期化
+## <a name="step-1-initialization"></a>手順 1: 初期化
 
 以下のコードは、いくつかの変数を宣言し、顔の追加要求をスケジュール設定するヘルパー関数を実装します。
 
@@ -59,7 +59,7 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step-2-authorize-the-api-call"></a>手順 2:API 呼び出しを承認する
+## <a name="step-2-authorize-the-api-call"></a>手順 2: API 呼び出しを承認する
 
 クライアント ライブラリを使用するときは、サブスクリプション キーを **FaceClient** クラスのコンストラクターに渡す必要があります。 次に例を示します。
 
@@ -71,7 +71,7 @@ private readonly IFaceClient faceClient = new FaceClient(
 
 サブスクリプションキー を取得するには、Azure portal から Azure Marketplace にアクセスします。 詳細については、[サブスクリプション](https://www.microsoft.com/cognitive-services/sign-up)に関する記事を参照してください。
 
-## <a name="step-3-create-the-persongroup"></a>手順 3:PersonGroup を作成する
+## <a name="step-3-create-the-persongroup"></a>手順 3: PersonGroup を作成する
 
 人を保存するために "MyPersonGroup" という名前の PersonGroup を作成します。
 要求時間が `_timeStampQueue` にエンキューされ、全体的な検証が保証されます。
@@ -83,7 +83,7 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceClient.LargePersonGroup.CreateAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step-4-create-the-persons-for-the-persongroup"></a>手順 4:PersonGroup に対して人を作成する
+## <a name="step-4-create-the-persons-for-the-persongroup"></a>手順 4: PersonGroup に対して人を作成する
 
 複数の人を同時に作成します。また、`await WaitCallLimitPerSecondAsync()` を適用して、呼び出し制限を超えないようにします。
 
@@ -98,7 +98,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>手順 5:顔を人に追加する
+## <a name="step-5-add-faces-to-the-persons"></a>手順 5: 顔を人に追加する
 
 さまざまな人に追加された顔は、同時に処理されます。 特定の 1 人について追加された顔は、順次処理されます。
 ここでも、`await WaitCallLimitPerSecondAsync()` を呼び出して、要求の頻度が制限範囲内になるようにします。
@@ -136,7 +136,8 @@ Parallel.For(0, PersonCount, async i =>
 - [PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API を使用してユーザーを作成します。
 - [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API を使用して、人に顔を追加します。
 
-## <a name="related-topics"></a>関連トピック
+## <a name="next-steps"></a>次の手順
 
-- [画像内の顔を検出する](HowtoDetectFacesinImage.md)
-- [大規模なフィーチャーを使用する](how-to-use-large-scale.md)
+このガイドでは、**PersonGroup** に顔データを追加する方法について学習しました。 次に、強化されたデータ構造である **PersonDirectory** を使用して、顔データをさらに処理する方法について説明します。
+
+- [PersonDirectory 構造を使用する](use-persondirectory.md)

@@ -8,12 +8,13 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 04/15/2021
 ms.author: jaysoni
-ms.openlocfilehash: 6aad1cf1269a7c3dc082482c39fdc4a079fc3240
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d2291bc88a90a703239764a2d5fda9b2889a7af7
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514888"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319667"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -80,7 +81,7 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>ソリューション: location ヘッダーを書き換える
 
-location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](./rewrite-http-headers.md)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](./rewrite-http-headers.md#modify-a-redirection-url)に関する記事の手順を参照してください。
+location ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定します。 これを行うには、応答の location ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件で書き換え[規則](./rewrite-http-headers-url.md)を作成します。 また、location ヘッダーを書き換えてアプリケーション ゲートウェイのホスト名を含めるようにするアクションも、これによって実行する必要があります。 詳細は、[location ヘッダーの書き換え方法](./rewrite-http-headers-url.md#modify-a-redirection-url)に関する記事の手順を参照してください。
 
 > [!NOTE]
 > HTTP ヘッダーの書き換えのサポートは、Application Gateway の [Standard_v2 と WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md) でのみ利用できます。 v2 SKU で利用可能なヘッダーの書き換えやその他の[高度な機能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)を使用するには、[v2 に移行する](./migrate-v1-v2.md)ことをお勧めします。
