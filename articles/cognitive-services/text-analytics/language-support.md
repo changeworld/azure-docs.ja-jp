@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: c0d91f803822e018f4363bb78d9138e2efe16f8a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 38fda578a2151d1d5cf306095b3be49cb916977b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531427"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287430"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -33,11 +33,11 @@ ms.locfileid: "107531427"
 | イタリア語               |     `it`      |     ✓      |         2019-10-01         |                    |
 | 日本語              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | 韓国語                |     `ko`      |    ✓      |         2019-10-01         |                    |
-| ノルウェー語 (ブークモール)   |     `no`      |     ✓      |         2020-07-01         |                    |
+| ノルウェー語 (ブークモール)   |     `no`      |     ✓      |         2020-04-01         |                    |
 | ポルトガル語 (ブラジル)   |    `pt-BR`    |     ✓      |         2020-04-01         |                    |
 | ポルトガル語 (ポルトガル) |    `pt-PT`    |     ✓      |         2019-10-01         | `pt` も可能 |
 | スペイン語               |     `es`      |     ✓      |         2019-10-01         |                    |
-| トルコ語               |     `tr`      |     ✓       |         2020-07-01        |                    |
+| トルコ語               |     `tr`      |     ✓       |         2020-04-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>意見マイニング (v3.1-preview のみ)
 

@@ -4,12 +4,12 @@ description: Enterprise セキュリティ パッケージのデプロイと管�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57bf6d1773857b7627b8cea5b69d18e337e41427
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933575"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292848"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight でのエンタープライズ セキュリティの一般情報とガイドライン
 
@@ -112,7 +112,7 @@ URL 承認が有効になっている場合:
 [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) では、Windows Server Active Directory と完全に互換性のあるマネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos 認証、NTLM 認証など) が提供されます。
 
 セキュリティで保護されたクラスターがドメインに参加するには、Azure AD DS が必要です。
-HDInsight は、オンプレミスのドメイン コントローラーまたはカスタム ドメイン コントローラーに依存できません。これは、過剰なフォールト ポイント、資格情報の共有、DNS アクセス許可などが伴うためです。 詳細については、[Azure AD DS の FAQ](../../active-directory-domain-services/faqs.md) に関するページを参照してください。
+HDInsight は、オンプレミスのドメイン コントローラーまたはカスタム ドメイン コントローラーに依存できません。これは、過剰なフォールト ポイント、資格情報の共有、DNS アクセス許可などが伴うためです。 詳細については、[Azure AD DS の FAQ](../../active-directory-domain-services/faqs.yml) に関するページを参照してください。
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS インスタンス
 

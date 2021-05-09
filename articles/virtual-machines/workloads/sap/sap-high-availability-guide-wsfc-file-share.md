@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/15/2021
+ms.date: 04/27/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a51f874d09aebfcb2c0b73e0b484f68042d1bb6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cde810bb9f612b0dc84fb4dd7593761b057e722
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103496203"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142857"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -33,9 +33,23 @@ Windows Server フェールオーバー クラスタリングは、Windows で�
 フェールオーバー クラスターとは、アプリケーションとサービスの可用性を高めるために連携する、1 + n 台の独立したサーバー (ノード) のグループです。 ノード障害が発生した場合、Windows Server フェールオーバー クラスタリングは、アプリケーションとサービスを提供するクラスターを正常な状態で維持するうえで許容できるエラーの数を計算します。 フェールオーバー クラスタリングを実現するために、さまざまなクォーラム モードを選択できます。
 
 ## <a name="prerequisites"></a>前提条件
-この記事に記載されているタスクを開始する前に、次の記事を確認してください。
+この記事で説明するタスクを開始する前に、以下の記事および SAP Note を確認してください。
 
 * [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ][sap-high-availability-architecture-scenarios]
+* SAP Note [1928533][1928533]、これには次が含まれます。  
+  * SAP ソフトウェアのデプロイでサポートされる Azure VM サイズの一覧
+  * Azure VM サイズの容量に関する重要な情報
+  * サポートされる SAP ソフトウェア、およびオペレーティング システム (OS) とデータベースの組み合わせ
+  * Microsoft Azure 上の Windows に必要な SAP カーネル バージョン
+* SAP Note [2015553][2015553]: SAP でサポートされる Azure 上の SAP ソフトウェア デプロイの前提条件が記載されています。
+* SAP Note [2178632][2178632]: Azure 上の SAP について報告されるすべての監視メトリックに関する詳細情報が記載されています。
+* SAP Note [1999351][1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
+* SAP Note [2287140](https://launchpad.support.sap.com/#/notes/2287140) は、SMB 3.x プロトコルの SAP でサポートされている CA 機能の前提条件を一覧表示しています。
+* SAP Note [2802770](https://launchpad.support.sap.com/#/notes/2802770) には、Windows 2012 および 2016 で低速で実行されている SAP トランザクション AL11 のトラブルシューティング情報が含まれています。
+* SAP Note [1911507](https://launchpad.support.sap.com/#/notes/1911507) には、SMB 3.0 プロトコルを使用した Windows Server 上のファイル共有の透過的なフェールオーバー機能に関する情報が含まれています。
+* SAP Note [662452](https://launchpad.support.sap.com/#/notes/662452) には、データ アクセス中のファイル システムのパフォーマンスやエラーの低さに対処するための推奨事項 (8.3 名前の生成を非アクティブ化) があります。
+* [Windows フェールオーバー クラスターへの SAP NetWeaver 高可用性のインストールおよび Azure 上での SAP ASCS/SCS インスタンスのファイル共有](./sap-high-availability-installation-wsfc-file-share.md) 
+* [フェールオーバー クラスターへの (A)SCS インスタンスのインストール](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 
 > [!IMPORTANT]
 > ファイル共有を使う SAP ASCS/SCS インスタンスのクラスター化は、SAP Kernel 7.49 (およびそれ以降) を含む SAP NetWeaver 7.40 (およびそれ以降) についてサポートされています。

@@ -3,19 +3,19 @@ title: 'クイックスタート: Azure Maps を使用して Android アプリ�
 description: 'クイックスタート: Azure Maps Android SDK を使用して Android アプリを作成する方法について説明します。'
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/10/2020
+ms.date: 04/26/2021
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3c0f95c1252b6895b4604d14e5565395beab8952
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2a67f432b126fb164b1b099b772646a679c28837
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039650"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323496"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>クイックスタート: Azure Maps を使用して Android アプリを作成する
 
@@ -49,7 +49,7 @@ ms.locfileid: "102039650"
     * *[ライセンス]* と *[プライバシーに関する声明]* の内容を読み、チェック ボックスをオンにして条件に同意します。
     * **[作成]** ボタンをクリックします。
 
-    ![ポータルでの Azure Maps アカウントの作成](media/quick-android-map/create-account.png)
+    :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="ポータルで Maps アカウントを作成する":::
 
 ## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
 

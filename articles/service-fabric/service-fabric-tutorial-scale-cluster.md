@@ -3,13 +3,13 @@ title: Azure で Service Fabric クラスターのスケーリングを行う
 description: このチュートリアルでは、Azure の Service Fabric クラスターをスケールアウトおよびスケールインする方法と、残ったリソースをクリーンアップする方法について説明します。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc
+ms.openlocfilehash: 3072caa1bacf31b1c02ab7ca8720d190736ad3ff
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98788030"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287268"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 

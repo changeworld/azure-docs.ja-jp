@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/6/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b64ee4d1538276bbbcab3fe09054f399ad20c162
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20afd0a696a2bbeda0e2fa8bb114ecb8b5b6a76b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94616551"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205541"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Azure Digital Twins のトラブルシューティング: リソース ヘルス
 
@@ -32,13 +32,13 @@ Azure Resource Health は、Azure Digital Twins インスタンスが稼働し�
 
     :::image type="content" source="media/troubleshoot-resource-health/resource-health.png" alt-text="[リソース正常性] ページを示すスクリーンショット。過去 9 日間の日時レポートが表示された [正常性の履歴] セクションがあります。毎日、&quot;使用可能&quot; の状態が示されています。":::
 
-上の図では、このインスタンスは "*使用可能*" と示されており、過去 9 日間分あります。 "*使用可能*" 状態と、表示される可能性のあるその他の状態の種類の詳細については、[*Azure リソースの正常性の概要*](../service-health/resource-health-overview.md)に関するページを参照してください。
+上の図では、このインスタンスは "*使用可能*" と示されており、過去 9 日間分あります。 "*使用可能*" 状態と、表示される可能性のあるその他の状態の種類の詳細については、[Azure リソースの正常性の概要](../service-health/resource-health-overview.md)に関するページを参照してください。
 
-さまざまな種類の Azure リソースにおけるリソースの正常性の詳細については、「[*Azure Resource Health で利用できるリソースの種類と正常性チェック*](../service-health/resource-health-checks-resource-types.md)」を参照してください。
+さまざまな種類の Azure リソースにおけるリソースの正常性の詳細については、「[Azure Resource Health で利用できるリソースの種類と正常性チェック](../service-health/resource-health-checks-resource-types.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins インスタンスを監視するその他の方法については、次の記事を参照してください。
-* [*トラブルシューティング:Azure Monitor でメトリックを表示する*](troubleshoot-metrics.md)" に関するページを参照してください
-* [*トラブルシューティング:診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
-* [*トラブルシューティング:アラートを設定する*](troubleshoot-alerts.md)
+* [トラブルシューティング:Azure Monitor でメトリックを表示する](troubleshoot-metrics.md)" に関するページを参照してください
+* [トラブルシューティング:診断の設定](troubleshoot-diagnostics.md)に関するページを参照してください。
+* [トラブルシューティング:アラートを設定する](troubleshoot-alerts.md)

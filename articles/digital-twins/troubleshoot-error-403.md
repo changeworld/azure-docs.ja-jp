@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: ad28b3300e9107c7f6d4b1987205583ef60ed658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b49ded912037c8935b67e64d4e4bb09402576bc7
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100545702"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203633"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>サービス要求が失敗しました。 状態:403 (許可されていません)
 
@@ -58,7 +58,7 @@ ms.locfileid: "100545702"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-このロールの要件と割り当てプロセスの詳細については、「[*ユーザーのアクセス許可の設定*」セクション](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)を参照してください。"*方法:インスタンスと認証を設定する (CLI またはポータル)* " に関するページに含まれています
+このロールの要件と割り当てプロセスの詳細については、「[ユーザーのアクセス許可の設定」セクション](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)を参照してください。"*方法:インスタンスと認証を設定する (CLI またはポータル)* " に関するページに含まれています
 
 このロールが既に割り当てられており、"*かつ*" クライアント アプリを認証するために Azure AD アプリ登録を使用しており、この解決策で 403 の問題が解決されなかった場合は、次の解決策に進むことができます。
 
@@ -86,12 +86,12 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>問題を修正する
 
-これが説明とは異なる表示になっている場合は、["*アプリ登録を作成する方法*"](how-to-create-app-registration.md) に関するページを参照して、アプリ登録を設定する方法の手順に従います。
+これが説明とは異なる表示になっている場合は、"[アプリ登録を作成する方法](how-to-create-app-registration.md)" に関するページを参照して、アプリ登録を設定する方法の手順に従います。
 
 ## <a name="next-steps"></a>次のステップ
 
 新しい Azure Digital Twins インスタンスを作成して認証するための設定手順を確認してください。
-* [*方法: インスタンスと認証を設定する (CLI)*](how-to-set-up-instance-cli.md)
+* [方法: インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md)
 
 Azure Digital Twins のセキュリティとアクセス許可の詳細を確認します。
-* [*概念:Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)
+* [概念:Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)

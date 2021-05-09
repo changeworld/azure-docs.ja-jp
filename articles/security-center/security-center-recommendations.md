@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: da0826a349131d9d5716932abfc603be8103b788
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100340"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903544"
 ---
 # <a name="review-your-security-recommendations"></a>セキュリティの推奨事項を確認する
 
@@ -43,7 +43,7 @@ Security Center はリソースのセキュリティの状態を分析して、�
     1. **更新間隔** (該当する場合)
     1. この推奨事項に対して除外が存在する場合は、除外されたリソースの数を示す **除外されたリソースの数**
     1. **説明** - 問題の簡単な説明
-    1. **修正手順** - 影響を受けるリソースのセキュリティの問題を修正するために必要な手動の手順の説明。 "クイック修正" を含む推奨事項の場合は、推奨される修正プログラムをリソースに適用する前に、 **[修正ロジックを表示]** を選択することができます。 
+    1. **修正手順** - 影響を受けるリソースのセキュリティの問題を修正するために必要な手動の手順の説明。 **[修正]** オプション** を含む推奨事項の場合は、推奨される修正プログラムをリソースに適用する前に、 **[修正ロジックを表示]** を選択できます。
     1. **影響を受けるリソース** - リソースはタブにグループ化されています。
         - **正常なリソース** - 影響を受けていないか、既に問題を修正した関連するリソース。
         - **異常なリソース** – 特定された問題の影響を受けているリソース。

@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual Network 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Virtual Network に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 11f9704929b397e9aa526b803855f400dd0cd1ee
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: bf2a8f380b4cb0814d201240b3250ef8ce087d89
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873345"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108174932"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>Azure Virtual Network 用の Azure Policy 規制コンプライアンス コントロール
 

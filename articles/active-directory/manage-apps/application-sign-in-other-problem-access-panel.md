@@ -2,22 +2,22 @@
 title: Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 description: Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a54c7d6cc4ccf1d9f42702be030598ad1edfab24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0a1522c03e37db5f381bc800171c93b3ffe29b4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225151"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289176"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 

@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:新しい環境に対するブループリント サンプル
 description: このチュートリアルでは、ブループリント サンプルを使用して、2 つのリソース グループを設定し、それぞれにロールの割り当てを構成するブループリント定義を作成します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: tutorial
-ms.openlocfilehash: aea3760128221d42e092e4ca45200874d54da54a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50871c14ed8357e46e49a599065f878253c860df
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98915559"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324439"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>チュートリアル:ブループリント サンプルから環境を作成する
 
