@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: memildin
-ms.openlocfilehash: 2f5d98dd9bf893065f2bf9c37cbec4384d0f7c94
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 889c79357037afb0d9c83c645e86d05edc0df6f1
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727142"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903760"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -83,7 +83,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 ## <a name="improve-your-secure-score"></a>セキュリティ スコアを向上させる
 
-セキュリティ スコアを向上させるには、推奨事項リストのセキュリティの推奨事項を修復してください。 各推奨事項は、リソースごとに手動で修復するか、リソースのグループに推奨設定の修復を迅速に適用するために **[クイック修正]** オプション (使用可能な場合) を使用して修復できます。 詳細については、「[推奨事項の修復](security-center-remediate-recommendations.md)」を参照してください。
+セキュリティ スコアを向上させるには、推奨事項リストのセキュリティの推奨事項を修復してください。 各推奨事項は、リソースごとに手動で修復することも、 **[修正]** オプション (利用可能な場合) を使用して、複数のリソースの問題を迅速に解決することもできます。 詳細については、「[推奨事項の修復](security-center-remediate-recommendations.md)」を参照してください。
 
 関連する推奨事項に対して強制と拒否のオプションを構成することで、スコアを向上させ、ユーザーがスコアに悪影響を与えるリソースを作成しないようにすることもできます。 詳細については、「[適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)」を参照してください。
 

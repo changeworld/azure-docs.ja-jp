@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f9f6c18e75b0c8238583742a2a99d0e365edbd0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453208"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166363"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -101,17 +101,17 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 
 次の Java の例は、キュー `myqueuename` に格納されるトリガーされたメッセージを記録するストレージ キュー トリガー関数を示しています。
 
- ```java
- @FunctionName("queueprocessor")
- public void run(
+```java
+@FunctionName("queueprocessor")
+public void run(
     @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
+                queueName = "myqueuename",
+                connection = "myconnvarname") String message,
+    final ExecutionContext context
+) {
+    context.getLogger().info(message);
+}
+```
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -166,32 +166,32 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 
 ```json
 {
-  "bindings": [
-    {
-      "name": "QueueItem",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "messages",
-      "connection": "MyStorageConnectionAppSetting"
-    }
-  ]
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
 }
 ```
 
 *Run.ps1* ファイルのコードによってパラメーターが `$QueueItem` として宣言され、関数でキュー メッセージを読み取ることができるようになります。
 
 ```powershell
-# Input bindings are passed in via param block.
-param([string] $QueueItem, $TriggerMetadata)
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
 
-# Write out the queue message and metadata to the information log.
-Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
-Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
-Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
-Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
-Write-Host "ID: $($TriggerMetadata.Id)"
-Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
-Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -381,7 +381,7 @@ public class QueueTriggerDemo {
 [Storage 拡張機能の 5.0.0 またはそれ以降のバージョン](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)を使用するアプリでは、[Azure SDK for .NET](/dotnet/api/overview/azure/storage.queues-readme) の型を使用することもできます。 このバージョンでは、次の型を優先して、レガシ `CloudQueueMessage` 型のサポートがなくなります。
 
 - [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)
- 
+
 これらの型の使用例については、[拡張機能の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.WebJobs.Extensions.Storage.Queues#examples)に関するページを参照してください。
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
@@ -390,7 +390,7 @@ public class QueueTriggerDemo {
 
 `string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 `paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
 
-* オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。 
+* オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -462,7 +462,7 @@ public class QueueTriggerDemo {
 
 待機中のキュー メッセージが複数存在する場合、キュー トリガーはメッセージのバッチを取得し、関数インスタンスを同時に呼び出してそれらを処理します。 既定では、このバッチ サイズは 16 です。 処理されている数が 8 まで減少すると、このランタイムは別のバッチを取得し、それらのメッセージの処理を開始します。 そのため、1 つの仮想マシン (VM) 上で 1 関数あたりに処理されている同時実行メッセージの最大数は 24 です。 この制限は、各 VM 上のキューによってトリガーされる各関数に個別に適用されます。 関数アプリが複数の VM にスケールアウトした場合、各 VM はトリガーを待機し、関数を実行しようとします。 たとえば、関数アプリが 3 つの VM にスケールアウトした場合、キューによってトリガーされる 1 つの関数の同時実行インスタンスの既定の最大数は 72 です。
 
-新しいバッチを取得するためのバッチ サイズとしきい値は、[host.json ファイル](functions-host-json.md#queues)で構成できます。 関数アプリ内のキューによってトリガーされる関数の並列実行を最小限に抑えたい場合は、このバッチ サイズを 1 に設定できます。 この設定によってコンカレンシーが解消されるのは、関数アプリが 1 つの仮想マシン (VM) 上で実行される場合に限ります。 
+新しいバッチを取得するためのバッチ サイズとしきい値は、[host.json ファイル](functions-host-json.md#queues)で構成できます。 関数アプリ内のキューによってトリガーされる関数の並列実行を最小限に抑えたい場合は、このバッチ サイズを 1 に設定できます。 この設定によってコンカレンシーが解消されるのは、関数アプリが 1 つの仮想マシン (VM) 上で実行される場合に限ります。
 
 キュー トリガーは、関数がキュー メッセージを複数回同時に処理することを自動的に防止します。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - プライベート クラウドの vSAN 暗号化の構成
 description: CloudSimple プライベート クラウドが、Azure 仮想ネットワーク内で実行されているキー管理サーバーと連携できるように、vSAN ソフトウェア暗号化機能を構成する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de2c3d889dd7f8bae4c50dee1c68d039e26e52d4
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899050"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181078"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの vSAN 暗号化の構成
 

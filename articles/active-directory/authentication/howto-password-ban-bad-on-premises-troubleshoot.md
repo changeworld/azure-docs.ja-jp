@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b34194c0b9afa622d6ae751752092ed3f750f0b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648727"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285756"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>トラブルシューティング:オンプレミスの Azure AD パスワード保護
 
@@ -402,6 +402,6 @@ VerifyAzureConnectivityViaSpecificProxy Passed
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure AD パスワード保護についてよく寄せられる質問](howto-password-ban-bad-on-premises-faq.md)
+[Azure AD パスワード保護についてよく寄せられる質問](howto-password-ban-bad-on-premises-faq.yml)
 
 グローバルおよびカスタムの禁止パスワード リストの詳細については、[不適切なパスワードの禁止](concept-password-ban-bad.md)に関する記事を参照してください。

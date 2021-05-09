@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/20/2021
+ms.date: 04/27/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e9030558779be3e417383f9f32612ee3e834a1c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8e21443d6f04d693f64d92b71f3f616d1083bf82
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788081"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146241"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -77,7 +77,7 @@ Azure M シリーズ VM で Azure 書き込みアクセラレータを使用す�
 
 IBM Db2 LUW 11.5 では、4 KB のセクター サイズに対するサポートがリリースされました。 古い Db2 バージョンでは、512 バイトのセクター サイズを使用する必要があります。 Premium SSD ディスクは 4 KB ネイティブであり、512 バイト エミュレーションを備えています。 Ultra ディスクでは、既定で 4 KB のセクター サイズが使用されます。 Ultra ディスクの作成時に、512 バイトのセクター サイズを有効にすることができます。 詳細については、[Azure Ultra ディスクの使用](../../disks-enable-ultra-ssd.md#deploy-an-ultra-disk---512-byte-sector-size)に関する記事を参照してください。 この 512 バイトのセクター サイズは、11.5 より低い IBM Db2 LUW バージョンでの前提条件です。
 
-`log_dir`、`sapdata`、`saptmp` ディレクトリの Db2 ストレージ パスでストレージ プールを使用する Windows では、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
+`log_dir`、`sapdata`、`saptmp` ディレクトリの Db2 ストレージ パスでストレージ プールを使用する Windows では、512 バイトの物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
 
 
 ## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>IBM Db2 デプロイのための VM とディスク構造に関する推奨事項
@@ -182,54 +182,7 @@ Sapdata と saptmp ディレクトリに対する Db2 ストレージ パスを�
 
 ### <a name="other"></a>その他
 IBM Database を使用した VM のデプロイについては、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」ドキュメントに記載されている、Azure 可用性セットや SAP の監視などの他のすべての一般的な領域が適用されます。
-
-[767598]:https://launchpad.support.sap.com/#/notes/767598
-[773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]:https://launchpad.support.sap.com/#/notes/826037
-[965908]:https://launchpad.support.sap.com/#/notes/965908
-[1031096]:https://launchpad.support.sap.com/#/notes/1031096
-[1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]:https://launchpad.support.sap.com/#/notes/1139904
-[1173395]:https://launchpad.support.sap.com/#/notes/1173395
-[1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]:https://launchpad.support.sap.com/#/notes/1409604
-[1558958]:https://launchpad.support.sap.com/#/notes/1558958
-[1585981]:https://launchpad.support.sap.com/#/notes/1585981
-[1588316]:https://launchpad.support.sap.com/#/notes/1588316
-[1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]:https://launchpad.support.sap.com/#/notes/1597355
-[1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]:https://launchpad.support.sap.com/#/notes/1619726
-[1619967]:https://launchpad.support.sap.com/#/notes/1619967
-[1750510]:https://launchpad.support.sap.com/#/notes/1750510
-[1752266]:https://launchpad.support.sap.com/#/notes/1752266
-[1757924]:https://launchpad.support.sap.com/#/notes/1757924
-[1757928]:https://launchpad.support.sap.com/#/notes/1757928
-[1758182]:https://launchpad.support.sap.com/#/notes/1758182
-[1758496]:https://launchpad.support.sap.com/#/notes/1758496
-[1772688]:https://launchpad.support.sap.com/#/notes/1772688
-[1814258]:https://launchpad.support.sap.com/#/notes/1814258
-[1882376]:https://launchpad.support.sap.com/#/notes/1882376
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
-[1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[1941500]:https://launchpad.support.sap.com/#/notes/1941500
-[1956005]:https://launchpad.support.sap.com/#/notes/1956005
-[1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]:https://launchpad.support.sap.com/#/notes/2069760
-[2121797]:https://launchpad.support.sap.com/#/notes/2121797
-[2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2171857]:https://launchpad.support.sap.com/#/notes/2171857
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[767598]:https://launchpad.support.sap.com/#/notes/767598 [773830]:https://launchpad.support.sap.com/#/notes/773830 [826037]:https://launchpad.support.sap.com/#/notes/826037 [965908]:https://launchpad.support.sap.com/#/notes/965908 [1031096]:https://launchpad.support.sap.com/#/notes/1031096 [1114181]:https://launchpad.support.sap.com/#/notes/1114181 [1139904]:https://launchpad.support.sap.com/#/notes/1139904 [1173395]:https://launchpad.support.sap.com/#/notes/1173395 [1245200]:https://launchpad.support.sap.com/#/notes/1245200 [1409604]:https://launchpad.support.sap.com/#/notes/1409604 [1558958]:https://launchpad.support.sap.com/#/notes/1558958 [1585981]:https://launchpad.support.sap.com/#/notes/1585981 [1588316]:https://launchpad.support.sap.com/#/notes/1588316 [1590719]:https://launchpad.support.sap.com/#/notes/1590719 [1597355]:https://launchpad.support.sap.com/#/notes/1597355 [1605680]:https://launchpad.support.sap.com/#/notes/1605680 [1619720]:https://launchpad.support.sap.com/#/notes/1619720 [1619726]:https://launchpad.support.sap.com/#/notes/1619726 [1619967]:https://launchpad.support.sap.com/#/notes/1619967 [1750510]:https://launchpad.support.sap.com/#/notes/1750510 [1752266]:https://launchpad.support.sap.com/#/notes/1752266 [1757924]:https://launchpad.support.sap.com/#/notes/1757924 [1757928]:https://launchpad.support.sap.com/#/notes/1757928 [1758182]:https://launchpad.support.sap.com/#/notes/1758182 [1758496]:https://launchpad.support.sap.com/#/notes/1758496 [1772688]:https://launchpad.support.sap.com/#/notes/1772688 [1814258]:https://launchpad.support.sap.com/#/notes/1814258 [1882376]:https://launchpad.support.sap.com/#/notes/1882376 [1909114]:https://launchpad.support.sap.com/#/notes/1909114 [1922555]:https://launchpad.support.sap.com/#/notes/1922555 [1928533]:https://launchpad.support.sap.com/#/notes/1928533 [1941500]:https://launchpad.support.sap.com/#/notes/1941500 [1956005]:https://launchpad.support.sap.com/#/notes/1956005 [1973241]:https://launchpad.support.sap.com/#/notes/1973241 [1984787]:https://launchpad.support.sap.com/#/notes/1984787 [1999351]:https://launchpad.support.sap.com/#/notes/1999351 [2002167]:https://launchpad.support.sap.com/#/notes/2002167 [2015553]:https://launchpad.support.sap.com/#/notes/2015553 [2039619]:https://launchpad.support.sap.com/#/notes/2039619 [2069760]:https://launchpad.support.sap.com/#/notes/2069760 [2121797]:https://launchpad.support.sap.com/#/notes/2121797 [2134316]:https://launchpad.support.sap.com/#/notes/2134316 [2171857]:https://launchpad.support.sap.com/#/notes/2171857 [2178632]:https://launchpad.support.sap.com/#/notes/2178632 [2191498]:https://launchpad.support.sap.com/#/notes/2191498 [2233094]:https://launchpad.support.sap.com/#/notes/2233094 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 
 ## <a name="next-steps"></a>次の手順
@@ -408,60 +361,3 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../disks-types.md
-[storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
-[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
-[template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
-[templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
-[virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:../../../resource-manager-deployment-model.md
-[virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
-[virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md 
-[virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md 
-[virtual-machines-linux-agent-user-guide]:../../linux/agent-user-guide.md
-[virtual-machines-linux-agent-user-guide-command-line-options]:../../linux/agent-user-guide.md#command-line-options
-[virtual-machines-linux-capture-image]:../../linux/capture-image.md
-[virtual-machines-linux-capture-image-resource-manager]:../../linux/capture-image.md
-[virtual-machines-linux-capture-image-resource-manager-capture]:../../linux/capture-image.md#step-2-capture-the-vm
-[virtual-machines-linux-configure-raid]:../../linux/configure-raid.md
-[virtual-machines-linux-configure-lvm]:../../linux/configure-lvm.md
-[virtual-machines-linux-classic-create-upload-vhd-step-1]:../../virtual-machines-linux-classic-create-upload-vhd.md#step-1-prepare-the-image-to-be-uploaded
-[virtual-machines-linux-create-upload-vhd-suse]:../../linux/suse-create-upload-vhd.md
-[virtual-machines-linux-redhat-create-upload-vhd]:../../linux/redhat-create-upload-vhd.md
-[virtual-machines-linux-how-to-attach-disk]:../../linux/add-disk.md
-[virtual-machines-linux-how-to-attach-disk-how-to-initialize-a-new-data-disk-in-linux]:../../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk
-[virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
-[virtual-machines-linux-update-agent]:../../linux/update-agent.md
-[virtual-machines-manage-availability-linux]:../../linux/manage-availability.md
-[virtual-machines-manage-availability-windows]:../../windows/manage-availability.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:virtual-machines-windows-create-powershell.md
-[virtual-machines-sizes-linux]:../../linux/sizes.md
-[virtual-machines-sizes-windows]:../../windows/sizes.md
-[virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
-[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
-[virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
-[virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
-[virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
-[virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
-[virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
-[virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
-[virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-[virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
-[virtual-networks-nsg]:../../../virtual-network/security-overview.md
-[virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
-[virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[virtual-networks-udr-overview]:../../../virtual-network/virtual-networks-udr-overview.md
-[vpn-gateway-about-vpn-devices]:../../../vpn-gateway/vpn-gateway-about-vpn-devices.md
-[vpn-gateway-create-site-to-site-rm-powershell]:../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md
-[vpn-gateway-cross-premises-options]:../../../vpn-gateway/vpn-gateway-plan-design.md
-[vpn-gateway-site-to-site-create]:../../../vpn-gateway/vpn-gateway-site-to-site-create.md
-[vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
-[xplat-cli]:../../../cli-install-nodejs.md
-[xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md

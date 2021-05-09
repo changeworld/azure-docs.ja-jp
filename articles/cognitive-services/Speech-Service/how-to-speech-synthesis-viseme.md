@@ -1,7 +1,7 @@
 ---
 title: リップシンクのために頭部姿勢イベントを取得する方法
 titleSuffix: Azure Cognitive Services
-description: Speech SDK は、音声合成における口形素イベントをサポートしています。このイベントは、特定の音素を生成するときの唇、顎、舌の位置など、観察されたスピーチにおける主要な姿勢を表すために使用されます。
+description: Speech SDK では、音声合成中の口形素イベントがサポートされています。これにより、特定の音素を生成するときの唇、顎、舌の位置など、観察されたスピーチにおける主要な姿勢が表されます。
 services: cognitive-services
 author: yulin-li
 manager: nitinme
@@ -12,19 +12,19 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: e97c48d4e42627d0fc2caaa4f66e81b9a0cafa86
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a7808b3b5db9d01d6a1a2cd352a912d44a4e7908
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643902"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904498"
 ---
 # <a name="get-facial-pose-events"></a>表情イベントを取得する
 
 > [!NOTE]
-> 口形素は現在、`en-US-AriaNeural` 音声に対してのみ機能します。
+> 現時点では、口形素イベントは `en-US-AriaNeural` 音声でのみ使用できます。
 
-口形素は、音声言語での音素を視覚的に描写したものです。
+"_口形素_" は、音声言語での音素を視覚的に描写したものです。
 言葉を話すときの顔と口の位置を定義します。
 各口形素は、音素の特定のセットに対する主要な頭部姿勢を表します。
 口形素と音素の間に 1 対 1 対応の関係はありません。

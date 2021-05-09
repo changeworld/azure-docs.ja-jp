@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 98036b1a12aafde21a318ad8f84f3eba08d3e0a6
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 361af28932226640db077bf4949f7bd472ceb986
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001522"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166579"
 ---
 # <a name="restore-a-deleted-azure-database-for-mysql-server"></a>削除した Azure Database for MySQL サーバーを復元する
 
@@ -36,7 +36,7 @@ ms.locfileid: "108001522"
    
  3. [MySQL サーバーの削除] イベントをダブルクリックし、[JSON] タブをクリックして、JSON 出力の "resourceId" 属性と "submissionTimestamp" 属性を記録します。 ResourceId の形式は次のとおりです:/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/servers/deletedserver.
  
- 4. 次に、[サーバー REST API の作成ページ](/rest/api/mysql/flexibleserver(preview)/servers/create)に移動し、緑色で強調表示されている [使ってみる] タブを クリックして、Azure アカウントでログインします
+ 4. 次に、[サーバー REST API の作成ページ](/rest/api/mysql/singleserver/servers(2017-12-01)/create)に移動し、緑色で強調表示されている [使ってみる] タブを クリックして、Azure アカウントでログインします
  
  5. ステップ 3 でキャプチャした resourceId 属性から得られる resourceGroupName、serverName (削除されたサーバーの名前)、subscriptionId を指定します。画像に示されるように、API のバージョンはあらかじめ設定されています。
  
