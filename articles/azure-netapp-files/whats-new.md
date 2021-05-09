@@ -12,20 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 04/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: fa028d8fffd2a4097b5bf7d7326d355ae56aebd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726648"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862815"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
 
 ## <a name="april-2021"></a>2021 年 4 月
+
+* [SMB 継続的可用性 (CA) 共有による FSLogix ユーザー プロファイル コンテナーのサポート](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー)  
+
+    [FSLogix](/fslogix/overview) は、非永続的な Windows コンピューティング環境を強化、有効化、簡素化するソリューションのセットです。 FSLogix ソリューションは、パブリック クラウドとプライベート クラウド両方の仮想環境に適しています。 物理デバイスを使用するときに、FSLogix ソリューションを使用して、より移植性の高いコンピューティング セッションを作成することもできます。 FSLogix を使用すると、Azure NetApp Files を含む SMB 共有ネットワーク ストレージに格納されている永続的なユーザー プロファイル コンテナーに動的にアクセスできます。 Azure NetApp Files では、ストレージ サービスのメンテナンス イベントに対する FSLogix の回復性をさらに強化するために、ユーザー プロファイル コンテナーに対する [Azure NetApp Files の SMB 継続的可用性 (CA) 共有](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)を介して SMB 透過フェールオーバーのサポートが拡張されています。 詳細については、Azure NetApp Files の [Windows Virtual Desktop ソリューション](azure-netapp-files-solution-architectures.md#windows-virtual-desktop)に関するセクションを参照してください。  
 
 * [SMB3 プロトコル暗号化](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー) 
 

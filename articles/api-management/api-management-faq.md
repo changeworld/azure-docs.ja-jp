@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b6a138317d0cc2e10e893d1969f9d5452064d8f
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8b0c977a2dd754c12e476c724afa591695b7f822
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813742"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330676"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -93,7 +93,7 @@ Active Directory フェデレーション サービス (AD FS) セキュリテ�
 API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。
-はい。 詳細については、[Azure API Management サービス](https://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
+はい。 詳細については、[Azure API Management サービス](https://azure.microsoft.com/resources/templates/101-azure-api-management-create/)のクイックスタート テンプレートを参照してください。
 
 ### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>バックエンドに自己署名 TLS/SSL 証明書を使用できますか。
 はい。 これを行うには、PowerShell を使用するか、API に直接送信します。 これにより、証明書チェーン検証を無効になり、API Management からバックエンド サービスへの通信時に、自己署名証明書または個人署名証明書を使用することができます。

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - VPN ゲートウェイを設定する
 description: ポイント対サイト VPN ゲートウェイとサイト間 VPN ゲートウェイを設定し、オンプレミス ネットワークと CloudSimple プライベート クラウドの間に接続を作成する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d67958b05bd07e97b46a8ad3812b7ff0ca41f03
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899101"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178144"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>CloudSimple ネットワーク上の VPN ゲートウェイを設定する
 

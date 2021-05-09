@@ -10,18 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/27/2020
-ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 04831c7cb56082854097a2091b3c8099e4d488a6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634296"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124799"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 アクティブ geo レプリケーションは Azure SQL Database の機能です。これを使用すると、同じデータ センターまたは異なるデータ センター (リージョン) 内のサーバー上に、個々のデータベースの読み取り可能なセカンダリ データベースを作成することができます。
+
+> [!NOTE]
+> Azure SQL Hyperscale のアクティブ geo レプリケーションは[現在、パブリック プレビュー](https://aka.ms/hsgeodr)段階です。 現在、次のような制限があります。geo セカンダリは同じまたは異なるリージョンに 1 つのみです。強制フェールオーバーのみがサポートされています。geo セカンダリからのデータベース復元はサポートされていません。データベース コピーのソース データベースとして、あるいは、別の geo セカンダリのためのプライマリとして geo セカンダリを使用することはサポートされていません。
+
 
 > [!NOTE]
 > アクティブ geo レプリケーションは、 Azure SQL Managed Instance ではサポートされていません。 SQL Managed Instance の地理的なフェールオーバーについては、[自動フェールオーバー グループ](auto-failover-group-overview.md)を使用します。

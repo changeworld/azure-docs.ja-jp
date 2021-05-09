@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
-ms.date: 02/01/2021
-ms.openlocfilehash: 3812e044fa37c07538caae87a4851024ad53b0fd
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/27/2021
+ms.openlocfilehash: db87372ab4dd56d8b6a00ca42cb1cf4a8729db69
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905362"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178288"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory の管理ハブ
 

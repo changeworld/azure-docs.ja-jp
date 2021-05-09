@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d7d541ed7d9805641ffdfde381d482c8700006
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee22ba3816e667bc58247fa81142e54587124fd6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858741"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865299"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -210,7 +210,7 @@ Federal Information Processing Standard (FIPS) に従ってサーバーがロッ
 
 **パスワード ハッシュ同期で MD5 を有効にするには、次の手順を実行します。**
 
-1. %programfiles%\Azure AD Sync\Bin に移動します。
+1. %programfiles%\Microsoft Azure AD Sync\Bin に移動します。
 2. miiserver.exe.config を開きます。
 3. ファイルの末尾にある configuration/runtime ノードに移動します。
 4. `<enforceFIPSPolicy enabled="false"/>`

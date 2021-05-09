@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: aaa690a4205951bd251a5230721e34fcb960a3b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 193213c55a56f745c45eec829dfbe1e81ee0f363
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782743"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886984"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービス
 
@@ -93,7 +93,7 @@ connectVia | データ ストアに接続するために使用される[統合�
 
 リンクされたサービスは、[管理ハブ](author-management-hub.md)およびそれらを参照するすべてのアクティビティ、データセット、またはデータ フローを介して Azure Data Factory UX で作成できます。
 
-リンクされたサービスは、[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure portal などのツールや SDK のいずれかを使用して作成できます。
+リンクされたサービスは、[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、[Azure Resource Manager テンプレート](quickstart-create-data-factory-resource-manager-template.md)、[Azure portal](quickstart-create-data-factory-portal.md) などのツールや SDK のいずれかを使用して作成できます。
 
 
 ## <a name="data-store-linked-services"></a>データ ストアのリンクされたサービス

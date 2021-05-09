@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 04/15/2021
 ms.author: robb
-ms.openlocfilehash: 1091d103428315a065dd1ff9800ce2ad16632df0
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: f8e54fbc275a230140cab445d58c59454f0c546c
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600014"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330640"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -2709,24 +2709,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ThrottledRequests|いいえ|スロットルされた要求数。|Count|合計|Microsoft.ServiceBus のスロットルされた要求数。|EntityName、OperationResult|
 |UserErrors|いいえ|ユーザー エラー数。|Count|合計|Microsoft.ServiceBus のユーザー エラー数。|EntityName、OperationResult|
 |WSXNS|いいえ|メモリ使用量 (非推奨)|Percent|最大値|Service Bus Premium 名前空間のメモリ使用量メトリック。 このメトリックは非推奨です。 代わりにメモリ使用量 (NamespaceMemoryUsage) メトリックを使用してください。|[レプリカ]|
-
-
-## <a name="microsoftservicefabricmeshapplications"></a>Microsoft.ServiceFabricMesh/applications
-
-|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
-|---|---|---|---|---|---|---|
-|ActualCpu|いいえ|ActualCpu|Count|Average|実際の CPU 使用率 (ミリコア単位)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|ActualMemory|いいえ|ActualMemory|バイト|Average|実際のメモリ使用量 (MB 単位)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|AllocatedCpu|いいえ|AllocatedCpu|Count|Average|このコンテナーに割り当てられた CPU (ミリコア単位)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|AllocatedMemory|いいえ|AllocatedMemory|バイト|Average|このコンテナーに割り当てられたメモリ (MB 単位)|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|ApplicationStatus|いいえ|ApplicationStatus|Count|Average|Service Fabric Mesh アプリケーションの状態|ApplicationName、Status|
-|ContainerStatus|いいえ|ContainerStatus|Count|Average|Service Fabric Mesh アプリケーションのコンテナーの状態|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName、Status|
-|CpuUtilization|いいえ|CpuUtilization|Percent|Average|AllocatedCpu の割合としてのこのコンテナーの CPU の 使用率|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|MemoryUtilization|いいえ|MemoryUtilization|Percent|Average|AllocatedCpu の割合としてのこのコンテナーの CPU の 使用率|ApplicationName、ServiceName、CodePackageName、ServiceReplicaName|
-|RestartCount|いいえ|RestartCount|Count|Average|Service Fabric Mesh アプリケーションのコンテナーの再起動数|ApplicationName、Status、ServiceName、ServiceReplicaName、CodePackageName|
-|ServiceReplicaStatus|いいえ|ServiceReplicaStatus|Count|Average|Service Fabric Mesh アプリケーションのサービス レプリカの正常性状態|ApplicationName、Status、ServiceName、ServiceReplicaName|
-|ServiceStatus|いいえ|ServiceStatus|Count|Average|Service Fabric Mesh アプリケーションのサービスの正常性状態|ApplicationName、Status、ServiceName|
-
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
