@@ -13,21 +13,19 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: c128830ec7219fd5080c2c348542c736af4eef5a
-  ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+  ms.openlocfilehash: bbf934ef45f66a009c198a5ab0a47b871b419d85
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/25/2021
-  ms.locfileid: "107944983"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108740917"
 landingContent:
 - title: 作業を開始しましょう。コード ファースト
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Python スクリプトを使ってみる
-      url: tutorial-1st-experiment-sdk-setup-local.md
-    - text: Jupyter Notebook を使ってみる (Python)
-      url: tutorial-1st-experiment-sdk-setup.md
+    - text: Azure Machine Learning の利用を開始
+      url: quickstart-create-resources.md
     - text: ML パイプラインを使用したバッチ推論 (Python)
       url: tutorial-pipeline-batch-scoring-classification.md
 - title: 作業を開始しましょう。コードが少ないか、またはありません
