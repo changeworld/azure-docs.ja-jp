@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 7ba5a05515284612e17d5aba4cc673c7e78f7ba1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66272e59dd67375b1da119648cf461bd0c2baa9b
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869924"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929599"
 ---
-# <a name="troubleshoot-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールのトラブルシューティング (プレビュー)
+# <a name="troubleshoot-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールのトラブルシューティング
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合性スナップショット ツールの使い方に関するトラブルシューティング情報を提供します。
 

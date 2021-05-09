@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: ea8d6b860e242eaa6b281c92552ed93926b92802
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6fd070417cfa20c1a8f50c79915f4fcb2ec361f3
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070733"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279823"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
 
@@ -94,10 +94,10 @@ Azure Database for MySQL サーバー用の JSON テンプレート リファレ
 +   `resources/properties/virtualNetworkSubnetId` - Azure MySQL サーバーを配置する VNet 内のサブネットの Azure 識別子を指定します。 
 +   `tags(optional)` - 省略可能なタグを指定します。これは、課金などの目的でリソースを分類するために使用するキーと値のペアです。
 
-組織での Azure Database for MySQL のデプロイを自動化するために Azure Resource Manager テンプレートの作成を予定している場合、Azure クイック スタートの GitHub ギャラリーにあるサンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet)から開始し、それに基づいて作成することをお勧めします。 
+組織での Azure Database for MySQL のデプロイを自動化するために Azure Resource Manager テンプレートの作成を予定している場合、Azure クイック スタートの GitHub ギャラリーにあるサンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)から開始し、それに基づいて作成することをお勧めします。 
 
 Azure Resource Manager テンプレートを使用したことがなく、これを試してみたい場合は、次の手順に従って開始できます。
-+   サンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet)を複製するか、Azure クイック スタート ギャラリーからダウンロードします。  
++   サンプルの [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.dbformysql/managed-mysql-with-vnet/azuredeploy.json)を複製するか、Azure クイック スタート ギャラリーからダウンロードします。  
 +   azuredeploy.parameters.json を変更して設定に基づいてパラメーターの値を更新し、ファイルを保存します。 
 +   Azure CLI を使用し、次のコマンドを使用して Azure MySQL サーバーを作成します
 

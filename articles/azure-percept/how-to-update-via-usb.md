@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: cd6e4e62123b4d4b927cf385aaf64a066eecc1e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8ab657ec7b4ef9a413993c064c931b4fc1523c5
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104887752"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929455"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>USB 接続で Azure Percept DK を更新する方法
 
@@ -41,7 +41,7 @@ ms.locfileid: "104887752"
 
 1. [7-Zip](https://www.7-zip.org/)。 このソフトウェアは、XZ 圧縮ファイルから生のイメージ ファイルを抽出するために使用されます。 適切な .exe ファイルをダウンロードし、インストールします。
 
-1. [更新ファイルをダウンロードします](https://go.microsoft.com/fwlink/?linkid=2155734)。
+1. [更新ファイルをダウンロードします](https://go.microsoft.com/fwlink/?linkid=2155734)。 これらはすべて zip ファイルに含まれており、次のセクションで抽出します。
 
 1. 次の 3 つのすべてのビルド アーティファクトが存在することを確認します。
     - Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw.xz
@@ -54,9 +54,7 @@ ms.locfileid: "104887752"
 
 1. UUU ツール (**uuu.exe** または **uuu**) を新しいフォルダーにコピーします。
 
-1. **Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw.xz** を右クリックし、 **[7-Zip]** &gt; **[ここに展開]** を選択して、圧縮ファイルから **Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw** ファイルを抽出します。
-
-1. 抽出された **Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw** ファイル、**fast-hab-fw.raw**、および **emmc_full.txt** を、UUU ツールが格納されているフォルダーに移動します。
+1. UUU ツールが格納されている新しいフォルダーに、以前にダウンロードした更新プログラム ファイルを抽出します。
 
 ## <a name="update-your-device"></a>デバイスを更新する
 
