@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b3ac012da97194134f58d061dd9d84e945db554
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1570906ae036b31dc2e97f35c827385933093f73
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774469"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162205"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Azure CLI でキュー データへのアクセスの承認方法を選択する
 
@@ -52,7 +52,7 @@ Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 ア�
 
 Azure Storage 拡張機能は、キュー データの操作でサポートされています。 呼び出す操作は、Azure CLI にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 キューへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**ストレージ キュー データ閲覧者** ロールが割り当てられている場合、キューからデータを読み取るスクリプト コマンドを実行できます。 **ストレージ キュー データ共同作成者** ロールが割り当てられている場合、キューまたはキューに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
 
-キューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。  
+キューでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。
 
 ### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>例:Azure AD 資格情報を使用してキューを作成する操作を承認する
 

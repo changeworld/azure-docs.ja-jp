@@ -10,15 +10,13 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 287520f2964fba7c3c3804853e9356a8c77b2d06
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 84bb00b6ef5d0bf68a55b7eba70ccb8eb697a571
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498798"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313479"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
-
 Azure Communication Services の **iOS 用のグループ通話のヒーロー サンプル** は、Communication Services Calling iOS SDK を使用して、音声とビデオを含むグループ通話エクスペリエンスを構築する方法を示しています。 このサンプル クイックスタートでは、サンプルを設定して実行する方法について説明します。 背景情報については、サンプルの概要を参照してください。
 
 ## <a name="download-code"></a>コードをダウンロードする
@@ -110,4 +108,4 @@ Communication Services サブスクリプションをクリーンアップして
 
 - [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
 - [サンプル](./../overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
-- [Azure Communication の通話機能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) - Calling iOS SDK の詳細 - [Azure Communication iOS Calling SDK](https://github.com/Azure/Communication/releases/)
+- [Azure Communication の通話機能](../../concepts/voice-video-calling/calling-sdk-features.md) - Calling iOS SDK の詳細 - [Azure Communication iOS Calling SDK](https://github.com/Azure/Communication/releases/)

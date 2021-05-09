@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 49704de9eb4a392b552429180da98568cafa210f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588133"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157536"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -1177,7 +1177,7 @@ IMDS を使用すると、スケジュールされたイベントの状態を取
   - 2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。
 
 - ユーザー データはカスタム データと同じですか?
-  - ユーザー データには、カスタム データと同様の機能が用意されているため、独自のメタデータを VM インスタンスに渡すことができます。 違いは、ユーザー データが IMDS を通じて取得され、VM インスタンスの有効期間全体にわたって永続的であることです。 既存のカスタム データ機能は、[この記事](https://docs.microsoft.com/azure/virtual-machines/custom-data)で説明されているように機能し続けます。 ただし、カスタム データは、IMDS ではなくローカル システム フォルダーからのみ取得できます。
+  - ユーザー データには、カスタム データと同様の機能が用意されているため、独自のメタデータを VM インスタンスに渡すことができます。 違いは、ユーザー データが IMDS を通じて取得され、VM インスタンスの有効期間全体にわたって永続的であることです。 既存のカスタム データ機能は、[この記事](../articles/virtual-machines/custom-data.md)で説明されているように機能し続けます。 ただし、カスタム データは、IMDS ではなくローカル システム フォルダーからのみ取得できます。
 
 - 新しいバージョンに入力されたすべてのデータが表示されないのはなぜですか。
   - 2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。

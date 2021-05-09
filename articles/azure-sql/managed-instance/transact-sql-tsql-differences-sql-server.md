@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f744b718919a6da75b2064efdc163ef4618b5a7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644909"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815902"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,7 +83,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
 
 T-SQL を使用したバックアップについては、[BACKUP](/sql/t-sql/statements/backup-transact-sql) に関する記事をご覧ください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="auditing"></a>監査
 
@@ -354,9 +354,9 @@ SQL Server で有効になっている、ドキュメントに記載されてい
 
 ### <a name="distributed-transactions"></a>分散トランザクション
 
-[分散トランザクション](../database/elastic-transactions-overview.md)の部分的なサポートは、現在パブリック プレビューの段階です。 サポートされるシナリオは次のとおりです。
-* 参加要素が[サーバー信頼グループ](./server-trust-group-overview.md)に含まれる Azure SQL Managed Instance のみのトランザクション。
-* .NET (TransactionScope クラス) および Transact-SQL から開始されたトランザクション。
+[分散トランザクション](../database/elastic-transactions-overview.md)の部分的なサポートは、現在パブリック プレビューの段階です。 分散トランザクションは次の条件で使用できます (すべての条件を満たす必要があります)。
+* すべてのトランザクション参加者が、[サーバー信頼グループ](./server-trust-group-overview.md)に属する Azure SQL Managed Instance である。
+* .NET (TransactionScope クラス) または Transact-SQL でトランザクションを開始する。
 
 現在、Azure SQL Managed Instance では、MSDTC オンプレミスまたは Azure Virtual Machines で定期的にサポートされている他のシナリオはサポートされていません。
 

@@ -3,12 +3,12 @@ title: 重複メッセージの検出を有効にする - Azure Service Bus
 description: この記事では、Azure portal、PowerShell、CLI、プログラミング言語 (C#、Java、Python、JavaScript) を使用して、重複メッセージの検出を有効にする方法について説明します
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 708009fcf2479660316b38ac0b7d545d450de28c
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1e299b86991a7785cc89f2e72227e7a8ced883d7
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107755098"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989128"
 ---
 # <a name="enable-duplicate-message-detection-for-an-azure-service-bus-queue-or-a-topic"></a>Azure Service Bus のキューまたはトピックで重複メッセージの検出を有効にする
 キューまたはトピックで重複データ検出を有効にすると、Azure Service Bus によって、キューまたはトピックに送信されたすべてのメッセージの履歴が構成された期間に保持されます。 この期間中は、キューまたはトピックに重複メッセージは格納されません。 このプロパティを有効にすると、ユーザーが定義した期間に配信が 1 回だけ行われることが保証されます。 詳細については、「[重複検出](duplicate-detection.md)」を参照してください。 この記事では、Service Bus のキューまたはトピックで重複メッセージの検出を有効にするさまざまな方法について説明します。 
@@ -255,12 +255,12 @@ Set-AzServiceBusTopic -ResourceGroup myresourcegroup `
 ## <a name="next-steps"></a>次のステップ
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [Java 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
-- [.NET 用の Azure.Messaging.ServiceBus サンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET 用の Microsoft.Azure.ServiceBus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java 用の azure-servicebus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+- [.NET (レガシ) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java (レガシ) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)

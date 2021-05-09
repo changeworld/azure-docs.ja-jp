@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad498575b029f918538909a9b5b2d52c71c1389c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98164874"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816370"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -108,6 +108,26 @@ URL ページから QnA を抽出するためにクロールできるディー�
 * 追加または削除されるメタデータ フィールドの最大数: 10
 * 更新可能な URL の最大数: 5
 * 呼び出しごとに許可される QnA の最大数:1000
+
+## <a name="add-unstructured-file-limits"></a>非構造化ファイル制限の追加
+
+> [!NOTE]
+> * 制限を超えるファイルを使用する必要がある場合は、ファイルを小さなファイルに分割してから API に送信することができます。 
+
+以下は、非構造化ファイルを使用して “*KB を作成*” したり、CreateKnowledgeBase API を呼び出したりする場合の制限です。
+* ファイルの長さ: 最初の 32,000 文字が抽出されます。
+* ファイルあたりの最大応答数は 3 です。
+
+## <a name="prebuilt-question-answering-limits"></a>事前構築済み質問回答の制限
+
+> [!NOTE]
+> * 制限を超えるドキュメントを使用する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 
+> * ドキュメントとは、テキスト文字の 1 つの文字列です。  
+
+以下は、事前構築済み API を使用して “*応答を生成*” したり、GenerateAnswer API を呼び出したりする場合の制限です。
+* ドキュメントの数: 5
+* 1 つのドキュメントの最大サイズ: 5,120 文字
+* ドキュメントあたりの最大応答数は 3 です。
 
 ## <a name="next-steps"></a>次のステップ
 

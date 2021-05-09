@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージの参照
 description: Service Bus メッセージを参照してピークすると、Azure Service Bus クライアントは、キューまたはサブスクリプションのすべてのメッセージを列挙できます。
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: deafe9e6ddeeebf233922aade36823ddaaede864
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 23ec2187ae58b1b4f83addb80573bdb130ff99bd
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520124"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989398"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 Service Bus クライアントは、メッセージを読み取るか、ピークすることにより、診断とデバッグの目的で、キューまたはサブスクリプションのすべてのメッセージを列挙できます。
@@ -42,14 +42,15 @@ Service Bus クライアントは、メッセージを読み取るか、ピー�
 また、SequenceNumber をピーク操作に渡すこともできます。 これは、ピークの開始位置を特定するために使用されます。 このパラメーターを指定せずに、ピーク操作への後続の呼び出しを行い、さらに列挙することができます。
 
 ## <a name="next-steps"></a>次のステップ
-ご自身で選んだ言語のサンプルを試して、ピークまたはメッセージ参照機能を調査します。
+Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [Java 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/) - **メッセージをピークする** のサンプル
-- [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/) - **receive_peek.py** のサンプル
-- [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/) - **browseMessages.js** のサンプル
+- [.Net 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) -- **メッセージの送信と受信** のサンプル
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/) - **メッセージのピーク** のサンプル
+- [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)  - **receive_peek.py** のサンプル
+- [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)  - **browseMessages.js** のサンプル
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/) - **browseMessages.ts** のサンプル
-- [.Net 用の Azure.Messaging.ServiceBus のサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) - [リファレンス ドキュメント](/dotnet/api/azure.messaging.servicebus)のレシーバー クラスのピーク メソッドを参照してください。
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET 用の Microsoft.Azure.ServiceBus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) - **メッセージの参照 (ピーク)** のサンプル 
-- [Java 用の azure-servicebus のサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse) - **メッセージの参照** のサンプル。 
+- [.Net 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/) - **メッセージの参照 (ピーク)** のサンプル
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus) - **メッセージの参照** のサンプル 
+

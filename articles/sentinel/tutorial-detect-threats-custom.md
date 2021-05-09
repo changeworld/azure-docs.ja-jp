@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 70b56e70ec0e6f511142c48cc89720c054807a5c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 180a5edd00b6085ffd91568471ca763f5e4e9711
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105042800"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814858"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>チュートリアル:脅威を検出するためのカスタム分析規則を作成する
 
@@ -75,7 +75,7 @@ Azure Sentinel に[データソースを接続](quickstart-onboard.md)した後�
 
     > [!NOTE]
     > #### <a name="rule-query-best-practices"></a>ルールのクエリのベスト プラクティス
-    > - クエリの長さは 1 から 10,000 文字にする必要があります。また、"`search *`" または "`union *`" を含めることはできません。
+    > - クエリの長さは 1 から 10,000 文字にする必要があります。また、"`search *`" または "`union *`" を含めることはできません。 [ユーザー定義関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)を使用すると、クエリの長さの制限を克服できます。
     >
     > - ADX 関数を使用して Log Analytics クエリウィンドウ 内で Azure Data Explorer クエリを作成することは、**サポートされていません**。
     >

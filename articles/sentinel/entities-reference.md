@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acae7a6121587a1a58c6f19b0b09287b3d93cc84
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456185"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992163"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel エンティティ型リファレンス
 
@@ -383,7 +383,7 @@ IoT デバイス エンティティの弱い識別子:
 *エンティティ名: MailCluster*
 
 > [!NOTE]
-> **MDO** = **Microsoft Defender for Office 365**、旧称 Office 365 Advanced Threat Protection (O365 ATP)。
+> **Microsoft Defender for Office 365** は、以前は Office 365 Advanced Threat Protection (O365 ATP) と呼ばれていました。
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
@@ -399,10 +399,10 @@ IoT デバイス エンティティの弱い識別子:
 | IsVolumeAnomaly | Bool? | これがボリューム異常メール クラスターかどうかを示します。 |
 | source | String | メール クラスターのソース (既定値は "O365 ATP")。 |
 | ClusterSourceIdentifier | String | このメール クラスターのソースであるメールのネットワーク メッセージ ID。 |
-| ClusterSourceType | String | メール クラスターのソースの種類。 これは、MDO の MailClusterSourceType の設定に対応します (上記のメモを参照)。 |
-| ClusterQueryStartTime | DateTime? | クラスター開始日時 - クラスター カウント クエリの開始日時として使用されます。 通常、終了日時から MDO の DaysToLookBack の設定を引いたものの日付 (上のメモを参照)。 |
+| ClusterSourceType | String | メール クラスターのソースの種類。 これは、Microsoft Defender for Office 365 の MailClusterSourceType 設定にマップされます (上記のメモを参照してください)。 |
+| ClusterQueryStartTime | DateTime? | クラスター開始日時 - クラスター カウント クエリの開始日時として使用されます。 通常、終了日時から Microsoft Defender for Office 365 の DaysToLookBack の設定を引いたものの日付 (上のメモを参照)。 |
 | ClusterQueryEndTime | DateTime? | クラスター終了日時 - クラスター カウント クエリの終了日時として使用されます。 通常、メール データの受信日時。 |
-| ClusterGroup | String | MDO で使用される Kusto クエリ キーに対応します (上のメモを参照)。 |
+| ClusterGroup | String | Microsoft Defender for Office 365 で使用される Kusto クエリキーに対応します (上記のメモを参照してください)。 |
 |
 
 メール クラスター エンティティの強い識別子:

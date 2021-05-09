@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 1f8373130fbead2204dd0ac2515595d68dd3b2e8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 7d04b98014abbf6bf732da292df3b7bb9172f281
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107491331"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203579"
 ---
 # <a name="authentication-failed"></a>認証に失敗しました
 
@@ -31,13 +31,13 @@ Azure Digital Twins Explorer アプリケーションで使用されている [D
 
 エラー テキストで示されているように、このエラーは、`DefaultAzureCredential` によって取得されるローカル資格情報を提供していない場合に、発生するおそれがあります。
 
-Azure Digital Twins Explorer でローカル資格情報を使用する方法の詳細については、Azure Digital Twins の "*サンプル シナリオの検討のクイックスタート*" に関する記事の「[*ローカル Azure 資格情報を設定する*](quickstart-adt-explorer.md#set-up-local-azure-credentials)」セクションを参照してください。
+Azure Digital Twins Explorer でローカル資格情報を使用する方法の詳細については、Azure Digital Twins の "サンプル シナリオの検討のクイックスタート" に関する記事の「*[ローカル Azure 資格情報を設定する](./quickstart-azure-digital-twins-explorer.md#set-up-local-azure-credentials)*」セクションを参照してください。
 
 ### <a name="cause-2"></a>原因 #2
 
 このエラーは、Azure Digital Twins インスタンスで必要な Azure のロールベースのアクセス制御 (Azure RBAC) のアクセス許可が Azure アカウントに設定されていない場合にも、発生するおそれがあります。 インスタンス内のデータにアクセスするには、読み取りまたは管理を行おうとしているインスタンスで、それぞれ、**Azure Digital Twins データ リーダー** または **Azure Digital Twins データ所有者** のロールが必要です。 
 
-Azure Digital Twins のセキュリティとロールの詳細については、"[*Azure Digital Twins ソリューションのセキュリティの概念*](concepts-security.md)" に関する記事を参照してください。
+Azure Digital Twins のセキュリティとロールの詳細については、"[Azure Digital Twins ソリューションのセキュリティの概念](concepts-security.md)" に関する記事を参照してください。
 
 ## <a name="solutions"></a>ソリューション
 
@@ -78,12 +78,12 @@ Azure Digital Twins のセキュリティとロールの詳細については、
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "<role-name>"
 ```
 
-このロールの要件と割り当てプロセスの詳細については、「[*ユーザーのアクセス許可の設定*」セクション](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)を参照してください。"*方法:インスタンスと認証を設定する (CLI またはポータル)* " に関するページに含まれています
+このロールの要件と割り当てプロセスの詳細については、「[ユーザーのアクセス許可の設定」セクション](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)を参照してください。"*方法:インスタンスと認証を設定する (CLI またはポータル)* " に関するページに含まれています
 
 ## <a name="next-steps"></a>次のステップ
 
 新しい Azure Digital Twins インスタンスを作成して認証するための設定手順を確認してください。
-* [*方法: インスタンスと認証を設定する (CLI)*](how-to-set-up-instance-cli.md)
+* [方法: インスタンスと認証を設定する (CLI)](how-to-set-up-instance-cli.md)
 
 Azure Digital Twins のセキュリティとアクセス許可の詳細を確認します。
-* [*概念:Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)
+* [概念:Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)

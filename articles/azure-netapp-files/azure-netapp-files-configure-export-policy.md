@@ -1,5 +1,5 @@
 ---
-title: NFS ボリュームのエクスポート ポリシーを構成する - Azure NetApp Files
+title: Azure NetApp Files NFS またはデュアル プロトコル ボリュームのエクスポート ポリシーを構成する - Azure NetApp Files
 description: Azure NetApp Files を使用して NFS ボリュームへのアクセスを制御するエクスポート ポリシーの構成方法について説明します
 services: azure-netapp-files
 author: b-juche
@@ -8,16 +8,16 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d3f268a4ce2660350055367770e987a06828e2d7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b71d3cc0636e5edeb78e1d88be1df2d2d61f239b
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740122"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988462"
 ---
-# <a name="configure-export-policy-for-an-nfs-volume"></a>NFS ボリュームのエクスポート ポリシーを構成する
+# <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>NFS またはデュアル プロトコル ボリュームのエクスポート ポリシーを構成する
 
-Azure NetApp Files ボリュームへのアクセスを制御するために、エクスポート ポリシーを構成できます。 Azure NetApp Files のエクスポート ポリシーでは、NFS プロトコル (NFSv3 と NFSv 4.1 の両方) とデュアル プロトコル (NFSv3 と SMB) を使用するボリュームがサポートされています。 
+NFS プロトコル (NFSv3 および NFSv4.1) またはデュアル プロトコル (NFSv3 および SMB) を使用する Azure NetApp Files ボリュームへのアクセスを制御するために、エクスポート ポリシーを構成できます。 
 
 最大 5 つのエクスポートポリシー ルールを作成できます。
 
@@ -49,5 +49,5 @@ Azure NetApp Files ボリュームへのアクセスを制御するために、�
       ![エクスポート ポリシー](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 ## <a name="next-steps"></a>次のステップ 
-* [仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [ボリュームをマウントまたはマウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [スナップショットを管理する](azure-netapp-files-manage-snapshots.md)

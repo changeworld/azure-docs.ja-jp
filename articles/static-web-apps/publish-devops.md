@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 4283bccf543dc496342d64cc0e7b898a4f279866
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 259d430c79cccef3cd5c581c9a60fa00edf159ec
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141633"
+ms.locfileid: "108162277"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>チュートリアル: Azure DevOps を使用して Azure Static Web Apps を発行する
 
@@ -87,20 +87,19 @@ ms.locfileid: "108141633"
 
     ```yaml
     trigger:
-      - main
-    
+    - main
+
     pool:
       vmImage: ubuntu-latest
-    
+
     steps:
       - checkout: self
         submodules: true
-
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: "/" 
-          api_location: "api"
-          output_location: ""
+          app_location: '/'
+          api_location: 'api'
+          output_location: ''
         env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
@@ -112,33 +111,33 @@ ms.locfileid: "108141633"
 
     `azure_static_web_apps_api_token` の値は自己管理となるため、手動で構成します。
 
-1. **[変数]** を選択します。
+2. **[変数]** を選択します。
 
-1. 新しい変数を作成します。
+3. 新しい変数を作成します。
 
-1. この変数に **deployment_token** という名前を付けます (ワークフローでの名前と一致させます)。
+4. この変数に **deployment_token** という名前を付けます (ワークフローでの名前と一致させます)。
 
-1. 先ほどテキスト エディターに貼り付けたデプロイ トークンをコピーします。
+5. 先ほどテキスト エディターに貼り付けたデプロイ トークンをコピーします。
 
-1. _[値]_ ボックスにデプロイ トークンを貼り付けます。
+6. _[値]_ ボックスにデプロイ トークンを貼り付けます。
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="変数トークン":::
 
-1. **[この値を誰にも教えないようにします]** をオンにします。
+7. **[この値を誰にも教えないようにします]** をオンにします。
 
-1. **[OK]** を選択します。
+8. **[OK]** を選択します。
 
-1. **[保存]** を選択して、パイプラインの YAML に戻ります。
+9. **[保存]** を選択して、パイプラインの YAML に戻ります。
 
-1. **[保存および実行]** を選択して _[保存および実行]_ ダイアログを開きます。
+10. **[保存および実行]** を選択して _[保存および実行]_ ダイアログを開きます。
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="パイプライン":::
 
-1. **[保存および実行]** を選択してパイプラインを実行します。
+11. **[保存および実行]** を選択してパイプラインを実行します。
 
-1. デプロイが成功したら、デプロイ構成へのリンクが記載されている、Azure Static Web Apps の **[概要]** に移動します。 _[Source]\(ソース\)_ のリンク先が、Azure DevOps リポジトリのブランチと場所になっていることに注目してください。
+12. デプロイが成功したら、デプロイ構成へのリンクが記載されている、Azure Static Web Apps の **[概要]** に移動します。 _[Source]\(ソース\)_ のリンク先が、Azure DevOps リポジトリのブランチと場所になっていることに注目してください。
 
-1. **[URL]** を選択すると、新しくデプロイした Web サイトが表示されます。
+13. **[URL]** を選択すると、新しくデプロイした Web サイトが表示されます。
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="配置場所":::
 

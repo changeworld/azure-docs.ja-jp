@@ -3,12 +3,13 @@ title: スコープが指定されたデプロイにおけるテンプレート�
 description: スコープが指定されたデプロイにおけるテンプレート関数の解決方法について説明します。 スコープには、テナント、管理グループ、サブスクリプション、リソース グループが含まれます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c4a2caaa7b66e516a69cdb9d6c26baf7fd605e89
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492095"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314609"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>デプロイ スコープにおける ARM テンプレートの関数
 

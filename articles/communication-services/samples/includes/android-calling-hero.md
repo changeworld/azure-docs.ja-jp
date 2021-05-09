@@ -10,16 +10,13 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c6e8be5462e0caffec7a1c88dae54f3f818ec323
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 2a573a4df8abcdc2b32204faadbaa0df8c3dac15
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498794"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313424"
 ---
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-android-ios.md)]
-
-
 Azure Communication Services の **Android 用のグループ通話のヒーロー サンプル** は、Communication Services Calling Android SDK を使用して、音声とビデオを含むグループ通話エクスペリエンスを構築する方法を示しています。 このサンプル クイックスタートでは、サンプルを設定して実行する方法について説明します。 背景情報については、サンプルの概要を参照してください。
 
 ## <a name="download-code"></a>コードをダウンロードする
@@ -141,4 +138,4 @@ Communication Services サブスクリプションをクリーンアップして
 
 - [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
 - [サンプル](./../overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
-- [Azure Communication の通話機能](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) - Calling Android SDK の詳細 - [Azure Communication Android Calling SDK](https://search.maven.org/artifact/com.azure.android/azure-communication-calling)
+- [Azure Communication の通話機能](../../concepts/voice-video-calling/calling-sdk-features.md) - Calling Android SDK の詳細 - [Azure Communication Android Calling SDK](https://search.maven.org/artifact/com.azure.android/azure-communication-calling)

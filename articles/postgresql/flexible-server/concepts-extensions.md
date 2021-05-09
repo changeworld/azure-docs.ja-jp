@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: e8f71eb120b86f35672c9123b52f7f19c9fee662
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.openlocfilehash: 9fdc2d2567e6ea24a68398139007be978cb639b5
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608461"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989362"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの PostgreSQL 拡張機能
 
@@ -60,6 +60,7 @@ Postgres バージョン 12 を搭載した Azure Database for PostgreSQL - フ�
 > |[pg_visibility](https://www.postgresql.org/docs/12/pgvisibility.html)                      | 1.2             | 可視性マップ (VM) とページ レベルの可視性情報を調べる|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.4             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | 暗号化関数|
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL の論理レプリケーション|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
@@ -109,6 +110,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 > |[pg_visibility](https://www.postgresql.org/docs/11/pgvisibility.html)                      | 1.2             | 可視性マップ (VM) とページ レベルの可視性情報を調べる|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 暗号化関数|
+> |[pglogical](https://github.com/2ndQuadrant/pglogical)                     | 2.3.2           | PostgreSQL の論理レプリケーション|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|

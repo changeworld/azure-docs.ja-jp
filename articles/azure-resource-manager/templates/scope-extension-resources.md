@@ -3,12 +3,13 @@ title: 拡張リソースの種類のスコープ
 description: 拡張リソースの種類を展開するときに scope プロパティを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 505caa23ceff25cc3fe693d40a3ec5e209a0563d
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492163"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314573"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>ARM テンプレートで拡張リソースのスコープを設定する
 

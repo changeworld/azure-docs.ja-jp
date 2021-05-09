@@ -1,24 +1,18 @@
 ---
-title: Azure Security Center のファイルの整合性の監視 | Microsoft Docs
+title: Azure Security Center のファイルの整合性の監視
 description: このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/22/2020
+ms.date: 04/25/2021
 ms.author: memildin
-ms.openlocfilehash: 834df2387d037c19672e3287970300f4e84ca34b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e14307207ddbe9f1b89bd05d7015dafd76b10d51
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047985"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992496"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -62,7 +56,8 @@ FIM は、Azure Change Tracking ソリューションを使用して、ユーザ
 > **Change Tracking** リソースを削除すると、Security Center のファイルの整合性の監視機能も無効になります。
 
 ## <a name="which-files-should-i-monitor"></a>どのファイルを監視する必要があるか
-監視するファイルを選択するときは、システムとアプリケーションにとって重要なファイルを考慮する必要があります。 計画なしで変更されることがないファイルを監視してください。 アプリケーションまたはオペレーティング システムによって頻繁に変更されるファイル (ログ ファイルやテキスト ファイルなど) を選択すると、多数のノイズの発生によって攻撃の識別が困難になります。
+
+監視するファイルを選択するときは、ご利用のシステムとアプリケーションにとって重要なファイルを考慮します。 計画なしで変更されることがないファイルを監視してください。 アプリケーションまたはオペレーティング システムによって頻繁に変更されるファイル (ログ ファイルやテキスト ファイルなど) を選択すると、多数のノイズの発生によって攻撃の識別が困難になります。
 
 Security Center では、既知の攻撃パターンに基づいて、監視が推奨される項目を次のリストに示しています。
 
@@ -168,75 +163,69 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 - 選択した期間中に発生した変更の合計数
 - ファイルの変更またはレジストリの変更としての変更の合計数の内訳
 
-検索フィールドにコンピューター名を入力するか、[コンピューター] タブに一覧表示されているコンピューターを選択すると、 **[ログ検索]** が開きます。ログ検索は、選択された期間中にコンピューターで行われたすべての変更を表示します。 変更を展開して詳細を確認できます。
+マシンを選択すると、そのマシンに対して選択した期間中に行われた変更を識別する結果と共に、クエリが表示されます。 変更を展開して詳細を確認できます。
 
-![ログ検索][8]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/query-machine-changes.png" alt-text="Azure Security Center のファイルの整合性の監視によって識別された変更を示す Log Analytics クエリ" lightbox="./media/security-center-file-integrity-monitoring/query-machine-changes.png":::
 
 **[変更]** タブ (下図参照) には、選択した期間中に行われたワークスペースのすべての変更が一覧表示されます。 ダッシュボードには、変更されたエンティティごとに、以下が一覧表示されます。
 
-- 変更が発生したコンピューター
+- 変更が発生したマシン
 - 変更の種類 (レジストリまたはファイル)
 - 変更のカテゴリ (変更、追加、削除)
 - 変更の日時
 
-![ワークスペースに対する変更][9]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/changes-tab.png" alt-text="Azure Security Center の [ファイルの整合性の監視] の [変更] タブ" lightbox="./media/security-center-file-integrity-monitoring/changes-tab.png":::
 
 **[変更の詳細]** は、検索フィールドに変更を入力するか、 **[変更]** タブに一覧表示されているエンティティを選択したときに開きます。
 
-![変更の詳細][10]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/change-details.png" alt-text="変更の詳細ウィンドウが示されている Azure Security Center の [ファイルの整合性の監視]" lightbox="./media/security-center-file-integrity-monitoring/change-details.png":::
 
 ## <a name="edit-monitored-entities"></a>監視対象エンティティを編集する
 
-1. **ファイルの整合性の監視ダッシュボード** に戻り、 **[設定]** を選択します。
+1. ワークスペースの **[ファイルの整合性の監視] ダッシュボード** で、ツール バーから **[設定]** を選択します。 
 
-   ![設定][11]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png" alt-text="ワークスペース用のファイルの整合性の監視設定にアクセスする" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-dashboard-settings.png":::
 
-   **[ワークスペースの構成]** を開くと 3 つのタブが表示されます: **[Windows レジストリ]** 、 **[Windows ファイル]** 、および **[Linux ファイル]** 。 各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 表示されるエンティティごとに、Security Center は、FIM が有効になっている (true) か有効になっていない (false) かを識別します。  エンティティを編集することで、FIM を有効または無効にすることができます。
+   **[ワークスペースの構成]** が、監視できる要素の種類ごとのタブと共に開きます。
 
-   ![ワークスペースの構成][12]
+      - Windows レジストリ
+      - Windows ファイル
+      - Linux ファイル
+      - ファイルのコンテンツ
+      - Windows サービス
 
-2. ID 保護を選択します。 この例では、[Windows レジストリ] の項目を選択しています。 **[Edit for Change Tracking]\(変更追跡を行うための編集\)** が開きます。
+      各タブには、そのカテゴリで編集できるエンティティが一覧表示します。 一覧表示されるエンティティごとに、Security Center によって、FIM が有効になっている (true) か、有効になっていない (false) かが識別されます。  エンティティを編集することで、FIM を有効または無効にすることができます。
 
-   ![[Edit for Change Tracking]\(変更追跡を行うための編集\)][13]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-workspace-configuration.png" alt-text="Azure Security Center での [ファイルの整合性の監視] の [ワークスペースの構成]":::
 
-**[Edit for Change Tracking]\(変更追跡を行うための編集\)** では、以下を実行できます。
+1. いずれかのタブからエントリを選択し、**Change Tracking の編集** ウィンドウで使用可能な任意のフィールドを編集します。 次のオプションがあります。
 
-- ファイルの整合性の監視を有効 (True) にするか無効 (False) にする
-- エンティティ名を指定するか変更する
-- 値またはパスを指定するか変更する
-- エンティティの削除、変更の破棄、または変更の保存を行う
+    - ファイルの整合性の監視を有効 (True) にするか無効 (False) にする
+    - エンティティ名を指定するか変更する
+    - 値またはパスを指定するか変更する
+    - エンティティを削除する
+
+1. 変更を破棄するか、保存します。
+
 
 ## <a name="add-a-new-entity-to-monitor"></a>監視する新しいエンティティを追加する
-1. **ファイルの整合性の監視ダッシュボード** に戻り、上部にある **[設定]** を選択します。 **[ワークスペースの構成]** が開きます。
-2. **[ワークスペースの構成]** で、追加するエンティティの種類のタブを選択します:[Windows レジストリ]、[Windows ファイル]、または [Linux ファイル]。 この例では、 **[Linux ファイル]** が選択されています。
 
-   ![監視する新しい項目を追加する][14]
+1. ワークスペースの **[ファイルの整合性の監視] ダッシュボード** で、ツール バーから **[設定]** を選択します。 
 
-3. **[追加]** を選択します。 **[Edit for Change Tracking]\(変更追跡を行うための追加\)** が開きます。
+    **[ワークスペースの構成]** が開きます。
 
-   ![要求された情報の入力][15]
+1. **[ワークスペースの構成]** で:
 
-4. **[追加]** ページで、要求された情報を入力し、 **[保存]** を選択します。
+    1. 追加するエンティティの種類のタブ ([Windows レジストリ]、[Windows ファイル]、[Linux ファイル]、[ファイル コンテンツ]、または [Windows サービス]) を選択します。 
+    1. **[追加]** を選択します。 
 
-## <a name="disable-monitored-entities"></a>監視対象エンティティを無効にする
-1. **ファイルの整合性の監視** ダッシュボードに戻ります。
-2. FIM が現在有効になっているワークスペースを選択します。 [有効化] ボタンまたは [アップグレード プラン] ボタンが表示されていなければ、そのワークスペースの FIM は有効になっています。
+        この例では、 **[Linux ファイル]** が選択されています。
 
-   ![FIM が有効になっているワークスペースの選択][16]
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-add-element.png" alt-text="Azure Security Center の [ファイルの整合性の監視] で監視する要素を追加する" lightbox="./media/security-center-file-integrity-monitoring/file-integrity-monitoring-add-element.png":::
 
-3. [ファイルの整合性の監視] で、 **[設定]** を選択します。
+1. **[追加]** を選択します。 **[Edit for Change Tracking]\(変更追跡を行うための追加\)** が開きます。
 
-   ![[設定] の選択][17]
-
-4. **[ワークスペースの構成]** で、 **[有効化]** が [True] に設定されているグループを選択します。
-
-   ![ワークスペースの構成][18]
-
-5. **[Edit for Change Tracking]\(変更追跡を行うための編集\)** ウィンドウで、 **[有効化]** を [False] に設定します。
-
-   ![[有効化] を False に設定][19]
-
-6. **[保存]** を選択します。
+1. 必要な情報を入力し、 **[保存]** を選択します。
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>ワイルドカードを使用するフォルダーとパスの監視
 
@@ -249,13 +238,13 @@ FIM は、Azure portal の Security Center のページからのみ利用でき�
 ## <a name="disable-fim"></a>FIM を無効にする
 FIM を無効にすることができます。 FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 FIM を無効にすることで、選択したワークスペースから Change Tracking ソリューションを削除します。
 
-1. FIM を無効にするには、**ファイルの整合性の監視** ダッシュボードに戻ります。
-2. ワークスペースを選択します。
-3. **[ファイルの整合性の監視]** で、 **[無効化]** を選択します。
+FIM を無効にするには
 
-   ![FIM を無効にする][20]
+1. ワークスペースの **[ファイルの整合性の監視] ダッシュボード** で、 **[無効にする]** を選択します。
 
-4. 無効にするには、 **[削除]** を選択します。
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/disable-file-integrity-monitoring.png" alt-text="[設定] ページでファイルの整合性の監視を無効にする":::
+
+1. **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Security Center のファイルの整合性の監視 (FIM) を使用する方法について説明しました。 セキュリティ センターの詳細については、次のページを参照してください。
@@ -265,21 +254,5 @@ FIM を無効にすることができます。 FIM は、Azure Change Tracking �
 * [Azure セキュリティ ブログ](/archive/blogs/azuresecurity/)-- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
-[1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
-[5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[7]: ./media/security-center-file-integrity-monitoring/filter.png
-[8]: ./media/security-center-file-integrity-monitoring/log-search.png
-[9]: ./media/security-center-file-integrity-monitoring/changes-tab.png
-[10]: ./media/security-center-file-integrity-monitoring/change-details.png
-[11]: ./media/security-center-file-integrity-monitoring/fim-dashboard-settings.png
-[12]: ./media/security-center-file-integrity-monitoring/workspace-config.png
-[13]: ./media/security-center-file-integrity-monitoring/edit.png
-[14]: ./media/security-center-file-integrity-monitoring/add.png
-[15]: ./media/security-center-file-integrity-monitoring/add-item.png
-[16]: ./media/security-center-file-integrity-monitoring/fim-dashboard-disable.png
-[17]: ./media/security-center-file-integrity-monitoring/fim-dashboard-settings-disabled.png
-[18]: ./media/security-center-file-integrity-monitoring/workspace-config-disable.png
-[19]: ./media/security-center-file-integrity-monitoring/edit-disable.png
-[20]: ./media/security-center-file-integrity-monitoring/disable-fim.png

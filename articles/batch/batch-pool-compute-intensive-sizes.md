@@ -3,12 +3,12 @@ title: Batch でのコンピューティング集中型 Azure VM の使用
 description: Azure Batch プールで HPC および GPU の仮想マシン サイズを利用する方法。 OS の依存関係について学習し、シナリオ例をいくつか確認してください。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3156296e1ae1ec892be86fc41738fcb7f29090
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86147343"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988336"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -53,13 +53,15 @@ Batch のコンピューティング集中型サイズの RDMA または GPU の
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows プール - クラウド サービス構成
 
-> [!NOTE]
-> N シリーズのサイズは、クラウド サービス構成の Batch プールではサポートされていません。
->
+> [!WARNING]
+> Cloud Services 構成プールは[非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)とされます。 代わりに、仮想マシン構成プールを使用してください。
 
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016、2012 R2、2012、または<br/>2008 R2 (ゲスト OS ファミリ) | Microsoft MPI 2012 R2 以降または<br/>Intel MPI 5<br/><br/>Windows RDMA ドライバー | ノード間通信を有効にし、<br/> 同時実行タスクの実行を無効にする |
+
+> [!NOTE]
+> N シリーズのサイズは、クラウド サービス構成 プールではサポートされていません。
 
 ## <a name="pool-configuration-options"></a>プール構成オプション
 

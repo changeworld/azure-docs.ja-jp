@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 0b30cb1767e733861d8418ea29e564bc90a5bc70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59c947684787edcf4863a8388e88c860172a9b59
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676512"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988210"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>プライベート エンドポイントを経由したインデクサー接続の作成
 
@@ -192,6 +192,8 @@ API への要求本文を表す *create-pe.json* ファイルの内容は次の�
 
 - `executionEnvironment` プロパティを設定せずにインデクサーを作成し、そのインデクサーが正常に実行された場合、Azure Cognitive Search によってその実行環境が検索サービス固有の "*プライベート*" 環境であると判断されたことを意味します。 これは、インデクサーによって消費されるリソース、検索サービスの負荷、その他の要因などによって変わることがあり、後で失敗する可能性があります。 この問題を解決するには、次のようにします。
   * `executionEnvironment` プロパティを `private` に設定して、今後エラーが発生しないようにすることを強くお勧めします。
+
+- Azure portal でデータ ソースのネットワーク ページを表示していて、このデータ ソースにアクセスするために Azure Cognitive Search サービス用に作成したプライベート エンドポイントを選択した場合、"*アクセス不可*" のエラーが表示されることがあります。 これは予期されることです。 ターゲット サービスのポータル ページを使用して接続要求の状態を変更できますが、共有プライベート リンク リソースをさらに管理するには、Azure portal の検索サービスのネットワーク ページで共有プライベート リンク リソースを表示する必要があります。
 
 [クォータと制限](search-limits-quotas-capacity.md)によって、作成できる共有プライベート リンク リソースの数が決まります。クォータと制限は、検索サービスの SKU に基づきます。
 

@@ -4,12 +4,12 @@ description: Service Bus の配信不能キューについて説明します。 
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773227"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812374"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -75,8 +75,4 @@ Service Bus のキューとサブスクリプションについてメッセー�
 
 
 ## <a name="next-steps"></a>次のステップ
-
-Service Bus キューの詳細については、次の記事を参照してください。
-
-* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
-* [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+**メッセージの期限切れによる配信不能処理** 設定のさまざまな構成方法については、[キューまたはサブスクリプションの配信不能処理の有効化](enable-dead-letter.md)に関する記事を参照してください。

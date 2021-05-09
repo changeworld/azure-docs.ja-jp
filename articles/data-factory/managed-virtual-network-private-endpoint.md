@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 1213d5f7421cc71255f29d013fa47878559110ee
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 34211feb34b3e2ec21b9bc0e6a180df0febd8c76
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481584"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987940"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -136,32 +136,36 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 - Azure Database for MariaDB
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure Data Factory マネージド仮想ネットワークは次の Azure リージョンでご利用いただけます。
-- 米国東部
-- 米国東部 2
-- 米国中西部
-- 米国西部
-- 米国西部 2
-- 米国中南部
-- 米国中部
-- 北ヨーロッパ
-- 西ヨーロッパ
-- 英国南部
-- 東南アジア
 - オーストラリア東部
 - オーストラリア南東部
-- ノルウェー東部
+- ブラジル南部
+- カナダ中部
+- カナダ東部
+- インド中部
+- 米国中部
+- 米国東部
+- 米国東部 2
+- フランス中部
 - 東日本
 - 西日本
 - 韓国中部
-- ブラジル南部
-- フランス中部
+- 北ヨーロッパ
+- ノルウェー東部
+- 南アフリカ北部
+- 米国中南部
+- 東南アジア
 - スイス北部
+- アラブ首長国連邦北部
+- 英国南部
 - 英国西部
-- カナダ東部
-- カナダ中部
+- 米国中西部
+- 西ヨーロッパ
+- 米国西部
+- 米国西部 2
+
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF マネージド仮想ネットワークからのパブリック エンドポイントを介した送信方向の通信
-- 送信方向の通信用には、ポート 443 のみが開かれています。
+- 送信方向の通信用には、すべてのポートが開かれています。
 - Azure Storage および Azure Data Lake Gen2 では、ADF マネージド仮想ネットワークからパブリック エンドポイント経由で接続することはサポートされていません。
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault のリンクされたサービスの作成 

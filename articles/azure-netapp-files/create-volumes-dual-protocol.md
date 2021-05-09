@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/27/2021
 ms.author: b-juche
-ms.openlocfilehash: c702c41228512eceebeaf45ccae709db38a85a51
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b195b1a816576ec8a065ebe83bd02fa3aeb53c5a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725686"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161395"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -39,7 +39,6 @@ NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-
 * 「[Active Directory 接続の要件](create-active-directory-connections.md#requirements-for-active-directory-connections)」を満たしていることを確認します。 
 * DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンのポインター (PTR) レコードを追加します。 そうしないと、デュアルプロトコル ボリュームの作成は失敗します。
 * NFS クライアントが最新であり、オペレーティング システムの最新の更新プログラムが実行されていることを確認します。
-* AD で Active Directory (AD) LDAP サーバーが稼働していることを確認します。 そのためには、AD マシンで [Active Directory ライトウェイト ディレクトリ サービス (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) ロールをインストールして構成します。
 * デュアル プロトコル ボリュームでは、現在 Azure Active Directory Domain Services (AADDS) はサポートされていません。 AADDS を使用している場合は、LDAP over TLS を有効にしないでください。
 * デュアル プロトコル ボリュームで使用される NFS のバージョンは、NFSv3 です。 そのため、次の考慮事項が適用されます。
     * デュアル プロトコルは、NFS クライアントからの Windows ACL 拡張属性 `set/get` をサポートしていません。

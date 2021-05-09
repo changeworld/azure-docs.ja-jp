@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: seodec18
-ms.openlocfilehash: cafc7216e8112640f823ecee1aea055ab78b3fc6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d6e6277292d12de10ad55c5f7d912f41e92b5b18
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098470"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989308"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 
@@ -154,4 +154,4 @@ Azure portal でこれらのメトリックを表示するには
 
 - [Batch サービスのワークフローと主要なリソース](batch-service-workflow-features.md) (プール、ノード、ジョブ、タスクなど) について学習します。
 - Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
-- 優先順位の低い VM からスポット VM への移行の計画を開始しましょう。 優先順位の低い VM を **クラウド サービス構成** プールと共に使用する場合は、代わりに [**仮想マシンの構成** プール](nodes-and-pools.md#configurations)に移行することを計画してください。
+- 優先順位の低い VM からスポット VM への移行の計画を開始しましょう。 優先順位の低い VM を **クラウド サービス構成** プールと共に使用する場合 (これは [非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)です)、代わりに [**仮想マシン構成** プール](nodes-and-pools.md#configurations)に移行することを計画してください。

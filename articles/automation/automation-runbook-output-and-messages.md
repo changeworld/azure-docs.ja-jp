@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 033900ddd0bd19332b4a9a996c68b3b187d631c4
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 0b41880bea25c1b833ab2a996a50edcf557f37b8
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833564"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161665"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Runbook の出力ストリームとメッセージ ストリームを構成する
 
@@ -101,14 +101,14 @@ Workflow Test-Runbook
   $output = "This is some string output."
   Write-Output $output
 }
- ```
+```
 
 #### <a name="declare-output-data-type-in-a-graphical-runbook"></a>グラフィカル ワークフローで出力のデータ型を宣言する
 
 グラフィカルまたはグラフィカル PowerShell ワークフローの Runbook で出力型を宣言するには、 **[入力と出力]** メニュー オプションを選択し、出力型を入力します。 親 Runbook で参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。 完全な名前を使用することにより、そのクラスのすべてのプロパティが Runbook のデータバスに公開され、プロパティを条件付きロジック、ログ記録、他の Runbook アクティビティでの値としての参照で使用する際に柔軟性が高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
->[!NOTE]
->[入力と出力] プロパティ ウィンドウで **[出力の種類]** フィールドに値を入力した後は、コントロールの外側をクリックして、入力内容を認識させる必要があります。
+> [!NOTE]
+> [入力と出力] プロパティ ウィンドウで **[出力の種類]** フィールドに値を入力した後は、コントロールの外側をクリックして、入力内容を認識させる必要があります。
 
 次の例では、入力と出力の機能を説明するために 2 つのグラフィカル Runbook を示します。 モジュール式の Runbook デザイン モデルを適用すると、Runbook の 1 つは、実行アカウントを使用した Azure での認証を管理する認証 Runbook テンプレートになります。 2 番目の Runbook は、通常、特定のシナリオを自動化するためのコア ロジックを実行します。ここでは、認証 Runbook テンプレートが実行されます。 [テスト出力] ウィンドウに結果が表示されます。 通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。
 
@@ -208,8 +208,8 @@ Azure portal の **[構成]** タブ使用して、進行状況レコードを�
 
 進行状況レコードのログ記録を有効にすると、Runbook では、各アクティビティの実行の前後にジョブ履歴にレコードが書き込まれます。 Runbook のテスト時には、Runbook が進行状況レコードを記録するように構成されている場合でも、進行状況メッセージは表示されません。
 
->[!NOTE]
->[Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) コマンドレットは、対話ユーザー向けに使用するものであるため、Runbook では無効です。
+> [!NOTE]
+> [Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) コマンドレットは、対話ユーザー向けに使用するものであるため、Runbook では無効です。
 
 ## <a name="work-with-preference-variables"></a>ユーザー設定変数の操作
 
@@ -263,13 +263,13 @@ Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 
 ### <a name="retrieve-runbook-output-and-messages-in-graphical-runbooks"></a>グラフィカル Runbook で Runbook の出力とメッセージを取得する
 
-グラフィカル Runbook では、出力とメッセージの追加のログ記録が、アクティビティ レベルのトレースの形式で使用できます。 トレースには Basic および Detailed の 2 つのレベルがあります。 基本トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの再試行に関連する情報が表示されます。 例としては、アクティビティの試行数や開始時刻などがあります。 詳細トレースでは、各アクティビティの基本トレース機能に加えて、入出力データのログが含まれます。 
+グラフィカル Runbook では、出力とメッセージの追加のログ記録が、アクティビティ レベルのトレースの形式で使用できます。 トレースには Basic および Detailed の 2 つのレベルがあります。 基本トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの再試行に関連する情報が表示されます。 例としては、アクティビティの試行数や開始時刻などがあります。 詳細トレースでは、各アクティビティの基本トレース機能に加えて、入出力データのログが含まれます。
 
 現在、アクティビティレベルのトレースでは、詳細ストリームを使用してレコードが書き込まれます。 そのため、トレースを有効にするときは、詳細ログ記録を有効にする必要があります。 トレースが有効になっているグラフィカル Runbook では、進行状況レコードを記録する必要はありません。 Basic トレースが同じ目的で機能し、情報がより詳細です。
 
 ![グラフィカル作成のジョブ ストリーム ビュー](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境の **ジョブ ストリーム** ビューで利用できることが画像から確認できます。 この追加情報は、Runbook での運用上の問題のトラブルシューティングに不可欠です。 
+グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境の **ジョブ ストリーム** ビューで利用できることが画像から確認できます。 この追加情報は、Runbook での運用上の問題のトラブルシューティングに不可欠です。
 
 ただし、Runbook の進行状況を追跡してトラブルシューティングを行うためにこの情報が必要な場合を除き、一般的にはトレースをオフにしておくことをお勧めします。 トレース レコードは、特に大量になることがあります。 グラフィカル Runbook のトレースでは、基本または詳細トレースの構成に応じて、アクティビティごとに 2 個から 4 個のレコードを取得できます。
 

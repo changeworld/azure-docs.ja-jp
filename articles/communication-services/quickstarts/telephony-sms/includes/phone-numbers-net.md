@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 0bfb23977f6553568da24df614621bdf1eb9d06d
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: f5f9f30103381a8e91cd38bb7fa3547e6ca4c97e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113238"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157508"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ dotnet build
 まだアプリケーション ディレクトリにいる間に、`dotnet add package` コマンドを使用して、.NET 用の Azure Communication PhoneNumbers クライアント ライブラリ パッケージをインストールします。
 
 ```console
-dotnet add package Azure.Communication.PhoneNumbers --version 1.0.0-beta.6
+dotnet add package Azure.Communication.PhoneNumbers --version 1.0.0
 ```
 
 **Program.cs** の先頭に `using` ディレクティブを追加して名前空間をインクルードします。

@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 12/16/2020
-ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: 57b5e5f483ce8076622e4705a3a5b566e2e3aa1f
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97964509"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987886"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>Azure Data Share での一般的な問題をトラブルシューティングする 
 
@@ -20,11 +20,7 @@ ms.locfileid: "97964509"
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share の招待 
 
-場合によっては、新しいユーザーがメールの招待状で **[招待を承諾]** を選択すると、空の招待一覧が表示されることがあります。 
-
-:::image type="content" source="media/no-invites.png" alt-text="空の招待一覧を示すスクリーンショット。":::
-
-この問題には、次のいずれかの原因が考えられます。
+場合によっては、新しいユーザーがメールの招待状で **[招待を承諾]** を選択すると、空の招待一覧が表示されることがあります。 この問題には、次のいずれかの原因が考えられます。
 
 * **Azure Data Share サービスが、Azure テナント内の Azure サブスクリプションのリソース プロバイダーとして登録されていない。** この問題は、Azure テナントに Data Share リソースがない場合に発生します。 
 
@@ -73,15 +69,35 @@ SQL ベースの共有には、追加のアクセス許可が必要です。 前
 
 SQL ソースの場合、スナップショットは次のような理由で失敗することがあります。
 
-* Data Share のアクセス許可を付与するソース SQL スクリプトまたはターゲット SQL スクリプトが実行されていない。 または、Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) の場合は、Azure Active Directory 認証ではなく、SQL 認証を使用してスクリプトが実行されている。  
+* Data Share のアクセス許可を付与するソース SQL スクリプトまたはターゲット SQL スクリプトが実行されていない。 または、Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) の場合は、Azure Active Directory 認証ではなく、SQL 認証を使用してスクリプトが実行されている。 Data Share アカウントに SQL データベースへの適切なアクセス許可が付与されている場合は、次のクエリを実行して確認できます。 ソース SQL データベースの場合、クエリ結果には、Data Share アカウントに *db_datareader* ロールがあることが示されます。 ターゲット SQL データベースの場合、クエリ結果には、Data Share アカウントに *db_datareader* ロール、*db_datawriter* ロール、*db_dlladmin* ロールがあることが示されます。
+
+    ```sql
+        SELECT DP1.name AS DatabaseRoleName,
+        isnull (DP2.name, 'No members') AS DatabaseUserName
+        FROM sys.database_role_members AS DRM
+        RIGHT OUTER JOIN sys.database_principals AS DP1
+        ON DRM.role_principal_id = DP1.principal_id
+        LEFT OUTER JOIN sys.database_principals AS DP2
+        ON DRM.member_principal_id = DP2.principal_id
+        WHERE DP1.type = 'R'
+        ORDER BY DP1.name; 
+     ``` 
+
 * ソース データ ストアまたはターゲット SQL データ ストアが一時停止されている。
 * スナップショット プロセスまたはターゲット データ ストアで SQL データ型がサポートされていない。 詳細については、[SQL ソースからの共有](how-to-share-from-sql.md#supported-data-types)に関する記事を参照してください。
 * ソース データ ストアまたはターゲット SQL データ ストアが他のプロセスによってロックされている。 Azure Data Share では、これらのデータ ストアをロックしません。 ただし、これらのデータ ストアの既存のロックによって、スナップショットが失敗する可能性があります。
 * ターゲット SQL テーブルが外部キー制約により参照されています。 スナップショット中、ターゲット テーブルが、ソース データ内のテーブルと同じ名前を持っている場合、Azure Data Share ではそのテーブルを削除して、新しいテーブルを作成します。 ターゲット SQL テーブルが外部キー制約により参照されている場合は、テーブルを削除できません。
 * ターゲット CSV ファイルは生成されるが、Excel でそのデータを読み取れない。 ソース SQL テーブルに英語以外の文字が含まれるデータが含まれている場合に、この問題が発生することがあります。 Excel で、 **[データの取得]** タブを選択し、CSV ファイルを選択します。 ファイルの Origin として **65001:Unicode (UTF-8)** を選択してから、データを読み込みます。
 
-## <a name="updated-snapshot-schedules"></a>更新されたスナップショット スケジュール
-送信された共有のスナップショット スケジュールがデータ プロバイダーによって更新された後、データ コンシューマーは、前のスナップショット スケジュールを無効化する必要があります。 次に、受信した共有で、更新されたスナップショット スケジュールを有効にします。 
+## <a name="update-snapshot-schedule"></a>スナップショット スケジュールを更新する
+送信された共有のスナップショット スケジュールがデータ プロバイダーによって更新された後、データ コンシューマーによって前のスナップショット スケジュールが無効化され、受信された共有の更新済みスナップショット スケジュールが有効化される必要があります。 スナップショット スケジュールは協定世界時で保存され、UI はコンピューターの現地時刻で表示されます。 夏時間への自動調整は行われません。  
+
+## <a name="in-place-sharing"></a>インプレース共有
+Azure Data Explorer クラスターでのデータベース マッピングは、次の理由で失敗するおそれがあります。
+
+* ユーザーに Azure Data Explorer への "*書き込み*" アクセス許可が付与されていない。 通常、このアクセス許可は共同作成者ロールの一部です。 
+* ソースまたはターゲットの Azure Data Explorer クラスターが一時停止している。
+* ソースの Azure Data Explorer クラスターが EngineV2、ターゲットの Azure Data Explorer クラスターが EngineV3、またはその反対である。 異なるエンジン バージョンの Azure Data Explorer クラスター間での共有はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

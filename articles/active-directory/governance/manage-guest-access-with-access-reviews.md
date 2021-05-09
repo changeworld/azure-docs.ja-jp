@@ -3,7 +3,7 @@ title: アクセス レビューを使用したゲスト アクセスの管理 -
 description: Azure Active Directory アクセス レビューを使用し、ゲスト ユーザーをグループのメンバーとして、またはアプリケーションに割り当てられたユーザーとして管理します。
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 12/23/2020
-ms.author: barclayn
+ms.date: 4/16/2021
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02d7e5fd6fdbb17b91d151875a48b7763d6b93c8
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746696"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988282"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -54,6 +54,10 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
  - Azure AD 内のグループのメンバーとして 1 人以上のゲストが存在する。
  - Azure AD に接続済みのアプリケーションに対して 1 人以上のゲスト ユーザーが割り当てられている。 
+
+Microsoft 365 グループへのゲストユーザーのアクセスを確認する場合は、各グループに対して個別にレビューを作成するか、すべての Microsoft 365 グループのゲスト ユーザーに対する連続アクセス レビューを自動で有効にすることができます。 次のビデオでは、ゲストユーザーの連続アクセス レビューの詳細について説明しています。 
+
+> [!VIDEO https://www.youtube.com/watch?v=3D2_YW2DwQ8]
 
 そのうえで、各ゲストに自分自身のアクセスをレビューしてもらうか、各ゲストのアクセスを 1 人以上のユーザーにレビューしてもらうかを決めてください。
 

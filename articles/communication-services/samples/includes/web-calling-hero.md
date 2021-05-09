@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 0504467e387c0875a8e00bd1cf638ec437232092
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: a015ba06be6a10985a4771e842a6d910dd4cd9ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554220"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157579"
 ---
 Azure Communication Services の **グループ通話のヒーロー サンプル** は、Communication Services Calling Web SDK を使用して、グループ通話エクスペリエンスを構築する方法を示しています。
 
@@ -48,7 +48,7 @@ Azure Communication Services の **グループ通話のヒーロー サンプ�
 - **サイド バー**: ヘッダーのコントロールを使用して、参加者と設定情報の表示を切り替えます。 このコンポーネントは、右上隅にある 'X' を使用して閉じることができます。 参加者のサイド バーには参加者の一覧と、チャットするユーザーをさらに招待するためのリンクが表示されます。 [設定] サイドバーでは、マイクとカメラの設定を構成できます。
 
 > [!NOTE]
-> Web Calling SDK の制限に基づいて、1 つのリモート ビデオ ストリームのみがレンダリングされます。 詳細については、[Calling SDK でのストリームのサポート](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features#calling-sdk-streaming-support)に関するページを参照してください。
+> Web Calling SDK の制限に基づいて、1 つのリモート ビデオ ストリームのみがレンダリングされます。 詳細については、[Calling SDK でのストリームのサポート](../../concepts/voice-video-calling/calling-sdk-features.md#calling-sdk-streaming-support)に関するページを参照してください。
 
 以下で、サンプルを設定するための前提条件と手順について詳しく説明します。
 

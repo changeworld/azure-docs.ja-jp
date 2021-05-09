@@ -6,17 +6,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e7db817e2fb355e3a69f7b90a4fc6eaa4adec515
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 6c766925fc82fd9d8ea37e3aeb30db7e48e0fde3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444226"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160729"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows Virtual Desktop (クラシック) PowerShell
 
->[!IMPORTANT]
->この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-powershell.md)を参照してください。
+> [!IMPORTANT]
+> この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-powershell.md)を参照してください。
 
 Windows Virtual Desktop で PowerShell を使用するときに発生するエラーと問題を解決する際、この記事を参考にしてください。 リモート デスクトップ サービスの PowerShell については、「[Windows Virtual Desktop PowerShell](/powershell/windows-virtual-desktop/overview)」を参照してください。
 
@@ -30,7 +30,7 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 
 ### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>エラー:Add-RdsAppGroupUser コマンド -- 指定された UserPrincipalName が、指定されたホスト プールの RemoteApp アプリ グループに既に割り当てられています。
 
-```Powershell
+```powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
 ```
 
@@ -40,7 +40,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 ### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>エラー:Add-RdsAppGroupUser コマンド -- 指定された UserPrincipalName は、リモート デスクトップ テナントに関連付けられている Azure Active Directory に存在しません。
 
-```PowerShell
+```powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
 ```
 
@@ -54,7 +54,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 ### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>エラー:Get-RdsDiagnosticActivities -- 管理サービスに問い合わせる許可がユーザーに与えられていません
 
-```PowerShell
+```powershell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 ```
 
@@ -64,7 +64,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 ### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>エラー:Get-RdsDiagnosticActivities -- 管理サービスに問い合わせる許可がユーザーに与えられていません
 
-```PowerShell
+```powershell
 Get-RdsDiagnosticActivities -Deployment -username <username>
 ```
 
@@ -82,8 +82,8 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **解決策 2:** Active Directory のアクセス許可が与えられているユーザーは、ロールの割り当てを実行する必要があります。
 
->[!Note]
->New-RdsRoleAssignment では、Azure Active Directory (AD) に存在しないユーザーにアクセス許可を与えることができません。
+> [!NOTE]
+> New-RdsRoleAssignment では、Azure Active Directory (AD) に存在しないユーザーにアクセス許可を与えることができません。
 
 ## <a name="next-steps"></a>次のステップ
 

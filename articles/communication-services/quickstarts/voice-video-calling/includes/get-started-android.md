@@ -6,19 +6,14 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 38194ed7290d6cd9c4889d27ff458f950603c5be
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 84abd3d617c059c1bbc9565d0b8a23840f81f60d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "106072852"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313448"
 ---
 このクイックスタートでは、Android 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
-
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
-
-> [!NOTE]
-> このドキュメントでは、Calling SDK のバージョン 1.0.0-beta.8 を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -268,7 +263,7 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallClient| CallClient は、Calling SDK へのメイン エントリ ポイントです。|
 | CallAgent | CallAgent は、通話を開始および管理するために使用します。 |
-| CommunicationUserCredential | CommunicationUserCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。|
+| CommunicationTokenCredential | CommunicationTokenCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。|
 | CommunicationIdentifier | CommunicationIdentifier は、呼び出しの一部となる可能性があるさまざまな種類の参加者として使用されます。|
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>ユーザー アクセス トークンからエージェントを作成する

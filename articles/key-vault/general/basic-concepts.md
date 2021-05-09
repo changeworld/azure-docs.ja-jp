@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6fafacda322a974d04a04bb5e79d1ee086eaf7a5
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 863f98e643a7978856c03f5efe95736e6787f977
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753400"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814408"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault の基本的な概念
 
@@ -80,7 +80,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コンテナーをセキュリティで保護する](security-overview.md)方法を学習する。
+- [Azure Key Vault セキュリティ機能](security-features.md)について学習する
 - [Managed HSM プールをセキュリティで保護する](../managed-hsm/access-control.md)方法を学習する
 
 <!--Image references-->

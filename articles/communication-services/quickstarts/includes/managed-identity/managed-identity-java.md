@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: b51f52e24ca843abd94a8511e86b3193a797edd5
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b5516af5f33292e79cfb9dc7502dfffcd2e7767f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511609"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108313529"
 ---
 ## <a name="additional-prerequisites-for-java"></a>Java の追加の前提条件
 Java の場合は、以下も必要となります。
-- [Java Development Kit (JDK)](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install) バージョン 8 以降。
+- [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 
 ## <a name="setting-up"></a>設定
@@ -100,7 +100,7 @@ private TokenCredential credential = new DefaultAzureCredentialBuilder().build()
           return smsClient.send(from, to, message);
      }
 ```
-## <a name="write-the-main-method"></a>Main メソッドを記述する
+## <a name="write-the-main-method"></a>Main メソッドを作成する
 
 `App.java` には Main メソッドがすでに含まれているはずなので、前に作成したコードを呼び出してマネージド ID の使用方法を実演するコードを追加してみましょう。
 ```java
@@ -208,4 +208,3 @@ Sending SMS using Managed Identities
 Sms id: Outgoing_202104...33f8ae1f_noam
 Send Result Successful: true
 ```
-

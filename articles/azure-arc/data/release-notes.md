@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5931b28553b7a6030dc8c7b0adb2c42111ce6751
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304921"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989416"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
@@ -60,6 +60,7 @@ PostgreSQL 用のカスタム リソース定義 (CRD) は、どちらも 1 つ�
 - 直接モードでの Azure Arc 対応 SQL Managed Instance のデプロイは、Azure portal からのみ行うことができ、azdata、Azure Data Studio、kubectl などのツールからは使用できません。
 - 直接モードでの Azure Arc 対応 PostgeSQL Hyperscale のデプロイは現在使用できません。
 - `–proxy-cert <path-t-cert-file>` 経由でプロキシを使用する場合、直接接続モードでの使用状況データの自動アップロードは成功しません。
+- Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale は GB18030 認定ではありません。
 
 ## <a name="february-2021"></a>2021 年 2 月
 

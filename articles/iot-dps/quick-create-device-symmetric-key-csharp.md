@@ -3,18 +3,18 @@ title: クイックスタート - C# と対称キーを使用して Azure IoT Hu
 description: このクイックスタートでは、Device Provisioning Service (DPS) 用の C# デバイス SDK を使用して、対称キー デバイスを IoT ハブにプロビジョニングします。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 10/21/2020
+ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e67616c2c92676c3af79e3040bc09d3b1b87a11b
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92429289"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988300"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>クイックスタート: C# を使用して対称キー デバイスをプロビジョニングする
 
@@ -34,7 +34,7 @@ ms.locfileid: "92429289"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows ベースのマシンに [.NET Core 2.1 SDK](https://www.microsoft.com/net/download/windows) 以降がインストールされていることを確認する。
+* Windows ベースのマシンに [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download) 以降がインストールされていることを確認する。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -61,7 +61,7 @@ ms.locfileid: "92429289"
 
 4. 登録を保存したら、**主キー** と **セカンダリ キー** が生成され、登録エントリに追加されます。 対称キーのデバイス登録は、 *[個々の登録]* タブの *[登録 ID]* 列に **symm-key-csharp-device-01** と表示されます。 
 
-5. 登録を開き、生成された **プライマリ キー** と **セカンダリ キー** の値をコピーします。 このキーの値と **登録 ID** は、後でデバイス プロビジョニングのサンプル コードで使用する環境変数を追加するときに使用します。
+5. 登録を開き、生成された **主キー** の値をコピーします。 このキーの値と **登録 ID** は、後でデバイス プロビジョニングのサンプル コードを実行するときに使用します。
 
 
 
@@ -77,92 +77,62 @@ ms.locfileid: "92429289"
 
 <a id="firstbootsequence"></a>
 
-## <a name="prepare-the-device-provisioning-code"></a>デバイス プロビジョニング コードを準備する
+## <a name="run-the-device-provisioning-code"></a>デバイス プロビジョニング コードを実行する
 
-このセクションでは、次の 4 つの環境変数を追加します。これらの変数は、対称キー デバイスをプロビジョニングするサンプル コードのパラメーターとして使用されます。 
+このセクションでは、デバイス プロビジョニングのサンプル コードを、DPS リソースに登録する対称キー デバイスとして認証する 3 つのパラメーターを使用して、デバイス プロビジョニング サンプルを実行します。 この 3 つのパラメーターは次のとおりです。
 
-* `DPS_IDSCOPE`
-* `PROVISIONING_REGISTRATION_ID`
-* `PRIMARY_SYMMETRIC_KEY`
-* `SECONDARY_SYMMETRIC_KEY`
+* ID スコープ
+* 個々の登録 ID。
+* 個々の登録のプライマリ対称キー。
 
-プロビジョニング コードでは、デバイスを認証するために、これらの変数に基づいて DPS インスタンスを接続します。 その後、デバイスは、個々の登録構成に基づいて、DPS インスタンスに既にリンクされている IoT ハブに割り当てられます。 プロビジョニングが完了すると、サンプル コードでは何らかのテスト テレメトリを IoT ハブに送信します。
+プロビジョニング コードでは、デバイスを認証するために、これらのパラメーターを使用して DPS リソースと接続します。 その後、デバイスは、個々の登録構成に基づいて、DPS インスタンスに既にリンクされている IoT ハブに割り当てられます。 プロビジョニングが完了すると、サンプル コードによってテスト テレメトリ メッセージが IoT ハブに送信されます。
 
-1. [Azure portal](https://portal.azure.com) の Device Provisioning Service メニューで、**[概要]** を選択し、"_サービス エンドポイント_" と "_ID スコープ_" をコピーします。 これらの値は、`PROVISIONING_HOST` および `DPS_IDSCOPE` 環境変数に使用します。
-
-    ![サービス情報](./media/quick-create-device-symmetric-key-csharp/extract-dps-endpoints.png)
+1. [Azure portal](https://portal.azure.com) の Device Provisioning Service メニューで、 **[概要]** を選択し、 **[ID スコープ]** の値をコピーします。 サンプル コードを実行するときに、`IdScope` パラメーターとしてこの値を使用します。
 
 2. コマンド プロンプトを開き、クローンしたサンプル リポジトリ内の *SymmetricKeySample* に移動します。
 
     ```cmd
-    cd provisioning\Samples\device\SymmetricKeySample
+    cd azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. *SymmetricKeySample* フォルダーの *Program.cs* をテキスト エディターで開き、`individualEnrollmentPrimaryKey` と `individualEnrollmentSecondaryKey` の文字列を設定するコード行を見つけます。 ハードコーディングされたキーではなく環境変数が使用されるように、それらのコード行を次のように更新します。
+3. *SymmetricKeySample* フォルダーの *Parameters.cs* をテキスト エディターで開きます。 このファイルは、サンプルでサポートされているパラメーターを示しています。 この記事では、サンプルを実行するときに、最初の 3 つの必須パラメーターのみを使用します。 このファイルのコードを確認します。 変更は不要です。
  
-    ```csharp
-        //These are the two keys that belong to your individual enrollment. 
-        // Leave them blank if you want to try this sample for an individual enrollment instead
-        //private const string individualEnrollmentPrimaryKey = "";
-        //private const string individualEnrollmentSecondaryKey = "";
-
-        private static string individualEnrollmentPrimaryKey = Environment.GetEnvironmentVariable("PRIMARY_SYMMETRIC_KEY");;
-        private static string individualEnrollmentSecondaryKey = Environment.GetEnvironmentVariable("SECONDARY_SYMMETRIC_KEY");;
-    ```
-
-    同様に、`registrationId` 文字列を設定するコード行を見つけ、次のように環境変数を使用するように更新します。
-
-    ```csharp
-        //This field is mandatory to provide for this sample
-        //private static string registrationId = "";
-
-        private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
-    ```
-
-    *Program.cs* に対する変更を保存します。
-
-3. コマンド プロンプトで、前のセクションの個別登録からコピーした ID スコープ、登録 ID、プライマリ対称キー、セカンダリ対称キーの環境変数を追加します。  
-
-    次のコマンドは、コマンドの構文を示すための例です。 正しい値を使用していることを確認してください。
-
+    | パラメーター                         | 必須 | 説明     |
+    | :-------------------------------- | :------- | :-------------- |
+    | `--s` または `--IdScope`              | ○     | DPS インスタンスの ID スコープ |
+    | `--i` または `--Id`                   | ○     | 個別登録を使用する場合は登録 ID、グループ登録を使用する場合は目的のデバイス ID。 |
+    | `--p` または `--PrimaryKey`           | ○     | 個別登録またはグループ登録の主キー。 |
+    | `--e` または `--EnrollmentType`       | ×    | 登録の種類: `Individual` または `Group`。 既定値は `Individual` です |
+    | `--g` または `--GlobalDeviceEndpoint` | ×    | デバイスの接続先となるグローバル エンドポイント。 既定値は `global.azure-devices-provisioning.net` です |
+    | `--t` または `--TransportType`        | ×    | デバイス プロビジョニング インスタンスとの通信に使用するトランスポート。 既定値は `Mqtt` です。 指定できる値は、`Mqtt`、`Mqtt_WebSocket_Only`、`Mqtt_Tcp_Only`、`Amqp`、`Amqp_WebSocket_Only`、`Amqp_Tcp_only`、および `Http1` です。|
+     
+4. *SymmetricKeySample* フォルダーの *ProvisioningDeviceClientSample.cs* をテキスト エディターで開きます。 このファイルは、[SecurityProviderSymmetricKey](/dotnet/api/microsoft.azure.devices.shared.securityprovidersymmetrickey?view=azure-dotnet&preserve-view=true) クラスを [ProvisioningDeviceClient](/dotnet/api/microsoft.azure.devices.provisioning.client.provisioningdeviceclient?view=azure-dotnet&preserve-view=true) クラスと共に使用して、対称キー デバイスをプロビジョニングする方法を示しています。 このファイルのコードを確認します。  変更は不要です。
+ 
+5. 次のコマンドで例として使用されている 3 つのパラメーターを置き換えてから、サンプル コードをビルドして実行します。 ID スコープ、登録 ID、および登録主キーに正しい値を使用してください。
+    
     ```console
-    set DPS_IDSCOPE=0ne00000A0A
-    ```
-
-    ```console
-    set PROVISIONING_REGISTRATION_ID=symm-key-csharp-device-01
-    ```
-
-    ```console
-    set PRIMARY_SYMMETRIC_KEY=sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
-    ```
-
-    ```console
-    set SECONDARY_SYMMETRIC_KEY=Zx8/eE7PUBmnouB1qlNQxI7fcQ2HbJX+y96F1uCVQvDj88jFL+q6L9YWLLi4jqTmkRPOulHlSbSv2uFgj4vKtw==
-    ```
+    dotnet run --s 0ne00000A0A --i symm-key-csharp-device-01 --p sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
+    ```    
 
 
-4. 次のコマンドを使用してサンプル コードをビルドし、実行します。
-
-    ```console
-    dotnet run
-    ```
-
-5. 予想される出力は次のようになります。これは、個々の登録設定に基づいてデバイスが割り当てられている、リンクされた IoT ハブを示しています。 サンプルの "TestMessage" という文字列がテストとしてハブに送信されます。
+6. 予想される出力は次のようになります。これは、個別登録の設定に基づいてデバイスが割り当てられている、リンクされた IoT ハブを示しています。 サンプルの "TestMessage" という文字列がテストとしてハブに送信されます。
 
     ```output
-    D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run
-    RegistrationID = symm-key-csharp-device-01
-    ProvisioningClient RegisterAsync . . . Assigned
-    ProvisioningClient AssignedHub: docs-test-iot-hub.azure-devices.net; DeviceID: csharp-device-01
-    Creating Symmetric Key DeviceClient authentication
-    DeviceClient OpenAsync.
-    DeviceClient SendEventAsync.
-    DeviceClient CloseAsync.
-    Enter any key to exit
+    D:\azure-iot-samples-csharp\provisioning\Samples\device\SymmetricKeySample>dotnet run --s 0ne00000A0A --i symm-key-csharp-device-01 --p sbDDeEzRuEuGKag+kQKV+T1QGakRtHpsERLP0yPjwR93TrpEgEh/Y07CXstfha6dhIPWvdD1nRxK5T0KGKA+nQ==
+
+    Initializing the device provisioning client...
+    Initialized for registration Id symm-key-csharp-device-01.
+    Registering with the device provisioning service...
+    Registration status: Assigned.
+    Device csharp-device-01 registered to ExampleIoTHub.azure-devices.net.
+    Creating symmetric key authentication for IoT Hub...
+    Testing the provisioned device with IoT Hub...
+    Sending a telemetry message...
+    Finished.
+    Enter any key to exit.
     ```
     
-6. Azure portal で、ご利用のプロビジョニング サービスにリンクされている IoT ハブに移動し、**[IoT デバイス]** ブレードを開きます。 対称キー デバイスがハブに正常にプロビジョニングされた後、デバイス ID が表示され、*[状態]* は **[有効]** となります。 デバイスのサンプル コードを実行する前に既にブレードを開いている場合は、上部にある **[最新の情報に更新]** ボタンを押す必要がある場合があります。 
+7. Azure portal で、ご利用のプロビジョニング サービスにリンクされている IoT ハブに移動し、**[IoT デバイス]** ブレードを開きます。 対称キー デバイスがハブに正常にプロビジョニングされた後、デバイス ID が表示され、*[状態]* は **[有効]** となります。 デバイスのサンプル コードを実行する前に既にブレードを開いている場合は、上部にある **[最新の情報に更新]** ボタンを押す必要がある場合があります。 
 
     ![IoT ハブに登録されたデバイス](./media/quick-create-device-symmetric-key-csharp/hub-registration-csharp.png) 
 
