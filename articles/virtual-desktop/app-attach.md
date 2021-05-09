@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 43a8cb00804927784982999db13ee193c34f55ca
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389436"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835382"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを作成する
 
@@ -24,7 +24,7 @@ MSIX アプリのアタッチ パッケージからのアプリをホストす�
 アプリが、公的に信頼されていない証明書、または自己署名された証明書を使用している場合は、次のようにインストールします。
 
 1. パッケージを右クリックし、 **[プロパティ]** を選択します。
-2. 表示されるウィンドウで、 **[デジタル署名]** タブを選択します。次の図に示すように、タブの一覧には項目が 1 つだけ表示されます。 その項目を選択して強調表示した後、 **[削除]** を選択します。
+2. 表示されるウィンドウで、 **[デジタル署名]** タブを選択します。タブの一覧には項目が 1 つだけ表示されます。その項目を選択して強調表示した後、 **[詳細]** を選択します。
 3. デジタル署名の詳細ウィンドウが表示されたら、 **[全般]** タブを選択し、 **[証明書の表示]** を選択して、 **[証明書のインストール]** を選択します。
 4. インストーラーが開いたら、保存場所として **[ローカル コンピューター]** を選択し、 **[次へ]** を選択します。
 5. アプリがデバイスに変更を加えることを許可するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。

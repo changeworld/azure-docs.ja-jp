@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 8b46ca16fc32a7b96c071a745f49bf5d5557f34b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c17814b51f1ebd6640bc6f500fbedbd7874cdd94
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530230"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947791"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -74,13 +74,13 @@ IPv4/IPv6 アドレス範囲で定義されるネームド ロケーションに
 
 [多要素認証サービス設定](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)で組織のローカル イントラネットを表す IP アドレス範囲を構成することもできます。 この機能を使用すると、最大 50 の IP アドレス範囲を設定できます。 IP アドレス範囲は CIDR 形式です。 詳細については、「[信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips)」を参照してください。  
 
-信頼できる IP を構成していると、その IP が場所の条件の場所の一覧の中で **[MFA の信頼できる IP]** として表示されます。
+信頼できる IP が構成されている場合は、場所の条件の場所のリストに **[MFA の信頼できる IP]** として表示されます。
 
 ### <a name="skipping-multi-factor-authentication"></a>多要素認証をスキップする
 
 多要素認証サービス設定ページでは、 **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** を選択して、社内のイントラネット ユーザーを識別できます。 この設定は、AD FS から発行された社内ネットワークの要求を信頼し、社内ネットワーク上にあるユーザーを識別するために使用する必要があることを示します。 詳細については、「[条件付きアクセスを使用した信頼できる IP 機能の有効化](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access)」を参照してください。
 
-このオプションをオンにした後、ネームド ロケーションの **MFA の信頼できる IP** は、このオプションが選択されているすべてのポリシーに適用されます。
+このオプションをオンにすると、ネームド ロケーションを含む **MFA の信頼できる IP** が、このオプションが選択されているすべてのポリシーに適用されます。
 
 セッションの有効期間が長いモバイルおよびデスクトップ アプリケーションの場合、条件付きアクセスは定期的に再評価されます。 既定値は 1 時間に 1 回です。 社内ネットワーク要求が最初の認証時にのみ発行される場合、Azure AD に信頼できる IP 範囲の一覧がない場合があります。 この場合、ユーザーが社内ネットワーク内にまだいるかどうかを判断することは困難になります。
 
@@ -128,7 +128,7 @@ Azure AD にプロキシされる IPv6 トラフィックの大部分は、Micro
 これらは、ネームド ロケーションに IPv6 の範囲を構成することが必要になる可能性がある最も一般的な理由です。 さらに、Azure VNet を使用している場合は、IPv6 アドレスからのトラフィックが発生します。 条件付きアクセスポリシーによって VNet トラフィックがブロックされている場合は、Azure AD のサインイン ログを確認します。 トラフィックを特定したら、使用されている IPv6 アドレスを確認し、ポリシーから除外することができます。 
 
 > [!NOTE]
-> 1 つのアドレスに対して IP CIDR 範囲を指定する場合は、/128 ビット マスクを適用します。 たとえば IPv6 アドレス 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a があり、この 1 つのアドレスを範囲として除外する場合は、2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128 を使用します。
+> 1 つのアドレスに対して IP CIDR 範囲を指定する場合は、/128 ビット マスクを適用します。 IPv6 アドレス 2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a が表示され、1 つのアドレスを範囲として除外する場合は、2607:fb90:b27a:6f69:f8d5:dea0:fb39:74a/128 を使用します。
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Azure AD サインイン アクティビティ レポートでの IPv6 トラフィックの特定
 

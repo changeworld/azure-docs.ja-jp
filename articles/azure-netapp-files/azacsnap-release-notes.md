@@ -12,18 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 01fb93dcd0a1d5c1db615c47d7811a0baa863c9b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 269ef95835e5284806e7c1eaa76980e635c3d1dd
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105111396"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946549"
 ---
-# <a name="release-notes-for-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールのリリース ノート (プレビュー)
+# <a name="release-notes-for-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールのリリース ノート
 
 このページでは、新しい機能を提供したり欠陥を解決したりするために、AzAcSnap に加えられた主な変更を示します。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="azacsnap-v50-build-202104216349---ga-released-21-april-2021"></a>AzAcSnap v5.0 (ビルド: 20210421.6349) - GA リリース (2021 年 4 月 21 日)
+
+AzAcSnap v5.0 (ビルド: 20210421.6349) が一般公開となり、このビルドで次の修正と改善が加えられました。
+
+- (SAP HANA からの応答を待機するための) hdbsql の再試行タイムアウトは、競合状態を避けるために、"savePointAbortWaitSeconds" の半分に自動的に設定されます。  "savePointAbortWaitSeconds" の設定は、JSON 構成ファイル内で直接変更できます。この値は 600 秒以上にする必要があります。
+
+インストーラーの[最新リリース](https://aka.ms/azacsnapdownload)をダウンロードし、[作業の開始](azacsnap-get-started.md)方法を確認してください。
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -36,8 +46,6 @@ ms.locfileid: "105111396"
 - Azure Large Instances の SSH 接続を抑えるためのミューテックス制御を追加しました。
 - スペースを含むパス名およびその他の関連する問題を処理するためにインストーラーを修正しました。
 - 他のデータベース サーバーをサポートする準備のために、省略可能なパラメーター '--hanasid' を '--dbsid' に変更しました。
-
-インストーラーの[最新リリース](https://aka.ms/azacsnapdownload)をダウンロードし、[作業の開始](azacsnap-get-started.md)方法を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

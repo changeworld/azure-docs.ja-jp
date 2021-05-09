@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7e14dbf5aab68f5ea2d96274606306378feedad2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a6d98f827c39f973714441e308dcc4f2bd061c9b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445994"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835580"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -91,7 +91,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条�
 >[!NOTE]
 >Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
 
-Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧については、「[安全な URL の一覧](safe-url-list.md)」を参照してください。
+Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧については、「[必要な URL リスト](safe-url-list.md)」を参照してください。
 
 Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョン内の仮想マシン (VM) にデプロイでき、これらの VM の管理ソリューションとデータは米国に配置されます。 このため、米国を宛先とするデータ転送が発生することがあります。
 
@@ -136,13 +136,13 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 |オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (マルチセッション)、バージョン 2004|はい|はい|はい|はい|
-|Windows 10 Enterprise (マルチセッション)、バージョン 1909|はい|はい|はい|はい|
+|Windows 10 Enterprise (マルチセッション)、バージョン 2004|はい|Yes|Yes|はい|
+|Windows 10 Enterprise (マルチセッション)、バージョン 1909|はい|Yes|Yes|はい|
 |Windows 10 Enterprise (マルチセッション)、バージョン 1903|はい|はい|いいえ|いいえ|
 |Windows 10 Enterprise (マルチセッション)、バージョン 1809|はい|はい|いいえ|いいえ|
 |Windows 7 Enterprise|はい|はい|いいえ|いいえ|
 |Windows Server 2019|はい|はい|いいえ|いいえ|
-|Windows Server 2016|はい|はい|はい|はい|
+|Windows Server 2016|はい|Yes|Yes|はい|
 |Windows Server 2012 R2|はい|はい|いいえ|いいえ|
 
 ## <a name="next-steps"></a>次のステップ

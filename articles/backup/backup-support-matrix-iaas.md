@@ -2,14 +2,14 @@
 title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 04/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1f63d0c3ad448a8ab9b91764d4c369fefddea25d
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: c96c80721cd66f895c9c0dade590fc11d25de346
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516724"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890764"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -151,7 +151,7 @@ Azure に移行済みの VM をバックアップする| サポートされて�
 Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元される場合、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
 ロックされた Azure VM のバックアップ | アンマネージド VM では、サポートされていません。 <br><br> マネージド VM ではサポートされています。
 [スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
-[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | サポートされています
+[Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | サポートされています<br></br>[[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用して Azure VM を復元していると、復元は成功しますが、Azure VM を専用ホストで復元できません。 これをするためには、ディスクとして復元することをお勧めします。 テンプレートを使用して[ディスクとして復元](backup-azure-arm-restore-vms.md#restore-disks)しているときに、VM を専用ホストに作成してから、ディスクを接続します。<br></br>これは、 [リージョンをまたがる復元](backup-azure-arm-restore-vms.md#cross-region-restore)を実行しているときのセカンダリ リージョンでも適用されます。
 スタンドアロン Azure VM の Windows 記憶域スペース構成 | サポートされています
 [Azure VM スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 単一の Azure VM をバックアップおよび復元するための、統一されたオーケストレーション モデルと柔軟なオーケストレーション モデルの両方でサポートされます。
 
@@ -229,7 +229,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 **マシン** | **MABS または DPM に圧縮 (TCP)** | **コンテナーに圧縮 (HTTPS)**
 --- | --- | ---
 オンプレミスの Windows マシン (DPM または MABS なし) | NA | ![はい][green]
-Azure VM | NA | NA
+Azure VM | N/A | NA
 オンプレミス VM または Azure VM (DPM あり) | ![はい][green] | ![はい][green]
 オンプレミス VM または Azure VM (MABS あり) | ![はい][green] | ![はい][green]
 

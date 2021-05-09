@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4624a33b12afc5eff033fe2d57bf25f812c9e667
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455919"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891304"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -35,6 +35,9 @@ Azure Blob Storage トリガーには、汎用ストレージ アカウントが
 
 ### <a name="event-grid-trigger"></a>Event Grid トリガー
 
+> [!NOTE]
+> 5\.x 以降のバージョンの Storage 拡張機能では、Event Grid を使用する Blob トリガーが組み込みでサポートされています。 詳しくは、以下の「[ストレージ拡張機能 5.x 以降](#storage-extension-5x-and-higher)」セクションをご覧ください。
+
 [Event Grid トリガー](functions-bindings-event-grid.md)にも、[BLOB イベント](../storage/blobs/storage-blob-event-overview.md)のサポートが組み込まれています。 次のシナリオの場合は、Blob ストレージ トリガーではなく Event Grid を使用してください。
 
 - **BLOB 専用ストレージ アカウント**: [BLOB 専用ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)は、BLOB の入力と出力のバインドでサポートされ、BLOB トリガーではサポートされません。
@@ -44,6 +47,12 @@ Azure Blob Storage トリガーには、汎用ストレージ アカウントが
 - **待ち時間の最小化**: 関数アプリを従量課金プランで使用しているときに、関数アプリがアイドル状態になっている場合、新しい BLOB の処理が最大で 10 分間遅延する可能性があります。 この待機時間を避けるには、Always On が有効な App Service プランに切り替えることができます。 BLOB ストレージ アカウントで [Event Grid トリガー](functions-bindings-event-grid.md)を使用することもできます。 例については、[Event Grid のチュートリアル](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)を参照してください。
 
 Event Grid の例については、[Event Grid を使用した画像のサイズ変更](../event-grid/resize-images-on-storage-blob-upload-event.md)に関するチュートリアルを参照してください。
+
+#### <a name="storage-extension-5x-and-higher"></a>ストレージ拡張機能 5.x 以降
+
+プレビュー版の Storage 拡張機能の Blob トリガーは、Event Grid を組み込みでサポートしています。これを使用するには、既存の Blob トリガーの `source` パラメーターを “Event Grid” に設定する必要があります。 
+
+Event Grid を使用する Blob トリガーの詳しい使用方法は、[Event Grid Blob トリガーの使用方法](./functions-event-grid-blob-trigger.md)に関する記事をご覧ください。
 
 ### <a name="queue-storage-trigger"></a>Queue ストレージ トリガー
 
