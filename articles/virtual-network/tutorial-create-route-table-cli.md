@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ed2a97ccfb0a3b9b4b43021ab0fff1460919c9b9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2ff643c39820fa529c8678c7a36881dd25da354c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060722"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762499"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Azure CLI を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -52,7 +52,7 @@ az group create \
   --location eastus
 ```
 
-[az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) でルート テーブルを作成します。 次の例では、*myRouteTablePublic* という名前のルート テーブルを作成します。 
+[az network route-table create](/cli/azure/network/route-table#az_network_route_table_create) でルート テーブルを作成します。 次の例では、*myRouteTablePublic* という名前のルート テーブルを作成します。 
 
 ```azurecli-interactive
 # Create a route table
@@ -63,7 +63,7 @@ az network route-table create \
 
 ## <a name="create-a-route"></a>ルートの作成
 
-[az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) でルート テーブル内にルートを作成します。 
+[az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create) でルート テーブル内にルートを作成します。 
 
 ```azurecli-interactive
 az network route-table route create \

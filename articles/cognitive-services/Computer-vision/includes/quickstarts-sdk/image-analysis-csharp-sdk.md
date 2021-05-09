@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: fbdd72480fd3db8cfafd0803a623c5cfe4279288
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287402"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107327417"
 ---
 <a name="HOLTop"></a>
 
@@ -40,7 +40,7 @@ Visual Studio を使用して、新しい .NET Core アプリケーションを�
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-新しいプロジェクトを作成したら、**ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.ComputerVision` を検索します。 バージョン `6.0.0-preview.1` を選択し、 **[インストール]** を選択します。 
+新しいプロジェクトを作成したら、**ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.ComputerVision` を検索します。 バージョン `7.0.0` を選択し、 **[インストール]** を選択します。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -71,7 +71,7 @@ Build succeeded.
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Computer Vision クライアント ライブラリをインストールします。
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 7.0.0
 ```
 
 ---
@@ -260,8 +260,11 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
+このクイックスタートでは、画像分析クライアント ライブラリをインストールし、基本的な画像分析呼び出しを行う方法について学習しました。 次は、Analyze API の機能の詳細について学習しましょう。
+
+
 > [!div class="nextstepaction"]
->[画像分析 API リファレンス (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision)
+>[Analyze API を呼び出す](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [画像分析の概要](../../overview-image-analysis.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) にあります。

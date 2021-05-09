@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ramamill
-ms.openlocfilehash: a31a28728dd0521262bd0518cc49a385f4314302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 96c3dce17ab78e08b28bb41c0100e51a72a666e7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87416232"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110255"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Hyper-V VM のフェールバックの実行
 
@@ -26,7 +26,7 @@ ms.locfileid: "87416232"
 ## <a name="before-you-start"></a>開始する前に
 
 1. 使用できる[フェールバックの種類 (元の場所への復旧と別の場所への復旧)](failover-failback-overview.md#hyper-v-reprotectionfailback) を確認してください。
-2. Azure VM がマネージド ディスクではなくストレージアカウントを使用していることを確認します。 マネージド ディスクを使用してレプリケートされた Hyper-V VM のフェールバックはサポートされていません。
+2. Azure VM がマネージド ディスクではなくストレージアカウントを使用していることを確認します。 マネージド ディスクを使用して Azure マシンにフェールオーバーした Hyper-V 仮想マシンのフェールバックはサポートされていません。
 3. オンプレミスの Hyper-V ホスト (または、Site Recovery と共に使用している場合は System Center VMM サーバー) が実行されていて、Azure に接続されていることを確認します。 
 4. VM のフェールオーバーとコミットが完了していることを確認します。 Azure から Hyper-V VM をフェールバックするために、特定の Site Recovery コンポーネントを設定する必要はありません。
 5. データの同期を完了してオンプレミスの VM を開始するために必要な時間は、さまざまな要因によって異なります。 データのダウンロードを高速化するために、より多くのスレッドを使用してダウンロードを並列処理するように Microsoft Recovery Services エージェントを構成することができます。 [詳細については、こちらを参照してください](https://support.microsoft.com/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage)。

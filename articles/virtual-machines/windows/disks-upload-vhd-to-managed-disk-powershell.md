@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: c766c78705a1c1e40a9385360d35ac06a3db3a5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 675e99797a507cdcf96ad33ab13c4f386f6f372c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99252239"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169030"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
 
@@ -34,7 +34,7 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 
 この種類のマネージド ディスクには、2 つの固有の状態があります。
 
-- ReadToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](../../storage/common/storage-sas-overview.md) (SAS) が生成されていないことを意味します。
+- ReadyToUpload。ディスクはアップロードを受け取る準備ができていますが、[Secure Access Signature](../../storage/common/storage-sas-overview.md) (SAS) が生成されていないことを意味します。
 - ActiveUpload。ディスクはアップロードを受け取る準備ができており、SAS が生成済みであることを意味します。
 
 > [!NOTE]

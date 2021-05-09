@@ -1,16 +1,18 @@
 ---
 title: クイック スタート:テンプレートを使用した Apache Spark クラスターの作成 - Azure HDInsight
 description: このクイック スタートでは、Resource Manager テンプレートを使用して、Azure HDInsight に Apache Spark クラスターを作成し、Spark SQL クエリを実行する方法を示します。
-ms.service: hdinsight
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 1fb36b30385abc72fb0966c928e0dd6f8ea80e73
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.topic: quickstart
+ms.service: hdinsight
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 6d3f8c3313d9e6be38acdbecb683899ea8dd5376
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865929"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538011"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 

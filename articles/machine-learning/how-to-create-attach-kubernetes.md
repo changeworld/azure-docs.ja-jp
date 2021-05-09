@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/11/2021
-ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.date: 04/08/2021
+ms.openlocfilehash: 075b02e3e5f2e409298bf31eb0b6720e64af68a0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276656"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210830"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -67,6 +67,10 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
     - [AKS でクラスター オートスケーラーを設定する](../aks/cluster-autoscaler.md)
 
 - __YAML 構成を使用してクラスターを直接更新しないでください__。 Azure Kubernetes Services では YAML 構成による更新がサポートされていますが、Azure Machine Learning のデプロイでは変更が上書きされます。 上書きされない YAML フィールドは、"__要求の制限__" と "__CPU とメモリ__" の 2 つだけです。
+
+- Azure Machine Learning スタジオ UI、SDK、または CLI 拡張機能を使用して AKS クラスターを作成することは、べき等では __ありません__。 再度リソースを作成しようとすると、同じ名前を持つクラスターが既に存在するというエラーが発生します。
+    
+    - Azure Resource Manager テンプレートと [Microsoft.MachineLearningServices/workspaces/computes](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) リソースを使用して AKS クラスターを作成することも、べき等では __ありません__。 再度テンプレートを使用して既存のリソースを更新しようとすると、同じエラーが発生します。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service のバージョン
 

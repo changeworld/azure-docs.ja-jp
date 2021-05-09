@@ -88,7 +88,7 @@ Done
 
 ## <a name="understanding-the-code"></a>コードについて
 
-サンプルでは、最初に Azure BLOB ストレージの名前空間からクラスと関数をインポートします。 インポートされる各アイテムについては、サンプルでそれらが使用されるコンテキストで説明します。
+サンプルでは、最初に Azure Blob Storage の名前空間からクラスと関数をインポートします。 インポートされる各アイテムについては、サンプルでそれらが使用されるコンテキストで説明します。
 
 ```javascript
 const {
@@ -409,7 +409,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Node.js を使用して Azure BLOB ストレージ内の BLOB とコンテナーを管理する方法を示しました。 この SDK の使用方法をさらに詳しく学習するには、GitHub リポジトリを参照してください。
+このクイック スタートでは、Node.js を使用して Azure Blob Storage 内の BLOB とコンテナーを管理する方法を示しました。 この SDK の使用方法をさらに詳しく学習するには、GitHub リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Storage v10 SDK for JavaScript リポジトリ](https://github.com/Azure/azure-storage-js)

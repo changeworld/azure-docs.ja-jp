@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 04300b8d148bb22bf585aa81481c475b347ad462
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888908"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222046"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのセマンティック検索
 
@@ -44,7 +44,7 @@ ms.locfileid: "104888908"
 
 ### <a name="order-of-operations"></a>演算の順序
 
-セマンティック検索のコンポーネントでは、既存のクエリ実行パイプラインが双方向に拡張されます。 スペル修正を有効にすると、クエリ用語が検索エンジンに到達する前に、[スペル チェック](speller-how-to-add.md)で最初に入力ミスが修正されます。
+セマンティック検索のコンポーネントでは、既存のクエリ実行パイプラインが双方向に拡張されます。 スペル修正を有効にすると、用語が検索エンジンに到達する前に、[スペル チェック](speller-how-to-add.md)によってクエリ開始時の入力ミスが修正されます。
 
 :::image type="content" source="media/semantic-search-overview/semantic-workflow.png" alt-text="クエリ実行のセマンティック コンポーネント" border="true":::
 
@@ -64,7 +64,7 @@ ms.locfileid: "104888908"
 
 スペル修正は同じリージョンで利用できますが、レベルの制限はありません。 レベルとリージョンの条件を満たす既存のサービスがある場合、必要なのはサインアップのみです。
 
-3 月 2 日のプレビューの開始から 4 月 1 日までは、スペル修正とセマンティック ランク付けが無料で提供されます。 4 月 2 日以降は、この機能を実行するための計算コストが課金対象のイベントになります。 予想されるコストは、250,000 件のクエリで月額約 500 米国ドルです。 詳細なコスト情報については、[「Cognitive Search の価格」ページ](https://azure.microsoft.com/pricing/details/search/)および[コストの見積もりと管理](search-sku-manage-costs.md)に関するページを参照してください。
+3 月 2 日のプレビューの開始から 4 月下旬までは、スペル修正とセマンティック ランク付けが無料で提供されます。 4 月下旬には、この機能を実行するための計算コストが課金対象のイベントになります。 予想されるコストは、250,000 件のクエリで月額約 500 米国ドルです。 詳細なコスト情報については、[「Cognitive Search の価格」ページ](https://azure.microsoft.com/pricing/details/search/)および[コストの見積もりと管理](search-sku-manage-costs.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,16 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 293a32a52419d281409dcdfc7b234d8cdb5e6942
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: fe218a8a9859aeea23c03f6c10633073527e5cde
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102616666"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501393"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure SignalR Service ではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、SignalR リソースにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクからも保護されます。詳細については、[https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) を参照してください。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
+|[Azure SignalR Service では公衆ネットワーク アクセスを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F21a9766a-82a5-4747-abb5-650b6dbba6d0) |Azure SignalR Service リソースのセキュリティを強化するには、これがパブリック インターネットに公開されておらず、プライベート エンドポイントからのみアクセスできるようにします。 [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) の説明に従って、公衆ネットワーク アクセス プロパティを無効にします。 このオプションにより、Azure IP 範囲外のパブリック アドレス空間からのアクセスが無効になり、IP または仮想ネットワークベースのファイアウォール規則に一致するすべてのログインが拒否されます。 これにより、データ漏洩のリスクが軽減されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_AuditDeny.json) |
+|[Azure SignalR Service では Private Link 対応の SKU を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F464a1620-21b5-448d-8ce6-d4ac6d1bc49a) |Azure Private Link を使用すると、ソースやターゲットでパブリック IP アドレスを指定せずに、仮想ネットワークを Azure サービスに接続できます。これにより、データがパブリックに漏洩するリスクからリソースを保護できます。 このポリシーにより、Azure SignalR Service の利用が Private Link 対応の SKU に限定されます。 プライベート リンクの詳細については、[https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) を参照してください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_AllowedSKU_AuditDeny.json) |
+|[Azure SignalR Service ではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53503636-bcc9-4748-9663-5348217f160f) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、Azure SignalR Service リソースにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクが減ります。 プライベート リンクの詳細については、[https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) を参照してください。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_Audit.json) |
+|[Azure SignalR Service に対してプライベート エンドポイントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fef45854f-b33f-49a3-8041-9057e915d88f) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークが Azure サービスに接続されます。 Azure SignalR Service リソースにプライベート エンドポイントをマッピングすると、データ漏洩のリスクを軽減できます。 詳細については、[https://aka.ms/asrs/privatelink](https://aka.ms/asrs/privatelink) をご覧ください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PrivateEndpointEnabled_DeployIfNotExists.json) |
+|[公衆ネットワーク アクセスを無効にするように Azure SignalR Service リソースを変更する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F62a3ae95-8169-403e-a2d2-b82141448092) |Azure SignalR Service リソースのセキュリティを強化するには、これがパブリック インターネットに公開されておらず、プライベート エンドポイントからのみアクセスできるようにします。 [https://aka.ms/asrs/networkacls](https://aka.ms/asrs/networkacls) の説明に従って、公衆ネットワーク アクセス プロパティを無効にします。 このオプションにより、Azure IP 範囲外のパブリック アドレス空間からのアクセスが無効になり、IP または仮想ネットワークベースのファイアウォール規則に一致するすべてのログインが拒否されます。 これにより、データ漏洩のリスクが軽減されます。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SignalR/SignalR_PublicNetworkAccessDisabled_Modify.json) |

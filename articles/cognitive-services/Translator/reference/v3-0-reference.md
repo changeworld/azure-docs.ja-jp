@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
-ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b391c5a435c2dd2f19a3f170bf7c84edd7143f2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100650764"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063034"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -35,7 +35,7 @@ Microsoft Translator のサービスは、複数のデータセンター拠点�
 
 * **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2 
 * **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
-* **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ、スイス北部 <sup> 1、2</sup>、スイス西部 <sup>1、2</sup>
+* **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ
 
 Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 
@@ -48,7 +48,7 @@ Microsoft Translator への要求は、ほとんどの場合、その要求の�
 |Azure|ヨーロッパ|  api-eur.cognitive.microsofttranslator.com|
 |Azure|アジア太平洋|    api-apc.cognitive.microsofttranslator.com|
 
-<sup>1</sup> スイス北部またはスイス西部にあるリソースを使用しているお客様は、そのテキスト API 要求が確実にスイス内で処理されるようにすることができます。 要求がスイスで処理されるようにするには、[リソース リージョン] の [Switzerland North]\(スイス北部\) または [Switzerland West]\(スイス西部\) で Translator リソースを作成し、API 要求でそのリソースのカスタム エンドポイントを使用します。 たとえば、Azure portal で [リソース リージョン] を [Switzerland North]\(スイス北部\) として Translator リソースを作成し、リソース名が ‘my-ch-n’ である場合、カスタム エンドポイントは “https://my-ch-n.cognitiveservices.azure.com” です。 翻訳する要求の例を次に示します。
+<sup>1</sup> スイス北部またはスイス西部にあるリソースを使用しているお客様は、彼らの Text API 要求が確実にスイス内で処理されるようにすることができます。 要求がスイスで処理されるようにするには、[リソース リージョン] の [Switzerland North]\(スイス北部\) または [Switzerland West]\(スイス西部\) で Translator リソースを作成し、API 要求でそのリソースのカスタム エンドポイントを使用します。 たとえば、Azure portal で [リソース リージョン] を [Switzerland North]\(スイス北部\) として Translator リソースを作成し、リソース名が ‘my-ch-n’ である場合、カスタム エンドポイントは “https://my-ch-n.cognitiveservices.azure.com” です。 翻訳する要求の例を次に示します。
 ```curl
 // Pass secret key and region using headers to a custom endpoint
 curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translate?to=fr" \

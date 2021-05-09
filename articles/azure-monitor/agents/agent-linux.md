@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199159"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044959"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -50,7 +50,7 @@ Log Analytics エージェントでサポートされている Linux ディス�
 
 エージェント バージョン 1.13.27 以降では、Linux エージェントで Python 2 と 3 の両方がサポートされます。 常に最新のエージェントを使用することをお勧めします。 
 
-以前のバージョンのエージェントを使用している場合、既定では仮想マシンで python 2 が使用されている必要があります。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
+以前のバージョンのエージェントを使用している場合、既定では仮想マシンで Python 2 が使用されている必要があります。 既定で Python 2 が含まれないディストリビューションが仮想マシンで使用されている場合、それをインストールする必要があります。 次のサンプル コマンドでは、異なるディストリビューションに Python 2 がインストールされます。
 
  - Red Hat、CentOS、Oracle: `yum install -y python2`
  - Ubuntu、Debian: `apt-get install -y python2`
@@ -91,7 +91,7 @@ OMS エージェントでは、Linux のカスタマイズが制限されてい�
 |Glibc |    GNU C ライブラリ | 2.5-12 
 |Openssl    | OpenSSL ライブラリ | 1.0.x または 1.1.x |
 |Curl | cURL Web クライアント | 7.15.5 |
-|Python | | 2.6 以降または 3.3 以降
+|Python | | 2.7 または 3.6 以降
 |Python-ctypes | | 
 |PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | | 
 

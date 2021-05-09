@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781281"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443408"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
@@ -33,6 +33,13 @@ ms.locfileid: "104781281"
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
+
+**2.1.4**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
+**2.1.3**
+- セキュリティの修正。
 
 **2.1.2**
 - スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
@@ -87,6 +94,14 @@ ms.locfileid: "104781281"
 > [!TIP]
 > 複数のロケールまたはユーザー フローの言語をサポートするようにページをローカライズする場合。 [ローカライズ ID](localization-string-ids.md) に関する記事に、選択したページ バージョンで使用できるローカライズ ID の一覧が記載されています。
 
+**2.1.4**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
+**2.1.3**
+- セキュリティの修正。
+- 軽微なバグの修正。
+
 **2.1.2**
 - スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
 - [パスワードを忘れた場合] リンクを、要求交換として使用できるようにします。 詳細については、「[セルフサービス パスワード リセット](add-password-reset-policy.md#self-service-password-reset-recommended)」を参照してください。
@@ -126,6 +141,15 @@ ms.locfileid: "104781281"
 
 ## <a name="mfa-page-multifactor"></a>MFA ページ (多要素)
 
+**1.2.4**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
+**1.2.3**
+- 言語のローカライズによりヒントの文字列をオーバーライドできるようになりました。
+- セキュリティの修正。
+- 軽微なバグの修正。
+
 **1.2.2**
 - iOS を使用する場合の確認コードの自動入力に関する問題を修正しました。
 - Android Webview から証明書利用者へのトークンのリダイレクトに関する問題を修正しました。 
@@ -162,6 +186,10 @@ ms.locfileid: "104781281"
 
 ## <a name="exception-page-globalexception"></a>例外ページ (globalexception)
 
+**1.2.1**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
 **1.2.0**
 
 - アクセシビリティの修正
@@ -182,6 +210,10 @@ ms.locfileid: "104781281"
 - 最初のリリース
 
 ## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>その他のページ (ProviderSelection、ClaimsConsent、UnifiedSSD)
+
+**1.2.1**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
 
 **1.2.0**
 

@@ -3,14 +3,14 @@ title: ポータル ペインの CreateUiDefinition.json ファイル
 description: Azure portal のユーザー インターフェイス定義を作成する方法について説明します。 Azure Managed Applications の定義時に使用されます。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 03/26/2021
 ms.author: tomfitz
-ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 586237c6dd909312780163cf316220d2f3fddd8c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89319571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641645"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefinition.json
 
@@ -63,25 +63,29 @@ JSON エディターを使用して createUiDefinition 定義を作成した後�
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
+                        "isValid": "[not(contains(subscription().displayName, 'Test'))]",
+                        "message": "Can't use test subscription."
                     },
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
+                        "permission": "Microsoft.Compute/virtualmachines/write",
+                        "message": "Must have write permission for the virtual machine."
+                    },
+                    {
+                        "permission": "Microsoft.Compute/virtualMachines/extensions/write",
+                        "message": "Must have write permission for the extension."
                     }
                 ]
             },
             "resourceProviders": [
-                "<Resource Provider>"
+                "Microsoft.Compute"
             ]
         },
         "resourceGroup": {
             "constraints": {
                 "validations": [
                     {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
+                        "isValid": "[not(contains(resourceGroup().name, 'test'))]",
+                        "message": "Resource group name can't contain 'test'."
                     }
                 ]
             },
@@ -103,6 +107,8 @@ JSON エディターを使用して createUiDefinition 定義を作成した後�
 },
 ```
 
+`isValid` プロパティには、true または false に解決される式を記述します。 `permission` プロパティには、[リソース プロバイダー アクション](../../role-based-access-control/resource-provider-operations.md)のいずれかを指定します。
+
 ### <a name="wizard"></a>ウィザード
 
 `isWizard` プロパティでは、次のステップに進む前に各ステップの検証に成功することを要求できます。 `isWizard` プロパティが指定されていない場合、既定値は **false** であり、ステップバイステップの検証は必要ありません。
@@ -117,7 +123,7 @@ JSON エディターを使用して createUiDefinition 定義を作成した後�
 
 `description` には、リソースの説明として、マークダウンを使用した文字列を指定します。 複数行形式やリンクがサポートされます。
 
-`subscription` 要素と `resourceGroup` 要素を使用すると、検証を追加で指定することができます。 検証を指定するための構文は、[テキスト ボックス](microsoft-common-textbox.md)のカスタム検証と同じです。 サブスクリプションまたはリソース グループに対する `permission` の検証を指定することもできます。  
+`subscription` 要素と `resourceGroup` 要素を使用すると、さらなる検証を追加できます。 検証を指定するための構文は、[テキスト ボックス](microsoft-common-textbox.md)のカスタム検証と同じです。 サブスクリプションまたはリソース グループに対する `permission` の検証を指定することもできます。  
 
 subscription コントロールには、一連のリソース プロバイダーの名前空間を指定できます。 たとえば、**Microsoft.Compute** を指定できます。 このリソース プロバイダーをサポートしないサブスクリプションをユーザーが選択すると、エラー メッセージが表示されます。 そのサブスクリプションにリソース プロバイダーが登録されていない場合や、リソース プロバイダーを登録するためのアクセス許可がユーザーにない場合に、エラーが発生します。  
 
@@ -150,7 +156,7 @@ subscription コントロールには、一連のリソース プロバイダー
 
 ## <a name="steps"></a>手順
 
-basics の後に表示するステップ (0 個以上) は steps プロパティに追加します。 各ステップに少なくとも 1 つの要素を記述します。 デプロイするアプリケーションのロールまたはレベルごとにステップを追加することを検討してください。 たとえば、マスター ノードの入力用のステップと、クラスター内のワーカー ノード用のステップを追加します。
+basics の後に表示するステップ (0 個以上) は steps プロパティに追加します。 各ステップに少なくとも 1 つの要素を記述します。 デプロイするアプリケーションのロールまたはレベルごとにステップを追加することを検討してください。 たとえば、プライマリ ノードの入力用のステップと、クラスター内のワーカー ノード用のステップを追加します。
 
 ```json
 "steps": [

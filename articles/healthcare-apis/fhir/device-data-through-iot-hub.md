@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 36d6d8b4d4435b1db99f2721c817c9c06ca60945
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 77d54ef0c9bef40af47c2fc48b9d4b5d6315b119
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019181"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780397"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
@@ -44,7 +44,7 @@ Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-d
 メッセージ ルーティングの設定は、2 つの手順から成ります。
 
 ### <a name="add-an-endpoint"></a>エンドポイントの追加
-この手順では、IoT ハブによるデータのルーティング先のエンドポイントを定義します。 このエンドポイントを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) コマンドか、CLI の [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) コマンドを使用します。
+この手順では、IoT ハブによるデータのルーティング先のエンドポイントを定義します。 このエンドポイントを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) コマンドか、CLI の [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az_iot_hub_routing_endpoint_create) コマンドを使用します。
 
 エンドポイントの作成コマンドで使用するパラメーターの一覧を次に示します。
 
@@ -59,7 +59,7 @@ Azure IoT Hub は、[メッセージ ルーティング](../../iot-hub/iot-hub-d
 |ConnectionString|connection-string|Azure IoT Connector for FHIR への接続文字列。 前の手順で取得した値を使用します。|
 
 ### <a name="add-a-message-route"></a>メッセージ ルートを追加する
-この手順では、上で作成したエンドポイントを使用してメッセージ ルートを定義します。 ルートを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) コマンドか、CLI の [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) コマンドを使用します。
+この手順では、上で作成したエンドポイントを使用してメッセージ ルートを定義します。 ルートを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) コマンドか、CLI の [az iot hub route create](/cli/azure/iot/hub/route#az_iot_hub_route_create) コマンドを使用します。
 
 メッセージ ルートの追加コマンドで使用するパラメーターの一覧を次に示します。
 

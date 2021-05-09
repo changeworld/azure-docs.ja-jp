@@ -8,20 +8,20 @@ ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 10/28/2020
+ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 3145a52a6050272c01cd7ccb64afef0b89812753
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169752"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107705"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 
 Azure のネットワーク サービスにはさまざまなネットワーク機能があり、単独で使用することも組み合わせて使用することもできます。 主な機能については、次のリンクをクリックしてください。
 - [**接続サービス**](#connect):Azure リソースとオンプレミス リソースを接続するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Virtual Network (VNet)、Virtual WAN、ExpressRoute、VPN Gateway、Virtual Network NAT Gateway、Azure DNS, Peering Service、Azure Bastion。
-- [**アプリケーション保護サービス**](#protect): アプリケーションを保護するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Private Link、DDoS Protection、Firewall、ネットワーク セキュリティ グループ、Web Application Firewall、仮想ネットワーク エンドポイント。
+- [**アプリケーション保護サービス**](#protect): アプリケーションを保護するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Load Balancer、Private Link、DDoS Protection、Firewall、ネットワーク セキュリティ グループ、Web Application Firewall、仮想ネットワーク エンドポイント。
 - [**アプリケーション配信サービス**](#deliver): Azure ネットワークでアプリケーションを配信するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Content Delivery Network (CDN)、Azure Front Door Service、Traffic Manager、Application Gateway、Internet Analyzer、Load Balancer。
 - [**ネットワークの監視**](#monitor): ネットワーク リソースを監視するには、Azure の次のネットワーク サービスを単独で、または組み合わせて使用します - Network Watcher、ExpressRoute Monitor、Azure Monitor、VNet ターミナル アクセス ポイント (TAP)。
 
@@ -158,13 +158,13 @@ Azure Application Gateway は、Web アプリケーションに対するトラ�
 :::image type="content" source="./media/networking-overview/figure1-720.png" alt-text="Application Gateway の例":::
 
 ## <a name="network-monitoring-services"></a><a name="monitor"></a>ネットワーク監視サービス
-このセクションでは、ネットワーク リソースの監視を支援する Azure のネットワーク サービス (Network Watcher、Azure Monitor for Networks、ExpressRoute Monitor、Azure Monitor、仮想ネットワーク TAP) について説明します。
+このセクションでは、ネットワーク リソースの監視を支援する Azure のネットワーク サービス (Network Watcher、Azure Monitor Network Insights、Azure Monitor、ExpressRoute Monitor、仮想ネットワーク TAP) について説明します。
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>Network Watcher
 Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。 詳細については、「[Azure Network Watcher とは](../../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 
-### <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks プレビュー
-Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-overview.md)、[ネットワーク セキュリティ グループのフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 詳細については、「[Azure Monitor for Networks プレビュー](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
+### <a name="azure-monitor-network-insights"></a>Azure Monitor Network Insights
+Azure Monitor for Networks を使用すると、デプロイされたすべてのネットワーク リソースの正常性とメトリックを構成なしで包括的に把握できます。 また、[接続モニター](../../network-watcher/connection-monitor-overview.md)、[ネットワーク セキュリティ グループのフロー ログ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)、および [Traffic Analytics](../../network-watcher/traffic-analytics.md) などのネットワーク監視機能にアクセスすることもできます。 詳細については、「[Azure Monitor Network Insights](../../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Monitor
 ExpressRoute 回線のメトリック、リソース ログ、アラートを表示する方法については、「[ExpressRoute の監視、メトリック、およびアラート](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)」を参照してください。

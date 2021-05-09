@@ -1,17 +1,17 @@
 ---
 title: ネットワークの概要 - Azure Database for MySQL フレキシブル サーバー
 description: Azure Database for MySQL のフレキシブル サーバー デプロイ オプションの接続およびネットワークのオプションについて説明します
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c83f36216e7488df94c372234d0541a4ee9f99b5
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96906150"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492224"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL の接続およびネットワークの概念 - フレキシブル サーバー (プレビュー)
 
@@ -29,9 +29,9 @@ Azure Database for MySQL フレキシブル サーバーのネットワーク �
 * **プライベート アクセス (VNet 統合)** – お使いの [Azure Virtual Network](../../virtual-network/virtual-networks-overview.md) 内にフレキシブル サーバーをデプロイできます。 Azure の仮想ネットワークでは、非公開の、セキュリティで保護されたネットワーク通信が提供されます。 仮想ネットワーク内のリソースでは、プライベート IP アドレスを通した通信が可能です。
 
    以下の機能が必要な場合は、VNet 統合オプションを選択します。
-   * プライベート IP アドレスを使用して、同じ仮想ネットワーク内の Azure リソースからフレキシブル サーバーに接続する
+   * 同じ仮想ネットワーク内または[ピアリングされた仮想ネットワーク](../../virtual-network/virtual-network-peering-overview.md)内の Azure リソースから、フレキシブル サーバーに接続する
    * VPN または ExpressRoute を使用して Azure 以外のリソースからフレキシブル サーバーに接続する
-   * フレキシブル サーバーにパブリック エンドポイントがない
+   * パブリック エンドポイントがない
 
 * **パブリック アクセス (許可されている IP アドレス)** - フレキシブル サーバーには、パブリック エンドポイントを介してアクセスされます。 パブリック エンドポイントは、パブリックに解決できる DNS アドレスです。 "許可された IP アドレス" という表現は、サーバーに対するアクセス許可を付与することを選択する、ある範囲の IP を指しています。 これらのアクセス許可は、**ファイアウォール規則** と呼ばれます。 
 
@@ -57,13 +57,32 @@ Azure Database for MySQL フレキシブル サーバーのネットワーク �
 
     ご利用の仮想ネットワークは、フレキシブル サーバーと同じ Azure リージョンに存在する必要があります。
 
-
 * **委任されたサブネット** - 仮想ネットワークには、サブネット (サブネットワーク) が含まれています。 サブネットを使用すると、仮想ネットワークをより小さなアドレス空間に分割できます。 Azure リソースは、仮想ネットワーク内の特定のサブネットにデプロイされます。 
 
    MySQL フレキシブル サーバーは、MySQL フレキシブル サーバーでの使用のためにのみ **委任された** サブネット内に存在する必要があります。 この委任は、Azure Database for MySQL フレキシブル サーバーのみがそのサブネットを使用できることを意味します。 委任されたサブネットに他の Azure リソースの種類を含めることはできません。 その委任プロパティを Microsoft.DBforMySQL/flexibleServers として割り当てて、サブネットを委任します。
 
 * **ネットワーク セキュリティ グループ (NSG)** ネットワーク セキュリティ グループのセキュリティ規則を使用して、仮想ネットワーク サブネットとネットワーク インターフェイスに出入りできるネットワーク トラフィックの種類をフィルター処理できます。 詳細については、[ネットワーク セキュリティ グループの概要](../../virtual-network/network-security-groups-overview.md)に関するページを参照してください。
 
+* **仮想ネットワーク ピアリング** 仮想ネットワーク ピアリングを使用すると、Azure で 2 つ以上の仮想ネットワークをシームレスに接続できます。 ピアリングされた仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 ピアリングされた仮想ネットワーク内の仮想マシン間のトラフィックには、Microsoft のバックボーンインフラストラクチャが使用されます。 ピアリングされた VNet 内のクライアント アプリケーションとフレキシブル サーバーの間のトラフィックは、Microsoft のプライベート ネットワークのみを介してルーティングされ、そのネットワークだけに分離されます。
+
+フレキシブル サーバーでサポートされるのは、同じ Azure リージョン内での仮想ネットワーク ピアリングです。 複数のリージョンにまたがる VNet のピアリングは **サポートされません**。 詳細については、[仮想ネットワークのピアリングの概念](../../virtual-network/virtual-network-peering-overview.md)に関する記事を参照してください。
+
+### <a name="connecting-from-peered-vnets-in-same-azure-region"></a>同じ Azure リージョン内のピアリングされた VNet からの接続
+フレキシブル サーバーに接続しようとするクライアント アプリケーションがピアリングされた仮想ネットワーク内にある場合、ピアリングされた VNet からはフレキシブル サーバーの DNS 名を解決できないため、フレキシブル サーバーのサーバー名を使用して接続できない可能性があります。 これを解決するには、2 つのオプションがあります。
+* プライベート IP アドレスを使用する (開発とテストのシナリオに推奨) - このオプションは、開発またはテストの目的に使用できます。 nslookup を使用して、フレキシブル サーバーの名前 (完全修飾ドメイン名) のプライベート IP アドレスを逆引き参照し、プライベート IP アドレスを使用して、クライアント アプリケーションから接続することができます。 フレキシブル サーバーへの接続にプライベート IP アドレスを使用することは、計画的または計画外のイベントの間に変更される可能性があるため、運用環境での使用はお勧めしません。
+* プライベート DNS ゾーンを使用する (運用環境に推奨) - このオプションは、運用目的に適しています。 [プライベート DNS ゾーン](../../dns/private-dns-getstarted-portal.md)をプロビジョニングし、それをクライアント仮想ネットワークにリンクします。 プライベート DNS ゾーンで、フレキシブル サーバーのプライベート IP アドレスを使用して、その [A レコード](../../dns/dns-zones-records.md#record-types)を追加します。 その後は、その A レコードを使用して、ピアリングされた仮想ネットワーク内のクライアント アプリケーションからフレキシブル サーバーに接続できます。
+
+### <a name="connecting-from-on-premises-to-flexible-server-in-virtual-network-using-expressroute-or-vpn"></a>ExpressRoute または VPN を使用したオンプレミスから仮想ネットワーク内のフレキシブル サーバーへの接続
+オンプレミス ネットワークから仮想ネットワーク内のフレキシブル サーバーにアクセスする必要があるワークロードの場合は、[ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute/) または [VPN](/azure/architecture/reference-architectures/hybrid-networking/vpn/) と、[オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワークが必要です。 このセットアップを使用すると、オンプレミスの仮想ネットワーク上で実行されているクライアント アプリケーション (MySQL Workbench など) から接続する場合は、フレキシブル サーバーの名前を解決するための DNS フォワーダーが必要になります。 この DNS フォワーダーには、サーバーレベル フォワーダー経由のすべての DNS クエリを、Azure 提供の DNS サービス [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) に解決する役割があります。
+
+適切に構成するには、次のリソースが必要です。
+
+- オンプレミス ネットワーク
+- プライベート アクセスを使用してプロビジョニングされた MySQL フレキシブル サーバー (VNet 統合)
+- [オンプレミスに接続された](/azure/architecture/reference-architectures/hybrid-networking/)仮想ネットワーク
+- Azure にデプロイされた DNS フォワーダー [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md) を使用する
+
+その後、フレキシブル サーバーの名前 (FQDN) を使用して、ピアリングされた仮想ネットワークまたはオンプレミス ネットワークのクライアント アプリケーションから、フレキシブル サーバーに接続できます。
 
 ### <a name="unsupported-virtual-network-scenarios"></a>サポートされない仮想ネットワークのシナリオ
 * パブリック エンドポイント (またはパブリック IP あるいは DNS) - 仮想ネットワークにデプロイされたフレキシブル サーバーに、パブリック エンドポイントを設けることはできません
@@ -99,7 +118,7 @@ IP アドレスへのアクセス許可を付与することは、ファイア�
 ### <a name="troubleshooting-public-access-issues"></a>パブリック アクセスに関する問題をトラブルシューティングする
 Microsoft Azure Database for MySQL サーバー サービスに対するアクセスが予期したように動作しない場合は、以下の点について考えてください。
 
-* **許可一覧に変更が反映されない:** Azure Database for MySQL サーバーのファイアウォール構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
+* **許可リストへの変更がまだ反映されていない:** Azure Database for MySQL サーバー ファイアウォールの構成に対する変更が反映されるまで、最大 5 分の遅延が発生する場合があります。
 
 * **認証に失敗した:** その Azure Database for MySQL サーバーで、ユーザーがアクセス許可を持っていないか、使用したパスワードが正しくない場合、Azure Database for MySQL サーバーへの接続は拒否されます。 ファイアウォール設定の作成によってクライアントに提供されるのは、サーバーへの接続を試行する機会のみです。 各クライアントは、必要なセキュリティ資格情報を提供する必要があることに変わりはありません。
 
@@ -119,11 +138,24 @@ Microsoft Azure Database for MySQL サーバー サービスに対するアク�
 * 可能な場合は `hostname = 10.0.0.4` (プライベート アドレス) や `hostname = 40.2.45.67` (パブリック IP) の使用を避ける
 
 
-
 ## <a name="tls-and-ssl"></a>TLS と SSL
-Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS) を使用する、MySQL サービスへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間で、暗号化されたネットワーク接続を保証する業界標準のプロトコルです。 TLS は、Secure Sockets Layer (SSL) が更新されたプロトコルです。
+Azure Database for MySQL フレキシブル サーバーでは、Secure Sockets Layer (SSL) とトランスポート層セキュリティ (TLS) の暗号化を使用した MySQL サーバーへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルであり、ユーザーがコンプライアンス要件に準拠できるようにします。
 
-Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用して暗号化された接続のみがサポートされます。 TLS 1.0 および TLS 1.1 を使用する着信接続はすべて拒否されます。 Azure Database for MySQL フレキシブル サーバーへの接続のための TLS バージョンは、無効にしたり変更したりすることはできません。
+Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用する暗号化された接続が既定でサポートされ、TLS 1.0 と TLS 1.1 を使用する受信接続はすべて既定では拒否されます。 フレキシブル サーバーでの、暗号化された接続の強制または TLS のバージョンの構成は、構成および変更できます。 
+
+次に、フレキシブル サーバーで使用できる SSL と TLS の設定のさまざまな構成を示します。
+
+| 通信の種類   | サーバー パラメーターの設定      | 説明                                    |
+|------------|--------------------------------|------------------------------------------------|
+|SSL を無効にする (暗号化された接続) | require_secure_transport = OFF |レガシ アプリケーションで MySQL サーバーへの暗号化された接続がサポートされていない場合は、require_secure_transport=OFF に設定することにより、フレキシブル サーバーへの暗号化された接続の強制を無効にすることができます。|
+|バージョン 1.2 より前の TLS で SSL を適用する | require_secure_transport = ON および tls_version = TLSV1 または TLSV1.1| レガシ アプリケーションで暗号化された接続がサポートされているが、バージョン 1.2 より前の TLS が必要な場合は、暗号化された接続を有効にすることはできますが、アプリケーションでサポートされている TLS のバージョン (v1.0 または v1.1) での接続を許可するようにフレキシブル サーバーを構成します|
+|TLS バージョン 1.2 で SSL を適用する (既定の構成)|require_secure_transport = ON および tls_version = TLSV1.2| これは、フレキシブル サーバーに推奨される既定の構成です。|
+|TLS バージョン 1.3 で SSL を適用する (MySQL v8.0 以降でサポート)| require_secure_transport = ON および tls_version = TLSV1.3| これは、新しいアプリケーションの開発に便利であり、推奨されます|
+
+> [!Note]
+> フレキシブル サーバーでの SSL 暗号の変更はサポートされていません。 tls_version が TLS バージョン 1.2 に設定されている場合、FIPS 暗号スイートが既定で適用されます。 バージョン 1.2 以外の TLS の場合、SSL 暗号は、MySQL Community のインストールに付属している既定値に設定されます。
+
+詳細については、[SSL/TLS を使用して接続する](how-to-connect-tls-ssl.md)方法に関するページを参照してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

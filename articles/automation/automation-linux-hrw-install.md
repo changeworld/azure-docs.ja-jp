@@ -3,14 +3,14 @@ title: Azure Automation への Linux Hybrid Runbook Worker のデプロイ
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのマシン上で Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/02/2021
+ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: a37f3de48dd675ef1b41f84747f0db3ce1598337
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293670"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030051"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -111,7 +111,7 @@ Hybrid Runbook Worker をデプロイするには、2 つの方法がありま�
 
 ### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook ギャラリーから Runbook をインポートするには
 
-インポートの手順の詳細については、「[Azure portal を使用して GitHub から PowerShell Runbook をインポートする](automation-runbook-gallery.md#import-a-powershell-runbook-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Linux HybridWorker** です。
+インポートの手順の詳細については、「[Azure portal を使用して GitHub から Runbook をインポートする](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Linux HybridWorker** です。
 
 Runbook では、次のパラメーターが使用されます。
 

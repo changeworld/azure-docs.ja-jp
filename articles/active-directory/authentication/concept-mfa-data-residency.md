@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7381ab62eb39c555c6b4eb34f150fc71bea1f10f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 26c8df67a8cfed92e478caacca1171b7a48fa9ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561466"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932898"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multifactor-authentication"></a>Azure AD 多要素認証のデータ所在地と顧客データ
 
@@ -37,7 +37,7 @@ Azure AD 多要素認証サービスには、米国、ヨーロッパ、アジ�
 * ブロックされたユーザー
 * バイパスされたユーザー
 * Microsoft Authenticator デバイス トークン変更要求
-* 多要素認証アクティビティ レポート
+* 多要素認証アクティビティ レポート - NPS 拡張機能、AD FS アダプター、MFA サーバーなどの多要素認証のオンプレミス コンポーネントからの多要素認証アクティビティを格納します。
 * Microsoft Authenticator のアクティブ化
 
 この情報は 90 日間保持されます。

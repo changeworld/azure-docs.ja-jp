@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fa91644eab9d28ffb20de8ec8c0fe00488922b67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606958"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563380"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -80,7 +80,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ### <a name="how-do-i-retrieve-log-data"></a>ログ データはどのようにして取得しますか?
 すべてのデータは、Kusto クエリ言語 (KQL) で記述したログ クエリを使用して、Log Analytics ワークスペースから取得します。 独自のクエリを記述したり、特定のアプリケーションまたはサービス用のログ クエリが含まれるソリューションや分析情報を使用したりできます。 「[Azure Monitor のログ クエリの概要](logs/log-query-overview.md)」をご覧ください。
-p
+
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースのデータは削除できますか?
 データは、ワークスペースの[保有期間](logs/manage-cost-storage.md#change-the-data-retention-period)に従って削除されます。 プライバシーやコンプライアンス上の理由から、特定のデータを削除することが可能です。 詳細については、「[プライベート データをエクスポートして削除する方法](logs/personal-data-mgmt.md#how-to-export-and-delete-private-data)」を参照してください。
 
@@ -828,26 +828,27 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 ## <a name="sql-insights-preview"></a>SQL Insights (プレビュー)
 
 ### <a name="what-versions-of-sql-server-are-supported"></a>どのバージョンの SQL Server がサポートされていますか
-サポートされている SQL のバージョンについては、「[サポートされているバージョン](insights/sql-insights-overview.md#supported-versions)」を参照してください。
+SQL Server 2012 とそれ以降のすべてのバージョンがサポートされています。 詳細については、「[サポートされているバージョン](insights/sql-insights-overview.md#supported-versions)」を参照してください。
 
 ### <a name="what-sql-resource-types-are-supported"></a>どのような SQL リソースの種類がサポートされていますか
+- Azure SQL データベース
+- Azure SQL Managed Instance
+- Azure Virtual Machines の SQL Server ([SQL 仮想マシン](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) プロバイダーに登録されている仮想マシンで実行されている SQL Server)
+- Azure VM ([SQL 仮想マシン](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) プロバイダーに登録されていない仮想マシンで実行されている SQL Server)
 
-- Azure SQL Database。 単一データベースのみで、Elastic Pool 内のデータベースは対象外です。
-- Azure SQL Managed Instance 
-- Azure SQL 仮想マシン ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)、[Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) と、SQL Server がインストールされている Azure 仮想マシン。
+サポートされていない、またはサポートが限られているシナリオの詳細については、「[サポートされているバージョン](insights/sql-insights-overview.md#supported-versions)」を参照してください。
 
-### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>SQL Server を実行するマシンのオペレーティング システムは何がサポートされていますか
-サポートされているバージョンの SQL の実行をサポートするすべての OS です。
+### <a name="what-operating-systems-for-the-virtual-machine-running-sql-server-are-supported"></a>SQL Server を実行する仮想マシンのオペレーティング システムは何がサポートされていますか
+[Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) と [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create) のドキュメントで指定されているすべてのオペレーティング システムは、Azure Virtual Machines の SQL Server に対応しています。
 
-### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>リモート監視サーバーのオペレーティング システムは何がサポートされていますか
+### <a name="what-operating-system-for-the-monitoring-virtual-machine-are-supported"></a>監視用の仮想マシンのオペレーティング システムは何がサポートされていますか
+現時点では、監視用の仮想マシンでサポートされているオペレーティングシステムは Ubuntu 18.04 だけです。
 
-現在サポートされている唯一のオペレーティング システムは Ubuntu 18.04 です。
-
-### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>監視データは Log Analytics のどこに格納されますか 
-すべての監視データは **InsightsMetrics** テーブルに格納されます。 **Origin** 列には、*solutions.azm.ms/telegraf/SqlInsights* という値があります。 **名前空間** 列には、*sqlserver_* で始まる値があります。
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>監視データは Log Analytics のどこに格納されますか
+すべての監視データは **InsightsMetrics** テーブルに格納されます。 **Origin** 列には、`solutions.azm.ms/telegraf/SqlInsights` という値があります。 **名前空間** 列には、`sqlserver_` で始まる値があります。
 
 ### <a name="how-often-is-data-collected"></a>データはどのくらいの頻度で収集されますか 
-各種のデータが収集される頻度の詳細については、「[SQL Insights によって収集されるデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights)」を参照してください。
+データ収集の頻度はカスタマイズできます。 既定の頻度の詳細については、「[SQL Insights によって収集されたデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights)」を参照してください。頻度をカスタマイズする手順については、 「[SQL 監視プロファイルの作成](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。

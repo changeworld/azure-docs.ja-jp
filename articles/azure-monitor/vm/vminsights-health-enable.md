@@ -4,14 +4,14 @@ description: サブスクリプションで VM insights のゲストの正常性
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/16/2020
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f6c67e0e9ef1dd2a4092033a9479801cd0e8e7d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052162"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449309"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>VM insights のゲストの正常性 (プレビュー) を有効にする
 VM insights のゲストの正常性を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、サブスクリプションでこの機能を有効にする方法と、仮想マシンごとにゲストの監視を有効にする方法について説明します。
@@ -20,11 +20,14 @@ VM insights のゲストの正常性を使用すると、一定間隔でサン�
 VM insights のゲストの正常性には、パブリック プレビュー段階では次の制限があります。
 
 - 現在、Azure 仮想マシンのみがサポートされています。 Azure Arc for servers は現在サポートされていません。
+- ネットワーク プロキシは現在サポートされていません。
 
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 仮想マシンでは、次のいずれかのオペレーティング システムを実行する必要があります。 
 
+  - CentOS 7.5、7.6、7.7、7.8、7.9
+  - RedHat 7.5、7.6、7.7、7.8、7.9
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 またはそれ以降
 

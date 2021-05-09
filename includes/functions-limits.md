@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 91f72117fdbcdbeda1d906a9760243e66404920c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934469"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104589"
 ---
 | リソース |[従量課金プラン](../articles/azure-functions/consumption-plan.md)|[Premium プラン](../articles/azure-functions/functions-premium-plan.md)|[専用プラン](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -21,6 +21,7 @@ ms.locfileid: "97934469"
 | 要求 URL の最大長<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | クラスターに応じる |
 |インスタンスあたりの [ACU](../articles/virtual-machines/acu.md) | 100 | 210 ～ 840 | 100 ～ 840 | 210 から 250<sup>8</sup> | [AKS の価格](https://azure.microsoft.com/pricing/details/container-service/) |
 | 最大メモリ (インスタンスあたりの GB) | 1.5 | 3.5 ～ 14 | 1.75 ～ 14 | 3.5 から 14 | すべてのノードがサポートされています |
+| 最大インスタンス数 | 200 | 100<sup>9</sup> | SKU により異なる<sup>10</sup> | 100<sup>10</sup> | クラスターに応じる |   
 | プランあたりの関数アプリ |100 |100 |無制限<sup>4</sup> | unbounded | unbounded |
 | [App Service プラン](../articles/app-service/overview-hosting-plans.md) | [リージョン](https://azure.microsoft.com/global-infrastructure/regions/)あたり 100 |リソース グループあたり 100 |リソース グループあたり 100 | - | - |
 | ストレージ<sup>5</sup> |5 TB |250 GB |50 ～ 1000 GB | 1 TB (テラバイト) | 該当なし |
@@ -34,4 +35,6 @@ ms.locfileid: "97934469"
 <sup>5</sup> ストレージの上限は、同じ App Service プランのすべてのアプリにまたがる一時ストレージ内の合計コンテンツ サイズです。 従量課金プランでは、Azure Files を一時ストレージに使用します。  
 <sup>6</sup> 関数アプリが[従量課金プラン](../articles/azure-functions/consumption-plan.md)でホストされている場合、CNAME オプションのみがサポートされます。 [Premium プラン](../articles/azure-functions/functions-premium-plan.md)または [App Service プラン](../articles/azure-functions/dedicated-plan.md)の関数アプリでは、CNAME または A レコードを使用してカスタム ドメインをマップできます。  
 <sup>7</sup> 60 分まで保証されます。  
-<sup>8</sup> ワーカーは、お客様のアプリをホストする役割です。 ワーカーは、3 つの固定サイズで使用できます。1 vCPU/3.5 GB RAM。2 vCPU/7 GB RAM。4 vCPU/14 GB RAM。
+<sup>8</sup> ワーカーは、お客様のアプリをホストする役割です。 ワーカーは、3 つの固定サイズで使用できます。1 vCPU/3.5 GB RAM。2 vCPU/7 GB RAM。4 vCPU/14 GB RAM。   
+<sup>9</sup> Premium プランの Linux で実行する場合、インスタンス数の上限は現在 20 個です。  
+<sup>10</sup> 詳細については、「[App Service の制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)」を参照してください。

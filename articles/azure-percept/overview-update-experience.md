@@ -5,21 +5,21 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 68244e1669bbdce8215df467564ea3aca56b530c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f09bc5b753da1d79b7701e95e4c2d8bc62647c9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098130"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567629"
 ---
-# <a name="the-azure-percept-dk-update-experience"></a>Azure Percept DK の更新エクスペリエンス
+# <a name="azure-percept-dk-update-experience-overview"></a>Azure Percept DK の更新エクスペリエンスの概要
 
-Azure Percept DK では、開発キットの OS とファームウェアを更新するためのオプションが 2 つあります。無線 (OTA) または USB 経由です。 OTA 更新は、デバイスを最新の状態に保つための簡単な方法ですが、USB 更新は、OTA が不可能な場合や、デバイスを工場出荷時の設定にリセットする場合に適しています。 どちらの更新方法であってもお客様にとって最適な方法を利用できるようにするために、お客様を支援する攻略ガイドのコレクションをまとめました。 
+Azure Percept DK では、無線 (OTA) または USB 経由で開発キットの OS とファームウェアを更新できます。 OTA 更新は、[Device Update for IoT Hub](https://docs.microsoft.com/azure/iot-hub-device-update/) サービスを使用してデバイスを最新の状態に保つための簡単な方法です。 USB 更新プログラムは、OTA 更新プログラムを使用できない場合、またはデバイスを出荷時の状態にリセットする必要がある場合に使用できます。 Azure Percept DK デバイスの更新プログラムの使用を開始するには、次の攻略ガイドをご覧ください。
 
-- [Azure Percept DK に更新を無線でデプロイするように Azure IoT Hub を設定する方法](./how-to-set-up-over-the-air-updates.md)
-- [Azure Percept DK を無線で更新する方法](./how-to-update-over-the-air.md)
+- [Azure Percept DK に更新プログラムを無線でデプロイするように Azure IoT Hub を設定する](./how-to-set-up-over-the-air-updates.md)
+- [Azure Percept DK を無線 (OTA) で更新する](./how-to-update-over-the-air.md)
 - [Azure Percept DK を USB 経由で更新する](./how-to-update-via-usb.md)
 
 ## <a name="next-steps"></a>次のステップ

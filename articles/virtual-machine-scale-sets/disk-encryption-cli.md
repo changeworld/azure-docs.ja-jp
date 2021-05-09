@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: e6630cbb44157f25bd2cbfcff25ec3132c74c61c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565573"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792437"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>暗号化を有効にする
 
-スケールセット内の VM インスタンスを暗号化するには、まず [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) を使用して Key Vault のリソース ID に関する一部情報を取得します。 これらの変数は､この後､[az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable) を使用した暗号化プロセスの開始に使用されます｡
+スケールセット内の VM インスタンスを暗号化するには、まず [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) を使用して Key Vault のリソース ID に関する一部情報を取得します。 これらの変数は､この後､[az vmss encryption enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable) を使用した暗号化プロセスの開始に使用されます｡
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault
@@ -103,7 +103,7 @@ az vmss encryption enable \
 
 暗号化プロセスを開始するのに 1~2 分ほどかかります｡
 
-前の手順で作成したスケールセットのアップグレード ポリシーが *automatic* に設定されているため､各 VM インスタンスは自動的に暗号化プロセスを開始します｡ アップグレード ポリシーが manual に設定されているスケール セットでは､[az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances) を使用して手動で 各 VM インスタンスに対して暗号化プロセスを開始します｡
+前の手順で作成したスケールセットのアップグレード ポリシーが *automatic* に設定されているため､各 VM インスタンスは自動的に暗号化プロセスを開始します｡ アップグレード ポリシーが manual に設定されているスケール セットでは､[az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances) を使用して手動で 各 VM インスタンスに対して暗号化プロセスを開始します｡
 
 ### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>キーをラップする KEK を使用して暗号化を有効にします。
 
@@ -131,7 +131,7 @@ https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]
 
 ## <a name="check-encryption-progress"></a>暗号化の進行状況を確認する
 
-ディスク暗号化の進行状況を確認するには､[az vmss encryption show](/cli/azure/vmss/encryption#az-vmss-encryption-show) を使用します｡
+ディスク暗号化の進行状況を確認するには､[az vmss encryption show](/cli/azure/vmss/encryption#az_vmss_encryption_show) を使用します｡
 
 ```azurecli-interactive
 az vmss encryption show --resource-group myResourceGroup --name myScaleSet
@@ -166,7 +166,7 @@ VM インスタンスが暗号化されていると､以下の出力例に見�
 
 ## <a name="disable-encryption"></a>暗号化を無効にする
 
-暗号化された VM インスタンス ディスクを使用しない場合は、次のように [az vmss encryption disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) で暗号化を無効にすることができます。
+暗号化された VM インスタンス ディスクを使用しない場合は、次のように [az vmss encryption disable](/cli/azure/vmss/encryption#az_vmss_encryption_disable) で暗号化を無効にすることができます。
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

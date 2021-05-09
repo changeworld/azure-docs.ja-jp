@@ -4,12 +4,12 @@ description: ASP.NET Core とコンソール アプリケーションで Azure A
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: e7d0bd6f7d93eac944e0d53a8e898463bf9887f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a4781e3f0208d355c06df506bab3b0a3dd457078
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592270"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568592"
 ---
 # <a name="applicationinsightsloggerprovider-for-microsoftextensionlogging"></a>Microsoft.Extension.Logging の ApplicationInsightsLoggerProvider
 
@@ -494,6 +494,9 @@ Program.cs と appsettings.json を次のように変更します。
        }
    }
    ```
+
+> [!IMPORTANT]
+> 新しい Azure リージョンでは、インストルメンテーション キーの代わりに接続文字列を使用する **必要** があります。 [接続文字列](./sdk-connection-string.md?tabs=net)により、利用統計情報と関連付けるリソースが識別されます。 また、リソースでテレメトリの宛先として使用するエンドポイントを変更することもできます。 接続文字列をコピーし、アプリケーションのコードまたは環境変数に追加する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,78 +1,78 @@
 ---
-title: クイック スタート:コンフィデンシャル コンピューティング ノードを含んだ Azure Kubernetes Service (AKS) クラスターを Azure CLI を使用してデプロイする
-description: このクイックスタートでは、Azure CLI を使用して、コンフィデンシャル ノードが含まれた AKS クラスターを作成し、Hello World アプリをデプロイする方法について説明します。
+title: 'クイックスタート: コンフィデンシャル コンピューティング ノードを含む AKS クラスターを Azure CLI を使用してデプロイする'
+description: Azure CLI を使用して、コンフィデンシャル ノードを含む Azure Kubernetes Service (AKS) クラスターを作成し、Hello World アプリをデプロイする方法について説明します。
 author: agowdamsft
 ms.service: container-service
 ms.subservice: confidential-computing
 ms.topic: quickstart
-ms.date: 03/18/2020
+ms.date: 04/08/2021
 ms.author: amgowda
-ms.custom: contentperf-fy21q3
-ms.openlocfilehash: 73770acefc8a153e4a2f2fde146f9afd4c319cd3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contentperf-fy21q3, devx-track-azurecli
+ms.openlocfilehash: 261deb0c4f5f28be51e806ab76261278709efc3b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933136"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482876"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-dcsv2-using-azure-cli"></a>クイックスタート: コンフィデンシャル コンピューティング ノード (DCsv2) を含む Azure Kubernetes Service (AKS) クラスターを Azure CLI を使用してデプロイする
+# <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>クイックスタート: コンフィデンシャル コンピューティング ノードを含む AKS クラスターを Azure CLI を使用してデプロイする
 
-このクイックスタートは、Azure のマネージド Kubernetes サービスを使用してアプリケーションを監視するために、AKS クラスターをすぐに作成してアプリケーションをデプロイしたいと考える開発者またはクラスター オペレーターを対象としています。 Azure portal からクラスターをプロビジョニングしてコンフィデンシャル コンピューティング ノードを追加することもできます。
+このクイックスタートでは、Azure CLI を使用して、コンフィデンシャル コンピューティング (DCsv2) ノードを含む Azure Kubernetes Service (AKS) クラスターをデプロイします。 その後、シンプルな Hello World アプリケーションをエンクレーブで実行します。 クラスターのプロビジョニングとコンフィデンシャル コンピューティング ノードの追加は Azure portal から行うこともできますが、このクイックスタートでは、Azure CLI に焦点を絞って説明します。
 
-## <a name="overview"></a>概要
+AKS は、開発者またはクラスター オペレーターが迅速にクラスターをデプロイして管理できるようにするマネージド Kubernetes サービスです。 詳細については、[AKS の概要](../aks/intro-kubernetes.md)に関するページと [AKS のコンフィデンシャル ノードの概要](confidential-nodes-aks-overview.md)に関するページを参照してください。
 
-このクイックスタートでは、Azure CLI を使用して、コンフィデンシャル コンピューティング ノードを含む Azure Kubernetes Service (AKS) クラスターをデプロイし、単純な Hello World アプリケーションをエンクレーブ内で実行する方法について説明します。 AKS は、クラスターをすばやくデプロイおよび管理することができる、マネージド Kubernetes サービスです。 詳細については、[AKS の概要](../aks/intro-kubernetes.md)と [AKS のコンフィデンシャル ノードの概要](confidential-nodes-aks-overview.md)に関するページを参照してください。
+コンフィデンシャル コンピューティング ノードの特徴は次のとおりです。
+
+- Linux コンテナーをサポートする Linux ワーカー ノード。
+- 第 2 世代仮想マシン (VM) と Ubuntu 18.04 の VM ノード。
+- Intel SGX 対応 CPU。EPC (Encrypted Page Cache Memory) を活用し、機密性が保護されたエンクレーブ内でコンテナーを実行するのに役立ちます。 詳細については、「[Azure コンフィデンシャル コンピューティングについてよく寄せられる質問](./faq.md)」を参照してください。
+- コンフィデンシャル コンピューティング ノードと共にプレインストールされた Intel SGX DCAP ドライバー。 詳細については、「[Azure コンフィデンシャル コンピューティングについてよく寄せられる質問](./faq.md)」を参照してください。
 
 > [!NOTE]
-> コンフィデンシャル コンピューティング DCsv2 VM には、上位の価格が適用されて利用可能なリージョンが限られる特殊なハードウェアが活用されています。 詳細については、仮想マシンに関するページで[利用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)を参照してください。
-
-### <a name="confidential-computing-node-features-dcsv2"></a>コンフィデンシャル コンピューティング ノードの機能 (DCsv2)
-
-1. Linux コンテナーをサポートする Linux ワーカー ノード。
-1. Ubuntu 18.04 仮想マシン ノードが含まれた第 2 世代 VM。
-1. Intel SGX ベースの CPU と EPC (Encrypted Page Cache) メモリ。 詳細については、[こちら](./faq.md)をご覧ください。
-1. Kubernetes バージョン 1.16 以降のサポート。
-1. AKS ノードにプレインストールされた Intel SGX DCAP ドライバー。 詳細については、[こちら](./faq.md)をご覧ください。
+> DCsv2 VM には、より高い価格が適用され、利用可能なリージョンが限られる特殊なハードウェアが使用されます。 詳細については、[利用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートでは以下が必要です。
 
-1. 有効な Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
-1. デプロイ マシンに Azure CLI バージョン 2.0.64 以降がインストールされ、構成されている (バージョンを調べるには `az --version` を実行します)。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](../container-registry/container-registry-get-started-azure-cli.md)に関するページを参照してください。
-1. ご利用のサブスクリプションで最低 6 つの **DCsv2** コアが利用できる。 既定では、コンフィデンシャル コンピューティングの VM コア クォータは、Azure サブスクリプションごとに 8 コアです。 プロビジョニングする予定のクラスターに必要なコア数が 8 を超える場合は、[これら](../azure-portal/supportability/per-vm-quota-requests.md)の手順に従って、クォータの引き上げチケットを起票してください。
+- 有効な Azure サブスクリプション Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+- デプロイ マシンに Azure CLI バージョン 2.0.64 以降がインストールされ、構成されていること。 
 
-## <a name="create-a-new-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>コンフィデンシャル コンピューティング ノードとアドオンを含む新しい AKS クラスターを作成する
+  バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](../container-registry/container-registry-get-started-azure-cli.md)に関するページを参照してください。
+- 自分のサブスクリプションで最低 6 つの DCsv2 コアが利用できること。 
 
-下の手順に従って、アドオンを含むコンフィデンシャル コンピューティング対応ノードを追加します。
+  既定では、コンフィデンシャル コンピューティングのクォータは、Azure サブスクリプションあたり 8 VM コアです。 プロビジョニングする予定のクラスターに必要なコア数が 8 を超える場合は、[こちらの手順](../azure-portal/supportability/per-vm-quota-requests.md)に従って、クォータの引き上げチケットを起票してください。
+
+## <a name="create-an-aks-cluster-with-confidential-computing-nodes-and-add-on"></a>コンフィデンシャル コンピューティング ノードとアドオンを含む AKS クラスターを作成する
+
+コンフィデンシャル コンピューティング アドオンが有効になっている AKS クラスターを作成し、そのクラスターにノード プールを追加して、作成した内容を確認するには、以降の手順に従います。
 
 ### <a name="create-an-aks-cluster-with-a-system-node-pool"></a>システム ノード プールを含む AKS クラスターを作成する
 
-前述の要件を満たしている AKS クラスターが既にある場合は、[既存のクラスターのセクションに進み](#existing-cluster)、新しいコンフィデンシャル コンピューティング ノード プールを追加してください。
+> [!NOTE]
+> 前述の前提条件を満たす AKS クラスターが既にある場合は、[次のセクションに進み](#add-a-user-node-pool-with-confidential-computing-capabilities-to-the-aks-cluster)、コンフィデンシャル コンピューティング ノード プールを追加してください。
 
-まず、[az group create][az-group-create] コマンドを使用して、クラスターのリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *westus2* リージョンに作成します。
+まず、[az group create][az-group-create] コマンドを使用して、このクラスター用のリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループが *westus2* リージョンに作成されます。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
 ```
 
-ここで、[az aks create][az-aks-create] コマンドを使用して、AKS クラスターを作成します。
+次に、[az aks create][az-aks-create] コマンドを使用して、コンフィデンシャル コンピューティング アドオンが有効になっている AKS クラスターを作成します。
 
 ```azurecli-interactive
 az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
 ```
 
-上記を実行すると、システム ノード プールを含む、アドオンが有効な状態の新しい AKS クラスターが作成されます。 次に、コンフィデンシャル コンピューティング機能を備えたユーザー ノード プールを AKS クラスターに追加します。
+### <a name="add-a-user-node-pool-with-confidential-computing-capabilities-to-the-aks-cluster"></a>コンフィデンシャル コンピューティング機能を備えたユーザー ノード プールを AKS クラスターに追加する 
 
-### <a name="add-a-confidential-computing-node-pool-to-the-aks-cluster"></a>コンフィデンシャル コンピューティング ノード プールを AKS クラスターに追加する 
-
-次のコマンドを実行して、3 つのノードを含む `Standard_DC2s_v2` サイズのユーザー ノード プールを追加します。 サポートされている [DCsv2 SKU とリージョン](../virtual-machines/dcv2-series.md)の一覧から、別の SKU を選択できます。
+次のコマンドを実行して、3 つのノードを含む `Standard_DC2s_v2` サイズのユーザー ノード プールを AKS クラスターに追加します。 [サポートされている DCsv2 SKU とリージョン](../virtual-machines/dcv2-series.md)の一覧から、別の SKU を選択できます。
 
 ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-vm-size Standard_DC2s_v2
 ```
 
-実行後、**DCsv2** の新しいノード プールが、コンフィデンシャル コンピューティング アドオン デーモンセット ([SGX デバイス プラグイン](confidential-nodes-aks-overview.md#sgx-plugin)) と共に表示されます。
+このコマンドの実行後、DCsv2 の新しいノード プールが、コンフィデンシャル コンピューティング アドオン デーモンセット ([SGX デバイス プラグイン](confidential-nodes-aks-overview.md#confidential-computing-add-on-for-aks)) と共に表示されます。
 
 ### <a name="verify-the-node-pool-and-add-on"></a>ノード プールとアドオンを確認する
 
@@ -82,7 +82,7 @@ az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-g
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-以下に示すように kubectl get pods と nodes コマンドを使用して、**DCsv2** ノード プールにノードが適切に作成され、SGX 関連のデーモンセットが実行されていることを確認します。
+ノードが正しく作成され、SGX 関連のデーモンセットが DCsv2 ノード プールで実行されていることを確認するには、`kubectl get pods` コマンドを使用します。
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -90,13 +90,13 @@ $ kubectl get pods --all-namespaces
 kube-system     sgx-device-plugin-xxxx     1/1     Running
 ```
 
-上に示したような出力結果が得られたら、AKS クラスターで機密性の高いアプリケーションを実行する準備は完了です。
+出力内容が上記のコードと一致する場合は、AKS クラスターで機密性の高いアプリケーションを実行する準備ができています。
 
-[エンクレーブからの Hello World](#hello-world) のデプロイ セクションに移動して、エンクレーブでアプリをテストしてください。 または、下の手順に従ってさらにノード プールを AKS に追加します (AKS では SGX ノード プールと非 SGX ノード プールの混在がサポートされます)。
+このクイックスタートの「[分離されたエンクレーブ アプリケーションから Hello World をデプロイする](#hello-world)」セクションに進んで、エンクレーブでアプリをテストすることができます。 または、次の手順に従って AKS にさらにノード プールを追加します (AKS は、SGX ノードプールと非 SGX ノードプールの混在をサポートしています。)
 
 ## <a name="add-a-confidential-computing-node-pool-to-an-existing-aks-cluster"></a>コンフィデンシャル コンピューティング ノード プールを既存の AKS クラスターに追加する<a id="existing-cluster"></a>
 
-このセクションでは、「前提条件」セクションに記載した条件を満たす AKS クラスターが既に実行されていることを前提としています (アドオンに適用)。
+このセクションでは、このクイックスタートで前述した前提条件を満たす AKS クラスターが既に実行されていることを前提としています。
 
 ### <a name="enable-the-confidential-computing-aks-add-on-on-the-existing-cluster"></a>既存のクラスターでコンフィデンシャル コンピューティング AKS アドオンを有効にする
 
@@ -106,18 +106,18 @@ kube-system     sgx-device-plugin-xxxx     1/1     Running
 az aks enable-addons --addons confcom --name MyManagedCluster --resource-group MyResourceGroup 
 ```
 
-### <a name="add-a-dcsv2-user-node-pool-to-the-cluster"></a>**DCsv2** ユーザー ノード プールをクラスターに追加する
+### <a name="add-a-dcsv2-user-node-pool-to-the-cluster"></a>DCsv2 ユーザー ノード プールをクラスターに追加する
 
 > [!NOTE]
-> コンフィデンシャル コンピューティングの機能を使用するには、既存の AKS クラスターに **DCsv2** VM SKU ベースのノード プールが少なくとも 1 つ存在する必要があります。 コンフィデンシャル コンピューティング DCs-v2 VM SKU について詳しくは、[使用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)に関するページを参照してください。
+> コンフィデンシャル コンピューティング機能を使用するには、既存の AKS クラスターに、DCsv2 VM SKU をベースとしたノード プールが少なくとも 1 つ必要です。 コンフィデンシャル コンピューティングに使用される DCs-v2 VM SKU の詳細については、[利用可能な SKU とサポートされるリージョン](virtual-machine-solutions.md)に関するページを参照してください。
 
-次のコマンドを実行して、新しいノード プールを作成します。
+次のコマンドを実行して、ノード プールを作成します。
 
 ```azurecli-interactive
 az aks nodepool add --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup --node-count 1 --node-vm-size Standard_DC4s_v2
 ```
 
-confcompool1 という名前の新しいノード プールが作成されたことを確認します。
+*confcompool1* という名前の新しいノード プールが作成されたことを確認します。
 
 ```azurecli-interactive
 az aks nodepool list --cluster-name myAKSCluster --resource-group myResourceGroup
@@ -125,13 +125,13 @@ az aks nodepool list --cluster-name myAKSCluster --resource-group myResourceGrou
 
 ### <a name="verify-that-daemonsets-are-running-on-confidential-node-pools"></a>デーモンセットがコンフィデンシャル ノード プールで実行されていることを確認する
 
-既存の AKS クラスターにサインインし、次の検証を実行します。
+既存の AKS クラスターにサインインして、次の確認を実行します。
 
 ```console
 kubectl get nodes
 ```
 
-出力結果に、AKS クラスターに新しく追加された confcompool1 が表示されます。 他のデーモンセットも表示される場合があります。
+出力内容に、AKS クラスターに新しく追加された *confcompool1* プールが表示されます。 他のデーモンセットも表示される場合があります。
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -139,10 +139,12 @@ $ kubectl get pods --all-namespaces
 kube-system     sgx-device-plugin-xxxx     1/1     Running
 ```
 
-上に示したような出力結果が得られたら、AKS クラスターで機密性の高いアプリケーションを実行する準備は完了です。 下の手順に従って、テスト アプリケーションをデプロイします。
+出力内容が上記のコードと一致する場合は、AKS クラスターで機密性の高いアプリケーションを実行する準備ができています。 
 
-## <a name="hello-world-from-isolated-enclave-application"></a>隔離されたエンクレーブ アプリケーションからの Hello World<a id="hello-world"></a>
-*hello-world-enclave.yaml* という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。 この Open Enclave ベースのサンプル アプリケーション コードは、[Open Enclave プロジェクト](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)でご覧いただけます。 次のデプロイでは、アドオン "confcom" がデプロイされていることを前提としています。
+## <a name="deploy-hello-world-from-an-isolated-enclave-application"></a>分離されたエンクレーブ アプリケーションから Hello World をデプロイする<a id="hello-world"></a>
+これで、テスト アプリケーションをデプロイする準備ができました。 
+
+*hello-world-enclave.yaml* という名前のファイルを作成し、次の YAML マニフェストを貼り付けます。 このサンプル アプリケーション コードは、[Open Enclave プロジェクト](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)にあります。 このデプロイでは、*confcom* アドオンがデプロイ済みであることを前提としています。
 
 ```yaml
 apiVersion: batch/v1
@@ -162,12 +164,12 @@ spec:
         image: oeciteam/sgx-test:1.0
         resources:
           limits:
-            kubernetes.azure.com/sgx_epc_mem_in_MiB: 5 # This limit will automatically place the job into confidential computing node. Alternatively you can target deployment to nodepools
+            sgx.intel.com/epc: 5Mi # This limit will automatically place the job into a confidential computing node and mount the required driver volumes. Alternatively, you can target deployment to node pools with node selector.
       restartPolicy: Never
   backoffLimit: 0
   ```
 
-今度は、kubectl apply コマンドを使用し、セキュア エンクレーブで起動するサンプル ジョブを作成します (次の出力例を参照)。
+ここで、`kubectl apply` コマンドを使用して、セキュア エンクレーブで開くサンプル ジョブを作成します (次の出力例を参照)。
 
 ```console
 $ kubectl apply -f hello-world-enclave.yaml
@@ -175,7 +177,7 @@ $ kubectl apply -f hello-world-enclave.yaml
 job "sgx-test" created
 ```
 
-ワークロードによって Trusted Execution Environment (エンクレーブ) が正常に作成されたことは、次のコマンドを実行することで確認できます。
+次のコマンドを実行すると、このワークロードによって高信頼実行環境 (エンクレーブ) が正常に作成されたことを確認できます。
 
 ```console
 $ kubectl get jobs -l app=sgx-test
@@ -200,25 +202,23 @@ Enclave called into host to print: Hello World!
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-関連するノード プールを削除するか、AKS クラスターを削除するには、次のコマンドを使用します。
-
-### <a name="remove-the-confidential-computing-node-pool"></a>コンフィデンシャル コンピューティング ノード プールを削除する
+このクイックスタートで作成したコンフィデンシャル コンピューティング ノード プールを削除するには、次のコマンドを使用します。 
 
 ```azurecli-interactive
-az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resource-group myResourceGroup
+az aks nodepool delete --cluster-name myAKSCluster --name confcompool1 --resource-group myResourceGroup
 ```
 
-### <a name="delete-the-aks-cluster"></a>AKS クラスターを削除する
+AKS クラスターを削除するには、次のコマンドを使用します。 
 
 ```azurecli-interactive
 az aks delete --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* 機密コンテナーを使用して Python、Node などのアプリケーションを機密性を保った状態で実行するには、[機密コンテナーのサンプル](https://github.com/Azure-Samples/confidential-container-samples)のページにアクセスしてください。
+* [GitHub のコンフィデンシャル コンテナー サンプル](https://github.com/Azure-Samples/confidential-container-samples)を使用して、Python や Node などのアプリケーションをコンフィデンシャル コンテナーから実行します。
 
-* [エンクレーブ対応の Azure Container サンプル](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/)を参照して、エンクレーブ対応のアプリケーションを実行します。
+* [GitHub のエンクレーブ対応 Azure コンテナー サンプル](https://github.com/Azure-Samples/confidential-computing/blob/main/containersamples/)を使用して、エンクレーブ対応アプリケーションを実行します。
 
 <!-- LINKS -->
 [az-group-create]: /cli/azure/group#az_group_create

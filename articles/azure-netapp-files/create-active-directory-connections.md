@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/24/2021
 ms.author: b-juche
-ms.openlocfilehash: add907923cc2284939acd972237fd4ec74ee2d12
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864008"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048376"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -86,6 +86,8 @@ Azure NetApp Files のいくつかの機能では、Active Directory 接続が�
 * Azure NetApp Files では [LDAP 署名](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)がサポートされているため、Azure NetApp Files サービスと、ターゲットとなる [Active Directory ドメイン コントローラー](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)との間で LDAP トラフィックを安全に転送することができます。 LDAP 署名に関する Microsoft アドバイザリ [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) のガイダンスに従っている場合は、Azure NetApp Files の LDAP 署名機能を有効にする必要があります。そのためには [[Active Directory に参加する]](#create-an-active-directory-connection) ウィンドウで **[LDAP 署名]** ボックスをオンにします。 
 
     [LDAP チャネル バインド](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry)構成が単体で Azure NetApp Files サービスに影響することはありません。 ただし、LDAP チャネル バインドとセキュリティで保護された LDAP (LDAPS や `start_tls`など) の両方を使用すると、SMB ボリュームの作成は失敗します。
+
+* AD 統合 DNS ではない場合、"フレンドリ名" を使用して Azure NetApp Files が機能するようにするには、DNS A/PTR レコードを追加する必要があります。 
 
 ## <a name="decide-which-domain-services-to-use"></a>使用するドメイン サービスを決定する 
 

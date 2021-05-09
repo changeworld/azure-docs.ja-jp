@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: bafd6dade626376f216a271c7b3cadc9b429989a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 005f69473fa238d56cf7d582a8af4000166d6939
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578823"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612434"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 

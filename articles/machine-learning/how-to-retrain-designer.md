@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 04/06/2020
+ms.date: 03/06/2021
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97708468"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962953"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>パイプライン パラメーターを使用し、デザイナーのモデルを再トレーニングする
 
@@ -120,3 +120,5 @@ REST 呼び出しを行うには、OAuth 2.0 ベアラー型認証ヘッダー�
 この記事では、デザイナーを使用してパラメーター化されたトレーニング パイプライン エンドポイントを作成する方法について説明しました。
 
 モデルをデプロイして予測を行う方法の詳細なチュートリアルについては、[デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)を参照して回帰モデルをトレーニングおよびデプロイしてください。
+
+SDK を使用してパイプライン エンドポイントを発行し、それに対して実行を送信する方法については、[こちらの記事](how-to-deploy-pipelines.md)を参照してください。

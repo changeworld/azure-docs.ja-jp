@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/29/2021
+ms.date: 04/13/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 164c5e199bcb17dfe7a8ce92b169b26ecd389703
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2ae849616946169911468bb43e190c7ff8a4ec8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958083"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386872"
 ---
 このカテゴリには **65 個** の推奨事項があります。
 
@@ -74,7 +74,7 @@ ms.locfileid: "105958083"
 |ストレージ アカウントでは暗号化にカスタマー マネージド キー (CMK) を使用する必要がある |カスタマー マネージド キー (CMK) を使用して、より柔軟にストレージ アカウントを保護します。 CMK を指定すると、データを暗号化するキーへのアクセスを保護および制御するために、そのキーが使用されます。 CMK を使用することで、主要な暗号化キーのローテーションを制御するか、暗号的にデータを消去することができます。<br />(関連ポリシー:[ストレージ アカウントでは暗号化にカスタマー マネージド キー (CMK) を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6fac406b-40ca-413b-bf8e-0bf964659c25)) |Medium |
 |サブスクリプションにはセキュリティの問題について連絡するためのメール アドレスが必要 |サブスクリプションの 1 つでセキュリティ違反のおそれがある場合に、組織内の関係するユーザーに通知が送信されるようにするには、Security Center からのメール通知を受信するセキュリティの連絡先を設定します。<br />(関連ポリシー:[サブスクリプションには、セキュリティの問題に備えて連絡先メール アドレスが用意されている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7)) |低 |
 |SQL データベースで Transparent Data Encryption を有効にする必要がある |Transparent Data Encryption を有効にすることで、保存データを保護し、コンプライアンス要件を満たします<br />(関連ポリシー:[SQL データベースで Transparent Data Encryption を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f17k78e20-9358-41c9-923c-fb736d382a12)) |低 |
-|VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある |仮想ネットワークが構成されていない VM Image Builder テンプレートを監査します。 仮想ネットワークが構成されていない場合は、代わりにパブリック IP が作成されて使用されるため、リソースがインターネットに直接公開され、攻撃対象となる可能性が高くなります。<br />(関連ポリシー:[VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Medium |
+|VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある |仮想ネットワークが構成されていない VM Image Builder テンプレートを監査します。 仮想ネットワークが構成されていない場合は、代わりにパブリック IP が作成されて使用されるため、リソースがインターネットに直接公開され、潜在的な攻撃対象領域が増える可能性があります。<br />(関連ポリシー:[VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Medium |
 |SQL データベースの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/SQL-Vulnerability-Assessment/'>詳細情報</a><br />(関連ポリシー:[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2ffeedbf84-6b99-488c-acc2-71c829aa5ffc)) |高 |
 |マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>詳細情報</a><br />(関連ポリシー:[マシン上の SQL サーバーの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f6ba6d016-e7c3-4842-b8f2-4992ebc0d72d)) |高 |
 |脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある |脆弱性評価は、潜在的なデータベースの脆弱性を検出、追跡、および修正するのに役立ちます。<br />(関連ポリシー:[SQL Managed Instance で脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1b7aa243-30e4-4c9e-bca8-d0d3022b634a)) |高 |

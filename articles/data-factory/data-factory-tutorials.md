@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 77899366ed256e147ddbc705d68096cb1b879d8d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608373"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579528"
 ---
 # <a name="azure-data-factory-tutorials"></a>Azure Data Factory のチュートリアル
 
@@ -60,6 +60,8 @@ Data Factory の一連の概念とシナリオを説明し段階的に示すの�
 [Power Query を使用したデータ ラングリング](wrangling-tutorial.md)
 
 [マネージド VNet 内のデータ フロー](tutorial-data-flow-private.md)
+
+[ADLS Gen2 におけるレイク データのベスト プラクティス](tutorial-data-flow-write-to-lake.md)
 
 ## <a name="external-data-services"></a>外部データ サービス
 

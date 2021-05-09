@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: f28fba451a5fbad9efe76e0d6bd39488beebb103
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104761173"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073533"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -77,7 +77,7 @@ pip install azure-ai-formrecognizer
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成したり管理したりするときに使用します。 
+Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`form_recognizer_client` です。フォーム フィールドとコンテンツを認識するためにサービスに照会するときに使用します。 もう 1 つは `form_training_client` です。認識精度を高めるために使用できるカスタム モデルを作成および管理するときに使用します。 
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 

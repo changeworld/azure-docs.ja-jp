@@ -3,32 +3,30 @@ title: Azure Service Bus を Azure Private Link サービスと統合する
 description: Azure Service Bus を Azure Private Link サービスと統合する方法を説明します
 author: spelluru
 ms.author: spelluru
-ms.date: 10/07/2020
+ms.date: 03/29/2021
 ms.topic: article
-ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 833d7e9fb4d517b71aab5039ae9081407eed84cd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94427149"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960539"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Service Bus 名前空間へのアクセスを許可する
 Azure Private Link サービスを使用すると、自分の仮想ネットワーク内の **プライベート エンドポイント** 経由で、Azure サービス (Azure Service Bus、Azure Storage、Azure Cosmos DB など) と、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
-
-> [!IMPORTANT]
-> この機能は、Azure Service Bus の **Premium** レベルでサポートされています。 Premium レベルの詳細については、「[Service Bus の Premium および Standard メッセージング レベル](service-bus-premium-messaging.md)」の記事を参照してください。
 
 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
 詳細については、「[Azure Private Link とは](../private-link/private-link-overview.md)」を参照してください。
 
->[!WARNING]
-> プライベート エンドポイントを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。 例外として、プライベート エンドポイントが有効になっている場合でも、特定の信頼できるサービスからの Service Bus リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
->
-> 仮想ネットワーク上には、次の Microsoft サービスが必要です
-> - Azure App Service
-> - Azure Functions
+## <a name="important-points"></a>重要なポイント
+- この機能は、Azure Service Bus の **Premium** レベルでサポートされています。 Premium レベルの詳細については、「[Service Bus の Premium および Standard メッセージング レベル](service-bus-premium-messaging.md)」の記事を参照してください。
+- プライベート エンドポイントを実装すると、他の Azure サービスが Service Bus と対話するのを禁止できます。 例外として、プライベート エンドポイントが有効になっている場合でも、特定の **信頼できるサービス** からの Service Bus リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
 
+    仮想ネットワーク上には、次の Microsoft サービスが必要です
+    - Azure App Service
+    - Azure Functions
+- ある仮想ネットワークの指定された IP アドレスまたはサブネットからのトラフィックのみを許可するには、名前空間に **少なくとも 1 つの IP 規則または仮想ネットワーク規則** を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを追加する
@@ -51,15 +49,16 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. 検索バーで、「**Service Bus**」と入力します。
 3. プライベート エンドポイントを追加する **名前空間** を一覧から選択します。
-2. 左側のメニューで、 **[設定]** の下にある **[ネットワーク]** オプションを選択します。 
-
+2. 左側のメニューで、 **[設定]** の下にある **[ネットワーク]** オプションを選択します。     既定では、 **[選択されたネットワーク]** オプションが選択されています。
+ 
     > [!NOTE]
     > **[ネットワーク]** タブは **premium** 名前空間に対してのみ表示されます。  
-    
-    既定では、 **[選択されたネットワーク]** オプションが選択されています。 このページで 1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。
-
+   
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="[ネットワーク] ページ - 既定" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
-    
+
+    > [!WARNING]
+    > このページで 1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。
+   
     **[すべてのネットワーク]** オプションを選択した場合、Service Bus 名前空間はあらゆる IP アドレスからの (アクセス キーを使用した) 接続を受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
     ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)

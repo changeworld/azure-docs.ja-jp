@@ -8,20 +8,20 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/31/2021
+ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199851"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075902"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 この記事では、現在パブリック プレビュー中の Log Replay Service (LRS) を使用して、Azure SQL Server (2008 から 2019 まで) から SQL Managed Instance へのデータベースの移行を手動で構成する方法について説明します。 LRS は、SQL Server ログ配布テクノロジに基づいた SQL Managed Instance に対応したクラウド サービスです。 
 
-[Azure Database Migration Service](/azure/dms/tutorial-sql-server-to-managed-instance) と LRS の基盤に使用される移行テクノロジはどちらも同じで、使用される API も同じです。 LRS をリリースすることで、オンプレミスの SQL Server と SQL Managed Instance 間で複雑なカスタム移行とハイブリッド アーキテクチャをさらに有効にすることができます。
+[Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) と LRS の基盤に使用される移行テクノロジはどちらも同じで、使用される API も同じです。 LRS をリリースすることで、オンプレミスの SQL Server と SQL Managed Instance 間で複雑なカスタム移行とハイブリッド アーキテクチャをさらに有効にすることができます。
 
 ## <a name="when-to-use-log-replay-service"></a>Log Replay Service を使用する場合
 
@@ -34,6 +34,7 @@ ms.locfileid: "102199851"
 - Database Migration Service の実行可能ファイルに、データベースのバックアップへのファイル アクセス権がない。
 - ホスト OS にアクセスできない、または管理者特権がない。
 - 使用環境から Azure にネットワーク ポートを開くことができない。
+- ネットワーク帯域幅の調整、またはプロキシに関して障害となっている問題。
 - バックアップが、`TO URL` オプションを通じて Azure Blob Storage に直接保存されている。
 - 差分バックアップを使用する必要がある。
 
@@ -66,11 +67,11 @@ LRS は "*オートコンプリート*" または "*連続*" モードで開始�
     
 | 操作 | 説明 |
 | :----------------------------- | :------------------------- |
-| **1.データベース バックアップを SQL Server から Blob Storage にコピーします**。 | [Azcopy](/azure/storage/common/storage-use-azcopy-v10) または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、SQL Server の完全バックアップ、差分バックアップ、ログ バックアップを Blob Storage コンテナーにコピーします。 <br /><br />任意のファイル名を使用します。 LRS では固有のファイル名前付け規則は必要ありません。<br /><br />複数のデータベースを移行する場合は、データベースごとに個別のフォルダーが必要です。 |
+| **1.データベース バックアップを SQL Server から Blob Storage にコピーします**。 | [Azcopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、SQL Server の完全バックアップ、差分バックアップ、ログ バックアップを Blob Storage コンテナーにコピーします。 <br /><br />任意のファイル名を使用します。 LRS では固有のファイル名前付け規則は必要ありません。<br /><br />複数のデータベースを移行する場合は、データベースごとに個別のフォルダーが必要です。 |
 | **2.クラウドで LRS を開始します**。 | サービスの再起動は、コマンドレット: PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_start cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start)) のいずれかを使用して実行できます。 <br /><br /> Blob Storage 上のバックアップ フォルダーを指す各データベースで、LRS を個別に開始します。 <br /><br /> サービスを開始すると、Blob Storage コンテナーからバックアップが取得され、復元が SQL Managed Instance で開始されます。<br /><br /> LRS を連続モードで開始した場合は、最初にアップロードされたすべてのバックアップが復元された後、サービスにより、フォルダーにアップロードされる新しいファイルが監視されます。 サービスが停止されるまで、ログ シーケンス番号 (LSN) チェーンに基づいてログが連続して適用されます。 |
 | **2.1.操作の進行状況を監視します**。 | 復元操作の進行状況は、コマンドレット: PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_show cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show)) のいずれかを使用して監視できます。 |
 | **2.2.必要に応じて、操作を停止します**。 | 移行プロセスを停止する必要がある場合は、コマンドレット: PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop)) のいずれかを使用できます。 <br /><br /> 操作を停止すると、SQL Managed Instance で復元しようとしているデータベースが削除されます。 操作を停止した後に、データベースの LRS を再開することはできません。 移行プロセスを最初からやり直す必要があります。 |
-| **3.準備ができたら、クラウドにカットオーバーします**。 | アプリケーションとワークロードを停止します。 ログ末尾の最後のバックアップを取得し、Azure Blob Storage にアップロードします。<br /><br /> カットオーバーを完了するには、コマンドレット: PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete)) のいずれかを使用して LRS `complete` 操作を開始します。 この操作により LRS が停止し、データベースがオンラインになって、SQL Managed Instance で読み取りと書き込みを使用できるようになります。<br /><br /> SQL Server から SQL Managed Instance を指すようにアプリケーションの接続文字列を再設定します。 |
+| **3.準備ができたら、クラウドにカットオーバーします**。 | アプリケーションとワークロードを停止します。 ログ末尾の最後のバックアップを取得し、Azure Blob Storage にアップロードします。<br /><br /> カットオーバーを完了するには、コマンドレット: PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) または Azure CLI ([az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete)) のいずれかを使用して LRS `complete` 操作を開始します。 この操作により LRS が停止し、データベースがオンラインになって、SQL Managed Instance で読み取りと書き込みを使用できるようになります。<br /><br /> SQL Server から SQL Managed Instance を指すようにアプリケーションの接続文字列を再設定します。 このステップは、アプリケーションの接続文字列を手動で変更するか、自動的に変更する (たとえば、アプリケーションでプロパティやデータベースの接続文字列を読み取ることができる場合など) というように、自分で調整する必要があります。 |
 
 ## <a name="requirements-for-getting-started"></a>作業を開始するための要件
 
@@ -164,7 +165,7 @@ Azure Blob Storage は、SQL Server と SQL Managed Instance 間のバックア�
 
 LRS を使用したマネージド インスタンスへのデータベースの移行では、次の方法を使用して Blob Storage にバックアップをアップロードできます。
 - SQL Server ネイティブの [BACKUP TO URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 機能を使用する
-- [Azcopy](/azure/storage/common/storage-use-azcopy-v10) または [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) を使用して、バックアップを BLOB コンテナーにアップロードする
+- [Azcopy](../../storage/common/storage-use-azcopy-v10.md) または [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer) を使用して、バックアップを BLOB コンテナーにアップロードする
 - Azure portal で Storage Explorer を使用する
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>SQL Server のバックアップを Blob Storage に直接作成する

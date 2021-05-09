@@ -1,39 +1,43 @@
 ---
-title: Bicep の開発環境とデプロイ環境のセットアップ
+title: Bicep の開発およびデプロイ環境のセットアップ
 description: Bicep の開発環境とデプロイ環境の構成方法
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: d665a863affdec2009fc208f76b85a7f25de451d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/26/2021
+ms.openlocfilehash: 0e62e6a4633bee09fcbe8b783118cc95ccd5702e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594395"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626103"
 ---
-# <a name="setup-bicep-development-and-deployment-environment"></a>Bicep の開発環境とデプロイ環境のセットアップ
+# <a name="install-bicep-preview"></a>Bicep (プレビュー) のインストール
 
-Bicep の開発環境とデプロイ環境のセットアップ方法を説明します。
+Bicep の開発およびデプロイ環境のセットアップ方法を説明します。
 
 ## <a name="development-environment"></a>開発環境
 
 Bicep の作成エクスペリエンスを最大限に活用するには、次の 2 つのコンポーネントが必要になります。
 
 - **Visual Studio Code 用の Bicep 拡張機能**。 Bicep ファイルを作成するには、適切な Bicep エディターが必要です。 [Visual Studio Code](https://code.visualstudio.com/) と [Bicep 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)の組み合わせをお勧めします。 これらのツールでは、言語サポートとリソース オートコンプリートが提供されます。 これらは、Bicep ファイルの作成と検証を行うときに役立ちます。 Visual Studio Code と Bicep 拡張機能の使用方法の詳細については、「[クイック スタート: Visual Studio Code を使用して Bicep ファイルを作成する](./quickstart-create-bicep-use-visual-studio-code.md)」を参照してください。
-- **BICEP CLI**。 Bicep CLI を使用して Bicep ファイルを ARM JSON テンプレートにコンパイルし、ARM JSON テンプレートを Bicep ファイルに逆コンパイルします。 詳細については、「[Bicep CLI のインストール](#install-bicep-cli)」を参照してください。
+- **BICEP CLI**。 Bicep CLI を使用して Bicep ファイルを ARM JSON テンプレートにコンパイルし、ARM JSON テンプレートを Bicep ファイルに逆コンパイルします。 インストール手順については、「[Bicep CLI のインストール](#install-manually)」を参照してください。
 
 ## <a name="deployment-environment"></a>デプロイ環境
 
-Azure CLI または Azure PowerShell を使用して、Bicep ファイルをデプロイできます。 Azure CLI には、2.20.0 以降のバージョンが必要です。Azure PowerShell には、5.6.0 以降のバージョンが必要です。 インストール手順については、以下を参照してください。
+ローカル Bicep ファイルをデプロイするには、次の 2 つのコンポーネントが必要です。
 
-- [Azure PowerShell をインストールするには](/powershell/azure/install-az-ps)
-- [Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)
-- [Linux での Azure CLI のインストール](/cli/azure/install-azure-cli-linux)
-- [macOS での Azure CLI のインストール](/cli/azure/install-azure-cli-macos)
+- **Azure CLI バージョン 2.20.0 以降、または Azure PowerShell バージョン 5.6.0 以降**。 インストール手順については、以下を参照してください。
 
-> [!NOTE]
-> 現時点では、Azure CLI と Azure PowerShell はどちらもローカルの Bicep ファイルのデプロイのみを行えます。 Azure CLI を使用した Bicep ファイルのデプロイの詳細については、「[デプロイ - CLI](/deploy-cli.md#deploy-remote-template)」を参照してください。 Azure PowerShell を使用した Bicep ファイルのデプロイの詳細については、「[デプロイ - PowerShell](/deploy-powershell.md#deploy-remote-template)」を参照してください。
+  - [Azure PowerShell をインストールするには](/powershell/azure/install-az-ps)
+  - [Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)
+  - [Linux での Azure CLI のインストール](/cli/azure/install-azure-cli-linux)
+  - [macOS での Azure CLI のインストール](/cli/azure/install-azure-cli-macos)
 
-サポートされているバージョンの Azure PowerShell または Azure CLI をインストールしたら、次のものを使用して Bicep ファイルをデプロイできます。
+  > [!NOTE]
+  > 現時点では、Azure CLI と Azure PowerShell はどちらもローカルの Bicep ファイルのデプロイのみを行えます。 Azure CLI を使用した Bicep ファイルのデプロイの詳細については、「[デプロイ - CLI](./deploy-cli.md#deploy-remote-template)」を参照してください。 Azure PowerShell を使用した Bicep ファイルのデプロイの詳細については、「[デプロイ - PowerShell]( ./deploy-powershell.md#deploy-remote-template)」を参照してください。
+
+- **BICEP CLI**。 デプロイ前に Bicep ファイルを JSON テンプレートにコンパイルするために Bicep CLI が必要です。 インストール手順については、「[Bicep CLI のインストール](#install-bicep-cli)」を参照してください。
+
+コンポーネントがインストールされたら、次のものを使用して Bicep ファイルをデプロイできます。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -59,11 +63,23 @@ az deployment group create \
 
 ## <a name="install-bicep-cli"></a>Bicep CLI のインストール
 
-Azure CLI または Azure PowerShell を使用するか、あるいは手動で Bicep CLI をインストールできます。
+- Bicep CLI を使用して Bicep ファイルをコンパイルおよび逆コンパイルするには、「[手動でインストールする](#install-manually)」を参照してください。
+- Azure CLI を使用して Bicep ファイルをデプロイするには、「[Azure CLI を使用する](#use-with-azure-cli)」を参照してください。
+- Azure PowerShell を使用して Bicep ファイルをデプロイするには、「[Azure PowerShell を使用する](#use-with-azure-powershell)」を参照してください。
 
-### <a name="use-azure-cli"></a>Azure CLI の使用
+### <a name="use-with-azure-cli"></a>Azure CLI を使用する
 
-Az CLI バージョン 2.20.0 以降がインストールされている場合、Bicep CLI に依存するコマンドが実行されると、Bicep CLI は自動的にインストールされます。 たとえば、`az deployment ... -f *.bicep` または `az bicep ...` です。
+Azure CLI バージョン 2.20.0 以降がインストールされている場合、Bicep CLI は、それに依存するコマンドが実行されると自動的にインストールされます。 次に例を示します。
+
+```azurecli
+az deployment group create --template-file azuredeploy.bicep --resource-group myResourceGroup
+```
+
+or
+
+```azurecli
+az bicep ...
+```
 
 組み込みコマンドを使用して、CLI を手動でインストールすることもできます。
 
@@ -80,17 +96,11 @@ az bicep upgrade
 特定のバージョンをインストールするには、以下を実行します。
 
 ```bash
-az bicep install --version v0.2.212
+az bicep install --version v0.3.126
 ```
 
-> [!NOTE]
-> Az CLI は、既にインストールされている他の Bicep があれば、それらのインストールと競合しない別のバージョンの Bicep CLI をインストールします。また、PATH には Bicep を追加しません。
-
-インストールされているバージョンを表示するには、以下を実行します。
-
-```bash
-az bicep version
-```
+> [!IMPORTANT]
+> Azure CLI は、既にインストールされている他の Bicep があれば、それらのインストールと競合しない別のバージョンの Bicep CLI をインストールします。また、PATH には Bicep CLI を追加しません。 Bicep CLI を使用して Bicep ファイルをコンパイルまたは逆コンパイルする場合、または Azure PowerShell を使用して Bicep ファイルをデプロイする場合は、「[手動でインストールする](#install-manually)」または「[Azure Powershell を使用する](#use-with-azure-powershell)」を参照してください。
 
 Bicep CLI の使用可能なすべてのバージョンを一覧表示するには、以下を実行します。
 
@@ -98,9 +108,30 @@ Bicep CLI の使用可能なすべてのバージョンを一覧表示するに�
 az bicep list-versions
 ```
 
-### <a name="use-azure-powershell"></a>Azure PowerShell の使用
+インストールされているバージョンを表示するには、以下を実行します。
 
-Azure PowerShell には、Bicep CLI をインストールする機能がまだありません。 Azure PowerShell (v 5.6.0 以降) では、Bicep CLI が既にインストールされていて、PATH で使用できることが前提となっています。 [手動インストール](#install-manually)のいずれかの手順に従います。 Bicep CLI がインストールされると、デプロイ コマンドレットで必要とされるときに、Bicep CLI が常に呼び出されます。 たとえば、「 `New-AzResourceGroupDeployment ... -TemplateFile main.bicep` 」のように入力します。
+```bash
+az bicep version
+```
+
+### <a name="use-with-azure-powershell"></a>Azure PowerShell を使用する
+
+Azure PowerShell には、Bicep CLI をインストールする機能がまだありません。 Azure PowerShell (v 5.6.0 以降) では、Bicep CLI が既にインストールされていて、PATH で使用できることが前提となっています。 [手動インストール](#install-manually)のいずれかの手順に従います。
+
+Bicep ファイルをデプロイするには、Bicep CLI バージョン 0.3.1 以降が必要です。 Bicep CLI のバージョンを確認するには、次のようにします。
+
+```cmd
+bicep --version
+```
+
+> [!IMPORTANT]
+> Azure CLI によって、独自の自己完結型の Bicep CLI のバージョンがインストールされます。 Azure CLI に必要なバージョンがインストールされている場合でも、Azure PowerShell のデプロイは失敗します。
+
+Bicep CLI がインストールされると、デプロイ コマンドレットで必要とされるときに、Bicep CLI が常に呼び出されます。 次に例を示します。
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName myResourceGroup -TemplateFile azuredeploy.bicep
+```
 
 ### <a name="install-manually"></a>手動でインストールする
 

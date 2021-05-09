@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1977663f4661fca316e4839671abd76e07b5acda
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667637"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304802"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
 
@@ -339,9 +339,9 @@ Azure Blob Storage にある実際のデータのフォルダーまたはファ�
 フォルダーの LOCATION を指定すると、サーバーレス SQL プールのクエリで外部テーブルから選択が行われ、そのフォルダーからファイルが取得されます。
 
 > [!NOTE]
-> Hadoop や PolyBase とは異なり、サーバーレス SQL プールではサブフォルダーは返されません。 ファイル名が下線 (_) またはピリオド (.) で始まるファイルが返されます。
+> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。
 
-この例では、LOCATION='/webdata/' である場合、サーバーレス SQL プールのクエリで mydata.txt と _hidden.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
+この例では、LOCATION='/webdata/' である場合、サーバーレス SQL プールのクエリで mydata.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
 ![外部テーブルの再帰型データ](./media/develop-tables-external-tables/folder-traversal.png)
 

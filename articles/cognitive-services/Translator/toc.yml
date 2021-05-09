@@ -5,7 +5,7 @@
   items:
     - name: 言語サポート
       href: language-support.md
-    - name: 料金と制限
+    - name: 価格
       href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/translator'
 - name: Text Translation
   expanded: true
@@ -14,7 +14,7 @@
       href: translator-info-overview.md
     - name: Translator に関する FAQ
       href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: クイック スタート
+    - name: クイックスタート
       href: quickstart-translator.md
     - name: サンプル
       items:
@@ -86,9 +86,9 @@
   items:
     - name: Custom Translator とは
       href: custom-translator/overview.md
-    - name: よくあるご質問
+    - name: よく寄せられる質問
       href: custom-translator/faq.md
-    - name: クイック スタート
+    - name: クイックスタート
       href: custom-translator/quickstart-build-deploy-custom-model.md
     - name: 操作方法ガイド
       items:
@@ -138,7 +138,7 @@
   items:
     - name: ドキュメント変換とは
       href: document-translation/overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       href: document-translation/get-started-with-document-translation.md
     - name: 操作方法ガイド
       items:
@@ -146,30 +146,42 @@
           href: document-translation/create-sas-tokens.md
     - name: リファレンス
       items:
-        - name: ドキュメントの形式の取得
-          href: document-translation/reference/get-document-formats.md
-        - name: 用語集の形式の取得
-          href: document-translation/reference/get-glossary-formats.md
-        - name: ドキュメントのストレージ ソースの取得
-          href: document-translation/reference/get-document-storage-source.md
-        - name: バッチ要求の送信
-          href: document-translation/reference/submit-batch-request.md
-        - name: 操作のドキュメント状態の取得
-          href: document-translation/reference/get-operation-documents-status.md
+        - name: サポートされるドキュメントの形式の取得
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: サポートされる用語集の形式の取得
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: サポートされるストレージ ソースの取得
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: 翻訳の開始
+          href: document-translation/reference/start-translation.md
+        - name: ドキュメント状態の取得
+          href: document-translation/reference/get-documents-status.md
         - name: ドキュメント状態の取得
           href: document-translation/reference/get-document-status.md
-        - name: 操作の取得
-          href: document-translation/reference/get-operations.md
-        - name: 操作を取り消す
-          href: document-translation/reference/cancel-operation.md
+        - name: 翻訳状態の取得
+          href: document-translation/reference/get-translations-status.md
+        - name: 翻訳状態の取得
+          href: document-translation/reference/get-translation-status.md
+        - name: 翻訳の取り消し
+          href: document-translation/reference/cancel-translation.md
+- name: 操作方法ガイド
+  items:
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: encrypt-data-at-rest.md
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/en-us/support/legal/cognitive-services-compliance-and-privacy'
-    - name: 暗号化
-      href: encrypt-data-at-rest.md
     - name: コード サンプル (GitHub)
       href: 'https://aka.ms/TranslatorGitHub'
     - name: プライバシーと Cookie

@@ -4,19 +4,19 @@ description: Service Bus セキュリティ ベースラインによって、Azu
 author: msmbaldwin
 ms.service: service-bus-messaging
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 03/29/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8b3a67fc06594a4782ba55c17ab36c0bad9cf2a0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9f437c01b4c8ec1df618ac3f4be9ecd55a930fb1
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100574929"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967814"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Service Bus 用の Azure セキュリティ ベースライン
 
-Service Bus 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。 このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) に基づいて作成されています。 詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Service Bus に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、Service Bus に適用される Azure セキュリティ ベンチマークと関連ガイダンスで定義されている **セキュリティ コントロール** によってグループ化されています。 Service Bus に適用されない **コントロール**、または Microsoft が責任を持つものは、除外されています。
 
 Service Bus を完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Service Bus セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
 
@@ -24,7 +24,7 @@ Service Bus を完全に Azure セキュリティ ベンチマークにマップ
 
 *詳細については、[Azure セキュリティ ベンチマークの「ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
-### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する 
+### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
 **ガイダンス**:Service Bus と Azure Private Link サービスとの統合により、仮想ネットワークにバインドされている仮想マシンなどのワークロードから、メッセージング機能への安全なプライベート アクセスができるようになります。 Service Bus 名前空間へのプライベート エンドポイント接続を作成します。 プライベート エンドポイントは、ご自分の仮想ネットワークからのプライベート IP アドレスを使用して、サービスを実質的に仮想ネットワークに取り込みます。 サービスへのすべてのトラフィックをそのプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute や VPN 接続、パブリック IP アドレスは必要ありません。
 
@@ -34,9 +34,13 @@ Service Bus を完全に Azure セキュリティ ベンチマークにマップ
 
 - [特定の IP アドレスまたは範囲から Azure Service Bus への接続を許可します](service-bus-ip-filtering.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 この制御に関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.ServiceBus**:
+
+[!INCLUDE [Resource Policy for Microsoft.ServiceBus 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.servicebus-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2:仮想ネットワーク、サブネット、ネットワーク インターフェイスの構成とトラフィックを監視してログに記録する
 
@@ -52,9 +56,9 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4:既知の悪意のある IP アドレスとの通信を拒否する
 
@@ -64,9 +68,9 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 - [Azure Security Center の統合された脅威インテリジェンス](../security-center/azure-defender.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
@@ -74,9 +78,9 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 - [Network Watcher を有効にする方法](../network-watcher/network-watcher-create.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出または侵入防止システム (IDS または IPS) をデプロイする
 
@@ -86,19 +90,19 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 - [指定された IP アドレスに対して Service Bus 名前空間のファイアウォール規則を追加する方法](service-bus-ip-filtering.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8:ネットワーク セキュリティ規則の複雑さと管理オーバーヘッドを最小限に抑える
 
-**ガイダンス**:仮想ネットワーク サービス タグを使用して、Service Bus リソースとの間のトラフィックのフィルター処理を行うためのネットワーク アクセス制御を、ネットワーク セキュリティ グループまたは Azure ファイアウォールに定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたはターゲット フィールドにサービス タグ名 (ServiceBus など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 
+**ガイダンス**: 仮想ネットワーク サービス タグを使用して、Service Bus リソースとの間のトラフィックのフィルター処理を行うためのネットワーク アクセス制御を、ネットワーク セキュリティ グループまたは Azure Firewall に定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたはターゲット フィールドにサービス タグ名 (ServiceBus など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 
 
 - [サービス タグの概要と使用](../virtual-network/service-tags-overview.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
@@ -111,15 +115,15 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Service Bus 名前空間の Azure 組み込みポリシー](./policy-reference.md#azure-service-bus-messaging)
+- [Service Bus 名前空間の Azure 組み込みポリシー](https://docs.microsoft.com/azure/service-bus-messaging/policy-reference#azure-service-bus-messaging)
 
-- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
+- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10:トラフィック構成規則を文書化する
 
@@ -129,27 +133,27 @@ Azure Security Center を使用し、ネットワークの保護に関する推�
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。 
 
-- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md) 
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 - [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md) 
 
 - [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Service Bus に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
@@ -167,9 +171,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
@@ -179,19 +183,23 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 この制御に関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.ServiceBus**:
+
+[!INCLUDE [Resource Policy for Microsoft.ServiceBus 2.3](../../includes/policy/standards/asb/rp-controls/microsoft.servicebus-2-3.md)]
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
 **ガイダンス**:Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定し、Service Bus 関連のインシデントを取得して確認します。
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
-
-**Azure Security Center の監視**: 適用なし
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
@@ -203,9 +211,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
@@ -217,11 +225,11 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
 
-## <a name="identity-and-access-control"></a>ID とアクセスの制御
+**Azure Security Center の監視**: なし
+
+## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
 *詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
@@ -229,15 +237,15 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、ロールの割り当てを通じて Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 Service Bus に対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。
 
-- [Azure Service Bus 用の組み込みロール](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
+- [Azure Service Bus 用の組み込みロール](https://docs.microsoft.com/azure/service-bus-messaging/authenticate-application#azure-built-in-roles-for-azure-service-bus)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole) 
+- [PowerShell を使用して Azure Active Directory (Azure AD) でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
@@ -247,9 +255,9 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 - [Service Bus の Shared Access Signature について](service-bus-sas.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
@@ -267,9 +275,9 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 - [Azure Policy を使用する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory シングル サインオン (SSO) を使用する
 
@@ -279,67 +287,67 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 - [Azure AD を使用した SSO について](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**:Azure Active Directory 多要素認証 (MFA) を有効にし、Service Bus 対応リソースを保護するための Azure Security Center ID とアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証を有効にし、Service Bus 対応リソースを保護するための Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
-**ガイダンス**:多要素認証 (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Service Bus 対応リソースを構成します。
+**ガイダンス**: 多要素認証が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Service Bus 対応リソースを構成します。
 
 - [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティに関するログとアラート
 
-**ガイダンス**: Azure Active Directory セキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
+**ガイダンス**:Azure Active Directory (Azure AD) のセキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
 - [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: Azure AD のネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。 
+**ガイダンス**: Azure Active Directory (Azure AD) のネームド ロケーションを使用して、IP アドレス範囲または国、リージョンの特定の論理グループからのアクセスのみを許可します。
 
 - [Azure AD のネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
-**ガイダンス**:Service Bus などの Azure リソースの主要な認証および認可システムとして Azure Active Directory (AD) を使用します。 これにより、Azure ロールベースのアクセス制御 (Azure RBAC) で機密性の高いリソースを管理できるようになります。
+**ガイダンス**: Service Bus などの Azure リソースの主要な認証および認可システムとして Azure Active Directory (Azure AD) を使用します。 これにより、Azure ロールベースのアクセス制御 (Azure RBAC) で機密性の高いリソースを管理できるようになります。
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure Active Directory を使用して Service Bus リソースへのアクセスを承認する](authenticate-application.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure AD を使用して Service Bus リソースへのアクセスを承認する](authenticate-application.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
@@ -347,15 +355,15 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 さらに、Service Bus 名前空間の Shared Access Signature を定期的にローテーションさせます。
 
-- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
+- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 - [Service Bus 名前空間の Shared Access Signature について](service-bus-sas.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: 非アクティブ化された資格情報へのアクセスの試行を監視する
 
@@ -363,17 +371,17 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 次に Azure Monitor で、ログで発生する特定のアクションに対して必要なログ アラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-- [Azure Active Directory を使用して Service Bus リソースへのアクセスを承認する](authenticate-application.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure AD を使用して Service Bus リソースへのアクセスを承認する](authenticate-application.md)
 
 **責任**: Customer
 
+**Azure Security Center の監視**: なし
+
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウント サインイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**:検出された、Service Bus 対応リソースに関連する疑わしいアクションに対する自動応答を構成するには、Azure Active Directory の Identity Protection とリスク検出機能を使用します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
+**ガイダンス**: 検出された、Service Bus 対応リソースに関連する疑わしいアクションに対する自動応答を構成するには、Azure Active Directory (Azure AD) の Identity Protection とリスク検出機能を使用します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
 
 - [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -381,19 +389,19 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: サポート シナリオで関連する顧客データに Microsoft がアクセスできるようにする
 
 **ガイダンス**:現時点ではご利用いただけません。カスタマー ロックボックスは、Service Bus ではまだサポートされていません。
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
-
-**Azure Security Center の監視**: 適用なし
+- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-protection"></a>データ保護
 
@@ -405,9 +413,9 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2:機密情報を格納または処理するシステムを分離する
 
@@ -421,9 +429,9 @@ Service Bus へのデータ プレーン アクセスは、マネージド ID、
 
 - [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
@@ -441,9 +449,9 @@ Microsoft では、Azure Service Bus 用の基になるインフラストラク�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
@@ -451,9 +459,9 @@ Microsoft では、Azure Service Bus 用の基になるインフラストラク�
 
 - [Service Bus のセキュリティ機能については、ネットワーク セキュリティに関するページを参照してください](network-security.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
@@ -463,9 +471,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
@@ -473,9 +481,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Service Bus の Azure RBAC と使用可能なロールについて](authenticate-application.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
@@ -483,9 +491,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Service Bus を暗号化するためにカスタマー マネージド キーを構成する方法](configure-customer-managed-key.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
@@ -493,9 +501,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
@@ -511,17 +519,17 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
@@ -533,17 +541,17 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**: 組織のニーズに応じて、承認された Azure リソースとコンピューティング リソース用に承認されたソフトウェアのインベントリを作成します。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
@@ -559,9 +567,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
@@ -576,9 +584,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11:Azure Resource Manager を操作するユーザーの機能を制限する
 
@@ -586,9 +594,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Resource Manager へのアクセスをブロックするように条件付きアクセスを構成する方法](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
@@ -597,21 +605,20 @@ Microsoft によって管理される基になるプラットフォームの場�
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**:Azure Service Bus デプロイの標準セキュリティ構成を定義して実装します。 また、次のように、Azure Service Bus 用の組み込みのポリシー定義を使用することもできます。
-
 - Service Bus で診断ログを有効にする必要がある
 - Service Bus で、仮想ネットワーク サービス エンドポイントを使用して、プライベート ネットワークへのネットワーク トラフィックを制限する必要がある
 
 構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ServiceBus" 名前空間で Azure Policy エイリアスを使用します。
 
-- [Service Bus 用の Azure 組み込みポリシー](./policy-reference.md)
+- [Service Bus 用の Azure 組み込みポリシー](policy-reference.md)
 
 - [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
@@ -621,9 +628,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy の効果の詳細について](../governance/policy/concepts/effects.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
@@ -631,9 +638,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
@@ -641,23 +648,23 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
-**ガイダンス**:Azure 仮想マシン、または Azure App Service 上で実行されている Web アプリケーションが Service Bus エンティティへのアクセスに使用されている場合、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Service Bus デプロイの Shared Access Signature の管理を簡素化し、セキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
+**ガイダンス**: Azure 仮想マシン、または Azure App Service 上で実行されている Web アプリケーションが Service Bus エンティティへのアクセスに使用されている場合、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Service Bus デプロイの Shared Access Signature の管理を簡素化し、セキュリティで保護します。 Key Vault の論理的な削除を確実に有効にします。
 
-- [Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する](service-bus-managed-service-identity.md)
+- [Service Bus リソースにアクセスするために Azure Active Directory (Azure AD) を使用してマネージド ID を認証する](service-bus-managed-service-identity.md)
 
 - [Service Bus 用にカスタマー マネージド キーを構成する](configure-customer-managed-key.md)
 
 - [キー コンテナーを作成する方法](../key-vault/general/quick-create-portal.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
@@ -665,13 +672,13 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 マネージド ID を使用して、Azure Active Directory (Azure AD) で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、Azure AD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
 
-- [Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する](service-bus-managed-service-identity.md)
+- [Azure AD を使用して Service Bus リソースにアクセスするためのマネージド ID を認証する](service-bus-managed-service-identity.md)
 
 - [Service Bus 用にカスタマー マネージド キーを構成する](configure-customer-managed-key.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
 
@@ -679,9 +686,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
@@ -693,13 +700,13 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft のマルウェア対策は、Azure サービスをサポートする基になるホストで有効になっていますが、顧客のコンテンツに対しては実行されません。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳しくは、「[Azure Security ベンチマーク:データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
@@ -707,9 +714,9 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [Azure Service Bus の geo ディザスター リカバリーについて](service-bus-geo-dr.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、すべてのカスタマー マネージド キーをバックアップする
 
@@ -721,9 +728,9 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [Key Vault のシークレットをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
@@ -731,23 +738,23 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [Azure Service Bus の保存データを暗号化するためにカスタマー マネージド キーを構成する方法](configure-customer-managed-key.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
 **ガイダンス**: Key Vault で論理的な削除を有効にして、偶発的または悪意のある削除からキーを保護します。 Azure Service Bus では、カスタマー マネージド キーに [論理的な削除] と [Do Not Purge]\(消去しない\) が構成されている必要があります。
 
-- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
+- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md)
 
 - [キーを使用したキー コンテナーの設定](../event-hubs/configure-customer-managed-key.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="incident-response"></a>インシデント対応
 
@@ -763,9 +770,9 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [独自のインシデント対応計画を作成するために NIST の「コンピューター セキュリティ インシデント対応ガイド」を使用する](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
@@ -777,9 +784,9 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
@@ -787,9 +794,9 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [NIST の出版物:「IT 計画と機能に関するテスト、トレーニング、演習プログラムのガイド」を参照してください。](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
@@ -797,9 +804,9 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
@@ -809,21 +816,19 @@ Microsoft のマルウェア対策は、Azure サービスをサポートする�
 
 - [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
-**ガイダンス**: 
-
-Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して自動的に応答をトリガーし、Azure リソースを保護できます。 
+**ガイダンス**: Azure Security Center のワークフロー自動化機能を使用すると、セキュリティのアラートと推奨事項に対して自動的に応答をトリガーし、Azure リソースを保護できます。 
 
 - [Security Center でワークフロー自動化を構成する方法](../security-center/workflow-automation.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
@@ -837,11 +842,11 @@ Azure Security Center のワークフロー自動化機能を使用すると、�
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
-- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
+- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

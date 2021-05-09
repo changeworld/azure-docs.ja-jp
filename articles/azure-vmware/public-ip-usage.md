@@ -3,12 +3,12 @@ title: Azure VMware Solution でパブリック IP 機能を使用する方法
 description: この記事では、Azure Virtual WAN でパブリック IP 機能を使用する方法について説明します。
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.openlocfilehash: 640f359ed8934048bffd7f58b36e8a3eef71c2f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 794e24e531d464adf58d5a06b5a411ada18c4a60
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99581382"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023658"
 ---
 # <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Azure VMware Solution でパブリック IP 機能を使用する方法
 
@@ -47,6 +47,9 @@ Web サーバーによって、その要求が受信され、要求された情�
 
 ## <a name="test-case"></a>テスト ケース
 このシナリオでは、IIS Web サーバーをインターネットに公開します。 パブリック IP アドレスで Web サイトを公開するには、Azure VMware Solution のパブリック IP 機能を使用します。  ファイアウォールで NAT 規則を構成し、パブリック IP を使用して Azure VMware Solution リソース (Web サーバーを利用する VM) にアクセスします。
+
+>[!TIP]
+>エグレス トラフィックを有効にするには、[セキュリティ構成] > [インターネット トラフィック] を **Azure Firewall** に設定する必要があります。
 
 ## <a name="deploy-virtual-wan"></a>Virtual WAN をデプロイする
 
@@ -152,7 +155,7 @@ Web サーバーによって、その要求が受信され、要求された情�
 
 ## <a name="limitations"></a>制限事項
 
-SDDC ごとに 100 個のパブリック IP を使用できます。
+プライベート クラウドごとに 100 のパブリック IP を使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

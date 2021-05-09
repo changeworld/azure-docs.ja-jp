@@ -4,12 +4,12 @@ description: クイック スタート:Azure Event Grid と Azure CLI を使用�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e1989c94cc7b260cfc36a3129d2743350ca430bf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91324112"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780495"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイックスタート: Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
 
@@ -21,7 +21,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 Az
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 
 
 次の例では、*gridResourceGroup* という名前のリソース グループを *westus2* の場所に作成します。
 

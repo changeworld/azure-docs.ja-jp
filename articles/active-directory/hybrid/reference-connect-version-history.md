@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7269a2435715834a2c1e6723de3fdc6e72eaad5f
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955450"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074541"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -57,8 +57,18 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >
 >廃止されたバージョンのバージョン履歴情報については、[Azure AD Connect バージョンのリリース履歴アーカイブ](reference-connect-version-history-archive.md)に関する記事を参照してください。
 
+## <a name="1640"></a>1.6.4.0
+
+### <a name="release-status"></a>リリースの状態
+3/31/2021: ダウンロード専用にリリース。自動アップグレードには使用できません
+
+### <a name="bug-fixes"></a>バグの修正
+- このリリースでは、バージョン 1.6.2.4 のバグが修正されています。このリリースにアップグレードした後に、Azure AD Connect Health 機能が正しく登録されず、機能しませんでした。 ビルド 1.6.2.4 をデプロイしたお客様には、このビルドを使用して Azure AD Connect サーバーを更新することが要求されます。これにより、Health 機能が正しく登録されます。 
 
 ## <a name="1624"></a>1.6.2.4
+>[!IMPORTANT]
+> 2021 年 3 月 30 日の更新: このビルドで問題が検出されました。 このビルドをインストールすると、Health サービスが登録されません。 このビルドをインストールしないことをお勧めします。 修正プログラムが間もなくリリースされる予定です。
+> このビルドが既にインストールされている場合は、[こちらの記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#manually-register-azure-ad-connect-health-for-sync)に示されているように、コマンドレットを使用して手動で Health サービスを登録できます
 
 >[!NOTE]
 > - このリリースはダウンロードでのみ提供されます。
@@ -66,7 +76,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 > - このリリースでは、AADConnect サーバーは既定で、新しい V2 エンド ポイントに設定されます。 このエンド ポイントは、ドイツ国内クラウド、中国国内クラウド、米国政府のクラウドではサポートされていないことに注意してください。これらのクラウドにこのバージョンをデプロイする必要がある場合は、[こちらの手順](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback)に従って V1 エンド ポイントに戻す必要があります。 そのようにしないと、同期でエラーが発生します。
 
 ### <a name="release-status"></a>リリースの状態
-2021 年 3 月 19 日: ダウンロード対象としてリリース済み
+3/19/2021: ダウンロード用にリリース。自動アップグレードには使用できません
 
 ### <a name="functional-changes"></a>機能の変更点
 

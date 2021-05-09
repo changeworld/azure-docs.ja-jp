@@ -9,20 +9,51 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 03/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8100d9e12f107e0c4598876c46453b46c6ee4d0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee652047a33d73ece2d7648905fa590d90b1fb2f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122002"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029507"
 ---
 # <a name="known-issues---azure-arc-enabled-data-services-preview"></a>既知の問題 - Azure Arc 対応データ サービス (プレビュー)
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="data-controller"></a>データ コントローラー
+
+- Azure portal を使用して、直接接続モードでデータ コントローラーを作成できます。 その他の Azure Arc 対応データ サービス ツールを使用したデプロイはサポートされていません。 具体的には、このリリースでは、次のツールのいずれかを使用して直接接続モードでデータ コントローラーをデプロイすることはできません。
+   - Azure Data Studio
+   - Azure Data CLI (`azdata`)
+   - Kubernetes ネイティブ ツール
+
+   「[Azure Arc データ コントローラーをデプロイする | 直接接続モード](deploy-data-controller-direct-mode.md)」では、ポータルでデータ コントローラーを作成する方法について説明しています。 
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
+
+- 直接接続モードが有効になっている Arc データ コントローラーに Azure Arc 対応 Postgres Hyperscale サーバー グループをデプロイすることはサポートされていません。
+- サーバー グループの構成を編集して追加の拡張機能を有効にするときに `--extensions` パラメーターに無効な値を渡すと、有効な拡張機能の一覧がサーバー グループの作成時の設定に誤ってリセットされ、ユーザーは追加の拡張機能を作成できなくなります。 そのような場合に使用できる唯一の回避策は、サーバー グループを削除して再デプロイすることです。
+
 ## <a name="february-2021"></a>2021 年 2 月
 
-- 接続されたクラスター モードが無効です
+### <a name="data-controller"></a>データ コントローラー
+
+- 直接接続クラスター モードは無効になっています
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
+
+- 現時点では、ポイントインタイム リストアは NFS ストレージではサポートされていません。
+- 同時に、pg_cron 拡張機能を有効にしたり、構成することはできません。 これには、2 つのコマンドを使用する必要があります。 1 つは有効化のコマンドで、もう 1 つは構成するコマンドです。 
+
+   次に例を示します。
+   ```console
+   § azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+   § azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+   ```
+
+   最初のコマンドでは、サーバー グループを再起動する必要があります。 そのため、2 つ目のコマンドを実行する前に、サーバー グループの状態が更新中から準備完了に移行していることを確認します。 再起動が完了する前に 2 つ目のコマンドを実行すると、失敗します。 そのような場合は、しばらく待ってから、2 つ目のコマンドをもう一度実行してください。
 
 ## <a name="introduced-prior-to-february-2021"></a>2021 年 2 月より前に確認されたもの
 
@@ -43,12 +74,6 @@ ms.locfileid: "102122002"
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="各ゾーンのチェックボックスをオフにして、[なし] を指定します。":::
 
-### <a name="postgresql"></a>PostgreSQL
-
-- Azure Arc 対応 PostgreSQL Hyperscale では、指定した相対時点まで復元できない場合に、不正確なエラー メッセージが返されます。 たとえば、バックアップに含まれる内容よりも古い特定の時点に復元するよう指定した場合、復元は失敗し、`ERROR: (404). Reason: Not found. HTTP response body: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}` のようなエラー メッセージが表示されます。
-これが発生した場合は、バックアップが存在する日付範囲内の特定の時点を指定した後、コマンドを再始動します。 この範囲を特定するには、バックアップを一覧表示し、それが取得された日付を確認します。
-- ポイントインタイム リストアは、サーバー グループ間でのみサポートされます。 ポイントインタイム リストア操作の対象サーバーに、バックアップ取得元のサーバーを指定することはできません。 これは、別のサーバー グループである必要があります。 ただし、完全復元は同じサーバー グループに対してサポートされています。
-- 完全復元を実行する際は、backup-id が必要です。 既定では、backup-id を指定していない場合は、最新のバックアップが使用されます。 これは、このリリースでは機能しません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56ffa8c33c409e274318407a70f33edaabb5073d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578500"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107283815"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -123,7 +123,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50055 | InvalidPasswordExpiredPassword - パスワードの期限が切れています。 |
 | AADSTS50056 | パスワードが無効または null です。パスワードがこのユーザーのストアに存在しません。 |
 | AADSTS50057 | UserDisabled - ユーザー アカウントが無効にされています。 アカウントは、管理者によって無効にされています。 |
-| AADSTS50058 | UserInformationNotProvided - ユーザーがサインインしていないことを意味します。 これは、ユーザーが認証されておらず、まだサインインしていないときに想定される一般的なエラーです。</br>ユーザーがその前にサインインした SSO のコンテキストでこのエラーが推奨された場合は、SSO セッションが見つからないか無効であることを意味します。</br>prompt=none が指定されている場合、このエラーがアプリケーションに返される可能性があります。 |
+| AADSTS50058 | UserInformationNotProvided - ユーザーがサインインしていないことを意味します。 これは、ユーザーが認証されておらず、まだサインインしていないときに想定される一般的なエラーです。</br>ユーザーがその前にサインインした SSO のコンテキストでこのエラーが発生した場合は、SSO セッションが見つからないか無効であることを意味します。</br>prompt=none が指定されている場合、このエラーがアプリケーションに返される可能性があります。 |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided - テナントを識別する情報が要求内に見つからず、指定されたどの資格情報でも暗黙的に示されませんでした。 ユーザーはテナント管理者に連絡して問題解決に協力してもらうことができます。 |
 | AADSTS50061 | SignoutInvalidRequest - サインアウト要求が無効です。 |
 | AADSTS50064 | CredentialAuthenticationError - ユーザー名またはパスワードの資格情報の検証に失敗しました。 |

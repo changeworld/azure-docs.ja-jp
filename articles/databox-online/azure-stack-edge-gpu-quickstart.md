@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 01/27/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: b6389152116a47bedbc9c2dc44231f3e1732fdc6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 43477f11effaafb0bcd6158be6843c79d19092ac
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055112"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210812"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>クイックスタート: GPU 搭載の Azure Stack Edge Pro を使い始める 
 
@@ -36,7 +36,7 @@ ms.locfileid: "106055112"
 
 ## <a name="deployment-steps"></a>デプロイメントの手順
 
-1. **設置**: クロスオーバー ケーブルまたは USB イーサネット アダプターを使用して、ポート 1 をクライアント コンピューターに接続します。 データ用に、他に少なくとも 1 つのデバイス ポートを接続します。できる限り、少なくとも 1 つの GbE スイッチと SFP+ 銅線ケーブルを経由して、インターネットへの 25 GbE (ポート 3 からポート 6) を使用します。 提供された電源コードを電源装置に接続し、配電コンセントを分離します。 フロント パネルの電源ボタンを押して、デバイスの電源を入れます。  
+1. **設置**: クロスオーバー ケーブルまたは USB イーサネット アダプターを使用して、ポート 1 をクライアント コンピューターに接続します。 データ用に、他に少なくとも 1 つのデバイス ポートを接続します。できる限り、インターネットへの 25 GbE (ポート 3 からポート 6) を SFP + 銅線ケーブルで使用するか、ポート 2 を RJ45 パッチ ケーブルで使用してください。 提供された電源コードを電源装置に接続し、配電コンセントを分離します。 フロント パネルの電源ボタンを押して、デバイスの電源を入れます。  
 
     互換性のあるネットワーク ケーブルとスイッチについては、[Cavium FastlinQ 41000 シリーズの相互運用性マトリックス](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)および [Mellanox デュアル ポート 25G ConnectX-4 チャネル ネットワーク アダプター互換製品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)に関するドキュメントを参照してください。
 

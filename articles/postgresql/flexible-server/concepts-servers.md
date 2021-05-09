@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) のサーバー
 description: この記事では、Azure Database for PostgreSQL - フレキシブル サーバーを構成および管理するための考慮事項とガイドラインを示します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 5cd4454d5b77d18940f6693a25a691a01f4fedec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 60edbcf97b43747246e84517cc65bb0dca4ff546
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90932471"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626845"
 ---
 # <a name="servers---azure-database-for-postgresql---flexible-server"></a>サーバー - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -42,8 +42,8 @@ Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベ
 
 次の要素が、データベースへの安全なアクセスを確保するうえで役に立ちます。
 
-|||
-|:--|:--|
+| セキュリティの概念 | 説明 |
+| :-- | :-- |
 | **認証と権限承認** | Azure Database for PostgreSQL サーバーは、ネイティブ PostgreSQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。 |
 | **プロトコル** | サービスは、PostgreSQL で使用されるメッセージ ベースのプロトコルをサポートしています。 |
 | **TCP/IP** | プロトコルは、TCP/IP および UNIX ドメイン ソケット経由でサポートされます。 |

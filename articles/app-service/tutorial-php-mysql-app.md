@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aaef3f28ea9b7e41bce35661e9515f6efcc9ade5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0810f023f4e2e192f2cb0d83f2a028cdded9e275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184442"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779472"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP および MySQL アプリを構築する
 
@@ -160,7 +160,7 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
+Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL にサーバーを作成します。
 
 次のコマンドの *\<mysql-server-name>* プレースホルダーを一意のサーバー名で置き換え、 *\<admin-user>* プレースホルダーをユーザー名で置き換え、 *\<admin-password>* プレースホルダーをパスワードで置き換えます。 このサーバー名は、MySQL エンドポイント (`https://<mysql-server-name>.mysql.database.azure.com`) の一部として使用されるため、Azure のすべてのサーバーで一意である必要があります。 MySQL DB SKU の選択の詳細については、「[Azure Database for MySQL サーバーの作成](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server)」をご覧ください。
 
@@ -186,7 +186,7 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-Cloud Shell で [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
+Cloud Shell で [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -376,7 +376,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;app-name>_ と _&lt;mysql-server-name>_ を置き換えます。
 
@@ -407,7 +407,7 @@ Laravel には App Service のアプリケーション キーが必要です。 
 php artisan key:generate --show
 ```
 
-Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;app-name>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
+Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;app-name>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -421,7 +421,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく _パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
 
-Cloud Shell で [`az resource update`](/cli/azure/resource#az-resource-update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;app-name>_ プレースホルダーを置換します。
+Cloud Shell で [`az resource update`](/cli/azure/resource#az_resource_update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;app-name>_ プレースホルダーを置換します。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -649,7 +649,7 @@ git push azure main
 
 Azure App Service で PHP アプリケーションを実行している場合、コンソール ログをターミナルにパイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
-ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) コマンドを使用します。
+ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log#az_webapp_log_tail) コマンドを使用します。
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b67dcf038dbe13b8c040f317bb117f3b7a7afdde
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384240"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284206"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -52,6 +52,10 @@ Azure Spatial Anchors はマネージド クラウド サービスの開発者�
 **Q:Azure Spatial Anchors ではどのようにデータが格納されますか?**
 
 **A:** すべてのデータは、Microsoft によって管理されるデータ暗号化キーを使用して暗号化され、格納されます。また、すべてのデータは、リージョンごとにリソース単位で格納されます。
+
+**Q: Azure Spatial Anchors ではどこにデータが格納されますか?**
+
+**A:** データの格納先となるリージョンは、Azure Spatial Anchors アカウントで指定できます。 Microsoft は、回復性を確保するために他のリージョンにデータをレプリケートする場合がありますが、地域の境界を越えるデータのレプリケートまたは移動が Microsoft によって行われることはありません。 このデータは、Azure Spatial Anchors アカウントが構成されているリージョンに格納されます。 たとえば、アカウントが米国東部リージョンに登録されている場合、このデータは米国東部リージョンに格納されますが、回復性を確保するために北米地域内の別のリージョンにレプリケートされることがあります。
 
 **Q:Azure Spatial Anchors を使用すると、環境に関するどのような情報が送信されて、サービスに格納されますか?環境の画像は送信されて格納されますか?**
 

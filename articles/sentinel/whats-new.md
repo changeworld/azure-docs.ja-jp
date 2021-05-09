@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/11/2021
-ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604255"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490304"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -32,13 +32,51 @@ ms.locfileid: "104604255"
 
 ## <a name="march-2021"></a>2021 年 3 月
 
+- [表示モード中に自動的に更新するようにブックを設定する](#set-workbooks-to-automatically-refresh-while-in-view-mode)
+- [Azure Firewall の新しい検出](#new-detections-for-azure-firewall)
 - [自動化ルールとインシデントによってトリガーされるプレイブック](#automation-rules-and-incident-triggered-playbooks) (すべての新しいプレイブックのドキュメントを含む)
 - [新しいアラート エンリッチメント: 強化されたエンティティ マッピングとカスタム詳細](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
 - [Azure Sentinel ブックを印刷するか PDF として保存する](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
 - [インシデント フィルターと並べ替えの設定がセッションに保存されるようになりました (パブリック プレビュー)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Microsoft 365 Defender インシデント統合 (パブリック プレビュー)](#microsoft-365-defender-incident-integration-public-preview)
 - [Azure Policy を使用した新しい Microsoft サービス コネクタ](#new-microsoft-service-connectors-using-azure-policy)
- 
+
+### <a name="set-workbooks-to-automatically-refresh-while-in-view-mode"></a>表示モード中に自動的に更新するようにブックを設定する
+
+Azure Sentinel ユーザーは、新しい [Azure Monitor 機能](https://techcommunity.microsoft.com/t5/azure-monitor/azure-workbooks-set-it-to-auto-refresh/ba-p/2228555)を使用して、表示セッション中にブック データを自動的に更新できるようになりました。
+
+各ブックまたはブック テンプレートで、:::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false"::: **[自動更新]** を選択して間隔のオプションを表示します。 現在の表示セッションに使用するオプションを選択し、 **[適用]** を選択します。
+
+- サポートされる更新間隔の範囲は **5 分** から **1 日** です。
+- 既定では、自動更新はオフになっています。 パフォーマンスを最適化するために、ブックを閉じるたびに自動更新もオフになり、バックグラウンドでは実行されません。 次にブックを開いたときに、必要に応じて自動更新をオンにしてください。
+- ブックの編集中は自動更新が一時停止します。自動更新の間隔は、編集モードから表示モードに戻るたびに再起動されます。
+
+    また、:::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false"::: **[更新]** ボタンを選択してブックを手動で更新した場合も、間隔が再起動されます。
+
+詳細については、「[チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)」と [Azure Monitor のドキュメント](../azure-monitor/visualize/workbooks-overview.md)を参照してください。
+
+### <a name="new-detections-for-azure-firewall"></a>Azure Firewall の新しい検出
+
+Azure Sentinel の[分析](import-threat-intelligence.md#analytics-puts-your-threat-indicators-to-work-detecting-potential-threats)領域に、すぐに使用できる Azure Firewall のいくつかの検出が追加されました。 これらの新しい検出機能により、既知の IOC に関連するインターネット ドメイン名または IP アドレスに対して内部ネットワーク上のコンピューターがクエリを実行したり接続したりすると、検出ルール クエリで定義されているように、セキュリティ チームはアラートを受け取ることができます。
+
+新しい検出には次のものが含まれます。
+
+- [Solorigate ネットワーク ビーコン](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/Solorigate-Network-Beacon.yaml)
+- [既知の GALLIUM ドメインとハッシュ](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/GalliumIOCs.yaml)
+- [Known IRIDIUM IP (既知の IRIDIUM IP)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/IridiumIOCs.yaml)
+- [既知の Phosphorus グループ ドメイン/IP](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/PHOSPHORUSMarch2019IOCs.yaml)
+- [DCU 削除に含まれる THALLIUM ドメイン](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ThalliumIOCs.yaml)
+- [ZINC に関連する、既知の悪意あるドキュメントのハッシュ](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/ZincJan272021IOCs.yaml)
+- [既知の STRONTIUM グループ ドメイン](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/STRONTIUMJuly2019IOCs.yaml)
+- [NOBELIUM - ドメインおよび IP IOC - 2021 年 3 月](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/NOBELIUM_DomainIOCsMarch2021.yaml)
+
+
+Azure Firewalls に対する検出は、組み込みのテンプレート ギャラリーに継続的に追加されます。 Azure Firewall の最新の検出を取得するには、 **[ルール テンプレート]** で **[データ ソース]** を **Azure Firewall** でフィルター処理します。
+
+:::image type="content" source="media/whats-new/new-detections-analytics-efficiency-workbook.jpg" alt-text="分析の効率ブックにおける新しい検出":::
+
+詳細については、「[Azure Sentinel での Azure Firewall の新しい検出](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958)」を参照してください。
+
 ### <a name="automation-rules-and-incident-triggered-playbooks"></a>自動化ルールとインシデントによってトリガーされるプレイブック
 
 自動化ルールは Azure Sentinel の新しい概念です。これを使用すると、インシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 自動化ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。

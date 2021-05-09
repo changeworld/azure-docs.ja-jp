@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c320c8497506a0269e65cd79e18aea1972354729
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 349aef1bb9382eec19d9ad9c7f6d4579c82b62de
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043939"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。
     
     >[!NOTE]
-    >発信 HTTP プロキシを使用している場合は、この URL (autologon.microsoftazuread-sso.com) がホワイトリストに登録されていることをご確認ください。 ワイルドカードは受け入れられない場合があるため、この URL を明示的に指定してください。 
+    >発信 HTTP プロキシを使用している場合は、この URL (autologon.microsoftazuread-sso.com) が許可されたリストに登録されていることをご確認ください。 ワイルドカードは受け入れられない場合があるため、この URL を明示的に指定してください。 
 
 * **サポートされている Azure AD Connect トポロジを使用する**:使用している Azure AD Connect トポロジが [こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
 

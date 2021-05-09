@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 2/18/2021
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 8630dd2fb1157fbeba99f2a06d73712ab46a63f4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f5a60f14799e872d835d651fc043edd27dfc6990
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035069"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105597"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -176,6 +176,12 @@ Microsoft ID は、アプリケーションに関連している可能性のあ�
 | `ngcmfa` | `mfa` と同等です。特定の高度な資格情報の種類のプロビジョニングに使用されます。 |
 | `wiaormfa`| ユーザーが Windows 資格情報または MFA 資格情報を使用して認証されたことを示します。 |
 | `none` | 認証は実行されませんでした。 |
+
+## <a name="access-token-lifetime"></a>Access token lifetime
+
+アクセス トークンの既定の有効期間は、トークンを要求するクライアント アプリケーションによって異なります。 たとえば、継続的アクセス評価 (CAE) 対応のセッションをネゴシエートする CAE 対応クライアントには、有効期間が長いトークン (最大 28 時間) が表示されます。  アクセス トークンの有効期限が切れると、クライアントは更新トークンを使用して新しい更新トークンとアクセス トークンを (通常は自動で) 取得する必要があります。
+
+アクセス トークンの有効期間を調整して、クライアント アプリケーションがアプリケーション セッションを期限切れにする頻度、およびユーザーを再認証する (自動的にまたは対話形式で) ように要求する頻度を制御できます。 詳細については、[構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
 
 ## <a name="validating-tokens"></a>トークンの検証
 

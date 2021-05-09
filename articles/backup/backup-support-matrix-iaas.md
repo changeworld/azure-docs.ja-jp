@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f63d0c3ad448a8ab9b91764d4c369fefddea25d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609789"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516724"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -28,7 +28,7 @@ Azure Backup サービスを使用して Azure VM をどのようにバックア
 **シナリオ** | **Backup** | **エージェント** |**復元**
 --- | --- | --- | ---
 Azure VM の直接バックアップ  | VM 全体をバックアップします。  | Azure VM では、追加のエージェントは必要ありません。 Azure Backup によって、VM 上で実行している [Azure VM エージェント](../virtual-machines/extensions/agent-windows.md)に対して拡張機能がインストールされ、使用されます。 | 次のように復元します。<br/><br/> - **基本的な VM を作成する**。 これは、VM に複数の IP アドレスなどの特別な構成がない場合に便利です。<br/><br/> - **VM ディスクを復元する**。 ディスクを復元します。 次にそれを既存の VM にアタッチするか、PowerShell を使用してディスクから新しい VM を作成します。<br/><br/> - **VM ディスクを交換する**。 VM が存在し、マネージド ディスク (未暗号化) を使用している場合、ディスクを復元し、それを使用して VM 上の既存のディスクを交換することができます。<br/><br/> - **特定のファイル/フォルダーを復元する**。 VM 全体ではなく、VM のファイルやフォルダーを復元できます。
-Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル、フォルダー、ボリュームをバックアップします。 | [Azure Recovery Services エージェント](backup-azure-file-folder-backup-faq.md)をインストールします。<br/><br/> Azure VM エージェントのバックアップ拡張機能と共に MARS エージェントを実行して、ファイル/フォルダー レベルで VM をバックアップできます。 | 特定のフォルダー/ファイルを復元します。
+Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル、フォルダー、ボリュームをバックアップします。 | [Azure Recovery Services エージェント](backup-azure-file-folder-backup-faq.yml)をインストールします。<br/><br/> Azure VM エージェントのバックアップ拡張機能と共に MARS エージェントを実行して、ファイル/フォルダー レベルで VM をバックアップできます。 | 特定のフォルダー/ファイルを復元します。
 バックアップ サーバーに Azure VM をバックアップする  | ファイル/フォルダー/ボリューム、システム状態/ベア メタル ファイル、アプリ データを System Center DPM または Microsoft Azure Backup Server (MABS) にバックアップします。<br/><br/> その後、DPM/MABS がバックアップ コンテナーにバックアップします。 | VM に DPM/MABS 保護エージェントをインストールします。 MARS エージェントは DPM/MABS にインストールされます。| ファイル/フォルダー/ボリューム、システム状態/ベア メタル ファイル、アプリ データを復元します。
 
 [バックアップ サーバーを使用した](backup-architecture.md#architecture-back-up-to-dpmmabs)バックアップと[サポート要件](backup-support-matrix-mabs-dpm.md)の詳細をご確認ください。
@@ -153,6 +153,7 @@ Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](ht
 [スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
 [Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | サポートされています
 スタンドアロン Azure VM の Windows 記憶域スペース構成 | サポートされています
+[Azure VM スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 単一の Azure VM をバックアップおよび復元するための、統一されたオーケストレーション モデルと柔軟なオーケストレーション モデルの両方でサポートされます。
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 

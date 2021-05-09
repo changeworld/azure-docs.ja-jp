@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: ae8b1eab81e3c898c25a613f552a49c8de64f49d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 3021d049a38f1d883518fc7c45aa8ca0a906c2f7
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889129"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221587"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>ストレージ イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -71,9 +71,12 @@ ms.locfileid: "104889129"
 
 1. パイプラインにパラメーターがある場合は、トリガー実行パラメーター サイド ナビゲーションで指定できます。 ストレージ イベント トリガーにより、BLOB のフォルダー パスとファイル名が、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャされます。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline().parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。 詳しい説明については、「[パイプラインでのトリガー メタデータの参照](how-to-use-trigger-parameterization.md)」を参照してください。
 
-    :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="プロパティをパイプライン パラメーターにマッピングしているストレージ イベント トリガーのスクリーンショット。":::
+   :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="プロパティをパイプライン パラメーターにマッピングしているストレージ イベント トリガーのスクリーンショット。":::
 
-    前の例では、.csv で終わる BLOB パスがコンテナー _sample-data_ の _event-testing_ フォルダーに作成されたときにトリガーが起動するように構成されています。 **folderPath** と **fileName** のプロパティは、新しい BLOB の場所をキャプチャします。 たとえば、MoviesDB.csv が sample-data/event-testing のパスに追加された場合、`@triggerBody().folderPath` には `sample-data/event-testing` の値が、`@triggerBody().fileName` には `moviesDB.csv` の値が含まれます。 これらの値は、例では、パイプライン パラメーター `sourceFolder` および `sourceFile` にマップされ、それぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` としてパイプライン全体で使用できます。
+   前の例では、.csv で終わる BLOB パスがコンテナー _sample-data_ の _event-testing_ フォルダーに作成されたときにトリガーが起動するように構成されています。 **folderPath** と **fileName** のプロパティは、新しい BLOB の場所をキャプチャします。 たとえば、MoviesDB.csv が sample-data/event-testing のパスに追加された場合、`@triggerBody().folderPath` には `sample-data/event-testing` の値が、`@triggerBody().fileName` には `moviesDB.csv` の値が含まれます。 これらの値は、例では、パイプライン パラメーター `sourceFolder` および `sourceFile` にマップされ、それぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` としてパイプライン全体で使用できます。
+
+   > [!NOTE]
+   > [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) でパイプラインとトリガーを作成する場合は、パラメーターとして `@trigger().outputs.body.fileName` と `@trigger().outputs.body.folderPath` を使用する必要があります。 これら 2 つのプロパティによって、BLOB 情報がキャプチャされます。 `@triggerBody().fileName` と `@triggerBody().folderPath` の代わりに、これらのプロパティを使用してください。
 
 1. 終了したら **[完了]** をクリックします。
 

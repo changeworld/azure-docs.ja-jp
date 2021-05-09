@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 2d65889a841655fe27994d3855f30f7a7e20e1ed
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c7474b001284286ed589f6b7995db6bc7fd50af
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94647598"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075068"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -304,7 +304,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | streetaddress | 番地 |
 | User | postalcode | 郵便番号 |
 | User | preferredlanguage | 優先言語 |
-| User | onpremisesuserprincipalname | オンプレミスの UPN |*
+| User | onpremisesuserprincipalname | オンプレミスの UPN |
 | User | mailNickname | メールのニックネーム |
 | User | extensionattribute1 | 拡張属性 1 |
 | User | extensionattribute2 | 拡張属性 2 |
@@ -419,16 +419,6 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | ExtractMailPrefix | なし |
 | Join | 結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。 |
 
-### <a name="custom-signing-key"></a>カスタム署名キー
-
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure PowerShell コマンドレット [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) を使用して、ご自身のアプリケーション オブジェクトの証明書キー資格情報を作成します。
-
-要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。
-
-```
-https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
-```
-
 ### <a name="cross-tenant-scenarios"></a>テナント間のシナリオ
 
 要求のマッピング ポリシーは、ゲスト ユーザーには適用されません。 要求のマッピング ポリシーがサービス プリンシパルに割り当てられたアプリケーションに、ゲスト ユーザーがアクセスしようとすると、既定のトークンが発行されます (ポリシーの効力がなくなります)。
@@ -531,6 +521,33 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="security-considerations"></a>セキュリティに関する考慮事項
+
+トークンを受信するアプリケーションは、クレーム値が Azure AD によって正式に発行され、改ざんできないという事実に依存します。 ただし、クレーム マッピング ポリシーを使用してトークンの内容を変更すると、これらの想定が正しくなくなる可能性があります。 アプリケーションは、悪意のあるアクターによって作成されたクレーム マッピング ポリシーからそれ自体を保護するために、トークンがクレーム マッピング ポリシーの作成者によって変更されたことを明示的に認識する必要があります。 これは、次の方法で実現できます。
+
+- カスタム署名キーを構成する
+- マップされたクレームを受け入れるようにアプリケーション マニフェストを更新する。
+ 
+これを行わないと、Azure AD は[`AADSTS50146` エラー コード](reference-aadsts-error-codes.md#aadsts-error-codes)を返します。
+
+### <a name="custom-signing-key"></a>カスタム署名キー
+
+サービス プリンシパル オブジェクトにカスタム署名キーを追加するには、Azure PowerShell コマンドレット [`New-AzureADApplicationKeyCredential`](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential) を使用して、ご自身のアプリケーション オブジェクトの証明書キー資格情報を作成します。
+
+要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
+
+### <a name="update-the-application-manifest"></a>アプリケーション マニフェストを更新する
+
+別の方法として、[アプリケーション マニフェスト](reference-app-manifest.md)で `acceptMappedClaims` プロパティを `true` に設定することもできます。 「[apiApplication リソースの種類](/graph/api/resources/apiapplication#properties)」に記載されているように、これにより、カスタム署名キーを指定せずに、アプリケーションでクレーム マッピングが使用できます。
+
+これを行うには、要求されたトークンの対象ユーザーが Azure AD テナントの検証済みドメイン名を使用する必要があります。つまり、(アプリケーション マニフェスト内で `identifierUris` によって表される) `Application ID URI` を例えば `https://contoso.com/my-api` に設定するか、(単に既定のテナント名を使用して) `https://contoso.onmicrosoft.com/my-api` に設定する必要があります。
+
+検証済みのドメインを使用していない場合、Azure AD は `AADSTS501461` エラー コードを、 *[AcceptMappedClaims is only supported for a token audience matching the application GUID or an audience within the tenant's verified domains. Either change the resource identifier, or use an application-specific signing key]\(AcceptMappedClaims は、アプリケーション GUID に一致するトークン対象ユーザー、またはテナントの検証済みドメイン内の対象ユーザーでのみサポートされています。リソース識別子を変更するか、アプリケーション固有の署名キーを使用してください\)* というメッセージと共に返します。
 
 ## <a name="see-also"></a>関連項目
 

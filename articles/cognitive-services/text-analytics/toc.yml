@@ -13,7 +13,7 @@
       href: whats-new.md
     - name: Text Analytics の FAQ
       href: text-analytics-resource-faq.md
-- name: Text Analytics のクイックスタート
+- name: クイックスタート
   href: quickstarts/client-libraries-rest-api.md
 - name: サンプル
   items:
@@ -71,21 +71,25 @@
       displayName: 'NER, Named entity recognition, PII, redaction'
     - name: Text Analytics for Health
       href: How-tos/text-analytics-for-health.md
-    - name: Text Analytics をデプロイする
+    - name: コンテナーの使用
       items:
-        - name: Containers
-          items:
-            - name: コンテナーのインストールと実行
-              href: how-tos/text-analytics-how-to-install-containers.md
-            - name: コンテナーを構成する
-              href: text-analytics-resource-container-config.md
-            - name: Container Instances の使用
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-            - name: Kubernetes サービス (AKS) の使用
-              href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-            - name: Cognitive Services コンテナーのドキュメント
-              href: ../containers/index.yml
+        - name: コンテナーのインストールと実行
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: コンテナーを構成する
+          href: text-analytics-resource-container-config.md
+        - name: Container Instances の使用
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
+        - name: Kubernetes サービス (AKS) の使用
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/text-analytics/context/context
+        - name: Azure AD 認証を使用する
+          href: ../authentication.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: API のバージョン 3 への移行
       href: migration-guide.md
 - name: 概念
@@ -164,13 +168,13 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: 外部とコミュニティのコンテンツ
       href: text-analytics-resource-external-community.md
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 試してみる
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

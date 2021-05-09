@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869023"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966947"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -117,7 +117,7 @@ Speech SDK 言語に基づき、`SpeechConfig` オブジェクトのインスタ
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-詳細については、<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a> を参照してください。
+詳細については、<a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a> を参照してください。
 
 ```csharp
 speechConfig.SetProperty(
@@ -126,7 +126,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-詳細については、<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a> を参照してください。
+詳細については、<a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a> を参照してください。
 
 ```cpp
 speechConfig->SetProperty(
@@ -135,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-詳細については、<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a> を参照してください。
+詳細については、<a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a> を参照してください。
 
 ```java
 speechConfig.setProperty(
@@ -144,7 +144,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-詳細については、<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a> を参照してください。
+詳細については、<a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a> を参照してください。
 
 ```python
 speech_config.set_property_by_name(
@@ -153,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-詳細については、<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a> を参照してください。
+詳細については、<a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a> を参照してください。
 
 ```javascript
 speechConfig.setProperty(
@@ -162,7 +162,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-詳細については、<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
+詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -170,7 +170,7 @@ speechConfig.setProperty(
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-詳細については、<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
+詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -213,14 +213,9 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxuanNeural` (プレビュー)
 * `zh-CN-XiaoruiNeural` (プレビュー)
 
-ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。
+ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
 
-現在、これらのニューラル音声では話し方の調整がサポートされています。
-* `zh-CN-XiaoxiaoNeural`
-
-話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、男性の声がピッチを上げて女性の音声を模倣するように、イントネーションを変更できます。
-
-現在、これらのニューラル音声ではロールプレイの調整がサポートされています。
+話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、女性の音声を模倣するために、男性の音声のピッチを上げ、イントネーションを変更することはできますが、音声名は変更されません。 現在、ロールプレイの調整は、次の中国語 (標準、簡体字) のニューラル音声でサポートされています。
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
@@ -238,15 +233,15 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 現時点では、`styledegree` では zh-CN-XiaoxiaoNeural のみがサポートされています。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
+> 現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
 
 **属性**
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `style` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、スタイルを指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
-| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | オプション (現時点では、`styledegree` では zh-CN-XiaoxiaoNeural のみがサポートされています)。|
-| `role` | 読み上げロールプレイを指定します。 音声は、異なる年齢と性別として動作します。  | オプション (現時点では、`role` では zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています)。|
+| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | オプション (現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。)|
+| `role` | 読み上げロールプレイを指定します。 音声は別の年齢と性別として動作しますが、音声名は変更されません。  | オプション (現時点では、`role` では zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています)。|
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
@@ -254,6 +249,7 @@ speechConfig!.setPropertyTo(
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調を表します |
 |                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します        |
+|                         | `style="narration-professional"` | コンテンツの読み取り用の職業的で客観的な語調を表します        |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
@@ -321,17 +317,19 @@ speechConfig!.setPropertyTo(
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
 
-各ニューラル音声でサポートされているロールを確認するには、次の表を使用してください。
+このテーブルを使用して、サポートされているロールとその定義を確認します。
 
-| 音声                   | ロール                       | 説明                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | 音声は若い成人の女性を模倣します。                 |
-|                         | `role="OlderAdultMale"`    | 音声は年配の男性を模倣します。                   |
-|                         | `role="Girl"`              | 音声は少女を模倣します。                               |
-|                         | `role="Boy"`               | 模倣は少年を模倣します。                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | 音声は若い成人の女性を模倣します。                 |
-|                         | `role="OlderAdultFemale"`  | 音声は年配の女性を模倣します。                 |
-|                         | `role="OlderAdultMale"`    | 音声は年配の男性を模倣します。                   |
+|ロール                     | 説明                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | 音声は少女を模倣します。 |
+|`role="Boy"`             | 模倣は少年を模倣します。 |
+|`role="YoungAdultFemale"`| 音声は若い成人の女性を模倣します。|
+|`role="YoungAdultMale"`  | 音声は若い成人の男性を模倣します。|
+|`role="OlderAdultFemale"`| 音声は年配の女性を模倣します。|
+|`role="OlderAdultMale"`  | 音声は年配の男性を模倣します。|
+|`role="SeniorFemale"`    | 音声は高齢の女性を模倣します。|
+|`role="SeniorMale"`      | 音声は高齢の男性を模倣します。|
+
 
 **例**
 
@@ -403,7 +401,7 @@ speechConfig!.setPropertyTo(
 | なし、または値が指定されていない場合 | 0 ミリ秒        |
 | x-weak                        | 250 ミリ秒      |
 | weak                          | 500 ミリ秒      |
-| 中                        | 750 ミリ秒      |
+| medium                        | 750 ミリ秒      |
 | strong                        | 1000 ミリ秒     |
 | x-strong                      | 1250 ミリ秒     |
 
@@ -876,7 +874,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 ブックマーク要素は、テキストまたはタグ シーケンス内の特定の場所を参照するために使用できます。
 
 > [!NOTE]
-> `bookmark`要素は、現時点では米国西部 (`westus`) リージョンの`en-US-AriaNeural`音声に対してのみ機能します。
+> `bookmark` 要素は、現時点では `en-US-AriaNeural` 音声に対してのみ機能します。
 
 **構文**
 

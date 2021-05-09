@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: イマーシブ リーダーの概要
+    - name: Immersive Reader とは
       href: Overview.md
     - name: 言語のサポート
       href: language-support.md
@@ -10,7 +10,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/'
     - name: リリース ノート
       href: release-notes.md
-- name: イマーシブ リーダーのクイックスタート
+- name: クイックスタート
   href: ./quickstarts/client-libraries.md
 - name: 操作方法
   items:
@@ -36,15 +36,25 @@
       href: how-to-store-user-preferences.md
     - name: 複数のイマーシブ リーダー リソースの使用
       href: how-to-multiple-resources.md
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/immersive-reader/context/context
+        - name: Azure AD 認証を使用する
+          href: ../authentication.md?context=/azure/cognitive-services/immersive-reader/context/context
 - name: リファレンス
   items:
     - name: JavaScript SDK
       href: reference.md
 - name: リソース
   items:
-    - name: 地域のサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

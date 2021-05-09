@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385583"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306383"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
@@ -92,7 +92,7 @@ ms.locfileid: "106385583"
 - すべてのバージョンの Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得 (ユーザーのオンプレミス UPN がルーティング可能でない場合)。 このシナリオは、段階的なロールアウトのモードでは WS-Trust エンドポイントにフォールバックしますが、段階的な移行が完了し、ユーザーのサインオンがフェデレーション サーバーに依存しなくなったときに機能しなくなります。
 
   >[!NOTE]
-  >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法に関する記事を参照してください
+  >それでも、フェデレーションからクラウド認証への最終的な切り替えを、 Azure AD Connect または PowerShell を使用して行う必要があります。 段階的ロールアウトによって、ドメインがフェデレーションからマネージドに切り替えられることはありません。  ドメイン カットオーバーの詳細については、[フェデレーションからパスワード ハッシュ同期に移行する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)方法および[フェデレーションからパススルー認証に移行する](plan-migrate-adfs-pass-through-authentication.md#step-2-change-the-sign-in-method-to-pass-through-authentication-and-enable-seamless-sso)方法に関する記事を参照してください。
   
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる
 

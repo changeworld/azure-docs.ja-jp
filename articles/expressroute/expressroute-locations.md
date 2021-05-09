@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: bb5efa11bcc723d0f373ae00cf7629a59b4a2ca9
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 7214e06b42cbc69a31ad66504301038c72728aa1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105959808"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310752"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -122,7 +122,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Internet2](https://internet2.edu/services/cloud-connect/#service-cloud-connect)** |サポートされています |サポートされています |シカゴ、ダラス、シリコン バレー、ワシントン DC |
 | **[Internet Initiative Japan Inc. - IIJ](https://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |サポートされています |サポートされています |大阪、東京 |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ、ロンドン |
-| **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、コペンハーゲン、ダブリン、フランクフルト、ロンドン、マルセイユ、パリ、チューリッヒ |
+| **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、コペンハーゲン、ダブリン、フランクフルト、ロンドン、マドリッド、マルセイユ、パリ、チューリッヒ |
 | **[IRIDEOS](https://irideos.it/)** |サポートされています |サポートされています |ミラノ |
 | **Iron Mountain** | サポートされています |サポートされています |ワシントン DC |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|サポートされています |サポートされています | アムステルダム、ロンドン 2、シリコン バレー、トロント、ワシントン DC |
@@ -296,8 +296,9 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Oncore Cloud Service Inc](https://www.oncore.cloud/services/ue-for-expressroute)**| Equinix | Toronto |
 | **[POST Telecom Luxembourg](https://www.teralinksolutions.com/cloud-connectivity/cloudbridge-to-azure-expressroute/)**|Equinix | アムステルダム |
 | **[Proximus](https://www.proximus.be/en/id_b_cl_proximus_external_cloud_connect/companies-and-public-sector/discover/magazines/expert-blog/proximus-external-cloud-connect.html)**|Equinix | アムステルダム、ダブリン、ロンドン、パリ |
-| **[QSC AG](https://www.qsc.de/de/produkte-loesungen/cloud-services-und-it-outsourcing/pure-enterprise-cloud/multi-cloud-management/azure-expressroute/)** |Interxion | フランクフルト |  
+| **[QSC AG](https://www2.qbeyond.de/en/)** |Interxion | フランクフルト |  
 | **[RETN](https://retn.net/services/cloud-connect/)** | Equinix | アムステルダム |
+| **[Tata Teleservices](https://www.tatateleservices.com/business-services/data-services/secure-cloud-connect)** | Tata Communications | チェンナイ、ムンバイ |
 | **Rogers** | Cologix、Equinix | モントリオール、トロント |
 | **[Spectrum Enterprise](https://enterprise.spectrum.com/services/cloud/cloud-connect.html)** | Equinix | シカゴ、ダラス、ロサンゼルス、ニューヨーク、シリコン バレー | 
 | **[Tamares Telecom](http://www.tamarestelecom.com/our-services/#Connectivity)** | Equinix | London | 

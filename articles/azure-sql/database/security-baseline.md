@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf89830745207e264e3d8080ac84d1cac5ddb708
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 29db5b82d73bf96465581ccd6a663455464bbeb9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079116"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599572"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure SQL Database 用の Azure セキュリティ ベースライン
 
@@ -250,7 +250,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Active Directory (Azure AD) には、既定のパスワードの概念がありません。 Azure SQL Database インスタンスをプロビジョニングしている場合は、Azure AD との認証の統合を選択することをお勧めします。
 
-- [Azure SQL での Azure AD 認証を構成して管理する方法](/azure/sql-database/azure-sql/database/authentication-aad-configure)
+- [Azure SQL での Azure AD 認証を構成して管理する方法](/azure/azure-sql/database/authentication-aad-configure)
 
 **責任**: Customer
 

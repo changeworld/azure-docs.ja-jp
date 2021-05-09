@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
-ms.openlocfilehash: fee71f9ebfc69c19adc026fce5cd78b6a8b5240b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: df745e7612dbd5b5bb9029b89d7f74974270c2d1
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490299"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962715"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure メトリックス エクスプローラーの概要
 
@@ -45,7 +45,7 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
 
 > [!WARNING]
-> [Azure のほとんどのメトリックは 93 日間保存されます](../essentials/data-platform-metrics.md#retention-of-metrics)。 ただし、1 つのグラフでクエリできるデータは 30 日までです。 この制限は、[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)には適用されません。
+> [Azure のほとんどのメトリックは 93 日間保存されます](../essentials/data-platform-metrics.md#retention-of-metrics)。 ただし、1 つのグラフでクエリできるデータは 30 日までです。 グラフを[パン](metrics-charts.md#pan)すると、完全な保有期間を表示できます。 この 30 日の制限は、[ログベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)には適用されません。
 
 既定では、直近の 24 時間のメトリック データがグラフに表示されます。 ご利用のグラフ上で時間範囲を変更したり、ズームインまたはズーム アウトしたりするには、 **[時刻の選択]** パネルを使用します。 
 

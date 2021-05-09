@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfb9ff9e6b107c9da84b164a055453994fc29229
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944019"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786641"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     export componentVersion=kafka=2.1
     ```
 
-1. 次のコマンドを入力して、[リソース グループを作成します](/cli/azure/group#az-group-create)。
+1. 次のコマンドを入力して、[リソース グループを作成します](/cli/azure/group#az_group_create)。
 
     ```azurecli
      az group create \
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --name $resourceGroupName
     ```
 
-1. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](/cli/azure/storage/account#az-storage-account-create)。
+1. 次のコマンドを入力して、[Azure ストレージ アカウントを作成します](/cli/azure/storage/account#az_storage_account_create)。
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --sku Standard_LRS
     ```
 
-1. 次のコマンドを入力して、[Azure Storage アカウントからプライマリ キーを抽出し](/cli/azure/storage/account/keys#az-storage-account-keys-list)、それを変数に保存します。
+1. 次のコマンドを入力して、[Azure Storage アカウントからプライマリ キーを抽出し](/cli/azure/storage/account/keys#az_storage_account_keys_list)、それを変数に保存します。
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -112,7 +112,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --query [0].value -o tsv)
     ```
 
-1. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](/cli/azure/storage/container#az-storage-container-create)。
+1. 次のコマンドを入力して、[Azure ストレージ コンテナーを作成します](/cli/azure/storage/container#az_storage_container_create)。
 
     ```azurecli
     az storage container create \
@@ -121,7 +121,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         --account-name $storageAccount
     ```
 
-1. [HDInsight クラスターを作成します](/cli/azure/hdinsight#az-hdinsight-create)。 コマンドを入力する前に、次のパラメーターに注意してください。
+1. [HDInsight クラスターを作成します](/cli/azure/hdinsight#az_hdinsight_create)。 コマンドを入力する前に、次のパラメーターに注意してください。
 
     1. Kafka クラスターに必要なパラメーターは次のとおりです。
 

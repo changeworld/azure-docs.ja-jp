@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: a8ad0c787235b94a600d14a3b447bbfee052321b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b6e8314e87a11deeea1d7c754a366b1bf2214f3c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864858"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770293"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>SSH を使用して HDInsight (Apache Hadoop) に接続する
 
@@ -88,7 +88,7 @@ ssh-keygen -t rsa -b 2048
 | ------- | ------- |
 | Azure portal | __[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、[SSH 認証の種類] で __[公開キー]__ を選択します。 最後に、公開キー ファイルを選択するか、ファイルのテキストの内容を __[SSH 公開キー]__ フィールドに貼り付けます。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="HDInsight クラスター作成時の SSH 公開キー ダイアログ ボックス"::: |
 | Azure PowerShell | [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `-SshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。|
-| Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
+| Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) コマンドの `--sshPublicKey` パラメーターを使用し、公開キーの内容を文字列として渡します。 |
 | Resource Manager テンプレート | テンプレートでの SSH キーの使用例については、[SSH キーを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) ファイルの `publicKeys` 要素は、クラスターの作成時にキーを Azure に渡すために使用されます。 |
 
 ## <a name="authentication-password"></a>認証: パスワード
@@ -107,7 +107,7 @@ SSH アカウントは、パスワードを使用してセキュリティ保護�
 | --------------- | ---------------- |
 | Azure portal | 既定では、SSH ユーザー アカウントには、クラスター ログイン アカウントと同じパスワードがあります。 別のパスワードを使用するには、__[SSH のクラスター ログイン パスワードを使用する]__ チェック ボックスをオフにし、__[SSH パスワード]__ フィールドにパスワードを入力します。</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png" alt-text="HDInsight クラスター作成時の SSH パスワード ダイアログ ボックス":::|
 | Azure PowerShell | [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) コマンドレットの `--SshCredential` パラメーターを使用して、SSH ユーザー アカウントの名前とパスワードを含む `PSCredential` オブジェクトを渡します。 |
-| Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) コマンドの `--ssh-password` パラメーターを使用して、パスワードの値を提供します。 |
+| Azure CLI | [`az hdinsight create`](/cli/azure/hdinsight#az_hdinsight_create) コマンドの `--ssh-password` パラメーターを使用して、パスワードの値を提供します。 |
 | Resource Manager テンプレート | テンプレートを使用したパスワードの使用例については、[SSH パスワードを使用した Linux での HDInsight のデプロイ](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/)に関する記事を参照してください。 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) ファイルの `linuxOperatingSystemProfile` 要素は、クラスターの作成時に SSH アカウントの名前とパスワードを Azure に渡すために使用されます。|
 
 ### <a name="change-the-ssh-password"></a>SSH パスワードを変更する

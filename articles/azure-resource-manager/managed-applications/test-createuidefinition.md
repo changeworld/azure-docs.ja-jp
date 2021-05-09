@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 36d6af7fb42bc1b705b44bdae6f24b454bfd242f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: eeef454e4c5706b39d07261ade1c2f0ffbc942ad
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312435"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478898"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure Managed Applications 用のポータル インターフェイスをテストする
 
@@ -100,7 +100,7 @@ Azure CLI では、次を使用します。
 
 ## <a name="test-your-solution-files"></a>ソリューション ファイルのテスト
 
-お使いのポータル インターフェイスが想定どおりに動作していることを確認できたので、次は該当する createUiDefinition ファイルが目的の mainTemplate.json ファイルに正しく統合されていることを検証します。 検証スクリプト テストを実行すると、createUiDefinition ファイルなど、目的のソリューション ファイルのコンテンツをテストできます。 このスクリプトによって JSON 構文が検証され、テキスト フィールドの正規表現式がチェックされます。また、ポータル インターフェイスの出力値が、該当するテンプレートのパラメーターと一致するかどうかが確認されます。 このスクリプトの実行については、[テンプレート用の静的検証チェックの実行](https://github.com/Azure/azure-quickstart-templates/tree/master/test)に関するページをご覧ください。
+お使いのポータル インターフェイスが想定どおりに動作していることを確認できたので、次は該当する createUiDefinition ファイルが目的の mainTemplate.json ファイルに正しく統合されていることを検証します。 検証スクリプト テストを実行すると、createUiDefinition ファイルなど、目的のソリューション ファイルのコンテンツをテストできます。 このスクリプトによって JSON 構文が検証され、テキスト フィールドの正規表現式がチェックされます。また、ポータル インターフェイスの出力値が、該当するテンプレートのパラメーターと一致するかどうかが確認されます。 このスクリプトの実行については、[テンプレート用の静的検証チェックの実行](https://aka.ms/arm-ttk)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

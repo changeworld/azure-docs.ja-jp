@@ -4,16 +4,16 @@ description: Azure Data Lake Storage Gen2 の階層型名前空間の概念に�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912996"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220506"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 の階層型名前空間
 
@@ -44,6 +44,10 @@ BLOB データに対する階層構造の名前空間が実装されたファイ
 階層型名前空間を有効にする理由は、TCO 分析によって変わります。 一般に、ストレージの加速化によってワークロードの待ち時間を短くするには、そのための計算リソースが必要です。 多くの場合、ワークロードの待ち時間は、階層型名前空間で使用できるアトミック ディレクトリ操作によって改善できます。 多くのワークロードでは、計算リソースが総保有コストの 85% を超えています。そのため、ワークロードの待ち時間を少し削減するだけでも、TCO を大幅に節約できます。 階層型名前空間を有効にするとストレージ コストが増加する場合でも、計算コストの削減によって TCO は低下します。
 
 フラット型名前空間を持つアカウントと階層型名前空間を持つアカウントの間のデータ ストレージ価格、トランザクション価格、およびストレージ容量予約価格の違いを分析するには、「[Azure Data Lake Storage Gen2 の価格](https://azure.microsoft.com/pricing/details/storage/data-lake/)」を参照してください。
+
+## <a name="enabling-a-hierarchical-namespace"></a>階層型名前空間の有効化
+
+既存のストレージ アカウントでは、階層型名前空間を有効にすることはできません。 階層型名前空間を有効にできるのは、ストレージ アカウントの作成時のみです。 ガイダンスについては、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

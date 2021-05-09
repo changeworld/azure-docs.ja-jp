@@ -3,12 +3,12 @@ title: レジストリのベスト プラクティス
 description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 01c8c7f547be9dd225022fb3315a4bdecc48c2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0811cc4a5bffc21ffba19e64a3887eab6bc36fbb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578129"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784139"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -63,10 +63,10 @@ Azure Container Registry に対して認証を行うときのシナリオは、�
 
 | Type | サンプル シナリオ | 推奨される方法 |
 |---|---|---|
-| 個人 ID | 開発者が、その開発マシンにイメージをプルしたり、開発マシンからイメージをプッシュしたりする。 | [az acr login](/cli/azure/acr#az-acr-login) |
+| 個人 ID | 開発者が、その開発マシンにイメージをプルしたり、開発マシンからイメージをプッシュしたりする。 | [az acr login](/cli/azure/acr#az_acr_login) |
 | ヘッドレス/サービス ID | ユーザーの直接介入を伴わないビルドとデプロイのパイプライン。 | [サービス プリンシパル](container-registry-authentication.md#service-principal) |
 
-これらと他の Azure Container Registry の認証シナリオについて詳しくは、「[Azure コンテナー レジストリでの認証](container-registry-authentication.md)」を参照してください。
+これらと他の Azure Container Registry の認証シナリオについて詳しくは、「[Azure Container Registry での認証](container-registry-authentication.md)」を参照してください。
 
 Azure Container Registry は、組織内のセキュリティのプラクティスをサポートし、さまざまな ID に職務と特権を配布します。 [ロールベースのアクセス制御](container-registry-roles.md)を使用して、さまざまなユーザー、サービス プリンシパル、またはさまざまなレジストリの操作を実行するその他の ID に適切なアクセス許可を割り当てます。 たとえば、ビルド パイプラインで使用されるサービス プリンシパルにプッシュ アクセス許可を割り当て、デプロイに使用されるさまざまな ID にプル アクセス許可を割り当てます。 特定のリポジトリに対して、細かい設定が可能な時間制限付きアクセスを指定するための[トークン](container-registry-repository-scoped-permissions.md)を作成します。
 
@@ -108,8 +108,8 @@ Azure Container Registry には、異なる機能を提供するレベル (SKU �
 [registry-overview-quotas]: ./media/container-registry-best-practices/registry-overview-quotas.png
 
 <!-- LINKS - Internal -->
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-show-usage]: /cli/azure/acr#az_acr_show_usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

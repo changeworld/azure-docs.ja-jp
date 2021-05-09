@@ -28,12 +28,12 @@ Container Registry を Azure セキュリティ ベンチマークに完全に�
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
-**ガイダンス**: Azure Virtual Network では、ご利用の Azure リソースやオンプレミス リソースに合わせてセキュリティで保護されたプライベート ネットワークを実現できます。 Azure 仮想ネットワークからプライベート Azure コンテナー レジストリへのアクセスを制限することで、仮想ネットワーク内のリソースのみがレジストリにアクセスするようにすることができます。 クロスプレミスのシナリオでは、特定の IP アドレスからのレジストリ アクセスだけを許可するファイアウォール規則を構成することもできます。
+**ガイダンス**: Azure Virtual Network では、ご利用の Azure リソースやオンプレミス リソースに合わせてセキュリティで保護されたプライベート ネットワークを実現できます。 Azure 仮想ネットワークからプライベート Azure Container Registry へのアクセスを制限することで、仮想ネットワーク内のリソースのみがレジストリにアクセスするようにすることができます。 クロスプレミスのシナリオでは、特定の IP アドレスからのレジストリ アクセスだけを許可するファイアウォール規則を構成することもできます。
 ファイアウォールの内側から、ご利用のコンテナー レジストリにアクセスするためのファイアウォール アクセス規則とサービス タグを構成します。
 
-- [Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する](container-registry-vnet.md) 
+- [Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure Container Registry へのアクセスを制限する](container-registry-vnet.md) 
 
-- [ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)
+- [ファイアウォールの内側から Azure Container Registry にアクセスする規則を構成する](container-registry-firewall-access-rules.md)
 
 **責任**: Customer
 
@@ -74,7 +74,7 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 ### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
-**ガイダンス**: ご利用の Azure コンテナー レジストリを保護するために使用されているサブネットに接続された NSG 用に、ネットワーク セキュリティ グループ (NSG) フロー ログを有効にします。 フロー レコードを生成するために、NSG フロー ログを Azure Storage アカウントに記録することができます。 異常なアクティビティを調査する必要がある場合は、Azure Network Watcher パケット キャプチャを有効にします。
+**ガイダンス**: ご利用の Azure Container Registry を保護するために使用されているサブネットに接続された NSG 用に、ネットワーク セキュリティ グループ (NSG) フロー ログを有効にします。 フロー レコードを生成するために、NSG フロー ログを Azure Storage アカウントに記録することができます。 異常なアクティビティを調査する必要がある場合は、Azure Network Watcher パケット キャプチャを有効にします。
 
 - [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -112,11 +112,11 @@ Azure Security Center の Just In Time ネットワーク アクセスを使用�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure Policy を使用して、ご利用の Azure コンテナー レジストリに関連付けられているネットワーク リソース用の標準的なセキュリティ構成を定義して実装します。 ご利用のコンテナー レジストリのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ContainerRegistry" および "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。 
+**ガイダンス**: Azure Policy を使用して、ご利用の Azure Container Registry に関連付けられているネットワーク リソース用の標準的なセキュリティ構成を定義して実装します。 ご利用のコンテナー レジストリのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ContainerRegistry" および "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。 
 
 Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することができます。 ブループリントを新しいサブスクリプションに適用し、バージョン管理によって制御と管理を容易に微調整できます。
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -152,7 +152,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 
-**ガイダンス**: Azure Monitor を介してログを取り込んで、Azure コンテナー レジストリによって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
+**ガイダンス**: Azure Monitor を介してログを取り込んで、Azure Container Registry によって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
 - [診断の評価と監査のための Azure Container Registry ログ](container-registry-diagnostics-audit-logs.md)
 
@@ -204,7 +204,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
-**ガイダンス**: Azure Log Analytics ワークスペースを使用して、ご利用の Azure コンテナー レジストリに関連するセキュリティ ログやイベントでの異常なアクティビティを監視し、アラート通知を行います。
+**ガイダンス**: Azure Log Analytics ワークスペースを使用して、ご利用の Azure Container Registry に関連するセキュリティ ログやイベントでの異常なアクティビティを監視し、アラート通知を行います。
 
 - [診断の評価と監査のための Azure Container Registry ログ](container-registry-diagnostics-audit-logs.md)
 
@@ -246,7 +246,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 **ガイダンス**: Azure Active Directory (Azure AD) には、明示的に割り当てる必要があるためにクエリ可能である組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-Azure コンテナー レジストリごとに、組み込みの管理者アカウントが有効になっているか無効になっているかを追跡します。 使用されていない場合、アカウントは無効にします。
+Azure Container Registry ごとに、組み込みの管理者アカウントが有効になっているか無効になっているかを追跡します。 使用されていない場合、アカウントは無効にします。
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
@@ -262,7 +262,7 @@ Azure コンテナー レジストリごとに、組み込みの管理者アカ�
 
 **ガイダンス**: Azure Active Directory (Azure AD) には、既定のパスワードの概念がありません。 パスワードを必要とする他の Azure リソースでは、パスワードが強制的に作成されます。これには複雑な要件と、サービスによって異なるパスワードの最小文字数が適用されます。 既定のパスワードが使用される可能性があるサードパーティ製のアプリケーションと Marketplace サービスについては、お客様が責任を負うものとします。
 
-Azure コンテナー レジストリの既定の管理者アカウントが有効になっている場合は、複雑なパスワードが自動的に作成されます。これはローテーションされる必要があります。 使用されていない場合、アカウントは無効にします。
+Azure Container Registry の既定の管理者アカウントが有効になっている場合は、複雑なパスワードが自動的に作成されます。これはローテーションされる必要があります。 使用されていない場合、アカウントは無効にします。
 
 - [Azure Container Registry 管理者アカウント](./container-registry-authentication.md#admin-account)
 
@@ -405,7 +405,7 @@ Azure コンテナー レジストリの既定の管理者アカウントが有�
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
-**ガイダンス**: 機密情報を格納または処理する Azure コンテナー レジストリの追跡を支援するには、リソース タグを使用します。
+**ガイダンス**: 機密情報を格納または処理する Azure Container Registry の追跡を支援するには、リソース タグを使用します。
 
 レジストリ内のコンテナー イメージまたはその他の成果物をタグ付けおよびバージョン管理し、イメージまたはリポジトリをロックすることで、機密情報を格納または処理するイメージの追跡を支援します。
 
@@ -413,7 +413,7 @@ Azure コンテナー レジストリの既定の管理者アカウントが有�
 
 - [コンテナー イメージのタグ付けとバージョン管理に関する推奨事項](container-registry-image-tag-version.md)
 
-- [Azure コンテナー レジストリのコンテナー イメージをロックする](container-registry-image-lock.md)
+- [Azure Container Registry のコンテナー イメージをロックする](container-registry-image-lock.md)
 
 **責任**: Customer
 
@@ -431,7 +431,7 @@ Azure コンテナー レジストリの既定の管理者アカウントが有�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する](container-registry-vnet.md)
+- [Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure Container Registry へのアクセスを制限する](container-registry-vnet.md)
 
 - [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -481,7 +481,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) 使用して、Azure コンテナー レジストリ内のデータとリソースへのアクセスを制御します。 
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) 使用して、Azure Container Registry 内のデータとリソースへのアクセスを制御します。 
 
 - [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
@@ -505,7 +505,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8:機密情報を保存時に暗号化する
 
-**ガイダンス**: すべての Azure リソースで保存時の暗号化を使用します。 既定では、Azure コンテナー レジストリ内のすべてのデータが、Microsoft のマネージド キーを使用して保存時に暗号化されます。
+**ガイダンス**: すべての Azure リソースで保存時の暗号化を使用します。 既定では、Azure Container Registry 内のすべてのデータが、Microsoft のマネージド キーを使用して保存時に暗号化されます。
 
 - [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
@@ -641,7 +641,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。  環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -687,7 +687,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Policy を活用して、ご利用の環境内でプロビジョニングできるサービスを制限します。
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,7 +747,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 **責任**: Customer
 
@@ -769,7 +769,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -811,7 +811,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure Policy を使用して、システム構成をアラート、監査、および適用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -835,7 +835,7 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 - [Azure Security Center の推奨事項を修復する方法](../security-center/security-center-remediate-recommendations.md)
 
-- [Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査](container-registry-azure-policy.md)
+- [Azure Policy を使用した Azure Container Registry のコンプライアンスの監査](container-registry-azure-policy.md)
 
 **責任**: Customer
 
@@ -873,7 +873,7 @@ Azure Policy を使用して、サブスクリプションで作成できるリ�
 
 - [マネージド ID を構成する方法](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md)
 
-- [マネージド ID を使用して Azure コンテナー レジストリに対して認証する](container-registry-authentication-managed-identity.md)
+- [マネージド ID を使用して Azure Container Registry に対して認証する](container-registry-authentication-managed-identity.md)
 
 **責任**: Customer
 
@@ -927,7 +927,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
-**ガイダンス**: ご利用の Microsoft Azure コンテナー レジストリ内のデータは常に自動的にレプリケートされることで、持続性と高可用性が確保されます。 ご利用のデータは Azure Container Registry によってコピーされるので、計画済みおよび計画外のイベントから保護されます。
+**ガイダンス**: ご利用の Microsoft Azure Container Registry 内のデータは常に自動的にレプリケートされることで、持続性と高可用性が確保されます。 ご利用のデータは Azure Container Registry によってコピーされるので、計画済みおよび計画外のイベントから保護されます。
 
 必要に応じて、複数の Azure リージョンでレジストリ レプリカを維持するために、コンテナー レジストリの geo レプリケーションを行います。 
 

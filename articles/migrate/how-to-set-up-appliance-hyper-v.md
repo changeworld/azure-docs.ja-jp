@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 71fe30212b31e810bfe3e1ba10f80be6b09ad4fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863685"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612026"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Hyper-V 上のサーバーのアプライアンスを設定する
 
@@ -32,14 +32,14 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 
 - アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
 - Azure portal から圧縮された Hyper-V VHD をダウンロードします。
-- アプライアンスを作成し、Azure Migrate: Discovery and Assessment に接続できることを確認します。
-- 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
+- アプライアンスを作成し、それが Azure Migrate: 検出および評価に接続できることを確認します。
+- アプライアンスを初めて構成し、プロジェクト キーを使用してプロジェクトに登録します。
 
 ### <a name="generate-the-project-key"></a>プロジェクト キーを生成する
 
-1. **[移行の目標]**  >  **[Windows, Linux and SQL Servers]\(Windows、Linux、SQL Server\)**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[Discover]\(検出\)** を選択します。
+1. **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)** で、 **[検出]** を選択します。
 2. **[Discover Servers]\(サーバーの検出\)**  >  **[お使いのサーバーは仮想化されていますか?]** で、 **[はい。Hyper-V を使用します]** を選択します。
-3. **[1:Generate project key]\(1:プロジェクト キーの生成\)** で、Hyper-V 上のサーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
+3. **[1:Generate project key]\(1:プロジェクト キーの生成\)** で、Hyper-V のサーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
 1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [Discover Servers]\(サーバーの検出\) ページを閉じないでください。
 1. Azure リソースが正常に作成されると、**プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
@@ -53,7 +53,6 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 
    ![[キーの生成] の選択](./media/tutorial-assess-hyper-v/generate-key-hyperv.png)
 
-
 ### <a name="verify-security"></a>セキュリティを確認する
 
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
@@ -63,9 +62,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-
-
-
+上記のコマンドの結果と[こちら](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security)に記載されている値を比較して、最新のハッシュ値を確認します。
 
 ## <a name="create-the-appliance"></a>アプライアンスを作成する
 
@@ -85,7 +82,6 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 5. **[ネットワークの選択]** で、サーバーによって使用される仮想スイッチを指定します。 このスイッチには、Azure にデータを送信するためのインターネット接続が必要です。
 6. **[概要]** で、設定を確認します。 **[完了]** をクリックします。
 7. Hyper-V マネージャーの **[仮想マシン]** で、VM を起動します。
-
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
@@ -111,11 +107,11 @@ VHD テンプレートを使用してアプライアンスを設定するには:
       - サポートされるのは HTTP プロキシのみです。
       - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**: Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**: Azure Migrate の検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment] > [Discover]\(検出\) > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\) > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
 
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
@@ -128,8 +124,6 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 1. 正常にログインしたら、アプライアンス構成マネージャーで前のタブに戻ります。
 4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
-
-
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>SMB VHD の資格情報を委任する
 
@@ -178,7 +172,7 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 検出の完了後、サーバーがポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - Windows, Linux and SQL Servers]\(Azure Migrate - Windows、Linux および SQL Server\)**  >  **[Azure Migrate: Discovery and Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
+2. **[Azure Migrate - Windows、Linux および SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)** ページで、 **[検出済みサーバー]** の数が表示されているアイコンをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

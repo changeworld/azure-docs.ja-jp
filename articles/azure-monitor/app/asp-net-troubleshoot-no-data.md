@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3b550e434db5b616ffedef7ebe9891b36fa431a2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056574"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311228"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -28,6 +28,10 @@ ms.locfileid: "106056574"
 *アプリが停止する直前、コンソール アプリや Web アプリでデータが失われます。*
 
 * SDK チャネルでは、バッファにテレメトリが保存され、一括送信されます。 アプリケーションがシャットダウンするとき、場合によっては、[Flush()](api-custom-events-metrics.md#flushing-data) を明示的に呼び出す必要があります。 `Flush()` の動作は、使用されている実際の[チャネル](telemetry-channels.md#built-in-telemetry-channels)に依存します。
+
+## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Application Insights SDK によって収集された要求カウントが、アプリケーションの IIS ログ カウントと一致しない
+
+インターネット インフォメーション サービス (IIS) は、IIS に到達したすべての要求の数をログに記録します。これは本質的に、アプリケーションに到達した要求の総数とは異なる可能性があります。 このため、SDK によって収集された要求カウントが IIS ログの合計数と一致するとは限りません。 
 
 ## <a name="no-data-from-my-server"></a>サーバーからデータを取得できない
 *Web サーバーにアプリをインストールしたのですが、テレメトリがなにも表示されません。開発用コンピューターでは正常に機能していました。*

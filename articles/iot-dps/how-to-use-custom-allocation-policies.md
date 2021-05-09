@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 14a405dbab0460f841a5e9104dbfeff101568f44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1432aee341509d8a5bdc9fffe89dd9bad33fc7de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919209"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766499"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 
@@ -58,7 +58,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 > この記事で使用するコマンドにより、米国西部の場所にプロビジョニング サービスとその他のリソースが作成されます。 ご自分の場所から最も近い、Device Provisioning Service がサポートされているリージョンにリソースを作成することをお勧めします。 使用可能な場所の一覧を表示するには、`az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` コマンドを実行するか、[Azure の状態](https://azure.microsoft.com/status/)ページに移動して "Device Provisioning Service" を検索します。 コマンドでは、場所は 1 単語または複数単語の形式で指定できます。たとえば、westus、West US、WEST US などです。この値で、大文字と小文字は区別されません。 複数単語形式で場所を指定する場合は、値を引用符で囲みます。たとえば、`-- location "West US"` のようにします。
 >
 
-1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
     次の例では、*contoso-us-resource-group* という名前のリソース グループを *westus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 こうすることで、終わった後のクリーンアップが簡単になります。
 
@@ -66,7 +66,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Azure Cloud Shell を使用して、[az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) コマンドでデバイス プロビジョニング サービス (DPS) を作成します。 このプロビジョニング サービスは、*contoso-us-resource-group* に追加されます。
+2. Azure Cloud Shell を使用して、[az iot dps create](/cli/azure/iot/dps#az_iot_dps_create) コマンドでデバイス プロビジョニング サービス (DPS) を作成します。 このプロビジョニング サービスは、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-provisioning-service-1098* という名前のプロビジョニング サービスを *westus* の場所に作成します。 一意のサービス名を使用する必要があります。 **1098** の代わりに、サービス名に独自のサフィックスを構成します。
 
@@ -76,7 +76,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     このコマンドが完了するまでに数分かかる場合があります。
 
-3. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso トースター部門** IoT ハブを作成します。 この IoT ハブは、*contoso-us-resource-group* に追加されます。
+3. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドで **Contoso トースター部門** IoT ハブを作成します。 この IoT ハブは、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-toasters-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 
 
@@ -89,7 +89,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
     このコマンドが完了するまでに数分かかる場合があります。
 
-4. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドで **Contoso ヒート ポンプ部門** IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
+4. Azure Cloud Shell を使用して、[az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドで **Contoso ヒート ポンプ部門** IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-heatpumps-hub-1098* という名前の IoT ハブを場所 *westus* に作成します。 一意のハブ名を使用する必要があります。 **1098** の代わりに、ハブ名内で独自のサフィックスを構成してください。 
 

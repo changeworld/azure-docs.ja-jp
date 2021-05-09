@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: fe777c3aa7b314dc56a42cc64712d18281a6ea7d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3fe3131263d3cf1984eae1692854d8d6bcd2746a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109490"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Enterprise Azure Cache for Redis インスタンスのアクティブ geo レプリケーションを構成する (プレビュー)
 
@@ -26,9 +26,11 @@ ms.locfileid: "102121169"
 >
 >
 
-1. **[新規 Redis Cache]** 作成 UI で **[構成]** をクリックし、 **[詳細設定]** タブで **[アクティブ geo レプリケーション]** を設定します。
+1. **[新規 Redis Cache]** 作成 UI の **[詳細設定]** タブで、 **[Clustering policy]\(クラスタリング ポリシー\)** に対して **[Enterprise]** を選択します。
 
     ![アクティブ geo レプリケーションの構成](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-not-configured.png)
+
+1. **[構成]** をクリックして **[アクティブ geo レプリケーション]** を設定します。
 
 1. 最初のキャッシュ インスタンス用に新しいレプリケーション グループを作成するか、一覧から既存のものを選択します。
 
@@ -38,7 +40,7 @@ ms.locfileid: "102121169"
 
     ![構成されたアクティブ geo レプリケーション](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
-1. Geo レプリケーション グループ内の追加のキャッシュ インスタンスごとに、上記の手順を繰り返します。
+1. 最初のキャッシュが正常に作成されるまで待ちます。 Geo レプリケーション グループ内の追加のキャッシュ インスタンスごとに、上記の手順を繰り返します。
 
 ## <a name="remove-from-an-active-geo-replication-group"></a>アクティブ geo レプリケーション グループから削除する
 

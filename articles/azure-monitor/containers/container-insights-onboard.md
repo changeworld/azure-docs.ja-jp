@@ -3,12 +3,12 @@ title: コンテナー分析情報を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e0544232f40e93cce0705fff6814d29697a96218
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109354"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782119"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
@@ -124,7 +124,7 @@ ms.locfileid: "105109354"
 | 新しい Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを作成する](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Terraform を使用して AKS クラスターを作成する](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを作成する](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して作成した新しい OpenShift クラスターの監視を有効にできます。 |
-| | [Azure CLI を使用して OpenShift クラスターを作成する](/cli/azure/openshift#az-openshift-create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
+| | [Azure CLI を使用して OpenShift クラスターを作成する](/cli/azure/openshift#az_openshift_create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
 | 既存の Kubernetes クラスター | [Azure CLI を使用して AKS クラスターの監視を有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | |[Terraform を使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-terraform) | オープンソースのツールである Terraform を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | | [Azure Monitor から AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor のマルチクラスター ページから、既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |

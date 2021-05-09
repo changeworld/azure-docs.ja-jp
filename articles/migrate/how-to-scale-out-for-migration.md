@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5ca821cb4f85deb77595e4a9029cc10298dbb884
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607655"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611975"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware 仮想マシンの Azure へのエージェントレス移行をスケーリングする
 
@@ -43,7 +43,7 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 
 スケールアウト アプライアンスを追加するには、次の手順に従います。
 
-1. **[検出]**  >  **[お使いのマシンは仮想化されていますか?]** をクリックします。 
+1. **[検出]**  >  **[お使いのマシンは仮想化されていますか?]** をクリックします 
 1. **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
 1. 次のステップでエージェントレス レプリケーションを選択します。
 1. アプライアンスの種類の選択メニューで **[Scale-out an existing primary appliance]\(既存のプライマリ アプライアンスをスケールアウトする\)** を選択します。
@@ -68,8 +68,8 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 > 1. 管理者としてコマンド プロンプトを開きます
 > 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. 計算されたハッシュ値が次の文字列と一致しない場合は、ポータルから最新バージョンのスケールアウト アプライアンス インストーラーをダウンロードします。e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
+    - 使用例 (パブリック クラウドの場合): ```C:\>Get-FileHash -Path .\AzureMigrateInstaller-VMware-Public-Scaleout.zip -Algorithm SHA256 ```
+> 3. 計算されたハッシュ値が次の文字列と一致しない場合は、ポータルから最新バージョンのスケールアウト アプライアンス インストーラーをダウンロードします。1E6B6E3EE8B2A800818B925F5DA67EF7874DAD87E32847120B32F3E21F5960F9
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
 インストーラー スクリプトでは以下が実行されます。
@@ -108,7 +108,7 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 - **ライセンス条項** に同意し、サード パーティの情報を確認します。
 - 構成マネージャー > **[前提条件のセットアップ]** で、以下を実行します。
    - **接続**:サーバーがインターネットにアクセスできることが、アプライアンスによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
-     1. **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
+     1. **[プロキシの設定]** をクリックし、 http://ProxyIPAddress または http://ProxyFQDN) の形式のプロキシ アドレス、およびリッスン ポートを指定します。
      2. プロキシで認証が必要な場合は、資格情報を指定します。
      3. サポートされるのは HTTP プロキシのみです。
      4. プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
@@ -176,4 +176,4 @@ Azure Migrate Server Migration ツールでは、レプリケーションのた�
 - スケールアウト アプライアンスを使用して VM をレプリケートする方法
 
 
-Azure Migrate: Server Migration ツールを使用してサーバーを Azure に移行する方法については、[こちら](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware)をご覧ください。
+Azure Migrate: Server Migration ツールを使用してサーバーを Azure に移行する方法については、[こちら](./tutorial-migrate-vmware.md)をご覧ください。

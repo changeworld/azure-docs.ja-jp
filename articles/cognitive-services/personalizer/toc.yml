@@ -3,7 +3,7 @@
 - name: 概要
   expanded: true
   items:
-    - name: Personalizer の概要
+    - name: Personalizer とは
       href: what-is-personalizer.md
     - name: 価格
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
@@ -11,7 +11,7 @@
     - name: 新機能
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Personalizer のクイックスタート
+- name: クイック スタート
   href: ./quickstart-personalizer-sdk.md
 - name: サンプル
   href: 'https://github.com/Azure-Samples/cognitive-services-personalizer-samples'
@@ -32,6 +32,12 @@
       href: how-to-manage-model.md
     - name: オフライン評価による分析
       href: how-to-offline-evaluation.md
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/personalizer/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: encrypt-data-at-rest.md
 - name: 概念
   items:
     - name: Personalizer のしくみ
@@ -107,17 +113,17 @@
           href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn モジュール
+      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: トラブルシューティング
       href: troubleshooting.md
-    - name: 学習モジュール
-      href: 'https://docs.microsoft.com/learn/browse/?terms=personalizer'
-    - name: リージョンのサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encrypt-data-at-rest.md
     - name: Azure の更新情報
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'

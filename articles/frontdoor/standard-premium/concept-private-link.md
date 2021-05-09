@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c927682231bab1fc92f198c56a2f6aeff2f4c516
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799937"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553534"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) で Private Link を使用して配信元をセキュリティで保護する
 
@@ -43,7 +43,7 @@ Azure Front Door Premium の構成で配信元に対して Private Link を有�
 
 ## <a name="limitations"></a>制限事項
 
-Azure Front Door のプライベート エンドポイントは、パブリック プレビューの間は、米国東部、米国西部 2、米国中南部の各リージョンで利用できます。
+Azure Front Door のプライベート エンドポイントは、パブリック プレビューの間は、米国東部、米国西部 2、米国中南部、英国南部の各リージョンで利用できます。
 
 待機時間を最短にするには、Front Door プライベート リンク エンドポイントを有効にすることを選択したときに、配信元に最も近い Azure リージョンを選択する必要があります。
 

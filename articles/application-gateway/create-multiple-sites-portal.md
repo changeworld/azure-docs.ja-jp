@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: cfbd5301bc2b24c4d5614e5f88c6ae18d4affc66
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8de0dd16c3b3b73b5d5e52017cf63b357654144f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721632"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030959"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "104721632"
 > * アプリケーション ゲートウェイの作成
 > * バックエンド サーバー用の仮想マシンの作成
 > * バックエンド サーバーでのバックエンド プールの作成
-> * バックエンド リスナーの作成
+> * リスナーの作成
 > * ルーティング規則の作成
 > * 名前解決のためにホスト ファイルを編集する
 
