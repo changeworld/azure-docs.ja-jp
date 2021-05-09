@@ -1,16 +1,16 @@
 ---
 title: Azure Monitor ビュー デザイナーからブックへの変換の概要とアクセス
 description: Azure Monitor のビューからの移行時にブックにアクセスするために必要なアクセス許可。
-author: austonli
-ms.author: aul
+author: shijatsu
+ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 42cb8db0f67d3a01b2e8443e6cb7c47f0fc44c4b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 89b812fff9856fda2bd1da896261481eddfdc566
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043392"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316679"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>ビュー デザイナーからブックへの変換の概要とアクセス
 [ビュー デザイナー](view-designer.md)は Azure Monitor の機能で、Log Analytics ワークスペース内のデータを、グラフ、リスト、タイムラインを使用して視覚化するのに役立つカスタム ビューを作成できます。 これらは段階的に廃止され、追加機能を提供するブックに置き換えられています。 この記事では、概要サマリーを作成する方法と、ブックにアクセスするために必要なアクセス許可について詳しく説明します。

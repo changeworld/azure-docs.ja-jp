@@ -3,18 +3,18 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050568"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728412"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -36,7 +36,9 @@ ms.locfileid: "99050568"
 
 ### <a name="create-another-enterprise-administrator"></a>別のエンタープライズ管理者を作成する
 
-別のエンタープライズ管理者を追加するには:
+実際の状況に基づいて、次のいずれかのオプションを使用します。
+
+#### <a name="if-youre-already-an-enterprise-administrator"></a>既にエンタープライズ管理者となっている場合
 
 1. [Azure エンタープライズ ポータル](https://ea.azure.com)にサインインします。
 1. **[管理]**  >  **[加入契約の詳細]** に移動します。
@@ -44,7 +46,11 @@ ms.locfileid: "99050568"
 
 ユーザーのメール アドレスと、職場、学校、または Microsoft アカウントなどの優先認証方法が設定されていることを確認します。
 
-自分がエンタープライズ管理者でない場合は、エンタープライズ管理者に連絡し、自分を加入契約に追加するように依頼します。 加入契約に追加された後、アクティブ化の電子メールを受け取ります。
+#### <a name="if-youre-not-an-enterprise-administrator"></a>まだエンタープライズ管理者となっていない場合
+
+自分がエンタープライズ管理者でない場合は、エンタープライズ管理者に連絡し、自分を加入契約に追加するように依頼します。 エンタープライズ管理者は、前の手順を使用して、あなたをエンタープライズ管理者として追加します。 加入契約に追加された後、アクティブ化の電子メールを受け取ります。
+
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>エンタープライズ管理者のサポートが得られない場合
 
 エンタープライズ管理者が支援できない場合は、[Azure エンタープライズ ポータルのサポート リクエスト](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c)を作成します。 次の情報を指定します。
 
@@ -418,51 +424,6 @@ Azure エンタープライズのユーザーは、認証の種類を Microsoft 
 1. これで、Microsoft アカウントがアクティブなサブスクリプションから解放され、削除できるようになります。
 1. 削除されたアカウントは、課金履歴の理由により、非アクティブ状態でポータルに表示が残ります。  チェックボックスをオンにして表示から除外すると、アクティブなアカウントのみを表示できます。
 
-## <a name="account-subscription-ownership-faq"></a>アカウントのサブスクリプションの所有権に関する FAQ
-
-このドキュメントでは、アカウントのサブスクリプションの所有権に関連する一般的な質問に回答します。
-
-### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>既存の Azure アカウントを Azure EA 加入契約に関連付けることはできますか?
-
-はい。 自分がアカウント所有者であるすべての Azure サブスクリプションが、Enterprise Agreement に変換されます。 これには、Visual Studio、AzurePass、MPN、BizSpark など、月単位のクレジットを使用するサブスクリプションが含まれます。 そのようなサブスクリプションを変換すると、月単位のクレジットが失われます。
-
-### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>サブスクリプションあたりの Azure アカウント所有者は何人までですか?
-
-サブスクリプションごとに 1 人のアカウント所有者のみが許可されます。  [Azure portal](https://portal.azure.com) のページの左上にある [サブスクリプション] タブで、ロールベースのアクセスまたは (アクセス制御 (IAM)) を使用してさらにロールを追加できます。
-
-### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡できますか?
-
-はい、サブスクリプションの所有権は別のアカウントに譲渡できます。 たとえば、アカウント A に 3 つのサブスクリプションがある場合、エンタープライズ管理者は、アカウント B、アカウント C、アカウント D にそれぞれ 1 つのサブスクリプションを譲渡できます。または、すべてのサブスクリプションをアカウント E に譲渡することもできます。
-
-サブスクリプションを譲渡するには:
-
-1. Azure エンタープライズ ポータルで、 **[管理]**  >  **[アカウント]** を選択します。
-1. 右端にある **[アカウント]** をポイントすると、**所有権の譲渡** (人のアイコン) と **サブスクリプションの譲渡** (リスト アイコン) のオプションが表示されます。 これらのオプションは、アクティブなアカウントに対してのみ表示されます。
-
-### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Azure アカウント所有者は複数の部門の下に表示できますか?
-
-いいえ。アカウント オーナーは、1 つの部署にのみ関連付けることができます。 このポリシーは、Azure EA Portal の EA 加入契約の下にある部門に関連付けられる、正確なコストと支出の監視と分配を確保するうえで有用です。
-
-### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Azure アカウント所有者をセキュリティグループとして表示できますか?
-
-いいえ。サブスクリプションの所有者は、一意の Microsoft アカウント (MSA) 認証または Azure Active Directory (Azure AD) 認証である必要があります。 組織内で引き継ぐ場合は、汎用アカウントを作成し、Azure AD を使用してサブスクリプションへのアクセスを管理することを検討してください。
-
-### <a name="can-an-individual-user-own-multiple-subscriptions"></a>単一のユーザーが複数のサブスクリプションを所有できますか?
-
-Azure アカウントの所有者は、無制限の数のサブスクリプションを作成および管理できます。
-
-### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>組織のすべてのサブスクリプションにアクセスする、または表示するにはどうすればよいですか?
-
-現時点では、これはポリシーによって行われる必要があります。つまり、すべての作成されたサブスクリプションについて、ロールベースのアクセスを使用してアカウントをサブスクリプションロールに追加する必要があります。
-
-### <a name="where-do-i-go-to-create-a-subscription"></a>サブスクリプションを作成するにはどうすればよいですか?
-
-エンタープライズ Azure (EA) プランのサブスクリプションを作成する前に、Azure EA Portal の EA 加入契約の管理者によってアカウント オーナーのロールにアカウントを追加する必要があります。 その後、Azure EA Portal にサインインして、EA プラン タイプのサブスクリプションを作成するエンタイトルメントを取得する必要があります。 EA Portal の [サブスクリプション] タブにある [+ サブスクリプションの追加] リンクから最初の EA サブスクリプションを作成することをお勧めします。  ただし、アカウントに資格が付与された後は、ページの左上にある [サブスクリプション] タブの portal.azure.com でサブスクリプションを作成する方が簡単な場合があります。ここでは、サブスクリプションの作成と名前の変更の両方を 1 回のステップで行うことができます。
-
-### <a name="who-can-create-a-subscription"></a>サブスクリプションを作成できるのは?
-
-エンタープライズ Azure オファー タイプのサブスクリプションを作成するには、[EA Portal](https://ea.azure.com)でアカウント所有者の資格を持っている必要があります。
-
 ## <a name="azure-ea-term-glossary"></a>Azure EA 用語集
 
 - **アカウント**:Azure エンタープライズ ポータルでの組織単位。 サブスクリプションの管理とレポートのために使用されます。
@@ -504,3 +465,4 @@ Azure アカウントの所有者は、無制限の数のサブスクリプシ�
 
 - [仮想マシンの予約](ea-portal-vm-reservations.md)がコスト削減にどのように役立つかについて確認します。
 - Azure EA Portal の問題のトラブルシューティングに関するヘルプが必要な場合は、「[Troubleshoot Azure EA portal access (Azure EA Portal へのアクセスのトラブルシューティング)](ea-portal-troubleshoot.md)」を参照してください。
+- EA サブスクリプションの所有権に関する質問については、[Cost Management + Billing に関する FAQ](../cost-management-billing-faq.yml) を参照してください。

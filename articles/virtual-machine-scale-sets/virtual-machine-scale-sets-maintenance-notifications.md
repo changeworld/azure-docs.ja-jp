@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: maintenance-control
-ms.date: 11/12/2020
+ms.date: 04/26/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ec8d211bd25eb04f9e000af950cea9a28a0d1874
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 076c007bd0a2fb2e70ad84dfd6a825030a22b15a
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762841"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015233"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -112,12 +112,12 @@ Azure は、サブスクリプション所有者と共同所有者グループ�
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>PowerShell を使用してメンテナンスの状態を確認する
 
-Azure PowerShell を使用して、仮想マシン スケール セット内の VM のメンテナンスの予定を確認することができます。 計画メンテナンスに関する情報は、[Get-AzVmss](/powershell/module/az.compute/get-azvmss) コマンドレットと `-InstanceView` パラメーターを使用することで取得できます。
+Azure PowerShell を使用して、仮想マシン スケール セット内の VM のメンテナンスの予定を確認することができます。 計画メンテナンスに関する情報は、[Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) コマンドレットと `-InstanceView` パラメーターを使用することで取得できます。
  
 メンテナンス情報は、計画済みのメンテナンスがある場合にのみ返されます。 VM インスタンスに影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
 ```powershell
-Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
+Get-AzVmssVm -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
 **MaintenanceRedeployStatus** では、次のプロパティが返されます。 
@@ -135,10 +135,10 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>PowerShell を使用して VM インスタンスに対するメンテナンスを開始する
 
-**IsCustomerInitiatedMaintenanceAllowed** が **true** に設定されている場合は、VM のメンテナンスを開始できます。 [Set-AzVmss](/powershell/module/az.compute/set-azvmss) コマンドレットと `-PerformMaintenance` パラメーターを使用します。
+**IsCustomerInitiatedMaintenanceAllowed** が **true** に設定されている場合は、VM のメンテナンスを開始できます。 [Set-AzVmssVM](/powershell/module/az.compute/set-azvmssvm) コマンドレットと `-PerformMaintenance` パラメーターを使用します。
 
 ```powershell
-Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
+Set-AzVmssVM -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>CLI を使用してメンテナンスの状態を確認する

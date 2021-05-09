@@ -7,12 +7,12 @@ ms.author: apimpm
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: cb14ecd05c1590667ac9b5618b3f0de9da30ce96
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 3debf537aff12e943068d48a181fc9ae4c6ee5eb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741364"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207310"
 ---
 # <a name="alternative-approaches-to-self-host-developer-portal"></a>開発者ポータルをセルフホストするための代替アプローチ
 
@@ -52,7 +52,7 @@ npm run build-publisher
 
 Azure Function App で発行を実装するには、次の前提条件を満たす必要があります。
 
-- [Azure 関数を作成します](../azure-functions/functions-create-first-azure-function.md)。 関数は JavaScript 言語関数である必要があります。
+- [Azure 関数を作成します](../azure-functions/functions-get-started.md)。 関数は JavaScript 言語関数である必要があります。
 - Azure Functions Core Tools をインストールします。
     ```console
     npm install –g azure-function-core-tools

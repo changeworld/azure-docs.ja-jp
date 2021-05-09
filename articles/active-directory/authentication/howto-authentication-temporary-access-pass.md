@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 04/26/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8774df6a2eee15f8b5a0c37362e5b20f14b07549
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 0f0473a266cffb083a82ffc9afb333da7eecf59c
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167364"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015701"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>パスワードレスの認証方法を登録するように Azure AD で一時アクセス パスを構成する (プレビュー)
 
@@ -152,6 +152,7 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 
 - 1 回限りの一時アクセス パスを使用して FIDO2 や電話によるサインインなどのパスワードレスの方法を登録する場合、ユーザーは 1 回限りの一時アクセス パスでのサインインの登録を 10 分以内に完了する必要があります。 この制限は、複数回使用できる一時アクセス パスには適用されません。
 - ゲスト ユーザーは一時アクセス パスを使用してサインインすることはできません。
+- 一時アクセス パスはパブリック プレビューの段階にあり、現在のところ、Azure for US Government ではご利用いただけません。
 - セルフサービス パスワード リセット (SSPR) 登録ポリシー *または* [Identity Protection の多要素認証登録ポリシー](../identity-protection/howto-identity-protection-configure-mfa-policy.md)の対象ユーザーは、一時アクセス パスを使用してサインインした後、認証方法を登録する必要があります。 これらのポリシーの対象ユーザーは、[統合された登録の中断モード](concept-registration-mfa-sspr-combined.md#combined-registration-modes)にリダイレクトされます。 現在、このエクスペリエンスでは、FIDO2 と電話によるサインインの登録はサポートされていません。 
 - 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプター、または Windows の設定/ Out of Box Experience (OOBE) の際には使用できません。 
 - テナントでシームレス SSO が有効になっている場合は、ユーザーにパスワードの入力が求められます。 ユーザーが一時アクセス パスを使用してサインインできるように、 **[代わりに一時アクセス パスを使用する]** リンクが使用可能になります。

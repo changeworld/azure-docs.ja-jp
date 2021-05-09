@@ -8,12 +8,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ed81ca2c8f409b7f6c4a6f30f9bf75e594c6c208
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 18dace708f7ded8f77e041b98c705f0f2f1aafca
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221706"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317633"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway に TLS ポリシーのバージョンと暗号スイートを構成する
 

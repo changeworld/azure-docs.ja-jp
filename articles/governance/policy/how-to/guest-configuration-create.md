@@ -3,17 +3,17 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 9bcf7c5b7a70808730f427321bf00d47226d2cd0
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: e1c71acd8544073c861a8ad62fb06d78e9d139c5
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006748"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165337"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
 カスタム ポリシー定義を作成する前に、[Azure Policy のゲスト構成](../concepts/guest-configuration.md)のページで、概念上の概要情報を読むことをお勧めします。
- 
+
 Linux のゲスト構成ポリシーを作成する方法の詳細については、[Linux 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create-linux.md)に関するページを参照してください
 
 Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは **非準拠** と見なされます。
@@ -324,11 +324,11 @@ Publish-GuestConfigurationPolicy -Path '.\policies'
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy `
- -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
+  -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
   -DisplayName 'Audit BitLocker service.' `
   -Description 'Audit if the BitLocker service is not enabled on Windows machine.' `
   -Path './policies' `
- | Publish-GuestConfigurationPolicy
+| Publish-GuestConfigurationPolicy
 ```
 
 Azure で作成されるポリシーに関する最後のステップでは、定義を割り当てます。 [ポータル](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md)、および [Azure PowerShell](../assign-policy-powershell.md) で定義を割り当てる方法を確認してください。

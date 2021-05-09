@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mode-portal
-ms.openlocfilehash: 3333097b4bd55173725aa33bc4bfbae318510cf1
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a01400e494d673fc59737007d4461b3e2a3ded25
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538546"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165679"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>クイック スタート: Azure Portal で最初の Batch ジョブを実行する
 
@@ -60,7 +60,7 @@ Batch アカウントが用意できたら、テスト目的で Windows コン�
   
    |設定  |値  |
    |---------|---------|
-   |**ノード価格レベル**     |Standard A1|
+   |**ノード価格レベル**     |Standard_A1_v2|
    |**ターゲットの専用ノード数**     |2|
 
 1. 残りの設定は既定値のままにし、**[OK]** を選択して、プールを作成します。

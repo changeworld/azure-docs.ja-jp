@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1ea83dc62c2752e34584b89de2cdb6dbde3dfa0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 11ddb2e76123c1181efffea3ef66a517bb5124a2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443920"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207377"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -68,7 +68,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS とデータ ディスク |
-| RedHat | RHEL 8-LVM | 8-LVM | RedHat:RHEL:8-LVM:latest | OS とデータ ディスク (後述する注を参照してください) |
+| RedHat | RHEL 8-LVM | 8-LVM | RedHat:RHEL:8-LVM:8.2.20200905 | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 8.2 | 8.2 | RedHat:RHEL:8.2:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 8.1 | 8.1 | RedHat:RHEL:8.1:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7-LVM | 7-LVM | RedHat:RHEL:7-LVM:7.9.2020111202 | OS とデータ ディスク (後述する注を参照してください) |

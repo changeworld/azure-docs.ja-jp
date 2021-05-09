@@ -3,17 +3,17 @@ title: Azure のコストの割り当て
 description: この記事では、サブスクリプション、リソース グループ、タグのコストを配分するためのコストの割り当てルールを作成する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/11/2020
+ms.date: 03/23/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131090"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726522"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure のコストの割り当てルールの作成と管理 (プレビュー)
 
@@ -58,7 +58,7 @@ ms.locfileid: "92131090"
 
 総コストに比例するようにコストを配分する場合、現在の課金月について、選択したターゲットの合計 (総コスト) を基準に、それに比例した割合が割り当てられます。
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="ルール名の作成を示す例" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="割り当ての割合を示す例" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 設定後、定義された事前入力の割合が確定されます。 これらは、進行中のすべての割り当てに使用されます。 割合が変化するのは、ルールが手動で更新されたときだけです。
 
@@ -84,7 +84,7 @@ ms.locfileid: "92131090"
 
 コスト分析で割り当てルールの影響を確認します。 Azure portal で [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動します。 アクティブなコストの割り当てルールの対象となるサブスクリプションをリストから選択します。 次に、メニューから **[コスト分析]** を選択します。 [コスト分析] で **[グループ化]** を選択し、 **[コストの割り当て]** を選択します。 サブスクリプションによって生成された簡単なコスト内訳が結果のビューに表示されます。 また、サブスクリプションに割り当てられたコストは、次の画像のように表示されます。
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="ルール名の作成を示す例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="コスト内訳を示す例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>リソース グループのコスト割り当てを表示する
 
@@ -94,18 +94,18 @@ ms.locfileid: "92131090"
 
 Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** に移動します。 [コスト分析] で **[フィルターの追加]** を選択します。 **[タグ]** を選択し、タグ キーと、コストが割り当てられているタグ値を選択します。
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="ルール名の作成を示す例" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="タグ付けされた項目のコストを示す例" lightbox="./media/allocate-costs/tagged-costs.png" :::
+
+このビデオでは、コストの割り当てルールを作成する方法について説明しています。
+
+>[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
+
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>既存のコストの割り当てルールを編集する
 
 コストの割り当てルールは編集できます。ソースまたはターゲットを変更したり、必要に応じて、コンピューティング、ストレージ、ネットワークのいずれかのオプションについて、事前入力された割合を更新したりすることができます。 ルールの編集は、作成と同じ方法で行うことができます。 既存のルールを変更した場合、再処理されるまでに最大で 2 時間かかることがあります。
 
-## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
-
-以降のセクションでは、コストの割り当てに関してよく寄せられる質問を紹介します。
-
-### <a name="what-are-the-current-limitations-with-cost-allocation-in-public-preview"></a>パブリック プレビューのコストの割り当てに関して、現在、どのような制限がありますか?
-<a name="limitations"></a>
+## <a name="current-limitations"></a>現在の制限
 
 現在、コストの割り当ては、Cost Management のコスト分析、予算、予測の各ビューでサポートされています。 また、サブスクリプション一覧とサブスクリプションの概要ページにも、割り当てられたコストが表示されます。
 
@@ -117,32 +117,9 @@ Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  > 
 - [Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
 - [Power BI Desktop コネクタ](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
-### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>予算および予測ビューにコストは考慮されていますか?
-<a name="budgets-forecast"></a>
 
-はい。 予算および予測には、割り当てられたコストが考慮されており、サポートされています。 予算および予測ビューには、コストの割り当てルールの構成に従って割り当てられたコストが表示されます。
+## <a name="next-steps"></a>次の手順
 
-### <a name="if-a-cost-allocation-rule-is-deleted-what-happens"></a>コストの割り当てルールを削除するとどうなりますか?
-<a name="delete-rule"></a>
-
-コストの割り当てルールが削除されると、ターゲットに割り当てられている、まだ処理されていない現在の課金月のコストがすべて削除されます。 コストの割り当てルールが複数月にわたって存在していた場合、その過去の月の割り当てデータが、割り当てルールによって最初に設定された状態のままになります。
-
-### <a name="why-is-an-enrollment-admin-or-a-billing-account-admin-needed-to-create-cost-allocation-rules"></a>コストの割り当てルールを作成するのに登録管理者や課金アカウント管理者が必要なのはなぜですか?
-<a name="why-admin"></a>
-
-コストの割り当てルールは、加入契約スコープ (マイクロソフト エンタープライズ契約) または課金アカウント スコープ (Microsoft 顧客契約) で作成されます。 それらのスコープで変更を加えるためのアクセス許可には、課金管理者の権限が必要となります。
-
-### <a name="why-are-sources-and-targets-limited-to-25-per-rule"></a>ソースとターゲットが 1 ルールにつき 25 個に制限されているのはなぜですか?
-<a name="source-target-rule-limit"></a>
-
-この制限は、コストの割り当てのパフォーマンスとスケーラビリティを十分に確保することを目的としたプレビューにおける制限です。 コストの割り当ての一般提供 (GA) が開始された時点で、これらの制限は引き上げられる可能性もあれば廃止される可能性もあります。
-
-### <a name="what-can-happen-if-cost-allocation-rules-sourcestargets-overlap"></a>コストの割り当てルール (ソースまたはターゲット) が重複した場合はどうなりますか?
-<a name="rule-overlap"></a>
-
-重複するソースや重複するターゲットを含むルールは推奨されません。 コストの割り当てルールはその作成日順に適用されます。そのため、コストの割り当てルールが重複している場合、最も古い作成日の割り当てルールが優先されます。
-
-## <a name="next-steps"></a>次のステップ
-
+- コストの割り当てに関する質問と回答については、[Cost Management + Billing に関する FAQ](../cost-management-billing-faq.yml) を参照してください。
 - [コスト割り当ての REST API](/rest/api/cost-management/costallocationrules) を使用して割り当てルールを作成または更新する
 - [Azure Cost Management を使用してクラウドへの投資を最適化する方法](cost-mgt-best-practices.md)の詳細を確認する

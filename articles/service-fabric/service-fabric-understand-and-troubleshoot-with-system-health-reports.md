@@ -3,27 +3,24 @@ title: システム正常性レポートを使用したトラブルシューテ�
 description: Azure Service Fabric のコンポーネントによって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.openlocfilehash: 483483746b2cce66588e9481bca7e0de391070b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9819129509a76350394319e9968fc1e97f53c69
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625893"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165049"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
+
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
 
 > [!NOTE]
 > 正常性に関する概念については、「 [Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)」を参照してください。
-> 
-> 
 
 システム正常性レポートは、クラスターとアプリケーションの動作状況を可視化し、問題にフラグを設定します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric の観点から確認します。 レポートは、サービスのビジネス ロジックの正常性モニタリングや応答のないプロセスの検出を提供するものではありません。 ユーザー サービスでロジックに固有の情報を追加して正常性データを強化できます。
 
 > [!NOTE]
 > ユーザー ウォッチドッグによって送信された正常性レポートは、システム コンポーネントでエンティティが作成された *後* にのみ表示できます。 エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。 エンティティの新しいインスタンスが作成される場合も同じことが当てはまります。 たとえば、サービス レプリカのステートフルな永続化インスタンスが新しく作成されるときです。 古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
-> 
-> 
 
 システム コンポーネント レポートはソース別に識別され、"**System.** " プレフィックスで プレフィックスは含まれません。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
 
@@ -31,13 +28,13 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 
 > [!NOTE]
 > Service Fabric では、指定した条件に関するレポートが継続的に追加され、クラスターおよびアプリケーションの状況をより詳細に把握できます。 既存のレポートに詳細情報を追加して改善し、迅速に問題を解決することができます。
-> 
-> 
 
 ## <a name="cluster-system-health-reports"></a>クラスター システム正常性レポート
+
 クラスターの正常性エンティティが、正常性ストアに自動的に作成されます。 すべてが正常に動作している場合、システム レポートは作成されません。
 
 ### <a name="neighborhood-loss"></a>ネットワーク コンピューターの消失
+
 **System.Federation** は、ネットワーク コンピューターの消失を検出するとエラーを報告します。 レポートのデータは個々のノードから収集され、ノード ID がプロパティ名に含まれます。 Service Fabric リング全体でネットワーク コンピューターの消失が 1 件あった場合、通常は、ギャップ レポートの両側を表す 2 つのイベントを想定できます。 さらに多くのネットワーク コンピューターが消失している場合、イベントの数はもっと多くなります。
 
 レポートは、グローバル リース タイムアウトを Time to Live (TTL) として指定します。 レポートは、条件が有効な限り、TTL の半分の期間ごとに再送信されます。 イベントは、期限切れになると自動的に削除されます。 期限切れ時に削除する動作により、レポート ノードが停止した場合でも、レポートが正常性ストアから適切にクリーンアップされます。
@@ -62,7 +59,8 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **次のステップ**: ノード間のネットワーク接続を調査すると共に、正常性レポートの説明に記載されているノードがあれば、その特定のノードの状態を調査します。
 
 ### <a name="seed-node-status"></a>シード ノードの状態
-一部のシード ノードが正常でない場合、**System.FM** はクラスター レベルの警告を報告します。 シード ノードは、基になるクラスターの可用性を維持するノードです。 特定の種類のネットワーク障害が発生しているときに、他のノードとのリースを確立し、タイブレーカーとして機能することで、クラスターが確実に稼働し続けるうえで役立ちます。 クラスターでシード ノードの大部分がダウンしていて、元に戻らない場合、クラスターは自動的にシャットダウンします。 
+
+一部のシード ノードが正常でない場合、**System.FM** はクラスター レベルの警告を報告します。 シード ノードは、基になるクラスターの可用性を維持するノードです。 特定の種類のネットワーク障害が発生しているときに、他のノードとのリースを確立し、タイブレーカーとして機能することで、クラスターが確実に稼働し続けるうえで役立ちます。 クラスターでシード ノードの大部分がダウンしていて、元に戻らない場合、クラスターは自動的にシャットダウンします。
 
 ノードの状態が [ダウン]、[削除済み]、または [不明] の場合、シード ノードは正常ではありません。
 シード ノード状態の警告レポートには、すべての正常でないシード ノードが詳細情報と共に一覧表示されます。
@@ -80,18 +78,20 @@ Service Fabric スタンドアロン クラスターでは、すべてのシー�
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
+```
 
-## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+## <a name="node-system-health-reports"></a>ノード システム正常性レポート
 
-### Node up/down
-System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
+System.FMは Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。
+
+### <a name="node-updown"></a>ノードを上/下に移動
+System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動が新規インスタンスとして報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
 
 * **SourceId**: System.FM
-* **Property**: State.
-* **Next steps**: If the node is down for an upgrade, it should come back up after it's been upgraded. In this case, the health state should switch back to OK. If the node doesn't come back or it fails, the problem needs more investigation.
+* **プロパティ**: State。
+* **次のステップ**: ノードがアップグレードのために停止している場合は、アップグレード後に復帰する必要があります。 この例では、正常性状態が OK に切り替わる必要があります。 ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
 
-The following example shows the System.FM event with a health state of OK for node up:
+ノードの稼動を表す正常性状態 OK の System.FM イベントの例を次に示します。
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
@@ -112,8 +112,8 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-
 ### <a name="certificate-expiration"></a>証明書の有効期限
+
 **System.FabricNode** は、ノードで使用されている証明書の期限が近づくと警告を報告します。 ノードごとに次の 3 つの証明書があります: **Certificate_cluster**、**Certificate_server**、**Certificate_default_client**。 有効期限が 2 週間以上先の場合は、レポートの正常性状態は OK になります。 有効期限が 2 週間以内の場合は、レポートの種類は警告になります。 これらのイベントの TTL は無制限で、イベントはノードがクラスターから切り離されると削除されます。
 
 * **SourceId**: System.FabricNode
@@ -181,13 +181,12 @@ System.FM は、サービスが作成されると OK を報告します。 サ�
 ```powershell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
-
 ServiceName           : fabric:/WordCount/WordCountWebService
 AggregatedHealthState : Ok
 PartitionHealthStates : 
                         PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
                         AggregatedHealthState : Ok
-                        
+
 HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
@@ -221,15 +220,15 @@ System.FM は、パーティションが作成されており、正常な場合�
 
 * **SourceId**: System.FM
 * **プロパティ**: State。
-* **次のステップ**: 正常性状態が OK でない場合、一部のレプリカが正しく作成されていないか、開かれていないか、プライマリまたはセカンダリに昇格されていない可能性があります。 
+* **次のステップ**: 正常性状態が OK でない場合、一部のレプリカが正しく作成されていないか、開かれていないか、プライマリまたはセカンダリに昇格されていない可能性があります。
 
 説明にクォーラムの損失が記述されている場合、ダウンしたレプリカの詳細な正常性レポートを確認し、それらをバックアップしておくと、対象パーティションを再びオンラインに戻すのに役立ちます。
 
 パーティションが[再構成](service-fabric-concepts-reconfiguration.md)処理でスタックしていることが説明に記述されている場合、プライマリ レプリカに関する正常性レポートに詳しい情報が示されています。
 
-他の System.FM 正常性レポートでは、他のシステム コンポーネントのレプリカ、パーティション、サービスに関するレポートが含まれます。 
+他の System.FM 正常性レポートでは、他のシステム コンポーネントのレプリカ、パーティション、サービスに関するレポートが含まれます。
 
-以下の例では、これらのレポートの一部について説明します。 
+以下の例では、これらのレポートの一部について説明します。
 
 正常なパーティションの例を示します。
 
@@ -258,12 +257,11 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
-
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', ConsiderWarningAsError=false.
-                        
+
 ReplicaHealthStates   : None
 HealthEvents          : 
                         SourceId              : System.FM
@@ -281,11 +279,11 @@ HealthEvents          :
                           N/S Ready _Node_1 131444422293118720
                           N/P Ready _Node_0 131444422293118721
                           (Showing 5 out of 5 replicas. Total available replicas: 5)
-                        
+
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 7/14/2017 4:55:44 PM, LastOk = 1/1/0001 12:00:00 AM
-                        
+
                         SourceId              : System.PLB
                         Property              : ServiceReplicaUnplacedHealth_Secondary_af2e3e44-a8f8-45ac-9f31-4093eb897600
                         HealthState           : Warning
@@ -298,25 +296,24 @@ HealthEvents          :
                         TargetReplicaSetSize: 7
                         Placement Constraint: N/A
                         Parent Service: N/A
-                        
+
                         Constraint Elimination Sequence:
                         Existing Secondary Replicas eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
                         Existing Primary Replica eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
-                        
+
                         Nodes Eliminated By Constraints:
-                        
+
                         Existing Secondary Replicas -- Nodes with Partition's Existing Secondary Replicas/Instances:
                         --
                         FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status: None/None
                         FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status: None/None
                         FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status: None/None
                         FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status: None/None
-                        
+
                         Existing Primary Replica -- Nodes with Partition's Existing Primary Replica or Secondary Replicas:
                         --
                         FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status: None/None
-                        
-                        
+
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : Error->Warning = 7/14/2017 4:56:14 PM, LastOk = 1/1/0001 12:00:00 AM
@@ -325,7 +322,7 @@ PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | select M
 
 MinReplicaSetSize TargetReplicaSetSize
 ----------------- --------------------
-                2                    7                        
+                2                    7
 
 PS C:\> @(Get-ServiceFabricNode).Count
 5
@@ -334,15 +331,14 @@ PS C:\> @(Get-ServiceFabricNode).Count
 次の例は、ユーザーが **RunAsync** メソッドでキャンセル トークンを考慮しないために、再構成処理でスタックしているパーティションの正常性を示しています。 プライマリ (P) とマークされているレプリカの正常性レポートを調査すると、問題の詳細を把握するのに役立ちます。
 
 ```powershell
-PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
-
+PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics
 
 PartitionId           : 0e40fd81-284d-4be4-a665-13bc5a6607ec
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.FM', Property='State', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                                               
+
 HealthEvents          : 
                         SourceId              : System.FM
                         Property              : State
@@ -356,14 +352,15 @@ HealthEvents          :
                           P/S Ready Node1 131482789658160654
                           S/P Ready Node2 131482789688598467
                           S/S Ready Node3 131482789688598468
-                          (Showing 3 out of 3 replicas. Total available replicas: 3)                        
-                        
+                          (Showing 3 out of 3 replicas. Total available replicas: 3)
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Ok->Warning = 8/27/2017 3:43:32 AM, LastError = 1/1/0001 12:00:00 AM
 ```
-この正常性レポートには、再構成中のパーティションのレプリカの状態が示されています。 
+
+この正常性レポートには、再構成中のパーティションのレプリカの状態が示されています。
 
 ```
   P/S Ready Node1 131482789658160654
@@ -420,7 +417,7 @@ HealthEvents          :
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus、ReplicaCloseStatus、ReplicaChangeRoleStatus
 このプロパティは、レプリカを開いたり、閉じたり、レプリカのロールを切り替えたりする場合に生じる警告またはエラーを示すために使用されます。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 API 呼び出しからスローされる例外や、その時点のサービス ホスト プロセスのクラッシュといったエラーが考えられます。 C# コードからの API 呼び出しに起因するエラーの場合、Service Fabric によって正常性レポートに例外とスタック トレースが追加されます。
 
-これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを再試行します。 最大しきい値に達した後で、状況を修正するためのアクションを試行する場合があります。 この試行により、Service Fabric はこのノードでのアクションの実行をあきらめるので、これらの警告がクリアされることがあります。 たとえば、レプリカをノードで開けない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカを開けない場合、Service Fabric は自己修復のためのアクションを実行します。 このアクションにおいて、別のノードで同じ操作を試行することがあります。 この試行により、このレプリカで生じている警告がクリアされます。 
+これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを再試行します。 最大しきい値に達した後で、状況を修正するためのアクションを試行する場合があります。 この試行により、Service Fabric はこのノードでのアクションの実行をあきらめるので、これらの警告がクリアされることがあります。 たとえば、レプリカをノードで開けない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカを開けない場合、Service Fabric は自己修復のためのアクションを実行します。 このアクションにおいて、別のノードで同じ操作を試行することがあります。 この試行により、このレプリカで生じている警告がクリアされます。
 
 * **SourceId**: System.RA
 * **プロパティ**: **ReplicaOpenStatus**、**ReplicaCloseStatus**、**ReplicaChangeRoleStatus**。
@@ -431,14 +428,13 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
-
 PartitionId           : 337cf1df-6cab-4825-99a9-7595090c0b1b
 ReplicaId             : 131483509874784794
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='ReplicaOpenStatus', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : ReplicaOpenStatus
@@ -474,7 +470,7 @@ Exception has been thrown by the target of an invocation.
     For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
-                        Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM                        
+                        Transitions           : Error->Warning = 8/27/2017 11:43:21 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
 次の例は、終了中に継続的にクラッシュしているレプリカを示しています。
@@ -482,14 +478,13 @@ Exception has been thrown by the target of an invocation.
 ```powershell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
-
 PartitionId           : dcafb6b7-9446-425c-8b90-b3fdf3859e64
 ReplicaId             : 131483565548493142
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='ReplicaCloseStatus', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : ReplicaCloseStatus
@@ -500,7 +495,7 @@ HealthEvents          :
                         TTL                   : Infinite
                         Description           : Replica had multiple failures during close on _Node_1. The application 
                         host has crashed.
-                        
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
@@ -508,6 +503,7 @@ HealthEvents          :
 ```
 
 ### <a name="reconfiguration"></a>Reconfiguration
+
 このプロパティは、[再構成](service-fabric-concepts-reconfiguration.md)を実行しているレプリカが、再構成の停止やスタックを検出する場合に使用されます。 この正常性レポートは、現在のロールがプライマリであるレプリカに関するものです (ただし、プライマリからアクティブなセカンダリに降格されているレプリカに対する、スワップ プライマリ再構成の場合は例外です)。
 
 再構成は、次のいずれかの理由によって停止することがあります。
@@ -527,14 +523,13 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
-
 PartitionId           : 9a0cedee-464c-4603-abbc-1cf57c4454f3
 ReplicaId             : 131483600074836703
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', 
                         ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : Reconfiguration
@@ -544,25 +539,24 @@ HealthEvents          :
                         ReceivedAt            : 8/28/2017 2:13:57 AM
                         TTL                   : Infinite
                         Description           : Reconfiguration is stuck. Waiting for response from the local replica
-                        
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-次の例は、2 つのリモート レプリカからの応答を待機しているために再構成がスタックしている正常性レポートを示しています。 この例では、パーティションに、現在のプライマリを含めて 3 つのレプリカがあります。 
+次の例は、2 つのリモート レプリカからの応答を待機しているために再構成がスタックしている正常性レポートを示しています。 この例では、パーティションに、現在のプライマリを含めて 3 つのレプリカがあります。
 
-```Powershell
+```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
-
 
 PartitionId           : 579d50c6-d670-4d25-af70-d706e4bc19a2
 ReplicaId             : 131483956274977415
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', ConsiderWarningAsError=false.
-                        
+
 HealthEvents          : 
                         SourceId              : System.RA
                         Property              : Reconfiguration
@@ -572,18 +566,18 @@ HealthEvents          :
                         ReceivedAt            : 8/28/2017 12:14:07 PM
                         TTL                   : Infinite
                         Description           : Reconfiguration is stuck. Waiting for response from 2 replicas
-                        
+
                         Pending Replicas: 
                         P/I Down 40 131483956244554282
                         S/S Down 20 131483956274972403
-                        
+
                         For more information see: https://aka.ms/sfhealth
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 8/28/2017 12:07:37 PM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-この正常性レポートは、2 つのレプリカからの応答を待機しているために、再構成がスタックしていることを示しています。 
+この正常性レポートは、2 つのレプリカからの応答を待機しているために、再構成がスタックしていることを示しています。
 
 ```
     P/I Down 40 131483956244554282
@@ -598,7 +592,7 @@ HealthEvents          :
 - レプリカ ID
 
 再構成のブロックを解除するには、次の条件が必要です。
-- **down** レプリカの実行 
+- **down** レプリカの実行
 - **inbuild** レプリカがビルドを完了し、準備完了状態に遷移
 
 ### <a name="slow-service-api-call"></a>低速のサービス API 呼び出し
@@ -613,13 +607,12 @@ HealthEvents          :
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
-
 PartitionId           : 5f6060fb-096f-45e4-8c3d-c26444d8dd10
 ReplicaId             : 131483966141404693
 AggregatedHealthState : Warning
 UnhealthyEvaluations  : 
                         Unhealthy event: SourceId='System.RA', Property='Reconfiguration', HealthState='Warning', ConsiderWarningAsError=false.
-                        
+
 HealthEvents          :                         
                         SourceId              : System.RAP
                         Property              : IStatefulServiceReplica.ChangeRole(S)Duration
@@ -632,7 +625,6 @@ HealthEvents          :
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Warning = 8/28/2017 12:24:56 PM, LastOk = 1/1/0001 12:00:00 AM
-                        
 ```
 
 プロパティとテキストは、スタックした API を示します。 スタックした API によって、実行すべき次のステップも異なります。 通常、*IStatefulServiceReplica* または *IStatelessServiceInstance* 上の API はサービス コードのバグです。 次のセクションでは、これらが [Reliable Services モデル](service-fabric-reliable-services-lifecycle.md)にどのように変換されるかを説明します。
@@ -677,8 +669,6 @@ HealthEvents          :
 
 > [!NOTE]
 > 名前付けサービスによって、サービス名がクラスター内の場所に解決されます。 ユーザーはこれを使用してサービス名とプロパティを管理できます。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む *Authority Owner* を表します。 Service Fabric の名前は、*Name Owner* パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、[ネーム サービス](service-fabric-architecture.md)に関するページをご覧ください。
-> 
-> 
 
 名前付け操作に予想以上の時間がかかると、操作を実行するネーム サービス パーティションのプライマリ レプリカに関する警告のレポートでフラグが設定されます。 操作が正常に完了すると、警告はクリアされます。 操作がエラーで終了した場合は、正常性レポートにエラーの詳細が含まれます。
 
@@ -756,7 +746,7 @@ DeployedServicePackageHealthStates :
                                      ServicePackageActivationId : 
                                      NodeName              : _Node_1
                                      AggregatedHealthState : Ok
-                                     
+
 HealthEvents                       : 
                                      SourceId              : System.Hosting
                                      Property              : Activation
@@ -805,7 +795,6 @@ System.Hosting は、サービスの種類が正常に登録されていると�
 ```powershell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
-
 ApplicationName            : fabric:/WordCount
 ServiceManifestName        : WordCountServicePkg
 ServicePackageActivationId : 
@@ -823,7 +812,7 @@ HealthEvents               :
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
-                             
+
                              SourceId              : System.Hosting
                              Property              : CodePackageActivation:Code:EntryPoint
                              HealthState           : Ok
@@ -835,7 +824,7 @@ HealthEvents               :
                              RemoveWhenExpired     : False
                              IsExpired             : False
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
-                             
+
                              SourceId              : System.Hosting
                              Property              : ServiceTypeRegistration:WordCountServiceType
                              HealthState           : Ok
@@ -850,6 +839,7 @@ HealthEvents               :
 ```
 
 ### <a name="download"></a>ダウンロード
+
 System.Hosting は、サービス パッケージのダウンロードが失敗すると、エラーを報告します。
 
 * **SourceId**: System.Hosting
@@ -857,6 +847,7 @@ System.Hosting は、サービス パッケージのダウンロードが失敗�
 * **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ### <a name="upgrade-validation"></a>アップグレードの検証
+
 System.Hosting は、アップグレード中に検証が失敗した場合、またはノードでアップグレードが失敗した場合、エラーを報告します。
 
 * **SourceId**: System.Hosting
@@ -864,6 +855,7 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * **説明**:発生したエラーを指します。
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>リソース ガバナンスのメトリックに対してノード容量が未定義
+
 ノード容量がクラスター マニフェストで定義されておらず、自動検出の構成がオフになっている場合に、System.Hosting は警告を報告します。 [リソース ガバナンス](service-fabric-resource-governance.md)を使用する最初のサービス パッケージが指定されたノードに登録された時点で、Service Fabric が正常性の警告を出します。
 
 * **SourceId**: System.Hosting
@@ -871,6 +863,7 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * **次のステップ**: この問題を解決するには、クラスター マニフェストを変更して使用可能なリソースの自動検出を有効にすることをお勧めします。 もう 1 つの方法として、これらのメトリックに対して適切なノード容量を指定してクラスター マニフェストを更新することもできます。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
 * [サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

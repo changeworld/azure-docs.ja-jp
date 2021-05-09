@@ -1,20 +1,20 @@
 ---
 title: Azure での Linux VM に対する cloud-init のサポートの概要
 description: Azure でのプロビジョニング時に VM を構成する cloud-init 機能の概要。
-author: danielsollondon
+author: srijang
 ms.service: virtual-machines
 ms.subservice: extensions
 ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 02/14/2021
-ms.author: danis
-ms.openlocfilehash: ac907c2ea2ae53bd192c01232c66e0467025daae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/27/2021
+ms.author: srijangupta
+ms.openlocfilehash: 406793d1e28f48a007cdf92ef87042e6f79bcbde
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563235"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208151"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init 構成は、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  

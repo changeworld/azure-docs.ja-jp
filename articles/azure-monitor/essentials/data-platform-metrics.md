@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/20/2021
 ms.author: bwren
-ms.openlocfilehash: 3c99002a4f8613ff40a116eeceded4b3bada1c15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8c0342d477d3bbe0edc2750cd5219e3016169761
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936157"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015464"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor メトリックの概要
 Azure Monitor メトリックは、[監視対象のリソース](../monitor-reference.md)から時系列データベースに数値データを収集する Azure Monitor の機能です。 メトリックは、一定の間隔で収集される数値であり、特定の時刻におけるシステムの何らかの特性を表しています。 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 メトリック エクスプローラーを使用すると、対話形式で分析することができます。値がしきい値を超えるときにアラートで事前に通知したり、ブックやダッシュボードで視覚化したりすることができます。
@@ -99,6 +99,25 @@ Azure Monitor メトリックによって収集されるデータは、タイム
 | 8/9/2017 8:15 | IP="10.24.2.15"  | 方向 = "受信" | 100.1 Kbps |
 
 このメトリックは、「各 IP アドレスのネットワーク スループットは?」 や 「データの送信量と受信量?」といった質問に応えることができます。 多次元メトリックは、ディメンションを持たないメトリックに比べ、分析と診断に使用できる多数の値を提供します。
+
+### <a name="view-multi-dimensional-performance-counter-metrics-in-metrics-explorer"></a>メトリック エクスプローラーでの多次元パフォーマンス カウンター メトリックの表示 
+従来のゲスト メトリック API を使用して、アスタリスク (\*) を含むパフォーマンス カウンター メトリックを Azure Monitor に送信することはできません。 アスタリスクを含むメトリックは、従来のメトリックではサポートされない多次元メトリックであるため、この API では表示できません。
+多次元パフォーマンス カウンター メトリックを構成して表示する手順を下に示します。
+1.  仮想マシンの [診断設定] ページに移動します。
+2.  [パフォーマンス カウンター] タブを選択します。 
+3.  [カスタム] をクリックして、収集するパフォーマンス カウンターを構成します。
+![[診断設定] ページの [パフォーマンス カウンター] セクションのスクリーンショット](media/data-platform-metrics/azure-monitor-perf-counter.png)
+
+4.  パフォーマンス カウンターを構成した後、[シンク] をクリックします。 次に、[有効化] を選択して Azure Monitor にデータを送信します。
+![[診断設定] ページの [シンク] セクションのスクリーンショット](media/data-platform-metrics/azure-monitor-sink.png)
+
+5.  Azure Monitor でメトリックを表示するには、[メトリック名前空間] ドロップダウンで [仮想マシンのゲスト] を選択します。
+![[メトリック名前空間] のスクリーンショット](media/data-platform-metrics/vm-guest-namespace.png)
+
+6.  インスタンスごとにメトリックを分割して、構成で "\*" によって表される有効値ごとに分類されたメトリックを表示します。  この例では、"\*" は、さまざまな論理ディスク ボリュームと合計を表します。
+![インスタンス別のメトリックの分割のスクリーンショット](media/data-platform-metrics/split-by-instance.png)
+
+
 
 ## <a name="retention-of-metrics"></a>メトリックの保有期間
 Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。

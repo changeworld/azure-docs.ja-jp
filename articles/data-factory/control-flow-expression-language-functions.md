@@ -6,13 +6,13 @@ ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: d40675faeec8975cc78e39818477495139ebbf0d
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/28/2021
+ms.openlocfilehash: 275c77107faf8fd639d714b92828ab8efe623f26
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906370"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164905"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 
@@ -179,7 +179,7 @@ Corporation
 
 ### <a name="escaping-single-quote-character"></a>一重引用符のエスケープ
 
-式関数は、文字列値パラメーターに一重引用符を使用します。 文字列関数で ' 文字をエスケープするには、2 つの一重引用符を使用します。 たとえば、式 `@concat('Baba', ''' ', 'book store')` は次の結果を返します。
+式関数は、文字列値パラメーターに一重引用符を使用します。 文字列関数で ' 文字をエスケープするには、2 つの一重引用符を使用します。 たとえば、式 `@concat('Baba', '''s ', 'book store')` は次の結果を返します。
 
 ```
 Baba's book store

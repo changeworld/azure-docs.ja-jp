@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 0f2d3c830f27eec9f521e6f79ac8dce3bce818e9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: ce9dff017a796e420586ad191a59c149bed07190
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442566"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726828"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -74,45 +74,7 @@ Azure Marketplace での購入を有効にするには、次のようにしま�
 
 エンタープライズ契約のお客様は、エンタープライズ契約の価格レベルに基づいて、Azure RemoteApp の料金をお支払いただきます。 追加料金はかかりません。 標準価格には最初の 40 時間が含まれます。 無制限の価格では、最初の 80 時間が対象となります。 RemoteApp では、80 時間を超える使用量の生成が停止されます。
 
-## <a name="azure-marketplace-faq"></a>Azure Marketplace に関する FAQ
-
-このセクションでは、Azure Marketplace で一部のサードパーティ リセラー サービスに Azure 前払いがどのように適用される可能性があるかについて説明します。
-
-### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Azure Marketplace サービスと Azure EA 前払いに関してはどのような変更がありますか?
-
-2018 年 3 月 1 日より、一部のサードパーティ リセラー サービスで、Azure EA 前払いが使用されています。 Azure 予約 VM インスタンス (RI) を除き、サービスは以前は、Azure EA 前払いとは別に課金され、個別に請求されていました。
-
-弊社では Azure 前払いの使用を拡大し、最も頻繁に購入される、サードパーティが公開している Azure Marketplace サービスの一部が含まれるようにしました。 Azure Marketplace のこれらのサービスの Azure EA 前払いは、購入と支払管理を簡素化するのに役立ちます。
-
-### <a name="why-did-we-make-this-change"></a>なぜこの変更が行われたのですか?
-
-お客様は、Azure 前払いを利用するための追加の方法を絶えず探しています。 この変更はお客様によって頻繁に要求されたものであり、Azure Marketplace のお客様の大部分に影響を与えました。
-
-### <a name="how-do-you-benefit"></a>どのようなメリットがありますか?
-
-よりシンプルな課金エクスペリエンスが得られ、Azure EA 前払いを利用しやすくなります。 これらのサービスは Azure 前払いに含まれているため、Azure EA 前払いはより価値のあるものになります。
-
-### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Azure EA 前払いを使用する Azure Marketplace サービスは何ですか? また、どうすれば確認できますか?
-
-Azure 前払いを使用するサービスを購入すると、Azure Marketplace で免責事項が示されます。 Red Hat、SUSE、Autodesk、および Oracle によって公開されている、いくつかのサービスがサポートされます。 現在、他のパーティによって公開されている同じような名前のサービスは、Azure 前払いから差し引かれません。 完全なリストはこの FAQ の最後にあります。
-
-### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Azure EA 前払いで超過が発生した場合はどうすればよいですか?
-
-すべての Azure 前払いを消費し、超過した場合、これらのサービスに関連する料金が、その他の従量課金サービスと共に次の超過分の請求書に表示されます。 2018 年 3 月 1 日の変更の前までは、これらの料金は他の Azure Marketplace サービスと共に請求されました。
-
-### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>すべての Azure Marketplace で Azure EA 前払いが消費されないのはなぜですか?
-
-弊社は、Azure EA 前払いに関連する最高のカスタマー エクスペリエンスを提供するための取り組みを頻繁に行っています。 この変更により、Azure Marketplace における多くのお客様と総支出の大部分に対応できました。 その他のサービスは今後、追加される可能性があります。
-
-### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>これはダイレクトの加入契約とパートナーにどのように影響しますか?
-
-ダイレクトのお客様やパートナーには影響しません。 これらのサービスは、他の従量課金サービスと同じパートナー マークアップ機能の対象となります。 唯一の変更点は、料金が異なる請求書に表示されることと、料金の支払いがお客様の Azure EA 前払いからであることです。
-
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Azure EA 前払いを消費する Azure Marketplace サービスのリストはありますか?
-
-特定の Azure Marketplace オファーでは、Azure 前払い資金を使用できます。 このプログラムに参加している製品の完全なリストについては、[Azure 前払いを使用するサードパーティ サービス](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment)に関するページを参照してください。
-
-
 ## <a name="next-steps"></a>次のステップ
 
 - [価格](ea-pricing-overview.md)の詳細を確認します。
+- Azure Marketplace サービスと Azure EA 前払いに関する質問と回答の一覧については、[Cost Management + Billing に関する FAQ](../cost-management-billing-faq.yml) を参照してください。

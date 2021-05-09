@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e0df10d9bbcb69e6a0bf56020c1ef70e1f81df6
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99576550"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207809"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
@@ -23,7 +23,7 @@ Azure Digital Twins ソリューションでは、環境内のエンティティ
 
 ## <a name="digital-twins"></a>Digital Twins
 
-Azure Digital Twins インスタンスでデジタル ツインを作成するには、"*モデル*" をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、[*カスタム モデル*](concepts-models.md)に関するページを参照してください。
+Azure Digital Twins インスタンスでデジタル ツインを作成するには、"*モデル*" をサービスにアップロードしておく必要があります。 モデルは、特に、プロパティ、テレメトリ メッセージ、特定のツインが持つことのできるリレーションシップのセットを記述したものです。 モデルで定義される情報の種類については、[カスタム モデル](concepts-models.md)に関するページを参照してください。
 
 モデルを作成してアップロードしたら、クライアント アプリはその型のインスタンスを作成できます。これがデジタル ツインです。 たとえば、モデル *Floor* を作成したら、この型を使用する 1 つまたは複数のデジタル ツイン (*GroundFloor* という *Floor* 型ツイン、*Floor2* という別のツインなど) を作成できます。
 
@@ -51,7 +51,7 @@ Azure Digital Twins インスタンスでデジタル ツインを作成する�
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
-ディクショナリを使用する代わりに、`BasicDigitalTwin` という名称のヘルパー クラスを使用し、"ツイン" オブジェクトにプロパティ フィールドをもっと直接的に格納することもできます。 ヘルパー クラスとその使用例の詳細については、「[*デジタル ツインを作成するセクション*](how-to-manage-twin.md#create-a-digital-twin)」を参照してください。このセクションは *「デジタル ツインを管理する」方法* を参照してください。
+ディクショナリを使用する代わりに、`BasicDigitalTwin` という名称のヘルパー クラスを使用し、"ツイン" オブジェクトにプロパティ フィールドをもっと直接的に格納することもできます。 ヘルパー クラスとその使用例の詳細については、「[デジタル ツインを作成するセクション](how-to-manage-twin.md#create-a-digital-twin)」を参照してください。このセクションは *「デジタル ツインを管理する」方法* を参照してください。
 
 >[!NOTE]
 >ツイン プロパティはオプションとして扱われ、初期化する必要がありませんが、ツインの作成時にそのあらゆる [コンポーネント](concepts-models.md#elements-of-a-model)を設定する **必要があります**。 空のオブジェクトにすることができますが、コンポーネント自体は存在する必要があります。
@@ -162,8 +162,8 @@ JSON オブジェクトとして書式設定されたリレーションシップ
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins の API を使用してグラフ要素を管理する方法を確認します。
-* [*方法: Digital Twins を管理する*](how-to-manage-twin.md)
-* [*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)
+* [デジタル ツインを管理する](how-to-manage-twin.md)
+* [リレーションシップを使用してツイン グラフを管理する](how-to-manage-graph.md)
 
 または、Azure Digital Twins のツイン グラフに対して情報のクエリを行う方法について学習します。
-* "[*概念: クエリ言語*](concepts-query-language.md)
+* [概念:クエリ言語](concepts-query-language.md)

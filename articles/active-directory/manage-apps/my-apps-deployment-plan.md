@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
 ms.author: baselden
-ms.openlocfilehash: 9f05e14de9d6ebe76f722d1e4b21bc2085a74888
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8cf1a671eeb4861919a389b02f45fee998d880e3
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125138"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317219"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory マイ アプリの構成を計画する
 
@@ -138,7 +138,7 @@ Azure AD は、複数の SSO オプションをサポートします。
 
 #### <a name="plan-for-mobile-access"></a>モバイル アクセスの計画
 
-パスワードベースの SSO を使用するか、[Microsoft Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)によってアクセスされるアプリケーションには、Microsoft Edge モバイルを使用する必要があります。 その他のアプリケーションには、任意のモバイル ブラウザーを使用できます。 
+パスワードベースの SSO を使用するか、[Microsoft Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)によってアクセスされるアプリケーションには、Microsoft Edge モバイルを使用する必要があります。 その他のアプリケーションには、任意のモバイル ブラウザーを使用できます。 
 
 ### <a name="linked-sso"></a>リンクされた SSO
 
@@ -256,4 +256,4 @@ Azure Active Directory 内で必要なタスクを実行するには、最小限
 
 [Azure AD Multi-Factor Authentication のデプロイを計画する](../authentication/howto-mfa-getstarted.md)
 
-[アプリケーション プロキシのデプロイ計画](application-proxy-deployment-plan.md)
+[アプリケーション プロキシのデプロイ計画](../app-proxy/application-proxy-deployment-plan.md)

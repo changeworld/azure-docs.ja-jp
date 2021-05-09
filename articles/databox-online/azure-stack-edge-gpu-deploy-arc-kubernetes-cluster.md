@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 867387665796464ec80bcda94f7870315e55e0a1
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567527"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015611"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
@@ -74,7 +74,7 @@ Kubernetes クラスターで Azure Arc を有効にする前に、サブスク�
     
     ![Kubernetes リソース プロバイダーを登録する 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-`az cli` を使用してリソース プロバイダーを登録することもできます。 詳細については、「[Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)」を参照してください
+`az cli` を使用してリソース プロバイダーを登録することもできます。 詳細については、「[Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-providers-for-azure-arc-enabled-kubernetes)」を参照してください。
 
 ## <a name="create-service-principal-assign-role"></a>サービス プリンシパルの作成、ロールの割り当て
 

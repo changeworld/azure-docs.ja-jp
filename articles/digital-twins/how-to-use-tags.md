@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5631218e40b701a4a8f5cc42531f052e133044c5
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 5972882a582a0e612ecbed3f6a4ab70be8ba393c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904066"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207485"
 ---
 # <a name="add-tags-to-digital-twins"></a>デジタル ツインにタグを追加する 
 
@@ -95,7 +95,7 @@ red ではなく、small (値タグ) であるすべてのエンティティを�
 ## <a name="next-steps"></a>次のステップ
 
 デジタル ツイン モデルの設計と管理の詳細については、次の記事を参照してください。
-* [*方法: DTDL モデルの管理*](how-to-manage-model.md)に関する記事
+* [方法: DTDL モデルの管理](how-to-manage-model.md)に関する記事
 
 ツイン グラフに対するクエリ実行の詳細については、次の記事を参照してください。
-* [*方法: ツイン グラフに対してクエリを実行する*](how-to-query-graph.md)
+* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)

@@ -3,12 +3,13 @@ title: Azure Monitor でアクティビティ ログ アラートを作成、表
 description: Azure portal、Azure Resource Manager テンプレート、および Azure PowerShell を使用してアクティビティ ログ アラートを作成します。
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: 647378d7e93ab383441b363315a84cea8a5ab773
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0961b091f87120d8bfed885b000c380862a4074c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772543"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317273"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 

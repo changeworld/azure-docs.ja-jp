@@ -9,12 +9,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 178a29ea37195ddd2013ca5220663a75132beb24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b6ca281733a68b02c4fcfa6429da58e36661923
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555909"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164599"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-powershell"></a>Azure PowerShell を使用して可用性セットに仮想マシンを作成およびデプロイする
 
@@ -96,6 +96,12 @@ VM 2 台分の作成と構成が終わるまでには、数分かかります。
 ポータルで **[リソース グループ]**  > **myResourceGroupAvailability** > **myAvailabilitySet** の順に移動して可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
 
 ![ポータルの可用性セット](./media/tutorial-availability-sets/fd-ud.png)
+
+> [!NOTE]
+> 特定の状況では、同じ AvailabilitySet の 2 つの VM が同じ FaultDomain を共有している場合があります。 これを確認するには、可用性セットに移動し、 [障害ドメイン] 列を確認します。 この動作は、VM のデプロイ中に次のシーケンスで発生する可能性があります。
+> 1. 最初の VM をデプロイします
+> 1. 最初の VM を停止/割り当て解除します
+> 1. 2番目の VM をデプロイします。このような状況では、最初の VM と同じ障害ドメインに 2 番目の VM の OS ディスクが作成される可能性があるため、2 番目の VM も同じ障害ドメインに配置されます。 この問題を回避するために、これらのデプロイ間で VM を停止または割り当て解除しないことをお勧めします。
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
 
