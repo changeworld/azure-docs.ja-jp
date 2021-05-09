@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: cb99dc3c5e16ee117df46d7fda0caab9c57f0853
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: efc92bbd149bf66abf8d1582902443df054ce0e6
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388093"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930231"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -34,7 +34,6 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 > * ニューラル テキスト読み上げ
 >
 > 次の音声コンテナーは、限定的なプレビュー段階にあります。
-> * カスタム テキスト読み上げ
 > * 音声言語検出 
 >
 > 音声コンテナーを使用するには、オンライン要求を送信し、承認を受けている必要があります。 詳細については、以下の「**コンテナーを実行するための承認を要求する**」セクションを参照してください。
@@ -44,7 +43,6 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 | 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.11.0 |
 | カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.11.0 |
 | テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.13.0 |
-| カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.13.0 |
 | 音声言語検出 | オーディオ ファイルで話されている言語を検出します。 | 1.0 |
 | Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.5.0 |
 
@@ -85,7 +83,6 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 音声テキスト変換 | 2 コア、2 GB のメモリ | 4 コア、4 GB メモリ |
 | カスタム音声変換 | 2 コア、2 GB のメモリ | 4 コア、4 GB メモリ |
 | テキスト読み上げ | 1 コア、2 GB メモリ | 2 コア、3 GB のメモリ |
-| カスタム テキスト読み上げ | 1 コア、2 GB メモリ | 2 コア、3 GB のメモリ |
 | 音声言語検出 | 1 コア、1 GB のメモリ | 1 コア、1 GB のメモリ |
 | Neural Text-to-speech | 6 コア、12 GB のメモリ | 8 コア、16 GB のメモリ |
 
@@ -130,12 +127,6 @@ Speech のコンテナー イメージは、次のコンテナー レジスト�
 | コンテナー | リポジトリ |
 |-----------|------------|
 | Neural Text-to-speech | `mcr.microsoft.com/azure-cognitive-services/speechservices/neural-text-to-speech:latest` |
-
-# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
-
-| コンテナー | リポジトリ |
-|-----------|------------|
-| カスタム テキスト読み上げ | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest` |
 
 # <a name="speech-language-detection"></a>[音声言語検出](#tab/lid)
 
@@ -257,19 +248,6 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/neural-tex
 
 > [!IMPORTANT]
 > *Neural Text-to-speech* HTTP POST を構築するときは、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#neural-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-AriaNeural` という音声名が与えられます。
-
-# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
-
-#### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>カスタム テキスト読み上げコンテナー用の docker pull
-
-Microsoft Container Registry からコンテナー イメージをダウンロードするには、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用します。
-
-```Docker
-docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech:latest
-```
-
-> [!NOTE]
-> Custom Speech コンテナーの `locale` と `voice` は、コンテナーによって取り込まれるカスタム モデルによって決定されます。
 
 # <a name="speech-language-detection"></a>[音声言語検出](#tab/lid)
 
@@ -520,49 +498,6 @@ ApiKey={API_KEY}
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
-# <a name="custom-text-to-speech"></a>[カスタム テキスト読み上げ](#tab/ctts)
-
-*カスタム テキスト読み上げ* コンテナーはカスタム音声モデルに依存します。 カスタム モデルは、[カスタム音声ポータル](https://aka.ms/custom-voice-portal)を利用して[トレーニング](how-to-custom-voice-create-voice.md)されている必要があります。 コンテナーを実行するには、カスタム音声 **モデル ID** が必須です。 カスタム音声ポータルの **[トレーニング]** ページにあります。 カスタム音声ポータルから、 **[トレーニング]** ページに移動し、モデルを選択します。
-<br>
-
-![[カスタム音声トレーニング] ページ](media/custom-voice/custom-voice-model-training.png)
-
-docker run コマンドの `ModelId` パラメーターの引数として使用する **モデル ID** を取得します。
-<br>
-
-![カスタム音声モデルの詳細](media/custom-voice/custom-voice-model-details.png)
-
-次の表は、さまざまな `docker run` パラメーターとその説明をまとめたものです。
-
-| パラメーター | 説明 |
-|---------|---------|
-| `{VOLUME_MOUNT}` | ホスト コンピューターの[ボリューム マウント](https://docs.docker.com/storage/volumes/)。docker では、これを利用し、カスタム モデルを保持します。 たとえば、*C:\CustomSpeech* では、*C ドライブ* がホスト マシンに置かれます。 |
-| `{MODEL_ID}` | カスタム音声ポータルの **[トレーニング]** ページの Custom Speech **モデル ID**。 |
-| `{ENDPOINT_URI}` | 測定と課金にはエンドポイントが必須です。 詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。 |
-| `{API_KEY}` | API キーは必須です。 詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。 |
-
-*カスタム テキスト読み上げ* コンテナーを実行するには、次の `docker run` コマンドを実行します。
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 2g --cpus 1 \
--v {VOLUME_MOUNT}:/usr/local/models \
-mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech \
-ModelId={MODEL_ID} \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-このコマンドは、次の操作を行います。
-
-* コンテナー イメージから *カスタム テキスト読み上げ* コンテナーを実行します
-* 1 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます。
-* *カスタム テキスト読み上げ* モデルをボリューム入力マウント (*C:\CustomVoice* など) から読み込みます。
-* TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
-* `ModelId` が指定されたモデルをダウンロードします (ボリューム マウントで見つからない場合)。
-* カスタム モデルが以前にダウンロードされた場合、`ModelId` は無視されます。
-* コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
-
 # <a name="speech-language-detection"></a>[音声言語検出](#tab/lid)
 
 "*音声言語検出*" コンテナーを実行するには、次の `docker run` コマンドを実行します。
@@ -614,7 +549,7 @@ docker run --rm -v ${HOME}:/root -ti antsu/on-prem-client:latest ./speech-to-tex
 | Containers | SDK ホスト URL | Protocol |
 |--|--|--|
 | 標準音声テキスト変換とカスタム音声テキスト変換 | `ws://localhost:5000` | WS |
-| テキスト読み上げ (標準、カスタム、Neural を含む)、音声言語検出 | `http://localhost:5000` | HTTP |
+| テキスト読み上げ (標準、ニューラルを含む)、音声言語検出 | `http://localhost:5000` | HTTP |
 
 WSS プロトコルと HTTPS プロトコルを使用する方法については、[コンテナー セキュリティ](../cognitive-services-container-support.md#azure-cognitive-services-container-security)に関するセクションを参照してください。
 
@@ -739,7 +674,7 @@ speech_config.set_service_property(
 )
 ```
 
-### <a name="text-to-speech-standard-neural-and-custom"></a>テキスト読み上げ (標準、Neural、カスタム)
+### <a name="text-to-speech-standard-and-neural"></a>テキスト読み上げ (標準およびニューラル)
 
 [!INCLUDE [Query Text-to-speech container endpoint](includes/text-to-speech-container-query-endpoint.md)]
 

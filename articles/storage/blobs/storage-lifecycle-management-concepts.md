@@ -3,18 +3,18 @@ title: Azure Blob Storage アクセス層の自動化によるコストの最適
 description: ホット、クール、アーカイブの各階層間でデータを移動するための自動ルールを作成します。
 author: twooley
 ms.author: twooley
-ms.date: 10/29/2020
+ms.date: 04/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: e0b9f3b5728e4604d7c51c1d49196cfcf1161aef
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 76ea6b916cc52292e8b56523d91d92ebfc957a94
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278033"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946112"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob Storage アクセス層の自動化によるコストの最適化
 
@@ -22,7 +22,7 @@ ms.locfileid: "106278033"
 
 ライフサイクル管理ポリシーによって、以下を行えます。
 
-- パフォーマンスを最適化するためにアクセスされた場合、BLOB をクールからホットに直ちに移行する 
+- パフォーマンスを最適化するためにアクセスされた場合、BLOB をクールからホットに直ちに移行する
 - コストを最適化するために、一定期間にわたってアクセスも変更もされていない場合、BLOB、BLOB のバージョン、BLOB のスナップショットをよりクールなストレージ層に移行する (ホットからクール、ホットからアーカイブ、またはクールからアーカイブ)
 - ライフサイクルの最後に BLOB、BLOB のバージョン、BLOB のスナップショットを削除する
 - ストレージ アカウント レベルで 1 日に 1 回実行されるようにルールを定義する
@@ -37,7 +37,7 @@ ms.locfileid: "106278033"
 
 ## <a name="availability-and-pricing"></a>可用性と料金
 
-ライフサイクル管理機能は、General Purpose v2 (GPv2) アカウント、BLOB ストレージ アカウント、Premium ブロック BLOB ストレージ アカウント、Azure Data Lake Storage Gen2 アカウントのすべての Azure リージョンで利用できます。 Azure portal では、既存の General Purpose (GPv1) アカウントを GPv2 アカウントにアップグレードすることができます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
+汎用 v2 (GPv2) アカウント、Blob ストレージ アカウント、Premium ブロック Blob ストレージ アカウント、Azure Data Lake Storage Gen2 アカウントでは、すべての Azure リージョンでライフサイクル管理機能を使用できます。 既存の汎用 (GPv1) アカウントは、Azure portal で GPv2 アカウントにアップグレードできます。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../common/storage-account-overview.md)」をご覧ください。
 
 ライフサイクル管理機能は無料です。 お客様には、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 削除操作は無料です。 価格の詳細については、「[ブロック BLOBの料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
@@ -45,12 +45,17 @@ ms.locfileid: "106278033"
 
 ポリシーを追加、編集、または削除するには、次のいずれかを使用します。
 
-* [Azure Portal](https://portal.azure.com)
-* [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](/cli/azure/install-azure-cli)
-* [REST API](/rest/api/storagerp/managementpolicies)
+- Azure ポータル
+- Azure PowerShell
+   - [Add-AzStorageAccountManagementPolicyAction](/powershell/module/az.storage/add-azstorageaccountmanagementpolicyaction)
+   - [New-AzStorageAccountManagementPolicyFilter](/powershell/module/az.storage/new-azstorageaccountmanagementpolicyfilter)
+   - [New-AzStorageAccountManagementPolicyRule](/powershell/module/az.storage/new-azstorageaccountmanagementpolicyrule)
+   - [Set-AzStorageAccountManagementPolicy](/powershell/module/az.storage/set-azstorageaccountmanagementpolicy)
+   - [Remove-AzStorageAccountManagementPolicy](/powershell/module/az.storage/remove-azstorageaccountmanagementpolicy)
+- [Azure CLI](/cli/azure/storage/account/management-policy)
+- [REST API](/rest/api/storagerp/managementpolicies)
 
-ポリシーは、全体として読み取ったり書き込んだりすることができます。 部分的な更新はサポートされません。 
+ポリシーは、全体として読み取ったり書き込んだりすることができます。 部分的な更新はサポートされません。
 
 > [!NOTE]
 > ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 信頼できる Microsoft サービスに例外を指定することで、このような要求のブロックを解除できます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](../common/storage-network-security.md#exceptions)に関するページの「例外」セクションを参照してください。
@@ -59,16 +64,16 @@ ms.locfileid: "106278033"
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal を通じてポリシーを追加するには、2つの方法があります。 
+Azure portal を通じてポリシーを追加するには、2つの方法があります。
 
-* [Azure portal リスト ビュー](#azure-portal-list-view)
-* [Azure portal コード ビュー](#azure-portal-code-view)
+- [Azure portal リスト ビュー](#azure-portal-list-view)
+- [Azure portal コード ビュー](#azure-portal-code-view)
 
 #### <a name="azure-portal-list-view"></a>Azure portal リスト ビュー
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. Azure portal で、自分のストレージ アカウントを検索して選択します。 
+1. Azure portal で、自分のストレージ アカウントを検索して選択します。
 
 1. **[Blob service]** で、 **[ライフサイクル管理]** を選択してルールを表示または変更します。
 
@@ -91,7 +96,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
    > [!IMPORTANT]
    > 最終アクセス時刻追跡プレビューは、非運用環境のみで使用されます。 運用環境のサービス レベル契約(SLA) は現在使用できません。
    
-   **最終アクセス日時** オプションを使用するために、Azure portal の **ライフサイクル管理** ページで **アクセス追跡有効** を選択します。 **[最終アクセス日時]** オプションの詳細については、「[最終アクセス日付に基づいてデータを移動させる (プレビュー)](#move-data-based-on-last-accessed-date-preview)」を参照してください。
+   **[最終アクセス日時]** オプションを使用するには、Azure portal の **[ライフサイクル管理]** ページで **[Access tracking enabled]\(アクセス追跡有効化\)** を選択します。 **[最終アクセス日時]** オプションの詳細については、「[最終アクセス日付に基づいてデータを移動させる (プレビュー)](#move-data-based-on-last-accessed-date-preview)」を参照してください。
 
 1. **[詳細]** ページで **[フィルターを使用して BLOB を制限する]** を選択した場合は、 **[フィルター セット]** を選択して省略可能なフィルターを追加します。 次の例では、"log" で始まる *mylifecyclecontainer* コンテナー内の BLOB に対してフィルター処理を行います。
 

@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/15/2021
 ms.author: banders
-ms.openlocfilehash: 63fbf76b2211e530707f3598d176b646c317cc53
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 687db46ea2f6c9c4fae6e5355e3236cde3d7a401
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363051"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567249"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する
 
@@ -21,7 +21,7 @@ ms.locfileid: "100363051"
 
 移転リクエストを開始する前に、残しておきたいコスト情報や課金情報があれば、それらをダウンロードまたはエクスポートしておく必要があります。 課金情報や使用情報がサブスクリプションと一緒に移転されることはありません。 コスト管理データのエクスポートの詳細については、[データのエクスポートと管理](../costs/tutorial-export-acm-data.md)に関するページを参照してください。 請求書データと利用状況データのダウンロードについて詳しくは、「[Azure の請求書と毎日の使用状況データをダウンロードまたは表示する](download-azure-invoice-daily-usage-date.md)」を参照してください。
 
-既存の予約がある場合、サブスクリプションの移転後は適用されなくなります。 必ず[予約の取り消しと払い戻し](../reservations/exchange-and-refund-azure-reservations.md)を行ったうえで、サブスクリプションを移転してください。
+既存の予約がある場合、サブスクリプションの譲渡後 90 日間は適用が停止されます。 90 日間の猶予期間が過ぎても課金されないようにするには、サブスクリプションを譲渡する前に、必ず[予約を取り消し、払戻](../reservations/exchange-and-refund-azure-reservations.md)してください。
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>EA サブスクリプションを CSP パートナーに譲渡する
 
@@ -55,9 +55,9 @@ ms.locfileid: "100363051"
 
 ## <a name="transfer-csp-subscription-to-other-offer"></a>CSP サブスクリプションを他のオファーに譲渡する
 
-他のサブスクリプションを CSP パートナーから他の Azure オファーに譲渡するには、サブスクライバーがソース CSP サブスクリプションとターゲット サブスクリプションの間でリソースを移動する必要があります。
+他のサブスクリプションを CSP パートナーから他の Azure オファーに譲渡するには、サブスクライバーがソース CSP サブスクリプションとターゲット サブスクリプションの間でリソースを移動する必要があります。 これはパートナーと顧客によって実行される作業であり、Microsoft の担当者によって実行されることはありません。
 
-1. ターゲットの Azure サブスクリプションを作成します。
+1. 顧客は、ターゲット Azure サブスクリプションを作成します。
 1. 移行元サブスクリプションと移行先サブスクリプションが同じ Azure Active Directory (Azure AD) テナントにあることを確認します。 Azure AD テナントの変更について詳しくは、「[Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
     CSP サブスクリプションではディレクトリの変更オプションがサポートされないことに注意してください。 たとえば、CSP から従量課金制のサブスクリプションに譲渡するとします。 従量課金制のサブスクリプションのディレクトリを変更して、そのディレクトリに一致させる必要があります。
 
@@ -65,7 +65,7 @@ ms.locfileid: "100363051"
     >  - サブスクリプションを別のディレクトリに関連付けると、[Azure RBAC](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
     >  - そのサブスクリプションが別のディレクトリに関連付けられている場合は、ポリシー割り当てもサブスクリプションから削除されます。
 
-1. 譲渡を実行するために使用するユーザー アカウントには、両方のサブスクリプションで [Azure RBAC](add-change-subscription-administrator.md) 所有者アクセス権が必要です。
+1. 譲渡を実行するために使用する顧客ユーザー アカウントには、両方のサブスクリプションに対する [Azure RBAC](add-change-subscription-administrator.md) 所有者アクセス権が必要です。
 1. 開始する前に、すべての Azure リソースをソース サブスクリプションから宛先サブスクリプションに移動できることを[検証](/rest/api/resources/resources/validatemoveresources)します。
     > [!IMPORTANT]
     >  - サブスクリプション間で移動することができない Azure リソースもあります。 移動できる Azure リソースの完全な一覧については、「[リソースの移動操作のサポート](../../azure-resource-manager/management/move-support-resources.md)」を参照してください。

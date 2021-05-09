@@ -4,13 +4,13 @@ description: ローカル コンピューターから Azure Resource Manager テ
 ms.date: 02/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: ''
-ms.openlocfilehash: d8d54acfa345994edcc401170e70495b3826bfdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6737e2500b96d1c1872432c39761f8578de0ba02
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384233"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319739"
 ---
 # <a name="tutorial-deploy-a-local-arm-template"></a>チュートリアル:ローカル ARM テンプレートをデプロイする
 

@@ -5,19 +5,19 @@ description: Text Analytics API 用の Docker コンテナーを使用し、感�
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18, cog-serv-seo-aug-2020
+ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
-ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 09d0da5aa811f694657ae6a0b8059bf55bcbf657
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277472"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290256"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -50,7 +50,7 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
-Text Analytics for Health コンテナーを使用している場合は、[責任ある AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health) (RAI) 確認も `accept` の値で存在する必要があります。
+Text Analytics for Health コンテナーを使用している場合は、[責任ある AI](/legal/cognitive-services/text-analytics/transparency-note-health) (RAI) 確認も `accept` の値で存在する必要があります。
 
 ## <a name="the-host-computer"></a>ホスト コンピューター
 

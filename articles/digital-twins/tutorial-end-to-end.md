@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 998657c1e183d1b0dd0d533bb763ee7c13a3f474
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: a0584bea6fab1d49c552785d093e7e2df823b11b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904192"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205829"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -72,9 +72,9 @@ _**AdtE2ESample**_ プロジェクトが開いている Visual Studio ウィン�
 SetupBuildingScenario
 ```
 
-このコマンドは、Azure Digital Twins に 3 つの [**デジタル ツイン**](concepts-twins-graph.md) インスタンス (*floor1* という名前のフロア、*room21* という名前の部屋、*thermostat67* という名前の温度センサー) を作成、接続すると共に、一連の確認メッセージを出力します。 これらのデジタル ツインは、実世界の環境に存在するであろうエンティティを表します。
+このコマンドは、Azure Digital Twins に 3 つの [デジタル ツイン](concepts-twins-graph.md) インスタンス (*floor1* という名前のフロア、*room21* という名前の部屋、*thermostat67* という名前の温度センサー) を作成、接続すると共に、一連の確認メッセージを出力します。 これらのデジタル ツインは、実世界の環境に存在するであろうエンティティを表します。
 
-それらがリレーションシップを介して接続され、以下の [**ツイン グラフ**](concepts-twins-graph.md)が形成されます。 ツイン グラフは、エンティティの相互作用や相互関係を含め、環境を全体として表します。
+それらがリレーションシップを介して接続され、以下の[ツイン グラフ](concepts-twins-graph.md)が形成されます。 ツイン グラフは、エンティティの相互作用や相互関係を含め、環境を全体として表します。
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-graph.png" alt-text="floor1 に room21 が含まれ、room21 に thermostat67 が含まれていることを示すグラフ" border="false":::
 
@@ -129,7 +129,7 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 
 #### <a name="assign-access-role"></a>アクセス ロールの割り当て
 
-最初の設定によって、関数アプリに Azure Digital Twins インスタンスの **Azure Digital Twins データ所有者** ロールが付与されます。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。 
+最初の設定によって、関数アプリに Azure Digital Twins インスタンスの **Azure Digital Twins データ所有者** ロールが付与されます。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[概念: Azure Digital Twins ソリューションのセキュリティ](concepts-security.md)に関するページを参照してください。 
 
 1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の **principalId** フィールドを書き留めてください。
 
@@ -156,7 +156,7 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 
 #### <a name="configure-application-settings"></a>アプリケーション設定の構成
 
-2 番目の設定では、Azure Digital Twins インスタンスの URL を使用して、関数の **環境変数** を作成します。 関数コードでは、これを使用してインスタンスを参照します。 環境変数の詳細については、「[*お使いの関数アプリの管理*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。 
+2 番目の設定では、Azure Digital Twins インスタンスの URL を使用して、関数の **環境変数** を作成します。 関数コードでは、これを使用してインスタンスを参照します。 環境変数の詳細については、「[お使いの関数アプリの管理](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。 
 
 次のコマンドを実行して、プレースホルダーにリソースの詳細を設定します。
 
@@ -171,7 +171,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 Azure Digital Twins グラフは、実デバイスからのテレメトリによって駆動するように作られています。 
 
-このステップでは、[IoT Hub](../iot-hub/about-iot-hub.md) に登録されたサーモスタットのシミュレーション デバイスを、Azure Digital Twins におけるサーモスタット デバイスを表すデジタル ツインに接続します。 シミュレートされたデバイスがテレメトリを出力すると、そのデータが Azure 関数 (*ProcessHubToDTEvents*) に誘導され、そこでデジタル ツインへの対応する更新がトリガーされます。 こうして、デジタル ツインが、実デバイスのデータとの間で常に最新の状態に保たれます。 Azure Digital Twins では、イベント データを別の場所に誘導するプロセスが [**イベントのルーティング**](concepts-route-events.md)と呼ばれます。
+このステップでは、[IoT Hub](../iot-hub/about-iot-hub.md) に登録されたサーモスタットのシミュレーション デバイスを、Azure Digital Twins におけるサーモスタット デバイスを表すデジタル ツインに接続します。 シミュレートされたデバイスがテレメトリを出力すると、そのデータが Azure 関数 (*ProcessHubToDTEvents*) に誘導され、そこでデジタル ツインへの対応する更新がトリガーされます。 こうして、デジタル ツインが、実デバイスのデータとの間で常に最新の状態に保たれます。 Azure Digital Twins では、イベント データを別の場所に誘導するプロセスが[イベントのルーティング](concepts-route-events.md)と呼ばれます。
 
 これが行われるのは、エンド ツー エンド シナリオの以下の部分 (**矢印 B**) です。
 
@@ -439,4 +439,4 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 今度は、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
-> "[*概念: カスタム モデル*](concepts-models.md)"
+> [概念:カスタム モデル](concepts-models.md)

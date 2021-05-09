@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 04/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21233d946ba3cb1ae2c47ccf63582ef832408635
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184323"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903436"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する
 
@@ -41,6 +41,8 @@ ms.locfileid: "102184323"
 ## <a name="register-the-feature"></a>機能を登録する
 
 ボリュームを別の容量プールに移動する機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、まず機能を登録する必要があります。
+
+複数の Azure サブスクリプションがある場合は、["Set-AzContext "](/powershell/module/az.accounts/set-azcontext) コマンドを使用して、目的のサブスクリプションに登録していることを確認してください。 <!-- GitHub #74191 --> 
 
 1. 機能を登録します。 
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0d7598e332539b8203d55bbcb1cf497811c32540
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: da084bfab39eb0e12d90f25f3658dc4507ca63dc
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366557"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906658"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal で MSIX アプリのアタッチを設定する
 
@@ -19,19 +19,16 @@ ms.locfileid: "107366557"
 
 ## <a name="requirements"></a>必要条件
 
->[!IMPORTANT]
->作業を開始する前に、必ず[こちらのフォーム](https://aka.ms/enablemsixappattach)に記入して送信し、サブスクリプションで MSIX アプリ アタッチを有効にしてください。 承認されたリクエストがない場合、MSIX アプリ アタッチは機能しません。 リクエストの承認には、営業日に最大で 24 時間かかる可能性があります。 リクエストが受諾されて完了すると、電子メールが届きます。
-
 MSIX アプリ アタッチを構成するために必要な項目を次に示します。
 
 - 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 - 少なくとも 1 つのアクティブなセッション ホストが含まれている Windows Virtual Desktop ホスト プール。
-- このホスト プールは検証環境に存在している必要があります。 
 - MSIX パッケージ化ツール。
 - MSIX のパッケージされたアプリケーションは、ファイル共有にアップロードされる MSIX イメージに展開されます。
 - MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のファイル共有。
 - MSIX イメージをアップロードしたファイル共有には、ホスト プール内のすべての仮想マシン (VM) からアクセスできる必要もあります。 ユーザーには、イメージにアクセスするための読み取り専用アクセス許可が必要になります。
 - 証明書が公的に信頼されていない場合は、「[証明書をインストールする](app-attach.md#install-certificates)」の手順に従ってください。
+- 現在、Azure Government クラウドでは、MSIX アプリのアタッチはサポートされていません。
 
 ## <a name="turn-off-automatic-updates-for-msix-app-attach-applications"></a>MSIX アプリ アタッチ アプリケーションの自動更新をオフにする
 
@@ -51,9 +48,6 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
 
 ```
-
->[!NOTE]
->Hyper-v を有効にした後で、仮想マシンを再起動することをお勧めします。
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>MSIX アプリ アタッチ管理インターフェイスを構成する
 

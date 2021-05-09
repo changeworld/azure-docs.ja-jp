@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 04/22/2021
 ms.author: duau
-ms.openlocfilehash: 0bbe16fb63a4546b4b4745df16074f6a4b0cb26b
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 77b9cd7590b381a29fc0dc19b2a80b72afceca0a
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599538"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930301"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
 
@@ -81,6 +81,7 @@ Azure Route Server には、(デプロイごとに) 次の制限があります�
 | サポートされている BGP ピアの数 | 8 |
 | 各 BGP ピアで Azure Route Server にアドバタイズできるルートの数 | 200 |
 | Azure Route Server で ExpressRoute または VPN ゲートウェイにアドバタイズできるルートの数 | 200 |
+| Azure Route Server で対応できる、仮想ネットワークの最大 VM 数 (ピアリングしている VNet の数を含む) | 6000 |
 
 NVA によって制限より多くのルートが公開された場合、BGP セッションは削除されます。 ゲートウェイと Azure Route Server にこれが発生した場合は、オンプレミス ネットワークから Azure への接続が失われます。 詳しくは、「[Azure 仮想マシンのルーティングに関する問題を診断する](../virtual-network/diagnose-network-routing-problem.md)」をご覧ください。
 

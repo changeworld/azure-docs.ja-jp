@@ -7,18 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: 4a1a122eb7b5b0abcc47cd321c74267a1a4aecda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 07e12272eeb8d35620baafef5414060dff2e9ee2
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93396857"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319631"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>アプリケーション ゲートウェイを作成して HTTP ヘッダーを書き換える
 
-[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](./application-gateway-autoscaling-zone-redundant.md) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](rewrite-http-headers.md)を構成できます
+[自動スケールおよびゾーン冗長アプリケーション ゲートウェイの SKU](./application-gateway-autoscaling-zone-redundant.md) を新規作成するときには、Azure PowerShell を使用して、[HTTP 要求および応答ヘッダーを書き換えるルール](./rewrite-http-headers-url.md)を構成できます
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 * 自動スケーリングする仮想ネットワークを作成する
 * 予約済みパブリック IP を作成する

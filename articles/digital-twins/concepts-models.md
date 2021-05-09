@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 713a829ee8c7a3d036bc82f6f509e5c79dfb71aa
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589297"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205775"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
 Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー提供の **モデル** を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 
 
-モデルは、オブジェクト指向プログラミング言語の **クラス** に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 (*Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す [**デジタル ツイン**](concepts-twins-graph.md)を作成します。
+モデルは、オブジェクト指向プログラミング言語の **クラス** に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 (*Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す[デジタル ツイン](concepts-twins-graph.md)を作成します。
 
 Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Definition language (DTDL)** で表現されます。  
 
@@ -26,7 +26,7 @@ Azure Digital Twins のモデルは、JSON-LD ベースの **Digital Twin Defini
 
 Azure Digital Twins のモデルは、Digital Twins Definition Language (DTDL) を使用して定義されます。 
 
-DTDL の完全な言語仕様については、GitHub: [**Digital Twins Definition Language (DTDL) - Version 2**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を参照してください。
+DTDL の完全な言語仕様については、GitHub: [Digital Twins Definition Language (DTDL) - Version 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) を参照してください。
 
 DTDL は JSON-LD に基づいており、プログラミング言語に依存しません。 DTDL は Azure Digital Twins 専用ではなく、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md)などの他の IoT サービスのデバイス データを表すためにも使用されます。 Azure Digital Twins は DTDL **バージョン 2** を使用します (Azure Digital Twins での DTDL バージョン 1 の使用は非推奨となりました)。 
 
@@ -51,7 +51,7 @@ Azure Digital Twins では、プロパティまたはリレーションシップ
 
 DTDL モデルのインターフェイスには、以下の各フィールドをゼロ個、1 個、または複数個、含めることができます。
 * **Property** - プロパティは、エンティティの状態を表すデータ フィールドです (多くのオブジェクト指向プログラミング言語のプロパティと同様)。 プロパティはバッキング ストレージを備えていて、いつでも読み取ることができます。
-* **Telemetry** - テレメトリ フィールドは測定値またはイベントを表し、多くの場合、デバイスのセンサーの読み取りを説明するために使用されます。 プロパティとは異なり、テレメトリはデジタル ツインに格納されません。これは、発生時に処理される必要がある一連の期限付きデータ イベントです。 プロパティとテレメトリの違いの詳細については、下の「[*プロパティとテレメトリ*](#properties-vs-telemetry)」セクションを参照してください。
+* **Telemetry** - テレメトリ フィールドは測定値またはイベントを表し、多くの場合、デバイスのセンサーの読み取りを説明するために使用されます。 プロパティとは異なり、テレメトリはデジタル ツインに格納されません。これは、発生時に処理される必要がある一連の期限付きデータ イベントです。 プロパティとテレメトリの違いの詳細については、下の「[プロパティとテレメトリ](#properties-vs-telemetry)」セクションを参照してください。
 * **Component** - コンポーネントを使用すると、必要に応じてモデル インターフェイスを他のインターフェイスの組み合わせとして構築できます。 コンポーネントの例として、"*電話*" のモデルの定義に使用される *frontCamera* インターフェイス (およびもう 1 つのコンポーネント インターフェイスである *backCamera*) があります。 最初に *frontCamera* のインターフェイスを独自のモデルであるかのように定義する必要があります。その後、*Phone* を定義するときに、それを参照できます。
 
     コンポーネントを使用するのは、ソリューションの不可欠な要素でありながら、個別の ID を必要とせず、ツイン グラフで独立して作成、削除、および再配置する必要がないものを記述する場合です。 エンティティがツイン グラフ内で独立した存在になるようにするには、それらを異なるモデルの個別のデジタル ツインとして表現し、"*リレーションシップ*" (次の箇条書き項目を参照) で接続します。
@@ -153,21 +153,21 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 _**Azure Digital Twins にモデルをアップロードするには**_
 
-モデルの作成、拡張、または選択が完了したら、それらを Azure Digital Twins インスタンスにアップロードして、ソリューションで使用できるようにすることができます。 これを行うには、[Azure Digital Twins API](how-to-use-apis-sdks.md) を使用します。詳細については、[*方法: DTDL モデルの管理*](how-to-manage-model.md#upload-models)に関する記事を参照してください。
+モデルの作成、拡張、または選択が完了したら、それらを Azure Digital Twins インスタンスにアップロードして、ソリューションで使用できるようにすることができます。 これを行うには、[Azure Digital Twins API](how-to-use-apis-sdks.md) を使用します。詳細については、[方法: DTDL モデルの管理](how-to-manage-model.md#upload-models)に関する記事を参照してください。
 
-ただし、アップロードするモデルが多数ある場合 (またはモデルに多数の相互依存性があり、それにより個々のアップロードの順序付けが複雑になる場合)、このサンプルを使用して多数のモデルを一度にアップロードできます。[**Azure Digital Twins のモデル アップローダー**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). サンプルで示されている手順に従って、このプロジェクトを構成し、独自のインスタンスにモデルをアップロードするために使用します。
+ただし、アップロードするモデルが多数ある場合 (またはモデルに多数の相互依存性があり、それにより個々のアップロードの順序付けが複雑になる場合)、このサンプルを使用して多数のモデルを一度にアップロードできます。[Azure Digital Twins のモデル アップローダー](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). サンプルで示されている手順に従って、このプロジェクトを構成し、独自のインスタンスにモデルをアップロードするために使用します。
 
 ### <a name="model-visualizer"></a>モデルのビジュアライザー 
 
 _**モデルを視覚化するには**_
 
-Azure Digital Twins インスタンスにモデルをアップロードした後、[**Azure Digital Twins Model Visualizer**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、Azure Digital Twins インスタンスでモデルを表示できます。これには、継承やモデルのリレーションシップも含まれます。 このサンプルは、現在ドラフト状態です。 弊社は、デジタル ツインの開発コミュニティに対して、このサンプルを拡張して寄与するように奨励しています。 
+Azure Digital Twins インスタンスにモデルをアップロードした後、[Azure Digital Twins Model Visualizer](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、Azure Digital Twins インスタンスでモデルを表示できます。これには、継承やモデルのリレーションシップも含まれます。 このサンプルは、現在ドラフト状態です。 弊社は、デジタル ツインの開発コミュニティに対して、このサンプルを拡張して寄与するように奨励しています。 
 
 ## <a name="next-steps"></a>次のステップ
 
-* 業界標準のオントロジに基づいてモデルを作成する方法について学習してください。"[*概念: オントロジとは*](concepts-ontologies.md)" に関する記事
+* 業界標準のオントロジに基づいてモデルを作成する方法について学習してください。"[概念: オントロジとは](concepts-ontologies.md)" に関する記事
 
-* API 操作によるモデルの管理について詳しく学習してください。[*方法: DTDL モデルの管理*](how-to-manage-model.md)に関する記事
+* API 操作によるモデルの管理について詳しく学習してください。[方法: DTDL モデルの管理](how-to-manage-model.md)に関する記事
 
-* モデルを使用してデジタル ツインを作成する方法について学習してください。"[*概念: デジタル ツインとツイン グラフ*](concepts-twins-graph.md)"
+* モデルを使用してデジタル ツインを作成する方法について学習してください。"[概念: デジタル ツインとツイン グラフ](concepts-twins-graph.md)"
 

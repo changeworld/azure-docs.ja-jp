@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/24/2021
-ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d728160413d470383f3eee78fc430aed0125ed7
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026625"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905236"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "105026625"
     - **切断**: Data Factory はカタログにアクセスできますが、別のカタログに接続されています。 その結果、データ系列がこのカタログに自動的には報告されません。
     - **アクセス不可**: 現在のユーザーは Data Factory にアクセスできないため、接続の状態は不明です。
  >[!Note]
- >Data Factory 接続を表示するには、次の Purview ロールのいずれかが割り当てられている必要があります。
+ >Data Factory 接続を表示するには、Purview ロールのいずれかが割り当てられている必要があります。 管理グループからのロールの継承は **サポートされていません**。
  >- Contributor
  >- 所有者
  >- Reader
@@ -43,7 +43,7 @@ ms.locfileid: "105026625"
 ## <a name="create-new-data-factory-connection"></a>新しい Data Factory 接続を作成する
 
 >[!Note]
->Data Factory 接続を追加または削除するには、次の Purview ロールのいずれかが割り当てられている必要があります。
+>Data Factory 接続を追加または削除するには、Purview ロールのいずれかが割り当てられている必要があります。 管理グループからのロールの継承は **サポートされていません**。
 >- 所有者
 >- User Access Administrator
 >

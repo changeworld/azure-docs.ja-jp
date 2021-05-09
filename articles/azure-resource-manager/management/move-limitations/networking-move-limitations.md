@@ -3,12 +3,12 @@ title: Azure ネットワーク リソースを新しいサブスクリプショ
 description: Azure Resource Manager を使用して、仮想ネットワークおよびその他のネットワーク リソースを、新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 0ac503a778b3de8945b074628242233f9bcd6a3b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120131"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129965"
 ---
 # <a name="move-guidance-for-networking-resources"></a>ネットワーク リソースの移動ガイダンス
 
@@ -17,7 +17,7 @@ ms.locfileid: "106120131"
 ## <a name="dependent-resources"></a>依存リソース
 
 > [!NOTE]
-> パブリック IP アドレスに関連付けられている VPN ゲートウェイは、現在、リソース グループまたはサブスクリプション間で移動できないことに注意してください。
+> パブリック IP Standard SKU アドレスに関連付けられている VPN ゲートウェイは、現在、リソース グループまたはサブスクリプション間で移動できないことに注意してください。
 
 リソースを移動するときは、依存リソース (パブリック IP アドレス、仮想ネットワーク ゲートウェイ、関連付けられているすべての接続リソースなど) も移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
 

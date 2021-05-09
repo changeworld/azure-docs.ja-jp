@@ -2,13 +2,14 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: 0b17b8741d1701720de86d8039be3b6cd28ace5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/27/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2137d71c78a5cb02e0e574be9c38d5bf18180789
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781903"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322205"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ
 
@@ -17,12 +18,6 @@ ms.locfileid: "107781903"
 ## <a name="supported-resources"></a>サポートされているリソース
 
 すべてのリソースの種類をテナント レベルにデプロイできるわけではありません。 このセクションでは、サポートされているリソースの種類を示します。
-
-Azure ポリシーでは、以下を使用します。
-
-* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
-* [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
-* [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
 Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を使用します。
 
@@ -49,6 +44,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 ポータルを構成するには、以下を使用します。
 
 * [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
+
+組み込みのポリシー定義はテナントレベルのリソースですが、カスタム ポリシー定義をテナントにデプロイすることはできません。 組み込みのポリシー定義をリソースに割り当てる例については、「[Tenantresourceid の例](./template-functions-resource.md#tenantresourceid-example)」を参照してください。
 
 ## <a name="schema"></a>スキーマ
 

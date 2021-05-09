@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f3c783c57b49b45943882703aec6d735d12bf830
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 180226741d77defb0a9f0d00165cf858cb65ecbb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481958"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906514"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -229,7 +229,6 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
 * DPS の **ID スコープ** 値。 Azure portal で、使用している DPS インスタンスの概要ページから、この値を取得できます。
 * デバイス上のデバイス ID 証明書チェーン ファイル。
 * デバイス上のデバイス ID キー ファイル。
-* 登録 ID (省略可能)。 指定しない場合、ID はデバイス ID 証明書内の共通名から取得されます。
 
 ### <a name="linux-device"></a>Linux デバイス
 
@@ -268,7 +267,7 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
    `file:///<path>/identity_certificate_chain.pem`
    `file:///<path>/identity_key.pem`
 
-1. 必要に応じて、デバイスに `registration_id` を指定します。 それ以外の場合は、その行をコメント アウトしたままにして、デバイスを ID 証明書の CN 名で登録します。
+1. 必要に応じて、デバイスの `registration_id` を指定します。これは ID 証明書の共通名 (CN) と一致している必要があります。 その行をコメントアウトしたままにすると、CN が自動的に適用されます。
 
 1. 必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
 
@@ -309,22 +308,24 @@ DPS による x.509 のプロビジョニングは、IoT Edge バージョン 1.
    
    [provisioning.attestation]
    method = "x509"
-   # registration_id = "<OPTIONAL REGISTRATION ID. LEAVE COMMENTED OUT TO REGISTER WITH CN OF identity_cert>"
+   registration_id = "<REGISTRATION ID>"
 
-   identity_cert = "<REQUIRED URI TO DEVICE IDENTITY CERTIFICATE>"
+   identity_cert = "<DEVICE IDENTITY CERTIFICATE>"
 
-   identity_pk = "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
+   identity_pk = "<DEVICE IDENTITY PRIVATE KEY>"
    ```
 
-1. `id_scope`、`identity_cert`、`identity_pk` の値を DPS およびデバイス情報で更新します。
+1. `id_scope` の値を、DPS のインスタンスからコピーしたスコープ ID に更新します。
+
+1. デバイスの`registration_id` を指定します。これは、デバイスが IoT Hub で持つ ID です。 登録 ID は、ID 証明書の共通名 (CN) と一致している必要があります。
+
+1. `identity_cert` と `identity_pk` の値をご自分の証明書およびキー情報で更新します。
 
    ID 証明書の値は、ファイルの URI として指定することも、EST またはローカルの証明機関を使用して動的に発行することもできます。 使用するように選択した形式に基づいて、1 行だけコメント解除します。
 
    ID 秘密キーの値は、ファイル URI または PKCS#11 URI として指定できます。 使用するように選択した形式に基づいて、1 行だけコメント解除します。
 
    任意の PKCS#11 URI を使用する場合は、構成ファイルで **PKCS#11** セクションを見つけ、PKCS#11 構成に関する情報を提供します。
-
-1. 必要に応じて、デバイスに `registration_id` を指定します。 それ以外の場合は、その行をコメント アウトしたままにして、デバイスを ID 証明書の共通名で登録します。
 
 1. ファイルを保存して閉じます。
 

@@ -4,12 +4,12 @@ description: サブスクリプションの上限に達したときに、Azure R
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c1fd707bf9f13ed88bf9acb5d2ad70d56c453a90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 677cd0fc047cbdbbe91a308600201087c36e050a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105024627"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130001"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
@@ -55,6 +55,10 @@ Microsoft.Network リソース プロバイダーでは、次の調整制限が�
 | --------- | ----- |
 | 書き込み/削除 (PUT) | 5 分あたり 1000 |
 | 読み取り (GET) | 5 分あたり 10000 |
+
+> [!NOTE]
+> **Azure プライベート DNS** では、5 分あたり 500 件の読み取り (GET) 操作のスロットル上限があります。
+>
 
 ### <a name="compute-throttling"></a>コンピューティング調整
 

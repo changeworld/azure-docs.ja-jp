@@ -1,15 +1,15 @@
 ---
 title: 'クイック スタート: .NET Core を使用して管理グループを作成する'
 description: このクイックスタートでは、.NET Core を使用して、リソースを階層で整理する管理グループを作成します。
-ms.date: 02/05/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a74cea9b142785c093b8ed235fc40049746f11a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82382160465684b0da40094012c6cb6561bf5036
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99592570"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323287"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>クイック スタート: .NET Core を使用して管理グループを作成する
 
