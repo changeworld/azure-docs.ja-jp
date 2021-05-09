@@ -4,13 +4,13 @@ description: 予測ランタイム時に、エンティティによってユー�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/13/2021
-ms.openlocfilehash: 44cffecd653ec2ec748e73d01dc86a87cfcd7de9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/26/2021
+ms.openlocfilehash: a075a84322dc11be352470d50478979b975f0292
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500330"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140895"
 ---
 # <a name="entities-in-luis"></a>LUIS のエンティティ
 
@@ -33,7 +33,7 @@ ms.locfileid: "107500330"
 
 エンティティを作成するには、名前と種類を指定する必要があります。 LUIS には、いくつかの種類のエンティティがあります。 
 
-### <a name="list-entity"></a>リスト エンティティ
+## <a name="list-entity"></a>リスト エンティティ
 
 リスト エンティティは、固定かつ限定された関連単語セットとそのシノニムを表します。 リスト エンティティを使用すると、複数のシノニムやバリエーションを認識し、それらの正規化された出力を抽出できます。 現在のリストに基づいて新しい単語の候補を表示するには、 *[recommend]\(推奨\)* オプションを使用します。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "107500330"
 
 詳細については、[リスト エンティティのリファレンス記事](reference-entity-list.md)をご覧ください。
 
-### <a name="regex-entity"></a>正規表現エンティティ
+## <a name="regex-entity"></a>正規表現エンティティ
 
 正規表現エンティティは、指定された正規表現パターンに基づいてエンティティを抽出します。 大文字小文字とカルチャのバリアントは無視されます。 正規表現は、構造化テキスト、または特定の形式で想定される英数字値の定義済みシーケンスに最適です。 次に例を示します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "107500330"
 
 詳細については、[正規表現エンティティのリファレンス記事](reference-entity-regular-expression.md)をご覧ください。
 
-### <a name="prebuilt-entity"></a>事前構築済みエンティティ
+## <a name="prebuilt-entity"></a>事前構築済みのエンティティ
 
 LUIS では、名前、日付、数値、通貨などの一般的な種類のデータを認識するために一連の事前構築済みエンティティが提供されています。  事前構築済みエンティティの動作は固定されています。 事前構築済みエンティティのサポートは、LUIS アプリのカルチャによって異なります。 次に例を示します。
 
@@ -71,7 +71,7 @@ LUIS では、名前、日付、数値、通貨などの一般的な種類のデ
 
 詳細については、[事前構築済みエンティティのリファレンス記事](./luis-reference-prebuilt-entities.md)をご覧ください。
 
-### <a name="patternany-entity"></a>Pattern.Any エンティティ
+## <a name="patternany-entity"></a>Pattern.Any エンティティ
 
 pattern.Any エンティティは、エンティティの開始位置と終了位置を示すためにパターンのテンプレート発話でのみ使用される可変長プレースホルダーです。 特定のルールまたはパターンに従っており、構文構造が固定された文に使用するのが最適です。 次に例を示します。
 
@@ -83,7 +83,7 @@ pattern.Any エンティティは、エンティティの開始位置と終了�
 
 詳細については、[Pattern.Any エンティティのリファレンス記事](./reference-entity-pattern-any.md)をご覧ください。
 
-### <a name="machine-learned-ml-entity"></a>機械学習 (ML) エンティティ
+## <a name="machine-learned-ml-entity"></a>Machine learned (ML) エンティティ
 
 機械学習エンティティでは、コンテキストを使用して、ラベル付けされた例に基づいてエンティティを抽出します。 これは、LUIS アプリケーションを構築するのに推奨されるエンティティです。 機械学習アルゴリズムに依存しており、アプリケーションに合わせて正しく調整するにはラベル付けが必要です。 ML エンティティを使用して、常に適切な形式とは限らないが、同じ意味を持つデータを識別します。 
 
@@ -109,7 +109,7 @@ pattern.Any エンティティは、エンティティの開始位置と終了�
     * Country: USA
 
 
-### <a name="building-effective-ml-entities"></a>有効な ML エンティティの構築
+## <a name="building-effective-ml-entities"></a>有効な ML エンティティの構築
 
 機械学習エンティティを効果的に構築するには、次のベスト プラクティスに従ってください。
 
@@ -123,7 +123,7 @@ pattern.Any エンティティは、エンティティの開始位置と終了�
 
 エンティティは、別の意図やエンティティの特徴または特徴的な特性として使用されて、システムがそれを通じて監視したり学習したりできるようにすることを、そのもう 1 つの重要な機能としています。
 
-### <a name="entities-as-features-for-intents"></a>意図の特徴としてのエンティティ
+## <a name="entities-as-features-for-intents"></a>意図の特徴としてのエンティティ
 
 エンティティは、意図のシグナルとして使用できます。 たとえば、特定のエンティティが発話内にある場合は、それがどの意図に分類されるかが分かります。
 
@@ -132,7 +132,7 @@ pattern.Any エンティティは、エンティティの開始位置と終了�
 |Book me a *fight to New York*. (ニューヨーク行きの便を予約してください)|City|Book Flight (飛行機を予約する)|
 |Book me the *main conference room*. (大会議室を予約してください)|ルーム|Reserve Room (部屋を予約する)|
 
-### <a name="entities-as-feature-for-entities"></a>エンティティの特徴としてのエンティティ
+## <a name="entities-as-feature-for-entities"></a>エンティティの特徴としてのエンティティ
 
 エンティティを他のエンティティの存在を示すインジケーターとして使用することもできます。 これの一般的な例では、事前構築済みエンティティを別の ML エンティティの特徴として使用しています。
 フライト予約システムを構築している場合、"Book me a flight from Cairo to Seattle" (カイロからシアトル行きのフライトを予約してください) のような発話には、ML エンティティとして *Origin City* (出発地) と *Destination City* (目的地) があります。 事前構築済みの `GeographyV2` エンティティを両方のエンティティの特徴として使用することをお勧めします。

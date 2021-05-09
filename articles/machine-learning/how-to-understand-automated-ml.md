@@ -9,14 +9,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 2bed95385823a167c7a31eed11d752894984ea38
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.topic: how-to
+ms.custom: contperf-fy21q2, automl
+ms.openlocfilehash: d104ad879919b11152d56a2c9b6b6fd8652c3ddc
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791879"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903796"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -240,7 +240,15 @@ spearman_correlation| スピアマンの相関は、2 つのデータセット�
 コード ファースト エクスペリエンスについては、[Azure Machine Learning Python SDK を使用した自動 ML 実験のモデルの説明](how-to-machine-learning-interpretability-automl.md)を設定する方法をご覧ください。
 
 > [!NOTE]
-> ForecastTCN モデルは、現在は自動 ML の説明でサポートされていません。また、他の予測モデルでは、解釈可能性ツールへのアクセスが制限される場合があります。
+> 解釈可能性、最適なモデルの説明は、次のアルゴリズムを最適なモデルまたはアンサンブルとして推奨する自動 ML の予測実験では使用できません。 
+> * TCNForecaster
+> * AutoArima
+> * ExponentialSmoothing
+> * Prophet
+> * 平均 
+> * Naive
+> * Seasonal Average 
+> * Seasonal Naive
 
 ## <a name="next-steps"></a>次のステップ
 * [自動機械学習モデルの説明のサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)を試してください。

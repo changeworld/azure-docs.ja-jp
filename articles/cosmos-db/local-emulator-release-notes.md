@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 442fa1c76d4667a54f1c13b411b1c052c9a5b134
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 31b051c37d4fbf1c73c8711e3e9a330cacc1c26d
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566644"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904354"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ ms.locfileid: "105566644"
 |**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="21113-21-april-2021"></a>2.11.13 (2021 年 4 月 21 日)
+
+ - このリリースでは、ローカルの Data Explorer の内容が最新の Azure portal のバージョンに合わせて更新され、新しい MongoDB エンドポイント構成 "4.0" が追加されています。
 
 ### <a name="21111-22-february-2021"></a>2.11.11 (2021 年 2 月 22 日)
 

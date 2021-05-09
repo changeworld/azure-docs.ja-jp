@@ -4,18 +4,73 @@ description: Service Bus を使用して、ブローカー メッセージを交
 ms.topic: article
 ms.date: 03/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d4093d93da11e992ed9e6558a5386eb88f417ef9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 19c365a233a2dafc98fb91e340717ba998616891
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967763"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904696"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
 この記事では、ブローカー メッセージを交換する際のパフォーマンスを Azure Service Bus を使用して最適化する方法について説明しています。 この記事の前半では、パフォーマンスを向上させるためのさまざまなメカニズムについて説明します。 後半では、特定のシナリオで最大限のパフォーマンスを実現できるような方法で Service Bus を使用するためのガイダンスを示します。
 
 この記事全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックにメッセージを送信する Service Bus キュー クライアントまたはトピック クライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キュー クライアントまたはサブスクリプション クライアントを指します。
+
+## <a name="resource-planning-and-considerations"></a>リソースの計画と考慮事項
+
+技術的リソースと同様に、アプリケーションに必要なパフォーマンスを Azure Service Bus で提供するには、用意周到な計画が鍵になります。 Service Bus 名前空間の適切な構成またはトポロジは、アプリケーション アーキテクチャなどの多数の要因と、各 Service Bus 機能の使用方法によって決まります。
+
+### <a name="pricing-tier"></a>Pricing tier
+
+Service Bus には、さまざまな価格レベルが用意されています。 アプリケーションの要件に適したレベルを選択することをお勧めします。
+
+   * **Standard レベル** - 開発およびテスト環境、またはアプリケーションがスロットリングに対して **センシティブではない** 低スループットのシナリオに適しています。
+
+   * **Premium レベル** - 予測どおりの待機時間とスループットを必要とする、スループット要件が多様な運用環境に適しています。 さらに、スループットの急増に対応するために、[自動スケーリング](automate-update-messaging-units.md)できる Service Bus Premium 名前空間を有効にすることができます。
+
+> [!NOTE]
+> 適切なレベルが選択されていない場合、Service Bus 名前空間が過負荷になるリスクがあり、それが原因で[スロットリング](service-bus-throttling.md)が発生する可能性があります。
+>
+> スロットリングによってデータが失われることはありません。 Service Bus SDK を利用するアプリケーションでは、既定の再試行ポリシーを使用して、最終的にデータが Service Bus によって受け入れられるようにすることができます。
+>
+
+### <a name="calculating-throughput-for-premium"></a>Premium のスループットの計算
+
+Service Bus に送信されるデータはバイナリにシリアル化され、受信側が受信すると逆シリアル化されます。 このため、アプリケーションは **メッセージ** をアトミックな作業単位と見なす一方で、Service Bus はバイト (またはメガバイト) 単位でスループットを測定します。
+
+スループットの要件を計算するときは、Service Bus に送信されるデータ (イングレス) と、Service Bus から受信されるデータ (エグレス) について考慮してください。
+
+当然ですが、スループットは、まとめてバッチ処理できるメッセージ ペイロードが小さければ小さいほど大きくなります。
+
+#### <a name="benchmarks"></a>ベンチマーク
+
+こちらの [GitHub のサンプル](https://github.com/Azure-Samples/service-bus-dotnet-messaging-performance)を実行すると、SB 名前空間に対して受け取る予想スループットを確認できます。 こちらの[ベンチマーク テスト](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)では、イングレスとエグレスのメッセージング ユニット (MU) あたり約 4 MB/秒を観測しました。
+
+このベンチマークのサンプルでは、高度な機能は使用していないため、ご使用のアプリケーションで観測されるスループットは、シナリオによっては異なる場合があります。
+
+#### <a name="compute-considerations"></a>コンピューティングに関する考慮事項
+
+特定の Service Bus 機能を使用すると、予想スループットを低下させる可能性のあるコンピューティング使用率が必要になる場合があります。 これらの機能の一部を次に示します。
+
+1. セッション。
+2. 1 つのトピックで複数のサブスクリプションに展開する。
+3. 1 つのサブスクリプションで多数のフィルターを実行する。
+4. スケジュール設定されたメッセージ。
+5. 遅延メッセージ。
+6. トランザクション。
+7. 重複除去およびルックバック時間枠。
+8. 転送 (一方のエンティティから他方のエンティティへの転送)。
+
+アプリケーションで上記の機能のいずれかを利用していて、予想スループットを受け取っていない場合、**CPU 使用率** メトリックを確認し、Service Bus Premium 名前空間をスケールアップすることを検討できます。
+
+また、Azure Monitor を利用して、[Service Bus 名前空間を自動的にスケーリング](automate-update-messaging-units.md)することもできます。
+
+### <a name="sharding-across-namespaces"></a>名前空間間のシャーディング
+
+名前空間に割り当てられたコンピューティング (メッセージング ユニット) をスケールアップすることは比較的簡単な解決策ですが、この解決策では、スループットが直線的に増加 **しない場合があります**。 これは、Service Bus 内部 (ストレージ、ネットワークなど) によってスループットが制限される場合があるためです。
+
+この場合の比較的クリーンな解決策は、異なる Service Bus Premium 名前空間間でエンティティ (キューとトピック) をシャードすることです。 また、異なる Azure リージョン内の異なる名前空間間でのシャーディングも検討できます。
 
 ## <a name="protocols"></a>プロトコル
 Service Bus を使用すると、クライアントは次の 3 つのプロトコルのいずれかを使用してメッセージを送受信できます。

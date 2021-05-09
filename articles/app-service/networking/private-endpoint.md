@@ -4,17 +4,17 @@ description: Azure プライベート エンドポイントを使用して非公
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/16/2021
+ms.date: 04/27/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4de405e07a9ae9d1efb33f2cee3630a1eefdef33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c95c90e7860b0257f63802b321c35b38ec00bb23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655905"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140967"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web アプリでプライベート エンドポイントを使用する
 
@@ -122,6 +122,8 @@ Web アプリに対してプライベート エンドポイントが有効にな
 
 FTP アクセスは、受信パブリック IP アドレスを介して提供されます。 プライベート エンドポイントでは、Web アプリへの FTP アクセスをサポートしていません。
 
+プライベート エンドポイントと、スロットを使用したトラフィック ルーティング (別名、"[運用環境でのテスト][TiP]") に影響を与える既知の制限があります。 2021 年 4 月以降、スロット間のルーティングを自動または手動で要求すると、"403 Access Denied" (403 アクセス拒否) になります。 この制限は、今後のリリースで解消される予定です。
+
 定期的に Private Link 機能とプライベート エンドポイントの改善を行っています。制限に関する最新情報については、[こちらの記事][pllimitations]を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -150,3 +152,4 @@ FTP アクセスは、受信パブリック IP アドレスを介して提供さ
 [howtoguide4]: ../scripts/template-deploy-private-endpoint.md
 [howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
 [howtoguide6]: ../scripts/terraform-secure-backend-frontend.md
+[TiP]: https://docs.microsoft.com/azure/app-service/deploy-staging-slots#route-traffic

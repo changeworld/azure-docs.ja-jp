@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c017595d33856ba7a2902ec6d86f7c36a8c53107
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632783"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108320333"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルにパラメーターを追加する
 

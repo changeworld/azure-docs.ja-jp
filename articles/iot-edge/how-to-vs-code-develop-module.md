@@ -9,12 +9,12 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 496a1225d5e9554fc661e0c93ce82a13f6aa11d5
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200632"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904030"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -47,7 +47,7 @@ Windows、macOS、または Linux を実行しているコンピューターま�
 
 また、モジュールを開発するために、言語固有のツールをいくつか追加でインストールする必要もあります。
 
-- C# (Azure Functions を含む): [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
+- C# (Azure Functions を含む): [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)
 
 - Python: Python パッケージをインストールするための [Python](https://www.python.org/downloads/) と [Pip](https://pip.pypa.io/en/stable/installing/#installation) (通常は、Python のインストールに含まれています)。
 
@@ -143,7 +143,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 開発用マシン上では、IoT Edge シミュレーターを起動できます。IoT Edge セキュリティ デーモンをインストールして、IoT Edge ソリューションを実行できるようにする必要はありません。
 
-1. 左側のデバイス エクスプローラーで、IoT Edge デバイス ID を右クリックして **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターの設定\)** を選択し、デバイスの接続文字列を使用してシミュレーターを起動します。
+1. 左側の **[エクスプローラー]** タブで、 **[Azure IoT Hub]** セクションを展開します。 IoT Edge デバイス ID を右クリックし、 **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターの設定\)** を選択して、デバイスの接続文字列を使用してシミュレーターを起動します。
 1. 統合ターミナルで進捗の詳細を確認すると、IoT Edge シミュレーターが正常に設定されたことがわかります。
 
 ### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>シングル モジュール アプリ用に IoT Edge シミュレーターを設定する
@@ -224,7 +224,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 開発用マシンでは、IoT Edge ソリューションを実行できるように IoT Edge セキュリティ デーモンをインストールする代わりに IoT Edge シミュレーターを起動できます。
 
-1. 左側のデバイス エクスプローラーで、IoT Edge デバイス ID を右クリックして **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターの設定\)** を選択し、デバイスの接続文字列を使用してシミュレーターを起動します。
+1. 左側の **[エクスプローラー]** タブで、 **[Azure IoT Hub]** セクションを展開します。 IoT Edge デバイス ID を右クリックし、 **[Setup IoT Edge Simulator]\(IoT Edge シミュレーターの設定\)** を選択して、デバイスの接続文字列を使用してシミュレーターを起動します。
 
 1. 統合ターミナルで進捗の詳細を確認すると、IoT Edge シミュレーターが正常に設定されたことがわかります。
 

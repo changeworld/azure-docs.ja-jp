@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/07/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3c896e2aad7dae8d03b26e2a16ecb96224ab547b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ac794fda92e2ad005b30fc1aa153cc0546430fbe
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303782"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208565"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
-[**DigitalTwinsModels API**](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、Azure Digital Twins インスタンスの[モデル](concepts-models.md)を管理できます。 
+[DigitalTwinsModels API](/rest/api/digital-twins/dataplane/models)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、Azure Digital Twins インスタンスの[モデル](concepts-models.md)を管理できます。 
 
 管理操作には、モデルのアップロード、検証、取得、および削除が含まれます。 
 
@@ -120,7 +120,7 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 
 また、モデルの新しいバージョンをアップロードしても、既存のツインに自動的に影響を与えることはありません。 既存のツインは、古いモデル バージョンのインスタンスに残ります。
 
-これらの既存のツインは、ファイルの部分置換を実行することで、新しいモデル バージョンに更新することができます。詳細な説明については、「[*デジタル ツインのモデルを更新する*](how-to-manage-twin.md#update-a-digital-twins-model)」セクション、 *「デジタル ツインを管理する」方法* を参照してください。 ファイルの部分置換を実行する場合、両方の **モデル ID** を新しいバージョンに更新し、**ツインで変更する必要があるすべてのフィールドを新しいモデルに準拠させる** 必要があります。
+これらの既存のツインは、ファイルの部分置換を実行することで、新しいモデル バージョンに更新することができます。詳細な説明については、「[デジタル ツインのモデルを更新する](how-to-manage-twin.md#update-a-digital-twins-model)」セクション、 *「デジタル ツインを管理する」方法* を参照してください。 ファイルの部分置換を実行する場合、両方の **モデル ID** を新しいバージョンに更新し、**ツインで変更する必要があるすべてのフィールドを新しいモデルに準拠させる** 必要があります。
 
 ## <a name="remove-models"></a>モデルの削除
 
@@ -142,7 +142,7 @@ Azure Digital Twins インスタンスに格納されているモデルを一覧
 
 インスタンス内のすべてのモデルを一度に削除することも、個別に実行することもできます。
 
-すべてのモデルを削除する方法の例について、ダウンロードできるサンプル アプリは、[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllModels` 関数でこれを実行します。
+すべてのモデルを削除する方法の例について、ダウンロードできるサンプル アプリは、[サンプル クライアント アプリを使用して基本事項を確認するチュートリアル](tutorial-command-line-app.md)で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllModels` 関数でこれを実行します。
 
 このセクションの残りの部分では、モデルの削除を詳細に分割し、個々のモデルに対してその方法を示します。
 
@@ -198,4 +198,4 @@ Azure Digital Twins ではこの状態を防ぐことができないため、モ
 ## <a name="next-steps"></a>次のステップ
 
 モデルに基づいてデジタル ツインを作成して管理する方法を説明します。
-* [*方法: Digital Twins を管理する*](how-to-manage-twin.md)
+* [デジタル ツインを管理する](how-to-manage-twin.md)

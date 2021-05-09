@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: c65825a6d8d2d7f9059e91a1f248367fa1788e1a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9d87f2641fb53a2372afcae27ebd7e92e8885e66
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104799498"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903994"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -43,7 +43,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
     * ルーティングに使用するサブネットには、プライベート IP アドレスまたはパブリック IP アドレスを指定できます。
     * サブネットと、Microsoft クラウドで使用するために顧客によって予約された範囲とが競合しないようにする必要があります。
     * /125 サブネットを使用すると、2 つの /126 サブネットに分割されます。 
-      * 最初の /126 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
+      * 最初の /126 サブネットはプライマリ リンクに、2 つ目の /126 サブネットはセカンダリ リンクに使用します。
       * それぞれの /126 サブネットに対し、ルーター上で /126 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/126 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
       * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
 

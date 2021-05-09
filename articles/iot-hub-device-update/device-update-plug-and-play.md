@@ -6,22 +6,26 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: fbc3502952e11830ef9abb06cb709fcc60288343
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d1817db4615d321db3d5f098d449410ee5b0606c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739532"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141851"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub 用のデバイス更新と IoT プラグ アンド プレイ
 
 IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検出して管理するために、[IoT プラグ アンド プレイ](../iot-pnp/index.yml)が使用されます。 デバイス更新サービスにより、PnP インターフェイスを使用して、デバイスとの間でプロパティとメッセージが送受信されます。 IoT Hub 用のデバイス更新を使用するには、以下で説明するように、IoT デバイスで次のインターフェイスとモデル ID を実装する必要があります。
 
+概念: 
+* [IoT プラグ アンド プレイ デバイス クライアント](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device?pivots=programming-language-csharp#implement-telemetry,-properties,-and-commands)について理解します。 
+* [デバイス更新エージェントの実装](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)方法を確認します。
+
 ## <a name="adu-core-interface"></a>ADU Core インターフェイス
 
 "ADUCoreInterface" インターフェイスは、更新アクションとメタデータをデバイスに送信し、デバイスから更新状態を受信するために使用されます。 "ADU Core" インターフェイスは、2 つのオブジェクト プロパティに分割されます。
 
-このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **"azureDeviceUpdateAgent"** です。 [Azure IoT PnP のコンポーネントの詳細を確認する](../iot-pnp/concepts-components.md)
+このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **"azureDeviceUpdateAgent"** です。 [Azure IoT PnP のコンポーネントの詳細を確認する](../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="agent-metadata"></a>エージェント メタデータ
 
@@ -57,6 +61,27 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 |aduVer|string|デバイスからクラウド|デバイスで実行されているデバイス更新エージェントのバージョン。 この値は、コンパイル時に ENABLE_ADU_TELEMETRY_REPORTING が 1 (true) に設定されている場合にのみ、ビルドから読み取られます。 お客様は、値を 0 (false) に設定することにより、バージョンの報告をオプトアウトすることができます。 [デバイス更新エージェントのプロパティをカスタマイズする方法](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。|
 |doVer|string|デバイスからクラウド|デバイスで実行されている配信最適化エージェントのバージョン。 この値は、コンパイル時に ENABLE_ADU_TELEMETRY_REPORTING が 1 (true) に設定されている場合にのみ、ビルドから読み取られます。 お客様は、値を 0 (false) に設定することにより、バージョンの報告をオプトアウトすることができます。[配信最適化エージェントのプロパティをカスタマイズする方法](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components)。|
 
+IoT Hub デバイス ツインのサンプル
+```json
+ "azureDeviceUpdateAgent": {
+                           "__t": "c",
+                           "client": {
+                                     "state": 0,
+                                     "resultCode": 200,
+                                     "extendedResultCode": 0,
+                                     "deviceProperties": {
+                                                         "manufacturer": "Contoso",
+                                                         "model": "Video",
+                                                         "aduVer": "DU;agent/0.6.0",
+                                                         "doVer": "DU;lib/v0.4.0,DU;agent/v0.4.0,DU;plugin-apt/v0.2.0"
+                                                         },
+                                     "installedUpdateId": "{\"provider\":\"Contoso\",\"name\":\"SampleUpdate1\",\"version\":\"1.0.4\"}"
+                                     },
+                            }
+```
+
+注: この要素からコンポーネントを参照していることを示すために、デバイスまたはモジュールで {"__t": "c"} マーカーを追加する必要があります (詳細は[こちら](https://docs.microsoft.com/azure/iot-pnp/concepts-convention#sample-multiple-components-writable-property))。
+
 ### <a name="service-metadata"></a>サービス メタデータ
 
 サービス メタデータには、デバイス更新サービスによってアクションとデータをデバイス更新エージェントに伝えるために使用されるフィールドが含まれています。
@@ -83,7 +108,7 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 
 デバイス情報インターフェイスは、[IoT プラグ アンド プレイ アーキテクチャ](../iot-pnp/overview-iot-plug-and-play.md)で使用される概念です。 デバイスのハードウェアとオペレーティング システムに関する情報を提供する、デバイスからクラウドへのプロパティが含まれています。 IoT Hub 用のデバイス更新では、テレメトリと診断のために DeviceInformation.manufacturer と DeviceInformation.model プロパティが使用されます。 デバイス情報インターフェイスの詳細については、こちらの[例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)をご覧ください。
 
-このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **deviceInformation** です。 [Azure IoT PnP のコンポーネントについて確認する](../iot-pnp/concepts-components.md)
+このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **deviceInformation** です。 [Azure IoT PnP のコンポーネントについて確認する](../iot-pnp/concepts-modeling-guide.md)
 
 |名前|種類|スキーマ|Direction|説明|例|
 |----|----|------|---------|-----------|-----------|

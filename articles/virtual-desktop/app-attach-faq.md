@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1a2464735ff8039bb31c43d6956cbf03e694c63
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 1277e053e9a9eb6e54eb11a9ede42ca28d99d073
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448408"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141309"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX アプリ アタッチに関するごよくある質問
 
@@ -59,6 +59,10 @@ MSIX と MSIX アプリ アタッチ API は、Windows 10 Enterprise および W
 
 MSIX アプリ アタッチを使用するホスト プール内のすべての仮想マシン (VM) に、MSIX イメージが格納されているファイル共有に対する読み取りアクセス許可が必要です。 Azure Files も使用している場合は、ロールベースのアクセス制御 (RBAC) と New Technology File System (NTFS) の両方のアクセス許可が付与されている必要があります。
 
+## <a name="can-i-use-azure-active-directory-domain-services-azure-ad-ds-with-msix-app-attach"></a>MSIX アプリのアタッチで Azure Active Directory Domain Services (Azure AD DS) を使用できますか。
+
+MSIX アプリのアタッチでは現在のところ、Azure AD DS がサポートされていません。 Azure AD DS コンピューター オブジェクトが Azure Active Directory (Azure AD) と同期されないため、Azure Files に必要なロールベースのアクセス制御 (RBAC) アクセス許可を管理者は提供できません。
+
 ## <a name="can-i-use-msix-app-attach-for-http-or-https"></a>HTTP または HTTPs で MSIX アプリ アタッチを使用できますか。
 
 HTTP または HTTPs で MSIX アプリ アタッチを使用することは、現在サポートされていません。
@@ -71,6 +75,16 @@ HTTP または HTTPs で MSIX アプリ アタッチを使用することは、�
 
 はい。 MSIX アプリのアタッチを使用して自己署名アプリケーションをホストするすべてのセッション ホスト VM に、自己署名証明書をインストールする必要があります。
 
+## <a name="what-applications-can-i-repackage-to-msix"></a>どのアプリケーションを MSIX に再パッケージ化できますか。
+
+使用される OS の機能、プログラミング言語、フレームワークはアプリケーションごとに異なります。 アプリケーションを再パッケージ化するには、「[既存のインストーラーを MSIX に移動する方法](/windows/msix/packaging-tool/create-an-msix-overview#how-to-move-your-existing-installers-to-msix)」を参照してください。 アプリケーションの再パッケージ化に必要な項目の一覧は、「[デスクトップ アプリケーションのパッケージ化の準備](/windows/msix/desktop/desktop-to-uwp-prepare)」にあります。 
+
+特定のアプリケーションはアプリケーション層化できません。つまり、MSIX ファイルに再パッケージ化できません。 再パッケージ化できないアプリケーションの一覧を次に示します。
+
+- ドライバー 
+- Active-X または Silverlight
+- VPN クライアント
+- ウイルス対策プログラム
 
 ## <a name="next-steps"></a>次のステップ
 
