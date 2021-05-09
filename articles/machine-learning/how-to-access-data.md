@@ -5,18 +5,18 @@ description: Azure Machine Learning でトレーニング中にデータスト�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
-ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 78b7bab204a08b474ea3c5cf5c2f7735c019a9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: 35a60291017668755f3b98e63d6a15bda59f2b8e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519930"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143649"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Azure のストレージ サービスに接続する
 
@@ -91,18 +91,21 @@ Azure Machine Learning のデータ アクセス ワークフロー全体にお�
 
 Azure ストレージ サービスに安全に接続できるように、Azure Machine Learning では、対応するデータ ストレージ コンテナーにアクセスするためのアクセス許可が必要です。 このアクセスは、データストアの登録に使用される認証資格情報に依存します。 
 
-### <a name="virtual-network"></a>仮想ネットワーク 
-
-既定では、Azure Machine Learning は、ファイアウォールの内側または仮想ネットワーク内にあるストレージ アカウントとは通信できません。 データ ストレージ アカウントが **仮想ネットワーク** 内にある場合、Azure Machine Learning がデータにアクセスできるようにするためには、追加の構成手順が必要になります。 
-
 > [!NOTE]
 > このガイダンスは、[ID ベースのデータ アクセスを使用して作成されたデータストア (プレビュー)](how-to-identity-based-data-access.md) にも適用されます。 
 
-**Python SDK ユーザーの場合**、コンピューティング ターゲットでトレーニング スクリプトを使用してデータにアクセスするには、コンピューティング ターゲットをストレージと同じ仮想ネットワークとサブネット内に配置する必要があります。  
+### <a name="virtual-network"></a>仮想ネットワーク 
+
+Azure Machine Learning では、ファイアウォールの背後または仮想ネットワークの内部にあるストレージ アカウントと通信するには追加の構成手順が必要です。 ストレージ アカウントがファイアウォールの背後にある場合は、[Azure portal 経由で IP アドレスの許可リストを設定](../storage/common/storage-network-security.md#managing-ip-network-rules)できます。
+
+Azure Machine Learning では、仮想ネットワークの外側にあるクライアントからの要求を受信できます。 サービスからのデータを要求しているエンティティが安全であることを確認するには、[ワークスペース用に Azure Private Link を設定](how-to-configure-private-link.md)します。
+
+**Python SDK ユーザーの場合**、コンピューティング ターゲットでトレーニング スクリプトを使用してデータにアクセスするには、コンピューティング ターゲットをストレージと同じ仮想ネットワークとサブネット内に配置する必要があります。 
 
 **Azure Machine Learning スタジオ ユーザーの場合**、データセットのプレビュー、プロファイル、自動機械学習など、データセットからのデータの読み取りが可能であることに依存する機能がいくつかあります。 これらの機能で仮想ネットワークの内側にあるストレージを操作するには、[スタジオでワークスペースのマネージド ID](how-to-enable-studio-virtual-network.md) を使用して、Azure Machine Learning が仮想ネットワークの外部からストレージ アカウントにアクセスできるようにします。 
 
-Azure Machine Learning では、仮想ネットワークの外側にあるクライアントからの要求を受信できます。 サービスからのデータを要求しているエンティティが安全であることを確認するには、[ワークスペース用に Azure Private Link を設定](how-to-configure-private-link.md)します。
+> [!NOTE]
+> データ ストレージが仮想ネットワークの背後にある Azure SQL Database である場合は、Azure Machine Learning からストレージ アカウントにアクセスできるように、[Azure portal](https://ms.portal.azure.com/) 経由で *[パブリック アクセスの拒否]* を必ず **[いいえ]** に設定してください。
 
 ### <a name="access-validation"></a>アクセス検証
 

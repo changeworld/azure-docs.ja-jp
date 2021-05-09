@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: 7cb00d62556babbd8e43e2fac2faa815a63943ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f979ca04a276f52e5f76a8e4327f9ff8ef390fe6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385270"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143703"
 ---
 #  <a name="session-log-in-copy-activity"></a>コピー アクティビティのセッション ログ
 
@@ -67,7 +67,7 @@ ms.locfileid: "100385270"
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | -------- 
 enableCopyActivityLog | true に設定すると、コピーされたファイル、スキップされたファイル、またはスキップされた行をログに記録できます。  | True<br/>False (既定値) | いいえ
-logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | ［情報］<br/>警告 (既定値) | いいえ
+logLevel | "Info" により、コピーされたファイル、スキップされたファイル、スキップされた行がすべてログに記録されます。 "Warning" により、スキップされたファイルおよびスキップされた行のみがログに記録されます。  | Info<br/>警告 (既定値) | いいえ
 enableReliableLogging | true の場合、リライアブル モードのコピー アクティビティにより、各ファイルがコピー先にコピーされると直ちにログがフラッシュされます。  コピー アクティビティでリライアブル ログ モードを有効にして大量のファイルをコピーする場合は、ファイルをコピーするたびに二重書き込み操作が必要になるため、コピー スループットが影響を受けることが予想されます。 1 つの要求は、コピー先ストアに対する要求であり、もう 1 つの要求はログ ストレージ ストアに対する要求です。  ベスト エフォート モードのコピー アクティビティでは、一定期間内のレコードのバッチを使用してログがフラッシュされます。この場合、コピー スループットは影響を受けにくくなります。 コピー アクティビティが失敗したときにログ イベントの最後のバッチがログ ファイルにフラッシュされていない可能性があるため、このモードではログ記録の完全性と適時性は保証されません。 この時点で、コピー先にコピーされたいくつかのファイルはログに記録されません。  | True<br/>False (既定値) | いいえ
 logLocationSettings | セッション ログを格納する場所を指定するために使用できるプロパティのグループ。 | | いいえ
 linkedServiceName | セッション ログ ファイルを格納するための、[Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) または [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) のリンクされたサービスです。 | `AzureBlobStorage` または `AzureBlobFS` 型のリンクされたサービスの名前。これは、ログ ファイルを格納するために使用するインスタンスを示します。 | いいえ
@@ -77,7 +77,7 @@ path | ログ ファイルのパス。 | ログ ファイルを格納するパ�
 ## <a name="monitoring"></a>監視
 
 ### <a name="output-from-copy-activity"></a>コピー アクティビティからの出力
-コピー アクティビティが完全に実行された後、各コピー アクティビティの実行の出力からログ ファイルのパスを確認できます。 ログ ファイルは、パス: `https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].csv` から見つけることができます。  ログ ファイルは csv ファイルになります。 
+コピー アクティビティが完全に実行された後、各コピー アクティビティの実行の出力からログ ファイルのパスを確認できます。 ログ ファイルは、パス: `https://[your-blob-account].blob.core.windows.net/[logFilePath]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].txt` から見つけることができます。  生成されたログ ファイルの拡張子は .txt であり、そのデータは CSV 形式です。
 
 ```json
 "output": {

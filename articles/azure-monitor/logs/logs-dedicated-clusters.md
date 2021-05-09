@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: e54e5550e9199914c165c8422d6a6546c23c677b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 97f413bb6f82636fe9a670c70c170ad5b1259580
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073289"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321071"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 

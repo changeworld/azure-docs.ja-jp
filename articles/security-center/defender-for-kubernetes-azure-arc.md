@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 940cae8829a99ee7ffacdb41844237acc85b7761
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 80c3409a69b8605d0d8ba9902c2be68d88e825c3
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029201"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905974"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>オンプレミスおよびマルチクラウド環境で実行されている Azure Arc 対応 Kubernetes クラスターを防御する
 
@@ -56,12 +56,12 @@ AKS 以外のすべての Kubernetes クラスターについては、クラス�
 
 ### <a name="azure-portal"></a>[**Azure portal**](#tab/k8s-deploy-asc)
 
-### <a name="use-the-quick-fix-option-from-the-security-center-recommendation"></a>Security Center の推奨事項の [クイック修正] オプションを使用する
+### <a name="use-the-fix-button-from-the-security-center-recommendation"></a>Security Center の推奨事項の修正ボタンを使用する
 
 Azure Security Center 専用の推奨事項では、次が提供されます。
 
 - Defender for Kubernetes 拡張機能がデプロイされているご自分のクラスターの **可視性**
-- 拡張機能がデプロイされていないそれらのクラスターにそれをデプロイするための **"クイック修正" オプション**
+- 拡張機能がデプロイされていないそれらのクラスターにそれをデプロイするための **[修正]** ボタン
 
 1. Azure Security Center の [推奨事項] ページから **[Azure Defender の有効化]** セキュリティ コントロールを開きます。
 
@@ -70,7 +70,7 @@ Azure Security Center 専用の推奨事項では、次が提供されます。
     :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Arc 対応 Kubernetes クラスター用の Azure Defender 拡張機能をデプロイするための Azure Security Center の推奨事項。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
     > [!TIP]
-    > [アクション] 列の [クイック修正] アイコンに注目してください
+    > アクション 列の **修正** アイコンに注目してください
 
 1. 拡張機能を選択すると、正常および異常なリソース (クラスターで拡張機能がデプロイされているものとされていないもの) の詳細が表示されます。
 
@@ -78,7 +78,7 @@ Azure Security Center 専用の推奨事項では、次が提供されます。
 
 1. 関連する Log Analytics ワークスペースを選択し、 **[x 個のリソースの修復]** を選択します。
 
-    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="Security Center の[クイック修正] オプションを使用して Azure Arc 用の Azure Defender 拡張機能をデプロイする。":::
+    :::image type="content" source="media/defender-for-kubernetes-azure-arc/security-center-deploy-extension.gif" alt-text="Security Center の修正オプションを使用して Azure Arc 用の Azure Defender 拡張機能をデプロイする。":::
 
 
 ### <a name="azure-cli"></a>[**Azure CLI**](#tab/k8s-deploy-cli)
@@ -141,7 +141,7 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
 
     各値の説明:
 
-    | 名前            | /   | 必須 | 種類   | 説明                                  |
+    | 名前            | /   | 必須 | Type   | 説明                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | サブスクリプション ID | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースのサブスクリプション ID |
     | リソース グループ  | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースを含むリソース グループの名前 |
@@ -324,7 +324,7 @@ REST API を使用して拡張機能を削除するには、次の DELETE コマ
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名前            | /   | 必須 | 種類   | 説明                                           |
+| 名前            | /   | 必須 | Type   | 説明                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | サブスクリプション ID | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのサブスクリプション ID |
 | リソース グループ  | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのリソース グループ  |

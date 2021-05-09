@@ -3,12 +3,13 @@ title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
 ms.date: 04/15/2021
-ms.openlocfilehash: ddeaed94396aa662b795ae5701aa367ba13d869b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 50404df278da22352344bbd12e139cc86f0a0615
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531208"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321647"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 

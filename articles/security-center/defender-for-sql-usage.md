@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: a91329d3bd0247932614233ef5b1ec71bf4d2a6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a497e5bc9d04577f4b4f9d373aa68d07b5a08043
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465465"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905056"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines を有効にする 
 
@@ -96,6 +96,20 @@ Azure Defender for SQL のアラートは、Security Center のアラート ペ�
     * セキュリティ体制を強化するには、各アラートに示されているホスト マシンに関する Security Center の推奨事項を使用します。 これにより、将来の攻撃のリスクが軽減されます。 
 
     [アラートの管理と応答の詳細についてはこちらを参照してください](security-center-managing-and-responding-alerts.md)。
+
+
+## <a name="faq---azure-defender-for-sql-servers-on-machines"></a>FAQ - Azure Defender for SQL servers on machines
+
+### <a name="if-i-enable-this-azure-defender-plan-on-my-subscription-are-all-sql-servers-on-the-subscription-protected"></a>サブスクリプションでこの Azure Defender プランを有効にした場合、サブスクリプションのすべての SQL Server が保護されますか? 
+
+いいえ。 Azure 仮想マシン上の SQL Server デプロイ、または Azure Arc 対応マシンで実行されている SQL Server を保護するには、Azure Defender で次の両方が必要になります。
+
+- マシン上の Log Analytics エージェント 
+- Azure Defender for SQL ソリューションを有効にするための関連する Log Analytics ワークスペース 
+
+Azure portal の SQL Server ページに表示されるサブスクリプションの "*状態*" は、既定のワークスペースの状態を反映し、接続されているすべてのマシンに適用されます。 Azure Defender によって保護されるのは、そのワークスペースに報告する Log Analytics エージェントがあるホスト上の SQL Server のみです。 
+
+
 
 
 ## <a name="next-steps"></a>次のステップ

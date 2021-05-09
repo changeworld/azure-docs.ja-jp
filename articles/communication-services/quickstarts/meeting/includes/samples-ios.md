@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 24/02/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 0a1dd8f69cb79e42e56ab44981820e31abf204e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b6b3a2b45c3013170e8341228dd7b78b46881015
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803120"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925271"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "104803120"
 ```swift
 class ViewController: UIViewController, MeetingUIClientDelegate {
 
-    private var meetingClient: MeetingUIClient?
+    private var meetingUIClient: MeetingUIClient?
 ```
 
 `meetingUIClientDelegate` を `self` に設定します。
@@ -36,14 +36,14 @@ class ViewController: UIViewController, MeetingUIClientDelegate {
 override func viewDidLoad() {
     super.viewDidLoad()
     
-    meetingClient?.meetingUIClientDelegate = self
+    meetingUIClient?.meetingUIClientDelegate = self
 }
 ```
 
 `didUpdateCallState` および `didUpdateRemoteParticipantCount` 関数を実装します。
 
 ```swift
-    func meetingUIClient(didUpdateCallState callState: CallState) {
+    func meetingUIClient(didUpdateCallState callState: MeetingUIClientCallState) {
         switch callState {
         case .connecting:
             print("Call state has changed to 'Connecting'")
@@ -68,17 +68,17 @@ override func viewDidLoad() {
 ```swift
 class ViewController: UIViewController, MeetingUIClientIdentityProviderDelegate {
 
-    private var meetingClient: MeetingUIClient?
+    private var meetingUIClient: MeetingUIClient?
 ```
 
 会議に参加する前に、`MeetingUIClientIdentityProviderDelegate` を `self` に設定します。
 
 ```swift
 private func joinMeeting() {
-    meetingClient?.meetingUIClientIdentityProviderDelegate = self
-    let meetingJoinOptions = MeetingJoinOptions(displayName: "John Smith")
-
-    meetingClient?.join(meetingUrl: "<MEETING_URL>", meetingJoinOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    meetingUIClient?.meetingUIClientIdentityProviderDelegate = self
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: <MEETING_URL>)
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
         }
@@ -86,7 +86,7 @@ private func joinMeeting() {
 }
 ```
 
-各 `userMri` を対応するアバターにマップします。
+`avatarFor` を追加、実装し、対応するアバターを各 `userMri` に割り当てます。
 
 ```swift
     func avatarFor(userIdentifier: String, completionHandler: @escaping (UIImage?) -> Void) {
@@ -109,4 +109,14 @@ private func joinMeeting() {
             completionHandler(nil)
         }
 }
+
+```
+
+MeetingUIClientIdentityProviderDelegate プロトコルのその他の必須メソッドをクラスに割り当てます。その際、空の実装を持たせることもできます。
+```swift
+    func displayNameFor(userIdentifier: String, completionHandler: @escaping (String?) -> Void) {
+    }
+    
+    func subTitleFor(userIdentifier: String, completionHandler: @escaping (String?) -> Void) {
+    }
 ```

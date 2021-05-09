@@ -9,21 +9,21 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/29/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 755386bfa36b18796eccec0020efe9136e0215cd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.topic: how-to
+ms.custom: devx-track-python,contperf-fy21q1, automl
+ms.openlocfilehash: a198e49e540d728a65021cf5b45436fc1654cb25
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068151"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905218"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
 
 このガイドでは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) を使用して、自動機械学習の実験のさまざまな構成設定を定義する方法について説明します。 自動機械学習は、アルゴリズムとハイパーパラメーターを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションはいくつかあります。
 
-自動機械学習の実験の例を確認するには、[自動機械学習を使用した分類モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関するページか、「[クラウドで自動機械学習を使用してモデルをトレーニングする](how-to-auto-train-remote.md)」をご覧ください。
+自動機械学習の実験のエンド ツー エンドの例については、[チュートリアル: 自動機械学習を使用した分類モデルのトレーニング](tutorial-auto-train-models.md)に関する記事を参照してください。
 
 自動機械学習で使用できる構成オプション:
 
@@ -188,21 +188,23 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 分類 | 回帰 | 時系列予測
 |-- |-- |--
-[ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[平均化パーセプトロン分類子](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)|[オンライン勾配降下リグレッサー](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) |[自動 ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[高速線形リグレッサー](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)|[Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
-[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* ||ForecastTCN
-|[Linear SVM Classifier](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)*||
-
+[ロジスティック回帰](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [AutoARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* | [Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* | [Prophet](https://facebook.github.io/prophet/docs/quick_start.html)
+[勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#classification)* | [勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)* | [Elastic Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K ニアレスト ネイバー](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* | [勾配ブースティング](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Linear SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* | [デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
+[サポート ベクター分類 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* | [デシジョン ツリー](https://scikit-learn.org/stable/modules/tree.html#regression)
+[ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* | [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests) | [LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* | [Extremely Randomized Trees](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* | [確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [ランダム フォレスト](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[平均化パーセプトロン分類子](/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)| [オンライン勾配降下リグレッサー](/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?preserve-view=true&view=nimbusml-py-latest) | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[単純ベイズ](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[高速線形リグレッサー](/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?preserve-view=true&view=nimbusml-py-latest)| ForecastTCN
+[確率的勾配降下法 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* || Naive
+[Linear SVM Classifier](/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?preserve-view=true&view=nimbusml-py-latest)* || SeasonalNaive
+||| Average
+||| SeasonalAverage
+||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
 ### <a name="primary-metric"></a>主要メトリック
 `primary metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
 
@@ -391,7 +393,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 自動 ML では、トレーニング結果を監視および評価するためのオプションが提供されます。 
 
-* トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、[自動 ML の実行を監視する方法](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs)に関する記事を参照してください。
+* トレーニング結果をウィジェットで、またはノートブックの場合はインラインで、表示できます。 詳細については、「[自動機械学習の実行を監視する](#monitor)」を参照してください。
 
 * 実行のたびに提供されるパフォーマンス グラフおよびメトリックの定義と例については、「[自動化機械学習実験の結果を評価する](how-to-understand-automated-ml.md)」を参照してください。 
 
@@ -494,6 +496,22 @@ print_model(model_from_aml)
 > [!NOTE]
 > 自動 ML のアルゴリズムには特有のランダム性があり、推奨モデルの最終的なメトリック スコア (精度など) にわずかな変動が生じる可能性があります。 自動 ML によって、トレーニングとテストの分割、トレーニングと検証の分割、クロス検証などのデータに対する操作も必要に応じて実行されます。 そのため、同じ構成設定とプライマリ メトリックを使用して実験を複数回実行した場合、これらの要因により、各実験の最終的なメトリック スコアに変動が見られる可能性があります。 
 
+## <a name="monitor-automated-machine-learning-runs"></a><a name="monitor"></a> 自動機械学習の実行を監視する
+
+自動機械学習の実行の場合、前回の実行のグラフにアクセスするには、`<<experiment_name>>` を適切な実験名に置き換えます。
+
+```python
+from azureml.widgets import RunDetails
+from azureml.core.run import Run
+
+experiment = Experiment (workspace, <<experiment_name>>)
+run_id = 'autoML_my_runID' #replace with run_ID
+run = Run(experiment, run_id)
+RunDetails(run).show()
+```
+
+![自動機械学習の場合の Jupyter Notebook ウィジェット](./media/how-to-configure-auto-train/azure-machine-learning-auto-ml-widget.png)
+
 ## <a name="register-and-deploy-models"></a>モデルを登録してデプロイする
 
 モデルは登録できます。そのため、後で使用するためにモデルに戻ることができます。 
@@ -536,7 +554,7 @@ model = remote_run.register_model(model_name = model_name,
 
 + [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
-+ [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく学習する。
++ [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)についてさらに詳しく学習する。
 
 + [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models)で AutoML を使用して複数のモデルをトレーニングする方法について学習する。
 

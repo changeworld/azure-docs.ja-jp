@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 82e34bff573b746f7d9c4185fe6c24fa92de0394
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040959"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321053"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
