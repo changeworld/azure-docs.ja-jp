@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c796b72da15cb6278c355ed86fdf9eaaf54ca2be
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490927"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794496"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>データを FHIR に変換する方法 (プレビュー)
 
@@ -95,12 +95,13 @@ Azure API for FHIR の $convert-data カスタム エンドポイントは、各
 
 ## <a name="host-and-use-templates"></a>テンプレートをホストして使用する
 
-独自のテンプレートのコピーを ACR でホストすることを強くお勧めします。 独自のテンプレートのコピーをホストし、それらを $convert-data 操作で使用するためには、次の 4 つの手順が必要となります。
+独自のテンプレートのコピーを ACR でホストすることを強くお勧めします。 テンプレートの独自のコピーをホストし、テンプレートデータ操作でテンプレートを使用するには、次の 4 つの$convertがあります。
 
 1. Azure Container Registry にテンプレートをプッシュします。
 1. Azure API for FHIR インスタンスでマネージド ID を有効にします。
 1. Azure API for FHIR マネージド ID に ACR のアクセス権を付与します。
 1. Azure API for FHIR に ACR サーバーを登録します。
+1. 必要に応じて、セキュリティで保護されたアクセス用に ACR ファイアウォールを構成します。
 
 ### <a name="push-templates-to-azure-container-registry"></a>Azure Container Registry にテンプレートをプッシュする
 
@@ -125,13 +126,13 @@ Azure API for FHIR サービス インスタンスに AcrPull ロールを付与
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>Azure API for FHIR に ACR サーバーを登録する
 
-Azure portal を使用するか、CLI を使用して、ACR サーバーを登録できます。
+ACR サーバーを登録するには、AZURE PORTAL CLI を使用します。
 
-#### <a name="registering-the-acr-server-using-azure-portal"></a>Azure portal を使用した ACR サーバーの登録
-Azure API for FHIR インスタンスの [_データ変換_] の下にある [_アーティファクト_] ブレードに移動します。 現在登録されている ACR サーバーの一覧が表示されます。 [ _追加_ ] をクリックし、ドロップダウンからレジストリサーバーを選択します。 登録を有効にするには、[ _保存_ ] をクリックする必要があります。 変更を適用してインスタンスを再起動するまでに数分かかる場合があります。
+#### <a name="registering-the-acr-server-using-azure-portal"></a>次のコマンドを使用して ACR サーバーを登録Azure portal
+インスタンス内の _[データ変換_ ] の _下_ にある [アーティファクト] ブレードAzure API for FHIRします。 現在登録されている ACR サーバーの一覧が表示されます。 [ _追加]_ を選択し、ドロップダウン からレジストリ サーバーを選択します。 登録を有効にするには、[ _保存]_ を選択する必要があります。 変更を適用してインスタンスを再起動するには数分かかる場合があります。
 
 #### <a name="registering-the-acr-server-using-cli"></a>CLI を使用した ACR サーバーの登録
-Azure API for FHIR には、最大 20 台の ACR サーバーを登録することができます。
+このサーバーには、最大 20 台の ACR サーバーを登録Azure API for FHIR。
 
 必要に応じて Azure PowerShell から healthcareapis CLI をインストールします。
 
@@ -152,6 +153,46 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-gr
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
+### <a name="configure-acr-firewall"></a>ACR ファイアウォールを構成する
+
+ポータル **から [Azure** ストレージ アカウントのネットワーク] を選択します。
+
+   :::image type="content" source="media/convert-data/networking-container-registry.png" alt-text="コンテナー レジストリ。":::
+
+
+**[選択されたネットワーク]** を選択します。 
+
+[ファイアウォール **] セクション** の [アドレス範囲] ボックスに IP アドレス **を指定** します。 インターネットまたはオンプレミス ネットワークからのアクセスを許可する IP 範囲を追加します。 
+
+次の表に、サービスがプロビジョニングされている Azure リージョンの IP アドレスAzure API for FHIR示します。
+
+|**Azure リージョン**         |**パブリック IP アドレス** |
+|:----------------------|:-------------------|
+| オーストラリア東部       | 20.53.44.80       |
+| カナダ中部       | 20.48.192.84      |
+| 米国中部           | 52.182.208.31     |
+| 米国東部              | 20.62.128.148     |
+| 米国東部 2            | 20.49.102.228     |
+| 米国東部 2 EUAP       | 20.39.26.254      |
+| ドイツ北部        | 51.116.51.33      |
+| ドイツ中西部 | 51.116.146.216    |
+| 東日本           | 20.191.160.26     |
+| 韓国中部        | 20.41.69.51       |
+| 米国中北部     | 20.49.114.188     |
+| 北ヨーロッパ         | 52.146.131.52     |
+| 南アフリカ北部   | 102.133.220.197   |
+| 米国中南部     | 13.73.254.220     |
+| 東南アジア       | 23.98.108.42      |
+| スイス北部    | 51.107.60.95      |
+| 英国南部             | 51.104.30.170     |
+| 英国西部              | 51.137.164.94     |
+| 米国中西部      | 52.150.156.44     |
+| 西ヨーロッパ          | 20.61.98.66       |
+| 米国西部 2            | 40.64.135.77      |
+
+
+> [!NOTE]
+> 上記の手順は、FHIR データをエクスポートする方法に関するドキュメントで説明されている構成手順に似ています。  詳細については、「Secure [Export to Azure Storage](https://docs.microsoft.com/azure/healthcare-apis/fhir/export-data#secure-export-to-azure-storage)
 
 ### <a name="verify"></a>確認
 
