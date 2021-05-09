@@ -8,15 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0a95d95842d0b361a1a276566b01b7ea735c4670
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220710"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952082"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
@@ -288,8 +287,10 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への WebSocket 接続が許可されていることを確認してください。 
+
 * コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、[仮想ネットワーク内からのみアクセス](./how-to-secure-training-vnet.md#compute-instance)できます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
 
+* カーネルがクラッシュして再起動された場合は、次のコマンドを実行して jupyter ログを表示し、詳細を確認することができます。 `sudo journalctl -u jupyter`. カーネルの問題が解決しない場合は、さらに大きなメモリでコンピューティング インスタンスを使用することを検討してください。
     
 ## <a name="next-steps"></a>次のステップ
 
