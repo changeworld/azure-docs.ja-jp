@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 04/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: f571deaa0b67e9be7b8ce3f01d87f5c955f7140d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 14328179a297ebcc3994bf627b1690195774b2b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319073"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741133"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -49,10 +49,6 @@ FHIR Server for Azure を実行するときに、基になるサービスに直�
 
 開発の観点では、管理サービスだけに適用されないすべての機能はまず、オープンソースの Microsoft FHIR Server for Azure にデプロイされます。 オープンソースでの検証後、PaaS の Azure API for FHIR ソリューションにリリースされます。 オープンソース リリースから PaaS リリースまでの時間は、機能の複雑さやその他ロードマップ上の優先度によって異なります。 これは、Azure IoT Connector for FHIR (プレビュー) など、すべてのサービスで同じプロセスです。
 
-### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>Azure API for FHIR にリリースされる内容はどこで確認できますか?
-
-Azure API for FHIR にリリースされている内容の一部については、オープンソース FHIR サーバーの[リリース](https://github.com/microsoft/fhir-server/releases)を参照してください。 2020 年 11 月以降、オープンソース項目が管理サービスにリリースされる場合、項目に Azure-API-for-FHIR でタグ付けしています。 これらの機能は、通常、オープンソースのリリース ページに掲載された 2 週間後に利用できるようになります。 また、独自の環境でテストする場合に、[ここ] (https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md) ) でビルドをテストする方法に関する手順も掲載しました。 追加の管理サービスの更新を共有するための最適な方法を評価しています。
-
 ### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>Azure API for FHIR はどのリージョンで使用できますか?
 
 現在、[複数の geo リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)で、パブリックと政府機関の両方に対して一般提供しています。 Microsoft の政府機関向けクラウド サービスの詳細については、[FedRAMP による Azure サービス](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)を確認してください。
@@ -82,7 +78,7 @@ SMART (Substitutable Medical Applications and Reusable Technology) on FHIR は�
 
 ### <a name="what-is-the-limit-on-_count"></a>_count にはどのような制限がありますか?
 
-_count の現在の上限は 100 です。 _count を 100 よりも大きい値に設定すると、バンドルに 100 レコードのみが表示されるという警告が表示されます。
+_Count の現在の制限は1000です。 _Count を1000よりも大きい値に設定すると、バンドルに1000レコードのみが表示されるという警告が表示されます。
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>グループ エクスポート機能に制限はありますか?
 

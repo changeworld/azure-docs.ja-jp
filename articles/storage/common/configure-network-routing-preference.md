@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: ed248480803370a75b40c18ee7d0e2641254d84a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e9d1f7f520a7613abde520c35fbacc7355973021
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790457"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208223"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する
 
@@ -146,7 +146,7 @@ ms.locfileid: "107790457"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. ルート固有のエンドポイントを構成するには、[az storage account update](/azure/storage/account#az_storage_account_update) コマンドを使用します。 
+1. ルート固有のエンドポイントを構成するには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) コマンドを使用します。 
 
    - Microsoft ネットワーク ルーティング設定を使用するルート固有のエンドポイントを作成するには、`--publish-microsoft-endpoints` パラメーターを `true` に設定します。 
 
