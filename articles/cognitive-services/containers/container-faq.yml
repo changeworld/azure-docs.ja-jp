@@ -10,12 +10,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 03/02/2021
   ms.author: aahi
-  ms.openlocfilehash: 2adab9ab076a23260656f973e959bb14314ae8c1
-  ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+  ms.openlocfilehash: c8592674cdb6dd88e22f1089cedb935a65c8ad0a
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/30/2021
-  ms.locfileid: "102035474"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108128076"
 title: Azure Cognitive Services コンテナーについてよくあるご質問 (FAQ)
 summary: ''
 sections:
@@ -67,7 +67,7 @@ sections:
       OpenShift を使用してコンテナーをテストすることはありませんが、通常、Cognitive Services コンテナーは Docker イメージをサポートするすべてのプラットフォームで実行できるはずです。 OpenShift を使用している場合は、`root-user` としてコンテナーを実行することをお勧めします。
   - question: 製品フィードバックや機能推奨はどのような方法で提供しますか?
     answer: >
-      お客様には公の場で[懸念を表明する](https://cognitive.uservoice.com/)ことと、同じ問題を投稿した他のユーザーに賛成票を投じることをお勧めしています。 User Voice ツールは、製品フィードバックと機能推奨の両方にご利用いただけます。
+      お客様には公の場で[懸念を表明する](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395737)ことと、同じ問題を投稿した他のユーザーに賛成票を投じることをお勧めしています。 フィードバック ツールは、製品フィードバックと機能推奨の両方にご利用いただけます。
   - question: Cognitive Services コンテナーからどのようなステータス メッセージとエラーが返されますか?
     answer: >
       ステータス メッセージとエラーの一覧については、次の表を参照してください。

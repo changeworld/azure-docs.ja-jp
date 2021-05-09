@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/24/2021
+ms.date: 02/24/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8494e9048ef298fbb3c2e70de10ec793f2bddec5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: cb4f18fd5fbd2e8eb484875bb58c9809460eb8df
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161611"
+ms.locfileid: "108128633"
 ---
 # <a name="tutorial-configure-clouldflare-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Clouldflare を構成する
 
@@ -88,7 +88,7 @@ Cloudflare 設定で [WAF を構成](https://www.cloudflare.com/waf/)します�
    ![Azure AD B2C ポリシーのログインを示す画像](./media/partner-cloudflare/azure-ad-b2c-policy.png)
 
 
-## <a name="additional-resources"></a>その他の技術情報
+## <a name="additional-resources"></a>その他のリソース
 
 - [Cloudflare のカスタム ページの問題のトラブルシューティング](https://support.cloudflare.com/hc/en-us/articles/200172706-Configuring-Custom-Pages-Error-and-Challenge-#5QWV2KVjLnaAQ8L4tjiguw)
 

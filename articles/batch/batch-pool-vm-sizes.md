@@ -4,12 +4,12 @@ description: Azure Batch プールのコンピューティング ノード用に
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6de7decbf40eede74dd7b92f9f1139e1b31450c8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027382"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126257"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
@@ -66,7 +66,10 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 
 [Mv2](../virtual-machines/mv2-series.md) など、一部の VM シリーズは[第 2 世代の VM イメージ](../virtual-machines/generation-2.md)でのみ使用できます。 第 2 世代 VM イメージは、あらゆる VM イメージと同様に、["imageReference"](/rest/api/batchservice/pool/add#imagereference) 構成の "sku" プロパティを利用して指定されます。"sku" 文字列には、"-g2" や "-gen2" のようなサフィックスが与えられます。 第 2 世代 VM イメージを含め、Batch でサポートされている VM イメージの一覧を取得するには、["list supported images"](/rest/api/batchservice/account/listsupportedimages) API、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)、[Azure CLI](/cli/azure/batch/pool/supported-images) を使用します。
 
-### <a name="pools-in-cloud-service-configuration"></a>クラウド サービス構成のプール
+### <a name="pools-in-cloud-services-configuration"></a>クラウド サービスの構成におけるプール
+
+> [!WARNING]
+> Cloud Services 構成プールは[非推奨](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)とされます。 代わりに、仮想マシン構成プールを使用してください。
 
 クラウド サービス構成のバッチ プールでは、次を **除く** すべての [Cloud Services 向け VM サイズ](../cloud-services/cloud-services-sizes-specs.md)がサポートされます。
 
@@ -97,7 +100,7 @@ Azure Batch プールのノード サイズを選択するときは、Azure で�
 - PowerShell:[Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
 
-Batch のサポート終了日 (EOL) が近いイメージは、使用しないようにすることを強くお勧めします。 このような日付は、[ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages)、[PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)、または [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) で確認することができます。 Batch プールの VM イメージの選択に関する詳細については、[Batch のベストプラクティス ガイド](best-practices.md)を参照してください。
+Batch のサポート終了日 (EOL) が近いイメージは、使用しないようにすることを強くお勧めします。 このような日付は、[ `ListSupportedImages` API](/rest/api/batchservice/account/listsupportedimages)、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)、または [Azure CLI](/cli/azure/batch/pool/supported-images) で確認することができます。 Batch プールの VM イメージの選択に関する詳細については、[Batch のベストプラクティス ガイド](best-practices.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

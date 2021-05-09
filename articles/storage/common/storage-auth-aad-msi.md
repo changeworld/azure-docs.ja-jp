@@ -10,13 +10,13 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 80df7b85ec1ad9e273081f9a6a96b9a9d7ec8cd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 04ff93f8fa19e6ec18ebf606291a09f558d93529
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791195"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075917"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 

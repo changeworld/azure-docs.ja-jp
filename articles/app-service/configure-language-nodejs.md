@@ -4,14 +4,14 @@ description: Azure App Service のネイティブ Windows インスタンス、�
 ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 6a6f782768db12c2ce75f5cf1e66100222f24446
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97db865f2c590a9d7700ee53a0380604885a8155
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095204"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076655"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
@@ -147,9 +147,34 @@ Linux 上で App Service によって Node.js アプリが実行されビルド�
 
 Node.js コンテナーには、製造工程マネージャーである [PM2](https://pm2.keymetrics.io/) が付属しています。 PM2、NPM、またはカスタム コマンドで開始するようにアプリを構成できます。
 
-- [カスタム コマンドを実行する](#run-custom-command)
-- [npm start を実行する](#run-npm-start)
-- [PM2 で実行する](#run-with-pm2)
+|ツール|目的|
+|--|--|
+|[PM2 で実行する](#run-with-pm2)|**推奨** - 運用またはステージングでの使用。 PM2 がフルサービス アプリ管理プラットフォームを提供します。|
+|[npm start を実行する](#run-npm-start)|開発での使用のみ。|
+|[カスタム コマンドを実行する](#run-custom-command)|開発またはステージング。|
+
+
+### <a name="run-with-pm2"></a>PM2 で実行する
+
+コンテナーは、一般的な Node.js ファイルの 1 つがプロジェクトで見つかった場合、PM2 でアプリを自動的に開始します。
+
+- *bin/www*
+- *server.js*
+- *app.js*
+- *index.js*
+- *hostingstart.js*
+- 次のいずれかの [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* および *ecosystem.config.js*
+
+次の拡張子を持つカスタム スタート ファイルを構成することもできます。
+
+- *.js* ファイル
+- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+
+カスタム スタート ファイルを追加するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
+```
 
 ### <a name="run-custom-command"></a>カスタム コマンドを実行する
 
@@ -180,27 +205,6 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
 ```
 
-### <a name="run-with-pm2"></a>PM2 で実行する
-
-コンテナーは、一般的な Node.js ファイルの 1 つがプロジェクトで見つかった場合、PM2 でアプリを自動的に開始します。
-
-- *bin/www*
-- *server.js*
-- *app.js*
-- *index.js*
-- *hostingstart.js*
-- 次のいずれかの [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* および *ecosystem.config.js*
-
-次の拡張子を持つカスタム スタート ファイルを構成することもできます。
-
-- *.js* ファイル
-- *.json*、*. config.js*、*.yaml*、または *.yml* の拡張子を持つ [PM2 ファイル](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
-
-カスタム スタート ファイルを追加するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
-
-```azurecli-interactive
-az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
-```
 
 ## <a name="debug-remotely"></a>リモート デバッグ
 

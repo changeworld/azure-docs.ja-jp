@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 96c534919e7279af61a86d24ae4c4ca984c02662
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ea3f5cb896bb023a38474be71aa1570d9f5b4806
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124237"
+ms.locfileid: "108176668"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -254,7 +254,7 @@ Azure IoT Hub のために (それが提供されているリージョンで) �
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | プレビュー | 使用不可 | 使用不可 | 使用不可 |
+| ユーザー割り当て済み | プレビュー | ![利用可能][check] | 使用不可 | 使用不可 |
 
 
 詳細については、「[Azure Kubernetes Service でマネージド ID を使用する](../../aks/use-managed-identity.md)」を参照してください。

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 04/27/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a0a942daae6b106bce928f8214e92c0c6294203d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7b62265d75aa7c7c09f1f6e55632dcbe98efc411
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555708"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128941"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>セキュリティで保護された接続を確保するために安全な転送を要求する
 
@@ -38,7 +38,7 @@ ms.locfileid: "100555708"
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新しいストレージ アカウントの安全な転送が必須
 
 1. Azure Portal で **[ストレージ アカウントの作成]** ウィンドウを開きます。
-1. **[安全な転送が必須]** で、 **[有効]** を選択します。
+1. **[詳細設定]** ページで、 **[安全な転送を有効にする]** チェック ボックスをオンにします。
 
    ![[ストレージ アカウントの作成] ブレード](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 

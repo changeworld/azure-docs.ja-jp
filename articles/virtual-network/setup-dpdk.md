@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: f2771284925e35cea975febdabe2ca377a192df8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124671"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127121"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -36,17 +36,18 @@ DPDK は、複数のオペレーティング システムの配布をサポー�
 **1 秒あたりのパケット数 (PPS) の向上**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
 
 
-## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+## <a name="supported-operating-systems-minimum-versions"></a>サポートされているオペレーティング システムの最小バージョン
 
 Azure Marketplace の次のディストリビューションがサポートされています。
 
 | Linux OS     | カーネル バージョン               | 
 |--------------|---------------------------   |
-| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
 | SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+
+記載されているバージョンは最小要件です。 より新しいバージョンもサポートされています。
 
 **カスタムのカーネル サポート**
 
@@ -60,22 +61,26 @@ Azure Marketplace の次のディストリビューションがサポートさ�
 
 Linux 仮想マシン上で高速ネットワークを有効にする必要があります。 仮想マシンは、管理用の 1 つのインターフェイスに加えて、少なくとも 2 つのネットワーク インターフェイスを保持している必要があります。 管理インターフェイスで高速ネットワークを有効にすることは推奨されません。 [高速ネットワークを有効にした Linux 仮想マシンを作成する](create-vm-accelerated-networking-cli.md)方法について説明します。
 
-## <a name="install-dpdk-dependencies"></a>DPDK 依存関係をインストールする
-
-### <a name="ubuntu-1604"></a>Ubuntu 16.04
-
-```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
-sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
-```
+## <a name="install-dpdk"></a>DPDK のインストール
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
+sudo add-apt-repository ppa:canonical-server/server-backports -y
 sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
+sudo apt-get install -y dpdk
+```
+
+### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 以降
+
+```bash
+sudo apt-get install -y dpdk
+```
+
+### <a name="debian-10-and-newer"></a>Debian 10 以降
+
+```bash
+sudo apt-get install -y dpdk
 ```
 
 ### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
@@ -255,3 +260,4 @@ testpmd をルート モードで実行するには、*testpmd* コマンドの�
 
 * [EAL オプション](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd コマンド](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)
+* [パケット ダンプ コマンド](https://doc.dpdk.org/guides/tools/pdump.html#pdump-tool)

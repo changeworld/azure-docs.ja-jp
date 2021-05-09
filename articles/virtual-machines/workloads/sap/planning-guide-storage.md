@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/08/2021
+ms.date: 04/26/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecd33549536323658a7116d7d5c311eaaec98487
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c76ffbbaf6bbbb2afb5d84e92b6fe9ce04dc4a30
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107302949"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128705"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -35,6 +35,7 @@ Standard HDD、Standard SSD、Azure Premium Storage、Ultra Disk からなる Mi
 この他に、Azure で提供されるさまざまなストレージの種類の一部に適用されるいくつかの冗長化の方法があり、それらはすべて [Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)に関する記事で説明されています。 
 
 「[仮想マシンの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)」でリリースされたシングル VM 可用性 SLA にさまざまな種類の Azure ストレージが影響を与えることにもご留意ください。
+
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 
@@ -69,6 +70,10 @@ S/4HANA の SAP NetWeaver またはアプリケーション レイヤー用の A
 
 さまざまな Azure Storage の種類を説明するセクションでは、SAP でサポートされているストレージを使用した場合の制限事項と可能性について、追加の背景情報を提供します。 
 
+### <a name="storage-choices-when-using-dbms-replication"></a>DBMS レプリケーション使用時のストレージ選択肢
+Microsoft の参照アーキテクチャでは、SQL Server Always On、HANA System Replication、Db2 HADR、Oracle Data Guard など、DBMS 機能の使用を予測しています。 2 つ以上の Azure 仮想マシン間でこれらのテクノロジを使用している場合、VM ごとに選択されるストレージの種類は同じにする必要があります。 つまり、DBMS システムの再実行ログ ボリュームに選択されたストレージが、ある VM で Azure プレミアム ストレージであるなら、同じ高可用性同期構成内にある他のすべての VM で、同じボリュームを Azure プレミアム ストレージ ベースにする必要があります。 データベース ファイルに使用されるデータ ボリュームにも同じことが当てはまります。
+  
+
 ## <a name="storage-recommendations-for-sap-storage-scenarios"></a>SAP ストレージ シナリオのストレージに関する推奨事項
 詳細に進む前に、ドキュメントの冒頭にあらかじめ概要と推奨事項を示します。 その一方このドキュメントでは、このセクションの後に特定の種類の Azure Storage に関する詳細を示します。 SAP ストレージ シナリオのストレージに関する推奨事項をまとめて表にすると、次のようになります。
 
@@ -81,9 +86,9 @@ S/4HANA の SAP NetWeaver またはアプリケーション レイヤー用の A
 | DBMS ログ ボリューム (SAP HANA) M または Mv2 VM ファミリ | サポート対象外 | サポート対象外 | 推奨<sup>1</sup> | 推奨 | 推奨<sup>2</sup> | 
 | DBMS データ ボリューム (SAP HANA) Esv3 または Edsv4 VM ファミリ | サポート対象外 | サポート対象外 | 推奨 | 推奨 | 推奨<sup>2</sup> |
 | DBMS ログ ボリューム (SAP HANA) Esv3 または Edsv4 VM ファミリ | サポート対象外 | サポート対象外 | サポート対象外 | 推奨 | 推奨<sup>2</sup> | 
-| DBMS データ ボリューム (HANA 以外) | サポート対象外 | 制限付き適合 (非運用) | 推奨 | 推奨 | サポート対象外 |
-| DBMS ログ ボリューム (HANA 以外) M または Mv2 VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 推奨<sup>1</sup> | 推奨 | サポート対象外 |
-| DBMS ログ ボリューム (HANA 以外) M または Mv2 以外の VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 中規模までのワークロードに適合 | 推奨 | サポート対象外 |
+| DBMS データ ボリューム (HANA 以外) | サポート対象外 | 制限付き適合 (非運用) | 推奨 | 推奨 | Oracle Linux の特定の Oracle リリースのみ |
+| DBMS ログ ボリューム (HANA 以外) M または Mv2 VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 推奨<sup>1</sup> | 推奨 | Oracle Linux の特定の Oracle リリースのみ |
+| DBMS ログ ボリューム (HANA 以外) M または Mv2 以外の VM ファミリ | サポート対象外 | 制限付き適合 (非運用) | 中規模までのワークロードに適合 | 推奨 | Oracle Linux の特定の Oracle リリースのみ |
 
 
 <sup>1</sup> ログまたは再実行ログ ボリューム用の M または Mv2 VM ファミリでは [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を使用します。<sup>2</sup> ANF を使用するには ANF 上に /hana/log に加えて /hana/data も必要です。 

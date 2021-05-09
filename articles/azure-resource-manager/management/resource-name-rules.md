@@ -3,12 +3,12 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: e260c9055b26d82f2fd2f8458d287a35a838f40f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6402917e280ff1a1789cda0fb9bdb3537d338a9b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477793"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130019"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -17,6 +17,9 @@ ms.locfileid: "107477793"
 この記事では、リソース プロバイダーの名前空間ごとにリソースを一覧表示します。 リソース プロバイダーと Azure サービスの対応を示す一覧については、「[Azure サービスのリソース プロバイダー ](azure-services-resource-providers.md)」を参照してください。
 
 「有効な文字」列に特に明記されていない限り、リソース名では大文字と小文字は区別されません。
+
+> [!NOTE]
+> さまざまな API を使用してリソース名を取得した場合、返される値には、有効な文字の表に記載されているものとは異なるケースの値が表示されることがあります。 
 
 以降の表では、英数字という用語は次を指しています。
 

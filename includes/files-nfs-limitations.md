@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e819e1078ac90ef16070702e7961122b06c1d6f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103439042"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107879491"
 ---
 プレビュー段階では、NFS には次の制限事項があります。
 
 - 現在、NFS 4.1 では、[プロトコル仕様](https://tools.ietf.org/html/rfc5661)のほとんどの機能がサポートされています。 あらゆる種類の委任とコールバック、ロックのアップグレードとダウングレード、Kerberos 認証と暗号化など、一部の機能はサポートされていません。
 - 要求の大部分がメタデータ中心の場合、読み取り/書き込み/更新操作と比較すると、待機時間が長くなります。
-- NFS 共有を作成するには、新しいストレージ アカウントを作成する必要があります。
+- NFS 共有を有効化/作成できるのは新しいストレージ アカウント上だけです。既存のものではできません。
 - 管理プレーン REST API のみがサポートされています。 データ プレーン REST API は使用できません。したがって、Storage Explorer などのツールが NFS 共有で動作しなくなり、Azure portal では NFS 共有データを参照できなくなります。
 - AzCopy は現在サポートされていません。
 - Premium レベルでのみ使用できます。

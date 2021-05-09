@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 1/13/2021
-ms.openlocfilehash: e0982b4a43a931552574e447d5639d3fa92402d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 3/31/2021
+ms.openlocfilehash: a32c839479b71f09663cc80f5b1a1b2af260ba0a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773774"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124763"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -229,8 +229,8 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 | エラスティック プール |  エラスティック プールは、現在、Hyperscale ではサポートされていません。|
 | ハイパースケールへの移行は現在一方向 | データベースが Hyperscale にいったん移行されると、Hyperscale 以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポートおよびインポートすることです。Azure portal、PowerShell ([New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) と [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport))、Azure CLI ([az sql db export](/cli/azure/sql/db#az_sql_db_export) と [az sql db import](/cli/azure/sql/db#az_sql_db_import))、[REST API](/rest/api/sql/) から BACPAC のエクスポートとインポートを行うことはサポートされていません。 比較的小さい Hyperscale データベース (最大 200 GB) の BACPAC インポートと BACPAC エクスポートは、SSMS と [SqlPackage](/sql/tools/sqlpackage) バージョン 18.4 以降を使用することでサポートされます。 大きなデータベースでは、BACPAC エクスポートと BACPAC インポートに時間がかかり、さまざまな理由で失敗する可能性があります。|
 | インメモリ OLTP オブジェクトを使用したデータベースの移行 | Hyperscale では、メモリ最適化テーブルの型、テーブル変数、ネイティブ コンパイルされたモジュールなど、インメモリ OLTP オブジェクトのサブセットがサポートされています。 ただし、どのような種類のインメモリ OLTP オブジェクトでも移行されているデータベースに存在すると、Premium および Business Critical サービス レベルから Hyperscale に移行できません。 このようなデータベースを Hyperscale に移行するには、すべてのインメモリ OLTP オブジェクトとその依存関係を削除する必要があります。 データベースを移行した後は、これらのオブジェクトを再作成できます。 永続的と非永続的なメモリ最適化テーブルは Hyperscale では現在サポートされておらず、ディスク テーブルに変更する必要があります。|
-| geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
-| データベース コピー | Hyperscale のデータベース コピーがパブリック プレビューになりました。 |
+| geo レプリケーション  | Hyperscale の [geo レプリケーション](active-geo-replication-overview.md)がパブリック プレビューになりました。 |
+| データベース コピー | Hyperscale の[データベース コピー](database-copy.md)がパブリック プレビューになりました。 |
 | インテリジェント データベース機能 | [プランの強制] オプションを除き、他のすべての自動チューニング オプションは Hyperscale ではまだサポートされていません。オプションは有効になっているように見えますが、推奨事項やアクションは実行されません。 |
 | Query Performance Insights | Query Performance Insight は現在、Hyperscale データベースではサポートされていません。 |
 | データベースの圧縮 | DBCC SHRINKDATABASE または DBCC SHRINKFILE は、現在、Hyperscale データベースではサポートされていません。 |
@@ -238,7 +238,7 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 
 ## <a name="next-steps"></a>次のステップ
 
-- ハイパースケールの FAQ については、[ハイパースケールに関するよくあるご質問](service-tier-hyperscale-frequently-asked-questions-faq.md)をご覧ください。
+- ハイパースケールの FAQ については、[ハイパースケールに関するよくあるご質問](service-tier-hyperscale-frequently-asked-questions-faq.yml)をご覧ください。
 - サービス レベルについては、[サービス レベル](purchasing-models.md)に関するページをご覧ください
 - サーバーおよびサブスクリプション レベルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページをご覧ください。
 - 単一データベースの購入モデルの制限について詳しくは、「[Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](resource-limits-vcore-single-databases.md)」をご覧ください。

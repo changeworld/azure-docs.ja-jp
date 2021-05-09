@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: a56a41b704b12da08cf86b450ac1c734409c8032
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/21/2021
+ms.openlocfilehash: bfef9f2b5420ac9377cc369d7bf9a9bdac76743b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219316"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874227"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -122,7 +122,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 | 目的 | ソース サービス タグまたは IP アドレス | ソース ポート | 宛先サービス タグまたは IP アドレス | 宛先ポート | Notes |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | 仮想ネットワーク内のサブネット間通信 | 仮想ネットワークと ISE サブネットのアドレス空間 | * | 仮想ネットワークと ISE サブネットのアドレス空間 | * | トラフィックが仮想ネットワーク内のサブネットの "*間*" を通過するために必要です。 <p><p>**重要**:トラフィックが各サブネット内の "*コンポーネント*" 間を通過するには、各サブネット内のすべてのポートを開いていることを確認します。 |
-| ロジック アプリからの通信 | **VirtualNetwork** | * | 宛先によって異なる | 80、443 | 宛先は、ロジック アプリが通信する必要がある外部サービスのエンドポイントによって異なります。 |
+| ロジック アプリからの通信 | **VirtualNetwork** | * | 宛先によって異なる | 宛先によって異なる | 使用するポートは、ロジック アプリでの通信に必要な外部サービスのエンドポイントによって異なります。 <p><p>たとえば、Web サービスでは 443 番ポート、SMTP サービスでは 25 番ポート、SFTP サービスでは 22 番ポートを使用します。 |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
 | Azure Storage の依存関係 | **VirtualNetwork** | * | **Storage** | 80、443、445 ||
 | 接続管理 | **VirtualNetwork** | * | **AppService** | 443 ||

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 04/08/2021
 ms.author: banders
-ms.openlocfilehash: 996c974473c53833dd26abae2fb61585999f33b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: ff53131f3078b33b7e7d853c1fca891b0b86d792
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050445"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484602"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の用語
 
@@ -29,6 +29,18 @@ ms.locfileid: "102050445"
 ## <a name="billing-period"></a>請求期間
 
 ユーザーへの請求は月単位で行われます。 [Azure portal](https://portal.azure.com/) の課金プロファイルのプロパティで *請求日* を調べることで、その月の何日に請求書を受け取るかを確認できます。 請求期間の終わりと請求日の間に発生する料金は、次の請求期間内にあるため、次月の請求書に含められます。 各請求書の請求期間開始日と終了日は、上記の **[課金の要約]** の請求書 PDF に記載されています。
+
+EA から Microsoft 顧客契約に移行する場合、移行日までは、引き続き EA の請求書が送付されます。 Microsoft 顧客契約の新しい請求書は、移行後、月の第 5 日に生成されます。 最初の請求書には、移行日を起点とする部分的な料金が表示されます。 それ以降の請求書は毎月生成され、各月のすべての料金が表示されます。
+
+### <a name="changes-for-pay-as-you-go-subscriptions"></a>従量課金制サブスクリプションの変更
+
+サブスクリプションの切り替え、譲渡、取り消しを行った場合、最後に生成される請求書には、以前の請求期間の料金と新しい請求期間の一部の料金が含まれます。
+
+次に例を示します。
+
+ご利用の従量課金制サブスクリプションの請求期間が各月の第 8 日から第 7 日であると仮定します。 サブスクリプションが 11 月 16 日に Microsoft 顧客契約に譲渡されました。 従量課金制の最後の請求書には、2020 年 10 月 8 日から 2020 年 11 月 7 日までの料金が含まれます。 さらに、Microsoft 顧客契約の新しい請求期間の一部、つまり 2020 年 11 月 8 日から 2020 年 11 月 16 日までの料金も含まれます。 以下に例の画像を示します。
+
+:::image type="content" source="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" alt-text="最後の請求期間を示す請求書の例の画像。" lightbox="./media/mca-understand-your-invoice/last-invoice-billing-cycle.png" :::
 
 ## <a name="invoice-terms-and-descriptions"></a>請求書の用語と説明
 

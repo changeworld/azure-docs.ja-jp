@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする
 description: CloudSimple プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 513af1ba2e354412278fb88af4ee6527c236fae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1391ca9ff3fb7563aa8a31729a8f4cd66091b264
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97895599"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175048"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>CloudSimple プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする
 

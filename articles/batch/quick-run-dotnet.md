@@ -4,12 +4,12 @@ description: このクイックスタートでは、Batch .NET クライアン�
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1c2328db520042ceff1861b740313befbed0e20d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168248"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876726"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
@@ -25,7 +25,7 @@ Azure Batch .NET API に基づいて構築された C# アプリケーション�
 
 - Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
+- [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

@@ -11,18 +11,21 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 03/26/2021
-ms.openlocfilehash: f3bc1dfcfeeb6dda110f71ed7a1c53909153cf00
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/28/2021
+ms.openlocfilehash: 417aa0e4080bd81cac39165b5ffbe03ba9364116
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762157"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132109"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 自動フェールオーバー グループ機能を使用すると、サーバー上のデータベースのグループ、またはマネージド インスタンス内のすべてのデータベースの別のリージョンへのレプリケーションやフェールオーバーを管理できます。 これは、既存の[アクティブ geo レプリケーション](active-geo-replication-overview.md)機能に基づく宣言型の抽象化であり、geo レプリケーション対応データベースの大規模なデプロイと管理を簡素化するように設計されています。 フェールオーバーは、手動で開始することも、ユーザー定義ポリシーに基づいて Azure サービスに委任することもできます。 後者のオプションの場合、プライマリ リージョンで発生した致命的な障害やその他の計画外のイベントにより SQL Database や SQL Managed Instance の可用性がすべてまたは一部失われたときに、セカンダリ リージョンの複数の関連データベースを自動的に復元できます。 フェールオーバー グループには、通常同じアプリケーションによって使用される、1 つまたは複数のデータベースを含めることができます。 さらに、読み取り可能なセカンダリ データベースを使用して、読み取り専用クエリ ワークロードをオフロードできます。 自動フェールオーバー グループには複数のデータベースが関与するため、これらのデータベースをプライマリ サーバーに構成する必要があります。 自動フェールオーバー グループでは、グループ内のすべてのデータベースを、別のリージョンの 1 つのセカンダリ サーバーまたはインスタンスのみへのレプリケートがサポートされます。
+
+>[!NOTE]
+>自動フェールオーバー グループは現在、[Hyperscale](service-tier-hyperscale.md) サービス レベルではサポートされていません。 Hyperscale データベースの地理的フェールオーバーの場合は、[アクティブ geo レプリケーション](active-geo-replication-overview.md)を使用してください。
 
 > [!NOTE]
 > 同じまたは異なるリージョンで複数の Azure SQL Database セカンダリが必要な場合は、[アクティブ geo レプリケーション](active-geo-replication-overview.md)を使用してください。

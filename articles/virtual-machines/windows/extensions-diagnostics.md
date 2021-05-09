@@ -10,13 +10,13 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e703a8f91f18467660ef7e1b91fdb034feeb00b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 41030582c03c41089e4b4cde80caeecfad6fb6bf
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549534"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076205"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM 用の Azure Diagnostics 拡張機能
 

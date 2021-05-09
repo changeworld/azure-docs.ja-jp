@@ -11,12 +11,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87379f48f82757916aef0fa0d358835f48cb9a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023416"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875937"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>データ移動ライブラリを使用してデータを転送する
 
@@ -40,7 +40,7 @@ Azure Storage データ移動ライブラリは、BLOB およびファイルを�
 
 ## <a name="setup"></a>セットアップ
 
-1. 「[.NET Core Installation Guide (.NET Core インストール ガイド)](https://www.microsoft.com/net/core)」にアクセスして、.NET Core をインストールします。 環境を選択するときは、コマンド ライン オプションを選択します。
+1. .NET Core SDK をインストールするには、「[.NET Core インストール ガイド](https://dotnet.microsoft.com/download)」にアクセスしてください。 環境を選択するときは、コマンド ライン オプションを選択します。
 2. コマンド ラインで、プロジェクトのディレクトリを作成します。 このディレクトリに移動し、「`dotnet new console -o <sample-project-name>`」と入力して、C# コンソール プロジェクトを作成します。
 3. Visual Studio Code でこのディレクトリを開きます。 この手順をコマンド ラインですばやく実行するには、Windows で「`code .`」と入力します。
 4. Visual Studio Code Marketplace から [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) をインストールします。 Visual Studio Code を再起動します。

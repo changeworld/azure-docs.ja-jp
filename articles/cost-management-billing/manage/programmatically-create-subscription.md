@@ -5,16 +5,16 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/11/2021
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ce08ebf473b11eecae327c7de050c791f5bc1b1a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493890"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379011"
 ---
 # <a name="create-azure-subscriptions-programmatically"></a>Azure サブスクリプションをプログラムから作成する
 
@@ -36,9 +36,9 @@ ms.locfileid: "99493890"
 - [MCA サブスクリプションを作成する](programmatically-create-subscription-microsoft-customer-agreement.md)
 - [MPA サブスクリプションを作成する](programmatically-create-subscription-microsoft-partner-agreement.md)
 
-[プレビュー API](programmatically-create-subscription-preview.md) を使用している場合は、引き続きそれらの API を使用してサブスクリプションを作成できます。 
+これらの記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用してサブスクリプションを作成する方法も紹介しています。 サブスクリプション作成プロセスは、ARM テンプレートで自動化できます。
 
-また、[ARM テンプレートでサブスクリプションを作成](create-subscription-template.md)できます。 REST API を使用したサブスクリプション作成プロセスは、ARM テンプレートで自動化できます。 
+[プレビュー API](programmatically-create-subscription-preview.md) を使用している場合は、引き続きそれらの API を使用してサブスクリプションを作成できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

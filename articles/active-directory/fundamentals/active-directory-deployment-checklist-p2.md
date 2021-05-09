@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d1e5b8ac6492b0b1d819431e4616d32a092cc8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a43388c2750c7f82d407d59b6923258046fa00c7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836922"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175876"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -83,7 +83,7 @@ ms.locfileid: "94836922"
 | ---- | ------ | ---------------- |
 | アプリケーションを特定する | オンプレミス アプリケーション、クラウドの SaaS アプリケーション、その他の基幹業務アプリケーションなど、組織で使用中のアプリケーションを特定します。 これらのアプリケーションの Azure AD での管理が、可能であるか、する必要があるかを判断します。 | ライセンス不要 |
 | [ギャラリーのサポートされている SaaS アプリケーションを統合する](../manage-apps/add-application-portal.md) | Azure AD には、あらかじめ統合された何千ものアプリケーションが含まれるギャラリーがあります。 組織で使用しているアプリケーションの一部は、おそらく、Azure portal から直接アクセスできるギャラリーにあります。 | Azure AD Free |
-| [アプリケーション プロキシを使用してオンプレミス アプリケーションを統合する](../manage-apps/application-proxy-add-on-premises-application.md) | アプリケーション プロキシを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 | |
+| [アプリケーション プロキシを使用してオンプレミス アプリケーションを統合する](../app-proxy/application-proxy-add-on-premises-application.md) | アプリケーション プロキシを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 | |
 
 ## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>フェーズ 4: 特権 ID の監査、アクセス レビューの完了、ユーザー ライフ サイクルの管理
 

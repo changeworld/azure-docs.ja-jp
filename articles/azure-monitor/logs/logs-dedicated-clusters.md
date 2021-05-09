@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1fbb8f82366ee961d10ce8a6bc098128bad6555a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e54e5550e9199914c165c8422d6a6546c23c677b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041010"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073289"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -299,7 +299,11 @@ Authorization: Bearer <token>
 - **keyVaultProperties** - Azure Key Vault のキーを更新します。 「[キー識別子の詳細を使用してクラスターを更新する](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)」をご覧ください。 これには次のパラメーターが含まれています。*KeyVaultUri*、*KeyName*、*KeyVersion*。 
 - **billingType** - *billingType* プロパティによって、"*クラスター*" リソースとそのデータの課金の帰属が決まります。
   - **クラスター** (既定) - クラスターの容量予約コストは、"*クラスター*" リソースに帰属します。
-  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。 
+  - **ワークスペース** - クラスターの容量予約コストは、クラスター内のワークスペースに比例的に帰属します。その日に取り込まれた合計データが容量予約を下回る場合に使用量の一部が "*クラスター*" リソースに課金されます。 クラスターの価格モデルの詳細については、[Log Analytics 専用クラスター](./manage-cost-storage.md#log-analytics-dedicated-clusters)に関するページを参照してください。
+  - **Identity** - キー コンテナーへの認証に使用する ID。 System-assigned (システム割り当て) または User-assigned (ユーザー割り当て) のいずれかです。
+
+>[!IMPORTANT]
+>クラスターの更新では、同じ操作に ID とキー識別子の詳細の両方を含めることをしないでください。 両方の更新が必要な場合、更新は 2 つの連続する操作で行ってください。
 
 > [!NOTE]
 > *billingType* プロパティは、PowerShell ではサポートされていません。
@@ -513,6 +517,8 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 - クラスターにワークスペースをリンクし、その後、リンクを解除することができます。 特定のワークスペースでのワークスペース リンク操作の回数は、30 日間に 2 回に制限されています
 
 - クラスターの別のリソース グループまたはサブスクリプションへの移動は、現時点ではサポートされていません。
+
+- クラスターの更新では、同じ操作に ID とキー識別子の詳細の両方を含めることをしないでください。 両方の更新が必要な場合、更新は 2 つの連続する操作で行ってください。
 
 - ロックボックスは、現在、中国では使用できません。 
 

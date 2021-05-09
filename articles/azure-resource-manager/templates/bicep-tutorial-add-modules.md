@@ -5,12 +5,13 @@ author: mumian
 ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2d8ae81ac6ce9d53688499518c57b1c4a82cd055
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0149858e4e63e4110af2a18a31b9c66a99ff79c9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949670"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318588"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルにモジュールを追加する
 

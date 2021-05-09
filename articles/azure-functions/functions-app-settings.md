@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 2fb21e4a5ecffe1b6391a56decd72e3b25d4ef5c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773081"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126581"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -205,6 +205,45 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 | `powershell` | [PowerShell](functions-reference-powershell.md) |
 | `python` | [Python](functions-reference-python.md) |
 
+## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod 
+
+PowerShell 関数アプリの管理対象の依存関係のバックグラウンド更新期間を制御します。既定値は `7.00:00:00` (毎週) です。 
+
+各 PowerShell ワーカー プロセスは、そのプロセスの開始時に PowerShell ギャラリーでモジュールのアップグレードのチェックを開始し、その後は `MDMaxBackgroundUpgradePeriod` ごとにチェックします。 PowerShell ギャラリーで利用可能になった新しいモジュール バージョンは、ファイル システムにインストールされ、PowerShell ワーカーが使用できるになります。 この値を小さくすると、関数アプリは新しいモジュール バージョンを早く取得できますが、アプリ リソースの使用量 (ネットワーク I/O、CPU、ストレージ) も増加します。 この値を大きくすると、アプリ リソースの使用量は減少しますが、アプリへの新しいモジュール バージョンの配信が遅れる可能性があります。 
+
+|Key|値の例|
+|---|------------|
+|MDMaxBackgroundUpgradePeriod|7.00:00:00|
+
+詳細については、「[依存関係の管理](functions-reference-powershell.md#dependency-management)」を参照してください。
+
+## <a name="mdnewsnapshotcheckperiod"></a>MDNewSnapshotCheckPeriod
+
+管理対象の依存関係のアップグレードがインストールされているかどうかを各 PowerShell ワーカーが確認する頻度を指定します。 既定の頻度は `01:00:00` (毎時) です。 
+
+新しいモジュール バージョンがファイル システムにインストールされたら、すべての PowerShell ワーカー プロセスを再起動する必要があります。 PowerShell ワーカーを再起動すると、現在の関数の実行が中断される可能性があるため、アプリの可用性がその影響を受けます。 すべての PowerShell ワーカー プロセスが再起動されるまで、関数呼び出しでは、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが使用される可能性があります。 すべての PowerShell ワーカーの再起動は `MDNewSnapshotCheckPeriod` 以内に完了します。 
+
+各 `MDNewSnapshotCheckPeriod` 内で、PowerShell ワーカーにより、管理対象の依存関係のアップグレードがインストールされているかどうかが確認されます。 アップグレードがインストールされると、再起動が開始されます。 この値を大きくすると、再起動による中断の頻度は減少します。 ただし、大きくすることにより、関数呼び出しで古いまたは新しいモジュール バージョンが非決定的に使用される可能性がある期間が長くなる恐れもあります。 
+
+|Key|値の例|
+|---|------------|
+|MDNewSnapshotCheckPeriod|01:00:00|
+
+詳細については、「[依存関係の管理](functions-reference-powershell.md#dependency-management)」を参照してください。
+
+
+## <a name="mdminbackgroundupgradeperiod"></a>MDMinBackgroundUpgradePeriod
+
+管理対象の依存関係のアップグレードに関する前回のチェックの後、別のアップグレード チェックが開始されるまでの期間。既定値は `1.00:00:00` (毎日) です。 
+
+ワーカーの頻繁な再起動によってモジュールのアップグレードが過剰にならないように、任意のワーカーで直近 `MDMinBackgroundUpgradePeriod` 以内にモジュールのアップグレード確認が開始されているときは、その確認は行われません。 
+
+|Key|値の例|
+|---|------------|
+|MDMinBackgroundUpgradePeriod|1.00:00:00|
+
+詳細については、「[依存関係の管理](functions-reference-powershell.md#dependency-management)」を参照してください。
+
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
 この設定の値は、Python アプリのカスタム パッケージ インデックス URL を示します。 この設定は、追加のパッケージ インデックスにあるカスタム依存関係を使用してリモート ビルドを実行する必要がある場合に使用します。   
@@ -265,7 +304,7 @@ Windows 上のイベント ドリブン スケーリング プラン内の関数
 
 Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
-デプロイ中、Azure Resource Manager を使用して関数アプリを作成するとき、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
+デプロイ中に Azure Resource Manager テンプレートを使用して関数アプリを作成する場合、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 
@@ -318,7 +357,7 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 ## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
 
-アプリからのすべての送信トラフィックが仮想ネットワーク経由でルーティングされるかどうかを示します。 設定値が `1` の場合は、すべてのトラフィックが仮想ネットワーク経由でルーティングされることを示します。 [リージョンでの仮想ネットワーク統合](functions-networking-options.md#regional-virtual-network-integration)の機能を使用する場合は、この設定を使用する必要があります。 また、[仮想ネットワーク NAT ゲートウェイを使用して静的な送信 IP アドレスを定義する](functions-how-to-use-nat-gateway.md)場合にも使用されます。 
+アプリからのすべての送信トラフィックが仮想ネットワーク経由でルーティングされるかどうかを示します。 設定値が `1` の場合は、すべてのトラフィックが仮想ネットワーク経由でルーティングされることを示します。 [リージョンでの仮想ネットワーク統合](functions-networking-options.md#regional-virtual-network-integration)の機能を使用する場合は、この設定が必要です。 また、[仮想ネットワーク NAT ゲートウェイを使用して静的な送信 IP アドレスを定義する](functions-how-to-use-nat-gateway.md)場合にも使用されます。 
 
 |Key|値の例|
 |---|------------|
