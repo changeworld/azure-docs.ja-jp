@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: ab676e7595a8ccd902eea27612e4c2fd035fae0c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eb2bf1badb699060a0c1576956db395d612433c2
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555722"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325746"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
 
@@ -58,11 +58,12 @@ $fileContentBytes = Get-Content $fileName -Encoding Byte
 $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 
 [System.Collections.HashTable]$TableForJSON = @{
-    "data"     = $filecontentencoded;
+    "data"     = $fileContentEncoded;
     "dataType" = "pfx";
     "password" = "<password>";
 }
-[System.String]$JSONObject = $TableForJSON | ConvertTo-Json
+[System.String]$jsonObject = $TableForJSON | ConvertTo-Json
+$jsonEncoded = [System.Convert]::ToBase64String($jsonObject)
 
 $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 21910718d837750db7ae87afa36a2e7576a729cf
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 1e5c932460ada6060c77d233b2271813d6ea327b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016565"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292308"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK と REST API
 
@@ -28,12 +28,12 @@ Communication Services API は、他の Azure REST API と共に [docs.microsoft
 
 | アセンブリ | 名前空間| プロトコル | 機能 |
 |------------------------|-------------------------------------|---------------------------------|--------------------------------------------------------------------------------------------|
-| Azure Resource Manager | Azure.ResourceManager.Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Communication Services のリソースをプロビジョニングおよび管理します|
+| Azure Resource Manager | Azure.ResourceManager.Communication | [REST](/rest/api/communication/communicationservice)| Communication Services のリソースをプロビジョニングおよび管理します|
 | 共通 | Azure.Communication.Common| REST | 他の SDK の基本型を指定します |
-| ID | Azure.Communication.Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| ユーザーを管理し、トークンにアクセスします|
+| ID | Azure.Communication.Identity| [REST](/rest/api/communication/communicationidentity)| ユーザーを管理し、トークンにアクセスします|
 | 電話番号 _(ベータ)_| Azure.Communication.PhoneNumbers| [REST](/rest/api/communication/phonenumbers)| 電話番号を取得して管理します |
-| チャット | Azure.Communication.Chat| 独自の通知を含む [REST](https://docs.microsoft.com/rest/api/communication/) | アプリケーションにリアルタイムのテキスト ベースのチャットを追加します |
-| SMS| Azure.Communication.SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| SMS メッセージを送信および受信します|
+| チャット | Azure.Communication.Chat| 独自の通知を含む [REST](/rest/api/communication/) | アプリケーションにリアルタイムのテキスト ベースのチャットを追加します |
+| SMS| Azure.Communication.SMS | [REST](/rest/api/communication/sms)| SMS メッセージを送信および受信します|
 | 呼び出し| Azure.Communication.Calling | 独自の転送 | 音声、ビデオ、画面共有、およびその他のリアルタイム データ通信機能を使用します |
 
 Azure Resource Manager、ID、および SMS SDK はサービス統合に重点を置いており、多くの場合、これらの機能をエンド ユーザー アプリケーションに統合すると、セキュリティ上の問題が発生します。 Common および Chat SDK は、サービスおよびクライアント アプリケーションに適しています。 Calling SDK は、クライアント アプリケーション向けに設計されています。 サービス シナリオに重点を置いた SDK は開発中です。
@@ -46,7 +46,7 @@ Azure Resource Manager、ID、および SMS SDK はサービス統合に重点�
 | 領域           | JavaScript | .NET | Python | Java SE | iOS | Android | その他                          |
 | -------------- | ---------- | ---- | ------ | ---- | -------------- | -------------- | ------------------------------ |
 | Azure Resource Manager | -         | [NuGet](https://www.nuget.org/packages/Azure.ResourceManager.Communication)    |   [PyPi](https://pypi.org/project/azure-mgmt-communication/)    |  -  | -              | -  | [GitHub 経由の Go](https://github.com/Azure/azure-sdk-for-go/releases/tag/v46.3.0) |
-| 共通         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | 該当なし      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
+| 共通         | [npm](https://www.npmjs.com/package/@azure/communication-common)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Common/)    | なし      | [Maven](https://search.maven.org/search?q=a:azure-communication-common)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)            | [Maven](https://search.maven.org/artifact/com.azure.android/azure-communication-common)             | -                              |
 | ID | [npm](https://www.npmjs.com/package/@azure/communication-identity)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.Identity)    | [PyPi](https://pypi.org/project/azure-communication-identity/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-identity)   | -              | -              | -                            |
 | 電話番号 | [npm](https://www.npmjs.com/package/@azure/communication-phone-numbers)         | [NuGet](https://www.nuget.org/packages/Azure.Communication.PhoneNumbers)    | [PyPi](https://pypi.org/project/azure-communication-phonenumbers/)      | [Maven](https://search.maven.org/search?q=a:azure-communication-phonenumbers)   | -              | -              | -                            |
 | チャット           | [npm](https://www.npmjs.com/package/@azure/communication-chat)        | [NuGet](https://www.nuget.org/packages/Azure.Communication.Chat)     | [PyPi](https://pypi.org/project/azure-communication-chat/)     | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | [GitHub](https://github.com/Azure/azure-sdk-for-ios/releases)  | [Maven](https://search.maven.org/search?q=a:azure-communication-chat)   | -                              |
@@ -56,13 +56,13 @@ Azure Resource Manager、ID、および SMS SDK はサービス統合に重点�
 
 
 ## <a name="rest-api-throttles"></a>REST API スロットル
-一部の REST API とそれに対応する SDK メソッドには、注意が必要なスロットル制限があります。 これらのスロットル制限を超えると、`429 - Too Many Requests` エラー応答がトリガーされます。 これらの制限は、[Azure サポートへのリクエスト](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)によって引き上げることができます。
+一部の REST API とそれに対応する SDK メソッドには、注意が必要なスロットル制限があります。 これらのスロットル制限を超えると、`429 - Too Many Requests` エラー応答がトリガーされます。 これらの制限は、[Azure サポートへのリクエスト](../../azure-portal/supportability/how-to-create-azure-support-request.md)によって引き上げることができます。
 
 | API                                                                                                                          | スロットル            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | [すべての電話番号検索プラン API](/rest/api/communication/phonenumbers)         | 4 要求/日      |
 | [電話番号プラン (購入)](/rest/api/communication/phonenumbers/purchasephonenumbers) | 1 月に 1 回の購入  |
-| [SMS を送信する](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 要求/分 |
+| [SMS を送信する](/rest/api/communication/sms/send)                                                       | 200 要求/分 |
 
 
 ## <a name="sdk-platform-support-details"></a>SDK プラットフォーム サポートの詳細

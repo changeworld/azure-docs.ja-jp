@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, 少量のコードのチャット ボット, マルチターン会話
-ms.openlocfilehash: 8df9daa213156fc38ed08bced44ea919da95e6a4
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 84678e0472284f6a9acfec53fbe31ff550775446
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869210"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292668"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 
@@ -20,7 +20,7 @@ QnA Maker は、データに自然な会話レイヤーを作成できるクラ�
 
 通常 QnA Maker は、ソーシャル メディア アプリケーション、チャット ボット、音声対応デスクトップ アプリケーションなど、会話型クライアント アプリケーションの作成に使用されます。
 
-QnA Maker には顧客データは格納されません。 顧客データ (質問への回答とチャットログ) はすべて、顧客が依存関係のあるサービス インスタンスをデプロイしているリージョンに格納されます。 依存関係のあるサービスの詳細については、[こちら](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/plan?tabs=v1)をご覧ください。
+QnA Maker には顧客データは格納されません。 顧客データ (質問への回答とチャットログ) はすべて、顧客が依存関係のあるサービス インスタンスをデプロイしているリージョンに格納されます。 依存関係のあるサービスの詳細については、[こちら](../concepts/plan.md?tabs=v1)をご覧ください。
 
 ## <a name="when-to-use-qna-maker"></a>QnA Maker を使用する場合
 

@@ -8,12 +8,12 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: eea49a41e81e7e580becce815ff91aff6aa430d6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: aab67914b1317bc0cc443f333932ecef924176b6
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286740"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293028"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>PowerShell を使用して Azure Cloud Services (延長サポート) に移行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "106286740"
 ## <a name="2-install-the-latest-version-of-powershell"></a>2) 最新バージョンの PowerShell をインストールする
 Azure PowerShell をインストールするための主なオプションは 2 つあります:[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)または [Web Platform Installer (WebPI)](https://aka.ms/webpi-azps)。 WebPI は月次の更新プログラムを受け取ります。 PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。 この記事は、Azure PowerShell バージョン 2.1.0 に基づいています。
 
-インストール指示については、「 [Azure PowerShell のインストールと構成の方法](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0&preserve-view=true)」を参照してください。
+インストール指示については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/servicemanagement/install-azure-ps?preserve-view=true&view=azuresmps-4.0.0)」を参照してください。
 
 ## <a name="3-ensure-admin-permissions"></a>3) 管理者のアクセス許可を確認する
 この移行を実行するには、[Azure portal](https://portal.azure.com) で自分をサブスクリプションの共同管理者として追加する必要があります。
@@ -193,4 +193,4 @@ Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
 
 ## <a name="next-steps"></a>次のステップ
-[移行後の変更](in-place-migration-overview.md#post-migration-changes)に関するセクションを参照し、デプロイ ファイル、自動化、その他の新しい Cloud Services (延長サポート) の属性における変更点を確認します。 
+[移行後の変更](in-place-migration-overview.md#post-migration-changes)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。

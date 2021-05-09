@@ -8,12 +8,12 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 4ff7d9aa2075b675a7ecd979c08d5621bbdd831a
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 4898c0ec17766d0bcbd89176194aec9dee7157ea
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286735"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293046"
 ---
 # <a name="technical-details-of-migrating-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) への移行に関する技術的詳細   
 
@@ -36,7 +36,7 @@ ms.locfileid: "106286735"
 ### <a name="service-configuration-and-service-definition-files"></a>サービス構成ファイルとサービス定義ファイル
 - .cscfg および .csdef ファイルを Cloud Services (拡張サポート) 用の軽微な変更について更新する必要があります。 
 - 仮想ネットワークや VM SKU などのリソースの名前が異なります。 「[移行後のリソースの変換と名前付け規則](#translation-of-resources-and-naming-convention-post-migration)」を参照してください
-- お客様は、[PowerShell](https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice&preserve-view=true) と [Rest API](https://docs.microsoft.com/rest/api/compute/cloudservices/get)を使って新しいデプロイを取得することができます。 
+- お客様は、[PowerShell](/powershell/module/az.cloudservice/?preserve-view=true&view=azps-5.4.0#cloudservice) と [Rest API](/rest/api/compute/cloudservices/get)を使って新しいデプロイを取得することができます。 
 
 ### <a name="cloud-service-and-deployments"></a>クラウド サービスとデプロイ
 - Cloud Service (延長サポート) のデプロイはそれぞれ独立したクラウド サービスです。 デプロイは、スロットを使用してクラウド サービスにグループ化されなくなりました。
@@ -100,4 +100,4 @@ ms.locfileid: "106286735"
 - PowerShell または Rest API を使用して中止またはコミットすることができます。 
 
 ### <a name="how-much-time-can-the-operations-takebr"></a>操作にはどれくらいの時間がかかりますか。<br>
-検証は短時間で終了するように設計されています。 準備が最も長く、移行されるロール インスタンスの合計数によっては時間がかかります。 中止とコミットにも時間がかかることがありますが、準備よりは短い時間です。 すべての操作は 24 時間後にタイムアウトになります。 
+検証は短時間で終了するように設計されています。 準備が最も長く、移行されるロール インスタンスの合計数によっては時間がかかります。 中止とコミットにも時間がかかることがありますが、準備よりは短い時間です。 すべての操作は 24 時間後にタイムアウトになります。

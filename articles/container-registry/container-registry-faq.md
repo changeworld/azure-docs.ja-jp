@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 84567f9667619bb9208f066460b3c4483123b3fc
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783901"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331450"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -33,7 +33,7 @@ ms.locfileid: "107783901"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure コンテナー レジストリを作成できますか?
 
-はい。 レジストリを作成するために使用できる[テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)がここにあります。
+はい。 レジストリを作成するために使用できる[テンプレート](https://azure.microsoft.com/resources/templates/101-container-registry/)がここにあります。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 内のイメージに対するセキュリティ脆弱性スキャンは存在しますか?
 
@@ -274,6 +274,7 @@ az acr update --name myregistry --anonymous-pull-enabled
 > * 匿名のプル操作を実行する前に、`docker logout` を実行して、既存の Docker 資格情報がクリアされていることを確認します。
 > * 認証されていないクライアントは、データ プレーン操作のみを使用できます。
 > * 認証されていない要求の割合が高いと、レジストリによって調整される場合があります。
+> * 現在、匿名プル アクセスは、[geo レプリケート](container-registry-geo-replication.md)されたレジストリ リージョンではサポートされていません。
 
 > [!WARNING]
 > 現在、匿名プル アクセスは、レジストリ内のすべてのリポジトリに適用されます。 [リポジトリをスコープとしたトークン](container-registry-repository-scoped-permissions.md)を使用してリポジトリ アクセスを管理する場合は、すべてのユーザーが、匿名プルが有効になっているレジストリ内のリポジトリからプルする可能性があることに注意してください。 匿名プル アクセスが有効になっている場合は、トークンを削除することをお勧めします。

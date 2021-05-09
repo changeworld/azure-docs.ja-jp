@@ -1,16 +1,16 @@
 ---
 title: クイック スタート:初めての PowerShell クエリ
 description: このクイックスタートでは、手順に従って、Azure PowerShell の Resource Graph 拡モジュールを有効にし、最初のクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: e5e276e3be80354eeaaeba2821eb9e3242b368ad
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6147b6bcdda2674190fe3591794bb6758eb8d3eb
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533064"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324997"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 

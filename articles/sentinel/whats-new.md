@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 7f9a8cb54458999d8f20a258bc36241dfdbd0de8
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 9873b3626b77a898b7bd682446e11a77b270b297
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376037"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897309"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -32,7 +32,16 @@ ms.locfileid: "107376037"
 
 ## <a name="april-2021"></a>2021 年 4 月
 
+- [Azure Policy ベースのデータ コネクタ](#azure-policy-based-data-connectors)
 - [インシデントのタイムライン (パブリック プレビュー)](#incident-timeline-public-preview)
+
+### <a name="azure-policy-based-data-connectors"></a>Azure Policy ベースのデータ コネクタ
+
+Azure Policy を使用すると、Azure Sentinel に取り込むログを持つ特定の種類のすべての (現在および将来の) リソースに、診断ログの設定の共通セットを適用できます。
+
+[Azure Policy](../governance/policy/overview.md) の機能をデータ コレクション構成のタスクに活かすための取り組みを続けながら、[Azure ストレージ アカウント](connect-azure-storage-account.md) リソース用の別の Azure Policy 拡張データ コレクターを提供し、パブリック プレビューにリリースしています。
+
+また、[Azure Key Vault](connect-azure-key-vault.md) と [Azure Kubernetes Service](connect-azure-kubernetes-service.md) 用の 2 つのプレビュー コネクタが、現在一般提供 (GA) され、[Azure SQL Databases](connect-azure-sql-logs.md) コネクタに加わっています。
 
 ### <a name="incident-timeline-public-preview"></a>インシデントのタイムライン (パブリック プレビュー)
 
@@ -52,8 +61,8 @@ ms.locfileid: "107376037"
 
 - [表示モード中に自動的に更新するようにブックを設定する](#set-workbooks-to-automatically-refresh-while-in-view-mode)
 - [Azure Firewall の新しい検出](#new-detections-for-azure-firewall)
-- [自動化ルールとインシデントによってトリガーされるプレイブック](#automation-rules-and-incident-triggered-playbooks) (すべての新しいプレイブックのドキュメントを含む)
-- [新しいアラート エンリッチメント: 強化されたエンティティ マッピングとカスタム詳細](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [自動化ルールとインシデントによってトリガーされるプレイブック (パブリック プレビュー)](#automation-rules-and-incident-triggered-playbooks-public-preview) (すべての新しいプレイブックのドキュメントを含む)
+- [新しいアラート エンリッチメント: 強化されたエンティティ マッピングとカスタム詳細 (パブリック プレビュー)](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details-public-preview)
 - [Azure Sentinel ブックを印刷するか PDF として保存する](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
 - [インシデント フィルターと並べ替えの設定がセッションに保存されるようになりました (パブリック プレビュー)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
 - [Microsoft 365 Defender インシデント統合 (パブリック プレビュー)](#microsoft-365-defender-incident-integration-public-preview)
@@ -95,7 +104,7 @@ Azure Firewalls に対する検出は、組み込みのテンプレート ギャ
 
 詳細については、「[Azure Sentinel での Azure Firewall の新しい検出](https://techcommunity.microsoft.com/t5/azure-network-security/new-detections-for-azure-firewall-in-azure-sentinel/ba-p/2244958)」を参照してください。
 
-### <a name="automation-rules-and-incident-triggered-playbooks"></a>自動化ルールとインシデントによってトリガーされるプレイブック
+### <a name="automation-rules-and-incident-triggered-playbooks-public-preview"></a>自動化ルールとインシデントによってトリガーされるプレイブック (パブリック プレビュー)
 
 自動化ルールは Azure Sentinel の新しい概念です。これを使用すると、インシデント処理の自動化を一元的に管理できます。 自動化ルールを使用すると、(以前のようにアラートにだけでなく) インシデントにもプレイブックを割り当てられるほか、一度に複数の分析ルールに対する応答を自動化したり、プレイブックを必要とせずにインシデントのタグ付け、割り当て、クローズを自動的に行ったり、実行されるアクションの順序を制御したりできます。 自動化ルールにより、Azure Sentinel での自動化の使用が効率化され、インシデント オーケストレーション プロセスの複雑なワークフローを簡略化できます。
 
@@ -105,7 +114,7 @@ Azure Firewalls に対する検出は、組み込みのテンプレート ギャ
 
 [プレイブックの拡張機能](automate-responses-with-playbooks.md)の詳細と、自動化ルールと共にプレイブックを使用して[応答ワークフローを作成する](tutorial-respond-threats-playbook.md)方法について確認してください。
 
-### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>新しいアラート エンリッチメント: 強化されたエンティティ マッピングとカスタム詳細
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details-public-preview"></a>新しいアラート エンリッチメント: 強化されたエンティティ マッピングとカスタム詳細 (パブリック プレビュー)
 
 2 つの新しい方法でアラートをエンリッチして、より使いやすく、よりわかりやすくします。
 
@@ -152,7 +161,7 @@ Azure Sentinel と Microsoft 365 Defender の両方を同時に使用するこ�
 Azure Policy ベースのコネクタを次の Azure サービスで使用できるようになりました。
 - [Azure Key Vault](connect-azure-key-vault.md) (パブリック プレビュー)
 - [Azure Kubernetes Service](connect-azure-kubernetes-service.md) (パブリック プレビュー)
-- Azure SQL データベース/サーバー (GA)
+- [Azure SQL データベースまたはサーバー](connect-azure-sql-logs.md) (GA)
 
 お客様は、引き続き特定のインスタンスに対して手動でログを送信することができ、ポリシー エンジンを使用する必要はありません。
 

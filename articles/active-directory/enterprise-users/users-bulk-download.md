@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d27c95b0b16c36ca24709ec72c741dec633c5c81
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97861595"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108063965"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory ポータルでユーザーの一覧をダウンロードする
 
@@ -75,7 +75,7 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 
 ## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
 
-ユーザー一覧の作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最小で 50 万ユーザーを一括作成およびダウンロードできます。
+ユーザー一覧の作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最大 500,000 ユーザーの一覧の作成とダウンロードが可能になります。
 
 ## <a name="next-steps"></a>次のステップ
 

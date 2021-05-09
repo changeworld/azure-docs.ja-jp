@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/28/2020
+ms.date: 04/21/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c8f817ad06742e6f84c3cb87dda0c36866540267
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 1d4b6c8d442d1a0d6e9451b314ee95ae50c20ede
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450229"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891494"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -64,6 +64,17 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+    - [HBv2](../articles/virtual-machines/hbv2-series.md)
+    - [HB](../articles/virtual-machines/hb-series.md)
+    - [HC](../articles/virtual-machines/hc-series.md)
+    - [NDv2](../articles/virtual-machines/ndv2-series.md)
+    - [ND](../articles/virtual-machines/nd-series.md)
+    - [NC_T4_v3](../articles/virtual-machines/nct4-v3-series.md)
+    - [NCv2](../articles/virtual-machines/ncv2-series.md)
+    - [NCv3](../articles/virtual-machines/ncv3-series.md)
+    - [NVv3](../articles/virtual-machines/nvv3-series.md)
+    - [NVv4](../articles/virtual-machines/nvv4-series.md)
+    
 - Ultra Disk がサポートされているすべてのリージョンで、すべての VM サイズを使用できるわけではありません。
 - データ ディスクとしてのみ使用できます。 
 - 既定で 4k の物理セクター サイズがサポートされます。 512E セクター サイズは一般提供されているオファリングとして利用できます (サインアップは不要です)。 ほとんどのアプリケーションは 4k のセクター サイズと互換性がありますが、512 バイトのセクター サイズが必要になる場合があります。 1 つの例が、Oracle Database です。この場合、4k のネイティブ ディスクをサポートするには、リリース 12.2 以降が必要です。 以前のバージョンの Oracle DB では、512 バイトのセクター サイズが必要となります。

@@ -7,13 +7,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 03/24/2021
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 647cf6f0b1af6a5858bbf1147cc03ecc4637ed25
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.custom: devx-track-java
+ms.openlocfilehash: 2fce1e619435a8f637619f0fa3ec3a619163c60b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227808"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135151"
 ---
 # <a name="enable-end-to-end-tls-for-an-application"></a>アプリケーションのエンド ツー エンド TLS を有効にする
 
@@ -23,7 +23,7 @@ ms.locfileid: "107227808"
 
 ## <a name="prerequisites"></a>前提条件 
 
-- デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)に従って作業を開始してください。
+- デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](./quickstart.md)に従って作業を開始してください。
 - エンドツーエンド TLS の詳細については、[エンドツーエンド TLS のサンプル](https://github.com/Azure-Samples/spring-boot-secure-communications-using-end-to-end-tls-ssl)を参照してください。
 - 必要な証明書を Spring Boot アプリに安全に読み込むには、[keyvault spring boot starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter-keyvault-certificates) を使用します。
 
@@ -45,6 +45,17 @@ az spring-cloud app update --enable-end-to-end-tls false -n app_name -s service_
 az spring-cloud app custom-domain update --enable-end-to-end-tls -n app_name -s service_name -g resource_group_name
 az spring-cloud app custom-domain bind --enable-end-to-end-tls -n app_name -s service_name -g resource_group_name
 ```
+
+## <a name="enable-end-to-end-tls-using-azure-portal"></a>Azure portal を使用してエンドツーエンド TLS を有効にする
+[Azure portal](https://portal.azure.com/) でエンドツーエンド TLS を有効にするには、まずアプリを作成し、その後でこの機能を有効にします。
+
+1. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
+2. 左側のナビゲーション ペインで、 **[設定]** グループまで下へスクロールします。
+3. **[End-to-end TLS]\(エンドツーエンド TLS\)** を選択します。
+4. **[End-to-end TLS]\(エンドツーエンド TLS\)** を *[はい]* に切り替えます。
+
+ ![ポータルでのエンドツーエンド TLS の有効化](./media/enable-end-to-end-tls/enable-tls.png)
+
 
 ## <a name="verify-end-to-end-tls-status"></a>エンドツーエンドの TLS ステータスを確認する
 

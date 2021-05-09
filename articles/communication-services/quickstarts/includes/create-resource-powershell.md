@@ -1,15 +1,15 @@
 ---
-ms.openlocfilehash: cc628b1f1fcae5e837f7f61db584c8747100f353
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 340635f273c20c9d8b42fde0c07a7aa97d9f348a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644727"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293247"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet/)。
-- [Azure Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/)をインストールする
+- [Azure Az PowerShell モジュール](/powershell/azure/)をインストールする
 
 ## <a name="create-azure-communication-resource"></a>Azure Communication のリソースを作成する
 

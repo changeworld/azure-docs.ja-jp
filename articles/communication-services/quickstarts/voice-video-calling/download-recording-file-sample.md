@@ -9,12 +9,12 @@ ms.author: joseys
 ms.date: 04/14/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 493a35a627f458fe649931d9fabc175b0affc3a6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 486dbc4e3bafe34fad9f6eeb00460ee6b9bf5613
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730312"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292812"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Event Grid を使用した通話の記録とダウンロード
 
@@ -64,7 +64,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 ```
 
 
-上記のコードは、`Microsoft.Azure.EventGrid` NuGet パッケージに依存しています。 Event Grid エンドポイントの検証の詳細については、[エンドポイントの検証に関するドキュメント](https://docs.microsoft.com/azure/event-grid/receive-events#endpoint-validation)を参照してください
+上記のコードは、`Microsoft.Azure.EventGrid` NuGet パッケージに依存しています。 Event Grid エンドポイントの検証の詳細については、[エンドポイントの検証に関するドキュメント](../../../event-grid/receive-events.md#endpoint-validation)を参照してください
 
 次に、この Webhook を `recording` イベントにサブスクライブします。
 
@@ -218,6 +218,6 @@ Communication Services サブスクリプションをクリーンアップして
 ## <a name="next-steps"></a>次の手順
 詳細については、次の記事を参照してください。
 
-- Microsoft の [Web 通話のサンプル](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)を確認する
-- [Calling SDK の機能](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)について確認する
-- [通話のしくみ](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)の詳細について確認する
+- Microsoft の [Web 通話のサンプル](../../samples/web-calling-sample.md)を確認する
+- [Calling SDK の機能](./calling-client-samples.md?pivots=platform-web)について確認する
+- [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

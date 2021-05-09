@@ -7,12 +7,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5b7fd8e8cd5bd3ab0f15115365ed057fc67f1204
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ec48e23d2752d14b3bb77dab2625e81f8a6d0db7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604432"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292740"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app-javascript"></a>クイックスタート - アプリに 1 対 1 のビデオ通話を追加する (JavaScript)
 
@@ -337,7 +337,6 @@ Communication Services サブスクリプションをクリーンアップして
 ## <a name="next-steps"></a>次の手順
 詳細については、次の記事を参照してください。
 
-- Microsoft の [Web 通話のサンプル](https://docs.microsoft.com/azure/communication-services/samples/web-calling-sample)を確認する
-- [Calling SDK の機能](https://docs.microsoft.com/azure/communication-services/quickstarts/voice-video-calling/calling-client-samples?pivots=platform-web)について確認する
-- [通話のしくみ](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/about-call-types)の詳細について確認する
-
+- Microsoft の [Web 通話のサンプル](../../samples/web-calling-sample.md)を確認する
+- [Calling SDK の機能](./calling-client-samples.md?pivots=platform-web)について確認する
+- [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa5d24229bae0e459471dc40ca375d42ccc1405c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726773"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293246"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
 
@@ -52,7 +52,7 @@ Communication Services リソースに移動した後、ナビゲーション �
 
 特定のリソースのキーやリソース グループなど、重要な情報には、Azure CLI を使用してアクセスすることもできます。 
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) をインストールし、次のコマンドを使用してログインします。 Azure アカウントを使用して接続するには、資格情報を入力する必要があります。
+[Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) をインストールし、次のコマンドを使用してログインします。 Azure アカウントを使用して接続するには、資格情報を入力する必要があります。
 ```azurecli
 az login
 ```

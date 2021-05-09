@@ -136,6 +136,10 @@
           href: custom-translator/what-is-bleu-score.md
         - name: カスタマー マネージド キー
           href: encrypt-data-at-rest.md
+    - name: リファレンス
+      items:
+        - name: リリース ノート
+          href: custom-translator/release-notes.md
 - name: ドキュメント変換
   items:
     - name: ドキュメント変換とは

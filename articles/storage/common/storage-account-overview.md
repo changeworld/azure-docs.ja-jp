@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d4874ad6688fa85f0c511632498938817bb218f7
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: dedb8faf74ffba7b5846512b4c52eb5a58822f7e
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714202"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895957"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -28,14 +28,14 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 次の表では、Microsoft が推奨するストレージアカウントの種類を、ほとんどのシナリオについて説明しています。
 
-| ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイメント モデル | 使用法 |
+| ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイ モデル | 使用 |
 |--|--|--|--|--|
 | Standard 汎用 v2 | Blob、File、Queue、Table、Data Lake Storage<sup>1</sup> | LRS、GRS、RA-GRS<br /><br />ZRS、GZRS、RA-GZRS<sup>2</sup> | Resource Manager<sup>3</sup> | BLOB、ファイル、キュー、およびテーブル用の基本的なストレージ アカウントの種類。 Azure Storage を使用するほとんどのシナリオにお勧めします。 |
 | Premium ブロック BLOB<sup>4</sup> | ブロック BLOB のみ | LRS<br /><br />ZRS<sup>2</sup> | Resource Manager<sup>3</sup> | ブロック BLOB と追加 BLOB の Premium パフォーマンス特性を持つストレージ アカウント。 トランザクション レートが高く、比較的小さなオブジェクトが使用されるシナリオ、またはストレージ待ち時間が一貫して短いことが要求されるシナリオに推奨されます。<br />[詳細情報](../blobs/storage-blob-performance-tiers.md) |
 | Premium ファイル共有<sup>4</sup> | ファイル共有のみ | LRS<br /><br />ZRS<sup>2</sup> | Resource Manager<sup>3</sup> | Premium パフォーマンスの特徴を持つファイル専用ストレージ アカウント。 エンタープライズまたはハイ パフォーマンス スケール アプリケーションにお勧めします。<br />[詳細情報](../files/storage-files-planning.md#management-concepts) |
 | Premium ページ BLOB<sup>4</sup> | ページ BLOB のみ | LRS | Resource Manager<sup>3</sup> | ページ BLOB に特化した Premium Storage アカウントの種類。<br />[詳細情報](../blobs/storage-blob-pageblob-overview.md) |
 
-<sup>1</sup> Azure Data Lake Storage は、Azure Blob Storage をベースに構築された、ビッグ データ分析専用の一連の機能です。 Data Lake Storage は、階層型名前空間が有効になった汎用の V2 ストレージ アカウントでのみサポートされています。 Data Lake Storage Gen2 の詳細については、[Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)に関するページを参照してください。
+<sup>1</sup> Data Lake Storage は、Azure Blob Storage を基にした、ビッグ データ分析専用の機能のセットです。 詳しくは「[Azure Data Lake Storage Gen2 の概要](../blobs/data-lake-storage-introduction.md)」をご覧ください。
 
 <sup>2</sup> ゾーン冗長ストレージ (ZRS) と geo ゾーン冗長ストレージ (GZRS、RA-GZRS) は、特定のリージョンの Standard 汎用 v2、Premium ブロック BLOB、Premium ファイル共有の各アカウントでのみ使用できます。 Azure Storage の冗長オプションの詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。
 
@@ -110,7 +110,7 @@ Azure Storage では、ストレージ アカウントの使用に基づいて�
 
 次の表では、レガシ ストレージ アカウントの種類について説明します。 これらの種類のアカウントは、Microsoft によって推奨されていませんが、特定のシナリオで使用される場合があります。
 
-| レガシ ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイメント モデル | 使用法 |
+| レガシ ストレージ アカウントの種類 | サポートされているサービス | 冗長オプション | デプロイ モデル | 使用 |
 |--|--|--|--|--|
 | Standard 汎用 v1 | Blob、File、Queue、Table、Data Lake Storage | LRS、GRS、RA-GRS | Resource Manager、クラシック | 汎用 v1 アカウントでは、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 使用が検討されるシナリオは次のとおりです。<br /><ul><li>アプリケーションで、Azure クラシック デプロイ モデルが必要である。</li><li>アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。</li><li>Azure Storage REST API の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。</li></ul> |
 | Standard Blob Storage | BLOB (ブロック BLOB と追加 BLOB のみ) | LRS、GRS、RA-GRS | リソース マネージャー | 可能であれば、Standard 汎用の v2 アカウントの使用をお勧めします。 |

@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c10a39b050fa66192f762ba642b4c8ac2e080250
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 5abe1755e22ac20e210aece956056ea647393dc1
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258144"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896245"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Arkose Labs を構成する
 
@@ -87,7 +87,7 @@ Arkose Labs 統合には、次のコンポーネントが含まれています�
 
 ユーザー フローは、**サインアップ** と **サインイン**、または **サインアップ** のみに使用できます。 Arkose Labs のユーザー フローは、サインアップ中にのみ表示されます。
 
-1. ユーザー フローを作成するには、[手順](./tutorial-create-user-flows.md)を参照してください。 既存のユーザー フローを使用する場合は、それが **推奨 (次世代のプレビュー)** バージョンの種類である必要があります。
+1. ユーザー フローを作成するには、[手順](./tutorial-create-user-flows.md)を参照してください。 既存のユーザー フローを使用する場合は、それが **推奨** バージョンの種類である必要があります。
 
 2. ユーザー フローの設定で、 **[ユーザー属性]** に移動し、 **[ArkoseSessionToken]** 要求を選択します。
 

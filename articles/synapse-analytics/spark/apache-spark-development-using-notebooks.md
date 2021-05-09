@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737670"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891387"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
 
@@ -36,10 +36,12 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 |機能|従来のノートブック|プレビュー版ノートブック|
 |--|--|--|
 |%run| サポートされていません | &#9745;|
-|%history| サポートされていません |&#9745;
+|%history| サポートされていません |&#9745;|
 |%load| サポートされていません |&#9745;|
 |%%html| サポートされていません |&#9745;|
 |ドラッグ アンド ドロップでセルを移動する| サポートされていません |&#9745;|
+|アウトライン (目次)| サポートされていません |&#9745;|
+|変数エクスプローラー| サポートされていません |&#9745;|
 |ツールバー ボタンを使用してテキスト セルを書式設定する|&#9745;| 使用できません |
 |セルの操作を元に戻す| &#9745;| 使用できません |
 
@@ -259,6 +261,20 @@ Azure Synapse Studio ノートブックには、Spark セッションの構成�
 
 ---
 
+### <a name="notebook-outline"></a>ノートブックのアウトライン
+
+# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
+
+サポートされていません。
+
+# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
+
+アウトライン (目次) では、素早くナビゲーションできるようにサイドバー ウィンドウ内に任意の Markdown セルの最初の Markdown ヘッダーが表示されます。 アウトラインのサイドバーは、最適な方法で画面に合わせてサイズを変更したり折りたたんだりすることができます。 ノートブックのコマンド バーにある **[アウトライン]** ボタンを選択すると、サイドバーを開いたり非表示にしたりできます。
+
+<a name="azure-notebook-outline"></a>![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+---
+
+
 ## <a name="run-notebooks"></a>ノートブックを実行する
 
 ノートブックのコード セルは、個別に、または一度にすべて実行できます。 ノートブックには各セルの状態と進行状況が示されます。
@@ -331,6 +347,22 @@ Azure Synapse Studio ノートブックには、Spark セッションの構成�
 
 ---
 
+### <a name="variable-explorer"></a>変数エクスプローラー
+
+# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
+
+サポートされていません。
+
+# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
+
+Synapse ノートブックは、PySpark (Python) セルの現在の Spark セッションでの変数の名前、型、長さ、値の一覧を表示するための、組み込み変数エクスプローラーを提供します。 コード セルに定義されている変数が増えると、自動的に表示される変数も増えます。 各列ヘッダーをクリックすると、テーブル内の変数が並べ替えられます。
+
+ノートブックのコマンド バーの **[変数]** ボタンを選択して、変数エクスプローラーを開いたり非表示にしたりできます。
+
+![azure-notebook-variable-explorer](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>セルの状態インジケーター
 

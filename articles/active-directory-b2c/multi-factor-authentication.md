@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eff33a8670ee8eb9ee32655956ee0e913ddaa4c1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8c9219622a4c8d81c7a69d7ae39d9f65d92048a4
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258131"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895885"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 
@@ -40,10 +40,17 @@ Azure Active Directory B2C (Azure AD B2C) は [Azure AD Multi-Factor Authenticat
 1. **[ユーザー フロー]** を選択します。
 1. MFA を有効にするユーザー フローを選択します。 たとえば、*B2C_1_signinsignup* です。
 1. **[プロパティ]** を選択します。
-1. **[多要素認証]** セクションで、目的の **[MFA メソッド]** を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[常にオン]** または [**Conditional (Recommended)]\(条件付き (推奨)\)** を選択します。
+1. **[多要素認証]** セクションで、目的の **[方法の種類]** を選択します。 次に、 **[MFA の適用]** でオプションを選択します。
+
+   - **[オフ]** - サインイン時に MFA が適用されることはありません。ユーザーは、サインアップ時またはサインイン時に MFA への登録を求められません。
+   - **[常にオン]** - 条件付きアクセスの設定に関係なく、MFA が常に必須になります。 ユーザーが MFA にまだ登録されていない場合は、サインイン時に登録するよう求められます。 サインアップ時に、ユーザーは MFA に登録するよう求められます。
+   - **[条件付き (プレビュー)]** - 条件付きアクセス ポリシーで必須となっている場合にのみ、MFA が適用されます。 ポリシーとサインインのリスクによって、ユーザーに MFA を提示する方法が決まります。
+      - リスクが検出されない場合、サインイン時に MFA チャレンジがユーザーに提示されます。 ユーザーが MFA にまだ登録されていない場合は、サインイン時に登録するよう求められます。
+      - リスクが検出され、ユーザーが MFA にまだ登録されていない場合、サインインはブロックされます。 サインアップ時に、ユーザーは MFA への登録を求められません。
+
    > [!NOTE]
    >
-   > - **[Conditional (Recommended)]\(条件付き (推奨)\)** を選択した場合、[条件付きアクセスをユーザー フローに追加](conditional-access-user-flow.md)し、ポリシーを適用するアプリを指定する必要もあります。
+   > - **[条件付き (プレビュー)]** を選択した場合、[条件付きアクセスをユーザー フローに追加](conditional-access-user-flow.md)し、ポリシーを適用するアプリを指定する必要もあります。
    > - サインアップのユーザー フローでは、多要素認証 (MFA) は既定で無効になっています。 電話でのサインアップを使用したユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
 
 1. **[保存]** を選択します。 このユーザー フローに対して MFA が有効になります。

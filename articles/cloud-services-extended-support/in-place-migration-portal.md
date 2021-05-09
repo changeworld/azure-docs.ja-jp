@@ -9,12 +9,12 @@ ms.author: tagore
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 79889b08baa80dc67b30ae445004e37d9f9fe295
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: b1a3d6f1c30cf6c52dde3f70f222d9cbb0fce556
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286706"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293172"
 ---
 # <a name="migrate-to-cloud-services-extended-support-using-the-azure-portal"></a>Azure portal を使用して Cloud Services (延長サポート) に移行する
 
@@ -37,7 +37,7 @@ ms.locfileid: "106286706"
 
 **移行リソース プロバイダーにサインアップする**
 
-1. [Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) を使用して、Microsoft.Compute 名前空間で移行リソース プロバイダー `Microsoft.ClassicInfrastructureMigrate` とプレビュー機能 `Cloud Services` に登録します。  
+1. [Azure portal](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider-1) を使用して、Microsoft.Compute 名前空間で移行リソース プロバイダー `Microsoft.ClassicInfrastructureMigrate` とプレビュー機能 `Cloud Services` に登録します。  
 1. 登録が完了するまで 5 分待ってから、承認の状態を確認します。 
 
 ## <a name="migrate-your-cloud-service-resources"></a>クラウド サービスのリソースを移行する
@@ -94,4 +94,4 @@ ms.locfileid: "106286706"
     「yes」と入力して確認し、移行をコミットします。 移行が完了します。 移行された Cloud Services (延長サポート) のデプロイで、すべての操作がロック解除されます。 
 
 ## <a name="next-steps"></a>次の手順
-[移行後の変更](in-place-migration-overview.md#post-migration-changes)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。 
+[移行後の変更](in-place-migration-overview.md#post-migration-changes)に関するセクションを参照し、新しい Cloud Services (延長サポート) のデプロイのデプロイ ファイル、自動化、その他の属性での変更を確認します。

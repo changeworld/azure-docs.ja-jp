@@ -1,14 +1,14 @@
 ---
 title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
-ms.date: 02/17/2021
+ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5d819c20c27a2c2f4a316e60da1c0fdb7c8bb859
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741822"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896894"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -64,7 +64,8 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="append-examples"></a>Append の例
 
-例 1:非 **\[\*\]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **\[\*\]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
+例 1: 非 **\[\*\]** 
+[別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **\[\*\]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -100,7 +101,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="audit-evaluation"></a>Audit の評価
 
-Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 Audit は、リソース要求でも評価サイクルでも同じように動作します。 新規および更新されたリソースの場合、Azure Policy によってアクティビティ ログに `Microsoft.Authorization/policies/audit/action` 操作が追加され、リソースは非準拠とマークされます。
+Audit は、リソースの作成中または更新中に Azure Policy によって確認される最後の効果です。 リソース マネージャー モードの場合、その後でリソースが Azure Policy によってリソース プロバイダーに送信されます。 リソースの作成または更新の要求を評価するときに、Azure Policy では `Microsoft.Authorization/policies/audit/action` 操作がアクティビティ ログに追加され、リソースが非対応としてマークされます。 標準のコンプライアンス評価サイクルでは、リソースのコンプライアンス状態のみが更新されます。
 
 ### <a name="audit-properties"></a>Audit のプロパティ
 
@@ -569,7 +570,7 @@ Modify 効果の **details** プロパティには、修復に必要なアクセ
 
 **operation** プロパティには、次のオプションが用意されています。
 
-|Operation |説明 |
+|操作 |説明 |
 |-|-|
 |addOrReplace |プロパティまたはタグが別の値で既に存在する場合でも、定義されたプロパティまたはタグと値をリソースに追加します。 |
 |追加 |定義されたプロパティまたはタグと値をリソースに追加します。 |

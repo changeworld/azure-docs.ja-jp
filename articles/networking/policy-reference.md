@@ -1,18 +1,18 @@
 ---
 title: Azure ネットワーク サービス用の組み込みポリシー定義
 description: Azure ネットワーク サービス用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 05f22f8c4941594db2e6b7e5bc06734bb9cffb4b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3bc0119d734c9ac7cedf6f1fc98b750c345d613c
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107861982"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108183843"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-networking-services"></a>Azure ネットワーク サービス用の Azure Policy 組み込み定義
 

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware ソリューション - プライベート クラウドからオンプレミスへの DNS 転送
 description: CloudSimple プライベート クラウドの DNS サーバーからオンプレミスのリソースの参照を転送できるようにする方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 02/29/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eed8addcf9064bddf761fabb7db22e7bcecc7a71
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899203"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108185254"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>CloudSimple プライベート クラウドの DNS サーバーからオンプレミスのリソースの DNS 参照を DNS サーバーに転送できるようにする
 

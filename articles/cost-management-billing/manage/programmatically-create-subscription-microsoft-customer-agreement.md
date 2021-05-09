@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 324ca849e0f9c1282dc4b47ceba4654c76c07b35
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: fef8859e01b019cb174faee160bdfda135a23c4b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870825"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293334"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>最新の API を使用してプログラムで Microsoft 顧客契約の Azure サブスクリプションを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "107870825"
 
 サブスクリプションを作成するには、請求書セクションで所有者、共同作成者、または Azure サブスクリプション作成者のロールを持っているか、課金プロファイルまたは課金アカウントで所有者または共同作成者のロールを持っている必要があります。 また、同じロールをサービス プリンシパル名 (SPN) に割り当てることもできます。 ロールとロールへのアクセス許可の割り当ての詳細については、「[サブスクリプションの課金ロールとタスク](understand-mca-roles.md#subscription-billing-roles-and-tasks)」を参照してください。
 
-SPN を使用してサブスクリプションを作成している場合は [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。 
+SPN を使用してサブスクリプションを作成している場合は [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。 
 
 Microsoft 顧客契約アカウントへのアクセス権があるかどうかわからない場合は、「[Microsoft 顧客契約へのアクセスの確認](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement)」のセクションを参照してください。
 

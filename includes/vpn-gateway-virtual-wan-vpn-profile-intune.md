@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 04/01/2021
+ms.date: 04/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c9568c51fe3a59dba83a66fc35c8d9112ade167f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ffe433e632e2afed32f2a135d87d927686e9a004
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106178497"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018289"
 ---
 Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) のプロファイルを展開できます。 この記事では、カスタム設定を使用して Intune プロファイルを作成する方法について説明します。
 
@@ -66,9 +66,7 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 このセクションでは、カスタム設定を使用して Microsoft Intune プロファイルを作成します。
 
 1. Intune にサインインし、 **[デバイス] -> [構成プロファイル]** の順に移動します。 **[+ プロファイルの作成]** を選択します。
-
-   :::image type="content" source="./media/vpn-gateway-virtual-wan-vpn-profile-intune/configuration-profile.png" alt-text="構成プロファイル":::
-1. **[プラットフォーム]** には、 **[Windows 10 以降]** を選択します。 **[プロファイル]** には **[カスタム]** を選択します。 そのうえで **[Create]\(作成\)** を選択します。
+1. **[プラットフォーム]** には、 **[Windows 10 以降]** を選択します。 **[プロファイルの種類]** には、 **[テンプレート]** と **[カスタム]** を選択します。 そのうえで **[Create]\(作成\)** を選択します。
 1. プロファイルの名前と説明を入力し、 **[次へ]** を選択します。
 1. **[構成設定]** タブで **[追加]** を選択します。
 

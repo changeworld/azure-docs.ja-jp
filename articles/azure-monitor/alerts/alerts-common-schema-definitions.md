@@ -4,12 +4,12 @@ description: Azure Monitor の共通アラート スキーマ定義について
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 04/12/2021
-ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: a026fa846901d4db7cb56196de50508f077e4fc6
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565119"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018261"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -179,7 +179,7 @@ ms.locfileid: "107565119"
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludeSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、[Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) を使用してクエリ結果にアクセスする必要があります。
+> カスタムしたメールの件名、またはカスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、メールの件名またはペイロード スキーマが後述のものに戻ります。 つまり、カスタム JSON ペイロードを使用する場合は、Webhook で共通アラート スキーマを使用できません。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludeSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれていない場合は、`LinkToFilteredSearchResultsAPI` または `LinkToSearchResultsAPI` を使用して、[Log Analytics API](/rest/api/loganalytics/dataaccess/query/get) を使用してクエリ結果にアクセスする必要があります。
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 3e5b064ec37b855186f633677e2b1a3f615a6736
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d36cf1c5ed8c916962ae0b621548a593d2fe0a97
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783865"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331846"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -66,7 +66,7 @@ Azure Container Registry では、耐障害性と可用性に優れた Azure コ
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
-geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
+geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
 
 geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 

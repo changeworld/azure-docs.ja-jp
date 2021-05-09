@@ -3,15 +3,15 @@ title: Key Vault 参照を使用する
 description: Azure Key Vault 参照を使用するように Azure App Service と Azure Functions を設定する方法について説明します。 Key Vault シークレットをアプリケーション コードで使用できるようにします。
 author: mattchenderson
 ms.topic: article
-ms.date: 02/05/2021
+ms.date: 04/23/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0ca620d50706f10081e955cf206fcf8c06ae5fd4
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750772"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064937"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -28,7 +28,7 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
    > [!NOTE] 
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
-1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/security-features.md#privileged-access)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
 ### <a name="access-network-restricted-vaults"></a>ネットワーク制限があるコンテナーにアクセスする
 
@@ -81,6 +81,17 @@ Key Vault 参照は [[アプリケーション設定]](configure-common.md#confi
 
 > [!TIP]
 > Key Vault 参照を使用するほとんどのアプリケーション設定は、環境ごとに別個の Key Vault を用意する必要があるため、スロット設定としてマークする必要があります。
+
+### <a name="considerations-for-azure-files-mounting"></a>Azure Files のマウントに関する考慮事項
+
+アプリでは、`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` アプリケーション設定を使用して、Azure Files をファイル システムとしてマウントできます。 この設定には、アプリを正しく開始できることを確認するための追加の検証チェックがあります。 プラットフォームでは、Azure Files 内にコンテンツ共有があることを前提としており、`WEBSITE_CONTENTSHARE` 設定で指定されていない場合は既定の名前を想定します。 これらの設定を変更する要求がある場合、プラットフォームでは、このコンテンツ共有が存在するかどうかの検証を試み、存在しない場合は作成を試みます。 コンテンツ共有が見つからないか、作成できない場合、要求はブロックされます。
+
+この設定に対して Key Vault 参照を使用する場合、受信要求の処理中にシークレット自体を解決できないため、この検証チェックは既定で失敗します。 この問題を回避するために、`WEBSITE_SKIP_CONTENTSHARE_VALIDATION` を "1" に設定して検証をスキップできます。 これにより、すべてのチェックがバイパスされ、コンテンツ共有は自動的に作成されなくなります。 事前に作成されていることを確認する必要があります。 
+
+> [!CAUTION]
+> 検証をスキップし、接続文字列またはコンテンツ共有が無効である場合、アプリは正常に開始できず、HTTP 500 エラーのみを処理します。
+
+サイト作成の途中で、マネージド ID のアクセス許可が伝達されていないか、仮想ネットワーク統合がセットアップされていないことが原因で、コンテンツ共有のマウント試行が失敗する可能性もあります。 これに対応するために、デプロイ テンプレートの後半まで Azure Files のセットアップを先送りすることができます。 詳細については、「[Azure Resource Manager デプロイ](#azure-resource-manager-deployment)」を参照してください。 App Service では、Azure Files がセットアップされるまでは既定のファイル システムを使用し、ファイルはコピーされないため、Azure Files がマウントされる前の一時的な期間中はデプロイ試行が発生しないようにする必要があります。
 
 ### <a name="azure-resource-manager-deployment"></a>Azure Resource Manager デプロイ
 
