@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29c3043cc38c8ab3d3387b171ea6f3793d485730
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 00393017dee64cf9ca0320140c640eaf4288e1b4
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107373963"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315185"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>セルフ サービス アプリケーションの割り当ての構成方法
 
-ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの **セルフサービス アプリケーション アクセス** を有効にする必要があります。 この機能は、[Azure AD ギャラリー](./add-application-portal.md)または [Azure AD アプリケーション プロキシ](./application-proxy.md)から追加されたアプリケーション、および[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を得て追加されたアプリケーションで利用できます。 
+ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの **セルフサービス アプリケーション アクセス** を有効にする必要があります。 この機能は、[Azure AD ギャラリー](./add-application-portal.md)または [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)から追加されたアプリケーション、および[ユーザーまたは管理者の同意](../develop/application-consent-experience.md)を得て追加されたアプリケーションで利用できます。 
 
 この機能は、IT グループとして時間とコストを節約するための優れた方法であり、Azure Active Directory を使用した最新のアプリケーション デプロイの一部として強くお勧めします。
 

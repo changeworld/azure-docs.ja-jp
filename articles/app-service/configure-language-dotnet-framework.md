@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b56313183ba3bf39313ec06ddb9cdb36ac445aee
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92744154"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204515"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET アプリを構成する
 
@@ -19,7 +19,7 @@ ms.locfileid: "92744154"
 
 ASP.NET アプリは、コンパイル済みバイナリとして Azure App Service にデプロイする必要があります。 Visual Studio 発行ツールではソリューションがビルドされてからコンパイル済みバイナリが直接デプロイされますが、App Service 展開エンジンではまずコード リポジトリがデプロイされ、その後にバイナリがコンパイルされます。
 
-このガイドでは、ASP.NET 開発者向けに主要な概念と手順を説明します。 Azure App Service を初めて使用する場合は、まず [ASP.NET クイックスタート](quickstart-dotnet-framework.md)と [SQL Database を使った ASP.NET のチュートリアル](app-service-web-tutorial-dotnet-sqldatabase.md)に従ってください。
+このガイドでは、ASP.NET 開発者向けに主要な概念と手順を説明します。 Azure App Service を初めて使用する場合は、まず [ASP.NET クイックスタート](./quickstart-dotnetcore.md?tabs=netframework48)と [SQL Database を使った ASP.NET のチュートリアル](app-service-web-tutorial-dotnet-sqldatabase.md)に従ってください。
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>サポートされている .NET Framework ランタイム バージョンを表示する
 

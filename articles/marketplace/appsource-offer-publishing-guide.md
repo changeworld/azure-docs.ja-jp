@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
-ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9aa3c7258ceba73215e2b003e92bc43676ce6a7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491156"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818928"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>Microsoft 365、Dynamics 365、Power Apps、Power BI のオファーの公開ガイド
 
@@ -29,7 +29,7 @@ AppSource には、有料、一覧、試用版のオファーがあり、"*今�
 | Microsoft 365 | [公開プロセスとガイドライン](/office/dev/store/submit-to-appsource-via-partner-center)を確認します。 |
 | Dynamics 365 Business Central | パートナー センターでオファーを公開するには、「[新しい Dynamics 365 Business Central オファーの作成](./partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
 | Dynamics 365 for Finance and Operations | Enterprise Edition 向けに開発している場合は、[公開プロセスとガイドライン](/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)を確認します。<br/>パートナー センターでオファーを公開するには、「[新しい Dynamics 365 for Operations オファーを作成する](./partner-center-portal/create-new-operations-offer.md)」を参照してください。  |
-| Dynamics 365 for Customer Engagement | [公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。<br/>パートナー ポータルでオファーを公開するには、「[新しい Dynamics 365 for Customer Engagement & Power Apps オファーの作成](./partner-center-portal/create-new-customer-engagement-offer.md)」を参照してください。  |
+| Dynamics 365 for Customer Engagement & Power Apps | [公開プロセスとガイドライン](/dynamics365/customer-engagement/developer/publish-app-appsource)を確認します。<br/>パートナー ポータルでオファーを公開するには、「[Dynamics 365 for Customer Engagement & Power Apps オファーの作成](dynamics-365-customer-engage-offer-setup.md)」を参照してください。  |
 | Power Apps | [顧客が AppSource 上でアプリの体験版を使用する](https://powerapps.microsoft.com/blog/appsource-test-drive/)方法について学習します。 |
 | Power BI | [公開プロセスとガイドライン](/power-bi/developer/office-store)を確認します。 |
 

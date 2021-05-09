@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 11/25/2020
-ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/25/2021
+ms.openlocfilehash: 1df93a987348ed54303f2d9118337dbc710bc3bc
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065475"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001425"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>デザイナーの例外とエラー コード
 
@@ -1252,7 +1252,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 
 |例外メッセージ|
 |------------------------|
-|Model could not be deserialized because it is likely serialized with an older serialization format. (古いシリアル化形式でシリアル化された可能性があるため、モデルを逆シリアル化できませんでした。) Please retrain and resave the model. (モデルを再トレーニングして、再度保存してください。)|
+|Model could not be deserialized because it is likely serialized with an older serialization format. (古いシリアル化形式でシリアル化された可能性があるため、モデルを逆シリアル化できませんでした。) Retrain and resave the model. (モデルを再トレーニングして再度保存してください。)|
 
 
 ## <a name="error-0083"></a>エラー 0083  
@@ -1307,7 +1307,7 @@ Azure Machine Learning では、サポートされていない方法を使って
 |------------------------|
 |The Hive table could not be created. (Hive テーブルを作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is the same as what is passed in through the module parameter. (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が、モジュールのパラメーターで渡されたものと同じであることを確認してください。)|
 |The Hive table "{table_name}" could not be created. (Hive テーブル "{table_name}" を作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is the same as what is passed in through the module parameter. (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が、モジュールのパラメーターで渡されたものと同じであることを確認してください。)|
-|The Hive table "{table_name}" could not be created. (Hive テーブル "{table_name}" を作成できませんでした。) For a HDInsight cluster, please ensure the Azure storage account name associated with cluster is "{cluster_name}". (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名を確実に "{cluster_name}" としてください。)|
+|The Hive table "{table_name}" could not be created. (Hive テーブル "{table_name}" を作成できませんでした。) For a HDInsight cluster, ensure the Azure storage account name associated with cluster is "{cluster_name}". (HDInsight クラスターでは、クラスターに関連付けられた Azure ストレージ アカウント名が "{cluster_name}" であることを確認してください。)|
 
 
 ## <a name="error-0102"></a>エラー 0102  
@@ -1436,7 +1436,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 
   <!--If you use the visualizations on datasets to check the cardinality of columns, only some rows are sampled. To get a full report, use [Summarize Data](summarize-data.md). You can also use the [Apply SQL Transformation](apply-sql-transformation.md) to check for the number of unique values in each column.  
 
- Sometimes transient loads can lead to this error. Machine support also changes over time. 
+ Sometimes transient loads can lead to such error. Machine support also changes over time. 
 
  Try using [Principal Component Analysis](principal-component-analysis.md) or one of the provided feature selection methods to reduce your dataset to a smaller set of more feature-rich columns: [Feature Selection](feature-selection-modules.md)  -->
 
@@ -1505,7 +1505,7 @@ Exception occurs when label column is missing or has insufficient number of labe
 |例外メッセージ|
 |------------------------------------------------------------|
 |Given TransformationDirectory is invalid. (指定された TransformationDirectory は無効です。)|
-|TransformationDirectory "{arg_name}" is invalid. (TransformationDirectory "{arg_name}" は無効です。) Reason: {reason}. (理由: {reason}。) Please rerun training experiment which generates the Transform file. (変換ファイルを生成するトレーニング実験を再実行してください。) If training experiment was deleted, please recreate and save the Transform file. (トレーニング実験が削除された場合は、変換ファイルを再作成して保存してください。)|
+|TransformationDirectory "{arg_name}" is invalid. (TransformationDirectory "{arg_name}" は無効です。) Reason: {reason}. (理由: {reason}。) Rerun training experiment, which generates the Transform file. (変換ファイルを生成するトレーニング実験を再実行してください。) If training experiment was deleted, please recreate and save the Transform file. (トレーニング実験が削除された場合は、変換ファイルを再作成して保存してください。)|
 |TransformationDirectory "{arg_name}" is invalid. (TransformationDirectory "{arg_name}" は無効です。) Reason: {reason}. (理由: {reason}。) {troubleshoot_hint}|
 
 
@@ -1537,3 +1537,23 @@ Exception occurs when label column is missing or has insufficient number of labe
 ## <a name="execute-python-script-module"></a>Execute Python Script モジュール
 
 **Execute Python Script モジュール** の **70_driver_logs** で **azureml_main** を検索すると、エラーが発生した行を見つけることができます。 たとえば、"azureml_main の File "/tmp/tmp01_ID/user_script.py", line 17" は、Python スクリプトの 17 行目でエラーが発生したことを示します。
+
+## <a name="distributed-training"></a>分散トレーニング
+
+現在、デザイナーでは、[PyTorch モデルのトレーニング](train-pytorch-model.md)と、それに対する分散トレーニングをサポートしています。
+
+<!-- [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) module  -->
+
+モジュール対応の分散トレーニングが `70_driver` ログなしで失敗した場合、`70_mpi_log` でエラーの詳細を確認できます。
+
+  次の例は、実行設定の **ノード数** が、コンピューティング クラスターの使用可能なノード数を超えていることを示しています。
+  
+  [![ノード数のエラーを示すスクリーンショット](./media/module/distributed-training-node-count-error.png)](./media/module/distributed-training-node-count-error.png#lightbox)
+
+  次の例は、**ノードあたりのプロセス数** が、コンピューティングの **処理単位** よりも大きいことを示しています。
+
+  [ ![mpi ログを示すスクリーンショット](./media/module/distributed-training-error-mpi-log.png) ](./media/module/distributed-training-error-mpi-log.png#lightbox)
+
+それ以外の場合は、`70_driver_log` で各プロセスを確認できます。 `70_driver_log_0` は、マスター プロセス用です。
+
+  [ ![ドライバーのログを示すスクリーンショット](./media/module/distributed-training-error-driver-log.png) ](./media/module/distributed-training-error-driver-log.png#lightbox)

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4f9523594c07209d530a143713061be6d0467af8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 08ac1ae09741b63648aec2b51b6a774a46b9af7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753382"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818442"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -45,7 +45,7 @@ Key Vault の管理は、他の Azure サービスと同様に、Azure Resource 
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-Key Vault 管理プレーンの詳細については、[Key Vault 管理プレーン](security-overview.md)に関するページを参照してください。
+Key Vault 管理プレーンの詳細については、「[Azure Key Vault のセキュリティ機能](security-features.md)」ページを参照してください
 
 ## <a name="authenticate-to-key-vault-in-code"></a>コードでの Key Vault に対する認証
 
@@ -105,7 +105,7 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-Key Vault データ プレーンのセキュリティの詳細については、[Key Vault のセキュリティの概要](security-overview.md)に関する記事を参照してください。
+Key Vault データ プレーンのセキュリティの詳細については、「[Azure Key Vault のセキュリティ機能](security-features.md)」を参照してください。
 
 ### <a name="code-examples"></a>コード例
 

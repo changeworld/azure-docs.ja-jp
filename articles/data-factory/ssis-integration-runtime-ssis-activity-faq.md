@@ -3,17 +3,17 @@ title: SSIS 統合ランタイムでのパッケージ実行のトラブルシ�
 description: この記事では、SSIS 統合ランタイムでの SSIS パッケージ実行に関するトラブルシューティングのガイダンスを提供します
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: wenjiefu
-author: RodgeFu
+ms.author: sawinark
+author: swinarko
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 17ab31faa24f2267b9d804e9820bdfc32fbfc76c
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934004"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001450"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -150,10 +150,14 @@ Azure-SSIS 統合ランタイムがセルフホステッド統合ランタイム
 
 考えられる原因の 1 つは、セルフホステッド統合ランタイムがインストールされていないか、適切にアップグレードされていないことです。 最新のセルフホステッド統合ランタイムをダウンロードして再インストールすることをお勧めします。 詳細については、「[セルフホステッド統合ランタイムを作成して構成する](create-self-hosted-integration-runtime.md#installation-best-practices)」を参照してください。
 
+### <a name="error-message-staging-task-failed-taskstatus-failed-errorcode-2906-errormessage-package-execution-failed-for-more-details-select-the-output-of-your-activity-run-on-the-same-row-output-operationerrormessages-4142021-71035-am-0000---failed-to-start-named-pipe-proxy"></a>エラー メッセージ: "ステージング タスクに失敗しました。 TaskStatus: 失敗, ErrorCode: 2906, ErrorMessage: パッケージの実行に失敗しました。 詳細を確認するには、同じ行で実行した操作の出力を選択してください。, 出力: {"OperationErrorMessages": "4/14/2021 7:10:35 AM +00:00 : = 名前付きパイプ プロキシの開始に失敗しました..."
+
+セルフホステッド IR サービスを実行しているアカウントにセキュリティ ポリシーを正しく割り当てているかどうかを確認します。 “SSIS パッケージの実行” に Windows 認証を使用する場合、または実行時の認証情報を SSIS カタログ (SSISDB) に設定している場合、使用する Windows アカウントにも同じセキュリティ ポリシーを割り当てる必要があります。 詳細については、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#enable-windows-authentication-for-on-premises-tasks)」を参照してください。
+
 ### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>エラー メッセージ:"メタデータを要求するときは、接続を確立する必要があります。 オフラインで作業している場合は、[SSIS] メニューの [オフライン作業] をオフにし、接続を有効にしてください。"
 
 * 考えられる原因と推奨される操作:
-  * 実行ログに "The component does not support using connection manager with ConnectByProxy value setting true (ConnectByProxy 値の設定が true の場合、コンポーネントは接続マネージャーの使用をサポートしていません)" という警告メッセージも表示される場合は、"ConnectByProxy" がまだサポートされていないコンポーネントで接続マネージャーが使用されていることを意味します。 サポート対象のコンポーネントについては、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)」を参照してください。
+  * 実行ログに "The component does not support using connection manager with ConnectByProxy value setting true (ConnectByProxy 値の設定が true の場合、コンポーネントは接続マネージャーの使用をサポートしていません)" という警告メッセージも表示される場合は、"ConnectByProxy" がまだサポートされていないコンポーネントで接続マネージャーが使用されていることを意味します。 サポート対象のコンポーネントについては、「[セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-use-a-proxy)」を参照してください。
   * 実行ログは、[SSMS レポート](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports)または SSIS パッケージ実行アクティビティで指定したログ フォルダー内にあります。
   * 別の方法として、vNet を使用してオンプレミスのデータにアクセスすることもできます。 詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」を参照してください。
 

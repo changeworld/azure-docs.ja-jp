@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: b44248732891163bc2630cdfe5b297a06f3cf730
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551647"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001018"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,7 +30,7 @@ Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analyt
 
 ## <a name="dynamic-data-masking-basics"></a>動的データ マスキングの基礎
 
-Azure portal で動的データ マスキング ポリシーを設定するには、SQL Database 構成ペインの **[セキュリティ]** の下にある **[動的データ マスキング]** ブレードを選択します。 この機能は、ポータルを使用して SQL Managed Instance に設定することはできません (PowerShell または REST API を使用してください)。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
+Azure portal で動的データ マスキング ポリシーを設定するには、SQL Database 構成ペインの **[セキュリティ]** の下にある **[動的データ マスキング]** ブレードを選択します。 SQL Managed Instance の場合、この機能はポータルを使用して設定できません。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
 
 ### <a name="dynamic-data-masking-policy"></a>動的データ マスク ポリシー
 

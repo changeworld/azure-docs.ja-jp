@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/11/2021
+ms.date: 04/27/2021
 ms.author: jeedes
-ms.openlocfilehash: a1e62dfd89ccd23ef950767d883fde80f1a5ca26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98e6290041573adb4dba0dced5268caacae47017
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953240"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162809"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-truechoice"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と TrueChoice の統合
 
@@ -90,19 +90,12 @@ TrueChoice に対して Azure AD SSO を構成してテストするには、次�
 
 1. TrueChoice アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/default-attributes.png)
-
-1. その他に、TrueChoice アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらを下に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-    
-    | 名前 |  ソース属性|
-    | ----------------- | --------- |
-    | country | user.country |
-    | name | user.displayname |
-    |
+    ![image](./media/truechoice-tutorial/default-attributes.png)
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。

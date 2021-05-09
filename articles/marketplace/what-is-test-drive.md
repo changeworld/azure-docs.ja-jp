@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e44d5d94a8dc172962a26f3e0dae9ccbb7f8a865
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96490042"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818892"
 ---
 # <a name="what-is-a-test-drive"></a>体験版とは
 
@@ -60,7 +60,7 @@ ms.locfileid: "96490042"
 
 ホストされた体験版では、体験版のユーザー プロビジョニングおよびプロビジョニング解除を実行するサービスを Microsoft がホストして管理するので、セットアップの複雑さが解消されます。 Microsoft AppSource にオファーがある場合は、体験版を構築して Dynamics AX/CRM インスタンスに接続します。 次の AppSource オファーの種類を使用できます。
 
-- 販売、サービス、プロジェクト サービス、フィールド サービスなどの Customer Engagement システムでは、[Dynamics 365 for Customer Engagement](partner-center-portal/create-new-customer-engagement-offer.md) を使用します。
+- 販売、サービス、プロジェクト サービス、フィールド サービスなどの Customer Engagement システムでは、[Dynamics 365 for Customer Engagement and Power Apps](dynamics-365-customer-engage-offer-setup.md) を使用します。
 - 財務、運用、製造、サプライ チェーンなどの Finance and Operations エンタープライズ リソース計画システムでは、[Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) を使用します。
 
 ### <a name="logic-app-test-drive"></a>ロジック アプリの体験版

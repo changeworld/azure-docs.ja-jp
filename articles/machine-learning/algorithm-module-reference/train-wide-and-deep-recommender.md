@@ -8,18 +8,20 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: d7dd7105ddb0d6503faefb996b84c0e53a62ce49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/19/2021
+ms.openlocfilehash: 6c7f4b221b1b9a1eee9a0d4d376bb6707d6b2869
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104655378"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000856"
 ---
 # <a name="train-wide--deep-recommender"></a>ワイドかつディープなレコメンダーのトレーニング
 この記事では、Azure Machine Learning デザイナーで **ワイドかつディープなレコメンダーのトレーニング** モジュールを使用して、推奨モデルをトレーニングする方法について説明します。 このモジュールは、Google によって提案されているワイド & ディープ ラーニング (Wide & Deep Learning) に基づいています。
 
 **ワイドかつディープなレコメンダーのトレーニング** モジュールは、ユーザー項目の評価 3 要素のデータセットと、オプションで一部のユーザーと項目の特徴を読み取ります。 これにより、トレーニング済みのワイドかつディープなレコメンダーが返されます。  その後、トレーニング済みのモデルを使用して、[ワイドかつディープなレコメンダーのスコア付け](score-wide-and-deep-recommender.md)モジュールを使用して評価予測や提案を生成することができます。  
+
+<!-- Currently, **Train Wide & Deep Recommender** module supports both single node and distributed training. -->
 
 ## <a name="more-about-recommendation-models-and-the-wide--deep-recommender"></a>推奨モデルとワイドかつディープなレコメンダーの詳細  
 
@@ -34,7 +36,7 @@ ms.locfileid: "104655378"
 
 このしくみは次のとおりです。ユーザーがシステムの比較的初心者である場合は、ユーザーに関する特徴の情報を使用することによって予測が向上します。このようにしてよく知られた "コールド スタート" の問題に対処します。 ただし、特定のユーザーから十分な数の評価を収集した後は、これらのユーザーに対して、その特徴だけではなく特定の評価に基づいて完全に個人的な予測を行うことができます。 そのため、コンテンツベースの推奨事項から協調フィルタリングに基づく推奨事項へのスムーズな移行があります。 ユーザーまたは項目の特徴を使用できない場合でも、ワイドかつディープなレコメンダーは協調フィルタリング モードで動作します。  
 
-ワイドかつディープなレコメンダーおよびその基礎となっている確率論的アルゴリズムの詳細については、関連の調査報告書があります。[レコメンダー システム対応のワイドかつディープ ラーニング](https://arxiv.org/pdf/1606.07792.pdf)。  
+ワイド & ディープ レコメンダーと、それに使用している確率的アルゴリズムの詳細は『[Wide & Deep Learning for Recommender Systems](https://arxiv.org/pdf/1606.07792.pdf)』(レコメンダー システムのためのワイド & ディープ ラーニング) という論文で説明されています。  
 
 ## <a name="how-to-configure-train-wide--deep-recommender"></a>ワイドかつディープなレコメンダーのトレーニングを構成する方法  
 
@@ -43,7 +45,7 @@ ms.locfileid: "104655378"
 
 ### <a name="prepare-data"></a>データを準備する
 
-モジュールを使用する前に、データを推奨モデルで想定される形式にする必要があります。 **ユーザー、項目、評価を表す 3 つの要素** のトレーニング データセットが必要ですが、ユーザーの特徴と項目の特徴 (入手可能な場合) を別々のデータセットに含めることもできます。
+モジュールを使用する前に、データがレコメンデーション モデルにふさわしい形式になっていることを確認してください。 **ユーザー、項目、評価を表す 3 つの要素** のトレーニング データセットが必要ですが、ユーザーの特徴と項目の特徴 (入手可能な場合) を別々のデータセットに含めることもできます。
 
 #### <a name="required-dataset-of-user-item-ratings"></a>ユーザー、項目、評価の必須データセット
 
@@ -97,33 +99,33 @@ ms.locfileid: "104655378"
 
 4. **[バッチ サイズ]** : 1 回のトレーニング ステップで使用されるトレーニング例の数を入力します。 
 
-     このハイパーパラメーターはトレーニング速度に影響を与える場合があります。 バッチ サイズを大きくすると時間が短縮されますが、収束時間が長くなる可能性があります。 また、バッチが大きすぎて GPU/CPU に適合しない場合、メモリ エラーが発生することがあります。
+     このハイパーパラメーターはトレーニング速度に影響を与える場合があります。 バッチ サイズを大きくすると時間が短縮されますが、収束時間が長くなる可能性があります。 バッチが大きすぎて GPU または CPU で処理できない場合、メモリ エラーが発生することがあります。
 
 5.  **[Wide part optimizer]\(ワイド パート オプティマイザー\)** : モデルのワイド部分にグラデーションを適用するための 1 つのオプティマイザーを選択します。
 
 6.  **[Wide optimizer learning rate]\(ワイド オプティマイザー学習速度\)** : ワイド パート オプティマイザーの学習速度を定義する 0.0 から 2.0 までの数値を入力します。
 
-    このハイパーパラメーターは、各トレーニング ステップでのステップ サイズを決定しながら、損失関数の最適解に近づきます。 学習速度が大きすぎると、学習で極小値を飛び越える可能性がありますが、学習速度が小さすぎると収束の問題が発生する可能性があります。
+    このハイパーパラメーターは、各トレーニング ステップでのステップ サイズを決定しながら、損失関数の最適解に近づきます。 学習率が大きいと学習時に最小値を通り越す場合がありますが、学習率が小さすぎると収束に関する問題が起こる場合があります。
 
-7.  **[Crossed feature dimension]\(クロス積変換された特徴のディメンション\)** : 目的のユーザー ID および項目 ID の特徴を入力することによって、ディメンションを入力します。 
+7.  **[Crossed feature dimension]\(クロス積変換された特徴の次元\)** : 目的のユーザー ID とアイテム ID の特徴を入力することで次元を指定します。 
 
-    ワイドかつディープなレコメンダーは、既定でユーザー ID および項目 ID の特徴に対してクロス積変換を実行します。 クロス積変換された結果は、ディメンションを確認するために、この数に従ってハッシュされます。
+    ワイド & ディープ レコメンダーでは、ユーザー ID およびアイテム ID の特徴に対し、既定でクロス積変換を行います。 クロス積変換された結果は、ディメンションを確認するために、この数に従ってハッシュされます。
 
 8.  **[Deep part optimizer]\(ディープ パート オプティマイザー\)** : モデルのディープ部分にグラデーションを適用するための 1 つのオプティマイザーを選択します。
 
 9.  **[Deep optimizer learning rate]\(ディープ オプティマイザー学習速度\)** : ディープ パート オプティマイザーの学習速度を定義する 0.0 から 2.0 までの数値を入力します。
 
-10.  **[User embedding dimension]\(ユーザーの埋め込みディメンション\)** : ユーザー ID 埋め込みのディメンションを指定する整数を入力します。
+10.  **[User embedding dimension]\(ユーザーの埋め込みの次元\)** : ユーザー ID の埋め込みの次元を整数で指定します。
 
-     ワイドかつディープなレコメンダーは、ワイド パートとディープ パートの両方のための共有されたユーザー ID 埋め込みと項目 ID 埋め込みを作成します。
+     ワイド & ディープ レコメンダーでは、作成したユーザー ID およびアイテム ID の埋め込みを、ワイド部分とディープ部分で共有します。
 
-11.  **[Item embedding dimension]\(項目の埋め込みディメンション\)** : 項目 ID 埋め込みのディメンションを指定する整数を入力します。
+11.  **[Item embedding dimension]\(項目の埋め込みの次元\)** : アイテム ID 埋め込みの次元を整数で指定します。
 
 12.  **[Categorical features embedding dimension]\(カテゴリ別の特徴の埋め込みディメンション\)** : カテゴリ別の特徴の埋め込みのディメンションを指定する整数を入力します。
 
-     ワイドかつディープなレコメンダーのディープ コンポーネントでは、カテゴリ別の特徴の埋め込みベクトルが習得されます。 また、これらの埋め込みベクトルは同じディメンションを共有します。
+     ワイド & ディープ レコメンダーのディープ部分では、各カテゴリ特徴量について埋め込みベクトルを学習します。 また、これらの埋め込みベクトルは同じディメンションを共有します。
 
-13.  **[Hidden units]\(非表示単位\)** : ディープ コンポーネントの非表示ノードの数を入力します。 各レイヤーのノード数は、コンマで区切られます。 たとえば、"1000,500,100" と入力すると、ディープ コンポーネントに 3 つのレイヤーがあることを指定し、最初のレイヤーから最後のレイヤーにかけて、それぞれ 1000 ノード、500 ノード、および 100 ノードがあります。
+13.  **[Hidden units]\(非表示単位\)** : ディープ コンポーネントの非表示ノードの数を入力します。 各レイヤーのノード数は、コンマで区切られます。 たとえば、「1000,500,100」と入力すると、それぞれ 1,000 個、500 個、100 個のノードを含む 3 つの層をディープ部分に設定できます。
 
 14.  **[Activation function]\(アクティブ化関数\)** : 各レイヤーに適用されているアクティブ化関数を 1 つ選択します。既定値は ReLU です。
 
@@ -137,15 +139,56 @@ ms.locfileid: "104655378"
 
 17.  パイプラインを実行します。
 
-## <a name="results"></a>結果
 
-パイプラインの実行が完了した後、モデルをスコアリングに使用するには、[ワイドかつディープなレコメンダーのトレーニング](train-wide-and-deep-recommender.md)を [ワイドかつディープなレコメンダーのスコア付け](score-wide-and-deep-recommender.md)に接続し、新しい入力例の値を予測します。
+<!-- ## Distributed training
+
+In distributed training the workload to train a model is split up and shared among multiple mini processors, called worker nodes. These worker nodes work in parallel to speed up model training. Currently the designer support distributed training for **Train Wide & Deep Recommender** module.
+
+### How to enable distributed training
+
+To enable distributed training for **Train Wide & Deep Recommender** module, you can set in **Run settings** in the right pane of the module. Only **[AML Compute cluster](https://docs.microsoft.com/azure/machine-learning/how-to-create-attach-compute-cluster?tabs=python)** is supported for distributed training.
+
+1. Select the module and open the right panel. Expand the **Run settings** section.
+
+    [![Screenshot showing how to set distributed training in run setting](./media/module/distributed-training-run-setting.png)](./media/module/distributed-training-run-setting.png#lightbox)
+
+1. Make sure you have select AML compute for the compute target.
+
+1. In **Resource layout** section, you need to set the following values:
+
+    - **Node count**: Number of nodes in the compute target used for training. It should be **less than or equal to** the **Maximum number of nodes** your compute cluster. By default it is 1, which means single node job.
+
+    - **Process count per node**: Number of processes triggered per node. It should be **less than or equal to** the **Processing Unit** of your compute. By default it is 1, which means single node job.
+
+    You can check the **Maximum number of nodes** and **Processing Unit** of your compute by clicking the compute name into the compute detail page.
+
+    [![Screenshot showing how to check compute cluster](./media/module/compute-cluster-node.png)](./media/module/compute-cluster-node.png#lightbox)
+
+You can learn more about distributed training in Azure Machine Learning [here](https://docs.microsoft.com/azure/machine-learning/concept-distributed-training).
+
+
+### Troubleshooting for distributed training
+
+If you enable distributed training for this module, there will be driver logs for each process. `70_driver_log_0` is for master process. You can check driver logs for error details of each process under **Outputs+logs** tab in the right pane.
+
+[![Screenshot showing driver log](./media/module/distributed-training-error-driver-log.png)](./media/module/distributed-training-error-driver-log.png#lightbox) 
+
+If the module enabled distributed training fails without any `70_driver` logs, you can check `70_mpi_log` for error details.
+
+The following example shows a common error that is **Process count per node** is larger than **Processing Unit** of the compute.
+
+[![Screenshot showing mpi log](./media/module/distributed-training-error-mpi-log.png)](./media/module/distributed-training-error-mpi-log.png#lightbox)
+
+## Results
+
+After pipeline run is completed, to use the model for scoring, connect the [Train Wide and Deep Recommender](train-wide-and-deep-recommender.md) to [Score Wide and Deep Recommender](score-wide-and-deep-recommender.md), to predict values for new input examples.
+ -->
 
 ##  <a name="technical-notes"></a>テクニカル ノート
 
-ワイド & ディープでは、ワイド線形モデルとディープ ニューラル ネットワークを結合してトレーニングすることで、記憶と汎化の長所を組み合わせることができます。 ワイド コンポーネントは、特徴の相互作用を記憶するために、一連の未加工の特徴と特徴の変換を受け入れます。 また、ディープ コンポーネントは、少ない特徴エンジニアリングで、低次元の高密度な特徴の埋め込みにより、予測されない特徴の組み合わせに一般化します。 
+ワイド & ディープでは、ワイド線形モデルとディープ ニューラル ネットワークを結合してトレーニングすることで、記憶と汎化の長所を組み合わせることができます。 ワイド コンポーネントは、特徴の相互作用を記憶するために、一連の未加工の特徴と特徴の変換を受け入れます。 また、ディープ部分では、多くの特徴量エンジニアリングを行なうことなく、特徴の低次元な高密度埋め込みを使用して、未来の未知の組み合わせを一般化します。 
 
-ワイドかつディープなレコメンダーの実装では、モジュールは既定のモデル構造を使用します。 ワイド コンポーネントでは、ユーザーの埋め込み、項目の埋め込み、およびユーザー ID と項目 ID のクロス積変換を入力として取得します。 モデルのディープ パートでは、カテゴリ別の特徴の埋め込みベクトルが習得されます。 これらのベクトルは、その他の数値特徴ベクトルと共に、詳細なフィードフォワード ニューラル ネットワークに取り込まれます。 ワイド パートとディープ パートは、最終的な出力対数オッズを予測として合計することによって組み合わされ、最終的には結合トレーニングのための 1 つの共通損失関数になります。
+ワイドかつディープなレコメンダーの実装では、モジュールは既定のモデル構造を使用します。 ワイド部分では、ユーザーの埋め込み、アイテムの埋め込み、ユーザー ID とアイテム ID のクロス積変換を入力として使用します。 モデルのディープ部分では、各カテゴリ特徴量について埋め込みベクトルを学習します。 これらのベクトルは、その他の数値特徴ベクトルと共に、詳細なフィードフォワード ニューラル ネットワークに取り込まれます。 ワイド パートとディープ パートは、最終的な出力対数オッズを予測として合計することによって組み合わされ、最終的には結合トレーニングのための 1 つの共通損失関数になります。
 
 
 ## <a name="next-steps"></a>次のステップ

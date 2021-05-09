@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751852"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817632"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -123,5 +123,5 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [キー、シークレット、証明書](about-keys-secrets-certificates.md)について学習します
 - 概念的な情報については、Key Vault のログを解釈する方法を含め、[Key Vault のログ記録](logging.md)に関するページを参照してください
 - [Key Vault 開発者ガイド](../general/developers-guide.md)
-- [キー コンテナーのセキュリティ保護](security-overview.md)
+- [Azure Key Vault セキュリティ機能](security-features.md)
 - [Azure Key Vault のファイアウォールと仮想ネットワークを構成する](network-security.md)

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: 88a820d0f1fa9515b4f2992a8305a2d1065e0987
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685f919fa0b6b0452d79ed0f2d30fdc119a6540f
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93421211"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108000874"
 ---
 # <a name="resnet"></a>ResNet
 
@@ -28,7 +28,7 @@ ms.locfileid: "93421211"
 
 ### <a name="more-about-resnet"></a>ResNet の詳細
 
-ResNet の詳細については、[こちらの資料](https://pytorch.org/docs/stable/torchvision/models.html?highlight=resnext101_32x8d#torchvision.models.resnext101_32x8d)を参照してください。
+ResNet の詳細については、[こちらの資料](https://pytorch.org/vision/stable/models.html#torchvision.models.resnext101_32x8d)を参照してください。
 
 ## <a name="how-to-configure-resnet"></a>ResNet を構成する方法
 
@@ -38,9 +38,11 @@ ResNet の詳細については、[こちらの資料](https://pytorch.org/docs/
 
 3.  **Pretrained** には、ImageNet で事前トレーニングされているモデルを使用するかどうかを指定します。 選択した場合は、選択した事前トレーニング済みモデルに基づいてモデルを微調整できます。選択を解除した場合は、ゼロからトレーニングできます。
 
-4.  トレーニングと検証のイメージ データセット モジュールである **DenseNet** モジュールの出力を [Train Pytorch Model](train-pytorch-model.md) に接続します。 
+4.  **[Zero init residual]\(残余のゼロ初期化\)** には、残余ブランチごとに、最後のバッチ正規化レイヤーをゼロ初期化するかどうかを指定します。 選択した場合、残余ブランチはゼロで始まり、それぞれの残余ブロックは識別子のように動作します。 このことは、 https://arxiv.org/abs/1706.02677 によると、大きなバッチ サイズでの収束に役立ちます。
 
-5. パイプラインを送信します。
+5.  トレーニングと検証のイメージ データセット モジュールである **ResNet** モジュールの出力を [Pytorch モデルのトレーニング](train-pytorch-model.md)に接続します。 
+
+6.  パイプラインを送信します。
 
 ## <a name="results"></a>結果
 
@@ -54,6 +56,7 @@ ResNet の詳細については、[こちらの資料](https://pytorch.org/docs/
 | ---------- | ----- | ------- | ----------------- | ---------------------------------------- |
 | モデル名 | Any   | モード    | resnext101\_32x8d | 特定の ResNet 構造体の名前       |
 | Pretrained | Any   | Boolean | True              | ImageNet で事前トレーニング済みモデルを使用するかどうか |
+| Zero init residual (残余のゼロ初期化) | Any | Boolean | False | 残余ブランチごとに、最後のバッチ正規化レイヤーをゼロ初期化するかどうか |
 |            |       |         |                   |                                          |
 
 ###  <a name="output"></a>出力  

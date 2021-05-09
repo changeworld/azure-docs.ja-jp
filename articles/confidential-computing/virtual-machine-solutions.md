@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 580c53f311bc8ee70e974df2bc4111e6361d06f6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566585"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818964"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -66,7 +66,7 @@ DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サ
   
 - **サイズ変更** - 特殊なハードウェアが使用されるため、Confidential Computing インスタンスのサイズ変更は同じサイズ ファミリ内でのみ可能です。 たとえば、DCsv2-Series の VM は DCsv2-Series のあるサイズから別のサイズにのみ変更できます。 Confidential Computing ではないサイズを Confidential Computing サイズに変更することはできません。  
 
-- **イメージ** - Confidential Computing インスタンスで Intel Software Guard Extension (Intel SGX) をサポートするために、すべてのデプロイを Generation 2 イメージで実行する必要があります。 Azure Confidential Computing では、Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2019 Gen2、および Windows Server 2016 Gen 2 で実行されるワークロードがサポートされます。 サポートされているシナリオとサポートされていないシナリオの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/generation-2.md)」をお読みください。 
+- **イメージ** - Confidential Computing インスタンスで Intel Software Guard Extension (Intel SGX) をサポートするために、すべてのデプロイを Generation 2 イメージで実行する必要があります。 Azure Confidential Computing では、Ubuntu 18.04 Gen 2、Ubuntu 20.04 Gen 2、Windows Server 2019 Gen2、および Windows Server 2016 Gen 2 で実行されるワークロードがサポートされます。 サポートされているシナリオとサポートされていないシナリオの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/generation-2.md)」をお読みください。 
 
 - **ストレージ** - Azure Confidential Computing 仮想マシンのデータ ディスクとエフェメラル OS ディスクは NVMe ディスク上にあります。 インスタンスでは、Premium SSD ディスクと Standard SSD ディスクのみがサポートされ、Ultra SSD と Standard HDD はサポートされません。 仮想マシン サイズ **DC8_v2** では Premium ストレージがサポートされていません。 
 
@@ -122,10 +122,10 @@ ARM テンプレートで DCsv2-Series VM をデプロイするには、[仮想�
         "sku": "18_04-lts-gen2",
         "version": "latest"
       },
-      "16_04-lts-gen2": {
+      "20_04-lts-gen2": {
         "offer": "UbuntuServer",
         "publisher": "Canonical",
-        "sku": "16_04-lts-gen2",
+        "sku": "20_04-lts-gen2",
         "version": "latest"
       }
 ```

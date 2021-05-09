@@ -1,18 +1,19 @@
 ---
-title: 'Azure VPN Gateway: 構成と接続のトラブルシューティング'
+title: 構成と接続のトラブルシューティング
+titleSuffix: Azure VPN Gateway
 description: この記事では、お使いの VPN Gateway の構成、接続のトラブルシューティングを行い、スループットを検証する際に役立つ記事へのリンクを紹介します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 01/31/2018
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: a74109594eec87dddf637542f6d85091ed49231b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19edbd41617a01e54cd14ff7f2991763b2da9bba
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720255"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204497"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN Gateway のトラブルシューティング
 

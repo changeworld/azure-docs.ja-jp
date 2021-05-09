@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 11bfe1fbb9b0ba7c38eb946918b04d1568d2d1da
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106489980"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001000"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
@@ -1047,6 +1047,15 @@ IoT Central Web UI では、コマンドに **[オフラインの場合にキュ
 **[オフラインの場合にキューに入れる]** 設定は、デバイス テンプレートからモデルまたはインターフェイスをエクスポートする場合は含まれません。 エクスポートされたモデルまたはインターフェイス JSON を見ても、コマンドがオフライン コマンドであることはわかりません。
 
 オフライン コマンドは、[IoT Hub のクラウドからデバイスへのメッセージ](../../iot-hub/iot-hub-devguide-messages-c2d.md)を使用して、コマンドとペイロードをデバイスに送信します。
+
+デバイスが受信するメッセージのペイロードは、パラメーターの生の値です。 `method-name` というカスタム プロパティは、IoT Central コマンドの名前を格納します。 ペイロードの例を次の表に示します。
+
+| IoT Central 要求スキーマ | デバイスによって受信されたペイロードの例 |
+| -------------------------- | ---------------------------------- |
+| 要求パラメーターなし       | `@`                                |
+| Double                     | `1.23`                             |
+| String                     | `sample string`                    |
+| Object                     | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
 
 デバイス モデルの次のスニペットは、コマンドの定義を示しています。 このコマンドには、datetime フィールドと列挙型を持つオブジェクト パラメーターが含まれています。
 

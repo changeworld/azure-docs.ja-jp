@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7e7a99daa169c994a0b9656786926f0715fa17a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 329a8340bdb7353553866e2f4182f6df2c60ccce
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580064"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001306"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -36,28 +36,30 @@ ms.locfileid: "104580064"
 
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウントを使用してサインインできるようにするには、[Facebook アプリのダッシュボード](https://developers.facebook.com/)でアプリケーションを作成する必要があります。 詳細については、[アプリ開発](https://developers.facebook.com/docs/development)のページを参照してください。 まだ Facebook アカウントを持っていない場合は、[https://www.facebook.com/](https://www.facebook.com/) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウントを使用してサインインできるようにするには、[Facebook アプリのダッシュボード](https://developers.facebook.com/)でアプリケーションを作成する必要があります。 詳細については、[アプリ開発](https://developers.facebook.com/docs/development)のページを参照してください。
 
-1. Facebook アカウントの資格情報を使用して、[開発者向けの Facebook](https://developers.facebook.com/)にサインインします。
-1. まだ登録していない場合は、Facebook 開発者として登録する必要があります。 これを行うには、ページの右上隅にある **[Get Started]\(スタートガイド\)** を選択し、Facebook のポリシーに同意して登録手順を完了します。
-1. **[マイ アプリ]** を選択し、 **[アプリの作成]** を選択します。
-1. **[結合されたエクスペリエンスのビルド]** を選択します。
-1. **[表示名]** および有効な **[連絡先の電子メール]** を入力します。
-1. **[Create App ID]\(アプリ ID の作成\)** を選択します。 Facebook プラットフォームのポリシーを受け入れ、オンライン セキュリティ チェックを完了する必要があります。
+まだ Facebook アカウントを持っていない場合は、[https://www.facebook.com](https://www.facebook.com) でサインアップしてください。 Facebook アカウントにサインアップまたはサインインした後、[Facebook 開発者アカウント登録プロセス](https://developers.facebook.com/async/registration)を開始します。 詳細については、[Facebook 開発者登録](https://developers.facebook.com/docs/development/register)に関するページを参照してください。
+
+1. Facebook 開発者アカウントの資格情報を使用して、[開発者向けの Facebook](https://developers.facebook.com/apps)にサインインします。
+1. **[Create app]\(アプリの作成\)** を選択します。
+1. **[アプリの種類を選択]** で、 **[コンシューマー]** を選択して **[続行]** を選択します。
+1. **[アプリの表示名]** と、有効な **[アプリの連絡先メール アドレス]** を入力します。
+1. **[Create app]\(アプリの作成\)** を選択します。 この手順では、Facebook プラットフォームのポリシーを受け入れてオンライン セキュリティ チェックを完了することが必要な場合があります。
 1. **[設定]**  >  **[基本]** を選択します。
+    1. **[App ID]** の値をコピーします。
+    1. **[Show (表示)]** を選択し、 **[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、この両方を使用します。 **[App Secret]** は、重要なセキュリティ資格情報です。
+    1. **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`https://www.contoso.com/privacy` など) を入力します。 ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
+    1. **[サービス利用規約 URL]** に URL を入力します (例: `https://www.contoso.com/tos`)。 ポリシーの URL は、アプリケーションの利用規約を提供するために維持されるページです。
+    1. **[ユーザー データ削除]** の URL を入力します (例: `https://www.contoso.com/delete_my_data`)。 ユーザー データ削除 URL は、自分のデータの削除を要求する手段をユーザーに提供するために維持するページです。 
     1. **カテゴリ** を選択します。たとえば`Business and Pages`。 この値は Facebook では必須ですが、Azure AD B2C では使用されません。
-    1. **[サービス利用規約 URL]** に URL を入力します (例: `http://www.contoso.com/tos`)。 ポリシーの URL は、アプリケーションの利用規約を提供するために維持されるページです。
-    1. **[Privacy Policy URL] (プライバシー ポリシーの URL)** に URL (`http://www.contoso.com/privacy` など) を入力します。 ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
 1. ページの下部で、 **[プラットフォームの追加]** 、 **[Web サイト]** の順に選択します。
 1. **[サイトの URL]** に、Web サイトのアドレス (たとえば `https://contoso.com`) を入力します。 
 1. **[変更の保存]** を選択します。
-1. ページの上部で、 **[App ID] (アプリ ID)** の値をコピーします。
-1. **[Show (表示)]** を選択し、 **[App Secret (アプリ シークレット)]** の値をコピーします。 テナントで ID プロバイダーとして Facebook を構成するには、この両方を使用します。 **[App Secret]** は、重要なセキュリティ資格情報です。
 1. メニューから、 **[製品]** の横にある **プラス記号** を選択します。 **[アプリに製品を追加する]** で、 **[Facebook ログイン]** の下にある **[設定]** を選択します。
 1. メニューから、 **[Facebook ログイン]** 、 **[設定]** の順に選択します。
 1. **[有効な OAuth リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。 
 1. ページの下部にある **[Save Changes]\(変更の保存\)** を選択します。
-1. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある状態セレクターを選択し、 **[オン]** に設定してアプリケーションを公開し、 **[スイッチ モード]** を選択します。  この時点で、状態は **開発** から **ライブ** に変更されます。
+1. Facebook アプリケーションを Azure AD B2C で使用できるようにするには、ページの右上にある状態セレクターを選択し、 **[オン]** に設定してアプリケーションを公開し、 **[スイッチ モード]** を選択します。 この時点で、状態は **開発** から **ライブ** に変更されます。 詳細については、[Facebook アプリ開発](https://developers.facebook.com/docs/development/release)に関するページを参照してください。
 
 ::: zone pivot="b2c-user-flow"
 

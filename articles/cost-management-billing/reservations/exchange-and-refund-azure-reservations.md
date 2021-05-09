@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: 9015cbcd669665467d3836112b152aa504176f2b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 3e8f50efd04364483c32ecb8ef5020bdd053e55b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035995"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515483"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -27,8 +27,6 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 予約は払い戻しも可能ですが、ご自分の請求範囲 (EA、Microsoft 顧客契約、Microsoft Partner Agreement など) のすべての予約コミットメントのキャンセル額合計が、12 か月間のローリング ウィンドウで 50,000 米国ドルを超えることはできません。
 
 Azure Databricks の予約容量、Azure VMware Solution by CloudSimple の予約、Azure Red Hat Open Shift の予約、Red Hat プラン、SUSE Linux プランは払い戻しの対象外となります。
-
-セルフ サービスの交換およびキャンセルの機能は、米国政府のエンタープライズ契約のお客様は利用できません。 従量課金制やクラウド ソリューション プロバイダー (CSP) などの他の種類の米国政府機関向けサブスクリプションがサポートされています。
 
 > [!NOTE]
 > - **既存の予約を交換または払い戻しするには、予約注文の所有者のアクセス許可を持っている必要があります**。 [予約を管理できるユーザーを追加または変更する](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)ことができます。
@@ -105,6 +103,7 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 - 現在、中途解約料は課金していませんが、将来的には 12% の解約料が発生する可能性があります。
 - 1 つの請求プロファイルまたは 1 回の加入契約のすべての予約コミットメントのキャンセル額合計は、12 か月間のローリング ウィンドウにおいて 50,000 米国ドルを超えることはできません。 たとえば、1 か月あたり 100 米国ドルの 3 年間の予約を 18 か月目に払い戻した場合、取り消したコミットメント額は 1,800 米国ドルとなります。 この払い戻し後は、48,200 米国ドルが、払い戻し可能な新しい限度額となります。 この払い戻しから 365 日以内に、48,200 米国ドルの上限が 1,800 米国ドル増やされ、ご自分の新しいプールは 50,000 米国ドルとなります。 その請求プロファイルまたは EA 加入契約のその他のすべての予約取り消しは同じプールから減額され、同じ補充ロジックが適用されます。
 - 1 つの請求プロファイルまたは 1 回の EA 加入契約の 12 か月間の上限 50,000 米国ドルを超える払い戻しは、Azure では処理できません。
+    - 交換に起因する払い戻しは、払い戻しの上限に対してカウントされません。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約注文の所有者のみです。 [予約を管理できるユーザーを追加または変更する](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)方法を参照してください。
 

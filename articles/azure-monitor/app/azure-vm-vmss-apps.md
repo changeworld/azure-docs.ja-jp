@@ -3,12 +3,13 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 0951d1d622f59de4780735fad78ac73649ea2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d60b06331f10f33fabfb7ef03365ee6ac8689bcf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711483"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315167"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -42,7 +43,7 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
   * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](./auto-collect-dependencies.md#net)」を参照してください。
         
 #### <a name="java"></a>Java
-  * Java の場合、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](./java-in-process-agent.md#auto-collected-requests-dependencies-logs-and-metrics)され、[追加の構成](./java-standalone-config.md)が多数あります。
+  * Java の場合、 **[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](./java-in-process-agent.md#auto-collected-requests)され、[追加の構成](./java-standalone-config.md)が多数あります。
 
 ### <a name="code-based-via-sdk"></a>コードベース (SDK を使用)
     

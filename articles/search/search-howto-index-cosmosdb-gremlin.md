@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: 5f83e6557fd986cb1b7dc37220b34560d301c78e
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 2d247f9e1529b7667e52f33a4a22841b8933fbaf
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989465"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163069"
 ---
 # <a name="how-to-index-data-available-through-cosmos-db-gremlin-api-using-an-indexer-preview"></a>Cosmos DB Gremlin API を介して使用できるデータに、インデクサーを使用してインデックスを付ける方法 (プレビュー)
 
@@ -32,7 +32,7 @@ ms.locfileid: "107989465"
 
 ## <a name="get-started"></a>はじめに
 
-[プレビューの REST API](https://docs.microsoft.com/rest/api/searchservice/index-2020-06-30-preview) を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースの作成、インデックスの作成、インデクサーの作成) に従うことで、Gremlin API を介して使用可能な Azure Cosmos DB データにインデックスを付けることができます。 下のプロセスでは、インデクサーの作成要求を送信すると、Cosmos DB からのデータ抽出が開始されます。
+[プレビューの REST API](https://docs.microsoft.com/rest/api/searchservice/index-preview) を使用して、Azure Cognitive Search のすべてのインデクサーに共通する 3 部構成のワークフロー (データ ソースの作成、インデックスの作成、インデクサーの作成) に従うことで、Gremlin API を介して使用可能な Azure Cosmos DB データにインデックスを付けることができます。 下のプロセスでは、インデクサーの作成要求を送信すると、Cosmos DB からのデータ抽出が開始されます。
 
 既定では、Azure Cognitive Search Cosmos DB Gremlin API インデクサーによって、グラフ内のすべての頂点が、インデックス内のドキュメントになります。 エッジは無視されます。 また、エッジのインデックスのみ作成するようにクエリを設定することもできます。
 
@@ -290,7 +290,7 @@ Cosmos DB Gremlin API インデクサーによって、一部のグラフ デー
 
 出力フィールドのマッピングが `/document` で始まること、および JSON のプロパティ キーへの参照が含まれないことに注意してください。 これは、インデクサーによって、グラフ データが取り込まれるとき、各ドキュメントが `/document` ノードの下に配置されるためです。またインデクサーによって、単に `pages` を参照するだけで `pages` の値を自動的に参照できます。`pages` の配列内の最初のオブジェクトを参照する必要はありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Cosmos DB Gremlin API について詳しくは、「[Azure Cosmos DB の概要: Gremlin API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)」をご覧ください。
 * Azure Cognitive Search について詳しくは、[Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 4/05/2021
 ms.author: azhussai
-ms.openlocfilehash: b8ddc5e57b9ce56d6bce7e220bc840ba0fa43ae2
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: c0a99d2c2885de59ccc903b9f505b8049d922b43
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384759"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205199"
 ---
 # <a name="rewrite-url-with-azure-application-gateway---azure-portal"></a>Azure Application Gateway を使用して URL を書き換える - Azure portal
 
@@ -120,4 +120,4 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 ##  <a name="next-steps"></a>次のステップ
 
-一般的なユース ケースにおける書き換えの設定方法の詳細については、[一般的な書き換えのシナリオ](rewrite-http-headers.md)に関する記事を参照してください。
+一般的なユース ケースにおける書き換えの設定方法の詳細については、[一般的な書き換えのシナリオ](./rewrite-http-headers-url.md)に関する記事を参照してください。

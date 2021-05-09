@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f44d3eb84715233e6d9aa4a1d06d626d162973ee
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095716"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205271"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ ms.locfileid: "101095716"
 Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](/visualstudio/debugger/intellitrace) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>前提条件
-このチュートリアルでは、[Azure App Service での ASP.NET アプリの作成](quickstart-dotnet-framework.md)に関するページで設定した開発環境、Web プロジェクト、および App Service アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
+このチュートリアルでは、[Azure App Service での ASP.NET アプリの作成](./quickstart-dotnetcore.md?tabs=netframework48)に関するページで設定した開発環境、Web プロジェクト、および App Service アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
 
 このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
 
@@ -51,7 +51,7 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
 
     Visual Studio から Azure リソースへの接続の詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 2. **サーバー エクスプローラー** で **[Azure]** を展開し、 **[App Service]** を展開します。
-3. [Azure App Service での ASP.NET Web アプリの作成](quickstart-dotnet-framework.md)に関するページで作成したアプリを含むリソース グループを展開し、アプリ ノードを右クリックして、 **[設定の表示]** をクリックします。
+3. [Azure App Service での ASP.NET Web アプリの作成](./quickstart-dotnetcore.md?tabs=netframework48)に関するページで作成したアプリを含むリソース グループを展開し、アプリ ノードを右クリックして、 **[設定の表示]** をクリックします。
 
     ![サーバー エクスプローラーの [設定の表示]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 リモート デバッグは、Visual Studio の各 Express Edition では機能しません。
 
-ここでは、[Azure App Service での ASP.NET アプリの作成](quickstart-dotnet-framework.md)に関するページで作成したプロジェクトを使用して、リモートでデバッグする方法について説明します。
+ここでは、[Azure App Service での ASP.NET アプリの作成](./quickstart-dotnetcore.md?tabs=netframework48)に関するページで作成したプロジェクトを使用して、リモートでデバッグする方法について説明します。
 
-1. [Azure App Service での ASP.NET アプリの作成](quickstart-dotnet-framework.md)に関するページで作成した Web プロジェクトを開きます。
+1. [Azure App Service での ASP.NET アプリの作成](./quickstart-dotnetcore.md?tabs=netframework48)に関するページで作成した Web プロジェクトを開きます。
 
 1. *Controllers\HomeController.cs* を開きます。
 
@@ -129,7 +129,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 1. **ソリューション エクスプローラー** で目的のプロジェクトを右クリックし、 **[発行]** をクリックします。
 
-1. **[プロファイル]** ドロップダウン リストで、[Azure App Service での ASP.NET アプリの作成](quickstart-dotnet-framework.md)に関するページで使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
+1. **[プロファイル]** ドロップダウン リストで、[Azure App Service での ASP.NET アプリの作成](./quickstart-dotnetcore.md?tabs=netframework48)に関するページで使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
 
 1. **[発行]** ダイアログ ボックスで、 **[設定]** タブをクリックし、 **[構成]** を **[デバッグ]** に変更し、 **[保存]** をクリックします。
 
@@ -264,7 +264,7 @@ App Service アプリで実行される ASP.NET アプリケーションは、�
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>アプリケーションのトレース ログの作成と表示
 このセクションでは、次のタスクを実行します。
 
-* [Azure と ASP.NET の使用](quickstart-dotnet-framework.md)に関するページで作成した Web プロジェクトに、トレース ステートメントを追加します。
+* [Azure と ASP.NET の使用](./quickstart-dotnetcore.md?tabs=netframework48)に関するページで作成した Web プロジェクトに、トレース ステートメントを追加します。
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 

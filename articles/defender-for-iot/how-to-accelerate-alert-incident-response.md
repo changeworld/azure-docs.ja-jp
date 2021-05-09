@@ -3,12 +3,12 @@ title: アラート ワークフローの高速化
 description: アラートとインシデント ワークフローを改善します。
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: c12d1135b7a7bc87a38a609aeeb6ada8caa9a25e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ff6f1fec17a190a8af8bf7fdf6f2e13b078dd5d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779122"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204551"
 ---
 # <a name="accelerate-alert-workflows"></a>アラート ワークフローの高速化
 
@@ -105,7 +105,7 @@ ms.locfileid: "104779122"
 
 ## <a name="customize-alert-rules"></a>アラート ルールをカスタマイズする
 
-カスタム アラート ルールを使用すると、関心のあるアクティビティをより具体的に特定できます。 
+カスタム アラート ルールを使用すると、関心のあるアクティビティをより具体的に特定できます。
 
 以下に基づいてカスタム アラート ルールを追加できます。
 
@@ -129,7 +129,7 @@ ms.locfileid: "104779122"
 
 :::image type="content" source="media/how-to-work-with-alerts-sensor/customized-alerts-screen.png" alt-text="カスタマイズされたアラートを示すスクリーンショット。":::
 
-カスタム アラート ルールを作成するには:
+**カスタム アラート ルールを作成するには:**
 
 1. センサーのサイド メニューから **[カスタムアラート]** を選択します。
 1. プラス記号 ( **+** ) を選択して、ルールを作成します。
