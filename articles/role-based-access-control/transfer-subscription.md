@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 366692113872856852fd933ca32ab51ca608de14
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868179"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291282"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -82,7 +82,7 @@ ms.locfileid: "107868179"
 | Azure Managed Disks | はい | はい |  |  ディスク暗号化セットを使用して、カスタマー マネージド キーで Managed Disks を暗号化する場合は、ディスク暗号化セットに関連付けられているシステム割り当て ID を無効にしてから、再度有効にする必要があります。 また、ロールの割り当てを再作成する必要があります。つまり、Key Vault 内にあるディスク暗号化セットに対し、必要なアクセス許可を再度付与します。 |
 | Azure Kubernetes Service | はい | いいえ |  | AKS クラスターとそれに関連付けられているリソースを別のディレクトリに転送することはできません。 詳細については、「[Azure Kubernetes Service (AKS) についてよく寄せられる質問](../aks/faq.md)」を参照してください。 |
 | Azure Policy | はい | いいえ | カスタム定義、割り当て、除外、コンプライアンス データなど、すべての Azure Policy オブジェクト。 | 定義を[エクスポート](../governance/policy/how-to/export-resources.md)、インポート、および再割り当てする必要があります。 次に、新しいポリシー割り当てと、必要な[ポリシーの除外](../governance/policy/concepts/exemption-structure.md)を作成します。 |
-| Azure Active Directory Domain Services | はい | いいえ |  | Azure AD Domain Services の管理対象ドメインを別のディレクトリに転送することはできません。 詳細については、「[Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)](../active-directory-domain-services/faqs.md)」を参照してください。 |
+| Azure Active Directory Domain Services | はい | いいえ |  | Azure AD Domain Services の管理対象ドメインを別のディレクトリに転送することはできません。 詳細については、「[Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)](../active-directory-domain-services/faqs.yml)」を参照してください。 |
 | アプリの登録 | はい | はい |  |  |
 
 > [!WARNING]

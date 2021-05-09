@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
-ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97036266911a8ffd7dca00ad2eaeeed32e620dba
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91999283"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166381"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
 
@@ -301,7 +301,7 @@ public static CreateMessageOptions Run(
 {
     ...
 }
- ```
+```
 
 完全な例については、「[C# の例](#example)」を参照してください。
 
@@ -336,7 +336,7 @@ public static CreateMessageOptions Run(
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| この値には、Twilio 認証トークン (`TwilioAccountAuthToken`) を保持するアプリ設定の名前を指定する必要があります。 設定されていない場合、既定のアプリの設定名は"AzureWebJobsTwilioAuthToken" です。 |
 |**to**| 該当なし - コード内の指定 | **To**| この値は、SMS テキストの送信先の電話番号に設定されます。|
 |**from**|**from** | **From**| この値は、SMS テキストの送信元の電話番号に設定されます。|
-|**body**|**body** | **本文**| この値は、SMS テキスト メッセージを関数のコードで動的に設定する必要がない場合に、メッセージをハード コーディングするために使用できます。 |  
+|**body**|**body** | **本文**| この値は、SMS テキスト メッセージを関数のコードで動的に設定する必要がない場合に、メッセージをハード コーディングするために使用できます。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

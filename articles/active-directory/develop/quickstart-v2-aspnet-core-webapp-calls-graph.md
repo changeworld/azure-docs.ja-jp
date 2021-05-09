@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: efa9465adc13b50e6ae12628d21347152c3fc2c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02742610f6febd832470307a5000526cadb3ecbd
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578721"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166147"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>クイックスタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ
 
-このクイックスタートでは、ASP.NET Core Web アプリから Azure Active Directory (Azure AD) 組織のユーザーのサインインを処理して Microsoft Graph を呼び出すコード サンプルをダウンロードして実行します。  
+このクイックスタートでは、ASP.NET Core Web アプリから Azure Active Directory (Azure AD) 組織のユーザーのサインインを処理して Microsoft Graph を呼び出すコード サンプルをダウンロードして実行します。
 
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
@@ -108,7 +108,7 @@ ms.locfileid: "104578721"
 >       - アプリケーションで **[任意の組織のディレクトリ内のアカウント]** がサポートされる場合は、この値を `organizations` に置き換えます。
 >       - アプリケーションで **[すべての Microsoft アカウント ユーザー]** がサポートされている場合は、この値を `common` のままにします。
 >    - `Enter_the_Client_Secret_Here` は、前の手順で作成、記録した **クライアント シークレット** に置き換えます。
-> 
+>
 > このクイックスタートでは、*appsettings.json* ファイル内のその他の値は変更しないでください。
 >
 > #### <a name="step-4-build-and-run-the-application"></a>手順 4: アプリケーションをビルドして実行する
@@ -128,6 +128,7 @@ ms.locfileid: "104578721"
 このセクションでは、ユーザーのサインインを処理し、そのユーザーの代理で Microsoft Graph API を呼び出すために必要なコードの概要を示します。 コードの働きや主な引数を理解するうえでの助けとなるほか、既存の ASP.NET Core アプリケーションにサインイン処理を追加して Microsoft Graph を呼び出す場合にも役立ちます。 このコードでは、[MSAL.NET](msal-overview.md) のラッパーである [Microsoft.Identity.Web](microsoft-identity-web.md) を使用しています。
 
 ### <a name="how-the-sample-works"></a>このサンプルのしくみ
+
 ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-aspnet-core-webapp-calls-graph/aspnetcorewebapp-intro.svg)
 
 ### <a name="startup-class"></a>スタートアップ クラス
@@ -200,7 +201,7 @@ app.UseEndpoints(endpoints =>
 
 コントローラーのクラスまたはそのメソッドは、`[Authorize]` 属性を適用することで保護することができます。 この `[Authorize]` 属性は、認証されたユーザーのみを許可することでアクセスを制限します。 ユーザーがまだ認証されていない場合、コントローラーにアクセスするための認証チャレンジを開始することができます。 このクイックスタートでは、スコープを構成ファイルから読み取っています。
 
-```CSharp
+```csharp
 [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
 public async Task<IActionResult> Index()
 {
@@ -209,7 +210,7 @@ public async Task<IActionResult> Index()
 
     return View();
 }
- ```
+```
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

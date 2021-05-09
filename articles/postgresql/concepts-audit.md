@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 519105374a2c12807bdac92bfb2b60feaeeb89c2
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596289"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324799"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -37,7 +37,7 @@ Azure Storage、Event Hubs、または Azure Monitor ログへのログ記録を
 
 ## <a name="installing-pgaudit"></a>pgAudit のインストール
 
-pgAudit をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、サーバーの再起動が必要です。 パラメーターを変更するには、[Azure portal](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md)、または [REST API](/rest/api/postgresql/configurations/createorupdate) を使用できます。
+pgAudit をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、サーバーの再起動が必要です。 パラメーターを変更するには、[Azure portal](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md)、または [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate) を使用できます。
 
 [Azure portal](https://portal.azure.com) を使用して以下を実行します。
 
@@ -104,4 +104,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Database for PostgreSQL でのログ記録について学習する](concepts-server-logs.md)
-- [Azure portal](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md)、または [REST API](/rest/api/postgresql/configurations/createorupdate) を使用してパラメーターを設定する方法を学習する
+- [Azure portal](howto-configure-server-parameters-using-portal.md)、[Azure CLI](howto-configure-server-parameters-using-cli.md)、または [REST API](/rest/api/postgresql/singleserver/configurations/createorupdate) を使用してパラメーターを設定する方法を学習する

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: pafarley
-ms.openlocfilehash: 8e0ef789653181d744100ef6e179bcf328f6d704
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 195beaaae2925ce9cc6e7cc70bd0415ded49f155
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308627"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166705"
 ---
 # <a name="call-the-read-api"></a>Read API を呼び出す
 
@@ -47,24 +47,24 @@ Read API の [Read 呼び出し](https://centraluseuap.dev.cognitive.microsoft.c
 [Read](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) 呼び出しには、言語に対する省略可能な要求パラメーターがあります。 読み取りでは、言語の自動識別と多言語ドキュメントがサポートされるため、言語コードの指定は、その特定の言語としてドキュメントを処理するように強制する場合にのみ行ってください。
 
 ### <a name="natural-reading-order-output-latin-languages-only"></a>自然な読み取り順序の出力 (ラテン言語のみ)
+
 `readingOrder` クエリ パラメーターを使用し、テキスト行の出力順序を指定します。 次の例に示すように、`natural` を使用して、よりわかりやすい読み取り順序の出力を行います。 この機能は、ラテン語系の言語でのみサポートされています。
 
-:::image border type="content" source="../Images/ocr-reading-order-example.png" alt-text="OCR の読み取り順序の例":::
-
-
+:::image type="content" source="../Images/ocr-reading-order-example.png" alt-text="OCR の読み取り順序の例" border="true" :::
 
 ### <a name="select-pages-or-page-ranges-for-text-extraction"></a>テキスト抽出のページまたはページ範囲の選択
+
 大規模なマルチページ ドキュメントに対し、`pages` クエリ パラメーターを使用して、ページ番号またはページ範囲を指定し、それらのページからのみテキストを抽出します。 次の例は、10 ページを含むドキュメントを示しています。ここには、すべてのページ (1 から 10) と選択したページ (3 から 6) の両方に対して抽出されたテキストがあります。
 
-:::image border type="content" source="../Images/ocr-select-pages.png" alt-text="選択されたページの出力":::
+:::image type="content" source="../Images/ocr-select-pages.png" alt-text="選択されたページの出力" border="true" :::
 
 ## <a name="get-results-from-the-service"></a>サービスから結果を取得する
 
-2 番目のステップでは、[読み取り結果の取得](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d9869604be85dee480c8750)操作を呼び出します。 この操作は、読み取り操作によって作成された操作 ID を入力として受け取ります。 
+2 番目のステップでは、[読み取り結果の取得](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d9869604be85dee480c8750)操作を呼び出します。 この操作は、読み取り操作によって作成された操作 ID を入力として受け取ります。
 
 `https://{endpoint}/vision/v3.2/read/analyzeResults/{operationId}`
 
-これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 
+これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。
 
 |値 | 説明 |
 |:-----|:----|
@@ -159,9 +159,10 @@ Read API の [Read 呼び出し](https://centraluseuap.dev.cognitive.microsoft.c
 ```
 
 ### <a name="handwritten-classification-for-text-lines-latin-languages-only"></a>テキスト行の手書き分類 (ラテン言語のみ)
+
 応答では、各テキスト行が手書きスタイルであるかどうかと、信頼度スコアが分類されます。 この機能は、ラテン語系の言語でのみサポートされています。 次の例は、画像内のテキストの手書き分類を示しています。
 
-:::image border type="content" source="../Images/ocr-handwriting-classification.png" alt-text="OCR の手書き分類の例":::
+:::image type="content" source="../Images/ocr-handwriting-classification.png" alt-text="OCR の手書き分類の例" border="true" :::
 
 ## <a name="next-steps"></a>次のステップ
 

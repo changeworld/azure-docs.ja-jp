@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: f6ce792b3db0100d7356884bbc6ee2696580df10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b00cca584958f3e7d741a2a4f9e6669ff0d241e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97652060"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904318"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>継続的アクセス評価が有効になった API をアプリケーションで使用する方法
 
-[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md) (CAE) とは、有効期間に基づくトークンの有効期限に依存するのではなく、[重大なイベント](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)および[ポリシーの評価](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを取り消すことを可能にする新たな業界標準です。 一部のリソース API については、リスクとポリシーがリアルタイムで評価されるため、トークンの有効期間を最大 28 時間まで延長することができます。 このような有効期間が長いトークンは Microsoft Authentication Library (MSAL) によって事前に更新されるため、アプリケーションの復元性が向上します。
+[継続的アクセス評価](../conditional-access/concept-continuous-access-evaluation.md) (CAE) は、トークンの有効期間ではなく[重要なイベント](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)と[ポリシー評価](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)に基づいてアクセス トークンを破棄できる、Azure AD の機能です。 一部のリソース API については、リスクとポリシーがリアルタイムで評価されるため、トークンの有効期間を最大 28 時間まで延長することができます。 このような有効期間が長いトークンは Microsoft Authentication Library (MSAL) によって事前に更新されるため、アプリケーションの復元性が向上します。
 
 この記事では、CAE 対応 API をアプリケーションで使用する方法について説明します。
 

@@ -12,30 +12,31 @@
     - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: ML リソースを作成して作業を開始する
+      href: quickstart-create-resources.md
 - name: チュートリアル
   expanded: true
   items:
     - name: Python 作業の開始 (1 日目)
       expanded: true
       items:
-        - name: 1. ローカル コンピューターの設定
-          href: tutorial-1st-experiment-sdk-setup-local.md
-        - name: 2. "Hello world"
+        - name: 1. "Hello world"
           href: tutorial-1st-experiment-hello-world.md
-        - name: 3. モデルをトレーニングする
+        - name: 2. モデルをトレーニングする
           href: tutorial-1st-experiment-sdk-train.md
-        - name: 4. データ持ち込み
+        - name: 3. データ持ち込み
           href: tutorial-1st-experiment-bring-data.md
     - name: Jupyter Notebooks
       items:
         - name: 画像の分類 (MNIST データ)
           items:
-            - name: 1. コンピューティング インスタンスの設定
-              href: tutorial-1st-experiment-sdk-setup.md
-            - name: 2. モデルをトレーニングする
+            - name: 1. モデルをトレーニングする
               displayName: build modeling
               href: tutorial-train-models-with-aml.md
-            - name: 3. モデルをデプロイする
+            - name: 2. モデルをデプロイする
               href: tutorial-deploy-models-with-aml.md
         - name: 自動 ML による回帰 (NYC タクシー データ)
           items:
@@ -234,8 +235,8 @@
               href: how-to-access-azureml-behind-firewall.md
         - name: データ保護
           items:
-            - name: 回復性を高める
-              displayName: 'high availability, disaster recovery'
+            - name: フェールオーバーとディザスター リカバリー
+              displayName: high availability
               href: how-to-high-availability-machine-learning.md
             - name: ストレージ アクセス キーの再生成
               href: how-to-change-storage-access-key.md

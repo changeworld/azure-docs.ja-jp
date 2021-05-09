@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: 5fda7ebb5a72dd9bbfab0ba72511540cf141563f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.openlocfilehash: cd78d6802f6b7f71794785d9149b5cda854bf21e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608852"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166417"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでサポートされる Postgres のメジャー バージョン
 
@@ -22,11 +22,11 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、現在�
 
 ## <a name="postgresql-version-12"></a>PostgreSQL バージョン 12
 
-現在のマイナー リリースは 12.5 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-4.html)を参照してください。
+現在のマイナー リリースは **12.6** です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-6.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
 
 ## <a name="postgresql-version-11"></a>PostgreSQL バージョン 11
 
-現在のマイナー リリースは 11.10 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-9.html)を参照してください。
+現在のマイナー リリースは **11.11** です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-11.html)を参照してください。 新しいサーバーは、このマイナー バージョンで作成されます。 既存のサーバーは、今後予定されているメンテナンス期間中に、サポートされている最新のマイナー バージョンに自動的にアップグレードされます。
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL バージョン 10 以前
 

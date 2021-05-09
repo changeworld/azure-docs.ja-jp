@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: f4ba77f5fcb376bf600d94997b0d6ba569f04f82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 263bd0120ea80340f20ae29db0d0c4d8310f74a9
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919344"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324371"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 
