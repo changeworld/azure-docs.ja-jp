@@ -71,7 +71,7 @@ Traffic Manager によって DNS 検索が実行され、ユーザーに最適�
 ### <a name="application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したアプリケーション ルーティング
 
 [Azure Front Door Service](../frontdoor/front-door-overview.md) ではスプリット TCP ベースのエニーキャスト プロトコルが使用され、エンド ユーザーが最も近いフロント ドア POP (存在点) に迅速に接続されます。 Azure Front Door のその他の機能:
-* TLS 終了
+* TLS 終端
 * カスタム ドメイン
 * Web アプリケーション ファイアウォール
 * URL Rewrite (URL 書き換え)
