@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889597"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768073"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
@@ -409,7 +409,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 
 このチュートリアルで作成したリソースをすべて削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 ここでは、IoT ハブ、Log Analytics ワークスペース、およびリソース グループ自体が削除されます。 メトリックのグラフをダッシュボードにピン留めしている場合は、それらを手動で削除する必要があります。各グラフの右上隅にある 3 つのドットをクリックし、 **[削除]** を選択します。 グラフを削除したら、必ず変更を保存してください。
 
-リソース グループを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを使います。
+リソース グループを削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを使います。
 
 ```azurecli-interactive
 az group delete --name ContosoResources

@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1d64233fc477ec25f91bb73c744b10210571df41
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586643"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588345"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 
@@ -76,7 +76,8 @@ dependencies:
   - matplotlib
   - koalas==1.7.0
 ```
-この environment.yml ファイルから環境を作成する方法の詳細については、[environment.yml ファイルからの環境の作成](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually)に関するページを参照してください。
+この environment.yml ファイルから環境を作成する方法の詳細については、[environment.yml ファイルからの環境の作成](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment
+)に関するページを参照してください。
 
 #### <a name="update-python-packages"></a>Python パッケージを更新する
 Spark プールにインストールする環境仕様ファイルまたはライブラリのセットを特定したら、Azure Synapse Studio または Azure portal に移動して Spark プール ライブラリを更新できます。 ここでは、環境仕様を指定し、インストールするワークスペース ライブラリを選択することができます。 

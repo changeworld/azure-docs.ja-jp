@@ -2,13 +2,13 @@
 title: コンテナーから複数の SQL Server VM をバックアップする
 description: この記事では、Recovery Services コンテナーから Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 09/11/2019
-ms.openlocfilehash: 798dc81012ad968c3ecc287717240513a08a1349
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: c03b833be6c5e4c352125f31ad8c5ed072674b49
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105567214"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258471"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Recovery Services コンテナーから複数の SQL Server VM をバックアップする
 
@@ -23,10 +23,6 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 > * コンテナーの作成と構成。
 > * データベースの検出とバックアップの設定。
 > * データベースに対する自動保護の設定。
-
->[!NOTE]
->**Azure VM での SQL Server の論理的な削除と Azure VM ワークロードでの SAP HANA の論理的な削除** が、プレビューで利用できるようになりました。<br>
->プレビュー用にサインアップするには、AskAzureBackupTeam@microsoft.com 宛てにご連絡ください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,7 +84,7 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 
 次の FQDN を使用することで、サーバーから必要なサービスへのアクセスを許可することもできます。
 
-| サービス    | アクセスするドメイン名                             | Port
+| サービス    | アクセスするドメイン名                             | ポート
 | -------------- | ------------------------------------------------------------ | ---
 | Azure Backup  | `*.backup.windowsazure.com`                             | 443
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` | 443

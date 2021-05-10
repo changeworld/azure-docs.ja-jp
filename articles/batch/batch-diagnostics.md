@@ -2,14 +2,14 @@
 title: メトリック、アラート、診断ログ
 description: プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: 22fdf00b6e144e022f955aed6fd24b7a6bcb7300
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 61aaca84b609aaf7513c6de6f0f7e73aef5a5efe
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606030"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389317"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -140,21 +140,32 @@ Azure Batch サービス ログには、プールやタスクなどの個々の 
 
 ```json
 {
-    "poolId": "myPool1",
+    "id": "myPool1",
     "displayName": "Production Pool",
-    "vmSize": "Small",
+    "vmSize": "Standard_F1s",
+    "imageType": "VirtualMachineConfiguration",
     "cloudServiceConfiguration": {
-        "osFamily": "5",
+        "osFamily": "3",
         "targetOsVersion": "*"
     },
     "networkConfiguration": {
         "subnetId": " "
     },
+    "virtualMachineConfiguration": {
+          "imageReference": {
+            "publisher": " ",
+            "offer": " ",
+            "sku": " ",
+            "version": " "
+          },
+          "nodeAgentId": " "
+        },
     "resizeTimeout": "300000",
-    "targetDedicatedComputeNodes": 2,
+    "targetDedicatedNodes": 2,
+    "targetLowPriorityNodes": 2,
     "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
-    "enableAutoscale": false,
+    "enableAutoScale": false,
     "enableInterNodeCommunication": false,
     "isAutoPool": false
 }

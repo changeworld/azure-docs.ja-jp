@@ -264,7 +264,7 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 
 > [!NOTE]
-> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service 環境または API 管理は、どちらもネイティブにはサポートされていません。
+> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service Environment または API 管理は、どちらもネイティブにはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

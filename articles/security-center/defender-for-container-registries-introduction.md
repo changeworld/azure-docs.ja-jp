@@ -49,7 +49,7 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 - **最近プルされたもの** - 新しい脆弱性は日々検出されるため、**コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージも週 1 回の頻度でスキャンします。 これらのスキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
 
-- **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure コンテナー レジストリからレジストリにイメージを取り込むためのインポート ツールが用意されています。 **コンテナー レジストリ用 Azure Defender** は、インポートした、サポートされているイメージをスキャンします。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
+- **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure Container Registry からレジストリにイメージを取り込むためのインポート ツールが用意されています。 **コンテナー レジストリ用 Azure Defender** は、インポートした、サポートされているイメージをスキャンします。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
  
 通常、スキャンは 2 分以内に完了しますが、最大で 15 分かかる場合もあります。 結果は、Security Center の推奨事項として、次のように表示されます。
 

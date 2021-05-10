@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 6f56b9fb1f6a1f5a1fe0811617fb20412c52fd72
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3476e5fa2c274f0fc2c180711480375b0ebefaf2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450837"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388042"
 ---
 # <a name="quickstart-create-an-azure-route-server-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure ルート サーバーを作成する
 
@@ -41,9 +41,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/microsoft.network/virtualNetworks/subnets) (2 つのサブネット、1 つの名前は `routeserversubnet`)
-* [**Microsoft.Network/virtualHubs**](/azure.templates/microsoft.network/virtualhubs) (ルート サーバーのデプロイ)
-* [**Microsoft.Network/virtualHubs/ipConfigurations**](/azure.templates/microsoft.network/virtualhubs/ipConfigurations)
-* [**Microsoft.Network/virtualHubs/bgpConnections**](/azure.templates/microsoft.network/virtualhubs/bgpConnections) (ピア ASN およびピア IP 構成)
+* [**Microsoft.Network/virtualHubs**](/azure/templates/microsoft.network/virtualhubs) (ルート サーバーのデプロイ)
+* [**Microsoft.Network/virtualHubs/ipConfigurations**](/azure/templates/microsoft.network/virtualhubs/ipConfigurations)
+* [**Microsoft.Network/virtualHubs/bgpConnections**](/azure/templates/microsoft.network/virtualhubs/bgpconnections) (ピア ASN およびピア IP 構成)
 
 
 ExpressRoute に関連するテンプレートをさらに探すには、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)」を参照してください。

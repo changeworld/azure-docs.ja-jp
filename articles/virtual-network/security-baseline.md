@@ -4,21 +4,22 @@ description: 仮想ネットワーク セキュリティ ベースラインで�
 author: msmbaldwin
 ms.service: virtual-network
 ms.topic: conceptual
-ms.date: 03/29/2021
+ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27f00ac7952ea6d6282bcf9f392242112595d99
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 433f20de4d150aadb48ead685e981c60579f2730
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968970"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285532"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>仮想ネットワーク用の Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Azure 仮想ネットワークに適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure 仮想ネットワークに適用できる関連ガイダンスによって定義されています。 Azure Virtual Network に適用されない **コントロール**、または Microsoft が責任を持つものは、除外されています。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが Azure 仮想ネットワークに適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、**セキュリティ制御** によってグループ化されています。これは、Azure セキュリティ ベンチマークと、Azure 仮想ネットワークに適用できる関連ガイダンスによって定義されています。 
 
-Azure 仮想ネットワークを完全に Azure セキュリティ ベンチマークにマップする方法については、[完全な Azure Virtual Network セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
+> [!NOTE]
+> Virtual Network に適用されない **コントロール**、または Microsoft が責任を持つものは、除外されています。 Virtual Network を完全に Azure セキュリティ ベンチマークにマップする方法については、 **[完全な Virtual Network セキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/raw/master/Azure%20Offer%20Security%20Baselines/1.1/virtual-network-security-baseline-v1.1.xlsx)** を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -165,9 +166,9 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、リソースの構成を監視し、仮想ネットワークに対する変更を検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -184,9 +185,9 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure アクティビティ ログ イベントを表示および取得する](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -198,9 +199,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 **ガイダンス**:監査およびアクティビティのログ (イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素を含みます) にアクセスするために、Azure Monitor を有効にします。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure アクティビティ ログ イベントを表示および取得する](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](https://docs.microsoft.com/azure/azure-monitor/essentials/activity-log#view-the-activity-log)
 
 **責任**: Customer
 
@@ -210,9 +211,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 セキュリティ ログ ストレージ保持の長期またはアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#configure-logging)
 
 **責任**: Customer
 
@@ -224,9 +225,9 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Log Analytics ワークスペースについて](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -244,7 +245,7 @@ Azure Monitor 内で Log Analytics ワークスペースを使用してクエリ
 
 - [セキュリティ センターでアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -336,7 +337,7 @@ Security Center のリスク検出アラートを Azure Monitor に取り込み�
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](/azure/azure-monitor/platform/action-groups)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **責任**: Customer
 
@@ -442,7 +443,7 @@ Microsoft では、Azure ネットワーク内で内部移動するデータや�
 
 - [ネットワーク セキュリティ グループの診断ログ](virtual-network-nsg-manage-log.md)
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 

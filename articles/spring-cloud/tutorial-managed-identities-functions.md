@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 99e3611711e9a25119a4428d7736a36073163894
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: b737ea751d3b3d2132691e04a1a2cd853748db65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877117"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792509"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Azure Spring Cloud アプリから Azure Functions を呼び出す
 
@@ -29,7 +29,7 @@ Azure Functions と App Service には、どちらも Azure Active Directory (Az
 
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 コマンド [az group create](/cli/azure/group#az-group-create) を使用して、関数アプリと Spring Cloud の両方を含むリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 コマンド [az group create](/cli/azure/group#az_group_create) を使用して、関数アプリと Spring Cloud の両方を含むリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 
 ## <a name="create-a-function-app"></a>関数アプリを作成する
-関数アプリを作成するには、まず、[az storage account create](/cli/azure/storage/account#az-storage-account-create) コマンドを使用してバッキング ストレージ アカウントを作成する必要があります。
+関数アプリを作成するには、まず、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用してバッキング ストレージ アカウントを作成する必要があります。
 
 > [!Important]
 > 関数アプリとストレージ アカウントには、それぞれ一意の名前が必要です。 次の例で、<your-functionapp-name> は実際の関数アプリの名前に、<your-storageaccount-name> は実際のストレージ アカウントの名前に置き換えてください。

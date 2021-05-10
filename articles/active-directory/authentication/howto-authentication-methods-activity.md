@@ -11,12 +11,12 @@ author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a1cb71917fdb30ffccda21bedffe1c7f2a428c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557957"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530446"
 ---
 # <a name="authentication-methods-activity"></a>認証方法アクティビティ 
 
@@ -139,6 +139,6 @@ ms.locfileid: "105557957"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [認証方法の使用状況レポート API を使用する](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [認証方法の使用状況レポート API を使用する](/graph/api/resources/authenticationmethods-usage-insights-overview)
 - [組織の認証方法を選択する](concept-authentication-methods.md)
 - [統合された登録エクスペリエンス](concept-registration-mfa-sspr-combined.md)

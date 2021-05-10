@@ -15,12 +15,12 @@ ms.date: 03/25/2021
 ms.author: mathoma
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 0b88884576a47db871c78b874104d4973ee9ba9a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84f2f4f679de80cd9b5fc986d40e084bae8a4cad
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572265"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313761"
 ---
 # <a name="checklist-performance-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,15 +34,15 @@ ms.locfileid: "105572265"
 
 Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境内の SQL Server に適用できるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用します。 ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
-通常、コストの最適化とパフォーマンスの最適化はトレードオフの関係になっています。 このパフォーマンスに関するベスト プラクティス シリーズでは、Azure Virtual Machines 上の SQL Server の "*最善の*" パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、推奨される最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズ、コスト、およびワークロードのパターンを考慮してください。
+通常、コストの最適化とパフォーマンスの最適化はトレードオフの関係になっています。 このパフォーマンスに関するベスト プラクティス シリーズでは、Azure Virtual Machines の SQL Server の "*最善の*" パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、推奨される最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズ、コスト、およびワークロードのパターンを考慮してください。
 
 ## <a name="vm-size"></a>VM サイズ
 
 Azure VM で SQL Server を実行する場合の VM サイズに関するベスト プラクティスのクイック チェックリストは次のとおりです。 
 
-- [Standard_M8-4ms](/../../virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)、または [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。 
-- SQL Server ワークロードの最善のパフォーマンスを得るために、[メモリ最適化](../../../virtual-machines/sizes-memory.md)仮想マシン のサイズを使用します。 
-- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) シリーズ、[M-](../../../virtual-machines/m-series.md)、[Mv2-](../../../virtual-machines/mv2-series.md) シリーズでは、OLTP ワークロードに必要な、最適なメモリと仮想コアの比率を提供します。 M シリーズの VM はどちらも、ミッション クリティカルなワークロードに必要な、最も高いメモリと仮想コアの比率を提供し、データ ウェアハウスのワークロードにも最適です。 
+- [Standard_M8-4ms](../../../virtual-machines/m-series.md)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)、または [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。 
+- SQL Server ワークロードの最適なパフォーマンスを得るために、[メモリ最適化済み](../../../virtual-machines/sizes-memory.md)仮想マシン サイズを使用します。 
+- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) シリーズ、[M-](../../../virtual-machines/m-series.md)、[Mv2-](../../../virtual-machines/mv2-series.md) シリーズでは、OLTP ワークロードに必要な、最適なメモリと仮想コアの比率が提供されます。 M シリーズの VM はどちらも、ミッション クリティカルなワークロードに必要な最も高いメモリと仮想コアの比率を提供するほか、データ ウェアハウスのワークロードにも最適です。 
 - ミッション クリティカルおよびデータ ウェアハウスのワークロードには、より高いメモリと仮想コアの比率を検討します。 
 - SQL Server のパフォーマンスが最適になるように SQL Server の設定とストレージ オプションが構成されているため、Azure 仮想マシンのマーケットプレース イメージを使用します。 
 - ターゲット ワークロードのパフォーマンス特性を収集し、それらを使用してお客様のビジネスに適した VM サイズを決定します。
@@ -62,7 +62,7 @@ Azure VM で SQL Server を実行する場合のストレージ構成に関す�
       - M シリーズの仮想マシン デプロイに対しては、Azure Ultra ディスクの使用よりも[書き込みアクセラレータ](../../../virtual-machines/how-to-enable-write-accelerator.md)を検討します。
     - 最適な VM サイズを選択した後、ほとんどの SQL Server ワークロード用に、ローカル エフェメラル SSD `D:\` ドライブに [tempdb](/sql/relational-databases/databases/tempdb-database) を配置します。 
       - ローカル ドライブの容量が tempdb に対して十分でない場合は、VM のサイズを増やすことを検討します。 詳細については、「[データ ファイルのキャッシュ ポリシー](performance-guidelines-best-practices-storage.md#data-file-caching-policies)」を参照してください。
-- [記憶域スペース](/windows-server/storage/storage-spaces/overview)を使用して複数の Azure データ ディスクをストライピングし、ターゲット仮想マシンの IOPS およびスループットの上限まで I/O 帯域幅を増やします。
+- [記憶域スペース](/windows-server/storage/storage-spaces/overview)を使用して複数の Azure データ ディスクをストライプ化し、ターゲット仮想マシンの IOPS およびスループットの上限まで I/O 帯域幅を増やします。
 - データ ファイル ディスクの場合は、[[ホスト キャッシュ]](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) を [読み取り専用] に設定します。
 - ログ ファイル ディスクの場合は、[[ホスト キャッシュ]](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) を [なし] に設定します。
     - SQL Server ファイルが含まれているディスクでは、読み取り/書き込みキャッシュを有効にしないでください。 
@@ -71,7 +71,7 @@ Azure VM で SQL Server を実行する場合のストレージ構成に関す�
 - [クレジットベースのディスク バースト](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1 から P20) は、小規模な開発またはテストのワークロードおよび部門別システムでのみ検討してください。
 - ストレージ アカウントは、SQL Server VM と同じリージョンにプロビジョニングします。 
 - ストレージ アカウントで Azure geo 冗長ストレージ (geo レプリケーション) を無効にし、LRS (ローカル冗長ストレージ) を使用します。
-- データ ディスクをフォーマットし、一時 `D:\` ドライブ (既定値は 4 KB) 以外のドライブに配置されたすべてのデータ ファイルに 64 KB アロケーション ユニット サイズを使用します。 Azure Marketplace を通じてデプロイされた SQL Server VM には、アロケーション ユニット サイズでフォーマットされたデータ ディスクが付属しており、64 KB に設定された記憶域プールに対してインターリーブします。 
+- ドライブに配置されるすべてのデータ ファイルに 64 KB アロケーション ユニット サイズを使用するように、データ ディスクをフォーマットします。ただし、一時 `D:\` ドライブ (既定値は 4 KB) 以外が対象です。 Azure Marketplace を通じてデプロイされた SQL Server VM には、アロケーション ユニット サイズでフォーマットされたデータ ディスクが付属しており、64 KB に設定された記憶域プールに対してインターリーブします。 
 
 詳細については、包括的な[ストレージのベスト プラクティス](performance-guidelines-best-practices-storage.md)に関するページを参照してください。 
 

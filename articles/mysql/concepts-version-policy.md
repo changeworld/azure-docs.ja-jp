@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 35ed677c3176fb990f752f3204a1ae11bf39896c
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 49e59c43e9eaedf770b1a8e052dd73aa331d31ce
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121695"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389572"
 ---
 # <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL バージョン サポート ポリシー
 
@@ -24,7 +24,7 @@ Azure Database for MySQL は、InnoDB ストレージ エンジンを使用し�
 
 Azure Database for MySQL では、現在、次の MySQL メジャーおよびマイナー バージョンがサポートされています。
 
-| Version | [単一サーバー](overview.md) <br/> 現行のマイナー バージョン |[フレキシブル サーバー (プレビュー)](/../flexible-server/overview.md) <br/> 現行のマイナー バージョン  |
+| Version | [単一サーバー](overview.md) <br/> 現行のマイナー バージョン |[フレキシブル サーバー (プレビュー)](/azure/mysql/flexible-server/overview) <br/> 現行のマイナー バージョン  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (廃止) | サポートされていません|
 |MySQL バージョン 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

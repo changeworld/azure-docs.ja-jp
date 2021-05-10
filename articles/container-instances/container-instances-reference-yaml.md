@@ -3,12 +3,12 @@ title: コンテナー グループの YAML リファレンス
 description: コンテナー グループを構成するために Azure Container Instances によってサポートされている YAML ファイルのリファレンス
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efbea7b64ccdf685d4c82bd406f2aa09227e53e1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87084762"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771139"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML リファレンス: Azure Container Instances
 
@@ -468,5 +468,4 @@ properties: # Properties of container group
 [仮想ネットワーク](container-instances-vnet.md)内のコンテナー グループ、または[外部ボリュームをマウントする](container-instances-volume-azure-files.md)コンテナー グループをデプロイするための YAML ファイルの使用例を参照してください。
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-
+[az-container-create]: /cli/azure/container#az_container_create

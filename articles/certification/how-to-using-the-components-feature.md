@@ -1,26 +1,26 @@
 ---
 title: Azure Certified Device ポータルでコンポーネント機能を使用する方法
 description: デバイスを正確に説明するために [デバイスの詳細] セクションのコンポーネント機能を最適に使用する方法についてのガイド
-author: nikuntjo
+author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 091a666026853d677f1e9ed7e5e1736307cecbe8
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 220a6c2107063734201064115898611c20cab650
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975776"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304462"
 ---
 # <a name="add-components-on-the-portal"></a>ポータルでコンポーネントを追加する
 
 認定プロジェクトに[デバイスの詳細を追加するチュートリアル](tutorial-02-adding-device-details.md)を行っているとき、デバイスのハードウェア仕様を記述することが求められます。 これを行う際、ユーザーはデバイスを構成する複数の独立したハードウェア製品 (**コンポーネント** と呼ばれます) を強調することができます。 これにより、追加のハードウェアが付属しているデバイスの販売をさらに促進することができ、顧客はこれらの機能に基づいてカタログを検索することによって適切な製品を見つけることができます。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
-- [Azure Certified Device ポータル](https://certify.azure.com)にサインインし、デバイス用のプロジェクトを作成する必要があります。 詳細については、[チュートリアル](tutorial-01-creating-your-project.md)を参照してください。
+- [Azure Certified Device ポータル](https://certify.azure.com)にサインインして、そこでデバイス用のプロジェクトを作成する必要があります。 詳細については、[チュートリアル](tutorial-01-creating-your-project.md)を参照してください。
 
 ## <a name="how-to-add-components"></a>コンポーネントを追加する方法
 

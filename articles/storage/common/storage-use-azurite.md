@@ -19,7 +19,7 @@ ms.locfileid: "106277127"
 
 Azurite オープンソース エミュレーターには、Azure Blob およびキュー ストレージ アプリケーションをテストするための無料のローカル環境が用意されています。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および macOS でのクロスプラットフォーム サポートを提供します。
 
-Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure ストレージ エミュレーター](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
+Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure Storage Emulator](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
 
 Azurite をローカル システムにインストールして実行するには、次のようないくつかの方法があります。
 
@@ -328,7 +328,7 @@ Azure SDK を使用している場合は、`--oauth basic and --cert --key/--pwd
 
 ### <a name="well-known-storage-account-and-key"></a>既知のストレージ アカウントとキー
 
-Azurite は、従来の Azure ストレージ エミュレーターで使用されるものと同じ既知のアカウントとキーを受け入れます。
+Azurite は、従来の Azure Storage Emulator で使用されるものと同じ既知のアカウントとキーを受け入れます。
 
 - アカウント名: `devstoreaccount1`
 - アカウント キー: `Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
@@ -568,5 +568,5 @@ Azurite への参加や提案をお待ちしています。 近日公開され�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[開発とテストに Azure ストレージ エミュレーターを使用する](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure ストレージ エミュレーターについての記述があります。
+- 「[開発とテストに Azure Storage Emulator を使用する](storage-use-emulator.md)」には、Azurite によって置き換えられつつある従来の Azure Storage Emulator についての記述があります。
 - 「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」では、有効な Azure Storage の接続文字列をアセンブルする方法が説明されています。

@@ -1,6 +1,6 @@
 ---
-title: Azure Table ストレージによるリード管理 - Microsoft 商用マーケットプレース
-description: Azure Table ストレージを使用して Microsoft AppSource および Azure Marketplace のリードを構成する方法について説明します
+title: Azure Blob Storage によるリード管理 - Microsoft 商用マーケットプレース
+description: Azure Blob Storage を使用して Microsoft AppSource および Azure Marketplace のリードを構成する方法について説明します
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
@@ -14,9 +14,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586844"
 ---
-# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob Storage を使用して商用マーケットプレースのリードを管理する
 
-Microsoft AppSource と Azure Marketplace のリードを受信できるようにパートナー センターでカスタマー リレーションシップ マネージメント (CRM) システムが明示的にサポートされていない場合、Azure Table ストレージを使用してこれらのリードを処理できます。 その後、データをエクスポートして CRM システムにインポートすることを選択できます。 この記事では、Azure ストレージ アカウントとそのアカウントの下にテーブルを作成する方法について説明します。 さらに、Power Automate を使用して新しいフローを作成し、オファーでリードを受信したときに電子メール通知を送信することもできます。
+Microsoft AppSource と Azure Marketplace のリードを受信できるようにパートナー センターでカスタマー リレーションシップ マネージメント (CRM) システムが明示的にサポートされていない場合、Azure Blob Storage を使用してこれらのリードを処理できます。 その後、データをエクスポートして CRM システムにインポートすることを選択できます。 この記事では、Azure ストレージ アカウントとそのアカウントの下にテーブルを作成する方法について説明します。 さらに、Power Automate を使用して新しいフローを作成し、オファーでリードを受信したときに電子メール通知を送信することもできます。
 
 ## <a name="configure-an-azure-storage-account"></a>Azure ストレージ アカウントを構成する
 
@@ -63,7 +63,7 @@ Microsoft AppSource と Azure Marketplace のリードを受信できるよう�
 
 ### <a name="lead-notification-example"></a>潜在顧客の通知の例
 
-この例では、Azure Table ストレージに新しいリードが追加されたときに電子メール通知を自動的に送信するフローが作成されます。 この例では、テーブル ストレージが更新された場合は、1 時間ごとにリード情報を送信するための繰り返しを設定します。
+この例では、Azure Blob Storage に新しいリードが追加されたときに電子メール通知を自動的に送信するフローが作成されます。 この例では、テーブル ストレージが更新された場合は、1 時間ごとにリード情報を送信するための繰り返しを設定します。
 
 1. Power Automate アカウントにサインインします。
 1. 左側のバーで、 **[マイ フロー]** を選択します。

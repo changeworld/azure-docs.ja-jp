@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 3862197acd3b3181180d264c4d2a2c8dbf6a1401
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378858"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389742"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -70,10 +70,8 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 5. 「[ドメインを検証する](#validate-the-domain)」に進みます。
 
 > [!NOTE]
-> AFD マネージドの証明書の場合、DigiCert の 64 文字の制限が適用されます。 制限を超えた場合、検証は失敗します。
-
-> [!NOTE]
-> Front Door によって管理される証明書を使用して HTTPS を有効にすることは、apex (ルート) ドメイン (例: contoso.com) ではサポートされません。 このシナリオでは、独自の証明書を使用できます。  詳細については、オプション 2 に進んでください。
+> * AFD マネージドの証明書の場合、DigiCert の 64 文字の制限が適用されます。 制限を超えた場合、検証は失敗します。
+> * Front Door によって管理される証明書を使用して HTTPS を有効にすることは、apex (ルート) ドメイン (例: contoso.com) ではサポートされません。 このシナリオでは、独自の証明書を使用できます。  詳細については、オプション 2 に進んでください。
 
 ### <a name="option-2-use-your-own-certificate"></a>オプション 2:独自の証明書を使用する
 

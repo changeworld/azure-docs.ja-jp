@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 8af1a5e73592dc1c3392f0bc1fecfe6139a54710
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551630"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529832"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -111,7 +111,7 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Microsoft 365 グループの有効期限日を取得する方法
 
-Microsoft 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](/graph/api/group-get?view=graph-rest-beta#example)を参照してください。
+Microsoft 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true)を参照してください。
 
 > [!NOTE]
 > アクセス パネルでグループのメンバーシップを管理するには、Azure Active Directory の [Groups General Setting]\(グループの全般設定\) で [Restrict access to Groups in Access Panel]\(アクセス パネルのグループへのアクセスを制限する\) を [いいえ] に設定する必要があります。

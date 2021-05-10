@@ -4,12 +4,12 @@ description: コマンド ラインから JavaScript 関数を作成し、ロー
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9810b1eb9e5f6bc65843d65f2f2452eac1be703
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b8db78e56087e7cb777d1aa85391d4b6ac2aae27
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102447318"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787541"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に JavaScript 関数を作成する
 
@@ -118,7 +118,7 @@ HTTP トリガーの場合、この関数は、*function.json* に定義され�
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 12 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     
-    [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドで Azure に関数アプリを作成します。 Node.js 10 を使用している場合は、さらに `--runtime-version` を `10` に変更します。
+    [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドで Azure に関数アプリを作成します。 Node.js 10 を使用している場合は、さらに `--runtime-version` を `10` に変更します。
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     

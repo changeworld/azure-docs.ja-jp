@@ -3,12 +3,12 @@ title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e7becadab7f23acd7b85d6d82fd8abbfa7608add
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221502"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781525"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -188,6 +188,6 @@ az acr import \
 
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-import]: /cli/azure/acr#az-acr-import
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-import]: /cli/azure/acr#az_acr_import
 [azure-cli]: /cli/azure/install-azure-cli

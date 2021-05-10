@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 514f1af2a1b120254840986fc5ceb803dfc24345
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491281"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363378"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -59,6 +59,7 @@ Automanage では、次のリージョンにある VM のみがサポートさ�
 * 英国南部
 * オーストラリア東部
 * オーストラリア南東部
+* 東南アジア
 
 ### <a name="required-rbac-permissions"></a>必要な RBAC アクセス許可
 新しい Automanage アカウントで Automanage を有効にするかどうかによって、ご利用のアカウントに必要な RBAC ロールは若干異なります。
@@ -105,7 +106,7 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 1. ポリシー定義を確認するには、 **[割り当て]** ボタンをクリックします
 1. ポリシーを適用するスコープ (管理グループ、サブスクリプション、またはリソース グループ) を選択します
 1. **[パラメーター]** で、Automanage アカウント、構成プロファイル、および効果のパラメーターを指定します (効果は通常、DeployIfNotExists になります)
-    1. Automanage アカウントを持っていない場合は、[作成する](#create-an-automanage-account)必要があります。
+    1. Automanage アカウントを持っていない場合は、[作成する](./automanage-account.md)必要があります。
 1. **[修復]** で、[Click a remediation task]\(修復タスクをクリックする\) チェック ボックスをオンにします。 これにより、Automanage へのオンボードが実行されます。
 1. **[確認と作成]** をクリックし、すべての設定が適切であることを確認します。
 1. **[作成]** をクリックします。
@@ -142,58 +143,9 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 
 ## <a name="automanage-account"></a>Automanage アカウント
 
-Automanage アカウントは、自動化された操作が行われるセキュリティ コンテキストまたは ID です。 通常、Automanage アカウント オプションを選択する必要はありませんが、リソースの自動化された管理を (おそらくは 2 人のシステム管理者間で) 分割したい委任シナリオがあった場合は、このオプションを使用すると、これらの各管理者の Azure ID を定義できます。
+Automanage アカウントは、自動化された操作が行われるセキュリティ コンテキストまたは ID です。 通常、Automanage アカウント オプションを選択する必要はありませんが、リソースの自動化された管理を (おそらくは 2 人のシステム管理者間で) 分割したい委任シナリオがあった場合は、有効化フローで Automanage アカウント オプションを使用すると、これらの各管理者の Azure ID を定義できます。
 
-Azure portal のエクスペリエンスでは、VM で Automanage が有効になっていると、 **[Enable Azure VM best practice]\(Azure VM のベスト プラクティスを有効にする\)** ブレードの詳細ドロップダウンを使用して、Automanage アカウントを割り当てたり、手動で作成したりすることができます。
-
-Automanage アカウントには、Automanage をオンボードするマシンを含むサブスクリプションに対する **共同作成者** および **リソース ポリシー共同作成者** ロールの両方が付与されます。 複数のサブスクリプションにわたるマシンで同じ Automanage アカウントを使用できます。これにより、その Automanage アカウントに、すべてのサブスクリプションに対する **共同作成者** および **リソース ポリシー共同作成者** アクセス許可が付与されます。
-
-VM が別のサブスクリプションの Log Analytics ワークスペースに接続されている場合は、Automanage アカウントに、その別のサブスクリプションの **共同作成者** と **リソース ポリシー共同作成者** の両方も付与されます。
-
-新しい Automanage アカウントで Automanage を有効にする場合は、サブスクリプションに対する次のアクセス許可が必要です。**所有者** ロール、または **共同作成者** ロールと **ユーザー アクセス管理者** ロールの併用。
-
-既存の Automanage アカウントを使用して Automanage を有効にする場合は、VM を含むリソース グループの **共同作成者** ロールが必要です。
-
-> [!NOTE]
-> 自動管理のベスト プラクティスを無効にしても、関連付けられているすべてのサブスクリプションに対する Automanage アカウントのアクセス許可がそのままになります。 サブスクリプションの IAM ページに移動してアクセス許可を手動で削除するか、または Automanage アカウントを削除してください。 Automanage アカウントがまだいずれかのマシンを管理している場合、そのアカウントを削除することはできません。
-
-### <a name="create-an-automanage-account"></a>Automanage アカウントを作成する
-Automanage アカウントは、ポータルまたは ARM テンプレートを使用して作成できます。
-
-#### <a name="portal"></a>ポータル
-1. ポータルの **[Automanage]** ブレードに移動します
-1. **[Enable on existing machine]\(既存のマシンで有効にする\)** をクリックします
-1. **[詳細設定]** で、[新しいアカウントを作成する] をクリックします
-1. 必須フィールドに入力し、 **[作成]** をクリックします
-
-#### <a name="arm-template"></a>ARM テンプレート
-次の ARM テンプレートを `azuredeploy.json` として保存し、次のコマンドを実行します: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "automanageAccountName": {
-            "type": "String"
-        },
-        "location": {
-            "type": "String"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2020-06-30-preview",
-            "type": "Microsoft.Automanage/accounts",
-            "name": "[parameters('automanageAccountName')]",
-            "location": "[parameters('location')]",
-            "identity": {
-                "type": "SystemAssigned"
-            }
-        }
-    ]
-}
-```
+Automanage アカウントとその作成方法の詳細については、[Automanage アカウントのドキュメント](./automanage-account.md)をご覧ください。
 
 ## <a name="status-of-vms"></a>VM の状態
 
@@ -227,7 +179,7 @@ Azure portal でそれを行うには、自動管理されている VM がすべ
 >
 > - VM とそれにオンボードされているサービスの構成は変更されません。
 > - それらのサービスによって発生する料金は引き続き課金されます。
-> - Automanage のすべての動作は直ちに停止します。
+> - Automanage のドリフトの監視は直ちに停止します。
 
 
 何よりもまず、仮想マシンは、オンボードされて構成されているどのサービスからも、オフボードされることはありません。 そのため、それらのサービスによって発生する料金は引き続き課金されます。 必要な場合は、オフボードする必要があります。 Automanage のすべての動作は直ちに停止します。 たとえば、VM でドリフトは監視されなくなります。

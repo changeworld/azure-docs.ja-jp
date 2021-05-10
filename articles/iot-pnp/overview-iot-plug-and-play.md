@@ -3,18 +3,18 @@ title: IoT プラグ アンド プレイの概要 | Microsoft Docs
 description: IoT プラグ アンド プレイについて説明します。 IoT プラグ アンド プレイは、スマート IoT デバイスがその機能を宣言できるようにするオープン モデリング言語に基づいています。 IoT デバイスは、クラウド ソリューションに接続するとき、デバイス モデルと呼ばれるその宣言を提示します。 これで、クラウド ソリューションでは、デバイスを自動的に認識して、デバイスとのやり取りを開始できるようになります。すべてコードを記述することなく行うことができます。
 author: rido-min
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 03/21/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 91a09db16524ebc7e4c04069b69b1c42c67538c6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079014"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739712"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT プラグ アンド プレイとは
 

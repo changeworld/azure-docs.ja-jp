@@ -3,14 +3,14 @@ title: Availability Zones をまたがるクラスターのデプロイ
 description: Availability Zones をまたがる Azure Service Fabric クラスターを作成する方法について説明します。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: a49fd6f97a9130fa0369d2a36cdc38e59613afc1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9cc2a9d189e7a781dc6ba64a65af022150392485
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544385"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727764"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -33,7 +33,7 @@ Availability Zones 間で分散された Service Fabric クラスターでは、
 * 仮想マシン スケール セットをデプロイするサブネットによって参照されている NSG。
 
 >[!NOTE]
-> Service Fabric ではゾーンをまたがる単一の仮想マシン スケール セットがサポートされないため、仮想マシン スケール セットの単一の配置グループ プロパティが true に設定されている必要があります。
+> 仮想マシン スケール セットの単一の配置グループ プロパティを true に設定する必要があります。
 
 Azure Service Fabric 可用性ゾーンのアーキテクチャを示す図 ![Azure Service Fabric 可用性ゾーンのアーキテクチャを示す図。][sf-architecture]
 

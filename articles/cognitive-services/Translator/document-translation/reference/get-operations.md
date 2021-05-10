@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/25/2021
 ms.author: v-jansk
-ms.openlocfilehash: c42f3081a831c267c7bc605267b99e2a916ea3d8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fd7cee564aa3a00e21d1e707d08a18115d519925
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105613774"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484678"
 ---
 # <a name="document-translation-get-operations"></a>ドキュメント翻訳: 操作の取得
 
@@ -23,14 +23,14 @@ ms.locfileid: "105613774"
 
 要求の数がページングの上限を超える場合は、サーバー側のページングが使用されます。 応答がページ分割されている場合は結果の一部を示しており、応答の中に継続トークンが含まれています。 継続トークンがない場合は、追加ページがないことを意味します。
 
-$top および $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。
+$top と $skip のクエリ パラメーターを使用して、返される結果の数とコレクションのオフセットを指定できます。
 
-サーバーは、クライアントによって指定された値を受け入れます。 ただし、クライアントでは、異なるページ サイズを含む応答や継続トークンを含む応答を処理できるよう準備しなければなりません。
+サーバーでは、クライアントによって指定された値が受け入れられます。 ただし、異なるページ サイズや継続トークンを含む応答を処理できるようクライアントを準備する必要があります。
 
-$top と $skip の両方が含まれているとき、サーバーはコレクションで最初に $skip を適用して、それから $top を適用する必要があります。 
+$top と $skip の両方が含まれているとき、サーバーでは、最初に $skip がコレクションに適用され、それから $top が適用される必要があります。 
 
 > [!NOTE]
-> サーバーが $top や $skip を受け入れられない場合、サーバーは、クエリ オプションを無視するだけでなく、そのことを知らせるエラーをクライアントに返さなければなりません。 これにより、返されるデータについてクライアントが憶測を立てるリスクが減ります。
+> サーバーが $top または $skip を受け入れられない場合、サーバーでは、クエリ オプションを無視するだけではなく、そのことを通知するエラーをクライアントに返す必要があります。 これにより、返されるデータについてクライアントが憶測を立てるリスクが軽減されます。
 
 ## <a name="request-url"></a>要求 URL
 
@@ -39,12 +39,12 @@ $top と $skip の両方が含まれているとき、サーバーはコレク�
 GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batch/v1.0-preview.1/batches
 ```
 
-[カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について確認してください。
+[カスタム ドメイン名](../get-started-with-document-translation.md#find-your-custom-domain-name)を見つける方法について説明します。
 
 > [!IMPORTANT]
 >
 > * **ドキュメント翻訳サービスへのすべての API 要求には、カスタム ドメイン エンドポイントが必要です**。
-> * ドキュメント翻訳への HTTP 要求を行うために、Azure portal リソースの _[キーとエンドポイント]_ ページのエンドポイントも、グローバル Translator エンドポイント `api.cognitive.microsofttranslator.com` も使用することはできません。
+> * ドキュメント翻訳への HTTP 要求を行うために、Azure portal リソースの _[キーとエンドポイント]_ ページで見つかるエンドポイントも、グローバル Translator エンドポイント `api.cognitive.microsofttranslator.com` も使用することはできません。
 
 ## <a name="request-parameters"></a>要求パラメーター
 
@@ -52,8 +52,8 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 |Query parameter (クエリ パラメーター)|必須|説明|
 |--- |--- |--- |
-|$skip|いいえ|コレクション内の $skip エントリをスキップします。 $top と $skip のどちらもが指定されている場合、$skip が先に適用されます。|
-|$top|いいえ|コレクション内の $top エントリを受け取ります。 $top と $skip のどちらもが指定されている場合、$skip が先に適用されます。|
+|$skip|いいえ|コレクション内の $skip エントリをスキップします。 $top と $skip の両方が指定されている場合、$skip が先に適用されます。|
+|$top|いいえ|コレクション内の $top エントリを受け取ります。 $top と $skip の両方が指定されている場合、$skip が先に適用されます。|
 
 ## <a name="request-headers"></a>要求ヘッダー
 
@@ -96,14 +96,14 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |summary.cancelled|整数 (integer)|キャンセルされたドキュメントの数。|
 |summary.totalCharacterCharged|整数 (integer)|課金される文字の合計数。|
 
-###<a name="error-response"></a>エラー応答
+### <a name="error-response"></a>エラー応答
 
 |名前|Type|説明|
 |--- |--- |--- |
 |code|string|高レベルのエラー コードを含む列挙型。 指定できる値<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>権限がありません</li></ul>|
 |message|string|高レベルのエラー メッセージを取得します。|
 |ターゲット (target)|string|エラーのソースを取得します。 たとえば、無効なドキュメントの場合は "documents" または "document id" になります。|
-|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい Inner Error 形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
+|innerError|InnerErrorV2|Cognitive Services API のガイドラインに準拠した新しい内部エラー形式。 必須プロパティとして ErrorCode、message、省略可能プロパティとして target、details (キーと値のペア)、inner error (入れ子が可能) が含まれています。|
 |innerError.code|string|コード エラー文字列を取得します。|
 |innerError.message|string|高レベルのエラー メッセージを取得します。|
 
@@ -157,7 +157,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ## <a name="next-steps"></a>次のステップ
 
-クイックスタートに従って、ドキュメント翻訳とクライアント ライブラリの使用方法についてご確認ください。
+クイックスタートに従って、ドキュメント翻訳とクライアント ライブラリの使用について学習します。
 
 > [!div class="nextstepaction"]
 > [ドキュメント変換を使ってみる](../get-started-with-document-translation.md)

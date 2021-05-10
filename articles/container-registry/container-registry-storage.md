@@ -31,7 +31,7 @@ Azure Container Registry は、データの保存場所とコンプライアン�
 
 ## <a name="zone-redundancy"></a>ゾーン冗長性
 
-回復性と高可用性を備えた Azure コンテナー レジストリを作成するには、必要に応じて、選択した Azure リージョンで[ゾーン冗長](zone-redundancy.md)を有効にします。 Premium サービス レベルの機能であるゾーン冗長は、Azure [Availability Zones](../availability-zones/az-overview.md) を使用して、有効になっているリージョンごとに 3 つ以上の異なるゾーンにレジストリをレプリケートします。 geo レプリケーションとゾーン冗長を組み合わせることにより、レジストリの信頼性とパフォーマンスを向上できます。 
+回復性と高可用性を備えた Azure Container Registry を作成するには、必要に応じて、選択した Azure リージョンで[ゾーン冗長](zone-redundancy.md)を有効にします。 Premium サービス レベルの機能であるゾーン冗長は、Azure [Availability Zones](../availability-zones/az-overview.md) を使用して、有効になっているリージョンごとに 3 つ以上の異なるゾーンにレジストリをレプリケートします。 geo レプリケーションとゾーン冗長を組み合わせることにより、レジストリの信頼性とパフォーマンスを向上できます。 
 
 ## <a name="scalable-storage"></a>スケーラブルなストレージ
 

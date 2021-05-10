@@ -3,19 +3,18 @@ title: CLI を使用した Azure Key Vault の管理 - Azure Key Vault | Microso
 description: この記事を活用し、Azure CLI を使用した Key Vault での一般的なタスクを自動化します
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d4037e66e653bc6e958020a5ef8722f2febb53d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557209"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772182"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -221,7 +220,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 ## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> キー コンテナーの高度なアクセス ポリシーを設定する
 
-[az keyvault update](/cli/azure/keyvault#az-keyvault-update) を使用し、キー コンテナーの高度なポリシーを有効にします。
+[az keyvault update](/cli/azure/keyvault#az_keyvault_update) を使用し、キー コンテナーの高度なポリシーを有効にします。
 
  Key Vault のデプロイを有効にする: 資格情報コンテナーからシークレットとして保存されている証明書を取得することを仮想マシンに許可します。
 

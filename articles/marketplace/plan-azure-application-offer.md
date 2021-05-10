@@ -64,7 +64,7 @@ Azure アプリケーションを管理するためのスクリプト環境と�
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
     - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

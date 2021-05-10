@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: iot-p0-scenario, iot-devices-deviceOEM
 ms.reviewer: nberdy
-ms.openlocfilehash: 788738082cbf9995fb2f7282bc3f574903275528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dad46e21b35225855d787c367d112362fc95a463
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90527209"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010543"
 ---
 # <a name="security-practices-for-azure-iot-device-manufacturers"></a>Azure IoT デバイス製造元向けのセキュリティ プラクティス
 IoT デバイスをリリースする製造元が増えており、一般的なプラクティスに関するガイダンスを示しておくと役に立ちます。 この記事では、Azure IoT Device Provisioning Service (DPS) で使用するデバイスを製造するときに考慮すべき推奨されるセキュリティ プラクティスについて説明します。  
@@ -177,7 +177,7 @@ TPM チップ搭載デバイスの製造における重要な手順は、TPM の
     > ソフトウェア TPM を使用している場合は、今すぐインストールできます。  同時に EK_pub を抽出します。
 
 #### <a name="step-4-device-is-packaged-and-sent-to-the-warehouse"></a>手順 4:デバイスが梱包されて倉庫に送られる
-デバイスは、倉庫に 6 から 12 か月間保管してから配置することができます。 
+デバイスは、DPS によって展開およびプロビジョニングされるまで、最長で 1 年間倉庫に保管されていることがあります。  デバイスが展開前に倉庫に長期間保管されていた場合、デバイスを展開するお客様は、ファームウェア、ソフトウェア、または期限切れの資格情報の更新が必要になることがあります。
 
 #### <a name="step-5-device-is-installed-into-the-location"></a>手順 5:デバイスが使用場所に設置される
 デバイスが最終的な場所に到着すると、DPS による自動プロビジョニングが行われます。

@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2a308c7de754f395a3ef8a1bd97ed2441d27d21d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212996"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783577"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty を使用する Java アプリケーションをデプロイする
 
@@ -40,7 +40,7 @@ ms.locfileid: "102212996"
 
    クラスターでメモリを集中的に使用するアプリケーションを実行する予定の場合は、`--worker-vm-size` パラメーターを使用して、ワーカー ノードにとって適切な仮想マシン サイズを指定します。 たとえば `Standard_E4s_v3` は、クラスターに Elasticsearch オペレーターをインストールするための仮想マシンの最小サイズです。 詳細については、次を参照してください。
 
-   * [クラスターを作成するための Azure CLI](/cli/azure/aro#az-aro-create)
+   * [クラスターを作成するための Azure CLI](/cli/azure/aro#az_aro_create)
    * [メモリ最適化でサポートされる仮想マシンのサイズ](./support-policies-v4.md#memory-optimized)
    * [Elasticsearch オペレーターをインストールするための前提条件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

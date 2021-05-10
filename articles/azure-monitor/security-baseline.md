@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bd3bb5e3060752d086f80f44a8f136cb861669c0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f002c7196b864d4a04beda1124d0519af612b716
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078521"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600235"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>Azure Monitor 用の Azure セキュリティ ベースライン
 
@@ -605,7 +605,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/general/assign-access=policy-portal)
+- [マネージド ID で Key Vault の認証を提供する方法](/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad)
 
 **責任**: Customer
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076787"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750772"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -28,7 +28,7 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
    > [!NOTE] 
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
-1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
 ### <a name="access-network-restricted-vaults"></a>ネットワーク制限があるコンテナーにアクセスする
 

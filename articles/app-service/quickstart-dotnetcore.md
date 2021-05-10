@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-dotnetcore-uiex
-ms.openlocfilehash: 7f538f5accb533b01c5ea685e424c70bfeb44f00
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 482bf6d29fbc1e982ee4d17099d82915ff3a0241
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058253"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762463"
 ---
 <!-- NOTES:
 
@@ -426,7 +426,7 @@ az webapp up --sku F1 --name <app-name> --os-type <os>
 - `<app-name>` を Azure 全体で一意の名前で置き換えます ("*有効な文字は、`a-z`、`0-9`、および `-` です*")。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 - `--sku F1` 引数を使用すると、**Free** [価格レベル][app-service-pricing-tier]で Web アプリが作成されます。 この引数を省略するとより高速な Premium レベルが使用されるため、時間単位のコストが発生します。
 - `<os>` を `linux` または `windows` に置き換えます。 *ASP.NET Framework 4.8* をターゲットにする場合は、`windows` を使用する必要があります。
-- 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location-name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
+- 必要に応じて、引数 `--location <location-name>` を含めることができます。ここで、`<location-name>` は利用可能な Azure リージョンです。 [`az account list-locations`](/cli/azure/appservice#az_appservice_list_locations) コマンドを実行すると、お使いの Azure アカウントで使用可能なリージョンの一覧を取得できます。
 
 コマンドが完了するまでに数分かかる場合があります。 実行中には、リソース グループ、App Service プラン、およびホスティング アプリの作成、ログ記録の構成、ZIP デプロイの実行に関するメッセージが表示されます。 その後、アプリの URL を含むメッセージが出力されます。
 

@@ -3,12 +3,12 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 0720af0848aa8263587dfd9573d205abf73303d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0f3638e7649fc02f050c575ee621ce9dc237c24f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562326"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517268"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 
@@ -212,4 +212,4 @@ SQL や SAP HANA のようなデータベース ワークロードの場合、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[監視とレポート作成の詳細については、Azure Backup をご参照ください。](./backup-azure-monitor-alert-faq.md)
+[監視とレポート作成の詳細については、Azure Backup をご参照ください。](./backup-azure-monitor-alert-faq.yml)

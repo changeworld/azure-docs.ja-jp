@@ -6,12 +6,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8ff85dc5571f549027e208409db3f4e80c68b205
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 363799cee5d66b718bb8ba06f4afd442add15148
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108192"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564710"
 ---
 このクイックスタートでは、iOS 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 
@@ -177,8 +177,8 @@ struct ContentView_Previews: PreviewProvider {
 
 ## <a name="get-the-teams-meeting-link"></a>Teams 会議のリンクを取得する
 
-Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta)で詳しく説明されています。
-Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは `onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta)の下からアクセスできます。 また、必要な会議情報は、Teams 会議の招待状自体にある **[Join Meeting]\(会議に参加\)** の URL から取得することもできます。
+Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
+Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは `onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)の下からアクセスできます。 また、必要な会議情報は、Teams 会議の招待状自体にある **[Join Meeting]\(会議に参加\)** の URL から取得することもできます。
 
 ## <a name="launch-the-app-and-join-teams-meeting"></a>アプリを起動し、Teams 会議に参加する
 

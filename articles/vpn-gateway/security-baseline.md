@@ -4,21 +4,22 @@ description: VPN Gateway セキュリティ ベースラインにより、Azure 
 author: msmbaldwin
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 04/08/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0f1dcb82c3a8d3819e8d316ef8efe2e3256e3db4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2b27b30f45d31e8bf6f334106af1516e7fc4cf56
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218997"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284172"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway に対する Azure セキュリティ ベースライン
 
-このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが VPN Gateway に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、VPN Gateway に適用される Azure セキュリティ ベンチマークと関連ガイダンスで定義されている **セキュリティ コントロール** によってグループ化されています。 VPN Gateway に適用されきない **コントロール** は、除外されています。
+このセキュリティ ベースラインにより、[Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview-v1.md) のガイダンスが VPN Gateway に適用されます。 Azure セキュリティ ベンチマークには、Azure 上のクラウド ソリューションをセキュリティで保護する方法に関する推奨事項がまとめてあります。 内容は、VPN Gateway に適用される Azure セキュリティ ベンチマークと関連ガイダンスで定義されている **セキュリティ コントロール** によってグループ化されています。
 
-Azure セキュリティ ベンチマークに対する VPN Gateway の完全なマッピングを確認するには、[VPN Gateway の完全なセキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)を参照してください。
+> [!NOTE]
+> VPN Gateway に適用されない **コントロール**、または Microsoft が責任を持つものは、除外されています。 Azure セキュリティ ベンチマークに対する VPN Gateway の完全なマッピングを確認するには、 **[VPN Gateway の完全なセキュリティ ベースライン マッピング ファイル](https://github.com/MicrosoftDocs/SecurityBenchmarks/raw/master/Azure%20Offer%20Security%20Baselines/1.1/vpn-gateway-security-baseline-v1.1.xlsx)** を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -32,11 +33,15 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md) 
 
-- [Azure portal を使用してルートベースの VPN ゲートウェイを作成する](./tutorial-create-gateway-portal.md)
-
-**Azure Security Center の監視**: はい
+- [Azure portal を使用してルートベースの VPN ゲートウェイを作成する](/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.1](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-1.md)]
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2:仮想ネットワーク、サブネット、ネットワーク インターフェイスの構成とトラフィックを監視してログに記録する
 
@@ -44,9 +49,13 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.2](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-2.md)]
 
 ### <a name="15-record-network-packets"></a>1.5:ネットワーク パケットを記録する
 
@@ -54,9 +63,13 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [VPN ゲートウェイのパケット キャプチャを構成する](packet-capture.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
+
+**Azure Policy 組み込み定義 - Microsoft.Network**:
+
+[!INCLUDE [Resource Policy for Microsoft.Network 1.5](../../includes/policy/standards/asb/rp-controls/microsoft.network-1-5.md)]
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
@@ -66,25 +79,25 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md) 
 
-- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network) 
+- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11:自動化ツールを使用してネットワーク リソース構成を監視し、変更を検出する
 
 **ガイダンス**:Azure アクティビティ ログを使用して、リソースの構成を監視し、仮想ネットワーク リソースに対する変更を検出します。 Azure Monitor 内で、VPN ゲートウェイに関連する重要なリソースへの変更が発生するとトリガーされるアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/essentials/activity-log-view)
 
 - [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
@@ -104,9 +117,9 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 
@@ -116,37 +129,37 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。 
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
+- [Log Analytics でデータ保持期間を変更する](https://docs.microsoft.com/azure/azure-monitor/logs/manage-cost-storage#change-the-data-retention-period) 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](https://docs.microsoft.com/azure/storage/common/manage-storage-analytics-logs#configure-logging)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="26-monitor-and-review-logs"></a>2.6:ログを監視して確認する
 
 **ガイダンス**: 異常な動作がないかログの分析と監視を行って、定期的に結果を確認します。 Azure Monitor と Log Analytics ワークスペースを使用してログを確認し、ログ データに対してクエリを実行します。 
 
-または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
+または、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md) 
+- [Log Analytics クエリの使用方法](/azure/azure-monitor/logs/get-started-portal) 
 
 - [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7:異常なアクティビティについてのアラートを有効にする
 
@@ -160,19 +173,19 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="29-enable-dns-query-logging"></a>2.9:DNS クエリのログ記録を有効にする
 
 **ガイダンス**:組織の要件に応じて、DNS ログ ソリューション用に Azure Marketplace のサードパーティ ソリューションを実装します。
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
 
-## <a name="identity-and-access-control"></a>ID とアクセスの制御
+**Azure Security Center の監視**: なし
+
+## <a name="identity-and-access-control"></a>ID およびアクセス制御
 
 *詳細については、[Azure セキュリティ ベンチマークの「ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
@@ -180,47 +193,47 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 **ガイダンス**: Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、ロールの割り当てを通じて Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
+- [PowerShell を使用して Azure Active Directory (Azure AD) でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
-
-**Azure Security Center の監視**: はい
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 専用管理者アカウントを使用する
 
-**ガイダンス**: 専用管理者アカウントの使用に関する標準的な操作手順を作成します。 
+**ガイダンス**: 専用管理者アカウントの使用に関する標準的な操作手順を作成します。
 
-また、Azure AD Privileged Identity Management および Azure Resource Manager を使用して、Just-In-Time アクセスを有効にすることもできます。 
+また、Azure Active Directory (Azure AD) Privileged Identity Management および Azure Resource Manager を使用して、Just-In-Time アクセスを有効にすることもできます。
 
-- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
-
-**Azure Security Center の監視**: はい
+- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory シングル サインオン (SSO) を使用する
 
-**ガイダンス**:可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセスの推奨事項を使用してください。 
+**ガイダンス**: 可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory (Azure AD) SSO を使用します。 Azure Security Center ID とアクセスの推奨事項を使用してください。
 
 - [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**:Azure AD MFA を有効にして、Azure Security Center ID とアクセスの推奨事項に従います。 
+**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証を有効にし、Azure Security Center の ID およびアクセスの推奨事項に従います。
 
-- [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md) 
+- [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
@@ -228,33 +241,33 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [セキュリティで保護された Azure マネージド ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Azure AD MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Active Directory (Azure AD) 多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: 管理者アカウントからの疑わしいアクティビティに関するログとアラート
 
-**ガイダンス**: Azure Active Directory セキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
+**ガイダンス**:Azure Active Directory (Azure AD) のセキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:承認された場所からのみ Azure リソースを管理する
 
-**ガイダンス**: Azure AD のネームド ロケーションを使用して、IP アドレス範囲または国、地域の特定の論理グループからのアクセスのみを許可します。 
+**ガイダンス**: Azure Active Directory (Azure AD) のネームド ロケーションを使用して、IP アドレス範囲または国、リージョンの特定の論理グループからのアクセスのみを許可します。
 
 - [Azure AD のネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Azure Active Directory を使用する
 
@@ -262,47 +275,47 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 
 
-- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml) 
+- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: 非アクティブ化された資格情報へのアクセスの試行を監視する
 
-**ガイダンス**: Azure AD サインイン アクティビティ、監査、およびリスク イベント ログ ソースにアクセスできるため、任意の SIEM または監視ツールとの統合が可能です。 
+**ガイダンス**: Azure Active Directory (Azure AD) サインイン アクティビティ、監査、およびリスク イベント ログのソースにアクセスできるため、任意の SIEM または監視ツールと統合することができます。
 
-このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。 
+このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**: Azure AD Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。 
+**ガイダンス**: Azure Active Directory (Azure AD) Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
+- [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-protection"></a>データ保護
 
@@ -312,15 +325,15 @@ Azure セキュリティ ベンチマークに対する VPN Gateway の完全な
 
 **ガイダンス**:VPN ゲートウェイには、お客様の仮想ネットワークごとに専用の VM インスタンスがあります。 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメインに対して個別の仮想ネットワーク、サブスクリプション、管理グループを使用して、分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Azure リソースへのアクセスを制御できます。
 
-- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
+- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
 
-- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
+- [管理グループを作成する方法](/azure/governance/management-groups/create)
 
-- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center の監視**: 適用なし
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3:機密情報の承認されていない転送を監視してブロックする
 
@@ -330,9 +343,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:転送中のすべての機密情報を暗号化する
 
@@ -340,39 +353,39 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 仮想ネットワーク内の該当するリソースについて、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
-- [VPN の種類について](vpn-gateway-about-vpn-gateway-settings.md#vpntype)
+- [VPN の種類について](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#vpntype)
 
-- [サイト間 VPN Gateway 接続用の VPN デバイスと IPsec/IKE パラメーターについて](vpn-gateway-about-vpn-devices.md#ipsec)
+- [サイト間 VPN Gateway 接続用の VPN デバイスと IPsec/IKE パラメーターについて](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec)
 
 - [暗号化要件と Azure VPN ゲートウェイについて](vpn-gateway-about-compliance-crypto.md)
 
 - [サイト間 VPN または VNet 対 VNet 接続用の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 
-- [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
-
-**Azure Security Center の監視**: はい
+- [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
 **責任**: 共有
 
+**Azure Security Center の監視**: なし
+
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5:アクティブ検出ツールを使用して機密データを特定する
 
-**ガイダンス**:サードパーティのアクティブ検出ツールを使用して、お客様のテクノロジ システムによって格納、処理、または送信されるすべての機密情報 (オンサイトにあるもの、またはリモート サービス プロバイダーにあるものなど) を特定し、組織の機密情報インベントリを更新します。
-
-**Azure Security Center の監視**: 現在は使用できません
+**ガイダンス**: サードパーティのアクティブ検出ツールを使用して、お客様のテクノロジ システムによって格納、処理、または送信されるすべての機密情報 (オンサイトにあるもの、またはリモート サービス プロバイダーにあるものなど) を特定し、組織の機密情報インベントリを更新します。
 
 **責任**: Customer
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
+**Azure Security Center の監視**: なし
 
-**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用してデータとリソースへのアクセスを制御します。それ以外の場合は、サービス固有のアクセス制御方法を使用します。 組み込みロール (所有者、共同作成者、ネットワーク共同作成者など) を使用して、適切なスコープにロールを割り当てます。 カスタム ロールを作成し、仮想ネットワーク、サブネット、VPN ゲートウェイ、ネットワーク インターフェイス、ネットワーク セキュリティ グループ、ルート テーブルに必要な特定のアクセス許可をロールに割り当てることにより、仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てます。
+### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+
+**ガイダンス**: データとリソースに対して Azure Active ロールベースのアクセス制御 (Azure RBAC) を使用します。それ以外の場合は、サービス固有のアクセス制御方法を使用します。 組み込みロール (所有者、共同作成者、ネットワーク共同作成者など) を使用して、適切なスコープにロールを割り当てます。 カスタム ロールを作成し、仮想ネットワーク、サブネット、VPN ゲートウェイ、ネットワーク インターフェイス、ネットワーク セキュリティ グループ、ルート テーブルに必要な特定のアクセス許可をロールに割り当てることにより、仮想ネットワークの機能のサブセットに対して特定のアクセス許可を割り当てます。
 
 - [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-- [仮想ネットワークを計画する](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [仮想ネットワークを計画する](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#permissions)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 
@@ -382,11 +395,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [VPN Gateway からの診断ログ イベントにアラートを設定する](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
-
-**Azure Security Center の監視**: 現在は使用できません
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
@@ -398,9 +411,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [NIST の出版物 -- 一般的な脆弱性のスコアリング システム](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
@@ -414,45 +427,45 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [VPN Gateway 用の Azure CLI](/cli/azure/network/vnet-gateway)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="62-maintain-asset-metadata"></a>6.2:資産メタデータを保持する
 
 **ガイダンス**:VPN Gateway リソースにタグを適用し、定義されている分類に従ってそれらを論理的に編成します。
 
-- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center の監視**: 適用なし
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3:承認されていない Azure リソースを削除する
 
 **ガイダンス**:タグ付け、管理グループ、個別のサブスクリプションを必要に応じて使用し、VPN Gateway リソースを整理および追跡します。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。 
 
-- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md) 
+- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription) 
 
-- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md) 
+- [管理グループを作成する方法](/azure/governance/management-groups/create) 
 
-- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center の監視**: 適用なし
+- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**: 組織のニーズに応じて、承認された Azure リソースとコンピューティング リソース用に承認されたソフトウェアのインベントリを作成します。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5:承認されていない Azure リソースを監視する
 
@@ -468,11 +481,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](../virtual-network/policy-reference.md)
-
-**Azure Security Center の監視**: 適用なし
+- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](/azure/virtual-network/policy-samples)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
@@ -480,9 +493,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9:承認された Azure サービスのみを使用する
 
@@ -494,23 +507,23 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
 
-- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](../virtual-network/policy-reference.md)
-
-**Azure Security Center の監視**: 適用なし
+- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](/azure/virtual-network/policy-samples)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11:Azure Resource Manager を操作するユーザーの機能を制限する
 
-**ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure AD 条件付きアクセスを使用します。 
+**ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure Active Directory (Azure AD) 条件付きアクセスを使用します。
 
 - [条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
@@ -520,23 +533,23 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Azure Policy の別名を使用して、VPN Gateway などの Azure ネットワーク リソースの構成を監査または適用するためのカスタム ポリシーを作成します。 組み込みの Azure Policy 定義を使用することもできます。
 
-Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプレートをエクスポートする機能があり、構成が確実に組織のセキュリティ要件を満たすかそれを超えるように確認する必要があります。
+Azure Resource Manager には、テンプレートを JavaScript Object Notation (JSON) でエクスポートする機能があります。これを確認して、構成が確実に組織のセキュリティ要件を満たすかそれを超えるようにする必要があります。
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
-- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](../virtual-network/policy-reference.md)
+- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](/azure/virtual-network/policy-samples)
 
 - [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
 - [セキュリティの推奨事項 - リファレンス ガイド](../security-center/recommendations-reference.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
@@ -550,23 +563,23 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [仮想ネットワーク用の Azure Resource Manager テンプレート サンプル](../virtual-network/template-samples.md)
 
-- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](../virtual-network/policy-reference.md)
-
-**Azure Security Center の監視**: 適用なし
+- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](/azure/virtual-network/policy-samples)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 
-**ガイダンス**:カスタム Azure Policy 定義、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。 
+**ガイダンス**:カスタム Azure Policy 定義、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Azure AD で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7:Azure リソース用の構成管理ツールをデプロイする
 
@@ -574,11 +587,11 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md) 
 
-- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
-
-**Azure Security Center の監視**: 適用なし
+- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9:Azure リソースの自動構成監視を実装する
 
@@ -586,19 +599,19 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](../virtual-network/policy-reference.md)
-
-**Azure Security Center の監視**: 適用なし
+- [仮想ネットワークに対する Azure Policy のサンプルの組み込み](/azure/virtual-network/policy-samples)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11:Azure シークレットを安全に管理する
 
 **ガイダンス**:VPN Gateway サービスにより、お客様の事前共有キーと証明書が、暗号化された形式で内部に格納され、転送されます。 お客様は、事前共有キーまたは証明書を独自のシステムで保護する必要があります。
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12:ID を安全かつ自動的に管理する
 
@@ -614,15 +627,15 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [複数のクライアント アプリでテナントを構成する](openvpn-azure-ad-tenant-multi-app.md)
 
-- [Multi-Factor Authentication を構成する](openvpn-azure-ad-mfa.md)
+- [多要素認証を構成する](openvpn-azure-ad-mfa.md)
 
 - [VPN クライアントの構成](openvpn-azure-ad-client.md)
 
 - [マネージド ID を構成する方法](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13:意図しない資格情報の公開を排除する
 
@@ -630,13 +643,13 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳しくは、「[Azure Security ベンチマーク:データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
+*詳細については、[Azure セキュリティ ベンチマークの「データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
@@ -650,9 +663,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Automation の概要](../automation/automation-intro.md)
 
-**Azure Security Center の監視**: 現在は使用できません
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: システムの完全バックアップを実行し、すべてのカスタマー マネージド キーをバックアップする
 
@@ -664,9 +677,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Automation の概要](../automation/automation-intro.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:カスタマー マネージド キーを含むすべてのバックアップを検証する
 
@@ -674,25 +687,25 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
-
-**Azure Security Center の監視**: はい
+- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: バックアップとカスタマー マネージド キーの保護を保証する
 
 **ガイダンス**: Azure DevOps を使用して、カスタム Azure Policy 定義や Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。 Azure DevOps で管理するリソースを保護するには、特定のユーザー、組み込みセキュリティ グループ、または Azure Active Directory (Azure AD) (Azure DevOps に統合されている場合) で定義されているグループに、アクセス許可を付与または拒否できます。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
-- [Azure Storage Blob の論理的な削除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
-
-**Azure Security Center の監視**: 適用なし
+- [Azure Storage Blob の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="incident-response"></a>インシデント対応
 
@@ -708,23 +721,23 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [独自のインシデント対応計画を作成するために NIST の「コンピューター セキュリティ インシデント対応ガイド」を使用する](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2:インシデントのスコアリングと優先順位付けの手順を作成する
 
-**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された Security Center の信頼度と、アラートの原因となったアクティビティの背後に悪意のある意図があったかどうかの信頼レベルに基づいて決まります。
+**ガイダンス**: Azure Security Center によって各アラートに重大度が割り当てられるため、最初に調査する必要があるアラートの優先順位付けに役立ちます。 重要度は、アラートの発行に使用された調査結果またはメトリックを Security Center がどの程度信頼しているかということと、アラートの原因となったアクティビティの背後に悪意のある意図があったことについての確信の度合いに基づくものです。
 
 さらに、タグを使用してサブスクリプションをマークし、Azure リソース (特に、機密データを処理するもの) を識別して分類するための命名システムを作成します。  インシデントが発生した Azure リソースと環境の重要度に基づいてアラートの修復に優先順位を付けることは、お客様の責任です。 
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
-
-**Azure Security Center の監視**: はい
+- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
 
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
@@ -732,9 +745,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [NIST の出版物 -- IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:セキュリティ インシデントの連絡先の詳細を指定し、セキュリティ インシデントのアラート通知を構成します
 
@@ -742,9 +755,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
@@ -754,9 +767,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
-**Azure Security Center の監視**: はい
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6:セキュリティ アラートへの対応を自動化する
 
@@ -764,9 +777,9 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Security Center でワークフロー自動化を構成する方法](../security-center/workflow-automation.md)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: Customer
+
+**Azure Security Center の監視**: なし
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
@@ -780,11 +793,11 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Security Center の監視**: 適用なし
-
 **責任**: 共有
+
+**Azure Security Center の監視**: なし
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
-- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
+- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する

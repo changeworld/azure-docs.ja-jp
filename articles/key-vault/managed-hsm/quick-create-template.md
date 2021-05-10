@@ -3,19 +3,23 @@ title: Azure クイックスタート - Azure Resource Manager テンプレー�
 description: Resource Manager テンプレートを使用して Azure Key Vault Managed HSM を作成する方法について説明するクイックスタート。
 services: key-vault
 author: msmbaldwin
-tags: azure-resource-manager
+ms.author: mbaldwin
+ms.date: 09/15/2020
+ms.topic: quickstart
 ms.service: key-vault
 ms.subservice: managed-hsm
-ms.topic: quickstart
-ms.custom: mvc
-ms.date: 09/15/2020
-ms.author: mbaldwin
-ms.openlocfilehash: b2cd8578599fe1e80044f1eb388cddae7a292166
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+tags:
+- azure-resource-manager
+ms.custom:
+- mvc
+- devx-track-azurecli
+- mode-arm
+ms.openlocfilehash: 33c262c61d50b45663a627e40ea186f1f0dcde41
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376870"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532959"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Key Vault Managed HSM を作成する
 

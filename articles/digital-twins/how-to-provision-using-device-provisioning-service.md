@@ -29,7 +29,7 @@ ms.locfileid: "107107297"
 * **IoT ハブ** です。 手順については、この [ IoT Hub のクイック スタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」のセクションを参照してください。
 * IoT Hub のデータに基づいてデジタル ツイン情報を更新する [**Azure 関数**](../azure-functions/functions-overview.md)。 [ *「ハウツー: IoT ハブ データを取り込み、この Azure 関数を作成する」*](how-to-ingest-iot-hub-data.md)の手順に従います。 この記事で使用する関数 **_名_** を収集します。
 
-このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある *[ZIP のダウンロード]* ボタンを選択して、お使いのマシンにサンプル プロジェクトを取得します。 ダウンロードしたフォルダーを解凍します。
+このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins and IoT Hub provisioning integration sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある *[Download ZIP]* ボタンを選択して、お使いのマシンにサンプル プロジェクトを取得します。 ダウンロードしたフォルダーを解凍します。
 
 お使いのコンピューターに [**Node.js**](https://nodejs.org/download) がインストールされている必要があります。 デバイス シミュレーターは **Node.js** バージョン 10.0.x 以降に基づいています。
 

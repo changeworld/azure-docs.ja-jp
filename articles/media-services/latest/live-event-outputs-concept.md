@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: dec4eec16ba24baf31d911db882625479c33fb3b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 44ab9e4ff83fec2ddfbd1cb44f503298d12789d1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278628"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766301"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -147,35 +147,35 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 * 非静的ホスト名
 
-    **LiveEvent** を作成する際に、非静的ホスト名は Media Services v3 の既定のモードです。 ライブ イベントの割り当ては少し速くなりますが、ライブ エンコード ハードウェアまたはソフトウェアに必要な取り込み URL はランダムになります。 ライブ イベントを停止または開始すると、URL は変わります。 非静的ホスト名は、エンド ユーザーがライブ イベントを非常に迅速に取得する必要があるアプリを使用し、動的な取り込み URL を持つことが問題でないようなストリーミングを行う場合にのみ役立ちます。
+    **LiveEvent** を作成するとき、非静的ホスト名は Media Services v3 の既定のモードです。 ライブ イベントの割り当ては少し速くなりますが、ライブ エンコード ハードウェアまたはソフトウェアに必要な取り込み URL はランダムになります。 ライブ イベントを停止または開始すると、URL は変わります。 非静的ホスト名は、エンド ユーザーがライブ イベントを非常に迅速に取得する必要があるアプリを使用し、動的な取り込み URL を持つことが問題でないようなストリーミングを行う場合にのみ役立ちます。
 
     ライブ イベントが作成される前にクライアント アプリが取り込み URL を事前に生成する必要がない場合は、ライブ イベント用のアクセス トークンが Media Services で自動生成されるようにします。
 
 * 静的ホスト名 
 
-    静的ホスト名モードは、RTMP 取り込み URL を使用してライブ エンコード ハードウェアまたはソフトウェアを事前に構成する大半の演算子で推奨されています。RTMP 取り込み URL は、特定のライブ イベントの作成や停止/開始時に変更されることはありません。 これらの演算子は、時間が経過しても変化しない、予測的な RTMP 取り込み URL を必要としています。 これは、BlackMagic Atem Mini Pro などのハードウェア エンコード デバイスの構成設定、または同様のハードウェア エンコードや製作ツールの構成設定に、静的な RTMP 取り込み URL をプッシュする必要がある場合にも非常に便利です。 
+    静的ホスト名モードは、特定のライブ イベントの作成や停止/開始時に変更されることのない RTMP 取り込み URL を使用してライブ エンコード ハードウェアまたはソフトウェアを事前に構成する大半の演算子で推奨されています。 これらの演算子は、時間が経過しても変化しない、予測的な RTMP 取り込み URL を必要としています。 これは、BlackMagic Atem Mini Pro などのハードウェア エンコード デバイス、または同様のハードウェア エンコードや製作ツールの構成設定に静的な RTMP 取り込み URL をプッシュする必要がある場合にも非常に便利です。 
 
     > [!NOTE]
-    > Azure portal では、バニティ URL は "*静的ホスト名プレフィックス*" と呼ばれる静的ホスト名です。
+    > Azure portal では、静的ホスト名 URL は "*静的ホスト名プレフィックス*" と呼ばれます。
 
     API でこのモードを指定するには、作成時に `useStaticHostName` を `true` に設定します (既定値は `false`)。 `useStaticHostname` が true に設定されている場合、`hostnamePrefix` は、ライブ イベント プレビューおよび取り込みエンドポイントに割り当てられたホスト名の最初の部分を指定します。 最終的なホスト名は、このプレフィックス、メディア サービス アカウント名、および Azure Media Services データ センターの短いコードの組み合わせになります。
 
     URL でのランダム トークンを避けるため、作成時に自身のアクセス トークン (`LiveEventInput.accessToken`) を渡す必要もあります。  このアクセス トークンは、有効な GUID 文字列 (ハイフン付きまたはなし) である必要があります。 モードはいったん設定されると、更新できません。
 
-    アクセス トークンは、Azure リージョンと Media Services アカウント内で一意である必要があります。 アプリで静的ホスト名の取り込み URL を使用する必要がある場合は、リージョン、Media Services アカウント、およびライブ イベントの特定の組み合わせで使用するために、常に新しい GUID インスタンスを作成することをお勧めします。
+    アクセス トークンは、Azure リージョンと Media Services アカウント内で一意である必要があります。 アプリで静的ホスト名の取り込み URL を使用する必要がある場合は、リージョン、Media Services アカウント、ライブ イベントの特定の組み合わせで使用するために、常に新しい GUID インスタンスを作成することをお勧めします。
 
     静的ホスト名 URL を有効にしたり、アクセス トークンを有効な GUID (たとえば `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) に設定したりするには、次の API を使用します。  
 
-    |言語|静的ホスト名 URL を有効にする|アクセス トークンを設定する|
+    |Language|静的ホスト名 URL を有効にする|アクセス トークンを設定する|
     |---|---|---|
     |REST|[properties.useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--use-static-hostname](/cli/azure/ams/live-event#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event#optional-parameters)|
+    |CLI|[--use-static-hostname](/cli/azure/ams/live-event#az_ams_live_event_create)|[--access-token](/cli/azure/ams/live-event#optional-parameters)|
     |.NET|[LiveEvent.useStaticHostname](/dotnet/api/microsoft.azure.management.media.models.liveevent.usestatichostname?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Management_Media_Models_LiveEvent_UseStaticHostname)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>ライブ取り込み URL の名前付け規則
 
 * 以下の "*ランダム*" な文字列は 128 ビットの 16 進数です (32 文字の 0-9 a-f で構成されています)。
-* *アクセス トークン*: 静的ホスト名設定を使用するときに設定する有効な GUID 文字列。 たとえば、「 `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` 」のように入力します。
+* "*アクセス トークン*": 静的ホスト名設定を使用するときに設定する有効な GUID 文字列。 たとえば、「 `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` 」のように入力します。
 * *ストリーム名*:特定の接続のためのストリーム名を示します。 ストリーム名の値は通常、使用するライブ エンコーダーによって追加されます。 接続を説明するために任意の名前 ("video1_audio1"、"video2_audio1"、"stream" など) を使用するようにライブ エンコーダーを構成できます。
 
 #### <a name="non-static-hostname-ingest-url"></a>非静的ホスト名の取り込み URL
@@ -227,4 +227,4 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 ## <a name="live-event-output-questions"></a>ライブ イベント出力の質問
 
-「[ライブ イベント出力の質問](questions-collection.md#live-streaming)」記事をご覧ください。
+[ライブ イベント出力の質問](questions-collection.md#live-streaming)に関する記事をご覧ください。

@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/02/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6b4d5c1372a8351f1fe5a6608aff38bf232aabd8
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 1fe5974bafddcb4e474ef59a062836e071ab9461
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121951"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304921"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
@@ -22,11 +22,50 @@ ms.locfileid: "102121951"
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
+## <a name="march-2021"></a>2021 年 3 月
+
+2021 年 3 月のリリースは、2021 年 4 月 5 日に初めて導入され、リリースの最終ステージは 2021 年 4 月 9 日に完了しました。
+
+[既知の問題 - Azure Arc 対応データ サービス (プレビュー)](known-issues.md) で、このリリースの制限事項を確認してください。
+
+Azure Data CLI (`azdata`) バージョン番号: 20.3.2。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
+
+### <a name="data-controller"></a>データ コントローラー
+
+- Azure Arc 対応データ サービスのデータ コントローラーをポータルから直接接続モードでデプロイします。 「[データ コントローラーのデプロイ - 直接接続モード - 前提条件](deploy-data-controller-direct-mode-prerequisites.md)」から始めます。
+
+### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
+
+PostgreSQL 用のカスタム リソース定義 (CRD) は、どちらも 1 つの CRD に統合されています。 次の表を参照してください。
+
+|Release |CRD |
+|-----|-----|
+|2021 年 2 月以前| postgresql-11s.arcdata.microsoft.com<br/>postgresql-12s.arcdata.microsoft.com |
+|2021 年 3 月以降 | postgresqls.arcdata.microsoft.com
+
+前のインストールをクリーンアップするときに、以前の CRD を削除します。 「[以前のインストールからのクリーンアップ](create-data-controller-using-kubernetes-native-tools.md#cleanup-from-past-installations)」を参照してください。
+
+### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
+
+- Azure portal から直接接続モードで SQL マネージド インスタンスを作成できるようになりました。
+
+- データベースを 3 つのレプリカを持つ SQL Managed Instance に復元できるようになりました。これは、可用性グループに自動的に追加されます。 
+
+- 3 つのレプリカと共にデプロイされた SQL Managed Instance で、読み取り専用のセカンダリ エンドポイントに接続できるようになりました。 読み取り専用のセカンダリ接続エンドポイントを表示するには、`azdata arc sql endpoint list` を使用します。
+
+### <a name="known-issues"></a>既知の問題
+
+- 直接接続モードで、`azdata arc dc upload` を使用して使用状況、メトリック、およびログをアップロードすることは、現在ブロックされています。 使用状況は自動的にアップロードされます。 間接接続モードで作成されたデータ コントローラーのアップロードは引き続き機能します。
+- 直接モードでのデータ コントローラーのデプロイは、Azure portal からのみ行うことができ、azdata、Azure Data Studio、kubectl などのクライアント ツールからは使用できません。
+- 直接モードでの Azure Arc 対応 SQL Managed Instance のデプロイは、Azure portal からのみ行うことができ、azdata、Azure Data Studio、kubectl などのツールからは使用できません。
+- 直接モードでの Azure Arc 対応 PostgeSQL Hyperscale のデプロイは現在使用できません。
+- `–proxy-cert <path-t-cert-file>` 経由でプロキシを使用する場合、直接接続モードでの使用状況データの自動アップロードは成功しません。
+
 ## <a name="february-2021"></a>2021 年 2 月
 
 ### <a name="new-capabilities-and-features"></a>新機能
 
-Azure データ CLI (`azdata`) バージョン番号: 20.3.1。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
+Azure データ CLI (`azdata`) バージョン番号: 20.3.1。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
 
 追加の更新プログラムには以下が含まれます。
 
@@ -44,7 +83,7 @@ Azure データ CLI (`azdata`) バージョン番号: 20.3.1。 [https://aka.ms/
 
 ### <a name="new-capabilities-and-features"></a>新機能
 
-Azure データ CLI (`azdata`) バージョン番号:20.3.0。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
+Azure データ CLI (`azdata`) バージョン番号:20.3.0。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
 
 追加の更新プログラムには以下が含まれます。
 - 17 の新しい言語で使用できるローカライズされたポータル
@@ -70,7 +109,7 @@ Azure データ CLI (`azdata`) バージョン番号:20.3.0。 [https://aka.ms/a
 
 ### <a name="new-capabilities--features"></a>新機能
 
-Azure データ CLI (`azdata`) バージョン番号:20.2.5。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。
+Azure データ CLI (`azdata`) バージョン番号:20.2.5。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
 
 Azure Data CLI (`azdata`) で `azdata arc sql endpoint list` および `azdata arc postgres endpoint list` コマンドを使用すると、SQL Managed Instance および PostgreSQL Hyperscale の各エンドポイントが表示されます。
 
@@ -127,16 +166,9 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
    :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="各ゾーンのチェックボックスをオフにして、[なし] を指定します。":::
 
-#### <a name="postgresql"></a>PostgreSQL
-
-- Azure Arc 対応 PostgreSQL Hyperscale では、指定した相対時点まで復元できない場合に、不正確なエラー メッセージが返されます。 たとえば、バックアップに含まれる内容よりも古い特定の時点に復元するよう指定した場合、復元は失敗し、次のようなエラー メッセージが表示されます。エラー: (404)。 理由:見つかりません。 HTTP 応答の本文: {"code":404, "internalStatus":"NOT_FOUND", "reason":"Failed to restore backup for server...}
-これが発生した場合は、バックアップが存在する日付範囲内の特定の時点を指定した後、コマンドを再始動します。 この範囲を特定するには、バックアップを一覧表示し、それが取得された日付を確認します。
-- ポイントインタイム リストアは、サーバー グループ間でのみサポートされます。 ポイントインタイム リストア操作の対象サーバーに、バックアップ取得元のサーバーを指定することはできません。 これは、別のサーバー グループである必要があります。 ただし、完全復元は同じサーバー グループに対してサポートされています。
-- 完全復元を実行する際は、backup-id が必要です。 既定では、backup-id を指定していない場合は、最新のバックアップが使用されます。 これは、このリリースでは機能しません。
-
 ## <a name="october-2020"></a>2020 年 10 月 
 
-Azure データ CLI (`azdata`) バージョン番号:20.2.3。 [https://aka.ms/azdata](https://aka.ms/azdata) でダウンロードします。
+Azure データ CLI (`azdata`) バージョン番号:20.2.3。 `azdata` は、「[Azure Data CLI (`azdata`) のインストール](/sql/azdata/install/deploy-install-azdata)」に従ってインストールできます。
 
 ### <a name="breaking-changes"></a>重大な変更
 

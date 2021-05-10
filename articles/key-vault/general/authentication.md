@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault に対する認証
 description: Azure Key Vault に対して認証を行う方法について説明します
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 08/27/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8a8fe4ed0c24d2ccda5fb844005a33a93e85a169
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 7d219b752b894bbce9815911658c804ecb850ea1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365520"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753436"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
