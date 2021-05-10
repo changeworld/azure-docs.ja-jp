@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: e012bc2bc3c9ec1ab9351ed937e2c5049eef20d5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1ff2a069b7690817c8fc431d920e93a8cb6c3544
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316013"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656202"
 ---
 # <a name="features"></a>特徴
 
@@ -35,18 +35,18 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | オプティミスティック ロック付きの update | はい       | はい       | はい       |                                                     |
 | update (条件付き)           | はい       | はい       | はい       |                                                     |
 | patch                          | いいえ        | いいえ        | いいえ        |                                                     |
-| delete                         | はい       | はい       | はい       |  下記のメモを参照してください。                                   |
+| delete                         | はい       | はい       | はい       |  以下の「注」を参照してください。                                   |
 | delete (条件付き)           | いいえ        | いいえ        | いいえ        |                                                     |
 | history                        | はい       | はい       | はい       |                                                     |
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| 検索                         | 部分的   | 部分的   | 部分的   | 「 [FHIR 検索の概要」を](overview-of-search.md)参照してください。                           |
-| chained search                 | 部分的       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
-| reverse chained search         | 部分的       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| 検索                         | Partial   | Partial   | Partial   | FHIR [検索の概要に関するページを参照してください](overview-of-search.md)。                           |
+| chained search                 | Partial       | はい       | 部分的   | 以下の注 2 を参照してください。                                   |
+| reverse chained search         | Partial       | はい       | 部分的   | 以下の注 2 を参照してください。                                   |
 | capabilities                   | はい       | はい       | はい       |                                                     |
 | batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
-| paging                         | 部分的   | 部分的   | 部分的   | `self` と `next` がサポートされています                     |
+| paging                         | 部分的   | Partial   | 部分的   | `self` と `next` がサポートされています                     |
 | intermediaries                 | いいえ        | いいえ        | いいえ        |                                                     |
 
 > [!Note]
@@ -54,9 +54,9 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
 
  **注 2**
-* CosmosDB のチェーンと逆のチェーン FHIR 検索に関する MVP サポートを追加します。 
+* CosmosDB でのチェーンおよびリバース チェーン FHIR 検索の MVP サポートを追加しました。 
 
-  Cosmos でサポートされている Azure API for FHIR とオープンソースの FHIR サーバーでは、チェーン検索と逆連鎖検索は MVP 実装です。 Cosmos DB でチェーン検索を実行するために、この実装は検索式を処理し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリが100を超える結果を返す場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後にあります。 Cosmos DB でチェーン検索を使用するには、ヘッダーを使用し `x-ms-enable-chained-search: true` ます。 詳細については、「 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)」を参照してください。
+  Cosmos によってAzure API for FHIRされたオープンソースの FHIR サーバーでは、チェーン検索とリバース チェーン検索は MVP 実装です。 この実装では、Cosmos DBで連鎖検索を実行するために、検索式について説明し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリから 100 を超える結果が返された場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後に置かされます。 オブジェクトでチェーン検索を使用するには、Cosmos DBを使用します `x-ms-enable-chained-search: true` 。 詳細については [、「PR 1695」を参照してください](https://github.com/microsoft/fhir-server/pull/1695)。
 
 ## <a name="extended-operations"></a>拡張操作
 
@@ -68,7 +68,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | Patient/$export        | はい       | はい       | はい       |         |
 | Group/$export          | はい       | はい       | Yes       |         |
 | $convert-data          | Yes       | はい       | はい       |         |
-
+| $validate          | はい       | はい       | はい       |         |
 
 ## <a name="persistence"></a>永続化
 
@@ -86,7 +86,7 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 ## <a name="service-limits"></a>サービスの制限
 
-* [**要求ユニット (RU)**](../../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 Ru または 40 Ru/GB のいずれか大きい方が必要です。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
+* [**要求ユニット (RU)**](../../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RUs または 40 RUs/GB の方が大きい方が必要です。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
 
 * **コンカレント接続** と **インスタンス** - 既定では、クラスター内の 2 つのインスタンス上で 5 つのコンカレント接続が用意されています (同時要求は合計で 10)。 同時要求がさらに必要であると思われる場合、サポート チケットを開き、ニーズの詳細を含めてください。
 
@@ -105,7 +105,7 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 | 10,000   | 225-400       |      250  |
 | 100,000  | 2,500-4,000   |      2,500  |
 
-注: Cosmos DB の要件には、ストレージの GB あたり 40 RU/秒の最小スループットが必要です。 
+注: Cosmos DBでは、ストレージあたり 40 RU/秒の最小スループットが必要です。 
 
 ## <a name="next-steps"></a>次のステップ
 
