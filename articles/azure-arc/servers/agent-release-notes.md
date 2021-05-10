@@ -2,13 +2,13 @@
 title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: acf606ed1ad0f54c983b14a0141d0dc11e2c45d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.openlocfilehash: ecff23225f4d482cc1e9a4f7b7724c8ffe0a1d73
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470508"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109069"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -24,9 +24,9 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 
 ## <a name="new-feature"></a>新機能
 
-- プライベート エンドポイントのサポートを追加しました。
+- 現在限定プレビュー段階にあるプライベート エンドポイントのサポートを追加しました。
 - azcmagent 用の終了コードの詳細な一覧。
-- エージェントの構成パラメーターを、--config パラメーターを使用してファイルから読み取ることができるようになりました。
+- エージェントの構成パラメーターを、`--config` パラメーターを使用してファイルから読み取れるようになりました。
 
 ## <a name="fixed"></a>固定
 

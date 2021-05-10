@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/29/2021
+ms.openlocfilehash: fcf533ad95e2567e62d44d6997752df6f3145ecb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364241"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726789"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする
 
@@ -42,7 +42,7 @@ ms.locfileid: "100364241"
 
 Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen2 アカウントにアクセスできる必要があります。これは、ソース/シンク/ステージングに使用されるストレージ コンテナー/ファイル システムと、Data Lake テーブルを書き込むコンテナー/ファイル システムの両方です。
 
-- **Azure Data Lake Storage Gen2** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで **サービス プリンシパル** または **ストレージ アカウント アクセス キー** を構成します。 「[サービス プリンシパルを使用した直接アクセス](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)」または「[ストレージ アカウント アクセス キーを使用した直接アクセス](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-using-the-storage-account-access-key)」の手順に従います。
+- **Azure Data Lake Storage Gen2** を使用するために、Apache Spark 構成の一部として、Databricks クラスターで **サービス プリンシパル** を構成できます。 [サービス プリンシパルを使用した直接アクセス](/azure/databricks/data/data-sources/azure/azure-datalake-gen2#--access-directly-with-service-principal-and-oauth-20)に関する記事の手順に従います。
 
 - **Azure Blob Storage** を使用するには、Apache Spark 構成の一部として、Databricks クラスターで **ストレージ アカウント アクセス キー** または **SAS トークン** を構成します。 「[RDD API を使用した Azure Blob Storage へのアクセス](/azure/databricks/data/data-sources/azure/azure-storage#access-azure-blob-storage-using-the-rdd-api)」の手順に従います。
 

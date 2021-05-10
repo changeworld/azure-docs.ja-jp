@@ -5,14 +5,14 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: f394fd4b1b4124c259489580fb5dc320fedf73fa
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 09b04c67519bfa920a3781612823c5755cbc6d2d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863651"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627797"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate の検出および評価を使用して VMware 環境で実行されているサーバーを検出する
 
@@ -34,11 +34,9 @@ Azure への移行の一環として、オンプレミスのインベントリ�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
-
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に、次の前提条件を満たしていることを確認してください。
-
 
 **要件** | **詳細**
 --- | ---
@@ -98,7 +96,6 @@ vSphere Web Client で、次のようにアカウントを設定します。
 
     :::image type="content" source="./media/tutorial-discover-vmware/guest-operations.png" alt-text="読み取り専用ロールでのゲスト操作を許可するチェック ボックス":::
 
-
 > [!NOTE]
 > vCenter Server アカウントのスコープを設定することにより、検出を特定の vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々のサーバーに制限することができます。 vCenter Server ユーザー アカウントのスコープを設定する方法の [**詳細を確認**](set-discovery-scope.md)してください。
 
@@ -106,7 +103,7 @@ vSphere Web Client で、次のようにアカウントを設定します。
 
 インストールされているアプリケーションの検出、エージェントレスの依存関係の分析、SQL Server インスタンスおよびデータベースの検出を実行するには、サーバーに対して必要な特権を備えるユーザー アカウントが必要です。 このユーザー アカウントは、アプライアンス構成マネージャーで指定できます。 アプライアンスによってサーバーにエージェントがインストールされることはありません。
 
-1. Windows サーバーの場合は、サーバーに対する管理アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 ユーザー アカウントに必要なロールを割り当てる方法の[詳細を確認](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)してください。
+1. Windows サーバーの場合は、サーバーに対する管理アクセス許可が付与されたアカウント (ローカルまたはドメイン) を作成します。 SQL Server インスタンスおよびデータベースを検出するには、Windows または SQL Server アカウントが sysadmin サーバー ロールのメンバーである必要があります。 ユーザー アカウントに必要なロールを割り当てる方法の[詳細を確認](/sql/relational-databases/security/authentication-access/server-level-roles)してください。
 2. Linux サーバーの場合は、root 権限が付与されたアカウントを作成します。 または、/bin/netstat および /bin/ls のファイルに対する次のアクセス許可が付与されたアカウントを作成することもできます: CAP_DAC_READ_SEARCH と CAP_SYS_PTRACE。
 
 > [!NOTE]
@@ -118,7 +115,7 @@ vSphere Web Client で、次のようにアカウントを設定します。
 
 1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
 2. **[サービス]** で **[Azure Migrate]** を選択します。
-3. **[概要]** で、 **[プロジェクトの作成]** を選択します。
+3. **[概要]** で、移行の目的に応じて **[Windows, Linux and SQL Server]\(Windows、Linux、SQL Server\)** または **[SQL Server (only)]\(SQL Server (のみ)\)** を選択するか、または **[その他のシナリオを探索する]** を選択し、 **[プロジェクトの作成]** を選択します。
 5. **[プロジェクトの作成]** で、Azure サブスクリプションとリソース グループを選択します。 リソース グループがない場合は作成します。
 6. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地理的な場所を指定します。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
@@ -197,11 +194,9 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 8. **[ネットワーク マッピング]** で、サーバーの接続先となるネットワークを指定します。 そのネットワークには、Azure Migrate にメタデータを送信するためのインターネット接続が必要です。
 9. 設定を再確認したら、 **[Finish]\(完了\)** をクリックします。
 
-
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
 [パブリック](migrate-appliance.md#public-cloud-urls)および[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス サーバーから接続できることを確認します。
-
 
 ### <a name="4-configure-the-appliance"></a>4. アプライアンスを構成する
 
@@ -282,6 +277,8 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 - 資格情報テーブル内のすべてのドメイン資格情報の **検証状態** を確認できます。 ドメイン資格情報のみが検証されます。
 - 検証に失敗した場合は、 **[失敗]** 状態をクリックして発生したエラーを確認し、問題を修正した後に **[資格情報の再検証]** をクリックして、失敗と示されたドメイン資格情報をもう一度検証できます。
 
+     :::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="複数の資格情報を提供するためのアプライアンス構成マネージャーのパネル 3":::
+
 ### <a name="start-discovery"></a>検出を開始する
 
 1. vCenter Server の検出を開始するには、 **[検出の開始]** をクリックします。 検出が正常に開始された後、vCenter Server の IP アドレスまたは FQDN に対する検出状態をソース テーブルで確認できます。
@@ -290,8 +287,8 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 1. ソフトウェア インベントリ時には、追加されたサーバーの資格情報がサーバーに対して反復処理され、エージェントレスの依存関係の分析のために検証されます。 サーバーに対するエージェントレスの依存関係の分析は、ポータルから有効にすることができます。 検証に成功したサーバーのみを選択し、エージェントレスの依存関係の分析を有効にすることができます。
 
 > [!Note]
->Azure Migrate により、Azure Migrate アプライアンスとソース SQL Server インスタンスの間の通信が暗号化されます (Encrypt 接続プロパティが TRUE に設定されている場合)。 これらの接続は、[**TrustServerCertificate**](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) で暗号化されます (TRUE に設定時)。トランスポート層は、SSL を使用してチャネルを暗号化し、証明書チェーンをバイパスして信頼を検証します。 アプライアンス サーバーは、[**証明書のルート証明機関を信頼**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。<br/>
-サーバーの起動時に証明書がサーバーにプロビジョニングされていない場合、SQL Server は、ログイン パケットの暗号化に使用される自己署名証明書を生成します。 [**詳細情報**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
+>Azure Migrate により、Azure Migrate アプライアンスとソース SQL Server インスタンスの間の通信が暗号化されます (Encrypt 接続プロパティが TRUE に設定されている場合)。 これらの接続は、[**TrustServerCertificate**](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) で暗号化されます (TRUE に設定時)。トランスポート層は、SSL を使用してチャネルを暗号化し、証明書チェーンをバイパスして信頼を検証します。 アプライアンス サーバーは、[**証明書のルート証明機関を信頼**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)するように設定する必要があります。<br/>
+サーバーの起動時に証明書がサーバーにプロビジョニングされていない場合、SQL Server は、ログイン パケットの暗号化に使用される自己署名証明書を生成します。 [**詳細情報**](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
 
 検出は次のように行われます。
 

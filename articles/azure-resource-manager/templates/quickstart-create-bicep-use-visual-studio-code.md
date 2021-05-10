@@ -2,15 +2,15 @@
 title: Bicep ファイルを作成する - Visual Studio Code
 description: Visual Studio Code と Bicep 拡張機能を使用して、Azure リソースをデプロイするための Bicepファイルを作成します
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/12/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4d1064351ddfacdebfa67fd9b2f517f592de3a7c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82f047f553290c9121d91060c347c5b242c7ec2
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612907"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306468"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する
 
@@ -51,6 +51,10 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 - **シンボリック名** (stg): シンボリック名は、bicep ファイルを通してリソースを参照するための識別子です。 これは、デプロイされるときに付けられるリソースの名前ではありません。 リソースの名前は、**name** プロパティによって定義されます。  この一覧の 4 番目のコンポーネントを参照してください。
 - **リソースの種類** (Microsoft.Storage/storageAccounts@2019-06-01): リソース プロバイダー (Microsoft.Storage)、リソースの種類 (storageAccounts)、および apiVersion (2019-06-01) で構成されます。 リソース プロバイダーからは、それぞれ独自の API バージョンが公開されているため、これはその種類に固有の値となります。 [ARM テンプレート リファレンス](/azure/templates/)で、さまざまな Azure リソースの種類と apiVersion を 見つけることができます。
 - **プロパティ** (= {...} 内のすべて): リソースの種類のプロパティを指定します。 すべてのリソースに、`name` プロパティがあります。 ほとんどのリソースには、リソースのデプロイ先リージョンを設定する `location` プロパティがあります。 その他のプロパティは、リソースの種類と API バージョンにより異なります。
+
+詳細については、「[Bicep の構造](./bicep-file.md)」を参照してください。
+
+name プロパティにはコメントがあります。  単一行のコメントには `//` を、複数行のコメントには `/* ... */` を使用します
 
 ## <a name="completion-and-validation"></a>入力候補と検証
 

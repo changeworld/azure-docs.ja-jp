@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1ee13a464002a2e1503541964cd96957da3c651
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.custom: devx-track-java
+ms.openlocfilehash: 7d01f3d5efeee2db5f468a0fe6217d1ff3c313a7
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877120"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375017"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>チュートリアル: 既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -27,6 +27,14 @@ ms.locfileid: "104877120"
 * GoDaddy などのドメイン プロバイダーの DNS レジストリへのアクセス権を持つドメイン名。
 * サードパーティ プロバイダーからのプライベート証明書 (つまり自己署名証明書)。 証明書はドメインと一致している必要があります。
 * [Azure Key Vault](../key-vault/general/overview.md) のデプロイ済みインスタンス
+
+## <a name="keyvault-private-link-considerations"></a>キー コンテナーのプライベート リンクに関する考慮事項
+
+Azure Spring Cloud の管理 IP は、Azure Trusted Microsoft サービスには含まれません。 そのため、プライベート エンドポイント接続によって保護されたキー コンテナーから Azure Spring Cloud が証明書を読み込めるようにするには、Azure Key Vault のファイアウォールに以下の IP を追加する必要があります。
+
+```
+20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243
+```
 
 ## <a name="import-certificate"></a>証明書のインポート
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>PFX で証明書ファイルを準備する (省略可能)
@@ -156,7 +164,7 @@ DNS プロバイダーに移動し、CNAME レコードを追加して、ドメ�
 ![DNS レコード ページ](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Azure Spring Cloud アプリへのカスタム ドメインのマップ
-Azure Spring Cloud にアプリケーションがない場合は、「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](/azure/spring-cloud/spring-cloud-quickstart-launch-app-portal)」の手順に従ってください。
+Azure Spring Cloud にアプリケーションがない場合は、「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./spring-cloud-quickstart.md)」の手順に従ってください。
 
 #### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 アプリケーション ページに移動します。

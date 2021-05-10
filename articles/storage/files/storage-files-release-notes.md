@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 3/26/2021
+ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4c046129293fcfbcea8ecaf98da72b9126dd540a
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074405"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030340"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -26,6 +26,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 | マイルストーン | エージェントのバージョン番号 | リリース日 | Status |
 |----|----------------------|--------------|------------------|
 | V12 リリース- [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 2021 年 3 月 26 日 | サポート対象 - フライティング |
+| V11.3 リリース - [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 2021 年 4 月 7 日 | サポートされています |
 | V11.2 リリース - [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021 年 2 月 2 日 | サポートされています |
 | V11.1 リリース - [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 2020 年 11 月 4 日 | サポートされています |
 | V10.1 リリース - [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | サポートされています - エージェント バージョンは 2021 年 6 月 7 日に有効期限が切れます |
@@ -76,6 +77,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     - Azure ファイル共有で変更されたファイルを検出するための変更検出のパフォーマンスが向上しました。
     - 調整同期セッションのパフォーマンスが向上しました。 
     - 同期の機能強化により、ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED と ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED のエラーが減少しました。
+    - クラウドを使った階層化が有効になっているときに、/B パラメーターを指定した Robocopy を使用して階層化ファイルをコピーすると、データが破損するバグを修正しました。
     - ボリュームでデータ重複除去が有効になっている場合に Server 2019 でファイルが階層化されない原因となるバグを修正しました。
     - ファイルが 2 GiB より大きい場合に AFSDiag でファイルの圧縮に失敗する原因となるバグを修正しました。
 
@@ -131,8 +133,12 @@ Windows Server で Azure File Sync エージェントをインストールして
 ### <a name="cloud-tiering"></a>クラウドの階層化
 - 階層化されたファイルが Robocopy を使用して別の場所にコピーされた場合、その結果のファイルは階層化されません。 誤ってオフライン属性が Robocopy によるコピー操作の対象となり、オフライン属性が設定される場合があります。
 - robocopy を使用してファイルをコピーする場合は、/MIR オプションを使用してファイルのタイムスタンプを保存します。 これにより、必ず最近アクセスされたファイルより先に、古いファイルが階層化されます。
-    > [!Warning]  
-    > Robocopy /B スイッチは Azure File Sync ではサポートされていません。転送元として Azure File Sync サーバー エンドポイントで Robocopy /B スイッチを使用すると、ファイルが破損する可能性があります。
+
+## <a name="agent-version-11300"></a>エージェント バージョン 11.3.0.0
+次のリリース ノートは、2021 年 4 月 7 日にリリースされた Azure File Sync エージェントのバージョン 11.3.0.0 を対象としています。 これらは、バージョン 11.1.0.0 に関して記載されているリリース ノートへの追記です。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>機能強化と修正された問題 
+クラウドを使った階層化が有効になっているときに、/B パラメーターを指定した Robocopy を使用して階層化ファイルをコピーすると、データが破損するバグを修正しました。
 
 ## <a name="agent-version-11200"></a>エージェント バージョン 11.2.0.0
 次のリリース ノートは、2021 年 2 月 2 日にリリースされた Azure File Sync エージェントのバージョン 11.2.0.0 を対象としています。 これらは、バージョン 11.1.0.0 に関して記載されているリリース ノートへの追記です。

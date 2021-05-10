@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: sopand
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0865fb2bda04f5a7e9ba2ef73a717946fa656a5
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 699ff88e4181dada5eacaa3f13469722cdf7ceaa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175313"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530446"
 ---
 # <a name="authentication-methods-activity"></a>認証方法アクティビティ 
 
@@ -135,9 +135,10 @@ ms.locfileid: "102175313"
 
 - レポート内のデータはリアルタイムで更新されておらず、反映されるまでに数時間の待機時間が発生する場合があります。
 - 一時アクセス パスの登録は、短時間のみ有効であるため、レポートの [登録] タブには反映されません。
+- ユーザーが構成した可能性のある **PhoneAppNotification** または **PhoneAppOTP** メソッドは、ダッシュボードに表示されません。 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [認証方法の使用状況レポート API を使用する](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [認証方法の使用状況レポート API を使用する](/graph/api/resources/authenticationmethods-usage-insights-overview)
 - [組織の認証方法を選択する](concept-authentication-methods.md)
 - [統合された登録エクスペリエンス](concept-registration-mfa-sspr-combined.md)

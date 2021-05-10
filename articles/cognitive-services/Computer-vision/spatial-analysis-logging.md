@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 901e857a346b0955726c5755e23595efefbc2ca1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077620"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589501"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "106077620"
 
 ## <a name="enable-visualizations"></a>視覚化の有効化
 
-動画フレームで AI Insights イベントの視覚化を有効にするには、デスクトップ マシン上で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
+動画フレームで AI 分析情報イベントの視覚化を有効にするには、デスクトップ マシン上で `.debug` バージョンの[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 Azure Stack Edge デバイス上では視覚化を使用できません。 使用できるデバッグ操作は 4 つあります。
 
 デバイスが Azure Stack Edge デバイスでない場合は、[デスクトップ マシン](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)のデプロイ マニフェスト ファイルを編集して、`DISPLAY` 環境変数に正しい値を使用します。 ホスト コンピューターの `$DISPLAY` 変数と一致している必要があります。 デプロイ マニフェストを更新した後、コンテナーを再デプロイします。
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>システム正常性テレメトリの収集
 
-telegraf は、空間分析で動作するオープン ソースのイメージであり、Microsoft Container Registry で使用できます。 次の入力を受け取り、Azure Monitor に送信します。 指定されたカスタム入出力を使用して、telegraf モジュールを作成できます。 空間分析の telegraf モジュール構成は、デプロイ マニフェスト (前述のリンク) の一部です。 このモジュールはオプションであり、必要がない場合は、マニフェストから削除できます。 
+Telegraf は、空間分析で動作するオープン ソースのイメージであり、Microsoft Container Registry で入手できます。 次の入力を受け取り、Azure Monitor に送信します。 指定されたカスタム入出力を使用して、telegraf モジュールを作成できます。 空間分析の telegraf モジュール構成は、配置マニフェスト (前述のリンク) の一部です。 このモジュールはオプションであり、必要がない場合は、マニフェストから削除できます。 
 
 入力: 
 1. 空間分析メトリック
@@ -51,7 +51,7 @@ telegraf は、空間分析で動作するオープン ソースのイメージ�
 出力:
 1. Azure Monitor
 
-指定された空間分析の telegraf モジュールは、空間分析コンテナーによって出されたすべてのテレメトリ データを Azure Monitor に発行します。 サブスクリプションへの Azure Monitor の追加に関しては、[Azure Monitor](../../azure-monitor/overview.md) を参照してください。
+指定された空間分析の telegraf モジュールは、空間分析コンテナーから送信されたすべてのテレメトリ データを Azure Monitor に公開します。 サブスクリプションへの Azure Monitor の追加に関しては、[Azure Monitor](../../azure-monitor/overview.md) を参照してください。
 
 Azure Monitor を設定した後、モジュールがテレメトリを送信できるようにするための資格情報を作成する必要があります。 Azure ポータルを使用して新しいサービス プリンシパルを作成するか、以下の Azure CLI コマンドを使用してサービス プリンシパルを作成できます。
 
@@ -105,7 +105,7 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 | イベント名                  | 説明    |
 |-----------------------------|-------------------------------------------------------------------------------------------|
-| archon_exit                 | ユーザーが空間分析モジュールの状態を *実行* 中から *停止* に変更したときに送信されます。  |
+| archon_exit                 | ユーザーが空間分析モジュールの状態を "*実行中*" から "*停止*" に変更したときに送信されます。  |
 | archon_error                | コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。      |
 | InputRate                   | グラフが動画入力を処理する速度。 5 分ごとに報告されます。              |
 | OutputRate                  | グラフが AI Insights を出力する速度。 5 分ごとに報告されます。                |
@@ -129,7 +129,7 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>診断コンテナーでログ ファイルを収集
 
-空間分析では、ランタイムの問題を診断したり、サポート チケットに含めたりするために使用できる Docker デバッグ ログが生成されます。 Microsoft Container Registry では、空間分析診断モジュールを使用して、ダウンロードできます。 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) のマニフェスト配置ファイルで、*diagnostics* モジュールを探します。
+空間分析では、ランタイムの問題を診断したり、サポート チケットに含めたりする場合に使用できる Docker デバッグ ログが生成されます。 空間分析診断モジュールは、Microsoft Container Registry からダウンロードできます。 [Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) のマニフェスト配置ファイルで、*diagnostics* モジュールを探します。
 
 "Env" セクションで、次の構成を追加します。
 
@@ -161,7 +161,7 @@ Azure Blob Storage など、リモー トエンドポイントにアップロー
 ログ レベルの構成を使用すると、生成されるログの詳細を制御できます。 サポートされているログ レベルは、`none`、`verbose`、`info`、`warning` および `error` です。 ノードとプラットフォームの既定のログの詳細レベルは `info` です。 
 
 ログ レベルをグローバルに変更するには、 `ARCHON_LOG_LEVEL` 環境変数を、許可されている値のいずれかに設定します。
-次のように `platformLogLevel` と `nodeLogLevel` の値を設定することによって、グローバル、デプロイされたすべてのスキル、または特定のスキルごとに、IoT Edge Module Twin ドキュメントを通じて設定することもできます。
+次のように `platformLogLevel` と `nodesLogLevel` の値を設定することによって、グローバル、デプロイされたすべてのスキル、または特定のスキルごとに、IoT Edge Module Twin ドキュメントを通じて設定することもできます。
 
 ```json
 {
@@ -173,7 +173,7 @@ Azure Blob Storage など、リモー トエンドポイントにアップロー
             },
             "graphs": {
                 "samplegraph": {
-                    "nodeLogLevel": "verbose",
+                    "nodesLogLevel": "verbose",
                     "platformLogLevel": "verbose"
                 }
             }
@@ -200,7 +200,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 1. まだ作成していない場合は、自身の Azure Blob Storage アカウントを作成します。
 2. Azure ポータルのストレージ アカウント用に **接続文字列** を取得します。 これは、**アクセス キー** にあります。
-3. 空間分析ログは *rtcvlogs* という名前の Blob Storage コンテナーに自動的にアップロードされます。ファイル名の形式は `{CONTAINER_NAME}/{START_TIME}-{END_TIME}-{QUERY_TIME}.log` です。
+3. 空間分析ログは、*rtcvlogs* という名前の Blob Storage コンテナーに自動的にアップロードされます。ファイル名の形式は `{CONTAINER_NAME}/{START_TIME}-{END_TIME}-{QUERY_TIME}.log` です。
 
 ```json
 "env":{
@@ -239,7 +239,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 | ContainerId | ログをフェッチするターゲットとなるコンテナー。| `null` (コンテナー ID が存在しない場合)。 API は、使用可能なすべてのコンテナー情報を ID と共に返します。|
 | DoPost | アップロード操作を実行します。 これが `false` に設定されている場合は、要求された操作を実行し、アップロードを実行せずにアップロード サイズを返します。 `true` に設定すると、選択したログの非同期アップロードが開始されます | `false` の場合、アップロードしないでください。|
 | スロットル | バッチごとにアップロードするログのライン数を示します | `1000` の場合、このパラメーターを使用してポスト速度を調整します。 |
-| フィルター | アップロードするログをフィルター処理します | `null` の場合、空間分析ログの構造に基づいて、キー値のペアとしてフィルターを指定できます。 `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]`。 例: `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
+| フィルター | アップロードするログをフィルター処理します | `null` の場合、空間分析ログの構造 `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` に基づいて、キー値のペアとしてフィルターを指定できます。 例: `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
 
 次の表は、クエリ応答の属性の一覧になります。
 
@@ -402,9 +402,9 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 | `Enable-HcsSupportAccess` | サポート セッションを開始するためのアクセス資格情報を生成します。 |
 
 
-## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>空間分析のサポート チケットを申し込む方法 
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>空間分析のサポート チケットを申請する方法 
 
-空間分析コンテナーで発生している問題のソリューションを見つけるためのサポートが必要な場合は、次の手順に従って、サポート チケットを入力して送信してください。 Microsoft のチームから折り返し追加のガイダンスをお送りします。 
+空間分析コンテナーで発生している問題の解決策を見つけるためのサポートが必要な場合は、次の手順に従ってサポート チケットに入力して送信してください。 Microsoft のチームから折り返し追加のガイダンスをお送りします。 
 
 ### <a name="fill-out-the-basics"></a>基本情報を入力する 
 新しいサポート チケットは、[[新しいサポート リクエスト]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) ページで作成します。 画面の指示に従って、次のパラメーターを入力します。
@@ -412,7 +412,7 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 ![サポートの基本](./media/support-ticket-page-1-final.png)
 
 1. **[問題の種類]** を `Technical` に設定します。
-2. 空間分析コンテナーのデプロイに使用するサブスクリプションを選択します。
+2. 空間分析コンテナーのデプロイに使用しているサブスクリプションを選択します。
 3. `My services` を選択し、`Cognitive Services` をサービスとして選択します。
 4. 空間分析コンテナーのデプロイに使用しているリソースを選択します。
 5. 直面している問題の詳細な説明を簡潔に記述します。 
@@ -432,6 +432,6 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 ## <a name="next-steps"></a>次のステップ
 
 * [人数カウント Web アプリをデプロイする](spatial-analysis-web-app.md)
-* [空間分析操作の構成](./spatial-analysis-operations.md)
-* [カメラ配置ガイド](spatial-analysis-camera-placement.md)
+* [空間分析の操作を構成する](./spatial-analysis-operations.md)
+* [カメラの配置ガイド](spatial-analysis-camera-placement.md)
 * [ゾーンとラインの配置ガイド](spatial-analysis-zone-line-placement.md)

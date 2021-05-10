@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 51dc04fbef8d09878f33d7fda6f15039d3afba3e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027649"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>パブリック IP アドレスの DNS ラベルの構成
@@ -44,6 +44,6 @@ DNS ラベルを作成するには、最初にポータルで **[Virtual Machine
 
 1. **[パスワード]** ボックスに、ログインのパスワードを入力します。
 
-1. **[接続]** をクリックします。
+1. **[Connect]** をクリックします。
 
     ![SSMS 接続](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)

@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/08/2021
+ms.date: 03/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 5e2ab0b9d7f61539a16fc685134bef6c9047229d
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 89e648099a5ac6d905f475319cc108dd0d05a6e9
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987642"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106080998"
 ---
 デバイスにリモート接続する手順は、クライアントのオペレーティング システムによって異なります。
 
@@ -21,7 +21,7 @@ ms.locfileid: "104987642"
 開始する前に次の点を確認します。
 
 - Windows クライアントで、Windows PowerShell 5.0 以降が実行されている。
-- Windows クライアントに、デバイスにインストールされているノード証明書に対応する署名チェーン (ルート証明書) がある。 詳細な手順については、[Windows クライアントに証明書をインストールする](../articles/databox-online/azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)に関するページを参照してください。
+- Windows クライアントに、デバイスにインストールされているノード証明書に対応する署名チェーン (ルート証明書) がある。 詳細な手順については、[Windows クライアントに証明書をインストールする](../articles/databox-online/azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)に関するページを参照してください。
 - Windows クライアントの `C:\Windows\System32\drivers\etc` にある `hosts` ファイルに、次の形式のノード証明書に対応するエントリがある。
 
     `<Device IP>    <Node serial number>.<DNS domain of the device>`
@@ -58,8 +58,15 @@ Windows クライアントからリモートで接続するには、次の手順
 
     信頼関係に関連するエラーが表示された場合は、デバイスにアップロードされたノード証明書の署名チェーンが、デバイスにアクセスしているクライアントにもインストールされているかどうかを確認します。
 
+    証明書を使用していない場合 (証明書を使用することをお勧めします)、セッション オプション `-SkipCACheck -SkipCNCheck -SkipRevocationCheck` を使用してこの確認をスキップできます。
+
+    ```powershell
+    $sessOptions = New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck 
+    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell -UseSSL -SessionOption $sessOptions    
+    ```
+
     > [!NOTE] 
-    > `-UseSSL` オプションを使用すると、PowerShell を介して *https* 経由でリモート処理が行われます。 PowerShell を介してリモート接続する場合は、常に *https* を使用することをお勧めします。 *http* セッションは最も安全な接続方法ではありませんが、信頼されたネットワークでは許容されます。
+    > `-UseSSL` オプションを使用すると、PowerShell を介して *https* 経由でリモート処理が行われます。 PowerShell を介してリモート接続する場合は、常に *https* を使用することをお勧めします。 
 
 6. パスワードの入力を求められたら、入力します。 ローカル Web UI へのサインインに使用するパスワードと同じものを使用してください。 既定のローカル Web UI パスワードは *Password1* です。 リモート PowerShell を使用してデバイスに正常に接続すると、次のサンプル出力が表示されます。  
 
@@ -77,27 +84,30 @@ Windows クライアントからリモートで接続するには、次の手順
     [10.100.10.10]: PS>
     ```
 
-### <a name="remotely-connect-from-a-linux-client"></a>Linux クライアントからリモートで接続する
+> [!IMPORTANT]
+> 現在のリリースでは、Windows クライアント経由でのみデバイスの PowerShell インターフェイスに接続できます。 `-UseSSL` オプションは、Linux クライアントでは機能しません。
 
-接続に使用する Linux クライアントで以下を行います。
+<!--### Remotely connect from a Linux client-->
 
-- SSH リモート処理機能を取得するために、GitHub から [Linux 用の最新の PowerShell Core をインストールします](/powershell/scripting/install/installing-powershell-core-on-linux)。 
-- [NTLM モジュールから `gss-ntlmssp` パッケージのみをインストールします](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 Ubuntu クライアントでは、次のコマンドを実行します。
+<!--On the Linux client that you'll use to connect:
+
+- [Install the latest PowerShell Core for Linux](/powershell/scripting/install/installing-powershell-core-on-linux) from GitHub to get the SSH remoting feature. 
+- [Install only the `gss-ntlmssp` package from the NTLM module](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). For Ubuntu clients, use the following command:
     - `sudo apt-get install gss-ntlmssp`
 
-詳細については、「[SSH 経由の PowerShell リモート処理](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core)」を参照してください。
+For more information, go to [PowerShell remoting over SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core).
 
-NFS クライアントからリモートで接続するには、次の手順に従います。
+Follow these steps to remotely connect from an NFS client.
 
-1. PowerShell セッションを開くために、次のように入力します。
+1. To open PowerShell session, type:
 
     `pwsh`
  
-2. リモート クライアントを使用して接続するために、次のように入力します。
+2. For connecting using the remote client, type:
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    入力を求められたら、デバイスへのサインインに使用するパスワードを指定します。
+    When prompted, provide the password used to sign into your device.
  
 > [!NOTE]
-> この手順は Mac OS では機能しません。
+> This procedure does not work on Mac OS.-->

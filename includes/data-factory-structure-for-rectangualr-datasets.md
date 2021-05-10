@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67181845"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>四角形のデータセットの構造定義を指定する
-データセット JSON の structure セクションは、(行と列がある) 四角形のテーブルの**省略可能**なセクションです。テーブルの列のコレクションが含まれています。 structure セクションは、型変換のために型情報を提供したり、列マッピングを実行したりするために使用されます。 次のセクションでは、これらの機能の詳細について説明します。 
+データセット JSON の structure セクションは、(行と列がある) 四角形のテーブルの **省略可能** なセクションです。テーブルの列のコレクションが含まれています。 structure セクションは、型変換のために型情報を提供したり、列マッピングを実行したりするために使用されます。 次のセクションでは、これらの機能の詳細について説明します。 
 
 各列には次のプロパティが含まれます。
 

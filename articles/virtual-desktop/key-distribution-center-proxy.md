@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1e6d2f4fc0444be364ce3c07c14f6408b3f19fe
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446912"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307250"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos キー配布センター プロキシを構成する (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "106446912"
 - ユーザーがアクセスできるデスクトップまたはアプリケーションの一覧を提供する Windows Virtual Desktop クライアントのフィード。 この認証プロセスは Azure Active Directory で実行されるため、このコンポーネントについては、この記事では取り上げません。
 - 使用可能なリソースの 1 つをユーザー選択した結果として得られる RDP セッション。 このコンポーネントでは、Kerberos 認証を使用し、リモート ユーザーには KDC プロキシが必要です。
 
-この記事では、Azure portal で Windows Virtual Desktop クライアントのフィードを構成する方法について説明します。 RD ゲートウェイ ロールを構成する方法については、[RD ゲートウェイ ロールのデプロイ](/windows-server/remote/rd-gateway-role)に関するページを参照してください。
+この記事では、Azure portal で Windows Virtual Desktop クライアントのフィードを構成する方法について説明します。 RD ゲートウェイ ロールを構成する方法については、[RD ゲートウェイ ロールのデプロイ](/azure/virtual-desktop/rd-gateway-role)に関するページを参照してください。
 
 ## <a name="requirements"></a>必要条件
 

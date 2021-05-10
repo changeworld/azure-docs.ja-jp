@@ -12,17 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 15fa1dd230b7f07846653278533805fa66ed2195
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: e97c48d4e42627d0fc2caaa4f66e81b9a0cafa86
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870393"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643902"
 ---
 # <a name="get-facial-pose-events"></a>表情イベントを取得する
 
 > [!NOTE]
-> 現在口形素は米国西部 (`westus`) リージョンの `en-US-AriaNeural` 音声に対してのみ機能し、2021 年 4 月末までにすべての `en-US` 音声で利用できるようになります。
+> 口形素は現在、`en-US-AriaNeural` 音声に対してのみ機能します。
 
 口形素は、音声言語での音素を視覚的に描写したものです。
 言葉を話すときの顔と口の位置を定義します。
@@ -31,7 +31,7 @@ ms.locfileid: "104870393"
 多くの場合、音素は 1 つの口形素に対応しますが、`s` や `z` など、いくつかの音素のみためは顔に同じように現れます。
 [口形素と音素の間のマッピング テーブル](#map-phonemes-to-visemes)を参照してください。
 
-口形素を使用すると、より自然でインテリジェントなニュース放送アシスタント、より対話的なゲームや漫画文字、より直感的な言語の教育ビデオを作成できます。 聴覚障碍のある方も、音を視覚的に認識し、アニメーション化された顔で口形素を表した音声コンテンツを読唇できます。
+口形素を使用すると、より自然でインテリジェントなニュース放送アシスタント、より対話的なゲームや漫画文字、より直感的な言語の教育ビデオを作成できます。 聴覚障碍のある方も、音を視覚的に認識し、アニメーション化された顔で口形素を表した音声コンテンツを "読唇" できます。
 
 ## <a name="get-viseme-events-with-the-speech-sdk"></a>Speech SDK を使用して口形素イベントを取得する
 

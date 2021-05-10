@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107077"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257723"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -47,7 +47,7 @@ ms.locfileid: "102107077"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Azure AD B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の手順を完了します。 この記事で説明されているカスタム ポリシー スターター パックの *SocialAndLocalAccounts* カスタム ポリシーが必要です。
+* 「[Azure AD B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」の手順を完了します。 この記事で説明されているカスタム ポリシー スターター パックの *SocialAndLocalAccounts* カスタム ポリシーが必要です。
 * SAML プロトコルに関する基本的な理解、およびアプリケーションの SAML 実装に関する知識。
 * SAML アプリケーションとして構成された Web アプリケーション。 このチュートリアルでは、用意されている [SAML テスト アプリケーション][samltest]を使用できます。
 
@@ -78,15 +78,35 @@ SAML アプリケーションと関連のメタデータ エンドポイント�
 
 | 使用法 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| SAML 応答の署名 | はい | 秘密キーが Azure AD B2C に保存されている証明書。 この証明書は、アプリケーションに送信される SAML 応答に署名するために Azure AD B2C によって使用されます。 アプリケーションで、Azure AD B2C メタデータの公開キーを読み取り、SAML 応答の署名を検証します。 |
+| SAML 応答の署名 | はい  | 秘密キーが Azure AD B2C に保存されている証明書。 この証明書は、アプリケーションに送信される SAML 応答に署名するために Azure AD B2C によって使用されます。 アプリケーションで、Azure AD B2C メタデータの公開キーを読み取り、SAML 応答の署名を検証します。 |
+| SAML アサーション署名 | はい | 秘密キーが Azure AD B2C に保存されている証明書。 この証明書は、SAML 応答に署名するために Azure AD B2C によって使用されます。 SAML 応答の `<saml:Assertion>` 部分。  |
 
 運用環境では、パブリック証明機関によって発行された証明書を使用することをお勧めします。 ただし、自己署名証明書を使用してこの手順を実行することもできます。
 
-### <a name="prepare-a-self-signed-certificate-for-saml-response-signing"></a>SAML 応答の署名用の自己署名証明書を準備する
+### <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
-アプリケーションが Azure AD B2C からのアサーションを信頼できるように、SAML 応答の署名証明書を作成する必要があります。
+アプリケーションと Azure AD B2C の間で信頼関係を確立するには、SAML 応答の署名証明書を作成します。 この証明書は、アプリケーションに送信される SAML 応答に署名するために Azure AD B2C によって使用されます。 アプリケーションで、Azure AD B2C メタデータの公開キーを読み取り、SAML 応答の署名を検証します。 
+
+> [!TIP]
+> このセクションで作成したポリシー キーは、[SAML アサーション](saml-service-provider-options.md#saml-assertions-signature)のサインインなど、その他の目的で使用できます。 
+
+### <a name="obtain-a-certificate"></a>証明書を取得する
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
+
+### <a name="upload-the-certificate"></a>証明書をアップロードする
+
+証明書を Azure AD B2C テナントに格納する必要があります。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Upload`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `SamlIdpCert` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. 秘密キーが含まれている証明書の .pfx ファイルを参照して選択します。
+1. **Create** をクリックしてください。
 
 ## <a name="enable-your-policy-to-connect-with-a-saml-application"></a>SAML アプリケーションと接続するためのポリシーを有効にする
 
@@ -111,6 +131,7 @@ SAML アプリケーションに接続するには、Azure AD B2C が SAML 応�
       </Metadata>
       <CryptographicKeys>
         <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
       </CryptographicKeys>
       <InputClaims/>
       <OutputClaims/>
@@ -147,51 +168,6 @@ SAML トークン発行者の技術プロファイルで、`IssuerUri` メタデ
     </TechnicalProfile>
 ```
 
-#### <a name="sign-the-azure-ad-b2c-idp-saml-metadata-optional"></a>Azure AD B2C IdP SAML メタデータに署名する (省略可能)
-
-アプリケーションで必要な場合は、Azure AD B2C に対して、SAML IdP メタデータ ドキュメントに署名するように指示できます。 このためには、「[SAML 応答の署名用の自己署名証明書を準備する](#prepare-a-self-signed-certificate-for-saml-response-signing)」で示すように、SAML IdP メタデータ署名用のポリシー キーを生成してアップロードします。 次に、SAML トークン発行者の技術プロファイルで `MetadataSigning` メタデータ項目を構成します。 `StorageReferenceId` では、ポリシー キー名を参照する必要があります。
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
-
-#### <a name="sign-the-azure-ad-b2c-idp-saml-response-element-optional"></a>Azure AD B2C IdP SAML 応答要素に署名する (省略可能)
-
-SAML メッセージに署名するために使用される証明書を指定することができます。 メッセージは、アプリケーションに送信される SAML 応答内の `<samlp:Response>` 要素です。
-
-証明書を指定するには、「[SAML 応答の署名用の自己署名証明書を準備する](#prepare-a-self-signed-certificate-for-saml-response-signing)」で示すように、ポリシー キーを生成してアップロードします。 次に、SAML トークン発行者の技術プロファイルで `SamlMessageSigning` メタデータ項目を構成します。 `StorageReferenceId` では、ポリシー キー名を参照する必要があります。
-
-```xml
-<ClaimsProvider>
-  <DisplayName>Token Issuer</DisplayName>
-  <TechnicalProfiles>
-    <!-- SAML Token Issuer technical profile -->
-    <TechnicalProfile Id="Saml2AssertionIssuer">
-      <DisplayName>Token Issuer</DisplayName>
-      <Protocol Name="SAML2"/>
-      <OutputTokenFormat>SAML2</OutputTokenFormat>
-        ...
-      <CryptographicKeys>
-        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
-        ...
-      </CryptographicKeys>
-    ...
-    </TechnicalProfile>
-```
 ## <a name="configure-your-policy-to-issue-a-saml-response"></a>SAML 応答を発行するようにポリシーを構成する
 
 ポリシーで SAML 応答を作成できるようになったので、アプリケーションに対する既定の JWT 応答ではなく SAML 応答を発行するようにポリシーを構成する必要があります。

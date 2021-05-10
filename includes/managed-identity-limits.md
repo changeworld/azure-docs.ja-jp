@@ -10,10 +10,10 @@ ms.date: 05/31/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 6e5885e076222cd23ba127f3be41c1218f327ca0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92379835"
 ---
 - 「[Azure AD サービスの制限と制約](../articles/active-directory/enterprise-users/directory-service-limits-restrictions.md)」で説明されているように、各マネージド ID は、Azure AD テナントにおけるオブジェクトのクォータ制限に加算されます。

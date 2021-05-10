@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/02/2020
-ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.date: 04/02/2021
+ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952407"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284093"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>用語集の用語を作成、インポート、エクスポートする方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "104952407"
 
 5. 用語の **[状態]** を設定します。 新しい用語は既定で **[ドラフト]** の状態になります。
 
-   :::image type="content" source="media/how-to-create-import-export-glossary/new-term-options.png" alt-text="状態の選択のスクリーンショット。" border="true":::
+   :::image type="content" source="media/how-to-create-import-export-glossary/overview-tab.png" alt-text="状態の選択のスクリーンショット。":::
 
    これらの状態マーカーは、用語に関連付けられているメタデータです。 現時点では、各用語に対して次の状態を設定できます。
 
@@ -92,9 +92,10 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 
 2. **[エクスポート]** を選択して、選択した用語をダウンロードします。
 
- > [!Important]
-   > 階層内の用語が複数の異なる用語テンプレートに属している場合は、インポートのためにそれらを別々の .CSV ファイルに分割する必要があります。 また、インポート処理を使用して、用語の親を更新することは現在サポートされていません。
+   :::image type="content" source="media/how-to-create-import-export-glossary/select-term-template-for-export.png" lightbox="media/how-to-create-import-export-glossary/select-term-template-for-export.png" alt-text="[用語集の用語] ページでの、エクスポートするファイルの選択のスクリーンショット。":::
 
+   > [!Important]
+   > 階層内の用語が複数の異なる用語テンプレートに属している場合は、インポートのためにそれらを別々の .CSV ファイルに分割する必要があります。 また、インポート処理を使用して、用語の親を更新することは現在サポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

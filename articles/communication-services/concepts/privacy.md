@@ -8,16 +8,14 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495710"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728132"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
 Azure Communication Services は、お客様が自身のプライバシーおよび個人データの要件を満たせるよう支援することを約束します。 アプリケーションの使用者と直接的な関係がある、Communication Services を使用する開発者は、場合によってはデータの管理者になります。 Azure Communication Services が代理でこの保存データを格納および暗号化しているため、Microsoft がこのデータの処理担当になる可能性が高くなります。 このページには、このサービスがデータを保持するしくみと、このデータを識別、エクスポート、削除する方法がまとめられています。
 
@@ -58,10 +56,12 @@ Azure Communication Services では、Communication Services リソースに関�
 
 ### <a name="chat"></a>チャット
 
-チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/chatthread)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
+チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 参加者のいない、完全にアイドル状態のスレッドは、30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/chatthread)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
 
 - `Get Thread`
 - `Get Message`
+- `List Messages`
+- `Update Message`
 - `Delete Thread`
 - `Delete Message`
 

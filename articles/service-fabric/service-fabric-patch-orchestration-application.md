@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614413"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448556"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -212,7 +212,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 ニーズに合わせて POA の動作を構成することができます。 アプリケーションを作成または更新するときにアプリケーション パラメーターを渡して、既定値をオーバーライドします。 `Start-ServiceFabricApplicationUpgrade` または `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定することで、アプリケーション パラメーターを指定できます。
 
-| パラメーター        | 種類                          | 詳細 |
+| パラメーター        | Type                          | 詳細 |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。
@@ -222,7 +222,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 | WUOperationTimeOutInMinutes | int <br>(既定値:*90*)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
 | WURescheduleCount     | int <br> (既定値:*5*)                  | 操作が繰り返し失敗する場合に、サービスで Windows 更新プログラムの再スケジュールを行う最大回数。          |
 | WURescheduleTimeInMinutes | int <br>(既定値:*30*) | 問題が解決しない場合に、サービスで Windows 更新プログラムの再スケジュールを行う間隔。 |
-| WUFrequency           | コンマ区切りの文字列 (既定値:*Weekly, Wednesday, 7:00:00*)     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>- Monthly, DD, HH:MM:SS (例:*Monthly, 5, 12:22:32*)。 _DD_ (日) フィールドに使用できる値は、1 から 28 の数字と _last_ です。 <br>- Weekly, Day, HH:MM:SS (例:*Weekly, Tuesday, 12:22:32*)  <br>- Daily, HH:MM:SS (例:*Daily, 12:22:32*)  <br>- Week, Day, HH:MM:SS (例:*2, Friday, 21:00:00* は、毎月第 2 週の金曜日の午後 9:00 UTC を示します) <br>- *None* は、Windows 更新プログラムが実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
+| WUFrequency           | コンマ区切りの文字列 (既定値:*Weekly, Wednesday, 7:00:00*)     | Windows 更新プログラムをインストールする頻度。 形式と指定できる値は次のとおりです。 <br>- Monthly, DD, HH:MM:SS (例:*Monthly, 5, 12:22:32*)。 _DD_ (日) フィールドに使用できる値は、1 から 28 の数字と _last_ です。 <br>- Weekly, Day, HH:MM:SS (例:*Weekly, Tuesday, 12:22:32*)  <br>- Daily, HH:MM:SS (例:*Daily, 12:22:32*)  <br>- MonthlyByWeekAndDay, Week, Day, HH:MM:SS (例:*MonthlyByWeekAndDay, 2, Friday, 21:00:00* は、毎月第 2 週の金曜日の午後 9:00 UTC を示します) <br>- *None* は、Windows 更新プログラムが実行されないことを示します。  <br><br> 時刻は UTC 形式です。|
 | AcceptWindowsUpdateEula | Boolean <br>(既定値: *true*) | このフラグを設定すると、コンピューターの所有者に代わって、アプリケーションが Windows Update の使用許諾契約に同意します。              |
 
 > [!TIP]

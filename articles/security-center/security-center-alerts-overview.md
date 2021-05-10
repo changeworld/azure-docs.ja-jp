@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: 9d917b3682d3b503743e706e8c952854e86fbc5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cdf46a5f0185e33e1e877e3682ab418a00725de2
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727044"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012548"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Azure Security Center のセキュリティのアラートとインシデント
 
@@ -78,7 +78,7 @@ Security Center は、アラートに重要度を割り当て、各アラート�
 | **高**          | リソースが侵害されている可能性が高いことを示します。 すぐに調べる必要があります。 Security Center には、悪意のある意図と、アラートの発行に使用される検出結果の両方に高い信頼性があります。 たとえば、資格情報の盗難に使用される一般的なツールである Mimikatz など、既知の悪質なツールの実行を検出するアラートです。                                                                                                               |
 | **中**        | これは、リソースが侵害されたことを示す可能性がある不審なアクティビティです。 分析または検出結果における Security Center の信頼性は中であり、悪意のある意図の信頼性は中から高です。 通常、これらは機械学習または異常に基づく検出です。 たとえば、異常な場所からのサインイン試行です。                                                                                                                |
 | **低**           | 良性の陽性またはブロックされた攻撃の可能性があります。 Security Center は、その意図に悪意があるかどうか、アクティビティが無害かどうかを十分に確信していません。 たとえば、ログのクリアは、攻撃者が痕跡を隠そうとしたときに発生することがあるアクションですが、多くの場合、管理者が実行する日常的な操作です。 通常、攻撃がブロックされても、調査が推奨される興味深いケースでなければ、Security Center からは通知されません。 |
-| **Informational** | セキュリティ インシデントに掘り下げるとき、または特定のアラート ID を指定して REST API を使用する場合にのみ、情報アラートが表示されます。 通常、インシデントは複数のアラートで構成され、その一部は単なる情報として表示される場合がありますが、他のアラートとのコンテキストによっては詳しい調査が推奨される可能性があります。                                                                                                                         |
+| **Informational** | 通常、インシデントは複数のアラートで構成され、その一部は単なる情報として表示される場合がありますが、他のアラートとのコンテキストによっては詳しい調査が推奨される可能性があります。                                                                                                                         |
 
 ## <a name="export-alerts"></a>アラートのエクスポート
 

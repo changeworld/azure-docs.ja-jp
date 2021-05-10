@@ -3,16 +3,16 @@ title: コンテナー レジストリ用 Azure Defender - 利点と機能
 description: コンテナー レジストリ用 Azure Defender の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ab2ad15da9b1676924197d28e734f6baf59a02ef
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4840fc27133b1d92cb8aaad80921f9d21901569d
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176639"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010694"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -47,9 +47,9 @@ Security Center では、スキャナーによる検出結果がフィルター�
 
 - **プッシュ時** - イメージがレジストリにプッシュされるたびに、Security Center はそのイメージを自動的にスキャンします。 イメージのスキャンをトリガーするには、イメージをリポジトリにプッシュしてください。
 
-- **最近プルされたもの** - 新しい脆弱性は日々検出されるため、**コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージもスキャンします。 再スキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
+- **最近プルされたもの** - 新しい脆弱性は日々検出されるため、**コンテナー レジストリ用 Azure Defender** は、過去 30 日以内にプルされたすべてのイメージも週 1 回の頻度でスキャンします。 これらのスキャンに対する追加料金は発生しません。前述のように、イメージごとに 1 回の課金となります。
 
-- **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure コンテナー レジストリからレジストリにイメージを取り込むためのインポート ツールが用意されています。 **コンテナー レジストリ用 Azure Defender** は、インポートした、サポートされているイメージをスキャンします。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
+- **インポート時** - Azure Container Registry には、Docker Hub、Microsoft Container Registry、またはその他の Azure Container Registry からレジストリにイメージを取り込むためのインポート ツールが用意されています。 **コンテナー レジストリ用 Azure Defender** は、インポートした、サポートされているイメージをスキャンします。 詳細については、「[コンテナー レジストリにコンテナー イメージをインポートする](../container-registry/container-registry-import-images.md)」を参照してください。
  
 通常、スキャンは 2 分以内に完了しますが、最大で 15 分かかる場合もあります。 結果は、Security Center の推奨事項として、次のように表示されます。
 

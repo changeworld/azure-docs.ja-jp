@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3c938e7fe180e6a9cf08031a2a4565486f3f77a9
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: d86cc6af34036f5bd638b4fc78abdb54d71e6859
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504636"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306519"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>ストリーミング インジェストのスループットの制限
 
@@ -59,7 +59,7 @@ Azure Time Series Insights Gen2 環境を計画するときは、Azure Time Seri
 
 *パーティション* は、ハブで保持されている順序付けされた一連のイベントです。 パーティション数は、ハブの作成フェーズ中に設定され、変更することはできません。
 
-Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)」を参照してください。
+Event Hubs のパーティション分割のベスト プラクティスについては、「[パーティションはいくつ必要ですか。](../event-hubs/event-hubs-faq.yml#how-many-partitions-do-i-need-)」を参照してください。
 
 > [!NOTE]
 > Azure Time Series Insights Gen2 で使用されるほとんどの IoT Hub には、4 つのパーティションのみが必要です。

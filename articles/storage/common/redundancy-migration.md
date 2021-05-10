@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: eb8bbf852803df53c43cef90bd2229bfcddd60d4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714784"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766189"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -79,7 +79,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してストレージ アカウントの冗長オプションを変更するには、[az storage account update](/cli/azure/storage/account#az-storage-account-update) コマンドを呼び出して、`--sku` パラメーターを指定します。
+Azure CLI を使用してストレージ アカウントの冗長オプションを変更するには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) コマンドを呼び出して、`--sku` パラメーターを指定します。
 
 ```azurecli-interactive
 az storage account update \
@@ -122,25 +122,30 @@ Microsoft はお客様のライブ マイグレーションの要求に速やか
 - ZRS から LRS、GRS、または RA-GRS にデータを移行したい。
 - ストレージ アカウントにアーカイブ層のデータが含まれている。
 
-ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 ポータルから、ZRS に変換するストレージ アカウントを選択します。
+ライブ マイグレーションは [Azure サポート ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)から要求できます。 
 
-1. **[新しいサポート要求]** を選択します。
-2. アカウント情報に基づき **[基本]** に入力します。 
+> [!IMPORTANT]
+> 複数のストレージ アカウントを移行する必要がある場合は、1 つのサポートチケットを作成し、 **[詳細]** タブで変換するアカウントの名前を指定します。
+
+ライブ マイグレーションを依頼するには、次の手順に従います。
+
+1. Azure portal で、移行するストレージ アカウントに移動します。
+1. **[サポートとトラブルシューティング]** で、 **[新しいサポート リクエスト]** を選択します。
+1. アカウント情報に基づき **[基本]** タブに入力します。
     - **問題の種類**: **[Technical]\(テクニカル\)** を選択します。
-    - **サービス**: **[使用中のサービス]** と **[Storage Account Management]\(ストレージ アカウントの管理\)** を選択します。
-    - **リソース**:ZRS に変換するリソースを選択します。
-3. **[次へ]** を選択します。
-4. **[Problem]\(問題)** セクションで以下の値を指定します。
-    - **[重大度]** :既定値をそのまま使用します。
-    - **[問題の種類]** : **[データ移行]** を選択します。
-    - **カテゴリ**: **[Migrate to ZRS]\(ZRS へ移行\)** を選択します。
-    - **[タイトル]** :**ZRS アカウント移行** などのわかりやすいタイトルを入力します。
-    - **[詳細]** : **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。
-5. **[次へ]** を選択します。
-6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
-7. **［作成］** を選択します
+    - **サービス**: **[使用中のサービス]** 、 **[Storage Account Management]\(ストレージ アカウントの管理\)** の順に選択します。
+    - **リソース**: 移行するストレージ アカウントを選択します。 複数のストレージ アカウントを指定する必要がある場合は、 **[詳細]** セクションで行うことができます。
+    - **問題の種類**: **[データ移行]** を選択します。
+    - **問題のサブタイプ**: **[Migrate to ZRS, GZRS, or RA-GZRS]\(ZRS、GZRS、または RA-GZRS に移行\)** を選択します。
 
-サポート担当者はお客様に連絡し、必要なサポートを提供します。
+    :::image type="content" source="media/redundancy-migration/request-live-migration-basics-portal.png" alt-text="ライブ マイグレーションを依頼する方法を示すスクリーンショット - [基本] タブ":::
+
+1. **[次へ]** を選びます。 **[ソリューション]** タブで、移行に関するストレージ アカウントの適格性を確認できます。
+1. **[次へ]** を選びます。 移行するストレージ アカウントが複数ある場合は、 **[詳細]** タブで、各アカウントの名前をセミコロンで区切って指定します。
+
+    :::image type="content" source="media/redundancy-migration/request-live-migration-details-portal.png" alt-text="ライブ マイグレーションを依頼する方法を示すスクリーンショット - [詳細] タブ":::
+
+1. **[詳細]** タブで必要な追加情報を入力し、 **[確認および作成]** を選択して、サポート チケットを確認し、送信します。 サポート担当者から連絡があり、お客様が必要なサポートを提供します。
 
 > [!NOTE]
 > Premium ファイル共有 (FileStorage アカウント) は、LRS と ZRS でのみ使用できます。

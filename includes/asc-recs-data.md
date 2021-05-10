@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 04/13/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: d2ae849616946169911468bb43e190c7ff8a4ec8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103466182"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386872"
 ---
-このカテゴリには **64個** の推奨事項があります。
+このカテゴリには **65 個** の推奨事項があります。
 
 |推奨 |Description |重大度 |
 |---|---|---|
@@ -24,6 +24,7 @@ ms.locfileid: "103466182"
 |SQL サーバーの監査のリテンション期間は少なくとも 90 日に設定する必要がある |監査期間が 90 日未満に構成されている SQL サーバーを監査します。<br />(関連ポリシー:[SQL サーバーでは、90 日以上の監査リテンション期間を構成する必要がある。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |低 |
 |SQL Server の監査を有効にする必要があります |SQL サーバーに対する監査を有効にすることで、サーバー上のすべてのデータベースについてそのアクティビティを追跡し、監査ログに保存します。<br />(関連ポリシー:[SQL サーバーの監査を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)) |低 |
 |サブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。<br />(関連ポリシー:[自分のサブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)) |低 |
+|Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のすべてのコントロール プレーン (マスター) ノードからデータを収集し、それをクラウドの Azure Defender for Kubernetes のバックエンドに送信して、さらなる分析を行うことができます。 詳細については、「https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc」を参照してください。<br />(関連ポリシーはありません) |高 |
 |Azure Cache for Redis は仮想ネットワーク内に存在しなければならない |Azure Virtual Network (VNet) のデプロイでは、Azure Cache for Redis のための強化されたセキュリティと分離、サブネット、アクセス制御ポリシーなど、アクセスをさらに制限するための機能が提供されます。Azure Cache for Redis インスタンスが VNet で構成されている場合、パブリックではアドレスの指定ができず、VNet 内の仮想マシンとアプリケーションからのみアクセスできます。<br />(関連ポリシー:[Azure Cache for Redis は仮想ネットワーク内に存在しなければならない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7d092e0a-7acd-40d2-a975-dca21cae48c4)) |Medium |
 |Azure Cosmos DB のアカウントにはファイアウォール規則を含める必要がある |承認されていないソースからのトラフィックを防ぐために、Azure Cosmos DB アカウントに対してファイアウォール規則を定義する必要があります。 仮想ネットワーク フィルターを有効にして定義されている IP 規則が少なくとも 1 つあるアカウントは、準拠していると見なされます。 パブリック アクセスを無効にしているアカウントも、準拠していると見なされます。<br />(関連ポリシー: [Azure Cosmos DB アカウントにはファイアウォール規則を含める必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb)) |Medium |
 |Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある |カスタマー マネージド キーを使用して、Azure Cosmos DB の保存時の暗号化を管理します。 既定では、データはサービス マネージド キーを使用して保存時に暗号化されますが、規制コンプライアンス標準を満たすためには一般に、カスタマー マネージド キー (CMK) が必要です。 CMK を使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 CMK 暗号化の詳細については、https://aka.ms/cosmosdb-cmk を参照してください。<br />(関連ポリシー:[Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f905d99-2ab7-462c-a6b0-f709acca6c8f)) |高 |
@@ -73,7 +74,7 @@ ms.locfileid: "103466182"
 |ストレージ アカウントでは暗号化にカスタマー マネージド キー (CMK) を使用する必要がある |カスタマー マネージド キー (CMK) を使用して、より柔軟にストレージ アカウントを保護します。 CMK を指定すると、データを暗号化するキーへのアクセスを保護および制御するために、そのキーが使用されます。 CMK を使用することで、主要な暗号化キーのローテーションを制御するか、暗号的にデータを消去することができます。<br />(関連ポリシー:[ストレージ アカウントでは暗号化にカスタマー マネージド キー (CMK) を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6fac406b-40ca-413b-bf8e-0bf964659c25)) |Medium |
 |サブスクリプションにはセキュリティの問題について連絡するためのメール アドレスが必要 |サブスクリプションの 1 つでセキュリティ違反のおそれがある場合に、組織内の関係するユーザーに通知が送信されるようにするには、Security Center からのメール通知を受信するセキュリティの連絡先を設定します。<br />(関連ポリシー:[サブスクリプションには、セキュリティの問題に備えて連絡先メール アドレスが用意されている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4f4f78b8-e367-4b10-a341-d9a4ad5cf1c7)) |低 |
 |SQL データベースで Transparent Data Encryption を有効にする必要がある |Transparent Data Encryption を有効にすることで、保存データを保護し、コンプライアンス要件を満たします<br />(関連ポリシー:[SQL データベースで Transparent Data Encryption を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f17k78e20-9358-41c9-923c-fb736d382a12)) |低 |
-|VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある |仮想ネットワークが構成されていない VM Image Builder テンプレートを監査します。 仮想ネットワークが構成されていない場合は、代わりにパブリック IP が作成されて使用されるため、リソースがインターネットに直接公開され、攻撃対象となる可能性が高くなります。<br />(関連ポリシー:[VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Medium |
+|VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある |仮想ネットワークが構成されていない VM Image Builder テンプレートを監査します。 仮想ネットワークが構成されていない場合は、代わりにパブリック IP が作成されて使用されるため、リソースがインターネットに直接公開され、潜在的な攻撃対象領域が増える可能性があります。<br />(関連ポリシー:[VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2154edb9-244f-4741-9970-660785bccdaa)) |Medium |
 |SQL データベースの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/SQL-Vulnerability-Assessment/'>詳細情報</a><br />(関連ポリシー:[SQL データベースの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2ffeedbf84-6b99-488c-acc2-71c829aa5ffc)) |高 |
 |マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある |SQL の脆弱性評価では、データベースのセキュリティの脆弱性をスキャンすることで、構成の誤り、過剰なアクセス許可、機密データの未保護など、ベスト プラクティスからの逸脱をすべて明らかにします。 見つかった脆弱性を解決すると、データベースのセキュリティ態勢が大幅に向上する可能性があります。 <a href='https://aka.ms/explore-vulnerability-assessment-reports/'>詳細情報</a><br />(関連ポリシー:[マシン上の SQL サーバーの脆弱性を修復する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f6ba6d016-e7c3-4842-b8f2-4992ebc0d72d)) |高 |
 |脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある |脆弱性評価は、潜在的なデータベースの脆弱性を検出、追跡、および修正するのに役立ちます。<br />(関連ポリシー:[SQL Managed Instance で脆弱性評価を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1b7aa243-30e4-4c9e-bca8-d0d3022b634a)) |高 |

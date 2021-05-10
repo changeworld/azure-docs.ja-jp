@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: manayar
-ms.openlocfilehash: fa4fa1c43ab9d31b879bdec8e724e896bd16e14c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: bf9e802e2485e84211044ce650c7748e789e752e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123904"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762607"
 ---
 # <a name="preview-automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>プレビュー:Azure での VM とスケール セットの拡張機能の自動アップグレード
 
@@ -22,7 +22,7 @@ ms.locfileid: "102123904"
  拡張機能の自動アップグレードには、次の機能があります。
 - Azure VM と Azure Virtual Machine Scale Sets でサポートされています。 Service Fabric Virtual Machine Scale Sets は現在はサポートされていません。
 - アップグレードは、可用性優先のデプロイ モデルで適用されます (後で詳述)。
-- Virtual Machine Scale Sets では、スケール セットの仮想マシンの 20% 以上が 1 回のバッチでアップグレードされます。 最小バッチサイズは 1 仮想マシンです。
+- Virtual Machine Scale Sets では、スケール セットの仮想マシンの 20% 以上が 1 回のバッチでアップグレードされます。 最小バッチ サイズは 1 仮想マシンです。
 - すべての VM サイズ、および Windows と Linux の両方の拡張機能で動作します。
 - いつでも自動アップグレードをオプトアウトできます。
 - 拡張機能の自動アップグレードは、任意のサイズの Virtual Machine Scale Sets で有効にすることができます。
@@ -122,7 +122,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-[az feature register](/cli/azure/feature#az-feature-register) を使用して、サブスクリプションでのプレビューを有効にします。
+[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name AutomaticExtensionUpgradePreview

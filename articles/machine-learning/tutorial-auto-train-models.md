@@ -1,7 +1,7 @@
 ---
-title: '回帰のチュートリアル: 自動化された ML'
+title: 'チュートリアル: 自動機械学習による回帰'
 titleSuffix: Azure Machine Learning
-description: 指定したトレーニング データと構成設定に基づいて回帰モデルを生成する自動機械学習実験を作成します。
+description: Python SDK を使用してコードを記述し、回帰モデルを自動的に生成する自動機械学習の実験を作成します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,34 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 7f3052905d7594d64be9455c16239ebabd219849
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 85129cf282e39b4f4932cc5e9f7cfd72d1e445b0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105565080"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210637"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
-
-このチュートリアルでは、Azure Machine Learning の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する回帰モデルを作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
+このチュートリアルでは、Azure Machine Learning SDK の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する[回帰モデル](concept-automated-ml.md#regression)を作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
 
 ![フロー図](./media/tutorial-auto-train-models/flow2.png)
 
-このチュートリアルでは、以下のタスクについて学習します。
+このチュートリアルでは、Python SDK を使用してコードを記述します。  次のタスクについて説明します。
 
 > [!div class="checklist"]
 > * Azure Open Datasets を使用してデータのダウンロード、変換、クリーニングを行う
 > * 自動機械学習回帰モデルをトレーニングする
 > * モデルの精度を計算する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://aka.ms/AMLFree)の Azure Machine Learning を今すぐお試しください。
+他のタイプのモデルについても、自動機械学習を試してみましょう。 
+
+* 「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」(ノー コードの例)
+* 「[チュートリアル: 自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)」(ノー コードの例)
 
 ## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://aka.ms/AMLFree)の Azure Machine Learning を今すぐお試しください。
 
 * まだ Azure Machine Learning ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
 * セットアップのチュートリアルを完了したら、同じノートブック サーバーを使用して、*tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* ノートブックを開きます。

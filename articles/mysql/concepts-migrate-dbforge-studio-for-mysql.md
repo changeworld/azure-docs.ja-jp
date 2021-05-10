@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 942651aadf4113c1aca32e4e1d2c558b0d764421
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591879"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377227"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>dbForge Studio for MySQL を使用して Azure Database for MySQL に接続する
 
@@ -78,9 +78,7 @@ Studio では、さまざまな方法でデータベースを Azure に移行で
 dbForge Studio for MySQL には、MySQL データベース、MySQL スキーマまたはデータを Azure に移行できるいくつかのツールが組み込まれています。 ニーズとプロジェクトの要件に応じて、機能を選択します。 データベースを選択的に移動する (つまり、特定の MySQL テーブルを Azure に移行する) 必要がある場合は、スキーマとデータ比較機能を使用することをお勧めします。
 この例では、MySQL サーバー上に存在する *world* データベースを Azure Database for MySQL に移行します。 dbForge Studio for MySQL のスキーマとデータ比較機能を使用する移行プロセスの背後にあるロジックは、Azure Database for MySQL に空のデータベースを作成し、必要な MySQL データベースと同期することです。その場合、まずスキーマ比較ツールを使用してから、データ比較ツールを使用します。 これにより、MySQL スキーマとデータが Azure に正確に移動されます。
 
-### <a name="connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>Azure Database for MySQL に接続して空のデータベースを作成する
-
-Azure Database for MySQL に接続して空のデータベースを作成します。
+### <a name="step-1-connect-to-azure-database-for-mysql-and-create-an-empty-database"></a>手順 1. Azure Database for MySQL に接続して空のデータベースを作成する
 
 ### <a name="step-2-schema-synchronization"></a>手順 2. スキーマの同期
 
@@ -95,7 +93,7 @@ Azure Database for MySQL に接続して空のデータベースを作成しま�
 
     :::image type="content" source="media/concepts-migrate-dbforge-studio-for-mysql/schema-sync-wizard.png" alt-text="スキーマ同期ウィザード":::
 
-### <a name="data-comparison"></a>データ比較
+### <a name="step-3-data-comparison"></a>手順 3. データ比較
 
 1. [比較] メニューで、[新しいデータ比較] を選択します。 新しいデータ比較ウィザードが表示されます。
 

@@ -10,18 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2656d5c23a465856eee1e84d2c4f6900b21ec41
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720391"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477470"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールのベスト プラクティス
 
 この記事では、サーバーレス SQL プールの使用に関する一連のベスト プラクティスについて説明します。 サーバーレス SQL プールは、Azure Synapse Analytics 内のリソースです。
 
 サーバーレス SQL プールを使用すると、Azure ストレージ アカウント内のファイルに対してクエリを実行できます。 ローカル ストレージやインジェストの機能は備えていません。 したがって、クエリが対象とするすべてのファイルは、サーバーレス SQL プールの外部にあります。 ストレージからのファイルの読み取りに関連するものはすべて、クエリのパフォーマンスに影響を与える可能性があります。
+
+一般的なガイドラインを次に示します。
+- クライアント アプリケーションがサーバーレス SQL プールと併置されていることを確認します。
+  - Azure の外部でクライアント アプリケーション (Power BI Desktop、SSMS、ADS など) を使用している場合は、クライアント コンピューターに近いリージョンでサーバーレス プールを使用していることを確認してください。
+- ストレージ (Azure Data Lake、Cosmos DB) とサーバーレス SQL プールが同じリージョンにあることを確認します。
+- パーティション分割を使用して[ストレージ レイアウトを最適化](#prepare-files-for-querying)し、100 MB ～ 10 GB の範囲のファイルを保持します。
+- 多数の結果が返される場合は、Synapse Studio ではなく、SSMS または ADS を使用していることを確認してください。 Synapse Studio は、大規模な結果セットを想定して設計されていない Web ツールです。 
+- 文字列の列で結果をフィルター処理する場合は、いくつかの `BIN2_UTF8` 照合順序を使用してください。
+- Power BI インポート モードまたは Azure Analysis Services を使用してクライアント側に結果をキャッシュし、定期的に更新してみてください。 サーバーレス SQL プールでは、複雑なクエリを使用している場合や大量のデータを処理している場合に、Power BI Direct Query モードで対話型のエクスペリエンスを提供することはできません。
 
 ## <a name="client-applications-and-network-connections"></a>クライアント アプリケーションとネットワーク接続
 
@@ -66,7 +75,11 @@ ms.locfileid: "104720391"
 
 ### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>CosmosDB 分析ストレージとサーバーレス SQL プールを併置する
 
-CosmosDB 分析ストレージが Synapse ワークスペースと同じリージョンに配置されていることを確認します。 リージョンをまたがるクエリでは、待機時間が長くなる可能性があります。
+CosmosDB 分析ストレージが Synapse ワークスペースと同じリージョンに配置されていることを確認します。 リージョンをまたがるクエリでは、待機時間が長くなる可能性があります。 接続文字列の region プロパティを使用して、分析ストアが配置されるリージョンを明示的に指定します (「[サーバーレス SQL プールを使用したクエリ CosmosDb](query-cosmos-db-analytical-store.md#overview)」をご覧ください)。
+
+```
+'account=<database account name>;database=<database name>;region=<region name>'
+```
 
 ## <a name="csv-optimizations"></a>CSV の最適化
 
@@ -123,10 +136,10 @@ EXEC sp_describe_first_result_set N'
 
 ```sql  
 SELECT
-    vendor_id, pickup_datetime, passenger_count
+    vendorID, tpepPickupDateTime, passengerCount
 FROM 
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        BULK 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=2018/puMonth=*/*.snappy.parquet',
         FORMAT='PARQUET'
     ) 
     WITH (

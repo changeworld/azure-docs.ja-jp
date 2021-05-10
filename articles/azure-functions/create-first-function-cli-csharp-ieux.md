@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044325"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768797"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 
@@ -183,7 +183,7 @@ ms.locfileid: "102044325"
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
 
-    [az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 一般に、リソース グループとリソースは、 <abbr title="リソースが割り当てられている特定の Azure データ センターの地理的な呼称。">region</abbr> `az account list-locations` コマンドから返される利用可能なリージョンを使用してお近くのリージョンに作成します。
+    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 一般に、リソース グループとリソースは、 <abbr title="リソースが割り当てられている特定の Azure データ センターの地理的な呼称。">region</abbr> `az account list-locations` コマンドから返される利用可能なリージョンを使用してお近くのリージョンに作成します。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 

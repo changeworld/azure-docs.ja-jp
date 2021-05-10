@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4ab2c599bea4b2e3e682755a80a2ee348e4de7ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721298"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606778"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
 
@@ -43,6 +43,9 @@ Azure 上の HPC アプリケーションの最適なスケールアップとス
    ```bash
    Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
    ```
+
+## <a name="adaptive-routing"></a>アダプティブ ルーティング
+アダプティブ ルーティング (AR) を使用すると、EDR と HDR InfiniBand を実行している Azure Virtual Machines (VM) で、より最適なネットワーク パスを動的に選択することで、ネットワークの輻輳を自動的に検出して回避することができます。 その結果、AR によって InfiniBand ネットワーク上の待機時間と帯域幅が改善され、パフォーマンスとスケーリングの効率が向上します。 詳細については、[TechCommunity に関する記事](https://techcommunity.microsoft.com/t5/azure-compute/adaptive-routing-on-azure-hpc/ba-p/1205217)を参照してください。
 
 ## <a name="process-pinning"></a>プロセスの固定
 

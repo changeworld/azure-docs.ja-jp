@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9d6ec6aa5f30af04bf64e238f4a25ec6aef4f5d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580954"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504755"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -81,15 +81,15 @@ Twilio アカウントにサインアップすると、アカウント SID と�
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Python アプリケーションを作成する
 Twilio サービスを利用し、Azure 上で実行される Python アプリケーションは、Twilio サービスを利用するその他の Python アプリケーションと何ら違いはありません。 Twilio サービスは REST ベースであり、Python からいくつかの方法で呼び出すことができますが、この記事では、[GitHub の Python 用 Twilio ライブラリ][twilio_python]を使って Twilio サービスを呼び出す方法を説明します。 Python 用の Twilio ライブラリの使用の詳細については、[https://www.twilio.com/docs/libraries/python][twilio_lib_docs] を参照してください。
 
-まず、新しい Python Web アプリケーションのホストとして動作する、新しい Azure Linux VM をセットアップします。 仮想マシンの実行が開始したら、次に説明するように、アプリケーションをパブリック ポートで公開する必要があります。
+最初に、新しい Python Web アプリケーションのホストとして機能する[新しい Azure Linux VM を設定][azure_vm_setup]します。 仮想マシンの実行が開始したら、次に説明するように、アプリケーションをパブリック ポートで公開する必要があります。
 
 ### <a name="add-an-incoming-rule"></a>受信ルールの追加
-  1. [ネットワーク セキュリティ グループ] ページに移動します。
+  1. [[ネットワーク セキュリティ グループ]][azure_nsg] ページに移動します。
   2. 仮想マシンに対応するネットワーク セキュリティ グループを選択します。
   3. **ポート 80** の **[Outgoing Rule (発信ルール)]** を追加します。 すべてのアドレスからの着信を許可してください。
 
 ### <a name="set-the-dns-name-label"></a>DNS 名のラベルの設定
-  1. [パブリック IP アドレス][azure_ips] ページに移動します。
+  1. [[パブリック IP アドレス]][azure_ips] ページに移動します。
   2. 目的の仮想マシンに対応するパブリック IP を選択します。
   3. **[構成]** セクションで **[DNS 名ラベル]** を設定します。 この例では、*your-domain-label*.centralus.cloudapp.azure.com のようになります。
 
@@ -272,3 +272,6 @@ print(call.sid)
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
+[azure_ips]: https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address
+[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
+[azure_nsg]: https://docs.microsoft.com/azure/virtual-network/manage-network-security-group

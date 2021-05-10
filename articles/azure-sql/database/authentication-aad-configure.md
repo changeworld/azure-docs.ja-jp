@@ -5,19 +5,19 @@ description: Azure Active Directory を構成した後で、Azure AD 認証を�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: azure-synapse, has-adal-ref, sqldbrb=2, devx-track-azurecli
+ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c75364f2565611b6738996c082610229db0cb2a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643411"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762229"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -220,10 +220,10 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 | コマンド | 説明 |
 | --- | --- |
-|[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | SQL Managed Instance (現在のサブスクリプションのものである必要があります) に対する Azure Active Directory 管理者をプロビジョニングします。 |
-|[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | SQL Managed Instance に対する Azure Active Directory 管理者を削除します。 |
-|[az sql mi ad-admin list](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | SQL Managed Instance に対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
-|[az sql mi ad-admin update](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | SQL Managed Instance に対する Active Directory 管理者を更新します。 |
+|[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_create) | SQL Managed Instance (現在のサブスクリプションのものである必要があります) に対する Azure Active Directory 管理者をプロビジョニングします。 |
+|[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_delete) | SQL Managed Instance に対する Azure Active Directory 管理者を削除します。 |
+|[az sql mi ad-admin list](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_list) | SQL Managed Instance に対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
+|[az sql mi ad-admin update](/cli/azure/sql/mi/ad-admin#az_sql_mi_ad_admin_update) | SQL Managed Instance に対する Active Directory 管理者を更新します。 |
 
 CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」を参照してください。
 
@@ -326,10 +326,10 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 | command | 説明 |
 | --- | --- |
-|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
-|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
-|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) | SQL Database または Azure Synapse をホストするサーバーに対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
-|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) | SQL Server または Azure Synapse をホストするサーバーに対する Active Directory 管理者を更新します。 |
+|[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
+|[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
+|[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) | SQL Database または Azure Synapse をホストするサーバーに対して現在構成されている Azure Active Directory 管理者に関する情報を返します。 |
+|[az sql server ad-admin update](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) | SQL Server または Azure Synapse をホストするサーバーに対する Active Directory 管理者を更新します。 |
 
 CLI コマンドの詳細については、「[az sql server](/cli/azure/sql/server)」を参照してください。
 

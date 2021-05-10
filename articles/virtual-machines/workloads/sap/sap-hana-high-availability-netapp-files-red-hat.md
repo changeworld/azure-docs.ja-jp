@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 774344c4215088482b110de91f8951bae4a41d25
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599920"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365826"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性
 
@@ -259,7 +259,6 @@ Azure で SAP 用のインフラストラクチャを設計するときは、SAP
         1.  新しいロード バランサー規則の名前を入力します (例: **hana-lb**)。
         1.  前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**、**hana-backend**、**hana-hp**)。
         1.  **[HA ポート]** を選択します。
-        1.  **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
         1.  **Floating IP を有効にします**。
         1.  **[OK]** を選択します。
 
@@ -472,6 +471,71 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 ### <a name="create-a-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
 「[Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする](./high-availability-guide-rhel-pacemaker.md)」の手順に従って、この HANA サーバーに対して基本的な Pacemaker クラスターを作成します。
+
+### <a name="implement-the-python-system-replication-hook-saphanasr"></a>Python システム レプリケーション フック SAPHanaSR を実装する
+
+これは、クラスターとの統合を最適化し、クラスターのフェールオーバーが必要になった場合の検出を改善するための重要なステップです。 SAPHanaSR python フックを構成することを強くお勧めします。    
+
+1. **[A]** HANA "システム レプリケーション フック" をインストールします。 フックは両方の HANA DB ノードにインストールする必要があります。           
+
+   > [!TIP]
+   > Python フックは、HANA 2.0 にのみ実装できます。        
+
+   1. フックを `root` として準備します。  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/srHook/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. 両方のノードで HANA を停止します。 <sid\>adm として実行します。  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. 各クラスター ノードで `global.ini` を調整します。  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** クラスターでは、<sid\>adm の各クラスター ノードで sudoers を構成する必要があります。 この例では、新しいファイルを作成することで実現します。 `root` としてコマンドを実行します。    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+
+3. **[A]** 両方のノードで SAP HANA を開始します。 <sid\>adm として実行します。  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** フックのインストールを確認します。 アクティブな HANA システム レプリケーション サイトで、<sid\>adm として実行します。   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-12 21:36:16.911343 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:36:29.147808 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:37:04.898680 ha_dr_SAPHanaSR SOK
+
+    ```
+
+SAP HANA システム レプリケーション フックの実装の詳細については、[SAP HA または DR プロバイダー フックの有効化](https://access.redhat.com/articles/3004101#enable-srhook)に関するページを参照してください。  
 
 ### <a name="configure-filesystem-resources"></a>Filesystem リソースの構成
 

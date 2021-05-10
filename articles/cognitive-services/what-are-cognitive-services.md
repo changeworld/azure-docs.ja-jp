@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 71f8635d1cd96a6436cfc902622bf18bc608a143
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867187"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587614"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -43,7 +43,7 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 |[Custom Vision Service](./custom-vision-service/index.yml "Custom Vision Service")|Custom Vision Service を使用すると、独自の画像分類器を構築、デプロイ、改良できます。 画像分類器は、視覚特性に基づいて画像にラベルを適用する AI サービスです。 |
 |[Face](./face/index.yml "Face")| Face サービスは、顔属性の検出と認識を有効にする、高度な顔アルゴリズムへのアクセスを提供します。 サービスを開始するには、[Face のクイックスタート](./face/quickstarts/client-libraries.md)に関する記事をご覧ください。|
 |[Form Recognizer](./form-recognizer/index.yml "Form Recognizer")|Form Recognizer では、キーと値のペアおよびテーブル データを識別して form ドキュメントから抽出し、その後、元のファイルにあるリレーションシップを含む構造化データを出力します。 開始するには、[Form Recognizer のクイックスタート](./form-recognizer/quickstarts/client-library.md)に関する記事をご覧ください。|
-|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。 開始するには、[Video Indexer のクイックスタート](/media-services/video-indexer/video-indexer-get-started.md)に関する記事をご覧ください。|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer は、ビデオから洞察を抽出できます。 開始するには、[Video Indexer のクイックスタート](/azure/media-services/video-indexer/video-indexer-get-started)に関する記事をご覧ください。|
 
 ## <a name="speech-apis"></a>Speech API
 

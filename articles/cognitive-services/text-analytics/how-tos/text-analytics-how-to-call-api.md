@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599215"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029779"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -34,6 +34,14 @@ Text Analytics API を使用する前に、アプリケーションのキーと�
 2.  エンドポイントに使用するリージョンを選択します。  `/analyze` と `/health` のエンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
 
 3.  Text Analytics リソースを作成し、ページの左側にある "キーとエンドポイントのブレード" に移動します。 後で API を呼び出すときに使用するキーをコピーします。 後で `Ocp-Apim-Subscription-Key` ヘッダーの値としてこの値を追加します。
+
+4. Text Analytics リソースを使用して送信されたテキスト レコードの数を確認するには、次のようにします。
+
+    1. Azure portal で Text Analytics リソースに移動します。 
+    2. 左側のナビゲーション メニューの **[監視]** で **[メトリック]** をクリックします。 
+    3. **[メトリック]** のドロップダウン ボックスで、 *[処理されたテキスト レコード]* を選択します。
+    
+テキスト レコードは 1,000 文字です。
 
 ## <a name="change-your-pricing-tier"></a>価格レベルを変更する 
 

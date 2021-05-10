@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103010960"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803239"
 ---
 Azure Key Vault サービスでは、コンテナーとマネージド HSM という 2 つのリソースの種類がサポートされています。 次の 2 つのセクションでは、それぞれのサービスの制限について説明します。
 
@@ -50,6 +50,17 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 これらの制限を超えたときにスロットルを処理する方法については、「[Azure Key Vault のスロットル ガイダンス](../articles/key-vault/general/overview-throttling.md)」をご覧ください。
 
 <sup>1</sup> すべてのトランザクションの種類に適用されるサブスクリプション レベルの制限は、キー コンテナーの制限の 5 倍です。 たとえば、1 つのサブスクリプションで許可される HSM - その他のトランザクションの最大数は、10 秒間に 5,000 トランザクションです。
+
+#### <a name="backup-keys-secrets-certificates"></a>キー、シークレット、証明書をバックアップする
+
+キー コンテナー オブジェクト (シークレット、キー、証明書など) をバックアップすると、そのオブジェクトは、バックアップ操作によって、暗号化された BLOB としてダウンロードされます。 Azure の外部でこの BLOB の暗号化を解除することはできません。 この BLOB から有効なデータを取得するには、同じ Azure サブスクリプションと Azure 地域内のキー コンテナーに BLOB を復元する必要があります。
+
+| トランザクションの種類 | 許容されるキー コンテナー オブジェクトのバージョン数の上限 |
+| --- | --- |
+| 個々のキー、シークレット、証明書をバックアップする |500 |
+
+> [!NOTE]
+> バージョン数が上記の制限を超えるキー、シークレット、または証明書オブジェクトをバックアップしようとすると、エラーが発生します。 キー、シークレット、または証明書の以前のバージョンを削除することはできません。 
 
 #### <a name="azure-private-link-integration"></a>Azure Private Link の統合
 

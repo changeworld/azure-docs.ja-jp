@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 6da003612d98d107390c9f20a5172786c30665a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0a3653d2cc840d745b1bb5788406b8d374c76d0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709754"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533775"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -292,7 +292,7 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 
 #### <a name="application-audit-logs"></a>アプリケーションの監査ログ
 
-これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
+これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](/graph/api/resources/directoryaudit) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
 
 #### <a name="application-proxy-connector-monitoring"></a>アプリケーション プロキシ コネクタの監視
 

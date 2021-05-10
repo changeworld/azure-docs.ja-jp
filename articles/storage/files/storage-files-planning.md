@@ -4,16 +4,16 @@ description: Azure Files デプロイの計画について理解します。 Azu
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a96b44a280e0aea15a6d0843f02f4ed16f8fcf4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 267b68fbdae6d894acc3222a8d74a8e15e865dbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879849"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023522"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -65,7 +65,7 @@ Azure ファイル共有へのアクセスのブロックを解除するため�
 
 - **ExpressRoute、サイト間、またはポイント対サイト VPN を使用したネットワーク トンネリング**:仮想ネットワークへのトンネリングでは、ポート 445 がブロックされている場合でも、オンプレミスから Azure ファイル共有にアクセスできます。
 - **プライベート エンドポイント**:プライベート エンドポイントでは、仮想ネットワークのアドレス空間内から、ストレージ アカウントに専用 IP アドレスが提供されます。 これにより、Azure Storage クラスターによって所有されているすべての IP アドレス範囲に対して、オンプレミスのネットワークを開くことなくネットワーク トンネリングを行うことができます。 
-- **DNS 転送**:オンプレミスの DNS を構成して、ストレージ アカウントの名前 (つまり、パブリック クラウド リージョンの `storageaccount.file.core.windows.net`) を解決し、プライベート エンドポイントの IP アドレスに解決するようにします。
+- **DNS 転送**:オンプレミスの DNS を構成して、ストレージ アカウントの名前 (パブリック クラウド リージョンの `storageaccount.file.core.windows.net`) を解決し、プライベート エンドポイントの IP アドレスに解決するようにします。
 
 Azure ファイル共有のデプロイに関連するネットワークを計画する場合は、「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」を参照してください。
 
@@ -94,7 +94,7 @@ Azure Files には、データがバックアップされて回復可能であ�
 ### <a name="soft-delete"></a>論理的な削除
 ファイル共有の論理的な削除 (プレビュー) は、ファイル共有が誤って削除された場合に回復できるようにするストレージ アカウント レベルの設定です。 ファイル共有が削除された場合、完全に消去されるのではなく、論理的に削除された状態に移行します。 論理的に削除されたデータが完全に削除され、復旧できなくなるまでの時間を構成することができます。この保有期間中はいつでも共有の削除を取り消すことができます。 
 
-ほとんどのファイル共有に対しては、論理的な削除を有効にすることをお勧めします。 共有の削除が一般的かつ望まれているワークフローでは、保持期間を非常に短く設定するか、または論理的な削除をまったく有効にしないことを決定することができます。
+ほとんどのファイル共有に対しては、論理的な削除を有効にすることをお勧めします。 共有の削除が一般的かつ望まれているワークフローでは、保持期間を短く設定するか、または論理的な削除をまったく有効にしないように決定できます。
 
 論理的な削除の詳細については、[データの誤削除の防止](./storage-files-prevent-file-share-deletion.md)に関する記事を参照してください。
 
@@ -107,10 +107,10 @@ Azure portal 上で、Azure Backup を使用して、項目レベルおよび共
 
 バックアップの詳細については、「[Azure ファイル共有のバックアップについて](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
-### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection for Azure Files (プレビュー)
-Advanced Threat Protection (ATP) for Azure Storage には、ストレージ アカウントへの通常とは異なるアクセス試行など、ストレージ アカウント上で異常なアクティビティが検出されたときにアラートを提示するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、ATP によってマルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Azure Security Center を使用して、サブスクリプションまたはストレージ アカウント レベルで ATP を構成できます。 
+### <a name="azure-defender-for-azure-files"></a>Azure Defender for Azure Files 
+Azure Defender for Azure Storage (以前の Advanced Threat Protection for Azure Storage) には、ストレージ アカウント上で異常なアクティビティ (通常とは異なるアクセス試行など) が検出されたときにアラートを提示するセキュリティ インテリジェンスの追加レイヤーが用意されています。 また、マルウェアのハッシュ評価分析も実行され、既知のマルウェアに関するアラート通知が行われます。 Azure Security Center を使用して、サブスクリプションまたはストレージ アカウント レベルで Azure Defender を構成できます。 
 
-詳細については、[Advanced Threat Protection for Azure Storage](../common/azure-defender-storage-configure.md) に関するページを参照してください。
+詳細については、[Azure Defender for Storage の概要](../../security-center/defender-for-storage-introduction.md)に関するページを参照してください。
 
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]

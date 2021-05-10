@@ -8,12 +8,12 @@ ms.author: amjads
 author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
-ms.openlocfilehash: 33db214013111b0dd4540a1b1d2947b7d1854db9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd845c5ef5a06e3a0bca1cebe54ded2e49355617
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607485"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309817"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -121,7 +121,7 @@ Azure VM エージェントによって、VM または仮想マシン スケー�
 
 仮想マシンについては、[Remove-AzVMSecret]() を使用し、`OSProfile` から証明書を削除します。
 
-仮想マシン スケール セットの証明書に関する詳細については、仮想マシン スケール セットに関するページの「[非推奨の証明書を削除するにはどうすればよいですか?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-remove-deprecated-certificates)」を参照してください。
+仮想マシン スケール セットの証明書に関する詳細については、仮想マシン スケール セットに関するページの「[非推奨の証明書を削除するにはどうすればよいですか?](../../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-remove-deprecated-certificates-)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

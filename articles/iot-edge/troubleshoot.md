@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 56eff095cca1b24678f742e4c3ce8dfb1aaea2dd
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275585"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308270"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -64,6 +64,18 @@ sudo iotedge check
 * "*製品の準備完了検査*" では、デバイス証明機関 (CA) の証明書の状態やモジュール ログ ファイルの構成など、推奨される運用上のベスト プラクティスが検査されます。
 
 IoT Edge チェック ツールでは、コンテナーを使用して診断が実行されます。 コンテナー イメージ `mcr.microsoft.com/azureiotedge-diagnostics:latest` は、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) から入手できます。 インターネットに直接アクセスせずにデバイスのチェックを実行する必要がある場合は、デバイスにコンテナー イメージへのアクセス権が必要です。
+
+<!-- <1.2> -->
+:::moniker range=">=iotedge-2020-11"
+
+入れ子になった IoT Edge デバイスを使用するシナリオでは、親デバイスを経由してイメージのプルをルーティングすることで、子デバイスの診断イメージにアクセスできます。
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:<port_for_api_proxy_module>/azureiotedge-diagnostics:1.2
+```
+
+<!-- </1.2> -->
+:::moniker-end
 
 エラーや警告が表示された場合の対処方法など、このツールが実行する各診断チェックの詳細については、[IoT Edge のトラブルシューティング チェック](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)に関するページを参照してください。
 
@@ -161,7 +173,7 @@ Linux の場合:
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. IoT Edge セキュリティ デーモンを再起動します。

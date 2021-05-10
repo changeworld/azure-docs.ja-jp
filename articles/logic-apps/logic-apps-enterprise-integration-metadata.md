@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74792475"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して統合アカウントからアーティファクト メタデータを管理する
@@ -88,7 +88,7 @@ ms.locfileid: "74792475"
       | **方法** | はい | <*operation-to-run*> | アーティファクトで実行する HTTP 操作。 たとえば、この HTTP アクションでは **GET** メソッドが使用されます。 | 
       | **URI** | はい | <*metadata-location*> | 取得したアーティファクトから `routingUrl` メタデータ値にアクセスするには、下のような式を使用できます。 <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **ヘッダー** | いいえ | <*header-values*> | HTTP アクションに渡すトリガーからのヘッダー出力。 たとえば、トリガーの `headers` プロパティ値を渡すには、次のような式を使用できます。 <p>`@triggeroutputs()['headers']` | 
-      | **本文** | いいえ | <*body-content*> | HTTP アクションの `body` プロパティで渡すその他のコンテンツ。 この例では、アーティファクトの `properties` 値が HTTP アクションに渡されます。 <p>1. **[本文]** プロパティ内をクリックし、動的コンテンツ リストを表示します。 プロパティが表示されていない場合、**[さらに表示する]** を選択します。 <br>2.動的コンテンツ リストの **[統合アカウントのアーティファクトの検索]** で **[プロパティ]** を選択します。 | 
+      | **本文** | いいえ | <*body-content*> | HTTP アクションの `body` プロパティで渡すその他のコンテンツ。 この例では、アーティファクトの `properties` 値が HTTP アクションに渡されます。 <p>1. **[本文]** プロパティ内をクリックし、動的コンテンツ リストを表示します。 プロパティが表示されていない場合、**[さらに表示する]** を選択します。 <br>2. 動的コンテンツ リストの **[統合アカウントのアーティファクトの検索]** で **[プロパティ]** を選択します。 | 
       |||| 
 
       次に例を示します。

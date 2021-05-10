@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd56740b7153cdbafdfa847a22d34b57f862cdf3
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449235"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550745"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
@@ -24,6 +24,9 @@ ms.locfileid: "91449235"
 
 > [!WARNING]
 > Front Door は世界中に多くのエッジ環境があるので、バックエンドに対する正常性プローブの量が極めて多くなる可能性があります。構成されている正常性プローブの頻度にもよりますが、毎分 25 回要求されることもあれば、多いときは毎分 1200 回要求されることもあります。 既定のプローブ頻度は 30 秒であり、バックエンドのプローブ量は毎分 200 要求程度になるはずです。
+
+> [!NOTE]
+> Front Door HTTP/HTTPS プローブは、`Edge Health Probes` という値の `User-Agent` ヘッダー セットと共に送信されます。 
 
 ## <a name="supported-protocols"></a>サポートされるプロトコル
 

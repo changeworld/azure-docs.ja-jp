@@ -10,24 +10,36 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/20/2019
-ms.openlocfilehash: c530d584282cebba78c095798944e48d7efe2c66
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 3afc2a1e3b279e7c4fd350e96787454e01e01f79
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625635"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303221"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU 購入モデルを使用した単一データベースのリソース制限 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、DTU 購入モデルを使用した Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
 
-エラスティック プールに対する DTU 購入モデルのリソース制限については、[エラスティック プールに対する DTU リソースの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。 仮想コア リソースの制限については、[単一データベースに対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。 さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
+* サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
+* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[単一データベースに対する DTU リソースの制限](resource-limits-dtu-single-databases.md)と [DTU リソースによるエラスティック プールの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。
+* 仮想コア リソースの制限については、[Azure SQL Database に対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
+* さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
+
+各読み取り専用レプリカには、DTU、ワーカー、セッションなどの独自のリソースがあります。 読み取り専用の各レプリカには、この記事で後述するリソース制限が適用されます。 
+
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>単一データベース:ストレージ サイズとコンピューティング サイズ
 
-次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 [Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](single-database-manage.md#transact-sql-t-sql)、[PowerShell](single-database-manage.md#powershell)、[Azure CLI](single-database-manage.md#the-azure-cli)、または [REST API](single-database-manage.md#rest-api) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ容量を設定できます。
+次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 次を使用して、単一データベースのサービス レベル、コンピューティング サイズ、およびストレージ量を設定できます。
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) ([ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) を使用)
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](single-database-scale.md)に関するページを参照してください
@@ -57,7 +69,7 @@ ms.locfileid: "105625635"
 | 最大 DTU 数 | 10 | 20 | 50 | 100 |
 | 付属ストレージ (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
 | 最大ストレージ (GB) | 250 | 250 | 250 | 1024 |
-| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | なし | なし | 該当なし |
+| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし |
 | 最大同時実行ワーカー (要求) 数| 60 | 90 | 120 | 200 |
 | 最大同時セッション数 |600 | 900 | 1200 | 2400 |
 ||||||
@@ -77,7 +89,7 @@ ms.locfileid: "105625635"
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 付属ストレージ (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
 | 最大ストレージ (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
-| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | なし | なし | なし |該当なし |
+| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし |該当なし |
 | 最大同時実行ワーカー (要求) 数| 400 | 800 | 1600 | 3200 |6000 |
 | 最大同時セッション数 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||

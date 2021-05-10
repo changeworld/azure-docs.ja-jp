@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
-ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b3df487d690befadd249142c449163c2393f6df6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91250070"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640318"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM を Windows Server/VMM 2016 にアップグレードする 
 
@@ -54,7 +54,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
   > SCVMM 2012 R2 のアップグレード中に、[分散キー管理] で **暗号化キーを Active Directory に格納する** ことを選択します。 サービス アカウントおよび分散キー管理の設定は、慎重に選択します。 お客様の選択によっては、テンプレート内のパスワードなど、暗号化されたデータがアップグレード後に使用できなくなり、Azure Site Recovery によるレプリケーションに影響が及ぶ可能性があります
 
 > [!IMPORTANT]
-> 詳細な SCVMM ドキュメントの[前提条件](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations)を参照してください
+> 詳細な SCVMM ドキュメントの[前提条件](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#requirements-and-limitations)を参照してください
 
 ## <a name="windows-server-2012-r2-hosts-which-arent-managed-by-scvmm"></a>SCVMM によって管理されていない Windows Server 2012 R2 ホスト 
 以下で説明されている各手順は、この[チュートリアル](./hyper-v-prepare-on-premises-tutorial.md)に従って実行された [Hyper-V ホストから Azure へ](./hyper-v-azure-architecture.md)のユーザー構成に適用されます
@@ -66,7 +66,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 2. クラスターに導入された新しい Windows Server 2016 ホストごとに、[こちら] に記載されている手順に従って、Azure Site Recovery から Windows Server 2012 R2 ホストの参照を削除します。 これは、クラスターからのドレインおよび無効化を選択したホストである必要があります。
 3. すべての仮想マシンに対して *Update-VMVersion* コマンドが実行されたら、アップグレードは完了です。 
 4. [こちら](./hyper-v-azure-tutorial.md#set-up-the-source-environment)に記載されている手順を使用して、新しい Windows Server 2016 ホストを Azure Site Recovery に登録します。 Hyper-V サイトは既にアクティブになっているので、新しいホストをクラスターに登録するだけで済むことに注意してください。 
-5.  Azure portal に移動し、[Recovery Services] で、レプリケートされた正常性状態を確認します
+5. Azure portal に移動し、[Recovery Services] で、レプリケートされた正常性状態を確認します
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-managed-by-stand-alone-scvmm-2012-r2-server"></a>スタンドアロンの SCVMM 2012 R2 サーバーによって管理されている Windows Server 2012 R2 ホストのアップグレード
 お客様の Windows Sever 2012 R2 ホストをアップグレードする前に、SCVMM 2012 R2 を SCVMM 2016 にアップグレードする必要があります。 以下の手順に従ってください。
@@ -74,20 +74,20 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 **スタンドアロンの SCVMM 2012 R2 を SCVMM 2016 にアップグレードする**
 
 1.  [コントロール パネル]、[プログラム]、[プログラムと機能]、[Microsoft Azure Site Recovery] の順に移動し、[アンインストール] をクリックして、ASR プロバイダーをアンインストールします
-2. [SCVMM のデータベースを保持し、オペレーティング システムをアップグレードします](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
+2. [SCVMM のデータベースを保持し、オペレーティング システムをアップグレードします](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#back-up-and-upgrade-the-operating-system)
 3. **[プログラムの追加と削除]** で、 **[VMM]**  >  **[アンインストール]** の順に選択します。 b. **[機能の削除]** を選択し、 **[VMM 管理サーバー] と [VMM コンソール]** を選択します。 c. **[データベースのオプション]** で **[データベースの保持]** を選択します。 d. 概要を確認し、 **[アンインストール]** をクリックします。
 
-4. [VMM 2016 をインストールします](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
+4. [VMM 2016 をインストールします](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#install-vmm-2016)
 5. SCVMM を起動し、 **[ファブリック]** タブで各ホストの状態を確認します。 **[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。 
-17. SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](https://aka.ms/downloaddra)をインストールします。
-16. クラスターの各ホストに最新の [Microsoft Azure Recovery Service (MARS) エージェント](https://aka.ms/latestmarsagent)をインストールします。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
+17.    SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](https://aka.ms/downloaddra)をインストールします。
+16.    クラスターの各ホストに最新の [Microsoft Azure Recovery Service (MARS) エージェント](https://aka.ms/latestmarsagent)をインストールします。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
 
 **Windows Server 2012 R2 ホストを Windows Server 2016 にアップグレードする**
 
 1. クラスターのローリング アップグレード プロセスを実行するには、[こちら](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)に記載されている手順に従います。 
 2. クラスターに新しいホストを追加した後、SCVMM コンソールからホストを更新して、この更新されたホストに VMM エージェントをインストールします。
 3. *Update-VMVersion* を実行して、仮想マシンの VM バージョンを更新します。 
-4.  Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
+4. Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
 
 ## <a name="upgrade-windows-server-2012-r2-hosts-are-managed-by-highly-available-scvmm-2012-r2-server"></a>高可用性の SCVMM 2012 R2 サーバーによって管理されている Windows Server 2012 R2 ホストのアップグレード
 お客様の Windows Sever 2012 R2 ホストをアップグレードする前に、SCVMM 2012 R2 を SCVMM 2016 にアップグレードする必要があります。 Azure Site Recovery を使用して構成された SCVMM 2012 R2 サーバーのアップグレードでは、次のアップグレード モードがサポートされています。それは、追加の VMM サーバーを使用しない混合モードと、追加の VMM サーバーを使用する混合モードです。
@@ -95,7 +95,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 **SCVMM 2012 R2 を SCVMM 2016 にアップグレードする**
 
 1.  [コントロール パネル]、[プログラム]、[プログラムと機能]、[Microsoft Azure Site Recovery] の順に移動し、[アンインストール] をクリックして、ASR プロバイダーをアンインストールします
-2. お客様が実行したいアップグレードのモードに応じて、[こちら](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)に記載されている手順に従います。
+2. お客様が実行したいアップグレードのモードに応じて、[こちら](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016&preserve-view=true#upgrade-a-standalone-vmm-server)に記載されている手順に従います。
 3. SCVMM コンソールを起動し、 **[ファブリック]** タブで各ホストの状態を確認します。 **[最新の情報に更新]** をクリックして、最新の状態を取得します。 状態として "要注意" と表示されるはずです。
 4. SCVMM に最新の [Microsoft Azure Site Recovery プロバイダー](https://aka.ms/downloaddra)をインストールします。
 5. クラスターの各ホストで、最新の [Microsoft Azure Recovery Service (MARS) エージェント](https://aka.ms/latestmarsagent)に更新します。 最新の情報に更新して、SCVMM がホストを正常に照会できることを確認します。
@@ -106,8 +106,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 1. クラスターのローリング アップグレード プロセスを実行するには、[こちら](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade#cluster-os-rolling-upgrade-process)に記載されている手順に従います。
 2. クラスターに新しいホストを追加した後、SCVMM コンソールからホストを更新して、この更新されたホストに VMM エージェントをインストールします。
 3. *Update-VMVersion* を実行して、仮想マシンの VM バージョンを更新します。 
-4.  Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
+4. Azure portal に移動し、[Recovery Services コンテナー] で仮想マシンのレプリケートされた正常性状態を確認します。 
 
 ## <a name="next-steps"></a>次のステップ
 ホストのアップグレードが実行されたら、[テスト フェールオーバー](tutorial-dr-drill-azure.md)を実行して、レプリケーションの正常性とディザスター リカバリーの状態をテストできます。
-

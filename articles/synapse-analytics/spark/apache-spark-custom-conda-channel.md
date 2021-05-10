@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 528ba4a1be3650a81772d78a438f03611b9bd761
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 26b6adefd2d334c9fe570bfa7e63bb06b55b9d20
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107215"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588770"
 ---
 # <a name="create-a-custom-conda-channel-for-package-management"></a>パッケージ管理のためのカスタム Conda チャネルを作成する 
 Python パッケージのインストール時に、Conda パッケージ マネージャーでは、パッケージを探すためにチャネルが使用されます。 場合によっては、さまざまな理由でカスタム Conda チャネルを作成する必要があります。 たとえば、次のようなことが考えられます。
@@ -92,7 +92,7 @@ conda index channel1/linux-64
 conda index channel1 
 ```
 
-カスタム チャネルを作成するため詳細については、[Conda ユーザーガイド](https://docs.conda.io/projects/conda/latest/user-guide/tasks/create-custom-channels.html)も参照してください。 
+カスタム チャネルを作成するため詳細については、[Conda ユーザーガイド](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/create-custom-channels.html)も参照してください。 
 
 ## <a name="storage-account-permissions"></a>ストレージ アカウントのアクセス許可
 次に、ストレージ アカウントに対するアクセス許可を検証する必要があります。 これらのアクセス許可を設定するには、カスタム チャネルを作成するパスに移動します。 次に、読み取り、一覧表示、実行の各アクセス許可を持つ ```privatechannel``` 用の SAS トークンを作成します。 

@@ -3,12 +3,12 @@ title: 概念 - ID とアクセス
 description: Azure VMware Solution の ID とアクセスの概念について説明します
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: f3a79c79acef07721bd0883fa70c835bee14ef0d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 1d49ce27ee74621874281a555651c09a73048928
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799277"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109817"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware Solution の ID の概念
 
@@ -94,6 +94,9 @@ CloudAdmin ロールでは、現在のロール以下の権限を持つカスタ
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager のアクセスと ID
 
+>[!NOTE]
+>現在、NSX-T 2.5 がサポートされています。
+
 "*管理者*" アカウントを使用して、NSX-T Manager にアクセスします。 これには完全な特権があるため、 Tier-1 (T1) ゲートウェイ、セグメント (論理スイッチ)、およびすべてのサービスを作成および管理できます。 この特権により、NSX-T Tier-0 (T0) ゲートウェイへのアクセスが可能になります。 T0 ゲートウェイを変更すると、ネットワーク パフォーマンスが低下したり、プライベート クラウドにアクセスできなくなったりする可能性があります。 Azure portal でサポート リクエストを開いて、NSX-T T0 ゲートウェイに対する変更を依頼してください。
 
  
@@ -103,9 +106,9 @@ Azure VMware Solution のアクセスと ID に関する概念を理解したら
 
 - [プライベート クラウドのアップグレードの概念](concepts-upgrades.md)
 - [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
-- [各特権の詳細](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)。
-- [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](concepts-monitor-repair-private-cloud.md)。
-- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)。
+- [各特権の詳細](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+- [Azure VMware Solution でプライベート クラウドを監視し、修復するしくみ](concepts-monitor-repair-private-cloud.md)
+- [Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)
 
 
 <!-- LINKS - external-->

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 80b630bb2f06d3eb634b9d9d32649ea8a47c0b0b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5423c26b15c5ba9fa84e5d823f75f3c82a8cb8b4
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739145"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968120"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Event Grid 用の Azure セキュリティ ベースライン
 
@@ -32,15 +32,15 @@ Azure Event Grid を完全に Azure セキュリティ ベンチマークにマ�
 
 Azure Event Grid は、トピックおよびドメインへの発行のためのパブリック IP ベースのアクセス制御もサポートしています。 IP ベースの制御を使用すると、トピックまたはドメインへのパブリッシャーを、承認されている一連のマシンおよびクラウド サービスだけに制限できます。 この機能は、Event Grid でサポートされている認証メカニズムを補完します。 
 
-- [Event Grid プライベート エンドポイントの詳細](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
+- [Event Grid プライベート エンドポイントの詳細](./network-security.md#private-endpoints)
 
-- [Event Grid IP ファイアウォールの詳細](https://docs.microsoft.com/azure/event-grid/network-security#ip-firewall)
+- [Event Grid IP ファイアウォールの詳細](./network-security.md#ip-firewall)
 
 - [Azure Event Grid のネットワーク セキュリティ](network-security.md) 
 
 - [Azure Private Link の概要](../private-link/private-link-overview.md)
 
-- [Azure ネットワーク セキュリティ グループ](/azure/virtual-network/security-overview)
+- [Azure ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)
 
 **責任**: Customer
 
@@ -48,9 +48,7 @@ Azure Event Grid は、トピックおよびドメインへの発行のための
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2:仮想ネットワーク、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**: Azure Security Center を使用し、ネットワークの保護に関する推奨事項に従って、Azure の Event Grid リソースをセキュリティで保護します。 Azure
-
-仮想マシンを使用して Event Grid リソースにアクセスする場合は、ネットワーク セキュリティ グループ (NSG) フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。
+**ガイダンス**: Azure Security Center を使用し、ネットワークの保護に関する推奨事項に従って、Azure の Event Grid リソースをセキュリティで保護します。 Azure 仮想マシンを使用して Event Grid リソースにアクセスする場合は、ネットワーク セキュリティ グループ (NSG) フロー ログを有効にし、トラフィック監査のためにログをストレージ アカウントに送信します。
 
 - [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -80,7 +78,7 @@ Azure Event Grid は、トピックおよびドメインへの発行のための
 
 - [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Security Center の統合された脅威インテリジェンスの詳細について](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center の統合された脅威インテリジェンスの詳細について](../security-center/azure-defender.md)
 
 **責任**: Customer
 
@@ -132,7 +130,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**: Azure Event Grid リソースへのアクセスが必要な仮想ネットワーク内のリソースについては、Virtual Network サービス タグを使用して、ネットワーク セキュリティ グループまたは Azure Firewall に対するネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソース フィールドまたはターゲット フィールドにサービス タグ名 (たとえば AzureEventGrid) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-- [Azure Event Grid にサービス タグを使用する方法](https://docs.microsoft.com/azure/event-grid/network-security#service-tags)
+- [Azure Event Grid にサービス タグを使用する方法](./network-security.md#service-tags)
 
 - [サービス タグの使用に関する詳細](../virtual-network/service-tags-overview.md)
 
@@ -149,7 +147,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 - Azure Event Grid domains should use private links (Azure Event Grid ドメインではプライベート リンクを使用する必要がある)
 
 - Azure Event Grid トピックではプライベート リンクを使用する必要がある Azure
-- [Event Grid リソースの組み込みポリシー](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-grid)
+- [Event Grid リソースの組み込みポリシー](../governance/policy/samples/built-in-policies.md#event-grid)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -161,7 +159,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**: Azure Event Grid リソースに関連付けられているネットワーク リソースを分類別に論理的に整理するために、それらのリソースにタグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -171,9 +169,9 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Event Grid に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -217,7 +215,7 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 **ガイダンス**:Azure Monitor で、組織のコンプライアンス規則に従って、Azure Event Grid リソースに関連付けられている Log Analytics ワークスペースのログの保持期間を設定します。
 
-- [ログ保持期間のパラメーターを設定する方法](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
 
@@ -235,9 +233,9 @@ Event Grid に対してプライベート エンドポイントが作成され�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics クエリの使用方法](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **責任**: Customer
 
@@ -257,7 +255,7 @@ Azure Event Grid メトリックとアクティビティ ログ操作に関す�
 
 - [Event Grid 診断ログ スキーマの詳細](diagnostic-logs.md)
 
-- [Azure Monitor を使用してログ アラートを作成、表示、管理する](/azure/azure-monitor/platform/alerts-log)
+- [Azure Monitor を使用してログ アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-log.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -329,7 +327,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 - [発行クライアントを認証する (Azure Event Grid)](security-authenticate-publishing-clients.md)
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **責任**: Customer
 
@@ -363,7 +361,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 **ガイダンス**:Azure Active Directory (Azure AD) のセキュリティ レポートと監視を使用して、環境内で疑わしいアクティビティや安全でないアクティビティが発生したときに検出します。 Azure Security Center を使用して ID およびアクセス アクティビティを監視します。
 
-- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [危険なアクティビティのフラグが設定された Azure AD ユーザーを識別する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Security Center でユーザーの ID およびアクセス アクティビティを監視する方法](../security-center/security-center-identity-access.md)
 
@@ -401,11 +399,11 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 環境内で疑わしいアクティビティや安全でないアクティビティが発生した場合にログやアラートを生成するには、Azure AD Privileged Identity Management (PIM) を使用します。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD Privileged Identity Management (PIM) をデプロイする](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Azure AD Privileged Identity Management (PIM) をデプロイする](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **責任**: Customer
 
@@ -417,7 +415,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **責任**: Customer
 
@@ -427,7 +425,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 **ガイダンス**: Azure Active Directory (Azure AD) Identity Protection 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -455,7 +453,7 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
  
  
  
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -465,11 +463,11 @@ Event Grid では Azure Event Grid トピックまたはドメインに対して
 
 **ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure リソースへのアクセス レベルを制限できます。 Azure RBAC を使用して Azure リソースへのアクセスを制御できます。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -519,7 +517,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure Event Grid リソースの運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -569,7 +567,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -581,11 +579,11 @@ Microsoft によって管理される基になるプラットフォームの場�
  
  
  
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -764,7 +762,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
 **責任**: Customer
 
@@ -930,7 +928,7 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -1000,5 +998,5 @@ Azure Resource Manager には、JavaScript Object Notation (JSON) でテンプ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

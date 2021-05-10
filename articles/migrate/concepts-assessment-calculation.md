@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7d756b53247206ab4dd4f955c954e6bd105afa1d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c8d625095fc979151ed904fb355b5953e41309b4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778493"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078708"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>評価の概要 (Azure VM への移行)
 
-この記事では、[Azure Migrate (サーバーの検出および評価ツール)](migrate-services-overview.md) での評価の概要について説明します。 このツールでは、Azure への移行について、VMware 仮想マシン、Hyper-V 環境、物理サーバーにおけるオンプレミスのサーバーを評価できます。
+この記事では、[Azure Migrate: 検出および評価](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)ツールでの評価の概要について説明します。 このツールでは、Azure への移行について、VMware 仮想マシン、Hyper-V 環境、物理サーバーにおけるオンプレミスのサーバーを評価できます。
 
 ## <a name="whats-an-assessment"></a>評価とは
 
@@ -33,6 +33,9 @@ Azure Migrate: 検出および評価を使用して作成できる評価には�
 **Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 この評価の種類を使用すると、[VMware](how-to-set-up-appliance-vmware.md) と [Hyper-V](how-to-set-up-appliance-hyper-v.md) の環境にあるオンプレミスのサーバー、および[物理サーバー](how-to-set-up-appliance-physical.md)を Azure VM に移行するために評価できます。
 **Azure SQL** | オンプレミスの SQL サーバーを VMware 環境から Azure SQL Database または Azure SQL Managed Instance に移行するための評価。
 **Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> 検出と評価ツールで Azure VM または AVS 評価の数が正しくない場合は、評価の合計数をクリックしてすべての評価に移動し、Azure VM または AVS の評価を計算し直します。 その後、検出と評価ツールには、その評価の種類の正しい数が表示されます。 
 
 Azure Migrate を使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Azure VM 評価には、サイズ変更の設定基準として、次の 2 つのオプションが用意されています。
 

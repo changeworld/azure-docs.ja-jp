@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python, contperf-fy21q3
 adobe-target: true
-ms.openlocfilehash: f00a5efb01ea59b04495747ffd93d9f15ad5f76e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed7a95ea83cacc0eaccfa23cd87403fb9be615ee
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935534"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210671"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>チュートリアル:Jupyter Notebook で Azure Machine Learning の作業を開始する
 
@@ -27,7 +27,13 @@ ms.locfileid: "105935534"
 > [!div class="checklist"]
 > * 他の Jupyter Notebook チュートリアルで使用する [Azure Machine Learning ワークスペース](concept-workspace.md)を作成します。
 > * チュートリアル ノートブックをワークスペース内のフォルダーに複製します。
-> * Azure Machine Learning Python SDK がインストールされ、事前構成されたクラウドベースのコンピューティング インスタンスを作成します。
+> * クラウドベースのコンピューティング インスタンスを作成します。Azure Machine Learning Python SDK のインストールと構成があらかじめ済んでいる環境が得られます。
+
+このチュートリアルでは、ご利用のワークスペースからコンピューティング リソースに対して Jupyter ノートブックを実行する準備を行います。  
+
+Azure Machine Learning の始め方としては、バッチ ジョブを送信する方法もお勧めです。  「[チュートリアル: 個人の開発環境で Azure Machine Learning の使用を開始する](tutorial-1st-experiment-sdk-setup-local.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 

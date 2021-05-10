@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010702"
 ---
 この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。 各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。 また、さまざまな方法の比較や選択肢についても説明しています。
@@ -33,7 +33,7 @@ IoT ソリューション アクセラレータでは、次の 2 つの方法を
 
 * デバイスで IoT Hub と通信するために使用される各デバイスの一意の id キー (セキュリティ トークン) の提供。
 
-* IoT Hub にデバイスを認証させる手段として、オンデバイスの [X.509 証明書](https://www.itu.int/rec/T-REC-X.509-201210-S)と秘密キーの使用。 この認証メソッドでは、デバイスの秘密キーがデバイス以外では分からなくなるため、常に高レベルのセキュリティ保護を提供できます。
+* IoT Hub にデバイスを認証させる手段として、デバイスでの [X.509 証明書](https://www.itu.int/rec/T-REC-X.509-201210-S)と秘密キーの使用。 この認証メソッドでは、デバイスの秘密キーがデバイス以外では分からなくなるため、常に高レベルのセキュリティ保護を提供できます。
 
 セキュリティ トークンの方法では、各呼び出しに対称キーを関連付けることによって、IoT Hub にデバイスで実行する各呼び出しの認証を提供します。 X.509 ベースの認証は、TLS 接続の確立の一部として物理層に IoT デバイスの認証を許可します。 安全性が低いパターンである X.509 認証を行わず、セキュリティ トークン ベースのメソッドを使用できます。 2 つの方法の選択は主に、いかに安全なデバイス認証が必要であるか、また (秘密キーを安全に格納して) デバイスにセキュリティで保護された記憶域の可用性によって決まります。
 
@@ -47,9 +47,9 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 * [デバイスとして SAS トークンを使用する](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)
 
-各 IoT Hub には、転送中の cloud-to-device メッセージを含むキューなど、サービス内にデバイスごとのリソースを作成したり、デバイス向けのエンドポイントへのアクセスを許可したりするために使用できる [ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)があります。 IoT Hub ID レジストリでは、ソリューションのデバイス ID とセキュリティ キーのセキュリティで保護されたストレージが提供されます。 デバイス ID は個別に、またはまとめて許可リストあるいはブロック リストに追加できるため、デバイスへのアクセスを完全に制御できます。 次の記事では、ID レジストリの構造とサポートされている操作について詳しく説明します。
+各 IoT Hub には、転送中の C2D メッセージを含むキューなど、サービスでデバイスごとのリソースを作成するのに使用し、デバイス向けのエンドポイントにアクセスできる [ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)があります。 IoT Hub ID レジストリでは、ソリューションのデバイス ID とセキュリティ キーのセキュリティで保護されたストレージが提供されます。 デバイス ID は個別に、またはまとめて許可リストあるいはブロック リストに追加できるため、デバイスへのアクセスを完全に制御できます。 次の記事では、ID レジストリの構造とサポートされている操作について詳しく説明します。
 
-[IoT Hub では、MQTT、AMQP、HTTP などのプロトコルがサポートされます](../articles//iot-hub/iot-hub-devguide-security.md)。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
+[IoT Hub は、MQTT、AMQP、HTTP などのプロトコルをサポートします](../articles//iot-hub/iot-hub-devguide-security.md)。 各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
 
 * AMQP: SASL PLAIN および AMQP 要求ベースのセキュリティ (IoT Hub レベルのトークンの場合、`{policyName}@sas.root.{iothubName}`。デバイス スコープのトークンの場合、`{deviceId}`)。
 
@@ -57,11 +57,11 @@ IoT Hub では、デバイスとサービスの認証にセキュリティ ト�
 
 * HTTP: 有効なトークンは、承認要求ヘッダーにあります。
 
-IoT Hub ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。 ただし、IoT ソリューションで既に[カスタム デバイス ID レジストリや認証スキーム](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)にかなり投資している場合、トークン サービスを作成することで、この既存のインフラストラクチャに IoT Hub を統合できます。
+IoT Hub ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。 ただし、IoT ソリューションで既に[カスタム デバイス ID レジストリや認証スキーム](../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication)にかなり投資している場合、トークン サービスを作成すると、この既存のインフラストラクチャに IoT Hub を統合できます。
 
 ### <a name="x509-certificate-based-device-authentication"></a>X.509 証明書ベースのデバイスの認証
 
-[デバイスベースの X.509 証明書](../articles/iot-hub/iot-hub-devguide-security.md)およびそれに関連付けられている秘密キーと公開キーの組を使用することにより、物理層で追加の認証が可能になります。 秘密キーは、デバイスに安全に格納され、デバイスの外側では検出されません。 X.509 証明書には、デバイス ID など、デバイスとその他の組織の詳細に関する情報が含まれています。 証明書の署名は、秘密キーを使用して生成されます。
+[デバイス ベースのX.509 証明書](../articles/iot-hub/iot-hub-devguide-security.md)とその関連付けられた秘密キーおよびパブリック キーの組み合わせを使用することにより、物理層で追加の認証ができます。 秘密キーは、デバイスに安全に格納され、デバイスの外側では検出されません。 X.509 証明書には、デバイス ID など、デバイスとその他の組織の詳細に関する情報が含まれています。 証明書の署名は、秘密キーを使用して生成されます。
 
 高度なデバイスのプロビジョニング フロー:
 
@@ -81,7 +81,7 @@ IoT デバイスと IoT Hub の間でのインターネット接続は、トラ�
 
 ## <a name="securing-the-cloud"></a>クラウドを保護する
 
-Azure IoT Hub ではセキュリティ キーごとに[アクセス制御ポリシー](../articles/iot-hub/iot-hub-devguide-security.md)の定義付けが行われます。 それは次の一連のアクセス許可を使用して、各 IoT Hub のエンドポイントへのアクセスを許可します。 次のアクセス許可により、機能に応じて IoT Hub へのアクセスを制限します。
+Azure IoT Hub はセキュリティ キーごとに[アクセス制御ポリシー](../articles/iot-hub/iot-hub-devguide-security.md)の定義付けを行います。 それは次の一連のアクセス許可を使用して、各 IoT Hub のエンドポイントへのアクセスを許可します。 アクセス許可により、機能に応じて IoT Hub へのアクセスが制限されます。
 
 * **RegistryRead**。 ID レジストリへの読み取りアクセスを許可します。 詳細については、[ID レジストリ](../articles/iot-hub/iot-hub-devguide-identity-registry.md)に関するページを参照してください。
 
@@ -91,7 +91,7 @@ Azure IoT Hub ではセキュリティ キーごとに[アクセス制御ポリ�
 
 * **DeviceConnect**。 デバイス向けのエンドポイントへのアクセスを許可します。 たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。 このアクセス許可はデバイスによって使用されます。
 
-IoT Hub と [セキュリティ トークン](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)を使用して **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 とおりがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
+[セキュリティ トークン](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)を使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス キーを使用する方法の 2 通りがあります。 さらに、デバイスからアクセスできるすべての機能は、仕様により、 `/devices/{deviceId}`というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
 [サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components)。
 
@@ -99,15 +99,15 @@ Azure IoT Hub とソリューションの一部として使用するその他の
 
 Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytics や Azure Blob Storage などのさまざまなサービスで使用できます。 これらのサービスでは、管理アクセスが可能になります。 これらのサービスと利用可能なオプションの詳細については、以下をご覧ください。
 
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/):属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
 
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/): クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからリアルタイムの分析情報を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/):クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからリアルタイムの分析情報を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 
-* [Azure App Services](https://azure.microsoft.com/services/app-service/): クラウドとオンプレミスのどちらにあるデータにも接続できる強力な Web アプリとモバイル アプリを構築するためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
+* [Azure App Services](https://azure.microsoft.com/services/app-service/):データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォームです。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/): Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
+* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/):Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
 
-* [Azure Blob Storage](https://azure.microsoft.com/services/storage/): デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
+* [Azure Blob Storage](https://azure.microsoft.com/services/storage/):デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
 
 ## <a name="conclusion"></a>まとめ
 

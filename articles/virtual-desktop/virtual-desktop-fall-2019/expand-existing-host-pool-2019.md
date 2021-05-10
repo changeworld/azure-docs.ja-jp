@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: ab661943542b3621792dfe0ca8c3fb26f64508a5
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+manager: femila
+ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120709"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551953"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する
 
@@ -39,7 +39,7 @@ ms.locfileid: "106120709"
 以下の 3 つのセクションは、ホスト プールを拡張するために使用できる 3 つの方法です。 いずれでも使いやすいデプロイ ツールを使用できます。
 
 >[!NOTE]
->デプロイ フェーズ中では、以前のセッション ホスト VM リソースが現在シャットダウンされている場合、それらのエラー メッセージが表示されます。 これらのエラーは、Azure が PowerShell DSC 拡張機能を実行してセッション ホスト VM が既存のホスト プールに正しく登録されていることを検証できないために発生します。 これらのエラーは無視しても問題ありません。または、デプロイ プロセスを開始する前に、既存のホスト プール内のすべてのセッション ホスト VM を開始することで、エラーを回避できます。
+>デプロイ フェーズ中では、以前のセッション ホスト VM リソースが現在シャットダウンされている場合、それらのエラー メッセージが表示されます。 これらのエラーは、Azure が PowerShell DSC 拡張機能を実行してセッション ホスト VM が既存のホスト プールに正しく登録されていることを検証できないために発生します。 名前が "-0" で終わるセッション ホストが実行されている必要がありますが、他のセッション ホストではこれらのエラーを無視しても問題ありません。または、デプロイ プロセスを開始する前に、既存のホスト プール内のすべてのセッション ホスト VM を開始することでエラーを回避できます。
 
 ## <a name="redeploy-from-azure"></a>Azure からの再デプロイ
 

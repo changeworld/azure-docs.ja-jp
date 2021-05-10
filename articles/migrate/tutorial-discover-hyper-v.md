@@ -5,18 +5,18 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: ff83b488a6e3193eee8cb12af7de0a60b42e4c75
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: f461778f988fafeacc480e100b00be7d4c165dfb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771398"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612519"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate 検出および評価を使用して Hyper-V で実行されているサーバーを検出する
 
-Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。 
+Azure への移行の一環として、オンプレミスのインベントリとワークロードを検出します。
 
 このチュートリアルでは、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate: 検出および評価のツールで Hyper-V ホスト上のオンプレミスのサーバーを検出する方法について説明します。 アプライアンスを Hyper-V ホスト上のサーバーとしてデプロイし、マシンとパフォーマンスのメタデータを継続的に検出します。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 --- | ---
 **Hyper-V ホスト** | サーバーが配置されている Hyper-V ホストは、スタンドアロンでも、クラスターに含まれていてもかまいません。<br/><br/> ホストでは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 が実行されている必要があります。<br/><br/> Common Information Model (CIM) セッションを使用して、アプライアンスがサーバー メタデータとパフォーマンス データをプルするために接続できるように、WinRM ポート 5985 (HTTP) で受信接続が許可されていることを確認します。
 **アプライアンスのデプロイ** | Hyper-V ホストには、アプライアンスにサーバーを割り当てるためのリソースが必要です。<br/><br/> - 16 GB の RAM、8 個の vCPU、約 80 GB のディスク記憶域。<br/><br/> - 外部仮想スイッチと、アプライアンスに対するインターネット アクセス (直接またはプロキシ経由)。
-**サーバー** | サーバーでは、任意の Windows または Linux オペレーティング システムを実行できます。 
+**サーバー** | サーバーでは、任意の Windows または Linux オペレーティング システムを実行できます。
 
 ## <a name="prepare-an-azure-user-account"></a>Azure ユーザー アカウントを準備する
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure サブスクリプションを検索するための検索ボックス](./media/tutorial-discover-hyper-v/search-subscription.png)
 
-2. **[サブスクリプション]** ページで、プロジェクトを作成するサブスクリプションを選択します。 
+2. **[サブスクリプション]** ページで、プロジェクトを作成するサブスクリプションを選択します。
 3. サブスクリプションで、 **[アクセス制御 (IAM)]**  >  **[アクセスの確認]** の順に選択します。
 4. **[アクセスの確認]** で、適切なユーザー アカウントを検索します。
 5. **[ロールの割り当てを追加する]** で、 **[追加]** をクリックします。
@@ -101,7 +101,7 @@ Hyper-V 統合サービスを設定する | ホストによって管理されて
     ```powershell
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
-3. スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
+3. スクリプトの整合性を検証した後、昇格されたアクセス許可でこの PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
 
     ```powershell
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
@@ -144,8 +144,8 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
 
 1. アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
 1. Azure portal から圧縮された Hyper-V VHD をダウンロードします。
-1. アプライアンスを作成し、それが Azure Migrate: 検出および評価に接続できることを確認します。
-1. アプライアンスを初めて構成し、プロジェクト キーを使用してプロジェクトに登録します。
+1. アプライアンスを作成し、Azure Migrate: Discovery and Assessment に接続できることを確認します。
+1. 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
 
 ### <a name="1-generate-the-project-key"></a>1.プロジェクト キーを生成する
 
@@ -176,7 +176,7 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
 
         **シナリオ** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.91 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
+        Hyper-V (8.91 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
 
     - Azure Government の場合:
 
@@ -224,11 +224,11 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
       - サポートされるのは HTTP プロキシのみです。
       - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**: Azure Migrate: 検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**: Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and assessment]\(Azure Migrate: 検出および評価\) > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
 
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
@@ -287,11 +287,9 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
 検出の完了後、サーバーがポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - Servers]\(Azure Migrate - サーバー\)**  >  **[Azure Migrate: Discovery and assessment]\(Azure Migrate: 検出および評価\)** ページで、 **[検出済みサーバー]** の数が表示されているアイコンをクリックします。
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Discovery and Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure VM への移行について [Hyper-V 環境のサーバーを評価](tutorial-assess-hyper-v.md)します。
 - 検出中にアプライアンスによって収集される[データを確認](migrate-appliance.md#collected-data---hyper-v)します。
-
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 77c84e4b4a8129a95ee18b4ae89b48a687e9fce1
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951591"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046214"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -112,8 +112,8 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
 
 * 明示的な `null` 値に関しては、異なる動作を想定しています。
   * Azure Synapse の Spark プールは、これらの値を `0` (ゼロ) として読み取ります。
-  * Azure Synapse の SQL サーバーレス プールでは、コレクション内の最初のドキュメントが、同じプロパティに対して、データ型が `integer` と異なる値を持つ場合、この値を `NULL` として読み取ります。
-  * Azure Synapse の SQL サーバーレス プールでは、コレクション内の最初のドキュメントが、同じプロパティに対して、整数である値を持つ場合、この値を `0` (ゼロ) として読み取ります。
+  * Azure Synapse の SQL サーバーレス プールでは、コレクション内の最初のドキュメントが同じプロパティに `non-numeric` データ型の値を持つ場合、この値を `NULL` として読み取ります。
+  * Azure Synapse の SQL サーバーレス プールでは、コレクション内の最初のドキュメントが同じプロパティに `numeric` データ型の値を持つ場合、この値を `0` (ゼロ) として読み取ります。
 
 * 存在しない列に関しては、異なる動作を想定しています。
   * Azure Synapse の Spark プールは、これらの列を `undefined` として表示します。
@@ -204,7 +204,7 @@ salary: 1000000
 
 グローバルに分散された Azure Cosmos DB アカウントがある場合、コンテナーの分析ストアを有効にした後、そのアカウントのすべてのリージョンでそれを使用できるようになります。  オペレーショナル データに対する変更はすべて、すべてのリージョンにグローバルにレプリケートされます。 Azure Cosmos DB のデータの最も近いリージョン コピーに対して、分析クエリを効率的に実行できます。
 
-### <a name="security"></a>セキュリティ
+### <a name="security"></a>Security
 
 分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
 

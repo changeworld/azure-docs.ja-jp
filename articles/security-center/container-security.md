@@ -1,23 +1,18 @@
 ---
-title: Azure Security Center のコンテナーのセキュリティ | Microsoft Docs
-description: Azure Security Center のコンテナーのセキュリティ機能について説明します。
-services: security-center
-documentationcenter: na
+title: Azure Security Center と Azure Defender を使用したコンテナーのセキュリティ
+description: Azure Security Center のコンテナーのセキュリティ機能について説明します
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/07/2021
+ms.date: 04/06/2021
 ms.author: memildin
-ms.openlocfilehash: 3b5204f1d390388c2dc9a10ac2ca0234f6b0499b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 9fddb27ee6a1139fa8b07c6c19dd4fdf1a20096e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101343"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029142"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -27,9 +22,9 @@ Security Center では、次のコンテナー リソースの種類を保護で
 
 | リソースの種類 | Security Center によって提供される保護 |
 |:--------------------:|-----------|
-| ![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Azure Kubernetes Service (AKS) クラスター** | - AKS クラスター構成の継続的な評価。構成ミスを可視化し、検出された問題を解決するためのガイドラインを提供します。<br>[詳細については、セキュリティ推奨事項による環境のセキュリティ強化に関する情報を参照してください](#environment-hardening)。<br><br>- AKS クラスターおよび Linux ノードの脅威の防止。 不審なアクティビティのアラートは、オプションの [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) によって提供されます。<br>[AKS ノードとクラスターの実行時の保護に関する詳細情報](#run-time-protection-for-aks-nodes-and-clusters)。|
-| ![コンテナー ホスト](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**コンテナー ホスト**<br>(Docker を実行している VM) | - お使いの Docker 構成の継続的な評価。構成ミスを可視化し、オプションの[Azure Defender for servers](defender-for-servers-introduction.md) を使用して、検出された問題を解決するためのガイドラインを提供します。<br>[詳細については、セキュリティ推奨事項による環境のセキュリティ強化に関する情報を参照してください](#environment-hardening)。|
-| ![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry (ACR) レジストリ** | - オプションの[Azure Defender for container registries](defender-for-container-registries-introduction.md) を使用した Azure Resource Manager ベースの ACR レジストリ内のイメージを対象とした脆弱性評価および管理ツール。<br>[詳細については、コンテナー イメージの脆弱性スキャンに関するページを参照してください](#vulnerability-management---scanning-container-images)。 |
+| ![Kubernetes サービス](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Kubernetes クラスター** | クラスターの継続的な評価。構成ミスを可視化すると共に、特定された脅威を軽減するためのガイドラインを提供します。 詳細については、[セキュリティ推奨事項による環境のセキュリティ強化](#environment-hardening)に関する情報を参照してください。<br><br>クラスターおよび Linux ノードの脅威の防止。 不審なアクティビティのアラートは、[Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) によって提供されます。 Kubernetes クラスターは、ホストされている場所が Azure Kubernetes Service (AKS) であれ、オンプレミスであれ、他のクラウド プロバイダーのクラスターであれ、この Azure Defender プランで防御することができます。 clusters. <br>[Kubernetes ノードとクラスターの実行時の保護](#run-time-protection-for-kubernetes-nodes-and-clusters)に関する詳細情報をご覧ください。|
+| ![コンテナー ホスト](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**コンテナー ホスト**<br>(Docker を実行している VM) | お使いの Docker 環境の継続的な評価。構成ミスを可視化すると共に、オプションの [Azure Defender for servers](defender-for-servers-introduction.md) によって特定された脅威を軽減するためのガイドラインを提供します。<br>詳細については、[セキュリティ推奨事項による環境のセキュリティ強化](#environment-hardening)に関する情報を参照してください。|
+| ![コンテナー レジストリ](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry (ACR) レジストリ** | オプションの[Azure Defender for container registries](defender-for-container-registries-introduction.md) を使用した Azure Resource Manager ベースの ACR レジストリ内のイメージを対象とした脆弱性評価および管理ツール。<br>詳細については、[コンテナー イメージの脆弱性スキャン](#vulnerability-management---scanning-container-images)に関するページを参照してください。 |
 |||
 
 この記事では、コンテナー レジストリ、サーバー、および Kubernetes 用のオプションの Azure Defender プランと共に Security Center を使用して、コンテナーとそのアプリのセキュリティを改善、監視、および維持する方法について説明します。
@@ -38,7 +33,7 @@ Security Center では、次のコンテナー リソースの種類を保護で
 
 - [脆弱性管理 - コンテナー イメージのスキャン](#vulnerability-management---scanning-container-images)
 - [環境のセキュリティ強化](#environment-hardening)
-- [AKS ノードとクラスターの実行時の保護](#run-time-protection-for-aks-nodes-and-clusters)
+- [Kubernetes ノードとクラスターの実行時の保護](#run-time-protection-for-kubernetes-nodes-and-clusters)
 
 次のスクリーンショットは、資産インベントリ ページと、Security Center によって保護されるさまざまなコンテナー リソースの種類を示しています。
 
@@ -103,7 +98,7 @@ AKS クラスターにアドオンが存在する場合、Kubernetes API サー�
 詳細については、「[Kubernetes ワークロードを保護する](kubernetes-workload-protections.md)」を参照してください。
 
 
-## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>AKS ノードとクラスターの実行時の保護
+## <a name="run-time-protection-for-kubernetes-nodes-and-clusters"></a>Kubernetes ノードとクラスターの実行時の保護
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 

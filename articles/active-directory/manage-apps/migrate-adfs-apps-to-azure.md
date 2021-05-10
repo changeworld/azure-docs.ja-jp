@@ -2,21 +2,21 @@
 title: アプリケーション認証を AD FS から Azure Active Directory に移動する
 description: Azure Active Directory を使用して Active Directory フェデレーション サービス (AD FS) を置き換え、ユーザーがすべてのアプリケーションにシングル サインオンできるようにする方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: ee1d863ccb974b30213179a1aba9e27d5a3a2bda
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83e506c0a3d0b9718f94d48ea8e6b23f43e811f3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418471"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377940"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -257,7 +257,7 @@ AD FS ですべてのユーザーにアクセスを許可する:
     > [!Note]
     > **[ユーザーの割り当てが必要]** を **[はい]** に設定すると、アクセスできるようにするにはユーザーをアプリケーションに割り当てる必要があります。 **[いいえ]** に設定すると、すべてのユーザーがアクセスできます。 このスイッチでは、 **[マイ アプリ]** エクスペリエンスでユーザーに表示されるものは制御されません。
 
-1. **[ユーザーとグループ]** タブで、アプリケーションを **[すべてのユーザー]** 自動グループに割り当てます。 既定の **すべてのユーザー** グループを使用できるようにするには、Azure AD テナントで[動的グループを有効にする](../enterprise-users/groups-create-rule.md)必要があります。
+1. **[ユーザーとグループ]** タブで、アプリケーションを **[すべてのユーザー]** 自動グループに割り当てます。 既定の **すべてのユーザー** グループを使用できるようにするには、Azure AD テナントで [動的グループを有効にする](../enterprise-users/groups-create-rule.md)必要があります。
 
     ![Azure AD でのマイ SaaS アプリ ](media/migrate-adfs-apps-to-azure/permit-access-to-all-users-3.png)
 

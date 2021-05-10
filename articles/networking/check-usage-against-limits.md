@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d629e65106145a4af364cd9dd489250c8910c25d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210635"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778573"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure にログインする必要もあります。
 
-制限に照らして使用量を確認するには、[az network list-usages](/cli/azure/network#az-network-list-usages) を使用します。 次の例では、米国東部の場所にあるリソースの使用量が取得されます。
+制限に照らして使用量を確認するには、[az network list-usages](/cli/azure/network#az_network_list_usages) を使用します。 次の例では、米国東部の場所にあるリソースの使用量が取得されます。
 
 ```azurecli-interactive
 az network list-usages \

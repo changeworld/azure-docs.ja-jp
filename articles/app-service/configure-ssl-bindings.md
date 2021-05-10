@@ -149,9 +149,9 @@ ms.locfileid: "102039803"
 
 操作が完了すると、アプリは下位の TLS バージョンでの接続をすべて拒否します。
 
-## <a name="handle-tls-termination"></a>TLS 終了の処理
+## <a name="handle-tls-termination"></a>TLS 終端の処理
 
-App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS 要求は暗号化されていない HTTP 要求としてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[TLS 終端](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS 要求は暗号化されていない HTTP 要求としてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 [Linux Node.js 構成](configure-language-nodejs.md#detect-https-session)ガイドなどの言語固有の構成ガイドでは、アプリケーション コード内の HTTPS セッションを検出する方法について説明しています。
 

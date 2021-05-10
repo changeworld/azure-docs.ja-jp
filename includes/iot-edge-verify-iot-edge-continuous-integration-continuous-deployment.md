@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5450e4846c3c49c89830ae65c50a95ee0c8d6eb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89301151"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803434"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>ビルド パイプラインとリリース パイプラインの IoT Edge CI/CD を検証する
 
@@ -36,3 +36,5 @@ ms.locfileid: "89301151"
 6. リリース ログを確認するには、**[dev]** ステージをクリックします。
 
     ![リリース ログ](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/release-logs.png)
+
+7. パイプラインでエラーが発生した場合は、まずログを確認します。 ログを表示するには、パイプラインの実行の概要に移動し、ジョブとタスクを選択します。 特定のタスクが失敗している場合は、そのタスクのログを確認します。 ログを構成および使用するための詳細な手順については、「[ログを確認してパイプラインの問題を診断する](/azure/devops/pipelines/troubleshooting/review-logs)」を参照してください。

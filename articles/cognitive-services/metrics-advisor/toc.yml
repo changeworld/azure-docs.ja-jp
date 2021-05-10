@@ -1,4 +1,4 @@
-- name: Metrics Advisor
+- name: Metrics Advisor のドキュメント
   href: index.yml
 - name: 概要
   expanded: true
@@ -9,7 +9,7 @@
       href: 'http://go.microsoft.com/fwlink/?LinkID=761229'
     - name: 新機能
       href: whats-new.md
-- name: Metrics Advisor クイックスタート
+- name: クイックスタート
   items:
     - name: Web ポータル
       href: quickstarts/web-portal.md
@@ -35,6 +35,10 @@
       href: how-tos/anomaly-feedback.md
     - name: メトリック グラフを作成する
       href: how-tos/metrics-graph.md
+    - name: エンタープライズ対応
+      items:
+        - name: カスタマー マネージド キーを使用する
+          href: encryption.md
 - name: 概念
   items:
     - name: Metrics Advisor の主な用語
@@ -49,11 +53,11 @@
       href: /powershell/module/azurerm.cognitiveservices/
 - name: リソース
   items:
-    - name: リージョンのサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encryption.md

@@ -3,19 +3,18 @@ title: 証明書作成の監視と管理
 description: Key Vault で証明書作成プロセスを作成、監視し、そのプロセスと対話するための一連のオプションを示します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e4acb5195497dd31f466829b1cde301ba9696b3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81427367"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751096"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>証明書作成の監視と管理
 適用先:Azure

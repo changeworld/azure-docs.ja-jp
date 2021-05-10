@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 90fca4342b1fe04adef97a1a4c1c2166ca7ec51e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108083"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532497"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -62,11 +62,11 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 ## <a name="upload-and-index-with-api"></a>API を使用したアップロードとインデックス作成
 
-[Upload Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行います。 後述のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 
+[Upload Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行います。 後述のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 
 
 ### <a name="configurations-and-params"></a>構成とパラメーター
 
-このセクションでは、いくつかの省略可能なパラメーターと、それらを設定する場合について説明します。 最新のパラメーター情報については、[ビデオのアップロード](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)の API に関するページを参照してください。
+このセクションでは、いくつかの省略可能なパラメーターと、それらを設定する場合について説明します。 最新のパラメーター情報については、[ビデオのアップロード](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)の API に関するページを参照してください。
 
 #### <a name="externalid"></a>externalID 
 
@@ -110,7 +110,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします。 その後、インデックス作成とビデオの分析を行います。 Video Indexer が分析を完了すると、ビデオ ID を含んだ通知が送信されます。  
 
-[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、**実行中** 状態である必要があります。
+[Upload video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) API または [Re-Index Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、**実行中** 状態である必要があります。
 
 SingleBitrate の場合、出力ごとに Standard Encoder コストが適用されます。 ビデオの高さが 720 以上の場合、Video Indexer によって 1280 x 720 としてエンコードされます。 それ以外の場合は、640 x 468 と指定されます。
 既定の設定は、[コンテンツに対応したエンコード](../latest/encode-content-aware-concept.md)です。

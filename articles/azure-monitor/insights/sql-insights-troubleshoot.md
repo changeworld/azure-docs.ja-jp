@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 85a3505dd347b96036c28c85c089afa04e3e3bd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d4a801d0cf0a2355334272053ff86dd846b6bbf
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608849"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030306"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>SQL insights のトラブルシューティング (プレビュー)
 SQL insights でのデータ収集の問題をトラブルシューティングするには、 **[プロファイルの管理]** タブで監視マシンの状態を確認します。ここには、以下の状態のいずれかが表示されています。
@@ -171,10 +171,13 @@ InsightsMetrics
 ```
 
 ```
-Operation 
- | where OperationCategory == "WorkloadInsights" 
- | summarize Errors = countif(OperationStatus == 'Error') 
+WorkloadDiagnosticLogs
+| summarize Errors = countif(Status == 'Error')
 ```
+
+> [!NOTE]
+> 'WorkloadDiagnosticLogs' データ型にデータが表示されない場合、このデータを格納するために監視プロファイルの更新が必要になる場合があります。  SQL Insights UX 内から、[プロファイルの管理]、[プロファイルの編集]、[監視プロファイルの更新]の順に選択します。
+
 
 一般的なケースの場合、トラブルシューティングの知識はログ ビューで提供されます。 
 

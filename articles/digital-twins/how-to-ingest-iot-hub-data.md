@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: de16932f1f77e569302b222fe2948de3046fabd6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: a5e00ef81afc709a9072eedbb07983057f57eb08
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950597"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304302"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
@@ -45,7 +45,7 @@ Azure Digital Twins にデータを取り込むプロセスは、[Azure Function
 
 このセクションでは、Azure Digital Twins 内で[デジタル ツイン](concepts-twins-graph.md)を設定します。これは、サーモスタット デバイスを表し、IoT Hub からの情報で更新されます。
 
-サーモスタット型ツインを作成するには、まず、サーモスタット [モデル](concepts-models.md) をご利用のインスタンスにアップロードする必要があります。これは、サーモスタットのプロパティを記述したもので、後でツインを作成するために使用されます。 
+サーモスタット型ツインを作成するには、まず、サーモスタット [モデル](concepts-models.md) をご利用のインスタンスにアップロードする必要があります。これは、サーモスタットのプロパティを記述したもので、後でツインを作成するために使用されます。
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 

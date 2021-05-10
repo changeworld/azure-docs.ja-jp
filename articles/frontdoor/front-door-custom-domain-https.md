@@ -10,24 +10,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 03/26/2021
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4291a7d46c723f799cf9d09ca0e7a3f6d614971f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740785"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389742"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
-このチュートリアルでは、フロントエンド ホスト セクションで Front Door に関連付けられたカスタム ドメインの HTTPS プロトコルを有効にする方法について説明します。 カスタム ドメイン (例: https:\//www.contoso.com) で HTTPS プロトコルを使用すると、インターネット経由での送信時、機微なデータが TLS/SSL 暗号化でセキュリティ保護されて配信されます。 Web ブラウザーが HTTPS 経由で Web サイトに接続しているときに、Web サイトのセキュリティ証明書を検証し、正当な証明機関によって発行されていることを確認します。 このプロセスによりセキュリティを確保し、Web アプリケーションを攻撃から保護します。
+このチュートリアルでは、フロントエンド ホスト セクションで Front Door に関連付けられたカスタム ドメインの HTTPS プロトコルを有効にする方法について説明します。 カスタム ドメイン (例: https:\//www.contoso.com) で HTTPS プロトコルを使用すると、インターネット経由での送信時、機密データが TLS/SSL 暗号化でセキュリティ保護されて配信されます。 Web ブラウザーが HTTPS 経由で Web サイトに接続しているときに、Web サイトのセキュリティ証明書を検証し、正当な証明機関によって発行されていることを確認します。 このプロセスによりセキュリティを確保し、Web アプリケーションを攻撃から保護します。
 
-Azure Front Door では、既定で、Front Door の既定のホスト名の HTTPS がサポートされます。 たとえば、Front Door (例: `https://contoso.azurefd.net`) を作成すると、`https://contoso.azurefd.net` に対して行われた要求で HTTPS が自動的に有効になります。 しかし、カスタム ドメイン 'www.contoso.com' をオンボードした場合、このフロントエンド ホストでも HTTPS を有効にする必要があります。   
+Azure Front Door では、既定で、Front Door の既定のホスト名の HTTPS がサポートされます。 たとえば、Front Door (例: `https://contoso.azurefd.net`) を作成すると、`https://contoso.azurefd.net` に対して行われた要求で HTTPS が自動的に有効になります。 しかし、カスタム ドメイン "www.contoso.com" をオンボードした場合、このフロントエンド ホストでも HTTPS を有効にする必要があります。   
 
 カスタム HTTPS の機能の主な特性は次のとおりです。
 
-- 追加コストなし: 証明書の取得または更新のコストや、HTTPS トラフィックの追加コストは発生しません。 
+- 追加コストなし: 証明書の取得または更新のコストや、HTTPS トラフィックの追加コストが発生しません。 
 
 - シンプルな有効化: [Azure portal](https://portal.azure.com) からワン クリックのプロビジョニングを利用できます。 REST API やその他の開発者ツールを使用して機能を有効にすることもできます。
 
@@ -63,15 +63,15 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 
 2. フロントエンド ホストのリストで、カスタム ドメインを含めるために HTTPS を有効にするカスタム ドメインを選択します。
 
-3. **[カスタム ドメイン HTTPS]** セクションで、 **[有効]** をクリックして、証明書のソースとして **[Front Door managed]** \(Front Door による管理\) を選択します。
+3. **[カスタム ドメイン HTTPS]** セクションで、 **[有効]** を選択して、証明書のソースとして **[Front Door managed]** \(Front Door による管理\) を選択します。
 
-4. [保存] をクリックします。
+4. [保存] を選択します。
 
-5. [ドメインの検証](#validate-the-domain)に進みます。
+5. 「[ドメインを検証する](#validate-the-domain)」に進みます。
 
 > [!NOTE]
-> AFD マネージドの証明書の場合、DigiCert の 64 文字の制限が適用されます。 制限を超えた場合、検証は失敗します。
-
+> * AFD マネージドの証明書の場合、DigiCert の 64 文字の制限が適用されます。 制限を超えた場合、検証は失敗します。
+> * Front Door によって管理される証明書を使用して HTTPS を有効にすることは、apex (ルート) ドメイン (例: contoso.com) ではサポートされません。 このシナリオでは、独自の証明書を使用できます。  詳細については、オプション 2 に進んでください。
 
 ### <a name="option-2-use-your-own-certificate"></a>オプション 2:独自の証明書を使用する
 
@@ -128,19 +128,21 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
 
 3. [証明書の管理の種類] で、 **[Use my own certificate]\(独自の証明書を使用する\)** を選択します。 
 
-4. Azure Front Door では、Key Vault アカウントのサブスクリプションが Front Door と同じである必要があります。 キー コンテナー、証明書 (シークレット)、証明書のバージョンを選択します。
+4. Azure Front Door では、Key Vault アカウントのサブスクリプションが Front Door と同じである必要があります。 キー コンテナー、シークレット、シークレットのバージョンを選択します。
 
     Azure Front Door では以下の情報が一覧表示されます。 
     - サブスクリプション ID に対するキー コンテナー アカウント。 
-    - 選択したキー コンテナーの下の証明書 (シークレット)。 
-    - 利用可能な証明書バージョン。
+    - 選択したキー コンテナーにあるシークレット。 
+    - 利用可能なシークレットのバージョン。
+
+    > [!NOTE]
+    >  キー コンテナーで新しいバージョンの証明書を利用できるようになったときに、証明書を自動的に最新バージョンにローテーションするには、シークレットのバージョンを "最新" に設定してください。 特定のバージョンが選択されている場合、新しいバージョンを手動で再選択して、証明書をローテーションする必要があります。 新しいバージョンの証明書またはシークレットがデプロイされるまで、最大で 24 時間かかります。 
  
 5. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
 
 ## <a name="validate-the-domain"></a>ドメインを検証する
 
-CNAME レコードでカスタム エンドポイントにマップされた使用中のカスタム ドメインが既にある場合、または独自の証明書を使用している場合には、  
-「[カスタム ドメインが CNAME レコードによって Front Door にマップされている](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record)」に進んでください。 そうではなく、ドメインの CNAME レコード エントリがもう存在しない場合、または CNAME レコード エントリに afdverify サブドメインが含まれている場合は、「[カスタム ドメインが Front Door にマップされていない](#custom-domain-is-not-mapped-to-your-front-door)」に進んでください。
+CNAME レコードでカスタム エンドポイントにマップされた使用中のカスタム ドメインが既にある場合、または独自の証明書を使用している場合には、[Front Door にマップされているカスタム ドメイン](#custom-domain-is-mapped-to-your-front-door-by-a-cname-record)に関するセクションに進んでください。 そうではなく、ドメインの CNAME レコード エントリがもう存在しない場合、または CNAME レコード エントリに afdverify サブドメインが含まれている場合は、「[カスタム ドメインが Front Door にマップされていない](#custom-domain-is-not-mapped-to-your-front-door)」に進んでください。
 
 ### <a name="custom-domain-is-mapped-to-your-front-door-by-a-cname-record"></a>カスタム ドメインが CNAME レコードによって Front Door にマップされている
 
@@ -171,7 +173,7 @@ CNAME レコードが正しい形式である場合、DigiCert は自動的に�
 
 ![WHOIS レコード](./media/front-door-custom-domain-https/whois-record.png)
 
-DigiCert は、その他のメール アドレスに確認メールも送信します。 WHOIS 登録者情報がプライベートである場合は、次のアドレスのいずれかから直接承認できることを確認してください。
+DigiCert は、他のメール アドレスに確認メールも送信します。 WHOIS 登録者情報がプライベートである場合は、次のアドレスのいずれかから直接承認できることを確認してください。
 
 admin@&lt;your-domain-name.com&gt;  
 administrator@&lt;your-domain-name.com&gt;  
@@ -181,9 +183,9 @@ postmaster@&lt;your-domain-name.com&gt;
 
 数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、admin@digicert.com を許可リストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
 
-承認リンクをクリックすると、オンライン承認フォームが表示されます。 フォームの指示に従います。2 つの検証オプションがあります。
+承認リンクを選択すると、オンライン承認フォームが表示されます。 フォームの指示に従います。2 つの検証オプションがあります。
 
-- contoso.com などの同じルート ドメインに対して同じアカウントを使って、今後行われるすべての依頼を承認することができます。 同じルート ドメインのカスタム ドメインを追加する予定の場合は、このアプローチを使用することをお勧めします。
+- contoso.com などの同じルート ドメインに対して同じアカウントを使って、今後行われるすべての依頼を承認することができます。 同じルート ドメインの他のカスタム ドメインを追加する予定の場合は、このアプローチを使用することをお勧めします。
 
 - この要求で使われる特定のホスト名のみを承認できます。 その後の要求では追加の承認が必要になります。
 
@@ -195,7 +197,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ### <a name="operation-progress"></a>操作の進行
 
-次の表は、HTTPS を有効にするときの操作の進行を示したものです。 HTTPS を有効にした後、[カスタム ドメイン] ダイアログには 4 つの操作ステップが表示されます。 各ステップがアクティブになると、進行状況に合わせてステップの下にサブステップの詳細が追加表示されます。 これらのサブステップのすべてが発生するわけではありません。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
+次の表は、HTTPS を有効にするときの操作の進行を示したものです。 HTTPS を有効にした後、[カスタム ドメイン] ダイアログには 4 つの操作ステップが表示されます。 各ステップがアクティブになると、進行状況に合わせてステップの下に他のサブステップの詳細が表示されます。 これらのサブステップのすべてが発生するわけではありません。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
 
 | 操作ステップ | 操作サブステップの詳細 | 
 | --- | --- |
@@ -239,7 +241,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 5. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
 
-    いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
+    いいえ。現在、Certificate Authority Authorization レコードは必要ありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -249,13 +251,13 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 1. [Azure portal](https://portal.azure.com) で、**Azure Front Door** 構成を参照します。
 
-2. フロントエンド ホストのリストで、HTTPS を無効にするカスタム ドメインをクリックします。
+2. フロントエンド ホストのリストで、HTTPS を無効にするカスタム ドメインを選択します。
 
 3. **[無効]** をクリックして HTTPS を無効にした後、 **[保存]** をクリックします。
 
 ### <a name="wait-for-propagation"></a>伝達を待機する
 
-カスタム ドメインの HTTPS 機能を無効にした後、適用されるまでには最大 6 から 8 時間かかります。 プロセスが完了すると、Azure Portal の [カスタム HTTPS] のステータスは **[無効]** に設定され、[カスタム ドメイン] ダイアログの 3つの操作ステップが完了としてマークされます。 カスタム ドメインは HTTPS を使うことができなくなります。
+カスタム ドメインの HTTPS 機能を無効にした後、適用されるまでには最大 6 から 8 時間かかります。 プロセスが完了すると、Azure portal の [カスタム HTTPS] のステータスは **[無効]** に設定され、[カスタム ドメイン] ダイアログの 3 つの操作ステップが完了としてマークされます。 カスタム ドメインは HTTPS を使うことができなくなります。
 
 #### <a name="operation-progress"></a>操作の進行
 

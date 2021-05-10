@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2021
 ms.author: v-erkel
-ms.openlocfilehash: 10d68ce679fe42f5deeaae364bc46adb23436a27
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 45a7169330b11e98a8618b08205217212414ca5d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587153"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258930"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>BLOB ストレージ アカウントのファイアウォール設定を回避する
 
 ストレージ アカウントの特定のファイアウォール設定により、ご自分の Blob ストレージ ターゲットの作成が失敗することがあります。 この問題に対応するソフトウェア修正プログラムは、Azure HPC Cache チームが着手していますが、この記事の手順に従うとこの問題を回避できます。
 
-キャッシュは、"選択されたネットワーク" からのアクセスのみを許可するファイアウォール設定によって、Blob ストレージ ターゲットを作成または変更できなくなります。 この構成は、ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** 設定ページにあります。
+キャッシュは、"選択されたネットワーク" からのアクセスのみを許可するファイアウォール設定によって、Blob ストレージ ターゲットを作成または変更できなくなります。 この構成は、ストレージ アカウントの **[ファイアウォールと仮想ネットワーク]** 設定ページにあります。 (この問題は、ADLS-NFS ストレージ ターゲットには適用されません)。
 
 これは、キャッシュ サービスが、お客様の環境とは別の非表示のサービス仮想ネットワークを使用するためです。 このネットワークに、お使いのストレージ アカウントへのアクセスを明示的に承認させることはできません。
 

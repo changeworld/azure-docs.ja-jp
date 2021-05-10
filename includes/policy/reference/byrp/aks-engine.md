@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0c7eef79542ccba519c9e99af01ac79570481a06
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d421cc34af7663e5399ecf7747fcbfabe3766017
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102619136"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500501"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -32,7 +32,7 @@ ms.locfileid: "102619136"
 |[Kubernetes クラスターのポッドでは、承認されているホスト ネットワークとポート範囲のみを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |ポッドのアクセスを、Kubernetes クラスター内のホスト ネットワークおよび許容されるホスト ポート範囲に制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.4 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
 |[Kubernetes クラスター ポッドでは、指定されたラベルを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F46592696-4c7b-4bf3-9e45-6c2763bdc0a6) |指定されたラベルを使用して、Kubernetes クラスター内のポッドを識別します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/PodEnforceLabels.json) |
 |[Kubernetes クラスター サービスでは、許可されているポートでのみリッスンする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F233a2a17-77ca-4fb1-9b6b-69223d272a44) |Kubernetes クラスターへのアクセスをセキュリティで保護するために、許可されたポートでのみリッスンするようにサービスを制限します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[6.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ServiceAllowedPorts.json) |
-|[Kubernetes クラスター サービスでは、許可された外部 IP のみ使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd46c275d-1680-448d-b2ec-e495a3b6cc89) |Kubernetes クラスターで潜在的な攻撃 (CVE-2020-8554) を回避するには、許可された外部 IP を使用します。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedExternalIPs.json) |
+|[Kubernetes クラスター サービスでは、許可された外部 IP のみ使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd46c275d-1680-448d-b2ec-e495a3b6cc89) |Kubernetes クラスターで潜在的な攻撃 (CVE-2020-8554) を回避するには、許可された外部 IP を使用します。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedExternalIPs.json) |
 |[Kubernetes クラスターで特権コンテナーを許可しない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Kubernetes クラスターでの特権コンテナーの作成を許可しません。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.1 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege.json) |
 |[Kubernetes クラスターは HTTPS 経由でのみアクセス可能である必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |HTTPS を使用すると、認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されます。 この機能は、Kubernetes Service (AKS) と、AKS Engine および Azure Arc 対応 Kubernetes のプレビューで現在一般提供されています。 詳細については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly.json) |
 |[Kubernetes クラスターで API 資格情報の自動マウントを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F423dd1ba-798e-40e4-9c4d-b6902674b423) |侵害された可能性のある Pod リソースが Kubernetes クラスターに対して API コマンドを実行するのを防ぐために、API 資格情報の自動マウントを無効にします。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockAutomountToken.json) |

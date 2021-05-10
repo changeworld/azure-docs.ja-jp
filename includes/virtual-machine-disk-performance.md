@@ -9,10 +9,10 @@ ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 4770ac0181c64ef800aa02ba87284c8add357e36
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518070"
 ---
 この記事は、ディスクのパフォーマンスと、Azure Virtual Machines と Azure ディスクを組み合わせたときの動作のしくみを明確にするために役立ちます。 ディスク IO のボトルネックを診断する方法と、パフォーマンスを最適化するために行うことができる変更についても説明します。

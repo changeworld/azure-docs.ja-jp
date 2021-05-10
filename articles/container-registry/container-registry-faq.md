@@ -3,14 +3,14 @@ title: よく寄せられる質問
 description: Azure Container Registry サービスに関連したよく寄せられる質問への回答
 author: sajayantony
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97606285"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783901"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -260,11 +260,23 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>匿名プル アクセスを有効にするにはどうすればよいですか?
 
-匿名 (パブリック) プル アクセス用の Azure コンテナー レジストリの設定は、現時点ではプレビュー機能です。 レジストリに[スコープ マップ (ユーザー) またはトークン リソース](./container-registry-repository-scoped-permissions.md)がある場合は、サポート チケットを生成する前にそれらを削除してください (システム スコープ マップは無視できます)。 パブリック アクセスを有効にするには、 https://aka.ms/acr/support/create-ticket でサポート チケットを開いてください。 詳細については、[Azure フィードバック フォーラム](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)のページを参照してください。
+Azure コンテナー レジストリの匿名 (非認証) プル アクセス設定は現在、Standard と Premium の[サービス レベル](container-registry-skus.md)で利用できるプレビュー機能です。 
+
+匿名プル アクセスを有効にするには、Azure CLI (バージョン 2.21.0 以降) を使用してレジストリを更新し、`--anonymous-pull-enabled` パラメーターを [ az acr update](/cli/azure/acr#az_acr_update) コマンドに渡します。
+
+```azurecli
+az acr update --name myregistry --anonymous-pull-enabled
+``` 
+
+匿名プル アクセスは、`--anonymous-pull-enabled` を `false` に設定することによって、いつでも無効にできます。
 
 > [!NOTE]
-> * 既知のイメージをプルするために必要な API にのみ、匿名でアクセスできます。 タグ リストやリポジトリ リストなどの操作に関する他の API に匿名でアクセスすることはできません。
 > * 匿名のプル操作を実行する前に、`docker logout` を実行して、既存の Docker 資格情報がクリアされていることを確認します。
+> * 認証されていないクライアントは、データ プレーン操作のみを使用できます。
+> * 認証されていない要求の割合が高いと、レジストリによって調整される場合があります。
+
+> [!WARNING]
+> 現在、匿名プル アクセスは、レジストリ内のすべてのリポジトリに適用されます。 [リポジトリをスコープとしたトークン](container-registry-repository-scoped-permissions.md)を使用してリポジトリ アクセスを管理する場合は、すべてのユーザーが、匿名プルが有効になっているレジストリ内のリポジトリからプルする可能性があることに注意してください。 匿名プル アクセスが有効になっている場合は、トークンを削除することをお勧めします。
 
 ### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?
 
@@ -472,7 +484,7 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
 
 操作が許可されない可能性のあるいくつかのシナリオを次に示します。
-* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](./container-registry-skus.md)にアップグレードしてください。
+* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr#az_acr_update) か Azure portal を使用して、サポートされている[サービス レベル](./container-registry-skus.md)にアップグレードしてください。
 * イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](./container-registry-image-lock.md) コマンドを使用して、現在の属性を表示できます。
 * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
 * レジストリが、その[ストレージの上限](container-registry-skus.md#service-tier-features-and-limits)に達した可能性があります。

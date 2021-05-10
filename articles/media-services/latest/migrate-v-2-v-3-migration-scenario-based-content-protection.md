@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/26/2021
+ms.date: 04/05/2021
 ms.author: inhenkel
-ms.openlocfilehash: 74f15fc302a8499e41a1413dd8915e6442d4bbe7
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a481759da3f1e7d67accdca7b4322db53abbcb0c
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064496"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490949"
 ---
 # <a name="content-protection-scenario-based-migration-guidance"></a>コンテンツ保護のシナリオベースの移行ガイダンス
 
@@ -30,46 +30,62 @@ ms.locfileid: "106064496"
 
 新しい v3 API での[マルチキー](architecture-design-multi-drm-system.md)機能のサポートを使用します。
 
-具体的な手順については、下の「コンテンツ保護の概念、チュートリアル、およびハウツー ガイド」を参照してください。
+具体的な手順については、この記事の最後に記載されている「コンテンツ保護の概念、チュートリアル、およびハウツー ガイド」をご覧ください。
 
-## <a name="visibility-of-v2-assets-streaminglocators-and-properties-in-the-v3-api-for-content-protection-scenarios"></a>コンテンツ保護シナリオにおける v3 API での v2 資産、StreamingLocators、およびプロパティの表示
+> [!NOTE]
+> この記事の残りの部分では、v2 コンテンツ保護を .NET で v3 に移行する方法について説明します。  別の言語または方法の手順やサンプル コードが必要な場合は、このページの GitHub の問題を作成してください。
 
-v3 API への移行中に、v2 資産の一部のプロパティまたはコンテンツ キーにアクセスする必要が生じることがあります。 1 つの重要な違いとしては、v2 API では **AssetId** をプライマリ ID キーとして使用し、新しい v3 API ではエンティティの Azure Resource Management 名をプライマリ ID として使用します。  v2 の **Asset.Name** プロパティは、通常は一意識別子としては使用されないため、v3 に移行するときに、v2 資産名が **Asset.Description** フィールドに表示されることがわかります。
+## <a name="v3-visibility-of-v2-assets-streaminglocators-and-properties"></a>v2 資産、StreamingLocators、およびプロパティの v3 可視性
 
-たとえば、ID が **"nb:cid:UUID:8cb39104-122c-496e-9ac5-7f9e2c2547b8"** の v2 資産が以前存在していた場合、v3 API を使用して古い v2 資産を一覧表示すると、名前が末尾の GUID 部分 (この場合は **"8cb39104-122c-496e-9ac5-7f9e2c2547b8"** ) になります。
+v2 API では、`Assets`、`StreamingLocators`、および `ContentKeys` を使用して、ストリーミング コンテンツが保護されていました。 v3 API に移行すると、v2 API の `Assets`、`StreamingLocators`、および `ContentKeys` がすべて v3 API に自動的に公開され、そのすべてのデータにアクセスできるようになります。
 
-v2 API で作成された資産に関連付けられた **StreamingLocators** は、Asset エンティティで新しい v3 メソッド [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) を使用してクエリできます。  また、[ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true) の .NET クライアント SDK バージョンを参照します。
+v2 で作成された v2 エンティティのプロパティを、v3 API を使用して *更新* することはできません。
 
-**ListStreamingLocators** メソッドの結果、**StreamingPolicyName** と共にロケーターの **Name** と **StreamingLocatorId** が提供されます。
+v2 エンティティに格納されているコンテンツを更新、変更、または修正する必要がある場合は、v2 API を使用して更新するか、新しい v3 API エンティティを作成してそれらを移行してください。
 
-コンテンツ保護のために **StreamingLocators** で使用される **ContentKeys** を検索するには、[StreamingLocator.ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) メソッドを呼び出すことができます。  
+## <a name="asset-identifier-differences"></a>資産識別子の違い
 
-ｖ2 API を使用して作成および発行されたすべての **資産** には、v3 API でそれらに対して定義された[コンテンツ キー ポリシー](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept)とコンテンツ キーの両方が存在し、[ストリーミング ポリシー](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept)の既定のコンテンツ キー ポリシーは使用されません。
+移行するには、v2 資産からプロパティまたはコンテンツ キーにアクセスする必要があります。  v2 API では `AssetId` をプライマリ ID キーとして使用しますが、新しい v3 API ではエンティティの *Azure Resource Management 名* をプライマリ ID として使用することを理解するのが重要です。  (v2 `Asset.Name` プロパティは一意の識別子として使用されません。) v3 API を使用すると、v2 資産名は `Asset.Description` として表示されるようになりました。
+
+たとえば、以前に ID が `nb:cid:UUID:8cb39104-122c-496e-9ac5-7f9e2c2547b8` の v2 資産がある場合、識別子は GUID `8cb39104-122c-496e-9ac5-7f9e2c2547b8` の末尾になります。 これは、v3 API を使用して v2 資産を一覧表示するときに表示されます。
+
+v2 API を使用して作成および発行されたすべての資産には、v3 API では `ContentKeyPolicy` と `ContentKey` の両方が存在し、`StreamingPolicy` の既定のコンテンツ キー ポリシーは使用されません。
+
+詳細については、[コンテンツ キー ポリシー](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept)のドキュメントと [ストリーミング ポリシー](https://docs.microsoft.com/azure/media-services/latest/stream-streaming-policy-concept)のドキュメントをご覧ください。
+
+## <a name="use-azure-media-services-explorer-amse-v2-and-amse-v3-tools-side-by-side"></a>Azure Media Services Explorer (AMSE) v2 と AMSE v3 ツールをサイドバイサイドで使用する
+
+[v2 Azure Media Services Explorer ツール](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v4.3.15.0)と [v3 Azure Media Services Explorer ツール](https://github.com/Azure/Azure-Media-Services-Explorer)を一緒に使用すると、v2 API を使用して作成および公開された資産のデータを横並びで比較することができます。 プロパティはすべて表示されるはずですが、場所は変わります。
+
+## <a name="use-the-net-content-protection-migration-sample"></a>.NET コンテンツ保護移行のサンプルを使用する
+
+Media Services コード サンプルでは、ContentProtection の下にある [v2tov3MigrationSample](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/v2tov3Migration) を使用して、資産識別子の違いを比較するコード サンプルを見つけることができます。
+
+## <a name="list-the-streaming-locators"></a>ストリーミング ロケーターを一覧表示する
+
+v2 API で作成された資産に関連付けられた `StreamingLocators` は、Asset エンティティで新しい v3 メソッド [ListStreamingLocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators) を使用してクエリできます。  また、[ListStreamingLocatorsAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocatorsasync?view=azure-dotnet&preserve-view=true) の .NET クライアント SDK バージョンを参照します。
+
+`ListStreamingLocators` メソッドの結果、`StreamingPolicyName` と共にロケーターの `Name` と `StreamingLocatorId` が提供されます。
+
+## <a name="find-the-content-keys"></a>コンテンツ キーを検索する
+
+`StreamingLocators` ととも使用される `ContentKeys` を検索するには、[StreamingLocator.ListContentKeysAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.streaminglocatorsoperationsextensions.listcontentkeysasync?view=azure-dotnet&preserve-view=true) メソッドを呼び出すことができます。  
 
 v3 API でのコンテンツ保護の詳細については、「[Media Services 動的暗号化を使用してコンテンツを保護する](https://docs.microsoft.com/azure/media-services/latest/drm-content-protection-concept)」の記事を参照してください。
 
-## <a name="how-to-list-your-v2-assets-and-content-protection-settings-using-the-v3-api"></a>v3 API を使用して v2 の資産とコンテンツ保護設定を一覧表示する方法
+## <a name="change-the-v2-contentkeypolicy-keeping-the-same-contentkey"></a>同じ ContentKey を維持したまま v2 ContentKeyPolicy を変更する
 
-v2 API では通常、**Assets**、**StreamingLocators**、および **ContentKeys** を使用して、ストリーミング コンテンツを保護します。
-ｖ3 API に移行すると、v2 API の Assets、StreamingLocators、および ContentKeys がすべて v3 API に自動的に公開され、そのすべてのデータにアクセスできるようになります。
+まず、v2 SDK を使用して、資産で発行の取り消し (すべてのストリーミング ロケーターを削除) をする必要があります。 次に手順を示します。
 
-## <a name="can-i-update-v2-properties-using-the-v3-api"></a>ｖ3 API を使用して v2 のプロパティを更新できますか。
+1. ロケーターを削除します。
+1. `ContentKeyAuthorizationPolicy` のリンクを解除します。
+1. `AssetDeliveryPolicy` のリンクを解除します。
+1. `ContentKey` のリンクを解除します。
+1. `ContentKey` を削除します。
+1. 必要な特定のコンテンツ キー ID とキー値を指定して、v3 `StreamingPolicy` と `ContentKeyPolicy` を使用して、新しい `StreamingLocator` を v3 で作成します。
 
-いいえ。 v2 の StreamingLocators、StreamingPolicies、コンテンツ キー ポリシー、およびコンテンツ キーを使用して作成された v2 エンティティのプロパティを、v3 API を使用して更新することはできません。
-v2 エンティティに格納されているコンテンツを更新、変更、または修正する必要がある場合は、v2 API を使用して更新するか、新しい v3 API エンティティを作成してそれらを移行する必要があります。
-
-## <a name="how-do-i-change-the-contentkeypolicy-used-for-a-v2-asset-that-is-published-and-keep-the-same-content-key"></a>v2 資産用に使用される発行済みの ContentKeyPolicy を変更し、同じコンテンツ キーを保持するにはどうすればよいですか。
-
-このような状況では、最初に v2 の SDK を使用して資産での公開取り消し (すべてのストリーミング ロケーターの削除) を行い (ロケーターの削除、コンテンツ キー承認ポリシーのリンク解除、資産の配信ポリシーのリンク解除、コンテンツ キーのリンク解除、コンテンツ キーの削除)、ｖ3 の [StreamingPolicy](https://docs.microsoft.com/azure/media-services/latest/streaming-policy-concept) と [ContentKeyPolicy](https://docs.microsoft.com/azure/media-services/latest/drm-content-key-policy-concept) を使用して v3 で新しい **[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** を作成します。
-
-**[StreamingLocator](https://docs.microsoft.com/azure/media-services/latest/streaming-locators-concept)** を作成するときに必要な特定のコンテンツ キー ID とキー値を指定する必要があります。
-
-v3 API を使用して v2 のロケーターを削除することはできますが、この操作によって、使用されるコンテンツ キーおよびコンテンツ キー ポリシーは (これらが v2 API で作成された場合) 削除されません。  
-
-## <a name="using-amse-v2-and-amse-v3-side-by-side"></a>AMSE v2 と AMSE v3 を並べて使用
-
-ｖ2 から v3 にコンテンツを移行するときは、[v2 Azure Media Services Explorer ツール](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v4.3.15.0)と [v3 Azure Media Services Explorer ツール](https://github.com/Azure/Azure-Media-Services-Explorer)を一緒にインストールすることをお勧めします。これにより、v2 API を使用して作成および公開された資産のデータを横並びで表示して比較することができます。 プロパティはすべて表示されるはずですが、場所は少し変わります。  
-
+> [!NOTE]
+> v3 API を使用して v2 のロケーターを削除することはできますが、この操作によって、使用されるコンテンツ キーおよびコンテンツ キー ポリシーが (これらが v2 API で作成された場合) 削除されるわけではありません。
 
 ## <a name="content-protection-concepts-tutorials-and-how-to-guides"></a>コンテンツ保護の概念、チュートリアル、およびハウツー ガイド
 
@@ -80,7 +96,7 @@ v3 API を使用して v2 のロケーターを削除することはできます
 - [Media Services v3 と PlayReady ライセンス テンプレート](drm-playready-license-template-concept.md)
 - [Widevine ライセンス テンプレートを使用した Media Services v3 の概要](drm-widevine-license-template-concept.md)
 - [Apple FairPlay ライセンスの要件と構成](drm-fairplay-license-overview.md)
-- [ストリーミング ポリシー](streaming-policy-concept.md)
+- [ストリーミング ポリシー](stream-streaming-policy-concept.md)
 - [コンテンツ キー ポリシー](drm-content-key-policy-concept.md)
 
 ### <a name="tutorials"></a>チュートリアル
@@ -96,7 +112,8 @@ v3 API を使用して v2 のロケーターを削除することはできます
 
 ## <a name="samples"></a>サンプル
 
-[V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
+- [v2tov3MigrationSample](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/v2tov3Migration)
+- [V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
 
 ## <a name="tools"></a>ツール
 

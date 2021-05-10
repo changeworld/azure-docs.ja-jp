@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: 画像分析のドキュメント
+summary: クラウドベースの画像分析 API を使用すると、開発者は画像を処理して視覚的な特徴に関する情報を返す高度なアルゴリズムにアクセスできます。 このサービスを使用すると、入力とユーザーの選択に基づいたさまざまな方法でビジュアル コンテンツを分析できます。 クイックスタート、チュートリアル、サンプルを使用したビジュアル コンテンツの分析方法をご確認ください。
+metadata:
+  title: 画像分析のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
+  description: クラウドベースの画像分析 API を使用すると、開発者は画像を処理して視覚的な特徴に関する情報を返す高度なアルゴリズムにアクセスできます。 このサービスを使用すると、入力とユーザーの選択に基づいたさまざまな方法でビジュアル コンテンツを分析できます。 クイックスタート、チュートリアル、サンプルを使用したビジュアル コンテンツの分析方法をご確認ください。
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: computer-vision
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 30/31/2021
+  ms.openlocfilehash: b9c4d44879c0988359d08c52e0383a03631a46c0
+  ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/03/2021
+  ms.locfileid: "106287487"
+landingContent:
+- title: 画像分析について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 画像分析の概要
+      url: overview-image-analysis.md
+  - linkListType: quickstart
+    links:
+    - text: 画像分析のクイックスタート
+      url: quickstarts-sdk/image-analysis-client-library.md
+- title: 画像分析機能
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: コンテンツ タグ
+      url: concept-tagging-images.md
+    - text: オブジェクトの検出
+      url: concept-object-detection.md
+    - text: ブランド検出
+      url: concept-brand-detection.md
+    - text: 画像の分類
+      url: concept-categorizing-images.md
+    - text: 画像の説明
+      url: concept-describing-images.md
+    - text: 顔検出
+      url: concept-detecting-faces.md
+    - text: ドメイン固有のコンテンツ
+      url: concept-detecting-domain-content.md
+    - text: スマート トリミングされたサムネイル
+      url: concept-generating-thumbnails.md
+    - text: 成人向けコンテンツの検出
+      url: concept-detecting-adult-content.md
+- title: 画像分析を使用した開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 画像分析 API の呼び出し
+      url: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+  - linkListType: tutorial
+    links:
+    - text: 画像のメタデータを生成する
+      url: Tutorials/storage-lab-tutorial.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 画像分析 REST API
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context

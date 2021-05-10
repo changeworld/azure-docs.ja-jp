@@ -4,12 +4,12 @@ description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キッ�
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96763691"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628647"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
 
@@ -81,28 +81,105 @@ Azure Blockchain Development Kit では、Truffle を使用して移行スクリ
 
 ![正常にデプロイされたコントラクト](./media/send-transaction/deploy-contract.png)
 
-## <a name="call-a-contract-function"></a>コントラクト関数を呼び出す
+## <a name="call-a-contract-function&quot;></a>コントラクト関数を呼び出す
+**HelloBlockchain** コントラクトの **SendRequest** 関数は、**RequestMessage** 状態変数を変更するものです。 ブロックチェーン ネットワークの状態の変更は、トランザクションを介して行われます。 トランザクションを介して **SendRequest** 関数を実行するスクリプトを作成できます。
 
-**HelloBlockchain** コントラクトの **SendRequest** 関数は、**RequestMessage** 状態変数を変更するものです。 ブロックチェーン ネットワークの状態の変更は、トランザクションを介して行われます。 Azure Blockchain 開発キットのスマート コントラクト インタラクション ページを使用すると、トランザクションを介して **SendRequest** 関数を呼び出すことができます。
+1. Truffle プロジェクトのルートに新しいファイルを作成し、`sendrequest.js` という名前を付けます。 そのファイルに次の Web3 JavaScript コードを追加します。
 
-1. スマート コントラクトを対話的に操作するには、**HelloBlockchain.sol** を右クリックし、メニューから **[Show Smart Contract Interaction Page]\(スマート コントラクト インタラクション ページの表示\)** を選択します。
+    ```javascript
+    var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
+        
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling SendRequest function for contract ", instance.address);
+        return instance.SendRequest("Hello, blockchain!");
+      }).then(function(result) {
+        console.log("Transaction hash: ", result.tx);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
 
-    ![メニューから [Show Smart Contract Interaction Page]\(スマート コントラクト インタラクション ページの表示\) を選択する](./media/send-transaction/contract-interaction.png)
+1. Azure Blockchain Development Kit によってプロジェクトが作成されると、Truffle 構成ファイルがコンソーシアムのブロックチェーン ネットワーク エンドポイントの詳細と共に生成されます。 プロジェクトの **truffle-config.js** を開きます。 構成ファイル内の一覧には、2 つのネットワークが含まれています。一方は development という名前で、もう一方はコンソーシアムと同じ名前です。
+1. VS Code のターミナル ウィンドウで Truffle を使用して、コンソーシアムのブロックチェーン ネットワーク上でスクリプトを実行します。 ターミナル ウィンドウのメニュー バーで **[ターミナル]** タブを選択し、ドロップダウンで **[PowerShell]** を選択します。
 
-1. インタラクション ページでは、デプロイされている契約のバージョンを選択したり、関数を呼び出したり、最新の状態を表示したり、メタデータを表示したりすることができます。
+    ```PowerShell
+    truffle exec sendrequest.js --network <blockchain network>
+    ```
 
-    ![スマート コントラクト インタラクション ページの例](./media/send-transaction/interaction-page.png)
+    \<blockchain network\> を、**truffle-config.js** 内で定義されているブロックチェーン ネットワークの名前に置き換えます。
 
-1. スマート コントラクト関数を呼び出すには、コントラクト アクションを選択して必要な引数を渡します。 **[SendRequest]** コントラクト アクションを選択し、 **[requestMessage]** パラメーターに「**Hello, Blockchain!** 」と入力します。 **[実行]** を選択すると、トランザクションを介して **SendRequest** 関数が呼び出されます。
+Truffle によってブロックチェーン ネットワーク上でスクリプトが実行されます。
 
-    ![SendRequest アクションを実行する](./media/send-transaction/sendrequest-action.png)
+![トランザクションが送信されたことを示す出力](./media/send-transaction/execute-transaction.png)
 
-トランザクションが処理されると、インタラクション セクションに状態の変化が反映されます。
+トランザクションを介してコントラクトの関数を実行した場合、そのトランザクションはブロックが作成されるまで処理されません。 トランザクションを介して実行される関数は、戻り値ではなくトランザクション ID を返します。
 
-![コントラクトの状態が変化する](./media/send-transaction/contract-state.png)
+## <a name="query-contract-state"></a>コントラクトの状態を照会する
 
-SendRequest 関数によって **RequestMessage** フィールドと **State** フィールドが設定されています。 **RequestMessage** の最新の状態は、引数として渡した **Hello, Blockchain** です。 **[State]\(状態\)** フィールドの値は **[Request]\(要求\)** のままです。
+スマート コントラクト関数は、状態変数の現在の値を返すことができます。 状態変数の値を返す関数を追加してみましょう。
 
+1. **HelloBlockchain.sol** で、**getMessage** 関数を **HelloBlockchain** スマート コントラクトに追加します。
+
+    ``` solidity
+    function getMessage() public view returns (string memory)
+    {
+        if (State == StateType.Request)
+            return RequestMessage;
+        else
+            return ResponseMessage;
+    }
+    ```
+
+    この関数は、コントラクトの現在の状態を基に、状態変数に格納されているメッセージを返します。
+
+1. **HelloBlockchain.sol** を右クリックし、メニューの **[Build Contracts]\(コントラクトのビルド\)** を選択して、スマート コントラクトへの変更をコンパイルします。
+1. デプロイするには、**HelloBlockchain.sol** を右クリックし、メニューの **[Deploy Contracts]\(コントラクトのデプロイ\)** を選択します。 確認を求められたら、コマンド パレットで Azure Blockchain コンソーシアム ネットワークを選択します。
+1. 次に、**getMessage** 関数を呼び出すスクリプトを作成します。 Truffle プロジェクトのルートに新しいファイルを作成し、`getmessage.js` という名前を付けます。 そのファイルに次の Web3 JavaScript コードを追加します。
+
+    ```javascript
+    var HelloBlockchain = artifacts.require("HelloBlockchain");
+    
+    module.exports = function(done) {
+      console.log("Getting the deployed version of the HelloBlockchain smart contract")
+      HelloBlockchain.deployed().then(function(instance) {
+        console.log("Calling getMessage function for contract ", instance.address);
+        return instance.getMessage();
+      }).then(function(result) {
+        console.log("Request message value: ", result);
+        console.log("Request complete");
+        done();
+      }).catch(function(e) {
+        console.log(e);
+        done();
+      });
+    };
+    ```
+
+1. VS Code のターミナル ウィンドウで Truffle を使用して、ブロックチェーン ネットワーク上でスクリプトを実行します。 ターミナル ウィンドウのメニュー バーで **[ターミナル]** タブを選択し、ドロップダウンで **[PowerShell]** を選択します。
+
+    ```bash
+    truffle exec getmessage.js --network <blockchain network>
+    ```
+
+    \<blockchain network\> を、**truffle-config.js** 内で定義されているブロックチェーン ネットワークの名前に置き換えます。
+
+このスクリプトは、getMessage 関数を呼び出すことによって、スマート コントラクトを照会します。 **RequestMessage** 状態変数の現在の値が返されます。
+
+![RequestMessage 状態変数の現在の値を示す getmessage クエリからの出力](./media/send-transaction/execute-get.png)
+
+値が "**Hello, blockchain!**" ではないことに注意してください。 返される値は、プレースホルダーです。 コントラクトを変更してデプロイすると、変更されたコントラクトは新しいアドレスにデプロイされ、状態変数にはスマート コントラクト コンストラクターの値が割り当てられます。 Truffle サンプルの **2_deploy_contracts.js** 移行スクリプトは、スマート コントラクトをデプロイし、引数としてプレースホルダー値を渡します。 コンストラクターは、**RequestMessage** 状態変数をプレースホルダーの値に設定し、この値が返されます。
+
+1. **RequestMessage** 状態変数を設定して値を照会するには、**sendrequest.js** スクリプトと **getmessage.js** スクリプトをもう一度実行します。
+
+    ![RequestMessage が設定されたことを示す sendrequest スクリプトと getmessage スクリプトからの出力](./media/send-transaction/execute-set-get.png)
+
+    **sendrequest.js** によって **RequestMessage** 状態変数が "**Hello, blockchain!**" に設定されます。 また、**getmessage.js** によってコントラクトに対して **RequestMessage** 状態変数の値が照会され、"**Hello, blockchain!**" が返されます。
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、前提条件の "*ブロックチェーン メンバーの作成*" に関するクイックスタートで作成した `myResourceGroup` リソース グループを削除することで、リソースを削除できます。

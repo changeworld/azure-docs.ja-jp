@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108334"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363854"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 
@@ -34,18 +34,14 @@ ms.locfileid: "105108334"
 
 サーバーレス Spark プールは、ユーザーが Spark の操作方法を示すための手段です。 プールの使用を開始すると、必要に応じて Spark セッションが作成されます。 プールでは、そのセッションで使用される Spark リソースの数と、セッションが自動的に一時停止するまでの継続時間を制御します。 課金は、プール自体ではなく、そのセッション中に使用された Spark リソースに対して発生します。 このように Spark プールを使用すると、クラスターの管理を気にすることなく Spark を操作できます。 これは、サーバーレス SQL プールの動作に似ています。
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>Spark を使用して Blob Storage の NYC タクシー データを分析する
+## <a name="analyze-nyc-taxi-data-with-a-spark-pool"></a>Spark プールで NYC タクシーのデータを分析する
 
 1. Synapse Studio で、 **[開発]** ハブに移動します。
-2. 既定の言語が **PySpark (Python)** に設定された新しいノートブックを作成します。
+2. 新しい Notebook を作成する
 3. 新しいコード セルを作成し、次のコードをそのセルに貼り付けます。
     ```py
     %%pyspark
-    from azureml.opendatasets import NycTlcYellow
-
-    data = NycTlcYellow()
-    df = data.to_spark_dataframe()
-    # Display 10 rows
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet', format='parquet')
     display(df.limit(10))
     ```
 1. ノートブックの **[アタッチ先]** メニューで、前に作成した **Spark1** サーバーレス Spark プールを選択します。
@@ -53,22 +49,23 @@ ms.locfileid: "105108334"
 1. データフレームのスキーマを表示するだけの場合は、次のコードを使用してセルを実行します。
 
     ```py
+    %%pyspark
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>NYC タクシーのデータを Spark nyctaxi データベースに読み込む
 
-データは、**data** という名前のデータフレームを使って取得できます。 それを **nyctaxi** という名前の Spark データベースに読み込みます。
+データは、**df** という名前のデータフレームを使って取得できます。 それを **nyctaxi** という名前の Spark データベースに読み込みます。
 
-1. ノートブックに新規を追加し、次のコードを入力します。
+1. ノートブックに新しいコード セルを追加し、次のコードを入力します。
 
     ```py
+    %%pyspark
     spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark とノートブックを使用して NYC タクシーのデータを分析する
 
-1. ノートブックに戻ります。
 1. 新しいコード セルを作成し、次のコードを入力します。 
 
    ```py
@@ -84,10 +81,10 @@ ms.locfileid: "105108334"
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistance) as SumTripDistance,
-          AVG(TripDistance) as AvgTripDistance
+          SUM(TripDistanceMiles) as SumTripDistance,
+          AVG(TripDistanceMiles) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistance > 0 AND PassengerCount > 0
+      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

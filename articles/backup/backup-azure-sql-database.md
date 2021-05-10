@@ -3,12 +3,12 @@ title: Azure への SQL Server データベースのバックアップ
 description: この記事では、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 510d9637031928e31abaa5f82a5bf58c6ef44719
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6daf631248958948e799b20284d84a1e59e5dfe
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316845"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518866"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -41,7 +41,7 @@ ms.locfileid: "91316845"
 
 1. Azure で SQL Server インスタンスを稼働させていることを確認する。 マーケットプレースで [SQL Server インスタンスをすばやく作成](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)できます。
 2. [機能に関する考慮事項](sql-support-matrix.md#feature-considerations-and-limitations)と[シナリオのサポート](sql-support-matrix.md#scenario-support)を確認する。
-3. このシナリオに関する[一般的な質問を確認](faq-backup-sql-server.md)する。
+3. このシナリオに関する[一般的な質問を確認](faq-backup-sql-server.yml)する。
 
 ## <a name="set-vm-permissions"></a>VM のアクセス許可を設定する
 

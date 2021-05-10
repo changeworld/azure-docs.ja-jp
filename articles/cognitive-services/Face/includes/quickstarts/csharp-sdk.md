@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b06a35274082e09ec0973c5123b39935a93e354d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102444952"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958114"
 ---
 .NET 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "102444952"
 
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
-* [人物グループを作成する](#create-a-person-group)
+* [PersonGroup を作成する](#create-a-persongroup)
 * [顔を識別する](#identify-a-face)
 
 [リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [サンプル](/samples/browse/?products=azure&term=face)
@@ -124,7 +124,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 * [クライアントを認証する](#authenticate-the-client)
 * [画像内の顔を検出する](#detect-faces-in-an-image)
 * [似た顔を探す](#find-similar-faces)
-* [人物グループを作成する](#create-a-person-group)
+* [PersonGroup を作成する](#create-a-persongroup)
 * [顔を識別する](#identify-a-face)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
@@ -186,7 +186,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0
 
 識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。 識別操作を行うには、最初に **PersonGroup** を作成してトレーニングする必要があります
 
-### <a name="create-a-person-group"></a>人物グループを作成する
+### <a name="create-a-persongroup"></a>PersonGroup を作成する
 
 次のコードでは、6 つの異なる **Person** オブジェクトを含んだ **PersonGroup** を作成します。 各 **Person** を一連のサンプル画像に関連付け、顔の特徴によって各人物を認識するためのトレーニングを行います。 **Person** オブジェクトと **PersonGroup** オブジェクトは、検証、識別、グループ化の各操作で使用されます。
 

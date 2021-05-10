@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d842414d3046692c982ca3203957a96f8a01b37
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96446588"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377332"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL 機能の設計上の決定とコーディング技法
 この記事では、Synapse SQL の専用 SQL プールとサーバーレス SQL プール の機能に関するリソースの一覧を紹介します。 推奨される記事は、次の 2 つのセクションに分かれています。重要な設計上の決定と、開発およびコーディング技法。
@@ -40,13 +40,13 @@ ms.locfileid: "96446588"
 | [CETAS](develop-tables-cetas.md)                     | はい | はい |
 
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 次に、開発のための特定のコーディング技法、ヒント、およびレコメンデーションに焦点を合わせた重要な記事を紹介します。
 
 | [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
-| [ストアド プロシージャ](develop-stored-procedures.md)  | はい                | いいえ                      |
+| [ストアド プロシージャ](develop-stored-procedures.md)  | はい                | はい                      |
 | [ラベル](develop-label.md)                           | はい                | いいえ                      |
 | [ビュー](develop-views.md)                             | はい                | はい                     |
 | [一時テーブル](develop-tables-temporary.md)       | はい                | はい                     |

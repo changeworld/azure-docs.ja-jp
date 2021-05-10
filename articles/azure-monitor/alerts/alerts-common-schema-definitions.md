@@ -4,19 +4,19 @@ description: Azure Monitor の共通アラート スキーマ定義について
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 02092f5a241824d2a9aef242b544f8900af7ebec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045396"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491714"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
 この記事では、Azure Monitor や、Webhooks、Azure Logic Apps、Azure Functions、Azure Automation Runbook の[共通アラート スキーマ定義](./alerts-common-schema.md)について説明します。 
 
 すべてのアラート インスタンスでは、影響を受けたリソースおよびアラートの原因が記述されています。 これらのインスタンスは、共通スキーマの以下のセクションに記述されています。
-* **要点**: すべてのアラートの種類において共通の一連の標準化されたフィールド。これらのフィールドでは、アラート対象のリソースと、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
+* **要点**: すべてのアラートの種類において共通の一連の標準化されたフィールド。これらのフィールドでは、アラート対象のリソースと、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 重要度の定義については、[アラートの概要](alerts-overview.md#overview)を参照してください。 
 * **アラート コンテキスト**: アラートの原因が記述されているフィールドと、アラートの種類に基づいて異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
 
 **アラートのペイロードのサンプル**

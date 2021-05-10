@@ -2,17 +2,19 @@
 title: Bicep モジュール
 description: モジュールを定義して使用する方法、およびモジュール スコープを使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/17/2021
-ms.openlocfilehash: 2edeb5c96f771867f964963b2d27768291ae2d4a
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.date: 03/30/2021
+ms.openlocfilehash: 6c325bbbe265e13241119761373985ca4552b158
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889707"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967882"
 ---
-# <a name="use-bicep-modules"></a>Bicep モジュールを使用する
+# <a name="use-bicep-modules-preview"></a>Bicep モジュールを使用する (プレビュー)
 
-Bicep を使用すると、複雑なソリューションをモジュールに分割できます。 Bicep モジュールは、まとめてデプロイされる 1 つ以上のリソースのセットです。 モジュールは、未加工のリソース宣言の複雑な詳細を取り除くことで、読みやすさ向上させます。 これらのモジュールは、再利用したり、他のユーザーと共有したりすることができます。 [テンプレートの仕様](./template-specs.md)と組み合わせることで、モジュール性とコードの再利用の方法を生み出すことができます。 チュートリアルについては、「[チュートリアル: Bicep モジュールを追加する](./bicep-tutorial-add-modules.md)」を参照してください。
+Bicep を使用すると、複雑なソリューションをモジュールに分割できます。 Bicep モジュールは、まとめてデプロイされる 1 つ以上のリソースのセットです。 モジュールは、未加工のリソース宣言の複雑な詳細を取り除くことで、読みやすさ向上させます。 これらのモジュールは、再利用したり、他のユーザーと共有したりすることができます。 [テンプレートの仕様](./template-specs.md)と組み合わせることで、モジュール性とコードの再利用の方法を生み出すことができます。 Bicep モジュールは、デプロイ用に[入れ子になったテンプレート](./linked-templates.md#nested-template)で単一の ARM テンプレートにトランスパイルされます。 Bicep では、[_dependsOn_](./template-syntax.md#resources) は自動的に処理されます。
+
+チュートリアルについては、「[チュートリアル: Bicep モジュールを追加する](./bicep-tutorial-add-modules.md)」を参照してください。
 
 ## <a name="define-modules"></a>モジュールを定義する
 

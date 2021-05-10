@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d155d0c4a18b254f66ff5fb58ea91dbee22d2c34
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 578befe3e26ebb42fa2172976e07d0a5836e3743
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496611"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107144"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Digital Twins グラフを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "103496611"
 
 このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、[**Azure CLI** 用の Azure Digital Twins コマンド セット](how-to-use-cli.md)です。 
 
-CLI コマンドを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins の操作を実行できます。 また、[*az dt* コマンド セットのリファレンス ドキュメント](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)を参照して、CLI コマンドの完全なセットを確認することもできます。
+CLI コマンドを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins の操作を実行できます。 また、[*az dt* コマンド セットのリファレンス ドキュメント](/cli/azure/dt)を参照して、CLI コマンドの完全なセットを確認することもできます。
 
 このチュートリアルでは次のことを行います。
 > [!div class="checklist"]
@@ -91,7 +91,7 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
     
     マシン上の *Room.json* ファイルに移動し、[開く] を選択します。 その後、*Floor.json* についてもこの手順を繰り返します。
 
-1. 次に、下に示す [**az dt model create**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create) コマンドを使用して、更新した *Room* モデルを Azure Digital Twins インスタンスにアップロードします。 2 番目のコマンドでは、別のモデルである *Floor* をアップロードします。これは、さまざまな種類のツインを作成するために次のセクションでも使用します。
+1. 次に、下に示す [**az dt model create**](/cli/azure/dt/model#az_dt_model_create) コマンドを使用して、更新した *Room* モデルを Azure Digital Twins インスタンスにアップロードします。 2 番目のコマンドでは、別のモデルである *Floor* をアップロードします。これは、さまざまな種類のツインを作成するために次のセクションでも使用します。
 
     ```azurecli-interactive
     az dt model create -n <ADT_instance_name> --models Room.json
@@ -101,9 +101,9 @@ Azure Digital Twins ソリューションを作成するにあたり最初にす
     各コマンドの出力には、正常にアップロードされたモデルに関する情報が表示されます。
 
     >[!TIP]
-    >model create コマンドの `--from-directory` オプションを使用して、ディレクトリ内のすべてのモデルを同時にアップロードすることもできます。 詳細については、[*az dt model create* のオプション パラメーター](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_create-optional-parameters)に関する記事を参照してください。
+    >model create コマンドの `--from-directory` オプションを使用して、ディレクトリ内のすべてのモデルを同時にアップロードすることもできます。 詳細については、[*az dt model create* のオプション パラメーター](/cli/azure/dt/model#az_dt_model_create-optional-parameters)に関する記事を参照してください。
 
-1. 下に示すように、[**az dt model list**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_list) コマンドを使用して、モデルが作成されたことを確認します。 これにより、Azure Digital Twins インスタンスにアップロードされたすべてのモデルの一覧が、その完全な情報と共に出力されます。 
+1. 下に示すように、[**az dt model list**](/cli/azure/dt/model#az_dt_model_list) コマンドを使用して、モデルが作成されたことを確認します。 これにより、Azure Digital Twins インスタンスにアップロードされたすべてのモデルの一覧が、その完全な情報と共に出力されます。 
 
     ```azurecli-interactive
     az dt model list -n <ADT_instance_name> --definition
@@ -129,7 +129,7 @@ az dt model create -n <ADT_instance_name> --models Room.json
 
 Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に基づいて [**デジタル ツイン**](concepts-twins-graph.md)を作成できます。 デジタル ツインは、農場のセンサー、建物内の部屋、車内の照明など、対象となるビジネス環境内のエンティティを表します。 
 
-デジタル ツインを作成するには、[**az dt twin create**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_create) コマンドを使用します。 ツインのベースとなるモデルを参照する必要があります。モデルのプロパティには、必要に応じて初期値を定義することができます。 この段階では、リレーションシップ情報を渡す必要はありません。
+デジタル ツインを作成するには、[**az dt twin create**](/cli/azure/dt/twin#az_dt_twin_create) コマンドを使用します。 ツインのベースとなるモデルを参照する必要があります。モデルのプロパティには、必要に応じて初期値を定義することができます。 この段階では、リレーションシップ情報を渡す必要はありません。
 
 1. Cloud Shell でこのコードを実行して、先ほど更新した *Room* モデルと、もう 1 つのモデル (*Floor*) に基づいて、いくつかのツインを作成します。 *Room* には 3 つのプロパティがあったことを思い出してください。それらの初期値を引数で指定することができます。 (プロパティ値の初期化は一般に省略可能ですが、このチュートリアルでは必要です。)
 
@@ -151,7 +151,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
     
     各コマンドの出力には、正常に作成されたツインに関する情報 (部屋ツインと共に初期化されたそれらのプロパティを含みます) が表示されます。
 
-1. 下に示すように、[**az dt twin query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) コマンドを使用してツインが作成されたことを確認できます。 示されたクエリにより、Azure Digital Twins インスタンス内のすべてのデジタル ツインが検索されます。
+1. 下に示すように、[**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) コマンドを使用してツインが作成されたことを確認できます。 示されたクエリにより、Azure Digital Twins インスタンス内のすべてのデジタル ツインが検索されます。
     
     ```azurecli-interactive
     az dt twin query -n <ADT_instance_name> -q "SELECT * FROM DIGITALTWINS"
@@ -165,7 +165,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
 作成したツインのプロパティを変更することもできます。 
 
-1. こちらの [**az dt twin update**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_update) コマンドを実行して、*room0* の RoomName を *Room0* から *PresidentialSuite* に変更します。
+1. こちらの [**az dt twin update**](/cli/azure/dt/twin#az_dt_twin_update) コマンドを実行して、*room0* の RoomName を *Room0* から *PresidentialSuite* に変更します。
 
     ```azurecli-interactive
     az dt twin update -n <ADT_instance_name> --twin-id room0 --json-patch '{"op":"add", "path":"/RoomName", "value": "PresidentialSuite"}'
@@ -183,7 +183,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
     :::image type="content" source="media/tutorial-command-line/cli/output-update-twin.png" alt-text="update コマンドの結果 (PresidentialSuite の RoomName を含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-update-twin.png":::
 
-1. [**az dt twin show**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_show) コマンドを実行して *room0* の情報を表示すると、更新が成功したことを確認できます。
+1. [**az dt twin show**](/cli/azure/dt/twin#az_dt_twin_show) コマンドを実行して *room0* の情報を表示すると、更新が成功したことを確認できます。
 
     ```azurecli-interactive
     az dt twin show -n <ADT_instance_name> --twin-id room0
@@ -197,7 +197,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
 あるツインから別のものへと作成できるリレーションシップの種類は、前にアップロードした[モデル](#model-a-physical-environment-with-dtdl)内に定義されています。 [*Floor* のモデル定義](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)では、フロアに *contains* という種類のリレーションシップを設定できることが指定されています。 これにより、各 *Floor* ツインから、それに含まれる対応する部屋への *contains* の種類のリレーションシップを作成できるようになります。
 
-リレーションシップを追加するには、[**az dt twin relationship create**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_create) コマンドを使用します。 リレーションシップの接続元となるツインと、リレーションシップの種類、リレーションシップの接続先のツインを指定します。 最後に、リレーションシップに一意の ID を指定します。 プロパティを持つようにリレーションシップが定義されていた場合は、このコマンドでリレーションシップのプロパティを初期化することもできます。
+リレーションシップを追加するには、[**az dt twin relationship create**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_create) コマンドを使用します。 リレーションシップの接続元となるツインと、リレーションシップの種類、リレーションシップの接続先のツインを指定します。 最後に、リレーションシップに一意の ID を指定します。 プロパティを持つようにリレーションシップが定義されていた場合は、このコマンドでリレーションシップのプロパティを初期化することもできます。
 
 1. 次のコードを実行すると、先ほど作成した各 *Floor* ツインから対応する *Room* ツインへの *contains* の種類のリレーションシップが追加されます。 リレーションシップには、*relationship0* と *relationship1* という名前が付けられます。
 
@@ -240,7 +240,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>環境についての質問をツイン グラフに照会する
 
-Azure Digital Twins の主な機能は、環境についての質問に答える[クエリ](concepts-query-language.md)をツイン グラフに対して容易に、かつ効率よく実行できることです。 Azure CLI では、[**az dt twin query**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_query) コマンドを使用してこれを行います。
+Azure Digital Twins の主な機能は、環境についての質問に答える[クエリ](concepts-query-language.md)をツイン グラフに対して容易に、かつ効率よく実行できることです。 Azure CLI では、[**az dt twin query**](/cli/azure/dt/twin#az_dt_twin_query) コマンドを使用してこれを行います。
 
 サンプル環境に関するいくつかの質問に回答するには、Cloud Shell で次のクエリを実行します。
 
@@ -308,7 +308,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 * **次のチュートリアルに進む場合** は、ここで設定したリソースを保持し、その間に何もクリアすることなく、Azure Digital Twins インスタンスを再利用できます。
 
-* **Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、およびリレーションシップをすべてクリアする場合** は、[**az dt twin relationship delete**](/cli/azure/ext/azure-iot/dt/twin/relationship?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_relationship_delete)、[**az dt twin delete**](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_twin_delete)、[**az dt model delete**](/cli/azure/ext/azure-iot/dt/model?view=azure-cli-latest&preserve-view=true#ext_azure_iot_az_dt_model_delete) の各コマンドを使用して、インスタンスのリレーションシップ、ツイン、モデルをそれぞれクリアできます。
+* **Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、およびリレーションシップをすべてクリアする場合** は、[**az dt twin relationship delete**](/cli/azure/dt/twin/relationship#az_dt_twin_relationship_delete)、[**az dt twin delete**](/cli/azure/dt/twin#az_dt_twin_delete)、[**az dt model delete**](/cli/azure/dt/model#az_dt_model_delete) の各コマンドを使用して、インスタンスのリレーションシップ、ツイン、モデルをそれぞれクリアできます。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 

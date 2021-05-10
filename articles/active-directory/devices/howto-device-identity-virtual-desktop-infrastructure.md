@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e5a4cc2b964bcf4fa49d90c8b6d5aa546b7148a1
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798886"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107947"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -94,6 +94,23 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 - [古いデバイスの管理](manage-stale-devices.md)のプロセスを定義して実装します。
    - 非永続的な Hybrid Azure AD 参加済みデバイスを識別する方法 (コンピューター表示名のプレフィックスなど) を用意したら、ディレクトリが多くの古いデバイスで占められないように、これらのデバイスのクリーンアップをより積極的に行う必要があります。
    - 最新の Windows とダウンロードレベルの Windows への非永続的 VDI のデプロイでは、**ApproximateLastLogonTimestamp** が 15 日より古いデバイスを削除する必要があります。
+
+> [!NOTE]
+> 非永続的な VDI を使用する場合、デバイスの参加状態を回避するには、次のレジストリ キーが設定されていることを確認します。  
+> `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin"=dword:00000001`    
+>
+> Windows 10 バージョン 1803 以降を実行していることを確認します。  
+>
+> パス `%localappdata%` にあるデータのローミングはサポートされていません。 `%localappdata%` にあるコンテンツを移動する場合は、次のフォルダーとレジストリキーの内容がどのような状況でもデバイスを離れることが **ない** ようにしてください。 例: プロファイル移行ツールは、次のフォルダーとキーをスキップする必要があります。
+>
+> * `%localappdata%\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy`
+> * `%localappdata%\Packages\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy`
+> * `%localappdata%\Packages\<any app package>\AC\TokenBroker`
+> * `%localappdata%\Microsoft\TokenBroker`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\IdentityCRL`
+> * `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\AAD`
+>
+
 
 ### <a name="persistent-vdi"></a>永続的 VDI
 

@@ -261,7 +261,7 @@ Azure Cloud Services の可用性、パフォーマンス、障害、および�
 
 Azure Cloud Services で診断を有効にすると、Azure Diagnostics 拡張機能を使用して、アプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 Set-azureservicediagnosticsextension コマンドレットを使用して既に実行されているクラウド サービスの診断構成を有効化または更新するか、診断拡張機能を使用してクラウド サービスを自動的にデプロイします。 必要に応じて、Application Insights SDK をインストールします。 パフォーマンス カウンターを Azure Monitor に送信します。
 
-Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 診断データは永続的に保存されないため、Microsoft Azure ストレージ エミュレーターまたは Azure Storage に転送します。 ストレージに保持されたら、Visual Studio のサーバー エクスプローラー、Microsoft Azure Storage Explorer、Azure Management Studio などの利用可能なツールのいずれかを使用して表示できます。 診断拡張機能で、diagnostics.wadcfgx という名前の構成ファイル (ロールごと) を使用して、診断メトリックを監視するように構成します。 
+Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 診断データは永続的に保存されないため、Microsoft Azure Storage Emulator または Azure Storage に転送します。 ストレージに保持されたら、Visual Studio のサーバー エクスプローラー、Microsoft Azure Storage Explorer、Azure Management Studio などの利用可能なツールのいずれかを使用して表示できます。 診断拡張機能で、diagnostics.wadcfgx という名前の構成ファイル (ロールごと) を使用して、診断メトリックを監視するように構成します。 
 
 - [クラウド サービスの監視の概要](cloud-services-how-to-monitor.md)
 

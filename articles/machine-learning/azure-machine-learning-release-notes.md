@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471743"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166685"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -22,6 +22,21 @@ ms.locfileid: "103471743"
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
+## <a name="2021-03-31"></a>2021-03-31
+### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (3 月の更新)
++ **新機能**
+  + CSV または TSV をレンダリングします。 データ分析を容易にするために、ユーザーはグリッド形式で TSV または CSV ファイルをレンダリングできます。 
+  + コンピューティング インスタンスの SSO 認証。 ユーザーは、Notebook UI で新しいコンピューティング インスタンスを簡単に認証できるようになりました。これにより、AzureML で直接 Azure SDK を認証して使用することが容易になりました。 
+  + コンピューティング インスタンスのメトリック。 ユーザーは、ターミナルを使用して CPU 使用率やメモリなどのコンピューティング メトリックを表示できます。
+  + ファイルの詳細。 ユーザーは、ファイルの横にある 3 つのドットをクリックすると、最終更新時刻やファイル サイズなどのファイルの詳細を表示できるようになりました。
+
++ **バグの修正と機能強化**
+  + ページ読み込み時間の短縮。
+  + 向上したパフォーマンス。
+  + 高速化およびカーネルの信頼性の向上。
+  + 永続的に Notebook ファイルのペインを上に移動して、垂直方向の領域を獲得します
+  + ターミナルでリンクがクリック可能になりました
+  + IntelliSense のパフォーマンスの向上
 
 ## <a name="2021-03-08"></a>2021-03-08
 
@@ -56,9 +71,9 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 ## <a name="2021-02-28"></a>2021-02-28
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning スタジオのノートブック エクスペリエンス (2 月の更新)
 + **新機能**
-  + [ネイティブ ターミナル (GA)](https://docs.microsoft.com/azure/machine-learning/how-to-access-terminal). ユーザーは、統合ターミナル、およびその統合ターミナルを使用して Git 操作にもアクセスできるようになりました。
+  + [ネイティブ ターミナル (GA)](./how-to-access-terminal.md). ユーザーは、統合ターミナル、およびその統合ターミナルを使用して Git 操作にもアクセスできるようになりました。
   + [ノートブック スニペット (プレビュー)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets)。 一般的な Azure ML コードの抜粋が、すぐに入手できるようになりました。 ツールバーからアクセスできるコード スニペット パネルに移動するか、Ctrl + Space キーを使用してコード内スニペット メニューをアクティブにします。  
-  + [キーボード ショートカット](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys)。 Jupyter で使用できるキーボード ショートカットと完全に一致します。 
+  + [キーボード ショートカット](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts)。 Jupyter で使用できるキーボード ショートカットと完全に一致します。 
   + セル パラメーターを示します。 ノートブック内のどのセルがパラメーター セルであり、コンピューティング インスタンスで [Papermill](https://github.com/nteract/papermill) を使用してバラメーター化されたノートブックを実行できるかをユーザーに示します。
   + ターミナルおよびカーネル セッション マネージャー: ユーザーは、コンピューティング上で実行されているすべてのカーネルとターミナル セッションを管理できます。
   + 共有ボタン。 ユーザーは、ファイルを右クリックして共有ボタンを使用することにより、ノートブックのエクスプローラーで任意のファイルを共有できるようになりました。
@@ -68,7 +83,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
   + ページ読み込み時間の短縮
   + パフォーマンスの向上 
   + 高速化およびカーネルの信頼性の向上
-  + 実行中のすべての[コンピューティング インスタンス操作](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#status-indicators)の進行状況を示すスピナーが追加されました。
+  + 実行中のすべての[コンピューティング インスタンス操作](./how-to-run-jupyter-notebooks.md#status-indicators)の進行状況を示すスピナーが追加されました。
   + エクスプローラーで右クリックします。 任意のファイルを右クリックすると、ファイルの操作が開くようになりました。 
 
 
@@ -79,7 +94,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
   + **azureml-core**
     + [試験的な機能] Synapse ワークスペースをリンク サービスとして AML にリンクするためのサポートが追加されています
     + [試験的な機能] Synapse Spark プールをコンピューティングとして AML にアタッチするためのサポートが追加されています
-    + [試験的な機能] ID ベースのデータ アクセスに対するサポートが追加されています。 ユーザーは、資格情報を指定せずにデータストアまたはデータセットを登録できます。 そのような場合は、ユーザーの AAD トークンまたはコンピューティング ターゲットのマネージド ID が認証に使用されます。 [こちら](https://aka.ms/data-access)をご覧ください。
+    + [試験的な機能] ID ベースのデータ アクセスに対するサポートが追加されています。 ユーザーは、資格情報を指定せずにデータストアまたはデータセットを登録できます。 そのような場合は、ユーザーの AAD トークンまたはコンピューティング ターゲットのマネージド ID が認証に使用されます。 [こちら](./how-to-identity-based-data-access.md)をご覧ください。
   + **azureml-pipeline-steps**
     + [試験的な機能] [SynapseSparkStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.synapsesparkstep) に対するサポートが追加されています
   + **azureml-synapse**

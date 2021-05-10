@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalizer, Azure Personalizer, 機械学習
-ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b2577502907b69e134651c93ab7a98fc51e9aaa6
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928553"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169251"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -21,11 +21,14 @@ Azure Personalizer は、最適なコンテンツ項目をアプリケーショ�
 > [!TIP]
 > コンテンツには、テキスト、画像、URL、メールなど、抽出してユーザーに表示するあらゆる情報単位が当てはまります。
 
-先に進む前に、[こちらの対話型デモで Personalizer](https://personalizationdemo.azurewebsites.net/) を自由にお試しください。
+このドキュメントには、次の種類の記事が含まれています。  
 
-<!--
-![What is personalizer animation](./media/what-is-personalizer.gif)
--->
+* [**クイックスタート**](quickstart-personalizer-sdk.md)は、サービスへの要求の実行方法を説明する概要手順です。  
+* [**攻略ガイド**](how-to-settings.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。  
+* [**概念**](how-personalizer-works.md)では、サービスの機能と特徴について詳しく説明します。  
+* [**チュートリアル**](tutorial-use-personalizer-web-app.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。  
+
+先に進む前に、[こちらの対話型デモで Personalizer](https://personalizationdemo.azurewebsites.net/) をお試しください。
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>最適なコンテンツ項目を Personalizer が選択するしくみ
 
@@ -100,18 +103,6 @@ Personalizer は、集まった情報をほぼリアルタイムで使用して�
         * コンテンツを表示した直後
         * またはオフライン システムで少し経ってから
     1. 一定期間使用した後、オフライン評価を使用して[ループを評価](concepts-offline-evaluation.md)します。 オフライン評価を使用すると、コードを変更したりユーザー エクスペリエンスに影響を与えたりすることなく、Personalizer サービスの有効性をテストして評価することができます。
-
-## <a name="complete-a-quickstart"></a>クイックスタートに取り組む
-
-クイックスタートは、C#、JavaScript、Python でご利用いただけます。 それぞれ基本的な設計パターンを学び、いずれも 10 分もかからずにコードを実行できるように作られています。 
-
-* [クイック スタート: Personalizer クライアント ライブラリを使用する方法](./quickstart-personalizer-sdk.md)
-
-Personalizer サービスを使用する機会が得られたら、Web アプリケーションやチャット ボット、Azure Notebooks で Personalizer を使用する方法を、チュートリアルを通じて学びましょう。
-
-* [チュートリアル:.NET Web アプリで Personalizer を使用する](tutorial-use-personalizer-web-app.md)
-* [チュートリアル:.NET チャット ボットで Personalizer を使用する](tutorial-use-personalizer-chat-bot.md)
-* [チュートリアル:Azure Notebook で Personalizer を使用する](tutorial-use-azure-notebook-generate-loop-data.md)
 
 ## <a name="reference"></a>関連項目 
 

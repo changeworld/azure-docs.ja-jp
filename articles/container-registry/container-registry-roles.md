@@ -44,7 +44,7 @@ CI/CD ソリューションから `docker build` コマンドを自動化する�
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 拡張機能
 
-Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
+Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure Container Registry の一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
 
 ## <a name="access-resource-manager"></a>Resource Manager へのアクセス
 
@@ -52,7 +52,7 @@ Azure portal と [Azure CLI](/cli/azure/) によるレジストリ管理には�
 
 ## <a name="create-and-delete-registry"></a>レジストリの作成と削除
 
-Azure コンテナー レジストリを作成および削除する権限です。
+Azure Container Registry を作成および削除する権限です。
 
 ## <a name="push-image"></a>イメージのプッシュ
 

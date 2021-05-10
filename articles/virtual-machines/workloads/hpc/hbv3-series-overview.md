@@ -1,5 +1,5 @@
 ---
-title: HBv3 シリーズ VM の概要 - Azure Virtual Machines | Microsoft Docs
+title: HBv3 シリーズ VM の概要、アーキテクチャ、トポロジ - Azure Virtual Machines | Microsoft Docs
 description: Azure での HBv3 シリーズ VM のサイズについて説明します。
 services: virtual-machines
 author: vermagit
@@ -8,33 +8,90 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d1abd03f517f9e0b13a2994418cbae5cfbe22454
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f78420a65cd9c2402266eb9ba973eabe758d7ee5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801870"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608286"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 シリーズの仮想マシンの概要 
 
 [HBv3 シリーズ](../../hbv3-series.md)のサーバーは 64 コア EPYC 7V13 CPU を 2 個搭載しており、合わせて 128 個の物理 "Zen3" コアとなります。 同時マルチスレッド (SMT) は HBv3 では無効になっています。 これらの 128 個のコアは 16 個のセクション (ソケットあたり 8 個) に分けられ、各セクションに含まれる 8 個のプロセッサ コアが 32 MB の L3 キャッシュに一様にアクセスできます。 Azure HBv3 サーバーでは、次の AMD BIOS 設定も実行されます。
 
 ```bash
-Nodes per Socket =2
+Nodes per Socket (NPS) = 2
 L3 as NUMA = Disabled
+NUMA domains within VM OS = 4
+C-states = Enabled
 ```
 
 その結果、サーバーを起動する 4 つの NUMA ドメイン (ソケットあたり 2 つ) は、それぞれのサイズが 32 コアになります。 各 NUMA は、3200 MT/秒で動作する 4 つのチャネルの物理 DRAM に直接アクセスできます。
 
-Azure ハイパーバイザーが VM に干渉することなく動作する余地を与えるため、予備としてサーバーあたり 8 個の物理コアを確保しています。 
+Azure ハイパーバイザーが VM に干渉することなく動作する余地を与えるため、予備としてサーバーあたり 8 個の物理コアを確保しています。
 
-制約付きコア VM のサイズで減少するのは VM に公開される物理コアの数だけであることに注意してください。 すべてのグローバル共有アセット (RAM、メモリ帯域幅、L3 キャッシュ、GMI および xGMI 接続、InfiniBand、Azure イーサネット ネットワーク、ローカル SSD) は一定のままです。 これにより、お客様は特定のワークロードまたはソフトウェア ライセンスのニーズに合わせて最適な VM サイズを選択できます。
+## <a name="vm-topology"></a>VM のトポロジ
 
-次の図は、Azure Hypervisor (黄色) と HBv3 シリーズ VM (緑) 用に予約されているコアの分離を示しています。
-![Azure Hypervisor と HBv3 シリーズ VM 用に予約されているコアの分離](./media/architecture/hbv3-segregation-cores.png)
+次の図は、サーバーのトポロジを示しています。 これらの 8 つのハイパーバイザー ホスト コア (黄色) が両方の CPU ソケットに対して対称的に予約されており、各 NUMA ドメインにある特定の Core Complex Die (CCD) の最初の 2 つのコアが使用されています。残りのコアは、HBv3 シリーズ VM 用になります (緑色)。
+
+![HBv3 シリーズ サーバーのトポロジ](./media/architecture/hbv3/hbv3-topology-server.png)
+
+CCD 境界は NUMA 境界と同等ではないことに注意してください。 HBv3 では、ホスト サーバー レベルとゲスト VM 内の両方で、4 つの連続する (4) CCD のグループが NUMA ドメインとして構成されます。 したがって、すべての HBv3 VM サイズで、下に示されていように OS とアプリケーションに対して提示される 4 つの NUMA ドメインが公開されます。これらは、特定の [HBv3 VM サイズ](../../hbv3-series.md)に基づいて、それぞれコアの数が異なります。
+
+![HBv3 シリーズ VM のトポロジ](./media/architecture/hbv3/hbv3-topology-vm.png)
+
+各 HBv3 VM のサイズは、次のように、AMD EPYC 7003 シリーズの各種 CPU の物理レイアウト、機能、パフォーマンスに類似しています。
+
+| HBv3 シリーズ VM のサイズ             | NUMA ドメイン | NUMA ドメインごとのコア数  | AMD EPYC との類似性         |
+|---------------------------------|--------------|------------------------|----------------------------------|
+Standard_HB120rs_v3               | 4            | 30                     | デュアル ソケット EPYC 7713            |
+Standard_HB120r-96s_v3            | 4            | 24                     | デュアル ソケット EPYC 7643            |
+Standard_HB120r-64s_v3            | 4            | 16                     | デュアル ソケット EPYC 7543            |
+Standard_HB120r-32s_v3            | 4            | 8                      | デュアル ソケット EPYC 7313            |
+Standard_HB120r-16s_v3            | 4            | 4                      | デュアル ソケット EPYC 72F3            |
+
+> [!NOTE]
+> 制約付きコア VM のサイズでは、VM に公開される物理コアの数のみ減少します。 すべてのグローバル共有アセット (RAM、メモリ帯域幅、L3 キャッシュ、GMI および xGMI 接続、InfiniBand、Azure イーサネット ネットワーク、ローカル SSD) は一定のままです。 これにより、お客様は特定のワークロードまたはソフトウェア ライセンスのニーズに合わせて最適な VM サイズを選択できます。
+
+各 HBv3 VM サイズの仮想 NUMA マッピングは、基になる物理 NUMA トポロジにマップされます。 ハードウェア トポロジが誤って抽象化される可能性はありません。 
+
+各種の [HBV3 VM サイズ](../../hbv3-series.md)の正確なトポロジは、[lstopo](https://linux.die.net/man/1/lstopo) の出力を使用して次のように表示されます。
+```bash
+lstopo-no-graphics --no-io --no-legend --of txt
+```
+<br>
+<details>
+<summary>クリックして Standard_HB120rs_v3 の lstopo 出力を表示</summary>
+
+![HBv3-120 VM の lstopo 出力](./media/architecture/hbv3/hbv3-120-lstopo.png)
+</details>
+
+<details>
+<summary>クリックして Standard_HB120rs-96_v3 の lstopo 出力を表示</summary>
+
+![HBv3-96 VM の lstopo 出力](./media/architecture/hbv3/hbv3-96-lstopo.png)
+</details>
+
+<details>
+<summary>クリックして Standard_HB120rs-64_v3 の lstopo 出力を表示</summary>
+
+![HBv3-64 VM の lstopo 出力](./media/architecture/hbv3/hbv3-64-lstopo.png)
+</details>
+
+<details>
+<summary>クリックして Standard_HB120rs-32_v3 の lstopo 出力を表示</summary>
+
+![HBv3-32 VM の lstopo 出力](./media/architecture/hbv3/hbv3-32-lstopo.png)
+</details>
+
+<details>
+<summary>クリックして Standard_HB120rs-16_v3 の lstopo 出力を表示</summary>
+
+![HBv3-16 VM の lstopo 出力](./media/architecture/hbv3/hbv3-16-lstopo.png)
+</details>
 
 ## <a name="infiniband-networking"></a>InfiniBand ネットワーク
 HBv3 VM では Nvidia Mellanox HDR InfiniBand ネットワーク アダプター (ConnectX-6) も最大 200 Gb/秒で動作しています。NIC は SRIOV 経由で VM に渡されるため、ネットワーク トラフィックがハイパーバイザーをバイパスできます。 その結果、標準の Mellanox OFED ドライバーが、ベアメタル環境と同様に HBv3 VM にロードされます。

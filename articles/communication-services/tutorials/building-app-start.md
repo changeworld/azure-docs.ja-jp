@@ -8,20 +8,18 @@ ms.author: nmurav
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7cfc8fc24aea938b997fead4ca762ce7178e3386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a5a23d6a06c8cdff4deabac5251597b7ffe0c833
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728047"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>チュートリアル:Azure Communication Services 用の Web アプリを準備する (Node.js)
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
-
 Azure Communication Services を使用すると、自分のアプリケーションにリアルタイム コミュニケーションを追加することができます。 このチュートリアルでは、Azure Communication Services をサポートする Web アプリケーションの設定方法について説明します。 リアルタイム コミュニケーションの実装を始めたいと考えている新規開発者向けの入門チュートリアルとなっています。
 
-このチュートリアルの最後には、Azure Communication Services クライアント ライブラリを使用して構成された基本的な Web アプリケーションが完成します。 そのアプリケーションを足掛かりとして、自分のリアルタイム コミュニケーション ソリューションを構築することができます。
+このチュートリアルの最後には、Azure Communication Services の SDK を使用して構成された基本的な Web アプリケーションが完成します。 そのアプリケーションを足掛かりとして、自分のリアルタイム コミュニケーション ソリューションを構築することができます。
 
 お気軽に [Azure Communication Services の GitHub](https://github.com/Azure/communication) ページにアクセスしてフィードバックをお寄せください。
 
@@ -37,7 +35,7 @@ Azure Communication Services を使用すると、自分のアプリケーショ
 - アクティブなサブスクリプションが含まれる Azure アカウント。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。 無料アカウントでは 200 ドル分の Azure クレジットが提供され、さまざまな組み合わせのサービスをお試しいただけます。
 - [Visual Studio Code](https://code.visualstudio.com/)。ローカル開発環境でコードを編集する際に使用します。
 - [webpack](https://webpack.js.org/)。コードをバンドルしてローカルでホストする際に使用します。
-- [Node.js](https://nodejs.org/en/)。Azure Communication Services クライアント ライブラリや webpack などの依存関係をインストールして管理する際に使用します。
+- [Node.js](https://nodejs.org/en/)。Azure Communication Services の SDK や webpack などの依存関係をインストールして管理する際に使用します。
 - [nvm および npm](/windows/nodejs/setup-on-windows): バージョン コントロールの運用に使用します。
 - Visual Studio Code 用の [Azure Storage 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)。 アプリケーションを Azure Storage に発行する際に、この拡張機能が必要となります。 [詳細については、Azure Storage での静的 Web サイトのホスティングに関する記事を参照してください](../../storage/blobs/storage-blob-static-website.md)。
 - [Azure App Service 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 この拡張機能を使用すると、Web サイトをデプロイすることに加え、フル マネージドの CI/CD (継続的インテグレーションと継続的デリバリー) を構成することもできます。
@@ -293,7 +291,7 @@ npm run build:dev
 
 ## <a name="add-the-azure-communication-services-packages"></a>Azure Communication Services パッケージを追加する
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services Calling SDK をインストールします。
 
 ```Console
 npm install @azure/communication-common --save

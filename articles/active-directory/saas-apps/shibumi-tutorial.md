@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Shibumi の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Shibumi の統合 | Microsoft Docs'
 description: Azure Active Directory と Shibumi の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 5f25980a6dbe1087754b48d14b22f207b9573264
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92518400"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>チュートリアル:Azure Active Directory と Shibumi の統合
+# <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>チュートリアル: Azure Active Directory と Shibumi の統合
 
 このチュートリアルでは、Shibumi と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Shibumi と Azure AD の統合には、次の利点があります。
@@ -41,9 +41,9 @@ Shibumi と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Shibumi では、 **SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
+* Shibumi では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
 
-* Shibumi では、 **Just-In-Time** ユーザー プロビジョニングがサポートされています
+* Shibumi では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
 
 ## <a name="adding-shibumi-from-the-gallery"></a>ギャラリーからの Shibumi の追加
 
@@ -63,13 +63,13 @@ Azure AD への Shibumi の統合を構成するには、マネージド SaaS �
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Shibumi** 」と入力し、結果ウィンドウで **[Shibumi]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Shibumi**」と入力し、結果ウィンドウで **[Shibumi]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Shibumi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Shibumi で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Shibumi で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Shibumi 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Shibumi で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -87,7 +87,7 @@ Shibumi で Azure AD のシングル サインオンを構成してテストす�
 
 Shibumi で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Shibumi** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Shibumi** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -150,7 +150,7 @@ Shibumi で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -162,7 +162,7 @@ Shibumi で Azure AD シングル サインオンを構成するには、次の�
 
 このセクションでは、Britta Simon に Shibumi へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Shibumi]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Shibumi]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

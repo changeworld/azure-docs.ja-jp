@@ -6,12 +6,12 @@ author: hazhzeng
 ms.author: hazeng
 ms.date: 3/22/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 26f9040016f9eae7e82a85c589d673c90e542f47
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f47451809a2fa2b7d22805e6415056f19c4c1d88
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060314"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258811"
 ---
 # <a name="profile-python-apps-memory-usage-in-azure-functions"></a>Azure Functions で Python アプリのメモリ使用量をプロファイルする
 
@@ -50,7 +50,7 @@ Python 関数アプリの開発を開始する前に、次の要件を満たし�
 3. Apply the following decorator above any functions that need memory profiling. This does not work directly on the trigger entrypoint `main()` method. You need to create subfunctions and decorate them. Also, due to a memory-profiler known issue, when applying to an async coroutine, the coroutine return value will always be None.
 
     ```python
-    @memory_profiler.profile(stream=memory_logger)
+    @memory_profiler.profile(stream=profiler_logstream)
 
 4. Test the memory profiler on your local machine by using azure Functions Core Tools command `func host start`. This should generate a memory usage report with file name, line of code, memory usage, memory increment, and the line content in it.
 

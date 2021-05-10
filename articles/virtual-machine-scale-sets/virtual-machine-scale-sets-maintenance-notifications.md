@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: maintenance-control
 ms.date: 11/12/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 3b07e3e6aed599e82a21a5fc25345e78fb245992
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mimckitt
+ms.openlocfilehash: ec8d211bd25eb04f9e000af950cea9a28a0d1874
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933425"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762841"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -143,7 +143,7 @@ Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -Pe
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>CLI を使用してメンテナンスの状態を確認する
 
-計画メンテナンスの情報は、[az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances) を使用して確認できます。
+計画メンテナンスの情報は、[az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) を使用して確認できます。
  
 メンテナンス情報は、計画済みのメンテナンスがある場合にのみ返されます。 VM インスタンスに影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドはメンテナンス情報を返しません。 
 

@@ -9,12 +9,12 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: b43502e771415c0ca62d821c697516fae16e35ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 733f4602e43511924783f6bc8cb1bad29edb5ea0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934531"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762913"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
 
@@ -141,7 +141,7 @@ New-AzVmssConfig `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-次の例では、 *[az vmss create](/cli/azure/vmss#az-vmss-create)* を使用して新しいスケール セットを作成するときに、自動修復ポリシーを有効にします。 まず、リソース グループを作成してから、自動修復ポリシーの猶予期間を 30 分に設定した新しいスケール セットを作成します。
+次の例では、 *[az vmss create](/cli/azure/vmss#az_vmss_create)* を使用して新しいスケール セットを作成するときに、自動修復ポリシーを有効にします。 まず、リソース グループを作成してから、自動修復ポリシーの猶予期間を 30 分に設定した新しいスケール セットを作成します。
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -209,7 +209,7 @@ Update-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-*[az vmss update](/cli/azure/vmss#az-vmss-update)* を使用して、既存のスケール セットの自動インスタンス修復ポリシーを更新する例を次に示します。
+*[az vmss update](/cli/azure/vmss#az_vmss_update)* を使用して、既存のスケール セットの自動インスタンス修復ポリシーを更新する例を次に示します。
 
 ```azurecli-interactive
 az vmss update \  
@@ -259,7 +259,7 @@ GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provider
 
 ### <a name="azure-cli"></a>Azure CLI 
 
-[get-instance-view](/cli/azure/vmss#az-vmss-get-instance-view) コマンドレットを使用して、自動インスタンス修復の *serviceState* を表示します。 
+[get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view) コマンドレットを使用して、自動インスタンス修復の *serviceState* を表示します。 
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -267,7 +267,7 @@ az vmss get-instance-view \
     --resource-group MyResourceGroup
 ```
 
-[set-orchestration-service-state](/cli/azure/vmss#az-vmss-set-orchestration-service-state) コマンドレットを使用して、自動インスタンス修復の *serviceState* を更新します。 スケール セットが自動修復機能にオプトインされたら、このコマンドレットを使用して、スケール セットの自動修復を中断または再開できます。 
+[set-orchestration-service-state](/cli/azure/vmss#az_vmss_set_orchestration_service_state) コマンドレットを使用して、自動インスタンス修復の *serviceState* を更新します。 スケール セットが自動修復機能にオプトインされたら、このコマンドレットを使用して、スケール セットの自動修復を中断または再開できます。 
 
 ```azurecli-interactive
 az vmss set-orchestration-service-state \

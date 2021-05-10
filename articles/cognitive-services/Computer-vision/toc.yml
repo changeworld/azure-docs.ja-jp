@@ -3,11 +3,11 @@
 - name: 概要
   expanded: true
   items:
-    - name: Computer Vision の概要
+    - name: Computer Vision とは
       href: overview.md
     - name: 言語のサポート
       href: language-support.md
-    - name: 料金と制限
+    - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: 新着情報
       href: whats-new.md
@@ -48,14 +48,12 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
     - name: リファレンス
       items:
-        - name: OCR REST API v3.2 プレビュー
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - name: OCR REST API v3.2
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005'
         - name: OCR REST API v3.1
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
         - name: OCR REST API v2.1
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: OCR REST API v1.0
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
         - name: .NET
           href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
@@ -75,7 +73,7 @@
     - name: 画像分析の概要
       href: overview-image-analysis.md
     - name: 画像分析のクイックスタート
-      href: quickstarts-sdk/client-library.md
+      href: quickstarts-sdk/image-analysis-client-library.md
     - name: サンプル
       items:
         - name: 画像処理アプリの探索
@@ -120,14 +118,12 @@
           href: Tutorials/storage-lab-tutorial.md
     - name: リファレンス
       items:
-        - name: 画像分析 REST API v3.2 プレビュー
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b'
+        - name: 画像分析 REST API v3.2
+          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b'
         - name: 画像分析 REST API v3.1
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005'
         - name: 画像分析 REST API v2.1
           href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
-        - name: 画像分析 REST API v1.0
-          href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
         - name: .NET
           href: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
         - name: Node.js
@@ -146,8 +142,6 @@
   items:
     - name: 空間分析の概要
       href: intro-to-spatial-analysis-public-preview.md
-    - name: ホスト マシンの設定とコンテナーの実行
-      href: spatial-analysis-container.md
     - name: AI の責任ある使用
       items:
         - name: 透明性に関するメモ
@@ -170,6 +164,8 @@
       items:
         - name: 空間分析コンテナーを使用する
           items:
+            - name: ホスト マシンの設定とコンテナーの実行
+              href: spatial-analysis-container.md
             - name: 操作を構成する
               href: spatial-analysis-operations.md
             - name: 人数カウント Web アプリをデプロイする
@@ -184,21 +180,23 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: 攻略ガイド
   items:
-    - name: 仮想ネットワークの構成方法
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
-    - name: AAD 認証の構成方法
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: カスタマー マネージド キーの使用方法
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+        - name: Azure AD 認証を使用する
+          href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
 - name: リソース
   items:
-    - name: リージョンのサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Learn モジュール
-      href: /learn/paths/explore-computer-vision-microsoft-azure/
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn モジュール
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

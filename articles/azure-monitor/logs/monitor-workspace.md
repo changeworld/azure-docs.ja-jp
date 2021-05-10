@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 9eda0acc15badfe7bb2e754d887786aa990d6e24
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f1a23170d84e39e5d531ae4e3a64b59d29bd677
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034967"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538846"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースの正常性を監視する
 Azure Monitor で Log Analytics ワークスペースのパフォーマンスと可用性を維持するには、発生する問題を事前に検出できるようにする必要があります。 この記事では、[Operation](/azure/azure-monitor/reference/tables/operation) テーブル内のデータを使用して、Log Analytics ワークスペースの正常性を監視する方法について説明します。 このテーブルはすべての Log Analytics ワークスペースに含まれているもので、その中にはお使いのワークスペースで発生したエラーと警告が入っています。 このデータを定期的に確認し、ワークスペース内に重要なインシデントがあるときは、アラートを作成して事前に通知する必要があります。
@@ -110,7 +110,7 @@ Azure Monitor で[ログ クエリ アラート](../alerts/alerts-log-query.md)�
 - ターゲット:Log Analytics ワークスペースを選択する
 - 条件:
   - シグナル名: カスタム ログ検索
-  - 検索クエリ: `_LogOperation | where Category == "Ingestion" | where Operation == "Data Collection" | where Level == "Warning"`
+  - 検索クエリ: `_LogOperation | where Category == "Ingestion" | where Operation == "Data collection Status" | where Level == "Warning"`
   - ベース: 結果の数
   - 条件: より大きい
   - しきい値: 0

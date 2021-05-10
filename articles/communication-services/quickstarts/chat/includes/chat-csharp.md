@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4c8bd66dde54ff90ea2191fba58f10c87c45cf68
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495439"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105958235"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -43,15 +43,15 @@ dotnet build
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-.NET 用 Azure Communication チャット クライアント ライブラリをインストールする
+.NET 用 Azure Communication Chat SDK をインストールします
 
 ```PowerShell
-dotnet add package Azure.Communication.Chat --version 1.0.0-beta.5
+dotnet add package Azure.Communication.Chat --version 1.0.0
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-C# 用 Azure Communication Services チャット クライアント ライブラリが備える主な機能のいくつかは、以下のクラスにより処理されます。
+C# 用 Azure Communication Services Chat SDK が備える主な機能のいくつかは、以下のクラスにより処理されます。
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -60,7 +60,7 @@ C# 用 Azure Communication Services チャット クライアント ライブラ
 
 ## <a name="create-a-chat-client"></a>チャット クライアントを作成する
 
-チャット クライアントを作成するには、Communication Services エンドポイントと、前提条件の手順で生成されたアクセス トークンを使用します。 ユーザーを作成し、トークンを発行して自分のチャット クライアントに渡すには、ID クライアント ライブラリの `CommunicationIdentityClient` クラスを使用する必要があります。
+チャット クライアントを作成するには、Communication Services エンドポイントと、前提条件の手順で生成されたアクセス トークンを使用します。 ユーザーを作成し、トークンを発行して自分のチャット クライアントに渡すには、Identity SDK の `CommunicationIdentityClient` クラスを使用する必要があります。
 
 詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照してください。
 
@@ -115,6 +115,17 @@ string threadId = "<THREAD_ID>";
 ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: threadId);
 ```
 
+## <a name="list-all-chat-threads"></a>すべてのチャット スレッドを一覧表示する
+ユーザーが属しているすべてのチャット スレッドを取得するには、`GetChatThreads` を使用します。
+
+```csharp
+AsyncPageable<ChatThreadItem> chatThreadItems = chatClient.GetChatThreadsAsync();
+await foreach (ChatThreadItem chatThreadItem in chatThreadItems)
+{
+    Console.WriteLine($"{ chatThreadItem.Id}");
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>チャット スレッドにメッセージを送信する
 
 スレッドにメッセージを送信するには、`SendMessage` を使用します。
@@ -124,17 +135,8 @@ ChatThreadClient chatThreadClient = chatClient.GetChatThreadClient(threadId: thr
 - 送信者の表示名を指定するには、`senderDisplayName` を使用します。 指定しない場合は、空の文字列が設定されます。
 
 ```csharp
-var messageId = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
-```
-## <a name="get-a-message"></a>メッセージを取得する
-
-サービスからメッセージを取得するには、`GetMessage` を使用します。
-`messageId` は、メッセージの一意の ID です。
-
-`ChatMessage` は、メッセージの取得から返された応答です。ここには特に ID (メッセージの一意の ID) が含まれています。 Azure.Communication.Chat.ChatMessage を参照してください
-
-```csharp
-ChatMessage chatMessage = await chatThreadClient.GetMessageAsync(messageId: messageId);
+SendChatMessageResult sendChatMessageResult = await chatThreadClient.SendMessageAsync(content:"hello world", type: ChatMessageType.Text);
+string messageId = sendChatMessageResult.Id;
 ```
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>チャット スレッドからチャット メッセージを受信する
@@ -167,25 +169,6 @@ await foreach (ChatMessage message in allMessages)
 
 詳細については、「[メッセージの種類](../../../concepts/chat/concepts.md#message-types)」を参照してください。
 
-## <a name="update-a-message"></a>メッセージを更新する
-
-既に送信されたメッセージは、`ChatThreadClient` の `UpdateMessage` を呼び出すことで更新できます。
-
-```csharp
-string id = "id-of-message-to-edit";
-string content = "updated content";
-await chatThreadClient.UpdateMessageAsync(messageId: id, content: content);
-```
-
-## <a name="deleting-a-message"></a>メッセージを削除する
-
-メッセージは、`ChatThreadClient` の `DeleteMessage` を呼び出すことで削除できます。
-
-```csharp
-string id = "id-of-message-to-delete";
-await chatThreadClient.DeleteMessageAsync(messageId: id);
-```
-
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>チャット スレッドに参加者としてユーザーを追加する
 
 スレッドの作成後、ユーザーを追加したり削除したりすることができます。 追加したユーザーには、スレッドにメッセージを送信したり、他の参加者を追加または削除したりできるアクセス権が与えられます。 `AddParticipants` を呼び出す前に必ず、そのユーザーの新しいアクセス トークンと ID を取得してください。 チャット クライアントを初期化するためには、ユーザーにアクセス トークンが必要となります。
@@ -209,14 +192,6 @@ var participants = new[]
 
 await chatThreadClient.AddParticipantsAsync(participants: participants);
 ```
-## <a name="remove-user-from-a-chat-thread"></a>チャット スレッドからユーザーを削除する
-
-スレッドへのユーザーの追加と同様、チャット スレッドからユーザーを削除することもできます。 そのためには、追加した参加者の ID `CommunicationUser` を追跡する必要があります。
-
-```csharp
-var gloria = new CommunicationUserIdentifier(id: "<Access_ID_For_Gloria>");
-await chatThreadClient.RemoveParticipantAsync(identifier: gloria);
-```
 
 ## <a name="get-thread-participants"></a>スレッド参加者を取得する
 
@@ -230,14 +205,6 @@ await foreach (ChatParticipant participant in allParticipants)
 }
 ```
 
-## <a name="send-typing-notification"></a>入力通知を送信する
-
-ユーザーがスレッドに応答を入力していることを示すには、`SendTypingNotification` を使用します。
-
-```csharp
-await chatThreadClient.SendTypingNotificationAsync();
-```
-
 ## <a name="send-read-receipt"></a>開封確認メッセージを送信する
 
 メッセージがユーザーに読まれたことを他の参加者に通知するには、`SendReadReceipt` を使用します。
@@ -246,17 +213,6 @@ await chatThreadClient.SendTypingNotificationAsync();
 await chatThreadClient.SendReadReceiptAsync(messageId: messageId);
 ```
 
-## <a name="get-read-receipts"></a>開封確認メッセージを取得する
-
-メッセージの状態をチェックして、チャット スレッドの他の参加者に読まれたメッセージを確認するには、`GetReadReceipts` を使用します。
-
-```csharp
-AsyncPageable<ChatMessageReadReceipt> allReadReceipts = chatThreadClient.GetReadReceiptsAsync();
-await foreach (ChatMessageReadReceipt readReceipt in allReadReceipts)
-{
-    Console.WriteLine($"{readReceipt.ChatMessageId}:{((CommunicationUserIdentifier)readReceipt.Sender).Id}:{readReceipt.ReadOn}");
-}
-```
 ## <a name="run-the-code"></a>コードの実行
 
 アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。

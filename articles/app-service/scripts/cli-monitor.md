@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 9881a5f37c32849fc4f10acda8346510977e6b7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d8442179ecec72d47e770d823bbfd5795f5c4dc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97005787"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787686"
 ---
 # <a name="monitor-an-app-service-app-with-web-server-logs-using-azure-cli"></a>Azure CLI を使用した Web サーバー ログによる App Service アプリの監視
 
@@ -38,11 +38,11 @@ ms.locfileid: "97005787"
 
 | コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service アプリを作成します。 |
-| [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) | App Service アプリについて保存するログを構成します。 |
-| [`az webapp log download`](/cli/azure/webapp/log#az-webapp-log-download) | App Service アプリのログをローカル コンピューターにダウンロードします。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service アプリを作成します。 |
+| [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) | App Service アプリについて保存するログを構成します。 |
+| [`az webapp log download`](/cli/azure/webapp/log#az_webapp_log_download) | App Service アプリのログをローカル コンピューターにダウンロードします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

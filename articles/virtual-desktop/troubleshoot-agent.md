@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b47a205cac1717dfc66594f856fd9370a01a9ae3
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 2f321413a275676d0abb1a075ba958885ffcd821
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168214"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505027"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -216,7 +216,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 
 ## <a name="error-heartbeat-issue-where-users-keep-getting-disconnected-from-session-hosts"></a>エラー: ユーザーがセッション ホストから切断されたままになるハートビートの問題
 
-サーバーで Windows Virtual Desktop サービスからのハートビートが収集されていない場合は、ハートビートのしきい値を変更する必要があります。 次のシナリオが 1 つ以上当てはまる場合は、このセクションの手順に従ってください。
+サーバーで Windows Virtual Desktop サービスからのハートビートが収集されていない場合は、ハートビートのしきい値を変更する必要があります。 これにより、問題の症状が一時的に緩和されますが、根本的なネットワークの問題は解決されません。 次のシナリオが 1 つ以上当てはまる場合は、このセクションの手順に従ってください。
 
 - **CheckSessionHostDomainIsReachableAsync** エラーを受け取っている
 - **ConnectionBrokenMissedHeartbeatThresholdExceeded** エラーを受け取っている
@@ -316,7 +316,7 @@ VM の名前が既に登録されており、重複している可能性があ�
 
 問題がこの記事に見つからないか、またはその手順が役に立たなかった場合は、Windows Virtual Desktop エージェントをアンインストールし、再インストールして、再登録することをお勧めします。 このセクションの手順では、すべてのエージェント、ブート ローダー、スタック コンポーネントをアンインストールし、ホスト プールからセッション ホストを削除し、VM の新しい登録キーを生成し、エージェントとブート ローダーを再インストールすることによって VM を Windows Virtual Desktop サービスに再登録する方法を示します。 次のシナリオの 1 つまたは複数に当てはまる場合は、これらの手順に従ってください。
 - VM が **[アップグレード中]** または **[使用不可]** でスタックしている
-- スタック リスナーが動作しておらず、Windows 10 1809、1903、または 1904 上で実行している
+- スタック リスナーが動作しておらず、Windows 10 1809、1903、または 1909 上で実行している
 - **EXPIRED_REGISTRATION_TOKEN** エラーが表示されている
 - VM がセッション ホストの一覧に表示されていない
 - [サービス] ウィンドウに **[リモート デスクトップ エージェント ローダー]** が表示されない

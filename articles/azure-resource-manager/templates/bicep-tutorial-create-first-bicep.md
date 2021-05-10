@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルを作成してデプロイする
 description: Azure リソースをデプロイするための最初の Bicep ファイルを作成します。 このチュートリアルでは、Bicep ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 03/17/2021
+ms.date: 04/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ffd8a97d797144d458e7ec5836042cc6d8d8193
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594276"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306682"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>チュートリアル: 最初の Azure Resource Manager Bicep ファイルを作成およびデプロイする
 
@@ -57,7 +57,7 @@ Bicep について学習を始める準備が整いました。
 
     ```bicep
     resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-      name: '{provide-unique-name}'
+      name: '{provide-unique-name}'  // must be globally unique
       location: 'eastus'
       sku: {
         name: 'Standard_LRS'
@@ -85,6 +85,10 @@ Bicep について学習を始める準備が整いました。
         以前の API バージョン ([storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts) など) を表示した場合、用意されているプロパティが少ないことがわかります。
 
         リソースの API バージョンを変更することにした場合は、そのバージョンのプロパティを評価したうえで、適宜 Bicep ファイルを調整してください。
+
+    詳細については、「[Bicep の構造](./bicep-file.md)」を参照してください。
+
+    name プロパティにはコメントがあります。  単一行のコメントには `//` を、複数行のコメントには `/* ... */` を使用します
 
 1. `{provide-unique-name}` (中かっこ `{}` を含む) を一意のストレージ アカウント名に置き換えます。
 

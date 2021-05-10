@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: dadca1fadef9d2967f20cae13e40d01de73d39e4
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778340"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075697"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -500,16 +500,15 @@ NIC ごとに送信したデータ | BWin32_PerfFormattedData_Tcpip_NetworkInter
 
 アプライアンスが収集して Azure に送信する Linux サーバーのパフォーマンス データを次に示します。
 
-**データ** | **コマンド**
---- | ---
-CPU 使用率 | cat /proc/stat/| grep 'cpu' /proc/stat
-メモリ使用量 | free \| grep Mem \| awk '{print $3/$2 * 100.0}'
-NIC 数 | lshw -class network \| grep eth[0-60] \| wc -l
-NIC ごとに受信したデータ | cat /sys/class/net/eth$nic/statistics/rx_bytes
-NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_bytes
-ディスク数 | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
-ディスクの詳細 | cat /proc/diskstats
-
+| **データ** | **コマンド** |
+| --- | --- |
+| CPU 使用率 | cat /proc/stat/ \| grep 'cpu' /proc/stat |
+| メモリ使用量 | free \| grep Mem \| awk '{print $3/$2 * 100.0}' |
+| NIC 数 | lshw -class network \| grep eth[0-60] \| wc -l |
+| NIC ごとに受信したデータ | cat /sys/class/net/eth$nic/statistics/rx_bytes |
+| NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_bytes |
+| ディスク数 | fdisk -l \| egrep 'Disk.\*bytes' \| awk '{print $2}' \| cut -f1 -d ':' |
+| ディスクの詳細 | cat /proc/diskstats |
 
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
 

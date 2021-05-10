@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955234"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552106"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
+
+## <a name="april-2021"></a>2021 年 4 月
+
+* [NFS 拡張グループを使用した Active Directory Domain Services (ADDS) LDAP のユーザーマッピング](configure-ldap-extended-groups.md) (プレビュー)   
+
+    既定では、Azure NetApp Files は、[RFC 5531](https://tools.ietf.org/html/rfc5531) で定義されているように、NFS ユーザー資格情報を処理するときに最大 16 個のグループ ID をサポートします。 この新機能を使用すると、ユーザーの数が既定のグループ数のメンバーよりも多い場合に、グループ数を最大 1,024 まで増やすことができるようになりました。 また、この機能をサポートするために、NFS ボリュームを ADDS LDAP に追加できるようになりました。これにより、拡張グループ エントリ (最大 1,024 グループ) を含む Active Directory LDAP ユーザーがボリュームにアクセスできます。 
 
 ## <a name="march-2021"></a>2021 年 3 月
 

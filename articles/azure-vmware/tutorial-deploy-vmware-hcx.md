@@ -3,12 +3,12 @@ title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869091"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011002"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
@@ -20,7 +20,7 @@ VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめ�
 >VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、ライセンスにより、HCX Advanced Edition では 3 に、HCX Enterprise Edition では 10 に制限されます。
 
 >[!NOTE]
->VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 VMware HCX Enterprise から VMware HCX Advanced への単純なダウングレード パスはありません。 ダウングレードする場合は、再デプロイする必要があり、ダウンタイムが発生します。
+>VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 再デプロイなしでの HCx Enterprise から HCX Advanced へのダウングレードは可能ですが、そのアクションを実行するためにはサポート チケットを記録する必要があります。 ダウングレードを計画する場合は、移行がスケジュールされていないこと、また、RAV、MON などの機能が使用されていないことを確認してください。
 
 まず、「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)」、および「[前提条件](#prerequisites)」を確認してください。 
 

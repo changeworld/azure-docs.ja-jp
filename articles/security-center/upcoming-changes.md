@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/06/2021
+ms.date: 04/08/2021
 ms.author: memildin
-ms.openlocfilehash: 6204be2ff52b8aac89b93ac09337b1560255e11d
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491884"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103761"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -29,8 +29,8 @@ ms.locfileid: "106491884"
 | 計画されている変更                                                                                                                                                        | 変更予定日 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | [21 個の推奨事項をセキュリティ コントロール間で移動](#21-recommendations-moving-between-security-controls)                                                           | 2021 年 4 月                |
-| ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)                                                                                         | 2021 年 4 月                |
-| [AWS からの推奨事項を一般提供 (GA) 用にリリース](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 年 4 月                |
+| ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 年 4 月                |
+| [AWS からの推奨事項を一般提供 (GA) 用にリリース](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **2021 年 8 月**             |
 | [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 2 四半期                   |
 |                                                                                                                                                                       |                           |
 
@@ -62,7 +62,7 @@ ms.locfileid: "106491884"
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS からの推奨事項を一般提供 (GA) 用にリリース
 
-**変更予定日:** 2021 年 4 月
+**変更予定日:** 2021 年 8 月
 
 Azure Security Center は、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードを保護します。
 
@@ -73,7 +73,7 @@ Azure Security Center は、Azure、アマゾン ウェブ サービス (AWS)、
 - [Security Hub の PCI DSS コントロール](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
 - [Security Hub の CIS AWS Foundations Benchmark コントロール](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
 
-これらが一般提供され、AWS リソースで評価が実行されると、結果はすべてのマルチおよびハイブリッド クラウド リソースの統合されたセキュリティ スコアに影響します。 
+これらが一般提供され、AWS リソースで評価が実行されると、結果はすべてのマルチおよびハイブリッド クラウド リソースの統合されたセキュリティ スコアに影響します。
 
 
 

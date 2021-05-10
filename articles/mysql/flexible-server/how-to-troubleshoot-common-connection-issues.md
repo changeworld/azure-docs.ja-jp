@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6fc8e08757ee067e0616cc701a3037a9dbf4c6fd
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109986"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491748"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL への接続の問題のトラブルシューティング - フレキシブル サーバー
 
@@ -32,7 +32,7 @@ ms.locfileid: "105109986"
 
 アプリケーションが Azure Database for MySQL フレキシブル サーバーへの接続に引き続き失敗する場合は、一般的に、次のいずれかの問題が考えられます。
 
-* TLS/SSL を使用した暗号化された接続:フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続のみがサポートされ、**TLS 1.0 と TLS 1.1 を使用した受信接続はすべて拒否されます**。 TLS を無効にしたり、バージョンを変更したりすることはできません。 詳しくは、「[Azure Database for MySQL - フレキシブル サーバーでのトランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続](./how-to-connect-tls-ssl.md)」を参照してください。
+* TLS または SSL を使用した暗号化された接続: フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続がサポートされ、**TLS 1.0 と TLS 1.1 を使用した受信接続は、既定ではすべて拒否されます**。 暗号化された接続の適用を無効にしたり、TLS のバージョンを変更したりできます。 詳しくは、「[Azure Database for MySQL - フレキシブル サーバーでのトランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続](./how-to-connect-tls-ssl.md)」を参照してください。
 - *プライベート アクセス (VNet 統合)* でのフレキシブル サーバー:フレキシブル サーバーと同じ仮想ネットワーク内から接続していることを確認します。 [Azure Database for MySQL フレキシブル サーバーの仮想ネットワーク] を参照してください<!--(./concepts-networking-virtual-network.md)-->
 - *パブリック アクセス (許可された IP アドレス)* を使用したフレキシブル サーバーでは、クライアントからの接続を許可するようにファイアウォールが構成されていることを確認します。 「[Azure portal を使用してフレキシブル サーバーのファイアウォール規則を作成および管理する](./how-to-manage-firewall-portal.md)」を参照してください。
 * クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 一部のファイアウォールでは、MySQL などのアプリケーション名だけでなく、自分に権限のないサーバーの IP アドレスとポートも許可されている必要があります。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 57862a450d313f5d8850b14047ecc3d25d6ba5c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 33417a9bda9ad4ce36dd6e14f74a53911f3c3473
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563686"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587155"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs 用の Azure セキュリティ ベースライン
 
@@ -743,7 +743,7 @@ Event Hubs データのキャプチャに使用される Azure ストレージ �
 
 - [キーを使用したキー コンテナーの設定](configure-customer-managed-key.md)
 
-- [Azure Storage Blob の論理的な削除](//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Storage Blob の論理的な削除](/azure/storage/blobs/soft-delete-blob-overview)
 
 **責任**: Customer
 

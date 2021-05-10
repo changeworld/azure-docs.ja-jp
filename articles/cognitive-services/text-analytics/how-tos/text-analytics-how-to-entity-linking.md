@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 0876dd00933203c943417d87978567cf555a3e4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 903147b6c9f102b83f65d67cf41d4df0c62c7b54
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599002"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280566"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -206,7 +206,7 @@ API は、指定されたドキュメントの言語につい て、[一覧表�
 
 ## <a name="post-the-request"></a>要求を投稿する
 
-要求が受信されると分析が実行されます。 分単位および秒単位で送信できる要求のサイズと数については、概要の「[データ制限](../overview.md#data-limits)」セクションを参照してください。
+要求が受信されると分析が実行されます。 分単位および秒単位で送信できる要求のサイズと数については、「[データ制限](../overview.md#data-limits)」の記事を参照してください。
 
 Text Analytics API はステートレスです。 データはアカウントに保存されず、結果がすぐに応答で返されます。
 

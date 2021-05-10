@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69e216c8893f9361a18354e5d165ecc0499601aa
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588751"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387923"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Azure portal を使用して Azure Front Door Standard/Premium SKU (プレビュー) にカスタム ドメインを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "104588751"
 
 アプリケーションの配信に Azure Front Door Standard/Premium を使用している場合、独自のドメイン名がエンド ユーザーの要求で示されるようにしたいときは、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。
 
-Azure Front Door Standard/Premium プロファイルを作成すると、既定のフロントエンド ホストにサブドメイン azurefd.net が含まれるようになります。 このサブドメインは、Azure Front Door Standard/Premium がバックエンドからコンテンツを配信するときに URL に既定で含まれます。 たとえば、「 `https://contoso-frontend.azurefd.net/activeusers.htm` 」のように入力します。 便宜を図るため、Azure Front Door には、カスタム ドメインを既定のホストと関連付けるオプションが用意されています。 このオプションを使用する場合、URL の中で Azure Front Door Standard/Premium 所有のドメイン名の代わりにカスタム ドメインを使用してコンテンツを配信します。 たとえば、「 https://www.contoso.com/photo.png 」のように入力します。
+Azure Front Door Standard/Premium プロファイルを作成すると、既定のフロントエンド ホストにサブドメイン azurefd.net が含まれるようになります。 このサブドメインは、Azure Front Door Standard/Premium がバックエンドからコンテンツを配信するときに URL に既定で含まれます。 たとえば、「 `https://contoso-frontend.azurefd.net/activeusers.htm` 」のように入力します。 便宜を図るため、Azure Front Door には、カスタム ドメインを既定のホストと関連付けるオプションが用意されています。 このオプションを使用する場合、URL の中で Azure Front Door Standard/Premium 所有のドメイン名の代わりにカスタム ドメインを使用してコンテンツを配信します。 たとえば、「https://www.contoso.com/photo.png」のように入力します。
 
 > [!IMPORTANT]
 > Azure Front Door Standard/Premium (プレビュー) は現在、パブリック プレビュー段階です。

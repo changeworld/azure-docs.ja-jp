@@ -2,20 +2,19 @@
 title: Azure Key Vault の監視とアラート | Microsoft Docs
 description: キー コンテナーの正常性を監視しアラートを構成するためのダッシュボードを作成します。
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/06/2020
-ms.author: sudbalas
-ms.openlocfilehash: 684c2f3bc7a15d7652ef271fd01872dc2149827d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: f8f9dd6d51b974ebd31804daf0402ca5535ffc92
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059600"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751582"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 

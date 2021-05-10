@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 38ba5679731b5e52eb06751a625aea9df69c76ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 14d9c762702648d25efcbcc7ac85824659e20f05
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643209"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304071"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -355,7 +355,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
    Azure Resource Manager クライアント ID はハードコーディングされています。 ご利用の Azure Resource Manager テナント ID および Azure Resource Manager サブスクリプション ID はどちらも、以前に実行した `az login` コマンドの出力にあります。 Azure Resource Manager のクライアント シークレットは、自分が設定した Azure Resource Manager のパスワードです。
 
-   詳細については、[Azure Resource Manager のパスワード](/azure/azure-stack-edge-gpu-set-azure-resource-manager-password)に関するページを参照してください。
+   詳細については、[Azure Resource Manager のパスワード](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)に関するページを参照してください。
 
 5. プロファイルをバージョン 2019-03-01-hybrid に変更します。 プロファイルのバージョンを変更するには、次のコマンドを実行します。
 

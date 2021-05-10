@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 565e6fd5aae3068605b617deccb0d04785c1e248
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a94f3cc6b2387857d19c7b98fa0be64dd6646ec9
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057628"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713860"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -57,7 +57,7 @@ Protobuf では、データをシリアル化するためにコンパイル済�
 
 [リモート監視マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。 このリポジトリには、このガイドの手順に必要なストレージ アダプター マイクロ サービスが含まれています。
 
-[デバイス シミュレーション マイクロサービス](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。
+[デバイス シミュレーション マイクロサービス](https://github.com/Azure/azure-iot-pcs-device-simulation/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。
 
 ### <a name="run-the-storage-adapter-microservice"></a>ストレージ アダプター マイクロサービスを実行する
 
@@ -277,4 +277,4 @@ IoT Hub および Cosmos DB のインスタンスが必要でなくなった場�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法について学習しました。次の手順では、GitHub リポジトリにアクセスし、[デバイス シミュレーション](https://github.com/Azure/device-simulation-dotnet)の詳細について説明します。
+ここでは、Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法について学習しました。次の手順では、GitHub リポジトリにアクセスし、[デバイス シミュレーション](https://github.com/Azure/azure-iot-pcs-device-simulation)の詳細について説明します。

@@ -1,19 +1,19 @@
 ---
 title: Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 description: Azure Blob Storage のホット、クール、およびアーカイブ アクセス層について説明します。 階層制御がサポートされるストレージ アカウントを確認します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 957973cc4f53dba10ed9d635c8e3f69fd66ee33b
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104656840"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278424"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 
@@ -86,7 +86,7 @@ BLOB がアーカイブ ストレージ内にある間、BLOB データはオフ
 - 長期間格納しておく必要があり、ほとんどアクセスされることがない、コンプライアンスおよびアーカイブ データ
 
 > [!NOTE]
-> アーカイブ層は、ZRS、GZRS、RA-GZRS アカウントではサポートされていません。 ストレージ アカウントのアーカイブ ストレージ層に BLOB が含まれている場合、LRS から GRS への移行はサポートされません。
+> アーカイブ層は、ZRS、GZRS、RA-GZRS アカウントではサポートされていません。 LRS から GRS への移行は、アカウントが LRS に設定されている間に、アーカイブ層に移動された BLOB がない限りサポートされます。 アカウントが LRS になってから 30 日以内に更新が完了し、アカウントが LRS に設定されている間に、BLOB がアーカイブ層に移動されなかった場合は、アカウントを GRS に戻すことができます。
 
 ## <a name="account-level-tiering"></a>アカウント レベルの階層制御
 

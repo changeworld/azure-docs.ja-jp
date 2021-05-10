@@ -7,17 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 03/10/2021
-ms.openlocfilehash: ea647591194dfd6ba0bf818f4ce4d3a2005f0bc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 03/25/2021
+ms.openlocfilehash: aeab671c9283d64f9c1ca37cf184b80b1eca8f35
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630786"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045248"
 ---
 # <a name="how-to-test-and-publish-a-saas-offer-to-the-commercial-marketplace"></a>SaaS オファーをテストしてコマーシャル マーケットプレースに公開する方法
 
 この記事では、パートナー センターを使用して公開する SaaS オファーを送信し、オファーをプレビューしてテストしてから、コマーシャル マーケットプレースに公開する方法について説明します。 公開するプランを既に作成しておく必要があります。
+
+> [!NOTE]
+> 運用 (PROD) プランを公開する前に、テストのためのリスクの低い方法として、個別のテストおよび開発 (DEV) プランを作成することをお勧めします。 (PROD) プランを発行する前に、次の手順に従って DEV プランを作成してテストします。
 
 ## <a name="submit-your-offer-for-publishing"></a>公開するオファーを送信する
 
@@ -48,7 +51,7 @@ ms.locfileid: "102630786"
 
 1. **[オファーの概要]** ページで、 **[公開]** ボタンの下にあるプレビュー リンクを選択します。
 
-1. 購入と設定のフローを徹底的に検証するには、自分のオファーがプレビュー段階にある間にそれを購入してください。 まず、課金を処理しないよう、[サポート チケット](https://aka.ms/marketplacesupport)で Microsoft に通知します。
+1. 購入と設定のフローを徹底的に検証するため、プレビュー段階にある間にオファーのプランを購入してください。 まず、課金を処理しないよう、[サポート チケット](https://aka.ms/marketplacesupport)で Microsoft に通知します。
 
 1. SaaS オファーでコマーシャル マーケットプレースの測定サービスを使用した[従量制課金](./partner-center-portal/saas-metered-billing.md)がサポートされている場合は、「[マーケットプレースの従量制課金 API](./partner-center-portal/marketplace-metering-service-apis.md#development-and-testing-best-practices)」で詳しく説明されているテストのベスト プラクティスをレビューして、それに従ってください。
 
@@ -60,10 +63,10 @@ ms.locfileid: "102630786"
 
 ## <a name="publish-your-offer-live"></a>オファーを発行する
 
-プレビューですべてのテストが完了したら、 **[公開]** を選択して、オファーをコマーシャル マーケットプレースに公開します。
+プレビューですべてのテストが完了したら、 **[公開]** を選択して、オファーをコマーシャル マーケットプレースに公開します。 オファーが既にマーケットプレースで公開されている場合は、更新しても、 **[公開]** を選択するまで公開されません。
 
-   > [!TIP]
-   > オファーが既にマーケットプレースで公開されている場合は、更新しても、 **[公開]** を選択するまで公開されません。
+> [!IMPORTANT]
+> [開発とテストのプラン](create-saas-dev-test-offer.md)には、決して **[公開]** を選択しないでください。
 
 コマーシャル マーケットプレースでオファーを使用できるように選択したら、一連の最終的な検証チェックが行われ、そのライブのオファーの構成がプレビュー バージョンのオファーと同等に構成されていることが確認されます。 これらの検証チェックの詳細については、「[公開フェーズ](review-publish-offer.md#publish-phase)」を参照してください。
 

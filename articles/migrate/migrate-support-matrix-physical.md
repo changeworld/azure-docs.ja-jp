@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 09110bb15f853f20b0be9d8c4c6f5088e7a55d8b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869448"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382982"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>物理サーバーの検出および評価のサポート マトリックス 
 
@@ -39,6 +39,8 @@ ms.locfileid: "104869448"
 **アクセス許可:**
 
 - Windows サーバーの場合、ドメイン参加済みのサーバーにはドメイン アカウントを、ドメインに参加していないサーバーにはローカル アカウントを使用します。 次のグループにユーザー アカウントを追加する必要があります:リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー。
+    > [!Note]
+    > Windows Server 2008 および 2008 R2 の場合は、サーバーに WMF 3.0 がインストールされていることと、サーバーにアクセスするために使用されるドメインおよびローカル アカウントが、Performance Monitor Users、Performance Log Users、および WinRMRemoteWMIUsers グループに追加されていることを確認してください。
 - Linux サーバーの場合は、検出する Linux サーバーのルート アカウントが必要です。 または、次のコマンドを使用して、必要な機能を持つ非ルート アカウントを設定することもできます。
 
 **コマンド** | **目的**

@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2026b1721dbe05af1ecc52324d1dd0ebf2ec3d08
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.custom: devx-track-python
+ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802660"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792023"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault 証明書クライアント ライブラリ
 
@@ -183,7 +183,7 @@ certificate = poller.result()
 retrieved_certificate = client.get_certificate(certificateName)
  ```
 
-Azure CLI コマンド [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) を使用して、証明書が設定されていることを確認することもできます。
+Azure CLI コマンド [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show) を使用して、証明書が設定されていることを確認することもできます。
 
 ### <a name="delete-a-certificate"></a>証明書の削除
 
@@ -196,7 +196,7 @@ deleted_certificate = poller.result()
 
 `begin_delete_certificate` メソッドは非同期であり、ポーラー オブジェクトを返します。 ポーラーの `result` メソッドを呼び出して、その完了を待機します。
 
-Azure CLI コマンド [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) を使用して、証明書が削除されていることを確認できます。
+Azure CLI コマンド [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show) を使用して、証明書が削除されていることを確認できます。
 
 削除されると、証明書は削除されたが回復可能な状態がしばらく維持されます。 コードをもう一度実行する場合は、別の証明書名を使用します。
 
@@ -213,7 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault の概要](../general/overview.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
 - [Key Vault のセキュリティの概要](../general/security-overview.md)
 - [Key Vault を使用した認証](../general/authentication.md)

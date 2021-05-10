@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: a225989f0670e9b62b00a35bac719c9357c8a130
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: ccfda4975b6453ed67edc2640520bc0a76df5709
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96017051"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644879"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
@@ -42,23 +42,10 @@ ms.locfileid: "96017051"
 Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) にデータを受信するための前提条件
-[ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成できます。
 
 * Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。 
-* Data Share リソースのマネージド ID が Azure SQL Database または Azure Synapse Analytics にアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. Azure portal で、SQL サーバーに移動し、自分自身を **Azure Active Directory 管理者** に設定します。
-    1. [クエリ エディター](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
-    1. 次のスクリプトを実行し、Data Share のマネージド ID を "db_datareader、db_datawriter、db_ddladmin" として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
-
-        ```sql
-        create user "<share_acc_name>" from external provider; 
-        exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-        exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-        exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-        ```      
-        *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。         
-
+* SQL サーバーの **Azure Active Directory 管理者**
 * SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal の SQL サーバーで、 *[ファイアウォールと仮想ネットワーク]* に移動します。
     1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
@@ -92,7 +79,6 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
 * データ プロバイダーの Data Explorer クラスターと同じ Azure データ センター内の Azure Data Explorer クラスター: まだお持ちでない場合は、[Azure Data Explorer クラスター](/azure/data-explorer/create-cluster-database-portal)を作成できます。 データ プロバイダーのクラスターの Azure データ センターがわからない場合は、後でこの手順の中でクラスターを作成できます。
 * Azure Data Explorer クラスターに書き込む権限。これは、*Microsoft.Kusto/clusters/write* に含まれています。 この権限は、投稿者ロール内に存在します。 
-* Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 この権限は、所有者ロール内に存在します。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -175,13 +161,13 @@ az datashare consumer share-subscription create --resource-group share-rg \
 
    ![ターゲットへのマップ](./media/dataset-map-target.png "ターゲットへのマップ") 
 
-1. データを配置するターゲット データ ストアの種類を選択します。 パスと名前が同じターゲット データ ストア内のすべてのデータ ファイルまたはデータ テーブルが上書きされます。 
+1. データを配置するターゲット データ ストアの種類を選択します。 パスと名前が同じターゲット データ ストア内のすべてのデータ ファイルまたはデータ テーブルが上書きされます。 Azure SQL Database または Azure Synapse Analytics (以前の Azure SQL DW) にデータを受け取る場合は、 **[Allow Data Share to run the above 'create user' script on my behalf]\(Data Share が上記の "ユーザーの作成" スクリプトを実行することを許可する\)** チェック ボックスをオンにします。
 
    インプレース共有の場合は、指定された場所にあるデータ ストアを選択します。 この場所は、データ プロバイダーのソース データ ストアが配置されている Azure データ センターです。 データセットがマップされたら、ターゲット パスのリンクに従ってデータにアクセスできます。
 
    ![ターゲット ストレージ アカウント](./media/dataset-map-target-sql.png "ターゲット ストレージ") 
 
-1. スナップショットベースの共有の場合、データに定期的な更新を提供するためのスナップショット スケジュールがデータ プロバイダーによって作成されていれば、 **[スナップショット スケジュール]** タブを選択して、スナップショット スケジュールを有効にすることもできます。スナップショット スケジュールの横にあるチェック ボックスをオンにし、 **[+ Enable]\(+ 有効\)** を選択します。
+1. スナップショットベースの共有の場合、データに定期的な更新を提供するためのスナップショット スケジュールがデータ プロバイダーによって作成されていれば、 **[スナップショット スケジュール]** タブを選択して、スナップショット スケジュールを有効にすることもできます。スナップショット スケジュールの横にあるチェック ボックスをオンにし、 **[+ Enable]\(+ 有効\)** を選択します。 スケジュールされた最初のスナップショットが、スケジュールされた時刻から 1 分以内に開始され、以降のスナップショットがスケジュールされた時刻から数秒以内に開始されることに注意してください。
 
    ![スナップショット スケジュールを有効にする](./media/enable-snapshot-schedule.png "スナップショット スケジュールを有効にする")
 

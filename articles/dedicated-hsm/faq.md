@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 1f349931fb479be3b3ba936b3d0a665427357f29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8768acc8d4720a750c4c7f7e0f40340aeeff279d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97369040"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449054"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -32,11 +32,11 @@ Microsoft Azure 専用 HSM についてよく寄せられる質問への回答�
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>Q:Azure 専用 HSM オファリングとは何ですか。
 
-Azure 専用 HSMはクラウドベースのサービスであり、お客様の仮想ネットワークに直接接続された Azure データセンター内でホストされる HSM を提供します。 これらの HSM は専用ネットワーク アプライアンス (Thales Network Luna HSM 7) です。 お客様のプライベート IP アドレス空間に直接展開され、Microsoft には HSM の暗号化機能へのアクセス権はありません。 お客様のみが、これらのデバイスの完全な管理と暗号化の制御を行います。 お客様がデバイスの管理を担当して、ご自身のデバイスから直接、完全なアクティビティ ログを取得することが可能です。 専用 HSM は、お客様が FIPS 140-2 レベル 3、HIPAA、PCI-DSS、eIDAS、およびその他多くのコンプライアンスや規制要件を満たすのに役立ちます。
+Azure 専用 HSMはクラウドベースのサービスであり、お客様の仮想ネットワークに直接接続された Azure データセンター内でホストされる HSM を提供します。 これらの HSM は、専用の [Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) ネットワーク アプライアンスです。 お客様のプライベート IP アドレス空間に直接展開され、Microsoft には HSM の暗号化機能へのアクセス権はありません。 お客様のみが、これらのデバイスの完全な管理と暗号化の制御を行います。 お客様がデバイスの管理を担当して、ご自身のデバイスから直接、完全なアクティビティ ログを取得することが可能です。 専用 HSM は、お客様が FIPS 140-2 レベル 3、HIPAA、PCI-DSS、eIDAS、およびその他多くのコンプライアンスや規制要件を満たすのに役立ちます。
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>Q:専用 HSM には、どのようなハードウェアが使用されますか?
 
-Microsoft は Azure Dedicated HSM サービスを提供するために Thales と提携しています。 使用される具体的なデバイスは、[Thales Network Luna HSM 7](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) です。 このデバイスでは、FIPS 140-2 レベル 3 の検証済みファームウェアを提供しているだけでなく、10 個のパーティションを使って低待機時間、高パフォーマンス、および高容量も実現しています。 
+Microsoft は Azure Dedicated HSM サービスを提供するために Thales と提携しています。 使用される特定のデバイスは、[Thales Luna 7 HSM モデル A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) です。 このデバイスは、[FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) の検証済みファームウェアを提供しているだけでなく、10 個のパーティションを使って低遅延、高パフォーマンス、および高容量も実現しています。 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>Q:HSM は何に使用されますか。
 
@@ -48,7 +48,7 @@ HSM を使用する目的は、TLS (トランスポート層セキュリティ)�
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>Q:専用 HSM サービスでは、どのようなソフトウェアが提供されますか。
 
-Microsoft によってプロビジョニングされると、Thales から HSM デバイスのすべてのソフトウェアが提供されます。 ソフトウェアは、[Thales Customer Support Portal](https://supportportal.gemalto.com/csm/) で入手できます。 専用 HSM サービスを使用しているお客様は、Thales サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。 サポートされるクライアント ソフトウェアはバージョン 7.2 であり、FIPS 140-2 レベル 3 の検証済みファームウェア バージョン 7.0.3 と互換性があります。 
+Microsoft によってプロビジョニングされると、Thales から HSM デバイスのすべてのソフトウェアが提供されます。 ソフトウェアは、[Thales Customer Support Portal](https://supportportal.thalesgroup.com/csm) で入手できます。 専用 HSM サービスを使用しているお客様は、Thales サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。 サポートされるクライアント ソフトウェアはバージョン 7.2 であり、FIPS 140-2 レベル 3 の検証済みファームウェア バージョン 7.0.3 と互換性があります。 
 
 ### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>Q:専用 HSM サービスで追加コストが発生する可能性がありますか。
 
@@ -63,11 +63,11 @@ Microsoft によってプロビジョニングされると、Thales から HSM �
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>Q:Azure 専用 HSM はユーザーの HSM をホストしますか。
 
-Microsoft は、専用 HSM サービス経由で Thales Network Luna HSM 7 のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
+Microsoft は、専用 HSM サービスを通じて Thales Luna 7 HSM モデル A790 のみを提供しており、ユーザーが提供するデバイスはホストできません。
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>Q:Azure Dedicated HSM は、支払い (PIN/EFT) 機能をサポートしますか。
 
-Azure Dedicated HSM サービスでは、Thales Network Luna HSM 7 デバイスが使用されます。 これらのデバイスは、支払い HSM 固有の機能 (PIN や EFT など) または認定をサポートしていません。 Azure 専用 HSM サービスでの今後の支払い HSM のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
+Azure 専用 HSM サービスでは、Thales Luna 7 HSM が使用されます。 これらのデバイスは、支払い HSM 固有の機能 (PIN や EFT など) または認定をサポートしていません。 Azure 専用 HSM サービスでの今後の支払い HSM のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Q:どの Azure リージョンで Dedicated HSM を使用できますか。
 
@@ -101,7 +101,7 @@ Azure Dedicated HSM サービスでは、Thales Network Luna HSM 7 デバイス�
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>Q:自分のアプリケーションで専用 HSM に接続するにはどのようにしたらよいですか。
 
-お客様は、Thales が提供する HSM クライアント ツール/SDK/ソフトウェアを使用して、お使いのアプリケーションから暗号操作を実行します。 ソフトウェアは、[Thales Customer Support Portal](https://supportportal.gemalto.com/csm/) で入手できます。 専用 HSM サービスを使用しているお客様は、Thales サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。
+お客様は、Thales が提供する HSM クライアント ツール/SDK/ソフトウェアを使用して、お使いのアプリケーションから暗号操作を実行します。 ソフトウェアは、[Thales Customer Support Portal](https://supportportal.thalesgroup.com/csm) で入手できます。 専用 HSM サービスを使用しているお客様は、Thales サポートへの登録が求められ、関連するソフトウェアへのアクセスとダウンロードが可能な顧客 ID を保有します。
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>Q:アプリケーションはリージョン内の、またはリージョンにまたがる異なる VNET から専用 HSM に接続できますか。
 
@@ -117,7 +117,7 @@ Azure Dedicated HSM サービスでは、Thales Network Luna HSM 7 デバイス�
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Q:既存のオンプレミスの HSM から専用 HSM にキーをインポートできますか。
 
-はい (オンプレミスの Thales Network Luna HSM 7 HSM がある場合)。 複数の方法があります。 [Thales HSM のドキュメント](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)をご覧ください。
+はい (オンプレミスの Thales Luna 7 HSM をご利用の場合)。 複数の方法があります。 [Thales HSM のドキュメント](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)をご覧ください。
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Q:専用 HSM クライアント ソフトウェアでは、どのようなオペレーティング システムがサポートされますか。
 
@@ -130,7 +130,7 @@ Azure Dedicated HSM サービスでは、Thales Network Luna HSM 7 デバイス�
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>Q:専用 HSM では、どのような認証メカニズムがサポートされますか。
 
-Azure 専用 HSM では SafeNet ネットワーク HSM 7 アプライアンス (モデル A790) を使用すると共に、パスワードベースの認証をサポートしています。
+Azure 専用 HSM では、[Thales Luna 7 HSM モデル A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) デバイスが使用されます。これらのデバイスは、パスワードベースの認証をサポートしています。
 
 ### <a name="q-what-sdks-apis-client-software-is-available-to-use-with-dedicated-hsm"></a>Q:専用 HSM では、どのような SDK、API、クライアント ソフトウェアを使用できますか。
 
@@ -207,7 +207,7 @@ HSM およびパーティションの管理には、Thales の HSM クライア�
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Q:自分のオンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、HSM を追加することはできますか。
 
-はい。 HSM が SafeNet Luna ネットワーク HSM 7 の高可用性の要件を満たしている必要があります。
+はい。 これらは、[Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) の高可用性の要件を満たしている必要があります。
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Q:オンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、Luna 5/6 HSM を追加することはできますか。
 
@@ -229,7 +229,7 @@ Azure データセンターにおいて、物理上および手続き上のセ�
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>Q:セキュリティ違反やハードウェアの改ざんが発生した場合はどうなりますか。
 
-専用 HSM サービスでは、Thales Network Luna HSM 7 アプライアンスが使用されます。 これらのアプライアンスでは、物理的および論理的な改ざんの検出をサポートしています。 改ざんが行われた場合、HSM は自動的にゼロ埋めされます。
+専用 HSM サービスでは、[Thales Luna 7 HSM](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) アプライアンスが使用されます。 これらのデバイスは、物理的および論理的な改ざんの検出をサポートしています。 改ざんが行われた場合、HSM は自動的にゼロ埋めされます。
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>Q:自分の専用 HSM 内のキーがエラーや悪意のある内部関係者の攻撃のために失われていないことを確認するにはどのようにしたらよいですか。
 
@@ -239,7 +239,7 @@ Azure データセンターにおいて、物理上および手続き上のセ�
 
 サポートはマイクロソフトと Thales の両方で提供されます。  ハードウェアまたはネットワーク アクセスの問題がある場合は、Microsoft にサポート リクエストを出してください。HSM 構成、ソフトウェア、およびアプリケーション開発の問題がある場合は、Thales にサポート要求を出してください。 問題が不明な場合は、マイクロソフトにサポート要求を出してください。その後、必要に応じて Thales が対応できます。 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>Q:Thales Network Luna HSM 7 のクライアント ソフトウェア、ドキュメント、統合ガイダンスへのアクセスを取得するにはどうすればよいですか。
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-luna-7-hsm"></a>Q: Thales Luna 7 HSM のクライアント ソフトウェア、ドキュメント、統合ガイダンスへのアクセスを取得するにはどうすればよいですか。
 
 サービスに登録すると、Thales カスタマー サポート ポータルに登録するための Thales カスタマー ID が提供されます。 これによって、すべてのソフトウェアとドキュメントにアクセスできるようになり、Thales に直接サポート リクエストを出せるようになります。
 
@@ -255,11 +255,11 @@ HSM にはコマンド ラインの再起動オプションがありますが、
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>Q:最も重要なデータの暗号化キーを専用 HSM に格納することは安全ですか。
 
-はい。専用 HSM では、FIPS 140-2 レベル 3 の検証済み HSM を使用する Thales Network Luna HSM 7 アプライアンスをプロビジョニングします。 
+はい。専用 HSM では、[FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) への準拠が検証された Thales Luna 7 HSM がプロビジョニングされます。 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>Q:専用 HSM では、どのような暗号化キーとアルゴリズムがサポートされていますか。
 
-専用 HSM サービスでは、Thales Network Luna HSM 7 アプライアンスがプロビジョニングされます。 これにより、次に示すような幅広い暗号化キーの種類とアルゴリズムがサポートされます。フル スイート B のサポート
+専用 HSM サービスでは、Thales Luna 7 HSM アプライアンスがプロビジョニングされます。 これにより、次に示すような幅広い暗号化キーの種類とアルゴリズムがサポートされます。フル スイート B のサポート
 
 * 非対称:
   * RSA
@@ -283,11 +283,11 @@ HSM にはコマンド ラインの再起動オプションがありますが、
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Q:専用 HSM は FIPS 140-2 レベル 3 が検証されていますか。
 
-はい。 専用 HSM サービスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用する Thales Network Luna HSM 7 アプライアンスをプロビジョニングします。
+はい。 専用 HSM サービスでは、[FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) への準拠が検証された [Thales Luna 7 HSM モデル A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) アプライアンスがプロビジョニングされます。
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Q:FIPS 140-2 レベル 3 の検証済みモードで専用 HSM を稼働させていることを確認するには何を行う必要がありますか。
 
-専用 HSM サービスでは、Thales Network Luna HSM 7 アプライアンスがプロビジョニングされます。 これらのアプライアンスでは、FIPS 140-2 レベル 3 の検証済み HSM を使用します。 また、展開されている既定の構成、オペレーティング システム、およびファームウェアも、FIPS 検証済みになっています。 FIPS 140-2 レベル 3 に準拠するために、何らかの操作を行う必要はありません。
+専用 HSM サービスでは、Thales Luna 7 HSM アプライアンスがプロビジョニングされます。 これらのデバイスは、FIPS 140-2 レベル 3 への準拠が検証された HSM です。 また、展開されている既定の構成、オペレーティング システム、およびファームウェアも、FIPS 検証済みになっています。 FIPS 140-2 レベル 3 に準拠するために、何らかの操作を行う必要はありません。
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>Q:HSM のプロビジョニングが解除されたときに、すべてのキー マテリアルが消去されていることをユーザーが確認するには、どうしたらよいですか?
 
@@ -297,7 +297,7 @@ HSM にはコマンド ラインの再起動オプションがありますが、
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>Q:専用 HSM では、1 秒あたり何回の暗号化操作がサポートされていますか。
 
-専用 HSM では、Thales Network Luna HSM 7 HSM がプロビジョニングされます。 一部の操作の最大パフォーマンスの概要を以下に示します。 
+専用 HSM では、Thales Luna 7 HSM がプロビジョニングされます。 一部の操作の最大パフォーマンスの概要を以下に示します。 
 
 * RSA-2048: 1 秒あたり 10,000 トランザクション
 * ECC P256: 1 秒あたり 20,000 トランザクション
@@ -305,11 +305,11 @@ HSM にはコマンド ラインの再起動オプションがありますが、
 
 ### <a name="q-how-many-partitions-can-be-created-in-dedicated-hsm"></a>Q:専用 HSM では、いくつのパーティションを作成できますか。
 
-使用される SafeNet Luna HSM 7 モデル A790 には、サービス料金に 10 個のパーティションのライセンスが含まれます。 デバイスのパーティションの制限は 100 個です。この制限を上回るパーティションを追加すると、余分なライセンス コストが発生し、デバイスに新しいライセンス ファイルのインストールする必要があります。
+使用される [Thales Luna 7 HSM モデル A790](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms) には、サービス料金に 10 個のパーティションのライセンスが含まれます。 デバイスのパーティションの制限は 100 個です。この制限を上回るパーティションを追加すると、余分なライセンス コストが発生し、デバイスに新しいライセンス ファイルのインストールする必要があります。
 
 ### <a name="q-how-many-keys-can-be-supported-in-dedicated-hsm"></a>Q:専用 HSM では、いくつのキーをサポートできますか。
 
-キーの最大数は使用可能なメモリの機能です。 使用中の SafeNet Luna 7 モデル A790 の目盛りは 32MB です。 非対称キーを使用している場合は、次の数がキーのペアにも適用されます。
+キーの最大数は使用可能なメモリの機能です。 使用される Thales Luna 7 モデル A790 には、32 MB のメモリがあります。 非対称キーを使用している場合は、次の数がキーのペアにも適用されます。
 
 * RSA-2048 - 19,000
 * ECC-P256 - 91,000

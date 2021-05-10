@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92485377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968307"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップと復元
 
@@ -58,7 +58,7 @@ Azure Database for PostgreSQL では、Hyperscale (Citus) クラスターを復�
 いずれかの復旧メカニズムで復元した後、ユーザーとアプリケーションを元に戻して実行するには、次のようにする必要があります。
 
 * 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトする
-* ユーザーが接続できるように、適切なサーバー レベルのファイアウォールと VNet ルールが適用されていることを確認します。 これらのルールは元のサーバー グループからはコピーされません。
+* ユーザーが接続できるように、適切なサーバーレベルのファイアウォールが適用されていることを確認します。 これらのルールは元のサーバー グループからはコピーされません。
 * 必要に応じて、PostgreSQL サーバー パラメーターを調整します。 パラメーターは元のサーバー グループからはコピーされません。
 * 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
 * 必要に応じて、アラートを構成する

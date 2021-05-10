@@ -1,5 +1,5 @@
 ---
-title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 02/01/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
+title: include file description: include file services: event-hubs author: spelluru ms.service: event-hubs ms.topic: include ms.date: 03/31/2021 ms.author: spelluru ms.custom: "include file","fasttrack-edit","iot","event-hubs"
 
 ---
 
@@ -13,13 +13,12 @@ title: include file description: include file services: event-hubs author: spell
 | サブスクリプションあたりの Event Hubs 名前空間の数 |- |100 |
 | 名前空間あたりのイベント ハブの数 | 以後、新しいイベント ハブの作成要求は拒否されます。 |10 |
 | イベント ハブ名のサイズ |- | 256 文字 |
-| コンシューマー グループ名のサイズ |- | 256 文字 |
+| コンシューマー グループ名のサイズ | Kafka プロトコルでは、コンシューマー グループを作成する必要はありません。 | <p>Kafka: 256 文字</p><p>AMQP: 50 文字 |
 | コンシューマー グループあたりの非エポック受信者の数 |- |5 |
 | 名前空間ごとの承認規則の数 | 上限を超えると承認規則の作成要求が拒否されます。|12 |
 | GetRuntimeInformation メソッドの呼び出し数 |  - | 1 秒あたり 50 | 
 | 仮想ネットワーク (VNet) の数 | - | 128 | 
 | IP 構成規則の数 | - | 128 | 
-
 
 ### <a name="basic-vs-standard-tiers"></a>Basic レベルと Standard レベル
 次の表では、Basic と Standard のレベルで異なる可能性がある制限を示しています。 

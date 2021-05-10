@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a571d92dd9663c7d2d0a576b59e5cd2b3352cb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad1351b7c9a649a553ce54422b99a13c286437d6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951016"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107297"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -25,11 +25,11 @@ ms.locfileid: "104951016"
 ## <a name="prerequisites"></a>前提条件
 
 プロビジョニングを設定する前に、次の設定を行う必要があります。
-* **Azure Digital Twins インスタンス**。 [ *「ハウツー: インスタンスと認証を設定する」* ](how-to-set-up-instance-portal.md)の手順に従って、Azure デジタル ツイン インスタンスを作成します。 Azure portal ([手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) でインスタンスの **_ホスト名_** を収集します。
+* **Azure Digital Twins インスタンス**。 [ *「ハウツー: インスタンスと認証を設定する」*](how-to-set-up-instance-portal.md)の手順に従って、Azure デジタル ツイン インスタンスを作成します。 Azure portal ([手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) でインスタンスの **_ホスト名_** を収集します。
 * **IoT ハブ** です。 手順については、この [ IoT Hub のクイック スタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」のセクションを参照してください。
-* IoT Hub のデータに基づいてデジタル ツイン情報を更新する [**Azure 関数**](../azure-functions/functions-overview.md)。 [ *「ハウツー: IoT ハブ データを取り込み、この Azure 関数を作成する」* ](how-to-ingest-iot-hub-data.md)の手順に従います。 この記事で使用する関数 **_名_** を収集します。
+* IoT Hub のデータに基づいてデジタル ツイン情報を更新する [**Azure 関数**](../azure-functions/functions-overview.md)。 [ *「ハウツー: IoT ハブ データを取り込み、この Azure 関数を作成する」*](how-to-ingest-iot-hub-data.md)の手順に従います。 この記事で使用する関数 **_名_** を収集します。
 
-このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある *[ZIP のダウンロード]* ボタンを選択して、お使いのマシンにサンプル プロジェクトを取得します。 ダウンロードしたフォルダーを解凍します。
+このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins and IoT Hub provisioning integration sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある *[Download ZIP]* ボタンを選択して、お使いのマシンにサンプル プロジェクトを取得します。 ダウンロードしたフォルダーを解凍します。
 
 お使いのコンピューターに [**Node.js**](https://nodejs.org/download) がインストールされている必要があります。 デバイス シミュレーターは **Node.js** バージョン 10.0.x 以降に基づいています。
 
@@ -302,7 +302,7 @@ Visual Studio の関数アプリ プロジェクトに、*イベント ハブ �
 
 廃止のプロセスをトリガーするには、デバイスを IoT Hub から手動で削除する必要があります。
 
-これは、[Azure CLI コマンド](/cli/azure/ext/azure-iot/iot/hub/module-identity#ext_azure_iot_az_iot_hub_module_identity_delete) または Azure portal で行うことができます。 次の手順に従って、Azure portal 内のデバイスを削除します。
+これは、[Azure CLI コマンド](/cli/azure/iot/hub/module-identity#az_iot_hub_module_identity_delete) または Azure portal で行うことができます。 次の手順に従って、Azure portal 内のデバイスを削除します。
 
 1. IoT ハブに移動し、左側のメニューオプションで **[IoT デバイス]** を選択します。 
 2. [この記事の前半](#auto-provision-device-using-device-provisioning-service)で選択したデバイス登録 ID を持つデバイスが表示されます。 または、Azure Digital Twins にツインがある場合は、削除するその他のデバイスを選択して、デバイスが削除された後にツインが自動的に削除されることを確認できます。

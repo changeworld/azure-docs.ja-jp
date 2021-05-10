@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 652d362a11e80a488c9278dfeff38e715acee784
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 381fe00e835f0e359a2347372cbc2544a2b211ca
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641939"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364228"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Azure Files と Azure NetApp Files の比較
 
@@ -25,7 +25,7 @@ ms.locfileid: "105641939"
 
 | カテゴリ | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
-| 説明 | [Azure Files](https://azure.microsoft.com/services/storage/files/) はフル マネージドの高可用性サービスであり、インプレース データ更新を使用するランダム アクセス ワークロードに最適化されています。<br><br> Azure Files は、Azure BLOB などの他のサービスと同じ Azure Storage プラットフォーム上に構築されています。 | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) はフル マネージドの高可用性かつエンタープライズ グレードの NAS サービスであり、高度なデータ管理機能を必要とする、要求の厳しい、高パフォーマンスかつ低遅延のワークロードを処理できます。 これがなければ「移行不可能」とみなされるようなワークロードも移行することができます。<br><br>  ANF は、ONTAP ストレージ OS を搭載し、Azure データセンター内で実行されている NetApp 製のベアメタル上に構築されており、一貫した Azure 体験とオンプレミスと同様のパフォーマンスを実現します。 |
+| 説明 | [Azure Files](https://azure.microsoft.com/services/storage/files/) は、フル マネージド、高可用性、エンタープライズグレードのサービスであり、インプレース データ更新を使用するランダム アクセス ワークロード用に最適化されています。<br><br> Azure Files は、Azure BLOB などの他のサービスと同じ Azure Storage プラットフォーム上に構築されています。 | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) はフル マネージドの高可用性かつエンタープライズ グレードの NAS サービスであり、高度なデータ管理機能を必要とする、要求の厳しい、高パフォーマンスかつ低遅延のワークロードを処理できます。 これがなければ「移行不可能」とみなされるようなワークロードも移行することができます。<br><br>  ANF は、ONTAP ストレージ OS を搭載し、Azure データセンター内で実行されている NetApp 製のベアメタル上に構築されており、一貫した Azure 体験とオンプレミスと同様のパフォーマンスを実現します。 |
 | プロトコル | Premium<br><ul><li>SMB 2.1、3.0</li><li>NFS 4.1 (プレビュー)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2.1、3.0</li><li>REST</li></ul><br> 詳細については、「[使用可能なファイル共有プロトコル](https://docs.microsoft.com/azure/storage/files/storage-files-compare-protocols)」を参照してください。 | すべてのレベル<br><ul><li>SMB 1、2.x、3.x</li><li>NFS 3.0、4.1</li><li>デュアル プロトコル アクセス (NFSv3/SMB)</li></ul><br> 詳細については、[NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)、[SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb)、または[デュアル プロトコル](https://docs.microsoft.com/azure/azure-netapp-files/create-volumes-dual-protocol) ボリュームの作成方法を参照してください。 |
 | 利用可能なリージョン | Premium<br><ul><li>30 リージョン以上</li></ul><br>Standard<br><ul><li>すべてのリージョン</li></ul><br> 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。 | すべてのレベル<br><ul><li>25 リージョン以上</li></ul><br> 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。 |
 | 冗長性 | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> 詳細については、「[冗長性](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy)」を参照してください。 | すべてのレベル<br><ul><li>組み込みのローカル HA</li><li>[リージョン間レプリケーション](https://docs.microsoft.com/azure/azure-netapp-files/cross-region-replication-introduction)</li></ul> |

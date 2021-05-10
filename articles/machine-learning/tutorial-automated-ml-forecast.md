@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:需要予測と AutoML
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio で自動機械学習を使用して需要予測モデルをトレーニングおよびデプロイする方法について説明します。
+description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して、コードを記述することなく需要予測モデルをトレーニングしてデプロイします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,21 +11,18 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a5f7c0cf95d62df2d06c91abd99a1827524d5d6b
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879362"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210552"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>チュートリアル:自動機械学習を使用して需要を予測する
 
+Azure Machine Learning スタジオで自動機械学習を使用し、1 行のコードも記述せずに[時系列予測モデル](concept-automated-ml.md#time-series-forecasting)を作成する方法について説明します。 このモデルは、自転車シェアリング サービスのレンタル需要を予測するものです。  
 
-このチュートリアルでは、Azure Machine Learning Studio で自動機械学習 (自動 ML) を使用して、自転車シェアリング サービスのレンタル需要を予測するための時系列予測モデルを作成します。
-
-分類モデルの例については、「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」を参照してください。
-
-このチュートリアルでは、次のタスクを実施する方法について説明します。
+このチュートリアルではコードを一切記述しません。スタジオのインターフェイスを使用してトレーニングを実行します。  次のタスクを実行する方法について説明します。
 
 > [!div class="checklist"]
 > * データセットを作成して読み込む。
@@ -34,13 +31,18 @@ ms.locfileid: "98879362"
 > * 実験結果を調べる。
 > * 最適なモデルをデプロイする。
 
+他のタイプのモデルについても、自動機械学習を試してみましょう。
+
+* ノーコードの分類モデルの例については、「[チュートリアル: Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)」を参照してください。
+* コード ファーストの回帰モデルの例については、「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を参照してください。
+
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。 
 
 * [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) のデータ ファイルをダウンロードします
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で開始する
+## <a name="sign-in-to-the-studio"></a>スタジオにサインインする
 
 このチュートリアルでは、Azure Machine Learning Studio で自動 ML 実験の実行を作成します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合 Web インターフェイスです。 Internet Explorer ブラウザーでは、Studio はサポートされません。
 

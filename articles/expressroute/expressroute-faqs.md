@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 6abba38386bf2b3386b00891bc25584b33066595
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121066"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552242"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -22,7 +22,7 @@ ExpressRoute は、Microsoft のデータセンターとオンプレミスや共
 
 ### <a name="what-are-the-benefits-of-using-expressroute-and-private-network-connections"></a>ExpressRoute とプライベート ネットワーク接続を使用する利点は何ですか。
 
-ExpressRoute 接続では、公共のインターネットを利用できません。 この接続は、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一貫して短く、高速です。 オンプレミスのデバイスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合があります。
+ExpressRoute 接続はパブリックなインターネットを経由しません。 この接続は、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一貫して短く、高速です。 オンプレミスのデバイスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合があります。
 
 ### <a name="where-is-the-service-available"></a>このサービスはどこで使用できますか。
 
@@ -351,13 +351,17 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 はい。 ExpressRoute Premium 料金は、ExpressRoute 回線の料金と接続プロバイダーに必要な料金に追加する形で適用されます。
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
+
 ### <a name="what-is-expressroute-local"></a>ExpressRoute Local とは何ですか。
-ExpressRoute Local とは、Standard SKU と Premium SKU 以外の ExpressRoute 回線の SKU のことです。 Local の主な機能は、ExpressRoute ピアリングの場所の Local 回線で、ユーザーが、同じ都市圏内またはその近くにある 1 つまたは 2 つの Azure リージョンにのみアクセスできるようにすることです。 これに対し Standard 回線では地政学的領域内のすべての Azure リージョンに、Premium 回線では世界中のすべての Azure リージョンに、ユーザーはアクセスすることができます。 
+
+ExpressRoute Local とは、Standard SKU と Premium SKU 以外の ExpressRoute 回線の SKU のことです。 Local の主な機能は、ExpressRoute ピアリングの場所の Local 回線で、ユーザーが、同じ都市圏内またはその近くにある 1 つまたは 2 つの Azure リージョンにのみアクセスできるようにすることです。 これに対し Standard 回線では地政学的領域内のすべての Azure リージョンに、Premium 回線では世界中のすべての Azure リージョンに、ユーザーはアクセスすることができます。 具体的には、ローカルの SKU では、ExpressRoute 回線の対応するローカル リージョンから (Microsoft とプライベート ピアリング経由で) ルートをアドバタイズすることのみ可能です。 定義されたローカル リージョンとは異なる他のリージョンのルートを受け取ることはできません。
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>ExpressRoute Local のメリットは何ですか。
+
 お使いの ExpressRoute 回線が Standard または Premium の場合、エグレス データ転送に対して料金が発生しますが、ExpressRoute Local 回線ではエグレス データ転送に対して個別に料金が発生することはありません。 つまり、ExpressRoute Local の価格には、データ転送料金が含まれます。 転送するデータが大量にある場合、ExpressRoute Local はコスト効率の高いソリューションです。このソリューションではご自身のデータをプライベート接続経由で、必要な Azure リージョンの近くにある ExpressRoute ピアリングの場所に送信できます。 
 
 ### <a name="what-features-are-available-and-what-are-not-on-expressroute-local"></a>ExpressRoute Local ではどのような機能を使用できますか。また、何を使用できませんか。
+
 Standard ExpressRoute 回線の機能セットとほぼ同じですが、次の機能が異なります。
 * 上述した Azure リージョンへのアクセス範囲
 * ExpressRoute Global Reach が Local では使用不可
@@ -365,6 +369,7 @@ Standard ExpressRoute 回線の機能セットとほぼ同じですが、次の�
 ExpressRoute Local では、リソースの制限 (回線あたりの VNet 数など) も Standard と同じです。 
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>ExpressRoute Local はどこで使用できますか。また、ピアリングの場所はそれぞれどの Azure リージョンにマッピングされていますか。
+
 ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近くにあるピアリングの場所で使用できます。 ピアリングの場所の州、都道府県、国/地域に Azure リージョンがない場合、そこで使用することはできません。 正確なマッピングについては、[場所のページ](expressroute-locations-providers.md)をご覧ください。  
 
 ## <a name="expressroute-for-microsoft-365"></a>Microsoft 365 の ExpressRoute

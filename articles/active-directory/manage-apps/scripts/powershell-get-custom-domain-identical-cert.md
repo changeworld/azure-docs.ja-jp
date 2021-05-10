@@ -3,7 +3,7 @@ title: PowerShell サンプル - 同じ証明書を使用しているアプリ�
 description: 同じ証明書を使用して公開されたすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a45333b9df2e75e443ed40568943c03c703799f3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 18200b5571c84c8bd442d5dcb2714c6d52d4bcf5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044109"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377043"
 ---
 # <a name="get-all-application-proxy-apps-that-are-published-with-the-identical-certificate"></a>同じ証明書を使用して公開されたすべてのアプリケーション プロキシ アプリを取得する
 

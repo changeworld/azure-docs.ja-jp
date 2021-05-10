@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/11/2021
 ms.author: aahi
-ms.openlocfilehash: 352b81bf2dfeca1d7413e7cac131264d06c7b92e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a74c0cad971389168d643c9504f5bb809438a1ea
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599306"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097553"
 ---
 ### <a name="financial-account-identification"></a>金融アカウント ID
 
@@ -34,7 +34,7 @@ ms.locfileid: "104599306"
     :::column span="2":::
         **詳細**
 
-        米国銀行協会 (ABA) トランジット ルーティング ナンバー。
+        米国銀行協会 (ABA) トランジット ルーティング ナンバー。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`ABARoutingNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ABARoutingNumber` も API 応答で返されます。
       
@@ -62,7 +62,7 @@ ms.locfileid: "104599306"
     :::column span="2":::
         **詳細**
 
-        支払指示情報の SWIFT コード。
+        支払指示情報の SWIFT コード。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`SWIFTCode` を `pii-categories` パラメーターに追加します。 検出されると、`SWIFTCode` が API 応答で返されます。
       
@@ -89,7 +89,7 @@ ms.locfileid: "104599306"
     :::column span="2":::
         **詳細**
 
-        クレジット カード番号。 
+        クレジット カード番号。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`CreditCardNumber` を `pii-categories` パラメーターに追加します。 検出されると、`CreditCardNumber` が API 応答で返されます。
 
@@ -116,7 +116,7 @@ ms.locfileid: "104599306"
     :::column span="2":::
         **詳細**
 
-        支払指示情報の IBAN コード。
+        支払指示情報の IBAN コード。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`InternationlBankingAccountNumber` を `pii-categories` パラメーターに追加します。 検出されると、`InternationlBankingAccountNumber` が API 応答で返されます。
       
@@ -144,12 +144,12 @@ ms.locfileid: "104599306"
     :::column span="":::
         **エンティティ**
 
-        アルゼンチンの国民 ID (DNI) 番号
+        アルゼンチンの国民 ID (DNI) 番号 
 
     :::column-end:::
     :::column span="2":::
-        **詳細**
-
+        **詳細** `domain=phi` でも返されます。
+        
         このエンティティ カテゴリを取得するには、`ARNationalIdentityNumber` を `pii-categories` パラメーターに追加します。 検出されると、`ARNationalIdentityNumber` が API 応答で返されます。
       
     :::column-end:::

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2ab7a007a92bd2306a7a97781af5653f932d0b7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98539558"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580611"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのコストの見積りと管理を行う方法
 
@@ -64,7 +64,7 @@ Azure Cognitive Search 上に構築されたソリューションでは、次の
 
 最小構成を超える場合は、レプリカとパーティションを互いに独立して追加できます。 レプリカおよびパーティションによって容量が徐々に増加すると、 **(レプリカ数 x パーティション数 x 課金レート)** という式に基づいて料金が増加します。この場合、課金されるレートは、選択した価格レベルによって異なります。
 
-検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください (容量を 2 倍にすると、コストは 2 倍以上になります)。 数式による計算の例については、「[レプリカとパーティションを割り当てる方法](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)」を参照してください。
+検索ソリューションのコストを見積もる際には、価格と容量は直線的に比例するものではないことに注意してください (容量を 2 倍にすると、同じレベルのコストは 2 倍以上になります)。 また、ある時点で、より高いレベルに切り替えると、ほぼ同じ価格でより優れた、より高速なパフォーマンスが得られます。 詳細および例については、「[Standard S2 レベルにアップグレードする](search-performance-tips.md#tip-upgrade-to-a-standard-s2-tier)」を参照してください。
 
 ### <a name="bandwidth-charges"></a>帯域幅の料金
 
@@ -82,7 +82,7 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 
 [AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、Azure Cognitive Search と同じリージョンの S0 価格レベルで、[有料の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
 
-| Operation | 課金への影響 |
+| 操作 | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | Free |
 | ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成** で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|

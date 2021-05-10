@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: bc1978f6ed0aa3e38f25fa03fc54ddc7d4efb9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033335"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961066"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -43,7 +43,7 @@ Azure では、メトリックへのアクセスは、[Azure ロールベース�
 
 [Azure のほとんどのメトリックは 93 日間保存されます](../essentials/data-platform-metrics.md#retention-of-metrics)。 ただし、1 つのグラフでクエリできるデータは 30 日までです。 この制限は、[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics)には適用されません。
 
-**解決方法:** 空のグラフが表示される場合、またはグラフにメトリック データの一部のみが表示される場合は、日時指定の開始日と終了日の間隔が、30 日を超えていないことを確認します。
+**解決方法:** 空のグラフが表示される場合、またはグラフにメトリック データの一部のみが表示される場合は、日時指定の開始日と終了日の間隔が、30 日を超えていないことを確認します。 30 日間の間隔を選択したら、グラフを[パン](metrics-charts.md#pan)して完全なリテンション期間を表示できます。
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>すべてのメトリック値がロックされた Y 軸の範囲外だった
 
