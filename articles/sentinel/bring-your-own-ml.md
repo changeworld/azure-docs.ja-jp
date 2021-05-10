@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2164b8ac6e62b8826d5879da07384769c503bfb5
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99807005"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598603"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>独自の機械学習 (ML) を Azure Sentinel に持ち込む
 
@@ -137,7 +137,7 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 ### <a name="export-custom-data"></a>カスタム データをエクスポートする
 
-Log Analytics の自動エクスポートでサポートされていないカスタム データの場合は、ロジック アプリまたはその他のソリューションを使用してデータを移動できます。 ブログ記事「[Log Analytics データを BLOB ストアにエクスポートする](https://www.borninthecloud.com/exporting-log-analytics-data-to-blob-store/?preview=true)」とスクリプトを参照してください。
+Log Analytics の自動エクスポートでサポートされていないカスタム データの場合は、ロジック アプリまたはその他のソリューションを使用してデータを移動できます。 ブログ記事「[Log Analytics データを BLOB ストアにエクスポートする](https://techcommunity.microsoft.com/t5/azure-monitor/log-analytics-data-export-preview/ba-p/1783530)」とスクリプトを参照してください。
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>Azure Sentinel 以外のデータとの関連付け
 

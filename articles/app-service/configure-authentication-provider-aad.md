@@ -5,54 +5,51 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 2805500e4a4c98ad7b8360393e7d69ad9fb704a3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563338"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078317"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-この記事では、アプリで Azure Active Directory (Azure AD) を認証プロバイダーとして使用してユーザーがサインインするように、Azure App Service または Azure Functions の認証を構成する方法について説明します。
+この記事では、アプリで [Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md) (Azure AD) を認証プロバイダーとして使用してユーザーがサインインするように、Azure App Service または Azure Functions の認証を構成する方法について説明します。
 
-## <a name="configure-with-express-settings"></a><a name="express"> </a>簡単設定を構成する
+App Service 認証機能では、Microsoft ID プラットフォームを使用してアプリの登録を自動的に作成できます。 また、ユーザーまたはディレクトリ管理者が個別に作成した登録を使用することもできます。
 
-**[簡易]** オプションでは、認証を簡単にするように設計されていて、必要なのは数回のクリックのみです。
-
-簡易設定では、Azure Active Directory V1 エンドポイントを使用するアプリケーション登録が自動的に作成されます。 [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) ([MSAL](../active-directory/develop/msal-overview.md) を含む) を使用するには、[詳細構成の手順](#advanced)に従ってください。
+- [新しいアプリ登録を自動作成する](#express)
+- [個別に作成された既存の登録を使用する](#advanced)
 
 > [!NOTE]
-> **[Express]\(簡易\)** オプションは、政府機関向けクラウドでは使用できません。
+> 新しい登録を作成するオプションは、政府機関向けクラウドでは使用できません。 代わりに、 [登録を個別に定義](#advanced)します。
 
-**[簡易]** オプションを使用して認証を有効にするには、次の手順に従います。
+## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>新しいアプリ登録を自動作成する
 
-1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
-2. 左側のナビゲーションから、 **[認証/承認]**  >  **[On]\(オン\)** を選択します。
-3. **[Azure Active Directory]**  >  **[Express]\(簡易\)** を選択します。
+このオプションでは、認証を簡単にするように設計されていて、必要なのは数回のクリックのみです。
 
-   代わりに既存のアプリ登録を選択する場合は、次のようにします。
+1. [Azure portal] にサインインし、アプリに移動します。
+1. 左側のメニューで **[認証]** を選択します。 **[ID プロバイダーの追加]** をクリックします。
+1. [ID プロバイダー] ドロップダウンで **[Microsoft]** を選択します。 既定では、新しい登録を作成するオプションが選択されています。 登録の名前またはサポートされているアカウントの種類を変更できます。
 
-   1. **[既存の AD アプリを選択する]** を選択し、 **[Azure AD アプリ]** をクリックします。
-   2. 既存のアプリ登録を選択して **[OK]** をクリックします。
+    クライアント シークレットが作成され、`MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` という名前のスロット固定の[アプリケーション設定](./configure-common.md#configure-app-settings) として保存され ます。 Azure Key Vault でシークレットを管理する場合は、[Key Vault 参照](./app-service-key-vault-references.md)を使用するように、この設定を後で更新することができます。
 
-4. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 新しいアプリ登録が作成されます。
+1. これがアプリケーション用に構成された最初の ID プロバイダーである場合は、「**App Service 認証設定**」のセクションも表示されます。 それ以外の場合は、次の手順に進むことができます。
+    
+    これらのオプションは、アプリケーションが認証されていない要求にどのように応答するかを決定し、既定の選択によって、この新しいプロバイダーにログインするためのすべての要求がリダイレクトされます。 **[認証設定]** の横にある **[編集]** を選択して、この動作を今すぐカスタマイズするか、後でメインの **[認証]** 画面からこれらの設定を調整することができます。 これらのオプションの詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」を参照してください。
 
-    ![Azure Active Directory での簡易設定](./media/configure-authentication-provider-aad/express-settings.png)
+1. (オプション) **[次へ: アクセス許可]** をクリックし、アプリケーションで必要なスコープを追加します。 これらはアプリの登録に追加されますが、後で変更することもできます。
+1. **[追加]** をクリックします。
 
-5. (省略可能) App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。 Azure Active Directory で認証されたユーザーのみにアプリ アクセスを限定するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていないものはすべて、Azure Active Directory に認証のためにリダイレクトされます。
-
-    > [!CAUTION]
-    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページが与えられているアプリには適切でない場合があります。 このようなアプリケーションの場合は、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。 詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」をご覧ください。
-6. **[保存]** を選択します。
+これで、アプリケーションで認証に Microsoft ID プラットフォームを使用する準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
 
 Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure AD ログインを構成する例については、[こちらのチュートリアル](scenario-secure-app-authentication-app-service.md)を参照してください。
 
-## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>詳細設定を構成する
+## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>個別に作成された既存の登録を使用する
 
-Azure AD がアプリの認証プロバイダーとして機能するためには、アプリを登録する必要があります。 簡易オプションでは、これが自動的に行われます。 [詳細] オプションを使用すると、アプリを手動で登録できるため、登録をカスタマイズして、登録の詳細を App Service に手動で入力することができます。 これは、たとえば App Service が含まれているものとは異なる Azure AD テナントからアプリの登録を使用する場合に便利です。
+また、アプリケーションを Microsoft ID プラットフォームに手動で登録し、登録をカスタマイズして、登録の詳細を使用して App Service 認証を構成することもできます。 これは、たとえば App Service が含まれているものとは異なる Azure AD テナントからアプリケーションの登録を使用する場合に便利です。
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>App Service アプリに対するアプリ登録を Azure AD で作成する
 
@@ -87,22 +84,27 @@ Azure AD がアプリの認証プロバイダーとして機能するために�
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>App Service アプリで Azure Active Directory を有効にする
 
-1. [Azure portal] で、 **[App Services]** を探して選択してから、アプリを選択します。
-1. 左側のウィンドウの **[設定]** で、 **[認証/承認]**  >  **[On]\(オン\)** を選択します。
-1. (省略可能) 既定では、App Service 認証によってアプリへの認証されていないアクセスが許可されます。 ユーザー認証を強制するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。
-1. **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
-1. **[管理モード]** で **[Advanced]\(詳細\)** を選択し、次の表に従って App Service 認証を構成します。
+1. [Azure portal] にサインインし、アプリに移動します。
+1. 左側のメニューで **[認証]** を選択します。 **[ID プロバイダーの追加]** をクリックします。
+1. [ID プロバイダー] ドロップダウンで **[Microsoft]** を選択します。
+1. **[アプリの登録の種類]** では、 **[このディレクトリ内の既存アプリの登録を選択]** を選択して、必要なアプリ情報を自動的に収集することができます。 別のテナントからの登録の場合、または登録オブジェクトを表示する権限がない場合は、 **[既存アプリの登録の詳細を提供します]** を選択します。 このオプションでは、次の構成の詳細を入力する必要があります。
 
     |フィールド|説明|
     |-|-|
-    |クライアント ID| アプリの登録の **アプリケーション (クライアント) ID** を使用します。 |
+    |アプリケーション (クライアント) ID| アプリの登録の **アプリケーション (クライアント) ID** を使用します。 |
+    |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。 クライアント シークレットを使用すると、ハイブリッド フローが使用され、App Service によってアクセス トークンと更新トークンが返されます。 クライアント シークレットが設定されていない場合は、暗黙的なフローが使用され、ID トークンのみが返されます。 これらのトークンはプロバイダーによって送信され、EasyAuth トークン ストアに格納されます。|
     |発行者の URL| `<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を [クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoftonline.com") に置き換え、さらに、 *\<tenant-id>* を、アプリ登録が作成された **ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 Azure AD v1 を使用するアプリケーションと Azure Functions アプリの場合は、URL の `/v2.0` を省略します。|
-    |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。|
-    |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの **アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。 |
+    |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの **アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。|
 
-2. **[OK]** を選択し、 **[保存]** を選択します。
+    クライアント シークレットが、`MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` という名前のスロット固定の[アプリケーション設定](./configure-common.md#configure-app-settings) として保存され ます。 Azure Key Vault でシークレットを管理する場合は、[Key Vault 参照](./app-service-key-vault-references.md)を使用するように、この設定を後で更新することができます。
 
-これで、App Service アプリで認証に Azure Active Directory を使用する準備ができました。
+1. これがアプリケーション用に構成された最初の ID プロバイダーである場合は、「**App Service 認証設定**」のセクションも表示されます。 それ以外の場合は、次の手順に進むことができます。
+    
+    これらのオプションは、アプリケーションが認証されていない要求にどのように応答するかを決定し、既定の選択によって、この新しいプロバイダーにログインするためのすべての要求がリダイレクトされます。 **[認証設定]** の横にある **[編集]** を選択して、この動作を今すぐカスタマイズするか、後でメインの **[認証]** 画面からこれらの設定を調整することができます。 これらのオプションの詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」を参照してください。
+
+1. **[追加]** をクリックします。
+
+これで、アプリケーションで認証に Microsoft ID プラットフォームを使用する準備ができました。 **[認証]** 画面にプロバイダーが一覧表示されます。 そこから、このプロバイダーの構成を編集または削除できます。
 
 ## <a name="configure-client-apps-to-access-your-app-service"></a>App Service にアクセスするようにクライアント アプリを構成する
 

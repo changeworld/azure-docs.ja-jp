@@ -5,16 +5,18 @@ description: このクイックスタートでは、Azure Resource Manager テ�
 services: machine-learning
 author: lobrien
 ms.author: laobri
-ms.custom: subject-armqs
 ms.date: 06/10/2020
-ms.service: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: 7feacec9f0e78749f17359a9080411b6d9696136
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.service: data-science-vm
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 0683634223a63281ce2b42ebb02f87f9211a589e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518217"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530655"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Data Science Virtual Machine を作成する
 

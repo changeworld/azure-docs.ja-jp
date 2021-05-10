@@ -7,19 +7,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028082"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226313"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)
 
 Azure Virtual WAN は、ネットワーク パートナーと協力して、仮想ハブ内の Azure VPN ゲートウェイに顧客構内設備 (CPE) を簡単に接続できる自動化を構築しました。 Azure は厳選したネットワーク パートナーと協力して、お客様がサード パーティのネットワーク仮想アプライアンス (NVA) を仮想ハブに直接デプロイできるように取り組んでいます。 これにより、ブランチ CPE を仮想ハブにある同じブランドの NVA に接続したいお客様は、独自のエンドツーエンド SD-WAN 機能を活用できるようになります。
 
-Barracuda Networks と Cisco Systems は、Virtual WAN ハブに直接デプロイできる NVA を提供する最初のパートナーです。  それぞれの製品ドキュメントについては、「[Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan)」と「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」を参照してください。 Azure ではさらに多くのパートナーとの連携を行っているため、今後他のオファリングもご提供できる予定です。
+Barracuda Networks と Cisco Systems は、Virtual WAN ハブに直接デプロイできる NVA を提供する最初のパートナーです。  それぞれの製品ドキュメントについては、「[Barracuda CloudGen WAN](https://www.barracuda.com/products/cloudgenwan)」、「[Cisco Cloud OnRamp for Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)」、「[VMware SD-WAN](https://kb.vmware.com/s/article/82746)」を参照してください。 Azure ではさらに多くのパートナーとの連携を行っているため、今後他のオファリングもご提供できる予定です。
 
 > [!NOTE]
 > Virtual WAN ハブにデプロイできるのは、Virtual WAN ハブへのデプロイが可能な NVA オファーのみです。 Azure の任意の仮想ネットワークにデプロイすることはできません。

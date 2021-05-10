@@ -10,19 +10,19 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2af82734fb9e1571242eec016f36f691411a8f2e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8986ef895c5766d363261ef263851ee96d9c0da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518757"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727673"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
 
 この記事では、メインとなる Azure Machine Learning SDK に含まれる [`tensorboard` パッケージ](/python/api/azureml-tensorboard/)を使用して、TensorBoard で実験の実行とメトリックを表示する方法について説明します。 実験の実行を調査すると、機械学習モデルの調整と再トレーニングをより適切に行うことができます。
 
-[TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) は、実験の構造とパフォーマンスを調査して把握するための Web アプリケーションスイートです。
+[TensorBoard](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard) は、実験の構造とパフォーマンスを調査して把握するための Web アプリケーションスイートです。
 
 Azure Machine Learning の実験で TensorBoard を起動する方法は、実験の種類に応じて異なります。
 + TensorBoard で使用可能なログ ファイルが実験でネイティブに出力される場合 (PyTorch、Chainer、TensorFlow などの実験)、実験の実行履歴から [TensorBoard を直接起動](#launch-tensorboard)できます。 

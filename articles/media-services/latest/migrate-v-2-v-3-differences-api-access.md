@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 831bc737fbd54685cdc8358642bc37e7b2df2c42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5f3c6526139389da3bfdbc3c43cf8b6d2a1dbccf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98953718"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567969"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>Azure Media Services V2 から v3 API への API アクセスの違い
 
@@ -36,6 +36,8 @@ V2 API と V3 API を混在させずに V2 に戻る場合は、既存のアカ�
 
 V2 API へのアクセスは、2024 で廃止されるまで利用できます。
 
+## <a name="create-a-v3-account"></a>V3 アカウントを作成する
+
 移行中に、V2 に引き続きアクセスできる V3 アカウントを作成できます。  アカウントの作成は、次の方法で行うことができます。
 
 - REST API 以前のバージョン
@@ -48,7 +50,3 @@ V2 API へのアクセスは、2024 で廃止されるまで利用できます�
 
 > [!NOTE]
 > 2020-05-01 API で作成された新しいアカウントで V2 API を使用することはできません。
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

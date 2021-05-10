@@ -4,13 +4,13 @@ description: この記事では、利用可能なパブリック LUIS アプリ�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/30/2020
-ms.openlocfilehash: a3bad4ab69f6950f83db9cf1f49cfa4cb7c7b5f0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/26/2021
+ms.openlocfilehash: 4542f85ab562e65777fb8570873305523c76aee6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040126"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276826"
 ---
 # <a name="how-to-query-the-prediction-runtime-with-user-text"></a>ユーザー テキストを使用して予測ランタイムを照会する方法
 
@@ -176,4 +176,4 @@ LUIS の予測エンドポイントから返される内容を理解するため
 * [カスタム サブドメイン](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]
-> [LUIS ポータル内でアプリを作成する](get-started-portal-build-app.md)
+> [クライアント ライブラリまたは REST API を使用する](client-libraries-rest-api.md)

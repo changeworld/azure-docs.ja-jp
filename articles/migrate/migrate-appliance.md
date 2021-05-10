@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate アプライアンス
 description: Azure Migrate アプライアンスに対するサポートの概要について説明します。
-author: vikram1988
-ms.author: vibansa
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 08cd0e9d33dd88b9bdc418f3d1bbd382b2d80632
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/18/2021
+ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038766"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075697"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -23,10 +23,10 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 **シナリオ** | **ツール** | **用途**
 --- | --- | ---
-**VMware 環境で実行されているサーバーの検出と評価** | Azure Migrate:Server Assessment | VMware 環境で実行されているサーバーを検出します<br/><br/> インストールされているアプリケーションの検出、エージェントレスの依存関係分析、SQL Server インスタンスとデータベースの検出を実行します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
+**VMware 環境で実行されているサーバーの検出と評価** | Azure Migrate: Discovery and Assessment | VMware 環境で実行されているサーバーを検出します<br/><br/> インストールされているソフトウェア インベントリの検出、エージェントレスの依存関係分析、SQL Server インスタンスとデータベースの検出を実行します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
 **VMware 環境で実行されているサーバーのエージェントレス移行** | Azure Migrate:Server Migration | VMware 環境で実行されているサーバーを検出します。 <br/><br/> エージェントをインストールせずにサーバーをレプリケートします。
-**Hyper-V 環境で実行されているサーバーの検出と評価** | Azure Migrate:Server Assessment | Hyper-V 環境で実行されているサーバーを検出します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
-**オンプレミスの物理または仮想化されたサーバーの検出と評価** |  Azure Migrate:Server Assessment |  オンプレミスの物理または仮想化されたサーバーを検出します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
+**Hyper-V 環境で実行されているサーバーの検出と評価** | Azure Migrate: Discovery and Assessment | Hyper-V 環境で実行されているサーバーを検出します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
+**オンプレミスの物理または仮想化されたサーバーの検出と評価** |  Azure Migrate: Discovery and Assessment |  オンプレミスの物理または仮想化されたサーバーを検出します。<br/><br/> 評価のためにサーバー構成とパフォーマンス メタデータを収集します。
 
 ## <a name="deployment-methods"></a>デプロイ方法
 
@@ -38,7 +38,6 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 - オンプレミスまたはその他のクラウドの物理あるいは仮想化されたサーバーの場合は、常に PowerShell インストーラー スクリプトを使用してアプライアンスをデプロイします。デプロイの手順については、[こちら](how-to-set-up-appliance-physical.md)を参照してください。
 - ダウンロード リンクは、以下の表にあります。
 
-
 ## <a name="appliance---vmware"></a>アプライアンス - VMware
 
 次の表は、VMware の Azure Migrate アプライアンス要件をまとめたものです。
@@ -46,7 +45,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 > [!Note]
 > VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
 
-**要件** | **VMware** 
+**要件** | **VMware**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
 **アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細で構成できます。<br/> - **VMware 検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **VMware 評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。<br/>- **DRA エージェント**: サーバーのレプリケーションを調整し、レプリケートされたサーバーと Azure 間の通信をコーディネートします。 エージェントレスの移行を使用して、サーバーを Azure にレプリケートする場合にのみ使用されます。<br/>- **ゲートウェイ**:レプリケートされたデータを Azure に送信します。 エージェントレスの移行を使用して、サーバーを Azure にレプリケートする場合にのみ使用されます。<br/>- **SQL 検出および評価エージェント**: SQL Server インスタンスとデータベースの構成およびパフォーマンス メタデータを Azure に送信します。
@@ -62,7 +61,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 ## <a name="appliance---hyper-v"></a>アプライアンス - Hyper-V
 
-**要件** | **Hyper-V** 
+**要件** | **Hyper-V**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
 **アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細で構成できます。<br/> - **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
@@ -77,17 +76,16 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 ## <a name="appliance---physical"></a>アプライアンス - 物理
 
-**要件** | **物理** 
+**要件** | **物理**
 --- | ---
 **アクセス許可** | アプライアンス構成マネージャーにローカルまたはリモートでアクセスするには、アプライアンス サーバーの管理者特権を持つローカルまたはドメインのユーザー アカウントが必要です。
 **アプライアンス サービス** | アプライアンスには次のサービスがあります。<br/><br/> - **アプライアンス構成マネージャー**: これは Web アプリケーションであり、サーバーの検出と評価を開始するためにソースの詳細で構成できます。<br/> - **検出エージェント**: このエージェントにより、オンプレミスの評価として作成するために使用できるサーバー構成メタデータが収集されます。<br/>- **評価エージェント**: このエージェントにより、パフォーマンスベースの評価を作成するために使用できるサーバー パフォーマンス メタデータが収集されます。<br/>- **自動更新サービス**: このサービスにより、アプライアンス上で実行されているすべてのエージェントが最新の状態に保たれます。 24 時間ごとに自動的に実行されます。
-**プロジェクトの制限** |  単一のプロジェクトにのみアプライアンスを登録することができます。<br/> 単一のプロジェクトに複数の登録済みアプライアンスを含めることができます。<br/> 
+**プロジェクトの制限** |  単一のプロジェクトにのみアプライアンスを登録することができます。<br/> 単一のプロジェクトに複数の登録済みアプライアンスを含めることができます。<br/>
 **検出の制限** | 1 つのアプライアンスで最大 1000 台の物理サーバーを検出できます。
 **サポートされるデプロイ** | PowerShell インストーラー スクリプトを使用して、Windows Server 2016 を実行している既存のサーバーにデプロイします。
 **PowerShell スクリプト** | プロジェクトから、または[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から zip ファイルのスクリプト (AzureMigrateInstaller.ps1) をダウンロードします。 [詳細については、こちらを参照してください](tutorial-discover-physical.md)。<br/><br/> ダウンロード サイズは 85.8 MB です。
 **スクリプトの確認** | ハッシュ値を確かめて、プロジェクトからダウンロードした PowerShell インストーラー スクリプトを[確認](tutorial-discover-physical.md#verify-security)します。
 **ハードウェアとネットワークの要件** |  アプライアンスは、Windows Server 2016、16 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域を搭載したサーバーで実行する必要があります。<br/> アプライアンスには、静的または動的 IP アドレスが必要であり、直接またはプロキシを介したインターネット アクセスが必要です。<br/><br/> 既存のサーバーでアプライアンスを実行する場合は、Windows Server 2016 を実行しており、ハードウェアの要件を満たしていることを確認します。<br/>_(現在のところ、アプライアンスは Windows Server 2016 でのみデプロイできます。)_
-
 
 ## <a name="url-access"></a>URL アクセス
 
@@ -95,7 +93,7 @@ Azure Migrate アプライアンスには、インターネットへの接続が
 
 - アプライアンスをデプロイすると、必要な URL への接続チェックが Azure Migrate によって行われます。
 - リスト内のすべての URL へのアクセスを許可する必要があります。 評価のみ行う場合は、VMware エージェントレスの移行で必須とマークされている URL をスキップできます。
--  URL ベースのプロキシを使用してインターネットに接続している場合は、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。
+- URL ベースのプロキシを使用してインターネットに接続している場合は、URL の探索中に受信されたすべての CNAME レコードがプロキシによって解決されるようにします。
 
 ### <a name="public-cloud-urls"></a>パブリック クラウドの URL
 
@@ -132,7 +130,6 @@ download.microsoft.com/download | Microsoft ダウンロード センターか�
 *.blob.core.usgovcloudapi.net  |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
 *.applicationinsights.us | 内部監視に使用するアプライアンス ログをアップロードします。
 
-
 ## <a name="collected-data---vmware"></a>収集されるデータ - VMware
 
 アプライアンスによって、構成メタデータ、パフォーマンス メタデータ、およびサーバーの依存関係データ (エージェントレスの[依存関係分析](concepts-dependency-visualization.md)が使用されている場合) が収集されます。
@@ -144,12 +141,12 @@ Azure Migrate アプライアンスによって検出されたメタデータは
 アプライアンスによって収集され、Azure に送信されるサーバーのメタデータの完全な一覧を以下に示します。
 
 **データ** | **カウンター**
---- | --- 
-**サーバーの詳細** | 
-サーバー ID | vm.Config.InstanceUuid 
+--- | ---
+**サーバーの詳細** |
+サーバー ID | vm.Config.InstanceUuid
 サーバー名 | vm.Config.Name
 vCenter Server ID | VMwareClient.Instance.Uuid
-VM の説明 | vm.Summary.Config.Annotation
+[サーバーの説明] | vm.Summary.Config.Annotation
 ライセンス プロダクト名 | vm.Client.ServiceContent.About.LicenseProductName
 オペレーティング システムの種類 | vm.SummaryConfig.GuestFullName
 ブートの種類 | vm.Config.Firmware
@@ -160,7 +157,7 @@ VM の説明 | vm.Summary.Config.Annotation
 ネットワーク アダプターのリスト | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
 CPU 使用率 | cpu.usage.average
 メモリ使用率 |mem.usage.average
-**各ディスクの詳細** | 
+**各ディスクの詳細** |
 ディスク キーの値 | disk.Key
 Dikunit 番号 | disk.UnitNumber
 ディスク コントローラー キーの値 | disk.ControllerKey.Value
@@ -170,53 +167,51 @@ Dikunit 番号 | disk.UnitNumber
 1 秒あたりの書き込み操作 | virtualDisk.numberWriteAveraged.average
 読み取りのスループット (MB/秒) | virtualDisk.read.average
 書き込みのスループット (MB/秒) | virtualDisk.write.average
-**各 NIC の詳細** | 
+**各 NIC の詳細** |
 ネットワーク アダプターの名前 | nic.Key
 MAC アドレス | ((VirtualEthernetCard)nic).MacAddress
 IPv4 アドレス | vm.Guest.Net
 IPv6 アドレス | vm.Guest.Net
 読み取りのスループット (MB/秒) | net.received.average
 書き込みのスループット (MB/秒) | net.transmitted.average
-**インベントリ パスの詳細** | 
+**インベントリ パスの詳細** |
 名前 | container.GetType().Name
 子オブジェクトの型 | container.ChildType
 参照の詳細 | container.MoRef
 親の詳細 | Container.Parent
-各 VM のフォルダーの詳細 | ((Folder)container).ChildEntity.Type
-各 VM のデータセンターの詳細 | ((Datacenter)container).VmFolder
+各サーバーのフォルダーの詳細 | ((Folder)container).ChildEntity.Type
+各サーバーのデータセンターの詳細 | ((Datacenter)container).VmFolder
 各ホスト フォルダーのデータセンターの詳細 | ((Datacenter)container).HostFolder
 各ホストのクラスターの詳細 | ((ClusterComputeResource)container).Host
-各 VM のホストの詳細 | ((HostSystem)container).VM
+各サーバーのホストの詳細 | ((HostSystem)container).VM
 
 ### <a name="performance-data"></a>パフォーマンス データ
 
-
-アプライアンスが収集して Azure に送信する VMware VM のパフォーマンス データを次に示します。
+以下に、アプライアンスによって VMware 上で実行されているサーバーで収集され、Azure に送信されるパフォーマンス データを示します。
 
 **データ** | **カウンター** | **評価の影響**
 --- | --- | ---
-CPU 使用率 | cpu.usage.average | 推奨される VM サイズ/コスト
-メモリ使用率 | mem.usage.average | 推奨される VM サイズ/コスト
-ディスク読み取りのスループット (MB/秒) | virtualDisk.read.average | ディスク サイズ、ストレージ コスト、VM サイズの計算
-ディスク書き込みのスループット (MB/秒) | virtualDisk.write.average | ディスク サイズ、ストレージ コスト、VM サイズの計算
-1 秒あたりのディスク読み取り操作 | virtualDisk.numberReadAveraged.average | ディスク サイズ、ストレージ コスト、VM サイズの計算
-1 秒あたりのディスク書き込み操作 | virtualDisk.numberWriteAveraged.average  | ディスク サイズ、ストレージ コスト、VM サイズの計算
-NIC 読み取りのスループット (MB/秒) | net.received.average | VM サイズの計算
-NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM サイズの計算
+CPU 使用率 | cpu.usage.average | 推奨されるサーバー サイズ/コスト
+メモリ使用率 | mem.usage.average | 推奨されるサーバー サイズ/コスト
+ディスク読み取りのスループット (MB/秒) | virtualDisk.read.average | ディスク サイズ、ストレージ コスト、サーバー サイズの計算
+ディスク書き込みのスループット (MB/秒) | virtualDisk.write.average | ディスク サイズ、ストレージ コスト、サーバー サイズの計算
+1 秒あたりのディスク読み取り操作 | virtualDisk.numberReadAveraged.average | ディスク サイズ、ストレージ コスト、サーバー サイズの計算
+1 秒あたりのディスク書き込み操作 | virtualDisk.numberWriteAveraged.average  | ディスク サイズ、ストレージ コスト、サーバー サイズの計算
+NIC 読み取りのスループット (MB/秒) | net.received.average | サーバー サイズの計算
+NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |サーバー サイズの計算
 
+### <a name="installed-software-inventory"></a>インストールされているソフトウェア インベントリ
 
-### <a name="installed-applications-data"></a>インストールされているアプリケーションのデータ
+アプライアンスにより、サーバー上のインストールされているソフトウェア インベントリに関するデータが収集されます。
 
-アプライアンスにより、サーバー上のインストールされているアプリケーション、ロールおよび機能に関するデータが収集されます。
+#### <a name="windows-server-software-inventory-data"></a>Windows server ソフトウェア インベントリ データ
 
-#### <a name="windows-server-application-data"></a>Windows サーバー アプリケーションのデータ
-
-VMware 環境で検出された各 Windows サーバーからアプライアンスによって収集されるアプリケーション データを以下に示します。
+VMware 環境で検出された各 Windows サーバーからアプライアンスによって収集されるソフトウェア インベントリ データを以下に示します。
 
 **データ** | **レジストリの場所** | **キー**
 --- | --- | ---
 アプリケーション名  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
-Version  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Version  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion
 プロバイダー  | HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
 
 #### <a name="windows-server-features-data"></a>Windows サーバー機能のデータ
@@ -236,9 +231,9 @@ VMware 環境で検出された各 Windows サーバーからアプライアン�
 **データ**  | **レジストリの場所**  | **キー**
 --- | --- | ---
 名前  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
-Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition 
+Edition  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Edition
 Service Pack  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | SP
-Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version 
+Version  | HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\\\<InstanceName>\Setup  | Version
 
 #### <a name="windows-server-operating-system-data"></a>Windows サーバー オペレーティング システムのデータ
 
@@ -250,12 +245,12 @@ VMware 環境で検出された各 Windows サーバーからアプライアン�
 Version  | Win32_operatingsystem  | Version
 Architecture  | Win32_operatingsystem  | OSArchitecture
 
-#### <a name="linux-server-application-data"></a>Linux サーバー アプリケーションのデータ
+#### <a name="linux-server-software-inventory-data"></a>Linux サーバー ソフトウェア インベントリ データ
 
-以下に、VMware 環境で検出された各 Linux サーバーからアプライアンスによって収集されるアプリケーション データを示します。 サーバーのオペレーティング システムに基づいて、1 つまたは複数のコマンドが実行されます。
+VMware 環境で検出された各 Linux サーバーからアプライアンスによって収集されるソフトウェア インベントリ データを以下に示します。 サーバーのオペレーティング システムに基づいて、1 つまたは複数のコマンドが実行されます。
 
 **データ**  | **コマンド**
---- | --- 
+--- | ---
 名前 | rpm、dpkg-query、snap
 Version | rpm、dpkg-query、snap
 プロバイダー | rpm、dpkg-query、snap
@@ -265,8 +260,8 @@ Version | rpm、dpkg-query、snap
 VMware 環境で検出された各 Linux サーバーからアプライアンスによって収集されるオペレーティング システム データを以下に示します。
 
 **データ**  | **コマンド**
---- | --- 
-名前 <br/> version | 次の 1 つ以上のファイルから収集されます。<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+--- | ---
+名前 <br/> version | 次の 1 つ以上のファイルから収集されます。<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version
 Architecture | uname
 
 ### <a name="sql-server-instances-and-databases-data"></a>SQL Server インスタンスおよびデータベースのデータ
@@ -296,13 +291,13 @@ Service Broker が有効になっているかどうか | sys.databases
 
 **サーバーのメタデータ** | **ビューまたは SQL Server のプロパティ**
 --- | ---
-サーバー名 |SERVERPROPERTY 
+サーバー名 |SERVERPROPERTY
 FQDN | インストールされているアプリケーションの検出から派生した接続文字列
 インストール ID | sys.dm_server_registry
 サーバーのバージョン | SERVERPROPERTY
 サーバーのエディション | SERVERPROPERTY
 サーバー ホスト プラットフォーム (Windows または Linux) | SERVERPROPERTY
-サーバーの製品レベル (RTM SP CTP) | SERVERPROPERTY 
+サーバーの製品レベル (RTM SP CTP) | SERVERPROPERTY
 既定のバックアップ パス | SERVERPROPERTY
 データ ファイルの既定のパス | SERVERPROPERTY、および Software\Microsoft\MSSQLServer\MSSQLServer
 ログ ファイルの既定のパス | SERVERPROPERTY、および Software\Microsoft\MSSQLServer\MSSQLServer
@@ -313,8 +308,8 @@ FQDN | インストールされているアプリケーションの検出から�
 HA が有効になっているかどうか | SERVERPROPERTY
 バッファー プール拡張機能が有効になっているかどうか | sys.dm_os_buffer_pool_extension_configuration
 フェールオーバー クラスターが構成されているかどうか | SERVERPROPERTY
-Windows 認証モードのみを使用するサーバー | SERVERPROPERTY 
-サーバーにより PolyBase がインストールされる | SERVERPROPERTY 
+Windows 認証モードのみを使用するサーバー | SERVERPROPERTY
+サーバーにより PolyBase がインストールされる | SERVERPROPERTY
 いいえ。 システム上の論理 CPU の | sys.dm_server_registry、sys.dm_os_sys_info
 論理または物理コア数の比率。このコアは 1 つの物理プロセッサ パッケージによって公開されます | sys.dm_os_schedulers、sys.dm_os_sys_info
 システム上の物理 CPU の数 | sys.dm_os_schedulers、sys.dm_os_sys_info
@@ -351,8 +346,8 @@ SQL のメモリ使用率| sys.dm_os_process_memory | 未使用
 
 エージェントレスの依存関係分析が有効になっている各 Windows サーバーから、アプライアンスによって収集される接続データを以下に示します。
 
-**データ** | **コマンド** 
---- | --- 
+**データ** | **コマンド**
+--- | ---
 ローカル ポート | netstat
 ローカル IP アドレス | netstat
 リモート ポート | netstat
@@ -373,19 +368,18 @@ TCP 接続の状態 | netstat
 
 エージェントレスの依存関係分析が有効になっている各 Linux サーバーから、アプライアンスによって収集される接続データを以下に示します。
 
-**データ** | **コマンド** 
+**データ** | **コマンド**
 --- | ---
-ローカル ポート | netstat 
-ローカル IP アドレス | netstat 
-リモート ポート | netstat 
-リモート IP アドレス | netstat 
-TCP 接続の状態 | netstat 
+ローカル ポート | netstat
+ローカル IP アドレス | netstat
+リモート ポート | netstat
+リモート IP アドレス | netstat
+TCP 接続の状態 | netstat
 アクティブな接続の数 | netstat
-プロセス ID  | netstat 
+プロセス ID  | netstat
 [処理名] | ps
 プロセスの引数 | ps
 アプリケーション名 | dpkg または rpm
-
 
 ## <a name="collected-data---hyper-v"></a>収集されるデータ - Hyper-V
 
@@ -400,20 +394,20 @@ Azure Migrate アプライアンスによって検出されたメタデータは
 --- | --- | ---
 **サーバーの詳細** | 
 BIOS のシリアル番号 | Msvm_BIOSElement | BIOSSerialNumber
-VM の種類 (Gen 1 または 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
-VM の表示名 | Msvm_VirtualSystemSettingData | ElementName
-VM のバージョン | Msvm_ProcessorSettingData | VirtualQuantity
+サーバーの種類 (Gen 1 または 2) | Msvm_VirtualSystemSettingData | VirtualSystemSubType
+サーバーの表示名 | Msvm_VirtualSystemSettingData | ElementName
+サーバーのバージョン | Msvm_ProcessorSettingData | VirtualQuantity
 メモリ (バイト) | Msvm_MemorySettingData | VirtualQuantity
-VM が使用できる最大メモリ | Msvm_MemorySettingData | 制限
+サーバーが使用できる最大メモリ | Msvm_MemorySettingData | 制限
 動的メモリの有効化 | Msvm_MemorySettingData | DynamicMemoryEnabled
 オペレーティング システムの名前/バージョン/FQDN | Msvm_KvpExchangeComponent | GuestIntrinsicExchangeItems 名前データ
-VM の電源状態 | Msvm_ComputerSystem | EnabledState
-**各ディスクの詳細** | 
+サーバーの電源状態 | Msvm_ComputerSystem | EnabledState
+**各ディスクの詳細** |
 ディスク識別子 | Msvm_VirtualHardDiskSettingData | VirtualDiskId
 仮想ハード ディスクの種類 | Msvm_VirtualHardDiskSettingData | Type
 仮想ハード ディスクのサイズ | Msvm_VirtualHardDiskSettingData | MaxInternalSize
 仮想ハード ディスクの親 | Msvm_VirtualHardDiskSettingData | ParentPath
-**各 NIC の詳細** | 
+**各 NIC の詳細** |
 IP アドレス (統合 NIC) | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP の有効化 (統合 NIC) | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC ID (統合 NIC) | Msvm_SyntheticEthernetPortSettingData | InstanceID
@@ -427,17 +421,16 @@ NIC MAC ID (レガシ NIC) | MsvmEmulatedEthernetPortSetting データ | Address
 
 **パフォーマンス カウンター クラス** | **カウンター** | **評価の影響**
 --- | --- | ---
-Hyper-V のハイパーバイザー仮想プロセッサ | ゲスト実行時間 (%) | 推奨される VM サイズ/コスト
-Hyper-V の動的メモリ VM | 現在の負荷 (%)<br/> ゲストの可視物理メモリ (MB) | 推奨される VM サイズ/コスト
-Hyper-V の仮想ストレージ デバイス | 読み取りバイト数/秒 | ディスク サイズ、ストレージ コスト、VM サイズの計算
-Hyper-V の仮想ストレージ デバイス | 書き込みバイト数/秒 | ディスク サイズ、ストレージ コスト、VM サイズの計算
-Hyper-V の仮想ネットワーク アダプター | 受信バイト数/秒 | VM サイズの計算
-Hyper-V の仮想ネットワーク アダプター | 送信バイト数/秒 | VM サイズの計算
+Hyper-V のハイパーバイザー仮想プロセッサ | ゲスト実行時間 (%) | 推奨されるサーバー サイズ/コスト
+Hyper-V の動的メモリ サーバー | 現在の負荷 (%)<br/> ゲストの可視物理メモリ (MB) | 推奨されるサーバー サイズ/コスト
+Hyper-V の仮想ストレージ デバイス | 読み取りバイト数/秒 | ディスク サイズ、ストレージ コスト、サーバー サイズの計算
+Hyper-V の仮想ストレージ デバイス | 書き込みバイト数/秒 | ディスク サイズ、ストレージ コスト、サーバー サイズの計算
+Hyper-V の仮想ネットワーク アダプター | 受信バイト数/秒 | サーバー サイズの計算
+Hyper-V の仮想ネットワーク アダプター | 送信バイト数/秒 | サーバー サイズの計算
 
-- CPU 使用率は、VM にアタッチされているすべての仮想プロセッサのすべての使用量の合計です。
+- CPU 使用率は、サーバーにアタッチされているすべての仮想プロセッサのすべての使用量の合計です。
 - メモリ使用率は、(現在の負荷 * ゲストの可視物理メモリ) / 100 です。
 - ディスクとネットワークの使用率の値は、一覧にある Hyper-V パフォーマンス カウンターから収集されます。
-
 
 ## <a name="collected-data---physical"></a>収集されるデータ - 物理
 
@@ -472,8 +465,8 @@ NIC の MAC アドレス | Win32_NetworkAdapterConfiguration | MACAddress
 
 アプライアンスが収集して Azure に送信する Linux サーバーのメタデータの全一覧を次に示します。
 
-**データ** | **コマンド** 
---- | --- 
+**データ** | **コマンド**
+--- | ---
 FQDN | cat /proc/sys/kernel/hostname, hostname -f
 プロセッサ コア数 |  /proc/cpuinfo \| awk '/^processor/{print $3}' \| wc -l
 割り当てられたメモリ | cat /proc/meminfo \| grep MemTotal \| awk '{printf "%.0f", $2/1024}'
@@ -507,16 +500,15 @@ NIC ごとに送信したデータ | BWin32_PerfFormattedData_Tcpip_NetworkInter
 
 アプライアンスが収集して Azure に送信する Linux サーバーのパフォーマンス データを次に示します。
 
-**データ** | **コマンド** 
---- | --- 
-CPU 使用率 | cat /proc/stat/| grep 'cpu' /proc/stat
-メモリ使用量 | free \| grep Mem \| awk '{print $3/$2 * 100.0}'
-NIC 数 | lshw -class network \| grep eth[0-60] \| wc -l
-NIC ごとに受信したデータ | cat /sys/class/net/eth$nic/statistics/rx_bytes
-NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_bytes
-ディスク数 | fdisk -l \| egrep 'Disk.*bytes' \| awk '{print $2}' \| cut -f1 -d ':'
-ディスクの詳細 | cat /proc/diskstats
-
+| **データ** | **コマンド** |
+| --- | --- |
+| CPU 使用率 | cat /proc/stat/ \| grep 'cpu' /proc/stat |
+| メモリ使用量 | free \| grep Mem \| awk '{print $3/$2 * 100.0}' |
+| NIC 数 | lshw -class network \| grep eth[0-60] \| wc -l |
+| NIC ごとに受信したデータ | cat /sys/class/net/eth$nic/statistics/rx_bytes |
+| NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_bytes |
+| ディスク数 | fdisk -l \| egrep 'Disk.\*bytes' \| awk '{print $2}' \| cut -f1 -d ':' |
+| ディスクの詳細 | cat /proc/diskstats |
 
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
 
@@ -540,7 +532,7 @@ NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_by
 
 レジストリ キーを削除するには、次の手順を実行します。
 
-1. アプライアンスを実行しているマシンで、レジストリ エディターを開きます。
+1. アプライアンスを実行しているサーバーで、レジストリ エディターを開きます。
 2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** に移動します。
 3. 自動更新を無効にするために作成したレジストリ キー **AutoUpdate** を削除します。
 
@@ -556,7 +548,7 @@ NIC ごとに送信したデータ | cat /sys/class/net/eth$nic/statistics/tx_by
 次のいずれかの方法を使用して、アプライアンス サービスのバージョンを確認できます。
 
 - アプライアンス構成マネージャーで、 **[前提条件の設定]** パネルに移動します。
-- アプライアンス マシンの **[コントロールパネル]**  >  **[プログラムと機能]** で。
+- アプライアンス サーバーの **[コントロールパネル]**  >  **[プログラムと機能]** で。
 
 Appliance Configuration Manager で確認するには以下を行います。
 
@@ -577,12 +569,12 @@ Appliance Configuration Manager で確認するには以下を行います。
 いずれかのサービスに対して古いバージョンを実行している場合は、サービスをアンインストールし、最新バージョンに手動で更新する必要があります。
 
 1. 最新のアプライアンス サービス バージョンを確認するには、LatestComponents.json ファイルを[ダウンロード](https://aka.ms/latestapplianceservices)します。
-2.    ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
+2. ダウンロードが完了したら、メモ帳で LatestComponents.json ファイルを開きます。
 3. ファイル内の最新のサービス バージョンとそのファイルのダウンロード リンクを探します。 次に例を示します。
 
     "Name":"ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "Version":"6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
-4.    ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
+4. ファイルのダウンロード リンクを使用して、古いサービスの最新バージョンをダウンロードします。
 5. ダウンロードした後、管理者コマンド ウィンドウで次のコマンドを実行して、ダウンロードした MSI の整合性を確認します。
 
     ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```次に例を示します。C:\>CertUtil -HashFile C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.MSI MD5
@@ -591,11 +583,8 @@ Appliance Configuration Manager で確認するには以下を行います。
 6. 次に MSI を実行して、サービスをインストールします。 これはサイレント インストールであり、完了後にインストール ウィンドウが閉じます。
 7. インストールが完了したら、 **[コントロール パネル]**  >  **[プログラムと機能]** でサービスのバージョンを確認します。 これで、サービスのバージョンが json ファイルに示されている最新のバージョンにアップグレードされているはずです。
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
 - VMware 用にアプライアンスを設定する[方法を確認する](how-to-set-up-appliance-vmware.md)。
 - Hyper-V 用にアプライアンスを設定する[方法を確認する](how-to-set-up-appliance-hyper-v.md)。
 - 物理サーバーのためのアプライアンスを設定する[方法を確認](how-to-set-up-appliance-physical.md)します。
-

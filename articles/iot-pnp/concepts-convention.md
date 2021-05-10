@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: a8dfb3cacf798559273361ec75cab4570a8a5228
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302605"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582682"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -25,7 +25,7 @@ IoT プラグ アンド プレイ デバイスが実装するテレメトリ、�
 - **コンポーネントなし** - コンポーネントのないモデル。 このモデルでは、テレメトリ、プロパティ、およびコマンドを、メイン インターフェイスのコンテンツ セクションで最上位レベルのプロパティとして宣言します。 Azure IoT エクスプローラー ツールでは、このモデルは 1 つの _既定のコンポーネント_ として表示されます。
 - **複数のコンポーネント** - 2 つ以上のインターフェイスで構成されるモデル。 テレメトリ、プロパティ、およびコマンドを持つ _既定のコンポーネント_ として表示されるメイン インターフェイス。 追加のテレメトリ、プロパティ、およびコマンドを備えたコンポーネントとして宣言された 1 つ以上のインターフェイス。
 
-詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](concepts-components.md)」を参照してください。
+詳細については、「[IoT プラグ アンド プレイ モデリング ガイド](concepts-modeling-guide.md)」を参照してください。
 
 ## <a name="identify-the-model"></a>モデルを識別する
 
@@ -353,4 +353,4 @@ IoT プラグ アンド プレイ規則について学習したので、いく�
 - [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C デバイス SDK](/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](/rest/api/iothub/device)
-- [モデル コンポーネント](./concepts-components.md)
+- [IoT プラグ アンド プレイ モデリング ガイド](concepts-modeling-guide.md)

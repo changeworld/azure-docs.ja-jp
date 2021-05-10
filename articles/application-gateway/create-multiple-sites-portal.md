@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 02/23/2021
+ms.date: 03/19/2021
 ms.author: victorh
-ms.openlocfilehash: 208bd0fe7f3869cbe15dd27e0b883c467e41c765
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8de0dd16c3b3b73b5d5e52017cf63b357654144f
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735074"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030959"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
@@ -25,9 +25,9 @@ ms.locfileid: "101735074"
 > * アプリケーション ゲートウェイの作成
 > * バックエンド サーバー用の仮想マシンの作成
 > * バックエンド サーバーでのバックエンド プールの作成
-> * バックエンド リスナーの作成
+> * リスナーの作成
 > * ルーティング規則の作成
-> * ドメインの CNAME レコードの作成
+> * 名前解決のためにホスト ファイルを編集する
 
 :::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="複数サイト アプリケーション ゲートウェイ":::
 
@@ -212,9 +212,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 デプロイが完了するまで待ってから次の手順に進んでください。
 
-## <a name="edit-your-hosts-file"></a>hosts ファイルを編集する
+## <a name="edit-your-hosts-file-for-name-resolution"></a>名前解決のために hosts ファイルを編集する
 
-パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、IP アドレスを取得し、これを使用して `www.contoso.com` と `www.fabrikam.com` を解決するように hosts ファイルを編集できます 
+パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、IP アドレスを取得し、これを使用して `www.contoso.com` と `www.fabrikam.com` を解決するように hosts ファイルを編集できます。 運用環境では、名前解決のために `CNAME` を DNS に作成できます。
 
 1. **[すべてのリソース]** 、 **[myAGPublicIPAddress]** の順にクリックします。
 

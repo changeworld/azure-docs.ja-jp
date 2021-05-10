@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.date: 03/18/2021
+ms.openlocfilehash: c33739124092a17acf0590f00b2f9c3c09bf894e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418880"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104654664"
 ---
-# <a name="create-a-semantic-query-in-cognitive-search"></a>Cognitive Search でセマンティック クエリを作成する
+# <a name="create-a-query-for-semantic-captions-in-cognitive-search"></a>Cognitive Search でセマンティック キャプションに対するクエリを作成する
 
 > [!IMPORTANT]
-> セマンティック クエリ型はパブリック プレビュー段階にあり、プレビューの REST API および Azure portal を通じて利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> セマンティック検索はパブリック プレビュー段階にあり、プレビューの REST API と Azure portal を介して利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 これらの機能は課金対象です。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
-この記事では、セマンティック ランク付けを使用する検索要求を作成する方法について説明します。 この要求を発行すると、セマンティック キャプションと、必要に応じて[セマンティック回答](semantic-answers.md)が返され、最も関連性の高い用語と語句は強調表示されます。
+この記事では、セマンティック ランク付けを使用して、関連する用語と語句を強調したセマンティック キャプション (および必要に応じて[セマンティック回答](semantic-answers.md)) を返す検索要求を作成する方法について説明します。 "セマンティック" クエリの種類を使用して作成されたクエリでは、キャプションと回答の両方が返されます。
 
-キャプションと回答は両方とも、検索ドキュメント内のテキストから逐語的に抽出されます。 セマンティック サブシステムでは、キャプションまたは回答の特性を持つコンテンツは特定されますが、新しい文または語句が作成されることはありません。 このため、セマンティック検索には、説明または定義を含むコンテンツが最も適しています。
+キャプションと回答は、検索ドキュメント内のテキストから逐語的に抽出されます。 セマンティック サブシステムでは、コンテンツのどの部分がキャプションまたは回答の特性を持つかは特定されますが、新しい文や語句は作成されません。 このため、セマンティック検索には、説明または定義を含むコンテンツが最も適しています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "103418880"
 
 + クエリを送信するための検索クライアント
 
-  検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、または自分で変更したコードを使用して、プレビュー API への REST 呼び出しを行うことができます。 Azure portal で [Search エクスプローラー](search-explorer.md)を使用してセマンティック クエリを送信することもできます。
+  検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、またはプレビューの API への REST 呼び出しを行うコードを使用できます。 Azure portal で [Search エクスプローラー](search-explorer.md)を使用してセマンティック クエリを送信することもできます。
 
 + [クエリ要求](/rest/api/searchservice/preview-api/search-documents)には、この記事で説明するセマンティック オプションやその他のパラメーターを含める必要があります。
 
@@ -62,9 +62,13 @@ Cognitive Search のすべてのクエリと同様に、要求は、単一イン
 
 ## <a name="query-with-search-explorer"></a>検索エクスプローラーを使用したクエリ実行
 
-[検索エクスプローラー](search-explorer.md)は更新され、セマンティック クエリ用のオプションが含められました。 プレビューにアクセスすると、これらのオプションがポータルに表示されます。 クエリ オプションでは、セマンティック クエリ、searchFields、およびスペル修正を有効にすることができます。
+[検索エクスプローラー](search-explorer.md)は更新され、セマンティック クエリ用のオプションが含められました。 これらのオプションは、次の手順を完了した後にポータルに表示されます。
 
-必要なクエリ パラメーターをクエリ文字列に貼り付けることもできます。
+1. [サインアップ](https://aka.ms/SemanticSearchPreviewSignup)して、お使いの検索サービスがプレビュー プログラムに参加する許可を得ます
+
+1. 構文 `https://portal.azure.com/?feature.semanticSearch=true` を使用してポータルを開きます
+
+クエリ オプションには、セマンティック クエリ、searchFields、およびスペル修正を有効にするスイッチが含まれています。 必要なクエリ パラメーターをクエリ文字列に貼り付けることもできます。
 
 :::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="検索エクスプローラー内のクエリ オプション" border="true":::
 
@@ -94,11 +98,11 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 次の表は、セマンティック クエリで使用されるクエリ パラメーターを全体的に参照できるようにまとめたものです。 すべてのパラメーターの一覧については、「[Search Documents (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents)」を参照してください
 
-| パラメーター | 種類 | 説明 |
+| パラメーター | Type | 説明 |
 |-----------|-------|-------------|
 | queryType | String | 有効な値は、simple、full、semantic です。 セマンティック クエリには、"semantic" の値が必要です。 |
 | queryLanguage | String | セマンティック クエリに必要です。 現在、"en-us" のみが実装されています。 |
-| searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 省略可能ですが、指定することをお勧めします。 セマンティック ランク付けを行うフィールドを指定します。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。 使用方法の詳細については、「[手順 2: searchFields を設定する](#searchfields)」を参照してください。 |
+| searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 セマンティック ランク付けを行うフィールドを指定します。ここから、キャプションと回答が抽出されます。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。 使用方法の詳細については、「[手順 2: searchFields を設定する](#searchfields)」を参照してください。 |
 | スペル チェック | String | 検索エンジンに到達する前にスペルミスを修正する省略可能なパラメーターであり、セマンティック クエリに固有のものではない。 詳細については、[クエリへのスペル修正の追加](speller-how-to-add.md)に関するページを参照してください。 |
 | answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なパラメーター。 現在、"extractive" のみが実装されています。 回答は、最大 5 つを返すように構成できます。 既定値は 1 です。 この例は、回答の数が 3 であることを示しています: "extractive\|count3"。 詳細については、[セマンティック回答を返す](semantic-answers.md)に関するページを参照してください。|
 
@@ -125,13 +129,11 @@ queryLanguage は、インデックス スキーマのフィールド定義に�
 
 #### <a name="step-2-set-searchfields"></a>手順 2: searchFields を設定する
 
-このパラメーターは指定しなくてもエラーにならないという点では省略可能ですが、キャプションと回答の両方にフィールドの順序指定済みリストを指定することを強くお勧めします。
-
 searchFields パラメーターは、クエリに対する "セマンティックの類似性" について評価すべき一節を識別するために使用されます。 プレビューでは、処理すべき最も重要なフィールドに関するヒントがモデルに必要なため、searchFields を空白のままにすることはお勧めしません。
 
-searchFields の順序は重要です。 既存の単純および完全な Lucene クエリで既に searchFields を使用している場合は、セマンティック クエリの種類に切り替えるときにこのパラメーターに再度アクセスしてフィールドの順序を確認してください。
+searchFields の順序は重要です。 単純および完全な Lucene クエリの既存のコードで既に searchFields を使用している場合は、セマンティック クエリの種類に切り替えるときにこのパラメーターを見直してフィールドの順序を確認してください。
 
-2 つ以上の searchFields が指定されている場合は、こちらのガイドラインに従って、最適な結果が得られるようにします。
+2 つ以上の searchFields の場合:
 
 + コレクションには、文字列フィールドと最上位の文字列フィールドのみを含めます。 文字列以外のフィールドまたは下位のフィールドをコレクションに含めると、エラーは発生しませんが、セマンティック ランク付けでそれらのフィールドは使用されません。
 
@@ -141,7 +143,7 @@ searchFields の順序は重要です。 既存の単純および完全な Lucen
 
 + これらのフィールドの後に、セマンティック クエリの回答が見つかる可能性がある説明フィールドを配置します (ドキュメントの主な内容など)。
 
-フィールドが 1 つしか指定されていない場合は、ドキュメントの主な内容など、セマンティック クエリに対する回答が見つかる可能性のある説明フィールドを使用します。 十分な内容を提供するフィールドを選択します。 タイムリーな処理を確実に行うために、searchFields の共同コンテンツの約 8000 個のトークンについてのみ、セマンティック評価および優先順序付けが行われます。
+フィールドが 1 つしか指定されていない場合は、ドキュメントの主な内容など、セマンティック クエリに対する回答が見つかる可能性のある説明フィールドを使用します。 
 
 #### <a name="step-3-remove-orderby-clauses"></a>手順 3: orderBy 句を削除する
 
@@ -191,7 +193,7 @@ searchFields の順序は重要です。 既存の単純および完全な Lucen
 セマンティック ランク付けと応答は最初の結果セットを基に構築されていることを思い出してください。 最初の結果の品質を向上させるロジックは、セマンティック検索に引き継がれます。 次の手順として、最初の結果に寄与する機能を確認します。これには、文字列のトークン化の方法に影響を与えるアナライザー、結果を調整できるスコアリング プロファイル、および既定の関連性アルゴリズムが含まれます。
 
 + [テキスト処理のためのアナライザー](search-analyzers.md)
-+ [Cognitive Search での類似性とスコアリング](index-similarity-and-scoring.md)
-+ [スコアリング プロファイルの追加](index-add-scoring-profiles.md)
++ [類似性ランク付けアルゴリズム](index-similarity-and-scoring.md)
++ [スコアリング プロファイル](index-add-scoring-profiles.md)
 + [セマンティック検索の概要](semantic-search-overview.md)
-+ [クエリ用語にスペル チェックを追加する](speller-how-to-add.md)
++ [セマンティック ランク付けアルゴリズム](semantic-ranking.md)

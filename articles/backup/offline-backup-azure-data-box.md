@@ -3,12 +3,12 @@ title: Azure Data Box を使用したオフライン バックアップ
 description: Azure Data Box を使用して、MARS エージェントから Recovery Services コンテナーに、大規模な初期バックアップ データをオフラインでシード処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78adc479ce5733e208d2334d30d7b88e4edf8d6b
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96752585"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576093"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box を使用した Azure Backup のオフライン バックアップ
 
@@ -292,7 +292,7 @@ Data Box ジョブが作成されるサブスクリプションで、管理者�
 
 オフライン バックアップを構成しようとしているサーバーから、次の操作を実行します。
 
-1. **[Manage computer certificate application]\(コンピューター証明書の管理アプリケーション\)**  >  **[個人用]** タブに移動し、`CB_AzureADCertforOfflineSeeding_<ResourceId>` という名前の証明書を探します。
+1. **[Manage computer certificate application]\(コンピューター証明書の管理アプリケーション\)**  >  **[個人用]** タブに移動し、`CB_AzureADCertforOfflineSeeding_<Timestamp>` という名前の証明書を探します。
 
 2. 証明書を選択し、 **[すべてのタスク]** を右クリックして、証明書を .cer 形式として秘密キーなしで **[エクスポート]** を選択します。
 

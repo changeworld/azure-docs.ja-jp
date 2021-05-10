@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: b1cb48d1ae858dbcd0df80780b4c3cee3deac75b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 996fa53aa105c0bcc27db7134c25d6d00e542a78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90976488"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110289"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR Service の回復性とディザスター リカバリー
 
@@ -44,13 +44,16 @@ SignalR サービス インスタンスとアプリ サーバーとを 2 ペア 
 
 ![この図は、それぞれがアプリ サーバーと SignalR サービスを持つ 2 つのリージョンを示しています。各サーバーは、プライマリとしてそのリージョンの SignalR サービスに関連付けられ、セカンダリとして他のリージョンのサービスに関連付けられています。](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>複数の SignalR サービス インスタンスでアプリ サーバーを構成する
+## <a name="configure-multiple-signalr-service-instances"></a>複数の SignalR サービス インスタンスを構成する
 
-SignalR サービスとアプリ サーバーを各リージョンに作成したら、すべての SignalR サービス インスタンスに接続するようにアプリ サーバーを構成することができます。
+複数の SignalR サービス インスタンスは、アプリ サーバーと Azure Functions の両方でサポートされています。
 
+SignalR サービスとアプリ サーバーまたは Azure Functions を各リージョンに作成したら、すべての SignalR サービス インスタンスに接続するようにアプリ サーバーまたは Azure Functions を構成できます。
+
+### <a name="configure-on-app-servers"></a>アプリ サーバーで構成する
 それには次の 2 とおりの方法があります。
 
-### <a name="through-config"></a>config による方法
+#### <a name="through-config"></a>config による方法
 
 環境変数/アプリの設定/web.cofig から `Azure:SignalR:ConnectionString` という名前の config エントリで SignalR サービスの接続文字列を設定する方法をご存知のはずです。
 複数のエンドポイントがある場合は、複数の config エントリでそれらを設定してください。それぞれ次の形式で設定します。
@@ -62,7 +65,7 @@ Azure:SignalR:ConnectionString:<name>:<role>
 ここで、`<name>` はエンドポイントの名前であり、`<role>` はそのロール (プライマリまたはセカンダリ) です。
 名前は省略可能ですが、複数のエンドポイント間でルーティングの動作をさらにカスタマイズしたい場合に役立ちます。
 
-### <a name="through-code"></a>コードによる方法
+#### <a name="through-code"></a>コードによる方法
 
 どこか他の場所に接続文字列を保存したい場合は、コードからそれらを読み取って、`AddAzureSignalR()` (ASP.NET Core の場合) または `MapAzureSignalR()` (ASP.NET の場合) を呼び出す際にパラメーターとして使用することもできます。
 
@@ -93,6 +96,9 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
 
 1. 少なくとも 1 つのプライマリ インスタンスがオンラインになっている場合は、ランダムなオンラインのプライマリ インスタンスを返します。
 2. すべてのプライマリ インスタンスがダウンしている場合は、ランダムなオンラインのセカンダリ インスタンスを返します。
+
+### <a name="configure-on-azure-functions"></a>Azure Functions で構成する
+[こちらの記事](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md#configuration-method)を参照してください。
 
 ## <a name="failover-sequence-and-best-practice"></a>フェールオーバーのシーケンスとベスト プラクティス
 
@@ -137,3 +143,5 @@ SignalR サービスは両方のパターンに対応できます。主な違い
 この記事では、SignalR サービスに回復性を持たせるためのアプリケーションの構成方法について説明しました。 SignalR サービスにおける接続のルーティングとサーバー/クライアント接続の詳細については、SignalR サービスの内部について説明した[こちらの記事](signalr-concept-internals.md)を参照してください。
 
 大量の接続を処理するために複数のインスタンスを同時に使用するスケーリング シナリオ (シャーディングなど) については、[複数のインスタンスをスケーリングする方法](signalr-howto-scale-multi-instances.md)に関するページを参照してください。
+
+複数の SignalR サービス インスタンスで Azure Functions を構成する方法の詳細については、 [Azure Functions での複数の Azure SignalR サービス インスタンスのサポート](https://github.com/Azure/azure-functions-signalrservice-extension/blob/dev/docs/sharding.md)に関する記事を参照してください。

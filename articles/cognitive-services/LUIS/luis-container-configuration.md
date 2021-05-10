@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001180"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
@@ -28,14 +28,14 @@ ms.locfileid: "96001180"
 
 |必須|設定|目的|
 |--|--|--|
-|はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
+|Yes|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ|[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|はい|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
-|はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
+|Yes|[Billing](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|Yes|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ|[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
 |いいえ|[Http Proxy](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
 |いいえ|[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
-|はい|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
+|Yes|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](luis-container-howto.md#billing)」を参照してください。

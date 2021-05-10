@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/23/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aea468c64f70bd7f35dd25206faa9ea33459999
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 11182b8331f218b970d867764f575ba5b7854d62
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101688911"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550695"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -33,6 +33,7 @@ Azure AD は、デバイス ID を一元的に管理する場所を提供しま�
 - デバイス ID 設定を構成する。
 - Enterprise State Roaming を有効または無効にする。
 - デバイス関連の監査ログを確認する
+- デバイスをダウンロードする (プレビュー)
 
 [![Azure portal の [すべてのデバイス] ビュー](./media/device-management-azure-portal/all-devices-azure-portal.png)](./media/device-management-azure-portal/all-devices-azure-portal.png#lightbox)
 
@@ -65,7 +66,7 @@ Azure AD には、デバイスを管理するために次の 2 つの場所が�
 > [!TIP]
 > - ハイブリッド Azure AD 参加済みの Windows 10 デバイスには、所有者がありません。 所有者でデバイスを検索していて、見つからなかった場合は、デバイス ID で検索してください。
 >
-> - [登録済み] 列の下の状態が "保留中" である "ハイブリッド Azure AD 参加済み" のデバイスが表示されている場合、そのデバイスが Azure AD 接続から同期されており、クライアントからの登録の完了を待機していることを示します。 [Hybrid Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)方法について詳細を参照してください。 追加情報については、[デバイスについてよく寄せられる質問](faq.md)に関する記事を参照してください。
+> - [登録済み] 列の下の状態が "保留中" である "ハイブリッド Azure AD 参加済み" のデバイスが表示されている場合、そのデバイスが Azure AD 接続から同期されており、クライアントからの登録の完了を待機していることを示します。 [Hybrid Azure AD 参加の実装を計画する](hybrid-azuread-join-plan.md)方法について詳細を参照してください。 追加情報については、[デバイスについてよく寄せられる質問](faq.yml)に関する記事を参照してください。
 >
 > - 一部の iOS デバイスの名前で使用されているアポストロフィは、アポストロフィに見える別の文字である可能性があります。 このため、このようなデバイスを検索するときは少し注意が必要です。正しい検索結果が表示されない場合は、検索文字列のアポストロフィが、正しいアポストロフィ文字であることを確認してください。
 
@@ -145,6 +146,14 @@ BitLocker キーを表示またはコピーするには、デバイスの所有�
 
 **[すべてのデバイス]** ビューに **フィルターを追加** できるようになりました。
 
+### <a name="download-devices-preview"></a>デバイスをダウンロードする (プレビュー)
+
+クラウド デバイス管理者、Intune 管理者、および全体管理者は、 **[Download devices (preview)]\(デバイスのダウンロード (プレビュー)\)** オプションを使用して、適用されているフィルターに基づいてデバイスの CSV ファイルをエクスポートできます。 一覧にフィルターが適用されていない場合は、すべてのデバイスがエクスポートされます。 エクスポートは、場合によっては最大で 1 時間実行される場合があります。 
+
+エクスポートされた一覧には、次のデバイス ID 属性が含まれています。
+
+`accountEnabled, approximateLastLogonTimeStamp, deviceOSType, deviceOSVersion, deviceTrustType, dirSyncEnabled, displayName, isCompliant, isManaged, lastDirSyncTime, objectId, profileType, registeredOwners, systemLabels, registrationTime, mdmDisplayName`
+
 ## <a name="configure-device-settings"></a>デバイス設定の構成
 
 Azure AD ポータルを使ってデバイス ID を管理するには、それらのデバイスが Azure AD に[登録されているか参加している](overview.md)必要があります。 管理者は、次のデバイスの設定を構成することによって、デバイスの登録および参加のプロセスを制御できます。
@@ -170,7 +179,11 @@ Azure portal でデバイスの設定を表示または管理するには、次�
 > [!NOTE]
 > **Azure AD 参加または Azure AD 登録となるデバイスには多要素認証が必須** になるようにする設定は、Azure AD 参加 (一部の例外あり) または Azure AD 登録のデバイスに適用されます。 この設定は、Hybrid Azure AD Join を使用したデバイス、[Azure 内の Azure AD 参加済み VM](./howto-vm-sign-in-azure-ad-windows.md#enabling-azure-ad-login-in-for-windows-vm-in-azure)、および [Windows Autopilot の自己デプロイ モード](/mem/autopilot/self-deploying)を使用する Azure AD 参加済みデバイスには適用されません。
 
-- **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができる、Azure AD に参加しているか Azure AD に登録されているデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 既定値は **50** です。
+> [!IMPORTANT]
+> - デバイスの参加または登録に多要素認証を強制する目的で、条件付きアクセスで ["デバイスの登録または参加" のユーザー アクション](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)を使用することをお勧めします。 
+> - 条件付きアクセス ポリシーを使用して多要素認証を要求する場合、この設定を **[いいえ]** に設定する必要があります。 
+
+- **[デバイスの最大数]** - この設定では、Azure AD でユーザーが持つことができる、Azure AD に参加しているか Azure AD に登録されているデバイスの最大数を選択できます。 ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。 既定値は **50** です。 値は 100 まで増やすことができますが、100 を超える値を入力すると Azure AD によって 100 に設定されます。 また、[無制限] という値を使用して、既存のクォータ制限以外の、制限なしを適用することもできます。
 
 > [!NOTE]
 > **[デバイスの最大数]** 設定は、Azure AD に参加しているか Azure AD に登録されているデバイスに適用されます。 この設定は、ハイブリッド Azure AD 参加済みデバイスには適用されません。

@@ -2,21 +2,20 @@
 title: キー コンテナーを別のリージョンに移動する - Azure Key Vault | Microsoft Docs
 description: この記事では、キー コンテナーを別のリージョンに移動するためのガイダンスを提供します。
 services: key-vault
-author: ShaneBala-keyvault
+author: msmbaldwin
 manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: sudbalas
-Customer intent: As a key vault administrator, I want to move my vault to another region.
-ms.openlocfilehash: 54a1894c88d12cfac1a2d8062425de9549c4292e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: ac2f6347776c2f5d230065b80b1c0336e21e181c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93285209"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751798"
 ---
 # <a name="move-an-azure-key-vault-across-regions"></a>リージョン間で Azure キー コンテナーを移動する
 
@@ -35,7 +34,7 @@ Azure Key Vault では、キー コンテナーをリージョン間で移動す
 
 ## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>オプション 1: キー コンテナーのバックアップ コマンドと復元コマンドを使用する
 
-バックアップ コマンドを使用して、コンテナー内の個々のシークレット、キー、および証明書をバックアップできます。 シークレットは暗号化された BLOB としてダウンロードされます。 その後、その BLOB を新しいキー コンテナー内に復元できます。 コマンドの一覧については、「[Azure Key Vault のコマンド](/powershell/module/azurerm.keyvault/?view=azurermps-6.13.0#key_vault)」をご覧ください。
+バックアップ コマンドを使用して、コンテナー内の個々のシークレット、キー、および証明書をバックアップできます。 シークレットは暗号化された BLOB としてダウンロードされます。 その後、その BLOB を新しいキー コンテナー内に復元できます。 コマンドの一覧については、「[Azure Key Vault のコマンド](/powershell/module/azurerm.keyvault#key_vault)」をご覧ください。
 
 バックアップ コマンドと復元コマンドの使用には、次の 2 つの制限があります。
 

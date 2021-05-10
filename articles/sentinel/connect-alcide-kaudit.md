@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b146e228de13109975a76b0e4c6c9fd183fd362d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100096873"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600406"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Alcide kAudit を Azure Sentinel に接続する
 
@@ -46,7 +46,7 @@ Alcide kAudit によって、ログを Azure Sentinel に直接エクスポー�
 
 1. ギャラリーから **[Alcide kAudit]** を選択し、 **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。
 
-1. [Alcide kAudit インストール ガイド](https://get.alcide.io/hubfs/Azure%20Sentinel%20Integration%20with%20kAudit.pdf)に記載されている詳細な手順に従ってください。
+1. [Alcide kAudit インストール ガイド](https://awesomeopensource.com/project/alcideio/kaudit?categoryPage=29#before-installing-alcide-kaudit)に記載されている詳細な手順に従ってください。
 
 1. ワークスペース ID と主キーを要求された場合は、Alcide kAudit データ コネクタのページからコピーできます。
 

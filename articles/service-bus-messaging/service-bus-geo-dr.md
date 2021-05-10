@@ -3,12 +3,12 @@ title: Azure Service Bus の geo ディザスター リカバリー | Microsoft 
 description: 地理的リージョンを使用して Azure Service Bus のフェールオーバーとディザスター リカバリーを行う方法
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2aa7ed118d0ba179ffff4f72a4d4df787edc9d88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035396"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933757"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -156,7 +156,7 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 
 4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。 サブスクリプションやルールもエンティティとしてカウントされます。
 
-### <a name="availability-zones"></a>可用性ゾーン
+## <a name="availability-zones"></a>可用性ゾーン
 
 Service Bus Premium SKU では、同じ Azure リージョン内に障害から分離された場所を提供する [Availability Zones](../availability-zones/az-overview.md) がサポートされています。 Service Bus は、メッセージング ストアの 3つのコピー (1つのプライマリと 2つのセカンダリ) を管理します。 Service Bus は、データ操作および管理操作のために 3つのコピーをすべて同期します。 プライマリ コピーがフェイルした場合には、セカンダリ コピーの 1つをプライマリに昇格させ、ダウンタイムを発生させません。 アプリケーションが Service Bus からの一時的な切断を認識した場合には、SDK の再試行ロジックによって Service Bus に自動で再接続します。 
 

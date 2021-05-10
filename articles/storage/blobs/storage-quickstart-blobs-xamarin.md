@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c6b502bbc56d6c9521ec736150fbc0046ff78125
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98802362"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642492"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイックスタート: Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
@@ -40,7 +40,7 @@ Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用�
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 * Azure Storage アカウント - [ストレージ アカウントの作成](../common/storage-account-create.md)
-* [Mobile Development for .NET ワークロード](/xamarin/get-started/installation/?pivots=windows)がインストールされた Visual Studio または [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019)
+* [Mobile Development for .NET ワークロード](/xamarin/get-started/installation/?pivots=windows)がインストールされた Visual Studio または [Visual Studio for Mac](/visualstudio/mac/installation?view=vsmac-2019&preserve-view=true)
 
 ## <a name="setting-up"></a>設定
     
@@ -196,7 +196,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 ### <a name="download-blobs"></a>BLOB をダウンロードする
 
-[DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 このサンプル コードでは、BLOB の `Stream` 表現をまず `MemoryStream` にコピーし、次に `StreamReader` にコピーして、テキストを表示できるようにしています。
+[DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 このサンプル コードでは、BLOB の `Stream` 表現をまず `MemoryStream` にコピーし、次に `StreamReader` にコピーして、テキストを表示できるようにしています。
 
 次のコードを *MainPage.xaml.cs* ファイルに追加します。
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 94d21cb82290e59ebb003969a566c1bfc877713e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/16/2021
+ms.openlocfilehash: 19ae4b929964aaeb971bef75a2a620e40e4667f5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200440"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727170"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>承認済みのベースを使用して Azure 仮想マシンを作成する方法
 

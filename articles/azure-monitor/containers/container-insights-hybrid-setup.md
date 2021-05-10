@@ -3,12 +3,12 @@ title: Container insights を使用してハイブリッド Kubernetes クラス
 description: この記事では、Azure Stack またはその他の環境でホストされている Kubernetes クラスターを監視するように Container insights を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d2692b4a634d60ef62339f68277591d711260712
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 90a4c14397df8e70fc8f3d88bc339f826bb1ccc9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101711248"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767025"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-container-insights"></a>Container insights を使用してハイブリッド Kubernetes クラスターを構成する
 
@@ -202,7 +202,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     }
     ```
 
-7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true) を実行して得られる **リージョン** の値をコピーします。
+7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az_monitor-log-analytics-workspace-list&preserve-view=true) を実行して得られる **リージョン** の値をコピーします。
 
 8. このファイルを containerSolutionParams.json という名前でローカル フォルダーに保存します。
 

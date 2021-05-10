@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:RStudio Server と R 向け ML サービス - Azure HDInsight
+title: 'クイックスタート: RStudio Server と R 向け ML サービス - Azure HDInsight'
 description: このクイックスタートでは、RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行します。
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 7604a327c43ed1942d336399b6d8b9dbb1e64d75
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8abd485bff885868d7865cf273cb161974106013
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935712"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104862835"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>クイック スタート:RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>クイックスタート: RStudio Server を使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
 
 Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark と Apache Hadoop MapReduce を使用して、分散計算を実行できます。 ML Services では、コンピューティング コンテキストを設定することによって呼び出しの実行方法が制御されます。 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、RevoScaleR の並列化された分散関数を実行できます。 また、RevoScaleR の Hadoop Map Reduce または Apache Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
@@ -20,7 +20,7 @@ Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark
 
 ## <a name="prerequisite"></a>前提条件
 
-HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
+HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、**[クラスターの種類]** で **[ML Services]** を選択してください。
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server に接続する
 
@@ -34,7 +34,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 接続後の画面は、次のスクリーンショットのようになります。
 
-![RStudio Web コンソールの概要](./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png)
+:::image type="content" source="./media/ml-services-quickstart-job-rstudio/connect-to-r-studio1.png" alt-text="RStudio Web コンソールの概要" border="true":::
 
 ## <a name="use-a-compute-context"></a>コンピューティング コンテキストを使用する
 
@@ -141,7 +141,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
     
       ---
     
-      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

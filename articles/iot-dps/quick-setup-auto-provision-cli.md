@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 611068fa020321be88be6e1d6da663266029c658
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d52a83c8c0920c4d85aa5b4b6b89fd8d36e5fea
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94660187"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774955"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>クイック スタート:Azure CLI で IoT Hub Device Provisioning Service をセットアップする
 
@@ -30,7 +30,7 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*my-sample-resource-group* という名前のリソース グループを場所 *westus* に作成します。
 
@@ -45,7 +45,7 @@ az group create --name my-sample-resource-group --location westus
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-[az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、IoT Hub を作成します。
+[az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを使用して、IoT Hub を作成します。
 
 次の例では、*my-sample-hub* という名前の IoT ハブを場所 *westus* に作成します。 IoT ハブ名は Azure でグローバルに一意である必要があるため、一意のプレフィックスまたはサフィックスを例の名前に追加するか、まったく新しい名前を選択できます。 名前は、IoT ハブの適切な名前付け規則に従う必要があります。長さは 3 から 50 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ("-") のみです。 
 
@@ -55,7 +55,7 @@ az iot hub create --name my-sample-hub --resource-group my-sample-resource-group
 
 ## <a name="create-a-device-provisioning-service"></a>Device Provisioning Service の作成
 
-[az iot dps create](/cli/azure/iot/dps#az-iot-dps-create) コマンドを使用して、Device Provisioning Service を作成します。 
+[az iot dps create](/cli/azure/iot/dps#az_iot_dps_create) コマンドを使用して、Device Provisioning Service を作成します。 
 
 次の例では、*my-sample-dps* という名前のプロビジョニング サービスを場所 *westus* に作成します。 また、独自のプロビジョニング サービスに対して、グローバルに一意の名前を選択する必要があります。 名前は、IoT Hub Device Provisioning Service の適切な名前付け規則に従う必要があります。長さは 3 から 64 文字にする必要があるほか、使用できるのは大文字または小文字の英数字とハイフン ("-") のみです。
 
@@ -69,7 +69,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>IoT ハブの接続文字列の取得
 
-IoT ハブを Device Provisioning サービスとリンクするには、IoT ハブの接続文字列が必要です。 [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) コマンドを使用して接続文字列を取得し、それを使用して、2 つのリソースをリンクするときに使用する変数を設定します。 
+IoT ハブを Device Provisioning サービスとリンクするには、IoT ハブの接続文字列が必要です。 [az iot hub show-connection-string](/cli/azure/iot/hub#az_iot_hub_show_connection_string) コマンドを使用して接続文字列を取得し、それを使用して、2 つのリソースをリンクするときに使用する変数を設定します。 
 
 次の例では、*hubConnectionString* 変数を、ハブの *iothubowner* ポリシー (`--policy-name` パラメーターを使用すると、別のポリシーを指定できます) の主キーの接続文字列の値に設定します。 *my-sample-hub* を、前に選択した一意の IoT ハブ名に交換します。 このコマンドでは、Azure CLI の [query](/cli/azure/query-azure-cli) と [output](/cli/azure/format-output-azure-cli#tsv-output-format) オプションを使用して、コマンド出力から接続文字列を抽出します。
 
@@ -93,7 +93,7 @@ echo $hubConnectionString
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>IoT ハブとプロビジョニング サービスのリンク
 
-IoT ハブとプロビジョニング サービスをリンクするには、[az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az-iot-dps-linked-hub-create) コマンドを使用します。 
+IoT ハブとプロビジョニング サービスをリンクするには、[az iot dps linked-hub create](/cli/azure/iot/dps/linked-hub#az_iot_dps_linked_hub_create) コマンドを使用します。 
 
 次の例では、場所 *westus* の *my-sample-hub* という名前の IoT ハブと、*my-sample-dps* という名前の Device Provisioning Service をリンクします。 これらの名前を、前に選択した一意の IoT ハブ名および Device Provisioning Service 名に交換します。 このコマンドは、前の手順で *hubConnectionString* 変数に格納された IoT ハブの接続文字列を使用します。
 
@@ -105,7 +105,7 @@ az iot dps linked-hub create --dps-name my-sample-dps --resource-group my-sample
 
 ## <a name="verify-the-provisioning-service"></a>プロビジョニング サービスの確認
 
-[az iot dps show](/cli/azure/iot/dps#az-iot-dps-show) コマンドを使用して、プロビジョニング サービスの詳細を取得します。
+[az iot dps show](/cli/azure/iot/dps#az_iot_dps_show) コマンドを使用して、プロビジョニング サービスの詳細を取得します。
 
 次の例では、*my-sample-dps* という名前のプロビジョニング サービスの詳細を取得します。 この名前を、独自の Device Provisioning Service 名に交換します。
 
@@ -120,18 +120,18 @@ az iot dps show --name my-sample-dps
 
 このコレクションの他のクイックスタートは、このクイックスタートに基づいています。 引き続きクイックスタートまたはチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 作業を続けない場合は、以下のコマンドを使用して、プロビジョニング サービス、IoT ハブ、またはリソース グループとそのすべてのリソースを削除することができます。 以下に記述されているリソースの名前を、独自のリソースの名前に置き換えてください。
 
-プロビジョニング サービスを削除するには、[az iot dps delete](/cli/azure/iot/dps#az-iot-dps-delete) コマンドを実行します。
+プロビジョニング サービスを削除するには、[az iot dps delete](/cli/azure/iot/dps#az_iot_dps_delete) コマンドを実行します。
 
 ```azurecli-interactive
 az iot dps delete --name my-sample-dps --resource-group my-sample-resource-group
 ```
-IoT ハブを削除するには、[az iot hub delete](/cli/azure/iot/hub#az-iot-hub-delete) コマンドを実行します。
+IoT ハブを削除するには、[az iot hub delete](/cli/azure/iot/hub#az_iot_hub_delete) コマンドを実行します。
 
 ```azurecli-interactive
 az iot hub delete --name my-sample-hub --resource-group my-sample-resource-group
 ```
 
-リソース グループとそのすべてのリソースを削除するには、[az group delete](/cli/azure/group#az-group-delete) コマンドを実行します。
+リソース グループとそのすべてのリソースを削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを実行します。
 
 ```azurecli-interactive
 az group delete --name my-sample-resource-group

@@ -8,15 +8,15 @@ ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 11/16/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f35f9196fb4ab67de724ba73982fed69ac81361
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102501619"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306842"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 
@@ -134,7 +134,12 @@ Azure Machine Learning と Jupyter Notebook の使用を開始するには、[Az
 1. [Visual Studio Code](https://code.visualstudio.com/Download) をインストールします。
 1. [Visual Studio Code の Azure Machine Learning 拡張機能](tutorial-setup-vscode-extension.md) (プレビュー) をインストールします。
 
-Visual Studio Code の拡張機能をインストールしたら、[Azure Machine Learning リソース](how-to-manage-resources-vscode.md)の管理、[実験の実行とデバッグ](how-to-debug-visual-studio-code.md)、[トレーニング済みモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md)を行うことができます。
+Visual Studio Code 拡張機能をインストールしたら、次の用途に使用します。
+
+* [Azure Machine Learning リソースの管理](how-to-manage-resources-vscode.md)
+* [Azure Machine Learning コンピューティング インスタンスへの接続](how-to-set-up-vs-code-remote.md)
+* [実験の実行とデバッグ](how-to-debug-visual-studio-code.md)
+* [トレーニング済みモデルのデプロイ](tutorial-train-deploy-image-classification-model-vscode.md)
 
 ## <a name="azure-machine-learning-compute-instance"></a><a id="compute-instance"></a>Azure Machine Learning コンピューティング インスタンス
 
@@ -151,7 +156,7 @@ Azure Machine Learning ワークスペース内から、いつでも作成でき
 
 コンピューティング インスタンスは、Jupyter Notebook サーバーと JupyterLab に加えて、[Azure Machine Learning スタジオの内部に統合されたノートブック機能](how-to-run-jupyter-notebooks.md)で使用できます。
 
-また、Visual Studio Code の Azure Machine Learning 拡張機能を使用して、[Azure Machine Learning コンピューティング インスタンスをリモート Jupyter Notebook サーバー](how-to-set-up-vs-code-remote.md#configure-compute-instance-as-remote-notebook-server)として構成することもできます。
+また、[VS Code を使用してリモート コンピューティング インスタンスに接続する](how-to-set-up-vs-code-remote.md)ために、Azure Machine Learning Visual Studio Code 拡張機能を使用することもできます。
 
 ## <a name="data-science-virtual-machine"></a><a id="dsvm"></a>Data Science Virtual Machine
 

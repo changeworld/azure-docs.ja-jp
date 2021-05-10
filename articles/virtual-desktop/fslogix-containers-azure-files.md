@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0b977944f3a531365487b9655820e5d8f85e13d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 945bf806a813943d02fb4db1245dfb74eb7fb1f9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99225917"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446895"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
@@ -35,7 +35,7 @@ Microsoft 製品は、リモート ユーザー プロファイルに対して�
 - ユーザー プロファイル ディスク (UPD)
 - Enterprise State Roaming (ESR)
 
-UPD と RUP は、リモート デスクトップ セッション ホスト (RDSH) および仮想ハード ディスク (VHD) の環境のユーザー プロファイル向けに最も広く使用されていテクノロジです。
+UPD と RUP は、リモート デスクトップ セッション ホスト (RDSH) および仮想ハード ディスク (VHD) の環境のユーザー プロファイル向けに最も広く使用されているテクノロジです。
 
 ### <a name="challenges-with-previous-user-profile-technologies"></a>以前のユーザー プロファイル テクノロジでの課題
 
@@ -77,7 +77,7 @@ S2D クラスターでは、オペレーティング システムが、修正プ
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files と Azure Active Directory ドメイン サービスの統合
 
-FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (AD DS) による Azure Files 認証](../storage/files/storage-files-active-directory-overview.md)の一般提供を発表しました。 コストと管理オーバーヘッドの 両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
+FSLogix プロファイル コンテナーのパフォーマンスおよび機能にはクラウドが活用されます。 2019 年 8 月 7 日、Microsoft Azure Files は [Azure Active Directory ドメイン サービス (AD DS) による Azure Files 認証](../storage/files/storage-files-active-directory-overview.md)の一般提供を発表しました。 コストと管理オーバーヘッドの両方に対処することで、Azure AD DS 認証を使用する Azure Files は、Windows Virtual Desktop サービスでのユーザー プロファイルに対する優れたソリューションになります。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows Virtual Desktop のベスト プラクティス
 
@@ -88,7 +88,7 @@ Windows Virtual Desktop では、顧客が使用している VM のサイズ、�
 - Azure Files ストレージ アカウントをセッション ホスト VM と同じリージョンにする必要があります。
 - Azure Files のアクセス許可を、「[Requirements - Profile Containers](/fslogix/fslogix-storage-config-ht)」 (要件 - プロファイル コンテナー) に記載されているアクセス許可と一致させる必要があります。
 - 各ホスト プール VM を、同じマスター イメージに基づいて同じ種類および同じサイズの VM で構築する必要があります。
-- 管理、スケーリング、および更新を容易にするために各ホスト プール VM を同じリソースグループに含める必要があります。
+- 管理、スケーリング、および更新を容易にするために各ホスト プール VM を同じリソース グループに含める必要があります。
 - 最適なパフォーマンスを得るには、ストレージ ソリューションと FSLogix プロファイル コンテナーを同じデータ センターの場所に置く必要があります。
 - マスター イメージを含むストレージ アカウントを、VM がプロビジョニングされるのと同じリージョンおよびサブスクリプションに置く必要があります。
 

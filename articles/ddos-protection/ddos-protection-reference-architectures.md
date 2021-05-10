@@ -3,7 +3,7 @@ title: Azure DDoS Protection の参照アーキテクチャ
 description: Azure DDoS Protection の参照アーキテクチャについて説明します。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: e5472620fe9b07d152a5325b0654044cb1505fd7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b74ebf332790fd9a08840c8c76d99e2b014dac43
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94992439"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103081"
 ---
 # <a name="ddos-protection-reference-architectures"></a>DDoS Protection の参照アーキテクチャ
 
@@ -60,6 +60,20 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 この参照アーキテクチャについて詳しくは、[こちらの記事](/azure/architecture/reference-architectures/app-service-web-app/multi-region)をご覧ください。
 
+## <a name="protecting-on-premises-resources"></a>オンプレミスのリソースの保護
+
+Azure でパブリック IP アドレスをホストし、バックエンド配信元へのトラフィックをオンプレミスの環境にリダイレクトすることによって、Azure DDoS Protection Standard のスケール、容量、効率性を活用して、オンプレミスのリソースを保護することができます。
+
+![オンプレミスのリソースの保護](./media/reference-architectures/ddos-on-prem.png)
+
+インターネットからのトラフィックを受信する Web アプリがある場合は、Application Gateway の背後で Web アプリをホストし、SQL インジェクションや Slowloris などのレイヤー 7 の Web 攻撃に対して WAF を使用して保護することができます。 アプリケーションのバックエンド配信元は、VPN 経由で接続されているオンプレミス環境に配置されます。 
+
+オンプレミス環境のバックエンド リソースは、パブリック インターネットに公開されません。 AppGW/WAF パブリック IP のみがインターネットに公開され、アプリケーションの DNS 名がそのパブリック IP アドレスにマップされます。 
+
+AppGW/WAF を含む仮想ネットワークで DDoS Protection Standard が有効になっている場合、DDoS Protection Standard は、不適切なトラフィックを軽減し、クリーンと考えられるトラフィックをアプリケーションにルーティングすることで、アプリケーションを保護します。 
+
+この[記事](https://docs.microsoft.com/azure/azure-vmware/protect-azure-vmware-solution-with-application-gateway)では、Application Gateway と共に DDoS Protection Standard を使用して、Azure VMware Solution で実行されている Web アプリを保護する方法について説明します。
+
 ## <a name="mitigation-for-non-web-paas-services"></a>Web PaaS 以外のサービスに対するリスク軽減
 
 ### <a name="hdinsight-on-azure"></a>Azure 上の HDInsight
@@ -76,7 +90,7 @@ Application Gateway WAF SKU (禁止モード) を構成して、レイヤー 7 (
 
 
 > [!NOTE]
-> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service 環境または API 管理は、どちらもネイティブにはサポートされていません。
+> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 AzureApp Service Environment または API 管理は、どちらもネイティブにはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

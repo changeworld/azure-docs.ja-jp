@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: c77375782ba23114be1953d9f8ad7de31ab06f1f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c5e683e1f5af42a69fac45c20f52169834967649
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582189"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788135"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -38,7 +38,7 @@ Windows コンピューター上で、SSH キーを生成して使用するそ�
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-[Azure CLI](/cli/azure) を使用して [az vm create](/cli/azure/vm#az-vm-create) コマンドで VM を作成する場合は、必要に応じて `--generate-ssh-keys` オプションを使用して、SSH 公開キー ファイルと秘密キー ファイルを生成できます。 `--ssh-dest-key-path` オプションで指定されない限り、キー ファイルは ~/.ssh ディレクトリに格納されます。 SSH キーの組が既に存在していて、`--generate-ssh-keys` オプションが使用されている場合は、新しいキーの組は生成されず、代わりに既存のキーの組が使用されます。 次のコマンドで、*VMname* と *RGname* を独自の値に置き換えます。
+[Azure CLI](/cli/azure) を使用して [az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成する場合は、必要に応じて `--generate-ssh-keys` オプションを使用して、SSH 公開キー ファイルと秘密キー ファイルを生成できます。 `--ssh-dest-key-path` オプションで指定されない限り、キー ファイルは ~/.ssh ディレクトリに格納されます。 SSH キーの組が既に存在していて、`--generate-ssh-keys` オプションが使用されている場合は、新しいキーの組は生成されず、代わりに既存のキーの組が使用されます。 次のコマンドで、*VMname* と *RGname* を独自の値に置き換えます。
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
@@ -66,7 +66,7 @@ ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z
 
 公開キー ファイルの内容をコピーし、Azure portal または Resource Manager テンプレートに貼り付けて使用する場合は、行末の空白スペースをコピーしないように注意してください。 macOS で公開キーをコピーするには、公開キー ファイルを `pbcopy` にパイプすることができます。 Linux と同様に、`xclip` などのプログラムに公開キー ファイルをパイプすることができます。
 
-キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドでは、*myVM*、*myResourceGroup*、*UbuntuLTS*、*azureuser*、*mysshkey.pub* を実際の値に置き換えます。
+キー ペアの作成時に別の場所を指定しない限り、Azure 内の Linux VM 上に配置した公開キーは、既定で ~/.ssh/id_rsa.pub に格納されます。 [Azure CLI 2.0](/cli/azure) を使用して既存の公開キーで VM を作成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを `--ssh-key-values` オプション付きで使用することで、この公開キーの値または任意で場所を指定します。 次のコマンドでは、*myVM*、*myResourceGroup*、*UbuntuLTS*、*azureuser*、*mysshkey.pub* を実際の値に置き換えます。
 
 
 ```azurecli

@@ -7,32 +7,32 @@ ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.topic: article
 ms.date: 03/12/2021
 ms.author: msangapu
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472166"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782605"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Azure App Service でのカスタム コンテナーを使用した継続的配置
 
 このチュートリアルでは、管理された [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) リポジトリまたは [Docker Hub](https://hub.docker.com) からのカスタム コンテナー イメージの継続的なデプロイを構成します。
 
-## <a name="1-go-to-deployment-center"></a>1.デプロイ センターに移動する
+## <a name="1-go-to-deployment-center"></a>1. デプロイ センターに移動する
 
-[Azure portal](https://portal.azure.com) で、App Service アプリの管理ページに移動します。
+[Azure portal](https://portal.azure.com)で、App Service アプリの管理ページに移動します。
 
-左側のメニューで、 **[デプロイ センター]**  >  **[設定]** の順にクリックします。 
+左側のメニューで、 **[デプロイ センター]** 、 **[設定]** の順にクリックします。 
 
 ::: zone pivot="container-linux"
-## <a name="2-choose-deployment-source"></a>2.デプロイ ソースの選択
+## <a name="2-choose-deployment-source"></a>2. デプロイ ソースを選択する
 
 デプロイ　ソースの **選択** は、シナリオによって異なります。
 - **[コンテナー レジストリ]** では、コンテナー レジストリと App Service の間に CI/CD が設定されます。
 - **[GitHub Actions]** オプションは、GitHub でコンテナー イメージのソース コードを維持する場合に使用します。 デプロイ アクションは、GitHub リポジトリへの新しいコミットによってトリガーされ、`docker build` および `docker push` をコンテナー レジストリに直接実行した後、App Service アプリを更新して新しいイメージを実行できます。 詳細については、「[CI/CD と GitHub Actions の連携のしくみ](#how-cicd-works-with-github-actions)」を参照してください。
-- **Azure Pipelines** で CI/CD を設定するには、[Azure Pipelines からの Azure Web アプリ コンテナーのデプロイ](/devops/pipelines/targets/webapp-on-container-linux)に関する記事を参照してください。
+- **Azure Pipelines** で CI/CD を設定するには、[Azure Pipelines からの Azure Web アプリ コンテナーのデプロイ](/azure/devops/pipelines/targets/webapp-on-container-linux)に関する記事を参照してください。
 
 > [!NOTE]
 > Docker Compose アプリの場合は、 **[Container Registry]** を選択します。
@@ -43,10 +43,10 @@ GitHub で Azure アカウントを承認したら、デプロイ元となる **
 ::: zone-end  
 
 ::: zone pivot="container-windows"
-## <a name="2-configure-registry-settings"></a>2.レジストリ設定を構成する
+## <a name="2-configure-registry-settings"></a>2. レジストリ設定を構成する
 ::: zone-end  
 ::: zone pivot="container-linux"
-## <a name="3-configure-registry-settings"></a>3.レジストリ設定を構成する
+## <a name="3-configure-registry-settings"></a>3. レジストリ設定を構成する
 
 複数コンテナー (Docker Compose) アプリをデプロイするには、 **[コンテナーの種類]** で **[Docker Compose]** を **選択** します。
 
@@ -122,10 +122,10 @@ App Service は、コンテナーを起動するときに、 **[スタートア�
 -----
 
 ::: zone pivot="container-windows"
-## <a name="3-enable-cicd"></a>3.CI/CD を有効にする
+## <a name="3-enable-cicd"></a>3. CI/CD を有効にする
 ::: zone-end
 ::: zone pivot="container-linux"
-## <a name="4-enable-cicd"></a>4.CI/CD を有効にする
+## <a name="4-enable-cicd"></a>4. CI/CD を有効にする
 ::: zone-end
 
 App Service では、Azure Container Registry および Docker Hub との CI/CD 統合がサポートされています。 これを有効にするには、 **[継続的デプロイ]** で **[オン]** を **選択** します。
@@ -147,10 +147,10 @@ App Service では、Azure Container Registry および Docker Hub との CI/CD 
 ::: zone-end
 
 ::: zone pivot="container-windows"
-## <a name="4-save-your-settings"></a>4.設定を保存する
+## <a name="4-save-your-settings"></a>4. 設定を保存する
 ::: zone-end
 ::: zone pivot="container-linux"
-## <a name="5-save-your-settings"></a>5.設定を保存する
+## <a name="5-save-your-settings"></a>5. 設定を保存する
 ::: zone-end
 
 **[保存]** を **クリック** します。
@@ -161,14 +161,14 @@ App Service では、Azure Container Registry および Docker Hub との CI/CD 
 
 **[ソース]** で **[GitHub Actions]** を選択した場合 (「[デプロイ ソースの選択](#2-choose-deployment-source)」を参照)、App Service では次の方法で CI/CD を設定します。
 
-- GitHub Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
+- Github Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
 - プライベート レジストリの資格情報を GitHub シークレットとして追加します。 生成されたワークフロー ファイルは、[Azure/docker-login](https://github.com/Azure/docker-login) アクションを実行してプライベート レジストリでサインインし、`docker push` を実行してそれにデプロイします。
 - アプリの発行プロファイルを GitHub シークレットとして追加します。 生成されたワークフロー ファイルでは、App Service で認証するためにこのシークレットが使用され、その後、更新されたイメージを構成するために [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションが実行され、これによって、更新されたイメージをプルするためにアプリの再起動がトリガーされます。
-- [ワークフロー実行ログ](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)から情報をキャプチャし、それをアプリの **デプロイ センター** の **[ログ]** タブに表示します。
+- [ワークフロー実行ログ](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)から情報をキャプチャし、それをアプリの "**デプロイ センター**" の **[ログ]** タブに表示します。
 
 GitHub Actions ビルド プロバイダーは、次の方法でカスタマイズできます。
 
-- GitHub リポジトリでワークフロー ファイルが生成されたら、それをカスタマイズします。 詳しくは、「[GitHub Actions のワークフロー構文](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions)」を参照してください。 アプリの再起動をトリガーするために、ワークフローが [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションで終了していることを確認してください。
+- GitHub リポジトリでワークフロー ファイルが生成された後に、そのファイルをカスタマイズします。 詳しくは、「[GitHub Actions のワークフロー構文](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions)」を参照してください。 アプリの再起動をトリガーするために、ワークフローが [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションで終了していることを確認してください。
 - 選択したブランチが保護されている場合でも、構成を保存せずに引き続きワークフロー ファイルをプレビューしてから、これと必要な GitHub シークレットを手動でリポジトリに追加することができます。 この方法では、Azure portal とのログ統合は行われません。
 - 発行プロファイルではなく、Azure Active Directory で[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用してデプロイします。
 
@@ -176,7 +176,7 @@ GitHub Actions ビルド プロバイダーは、次の方法でカスタマイ�
 
 このオプション構成では、既定の認証が、生成されたワークフロー ファイル内の発行プロファイルに置き換えられます。
 
-[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用して、サービス プリンシパルを **作成** します。 次の例では、 *\<subscription-id>* 、 *\<group-name>* 、 *\<app-name>* を実際の値に置き換えます。 最上位の `{}` を含め、次の手順の JSON 出力全体を **保存** します。
+[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用して、サービス プリンシパルを **作成** します。 次の例では、 *\<subscription-id>* 、 *\<group-name>* 、 *\<app-name>* を実際の値に置き換えます。 最上位の `{}` を含め、次の手順の JSON 出力全体を **保存** します。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
@@ -213,7 +213,7 @@ az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
 
 ## <a name="automate-with-cli"></a>CLI で自動化する
 
-コンテナー レジストリと Docker イメージを構成するには、[az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) を **実行** します。
+コンテナー レジストリと Docker イメージを構成するには、[az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) を **実行** します。
 
 # <a name="azure-container-registry"></a>[Azure Container Registry](#tab/acr)
 
@@ -240,14 +240,14 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 -----
 
 ::: zone pivot="container-linux"
-複数コンテナー (Docker Compose) アプリを構成するには、Docker Compose ファイルをローカルに **準備** し、`--multicontainer-config-file` パラメーターを指定して [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) を **実行** します。 Docker Compose ファイルにプライベート イメージが含まれている場合は、前の例で示したように `--docker-registry-server-*` パラメーターを **追加** します。
+複数コンテナー (Docker Compose) アプリを構成するには、Docker Compose ファイルをローカルに **準備** し、`--multicontainer-config-file` パラメーターを指定して [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) を **実行** します。 Docker Compose ファイルにプライベート イメージが含まれている場合は、前の例で示したように `--docker-registry-server-*` パラメーターを **追加** します。
 
 ```azurecli-interactive
 az webapp config container set --resource-group <group-name> --name <app-name> --multicontainer-config-file <docker-compose-file>
 ```
 ::: zone-end
 
-コンテナー レジストリからアプリに CI/CD を構成するには、`--enable-cd` パラメーターを指定して [az webapp deployment container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config) を **実行** します。 コマンドを実行すると Webhook URL が出力されますが、別の手順でレジストリに Webhook を手動で作成する必要があります。 次の例では、アプリで CI/CD を有効にし、出力の Webhook URL を使用して Azure Container Registry に Webhook を作成します。
+コンテナー レジストリからアプリに CI/CD を構成するには、`--enable-cd` パラメーターを指定して [az webapp deployment container config](/cli/azure/webapp/deployment/container#az_webapp_deployment-container-config) を **実行** します。 コマンドを実行すると Webhook URL が出力されますが、別の手順でレジストリに Webhook を手動で作成する必要があります。 次の例では、アプリで CI/CD を有効にし、出力の Webhook URL を使用して Azure Container Registry に Webhook を作成します。
 
 ```azurecli-interactive
 ci_cd_url=$(az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true --query CI_CD_URL --output tsv)

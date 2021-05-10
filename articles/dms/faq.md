@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 29240f371d39ef2d3234e3207cc91768478bf3ff
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091455"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748505"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ。
 
@@ -32,9 +32,7 @@ Azure Database Migration Service は、複数のデータベース ソースか�
 * スムーズな移行を実現するための継続的な投資。
 
 **Q.Azure Database Migration Service では、現在、どのソースとターゲットのペアがサポートされていますか。**
-このサービスは現在、さまざまなソースとターゲットのペアや移行シナリオをサポートしています。 利用可能な移行シナリオごとの状態の完全な一覧については、記事「[Azure Database Migration Service によってサポートされる移行シナリオの状態](./resource-scenario-status.md)」をご覧ください。
-
-その他の移行シナリオはプレビュー段階にあり、入手するには DMS プレビュー サイト経由で申請を送信する必要があります。 プレビュー段階にあるシナリオの完全な一覧、およびこれらのオファリングのいずれかに参加するためのサインアップについては、[DMS プレビュー サイト](https://aka.ms/dms-preview/)を参照してください。
+このサービスは現在、さまざまなソースとターゲットのペアや移行シナリオをサポートしています。 利用可能な移行シナリオごとの状態の完全な一覧については、記事「[Azure Database Migration Service によってサポートされる移行シナリオの状態](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/dms/resource-scenario-status.md)」をご覧ください。
 
 **Q.Azure Database Migration Service でソースとしてサポートされるのは、どのバージョンの SQL Server ですか。**
 SQL Server から移行する場合、Azure Database Migration Service でサポートされているソースは SQL Server 2005 から SQL Server 2019 までです。

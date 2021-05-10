@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: 意図認識
-ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 532101c8cc307e6a5bb65022702b516c492a51fe
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018703"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210370"
 ---
 # <a name="what-is-intent-recognition"></a>意図認識とは
 
@@ -33,7 +33,7 @@ ms.locfileid: "95018703"
 
 ## <a name="get-started"></a>はじめに
 
-意図認識の使用を開始するには、[クイックスタート](quickstarts/intent-recognition.md)を参照してください。
+意図認識の使用を開始するには、[クイックスタート](get-started-intent-recognition.md)を参照してください。
 
 ## <a name="sample-code"></a>サンプル コード
 
@@ -53,6 +53,6 @@ ms.locfileid: "95018703"
 
 ## <a name="next-steps"></a>次のステップ
 
-* 意図認識の[クイックスタート](quickstarts/intent-recognition.md)を完了する
+* 意図認識の[クイックスタート](get-started-intent-recognition.md)を完了する
 * [Speech サービスのサブスクリプション キーを無料で取得する](overview.md#try-the-speech-service-for-free)
 * [Speech SDK を取得する](speech-sdk.md)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: d386b504475b308c2fb5146b47d3977cb87510f8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635491"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935679"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -89,8 +89,32 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
     * ボリュームのプロトコルの種類として **[SMB]** を選択します。 
     * ドロップダウン リストから **Active Directory** の接続を選択します。
     * **[共有名]** に共有ボリュームの名前を指定します。
+    * SMB ボリュームの継続的な可用性を有効にする場合は、 **[継続的可用性を有効にする]** を選択します。    
 
-    ![SMB プロトコルを指定する](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+        > [!IMPORTANT]   
+        > SMB の継続的な可用性機能は、現在パブリック プレビュー段階です。 **[[Azure NetApp Files SMB Continuous Availability Shares Public Preview]\(Azure NetApp Files の SMB の継続的な可用性の共有パブリック プレビュー\) 順番待ち送信ページ](https://aka.ms/anfsmbcasharespreviewsignup)** から、機能にアクセスするための順番待ち要求を送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってから、継続的な可用性機能を使用してください。   
+        > 
+        > 継続的な可用性を有効にする必要があるのは、SQL ワークロードに対してのみです。 SQL Server 以外のワークロードに対して SMB の継続的な可用性の共有を使用することは、サポートされて *いません*。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 SQL Server のインストールに管理者以外のアカウント (ドメイン) を使用している場合は、必要なセキュリティ特権がアカウントに割り当てられていることを確認してください。 必要なセキュリティ特権 (`SeSecurityPrivilege`) がドメイン アカウントになく、ドメイン レベルで特権を設定できない場合は、Active Directory 接続の **"セキュリティ特権ユーザー"** フィールドを使用して、そのアカウントに特権を付与できます。 「[Active Directory 接続を作成する](create-active-directory-connections.md#create-an-active-directory-connection)」を参照してください。
+
+    <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
+    <!-- 
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+
+        Check the status of the feature registration: 
+
+        > [!NOTE]
+        > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is `Registered` before continuing.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+        
+        You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
+    --> 
+
+    ![SMB ボリュームの作成の [プロトコル] タブについて説明しているスクリーンショット。](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
 5. **[確認および作成]** をクリックし、ボリュームの詳細を確認します。  **[作成]** をクリックして SMB ボリュームを作成します。
 
@@ -104,10 +128,12 @@ SMB ボリュームへのアクセスはアクセス許可によって管理さ�
 
 ### <a name="share-permissions"></a>共有アクセス許可  
 
-既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 ドメイン管理者グループのメンバーは、Azure NetApp Files ボリュームに使用されているコンピューター アカウントで Computer Management を利用し、共有アクセス許可を変更できます。
+既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 Domain Admins グループのメンバーは、次のように共有アクセス許可を変更できます。  
 
-![SMB マウント パス](../media/azure-netapp-files/smb-mount-path.png) 
-![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png) 
+1. 共有とドライブをマッピングします。  
+2. ドライブを右クリックし、 **[プロパティ]** を選択して、 **[セキュリティ]** タブにアクセスします。
+
+[ ![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS ファイルおよびフォルダーの権限  
 

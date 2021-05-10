@@ -3,15 +3,15 @@ title: Azure Files Active Directory Domain Services を使用した FSLogix プ�
 description: この記事では、Azure Files と Azure Active Directory Domain Services を使用して FSLogix プロファイル コンテナーを作成する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 04/09/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 59e2fc1f528040515398e51d359840f6ef1bbefc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96302469"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255802"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する
 
@@ -110,7 +110,7 @@ ms.locfileid: "96302469"
     次に例を示します。
 
      ```cmd
-     net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
+     net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile
      ```
 
 8. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。

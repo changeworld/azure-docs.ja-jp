@@ -2,14 +2,14 @@
 title: Azure VM 内の SQL Server のバックアップに関する Azure Backup のサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM 内の SQL Server をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97734795"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714148"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 内の SQL Server のバックアップに関するサポート マトリックス
 
@@ -30,11 +30,10 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 |設定  |上限 |
 |---------|---------|
 |サーバー (およびコンテナー内) で保護できるデータベースの数    |   2000      |
-|サポートされているデータベース サイズ (これを超えると、パフォーマンスの問題が発生する可能性があります)   |   2 TB      |
+|サポートされているデータベース サイズ (これを超えると、パフォーマンスの問題が発生する可能性があります)   |   6 TB*      |
 |データベースでサポートされているファイルの数    |   1000      |
 
->[!NOTE]
-> VM リソース、帯域幅、バックアップ ポリシーに基づいて、サーバーごとに推奨される保護されたデータベースの概数を算出するために、[詳細なリソース プランナーをダウンロードします](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)。
+_* データベース サイズの制限は、サポートされているデータ転送速度と、バックアップの制限時間の構成によって異なります。これは、ハード制限ではありません。バックアップのスループットのパフォーマンスに関する [詳細](#backup-throughput-performance)をご覧ください。_
 
 * SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
 * このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](../azure-resource-manager/management/deployment-models.md)でもサポートされます。
@@ -93,6 +92,17 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 差分 | プライマリ
 ログ |  セカンダリ
 コピーのみの完全 |  セカンダリ
+
+## <a name="backup-throughput-performance"></a>Backup のスループットのパフォーマンス
+
+Azure Backup では、大規模な SQL データベース (500 GB) の完全および差分バックアップで、200 Mbps の一貫したデータ転送率がサポートされています。 最適なパフォーマンスを得るために、次のことを確認してください。
+
+- 基になる VM (データベースをホストする SQL Server インスタンスを含む) が、必要なネットワーク スループットを使用して構成されている。 VM の最大スループットが 200 Mbps 未満の場合、Azure Backup は最適な速度でデータを転送できません。<br>また、データベース ファイルを含むディスクには、十分なスループットがプロビジョニングされている必要があります。 Azure VM でのディスクのスループットとパフォーマンスの詳細については、[こちら](../virtual-machines/disks-performance.md)をご覧ください。 
+- VM で実行されているプロセスが VM の帯域幅を消費していない。 
+- バックアップ スケジュールが、データベースのサブセット全体に分散されている。 VM で同時に実行される複数のバックアップが、バックアップ間でネットワーク消費率を共有している。 同時バックアップの数を制御する方法については、[こちら](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-)をご覧ください。
+
+>[!NOTE]
+> VM リソース、帯域幅、バックアップ ポリシーに基づいて、サーバーごとに推奨される保護されたデータベースの概数を算出するために、[詳細なリソース プランナーをダウンロードします](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)。
 
 ## <a name="next-steps"></a>次のステップ
 

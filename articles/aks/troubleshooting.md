@@ -5,10 +5,10 @@ services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
 ms.openlocfilehash: 1d3dff19bd75bfa4e7564eb4b188ffe68d605025
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952033"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
@@ -89,7 +89,7 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
 
 API サーバーに接続するために、ポート 22、9000、および 1194 が開いていることを確認します。 `kubectl get pods --namespace kube-system` コマンドを使用して、`tunnelfront` または `aks-link` ポッドが *kube-system* 名前空間で実行されているかどうかを確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。 どうすればよいですか。
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。   どうすればいいですか。
 
 AKS でサポートされる TLS の最小バージョンは TLS 1.2 です。
 

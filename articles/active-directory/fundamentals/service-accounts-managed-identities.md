@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b08231f254ea47fc3c9d65de42966301bd3378f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587833"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640047"
 ---
 # <a name="securing-managed-identities"></a>マネージド ID のセキュリティ保護
 
@@ -38,7 +38,7 @@ ms.locfileid: "104587833"
 
 ソース システムからターゲット サービスにアクセスを要求します。 任意の Azure リソースをソース システムにすることができます。 たとえば、Azure VM、Azure Functions インスタンス、Azure App Services インスタンスでマネージド ID がサポートされています。
 
-[!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
+   > [!VIDEO https://www.youtube.com/embed/5lqayO_oeEo]
 
 ### <a name="how-authentication-and-authorization-work"></a>認証と承認のしくみ
 
@@ -86,7 +86,7 @@ Azure のコントロール プレーン操作はすべて [Azure Resource Manag
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-1. Azure AD で、[エンタープライズ アプリケーション] を選択します。
+1. [Azure Active Directory] で [エンタープライズ アプリケーション] を選択します。
 
 2. [マネージド ID] のフィルターを選択します。 
 
@@ -100,7 +100,7 @@ Microsoft Graph に対する次の GET 要求を使用して、ご自身のテ�
 
 `https://graph.microsoft.com/v1.0/servicePrincipals?$filter=(servicePrincipalType eq 'ManagedIdentity') `
 
-これらの要求をフィルター処理できます。 詳細については、Graph のドキュメントで「[servicePrincipal を取得する](/graph/api/serviceprincipal-get?view=)」を参照してください。
+これらの要求をフィルター処理できます。 詳細については、Graph のドキュメントで「[servicePrincipal を取得する](/graph/api/serviceprincipal-get)」を参照してください。
 
 ## <a name="assess-the-security-of-managed-identities"></a>マネージド ID のセキュリティを評価する 
 
@@ -120,7 +120,7 @@ Microsoft Graph に対する次の GET 要求を使用して、ご自身のテ�
 
 ## <a name="move-to-managed-identities"></a>マネージド ID に移行する
 
-サービス プリンシパルまたは Azure AD ユーザー アカウントを使用している場合は、代わりにマネージドを使用して資格情報の保護、ローテーション、管理を不要にすることができないか評価してください。 
+サービス プリンシパルまたは Azure AD ユーザー アカウントを使用している場合は、代わりにマネージド ID を使用して資格情報の保護、ローテーション、管理を不要にすることができないか評価してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

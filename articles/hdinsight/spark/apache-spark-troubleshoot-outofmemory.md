@@ -4,18 +4,18 @@ description: Azure HDInsight での Apache Spark クラスターのさまざま�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946346"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868666"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight での Apache Spark の OutOfMemoryError 例外
 
 この記事では、Azure HDInsight クラスターで Apache Spark コンポーネントを使用するときのトラブルシューティングの手順と考えられる解決策について説明します。
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>シナリオ:Apache Spark の OutOfMemoryError 例外
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>シナリオ: Apache Spark の OutOfMemoryError 例外
 
 ### <a name="issue"></a>問題
 
@@ -53,13 +53,13 @@ java.lang.OutOfMemoryError
 
 この例外の最も可能性が高い原因として考えられるのは、Java 仮想マシン (JVM) に割り当てられたヒープ メモリの不足です。 これらの JVM は、Apache Spark アプリケーションの一部として、Executor またはドライバーとして起動されます。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 1. Spark アプリケーションによって処理されるデータの最大サイズを決定します。 入力データ、入力データの変換によって生成される中間データ、および中間データの変換によって生成される出力データの各最大サイズに基づいてサイズを推測します。 最初の推定値が十分でない場合は、サイズを少し増やし、メモリ エラーが治まるまで繰り返します。
 
-1. 使用する HDInsight クラスターにメモリや、Spark アプリケーションに対応できるコアなどのリソースが十分にあることを確認してください。 この判断は、クラスターの YARN UI の [Cluster Metrics]\(クラスター メトリック\) セクションで、 **[Memory Used]\(使用中のメモリ\)** の値と **[Memory Total]\(メモリ合計\)** の値、および **[VCores Used]\(使用中の仮想コア\)** の値と **[VCores Total]\(VCore 合計\)** の値を比較することで行うことができます。
+1. 使用する HDInsight クラスターにメモリや、Spark アプリケーションに対応できるコアなどのリソースが十分にあることを確認してください。 この判断は、クラスターの YARN UI の [Cluster Metrics]\(クラスター メトリック\) セクションで、 **[Memory Used]\(使用中のメモリ\)** の値と **[Memory Total]\(メモリ合計\)** の値、および **[VCores Used]\(使用中の VCore\)** の値と **[VCores Total]\(VCore 合計\)** の値を比較することで行うことができます。
 
-    ![YARN コア メモリ ビュー](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="YARN コア メモリ ビュー" border="true":::
 
 1. 次の Spark 構成を適切な値に設定します。 アプリケーションの要件とクラスター内の使用可能なリソースとのバランスを調整します。 これらの値は、YARN によって表示される使用可能なメモリとコアの 90% を超えてはならず、Spark アプリケーションの最小メモリ要件を満たしている必要があります。
 
@@ -87,7 +87,7 @@ java.lang.OutOfMemoryError
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>シナリオ:Apache Spark History Server を開こうとすると Java ヒープ スペース エラーが発生する
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>シナリオ: Apache Spark History Server を開こうとすると Java ヒープ スペース エラーが発生する
 
 ### <a name="issue"></a>問題
 
@@ -111,23 +111,23 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 Spark 構成の `SPARK_DAEMON_MEMORY` プロパティを編集し、すべてのサービスを再起動することで、Spark History Server のメモリを増やすことができます。
 
 これを行うには、Ambari ブラウザー UI で、Spark2/Config/Advanced spark2-env セクションを選択します。
 
-![Advanced spark2-env セクション](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Advanced spark2-env セクション" border="true":::
 
 Spark History Server メモリを 1G から 4G に変更するには、次のプロパティを追加します。`SPARK_DAEMON_MEMORY=4g`
 
-![Spark プロパティ](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark プロパティ" border="true":::
 
 Ambari から、影響を受けるすべてのサービスを再起動してください。
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>シナリオ:Apache Spark クラスター上で Livy Server が起動しない
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>シナリオ: Apache Spark クラスター上で Livy Server が起動しない
 
 ### <a name="issue"></a>問題
 
@@ -197,7 +197,7 @@ Livy Server が予期せず終了すると、Spark クラスターへの接続�
 
 Livy から大量のジョブが送信されると、Livy Server の高可用性の一環として、これらのセッション状態が ZK (HDInsight クラスター上) に格納され、Livy サービスの再起動時にそれらのセッションが復旧されます。 予期しない終了後に再起動すると、Livy では、セッションごとに 1 つのスレッドが作成されます。このため、復旧対象の一定数のセッションが累積され、作成されるスレッドの数が非常に多くなります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 後で詳しく説明する手順を使用して、すべてのエントリを削除します。
 

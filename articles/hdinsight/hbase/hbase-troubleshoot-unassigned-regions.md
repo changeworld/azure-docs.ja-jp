@@ -5,17 +5,17 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/16/2019
 ms.openlocfilehash: 968a0c6e1717245171bf84821a58cad4e440046e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98936614"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight のリージョン サーバーに関する問題
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
-## <a name="scenario-unassigned-regions"></a>シナリオ:未割り当てリージョン
+## <a name="scenario-unassigned-regions"></a>シナリオ: 未割り当てリージョン
 
 ### <a name="issue"></a>問題
 
@@ -31,7 +31,7 @@ Apache HBase Master UI から、すべてのリージョン サーバーのバ�
 
 この穴は、オフライン リージョンによって生じた可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 割り当てを修正します。 以下の手順に従って、未割り当てのリージョンを通常の状態に戻してください。
 
@@ -49,7 +49,7 @@ Apache HBase Master UI から、すべてのリージョン サーバーのバ�
 
 ---
 
-## <a name="scenario-dead-region-servers"></a>シナリオ:稼働していないリージョン サーバー
+## <a name="scenario-dead-region-servers"></a>シナリオ: 稼働していないリージョン サーバー
 
 ### <a name="issue"></a>問題
 
@@ -63,7 +63,7 @@ WAL ディレクトリが複数に分割されています。
 
 1. `wals.out` ファイルを確認します。 (*-splitting で始まる) 分割ディレクトリの数が多すぎる場合、これらのディレクトリのためにリージョン サーバーが失敗している可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 1. Ambari ポータルから HBase を停止します。
 

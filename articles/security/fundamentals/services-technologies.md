@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5914d5a54606f49f6fbd809a17e2b47375b58dcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585424"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641980"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
-現在の、そしてこの先も含めた Azure のお客様との話し合いで、“Azure で提供する必要があるすべてのセキュリティ関連のサービスとテクノロジのリストはありますか?” という質問を受けることがよくあります。
+現在と将来の Azure の顧客との話し合いで、"Azure で提供する必要のあるセキュリティ関連のすべてのサービスとテクノロジを一覧したリストはありますか ?" という質問を受けることがよくあります
 
 クラウド サービス プロバイダーのオプションを評価している場合、この情報があると便利です。 そのために、開始時にお使いいただけるリストをご用意しました。
 
@@ -59,8 +59,8 @@ ms.locfileid: "100585424"
 | [Azure&nbsp;SQL&nbsp;Firewall](../../azure-sql/database/firewall-configure.md)|データベースへのネットワーク経由の攻撃から保護するためのネットワークのアクセス制御機能です。 |
 |[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](/archive/blogs/sqlsecurity/recommendations-for-using-cell-level-encryption-in-azure-sql-database)| 詳細なレベルで暗号化を提供するデータベース セキュリティ テクノロジです。  |
 | [Azure&nbsp;SQL&nbsp;接続暗号化](../../azure-sql/database/logins-create-manage.md)|SQL Database では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、およびユーザーを特定の操作とデータに限定する承認メカニズムによって、アクセスを制御します。 |
-| [Azure SQL Always Encryption (Azure SQL の常時暗号化)](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) のような機密データを保護することを目的とした機能です。  |
-| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| データベース全体のストレージを暗号化するデータベース セキュリティ機能です。 |
+| [Azure SQL Always Encryption (Azure SQL の常時暗号化)](/sql/relational-databases/security/encryption/always-encrypted-database-engine)|Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) のような機密データを保護することを目的とした機能です。  |
+| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)| データベース全体のストレージを暗号化するデータベース セキュリティ機能です。 |
 | [Azure SQL Database 監査](../../azure-sql/database/auditing-overview.md)|データベース イベントを追跡し、それを Azure Storage アカウントの監査ログに書き込むデータベース監査機能です。  |
 
 

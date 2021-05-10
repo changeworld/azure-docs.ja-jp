@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/11/2021
-ms.openlocfilehash: d0dcca0c4be801f385a48afcd41b6a547bab3fbe
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 5d872dd7c94a0b3ab23623bb246ff7ae81609779
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100654711"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047169"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central-python"></a>クイックスタート: デバイスから Azure IoT Central にテレメトリを送信する (Python)
 
@@ -266,5 +266,5 @@ Azure IoT Central のサンプル アプリケーションとそのデバイス�
 次のステップとして、アプリケーション サンプルを通じて Azure IoT Python SDK を掘り下げて見てみましょう。
 
 - [非同期サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios): このディレクトリには、その他の IoT Hub シナリオを想定した非同期 Python サンプルが含まれています。
-- [同期サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): このディレクトリには、Python 2.7 (または Python 3.5 以上における同期の互換性シナリオ) 用の Python サンプルが含まれています。
+- [同期サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples): このディレクトリには、Python 2.7 (または Python 3.6 以上における同期の互換性シナリオ) 用の Python サンプルが含まれています。
 - [IoT Edge サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios): このディレクトリには、Edge モジュールとダウンストリーム デバイスを扱うための Python サンプルが含まれています。

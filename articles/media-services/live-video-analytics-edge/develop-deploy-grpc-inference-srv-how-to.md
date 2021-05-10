@@ -3,12 +3,12 @@ title: gRPC 推論サーバーの開発とデプロイ - Azure
 description: この記事では、gRPC 推論サーバーを開発およびデプロイする方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dbf46a26626a4143d76385968d092c4f238729da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881654"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034862"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>攻略ガイド - gRPC 推論サーバーの開発とデプロイ
 
@@ -242,7 +242,7 @@ gRPC 拡張モジュールを作成したので、次に、メディア グラ�
         * GraphInstanceSet で、前のリンクの値と一致するようにグラフ トポロジの名前を編集します。<br/>`"topologyName": "InferencingWithGrpcExtension"`
         * GraphTopologyDelete で、名前を編集します。<br/>`"name": "InferencingWithGrpcExtension"`
 
-            トポロジ (たとえば `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json`) は、拡張アドレスを定義する必要があります。
+            トポロジ (たとえば `https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json`) は、拡張アドレスを定義する必要があります。
     * 拡張機能アドレス パラメーター
 
         ```
@@ -308,4 +308,4 @@ gRPC 拡張モジュールを作成したので、次に、メディア グラ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[お使いのモデルでのライブ ビデオ](use-your-model-quickstart.md) クイックスタートで述べられた **イベントの監視の準備をする** 手順に従って、サンプルを実行し、結果を解釈します。 また、[gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json)、[CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json)、EVRtoAssetsByGrpcExtension、[EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json) などの gRPC トポロジのサンプルを確認してください。
+[お使いのモデルでのライブ ビデオ](use-your-model-quickstart.md) クイックスタートで述べられた **イベントの監視の準備をする** 手順に従って、サンプルを実行し、結果を解釈します。 また、[gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)、[CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json)、EVRtoAssetsByGrpcExtension、[EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json) などの gRPC トポロジのサンプルを確認してください。

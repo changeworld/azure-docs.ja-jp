@@ -2,20 +2,20 @@
 title: Azure AD を使用したアプリへのアクセスの管理
 description: Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: kenwith
-ms.openlocfilehash: 5afc6aa8f52011eba6d7cfdfaa09b0ab995183e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: iangithinji
+ms.openlocfilehash: 6a1ae7dd1da2c7666c007194bf22bd980e41dc22
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257425"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376377"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 

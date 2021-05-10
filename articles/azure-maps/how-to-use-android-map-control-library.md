@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 5888a5f34ef65fc1015b6e73af1d03368a8329b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a60ee8faf8d19afba59e46c52aaba9395c3a5292
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604449"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -34,11 +34,11 @@ Azure Maps Android SDK には、マップの言語と地域ビューを設定す
 
 ```java
 static {
-    //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
-
     //Alternatively use Azure Active Directory authenticate.
-    //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+    AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+
+    //Set your Azure Maps Key.
+    //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");   
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -55,11 +55,11 @@ static {
 ```kotlin
 companion object {
     init {
-        //Set your Azure Maps Key.
-        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
-
         //Alternatively use Azure Active Directory authenticate.
-        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+        AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+
+        //Set your Azure Maps Key.
+        //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
     
         //Set the language to be used by Azure Maps.
         AzureMaps.setLanguage("fr-FR");
@@ -118,7 +118,7 @@ mapControl.onReady(OnReady { map: AzureMap ->
 
 サポートされている言語と地域ビューの完全な一覧については、[こちら](supported-languages.md)をご覧ください。
 
-## <a name="navigating-the-map"></a>マップ内を移動する
+## <a name="navigating-the-map&quot;></a>マップ内を移動する
 
 マップをズーム、パン、回転、およびピッチ調整する方法は複数存在します。 以下では、マップ内を移動するときのさまざまな方法をすべて詳しく説明します。
 
@@ -141,16 +141,16 @@ mapControl.onReady(OnReady { map: AzureMap ->
 
 * 2 本の指でマップをタッチして、上または下にドラッグします。
 
-## <a name="azure-government-cloud-support"></a>Azure Government クラウドのサポート
+## <a name=&quot;azure-government-cloud-support&quot;></a>Azure Government クラウドのサポート
 
 Azure Maps Android SDK では、Azure Government クラウドがサポートされています。 Azure Maps Android SDK には、同じ Maven リポジトリからアクセスします。 Azure Maps プラットフォームの Azure Government cloud バージョンに接続するには、次のタスクを実行する必要があります。
 
 Azure Maps 認証の詳細が指定されているのと同じ場所で、次のコード行を追加して、Azure Maps Government クラウド ドメインを使用するようにマップに指示します。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
-AzureMaps.setDomain("atlas.azure.us");
+AzureMaps.setDomain(&quot;atlas.azure.us");
 ```
 
 ::: zone-end

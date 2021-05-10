@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050548"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104675827"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする
 
@@ -363,26 +363,31 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ここでは、UI カスタマイズのサンプル テンプレートを示します。
 
 ```bash
-git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
+git clone https://github.com/azure-ad-b2c/html-templates
 ```
 
 このプロジェクトには、次のテンプレートが含まれています。
-- [オーシャン ブルー](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [スレート グレー](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [オーシャン ブルー](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
+- [スレート グレー](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [クラシック](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
+- [Template resources](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 サンプルを使用するには、次のようにします。
 
-1. ローカル コンピューターにリポジトリを複製します。 テンプレート フォルダーの `/ocean_blue` または `/slate_gray` を選択します。
-1. 前のセクションの説明に従い、テンプレート フォルダーと `/assets` フォルダーの下にあるすべてのファイルを Blob Storage にアップロードします。
-1. 次に、`/ocean_blue` または `/slate_gray` のルートにある各 `\*.html` ファイルを開き、相対 URL のすべての出現箇所を、手順 2 でアップロードした css、images、および fonts ファイルの URL に置き換えます。 例:
+1. ローカル コンピューターにリポジトリを複製します。 テンプレート フォルダーの `/AzureBlue`、`/MSA`、または `/classic` を選択します。
+1. 前のセクションの説明に従い、テンプレート フォルダーと `/src` フォルダーの下にあるすべてのファイルを Blob Storage にアップロードします。
+1. 次に、 テンプレート フォルダー内の各 `\*.html` ファイルを開きます。 その後、URL `https://login.microsoftonline.com` のすべてのインスタンスを、手順 2 でアップロードした URL に置き換えます。 次に例を示します。
+    
+    差出人:
     ```html
-    <link href="./css/assets.css" rel="stylesheet" type="text/css" />
+    https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF
     ```
 
-    目的
+    移動先:
     ```html
-    <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
+    https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
+    
 1. `\*.html` ファイルを保存し、それらを Blob Storage にアップロードします。
 1. ここで、前述のように、HTML ファイルを指すようにポリシーを変更します。
 1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび \*.html ファイルでお使いの参照を確認してください。

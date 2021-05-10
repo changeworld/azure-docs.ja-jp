@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 7eb576a3d084630ebe6020b57814f12687dc9bd9
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122138"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168622"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -40,8 +40,13 @@ Azure portal または Windows PowerShell を使用して、Azure Automation に
 次の例は、新しい空の Runbook を作成する方法を示しています。
 
 ```azurepowershell-interactive
-New-AzAutomationRunbook -AutomationAccountName MyAccount `
--Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    Name                  = 'NewRunbook'
+    ResourceGroupName     = 'MyResourceGroup'
+    Type                  = 'PowerShell'
+}
+New-AzAutomationRunbook @params
 ```
 
 ## <a name="import-a-runbook"></a>Runbook をインポートする
@@ -82,14 +87,14 @@ Runbook のドラフトとしてスクリプト ファイルをインポート�
 次の例では、スクリプト ファイルを Runbook にインポートする方法を示します。
 
 ```azurepowershell-interactive
-$automationAccountName =  "AutomationAccount"
-$runbookName = "Sample_TestRunbook"
-$scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-$RGName = "ResourceGroup"
-
-Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
--ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
--Type PowerShellWorkflow
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    Name                  = 'Sample_TestRunbook'
+    ResourceGroupName     = 'MyResourceGroup'
+    Type                  = 'PowerShell'
+    Path                  = 'C:\Runbooks\Sample_TestRunbook.ps1'
+}
+Import-AzAutomationRunbook @params
 ```
 
 ## <a name="handle-resources"></a>リソースを処理する
@@ -97,20 +102,17 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 Runbook で[リソース](automation-runbook-execution.md#resources)を作成する場合、リソースの作成を試みる前に、リソースが既に存在するかどうかをスクリプトで確認する必要があります。 基本的な例を次に示します。
 
 ```powershell
-$vmName = "WindowsVM1"
-$resourceGroupName = "myResourceGroup"
-$myCred = Get-AutomationPSCredential "MyCredential"
-$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $resourceGroupName
+$vmName = 'WindowsVM1'
+$rgName = 'MyResourceGroup'
+$myCred = Get-AutomationPSCredential 'MyCredential'
 
-if(!$vmExists)
-    {
+$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $rgName
+if (-not $vmExists) {
     Write-Output "VM $vmName does not exist, creating"
-    New-AzVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
-    }
-else
-    {
+    New-AzVM -Name $vmName -ResourceGroupName $rgName -Credential $myCred
+} else {
     Write-Output "VM $vmName already exists, skipping"
-    }
+}
 ```
 
 ## <a name="retrieve-details-from-activity-log"></a>アクティビティ ログから詳細を取得する
@@ -118,31 +120,37 @@ else
 Runbook を開始したユーザーやアカウントなど、Runbook に関する詳細を、Automation アカウントの[アクティビティ ログ](automation-runbook-execution.md#activity-logging)から取得できます。 次の PowerShell の例では、指定した Runbook を最後に実行したユーザーが提供されます。
 
 ```powershell-interactive
-$SubID = "00000000-0000-0000-0000-000000000000"
-$AutomationResourceGroupName = "MyResourceGroup"
-$AutomationAccountName = "MyAutomationAccount"
-$RunbookName = "MyRunbook"
+$SubID = '00000000-0000-0000-0000-000000000000'
+$AutoRgName = 'MyResourceGroup'
+$aaName = 'MyAutomationAccount'
+$RunbookName = 'MyRunbook'
 $StartTime = (Get-Date).AddDays(-1)
-$JobActivityLogs = Get-AzLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
-                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
+
+$params = @{
+    ResourceGroupName = $AutoRgName
+    StartTime         = $StartTime
+}
+$JobActivityLogs = (Get-AzLog @params).Where( { $_.Authorization.Action -eq 'Microsoft.Automation/automationAccounts/jobs/write' })
 
 $JobInfo = @{}
-foreach ($log in $JobActivityLogs)
-{
+foreach ($log in $JobActivityLogs) {
     # Get job resource
     $JobResource = Get-AzResource -ResourceId $log.ResourceId
 
-    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
-    {
+    if ($null -eq $JobInfo[$log.SubmissionTimestamp] -and $JobResource.Properties.Runbook.Name -eq $RunbookName) {
         # Get runbook
-        $Runbook = Get-AzAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
-                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
+        $jobParams = @{
+            ResourceGroupName     = $AutoRgName
+            AutomationAccountName = $aaName
+            Id                    = $JobResource.Properties.JobId
+        }
+        $Runbook = Get-AzAutomationJob @jobParams | Where-Object RunbookName -EQ $RunbookName
 
         # Add job information to hashtable
         $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
     }
 }
-$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
+$JobInfo.GetEnumerator() | Sort-Object Key -Descending | Select-Object -First 1
 ```
 
 ## <a name="track-progress"></a>進捗状況の追跡
@@ -158,9 +166,13 @@ Runbook の進行状況は、ストレージ アカウント、データベー�
 ```powershell
 # Authenticate to Azure
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
-
+$cnParams = @{
+    ServicePrincipal      = $true
+    Tenant                = $connection.TenantId
+    ApplicationId         = $connection.ApplicationId
+    CertificateThumbprint = $connection.CertificateThumbprint
+}
+Connect-AzAccount @cnParams
 $AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
@@ -170,12 +182,12 @@ $aaName = "<AutomationAccountName>"
 $jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $aaName -RunbookName $runbookName -AzContext $AzureContext
 
 # Check to see if it is already running
-$runningCount = ($jobs | ? {$_.Status -eq "Running"}).count
+$runningCount = ($jobs.Where( { $_.Status -eq 'Running' })).count
 
-If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Status -eq "New")) {
+if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Status -eq 'New')) {
     # Exit code
-    Write-Output "Runbook is already running"
-    Exit 1
+    Write-Output "Runbook [$runbookName] is already running"
+    exit 1
 } else {
     # Insert Your code here
 }
@@ -197,22 +209,26 @@ Runbook は、[サブスクリプション](automation-runbook-execution.md#subs
 ```powershell
 Disable-AzContextAutosave -Scope Process
 
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-$AzureContext = Connect-AzAccount -ServicePrincipal `
--Tenant $Conn.TenantID `
--ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint `
--Subscription $Conn.SubscriptionId
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+$cnParams = @{
+    ServicePrincipal      = $true
+    Tenant                = $connection.TenantId
+    ApplicationId         = $connection.ApplicationId
+    CertificateThumbprint = $connection.CertificateThumbprint
+}
+Connect-AzAccount @cnParams
 
 $ChildRunbookName = 'ChildRunbookDemo'
-$AutomationAccountName = 'myAutomationAccount'
-$ResourceGroupName = 'myResourceGroup'
+$aaName = 'MyAutomationAccount'
+$rgName = 'MyResourceGroup'
 
-Start-AzAutomationRunbook `
--ResourceGroupName $ResourceGroupName `
--AutomationAccountName $AutomationAccountName `
--Name $ChildRunbookName `
--DefaultProfile $AzureContext
+$startParams = @{
+    ResourceGroupName     = $rgName
+    AutomationAccountName = $aaName
+    Name                  = $ChildRunbookName
+    DefaultProfile        = $AzureContext
+}
+Start-AzAutomationRunbook @startParams
 ```
 
 ## <a name="work-with-a-custom-script"></a>カスタム スクリプトを使用する
@@ -258,12 +274,16 @@ Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook)
 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) コマンドレットを使用して Runbook を発行します。 
 
 ```azurepowershell-interactive
-$automationAccountName =  "AutomationAccount"
-$runbookName = "Sample_TestRunbook"
-$RGName = "ResourceGroup"
+$aaName = "MyAutomationAccount"
+$RunbookName = "Sample_TestRunbook"
+$rgName = "MyResourceGroup"
 
-Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
--Name $runbookName -ResourceGroupName $RGName
+$publishParams = @{
+    AutomationAccountName = $aaName
+    ResourceGroupName     = $rgName
+    Name                  = $RunbookName
+}
+Publish-AzAutomationRunbook @publishParams
 ```
 
 ## <a name="schedule-a-runbook-in-the-azure-portal"></a>Azure portal で Runbook をスケジュールする
@@ -308,28 +328,45 @@ Runbook 用に作成されたジョブと、特定のジョブの詳細を取得
 次の例では、サンプル Runbook の最後のジョブが取得されて、その状態、Runbook パラメーターに指定された値、およびジョブの出力が表示されます。
 
 ```azurepowershell-interactive
-$job = (Get-AzAutomationJob –AutomationAccountName "MyAutomationAccount" `
-–RunbookName "Test-Runbook" -ResourceGroupName "ResourceGroup01" | sort LastModifiedDate –desc)[0]
-$job.Status
-$job.JobParameters
-Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
+$getJobParams = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Runbookname           = 'Test-Runbook'
+}
+$job = (Get-AzAutomationJob @getJobParams | Sort-Object LastModifiedDate -Desc)[0]
+$job | Select-Object JobId, Status, JobParameters
+
+$getOutputParams = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Id                    = $job.JobId
+    Stream                = 'Output'
+}
+Get-AzAutomationJobOutput @getOutputParams
 ```
 
 次の例では、特定のジョブの出力が取得されて、各レコードが返されます。 いずれかのレコードで[例外](automation-runbook-execution.md#exceptions)が発生した場合、スクリプトでは値ではなく例外が書き出されます。 この動作は役に立ちます。出力時に通常はログに記録されない追加情報が、例外によって提供される可能性があるためです。
 
 ```azurepowershell-interactive
-$output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
-foreach($item in $output)
-{
-    $fullRecord = Get-AzAutomationJobOutputRecord -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -JobId <jobID> -Id $item.StreamRecordId
-    if ($fullRecord.Type -eq "Error")
-    {
-        $fullRecord.Value.Exception
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Stream                = 'Any'
+}
+$output = Get-AzAutomationJobOutput @params
+
+foreach ($item in $output) {
+    $jobOutParams = @{
+        AutomationAccountName = 'MyAutomationAccount'
+        ResourceGroupName     = 'MyResourceGroup'
+        Id                    = $item.StreamRecordId
     }
-    else
-    {
-    $fullRecord.Value
+    $fullRecord = Get-AzAutomationJobOutputRecord @jobOutParams
+
+    if ($fullRecord.Type -eq 'Error') {
+        $fullRecord.Value.Exception
+    } else {
+        $fullRecord.Value
     }
 }
 ```

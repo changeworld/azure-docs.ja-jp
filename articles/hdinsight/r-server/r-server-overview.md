@@ -6,10 +6,10 @@ ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943919"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
@@ -69,7 +69,7 @@ HDFS ファイル システムの既定のストレージには、Azure Storage 
 
 クラスターの作成中に、追加の BLOB および Data Lake Store へのアクセスを有効にできます。 使用しているプライマリ ストレージ オプションによって制限されることはありません。  複数のストレージ アカウントの使用について詳しくは、[HDInsight の ML Services 向けの Azure Storage オプション](./r-server-storage.md)に関する記事をご覧ください。
 
-エッジ ノードで使用するストレージ オプションとして、Azure Files を使用することもできます。 Azure Files により、Azure Storage で作成されたファイル共有を Linux ファイル システムで有効にできます。 詳細については、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事を参照してください。
+エッジ ノードで使用するストレージ オプションとして、 Azure Files を使用することもできます。 Azure Files により、Azure Storage で作成されたファイル共有を Linux ファイル システムで有効にできます。 詳細については、[HDInsight の ML Services 向けの Azure Storage オプション](r-server-storage.md)に関する記事を参照してください。
 
 ## <a name="access-ml-services-edge-node"></a>ML Services エッジ ノードにアクセスする
 
@@ -129,7 +129,7 @@ OS のメンテナンスは、HDInsight クラスター内の基礎となる Lin
 
 HDInsight クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。 HDInsight の最新バージョンには、エッジ ノードに RStudio Server のブラウザーベースの IDE が提供されています。 RStudio Server は、開発および実行用の R コンソールよりも生産性が高くなります。
 
-デスクトップ IDE は、リモート MapReduce または Spark コンピューティング コンテキストを介してクラスターにアクセスできます。 次のオプションがあります。Microsoft の [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio、Walware の Eclipse ベースの StatET。
+デスクトップ IDE は、リモート MapReduce または Spark コンピューティング コンテキストを介してクラスターにアクセスできます。 そのようなオプションとしては、Microsoft の [R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS)、RStudio、Walware の Eclipse ベースの StatET が挙げられます。
 
 コマンド プロンプトに **R** と入力して、エッジ ノードの R コンソールにアクセスします。 コンソールのインターフェイスを使用しているときは、テキスト エディターで R スクリプトを開発すると便利です。 次に、必要に応じてスクリプトのセクションを切り取って R コンソールに貼り付けます。
 

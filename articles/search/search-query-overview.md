@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 21012848ba3624df6110eaea182beccc4646d234
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600804"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105609277"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Cognitive Search のクエリ
 
@@ -77,7 +77,7 @@ Cognitive Search では、フルテキスト検索は Apache Lucene クエリ �
 
 ## <a name="autocomplete-and-suggested-queries"></a>オートコンプリートとクエリ候補
 
-[オートコンプリートや結果候補](search-autocomplete-tutorial.md)は、逐次検索エクスペリエンスでの部分文字列入力に基づいて連続するクエリ要求を実行する **`search`** に代わる代替手段です。 [このチュートリアル](tutorial-csharp-type-ahead-and-suggestions.md)で説明しているように、 **`autocomplete`** と **`suggestions`** パラメーターは一緒に使用することも、個別に使用することもできますが、 **`search`** と一緒に使用することはできません。 完成した用語とクエリ候補はどちらもインデックスの内容から派生されます。 このエンジンは、インデックスに存在しない文字列や候補を返しません。 詳細については、「[オートコンプリート (REST API)](/rest/api/searchservice/autocomplete)」と「[検索候補 (REST API)](/rest/api/searchservice/suggestions)」をご覧ください。
+[オートコンプリートや結果候補](search-add-autocomplete-suggestions.md)は、逐次検索エクスペリエンスでの部分文字列入力に基づいて連続するクエリ要求を実行する **`search`** に代わる代替手段です。 [このチュートリアル](tutorial-csharp-type-ahead-and-suggestions.md)で説明しているように、 **`autocomplete`** と **`suggestions`** パラメーターは一緒に使用することも、個別に使用することもできますが、 **`search`** と一緒に使用することはできません。 完成した用語とクエリ候補はどちらもインデックスの内容から派生されます。 このエンジンは、インデックスに存在しない文字列や候補を返しません。 詳細については、「[オートコンプリート (REST API)](/rest/api/searchservice/autocomplete)」と「[検索候補 (REST API)](/rest/api/searchservice/suggestions)」をご覧ください。
 
 ## <a name="filter-search"></a>フィルター検索
 

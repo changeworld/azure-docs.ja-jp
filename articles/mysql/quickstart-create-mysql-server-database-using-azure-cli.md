@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4f774351fc0eaaf32069687a1943c72b74b6308a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3dd971ff36bde02072d14c465dbafec2823b256d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96494326"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780319"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure Database for MySQL サーバーの作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "96494326"
 
  - このクイックスタートには、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
- - [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、**az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az-account-list) を使用します。
+ - [az account set](/cli/azure/account) コマンドを使用して、アカウントの特定のサブスクリプションを選択します。 コマンドの **subscription** 引数の値として使用する、**az login** 出力の **id** 値をメモしておきます。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 すべてのサブスクリプションを取得するには、[az account list](/cli/azure/account#az_account_list) を使用します。
 
    ```azurecli
    az account set --subscription <subscription id>
@@ -41,7 +41,7 @@ ms.locfileid: "96494326"
 az group create --name myresourcegroup --location westus
 ```
 
-[az mysql server create](/cli/azure/mysql/server#az-mysql-server-create) コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーに複数のデータベースを含めることができます。
+[az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーに複数のデータベースを含めることができます。
 
 ```azurecli
 az mysql server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
@@ -60,7 +60,7 @@ sku-name|GP_Gen5_2|価格レベルとコンピューティング構成の名前�
 
 >[!IMPORTANT] 
 >- サーバーの既定の MySQL バージョンは 5.7 です。 現在、5.6 と 8.0 のバージョンも使用できます。
->- **az mysql server create** コマンドのすべての引数を確認するには、この [リファレンス ドキュメント](/cli/azure/mysql/server#az-mysql-server-create)を参照してください。
+>- **az mysql server create** コマンドのすべての引数を確認するには、この [リファレンス ドキュメント](/cli/azure/mysql/server#az_mysql_server_create)を参照してください。
 >- サーバーでは、既定で SSL が有効になっています。 SSL の詳細については、[SSL 接続の構成](howto-configure-ssl.md)に関するページを参照してください
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成 
@@ -126,7 +126,7 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
 az group delete --name myresourcegroup
 ```
 
-新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az-mysql-server-delete) コマンドを実行してください。
+新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) コマンドを実行してください。
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 77f72d6c63231f0854b58470f86c65ffc81c9775
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a14b16e34faa827228594bf6d4f0bd9ed48cf72
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98731922"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>チュートリアル: Azure Active Directory と Greenhouse の統合
 
@@ -40,7 +40,7 @@ ms.locfileid: "98731922"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Greenhouse では、**SP** Initiated SSO がサポートされます
+* Greenhouse では、**SP および IDP** Initiated SSO がサポートされます。
 
 ## <a name="adding-greenhouse-from-the-gallery"></a>ギャラリーから Greenhouse を追加する
 
@@ -73,18 +73,28 @@ Greenhouse に対して Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal の **Greenhouse** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.greenhouse.io`
+    a. **[識別子]** ボックスに、`https://<COMPANYNAME>.greenhouse.io` の形式で URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.greenhouse.io`
+    b. **[応答 URL]** ボックスに、次のいずれかのパターンを使用して URL を入力します。
+    
+    | [応答 URL]|
+    | -------------- |
+    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
+    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
+    |
+
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+
+    **[サインオン URL]** ボックスに、`https://<COMPANYNAME>.greenhouse.io` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Greenhouse クライアント サポート チーム](https://www.greenhouse.io/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Greenhouse クライアント サポート チーム](https://www.greenhouse.io/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -127,7 +137,7 @@ Greenhouse に対して Azure AD SSO を構成してテストするには、次�
 
     ![SSO ページのスクリーンショット](./media/greenhouse-tutorial/configure.png)
 
-1. [Single Sign-On]\(シングル サインオン\) ページで、以下の手順を実行します。
+1. **[Single Sign-On]\(シングル サインオン\)** ページで、以下の手順を実行します。
 
     ![SSO 構成ページのスクリーンショット](./media/greenhouse-tutorial/sso-page.png)
 
@@ -172,15 +182,22 @@ Azure AD ユーザーが Greenhouse にログインできるようにするに�
       >[!NOTE]
       >Azure Active Directory のアカウント所有者には、アカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
-### <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Greenhouse のサインオン URL にリダイレクトされます。 
+#### <a name="sp-initiated"></a>SP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Greenhouse のサインオン URL にリダイレクトされます。  
 
 * Greenhouse のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Greenhouse] タイルをクリックすると、Greenhouse のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+#### <a name="idp-initiated"></a>IDP Initiated:
+
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。すると、SSO を設定した Greenhouse に自動的にサインインします 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Greenhouse] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Greenhouse に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+
 
 
 ## <a name="next-steps"></a>次のステップ

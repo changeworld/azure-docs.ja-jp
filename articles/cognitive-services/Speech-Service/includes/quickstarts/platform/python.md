@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: df7c24fefcc6cda8f02a6575dea911e48d200a90
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 4f542970db5cf7015df4e0f276fccd8782d7beee
+ms.sourcegitcommit: bed20f85722deec33050e0d8881e465f94c79ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100551479"
+ms.lasthandoff: 03/25/2021
+ms.locfileid: "105152729"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 このパッケージ名の使用を自分で開始する場合は、`pip install azure-cognitiveservices-speech` を実行します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "100551479"
 > - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
 - Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 パッケージを初めてインストールする場合、このガイドを続行する前に Windows の再起動が必要になる場合があることに注意してください。
-- 最後に、[Python 3.5 から 3.8](https://www.python.org/downloads/) が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、「Python 3.5.1」、または同様の応答が返されます。
+- 最後に、[Python 3.6 から 3.9](https://www.python.org/downloads/) が必要になります。 インストールを確認するには、コマンド プロンプトを開き、コマンド `python --version` を入力して、結果を確認します。 適切にインストールされた場合、"Python 3.8.8" のような応答が返されます。
 
 ## <a name="install-the-speech-sdk-from-pypi"></a>PyPI から Speech SDK をインストールする
 
@@ -73,7 +73,7 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>Visual Studio Code を使用して Speech SDK をインストールする
 
-1. お使いのプラットフォームでサポートされている最新バージョンの [Python](https://www.python.org/downloads/) (3.5 から 3.8) をダウンロードしてインストールします。
+1. お使いのプラットフォームでサポートされている最新バージョンの [Python](https://www.python.org/downloads/) (3.6 から 3.9) をダウンロードしてインストールします。
    - Windows ユーザーは、インストールプロセス中に [Add Python to your PATH]\(Python をパスに追加する\) を選択していることを確認してください。
 1. [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードして、インストールします。
 1. Visual Studio Code を開いて、Python 拡張機能をインストールします。 メニューで **[ファイル]**  >  **[基本設定]**  >  **[拡張機能]** の順に選択します。 **Python** を検索して、 **[インストール]** をクリックします。

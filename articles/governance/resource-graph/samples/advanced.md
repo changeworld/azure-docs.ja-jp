@@ -1,14 +1,14 @@
 ---
 title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
-ms.date: 01/27/2021
+ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: 5a87d63e597622ae5c0d8c8f48bc37281d4fd530
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99560355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104949857"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -28,7 +28,6 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 - [仮想マシンにインストールされているすべての拡張機能を一覧表示する](#join-vmextension)
 - [リソース グループ上の特定のタグを含んだストレージ アカウントを検索する](#join-findstoragetag)
 - [2 つのクエリの結果を結合して 1 つの結果にする](#unionresults)
-- [DisplayNames でテナント名とサブスクリプション名を含める](#displaynames)
 - [電源状態の拡張プロパティ別に仮想マシンを集計する](#vm-powerstate)
 - [非準拠ゲスト構成割り当ての数](#count-gcnoncompliant)
 - [ゲスト構成の割り当てレポートの詳細を問い合わせる](#query-gcreports)
@@ -559,26 +558,6 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 - Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com</a>
 - Azure Government ポータル: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.us</a>
 - Azure China 21Vianet ポータル: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.cn</a>
-
----
-
-## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>DisplayNames でテナント名とサブスクリプション名を含める
-
-このクエリは、_DisplayNames_ オプションを指定した **Include** パラメーター使用して、**subscriptionDisplayName** と **tenantDisplayName** を結果に追加します。 このパラメーターは、Azure CLI と Azure PowerShell でのみ使用できます。
-
-```azurecli-interactive
-az graph query -q "limit 1" --include displayNames
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "limit 1" -Include DisplayNames
-```
-
-サブスクリプション名を取得する代わりに、`join` 演算子を使用して、**ResourceContainers** テーブルと `Microsoft.Resources/subscriptions` タイプに結合することもできます。 `join` は、Azure CLI、Azure PowerShell、ポータルのほか、サポートされているすべての SDK で使用できます。 具体的な例については、[サブスクリプション名を含むキー コンテナーのサンプル](#join)を参照してください。
-
-> [!NOTE]
-> 取得するプロパティを指定する **project** をクエリで使用しなかった場合、**subscriptionDisplayName** と **tenantDisplayName** が自動的に結果に追加されます。
-> クエリで **project** を使用した場合は、_DisplayName_ フィールドをそれぞれ明示的に **project** に含める必要があります。そうしないと、**Include** パラメーターが使用されていても、結果に、それらのフィールドが返されません。 **Include** パラメーターは、[テーブル](../concepts/query-language.md#resource-graph-tables)では機能しません。
 
 ---
 

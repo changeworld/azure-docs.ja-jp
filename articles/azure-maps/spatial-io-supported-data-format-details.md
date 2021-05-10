@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91310171"
 ---
 # <a name="supported-data-format-details"></a>サポートされるデータ形式の詳細
@@ -23,7 +23,7 @@ ms.locfileid: "91310171"
 
 空間 IO モジュールでは、次の名前空間の XML タグがサポートされています。
 
-| 名前空間プレフィックス | 名前空間 URI   | Notes                                                                    |
+| 名前空間プレフィックス | 名前空間 URI   | ノート                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | GeoRSS ファイルでの読み取り専用のサポート。           |
@@ -45,83 +45,83 @@ ms.locfileid: "91310171"
 
 空間 IO モジュールでは、次の KML 要素がサポートされています。
 
-| 要素名         | Read    | Write   | Notes                                                                                                                      |
+| 要素名         | Read    | Write   | ノート                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
-| `address`            | 部分的 | はい     | オブジェクトは解析されますが、シェイプの配置には使用されません。                                                                    |
-| `AddressDetails`     | 部分的 | no      | オブジェクトは解析されますが、シェイプの配置には使用されません。                                                                    |
+| `address`            | partial | はい     | オブジェクトは解析されますが、シェイプの配置には使用されません。                                                                    |
+| `AddressDetails`     | partial | いいえ      | オブジェクトは解析されますが、シェイプの配置には使用されません。                                                                    |
 | `atom:author`        | はい     | はい     |                                                                                                                            |
 | `atom:link`          | はい     | はい     |                                                                                                                            |
 | `atom:name`          | はい     | はい     |                                                                                                                            |
-| `BalloonStyle`       | 部分的 | 部分的 | `displayMode` はサポートされていません。 `PopupTemplate` に変換されます。 書き込むには、書き込むフィーチャーのプロパティとして `popupTemplate` プロパティを追加します。 |
+| `BalloonStyle`       | partial | partial | `displayMode` はサポートされていません。 `PopupTemplate` に変換されます。 書き込むには、書き込むフィーチャーのプロパティとして `popupTemplate` プロパティを追加します。 |
 | `begin`              | はい     | はい     |                                                                                                                            |
 | `color`              | はい     | はい     | `#AABBGGRR` と `#BBGGRR` が含まれます。 CSS の色の文字列に解析されます                                                           |
-| `colorMode`          | はい     | no      |                                                                                                                            |
+| `colorMode`          | はい     | いいえ      |                                                                                                                            |
 | `coordinates`        | はい     | はい     |                                                                                                                            |
 | `Data`               | はい     | はい     |                                                                                                                            |
 | `description`        | はい     | はい     |                                                                                                                            |
 | `displayName`        | はい     | はい     |                                                                                                                            |
 | `Document`           | はい     | はい     |                                                                                                                            |
-| `drawOrder`          | 部分的 | no      | グランド オーバーレイを読み取り、それらを並べ替えるために使用されます。 
+| `drawOrder`          | partial | いいえ      | グランド オーバーレイを読み取り、それらを並べ替えるために使用されます。 
 | `east`               | はい     | はい     |                                                                                                                            |
 | `end`                | はい     | はい     |                                                                                                                            |
 | `ExtendedData`       | はい     | はい     | 型指定されていない `Data`、`SimpleData` または `Schema`、およびフォーム `$[dataName]` のエンティティの置換がサポートされています。                      |
-| `extrude`            | 部分的 | 部分的 | 多角形でのみサポートされます。 高さが異なる多角形を持つ MultiGeometry は、個々のフィーチャーに分割されます。 線のスタイルはサポートされていません。 高度が 0 の多角形は、平面の多角形としてレンダリングされます。 読み取り時に、外部リングの最初の座標の高度が、その多角形の height プロパティとして追加されます。 その後、最初の座標の高度は、マップに多角形をレンダリングするために使用されます。 |
+| `extrude`            | partial | partial | 多角形でのみサポートされます。 高さが異なる多角形を持つ MultiGeometry は、個々のフィーチャーに分割されます。 線のスタイルはサポートされていません。 高度が 0 の多角形は、平面の多角形としてレンダリングされます。 読み取り時に、外部リングの最初の座標の高度が、その多角形の height プロパティとして追加されます。 その後、最初の座標の高度は、マップに多角形をレンダリングするために使用されます。 |
 | `fill`               | はい     | はい     |                                                                                                                            |
 | `Folder`             | はい     | はい     |                                                                                                                            |
 | `GroundOverlay`      | はい     | はい     | `color` はサポートされていません                                                                                                   |
-| `heading`            | 部分的 | no      | 解析されますが、`SimpleDataLayer` でレンダリングされません。 データがシェイプのプロパティに格納されている場合にのみ書き込みます。                 |
-| `hotSpot`            | はい     | 部分的 | データがシェイプのプロパティに格納されている場合にのみ書き込みます。 単位は "ピクセル" としてのみ出力されます。                         |
+| `heading`            | partial | いいえ      | 解析されますが、`SimpleDataLayer` でレンダリングされません。 データがシェイプのプロパティに格納されている場合にのみ書き込みます。                 |
+| `hotSpot`            | はい     | partial | データがシェイプのプロパティに格納されている場合にのみ書き込みます。 単位は "ピクセル" としてのみ出力されます。                         |
 | `href`               | はい     | はい     |                                                                                                                            |
-| `Icon`               | 部分的 | 部分的 | 解析されますが、`SimpleDataLayer` でレンダリングされません。 URI データが含まれている場合は、シェイプのアイコン プロパティのみを書き込みます。 サポートされるのは `href` のみです。 |
-| `IconStyle`          | 部分的 | 部分的 | `icon`、`heading`、`colorMode`、`hotspots` の値は解析されますが、`SimpleDataLayer` ではレンダリングされません         |
+| `Icon`               | partial | partial | 解析されますが、`SimpleDataLayer` でレンダリングされません。 URI データが含まれている場合は、シェイプのアイコン プロパティのみを書き込みます。 サポートされるのは `href` のみです。 |
+| `IconStyle`          | partial | partial | `icon`、`heading`、`colorMode`、`hotspots` の値は解析されますが、`SimpleDataLayer` ではレンダリングされません         |
 | `innerBoundaryIs`    | はい     | はい     |                                                                                                                            |
 | `kml`                | はい     | はい     |                                                                                                                            |
-| `LabelStyle`         | no      | no      |                                                                                                                            |
+| `LabelStyle`         | no      | いいえ      |                                                                                                                            |
 | `LatLonBox`          | はい     | はい     |                                                                                                                            |
 | `gx:LatLonQuad`      | はい     | はい     |                                                                                                                            |
 | `LinearRing`         | はい     | はい     |                                                                                                                            |
 | `LineString`         | はい     | はい     |                                                                                                                            |
 | `LineStyle`          | はい     | はい     | `colorMode` はサポートされていません。                                                                                         |
-| `Link`               | はい     | no      | ネットワーク リンクでは、`href` プロパティのみがサポートされています。                                                                   |
-| `MultiGeometry`      | 部分的 | 部分的 | 読み取り時に個々のフィーチャーに分割される場合があります。                                                                     |
+| `Link`               | はい     | いいえ      | ネットワーク リンクでは、`href` プロパティのみがサポートされています。                                                                   |
+| `MultiGeometry`      | partial | partial | 読み取り時に個々のフィーチャーに分割される場合があります。                                                                     |
 | `name`               | はい     | はい     |                                                                                                                            |
-| `NetworkLink`        | はい     | no      | リンクは、ドキュメントと同じドメインにある必要があります。                                                                  |
-| `NetworkLinkControl` | no      | no      |                                                                                                                            |
+| `NetworkLink`        | はい     | いいえ      | リンクは、ドキュメントと同じドメインにある必要があります。                                                                  |
+| `NetworkLinkControl` | no      | いいえ      |                                                                                                                            |
 | `north`              | はい     | はい     |                                                                                                                            |
 | `open`               | はい     | はい     |                                                                                                                            |
 | `outerBoundaryIs`    | はい     | はい     |                                                                                                                            |
 | `outline`            | はい     | はい     |                                                                                                                            |
-| `overlayXY`          | no      | no      |                                                                                                                            |
-| `Pair`               | 部分的 | no      | `StyleMap` では `normal` スタイルのみがサポートされています。 `highlight` はサポートされていません。                                   |
+| `overlayXY`          | no      | いいえ      |                                                                                                                            |
+| `Pair`               | partial | いいえ      | `StyleMap` では `normal` スタイルのみがサポートされています。 `highlight` はサポートされていません。                                   |
 | `phoneNumber`        | はい     | はい     |                                                                                                                            |
-| `PhotoOverlay`       | no      | no      |                                                                                                                            |
+| `PhotoOverlay`       | no      | いいえ      |                                                                                                                            |
 | `Placemark`          | はい     | はい     |                                                                                                                            |
 | `Point`              | はい     | はい     |                                                                                                                            |
 | `Polygon`            | はい     | はい     |                                                                                                                            |
 | `PolyStyle`          | はい     | はい     |                                                                                                                            |
-| `Region`             | 部分的 | 部分的 | `LatLongBox` は、ドキュメント レベルでサポートされています。                                                                      |
+| `Region`             | partial | partial | `LatLongBox` は、ドキュメント レベルでサポートされています。                                                                      |
 | `rotation`           | no      | no      |                                                                                                                            |
 | `rotationXY`         | no      | no      |                                                                                                                            |
-| `scale`              | no      | no      |                                                                                                                            |
+| `scale`              | no      | いいえ      |                                                                                                                            |
 | `Schema`             | はい     | はい     |                                                                                                                            |
 | `SchemaData`         | はい     | はい     |                                                                                                                            |
-| `schemaUrl`          | 部分的 | はい     | KMZ に含まれていない外部ドキュメントからのスタイルの読み込みはサポートされていません。                             |
+| `schemaUrl`          | partial | はい     | KMZ に含まれていない外部ドキュメントからのスタイルの読み込みはサポートされていません。                             |
 | `ScreenOverlay`      | no      | no      |                                                                                                                            |
-| `screenXY`           | no      | no      |                                                                                                                            |
+| `screenXY`           | no      | いいえ      |                                                                                                                            |
 | `SimpleData`         | はい     | はい     |                                                                                                                            |
 | `SimpleField`        | はい     | はい     |                                                                                                                            |
-| `size`               | no      | no      |                                                                                                                            |
-| `Snippet`            | 部分的 | 部分的 | `maxLines` 属性は無視されます。                                                                                  |
+| `size`               | no      | いいえ      |                                                                                                                            |
+| `Snippet`            | partial | partial | `maxLines` 属性は無視されます。                                                                                  |
 | `south`              | はい     | はい     |                                                                                                                            |
 | `Style`              | はい     | はい     |                                                                                                                            |
-| `StyleMap`           | 部分的 | no      | `StyleMap` では標準スタイルのみがサポートされています。                                                                        |
-| `styleUrl`           | 部分的 | はい     | 外部スタイルの URL はサポートされていません。                                                                         |
+| `StyleMap`           | partial | いいえ      | `StyleMap` では標準スタイルのみがサポートされています。                                                                        |
+| `styleUrl`           | partial | はい     | 外部スタイルの URL はサポートされていません。                                                                         |
 | `text`               | はい     | はい     | `$[geDirections]` の置換はサポートされていません                                                                          |
 | `textColor`          | はい     | はい     |                                                                                                                            |
 | `TimeSpan`           | はい     | はい     |                                                                                                                            |
 | `TimeStamp`          | はい     | はい     |                                                                                                                            |
 | `value`              | はい     | はい     |                                                                                                                            |
-| `viewRefreshMode`    | 部分的 | no      |  WMS サービスをポイントしている場合、グラウンド オーバーレイでは `onStop` のみがサポートされます。 `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` を URL に追加し、マップの移動に合わせて更新します。  |
+| `viewRefreshMode`    | partial | いいえ      |  WMS サービスをポイントしている場合、グラウンド オーバーレイでは `onStop` のみがサポートされます。 `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` を URL に追加し、マップの移動に合わせて更新します。  |
 | `visibility`         | はい     | はい     |                                                                                                                            |
 | `west`               | はい     | はい     |                                                                                                                            |
 | `when`               | はい     | はい     |                                                                                                                            |
@@ -131,7 +131,7 @@ ms.locfileid: "91310171"
 
 空間 IO モジュールでは、次の GeoRSS 要素がサポートされています。
 
-| 要素名             | Read    | Write | Notes                                                                                          |
+| 要素名             | Read    | Write | ノート                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | はい     | はい   |                                                                                                |
 | `atom:category`          | はい     | はい   |                                                                                                |
@@ -153,10 +153,10 @@ ms.locfileid: "91310171"
 | `atom:title`             | はい     | はい   |                                                                                                |
 | `atom:updated`           | はい     | はい   |                                                                                                |
 | `atom:uri`               | はい     | はい   |                                                                                                |
-| `geo:lat`                | はい     | no    | `georss:point` として書き込まれます。                                                                   |
-| `geo:lon`                | はい     | no    | `georss:point` として書き込まれます。                                                                   |
-| `geo:long`               | はい     | no    | `georss:point` として書き込まれます。                                                                   |
-| `georss:box`             | はい     | no    | 多角形として読み取り、"四角形" の `subType` プロパティを指定します                                |
+| `geo:lat`                | はい     | いいえ    | `georss:point` として書き込まれます。                                                                   |
+| `geo:lon`                | はい     | いいえ    | `georss:point` として書き込まれます。                                                                   |
+| `geo:long`               | はい     | いいえ    | `georss:point` として書き込まれます。                                                                   |
+| `georss:box`             | はい     | いいえ    | 多角形として読み取り、"四角形" の `subType` プロパティを指定します                                |
 | `georss:circle`          | はい     | はい   |                                                                                                |
 | `georss:elev`            | はい     | はい   |                                                                                                |
 | `georss:featurename`     | はい     | はい   |                                                                                                |
@@ -168,77 +168,77 @@ ms.locfileid: "91310171"
 | `georss:radius`          | はい     | はい   |                                                                                                |
 | `georss:relationshiptag` | はい     | はい   |                                                                                                |
 | `georss:where`           | はい     | はい   |                                                                                                |
-| `geourl:latitude`        | はい     | no    | `georss:point` として書き込まれます。                                                                   |
-| `geourl:longitude`       | はい     | no    | `georss:point` として書き込まれます。                                                                   |
-| `position`               | はい     | no    | 一部の XML フィードでは、`georss:where` タグでラップするのではなく、位置タグを使用して GML をラップします。 このタグを読み取りますが、`georss:where` タグを使用して書き込みます。 |
-| `rss`                    | はい     | no    | GeoRSS は ATOM 形式で記述されています。                                                                 |
-| `rss:author`             | はい     | 部分的 | `atom:author` として書き込まれます。                                                                 |
-| `rss:category`           | はい     | 部分的 | `atom:category` として書き込まれます。                                                               |
-| `rss:channel`            | はい     | no    |                                                                                                |
-| `rss:cloud`              | はい     | no    |                                                                                                |
-| `rss:comments`           | はい     | no    |                                                                                                |
-| `rss:copyright`          | はい     | 部分的 | シェイプに `rights` `properties` プロパティがまだない場合は、`atom:rights` として書き込まれます。       |
-| `rss:description`        | はい     | 部分的 | シェイプに `content` `properties` プロパティがまだない場合は、`atom:content` として書き込まれます。      |
-| `rss:docs`               | はい     | no    |                                                                                                |
-| `rss:enclosure`          | はい     | no    |                                                                                                |
-| `rss:generator`          | はい     | no    |                                                                                                |
-| `rss:guid`               | はい     | 部分的 | シェイプに `id` `properties` プロパティがまだない場合は、`atom:id` として書き込まれます。         |
-| `rss:image`              | はい     | 部分的 | シェイプに `logo` `properties` プロパティがまだない場合は、`atom:logo` として書き込まれます。      |
-| `rss:item`               | はい     | 部分的 | `atom:entry` として書き込まれます。                                                                  |
-| `rss:language`           | はい     | no    |                                                                                                |
-| `rss:lastBuildDate`      | はい     | 部分的 | シェイプに `updated` `properties` プロパティがまだない場合は、`atom:updated` として書き込まれます。     |
-| `rss:link`               | はい     | 部分的 | `atom:link` として書き込まれます。                                                                   |
-| `rss:managingEditor`     | はい     | 部分的 | `atom:contributor` として書き込まれます。                                                            |
-| `rss:pubDate`            | はい     | 部分的 | シェイプに `published` `properties` プロパティがまだない場合は、`atom:published` として書き込まれます。  |
-| `rss:rating`             | はい     | no    |                                                                                                |
-| `rss:skipDays`           | はい     | no    |                                                                                                |
-| `rss:skipHours`          | はい     | no    |                                                                                                |
-| `rss:source`             | はい     | 部分的 | `atom:link` を含む `atom:source` として書き込まれます。                                       |
-| `rss:textInput`          | はい     | no    |                                                                                                |
-| `rss:title`              | はい     | 部分的 | `atom:title` として書き込まれます。                                                                  |
-| `rss:ttl`                | はい     | no    |                                                                                                |
-| `rss:webMaster`          | はい     | no    |                                                                                                |
+| `geourl:latitude`        | はい     | いいえ    | `georss:point` として書き込まれます。                                                                   |
+| `geourl:longitude`       | はい     | いいえ    | `georss:point` として書き込まれます。                                                                   |
+| `position`               | はい     | いいえ    | 一部の XML フィードでは、`georss:where` タグでラップするのではなく、位置タグを使用して GML をラップします。 このタグを読み取りますが、`georss:where` タグを使用して書き込みます。 |
+| `rss`                    | はい     | いいえ    | GeoRSS は ATOM 形式で記述されています。                                                                 |
+| `rss:author`             | はい     | partial | `atom:author` として書き込まれます。                                                                 |
+| `rss:category`           | はい     | partial | `atom:category` として書き込まれます。                                                               |
+| `rss:channel`            | はい     | いいえ    |                                                                                                |
+| `rss:cloud`              | はい     | いいえ    |                                                                                                |
+| `rss:comments`           | はい     | いいえ    |                                                                                                |
+| `rss:copyright`          | はい     | partial | シェイプに `rights` `properties` プロパティがまだない場合は、`atom:rights` として書き込まれます。       |
+| `rss:description`        | はい     | partial | シェイプに `content` `properties` プロパティがまだない場合は、`atom:content` として書き込まれます。      |
+| `rss:docs`               | はい     | いいえ    |                                                                                                |
+| `rss:enclosure`          | はい     | いいえ    |                                                                                                |
+| `rss:generator`          | はい     | いいえ    |                                                                                                |
+| `rss:guid`               | はい     | partial | シェイプに `id` `properties` プロパティがまだない場合は、`atom:id` として書き込まれます。         |
+| `rss:image`              | はい     | partial | シェイプに `logo` `properties` プロパティがまだない場合は、`atom:logo` として書き込まれます。      |
+| `rss:item`               | はい     | partial | `atom:entry` として書き込まれます。                                                                  |
+| `rss:language`           | はい     | いいえ    |                                                                                                |
+| `rss:lastBuildDate`      | はい     | partial | シェイプに `updated` `properties` プロパティがまだない場合は、`atom:updated` として書き込まれます。     |
+| `rss:link`               | はい     | partial | `atom:link` として書き込まれます。                                                                   |
+| `rss:managingEditor`     | はい     | partial | `atom:contributor` として書き込まれます。                                                            |
+| `rss:pubDate`            | はい     | partial | シェイプに `published` `properties` プロパティがまだない場合は、`atom:published` として書き込まれます。  |
+| `rss:rating`             | はい     | いいえ    |                                                                                                |
+| `rss:skipDays`           | はい     | いいえ    |                                                                                                |
+| `rss:skipHours`          | はい     | いいえ    |                                                                                                |
+| `rss:source`             | はい     | partial | `atom:link` を含む `atom:source` として書き込まれます。                                       |
+| `rss:textInput`          | はい     | いいえ    |                                                                                                |
+| `rss:title`              | はい     | partial | `atom:title` として書き込まれます。                                                                  |
+| `rss:ttl`                | はい     | いいえ    |                                                                                                |
+| `rss:webMaster`          | はい     | いいえ    |                                                                                                |
 
 ### <a name="gml-elements"></a>GML 要素
 
 空間 IO モジュールでは、次の GML 要素がサポートされています。 
 
-| 要素名            | Read | Write | Notes                                                                                  |
+| 要素名            | Read | Write | ノート                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | はい  | no    | `gml:posList` として書き込まれます。                                                              |
-| `gml:curveMember`       | はい  | no    |                                                                                        |
-| `gml:curveMembers`      | はい  | no    |                                                                                        |
-| `gml:Box`               | はい  | no    | `gml:Envelope` として書き込まれます。                                                             |
+| `gml:coordinates`       | はい  | いいえ    | `gml:posList` として書き込まれます。                                                              |
+| `gml:curveMember`       | はい  | いいえ    |                                                                                        |
+| `gml:curveMembers`      | はい  | いいえ    |                                                                                        |
+| `gml:Box`               | はい  | いいえ    | `gml:Envelope` として書き込まれます。                                                             |
 | `gml:description`       | はい  | はい   |                                                                                        |
 | `gml:Envelope`          | はい  | はい   |                                                                                        |
 | `gml:exterior`          | はい  | はい   |                                                                                        |
-| `gml:Feature`           | はい  | no    | シェイプとして書き込まれます。                                                                    |
-| `gml:FeatureCollection` | はい  | no    | ジオメトリ コレクションとして書き込まれます。                                                      |
-| `gml:featureMember`     | はい  | no    | ジオメトリ コレクションとして書き込まれます。                                                      |
-| `gml:geometry`          | はい  | no    | シェイプとして書き込まれます。                                                                    |
+| `gml:Feature`           | はい  | いいえ    | シェイプとして書き込まれます。                                                                    |
+| `gml:FeatureCollection` | はい  | いいえ    | ジオメトリ コレクションとして書き込まれます。                                                      |
+| `gml:featureMember`     | はい  | いいえ    | ジオメトリ コレクションとして書き込まれます。                                                      |
+| `gml:geometry`          | はい  | いいえ    | シェイプとして書き込まれます。                                                                    |
 | `gml:geometryMember`    | はい  | はい   |                                                                                        |
 | `gml:geometryMembers`   | はい  | はい   |                                                                                        |
 | `gml:identifier`        | はい  | はい   |                                                                                        |
-| `gml:innerBoundaryIs`   | はい  | no    | `gml.interior` を使用して書き込まれます。                                                          |
+| `gml:innerBoundaryIs`   | はい  | いいえ    | `gml.interior` を使用して書き込まれます。                                                          |
 | `gml:interior`          | はい  | はい   |                                                                                        |
 | `gml:LinearRing`        | はい  | はい   |                                                                                        |
 | `gml:LineString`        | はい  | はい   |                                                                                        |
 | `gml:lineStringMember`  | はい  | はい   |                                                                                        |
-| `gml:lineStringMembers` | はい  | no    |                                                                                        |
-| `gml:MultiCurve`        | はい  | no    | `gml:LineString` メンバーのみを読み取ります。 `gml.MultiLineString` として書き込まれます                  |
-| `gml:MultiGeometry`     | 部分的  | 部分的   | FeatureCollection としてのみ読み取ります。                                              |
+| `gml:lineStringMembers` | はい  | いいえ    |                                                                                        |
+| `gml:MultiCurve`        | はい  | いいえ    | `gml:LineString` メンバーのみを読み取ります。 `gml.MultiLineString` として書き込まれます                  |
+| `gml:MultiGeometry`     | partial  | partial   | FeatureCollection としてのみ読み取ります。                                              |
 | `gml:MultiLineString`   | はい  | はい   |                                                                                        |
 | `gml:MultiPoint`        | はい  | はい   |                                                                                        |
 | `gml:MultiPolygon`      | はい  | はい   |                                                                                        |
-| `gml:MultiSurface`      | はい  | no    | `gml:Polygon` メンバーのみを読み取ります。 `gml.MultiPolygon` として書き込まれます                        |
+| `gml:MultiSurface`      | はい  | いいえ    | `gml:Polygon` メンバーのみを読み取ります。 `gml.MultiPolygon` として書き込まれます                        |
 | `gml:name`              | はい  | はい   |                                                                                        |
-| `gml:outerBoundaryIs`   | はい  | no    | `gml.exterior` を使用して書き込まれます。                                                          |
+| `gml:outerBoundaryIs`   | はい  | いいえ    | `gml.exterior` を使用して書き込まれます。                                                          |
 | `gml:Point`             | はい  | はい   |                                                                                        |
 | `gml:pointMember`       | はい  | はい   |                                                                                        |
-| `gml:pointMembers`      | はい  | no    |                                                                                        |
+| `gml:pointMembers`      | はい  | いいえ    |                                                                                        |
 | `gml:Polygon`           | はい  | はい   |                                                                                        |
 | `gml:polygonMember`     | はい  | はい   |                                                                                        |
-| `gml:polygonMembers`    | はい  | no    |                                                                                        |
+| `gml:polygonMembers`    | はい  | いいえ    |                                                                                        |
 | `gml:pos`               | はい  | はい   |                                                                                        |
 | `gml:posList`           | はい  | はい   |                                                                                        |
 | `gml:surfaceMember`     | はい  | はい   |                                                                                        |
@@ -254,7 +254,7 @@ ms.locfileid: "91310171"
 
 空間 IO モジュールでは、次の GPX 要素がサポートされています。
 
-| 要素名             | Read    | Write   | Notes                                                                                       |
+| 要素名             | Read    | Write   | ノート                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | はい     | はい     |                                                                                             |
 | `gpx:author`             | はい     | はい     |                                                                                             |
@@ -264,7 +264,7 @@ ms.locfileid: "91310171"
 | `gpx:desc`               | はい     | はい     | 他の XML 形式に合わせて読み取りを行うときに、description プロパティにコピーされます。               |
 | `gpx:dgpsid`             | はい     | はい     |                                                                                             |
 | `gpx:ele`                | はい     | はい     |                                                                                             |
-| `gpx:extensions`         | 部分的 | 部分的 | 読み取り時に、スタイル情報が抽出されます。 その他のすべての拡張機能は、単純な JSON オブジェクトにフラット化されます。 シェイプのスタイル情報のみが書き込まれます。 |
+| `gpx:extensions`         | partial | partial | 読み取り時に、スタイル情報が抽出されます。 その他のすべての拡張機能は、単純な JSON オブジェクトにフラット化されます。 シェイプのスタイル情報のみが書き込まれます。 |
 | `gpx:geoidheight`        | はい     | はい     |                                                                                             |
 | `gpx:gpx`                | はい     | はい     |                                                                                             |
 | `gpx:hdop`               | はい     | はい     |                                                                                             |
@@ -287,13 +287,13 @@ ms.locfileid: "91310171"
 | `gpx:vdop`               | はい     | はい     |                                                                                             |
 | `gpx:wpt`                | はい     | はい     |                                                                                             |
 | `gpx_style:color`        | はい     | はい     |                                                                                             |
-| `gpx_style:line`         | 部分的 | 部分的 | `color`、`opacity`、`width`、`lineCap` がサポートされています。                                           |
+| `gpx_style:line`         | partial | partial | `color`、`opacity`、`width`、`lineCap` がサポートされています。                                           |
 | `gpx_style:opacity`      | はい     | はい     |                                                                                             |
 | `gpx_style:width`        | はい     | はい     |                                                                                             |
-| `gpxx:DisplayColor`      | はい     | no      | シェイプの色を指定するために使用されます。 書き込み時には、`gpx_style:line` の色が代わりに使用されます。  |
-| `gpxx:RouteExtension`    | 部分的 | no      | すべてのプロパティが `properties` に読み込まれます。 `DisplayColor` のみが使用されます。                     |
-| `gpxx:TrackExtension`    | 部分的 | no      | すべてのプロパティが `properties` に読み込まれます。 `DisplayColor` のみが使用されます。                     |
-| `gpxx:WaypointExtension` | 部分的 | no      | すべてのプロパティが `properties` に読み込まれます。 `DisplayColor` のみが使用されます。                     |
+| `gpxx:DisplayColor`      | はい     | いいえ      | シェイプの色を指定するために使用されます。 書き込み時には、`gpx_style:line` の色が代わりに使用されます。  |
+| `gpxx:RouteExtension`    | partial | いいえ      | すべてのプロパティが `properties` に読み込まれます。 `DisplayColor` のみ使用します。                     |
+| `gpxx:TrackExtension`    | partial | いいえ      | すべてのプロパティが `properties` に読み込まれます。 `DisplayColor` のみ使用します。                     |
+| `gpxx:WaypointExtension` | partial | いいえ      | すべてのプロパティが `properties` に読み込まれます。 `DisplayColor` のみ使用します。                     |
 | `gpx:keywords`           | はい     | はい     |                                                                                             |
 | `gpx:fix`                | はい     | はい     |                                                                                             |
 
@@ -389,7 +389,7 @@ ms.locfileid: "91310171"
 
 ### <a name="delimited-data-column-types"></a>区切られたデータ列の型
 
-ヘッダー行をスキャンすると、列名に含まれるすべての型情報が抽出され、その列のセルをキャストするために使用されます。 型の値を持つ列名"ColumnName (typeName)" の例を次に示します。 次の型名がサポートされています (大文字と小文字は区別されません)。
+ヘッダー行をスキャンすると、列名に含まれるすべての型情報が抽出され、その列のセルをキャストするために使用されます。 型の値を持つ列名の例: "ColumnName (typeName)"。 次の型名がサポートされています (大文字と小文字は区別されません)。
 
 #### <a name="numbers"></a>数値
 

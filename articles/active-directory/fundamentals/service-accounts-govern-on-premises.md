@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ad7cf7fe2ca1ddcb592e895014b1d956e55e1b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102557371"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642375"
 ---
 # <a name="governing-on-premises-service-accounts"></a>オンプレミス サービス アカウントの管理
 
@@ -60,7 +60,7 @@ Windows Active Directory には、4 種類のオンプレミス サービス ア
 
 サービス アカウントとして使用されるユーザー アカウントでは、次の設定を使用します。
 
-* [**アカウントの有効期限**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps): 継続する必要があると判断されない限り、レビュー期間後の設定された時間にサービス アカウントが自動的に期限切れになるように設定します。
+* [**アカウントの有効期限**](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true): 継続する必要があると判断されない限り、レビュー期間後の設定された時間にサービス アカウントが自動的に期限切れになるように設定します。
 
 *  **ログオンできるワークステーション**: サービス アカウントがサインインできる場所のアクセス許可を制限します。 マシン上でローカルに実行され、そのマシン上のリソースにのみアクセスする場合は、それ以外の場所でのログオンを制限します。
 
@@ -149,7 +149,7 @@ Web サイトを実行するために使用され、1 つ以上の SQL データ
 
 サービス アカウントの作成は、関連情報を CMDB 内に文書化して、リスク評価を実行した後にのみ行ってください。 アカウントの制限は、リスク評価に合わせる必要があります。 評価に関連する場合は、次の制限事項を考慮してください。
 
-* [アカウントの有効期限](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps)
+* [アカウントの有効期限](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
    * サービス アカウントとして使用されるすべてのユーザー アカウントに対して、現実的で限定された使用終了日を定義します。 これを設定するには、"アカウントの有効期限" フラグを使用します。 詳細については、「[Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration)」を参照してください。 
 
@@ -193,7 +193,7 @@ Web サイトを実行するために使用され、1 つ以上の SQL データ
 
 3. 無効のままにするポリシーが満たされたら、サービス アカウントを削除します。 
 
-   * MSA の場合は、PowerShell を使用して[アンインストール](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps)することも、管理されたサービス アカウント コンテナーから手動で削除することもできます。
+   * MSA の場合は、PowerShell を使用して[アンインストール](/powershell/module/activedirectory/uninstall-adserviceaccount?view=winserver2012-ps&preserve-view=true)することも、管理されたサービス アカウント コンテナーから手動で削除することもできます。
 
    * コンピューターまたはユーザー アカウントの場合は、Active Directory で手動でアカウントを削除できます。
 

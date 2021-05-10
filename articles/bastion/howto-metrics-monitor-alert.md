@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417945"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259117"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>Azure Monitor を使用して Azure Bastion の監視とメトリックを構成する方法
 
@@ -73,6 +73,12 @@ Azure Bastion の CPU 使用率を、各 bastion インスタンスに分割し�
 #### <a name="session-count"></a>セッション数
 
 bastion インスタンスあたりのアクティブ セッションの数を、各セッションの種類 (RDP と SSH) で集計して表示できます。 各 Azure Bastion は、アクティブな RDP セッションと SSH セッションの範囲をサポートできます。 このメトリックを監視すると、bastion サービスを実行しているインスタンスの数を調整する必要があるかどうかを理解するのに役立ちます。 Azure Bastion がサポートできるセッション数の詳細については、「[Azure Bastion に関する FAQ](bastion-faq.md)」を参照してください。
+
+このメトリックの構成に推奨される値は次のとおりです。
+
+* **集計:** 平均
+* **細分性:** 5 ～ 15 分
+* より正確な数を取得するには、インスタンスごとに分割することをお勧めします
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="セッション数を示すスクリーンショット。":::
 

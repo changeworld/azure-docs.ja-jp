@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 89744b63a555cc02d35815b4066ce572b7f77e38
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98725180"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531892"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>エンタイトルメント管理を使用して外部アクセスを管理する 
 
@@ -96,13 +96,13 @@ ms.locfileid: "98725180"
 
 [Microsoft Graph を使用して実行できるエンタイトルメント管理機能](/graph/tutorial-access-package-api)としては、次のようなものがあります
 
-* [アクセス パッケージを管理する](/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [アクセス パッケージを管理する](/graph/api/resources/accesspackage?view=graph-rest-beta&preserve-view=true)
 
-* [アクセス レビューを管理する](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [アクセス レビューを管理する](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
 
-* [接続済み組織を管理する](/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [接続済み組織を管理する](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true)
 
-* [エンタイトルメント管理の設定を管理する](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [エンタイトルメント管理の設定を管理する](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta&preserve-view=true)
 
 ## <a name="recommendations"></a>推奨事項 
 
@@ -112,7 +112,7 @@ ms.locfileid: "98725180"
 
 * ディレクトリに既に B2B ユーザーが存在する場合は、それらのユーザーを適切なアクセス パッケージに直接割り当てることもできます。
 
-* アクセスは、[Azure portal](../governance/entitlement-management-access-package-assignments.md) か、または [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) を使用して割り当てることができます。
+* アクセスは、[Azure portal](../governance/entitlement-management-access-package-assignments.md) か、または [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta&preserve-view=true) を使用して割り当てることができます。
 
 **ID ガバナンス設定を使用して、アクセス パッケージが期限切れになったときにディレクトリからユーザーが削除されるようにしましょう**。
 

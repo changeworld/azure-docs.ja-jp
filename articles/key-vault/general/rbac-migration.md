@@ -3,18 +3,17 @@ title: Azure ロールベースのアクセス制御への移行 | Microsoft Doc
 description: コンテナー アクセス ポリシーから Azure ロールに移行する方法について説明します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e7a8fd53e78e1aeab9db5af0432d0c3f1d786823
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a369ed26ca91dbf951b28b99250c6307608c5eb3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526954"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749080"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>コンテナー アクセス ポリシーから Azure ロールベースのアクセス制御のアクセス許可モデルへの移行
 

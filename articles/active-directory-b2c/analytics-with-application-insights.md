@@ -12,12 +12,12 @@ ms.date: 01/29/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 92da0b12a3119b048866eef5b18f658916595294
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2cde44ddb49ede8002b8a25ab47ae92ccd602a9d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101645927"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226372"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する
 
@@ -252,7 +252,7 @@ Application Insights を Azure AD B2C と共に使用している場合は、リ
 
 ### <a name="manipulate-claims"></a>要求を操作する
 
-Application Insights に入力要求を送信する前に、[入力要求変換](custom-policy-trust-frameworks.md#manipulating-your-claims)を使用して変更したり、新しいものを生成したりすることができます。 次の例では、技術プロファイルに `CheckIsAdmin` 入力要求変換が含まれています。
+Application Insights に入力要求を送信する前に、[入力要求変換](custom-policy-overview.md#manipulating-your-claims)を使用して変更したり、新しいものを生成したりすることができます。 次の例では、技術プロファイルに `CheckIsAdmin` 入力要求変換が含まれています。
 
 ```xml
 <TechnicalProfile Id="AppInsights-SignInComplete">
@@ -269,7 +269,7 @@ Application Insights に入力要求を送信する前に、[入力要求変換]
 
 ### <a name="add-events"></a>イベントの追加
 
-イベントを追加するには、`AppInsights-Common` 技術プロファイルが含まれている新しい技術プロファイルを作成します。 その後、[ユーザー体験](custom-policy-trust-frameworks.md#orchestration-steps)に、オーケストレーション ステップとして新しい技術プロファイルを追加します。 準備ができたら、イベントをトリガーする [Precondition](userjourneys.md#preconditions) 要素を使用します。 たとえば、ユーザーが多要素認証を実行した場合にのみイベントを報告します。
+イベントを追加するには、`AppInsights-Common` 技術プロファイルが含まれている新しい技術プロファイルを作成します。 その後、[ユーザー体験](custom-policy-overview.md#orchestration-steps)に、オーケストレーション ステップとして新しい技術プロファイルを追加します。 準備ができたら、イベントをトリガーする [Precondition](userjourneys.md#preconditions) 要素を使用します。 たとえば、ユーザーが多要素認証を実行した場合にのみイベントを報告します。
 
 ```xml
 <TechnicalProfile Id="AppInsights-MFA-Completed">

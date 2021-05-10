@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
-ms.openlocfilehash: 276762bc2b8624f687cbb77e1af771478791a57b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1a6a67fe43d4e0a6086154d71e61fe51680dbcd0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101678725"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762589"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>プレビュー: Azure VM での VM ゲストの自動パッチ適用
 
@@ -182,7 +182,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-[az feature register](/cli/azure/feature#az-feature-register) を使用して、サブスクリプションでのプレビューを有効にします。
+[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name InGuestAutoPatchVMPreview `
@@ -258,13 +258,13 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-for-windows-vms"></a>Windows VM 用の Azure CLI
-新しい VM を作成するときに VM ゲストの自動パッチ適用を有効にするには、[az vm create](/cli/azure/vm#az-vm-create) を使用します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して、VM ゲストの自動パッチ適用を構成します。
+新しい VM を作成するときに VM ゲストの自動パッチ適用を有効にするには、[az vm create](/cli/azure/vm#az_vm_create) を使用します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という名前の VM に対して、VM ゲストの自動パッチ適用を構成します。
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform
 ```
 
-既存の VM を変更するには、[az vm update](/cli/azure/vm#az-vm-update) を使用します
+既存の VM を変更するには、[az vm update](/cli/azure/vm#az_vm_update) を使用します
 
 ```azurecli-interactive
 az vm update --resource-group myResourceGroup --name myVM --set osProfile.windowsConfiguration.enableAutomaticUpdates=true osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform
@@ -309,7 +309,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM" -Status
 現在、PowerShell ではパッチの拡張機能に関する情報のみが提供されています。 `patchStatus` に関する情報は、PowerShell を通じて間もなく提供されます。
 
 ### <a name="azure-cli"></a>Azure CLI
-[az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) を使用して、VM のインスタンス ビューにアクセスします。
+[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) を使用して、VM のインスタンス ビューにアクセスします。
 
 ```azurecli-interactive
 az vm get-instance-view --resource-group myResourceGroup --name myVM
@@ -344,7 +344,7 @@ Invoke-AzVmPatchAssessment -ResourceGroupName "myResourceGroup" -VMName "myVM"
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-[az vm assess-patches](/cli/azure/vm#az-vm-assess-patches) を使用して、仮想マシンで利用可能なパッチを評価します。
+[az vm assess-patches](/cli/azure/vm#az_vm_assess_patches) を使用して、仮想マシンで利用可能なパッチを評価します。
 
 ```azurecli-interactive
 az vm assess-patches --resource-group myResourceGroup --name myVM

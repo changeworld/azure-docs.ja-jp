@@ -7,10 +7,10 @@ ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: a8f673295236d60ec6681bbfaee1201a4659674b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100585708"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python を使用した依存関係の追跡

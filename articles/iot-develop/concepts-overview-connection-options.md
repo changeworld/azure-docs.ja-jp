@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 02/11/2021
-ms.openlocfilehash: 6bbd7d37418af68065daa194d4ff4bd80f6fd09c
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 8669919192b1e6394043842d7d23f8829ec7c71e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100656384"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589552"
 ---
 # <a name="overview-connection-options-for-azure-iot-device-developers"></a>概要: Azure IoT デバイス開発者向けの接続オプション
 デバイスを扱う開発者向けに、Azure IoT デバイスの接続と管理のためのオプションがいくつか用意されています。 この記事では、デバイスの接続と管理に役立つ、最も一般的に使用されているオプションとツールの概要を示します。
@@ -35,10 +35,10 @@ IoT アプリケーションをホストするために IoT Hub または IoT Ce
 |---------|---------|---------|---------|
 |Central Web UI     | Central | [Central のクイックスタート](../iot-central/core/quick-deploy-iot-central.md) | IoT Central 用のブラウザーベースのポータル。 |
 |Azure portal     | Hub、Central      | [Azure portal を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-through-portal.md)、[Azure portal から IoT Central を管理する](../iot-central/core/howto-manage-iot-central-from-portal.md)| IoT Hub とデバイス用のブラウザーベースのポータル。 IoT Central を含む、他の Azure リソースとも連携します。 |
+|Azure IoT Explorer     | ハブ | [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer#azure-iot-explorer-preview) | IoT ハブを作成することはできません。 既存の IoT ハブに接続してデバイスを管理します。 多くの場合、CLI またはポータルで使用されます。|
 |Azure CLI     | Hub、Central          | [CLI を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-cli.md)、[Azure CLI から IoT Central を管理する](../iot-central/core/howto-manage-iot-central-from-cli.md) | IoT アプリケーションを作成および管理するためのコマンドライン インターフェイス。 |
 |Azure PowerShell     | Hub、Central   | [PowerShell を使用して IoT ハブを作成する](../iot-hub/iot-hub-create-using-powershell.md)、[Azure PowerShell から IoT Central を管理する](../iot-central/core/howto-manage-iot-central-from-powershell.md) | IoT アプリケーションを作成および管理するための PowerShell インターフェイス |
 |VS Code 用の Azure IoT Tools  | ハブ | [VS Code 用のツールを使用して IoT ハブを作成する](../iot-hub/iot-hub-create-use-iot-toolkit.md) | IoT Hub アプリケーションの VS Code 拡張機能。 |
-|Azure IoT Explorer     | ハブ | [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) | IoT ハブを作成することはできません。 既存の IoT ハブに接続してデバイスを管理します。 多くの場合、CLI またはポータルで使用されます。|
 
 ## <a name="next-steps"></a>次のステップ
 デバイスを Azure IoT に接続するためのオプションの詳細については、次のクイックスタートを参照してください。

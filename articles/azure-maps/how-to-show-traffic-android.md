@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 36b3666f12b48468467e76f4c281d58d8018478c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aabe246c343537a42c33d3eaad0bfae3989022fe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604517"
 ---
 # <a name="show-traffic-data-on-the-map-android-sdk"></a>マップに交通情報データを表示する (Android SDK)
 

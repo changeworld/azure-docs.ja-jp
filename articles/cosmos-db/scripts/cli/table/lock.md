@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: 6df5f3842ba08b04dd82910d3762472f4ff4febd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 04f8d541fc534a60550ba77d9775b340571a504f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94566811"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788952"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>Azure CLI を使用して Azure Cosmos DB Table API テーブルのリソース ロックを作成する
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
@@ -34,10 +34,10 @@ ms.locfileid: "94566811"
 
 | コマンド | Notes |
 |---|---|
-| [az lock create](/cli/azure/lock#az-lock-create) | ロックを作成します。 |
-| [az lock list](/cli/azure/lock#az-lock-list) | ロック情報を一覧表示します。 |
-| [az lock show](/cli/azure/lock#az-lock-show) | ロックのプロパティを表示します。 |
-| [az lock delete](/cli/azure/lock#az-lock-delete) | ロックを削除します。 |
+| [az lock create](/cli/azure/lock#az_lock_create) | ロックを作成します。 |
+| [az lock list](/cli/azure/lock#az_lock_list) | ロック情報を一覧表示します。 |
+| [az lock show](/cli/azure/lock#az_lock_show) | ロックのプロパティを表示します。 |
+| [az lock delete](/cli/azure/lock#az_lock_delete) | ロックを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

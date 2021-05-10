@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: d125bca5ed67476897eec7cd32a586776d8b1ea8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 15b67c969cb0464256caed58a2e7388eb7a76b9c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176622"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608772"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>チュートリアル:Synapse Studio で Apache Spark ジョブ定義を作成する
 
@@ -25,8 +25,11 @@ ms.locfileid: "102176622"
 > - PySpark (Python) 用の Apache Spark ジョブ定義を作成する
 > - Spark (Scala) 用の Apache Spark ジョブ定義を作成する
 > - .NET Spark (C# または F#) 用の Apache Spark ジョブ定義を作成する
+> - JSON ファイルをインポートしてジョブ定義を作成する
+> - Apache Spark ジョブ定義ファイルをローカルにエクスポートする
 > - Apache Spark ジョブ定義をバッチ ジョブとして送信する
 > - Apache Spark ジョブ定義をパイプラインに追加する
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,6 +39,7 @@ ms.locfileid: "102176622"
 * サーバーレス Apache Spark プール。
 * ADLS Gen2 ストレージ アカウント。 使用する ADLS Gen2 ファイル システムの **ストレージ BLOB データ共同作成者** である必要があります。 そうでない場合は、手動でアクセス許可を追加する必要があります。
 * ワークスペースの既定のストレージを使用したくない場合は、必要な ADLS Gen2 ストレージ アカウントを Synapse Studio でリンクしてください。 
+
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>PySpark (Python) 用の Apache Spark ジョブ定義を作成する
 
@@ -160,6 +164,57 @@ ms.locfileid: "102176622"
 
       ![dotnet 定義の公開](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
+## <a name="create-apache-spark-job-definition-by-importing-a-json-file"></a>JSON ファイルをインポートして Apache Spark ジョブ定義を作成する
+
+ Apache Spark ジョブ定義エクスプローラーの **アクション** (...) メニューから既存のローカル JSON ファイルを Azure Synapse ワークスペースにインポートして、新しい Apache Spark ジョブ定義を作成します。
+
+ ![インポート定義を作成する](./media/apache-spark-job-definitions/create-import-definition.png)
+
+ 
+ Spark ジョブ定義は、Livy API と完全に互換性があります。 その他の Livy プロパティのパラメーター [(Livy の REST API に関するドキュメント (apache.org) を参照)](https://livy.incubator.apache.org/docs/latest/rest-api.html) は、ローカル JSON ファイルに追加できます。 また、次に示したように、Spark 構成に関連したパラメーターを構成プロパティに指定することもできます。 その後、JSON ファイルを再びインポートして、バッチ ジョブ用に新しい Apache Spark ジョブ定義を作成できます。 Spark 定義インポート用の JSON の例:
+ 
+```Scala
+   {
+  "targetBigDataPool": {
+    "referenceName": "socdemolarge",
+    "type": "BigDataPoolReference"
+  },
+  "requiredSparkVersion": "2.3",
+  "language": "scala",
+  "jobProperties": {
+    "name": "robinSparkDefinitiontest",
+    "file": "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/wordcount.jar",
+    "className": "WordCount",
+    "args": [
+      "adl://socdemo-c14.azuredatalakestore.net/users/robinyao/shakespeare.txt"
+    ],
+    "jars": [],
+    "files": [],
+    "conf": {
+      "spark.dynamicAllocation.enabled": "false",
+      "spark.dynamicAllocation.minExecutors": "2",
+      "spark.dynamicAllocation.maxExecutors": "2"
+    },
+    "numExecutors": 2,
+    "executorCores": 8,
+    "executorMemory": "24g",
+    "driverCores": 8,
+    "driverMemory": "24g"
+  }
+}
+
+```
+
+![その他の livy プロパティ](./media/apache-spark-job-definitions/other-livy-properties.png)
+
+## <a name="export-an-existing-apache-spark-job-definition-file"></a>既存の Apache Spark ジョブ定義ファイルをエクスポートする
+
+ エクスプローラーの **アクション** (...) メニューから、既存の Apache Spark ジョブ定義ファイルをローカルにエクスポートすることができます。 必要に応じて、さらに JSON ファイルを更新して Livy のプロパティを追加した後、再びそれをインポートして、新しいジョブ定義を作成できます。
+
+ ![エクスポート定義を作成する](./media/apache-spark-job-definitions/create-export-definition.png)
+
+ ![エクスポート定義を作成する 2](./media/apache-spark-job-definitions/create-export-definition-2.png)
+
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>Apache Spark ジョブ定義をバッチ ジョブとして送信する
 
 Apache Spark ジョブ定義を作成したら、それを Apache Spark プールに送信できます。 使用する ADLS Gen2 ファイルシステムの **ストレージ BLOB データ共同作成者** であることを確認してください。 そうでない場合は、手動でアクセス許可を追加する必要があります。
@@ -202,6 +257,7 @@ Apache Spark ジョブ定義を作成したら、それを Apache Spark プー�
      ![パイプライン 1 に追加する](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
      ![パイプライン 2 に追加する](./media/apache-spark-job-definitions/add-to-pipeline02.png)
+
 
 ## <a name="next-steps"></a>次の手順
 

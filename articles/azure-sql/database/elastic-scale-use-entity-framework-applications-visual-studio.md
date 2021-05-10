@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 48d43cb2d3c51194d0708a2b9b739a0ee87843d0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793400"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Entity Framework による Elastic Database クライアント ライブラリ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-このドキュメントでは、 [Elastic Database ツール](elastic-scale-introduction.md)と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。 ここでは、Entity Framework の **Code First** アプローチを使用して、[シャード マップの管理](elastic-scale-shard-map-management.md)と [データ依存ルーティング](elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。 このドキュメント全体の実例として、EF 向けの[新しいデータベースの Code First](/ef/ef6/modeling/code-first/workflows/new-database) チュートリアルをご覧ください。 このドキュメントに付属するサンプル コードは、Visual Studio のコード サンプルに含まれるエラスティック データベース ツールのサンプルの一部です。
+このドキュメントでは、 [Elastic Database ツール](elastic-scale-introduction.md)と統合するために Entity Framework アプリケーションに加える必要がある変更について説明します。 ここでは、Entity Framework の **Code First** アプローチを使用して、[シャード マップの管理](elastic-scale-shard-map-management.md)と [データ依存ルーティング](elastic-scale-data-dependent-routing.md)を構成する方法を重点的に説明します。 このドキュメント全体の実例として、EF 向けの[新しいデータベースの Code First](/ef/ef6/modeling/code-first/workflows/new-database) チュートリアルをご覧ください。 このドキュメントに付属するサンプル コードは、Visual Studio Code サンプルに含まれるエラスティック データベース ツールのサンプルの一部です。
 
 ## <a name="downloading-and-running-the-sample-code"></a>サンプル コードのダウンロードと実行
 

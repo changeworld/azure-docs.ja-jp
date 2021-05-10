@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 13f45c96a830110bd0f4a2d4a2b422921d7a2e31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94654458"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780486"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Azure HPC Cache 向けに Azure CLI を設定する
 
@@ -23,7 +23,7 @@ Azure CLI を使用して Azure HPC Cache を作成または管理する前に�
 
 ## <a name="set-default-resource-group-optional"></a>既定のリソース グループを設定する (省略可能)
 
-ほとんどの hpc-cache コマンドでは、キャッシュのリソース グループを渡す必要があります。 既定のリソース グループを設定するには、[az configure](/cli/azure/reference-index#az-configure) を使用します。
+ほとんどの hpc-cache コマンドでは、キャッシュのリソース グループを渡す必要があります。 既定のリソース グループを設定するには、[az configure](/cli/azure/reference-index#az_configure) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.author: anavin
 ms.date: 01/23/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e945dec2ce8514c3e4f1edecdecd13c5c43f7c75
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 801f0424e7ec15fbde58f35975f4c7eca4c9a5de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745453"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775567"
 ---
 # <a name="networking-limit-increase"></a>ネットワークの上限の引き上げ
 
@@ -19,7 +19,7 @@ ms.locfileid: "96745453"
 
 Azure portal で現在のネットワークの使用量とクォータを表示するには、サブスクリプションを開き、 **[Usages + quotas]\(使用量 + クォータ\)** を選択します。 また、次のオプションを使用して、ネットワークの使用量と制限を表示することもできます。
 
-* [使用量 CLI](/cli/azure/network#az-network-list-usages)
+* [使用量 CLI](/cli/azure/network#az_network_list_usages)
 * [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
 * [ネットワーク使用量 API](/rest/api/virtualnetwork/virtualnetworks/listusage)
 

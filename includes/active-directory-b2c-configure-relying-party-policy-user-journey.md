@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
 ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98951532"
 ---
 ## <a name="configure-the-relying-party-policy"></a>証明書利用者ポリシーを構成する

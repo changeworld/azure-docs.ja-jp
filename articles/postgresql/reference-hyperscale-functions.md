@@ -6,17 +6,17 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
-ms.date: 08/10/2020
-ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/07/2021
+ms.openlocfilehash: b0aa9d5dec25d8d600ecbcde59a57e67917c6411
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026235"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011153"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Hyperscale (Citus) SQL API の関数
 
-このセクションでは、Hyperscale (Citus) によって提供されるユーザー定義関数の参照情報について説明します。 これらの関数は、標準の SQL コマンド以外に追加の分散機能を Hyperscale (Citus) に提供するのに役立ちます。
+このセクションでは、Hyperscale (Citus) によって提供されるユーザー定義関数の参照情報について説明します。 これらの関数は、Hyperscale (Citus) に分散機能を提供するのに役立ちます。
 
 > [!NOTE]
 >
@@ -178,6 +178,48 @@ SELECT create_distributed_function(
 );
 ```
 
+### <a name="alter_columnar_table_set"></a>alter_columnar_table_set
+
+alter_columnar_table_set() 関数は、[列形式のテーブル](concepts-hyperscale-columnar.md)の設定を変更します。 列形式以外のテーブルでこの関数を呼び出すと、エラーが発生します。 テーブル名以外のすべての引数は省略可能です。
+
+すべての列形式のテーブルの現在のオプションを表示するには、次の表を参照してください。
+
+```postgresql
+SELECT * FROM columnar.options;
+```
+
+新しく作成されたテーブルの列形式の設定の既定値は、次の GUC でオーバーライドできます。
+
+* columnar.compression
+* columnar.compression_level
+* columnar.stripe_row_count
+* columnar.chunk_row_count
+
+#### <a name="arguments"></a>引数
+
+**table_name:** 列形式のテーブルの名前。
+
+**chunk_row_count:** (省略可能) 新しく挿入されたデータのチャンクあたりの最大行数。 データの既存のチャンクは変更されず、この最大値よりも多くの行が含まれる場合があります。 既定値は 10000 です。
+
+**stripe_row_count:** (省略可能) 新しく挿入されるデータのストライプあたりの最大行数。 データの既存のストライプは変更されず、この最大値よりも多くの行が含まれる場合があります。 既定値は 150000 です。
+
+**compression:** (省略可能) `[none|pglz|zstd|lz4|lz4hc]` 新しく挿入されたデータの圧縮の種類。 既存のデータが再圧縮されたり圧縮解除されたりすることはありません。 既定値と推奨値は zstd です (サポートがでコンパイルされている場合)。
+
+**compression_level:** (省略可能) 有効な設定は 1 - 19 です。 圧縮方法で選択したレベルがサポートされていない場合は、代わりに最も近いレベルが選択されます。
+
+#### <a name="return-value"></a>戻り値
+
+該当なし
+
+#### <a name="example"></a>例
+
+```postgresql
+SELECT alter_columnar_table_set(
+  'my_columnar_table',
+  compression => 'none',
+  stripe_row_count => 10000);
+```
+
 ## <a name="metadata--configuration-information"></a>メタデータ / 構成情報
 
 ### <a name="master_get_table_metadata"></a>master\_get\_table\_metadata
@@ -220,7 +262,7 @@ SELECT * from master_get_table_metadata('github_events');
 
 ### <a name="get_shard_id_for_distribution_column"></a>get\_shard\_id\_for\_distribution\_column
 
-Hyperscale (Citus) は、行のディストリビューション列の値とテーブルの分散方法に基づいて、分散テーブルのすべての行をシャードに割り当てます。 ほとんどの場合、この正確なマッピングはデータベース管理者は無視してもかまわない低レベルの細かい内容です。 ただし、手動によるデータベース メンテナンス タスクの場合や、興味を満たすための場合には、行のシャードを決定すると便利です。 `get_shard_id_for_distribution_column` 関数は、ハッシュ分散テーブルと範囲分散テーブル、および参照テーブルに対してこの情報を提供します。 append 分散では機能しません。
+Hyperscale (Citus) は、行のディストリビューション列の値とテーブルの分散方法に基づいて、分散テーブルのすべての行をシャードに割り当てます。 ほとんどの場合、この正確なマッピングはデータベース管理者は無視してもかまわない低レベルの細かい内容です。 ただし、手動によるデータベース メンテナンス タスクの場合や、興味を満たすための場合には、行のシャードを決定すると便利です。 `get_shard_id_for_distribution_column` 関数は、ハッシュ分散、範囲分散、参照の各テーブルに対してこの情報を提供します。 append 分散では機能しません。
 
 #### <a name="arguments"></a>引数
 

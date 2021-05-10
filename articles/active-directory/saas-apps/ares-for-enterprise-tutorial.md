@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と ARES for Enterprise の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と ARES for Enterprise の統合 | Microsoft Docs'
 description: Azure Active Directory と ARES for Enterprise の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 7cd8faece0d737e97f1c5809f27840f1d9192548
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673408"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>チュートリアル:Azure Active Directory と ARES for Enterprise の統合
+# <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>チュートリアル: Azure Active Directory と ARES for Enterprise の統合
 
 このチュートリアルでは、ARES for Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。
 ARES for Enterprise と Azure AD の統合には、次の利点があります。
@@ -63,7 +63,7 @@ Azure AD への ARES for Enterprise の統合を構成するには、ギャラ�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**ARES for Enterprise**」と入力し、結果パネルで **ARES for Enterprise** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ARES for Enterprise**」と入力し、結果パネルで **ARES for Enterprise** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の ARES for Enterprise](common/search-new-app.png)
 
@@ -87,7 +87,7 @@ ARES for Enterprise で Azure AD のシングル サインオンを構成し、�
 
 ARES for Enterprise で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **ARES for Enterprise** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **ARES for Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -142,7 +142,7 @@ ARES for Enterprise で Azure AD シングル サインオンを構成するに�
 
 このセクションでは、Britta Simon に ARES for Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[ARES for Enterprise]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ARES for Enterprise]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

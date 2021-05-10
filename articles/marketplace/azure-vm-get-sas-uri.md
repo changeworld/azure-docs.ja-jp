@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 1/5/2021
-ms.openlocfilehash: 560699296b8cae83413c36820106eedf7fef7414
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 03/10/2021
+ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558008"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する方法
 
-発行プロセス中に、プラン (以前は SKU と呼ばれていました) に関連付けられている各 VHD の SAS (Shared Access Signature) URI を指定する必要があります。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 この URI は、パートナー センターの **[プラン]** タブで入力します。
+> [!NOTE]
+> VM を発行するために SAS URI は必要ありません。 単に、Parter Center でイメージを共有するだけです。 [承認済みのベースを使用した Azure 仮想マシンの作成](./azure-vm-create-using-approved-base.md)または[独自のイメージを使用した仮想マシンの作成](./azure-vm-create-using-own-image.md)に関するページの手順を参照してください。
 
 VHD の SAS URI の生成には、次の要件があります。
 
@@ -25,6 +26,71 @@ VHD の SAS URI の生成には、次の要件があります。
 - アクセスするための期間 (有効期限) は、SAS URI の作成時から最低 3 週間必要です。
 - UTC 時刻の変更から保護するには、開始日を現在の日付の 1 日前に設定します。 たとえば、現在の日付が 2020 年 6 月 16 日である場合は、6/15/2020 を選択します。
 
+## <a name="extract-vhd-from-a-vm"></a>VM から vhd を抽出する
+
+> [!NOTE]
+> ストレージ アカウントに既に vhd がアップロードされている場合は、この手順をスキップできます。
+
+VM から vhd を抽出するには、VM ディスクのスナップショットを取得し、そのスナップショットから vhd を抽出する必要があります。
+
+まず、VM ディスクのスナップショットを取得します。
+
+1. Azure portal にサインインします。
+2. 左上の [リソースの作成] を選択し、 [スナップショット] を検索して選択します。
+3. [スナップショット] ブレードで、[作成] を選択します。
+4. スナップショットの [名前] を入力します。
+5. 既存のリソース グループを選択するか、新しいものの名前を入力します。
+6. [ソース ディスク] で、スナップショットを作成するマネージド ディスクを選びます。
+7. スナップショットの保存に使う [アカウントの種類] を選びます。 高パフォーマンスの SSD に保存する必要がある場合を除き、 [Standard HDD] を使用します。
+8. [作成] を選択します。
+
+### <a name="extract-the-vhd"></a>VHD を抽出する
+
+次のスクリプトを使用して、スナップショットをストレージ アカウント内の VHD にエクスポートします。
+
+```azurecli
+#Provide the subscription Id where the snapshot is created
+$subscriptionId=yourSubscriptionId
+
+#Provide the name of your resource group where the snapshot is created
+$resourceGroupName=myResourceGroupName
+
+#Provide the snapshot name
+$snapshotName=mySnapshot
+
+#Provide Shared Access Signature (SAS) expiry duration in seconds (such as 3600)
+#Know more about SAS here: https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1
+$sasExpiryDuration=3600
+
+#Provide storage account name where you want to copy the underlying VHD file. Currently, only general purpose v1 storage is supported.
+$storageAccountName=mystorageaccountname
+
+#Name of the storage container where the downloaded VHD will be stored.
+$storageContainerName=mystoragecontainername
+
+#Provide the key of the storage account where you want to copy the VHD 
+$storageAccountKey=mystorageaccountkey
+
+#Give a name to the destination VHD file to which the VHD will be copied.
+$destinationVHDFileName=myvhdfilename.vhd
+
+az account set --subscription $subscriptionId
+
+$sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+
+az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
+```
+
+### <a name="script-explanation"></a>スクリプトの説明
+このスクリプトでは、次のコマンドを使用してスナップショットの SAS URI を生成し、その SAS URI を使用して基になる VHD をストレージ アカウントにコピーします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+
+
+|コマンド  |Notes  |
+|---------|---------|
+| az ディスク アクセスの許可    |     基盤となる VHD ファイルをストレージ アカウントにコピーするか、オンプレミスにダウンロードするために使用される、読み取り専用の SAS を生成します。    |
+|  az storage blob copy start   |    BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします。 az storage blob show を使用して、新しい BLOB の状態を確認します。     |
+|
+
 ## <a name="generate-the-sas-address"></a>SAS アドレスを生成する
 
 SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが使用されます。
@@ -32,7 +98,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 1. **Azure Storage Explorer** – Azure portal で利用できます。
 2. **Azure CLI** – Windows 以外のオペレーティング システムや自動化または継続的インテグレーションの環境に推奨されます。
 
-### <a name="using-tool-1-azure-storage-explorer"></a>ツール 1 の使用: Azure ストレージ エクスプローラー
+### <a name="using-tool-1-azure-storage-explorer"></a>ツール 1 の使用: Azure Storage Explorer
 
 1. ご利用の **ストレージ アカウント** に移動します。
 1. **[ストレージ エクスプローラー]** を開きます。

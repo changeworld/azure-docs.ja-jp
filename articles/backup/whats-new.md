@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 68e0e5cc0876840c30ab9e428a2b96bd7d667756
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102095716"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516333"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -19,6 +19,7 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 ## <a name="updates-summary"></a>更新の概要
 
 - 2021 年 3 月
+  - [Azure Disk Backup の一般提供開始](#azure-disk-backup-is-now-generally-available)
   - [バックアップ センターの一般提供開始](#backup-center-is-now-generally-available)
   - [Azure Backup のアーカイブ層のサポート (プレビュー)](#archive-tier-support-for-azure-backup-in-preview)
 - 2021 年 2 月
@@ -39,6 +40,12 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
   - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-is-now-generally-available"></a>Azure Disk Backup の一般提供開始
+
+Azure Backup によって、Azure Managed Disks にスナップショットのライフサイクル管理が提供されます。それは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそれらを保持することによって行われます。
+
+詳細については、「[Azure Disk Backup の概要](disk-backup-overview.md)」 を参照してください。
 
 ## <a name="backup-center-is-now-generally-available"></a>バックアップ センターの一般提供開始
 
@@ -82,7 +89,7 @@ Azure Backup では、Azure Resource Manager (ARM) テンプレートを使用�
 
 Azure VM でホストされている SAP HANA データベースの増分バックアップが、Azure Backup でサポートされるようになりました。 これにより、SAP HANA データのバックアップを、いっそう高速に、コスト効率よく行うことができます。
 
-詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](sap-hana-faq-backup-azure-vm.md#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
+詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/sap-hana-faq-backup-azure-vm.yml#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
 
 ## <a name="backup-center-in-preview"></a>バックアップ センター (プレビュー段階)
 

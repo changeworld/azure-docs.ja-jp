@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: memildin
-ms.openlocfilehash: fb8dc22c923b7b53a6263baa43046862af4d2f04
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370268"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739010"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 
@@ -26,7 +26,7 @@ Azure Security Center では、**規制コンプライアンス ダッシュボ�
 
 Security Center では、ハイブリッド クラウド環境を継続的に評価して、サブスクリプションに適用される標準の制御とベスト プラクティスに従ってリスク要因を分析します。 ダッシュボードには、これらの標準へのコンプライアンスの状態が反映されます。 
 
-Azure サブスクリプションで Security Center を有効にすると、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)がそのサブスクリプションに自動的に割り当てられます。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
+Azure サブスクリプションで Security Center を有効にすると、[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)がそのサブスクリプションに自動的に割り当てられます。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 
 規制コンプライアンス ダッシュボードには、選択した標準または規制について、お客様の環境におけるすべての評価の状態が表示されます。 推奨事項に基づいて行動し、お客様の環境内のリスク要因を減らしていくと、コンプライアンス体制は強化されます。
 

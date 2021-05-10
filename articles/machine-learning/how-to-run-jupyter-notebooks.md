@@ -11,18 +11,21 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 953b987e908736df703c354067ee27fc27d56073
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518723"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220710"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
 Azure Machine Learning スタジオのワークスペースで Jupyter Notebooks を直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
 ノートブックを含むファイルを作成および管理する方法の詳細については、[ワークスペース内のファイルの作成と管理](how-to-manage-files.md)に関するページを参照してください。
+
+> [!IMPORTANT]
+> (プレビュー) とマークされている機能はサービス レベル アグリーメントなしで提供されています。実稼働環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,22 +46,35 @@ Azure Machine Learning スタジオのワークスペースで Jupyter Notebooks
 
 フォーカス モードを使用して現在のビューを拡張すると、アクティブなタブに集中できるようになります。 フォーカス モードでは、Notebook ファイル エクスプローラーが非表示になります。
 
-1. ターミナル ウィンドウのツールバーで、 **[フォーカス モード]** を選択してフォーカス モードをオンにします。 ウィンドウの幅によっては、ツールバーの **[...]** メニュー項目の下にあります。
+1. ターミナル ウィンドウのツールバーで、 **[フォーカス モード]** を選択してフォーカス モードをオンにします。 ウィンドウの幅によっては、このツールはツール バーの **[...]** メニュー項目の下にあります。
 1. フォーカス モードになっているときに標準ビューに戻るには、 **[標準ビュー]** を選択します。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="フォーカス モード/標準ビューの切り替え":::
 
-## <a name="use-intellisense"></a>IntelliSense を使用する
+## <a name="code-completion-intellisense"></a>コード補完 (IntelliSense)
 
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) は、次のような多くの機能を備えたコード補完支援機能です: メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補。 これらの機能を使うと、数回のキーストロークだけで使用するコードの詳細を確認したり、入力するパラメーターを追跡したり、プロパティやメソッドの呼び出しを追加したりできます。  
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) は、多くの機能 (メンバーの一覧表示、パラメーター ヒント、クイック ヒント、入力候補) を備えたコード補完支援機能です。 ほんの数回のキー ストロークで、次のことができます。
+* 使用しているコードの詳細を把握する
+* 入力しているパラメーターを追跡する
+* プロパティおよびメソッドへの呼び出しを追加する 
 
-コードを入力するときは、Ctrl + Space キーを使用して IntelliSense をトリガーします。
+### <a name="insert-code-snippets-preview"></a>コード スニペットを挿入する (プレビュー)
+
+IntelliSense をトリガーするには、**Ctrl + Space** キーを使用します。  候補をスクロールするか、入力を開始して、挿入するコードを見つけます。  コードを挿入したら、引数をタブ移動して、独自の用途に合わせてコードをカスタマイズします。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/insert-snippet.gif" alt-text="コード スニペットの挿入":::
+
+VS Code でノートブックを開いたときにも、同じスニペットを使用できます。 使用可能なスニペットの完全な一覧については、[Azure Machine Learning VS Code スニペット](https://github.com/Azure/azureml-snippets/blob/main/snippets/snippets.md)に関する記事を参照してください。
+
+ノートブック ツール バーを使用してスニペット パネルを開くことで、スニペットの一覧を参照および検索することができます。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/open-snippet-panel.png" alt-text="ノートブック ツール バーでスニペット パネル ツールを開く":::
+
+スニペット パネルでは、新しいスニペットを追加する要求を送信することもできます。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/propose-new-snippet.png" alt-text="スニペット パネルを使用して新しいスニペットを提案できる":::
 
 ## <a name="clean-your-notebook-preview"></a>ノートブックをクリーンアップする (プレビュー)
-
-> [!IMPORTANT]
-> 現在、この収集機能はパブリック プレビュー段階にあります。
-> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ノートブックを作成しているうちに、一般的にはデータの探索やデバッグに使用したセルが溜まっていきます。 *収集* 機能を使用すると、これらの不要なセルが含まれないクリーンなノートブックを作成できます。
 
@@ -271,9 +287,9 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
+* ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への WebSocket 接続が許可されていることを確認してください。 
+* コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、[仮想ネットワーク内からのみアクセス](./how-to-secure-training-vnet.md#compute-instance)できます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
 
-* コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、[仮想ネットワーク内からのみアクセス](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)できます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
     
 ## <a name="next-steps"></a>次のステップ
 

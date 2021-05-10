@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9ebc6e266c93e55bc250e8450356f8b695dd9080
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98678274"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714994"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -95,7 +95,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-車の違反の追跡データを格納するために、リソース グループに[汎用 v2 ストレージ アカウント](../storage/common/storage-account-overview.md#general-purpose-v2-accounts)を作成します。 リソース グループを作成していない場合は、[リソース グループの作成](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)に関するセクションの指示に従ってください。 このチュートリアルでは、リソース グループに *ContosoRental* という名前を付けます。
+車の違反の追跡データを格納するために、リソース グループに[汎用 v2 ストレージ アカウント](../storage/common/storage-account-overview.md)を作成します。 リソース グループを作成していない場合は、[リソース グループの作成](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)に関するセクションの指示に従ってください。 このチュートリアルでは、リソース グループに *ContosoRental* という名前を付けます。
 
 ストレージ アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal)」の手順に従います。 このチュートリアルでは、ストレージ アカウントの名前を *contosorentalstorage* としていますが、通常は好きな名前を付けることができます。
 
@@ -282,7 +282,7 @@ Azure Maps REST API シリーズの完全な一覧については、次を参照
 
 Azure で IoT の認定を受けたデバイスの一覧を取得するには、次のページにアクセスします。
 
-* [Azure 認定デバイス](https://catalog.azureiotsolutions.com/)
+* [Azure 認定デバイス](https://devicecatalog.azure.com/)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

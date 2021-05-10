@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 27c0c211b9844a34b0cb43dcd05037ba4a548f3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e244c93fbe809c52eff1c42c284ce2e8389bbcc4
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102637084"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553585"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -360,7 +360,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
         
             ログインする別の方法は、`login-AzureRmAccount` コマンドレットを使用することです。 
             
-            `login-AzureRMAccount -EnvironmentName <Environment Name>` -TenantId c0257de7-538f-415c-993a-1b87a031879d 
+            `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d` 
 
             コマンドの出力例を次に示します。 
          

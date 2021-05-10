@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 25f00024fb7371fd08bf6c4ceec3177cfaca029b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103572810"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363429"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 認証の基礎
 
@@ -104,7 +104,7 @@ Key Vault アクセス ポリシーを使用すると、キー コンテナー�
 > [!IMPORTANT]
 > 従来の Key Vault のアクセス ポリシーと Azure Active Directory のロールの割り当ては、互いに独立しています。 セキュリティ プリンシパルにサブスクリプション レベルで "共同作成者" ロールを割り当てても、サブスクリプションのスコープ内のすべてのキー コンテナーに対するデータ プレーン操作の実行が、そのセキュリティ プリンシパルに対して自動的に許可されることはありません。 セキュリティ プリンシパルは、データ プレーンの操作を実行するためのアクセス許可を、付与してもらうか、または自分でアクセス ポリシーに付与する必要があります。
 
-### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>データ プレーンのアクセス オプション 2: Key Vault 用の Azure RBAC (プレビュー)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault"></a>データ プレーンのアクセス オプション 2: Key Vault 用の Azure RBAC
 
 キー コンテナー データ プレーンへのアクセスを許可する新しい方法は、Key Vault 用の Azure ロールベースのアクセス制御 (Azure RBAC) を使用することです。
 

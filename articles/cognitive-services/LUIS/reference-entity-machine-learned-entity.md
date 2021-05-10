@@ -7,13 +7,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 04/30/2020
-ms.openlocfilehash: f16f3ec445af777c3bde1cb2ab0735df4b6614f8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/13/2021
+ms.openlocfilehash: 12724175ebb9e23efa431169c01a804cd193cdd5
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91542242"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502591"
 ---
 # <a name="machine-learning-entity"></a>機械学習エンティティ
 
@@ -346,6 +346,6 @@ ms.locfileid: "91542242"
 
 ## <a name="next-steps"></a>次のステップ
 
-機械学習エンティティの詳細については、[チュートリアル](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#design-entities-for-decomposition)、[攻略ガイド](luis-how-to-add-entities.md#create-a-machine-learned-entity)を参照してください。
+機械学習エンティティの詳細については、[チュートリアル](tutorial-machine-learned-entity.md)、[概念](luis-concept-entity-types.md#machine-learned-ml-entity)、[攻略ガイド](luis-how-to-add-entities.md#create-a-machine-learned-entity)を参照してください。
 
 [リスト](reference-entity-list.md) エンティティと[正規表現](reference-entity-regular-expression.md)エンティティについて説明します。

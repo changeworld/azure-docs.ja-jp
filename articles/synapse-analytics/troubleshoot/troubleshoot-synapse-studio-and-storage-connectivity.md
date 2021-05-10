@@ -3,16 +3,17 @@ title: Synapse Studio とストレージ間の接続のトラブルシューテ�
 description: Synapse Studio とストレージ間の接続のトラブルシューティング
 author: saveenr
 ms.service: synapse-analytics
+ms.subservice: workspace
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: d570b4a8df5d59cf8828985bee20852d6bc79b1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d5f79131608315f7e1c05cbfc0117300eea6c511
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98117063"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566275"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure Synapse Analytics の Synapse Studio とストレージ間の接続のトラブルシューティング
 

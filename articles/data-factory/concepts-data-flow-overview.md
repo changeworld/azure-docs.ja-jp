@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 12/10/2020
-ms.openlocfilehash: 1529d2d546227880fee71d1823482e040d2e57c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/11/2021
+ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564322"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308984"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -33,11 +33,11 @@ ms.locfileid: "103564322"
 
 このアクションにより、変換ロジックを作成できるデータ フロー キャンバスに移動します。 **[ソースの追加]** を選択すると、ソース変換の構成が開始します。 詳細については、[ソース変換](data-flow-source.md)に関するページを参照してください。
 
-## <a name="authoring-data-flows"></a>データ フローの作成
+## <a name="authoring-data-flows&quot;></a>データ フローの作成
 
 マッピング データ フローには、変換ロジックを簡単に構築するために設計された独自の作成キャンバスがあります。 データ フロー キャンバスは、上部バー、グラフ、および構成パネルの 3 つの部分に分かれています。 
 
-![スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。](media/data-flow/canvas-1.png "キャンバス")
+![スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。](media/data-flow/canvas-1.png &quot;キャンバス")
 
 ### <a name="graph"></a>グラフ
 
@@ -96,66 +96,6 @@ ms.locfileid: "103564322"
 マッピング データ フローは、既存の Azure Data Factory 監視機能と統合されます。 データ フローの監視出力を理解する方法については、[マッピング データ フローの監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
 
 ビジネス ロジックを構築した後のデータ フローの実行時間を最適化するのに役立つ、[パフォーマンス チューニング ガイド](concepts-data-flow-performance.md)が、Azure Data Factory チームによって作成されています。
-
-## <a name="available-regions"></a>対応リージョン
-
-======= マッピング データ フローは、次のリージョンの ADF で利用できます。
-
-| Azure リージョン | ADF のデータ フロー |
-| ------------ | ----------------- |
-|  オーストラリア中部 | |
-| オーストラリア中部 2 | |
-| オーストラリア東部 | ✓ |
-| オーストラリア南東部   | ✓ |
-| ブラジル南部  | ✓ |
-| カナダ中部 | ✓ |
-| インド中部 | ✓ |
-| 米国中部    | ✓ |
-| 中国東部 |      |
-| 中国東部 2  |   |
-| 中国非リージョン | |
-| 中国北部 |     |
-| 中国北部 2 | |
-| 東アジア | ✓ |
-| 米国東部   | ✓ |
-| 米国東部 2 | ✓ |
-| フランス中部 | ✓ |
-| フランス南部  | |
-| ドイツ中部 (ソブリン) | |
-| ドイツ非リージョン (ソブリン) | |
-| ドイツ北部 (パブリック) | |
-| ドイツ北東部 (ソブリン) | |
-| ドイツ中西部 (パブリック) |  |
-| 東日本 | ✓ |
-| 西日本 |  |
-| 韓国中部 | ✓ |
-| 韓国南部 | |
-| 米国中北部  | ✓ |
-| 北ヨーロッパ  | ✓ |
-| ノルウェー東部 | |
-| ノルウェー西部 | |
-| 南アフリカ北部    | ✓ |
-| 南アフリカ西部 |  |
-| 米国中南部  | |
-| インド南部 | |
-| 東南アジア    | ✓ |
-| スイス北部 |   |
-| スイス西部 | |
-| アラブ首長国連邦中部 | |
-| アラブ首長国連邦北部 |  |
-| 英国南部  | ✓ |
-| 英国西部 |     |
-| US DoD Central | |
-| US DoD East | |
-| US Gov アリゾナ |      |
-| US Gov 非リージョン | |
-| US Gov テキサス | |
-| US Gov バージニア州 |     |
-| 米国中西部 |     |
-| 西ヨーロッパ   | ✓ |
-| インド西部 | |
-| 米国西部   | ✓ |
-| 米国西部 2 | ✓ |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051380"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750970"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -102,7 +102,7 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 保存データの暗号化または復号化で使用するキーを取得するには、Resource Manager サービス インスタンスとして実行されるサービス ID は UnwrapKey (複合化のためのキーを取得するため) と WrapKey (新しいキーの作成時にキー コンテナーにキーを挿入するため) を取得する必要があります。
 
 >[!NOTE]
->Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/general/secure-your-key-vault.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
+>Key Vault の承認の詳細については、[Azure Key Vault ドキュメント](../../key-vault/general/security-overview.md)のキー コンテナーのセキュリティ保護に関するページを参照してください。
 
 **長所**
 

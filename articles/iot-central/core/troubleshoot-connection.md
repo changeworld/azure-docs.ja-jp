@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673236"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378569"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
@@ -158,6 +158,14 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 | 412 | 要求の `ETag` が、RFC7232 に従って、既存のリソースの `ETag` と一致しません。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)してください。 |
 | 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)」を参照してください。 | メッセージの頻度を削減し、より多くのデバイス間で責任を分割します。 |
 | 500 | 内部エラーが発生しました。 | [カスタマー サポートにチケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)して、さらにサポートを受けられるかどうかを確認します。 |
+
+### <a name="file-upload-error-codes"></a>ファイルのアップロードに関するエラー コード
+
+デバイスがファイルをクラウドにアップロードしようとしたときに表示される可能性のある一般的なエラー コードの一覧を次に示します。 デバイスでファイルをアップロードする前に、アプリケーションで、[デバイス ファイルのアップロード](howto-configure-file-uploads.md)を構成する必要があります。
+
+| エラー コード | 説明 | 考えられる軽減策 |
+| - | - | - |
+| 403006  | 同時に実行可能なファイル アップロード操作の数が上限を超えています。 各デバイス クライアントは、同時ファイル アップロード数が 10 個に制限されています。 | ファイル アップロード操作が完了したことがデバイスから IoT Central に即座に通知されるようにします。 それでもうまくいかない場合は、要求タイムアウトを下げてみてください。 |
 
 ## <a name="payload-shape-issues"></a>ペイロードの形態の問題
 

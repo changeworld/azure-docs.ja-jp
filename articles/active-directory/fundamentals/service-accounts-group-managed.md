@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd4c1adddbf4b13f8e299bd656443c9aaab1d55b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f6f91adf499c62fef56a30c5f2945ba7a90a0b29
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644829"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640075"
 ---
 # <a name="securing-group-managed-service-accounts"></a>グループ管理サービス アカウントのセキュリティ保護
 
@@ -41,7 +41,7 @@ gMSA では、次のことにより、管理オーバーヘッドを削減しな
 フェールオーバー クラスタリングなどのサービスでサポートされていない場合を除き、gMSA はオンプレミス サービスの優先アカウントの種類として使用します。
 
 > [!IMPORTANT]
-> 運用環境にデプロイする前に、gMSA でサービスをテストする必要があります。 これを行うには、テスト環境を設定し、アプリケーションが gMSA を使用できること、およびアクセスする必要があるリソースにアクセスできることを確認します。 詳細については、「[グループ管理サービス アカウントのサポート](/system-center/scom/support-group-managed-service-accounts?view=sc-om-2019)」を参照してください。
+> 運用環境にデプロイする前に、gMSA でサービスをテストする必要があります。 これを行うには、テスト環境を設定し、アプリケーションが gMSA を使用できること、およびアクセスする必要があるリソースにアクセスできることを確認します。 詳細については、「[グループ管理サービス アカウントのサポート](/system-center/scom/support-group-managed-service-accounts)」を参照してください。
 
 
 サービスで gMSA の使用がサポートされていない場合、次に最適な選択肢は、スタンドアロン管理サービス アカウント (sMSA) を使用することです。 sMSA では gMSA と同じ機能が提供されますが、単一サーバーでのデプロイのみを対象としています。
@@ -86,7 +86,7 @@ Get-ADServiceAccount -Filter *
 
 # To filter results to only gMSAs:
 
-Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount”}
+Get-ADServiceAccount –Filter * | where $_.ObjectClass -eq "msDS-GroupManagedServiceAccount"}
 ```
 
 ## <a name="manage-gmsas"></a>gMSA を管理する

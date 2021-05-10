@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104576919"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529529"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -106,34 +106,6 @@ Azure portal に[サインイン](https://portal.azure.com)します。
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="バックエンド プールにリージョン ロード バランサーを追加する" border="true":::
 
-## <a name="create-a-health-probe"></a>正常性プローブの作成
-
-このセクションでは、負荷分散規則を作成するために正常性プローブを作成します。
-
-* 名前は **myHealthProbe** にします。
-* プロトコルは **TCP** にします。
-* 間隔は **5** 秒にします。
-* 異常のしきい値は **2** つのエラーにします。
-
-1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer-CR]** を選択します。
-
-2. **[設定]** の下で **[正常性プローブ]** を選択します。
-
-3. これらの値を使用して、正常性プローブを構成します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | 名前 | 「**myHealthProbe**」と入力します。 |
-    | Protocol | **[TCP]** を選択します。 |
-    | Port | 「**80**」と入力します。 |
-    | Interval | 「**5**」と入力します。 |
-    | 異常のしきい値 | 「**2**」と入力します。 |
-
-4. **[OK]** を選択します。
-
-    > [!NOTE]
-    > リージョン間ロード バランサーには、組み込みの正常性プローブがあります。 このプローブは、負荷分散規則の作成を機能させるためのプレースホルダーです。  詳細については、 **[リージョン間ロード バランサーの制限](cross-region-overview.md#limitations)** に関するセクションを参照してください。
-
 ## <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 
 このセクションでは、ロード バランサー規則を作成します。
@@ -161,7 +133,6 @@ Azure portal に[サインイン](https://portal.azure.com)します。
     | Port | 「**80**」と入力します。|
     | バックエンド ポート | 「**80**」と入力します。 |
     | バックエンド プール | **[myBackendPool]** を選択します。|
-    | 正常性プローブ | **[myHealthProbe]** を選択します。 |
     | アイドル タイムアウト (分) | スライダーを **15** に移動します。 |
     | TCP リセット | **[Enabled]** を選択します。 |
 

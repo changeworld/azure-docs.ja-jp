@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2e06616914f1e78a71a540fbd64021c0e1bfcbab
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98013449"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785975"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
@@ -189,7 +189,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>トリガーの繰り返しのシフトやずれ
 
-最初に接続を作成する必要がある接続ベースのトリガー (SQL トリガーなど) は、Azure Logic Apps でネイティブに実行される組み込みトリガー ([繰り返しトリガー](../connectors/connectors-native-recurrence.md)など) とは異なります。 繰り返し発生する接続ベースのトリガーでは、繰り返しスケジュールだけが実行を制御するわけではなく、タイム ゾーンによって最初の開始時刻のみが決定されます。 それ以降の実行は、繰り返しスケジュール、最後のトリガー実行、"*さらには*" 実行時間をずらしたり、予期しない動作を発生させたりする可能性があるその他の要因に依存します。たとえば、夏時間 (DST) の開始または終了時に、指定されたスケジュールが保持されないという要因があります。 DST が有効になったときに繰り返し時刻がシフトされないようにするには、ロジック アプリが引き続き予期された時刻に実行されるように、繰り返しを手動で調整します。 そうしないと、開始時刻が DST の開始時には 1 時間先に、DST の終了時には 1 時間前にシフトされます。 詳細については、[接続ベースのトリガーの繰り返し](../connectors/apis-list.md#recurrence-connection-based)に関するページを参照してください。
+最初に接続を作成する必要がある接続ベースのトリガー (SQL トリガーなど) は、Azure Logic Apps でネイティブに実行される組み込みトリガー ([繰り返しトリガー](../connectors/connectors-native-recurrence.md)など) とは異なります。 繰り返し発生する接続ベースのトリガーでは、繰り返しスケジュールだけが実行を制御するわけではなく、タイム ゾーンによって最初の開始時刻のみが決定されます。 それ以降の実行は、繰り返しスケジュール、最後のトリガー実行、"*さらには*" 実行時間をずらしたり、予期しない動作を発生させたりする可能性があるその他の要因に依存します。たとえば、夏時間 (DST) の開始または終了時に、指定されたスケジュールが保持されないという要因があります。 DST が有効になったときに繰り返し時刻がシフトされないようにするには、ロジック アプリが引き続き予期された時刻に実行されるように、繰り返しを手動で調整します。 そうしないと、開始時刻が DST の開始時には 1 時間先に、DST の終了時には 1 時間前にシフトされます。 詳細については、[接続ベースのトリガーの繰り返し](../connectors/apis-list.md#recurrence-for-connection-based-triggers)に関するページを参照してください。
 
 <a name="add-sql-action"></a>
 

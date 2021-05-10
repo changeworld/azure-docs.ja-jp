@@ -9,12 +9,12 @@ ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: bbecaa32f85c42954cea6c8e533f0f658eb2dfee
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802286"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765955"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 
@@ -70,13 +70,13 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 ### <a name="attach-disk-at-vm-creation"></a>VM の作成時にディスクを接続する
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-[az vm create](/cli/azure/vm#az-vm-create) コマンドを使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。さらに、まだ SSH キーが存在しない場合は SSH キーを生成します。 `--datadisk-sizes-gb` 引数は、追加のディスクを作成してこの仮想マシンに接続するように指定するために使用します。 複数のディスクを作成して接続するには、ディスク サイズ値をスペースで区切ったリストを使用します。 次の例では、どちらも 128 GB のデータ ディスクを 2 つ備えた VM が作成されます。 ディスク サイズが 128 GB であるため、両方のディスクが P10 として構成され、ディスクあたり最大 500 IOPS を実現します。
+[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。さらに、まだ SSH キーが存在しない場合は SSH キーを生成します。 `--datadisk-sizes-gb` 引数は、追加のディスクを作成してこの仮想マシンに接続するように指定するために使用します。 複数のディスクを作成して接続するには、ディスク サイズ値をスペースで区切ったリストを使用します。 次の例では、どちらも 128 GB のデータ ディスクを 2 つ備えた VM が作成されます。 ディスク サイズが 128 GB であるため、両方のディスクが P10 として構成され、ディスクあたり最大 500 IOPS を実現します。
 
 ```azurecli-interactive
 az vm create \
@@ -91,7 +91,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>既存の VM にディスクを接続する
 
-新しいディスクを作成して既存の仮想マシンに接続するには、[az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) コマンドを使用します。 次の例では、サイズが 128 ギガバイトの Premium ディスクが作成され、最後の手順で作成した VM に接続されます。
+新しいディスクを作成して既存の仮想マシンに接続するには、[az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) コマンドを使用します。 次の例では、サイズが 128 ギガバイトの Premium ディスクが作成され、最後の手順で作成した VM に接続されます。
 
 ```azurecli-interactive
 az vm disk attach \
@@ -190,7 +190,7 @@ exit
 
 ### <a name="create-snapshot"></a>スナップショットの作成
 
-スナップショットを作成する前に、ディスクの ID または名前が必要です。 [az vm show](/cli/azure/vm#az-vm-show) を使用して、ディスク ID を取得します。 この例では、ディスク ID を変数に格納して、後の手順で使用できるようにしています。
+スナップショットを作成する前に、ディスクの ID または名前が必要です。 [az vm show](/cli/azure/vm#az_vm_show) を使用して、ディスク ID を取得します。 この例では、ディスク ID を変数に格納して、後の手順で使用できるようにしています。
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -200,7 +200,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-ID を取得したので、 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) を使用してディスクのスナップショットを作成します。
+ID を取得したので、 [az snapshot create](/cli/azure/snapshot#az_snapshot_create) を使用してディスクのスナップショットを作成します。
 
 ```azurecli-interactive
 az snapshot create \
@@ -211,7 +211,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>スナップショットからのディスクの作成
 
-その後、[az disk create](/cli/azure/disk#az-disk-create) を使用してこのスナップショットをディスクに変換できます。これを使用して、仮想マシンを再作成することができます。
+その後、[az disk create](/cli/azure/disk#az_disk_create) を使用してこのスナップショットをディスクに変換できます。これを使用して、仮想マシンを再作成することができます。
 
 ```azurecli-interactive
 az disk create \
@@ -222,7 +222,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>スナップショットからの仮想マシンの復元
 
-実際に仮想マシンの復旧を試すために、[az vm delete](/cli/azure/vm#az-vm-delete) を使用して既存の仮想マシンを削除します。
+実際に仮想マシンの復旧を試すために、[az vm delete](/cli/azure/vm#az_vm_delete) を使用して既存の仮想マシンを削除します。
 
 ```azurecli-interactive
 az vm delete \
@@ -244,7 +244,7 @@ az vm create \
 
 すべてのデータ ディスクを仮想マシンに再度接続する必要があります。
 
-[az disk list](/cli/azure/disk#az-disk-list) コマンドを使用して、データ ディスク名を見つけます。 この例では、このディスク名を `datadisk` という変数に格納しています。次の手順でこの変数を使用します。
+[az disk list](/cli/azure/disk#az_disk_list) コマンドを使用して、データ ディスク名を見つけます。 この例では、このディスク名を `datadisk` という変数に格納しています。次の手順でこの変数を使用します。
 
 ```azurecli-interactive
 datadisk=$(az disk list \
@@ -253,7 +253,7 @@ datadisk=$(az disk list \
    -o tsv)
 ```
 
-ディスクを接続するには、[az vm disk attach](/cli/azure/vm/disk#az-vm-disk-attach) コマンドを使用します。
+ディスクを接続するには、[az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) コマンドを使用します。
 
 ```azurecli-interactive
 az vm disk attach \

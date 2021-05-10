@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 05199968339329632c2e68e9604e3f5308e8b12b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941379"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871658"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する
 
 この記事では、Microsoft Power BI を Azure HDInsight 対話型クエリ クラスターに接続し、直接クエリを使用して Apache Hive データを視覚化する方法について説明します。 与えられた例では、`hivesampletable` Hive テーブルから Power BI にデータを読み込みます。 `hivesampletable` Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
 
-![HDInsight Power BI の地図レポート](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
+:::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png" alt-text="HDInsight Power BI の地図レポート" border="true":::
 
 Power BI Desktop の汎用 ODBC コネクタを介してインポートするために、[Apache Hive ODBC ドライバー](../hadoop/apache-hadoop-connect-hive-power-bi.md)を利用することができます。 ただし、Hive クエリ エンジンの非対話的な性質を与えられた BI ワークロードに対しては、この方法はお勧めしません。 この場合は、[HDInsight 対話型クエリ コネクタ](./apache-hadoop-connect-hive-power-bi-directquery.md)および [HDInsight Apache Spark コネクタ](/power-bi/spark-on-hdinsight-with-direct-connect)を選択した方が、良いパフォーマンスを得られます。
 
@@ -34,13 +34,13 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
 2. メニュー バーから、 **[ホーム]**  >  **[データの取得]**  >  **[その他...]** に移動します。
 
-    ![HDInsight Power BI のその他のデータ取得](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png" alt-text="HDInsight Power BI のその他のデータ取得" border="true":::
 
 3. **[データの取得]** ウィンドウで、検索ボックスに「**hdinsight**」と入力します。  
 
-4. 検索結果から **[HDInsight 対話型クエリ]** を選択し、 **[接続]** を選択します。  **[HDInsight 対話型クエリ]** が表示されない場合、Power BI Desktop を最新バージョンに更新する必要があります。
+4. 検索結果から **[HDInsight 対話型クエリ]** を選択し、**[接続]** を選択します。  **[HDInsight 対話型クエリ]** が表示されない場合、Power BI Desktop を最新バージョンに更新する必要があります。
 
-5. **[続行]** を選択して、 **[サード パーティのサービスに接続中]** ダイアログを閉じます。
+5. **[続行]** を選択して、**[サード パーティのサービスに接続中]** ダイアログを閉じます。
 
 6. **[HDInsight 対話型クエリ]** ウィンドウで、次の情報を入力して **[OK]** を選択します。
 
@@ -48,17 +48,17 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
     |---|---|
     |サーバー |クラスターの名前 (*myiqcluster.azurehdinsight.net* など) を入力します。|
     |データベース |この記事では **[既定]** を入力します。|
-    |データ接続モード |この記事では、 **[DirectQuery]** を選択します。|
+    |データ接続モード |この記事では、**[DirectQuery]** を選択します。|
 
-    ![HDInsight 対話型クエリ Power BI DirectQuery 接続](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png" alt-text="HDInsight 対話型クエリ Power BI DirectQuery 接続" border="true":::
 
-7. HTTP 資格情報を入力して、 **[接続]** を選択します。 既定のユーザー名は **admin** です。
+7. HTTP 資格情報を入力して、**[接続]** を選択します。 既定のユーザー名は **admin** です。
 
 8. 左側のウィンドウの **[ナビゲーター]** ウィンドウから、**hivesampletale** を選択します。
 
 9. メイン ウィンドウで **[ロード]** を選択します。
 
-    ![HDInsight 対話型クエリ Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png" alt-text="HDInsight 対話型クエリ Power BI hivesampletable" border="true":::
 
 ## <a name="visualize-data-on-a-map"></a>マップ上にデータを視覚化する
 
@@ -66,9 +66,9 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
 1. [視覚化] ウィンドウで **[マップ]** (地球アイコン) を選択します。 メイン ウィンドウに汎用マップが表示されます。
 
-    ![HDInsight Power BI のレポート カスタマイズ](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    :::image type="content" source="./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png" alt-text="HDInsight Power BI のレポート カスタマイズ" border="true":::
 
-2. [フィールド] ウィンドウで **[country]** と **[devicemake]** を選択します。 数秒後、データ ポイントが付いた世界地図がメイン ウィンドウに表示されます。
+2. [フィールド] ウィンドウで、 **[country]** と **[devicemake]** を選択します。 数秒後、データ ポイントが付いた世界地図がメイン ウィンドウに表示されます。
 
 3. 地図を広げます。
 

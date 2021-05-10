@@ -4,27 +4,27 @@ description: Docker CLI を使用した、Azure のプライベート コンテ�
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 83ef385313b035f5e5d7d993e7948725906c75a7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99987764"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783829"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>Docker CLI を使用した、Azure のコンテナー レジストリへの最初のイメージのプッシュ
 
-[Docker Hub](https://hub.docker.com/) で公開 Docker コンテナー イメージを格納するように、Azure コンテナー レジストリではプライベート コンテナー イメージとその他の成果物を格納および管理します。 コンテナー レジストリに対する[ログイン](https://docs.docker.com/engine/reference/commandline/login/)、[プッシュ](https://docs.docker.com/engine/reference/commandline/push/)、[プル](https://docs.docker.com/engine/reference/commandline/pull/)などのコンテナー イメージ操作には、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) を使用できます。
+[Docker Hub](https://hub.docker.com/) で公開 Docker コンテナー イメージを格納するように、Azure Container Registry ではプライベート コンテナー イメージとその他の成果物を格納および管理します。 コンテナー レジストリに対する[ログイン](https://docs.docker.com/engine/reference/commandline/login/)、[プッシュ](https://docs.docker.com/engine/reference/commandline/push/)、[プル](https://docs.docker.com/engine/reference/commandline/pull/)などのコンテナー イメージ操作には、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) を使用できます。
 
-以下の手順では、公開 [Nginx イメージ](https://store.docker.com/images/nginx)をダウンロードし、プライベート Azure コンテナー レジストリにタグ付けしてレジストリにプッシュした後、レジストリからもう一度プルします。
+以下の手順では、公開 [Nginx イメージ](https://store.docker.com/images/nginx)をダウンロードし、プライベート Azure Container Registry にタグ付けしてレジストリにプッシュした後、レジストリからもう一度プルします。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+* **Azure Container Registry** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
 * **Docker CLI** - Docker もローカルにインストールする必要があります。 Docker では、[macOS][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
 
-プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az-acr-login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr#az_acr_login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、Azure CLI にログインし、レジストリに対して認証を行います。
 
 ```azurecli
 az login
@@ -114,7 +114,7 @@ Nginx イメージが不要になった場合は、[docker rmi](https://docs.doc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
+Azure Container Registry からイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
@@ -128,7 +128,7 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
-Azure コンテナー レジストリを操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
+Azure Container Registry を操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure Container Registry との間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
 
 
 <!-- LINKS - external -->

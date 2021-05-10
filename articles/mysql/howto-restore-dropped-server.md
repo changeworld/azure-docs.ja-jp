@@ -1,24 +1,24 @@
 ---
-title: ドロップした Azure Database for MySQL サーバーを復元する
-description: この記事では、Azure Portal を使用して、ドロップした Azure Database for MySQL サーバーを復元する方法について説明します。
+title: 削除した Azure Database for MySQL サーバーを復元する
+description: この記事では、Azure Portal を使用して Azure Database for MySQL で削除されたサーバーを復元する方法について説明します。
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5fc1ab1b3dfbc324668873749c143846c2015cd4
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97657092"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306281"
 ---
-# <a name="restore-a-dropped-azure-database-for-mysql-server"></a>ドロップした Azure Database for MySQL サーバーを復元する
+# <a name="restore-a-deleted-azure-database-for-mysql-server"></a>削除した Azure Database for MySQL サーバーを復元する
 
-サーバーが削除されると、データベース サーバーのバックアップをサービスで最大 5 日間保持できます。 データベースのバックアップは、元々サーバーをホストしている Azure サブスクリプションからのみアクセスおよび復元できます。 次の推奨される手順に従って、サーバーの削除から 5 日以内に、削除された MySQL サーバー リソースを復旧できます。 推奨される手順は、サーバーのバックアップがまだ使用可能であり、システムから削除されていない場合にのみ機能します。 
+サーバーが削除された場合、データベース サーバーのバックアップはサービス内で最大 5 日間保持できます。 データベースのバックアップは、元々サーバーをホストしている Azure サブスクリプションからのみアクセスおよび復元できます。 次の推奨手順に従うと、サーバーが削除されてから 5 日以内に削除された MySQL サーバーを復旧させることができます。 推奨される手順は、サーバーのバックアップがまだ使用可能であり、システムから削除されていない場合にのみ機能します。 
 
 ## <a name="pre-requisites"></a>前提条件
-ドロップした Azure Database for MySQL サーバーを復元するには、次のことを行う必要があります。
+削除された Azure Database for MySQL サーバーを復元するには、次の手順を行う必要があります。
 - 元のサーバーをホストしている Azure サブスクリプションの名前
 - サーバーが作成された場所
 
@@ -42,7 +42,7 @@ ms.locfileid: "97657092"
  
      [![REST API を使用したサーバーの作成](./media/howto-restore-dropped-server/create-server-from-rest-api.png)](./media/howto-restore-dropped-server/create-server-from-rest-api.png#lightbox)
   
- 6. [要求本文] セクションまで下にスクロールし、以下を貼り付けて、削除されたサーバーの場所、submissionTimestamp、resourceId を置き換えます。 restorePointInTime については、コマンドがエラーにならないように、submissionTimestamp の値から **15 分** だけ引いた値を指定します。
+ 6. 要求本文セクションの下にスクロールして、以下を貼り付けます。
  
     ```json
     {
@@ -55,10 +55,14 @@ ms.locfileid: "97657092"
             }
     }
     ```
+7. 上記の要求本文にある次の値を置き換えます。
+   * "Dropped server Location" を、削除されたサーバーが最初に作成された Azure リージョンに
+   * "submissionTimestamp" と "resourceId" をステップ 3 で取得した値に 
+   * restorePointInTime については、コマンドがエラーにならないように、submissionTimestamp の値から **15 分** だけ引いた値を指定します。
+   
+8. 応答コード 201 または 202 が表示された場合は、復元要求が正常に送信されています。 
 
-7. 応答コード 201 または 202 が表示された場合は、復元要求が正常に送信されています。 
-
-8. サーバーの作成には、元のサーバーでプロビジョニングされたデータベースのサイズとコンピューティング リソースによって時間がかかることがあります。 復元の状態は、次をフィルター処理することによって、アクティビティ ログから監視できます。 
+9. サーバーの作成には、元のサーバーでプロビジョニングされたデータベースのサイズとコンピューティング リソースによって時間がかかることがあります。 復元の状態は、次をフィルター処理することによって、アクティビティ ログから監視できます。 
    - **サブスクリプション** = 自分のサブスクリプション
    - **リソース タイプ** = Azure Database for MySQL servers (Microsoft.DBforMySQL/servers) 
    - **操作** = MySQL サーバー作成の更新

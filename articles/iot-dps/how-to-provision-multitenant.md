@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727432"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228319"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
@@ -26,11 +26,12 @@ ms.locfileid: "101727432"
 
 この記事では、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のシミュレートされたデバイスのサンプルを使用して、複数リージョンのマルチテナント シナリオでデバイスをプロビジョニングする方法を示します。 この記事では、以下の手順を実施します。
 
-* Azure CLI を使用して、2 つのリージョン (**米国西部** と **米国東部**) に IoT ハブを作成します
-* マルチテナントの登録を作成します
-* Azure CLI を使用して、同じ 2 つのリージョン (**米国西部** と **米国東部**) にデバイスとして機能する Linux VM を作成します
-* 両方の Linux VM 上に Azure IoT C SDK 用の開発環境をセットアップします
-* デバイスをシミュレートして、最も近いリージョンの同じテナントに対してプロビジョニングされることを確認します
+> [!div class="checklist"]
+> * Azure CLI を使用して、2 つのリージョン (**米国西部** と **米国東部**) に IoT ハブを作成します
+> * マルチテナントの登録を作成します
+> * Azure CLI を使用して、同じ 2 つのリージョン (**米国西部** と **米国東部**) にデバイスとして機能する Linux VM を作成します
+> * 両方の Linux VM 上に Azure IoT C SDK 用の開発環境をセットアップします
+> * デバイスをシミュレートして、最も近いリージョンの同じテナントに対してプロビジョニングされることを確認します
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -417,8 +418,11 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> 再プロビジョニングの詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)」をご覧ください
+* 再プロビジョニングの詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください
+> [IoT Hub デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)
+
+* プロビジョニング解除の詳細については、次の記事を参照してください。
+> [!div class="nextstepaction"]
+> [自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)

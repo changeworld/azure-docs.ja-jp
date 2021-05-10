@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:Apache Storm トポロジを作成/管理する - Azure HDInsight
+title: 'クイックスタート: Apache Storm トポロジを作成/管理する - Azure HDInsight'
 description: このクイック スタートでは、Azure HDInsight で Apache Storm トポロジを作成および監視する方法について説明します。
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/14/2019
 ms.custom: mvc
-ms.openlocfilehash: fe7b1cdc96ae95ac361183342ea491432c3ab4b4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 73b0434065b06f25320a0666937fd7969c863b33
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928853"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870213"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>クイック スタート:Azure HDInsight で Apache Storm トポロジを作成、監視する
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>クイックスタート: Azure HDInsight で Apache Storm トポロジを作成、監視する
 
 Apache Storm は、データ ストリームの処理を目的とし、スケーラビリティとフォールト トレランスに優れた、分散型のリアルタイム計算システムです。 Azure HDInsight の Storm を使用して、Storm でリアルタイムで ビッグ データ分析を実行するクラウドベースの Storm クラスターを作成できます。
 
@@ -46,9 +46,9 @@ Storm には、トポロジの実行を操作する Web インターフェイス
 
 1. Storm UI を表示するには、Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/stormui` を開きます。 `CLUSTERNAME` をクラスターの名前に置き換えます。
 
-2. **[トポロジの概要]** で、 **[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
+2. **[トポロジの概要]** で、**[名前]** 列の **[wordcount]** エントリを選択します。 トポロジの情報が表示されます。
 
-    ![storm-starter WordCount トポロジの情報が含まれている Storm ダッシュボード。](./media/apache-storm-quickstart/hdi-topology-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-topology-summary.png" alt-text="storm-starter WordCount トポロジの情報が含まれている Storm ダッシュボード。" border="true":::
 
     新しいページに、次の情報が表示されます。
 
@@ -63,9 +63,9 @@ Storm には、トポロジの実行を操作する Web インターフェイス
     |再調整|トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 再調整によって、並列処理が、クラスター内のノード数の増減に合わせて調整されます。 詳細については、[Apache Storm トポロジの並列処理の理解](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)に関するページを参照してください。|
     |強制終了|指定したタイムアウト後に Storm トポロジを停止します。|
 
-3. このページで、 **[スパウト]** または **[ボルト]** セクションからエントリを選択します。 選択したコンポーネントに関する情報が表示されます。
+3. このページで、**[スパウト]** または **[ボルト]** セクションからエントリを選択します。 選択したコンポーネントに関する情報が表示されます。
 
-    ![選択したコンポーネントに関する情報が含まれている Storm ダッシュボード。](./media/apache-storm-quickstart/hdi-component-summary.png)
+    :::image type="content" source="./media/apache-storm-quickstart/hdi-component-summary.png" alt-text="選択したコンポーネントに関する情報が含まれている Storm ダッシュボード。" border="true":::
 
     新しいページに次の情報が表示されます。
 
@@ -77,7 +77,7 @@ Storm には、トポロジの実行を操作する Web インターフェイス
     |エグゼキュータ|このコンポーネントのインスタンスに関する情報。|
     |エラー|このコンポーネントで生成されたエラー。|
 
-4. スパウトまたはボルトの詳細を表示したら、 **[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択して、コンポーネントの特定のインスタンスの詳細を表示します。
+4. スパウトまたはボルトの詳細を表示したら、**[エグゼキュータ]** セクションの **[ポート]** 列でエントリを選択して、コンポーネントの特定のインスタンスの詳細を表示します。
 
 ```output
 2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
@@ -94,7 +94,7 @@ Storm には、トポロジの実行を操作する Web インターフェイス
 
 ## <a name="stop-the-topology"></a>トポロジを停止する
 
-ワードカウント トポロジの **[トポロジの概要]** ページに戻り、 **[トポロジのアクション]** セクションで **[強制終了]** ボタンを選択します。 メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。 タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
+ワードカウント トポロジの **[トポロジの概要]** ページに戻り、**[トポロジのアクション]** セクションで **[強制終了]** ボタンを選択します。 メッセージが表示されたら、トポロジを停止するまでの待機秒数として「10」を入力します。 タイムアウト期間後は、ダッシュボードの **[Storm UI]** セクションにアクセスしても、トポロジは表示されません。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

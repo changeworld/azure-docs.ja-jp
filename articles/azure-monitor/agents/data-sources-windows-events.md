@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0eaa73fa7e0a9896a875af7e3a3aab22db2a37d0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036599"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657061"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Log Analytics エージェントを使用して Windows イベント ログのデータ ソースを収集する
 Windows イベント ログは、Windows 仮想マシン上の Log Analytics エージェントの最も一般的な[データ ソース](../agents/agent-data-sources.md)の 1 つです。これは、多くのアプリケーションから Windows イベント ログへ書き込みが行われるためです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -28,6 +28,10 @@ Azure Monitor は、設定で指定されている Windows イベント ログ�
 イベント ログの名前を入力していくと、Azure Monitor が一般的なイベント ログ名の候補を表示します。 追加しようとするログが候補リストに表示されない場合、ログの完全な名前を入力して追加することもできます。 ログの完全な名前はイベント ビューアーを使用して確認できます。 イベント ビューアーで、ログの *[プロパティ]* ページを開き、*[フル ネーム]* フィールドの文字列をコピーします。
 
 [![Windows イベントの構成](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
+
+> [!IMPORTANT]
+> ワークスペースからセキュリティ イベントの収集を構成することはできません。 セキュリティ イベントを収集するには、[Azure Security Center](../../security-center/security-center-enable-data-collection.md) または [Azure Sentinel](../../sentinel/connect-windows-security-events.md) を使用する必要があります。
+
 
 > [!NOTE]
 > Windows イベント ログの重要なイベントは、Azure Monitor ログで重大度が "エラー" になります。

@@ -2,21 +2,21 @@
 title: PowerShell のサンプル - Azure Active Directory テナントでのアプリの登録用にシークレットと証明書をエクスポートします。
 description: Azure Active Directory テナントで指定したアプリの登録用にすべてのシークレットと証明書をエクスポートする PowerShell の例。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 03/09/2021
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: mifarca
-ms.openlocfilehash: d0de96d0d8a5edc6fbacc25dcbcb868073e57183
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b5cbb6b3843e81d9265405dcea24a092e57bf65e
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556555"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377045"
 ---
 # <a name="export-secrets-and-certificates-for-app-registrations"></a>アプリの登録用にシークレットと証明書をエクスポートする
 

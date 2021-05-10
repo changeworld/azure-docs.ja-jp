@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c0d91f803822e018f4363bb78d9138e2efe16f8a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736612"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531427"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -25,9 +25,11 @@ ms.locfileid: "101736612"
 |:----------------------|:-------------:|:----------:|:--------------------------:|-------------------:|
 | 簡体中国語    |   `zh-hans`   |     ✓      |         2019-10-01         | `zh` も可能 |
 | 繁体字中国語   |   `zh-hant`   |    ✓      |         2019-10-01         |                    |
+| オランダ語                 |     `nl`      |     ✓      |         2019-10-01        |                    |
 | 英語               |     `en`      |     ✓      |         2019-10-01         |                    |
 | フランス語                |     `fr`      |     ✓      |         2019-10-01         |                    |
 | ドイツ語                |     `de`      |     ✓      |         2019-10-01         |                    |
+| ヒンディー語                 |    `hi`       |     ✓      |         2020-04-01         |                    |
 | イタリア語               |     `it`      |     ✓      |         2019-10-01         |                    |
 | 日本語              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | 韓国語                |     `ko`      |    ✓      |         2019-10-01         |                    |

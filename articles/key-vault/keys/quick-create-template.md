@@ -10,16 +10,19 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: d68ec580f25bfd5f9c1a994efc15abd8835ac8a5
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093512"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639421"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する (プレビュー)
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する 
 
 [Azure Key Vault](../general/overview.md) は、キー、パスワード、証明書、その他のシークレットなど、シークレットのための安全な保管場所を提供するクラウド サービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイしてキー コンテナーとキーを作成する過程を中心に取り上げます。
+
+> [!NOTE]
+> この機能は、Azure Government では使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -164,6 +167,9 @@ ms.locfileid: "101093512"
 - Microsoft.KeyVault/vaults/keys
 
 その他の Azure Key Vault テンプレートのサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)のページから入手できます。
+
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
+[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)、Azure PowerShell、Azure CLI、または REST API を使用できます。 デプロイ方法の詳細については、「[テンプレートのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)」を参照してください。
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 

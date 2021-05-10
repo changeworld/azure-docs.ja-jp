@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e5189df623325578bb3b579f5c4c3456067986ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566653"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709482"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシのための Azure AD PowerShell の例
 
@@ -32,7 +32,7 @@ ms.locfileid: "102566653"
 | [すべてのアプリケーション プロキシ アプリに関する基本情報を一覧表示する](scripts/powershell-get-all-app-proxy-apps-basic.md) | ディレクトリ内のすべてのアプリケーション プロキシ アプリに関する基本情報 (AppId、DisplayName、ObjId) を一覧表示します。 |
 | [すべてのアプリケーション プロキシ アプリに関する拡張情報を一覧表示する](scripts/powershell-get-all-app-proxy-apps-extended.md) | ディレクトリ内のすべてのアプリケーション プロキシ アプリに関する拡張情報 (AppId、DisplayName、ExternalUrl、InternalUrl、ExternalAuthenticationType) を一覧表示します。  |
 | [すべてのアプリケーション プロキシ アプリをコネクタ グループ別に一覧表示する](scripts/powershell-get-all-app-proxy-apps-by-connector-group.md) | ディレクトリ内のすべてのアプリケーション プロキシ アプリに関する情報と、どのコネクタ グループにアプリが割り当てられているかを一覧表示します。 |
-| [トークンの有効期間ポリシーを使用しているすべてのアプリケーション プロキシ アプリを取得する](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | トークンの有効期間ポリシーを使用しているディレクトリ内のすべてのアプリケーション プロキシ アプリを、ポリシーの詳細と共に一覧表示します。 このサンプルには、[Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)が必要です。 |
+| [トークンの有効期間ポリシーを使用しているすべてのアプリケーション プロキシ アプリを取得する](scripts/powershell-get-all-app-proxy-apps-with-policy.md) | トークンの有効期間ポリシーを使用しているディレクトリ内のすべてのアプリケーション プロキシ アプリを、ポリシーの詳細と共に一覧表示します。 このサンプルには、[Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)が必要です。 |
 |**コネクタ グループ**||
 | [ディレクトリ内のすべてのコネクタ グループとコネクタを取得する](scripts/powershell-get-all-connectors.md) | ディレクトリ内のすべてのコネクタ グループとコネクタを一覧表示します。 |
 | [あるコネクタ グループに割り当てられているすべてのアプリを別のコネクタ グループに移動する](scripts/powershell-move-all-apps-to-connector-group.md) | あるコネクタ グループに現在割り当てられているすべてのアプリケーションを別のコネクタ グループに移動します。 |

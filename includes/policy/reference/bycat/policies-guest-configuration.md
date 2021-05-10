@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 588b3f658396d83a0c4fd885dd86d3808ab6ae80
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: c1eade03f8c350ff86c2843dbf65f6ef82304538
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102611178"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499129"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -50,6 +50,7 @@ ms.locfileid: "102611178"
 |[Linux VM でゲスト構成の割り当てを有効にするために Linux ゲスト構成拡張機能をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F331e8ea8-378a-410f-a2e5-ae22f38bb0da) |このポリシーでは、Azure でホストされ、ゲスト構成でサポートされている Linux 仮想マシンに Linux ゲスト構成拡張機能がデプロイされます。 Linux ゲスト構成拡張機能は、すべての Linux ゲスト構成割り当てに対する前提条件であるため、Linux ゲスト構成ポリシー定義を使用する前にマシンにデプロイする必要があります。 ゲスト構成の詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionLinux_Prerequisite.json) |
 |[Windows VM でゲスト構成の割り当てを有効にするために Windows ゲスト構成拡張機能をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F385f5831-96d4-41db-9a3c-cd3af78aaae6) |このポリシーでは、Azure でホストされ、ゲスト構成でサポートされている Windows 仮想マシンに Windows ゲスト構成拡張機能がデプロイされます。 Windows ゲスト構成拡張機能は、すべての Windows ゲスト構成割り当てに対する前提条件であるため、Windows ゲスト構成ポリシー定義を使用する前にマシンにデプロイする必要があります。 ゲスト構成の詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionWindows_Prerequisite.json) |
 |[\[プレビュー\]: Linux マシンは Azure セキュリティ ベースラインの要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 Linux マシンで Azure セキュリティ ベースラインの要件を満たしている必要がある場合、マシンは非準拠です |AuditIfNotExists、Disabled |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
+|[ゲスト構成の割り当てのプライベート エンドポイントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F480d0f91-30af-4a76-9afb-f5710ac52b09) |プライベート エンドポイント接続は、仮想マシンのゲスト構成へのプライベート接続を有効にすることで、通信のセキュリティを強化します。 "EnablePrivateNetworkGC" タグが割り当てられていない仮想マシンはコンプライアンス違反となります。 このタグにより、仮想マシンのゲスト構成に対して、プライベート接続によるセキュリティで保護された通信が適用されます。 プライベート接続では、既知のネットワークを送信元とするトラフィックにアクセスが限定され、Azure 内の IP アドレスも含めて他のすべての IP アドレスからのアクセスが禁止されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/Azure_PrivateLink_Deny.json) |
 |[マシンで Windows Defender Exploit Guard を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントを使用します。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。 |AuditIfNotExists、Disabled |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AINE.json) |
 |[Windows マシンは [管理用テンプレート - コントロール パネル] の要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3aa2661b-02d7-4ba6-99bc-dc36b10489fd) |Windows マシンには、入力の個人用設定とロック画面の有効化防止について、カテゴリ [管理用テンプレート - コントロール パネル] で指定されたグループ ポリシー設定が必要です。 このポリシーでは、ゲスト構成の前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesControlPanel_AINE.json) |
 |[Windows マシンは [管理用テンプレート - MSS (レガシ)] の要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a7e899-2ce2-4253-8a13-d808fdeb75af) |Windows マシンには、自動ログオン、スクリーン セーバー、ネットワークの動作、安全な DLL、イベント ログについて、カテゴリ [管理用テンプレート - MSS (レガシ)] で指定されたグループ ポリシー設定が必要です。 このポリシーでは、ゲスト構成の前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesMSSLegacy_AINE.json) |

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: sstein
-ms.openlocfilehash: 0ddd2c96be3513d253537cefd5b9eb83da2b3c12
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634840"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640095"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,12 +61,12 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 | 機能 | 詳細 |
 | ---| --- |
-| <a href="/azure/azure-sql/database/elastic-transactions-overview">分散トランザクション</a> | マネージド インスタンスにまたがる分散トランザクション。 |
-| <a href="/azure/sql-database/sql-database-instance-pools">インスタンス プール</a> | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
-| <a href="/en-gb/sql/t-sql/statements/create-login-transact-sql">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> | <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true">CREATE LOGIN FROM EXTERNAL PROVIDER</a> ステートメントを使って、インスタンスレベルのログインを作成します。 |
+| [分散トランザクション](/azure/azure-sql/database/elastic-transactions-overview) | マネージド インスタンスにまたがる分散トランザクション。 |
+| [インスタンス プール](/azure/sql-database/sql-database-instance-pools) | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
+| [インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)](/sql/t-sql/statements/create-login-transact-sql) | [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) ステートメントを使って、インスタンスレベルのログインを作成します。 |
 | [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) | テーブルの変更を、SQL Managed Instance、SQL Database、または SQL Server の他のデータベースにレプリケートします。 または、SQL Managed Instance や SQL Server の他のインスタンスで一部の行が変更されたときに、テーブルを更新します。 詳しくは、[Azure SQL Managed Instance にレプリケーションを構成する方法](../managed-instance/replication-between-two-instances-configure-tutorial.md)に関する記事をご覧ください。 |
 | 脅威の検出 |詳しくは、[Azure SQL Managed Instance で脅威検出を構成する方法](../managed-instance/threat-detection-configure.md)に関する記事をご覧ください。|
-| 長期のバックアップ リテンション期間 | 詳細については、現在は制限付きパブリック プレビュー段階である [Azure SQL Managed Instance での長期のバックアップ リテンション期間の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページをご覧ください。 | 
+| 長期のバックアップ リテンション期間 | 詳細については、現在は制限付きパブリック プレビュー段階である [Azure SQL Managed Instance での長期のバックアップ リテンション期間の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページをご覧ください。 |
 
 ---
 

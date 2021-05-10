@@ -6,20 +6,17 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: b3ddbdf04dc736b6f78a04dc6bb2bc484e67f70f
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.date: 03/11/2021
+ms.openlocfilehash: 0a24546579df020dcb7c7a9b01ee3d181226d2df
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107218"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102617490"
 ---
 # <a name="grant-and-request-tenant-wide-visibility"></a>テナント全体の可視性を付与および要求する
 
 Azure Active Directory (AD) ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 Azure AD ロールの割り当てでは Azure リソースへのアクセス権が付与されないため、アクセス許可の昇格が必要です。 
-
-> [!TIP]
-> グローバル管理者ロールのアクセス許可の昇格の詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../role-based-access-control/elevate-access-global-admin.md)」を参照してください。
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>テナント全体のアクセス許可を自分に付与する
 
@@ -45,6 +42,14 @@ Azure Active Directory (AD) ロールが **グローバル管理者** である�
 1. Azure portal からログアウトした後に、もう一度ログインします。
 
 1. 昇格されたアクセス権を取得できたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
+
+上記の簡単なプロセスでは、さまざまな操作が自動的に実行されます。
+
+1. ユーザーのアクセス許可は一時的に昇格されます。
+1. 新しいアクセス許可を使用して、ユーザーはルート管理グループの目的の Azure RBAC ロールに割り当てられます。
+1. 昇格したアクセス許可は削除されます。
+
+Azure AD の昇格プロセスの詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../role-based-access-control/elevate-access-global-admin.md)」を参照してください。
 
 
 ## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>テナント全体のアクセス許可が不十分な場合に要求する

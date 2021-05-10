@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4024d2b1357f3dda8216e9ebdd2055b28b064d33
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9758b026ef205e6608f7fc4110219dc5f267369e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677487"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568717"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 [!INCLUDE [managed-disks-bursting](../../includes/managed-disks-bursting.md)]
@@ -27,10 +27,10 @@ Azure [Premium SSD](disks-types.md#premium-ssd) により、バーストの 2 �
 
 |  |クレジットベースのバースト  |オンデマンド バースト  |パフォーマンス レベルの変更  |
 |---------|---------|---------|---------|
-| シナリオ|短期的なスケーリング (30 分以下) に最適です。|短期的なスケーリング (時間制限なし) に最適です。|ワークロードが継続的にバーストで実行される場合に最適です。|
-|コスト     |Free         |コストは変動します。詳細については、[課金](#billing)に関するセクションをご覧ください。        |各パフォーマンス レベルのコストは固定です。詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。         |
-|可用性     |512 GiB 以下の Premium SSD でのみ使用できます。         |512 GiB を超える Premium SSD でのみ使用できます。         |すべての Premium SSD サイズで使用できます。         |
-|有効化     |対象のディスクでは既定で有効になっています。         |ユーザーが有効にする必要があります。         |ユーザーが手動でレベルを変更する必要があります。         |
+| **シナリオ**|短期的なスケーリング (30 分以下) に最適です。|短期的なスケーリング (時間制限なし) に最適です。|ワークロードが継続的にバーストで実行される場合に最適です。|
+|**コスト**     |Free         |コストは変動します。詳細については、[課金](#billing)に関するセクションをご覧ください。        |各パフォーマンス レベルのコストは固定です。詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。         |
+|**可用性**     |512 GiB 以下の Premium SSD でのみ使用できます。         |512 GiB を超える Premium SSD でのみ使用できます。         |すべての Premium SSD サイズで使用できます。         |
+|**有効化**     |対象のディスクでは既定で有効になっています。         |ユーザーが有効にする必要があります。         |ユーザーが手動でレベルを変更する必要があります。         |
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 バースティングから大きなメリットが得られるシナリオを次に示します。

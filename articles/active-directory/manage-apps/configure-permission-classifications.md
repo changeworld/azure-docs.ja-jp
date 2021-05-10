@@ -2,22 +2,22 @@
 title: Azure AD を使用してアクセス許可の分類を構成する
 description: 委任されたアクセス許可の分類を管理する方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: phsignor
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 12a4ffb311e01ebb78b1ae392d1243c5d67eff6b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be58f5cd18d32302d1e92f00afb7d7e0aae09410
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644566"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374473"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 

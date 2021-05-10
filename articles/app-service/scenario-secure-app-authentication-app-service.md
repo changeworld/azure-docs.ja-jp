@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 04/02/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b17cb6906a37d2cab4383fac18400b35dc8adb2f
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96905572"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223195"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>チュートリアル:Azure App Service で実行されている Web アプリに認証を追加する
 
@@ -41,7 +41,7 @@ App Service では組み込みの認証と承認がサポートされている�
 
 このチュートリアルでは、App Service にデプロイされた Web アプリが必要です。 既存の Web アプリを使用することも、[ASP.NET Core のクイックスタート](quickstart-dotnetcore.md)に従って新しい Web アプリを作成して App Service に公開することもできます。
 
-既存の Web アプリを使用するか新しい Web アプリを作成するかにかかわらず、Web アプリ名と Web アプリのデプロイ先のリソース グループの名前をメモしてください。 これらの名前は、このチュートリアル全体を通して必要になります。 このチュートリアル全体を通して、プロシージャとスクリーンショットのサンプル名に *SecureWebApp* が含まれています。
+既存の Web アプリを使用するか新しい Web アプリを作成するかにかかわらず、Web アプリ名と Web アプリのデプロイ先のリソース グループの名前をメモしてください。 これらの名前は、このチュートリアル全体を通して必要になります。 
 
 ## <a name="configure-authentication-and-authorization"></a>認証と承認を構成する
 
@@ -53,17 +53,19 @@ App Service では組み込みの認証と承認がサポートされている�
 
 :::image type="content" alt-text="アプリの管理ページの選択を示すスクリーンショット。" source="./media/scenario-secure-app-authentication-app-service/select-app-service.png":::
 
-アプリの左側のメニューで **[認証/承認]** を選択し、 **[オン]** を選択して App Service 認証を有効にします。
+アプリの左側のメニューで **[認証]** を選択し、 **[ID プロバイダーの追加]** をクリックします。
 
-**[要求が認証されない場合に実行するアクション]** で、 **[Azure Active Directory でのログイン]** を選択します。
+**[ID プロバイダーの追加]** ページで、Microsoft および Azure AD ID にサインインするための **ID プロバイダー** として **[Microsoft]** を選択します。
 
-**[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。 **[簡易]** を選択し、既定の設定をそのまま使用して新しい Active Directory アプリを作成します。 **[OK]** を選択します。
+**[アプリの登録]**  >  **[App registration type]\(アプリの登録の種類\)** で、 **[Create new app registration]\(新しいアプリの登録を作成する\)** を選択します。
 
-:::image type="content" alt-text="簡易認証を示すスクリーンショット" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::。
+**[アプリの登録]**  >  **[サポートされているアカウントの種類]** で、 **[現在のテナント - 単一テナント]** を選択します。
 
-**[認証/承認]** ページで、 **[保存]** を選択します。
+**[App Service authentication settings]\(App Service 認証の設定\)** セクションで、 **[認証]** を **[認証が必要]** のままにし、 **[Unauthenticated requests]\(認証されていない要求\)** を **[HTTP 302 Found redirect: recommended for websites]\(HTTP 302 Found リダイレクト: Web サイトに推奨\)** のままにします。
 
-`Successfully saved the Auth Settings for <app-name> App` というメッセージを含む通知が表示されたら、ポータル ページを最新の情報に更新します。
+**[ID プロバイダーの追加]** ページの下部にある **[追加]** をクリックして、対象の Web アプリの認証を有効にします。
+
+:::image type="content" alt-text="認証の構成を示すスクリーンショット。" source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 
 これで、App Service の認証と承認によってアプリが保護されるようになりました。
 

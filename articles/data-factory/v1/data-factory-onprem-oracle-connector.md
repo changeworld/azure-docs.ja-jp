@@ -8,10 +8,10 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 02fc142a08176aa577250417c0e394218e832f34
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100387344"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
@@ -49,7 +49,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 この Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
 
-- **Oracle 用 Microsoft ドライバー (推奨)** : Data Management Gateway バージョン 2.7 から、Oracle 用 Microsoft ドライバーがゲートウェイと共に自動的にインストールされます。 Oracle との接続を確立するためにドライバーをインストールまたは更新する必要はありません。 また、このドライバーを使用すると、コピーのパフォーマンスも改善されます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
+- **Oracle 用 Microsoft ドライバー (推奨)**: Data Management Gateway バージョン 2.7 以降、ゲートウェイと共に Oracle 用 Microsoft ドライバーが自動的にインストールされます。 Oracle との接続を確立するためにドライバーをインストールまたは更新する必要はありません。 また、このドライバーを使用すると、コピーのパフォーマンスも改善されます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
   - Oracle 12c R1 (12.1)
   - Oracle 11g R1、R2 (11.1、11.2)
   - Oracle 10g R1、R2 (10.1、10.2)
@@ -63,7 +63,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
     > 現在、Oracle 用 Microsoft ドライバーは、Oracle からのデータのコピーのみをサポートしています。 このドライバーは Oracle への書き込みをサポートしていません。 Data Managemetn Gateway の **[診断]** タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
     >
 
-- **Oracle Data Provider for .NET**: Oracle Data Provider を使用すると、Oracle との間でデータをコピーできます。 このコンポーネントは、 [Oracle Data Access Components for Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているマシンに、関連するバージョン (32 ビットまたは 64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降のバージョンにアクセスできます。
+- **Oracle Data Provider for .NET**: Oracle Data Provider を使用して、Oracle との間でデータをコピーすることができます。 このコンポーネントは、 [Oracle Data Access Components for Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているマシンに、関連するバージョン (32 ビットまたは 64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降のバージョンにアクセスできます。
 
     **[XCopy Installation]\(XCopy のインストール\)** を選択した場合は、readme.htm ファイルに記載されている手順を実行します。 (XCopy のインストーラーではなく) UI があるインストーラーを選択することをお勧めします。
 
@@ -75,9 +75,9 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 コピー アクティビティがあるパイプラインを作成できます。 パイプラインは、異なるツールまたは API を使用して、オンプレミスの Oracle データベースとの間でデータを移動します。
 
-パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 「[チュートリアル:データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルについては、コピー ウィザードを使用したパイプラインの作成](data-factory-copy-data-wizard-tutorial.md)に関するチュートリアルを参照してください。
+パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用してパイプラインを作成する方法のチュートリアル](data-factory-copy-data-wizard-tutorial.md)を参照してください。
 
-また、次のいずれかのツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+また、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API** などのツールのいずれかを使用してパイプラインを作成することもできます。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -101,10 +101,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 | connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | はい |
 | gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |はい |
 
-**例:Microsoft ドライバーの使用**
+**例: Microsoft ドライバーを使用する**
 
 > [!TIP]
-> "ORA-01025: UPI パラメータの値が有効範囲外です" というエラーが表示され、Oracle のバージョンが 8i である場合は、接続文字列に `WireProtocolMode=1` を追加して再試行してください。
+> "ORA-01025: UPI parameter out of range" (ORA 01025: UPI パラメーターの値が有効範囲外です) というエラーが発生し、Oracle がバージョン 8i である場合、`WireProtocolMode=1` を接続文字列に追加してもう一度やり直してください。
 
 ```json
 {
@@ -120,7 +120,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 }
 ```
 
-**例:ODP ドライバーの使用**
+**例: ODP ドライバーを使用する**
 
 使用できる形式の詳細については、[.NET ODP 用の Oracle データ プロバイダー](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)に関するページを参照してください。
 
@@ -174,7 +174,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |**timespan**<br/><br/> 例:00:30:00 (30 分) |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |**timespan**<br/><br/> 例: 00:30:00 (30 分) |いいえ |
 | writeBatchSize |バッファー サイズが **writeBatchSize** の値に達したら、SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するようにコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ |
 | sliceIdentifierColumnName |コピー アクティビティの列名を指定して、自動生成されたスライス識別子を入力します。 **sliceIdentifierColumnName** の値は、再実行時に特定のスライスのデータを消去するために使用されます。 |データ型が **binary(32)** の列の列名。 |いいえ |
@@ -183,7 +183,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 次の例は、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」で説明されているシンクのいずれかにデータをコピーすることができます。
 
-**例:Oracle から Azure Blob Storage にデータをコピーする**
+**例: Oracle から Azure BLOB ストレージにデータをコピーする**
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
@@ -369,7 +369,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 }
 ```
 
-**例:Azure Blob Storage から Oracle にデータをコピーする**
+**例: Azure BLOB ストレージから Oracle にデータをコピーする**
 
 このサンプルは、Azure BLOB ストレージ アカウントからオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[Supported data stores and formats](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」(サポートされているデータ ストアと形式) に記載されているいずれかのソースからデータを *直接* コピーできます。
 
@@ -415,7 +415,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 **Azure BLOB の入力データセット**
 
-データは、1 時間おきに新しい BLOB から選択されます (**頻度**: **時間**、**間隔**: **1**)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは、開始時刻の年、月、日の部分を使います。 ファイル名は、開始時刻の時の部分を使います。 **external**: **true** の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+データは新しい BLOB から 1 時間おきに取得されます (**頻度**: **時間**、**間隔**: **1**)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは、開始時刻の年、月、日の部分を使います。 ファイル名は、開始時刻の時の部分を使います。 **external**: **true** の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -560,16 +560,16 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 * Oracle 用の .NET Framework Data Provider がインストールされていません。
 * Oracle 用の .NET Framework Data Provider が .NET Framework 2.0 にインストールされ、.NET Framework 4.0 フォルダーで検出されません。
 
-**解決策**
+**解像度**
 
 * Oracle 用の .NET Provider をインストールしていない場合は [インストール](https://www.oracle.com/technetwork/topics/dotnet/downloads/) した後、シナリオをやり直します。
 * プロバイダーのインストール後もこのエラー メッセージが表示される場合は、次の手順を実行します。
     1. フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config から .NET 2.0 のマシン構成ファイルを開きます。
     2. **Oracle Data Provider for .NET** を検索します。 **system.data** > **DbProviderFactories** 以下に次のサンプルのようなエントリが見つかります。`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* v4.0 フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config 内の machine.config ファイルに、このエントリをコピーします。次に、バージョンを 4.xxx.x.x に変更します。
+* このエントリを、.NET v4.0 フォルダーの machine.config ファイル (<system disk\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config) にコピーします。その後、バージョンを 4.xxx.x.x に変更します。
 * **gacutil /i [プロバイダーのパス]** を実行して、グローバル アセンブリ キャッシュ (GAC) に <ODP.NET がインストールされているパス\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll をインストールします。
 
-### <a name="problem-2-datetime-formatting"></a>問題 2:日付/時刻の書式設定
+### <a name="problem-2-datetime-formatting"></a>問題 2: 日付/時刻の書式設定
 
 **エラー メッセージ**
 
@@ -577,7 +577,7 @@ Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: 
 Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 ```
 
-**解決策**
+**解像度**
 
 Oracle データベースでの日付の構成方法に基づいて、コピー アクティビティ内のクエリ文字列を調整する必要があります。 次に例を示します (**to_date** 関数を使用します)。
 

@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 6cf76e980fab4e5be3f8c2c6d72baff05ab03815
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216498"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108389"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
 > [!IMPORTANT]
-> シークレット ストア CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープンソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題を、このページの下部にある github リンクで報告してください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
+> シークレット ストア CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープンソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題は、CSI ドライバー [GitHub](https://github.com/kubernetes-sigs/secrets-store-csi-driver) で報告してください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
 
-このチュートリアルでは、シークレット ストア コンテナー ストレージ インターフェイス (CSI) ドライバーを使用して Azure キー コンテナーにアクセスしてシークレットを取得し、そのシークレットを Kubernetes ポッドにマウントします。
+このチュートリアルでは、シークレット ストア Container Storage Interface (CSI) ドライバーを使用してお使いの Azure キー コンテナーにアクセスしてシークレットを取得し、そのシークレットをボリュームとして Kubernetes ポッドにマウントします。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -164,11 +164,14 @@ spec:
     すべての必須のロールの割り当てと Azure Active Directory (Azure AD) ポッド ID に関するドキュメントについては、こちらを参照してください: [リンク](https://azure.github.io/aad-pod-identity/docs/getting-started/role-assignment/)
 
     ```azurecli
-    RESOURCE_GROUP=contosoResourceGroup
+    VAULT_RESOURCE_GROUP=contosoResourceGroup
+    NODE_RESOURCE_GROUP=contosoResourceGroup
     
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$VAULT_RESOURCE_GROUP
     
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$NODE_RESOURCE_GROUP
+    
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$NODE_RESOURCE_GROUP
     ```
 
 2. AKS に Azure Active Directory (Azure AD) ID をインストールします。
@@ -292,7 +295,11 @@ kubectl exec nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 
 シークレットの内容が表示されていることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="resources"></a>リソース
+[Azure Key Vault について](overview.md)
+[Azure Key Vault 開発者ガイド](developers-guide.md)
+[CSI シークレット ドライバー](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html)
+
 
 キー コンテナーが回復可能であることを確認するには、以下を参照してください。
 > [!div class="nextstepaction"]

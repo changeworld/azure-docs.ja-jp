@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4cbb7b96610a56f3b6049038bb5c9c6bc0870b57
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944614"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871365"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache Pig を使用する
 
@@ -27,11 +27,11 @@ Pig では、データ フローに使用される一連の変換として処理
 
 Pig Latin 言語では、生の入力から 1 つ以上の変換を介して目的の出力を生成するデータ フローを記述できます。 Pig Latin プログラムはこの一般的なパターンに従います。
 
-* **load**:操作対象のデータをファイル システムから読み取ります。
+* **Load**: 操作対象のデータをファイル システムから読み取ります。
 
-* **transform**:データを操作します。
+* **Transform**: データを操作します。
 
-* **dump または store**:データを画面に出力します。または、処理できるように保存します。
+* **Dump または store**: データを画面に出力します。または、処理できるように保存します。
 
 ### <a name="user-defined-functions"></a>ユーザー定義関数
 
@@ -70,7 +70,7 @@ DUMP RESULT;
 
 次の図は、データへの各変換の要約を示しています。
 
-![変換のグラフィカル表示][image-hdi-pig-data-transformation]
+:::image type="content" source="./media/use-pig/hdi-data-transformation.gif" alt-text="変換のグラフィカル表示" border="false":::
 
 ## <a name="run-the-pig-latin-job"></a><a id="run"></a>Pig Latin ジョブを実行する
 
@@ -113,4 +113,3 @@ Azure Feature Pack for SSIS の詳細については、[こちら][ssispack]を�
 [powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 
 
-[image-hdi-pig-data-transformation]: ./media/use-pig/hdi-data-transformation.gif

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: d3d9f41876cf1310fe25a275624f609031c05b00
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ddb61a79e6af402b06fe8c18df8c62f9287437a3
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601892"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209716"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
@@ -33,7 +33,7 @@ ms.locfileid: "98601892"
 | | [マルチデバイスの会話](multi-device-conversation.md) | 会話の中で複数のデバイスまたはクライアントを接続して、音声ベースまたはテキストベースのメッセージを送信し、文字起こしや翻訳を容易に実現します。| はい | いいえ |
 | | [会話の文字起こし](./conversation-transcription.md) | リアルタイムの音声認識、話者識別、およびダイアライゼーションが有効になります。 話者を区別することができるため、対面会議の文字起こしに最適です。 | はい | いいえ |
 | | [カスタム音声モデルの作成](#customize-your-speech-experience) | 独自環境での認識と文字起こしに音声テキスト変換を使用している場合は、カスタムの音響、言語、発音モデルを作成してトレーニングし、周囲の雑音や業界固有の語彙に対応できます。 | いいえ | [はい](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| [音声合成](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) が使用され、入力テキストが人間のような合成音声に変換されます。 標準音声とニューラル音声から選択できます (「[言語のサポート](language-support.md)」を参照)。 | [はい](./speech-sdk.md) | [はい](#reference-docs) |
+| [音声合成](text-to-speech.md) | テキスト読み上げ | テキスト読み上げでは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) が使用され、入力テキストが人間のような合成音声に変換されます。 ディープ ニューラル ネットワークを利用した、人間に似た音声であるニューラル音声を使用します。 [言語のサポート](language-support.md)に関するページを参照してください。 | [あり](./speech-sdk.md) | [はい](#reference-docs) |
 | | [Custom Voice の作成](#customize-your-speech-experience) | ブランドや製品に固有のカスタム音声フォントを作成します。 | いいえ | [はい](#reference-docs) |
 | [音声翻訳](speech-translation.md) | 音声翻訳 | 音声翻訳を使用すると、音声のリアルタイムの多言語翻訳がアプリケーション、ツール、デバイスで可能になります。 音声間翻訳や音声テキスト翻訳にはこのサービスを使用します。 | [はい](./speech-sdk.md) | いいえ |
 | [音声アシスタント](voice-assistants.md) | 音声アシスタント | Speech Service を使用した音声アシスタントにより、開発者は、そのアプリケーションとエクスペリエンスのための自然で人間のような会話型インターフェイスを作成できます。 音声アシスタント サービスは、Bot Framework の Direct Line Speech チャネルまたは統合カスタム コマンド サービスを使用してタスクを遂行するアシスタントの実装とデバイスとの間に、高速で信頼性の高い対話を実現します。 | [はい](voice-assistants.md) | いいえ |
@@ -105,7 +105,7 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 * [音声テキスト変換のクイックスタート](get-started-speech-to-text.md)
 * [テキスト読み上げのクイックスタート](get-started-text-to-speech.md)
 * [音声翻訳のクイックスタート](./get-started-speech-translation.md)
-* [意図認識のクイックスタート](quickstarts/intent-recognition.md)
+* [意図認識のクイックスタート](./get-started-intent-recognition.md)
 * [話者認識のクイックスタート](./get-started-speaker-recognition.md)
 
 Speech Service を使用する機会が得られたら、さまざまなシナリオを解決する方法を説明するチュートリアルを試してみてください。

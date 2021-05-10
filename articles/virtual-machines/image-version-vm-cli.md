@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7c35be8821b6763531b43ec85b10325e91f8bc5f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 7bfe8b1255c88878c2dc4661e9daa3e16397e9f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556862"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792275"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Azure CLI を使用して Azure の VM からイメージ バージョンを作成する
 
@@ -36,13 +36,13 @@ VM にデータ ディスクがアタッチされている場合、データ デ
 
 ## <a name="get-information-about-the-vm"></a>VM に関する情報を取得する
 
-利用できる VM は、[az vm list](/cli/azure/vm#az-vm-list) を使用して一覧表示できます。 
+利用できる VM は、[az vm list](/cli/azure/vm#az_vm_list) を使用して一覧表示できます。 
 
 ```azurecli-interactive
 az vm list --output table
 ```
 
-VM の名前とそれが属しているリソース グループがわかったら、[az vm get-instance-view](/cli/azure/vm#az-vm-get-instance-view) を使用して VM の ID を取得します。 
+VM の名前とそれが属しているリソース グループがわかったら、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) を使用して VM の ID を取得します。 
 
 ```azurecli-interactive
 az vm get-instance-view -g MyResourceGroup -n MyVm --query id
@@ -59,7 +59,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-[az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
+[az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) を使用して、ギャラリー内にイメージ定義を作成します。
 
 この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
@@ -78,7 +78,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、VM からイメージ バージョンを作成します。  
+[az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用して、VM からイメージ バージョンを作成します。  
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 

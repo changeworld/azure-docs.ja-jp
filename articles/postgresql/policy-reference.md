@@ -1,18 +1,18 @@
 ---
 title: Azure Database for PostgreSQL 用の組み込みポリシー定義
 description: Azure Database for PostgreSQL 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/17/2021
+ms.date: 04/14/2021
 ms.topic: reference
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0f6d2d73ebfdabe11445e2b5d5a1e5b1e83e8120
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 61e8246c8eddced3138227364f22e8f021c4ea94
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600848"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496565"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 用の Azure Policy 組み込み定義
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f7766b57b5a3b9ffc73691303b5d8bcaa63fce4c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ab3f651c610127399da83addd6463ae8cb3748a9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721669"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565250"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure Firewall 用の Azure セキュリティ ベースライン
 
@@ -36,7 +36,7 @@ Azure Firewall を完全に Azure セキュリティ ベンチマークにマッ
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Network**:
 
@@ -52,7 +52,7 @@ Azure Firewall を完全に Azure セキュリティ ベンチマークにマッ
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.Network**:
 
@@ -72,7 +72,7 @@ Azure Firewall サービス タグは、ネットワーク ルールのターゲ
 
 - [Azure Firewall サービス タグ](service-tags.md)
 
-- [利用可能なサービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags)
+- [利用可能なサービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)
 
 - [Azure Firewall での IP グループ](ip-groups.md)
 
@@ -90,7 +90,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -104,9 +104,9 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 - [Azure Firewall のログとメトリックを監視する](firewall-diagnostics.md)
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -120,7 +120,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 **ガイダンス**: Microsoft は、Azure Firewall 用の Azure リソースのタイム ソースを保持しています。 ユーザーは、このアクセスまたは環境内で使用するタイム サーバーを許可するネットワーク ルールを作成する必要があります。
 
-- [NTP サーバー アクセス](https://docs.microsoft.com/azure/firewall/protect-windows-virtual-desktop#additional-considerations)
+- [NTP サーバー アクセス](./protect-windows-virtual-desktop.md#additional-considerations)
 
 **責任**: 共有
 
@@ -144,7 +144,7 @@ Azure Firewall では、次の診断ログを提供して、お客様のアプ�
 
 アクティビティ ログ内のリソース アクションの一覧:Azure Resource Manager のリソース プロバイダー操作
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -188,9 +188,9 @@ Azure Firewall では、次の診断ログを提供して、お客様のアプ�
 
 - [Azure Firewall のログとメトリック](logs-and-metrics.md)
 
-- [Log Analytics でデータ保持期間を変更する](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **責任**: Customer
 
@@ -214,7 +214,7 @@ Azure Monitor ログは、アプリケーションをリアルタイムに監視
 
 - [Azure Firewall のログとメトリック](logs-and-metrics.md)
 
-- [診断ログ](https://docs.microsoft.com/azure/firewall/logs-and-metrics#diagnostic-logs)
+- [診断ログ](./logs-and-metrics.md#diagnostic-logs)
 
 **責任**: Customer
 
@@ -230,7 +230,7 @@ Azure Monitor ログは、アプリケーションをリアルタイムに監視
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -258,7 +258,7 @@ Azure Monitor ログは、アプリケーションをリアルタイムに監視
 
 Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity Management の特権ロール、および Azure Resource Manager を使用して、Just-In-Time/Just-Enough-Access を有効にすることもできます。
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **責任**: Customer
 
@@ -276,7 +276,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証を有効にし、Azure Security Center の ID およびアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory (Azure AD) の多要素認証を有効にし、Azure Security Center の ID およびアクセス管理の推奨事項に従います。
 
 - [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -334,7 +334,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -348,7 +348,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペースで必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **責任**: Customer
 
@@ -386,11 +386,11 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 **ガイダンス**: 環境の種類やデータの機密度レベルなど、個々のセキュリティ ドメイン用の個別のサブスクリプションと管理グループを使用して分離を実装します。 アプリケーションやエンタープライズ環境で必要とされる Azure Firewall リソースへのアクセス レベルを制限できます。 Azure ロールベースのアクセス制御を使用して、Azure リソースへのアクセスを制御できます。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -414,7 +414,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。 
 
-- [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **責任**: 共有
 
@@ -456,7 +456,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Firewall に変更が加えられたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -470,7 +470,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure Firewall と関連リソースにタグを適用して、それらを論理的に整理して分類するためのメタデータを提供します。 
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -482,7 +482,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create-management-group-portal)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
@@ -526,7 +526,7 @@ Azure Resource Graph を使用して、サブスクリプション内の Azure F
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/concepts/effects.md#deny)
 
 **責任**: Customer
 
@@ -594,7 +594,7 @@ Azure Firewall では、Azure policy が現時点で完全にサポートされ�
 
 **ガイダンス**: Azure DevOps を使用して、カスタム Azure ポリシーや Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
@@ -608,7 +608,7 @@ Azure Firewall では、Azure policy が現時点で完全にサポートされ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
 **責任**: Customer
 
@@ -682,7 +682,7 @@ Azure Firewall では、Azure policy が現時点で完全にサポートされ�
 
 **ガイダンス**: Azure DevOps を使用して、Azure ポリシー、Azure Resource Manager テンプレートなどのコードを安全に格納し、管理します。 Azure DevOps で管理するリソースを保護するには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
@@ -784,5 +784,5 @@ Azure Firewall では、Azure policy が現時点で完全にサポートされ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

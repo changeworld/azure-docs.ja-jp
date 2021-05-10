@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: d3b13dffcf251f79a04182d32f23fd40e6ed6044
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2f80f07cad0e82ee35fe71223e1282ea24f791bb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102562896"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530926"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure での Cloud Foundry
 
@@ -39,7 +39,7 @@ Microsoft では、次のコミュニティ チャネルを通じて OSS CF の�
 
 Pivotal Cloud Foundry には、OSS 配布と同じコア プラットフォームに加え、独自の管理ツールとエンタープライズ サポートが含まれています。 PCF を Azure で実行するには、Pivotal からライセンスを取得する必要があります。 Azure Marketplace から入手できる PCF プランには、90 日間の試用版ライセンスが用意されています。
 
-[Pivotal Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/) (Cloud Foundry のデプロイと管理を容易にする Web アプリケーション) や [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/) (ユーザーとアプリケーションを管理するための Web アプリケーション) などのツールが含まれています。
+[Pivotal Operations Manager](https://docs.pivotal.io/ops-manager/2-10/install/) (Cloud Foundry のデプロイと管理を容易にする Web アプリケーション) や [Pivotal Apps Manager](https://docs.pivotal.io/pivotalcf/console/) (ユーザーとアプリケーションを管理するための Web アプリケーション) などのツールが含まれています。
 
 上記に記載されている OSS CF のサポート チャネルのほか、PCF のライセンスを購入すると、Pivotal のサポートも利用できます。 Microsoft と Pivotal は共同でサポート ワークフローを確立しており、どちらのサポートに問い合わせをしても、問題に応じて適切にルーティングされるようになっています。
 

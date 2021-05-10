@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 07/21/2020
 ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87040254"
 ---
 ## <a name="prerequisites"></a>前提条件
@@ -21,7 +21,7 @@ Logic Apps に OneDrive アカウントへの接続を承認するには、次�
 
 1. Azure portal にサインインします。 
 
-1. **[Azure サービス]** で、 **[Logic Apps]** を選択します。 次に、目的のロジック アプリの名前を一覧から選択します。
+1. **[Azure サービス]** で、 **[Logic Apps]** を選択します。 次に、一覧からロジック アプリの名前を選択します。
 
 1. ロジック アプリのメニューで、 **[開発ツール]** の **[ロジック アプリ デザイナー]** を選択します。
 

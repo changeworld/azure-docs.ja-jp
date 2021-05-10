@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: 1eefb7097f672552956e90a19e0a7b411cae8a24
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 832cc1d4f9ec3cec4ada6e964e3ab2f6f023dd41
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455690"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554805"
 ---
-### <a name="standard-and-neural-voices"></a>標準およびニューラル音声
+### <a name="neural-and-standard-voices"></a>ニューラルと標準の音声
 
-このテーブルを使用して、リージョンまたはエンドポイントごとの **標準音声の可用性** を判断します。
+このテーブルを使用して、リージョンまたはエンドポイントごとの **ニューラルと標準の音声の可用性** を判断します。
 
 | リージョン | エンドポイント |
 |--------|----------|
@@ -34,26 +34,13 @@ ms.locfileid: "102455690"
 | 米国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | 東南アジア | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
 | 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
+| 米国中西部 | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
 | 米国西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` |
 | 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 > [!TIP]
 > [プレビュー段階の音声](../articles/cognitive-services/Speech-Service/language-support.md#neural-voices-in-preview)は 3 つのリージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
-
-このテーブルを使用して、リージョンまたはエンドポイントごとの **ニューラル音声の可用性** を判断します。
-
-| リージョン | エンドポイント |
-|--------|----------|
-| オーストラリア東部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 
-| カナダ中部 | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` |
-| 米国東部 | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| インド中部 | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| 米国中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` |
-| 東南アジア | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` |
-| 英国南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` |
-| 西ヨーロッパ | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` |
-| 米国西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` |
 
 ### <a name="custom-voices"></a>カスタム音声
 

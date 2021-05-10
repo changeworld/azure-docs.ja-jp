@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4160a9ab4edbac8584eab2d4e5b9bf1ba11a9aec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92515748"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568785"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する
 
@@ -159,60 +159,6 @@ Service Bus とシームレスに接続できるようにするには、次の�
 ### <a name="application-server-configuration-changes"></a>アプリケーション サーバー構成の変更
 
 この部分は、ActiveMQ に接続するクライアント アプリケーションをホストしているアプリケーション サーバーに合わせてカスタマイズされています。
-
-#### <a name="tomcat"></a>Tomcat
-
-ここでは、`/META-INF/context.xml` ファイルに示されているように、ActiveMQ に固有の構成から開始します。
-
-```XML
-<Context antiJARLocking="true">
-    <Resource
-        name="jms/ConnectionFactory"
-        auth="Container"
-        type="org.apache.activemq.ActiveMQConnectionFactory"
-        description="JMS Connection Factory"
-        factory="org.apache.activemq.jndi.JNDIReferenceFactory"
-        brokerURL="tcp://localhost:61616"
-        brokerName="LocalActiveMQBroker"
-        useEmbeddedBroker="false"/>
-
-    <Resource name="jms/topic/MyTopic"
-        auth="Container"
-        type="org.apache.activemq.command.ActiveMQTopic"
-        factory="org.apache.activemq.jndi.JNDIReferenceFactory"
-        physicalName="MY.TEST.FOO"/>
-    <Resource name="jms/queue/MyQueue"
-        auth="Container"
-        type="org.apache.activemq.command.ActiveMQQueue"
-        factory="org.apache.activemq.jndi.JNDIReferenceFactory"
-        physicalName="MY.TEST.FOO.QUEUE"/>
-</Context>
-```
-
-これを、次のように、Service Bus を指すように調整します。
-
-```xml
-<Context antiJARLocking="true">
-    <Resource
-        name="jms/ConnectionFactory"
-        auth="Container"
-        type="com.microsoft.azure.servicebus.jms.ServiceBusJmsConnectionFactory"
-        description="JMS Connection Factory"
-        factory="org.apache.qpid.jms.jndi.JNDIReferenceFactory"
-        connectionString="<INSERT YOUR SERVICE BUS CONNECTION STRING HERE>"/>
-
-    <Resource name="jms/topic/MyTopic"
-        auth="Container"
-        type="org.apache.qpid.jms.JmsTopic"
-        factory="org.apache.qpid.jms.jndi.JNDIReferenceFactory"
-        physicalName="MY.TEST.FOO"/>
-    <Resource name="jms/queue/MyQueue"
-        auth="Container"
-        type="org.apache.qpid.jms.JmsQueue"
-        factory="org.apache.qpid.jms.jndi.JNDIReferenceFactory"
-        physicalName="MY.TEST.FOO.QUEUE"/>
-</Context>
-```
 
 #### <a name="spring-applications"></a>Spring アプリケーション
 

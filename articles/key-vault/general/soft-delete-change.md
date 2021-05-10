@@ -2,19 +2,18 @@
 title: すべてのキー コンテナー オブジェクトで論理的な削除を有効にする - Azure Key Vault | Microsoft Docs
 description: このドキュメントは、すべてのキー コンテナーに論理的な削除を導入すると共に、アプリケーションおよび管理機能の変更を行って競合エラーを防ぐためにご利用ください。
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.author: sudbalas
-ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: 7e1b2ee95864affa6e5e72e1f8354767dc95bdb1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98572869"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753328"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>すべてのキー コンテナーでの論理的な削除の有効化
 

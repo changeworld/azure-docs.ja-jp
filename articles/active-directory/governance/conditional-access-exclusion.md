@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: d4b2ac36ad1140968fd17db0bed0b60a8aca6a02
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746254"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532678"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 
@@ -65,15 +65,15 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
 1. Azure portal にサインインします。
 
-2. 左側のナビゲーションで、 **[Azure Active Directory]** をクリックして、 **[グループ]** をクリックします。
+2. 左側のナビゲーションで、**[Azure Active Directory]** をクリックして、**[グループ]** をクリックします。
 
-3. 上部のメニューで、 **[新しいグループ]** をクリックしてグループ ウィンドウを開きます。
+3. 上部のメニューで、**[新しいグループ]** をクリックしてグループ ウィンドウを開きます。
 
 4. **[グループの種類]** リストで **[セキュリティ]** を選択します。 名前と説明を指定します。
 
 5. **[メンバーシップ]** の種類は必ず **[割り当て済み]** に設定してください。
 
-6. この除外グループに含める必要があるユーザーを選択し、 **[作成]** をクリックします。
+6. この除外グループに含める必要があるユーザーを選択し、**[作成]** をクリックします。
 
 ![Azure Active Directory の [新しいグループ] ウィンドウ](./media/conditional-access-exclusion/new-group.png)
 
@@ -104,7 +104,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
   
 アクセス レビューを使用して条件付きアクセス ポリシーの除外を管理する 2 つの例について説明します。
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>例 1:ブロックされている国や地域からアクセスするユーザーのアクセス レビュー
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>例 1: ブロックされている国や地域からアクセスするユーザーのアクセス レビュー
 
 特定の国や地域からのアクセスをブロックする条件付きアクセス ポリシーがあるとします。 これには、ポリシーから除外されているグループが含まれます。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
@@ -125,7 +125,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
     ![例 1 の [アクセス レビューを作成する] ウィンドウ](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>例 2:例 2: レガシ認証を使用してアクセスしているユーザーのアクセス レビュー
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>例 2: レガシ認証を使用してアクセスしているユーザーのアクセス レビュー
 
 レガシ認証と古いバージョンのクライアントを使用しているユーザーのアクセスをブロックする条件付きアクセス ポリシーがあり、ポリシーから除外されているグループが含まれているとします。 次に示す推奨されるアクセス レビューでは、グループのメンバーがレビューされます。
 
@@ -144,7 +144,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
     ![例 2 の [アクセス レビューを作成する] ウィンドウ](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合、Microsoft Graph のベータ版エンドポイントの API では、それらをプログラムによって作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](/graph/api/resources/accessreviews-root?view=graph-rest-beta)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
+>多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合、Microsoft Graph のベータ版エンドポイントの API では、それらをプログラムによって作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
 
 ## <a name="access-review-results-and-audit-logs"></a>アクセス レビューの結果と監査ログ
 
@@ -158,7 +158,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
 
     ![承認されたユーザーを示すアクセス レビューの結果](./media/conditional-access-exclusion/access-reviews-results.png)
 
-4. 次に、 **[監査ログ]** をクリックして、このレビュー中に実行されたアクションを確認します。
+4. 次に、**[監査ログ]** をクリックして、このレビュー中に実行されたアクションを確認します。
 
     ![アクションの一覧を示すアクセス レビューの監査ログ](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 

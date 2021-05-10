@@ -2,13 +2,13 @@
 title: Azure Event Grid - トラブルシューティング ガイド
 description: この記事では、エラー コード、エラー メッセージ、説明、および推奨されるアクションの一覧を示します。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/09/2021
+ms.openlocfilehash: 4647039f67cf84a5471dc7b3f38ca754ca9eecb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94592993"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310871"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>Azure Event Grid エラーのトラブルシューティング
 このトラブルシューティング ガイドでは、次の情報を提供します。 
@@ -30,7 +30,7 @@ ms.locfileid: "94592993"
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode.Conflict <br/>409 | 指定された名前のサービスは既に存在します。 Choose a different topic name. (別のトピック名を選択してください。)   | 適切な発行操作を確実に行うには、カスタム トピック名は 1 つの Azure リージョン内で一意である必要があります。 Azure リージョンが異なれば同じ名前を使用できます。 | トピックに対して別の名前を選択してください。 |
 | HttpStatusCode.Conflict <br/> 409 | Domain with the specified already exists. (指定された名前のドメインは既に存在します。) Choose a different domain name. (別のドメイン名を選択してください。) | 適切な発行操作を確実に行うには、ドメイン名は 1 つの Azure リージョン内で一意である必要があります。 Azure リージョンが異なれば同じ名前を使用できます。 | ドメインに対して別の名前を選択してください。 |
-| HttpStatusCode.Conflict<br/>409 | Quota limit reached. (クォータの制限値に達しました。) 詳細については、[Azure Event Grid の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)に関するページを参照してください。  | 各 Azure サブスクリプションには、使用できる Azure Event Grid リソースの数に制限があります。 このクォータの一部またはすべてが超過したため、それ以上リソースを作成できませんでした。 |    現在のリソースの使用状況を確認し、不要なリソースを削除します。 そのうえでクォータを増やす必要がある場合は、必要なリソースの正確な値を記載したメールを [aeg@microsoft.com](mailto:aeg@microsoft.com) までお送りください。 |
+| HttpStatusCode.Conflict<br/>409 | Quota limit reached. (クォータの制限値に達しました。) 詳細については、[Azure Event Grid の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)に関するページを参照してください。  | 各 Azure サブスクリプションには、使用できる Azure Event Grid リソースの数に制限があります。 このクォータの一部またはすべてが超過したため、それ以上リソースを作成できませんでした。 | 現在のリソースの使用状況を確認し、不要なリソースを削除します。 リソースを削除できない場合は、別の Azure サブスクリプションを作成し、そのサブスクリプションに Event Grid リソースを作成します。 |
 
 ## <a name="error-code-403"></a>エラー コード:403
 

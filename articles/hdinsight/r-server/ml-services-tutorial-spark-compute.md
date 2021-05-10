@@ -1,18 +1,18 @@
 ---
-title: チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
+title: 'チュートリアル: Azure HDInsight の Spark コンピューティング コンテキストで R を使用する'
 description: チュートリアル - Azure HDInsight Machine Learning service クラスター上で R と Spark の使用を開始します。
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 07c004fa5f03c53ed0778613a0c16a0ba2aff11f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935659"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869499"
 ---
-# <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
+# <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル: Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
 
 このチュートリアルでは、Azure HDInsight Machine Learning service クラスター上で実行される Apache Spark 内で R 関数を使用する方法をステップバイステップで説明します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "98935659"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure HDInsight Machine Learning service クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに移動し、 **[クラスターの種類]** に対して **[ML Services]** を選択します。
+* Azure HDInsight Machine Learning service クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに移動し、**[クラスターの種類]** に対して **[ML Services]** を選択します。
 
 ## <a name="connect-to-rstudio-server"></a>RStudio Server に接続する
 
@@ -56,7 +56,7 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 1. 右側のウィンドウで **[環境]** タブを選択します。変数は **[値]** の下に表示されます。
 
-    ![HDInsight R Studio の Web コンソール](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
+    :::image type="content" source="./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png" alt-text="HDInsight R Studio の Web コンソール" border="true":::
 
 1. ローカル ディレクトリを作成し、サンプル データをダウンロードします。 RStudio に次のコードを入力します。
 
@@ -157,7 +157,7 @@ rxHadoopListFiles(airDataDir)
 
 Spark コンピューティング コンテキストでは、次の関数を使用してデータ ソースを作成できます。
 
-|Function | 説明 |
+|機能 | 説明 |
 |---------|-------------|
 |`RxTextData` | コンマ区切りのテキスト データ ソース。 |
 |`RxXdfData` | XDF データ ファイル形式のデータ。 RevoScaleR では、1 つのファイルではなく、ファイルの複合セットにデータを格納するために、XDF ファイル形式が Hadoop 用に変更されます。 |
@@ -222,14 +222,14 @@ rxSetComputeContext(mySparkCluster)
     Coefficients:
                    Estimate Std. Error t value Pr(>|t|)     | Counts
     DayOfWeek=Mon   3.54210    0.03736   94.80 2.22e-16 *** | 901592
-    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 **_ | 855805
-    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 _*_ | 868505
-    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 _*_ | 891674
-    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 _*_ | 896495
-    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 _*_ | 732944
-    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 _*_ | 858366
+    DayOfWeek=Tues  1.80696    0.03835   47.12 2.22e-16 *** | 855805
+    DayOfWeek=Wed   2.19424    0.03807   57.64 2.22e-16 *** | 868505
+    DayOfWeek=Thur  4.65502    0.03757  123.90 2.22e-16 *** | 891674
+    DayOfWeek=Fri   5.64402    0.03747  150.62 2.22e-16 *** | 896495
+    DayOfWeek=Sat   0.91008    0.04144   21.96 2.22e-16 *** | 732944
+    DayOfWeek=Sun   2.82780    0.03829   73.84 2.22e-16 *** | 858366
     ---
-    Signif. codes:  0 ‘_*_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
     Residual standard error: 35.48 on 6005374 degrees of freedom
     Multiple R-squared: 0.001827 (as if intercept included)
@@ -328,7 +328,7 @@ rxDataStep(inData=airDataXdf, outFile=airDataCsvRowsDS)
 
 `RxSpark` コンピューティング コンテキストを使用している場合、`createFileSet` は既定で `TRUE` になり、`rowsPerOutFile` は効果がありません。 そのため、単一の CSV を作成したり、ファイルごとの行数をカスタマイズしたりする場合は、`local` コンピューティング コンテキスト内で `rxDataStep` を実行します (その場合でもデータは HDFS 内に置くことができます)。
 
-## <a name="final-steps"></a>最終手順
+## <a name="final-steps"></a>最終ステップ
 
 1. データをクリーンアップします。 RStudio に次のコードを入力します。
 

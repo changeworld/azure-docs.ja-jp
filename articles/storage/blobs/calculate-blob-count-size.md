@@ -2,18 +2,18 @@
 title: Azure Storage インベントリを使用して BLOB の数とサイズを計算する
 description: コンテナーごとの BLOB の数と合計サイズを計算する方法について説明します。
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 92e5b00cd655677cdc3096bc2142dfe1b704adf2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e752d40ce2f237c2ab08bac2e71133cd06ec40e4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102637067"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277183"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Azure Storage インベントリを使用してコンテナーあたりの BLOB の数と合計サイズを計算する
 
@@ -43,7 +43,7 @@ ms.locfileid: "102637067"
 
 ## <a name="create-an-azure-synapse-workspace"></a>Azure Synapse ワークスペースを作成する
 
-次に SQL クエリを実行してインベントリ結果を報告するための [Azure Synapse ワークスペースを作成](/azure/synapse-analytics/get-started-create-workspace)します。
+次に SQL クエリを実行してインベントリ結果を報告するための [Azure Synapse ワークスペースを作成](../../synapse-analytics/get-started-create-workspace.md)します。
 
 ## <a name="create-the-sql-query"></a>SQL クエリを作成する
 
@@ -58,7 +58,7 @@ Azure Synapse ワークスペースを作成したら、次の手順を行いま
 
 ## <a name="run-the-sql-query"></a>SQL クエリを実行する
 
-1. 次の SQL クエリを Azure Synapse ワークスペースに追加して[インベントリ CSV ファイルを読み取ります](/azure/synapse-analytics/sql/query-single-csv-file#read-a-csv-file)。
+1. 次の SQL クエリを Azure Synapse ワークスペースに追加して[インベントリ CSV ファイルを読み取ります](../../synapse-analytics/sql/query-single-csv-file.md#read-a-csv-file)。
 
     `bulk` パラメーターには、分析するインベントリ レポート CSV ファイルの URL を使用します。
 

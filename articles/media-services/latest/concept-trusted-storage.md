@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: fd92eed127ec50a3d3a86f667d9aa764b79c190a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87f52bef07644370c268168c984a452d5ae3f9bd
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585400"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279461"
 ---
 # <a name="trusted-storage-for-media-services"></a>Media Services 用の信頼されたストレージ
 
@@ -29,7 +29,7 @@ Media Services アカウントを作成するときは、それをストレー�
 
 ## <a name="tutorial"></a>チュートリアル
 
-信頼されたストレージを有効化する方法の詳細については、「[Media Services の信頼されたストレージ](tutorial-trusted-storage-rest.md)」のチュートリアルを参照してください。
+信頼されたストレージを有効化する方法の詳細については、「[Media Services の信頼されたストレージ](security-trusted-storage-rest-tutorial.md)」のチュートリアルを参照してください。
 
 > [!NOTE]
 > Media Services でストレージ アカウントに対する読み取りと書きを行えるようにするには、AMS マネージド ID ストレージ BLOB データ共同作成者アクセスを許可する必要があります。  汎用的な共同作成者ロールを付与してもうまくいきません。データ プレーンに対する適切なアクセス許可を有効にすることができないからです。

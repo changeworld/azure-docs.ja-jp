@@ -4,10 +4,10 @@ description: Azure のロールベースのアクセス制御 (Azure RBAC) と I
 ms.topic: article
 ms.date: 10/14/2020
 ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92207956"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
@@ -44,7 +44,7 @@ CI/CD ソリューションから `docker build` コマンドを自動化する�
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 拡張機能
 
-Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure コンテナー レジストリの一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
+Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)などのツールでは、使用可能な Azure Container Registry の一覧を取得するために、追加のリソース プロバイダー アクセスが必要です。 この場合は、**閲覧者** または **共同作成者** ロールへのアクセスをユーザーに提供します。 これらのロールでは、`docker pull`、`docker push`、`az acr list`、`az acr build`、およびその他の機能が許可されます。 
 
 ## <a name="access-resource-manager"></a>Resource Manager へのアクセス
 
@@ -52,7 +52,7 @@ Azure portal と [Azure CLI](/cli/azure/) によるレジストリ管理には�
 
 ## <a name="create-and-delete-registry"></a>レジストリの作成と削除
 
-Azure コンテナー レジストリを作成および削除する権限です。
+Azure Container Registry を作成および削除する権限です。
 
 ## <a name="push-image"></a>イメージのプッシュ
 

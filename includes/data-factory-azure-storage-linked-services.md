@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96001740"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
@@ -16,7 +16,7 @@ ms.locfileid: "96001740"
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティを **AzureStorage** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
 ストレージアカウントのアクセスキーを取得する方法については、「[ストレージアカウントのアクセスキーを管理する](../articles/storage/common/storage-account-keys-manage.md)」 を参照してください。
@@ -49,7 +49,7 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティを **AzureStorageSas** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。  |はい |
 
 **例:**

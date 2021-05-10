@@ -2,14 +2,14 @@
 title: Azure Batch プール内のコンピューティング ノードの自動スケール
 description: クラウド プールで自動スケールを有効にして、プール内のコンピューティング ノードの数を動的に調整します。
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 04/13/2021
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 06f717e7c3ab8285b494f89c39838af6b0d96c8f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f70c29f0e8a313233991c7363dc4b8a41a1b1cd5
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381428"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389368"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch プール内のコンピューティング ノードをスケーリングするための自動式を作成する
 
@@ -419,7 +419,13 @@ $NodeDeallocationOption = taskcompletion;
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
                     poolId: "mypool",
                     virtualMachineSize: "standard_d1_v2",
-                    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
+                    VirtualMachineConfiguration: new VirtualMachineConfiguration(
+                        imageReference: new ImageReference(
+                                            publisher: "MicrosoftWindowsServer",
+                                            offer: "WindowsServer",
+                                            sku: "2019-datacenter-core",
+                                            version: "latest"),
+                        nodeAgentSkuId: "batch.node.windows amd64");
 pool.AutoScaleEnabled = true;
 pool.AutoScaleFormula = "$TargetDedicatedNodes = (time().weekday == 1 ? 5:1);";
 pool.AutoScaleEvaluationInterval = TimeSpan.FromMinutes(30);

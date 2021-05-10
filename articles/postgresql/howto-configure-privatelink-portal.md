@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 23b9774f28f915596abafbd8c1f6c38fc4f55748
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75defcf88128e1b100e403d74f76577525f0bdeb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995286"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642124"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "95995286"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> プライベート リンク機能は、汎用またはメモリ最適化のいずれかの価格レベルの Azure Database for PostgreSQL サーバーでのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
+> プライベート リンク機能は、汎用またはメモリ最適化のいずれかの価格レベルの Azure Database for PostgreSQL サーバーでのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれかであることを確認します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。
@@ -222,7 +222,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Address:  10.1.3.4
     ```
 
-3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) を使用して操作を行いました。
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では、[Azure Data Studio](/sql/azure-data-studio/download) を使用して操作を行いました。
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 

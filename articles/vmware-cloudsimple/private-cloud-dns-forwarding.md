@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899203"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>CloudSimple プライベート クラウドの DNS サーバーからオンプレミスのリソースの DNS 参照を DNS サーバーに転送できるようにする
@@ -43,11 +43,11 @@ DNS 転送を機能させるには、この接続でファイアウォール ポ
 
 プライベート クラウドからオンプレミスへの DNS 転送を有効にするには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を送信し、次の情報を提供します。
 
-* 問題の種類:**テクニカル**
-* サブスクリプション:**CloudSimple サービスがデプロイされるサブスクリプション**
-* サービス:**VMware Solution by CloudSimple**
-* 問題の種類:**アドバイザリまたは操作方法...**
-* 問題のサブタイプ:**NW に関するヘルプが必要です**
+* 問題の種類: **技術**
+* サブスクリプション: **CloudSimple サービスがデプロイされるサブスクリプション**
+* サービス: **VMware Solution by CloudSimple**
+* 問題の種類: **アドバイザリまたは操作方法...**
+* 問題のサブタイプ: **NW に関するヘルプが必要です**
 * 詳細ウィンドウで、オンプレミス ドメインのドメイン名を指定します。
 * 詳細ウィンドウで、プライベート クラウドから参照を転送するオンプレミスの DNS サーバーの一覧を指定します。
 

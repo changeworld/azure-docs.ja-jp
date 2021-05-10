@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: f731e07de4936bc8de396c4f9bcd3a52913cb502
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 38a29aa765bde4adb390423a9d180132b57d4fee
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99616590"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104582766"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -42,7 +42,7 @@ DeviceClient.CreateFromConnectionString(
 
 ## <a name="implement-telemetry-properties-and-commands"></a>テレメトリ、プロパティ、およびコマンドを実装する
 
-[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-pnp/concepts-components.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスはこのセクションで説明されている規則に従う必要があります。
+[IoT プラグ アンド プレイ モデルのコンポーネントの概要](../articles/iot-pnp/concepts-modeling-guide.md)に関するページで説明されているように、デバイス ビルダーは、コンポーネントを使用してデバイスを記述するかどうかを決定する必要があります。 コンポーネントを使用する場合、デバイスはこのセクションで説明されている規則に従う必要があります。
 
 ### <a name="telemetry"></a>テレメトリ
 

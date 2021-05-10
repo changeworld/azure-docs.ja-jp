@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fa92002cfef070218902aa7919900dde9fe5a9b5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102505411"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
@@ -24,12 +24,12 @@ ms.locfileid: "102505411"
 このチュートリアルでは、[App Service Environment v1](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。 
 
 > [!NOTE]
-> Web アプリを作成する方法を知りたいが、App Service Environment で行う必要はない場合は、「[.NET web アプリを作成する](../quickstart-dotnetcore.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
+> Web アプリを作成する方法を知りたいが、 App Service Environment で行う必要はない場合は、「[.NET web アプリを作成する](../quickstart-dotnetcore.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 > 
 > 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルは、App Service Environment が作成済みであることを前提としています。 まだ完了していない場合は、「[App Service Environment を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
+このチュートリアルは、 App Service Environment が作成済みであることを前提としています。 まだ完了していない場合は、「[App Service Environment を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
@@ -37,7 +37,7 @@ ms.locfileid: "102505411"
     ![Azure portal で Web アプリを作成する場所を示すスクリーンショット。][1]
 2. サブスクリプションを選択します。  
    
-    サブスクリプションを複数保有している場合、App Service Environment でアプリを作成するには、App Service Environment を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
+    サブスクリプションを複数保有している場合、 App Service Environment でアプリを作成するには、 App Service Environment を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
     *リソース グループ* を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に *Azure のロールベースのアクセス制御 (Azure RBAC)* 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
@@ -58,9 +58,9 @@ ms.locfileid: "102505411"
     ASE の作成時に ASP を選択すると、 **[名前]** の下のサブドメインが更新されます。
 
 ## <a name="create-an-app-service-plan"></a><a name="createplan"></a> App Service プランを作成する
-App Service Environment に App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。  使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンスの総数よりも多くのワーカーを ASE ワーカー プールに割り当てておく必要があります。  プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
+App Service Environmentに App Service プランを作成する場合、ASE には共有ワーカーがないため、ワーカーの選択肢が異なります。  使用する必要があるワーカーは、管理者によって ASE に割り当てられたワーカーです。つまり、新しいプランを作成するには、ASE ワーカー プールに既に存在しているすべてのプランのインスタンスの総数よりも多くのワーカーを ASE ワーカー プールに割り当てておく必要があります。  プランを作成するのに十分なワーカーが ASE ワーカー プールにない場合は、ASE の管理者に依頼してワーカーを追加してもらう必要があります。
 
-App Service Environment でホストされる App Service プランに関するもう 1 つの違いは、価格の選択肢がないことです。  App Service Environment を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、その環境内のプランに対する追加料金はありません。  通常、App Service プランを作成する際に、価格プランを選択します。これに基づいて、支払い価格が決定されます。  App Service Environment は、基本的に、コンテンツを作成できるプライベートな場所です。  支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。
+App Service Environment でホストされる App Service プランに関するもう 1 つの違いは、価格の選択肢がないことです。 App Service Environment を利用する場合、システムによって使用されるコンピューティング リソースについて料金を支払い、その環境内のプランに対する追加料金はありません。  通常、App Service プランを作成する際に、価格プランを選択します。これに基づいて、支払い価格が決定されます。  App Service Environment は、基本的に、コンテンツを作成できるプライベートな場所です。  支払いは環境に対するもので、コンテンツをホストする操作を対象にしたものではありません。
 
 次の手順は、チュートリアルの前のセクションで説明した、Web アプリの作成時に App Service プランを作成する方法を示しています。
 
@@ -78,7 +78,7 @@ App Service Environment でホストされる App Service プランに関する�
 ### <a name="selecting-a-worker-pool"></a>ワーカー プールの選択
 Azure App Service 内の App Service Environment 以外の通常の操作では、3 つのコンピューティング サイズが専用の価格プランで選択できるようになっています。  これと似た方法として、ASE では、ワーカーのプールを 3 つまで定義し、そのワーカー プールで使用するコンピューティング サイズを指定できます。  ASE のテナントから見れば、App Service プランの価格プランとコンピューティング サイズを選択する代わりに、 *ワーカー プール* と呼ばれるものを選択することになります。  
 
-ワーカー プールの選択 UI では、そのワーカー プールに使用されるコンピューティング サイズがその名の下に表示されます。  "使用可能" な数は、そのプールで使用できるコンピューティング インスタンスの数を示します。  プール全体ではこの数を超えるインスタンスが実際に含まれている可能性がありますが、この値は単に使用されていないインスタンスの数を表します。  App Service Environment を調整してコンピューティング リソースを追加する必要がある場合は、「[App Service Environment の構成](app-service-web-configure-an-app-service-environment.md)」を参照してください。
+ワーカー プールの選択 UI では、そのワーカー プールに使用されるコンピューティング サイズがその名の下に表示されます。  "使用可能" な数は、そのプールで使用できるコンピューティング インスタンスの数を示します。  プール全体ではこの数を超えるインスタンスが実際に含まれている可能性がありますが、この値は単に使用されていないインスタンスの数を表します。 App Service Environment を調整してコンピューティング リソースを追加する必要がある場合は、「 [App Service Environment の構成](app-service-web-configure-an-app-service-environment.md)」を参照してください。
 
 ![ASE のワーカー プールを選択できる [ワーカー プール] ウィンドウを示すスクリーンショット。][4]
 
@@ -87,9 +87,9 @@ Azure App Service 内の App Service Environment 以外の通常の操作では�
 ## <a name="after-web-app-creation"></a>Web アプリを作成した後
 ASE での Web アプリの実行と App Service プランの管理に関して、いくつかの点を考慮する必要があります。  
 
-既に説明したように、ASE の所有者は、システムのサイズに責任を持つため、目的の App Service プランをホストするのに十分な容量があることも保証する必要があります。 利用可能なワーカーがない場合は、App Service プランを作成できません。  これは、Web アプリをスケールアップする場合も同じです。  より多くのインスタンスが必要な場合は、App Service Environment の管理者に依頼してワーカーを追加してもらう必要があります。
+既に説明したように、ASE の所有者は、システムのサイズに責任を持つため、目的の App Service プランをホストするのに十分な容量があることも保証する必要があります。 利用可能なワーカーがない場合は、App Service プランを作成できません。  これは、Web アプリをスケールアップする場合も同じです。  より多くのインスタンスが必要な場合は、 App Service Environment の管理者に依頼してワーカーを追加してもらう必要があります。
 
-Web アプリと App Service プランを作成した後は、これをスケールアップすることをお勧めします。  ASE では、アプリのフォールト トレランスを提供するために、常に App Service プランのインスタンスが 2 つ以上必要です。  ASE での App Service プランのスケーリングは、App Service プラン用 UI を使用して通常行うのと同じです。  スケーリングの詳細については、「[App Service Environment 内で Web アプリをスケーリングする方法](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+Web アプリと App Service プランを作成した後は、これをスケールアップすることをお勧めします。  ASE では、アプリのフォールト トレランスを提供するために、常に App Service プランのインスタンスが 2 つ以上必要です。  ASE での App Service プランのスケーリングは、App Service プラン用 UI を使用して通常行うのと同じです。  スケーリングの詳細については、「 [App Service Environment 内で Web アプリをスケーリングする方法](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png

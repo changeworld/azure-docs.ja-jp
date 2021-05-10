@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 4dc29c8b52a3d0953445666672a716af013ee408
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4eea2611997732a263e9e824bc150b45ed145ecd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176435"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738974"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>セキュリティ ポリシー、イニシアチブ、および推奨事項とは
 
@@ -35,7 +35,7 @@ Azure イニシアチブは、特定の目標や目的を実現するために�
 
 Security Center のイニシアチブは、セキュリティ ポリシーと同じく Azure Policy で作成されます。 [Azure Policy](../governance/policy/overview.md) を使用すると、ポリシーを管理し、イニシアチブを構築し、複数のサブスクリプションまたは管理グループ全体に対してイニシアチブを割り当てることができます。
 
-Azure Security Center のすべてのサブスクリプションに自動的に割り当てられる既定のイニシアチブを Azure セキュリティ ベンチマークと呼びます。 このベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。 詳細については、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)に関する記事を参照してください。
+Azure Security Center のすべてのサブスクリプションに自動的に割り当てられる既定のイニシアチブを Azure セキュリティ ベンチマークと呼びます。 このベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。 詳細については、[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)に関する記事を参照してください。
 
 Security Center では、セキュリティのイニシアチブとポリシーを操作するための次のオプションが提供されます。
 

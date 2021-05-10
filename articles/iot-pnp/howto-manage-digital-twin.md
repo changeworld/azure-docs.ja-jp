@@ -3,16 +3,16 @@ title: IoT プラグ アンド プレイのデジタル ツインを管理する
 description: デジタル ツイン API を使用して IoT プラグ アンド プレイ デバイスを管理する方法
 author: prashmo
 ms.author: prashmo
-ms.date: 07/20/2020
+ms.date: 12/17/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e68003878dc0e9275461100a59e0f45486c2978f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97654610"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739874"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT プラグ アンド プレイのデジタル ツインを管理する
 

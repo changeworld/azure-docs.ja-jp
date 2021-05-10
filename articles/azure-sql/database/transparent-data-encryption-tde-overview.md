@@ -8,23 +8,23 @@ ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=3
 ms.devlang: ''
 ms.topic: conceptual
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 8fbbd7a2aabc9de417f1eefd2513edba3119bfc0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 160066f9599388256c7c821732a1e06fec49bdf5
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92791394"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749044"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance および Azure Synapse Analytics の透過的なデータ暗号化
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は、保存データを暗号化することによって、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics を悪意のあるオフライン アクティビティの脅威から保護するために役立ちます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 新しくデプロイされるすべての SQL Database では、TDE は既定で有効になっています。Azure SQL Database や Azure SQL Managed Instance の古いデータベースでは手動で有効にする必要があります。 Azure Synapse Analytics には、TDE を手動で有効にする必要があります。
 
-TDE では、ページ レベルでデータのリアルタイム I/O 暗号化と暗号化解除が実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 TDE では、データベース暗号化キー (DEK) という対称キーを使用してデータベース全体のストレージが暗号化されます。 データベースの起動時に、DEK の暗号化は解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化を行うために使用されます。 DEK は TDE 保護機能によって保護されます。 TDE 保護機能は、サービスによって管理される証明書 (サービスによって管理される透過的なデータ暗号化) または [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md) に格納される非対称キー (顧客によって管理される透過的なデータ暗号化) のどちらかです。
+TDE では、ページ レベルでデータのリアルタイム I/O 暗号化と暗号化解除が実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 TDE では、データベース暗号化キー (DEK) という対称キーを使用してデータベース全体のストレージが暗号化されます。 データベースの起動時に、DEK の暗号化は解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化を行うために使用されます。 DEK は TDE 保護機能によって保護されます。 TDE 保護機能は、サービスによって管理される証明書 (サービスによって管理される透過的なデータ暗号化) または [Azure Key Vault](../../key-vault/general/security-overview.md) に格納される非対称キー (顧客によって管理される透過的なデータ暗号化) のどちらかです。
 
 Azure SQL Database と Azure Synapse の場合、TDE 保護機能は[サーバー](logical-servers.md) レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 *サーバー* という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
@@ -156,4 +156,4 @@ Azure SQL Database と Azure Synapse には次の一連のコマンドを使用�
 - TDE の概要については、「[透過的なデータ暗号化](/sql/relational-databases/security/encryption/transparent-data-encryption)」をご覧ください。
 - Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse に対する BYOK のサポートによる TDE の詳細については、[Bring Your Own Key のサポートによる透過的なデータ暗号化](transparent-data-encryption-byok-overview.md)に関する記事をご覧ください。
 - Bring Your Own Key のサポートによる TDE の使用を開始するには、[Key Vault の自分のキーを使用して透過的なデータ暗号化をオンにする](transparent-data-encryption-byok-configure.md)方法のガイドを参照してください。
-- Key Vault の詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../../key-vault/general/secure-your-key-vault.md)」を参照してください。
+- Key Vault の詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../../key-vault/general/security-overview.md)」を参照してください。

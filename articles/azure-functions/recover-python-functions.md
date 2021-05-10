@@ -6,19 +6,21 @@ ms.topic: article
 ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56da006dc5a0eef46d5b13984983ca680359b968
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87846039"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168095"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Azure Functions での Python エラーのトラブルシューティング
 
 Python 関数の一般的な問題に関するトラブルシューティング ガイドの一覧を次に示します。
 
 * [ModuleNotFoundError および ImportError](#troubleshoot-modulenotfounderror)
-* ["cygrpc" をインポートできない](#troubleshoot-cannot-import-cygrpc)
+* ['cygrpc' をインポートできない](#troubleshoot-cannot-import-cygrpc)
+* [Python がコード 137 で終了した](#troubleshoot-python-exited-with-code-137)
+* [Python がコード 139 で終了した](#troubleshoot-python-exited-with-code-139)
 
 ## <a name="troubleshoot-modulenotfounderror"></a>ModuleNotFoundError のトラブルシューティング
 
@@ -26,22 +28,22 @@ Python 関数の一般的な問題に関するトラブルシューティング 
 
 > `Exception: ModuleNotFoundError: No module named 'module_name'.`
 
-このエラーの問題は、Python Function App で Python モジュールの読み込みに失敗した場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
+このエラーは、Python 関数アプリで Python モジュールの読み込みに失敗した場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
 
-- [パッケージが見つからない](#the-package-cant-be-found)
-- [パッケージが適切な Linux ホイールで解決されない](#the-package-isnt-resolved-with-proper-linux-wheel)
-- [パッケージが Python インタープリター バージョンと互換性がない](#the-package-is-incompatible-with-the-python-interpreter-version)
-- [パッケージが他のパッケージと競合している](#the-package-conflicts-with-other-packages)
-- [パッケージで、Windows または macOS プラットフォームのみがサポートされている](#the-package-only-supports-windows-or-macos-platforms)
+* [パッケージが見つからない](#the-package-cant-be-found)
+* [パッケージが適切な Linux ホイールで解決されない](#the-package-isnt-resolved-with-proper-linux-wheel)
+* [パッケージが Python インタープリター バージョンと互換性がない](#the-package-is-incompatible-with-the-python-interpreter-version)
+* [パッケージが他のパッケージと競合している](#the-package-conflicts-with-other-packages)
+* [パッケージで、Windows または macOS プラットフォームのみがサポートされている](#the-package-only-supports-windows-or-macos-platforms)
 
 ### <a name="view-project-files"></a>プロジェクト ファイルを表示する
 
 問題の実際の原因を特定するには、Function App で実行される Python プロジェクト ファイルを取得する必要があります。 ローカル コンピューターにプロジェクト ファイルがない場合は、次のいずれかの方法で取得できます。
 
-- Function App のアプリ設定が `WEBSITE_RUN_FROM_PACKAGE` で、その値が URL の場合は、URL をコピーしてブラウザーに貼り付け、ファイルをダウンロードします。
-- Function App に `WEBSITE_RUN_FROM_PACKAGE` があり、それが `1` に設定されている場合は、`https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` に移動し、最新の `href` URL からファイルをダウンロードします。
-- Function App に前述のアプリ設定がない場合は、`https://<app-name>.scm.azurewebsites.net/api/settings` に移動し、`SCM_RUN_FROM_PACKAGE` の下の URL を見つけます。 URL をコピーし、ブラウザーに貼り付けて、ファイルをダウンロードします。
-- これらのいずれもうまくいかない場合は、`https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動し、`/home/site/wwwroot` の下のコンテンツを表示します。
+* Function App のアプリ設定が `WEBSITE_RUN_FROM_PACKAGE` で、その値が URL の場合は、URL をコピーしてブラウザーに貼り付け、ファイルをダウンロードします。
+* Function App に `WEBSITE_RUN_FROM_PACKAGE` があり、それが `1` に設定されている場合は、`https://<app-name>.scm.azurewebsites.net/api/vfs/data/SitePackages` に移動し、最新の `href` URL からファイルをダウンロードします。
+* Function App に前述のアプリ設定がない場合は、`https://<app-name>.scm.azurewebsites.net/api/settings` に移動し、`SCM_RUN_FROM_PACKAGE` の下の URL を見つけます。 URL をコピーし、ブラウザーに貼り付けて、ファイルをダウンロードします。
+* これらのいずれもうまくいかない場合は、`https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動し、`/home/site/wwwroot` の下のコンテンツを表示します。
 
 この記事の残りの部分は、Function App のコンテンツを検査し、根本原因を特定し、特定の問題を解決することによって、このエラーの考えられる原因をトラブルシューティングするのに役立ちます。
 
@@ -150,7 +152,7 @@ you must uninstall azure-storage first.</pre>
 
 > `Cannot import name 'cygrpc' from 'grpc._cython'`
 
-このエラーは、Python Function App で適切な Python インタープリターの使用を開始できない場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
+このエラーは、Python 関数アプリで適切な Python インタープリターの使用を開始できない場合に発生します。 このエラーの根本原因は、次の問題のいずれかです。
 
 - [Python インタープリターが OS アーキテクチャに一致しない](#the-python-interpreter-mismatches-os-architecture)
 - [Python インタープリターが Azure Functions の Python Worker でサポートされない](#the-python-interpreter-is-not-supported-by-azure-functions-python-worker)
@@ -177,6 +179,42 @@ Azure Functions の Python Worker では、Python 3.6、3.7、3.8 のみがサ�
 Windows の場合は `py --version`、または Unix 系システムの場合は `python3 --version` で、Python インタープリターが想定されているバージョンと一致しているかどうかを確認してください。 返された結果が Python 3.6.x、Python 3.7.x、または Python 3.8.x であることを確認します。
 
 Python インタープリターが想定されているバージョンでない場合は、[Python Software Foundation](https://python.org/downloads/release) から Python 3.6、3.7、または 3.8 インタープリターをダウンロードしてください。
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-137"></a>Python がコード 137 で終了した場合のトラブルシューティング
+
+コード 137 エラーは、通常、Python 関数アプリのメモリ不足の問題が原因で発生します。 その結果、次の Azure Functions エラー メッセージが表示されます。
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 137`
+
+このエラーは、Python 関数アプリが、SIGKILL シグナルでオペレーティング システムによって強制的に終了された場合に発生します。 このシグナルは、通常、Python プロセスでのメモリ不足エラーを示します。 Azure Functions プラットフォームには[サービス制限](functions-scale.md#service-limits)があり、この制限を超えた関数アプリは終了されます。
+
+関数アプリのメモリのボトルネックを分析するには、[Python 関数のメモリ プロファイル](python-memory-profiler-reference.md#memory-profiling-process)のチュートリアル セクションを参照してください。
+
+---
+
+## <a name="troubleshoot-python-exited-with-code-139"></a>Python がコード 139 で終了した場合のトラブルシューティング
+
+このセクションは、Python 関数アプリでのセグメント化の失敗に関するエラーのトラブルシューティングに役立ちます。 これらのエラーでは、通常、次のような Azure Functions エラー メッセージが示されます。
+
+> `Microsoft.Azure.WebJobs.Script.Workers.WorkerProcessExitException : python exited with code 139`
+
+このエラーは、Python 関数アプリが、SIGSEGV シグナルでオペレーティング システムによって強制的に終了された場合に発生します。 このシグナルは、メモリ セグメント化違反を示します。これは、制限されたメモリ領域での予期しない読み取りまたは書き込みによって発生する可能性があります。 以下のセクションでは、一般的な根本原因の一覧を示します。
+
+### <a name="a-regression-from-third-party-packages"></a>サードパーティのパッケージからの回帰
+
+関数アプリの requirements.txt では、固定されていないパッケージは、すべての Azure Functions デプロイで最新バージョンにアップグレードされます。 これらのパッケージのベンダーが、最新のリリースで回帰を導入する場合があります。 この問題から復旧するには、import ステートメントをコメントアウトするか、パッケージ参照を無効にするか、requirements.txt でパッケージを以前のバージョンに固定してみてください。
+
+### <a name="unpickling-from-a-malformed-pkl-file"></a>形式に誤りがある .pkl ファイルからの Unpickle
+
+お使いの関数アプリで Python pickel ライブラリを使用して .pkl ファイルから Python オブジェクトを読み込んでいる場合、その .pkl に形式に誤りがあるバイト文字列、または無効なアドレス参照が含まれている可能性があります。 この問題から復旧するには、pickle.load() 関数をコメントアウトしてみてください。
+
+### <a name="pyodbc-connection-collision"></a>pyodbc 接続の競合
+
+お使いの関数アプリで一般的な ODBC データベース ドライバー [pyodbc](https://github.com/mkleehammer/pyodbc) を使用している場合、1 つの関数アプリ内で複数の接続が開かれている可能性があります。 この問題を回避するには、シングルトン パターンを使用し、関数アプリ全体で使用されている pyodbc 接続が 1 つだけであることを確認してください。
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

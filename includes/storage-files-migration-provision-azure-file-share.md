@@ -1,18 +1,19 @@
 ---
-title: Azure ファイル共有のプロビジョニングに関する考慮事項
-description: Azure File Sync で使用するために Azure ファイル共有をプロビジョニングします。移行ドキュメント間で共有する一般的なテキスト ブロック。
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: include
 ms.date: 2/20/2020
 ms.author: fauhse
-ms.subservice: files
-ms.openlocfilehash: d48baba5ee60a2bf5a4cb5e4d1ce840fce8eec43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file
+ms.openlocfilehash: c003e765574d764b6653823e8554d0718ea85e0e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82143555"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106081085"
 ---
 Azure ファイル共有は、Azure ストレージ アカウントのクラウドに格納されます。
 ここで、パフォーマンスに関する考慮事項には、もう 1 つのレベルがあります。
@@ -22,7 +23,7 @@ Azure ファイル共有は、Azure ストレージ アカウントのクラウ�
 ベスト プラクティスは、それぞれ 1 つのファイル共有を持つストレージ アカウントをデプロイすることです。
 アーカイブ共有をお持ちの場合、またはそれらの中での日々のアクティビティが少ないことが予想される場合、複数の Azure ファイル共有を同じストレージアカウントにプールすることができます。
 
-これらの考慮事項は、Azure File Sync よりも、(Azure VM 経由で) クラウドへの直接アクセスに適用される方が多くなります。これらの共有でのみ Azure File Sync を使用する場合は、いくつかを 1 つの Azure ストレージ アカウントにグループ化するのが適切です。
+これらの考慮事項は、Azure File Sync より、(Azure VM 経由での) クラウドへの直接アクセスの場合によりいっそう当てはまります。これらの共有でのみ Azure File Sync を使用する場合は、いくつかのものを 1 つの Azure ストレージ アカウントにグループ化するのが適切です。
 
 ご利用の共有のリストを作成した場合は、各共有を、それらが配置されるストレージ アカウントにマップする必要があります。
 

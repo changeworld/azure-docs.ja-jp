@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4abef9c848a32d9fa6a34eabe407c4d10f913797
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 23008d785c27b901f3487d3eddff7cb8e7529f6e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101643798"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600082"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -193,14 +193,14 @@ PingAccess が消費する access_token に、メール アドレスを含める
 
 ### <a name="use-of-claims-mapping-policy-optional"></a>要求のマッピング ポリシーの使用 (省略可能)
 
-AzureAD に存在しない属性に対する[要求のマッピング ポリシー (プレビュー)](../develop/active-directory-claims-mapping.md#claims-mapping-policy-properties)。 要求のマッピングでは、ADFS またはユーザー オブジェクトでサポートされるカスタム要求を追加することにより、古いオンプレミス アプリをクラウドに移行できます
+AzureAD に存在しない属性に対する[要求のマッピング ポリシー (プレビュー)](../develop/reference-claims-mapping-policy-type.md#claims-mapping-policy-properties)。 要求のマッピングでは、ADFS またはユーザー オブジェクトでサポートされるカスタム要求を追加することにより、古いオンプレミス アプリをクラウドに移行できます
 
-アプリケーションからカスタム要求を使用し、追加のフィールドを含めるには、[カスタム要求のマップ ポリシーも作成し、そのポリシーをアプリケーションに割り当てる](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)必要があります。
+アプリケーションからカスタム要求を使用し、追加のフィールドを含めるには、[カスタム要求のマップ ポリシーも作成し、そのポリシーをアプリケーションに割り当てる](../develop/active-directory-claims-mapping.md)必要があります。
 
 > [!NOTE]
 > カスタム要求を使用するには、カスタム ポリシーも定義し、アプリケーションに割り当てる必要があります。 このポリシーには、すべての必要なカスタム属性を含めます。
 >
-> PowerShell または Microsoft Graph から、ポリシーの定義と割り当てを行うことができます。 PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Add-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。 詳細については、「[要求のマッピング ポリシーの割り当て](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)」を参照してください。
+> PowerShell または Microsoft Graph から、ポリシーの定義と割り当てを行うことができます。 PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy` を使用してから、`Add-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。 詳細については、「[要求のマッピング ポリシーの割り当て](../develop/active-directory-claims-mapping.md)」を参照してください。
 
 例:
 ```powershell

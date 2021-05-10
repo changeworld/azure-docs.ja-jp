@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 2913869067ff138922ebb7ea1483a1132e360d29
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d91b62afacad31d78feb7d4743cd4050fcc1bd4e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100382397"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104581645"
 ---
 # <a name="scale-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスのスケーリング
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 Basic、Standard、または Premium のキャッシュについては、アプリケーションのニーズに合わせて、作成後にサイズや層を変更できます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -45,7 +45,7 @@ Azure Cache for Redis の [監視](cache-how-to-monitor.md)機能を使用して
   * **Standard** キャッシュから **Basic** キャッシュにスケールすることはできません。
 * **Basic** キャッシュから **Standard** キャッシュにスケールすることはできますが、同時にサイズを変更することはできません。 サイズを変更する必要がある場合、後続のスケーリング操作でサイズを変更できます。
 * **Basic** キャッシュから直接 **Premium** キャッシュにスケールすることはできません。 まず、1 回のスケーリング操作で **Basic** から **Standard** にスケーリングし、その後の操作で **Standard** から **Premium** にスケーリングします。
-* **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。
+* **C0 (250 MB)** サイズにそれより大きなサイズからスケールダウンすることはできません。 ただし、同じ価格帯の他のサイズにスケールダウンすることはできます。 たとえば、C5 Standard から C1 Standard にスケールダウンできます。
  
 キャッシュを新しい価格レベルにスケーリングするときに、 **[Azure Cache for Redis]** ブレードで状態が **[拡大中]** と表示されます。
 

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: d2394cba157a7049e3b63b09fda9e018f0a0b32f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0358f7a6591309ad9ffa7263cdee417647a8fa2b
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103013620"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108168"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
-> * [Version 3](../latest/dynamic-packaging-overview.md)
+> * [Version 3](../latest/encode-dynamic-packaging-concept.md)
 > * [Version 2](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]

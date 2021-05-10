@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: mqtt, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2047de2c1e61554ba96af8471905a22291861184
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91336787"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484576"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>デバイス ツインの使用 (Node.js)
 

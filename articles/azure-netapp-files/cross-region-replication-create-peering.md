@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95249939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104591012"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files のボリューム レプリケーションを作成する
 
@@ -67,7 +67,7 @@ ms.locfileid: "95249939"
     * 容量プール
     * Volume quota (ボリューム クォータ)
         > [!NOTE] 
-        > ボリューム クォータのサイズは、ソース ボリュームのものをミラーリングすることをお勧めします。
+        > 宛先ボリュームのボリューム クォータ (サイズ) は、ソース ボリュームのものをミラーリングする必要があります。 ソース ボリュームよりも小さいサイズを指定すると、宛先ボリュームのサイズが自動的にソース ボリュームのサイズに変更されます。 
     * 仮想ネットワーク 
     * Subnet
 

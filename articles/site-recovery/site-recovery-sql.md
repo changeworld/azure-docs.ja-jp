@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ab2eb8a43fc75eea61a03bc25b2b6afc850d30aa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96011950"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644404"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -34,9 +34,9 @@ SQL Server インスタンスを復旧するための BCDR テクノロジの選
 
 デプロイの種類 | BCDR テクノロジ | SQL Server の予測される RTO | SQL Server の予測される RPO |
 --- | --- | --- | ---
-Azure IaaS (サービスとしてのインフラストラクチャ) 仮想マシン (VM) 上またはオンプレミスの SQL Server。| [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | セカンダリ レプリカをプライマリにするためにかかる時間。 | セカンダリ レプリカへのレプリケーションは非同期であるため、一部のデータが失われます。
-Azure IaaS VM 上またはオンプレミスの SQL Server。| [フェールオーバー クラスタリング (Always On FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | ノード間でフェールオーバーするためにかかる時間。 | Always On FCI は共有ストレージを使用するため、ストレージ インスタンスの同じビューをフェールオーバー時に使用できます。
-Azure IaaS VM 上またはオンプレミスの SQL Server。| [データベース ミラーリング (高パフォーマンス モード)](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | サービスを強制するためにかかる時間。この場合、ミラー サーバーがウォーム スタンバイ サーバーとして使用されます。 | レプリケーションは非同期です。 ミラー データベースは、プリンシパル データベースよりやや遅れることがあります。 この遅れは通常、短時間です。 ただし、プリンシパルまたはミラー サーバーのシステムの負荷が高い場合は長くなることがあります。<br/><br/>ログ配布がデータベース ミラーリングの補足になる場合があります。 これは、非同期データベース ミラーリングの適切な代替手段になります。
+Azure IaaS (サービスとしてのインフラストラクチャ) 仮想マシン (VM) 上またはオンプレミスの SQL Server。| [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) | セカンダリ レプリカをプライマリにするためにかかる時間。 | セカンダリ レプリカへのレプリケーションは非同期であるため、一部のデータが失われます。
+Azure IaaS VM 上またはオンプレミスの SQL Server。| [フェールオーバー クラスタリング (Always On FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | ノード間でフェールオーバーするためにかかる時間。 | Always On FCI は共有ストレージを使用するため、ストレージ インスタンスの同じビューをフェールオーバー時に使用できます。
+Azure IaaS VM 上またはオンプレミスの SQL Server。| [データベース ミラーリング (高パフォーマンス モード)](/sql/database-engine/database-mirroring/database-mirroring-sql-server) | サービスを強制するためにかかる時間。この場合、ミラー サーバーがウォーム スタンバイ サーバーとして使用されます。 | レプリケーションは非同期です。 ミラー データベースは、プリンシパル データベースよりやや遅れることがあります。 この遅れは通常、短時間です。 ただし、プリンシパルまたはミラー サーバーのシステムの負荷が高い場合は長くなることがあります。<br/><br/>ログ配布がデータベース ミラーリングの補足になる場合があります。 これは、非同期データベース ミラーリングの適切な代替手段になります。
 Azure 上のサービスとしてのプラットフォーム (PaaS) としての SQL。<br/><br/>このデプロイの種類には、単一データベースとエラスティック プールが含まれます。 | アクティブな地理的レプリケーション | フェールオーバーがトリガーされてから 30 秒。<br/><br/>セカンダリ データベースのいずれかに対してフェールオーバーがアクティブ化されると、その他のすべてのセカンダリが新しいプライマリに自動的にリンクされます。 | 5 秒の RPO。<br/><br/>アクティブ geo レプリケーションは、SQL Server の Always On テクノロジを使用します。 これは、スナップショット分離を使用して、プライマリ データベース上のコミットされたトランザクションをセカンダリ データベースに非同期的にレプリケートします。<br/><br/>セカンダリ データには部分トランザクションが含まれないことが保証されます。
 Azure 上のアクティブ geo レプリケーションが構成された PaaS としての SQL。<br/><br/>このデプロイの種類には、マネージド インスタンス、エラスティック プール、単一データベースが含まれます。 | 自動フェールオーバー グループ | 1 時間の RTO。 | 5 秒の RPO。<br/><br/>自動フェールオーバー グループは、アクティブ geo レプリケーションの上にグループ セマンティクスを提供します。 ただし、同じ非同期レプリケーション メカニズムが使用されます。
 Azure IaaS VM 上またはオンプレミスの SQL Server。| Azure Site Recovery を使用したレプリケーション | RTO は通常 15 分未満です。 詳細については、[Site Recovery によって提供される RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/) に関するページを参照してください。 | アプリケーション整合性では 1 時間、クラッシュ整合性では 5 分です。 より低い RPO を求めている場合は、別の BCDR テクノロジを使用してください。

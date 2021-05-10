@@ -3,20 +3,23 @@ title: 'クイックスタート: 専用 SQL プール (以前の SQL DW) のコ
 description: Azure PowerShell を使用して、専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングできます。
 services: synapse-analytics
 author: Antvgski
-manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 04/17/2018
 ms.author: anvang
+manager: craigg
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/17/2018
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 73718f0e8e82e7d35ed1ced98f45c1e125a55a00
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96921900"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534241"
 ---
 # <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>クイックスタート: Azure PowerShell を使用して専用 SQL プール (以前の SQL DW) のコンピューティングをスケーリングする
 

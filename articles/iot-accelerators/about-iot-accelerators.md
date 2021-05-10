@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c966051ed5699d408fe83f1e9c862ca78b3282c4
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629070"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714544"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータとは
 
@@ -68,7 +68,7 @@ IoT ソリューション アクセラレータは、一般的な IoT シナリ�
 | ソリューション アクセラレータ   | Architecture  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | 接続済みファクトリ      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
-| デバイスのシミュレーション      | マイクロサービス | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
+| デバイスのシミュレーション      | マイクロサービス | [.NET](https://github.com/Azure/azure-iot-pcs-device-simulation)          |
 
 マイクロサービス アーキテクチャの詳細については、「[Introduction to the Azure IoT reference architecture (Azure IoT リファレンス アーキテクチャの概要)](/azure/architecture/reference-architectures/iot/)」を参照してください。
 

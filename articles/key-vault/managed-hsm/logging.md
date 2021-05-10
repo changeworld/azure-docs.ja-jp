@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
-ms.date: 09/15/2020
+ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211806"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109239"
 ---
 # <a name="managed-hsm-logging"></a>Managed HSM のログ 
 
@@ -74,9 +74,10 @@ az monitor diagnostic-settings create --name ContosoMHSM-Diagnostics --resource 
 ログ記録の内容:
 
 * 認証されたすべての REST API 要求。これには、アクセス許可がないため、システム エラーのため、または不正な要求の結果として、失敗した要求が含まれます。
-* マネージド HSM 自体に対する操作。これには、タグなどの属性の作成、削除、および更新が含まれます。
+* マネージド HSM リソース自体に対するマネージド プレーン操作。これには、タグなどの属性の作成、削除、および更新が含まれます。
 * 初期化とダウンロード、復旧の初期化、アップロードなど、セキュリティ ドメイン関連の操作
 * HSM の完全なバックアップと復元、および選択的復元の操作
+* ロールの割り当ての作成、表示、削除、およびカスタム ロール定義の作成、表示、削除などのロール管理操作
 * 以下のような、キーに対する操作
   * キーの作成、変更、または削除。
   * 署名、確認、暗号化、復号化、キーのラップとラップ解除、キーの一覧表示。
@@ -121,30 +122,13 @@ Managed HSM ログは、自分が指定したストレージ アカウントの 
 ]
 ```
 
-次の表にフィールド名と説明を示します。
 
-| フィールド名 | 説明 |
-| --- | --- |
-| **TenantId** | マネージド HSM が作成されたサブスクリプションの Azure Active Directory テナント ID |
-| **time** |日付と時刻 (UTC)。 |
-| **resourceId** |Azure Resource Manager リソース ID。 Managed HSM ログの場合、これは常に Managed HSM リソース ID です。 |
-| **operationName** |次の表に示すような操作の名前です。 |
-| **operationVersion** |クライアントによって要求された REST API バージョン。 |
-| **category** |結果の種類。 Managed HSM ログの場合、**AuditEvent** は単一の使用可能な値です。 |
-| **resultType** |REST API 要求の結果です。 |
-| **properties** |操作 (**operationName**) によって異なる情報です|
-| **resultSignature** |HTTP の状態です。 |
-| **resultDescription** |結果に関する追加の説明です (使用可能な場合)。 |
-| **durationMs** |REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。 これにネットワーク待機時間は含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。 |
-| **callerIpAddress** |要求を行ったクライアントの IP アドレスです。 |
-| **correlationId** |クライアントが、クライアント側のログをサービス側のログに関連付けるために渡すことができる、オプションの GUID です。 |
-| **identity** |REST API 要求に提示されたトークンからの ID です。 これは通常、"ユーザー" か "サービス プリンシパル" です。 |
-| **requestUri** | REST API の要求 URI |
-| **clientInfo** | 
 
 ## <a name="use-azure-monitor-logs"></a>Azure Monitor ログの使用
 
-Azure Monitor ログの Key Vault ソリューションを使用して、Managed HSM の **AuditEvent** ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。 
+Azure Monitor ログの Key Vault ソリューションを使用して、Managed HSM の **AuditEvent** ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。
+
+この設定方法などの詳細については、[Azure Monitor の Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

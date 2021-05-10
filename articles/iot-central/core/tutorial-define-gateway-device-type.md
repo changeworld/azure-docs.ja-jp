@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: e42e1791693342592e391a14422b1441c9cbbd31
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdace22072e4122150c878d43b99765cd6fd59e1
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832387"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490779"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>チュートリアル - Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する
 
@@ -29,7 +29,7 @@ ms.locfileid: "99832387"
 ゲートウェイ デバイスは、ダウンストリーム デバイスが IoT Central アプリケーションと通信できるようにするだけでなく、次のことも実行できます。
 
 * 自身のテレメトリ (温度など) を送信する。
-* オペレーターによって行われた書き込み可能なプロパティの更新に応答する (たとえば、オペレーターはテレメトリの送信間隔を変更できます)。
+* オペレーターによって行われた書き込み可能なプロパティの更新に応答する。 (たとえば、オペレーターはテレメトリの送信間隔を変更できます)。
 * コマンド (デバイスの再起動など) に応答する。
 
 > [!div class="checklist"]

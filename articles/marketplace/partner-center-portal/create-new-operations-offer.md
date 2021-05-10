@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc3566634948df3ce8ecb747148eb10f48bfc582
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97355149"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106889"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
 この記事では、新しい Dynamics 365 for Operations プランの作成方法について説明します。 [Microsoft Dynamics 365 for Finance and Operations](https://dynamics.microsoft.com/finance-and-operations) は、高度な財務、経営、製造、サプライ チェーン管理がサポートされるエンタープライズ リソース プランニング (ERP) サービスです。 Dynamics 365 for Operations のすべてのオファーは、弊社の認定プロセスを通過する必要があります。
 
-開始する前に、まだ[パートナー センターで商業マーケットプレース アカウントを作成](create-account.md)していなければ、作成してください。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、まだ[パートナー センターで商業マーケットプレース アカウントを作成](../create-account.md)していなければ、作成してください。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 >[!NOTE]
 > オファーが公開されると、そのオファーに対する編集は、パブリケーションのためにオファーを再送信した後、パートナー センターとオンライン ストアでのみ更新されます。

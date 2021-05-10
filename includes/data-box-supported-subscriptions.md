@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2021
 ms.author: alkohli
 ms.openlocfilehash: 40e8f2d35c78f4f3809fa7d102f82a48b5eab0c7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102445362"
 ---
 開始する前に次の点を確認します。

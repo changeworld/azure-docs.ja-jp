@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
 ms.openlocfilehash: dd4e53eebe6593db457798f009d3d05ddcbd77b8
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100654766"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Azure IoT デバイスとアプリケーションの開発とは

@@ -267,7 +267,7 @@ Remove-AzResourceGroup -Name myResourceGroup
     > [!Note]  
     > 作成した Azure ファイル共有の共有スナップショットは、Azure ファイル共有を削除する前にすべて削除してください。
 
-- ストレージ アカウント自体を削除する場合 (この場合、作成した Azure ファイル共有が暗黙的に削除されます。また、Azure BLOB ストレージ コンテナーなど、作成されたその他のストレージ リソースも暗黙的に削除されます)。
+- ストレージ アカウント自体を削除する場合 (この場合、作成した Azure ファイル共有が暗黙的に削除されます。また、Azure Blob Storage コンテナーなど、作成されたその他のストレージ リソースも暗黙的に削除されます)。
 
     ```azurepowershell-interactive
     Remove-AzStorageAccount `

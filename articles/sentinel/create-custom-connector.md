@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a1aaf89624f8d0ab48692629d859f3c1bdb4ba67
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724355"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738902"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -126,8 +126,6 @@ Logic Apps を使用して Azure Sentinel 用のカスタム コネクタを作�
 - [Webhook を使用した Palo Alto Prisma ロジック アプリ コネクタ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Ingest-Prisma) (Azure Sentinel GitHub コミュニティ)
 - [スケジュールされたアクティブ化を使用して Microsoft Teams の呼び出しをセキュリティで保護する](https://techcommunity.microsoft.com/t5/azure-sentinel/secure-your-calls-monitoring-microsoft-teams-callrecords/ba-p/1574600) (ブログ)
 - [Azure Sentinel への AlienVault OTX 脅威インジケーターの取り込み](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-alien-vault-otx-threat-indicators-into-azure-sentinel/ba-p/1086566) (ブログ)
-- [Azure Sentinel への Proofpoint TAP ログの送信](https://techcommunity.microsoft.com/t5/azure-sentinel/sending-proofpoint-tap-logs-to-azure-sentinel/ba-p/767727) (ブログ)
-
 
 ## <a name="connect-with-powershell"></a>PowerShell で接続する
 

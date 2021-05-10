@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: 4dbda13ffe04e0a4214b24ccaca2b8103a39b9f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ea6ec30ad5f3b1cdbc906cc94cb211295b84e802
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92536064"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761729"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLI を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "92536064"
 
 * [Azure CLI](/cli/azure/install-azure-cli)。
 
-* Azure IoT Hub。 IoT Hub がない場合は、[`az iot hub create` コマンド](/cli/azure/iot/hub#az-iot-hub-create)を使用して作成するか、[ポータルを使用して IoT Hub を作成](iot-hub-create-through-portal.md)できます。
+* Azure IoT Hub。 IoT Hub がない場合は、[`az iot hub create` コマンド](/cli/azure/iot/hub#az_iot_hub_create)を使用して作成するか、[ポータルを使用して IoT Hub を作成](iot-hub-create-through-portal.md)できます。
 
 * Azure Storage のアカウント Azure Storage アカウントを持っていない場合は、Azure CLI を使用して作成できます。 詳しくは、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md)」をご覧ください。
 

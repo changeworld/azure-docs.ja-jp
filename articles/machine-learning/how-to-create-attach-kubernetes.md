@@ -10,13 +10,13 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/08/2021
+ms.openlocfilehash: 075b02e3e5f2e409298bf31eb0b6720e64af68a0
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149326"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210830"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -48,12 +48,8 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
-- AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。
-    - 名前は必須であり、3 文字から 24 文字の長さにする必要があります。
-    - 有効な文字は、大文字、小文字、数字、- 文字です。
-    - 名前の先頭は文字である必要があります。
-    - 名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます。
-   
+- AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。 アルファベット文字、数字、ダッシュを含めることができます。 先頭にはアルファベット文字、末尾にはアルファベット文字または数字を使用する必要があり、長さは 3 ～ 24 文字にする必要があります。
+ 
  - **GPU** ノードまたは **FPGA** ノード (または特定の SKU) にモデルをデプロイする場合は、特定の SKU でクラスターを作成する必要があります。 既存のクラスターにセカンダリ ノード プールを作成し、そのセカンダリ ノード プールにモデルをデプロイすることはサポートされていません。
  
 - クラスターを作成またはアタッチするときに、__開発テスト__ または __運用__ のためにクラスターを作成するかどうかを選択できます。 運用のためではなく、__開発__、__検証__、__テスト__ のための AKS クラスターを作成する場合は、__クラスターの目的__ を __開発テスト__ に設定します。 クラスターの目的を指定しない場合は、__運用__ クラスターが作成されます。 
@@ -71,6 +67,10 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
     - [AKS でクラスター オートスケーラーを設定する](../aks/cluster-autoscaler.md)
 
 - __YAML 構成を使用してクラスターを直接更新しないでください__。 Azure Kubernetes Services では YAML 構成による更新がサポートされていますが、Azure Machine Learning のデプロイでは変更が上書きされます。 上書きされない YAML フィールドは、"__要求の制限__" と "__CPU とメモリ__" の 2 つだけです。
+
+- Azure Machine Learning スタジオ UI、SDK、または CLI 拡張機能を使用して AKS クラスターを作成することは、べき等では __ありません__。 再度リソースを作成しようとすると、同じ名前を持つクラスターが既に存在するというエラーが発生します。
+    
+    - Azure Resource Manager テンプレートと [Microsoft.MachineLearningServices/workspaces/computes](/azure/templates/microsoft.machinelearningservices/2019-11-01/workspaces/computes) リソースを使用して AKS クラスターを作成することも、べき等では __ありません__。 再度テンプレートを使用して既存のリソースを更新しようとすると、同じエラーが発生します。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service のバージョン
 

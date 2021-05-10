@@ -4,7 +4,7 @@ description: Azure 上でセキュリティで保護されたクラウド アプ
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: techlake
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 03/29/2021
 ms.author: terrylan
-ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d28d55c8dff16df987f6535b0f1452b840b35c43
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94841990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960505"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -124,13 +124,11 @@ App Service 使用時のベスト プラクティスを次に示します。
 **ベスト プラクティス**: 受信ソース IP アドレスを制限します。   
 **詳細**: [App Service Environment](../../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
 
-**ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
-**詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
+**ベスト プラクティス**: App Service Environment のセキュリティ状態を監視する。   
+**詳細**: Azure Security Center を使用して App Service Environment を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
 
-> [!NOTE]
-> App Service の監視はプレビュー段階であり、Security Center の [Standard レベル](../../security-center/security-center-pricing.md)でのみ利用できます。
->
->
+## <a name="azure-cloud-services"></a>Azure クラウド サービス
+[Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) は、PaaS の 1 つの例です。 このテクノロジは、Azure App Service と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
 
 ## <a name="install-a-web-application-firewall"></a>Web アプリケーション ファイアウォールをインストールする
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの多数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
@@ -149,13 +147,13 @@ Application Insights には、収集されたデータを操作するための�
 
 ファジー テストは、形式が正しくないの入力データを、このデータを解析して使用するプログラム インターフェイス (エントリ ポイント) に提供することで、プログラム エラー (コード エラー) を見つける方法です。 「[Microsoft Security Risk Detection](https://www.microsoft.com/en-us/security-risk-detection/)」 (Microsoft のセキュリティ リスク検出) はクラウド ベースのツールであり、これを使用することで、ご自分のソフトウェアを Azure にデプロイする前に、バグやその他のセキュリティの脆弱性を探すことができます。 このツールは、ソフトウェアをデプロイする前に脆弱性を捕捉できるように設計されているため、ソフトウェアのリリース後にバグの修正、クラッシュの処理、攻撃への対応を行わなくても済みます。
 
-
 ## <a name="next-steps"></a>次のステップ
-この記事では、Azure PaaS デプロイのセキュリティ上の利点およびクラウド アプリケーションのセキュリティのベスト プラクティスに重点を置いてきました。 次に、特定の Azure サービスを使用して PaaS の Web ソリューションとモバイル ソリューションをセキュリティ保護するための推奨されるプラクティスについて説明します。 まず、Azure App Service、Azure SQL Database、Azure Synapse Analytics、および Azure Storage から始めましょう。 他の Azure サービスの推奨されるプラクティスに関する記事が公開されると、次の一覧にリンクが提供されます。
+この記事では、Azure PaaS デプロイのセキュリティ上の利点およびクラウド アプリケーションのセキュリティのベスト プラクティスに重点を置いてきました。 次に、特定の Azure サービスを使用して PaaS の Web ソリューションとモバイル ソリューションをセキュリティ保護するための推奨されるプラクティスについて説明します。 まず、Azure App Service、Azure SQL Database、Azure Synapse Analytics、Azure Storage、および Azure Cloud Services から始めましょう。 他の Azure サービスの推奨されるプラクティスに関する記事が公開されると、次の一覧にリンクが提供されます。
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Database と Azure Synapse Analytics](paas-applications-using-sql.md)
 - [Azure ストレージ](paas-applications-using-storage.md)
+- [Azure Cloud Services](../../cloud-services/security-baseline.md)
 - Azure Cache for Redis
 - Azure Service Bus
 - Web アプリケーション ファイアウォール
@@ -165,5 +163,6 @@ Application Insights には、収集されたデータを操作するための�
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。
 
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
-* [Azure セキュリティ チーム ブログ](/archive/blogs/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
-* [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。
+
+- [Azure セキュリティ チーム ブログ](/archive/blogs/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+- [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。

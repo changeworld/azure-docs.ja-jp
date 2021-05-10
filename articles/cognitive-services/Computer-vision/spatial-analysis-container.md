@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: d257a77940b460bf8be64e3f8376353a859365f7
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612900"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284721"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
-空間分析コンテナーを使用すると、リアルタイム ストリーミング ビデオを分析して、人物間の空間的な関係、彼らの動き、物体との相互作用を把握できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
+空間分析コンテナーを使用すると、リアルタイムのストリーミング ビデオを分析して、人物間の空間的な関係、人物間の動き、物理環境内におけるオブジェクトとの相互作用を把握できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -68,7 +68,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 | 要件 | 説明 |
 |--|--|
-| カメラ | 空間分析コンテナーは、特定のカメラ ブランドと結び付いていません。 カメラ デバイスは、リアルタイム ストリーミング プロトコル (RTSP) と H.264 エンコードをサポートし、ホスト コンピューターからアクセスでき、15FPS の解像度 1080p でストリーミングできる必要があります。 |
+| カメラ | 空間分析コンテナーは、特定のカメラ ブランドに関係していません。 カメラ デバイスは、リアルタイム ストリーミング プロトコル (RTSP) と H.264 エンコードをサポートし、ホスト コンピューターからアクセスでき、15FPS の解像度 1080p でストリーミングできる必要があります。 |
 | Linux OS | [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) をホスト コンピューターにインストールする必要があります。  |
 
 
@@ -94,7 +94,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 
 ### <a name="configure-compute-on-the-azure-stack-edge-portal"></a>Azure Stack Edge ポータルでコンピューティングを構成する 
  
-空間分析によって、AI ソリューションを実行するのに Azure Stack Edge のコンピューティング機能が使用されます。 コンピューティング機能を有効にするには、次のことを確認してください。 
+空間分析では、Azure Stack Edge のコンピューティング機能を使用して AI ソリューションを実行します。 コンピューティング機能を有効にするには、次のことを確認してください。 
 
 * Azure Stack Edge デバイスの[接続とアクティブ化](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)が済んでいること。 
 * デバイスにアクセスするために、PowerShell 5.0 以降を実行している Windows クライアント システムにアクセスできること。  
@@ -140,7 +140,7 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
     $ip = "<device-IP-address>" 
     ```
     
-4. デバイスの IP アドレスをクライアントの信頼されたホスト一覧に追加するために、次のコマンドを使用します。 
+4. デバイスの IP アドレスをクライアントの信頼できるホスト一覧に追加するには、次のコマンドを使用します。 
     
     ```powershell
     Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force 
@@ -249,7 +249,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>ホスト コンピューター上で Azure IoT Edge を構成する
 
-ホスト コンピューターに空間分析コンテナーをデプロイするには、Standard (S1) または Free (F0) 価格レベルを使用して、[Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) サービスのインスタンスを作成します。 
+ホスト コンピューターに空間分析コンテナーをデプロイするには、Standard (S1) または Free (F0) の価格レベルを使用して、[Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) サービスのインスタンスを作成します。 
 
 Azure CLI を使用して Azure IoT Hub のインスタンスを作成します。 必要に応じて、パラメーターを置き換えます。 または、[Azure portal](https://portal.azure.com/) 上で Azure IoT ハブを作成することもできます。
 
@@ -311,7 +311,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 ホスト コンピューター上で `/etc/iotedge/config.yaml` を編集するために開きます。 `ADD DEVICE CONNECTION STRING HERE` を接続文字列に置き換えます。 ファイルを保存して閉じます。 次のコマンドを実行して、ホスト コンピューター上の IoT Edge サービスを再起動します。
@@ -320,13 +320,13 @@ sudo az iot hub device-identity show-connection-string --device-id my-edge-devic
 sudo systemctl restart iotedge
 ```
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) から、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) のいずれかから、空間分析コンテナーを IoT モジュールとしてホスト コンピューターにデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
 
 Azure CLI を使用して、以下の手順に従ってコンテナーをデプロイします。
 
 #### <a name="azure-vm-with-gpu"></a>[GPU 搭載 Azure VM](#tab/virtual-machine)
 
-GPU 搭載 Azure 仮想マシンを使用して、空間分析を実行することもできます。 次の例では、1 つの K80 GPU が搭載された [NC シリーズ](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM を使用します。
+GPU 搭載の Azure 仮想マシンを使用して、空間分析を実行することもできます。 次の例では、1 つの K80 GPU が搭載された [NC シリーズ](../../virtual-machines/nc-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) VM を使用します。
 
 #### <a name="create-the-vm"></a>VM を作成する
 
@@ -334,7 +334,7 @@ Azure portal で、[[仮想マシンの作成]](https://ms.portal.azure.com/#cre
 
 VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 VM のサイズを特定するには、[See all sizes]\(すべてのサイズを表示\) を選択し、次に示す [Non-premium storage VM sizes]\(非 Premium ストレージ VM サイズ\) の一覧を表示します。
 
@@ -473,7 +473,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 VM で `/etc/iotedge/config.yaml` を開いて編集します。 `ADD DEVICE CONNECTION STRING HERE` を接続文字列に置き換えます。 ファイルを保存して閉じます。 このコマンドを実行して、VM 上の IoT Edge サービスを再起動します。
@@ -482,7 +482,7 @@ VM で `/etc/iotedge/config.yaml` を開いて編集します。 `ADD DEVICE CON
 sudo systemctl restart iotedge
 ```
 
-[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) から、空間分析コンテナーを IoT モジュールとして VM にデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
+[Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) または [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) のいずれかから、空間分析コンテナーを IoT モジュールとして VM にデプロイします。 ポータルを使用している場合は、イメージの URI を Azure Container Registry の場所に設定します。 
 
 Azure CLI を使用して、以下の手順に従ってコンテナーをデプロイします。
 
@@ -529,11 +529,11 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 | `--target-condition` | ホスト コンピューターの IoT Edge デバイス名。 |
 | `-–subscription` | サブスクリプションの ID または名前。 |
 
-このコマンドを実行すると、デプロイが開始されます。 Azure portal で Azure IoT Hub インスタンスのページに移動して、デプロイの状態を確認します。 デバイスへのコンテナー イメージのダウンロードが終了して実行が開始するまで、状態は "*417 – デバイスのデプロイ構造が設定されていません*" と表示されることがあります。
+このコマンドを実行すると、デプロイが開始されます。 Azure portal で Azure IoT Hub インスタンスのページに移動して、デプロイの状態を確認します。 デバイスにコンテナー イメージがダウンロードされ、実行が開始されるまで、*417 – デバイスのデプロイ構成が設定されていません* というステータスが表示される場合があります。
 
 ## <a name="validate-that-the-deployment-is-successful"></a>デプロイが成功したことを検証する
 
-コンテナーが実行されていることを検証する方法は複数あります。 Azure portal の **[IoT Edge モジュールの設定]** で、Azure IoT Hub インスタンス内の空間分析モジュールの *[ランタイムの状態]* を見つけます。 *[ランタイムの状態]* の **[必要な値]** と **[報告された値]** が、 *[実行中]* であることを検証します。
+コンテナーが実行されていることを検証する方法は複数あります。 Azure portal の Azure IoT Hub インスタンスにある空間分析モジュールの **IoT Edge モジュール設定** で *ランタイム ステータス* を見つけます。 *[ランタイムの状態]* の **[必要な値]** と **[報告された値]** が、 *[実行中]* であることを検証します。
 
 ![デプロイの検証の例](./media/spatial-analysis/deployment-verification.png)
 
@@ -541,22 +541,18 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>空間分析で実行される操作を構成する
 
-接続されたカメラを使用するようにコンテナーを構成したり、操作を構成したりするためには、[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 構成するカメラ デバイスごとに、空間分析の操作によって、Azure IoT Hub のインスタンスに送信される JSON メッセージの出力ストリームが生成されます。
-
-## <a name="redeploy-or-delete-the-deployment"></a>再デプロイする、またはデプロイを削除する
-
-デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) を使用することができます。
+接続されたカメラを使用するようにコンテナーを構成したり、操作を構成したりするには、[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 空間分析の操作によって、構成したカメラ デバイスごとに Azure IoT Hub のインスタンスに送信される JSON メッセージの出力ストリームが生成されます。
 
 ## <a name="use-the-output-generated-by-the-container"></a>コンテナーによって生成された出力を使用する
 
 コンテナーによって生成された出力の使用を開始する場合は、次の記事を参照してください。
 
-*   選択したプログラミング言語の Azure Event Hub SDK を使用して、Azure IoT Hub エンドポイントに接続し、イベントを受信します。 詳細については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)」を参照してください。 
-*   イベントを他のエンドポイントに送信したり、イベントを Azure Blob Storage に保存したりするには、Azure IoT ハブにメッセージ ルーティングを設定します。詳細については、[IoT Hub メッセージ ルーティング](../../iot-hub/iot-hub-devguide-messages-d2c.md)に関するページを参照してください。 
+*    選択したプログラミング言語の Azure Event Hub SDK を使用して、Azure IoT Hub エンドポイントに接続し、イベントを受信します。 詳細については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](../../iot-hub/iot-hub-devguide-messages-read-builtin.md)」を参照してください。 
+*    イベントを他のエンドポイントに送信したり、イベントを Azure Blob Storage に保存したりするには、Azure IoT ハブにメッセージ ルーティングを設定します。詳細については、[IoT Hub メッセージ ルーティング](../../iot-hub/iot-hub-devguide-messages-d2c.md)に関するページを参照してください。 
 
-## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>記録されたビデオ ファイルを使用して空間分析を実行する
+## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>録画したビデオ ファイルを使用して空間分析を実行する
 
-空間分析は、記録されたビデオとライブ ビデオの両方で使用できます。 記録されたビデオに対して空間分析を使用するには、ビデオ ファイルを記録し、mp4 ファイルとして保存してみてください。 Azure に BLOB ストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 次に、Azure portal で次の BLOB ストレージ設定を更新します。
+空間分析は、録画したビデオとライブ ビデオの両方で使用できます。 録画したビデオに対して空間分析を使用するには、ビデオ ファイルを録画して mp4 ファイルとして保存してみてください。 Azure に BLOB ストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 次に、Azure portal で次の BLOB ストレージ設定を更新します。
     1. **[安全な転送が必須]** を **[無効]** に変更
     2. **[Allow Blob public access]\(BLOB パブリック アクセスを許可する\)** を **[有効]** に変更
 
@@ -566,7 +562,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 すべてのグラフについて、[Azure Stack Edge デバイス](https://go.microsoft.com/fwlink/?linkid=2142179)、[デスクトップ マシン](https://go.microsoft.com/fwlink/?linkid=2152270)、または [GPU 搭載 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 用の配置マニフェスト内の `VIDEO_URL` を、作成した URL に置き換えます。 `VIDEO_IS_LIVE` を `false` に設定し、更新されたマニフェストを使用して空間分析コンテナーを再デプロイします。 次の例を見てください。
 
-空間分析モジュールによるビデオ ファイルの使用が開始され、継続的に自動再生されます。
+空間分析モジュールによるビデオ ファイルの使用が開始され、継続的に自動再生も行われます。
 
 
 ```json
@@ -592,7 +588,7 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 
 ## <a name="billing"></a>課金
 
-課金情報は、Azure アカウントの Computer Vision リソースを使用して空間分析コンテナーから Azure に送信されます。 パブリック プレビューでの空間分析は、現在、無料でご利用いただけます。 
+空間分析コンテナーによって、Azure アカウントの Computer Vision リソースを使用して課金情報が Azure に送信されます。 パブリック プレビューでの空間分析は現在、無料でご利用いただけます。 
 
 Azure Cognitive Services コンテナーは、計測または課金エンドポイントに接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に課金エンドポイントに課金情報を伝えられるようにする必要があります。 Cognitive Services コンテナーによって、お客様のデータ (解析対象のビデオや画像など) が Microsoft に送信されることはありません。
 
@@ -609,7 +605,7 @@ Azure Cognitive Services コンテナーは、計測または課金エンドポ�
 ## <a name="next-steps"></a>次のステップ
 
 * [人数カウント Web アプリをデプロイする](spatial-analysis-web-app.md)
-* [空間分析操作の構成](spatial-analysis-operations.md)
+* [空間分析の操作を構成する](spatial-analysis-operations.md)
 * [ロギングおよびトラブルシューティング](spatial-analysis-logging.md)
 * [カメラの配置ガイド](spatial-analysis-camera-placement.md)
 * [ゾーンとラインの配置ガイド](spatial-analysis-zone-line-placement.md)

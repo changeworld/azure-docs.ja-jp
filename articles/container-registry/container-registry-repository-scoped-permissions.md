@@ -3,12 +3,12 @@ title: Azure Container Registry でのリポジトリに対するアクセス許
 description: イメージのプルやプッシュまたは他のアクションを実行するための、Premium レジストリ内の特定のリポジトリをスコープとするアクセス許可を持つトークンを作成します。
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ac479b696a377509cee6459efd8bbb9de940d2a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988259"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781399"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
@@ -426,28 +426,28 @@ az acr token delete --name MyToken --registry myregistry
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ マップとトークンを管理するには、[az acr scope-map][az-acr-scope-map] および [az acr token][az-acr-token] コマンド グループの追加コマンドを使用します。
-* Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure コンテナー レジストリで認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
+* Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure Container Registry で認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
 
 
 <!-- LINKS - External -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-repository]: /cli/azure/acr/repository/
-[az-acr-repository-show-tags]: /cli/azure/acr/repository/#az-acr-repository-show-tags
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az-acr-repository-show-manifests
-[az-acr-repository-delete]: /cli/azure/acr/repository/#az-acr-repository-delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository/#az_acr_repository_show_tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository/#az_acr_repository_show_manifests
+[az-acr-repository-delete]: /cli/azure/acr/repository/#az_acr_repository_delete
 [az-acr-scope-map]: /cli/azure/acr/scope-map/
-[az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az-acr-scope-map-create
-[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-show
-[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
-[az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az-acr-scope-map-update
-[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az-acr-scope-map-list
+[az-acr-scope-map-create]: /cli/azure/acr/scope-map/#az_acr_scope_map_create
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az_acr_scope_map_show
+[az-acr-scope-map-show]: /cli/azure/acr/scope-map/#az_acr_scope_map_list
+[az-acr-scope-map-update]: /cli/azure/acr/scope-map/#az_acr_scope_map_update
+[az-acr-scope-map-list]: /cli/azure/acr/scope-map/#az_acr_scope_map_list
 [az-acr-token]: /cli/azure/acr/token/
-[az-acr-token-show]: /cli/azure/acr/token/#az-acr-token-show
-[az-acr-token-list]: /cli/azure/acr/token/#az-acr-token-list
-[az-acr-token-delete]: /cli/azure/acr/token/#az-acr-token-delete
-[az-acr-token-create]: /cli/azure/acr/token/#az-acr-token-create
-[az-acr-token-update]: /cli/azure/acr/token/#az-acr-token-update
-[az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az-acr-token-credential-generate
+[az-acr-token-show]: /cli/azure/acr/token/#az_acr_token_show
+[az-acr-token-list]: /cli/azure/acr/token/#az_acr_token_list
+[az-acr-token-delete]: /cli/azure/acr/token/#az_acr_token_delete
+[az-acr-token-create]: /cli/azure/acr/token/#az_acr_token_create
+[az-acr-token-update]: /cli/azure/acr/token/#az_acr_token_update
+[az-acr-token-credential-generate]: /cli/azure/acr/token/credential/#az_acr_token_credential_generate

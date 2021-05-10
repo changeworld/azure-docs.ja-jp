@@ -9,17 +9,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 84fdca96f2ce42c608e7def98f6a3400964cfe46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0c45a48e6cafa722945400554f2f81916da13775
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691928"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627610"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-この記事では、Azure SQL Database と Azure Synapse Analytics のサーバーへの接続を制御する設定について説明します。 これらの設定は、サーバーに関連付けられているすべての SQL Database および Azure Synapse Analytics データベースに適用されます。
+この記事では、Azure SQL Database のサーバーと、Azure Synapse Analytics の[専用 SQL プール (以前の SQL DW)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) への接続を制御する設定について説明します。 これらの設定は、このサーバーに関連するすべての SQL Database と専用 SQL プール (以前の SQL DW) データベースに適用されます。
 
 > [!IMPORTANT]
 > この記事は、Azure SQL Managed Instance には適用されません。

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b600c895f98c46dbaafce7deef86bbbee8f57c99
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5b98fde5e15a3c57b56ecc8aea60023ffb8c22a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561043"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774307"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Linux VM を作成、暗号化する
 
@@ -26,7 +26,7 @@ Azure CLI をローカルにインストールして使用することを選択�
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location "eastus"
@@ -79,7 +79,7 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>"
 ```
 
-しばらくすると、"暗号化の要求が受け入れられました。 'show' コマンドを使用して、進行状況を監視してください" というメッセージが返されます。 'show' コマンドは [az vm show](/cli/azure/vm/encryption#az-vm-encryption-show) です。
+しばらくすると、"暗号化の要求が受け入れられました。 'show' コマンドを使用して、進行状況を監視してください" というメッセージが返されます。 'show' コマンドは [az vm show](/cli/azure/vm/encryption#az_vm_encryption_show) です。
 
 ```azurecli-interactive
 az vm encryption show --name "myVM" -g "MyResourceGroup"

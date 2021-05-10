@@ -3,12 +3,12 @@ title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 94445341891149d5d02c7f33caef20bf45123e9b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b5439b77b86d42d062cf9da66ce678f04f46f813
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197777"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256091"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -355,6 +355,7 @@ FOR_EACH filter IN (a, b, c)
         IF key CONTAINS filter
             FAIL_MATCH
 ```
+この演算子の現在の制限については、「[制限事項](#limitations)」を参照してください。
 
 ## <a name="stringbeginswith"></a>StringBeginsWith
 **キー** 値が、指定されたいずれかの **フィルター** 値で **始まる** 場合、**StringBeginsWith** 演算子は true に評価されます。 次の例では、これによって `data` セクションの `key1` 属性の値が `event` または `grid` で始まるかどうかが確認されます。 たとえば、`event hubs` は `event` で始まります。  
@@ -453,7 +454,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringin"></a>StringIn
-**StringIn** 演算子を使用すると、**キー** 値が、指定された **フィルター** 値のいずれかと **完全に一致** するかどうかが確認されます。 次の例では、これによって `data` セクションの `key1` 属性の値が `exact`、`string`、または `matches` であるかどうかが確認されます。 
+**StringIn** 演算子を使用すると、**キー** 値が、指定された **フィルター** 値のいずれかと **完全に一致** するかどうかが確認されます。 次の例では、これによって `data` セクションの `key1` 属性の値が `contoso`、`fabrikam`、または `factory` であるかどうかが確認されます。 
 
 ```json
 "advancedFilters": [{
@@ -634,6 +635,7 @@ IsNotNull 演算子は、キーの値が NULL でも未定義でもない場合�
 * イベント グリッド サブスクリプションあたり、フィルター全体で高度なフィルターが 5、フィルター値が 25
 * 文字列値あたり 512 文字
 * **in** 演算子および **not in** 演算子の値は 5 つ
+* `StringNotContains` 演算子は、現在ポータルでは使用できません。
 * **`.` (ドット)** 文字を含むキー。 たとえば、`http://schemas.microsoft.com/claims/authnclassreference` や `john.doe@contoso.com` などです。 現時点では、エスケープ文字を含むキーはサポートされていません。 
 
 複数のフィルターで同じキーを使用できます。

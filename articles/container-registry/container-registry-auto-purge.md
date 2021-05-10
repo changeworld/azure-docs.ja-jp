@@ -1,18 +1,18 @@
 ---
 title: タグとマニフェストを消去する
-description: 消去コマンドを使用すると、経過時間とタグ フィルターに基づいて Azure コンテナー レジストリから複数のタグとマニフェストを削除できるほか、必要に応じて消去操作をスケジュールすることができます。
+description: 消去コマンドを使用すると、経過時間とタグ フィルターに基づいて Azure Container Registry から複数のタグとマニフェストを削除できるほか、必要に応じて消去操作をスケジュールすることができます。
 ms.topic: article
 ms.date: 02/19/2021
-ms.openlocfilehash: 2dedfdd6eba73b7573743eba60294ac2231ffc56
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 562d1940459cb1594b7cd9aca2af280b05a4e419
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101722230"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784193"
 ---
-# <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する
+# <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure Container Registry からイメージを自動的に消去する
 
-開発ワークフローの一部として Azure コンテナー レジストリを使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
+開発ワークフローの一部として Azure Container Registry を使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
 
 `acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.4`) で配布されています。
 
@@ -31,7 +31,7 @@ Azure CLI コマンドを使用して 1 つのイメージ タグまたはマニ
 `acr purge` コンテナー コマンドでは、名前フィルターに一致するイメージおよび指定した期間よりも古いイメージがリポジトリ内のタグによって削除されます。 既定では、タグ参照のみが削除され、基になる[マニフェスト](container-registry-concepts.md#manifest)およびレイヤー データは削除されません。 このコマンドには、マニフェストも削除するオプションがあります。 
 
 > [!NOTE]
-> `acr purge` では、`write-enabled` 属性が `false` に設定されているイメージ タグまたはリポジトリは削除されません。 詳細については、「[Azure コンテナー レジストリでのコンテナー イメージをロックする](container-registry-image-lock.md)」を参照してください。
+> `acr purge` では、`write-enabled` 属性が `false` に設定されているイメージ タグまたはリポジトリは削除されません。 詳細については、「[Azure Container Registry でのコンテナー イメージをロックする](container-registry-image-lock.md)」を参照してください。
 
 `acr purge` は、[ACR タスク](container-registry-tasks-overview.md)でコンテナー コマンドとして実行するように設計されているため、そのタスクを実行するレジストリで自動的に認証され、そこでアクションを実行します。 この記事のタスク例では、完全修飾コンテナー イメージ コマンドの代わりに、`acr purge` コマンドの[エイリアス](container-registry-tasks-reference-yaml.md#aliases)を使用します。
 
@@ -179,7 +179,6 @@ Azure Container Registry で[イメージ データを削除](container-registry
 
 <!-- LINKS - Internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show

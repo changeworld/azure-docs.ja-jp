@@ -3,19 +3,18 @@ title: Azure Key Vault のログ記録 | Microsoft Docs
 description: Azure Key Vault のログ記録を有効にすることで、お使いのキー コンテナーへのアクセスを監視する方法について説明します。これにより、指定した Azure ストレージ アカウントに情報が保存されます。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 99313cf1248ef5e90d7cd60d528a58c7925298d0
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5847fcb2cf553e1fcc744877e52dbbdf1f24d992
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499528"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751834"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 

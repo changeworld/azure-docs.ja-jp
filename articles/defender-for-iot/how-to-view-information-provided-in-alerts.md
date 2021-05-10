@@ -1,20 +1,16 @@
 ---
-title: アラート内の情報を表示する
+title: アラート メッセージについて
 description: '[アラート] ウィンドウでアラートを選択して、詳細を確認します。'
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 12/03/2020
+ms.date: 3/21/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 5877db6b3bc7366f28e679882a2c784e6828b1c1
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 2fa2b265c7d3983ca6ae2d7507392dd37afabd27
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523585"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781485"
 ---
-# <a name="view-information-in-alerts"></a>アラート内の情報を表示する
+# <a name="about-alert-messages"></a>アラート メッセージについて
 
 **[アラート]** ウィンドウでアラートを選択して、アラートの詳細を確認します。 詳細には次の情報が含まれます。
 
@@ -90,7 +86,7 @@ PCAP ファイルをダウンロードするには、:::image type="content" sou
 
 アラートの **[Recommendation]\(推奨事項\)** 領域には、イベントの理解を深めるのに役立つ可能性のある情報が表示されます。 アラート イベントを管理したり、デバイスまたはネットワークに対してアクションを実行したりする前に、この情報を確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)
 

@@ -2,21 +2,21 @@
 title: アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
 description: ユーザーの同意が無効または制限されている場合に同意要求を管理する方法、および Azure Active Directory でアプリケーションに対するテナント全体の管理者の同意要求を評価する方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: phsignor
-ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3405181f9bace023950e583dfe1a334216bf0aa0
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99253104"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373946"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 
@@ -26,7 +26,7 @@ Microsoft は、エンドユーザーによるアプリケーションの同意�
 
 ## <a name="process-changes-and-education"></a>変更と教育を処理する
 
- 1. ユーザーが同意画面から直接管理者の承認を要求できるようにするには、[管理者の同意ワークフロー (プレビュー)](configure-admin-consent-workflow.md) を有効にすることを検討してください。
+ 1. [管理者の同意ワークフロー](configure-admin-consent-workflow.md)を有効にして、ユーザーが同意画面から直接管理者の承認を要求できるようにすることを検討してください。
 
  2. すべての管理者が[アクセス許可と同意フレームワーク](../develop/consent-framework.md)、[同意プロンプト](../develop/application-consent-experience.md)のしくみ、および[テナント全体の管理者の同意要求を評価する](#evaluating-a-request-for-tenant-wide-admin-consent)方法を理解していることを確認します。
  3. ユーザーがアプリケーションの管理者の承認を要求する方法について、組織の既存のプロセスを確認し、必要に応じて更新します。 プロセスが変更された場合:

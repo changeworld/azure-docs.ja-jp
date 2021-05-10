@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: de113e3c005e11bd2bcd13ec6c1554664ba8fbaf
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 52b3d902b2cbfdacfe92117dcf0057dab1fe9a83
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877435"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012211"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -242,9 +242,9 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 
    ![Spring Cloud Config Server](media/spring-cloud-tutorial-config-server/config-server-azure-repos.png)
 
-## <a name="delete-your-app-configuration"></a>アプリ構成を削除する
+## <a name="delete-your-configuration"></a>構成を削除する
 
-構成ファイルを保存すると、 **[構成]** タブに **[Delete app configuration]\(アプリ構成の削除\)** ボタンが表示されます。このボタンを選択すると、既存の設定が完全に消去されます。 GitHub から Azure DevOps への移動など、Config Server インスタンスを別のソースに接続する場合にそれを選択してください。
+**[Config Server]** タブに表示される **[リセット]** ボタンを選択すると、既存の設定を完全に消去できます。 GitHub から Azure DevOps への移動など、Config Server インスタンスを別のソースに接続する場合は、Config Server の設定を削除します。
 
 
 

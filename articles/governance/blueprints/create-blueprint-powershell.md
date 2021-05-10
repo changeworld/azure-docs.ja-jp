@@ -3,12 +3,14 @@ title: クイック スタート:PowerShell を使用してブループリント
 description: このクイックスタートでは、Azure Blueprints と PowerShell を使用して、成果物を作成、定義、デプロイします。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom:
+- mode-api
+ms.openlocfilehash: 29c43da0c1467c74ddc85a447a0cf9addb574c7e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918281"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538905"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 
@@ -307,7 +309,7 @@ Publish-AzBlueprint -Blueprint $blueprint -Version '{BlueprintVersion}'
 
 PowerShell を使用してブループリントを発行した後は、それをサブスクリプションに割り当てることができます。 作成したブループリントを、管理グループ階層下のいずれかのサブスクリプションに割り当てます。 ブループリントは、サブスクリプションに保存された場合、そのサブスクリプションに対してのみ割り当てることができます。 割り当てるブループリントは、**Blueprint** パラメーターで指定します。 名前、場所、ID、ロック、ブループリント パラメーターを指定するには、対応する PowerShell パラメーターを `New-AzBlueprintAssignment` コマンドレットで使用するか、**AssignmentFile** パラメーターの JSON ファイルでそれらを指定します。
 
-1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **AssignmentFile** で使用するための objectId を収集します。
+1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **AssignmentFile** で使用するための objectId を収集します。
 
    - JSON ファイル - blueprintAssignment.json
 

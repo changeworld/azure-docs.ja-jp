@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bbaf2fb99f1268a752fab4322078b0566a054d30
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 80a0b4634a2e84181271b515d2f6f63271cce7f2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98222855"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784967"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -176,7 +176,7 @@ Azure で提供される名前解決を使用している場合、Azure の動�
 
 必要に応じて、PowerShell または API を使用して、内部 DNS サフィックスを調べることができます。
 
-* Azure Resource Manager デプロイ モデルの仮想ネットワークの場合、[ネットワーク インターフェイス REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell コマンドレット、および [az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI コマンドを通じてサフィックスを取得することができます。
+* Azure Resource Manager デプロイ モデルの仮想ネットワークの場合、[ネットワーク インターフェイス REST API](/rest/api/virtualnetwork/networkinterfaces)、[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell コマンドレット、および [az network nic show](/cli/azure/network/nic#az_network_nic_show) Azure CLI コマンドを通じてサフィックスを取得することができます。
 * クラシック デプロイ モデルの場合、[Get Deployment API](/previous-versions/azure/reference/ee460804(v=azure.100)) 呼び出しまたは [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) コマンドレットを通じてサフィックスを取得することができます。
 
 Azure へのクエリの転送がニーズに合わない場合は、独自の DNS ソリューションを提供する必要があります。 DNS 解決では次を行う必要があります。

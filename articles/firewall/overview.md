@@ -6,15 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.author: victorh
-Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 0982f0293b452c29a1c9fbb46cb24d47e70c0f5e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: bb89b6acbc76a4020ee721e87272b154bab6d0a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615569"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385175"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -55,7 +54,6 @@ Azure Firewall には、次の既知の問題があります。
 
 |問題  |説明  |対応策  |
 |---------|---------|---------|
-|ポータルを使用して、IP アドレスから IP グループに、またはその逆に規則を更新した場合、両方の種類が保存はされるが、どちらか一方しかポータルに表示されない。|この問題は、クラシック ルールで発生します。<br><br>ポータルを使用して、NAT 規則の送信元の種類を IP アドレスから IP グループまたはその逆に更新すると、両方の種類がバックエンドに保存はされますが、新しく更新した種類しか表示されません。<br><br>ネットワークまたはアプリケーションの規則の送信先の種類を IP アドレスから IP グループまたはその逆に更新した場合にも、同じ問題が発生します。|ポータルの修正は、2021 年 3 月に予定されています。<br><br>それまでの間は、Azure PowerShell、Azure CLI、または API を使用して、IP アドレスから IP グループまたはその逆に規則を変更してください。|
 |TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](../load-balancer/load-balancer-overview.md)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。|
 |PowerShell と CLI では ICMP がサポートされない|Azure PowerShell と CLI は、ネットワーク ルールの有効なプロトコルとして ICMP をサポートしていません。|それでも、ポータルと REST API を介して ICMP をプロトコルとして使用することが可能です。 近いうちに PowerShell と CLI に ICMP を追加するよう取り組んでいます。|
 |FQDN タグで port:protocol を設定する必要がある|FQDN タグを使用するアプリケーション ルールには、port:protocol の定義が必要です。|port:protocol 値として、**https** を使用できます。 FQDN タグの使用時にこのフィールドを省略可能にするため、取り組みを進めています。|
@@ -79,6 +77,7 @@ Azure Firewall には、次の既知の問題があります。
 |強制トンネリング モードで構成されたファイアウォールで開始と停止が機能しない|強制トンネリング モードで構成された Azure ファイアウォールで、開始と停止が機能しません。 強制トンネリングが構成された Azure Firewall を起動しようとすると、次のエラーが発生します。<br><br>*Set-AzFirewall: AzureFirewall FW-xx management IP configuration cannot be added to an existing firewall. Redeploy with a management IP configuration if you want to use forced tunneling support. (Set-AzFirewall: AzureFirewall FW-xx の管理 IP 構成を既存のファイアウォールに追加できません。強制トンネリング機能を使用したい場合は、管理 IP 構成で再デプロイしてください。)<br>StatusCode: 400<br>ReasonPhrase: Bad Request (無効な要求)*|調査中。<br><br>この問題は、既存のファイアウォールを削除してから、同じパラメーターで新しいファイアウォールを作成することで回避できます。|
 |ポータルを使用してファイアウォール ポリシー タグを追加できない|Azure Firewall ポリシーにはパッチ サポートの制限があり、Azure portal を使用してタグを追加することはできません。 次のエラーが発生します: "*リソースのタグを保存できませんでした*"。|解決策を調査中です。 または、Azure PowerShell のコマンドレット `Set-AzFirewallPolicy` を使用してタグを更新することもできます。|
 |IPv6 はまだサポートされていません|IPv6 アドレスをルールに追加した場合、ファイアウォールのエラーが発生します。|IPv4 アドレスのみを使用してください。 IPv6 のサポートは調査中です|
+|複数の IP グループを更新すると、競合エラーが発生して失敗します。|同じファイアウォールにアタッチされている複数の IPGroups を更新すると、いずれかのリソースがエラー状態になります。|これは既知の問題および制限です。 <br><br>IPGroup を更新すると、IPGroup がアタッチされているすべてのファイアウォールで更新がトリガーされます。 ファイアウォールがまだ "*更新中*" の状態であるときに 2 番目の IPGroup への更新が開始された場合、IPGroup の更新は失敗します。<br><br>この失敗を回避するには、同じファイアウォールにアタッチされている IPGroups を一度に 1 つずつ更新する必要があります。 各更新の間に十分な時間を確保して、ファイアウォールが "*更新中*" の状態を終了できるようにします。| 
 
 
 ## <a name="next-steps"></a>次のステップ

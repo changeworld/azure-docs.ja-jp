@@ -1,18 +1,19 @@
 ---
 title: チュートリアル - Azure Time Series Insights を使用して Azure IoT プラグ アンド プレイ デバイスのテレメトリを格納および分析する
 description: チュートリアル - Time Series Insights 環境を設定し、IoT ハブを接続して、IoT プラグ アンド プレイ デバイスからのテレメトリを表示、分析します。
-author: lyrana
-ms.author: lyhughes
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55fa10cce038c83f0758a9537a916e2dca7e13f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181688"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504279"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>チュートリアル:Time Series Insights Gen2 環境を作成および構成する
 
@@ -26,7 +27,7 @@ ms.locfileid: "102181688"
 > * 温度コントローラーおよびサーモスタット デバイスに使用した [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) のサンプル モデル ファイルを使用します。
 
 > [!NOTE]
-> この Time Series Insights と IoT プラグ アンド プレイの統合はプレビュー段階です。 DTDL デバイス モデルを Time Series Insights の時系列モデルにマップする方法は変更される可能性があります。 
+> この Time Series Insights と IoT プラグ アンド プレイの統合はプレビュー段階です。 DTDL デバイス モデルを Time Series Insights の時系列モデルにマップする方法は変更される可能性があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -123,7 +124,7 @@ az tsi event-source iothub create --event-source-name iot-hub-event-source --env
 
 ### <a name="define-your-types"></a>型の定義
 
-Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを事前に定義していなくても開始できます。 テレメトリが到着すると、時系列 ID プロパティの値に基づいて時系列インスタンスの自動解決が Time Series Insights によって試行されます。 すべてのインスタンスには、"*既定の型*" が割り当てられます。 ご利用のインスタンスを正しく分類するために新しい型を手動で作成する必要があります。 
+Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを事前に定義していなくても開始できます。 テレメトリが到着すると、時系列 ID プロパティの値に基づいて時系列インスタンスの自動解決が Time Series Insights によって試行されます。 すべてのインスタンスには、"*既定の型*" が割り当てられます。 ご利用のインスタンスを正しく分類するために新しい型を手動で作成する必要があります。
 
 次の詳細では、デバイスの DTDL モデルを時系列モデルの型と同期させる最も簡単な方法を説明しています。
 
@@ -139,7 +140,7 @@ Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
-| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
+| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |
 |`contents` (配列)| `variables` (オブジェクト)  | 次の例を参照してください。
 
 ![D T D L と時系列モデルの型を示すスクリーンショット。](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
@@ -161,7 +162,7 @@ Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを
           "kind": "numeric",
           "value": {
             "tsx": "coalesce($event.workingSet.Long, toLong($event.workingSet.Double))"
-          }, 
+          },
           "aggregation": {
             "tsx": "avg($value)"
           }

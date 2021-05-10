@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91626967"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>チュートリアル:最初の API のインポートと発行
@@ -51,7 +51,7 @@ ms.locfileid: "91626967"
    :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API の作成":::
 
 
-   |設定|値|説明|
+   |設定|[値]|説明|
    |-------|-----|-----------|
    |**OpenAPI の仕様**|*https:\//conferenceapi.azurewebsites.net?format=json*|API を実装するサービス。 要求は、API Management によってこのアドレスに転送されます。|
    |**表示名**|前述のサービス URL を入力すると、JSON に基づく値が API Management によってこのフィールドに入力されます。|[開発者ポータル](api-management-howto-developer-portal.md)に表示される名前。|

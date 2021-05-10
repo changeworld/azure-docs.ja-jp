@@ -1,5 +1,5 @@
 ---
-title: Azure 診断監視 - Azure Attestation
+title: Azure Attestation の Azure 診断監視
 description: Azure Attestation の Azure 診断監視
 services: attestation
 author: msmbaldwin
@@ -7,22 +7,20 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d01e7817906927295591353b710afe2899aacdf1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d2773be4bc67e125c18d5d38c951685e4f4fceaf
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726480"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168350"
 ---
-# <a name="setting-up-diagnostics-with-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Azure Attestation のトラステッド プラットフォーム モジュール (TPM) エンドポイントで診断を設定する
+# <a name="set-up-diagnostics-with-a-trusted-platform-module-tpm-endpoint-of-azure-attestation"></a>Azure Attestation のトラステッド プラットフォーム モジュール (TPM) エンドポイントを使用して診断を設定する
 
-Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](../azure-monitor/essentials/platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](../azure-monitor/essentials/data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。 
+この記事は、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成するのに役立ちます。 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](/azure/azure-monitor/platform/platform-logs-overview)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](/azure/azure-monitor/platform/data-platform-metrics)は、既定で収集され、Azure Monitor メトリック データベースに格納されます。
 
-TPM エンドポイント サービスは、アクティビティを監視する目的に使用できます。診断設定を使用して有効にします。 PowerShell を使用して TPM サービス エンドポイントの [Azure Monitoring](../azure-monitor/overview.md) を設定するには、以下の手順に従ってください。 
+開始する前に、[Azure PowerShell を使用して Azure Attestation を設定](quickstart-powershell.md)していることを確認してください。
 
-Azure Attestation サービスを設定する。 
-
-[Azure PowerShell を使用して Azure Attestation を設定する](./quickstart-powershell.md)
+トラステッド プラットフォーム モジュール (TPM) エンドポイント サービスは、診断設定で有効になっており、アクティビティの監視に使用できます。 次のコードを使用して、TPM サービス エンドポイントに対する [Azure Monitor による監視](/azure/azure-monitor/overview)を設定します。
 
 ```powershell
 
@@ -41,4 +39,5 @@ Azure Attestation サービスを設定する。
  Set-AzDiagnosticSetting -ResourceId $ attestationProvider.Id -StorageAccountId $ storageAccount.Id -Enabled $true 
 
 ```
-アクティビティ ログは、ストレージ アカウントの [コンテナー] セクションにあります。 詳細については、[Azure リソースからリソース ログを収集し、Azure Monitor で分析する](../azure-monitor/essentials/tutorial-resource-logs.md)方法に関する記事を参照してください。
+
+アクティビティ ログは、ストレージ アカウントの **[コンテナー]** セクションにあります。 詳細については、[Azure リソースからリソース ログを収集して分析する](/azure/azure-monitor/learn/tutorial-resource-logs)方法に関するページを参照してください。

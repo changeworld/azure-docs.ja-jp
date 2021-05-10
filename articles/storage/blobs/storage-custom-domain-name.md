@@ -9,12 +9,12 @@ ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 52fc7b9c1229421fd46b8110857a0a7a8a4f916a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 45ae3d80202bfb29074461f899798d278eb0895b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100520427"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538351"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
@@ -414,7 +414,7 @@ az storage account update \
 
    * [Azure CDN での HTTP から HTTPS へのリダイレクト](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
-   * [Azure CDN で Blob Storage を使用する場合の価格と課金](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
+   * [Azure CDN で Blob Storage を使用する場合の価格と課金](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)。
 
 ## <a name="next-steps"></a>次のステップ
 

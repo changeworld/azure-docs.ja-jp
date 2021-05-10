@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 46b6ceff74dd3a296d26cc018b380c1c3f76664c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0db79728bbb963aa360743afc70aecc213bfb7bc
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102552951"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011683"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT パーティションがある OS ディスクのサイズを変更する
 
@@ -400,9 +400,8 @@ VM が再起動したら、次の手順のようにします。
 > [!NOTE]
 > 同じ手順を使用して他の論理ボリュームのサイズを変更するには、ステップ 12 で LV の名前を変更します。
 
+
 ### <a name="rhel-raw"></a>RHEL RAW
->[!NOTE] 
->OS ディスクのサイズを増やす前に、常に VM のスナップショットを取得してください。
 
 RHEL の RAW パーティションで OS ディスクのサイズを増やすには:
 
@@ -410,120 +409,114 @@ RHEL の RAW パーティションで OS ディスクのサイズを増やすに
 1. ポータルから OS ディスクのサイズを増やします。
 1. VM を起動します。
 
-VM が再起動されたら、次の手順を実行します。
+VM が再起動したら、次の手順のようにします。
 
 1. 次のコマンドを使用して、**ルート** ユーザーとして VM にアクセスします。
- 
-   ```
-   sudo su
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. **gptfdisk** パッケージをインストールします。これは、OS ディスクのサイズを増やすために必要です。
+1. VM が再起動されたら、次の手順を実行します。
 
-   ```
-   yum install gdisk -y
-   ```
+   - **cloud-utils-growpart** パッケージをインストールして、**growpart** コマンドを使えるようにします。これは、OS ディスクおよび GPT ディスク レイアウト用の gdisk ハンドラーのサイズを増やすために必要です。 このパッケージは、ほとんどの Marketplace イメージにプレインストールされています。
 
-1.  ディスクで使用可能なすべてのセクターを表示するには、次のコマンドを実行します。
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. パーティションの種類を通知する詳細が表示されます。 GPT であることを確認します。 ルート パーティションを特定します。 ブート パーティション (BIOS ブート パーティション) とシステム パーティション ('EFI システムパーティション') を変更または削除しないでください
-
-1. 次のコマンドを使用して、パーティション分割を初めて開始します。 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. ここで、次のコマンドを確認するメッセージが表示されます ('Command: ? for help')。 
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. 次の警告が表示されます "Warning! Secondary header is placed too early on the disk! Do you want to correct this problem? (Y/N):"。 'Y' を押す必要があります
+1. **lsblk -f** コマンドを使用して、ルート ( **/** ) パーティションを保持しているパーティションおよびファイルシステムの種類を確認します。
 
-   ```
-   Y
-   ```
-
-1. 最後のチェックが完了し、確認を求めるメッセージが表示されます。 'Y' を押します
-
-   ```
-   Y
-   ```
-
-1. partprobe コマンドを使用して、すべてが正常に動作したかどうかを確認します
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. 上記の手順により、セカンダリ GPT ヘッダーが最後に配置されていることを確認しました。 次の手順では、再度 gdisk ツールを使用して、サイズ変更のプロセスを開始します。 次のコマンドを使用します。
+1. 確認のために、まず **gdisk** を使用して sda ディスクのパーティション テーブルを一覧表示します。 この例では、29.0 GiB のパーティション 2 を持つ 48 GB のディスクがあることがわかります。 このディスクは、Azure portal で 30 GB から 48 GB に拡張されています。
 
-   ```
-   gdisk /dev/sda
-   ```
-1. コマンド メニューで [p] をクリックして、パーティションの一覧を表示します。 ルート パーティション (手順では、sda2 がルート パーティションと見なされます) とブート パーティション (手順では、sda3 がブート パーティションと見なされます) を特定します 
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![ルート パーティションとブート パーティション](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. 'd' を押して、パーティションを削除し、ブートに割り当てられているパーティション番号を選択します (この例では '3')
-   ```
-   d
-   3
-   ```
-1. 'd' を押して、パーティションを削除し、ブートに割り当てられているパーティション番号を選択します (この例では '2')
-   ```
-   d
-   2
-   ```
-    ![ルート パーティションとブート パーティションの削除](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. サイズを大きくしてルート パーティションを再作成するには、'n' を押し、前に削除したルートのパーティション番号 (この例では '2') を入力して、最初のセクターを '規定値'、最後のセクターを '最後のセクター値 - ブート サイズ セクター' (この場合は 2 MB ブートに対応する '4096')、16 進数コードを '8300' として選択します
-   ```
-   n
-   2
-   (Enter default)
-   (Calculateed value of Last sector value - 4096)
-   8300
-   ```
-1. ブート パーティションを再作成するには、'n' を押し、以前に削除したブートのパーティション番号 (この例では '3') を入力し、最初のセクターを '既定値'、最後のセクターを '既定値'、16 進数コードを 'EF02' として選択します
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. 'W' コマンドを使用して変更を書き込み、確認のために 'Y' を押します
-   ```
-   w
-   Y
-   ```
-1. コマンド 'partprobe' を実行して、ディスクの安定性を確認します
-   ```
-   partprobe
-   ```
-1. VM を再起動すると、ルート パーティションのサイズが増加しています
-   ```
-   reboot
+1. **growpart** コマンドを使用して、ルートのパーティション (この場合は sda2) を拡張します。 このコマンドを使用すると、パーティションが拡張され、ディスク上のすべての連続した領域が使用されます。
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![新規のルート パーティションとブート パーティション](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. 次に、**gdisk** を使用して新しいパーティション テーブルを再度出力します。  パーティション 2 が 47.0 GiB に拡張されていることに注目してください。
 
-1. パーティションで xfs_growfs コマンドを実行してサイズを変更します
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. **xfs_growfs** を使用して、パーティション上のファイルシステムを拡張します。これは、Marketplace で生成された標準の RedHat システムに適しています。
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
-
-   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
-
 
 1. 次のように、**df** コマンドを使用して、新しいサイズが反映されていることを確認します。
 

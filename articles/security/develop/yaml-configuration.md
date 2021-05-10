@@ -4,7 +4,7 @@ description: この記事では、Microsoft Security Code Analysis 拡張機能�
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 11/29/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a41a788a84770201996fd369d9b47031674afee3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85367259"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799549"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>ビルド タスクをカスタマイズするための YAML 構成オプション
+
+> [!Note]
+> 2022 年 3 月 1 日より、Microsoft Security Code Analysis (MSCA) 拡張機能は廃止される予定です。 既存の MSCA のお客様は、2022 年 3 月 1 日まで MSCA にアクセスできます。 Azure DevOps の代替のオプションについては、[OWASP ソースコード分析ツール](https://owasp.org/www-community/Source_Code_Analysis_Tools)に関するページを参照してください。 GitHub への移行を計画しているお客様については、[GitHub Advanced Security](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security) に関するページをご確認ください。
 
 この記事では、各ビルド タスクで使用できるすべての YAML 構成オプションの一覧を示します。 この記事では、最初にセキュリティ コード分析ツールのタスクについて説明します。 最後に、後処理タスクについて説明します。
 

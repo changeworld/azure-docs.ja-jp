@@ -8,13 +8,13 @@ ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/10/2020
-ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/08/2020
+ms.openlocfilehash: a7a7bbb8b911f86b81cdeafe3fe57e1fdf820681
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98680188"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228284"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 
@@ -85,7 +85,15 @@ Australia Authoring (Programmatic API とも呼ばれる) のリソースは Azu
 
 * ヨーロッパまたはオーストラリアのオーサリング リージョンではサポートされていない Azure 地域
 
-これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure の米国地域に格納されます。 
+これらの Azure 地域にデプロイすると、アプリのエンド ユーザーからエンドポイントが受信した発話は、アクティブ ラーニングのために Azure の米国地域に格納されます。
+
+### <a name="switzerland-north"></a>スイス北部
+
+Switzerland North Authoring (Programmatic API とも呼ばれる) のリソースは、Azure のスイス地域でホストされており、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
+
+* スイス 
+
+これらの Azure 地域にデプロイすると、エンドポイントがアプリのエンド ユーザーから受信した発話は、アクティブ ラーニングのために Azure のスイス地域に格納されます。
 
 ## <a name="disable-active-learning"></a>アクティブ ラーニングを無効にする
 

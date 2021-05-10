@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203897"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775333"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -189,7 +189,7 @@ npm start
 
 この記事で作成したリソースがもう必要ない場合は、次の手順に従って削除します。 
 
-Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループを削除すると、以下も削除されます。
+Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/cli/azure/group#az_group_delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループを削除すると、以下も削除されます。
 * Azure Digital Twins インスタンス (エンド ツー エンドのチュートリアルから)
 * IoT Hub とハブのデバイス登録 (エンド ツー エンドのチュートリアルから)
 * Event Grid トピックと関連付けられているサブスクリプション

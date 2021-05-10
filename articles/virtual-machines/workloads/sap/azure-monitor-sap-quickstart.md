@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: d9febb4efba85d47abe1cc11a3cb52dc0393c036
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101672012"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554061"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -81,12 +81,23 @@ Azure portal (https://portal.azure.com) にサインインする
 
 1. ドロップダウンから [OS (Linux)] を選択します 
 
-> [!IMPORTANT]
-> OS (Linux) プロバイダーを構成するには、各 BareMetal インスタンスに Node_Exporter がインストールされていることを確認してください。 詳細については、「 [Node_Exporter](https://github.com/prometheus/node_exporter)」を参照してください
+>[!IMPORTANT]
+> OS (Linux) プロバイダーを構成するには、監視する各ホスト (BareMetal または VM) に最新バージョンの Node_Exporter がインストールされていることを確認します。 最新バージョンを見つけるには、この [リンク] (https://prometheus.io/download/#node_exporter) ) を使用します。 詳細については、「 [Node_Exporter](https://github.com/prometheus/node_exporter)」を参照してください
 
 2. 名前を入力します。これは、BareMetal インスタンスの識別子になります。
 3. Node Exporter エンドポイントを http://IP:9100/metrics の形式で入力します。
-4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]**  を選択してデプロイを完了します。 
+
+>[!IMPORTANT]
+> Linux ホストのプライベート IP アドレスを使用してください。 ホストと AMS リソースが同じ VNET 内にあることを確認してください。 
+
+>[!Note]
+> Linux ホストでファイアウォール ポート "9100" を開く必要があります。
+>(firewall-cmd を使用している場合: firewall-cmd --permanent --add-port=9100/tcp firewall-cmd --reload。ufw を使用している場合: ufw allow 9100/tcp ufw reload)
+
+>[!Tip]
+> Linux ホストが Azure VM の場合は、該当するすべての NSG で、ソースとしての "VirtualNetwork" からの受信トラフィックがポート 9100 で許可されるようにしてください。
+ 
+5. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]**  を選択してデプロイを完了します。 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server プロバイダー

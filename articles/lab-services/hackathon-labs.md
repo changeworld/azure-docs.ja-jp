@@ -4,10 +4,10 @@ description: この記事では、ハッカソンの実行に使用できるラ�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102452732"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>次回のハッカソンに Azure Lab Services を使用する

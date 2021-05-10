@@ -10,10 +10,10 @@ ms.service: virtual-machines
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e70284a3a89c30d0f1d1363a15652449a6a1d4f5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100558101"
 ---
 # <a name="move-a-marketplace-azure-virtual-machine-to-another-subscription"></a>Marketplace Azure 仮想マシンを別のサブスクリプションに移動する
@@ -141,7 +141,7 @@ az group delete --name $destinationResourceGroup --subscription $destinationSubs
 - [az vm image terms show](/cli/azure/vm/image/terms#az_vm_image_terms_show)
 - [az vm show](/cli/azure/vm#az_vm_show)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [VM を別の Azure リージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)
 - [他のサブスクリプションまたはリソース グループへ VM を移動する](./linux/move-vm.md)

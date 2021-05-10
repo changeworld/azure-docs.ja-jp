@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d97287657b1e1fe7d540e8811c90794aaa5fece
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101678653"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739568"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>IoT Hub 用のデバイス更新のエージェントの概要
 
 デバイス更新エージェントは、2 つの概念レイヤーで構成されています。
 
-* インターフェイス レイヤーは、[Azure IoT プラグ アンド プレイ (PnP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) 上に構築されており、デバイス更新エージェントと デバイス更新サービスの間のメッセージ フローを可能にします。
+* インターフェイス レイヤーは、[Azure IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 上に構築されており、デバイス更新エージェントと デバイス更新サービスの間のメッセージ フローを可能にします。
 * プラットフォーム レイヤーは、プラットフォームまたはデバイスに固有である可能性があるダウンロード、インストール、適用の高レベルの更新アクションを処理します。
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="エージェントの実装。" lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -60,7 +60,7 @@ Linux プラットフォーム レイヤーの実装は `src/platform_layers/lin
 * [イメージ更新シミュレーター](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/swupdate_handler/inc/aduc/swupdate_simulator_handler.hpp)
 * [パッケージ更新 apt シミュレーター](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/apt_handler/inc/aduc/apt_simulator_handler.hpp)
 
-注: AzureDeviceUpdateCore PnP インターフェイスの InstalledCriteria フィールドには、内容の sha256 ハッシュが含まれる必要があります。 これは、[インポート マニフェスト オブジェクト](import-update.md#create-device-update-import-manifest)に存在するハッシュと同じです。 `installedCriteria` および `AzureDeviceUpdateCore` インターフェイスについての[詳細はこちらをご覧ください](device-update-plug-and-play.md)。
+注: AzureDeviceUpdateCore PnP インターフェイスの InstalledCriteria フィールドには、内容の sha256 ハッシュが含まれる必要があります。 これは、[インポート マニフェスト オブジェクト](import-update.md#create-a-device-update-import-manifest)に存在するハッシュと同じです。 `installedCriteria` および `AzureDeviceUpdateCore` インターフェイスについての[詳細はこちらをご覧ください](device-update-plug-and-play.md)。
 
 ### <a name="swupdate-update-handler"></a>`SWUpdate` 更新ハンドラー
 
@@ -72,8 +72,7 @@ APT 更新ハンドラーにより、APT 固有の更新マニフェストが処
 
 ## <a name="self-update-device-update-agent"></a>デバイス更新エージェントの自己更新
 
-デバイス更新エージェントとその依存関係は、IoT Hub 用のデバイス更新のパイプラインを使用して更新できます。 イメージ ベースの更新を使用している場合は、新しいイメージに最新のデバイス更新エージェントを含めます。 パッケージ ベースの更新を使用している場合は、他のパッケージと同様に、デバイス更新エージェントとその必要なバージョンを apt マニフェストに含めます。 apt マニフェストについての[詳細はこちらをご覧ください](device-update-apt-manifest.md)。 デバイス更新エージェントと配信の最適化エージェントのインストールされているバージョンは、[IoT デバイス ツイン](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)の [デバイスのプロパティ] セクションで確認できます。 [ADU Core インターフェイスでのデバイス プロパティについての詳細は、こちらをご覧ください](device-update-plug-and-play.md#device-properties)。
+デバイス更新エージェントとその依存関係は、IoT Hub 用のデバイス更新のパイプラインを使用して更新できます。 イメージ ベースの更新を使用している場合は、新しいイメージに最新のデバイス更新エージェントを含めます。 パッケージ ベースの更新を使用している場合は、他のパッケージと同様に、デバイス更新エージェントとその必要なバージョンを apt マニフェストに含めます。 apt マニフェストについての[詳細はこちらをご覧ください](device-update-apt-manifest.md)。 デバイス更新エージェントと配信の最適化エージェントのインストールされているバージョンは、[IoT デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)の [デバイスのプロパティ] セクションで確認できます。 [ADU Core インターフェイスでのデバイス プロパティについての詳細は、こちらをご覧ください](device-update-plug-and-play.md#device-properties)。
 
 ## <a name="next-steps"></a>次の手順
 [デバイス更新エージェントの構成ファイルについて](device-update-configuration-file.md)
-

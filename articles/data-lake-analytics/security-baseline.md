@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 33196af2f3544733715ece501cceec0366d2a47c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7569f98b1a721ecc9bd8e41a7d55cfbb80a2bc88
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716256"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564621"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics 用の Azure セキュリティ ベースライン
 
@@ -64,9 +64,9 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](/azure/azure-monitor/learn/quick-collect-azurevm) 
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools)
 
@@ -78,13 +78,13 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 **ガイダンス**: Data Lake Analytics の診断設定を有効にして、監査ログと要求ログにアクセスします。 これには、イベント ソース、日付、ユーザー、timestamp、およびその他の便利な要素などのデータが含まれます。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.DataLakeAnalytics**:
 
@@ -94,9 +94,9 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期およびアーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) 
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **責任**: Customer
 
@@ -108,9 +108,9 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics ワークスペースの詳細について](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics ワークスペースの詳細について](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **責任**: Customer
 
@@ -122,7 +122,7 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)  
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)  
 
 - [Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)
 
@@ -162,7 +162,7 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 また、Azure Active Directory (Azure AD) Privileged Identity Management および Azure Resource Manager を使用して、Just-In-Time アクセスを有効にすることもできます。
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 **責任**: Customer
 
@@ -240,7 +240,7 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -252,7 +252,7 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 **ガイダンス**: Data Lake Analytics および Azure Active Directory (Azure AD) の診断設定を有効にし、すべてのログを Log Analytics ワークスペースに送信します。 Log Analytics 内で、目的のアラート (無効なシークレットへのアクセスの試行など) を構成します。
 
-- [Azure AD ログを Azure Monitor ログと統合する](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure AD ログを Azure Monitor ログと統合する](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **責任**: Customer
 
@@ -296,7 +296,7 @@ Data Lake Analytics を完全に Azure セキュリティ ベンチマークに�
 
 - [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure ロールベースのアクセス制御の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+- [Azure ロールベースのアクセス制御の管理](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 - [ファイアウォール規則](/rest/api/datalakeanalytics/firewallrules)
 
@@ -344,7 +344,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
 
-- [Azure RBAC の管理](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-azure-role-based-access-control)
+- [Azure RBAC の管理](./data-lake-analytics-manage-use-portal.md#manage-azure-role-based-access-control)
 
 **責任**: Customer
 
@@ -364,7 +364,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Data Lake Analytics リソースの実稼働インスタンスに対して変更が行われたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -477,7 +477,7 @@ Microsoft では、Azure Data Lake Analytics をサポートしている基に�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -713,5 +713,5 @@ App Service、Data Lake Analytics、Blob Storage などの Azure リソースに
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

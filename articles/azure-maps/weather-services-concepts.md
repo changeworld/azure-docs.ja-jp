@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps における Weather Service (プレビュー) の概念
-description: Microsoft Azure Maps Weather Service (プレビュー) に適用される概念について説明します。
+title: Microsoft Azure Maps における Weather Service の概念
+description: Microsoft Azure Maps Weather Service に適用される概念について説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76d4eb08ba9cc0394610fdd00f6faba02278e8e3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904739"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258012"
 ---
-# <a name="weather-services-preview-in-azure-maps"></a>Azure Maps の Weather Service (プレビュー)
-
-> [!IMPORTANT]
-> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="weather-services-in-azure-maps"></a>Azure Maps の気象サービス
 
 この記事では、Azure Maps [Weather Service](/rest/api/maps/weather) に適用される概念を紹介します。 Weather API の使用を開始する前に、この記事を読み通すことをお勧めします。
 

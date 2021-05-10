@@ -6,7 +6,6 @@ documentationcenter: na
 author: damendo
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: tutorial
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4f9f3e2af9abc054d3b1d5ce2bd1f1b27f7bf958
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570835"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066043"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
@@ -158,7 +157,7 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
     | ---                     | ---            |
     | 宛先ポート範囲 | 22             |
     | アクション                  | 拒否           |
-    | Priority                | 100            |
+    | 優先度                | 100            |
     | 名前                    | DenySshInbound |
 
 5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]**、**[接続モニター]** の順に選択し、**[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。

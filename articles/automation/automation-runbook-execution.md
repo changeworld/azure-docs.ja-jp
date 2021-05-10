@@ -3,14 +3,14 @@ title: Azure Automation での Runbook の実行
 description: この記事では、Azure Automation における Runbook の処理の概要を示します。
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586054"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954345"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -34,7 +34,8 @@ Azure portal で Runbook の一覧を表示すると、各 Runbook に対して�
 
 Azure Automation の Runbook は、Azure サンドボックスまたは [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) のいずれかで実行できます。 
 
-Runbook は、Azure のリソースに対して認証および実行されるように設計されている場合、複数のジョブで使用できる共有環境である Azure サンドボックスで実行されます。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。 Azure サンドボックス環境では、対話型操作はサポートされていません。 そのため、すべてのプロセス外 COM サーバーにアクセスできません。 また、Win32 呼び出しを行う Runbook には、ローカルの MOF ファイルを使用する必要があります。
+Runbook は、Azure のリソースに対して認証および実行されるように設計されている場合、複数のジョブで使用できる共有環境である Azure サンドボックスで実行されます。 同じサンドボックスを使用するジョブは、サンドボックスのリソース制限に縛られます。 Azure サンドボックス環境では、対話型操作はサポートされていません。 これにより、アウトプロセスのすべての COM サーバーにアクセスできなくなります。また、Runbook の Win32 プロバイダーに [WMI 呼び出し](/windows/win32/wmisdk/wmi-architecture)を行うことはできません。  これらのシナリオは、Windows Hybrid Runbook Worker で Runbook を実行することによってのみサポートされます。
+
 
 また、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用すると、そのロールがホストされているコンピューターで、環境内のローカル リソースに対して Runbook を直接実行することができます。 Azure Automation によって Runbook が格納および管理された後、1 つ以上の割り当てられたコンピューターに配信されます。
 
@@ -69,7 +70,7 @@ Runbook ロジックの一部として一時ファイルを作成する必要が
 
 Runbook には必ず、[リソース](/rest/api/resources/resources) (VM、ネットワーク、ネットワーク上のリソースなど) を扱うロジックが含まれています。 リソースは Azure サブスクリプションに関連付けられており、どのリソースにアクセスする場合でも Runbook に適切な資格情報が必要となります。 Runbook におけるリソースの処理の例については、「[リソースの処理](manage-runbooks.md#handle-resources)」を参照してください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 Azure Automation は、[Azure Security Center (ASC)](../security-center/security-center-introduction.md) を使用してリソースのセキュリティを確保し、Linux システムにおけるセキュリティ侵害を検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
 

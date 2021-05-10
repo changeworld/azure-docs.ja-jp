@@ -3,12 +3,12 @@ title: Azure Event Hubs を Azure Private Link サービスと統合する
 description: Azure Event Hubs を Azure Private Link サービスと統合する方法について説明します
 ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f5c01788044f3c3a5d875a24172e7222ff195f81
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94427753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960845"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Event Hubs 名前空間へのアクセスを許可する 
 Azure Private Link サービスを使用すると、仮想ネットワーク内の **プライベート エンドポイント** 経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
@@ -17,11 +17,10 @@ Azure Private Link サービスを使用すると、仮想ネットワーク内�
 
 詳細については、「[Azure Private Link とは](../private-link/private-link-overview.md)」を参照してください。
 
-> [!WARNING]
-> プライベート エンドポイントを有効にすると、他の Azure サービスが Event Hubs と対話できないようにすることができます。  ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外として、プライベート エンドポイントが有効になっている場合でも、特定の信頼できるサービスからの Event Hubs リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
-
->[!NOTE]
-> この機能は、**Standard** と **Dedicated** レベルの両方でサポートされています。 **Basic** レベルではサポートされません。
+## <a name="important-points"></a>重要なポイント
+- この機能は、**Standard** と **Dedicated** レベルの両方でサポートされています。 **Basic** レベルではサポートされません。
+- プライベート エンドポイントを有効にすると、他の Azure サービスが Event Hubs と対話できないようにすることができます。  ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外として、プライベート エンドポイントが有効になっている場合でも、特定の **信頼できるサービス** からの Event Hubs リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
+- 指定した IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に **少なくとも 1 つの IP 規則または仮想ネットワーク規則** を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを追加する
 
@@ -51,8 +50,8 @@ Event Hubs の名前空間が既にある場合は、次の手順に従ってプ
 
     :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="[ネットワーク] タブ - [選択されたネットワーク] オプション" lightbox="./media/private-link-service/selected-networks-page.png":::    
 
-    > [!NOTE]
-    > 既定では、 **[選択されたネットワーク]** オプションが選択されています。 IP ファイアウォール規則を指定しない場合、または仮想ネットワークを追加しない場合は、パブリック インターネット経由で名前空間にアクセスできます。 
+    > [!WARNING]
+    > 既定では、 **[選択されたネットワーク]** オプションが選択されています。 IP ファイアウォール規則を指定しない場合、または仮想ネットワークを追加しない場合は、パブリック インターネットから (アクセス キーを使用して) 名前空間にアクセスできます。 
 1. ページの上部にある **[プライベート エンドポイント接続]** タブを選択します。 
 1. ページの上部にある **[+ プライベート エンドポイント]** ボタンを選択します。
 

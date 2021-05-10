@@ -7,18 +7,18 @@ ms.author: andyriv
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0128d0de4f078b62bc9571c8758d80cb26585354
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e9749dfd7b28551a4fc2e7c6ba70ba9cce4e5a69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102615382"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307301"
 ---
 # <a name="microsoft-connected-cache-preview-deployment-scenario-sample-two-level-nested-azure-iot-edge-gateway-with-outbound-unauthenticated-proxy"></a>Microsoft 接続キャッシュ プレビュー デプロイ シナリオのサンプル: アウトバンドの認証されていないプロキシによる 2 レベルの入れ子の Azure IoT Edge ゲートウェイ
 
 次の図に示すように、このシナリオでは、Azure IoT Edge ゲートウェイとダウンストリーム Azure IoT Edge デバイスがあります。別の Azure IoT Edge ゲートウェイを親とする 1 つの Azure IoT Edge ゲートウェイと IT DMZ にあるプロキシ サーバーです。 次に、Azure IoT Edge ゲートウェイにデプロイされた両方の MCC モジュールに対して、Azure portal UX で設定される Microsoft 接続キャッシュ環境変数の例を示します。 この例では、Azure IoT Edge ゲートウェイの 2 レベルの構成を示していますが、Microsoft 接続キャッシュでサポートされるアップストリーム ホストの深さに制限はありません。 前の例の MCC コンテナー作成オプションに違いはありません。
 
-Azure IoT Edge ゲートウェイの多層デプロイの構成の詳細については、[ダウンストリーム IoT Edge デバイスの接続 - Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-connect-downstream-iot-edge-device?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true) に関するドキュメントを参照してください。 さらに、Azure IoT Edge、Microsoft 接続キャッシュ、およびカスタム モジュールをデプロイする場合、すべてのモジュールが同じコンテナー レジストリに存在する必要があることにも注意してください。
+Azure IoT Edge ゲートウェイの多層デプロイの構成の詳細については、[ダウンストリーム IoT Edge デバイスの接続 - Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11) に関するドキュメントを参照してください。 さらに、Azure IoT Edge、Microsoft 接続キャッシュ、およびカスタム モジュールをデプロイする場合、すべてのモジュールが同じコンテナー レジストリに存在する必要があることにも注意してください。
 
 次の図は、CDN リソースへの直接アクセスとして 1 つの Azure IoT Edge ゲートウェイが、Raspberry Pi などの Azure IoT リーフ デバイスの親として機能する別の Azure IoT Edge ゲートウェイの親として機能しているシナリオを示しています。 CDN リソースへのインターネット接続があるのは Azure IoT Edge ゲートウェイの親のみで、Azure IoT Edge の子と Azure IoT デバイスはどちらもインターネットから分離されています。 
 
@@ -70,7 +70,7 @@ Azure IoT Edge ゲートウェイの多層デプロイの構成の詳細につ�
 ## <a name="child-gateway-configuration"></a>子ゲートウェイ構成
 
 >[!Note]
->独自のプライベート レジストリで構成に使用されているコンテナーをレプリケートした場合、モジュールのデプロイの config.xml 設定とランタイム設定を変更する必要があります。 詳細については、[チュートリアル - IoT Edge デバイスの階層の作成 - Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-nested-iot-edge?view=iotedge-2020-11&tabs=azure-portal&preserve-view=true#deploy-modules-to-the-lower-layer-device) に関するページを参照してください。
+>独自のプライベート レジストリで構成に使用されているコンテナーをレプリケートした場合、モジュールのデプロイの config.xml 設定とランタイム設定を変更する必要があります。 詳細については、「[ダウンストリーム IoT Edge デバイスを接続する - Azure IoT Edge](../iot-edge/how-to-connect-downstream-iot-edge-device.md?preserve-view=true&tabs=azure-portal&view=iotedge-2020-11#deploy-modules-to-lower-layer-devices)」を参照してください。
 
 1. 次の例に示すように、Edge エージェントのイメージ パスを変更します。
 

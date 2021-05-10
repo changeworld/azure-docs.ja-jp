@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb7e64065e311dc18f33dffb169d5c27a34008d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 05a0aeb43b13dc4db28ca8c56fc668756a2a4510
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673037"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258726"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -329,6 +329,8 @@ ms.locfileid: "101673037"
 * **SQL バージョンのサポート**: SAP のお客様に対しては、Microsoft Azure Virtual Machines で SQL Server 2008 R2 以降がサポートされています。 これより前のエディションはサポートされていません。 詳細については、この一般的な [サポートの説明](https://support.microsoft.com/kb/956893) を確認してください。 マイクロソフトは基本的には SQL Server 2008 をサポートしています。 ただし、SQL Server 2008 R2 で導入された SAP の重要な機能によって、SQL Server 2008 R2 が SAP の最小リリースとなっています。 一般的に、Azure IaaS で SAP ワークロードを実行するには、最新の SQL Server リリースを使用することを検討することをお勧めします。 最新の SQL Server リリースは、Azure のサービスと機能の一部との統合性が向上しています。 または、Azure IaaS インフラストラクチャで操作を最適化するように変更します。 そのため、このドキュメントは SQL Server 2016 と SQL Server 2017 に制限されています。
 * **SQL のパフォーマンス**: Microsoft Azure がホストする Virtual Machines は、他のパブリック クラウド仮想化製品と比べて良好に機能しますが、個々の結果は異なる場合があります。 「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)」の記事を参照してください。
 * **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。 Azure Marketplace には、最新の SQL Server リリースを含むイメージがあります。 SQL Server が既にインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。 その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。 このようなイメージを使用するには、「[Microsoft Azure Marketplace からの SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順をご確認ください。 
+*  **1 つの Azure VM 内で SQL Server の複数インスタンスのサポート**: このデプロイ方法はサポートされています。 ただし、リソースの制限事項 (特に、使用している VM の種類のネットワークとストレージの帯域幅に関するもの) に注意してください。 詳細については、「[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)」を参照してください。 これらのクォータ制限により、オンプレミスで実装できるのと同じマルチインスタンス アーキテクチャを実装できなくなる可能性があります。 1 つの VM 内で使用可能なリソースを共有する構成と干渉に関しては、オンプレミスと同じ考慮事項を考慮する必要があります。
+*  **1 つの VM 内の 1 つの SQL Server インスタンス内で複数の SAP データベース**: 上記のように、このような構成はサポートされています。 1 つの SQL Server インスタンスの共有リソースを共有する複数の SAP データベースに関する考慮事項は、オンプレミス デプロイの場合と同じです。 さらに、特定の VM の種類にアタッチできるディスク数などの他の制限も考慮してください。 また、「[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)」で詳しく説明されているように、特定の VM の種類のネットワークと記憶域のクォータ制限もあります。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>SAP 関連 SQL Server のデプロイメントの VM/VHD 構造に関する推奨事項
@@ -471,7 +473,7 @@ SAP 用の Azure IaaS デプロイで SQL Server を使用する場合、高可�
 Microsoft は Windows Server 2016 で[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を導入しました。 記憶域スペース ダイレクトのデプロイに基づいて、SQL Server FCI クラスタリングは一般的にサポートされています。 Azure では、Windows クラスタリングに使用できる [Azure 共有ディスク](../../disks-shared-enable.md?tabs=azure-cli)も提供されています。 SAP ワークロードに対しては、これらの HA オプションはサポートされていません。 
 
 ### <a name="sql-server-log-shipping"></a>SQL Server ログ配布
-高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。 HA 構成に参加している VM で名前解決が機能している場合、まったく問題はなく、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 ログ配布のセットアップとログ配布の指針については、 記事「[ログ配布について (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server)」で SQL Server のログ配布の詳細を確認できます。
+高可用性 (HA) のメソッドの 1 つは、SQL Server ログ配布です。 HA 構成に参加している VM で名前解決を行えているのであれば、何も問題はありません。 Azure でのセットアップは、ログ配布の設定とログ配布に関する原則に関連してオンプレミスで実行されるセットアップとは異なります。 記事「[ログ配布について (SQL Server)](/sql/database-engine/log-shipping/about-log-shipping-sql-server)」で SQL Server のログ配布の詳細を確認できます。
 
 1 つの Azure リージョン内で高可用を達成する目的で、SQL Server のログ配布機能が Azure で使用されることはほとんどありませんでした。 ただし、以下のシナリオでは、SAP ユーザーは Azure と適切に連携してログ配布を使用していました。
 
@@ -516,10 +518,10 @@ SQL Server Always On は、Azure for SAP ワークロードのデプロイで使
 - 可用性グループ リスナーを使用します。 可用性グループ リスナーを使用する場合、Azure Load Balancer をデプロイする必要があります。 この方法は、既定のデプロイ方法です。 SAP アプリケーションは、単一のノードとではなく、可用性グループ リスナーと接続するように構成されます。
 - SQL Server データベース ミラーリングの接続パラメーターを使用します。 この場合、両方のノードに名前を付ける方法で SAP アプリケーションの接続を構成する必要があります。 このような SAP 側構成の詳細については、SAP Note [#965908](https://launchpad.support.sap.com/#/notes/965908) を参照してください。 このオプションを使用する場合、可用性グループ リスナーを構成する必要はありません。 また、SQL Server の高可用性のために Azure Load Balancer を構成する必要はありません。 その結果、SQL Server インスタンスへの着信トラフィックは Azure Load Balancer 経由でルーティングされないので、SAP アプリケーション レイヤーと DBMS レイヤーの間のネットワーク待機時間は短くなります。 ただし、このオプションは、可用性グループを 2 つのインスタンスにまたがるように制限する場合にのみ機能する点に注意してください。 
 
-Azure リージョン間に追加のディザスター リカバリー機能のために SQL Server Always On 機能を利用しているユーザーはごく少数です。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
+Azure リージョン間にディザスター リカバリー機能のために SQL Server Always On 機能を利用しているお客様はごく少数です。 一部のユーザーは、セカンダリ レプリカからバックアップを実行する機能も使用しています。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server Transparent Data Encryption
-Azure に SAP SQL Server データベースをデプロイするときに、SQL Server [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) を使用しているユーザーは多数います。 SQL Server TDE 機能は SAP によって完全にサポートされています (SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493) を参照)。 
+SAP SQL Server データベースを Azure にデプロイするときに、SQL Server [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) を使用しているお客様はたくさんいます。 SQL Server TDE 機能は SAP によって完全にサポートされています (SAP Note [#1380493](https://launchpad.support.sap.com/#/notes/1380493) を参照)。 
 
 ### <a name="applying-sql-server-tde"></a>SQL Server TDE の適用
 オンプレミスで実行している別の DBMS から Azure で実行されている Windows/SQL Server に対する異種移行を実行する場合、事前に SQL Server 内に空のターゲット データベースを作成する必要があります。 次の手順では、SQL Server TDE の機能を適用します。 この手順は、まだオンプレミスで運用システムを実行している間に行います。 この順序で実行する理由は、空のデータベースを暗号化するプロセスにはかなりの時間がかかるためです。 次に、SAP インポート プロセスで、ダウンタイム フェーズ中にデータを暗号化されたデータベースにインポートします。 暗号化されたデータベースにインポートする場合のオーバーヘッドは、エクスポート フェーズ後にダウン タイム フェーズでデータベースを暗号化する場合よりも、時間に対する影響が少なくなります。 データベース上で実行されている SAP ワークロードで TDE を適用しようとすると、否定的なエクスペリエンスが発生しました。 そのため、TDE のデプロイは、特定のデータベース上の SAP ワークロードを使用せずに実行する必要があるアクティビティとして扱うことをお勧めします。

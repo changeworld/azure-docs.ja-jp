@@ -6,14 +6,14 @@ ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 03/03/2021
-ms.custom: template-quickstart
+ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: 3fc522c4bdda9eb1047d5258bcc431d0268990b9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21ec5000ed7ef9df1805fa6ec43e20efc0f82182
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121645"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481244"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する 
 
@@ -23,36 +23,35 @@ ms.locfileid: "102121645"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-* 以下が用意されていることを確認します。
-    * 稼働している Kubernetes クラスター。
-    * Azure Arc に接続するクラスターを指し示す `kubeconfig` ファイル。
-    * Azure Arc 対応 Kubernetes リソースの種類 (`Microsoft.Kubernetes/connectedClusters`) を接続するユーザーまたはサービス プリンシパルに対する "読み取り" および "書き込み" アクセス許可。
+* 稼働している Kubernetes クラスター。 お持ちでない場合は、次のいずれかのオプションを使用してクラスターを作成できます。
+    * [Docker 内の Kubernetes (KIND)](https://kind.sigs.k8s.io/)
+    * [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) または [Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 用の Docker を使用して Kubernetes クラスターを作成する
+    * [クラスター API](https://cluster-api.sigs.k8s.io/user/quick-start.html) を使用したセルフマネージド Kubernetes クラスター
+
+    >[!NOTE]
+    > クラスターには、オペレーティング システムとアーキテクチャの種類が `linux/amd64` であるノードが少なくとも 1 つ含まれている必要があります。 `linux/arm64` ノードのみが含まれるクラスターはまだサポートされていません。
+    
+* `kubeconfig` ファイルと、クラスターを指すコンテキスト。
+* Azure Arc 対応 Kubernetes リソースの種類 (`Microsoft.Kubernetes/connectedClusters`) に対する "読み取り" および "書き込み" アクセス許可。
+
 * [Helm 3 の最新リリース](https://helm.sh/docs/intro/install)をインストールします。
-* 次の Azure Arc 対応 Kubernetes CLI 拡張機能 (バージョン 1.0.0 以上) をインストールします。
+
+- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* `connectedk8s` Azure CLI 拡張機能バージョン 1.0.0 以降をインストールします。
   
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
-  ```
-  * これらの拡張機能を最新バージョンに更新するには、次のコマンドを実行します。
-  
-  ```azurecli
-  az extension update --name connectedk8s
-  az extension update --name k8s-configuration
   ```
 
+>[!TIP]
+> `connectedk8s` 拡張機能が既にインストールされている場合は、次のコマンドを使用して最新バージョンに更新してください - `az extension update --name connectedk8s`
+
+
 >[!NOTE]
->**サポートされているリージョン:**
->* 米国東部
->* 西ヨーロッパ
->* 米国中西部
->* 米国中南部
->* 東南アジア
->* 英国南部
->* 米国西部 2
->* オーストラリア東部
->* 米国東部 2
->* 北ヨーロッパ
+>Azure Arc 対応 Kubernetes でサポートされているリージョンの一覧については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)を参照してください。
+
+>[!NOTE]
+> クラスターでカスタムの場所を使用する場合、カスタムの場所は現時点では米国東部または西ヨーロッパ リージョンでのみ利用可能であるため、クラスターの接続にはこれらのリージョンを使用してください。 その他すべての Azure Arc 対応 Kubernetes 機能は、上記のすべてのリージョンでご利用いただけます。
 
 ## <a name="meet-network-requirements"></a>ネットワーク要件を満たす
 
@@ -64,7 +63,7 @@ ms.locfileid: "102121645"
 | エンドポイント (DNS) | 説明 |  
 | ----------------- | ------------- |  
 | `https://management.azure.com`                                                                                 | エージェントが Azure に接続し、クラスターを登録するために必要です。                                                        |  
-| `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com`, `https://westcentralus.dp.kubernetesconfiguration.azure.com`, `https://southcentralus.dp.kubernetesconfiguration.azure.com`, `https://southeastasia.dp.kubernetesconfiguration.azure.com`, `https://uksouth.dp.kubernetesconfiguration.azure.com`, `https://westus2.dp.kubernetesconfiguration.azure.com`, `https://australiaeast.dp.kubernetesconfiguration.azure.com`, `https://eastus2.dp.kubernetesconfiguration.azure.com`, `https://northeurope.dp.kubernetesconfiguration.azure.com` | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント。                                      |  
+| `https://<region>.dp.kubernetesconfiguration.azure.com` | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント。                                      |  
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager トークンをフェッチし、更新するために必要です。                                                                                    |  
 | `https://mcr.microsoft.com`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  システムによって割り当てられたマネージド サービス ID (MSI) 証明書をプルするために必要です。                                                                  |
@@ -75,11 +74,13 @@ ms.locfileid: "102121645"
     ```azurecli
     az provider register --namespace Microsoft.Kubernetes
     az provider register --namespace Microsoft.KubernetesConfiguration
+    az provider register --namespace Microsoft.ExtendedLocation
     ```
 2. 登録プロセスを監視します。 登録には最大で 10 分かかる場合があります。
     ```azurecli
     az provider show -n Microsoft.Kubernetes -o table
-    az provider show -n Microsoft.KubernetesConfiguration -o table    
+    az provider show -n Microsoft.KubernetesConfiguration -o table
+    az provider show -n Microsoft.ExtendedLocation -o table
     ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する

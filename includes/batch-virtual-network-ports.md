@@ -14,10 +14,10 @@ ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
 ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103561918"
 ---
 ### <a name="general-requirements"></a>一般的な要件
@@ -70,14 +70,14 @@ ms.locfileid: "103561918"
 
 **[受信セキュリティ規則]**
 
-| ソース IP アドレス | 発信元サービス タグ | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
+| ソース IP アドレス | 発信元サービス タグ | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
 | 該当なし | `BatchNodeManagement` [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | * | Any | 29876 から 29877 | TCP | Allow |
 | Linux マルチインスタンス タスクのためにコンピューティング ノードまたはコンピューティング ノード サブネット (あるいは両方) にリモート アクセスするためのユーザー ソース IP (必要な場合) | 該当なし | * | Any | 3389 (Windows)、22 (Linux) | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 到着地 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
+| source | ソース ポート | 宛先 | 宛先サービス タグ | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- | --- |
 | Any | * | [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
 | Any | * | [サービス タグ](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `BatchNodeManagement` (リージョン バリアントを使用している場合は、Batch アカウントと同じリージョン) | 443 | TCP | Allow |
@@ -107,13 +107,13 @@ NSG を指定する必要はありません。Batch IP アドレスからプー�
 
 **[受信セキュリティ規則]**
 
-| ソース IP アドレス | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
+| ソース IP アドレス | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- |
 Any <br /><br />実際上は "すべて許可" が必要ですが、Batch サービス以外の IP アドレスをすべてフィルターで除外する ACL 規則が、Batch サービスにより各ノードのレベルで適用されます。 | * | Any | 10100、20100、30100 | TCP | Allow |
 | コンピューティング ノードへの RDP アクセスを許可する場合 (省略可能) | * | Any | 3389 | TCP | Allow |
 
 **アウトバウンド セキュリティ規則**
 
-| source | ソース ポート | 到着地 | 宛先ポート | Protocol | アクション |
+| source | ソース ポート | 宛先 | 宛先ポート | Protocol | アクション |
 | --- | --- | --- | --- | --- | --- |
 | Any | * | Any | 443  | Any | Allow |

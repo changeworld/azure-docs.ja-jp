@@ -4,10 +4,10 @@ description: プールが作成されると生成される Batch プール作成
 ms.topic: reference
 ms.date: 10/08/2020
 ms.openlocfilehash: f8b020401443b2a9e80837599d6fd4b2a3001d27
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97609005"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
@@ -49,7 +49,7 @@ ms.locfileid: "97609005"
 }
 ```
 
-|要素|Type|メモ|
+|要素|Type|Notes|
 |-------------|----------|-----------|
 |`id`|String|プールの ID。|
 |`displayName`|String|プールの表示名。|
@@ -69,7 +69,7 @@ ms.locfileid: "97609005"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
-|要素名|Type|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`osFamily`|String|プール内の仮想マシンにインストールする Azure ゲスト OS ファミリ。<br /><br /> 次のいずれかの値になります。<br /><br /> **2** – OS ファミリ 2、Windows Server 2008 R2 SP1 に相当。<br /><br /> **3** – OS ファミリ 3、Windows Server 2012 に相当。<br /><br /> **4** – OS ファミリ 4、Windows Server 2012 R2 に相当。<br /><br /> 詳細については、[Azure ゲスト OS リリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)を参照してください。|
 |`targetOSVersion`|String|プール内の仮想マシンにインストールされる Azure ゲスト OS バージョン。<br /><br /> 既定値は **\*** で、規定ファミリの最新オペレーティング システムのバージョンを指定します。<br /><br /> その他の許可値については、[Azure ゲスト OS リリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)を参照してください。|
@@ -84,7 +84,7 @@ ms.locfileid: "97609005"
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a>imageReference
 
-|要素名|Type|メモ|
+|要素名|Type|Notes|
 |------------------|----------|-----------|
 |`publisher`|String|イメージの発行元。|
 |`offer`|String|イメージのプラン。|
@@ -99,6 +99,6 @@ ms.locfileid: "97609005"
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a>NetworkConfiguration
 
-|要素名|Type|メモ|
+|要素名|Type|Notes|
 |------------------|--------------|----------|
 |`subnetId`|String|プールのコンピューティング ノードが作成される、サブネットのリソース識別子を指定します。|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9a321687a755f8a3d6e6d9139138d61c58764ef4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5835ea4d80f9c4111b76672facc4a0250ae0079a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932600"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769861"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Azure 仮想ネットワーク内の IPv4 アプリケーションに IPv6 を追加する - Azure CLI
 
@@ -48,7 +48,7 @@ az network public-ip create \
 
 ## <a name="configure-ipv6-load-balancer-frontend"></a>IPv6 ロード バランサー フロントエンドを構成する
 
-次のように [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) を使用して、新しい IPv6 IP アドレスが割り当てられたロード バランサーを構成します。
+次のように [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_create) を使用して、新しい IPv6 IP アドレスが割り当てられたロード バランサーを構成します。
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -60,7 +60,7 @@ az network lb frontend-ip create \
 
 ## <a name="configure-ipv6-load-balancer-backend-pool"></a>IPv6 ロード バランサー バックエンド プールを構成する
 
-次のように、[az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) を使用して、IPv6 アドレスが割り当てられた NIC のバックエンド プールを作成します。
+次のように、[az network lb address-pool create](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_create) を使用して、IPv6 アドレスが割り当てられた NIC のバックエンド プールを作成します。
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -71,7 +71,7 @@ az network lb address-pool create \
 
 ## <a name="configure-ipv6-load-balancer-rules"></a>IPv6 ロード バランサー規則を構成する
 
-[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) を使用して IPv6 ロード バランサー規則を作成します。
+[az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) を使用して IPv6 ロード バランサー規則を作成します。
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ az network vnet subnet update \
 
 ## <a name="add-ipv6-configuration-to-nics"></a>NIC に IPv6 構成を追加する
 
-次のように [az network nic ip-config create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) を使用して、IPv6 アドレスが割り当てられた VM NIC を構成します。
+次のように [az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create) を使用して、IPv6 アドレスが割り当てられた VM NIC を構成します。
 
 ```azurecli-interactive
 az network nic ip-config create \

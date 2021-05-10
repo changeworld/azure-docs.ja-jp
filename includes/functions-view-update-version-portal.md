@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: aa9a715fdafc143a116458691965087b016dec1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83343356"
 ---
 関数アプリで現在使用されているランタイム バージョンを表示して更新するには、次の手順に従います。
@@ -27,4 +27,4 @@ ms.locfileid: "83343356"
 
 1. ランタイム バージョンを変更したときは、 **[概要]** タブに戻り、 **[再起動]** を選択してアプリを再起動します。  関数アプリがバージョン 1.x ランタイムでの実行を再開します。関数を作成するときは、バージョン 1.x のテンプレートを使用します。
 
-    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="ランタイム バージョンを表示します。" border="true":::
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="関数アプリを再起動します。" border="true":::

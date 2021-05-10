@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/31/2019
 ms.openlocfilehash: b11d1edef2f3a6fa0fb39c76d1f25ec05ff15d07
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944328"
 ---
-# <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>シナリオ:ノードを Azure HDInsight クラスターに追加できない
+# <a name="scenario-unable-to-add-nodes-to-azure-hdinsight-cluster"></a>シナリオ: ノードを Azure HDInsight クラスターに追加できない
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98944328"
 
 さまざまな理由が考えられます。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 [クラスター サイズ](../hdinsight-scaling-best-practices.md)機能を使用して、クラスターに必要な追加のコア数を計算します。 これは、新しい worker ノードのコアの合計数に基づきます。 その後、次の手順を 1 つ以上試します。
 

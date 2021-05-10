@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c0f030683954ede013f769bf8584e6cf82bab69f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c6a53acd63b6aa882674f6aa29e1f7152f5b0a30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103555166"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728812"
 ---
 # <a name="copy-data-from-google-cloud-storage-to-azure-storage-by-using-azcopy-preview"></a>AzCopy を使用して Google Cloud Storage から Azure Storage にデータをコピーする (プレビュー)
 
@@ -44,7 +44,7 @@ Google Cloud Storage による承認を行うには、サービス アカウン�
 
 サービス キーを取得したら、`GOOGLE_APPLICATION_CREDENTIALS` 環境変数をサービス アカウント キー ファイルへの絶対パスに設定します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set GOOGLE_APPLICATION_CREDENTIALS=<path-to-service-account-key>` |
 | **Linux** | `export GOOGLE_APPLICATION_CREDENTIALS=<path-to-service-account-key>` |
@@ -63,7 +63,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
@@ -74,7 +74,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -87,7 +87,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 ワイルドカード記号 (*) を使用することで、ディレクトリ自体をコピーせずにディレクトリの内容をコピーできます。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
@@ -97,7 +97,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -109,7 +109,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://storage.cloud.google.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
@@ -121,7 +121,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 バケット名にワイルドカード記号 (*) を使用して、バケットのサブセットをコピーします。 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket*name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **例** | `azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |

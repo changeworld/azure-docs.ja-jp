@@ -4,10 +4,10 @@ description: Defender for IoT セキュリティ サービスを使用してセ�
 ms.topic: quickstart
 ms.date: 09/09/2020
 ms.openlocfilehash: e7a9e8160c809fd53b681900b2283778b0023610
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104780975"
 ---
 # <a name="quickstart-investigate-security-recommendations"></a>クイック スタート:セキュリティに関する推奨事項の調査

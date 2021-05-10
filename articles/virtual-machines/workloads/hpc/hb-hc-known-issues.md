@@ -5,35 +5,56 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 1/19/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 83f9778da91cebb651d98e2e85748cda7435230a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674675"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604840"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
-この記事では、[H シリーズ](../../sizes-hpc.md)と [N シリーズ](../../sizes-gpu.md)の HPC および GPU VM を使用する場合の最も一般的な問題とその解決方法について説明します。
+この記事は、[H シリーズ](../../sizes-hpc.md)と [N シリーズ](../../sizes-gpu.md)の HPC および GPU VM の使用時に最近よく発生している問題とその解決方法を一覧で示すことを意図したものです。
+
+## <a name="mofed-installation-on-ubuntu"></a>Ubuntu での MOFED のインストール
+Ubuntu-18.04 では、Mellanox OFED で、カーネル バージョン `5.4.0-1039-azure #42` 以降との非互換性が示されています。これにより、VM の起動時間が約30 分に増加します。 これは、Mellanox OFED のバージョン 5.2-1.0.4.0 と 5.2-2.2.0.0 の両方について報告されています。
+一時的な解決策は、**Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** 以降の Marketplace イメージを使用することと、カーネルを更新しないことです。
+この問題は、新しい MOFED で解決されることが予想されています (未定)。
+
+## <a name="mpi-qp-creation-errors"></a>MPI QP 作成エラー
+MPI ワークロードの実行中に、下に示すような InfiniBand QP 作成エラーがスローされた場合、VM を再起動し、ワークロードを再試行することをお勧めします。 この問題は、今後修正される予定です。
+
+```bash
+ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
+```
+
+問題が発生した場合、次のようにキュー ペアの最大数の値を確認できます。
+```bash
+[user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
+max_qp: 4096
+```
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB、HC、HBv2、NDv2 の高速ネットワーク
 
-[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が、RDMA および InfiniBand 対応および SR-IOV 対応の VM サイズの [HB](../../hb-series.md)、[HC](../../hc-series.md)、[HBv2](../../hbv2-series.md) および [NDv2](../../ndv2-series.md) で利用できるようになりました。 この機能により、Azure イーサネット ネットワーク上でのスループット (最大 30 Gbps) と待機時間が改善されます。 これは InfiniBand ネットワーク上の RDMA 機能とは別のものですが、この機能の一部のプラットフォーム変更は、InfiniBand を介してジョブを実行するときに特定の MPI 実装の動作に影響を与える可能性があります。 具体的には、一部の VM の InfiniBand インターフェイスの名前がわずかに異なる場合があります (以前の mlx5_0 とは異なり mlx5_1)。これは、特に UCX インターフェイスを (通常は OpenMPI と HPC-X と一緒に) 使用する場合には、MPI コマンド ラインを微調整する必要があります。
-これに関する詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965)を参照してください。発生した問題に対処する方法についても記載されています。
+[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が、RDMA と InfiniBand 対応で、SR-IOV 対応の VM サイズ、[HB](../../hb-series.md)、[HC](../../hc-series.md)、[HBv2](../../hbv2-series.md)、[NDv2](../../ndv2-series.md) で利用できるようになりました。 この機能により、Azure イーサネット ネットワーク上でのスループット (最大 30 Gbps) と待機時間が改善されます。 これは InfiniBand ネットワーク上の RDMA 機能とは別のものですが、この機能の一部のプラットフォーム変更は、InfiniBand を介してジョブを実行するときに特定の MPI 実装の動作に影響を与える可能性があります。 具体的には、一部の VM の InfiniBand インターフェイスの名前がわずかに異なる場合があります (以前の mlx5_0 とは異なり mlx5_1)。これは、特に UCX インターフェイスを (通常は OpenMPI と HPC-X と一緒に) 使用する場合には、MPI コマンド ラインを微調整する必要があります。 現時点での最も簡単な解決策は、CentOS-HPC VM イメージで最新の HPC-X を使用するか、必要でない場合は高速ネットワークを無効にすることです。
+これに関する詳細については、こちらの [TechCommunity の記事](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965)を参照してください。発生した問題に対処する方法についても記載されています。
 
-## <a name="infiniband-driver-installation-on-n-series-vms"></a>N シリーズ VM への InfiniBand ドライバーのインストール
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>SR-IOV ではない VM への InfiniBand ドライバーのインストール
 
-NC24r_v3 と ND40r_v2 では SR-IOV が有効になります。一方、NC24r と NC24r_v2 では SR-IOV は有効になりません。 2 つに分かれることの詳細は[こちら](../../sizes-hpc.md#rdma-capable-instances)にあります。
-InfiniBand (IB) は、OFED ドライバーがある SR-IOV 対応 VM サイズ上で構成できます。一方、SR-IOV ではない VM サイズには ND ドライバーが必要です。 この IB サポートは [CentOS-HPC VMI](configure.md) で適切に利用できます。 Ubuntu の場合、[こちらのドキュメント](enable-infiniband.md#vm-images-with-infiniband-drivers)で説明されているように OFED ドライバーと ND ドライバーの両方をインストールする方法については[こちらの指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)をご覧ください。
+現在、H16r、H16mr、NC24r は SR-IOV に対応していません。 InfiniBand スタックの分岐の詳細については、[こちら](../../sizes-hpc.md#rdma-capable-instances)を参照してください。
+InfiniBand は、OFED ドライバーがある SR-IOV 対応 VM サイズ上で構成できます。一方、SR-IOV ではない VM サイズには ND ドライバーが必要です。 この IB サポートは [CentOS、RHEL、Ubuntu](configure.md) で適宜利用できます。
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM 上の Ubuntu で cloud-init により発生する重複した MAC
 
-Ubuntu VM イメージ上の cloud-init には、IB インターフェイスを有効にしようとするときに発生する既知の問題があります。 これは、VM の再起動時に、または一般化した後で VM イメージを作成しようとするときに発生する可能性があります。 VM ブート ログには、"ネットワーク サービスを開始しています...RuntimeError: 重複した mac が見つかりました。 'eth1' と 'ib0' の両方に mac があります" というエラーが表示されます。
+Ubuntu VM イメージ上の cloud-init には、IB インターフェイスを有効にしようとするときに発生する既知の問題があります。 これは、VM の再起動時に、または一般化した後で VM イメージを作成しようとするときに発生する可能性があります。 VM ブート ログには、
+```console
+“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
+```
 
-この "Ubuntu で cloud-init により発生する重複した MAC" は既知の問題です。 回避策は次のとおりです。
+この "Ubuntu で cloud-init により発生する重複した MAC" は既知の問題です。 これは新しいカーネルで解決されます。 問題が発生した場合、回避策は次のとおりです。
 1) (Ubuntu 18.04) マーケットプレース VM イメージをデプロイします
 2) 必要なソフトウェア パッケージをインストールして IB を有効にします ([手順はこちら](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
 3) waagent.conf を編集して EnableRDMA=y を変更します
@@ -52,17 +73,13 @@ Ubuntu VM イメージ上の cloud-init には、IB インターフェイスを�
     EOF
     ```
 
-## <a name="dram-on-hb-series"></a>HB シリーズの DRAM
-
-現時点では、HB シリーズの VM はゲスト VM に 228 GB の RAM しか公開できません。 これは、ゲスト VM 用に予約されている AMD CCX (NUMA ドメイン) のローカル DRAM にページが割り当てられないようにするための Azure ハイパーバイザーの既知の制限によるものです。
-
-## <a name="accelerated-networking"></a>高速ネットワーク
-
-現時点では、IB が有効な HPC および GPU VM の Azure 高速ネットワークは有効にされていません。 この機能がサポートされたら、お客様にお知らせします。
-
 ## <a name="qp0-access-restriction"></a>qp0 アクセス制限
 
 セキュリティの脆弱性の原因となる可能性がある低レベルのハードウェア アクセスを防ぐために、Queue Pair 0 はゲスト VM からアクセスできません。 これは、通常、ConnectX-5 NIC の管理や、ibdiagnet などの InfiniBand 診断の実行に関連するアクションのみに影響します。エンド ユーザー アプリケーション自体には影響しません。
+
+## <a name="dram-on-hb-series-vms"></a>HB シリーズ VM の DRAM
+
+現時点では、HB シリーズの VM はゲスト VM に 228 GB の RAM しか公開できません。 同様に、HBv2 で 458 GB、HBv3 VM で 448 GB です。 これは、ゲスト VM 用に予約されている AMD CCX (NUMA ドメイン) のローカル DRAM にページが割り当てられないようにするための Azure ハイパーバイザーの既知の制限によるものです。
 
 ## <a name="gss-proxy"></a>GSS プロキシ
 
@@ -114,5 +131,5 @@ Linux で HB シリーズ VM を起動するときに、次のカーネルの警
 ## <a name="next-steps"></a>次のステップ
 
 - [HB シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)に関するページを参照して、パフォーマンスとスケーラビリティのためにワークロードを最適に構成する方法を学習します。
-- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - アーキテクチャの面から見た HPC ワークロードの実行の概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」を参照してください。

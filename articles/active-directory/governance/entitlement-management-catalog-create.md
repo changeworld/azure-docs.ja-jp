@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21783f0ef32289aad4b7d136dc8200d61fc0852
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b8cea26bcb0926cd3af360a6489377767d681079
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592933"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532556"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -53,7 +53,7 @@ ms.locfileid: "104592933"
 
 ### <a name="creating-a-catalog-programmatically"></a>プログラムによるカタログの作成
 
-Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](/graph/api/accesspackagecatalog-post?view=graph-rest-beta&preserve-view=true)ことができます。
 
 ## <a name="add-resources-to-a-catalog"></a>カタログにリソースを追加する
 
@@ -81,7 +81,7 @@ Microsoft Graph を使用して、カタログを作成することもできま�
 
     これらのリソースをカタログ内のアクセス パッケージに含めることができるようになりました。
 
-### <a name="add-a-multi-geo-sharepoint-site"></a>複数の地理的な SharePoint サイトを追加する
+### <a name="add-a-multi-geo-sharepoint-site-preview"></a>複数の地理的な SharePoint サイトを追加する (プレビュー)
 
 1. SharePoint に対して [Multi-Geo](/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365) が有効になっている場合、サイトの選択元の環境を選択します。
     
@@ -91,7 +91,7 @@ Microsoft Graph を使用して、カタログを作成することもできま�
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>プログラムによるカタログへのリソースの追加
 
-Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta&preserve-view=true)ことができます。
 
 ## <a name="remove-resources-from-a-catalog"></a>カタログからリソースを削除する
 
@@ -164,7 +164,7 @@ Microsoft Graph を使用して、カタログにリソースを追加するこ�
 
 ### <a name="deleting-a-catalog-programmatically"></a>プログラムによるカタログの削除
 
-Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta&preserve-view=true)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

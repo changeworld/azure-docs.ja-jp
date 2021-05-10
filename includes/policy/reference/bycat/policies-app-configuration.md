@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2ce6f5a168e356e0c2b091579e6ca863e78329df
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: c18aa600f99fd509bfea8071d8a69fc6ea3f2720
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102610973"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498841"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -20,4 +20,4 @@ ms.locfileid: "102610973"
 |[App Configuration ではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca610c1d-041c-4332-9d88-7ed3094967c7) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクからも保護されます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Audit.json) |
 |[App Configuration でパブリック ネットワーク アクセスを無効に構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F73290fa2-dfa7-4bbb-945d-a5e23b75df2c) |App Configuration のパブリック ネットワーク アクセスを無効にして、パブリック インターネット経由ではアクセスできないようにします。 この構成は、データ漏えいリスクへの対策として役立ちます。 プライベート エンドポイントを作成することによってリソースの露出を制限することもできます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |Modify、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_PublicNetworkAccess_Modify.json) |
 |[App Configuration に接続されているプライベート エンドポイントのプライベート DNS ゾーンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7a860e27-9ca2-4fc6-822d-c2d248c300df) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンを自分の仮想ネットワークにリンクして、アプリ構成インスタンスを解決することができます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_DNSZone_Deploy.json) |
-|[App Configuration のプライベート エンドポイントの構成](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F614ffa75-862c-456e-ad8b-eaa1b0844b07) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクが削減されます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Deploy.json) |
+|[App Configuration のプライベート エンドポイントの構成](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F614ffa75-862c-456e-ad8b-eaa1b0844b07) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクが軽減されます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_Deploy.json) |

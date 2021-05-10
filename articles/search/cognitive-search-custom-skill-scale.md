@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 22e48239631850d82cbb3e3208748416087da87c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103422118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641139"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>カスタム スキルを効率的にスケールアウトする
 
@@ -26,7 +26,7 @@ ms.locfileid: "103422118"
 
 + カスタム スキルで実装する必要がある入出力インターフェイスの概要については、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
-+ 環境を設定します。 初めに、[このチュートリアルを最初から最後まで](/python/tutorial-vs-code-serverless-python-01)実行することで、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定できます。
++ 環境を設定します。 初めに、[このチュートリアルを最初から最後まで](/azure/azure-functions/create-first-function-vs-code-python)実行することで、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定できます。
 
 ## <a name="skillset-configuration"></a>スキルセットの構成
 
@@ -42,7 +42,7 @@ ms.locfileid: "103422118"
 
 3. `timeout` に、スキルが有効な応答で応えるのに十分な値を設定します。
 
-4. `indexer` の定義で、[`batchSize`](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) に、データ ソースから同時に読み取って強化する必要があるドキュメントの数を設定します。
+4. `indexer` の定義で、[`batchSize`](/rest/api/searchservice/create-indexer#indexer-parameters) に、データ ソースから同時に読み取って強化する必要があるドキュメントの数を設定します。
 
 ### <a name="considerations"></a>考慮事項
 
@@ -106,5 +106,5 @@ ms.locfileid: "103422118"
 
 + [Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 + [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
-+ [Azure Machine Learning スキルを追加する](https://docs.microsoft.com/azure/search/cognitive-search-aml-skill)
-+ [デバッグ セッションを使用して変更をテストする](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)
++ [Azure Machine Learning スキルを追加する](./cognitive-search-aml-skill.md)
++ [デバッグ セッションを使用して変更をテストする](./cognitive-search-debug-session.md)

@@ -3,15 +3,15 @@ title: 新しいセッション ホストを使用して既存の Windows Virtua
 description: Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88009173"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551953"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する
 
@@ -39,7 +39,7 @@ ms.locfileid: "88009173"
 以下の 3 つのセクションは、ホスト プールを拡張するために使用できる 3 つの方法です。 いずれでも使いやすいデプロイ ツールを使用できます。
 
 >[!NOTE]
->デプロイ フェーズ中では、以前のセッション ホスト VM リソースが現在シャットダウンされている場合、それらのエラー メッセージが表示されます。 これらのエラーは、Azure が PowerShell DSC 拡張機能を実行してセッション ホスト VM が既存のホスト プールに正しく登録されていることを検証できないために発生します。 これらのエラーは無視しても問題ありません。または、デプロイ プロセスを開始する前に、既存のホスト プール内のすべてのセッション ホスト VM を開始することで、エラーを回避できます。
+>デプロイ フェーズ中では、以前のセッション ホスト VM リソースが現在シャットダウンされている場合、それらのエラー メッセージが表示されます。 これらのエラーは、Azure が PowerShell DSC 拡張機能を実行してセッション ホスト VM が既存のホスト プールに正しく登録されていることを検証できないために発生します。 名前が "-0" で終わるセッション ホストが実行されている必要がありますが、他のセッション ホストではこれらのエラーを無視しても問題ありません。または、デプロイ プロセスを開始する前に、既存のホスト プール内のすべてのセッション ホスト VM を開始することでエラーを回避できます。
 
 ## <a name="redeploy-from-azure"></a>Azure からの再デプロイ
 
@@ -96,7 +96,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 1. 既存のセッション ホスト VM と一致する VM サイズを選択します。
 
     >[!NOTE]
-    >お探しの VM サイズが VM サイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。 特定の VM サイズを要求するには、[Windows Virtual Desktop UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)で要求を作成するか、既存の要求に賛成票を投じてください。
+    >お探しの VM サイズが VM サイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。
 
 2. *[使用プロファイル]* 、 *[ユーザー総数]* 、および *[Number of virtual machines]\(仮想マシン数\)* パラメーターをカスタマイズして、ホスト プールに含めるセッション ホストの合計数を選択します。 たとえば、ホスト プールを 5 つのセッション ホストから 8 つに拡張する場合、8 つの仮想マシンになるようにこれらのオプションを構成します。
 3. 仮想マシンの名前のプレフィックスを入力します。 たとえば、"prefix" という名前を入力する場合であれば、仮想マシンの名前は "prefix-0"、"prefix-1" などのようになります。

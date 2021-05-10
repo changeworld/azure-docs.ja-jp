@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 7bb3ca2b31eaef5c0639f30e0f2a329a37dfe7e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199494"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107761783"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -91,6 +91,8 @@ cloud-to-device メッセージを送信するときに、サービスでは、�
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
+バッチが 64 件のメッセージに達したとき、または最後に送信されてから 15 秒経過したときのいずれか早い方で、フィードバックがシステムによって送信されます。 
+
 本文はシリアル化された JSON レコードの配列で、それぞれ次のプロパティを持っています。
 
 | プロパティ           | 説明 |
@@ -147,7 +149,7 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 
     ![ポータルでの cloud-to-device メッセージングの構成オプションの設定](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
 
-* **Azure CLI**: [az iot hub update](/cli/azure/iot/hub#az-iot-hub-update) コマンドを使用します。
+* **Azure CLI**: [az iot hub update](/cli/azure/iot/hub#az_iot_hub_update) コマンドを使用します。
 
     ```azurecli
     az iot hub update --name {your IoT hub name} \

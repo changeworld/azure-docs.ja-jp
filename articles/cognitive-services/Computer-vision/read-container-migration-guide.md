@@ -1,5 +1,5 @@
 ---
-title: Read v3.x OCR コンテナーへの移行
+title: Read v3.x コンテナーへの移行
 titleSuffix: Azure Cognitive Services
 description: Read v3 OCR コンテナーに移行する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1cc17306265e6e8ba2e7fb3f570d0017b006b84f
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221155"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284687"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR コンテナーへの移行
 
@@ -24,7 +24,7 @@ Computer Vision Read OCR コンテナーのバージョン 2 を使用してい�
 
 ## <a name="configuration-changes"></a>構成の変更
 
-* `ReadEngineConfig:ResultExpirationPeriod` はサポート対象から除外されました。 Read コンテナーには、48 時間後に要求に関連付けられた結果とメタデータを削除するビルド済みの Cron ジョブが含まれています。
+* `ReadEngineConfig:ResultExpirationPeriod` はサポート対象から除外されました。 Read OCR コンテナーには、要求に関連付けられた結果とメタデータを 48 時間後に削除するビルド済みの Cron ジョブが含まれています。
 * `Cache:Redis:Configuration` はサポート対象から除外されました。 Cache は v3.x コンテナーでは使用されないため、設定する必要はありません。
 
 ## <a name="api-changes"></a>API の変更
@@ -39,7 +39,7 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 
 ## <a name="memory-requirements"></a>メモリ要件
 
-要件と推奨事項は、29 行におよぶ合計 803 文字のビジネス レターのスキャン画像 (8 MB) を使用した、1 秒あたり 1 つの要求というベンチマークに基づいています。 次の表に、各読み取りコンテナーに割り当てるリソースの最小値と推奨値を示します。
+要件と推奨事項は、29 行におよぶ合計 803 文字のビジネス レターのスキャン画像 (8 MB) を使用した、1 秒あたり 1 つの要求というベンチマークに基づいています。 次の表に、各 Read OCR コンテナーに割り当てるリソースの最小値と推奨値を示します。
 
 |コンテナー  |最小値 | 推奨  |
 |---------|---------|------|
@@ -81,7 +81,7 @@ Read v3.2 コンテナーは、Computer Vision API のバージョン 3 を使�
 ## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
-* [Computer Vision の概要](overview.md)ページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する
-* コンテナーによりサポートされるメソッドの詳細を [Computer Vision API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) ページで確認する。
+* [OCR の概要](overview-ocr.md)に関するページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する
+* コンテナーでサポートされるメソッドの詳細について、[Read API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) を参照する。
 * [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

@@ -2,29 +2,27 @@
 title: アクティビティ レポートを使用して AD FS アプリを Azure Active Directory に移行する | Microsoft Docs
 description: Active Directory フェデレーション サービス (AD FS) のアプリケーション アクティビティ レポートを使用すると、AD FS から Azure Active Directory (Azure AD) にアプリケーションをすばやく移行できます。 AD FS 用のこの移行ツールでは、Azure AD との互換性を識別して、移行に関するガイダンスを得られます。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/14/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 6b9265a61b0879078332b8ccc2d10e711b4ac8f1
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260064"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377422"
 ---
-# <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する
+# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポートを使用してアプリケーションを Azure AD に移行する
 
 多くの組織では、Active Directory フェデレーション サービス (AD FS) を使用して、クラウド アプリケーションへのシングルサインオンを提供しています。 認証のために AD FS アプリケーションを Azure AD に移行すると、コスト管理、リスク管理、生産性、コンプライアンス、ガバナンスの点で特に大きなメリットが得られます。 しかし、どのアプリケーションが Azure AD と互換性があるかを把握し、具体的な移行手順を特定するには、時間がかかる場合があります。
 
-Azure portal の AD FS アプリケーション アクティビティ レポート (プレビュー) を使用すると、Azure AD に移行できるアプリケーションをすばやく特定できます。 Azure AD との互換性に関するすべての AD FS アプリケーションの評価、問題がないかどうかの確認、個々のアプリケーションの移行の準備に関するガイダンスの提供が行われます。 AD FS アプリケーション アクティビティ レポートでは、以下が可能です。
+Azure portal の AD FS アプリケーション アクティビティ レポートを使用すると、Azure AD に移行できるアプリケーションをすばやく特定できます。 Azure AD との互換性に関するすべての AD FS アプリケーションの評価、問題がないかどうかの確認、個々のアプリケーションの移行の準備に関するガイダンスの提供が行われます。 AD FS アプリケーション アクティビティ レポートでは、以下が可能です。
 
 * **AD FS アプリケーションを検出し、移行のスコープを特定する。** AD FS アプリケーション アクティビティ レポートには、過去 30 日間にアクティブなユーザー ログインがあった、組織内のすべての AD FS アプリケーションが一覧表示されます。 レポートには、アプリケーションの Azure AD への移行の準備状況が示されます。 レポートには、Office 365 など、AD FS 内の Microsoft 関連の証明書利用者は表示されません。 たとえば、"urn:federation:MicrosoftOnline" という名前の証明書利用者などです。
 
@@ -52,7 +50,7 @@ AD FS アプリケーション アクティビティ レポートは、Azure por
 
 2. **[Azure Active Directory]** を選択し、 **[エンタープライズ アプリケーション]** を選択します。
 
-3. **[アクティビティ]** で、 **[使用状況と分析情報 (プレビュー)]** を選択し、次に **[AD FS アプリケーション アクティビティ]** を選択して、組織内のすべての AD FS アプリケーションの一覧を開きます。
+3. **[アクティビティ]** で、 **[使用状況と分析情報]** を選択し、次に **[AD FS アプリケーション アクティビティ]** を選択して、組織内のすべての AD FS アプリケーションの一覧を開きます。
 
    ![AD FS アプリケーション アクティビティ](media/migrate-adfs-application-activity/adfs-application-activity.png)
 

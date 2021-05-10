@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) でポータルを使用して仮想ノー
 description: Azure portal を使用して、仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成してポッドを実行する方法を説明します。
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.custom: references_regions
+ms.openlocfilehash: fad021dc92753013234a3b0831e76e87fa25db10
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501806"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769303"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -54,15 +54,15 @@ Azure portal の左上隅で、 **[リソースの作成]**  >  **[Kubernetes Se
 **[基本]** ページで、次のオプションを構成します。
 
 - *プロジェクトの詳細*:サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
-- *クラスターの詳細*:AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
+- *クラスターの詳細*: AKS クラスターのリージョンと Kubernetes バージョンを選択します。
 - *プライマリ ノード プール*:AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは **できません**。
      - クラスターにデプロイするノードの数を選択します。 この記事では、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整 **できます**。
 
-**[次へ: スケール]** をクリックします。
+**[Next: Node Pools]\(次へ: ノード プール\)** をクリックします。
 
-**[スケール]** ページの **[仮想ノード]** で *[有効]* を選択します。
+**[ノード プール]** ページで、 *[Enable virtual nodes]\(仮想ノードの有効化\)* を選択します。
 
-![AKS クラスターを作成し、仮想ノードを有効にする](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="ブラウザーで、Azure portal を使用して、仮想ノードを有効にしてクラスターを作成する様子を示しています。[Enable virtual nodes] (仮想ノードの有効化) オプションが強調表示されています。":::
 
 既定では、クラスター ID が作成されます。 このクラスター ID は、クラスター通信と他の Azure サービスとの統合に使用されます。 既定では、このクラスター ID はマネージド ID です。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。 また、クラスター ID としてサービス プリンシパルを使用することもできます。
 
@@ -158,7 +158,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 仮想ノードで実行されているポッドをテストするには、Web クライアントでデモ アプリケーションを参照します。 ポッドには内部 IP アドレスが割り当てられているため、AKS クラスターの別のポッドからこの接続をすばやくテストできます。 テスト ポッドを作成し、それにターミナル セッションをアタッチします。
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 `apt-get` を使用して、`curl` をポッドにインストールします。
@@ -210,9 +210,9 @@ curl -L http://10.241.0.4
 
 <!-- LINKS - internal -->
 [aks-network]: ./configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-provider-list]: /cli/azure/provider#az_provider_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

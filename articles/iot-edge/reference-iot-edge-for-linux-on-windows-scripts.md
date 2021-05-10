@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: a24b39107d8f78c049afa230fe678ec92852eeb0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489487"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959689"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows 用の PowerShell スクリプト
 
@@ -41,17 +41,20 @@ IoT Edge for Linux on Windows 仮想マシンのデプロイ、プロビジョ�
 | registrationId | 既存の IoT Edge デバイスの登録 ID | IoT Edge デバイスをプロビジョニングするための登録 ID (**X509** または **symmetric**)。 |
 | identityCertLocVm | ディレクトリ パス。`iotedge` サービスで所有できるフォルダーに存在している必要があります | IoT Edge デバイスをプロビジョニングする際に使用する、仮想マシン上の ID 証明書の絶対宛先パス (**X509** または **symmetric**)。 |
 | identityCertLocWin | ディレクトリ パス | IoT Edge デバイスをプロビジョニングする際に使用する、Windows 内の ID 証明書の絶対ソース パス (**X509** または **symmetric**)。 |
-| identityPkLocVm |  | ディレクトリ パス。`iotedge` サービスで所有できるフォルダーに存在している必要があります | IoT Edge デバイスをプロビジョニングする際に使用する、仮想マシン上の ID 秘密キーの絶対宛先パス (**X509** または **symmetric**)。 |
+| identityPkLocVm | ディレクトリ パス。`iotedge` サービスで所有できるフォルダーに存在している必要があります | IoT Edge デバイスをプロビジョニングする際に使用する、仮想マシン上の ID 秘密キーの絶対宛先パス (**X509** または **symmetric**)。 |
 | identityPkLocWin | ディレクトリ パス | IoT Edge デバイスをプロビジョニングする際に使用する、Windows 内の ID 秘密キーの絶対ソース パス (**X509** または **symmetric**)。 |
 | vmSizeDefintion | 30 文字以下 | 仮想マシンのコア数と使用可能な RAM の定義。 **既定値**: Standard_K8S_v1。 |
 | vmDiskSize | 8 GB から 256 GB | 容量可変の仮想ハード ディスクの最大ディスク サイズ。 **既定値**: 16 GB。 |
 | vmUser | 30 文字以下 | 仮想マシンにログオンするためのユーザー名。 |
-| vnetType | **Transparent** または **ICS** | 仮想スイッチの種類。 **既定値**: Transparent。 |
+| vnetType | **Transparent** または **ICS** | 仮想スイッチの種類。 **既定値**: Transparent。 Transparent は外部スイッチを指すのに対して、ICS は内部スイッチを指します。 |
 | vnetName | 64 文字以下 | 仮想スイッチの名前。 **既定値**: External。 |
 | enableVtpm | なし | **スイッチ パラメーター**。 TPM を有効または無効にして仮想マシンを作成します。 |
 | mobyPackageVersion | 30 文字以下 |  仮想マシン上で検証またはインストールする Moby パッケージのバージョン。  **既定値**: 19.03.11。 |
 | iotedgePackageVersion | 30 文字以下 | 仮想マシン上で検証またはインストールする IoT Edge パッケージのバージョン。 **既定値**: 1.1.0。 |
 | installPackages | なし | **スイッチ パラメーター**。 切り替えると、Moby と IoT Edge のパッケージが存在することの確認だけではなく、これらのパッケージのインストールが試行されます。 |
+
+>[!NOTE]
+>既定では、プロセスで名前が `External` の外部スイッチが見つからない場合、IP アドレスを取得するための既存の外部スイッチを検索します。 使用できる外部スイッチがない場合は、内部スイッチを検索します。 使用できる内部スイッチがない場合は、IP アドレスを取得するための既定のスイッチを作成しようとします。
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 
@@ -71,7 +74,7 @@ IoT Edge for Linux on Windows 仮想マシンのデプロイ、プロビジョ�
 | registrationId | 既存の IoT Edge デバイスの登録 ID | IoT Edge デバイスをプロビジョニングするための登録 ID (**DPS**)。 |
 | identityCertLocVm | ディレクトリ パス。`iotedge` サービスで所有できるフォルダーに存在している必要があります | IoT Edge デバイスをプロビジョニングする際に使用する、仮想マシン上の ID 証明書の絶対宛先パス (**DPS**、**X509**)。 |
 | identityCertLocWin | ディレクトリ パス | IoT Edge デバイスをプロビジョニングする際に使用する、Windows 内の ID 証明書の絶対ソース パス (**dps**、**X509**)。 |
-| identityPkLocVm |  | ディレクトリ パス。`iotedge` サービスで所有できるフォルダーに存在している必要があります | IoT Edge デバイスをプロビジョニングする際に使用する、仮想マシン上の ID 秘密キーの絶対宛先パス (**DPS**、**X509**)。 |
+| identityPkLocVm  | ディレクトリ パス。`iotedge` サービスで所有できるフォルダーに存在している必要があります | IoT Edge デバイスをプロビジョニングする際に使用する、仮想マシン上の ID 秘密キーの絶対宛先パス (**DPS**、**X509**)。 |
 | identityPkLocWin | ディレクトリ パス | IoT Edge デバイスをプロビジョニングする際に使用する、Windows 内の ID 秘密キーの絶対ソース パス (**dps**、**X509**)。 |
 
 ## <a name="get-eflowvmname"></a>Get-EflowVmName
@@ -140,7 +143,7 @@ IoT Edge for Linux on Windows 仮想マシンのデプロイ、プロビジョ�
 
 ## <a name="ssh-eflowvm"></a>Ssh-EflowVm
 
-**Ssh-EflowVm** コマンドは、仮想マシンへの SSH 接続に使用されます。 追加情報については、`Get-Help Ssh-EflowVm -full` コマンドを使用してください。
+**Ssh-EflowVm** コマンドは、仮想マシンへの SSH 接続に使用されます。 仮想マシンへの SSH 接続が許可されるアカウントは、それを作成したユーザーだけです。 追加情報については、`Get-Help Ssh-EflowVm -full` コマンドを使用してください。
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |
@@ -150,6 +153,6 @@ IoT Edge for Linux on Windows 仮想マシンのデプロイ、プロビジョ�
 
 以下の記事で、これらのコマンドの使用方法を学習します。
 
-* [Azure IoT Edge for Linux on Windows をインストールする](how-to-install-iot-edge-windows.md)
+* [Azure IoT Edge for Linux on Windows をインストールする](./how-to-install-iot-edge-windows-on-windows.md)
 
 * PowerShell で使用可能なすべてのコマンドについては、[IoT Edge for Linux on Windows PowerShell スクリプトのリファレンス](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)に関する記事を参照してください。

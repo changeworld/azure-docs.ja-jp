@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 02/19/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: ebaca1f39b16e4a06b5dcaa4e5f1de07122c6c89
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 0614e6fb1df13332cb05dcb7bb9b0f07a1764d23
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103622091"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251499"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -29,7 +29,7 @@ ms.locfileid: "103622091"
 | サービス インスタンスあたりのサブスクリプションの最大数<sup>8</sup> | 500 |
 | サービス インスタンスあたりのクライアント証明書の最大数<sup>8</sup> | 50 |
 | サービス インスタンスあたりの API の最大数<sup>8</sup> | 50 |
-| サービス インスタンスあたりの API 操作の最大数<sup>8</sup> | 1,000 |
+| サービス インスタンスあたりの API 管理操作の最大数<sup>8</sup> | 1,000 |
 | 最大合計要求時間<sup>8</sup> | 30 秒 |
 | バッファー処理されたペイロードの最大サイズ<sup>8</sup> | 2 MiB |
 | 要求 URL の最大サイズ<sup>9</sup> | 4,096 バイト |

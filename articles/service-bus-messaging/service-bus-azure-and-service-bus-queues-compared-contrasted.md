@@ -2,13 +2,13 @@
 title: Azure Storage キューと Service Bus キューの比較
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 ms.topic: article
-ms.date: 11/04/2020
-ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.date: 04/12/2021
+ms.openlocfilehash: 1c3b0fda12d5e301b17a342c5d5ed11ab76c76da
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928309"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304360"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、どちらのソリューションが自分のニーズに最も適しているかについて、より多くの情報に基づいて判断できるようになります。
@@ -39,7 +39,7 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 * ソリューションで、キューをポーリングせずにメッセージを受信できる必要がある場合。 Service Bus では、Service Bus がサポートする TCP ベースのプロトコルを使用し、長いポーリングの受信操作を使用することによってこれを実現できます。
 * キューによるメッセージの配信が先入れ先出し (FIFO) の順序で行われることが保証される必要がある場合。
 * ソリューションで、自動重複検出をサポートする必要がある場合。
-* アプリケーションでメッセージを実行時間の長い並列ストリームとして処理する必要がある場合 (メッセージは、自身の [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) プロパティを使用してストリームに関連付けられます)。 このモデルでは、処理を行うアプリケーションの各ノードは、メッセージではなくストリームに対して競合します。 処理を行うノードにストリームが渡されると、そのノードはトランザクションを使用してアプリケーション ストリームの状態を確認できます。
+* アプリケーションでメッセージを実行時間の長い並列ストリームとして処理する必要がある場合 (メッセージは、それ自体の **[セッション ID]** プロパティを使用してストリームに関連付けられます)。 このモデルでは、処理を行うアプリケーションの各ノードは、メッセージではなくストリームに対して競合します。 処理を行うノードにストリームが渡されると、そのノードはトランザクションを使用してアプリケーション ストリームの状態を確認できます。
 * 複数のメッセージをキューに送信したりキューから受信したりする際にトランザクション動作と原子性が必要な場合。
 * アプリケーションで処理するメッセージのサイズが 64 KB を超えることはあっても 256 KB の制限に到達することはないと考えられる場合。
 * ロールベースのアクセス モデルを提供して、キューの送信側と受信側に異なる権限/アクセス許可を与える必要がある場合。 詳細については、次の記事を参照してください。
@@ -63,12 +63,12 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 | 配信保証 |**At-Least-Once** |**At-Least-Once** (PeekLock 受信モードを使用。 これは既定値です) <br/><br/>**At-Most-Once** (ReceiveAndDelete 受信モードを使用) <br/> <br/> さまざまな[受信モード](service-bus-queues-topics-subscriptions.md#receive-modes)に関する詳細  |
 | 分割不可能な操作のサポート |**いいえ** |**はい**<br/><br/> |
 | 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](https://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージド API のみを使用) |
-| プッシュ型 API |**いいえ** |**はい**<br/><br/>[QueueClient.OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と [MessageSessionHandler.OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) セッション .NET API。 |
+| プッシュ型 API |**いいえ** |**はい**<br/><br/>.NET、Java、JavaScript、Go SDK には、プッシュ型 API が用意されています。 |
 | 受信モード |**Peek & Lease** |**Peek & Lock**<br/><br/>**Receive & Delete** |
 | 排他アクセス モード |**リース ベース** |**ロック ベース** |
-| リース/ロックの期間 |**30 秒 (既定値)**<br/><br/>**7 日間 (最大)** ([UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API を使用してメッセージ リースを更新または変更できます) |**60 秒 (既定値)**<br/><br/>[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してメッセージのロックを更新できます。 |
-| リース/ロックの粒度 |**メッセージ レベル**<br/><br/>各メッセージには異なるタイムアウト値を設定できます。この値は [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API を使用して、メッセージの処理中に必要に応じて更新できます。 |**キュー レベル**<br/><br/>(各キューのすべてのメッセージに同じロック粒度が適用されますが、[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してロックを更新できます) |
-| 一括受信 |**はい**<br/><br/>(メッセージを取得するときに最大 32 のメッセージ数を明示的に指定します) |**はい**<br/><br/>(プレフェッチ プロパティを有効にして暗黙的に行うか、トランザクションを使用して明示的に行います) |
+| リース/ロックの期間 |**30 秒 (既定値)**<br/><br/>**7 日間 (最大)** ([UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API を使用してメッセージ リースを更新または変更できます) |**30 秒 (既定値)**<br/><br/>毎回同じロック期間メッセージ ロックを更新することも、自動ロック更新機能を使用して、クライアントでロックの更新を管理することもできます。 |
+| リース/ロックの粒度 |**メッセージ レベル**<br/><br/>各メッセージには異なるタイムアウト値を設定できます。この値は [UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API を使用して、メッセージの処理中に必要に応じて更新できます。 |**キュー レベル**<br/><br/>(各キューのすべてのメッセージにはロック精度が適用されますが、前の行で説明したようにロックを更新できます) |
+| 一括受信 |**はい**<br/><br/>(メッセージを取得するときに最大 32 のメッセージ数を明示的に指定します) |**はい**<br/><br/>(事前取り込みプロパティを有効にして暗黙的に行うか、トランザクションを使用して明示的に行います) |
 | 一括送信 |**いいえ** |**はい**<br/><br/>(トランザクションまたはクライアント側のバッチ処理を使用) |
 
 ### <a name="additional-information"></a>関連情報
@@ -78,12 +78,12 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
     - アプリケーション コンポーネントを分離してスケーラビリティや耐障害性を向上させる
     - 負荷平準化
     - プロセス ワークフローの構築
-* Service Bus セッションのコンテキストでのメッセージ処理に関する不整合は、セッション状態を使用してセッションのメッセージ シーケンスの処理の進捗に関連するアプリケーションの状態を格納することと、受け取ったメッセージの解決に関するトランザクションの使用とセッション状態の更新によって回避できます。 このような一貫性機能は、他のベンダー製品では "*厳密に 1 回の処理*" と呼ばれることがあります。 トランザクション エラーは明らかにメッセージの再配信の原因となるため、この用語は正確には適切ではありません。
+* Service Bus セッションのコンテキストでのメッセージ処理に関する不整合は、セッション状態を使用してセッションのメッセージ シーケンスの処理の進捗に関連するアプリケーションの状態を格納することと、受け取ったメッセージの解決に関するトランザクションを使用してセッション状態を更新することで回避できます。 このような一貫性機能は、他のベンダー製品では "*厳密に 1 回の処理*" と呼ばれることがあります。 トランザクション エラーは明らかにメッセージの再配信の原因となるため、この用語は正確には適切ではありません。
 * Storage キューでは、開発者とオペレーション チームの双方に対し、キュー、テーブル、BLOB で一貫性のあるプログラミング モデルを提供します。
 * Service Bus キューは、1 つのキューのコンテキストでローカル トランザクションをサポートします。
 * Service Bus でサポートされている **Receive and Delete** モードを使用すると、メッセージング操作の数 (および関連するコスト) を削減できますが、配信の確実性が低下します。
 * Storage キューではメッセージのリースを延長することのできるリースを提供します。 この機能により、ワーカー プロセスでメッセージのリースを短くすることができます。 そのため、ワーカーがクラッシュした場合にすぐに別のワーカーがメッセージを再度処理できます。 また、現在のリース時間より長い処理時間が必要になった場合に、ワーカーがメッセージのリースを延長できます。
-* Storage キューでは、メッセージをエンキューまたはデキューするときに表示のタイムアウトを設定できます。 また、実行時にメッセージを別のリース値で更新したり、同じキューのメッセージを別の値で更新したりすることもできます。 Service Bus ロック タイムアウトは、キューのメタデータで定義されます。 ただし、[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) メソッドを呼び出すことによって、ロックを更新できます。
+* Storage キューでは、メッセージをエンキューまたはデキューするときに表示のタイムアウトを設定できます。 また、実行時にメッセージを別のリース値で更新したり、同じキューのメッセージを別の値で更新したりすることもできます。 Service Bus ロック タイムアウトは、キューのメタデータで定義されます。 ただし、定義済みのロック期間メッセージ ロックを手動で更新することも、自動ロック更新機能を使用して、クライアントでロックの更新を管理することもできます。
 * Service Bus キューのブロッキング受信操作の最大タイムアウトは 24 日です。 ただし、REST ベースのタイムアウトの最大値は 55 秒です。
 * Service Bus でサポートされているクライアント側のバッチ処理を使用すると、キュー クライアントで複数のメッセージをバッチ処理して 1 回の送信操作で処理を完了できます。 バッチ処理は非同期送信操作でのみ使用できます。
 * 200 TB が上限の Storage キュー (アカウントを仮想化すればさらに確保可能) や無制限キューのような機能により、SaaS プロバイダーにとって理想的なプラットフォームになります。
@@ -100,8 +100,8 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 | 有害なメッセージのサポート |**はい** |**はい** |
 | インプレース更新 |**はい** |**はい** |
 | サーバー側のトランザクション ログ |**はい** |**いいえ** |
-| Storage のメトリック |**はい**<br/><br/>**分単位のメトリック** は、可用性、TPS、API 呼び出し数、エラー数などのリアルタイムのメトリックを提供します。 これらはすべてリアルタイムで、分単位で集計され、運用環境での発生から数分以内に報告されます。 詳細については、「[Storage Analytics Metrics について](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)」を参照してください。 |**はい**<br/><br/>([GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues) の呼び出しによる一括クエリ) |
-| 状態管理 |**いいえ** |**はい**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Storage のメトリック |**はい**<br/><br/>**分単位のメトリック** は、可用性、TPS、API 呼び出し数、エラー数などのリアルタイムのメトリックを提供します。 これらはすべてリアルタイムで、分単位で集計され、運用環境での発生から数分以内に報告されます。 詳細については、「[Storage Analytics Metrics について](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)」を参照してください。 |**はい**<br/><br/>Azure Service Bus でサポートされるメトリックの詳細については、「[メッセージのメトリック](service-bus-metrics-azure-monitor.md#message-metrics)」を参照してください。 |
+| 状態管理 |**いいえ** |**はい** (Active、Disabled、SendDisabled、ReceiveDisabled。 これらの状態の詳細については、「[キューの状態](entity-suspend.md#queue-status)」を参照してください |
 | メッセージの自動転送 |**いいえ** |**はい** |
 | キューの消去機能 |**はい** |**いいえ** |
 | メッセージ グループ |**いいえ** |**はい**<br/><br/>(メッセージング セッションを使用) |
@@ -113,14 +113,14 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 ### <a name="additional-information"></a>関連情報
 * 両方のキュー テクノロジには、メッセージを後で配信するようにスケジュールできる機能があります。
 * キューの自動転送を使用すると、数千のキューのメッセージを 1 つのキューに自動転送して、受信側アプリケーションはそのキューからメッセージを処理することができます。 このメカニズムを使用して、各メッセージ パブリッシャー間でセキュリティの確保、フロー制御、ストレージ分離を実現できます。
-* Storage キューでは、メッセージの内容の更新がサポートされています。 この機能を使用すると、状態情報と進行状況の増分更新をメッセージに永続化して、メッセージの処理を最初からではなく前回のチェックポイントから開始することができます。 Service Bus キューでは、メッセージ セッションを使用することで同じ機能を実現できます。 セッションでは、アプリケーションの処理状態を保存および取得できます ([SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) および [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState) を使用)。
+* Storage キューでは、メッセージの内容の更新がサポートされています。 この機能を使用すると、状態情報と進行状況の増分更新をメッセージに永続化して、メッセージの処理を最初からではなく前回のチェックポイントから開始することができます。 Service Bus キューでは、メッセージ セッションを使用して同じシナリオを実現できます。 詳細については、「[メッセージ セッションの状態](message-sessions.md#message-session-state)」を参照してください。
 * Service Bus キューは[配信不能レタリング](service-bus-dead-letter-queues.md)をサポートします。 これは、次の条件を満たすメッセージを分離するのに役立ちます。
     - 受信側アプリケーションでメッセージを正常に処理できない 
     - 有効期限が切れた Time-to-live (TTL) プロパティが原因で、メッセージが宛先に届かない。 TTL の値は、メッセージがキューに保持される期間を指定します。 Service Bus では、TTL が期限切れになると、メッセージが $DeadLetterQueue という特殊なキューに移動されます。
 * Storage キューで "有害な" メッセージを検出するには、アプリケーションでメッセージをデキューするときにメッセージの [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) プロパティを確認します。 **DequeueCount** が一定のしきい値を超えている場合は、そのメッセージをアプリケーション定義の "配信不能" キューに移動します。
 * Storage キューでは、キューに対して実行されたすべてのトランザクションの詳細なログとメトリックの集計値を取得できます。 これらのオプションはいずれも、デバッグや、アプリケーションでの Storage キューの使い方を理解するのに役立ちます。 また、アプリケーションのパフォーマンス チューニングやキューの使用コストの削減にも役立ちます。
-* Service Bus によってサポートされるメッセージ セッションでは、論理グループに属するメッセージを受信者に関連付けることができます。 これにより、メッセージとそれぞれの受信側の間にセッションのような関係が作成されます。 Service Bus でこの拡張機能を有効にするには、メッセージの [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) プロパティを設定します。 受信側では、特定のセッション ID をリッスンして、指定したセッション ID を共有するメッセージを受信できます。
-* Service Bus キューの重複検出機能により、[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) プロパティの値に基づいて、キューまたはトピックに送信された重複するメッセージが自動的に削除されます。
+* Service Bus によってサポートされる[メッセージ セッション](message-sessions.md)では、論理グループに属するメッセージを受信者に関連付けることができます。 これにより、メッセージとそれぞれの受信側の間にセッションのような関係が作成されます。 Service Bus でこの拡張機能を有効にするには、メッセージの [セッション ID] プロパティを設定します。 受信側では、特定のセッション ID をリッスンして、指定したセッション ID を共有するメッセージを受信できます。
+* Service Bus キューの重複検出機能により、[メッセージ ID] プロパティの値に基づいて、キューまたはトピックに送信された重複するメッセージが自動的に削除されます。
 
 ## <a name="capacity-and-quotas"></a>容量およびクォータ
 このセクションでは、[容量および適用可能なクォータ](service-bus-quotas.md)の観点から Storage キューと Service Bus キューを比較します。
@@ -172,14 +172,14 @@ Storage キューと Service Bus キューの機能セットは、多少異な�
 | --- | --- | --- |
 | 認証 |**対称キー** |**対称キー** |
 | セキュリティ モデル |SAS トークンを介した委任アクセス。 |SAS |
-| ID プロバイダー フェデレーション |**いいえ** |**はい** |
+| ID プロバイダー フェデレーション |**はい** |**はい** |
 
 ### <a name="additional-information"></a>関連情報
 * どちらのキュー テクノロジでも、すべての要求を認証する必要があります。 匿名アクセスを使用するパブリック キューはサポートされていません。 [SAS](service-bus-sas.md) を使用すると、書き込み専用 SAS、読み取り専用 SAS、フルアクセス SAS を発行することで、このシナリオに対応できます。
 * Storage キューによって提供される認証方式では、対称キーの使用が必要です。 このキーは、SHA-256 アルゴリズムで計算され、**Base64** 文字列としてエンコードされたハッシュベース メッセージ認証コード (HMAC) です。 各プロトコルの詳細情報については、「[Azure ストレージ サービスの認証](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services)」をご覧ください。 Service Bus キューでは、対称キーを使用する類似のモデルをサポートします。 詳細については、「[Service Bus での共有アクセス署名認証](service-bus-sas.md)」をご覧ください。
 
 ## <a name="conclusion"></a>まとめ
-2 つのテクノロジをより深く理解することにより、使用するキュー テクノロジとその状況について、より多くの十分な情報を得たうえでの決定を行うことができます。 Storage キューと Service Bus キューを使用する状況についての判断は明らかにさまざまな要因に依存します。 それらの要因がアプリケーションとそのアーキテクチャの個々のニーズに大きく依存している場合もあります。 
+2 つのテクノロジをより深く理解することにより、使用するキュー テクノロジとその状況について、より多くの十分な情報を得たうえでの決定を行うことができます。 Storage キューまたは Service Bus キューを使用する状況についての判断は明らかに多数の要因に依存します。 それらの要因がアプリケーションとそのアーキテクチャの個々のニーズに大きく依存している場合もあります。 
 
 Storage キューは、次のような理由から選択することをお勧めします。
 

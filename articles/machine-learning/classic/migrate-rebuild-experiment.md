@@ -3,17 +3,17 @@ title: 'ML スタジオ (クラシック): Azure Machine Learning に移行す�
 description: スタジオ (クラシック) の実験を Azure Machine Learning デザイナーで再構築します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: bb944cb034fdd7cc51648314154a654bc1265533
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 35a68d1a2883d0631f90cd8009e272bca0c66278
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565643"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311840"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>スタジオ (クラシック) の実験を Azure Machine Learning で再構築します。
 

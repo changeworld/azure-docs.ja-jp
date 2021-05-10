@@ -3,27 +3,20 @@ title: Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシ�
 description: Azure Kubernetes Service (AKS) で PodSecurityPolicy を使用してポッドのアドミッションを制御する方法について学習する
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.date: 03/25/2021
+ms.openlocfilehash: d95cdb51136511bdd8529c829c3f680d19e14ba9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180311"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611771"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) でポッド セキュリティ ポリシーを使用してクラスターのセキュリティを保護する
 
 > [!WARNING]
-> **このドキュメントに記載したポッド セキュリティ ポリシー (プレビュー) 機能は非推奨となる予定です。2021 年 6 月 30 日を過ぎると使用できなくなるため**、[AKS 用の Azure Policy](use-azure-policy.md) が推奨されます。 非推奨となる日は、以前に記載した日付の 2020 年 10 月 15 日から延長されています。
+> **このドキュメントで説明されている機能、ポッド セキュリティ ポリシー (プレビュー) は、Kubernetes バージョン 1.21 で非推奨となり、バージョン1.25 で削除されます。** Kubernetes Upstream がそのマイルストーンに近づくにつれ、Kubernetes コミュニティは実行可能な代替手段を文書化していきます。 前回の非推奨の発表は、お客様にとって実行可能な選択肢がなかった時点で行われました。 現在、Kubernetes コミュニティが代替手段に取り組んでいるため、Kubernetes の前に非推奨とする緊急の必要性がなくなりました。
 >
 > ポッド セキュリティ ポリシー (プレビュー) が非推奨となった後、今後のクラスター アップグレードを実行し、Azure サポート内に留まるには、非推奨の機能を使用する既存のクラスターでその機能を無効にする必要があります。
->
-> AKS 用の Azure Policy を使用したテスト シナリオを開始することを強くお勧めします。これには、ポッドをセキュリティで保護するための組み込みのポリシーと、ポッド セキュリティ ポリシーにマップする組み込みのイニシアチブが用意されています。 ポッドのセキュリティ ポリシーから移行するには、クラスターで次の操作を行う必要があります。
-> 
-> 1. クラスターで[ポッドのセキュリティ ポリシーを無効にします](#clean-up-resources)。
-> 1. [Azure Policy アドオン][kubernetes-policy-reference]を有効にします。
-> 1. [使用可能な組み込みポリシー][policy-samples]から目的の Azure Policy を有効にします。
-> 1. [ポッドのセキュリティ ポリシーと Azure Policy の動作変更](#behavior-changes-between-pod-security-policy-and-azure-policy)を確認します。
 
 AKS クラスターのセキュリティを向上させるには、どのポッドをスケジュールできるかを制限することができます。 許可しないリソースを要求するポッドは、AKS クラスターで実行できません。 ポッド セキュリティ ポリシーを使用してこのアクセスを定義します。 この記事では、ポッド セキュリティ ポリシーを使用して AKS でのポッドのデプロイを制限する方法について説明します。
 
@@ -462,7 +455,6 @@ kubectl delete namespace psp-aks
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
@@ -479,3 +471,4 @@ kubectl delete namespace psp-aks
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
+[azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md

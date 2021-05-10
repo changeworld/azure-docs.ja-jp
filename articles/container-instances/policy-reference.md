@@ -1,15 +1,15 @@
 ---
 title: Azure Container Instances 用の組み込みポリシー定義
 description: Azure Container Instances 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/17/2021
+ms.date: 04/14/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 990c9070f49438a6f66f5c1861479c298d1d8b90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7590a5fb7f9731f64c0b51f277166b3235487e52
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606866"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107504165"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>Azure Container Instances 用の Azure Policy 組み込み定義
 

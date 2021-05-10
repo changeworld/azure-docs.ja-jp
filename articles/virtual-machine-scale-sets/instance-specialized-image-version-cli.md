@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2ecc2bfe6bdc06ede61e6c4d1e6eccfc9ef6323a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5fc88c00d548c0a034984976557d316fdac7620f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878004"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792347"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI で特殊化されたイメージ バージョンを使用してスケール セットを作成する
 
@@ -25,7 +25,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 この例では、必要に応じてリソース名を置き換えてください。 
 
-[az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) を使用してギャラリー内のイメージ定義を一覧表示すると、定義の名前と ID を確認できます。
+[az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) を使用してギャラリー内のイメージ定義を一覧表示すると、定義の名前と ID を確認できます。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -37,7 +37,7 @@ az sig image-definition list \
    --output tsv
 ```
 
-イメージが特殊化されたイメージであることを示す `--specialized` パラメーターを使用して [`az vmss create`](/cli/azure/vmss#az-vmss-create) でスケール セットを作成し ます。
+イメージが特殊化されたイメージであることを示す `--specialized` パラメーターを使用して [`az vmss create`](/cli/azure/vmss#az_vmss_create) でスケール セットを作成し ます。
 
 `--image` にイメージ定義 ID を使用して、使用可能な最新バージョンのイメージからスケール セット インスタンスを作成します。 また、`--image` にイメージ バージョン ID を指定して、特定のバージョンからスケール セット インスタンスを作成することもできます。 特定のイメージ バージョンを使用すると、その特定のイメージ バージョンが使用できない場合 (リージョンから削除されるなどして)、オートメーションが失敗する可能性があることに注意してください。 特定のイメージ バージョンが必要な場合を除き、新しい VM の作成にはイメージ定義 ID の使用をお勧めします。
 

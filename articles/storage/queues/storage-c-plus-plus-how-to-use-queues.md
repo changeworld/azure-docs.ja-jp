@@ -1,19 +1,19 @@
 ---
 title: Queue Storage を使用する方法 (C++) - Azure Storage
 description: Azure で Queue Storage サービスを使用する方法について説明します。 サンプルは C++ で記述されています。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 07/16/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 44d64c54049c02b6602f01b97effcc33b03dbcfe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0e8274378ed321dc7c3d6ddcfb85f5bb0a2f7993
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97591329"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276282"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
 

@@ -9,10 +9,10 @@ ms.date: 10/20/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8bb227bdc4bbcdf986c2ed64e1f89e1dfa289b83
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102554974"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>チュートリアル: Azure プライベート エンドポイントを使用して Azure SQL サーバーに接続する - Azure portal
@@ -97,7 +97,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -118,7 +118,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
@@ -172,7 +172,7 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
 11. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[CreateSQLEndpointTutorial]** を選択します。 |

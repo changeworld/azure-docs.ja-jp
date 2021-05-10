@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2021
-ms.openlocfilehash: 77927472dae6c8e7e6fddacf9088b479636edd37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41b327e793c6b35a2b2aeae825c493a484d84fb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103224336"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562768"
 ---
 # <a name="train-model-module"></a>モデルのトレーニング モジュール
 
@@ -71,7 +71,7 @@ ms.locfileid: "103224336"
 
 モデルの解釈可能性により、ML モデルを理解し、人間が理解できる方法で意思決定の基礎を提示する可能性が提供されます。
 
-現在、**モデルのトレーニング** モジュールでは、[ML モデルを説明するための解釈可能性パッケージの使用がサポートされています](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)。 次の組み込みアルゴリズムがサポートされています。
+現在、**モデルのトレーニング** モジュールでは、[ML モデルを説明するための解釈可能性パッケージの使用がサポートされています](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)。 次の組み込みアルゴリズムがサポートされています。
 
 - 線形回帰
 - ニューラル ネットワーク回帰
@@ -87,7 +87,7 @@ ms.locfileid: "103224336"
 
 ![モデルの説明グラフを示すスクリーンショット](./media/module/train-model-explanations-tab.gif)
 
-Azure Machine Learning におけるモデルの説明を使用する方法の詳細については、[ML モデルの解釈](https://docs.microsoft.com/azure/machine-learning/how-to-machine-learning-interpretability-aml#generate-feature-importance-values-via-remote-runs)に関するハウツー記事を参照してください。
+Azure Machine Learning におけるモデルの説明を使用する方法の詳細については、[ML モデルの解釈](../how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)に関するハウツー記事を参照してください。
 
 ## <a name="results"></a>結果
 
@@ -101,4 +101,4 @@ Azure Machine Learning におけるモデルの説明を使用する方法の詳
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 
+Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。

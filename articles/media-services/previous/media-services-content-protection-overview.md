@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: edffa2dddd0ec877a4b825a69a76fb158928c89f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103016765"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067403"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -117,7 +117,7 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
 以下の記事では、コンテンツ保護を開始するために役立つ次の手順について説明しています。
 
 * [ストレージ暗号化で保護する](media-services-rest-storage-encryption.md)
-* [AES 暗号化で保護する](media-services-protect-with-aes128.md)
+* [AES 暗号化で保護する](media-services-playready-license-template-overview.md)
 * [PlayReady や Widevine で保護する](media-services-protect-with-playready-widevine.md)
 * [FairPlay での保護](media-services-protect-hls-with-FairPlay.md)
 

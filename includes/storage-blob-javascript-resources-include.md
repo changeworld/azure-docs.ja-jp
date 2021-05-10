@@ -9,10 +9,10 @@ ms.date: 10/29/2020
 ms.author: alvidela
 ms.custom: include file
 ms.openlocfilehash: 550c4b85291615bf42de934fd7e977358f40e334
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93027218"
 ---
 ## <a name="resources-for-development-with-javascript"></a>JavaScript で開発するためのリソース

@@ -10,18 +10,29 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cbc147cb0aabc0540e3a91c99243aa88a8cca146
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502537"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210794"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>自動機械学習 (AutoML) とは
 
 自動機械学習 (自動 ML または AutoML とも呼ばれます) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 Azure Machine Learning の 自動 ML は、[Microsoft Research 部門](https://www.microsoft.com/research/project/automl/)の最先端技術に基づいています。
 
 機械学習モデルの従来の開発はリソース集約型であり、ドメインに関する広範な知識と多数のモデルを生成して比較するための大量の時間を必要とします。 自動機械学習を使用することで、すぐに実稼働環境で使用できる ML モデルを取得するための時間を、容易にかつ効率的に短縮することができます。
+
+## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning での自動 ML
+
+Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
+
+* コードの経験がある場合は、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) に関する記事を参照してください。  「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を開始します。
+
+* コードの経験があまりない、またはない場合は、Azure Machine Learning スタジオ ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  次のチュートリアルを開始します。
+    * [チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する](tutorial-first-experiment-automated-ml.md)。
+    *  [チュートリアル:自動機械学習を使用して需要を予測する](tutorial-automated-ml-forecast.md)
+
 
 ## <a name="when-to-use-automl-classify-regression--forecast"></a>AutoML をいつ使用するか: 分類、回帰、予測
 
@@ -103,7 +114,7 @@ ms.locfileid: "102502537"
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
-## <a name="feature-engineering"></a>特徴エンジニアリング
+## <a name="feature-engineering"></a>機能エンジニアリング
 
 特徴エンジニアリングは、データに関するドメインの知識を活用して、ML アルゴリズムの学習を支援する機能を作成するプロセスです。 Azure Machine Learning では、特徴エンジニアリングを容易にするために、スケーリングと正規化の手法が適用されます。 これらの手法と特徴エンジニアリングは、まとめて特徴量化と呼ばれています。
 
@@ -200,14 +211,6 @@ ms.locfileid: "102502537"
 * 数百基の油井の予測メンテナンス
 * 個々のユーザーのエクスペリエンスの調整。
 
-## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning での自動 ML
-
-Azure Machine Learning には、自動 ML を使用するための 2 つのエクスペリエンスが用意されています。
-
-* コードの経験がある場合は、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) に関する記事を参照してください 
-
-* コードの経験があまりない、またはない場合は、Azure Machine Learning Studio ([https://ml.azure.com](https://ml.azure.com/)) に関する記事を参照してください。  
-
 <a name="parity"></a>
 
 ### <a name="experiment-settings"></a>実験の設定 
@@ -263,7 +266,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 ONNX 形式に変換する方法については、[この Jupyter ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 [ONNX でサポートされているアルゴリズム](how-to-configure-auto-train.md#select-your-experiment-type)についてご確認ください。
 
-ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)に関するページを参照してください。 
+ONNX ランタイムは C# にも対応しています。そのため、コードを書き直す必要がなく、また、REST エンドポイントで発生するネットワークの遅延なく、C# アプリで自動的に構築されたモデルを使用できます。 [ML.NET を使用する .NET アプリケーションでの AutoML ONNX モデルの使用](./how-to-use-automl-onnx-model-dotnet.md)と [ONNX ランタイム C# API を使用した ONNX モデルの推論](https://github.com/plaidml/onnxruntime/blob/plaidml/docs/CSharp_API.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

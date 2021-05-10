@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: ba81be54592e591f734b05235bb3ce183a07a11c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fd7d4407f7ea552409599946d1c13a7e9d1d7268
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101709888"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062541"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のトラブルシューティング
 
@@ -44,7 +44,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 7. **[条件の追加]** を選択し、プロンプトに従って目的のメトリックとしきい値を選択します。
 
-詳細については、「[Azure Monitor のアラート](../azure-monitor/platform/alerts-overview.md)」を参照してください。
+詳細については、「[Azure Monitor のアラート](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Log Analytics を使用してエラーを確認、解決する
 

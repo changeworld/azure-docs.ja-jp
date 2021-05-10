@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 13044b8f087b403f83516a32a490d2dee8db700f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 989535d0bd6f514e63c7cea9e5fd71912f8fb08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054233"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780159"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Device Update for IoT Hub への更新プログラムのインポート - スキーマおよびその他の情報
 Device Update for IoT Hub に更新プログラムにインポートする場合は、まず、[概念](import-concepts.md)と[攻略ガイド](import-update.md) を必ず確認しておいてください。 インポート マニフェストの構築時に使用されるスキーマの詳細と、関連するオブジェクトの情報に関心がある場合は、以下を参照してください。
@@ -22,8 +22,8 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 | --------- | --------- | --------- | --------- |
 | UpdateId | `UpdateId` オブジェクト | 更新プログラム ID。 |
 | UpdateType | string | 更新の種類: <br/><br/> * 参照エージェントを使用してパッケージベースの更新を実行する場合は、`microsoft/apt:1` を指定します。<br/> * 参照エージェントを使用してイメージベースの更新を実行する場合は、`microsoft/swupdate:1` を指定します。<br/> * サンプル エージェント シミュレーターを使用する場合は、`microsoft/simulator:1` を指定します。<br/> * カスタム エージェントを開発する場合は、カスタムの種類を指定します。 | 形式: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> 最大 32 文字 |
-| InstalledCriteria | string | 更新プログラムが正常に適用されたかどうかを判断するために、エージェントによって解釈される文字列。  <br/> * 更新の種類 `microsoft/swupdate:1` には SWVersion の **値** を指定します。<br/> * 更新の種類 `microsoft/apt:1` には `{name}-{version}` を指定します。これは、APT ファイルから取得した名前とバージョンです。<br/> * 更新の種類 `microsoft/simulator:1` には更新プログラム ファイルのハッシュを指定します。<br/> * カスタム エージェントを開発する場合は、カスタムの文字列を指定します。<br/> | 最大 64 文字 |
-| 互換性 | `CompatibilityInfo` オブジェクトの配列 | この更新プログラムと互換性のあるデバイスの互換性情報。 | 最大 10 個の項目 |
+| InstalledCriteria | string | 更新プログラムが正常に適用されたかどうかを判断するために、エージェントによって解釈される文字列。  <br/> * 更新の種類 `microsoft/swupdate:1` には SWVersion の **値** を指定します。<br/> * 更新の種類 `microsoft/apt:1` には `{name}-{version}` を指定します。これは、APT ファイルから取得した名前とバージョンです。<br/> * カスタム エージェントを開発する場合は、カスタムの文字列を指定します。<br/> | 最大 64 文字 |
+| 互換性 | `CompatibilityInfo` [オブジェクト](#compatibilityinfo-object)の配列 | この更新プログラムと互換性のあるデバイスの互換性情報。 | 最大 10 個の項目 |
 | CreatedDateTime | 日付/時刻 | 更新プログラムが作成された日時。 | ISO 8601 の、区切られた日付と時刻の形式 (UTC) |
 | ManifestVersion | string | マニフェスト スキーマのバージョンをインポートします。 `2.0` を指定します。これは、`urn:azureiot:AzureDeviceUpdateCore:1` インターフェイスおよび `urn:azureiot:AzureDeviceUpdateCore:4` インターフェイスと互換性があります。 | `2.0` である必要があります。 |
 | ファイル | `File` オブジェクトの配列 | ペイロード更新ファイル | 最大 5 個のファイル |

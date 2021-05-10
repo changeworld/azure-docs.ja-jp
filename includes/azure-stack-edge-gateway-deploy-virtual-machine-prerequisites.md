@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 71d5a910e36762d096763c4f45a13cbdad47414d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101730627"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554897"
 ---
-Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経由で Azure Resource Manager を介してデバイスに接続するようにクライアントを構成する必要があります。 詳細な手順については、「[Azure Stack Edge デバイスで Azure Resource Manager に接続する](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)」を参照してください。
+Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経由で Azure Resource Manager を介してデバイスに接続するようにクライアントを構成する必要があります。 詳細な手順については、「[Azure Stack Edge デバイスで Azure Resource Manager に接続する](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)」を参照してください。
 
 次の手順を使用して、クライアントからデバイスにアクセスできることを確認します。 Azure Resource Manager に接続したときに既にこの構成は完了しているため、次はその構成が正常に完了したことを確認します。 
 
@@ -23,9 +23,9 @@ Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経
 
 1. ローカル デバイス API を呼び出して認証を行うには、次のように入力します。 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name>`
+    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
 
-    Azure Resource Manager を介して接続するには、ユーザー名 *EdgeARMuser* とパスワードを入力します。
+    Azure Resource Manager を介して接続するには、ユーザー名 *EdgeArmUser* とパスワードを入力します。
 
 1. Kubernetes でコンピューティングを構成した場合は、この手順を省略できます。 それ以外の場合は、次の手順に従って、コンピューティング用にネットワーク インターフェイスを有効にしていることを確認します。 
 
@@ -38,5 +38,3 @@ Azure Stack Edge デバイスに VM を展開する前に、Azure PowerShell 経
 
     > [!NOTE]
     > GPU VM を作成する場合は、インターネットに接続されているネットワーク インターフェイスを選択します。 これにより、デバイスに GPU 拡張機能をインストールできます。
-
-

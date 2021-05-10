@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: 42a9caff0433808734ee853cbad90a2088bf4e1e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95019247"
 ---
 # <a name="convert-data-format-of-utterances"></a>発話のデータ形式を変換する
@@ -37,7 +37,7 @@ LUIS の音声テキスト変換を使用すると、音声の発話をエンド
 ### <a name="quota-usage"></a>クォータの使用量
 詳細については、[主な制限](luis-limits.md#key-limits)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [データの抽出](luis-concept-data-extraction.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfe365af868f01b868e737a409724e92f1d57f81
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879243"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106991"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース プログラムのサポート
 
@@ -24,7 +24,7 @@ ms.locfileid: "98879243"
 
 ## <a name="get-help-or-open-a-support-ticket"></a>ヘルプを使用する、またはサポート チケットを開く
 
-1. 職場アカウントでサインインします。 (まだ[パートナー センター アカウントを作成](partner-center-portal/create-account.md)していない場合は、作成する必要があります)。
+1. 職場アカウントでサインインします。 (まだ[パートナー センター アカウントを作成](create-account.md)していない場合は、作成する必要があります)。
 
 1. ページの右上にあるメニューで **[サポート]** アイコンを選択します。 ページの右側に **[ヘルプとサポート]** ウィンドウが表示されます。
 

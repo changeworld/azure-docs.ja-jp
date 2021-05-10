@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2021
+ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 906c7e00cba1e0feb85289e8f2a46e74924dc0c3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658725"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720730"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single Sign-on の統合
 
@@ -37,9 +37,9 @@ ms.locfileid: "101658725"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* AWS Single Sign-on では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* AWS Single Sign-on では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
-* AWS Single Sign-on では、[**自動化されたユーザー プロビジョニング**](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial)がサポートされます。
+* AWS Single Sign-on では、[**自動化されたユーザー プロビジョニング**](./aws-single-sign-on-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-aws-single-sign-on-from-the-gallery"></a>ギャラリーからの AWS Single Sign-on の追加
 
@@ -72,7 +72,7 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
 1. Azure portal の **AWS Single Sign-on** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -80,9 +80,7 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
-    ![image1](common/upload-metadata.png)
-
-    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックして、「**AWS Single Sign-on の SSO の構成**」セクション (ポイント 8) でダウンロードしたメタデータ ファイルを選択し、 **[追加]** をクリックします。
 
     ![Image2](common/browse-upload-metadata.png)
 
@@ -148,15 +146,45 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
 ## <a name="configure-aws-single-sign-on-sso"></a>AWS Single Sign-on の SSO の構成
 
-1. **AWS SSO コンソール** を開きます。 
+1. AWS Single Sign-on 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[AWS Single Sign-on のセットアップ]** をクリックすると、AWS Single Sign-on アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して AWS Single Sign-on にサインインします。 ブラウザー拡張機能により、アプリケーションが自動的に構成され、手順 3. から 10. が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. AWS Single Sign-on を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、AWS Single Sign-on 企業サイトに管理者としてサインインします。
+
+1. **[Services]\(サービス\) -> [Security, Identity, & Compliance]\(セキュリティ、ID、およびコンプライアンス\) -> [AWS Single Sign-on]** の順に移動します。
 2. 左側のナビゲーション ペインで、 **[Settings]\(設定\)** を選択します。
-3. **[Settings]\(設定\)** ページで、 **[Identity source]\( ID ソース\)** を見つけ、 **[Change]\(変更\)** を選択します。
-4. [Change directory]\(ディレクトリの変更\) ページで、 **[External identity provider]\(外部 ID プロバイダー\)** を選択します。
-5. **[Service provider metadata]\(サービス プロバイダーのメタ データ\)** セクションで、 **[AWS SSO SAML metadata]\(AWS SSO SAML メタデータ\)** を見つけ、 **[Download metadata file]\(メタデータ ファイルのダウンロード\)** を選択して、メタデータ ファイルをダウンロードし、コンピューターに保存します。
-6. **[Identity provider metadata]\(ID プロバイダーのメタデータ\)** セクションで、 **[Browse]\(参照\)** をクリックして、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
-7. **[Next: Review]\(次へ: 確認\)** を選択します。
-8. テキスト ボックスに「**CONFIRM**」と入力し、ディレクトリの変更を確認します。
-9. **[完了]** を選択します。
+3. **[Settings]\(設定\)** ページで、 **[Identity source]\(ID ソース\)** を見つけ、 **[Change]\(変更\)** をクリックします。
+
+    ![ID ソースのサービス変更のスクリーンショット](./media/aws-single-sign-on-tutorial/settings.png)
+
+4. [Change identity source]\(ID ソースの変更\) で **[External identity provider]\(外部 ID プロバイダー\)** を選択します。
+
+    
+    ![外部 ID プロバイダーの選択のセクションのスクリーンショット](./media/aws-single-sign-on-tutorial/external-identity-provider.png)
+
+
+1. **[Configure external identity provider]\(外部 ID プロバイダーの構成\)** セクションで、以下の手順を実行します。
+
+    ![メタデータのダウンロードとアップロードのセクションのスクリーンショット](./media/aws-single-sign-on-tutorial/upload-metadata.png)
+
+    a. **[Service provider metadata]\(サービス プロバイダーのメタデータ\)** セクションで、 **[AWS SSO SAML metadata]\(AWS SSO SAML メタデータ\)** を見つけ、 **[Download metadata file]\(メタデータ ファイルのダウンロード\)** を選択して、メタデータ ファイルをダウンロードし、コンピューターに保存します。このメタデータ ファイルを使用して、Azure portal でアップロードします。
+
+    b. **[AWS SSO Sign-in URL]** の値をコピーして、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** テキスト ボックスに貼り付けます。
+
+    c. **[Identity provider metadata]\(ID プロバイダーのメタデータ\)** セクションで、 **[Browse]\(参照\)** をクリックして、Azure portal からダウンロードしたメタデータ ファイルをアップロードします。
+
+    d. **[Next: Review]\(次へ: 確認\)** を選択します。
+
+8. テキスト ボックスで「**ACCEPT**」と入力して、ID ソースを変更します。
+
+    ![構成の確認のスクリーンショット](./media/aws-single-sign-on-tutorial/accept.png)
+
+9. **[Change identity source]\(ID ソースの変更\)** をクリックします。
 
 ### <a name="create-aws-single-sign-on-test-user"></a>AWS Single Sign-on のテスト ユーザーの作成
 
@@ -196,7 +224,7 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 10. **[完了]** を選択します。
 
 > [!NOTE]
-> AWS Single Sign-on はまた、自動ユーザー プロビジョニングもサポートしています。自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial)をご覧ください。
+> AWS Single Sign-on はまた、自動ユーザー プロビジョニングもサポートしています。自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](./aws-single-sign-on-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -212,11 +240,9 @@ AWS Single Sign-on で Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した AWS Single Sign-on に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [AWS Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AWS Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [AWS Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AWS Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-AWS Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+AWS Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

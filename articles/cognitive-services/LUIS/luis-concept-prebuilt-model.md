@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95019145"
 ---
 # <a name="prebuilt-models"></a>事前構築済みのモデル
@@ -32,7 +32,7 @@ LUIS では、3 種類の事前構築済みモデルが提供されています�
 
 ## <a name="prebuilt-domains"></a>事前構築済みドメイン
 
-Language Understanding (LUIS) には、*事前構築済みのドメイン* が用意されています。これは[意図](luis-how-to-add-intents.md)と[エンティティ](luis-concept-entity-types.md)の事前構築済みモデルで、クライアント アプリケーションのドメインまたは共通のカテゴリに対して連携して動作します。 
+Language Understanding (LUIS) には、*事前構築済みのドメイン* が用意されています。これは [意図](luis-how-to-add-intents.md)と [エンティティ](luis-concept-entity-types.md)の事前構築済みモデルで、クライアント アプリケーションのドメインまたは共通のカテゴリに対して連携して動作します。 
 
 事前構築済みドメインはトレーニングされており、LUIS アプリに追加できる状態になっています。 アプリに追加した後、事前構築済みドメイン内の意図とエンティティは完全にカスタマイズ可能です。 
 

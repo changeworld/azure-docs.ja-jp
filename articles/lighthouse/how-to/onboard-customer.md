@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これにより、Azure の委任されたリソース管理を使用して自分のテナントからそれらのリソースにアクセスして管理できるようになります。
-ms.date: 02/16/2021
+ms.date: 03/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d8ad448ac022b07ecdea6b68c4544b8c955814b1
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556100"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497967"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -143,7 +143,7 @@ az role definition list --name "<roleName>" | grep name
 |サブスクリプション (Azure Marketplace に公開されたオファーの使用時)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!TIP]
-> 1 回のデプロイでグループ全体をオンボードすることはできませんが、[管理グループ レベルでポリシーをデプロイする](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)ことはできます。 ポリシーによって、管理グループ内の各サブスクリプションが指定された管理対象のテナントに委任されているかどうかが確認され、委任されていない場合は、指定した値に基づく割り当てが作成されます。
+> 1 回のデプロイでグループ全体をオンボードすることはできませんが、[管理グループ レベルでポリシーをデプロイする](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-delegate-management-groups)ことはできます。 ポリシーにより、管理グループ内の各サブスクリプションが指定した管理テナントに委任されているかどうかが [deployIfNotExists 効果](../../governance/policy/concepts/effects.md#deployifnotexists)を使用して確認され、委任されていない場合は、指定した値に基づく割り当てが作成されます。 その後、管理グループ内のすべてのサブスクリプションにアクセスできるようになります。ただし、管理グループ全体に対してアクションを実行するのではなく、個々のサブスクリプションとして処理する必要があります。
 
 次の例では、変更した **delegatedResourceManagement.parameters.json** ファイルを示します。これを使用すれば、サブスクリプションをオンボードすることができます。 ([rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) フォルダー内にある) リソース グループのパラメーター ファイルは似ていますが、オンボードの対象となる特定のリソース グループを識別するための **rgName** パラメーターも含まれています。
 
@@ -302,6 +302,11 @@ Get-AzManagedServicesAssignment
 # Log in first with az login if you're not using Cloud Shell
 
 az account list
+
+# Confirm successful onboarding for Azure Lighthouse
+
+az managedservices definition list
+az managedservices assignment list
 ```
 
 顧客がオンボードされた後に変更を加える必要がある場合は、[委任を更新](update-delegation.md)できます。 完全に[委任へのアクセスを削除する](remove-delegation.md)こともできます。

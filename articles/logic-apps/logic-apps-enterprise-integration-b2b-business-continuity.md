@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09fb738a499d6016c3aead0d33436f034bc5d339
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91565413"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728404"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Azure Logic Apps での統合アカウントの複数のリージョンにわたるディザスター リカバリーを設定する
 
@@ -60,7 +60,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 障害イベント時に、プライマリ リージョンでビジネス継続性を確保できない場合は、セカンダリ リージョンにトラフィックをダイレクトします。 セカンダリ リージョンは、パートナーと合意した RPO/RTO を満たすため、迅速にビジネスに必要な機能を復旧するのに役立ちます。 また、リージョン間でフェールオーバーするための労力を最小限に抑えます。 
 
-プライマリ リージョンからセカンダリ リージョンに制御番号をコピーする際に、待ち時間が予想されます。 障害イベント時に、重複して生成された制御番号をパートナーに送信することを回避するには、[PowerShell コマンドレット](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用してセカンダリ リージョン契約で制御番号を増やすことをお勧めします。
+プライマリ リージョンからセカンダリ リージョンに制御番号をコピーする際に、待ち時間が予想されます。 障害イベント時に、重複して生成された制御番号をパートナーに送信することを回避するには、[PowerShell コマンドレット](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn)を使用してセカンダリ リージョン契約で制御番号を増やすことをお勧めします。
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>障害イベント後のプライマリ リージョンへの復帰
 
@@ -68,7 +68,7 @@ Logic Apps 統合アカウントのビジネス継続性は、X12、AS2、EDIFAC
 
 1. セカンダリ リージョンでパートナーからのメッセージの受け入れを停止します。  
 
-2. [PowerShell コマンドレット](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)を使用して、すべてのプライマリ リージョン契約について、生成される制御番号を増やします。  
+2. [PowerShell コマンドレット](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn)を使用して、すべてのプライマリ リージョン契約について、生成される制御番号を増やします。  
 
 3. セカンダリ リージョンからプライマリ リージョンにトラフィックをダイレクトします。
 

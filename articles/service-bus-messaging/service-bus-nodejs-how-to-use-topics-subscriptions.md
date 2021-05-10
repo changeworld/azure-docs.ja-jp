@@ -2,17 +2,19 @@
 title: トピックとサブスクリプションにプレビューの JavaScript azure/service-bus を使用する
 description: 最新のプレビュー バージョンの @azure/service-bus パッケージを使用して Service Bus トピックにメッセージを送信したり、トピックのサブスクリプションからメッセージを受信したりする JavaScript プログラムの作成方法について説明します。
 author: spelluru
-ms.devlang: nodejs
-ms.topic: quickstart
-ms.date: 11/09/2020
 ms.author: spelluru
-ms.custom: devx-track-js
-ms.openlocfilehash: a1afe4207ce3833f3bcb55bc7bc2e8e27f393f63
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 11/09/2020
+ms.topic: quickstart
+ms.devlang: nodejs
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 59f1bb29099f2b921e687ca9de46365bc34f1b91
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98179998"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537244"
 ---
 # <a name="quickstart-service-bus-topics-and-subscriptions-with-nodejs-and-the-preview-azureservice-bus-package"></a>クイックスタート: Service Bus のトピックとサブスクリプションを Node.js およびプレビューの azure/service-bus パッケージで使用する
 このチュートリアルでは、JavaScript プログラムの [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) パッケージを使用して、Service Bus トピックにメッセージを送信したり、そのトピックの Service Bus サブスクリプションからメッセージを受信したりする方法について説明します。

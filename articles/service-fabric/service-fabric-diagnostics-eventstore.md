@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric イベント ストア
 description: クラスターまたはワークロードの状態を常に把握および監視する方法である、Azure Service Fabric EventStore について説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
-ms.author: srrengar
-ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ef5049fd934a29fa1d96514c334b13358e6600cf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91354821"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626556"
 ---
 # <a name="eventstore-overview"></a>EventStore の概要
 

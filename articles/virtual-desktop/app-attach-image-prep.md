@@ -1,25 +1,21 @@
 ---
-title: Windows Virtual Desktop での MSIX アプリのアタッチ イメージ (プレビュー) の準備 - Azure
+title: Windows Virtual Desktop の MSIX アプリのアタッチ イメージを準備する - Azure
 description: Windows Virtual Desktop ホスト プールの MSIX アプリのアタッチ イメージを作成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 204cc9a05d62caf62179100fa3496be422a3ec0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97417506"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363667"
 ---
 # <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用の MSIX イメージを準備する
 
-> [!IMPORTANT]
-> 現在、MSIX アプリのアタッチはパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-MSIX アプリのアタッチ (プレビュー) は、MSIX パッケージからユーザー セッションにアプリを動的にアタッチできるアプリケーション レイヤー ソリューションです。 MSIX パッケージ システムは、アプリをオペレーティング システムから分離することで、仮想マシンのイメージを簡単に作成できるようにします。 また、MSIX パッケージを使用すると、ユーザーが自分の仮想マシンでアクセスできるアプリをより細かく制御できます。 アプリをマスター イメージから分離し、後でユーザーに提供することもできます。
+MSIX アプリのアタッチはアプリケーション レイヤー ソリューションです。これを使用すると、MSIX パッケージからユーザー セッションにアプリを動的にアタッチできます。 MSIX パッケージ システムは、アプリをオペレーティング システムから分離することで、仮想マシンのイメージを簡単に作成できるようにします。 また、MSIX パッケージを使用すると、ユーザーが自分の仮想マシンでアクセスできるアプリをより細かく制御できます。 アプリをマスター イメージから分離し、後でユーザーに提供することもできます。
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>MSIX 用の VHD または VHDX パッケージを生成する
 

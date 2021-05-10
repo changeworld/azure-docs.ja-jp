@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 04bbb0465f26e82d247c53e7393c4476b9d36fde
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d2b80dfa091d6a2b892c8baf8e9c35084c5bee4e
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "100386851"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076390"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>チュートリアル:Google マップから Web サービスを移行する
 
@@ -46,11 +46,11 @@ Azure Maps と Google マップでは、どちらの場合も REST Web サービ
 | ジオコーディング               | [Search](/rest/api/maps/search)                                   |                         
 | 場所の検索           | [Search](/rest/api/maps/search)                                   |                         
 | 場所のオートコンプリート      | [Search](/rest/api/maps/search)                                   |                         
-| Snap to Road            | 「[ルートと道順を計算する](#calculate-routes-and-directions)」セクションを参照してください。            
-| Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。                  
+| Snap to Road            | 「[ルートと道順を計算する](#calculate-routes-and-directions)」セクションを参照してください。  |        
+| Speed Limits            | 「[座標の逆ジオコーディング](#reverse-geocode-a-coordinate)」セクションを参照してください。         |         
 | 静的マップ              | [Render](/rest/api/maps/render/getmapimage)                       |                         
 | タイム ゾーン               | [タイム ゾーン](/rest/api/maps/timezone)                              |                         
-| Elevation               | [Elevation (プレビュー)](/rest/api/maps/elevation)                   |                         |
+| Elevation               | [Elevation (プレビュー)](/rest/api/maps/elevation)                   | 
 
 次のサービス API は、Azure Maps では現在使用できません。
 

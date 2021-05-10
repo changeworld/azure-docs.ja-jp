@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: 099515eb1160b131f2d56fd02f300999d5ddfd16
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96780316"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103406"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
@@ -82,5 +82,5 @@ Microsoft との提携の下でビジネスを促進し、パートナー様の�
 ## <a name="next-steps"></a>次の手順
 
 - Microsoft Learn の「[Microsoft の商用マーケットプレースの概要](/learn/modules/intro-commercial-marketplace/)」に取り組みます。
-- コマーシャル マーケットプレースへのオファー公開に関心のある新規 Microsoft パートナー様は、「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](partner-center-portal/create-account.md)」を参照してください。
+- コマーシャル マーケットプレースへのオファー公開に関心のある新規 Microsoft パートナー様は、「[パートナー センターでコマーシャル マーケットプレース アカウントを作成する](create-account.md)」を参照してください。
 - 最近のリリースと将来のリリースの詳細については、[Microsoft パートナー コミュニティ](https://www.microsoftpartnercommunity.com/)の会話にご参加ください。

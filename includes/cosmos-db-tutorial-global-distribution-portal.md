@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB のグローバルな分散
+title: Azure Cosmos DB のグローバル配布
 description: Azure Portal で Azure Cosmos DB を使用してデータをグローバルにレプリケートする方法について説明します
 services: cosmos-db
 author: SnehaGunda
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 12/26/2018
 ms.custom: include file
 ms.openlocfilehash: 58788d6194454c8bd40730c9c350aa901924ba3d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027492"
 ---
 ## <a name="add-global-database-regions-using-the-azure-portal"></a><a id="addregion"></a>Azure Portal を使用したグローバル データベース リージョンの追加
@@ -21,7 +21,7 @@ Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions
 1. [Azure Portal](https://portal.azure.com/) で、左側のバーの **[Azure Cosmos DB]** をクリックします。
 2. **[Azure Cosmos DB]** ページで、変更するデータベース アカウントを選びます。
 3. アカウントのページで、メニューから **[データをグローバルにレプリケートする]** をクリックします。
-4. **[データをグローバルにレプリケートする]** ページで、マップ内のリージョンをクリックして、追加または削除するリージョンを選択し、 **[保存]** をクリックします。 リージョンを追加するには費用が必要になります。詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)または「[Azure Cosmos DB を使用したデータのグローバル分散](../articles/cosmos-db/distribute-data-globally.md)」の記事を参照してください。
+4. **[データをグローバルにレプリケートする]** ページで、マップ内のリージョンをクリックして、追加または削除するリージョンを選択し、**[保存]** をクリックします。 リージョンを追加するには費用が必要になります。詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)または「[Azure Cosmos DB を使用したデータのグローバル分散](../articles/cosmos-db/distribute-data-globally.md)」の記事を参照してください。
    
     ![地図でリージョンをクリックして、リージョンを追加又は削除する][1]
     
@@ -31,11 +31,11 @@ Azure Cosmos DB は世界中のすべての [Azure リージョン][azureregions
 複数のリージョンを構成する場合、2 つの一般的なシナリオがあります。
 
 1. エンドユーザーが世界中のどこにいても関係なく、データへの待ち時間の短いアクセスを実現する
-2. リージョンのビジネス継続性とディザスター リカバリー (BCDR) の回復性を追加する
+2. ビジネス継続性とディザスター リカバリー (BCDR) のためにリージョンの回復性を追加する
 
 エンド ユーザーの短い待ち時間の実現のため、アプリケーションのユーザーが存在する場所に対応するリージョンに、アプリケーションと Azure Cosmos DB の両方をデプロイすることをお勧めします。
 
-BCDR のため、リージョン ペアに基づいてリージョンを追加することをお勧めします。リージョン ペアについては、「[ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン][bcdr]」をご覧ください。
+BCDR のため、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン][bcdr]」に記載されているリージョン ペアに基づいてリージョンを追加することをお勧めします。
 
 <!--
 

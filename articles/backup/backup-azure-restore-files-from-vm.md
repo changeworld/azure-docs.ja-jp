@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5a027773a55347b71c1e6a66d24d7fdb99220d0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101725511"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579365"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -35,7 +35,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 3. [バックアップ] ダッシュボード メニューで、 **[ファイルの回復]** を選択します。
 
-    ![[ファイルの回復] を選択する](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![[ファイルの回復] を選択する](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)32
 
     **[ファイルの回復]** メニューが開きます。
 
@@ -60,18 +60,18 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 ## <a name="step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script"></a>手順 2:スクリプトを実行する前にマシンが要件を満たしていることを確認する
 
-スクリプトが正常にダウンロードされたら、このスクリプトを実行するための適切なマシンがあることを確認します。 スクリプトを実行する予定の VM には、次のサポートされていない構成が含まれていてはなりません。 含まれている場合、できれば同じリージョンの、要件を満たす別のマシンを選択します。  
+スクリプトが正常にダウンロードされたら、このスクリプトを実行するための適切なマシンがあることを確認します。 スクリプトを実行する予定の VM には、次のサポートされていない構成が含まれていてはなりません。 **含まれている場合、できれば同じリージョンの、要件を満たす別のマシンを選択します**。  
 
 ### <a name="dynamic-disks"></a>ダイナミック ディスク
 
-次のいずれかの特性がある VM では、実行可能スクリプトは実行できません。
+次のいずれかの特性がある VM では、実行可能スクリプトは実行できません。別のマシンを選択してください
 
 - 複数のディスクにまたがるボリューム (スパン ボリュームおよびストライプ ボリューム)。
 - ダイナミック ディスク上のフォールト トレラント ボリューム (ミラー化ボリュームおよび RAID 5 ボリューム)。
 
 ### <a name="windows-storage-spaces"></a>Windows 記憶域スペース
 
-Windows 記憶域スペース用に構成されている VM では、ダウンロードした実行可能ファイルは実行できません。
+バックアップされた VM に Windows 記憶域スペースがある場合、その VM 上では、ダウンロードした実行可能ファイルは実行できません。 別のマシンを選択してください。
 
 ### <a name="virtual-machine-backups-having-large-disks"></a>大容量ディスクを含む仮想マシンのバックアップ
 
@@ -81,6 +81,7 @@ Windows 記憶域スペース用に構成されている VM では、ダウン�
 [Windows OS](#for-backed-up-vms-with-large-disks-windows)<br>
 [Linux OS](#for-backed-up-vms-with-large-disks-linux)
 
+ILR スクリプトを実行する適切なマシンを選択したら、[OS の要件](#step-3-os-requirements-to-successfully-run-the-script)と[アクセスの要件](#step-4-access-requirements-to-successfully-run-the-script)を満たしていることを確認します。 
 
 ## <a name="step-3-os-requirements-to-successfully-run-the-script"></a>手順 3:スクリプトを正常に実行するための OS の要件
 
@@ -126,16 +127,18 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 | .NET | 4.6.2 以降 |
 | TLS | 1.2 がサポートされている必要があります。  |
 
+また、[ILR スクリプトを実行するための適切なマシン](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があり、[アクセスの要件](#step-4-access-requirements-to-successfully-run-the-script)を満たしていることを確認します。
+
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>手順 4:スクリプトを正常に実行するためのアクセスの要件
 
 アクセスが制限されたコンピューターでスクリプトを実行する場合は、次にアクセスできることを確認してください。
 
-- `download.microsoft.com`
+- `download.microsoft.com` または NSG の `AzureFrontDoor.FirstParty` サービス タグ
 - Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (すべての Azure パブリック リージョン)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet 用)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government 用)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany 用)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure パブリック リージョンの場合) または NSG の `AzureBackup` サービス タグ
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet の場合) または NSG の `AzureBackup` サービス タグ
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government の場合) または NSG の `AzureBackup` サービス タグ
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany の場合) または NSG の `AzureBackup` サービス タグ
 - 送信ポート 53 (DNS)、443、3260
 
 > [!NOTE]
@@ -148,12 +151,13 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
 スクリプトを実行するコンピューターと復旧ポイントのデータの間にセキュリティで保護されたチャネルを構築するために使われるコンポーネントをダウンロードするには、`download.microsoft.com` へのアクセスが必要です。
 
+また、[ILR スクリプトを実行するための適切なマシン](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)があり、[OS の要件](#step-3-os-requirements-to-successfully-run-the-script)を満たしていることを確認します。
 
 ## <a name="step-5-running-the-script-and-identifying-volumes"></a>手順 5:スクリプトを実行してボリュームを識別する
 
 ### <a name="for-windows"></a>Windows の場合
 
-手順 2、手順 3、および手順 4 で示されているすべての要件を満たした後、ダウンロードした場所 (通常は [ダウンロード] フォルダー) からスクリプトをコピーし、実行可能ファイルまたはスクリプトを右クリックして、管理者の資格情報を使用して実行します。 メッセージが表示されたら、パスワードを入力するか、またはメモリからのパスワードを貼り付けて、Enter キーを押します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
+手順 [2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)、[手順 3](#step-3-os-requirements-to-successfully-run-the-script)、[手順 4](#step-4-access-requirements-to-successfully-run-the-script) に示されているすべての要件を満たしたら、ダウンロードした場所 (通常はダウンロード フォルダー) からスクリプトをコピーします。[スクリプトを生成してダウンロードする方法については、手順 1](#step-1-generate-and-download-script-to-browse-and-recover-files) を参照してください。 実行可能ファイルを右クリックして、管理者の資格情報を使用して実行します。 メッセージが表示されたら、パスワードを入力するか、またはメモリからのパスワードを貼り付けて、Enter キーを押します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
 
   ![実行可能ファイルの出力](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
@@ -180,7 +184,7 @@ Linux の場合、スクリプトによって復旧ポイントに接続する�
 
 ### <a name="for-linux"></a>Linux の場合
 
-Linux マシンの場合は Python スクリプトが生成されます。 このスクリプトをダウンロードして、適切な (対応している) Linux サーバーにコピーします。 それを実行するためには、```chmod +x <python file name>``` でアクセス許可を変更しなければならない場合があります。 そのうえで、```./<python file name>``` を使用し、Python ファイルを実行します。
+手順 [2](#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)、[手順 3](#step-3-os-requirements-to-successfully-run-the-script)、[手順 4](#step-4-access-requirements-to-successfully-run-the-script) に示されているすべての要件を満たしたら、Linux マシン用の Python スクリプトを生成します。 [スクリプトを生成してダウンロードする方法については、手順 1](#step-1-generate-and-download-script-to-browse-and-recover-files) を参照してください。 このスクリプトをダウンロードして、適切な (対応している) Linux サーバーにコピーします。 それを実行するためには、```chmod +x <python file name>``` でアクセス許可を変更しなければならない場合があります。 そのうえで、```./<python file name>``` を使用し、Python ファイルを実行します。
 
 
 Linux では、復旧ポイントのボリュームはスクリプトが実行されるフォルダーにマウントされます。 それに応じて、接続されたディスク、ボリューム、対応するマウント パスが示されます。 これらのマウント パスは、ルート レベルのアクセス権を持つユーザーに表示されます。 スクリプトの出力に示されたボリュームを参照します。

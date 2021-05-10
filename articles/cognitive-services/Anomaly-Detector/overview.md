@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ad3bd1eed6e5e7efb783c4a40958e16c3ca23691
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572083"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599521"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -28,6 +28,12 @@ Anomaly Detector API では、時系列データを監視し、その中の異�
 ![サービス要求のパターンの変化を検出する](./media/anomaly_detection2.png)
 
 Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。RESTful API によってサービスをアプリケーションやプロセスに簡単に統合できます。
+
+このドキュメントには、次のような記事が記載されています。
+* [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* [攻略ガイド](./how-to/identify-anomalies.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* [概念の記事](./concepts/anomaly-detection-best-practices.md)では、サービスの機能と特長について詳しく説明します。
+* [チュートリアル](./tutorials/batch-anomaly-detection-powerbi.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 ## <a name="features"></a>特徴
 
@@ -107,5 +113,5 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 ## <a name="next-steps"></a>次のステップ
 
 * [クイック スタート: Anomaly Detector を使用して時系列データ内の異常を検出する](quickstarts/client-libraries.md)
-* Anomaly Detector API [オンライン デモ](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
+* Anomaly Detector API [オンライン デモ](https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook)
 * Anomaly Detector [REST API リファレンス](https://aka.ms/anomaly-detector-rest-api-ref)

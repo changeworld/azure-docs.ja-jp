@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab450c6ec6ae32cafcf07e88940736f209973d8d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97588762"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168044"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート
 
@@ -22,7 +22,7 @@ Microsoft では、Azure IoT Hub 対応のデバイスを継続的に拡張す�
 
 * 複数のパートナー企業と協力して、Azure IoT C SDK をベースにした開発キットを自社のハードウェア プラットフォームに公開できるよう支援しています。
 
-* Microsoft の信頼できるパートナーと協力して、Azure IoT のテストと認定を受けた、拡張を続ける一連のデバイスを提供しています。 これらのデバイスの現在の一覧については、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)を参照してください。
+* Microsoft の信頼できるパートナーと協力して、Azure IoT のテストと認定を受けた、拡張を続ける一連のデバイスを提供しています。 これらのデバイスの現在の一覧については、[Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com/)を参照してください。
 
 * 開発者が SDK をプラットフォームに簡単に移植できるように、Azure IoT Hub デバイス C SDK にプラットフォーム アブストラクション レイヤー (PAL) を提供しています。 詳細については、「[C SDK 移植ガイダンス](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)」を参照してください。
 
@@ -59,9 +59,9 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 
 | OS                  | コンパイラ                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2.7.*、3.5 以降 |
-| macOS High Sierra   | Python 2.7.*、3.5 以降 |
-| Windows 10 ファミリ   | Python 2.7.*、3.5 以降 |
+| Linux               | Python 2.7.*、3.6 以降 |
+| macOS High Sierra   | Python 2.7.*、3.6 以降 |
+| Windows 10 ファミリ   | Python 2.7.*、3.6 以降 |
 
 非同期 API は Python バージョン 3.5.3 以降でのみサポートされます。バージョン 3.7 以降を使用することをお勧めします。
 
@@ -114,9 +114,9 @@ Microsoft ではさまざまなパートナーと連携して、複数のマイ�
 
 Microsoft では数多くのパートナーと連携して、Azure IoT のテストと認定を受けたデバイスで Azure IoT ユニバースを継続的に拡張しています。
 
-* Azure IoT の認定デバイスを確認するには、[Microsoft Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)を参照してください。
+* Azure IoT の認定デバイスを確認するには、[Microsoft Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com/)を参照してください。
 
-* Azure Certified for IoT エコシステムの詳細については、「[Certified for IoT エコシステムに参加](https://catalog.azureiotsolutions.com/register)」を参照してください。
+* Azure Certified for IoT エコシステムの詳細については、「[Certified for IoT エコシステムに参加](../certification/overview.md)」を参照してください。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK を使用せずに IoT Hub に接続する
 

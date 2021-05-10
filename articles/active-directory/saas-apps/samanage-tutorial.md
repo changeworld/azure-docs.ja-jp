@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 96118a840c57932ae8e99b084766bf12493d9f7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6dcd5612bd2c5957ae0a397c3463dbb42445a754
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652733"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104956045"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>チュートリアル:Azure Active Directory と SolarWinds Service Desk (旧称 Samanage) の統合
 
@@ -90,7 +90,7 @@ SolarWinds に対して Azure AD SSO を構成してテストするには、次�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成 
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -102,7 +102,7 @@ SolarWinds に対して Azure AD SSO を構成してテストするには、次�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に SolarWinds へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -114,15 +114,15 @@ SolarWinds に対して Azure AD SSO を構成してテストするには、次�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-<a name="configure-solarwinds-single-sign-on"></a>
+<a name=&quot;configure-solarwinds-single-sign-on&quot;></a>
 
-## <a name="configure-solarwinds-sso"></a>SolarWinds の SSO の構成
+## <a name=&quot;configure-solarwinds-sso&quot;></a>SolarWinds の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、SolarWinds 企業サイトに管理者としてログインします。
 
 2. **[Dashboard]** をクリックして、左のナビゲーション ウィンドウで **[Setup]** を選択します。
    
-    ![ダッシュボード](./media/samanage-tutorial/tutorial-samanage-1.png "ダッシュボード")
+    ![ダッシュボード](./media/samanage-tutorial/tutorial-samanage-1.png &quot;ダッシュボード")
 
 3. **[シングル サインオン]** をクリックします。
    
@@ -184,8 +184,8 @@ SolarWinds の場合、プロビジョニングは手動で行います。
 
 * SolarWinds のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [SolarWinds] タイルをクリックすると、SolarWinds のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [SolarWinds] タイルをクリックすると、SolarWinds のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-SolarWinds を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+SolarWinds を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

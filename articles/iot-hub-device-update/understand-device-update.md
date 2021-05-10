@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 60dfd448a66ca67a241f97570c91f683323a7d6d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 95cecd66f4d0164594eb4e8da9efe765b5833e5e
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232377"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120777"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub (プレビュー) の概要
 
@@ -80,9 +80,9 @@ Device Update の機能は、エージェント統合、インポート、管理
 
 ### <a name="importing"></a>インポート
 
-インポートとは、更新を Device Update に取り込んで、デバイスに展開する仕組みです。 Device Update では、デバイスごとに 1 つの更新のロールアウトをサポートしています。 これは、OS パーティション全体を一度に更新するフルイメージ更新や、デバイス上で更新するすべてのパッケージを記述する apt マニフェストに最適です。 更新を Device Update にインポートするには、まず、更新を記述したインポート マニフェストを作成し、次に更新ファイルとインポート マニフェストをインターネットからアクセス可能な場所にアップロードします。 その後、Azure portal または [Device Update Import REST API](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) を使用して、更新インポートの非同期プロセスを開始できます。 Device Update によってファイルがアップロードされて処理され、IoT デバイスへの配布に使用できるようになります。
+インポートとは、更新を Device Update に取り込んで、デバイスに展開する仕組みです。 Device Update では、デバイスごとに 1 つの更新のロールアウトをサポートしています。 これは、OS パーティション全体を一度に更新するフルイメージ更新や、デバイス上で更新するすべてのパッケージを記述する apt マニフェストに最適です。 更新を Device Update にインポートするには、まず、更新を記述したインポート マニフェストを作成し、次に更新ファイルとインポート マニフェストをインターネットからアクセス可能な場所にアップロードします。 その後、Azure portal または [Device Update REST API](https://docs.microsoft.com/rest/api/deviceupdate/) を使用して、更新インポートの非同期プロセスを開始できます。 Device Update によってファイルがアップロードされて処理され、IoT デバイスへの配布に使用できるようになります。
 
-機密性の高いコンテンツの場合、Azure Blob Storage のアドホック SAS などの共有アクセス署名 (SAS) を使用してダウンロードを保護します。 [SAS の詳細](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+機密性の高いコンテンツの場合、Azure Blob Storage のアドホック SAS などの共有アクセス署名 (SAS) を使用してダウンロードを保護します。 [SAS の詳細](../storage/common/storage-sas-overview.md)
 
 :::image type="content" source="media/understand-device-update/import-update.png" alt-text="Device Update for IoT Hub のインポート ワークフローの図。" lightbox="media/understand-device-update/import-update.png":::
 

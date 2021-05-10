@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: 76fd959c28203132be4695031d96315f258cf53f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c8e32a56148326104c3514b8a2fdb5d6bbd3f00a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102563083"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778479"
 ---
 # <a name="quickstart-create-a-private-link-service-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Private Link サービスを作成する
 
@@ -48,7 +48,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 このセクションでは、Private Link サービスにアクセスするロード バランサーのホストとなる仮想ネットワークとサブネットを作成します。
 
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、次のように仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
 * アドレス プレフィックスは **10.1.0.0/16** にします。
@@ -69,7 +69,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 ```
 
-Private Link サービスのネットワーク ポリシーを無効にするようにサブネットを更新するには、[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用します。
+Private Link サービスのネットワーク ポリシーを無効にするようにサブネットを更新するには、[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使用します。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -90,7 +90,7 @@ az network vnet subnet update \
 
 ### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
 
-[az network lb create](/cli/azure/network/lb#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
+[az network lb create](/cli/azure/network/lb#az_network_lb_create) を使用して、次のようにパブリック ロード バランサーを作成します。
 
 * 名前は **myLoadBalancer** にします。
 * フロントエンド プールの名前は **myFrontEnd** にします。
@@ -115,7 +115,7 @@ az network vnet subnet update \
 
 プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
 
-[az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
+[az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) を使用して、次のように正常性プローブを作成します。
 
 * 仮想マシンの正常性を監視します。
 * 名前は **myHealthProbe** にします。
@@ -139,7 +139,7 @@ az network vnet subnet update \
 * トラフィックを受信するためのバックエンド IP プール。
 * 必要な発信元ポートと宛先ポート。 
 
-[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
+[az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) を使用して、次のようにロード バランサー規則を作成します。
 
 * 名前は **myHTTPRule** にします
 * フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
@@ -168,7 +168,7 @@ az network vnet subnet update \
 
 このセクションでは、前の手順で作成された Azure Load Balancer を使用する Private Link サービスを作成します。
 
-[az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) を使用し、Standard Load Balancer フロントエンド IP 構成を使用して Private Link サービスを作成します。
+[az network private-link-service create](/cli/azure/network/private-link-service#az_network_private_link_service_create) を使用し、Standard Load Balancer フロントエンド IP 構成を使用して Private Link サービスを作成します。
 
 * 名前は **myPrivateLinkService** にします。
 * 仮想ネットワークは **myVNet** にします。
@@ -195,7 +195,7 @@ Private Link サービスが作成され、トラフィックを受信できる�
 
 ### <a name="create-private-endpoint-virtual-network"></a>プライベート エンドポイントの仮想ネットワークを作成する
 
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、次のように仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNetPE** にします。
 * アドレス プレフィックスは **11.1.0.0/16** にします。
@@ -214,7 +214,7 @@ Private Link サービスが作成され、トラフィックを受信できる�
     --subnet-prefixes 11.1.0.0/24
 ```
 
-プライベート エンドポイントのネットワーク ポリシーを無効にするようにサブネットを更新するには、[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用します。
+プライベート エンドポイントのネットワーク ポリシーを無効にするようにサブネットを更新するには、[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使用します。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -256,7 +256,7 @@ az network vnet subnet update \
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要なくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、Private Link サービス、ロード バランサー、すべての関連リソースを削除します。
+必要なくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、Private Link サービス、ロード バランサー、すべての関連リソースを削除します。
 
 ```azurecli-interactive
   az group delete \

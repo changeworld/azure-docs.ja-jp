@@ -3,12 +3,12 @@ title: Azure Service Bus での Azure リソースのマネージド ID
 description: この記事では、Azure Service Bus エンティティ (キュー、トピック、サブスクリプション) にアクセスするためにマネージド ID を使用する方法について説明します。
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98954312"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785435"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -45,7 +45,7 @@ Azure Service Bus の場合、名前空間およびそれに関連するすべ�
 
 次の一覧で、Service Bus リソースへのアクセスのスコープとして指定できるレベルを、最も狭いスコープから順に示します。
 
-- **キュー**、**トピック**、または **サブスクリプション**:ロールの割り当ては、特定の Service Bus エンティティに適用されます。 現在、Azure portal では、サブスクリプション レベルでの Service Bus Azure ロールへのユーザー、グループ、マネージド ID の割り当てはサポートされていません。 以下に示したのは、Azure CLI コマンドの使用例です。[az-role-assignment-create](/cli/azure/role/assignment?#az-role-assignment-create) によって、Service Bus の Azure ロールに ID を割り当てています。 
+- **キュー**、**トピック**、または **サブスクリプション**:ロールの割り当ては、特定の Service Bus エンティティに適用されます。 現在、Azure portal では、サブスクリプション レベルでの Service Bus Azure ロールへのユーザー、グループ、マネージド ID の割り当てはサポートされていません。 以下に示したのは、Azure CLI コマンドの使用例です。[az-role-assignment-create](/cli/azure/role/assignment?#az_role_assignment_create) によって、Service Bus の Azure ロールに ID を割り当てています。 
 
     ```azurecli
     az role assignment create \
@@ -92,7 +92,7 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
 この設定を有効にすると、ご利用の Azure Active Directory (Azure AD) に新しいサービス ID が作成され、App Service ホストに構成されます。
 
 > [!NOTE]
-> マネージド ID を使用する場合、接続文字列は `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity` の形式にする必要があります。
+> マネージド ID を使用する場合、接続文字列は `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=ManagedIdentity` の形式にする必要があります。
 
 ここで、このサービス ID をご利用の Service Bus リソースの必要なスコープ内のロールに割り当てます。
 

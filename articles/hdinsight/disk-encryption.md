@@ -5,12 +5,12 @@ description: この記事では、Azure HDInsight クラスターの保存デー
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 3d4f9e3be02a64efa058ea1f84a3e261cb6166fc
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 226516b1178f14789570b45b68cfdbf56f63bbd7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867119"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775153"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Azure HDInsight の保存データの二重暗号化
 
@@ -133,7 +133,7 @@ HDInsight では、Azure Key Vault にのみ対応しています。 自分の�
 
 #### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](/cli/azure/hdinsight#az-hdinsight-create)」をご参照ください。 パラメーター `encryption-key-version` は省略可能です。
+次の例では、Azure CLI を使用して、ディスク暗号化が有効になった新しい Apache Spark クラスターを作成する方法を示します。 詳細については、「 [Azure CLI az hdinsight の作成](/cli/azure/hdinsight#az_hdinsight_create)」をご参照ください。 パラメーター `encryption-key-version` は省略可能です。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -371,7 +371,7 @@ Azure portal または Azure CLI を使用して、実行中のクラスター�
 
 #### <a name="using-azure-cli"></a>Azure CLI の使用
 
-次の例では、既存の HDInsight クラスターでディスク暗号化キーをローテーションする方法を示します。 詳細については、「 [Azure CLI az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key)」をご参照ください。
+次の例では、既存の HDInsight クラスターでディスク暗号化キーをローテーションする方法を示します。 詳細については、「 [Azure CLI az hdinsight rotate-disk-encryption-key](/cli/azure/hdinsight#az_hdinsight_rotate_disk_encryption_key)」をご参照ください。
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -404,7 +404,7 @@ Hdinsight は、HDInsight クラスターに関連するマネージド ID を�
 
 **キーを削除した場合、どのようにしてクラスターを復元しますか?**
 
-「論理的な削除」対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key#az-keyvault-key-recover)」に関するページを参照してください。
+「論理的な削除」対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key#az_keyvault_key_recover)」に関するページを参照してください。
 
 
 **クラスターがスケールアップされた場合、新しいノードでは、カスタマー マネージド キーはシームレスにサポートされますか?**

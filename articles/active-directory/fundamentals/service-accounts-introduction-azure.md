@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d657f1df14b083631227cb7c19f64b65be8801d0
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587867"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010467"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Azure サービス アカウントのセキュリティ保護の概要
 
@@ -26,7 +26,7 @@ Azure Active Directory のネイティブなサービス アカウントには�
 
 ## <a name="types-of-azure-active-directory-service-accounts"></a>Azure Active Directory サービス アカウントの種類
 
-Azure でホストされるサービスでは、可能であればマネージ ID を使用し、そうでない場合はサービス プリンシパルを使用することをお勧めします。 マネージド ID は、Azure の外部でホストされているサービスには使用できません。 その場合は、サービス プリンシパルをお勧めします。 マネージド ID またはサービス プリンシパルを使用できる場合は、それらを使用してください。 Azure Active Directory ユーザー アカウントは、サービス プリンシパルとして使用しないことをお勧めします。 概要については、次の表を参照してください。
+Azure でホストされるサービスでは、可能であればマネージ ID を使用し、そうでない場合はサービス プリンシパルを使用することをお勧めします。 マネージド ID は、Azure の外部でホストされているサービスには使用できません。 その場合は、サービス プリンシパルをお勧めします。 マネージド ID またはサービス プリンシパルを使用できる場合は、それらを使用してください。 Azure Active Directory ユーザー アカウントをサービス アカウントとして使用しないことをお勧めします。 概要については、次の表を参照してください。
  
 
 | サービスのホスト| マネージド ID| サービス プリンシパル| Azure ユーザー アカウント |
@@ -54,7 +54,7 @@ Azure でホストされるサービスでは、可能であればマネージ I
 
 サービス プリンシパルを使用した認証には、2 つのメカニズム (クライアント証明書とクライアント シークレット) があります。 証明書のほうがより安全です。可能な場合は、クライアント証明書を使用してください。 クライアント シークレットとは異なり、クライアント証明書が誤ってコードに埋め込まれることはありません。
 
-サービス プリンシパルのセキュリティ保護の詳細については、サービス プリンシパルのセキュリティ保護に関するページを参照してください。
+サービス プリンシパルのセキュリティ保護の詳細については、[サービス プリンシパルのセキュリティ保護](service-accounts-principal.md)に関するページを参照してください。
 
  
 ## <a name="next-steps"></a>次のステップ

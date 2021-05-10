@@ -1,6 +1,6 @@
 ---
-title: Azure BLOB ストレージのコストを計画および管理する
-description: Azure portal でコスト分析を使用して、Azure BLOB ストレージのコストを計画および管理する方法を学習します。
+title: Azure Blob Storage のコストを計画および管理する
+description: Azure portal でコスト分析を使用して、Azure Blob Storage のコストを計画および管理する方法を学習します。
 services: storage
 author: normesta
 ms.service: storage
@@ -10,15 +10,15 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98601308"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Azure BLOB ストレージのコストを計画および管理する
 
-この記事は、Azure BLOB ストレージのコストを計画および管理するのに役立ちます。 まず、Azure 料金計算ツールを使用して、コストを見積もります。 ストレージ アカウントを作成したら、必要な分だけ支払うようにアカウントを最適化します。 コスト管理機能を使用して、予算を設定し、コストを監視します。 また、予測コストを確認し、支出の傾向を監視して、対処した方がよい領域を識別することもできます。
+この記事は、Azure Blob Storage のコストを計画および管理するのに役立ちます。 まず、Azure 料金計算ツールを使用して、コストを見積もります。 ストレージ アカウントを作成したら、必要な分だけ支払うようにアカウントを最適化します。 コスト管理機能を使用して、予算を設定し、コストを監視します。 また、予測コストを確認し、支出の傾向を監視して、対処した方がよい領域を識別することもできます。
 
 BLOB ストレージのコストは、Azure の請求にある月額料金の一部でしかないことにご注意ください。 この記事では、BLOB ストレージのコストを見積もり、管理する方法について説明しますが、サード パーティのサービスを含め、Azure サブスクリプションで使用されるすべての Azure サービスとリソースに対して課金されます。 BLOB ストレージのコスト管理に慣れたら、同様の方法を適用して、サブスクリプションで使用されているすべての Azure サービスのコストを管理できます。
 

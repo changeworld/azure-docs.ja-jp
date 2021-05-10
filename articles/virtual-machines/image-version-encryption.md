@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 258d8ab6ab23a95d73b8ed0c2549f373cf097674
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 601b8236ca413dd510585bdfffddc3e892caa73b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102554090"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759671"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
 
@@ -162,7 +162,7 @@ az provider register -n Microsoft.Compute
 ```
 
 
-イメージ バージョンのディスク暗号化セットを指定するには、`--target-region-encryption` パラメーターを指定して [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用します。 `--target-region-encryption` の形式は、OS とデータ ディスクを暗号化するためのキーのコンマ区切りリストです。 `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` のようになります。 
+イメージ バージョンのディスク暗号化セットを指定するには、`--target-region-encryption` パラメーターを指定して [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用します。 `--target-region-encryption` の形式は、OS とデータ ディスクを暗号化するためのキーのコンマ区切りリストです。 `<encryption set for the OS disk>,<Lun number of the data disk>,<encryption set for the data disk>,<Lun number for the second data disk>,<encryption set for the second data disk>` のようになります。 
 
 OS ディスクのソースがマネージド ディスクであるか VM である場合は、`--managed-image` を使用してイメージ バージョンのソースを指定します。 この例では、ソースは、OS ディスクと LUN 0 のデータ ディスクを備えたマネージド イメージです。 この OS ディスクは DiskEncryptionSet1 で暗号化され、データ ディスクは DiskEncryptionSet2 で暗号化されます。
 

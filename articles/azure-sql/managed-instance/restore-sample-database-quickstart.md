@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15aead5c9f93205baac28e8b93a88015c9689e3a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928802"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625315"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "96928802"
   - [オンプレミスから SQL Managed Instance へのポイント対サイト接続を構成する](point-to-site-p2s-configure.md)。
 
 > [!NOTE]
-> Azure Blob Storage と [Shared Access Signature (SAS) キー](../../storage/common/storage-sas-overview.md)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) に関するページを参照してください。
+> Azure Blob Storage と [Shared Access Signature (SAS) キー](../../storage/common/storage-sas-overview.md)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) に関するページを参照してください。
 
 ## <a name="restore-from-a-backup-file"></a>バックアップ ファイルから復元する
 
