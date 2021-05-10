@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: d7ae1e72dee28509c1338a1b56cf42a5293af9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670258"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304700"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 用語集
 
@@ -435,6 +435,12 @@ IoT プラグ アンド プレイ デバイスが IoT Hub に接続されると�
 [MQTT](https://mqtt.org/) は、デバイスと通信するために [IoT Hub](#iot-hub) がサポートするメッセージング プロトコルの 1 つです。 IoT Hub がサポートするメッセージング プロトコルの詳細については、「[IoT Hub でのメッセージの送受信](../iot-hub/iot-hub-devguide-messaging.md)」を参照してください。
 
 ## <a name="o"></a>O
+
+### <a name="ontology"></a>オントロジ
+
+不動産、スマート シティ、IoT システム、エネルギー グリッドなど、特定の分野の一連のモデル。 オントロジは、業界標準とベスト プラクティスに基づいた開始点を提供するため、[Azure Digital Twins](#azure-digital-twins) にあるようなナレッジ グラフのスキーマとしてよく使用されます。
+
+オントロジの詳細については、「[オントロジとは](../digital-twins/concepts-ontologies.md)」を参照してください。
 
 ### <a name="operations-monitoring"></a>操作の監視
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: 975a3ea250307e445e9bf48abdc669f2b035038a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554044"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310922"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -266,7 +266,7 @@ Usage
 - ターゲット:お客様の Log Analytics リソースを選択します
 - 条件: 
    - シグナル名: カスタム ログ検索
-   - 検索クエリ: `_LogOperation | where Operation == "Data Collection Status" | where Detail contains "OverQuota"`
+   - 検索クエリ: `_LogOperation | where Operation == "Data collection Status" | where Detail contains "OverQuota"`
    - ベース: 結果の数
    - 条件: より大きい
    - しきい値: 0

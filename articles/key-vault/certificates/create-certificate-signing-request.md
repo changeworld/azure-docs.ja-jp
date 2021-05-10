@@ -3,19 +3,18 @@ title: Azure Key Vault で CSR を作成、マージする
 description: Azure Key Vault で CSR を作成、マージする方法について説明します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4d079855e5aa05adb84b62d686d9f386608f7bb
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98789029"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752140"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>Key Vault で CSR を作成、マージする
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9427ae1b9bd68f63df40d24122cc13b5460fbc27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 88adef7ea50744f913780d99594ce3baadade84b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572282"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600898"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM サイズ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,9 +33,9 @@ ms.locfileid: "105572282"
 
 次のチェックリストを参照して、この記事の残りの部分で詳しく説明されている VM サイズのベスト プラクティスの概要を確認してください。 
 
-- [Standard_M8-4ms](/../../virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)、または [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。 
+- [Standard_M8-4ms](/azure/virtual-machines/m-series)、[E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)、または [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) 以上などの vCPU が 4 個以上の VM サイズを使用します。 
 - SQL Server ワークロードの最適なパフォーマンスを得るために、[メモリ最適化済み](../../../virtual-machines/sizes-memory.md)仮想マシン サイズを使用します。 
-- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) シリーズ、[M-](../../../virtual-machines/m-series.md)、[Mv2-](../../../virtual-machines/mv2-series.md) シリーズでは、OLTP ワークロードに必要な、最適なメモリと仮想コアの比率が提供されます。 M シリーズの VM はどちらも、ミッション クリティカルなワークロードに必要な最も高いメモリと仮想コアの比率を提供するほか、データ ウェアハウスのワークロードにも最適です。 
+- [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md)、[Edsv4](../../../virtual-machines/edv4-edsv4-series.md) シリーズ、[M-](/azure/virtual-machines/m-series)、[Mv2-](../../../virtual-machines/mv2-series.md) シリーズでは、OLTP ワークロードに必要な、最適なメモリと仮想コアの比率が提供されます。 M シリーズの VM はどちらも、ミッション クリティカルなワークロードに必要な最も高いメモリと仮想コアの比率を提供するほか、データ ウェアハウスのワークロードにも最適です。 
 - ミッション クリティカルな、およびデータ ウェアハウスのワークロードには、より高いメモリと仮想コアの比率を検討します。 
 - SQL Server のパフォーマンスが最適になるように SQL Server の設定とストレージ オプションが構成されているため、Azure 仮想マシンのマーケットプレース イメージを活用します。 
 - ターゲット ワークロードのパフォーマンス特性を収集し、それらを使用してお客様のビジネスに適した VM サイズを決定します。
@@ -65,11 +65,11 @@ SQL Server のデータ ウェアハウス環境では多くの場合、サイ�
 
 ### <a name="m-mv2-and-mdsv2-series"></a>M、Mv2、Mdsv2 シリーズ
 
-[M シリーズ](../../../virtual-machines/m-series.md)は、一部の最大の SQL Server ワークロードに適した仮想コア数とメモリを提供します。  
+[M シリーズ](/azure/virtual-machines/m-series)は、一部の最大の SQL Server ワークロードに適した仮想コア数とメモリを提供します。  
 
 [Mv2 シリーズ](../../../virtual-machines/mv2-series.md)は、最大の仮想コア数とメモリを備えており、ミッション クリティカルおよびデータ ウェアハウス ワークロードに推奨されています。 Mv2 シリーズ インスタンスはメモリ最適化済み VM サイズで、非常に優れたコンピューティング性能によって大規模なメモリ内データベースとワークロードをサポートし、リレーショナル データベース サーバー、大規模キャッシュ、インメモリ分析に最適な、メモリと CPU の高い比率を提供します。
 
-たとえば、[Standard_M64ms](../../../virtual-machines/m-series.md) のメモリと仮想コアの比率は 28 です。
+たとえば、[Standard_M64ms](/azure/virtual-machines/m-series) のメモリと仮想コアの比率は 28 です。
 
 [Mdsv2 ミディアム メモリ シリーズ](../../..//virtual-machines/msv2-mdsv2-series.md)は、現在[プレビュー](https://aka.ms/Mv2MedMemoryPreview)段階の新しい M シリーズで、Midtier メモリ オファリングを備えたさまざまな M シリーズ レベルの Azure 仮想マシンを提供します。 これらのマシンは、サポートされるメモリと仮想コアの比率が最小で 10、最大で 30 の SQL Server ワークロードに適しています。
 
@@ -177,7 +177,7 @@ vCPU の数を、元の VM サイズの半分または 4 分の 1 に制限す�
 
 これらの新しい VM サイズでは、識別しやすいように、アクティブな vCPU の数を指定するサフィックスが付加されています。 
 
-たとえば、[M64-32ms](../../../virtual-machines/constrained-vcpu.md) には 32 個の SQL Server 仮想コアと、[M64ms](../../../virtual-machines/m-series.md) のメモリ、I/O、スループットのみのライセンスが必要であり、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) には 16 個の仮想コアのみのライセンスが必要です。  しかし、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) では、SQL Server のライセンス コストは M64ms の 4 分の 1 になりますが、仮想マシンのコンピューティング コストは同じです。
+たとえば、[M64-32ms](../../../virtual-machines/constrained-vcpu.md) には 32 個の SQL Server 仮想コアと、[M64ms](/azure/virtual-machines/m-series) のメモリ、I/O、スループットのみのライセンスが必要であり、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) には 16 個の仮想コアのみのライセンスが必要です。  しかし、[M64-16ms](../../../virtual-machines/constrained-vcpu.md) では、SQL Server のライセンス コストは M64ms の 4 分の 1 になりますが、仮想マシンのコンピューティング コストは同じです。
 
 > [!NOTE] 
 > - それでも中規模から大規模のデータ ウェアハウスのワークロードでは[制約付き仮想コア VM](../../../virtual-machines/constrained-vcpu.md) が有効である可能性がありますが、データ ウェアハウスのワークロードは一般に、並列で実行されるクエリ プランによって少ない数のユーザーとプロセスで大量のデータを処理するという特徴があります。 
@@ -194,4 +194,4 @@ vCPU の数を、元の VM サイズの半分または 4 分の 1 に制限す�
 
 セキュリティのベスト プラクティスについては、「[Azure Virtual Machines 上の SQL Server のセキュリティに関する考慮事項](security-considerations-best-practices.md)」をご覧ください。
 
-SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。
+SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](sql-server-on-azure-vm-iaas-what-is-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](frequently-asked-questions-faq.md)に関するページをご覧ください。 

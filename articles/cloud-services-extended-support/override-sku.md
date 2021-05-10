@@ -8,12 +8,12 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/05/2021
 ms.custom: ''
-ms.openlocfilehash: 17e47b562c52ffce631a01cf03004d77053ea647
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: d5dfae4b5cfee8f61e11e418a05e86017d119410
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739262"
 ---
 # <a name="override-sku-information-over-cscfgcsdef-in-cloud-services-extended-support"></a>Cloud Services (延長サポート) で CSCFG/CSDEF で SKU 情報をオーバーライドする 
 
@@ -37,7 +37,7 @@ PowerShell、テンプレート、および SDK でプロパティを適用す�
         "packageUrl": "[parameters('packageSasUri')]",
         "configurationUrl": "[parameters('configurationSasUri')]",
         "upgradeMode": "[parameters('upgradeMode')]",
-        “**allowModelOverride**” : true,
+        “allowModelOverride” : true,
         "roleProfile": {
           "roles": [
             {

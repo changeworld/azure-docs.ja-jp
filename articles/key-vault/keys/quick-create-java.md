@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 124e56fad35be0f3ac5b08ee9dd66454b9d077c5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374694"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777187"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault キー クライアント ライブラリ
 Java 用 Azure Key Vault キー クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
@@ -176,7 +176,7 @@ KeyClient keyClient = new KeyClientBuilder()
 keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-キーが設定されたことは、[az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) コマンドを使用して確認できます。
+キーが設定されたことは、[az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) コマンドを使用して確認できます。
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -201,7 +201,7 @@ SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
 ```
 
-キーが削除されたことを確認するには、[az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) コマンドを使用します。
+キーが削除されたことを確認するには、[az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show) コマンドを使用します。
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
@@ -271,4 +271,4 @@ public class App {
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)方法
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)方法

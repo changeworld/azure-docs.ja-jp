@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5f003b68283217f7877dc650ae4f07ddc5a31012
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551358"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789341"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -124,7 +124,7 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="add-a-slot"></a>スロットを追加する
 
-スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) を介して、またはポータルを使用して追加できます。 次の手順では、ポータルで新しいスロットを作成する方法を示します。
+スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create) を介して、またはポータルを使用して追加できます。 次の手順では、ポータルで新しいスロットを作成する方法を示します。
 
 1. 関数アプリに移動します。
 
@@ -138,7 +138,7 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="swap-slots"></a>スロットをスワップする
 
-スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) を介して、またはポータルを使用してスワップできます。 次の手順では、ポータルでスロットをスワップする方法を示します。
+スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap) を介して、またはポータルを使用してスワップできます。 次の手順では、ポータルでスロットをスワップする方法を示します。
 
 1. 関数アプリに移動します。
 1. **[デプロイ スロット]** を選択し、 **[スワップ]** を選択します。
@@ -157,7 +157,7 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 ## <a name="remove-a-slot"></a>スロットを削除する
 
-スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) を介して、またはポータルを使用して削除できます。 次の手順では、ポータルでスロットを削除する方法を示します。
+スロットは、[CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete) を介して、またはポータルを使用して削除できます。 次の手順では、ポータルでスロットを削除する方法を示します。
 
 1. 関数アプリで **デプロイ スロット** に移動し、スロット名を選択します。
 
@@ -179,11 +179,11 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 [Azure CLI](/cli/azure/functionapp/deployment/slot) を使用すると、スロットに対する次の操作を自動化できます。
 
-- [create](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
-- [スワップ](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
-- [自動スワップ](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
+- [create](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create)
+- [delete](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete)
+- [list](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_list)
+- [スワップ](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap)
+- [自動スワップ](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_auto_swap)
 
 ## <a name="change-app-service-plan"></a>App Service プランを変更する
 
@@ -226,7 +226,7 @@ Azure Functions デプロイ スロットには、次の制限があります。
 | Windows Consumption       | 一般公開 |
 | Windows Premium           | 一般公開  |
 | Windows Dedicated         | 一般公開 |
-| Linux Consumption         | [プレビュー]          |
+| Linux Consumption         | プレビュー          |
 | Linux Premium             | 一般公開  |
 | Linux Dedicated           | 一般公開 |
 

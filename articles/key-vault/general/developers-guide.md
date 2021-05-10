@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 550084ccbb1df24fe0cbc0a4630efe19e6685e5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709905"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364551"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -83,7 +83,7 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 ## <a name="manage-keys-certificates-and-secrets"></a>キー、証明書、シークレットの管理
 
-キー、シークレット、および証明書へのアクセスは、データ プレーンによって制御されます。 データ プレーンのアクセス制御は、ローカルのコンテナー アクセス ポリシーまたは Azure RBAC (プレビュー) を使用して行うことができます。
+キー、シークレット、および証明書へのアクセスは、データ プレーンによって制御されます。 データ プレーンのアクセス制御は、ローカルのコンテナー アクセス ポリシーまたは Azure RBAC を使用して行うことができます。
 
 **キーの API と SDK**
 
@@ -105,7 +105,7 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-Key Vault データ プレーンのセキュリティの詳細については、[Key Vault データ プレーンとアクセス ポリシー](./secure-your-key-vault.md#data-plane-and-access-policies)および [Key Vault データ プレーンと Azure RBAC (プレビュー)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview) に関するページをご覧ください
+Key Vault データ プレーンのセキュリティの詳細については、[Key Vault データ プレーンとアクセス ポリシー](./secure-your-key-vault.md#data-plane-and-access-policies)に関する記事、および [Key Vault データ プレーンと Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac) に関するページをご覧ください
 
 ### <a name="code-examples"></a>コード例
 

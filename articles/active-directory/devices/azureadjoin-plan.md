@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 745cc7be37120cda27fe4d4077b9bda0fa07badf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dc20ca3f3cf6197f8a3ed3a7e0362046f129d369
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550780"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305873"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -239,7 +239,7 @@ Azure portal では、組織内の Azure AD 参加済みデバイスのデプロ
 
 ![デバイスを参加させるには多要素認証が必要](./media/azureadjoin-plan/03.png)
 
-**推奨事項:** デバイスを参加させるために MFA を適用するには、条件付きアクセスでユーザー操作「[デバイスの登録または参加](/conditional-access/concept-conditional-access-cloud-apps#user-actions)」を使用します。
+**推奨事項:** デバイスを参加させるために MFA を適用するには、条件付きアクセスでユーザー操作「[デバイスの登録または参加](/azure/active-directory/conditional-access/concept-conditional-access-cloud-apps#user-actions)」を使用します。
 
 ## <a name="configure-your-mobility-settings"></a>モビリティ設定の構成
 

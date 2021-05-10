@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103232054"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107255973"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -60,6 +60,12 @@ ms.locfileid: "103232054"
 |SecretEncryptionCertX509StoreName|string、推奨値は "My" (既定値なし) |    動的|    これは、バックアップ復元サービスで使用されるストアの資格情報を暗号化または暗号化解除に使用される、X.509 証明書ストアの資格情報名を暗号化したり暗号化解除したりするために使用する証明書を示します。 |
 |TargetReplicaSetSize|int、既定値は 0|静的| BackupRestoreService の TargetReplicaSetSize |
 
+## <a name="centralsecretservice"></a>CentralSecretService
+
+| **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
+| --- | --- | --- | --- |
+|DeployedState |wstring、既定値は L"Disabled" |静的 |CSS の 2 段階削除。 |
+
 ## <a name="clustermanager"></a>ClusterManager
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
@@ -95,6 +101,7 @@ ms.locfileid: "103232054"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
+|AllowCreateUpdateMultiInstancePerNodeServices |ブール値、既定値は false |動的|ノードごとに 1 つのサービスの複数のステートレス インスタンスを作成できます。 現在、この機能はプレビュー段階にあります。 |
 |PerfMonitorInterval |時間 (秒単位)、既定値は 1 |動的|timespan を秒単位で指定します。 パフォーマンスの監視間隔。 0 または負の値に設定すると、監視が無効になります。 |
 
 ## <a name="defragmentationemptynodedistributionpolicy"></a>DefragmentationEmptyNodeDistributionPolicy
@@ -304,6 +311,7 @@ ms.locfileid: "103232054"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |ブール値、既定値は false |静的|クラスターの正常性評価ポリシー: アプリケーションの種類ごとの正常性評価を有効にします。 |
+|EnableNodeTypeHealthEvaluation |ブール値、既定値は false |静的|クラスターの正常性評価ポリシー: ノードの種類ごとの正常性評価を有効にします。 |
 |MaxSuggestedNumberOfEntityHealthReports|int、既定値は 100 |動的|ウォッチドッグの正常性報告ロジックに関する問題を発生させる前にエンティティが持つことができる正常性レポートの最大数。 各正常性エンティティは、比較的少ない数の正常性レポートを持つと想定されます。 レポートの数がこの数を上回った場合、ウォッチドッグの実装に問題がある可能性があります。 レポートの数が多すぎるエンティティは、エンティティの評価時に警告正常性レポート全体でフラグが設定されます。 |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
@@ -349,7 +357,7 @@ ms.locfileid: "103232054"
 |DisableContainers|ブール値、既定値は FALSE|静的|コンテナーを無効にするための構成 - 使用されなくなった構成である DisableContainerServiceStartOnContainerActivatorOpen の代わりに使用します |
 |DisableDockerRequestRetry|ブール値、既定値は FALSE |動的| 既定では、SF は、送信される各 http 要求のタイムアウトを "DockerRequestTimeout" として DD (docker デーモン) と通信します。 DD がこの期間内に応答しない場合、SF は、最上位レベルの操作にまだ残り時間があれば要求を再送信します。  hyperv コンテナーと共に使用します。DD がコンテナーを起動または非アクティブ化するのに時間がかかることがあります。 そのような場合、DD 要求が SF パースペクティブからタイムアウトし、SF は操作を再試行します。 これは DD にさらに圧力をかけるように見えることがあります。 この構成により、この再試行が無効になり、DD が応答するまで待機します。 |
 |DnsServerListTwoIps | ブール値、既定値は FALSE | 静的 | このフラグは、断続的な解決の問題を軽減するために、ローカル DNS サーバーを 2 回追加します。 |
-| DockerTerminateOnLastHandleClosed | ブール値、既定値は FALSE | 静的 | 既定では、FabricHost が (SkipDockerProcessManagement == false に基づいて) 'dockerd' を管理している場合、この設定は、FabricHost または dockerd のいずれかがクラッシュしたときの動作を構成します。 `true` に設定すると、いずれかのプロセスがクラッシュした場合に、実行中のすべてのコンテナーが HCS によって強制的に終了されます。 `false` に設定すると、コンテナーは引き続き実行されます。 注: 8.0 より前のバージョンでは、この動作は意図せず `false` と同じでした。 ここでの既定の設定の `true` は、クリーンアップ ロジックがこれらのプロセスの再起動時に有効になるように、既定で行われると予測されるものです。 |
+| DockerTerminateOnLastHandleClosed | ブール値、既定値は TRUE | 静的 | 既定では、FabricHost が (SkipDockerProcessManagement == false に基づいて) 'dockerd' を管理している場合、この設定は、FabricHost または dockerd のいずれかがクラッシュしたときの動作を構成します。 `true` に設定すると、いずれかのプロセスがクラッシュした場合に、実行中のすべてのコンテナーが HCS によって強制的に終了されます。 `false` に設定すると、コンテナーは引き続き実行されます。 注: 8.0 より前のバージョンでは、この動作は意図せず `false` と同じでした。 ここでの既定の設定の `true` は、クリーンアップ ロジックがこれらのプロセスの再起動時に有効になるように、既定で行われると予測されるものです。 |
 | DoNotInjectLocalDnsServer | ブール値、既定値は FALSE | 静的 | ランタイムがコンテナーの DNS サーバーとしてローカル IP を挿入しないようにします。 |
 |EnableActivateNoWindow| ブール値、既定値は FALSE|動的| アクティブ化されたプロセスは、コンソールを使用せずに、バックグラウンドで作成されます。 |
 |EnableContainerServiceDebugMode|ブール値、既定値は TRUE|静的|Docker コンテナーのログを有効または無効にします。  Windows のみ。|
@@ -552,6 +560,8 @@ ms.locfileid: "103232054"
 |MovementPerPartitionThrottleCountingInterval | 時間 (秒単位)、既定値は 600 |静的| timespan を秒単位で指定します。 各パーティションのレプリカの移動を追跡する、過去の間隔の長さを示します (MovementPerPartitionThrottleThreshold と共に使用)。 |
 |MovementPerPartitionThrottleThreshold | uint、既定値は 50 |動的| パーティションのレプリカの均衡化に関連する移動数が、MovementPerPartitionThrottleCountingInterval で示されている過去の間隔で MovementPerFailoverUnitThrottleThreshold の値に達するか、この値を超えると、そのパーティションで均衡化に関連する移動は発生しなくなります。 |
 |MoveParentToFixAffinityViolation | ブール値、既定値は false |動的| アフィニティの制約を修正するために親レプリカを移動できるかどうかを指定します。|
+|NodeTaggingEnabled | ブール値、既定値は false |動的| true の場合、NodeTagging 機能が有効になります。 |
+|NodeTaggingConstraintPriority | int、既定値は 0 |動的| ノード タグ付けの構成可能な優先順位。 |
 |PartiallyPlaceServices | ブール値、既定値は true |動的| サービス レプリカに適したノードの数が限られている場合に、クラスター内のすべてのサービス レプリカを "全部かゼロか" 方式で配置するかどうかを指定します。|
 |PlaceChildWithoutParent | ブール値、既定値は true | 動的|親レプリカが稼働していない場合に、子サービス レプリカを配置できるかどうかを指定します。 |
 |PlacementConstraintPriority | int、既定値は 0 | 動的|配置の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
@@ -572,7 +582,7 @@ ms.locfileid: "103232054"
 |UpgradeDomainConstraintPriority | int、既定値は 1| 動的|アップグレード ドメインの制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |UseMoveCostReports | ブール値、既定値は false | 動的|よりバランスの取れた配置を実現するために多数の移動が発生する可能性のある、スコア付け関数のコスト要素を無視するよう LB に指示します。 |
 |UseSeparateSecondaryLoad | ブール値、既定値は true | 動的|セカンダリ レプリカに個別の負荷を使用する必要があるかどうかを決定する設定。 |
-|UseSeparateSecondaryMoveCost | ブール値、既定値は false | 動的|セカンダリ レプリカに個別の移動コストを使用するかどうかを決定する設定。 |
+|UseSeparateSecondaryMoveCost | ブール値、既定値は true | 動的|PLB が各ノードのセカンダリに異なる移動コストを使用する必要があるかどうかを決定する設定。 UseSeparateSecondaryMoveCost がオフになっている場合 - 1 つのノード上のセカンダリに対してレポートされた移動コストが(他のすべてのノードの) 各セカンダリの移動コストを上書きします。UseSeparateSecondaryMoveCost がオンになっている場合 - 1 つのノード上のセカンダリに対してレポートされた移動コストはそのセカンダリのみで有効になります (他のノードのセカンダリには影響しません) - レプリカのクラッシュが発生した場合 - 新しいレプリカがサービス レベルで指定されている既定の移動コストで作成されます - PLB が既存のレプリカを移動する場合、移動コストはそれに伴って移動します。 |
 |ValidatePlacementConstraint | ブール値、既定値は true |動的| サービスの ServiceDescription が更新されたときに、サービスの PlacementConstraint 式を検証するかどうかを指定します。 |
 |ValidatePrimaryPlacementConstraintOnPromote| ブール値、既定値は TRUE |動的|フェイルオーバー時にプライマリ設定について、サービスの PlacementConstraint 式が評価されるかどうかを指定します。 |
 |VerboseHealthReportLimit | int、既定値は 20 | 動的|レプリカが未配置の状態になった回数がここで定義した回数に達すると、正常性の警告が報告されます (詳細な正常性レポートが有効になっている場合)。 |
@@ -767,6 +777,7 @@ ms.locfileid: "103232054"
 |RecoverServicePartitions |string、既定値は "Admin" |動的| サービス パーティションを復旧するためのセキュリティ構成。 |
 |RecoverSystemPartitions |string、既定値は "Admin" |動的| システム サービス パーティションを復旧するためのセキュリティ構成。 |
 |RemoveNodeDeactivations |string、既定値は "Admin" |動的| 複数のノードの非アクティブ化を取り消すためのセキュリティ構成。 |
+|ReportCompletion |wstring、既定値は L"Admin" |動的| 完了を報告するためのセキュリティ構成。 |
 |ReportFabricUpgradeHealth |string、既定値は "Admin" |動的| 現在のアップグレードの進行状況でクラスターのアップグレードを再開するためのセキュリティ構成。 |
 |ReportFault |string、既定値は "Admin" |動的| 障害を報告するためのセキュリティ構成。 |
 |ReportHealth |string、既定値は "Admin" |動的| 正常性を報告するためのセキュリティ構成。 |

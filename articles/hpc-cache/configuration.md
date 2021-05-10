@@ -4,14 +4,14 @@ description: キャッシュに MTU、カスタム NTP、DNS 構成などの追�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 04/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 0b3996df3c75ff31d0825be1d332dbd055305963
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773234"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259763"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Azure HPC Cache の追加設定を構成する
 
@@ -47,24 +47,26 @@ Azure 仮想ネットワークの MTU 設定の詳細については、「[Azure
 
 ## <a name="customize-ntp"></a>NTP をカスタマイズする
 
-キャッシュは既定で、Azure ベースのタイム サーバー time.microsoft.com を使用します。 キャッシュで別の NTP サーバーが使用されるようにするには、 **[NTP の構成]** セクションで指定します。 完全修飾ドメイン名または IP アドレスを使用します。
+キャッシュは既定で、Azure ベースのタイム サーバー time.windows.com を使用します。 キャッシュで別の NTP サーバーが使用されるようにするには、 **[NTP の構成]** セクションで指定します。 完全修飾ドメイン名または IP アドレスを使用します。
 
 ## <a name="set-a-custom-dns-configuration"></a>カスタム DNS 構成を設定する
 
 > [!CAUTION]
-> キャッシュの DNS 構成は、必要でないかぎり変更しないでください。 構成を誤ると、深刻な影響が発生する場合があります。 構成で Azure サービス名を解決できない場合、HPC キャッシュ インスタンスは永続的に到達できなくなります。
+> キャッシュの DNS 構成は、必要でないかぎり変更しないでください。 構成を誤ると、深刻な影響が発生する場合があります。 構成で Azure サービス名を解決できない場合、HPC Cache インスタンスは永続的に到達不能になります。
+>
+> カスタム DNS 構成を設定する前に、Azure の担当者に確認してください。
 
 Azure HPC Cache は、安全で便利な Azure DNS システムを使用するように自動的に構成されます。 ただし、いくつかの特殊な構成では、Azure システムではなく、オンプレミスの別の DNS システムをキャッシュで使用することが求められる場合があります。 このようなシステムを指定するには、 **[ネットワーク]** ページの **[DNS の構成]** セクションを使用します。
 
 Azure の担当者に確認するか、Microsoft サービスおよびサポートに問い合わせて、カスタム キャッシュ DNS 構成を使用する必要があるかどうかを判断してください。
 
-使用する Azure HPC Cache の独自のオンプレミス DNS システムを構成する場合は、構成で Azure サービスの Azure エンドポイント名を解決できることを確認する必要があります。 特定の名前解決要求を Azure DNS または必要に応じて別のサーバーに転送するように、カスタム DNS 環境を構成する必要があります。
+使用する Azure HPC Cache に独自のオンプレミス DNS システムを構成する場合は、お使いのローカル DNS サーバーで Azure サービス エンドポイント名を直接解決できることを確認する必要があります。 DNS サーバーでパブリック名の解決ができない場合、HPC Cache は機能しません。
 
 Azure HPC Cache に使用する前に、DNS 構成でこれらの項目を正常に解決できることを確認します。
 
 * ``*.core.windows.net``
 * 証明書失効リスト (CRL) のダウンロードとオンライン証明書ステータス プロトコル (OCSP) の検証サービス。 この [AZURE TLS 記事](../security/fundamentals/tls-certificate-changes.md)の最後にある[ファイアウォール規則の項目](../security/fundamentals/tls-certificate-changes.md#will-this-change-affect-me)にはリスト一部分がありますが、すべての要件を理解するには、Microsoft の技術担当者に問い合わせてください。
-* NTP サーバーの完全修飾ドメイン名 (time.microsoft.com またはカスタム サーバー)
+* NTP サーバーの完全修飾ドメイン名 (time.windows.com またはカスタム サーバー)
 
 キャッシュ用にカスタム DNS サーバーを設定する必要がある場合は、指定されたフィールドを使用します。
 

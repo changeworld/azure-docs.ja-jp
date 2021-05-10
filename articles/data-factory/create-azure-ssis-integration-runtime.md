@@ -3,15 +3,15 @@ title: Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 description: Azure 上で SSIS パッケージをデプロイして実行できるように、Azure-SSIS 統合ランタイムを Azure Data Factory に作成する方法について説明します。
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/09/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 4b26abe1d1340e4e8c5f034fad72f612f0b246a2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e4f60539e2eb524e95c76814f7527377630349e2
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101739413"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285243"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で Azure-SSIS 統合ランタイムを作成する
 
@@ -95,7 +95,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 ### <a name="provision-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのプロビジョニング
 
-**[Let's get started]\(始めましょう\)** ページで、 **[Configure SSIS Integration Runtime]\(SSIS 統合ランタイムの構成\)** タイルをクリックして、 **[統合ランタイムのセットアップ]** ペインを開きます。
+**[Let's get started]\(始めましょう\)** ページで、 **[Configure SSIS Integration]\(SSIS 統合の構成\)** タイルをクリックして、 **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインを開きます。
 
    ![[Configure SSIS Integration Runtime]\(SSIS 統合ランタイムの構成\) タイル](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
@@ -123,7 +123,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
    7. **[お金を節約]** で、統合ランタイムの Azure ハイブリッド特典オプション ( **[はい]** または **[いいえ]** ) を選択します。 ソフトウェア アシュアランス付き SQL Server ライセンスを移行して、ハイブリッド使用によるコスト節約の利点を得るには、 **[はい]** を選択します。
 
-   8. **[次へ]** を選択します。
+   8. **[続行]** をクリックします。
 
 #### <a name="deployment-settings-page"></a>[デプロイ設定] ページ
 
@@ -165,7 +165,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
    1. **[Catalog Database Service Tier]\(カタログ データベースのサービス レベル)** で、SSISDB をホストするデータベース サーバーのサービス レベルを選択します。 Basic、Standard、Premium のいずれかのレベルを選択するか、エラスティック プール名を選択してください。
 
-**[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
+**[テスト接続]** を選択し (該当する場合)、成功したら **[Continue]\(続行\)** を選択します。
 
 > [!NOTE]
    > Azure SQL Database サーバーを使用して SSISDB をホストする場合、データは既定でバックアップ用に geo 冗長ストレージに格納されます。 他のリージョンでデータをレプリケートしたくない場合は、「[PowerShell を使用してバックアップ ストレージの冗長性を構成する](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)」の手順に従ってください。
@@ -187,7 +187,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
    1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。
    
       > [!NOTE]
-      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 **Azure File Storage** にリンクされているサービスで **基本** 認証を使用するには、お使いのブラウザーで ADF ポータル URL に `?feature.upgradeAzureFileStorage=false` を追加できます。 あるいは、**File System** にリンクされているサービスを代わりに使用し、Azure Files にアクセスできます。 
+      > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。  
 
       ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -199,7 +199,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
       1. **[統合ランタイム経由で接続]** は無視してかまいません。パッケージ ストアのアクセス情報は、常に Microsoft がお客様の Azure-SSIS IR を使用してフェッチするからです。
 
-      1. **[Azure File Storage]** を選択した場合は、次の手順を実行します。 
+      1. **[Azure File Storage]** を選択した場合は、 **[認証方法]** に **[基本]** を選択して次の手順を実行します。 
 
          1. **[Account selection method]\(アカウントの選択方法\)** で、 **[From Azure subscription]\(Azure サブスクリプションから\)** または **[Enter manually]\(手動で入力\)** を選択します。
          
@@ -209,21 +209,21 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
       1. **[Azure SQL Managed Instance]** を選択した場合は、次の手順を実行します。 
 
-         1. **[接続文字列]** を選択して手動で入力するか、それがシークレットとして保存されている **[Azure Key Vault]** を選択します。
-         
+         1. **[接続文字列]** を選択するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+
          1. **[接続文字列]** を選択した場合は、次の手順を実行します。 
+             1. **[アカウントの選択方法]** で **[Azure サブスクリプションから]** を選択した場合は、該当する **Azure サブスクリプション**、**サーバー名**、**エンドポイントの種類**、**データベース名** を選択します。 **[手動で入力]** を選択した場合は、次の手順を実行します。 
+                1.  Azure SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントとして、それぞれ「`<server name>.<dns prefix>.database.windows.net`」または「`<server name>.public.<dns prefix>.database.windows.net,3342`」を **[完全修飾ドメイン名]** に入力します。 プライベート エンドポイントを入力した場合、ADF UI からは到達できないため、 **[テスト接続]** は利用できません。
 
-            1. Azure SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントとして、それぞれ「`<server name>.<dns prefix>.database.windows.net`」または「`<server name>.public.<dns prefix>.database.windows.net,3342`」を **[完全修飾ドメイン名]** に入力します。 プライベート エンドポイントを入力した場合、ADF UI からは到達できないため、 **[テスト接続]** は利用できません。
+                1. **[データベース名]** に「`msdb`」と入力します。
 
-            1. **[データベース名]** に「`msdb`」と入力します。
-               
             1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** のいずれかを選択します。
 
-            1. **[SQL 認証]** を選択した場合は、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+                - **[SQL 認証]** を選択した場合は、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-            1. **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
+                -  **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
 
-            1. **[サービス プリンシパル]** を選択した場合は、適切な **サービス プリンシパル ID** と **サービス プリンシパル キー** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+                - **[サービス プリンシパル]** を選択した場合は、適切な **サービス プリンシパル ID** と **サービス プリンシパル キー** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
       1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な **ユーザー名** と **パスワード** を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
@@ -231,7 +231,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
    1. 追加したパッケージ ストアが **[Deployment settings]\(デプロイ設定\)** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 
-**[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
+**[テスト接続]** を選択し (該当する場合)、成功したら **[Continue]\(続行\)** を選択します。
 
 #### <a name="advanced-settings-page"></a>[詳細設定] ページ
 
@@ -314,7 +314,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
 ### <a name="azure-ssis-integration-runtimes-in-the-portal"></a>ポータルでの Azure SSIS 統合ランタイム
 
-1. Azure Data Factory の UI で、 **[編集]** タブに切り替えて **[接続]** を選択します。 次に、 **[Integration Runtimes]\(統合ランタイム\)** タブに切り替えて、データ ファクトリ内の既存の統合ランタイムを表示します。
+1. Azure Data Factory の UI で、 **[管理]** タブに切り替え、 **[接続]** ペインの **[Integration runtimes]\(統合ランタイム\)** タブに切り替えて、データ ファクトリ内の既存の統合ランタイムを表示します。
 
    ![既存の IR を表示する](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
@@ -322,7 +322,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
    ![メニューによる統合ランタイム](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-1. **[統合ランタイムのセットアップ]** ペインで、 **[Lift-and-shift existing SSIS packages to execute in Azure]\(Azure で実行する既存の SSIS パッケージをリフト アンド シフトする\)** タイルを選択してから、 **[次へ]** を選択します。
+1. **[統合ランタイムのセットアップ]** ペインで、 **[Azure で実行するには、既存の SSIS パッケージをリフトアンドシフトします]** タイルを選択してから、 **[Continue]\(続行\)** を選択します。
 
    ![統合ランタイムの種類を指定する](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 

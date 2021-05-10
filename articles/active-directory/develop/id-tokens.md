@@ -9,17 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 04/02/2021
 ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom: aaddev, identityplatformtop40
-ms:custom: fasttrack-edit
-ms.openlocfilehash: 21e0b800e06b7a5ad0351ff53d26a5e2cd2ba71c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.custom:
+- aaddev
+- identityplatformtop40
+- fasttrack-edit
+ms.openlocfilehash: 885379a02c8866f2829fb681683a93b1d8d314fa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175390"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530015"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -124,6 +126,12 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
   ...
 }
 ```
+
+## <a name="id-token-lifetime"></a>ID トークンの有効期間
+
+既定では、ID トークンの有効期間は 1 時間です。1 時間後、クライアントは新しい ID トークンを取得する必要があります。
+
+ID トークンの有効期間を調整すると、クライアント アプリケーションがアプリケーション セッションを期限切れにする頻度と、ユーザーに再認証を (自動的にまたは対話形式で) 要求する頻度を制御できます。 詳細については、[構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
 
 ## <a name="validating-an-id_token"></a>id_token の検証
 

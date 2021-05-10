@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 566ca1598857f67e25faea9f19d134c4a91bfb18
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: be4348359e6b53c3e7454e9ab7c1af8ce8a7020a
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555929"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305559"
 ---
 # <a name="manage-vm-tags-on-azure-stack-edge-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge で VM タグを管理する
 
@@ -25,9 +25,9 @@ ms.locfileid: "106555929"
 
 タグの詳細については、[AzureRM PowerShell を使用してタグを管理](/powershell/module/azurerm.tags/?view=azurermps-6.13.0&preserve-view=true)する方法を参照してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>必須コンポーネント
 
-PowerShell を使用してデバイスに VM をデプロイする前に、以下を確認してください。
+PowerShell を使用してデバイス上に VM をデプロイする前に、以下を確認してください。
 
 - デバイスへの接続に使用するクライアントにアクセスできる。
     - クライアントは[サポートされている OS](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) を実行している。
@@ -36,17 +36,7 @@ PowerShell を使用してデバイスに VM をデプロイする前に、以�
 
 ## <a name="verify-connection-to-local-azure-resource-manager"></a>ローカル Azure Resource Manager への接続を確認する
 
-次の手順に従い、クライアントからデバイスにアクセスできることを確認します。
-
-クライアントがローカル Azure Resource Manager に接続できることを確認します。 
-
-1. ローカル デバイス API を呼び出して認証します。
-
-    ```powershell
-    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d  
-    ```
-
-1. ユーザー名 (`EdgeArmUser`) とパスワードを指定して Azure Resource Manager 経由で接続します。 パスワードを覚えていない場合は、[Azure Resource Manager のパスワードを再設定](azure-stack-edge-gpu-set-azure-resource-manager-password.md)し、そのパスワードを使用してサインインします。
+[!INCLUDE [azure-stack-edge-gateway-verify-azure-resource-manager-connection](../../includes/azure-stack-edge-gateway-verify-azure-resource-manager-connection.md)]
 
 
 ## <a name="add-a-tag-to-a-vm"></a>VM にタグを追加する

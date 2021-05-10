@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/26/2021
-ms.openlocfilehash: c0149dbb5f17af87229d951cf744c285e54835af
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f3bc1dfcfeeb6dda110f71ed7a1c53909153cf00
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375952"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762157"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -434,11 +434,11 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | コマンド | 説明 |
 | --- | --- |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | フェールオーバー グループの構成を取得します。 |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | フェールオーバー グループをサーバーから削除します。 |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az_sql_failover_group_show) | フェールオーバー グループの構成を取得します。 |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
@@ -472,11 +472,11 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | コマンド | 説明 |
 | --- | --- |
-| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
-| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | フェールオーバー グループをサーバーから削除します。 |
-| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | フェールオーバー グループの構成を取得します。 |
-| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
-| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az_sql_failover_group_create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az_sql_failover_group_delete) | フェールオーバー グループをサーバーから削除します。 |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az_sql_failover_group_show) | フェールオーバー グループの構成を取得します。 |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az_sql_failover_group_update) |フェールオーバー グループの構成の変更や、フェールオーバー グループへの 1 つ以上のデータベースの追加を行います。|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az_sql_failover_group_set_primary) | セカンダリ サーバーへのフェールオーバー グループのフェールオーバーをトリガーします |
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 

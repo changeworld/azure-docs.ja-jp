@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc5bcc7f0cd11160b33bb6501526fce9f29d710b
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730033"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366387"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>接続モニター (クラシック) から接続モニターに移行する
 
@@ -39,7 +39,10 @@ ms.locfileid: "101730033"
     
 ## <a name="prerequisites"></a>前提条件
 
-カスタム ワークスペースを使用している場合は、サブスクリプションと Log Analytics ワークスペースのリージョンで Network Watcher が有効になっていることを確認してください。 
+1. カスタム ワークスペースを使用している場合は、サブスクリプションと Log Analytics ワークスペースのリージョンで Network Watcher が有効になっていることを確認してください。 なっていない場合、"Before you attempt migrate, please enable Network watcher extension in selection subscription and location of LA workspace selected." (移行を実行する前に、選択したサブスクリプションと、選択した LA ワークスペースの場所で Network watcher extension を有効にしてください。) というエラーが表示されます。
+1. 接続モニター (クラシック) のソースとして使用されている仮想マシンの Network Watcher 拡張機能が有効になっていない場合は、"次のテストを含む接続モニターは、1 つ以上の Azure 仮想マシンに Network Watcher 拡張機能がインストールされていないため、インポートできません。 Network Watcher 拡張機能をインストールし、[最新の情報に更新] をクリックしてインポートしてください。" というエラー メッセージが表示されます。
+
+
 
 ## <a name="migrate-the-connection-monitors"></a>接続モニターを移行する
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 90ea52b0ed5ee2d8e36caab18491eecd6e1295fd
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222817"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588447"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>ドメインを分散識別子 (DID) にリンクする
 
@@ -122,7 +122,7 @@ Microsoft Authenticator で **[検証済み]** アイコンが表示される前
 
 4. DID をコピーし、[ION Network Explorer](https://identity.foundation/ion/explorer) を開いて、同じドメインが DID ドキュメントに含まれていることを検証します。 
 
-5. 指定された場所で既知の構成リソースをホストします。 例: https://www.example.com/.well-known/did-configuration.json
+5. 指定された場所で既知の構成リソースをホストします。 例: `https://www.example.com/.well-known/did-configuration.json`
 
 6. 検証のために Microsoft Authenticator による発行または提示をテストします。 Authenticator の [安全でないアプリについて警告する] の設定がオンになっていることを確認します。
 

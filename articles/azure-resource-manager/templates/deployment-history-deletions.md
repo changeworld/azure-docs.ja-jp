@@ -3,12 +3,12 @@ title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b55c022c35c43be6818bb3c551d5db85b1927ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732467"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781849"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -84,7 +84,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName Disabl
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI の場合、[az feature register](/cli/azure/feature#az-feature-register) を使用します。
+Azure CLI の場合、[az feature register](/cli/azure/feature#az_feature_register) を使用します。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -96,7 +96,7 @@ az feature register --namespace Microsoft.Resources --name DisableDeploymentGroo
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
-自動削除を再び有効にするには、[az feature unregister](/cli/azure/feature#az-feature-unregister) を使用します。
+自動削除を再び有効にするには、[az feature unregister](/cli/azure/feature#az_feature_unregister) を使用します。
 
 ```azurecli-interactive
 az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -104,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-REST API の場合、[Features - Register](/rest/api/resources/features/features/register) を使用します。
+REST API の場合、[Features - Register](/rest/api/resources/features/register) を使用します。
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -116,7 +116,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-自動削除を再び有効にするには、[機能 - 登録解除](/rest/api/resources/features/features/unregister)を使用します。
+自動削除を再び有効にするには、[機能 - 登録解除](/rest/api/resources/features/unregister)を使用します。
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01

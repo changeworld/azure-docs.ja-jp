@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: acfaa780f21f5264b546f97e9a3792aa43e9c30b
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029745"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483454"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -86,7 +86,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 | ------------------------------------- | ------------- | -----------    |
 | [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)       | サポートされていません | サポートされています      |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | サポートされています     | サポートされています      |
-| [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされていません | サポートされています      |
+| [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています | サポートされています      |
 
 ### <a name="supported-storages-and-authorization-types"></a>サポートされているストレージと承認の種類
 

@@ -2,19 +2,19 @@
 title: 'クイックスタート: 専用 SQL プールを使用したデータの一括読み込み'
 description: Synapse Studio を使用して、Azure Synapse Analytics の専用 SQL プールにデータを一括読み込みします。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
 ms.date: 12/11/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: be15a37a9a2965da36f7e8f884a0a3112106b9ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 838138fb6ca6f64b4296b54a81bc2764c3f1399c
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586728"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567912"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-studio"></a>クイックスタート: Synapse Studio を使用した一括読み込み
 

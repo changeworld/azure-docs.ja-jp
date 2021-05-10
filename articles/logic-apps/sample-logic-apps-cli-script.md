@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218045"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789917"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI のサンプル スクリプト - ロジック アプリを作成する
 
@@ -197,7 +197,7 @@ az group delete --name testResourceGroup --yes
 
 | command | メモ |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group#az-group-create) | ロジック アプリのリソースを格納するリソース グループを作成します。 |
+| [`az group create`](/cli/azure/group#az_group_create) | ロジック アプリのリソースを格納するリソース グループを作成します。 |
 | [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | パラメーター `--definition` で定義されているワークフローに基づいてロジック アプリを作成します。 |
 | [`az group delete`](/cli/azure/vm/extension) | リソース グループと、そのすべての入れ子になったリソースを削除します。 |
 

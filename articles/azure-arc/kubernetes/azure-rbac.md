@@ -7,16 +7,16 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes クラスターでの承認チェックに Azure RBAC を使用します
-ms.openlocfilehash: bd8029cb2772a6f6bd9821abe6acf69c9c08599d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450797"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304207"
 ---
-# <a name="azure-rbac-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc 対応 Kubernetes クラスター用の Azure RBAC
+# <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Azure Active Directory と Azure Arc 対応 Kubernetes クラスターの統合
 
-Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) オブジェクト型は、Kubernetes でネイティブに承認を定義するのに役立ちます。 Azure RBAC では、Azure の Azure Active Directory とロールの割り当てを使用して、クラスターでの承認チェックを制御できます。 これは、Azure のロールの割り当てを使用すると、デプロイ、ポッド、サービスなどの Kubernetes オブジェクトの読み取り、書き込み、削除を行うことができるユーザーを、細かく制御できることを意味します
+Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) オブジェクト型は、Kubernetes でネイティブに承認を定義するのに役立ちます。 この機能を使用すると、Azure Active Directory と Azure のロールの割り当てを使用して、クラスターでの承認チェックを制御できます。 これは、Azure のロールの割り当てを使用すると、デプロイ、ポッド、サービスなどの Kubernetes オブジェクトの読み取り、書き込み、削除を行うことができるユーザーを、細かく制御できることを意味します
 
 この機能の概念的な概要については、[Azure RBAC と Azure Arc 対応 Kubernetes](conceptual-azure-rbac.md) に関する記事を参照してください。
 
@@ -274,10 +274,10 @@ Azure Arc 対応 Kubernetes リソースの所有者は、組み込みロール�
 
 | ロール | 説明 |
 |---|---|
-| Azure Arc Kubernetes ビューアー | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 このロールでは、シークレットの表示は許可されません。 これは、シークレットに対する `read` アクセス許可によって名前空間の `ServiceAccount` 資格情報にアクセスできるようになり、さらにその `ServiceAccount` (特権エスカレーションの形式で) を使用して API アクセスが許可されるようになるためです。 |
-| Azure Arc Kubernetes ライター | 名前空間内のほとんどのオブジェクトに対する読み取りと書き込みのアクセスが許可されます。 このロールでは、ロールまたはロールのバインドを表示または変更することはできません。 ただし、このロールを使用すると、シークレットにアクセスし、名前空間内の任意の `ServiceAccount` としてポッドを実行できるので、名前空間内の任意の `ServiceAccount` の API アクセス レベルを取得するために使用できます。 |
-| Azure Arc Kubernetes 管理者 | 管理者アクセスを許可します。 RoleBinding を使用して名前空間内で付与されることが意図されています。 RoleBinding で使用された場合、名前空間内でロールおよびロール バインドを作成する能力など、名前空間内のほとんどのリソースへの読み取りおよび書き込みアクセスが許可されます。 このロールでは、リソース クォータまたは名前空間自体への書き込みアクセスは許可されません。 |
-| Azure Arc Kubernetes クラスター管理者 | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 ClusterRoleBinding で使用すると、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 RoleBinding で使用すると、ロール バインドの名前空間内のすべてのリソース (名前空間自体を含む) を完全に制御できます。|
+| [Azure Arc Kubernetes ビューアー](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-viewer) | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 このロールでは、シークレットの表示は許可されません。 これは、シークレットに対する `read` アクセス許可によって名前空間の `ServiceAccount` 資格情報にアクセスできるようになり、さらにその `ServiceAccount` (特権エスカレーションの形式で) を使用して API アクセスが許可されるようになるためです。 |
+| [Azure Arc Kubernetes ライター](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-writer) | 名前空間内のほとんどのオブジェクトに対する読み取りと書き込みのアクセスが許可されます。 このロールでは、ロールまたはロールのバインドを表示または変更することはできません。 ただし、このロールを使用すると、シークレットにアクセスし、名前空間内の任意の `ServiceAccount` としてポッドを実行できるので、名前空間内の任意の `ServiceAccount` の API アクセス レベルを取得するために使用できます。 |
+| [Azure Arc Kubernetes 管理者](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-admin) | 管理者アクセスを許可します。 RoleBinding を使用して名前空間内で付与されることが意図されています。 RoleBinding で使用された場合、名前空間内でロールおよびロール バインドを作成する能力など、名前空間内のほとんどのリソースへの読み取りおよび書き込みアクセスが許可されます。 このロールでは、リソース クォータまたは名前空間自体への書き込みアクセスは許可されません。 |
+| [Azure Arc Kubernetes クラスター管理者](../../role-based-access-control/built-in-roles.md#azure-arc-kubernetes-cluster-admin) | 任意のリソースに対して任意のアクションを実行できるスーパー ユーザー アクセスが許可されます。 ClusterRoleBinding で使用すると、クラスター内およびすべての名前空間内のすべてのリソースを完全に制御できます。 RoleBinding で使用すると、ロール バインドの名前空間内のすべてのリソース (名前空間自体を含む) を完全に制御できます。|
 
 Azure portal のクラスター リソースの `Access Control (IAM)` ブレードで、Arc 対応 Kubernetes クラスターを対象とするロールの割り当てを作成できます。 次に示すように、Azure CLI のコマンドを使用することもできます。
 
@@ -380,7 +380,7 @@ az connectedk8s proxy -n <clusterName> -g <resourceGroupName>
 
 ## <a name="sending-requests-to-cluster"></a>要求をクラスターに送信する
 
-1. 任意の `kubectl` コマンドを実行します。 例:
+1. 任意の `kubectl` コマンドを実行します。 次に例を示します。
   * `kubectl get nodes` 
   * `kubectl get pods`
 
@@ -399,7 +399,7 @@ az connectedk8s proxy -n <clusterName> -g <resourceGroupName>
     管理者は、このユーザーにリソースへのアクセスを許可する新しいロールの割り当てを作成する必要があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [クラスター接続](cluster-connect.md)を使用してクラスターに安全に接続する

@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/07/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8d0e86d95205acea2ac48ce027bcd118f4e3bf20
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967032"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226703"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium プレビューの機能
 
@@ -148,7 +148,6 @@ Azure Firewall Premium プレビューには、次の既知の問題がありま
 |HTTPS の FQDN 解決での ESNI のサポート|暗号化された SNI は HTTPS ハンドシェイクではサポートされていません。|現在、Firefox のみでカスタム構成を通じて ESNI がサポートされています。 回避策として、この機能を無効にすることをお勧めします。|
 |クライアント証明書 (TLS)|クライアント証明書は、クライアントとサーバー間で相互の ID の信頼を構築するために使用されます。 クライアント証明書は、TLS ネゴシエーション中に使用されます。 Azure Firewall がサーバーとの接続を再ネゴシエートしていて、クライアント証明書の秘密キーにアクセスできません。|None|
 |QUIC/HTTP3|QUIC は、新たなメジャー バージョンの HTTP です。 これは、80 (PLAN) と 443 (SSL) を介する UDP ベースのプロトコルです。 FQDN/URL/TLS 検査はサポートされません。|ネットワーク規則として UDP 80/443 を通るように構成します。|
-|Premium ではセキュリティで保護されたハブと強制トンネリングはサポートされない|現在、Firewall Premium SKU は、セキュリティで保護されたハブのデプロイと強制トンネル構成ではサポートされていません。|修正プログラムが一般提供される予定です。|
 顧客の署名入り証明書が信頼されない|顧客の署名入り証明書は、イントラネット ベースの Web サーバーから受信されると、ファイアウォールによって信頼されません。|修正プログラムが一般提供される予定です。
 |TLS 検査での IDPS のアラート内で送信元と宛先の IP アドレスが間違っている。|TLS 検査を有効にしていて、IDPS によって新しいアラートが発行されるときに、表示される送信元と宛先の IP アドレスが間違っています (元の IP アドレスの代わりに内部 IP アドレスが表示されます)。|修正プログラムが一般提供される予定です。|
 |HTTP (TLS 検査なし) での IDPS によるアラートの送信元 IP アドレスが間違っている。|プレーンテキスト HTTP トラフィックが使用されていて、IDPS によって新しいアラートが発行され、宛先がパブリック IP アドレスであるときに、表示される送信元の IP アドレスが間違っています (元の IP アドレスの代わりに内部 IP アドレスが表示されます)。|修正プログラムが一般提供される予定です。|

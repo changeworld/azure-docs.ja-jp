@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a5ee7e8de85a1a53359f651a74e2f9f5e51edb70
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110680"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030782"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>開発環境で、マネージド ID を使用した通信リソースへのアクセスを承認する
 
@@ -78,6 +78,8 @@ Azure ID SDK では、実行時に 3 つの環境変数から値が読み取ら�
 
 > [!IMPORTANT]
 > 環境変数を設定したら、コンソール ウィンドウを閉じて再度開きます。 Visual Studio または他の開発環境を使用している場合は、新しい環境変数を登録するために再起動が必要となる可能性があります。
+
+これらの変数が設定されると、コード内の DefaultAzureCredential オブジェクトを使用して、選択したサービス クライアントに対して認証できるようになります。
 
 
 ## <a name="next-steps"></a>次のステップ

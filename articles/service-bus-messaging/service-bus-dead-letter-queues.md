@@ -4,12 +4,12 @@ description: Service Bus の配信不能キューについて説明します。 
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 6459c8edd03427357810c1ad30161e87c18e059c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cb791982b50d7afff7b74d70adfd285bb5e0a11c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304326"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773227"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -31,7 +31,7 @@ DLQ は自動的にクリーンアップされません。 DLQ から明示的�
 
 ![DLQ のメッセージ数](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show) を使用して、DLQ のメッセージ数を取得することもできます。 
+Azure CLI コマンド [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az_servicebus_topic_subscription_show) を使用して、DLQ のメッセージ数を取得することもできます。 
 
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
 Service Bus には、メッセージがメッセージング エンジン自体から DLQ にプッシュされる原因となるアクティビティがいくつかあります。 アプリケーションは明示的にメッセージを DLQ に移動することもできます。 次の 2 つのプロパティ (配信不能の理由と説明) は、配信不能メッセージに追加されます。 アプリケーションでは配信不能理由のプロパティに対して独自のコードを定義できますが、システムでは以下の値が設定されます。
@@ -80,4 +80,3 @@ Service Bus キューの詳細については、次の記事を参照してく�
 
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Azure キューと Service Bus キューの比較](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-

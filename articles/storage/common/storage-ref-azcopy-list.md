@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b7c70807d7365619ef4c6b2312f773c999b0872e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca436ee440ad7c1dd2caee3a65790f8b630fd949
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879056"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503288"
 ---
 # <a name="azcopy-list"></a>azcopy list
 
@@ -32,7 +32,6 @@ azcopy list [containerURL] [flags]
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 - [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>例
 
@@ -40,7 +39,7 @@ azcopy list [containerURL] [flags]
 azcopy list [containerURL]
 ```
 
-## <a name="options"></a>Options
+## <a name="options"></a>オプション
 
 |オプション|説明|
 |--|--|

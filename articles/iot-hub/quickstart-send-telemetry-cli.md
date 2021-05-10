@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199800"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792149"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信して Azure CLI で監視する
 
@@ -55,7 +55,7 @@ Cloud Shell を起動するには以下を行います。
 
 Azure CLI を使用するには、Azure アカウントにログインする必要があります。 Azure CLI シェル セッションと IoT hub の間のすべての通信は認証および暗号化されます。 そのため、このクイックスタートでは、接続文字列などの実際のデバイスで使用する追加の認証は必要ありません。
 
-*  [az extension add](/cli/azure/extension#az-extension-add) コマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を CLI シェルに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+*  [az extension add](/cli/azure/extension#az_extension_add) コマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を CLI シェルに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 > [!TIP]
 > 必要に応じて、[Azure portal](iot-hub-create-through-portal.md)、[Visual Studio Code](iot-hub-create-use-iot-toolkit.md)、またはその他のプログラムによる方法を使用して、Azure リソース グループ、IoT Hub、その他のリソースを作成することもできます。  
 
-1. [az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
+1. [az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
+1. [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 IoT ハブ名は Azure でグローバルに一意である必要があります。 このプレースホルダーは、このクイックスタートの残りの部分で、IoT ハブの名前を表すために使用されます。
 
@@ -184,12 +184,12 @@ Azure portal でメッセージング メトリックを視覚化するには以
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
 
 名前でリソース グループを削除するには、以下の手順を実行します。
-1. [az group delete](/cli/azure/group#az-group-delete) コマンドを実行します。 これにより、作成したリソース グループ、IoT Hub、デバイスの登録が削除されます。
+1. [az group delete](/cli/azure/group#az_group_delete) コマンドを実行します。 これにより、作成したリソース グループ、IoT Hub、デバイスの登録が削除されます。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. [az group list](/cli/azure/group#az-group-list) コマンドを実行して、リソース グループが削除されていることを確認します。  
+1. [az group list](/cli/azure/group#az_group_list) コマンドを実行して、リソース グループが削除されていることを確認します。  
 
     ```azurecli
     az group list

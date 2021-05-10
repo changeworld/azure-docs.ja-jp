@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 305fdd3a0b8e0c876924c6e1f090424e67571af0
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1f56de94df4fd5d4dd154ae8485edb9eed88364c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968707"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753346"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Key Vault 用の Azure セキュリティ ベースライン
 
@@ -208,7 +208,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいたリ�
 
 - [アプリケーションを Azure AD に登録する](/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory)
 
-- [キー コンテナーへのアクセスをセキュリティで保護する](secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](security-overview.md)
 
 **責任**: Customer
 
@@ -368,7 +368,7 @@ Azure Key Vault 用 Advanced Threat Protection (ATP) を有効にして、疑わ
 
 **ガイダンス**: Azure Key Vault 内に格納されているすべてのデータは、機密データと見なされます。 Azure Key Vault データ プレーンのアクセス制御を使用して、Azure Key Vault のシークレットへのアクセスを制御します。 Key Vault の組み込みのファイアウォールを使用して、ネットワーク層でアクセスを制御することもできます。 Azure Key Vault へのアクセスを監視するには、Key Vault の診断設定を有効にし、Azure Storage アカウントまたは Log Analytics ワークスペースにログを送信します。
 
-- [キー コンテナーへのアクセスをセキュリティで保護する](secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](security-overview.md)
 
 - [Azure Key Vault のファイアウォールと仮想ネットワークを構成する](/azure/key-vault/key-vault-network-security)
 
@@ -382,7 +382,7 @@ Azure Key Vault 用 Advanced Threat Protection (ATP) を有効にして、疑わ
 
 **ガイダンス**: Azure Key Vault インスタンスの管理とデータプレーンへのアクセスをセキュリティで保護します。
 
-- [キー コンテナーへのアクセスをセキュリティで保護する](secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](security-overview.md)
 
 **責任**: Customer
 

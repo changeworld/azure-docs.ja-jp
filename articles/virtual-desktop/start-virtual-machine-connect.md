@@ -3,15 +3,15 @@ title: 接続時に仮想マシンを起動 - Azure
 description: 接続時に仮想マシンを起動機能を構成する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/10/2021
+ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d3ef8e3656051c4a99ab52a7b52a0d623fdf9ce2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303962"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389810"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>接続時に仮想マシンを起動 (プレビュー)
 
@@ -119,7 +119,7 @@ JSON ファイルを使用してカスタム ロールを作成する場合、�
 
 Azure portal を使用して、接続時に仮想マシンを起動するには、次の手順を実行します。
 
-1. Web ブラウザーを開いて [Azure portal](https://portal.azure.com/?feature.startVMonConnect=true#home) に移動します。 Azure portal は InPrivate ウィンドウで開くことをお勧めします。
+1. Web ブラウザーを開いて [Azure portal](https://portal.azure.com) に移動します。
 
 2. Azure portal で **[Windows Virtual Desktop]** に移動します。
 

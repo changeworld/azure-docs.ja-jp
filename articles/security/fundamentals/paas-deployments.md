@@ -124,8 +124,8 @@ App Service 使用時のベスト プラクティスを次に示します。
 **ベスト プラクティス**: 受信ソース IP アドレスを制限します。   
 **詳細**: [App Service Environment](../../app-service/environment/intro.md) には、ネットワーク セキュリティ グループによる受信ソース IP アドレスの制限に役立つ、仮想ネットワーク統合機能が用意されています。 仮想ネットワークを使用すると、Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 詳細については、「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。
 
-**ベスト プラクティス**: App Service 環境のセキュリティ状態を監視する。   
-**詳細**: Azure Security Center を使用して App Service 環境を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
+**ベスト プラクティス**: App Service Environment のセキュリティ状態を監視する。   
+**詳細**: Azure Security Center を使用して App Service Environment を監視します。 Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な管理を構成するプロセスを説明する[推奨事項](../../security-center/asset-inventory.md)を作成します。
 
 ## <a name="azure-cloud-services"></a>Azure クラウド サービス
 [Azure Cloud Services](../../cloud-services/cloud-services-choose-me.md) は、PaaS の 1 つの例です。 このテクノロジは、Azure App Service と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。

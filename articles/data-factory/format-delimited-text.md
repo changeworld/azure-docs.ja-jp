@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: jingwang
-ms.openlocfilehash: daf3691b48f7bf12e9ef51de7d4253dad9dbd2b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cff49e4ddb7423e1e5956e1436cefd18abe6dfe
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026872"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107076"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory での区切りテキスト形式
 
@@ -185,8 +185,7 @@ source(
 | フォルダーのクリア | 書き込みの前に宛先フォルダーがクリアされるかどうか | no | `true` または `false` | truncate |
 | ファイル名のオプション | 書き込まれたデータの名前付け形式です。 既定では、`part-#####-tid-<guid>` という形式で、パーティションごとに 1 ファイルです | no | パターン:String <br> [Per partition] (パーティションごと): String[] <br> 列データでファイルに名前を付ける: String <br> 1 つのファイルに出力する: `['<fileName>']` <br> 列データでフォルダーに名前を付ける: String | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames <br> rowFolderUrlColumn |
 | すべてを引用符で囲む | すべての値を引用符で囲みます | no | `true` または `false` | quoteAll |
-
-rowFolderUrlColumn:
+| ヘッダー | 出力ファイルに顧客ヘッダーを追加する | いいえ | `[<string array>]` | header |
 
 ### <a name="sink-example"></a>シンクの例
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d8aaa8d5013c426ac1ab6b367309c51be4929cee
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366404"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717659"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX アプリのアタッチ用にファイル共有を設定する
 
@@ -77,7 +77,7 @@ MSIX アプリケーションを Azure Files に格納している場合は、�
 
 4. ストレージ アカウントを作成します。
 
-5. 「[Azure ファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md#create-file-share)」の手順に従って、ストレージ アカウントにファイル共有を作成します。
+5. 「[Azure ファイル共有を作成する](../storage/files/storage-how-to-create-file-share.md#create-a-file-share)」の手順に従って、ストレージ アカウントにファイル共有を作成します。
 
 6. 「[パート 1: Azure ファイル共有に対する AD DS 認証を有効にする](../storage/files/storage-files-identity-ad-ds-enable.md#option-one-recommended-use-azfileshybrid-powershell-module)」の手順に従って、ストレージ アカウントを AD DS に参加させます。
 

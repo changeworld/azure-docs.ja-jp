@@ -3,12 +3,12 @@ title: リソースを監視する Azure アクティビティ ログの表示
 description: アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure portal、PowerShell、Azure CLI、REST を表示します。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7612146a0f9407663631f87c57f30ea4c590c7a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91371594"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773929"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示
 
@@ -140,7 +140,7 @@ Resource Graph を使用すると、リソースの変更履歴を確認でき�
 
 ## <a name="azure-cli"></a>Azure CLI
 
-ログ エントリを取得するには、期間を示すオフセットを指定して、[az monitor activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) コマンドを実行します。
+ログ エントリを取得するには、期間を示すオフセットを指定して、[az monitor activity-log list](/cli/azure/monitor/activity-log#az_monitor_activity_log_list) コマンドを実行します。
 
 ```azurecli-interactive
 az monitor activity-log list --resource-group ExampleGroup --offset 7d

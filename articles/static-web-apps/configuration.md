@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 3ecd38b725307c7a3d75787795130c5106de85a7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9494bcc9941491bbb82c6a948dce720cb9e51424
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312248"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502285"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure Static Web Apps を構成する
 
@@ -328,7 +328,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 | _/admin/_                                                         | _administrator_ ロールの認証されたユーザーには、 _/admin/index.html_ ファイルが提供されます。 _administrator_ ロールに属していない認証されたユーザーには、`403` エラーが返されます <sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。                                                                                                                                                                                                          |
 | _/logo.png_                                                       | 最長有効期間が 182 日 (15,770,000 秒) を少し超えるカスタム キャッシュ規則を使用して画像を提供します。                                                                                                                                                                                                                                                                                                                                   |
 | _/api/admin_                                                      | _registeredusers_ ロールの認証されたユーザーからの `GET` 要求は、API に送信されます。 _registeredusers_ ロールに属していない認証されたユーザー、および認証されていないユーザーには、`401` エラーが返されます。<br/><br/>_administrator_ ロールの認証されたユーザーからの `POST`、`PUT`、`PATCH`、および `DELETE` 要求は、API に送信されます。 _administrator_ ロールに属していない認証されたユーザー、および認証されていないユーザーには、`401` エラーが返されます。 |
-| _/customers/contoso_                                              | _administrator_ または _customers_contoso_ ロールに属している認証されたユーザーには、 _/customers/contoso/index.html_ ファイルが提供されます。 _administrator_ または _customers_contoso_ ロールに属していない認証されたユーザーには、`403` エラーが返されます<sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。                                                                                                                            |
+| _/customers/contoso_                                              | _administrator_ または _customers_contoso_ ロールに属している認証されたユーザーには、 _/customers/contoso/index.html_ ファイルが提供されます。 _administrator_ または _customers_contoso_ ロールに属していない認証されたユーザーには、`403` エラーが返されます <sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。                                                                                                                            |
 | _/login_                                                          | 認証されていないユーザーは、GitHub で認証するように求められます。                                                                                                                                                                                                                                                                                                                                                                             |
 | _/.auth/login/twitter_                                            | Twitter での承認がルート規則によって無効になっているため、`404` エラーが返されます。これにより、フォールバックされ、`200` 状態コードと共に _/index.html_ が提供されます。                                                                                                                                                                                                                                                                                     |
 | _/logout_                                                         | ユーザーは、すべての認証プロバイダーからログアウトされます。                                                                                                                                                                                                                                                                                                                                                                                          |

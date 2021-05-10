@@ -4,15 +4,15 @@ description: Azure Kubernetes Service (AKS) の Open Service Mesh (OSM)
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 0052c8d2f9b85c34d50a3e9d01253ecaf2d02bab
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: bbc07a7ee3f996c778cfc1b9d1764f10a613c50b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106715"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782947"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Open Service Mesh AKS アドオン (プレビュー)
 
@@ -107,7 +107,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure で、関連するリソースをリソース グループに割り当てます。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 次の例では、_myOsmAksGroup_ という名前のリソース グループを _eastus2_ の場所 (リージョン) に作成します。
+Azure で、関連するリソースをリソース グループに割り当てます。 [az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 次の例では、_myOsmAksGroup_ という名前のリソース グループを _eastus2_ の場所 (リージョン) に作成します。
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>
@@ -2150,7 +2150,7 @@ Grafana に正常にログインしたら、次の手順では、Grafana のデ�
 
 OSM ダッシュボードは、次のどちらを使用しても利用できます。
 
-- [リポジトリ](/charts/osm/grafana)。Web 管理ポータルを使用して json blob としてインポートできます
+- [リポジトリ](https://github.com/grafana/grafana)。Web 管理ポータルを使用して json blob としてインポートできます
 - または [Grafana.com からオンラインで](https://grafana.com/grafana/dashboards/14145)
 
 ダッシュボードをインポートするには、左側のメニューの `+` 記号を探し、[`import`] を選択します。

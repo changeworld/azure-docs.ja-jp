@@ -3,12 +3,12 @@ title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934327"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778627"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -35,7 +35,7 @@ Azure Lighthouse を使用すると、テナントによって異なるアカウ
 
 Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription) では、既定で管理側テナントの `TenantId` が表示されます。 返されたサブスクリプションが管理対象のテナントと管理側テナントのどちらに属しているかを識別できるように、各サブスクリプションの `HomeTenantId` と `ManagedByTenantIds` 属性を使用することができます。
 
-同様に、[az account list](/cli/azure/account#az-account-list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。 Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
+同様に、[az account list](/cli/azure/account#az_account_list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。 Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
 
 Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/get) コマンドと [Subscriptions - List](/rest/api/resources/subscriptions/list) コマンドに `ManagedByTenant` が含まれています。
 

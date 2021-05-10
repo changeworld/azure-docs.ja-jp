@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/26/2021
 ms.author: rolyon
-ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b285755d24cdbf1f8ef06eb850fc218a00734f16
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629158"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771733"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
@@ -187,7 +187,7 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ### <a name="list-all-roles"></a>すべてのロールを一覧表示する
 
-Azure CLI のすべてのロールを一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
+Azure CLI のすべてのロールを一覧表示するには、[az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用します。
 
 ```azurecli
 az role definition list
@@ -250,7 +250,7 @@ az role definition list --custom-role-only false --output json --query '[].{role
 
 ### <a name="list-a-role-definition"></a>ロール定義を一覧表示する
 
-ロールの詳細を一覧表示するには、[az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用します。
+ロールの詳細を一覧表示するには、[az role definition list](/cli/azure/role/definition#az_role_definition_list) を使用します。
 
 ```azurecli
 az role definition list --name {roleName}

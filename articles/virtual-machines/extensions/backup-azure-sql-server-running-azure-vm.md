@@ -8,12 +8,12 @@ author: v-amallick
 ms.author: v-amallick
 ms.collection: windows
 ms.date: 07/05/2019
-ms.openlocfilehash: 171a438b8ac2a74437c15a749d6974945877a1ee
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: c10be941206dd60887c9d82025506d1ea15c51a2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293755"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517251"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup
 
@@ -114,4 +114,4 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 ## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Server VM のバックアップに関するトラブルシューティングのガイドラインについての[詳細](../../backup/backup-sql-server-azure-troubleshoot.md)
-- Azure 仮想マシン (VM) 上で実行され、Azure Backup サービスを使用する SQL Server データベースのバックアップに関する[一般的な質問](../../backup/faq-backup-sql-server.md)。
+- Azure 仮想マシン (VM) 上で実行され、Azure Backup サービスを使用する SQL Server データベースのバックアップに関する[一般的な質問](../../backup/faq-backup-sql-server.yml)。

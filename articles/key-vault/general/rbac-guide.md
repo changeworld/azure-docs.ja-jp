@@ -3,19 +3,18 @@ title: Azure RBAC を使用して Azure キー コンテナーへのアクセス
 description: Azure ロールベースのアクセス制御を使用して、キー、シークレット、および証明書へのアクセス権を付与する方法について説明します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 8/30/2020
+ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 216df0d128e0557345db8f82f6010e1ef681593c
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 966f704bd47b4b238ed72579a6103bd2e4348849
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968783"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772219"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
@@ -237,7 +236,7 @@ New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -Applicatio
 
 ### <a name="creating-custom-roles"></a>カスタム ロールの作成 
 
-[az role definition create コマンド](/cli/azure/role/definition#az-role-definition-create)
+[az role definition create コマンド](/cli/azure/role/definition#az_role_definition_create)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli

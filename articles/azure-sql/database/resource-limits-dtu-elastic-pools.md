@@ -10,30 +10,36 @@ ms.topic: reference
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 03/30/2021
-ms.openlocfilehash: f3c20774accf9e0b589b898cb903d6da4516e553
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 04/09/2021
+ms.openlocfilehash: 906d34a91736d28f0da4a5ba34b7114fbe410adb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058920"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306638"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、DTU 購入モデルを使用した、エラスティック プール内にある Azure SQL Database のデータベースに対するリソース制限について、詳しく説明します。
 
-* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[Azure SQL Database に対する DTU のリソース制限](resource-limits-dtu-single-databases.md)に関するページを参照してください。
+* サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
+* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[単一データベースに対する DTU リソースの制限](resource-limits-dtu-single-databases.md)と[DTU リソースによるエラスティック プールの制限](resource-limits-dtu-elastic-pools.md)に関するページを参照してください。
 * 仮想コア リソースの制限については、[Azure SQL Database に対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
+* さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
+
+各読み取り専用レプリカには、DTU、ワーカー、セッションなどの独自のリソースがあります。 読み取り専用の各レプリカには、この記事で後述するリソース制限が適用されます。
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>エラスティック プール: ストレージ サイズとコンピューティング サイズ
 
 次の表では、Azure SQL Database エラスティック プールについて、各サービス レベルとコンピューティング サイズで使用可能なリソースを示します。 次のものを使用して、サービス レベル、コンピューティング サイズ、およびストレージ容量を設定できます。
 
+* [Transact-SQL](elastic-pool-scale.md) ([ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) を使用)
 * [Azure Portal](elastic-pool-manage.md#azure-portal)
 * [PowerShell](elastic-pool-manage.md#powershell)
 * [Azure CLI](elastic-pool-manage.md#azure-cli)
-* [REST API](elastic-pool-manage.md#rest-api)。
+* [REST API](elastic-pool-manage.md#rest-api)
+
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[エラスティック プールのスケーリング](elastic-pool-scale.md)に関するページを参照してください
