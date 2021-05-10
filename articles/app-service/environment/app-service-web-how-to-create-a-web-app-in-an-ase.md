@@ -24,12 +24,12 @@ ms.locfileid: "102505411"
 このチュートリアルでは、[App Service Environment v1](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。 
 
 > [!NOTE]
-> Web アプリを作成する方法を知りたいが、 App Service Environment で行う必要はない場合は、「 [.NET web アプリを作成する](../quickstart-dotnetcore.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
+> Web アプリを作成する方法を知りたいが、 App Service Environment で行う必要はない場合は、「[.NET web アプリを作成する](../quickstart-dotnetcore.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 > 
 > 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルは、 App Service Environment が作成済みであることを前提としています。 まだ完了していない場合は、「 [App Service Environment を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
+このチュートリアルは、 App Service Environment が作成済みであることを前提としています。 まだ完了していない場合は、「[App Service Environment を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 1. [Azure Portal](https://portal.azure.com/) で、 **[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
@@ -49,7 +49,7 @@ ms.locfileid: "102505411"
    
     ![ASE の App Service プランが表示される場所を示すスクリーンショット。][5]
    
-    App Service Environment に既に存在する App Service プランを使用する場合は、そのプランを選択します。 App Service プランを新たに作成する場合は、このチュートリアルの次のセクション「 [App Service Environment で App Service プランを作成する](#createplan)」を参照してください。
+    App Service Environment に既に存在する App Service プランを使用する場合は、そのプランを選択します。 App Service プランを新たに作成する場合は、このチュートリアルの次のセクション「[App Service Environment で App Service プランを作成する](#createplan)」を参照してください。
 5. Web アプリの名前を入力し、 **[作成]** をクリックします。 
    
     ASE で外部 VIP を使用する場合、ASE でのアプリの URL は [*サイト名*].azurewebsites.net ではなく、[*サイト名*].[*App Service Environment の名前*].p.azurewebsites.net になります。
