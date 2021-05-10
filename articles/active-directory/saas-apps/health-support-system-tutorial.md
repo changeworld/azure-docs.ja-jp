@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Health Support System の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Health Support System の統合 | Microsoft Docs'
 description: Azure Active Directory と Health Support System の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 3bdd11fa8e083d3a36767c04fd20b72da2b544c5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92445003"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-health-support-system"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Health Support System の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-health-support-system"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Health Support System の統合
 
 このチュートリアルでは、Health Support System と Azure Active Directory (Azure AD) を統合する方法について説明します。 Health Support System を Azure AD と統合すると、次のことができます。
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Health Support System では、 **SP** Initiated SSO がサポートされます
+* Health Support System では、**SP** Initiated SSO がサポートされます
 
 * Health Support System を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
@@ -51,7 +51,7 @@ Azure AD への Health Support System の統合を構成するには、マネー
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Health Support System** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Health Support System**」と入力します。
 1. 結果のパネルから **[Health Support System]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -72,13 +72,13 @@ Health Support System で Azure AD SSO を構成してテストするには、�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Health Support System** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Health Support System** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。 **[サインオン URL]** テキスト ボックスに、URL として「`https://suntory.karakoko.jp`」と入力します。
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。 **[サインオン URL]** テキスト ボックスに、`https://suntory.karakoko.jp` という URL を入力します
     
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -116,7 +116,7 @@ Health Support System で Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-health-support-system-sso"></a>Health Support System SSO の構成
 
-**Health Support System** 側でシングル サインオンを構成するには、 **アプリのフェデレーション メタデータ URL** を [Health Support System サポート チーム](https://wellcoms.jp/inquiry/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Health Support System** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Health Support System サポート チーム](https://wellcoms.jp/inquiry/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-health-support-system-test-user"></a>Health Support System テスト ユーザーの作成
 

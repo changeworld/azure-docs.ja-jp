@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/10/2021
 ms.author: jingwang
 ms.openlocfilehash: e5c1d72dd0b1be2d439260c2d32280911733de1b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103015925"
 ---
 | カテゴリ              | データ ストア                                                   | [コピー アクティビティ](../articles/data-factory/copy-activity-overview.md) (ソース/シンク) | [マッピング データ フロー](../articles/data-factory/concepts-data-flow-overview.md) (ソース/シンク) | [ルックアップ アクティビティ](../articles/data-factory/control-flow-lookup-activity.md) | [メタデータの取得アクティビティ](../articles/data-factory/control-flow-get-metadata-activity.md)/[検証アクティビティ](../articles/data-factory/control-flow-validation-activity.md) | [削除アクティビティ](../articles/data-factory/delete-activity.md) |

@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be3fac17ba99194a76b27c78040a76cce43405a0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1c4eb6e2aa150751dfbadc2307d64ab206b92b6d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96931114"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782227"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Azure App Configuration ストアからのエクスポート
 
@@ -44,7 +44,7 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 | コマンド | Notes |
 |---|---|
-| [az appconfig kv export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
+| [az appconfig kv export](/cli/azure/appconfig/kv#az_appconfig_kv_export) | App Configuration ストア リソースからのエクスポートを行います。 |
 
 ## <a name="next-steps"></a>次のステップ
 

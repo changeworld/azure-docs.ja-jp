@@ -2,22 +2,22 @@
 title: Azure AD でアプリ同意ポリシーを管理する
 description: 組み込みおよびカスタムのアプリ同意ポリシーを管理して、どのような場合に同意を許可できるかを制御する方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9c269e2ab37a08e48eedd3ee468080a382f9a8e3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 44299fadd17d1acfa292dd88bd57c8be4a44be36
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102558731"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375697"
 ---
 # <a name="manage-app-consent-policies"></a>アプリ同意ポリシーを管理する
 

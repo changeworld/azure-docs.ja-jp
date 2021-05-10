@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 940863b983b00dbb3c4af590d75868665372f818
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 50f25422fb30f5d519acd70c632145d51454ed62
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88002312"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444430"
 ---
 # <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのホスト プールの負荷分散方法
 

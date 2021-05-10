@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/08/2021
-ms.openlocfilehash: 8812806e535e8e34ca07fdb13e6223bfa0c91d6b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/24/2021
+ms.openlocfilehash: c9f2a21a1183637ec4648868cccd6f343b003f0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449613"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026625"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -147,6 +147,11 @@ Azure Purview は、次の Azure Data Factory アクティビティからラン�
 - ファイルベースのストアのソース パーティション検出オプション。
 - ファイルごとの最大行数設定を使用して、ファイルベースのシンクにデータをコピーする。
 - コピー中に列を追加する。
+
+データ系列の追加では、次のコネクタのデータ資産スキーマ ([資産] -> [スキーマ] タブに表示) がレポートされます。
+
+- Azure Blob、Azure File Storage、ADLS Gen1、ADLS Gen2、Amazon S3 の CSV ファイルと Parquet ファイル
+- Azure Data Explorer、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics、SQL Server、Teradata
 
 ### <a name="data-factory-data-flow-support"></a>Data Factory Data Flow のサポート
 

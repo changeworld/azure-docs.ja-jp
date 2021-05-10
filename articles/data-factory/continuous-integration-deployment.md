@@ -4,15 +4,15 @@ description: 継続的インテグレーションとデリバリーを使用し�
 ms.service: data-factory
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 04/01/2021
+ms.openlocfilehash: 7ffcb93493ada36df59c0a8305e941176e8320b8
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101716528"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121474"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -333,6 +333,10 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
 #### <a name="datasets"></a>データセット
 
 * データセットに型固有のカスタマイズを使用できますが、\* レベルの構成を明示的に指定しなくても構成を指定できます。 前の例では、`typeProperties` の下にあるすべてのデータセット プロパティがパラメーター化されます。
+
+> [!NOTE]
+> **Azure のアラートとマトリックス** は、パイプライン用に構成されている場合、ARM デプロイのパラメーターとして現在サポートされていません。 新しい環境にアラートとマトリックスを再適用するには、 [Data Factory の監視、アラート、およびマトリックス](./monitor-using-azure-monitor.md#data-factory-metrics)に関するページに従ってください。
+> 
 
 ### <a name="default-parameterization-template"></a>既定のパラメーター化テンプレート
 
@@ -679,6 +683,8 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 
 -   現在、Bitbucket でプロジェクトをホストすることはできません。
 
+-   現在、アラートとマトリックスをパラメーターとしてエクスポートおよびインポートすることはできません。 
+
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> サンプルのデプロイ前とデプロイ後のスクリプト
 
 次のサンプル スクリプトは、トリガーをデプロイ前に停止し、デプロイ後に再起動するために使用できます。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 Azure DevOps の git リポジトリにスクリプトを保存し、バージョン 4.* で Azure PowerShell タスクを介して参照します。
@@ -691,6 +697,9 @@ Git が構成されていない場合は、 **[ARM テンプレート]** 一覧�
 デプロイ後スクリプトを実行する場合は、 **[スクリプトの引数]** フィールドで、次のパラメーターのバリエーションを指定する必要があります。
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+> [!NOTE]
+> `-deleteDeployment` フラグは、ARM のデプロイ履歴から ADF デプロイ エントリを削除することを指定するために使用されます。
 
 ![Azure PowerShell タスク](media/continuous-integration-deployment/continuous-integration-image11.png)
 
@@ -867,7 +876,7 @@ if ($predeployment -eq $true) {
     #Stop all triggers
     Write-Host "Stopping deployed triggers`n"
     $triggersToStop | ForEach-Object {
-        if ($_.TriggerType -eq "BlobEventsTrigger") {
+        if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
             Write-Host "Unsubscribing" $_.Name "from events"
             $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
             while ($status.Status -ne "Disabled"){
@@ -917,7 +926,7 @@ else {
         Write-Host "Deleting trigger "  $_.Name
         $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
-            if ($_.TriggerType -eq "BlobEventsTrigger") {
+            if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
                 Write-Host "Unsubscribing trigger" $_.Name "from events"
                 $status = Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
                 while ($status.Status -ne "Disabled"){
@@ -976,7 +985,7 @@ else {
     #Start active triggers - after cleanup efforts
     Write-Host "Starting active triggers"
     $triggersToStart | ForEach-Object { 
-        if ($_.TriggerType -eq "BlobEventsTrigger") {
+        if ($_.TriggerType -eq "BlobEventsTrigger" -or $_.TriggerType -eq "CustomEventsTrigger") {
             Write-Host "Subscribing" $_.Name "to events"
             $status = Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name
             while ($status.Status -ne "Enabled"){

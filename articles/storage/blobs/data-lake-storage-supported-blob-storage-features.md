@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: normesta
-ms.openlocfilehash: 769163dd09ec29c2c206d0273e71de27732fb9db
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5c9eb1aa2e88019609f5ab26c2e995e4e43063ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516280"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640820"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能
 
@@ -44,19 +44,19 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |不変ストレージ|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)|
 |コンテナーの論理的な削除|プレビュー|プレビュー|[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)|
 |Azure Storage インベントリ|プレビュー|プレビュー|[Azure Storage インベントリを使用して BLOB データを管理する (プレビュー)](blob-inventory.md)|
-|カスタム ドメイン|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[カスタム ドメインを Azure Blob ストレージ エンドポイントにマップする](storage-custom-domain-name.md)|
+|カスタム ドメイン|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)|
 |BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](./soft-delete-blob-overview.md)|
 |blobfuse|一般公開|一般公開|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |匿名パブリック アクセス |一般公開|一般公開| 「[コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する](anonymous-read-access-configure.md)」を参照してください。|
 |カスタマー マネージド アカウントのフェールオーバー|まだサポートされていません|まだサポートされていません|[ディザスター リカバリーとアカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |カスタマー指定のキー|まだサポートされていません|まだサポートされていません|[BLOB ストレージに対する要求で暗号化キーを指定する](encryption-customer-provided-keys.md)|
-|暗号化スコープ|まだサポートされていません|まだサポートされていません|[暗号化スコープの作成と管理 (プレビュー)](encryption-scope-manage.md)|
+|暗号化スコープ|まだサポートされていません|まだサポートされていません|[暗号化スコープの作成と管理](encryption-scope-manage.md)|
 |Change Feed|まだサポートされていません|まだサポートされていません|[Azure Blob Storage の変更フィードのサポート](storage-blob-change-feed.md)|
 |オブジェクト レプリケーション|まだサポートされていません|まだサポートされていません|[ブロック BLOB のオブジェクト レプリケーションを構成する](object-replication-configure.md)|
 |BLOB バージョン管理|まだサポートされていません|まだサポートされていません|[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)|
 
 <div id="preview-form"><sup>1</sup>Data Lake Storage Gen2 でスナップショット、不変ストレージ、または静的 Web サイトを使用するには、この<a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>フォーム</a>に記入して、プレビューに登録する必要があります。  </div>
-<div id="preview-form-2"><sup>2</sup>カスタム ドメイン名は、BLOB サービスまたは静的な Web サイトのエンドポイントにのみマップできます。 Data Lake ストレージ エンドポイントはサポートされていません。</a>。  </div>
+<div id="preview-form-2"><sup>2</sup>カスタム ドメイン名は、BLOB サービスまたは静的な Web サイトのエンドポイントにのみマップできます。 Data Lake ストレージ エンドポイントはサポートされていません</a>。  </div>
 
 ## <a name="see-also"></a>関連項目
 

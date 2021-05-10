@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1a1b11d517fdfea0aa3a0f553b63276bc20f90be
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 521f9332590eca5cdf94fadc4b59ab4d482eb658
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98805456"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768561"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-azure-cli"></a>Azure CLI を使用した Azure での仮想マシンのバックアップ
 
@@ -26,7 +26,7 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 Recovery Services コンテナーは、Azure VM などの保護された各リソースのバックアップ データを格納する論理コンテナーです。 保護されたリソースのバックアップ ジョブを実行すると、Recovery Services コンテナー内に復元ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
-[az backup vault create](/cli/azure/backup/vault#az-backup-vault-create) を使用して Recovery Services コンテナーを作成します。 保護する VM と同じリソース グループと場所を指定します。 [VM クイック スタート](../virtual-machines/linux/quick-create-cli.md)を使用した場合、次のものが作成されています。
+[az backup vault create](/cli/azure/backup/vault#az_backup_vault_create) を使用して Recovery Services コンテナーを作成します。 保護する VM と同じリソース グループと場所を指定します。 [VM クイック スタート](../virtual-machines/linux/quick-create-cli.md)を使用した場合、次のものが作成されています。
 
 - *myResourceGroup* という名前のリソース グループ
 - *myVM* という名前の VM
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) コマンドレットを使用します。
+既定では、Recovery Services コンテナーが geo 冗長ストレージ用に設定されています。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データが確実にレプリケートされます。 ストレージの冗長性設定を変更する必要がある場合は、[az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az_backup_vault_backup_properties_set) コマンドレットを使用します。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -49,7 +49,7 @@ az backup vault backup-properties set \
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Azure VM のバックアップを有効にする
 
-バックアップ ジョブをいつ実行し、復旧ポイントをどのくらいの期間格納するかを定義する保護ポリシーを作成します。 既定の保護ポリシーでは、毎日バックアップ ジョブが実行され、復元ポイントは 30 日間保持されます。 ポリシーのこれらの既定値を使用して、VM をすぐに保護できます。 VM のバックアップ保護を有効にするには、[az backup protection enable-for-vm](/cli/azure/backup/protection#az-backup-protection-enable-for-vm) を使用します。 保護するリソース グループと VM を指定した後、使用するポリシーを指定します。
+バックアップ ジョブをいつ実行し、復旧ポイントをどのくらいの期間格納するかを定義する保護ポリシーを作成します。 既定の保護ポリシーでは、毎日バックアップ ジョブが実行され、復元ポイントは 30 日間保持されます。 ポリシーのこれらの既定値を使用して、VM をすぐに保護できます。 VM のバックアップ保護を有効にするには、[az backup protection enable-for-vm](/cli/azure/backup/protection#az_backup_protection_enable_for_vm) を使用します。 保護するリソース グループと VM を指定した後、使用するポリシーを指定します。
 
 ```azurecli-interactive
 az backup protection enable-for-vm \
@@ -75,7 +75,7 @@ az backup protection enable-for-vm \
 
 ## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
 
-既定のポリシーでスケジュールされた時刻にジョブが実行されるのを待たずに、バックアップを今すぐ開始するには、[az backup protection backup-now](/cli/azure/backup/protection#az-backup-protection-backup-now) を使用します。 この初回のバックアップ ジョブによって、完全な復元ポイントが作成されます。 初回のバックアップ後のバックアップ ジョブでは、増分復元ポイントが作成されます。 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
+既定のポリシーでスケジュールされた時刻にジョブが実行されるのを待たずに、バックアップを今すぐ開始するには、[az backup protection backup-now](/cli/azure/backup/protection#az_backup_protection_backup_now) を使用します。 この初回のバックアップ ジョブによって、完全な復元ポイントが作成されます。 初回のバックアップ後のバックアップ ジョブでは、増分復元ポイントが作成されます。 増分復元ポイントでは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
 
 VM のバックアップには、次のパラメーターが使用されます。
 
@@ -96,7 +96,7 @@ az backup protection backup-now \
 
 ## <a name="monitor-the-backup-job"></a>バックアップ ジョブを監視する
 
-バックアップ ジョブの状態を監視するには、[az backup job list](/cli/azure/backup/job#az-backup-job-list) を使用します。
+バックアップ ジョブの状態を監視するには、[az backup job list](/cli/azure/backup/job#az_backup_job_list) を使用します。
 
 ```azurecli-interactive
 az backup job list \
@@ -118,7 +118,7 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-VM が不要になったら、VM の保護を無効にし、復旧ポイントと Recovery Services コンテナーを削除した後、リソース グループと関連付けられている VM リソースを削除することができます。 既存の VM を使用した場合、リソース グループと VM をそのままの状態にしておくために、最後の [az group delete](/cli/azure/group#az-group-delete) コマンドを省略できます。
+VM が不要になったら、VM の保護を無効にし、復旧ポイントと Recovery Services コンテナーを削除した後、リソース グループと関連付けられている VM リソースを削除することができます。 既存の VM を使用した場合、リソース グループと VM をそのままの状態にしておくために、最後の [az group delete](/cli/azure/group#az_group_delete) コマンドを省略できます。
 
 VM のデータを復元する方法について説明したバックアップ チュートリアルに取り組むには、「[次のステップ](#next-steps)」に進んでください。
 

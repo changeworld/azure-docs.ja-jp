@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f941d81df670f017d24a7c5011c55fcc4f082605
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96483612"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531568"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>Video Indexer を大規模に使用する場合の考慮事項
 
@@ -45,7 +45,7 @@ Video Indexer では、URL からビデオをアップロードするか、フ�
 
 :::image type="content" source="./media/considerations-when-use-at-scale/first-consideration.png" alt-text="Video Indexer を大規模に使用する場合の最初の考慮事項":::
 
-URL を使用してビデオをアップロードする場合は、メディア ファイルの場所へのパスを指定するだけで、Video Indexer によって残りの処理が自動的に行われます ([upload video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?&pattern=upload) API の `videoUrl` フィールドを参照)。
+URL を使用してビデオをアップロードする場合は、メディア ファイルの場所へのパスを指定するだけで、Video Indexer によって残りの処理が自動的に行われます ([upload video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) API の `videoUrl` フィールドを参照)。
 
 > [!TIP]
 > upload video API の省略可能なパラメーター `videoUrl` を使用します。
@@ -58,7 +58,7 @@ URL を使用してビデオをアップロードする方法の例について�
 
 Azure Media Services でコンピューティング能力と並列処理を向上させるには、メディア[占有ユニット](../latest/concept-media-reserved-units.md) (RU) に注意する必要があります。 RU は、メディア処理タスクのパラメーターを決定するコンピューティング ユニットです。 RU の数は、各アカウントで同時に処理できるメディア タスクの数に影響を与え、その種類によって処理速度が決まります。また、インデックス作成が複雑な場合は、1 つのビデオに複数の RU が必要になることがあります。 RU がビジー状態になると、別のリソースが利用可能になるまで、新しいタスクがキューに保持されます。
 
-処理を効率的に実行し、リソースが一時的にアイドル状態になるのを防ぐために、Video Indexer には自動スケール システムが用意されています。これにより、処理量が少ないときは RU がスピン ダウンし、ラッシュ時間 (最大で、すべての RU が完全に使用される) には RU がスピン アップします。 この機能を有効にするには、アカウント設定で[自動スケールをオンにする](manage-account-connected-to-azure.md#autoscale-reserved-units)か、または [Update-Paid-Account-Azure-Media-Services API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&pattern=update) を使用します。
+処理を効率的に実行し、リソースが一時的にアイドル状態になるのを防ぐために、Video Indexer には自動スケール システムが用意されています。これにより、処理量が少ないときは RU がスピン ダウンし、ラッシュ時間 (最大で、すべての RU が完全に使用される) には RU がスピン アップします。 この機能を有効にするには、アカウント設定で[自動スケールをオンにする](manage-account-connected-to-azure.md#autoscale-reserved-units)か、または [Update-Paid-Account-Azure-Media-Services API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services) を使用します。
 
 :::image type="content" source="./media/considerations-when-use-at-scale/second-consideration.jpg" alt-text="Video Indexer を大規模に使用するための 2 番目の考慮事項":::
 
@@ -76,7 +76,7 @@ Video Indexer は、大規模なインデックス作成を処理するように
 
 アップロード要求を送信した瞬間から要求の状態を常にポーリングするのではなく、[コールバック URL](upload-index-videos.md#callbackurl) を追加し、Video Indexer で更新が行われるまで待機することをお勧めします。 アップロード要求の状態が変更されるとすぐに、指定した URL への POST 通知が取得されます。
 
-コールバック URL は、[upload video API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?&pattern=upload) のパラメーターの 1 つとして追加できます。 [GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/)でコード サンプルを確認してください。 
+コールバック URL は、[upload video API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) のパラメーターの 1 つとして追加できます。 [GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/)でコード サンプルを確認してください。 
 
 コールバック URL の場合は、Azure Functions を使用することもできます。これは、HTTP によってトリガーされ、次のフローを実装できるサーバーレスのイベントドリブン プラットフォームです。
 

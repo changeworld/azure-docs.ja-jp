@@ -3,16 +3,16 @@ title: Azure VMware Solution での NSX ネットワークコンポーネント�
 description: Azure VMware Solution コンソールを使用して、NSX-T ネットワーク セグメントを構成する方法について説明します。
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: 0478582a9bc4fb77a1784c27ec4f5c302d6b89fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a4702efe8ea26234d074f421d2e6eab871eba5f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101716990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733099"
 ---
 # <a name="configure-nsx-network-components-in-azure-vmware-solution"></a>Azure VMware Solution での NSX ネットワークコンポーネントの構成
 
-Azure VMware Solution プライベート クラウドには、既定では、ソフトウェア定義ネットワーク (SDDC) として、NSX-T が付属しています。 これには、アクティブ/アクティブ モードでは NSX-T Tier-0 ゲートウェイが、アクティブ/スタンバイ モードでは既定の NSX-T Tier-1 ゲートウェイが事前プロビジョニングされています。  これらのゲートウェイを使用すると、セグメント (論理スイッチ) に接続し、East-West および North-South 接続を提供できます。 
+Azure VMware Solution プライベート クラウドには、既定では、ソフトウェア定義ネットワーク (SDDC) として、NSX-T が付属しています。 これには、**アクティブ/アクティブ** モードで NSX-T Tier-0 ゲートウェイが、アクティブ/スタンバイ モードで既定の NSX-T Tier-1 ゲートウェイが事前プロビジョニングされています。  これらのゲートウェイを使用すると、セグメント (論理スイッチ) に接続し、East-West および North-South 接続を提供できます。 
 
 Azure VMware Solution プライベート クラウドをデプロイした後、Azure VMware Solution コンソールの **[ワークロード ネットワーク]** から必要な NSX-T オブジェクトを構成できます。  このコンソールには、VMware 管理者が毎日必要とする NSX-T 操作のうち、NSX-T に慣れていないユーザーを対象とするものを簡略化したビューが表示されます。  
 

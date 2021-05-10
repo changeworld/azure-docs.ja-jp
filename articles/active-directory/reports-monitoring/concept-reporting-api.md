@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6ef122cd36c3d4e9135876647075f22158df0d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8e5a095c87e46839c7c120bdd6d8db1595164e57
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101653237"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532520"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -49,9 +49,9 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 
 監査ログ用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` であり、サインイン用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/v1.0/auditLogs/signIns` です。 詳細については、[監査 API リファレンス](/graph/api/resources/directoryaudit)と[サインイン API リファレンス](/graph/api/resources/signIn)のページを参照してください。
 
-[Identity Protection リスク検出 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/howto-identity-protection-graph-api.md)」を参照してください。 
+[Identity Protection リスク検出 API](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/howto-identity-protection-graph-api.md)」を参照してください。 
   
-また、[プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) を使用して、テナント内のプロビジョニング イベントにプログラムからアクセスすることもできます。 
+また、[プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true) を使用して、テナント内のプロビジョニング イベントにプログラムからアクセスすることもできます。 
 
 ## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph Explorer を使用する API
 

@@ -5,15 +5,15 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: d5a1d810c357aa83b8069023b00d76352da124df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94844797"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313608"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのユーザー情報へのアクセス
 
@@ -25,12 +25,12 @@ Azure Static Web Apps では、[直接アクセス エンドポイント](#direc
 
 クライアント プリンシパル データ オブジェクトでは、ユーザーを特定できる情報がアプリに公開されます。 クライアント プリンシパル オブジェクトには、次のプロパティが含まれます。
 
-| プロパティ  | 説明 |
-|-----------|---------|
-| `identityProvider` | [ID プロバイダー](authentication-authorization.md)の名前。 |
-| `userId` | Azure Static Web Apps 固有のユーザーの一意識別子。 <ul><li>値は、アプリごとに一意です。 たとえば、同じユーザーでも、異なる Static Web Apps リソースでは異なる `userId` 値が返されます。<li>値は、ユーザーの有効期間にわたって保持されます。 ユーザーを削除し、同じユーザーをアプリに再び追加すると、新しい `userId` が生成されます。</ul>|
-| `userDetails` | ユーザーのユーザー名またはメール アドレス。 [ユーザーのメール アドレス](authentication-authorization.md)を返すプロバイダーもあれば、[ユーザー ハンドル](authentication-authorization.md)を送信するプロバイダーもあります。 |
-| `userRoles`     | [ユーザーに割り当てられたロール](authentication-authorization.md)の配列。 |
+| プロパティ           | 説明                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `identityProvider` | [ID プロバイダー](authentication-authorization.md)の名前。                                                                                                                                                                                                                                                                                              |
+| `userId`           | Azure Static Web Apps 固有のユーザーの一意識別子。 <ul><li>値は、アプリごとに一意です。 たとえば、同じユーザーでも、異なる Static Web Apps リソースでは異なる `userId` 値が返されます。<li>値は、ユーザーの有効期間にわたって保持されます。 ユーザーを削除し、同じユーザーをアプリに再び追加すると、新しい `userId` が生成されます。</ul> |
+| `userDetails`      | ユーザーのユーザー名またはメール アドレス。 [ユーザーのメール アドレス](authentication-authorization.md)を返すプロバイダーもあれば、[ユーザー ハンドル](authentication-authorization.md)を送信するプロバイダーもあります。                                                                                                                                                                    |
+| `userRoles`        | [ユーザーに割り当てられたロール](authentication-authorization.md)の配列。                                                                                                                                                                                                                                                                                          |
 
 クライアント プリンシパル オブジェクトの例を次に示します。
 
@@ -39,7 +39,7 @@ Azure Static Web Apps では、[直接アクセス エンドポイント](#direc
   "identityProvider": "facebook",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
   "userDetails": "user@example.com",
-  "userRoles": [ "anonymous", "authenticated" ]
+  "userRoles": ["anonymous", "authenticated"]
 }
 ```
 
@@ -53,7 +53,7 @@ Azure Static Web Apps では、[直接アクセス エンドポイント](#direc
 
 ```javascript
 async function getUserInfo() {
-  const response = await fetch("/.auth/me");
+  const response = await fetch('/.auth/me');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 関数
 
-Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`routes.json`](routes.md) ファイルで定義されています。
+Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`staticwebapp.config.json`](routes.md) ファイルで定義されています。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -74,14 +74,14 @@ Azure Functions バックエンドを介して Static Web Apps で使用でき�
 
 ```javascript
 module.exports = async function (context, req) {
-  const header = req.headers["x-ms-client-principal"];
-  const encoded = Buffer.from(header, "base64");
-  const decoded = encoded.toString("ascii");
+  const header = req.headers['x-ms-client-principal'];
+  const encoded = Buffer.from(header, 'base64');
+  const decoded = encoded.toString('ascii');
 
   context.res = {
     body: {
-      clientPrincipal: JSON.parse(decoded)
-    }
+      clientPrincipal: JSON.parse(decoded),
+    },
   };
 };
 ```
@@ -90,7 +90,7 @@ module.exports = async function (context, req) {
 
 ```javascript
 async function getUser() {
-  const response = await fetch("/api/user");
+  const response = await fetch('/api/user');
   const payload = await response.json();
   const { clientPrincipal } = payload;
   return clientPrincipal;

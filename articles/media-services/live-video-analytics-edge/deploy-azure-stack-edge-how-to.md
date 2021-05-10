@@ -3,12 +3,12 @@ title: Live Video Analytics を Azure Stack Edge にデプロイする
 description: この記事では、Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101730271"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561153"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Live Video Analytics を Azure Stack Edge にデプロイする
 
@@ -236,7 +236,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 * **Kubernetes API アクセス (kubectl)**
 
-    * ドキュメントに従って、[Kubernetes クラスターにアクセス](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster)できるように自分のマシンを構成します。
+    * ドキュメントに従って、[Kubernetes クラスターにアクセス](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md)できるように自分のマシンを構成します。
     * デプロイしたすべての IoT Edge モジュールでは、`iotedge` 名前空間が使用されます。 kubectl の使用時にそれを含めるようにしてください。  
 
 * **モジュール ログ**

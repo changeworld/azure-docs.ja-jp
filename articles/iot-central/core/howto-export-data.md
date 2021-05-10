@@ -4,16 +4,16 @@ description: 新しいデータ エクスポートを使用して Azure とカ�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/27/2021
+ms.date: 03/24/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7d57f24f8cb4b59ce9b9cd5853be11fb2d104d75
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522616"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277897"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -24,7 +24,7 @@ ms.locfileid: "100522616"
 
 たとえば、次のように操作できます。
 
-- テレメトリ データとプロパティの変更を JSON 形式でほぼリアルタイムに連続エクスポートする
+- テレメトリ、プロパティ変更、デバイスのライフサイクル、デバイス テンプレートのライフサイクルのデータを、JSON 形式で、ほぼリアルタイムで継続的にエクスポートする
 - データ ストリームをフィルター処理して、カスタム条件に一致するデータをエクスポートする
 - デバイスからのカスタム値とプロパティ値を使用してデータ ストリームをエンリッチ化する
 - データを Azure Event Hubs、Azure Service Bus、Azure Blob Storage、Webhook エンドポイントなどの宛先に送信する
@@ -133,21 +133,19 @@ V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central 
     | :------------- | :---------- | :----------- |
     |  テレメトリ | デバイスからのテレメトリ メッセージがほぼリアルタイムでエクスポートされます。 エクスポートされた各メッセージには、元のデバイス メッセージの完全な内容が正規化されて含まれます。   |  [テレメトリ メッセージの形式](#telemetry-format)   |
     | プロパティ変更 | デバイスとクラウドのプロパティに対する変更がほぼリアルタイムでエクスポートされます。 読み取り専用のデバイス プロパティでは、報告された値に対する変更がエクスポートされます。 読み取り/書き込みプロパティの場合、報告された値と必要な値の両方がエクスポートされます。 | [プロパティ変更メッセージの形式](#property-changes-format) |
+    | デバイスのライフサイクル | デバイスの registered および deleted イベントをエクスポートします。 | [デバイスのライフサイクル変更メッセージの形式](#device-lifecycle-changes-format) |
+    | デバイス テンプレートのライフサイクル | created、updated、および deleted など、発行されたデバイス テンプレートの変更をエクスポートします。 | [デバイス テンプレートのライフサイクル変更メッセージの形式](#device-template-lifecycle-changes-format) | 
 
-<a name="DataExportFilters"></a>
-1. 必要に応じて、フィルターを追加して、エクスポートするデータの量を減らします。 データ エクスポートの型ごとに、使用できるフィルターの種類は異なります。
-
-    テレメトリをフィルター処理する場合、以下があります。
-
-    - デバイス名、デバイス ID、およびデバイス テンプレートのフィルター条件に一致するデバイスのテレメトリだけを格納するように、エクスポートされたストリームを **フィルター処理** します。
-    - 機能を **フィルター処理** する: **[名前]** ドロップダウンでテレメトリ項目を選択すると、エクスポートされたストリームには、フィルター条件を満たすテレメトリだけが含まれます。 **[名前]** ドロップダウンでデバイスまたはクラウドのプロパティ項目を選択すると、エクスポートされたストリームには、フィルター条件に一致するプロパティを持つデバイスからのテレメトリだけが含まれます。
-    - **メッセージ プロパティのフィルター**: デバイス SDK を使用するデバイスでは、各テレメトリ メッセージで *メッセージのプロパティ* または *アプリケーションのプロパティ* を送信できます。 これらのプロパティは、メッセージにカスタム識別子をタグを付けるキーと値のペアのバッグです。 メッセージ プロパティ フィルターを作成するには、検索するメッセージ プロパティ キーを入力し、条件を指定します。 指定したフィルター条件に一致するプロパティを持つテレメトリ メッセージのみがエクスポートされます。 次の文字列比較演算子がサポートされています: 等しい、等しくない、次を含む、次を含まない、存在する、存在しない。 [アプリケーション プロパティの詳細については、IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md)。
-
-    プロパティの変更をフィルター処理するには、**機能フィルター** を使用します。 ドロップダウンでプロパティ項目を選択します。 エクスポートされたストリームには、フィルター条件を満たす選択したプロパティへの変更のみが含まれます。
-
-<a name="DataExportEnrichmnents"></a>
-1. 必要に応じて、追加のキーと値のペアのメタデータを使用してエクスポートしたメッセージをエンリッチ化します。 次のエンリッチメントは、テレメトリとプロパティ変更のデータ エクスポートの型で使用できます。
-
+1. 必要に応じて、フィルターを追加して、エクスポートするデータの量を減らします。 データ エクスポートの種類ごとに、使用できるフィルターの種類は異なります。<a name="DataExportFilters"></a>
+    
+    | データの種類 | 使用可能なフィルター| 
+    |--------------|------------------|
+    |製品利用統計情報|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件を満たすテレメトリのみが含まれるようにストリームをフィルター処理します</li><li>フィルター条件に一致するプロパティを持つデバイスのテレメトリのみが含まれるようにストリームをフィルター処理します</li><li>フィルター条件を満たす "*メッセージ プロパティ*" を持つテレメトリのみが含まれるようにストリームをフィルター処理します。 "*メッセージ プロパティ*" ("*アプリケーション プロパティ*" とも呼ばれる) は、デバイス SDK を使用するデバイスから必要に応じて送信される各テレメトリ メッセージ上のキーと値ペアのバッグで送信されます。 メッセージ プロパティ フィルターを作成するには、検索するメッセージ プロパティ キーを入力し、条件を指定します。 指定したフィルター条件に一致するプロパティを持つテレメトリ メッセージのみがエクスポートされます。 [アプリケーション プロパティの詳細については、IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
+    |プロパティ変更|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件を満たすプロパティ変更のみが含まれるようにストリームをフィルター処理します</li></ul>|
+    |デバイスのライフサイクル|<ul><li>デバイス名、デバイス ID、デバイス テンプレートでフィルター処理します</li><li>フィルター条件に一致するプロパティを持つデバイスの変更のみが含まれるようにストリームをフィルター処理します</li></ul>|
+    |デバイス テンプレートのライフサイクル|<ul><li>デバイス テンプレートでフィルター処理します</li></ul>|
+    
+1. 必要に応じて、追加のキーと値のペアのメタデータを使用してエクスポートしたメッセージをエンリッチ化します。 次のエンリッチメントは、テレメトリとプロパティ変更のデータ エクスポートの種類に使用できます。<a name="DataExportEnrichmnents"></a>
     - **カスタム文字列**: 各メッセージに静的なカスタム文字列を追加します。 任意のキーを入力し、任意の文字列値を入力します。
     - **プロパティ**: デバイスから報告された現在のプロパティまたはクラウド プロパティの値を各メッセージに追加します。 任意のキーを入力し、デバイスまたはクラウドのプロパティを選択します。 エクスポートされたメッセージが、指定したプロパティを持たないデバイスからのものである場合、エクスポートされたメッセージにはそのエンリッチメントがありません。
 
@@ -207,6 +205,7 @@ Webhook が宛先の場合も、データはほぼリアルタイムでエクス
 - `deviceId`:テレメトリ メッセージを送信したデバイスの ID。
 - `schema`:ペイロード スキーマの名前とバージョン。
 - `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `enqueuedTime`: IoT Central によってこのメッセージが受信された時刻。
 - `enrichments`:エクスポートに設定されたエンリッチメント。
 - `messageProperties`:デバイスからメッセージと一緒に送信された追加のプロパティ。 これらのプロパティは *アプリケーション プロパティ* と呼ばれることもあります。 [詳細については IoT Hub のドキュメントを参照してください](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
@@ -349,6 +348,7 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 - `messageType`:`cloudPropertyChange`、`devicePropertyDesiredChange` または `devicePropertyReportedChange` のいずれかです。
 - `deviceId`:テレメトリ メッセージを送信したデバイスの ID。
 - `schema`:ペイロード スキーマの名前とバージョン。
+- `enqueuedTime`: IoT Central によってこの変更が検出された時刻。
 - `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
 - `enrichments`:エクスポートに設定されたエンリッチメント。
 
@@ -377,13 +377,78 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
 }
 ```
 
+## <a name="device-lifecycle-changes-format"></a>デバイスのライフサイクル変更の形式
+
+各メッセージまたはレコードは、1 つのデバイスに対する 1 つの変更を表します。 エクスポートされたメッセージに含まれる情報は次のとおりです。
+
+- `applicationId`:IoT Central アプリケーションの ID。
+- `messageSource`:メッセージのソース - `deviceLifecycle`。
+- `messageType`: `registered` または `deleted` のいずれか。
+- `deviceId`: 変更されたデバイスの ID。
+- `schema`:ペイロード スキーマの名前とバージョン。
+- `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `enqueuedTime`: IoT Central でこの変更が発生した時刻。
+- `enrichments`:エクスポートに設定されたエンリッチメント。
+
+Event Hubs と Service Bus の場合、IoT Central から新しいメッセージ データが、ほぼリアルタイムでイベント ハブあるいは Service Bus キューまたはトピックに送信されます。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` および `iotcentral-message-type` が自動的に含まれます。
+
+Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
+
+次の例は、Azure Blob Storage で受信された、エクスポートされたデバイスのライフサイクル メッセージを示しています。
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceLifecycle",
+  "messageType": "registered",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+## <a name="device-template-lifecycle-changes-format"></a>デバイス テンプレートのライフサイクル変更の形式
+
+各メッセージまたはレコードは、1 つの発行されたデバイス テンプレートに対する 1 つの変更を表します。 エクスポートされたメッセージに含まれる情報は次のとおりです。
+
+- `applicationId`:IoT Central アプリケーションの ID。
+- `messageSource`:メッセージのソース - `deviceTemplateLifecycle`。
+- `messageType`: `created`、`updated`、または `deleted` のいずれか。
+- `schema`:ペイロード スキーマの名前とバージョン。
+- `templateId`:デバイスに関連付けられているデバイス テンプレートの ID。
+- `enqueuedTime`: IoT Central でこの変更が発生した時刻。
+- `enrichments`:エクスポートに設定されたエンリッチメント。
+
+Event Hubs と Service Bus の場合、IoT Central から新しいメッセージ データが、ほぼリアルタイムでイベント ハブあるいは Service Bus キューまたはトピックに送信されます。 各メッセージのユーザー プロパティ (アプリケーション プロパティとも呼ばれます) では、`iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` および `iotcentral-message-type` が自動的に含まれます。
+
+Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 回エクスポートされます。
+
+次の例は、Azure Blob Storage で受信された、エクスポートされたデバイスのライフサイクル メッセージを示しています。
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceTemplateLifecycle",
+  "messageType": "created",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>従来のデータ エクスポートとデータ エクスポートの比較
 
 次の表は、[従来のデータ エクスポート](howto-export-data-legacy.md)と新しいデータ エクスポートの機能の違いを示しています。
 
 | 機能  | 従来のデータ エクスポート | 新しいデータ エクスポート |
 | :------------- | :---------- | :----------- |
-| 使用できるデータの種類 | テレメトリ、デバイス、デバイス テンプレート | テレメトリ、プロパティ変更 |
+| 使用できるデータの種類 | テレメトリ、デバイス、デバイス テンプレート | テレメトリ、プロパティ変更、デバイスのライフサイクル変更、デバイス テンプレートのライフサイクル変更 |
 | フィルター処理 | なし | エクスポートするデータの種類によって異なります。 テレメトリの場合は、テレメトリ、メッセージ プロパティ、プロパティ値によるフィルター処理 |
 | エンリッチメント | なし | デバイスのカスタム文字列またはプロパティ値を使用してエンリッチ化する |
 | 変換先 | Azure Event Hubs、Azure Service Bus キューおよびトピック、Azure Blob Storage | 従来のデータ エクスポートと同じ宛先に加えて Webhook|

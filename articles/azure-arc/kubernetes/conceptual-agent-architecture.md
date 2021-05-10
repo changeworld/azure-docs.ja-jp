@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes エージェントのアーキテクチャの概要について説明します
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: f59a897e4868d7b16d0a50c28ce2142320992f71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953070"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442543"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc 対応 Kubernetes エージェントのアーキテクチャ
 
@@ -49,7 +49,10 @@ ms.locfileid: "104953070"
         | `deployment.apps/cluster-metadata-operator` | クラスターのバージョン、ノード数、Azure Arc エージェントのバージョンなど、クラスターのメタデータを収集します。 |
         | `deployment.apps/resource-sync-agent` | 前述のクラスター メタデータを Azure に同期します |
         | `deployment.apps/flux-logs-agent` | ソース管理構成の一部としてデプロイされる Flux オペレーターからログを収集します。 |
-    
+        | `deployment.apps/extension-manager` | 拡張 Helm チャートをインストールし、そのライフサイクルを管理します。 |  
+        | `deployment.apps/clusterconnect-agent` | クラスターの `apiserver` へのアクセスを提供するクラスター接続機能を有効にするリバース プロキシ エージェント。 これは、クラスターで `cluster-connect` 機能が有効な場合にのみデプロイされるオプション コンポーネントです。   |
+        | `deployment.apps/guard` | AAD RBAC 機能に使用される認証および承認 Webhook サーバー。 これは、クラスターで `azure-rbac` 機能が有効な場合にのみデプロイされるオプション コンポーネントです。   |
+
 1. すべての Azure Arc 対応 Kubernetes エージェントのポッドが `Running` 状態になったら、クラスターが Azure Arc に接続されていることを確認します。次のような結果が表示されます。
     * [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 内の Azure Arc 対応 Kubernetes リソース。 このリソースは、実際の Kubernetes クラスター自体ではなく、カスタマー マネージド Kubernetes クラスターのプロジェクションとして、Azure で追跡されます。
     * クラスターのメタデータ (Kubernetes のバージョン、エージェントのバージョン、ノードの数など) は、Azure Arc 対応 Kubernetes リソースのメタデータとして表示されます。

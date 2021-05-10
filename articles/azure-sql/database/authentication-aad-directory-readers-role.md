@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: 5764a8df862610fc076ce2810fcc0d4bf8dbda3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d764c6b6cff6a0ba23d659d4fda63e21aac9b155
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99094558"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644177"
 ---
 # <a name="directory-readers-role-in-azure-active-directory-for-azure-sql"></a>Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール
 
@@ -25,13 +25,13 @@ ms.locfileid: "99094558"
 
 Azure Active Directory (Azure AD) に、[クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)](../../active-directory/roles/groups-concept.md) 方法が導入されました。 これにより、Azure AD ロールをグループに割り当てることができます。
 
-Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics に対して [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) を有効にする場合、[Azure AD Graph API](../../active-directory/develop/active-directory-graph-api.md) に対する読み取りアクセスを許可するには Azure AD [**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)ロールをその ID に割り当てる必要があります。 SQL Database と Azure Synapse におけるマネージド ID は、サーバー ID と呼ばれます。 SQL Managed Instance のマネージド ID はマネージド インスタンス ID と呼ばれ、これはインスタンスの作成時に自動的に割り当てられます。 SQL Database または Azure Synapse にサーバー ID を割り当てる方法の詳細については、「[サービス プリンシパルが Azure AD ユーザーを作成できるようにする](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users)」を参照してください。
+Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics に対して [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) を有効にする場合、[Azure AD Graph API](/graph/migrate-azure-ad-graph-planning-checklist) に対する読み取りアクセスを許可するには Azure AD [**ディレクトリ閲覧者**](../../active-directory/roles/permissions-reference.md#directory-readers)ロールをその ID に割り当てる必要があります。 SQL Database と Azure Synapse におけるマネージド ID は、サーバー ID と呼ばれます。 SQL Managed Instance のマネージド ID はマネージド インスタンス ID と呼ばれ、これはインスタンスの作成時に自動的に割り当てられます。 SQL Database または Azure Synapse にサーバー ID を割り当てる方法の詳細については、「[サービス プリンシパルが Azure AD ユーザーを作成できるようにする](authentication-aad-service-principal.md#enable-service-principals-to-create-azure-ad-users)」を参照してください。
 
 **ディレクトリ閲覧者** ロールは、次を行うために必要です。
 
 - SQL Managed Instance に対する Azure AD ログインを作成する
 - Azure SQL で Azure AD ユーザーを偽装する
-- Windows 認証を使用している SQL Server ユーザーを Azure AD 認証を使用して SQL Managed Instance に移行する ([ALTER USER (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) コマンドを使用)
+- Windows 認証を使用している SQL Server ユーザーを Azure AD 認証を使用して SQL Managed Instance に移行する ([ALTER USER (Transact-SQL)](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true#d-map-the-user-in-the-database-to-an-azure-ad-login-after-migration) コマンドを使用)
 - SQL Managed Instance の Azure AD 管理者を変更する
 - [サービス プリンシパル (アプリケーション)](authentication-aad-service-principal.md) を使用した Azure SQL の Azure AD ユーザーの作成を許可する
 

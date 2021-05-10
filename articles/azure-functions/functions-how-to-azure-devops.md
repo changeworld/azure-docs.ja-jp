@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a99e313a0c3fe9093137d4acaa64e789ef5e10e3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97563417"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762211"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -248,7 +248,7 @@ Azure Pipelines でアプリをビルドする方法は、アプリのプログ�
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLI を使用してビルド パイプラインを作成する
 
-Azure でビルド パイプラインを作成するには、`az functionapp devops-pipeline create` [コマンド](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)を使用します。 ビルド パイプラインは、リポジトリに加えられたコード変更をビルドしてリリースするために作成されます。 このコマンドにより、ビルドとリリース パイプラインを定義し、それをリポジトリにコミットする新しい YAML ファイルが生成されます。 このコマンドの前提条件は、コードの場所によって異なります。
+Azure でビルド パイプラインを作成するには、`az functionapp devops-pipeline create` [コマンド](/cli/azure/functionapp/devops-pipeline#az_functionapp_devops_pipeline_create)を使用します。 ビルド パイプラインは、リポジトリに加えられたコード変更をビルドしてリリースするために作成されます。 このコマンドにより、ビルドとリリース パイプラインを定義し、それをリポジトリにコミットする新しい YAML ファイルが生成されます。 このコマンドの前提条件は、コードの場所によって異なります。
 
 - コードが GitHub にある場合:
 

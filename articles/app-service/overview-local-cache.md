@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96852254"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967083"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
 > [!NOTE]
-> ローカル キャッシュは、Function アプリでもコンテナー化された App Service アプリ ([Windows コンテナー](quickstart-custom-container.md?pivots=container-windows)内または [App Service on Linux](overview.md#app-service-on-linux)上など) ではサポートされません。
+> ローカル キャッシュは、関数アプリでもコンテナー化された App Service アプリ ([Windows コンテナー](quickstart-custom-container.md?pivots=container-windows)内、[App Service on Linux](overview.md#app-service-on-linux) 内など) でもサポートされません。 これらの種類のアプリで使用できるローカル キャッシュのバージョンは、[アプリ キャッシュ](https://github.com/Azure-App-Service/KuduLite/wiki/App-Cache)です。
 
 
 Azure App Service のコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 これは多様なアプリが機能するための設計であり、次の特徴があります。  

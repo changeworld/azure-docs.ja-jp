@@ -1,15 +1,15 @@
 ---
 title: 参考資料 - Azure Policy ゲスト構成の Linux 向けベースライン
 description: Azure Policy ゲスト構成で実装する Azure の Linux 向けベースラインの詳細。
-ms.date: 03/12/2021
+ms.date: 04/05/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 6b1d3048fdc0945e1ee64e211d2f7b1f9de5e6e6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: adee82dd9802be47a777a9666a7c680d5b5c6204
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419866"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448730"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>Azure Policy ゲスト構成の Linux 向けベースライン
 

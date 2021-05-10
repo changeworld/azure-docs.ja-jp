@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/11/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 90bc9def9c1a78799f4931b58ad0a661602985e3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4a493d5f0d34cd4621d55c0371036c03e267c466
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013194"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108286"
 ---
 ## <a name="setting-up"></a>設定
 
@@ -21,7 +21,7 @@ ms.locfileid: "98013194"
 mkdir calling-quickstart && cd calling-quickstart
 ```
 
-`npm init -y` を実行して、既定の設定で **package.json** ファイルを作成します。
+既定の設定で `npm init -y` を実行して、**package.json** ファイルを作成します。
 
 ```console
 npm init -y
@@ -29,7 +29,7 @@ npm init -y
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話 SDK をインストールします。
 
 ```console
 npm install @azure/communication-common --save

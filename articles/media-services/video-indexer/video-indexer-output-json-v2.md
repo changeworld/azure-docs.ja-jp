@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/16/2020
 ms.author: juliako
-ms.openlocfilehash: 2ac7c3c2149ce43c860c7726381733ef377de8d3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84bb4766b3a896823dd0bef023f8042965a85846
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100530741"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532856"
 ---
 # <a name="examine-the-video-indexer-output"></a>Video Indexer の出力を調べる
 
@@ -46,8 +46,8 @@ ms.locfileid: "100530741"
 
 ## <a name="insightsoutput-produced-by-api"></a>API によって生成される分析情報または出力
 
-1. JSON ファイルを取得するには、[Get Video Index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) を呼び出します
-1. 特定の成果物にも興味がある場合は、[Get Video Artifact Download URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) を呼び出します
+1. JSON ファイルを取得するには、[Get Video Index API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index) を呼び出します
+1. 特定の成果物にも興味がある場合は、[Get Video Artifact Download URL API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Artifact-Download-Url) を呼び出します
 
     API 呼び出しで、要求される成果物の種類 (OCR、顔、キー フレームなど) を指定します。
 
@@ -100,7 +100,7 @@ ms.locfileid: "100530741"
 |privacyMode|内訳に含めることができるモードは、**秘密**、**公開** のいずれかです。 **公開** - アカウント内のすべてのユーザーと、ビデオへのリンクを持っているユーザーがビデオを見ることができます。 **秘密** - ビデオは、アカウント内のすべてのユーザーに表示されます。|
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
 |thumbnailVideoId|サムネイルの取得元のビデオの ID。
-|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、thumbnailVideoId と thumbnailId に渡します。|
+|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) を呼び出し、thumbnailVideoId と thumbnailId に渡します。|
 |faces/animatedCharacters|0 以上の顔を含めることができます。 詳細については、「[faces/animatedCharacters](#facesanimatedcharacters)」を参照してください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
@@ -127,7 +127,7 @@ ms.locfileid: "100530741"
 |metadata|ビデオの外部メタデータ (ユーザーが指定した場合)|
 |isAdult|ビデオが手動でレビューされ、成人向けビデオとして識別されたかどうかを示します。|
 |insights|分析情報オブジェクト 詳細については、「[分析情報](#insights)」を参照してください。|
-|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、ビデオ ID と thumbnailId に渡します。|
+|thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) を呼び出し、ビデオ ID と thumbnailId に渡します。|
 |publishedUrl|ビデオをストリーミングする URL|
 |publishedUrlProxy|ビデオのストリーミング元の URL (Apple デバイス向け)|
 |viewToken|ビデオ ストリーミング用の短命表示トークン|

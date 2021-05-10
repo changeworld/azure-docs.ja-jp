@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 93ac6ae3c8aed61557a239bb9c84d3587dce1daa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962333"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641352"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>ソース データベースへの接続時の DMS エラーのトラブルシューティング
 
@@ -31,7 +31,7 @@ ms.locfileid: "94962333"
 | ------------- | ------------- |
 | SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいことと、SQL Server がリモート接続を許可するように構成されていることを確認してください。<br> | このエラーは、サービスでソース サーバーを見つけられない場合に発生します。 問題に対処する場合は、「[動的ポートまたは名前付きインスタンスを使用しているときのソース SQL Server への接続エラー](./known-issues-troubleshooting-dms.md#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance)」を参照してください。 |
 | **エラー 53** -1 - SQL 接続できませんでした。 (また、エラー コード 1、2、5、53、233、258、1225、11001 の場合)<br><br> | このエラーは、サービスでソース サーバーに接続できない場合に発生します。 問題に対処する場合は、以下のリソースを参照してからもう一度試します。 <br><br>  [接続の問題のトラブルシューティングを行うための対話型ユーザー ガイド](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [SQL Server から Azure SQL Database への移行の前提条件](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) <br><br> [SQL Server から Azure SQL Managed Instance への移行の前提条件](./pre-reqs.md#prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance) |
-| **エラー 18456** - ログインできませんでした。<br> | このエラーは、サービスで指定された T-SQL 資格情報を使用して、ソース データベースに接続できない場合に発生します。 問題に対処するには、入力された資格情報を確認します。 また、「[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017)」、あるいはこの表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試すことができます。 |
+| **エラー 18456** - ログインできませんでした。<br> | このエラーは、サービスで指定された T-SQL 資格情報を使用して、ソース データベースに接続できない場合に発生します。 問題に対処するには、入力された資格情報を確認します。 また、「[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)」、あるいはこの表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試すことができます。 |
 | 無効な AccountName 値 '{0}' が指定されました。 AccountName に必要な形式は、DomainName\UserName です<br> | このエラーは、ユーザーが Windows 認証を選択したが、無効な形式でユーザー名を指定した場合に発生します。 問題に対処するには、Windows 認証の正しい形式でユーザー名を指定するか、 **[SQL 認証]** を選択します。 |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
@@ -48,8 +48,8 @@ ms.locfileid: "94962333"
 
 > [!NOTE]
 > ソースの AWS RDS MySQL データベースへの接続に関する問題のトラブルシューティングについて詳しくは、以下のリソースを参照してください。
-> * [Amazon RDS 接続に関する問題のトラブルシューティング](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Amazon RDS データベース インスタンスへの接続の問題を解決する方法を教えてください。](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Amazon RDS 接続に関する問題のトラブルシューティング](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Amazon RDS データベース インスタンスへの接続の問題を解決する方法を教えてください。](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-postgresql"></a>AWS RDS PostgreSQL
 
@@ -62,8 +62,8 @@ ms.locfileid: "94962333"
 
 > [!NOTE]
 > ソースの AWS RDS PostgreSQL データベースへの接続に関する問題のトラブルシューティングについて詳しくは、以下のリソースを参照してください。
-> * [Amazon RDS 接続に関する問題のトラブルシューティング](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
-> * [Amazon RDS データベース インスタンスへの接続の問題を解決する方法を教えてください。](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
+> *    [Amazon RDS 接続に関する問題のトラブルシューティング](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Troubleshooting.html#CHAP_Troubleshooting.Connecting)
+> *    [Amazon RDS データベース インスタンスへの接続の問題を解決する方法を教えてください。](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="aws-rds-sql-server"></a>AWS RDS SQL Server
 
@@ -72,26 +72,26 @@ ms.locfileid: "94962333"
 | エラー         | 原因とトラブルシューティングの詳細 |
 | ------------- | ------------- |
 | **エラー 53** -1 - SQL 接続できませんでした。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいことと、SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:名前付きパイプ プロバイダー、エラー:40 - SQL Server への接続を開けませんでした | このエラーは、サービスでソース サーバーに接続できない場合に発生します。 問題に対処する場合は、この表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試してください。 |
-| **エラー 18456** - ログインできませんでした。 ユーザー '{user}' はログインできませんでした | このエラーは、指定された T-SQL 資格情報を使用して、サービスをソース データベースに接続できない場合に発生します。 問題に対処するには、入力された資格情報を確認します。 また、「[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017)」、あるいはこの表の下の注釈にリストされているトラブルシューティングのドキュメントを参照し、もう一度試すことができます。 |
+| **エラー 18456** - ログインできませんでした。 ユーザー '{user}' はログインできませんでした | このエラーは、指定された T-SQL 資格情報を使用して、サービスをソース データベースに接続できない場合に発生します。 問題に対処するには、入力された資格情報を確認します。 また、「[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)」、あるいはこの表の下の注釈にリストされているトラブルシューティングのドキュメントを参照し、もう一度試すことができます。 |
 | **エラー 87** - 接続文字列が無効です。 SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。 インスタンス名が正しいことと、SQL Server がリモート接続を許可するように構成されていることを確認してください。 (プロバイダー:SQL Network Interfaces、エラー:25 - 接続文字列が無効です) | このエラーは、接続文字列が無効であるため、サービスをソース サーバーに接続できない場合に発生します。 問題に対処するには、指定された接続文字列を確認します。 問題が解決しない場合は、この表の下の注釈にリストされているトラブルシューティングのドキュメントを参照してから、もう一度試してください。 |
-| **エラー - サーバー証明書は信頼されていません。** サーバーとの接続は正常に確立されましたが、ログイン プロセスでエラーが発生しました。 (プロバイダー:SSL プロバイダー、エラー:0 - この証明書チェーンは、信頼されていない機関によって発行されました。) | このエラーは、使用された証明書が信頼されていない場合に発生します。 問題に対処するには、信頼できない証明書を見つけてから、サーバーに対してそれを有効にする必要があります。 また、接続中に信頼証明書のオプションを選択することもできます。 使用する証明書についてよく理解しており、それを信頼している場合にのみ、このアクションを実行します。 <br> 自己署名証明書を使用して暗号化されている TLS 接続のセキュリティは強力ではなく、中間者攻撃の影響を受けやすくなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用する TLS に依存しないでください。 <br> 詳細については、「[Microsoft SQL Server DB インスタンスでの SSL の使用](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html)」または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](./tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md#prerequisites)に関するページを参照してください。 |
-| **エラー 300** - ユーザーには必要なアクセス許可がありません。 VIEW SERVER STATE 権限がオブジェクト '{server}' で拒否されました (データベース '{database}') | このエラーは、ユーザーに移行を行う権限がない場合に発生します。 問題に対処する場合は、[GRANT (サーバーの権限) - Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql?view=sql-server-2017) に関するページ、または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](./tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md#prerequisites)に関するページを参照し、詳細を確認してください。 |
+| **エラー - サーバー証明書は信頼されていません。** サーバーとの接続は正常に確立されましたが、ログイン プロセスでエラーが発生しました。 (プロバイダー:SSL プロバイダー、エラー:0 - この証明書チェーンは、信頼されていない機関によって発行されました。) | このエラーは、使用された証明書が信頼されていない場合に発生します。 問題に対処するには、信頼できない証明書を見つけてから、サーバーに対してそれを有効にする必要があります。 また、接続中に信頼証明書のオプションを選択することもできます。 使用する証明書についてよく理解しており、それを信頼している場合にのみ、このアクションを実行します。 <br> 自己署名証明書を使用して暗号化されている TLS 接続のセキュリティは強力ではなく、中間者攻撃の影響を受けやすくなります。 運用環境や、インターネットに接続されているサーバーでは、自己署名証明書を使用する TLS に依存しないでください。 <br> 詳細については、「[Microsoft SQL Server DB インスタンスでの SSL の使用](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html)」または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](./index.yml)に関するページを参照してください。 |
+| **エラー 300** - ユーザーには必要なアクセス許可がありません。 VIEW SERVER STATE 権限がオブジェクト '{server}' で拒否されました (データベース '{database}') | このエラーは、ユーザーに移行を行う権限がない場合に発生します。 問題に対処する場合は、[GRANT (サーバーの権限) - Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql) に関するページ、または[チュートリアル:DMS を使用した Azure への RDS SQL Server の移行](./index.yml)に関するページを参照し、詳細を確認してください。 |
 
 > [!NOTE]
 > ソースの AWS RDS SQL Server への接続に関する問題のトラブルシューティングについて詳しくは、以下のリソースを参照してください。
 >
-> * [SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
+> *    [SQL Server への接続エラーの解決](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)
 > * [Amazon RDS データベース インスタンスへの接続の問題を解決する方法を教えてください。](https://aws.amazon.com/premiumsupport/knowledge-center/rds-cannot-connect)
 
 ## <a name="known-issues"></a>既知の問題
 
-* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-sql-online.md)
+* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./index.yml)
 * [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-mysql-online.md)
 * [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration) に関する記事を確認する。
+* [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration) に関する記事を確認する。
 * 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](../mysql/howto-server-parameters.md)」を確認する。
 * 「[Azure Database Migration Service を使用するための前提条件の概要](./pre-reqs.md)」を確認する。
 * 「[Azure Database Migration Service の使用に関する FAQ](./faq.md)」を確認する。

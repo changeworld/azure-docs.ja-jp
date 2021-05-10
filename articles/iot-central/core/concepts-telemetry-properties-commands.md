@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 995f4670b17d55fe04d5c30a834ea4be576a8348
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100535316"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106489980"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>テレメトリ、プロパティ、およびコマンドのペイロード
 
@@ -51,6 +51,10 @@ IoT Central では、デバイスからアプリケーションに送信され�
     このビューでは、表示する列を選択したり、確認対象の時間の範囲を設定したりできます。 **[Unmodeled data]\(モデル化されていないデータ\)** 列には、デバイス テンプレート内のプロパティまたはテレメトリ定義と一致しないデバイス データが表示されます。
 
 ## <a name="telemetry"></a>テレメトリ
+
+### <a name="telemetry-in-components"></a>コンポーネント内のテレメトリ
+
+テレメトリがコンポーネントで定義されている場合は、`$.sub` というカスタム メッセージ プロパティを、デバイス モデルで定義されているコンポーネントの名前で追加します。 詳細については、「[チュートリアル: クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」を参照してください。
 
 ### <a name="primitive-types"></a>プリミティブ型
 
@@ -437,6 +441,21 @@ IoT Central では、デバイスからアプリケーションに送信され�
 > [!NOTE]
 > プロパティのペイロード形式は、2020 年 7 月 14 日以降に作成されたアプリケーションに適用されます。
 
+### <a name="properties-in-components"></a>コンポーネント内のプロパティ
+
+コンポーネントでプロパティが定義されている場合は、コンポーネント名でプロパティをラップします。 次の例では `thermostat2` コンポーネント内で `maxTempSinceLastReboot` を設定します。 マーカー `__t` は、これがコンポーネントであることを示します。
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+詳細については、「[チュートリアル: クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」を参照してください。
+
 ### <a name="primitive-types"></a>プリミティブ型
 
 このセクションでは、デバイスが IoT Central アプリケーションに送信するプリミティブ型のプロパティの例を示します。
@@ -715,9 +734,25 @@ IoT Central では、デバイスからアプリケーションに送信され�
 }
 ```
 
-### <a name="writeable-property-types"></a>書き込み可能なプロパティ型
+### <a name="writable-property-types"></a>書き込み可能なプロパティ型
 
 このセクションでは、デバイスが IoT Central アプリケーションから受信する書き込み可能なプロパティ型の例を示します。
+
+書き込み可能なプロパティがコンポーネント内で定義されている場合は、目的のプロパティ メッセージにコンポーネント名が含まれています。 次の例は、`thermostat2` コンポーネントの `targetTemperature` を更新するようにデバイスに要求するメッセージを示しています。 マーカー `__t` は、これがコンポーネントであることを示します。
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+詳細については、「[チュートリアル: クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」を参照してください。
 
 IoT Central では、デバイスからは、書き込み可能なプロパティの更新への応答があると想定しています。 応答メッセージには、`ac` フィールドと `av` フィールドが含まれている必要があります。 `ad` フィールドは省略可能です。 例については、以下のスニペットを参照してください。
 
@@ -734,7 +769,7 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
 
 `ad` は、オプションの文字列での説明です。
 
-デバイス モデルの次のスニペットは、書き込み可能な `string` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、書き込み可能な `string` プロパティ型の定義を示しています。
 
 ```json
 {
@@ -769,7 +804,7 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
 }
 ```
 
-デバイス モデルの次のスニペットは、書き込み可能な `Enum` 型のプロパティの定義を示しています。
+デバイス モデルの次のスニペットは、書き込み可能な `Enum` プロパティ型の定義を示しています。
 
 ```json
 {
@@ -834,6 +869,8 @@ IoT Central では、デバイスからは、書き込み可能なプロパテ�
 ```
 
 ## <a name="commands"></a>コマンド
+
+コマンドがコンポーネント内で定義されている場合、デバイスが受信するコマンドの名前には、コンポーネント名が含まれています。 たとえば、コマンドの名前が `getMaxMinReport` で、コンポーネントの名前が `thermostat2` の場合、デバイスは `thermostat2*getMaxMinReport` というコマンドを実行するための要求を受け取ります。
 
 デバイス モデルの次のスニペットは、パラメーターがなく、デバイスが何かを返すことを想定していないコマンドの定義を示しています。
 

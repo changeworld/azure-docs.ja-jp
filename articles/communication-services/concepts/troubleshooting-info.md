@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db6aafc8c9db7a67c9ee70d524d17a642d03dfd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492695"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259066"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Communication Services でのトラブルシューティング
 
@@ -33,11 +33,11 @@ ms.locfileid: "103492695"
 
 ## <a name="access-your-ms-cv-id"></a>MS-CV ID にアクセスする
 
-MS-CV ID にアクセスするには、クライアント ライブラリを初期化する際に、`clientOptions` オブジェクト インスタンスで診断を構成します。 診断は、チャット、ID、VoIP 通話など、任意の Azure クライアント ライブラリに対して構成できます。
+MS-CV ID にアクセスするには、SDK を初期化する際に、`clientOptions` オブジェクト インスタンスで診断を構成します。 診断は、チャット、ID、VoIP 通話など、任意の Azure SDK に対して構成できます。
 
 ### <a name="client-options-example"></a>クライアント オプションの例
 
-次のコード スニペットは、診断の構成を示しています。 診断を有効にした状態でクライアント ライブラリを使用すると、構成済みのイベント リスナーに診断の詳細が出力されます。
+次のコード スニペットは、診断の構成を示しています。 診断を有効にした状態で SDK を使用すると、構成済みのイベント リスナーに診断の詳細が出力されます。
 
 # <a name="c"></a>[C#](#tab/csharp)
 ```
@@ -79,11 +79,11 @@ chat_client = ChatClient(
 
 ## <a name="access-your-call-id"></a>通話 ID にアクセスする
 
-Azure portal を通じて通話の問題に関連したサポート リクエストを提出する場合は、参照している通話の ID を提供するよう求められることがあります。 これには、通話クライアント ライブラリを介してアクセスできます。
+音声通話またはビデオ通話をトラブルシューティングする際に、`call ID` の提供を求められることがあります。 これは、`call` オブジェクトの `id` プロパティから取得できます。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 ```javascript
-// `call` is an instance of a call created by `callAgent.call` or `callAgent.join` methods
+// `call` is an instance of a call created by `callAgent.startCall` or `callAgent.join` methods
 console.log(call.id)
 ```
 
@@ -97,7 +97,7 @@ print(call.callId)
 # <a name="android"></a>[Android](#tab/android)
 ```java
 // The `call id` property can be retrieved by calling the `call.getCallId()` method on a call object after a call ends
-// `call` is an instance of a call created by `callAgent.call(…)` or `callAgent.join(…)` methods
+// `call` is an instance of a call created by `callAgent.startCall(…)` or `callAgent.join(…)` methods
 Log.d(call.getCallId())
 ```
 ---
@@ -127,17 +127,23 @@ console.log(result); // your message ID will be in the result
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-次のコードを使用すると、JavaScript クライアント ライブラリを使用してコンソールにログを出力するように、`AzureLogger` を構成することができます。
+Azure Communication Services Calling SDK は、内部的に [@azure/logger](https://www.npmjs.com/package/@azure/logger) ライブラリを使用してログ記録を制御します。
+ログ出力を構成するには、`@azure/logger` パッケージの `setLogLevel` メソッドを使用します。
+
+```javascript
+import { setLogLevel } from '@azure/logger';
+setLogLevel('verbose');
+const callClient = new CallClient();
+```
+
+AzureLogger を使用して、Azure SDK からのログ出力をリダイレクトするには、`AzureLogger.log` メソッドをオーバーライドします。コンソール以外の場所にログをリダイレクトしたい場合などに、これを使用できます。
 
 ```javascript
 import { AzureLogger } from '@azure/logger';
-
-AzureLogger.verbose = (...args) => { console.info(...args); }
-AzureLogger.info = (...args) => { console.info(...args); }
-AzureLogger.warning = (...args) => { console.info(...args); }
-AzureLogger.error = (...args) => { console.info(...args); }
-
-callClient = new CallClient({logger: AzureLogger});
+// redirect log output
+AzureLogger.log = (...args) => {
+  console.log(...args); // to console, file, buffer, REST API..
+};
 ```
 
 # <a name="ios"></a>[iOS](#tab/ios)
@@ -157,16 +163,16 @@ Android Studio で、シミュレーターとデバイスの両方から [View]\
 
 ---
 
-## <a name="calling-client-library-error-codes"></a>通話クライアント ライブラリのエラー コード
+## <a name="calling-sdk-error-codes"></a>Calling SDK のエラー コード
 
-Azure Communication Services の通話クライアント ライブラリでは、通話の問題のトラブルシューティングに役立つ次のエラー コードを使用します。 これらのエラー コードは、通話の終了後に `call.callEndReason` プロパティを通じて公開されます。
+Azure Communication Services の Calling SDK では、通話の問題のトラブルシューティングに役立つ次のエラー コードを使用します。 これらのエラー コードは、通話の終了後に `call.callEndReason` プロパティを通じて公開されます。
 
 | エラー コード | 説明 | 実行するアクション |
 | -------- | ---------------| ---------------|
 | 403 | 禁止または認証エラー。 | Communication Services トークンが有効であり、有効期限が切れていないことを確認します。 |
 | 404 | 通話が見つかりません。 | 通話先の番号 (または参加している通話) が存在することを確認します。 |
 | 408 | 通話コントローラーがタイムアウトしました。 | ユーザー エンドポイントからのプロトコル メッセージの待機中に通話コントローラーがタイムアウトしました。 クライアントが接続され、使用可能であることを確認します。 |
-| 410 | ローカル メディア スタックまたはメディア インフラストラクチャ エラー。 | サポートされている環境で最新のクライアント ライブラリを使用していることを確認します。 |
+| 410 | ローカル メディア スタックまたはメディア インフラストラクチャ エラー。 | サポートされている環境で最新の SDK を使用していることを確認します。 |
 | 430 | クライアント アプリケーションにメッセージを配信できません。 | クライアント アプリケーションが実行されていて使用可能であることを確認します。 |
 | 480 | リモート クライアント エンドポイントが登録されていません。 | リモート エンドポイントが使用可能であることを確認します。 |
 | 481 | 着信通話の処理に失敗しました。 | Azure portal からサポート リクエストを提出します。 |

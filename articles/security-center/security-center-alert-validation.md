@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center でのアラートの検証 | Microsoft Docs
 description: Azure Security Center でセキュリティ アラートが正しく構成されていることを検証する方法について説明します
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602385"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -39,7 +33,7 @@ ms.locfileid: "102099524"
 
 アラートのサンプルを作成するには:
 
-1. [アラート] ページのツールバーで、 **[アラートのサンプルの作成]** を選択します。 
+1. **セキュリティ管理者** または **サブスクリプション共同作成者** のロールを持つユーザーで、アラート ページのツールバーから **[アラートのサンプルの作成]** を選択します。
 1. サブスクリプションを選択します。
 1. アラートを表示する関連する Azure Defender プラン (複数可) を選択します。 
 1. **[アラートのサンプルの作成]** を選択します。

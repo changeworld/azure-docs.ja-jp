@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0e9cc9967509eba05bd26f3bad86eefeeb6ca3e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96452418"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639471"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance、Azure Synapse Analytics へのデータベース アクセスを承認する
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
   - マスター データベース内に追加の SQL ログインを作成します。
   - [ALTER SERVER ROLE](/sql/t-sql/statements/alter-server-role-transact-sql) ステートメントを使用して、[sysadmin 固定サーバー ロール](/sql/relational-databases/security/authentication-access/server-level-roles)にログインを追加します。 このログインは、完全な管理アクセス許可を持つことになります。
-  - または、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文を使用して [Azure AD ログイン](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)を作成します。
+  - または、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文を使用して [Azure AD ログイン](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)を作成します。
 
 - **SQL Database で、管理権限が制限された SQL ログインを作成する**
 
@@ -122,9 +122,9 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 ログインとユーザーの作成方法を示す例については、以下を参照してください。
 
-- [Azure SQL Database のログインを作成する](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [Azure SQL Managed Instance のログインを作成する](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [Azure Synapse のログインを作成する](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [Azure SQL Database のログインを作成する](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)
+- [Azure SQL Managed Instance のログインを作成する](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true#examples-2)
+- [Azure Synapse のログインを作成する](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-3)
 - [ユーザーの作成](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [Azure AD 包含ユーザーの作成](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
@@ -142,7 +142,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
   - 固定データベース ロールにユーザーを追加するには:
 
     - Azure SQL Database で、[ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) ステートメントを使用します。 例については、[ALTER ROLE の例](/sql/t-sql/statements/alter-role-transact-sql#examples)を参照してください
-    - Azure Synapse では、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ステートメントを使用します。 例については、[sp_addrolemember の例](/sql/t-sql/statements/alter-role-transact-sql)を参照してください。
+    - Azure Synapse では、[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ステートメントを使用します。 例については、[sp_addrolemember の例](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql#examples)を参照してください。
 
 - **カスタム データベース ロール**
 

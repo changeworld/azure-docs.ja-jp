@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8e51f99496514e40d6c3f85000384a14baf84946
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929121"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865368"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -51,9 +51,9 @@ mkdir resources
 
 このコマンドは、基本的な Maven プロジェクトを含む `WordCount` という名前のディレクトリを現在の場所に作成します。 2 番目のコマンドでは、現在の作業ディレクトリを `WordCount` に変更します。 3 番目のコマンドでは、後で使用する新しいディレクトリ (`resources`) を作成します。  `WordCount` ディレクトリには、次の項目が含まれます。
 
-* `pom.xml`:Maven プロジェクトの設定が含まれます。
-* `src\main\java\com\microsoft\example`:アプリケーション コードが含まれます。
-* `src\test\java\com\microsoft\example`:アプリケーションのテストが含まれます。  
+* `pom.xml`: Maven プロジェクトの設定が含まれます。
+* `src\main\java\com\microsoft\example`: アプリケーション コードが含まれます。
+* `src\test\java\com\microsoft\example`: アプリケーションのテストが含まれます。  
 
 ### <a name="remove-the-generated-example-code"></a>生成されたコード例の削除
 
@@ -148,7 +148,7 @@ Storm コンポーネントの依存関係を追加します。 `pom.xml` で、
 > [!NOTE]  
 > このセクションの `<scope>provided</scope>` 行に注目してください。 この設定によって、作成されるすべての JAR ファイルから **storm-core** を除外するよう Maven に指示しています。storm-core はシステムから提供されるためです。
 
-## <a name="build-configuration"></a>ビルド構成
+## <a name="build-configuration"></a>[ビルド構成]
 
 Maven プラグインでは、プロジェクトのビルド ステージをカスタマイズできます。 たとえば、プロジェクトのコンパイル方法や JAR ファイルへのパッケージ化方法をカスタマイズできます。 `pom.xml` で、`</project>` 行のすぐ上に次のテキストを追加します。
 
@@ -234,11 +234,11 @@ resources セクションには、トポロジ内のコンポーネントに必�
 
 Java ベースの Apache Storm トポロジは、作成か依存関係として参照する必要のある 3 つのコンポーネントで構成されます。
 
-* **スパウト**:外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
+* **スパウト**: 外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
 
-* **ボルト**:スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
+* **ボルト**: スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
 
-* **トポロジ**:スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
+* **トポロジ**: スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
 
 ### <a name="create-the-spout"></a>スパウトを作成する
 
@@ -317,16 +317,16 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]  
 > 外部データソースから読み取るスパウトの例を見るには、次の例をご覧ください。
 >
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java):Twitter から読み取りを行うスパウトの例。
-> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka):Kafka から読み取りを行うスパウトの例。
+> * [TwitterSampleSpout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Twitter から読み取りを行うスパウトの例。
+> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Kafka から読み取りを行うスパウトの例。
 
 ### <a name="create-the-bolts"></a>ボルトを作成する
 
 ボルトは、データの処理を扱います。 ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、あらゆる操作が可能です。 このトポロジでは、次の 2 つのボルトを使用します。
 
-* **SplitSentence**:**RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
+* **SplitSentence**: **RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
 
-* **WordCount**:各単語が発生した回数をカウントします。
+* **WordCount**: 各単語が発生した回数をカウントします。
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -482,7 +482,7 @@ public class WordCount extends BaseBasicBolt {
 
 次の図は、このトポロジのコンポーネントの基本的なグラフを示しています。
 
-![スパウトとボルトの配置を示すダイアグラム](./media/apache-storm-develop-java-topology/word-count-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-java-topology/word-count-topology1.png" alt-text="スパウトとボルトの配置を示すダイアグラム" border="false":::
 
 トポロジを実装するには、以下のコマンドを入力して、新しいファイル `WordCountTopology.java` を作成して開きます。
 

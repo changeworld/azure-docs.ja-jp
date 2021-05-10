@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041146"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799294"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics のチュートリアル
 Log Analytics は、Azure Monitor ログによって収集されたデータからログ クエリを編集して実行し、その結果を対話形式で分析する Azure portal のツールです。 Log Analytics クエリを使用すると、特定の条件に一致するレコードの取得、傾向の特定、パターンの分析を行って、データに関するさまざまな分析情報を入手できます。 
@@ -72,7 +72,7 @@ Log Analytics は、Azure Monitor ログによって収集されたデータか�
 ## <a name="time-range"></a>時間の範囲
 Log Analytics ワークスペース内のすべてのテーブルには、**TimeGenerated** という名前の列があります。これは、レコードが作成された時刻です。 すべてのクエリには時間の範囲があり、結果は **TimeGenerated** 値がその範囲内のレコードに制限されます。 時間の範囲は、クエリ内で、または画面の上部にあるセレクターを使用して設定できます。
 
-既定では、このクエリは過去 24 時間のレコードを返します。 **[時間の範囲]** ドロップダウンを選択し、 **[7 日]** に変更します。 **[実行]** をもう一度クリックすると、結果が返されます。 ご覧のように、結果が返されますが、ここにはすべての結果が表示されていないという旨のメッセージが表示されています。 これは、Log Analytics が最大 10,000 件のレコードを返すことができ、このクエリから返されたレコードの数がそれよりも多いためです。 
+既定では、このクエリは過去 24 時間のレコードを返します。 **[時間の範囲]** ドロップダウンを選択し、 **[7 日]** に変更します。 **[実行]** をもう一度クリックすると、結果が返されます。 ご覧のように、結果が返されますが、ここにはすべての結果が表示されていないという旨のメッセージが表示されています。 これは、Log Analytics が最大 30,000 件のレコードを返すことができ、このクエリから返されたレコードの数がそれよりも多いためです。 
 
 [![時間の範囲](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

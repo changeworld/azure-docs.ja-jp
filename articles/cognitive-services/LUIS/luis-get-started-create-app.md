@@ -4,13 +4,13 @@ description: このクイックスタートでは、照明やアプライアン�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/13/2020
-ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 03/29/2021
+ms.openlocfilehash: e0972998fad647c1c70be814cb7c13f14a6e1141
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019162"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277030"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート:事前構築済みの Home Automation アプリを使用する
 
@@ -220,7 +220,5 @@ ms.locfileid: "95019162"
 
 ## <a name="next-steps"></a>次のステップ
 
-エンドポイントはコードから呼び出すことができます。
-
 > [!div class="nextstepaction"]
-> [コードを使って LUIS エンドポイントを呼び出す](./luis-get-started-get-intent-from-rest.md)
+> [LUIS の反復的アプリ開発](./luis-concept-app-iteration.md)

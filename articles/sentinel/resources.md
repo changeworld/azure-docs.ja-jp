@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 30cd0181ff2c5fbb8918921be3515818128a98d0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048235"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044151"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -39,7 +39,7 @@ Azure Sentinel では、Azure Monitor Log Analytics の Kusto クエリ言語 (K
 
 Azure Logic Apps と増え続ける組み込みプレイブック ギャラリーを利用し、Azure Sentinel でオートメーションを作成します。 
 
-詳細については、[Azure Logic Apps コネクタ](https://docs.microsoft.com/connectors/)に関するページを参照してください。
+詳細については、[Azure Logic Apps コネクタ](/connectors/)に関するページを参照してください。
 
 ## <a name="comment-on-our-blogs-and-forums"></a>ブログとフォーラムでコメントしてください
 
@@ -67,4 +67,3 @@ Microsoft のセキュリティ アナリストは、新しいブック、プレ
 
 > [!div class="nextstepaction"]
 > [お客様のユース ケース ストーリーを読む](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
-

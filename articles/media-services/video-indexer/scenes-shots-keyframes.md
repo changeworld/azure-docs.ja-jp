@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5a738152296aacbb5914e859a65976bd0f6dbf0a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93041896"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532427"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 
@@ -54,7 +54,7 @@ Video Indexer web サイトを使用してキーフレームを抽出するに�
 
 #### <a name="with-the-video-indexer-api"></a>Video Indexer API の使用
 
-Video Indexer API を使用してキーフレームを取得するには [Upload Video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) 呼び出しを使用してビデオをアップロードし、インデックスを作成します。 インデックス作成ジョブが完了したら、[Get Video Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) を呼び出します。 これにより、JSON ファイル内のコンテンツから抽出された Video Indexer すべての分析情報が得られます。  
+Video Indexer API を使用してキーフレームを取得するには [Upload Video](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video) 呼び出しを使用してビデオをアップロードし、インデックスを作成します。 インデックス作成ジョブが完了したら、[Get Video Index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Index) を呼び出します。 これにより、JSON ファイル内のコンテンツから抽出された Video Indexer すべての分析情報が得られます。  
 
 各ショットのメタデータの一部として、キーフレーム ID の一覧が表示されます。 
 
@@ -98,7 +98,7 @@ Video Indexer API を使用してキーフレームを取得するには [Upload
 ]
 ```
 
-次に、[Get Thumbnails](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) 呼び出しで、これらのキーフレーム ID をそれぞれ実行する必要があります。 これにより、各キーフレームのイメージがコンピューターにダウンロードされます。 
+次に、[Get Thumbnails](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Thumbnail) 呼び出しで、これらのキーフレーム ID をそれぞれ実行する必要があります。 これにより、各キーフレームのイメージがコンピューターにダウンロードされます。 
 
 ## <a name="editorial-shot-type-detection"></a>編集ショット タイプの検出
 

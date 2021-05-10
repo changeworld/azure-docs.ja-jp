@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: d2f12a6982886eeaa375151c5b8a73acc573aab9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9619a3d2ba24e806f6c684a5576bce03d7e6b793
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545363"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060977"
 ---
 # <a name="429001-throttlingexception"></a>429001 ThrottlingException
 

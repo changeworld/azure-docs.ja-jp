@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/15/2019
+ms.date: 04/01/2021
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a44557d15f437317c2b5fa659ab8d4ca3c208edf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d4e461b25a25ecdf0d4d89ee7f1c82b9d4a0737
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93339840"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220166"
 ---
 # <a name="use-the-change-feed-estimator"></a>変更フィード推定機能を使用する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "93339840"
 
 ## <a name="why-is-monitoring-progress-important"></a>進行状況の監視が重要な理由
 
-変更フィード プロセッサは、お使いの[変更フィード](./change-feed.md)を前方に移動し、変更をデリゲート実装に配信するポインターとして機能します。 
+変更フィード プロセッサは、お使いの[変更フィード](./change-feed.md)を前方に移動し、変更をデリゲート実装に配信するポインターとして機能します。
 
 お使いの展開されている変更フィード プロセッサは、CPU、メモリ、ネットワークなどの使用可能なリソースに基づいた特定の速度で変更を処理できます。
 
@@ -32,7 +32,9 @@ ms.locfileid: "93339840"
 
 ## <a name="implement-the-change-feed-estimator"></a>変更フィード推定機能の実装
 
-変更フィード推定機能は、[変更フィード プロセッサ](./change-feed-processor.md)と同様に、プッシュ モデルとして機能します。 推定機能は、最後に処理された項目 (リース コンテナーの状態で定義される) とコンテナーの最新の変更の差を測定し、この値をデリゲートにプッシュします。 この測定値が取得される間隔 (既定値は 5 秒) は、カスタマイズも可能です。
+### <a name="as-a-push-model-for-automatic-notifications"></a>自動通知のプッシュ モデルとして
+
+変更フィード推定機能は、[変更フィード プロセッサ](./change-feed-processor.md)と同様に、プッシュ モデルとして機能できます。 推定機能は、最後に処理された項目 (リース コンテナーの状態で定義される) とコンテナーの最新の変更の差を測定し、この値をデリゲートにプッシュします。 この測定値が取得される間隔 (既定値は 5 秒) は、カスタマイズも可能です。
 
 たとえば、お使いの変更フィード プロセッサが次のように定義されているとします。
 
@@ -52,8 +54,29 @@ ms.locfileid: "93339840"
 
 この推定はお使いの監視ソリューションに送信して、時間と共に進行状況がどのようなものかを把握するのに使用できます。
 
+### <a name="as-an-on-demand-detailed-estimation"></a>オンデマンドの詳細な推定として
+
+プッシュ モデルとは異なり、オンデマンドで推定を取得できる代替手段があります。 このモデルでは、次のような、より詳細な情報も提供されます。
+
+* リースあたりの推定ラグ。
+* 各リースを所有して処理するインスタンス。これにより、インスタンスに問題があるかどうかを識別できます。
+
+たとえば、変更フィード プロセッサがこのように定義されているとします。
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimatorDetailed)]
+
+同じリース構成で、次のように推定器を作成できます。
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimatorDetailed)]
+
+必要なときに必要な頻度で、詳細な推定を取得できます。
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=GetIteratorEstimatorDetailed)]
+
+各 `ChangeFeedProcessorState` には、リース情報とラグ情報、およびそれを所有している現在のインスタンスがだれであるかが含まれます。 
+
 > [!NOTE]
-> 変更フィード推定機能は、お使いの変更フィード プロセッサの一部として配置する必要はありません。また、同じプロジェクトに含める必要もありません。 個別に、まったく別のインスタンスで実行できます。 同じ名前とリース構成のみを使用する必要があります。
+> 変更フィード推定機能は、お使いの変更フィード プロセッサの一部として配置する必要はありません。また、同じプロジェクトに含める必要もありません。 個別に、まったく別のインスタンスで実行でき、そうすることをお勧めします。 同じ名前とリース構成のみを使用する必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

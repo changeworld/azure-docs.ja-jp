@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: a3cc4c3d6936a51ca2010209ce23e4d82c9333eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98016342"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765991"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "98016342"
 
 - リソース グループを作成します。 Azure リソースはすべてリソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
 
-   このクイックスタートでは、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、*streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
+   このクイックスタートでは、次の [az group create](/cli/azure/group#az_group_create) コマンドを使用して、*streamanalyticsrg* という名前のリソース グループを *eastus* の場所に作成します。
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus

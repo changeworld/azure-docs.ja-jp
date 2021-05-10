@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8838e3c92a2c7ccc77794973b3cb8e67128e3c71
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a22a214104357b9ad99238a8db157839a1c9fd46
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654822"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591947"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Akamai の統合
 
@@ -313,7 +313,7 @@ Akamai ヘッダー ベースの認証
 
 1. 条件付きアクセス。
 
-    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" というメッセージのスクリーンショット。 We've sent a notification to your mobile device. Please respond to continue.](./media/header-akamai-tutorial/conditional-access-1.png)
+    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" というメッセージのスクリーンショット。 お使いのモバイル デバイスに通知を送信しました。 続行するには、応答してください。](./media/header-akamai-tutorial/conditional-access-1.png)
 
     ![MyHeaderApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditional-access-2.png)
 
@@ -363,7 +363,7 @@ Akamai ヘッダー ベースの認証
 
 1. 条件付きアクセス
 
-    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" という条件付きアクセス メッセージのスクリーンショット。 We've sent a notification to your mobile device. Please respond to continue.](./media/header-akamai-tutorial/conditional-access-4.png)
+    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" という条件付きアクセス メッセージのスクリーンショット。 お使いのモバイル デバイスに通知を送信しました。 続行するには、応答してください。](./media/header-akamai-tutorial/conditional-access-4.png)
 
     ![MyHeaderApp と SecretRDPApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditional-access-5.png)
 
@@ -429,7 +429,7 @@ Akamai ヘッダー ベースの認証
 
 1. 条件付きアクセス
 
-    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" というメッセージのスクリーンショット。 We've sent a notification to your mobile device. Please respond to continue.](./media/header-akamai-tutorial/conditional-access-4.png)
+    !["サインイン要求を承認。お使いのモバイル デバイスに通知を送信しました。続行するには、応答してください" というメッセージのスクリーンショット。 お使いのモバイル デバイスに通知を送信しました。 続行するには、応答してください。](./media/header-akamai-tutorial/conditional-access-4.png)
 
     ![MyHeaderApp、SSH Secure、SecretRDPApp のアイコンを表示する [アプリケーション] 画面のスクリーンショット。](./media/header-akamai-tutorial/conditional-access-7.png)
 
@@ -583,8 +583,8 @@ ID プロバイダーを割り当てます。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Akamai に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Akamai] タイルをクリックすると、SSO を設定した Akamai に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Akamai を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Akamai を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

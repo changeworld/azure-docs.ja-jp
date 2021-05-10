@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650730"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029779"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -34,6 +34,14 @@ Text Analytics API を使用する前に、アプリケーションのキーと�
 2.  エンドポイントに使用するリージョンを選択します。  `/analyze` と `/health` のエンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
 
 3.  Text Analytics リソースを作成し、ページの左側にある "キーとエンドポイントのブレード" に移動します。 後で API を呼び出すときに使用するキーをコピーします。 後で `Ocp-Apim-Subscription-Key` ヘッダーの値としてこの値を追加します。
+
+4. Text Analytics リソースを使用して送信されたテキスト レコードの数を確認するには、次のようにします。
+
+    1. Azure portal で Text Analytics リソースに移動します。 
+    2. 左側のナビゲーション メニューの **[監視]** で **[メトリック]** をクリックします。 
+    3. **[メトリック]** のドロップダウン ボックスで、 *[処理されたテキスト レコード]* を選択します。
+    
+テキスト レコードは 1,000 文字です。
 
 ## <a name="change-your-pricing-tier"></a>価格レベルを変更する 
 
@@ -66,6 +74,7 @@ v3.1-preview.3 以降の Text Analytics API には、2 つの非同期エンド�
 | 意見マイニング | ✔ |  |
 | キー フレーズの抽出 | ✔ | ✔* |
 | 固有表現認識 (PII および PHI を含む) | ✔ | ✔* |
+| エンティティ リンク設定 | ✔ | ✔* |
 | Text Analytics for Health (コンテナー) | ✔ |  |
 | Text Analytics for Health (API) |  | ✔  |
 
@@ -118,8 +127,9 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 
 `/analyze` エンドポイントを使用すると、サポートされている Text Analytics 機能のうち、1 つの API 呼び出しで使用するものを選択できます。 現在、このエンドポイントでは次ものがサポートされています。
 
-* ような作業を 
+* キー フレーズ抽出 
 * 固有表現認識 (PII および PHI を含む)
+* Entity Linking
 
 | 要素 | 有効な値 | 必須 | 使用方法 |
 |---------|--------------|-----------|-------|
@@ -128,7 +138,7 @@ API 要求の形式は、すべての同期操作について同じです。 ド
 |`documents` | 後の `id` および `text` フィールドが含まれます | 必須 | 送信される各ドキュメントの情報と、ドキュメントの名前のテキストが含まれます。 |
 |`id` | String | 必須 | 指定した ID は、出力を構造化するために使用されます。 |
 |`text` | 最大 125,000 文字の、構造化されていない生のテキスト。 | 必須 | 英語である必要があります。現在サポートされている言語はこれだけです。 |
-|`tasks` | 次の Text Analytics 機能が含まれます: `entityRecognitionTasks`、`keyPhraseExtractionTasks`、または `entityRecognitionPiiTasks`。 | 必須 | 使用する 1 つ以上の Text Analytics 機能。 `entityRecognitionPiiTasks` には、`pii` または `phi` に設定できる省略可能な `domain` パラメーターがあることに注意してください。 指定されていない場合、システムの既定値の `pii` になります。 |
+|`tasks` | `entityRecognitionTasks`、`entityLinkingTasks`、`keyPhraseExtractionTasks` または `entityRecognitionPiiTasks` の Text Analytics 機能が含まれます。 | 必須 | 使用する 1 つ以上の Text Analytics 機能。 `entityRecognitionPiiTasks` にはオプションのパラメーター `domain` があり、これを `pii` または `phi` および `pii-categories` に設定して、選択したエンティティ型を検出することができます。 `domain` パラメーターが指定されていない場合、システムは既定値の `pii` になります。 |
 |`parameters` | 後の `model-version` および `stringIndexType` フィールドが含まれます | 必須 | このフィールドは、上で選択した機能タスクに含まれています。 これらには、使用するモデル バージョンとインデックスの種類に関する情報が含まれます。 |
 |`model-version` | String | 必須 | 呼び出しで使用するモデルのバージョンを指定します。  |
 |`stringIndexType` | String | 必須 | プログラミング環境に合ったテキスト デコーダーを指定します。  サポートされている種類は、`textElement_v8` (既定)、`unicodeCodePoint`、`utf16CodeUnit` です。 詳細については、[テキストのオフセットに関する記事](../concepts/text-offsets.md#offsets-in-api-version-31-preview)を参照してください。  |
@@ -158,6 +168,14 @@ API 要求の形式は、すべての同期操作について同じです。 ド
                 }
             }
         ],
+        "entityLinkingTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
         "keyPhraseExtractionTasks": [{
             "parameters": {
                 "model-version": "latest"
@@ -165,7 +183,10 @@ API 要求の形式は、すべての同期操作について同じです。 ド
         }],
         "entityRecognitionPiiTasks": [{
             "parameters": {
-                "model-version": "latest"
+                "model-version": "latest",
+                "stringIndexType": "TextElements_v8",
+                "domain": "phi",
+                "pii-categories":"default"
             }
         }]
     }
@@ -231,16 +252,16 @@ Postman (または別の Web API テスト ツール) で、使用する機能�
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
-| 分析ジョブを送信する | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
-| 分析の状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
+| 分析ジョブを送信する | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
+| 分析の状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>`/health` エンドポイントに非同期要求を送信するためのエンドポイント
 
 | 機能 | 要求の種類 | リソースのエンドポイント |
 |--|--|--|
-| Text Analytics for Health ジョブを送信する  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
-| ジョブの状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| ジョブの取り消し | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| Text Analytics for Health ジョブを送信する  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
+| ジョブの状態と結果を取得する | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| ジョブの取り消し | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -278,7 +299,7 @@ API 要求を送信します。 同期エンドポイントを呼び出した場
 1. API の応答で、API に送信したジョブを示す `Operation-Location` をヘッダーから見つけます。 
 2. 使用したエンドポイントに対する GET 要求を作成します。 エンドポイントの形式については[上の表](#set-up-a-request)を参照し、[API リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)を参照してください。 例:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
 
 3. `Operation-Location` を要求に追加します。
 

@@ -10,10 +10,10 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96024165"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Functions および Cognitive Services を使用して言語翻訳ツールを作成する
@@ -30,10 +30,10 @@ ms.locfileid: "96024165"
 
 ## <a name="create-azure-cognitive-service"></a>Azure Cognitive Service を作成する
 
-1. Azure ポータルで、 **[リソースの作成]** をクリックして、**Speech** を検索します。 フォームに入力して Speech サービスを作成します。
+1. Azure ポータルで、 **[リソースの作成]** をクリックして、**Speech** を検索します。 フォームに入力して音声サービスを作成します。
   ![Speech サービス](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
-1. 先ほど作成した Speech サービスに移動して、 **[キー]** セクションをクリックし、それにアクセスしている DevKit 用の **Key1** をコピーしてメモします。
+1. 先ほど作成した Speech サービスに移動して、**[キー]** セクションをクリックし、それにアクセスしている DevKit 用の **Key1** をコピーしてメモします。
   ![キーをコピーする](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
 
 ## <a name="open-sample-project"></a>サンプル プロジェクトを開く
@@ -47,12 +47,12 @@ ms.locfileid: "96024165"
 
 ## <a name="use-speech-service-with-azure-functions"></a>Azure Functions で Speech サービスを使用する
 
-1. VS Code で、`F1` をクリックし、 **[Azure IoT Device Workbench: Azure サービスのプロビジョニング...]** を入力して選択します。![Azure サービスをプロビジョニングする](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. VS Code で `F1` をクリックし、 **[Azure IoT Device Workbench: Provision Azure Services...]** と入力してこれを選択します。![Azure サービスをプロビジョニングする](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
 1. 手順に従って、Azure IoT Hub と Azure Functions のプロビジョニングを完了します。
    ![プロビジョニング手順](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
 
-   作成した Azure IoT Hub のデバイス名をメモします。
+   作成した Azure IoT Hub デバイス名をメモします。
 
 1. `Functions\DevKitTranslatorFunction.cs` を開き、メモしたデバイス名と音声サービスのキーで次のコード行を更新します。
    ```csharp
@@ -66,13 +66,13 @@ ms.locfileid: "96024165"
    const string deviceName = "";
    ```
 
-1. `F1` をクリックし、 **[Azure IoT Device Workbench:Azure へのデプロイ...]** を入力して選択します。VS Code で再デプロイの確認が求められたら、 **[はい]** をクリックします。
+1. `F1` をクリックして、 **[Azure IoT Device Workbench: Azure に配置する...]** と入力して選択します。VS Code から再デプロイの確認が求められたら、 **[はい]** をクリックします。
    ![デプロイの警告](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-warning.png)
 
-1. デプロイが成功したことを確認します。
+1. デプロイが正常に完了したことを確認します。
    ![デプロイの成功](media/iot-hub-arduino-iot-devkit-az3166-translator/deploy-success.png)
 
-1. Azure ポータルで、 **[Functions アプリ]** セクションに移動し、作成された Azure 関数アプリを見つけます。 `devkit_translator` をクリックします。次に、 **[</> 関数の URL の取得]** をクリックして URL をコピーします。
+1. Azure ポータルで、**[Functions アプリ]** セクションに移動し、作成された Azure 関数アプリを見つけます。 `devkit_translator` をクリックします。次に、**[</> 関数の URL の取得]** をクリックして URL をコピーします。
    ![関数の URL をコピーする](media/iot-hub-arduino-iot-devkit-az3166-translator/get-function-url.png)
 
 1. URL を `azure_config.h` ファイルに貼り付けます。
@@ -91,7 +91,7 @@ ms.locfileid: "96024165"
 
    ![DevKit 構成モード](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. `F1` をクリックし、 **[Azure IoT Device Workbench:デバイス設定の構成...] > [Config Device Connection String]\(デバイス接続文字列の構成\)** を入力して選択します。 **[Select IoT Hub Device Connection String]\(デバイス接続文字列の選択\)** を選び、DevKit に構成します。
+1. `F1` をクリックし、 **[Azure IoT Device Workbench: Configure Device Settings...] と入力してこれを選択し、[Config Device Connection String]** を選択します。 **[Select IoT Hub Device Connection String]\(デバイス接続文字列の選択\)** を選び、DevKit に構成します。
    ![接続文字列を構成する](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. 成功すると、通知が表示されます。
@@ -100,31 +100,31 @@ ms.locfileid: "96024165"
 1. `F1` をもう一度クリックし、 **[Azure IoT Device Workbench: Upload Device Code]\(デバイス コードのアップロード\)** を入力して選択します。 これにより、コンパイルと DevKit へのコードのアップロードが開始されます。
    ![デバイスのアップロード](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
 
-## <a name="test-the-project"></a>プロジェクトのテスト
+## <a name="test-the-project"></a>プロジェクトをテストする
 
-アプリの初期化が終わったら、DevKit の画面の指示に従います。 既定のソース言語は中国語です。
+アプリの初期化後、DevKit 画面の指示に従います。 既定のソース言語は中国語です。
 
-別の言語を選択するには、次の手順に従います。
+別の言語の翻訳を選択するには:
 
-1. A ボタン を押してセットアップ モードにします。
+1. A ボタンを押して設定モードに入ります。
 
-2. B ボタンを押すと、サポートされているすべてのソース言語をスクロールできます。
+2. B ボタンを押すと、サポートされているすべてのソース言語をスクロールして表示できます。
 
 3. A ボタンを押して、ソース言語の選択を確定します。
 
-4. B ボタンを押しながら話した後、B ボタンを放すと、翻訳が開始されます。
+4. B ボタンを押しながら話します。B ボタンを離すと翻訳が開始されます。
 
-5. 翻訳されたテキスト (英語) が画面に表示されます。
+5. 英語に翻訳されたテキストが画面に表示されます。
 
 ![スクロールして言語を選択します](media/iot-hub-arduino-iot-devkit-az3166-translator/select-language.jpg)
 
 ![翻訳結果](media/iot-hub-arduino-iot-devkit-az3166-translator/translation-result.jpg)
 
-翻訳結果画面では、次の操作を実行できます。
+翻訳結果画面では次の操作が可能です。
 
-- A ボタンを押し、B ボタンを押してスクロールし、ソース言語を選択します。
+- A ボタンと B ボタンを押し、スクロールしてソース言語を選択できます。
 
-- B ボタンを押して話します。 音声を送信し、翻訳テキストを表示するには、B ボタンを放します。
+- B ボタンを押して発話できます。 音声を送信し、翻訳テキストを取得するには、B ボタンを離します。
 
 ## <a name="how-it-works"></a>しくみ
 

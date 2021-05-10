@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c1a0fb15be92e25b576cd29e671eed3c6a5b948f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95999928"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313268"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>特徴を使用して単語リストのシグナルをブーストする
 
@@ -37,7 +37,7 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 
     LUIS に十分な値を入力すると、提案が表示されます。 提案されたすべての値を **[+ すべて追加]** で追加するか、個々の用語を選択することができます。
 
-1. フレーズを交換して使用できる場合は、 **[これらの値はどれを使っても問題ありません]** をオンのままにします。
+1. フレーズを交換して使用できる場合は、 **[これらの値はどれを使っても問題ありません]** をオンのままにします。 交換可能なフレーズ リストの特徴は、トレーニング用の同意語リストとして機能します。 交換不可能なフレーズ リストは、トレーニング用の別個の特徴として機能します (つまり、特徴は似ていますが、フレーズを入れ替えると意図が変わります)。
 
 1. 語句リストは **グローバル** 設定を使用してアプリ全体に適用したり、特定のモデル (意図またはエンティティ) に適用したりできます。 フレーズ リストを作成する場合、意図またはエンティティの "_特徴_" として、トグルはグローバルに設定されません。 この場合、トグルの意味は、特徴がそのモデルに対してのみローカルであり、そのため、アプリケーションに対しては "_グローバルではない_" ということです。
 

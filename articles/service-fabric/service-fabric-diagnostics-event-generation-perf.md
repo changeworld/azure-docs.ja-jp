@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric のパフォーマンスの監視
 description: Azure Service Fabric クラスターの監視と診断に使うパフォーマンス カウンターについて説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: abe1b67bee863f287f148fdd9af13198b67db0f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "75464705"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628868"
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 

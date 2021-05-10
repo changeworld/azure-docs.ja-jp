@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: fe6be5778997f0ef4a3f53ae45d17352eca60d8e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 35d01fd60d0549a528a45013add48bd203b86d6e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727262"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654681"
 ---
 # <a name="create-a-video-indexer-account"></a>Video Indexer アカウントを作成する
 
@@ -203,7 +203,7 @@ Azure Media Services に関する次の考慮事項が適用されます。
 
 -   [Azure Government](../../azure-government/index.yml) の Azure サブスクリプション。
 - Azure Government の Azure AD アカウント。
-- 「[Azure に接続するための前提条件](#prerequisites-for-connecting-to-azure)」で前述したアクセス許可とリソースの前提条件すべて。
+- 「[Azure に接続するための前提条件](#prerequisites-for-connecting-to-azure)」で前述したアクセス許可とリソースの前提条件すべて。 「[自動フローのその他の前提条件](#additional-prerequisites-for-automatic-flow)」と「[手動フローのその他の前提条件](#additional-prerequisites-for-manual-flow)」を必ずご確認ください。
 
 ### <a name="create-new-account-via-the-azure-government-portal"></a>Azure Government ポータルを使用して新しいアカウントを作成する
 

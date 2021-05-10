@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 81a6a6aeb826ba4a61fd4f0a4abdb63fe3674bc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 59b766cd5721a9a77b3506cc438ec267e5131979
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103573729"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309454"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -44,7 +44,7 @@ ms.locfileid: "103573729"
 
 + リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure ロールベースのアクセス制御 (Azure RBAC) で次のアクションへのアクセス許可を保持している必要があります。
 
-    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
+    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/*/read"。
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
 
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください
@@ -59,7 +59,7 @@ ms.locfileid: "103573729"
 > * コンピューティング インスタンスまたはクラスターに指定されたサブネットには、対象となる VM 数に対応できるように十分な未割り当て IP アドレスが必要です。 サブネットに十分な未割り当て IP アドレスがない場合、コンピューティング クラスターは部分的に割り当てられます。
 > * 仮想ネットワークのサブスクリプションまたはリソース グループに対するセキュリティ ポリシーまたはロックで、仮想ネットワークを管理するためのアクセス許可が制限されているかどうかを確認します。 トラフィックを制限することで仮想ネットワークをセキュリティで保護する予定の場合は、コンピューティング サービス用にいくつかのポートを開いたままにしてください。 詳細については、「[必須ポート](#mlcports)」のセクションをご覧ください。
 > * 複数のコンピューティング インスタンスまたはクラスターを 1 つの仮想ネットワークに配置する場合は、1 つ以上のリソースのクォータの増加を要求することが必要になる場合があります。
-> * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークに存在する必要があります。 
+> * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークおよびサブネットに存在する必要があります。 ストレージ ファイア ウォール設定を構成して、仮想ネットワークおよび常駐するサブネット コンピューティングとの通信を許可してください。 [Allow trusted Microsoft services to access this account] (信頼された Microsoft サービスによるこのアカウントに対するアクセスを許可します) チェックボックスをオンにするだけでは、コンピューティングからの通信の許可には不十分なことに注意してください。
 > * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
 > * コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して `<instance-name>.<region>.instances.azureml.ms` のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md)に関する記事をご覧ください。
 > * コンピューティング クラスターやインスタンスをデプロイするために使用されるサブネットを、ACI などの他のサービスには委任しないでください。

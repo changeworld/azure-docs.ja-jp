@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:サーバーレス SQL プールを使用してデータの分析を開始する
+title: 'チュートリアル: サーバーレス SQL プールを使用したデータ分析の概要'
 description: このチュートリアルでは、Spark データベース内のデータを使用して、サーバーレス SQL プールでデータを分析する方法について説明します。
 services: synapse-analytics
 author: saveenr
@@ -9,54 +9,42 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.date: 04/15/2021
+ms.openlocfilehash: c6f2dfe0d4846227400ac9b3c7ac3e6ead8f0b57
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209408"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567555"
 ---
-# <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用してデータを分析する
+# <a name="analyze-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してデータを分析する
 
-このチュートリアルでは、Spark データベース内のデータを使用して、サーバーレス SQL プールでデータを分析する方法について説明します。 
+このチュートリアルでは、サーバーレス SQL プールでデータを分析する方法について説明します。 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Blob Storage の NYC タクシー データを分析する
+## <a name="the-built-in-serverless-sql-pool"></a>組み込みのサーバーレス SQL プール
 
-1. **[リンク済み]** の下の **[データ]** ハブで、 **[Azure Blob Storage]** を右クリックし、 **[Sample Datasets]\(サンプル データセット\) > [nyc_tlc_yellow] > [New SQL Script]\(新しい SQL スクリプト\)** の順に選択して、 **[SELECT TOP 100 rows]\(上位 100 行の選択\)** を選択します。
-1. これにより、次のコードを含む新しい SQL スクリプトが作成されます。
+サーバーレス SQL プールでは、容量を予約せずに SQL を使用できます。 サーバーレス SQL プールの課金は、クエリの実行に使用されたノードの数ではなく、クエリを実行するために処理されたデータの量に基づきます。
+
+各ワークスペースは、**組み込み** と呼ばれる、事前構成されたサーバーレス SQL プールを備えています。 
+
+## <a name="analyze-nyc-taxi-data-with-a-serverless-sql-pool"></a>サーバーレス SQL プールを使用してニューヨーク市のタクシー データを分析する
+
+1. Synapse Studio で、 **[開発]** ハブに移動します。
+1. 新しい SQL スクリプトを作成します。
+1. 以下のコードをスクリプトに貼り付けます。
 
     ```
-    -- This is auto-generated code
     SELECT
-        TOP 100 *
+        TOP 100 *
     FROM
         OPENROWSET(
-            BULK     'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/puYear=*/puMonth=*/*.parquet',
-            FORMAT = 'parquet'
-        ) AS [result];
+            BULK 'https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet',
+            FORMAT='PARQUET'
+        ) AS [result]
     ```
-1. **[実行]**
-
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-serverless-sql-pool"></a>サーバーレス SQL プールを使用して Spark データベース内の NYC タクシー データを分析する
-
-Spark データベース内のテーブルは自動的に表示され、サーバーレス SQL プールによるクエリを実行できます。
-
-1. Synapse Studio で **[開発]** ハブに移動し、新しい SQL スクリプトを作成します。
-1. **[接続先]** を **組み込み** のサーバーレス SQL プールに設定します。
-1. スクリプトに次のテキストを貼り付けて、スクリプトを実行します。
-
-    ```sql
-    SELECT *
-    FROM nyctaxi.dbo.passengercountstats
-    ```
-
-    > [!NOTE]
-    > サーバーレス SQL プールを使用するクエリを初めて実行するときは、クエリの実行に必要な SQL リソースをサーバーレス SQL プールで収集するのに約 10 秒かかります。 それ以降のクエリの実行時間は大幅に短縮されます。
-  
-
+1. **[実行]** をクリックします。 
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ストレージ内のデータを分析する](get-started-analyze-storage.md)
+> [サーバーレス Spark プールを使用してデータを分析する](get-started-analyze-spark.md)

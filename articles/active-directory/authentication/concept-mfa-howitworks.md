@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1cc5227cb4b5de02cba65a60dd469da93d3767e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96744059"
 ---
 # <a name="how-it-works-azure-ad-multi-factor-authentication"></a>動作のしくみ: Azure AD Multi-Factor Authentication
@@ -48,7 +48,7 @@ Azure AD Multi-Factor Authentication では、次のような追加の検証形�
 
 * Microsoft Authenticator アプリ
 * OATH ハードウェア トークン
-* sms
+* SMS
 * 音声通話
 
 ## <a name="how-to-enable-and-use-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication を有効にして使用する方法
@@ -61,7 +61,7 @@ Azure AD Multi-Factor Authentication では、次のような追加の検証形�
 
 ## <a name="next-steps"></a>次のステップ
 
-ライセンの詳細については、「[Azure AD Multi-Factor Authentication の機能とライセンス](concept-mfa-licensing.md)」を参照してください。
+ライセンスの詳細については、「[Azure AD Multi-Factor Authentication の機能とライセンス](concept-mfa-licensing.md)」を参照してください。
 
 MFA の動作を確認するには、次のチュートリアルで一連のテスト ユーザーに対して Azure AD Multi-Factor Authentication を有効にします。
 

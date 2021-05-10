@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップのトラブルシューテ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4c934d2295fa702425e8df0a03636b9f9208cfa4
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89376980"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515075"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
@@ -323,4 +323,4 @@ Error Code:UserErrorBackupAFSInDeleteState
 Azure ファイル共有のバックアップの詳細については、以下を参照してください。
 
 - [Azure ファイル共有のバックアップ](backup-afs.md)
-- [Azure ファイル共有のバックアップに関する FAQ](backup-azure-files-faq.md)
+- [Azure ファイル共有のバックアップに関する FAQ](backup-azure-files-faq.yml)

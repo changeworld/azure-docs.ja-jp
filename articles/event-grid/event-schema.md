@@ -3,12 +3,12 @@ title: Azure Event Grid イベント スキーマ
 description: すべてのイベントに存在するプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。
 ms.topic: reference
 ms.date: 07/07/2020
-ms.openlocfilehash: 7ddc7c78c5a9e5ba2a57b21c45fb9fab65056ee9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5ff7b41a45cf467074e18a50be398b2a3c9866a4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86105882"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732161"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -88,6 +88,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 
 データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 
+* [Azure Policy](./event-schema-policy.md)
 * [Azure サブスクリプション (管理操作)](event-schema-subscriptions.md)
 * [コンテナー レジストリ](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)

@@ -4,7 +4,7 @@ description: この記事では、Web アプリケーション プロジェク�
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,14 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102548446"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104782403"
 ---
 # <a name="develop-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で開発する
+
 この記事では、クラウド向けのアプリケーションを開発するときに考慮するセキュリティ アクティビティとコントロールについて説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) の実装と検証のフェーズ中に考慮するセキュリティの質問と概念について説明します。 目標は、より安全なアプリケーションの開発に使用できるアクティビティと Azure サービスの定義を手助けすることです。
 
 この記事では、次の SDL フェーズについて説明します。
@@ -29,6 +30,7 @@ ms.locfileid: "102548446"
 - 検証
 
 ## <a name="implementation"></a>実装
+
 実装フェーズの対象は、早期防止のためのベスト プラクティスを確立し、コードからセキュリティの問題を検出して削除することです。
 アプリケーションが意図していない方法で使用されることを想定します。 これは、アプリケーションの偶発的または意図的な誤用を防ぐのに役立ちます。
 
@@ -89,7 +91,7 @@ Server、X-Powered-By、X-AspNet-Version などのヘッダーによって、サ
 
 ブルート フォース攻撃や辞書ベース推測を防ぐには、ユーザーが必ず複雑なパスワード (例: 12 文字以上、英数字と特殊文字) を設定するように、強力なパスワード ポリシーを実装する必要があります。
 
-ID フレームワークを使用して、パスワード ポリシーを作成し、適用できます。 Azure AD B2C では、[組み込みポリシー](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow)、[セルフサービス パスワード リセット ](../../active-directory-b2c/user-flow-self-service-password-reset.md)、その他が提供されて、パスワード管理に役立ちます。
+Azure Active Directory B2C では、[セルフサービス パスワード リセット](../../active-directory-b2c/add-password-reset-policy.md)、[パスワードの強制リセット](../../active-directory-b2c/force-password-reset.md)、その他が提供されて、パスワード管理に役立ちます。
 
 既定のアカウントへの攻撃を防ぐには、すべてのキーやパスワードが置換可能で、リソースをインストールした後で生成または置換されたことを確認します。
 
@@ -108,6 +110,7 @@ ID フレームワークを使用して、パスワード ポリシーを作成�
 機密性の高いコンテンツをブラウザーにキャッシュしないでください。 ブラウザーでは、キャッシュと履歴のために情報を保存できます。 キャッシュされたファイルは、フォルダーに保存されます (Internet Explorer の場合は Temporary Internet Files フォルダー)。 これらのページが再び参照されると、ブラウザーではキャッシュからページが表示されます。 機密情報 (住所、クレジット カードの詳細、社会保障番号、ユーザー名など) がユーザーに表示された場合、この情報がブラウザーのキャッシュに保存されるので、ブラウザーのキャッシュを調べることで、または単にブラウザーの **[戻る]** ボタンをクリックすることで、情報を取得できる可能性があります。
 
 ## <a name="verification"></a>検証
+
 検証フェーズには、コードが、前のフェーズで確立されたセキュリティとプライバシーの原則を満たすことを確認する包括的な作業が含まれます。
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>アプリケーションの依存関係の脆弱性を発見して修正する
@@ -151,6 +154,7 @@ DAST は、静的アプリケーション セキュリティ テスト (SAST) �
 [Secure DevOps Kit for Azure](https://azsk.azurewebsites.net/index.html) (AzSK) には、Azure プラットフォームの複数のサービス用の SVT が含まれています。 定期的にこれらの SVT を実行し、Azure サブスクリプションと、アプリケーションを構成するさまざまなリソースが、セキュリティで保護された状態であることを確認します。 また、AzSK の継続的インテグレーション/継続的デプロイ (CI/CD) 拡張機能を使用して、これらのテストを自動化することもできます。SVT を Visual Studio の拡張機能として使用できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
+
 次の記事では、セキュリティで保護されたアプリケーションを設計してデプロイするのに役立つセキュリティ制御とアクティビティが推奨されています。
 
 - [セキュリティで保護されたアプリケーションを設計する](secure-design.md)

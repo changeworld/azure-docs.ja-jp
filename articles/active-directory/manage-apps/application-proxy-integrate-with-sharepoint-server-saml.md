@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 34aaafcd03e737b1e59529f8001e0c008bd39b70
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101644521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104888874"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>SharePoint との統合 (SAML)
 
@@ -68,8 +68,8 @@ ms.locfileid: "101644521"
 
  1. カスタム ドメインを使用して、新しい Azure AD アプリケーション プロキシ アプリケーションを作成します。 詳細な手順については、「[Azure AD アプリケーション プロキシのカスタム ドメイン](./application-proxy-configure-custom-domain.md)」を参照してください。
 
-    - 内部 URL: https://portal.contoso.com/
-    - 外部 URL: https://portal.contoso.com/
+    - 内部 URL: 'https://portal.contoso.com/ '
+    - 外部 URL: 'https://portal.contoso.com/ '
     - [事前認証]: [Azure Active Directory]
     - [Translate URLs in Headers]\(ヘッダーの URL を変換する\): [いいえ]
     - [Translate URLs in Application Body]\(アプリケーション本文の URL を変換する\): [いいえ]
@@ -84,4 +84,4 @@ ms.locfileid: "101644521"
  
 ## <a name="step-3-test-your-application"></a>手順 3: アプリケーションをテストする
 
-外部ネットワーク上のコンピューターからブラウザーを使用して、発行の手順で構成した URL (https://portal.contoso.com/) に移動します。 設定したテスト アカウントでサインインできることを確認します。
+外部ネットワーク上のコンピューターからブラウザーを使用して、発行の手順で構成したリンクに移動します。 設定したテスト アカウントでサインインできることを確認します。

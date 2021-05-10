@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878174"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604578"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -135,12 +135,7 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
 ## <a name="provision-for-the-first-time"></a>初回のプロビジョニング
 
 これが Azure Migrate プロジェクトでレプリケートしている最初の VM である場合は、Azure Migrate: Server Migration によって、プロジェクトと同じリソース グループにこれらのリソースが自動的にプロビジョニングされます。
-
-- **サービス バス**: Azure Migrate: Server Migration では、Service Bus を使用して、レプリケーション オーケストレーション メッセージをアプライアンスに送信します。
-- **ゲートウェイ ストレージ アカウント**: Azure Migrate: Server Migration では、ゲートウェイ ストレージ アカウントを使用して、レプリケートされる VM に関する状態情報を格納します。
-- **ログ ストレージ アカウント**: Azure Migrate アプライアンスでは、VM のレプリケーション ログをログ ストレージ アカウントにアップロードします。 Azure Migrate により、レプリケーション情報がレプリカ マネージド ディスクに適用されます。
-- **キー コンテナー**: Azure Migrate アプライアンスでは、キー コンテナーを使用して、サービス バスの接続文字列と、レプリケーションで使用されるストレージ アカウントのアクセス キーを管理します。 Hyper-V VM の評価と移行を行うための [Azure の準備](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)を行ったときに、キー コンテナーがストレージ アカウントにアクセスするために必要なアクセス許可を設定したはずです。 
-
+- **キャッシュ ストレージ アカウント**: Hyper-V ホストにインストールされた Azure Site Recovery プロバイダー ソフトウェアが、レプリケーション用に構成された VM のレプリケーション データを、サブスクリプションのストレージ アカウント (キャッシュ ストレージ アカウントやログ ストレージ アカウントと呼ばれます) にアップロードします。 アップロードされたレプリケーション データは、その後 Azure Migrate サービスによって、ストレージ アカウントから、VM に対応するレプリカマネージド ディスクへとコピーされます。 VM のレプリケーションを構成する際は、キャッシュ ストレージ アカウントを指定する必要があります。Azure Migrate プロジェクトでレプリケーションを初めて構成する際、そのプロジェクト用のキャッシュ ストレージ アカウントが Azure Migrate ポータルによって自動的に作成されます。
 
 ## <a name="track-and-monitor"></a>追跡して監視する
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3421b767f465a4a705bdeb4882fd261c5cf914f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178883"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776233"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
@@ -71,9 +71,9 @@ test.txt
 
 既定のストレージ クラスは最も一般的なシナリオに適合しますが、すべてに適合するわけではありません。 場合によっては、独自のストレージ クラスを独自のパラメーターを使用してカスタマイズすることもできます。 たとえば、`volumeBindingMode` クラスの変更が必要になるシナリオがあります。
 
-既定のストレージ クラスでは、PVC が作成された直後に発生することを保証する `volumeBindingMode: Immediate` クラスが使用されます。 ノード プールがトポロジに制約されている場合 (たとえば、可用性ゾーンを使用している場合)、PV は、ポッドのスケジューリング要件 (この場合は特定のゾーン) を認識しないでバインドまたはプロビジョニングされます。
+PVC が作成された直後に発生することを保証する `volumeBindingMode: Immediate` クラスを使用できます。 ノード プールがトポロジに制約されている場合 (たとえば、可用性ゾーンを使用している場合)、PV は、ポッドのスケジューリング要件 (この場合は特定のゾーン) を認識しないでバインドまたはプロビジョニングされます。
 
-このシナリオに対処するには、`volumeBindingMode: WaitForFirstConsumer` を使用できます。これにより、PV のバインドとプロビジョニングは、PVC を使用するポッドが作成されるまで遅延されます。 このようにして、PV は、ポッドのスケジューリング制約によって指定された可用性ゾーン (または他のトポロジ) に準拠し、その中にプロビジョニングされます。
+このシナリオに対処するには、`volumeBindingMode: WaitForFirstConsumer` を使用できます。これにより、PV のバインドとプロビジョニングは、PVC を使用するポッドが作成されるまで遅延されます。 このようにして、PV は、ポッドのスケジューリング制約によって指定された可用性ゾーン (または他のトポロジ) に準拠し、その中にプロビジョニングされます。 既定のストレージ クラスでは、`volumeBindingMode: WaitForFirstConsumer` クラスが使用されます。
 
 `sc-azuredisk-csi-waitforfirstconsumer.yaml` というファイルを作成し、次のマニフェストを貼り付けます。
 ストレージ クラスは `managed-csi` ストレージ クラスと同じですが、`volumeBindingMode` クラスは異なります。
@@ -408,18 +408,18 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

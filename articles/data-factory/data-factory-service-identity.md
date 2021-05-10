@@ -4,20 +4,20 @@ description: Azure Data Factory のマネージド ID について説明しま�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 03/25/2021
 ms.author: jingwang
-ms.openlocfilehash: e0d3b551265a480a700f374ddfcf89dd4d93333f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 65512f8e46b5545929a798392ac5f19ddeab39ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562462"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-この記事は、Data Factory のマネージド ID (以前は、マネージド サービス ID/MSI と呼ばれていました) の概要と機能について理解するのに役立ちます。
+この記事は、Data Factory のマネージド ID (以前は、マネージド サービス ID/MSI と呼ばれていた) の概要と機能について理解するのに役立ちます。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -28,8 +28,7 @@ ms.locfileid: "100389163"
 Data Factory のマネージド ID は次の機能に役立ちます。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)。この場合、データ ファクトリのマネージド ID は Azure Key Vault の認証に使用されます。
-- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL Database](connector-azure-sql-database.md)、および [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) を含むコネクタ。
-- [Web アクティビティ](control-flow-web-activity.md)。
+- Azure Blob storage、Azure Data Explorer、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics、REST、Databricks アクティビティ、Web アクティビティなどのマネージ ID 認証を使用して、データ ストアまたはコンピューティングにアクセスします。 詳細については、コネクタとアクティビティに関する記事をご覧ください。
 
 ## <a name="generate-managed-identity"></a>マネージド ID の生成
 
@@ -157,11 +156,10 @@ Azure portal -> ご自分のデータ ファクトリ -> [プロパティ] で�
 
 - マネージド ID オブジェクト ID
 - マネージド ID のテナント
-- マネージド ID アプリケーション ID
 
 マネージ ID 情報は、Azure Blob、Azure Data Lake Storage、Azure Key Vault などのマネージド ID 認証をサポートする、リンクされたサービスを作成するときにも表示されます。
 
-アクセス許可を付与する場合は、オブジェクト ID またはデータ ファクトリ名 (マネージド ID 名) を使用して、この ID を検索します。
+アクセス許可を付与する場合は、Azure リソースの [アクセス制御 (IAM)] タブ -> [ロールの割り当ての追加] -> [アクセスの割り当て先] -> [システム割り当てマネージド ID] の [データ ファクトリ] を選択 -> ファクトリ名で選択するか、または、一般に、オブジェクト ID またはデータ ファクトリ名 (マネージド ID 名) を使用して、この ID を検索することができます。 マネージ ID のアプリケーション ID を取得する必要がある場合は、PowerShell を使用できます。
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>PowerShell を使用したマネージド ID の取得
 

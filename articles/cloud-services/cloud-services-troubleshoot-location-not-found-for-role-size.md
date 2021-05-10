@@ -7,12 +7,12 @@ ms.author: v-mibufo
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2ed889bea715ff5a26bf8e918789429e57fa31b2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101743861"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109664"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの LocationNotFoundForRoleSize のトラブルシューティング
 
@@ -47,7 +47,8 @@ Azure portal で、ご利用のクラウド サービス (クラシック) に�
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>Azure CLI を使用してリージョン内の SKU を一覧表示する
 
-[az vm list-skus](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) コマンドを使用できます。
+You can use the [az vm list-skus](/cli/azure/vm?view=azure-cli-latest
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) コマンドを使用できます。
 
 - 出力をフィルター処理で使用中の場所に絞り込むには、`--location` パラメーターを使用します。
 - 名前の一部で検索するには、`--size` パラメーターを使用します。
@@ -63,7 +64,7 @@ Azure portal で、ご利用のクラウド サービス (クラシック) に�
 
 #### <a name="list-skus-in-region-using-powershell"></a>PowerShell を使用してリージョン内の SKU を一覧表示する
 
-[Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) コマンドを使用できます。
+[Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) コマンドを使用できます。
 
 - 結果を場所でフィルター処理します。
 - このコマンドには、PowerShell の最新バージョンが必要です。
@@ -91,7 +92,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 #### <a name="list-skus-in-region-using-rest-api"></a>REST API を使用してリージョン内の SKU を一覧表示する
 
-「[リソース SKU - 一覧](https://docs.microsoft.com/rest/api/compute/resourceskus/list)」の操作を使用できます。 次の形式で利用可能な SKU とリージョンを返します。
+「[リソース SKU - 一覧](/rest/api/compute/resourceskus/list)」の操作を使用できます。 次の形式で利用可能な SKU とリージョンを返します。
 
 ```json
 {

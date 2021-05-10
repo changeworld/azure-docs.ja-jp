@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 2dc6d99b8b1c913479fc584b52f6ff919dfac675
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556963"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792293"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Azure CLI を使用して、Shared Image Gallery 内のマネージド ディスクまたはスナップショットからイメージを作成する
 
@@ -35,13 +35,13 @@ Shared Image Gallery に移行したい既存のスナップショットまた�
 
 ## <a name="find-the-snapshot-or-managed-disk"></a>スナップショットまたはマネージド ディスクを見つける 
 
-リソース グループで利用できるスナップショットは、[az snapshot list](/cli/azure/snapshot#az-snapshot-list) を使用して一覧表示できます。 
+リソース グループで利用できるスナップショットは、[az snapshot list](/cli/azure/snapshot#az_snapshot_list) を使用して一覧表示できます。 
 
 ```azurecli-interactive
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-スナップショットの代わりにマネージド ディスクを使用することもできます。 マネージド ディスクを取得するには、[az disk list](/cli/azure/disk#az-disk-list) を使用します。 
+スナップショットの代わりにマネージド ディスクを使用することもできます。 マネージド ディスクを取得するには、[az disk list](/cli/azure/disk#az_disk_list) を使用します。 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
@@ -56,7 +56,7 @@ az disk list --query "[].[name, id]" -o tsv
 
 イメージ定義を作成する目的で、イメージ ギャラリーに関する情報が必要です。
 
-[az sig list](/cli/azure/sig#az-sig-list) を使用して、利用可能なイメージ ギャラリーに関する情報を一覧表示します。 ギャラリーが属するリソース グループで後に使用されるギャラリー名をメモします。
+[az sig list](/cli/azure/sig#az_sig_list) を使用して、利用可能なイメージ ギャラリーに関する情報を一覧表示します。 ギャラリーが属するリソース グループで後に使用されるギャラリー名をメモします。
 
 ```azurecli-interactive 
 az sig list -o table
@@ -71,7 +71,7 @@ az sig list -o table
 
 イメージ定義に指定できる値の詳細については、[イメージ定義](./shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
-[az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
+[az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create) を使用して、ギャラリー内にイメージ定義を作成します。
 
 この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
@@ -95,7 +95,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用してイメージ バージョンを作成します。 
+[az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用してイメージ バージョンを作成します。 
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 

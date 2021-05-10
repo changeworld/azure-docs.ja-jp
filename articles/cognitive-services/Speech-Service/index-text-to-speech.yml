@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 74cc0686c2eec631b0be84285ab88365bf8b3a2d
-  ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+  ms.openlocfilehash: 96ae0980a3962c07372a97c38af8f6f2256c4184
+  ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "99507599"
+  ms.lasthandoff: 04/09/2021
+  ms.locfileid: "107226656"
 landingContent:
 - title: テキスト読み上げについて
   linkLists:
@@ -50,8 +50,6 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: 標準の音声サポート
-      url: language-support.md#standard-voices
     - text: ニューラルの音声サポート
       url: language-support.md#neural-voices
     - text: SSML 音素セット

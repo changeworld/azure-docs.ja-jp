@@ -3,19 +3,19 @@ title: Azure Service Fabric クラスターのデプロイを計画する
 description: Azure への運用環境 Service Fabric クラスターのデプロイの計画と準備について説明します。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97109625"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046319"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>クラスターのデプロイを計画および準備する
 
 運用環境クラスターのデプロイの計画と準備は非常に重要です。  考慮すべき要因が数多くあります。  この記事では、クラスターのデプロイを準備する手順について説明します。
 
 ## <a name="read-the-best-practices-information"></a>ベスト プラクティス情報を読む
-Azure Service Fabric アプリケーションとクラスターを正常に管理するために、実行することを強くお勧めする操作があります。この操作によって運用環境の信頼性を最適化します。  詳細については、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](service-fabric-best-practices-overview.md)」を参照してください。
+Azure Service Fabric アプリケーションとクラスターを正常に管理するために、実行することを強くお勧めする操作があります。この操作によって運用環境の信頼性を最適化します。  詳細については、「[Azure Service Fabric のアプリケーションとクラスターに関するベスト プラクティス](./service-fabric-best-practices-security.md)」を参照してください。
 
 ## <a name="select-the-os-for-the-cluster"></a>クラスターの OS を選択する
 Service Fabric を使用すると、Windows Server または Linux を実行するすべての VM またはコンピューター上に Service Fabric クラスターを作成できます。  クラスターをデプロイする前に、OS を選択する必要があります。Windows または Linux。  クラスター内のすべてのノード (仮想マシン) が同じ OS を実行するため、同じクラスター内で Windows VM と Linux VM を混在させることはできません。
@@ -117,7 +117,7 @@ Service Fabric を使用すると、Windows Server または Linux を実行す�
 お使いのアプリケーションとクラスターは、運用環境のトラフィックに対応する準備ができていますか。 クラスターを運用環境にデプロイする前に、「[運用環境の準備状況チェックリスト](service-fabric-production-readiness-checklist.md)」の項目を実行してください。 このチェックリストの項目を実行して、アプリケーションとクラスターの円滑な稼働を維持してください。 運用環境に移行する前に、これらの項目すべてをチェック済みにすることを強くお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
-* [Windows を実行する Service Fabric クラスターを作成する](service-fabric-best-practices-overview.md)
+* [Windows を実行する Service Fabric クラスターを作成する](./service-fabric-best-practices-security.md)
 * [Linux を実行する Service Fabric クラスターを作成する](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints

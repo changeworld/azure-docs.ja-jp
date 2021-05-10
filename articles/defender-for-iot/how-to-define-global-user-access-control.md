@@ -4,10 +4,10 @@ description: 大規模な組織では、ユーザー アクセス許可が複雑
 ms.date: 12/08/2020
 ms.topic: article
 ms.openlocfilehash: 8f5f8df56a5dcb4152fc0ae9fcae3d504d6cf3e2
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104784290"
 ---
 # <a name="define-global-access-control"></a>グローバル アクセス制御の定義

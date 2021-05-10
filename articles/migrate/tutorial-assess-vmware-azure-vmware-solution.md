@@ -1,28 +1,28 @@
 ---
-title: Azure VMware Solution (AVS) に移行する VMware VM を Azure Migrate で評価する
-description: AVS に移行する VMware VM を Azure Migrate Server Assessment で評価する方法について説明します。
+title: Azure VMware Solution (AVS) に移行する VMware サーバーを Azure Migrate で評価する
+description: AVS に移行する VMware 環境のサーバーを Azure Migrate で評価する方法について説明します。
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: c1c56edacbc777b5e8b53da588bc763201379964
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 31bf3909012231996bd340cfa4d388f0fe20a4f5
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718830"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782141"
 ---
-# <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>チュートリアル:AVS への移行のために VMware VM を評価する
+# <a name="tutorial-assess-vmware-servers-for-migration-to-avs"></a>チュートリアル: AVS への移行のために VMware サーバーを評価する
 
 Azure への移行に取り組む過程では、オンプレミスのワークロードを評価し、クラウドへの対応性を測り、リスクを明らかにして、コストと複雑さを見積もります。
 
-この記事では、Azure Migrate を使用し、検出された VMware 仮想マシン (VM) を Azure VMware Solution (AVS) への移行に備えて評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。 AVS は、VMware プラットフォームを Azure で実行することができるマネージド サービスです。
+この記事では、Azure VMware Solution (AVS) への移行に備えて、検出した VMware 仮想マシンとサーバーを Azure Migrate を使用して評価する方法について説明します。 AVS は、VMware プラットフォームを Azure で実行することができるマネージド サービスです。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
-- マシンのメタデータと構成情報に基づいて評価を実行する。
+- サーバーのメタデータと構成情報に基づいて評価を実行する。
 - パフォーマンス データに基づいて評価を実行する。
 
 > [!NOTE]
@@ -34,41 +34,42 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-AVS に移行するマシンをこのチュートリアルに従って評価する前に、評価対象のマシンを検出しておく必要があります。
+このチュートリアルに従って AVS への移行についてサーバーを評価する前に、必ず評価対象のサーバーを検出しておきます。
 
-- Azure Migrate アプライアンスを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-vmware.md)。 
-- インポートした CSV ファイルを使用してマシンを検出するには、[こちらのチュートリアルに従ってください](tutorial-discover-import.md)。
+- Azure Migrate アプライアンスを使用してサーバーを検出する場合は、[こちらのチュートリアルに従います](tutorial-discover-vmware.md)。 
+- インポートした CSV ファイルを使用してサーバーを検出する場合は、[こちらのチュートリアルに従います](tutorial-discover-import.md)。
 
 
 ## <a name="decide-which-assessment-to-run"></a>実行する評価を決定する
 
 
-評価を実行する際に使用するサイズ設定基準のベースを、現状のオンプレミスで収集されたマシン構成データ (またはメタデータ) にするのか、それとも動的なパフォーマンス データにするのかを決定します。
+評価を実行する際に使用するサイズ設定基準のベースを、現状のオンプレミスで収集されたサーバー構成データおよびメタデータにするか、動的パフォーマンス データにするかを決定します。
 
 **評価** | **詳細** | **推奨**
 --- | --- | ---
-**現状のオンプレミス** | マシン構成データ (またはメタデータ) に基づいて評価します。  | AVS の推奨ノード サイズは、オンプレミスの VM サイズに加え、ノード タイプ、ストレージの種類、許容するエラーの設定に関して評価に指定した設定に基づきます。
+**現状のオンプレミス** | サーバー構成データおよびメタデータに基づいて評価します。  | AVS の推奨ノード サイズは、オンプレミスの VM およびサーバーのサイズに加え、ノード タイプ、ストレージの種類、許容するエラーの設定に関して評価に指定した設定に基づきます。
 **パフォーマンスベース** | 収集された動的パフォーマンス データに基づいて評価します。 | AVS の推奨ノード サイズは、CPU とメモリの使用率データに加え、ノード タイプ、ストレージの種類、許容するエラーの設定に関して評価に指定した設定に基づきます。
 
 > [!NOTE]
-> Azure VMware Solution (AVS) 評価は、VMware VM に対してのみ作成できます。
+> Azure VMware Solution (AVS) 評価は、VMware VM とサーバーに対してのみ作成できます。
 
 ## <a name="run-an-assessment"></a>評価を実行する
 
 評価を実行するには次のようにします。
 
-1. **[サーバー]** ページの **[Windows と Linux のサーバー]** で、 **[サーバーの評価と移行]** をクリックします。
+1.  **[概要]** ページの **[Windows, Linux and SQL Server]\(Windows、Linux、SQL Server\)** で、 **[サーバーの評価と移行]** をクリックします。
+    :::image type="content" source="./media/tutorial-assess-sql/assess-migrate.png" alt-text="Azure Migrate の [概要] ページ":::
 
-   ![[サーバーの評価と移行] ボタンの場所](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
+1. **[Azure Migrate: Discovery and assessment]\(Azure Migrate: 検出および評価\)** で、 **[評価]** をクリックします。
 
-1. **Azure Migrate:Server Assessment** で、**評価** をクリックします。
+   ![[評価] ボタンの場所](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
 1. **[サーバーの評価]**  >  **[評価の種類]** で、 **[Azure VMware Solution (AVS)]** を選択します。
 
 1. **[検出ソース]** で次の操作を行います。
 
-    - アプライアンスを使用してマシンを検出した場合、 **[Azure Migrate アプライアンスから検出されたマシン]** を選択します。
-    - インポートした CSV ファイルを使用してマシンを検出した場合、 **[インポートされたマシン]** を選択します。 
+    - アプライアンスを使用してサーバーを検出した場合、 **[Azure Migrate アプライアンスから検出されたサーバー]** を選択します。
+    - インポートした CSV ファイルを使用してサーバーを検出した場合、 **[Imported servers]\(インポートされたサーバー\)** を選択します。 
     
 1. **[編集]** をクリックして、評価のプロパティを確認します。
 
@@ -82,8 +83,8 @@ AVS に移行するマシンをこのチュートリアルに従って評価す�
    - **[ストレージの種類]** は、既定で **[vSAN]** に設定されています。 AVS プライベート クラウドでは、これが既定のストレージの種類となります。
    - AVS ノードでは現在、**予約インスタンス** はサポートされません。
 1. **[VM サイズ]** では:
-    - **[ノードの種類]** は、既定で **[AV36]** に設定されています。 VM を AVS に移行する必要のあるノードが Azure Migrate によって推奨されます。
-    - **[FTT 設定、RAID レベル]** で、許容するエラーと RAID の組み合わせを選択します。  選択した FTT オプションとオンプレミスの VM ディスク要件を組み合わせて、AVS で必要とされる vSAN ストレージの合計が決定されます。
+    - **[ノードの種類]** は、既定で **[AV36]** に設定されています。 サーバーを AVS に移行する必要のあるノードが Azure Migrate によって推奨されます。
+    - **[FTT 設定、RAID レベル]** で、許容するエラーと RAID の組み合わせを選択します。  選択した FTT オプションとオンプレミスのサーバー ディスク要件を組み合わせて、AVS で必要とされる vSAN ストレージの合計が決定されます。
     - **[CPU Oversubscription]\(CPU オーバーサブスクリプション\)** で、AVS ノードの 1 つの物理コアに関連付けられる仮想コアの比率を指定します。 オーバーサブスクリプションが 4 対 1 を上回る場合、パフォーマンスが低下する可能性がありますが、Web サーバー タイプのワークロードには使用できます。
     - **[Memory overcommit factor]\(メモリのオーバーコミット率\)** に、クラスター上のメモリのオーバーコミットの比率を指定します。 値 1 は 100% のメモリ使用量、0.5 は 50%、2 は使用可能なメモリの 200% を使用していることを表します。 0\.5 から 10 までの、最大で小数点以下 1 桁の値のみ追加できます。
     - **[Dedupe and compression factor]\(重複排除と圧縮率\)** で、ワークロードで予想される重複排除と圧縮率を指定します。 実際の値は、オンプレミスの vSAN またはストレージ構成から取得できます。これは、ワークロードによって異なる場合があります。 値 3 は 3 倍を意味し、300 GB のディスクでは 100 GB のストレージのみが使用されます。 値 1 は、重複排除も圧縮もないことを意味します。 1 から 10 までの、最大で小数点以下 1 桁の値のみを追加できます。
@@ -99,7 +100,7 @@ AVS に移行するマシンをこのチュートリアルに従って評価す�
         メモリ | 8 GB | 16 GB  
 
 1. **[価格]** では:
-    - **[プラン]** には、登録した [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)が表示されます。そのプランのコストが Server Assessment によって見積もられます。
+    - **[プラン]** には、登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)が表示されます。 評価によって、そのプランのコストが見積もられます。
     - 自分のアカウントの請求通貨を **[通貨]** で選択します。
     - Azure プランとは別に適用されるサブスクリプション固有の割引を **[割引 (%)]** に追加します。 既定の設定は 0% です。
 
@@ -109,13 +110,13 @@ AVS に移行するマシンをこのチュートリアルに従って評価す�
 
 1. **[サーバーの評価]** で **[次へ]** をクリックします。
 
-1. **[評価するマシンの選択]**  >  **[評価名]** で、評価の名前を指定します。 
+1. **[評価するサーバーの選択]**  >  **[評価名]** で、評価の名前を指定します。 
  
 1. **[グループの選択または作成]** で **[新規作成]** を選択し、グループ名を指定します。 
     
-    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="VM をグループに追加する":::
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="グループにサーバーを追加する":::
  
-1. アプライアンスを選択し、グループに追加したい VM を選択します。 続けて、 **[次へ]** をクリックします。
+1. アプライアンスを選択し、グループに追加するサーバーを選択します。 続けて、 **[次へ]** をクリックします。
 
 1. **[評価の確認と作成]** で評価の詳細を確認したら、 **[評価の作成]** をクリックしてグループを作成し、評価を実行します。
 
@@ -126,17 +127,17 @@ AVS に移行するマシンをこのチュートリアルに従って評価す�
 
 AVS の評価には以下が記述されています。
 
-- AVS 対応性: オンプレミスの VM が Azure VMware Solution (AVS) への移行に適しているかどうか。
-- AVS ノード数: VM の実行に必要な AVS ノードの予測数。
+- AVS 対応性: オンプレミスのサーバーが Azure VMware Solution (AVS) への移行に適しているかどうか。
+- AVS ノード数: サーバーの実行に必要な AVS ノードの予測数。
 - すべての AVS ノードの使用率: すべてのノードにおける CPU、メモリ、および記憶域の使用率の予測。
     - 使用率では、vCenter Server、NSX Manager (大規模)、NSX Edge など、クラスター管理オーバーヘッドが事前に考慮されます。HCX がデプロイされている場合は、HCX Manager と IX アプライアンスによる消費 (圧縮と重複除去の前の 44vCPU (11 CPU)、75 GB の RAM、722 GB のストレージ) も考慮されます。 
-- 月間コスト見積もり: オンプレミスの VM を実行しているすべての Azure VMware Solution (AVS) ノードの月間推定コスト。
+- 月間コスト見積もり: すべての Azure VMware Solution (AVS) ノードでオンプレミスのサーバーを実行するための月間推定コスト。
 
 ## <a name="view-an-assessment"></a>評価を表示する
 
 評価を表示するには:
 
-1. **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[評価]** の横にある数字をクリックします。
+1. **[Windows, Linux and SQL Server]\(Windows、Linux、SQL Server\)**  >  **[Azure Migrate: Discovery and assessment]\(Azure Migrate: 検出および評価\)** で、**[Azure VMware Solution]** の横にある数字をクリックします。
 
 1. **[評価]** で、評価を選択して開きます。 以下はその例です (見積もりとコストはあくまで例です)。 
 
@@ -148,31 +149,31 @@ AVS の評価には以下が記述されています。
 ### <a name="review-readiness"></a>対応性を確認する
 
 1. **[Azure 対応性]** をクリックします。
-2. **[Azure 対応性]** で、VM の状態を確認します。
+2. **[Azure 対応性]** で、対応性の状態を確認します。
 
-    - **AVS 対応**:マシンをそのまま変更せずに Azure AVS に移行できます。 マシンは AVS で起動し、AVS のフル サポートを受けます。
-    - **[条件付きで対応]** : マシンには、最新の vSphere バージョンとの互換性の問題がある可能性があります。 AVS で完全に動作するためには、VMware ツールのインストールなどの設定が必要となる可能性があります。
-    - **[AVS に未対応]** :VM は、AVS では起動しません。 たとえば、オンプレミスの VMware VM に外部デバイス (CD-ROM など) が装着されている場合や、VMware VMotion を使用している場合、VMotion の操作に失敗します。
- - **[Readiness 不明]** : オンプレミス環境から収集したメタデータが不十分なために、Azure Migrate がマシンの対応性を判断できませんでした。
+    - **[AVS 対応]** : サーバーを変更せずにそのまま Azure AVS に移行できます。 サーバーを AVS で起動し、AVS のフル サポートを受けます。
+    - **[条件付きで対応]** : サーバーは、最新の vSphere バージョンとの互換性に問題がある可能性があります。 AVS で完全に動作するためには、VMware ツールのインストールなどの設定が必要となる可能性があります。
+    - **[AVS に未対応]** :VM は、AVS では起動しません。 たとえば、オンプレミスの VMware サーバーに外部デバイス (CD-ROM など) を装着している場合に、VMware VMotion を使用すると VMotion の操作に失敗します。
+ - **[対応性が不明]** : オンプレミス環境から収集したメタデータが不十分なために、Azure Migrate がサーバーの対応性を判断できませんでした。
 
 3. 推奨されるツールを確認します。
 
-    - VMware HCX または Enterprise: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 詳細については、ここをクリックしてください。
-    - 不明:CSV ファイルを介してインポートされたマシンの場合、既定の移行ツールは不明です。 VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
-4. [AVS 対応性] の状態をクリックします。 VM 対応性の詳細を表示し、ドリルダウンして、コンピューティング、ストレージ、ネットワークの設定など、VM の詳細を表示できます。
+    - VMware HCX または Enterprise: VMware サーバーの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 詳細については、ここをクリックしてください。
+    - 不明: CSV ファイルを介してインポートされたサーバーの場合、既定の移行ツールは不明です。 VMware サーバーの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
+4. [AVS 対応性] の状態をクリックします。 サーバー対応性の詳細を表示し、ドリルダウンしてサーバーの詳細 (コンピューティング、ストレージ、ネットワークの設定など) を表示できます。
 
 ### <a name="review-cost-estimates"></a>コスト見積もりを確認する
 
-評価の概要には、Azure で実行されている VM のコンピューティングとストレージのコストの見積りが表示されます。 
+評価の概要には、Azure でサーバーを実行する場合のコンピューティングとストレージのコストの見積もりが表示されます。 
 
-1. 月間合計コストを確認します。 コストは、評価されるグループ内のすべての VM について集計されます。
+1. 月間合計コストを確認します。 評価対象のグループ内のすべてのサーバーのコストが集計されます。
 
-    - コスト見積もりは、すべての VM のリソース要件を考慮した場合に必要な AVS ノードの数に基づいて算出されます。
+    - コストの見積もりは、すべてのサーバーのリソース要件全体を考慮した場合に必要な AVS ノードの数に基づいて算出されます。
     - AVS の価格はノードごとであるため、総コストではコンピューティング コストとストレージ コストは配分されません。
-    - コスト見積もりは、AVS におけるオンプレミス VM の実行に対するものです。 AVS 評価では、PaaS や SaaS のコストは考慮されません。
+    - コストの見積もりは、オンプレミスのサーバーを AVS で実行した場合の見積もりです。 AVS 評価では、PaaS や SaaS のコストは考慮されません。
 
 2. 月間ストレージの見積もりを確認します。 このビューには、評価されたグループの集計されたストレージ コストが、ストレージ ディスクの種類ごとに分けて表示されます。 
-3. ドリルダウンして、特定の VM のコストの詳細を見ることができます。
+3. ドリルダウンすることで、特定のサーバーについてコストの詳細を確認できます。
 
 ### <a name="review-confidence-rating"></a>信頼度レーティングを確認する
 
@@ -199,5 +200,5 @@ AVS の評価には以下が記述されています。
 
 ## <a name="next-steps"></a>次の手順
 
-- [依存関係マッピング](concepts-dependency-visualization.md)を使用してマシンの依存関係を明らかにします。
+- [依存関係マッピング](concepts-dependency-visualization.md)を使用してサーバーの依存関係を明らかにします。
 - [エージェントレス](how-to-create-group-machine-dependencies-agentless.md)または[エージェントベース](how-to-create-group-machine-dependencies.md)の依存関係マップを設定します。

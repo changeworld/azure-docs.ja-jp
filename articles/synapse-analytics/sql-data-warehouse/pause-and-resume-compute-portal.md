@@ -2,21 +2,24 @@
 title: 'クイックスタート: Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する'
 description: Azure portal を使用して、専用 SQL プールのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、コンピューティングを再開します。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
+ms.author: jrasnick
 manager: craigg
-ms.service: synapse-analytics
-ms.topic: quickstart
-ms.subservice: sql-dw
-ms.date: 11/23/2020
-ms.author: gaursa
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f9cc5083c4b515454b9d5cbc40ed3b48cba80211
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 11/23/2020
+ms.topic: quickstart
+ms.service: synapse-analytics
+ms.subservice: sql-dw
+ms.custom:
+- seo-lt-2019
+- azure-synapse
+- mode-portal
+ms.openlocfilehash: 27587f436013bcaccbacd668ce62f1d939f89e48
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602164"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566819"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>クイックスタート: Azure portal を使用して専用 SQL プールのコンピューティングを一時停止および再開する
 

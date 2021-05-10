@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e4f91afa86a0d99b4ce42e96295bf2ae1f9fcd9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505649"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771445"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI を使用して近接通信配置グループに VM をデプロイする
 
@@ -23,7 +23,7 @@ ms.locfileid: "102505649"
 
 
 ## <a name="create-the-proximity-placement-group"></a>近接通信配置グループを作成する
-[`az ppg create`](/cli/azure/ppg#az-ppg-create) を使用して、近接通信配置グループを作成します。 
+[`az ppg create`](/cli/azure/ppg#az_ppg_create) を使用して、近接通信配置グループを作成します。 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -36,7 +36,7 @@ az ppg create \
 
 ## <a name="list-proximity-placement-groups"></a>近接通信配置グループを一覧表示する
 
-[az ppg list](/cli/azure/ppg#az-ppg-list) を使用して、すべての近接通信配置グループを一覧表示できます。
+[az ppg list](/cli/azure/ppg#az_ppg_list) を使用して、すべての近接通信配置グループを一覧表示できます。
 
 ```azurecli-interactive
 az ppg list -o table
@@ -44,7 +44,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>VM の作成
 
-[new az vm](/cli/azure/vm#az-vm-create) を使用して、近接通信配置グループ内に VM を作成します。
+[new az vm](/cli/azure/vm#az_vm_create) を使用して、近接通信配置グループ内に VM を作成します。
 
 ```azurecli-interactive
 az vm create \
@@ -57,14 +57,14 @@ az vm create \
    -l westus
 ```
 
-[az ppg show](/cli/azure/ppg#az-ppg-show) を使用して、近接通信配置グループ内の VM を表示できます。
+[az ppg show](/cli/azure/ppg#az_ppg_show) を使用して、近接通信配置グループ内の VM を表示できます。
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>可用性セット
-近接通信配置グループ内に可用性セットを作成することもできます。 [az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) で同じ `--ppg` パラメーターを使用して可用性セットを作成すると、可用性セット内のすべての VM も同じ近接通信配置グループ内に作成されます。
+近接通信配置グループ内に可用性セットを作成することもできます。 [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) で同じ `--ppg` パラメーターを使用して可用性セットを作成すると、可用性セット内のすべての VM も同じ近接通信配置グループ内に作成されます。
 
 ## <a name="scale-sets"></a>スケール セット
 

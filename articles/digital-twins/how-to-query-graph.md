@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6d15e2b8bfcddfd1f554ab2a27083fe5256e9e2b
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462679"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226330"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -94,19 +94,14 @@ ms.locfileid: "103462679"
 
 デジタル ツインの **リレーションシップ** に基づいてクエリを実行する場合、Azure Digital Twins クエリ言語には特殊な構文があります。
 
-リレーションシップは `FROM` 句のクエリ スコープにプルされます。 "従来の" SQL 型言語との重要な違いは、この `FROM` 句の各式がテーブルではないことです。そうではなく、`FROM` 句はエンティティ間のリレーションシップのトラバーサルを表し、`JOIN` の Azure Digital Twins バージョンを使用して記述されます。
+リレーションシップは `FROM` 句のクエリ スコープにプルされます。 "従来の" SQL 型言語とは異なり、この `FROM` 句の各式はテーブルではありません。そうではなく、`FROM` 句は、エンティティ間のリレーションシップのトラバーサルを表します。 リレーションシップをトラバーサルするために、Azure Digital Twins ではカスタム バージョンの `JOIN` を使用します。
 
-Azure Digital Twins の[モデル](concepts-models.md)機能では、ツインと無関係のリレーションシップは存在しないことを思い出してください。 つまり、Azure Digital Twins ストア言語の `JOIN` は、一般的な SQL の `JOIN` とは少し異なります。リレーションシップのクエリを無関係に実行することはできず、ツインに関連付ける必要があります。
-この違いを組み込むために、キーワード `RELATED` を `JOIN` 句に使用して、ツインのリレーションシップのセットを参照します。
+Azure Digital Twins の[モデル](concepts-models.md)機能では、ツインと無関係のリレーションシップは存在しないことを思い出してください。 つまり、リレーションシップは、個別に照会することはできず、ツインに関連付けられる必要があります。
+これを処理するために、キーワード `RELATED` を `JOIN` 句に使用して、ツイン コレクションからの特定のタイプのリレーションシップのセットを取得します。 次に、クエリでは、`WHERE` 句で、リレーションシップ クエリで使用する特定のツインをフィルター処理する必要があります (ツインの `$dtId` 値を使用)。
 
 次のセクションでは、このような例をいくつか示します。
 
-> [!TIP]
-> 概念的に、この機能は、ドキュメント内の子オブジェクトに対して `JOIN` を実行できるという CosmosDB のドキュメント中心の機能を模倣しています。 CosmosDB では、`IN` キーワードを使用して、`JOIN` が現在のコンテキスト ドキュメント内の配列要素を反復処理する意図を示します。
-
-### <a name="relationship-based-query-examples"></a>リレーションシップベースのクエリの例
-
-リレーションシップを含むデータセットを取得するには、1 つの `FROM` ステートメントに続けて N 個の `JOIN` ステートメントを使用します。ここで、`JOIN` ステートメントは前の `FROM` または `JOIN` ステートメントの結果に関するリレーションシップを表します。
+### <a name="basic-relationship-query"></a>基本的なリレーションシップ クエリ
 
 リレーションシップベースのクエリの例を次に示します。 このコード スニペットを実行すると、*ID* プロパティが 'ABC' であるすべてのデジタル ツインと、*contains* リレーションシップを介してこれらのデジタル ツインに関連するすべてのデジタル ツインが選択されます。
 
@@ -114,6 +109,18 @@ Azure Digital Twins の[モデル](concepts-models.md)機能では、ツイン�
 
 > [!NOTE]
 > 開発者は、この `JOIN` を `WHERE` 句のキー値と関連付ける (または `JOIN` 定義を使用してインラインでキー値を指定する) 必要はありません。 リレーションシップのプロパティ自体でターゲット エンティティが識別されるため、この相関関係はシステムによって自動的に計算されます。
+
+### <a name="query-by-the-source-or-target-of-a-relationship"></a>リレーションシップのソースまたはターゲットによるクエリ
+
+リレーションシップのクエリ構造を使用すると、リレーションシップのソースまたはターゲットであるデジタル ツインを特定できます。
+
+たとえば、ソース ツインから開始し、そのリレーションシップに従ってリレーションシップのターゲット ツインを見つけることができます。 次に、ツイン *source-twin* からの *feeds* リレーションシップのターゲット ツインを見つけるクエリの例を示します。
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipSource":::
+
+また、リレーションシップのターゲットから開始し、リレーションシップをトレースしてソース ツインを見つけることもできます。 次に、ツイン *target-twin* からの *feeds* リレーションシップのソース ツインを見つけるクエリの例を示します。
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByRelationshipTarget":::
 
 ### <a name="query-the-properties-of-a-relationship"></a>リレーションシップのプロパティのクエリを実行する
 
@@ -128,7 +135,9 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 ### <a name="query-with-multiple-joins"></a>複数の JOIN を使用したクエリ
 
-1 つのクエリで、最大 5 つの `JOIN` がサポートされています。 これにより、一度に複数のレベルのリレーションシップを走査することができます。
+1 つのクエリで、最大 5 つの `JOIN` がサポートされています。 これにより、一度に複数のレベルのリレーションシップを走査することができます。 
+
+複数レベルのリレーションシップをクエリするには、1 つの `FROM` ステートメントに続けて N 個の `JOIN` ステートメントを使用します。ここで、`JOIN` ステートメントは前の `FROM` または `JOIN` ステートメントの結果に関するリレーションシップを表します。
 
 次に、複数結合のクエリの例を示します。このクエリでは、ルーム 1 と 2 のライトパネルに含まれるすべての電球が取得されます。
 

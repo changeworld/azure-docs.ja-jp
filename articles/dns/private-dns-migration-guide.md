@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 72d046cde70d1224eb1fd47f527c9e49c6b002f6
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6bb828aaff0c1d026e977863a6e224aaea81b629
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102500463"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729237"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
@@ -46,7 +46,7 @@ Install-Module -Name Az.PrivateDns
 install-script PrivateDnsMigrationScript
 ```
 
-メッセージが表示されたら「A」と入力し、スクリプトをインストールします
+スクリプトをインストールするよう求めるメッセージが表示されたら、「A」と入力します
 
 ![スクリプトのインストール](./media/private-dns-migration-guide/install-migration-script.png)
 
@@ -67,7 +67,7 @@ PrivateDnsMigrationScript.ps1
 
 ### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>サブスクリプション ID を入力して Azure にサインインする
 
-移行するつもりのプライベート DNS ゾーンが含まれているサブスクリプションの ID を入力するよう求められます。 自分の Azure アカウントにサインインするよう求められます。 スクリプトがサブスクリプション内のプライベート DNS ゾーン リソースにアクセスできるように、サインインを完了します。
+移行する予定のプライベート DNS ゾーンが含まれるサブスクリプションの ID を入力するよう求められます。 自分の Azure アカウントにサインインするよう求められます。 スクリプトがサブスクリプション内のプライベート DNS ゾーン リソースにアクセスできるように、サインインを完了します。
 
 ![Azure にログインする](./media/private-dns-migration-guide/login-migration-script.png)
 
@@ -91,16 +91,16 @@ PrivateDnsMigrationScript.ps1
 
 ![名前解決を検証する](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
 
-DNS クエリが解決されていないとわかった場合、数分待ってクエリを再試行します。 DNS クエリが想定どおりに機能している場合、プライベート DNS ゾーンから仮想ネットワークを削除するようスクリプトによって要求されたら、「Y」と入力します。
+DNS クエリが解決されていないとわかった場合、数分待ってクエリを再試行します。 DNS クエリが想定どおりに機能する場合、スクリプトによってプライベート DNS ゾーンから仮想ネットワークを削除するよう要求されたら、「Y」と入力します。
 
 ![名前解決を確認する](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
 
 >[!IMPORTANT]
->何らかの理由で、移行済みのゾーンに対する DNS 解決が想定どおりに機能していない場合は、上記の手順で「N」と入力します。スクリプトによって、DNS 解決が従来のゾーンに戻されます。 サポート チケットを作成してください。Microsoft がお客様の DNS ゾーンの移行をお手伝いいたします。
+>何らかの理由で、移行済みのゾーンに対する DNS 解決が想定どおりに機能しない場合は、上記の手順で「N」と入力します。スクリプトによって、DNS 解決が従来のゾーンに戻されます。 サポート チケットを作成してください。Microsoft がお客様の DNS ゾーンの移行をお手伝いいたします。
 
 ## <a name="cleanup"></a>クリーンアップ
 
-この手順では、従来の DNS ゾーンを削除します。これは、DNS 解決が想定どおりに機能していることを検証した後にのみ実行するようにしてください。 各プライベート DNS ゾーンを削除するよう求められます。 そのゾーンの DNS 解決が正常に機能していることを検証した後の各プロンプトで、「Y」と入力します。
+この手順では、従来の DNS ゾーンを削除します。これは、DNS 解決が想定どおりに機能していることを検証した後にのみ実行するようにしてください。 各プライベート DNS ゾーンを削除するよう求められます。 そのゾーンの DNS 解決が正常に機能することを確認した後、すべてのプロンプトで「Y」と入力します。
 
 ![クリーンアップ](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
@@ -108,9 +108,9 @@ DNS クエリが解決されていないとわかった場合、数分待って�
 
 テンプレート、PowerShell スクリプト、SDK を使用して開発されたカスタム コードなど、自動化を使用している場合、プライベート DNS ゾーンで新しいリソース モデルを使用するために、自動化を更新する必要があります。 新しいプライベート DNS の CLI、PS、SDK のドキュメントを以下に示します。
 * [Azure DNS プライベート ゾーンの REST API](/rest/api/dns/privatedns/privatezones)
-* [Azure DNS プライベート ゾーンの CLI](/cli/azure/ext/privatedns/network/private-dns)
+* [Azure DNS プライベート ゾーンの CLI](/cli/azure/network/private-dns/link/vnet)
 * [Azure DNS プライベート ゾーンの PowerShell](/powershell/module/az.privatedns/)
-* [Azure DNS プライベート ゾーンの SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS プライベート ゾーンの SDK](/dotnet/api/overview/azure/privatedns/management)
 
 ## <a name="need-further-help"></a>さらにサポートが必要な場合
 

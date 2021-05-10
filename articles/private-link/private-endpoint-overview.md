@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 79d21549e7234e4ee342776466f8d3d8ced5f08c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1302d44a4cb5b09f6dc3b1bf0cb08a12a932c87
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508811"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029405"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -39,7 +39,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 - プライベート エンドポイントを作成すると、リソースのライフサイクルにわたって読み取り専用のネットワーク インターフェイスも作成されます。 このインターフェイスには、プライベート リンク リソースにマップされる、サブネットからのプライベート IP アドレスが動的に割り当てられます。 プライベート IP アドレスの値は、プライベート エンドポイントのライフサイクル全体にわたって変更されません。
  
-- プライベート エンドポイントは、仮想ネットワークと同じリージョンにデプロイする必要があります。 
+- プライベート エンドポイントは、仮想ネットワークと同じリージョンとサブスクリプションにデプロイする必要があります。 
  
 - プライベート リンク リソースは、仮想ネットワークおよびプライベート エンドポイントとは別のリージョンにデプロイできます。
  

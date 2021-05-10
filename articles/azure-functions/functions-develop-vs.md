@@ -4,12 +4,12 @@ description: Azure Functions Tools for Visual Studio 2019 を使用して、Azur
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97655817"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765577"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -237,7 +237,7 @@ Azure の Function App に必要な設定をアップロードする最も簡単
 
 * [Azure portal を使用する](functions-how-to-use-azure-function-app-settings.md#settings)。
 * [Azure Functions Core Tools の `--publish-local-settings` 発行オプションを使用する](functions-run-local.md#publish)。
-* [Azure CLI を使用する](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
+* [Azure CLI を使用する](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)
 
 ## <a name="monitoring-functions"></a>関数の監視
 

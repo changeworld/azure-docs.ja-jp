@@ -5,12 +5,12 @@ author: VidyaKukke
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: 10c9b165041f0a4a1f09511f17bef3629353c3b2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94917530"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967576"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid リソースのネットワーク セキュリティ
 この記事では、Azure Event Grid で次のセキュリティ機能を使用する方法について説明します。 
@@ -33,7 +33,7 @@ ms.locfileid: "94917530"
 ## <a name="ip-firewall"></a>IP ファイアウォール 
 Azure Event Grid は、トピックおよびドメインへの発行に IP ベースのアクセス制御をサポートしています。 IP ベースの制御を使用すると、トピックまたはドメインへのパブリッシャーを、承認されている一連のマシンおよびクラウド サービスだけに制限できます。 この機能は、Event Grid でサポートされている[認証メカニズム](security-authentication.md)を補完します。
 
-既定では、要求が有効な認証と承認を受けている限り、トピックおよびドメインにはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IP アドレスまたは IP アドレス範囲のみにアクセスを制限できます。 他の IP アドレスから発信するパブリッシャーは拒否され、403 (禁止) の応答が返されます。
+既定では、要求が有効な認証と認可を受けている限り、トピックおよびドメインにはインターネットからアクセスできます。 IP ファイアウォールを使用すると、[CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IP アドレスまたは IP アドレス範囲のみにアクセスを制限できます。 他の IP アドレスから発信するパブリッシャーは拒否され、403 (禁止) の応答が返されます。
 
 トピックとドメインに対して IP ファイアウォールを構成する詳細な手順については、[IP ファイアウォールの構成](configure-firewall.md)に関する記事を参照してください。
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3ebcf5a381efceb5e7de503caf88f4ffd3b504e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98662306"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774739"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーのサーバー パラメーターを構成する
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MariaDB サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。
@@ -27,7 +27,7 @@ Azure コマンド ライン ユーティリティ である Azure CLI を使用
 - [Azure CLI](/cli/azure/install-azure-cli) コマンドライン ユーティリティ。または、ブラウザーで Azure Cloud Shell を使用する。
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーのサーバー構成パラメーターを一覧表示する
-サーバー内の変更可能なすべてのパラメーターとその値を一覧表示するには、[az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) コマンドを実行します。
+サーバー内の変更可能なすべてのパラメーターとその値を一覧表示するには、[az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** のサーバー構成パラメーターを一覧表示できます。
 ```azurecli-interactive
@@ -37,7 +37,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 一覧表示されている各パラメーターの定義については、「MariaDB reference」(MariaDB リファレンス) の「[Server System Variables](https://mariadb.com/kb/en/library/server-system-variables/)」(サーバー システム変数) セクションをご覧ください。
 
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
-サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) コマンドを実行します。
+サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_show) コマンドを実行します。
 
 この例は、リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターの詳細を示します。
 ```azurecli-interactive
@@ -45,7 +45,7 @@ az mariadb server configuration show --name slow_query_log --resource-group myre
 ```
 
 ## <a name="modify-a-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
-特定のサーバー構成パラメーターの値を変更することもでき、MariaDB サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) コマンドを使用します。 
+特定のサーバー構成パラメーターの値を変更することもでき、MariaDB サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_set) コマンドを使用します。 
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
 ```azurecli-interactive
@@ -91,7 +91,7 @@ SELECT name FROM mysql.time_zone_name;
 
 ### <a name="setting-the-global-level-time-zone"></a>グローバル レベルのタイム ゾーンを設定する
 
-グローバル レベルのタイム ゾーンは、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) コマンドを利用して設定できます。
+グローバル レベルのタイム ゾーンは、[az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az_mariadb_server_configuration_set) コマンドを利用して設定できます。
 
 次のコマンドでは、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mariadb.database.azure.com** のサーバー構成パラメーター **time\_zone** が **US/Pacific** に更新されます。
 

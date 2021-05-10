@@ -4,12 +4,12 @@ description: Azure Functions の Durable Functions 拡張機能で外部イベ�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: c08306edcea02a9207ab5a15eb62b7fffc2ecb44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7625a6fcd1000595c2c582935c839ba6d26b20d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99576331"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728489"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -20,7 +20,7 @@ ms.locfileid: "99576331"
 
 ## <a name="wait-for-events"></a>イベントを待つ
 
-[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy) (.NET)、`waitForExternalEvent` (JavaScript)、および `wait_for_external_event` (Python) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
+[オーケストレーション トリガー バインド](durable-functions-bindings.md#orchestration-trigger)の [WaitForExternalEvent](/dotnet/api/microsoft.azure.webjobs.durableorchestrationcontextbase.waitforexternalevent?view=azure-dotnet-legacy&preserve-view=true) (.NET)、`waitForExternalEvent` (JavaScript)、および `wait_for_external_event` (Python) メソッドを使うと、オーケストレーター関数では外部イベントを非同期に待機してリッスンできるようになります。 リスニング オーケストレーター関数は、受信するイベントの "*名前*" と "*データのシェイプ*" を宣言します。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -230,7 +230,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 ## <a name="send-events"></a>送信イベント
 
-外部のイベントは、[RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy) (.NET) メソッドまたは `raiseEventAsync` (JavaScript) メソッドを使用してオーケストレーションに送信できます。 これらのメソッドは、[オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client) バインディングによって公開されています。 組み込みの [raise event HTTP API](durable-functions-http-api.md#raise-event) を使用して、外部のイベントをオーケストレーションに送信することもできます。
+外部のイベントは、[RaiseEventAsync](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclientbase.raiseeventasync?view=azure-dotnet-legacy&preserve-view=true) (.NET) メソッドまたは `raiseEventAsync` (JavaScript) メソッドを使用してオーケストレーションに送信できます。 これらのメソッドは、[オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client) バインディングによって公開されています。 組み込みの [raise event HTTP API](durable-functions-http-api.md#raise-event) を使用して、外部のイベントをオーケストレーションに送信することもできます。
 
 生成されたイベントには、*instance ID*、*eventName*、*eventData* パラメーターとして含まれます。 オーケストレーター関数は、`WaitForExternalEvent` (.NET) API または `waitForExternalEvent` (JavaScript) API を使用してそれらのイベントを処理します。 イベントが処理されるためには、送信側と受信側の両方で、*eventName* が一致している必要があります。 また、イベント データは、JSON でシリアル化できる必要があります。
 

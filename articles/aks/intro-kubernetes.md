@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/24/2021
 ms.custom: mvc
-ms.openlocfilehash: bb4adac1f59370959830f418d27bc27f9aaf63d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1cddd39d0b95e021478235fcdafbacd40eb4097c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493018"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105257"
 ---
 # <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
@@ -179,7 +179,7 @@ Azure CLI のクイックスタートで、AKS のデプロイと管理の詳細
 [aks-master-logs]: ./view-control-plane-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
-[kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac
+[kubernetes-rbac]: concepts-identity.md#kubernetes-rbac
 [concepts-identity]: concepts-identity.md
 [concepts-storage]: concepts-storage.md
 [conf-com-node]: ../confidential-computing/confidential-nodes-aks-overview.md

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7dbb162749e0a2f84140b8e9394934198d096eac
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93096752"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589620"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>1 対多のリレーショナル データを Azure Cosmos DB SQL API アカウントに移行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -126,7 +126,7 @@ SqlJsonToBlobText コピー アクティビティのシンクでは、"区切り
 > 明確でわかりやすくするために、以下のコード スニペットには、ダミーのデータベースのパスワードがインラインに明示的に含まれていますが、常に Azure Databricks シークレットを使用する必要があります。
 >
 
-まず、必要な [SQL コネクタ](https://docs.databricks.com/data/data-sources/sql-databases-azure.html)と [Azure Cosmos DB コネクタ](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) ライブラリを作成して、Azure Databricks クラスターに接続します。 クラスターを再起動して、ライブラリが読み込まれていることを確認します。
+まず、必要な [SQL コネクタ](/connectors/sql/)と [Azure Cosmos DB コネクタ](https://docs.databricks.com/data/data-sources/azure/cosmosdb-connector.html) ライブラリを作成して、Azure Databricks クラスターに接続します。 クラスターを再起動して、ライブラリが読み込まれていることを確認します。
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks1.png" alt-text="必要な SQL コネクタと Azure Cosmos DB コネクタ ライブラリを作成して Azure Databricks クラスターに接続する場所を示すスクリーンショット。":::
 
@@ -136,7 +136,7 @@ SqlJsonToBlobText コピー アクティビティのシンクでは、"区切り
 ここでは、DataFrame に "FOR JSON" 出力を含む SQL クエリの結果を取得します。
 
 ```scala
-// Connect to Azure SQL https://docs.databricks.com/data/data-sources/sql-databases-azure.html
+// Connect to Azure SQL /connectors/sql/
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.connect._
 val configSql = Config(Map(

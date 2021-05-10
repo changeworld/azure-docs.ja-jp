@@ -8,29 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 62417b575e142d044e599249a529328a41c9b8d7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a2167d573871481c99b755fc713e18543d74c5bf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102637455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104602683"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスに Azure Resource Manager パスワードを設定する
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、Azure Resource Manager パスワードを設定する方法について説明します。 Azure Resource Manager を使用してデバイスのローカル API に接続する場合は、このパスワードを設定する必要があります。
+この記事では、Azure Resource Manager パスワードを設定する方法について説明します。 [Azure Resource Manager を使用してデバイスのローカル API に接続する](azure-stack-edge-gpu-connect-resource-manager.md)場合は、このパスワードを設定する必要があります。 
 
 <!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Azure portal を使用してパスワードをリセットする
 
-1. Azure portal で、デバイスを管理するために作成した Azure Stack Edge リソースに移動します。 **[Edge サービス] > [クラウド ストレージ ゲートウェイ]** に移動します。
+1. Azure portal で、デバイスを管理するために作成した Azure Stack Edge リソースに移動します。 
 
-    ![EdgeARM ユーザーのパスワードのリセット 1](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-1.png)
-
-2. 右側のペインのコマンド バーで、 **[Edge ARM パスワードのリセット]** を選択します。 
+2. **[プロパティ]** に移動します。 右側のペインのコマンド バーで、 **[Edge ARM パスワードのリセット]** を選択します。 
 
     ![EdgeARM ユーザーのパスワードのリセット 2](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-2.png)
 

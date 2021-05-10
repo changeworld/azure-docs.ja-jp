@@ -1,6 +1,6 @@
 ---
 title: 証明書のバインド
-description: App Service 環境の証明書に関連するさまざまなトピックについて説明します。 ASE の単一テナントアプリで証明書バインドがどのように機能するかについて説明します。
+description: App Service Environment の証明書に関連するさまざまなトピックについて説明します。 ASE の単一テナントアプリで証明書バインドがどのように機能するかについて説明します。
 author: ccompy
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88962045"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>証明書と App Service Environment 

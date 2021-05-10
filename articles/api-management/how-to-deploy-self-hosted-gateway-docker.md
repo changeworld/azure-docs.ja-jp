@@ -8,14 +8,14 @@ manager: gwallace
 editor: ''
 ms.service: api-management
 ms.topic: article
-ms.date: 04/26/2020
+ms.date: 04/19/2021
 ms.author: apimpm
-ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 531421726bc1e081d85eca9d535267520d3fea5f
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "82204828"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725609"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management のセルフホステッド ゲートウェイを Docker にデプロイする
 
@@ -39,23 +39,23 @@ ms.locfileid: "82204828"
 2. デプロイするゲートウェイ リソースを選択します。
 3. **[Deployment]/(デプロイ/)** を選択します。
 4. **[トークン]** テキスト ボックスのアクセス トークンが、既定の **[有効期限]** および **[秘密鍵]** の値を使用して、自動生成されたことに注意してください。 必要に応じて、いずれかまたは両方のコントロールで必要な値を選択して、新しいトークンを生成します。
-4. **[デプロイ スクリプト]** 下で **[Docker]** が選択されていることを確認します。
-5. **[環境]** の横にある **env.conf** ファイル リンクを選択して、ファイルをダウンロードします。
-6. **[実行]** テキスト ボックスの右端にある **[コピー]** アイコンを選択して、Docker コマンドをクリップボードにコピーします。
-7. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 必要に応じて、ポート マッピングとコンテナー名を調整します。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在することが前提であることに注意してください。
-```
-    docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
-```
-8. コマンドを実行します。 コマンドでは、Microsoft Container Registry からダウンロードした[コンテナー イメージ](https://aka.ms/apim/sputnik/dhub)を使用してコンテナーを実行し、コンテナーの HTTP (8080) ポートと HTTPS (8081) ポートをホスト上のポート 80 と 443 にマップするように、Docker 環境に対して指示します。
-9. 次のコマンドを実行して、ゲートウェイ コンテナーが実行中であるかどうかを確認します。
-```console
-docker ps
-CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
-895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:latest   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
-```
+5. **[デプロイ スクリプト]** 下で **[Docker]** が選択されていることを確認します。
+6. **[環境]** の横にある **env.conf** ファイル リンクを選択して、ファイルをダウンロードします。
+7. **[実行]** テキスト ボックスの右端にある **[コピー]** アイコンを選択して、Docker コマンドをクリップボードにコピーします。
+8. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 必要に応じて、ポート マッピングとコンテナー名を調整します。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在することが前提であることに注意してください。
+   ```
+       docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
+   ```
+9. コマンドを実行します。 コマンドでは、Microsoft Container Registry からダウンロードした[コンテナー イメージ](https://aka.ms/apim/sputnik/dhub)を使用してコンテナーを実行し、コンテナーの HTTP (8080) ポートと HTTPS (8081) ポートをホスト上のポート 80 と 443 にマップするように、Docker 環境に対して指示します。
+10. 次のコマンドを実行して、ゲートウェイ コンテナーが実行中であるかどうかを確認します。
+    ```console
+    docker ps
+    CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                         NAMES
+    895ef0ecf13b        mcr.microsoft.com/azure-api-management/gateway:latest   "/bin/sh -c 'dotnet …"   5 seconds ago       Up 3 seconds        0.0.0.0:80->8080/tcp, 0.0.0.0:443->8081/tcp   my-gateway
+    ```
 10. Azure portal に戻り、 **[概要]** をクリックして、デプロイしたばかりのセルフホステッド ゲートウェイ コンテナーが正常な状態を報告していることを確認します。
 
-![ゲートウェイの状態](media/how-to-deploy-self-hosted-gateway-docker/status.png)
+    ![ゲートウェイの状態](media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
 > [!TIP]
 > <code>console docker container logs <gateway-name></code> コマンドを使用して、セルフホステッド ゲートウェイ ログのスナップショットを表示します。

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: b0e51d11797bc5767f19b25a92a2d29a66ea1bb2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103225627"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -94,7 +94,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 
 既存のロード バランサーのデプロイをリージョン間ロード バランサーに追加して、高可用性のリージョン間デプロイを実現します。
 
-**ホーム リージョン** は、リージョン間ロード バランサーがデプロイされる場所です。 このリージョンは、トラフィックのルーティング方法には影響しません。 ホーム リージョンがダウンしても、トラフィック フローは影響を受けません。
+**ホーム リージョン** は、リージョン間ロード バランサーまたはグローバル層のパブリック IP アドレスがデプロイされる場所です。 このリージョンは、トラフィックのルーティング方法には影響しません。 ホーム リージョンがダウンしても、トラフィック フローは影響を受けません。
 
 ### <a name="home-regions"></a>ホーム リージョン
 * 米国東部 2
@@ -106,7 +106,7 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 * 東アジア
 
 > [!NOTE]
-> リージョン間ロード バランサーをデプロイできるのは、上記の 8 つのリージョンのいずれかに限られます。
+> リージョン間ロード バランサーまたはグローバル層のパブリック IP をデプロイできるのは、上記の 7 つのリージョンのいずれかに限られます。
 
 **参加リージョン** は、ロード バランサーのグローバル パブリック IP を使用できる場所です。 
 

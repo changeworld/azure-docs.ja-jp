@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 13585173b54c79158161da54f968ba66eb018f6a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 27a0d5b809480b2ce4aff36c5acd43c149ed5bb3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562836"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -78,11 +78,11 @@ DDoS 攻撃から保護するために、Azure Virtual Network で DDoS Standard
 
 - [Azure DevTest Labs 用の仮想ネットワークを構成する方法](devtest-lab-configure-vnet.md)
 
-- [DDoS 保護を構成する方法](/azure/virtual-network/manage-ddos-protection)
+- [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Azure Security Center の統合された脅威インテリジェンスについて](/azure/security-center/threat-protection)
+- [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
 - [Azure Security Center のアダプティブ ネットワークのセキュリティ強化について](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -144,7 +144,7 @@ DDoS 攻撃から保護するために、Azure Virtual Network で DDoS Standard
 
 - [サービス タグの概要と使用](../virtual-network/service-tags-overview.md)
 
-- [アプリケーション セキュリティ グループの概要と使用](/azure/virtual-network/security-overview#application-security-groups)
+- [アプリケーション セキュリティ グループの概要と使用](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **責任**: Customer
 
@@ -158,7 +158,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、R
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -188,9 +188,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用してリソース構成を監視し、Azure リソースに対する変更を検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -214,7 +214,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログにより、管理プレーン レベルで Azure DevTest Labs インスタンスで実行された操作に関する分析情報が提供されます。 Azure アクティビティ ログのデータを使用すると、DevTest Labs インスタンスの管理プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](/azure/azure-monitor/platform/diagnostic-settings)
+- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)
 
 **責任**: Customer
 
@@ -224,7 +224,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログにより、管理プレーン レベルで Azure DevTest Labs インスタンスで実行された操作に関する分析情報が提供されます。 Azure アクティビティ ログのデータを使用すると、DevTest Labs インスタンスの管理プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](/azure/azure-monitor/platform/diagnostic-settings)
+- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)
 
 **責任**: Customer
 
@@ -236,7 +236,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 詳細については、次の記事を参照してください。
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Security Center のデータ収集について](../security-center/security-center-enable-data-collection.md)
 
@@ -248,7 +248,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Monitor で、組織のコンプライアンス規則に従って、Azure DevTest Labs インスタンスに関連付けられている Log Analytics ワークスペースのログの保有期間を設定します。
 
-- [詳細については、次の記事を参照してください](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [詳細については、次の記事を参照してください](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
 
@@ -260,9 +260,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 詳細については、次の記事を参照してください。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](/azure/azure-monitor/platform/activity-log)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **責任**: Customer
 
@@ -272,7 +272,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Log Analytics ワークスペースを使用して、Azure DevTest Labs に関連するセキュリティ ログやイベントでの異常なアクティビティを監視し、アラート通知を行います。
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -333,7 +333,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 - リソース管理: リソースを管理 (VM の作成、環境の作成、成果物の開始、停止、再起動、削除、適用など) するための Azure portal へのアクセス権を付与します。 Azure でのリソース管理には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用します。 ユーザーにロールを割り当て、リソースとアクセス レベルのアクセス許可を設定します。
 - 仮想マシン (ネットワーク レベル) :既定の構成では、VM にはローカル管理者アカウントが使用されます。 使用できるドメイン (Azure Active Directory Domain Services (Azure AD DS)、オンプレミスのドメイン、またはクラウドベースのドメイン) がある場合は、マシンをドメインに参加させることができます。 ユーザーは、ドメイン参加成果物を使用するドメインベースの ID を使用して、マシンに接続できます。
 
-- [DevTest Labs の参照アーキテクチャ](https://docs.microsoft.com/azure/devtest-labs/devtest-lab-reference-architecture#architecture)
+- [DevTest Labs の参照アーキテクチャ](./devtest-lab-reference-architecture.md#architecture)
 
 - [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -463,7 +463,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 **ガイダンス**: DevTest Labs インスタンスおよび他の重要なリソースまたは関連リソースへの変更が発生したときにアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [DevTest Labs アクティビティ ログ イベントのアラートを作成する方法](create-alerts.md)
 
@@ -481,7 +481,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -595,7 +595,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -625,7 +625,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 **ガイダンス**: スクリプトの種類によっては、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーが DevTest Labs でホストされている VM 内でスクリプトを実行する機能を制限することができます。 また、Azure Security Center 適応型アプリケーション制御を使用して、基になる Azure VM で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにすることもできます。
 
-- [Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7&amp;preserve-view=true)
+- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&view=powershell-7)
 
 - [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
@@ -665,7 +665,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
@@ -721,7 +721,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 - [Azure Automation State Configuration の概要](../automation/automation-dsc-overview.md)
 
-- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
+- [VHD を Azure にアップロードし、新しい VM を作成するサンプル スクリプト](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 - [DevTest Labs でイメージ ファクトリを作成する方法](image-factory-create.md)
 
@@ -735,7 +735,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 - [Azure Repos Git チュートリアル](/azure/devops/repos/git/gitworkflow)
 
-- [アクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&amp;tabs=preview-page&amp;preserve-view=true)
+- [アクセス許可とグループについて](/azure/devops/organizations/security/about-permissions?preserve-view=true&tabs=preview-page&view=azure-devops)
 
 - [Azure DevTest Labs と Azure DevOps ワークフローの統合](devtest-lab-dev-ops.md)
 
@@ -765,7 +765,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
 **責任**: Customer
 
@@ -853,7 +853,7 @@ DevTest Labs には、既定のパスワードという概念がありません�
 
 - [Azure に対して Microsoft Antimalware を構成する方法](../security/fundamentals/antimalware.md) 
 
-- [Azure Security Center での脅威の防止](/azure/security-center/threat-protection)
+- [Azure Security Center での脅威の防止](../security-center/azure-defender.md)
 
 **責任**: Customer
 
@@ -869,7 +869,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 - [Azure 向け Microsoft Antimalware について](../security/fundamentals/antimalware.md) 
 
-- [データ サービスに対する Azure Security Center の脅威検出について](/azure/security-center/security-center-alerts-data-services)
+- [データ サービスに対する Azure Security Center の脅威検出について](../security-center/azure-defender.md)
 
 **責任**: Customer
 
@@ -913,7 +913,7 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 - [Azure VM バックアップの概要](../backup/backup-azure-vms-introduction.md)
 
-- [Azure 上で Key Vault のキーをバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure 上で Key Vault のキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **責任**: Customer
 
@@ -929,7 +929,7 @@ Azure Disk Encryption を使用している場合は、ディスク暗号化キ�
 
 - [Azure VM バックアップからファイルを回復する方法](../backup/backup-azure-restore-files-from-vm.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 - [暗号化された VM をバックアップおよび復元する方法](../backup/backup-azure-vms-encryption.md)
 
@@ -975,7 +975,7 @@ Azure Disk Encryption を使用している場合は、ディスク暗号化キ�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -1041,5 +1041,5 @@ Azure Disk Encryption を使用している場合は、ディスク暗号化キ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

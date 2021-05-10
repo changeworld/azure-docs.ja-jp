@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102554872"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785219"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -24,7 +24,7 @@ ms.locfileid: "102554872"
 
 Azure には、複数の種類のクラウド ストレージが用意されています。 Azure へのファイル移行の基本的側面の 1 つは、お使いのデータに適した Azure ストレージ オプションを見極めることです。
 
-[Azure ファイル共有](storage-files-introduction.md)は、汎用ファイル データに適しています。 このデータには、オンプレミスの SMB または NFS 共有を使用する対象となるあらゆるデータが含まれています。 [Azure File Sync](storage-sync-files-planning.md) を使用すると、Windows サーバーが実行中のオンプレミス サーバーに複数の Azure ファイル共有のコンテンツをキャッシュできます。
+[Azure ファイル共有](storage-files-introduction.md)は、汎用ファイル データに適しています。 このデータには、オンプレミスの SMB または NFS 共有を使用する対象となるあらゆるデータが含まれています。 [Azure File Sync](../file-sync/file-sync-planning.md) を使用すると、Windows サーバーが実行中のオンプレミス サーバーに複数の Azure ファイル共有のコンテンツをキャッシュできます。
 
 オンプレミス サーバーで現在実行中のアプリケーションの場合、ファイルを Azure ファイル共有に格納することが適している場合もあります。 アプリケーションを Azure に移動し、Azure ファイル共有を共有ストレージとして使用できます。 このシナリオでは、[Azure Disk](../../virtual-machines/managed-disks-overview.md) を考慮することもできます。
 
@@ -81,9 +81,9 @@ Azure ファイル共有の [Azure AD 認証](storage-files-identity-auth-active
 | source | ターゲット: </br>ハイブリッド デプロイ | ターゲット: </br>クラウドのみのデプロイ |
 |:---|:--|:--|
 | | ツールの組み合わせ:| ツールの組み合わせ: |
-| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li><li>Azure File Sync の使用</li></ul> |
+| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li><li>Azure File Sync の使用</li></ul> |
 | Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
+| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
 | Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
 | Microsoft Azure StorSimple クラウド アプライアンス 8100 または StorSimple クラウド アプライアンス 8600 | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> | |
 | StorSimple クラウド アプライアンス 1200 | <ul><li>[Azure File Sync の使用](storage-files-migration-storsimple-1200.md)</li></ul> | |
@@ -121,7 +121,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| 記憶域移行サービス | 間接的にサポートされています。 Azure ファイル共有は、SMS ターゲット サーバーでネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>バージョン 10.6 | サポートされています。 | ソース ルート ACL のコピーはサポートされていません。その他の点では、完全な忠実性があります。 * </br>[Azure ファイル共有で AzCopy を使用する方法を確認する](../common/storage-use-azcopy-files.md) |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | サポートされています。 | DataBox では、メタデータが完全にサポートされています。 |
-|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure ストレージ エクスプローラー </br>バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
+|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer </br>バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
 |![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | サポートされています。 | メタデータがコピーされません。 |
 |||||
 
@@ -139,7 +139,7 @@ RoboCopy は、ファイルの移行に最も適しているツールの 1 つ�
 
 Azure File Sync は、合計ストレージ容量ではなく、主に項目 (ファイルとフォルダー) の数に基づいてスケーリングされます。 TreeSize ツールを使用すると、Windows Server ボリューム上の項目数を確認できます。
 
-このツールを使用すると、[Azure File Sync のデプロイ](storage-sync-files-deployment-guide.md)の前にパースペクティブを作成できます。 デプロイ後にクラウドの階層化が使用されている場合にも使用できます。 このシナリオでは、項目数と、サーバー キャッシュを最も使用するディレクトリが表示されます。
+このツールを使用すると、[Azure File Sync のデプロイ](../file-sync/file-sync-deployment-guide.md)の前にパースペクティブを作成できます。 デプロイ後にクラウドの階層化が使用されている場合にも使用できます。 このシナリオでは、項目数と、サーバー キャッシュを最も使用するディレクトリが表示されます。
 
 このツールのテスト済みのバージョンはバージョン 4.4.1 です。 クラウド階層化ファイルと互換性があります。 通常の操作中に、階層化ファイルがこのツールによって再度呼び出されることはありません。
 
@@ -151,5 +151,5 @@ Azure File Sync は、合計ストレージ容量ではなく、主に項目 (�
 この記事に記載した Azure Files テクノロジの詳細情報:
 
 * [Azure ファイル共有の概要](storage-files-introduction.md)
-* [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-* [Azure File Sync: クラウドを使った階層化](storage-sync-cloud-tiering-overview.md)
+* [Azure File Sync のデプロイの計画](../file-sync/file-sync-planning.md)
+* [Azure File Sync: クラウドを使った階層化](../file-sync/file-sync-cloud-tiering-overview.md)

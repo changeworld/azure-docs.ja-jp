@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e9201f41c9552b6a60f9ccd8eacda60ac46f89eb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6e20a4324f46925b8f83d7519c481a1d5bfc06a9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99591637"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789305"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Azure CLI を使用して Web トラフィックを制限する
 
@@ -45,15 +45,15 @@ az group delete --name myResourceGroupAG --yes
 
 | コマンド | Notes |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | 仮想ネットワークを作成します。 |
-| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | 仮想ネットワーク内にサブネットを作成します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | 仮想ネットワークを作成します。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | 仮想ネットワーク内にサブネットを作成します。 |
 | [az network public-ip create](/cli/azure/network/public-ip) | アプリケーション ゲートウェイのパブリック IP アドレスを作成します。 |
 | [az network application-gateway create](/cli/azure/network/application-gateway) | アプリケーション ゲートウェイを作成します。 |
-| [az vmss create](/cli/azure/vmss#az-vmss-create) | 仮想マシン スケール セットを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
-| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | ストレージ アカウントを作成します。 |
-| [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) | アプリケーション ゲートウェイのパブリック IP アドレスを取得します。 |
+| [az vmss create](/cli/azure/vmss#az_vmss_create) | 仮想マシン スケール セットを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
+| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) | ストレージ アカウントを作成します。 |
+| [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) | アプリケーション ゲートウェイのパブリック IP アドレスを取得します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

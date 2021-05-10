@@ -3,13 +3,15 @@ title: 'クイックスタート: Python を使用して管理グループを作
 description: このクイックスタートでは、Python を使用して、リソースをリソース階層に整理する管理グループを作成します。
 ms.date: 01/29/2021
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: e3c55cc14a8ac980318fd0de9485a3e0ca31b582
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- devx-track-python
+- mode-api
+ms.openlocfilehash: 9aec47e067ca62f4902df2dafb6a5d6d50a26d0e
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100101661"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533171"
 ---
 # <a name="quickstart-create-a-management-group-with-python"></a>クイックスタート: Python を使用して管理グループを作成する
 

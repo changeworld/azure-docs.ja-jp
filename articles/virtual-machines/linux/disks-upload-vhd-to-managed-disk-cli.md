@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 473e87904742395eca6b7eeba0875cd93789104d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 285f0acd5097ce68cddee6f732b17944dffb0eba
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91978987"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762571"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
@@ -44,7 +44,7 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 
 アップロード用に空の標準 HDD を作成するには、事前に、アップロードする VHD のファイル サイズ (バイト単位) が必要です。 これを取得するには、`wc -c <yourFileName>.vhd` または `ls -al <yourFileName>.vhd` を使用できます。 この値は、 **--upload-size-bytes** パラメーターを指定するときに使用します。
 
-アップロード用の空の標準 HDD を作成するには、[disk create](/cli/azure/disk#az-disk-create) コマンドレットに、 **--for-upload** パラメーターと **--upload-size-bytes** パラメーターの両方を指定します。
+アップロード用の空の標準 HDD を作成するには、[disk create](/cli/azure/disk#az_disk_create) コマンドレットに、 **--for-upload** パラメーターと **--upload-size-bytes** パラメーターの両方を指定します。
 
 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` をご自身で選んだ値に置き換えます。 `--upload-size-bytes` パラメーターには例の値 `34359738880` が含まれており、それを適切な値に置き換えます。
 

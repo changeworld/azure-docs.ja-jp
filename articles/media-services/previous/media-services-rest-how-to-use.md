@@ -16,10 +16,10 @@ ms.date: 3/10/2021
 ms.author: inhenkel
 ms.reviewer: johndeu
 ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103010050"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
@@ -62,7 +62,7 @@ REST を使用するときには、次の考慮事項が適用されます。
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
 Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
 
-| ヘッダー | 種類 | 値 |
+| ヘッダー | Type | 値 |
 | --- | --- | --- |
 | 承認 |Bearer |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
@@ -76,7 +76,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 省略可能なヘッダーのセットを次に示します。
 
-| ヘッダー | 種類 | 値 |
+| ヘッダー | Type | 値 |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
 | Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> \- application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
@@ -90,7 +90,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
 要求したリソースと実行を意図した操作によって返されるヘッダーのセットを次に示します。
 
-| ヘッダー | 種類 | 値 |
+| ヘッダー | Type | 値 |
 | --- | --- | --- |
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |

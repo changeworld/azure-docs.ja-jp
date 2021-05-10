@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 11/09/2020
-ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.date: 03/16/2020
+ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986126"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600885"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>ホストされた体験版用に Azure Marketplace サブスクリプションを設定する
 
@@ -43,26 +43,18 @@ ms.locfileid: "98986126"
     5. [サポートされているアカウントの種類] で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント\)** を選択します。
     6. **[作成]** を選択して、アプリが作成されるまで待ちます。
     7. アプリが作成されたら、概要画面に表示される **アプリケーション ID** をメモします。 この値は、後で体験版を構成するときに必要になります。
-    8. nativeclient のリダイレクト URI を追加するには、 **[認証]** ブレードを選択します。 **[プラットフォーム構成]** で、 **[プラットフォームの追加]**  >  **[モバイル]**  >  **[デスクトップ]** アプリケーション タイルを選択します。 **nativeclient** のリダイレクト URI を選択し、 **[構成]** を選択します。
-
-        :::image type="content" source="./media/test-drive/configure-desktop-devices.png" alt-text="nativeclient のリダイレクト URI の追加。":::
-
-    9. **[アプリケーションの管理]** で、 **[API のアクセス許可]** を選択します。
-    10. **[アクセス許可の追加]** を選択し、次に **[Microsoft Graph API]** を選択します。
-    11. **[アプリケーション]** アクセス許可カテゴリを選択し、次に **[Directory.Read.All]** と **[Directory.ReadWrite.All]** のアクセス許可を選択します。
+    8. **[アプリケーションの管理]** で、 **[API のアクセス許可]** を選択します。
+    9. **[アクセス許可の追加]** を選択し、次に **[Microsoft Graph API]** を選択します。
+    10. **[アプリケーション]** アクセス許可カテゴリを選択し、次に **[User.ReadWrite.All]** 、 **[Directory.Read.All]** 、 **[Directory.ReadWrite.All]** のアクセス許可を選択します。
 
         :::image type="content" source="./media/test-drive/microsoft-graph.png" alt-text="アプリケーションのアクセス許可の設定。":::
 
-    12. 許可リスト Azure AD アプリに対して **[Dynamics CRM - ユーザーの偽装]** アクセス権を追加するには、 **[アクセス許可の追加]** をもう一度選択します。
-
-        :::image type="content" source="./media/test-drive/request-api-permissions.png" alt-text="アプリケーションのアクセス許可の要求。":::
-
-    13. アクセス許可が追加されたら、 **[Grant admin consent for Microsoft]\(Microsoft に対する管理者の同意の付与\)** を選択します。
-    14. メッセージ アラートから、 **[はい]** を選択します。
+    11. アクセス許可が追加されたら、 **[Grant admin consent for Microsoft]\(Microsoft に対する管理者の同意の付与\)** を選択します。
+    12. メッセージ アラートから、 **[はい]** を選択します。
 
         [![アプリケーションのアクセス許可が正常に付与されたことを示しています。](media/test-drive/api-permissions-confirmation-customer.png)](media/test-drive/api-permissions-confirmation-customer.png#lightbox)
 
-    15. Azure AD アプリのシークレットを作成するには、次のようにします。
+    13. Azure AD アプリのシークレットを作成するには、次のようにします。
         1. **[アプリケーションの管理]** から、 **[Certificate and secrets]\(証明書とシークレット\)** を選択します。
         2. [クライアント シークレット] で、 **[新しいクライアント シークレット]** を選択します。
         3. 説明 ("*体験版*" など) を入力し、適切な期間を選択します。 このキーの有効期限が切れると、体験版は中断されます。その時点で、新しいキーを生成して AppSource に提供する必要があります。
@@ -70,8 +62,7 @@ ms.locfileid: "98986126"
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="クライアント シークレットの追加。":::
 
-5. 場合によっては、ユーザーを Azure AD から CRM インスタンスに同期するのに、予想以上の時間がかかることがあります。 これを支援するために、ユーザーの同期を強制するプロセスが追加されましたが、これには Azure AD アプリケーションがパートナー センターによって許可リストに登録されている必要があります。 これを行うには、[Customer Engagement インスタンスへのユーザー同期](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md)に関する記事を参照してください。
-6. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。
+5. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。
     1. 管理レベルの PowerShell コマンド プロンプトを開きます。
     2. Install-Module MSOnline (MSOnline がインストールされていない場合、このコマンドを実行します)。
     3. Connect-MsolService (これにより、ポップアップ ウィンドウが表示されます。新しく作成された組織テナントを使用してサインインします)。
@@ -81,7 +72,7 @@ ms.locfileid: "98986126"
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="アカウントへのサインイン。":::
 
-7. 上で作成した Azure アプリをアプリケーション ユーザーとして体験版 CRM インスタンスに追加します。
+6. 上で作成した Azure アプリをアプリケーション ユーザーとして体験版 CRM インスタンスに追加します。
     1. **Azure Active Directory** に新しいユーザーを追加します。 このユーザーを作成するには、(同じテナントに属している) **[名前]** と **[ユーザー名]** の値のみが必要です。他のフィールドは既定値のままにしておきます。 ユーザー名の値をコピーします。
     2. **CRM インスタンス** にサインインし、 **[設定]**  >  **[セキュリティ]**  >  **[ユーザー]** を選択します。
     3. ビューを **[アプリケーション ユーザー]** に変更します。
@@ -97,7 +88,8 @@ ms.locfileid: "98986126"
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="ロールの特権の選択。":::
 
-    10. 体験版用に作成したカスタム セキュリティ ロールをアプリケーション ユーザーに割り当てます。
+    10. また、 **[別のユーザーの代わりに操作します]** 特権を有効にします。
+    11. 体験版用に作成したカスタム セキュリティ ロールをアプリケーション ユーザーに割り当てます。
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>Dynamics 365 for Operations の設定
 

@@ -7,27 +7,28 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 02/19/2021
-ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 04/05/2021
+ms.openlocfilehash: 80d1e4f39d69f761b801ccec834c0228057e4847
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103461676"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448527"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
 > [!NOTE]
 > この機能を使用するには、**Developer** レベル以上の [Azure サポート プラン](https://azure.microsoft.com/support/plans/)が組織に必要です。
 
-Microsoft Azure 用カスタマー ロックボックスには、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。
+Microsoft の担当者と関連業者によって実行されるほとんどの操作、サポート、およびトラブルシューティングでは、顧客データへのアクセスは必要ありません。 そのようなアクセスが必要となるまれな状況では、Microsoft Azure 用カスタマー ロックボックスに、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されます。 これは、お客様から開始されたサポート チケットまたは Microsoft によって特定された問題に対応しているかどうかにかかわらず、Microsoft のエンジニアが顧客データにアクセスする必要がある場合に使用されます。
 
 この記事では、カスタマー ロックボックスを有効にする方法、およびロックボックス要求を開始する、追跡する、後のレビューと監査のために保存する方法について説明します。
 
 <a name='supported-services-and-scenarios-in-general-availability'></a><a name='supported-services-and-scenarios-in-preview'></a>
-## <a name="supported-services-and-scenarios-general-availability"></a>サポートされるサービスとシナリオ (一般提供)
+## <a name="supported-services-and-scenarios"></a>サポートされるサービスとシナリオ
 
-カスタマー ロックボックスで一般提供されるようになったサービスは次のとおりです。
+### <a name="general-availability"></a>一般公開
+カスタマー ロックボックスで一般提供されるサービスは次のとおりです。
 
 - Azure API Management
 - Azure App Service
@@ -49,6 +50,12 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 - Azure Synapse Analytics
 - Azure の仮想マシン (リモート デスクトップ アクセス、メモリ ダンプへのアクセス、マネージド ディスクを含む)
 
+### <a name="public-preview"></a>パブリック プレビュー
+カスタマー ロックボックスのプレビューで提供されているサービスは次のとおりです。
+
+- Azure Machine Learning
+- Azure Batch
+
 ## <a name="enable-customer-lockbox"></a>カスタマー ロックボックスを有効にする
 
 カスタマー ロックボックス ブレードの [[Adminisitration]\(管理\) モジュール](https://aka.ms/customerlockbox/administration)からカスタマー ロックボックスを有効にできるようになりました。  
@@ -66,7 +73,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 3. Azure サポート エンジニアがサービス要求を確認し、問題を解決するための次の手順を判断します。
 
-4. サポート エンジニアが標準のツールとテレメトリを使用して問題のトラブルシューティングを行うことができない場合、次の手順は、Just-In-Time (JIT) アクセス サービスを使用して管理者特権のアクセス許可を要求することです。 問題は Azure DevOps チームにエスカレートされているため、これは元のサポート エンジニアまたは別のエンジニアからの要求である可能性があります。
+4. サポート エンジニアが標準のツールとサービスで生成されたデータを使用して問題のトラブルシューティングを行うことができない場合、次の手順は、Just-In-Time (JIT) アクセス サービスを使用して管理者特権のアクセス許可を要求することです。 問題は Azure DevOps チームにエスカレートされているため、これは元のサポート エンジニアまたは別のエンジニアからの要求である可能性があります。
 
 5. Azure エンジニアがアクセス要求を送信した後、Just-In-Time サービスは次のような要素を考慮して要求を評価します。
     - リソースのスコープ
@@ -129,8 +136,10 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 カスタマー ロックボックス要求は、次のエンジニアリング サポート シナリオではトリガーされません。
 
-- Microsoft のエンジニアは、標準的な操作手順から外れるアクティビティを実行する必要があります。 たとえば、予期しないシナリオや予測不可能なシナリオでサービスを回復または復元する場合などです。
-- Microsoft のエンジニアは、トラブルシューティングの一環として Azure プラットフォームにアクセスし、意図せずに顧客データへのアクセス権を持ちます。 たとえば、Azure Network チームはトラブルシューティングを行い、その結果、ネットワーク デバイスでパケット キャプチャが行われます。 このシナリオでは、お客様が送信中のデータを暗号化した場合、エンジニアはデータを読み取ることができません。
+- 標準的な運用手順から外れた緊急シナリオ。 たとえば、サービスの大規模な停止では、突発的、または予期しないシナリオでサービスを復旧または復元するために早急に対処する必要があります。 このような "緊急" イベントはまれであり、ほとんどの場合、解決するのに顧客データへのアクセスは必要ありません。
+- Microsoft のエンジニアは、トラブルシューティングの一環として Azure プラットフォームにアクセスし、意図せず顧客データを目にします。 たとえば、Azure Network チームはトラブルシューティングを行い、その結果、ネットワーク デバイスでパケット キャプチャが行われます。 このようなシナリオで、多くの重要な顧客データがアクセスされることはめったにありません。 お客様は、転送中および保存時の暗号化を使用することで、データをさらに保護することができます。
+
+データに対する外部の法的な要求によってカスタマー ロックボックス要求がトリガーされることもありません。 詳細については、Microsoft Trust Center の [政府機関によるデータの要求](https://www.microsoft.com/trust-center/)についての説明を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

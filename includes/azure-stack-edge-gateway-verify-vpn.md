@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/27/2020
 ms.author: alkohli
 ms.openlocfilehash: efa9e996cbfbc8954c294b4da8900b1d5bcbeeed
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96465620"
 ---
 VPN を確認するには、作成した仮想ネットワークからのみアクセスできるストレージ アカウントを作成します。 このストレージ アカウントを作成して、作成した仮想ネットワークに関連付けるには、次の手順に従います。

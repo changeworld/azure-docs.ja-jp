@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 6de86cbc065b5352b3b643708dd55c6856b37dd7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 49e5db729dab7abaa440b1adf6a61e9e52a1efbc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097909"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023131"
 ---
 # <a name="create-a-no-code-vision-solution-in-azure-percept-studio"></a>Azure Percept Studio でコードなしのビジョン ソリューションを作成する
 
@@ -106,7 +106,7 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 
 1. **[Custom Vision]** ページの左側にある **[タグ]** で **[タグなし]** をクリックし、前の手順で収集したばかりの画像を表示します。 タグの付いていない画像を 1 つまたは複数選択します。
 
-1. **[Image Detail]\(画像の詳細\)** ウィンドウで、画像をクリックしてタグ付けを開始します。 物体検出を自分のプロジェクト タイプとして選択した場合は、タグ付けしたい特定のオブジェクトを[境界ボックス](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#upload-and-tag-images)で囲む必要もあります。 必要に応じて境界ボックスを調整します。 オブジェクトのタグを入力し、 **[+]** をクリックしてタグを適用します。 たとえば、店舗の棚の補充が必要な場合に通知するビジョン ソリューションを作成していたのなら、空の棚の画像に "空の棚" タグを追加します。また、在庫で埋まった棚には "埋まった棚" タグを追加します。 タグ付けされていないすべての画像で繰り返します。
+1. **[Image Detail]\(画像の詳細\)** ウィンドウで、画像をクリックしてタグ付けを開始します。 物体検出を自分のプロジェクト タイプとして選択した場合は、タグ付けしたい特定のオブジェクトを[境界ボックス](../cognitive-services/custom-vision-service/get-started-build-detector.md#upload-and-tag-images)で囲む必要もあります。 必要に応じて境界ボックスを調整します。 オブジェクトのタグを入力し、 **[+]** をクリックしてタグを適用します。 たとえば、店舗の棚の補充が必要な場合に通知するビジョン ソリューションを作成していたのなら、空の棚の画像に "空の棚" タグを追加します。また、在庫で埋まった棚には "埋まった棚" タグを追加します。 タグ付けされていないすべての画像で繰り返します。
 
     :::image type="content" source="./media/tutorial-nocode-vision/image-tagging.png" alt-text="Custom Vision における画像のタグ付け画面。":::
 
@@ -116,7 +116,7 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 
     :::image type="content" source="./media/tutorial-nocode-vision/train-model.png" alt-text="[トレーニング] ボタンが強調表示された状態のトレーニング画像の選択。":::
 
-1. トレーニングが完了したら、自分のモデルのパフォーマンスが画面に表示されます。 これらの結果の評価について詳しくは、[モデルの評価に関するドキュメント](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/get-started-build-detector#evaluate-the-detector)を参照してください。 トレーニング後は必要に応じて、追加の画像に基づいて[モデルをテスト](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/test-your-model)することや、再トレーニングすることもできます。 モデルはトレーニングのたびに新しい反復として保存されます。 モデルのパフォーマンスを改善する方法の詳細については、[Custom Vision のドキュメント](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)を参照してください。
+1. トレーニングが完了したら、自分のモデルのパフォーマンスが画面に表示されます。 これらの結果の評価について詳しくは、[モデルの評価に関するドキュメント](../cognitive-services/custom-vision-service/get-started-build-detector.md#evaluate-the-detector)を参照してください。 トレーニング後は必要に応じて、追加の画像に基づいて[モデルをテスト](../cognitive-services/custom-vision-service/test-your-model.md)することや、再トレーニングすることもできます。 モデルはトレーニングのたびに新しい反復として保存されます。 モデルのパフォーマンスを改善する方法の詳細については、[Custom Vision のドキュメント](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)を参照してください。
 
     :::image type="content" source="./media/tutorial-nocode-vision/iteration.png" alt-text="モデルのトレーニング結果。":::
 
@@ -143,7 +143,7 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 
 ## <a name="improve-your-model-by-setting-up-retraining"></a>再トレーニングを設定してモデルを改善する
 
-モデルのトレーニングとデバイスへのデプロイが完了したら、再トレーニングのパラメーターを設定して、より多くのトレーニング データをキャプチャすることで、モデルのパフォーマンスを向上させることができます。 この機能は、確率範囲に基づいて画像をキャプチャできるようにして、トレーニング済みのモデルのパフォーマンスを向上させるために使用されます。 たとえば、確率が低い場合にのみトレーニング画像をキャプチャするようにデバイスを設定できます。 画像の追加とトレーニング データのバランスに関する[その他のガイダンス](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)を次に示します。
+モデルのトレーニングとデバイスへのデプロイが完了したら、再トレーニングのパラメーターを設定して、より多くのトレーニング データをキャプチャすることで、モデルのパフォーマンスを向上させることができます。 この機能は、確率範囲に基づいて画像をキャプチャできるようにして、トレーニング済みのモデルのパフォーマンスを向上させるために使用されます。 たとえば、確率が低い場合にのみトレーニング画像をキャプチャするようにデバイスを設定できます。 画像の追加とトレーニング データのバランスに関する[その他のガイダンス](../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)を次に示します。
 
 1. 再トレーニングを設定するには、 **[プロジェクト]** に戻り、 **[プロジェクトの概要]** に戻ります。
 1. **[画像キャプチャ]** タブで、 **[自動画像キャプチャ]** と **[再トレーニングの設定]** を選択します。
@@ -161,6 +161,16 @@ Azure Percept Studio では、コーディングを必要とせずに、カス�
 1. **[すべてのリソース]** をクリックします。
 1. このチュートリアルで作成したリソースの横にあるチェック ボックスをオンにします。 リソースの種類は **[Cognitive Services]** として表示されます。
 1. 画面の上部近くにある **[削除]** アイコンをクリックします。
+
+## <a name="video-walkthrough"></a>ビデオ チュートリアル
+
+上記の手順を視覚的に説明するチュートリアルについては、次の動画をご覧ください。
+
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/9LvafyazlJM]
+
+</br>
 
 ## <a name="next-steps"></a>次の手順
 

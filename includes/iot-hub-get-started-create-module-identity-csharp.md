@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68883850"
 ---
 ## <a name="create-a-module-identity"></a>モジュール ID を作成する
@@ -23,15 +23,15 @@ ms.locfileid: "68883850"
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 
-1. **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択します。
+1. **[新しいプロジェクトの作成]** で、**[コンソール アプリ (.NET Framework)]** を選択します。
 
-1. **[次へ]** を選択して、 **[新しいプロジェクトの構成]** を開きます。 プロジェクトに *CreateIdentities* という名前を付け、ソリューションに *IoTHubGetStarted* という名前を付けます。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。
+1. **[次へ]** を選択して、**[新しいプロジェクトの構成]** を開きます。 プロジェクトに *CreateIdentities* という名前を付け、ソリューションに *IoTHubGetStarted* という名前を付けます。 .NET Framework のバージョンが 4.6.1 以降であることを確認します。
 
     ![Visual Studio ソリューションの名前とフレームワークの入力](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
 1. Visual Studio で、 **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[ソリューションの NuGet パッケージの管理]** を開きます。 **[参照]** タブを選択します。
 
-1. **Microsoft.Azure.Devices** を検索します。 これを選択してから、 **[インストール]** を選択します。
+1. **Microsoft.Azure.Devices** を検索します。 これを選択してから、**[インストール]** を選択します。
 
     ![Azure IoT Hub .NET service SDK の現在のバージョンをインストールする](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 

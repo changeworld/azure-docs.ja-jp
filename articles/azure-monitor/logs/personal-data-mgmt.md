@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: ff6d532d3c391ffecfbfb54a761c73ff24c823d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 03c4babc8fa70c951d80b720c4d4693968011532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040262"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772265"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
 Log Analytics は、個人データが存在する可能性が高いデータ ストアです。 Application Insights では、そのデータが Log Analytics パーティションに格納されます。 この記事では、そのようなデータがよく存在する Log Analytics および Application Insights の場所と、そのようなデータを処理するために使用できる機能について説明します。
 
 > [!NOTE]
-> この記事では、"_ログ データ_" とは Log Analytics ワークスペースに送信されるデータのことで、"_アプリケーション データ_" とは Application Insights によって収集されるデータのことです。
+> この記事では、"_ログ データ_" とは Log Analytics ワークスペースに送信されるデータのことで、"_アプリケーション データ_" とは Application Insights によって収集されるデータのことです。 ワークスペースベースの Application Insights リソースを使用している場合は、ログ データに関する情報が適用されますが、クラシック Application Insights リソースを使用している場合は、アプリケーション データが適用されます。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
+
 
 ## <a name="strategy-for-personal-data-handling"></a>個人データの処理に関する戦略
 
@@ -27,7 +28,7 @@ Log Analytics は、個人データが存在する可能性が高いデータ �
 
 * 可能であれば、データの収集をやめるか、収集されるデータの難読化または匿名化を行う。そうでない場合は、"プライベート" と見なされるデータがなくなるよう、収集されるデータを調整する。 "_圧倒的_" に望ましいのはこのアプローチです。このアプローチでは、非常にコストがかかり影響も大きいデータ処理戦略を策定する必要がありません。
 * 不可能であれば、データの正規化を試みて、データ プラットフォームやパフォーマンスへの影響を軽減します。 たとえば、明示的なユーザー ID を記録するのではなく、ユーザー名と詳細が内部 ID に関連付けられる参照データを作成し、別の場所から記録できるようにします。 そうすることで、あるユーザーから個人情報の削除を依頼された場合に、そのユーザーに対応するルックアップ テーブルの行を削除するだけで済ませることができます。 
-* 最後に、プライベート データを収集する必要がある場合は、消去 API パスと既存のクエリ API パスに関するプロセスを構築する。これにより、ユーザーに関連付けられたプライベート データのエクスポートと削除に関して発生し得る義務を満たします。 
+* 最後に、プライベート データを収集する必要がある場合は、消去 API パスと既存のクエリ API パスに関するプロセスを構築する。これにより、ユーザーに関連付けられたプライベート データのエクスポートと削除に関して発生し得る義務を満たします。
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>プライベート データは Log Analytics のどこで見つかるか
 

@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103419288"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309392"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
 
@@ -24,7 +24,7 @@ Azure Static Web Apps では、次のプロバイダーでの認証を管理す�
 - Google<sup>1</sup>
 - Twitter
 
-プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_routes.json_ ファイルに定義された規則によって [ルート](routes.md)へのアクセス権が付与されます。
+プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_staticwebapp.config.json_ ファイルに定義された規則によって[ルート](routes.md)へのアクセス権が付与されます。
 
 すべての認証プロバイダーは、既定で有効になっています。 認証プロバイダーを制限するには、カスタム ルート規則によって[アクセスをブロック](#block-an-authorization-provider)します。
 
@@ -32,18 +32,18 @@ Azure Static Web Apps では、次のプロバイダーでの認証を管理す�
 
 ## <a name="roles"></a>ロール
 
-静的 Web アプリにアクセスするすべてのユーザーは、1 つまたは複数のロールに属しています。  ユーザーは、以下の 2 つの組み込みロールに属することができます。
+静的 Web アプリにアクセスするすべてのユーザーは、1 つまたは複数のロールに属しています。 ユーザーは、以下の 2 つの組み込みロールに属することができます。
 
 - **匿名**:すべてのユーザーは自動的に "_匿名_" ロールに属します。
 - **認証済み**:ログインしているすべてのユーザーは、"_認証済み_" ロールに属します。
 
-組み込みロール以外に新しいロールを作成して、招待を使ってユーザーに割り当て、_routes.json_ ファイルで参照することができます。
+組み込みロール以外に新しいロールを作成して、招待を使ってユーザーに割り当て、_staticwebapp.config.json_ ファイルで参照することができます。
 
 ## <a name="role-management"></a>ロール管理
 
 ### <a name="add-a-user-to-a-role"></a>ユーザーをロールに追加する
 
-Web サイトにユーザーを追加するには、特定のロールにユーザーを関連付けできる招待を生成します。 ロールは、_route. json_ ファイル内で定義および管理されています。
+Web サイトにユーザーを追加するには、特定のロールにユーザーを関連付けできる招待を生成します。 ロールは、_staticwebapp.config.json_ ファイル内で定義および管理されます。
 
 <a name="invitations" id="invitations"></a>
 
@@ -53,25 +53,25 @@ Web サイトにユーザーを追加するには、特定のロールにユー�
 
 <a name="provider-user-details" id="provider-user-details"></a>
 
-| 承認プロバイダー | 公開されるユーザーの情報  |
-| ---------------------- | ----------------- |
-| Azure Active Directory | メール アドレス     |
-| Facebook               | メール アドレス     |
-| GitHub                 | username          |
-| Google<sup>1</sup>     | メール アドレス     |
-| Twitter                | username          |
+| 承認プロバイダー | 公開されるユーザーの情報 |
+| ---------------------- | ---------------- |
+| Azure Active Directory | メール アドレス    |
+| Facebook               | メール アドレス    |
+| GitHub                 | username         |
+| Google<sup>1</sup>     | メール アドレス    |
+| Twitter                | username         |
 
 1. [Azure portal](https://portal.azure.com) 上で Static Web Apps リソースに移動します。
 1. _[設定]_ 下で、 **[ロール管理]** をクリックします。
 1. **[招待]** ボタンをクリックします。
 1. オプションの一覧から _[承認プロバイダー]_ を選択します。
 1. _[Invitee details]\(招待者の詳細\)_ ボックスに、受信者のユーザー名または電子メール アドレスを追加します。
-    - GitHub および Twitter の場合は、ユーザー名を入力します。 それ以外の場合は、受信者の電子メール アドレスを入力します。
+   - GitHub および Twitter の場合は、ユーザー名を入力します。 それ以外の場合は、受信者の電子メール アドレスを入力します。
 1. _[ドメイン]_ ドロップダウンから静的サイトのドメインを選択します。
-    - 選択されたドメインは、招待に表示されるドメインになります。 サイトに関連付けられているカスタム ドメインがある場合は、そのカスタム ドメインを選択することができます。
+   - 選択されたドメインは、招待に表示されるドメインになります。 サイトに関連付けられているカスタム ドメインがある場合は、そのカスタム ドメインを選択することができます。
 1. _[ロール]_ ボックスにロール名のコンマ区切りの一覧を追加します。
 1. 招待が有効なまま維持される最大時間数を入力します。
-    - 指定できる最大上限は、168 時間 (7 日間) です。
+   - 指定できる最大上限は、168 時間 (7 日間) です。
 1. **[生成]** ボタンをクリックします。
 1. _[Invite link]\(招待リンク\)_ ボックスからリンクをコピーします。
 1. アプリへのアクセス権を付与するユーザーに招待リンクを電子メールで送信します。
@@ -156,7 +156,13 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 
 ### <a name="post-login-redirect"></a>ログイン後のリダイレクト
 
-ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに URL を指定します。
+ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに完全修飾 URL を指定します。
+
+次に例を示します。
+
+```html
+<a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a>
+```
 
 ## <a name="logout"></a>Logout
 

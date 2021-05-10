@@ -7,10 +7,10 @@ ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 707d624c47c536e00e98910a8902772703733515
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102558765"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
@@ -60,42 +60,42 @@ Durable Functions の[信頼性の高い実行モデル](./durable-functions-orc
 
 ![デプロイ スロットとストレージ アカウント](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.json の例
+### <a name="hostjson-examples&quot;></a>host.json の例
 
 次の JSON フラグメントは、*host.json* ファイルでの接続文字列の設定の例です。
 
-#### <a name="functions-20"></a>Functions 2.0
+#### <a name=&quot;functions-20&quot;></a>Functions 2.0
 
 ```json
 {
-  "version": 2.0,
-  "extensions": {
-    "durableTask": {
-      "hubName": "MyTaskHub",
-      "storageProvider": {
-        "connectionStringName": "DurableManagementStorage"
+  &quot;version&quot;: 2.0,
+  &quot;extensions&quot;: {
+    &quot;durableTask&quot;: {
+      &quot;hubName&quot;: &quot;MyTaskHub&quot;,
+      &quot;storageProvider&quot;: {
+        &quot;connectionStringName&quot;: &quot;DurableManagementStorage&quot;
       }
     }
   }
 }
 ```
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name=&quot;functions-1x&quot;></a>Functions 1.x
 
 ```json
 {
-  "durableTask": {
-    "azureStorageConnectionStringName": "DurableManagementStorage"
+  &quot;durableTask&quot;: {
+    &quot;azureStorageConnectionStringName&quot;: &quot;DurableManagementStorage&quot;
   }
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD パイプラインの構成
+### <a name=&quot;cicd-pipeline-configuration&quot;></a>CI/CD パイプラインの構成
 
 関数アプリに保留中または実行中のオーケストレーション インスタンスがない場合にのみデプロイするように、CI/CD パイプラインを構成します。 Azure Pipelines を使用する場合は、次の例のように、これらの条件がチェックされる関数を作成できます。
 
 ```csharp
-[FunctionName("StatusCheck")]
+[FunctionName(&quot;StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
     [DurableClient] IDurableOrchestrationClient client,

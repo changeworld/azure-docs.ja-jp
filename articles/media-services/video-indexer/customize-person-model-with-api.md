@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 09366dea1a0d77052b6f99e9f5ab52c270e341b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dced3cde1aae082bd64d785212b40e100013e0bf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87047006"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312894"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Video Indexer API を使用して人物モデルをカスタマイズする
 
@@ -35,7 +35,7 @@ Video Indexer では、アカウントごとに複数の人物モデルがサポ
 
 ## <a name="create-a-new-person-model"></a>新しい人物モデルを作成する
 
-指定されたアカウントで新しい人物モデルを作成するには、[Create Person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API を使用します。
+指定されたアカウントで新しい人物モデルを作成するには、[Create Person Model](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Person-Model) API を使用します。
 
 応答では、以下の例の形式に従って、先ほど作成した人物モデルの名前と生成されたモデル ID が提供されます。
 
@@ -46,11 +46,11 @@ Video Indexer では、アカウントごとに複数の人物モデルがサポ
 }
 ```
 
-その後、[インデックスを作成するためにビデオをアップロードする](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)ときや、[ビデオのインデックスを再作成する](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)ときに、**personModelId** パラメーターに **id** 値を使用します。
+その後、[インデックスを作成するためにビデオをアップロードする](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)ときや、[ビデオのインデックスを再作成する](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)ときに、**personModelId** パラメーターに **id** 値を使用します。
 
 ## <a name="delete-a-person-model"></a>人物モデルを削除する
 
-指定されたアカウントからカスタムの人物モデルを削除するには、[Delete Person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API を使用します。
+指定されたアカウントからカスタムの人物モデルを削除するには、[Delete Person Model](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Person-Model) API を使用します。
 
 人物モデルが正常に削除された後、削除されたモデルを使用していた現在のビデオのインデックスは再作成されるまで変わりません。 インデックスが再作成されると、そのモデルを使用してインデックスが作成された現在のビデオでは、削除されたモデルで名前が付けられた顔は Video Indexer によって認識されなくなります。しかし、顔は引き続き検出されます。 削除されたモデルを使用してインデックスが作成された現在のビデオでは、アカウントの既定の人物モデルが使用されるようになります。 アカウントの既定のモデルでも削除されたモデルの顔に名前が付けられている場合、それらの顔はビデオで引き続き認識されます。
 
@@ -58,7 +58,7 @@ Video Indexer では、アカウントごとに複数の人物モデルがサポ
 
 ## <a name="get-all-person-models"></a>すべての人物モデルを取得する
 
-指定されたアカウントのすべての人物モデルを取得するには、[Get Person Models](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) API を使用します。
+指定されたアカウントのすべての人物モデルを取得するには、[Get Person Models](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Person-Models) API を使用します。
 
 応答では、アカウント内のすべての人物モデル (指定されたアカウント内の既定の人物モデルを含む) のリストが提供され、以下の例の形式に従ってそれぞれの名前と ID が示されます。
 
@@ -75,7 +75,7 @@ Video Indexer では、アカウントごとに複数の人物モデルがサポ
 ]
 ```
 
-ビデオで使用するモデルは選択できます。それには、[インデックスを作成するためにビデオをアップロードする](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)とき、または[ビデオのインデックスを再作成する](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)ときに、`personModelId` パラメーターの人物モデルの `id` 値を使用します。
+ビデオで使用するモデルは選択できます。それには、[インデックスを作成するためにビデオをアップロードする](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Upload-Video)とき、または[ビデオのインデックスを再作成する](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)ときに、`personModelId` パラメーターの人物モデルの `id` 値を使用します。
 
 ## <a name="update-a-face"></a>顔を更新する
 
@@ -85,7 +85,7 @@ Video Indexer では、アカウントごとに複数の人物モデルがサポ
 
 Video Indexer で著名人として認識された顔は、新しい名前で更新できます。 指定した新しい名前は、組み込みの著名人認識より優先されます。
 
-顔を更新するには、[Update Video Face](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) API を使用します。
+顔を更新するには、[Update Video Face](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Face) API を使用します。
 
 名前は人物モデルで一意であるため、同じ人物モデルの 2 つの異なる顔に、同じ `name` パラメーター値を指定した場合、Video Indexer ではこれらの顔は同じ人物であると見なされて、それらの顔は、ビデオのインデックスを再作成するときに集約されます。
 

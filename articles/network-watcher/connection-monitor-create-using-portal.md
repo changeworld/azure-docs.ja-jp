@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: この記事では、Azure portal を使用して、接続モニターでモニターを作成する方法について説明します。
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9942b608601b495dd041a8b59aaecb3f5dd81fa7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702166"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505231"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Azure portal を使用して接続モニターでモニターを作成する
 
@@ -121,7 +121,7 @@ Azure portal において接続モニターでテスト グループを作成す
 
    * オンプレミスのエージェントを選択するには、 **[非 Azure エンドポイント]** タブを選択します。既定では、エージェントはリージョンごとにワークスペースにグループ化されます。 これらのワークスペースのすべてに、Network Performance Monitor が構成されます。 
    
-       ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 
+       ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 オンプレミスのマシン用にエージェントを構成する方法については、「[オンプレミス コンピューター用のエージェント](connection-monitor-overview.md#agents-for-on-premises-machines)」を参照してください。
    
        **[接続モニターの作成]** の **[基本]** タブでは、既定のリージョンが選択されています。 リージョンを変更する場合、新しいリージョンのワークスペースからエージェントを選択できます。 1 つ以上のエージェントまたはサブネットを選択できます。 **[サブネット]** ビューで、監視する特定の IP を選択できます。 複数のサブネットを追加すると、**OnPremises_Network_1** という名前のカスタムのオンプレミス ネットワークが作成されます。 また、**Group by** セレクターを変更して、エージェントごとにグループ化することもできます。
 
@@ -144,7 +144,7 @@ Azure portal において接続モニターでテスト グループを作成す
     
     * Azure 以外のエージェントをターゲットとして選択するには、 **[Azure 以外のエンドポイント]** タブを選択します。既定では、エージェントはリージョンごとにワークスペースにグループ化されます。 これらのワークスペースのすべてに、Network Performance Monitor が構成されます。 
     
-      ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、Azure Marketplace から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 
+      ワークスペースに Network Performance Monitor ソリューションを追加する必要がある場合は、Azure Marketplace から入手します。 Network Performance Monitor を追加する方法について詳しくは、「[Azure Monitor での監視ソリューション](../azure-monitor/insights/solutions.md)」をご覧ください。 オンプレミスのマシン用にエージェントを構成する方法については、「[オンプレミス コンピューター用のエージェント](connection-monitor-overview.md#agents-for-on-premises-machines)」を参照してください。
 
        **[接続モニターの作成]** の  **[基本]**   タブでは、既定のリージョンが選択されています。 リージョンを変更する場合、新しいリージョンのワークスペースからエージェントを選択できます。 1 つ以上のエージェントまたはサブネットを選択できます。 **[サブネット]** ビューで、監視する特定の IP を選択できます。 複数のサブネットを追加すると、**OnPremises_Network_1** という名前のカスタムのオンプレミス ネットワークが作成されます。  
 

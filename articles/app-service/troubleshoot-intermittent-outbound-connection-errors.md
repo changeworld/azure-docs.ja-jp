@@ -8,10 +8,10 @@ ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
 ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104799107"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
@@ -141,7 +141,7 @@ PHP では接続プールがサポートされていませんが、バックエ�
 
 [App Service 診断](./overview-diagnostics.md)を使用して、SNAT ポート割り当て情報を検索したり、App Service サイトの SNAT ポート割り当てメトリックを監視したりできます。 SNAT ポート割り当て情報を検索するには、次の手順に従います。
 
-1. App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com/) 上の App Service Web アプリまたは App Service 環境に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** を選択します。
+1. App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com/) 上の App Service Web アプリまたは App Service Environment に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** を選択します。
 2. [Availability and Performance] (可用性とパフォーマンス) カテゴリを選択します。
 3. カテゴリの下にある使用可能なタイルの一覧から [SNAT Port Exhaustion] (SNAT ポート枯渇) タイルを選択します。 128 未満に維持することをお勧めします。
 必要な場合、続けてサポート チケットを開くことができます。このとき、サポート エンジニアがお客様に代わってバックエンドからメトリックを取得します。

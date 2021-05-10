@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: dc17ab55cb473036d8c40bd1e533bcc20c4c6259
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00346accbccd67f542a8496ac097b0236c56a08c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92742258"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773821"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Azure CLI を使用して単一データベースを作成し、ファイアウォール規則を構成する
 
@@ -50,9 +50,9 @@ az group delete --name $resource
 
 | コマンド | 説明 |
 |---|---|
-| [az sql server](/cli/azure/sql/server#az-sql-server-create) | サーバーのコマンド。 |
-| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | サーバーのファイアウォール コマンド。 |
-| [az sql db](/cli/azure/sql/db#az-sql-db-create) | データベースのコマンド。 |
+| [az sql server](/cli/azure/sql/server#az_sql_server_create) | サーバーのコマンド。 |
+| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | サーバーのファイアウォール コマンド。 |
+| [az sql db](/cli/azure/sql/db#az_sql_db_create) | データベースのコマンド。 |
 
 ## <a name="next-steps"></a>次のステップ
 

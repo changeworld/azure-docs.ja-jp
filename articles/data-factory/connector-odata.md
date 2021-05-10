@@ -4,14 +4,14 @@ description: Azure Data Factory パイプラインでコピー アクティビ�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/30/2021
 ms.author: jingwang
-ms.openlocfilehash: 90cc4e3f9915db424cec89cfc764771b5be785e9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9dd86b4982edf5d206e64431a5e1458c4b848e9e
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389724"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968497"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -326,6 +326,48 @@ OData からデータをコピーする場合は、OData のデータ型と Azur
 
 > [!NOTE]
 > OData の複雑なデータ型 (**Object** など) はサポートされていません。
+
+## <a name="copy-data-from-project-online"></a>Project Online からデータをコピーする
+
+Project Online からデータをコピーするには、OData コネクタと、Postman などのツールで取得したアクセス トークンを使用します。
+
+> [!CAUTION]
+> 既定では、アクセス トークンは 1 時間で有効期限が切れます。有効期限が切れたときは、新しいアクセス トークンを取得する必要があります。
+
+1. **Postman** を使用してアクセス トークンを取得します。
+
+   1. Postman Web サイトの **[Authorization]** タブに移動します。
+   1. **[Type]**  ボックスで **[OAuth 2.0]** を選択し、 **[Add authorization data to]** ボックスで **[Request Headers]** を選択します。
+   1. **[Configure New Token]** ページで次の情報を入力し、新しいアクセス トークンを取得します。 
+      - **Grant type**: **[Authorization Code]** を選択します。
+      - **Callback URL**: 「`https://www.localhost.com/`」と入力します。 
+      - **Auth URL**: 「`https://login.microsoftonline.com/common/oauth2/authorize?resource=https://<your tenant name>.sharepoint.com`」と入力します。 `<your tenant name>` は自分のテナント名に置き換えます。 
+      - **Access Token URL**: 「`https://login.microsoftonline.com/common/oauth2/token`」と入力します。
+      - **Client ID**: 自分の AAD サービス プリンシパル ID を入力します。
+      - **Client Secret**: 自分のサービス プリンシパル シークレットを入力します。
+      - **Client Authentication**: **[Send as Basic Auth header]** を選択します。
+     
+   1. 自分のユーザー名とパスワードを使用してログインするように求められます。
+   1. アクセス トークンを取得したら、次の手順のためにそれをコピーして保存してください。
+   
+    [![Postman を使用してアクセス トークンを取得する](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+
+1. OData のリンクされたサービスを作成します。
+    - **Service URL**: 「`https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata`」と入力します。 `<your tenant name>` は自分のテナント名に置き換えます。 
+    - **Authentication type**: **[Anonymous]** を選択します。
+    - **Auth headers**:
+        - **Property name**: **[Authorization]** を選択します。
+        - **Value**: 手順 1 でコピーした **アクセス トークン** を入力します。
+    - リンクされたサービスをテストします。
+
+    ![OData のリンクされたサービスを作成する](./media/connector-odata/odata-project-online-linked-service.png)
+
+1. OData データセットを作成します。
+    1. 手順 2 で作成した、OData のリンクされたサービスを使用してデータセットを作成します。
+    1. データをプレビューします。
+ 
+    ![データのプレビュー](./media/connector-odata/odata-project-online-preview-data.png)
+ 
 
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ

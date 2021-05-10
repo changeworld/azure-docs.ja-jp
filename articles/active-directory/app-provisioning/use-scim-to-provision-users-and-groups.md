@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/01/2021
+ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1445e7959906966c58730521123ae03590bef1b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101652098"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305601"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>チュートリアル:SCIM エンドポイントのプロビジョニングを開発および計画する
 
@@ -62,7 +62,7 @@ SCIM 標準では、ユーザーとグループを管理するためのスキー
 **コア** ユーザー スキーマに必要な属性は 3 つだけです (それ以外の属性はすべて省略できます)。
 
 - `id` (サービス プロバイダーが定義した識別子)
-- `externalId` (クライアントで定義された識別子)
+- `userName` (ユーザーの一意識別子。通常、Azure AD ユーザー プリンシパル名にマップされます)
 - `meta` (サービス プロバイダーによって管理される *読み取り専用* のメタデータ)
 
 **コア** ユーザー スキーマに加えて、SCIM 標準では、**エンタープライズ** ユーザー拡張機能と、アプリケーションのニーズに合わせてユーザー スキーマを拡張するためのモデルが定義されています。 
@@ -168,10 +168,10 @@ SCIM RFC では複数のエンドポイントが定義されています。 `/Us
 |--|--|
 |/User|ユーザー オブジェクトに対して CRUD 操作が実行されます。|
 |/Group|グループ オブジェクトに対して CRUD 操作が実行されます。|
-|/ServiceProviderConfig|サポートされているリソースや認証方法など、サポートされている SCIM 標準の機能についての詳細が提供されます。|
-|/ResourceTypes|各リソースに関するメタデータが指定されます|
 |/Schemas|各クライアントおよびサービス プロバイダーによってサポートされている属性のセットは、異なる場合があります。 たとえば、あるサービス プロバイダーに `name`、`title`、`emails` が含まれ、別のサービス プロバイダーに `name`、`title`、`phoneNumbers` が使用されることがあります。 スキーマ エンドポイントにより、サポートされている属性を検出できます。|
 |/Bulk|一括操作を使用すると、1 回の操作でリソース オブジェクトの大きなコレクションに対する操作を実行できます (たとえば、大きなグループのメンバーシップの更新)。|
+|/ServiceProviderConfig|サポートされているリソースや認証方法など、サポートされている SCIM 標準の機能についての詳細が提供されます。|
+|/ResourceTypes|各リソースに関するメタデータを指定します。|
 
 **エンドポイントの例一覧**
 
@@ -198,6 +198,7 @@ SCIM RFC では複数のエンドポイントが定義されています。 `/Us
 |グループ リソースの照会時に、フィルター [excludedAttributes=members](#get-group) を使用する|セクション 3.4.2.5|
 |アプリケーションに対する AAD の認証と認可のために、単一のベアラー トークンを受け入れる。||
 |ユーザー `active=false` の論理削除とユーザー `active=true` の復元を行う|ユーザーがアクティブかどうかに関係なく、要求でユーザー オブジェクトが返される必要があります。 ユーザーが返されないのは、アプリケーションから完全削除されているときです。|
+|/Schemas エンドポイントをサポートする|[セクション 7](https://tools.ietf.org/html/rfc7643#page-30) スキーマ検出エンドポイントは、追加の属性を検出する際に使用されます。|
 
 AAD との互換性を確保するために、SCIM エンドポイントの実装時は次の一般的なガイドラインに従ってください。
 
@@ -210,7 +211,12 @@ AAD との互換性を確保するために、SCIM エンドポイントの実�
 * Microsoft AAD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続** フローの一部としても行われます。 
 * リソースの照会が可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。[ユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)に関するページを参照してください。
 * SCIM エンドポイントで HTTPS をサポートする
-
+* [スキーマ検出](#schema-discovery)
+  * スキーマの検出は、カスタム アプリケーションでは現在サポートされていませんが、ある特定のギャラリー アプリケーションでは使用されています。 今後は、コネクタに属性を追加するための主要な手段としてスキーマ検出が使用されます。 
+  * 値が存在しない場合でも、null 値を送信しないでください。
+  * プロパティ値はキャメル ケース (例: readWrite) にする必要があります。
+  * リストの応答を返す必要があります。
+  
 ### <a name="user-provisioning-and-deprovisioning"></a>ユーザーのプロビジョニングとプロビジョニング解除
 
 次の図は、アプリケーションの ID ストア内にあるユーザーのライフサイクルを管理するために AAD から SCIM サービスに送信されるメッセージを示しています。  
@@ -252,6 +258,9 @@ AAD との互換性を確保するために、SCIM エンドポイントの実�
   - [グループの更新 [メンバーの追加]](#update-group-add-members) ([要求](#request-11) / [応答](#response-11))
   - [グループの更新 [メンバーの削除]](#update-group-remove-members) ([要求](#request-12) / [応答](#response-12))
   - [グループの削除](#delete-group) ([要求](#request-13) / [応答](#response-13))
+
+[スキーマ検出](#schema-discovery)
+  - [スキーマの検出](#discover-schema) ([要求](#request-15) / [応答](#response-15))
 
 ### <a name="user-operations"></a>ユーザー操作
 
@@ -750,6 +759,105 @@ AAD との互換性を確保するために、SCIM エンドポイントの実�
 
 *HTTP/1.1 204 No Content*
 
+### <a name="schema-discovery"></a>スキーマ検出
+#### <a name="discover-schema"></a>スキーマの検出
+
+##### <a name="request"></a><a name="request-15"></a>要求
+*GET /Schemas* 
+##### <a name="response"></a><a name="response-15"></a>応答
+*HTTP/1.1 200 OK*
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "itemsPerPage": 50,
+    "startIndex": 1,
+    "totalResults": 3,
+    "Resources": [
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:User",
+    "name" : "User",
+    "description" : "User Account",
+    "attributes" : [
+      {
+        "name" : "userName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Unique identifier for the User, typically
+used by the user to directly authenticate to the service provider.
+Each User MUST include a non-empty userName value.  This identifier
+MUST be unique across the service provider's entire set of Users.
+REQUIRED.",
+        "required" : true,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "server"
+      },                
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "name" : "Group",
+    "description" : "Group",
+    "attributes" : [
+      {
+        "name" : "displayName",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "A human-readable name for the Group.
+REQUIRED.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+        "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:Group"
+    }
+  },
+  {
+    "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Schema"],
+    "id" : "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+    "name" : "EnterpriseUser",
+    "description" : "Enterprise User",
+    "attributes" : [
+      {
+        "name" : "employeeNumber",
+        "type" : "string",
+        "multiValued" : false,
+        "description" : "Numeric or alphanumeric identifier assigned
+to a person, typically based on order of hire or association with an
+organization.",
+        "required" : false,
+        "caseExact" : false,
+        "mutability" : "readWrite",
+        "returned" : "default",
+        "uniqueness" : "none"
+      },
+    ],
+    "meta" : {
+      "resourceType" : "Schema",
+      "location" :
+"/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+    }
+  }
+]
+}
+```
+
 ### <a name="security-requirements"></a>セキュリティ要件
 **TLS プロトコルのバージョン**
 
@@ -1221,9 +1329,9 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 > * アプリケーションの 3 つの無期限のテスト資格情報 (必須)
 > * 次に示すように、OAuth 承認コードの付与または有効期間が長いトークンをサポートする (必須)
 > * 顧客のギャラリー オンボード後のサポートを行うエンジニアリングとサポートの連絡先を確立する (必須)
+> * [スキーマ検出をサポートする (必須)](https://tools.ietf.org/html/rfc7643#section-6)
 > * 1 つの PATCH で複数のグループ メンバーシップの更新をサポートする
 > * SCIM エンドポイントを公開文書化する
-> * [スキーマ検出をサポートする](https://tools.ietf.org/html/rfc7643#section-6)
 
 ### <a name="authorization-to-provisioning-connectors-in-the-application-gallery"></a>アプリケーション ギャラリーでプロビジョニング コネクタを認可する
 SCIM 仕様では、SCIM 固有の認証と認可のスキームは定義されておらず、既存の業界標準の使用に依存しています。

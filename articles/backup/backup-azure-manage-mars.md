@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4306f01d608542f7453b32b32a1a6894c2379159
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97368598"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515024"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -196,7 +196,7 @@ MARS エージェントの動作との競合を避けるために、ウイルス
 
 1. **パスの除外の追加**:パフォーマンスの低下を防ぎ、発生する可能性がある競合を回避するには、ウイルス対策ソフトウェアによるリアルタイム監視から次のパスを除外します。
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` およびそのサブフォルダー
-    1. **スクラッチ フォルダー**:スクラッチ フォルダーが標準の場所にない場合は、これも除外対象に追加します。  スクラッチ フォルダーの場所を特定する手順については、[こちらを参照](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)してください。
+    1. **スクラッチ フォルダー**:スクラッチ フォルダーが標準の場所にない場合は、これも除外対象に追加します。  スクラッチ フォルダーの場所を特定する手順については、[こちらを参照](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-)してください。
 1. **バイナリ除外の追加**:バックアップとコンソールの動作が低下しないようにするには、ウイルス対策ソフトウェアによるリアルタイムの監視から、次のバイナリのプロセスを除外します。
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
 
@@ -207,4 +207,4 @@ MARS エージェントの動作との競合を避けるために、ウイルス
 
 - サポートされるシナリオと制限事項については、[MARS エージェントのサポート マトリックス](./backup-support-matrix-mars-agent.md)に関するページを参照してください。
 - [オンデマンド バックアップ ポリシーの保持動作](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)の詳細を確認します。
-- よく寄せられる質問については、「[MARS エージェントに関する FAQ](backup-azure-file-folder-backup-faq.md)」を参照してください。
+- よく寄せられる質問については、「[MARS エージェントに関する FAQ](backup-azure-file-folder-backup-faq.yml)」を参照してください。

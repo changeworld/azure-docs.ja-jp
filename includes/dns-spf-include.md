@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67181806"
 ---
 Sender Policy Framework (SPF) レコードは、ドメイン名を使って電子メールを送信することができる電子メール サーバーを指定するために使用されます。 送信した電子メールが受信者に迷惑メールとして分類されないようにするには、SPF レコードを正しく構成することが重要です。

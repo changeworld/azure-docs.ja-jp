@@ -4,12 +4,12 @@ description: この記事では、Container insights で Azure AKS クラスタ�
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eab34f27d1e33b166971203082cce99fb2b0e106
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 619b6fc4cce860e5869fd0b31e303b4a474f8428
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101723539"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774019"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-container-insights"></a>Container insights による Azure Kubernetes Service (AKS) の監視を停止する方法
 
@@ -18,7 +18,7 @@ AKS クラスターの監視を有効にした後、監視する必要がなく�
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Container insights を無効にするには、[az aks disable-addons](/cli/azure/aks#az-aks-disable-addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Azure Monitor リソースに格納されているデータは削除されません。  
+Container insights を無効にするには、[az aks disable-addons](/cli/azure/aks#az_aks_disable_addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Azure Monitor リソースに格納されているデータは削除されません。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG

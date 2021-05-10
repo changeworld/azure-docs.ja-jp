@@ -11,12 +11,12 @@ ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: e5053bd0c3d63b13b1021476a09dca39dd08f581
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798716"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108759"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド同期のパイロットを実施する 
 
@@ -39,7 +39,7 @@ ms.locfileid: "104798716"
 このチュートリアルを完了するために必要な前提条件を次に示します。
 - Azure AD Connect 同期バージョン 1.4.32.0 以降がインストールされたテスト環境
 - 同期のスコープに含まれ、かつパイロットを使用できる OU またはグループ。 少数のオブジェクトから始めることをお勧めします。
-- プロビジョニング エージェントのホストとなる Windows Server 2012 R2 以降を実行するサーバー。  Azure AD Connect サーバーと同じサーバーは使用できません。
+- プロビジョニング エージェントのホストとなる Windows Server 2012 R2 以降を実行するサーバー。
 - Azure AD Connect 同期のソース アンカーが *objectGuid* または *ms-ds-consistencyGUID* であること。
 
 ## <a name="update-azure-ad-connect"></a>Azure AD Connect を更新する

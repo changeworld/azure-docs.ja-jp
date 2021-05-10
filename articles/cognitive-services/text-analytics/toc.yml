@@ -5,10 +5,38 @@
   items:
     - name: Text Analytics API とは
       href: overview.md
-    - name: ユーザー シナリオの例
-      href: text-analytics-user-scenarios.md
+    - name: 言語のサポート
+      href: language-support.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 新機能
       href: whats-new.md
+    - name: Text Analytics の FAQ
+      href: text-analytics-resource-faq.md
+- name: クイックスタート
+  href: quickstarts/client-libraries-rest-api.md
+- name: サンプル
+  items:
+    - name: v3.0
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.0.0/sdk/textanalytics/ai-text-analytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples'
+    - name: v3.1-preview
+      items:
+        - name: C#
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Python
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples'
+        - name: Java
+          href: 'https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics'
+        - name: JavaScript
+          href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples'
 - name: AI の責任ある使用
   items:
     - name: 透明性に関するメモ
@@ -28,37 +56,6 @@
     - name: 統合と責任ある使用
       href: /legal/cognitive-services/text-analytics/guidance-integration-responsible-use?context=/azure/cognitive-services/text-analytics/context/context
       displayName: 'Responsible deployment, Responsible use, Responsible integration, AI deployment, AI use'
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: クライアント ライブラリと REST API を使用する
-      href: quickstarts/client-libraries-rest-api.md
-- name: チュートリアル
-  items:
-    - name: Power BI を統合して顧客からのフィードバックを分析する
-      href: Tutorials/tutorial-power-bi-key-phrases.md
-    - name: Text Analytics と Power Apps
-      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
-    - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
-      maintainContext: true
-      href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services
-    - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
-      maintainContext: true
-      href: ../translator/tutorial-build-flask-app-translation-synthesis.md
-    - name: Power Automate を使用して Excel に情報を抽出する
-      href: tutorials/extract-excel-information.md
-- name: 概念
-  items:
-    - name: 名前付きエンティティの種類
-      href: named-entity-types.md
-    - name: 言語のサポート
-      href: language-support.md
-    - name: テキスト オフセット
-      href: concepts/text-offsets.md
-    - name: データ制限
-      href: concepts/data-limits.md
-    - name: モデルのバージョン管理
-      href: concepts/model-versioning.md
 - name: 操作方法ガイド
   items:
     - name: Text Analytics API を呼び出す
@@ -69,8 +66,9 @@
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
     - name: キー フレーズの抽出
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: 名前付きエンティティの認識
+    - name: 固有表現認識と PII
       href: How-tos/text-analytics-how-to-entity-linking.md
+      displayName: 'NER, Named entity recognition, PII, redaction'
     - name: Text Analytics for Health
       href: How-tos/text-analytics-for-health.md
     - name: コンテナーの使用
@@ -86,14 +84,42 @@
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
         - name: Cognitive Services コンテナーのドキュメント
           href: ../containers/index.yml
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/text-analytics/context/context
+        - name: Azure AD 認証を使用する
+          href: ../authentication.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: API のバージョン 3 への移行
       href: migration-guide.md
+- name: 概念
+  items:
+    - name: ユーザー シナリオの例
+      href: text-analytics-user-scenarios.md
+    - name: 名前付きエンティティの種類
+      href: named-entity-types.md
+    - name: Unicode エンコードとテキスト オフセット
+      href: concepts/text-offsets.md
+    - name: データ制限
+      href: concepts/data-limits.md
+    - name: モデルのバージョン管理
+      href: concepts/model-versioning.md
+- name: チュートリアル
+  items:
+    - name: Power BI を統合して顧客からのフィードバックを分析する
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Text Analytics と Power Apps
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+    - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
+      maintainContext: true
+      href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services
+    - name: Flask によるテキストの翻訳、センチメントの分析、音声の合成
+      maintainContext: true
+      href: ../translator/tutorial-build-flask-app-translation-synthesis.md
+    - name: Power Automate を使用して Excel に情報を抽出する
+      href: tutorials/extract-excel-information.md
 - name: リファレンス
   items:
-    - name: CLI リファレンス
-      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
-    - name: PowerShell リファレンス
-      href: /powershell/module/azurerm.cognitiveservices/
     - name: Text Analytics API
       items:
         - name: v3.1.preview.3
@@ -104,6 +130,16 @@
           href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1'
     - name: SDK
       items:
+        - name: v3.1-preview
+          items:
+            - name: .NET
+              href: /dotnet/api/azure.ai.textanalytics?view=azure-dotnet-preview
+            - name: Python
+              href: /python/api/azure-ai-textanalytics/azure.ai.textanalytics?view=azure-python-preview
+            - name: Java
+              href: /java/api/overview/azure/ai-textanalytics-readme?view=azure-java-preview
+            - name: Node.js
+              href: /javascript/api/overview/azure/ai-text-analytics-readme?view=azure-node-preview
         - name: v3.0
           items:
             - name: .NET
@@ -126,19 +162,19 @@
               href: /javascript/api/@azure/cognitiveservices-textanalytics/
             - name: Go
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
+    - name: CLI リファレンス
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell リファレンス
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: リソース
   items:
-    - name: サポートとヘルプのオプション
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/text-analytics/context/context
     - name: 外部とコミュニティのコンテンツ
       href: text-analytics-resource-external-community.md
-    - name: よく寄せられる質問
-      href: text-analytics-resource-faq.md
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 試してみる
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'

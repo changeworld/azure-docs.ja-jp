@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 22e948a0100f23dbddef8fc138576bb4b9372c77
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100363204"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168163"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
 
@@ -59,7 +59,7 @@ IoT Central アプリケーションでは、デバイス テンプレートは�
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>デバイス カタログからデバイス テンプレートを作成する
 
-ビルダーは、認定デバイスを使用してソリューションの構築をすぐに開始できます。 [Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/alldevices)で一覧を参照してください。 IoT Central はデバイス カタログと統合されているため、これらのどの認定デバイスからでもデバイス モデルをインポートすることができます。 IoT Central でこれらのデバイスのいずれかからデバイス テンプレートを作成するには、次の手順を実行します。
+ビルダーは、認定デバイスを使用してソリューションの構築をすぐに開始できます。 [Azure IoT デバイス カタログ](https://devicecatalog.azure.com)で一覧を参照してください。 IoT Central はデバイス カタログと統合されているため、これらのどの認定デバイスからでもデバイス モデルをインポートすることができます。 IoT Central でこれらのデバイスのいずれかからデバイス テンプレートを作成するには、次の手順を実行します。
 
 1. IoT Central アプリケーションの **[デバイス テンプレート]** ページに移動します。
 1. **[+ 新規]** を選択し、カタログから任意の認定デバイスを選択します。 IoT Central は、このデバイス モデルに基づいてデバイス テンプレートを作成します。

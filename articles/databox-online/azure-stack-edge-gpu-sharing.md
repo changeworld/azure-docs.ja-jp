@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 6683e39cfa3601b1ae1fbbe02e69e4dc0a54e8e7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564633"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645243"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの GPU 共有
 
-グラフィックス処理装置 (GPU) は、グラフィックス レンダリングを高速化するために設計された特殊なプロセッサです。 GPU によって多くのデータを同時に処理できるため、機械学習、ビデオ編集、およびゲーム アプリケーションに役立ちます。 汎用コンピューティング用の CPU に加えて、Azure Stack Edge Pro GPU デバイスには、ハードウェア アクセラレータによる推論などのコンピューティング集中型のワークロードに対して、1 つまたは 2 つの Nvidia Tesla T4 GPU を搭載できます。 詳細については、[Nvidia の Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/) に関するページを参照してください。
+グラフィックス処理装置 (GPU) は、グラフィックス レンダリングを高速化するために設計された特殊なプロセッサです。 GPU によって多くのデータを同時に処理できるため、機械学習、ビデオ編集、およびゲーム アプリケーションに役立ちます。 汎用コンピューティング用の CPU に加えて、Azure Stack Edge Pro GPU デバイスには、ハードウェア アクセラレータによる推論などのコンピューティング集中型のワークロードに対して、1 つまたは 2 つの Nvidia Tesla T4 GPU を搭載できます。 詳細については、[Nvidia の Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) に関するページを参照してください。
 
 
 ## <a name="about-gpu-sharing"></a>GPU 共有について

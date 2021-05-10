@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/18/2020
+ms.date: 03/22/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: fa9861dd1ffbdd33f59abe76c7ebbd1befe3e7a6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511341"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799430"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールをアクティブ化する
 
@@ -110,11 +110,7 @@ Azure AD ロールを想定する必要がある場合は、Privileged Identity 
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 
-Privileged Identity Management でロールをアクティブ化しても、アクティブ化が、特権ロールを必要とするすべてのポータルに直ちには伝播されない可能性があります。 場合によっては、変更が伝達されても、ポータルにおける Web キャッシュが原因で、変更がすぐに有効にならないことがあります。 アクティブ化が遅延している場合は、次の手順を行ってください。
-
-1. Azure portal からサインアウトした後に、もう一度サインインします。
-
-1. Privileged Identity Management で、自分がそのロールのメンバーとして一覧表示されていることを確認します。
+Privileged Identity Management でロールをアクティブ化しても、アクティブ化が、特権ロールを必要とするすべてのポータルに直ちには伝播されない可能性があります。 場合によっては、変更が伝達されても、ポータルにおける Web キャッシュが原因で、変更がすぐに有効にならないことがあります。 アクティブ化が遅れている場合は、操作を実行しようとしているポータルからサインアウトしてから、もう一度サインインします。 Azure portal では、PIM により自動的にサインアウトし、もう一度サインインが行われます。
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
 
@@ -216,13 +212,7 @@ Azure AD ロールを引き受ける必要がある場合は、Privileged Identi
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 
-Privileged Identity Management でロールをアクティブ化しても、アクティブ化が、特権ロールを必要とするすべてのポータルに直ちには伝播されない可能性があります。 場合によっては、変更が伝達されても、ポータルにおける Web キャッシュが原因で、変更がすぐに有効にならないことがあります。 アクティブ化が遅延している場合は、次の手順を行ってください。
-
-1. Azure portal からサインアウトした後に、もう一度サインインします。
-
-    Azure AD ロールをアクティブにすると、アクティブ化の各ステージが順次表示されます。 すべてのステージが完了すると、 **[サインアウト]** リンクが表示されます。 このリンクを使用してサインアウトできます。これにより、ほとんどの場合、アクティブ化の遅延は解決します。
-
-1. Privileged Identity Management で、自分がそのロールのメンバーとして一覧表示されていることを確認します。
+Privileged Identity Management でロールをアクティブ化する場合、Office 365 ポータルなど、Azure portal 以外の管理ポータルでアクティブ化が遅れる場合があります。 アクティブ化が遅れる場合は、そのポータルからサインアウトし、もう一度サインインします。 その後、Privileged Identity Management を使用して、自分がそのロールのメンバーとして一覧表示されていることを確認します。
 
  ---
 

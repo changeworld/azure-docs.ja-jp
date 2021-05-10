@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102209562"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951744"
 ---
 # <a name="managed-hsm-role-management"></a>Managed HSM のロール管理
 
@@ -33,7 +33,7 @@ Managed HSM の概要については、[Managed HSM の概要](overview.md)に�
 この記事にある Azure CLI コマンドを使用するには、以下を用意する必要があります。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* Azure CLI バージョン 2.12.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+* Azure CLI バージョン 2.21.0 以降。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 * お使いのサブスクリプション内のマネージド HSM。 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM をプロビジョニングしてアクティブにします。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -113,6 +113,70 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 ```azurecli-interactive
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
+
+## <a name="create-a-new-role-definition"></a>新しいロール定義を作成する
+
+マネージド HSM には、最も一般的な使用シナリオに役立ついくつかの組み込み (定義済み) のロールがあります。 ロールでの実行が許可される特定のアクションの一覧を使用して、独自のロールを定義できます。 次に、このロールをプリンシパルに割り当てることによって、指定されたアクションに対するアクセス許可をプリンシパルに付与することができます。 
+
+JSON 文字列を使用して **My Custom Role** という名前のロールを作成するには、`az keyvault role definition create` コマンドを使用します。
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+    "roleName": "My Custom Role",
+    "description": "The description of the custom rule.",
+    "actions": [],
+    "notActions": [],
+    "dataActions": [
+        "Microsoft.KeyVault/managedHsm/keys/read/action"
+    ],
+    "notDataActions": []
+}'
+```
+
+ロール定義用の JSON 文字列を含む **my-custom-role-definition.json** という名前のファイルからロールを作成するには、`az keyvault role definition create` コマンドを使用します。 (上記の例を参照)。
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition @my-custom-role-definition.json
+```
+
+## <a name="show-details-of-a-role-definition"></a>ロール定義の詳細を表示する
+
+名前 (GUID) を使用して特定のロールの定義の詳細を表示するには、`az keyvault role definition show` コマンドを使用します。
+
+```azurecli-interactive
+az keyvault role definition show --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+## <a name="update-a-custom-role-definition"></a>カスタムのロールの定義を更新する
+
+JSON 文字列を使用して **My Custom Role** という名前のロールを更新するには、`az keyvault role definition update` コマンドを使用します。
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+            "roleName": "My Custom Role",
+            "name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "id": "Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-
+        xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "The description of the custom rule.",
+            "actions": [],
+            "notActions": [],
+            "dataActions": [
+                "Microsoft.KeyVault/managedHsm/keys/read/action",
+                "Microsoft.KeyVault/managedHsm/keys/write/action",
+                "Microsoft.KeyVault/managedHsm/keys/backup/action",
+                "Microsoft.KeyVault/managedHsm/keys/create"
+            ],
+            "notDataActions": []
+        }'
+```
+
+## <a name="delete-custom-role-definition"></a>カスタムのロール定義の削除
+
+名前 (GUID) を使用して特定のロールの定義の詳細を表示するには、`az keyvault role definition delete` コマンドを使用します。 
+```azurecli-interactive
+az keyvault role definition delete --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+> [!NOTE]
+> 組み込みロールは削除できません。 カスタム ロールを削除すると、そのカスタム ロールが使用されているすべてのロール割り当てが機能しなくなります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

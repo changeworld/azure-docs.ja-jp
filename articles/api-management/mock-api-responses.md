@@ -3,16 +3,16 @@ title: チュートリアル - API Management で API の応答の模擬テス�
 description: このチュートリアルでは、実際の応答を送信するバックエンドが利用できない場合にモック応答が返されるよう、API Management を使用して API のポリシーを設定します。
 author: vladvino
 ms.service: api-management
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 75727d139242e1b537505d2ed907ae20fc5479f8
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100547266"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587597"
 ---
 # <a name="tutorial-mock-api-responses"></a>チュートリアル:API の応答の模擬テストを実行する
 

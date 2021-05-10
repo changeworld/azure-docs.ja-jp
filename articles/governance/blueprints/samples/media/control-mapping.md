@@ -1,18 +1,18 @@
 ---
 title: メディア ブループリント サンプル コントロール
 description: メディア ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 01/08/2021
+ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98035038"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376700"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルのコントロール マッピング
 
-以下の記事は、Azure Blueprints メディア ブループリント サンプルがメディア コントロールにどのようにマップされているかを説明したものです。 コントロールの詳細については、[メディア](https://www.hhs.gov/hipaa/for-professionals/security/laws-regulations/index.html)に関するページを参照してください。
+以下の記事は、Azure Blueprints メディア ブループリント サンプルがメディア コントロールにどのようにマップされているかを説明したものです。 コントロールの詳細については、[メディア](https://www.motionpictures.org/best-practices)に関するページを参照してください。
 
 以下のマッピングは、**メディア** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:Audit Media controls** built-in policy initiative]\(プレビュー: メディア コントロール ビルトイン ポリシー イニシアチブの監査\)。
 

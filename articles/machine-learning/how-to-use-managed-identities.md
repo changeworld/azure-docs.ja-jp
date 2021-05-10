@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a7efd57100ad89fa9824b7a635e11698515e13ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102521018"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642417"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
@@ -234,7 +234,7 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 
 ワークスペースを作成する際は、関連付けられているリソースにアクセスするために使用される、ユーザー割り当てのマネージド ID を指定できます。ACR、KeyVault、Storage、および App Insights。
 
-最初に[ユーザー割り当てのマネージド ID を作成](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])し、マネージド ID の ARM リソース ID を書き留めます。
+最初に[ユーザー割り当てのマネージド ID を作成](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)し、マネージド ID の ARM リソース ID を書き留めます。
 
 その後、Azure CLI または Python SDK を使用してワークスペースを作成します。 CLI を使用する場合は、`--primary-user-assigned-identity` パラメーターを使用して ID を指定します。 SDK を使用する場合は、`primary_user_assigned_identity` を使用します。 次に、これらのパラメーターを使用して新しいワークスペースを作成するための Azure CLI と Python の使用例を示します。
 

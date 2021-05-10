@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a2a69b5013ab8e1bc4637f21ce484a132d37834
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8af1a5e73592dc1c3392f0bc1fecfe6139a54710
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455714"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529832"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -91,6 +91,7 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 > - 有効期限を初めて設定すると、有効期限の間隔よりも古いグループは、グループが自動的に更新されるか所有者が更新しない限り、有効期限まで 35 日間に設定されます。
 > - 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかります。
 > - Teams で使用されるグループの有効期限の通知は、Teams の所有者フィードに表示されます。
+> - 選択したグループの有効期限を有効にすると、最大 500 のグループを一覧に追加できます。 500 を超えるグループを追加する必要がある場合は、すべてのグループの有効期限を有効にすることができます。 このシナリオでは、500 グループの制限は適用されません。
 
 ## <a name="email-notifications"></a>メール通知
 
@@ -110,7 +111,7 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Microsoft 365 グループの有効期限日を取得する方法
 
-Microsoft 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](/graph/api/group-get?view=graph-rest-beta#example)を参照してください。
+Microsoft 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true)を参照してください。
 
 > [!NOTE]
 > アクセス パネルでグループのメンバーシップを管理するには、Azure Active Directory の [Groups General Setting]\(グループの全般設定\) で [Restrict access to Groups in Access Panel]\(アクセス パネルのグループへのアクセスを制限する\) を [いいえ] に設定する必要があります。
@@ -172,7 +173,7 @@ PowerShell コマンドレットを使用して、Azure AD 組織の Microsoft 3
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?view=azureadps-2.0-preview#groups)を参照してください。
+次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#groups)を参照してください。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

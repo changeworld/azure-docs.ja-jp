@@ -4,12 +4,12 @@ description: Service Fabric クラスターの計画時に考慮する必要が�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9268dfef15d8302eb31cc1b649c7fd713aab6721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714937"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732586"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -111,7 +111,7 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 * 持続性レベルが Gold または Silver である任意の仮想マシン スケール セットのノードを最小数である 5 つ保持します。 このしきい値を超えてスケールインした場合には、クラスターがエラー状態になり、削除されたノードの状態 (`Remove-ServiceFabricNodeState`) を手動でクリーンアップする必要があります。
 * 持続性レベルが Silver または Gold の各仮想マシン スケール セットは、Service Fabric クラスター内の独自のノード タイプにマップする必要があります。 複数の仮想マシン スケール セットを 1 つのノード タイプにマッピングすると、Service Fabric クラスターと Azure インフラストラクチャ間の連携が正常に動作しなくなります。
 * VM インスタンスをランダムに削除せず、仮想マシン スケール セットのスケール イン機能を常に使用してください。 ランダムな VM インスタンスを削除すると、[アップグレード ドメイン](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains)と[障害ドメイン](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)にわたって散在する VM インスタンスで不均衡が生じる可能性があります。 この不均衡は、サービス インスタンス/サービス レプリカ間で適切に負荷分散を行うシステムの機能に悪影響を及ぼす場合があります。
-* 自動スケーリングを使用する場合は、スケールイン (VM インスタンスの削除) 操作が一度に 1 ノードでのみ実行されるようにルールを設定します。 一度に複数のインスタンスをスケールダウンすることは安全ではありません。
+* 自動スケーリングを使用する場合は、スケールイン (VM インスタンスの削除) 操作が一度に 1 ノードでのみ実行されるようにルールを設定します。 一度に複数のインスタンスをスケールインすることは安全ではありません。
 * プライマリ ノード タイプで VM の削除または割り当て解除を行う場合は、割り当てられる VM の数を、その信頼性レベルで必要な数未満まで減らさないようにします。 これらの操作は、持続性レベルが Silver または Gold のスケール セットでは無期限にブロックされます。
 
 ### <a name="changing-durability-levels"></a>持続性レベルの変更

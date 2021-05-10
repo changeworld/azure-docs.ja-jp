@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 0aee6030e5608b5413864d6a32dc8442dd346f42
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 68d90fa56d5dce902a44a32b322e582a81e419d5
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100392784"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011640"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマとデータ型のマッピング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "100392784"
 
 ### <a name="default-mapping"></a>既定のマッピング
 
-既定では、アクティビティ マップ ソース データを **列名で** (大文字と小文字を区別して) シンクにコピーします。 ファイルへの書き込みなど、シンクが存在しない場合、ソース フィールド名はシンク名として保持されます。 このような既定のマッピングでは、柔軟なスキーマがサポートされ、実行から実行へ、ソースからシンクへのスキーマ ドリフトが行われ、ソース データ ストアから返されるすべてのデータをシンクにコピーできます。
+既定では、アクティビティ マップ ソース データを **列名で** (大文字と小文字を区別して) シンクにコピーします。 ファイルへの書き込みなど、シンクが存在しない場合、ソース フィールド名はシンク名として保持されます。 シンクが既に存在する場合は、ソースからコピーされるすべての列が含まれている必要があります。 このような既定のマッピングでは、柔軟なスキーマがサポートされ、実行から実行へ、ソースからシンクへのスキーマ ドリフトが行われ、ソース データ ストアから返されるすべてのデータをシンクにコピーできます。
 
 ソースが、ヘッダー行のないテキスト ファイルの場合は、ソースに列名が含まれていないため、[明示的なマッピング](#explicit-mapping)が必要です。
 

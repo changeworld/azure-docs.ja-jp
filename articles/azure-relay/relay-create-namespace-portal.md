@@ -3,12 +3,12 @@ title: Azure Portal を使用して Relay 名前空間を作成する | Microsof
 description: この記事では、Azure portal を使用して Relay 名前空間を作成する方法を段階的に説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c26928d2ee53a5c76ff982b5d57b59f9a7a8ab8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 758e63c933b864ac5a77889f4addac4a468baafd
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85316995"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304530"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Azure Portal を使用した Relay 名前空間の作成
 
@@ -25,7 +25,7 @@ ms.locfileid: "85316995"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Relay に関する FAQ](relay-faq.md)
+* [Relay に関する FAQ](relay-faq.yml)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)
 

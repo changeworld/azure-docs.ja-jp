@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b7f79bebce5a086b268f4fc1080c33517555fb39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c1cf6e1d47f9bb78349e0846f624e1d6a484669
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102431544"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386682"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -276,6 +276,10 @@ ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エ
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>ハブは、Virtual WAN 内の別のリソース グループに作成できますか。
 
 はい。 このオプションは、現在、PowerShell を介してのみ使用可能です。 Virtual WAN ポータルでは、ハブが仮想 WAN リソース自体と同じリソース グループに含まれている必要があります。
+
+### <a name="what-is-the-recommended-hub-address-space-during-hub-creation"></a>ハブの作成時に推奨されるハブのアドレス空間は何ですか。
+
+推奨される Virtual WAN ハブのアドレス空間は /23 です。 Virtual WAN ハブは、さまざまなゲートウェイ (ExpressRoute、サイト間 VPN、ポイント対サイト VPN、Azure Firewall、仮想ハブ ルーター) にサブネットを割り当てます。 NVA が仮想ハブ内にデプロイされているシナリオでは、通常、NVA インスタンスに対して /28 が分割されます。 ただし、ユーザーが複数の NVA をプロビジョニングする場合は、/27 サブネットが割り当てられる可能性があります。 そのため、将来のアーキテクチャを念頭に置いて、Virtual WAN ハブのデプロイには /24 の最小サイズが使用されていますが、作成時にユーザーが入力するハブのアドレス空間の推奨値は /23 です。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 

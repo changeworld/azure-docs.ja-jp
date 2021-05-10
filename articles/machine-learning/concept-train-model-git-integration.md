@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 11/16/2020
-ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 04/08/2021
+ms.openlocfilehash: 2dc50702113f591075b790878347c4ca47beec4e
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547851"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027807"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -25,6 +25,11 @@ Azure Machine Learning は、作業を追跡するために Git リポジトリ�
 ジョブを Azure Machine Learning に送信するとき、ソース ファイルがローカル git リポジトリに格納されていれば、リポジトリに関する情報がトレーニング プロセスの一部として追跡されます。
 
 Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスから複製できます。
+
+> [!TIP]
+> グラフィカル ユーザーインターフェイスを使用して Git と対話するには、Visual Studio Code を使用します。 Visual Studio Code を使用して Azure Machine Learning リモート コンピューティング インスタンスに接続するには、「[Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)](how-to-set-up-vs-code-remote.md)」を参照してください。
+>
+> Visual Studio Code バージョン コントロール機能の詳細については、「[VS Code でのバージョン管理の使用](https://code.visualstudio.com/docs/editor/versioncontrol)」および「[VS Code での GitHub の操作](https://code.visualstudio.com/docs/editor/github)」を参照してください。
 
 ## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Git リポジトリをワークスペース ファイル システムにクローンする
 Azure Machine Learning では、ワークスペース内のすべてのユーザーに共有ファイル システムが提供されます。

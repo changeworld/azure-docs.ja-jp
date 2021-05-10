@@ -8,16 +8,16 @@ ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: e096e21e7d20c992e18634d684f663f149cc3c55
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 098d874d7de85aa7c66f92703eea9b4d12cee8df
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691248"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305295"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -92,7 +92,7 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - キーは、"*有効*" 状態になっている必要があります。
 
-- キー コンテナーに既存のキーをインポートする場合は、サポートされているファイル形式 (.pfx、.byok、または. backup) で提供する必要があります。
+- Key Vault に既存のキーをインポートする場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で提供するようにしてください。
 
 > [!NOTE]
 > Azure SQL では、マネージド HSM に格納されている RSA キーを TDE プロテクターとして使用できるようになりました。 この機能は **パブリック プレビュー** 段階にあります。 Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、FIPS 140-2 レベル 3 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 [マネージド HSM](../../key-vault/managed-hsm/index.yml) の詳細を参照してください。
@@ -164,7 +164,7 @@ Transparent Data Encryption がカスタマー マネージド キーを使用�
 
 - [Azure Resource Health](../../service-health/resource-health-overview.md)。 TDE 保護機能へのアクセスが失われたアクセス不可能なデータベースには、データベースへの最初の接続が拒否された後、"使用できません" と表示されます。
 - [アクティビティ ログ](../../service-health/alerts-activity-log-service-notifications-portal.md)。ユーザーが管理するキー コンテナーの TDE 保護機能へのアクセスに失敗すると、アクティビティ ログにエントリが追加されます。  これらのイベントに対してアラートを作成すると、できるだけ早くアクセスを再開できるようになります。
-- [アクション グループ](../../azure-monitor/alerts/action-groups.md)は、設定 (メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、Automation Runbook など) に基づいて通知やアラートを送信できます。
+- [アクション グループ](../../azure-monitor/alerts/action-groups.md)を定義して、設定 (たとえば、メール、SMS、プッシュ、音声、ロジック アプリ、Webhook、ITSM、Automation Runbook) に基づいて通知やアラートを送信できます。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>カスタマー マネージド TDE を使用したデータベースのバックアップと復元
 
@@ -185,7 +185,7 @@ SQL Database のバックアップ回復の詳細については、[SQL Database
 
 ## <a name="high-availability-with-customer-managed-tde"></a>カスタマー マネージド TDE による高可用性
 
-サーバーに geo 冗長が構成されていない場合でも、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 他のリージョンのセカンダリ キー コンテナー内のキーは、TDE 保護機能としてマークすることはできず、許可もされません。 プライマリ キー コンテナーに影響する障害が発生したときに初めて、システムにより、セカンダリ キー コンテナー内に同じ拇印を持つ他のリンクされたキーに自動的に切り替えられます (存在する場合)。 ただし、アクセス権が取り消されたか、キーまたはキー コンテナーが削除されたため TDE プロテクターにアクセスできない場合、これはサーバーがキーにアクセスするのを制限するという顧客の意図を示している可能性があるため、この切り替えは発生しません。異なるリージョンの 2 つのキー コンテナーに同じキー マテリアルを提供するには、キー コンテナーの外側にキーを作成し、それらを両方のキー コンテナーにインポートします。 
+サーバーに geo 冗長が構成されていない場合でも、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 他のリージョンのセカンダリ キー コンテナー内のキーは、TDE 保護機能としてマークすることはできず、許可もされません。 プライマリ キー コンテナーに影響する障害が発生したときに初めて、システムにより、セカンダリ キー コンテナー内に同じ拇印を持つ他のリンクされたキーに自動的に切り替えられます (存在する場合)。 アクセス権の取り消しにより、あるいはキーまたはキー コンテナーが削除されたことにより TDE 保護機能にアクセスできない場合、切り替えは行われないことに注意してください。顧客がサーバーからキーへのアクセスを意図的に制限することを望む場合があるためです。 異なるリージョンの 2 つのキー コンテナーに同じキー マテリアルを提供するには、キー コンテナーの外側にキーを作成し、それらを両方のキー コンテナーにインポートします。 
 
 または、サーバーと同じリージョンに併置されているプライマリ キー コンテナーを使用してキーを生成し、別の Azure リージョンのキー コンテナーにキーを複製する方法もあります。 [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/Backup-AzKeyVaultKey) コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、[Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) コマンドレットを使用して、キーを複製する 2 つ目のリージョンのキー コンテナーを指定します。 または、Azure portal を使用して、キーのバックアップと復元を行います。 キーのバックアップ/復元操作は、同じ Azure サブスクリプションおよび [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)内のキー コンテナー間でのみ許可されます。  
 

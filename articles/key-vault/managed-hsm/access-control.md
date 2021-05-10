@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: ambapat
 ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653902"
 ---
 # <a name="managed-hsm-access-control"></a>Managed HSM のアクセス制御
@@ -63,7 +63,7 @@ Azure サブスクリプション内でマネージド HSM を作成すると、
 | アクセス&nbsp; プレーン | アクセス エンドポイント | 操作 | アクセス制御メカニズム |
 | --- | --- | --- | --- |
 | 管理プレーン | **グローバル:**<br> management.azure.com:443<br> | マネージド HSM の作成、読み取り、更新、削除、および移動<br>マネージド HSM タグの設定 | Azure RBAC |
-| データ プレーン | **グローバル:**<br> <ph id="ph1">&amp;lt;</ph>hsm-name<ph id="ph2">&amp;gt;</ph>.managedhsm.azure.net:443<br> | **キー**: 暗号化の解除、暗号化、<br> ラップ解除、ラップ、検証、署名、取得、一覧表示、更新、作成、インポート、削除、バックアップ、復元、消去<br/><br/> **データ プレーンのロール管理 (Managed HSM ローカル RBAC)** _: ロールの定義の一覧表示、ロールの割り当て、ロールの割り当ての削除、カスタム ロールの定義<br/><br/>_ *バックアップ/復元 **: バックアップ、復元、バックアップ/復元操作の状態チェック<br/><br/>** セキュリティ ドメイン**: セキュリティ ドメインのダウンロードおよびアップロード | Managed HSM ローカル RBAC |
+| データ プレーン | **グローバル:**<br> &lt;hsm-name&gt;.managedhsm.azure.net:443<br> | **キー**: 暗号化の解除、暗号化、<br> ラップ解除、ラップ、検証、署名、取得、一覧表示、更新、作成、インポート、削除、バックアップ、復元、消去<br/><br/> **データ プレーンのロール管理 (Managed HSM ローカル RBAC)** _: ロールの定義の一覧表示、ロールの割り当て、ロールの割り当ての削除、カスタム ロールの定義<br/><br/>_ *バックアップ/復元 **: バックアップ、復元、バックアップ/復元操作の状態チェック<br/><br/>** セキュリティ ドメイン**: セキュリティ ドメインのダウンロードおよびアップロード | Managed HSM ローカル RBAC |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>管理プレーンと Azure RBAC
 

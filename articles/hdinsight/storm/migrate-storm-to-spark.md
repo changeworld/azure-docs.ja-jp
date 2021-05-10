@@ -4,12 +4,12 @@ description: Apache Storm のワークロードを Spark ストリーミング�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944786"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868768"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3.6 Apache Storm を HDInsight 4.0 Apache Spark に移行する
 
@@ -25,8 +25,7 @@ HDInsight 3.6 の Apache Storm から移行する場合、複数のオプショ�
 
 このドキュメントでは、Apache Storm から Spark ストリーミングおよび Spark Structured Streaming に移行するためのガイドを提供します。
 
-> [!div class="mx-imgBorder"]
-> ![HDInsight Storm の移行パス](./media/migrate-storm-to-spark/storm-migration-path.png)
+:::image type="content" source="./media/migrate-storm-to-spark/storm-migration-path.png" alt-text="HDInsight Storm の移行パス" border="false":::
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Apache Storm と Spark ストリーミング、Spark Structured Streaming の比較
 
@@ -47,8 +46,7 @@ Spark Structured Streaming は、Spark ストリーミング (DStreams) に代�
 
 Storm には、各イベントを処理するモデルが用意されています。 つまり、受信したすべてのレコードは、到着するとすぐに処理されます。 Spark ストリーミングのアプリケーションは、イベントの各マイクロ バッチを処理のために送信する前に、そのバッチを収集するために一瞬待機しなければなりません。 これに対し、イベント ドリブンのアプリケーションは各イベントをすぐに処理します。 通常、Spark ストリーミングの待機時間は数秒以内です。 マイクロ バッチのアプローチの利点は、データ処理と集計計算の合理化です。
 
-> [!div class="mx-imgBorder"]
-> ![ストリーミングとマイクロ バッチの処理](./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png)
+:::image type="content" source="./media/migrate-storm-to-spark/streaming-and-micro-batch-processing.png" alt-text="ストリーミングとマイクロ バッチの処理" border="false":::
 
 ## <a name="storm-architecture-and-components"></a>Storm のアーキテクチャとコンポーネント
 
@@ -59,8 +57,7 @@ Storm トポロジは、有向非巡回グラフ (DAG) に配置された複数�
 |スパウト|データをトポロジに取り込みます。 1 つ以上のストリームをこのトポロジに出力します。|
 |ボルト|スパウトまたはその他のボルトから出力されたストリームを使用します。 ボルトは、必要に応じてストリームをトポロジに出力できます。 また、HDFS、Kafka、HBase などの外部サービスまたはストレージへのデータの書き込みも行います。|
 
-> [!div class="mx-imgBorder"]
-> ![Storm コンポーネントの相互作用](./media/migrate-storm-to-spark/apache-storm-components.png)
+:::image type="content" source="./media/migrate-storm-to-spark/apache-storm-components.png" alt-text="Storm コンポーネントの相互作用" border="false":::
 
 Storm は、次の 3 つのデーモンで構成されています。これにより、Storm クラスターは機能し続けます。
 
@@ -68,10 +65,9 @@ Storm は、次の 3 つのデーモンで構成されています。これに�
 |---|---|
 |Nimbus|Hadoop の JobTracker と同様に、クラスターへのコードの配布、マシンへのタスクの割り当て、障害の監視を行います。|
 |Zookeeper|クラスターの調整に使用されます。|
-|Supervisor|マシンに割り当てられた作業をリッスンし、Nimbus からのディレクティブに基づいてワーカー プロセスの起動と停止を行います。 各ワーカー プロセスは、トポロジのサブセットを実行します。 ユーザーのアプリケーション ロジック (スパウトとボルト) はここで実行されます。|
+|Supervisor|マシンに割り当てられた作業をリッスンし、Nimbus からのディレクティブに基づいてワーカー プロセスの起動と停止を行います。 各ワーカー プロセスは、トポロジのサブセットを実行します。 ユーザーのアプリケーション ロジック (スパウトとボルト) は、ここで実行されます。|
 
-> [!div class="mx-imgBorder"]
-> ![nimbus、zookeeper、および supervisor デーモン](./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png)
+:::image type="content" source="./media/migrate-storm-to-spark/nimbus-zookeeper-supervisor.png" alt-text="nimbus、zookeeper、および supervisor デーモン" border="false":::
 
 ## <a name="spark-streaming-architecture-and-components"></a>Spark ストリーミングのアーキテクチャとコンポーネント
 
@@ -83,15 +79,13 @@ Storm は、次の 3 つのデーモンで構成されています。これに�
 * データのブロックは、他の Executor にレプリケートされます。
 * その後、処理されたデータは、ターゲット データ ストアに格納されます。
 
-> [!div class="mx-imgBorder"]
-> ![Spark ストリーミングの出力へのパス](./media/migrate-storm-to-spark/spark-streaming-to-output.png)
+:::image type="content" source="./media/migrate-storm-to-spark/spark-streaming-to-output.png" alt-text="Spark ストリーミングの出力へのパス" border="false":::
 
 ## <a name="spark-streaming-dstream-workflow"></a>Spark ストリーミング (DStream) のワークフロー
 
 各バッチ間隔の経過に伴って、その間隔のすべてのデータを含む新しい RDD が生成されます。 この連続する一連の RDD が DStream に収集されます。 たとえば、バッチ間隔が 1 秒の場合、DStream はその 1 秒間に取り込まれるすべてのデータを含む 1 つの RDD を含む 1 つのバッチを毎秒出力します。 DStream の処理時に、温度のイベントがこれらのバッチのいずれかに出現します。 Spark ストリーミング アプリケーションはイベントを含むバッチを処理し、最終的に各 RDD に格納されているデータを処理します。
 
-> [!div class="mx-imgBorder"]
-> ![Spark ストリーミングの処理バッチ](./media/migrate-storm-to-spark/spark-streaming-batches.png)
+:::image type="content" source="./media/migrate-storm-to-spark/spark-streaming-batches.png" alt-text="Spark ストリーミングの処理バッチ" border="false":::
 
 Spark ストリーミングで使用できるさまざまな変換の詳細については、「[DStreams での変換](https://spark.apache.org/docs/latest/streaming-programming-guide.html#transformations-on-dstreams)」を参照してください。
 
@@ -105,11 +99,9 @@ Structured Streaming では、データがシステムに到着すると、直�
 
 入力テーブルのデータが処理されるタイミングは、トリガー間隔によって制御されます。 既定では、トリガー間隔は 0 であるため、Structured Streaming はデータが到着するとすぐに処理しようとします。 これは、実際には、Structured Streaming が前のクエリの処理を完了するとすぐに、新しく受信したデータに対する別の処理を開始することを示します。 ストリーミング データが時間ベースのバッチで処理されるように、トリガーを一定の間隔で実行されるように構成することができます。
 
-> [!div class="mx-imgBorder"]
-> ![Structured Streaming のデータの処理](./media/migrate-storm-to-spark/structured-streaming-data-processing.png)
+:::image type="content" source="./media/migrate-storm-to-spark/structured-streaming-data-processing.png" alt-text="Structured Streaming のデータの処理" border="false":::
 
-> [!div class="mx-imgBorder"]
-> ![Structured Streaming のプログラミング モデル](./media/migrate-storm-to-spark/structured-streaming-model.png)
+:::image type="content" source="./media/migrate-storm-to-spark/structured-streaming-model.png" alt-text="Structured Streaming のプログラミング モデル" border="false":::
 
 ## <a name="general-migration-flow"></a>一般的な移行フロー
 
@@ -119,30 +111,25 @@ Storm から Spark への推奨される移行フローは、次の初期アー�
 * Kafka と Storm は同じ仮想ネットワークにデプロイされている
 * Storm よって処理されたデータは、Azure Storage や Azure Data Lake Storage Gen2 などのデータ シンクに書き込まれる
 
-    > [!div class="mx-imgBorder"]
-    > ![想定される現在の環境の図](./media/migrate-storm-to-spark/presumed-current-environment.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/presumed-current-environment.png" alt-text="想定される現在の環境の図"  border="false":::
 
 アプリケーションを Storm からいずれかの Spark ストリーミング API に移行するには、次の手順を実行します。
 
 1. **新しいクラスターをデプロイします。** 新しい HDInsight 4.0 の Spark クラスターを同じ仮想ネットワークにデプロイし、Spark ストリーミングまたは Spark Structured Streaming アプリケーションをそこにデプロイして十分にテストします。
 
-    > [!div class="mx-imgBorder"]
-    > ![HDInsight での新しい Spark のデプロイ](./media/migrate-storm-to-spark/new-spark-deployment.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/new-spark-deployment.png" alt-text="HDInsight での新しい Spark のデプロイ" border="false":::
 
 1. **以前の Storm クラスターでの使用を停止します。** 既存の Storm で、ストリーミング データ ソースからのデータの使用を停止し、データがターゲット シンクへの書き込みを完了するまで待機します。
 
-    > [!div class="mx-imgBorder"]
-    > ![現在のクラスターでの使用を停止する](./media/migrate-storm-to-spark/stop-consuming-current-cluster.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/stop-consuming-current-cluster.png" alt-text="現在のクラスターでの使用を停止する" border="false":::
 
 1. **新しい Spark クラスターでの使用を開始します。** 新しくデプロイされた HDInsight 4.0 の Spark クラスターからデータのストリーミングを開始します。 この時点で、最新の Kafka オフセットからの使用により、プロセスが引き継がれます。
 
-    > [!div class="mx-imgBorder"]
-    > ![新しいクラスターでの使用を開始する](./media/migrate-storm-to-spark/start-consuming-new-cluster.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/start-consuming-new-cluster.png" alt-text="新しいクラスターでの使用を開始する" border="false":::
 
 1. **必要に応じて、古いクラスターを削除します。** 切り替えが完了し、正常に動作したら、必要に応じて古い HDInsight 3.6 の Storm クラスターを削除します。
 
-    > [!div class="mx-imgBorder"]
-    > ![必要に応じて古い HDInsight クラスターを削除する](./media/migrate-storm-to-spark/remove-old-clusters1.png)
+   :::image type="content" source="./media/migrate-storm-to-spark/remove-old-clusters1.png" alt-text="必要に応じて古い HDInsight クラスターを削除する" border="false":::
 
 ## <a name="next-steps"></a>次のステップ
 

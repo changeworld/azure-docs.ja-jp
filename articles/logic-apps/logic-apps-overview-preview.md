@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/24/2021
+ms.openlocfilehash: 27889e8309c0efaf1e2869fc39d099f38f64f7c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636337"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764821"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概要:Azure Logic Apps プレビュー
 
@@ -69,7 +69,7 @@ Azure Logic Apps プレビュー ランタイムには、[Azure Functions](../az
 
 シングルテナントの種類のロジック アプリでは、同じロジック アプリ内にこれらの種類のワークフローを作成できます。
 
-* *ステートレス*
+* *ステートフル*
 
   前のイベントのデータを保持、確認、または参照する必要がある場合は、ステートフル ワークフローを作成します。 これらのワークフローで、各アクションとその状態の入出力が外部ストレージに保存されます。これにより、各実行が完了した後にその実行の詳細と履歴を確認できます。 ステートフル ワークフローでは、サービス停止が発生した場合に高い回復性を実現できます。 サービスとシステムが復元された後に、中断された実行を保存済みの状態から再構築し、ワークフローを再実行して完了することができます。 ステートフルなワークフローは、最大 1 年間実行を継続できます。
 
@@ -80,7 +80,7 @@ Azure Logic Apps プレビュー ランタイムには、[Azure Functions](../az
   デバッグをより容易にするために、ステートレス ワークフローの実行履歴を有効にし (この場合、パフォーマンスに何らかの影響があります)、その後、完了時に実行履歴を無効にすることができます。 詳細については、[Visual Studio Code でのステートフルおよびステートレス ワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless)または [Azure portal でのステートフルおよびステートレス ワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless)に関するページを参照してください。
 
   > [!NOTE]
-  > ステートレスなワークフローでは、現在、トリガーではなく Azure にデプロイされている [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)に対する *アクション* のみがサポートされています。 ワークフローを開始するには、[組み込みの Request、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md#built-ins)を選択します。 これらのトリガーは、Azure Logic Apps プレビュー ランタイムでネイティブに実行されます。 制限付き、使用できない、またはサポートされていないトリガー、アクション、コネクタの詳細については、「[変更された、制限付き、使用できない、またはサポートされていない機能](#limited-unavailable-unsupported)」を参照してください。
+  > ステートレスなワークフローでは、現在、トリガーではなく Azure にデプロイされている [マネージド コネクタ](../connectors/managed.md)に対する *アクション* のみがサポートされています。 ワークフローを開始するには、[組み込みの Request、Event Hubs、または Service Bus トリガー](../connectors/built-in.md)を選択します。 これらのトリガーは、Azure Logic Apps プレビュー ランタイムでネイティブに実行されます。 制限付き、使用できない、またはサポートされていないトリガー、アクション、コネクタの詳細については、「[変更された、制限付き、使用できない、またはサポートされていない機能](#limited-unavailable-unsupported)」を参照してください。
 
 <a name="nested-behavior"></a>
 
@@ -194,13 +194,13 @@ Azure Logic Apps プレビューでは、これらの機能が変更されてい
   > [!NOTE]
   > Visual Studio Code でローカルに実行するには、Webhook ベースのトリガーとアクションに追加の設定が必要です。 詳細については、[Visual Studio Code でのステートフルおよびステートレス ワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup)に関するページを参照してください。
 
-  * "*ステートレス ワークフロー*" の場合、トリガーを選択したときに **[Azure]** タブは表示されません。これは、選択できるのが [マネージド コネクタのトリガーではなく、"*アクション*"](../connectors/apis-list.md#managed-api-connectors) のみであるためです。 Azure によってデプロイされたマネージド コネクタをステートレス ワークフローに対して有効にすることはできますが、デザイナーには、追加するマネージド コネクタのトリガーはいずれも表示されません。
+  * "*ステートレス ワークフロー*" の場合、トリガーを選択したときに **[Azure]** タブは表示されません。これは、選択できるのが [マネージド コネクタのトリガーではなく、"*アクション*"](../connectors/managed.md) のみであるためです。 Azure によってデプロイされたマネージド コネクタをステートレス ワークフローに対して有効にすることはできますが、デザイナーには、追加するマネージド コネクタのトリガーはいずれも表示されません。
 
-  * "*ステートフル ワークフロー*" の場合、以下の一覧に使用できないと示されているトリガーとアクションを除き、[マネージド コネクタのトリガーとアクション](../connectors/apis-list.md#managed-api-connectors)の両方を使用できます。
+  * "*ステートフル ワークフロー*" の場合、以下の一覧に使用できないと示されているトリガーとアクションを除き、[マネージド コネクタのトリガーとアクション](../connectors/managed.md)の両方を使用できます。
 
   * これらのトリガーとアクションは、変更されたか、現在制限されているか、サポートされていないか、使用できません。
 
-    * [オンプレミス データ ゲートウェイの "*トリガー*"](../connectors/apis-list.md#on-premises-connectors) は使用できませんが、ゲートウェイのアクションは使用 "*できます*"。
+    * [オンプレミス データ ゲートウェイの "*トリガー*"](../connectors/managed.md#on-premises-connectors) は使用できませんが、ゲートウェイのアクションは使用 "*できます*"。
 
     * 組み込みアクションである [[Azure Functions] - [Azure 関数を選択する]](logic-apps-azure-functions.md) は、 **[Azure Function Operations - Call an Azure function]\([Azure 関数の操作] - [Azure 関数を呼び出す]\)** になりました。 このアクションは、現在、**HTTP トリガー** テンプレートから作成された関数に対してのみ機能します。
 
@@ -221,7 +221,7 @@ Azure Logic Apps プレビューでは、これらの機能が変更されてい
 
       * **インライン コード操作** アクションには [更新された制限](logic-apps-overview-preview.md#inline-code-limits)があります。
 
-    * [統合アカウントに対する組み込みの B2B トリガーとアクション](../connectors/apis-list.md#integration-account-connectors)の一部は使用できません。たとえば、**フラット ファイル** のエンコードやデコード アクションです。
+    * [統合アカウントに対する組み込みの B2B トリガーとアクション](../connectors/managed.md#integration-account-connectors)の一部は使用できません。たとえば、**フラット ファイル** のエンコードやデコード アクションです。
 
     * 組み込みアクションである [[Azure Logic Apps - Choose a Logic App workflow]\([Azure Logic Apps] - [ロジック アプリ ワークフローを選択する]\)](logic-apps-http-endpoint.md) は、 **[Workflow Operations - Invoke a workflow in this workflow app]\([ワークフロー操作] - [このワークフロー アプリでワークフローを呼び出す]\)** になりました。
 

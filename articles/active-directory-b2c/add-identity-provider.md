@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: dbb2aeefc22fae4a3c83956dd7681b49fc435500
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5495e84d23b6723cfc7d4fbdb99e7509e378087f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033998"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257179"
 ---
 # <a name="add-an-identity-provider-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントへの ID プロバイダーの追加
 
@@ -27,7 +27,7 @@ ms.locfileid: "102033998"
 
 ![ソーシャル アカウント (Facebook) でのモバイル サインインの例](media/add-identity-provider/external-idp.png)
 
-Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によってサポートされる ID プロバイダーを[ユーザー フロー](user-flow-overview.md)に追加できます。 [カスタム ポリシー](custom-policy-get-started.md)に ID プロバイダーを追加することもできます。
+Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によってサポートされる ID プロバイダーを[ユーザー フロー](user-flow-overview.md)に追加できます。 [カスタム ポリシー](user-flow-overview.md)に ID プロバイダーを追加することもできます。
 
 ## <a name="select-an-identity-provider"></a>ID プロバイダーの選択
 

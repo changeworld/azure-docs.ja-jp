@@ -1,21 +1,20 @@
 ---
 title: Synapse SQL に接続する
 description: Synapse SQL に接続します。
-services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3165b72ae5612aaeaa66a95299db97182fef2232
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f5682302ea0fa83c04a8560ba3f0f98ea075e072
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677580"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565544"
 ---
 # <a name="connect-to-synapse-sql"></a>Synapse SQL に接続する
 Azure Synapse Analytics の Synapse SQL 機能に接続します。

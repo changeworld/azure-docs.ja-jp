@@ -11,20 +11,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 03/16/2021
+ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 110a94c78427087f4ca5555f59055ab8e3bebcee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87c0ce72348f67c22759915a3a15c69193ad2f60
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592669"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552795"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセス レビューを作成する
 
 従業員による特権 Azure リソース ロールへのアクセスの必要性は、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、Azure リソース ロールへの特権アクセスのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。 この記事では、1 つ以上のアクセス レビューを作成する方法について説明します。
+
+## <a name="prerequisite-license"></a>事前に必要なライセンス
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]. PIM のライセンスについての詳細は、「[Privileged Identity Management を使用するためのライセンスの要件](subscription-requirements.md)」を参照してください。
+
+> [!Note]
+>  現時点では、アクセス レビューのスコープを、Azure AD へのアクセス権を持つサービス プリンシパルと、テナントで Azure Active Directory Premium P2 エディションがアクティブになっている Azure リソース ロール (プレビュー) に設定できます。 サービス プリンシパルのライセンス モデルは、この機能の一般提供のために終了する予定です。このため、追加のライセンスが必要になる場合があります。
 
 ## <a name="prerequisite-role"></a>事前に必要なロール
 
@@ -34,9 +41,9 @@ ms.locfileid: "104592669"
 
 1. いずれかの事前に必要なロールに割り当てられているユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. **[Azure AD Privileged Identity Management]** を開きます。
-
-1. 左側のメニューで、 **[Azure リソース]** を選択します。
+1. **[Identity Governance]** を選択します。
+ 
+1. 左側のメニューで、 **[Azure AD Privileged Identity Management]** の下にある **[Azure リソース]** を選択します。
 
 1. サブスクリプションなど、管理するリソースを選択します。
 
@@ -58,9 +65,12 @@ ms.locfileid: "104592669"
 
 1. **[終了]** の設定を使用して、アクセス レビューの繰り返し系列を終了する方法を指定します。 系列は 3 つの方法で終了できます。つまり、継続的に実行して無期限にレビューを開始する、特定の日付まで実行する、または定義された実行回数が完了するまで実行する、です。 あなた自身、別のユーザー管理者、または別の全体管理者は、 **[設定]** で日付を変更してその日付に終了するように指定することで、作成後に系列を停止することができます。
 
-1. **[ユーザー]** セクションで、メンバーシップをレビューする 1 つ以上のロールを選択します。
+1. **[ユーザー]** セクションで、レビューのスコープを選択します。 ユーザーをレビューするには、 **[ユーザー]** を選択します。また、Azure ロールへのアクセス権を持つマシン アカウントをレビューするには、[(Preview) Service Principals]\((プレビュー) サービス プリンシパル\) を選択します。   
 
     ![ロール メンバーシップをレビューするためのユーザー スコープ](./media/pim-resource-roles-start-access-review/users.png)
+
+
+1. **[ロール メンバーシップをレビュー]** で、レビューする特権 Azure ロールを選択します。 
 
     > [!NOTE]
     > - ここで選択されるロールには、[永続的なロールと資格のあるロール](../privileged-identity-management/pim-how-to-add-role-to-user.md)の両方が含まれます。
@@ -77,9 +87,9 @@ ms.locfileid: "104592669"
 
     ![選択したユーザーまたはメンバー (セルフ) のレビュー担当者の一覧](./media/pim-resource-roles-start-access-review/reviewers.png)
 
-    - **選択したユーザー** - アクセスする必要があるユーザーがわからない場合は、このオプションを使用します。 このオプションでは、リソース所有者またはグループ マネージャーにレビューを割り当て、完了してもらうことができます。
-    - **メンバー (セルフ)** - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。 
-    - **マネージャー** – ユーザーのマネージャーにロールの割り当てをレビューしてもらうには、このオプションを使用します。 マネージャーを選択すると、フォールバック レビュー担当者を指定するオプションも表示されます。 フォールバック レビュー担当者は、ディレクトリにマネージャーが指定されていない場合に、ユーザーをレビューするように求められます。 
+    - **選択したユーザー** - レビューを実行する特定のユーザーを指定するには、このオプションを使用します。 このオプションは、レビューのスコープに関係なく使用できます。選択したレビュー担当者は、ユーザーとサービス プリンシパルをレビューできます。 
+    - **メンバー (セルフ)** - ユーザーに自分のロール割り当てを確認してもらう場合は、このオプションを使用します。 このオプションは、レビューのスコープが **[ユーザー]** に設定されている場合にのみ使用できます。
+    - **マネージャー** – ユーザーのマネージャーにロールの割り当てをレビューしてもらうには、このオプションを使用します。 このオプションは、レビューのスコープが **[ユーザー]** に設定されている場合にのみ使用できます。 マネージャーを選択すると、フォールバック レビュー担当者を指定するオプションも表示されます。 フォールバック レビュー担当者は、ディレクトリにマネージャーが指定されていない場合に、ユーザーをレビューするように求められます。 
 
 ### <a name="upon-completion-settings"></a>完了時の設定
 

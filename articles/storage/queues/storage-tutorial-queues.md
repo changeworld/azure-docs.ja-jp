@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:.NET で Azure Queue Storage キューを操作する
 description: Azure Queue Storage を使用してキューを作成し、.NET コードを使用してメッセージの挿入、取得、および削除を行う方法のチュートリアル。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 06/09/2020
 ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c41b218ac0d347b2e58931421493755346b13d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dda6fb816fcba4ab9350edd956d895a3b9b204d4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97591975"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276129"
 ---
 # <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>チュートリアル:.NET で Azure Queue Storage キューを操作する
 

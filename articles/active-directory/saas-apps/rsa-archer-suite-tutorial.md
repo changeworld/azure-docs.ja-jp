@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d96f1e0413dac8477e2fc40bf84e88318abf3f9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181579"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と RSA Archer Suite の統合
 
@@ -37,13 +37,13 @@ ms.locfileid: "96181579"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* RSA Archer Suite では、**SP** Initiated SSO がサポートされています
-* RSA Archer Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされています
+* RSA Archer Suite では、**SP** Initiated SSO がサポートされます。
+* RSA Archer Suite では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-rsa-archer-suite-from-the-gallery"></a>ギャラリーからの RSA Archer Suite の追加
+## <a name="add-rsa-archer-suite-from-the-gallery"></a>ギャラリーからの RSA Archer Suite の追加
 
 Azure AD への RSA Archer Suite の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に RSA Archer Suite を追加する必要があります。
 
@@ -53,7 +53,6 @@ Azure AD への RSA Archer Suite の統合を構成するには、ギャラリ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**RSA Archer Suite**」と入力します。
 1. 結果のパネルから **[RSA Archer Suite]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-rsa-archer-suite"></a>RSA Archer Suite に対して Azure AD SSO を構成してテストする
 
@@ -74,7 +73,7 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
 1. Azure portal の **RSA Archer Suite** アプリケーション統合ページで、 **[管理]** セクションを見つけ、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -141,7 +140,7 @@ RSA Archer Suite に対して Azure AD SSO を構成してテストするには�
 
 1. 次のページで、以下の手順を実行します。
 
-    ![RSA Archer Suite の SSO を構成する](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
+    ![RSA Archer Suite の SSO を構成する](./media/rsa-archer-suite-tutorial/configuration.png)
 
     a. **[シングル サインオン]** タブに移動し、ドロップダウンから **[シングル サインオン モード]** として **[SAML]** を選択します。
 

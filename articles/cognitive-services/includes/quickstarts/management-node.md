@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: cc1d375de9f45369f6d2902b106a1740f316ad8d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 41f6c8e260968eacd04249b3f887d4865907df0d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948043"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879707"
 ---
 [リファレンスのドキュメント](/javascript/api/@azure/arm-cognitiveservices/) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [パッケージ (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -116,7 +116,9 @@ node index.js
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Management SDK のリファレンス ドキュメント](/javascript/api/@azure/arm-cognitiveservices/)
-* [Azure Cognitive Services とは](../../what-are-cognitive-services.md)
-* [Azure Cognitive Services に対する要求の認証](../../authentication.md)
-* [Azure portal を使用して新しいリソースを作成する](../../cognitive-services-apis-create-account.md)
+* Cognitive Services を安全に使用する方法については、「 **[Azure Cognitive Services に対する要求の認証](../../authentication.md)** 」をご覧ください。
+* Cognitive Services 内のさまざまなカテゴリの一覧を入手するには、「 **[Azure Cognitive Services とは](../../what-are-cognitive-services.md)** 」をご覧ください。
+* Cognitive Services がサポートする自然言語の一覧を確認するには、 **[自然言語のサポート](../../language-support.md)** に関する記事をご覧ください。
+* Cognitive Services をオンプレミスで使用する方法については、 **[コンテナーとしての Cognitive Services の使用](../../cognitive-services-container-support.md)** に関する記事をご覧ください。
+* Cognitive Services の使用コストを見積もるには、 **[Cognitive Services のコストの計画および管理](../../plan-manage-costs.md)** に関する記事をご覧ください。
+* Management SDK の詳細については、 **[Azure Management SDK のリファレンス ドキュメント](/javascript/api/@azure/arm-cognitiveservices/)** を参照してください。

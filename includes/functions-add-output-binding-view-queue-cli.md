@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 921127ffdd35007cc3fa2eaaa95cdb3fac8bbe15
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606636"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782279"
 ---
 キューは、[Azure portal](../articles/storage/queues/storage-quickstart-queues-portal.md) または [Microsoft Azure Storage Explorer](https://storageexplorer.com/) で確認できます。 次の手順に従って、Azure CLI でキューを確認することもできます。
 
@@ -35,13 +35,13 @@ ms.locfileid: "90606636"
     
     ---
     
-1. (省略可) [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) コマンドを使用して、ご利用のアカウント内のストレージ キューを表示します。 このコマンドからの出力には、`outqueue` という名前のキューが含まれています。これはこのキューに対する最初のメッセージを関数が書き込んだときに作成されたものです。
+1. (省略可) [`az storage queue list`](/cli/azure/storage/queue#az_storage_queue_list) コマンドを使用して、ご利用のアカウント内のストレージ キューを表示します。 このコマンドからの出力には、`outqueue` という名前のキューが含まれています。これはこのキューに対する最初のメッセージを関数が書き込んだときに作成されたものです。
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) コマンドを使用して、このキューからメッセージ (先ほど関数をテストするときに使用した名) を読み取ります。 このコマンドは、キューから最初のメッセージを読み取って削除します。 
+1. [`az storage message get`](/cli/azure/storage/message#az_storage_message_get) コマンドを使用して、このキューからメッセージ (先ほど関数をテストするときに使用した名) を読み取ります。 このコマンドは、キューから最初のメッセージを読み取って削除します。 
 
     # <a name="bash"></a>[bash](#tab/bash)
     

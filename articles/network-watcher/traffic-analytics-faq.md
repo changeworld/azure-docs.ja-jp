@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f4d97b81bf8f11b8380f04dcbfdb72bd658805ab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 98c0a6f88da717256e78a748902317a90a369a9c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579235"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533631"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -59,62 +59,6 @@ Traffic Analytics では、次の前提条件が必要です。
 3. 指定したユーザーに割り当てられているすべてのロールを一覧表示するには、**Get-AzRoleAssignment -SignInName [ユーザーの電子メール アドレス] -IncludeClassicAdministrators** を使用します。 
 
 出力が表示されない場合は、各サブスクリプション管理者に連絡して、コマンドを実行するアクセス権を取得してください。 詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-powershell.md)」を参照してください。
-
-
-## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Traffic Analytics はどの Azure リージョンで使用できますか?
-
-NSG のトラフィック分析は、次のサポートされているどのリージョンでも使用できます。
-- カナダ中部
-- 米国中西部
-- 米国東部
-- 米国東部 2
-- 米国中北部
-- 米国中南部
-- 米国中部
-- 米国西部
-- 米国西部 2
-- フランス中部
-- 西ヨーロッパ
-- 北ヨーロッパ
-- ブラジル南部
-- 英国西部
-- 英国南部
-- オーストラリア東部
-- オーストラリア南東部 
-- 東アジア
-- 東南アジア
-- 韓国中部
-- インド中部
-- インド南部
-- 東日本
-- 西日本
-- US Gov バージニア州
-- 中国東部 2
-
-Log Analytics ワークスペースは、次のリージョンに存在する必要があります。
-- カナダ中部
-- 米国中西部
-- 米国東部
-- 米国東部 2
-- 米国中北部
-- 米国中南部
-- 米国中部
-- 米国西部
-- 米国西部 2
-- フランス中部
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 英国西部
-- 英国南部
-- オーストラリア東部
-- オーストラリア南東部
-- 東アジア
-- 東南アジア 
-- 韓国中部
-- インド中部
-- 東日本
-- US Gov バージニア州
-- 中国東部 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>フロー ログを有効化する NSG は、自分のワークスペースとは別のリージョンに存在できますか?
 

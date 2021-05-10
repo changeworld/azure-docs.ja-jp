@@ -3,12 +3,12 @@ title: タグなしマニフェストを保持するポリシー
 description: Azure コンテナー レジストリで保持ポリシーを有効化して、指定期間後にタグなしマニフェストを自動で削除する方法について説明します。
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 81ce92a2533cc8a688be43da9406cd5b0e726509
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83683447"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781345"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>タグなしマニフェストの保持ポリシーの設定
 
@@ -111,7 +111,7 @@ az acr config retention update --registry myregistry --status disabled --type Un
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-config-retention-update]: /cli/azure/acr/config/retention#az-acr-config-retention-update
-[az-acr-config-retention-show]: /cli/azure/acr/config/retention#az-acr-config-retention-show
-[az-acr-repository-untag]: /cli/azure/acr/repository#az-acr-repository-untag
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-config-retention-update]: /cli/azure/acr/config/retention#az_acr_config_retention_update
+[az-acr-config-retention-show]: /cli/azure/acr/config/retention#az_acr_config_retention_show
+[az-acr-repository-untag]: /cli/azure/acr/repository#az_acr_repository_untag
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests

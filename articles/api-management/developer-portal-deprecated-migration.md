@@ -5,20 +5,16 @@ description: API Management で、レガシ開発者ポータルから新しい�
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/15/2020
+ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: f5105c685de4b3ccdffe69eec8ee8eeb32976c1f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92325931"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738884"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>新しい開発者ポータルへの移行
 
@@ -33,19 +29,19 @@ ms.locfileid: "92325931"
 
 ## <a name="improvements-in-new-developer-portal"></a>新しい開発者ポータルの機能強化
 
-新しい開発者ポータルは、非推奨のポータルの多くの制限に対処しています。 [コンテンツを編集するためのビジュアル ドラッグ アンド ドロップ エディター](api-management-howto-developer-portal-customize.md)と、デザイナーが Web サイトのスタイルを設定するための専用パネルを備えています。 ページ、カスタマイズ、および構成は、API Management サービスに Azure Resource Manager リソースとして保存されます。これにより、[ポータルのデプロイを自動化](api-management-howto-developer-portal.md#automate)することができます。 最後に、ポータルのコードベースはオープンソースであるため、[カスタム機能を使用して拡張する](api-management-howto-developer-portal.md#managed-vs-self-hosted)ことができます。
+新しい開発者ポータルは、非推奨のポータルの多くの制限に対処しています。 [コンテンツを編集するためのビジュアル ドラッグ アンド ドロップ エディター](api-management-howto-developer-portal-customize.md)と、デザイナーが Web サイトのスタイルを設定するための専用パネルを備えています。 ページ、カスタマイズ、および構成は、API Management サービスに Azure Resource Manager リソースとして保存されます。これにより、[ポータルのデプロイを自動化](automate-portal-deployments.md)することができます。 最後に、ポータルのコードベースはオープンソースであるため、[カスタム機能を使用して拡張する](api-management-howto-developer-portal.md#managed-vs-self-hosted)ことができます。
 
 ## <a name="how-to-migrate-to-new-developer-portal"></a>新しい開発者ポータルへの移行方法
 
 新しい開発者ポータルは、非推奨のポータルとは互換性がなく、自動移行はできません。 コンテンツ (ページ、テキスト、メディア ファイル) を手動で再作成し、新しいポータルの外観をカスタマイズする必要があります。 正確な手順は、ご使用のポータルのカスタマイズと複雑さによって異なります。 ガイダンスについては、[開発者ポータルのチュートリアル](api-management-howto-developer-portal-customize.md)を参照してください。 API、製品、ユーザー、ID プロバイダーのリストなどの残りの構成は、両方のポータル間で自動的に共有されます。
 
 > [!IMPORTANT]
-> 以前に新しい開発者ポータルを起動したことがあるが、変更を加えていない場合は、[既定のコンテンツをリセット](api-management-howto-developer-portal.md#preview-to-ga)して、最新バージョンに更新してください。
+> 以前に新しい開発者ポータルを起動したことがあるが、変更を加えていない場合は、既定のコンテンツをリセットして、最新バージョンに更新してください。
 
 非推奨のポータルから移行する場合は、次の変更に注意してください。
 
 - カスタム ドメインを使用して開発者ポータルを公開する場合は、新しい開発者ポータルに[ドメインを割り当てます](configure-custom-domain.md)。 Azure portal のドロップダウンから **[開発者ポータル]** オプションを使用します。
-- API に [CORS ポリシーを適用](api-management-howto-developer-portal.md#cors)して、対話型のテスト コンソールを有効にします。
+- API に [CORS ポリシーを適用](developer-portal-faq.md#cors)して、対話型のテスト コンソールを有効にします。
 - ポータルのスタイルを設定するためにカスタム CSS を挿入する場合は、[組み込みのデザイン パネルを使用してスタイル設定をレプリケートする](api-management-howto-developer-portal-customize.md)必要があります。 CSS インジェクションは新しいポータルでは許可されていません。
 - カスタム JavaScript を挿入できるのは、[新しいポータルのセルフホステッド バージョン](api-management-howto-developer-portal.md#managed-vs-self-hosted)だけです。
 - API Management が仮想ネットワーク内にあり、Application Gateway を介してインターネットに公開されている場合、詳細な構成手順については、[このドキュメントの記事](api-management-howto-integrate-internal-vnet-appgateway.md)を参照してください。 以下を実行する必要があります。

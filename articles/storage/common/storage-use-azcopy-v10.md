@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 826effb152d3f069e0a7c5b8e169f7083117ed22
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103494497"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
@@ -124,7 +124,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 そのリンクを取得するには、このコマンドを実行します。
 
-| オペレーティング システム  | コマンド |
+| オペレーティング システム  | command |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -134,7 +134,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 この URL はこのコマンドの出力に表示されます。 その後、実際のスクリプトでその URL を使用して AzCopy をダウンロードできます。
 
-| オペレーティング システム  | コマンド |
+| オペレーティング システム  | command |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

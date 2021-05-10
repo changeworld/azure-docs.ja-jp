@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/15/2021
 ms.author: duau
 ms.openlocfilehash: 531f4a9c9f535779e451ca316a8a5867f6cdaba5
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103573899"
 ---
 # <a name="azure-front-door-standardpremium-preview-logging"></a>Azure Front Door Standard/Premium (プレビュー) のログ
@@ -41,7 +41,7 @@ Azure Front Door には、Front Door の追跡、監視、デバッグに役立�
 
 ## <a name="configure-logs"></a>ログを構成する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure Front Door Standard/Premium を検索し、Azure Front Door のプロファイルを選択します。
 
@@ -51,7 +51,7 @@ Azure Front Door には、Front Door の追跡、監視、デバッグに役立�
 
 1. **[診断設定]** の  **[診断設定の名前]** に名前を入力します。
 
-1. **FrontDoorAccessLog**、**FrontDoorHealthProbeLog**、**FrontDoorWebApplicationFirewallLog** の **ログ** を選択します。
+1. **FrontDoorAccessLog**、**FrontDoorHealthProbeLog**、**FrontDoorWebApplicationFirewallLog** の  **ログ** を選択します。
 
 1.  **[宛先の詳細]** を選択します。 出力先の選択肢: 
 
@@ -164,7 +164,7 @@ Azure Front Door には、Front Door の追跡、監視、デバッグに役立�
 
 1. フィルター処理のスコープを選択し、 **[適用]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Front Door Standard/Premium (プレビュー) レポート](how-to-reports.md)について学習します。
 - [Azure Front Door Standard/Premium (プレビュー) リアルタイム監視メトリック](how-to-monitor-metrics.md)について学習します。

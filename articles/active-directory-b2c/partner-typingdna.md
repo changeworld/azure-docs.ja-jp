@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: afaac48d263082a17c7ba58996f4000366de0211
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97108350"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256550"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して TypingDNA を構成するためのチュートリアル
 
@@ -196,4 +196,4 @@ TypingDNA の save typing pattern エンドポイントを Azure AD B2C から (
 
 - [AAD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [AAD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [AAD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

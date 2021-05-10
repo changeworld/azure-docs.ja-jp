@@ -1,20 +1,16 @@
 ---
 title: ポートと VLAN の名前解決を強化する
 description: デバイスの解像度を強化するために、センサー上のポートと VLAN の名前をカスタマイズします。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98803576"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784171"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>ポートと VLAN の名前解決を強化する
+# <a name="enhance-port-vlan-and-os-resolution"></a>ポート、VLAN、OS の解決を強化する
 
 デバイスの解像度を強化するために、センサー上のポートと VLAN の名前をカスタマイズできます。
 
@@ -72,7 +68,7 @@ VLAN 名には、最大 50 個の ASCII 文字を含めることができます�
 > VLAN 名は、センサーと管理コンソールの間で同期されません。 管理コンソール上でも名前を定義する必要があります。  
 Cisco スイッチの場合は、スパン構成に次の行を追加します: `monitor session 1 destination interface XX/XX encapsulation dot1q`。 このコマンドでは、*XX/XX* はポートの名前と番号です。
 
-VLAN を構成するには:
+VLAN 名を構成するには:
 
 1. サイド メニューで、 **[システム設定]** を選択します。
 
@@ -81,6 +77,21 @@ VLAN を構成するには:
     :::image type="content" source="media/how-to-enrich-asset-information/edit-vlan.png" alt-text="システム設定を使用して VLAN を編集します。":::
 
 3. 各 VLAN ID の横に一意の名前を追加します。
+
+## <a name="improve-device-operating-system-classification-data-enhancement"></a>デバイスのオペレーティング システム分類の向上: データの強化
+
+新しいデバイスと、以前に検出されたデバイス (オペレーティング システムの種類を含む) の変更は、センサーによって継続的に自動検出されます。
+
+特定の状況下では、検出されたオペレーティング システム内で競合が検出される可能性があります。 これは例えば、デスクトップまたはサーバー システムのいずれかを参照するオペレーティング システムのバージョンがある場合に発生するおそれがあります。 これが発生すると、オプションのオペレーティング システム分類を含む通知が表示されます。
+
+:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="データを強化します。":::
+
+オペレーティング システム分類をエンリッチするために、推奨事項を調査します。 この分類は、デバイス インベントリ、データマイニング レポート、およびその他の画面に表示されます。 この情報を最新の状態に保つことで、アラート、脅威、リスク分析レポートの精度が向上します。
+
+オペレーティング システムの推奨事項にアクセスするには:
+
+1. **[システム設定]** を選択します。
+1. **[Data Enhancement]\(データ強化\)** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

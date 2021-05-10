@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 03/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8aefa6efa5f10dae8a28e7126b91b7b5f6ac77a6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950741"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -25,6 +25,11 @@ ms.locfileid: "95016753"
 
 適切な時系列 ID を選択することが重要です。 タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 これは、Azure Time Series Insights Gen2 環境を作成する場合に必要です。
 
+時系列 ID の詳細な説明については、環境のプロビジョニングに関するチュートリアルをご覧ください。 2 つの異なる JSON テレメトリ ペイロードの例と、それぞれの適切な時系列 ID の選択を表示します。</br>
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWzk3P]
+
+
 > [!IMPORTANT]
 > 時系列 ID：
 >
@@ -32,11 +37,11 @@ ms.locfileid: "95016753"
 > * *変更できません* プロパティ： 一度作成した後は変更できません。
 
 > [!TIP]
-> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id** _ になる可能性があります。
+> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id*** になる可能性があります。
 
 従うべき主なベストプラクティスは、次のとおりです：
 
-_ 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
+* 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
 * タイム シリーズ ID は、[タイム シリーズ モデル](./concepts-model-overview.md)のリーフ ノード レベルで一意である必要があります。
 * 時系列 ID のプロパティ名文字列の文字制限は、128 です。 時系列 ID のプロパティ値の場合、文字数の制限は 1024 です。
 * 時系列 ID の一意のプロパティ値がない場合は、null 値として扱われ、一意性制約と同じルールに従います。

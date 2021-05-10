@@ -1,19 +1,16 @@
 ---
 title: Azure Site Recovery を使用したセカンダリ サイトへの VMware VM/物理サーバーのディザスター リカバリー
 description: Azure Site Recovery を使用して、セカンダリ サイトへの VMware VM または Windows/Linux 物理サーバーのディザスター リカバリーをセットアップする方法を説明します。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.author: raynew
-ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2456fcfffd9645f94856998142f262298b5eef9
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84711903"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581453"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 

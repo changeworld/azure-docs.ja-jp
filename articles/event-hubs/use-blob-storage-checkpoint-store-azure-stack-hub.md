@@ -4,10 +4,10 @@ description: この記事では Azure Stack Hub 上の Event Hubs でチェッ�
 ms.topic: how-to
 ms.date: 12/09/2020
 ms.openlocfilehash: 07d7cf844480a9a88468c17cecc7ca38cca5d176
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97007825"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>チェックポイント ストアとして Blob Storage を使用する - Azure Stack Hub 上の Event Hubs

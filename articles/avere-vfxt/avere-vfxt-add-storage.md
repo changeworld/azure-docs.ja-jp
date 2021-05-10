@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96001526"
 ---
 # <a name="configure-storage"></a>記憶域を構成する
@@ -37,7 +37,7 @@ ms.locfileid: "96001526"
 コア ファイラーを追加するには、コア ファイラーの 2 つの主な種類のいずれかを選択します。
 
 * [NAS コア ファイラー](#nas-core-filer) - NAS コア フィルターを追加する方法について説明します
-* [Azure Storage クラウド コア ファイラー](#azure-blob-storage-cloud-core-filer) - Azure Blob ストレージ コンテナーをクラウド コア ファイラーとして追加する方法について説明します
+* [Azure Storage クラウド コア ファイラー](#azure-blob-storage-cloud-core-filer) - Azure Blob Storage コンテナーをクラウド コア ファイラーとして追加する方法について説明します
 
 ### <a name="nas-core-filer"></a>NAS コア ファイラー
 

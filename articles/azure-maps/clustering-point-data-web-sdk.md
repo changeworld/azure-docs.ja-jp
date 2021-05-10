@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0af327f624d0fed648012ce1d12bacabca688cec
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f798b4a7964eba112ed9948b2db4f6d5c3edd1e3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044189"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608359"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
@@ -26,7 +26,7 @@ ms.locfileid: "102044189"
 
 ## <a name="enabling-clustering-on-a-data-source"></a>データ ソースでのクラスタリングの有効化
 
-`cluster` オプションを true に設定することにより、`DataSource` クラスでクラスタリングを簡単に有効化できます。 近くのポイントを選択し、それらをクラスターに結合するように、`clusterRadius` を設定します。 `clusterRadius` の値はピクセル単位です。 `clusterMaxZoom` を使用して、クラスタリング ロジックを無効にするズーム レベルを指定します。 次に示すのは、データ ソースでクラスタリングを有効化する方法の例です。
+`cluster` オプションを `true` に設定することにより、`DataSource` クラスでクラスタリングを簡単に有効化できます。 近くのポイントを選択し、それらをクラスターに結合するように、`clusterRadius` を設定します。 `clusterRadius` の値はピクセル単位です。 `clusterMaxZoom` を使用して、クラスタリング ロジックを無効にするズーム レベルを指定します。 次に示すのは、データ ソースでクラスタリングを有効化する方法の例です。
 
 ```javascript
 //Create a data source and enable clustering.

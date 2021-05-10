@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: wiassaf
 ms.date: 03/10/2021
-ms.openlocfilehash: 1a86522975ffb7b5b2bd514402dd97a76aa2506e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3ce07af74c3f01fd78ef15ab0e7d43b91361e556
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103014606"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784481"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -74,7 +74,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
     --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver
 ```
 
-データベースのコピーは非同期操作ですが、要求が受け入れられた直後にターゲット データベースが作成されます。 まだ進行中のコピー操作を取り消す必要がある場合は、[az sql db delete](/cli/azure/sql/db#az-sql-db-delete) コマンドを使用してターゲット データベースをドロップします。
+データベースのコピーは非同期操作ですが、要求が受け入れられた直後にターゲット データベースが作成されます。 まだ進行中のコピー操作を取り消す必要がある場合は、[az sql db delete](/cli/azure/sql/db#az_sql_db_delete) コマンドを使用してターゲット データベースをドロップします。
 
 * * *
 

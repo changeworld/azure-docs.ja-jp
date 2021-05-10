@@ -4,35 +4,38 @@ description: AKS VM ホスト OS でのセキュリティの強化について�
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/29/2021
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b0866905d0228d2304ebf5c8ef930a629979d2da
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86244040"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012084"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS エージェント ノード ホスト OS のセキュリティ強化
 
-Azure Kubernetes Service (AKS) は、SOC、ISO、PCI DSS、HIPAA の各標準に準拠する、セキュリティで保護されたサービスです。 この記事では、AKS 仮想マシン ホストに適用されるセキュリティ強化について説明します。 AKS のセキュリティについて詳しくは、「[Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](./concepts-security.md)」をご覧ください。
+Azure Kubernetes Service (AKS) は安全なサービスとして、SOC、ISO、PCI DSS、HIPAA の各標準に準拠しています。 この記事では、AKS 仮想マシン (VM) のホストに適用されるセキュリティ強化について説明します。 AKS のセキュリティについて詳しくは、「[Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念](./concepts-security.md)」をご覧ください。
 
 > [!Note]
 > このドキュメントの対象範囲は、AKS の Linux エージェントだけです。
 
-AKS クラスターは、AKS で実行されているコンテナーに使用される、セキュリティが最適化された OS が実行されているホスト仮想マシンにデプロイされます。 このホスト OS は、追加のセキュリティ強化および最適化が適用された **Ubuntu 16.04 LTS** イメージに基づいています (セキュリティ強化の詳細を参照してください)。
+AKS クラスターは、AKS で実行されているコンテナーに使用される、セキュリティが最適化された OS を実行するホスト仮想マシンにデプロイされます。 このホスト OS は、より多くの [セキュリティ強化](#security-hardening-features)と最適化が適用された **Ubuntu 16.04.LTS** イメージに基づいています。
 
 セキュリティが強化されたホスト OS の目標は、攻撃の対象となる領域を減らし、安全な方法でコンテナーをデプロイするために最適化することです。
 
 > [!Important]
-> セキュリティが強化された OS は、CIS でベンチマークされていません。 CIS ベンチマークとの重複はありますが、目標は CIS に準拠することではありません。 ホスト OS のセキュリティ強化の目標は、Microsoft 独自の内部ホスト セキュリティ標準と整合性のあるセキュリティ レベルに収束することです。
+> セキュリティが強化された OS は、CIS のベンチマークでは **ありません**。 CIS ベンチマークと重複していますが、目標は CIS に準拠することではありません。 ホスト OS のセキュリティ強化の目標は、Microsoft 独自の内部ホスト セキュリティ標準と整合性のあるセキュリティ レベルに収束することです。
 
 ## <a name="security-hardening-features"></a>セキュリティ強化の機能
 
-* AKS では、セキュリティが最適化されたホスト OS が既定で提供されます。 代わりのオペレーティング システムを選択するオプションはありません。
+* AKS は、既定でセキュリティが最適化されたホスト OS を提供しますが、別のオペレーティング システムを選択するオプションはありません。
 
-* Azure では、AKS 仮想マシン ホストに対して更新プログラム (セキュリティ更新プログラムを含む) が毎日適用されます。 これらの修正プログラムには、再起動が必要なものもあれば、そうでないものもあります。 お客様は、必要に応じて、AKS VM ホストの再起動をスケジュールする必要があります。 AKS への修正プログラムの適用を自動化する方法のガイダンスについては、[AKS ノードへの修正プログラムの適用](./node-updates-kured.md)に関する記事をご覧ください。
+* Azure では、AKS 仮想マシン ホストに対して更新プログラム (セキュリティ更新プログラムを含む) が毎日適用されます。 
+    * これらのパッチには再起動が必要なものもあれば、そうでないものもあります。 
+    * 必要に応じて、AKS VM ホストの再起動をスケジュールする必要があります。 
+    * AKS パッチ適用を自動化する方法のガイダンスについては、[AKS ノードへの修正プログラムの適用](./node-updates-kured.md)に関する記事をご覧ください。
 
 ## <a name="what-is-configured"></a>構成内容
 
@@ -79,14 +82,12 @@ AKS クラスターは、AKS で実行されているコンテナーに使用さ
  
 * 攻撃対象領域をさらに減らすため、OS では一部の不要なカーネル モジュール ドライバーが無効になっています。
 
-* セキュリティが強化された OS は、AKS 専用に構築および保守されており、AKS プラットフォーム以外ではサポートされていません。
+* セキュリティが強化された OS は、AKS 専用に構築および保守されており、AKS プラットフォーム以外ではサポート **されていません**。
 
 ## <a name="next-steps"></a>次のステップ  
 
-AKS のセキュリティについて詳しくは、次の記事をご覧ください。 
+AKS のセキュリティに関する詳細については、次の記事をご覧ください。 
 
-[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
-
-[AKS のセキュリティに関する考慮事項](./concepts-security.md)
-
-[AKS のベスト プラクティス](./best-practices.md)
+* [Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
+* [AKS のセキュリティに関する考慮事](./concepts-security.md)
+* [AKS のベスト プラクティス](./best-practices.md)

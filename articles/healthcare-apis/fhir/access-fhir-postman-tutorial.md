@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 03/16/2021
-ms.openlocfilehash: e9031dc77054a2bbac8015bbbdd7b9ed2a35e84f
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.date: 03/26/2021
+ms.openlocfilehash: 59847f745037acec47415489cdf61d119a7807af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105043344"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936276"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -24,12 +24,13 @@ ms.locfileid: "105043344"
 
 - Azure 内の FHIR エンドポイント。 
 
-   FHIR (管理されたサービス) 用の Azure API をデプロイするには、 [Azure portal](fhir-paas-portal-quickstart.md)、 [PowerShell](fhir-paas-powershell-quickstart.md)、または [Azure CLI](fhir-paas-cli-quickstart.md)を使用できます。
+  FHIR (管理されたサービス) 用の Azure API をデプロイするには、 [Azure portal](fhir-paas-portal-quickstart.md)、 [PowerShell](fhir-paas-powershell-quickstart.md)、または [Azure CLI](fhir-paas-cli-quickstart.md)を使用できます。
+
 - FHIR サービスにアクセスするための登録済みの [機密クライアントアプリケーション](register-confidential-azure-ad-client-app.md) 。
 - FHIR サービスにアクセスするための、"FHIR データ共同作成者" などの機密クライアントアプリケーションへのアクセス許可が付与されている。 詳細については、「 [FHIR 用に AZURE RBAC を構成する](./configure-azure-rbac.md)」を参照してください。
 - Postman がインストールされている。 
     
-    Postman の詳細については、「 [Postman の概要](https://www.getpostman.com)」を参照してください。
+  Postman の詳細については、「 [Postman の概要](https://www.getpostman.com)」を参照してください。
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR サーバーと認証の詳細
 
@@ -62,6 +63,8 @@ Azure API for FHIR のメタデータ URL は `https://MYACCOUNT.azurehealthcare
 ![認証に失敗しました](media/tutorial-postman/postman-authentication-failed.png)
 
 ## <a name="obtaining-an-access-token"></a>アクセス トークンを取得する
+**[Get New Access Token]\(新しいアクセス トークンを取得する\)** を選択します。
+
 有効なアクセストークンを取得するには、[**承認**] を選択し、[**種類**] ドロップダウンメニューから [ **OAuth 2.0** ] を選択します。
 
 ![OAuth 2.0 の設定](media/tutorial-postman/postman-select-oauth2.png)
@@ -76,13 +79,13 @@ Azure API for FHIR のメタデータ URL は `https://MYACCOUNT.azurehealthcare
 |-----------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------|
 | Token Name (トークン名)            | MYTOKEN                                                                                                         | 選択した名前          |
 | 付与タイプ            | Authorization Code (承認コード)                                                                                              |                            |
-| コールバック URL          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
+| コールバック URL          | `https://www.getpostman.com/oauth2/callback`                                                                    |                            |
 | 認証 URL              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` は Azure API for FHIR の `https://MYACCOUNT.azurehealthcareapis.com` です |
-| Access Token URL (アクセス トークン URL)      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
-| クライアント ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | アプリケーション ID             |
-| クライアント シークレット         | `XXXXXXXX`                                                                                                        | シークレット クライアント キー          |
-| Scope | `<Leave Blank>` |
-| State                |  `1234`                                                                                                           |                            |
+| Access Token URL (アクセス トークン URL)      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                    |                            |
+| クライアント ID             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                           | アプリケーション ID             |
+| クライアント シークレット         | `XXXXXXXX`                                                                                                      | シークレット クライアント キー          |
+| Scope | `<Leave Blank>` | スコープは使用されません。そのため、空白のままにすることができます。  
+| State                 | `1234`     | [状態](https://learning.postman.com/docs/sending-requests/authorization/) は、クロスサイト要求の偽造を防止するための非透過的な値です。 これは省略可能であり、' 1234 ' のような任意の値を取ることができます。                           |
 | クライアント認証 | Send client credentials in body (本文でクライアントの資格情報を送信する)                                                                                 |                 
 
 Azure Active Directory 認証フローのガイドとなる **要求トークン** を選択すると、トークンが Postman に返されます。 認証エラーが発生した場合は、Postman コンソールで詳細を確認してください。 **注**: リボンで [ **表示**] を選択し、[ **Show Postman Console**] を選択します。 Postman コンソールへのショートカットキーは、 **Alt + Ctrl + C** です。

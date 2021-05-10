@@ -3,12 +3,12 @@ title: Registry サービス階層と機能
 description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限 (クォータ) について説明します。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 323d36fe022d8b8e9618b8beb1facae93d22df4e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98015668"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781255"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry サービス階層
 
@@ -73,7 +73,7 @@ GitHub の [ACR ロードマップ][acr-roadmap]を参照して、サービス�
 [container-registry-uservoice]: https://feedback.azure.com/forums/903958-azure-container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-update]: /cli/azure/acr#az-acr-update
+[az-acr-update]: /cli/azure/acr#az_acr_update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-storage]: container-registry-storage.md
 [container-registry-delete]: container-registry-delete.md

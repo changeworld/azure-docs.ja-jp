@@ -10,16 +10,18 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 1dc4e0b70b0d39d01bada26992eb2213c1e855c5
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b03915608c6143a9e205ba1a1e08e411b8aa9093
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455061"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868649"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)
 
 この記事では、Azure Synapse Analytics によって実行される Apache Spark プールを、Azure Machine Learning パイプラインのデータ準備ステップのコンピューティング先として使用する方法について説明します。 データの準備やトレーニングなどの特定の手順に適したコンピューティング リソースを 1 つのパイプラインで使用する方法について説明します。 Spark ステップ用のデータの準備方法と、次の手順に渡す方法について説明します。 
+
+[!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -90,6 +92,8 @@ synapse_compute.wait_for_completion()
 構成が作成されたら、`Workspace`、`ComputeTargetAttachConfiguration`、および機械学習ワークスペース内のコンピューティングの参照に使用する名前を渡して、機械学習 `ComputeTarget` を作成します。 `ComputeTarget.attach()` の呼び出しは非同期であるため、このサンプルは、呼び出しが完了するまでブロック状態になります。
 
 ## <a name="create-a-synapsesparkstep-that-uses-the-linked-apache-spark-pool"></a>リンクされた Apache Spark プールを使用する `SynapseSparkStep` を作成する
+
+サンプル ノートブックの [Apache spark プールの Spark ジョブ](https://github.com/azure/machinelearningnotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)では、単純な機械学習パイプラインが定義されています。 最初に、このノートブックでは、前の手順で定義された `synapse_compute` を利用したデータ準備手順が定義されます。 次に、このノートブックでは、トレーニングに適したコンピューティング先によって実行されるトレーニング ステップが定義されます。 このサンプル ノートブックでは、タイタニック号の生存者データベースを使用してデータの入力と出力を例示しますが、実際にデータを消去したり、予測モデルを作成したりすることはありません。 このサンプルには実際のトレーニングがないため、トレーニング ステップでは安価な CPU ベースのコンピューティング リソースを使用します。
 
 データは `DatasetConsumptionConfig` オブジェクトを使用して機械学習パイプラインに送られます。このオブジェクトは表形式のデータまたはファイルのセットを保持できます。 データは多くの場合、ワークスペースのデータストア内にある BLOB ストレージ内のファイルから取得されます。 次のコードは、機械学習パイプラインの入力を作成するための一般的なコードを示しています。
 

@@ -2,19 +2,19 @@
 title: チュートリアル - Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
 description: チュートリアル - Synapse Prometheus コネクタを使用して、既存のオンプレミス Prometheus サーバーを Azure Synapse ワークスペースと統合し、ほぼリアルタイムの Azure Spark アプリケーション メトリックを取得する方法について説明します。
 services: synapse-analytics
-author: hrasheed-msft
+author: jejiang
 ms.author: jejiang
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: bd04c692655161a2ba8d4ff51a8ff07e9b9bd374
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d22975199eedae353f2dc12588671ae4b54c85ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695853"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109320"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>チュートリアル: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
 
@@ -152,7 +152,7 @@ python main.py
 | grant_type    | True     | 要求されている付与の種類を指定します。 クライアント資格情報付与フローでは、値は client_credentials である必要があります。 |
 | client_id     | True     | Azure portal または Azure CLI で登録した、アプリケーションのアプリケーション (サービス プリンシパル) ID。        |
 | client_secret | True     | アプリケーションに対して生成されたシークレット (サービス プリンシパル)                                                  |
-| resource      | True     | Synapse リソース URI (https://dev.azuresynapse.net である必要があります)                                                  |
+| resource      | True     | Synapse リソース URI ("https://dev.azuresynapse.net" である必要があります)                                                  |
 
 ```bash
 curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
@@ -176,7 +176,7 @@ curl -X GET -H 'Content-Type: application/x-www-form-urlencoded' \
 
 ### <a name="2-list-running-applications-in-the-azure-synapse-workspace"></a>2.Azure Synapse ワークスペースで実行中のアプリケーションを一覧表示する
 
-[監視 - Spark ジョブの一覧の取得](https://docs.microsoft.com/rest/api/synapse/data-plane/monitoring/getsparkjoblist)に関するドキュメントに従って、Synapse ワークスペースの Spark アプリケーションの一覧を取得します。
+[監視 - Spark ジョブの一覧の取得](/rest/api/synapse/data-plane/monitoring/getsparkjoblist)に関するドキュメントに従って、Synapse ワークスペースの Spark アプリケーションの一覧を取得します。
 
 
 ### <a name="3-collect-spark-application-metrics-with-the-prometheus-or-rest-apis"></a>3.Prometheus または REST API を使用して Spark アプリケーションのメトリックを収集する

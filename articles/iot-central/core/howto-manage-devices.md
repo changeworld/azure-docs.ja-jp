@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5bab4a7a90101d3749571e0f2d4179f0fce14296
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97032526"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378637"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -58,10 +58,12 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 ## <a name="import-devices"></a>デバイスのインポート
 
-アプリケーションに多数のデバイスを接続する場合は、CSV ファイルからデバイスを一括してインポートできます。 CSV ファイルには次の列とヘッダーが必要です
+アプリケーションに多数のデバイスを接続する場合は、CSV ファイルからデバイスを一括してインポートできます。 CSV ファイルには次の列ヘッダーが必要です。
 
-* **IOTC_DeviceID** - デバイス ID には、文字、数字、および `-` 文字を含めることができます。
-* **IOTC_DeviceName** - この列は省略可能です。
+| 列 | 説明 
+| - | - | 
+| IOTC_DEVICEID | デバイス ID は、このデバイスの接続に使用される一意識別子です。 デバイス ID には、文字、数字、および `-` 文字を含めることができます (スペースなし)。 |
+| IOTC_DEVICENAME | 省略可能。 デバイス名は、アプリケーション全体に表示されるフレンドリ名です。 指定しない場合、これはデバイス ID と同じになります。   |
 
 アプリケーションにデバイスを一括登録する方法:
 
@@ -166,7 +168,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. プロパティを必要な値に変更します。 一度に複数のプロパティを変更し、それらすべてを同時に更新できます。
 
-1. **[保存]** を選択します。 書き込み可能プロパティを保存すると、値はデバイスに送信されます。 デバイスが書き込み可能プロパティの変更を確認すると、状態は **[synced]\(同期済み\)** に戻ります。 クラウド プロパティを保存した場合、値は更新されます。
+1. **[保存]** を選択します。 書き込み可能プロパティを保存すると、値はデバイスに送信されます。 デバイスが書き込み可能プロパティの変更を確認すると、状態は **[同期済み]** に戻ります。 クラウド プロパティを保存した場合、値は更新されます。
 
 ## <a name="next-steps"></a>次のステップ
 

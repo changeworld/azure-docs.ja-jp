@@ -3,15 +3,15 @@ title: Private Link - Azure Database for MariaDB
 description: Azure Database for MariaDB で Private link がどのように機能するかについて説明します。
 author: mksuni
 ms.author: sumuth
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a1b97586eeeab1d5d1917f2d1cec9e0f71e9e329
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98665142"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867459"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Private Link
 
@@ -85,7 +85,8 @@ Private Link を有効にするには、プライベート エンドポイント
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Private Link のユースケース
 
-クライアントは、同じ VNet または同じリージョン内でピアリングされた VNet から、またはリージョン間の VNet 間接続を介して、プライベート エンドポイントに接続できます。 さらに、クライアントは、ExpressRoute、プライベート ピアリング、または VPN トンネリングを使用して、オンプレミスから接続できます。 一般的なユース ケースを示す簡略化された図を以下に示します。
+
+クライアントを使用すると、同じ VNet から、同じリージョン内またはリージョン間で[ピアリングされた VNet](../virtual-network/virtual-network-peering-overview.md) から、またはリージョン間の [VNet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を介して、プライベート エンドポイントに接続できます。 さらに、クライアントは、ExpressRoute、プライベート ピアリング、または VPN トンネリングを使用して、オンプレミスから接続できます。 一般的なユース ケースを示す簡略化された図を以下に示します。
 
 ![プライベート エンドポイントの選択の概要](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 

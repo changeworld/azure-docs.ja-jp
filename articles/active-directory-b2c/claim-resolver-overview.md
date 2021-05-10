@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b69492dc41786a677043df5e77c9d12aa26893f6
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 929463e346311d58da5ac75b28c774bcfe258f08
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119775"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557532"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
@@ -72,12 +72,12 @@ Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](custom-pol
 | {OIDC:LoginHint} |  `login_hint` クエリ文字列パラメーター。 | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`。 | 該当なし |
 | {OIDC:Nonce} |`Nonce` クエリ文字列パラメーター。 | defaultNonce |
-| {OIDC:Password}| [リソース所有者のパスワード資格情報フロー](ropc-custom.md) ユーザーのパスワード。| パスワード 1| 
+| {OIDC:Password}| [リソース所有者のパスワード資格情報フロー](add-ropc-policy.md) ユーザーのパスワード。| パスワード 1| 
 | {OIDC:Prompt} | `prompt` クエリ文字列パラメーター。 | ログイン (login) |
 | {OIDC:RedirectUri} |`redirect_uri` クエリ文字列パラメーター。 | https://jwt.ms |
 | {OIDC:Resource} |`resource` クエリ文字列パラメーター。 | 該当なし |
 | {OIDC:Scope} |`scope` クエリ文字列パラメーター。 | openid |
-| {OIDC:Username}| [リソース所有者のパスワード資格情報フロー](ropc-custom.md) ユーザーのユーザー名。| emily@contoso.com| 
+| {OIDC:Username}| [リソース所有者のパスワード資格情報フロー](add-ropc-policy.md) ユーザーのユーザー名。| emily@contoso.com| 
 
 ### <a name="context"></a>Context
 

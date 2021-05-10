@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/06/2021
+ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98209833"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504228"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
@@ -137,12 +137,16 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 新しい動作では:
 
-* フル フレーズのクエリに一致する語句だけが返されるようになります。 クエリ "super bowl" では、次のような強調表示が返されます。
++ フル フレーズのクエリに一致する語句だけが返されるようになります。 クエリ フレーズ "super bowl" では、次のような強調表示が返されます。
 
-    ```html
-    '<em>super bowl</em> is super awesome with a bowl of chips'
-    ```
-  用語 *bowl of chips* はフル フレーズと一致しないため、強調表示されていないことに注意してください。
+  ```json
+  "@search.highlights": {
+      "sentence": [
+          "The <em>super</em> <em>bowl</em> is super awesome with a bowl of chips"
+     ]
+  ```
+
+  *super* および *bowl* という他のインスタンスは、フレーズ全体に一致しないため、強調表示されません。
 
 ヒットの強調表示を実装するクライアント コードを記述する場合は、この変更点に注意してください。 まったく新しい検索サービスを作成しない限り、この変更の影響を受けることはありません。
 

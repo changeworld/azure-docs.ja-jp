@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 03/04/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177921"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778627"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -33,9 +33,9 @@ Azure Lighthouse を使用すると、テナントによって異なるアカウ
 
 委任されたリソースに対して管理タスクをポータル上で直接実行するか、API および管理ツール (Azure CLI や Azure PowerShell など) を使用して実行することができます。 既存の API はすべて、委任されたリソースを操作するときに使用できます。ただし、テナント間の管理において機能がサポートされており、ユーザーが適切なアクセス許可を持っている必要があります。
 
-Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription)では、返されたサブスクリプションが管理対象のテナントと管理側テナントのどちらに属しているかを識別できるように、各サブスクリプションの `HomeTenantId` と `ManagedByTenantIds` 属性が表示されます。
+Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription) では、既定で管理側テナントの `TenantId` が表示されます。 返されたサブスクリプションが管理対象のテナントと管理側テナントのどちらに属しているかを識別できるように、各サブスクリプションの `HomeTenantId` と `ManagedByTenantIds` 属性を使用することができます。
 
-同様に、[az account list](/cli/azure/account#az-account-list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。 Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
+同様に、[az account list](/cli/azure/account#az_account_list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。 Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
 
 Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/get) コマンドと [Subscriptions - List](/rest/api/resources/subscriptions/list) コマンドに `ManagedByTenant` が含まれています。
 
@@ -56,8 +56,8 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
   - 顧客のハイブリッド環境全体に同じポリシー セットが提供されていることを確認する
   - Azure Security Center を使用して、顧客のハイブリッド環境全体のコンプライアンスを監視する
 - ハイブリッド Kubernetes クラスターを大規模に管理する - [Azure Arc 対応 Kubernetes (プレビュー)](../../azure-arc/kubernetes/overview.md):
-  - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Kubernetes クラスターを管理する](../../azure-arc/kubernetes/connect-cluster.md)
-  - 接続されたクラスターに [GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md) を使用する
+  - Azure 内の委任されたサブスクリプションまたはリソース グループに[接続されている Kubernetes クラスターを管理する](../../azure-arc/kubernetes/quickstart-connect-cluster.md)
+  - 接続されたクラスターに [GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) を使用する
   - 接続されたクラスター全体にポリシーを適用する
 
 [Azure Automation](../../automation/index.yml):
@@ -77,7 +77,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 [Azure Cost Management および Billing](../../cost-management-billing/index.yml):
 
-- CSP パートナーは、管理しているテナントから、Azure プランに含まれるお客様に対する、(購入を含めずに) 税引き前消費コストを表示、管理、分析できます。 コストは、小売価格と、お客様のサブスクリプションに対してパートナーが持っている Azure ロールベースのアクセス制御 (Azure RBAC) アクセスに基づきます。
+- CSP パートナーは、管理しているテナントから、Azure プランに含まれるお客様に対する、(購入を含めずに) 税引き前消費コストを表示、管理、分析できます。 コストは、小売価格と、お客様のサブスクリプションに対してパートナーが持っている Azure ロールベースのアクセス制御 (Azure RBAC) アクセスに基づきます。 現時点では、Azure RBAC アクセスに基づいて、個々のお客様のサブスクリプションごとに消費コストを小売価格で表示できます。
 
 [Azure Key Vault](../../key-vault/general/index.yml):
 

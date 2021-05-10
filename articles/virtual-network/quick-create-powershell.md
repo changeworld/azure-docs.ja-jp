@@ -3,18 +3,17 @@ title: 仮想ネットワークの作成 - クイック スタート - Azure Pow
 titlesuffix: Azure Virtual Network
 description: このクイックスタートでは、Azure portal を使用して仮想ネットワークを作成します。 仮想ネットワークを使用すると、Azure リソースが互いに通信を行ったり、インターネットと通信したりできるようになります。
 author: KumudD
-Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
 ms.service: virtual-network
 ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b27f050d3d37daab05e8c5125d6b75a6bb4dea50
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 7ee10327ab95a3e66e5592593ae72d6e5cd8d606
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199035"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060603"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>クイック スタート:PowerShell を使用して仮想ネットワークを作成する
 

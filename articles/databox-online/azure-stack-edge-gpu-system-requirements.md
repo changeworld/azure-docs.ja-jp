@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 04/07/2021
 ms.author: alkohli
-ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: b6984f27ae0ae81c3bf8d98efcce5fb23909c36d
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636625"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226092"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
-この記事では、Microsoft Azure Stack Edge Pro ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
+この記事では、Microsoft Azure Stack Edge Pro GPU ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
 
 Azure Stack Edge Pro のシステム要件は次のとおりです。
 
@@ -107,6 +108,18 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) | 
 | https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             | 
 
+### <a name="url-patterns-for-monitoring"></a>監視用の URL パターン
+
+コンテナー化されたバージョンの Linux 用 Log Analytics エージェントを使用している場合は、Azure Monitor に次の URL パターンを追加します。
+
+| URL パターン | Port | コンポーネントまたは機能 |
+|-------------|-------------|----------------------------|
+| http://\*ods.opinsights.azure.com | 443 | データ インジェスト |
+| http://\*.oms.opinsights.azure.com | 443 | Operations Management Suite (OMS) のオンボード |
+| http://\*.dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用するエージェント テレメトリ |
+
+詳細については、「[Container insights の監視に関するネットワーク ファイアウォールの要件](../azure-monitor/containers/container-insights-onboard.md#network-firewall-requirements)」を参照してください。
+
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure Government 用のゲートウェイの URL パターン
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/azure-stack-edge-gateway-gov-url-patterns-firewall.md)]
@@ -118,6 +131,17 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft コンテナー レジストリ (必須)               |
 | https://\*.azure-devices.us              | IoT Hub アクセス (必須)           |
 | https://\*.azurecr.us                    | 個人やサード パーティのコンテナー レジストリ (任意) | 
+
+### <a name="url-patterns-for-monitoring-for-azure-government"></a>Azure Government 用の監視の URL パターン
+
+コンテナー化されたバージョンの Linux 用 Log Analytics エージェントを使用している場合は、Azure Monitor に次の URL パターンを追加します。
+
+| URL パターン | Port | コンポーネントまたは機能 |
+|-------------|-------------|----------------------------|
+| http://\*ods.opinsights.azure.us | 443 | データ インジェスト |
+| http://\*.oms.opinsights.azure.us | 443 | Operations Management Suite (OMS) のオンボード |
+| http://\*.dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用するエージェント テレメトリ |
+
 
 ## <a name="internet-bandwidth"></a>インターネット帯域幅
 

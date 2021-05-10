@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ed79831559802efdf7e3813f48b74c2fd3c63e87
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99063267"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581863"
 ---
-# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search インデクサーの状態と結果を監視する方法
+# <a name="monitor-indexer-status-and-results-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーの状態と結果を監視する
 
 インデクサーの処理は、Azure portal で、または REST 呼び出しや Azure SDK を使用してプログラムで監視できます。 インデクサー自体の状態に加えて、開始および終了時刻や、特定の実行の詳細なエラーおよび警告を確認できます。
 

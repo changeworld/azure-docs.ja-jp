@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40fff49aa3ed46417cdd9a6190f928707e41accb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018326"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608614"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: よく寄せられる質問
 
@@ -58,6 +58,10 @@ Azure Portal に移動して、Genomics アカウント ページを開きます
 
 ## <a name="do-you-save-my-storage-account-keys"></a>ストレージ アカウント キーはマイクロソフトで保存されますか。
 ストレージ アカウント キーは、入力ファイルの読み取りと出力ファイルの書き込みを行うための Microsoft Genomics サービスの短期的なアクセス トークンの作成に使用されます。 トークンの既定の有効期間は 48 時間です。 トークンの有効期間は、送信コマンドの `-sas/--sas-duration` オプション (値は時間単位) を使用して変更できます。
+
+## <a name="does-microsoft-genomics-store-customer-data"></a>顧客データは Microsoft Genomics に格納されますか。
+
+いいえ。 Microsoft Genomics に顧客データは一切格納されません。
 
 ## <a name="what-genome-references-can-i-use"></a>どのようなゲノム リファレンスを使用できますか。
 

@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 578f0d1ca742fe4445b8aeed6876d1a73fd3f79e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373899"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669510"
 ---
 # <a name="upload-usage-data-to-azure-monitor"></a>使用状況データを Azure Monitor にアップロードする
 
@@ -64,7 +64,7 @@ ms.locfileid: "92373899"
 
 メトリックとログをスケジュールに基づいてアップロードする場合は、スクリプトを作成して、タイマーで数分ごとに実行できます。 次に、Linux シェル スクリプトを使用してアップロードを自動化する例を示します。
 
-お好きなテキスト エディターまたはコード エディターで、ファイルに次のスクリプトを追加し、.sh (Linux/Mac)、.cmd、.bat、.ps1 などのスクリプト実行可能ファイルとして保存します。
+お好きなテキスト エディターまたはコード エディターで、ファイルに次のスクリプトを追加し、`.sh` (Linux/Mac)、`.cmd`、`.bat`、`.ps1` などのスクリプト実行可能ファイルとして保存します。
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force

@@ -1,18 +1,18 @@
 ---
-title: 'チュートリアル:Apache Kafka Streams API の使用 - Azure HDInsight '
+title: 'チュートリアル: Apache Kafka Streams API の使用 - Azure HDInsight '
 description: チュートリアル - HDInsight 上の Kafka で Apache Kafka Streams API を使用する方法を説明します。 この API を使用して、Kafka でトピック間のストリーム処理を実行できます。
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
 ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939194"
 ---
-# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Kafka Streams API を使用する
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>チュートリアル: Azure HDInsight で Apache Kafka Streams API を使用する
 
 Apache Kafka Streams API を使用するアプリケーションを作成し、HDInsight 上の Kafka でそれを実行する方法を説明します。
 
@@ -47,13 +47,13 @@ Kafka Streams の詳細については、Apache.org の「[Intro to Streams](htt
 アプリケーションの例は、[https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) の `Streaming` サブディレクトリにあります。 アプリケーションは、次の 2 つのファイルで構成されます。
 
 * `pom.xml`:このファイルは、プロジェクトの依存関係、Java バージョン、およびパッケージ化方法を定義します。
-* `Stream.java`:このファイルは、ストリーミング ロジックを実装します。
+* `Stream.java`: このファイルは、ストリーミング ロジックを実装します。
 
 ### <a name="pomxml"></a>Pom.xml
 
 `pom.xml` ファイル内で理解すべき重要な点は、次のとおりです。
 
-* 依存関係:このプロジェクトは、`kafka-clients` パッケージによって提供される Kafka Streams API に依存します。 次の XML コードがこの依存関係を定義します。
+* 依存関係: このプロジェクトは、`kafka-clients` パッケージによって提供される Kafka Streams API に依存します。 次の XML コードがこの依存関係を定義します。
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
@@ -69,7 +69,7 @@ Kafka Streams の詳細については、Apache.org の「[Intro to Streams](htt
 * プラグイン:Maven プラグインはさまざまな機能を備えています。 このプロジェクトでは、次のプラグインが使用されます。
 
     * `maven-compiler-plugin`:プロジェクトで使用される Java バージョンを 8 に設定するために使用されます。 HDInsight 3.6 では Java 8 が必要です。
-    * `maven-shade-plugin`:このアプリケーションとすべての依存関係を含む uber jar を生成するために使用されます。 また、アプリケーションのエントリ ポイントの設定にも使用されるため、メイン クラスを指定しなくても Jar ファイルを直接実行できます。
+    * `maven-shade-plugin`: このアプリケーションとすべての依存関係を含む uber jar を生成するために使用されます。 また、アプリケーションのエントリ ポイントの設定にも使用されるため、メイン クラスを指定しなくても Jar ファイルを直接実行できます。
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -196,10 +196,10 @@ public class Stream
 
     トピックは、次の目的で使用されます。
 
-   * `test`:このトピックは、レコードが受信される場所です。 ストリーミング アプリケーションはここから読み取ります。
-   * `wordcounts`:このトピックは、ストリーミング アプリケーションがその出力を格納する場所です。
-   * `RekeyedIntermediateTopic`:このトピックは、`countByKey` 演算子によってカウントが更新される場合にデータ パーティションを再作成するために使用されます。
-   * `wordcount-example-Counts-changelog`:このトピックは、`countByKey` 演算で使用される状態ストアです
+   * `test`: このトピックは、レコードが受信される場所です。 ストリーミング アプリケーションはここから読み取ります。
+   * `wordcounts`: このトピックは、ストリーミング アプリケーションがその出力を格納する場所です。
+   * `RekeyedIntermediateTopic`: このトピックは、`countByKey` 演算子によってカウントが更新される場合にデータ パーティションを再作成するために使用されます。
+   * `wordcount-example-Counts-changelog`: このトピックは、`countByKey` 演算で使用される状態ストアです
 
     HDInsight 上の Kafka は、トピックを自動的に作成するように構成することもできます。 詳細については、[自動トピック作成の構成](apache-kafka-auto-create-topics.md)に関するドキュメントをご覧ください。
 

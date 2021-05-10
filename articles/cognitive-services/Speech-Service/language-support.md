@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470236"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256159"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -38,7 +38,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Language                 | ロケール (BCP-47) | カスタマイズ  | [言語検出](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| アラビア語 (バーレーン)、現代標準  | `ar-BH` | Text                                   | はい                           | 
+| アラビア語 (バーレーン)、現代標準  | `ar-BH` | Text                                   |                           | 
 | アラビア語 (エジプト)                     | `ar-EG` | Text                                   | はい                          |
 | アラビア語 (イラク)                      | `ar-IQ` | テキスト                                   |                           |
 | アラビア語 (イスラエル)                    | `ar-IL` | テキスト                                   |                           |
@@ -47,9 +47,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アラビア語 (レバノン)                   | `ar-LB` | テキスト                                   |                           |
 | アラビア語 (オマーン)                      | `ar-OM` | テキスト                                   |                           |
 | アラビア語 (カタール)                     | `ar-QA` | テキスト                                   |                           |
-| アラビア語 (サウジアラビア)              | `ar-SA` | Text                                   | はい                          |
+| アラビア語 (サウジアラビア)              | `ar-SA` | Text                                   |                           |
 | アラビア語 (パレスチナ自治政府)        | `ar-PS` | テキスト                                   |                           |
-| アラビア語 (シリア)                     | `ar-SY` | Text                                   | はい                          |
+| アラビア語 (シリア)                     | `ar-SY` | Text                                   |                           |
 | アラビア語 (アラブ首長国連邦)      | `ar-AE` | テキスト                                   |                           |
 | ブルガリア語 (ブルガリア)               | `bg-BG` | テキスト                                   |                           |
 | カタルニア語 (スペイン)                    | `ca-ES` | Text                                   | はい                          |
@@ -59,15 +59,15 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | クロアチア語 (クロアチア)                 | `hr-HR` | テキスト                                   |                           |
 | チェコ語 (チェコ共和国)             | `cs-CZ` | テキスト                                   |                           |
 | デンマーク語 (デンマーク)                   | `da-DK` | Text                                   | はい                          |
-| オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>Text                                   |    はい                       |
+| オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>テキスト<br>発音|    はい                       |
 | 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>Text                 | はい                          |
 | 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>Text                 | はい                          |
 | 英語 (ガーナ)                    | `en-GH` | テキスト                                   |                           |
 | 英語 (香港)                | `en-HK` | テキスト                                   |                           |
-| 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text                 | はい                          |
+| 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text                 |                          |
 | 英語 (アイルランド)                  | `en-IE` | テキスト                                   |                           |
 | 英語 (ケニア)                    | `en-KE` | テキスト                                   |                           |
-| 英語 (ニュージーランド)              | `en-NZ` | オーディオ (20201019)<br>Text                 |  はい                         |
+| 英語 (ニュージーランド)              | `en-NZ` | オーディオ (20201019)<br>テキスト                 |                          |
 | 英語 (ナイジェリア)                  | `en-NG` | テキスト                                   |                           |
 | 英語 (フィリピン)              | `en-PH` | テキスト                                   |                           |
 | 英語 (シンガポール)                | `en-SG` | テキスト                                   |                           |
@@ -78,12 +78,12 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | エストニア語 (エストニア)                  | `et-EE` | テキスト                                   |                           |
 | フィリピノ語 (フィリピン)             | `fil-PH`| テキスト                                   |                           |
 | フィンランド語 (フィンランド)                  | `fi-FI` | Text                                   |     はい                      |
-| フランス語 (カナダ)                    | `fr-CA` | オーディオ (20201015)<br>Text                 |     はい                      |
+| フランス語 (カナダ)                    | `fr-CA` | オーディオ (20201015)<br>テキスト<br>発音|     はい                      |
 | フランス語 (フランス)                    | `fr-FR` | オーディオ (20201015)<br>テキスト<br>発音|      はい                     |
-| フランス語 (スイス)               | `fr-CH` | テキスト                                   |                           |
-| ドイツ語 (オーストリア)                   | `de-AT` | テキスト                                   |                           |
+| フランス語 (スイス)               | `fr-CH` | テキスト<br>発音                  |                           |
+| ドイツ語 (オーストリア)                   | `de-AT` | テキスト<br>発音                  |                           |
 | ドイツ語 (ドイツ)                   | `de-DE` | オーディオ (20190701、20200619、20201127)<br>テキスト<br>発音|  はい                         |
-| ギリシャ語 (ギリシャ)                     | `el-GR` | テキスト                                   |                           |
+| ギリシャ語 (ギリシャ)                     | `el-GR` | テキスト                                   |  はい                         |
 | グジャラート語 (インド)                  | `gu-IN` | テキスト                                   |                           |
 | ヒンディー語 (インド)                      | `hi-IN` | オーディオ (20200701)<br>Text                 |     はい                      |
 | ハンガリー語 (ハンガリー)                | `hu-HU` | テキスト                                   |                           |
@@ -94,39 +94,39 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>Text                 |      はい                     |
 | ラトビア語 (ラトビア)                   | `lv-LV` | テキスト                                   |                           |
 | リトアニア語 (リトアニア)             | `lt-LT` | テキスト                                   |                           |
-| マレー語 (マレーシア)                    | `ms-MY` | テキスト                                   |                           |
-| マルタ語 (マルタ)                     | `mt-MT` | テキスト                                   |                           |
+| マレー語 (マレーシア)                   | `ms-MY` | テキスト                                   |                           |
+| マルタ語 (マルタ)                    | `mt-MT` | テキスト                                   |                           |
 | マラーティー語 (インド)                    | `mr-IN` | テキスト                                   |                           |
 | ノルウェー語 (ブークモール、ノルウェー)         | `nb-NO` | Text                                   |     はい                      |
 | ポーランド語 (ポーランド)                    | `pl-PL` | Text                                   |       はい                    |
 | ポルトガル語 (ブラジル)                | `pt-BR` | オーディオ (20190620、20201015)<br>テキスト<br>発音|          はい                 |
-| ポルトガル語 (ポルトガル)              | `pt-PT` | Text                                   |             はい              |
-| ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト                                   |                           |
+| ポルトガル語 (ポルトガル)              | `pt-PT` | テキスト<br>発音                  |             はい              |
+| ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト                                   |  はい                         |
 | ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>Text                 |                はい           |
 | スロバキア語 (スロバキア)                  | `sk-SK` | テキスト                                   |                           |
 | スロベニア語 (スロベニア)               | `sl-SI` | テキスト                                   |                           |
-| スペイン語 (アルゼンチン)                | `es-AR` | テキスト                                   |                           |
-| スペイン語 (ボリビア)                  | `es-BO` | テキスト                                   |                           |
-| スペイン語 (チリ)                    | `es-CL` | テキスト                                   |                           |
-| スペイン語 (コロンビア)                 | `es-CO` | テキスト                                   |                           |
-| スペイン語 (コスタリカ)               | `es-CR` | テキスト                                   |                           |
-| スペイン語 (キューバ)                     | `es-CU` | テキスト                                   |                           |
-| スペイン語 (ドミニカ共和国)       | `es-DO` | テキスト                                   |                           |
-| スペイン語 (エクアドル)                  | `es-EC` | テキスト                                   |                           |
-| スペイン語 (エルサルバドル)              | `es-SV` | テキスト                                   |                           |
+| スペイン語 (アルゼンチン)                | `es-AR` | テキスト<br>発音                  |                           |
+| スペイン語 (ボリビア)                  | `es-BO` | テキスト<br>発音                  |                           |
+| スペイン語 (チリ)                    | `es-CL` | テキスト<br>発音                  |                           |
+| スペイン語 (コロンビア)                 | `es-CO` | テキスト<br>発音                  |                           |
+| スペイン語 (コスタリカ)               | `es-CR` | テキスト<br>発音                  |                           |
+| スペイン語 (キューバ)                     | `es-CU` | テキスト<br>発音                  |                           |
+| スペイン語 (ドミニカ共和国)       | `es-DO` | テキスト<br>発音                  |                           |
+| スペイン語 (エクアドル)                  | `es-EC` | テキスト<br>発音                  |                           |
+| スペイン語 (エルサルバドル)              | `es-SV` | テキスト<br>発音                  |                           |
 | スペイン語 (赤道ギニア)        | `es-GQ` | テキスト                                   |                           |
-| スペイン語 (グアテマラ)                | `es-GT` | テキスト                                   |                           |
-| スペイン語 (ホンジュラス)                 | `es-HN` | テキスト                                   |                           |
-| スペイン語 (メキシコ)                   | `es-MX` | オーディオ (20200907)<br>Text                 |    はい                       |
-| スペイン語 (ニカラグア)                | `es-NI` | テキスト                                   |                           |
-| スペイン語 (パナマ)                   | `es-PA` | テキスト                                   |                           |
-| スペイン語 (パラグアイ)                 | `es-PY` | テキスト                                   |                           |
-| スペイン語 (ペルー)                     | `es-PE` | テキスト                                   |                           |
-| スペイン語 (プエルトリコ)              | `es-PR` | テキスト                                   |                           |
-| スペイン語 (スペイン)                    | `es-ES` | オーディオ (20201015)<br>Text                 |  はい                         |
-| スペイン語 (ウルグアイ)                  | `es-UY` | テキスト                                   |                           |
-| スペイン語 (米国)                      | `es-US` | テキスト                                   |                           |
-| スペイン語 (ベネズエラ)                | `es-VE` | テキスト                                   |                           |
+| スペイン語 (グアテマラ)                | `es-GT` | テキスト<br>発音                  |                           |
+| スペイン語 (ホンジュラス)                 | `es-HN` | テキスト<br>発音                  |                           |
+| スペイン語 (メキシコ)                   | `es-MX` | オーディオ (20200907)<br>テキスト<br>発音|    はい                       |
+| スペイン語 (ニカラグア)                | `es-NI` | テキスト<br>発音                  |                           |
+| スペイン語 (パナマ)                   | `es-PA` | テキスト<br>発音                  |                           |
+| スペイン語 (パラグアイ)                 | `es-PY` | テキスト<br>発音                  |                           |
+| スペイン語 (ペルー)                     | `es-PE` | テキスト<br>発音                  |                           |
+| スペイン語 (プエルトリコ)              | `es-PR` | テキスト<br>発音                  |                           |
+| スペイン語 (スペイン)                    | `es-ES` | オーディオ (20201015)<br>テキスト<br>発音|  はい                         |
+| スペイン語 (ウルグアイ)                  | `es-UY` | テキスト<br>発音                  |                           |
+| スペイン語 (米国)                      | `es-US` | テキスト<br>発音                  |                           |
+| スペイン語 (ベネズエラ)                | `es-VE` | テキスト<br>発音                  |                           |
 | スウェーデン語 (スウェーデン)                   | `sv-SE` | Text                                   |   はい                        |
 | タミール語 (インド)                      | `ta-IN` | テキスト                                   |                           |
 | テルグ語 (インド)                     | `te-IN` | テキスト                                   |                           |
@@ -155,73 +155,83 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | Language | Locale | 性別 | 音声名 | スタイルのサポート |
 |---|---|---|---|---|
 | アラビア語 (エジプト) | `ar-EG` | Female | `ar-EG-SalmaNeural` | 全般 |
-| アラビア語 (エジプト) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>[新規作成]</sup> | 全般 |
+| アラビア語 (エジプト) | `ar-EG` | Male | `ar-EG-ShakirNeural` | 全般 |
 | アラビア語 (サウジアラビア) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | 全般 |
-| アラビア語 (サウジアラビア) | `ar-SA` | Male | `ar-SA-HamedNeural` <sup>[新規作成]</sup> | 全般 |
+| アラビア語 (サウジアラビア) | `ar-SA` | Male | `ar-SA-HamedNeural` | 全般 |
 | ブルガリア語 (ブルガリア) | `bg-BG` | Female | `bg-BG-KalinaNeural` | 全般 |
-| ブルガリア語 (ブルガリア) | `bg-BG` | Male | `bg-BG-BorislavNeural` <sup>[新規作成]</sup> | 全般 |
+| ブルガリア語 (ブルガリア) | `bg-BG` | Male | `bg-BG-BorislavNeural` | 全般 |
 | カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-AlbaNeural` | 全般 |
-| カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-JoanaNeural` <sup>[新規作成]</sup> | 全般 |
-| カタルニア語 (スペイン) | `ca-ES` | Male | `ca-ES-EnricNeural` <sup>[新規作成]</sup> | 全般 |
+| カタルニア語 (スペイン) | `ca-ES` | Female | `ca-ES-JoanaNeural` | 全般 |
+| カタルニア語 (スペイン) | `ca-ES` | Male | `ca-ES-EnricNeural` | 全般 |
 | 中国語 (繁体字) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | 全般 |
-| 中国語 (繁体字) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` <sup>[新規作成]</sup> | 全般 |
-| 中国語 (繁体字) | `zh-HK` | Male | `zh-HK-WanLungNeural` <sup>[新規作成]</sup> | 全般 |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
-| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | 子供の音声、ストーリーのナレーション向けに最適化 |
+| 中国語 (繁体字) | `zh-HK` | Female | `zh-HK-HiuMaanNeural` | 全般 |
+| 中国語 (繁体字) | `zh-HK` | Male | `zh-HK-WanLungNeural` | 全般 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
+| 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | 物語のナレーション向けに最適化された子どもの声 |
 | 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyangNeural` | ニュースの読み取り向けに最適化<br /> [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、複数の音声スタイルを使用可能 |
-| 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyeNeural` | ストーリーのナレーション向けに最適化  |
-| 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` <sup>[新規作成]</sup> | 全般 |
+| 中国語 (標準、簡体字) | `zh-CN` | Male | `zh-CN-YunyeNeural` | ストーリーのナレーション向けに最適化 |
+| 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoChenNeural` | 全般 |
 | 中国語 (台湾標準中国語) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | 全般 |
-| 中国語 (台湾標準中国語) | `zh-TW` | Male | `zh-TW-YunJheNeural` <sup>[新規作成]</sup> | 全般 |
+| 中国語 (台湾標準中国語) | `zh-TW` | Male | `zh-TW-YunJheNeural` | 全般 |
 | クロアチア語 (クロアチア) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` | 全般 |
-| クロアチア語 (クロアチア) | `hr-HR` | Male | `hr-HR-SreckoNeural` <sup>[新規作成]</sup> | 全般 |
+| クロアチア語 (クロアチア) | `hr-HR` | Male | `hr-HR-SreckoNeural` | 全般 |
 | チェコ語 (チェコ) | `cs-CZ` | Female | `cs-CZ-VlastaNeural` | 全般 |
-| チェコ語 (チェコ) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` <sup>[新規作成]</sup> | 全般 |
+| チェコ語 (チェコ) | `cs-CZ` | Male | `cs-CZ-AntoninNeural` | 全般 |
 | デンマーク語 (デンマーク) | `da-DK` | Female | `da-DK-ChristelNeural` | 全般 |
-| デンマーク語 (デンマーク) | `da-DK` | Male | `da-DK-JeppeNeural` <sup>[新規作成]</sup> | 全般 |
+| デンマーク語 (デンマーク) | `da-DK` | Male | `da-DK-JeppeNeural` | 全般 |
+| オランダ語 (ベルギー) | `nl-BE` | Female | `nl-BE-DenaNeural` <sup>[新規作成]</sup> | 全般 | 
+| オランダ語 (ベルギー) | `nl-BE` | Male | `nl-BE-ArnaudNeural` <sup>[新規作成]</sup> | 全般 | 
 | オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-ColetteNeural` | 全般 |
-| オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-FennaNeural` <sup>[新規作成]</sup> | 全般 |
-| オランダ語 (オランダ) | `nl-NL` | Male | `nl-NL-MaartenNeural` <sup>[新規作成]</sup> | 全般 |
+| オランダ語 (オランダ) | `nl-NL` | Female | `nl-NL-FennaNeural` | 全般 |
+| オランダ語 (オランダ) | `nl-NL` | Male | `nl-NL-MaartenNeural` | 全般 |
 | 英語 (オーストラリア) | `en-AU` | Female | `en-AU-NatashaNeural` | 全般 |
 | 英語 (オーストラリア) | `en-AU` | Male | `en-AU-WilliamNeural` | 全般 |
 | 英語 (カナダ) | `en-CA` | Female | `en-CA-ClaraNeural` | 全般 |
-| 英語 (カナダ) | `en-CA` | Male | `en-CA-LiamNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (カナダ) | `en-CA` | Male | `en-CA-LiamNeural` | 全般 |
 | 英語 (インド) | `en-IN` | Female | `en-IN-NeerjaNeural` | 全般 |
-| 英語 (インド) | `en-IN` | Male | `en-IN-PrabhatNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (インド) | `en-IN` | Male | `en-IN-PrabhatNeural` | 全般 |
 | 英語 (アイルランド) | `en-IE` | Female | `en-IE-EmilyNeural` | 全般 |
-| 英語 (アイルランド) | `en-IE` | Male | `en-IE-ConnorNeural` <sup>[新規作成]</sup> | 全般 |
+| 英語 (アイルランド) | `en-IE` | Male | `en-IE-ConnorNeural` | 全般 |
+| 英語 (フィリピン) | `en-PH` | Female | `en-PH-RosaNeural` <sup>[新規作成]</sup> | 全般 | 
+| 英語 (フィリピン) | `en-PH` | Male | `en-PH-JamesNeural` <sup>[新規作成]</sup> | 全般 | 
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-LibbyNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
-| 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
-| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
-| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
+| 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | 全般 |
+| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | 全般 |
+| エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` | 全般 |
+| エストニア語 (エストニア) | `et-EE` | Male | `et-EE-KertNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
-| フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>[新規作成]</sup> | 全般 |
-| フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>[新規作成]</sup> | 全般 |
+| フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` | 全般 |
+| フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` | 全般 |
+| フランス語 (ベルギー) | `fr-BE` | Female | `fr-BE-CharlineNeural` <sup>[新規作成]</sup> | 全般 | 
+| フランス語 (ベルギー) | `fr-BE` | Male | `fr-BE-GerardNeural` <sup>[新規作成]</sup> | 全般 | 
 | フランス語 (カナダ) | `fr-CA` | Female | `fr-CA-SylvieNeural` | 全般 |
-| フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-AntoineNeural` <sup>[新規作成]</sup> | 全般 |
+| フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-AntoineNeural` | 全般 |
 | フランス語 (カナダ) | `fr-CA` | Male | `fr-CA-JeanNeural` | 全般 |
 | フランス語 (フランス) | `fr-FR` | Female | `fr-FR-DeniseNeural` | 全般 |
 | フランス語 (フランス) | `fr-FR` | Male | `fr-FR-HenriNeural` | 全般 |
 | フランス語 (スイス) | `fr-CH` | Female | `fr-CH-ArianeNeural` | 全般 |
-| フランス語 (スイス) | `fr-CH` | Male | `fr-CH-FabriceNeural` <sup>[新規作成]</sup> | 全般 |
+| フランス語 (スイス) | `fr-CH` | Male | `fr-CH-FabriceNeural` | 全般 |
 | ドイツ語 (オーストリア) | `de-AT` | Female | `de-AT-IngridNeural` | 全般 |
-| ドイツ語 (オーストリア) | `de-AT` | Male | `de-AT-JonasNeural` <sup>[新規作成]</sup> | 全般 |
+| ドイツ語 (オーストリア) | `de-AT` | Male | `de-AT-JonasNeural` | 全般 |
 | ドイツ語 (ドイツ) | `de-DE` | Female | `de-DE-KatjaNeural` | 全般 |
 | ドイツ語 (ドイツ) | `de-DE` | Male | `de-DE-ConradNeural` | 全般 |
 | ドイツ語 (スイス) | `de-CH` | Female | `de-CH-LeniNeural` | 全般 |
-| ドイツ語 (スイス) | `de-CH` | Male | `de-CH-JanNeural` <sup>[新規作成]</sup> | 全般 |
+| ドイツ語 (スイス) | `de-CH` | Male | `de-CH-JanNeural` | 全般 |
 | ギリシャ語 (ギリシャ) | `el-GR` | Female | `el-GR-AthinaNeural` | 全般 |
-| ギリシャ語 (ギリシャ) | `el-GR` | Male | `el-GR-NestorasNeural` <sup>[新規作成]</sup> | 全般 |
+| ギリシャ語 (ギリシャ) | `el-GR` | Male | `el-GR-NestorasNeural` | 全般 |
 | ヘブライ語 (イスラエル) | `he-IL` | Female | `he-IL-HilaNeural` | 全般 |
-| ヘブライ語 (イスラエル) | `he-IL` | Male | `he-IL-AvriNeural` <sup>[新規作成]</sup> | 全般 |
+| ヘブライ語 (イスラエル) | `he-IL` | Male | `he-IL-AvriNeural` | 全般 |
 | ヒンディー語 (インド) | `hi-IN` | Female | `hi-IN-SwaraNeural` | 全般 |
-| ヒンディー語 (インド) | `hi-IN` | Male | `hi-IN-MadhurNeural` <sup>[新規作成]</sup> | 全般 |
+| ヒンディー語 (インド) | `hi-IN` | Male | `hi-IN-MadhurNeural` | 全般 |
 | ハンガリー語 (ハンガリー) | `hu-HU` | Female | `hu-HU-NoemiNeural` | 全般 |
-| ハンガリー語 (ハンガリー) | `hu-HU` | Male | `hu-HU-TamasNeural` <sup>[新規作成]</sup> | 全般 |
-| インドネシア語 (インドネシア) | `id-ID` | Female | `id-ID-GadisNeural` <sup>[新規作成]</sup> | 全般 |
+| ハンガリー語 (ハンガリー) | `hu-HU` | Male | `hu-HU-TamasNeural` | 全般 |
+| インドネシア語 (インドネシア) | `id-ID` | Female | `id-ID-GadisNeural` | 全般 |
 | インドネシア語 (インドネシア) | `id-ID` | Male | `id-ID-ArdiNeural` | 全般 |
+| アイルランド語 (アイルランド) | `ga-IE` | Female | `ga-IE-OrlaNeural` | 全般 |
+| アイルランド語 (アイルランド) | `ga-IE` | Male | `ga-IE-ColmNeural` | 全般 |
 | イタリア語 (イタリア) | `it-IT` | Female | `it-IT-ElsaNeural` | 全般 |
 | イタリア語 (イタリア) | `it-IT` | Female | `it-IT-IsabellaNeural` | 全般 |
 | イタリア語 (イタリア) | `it-IT` | Male | `it-IT-DiegoNeural` | 全般 |
@@ -229,46 +239,58 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 日本語 (日本) | `ja-JP` | Male | `ja-JP-KeitaNeural` | 全般 |
 | 韓国語 (韓国) | `ko-KR` | Female | `ko-KR-SunHiNeural` | 全般 |
 | 韓国語 (韓国) | `ko-KR` | Male | `ko-KR-InJoonNeural` | 全般 |
+| ラトビア語 (ラトビア) | `lv-LV` | Female | `lv-LV-EveritaNeural` | 全般 |
+| ラトビア語 (ラトビア) | `lv-LV` | Male | `lv-LV-NilsNeural` | 全般 |
+| リトアニア語 (リトアニア) | `lt-LT` | Female | `lt-LT-OnaNeural` | 全般 |
+| リトアニア語 (リトアニア) | `lt-LT` | Male | `lt-LT-LeonasNeural` | 全般 |
 | マレー語 (マレーシア) | `ms-MY` | Female | `ms-MY-YasminNeural` | 全般 |
-| マレー語 (マレーシア) | `ms-MY` | Male | `ms-MY-OsmanNeural` <sup>[新規作成]</sup> | 全般 |
+| マレー語 (マレーシア) | `ms-MY` | Male | `ms-MY-OsmanNeural` | 全般 |
+| マルタ語 (マルタ) | `mt-MT` | Female | `mt-MT-GraceNeural` | 全般 |
+| マルタ語 (マルタ) | `mt-MT` | Male | `mt-MT-JosephNeural` | 全般 |
 | ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-IselinNeural` | 全般 |
-| ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-PernilleNeural` <sup>[新規作成]</sup> | 全般 |
-| ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Male | `nb-NO-FinnNeural` <sup>[新規作成]</sup> | 全般 |
-| ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` <sup>[新規作成]</sup> | 全般 |
+| ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Female | `nb-NO-PernilleNeural` | 全般 |
+| ノルウェー語 (ブークモール、ノルウェー) | `nb-NO` | Male | `nb-NO-FinnNeural` | 全般 |
+| ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` | 全般 |
 | ポーランド語 (ポーランド) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | 全般 |
-| ポーランド語 (ポーランド) | `pl-PL` | Male | `pl-PL-MarekNeural` <sup>[新規作成]</sup> | 全般 |
-| ポルトガル語 (ブラジル) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
+| ポーランド語 (ポーランド) | `pl-PL` | Male | `pl-PL-MarekNeural` | 全般 |
+| ポルトガル語 (ブラジル) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能 |
 | ポルトガル語 (ブラジル) | `pt-BR` | Male | `pt-BR-AntonioNeural` | 全般 |
 | ポルトガル語 (ポルトガル) | `pt-PT` | Female | `pt-PT-FernandaNeural` | 全般 |
-| ポルトガル語 (ポルトガル) | `pt-PT` | Female | `pt-PT-RaquelNeural` <sup>[新規作成]</sup> | 全般 |
-| ポルトガル語 (ポルトガル) | `pt-PT` | Male | `pt-PT-DuarteNeural` <sup>[新規作成]</sup> | 全般 |
+| ポルトガル語 (ポルトガル) | `pt-PT` | Female | `pt-PT-RaquelNeural` | 全般 |
+| ポルトガル語 (ポルトガル) | `pt-PT` | Male | `pt-PT-DuarteNeural` | 全般 |
 | ルーマニア語 (ルーマニア) | `ro-RO` | Female | `ro-RO-AlinaNeural` | 全般 |
-| ルーマニア語 (ルーマニア) | `ro-RO` | Male | `ro-RO-EmilNeural` <sup>[新規作成]</sup> | 全般 |
+| ルーマニア語 (ルーマニア) | `ro-RO` | Male | `ro-RO-EmilNeural` | 全般 |
 | ロシア語 (ロシア) | `ru-RU` | Female | `ru-RU-DariyaNeural` | 全般 |
-| ロシア語 (ロシア) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` <sup>[新規作成]</sup> | 全般 |
-| ロシア語 (ロシア) | `ru-RU` | Male | `ru-RU-DmitryNeural` <sup>[新規作成]</sup> | 全般 |
+| ロシア語 (ロシア) | `ru-RU` | Female | `ru-RU-SvetlanaNeural` | 全般 |
+| ロシア語 (ロシア) | `ru-RU` | Male | `ru-RU-DmitryNeural` | 全般 |
 | スロバキア語 (スロバキア) | `sk-SK` | Female | `sk-SK-ViktoriaNeural` | 全般 |
-| スロバキア語 (スロバキア) | `sk-SK` | Male | `sk-SK-LukasNeural` <sup>[新規作成]</sup> | 全般 |
+| スロバキア語 (スロバキア) | `sk-SK` | Male | `sk-SK-LukasNeural` | 全般 |
 | スロベニア語 (スロベニア) | `sl-SI` | Female | `sl-SI-PetraNeural` | 全般 |
-| スロベニア語 (スロベニア) | `sl-SI` | Male | `sl-SI-RokNeural` <sup>[新規作成]</sup> | 全般 |
+| スロベニア語 (スロベニア) | `sl-SI` | Male | `sl-SI-RokNeural` | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Female | `es-MX-DaliaNeural` | 全般 |
 | スペイン語 (メキシコ) | `es-MX` | Male | `es-MX-JorgeNeural` | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Female | `es-ES-ElviraNeural` | 全般 |
 | スペイン語 (スペイン) | `es-ES` | Male | `es-ES-AlvaroNeural` | 全般 |
 | スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-HilleviNeural` | 全般 |
-| スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-SofieNeural` <sup>[新規作成]</sup> | 全般 |
-| スウェーデン語 (スウェーデン) | `sv-SE` | Male | `sv-SE-MattiasNeural` <sup>[新規作成]</sup> | 全般 |
+| スウェーデン語 (スウェーデン) | `sv-SE` | Female | `sv-SE-SofieNeural` | 全般 |
+| スウェーデン語 (スウェーデン) | `sv-SE` | Male | `sv-SE-MattiasNeural` | 全般 |
 | タミール語 (インド) | `ta-IN` | Female | `ta-IN-PallaviNeural` | 全般 |
-| タミール語 (インド) | `ta-IN` | Male | `ta-IN-ValluvarNeural` <sup>[新規作成]</sup> | 全般 |
+| タミール語 (インド) | `ta-IN` | Male | `ta-IN-ValluvarNeural` | 全般 |
 | テルグ語 (インド) | `te-IN` | Female | `te-IN-ShrutiNeural` | 全般 |
-| テルグ語 (インド) | `te-IN` | Male | `te-IN-MohanNeural` <sup>[新規作成]</sup> | 全般 |
+| テルグ語 (インド) | `te-IN` | Male | `te-IN-MohanNeural` | 全般 |
 | タイ語 (タイ) | `th-TH` | Female | `th-TH-AcharaNeural` | 全般 |
 | タイ語 (タイ) | `th-TH` | Female | `th-TH-PremwadeeNeural` | 全般 |
-| タイ語 (タイ) | `th-TH` | Male | `th-TH-NiwatNeural` <sup>[新規作成]</sup> | 全般 |
+| タイ語 (タイ) | `th-TH` | Male | `th-TH-NiwatNeural` | 全般 |
 | トルコ語 (トルコ) | `tr-TR` | Female | `tr-TR-EmelNeural` | 全般 |
-| トルコ語 (トルコ) | `tr-TR` | Male | `tr-TR-AhmetNeural` <sup>[新規作成]</sup> | 全般 |
+| トルコ語 (トルコ) | `tr-TR` | Male | `tr-TR-AhmetNeural` | 全般 |
+| ウクライナ語 (ウクライナ) | `uk-UA` | Female | `uk-UA-PolinaNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウクライナ語 (ウクライナ) | `uk-UA` | Male | `uk-UA-OstapNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウルドゥー語 (パキスタン) | `ur-PK` | Female | `ur-PK-UzmaNeural` <sup>[新規作成]</sup>  | 全般 | 
+| ウルドゥー語 (パキスタン) | `ur-PK` | Male | `ur-PK-AsadNeural` <sup>[新規作成]</sup> | 全般 | 
 | ベトナム語 (ベトナム) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | 全般 |
-| ベトナム語 (ベトナム) | `vi-VN` | Male | `vi-VN-NamMinhNeural` <sup>[新規作成]</sup> | 全般 |
+| ベトナム語 (ベトナム) | `vi-VN` | Male | `vi-VN-NamMinhNeural` | 全般 |
+| ウェールズ語 (英国) | `cy-GB` | Female | `cy-GB-NiaNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウェールズ語 (英国) | `cy-GB` | Male | `cy-GB-AledNeural` <sup>[新規作成]</sup> | 全般 | 
 
 #### <a name="neural-voices-in-preview"></a>プレビュー段階のニューラル音声
 
@@ -281,21 +303,11 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、高齢者の音声、複数のスタイルを使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` | 全般、複数のロールプレイとスタイルが [SSML の使用](speech-synthesis-markup.md#adjust-speaking-styles)により使用可能 |
 | 中国語 (標準、簡体字) | `zh-CN` | Male   | `zh-CN-YunxiNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数のスタイルを使用可能 |
-| エストニア語 (エストニア) | `et-EE` | Female | `et-EE-AnuNeural` | 全般 |
-| エストニア語 (エストニア) | `et-EE` | Male | `et-EE-KertNeural` <sup>[新規作成]</sup> | 全般 |
-| アイルランド語 (アイルランド) | `ga-IE` | Female | `ga-IE-OrlaNeural` | 全般 |
-| アイルランド語 (アイルランド) | `ga-IE` | Male | `ga-IE-ColmNeural` <sup>[新規作成]</sup> | 全般 |
-| ラトビア語 (ラトビア) | `lv-LV` | Female | `lv-LV-EveritaNeural` | 全般 |
-| ラトビア語 (ラトビア) | `lv-LV` | Male | `lv-LV-NilsNeural` <sup>[新規作成]</sup> | 全般 |
-| リトアニア語 (リトアニア) | `lt-LT` | Female | `lt-LT-OnaNeural` | 全般 |
-| リトアニア語 (リトアニア) | `lt-LT` | Male | `lt-LT-LeonasNeural` <sup>[新規作成]</sup> | 全般 |
-| マルタ語 (マルタ) | `mt-MT` | Female | `mt-MT-GraceNeural` | 全般 |
-| マルタ語 (マルタ) | `mt-MT` | Male | `mt-MT-JosephNeural` <sup>[新規作成]</sup> | 全般 |
 
 > [!IMPORTANT]
 > パブリック プレビュー段階の音声は、3 つのサービス リージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
 
-リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
+リージョン別の提供状況の詳細については、[リージョン](regions.md#neural-and-standard-voices)に関するページを参照してください。
 
 ニューラル音声 (話し方など) を構成および調整する方法については、「[音声合成マークアップ言語](speech-synthesis-markup.md#adjust-speaking-styles)」を参照してください。
 
@@ -307,7 +319,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 
 ### <a name="standard-voices"></a>標準音声
 
-テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#standard-and-neural-voices)に関するページを参照してください。
+テキストから合成音声への変換用に、45 を超える言語とロケールで 75 を超える標準的な音声が用意されています。 リージョン別の提供状況の詳細については、[リージョン](regions.md#neural-and-standard-voices)に関するページを参照してください。
 
 > [!NOTE]
 > 2 つの例外を除き、標準音声は 16 khz サンプル レートを使用するサンプルから作成されます。

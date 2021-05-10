@@ -4,20 +4,16 @@ description: 提供される機能に基づいて API Management レベルを比
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: gwallace
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: eec913237ba978e52bb64fbd4c1f043a9214ffc8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: f111729d7d7707ed4f40ce8f89ce76975fb47400
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077849"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536447"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management レベルの機能に基づく比較
 
@@ -31,6 +27,7 @@ ms.locfileid: "92077849"
 | Azure AD 統合<sup>1</sup>                                                             | いいえ          | はい       | いいえ    | はい      | はい     |
 | Virtual Network (VNet) のサポート                                                               | いいえ          | はい       | いいえ    | いいえ       | はい     |
 | 複数リージョンのデプロイ                                                                      | いいえ          | いいえ        | いいえ    | いいえ       | はい     |
+| 可用性ゾーン                                                                           | いいえ          | いいえ        | いいえ    | いいえ       | はい     |
 | 複数のカスタム ドメイン名                                                                 | いいえ          | はい        | いいえ    | いいえ       | はい     |
 | 開発者ポータル<sup>2</sup>                                                                 | いいえ          | はい       | はい   | はい      | はい     |
 | ビルトイン キャッシュ                                                                               | いいえ          | はい       | はい   | はい      | はい     |
@@ -42,7 +39,7 @@ ms.locfileid: "92077849"
 | [バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)               | いいえ          | はい       | はい   | はい      | はい     |
 | [Git による管理](api-management-configuration-repository-git.md)                        | いいえ          | はい       | はい   | はい      | はい     |
 | ダイレクト管理 API                                                                        | いいえ          | はい       | はい   | はい      | はい     |
-| Azure Monitor のログとメトリック                                                               | はい         | はい       | はい   | はい      | はい     |
+| Azure Monitor のログとメトリック                                                               | いいえ          | はい       | はい   | はい      | はい     |
 | 静的 IP                                                                                    | いいえ          | はい       | はい   | はい      | はい     |
 
 <sup>1</sup> ユーザーが開発者ポータルにサインインする際に、ID プロバイダーとして Azure AD (および Azure AD B2C) を使用できます。<br/>

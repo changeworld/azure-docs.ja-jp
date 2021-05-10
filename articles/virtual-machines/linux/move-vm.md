@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291097"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889299"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへ VM を移動する
 この記事では、リソース グループまたはサブスクリプション間で仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
@@ -38,6 +38,7 @@ VM を適切に移動するには、VM とそのすべての関連リソース�
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
+`table` 出力は、`--interactive` を使用する場合は利用できません。 出力を `json` などの別のオプションに変更します。
 
 VM とそのリソースを他のリソース グループに移動するには、[az resource move](/cli/azure/resource) を使用します。 次の例では、VM と、その VM に必要な最も一般的なリソースを移動する方法について説明します。 **-ids** パラメーターを使用して、移動するリソースの ID のコンマ区切りのリスト (スペースなし) を渡します。
 

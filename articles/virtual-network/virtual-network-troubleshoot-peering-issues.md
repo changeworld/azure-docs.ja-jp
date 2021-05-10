@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 608f3d72aecb0c6d53325c0d082b1779822e9c80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200526"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
@@ -48,7 +48,7 @@ ms.locfileid: "103200526"
 > * 仮想マシン スケール セット (Basic ILB SKU を使用)
 > * Azure Service Fabric クラスター (Basic ILB SKU を使用)
 > * SQL Server Always On (Basic ILB SKU を使用)
-> * PowerApps 用 Azure App Service 環境 (Basic ILB SKU を使用)
+> * PowerApps 用 Azure App Service Environment (Basic ILB SKU を使用)
 > * Azure API Management (Basic ILB SKU を使用)
 > * Azure Active Directory Domain Service (Azure AD DS) (Basic ILB SKU を使用)
 

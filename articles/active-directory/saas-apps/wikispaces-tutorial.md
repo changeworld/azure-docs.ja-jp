@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96302737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>チュートリアル: Azure Active Directory と Wikispaces の統合
@@ -176,17 +176,17 @@ Wikispaces で Azure AD シングル サインオンを構成するには、次�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-wikispaces-test-user"></a>Wikispaces テスト ユーザーの作成
+### <a name="create-wikispaces-test-user&quot;></a>Wikispaces テスト ユーザーの作成
 
 Azure AD ユーザーが Wikispaces にサインインできるようにするには、そのユーザーを Wikispaces にプロビジョニングする必要があります。 Wikispaces の場合、プロビジョニングは手動で行います。
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+### <a name=&quot;to-provision-a-user-accounts-perform-the-following-steps&quot;></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
 1. **Wikispaces** 企業サイトに管理者としてサインインします。
 
 2. **[メンバー]** に移動します。
    
-    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png "メンバー")
+    ![[メンバー]](./media/wikispaces-tutorial/ic787193.png &quot;メンバー")
 
 3. **[ユーザーの招待]** をクリックします。
    

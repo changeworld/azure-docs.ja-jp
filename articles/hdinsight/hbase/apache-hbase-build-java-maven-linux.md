@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942961"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
@@ -56,9 +56,9 @@ cd C:\HDI
 
     このコマンドは、基本的な Maven プロジェクトを含む `hbaseapp` という名前のディレクトリを現在の場所に作成します。 2 番目のコマンドでは、作業ディレクトリを `hbaseapp` に変更します。 3 番目のコマンドでは、後で使用する新しいディレクトリ (`conf`) を作成します。 `hbaseapp` ディレクトリには、次の項目が含まれます。
 
-    * `pom.xml`:プロジェクト オブジェクト モデル ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
-    * `src\main\java\com\microsoft\examples`:アプリケーション コードが含まれます。
-    * `src\test\java\com\microsoft\examples`:アプリケーションのテストが含まれます。
+    * `pom.xml`: プロジェクト オブジェクト モデル ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+    * `src\main\java\com\microsoft\examples`: アプリケーション コードが含まれます。
+    * `src\test\java\com\microsoft\examples`: アプリケーションのテストが含まれます。
 
 2. 生成されたコード例の削除 以下のコマンドを入力して、生成されたテストとアプリケーション ファイル `AppTest.java` と `App.java` を削除します。
 
@@ -69,7 +69,7 @@ cd C:\HDI
 
 ## <a name="update-the-project-object-model"></a>プロジェクト オブジェクト モデルを更新する
 
-pom.xml ファイルの完全なリファレンスについては、 https://maven.apache.org/pom.html を参照してください。  以下のコマンドを入力して `pom.xml` を開きます。
+pom.xml ファイルの完全なリファレンスについては、https://maven.apache.org/pom.htmlを参照してください。  以下のコマンドを入力して `pom.xml` を開きます。
 
 ```cmd
 notepad pom.xml
@@ -104,7 +104,7 @@ notepad pom.xml
 
 HDInsight のバージョンとコンポーネントの詳細については、[HDInsight で使用できるさまざまな Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)に関するページを参照してください。
 
-### <a name="build-configuration"></a>ビルド構成
+### <a name="build-configuration"></a>[ビルド構成]
 
 Maven プラグインでは、プロジェクトのビルド ステージをカスタマイズできます。 このセクションは、プラグインやリソース、他のビルド構成オプションを追加する際に使用します。
 
@@ -176,7 +176,7 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ### <a name="implement-a-createtable-class"></a>CreateTable クラスを実装します。
 
-以下のコマンドを入力して、新しいファイル `CreateTable.java` を作成して開きます。 プロンプトが表示されたら **[YES]** を選択して新しいファイルを作成します。
+以下のコマンドを入力して、新しいファイル `CreateTable.java` を作成して開きます。 プロンプトが表示されたら [**YES**] を選択して新しいファイルを作成します。
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
@@ -258,7 +258,7 @@ public class CreateTable {
 
 ### <a name="implement-a-searchbyemail-class"></a>SearchByEmail クラスを実装します。
 
-以下のコマンドを入力して、新しいファイル `SearchByEmail.java` を作成して開きます。 プロンプトが表示されたら **[YES]** を選択して新しいファイルを作成します。
+以下のコマンドを入力して、新しいファイル `SearchByEmail.java` を作成して開きます。 プロンプトが表示されたら [**YES**] を選択して新しいファイルを作成します。
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
@@ -343,7 +343,7 @@ public class SearchByEmail {
 
 ### <a name="implement-a-deletetable-class"></a>DeleteTable クラスを実装します。
 
-以下のコマンドを入力して、新しいファイル `DeleteTable.java` を作成して開きます。 プロンプトが表示されたら **[YES]** を選択して新しいファイルを作成します。
+以下のコマンドを入力して、新しいファイル `DeleteTable.java` を作成して開きます。 プロンプトが表示されたら [**YES**] を選択して新しいファイルを作成します。
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
@@ -692,7 +692,7 @@ public class DeleteTable {
     Gabriela Ingram - gabriela@contoso.com - ID: 6
     ```
 
-    `-emailRegex` の値に **fabrikam.com** を使用すると、メール フィールドに **fabrikam.com** が含まれているユーザーが返されます。 検索用語に正規表現を使用することもできます。 たとえば、 **^r** で検索すると、'r' から始まる電子メール アドレスが返されます。
+    `-emailRegex` の値に **fabrikam.com** を使用すると、メール フィールドに **fabrikam.com** が含まれているユーザーが返されます。 検索用語に正規表現を使用することもできます。 たとえば、**^r** で検索すると、'r' から始まる電子メール アドレスが返されます。
 
 7. テーブルを削除するには、次のコマンドを使用します。
 

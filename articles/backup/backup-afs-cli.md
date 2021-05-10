@@ -3,12 +3,12 @@ title: Azure CLI を使用して Azure ファイル共有をバックアップ�
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure CLI を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5f7472c511a5a50415a6ceb47497dd6f4f1e60b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94565893"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773623"
 ---
 # <a name="back-up-azure-file-shares-with-azure-cli"></a>Azure CLI を使用して Azure ファイル共有をバックアップする
 
@@ -30,7 +30,7 @@ Recovery Service コンテナーは、すべてのバックアップ項目にわ
 
 Recovery Services コンテナーを作成するには、次の手順に従います。
 
-1. コンテナーはリソース グループに配置されます。 既存のリソース グループがない場合は、[az group create](/cli/azure/group#az-group-create) を使用して新しいリソース グループを作成します。 このチュートリアルでは、米国東部リージョンで新しいリソース グループ、*azurefiles* を作成します。
+1. コンテナーはリソース グループに配置されます。 既存のリソース グループがない場合は、[az group create](/cli/azure/group#az_group_create) を使用して新しいリソース グループを作成します。 このチュートリアルでは、米国東部リージョンで新しいリソース グループ、*azurefiles* を作成します。
 
     ```azurecli-interactive
     az group create --name AzureFiles --location eastus --output table
@@ -42,7 +42,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
     eastus      AzureFiles
     ```
 
-1. [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
+1. [az backup vault create](/cli/azure/backup/vault#az_backup_vault_create) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
 
     次の例では、米国東部リージョンに *azurefilesvault* という名前の Recovery Services コンテナーを作成します。
 
@@ -58,11 +58,11 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 ## <a name="enable-backup-for-azure-file-shares"></a>Azure ファイル共有のバックアップを有効にする
 
-このセクションでは、バックアップを構成する Azure ファイル共有が既にあることを前提としています。 お持ちでない場合は、[az storage share create](/cli/azure/storage/share#az-storage-share-create) コマンドを使用して Azure ファイル共有を作成します。
+このセクションでは、バックアップを構成する Azure ファイル共有が既にあることを前提としています。 お持ちでない場合は、[az storage share create](/cli/azure/storage/share#az_storage_share_create) コマンドを使用して Azure ファイル共有を作成します。
 
-ファイル共有のバックアップを有効にするには、バックアップ ジョブの実行時間と回復ポイントの保存期間を定義する保護ポリシーを作成する必要があります。 [az backup policy create](/cli/azure/backup/policy#az-backup-policy-create) コマンドレットを使用してバックアップ ポリシーを作成できます。
+ファイル共有のバックアップを有効にするには、バックアップ ジョブの実行時間と回復ポイントの保存期間を定義する保護ポリシーを作成する必要があります。 [az backup policy create](/cli/azure/backup/policy#az_backup_policy_create) コマンドレットを使用してバックアップ ポリシーを作成できます。
 
-次の例では、[az backup protection enable-for-azurefileshare](/cli/azure/backup/protection#az-backup-protection-enable-for-azurefileshare) コマンドレットを使用して、*schedule 1* バックアップ ポリシーを使用して *afsaccount* ストレージ アカウントの *azurefileshare* ファイル共有のバックアップを有効にします。
+次の例では、[az backup protection enable-for-azurefileshare](/cli/azure/backup/protection#az_backup_protection_enable_for_azurefileshare) コマンドレットを使用して、*schedule 1* バックアップ ポリシーを使用して *afsaccount* ストレージ アカウントの *azurefileshare* ファイル共有のバックアップを有効にします。
 
 ```azurecli-interactive
 az backup protection enable-for-azurefileshare --vault-name azurefilesvault --resource-group  azurefiles --policy-name schedule1 --storage-account afsaccount --azure-file-share azurefiles  --output table
@@ -74,16 +74,16 @@ Name                                  ResourceGroup
 0caa93f4-460b-4328-ac1d-8293521dd928  azurefiles
 ```
 
-出力の **Name** 属性は、**バックアップの有効化** 操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
+出力の **Name** 属性は、**バックアップの有効化** 操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](/cli/azure/backup/job#az_backup_job_show) コマンドレットを使用します。
 
 ## <a name="trigger-an-on-demand-backup-for-file-share"></a>ファイル共有のオンデマンド バックアップをトリガーする
 
-スケジュールされた時刻にバックアップ ポリシーがジョブを実行するのを待たずに、ファイル共有のオンデマンド バックアップをトリガーする場合は、[az backup protection backup-now](/cli/azure/backup/protection#az-backup-protection-backup-now) コマンドレットを使用します。
+スケジュールされた時刻にバックアップ ポリシーがジョブを実行するのを待たずに、ファイル共有のオンデマンド バックアップをトリガーする場合は、[az backup protection backup-now](/cli/azure/backup/protection#az_backup_protection_backup_now) コマンドレットを使用します。
 
 オンデマンド バックアップをトリガーするには、次のパラメーターを定義する必要があります。
 
-* **--container-name** は、ファイル共有がホストされているストレージ アカウントの名前です。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az-backup-container-list) コマンドを使用します。
-* **--item-name** は、オンデマンド バックアップをトリガーするファイル共有の名前をです。 バックアップ項目の **名前** または **フレンドリ名** を取得するには、[az backup item list](/cli/azure/backup/item#az-backup-item-list) コマンドを使用します。
+* **--container-name** は、ファイル共有がホストされているストレージ アカウントの名前です。 コンテナーの **名前** または **フレンドリ名** を取得するには、[az backup container list](/cli/azure/backup/container#az_backup_container_list) コマンドを使用します。
+* **--item-name** は、オンデマンド バックアップをトリガーするファイル共有の名前をです。 バックアップ項目の **名前** または **フレンドリ名** を取得するには、[az backup item list](/cli/azure/backup/item#az_backup_item_list) コマンドを使用します。
 * **--retain-until** は、回復ポイントを保持する日付を指定します。 値は UTC 時刻形式 (dd-mm-yyyy) で設定する必要があります。
 
 次の例では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有のオンデマンド バックアップを、*20-01-2020* まで保持した状態でトリガーします。
@@ -98,7 +98,7 @@ Name                                  ResourceGroup
 9f026b4f-295b-4fb8-aae0-4f058124cb12  azurefiles
 ```
 
-出力の **Name** 属性は、"オンデマンド バックアップ" 操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](/cli/azure/backup/job#az-backup-job-show) コマンドレットを使用します。
+出力の **Name** 属性は、"オンデマンド バックアップ" 操作のためにバックアップ サービスによって作成されたジョブの名前に対応しています。 ジョブの状態を追跡するには、[az backup job show](/cli/azure/backup/job#az_backup_job_show) コマンドレットを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

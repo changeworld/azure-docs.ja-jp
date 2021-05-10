@@ -3,20 +3,22 @@ title: Azure portal を使用して Azure 通知ハブを作成する | Microsof
 description: このチュートリアルでは、Azure portal を使用して Azure 通知ハブを作成する方法を学習します。
 services: notification-hubs
 author: sethmanheim
+ms.author: sethm
 manager: femila
+ms.reviewer: thsomasu
+ms.date: 08/04/2020
+ms.lastreviewed: 02/14/2019
+ms.topic: quickstart
 ms.service: notification-hubs
 ms.workload: mobile
-ms.topic: quickstart
-ms.date: 08/04/2020
-ms.author: sethm
-ms.reviewer: thsomasu
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 4381c9259788982832a02ecbe2c87c6f6e723772
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92426562"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533594"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>クイック スタート:Azure portal 内で Azure 通知ハブを作成する
 

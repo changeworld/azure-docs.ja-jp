@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 97693d9f31b01bf6187843586f6971c92fe79bff
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104786194"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
@@ -37,8 +37,8 @@ ms.locfileid: "104786194"
 -------- | ----------- | -------------- | --------
 name | `Filter` アクティビティの名前。 | String | はい
 type | **filter** に設定する必要があります。 | String | はい
-condition | 入力のフィルター処理に使用する条件。 | 式 | はい
-items | フィルターを適用する必要がある入力配列。 | 式 | はい
+condition | 入力のフィルター処理に使用する条件。 | Expression | はい
+items | フィルターを適用する必要がある入力配列。 | Expression | はい
 
 ## <a name="example"></a>例
 

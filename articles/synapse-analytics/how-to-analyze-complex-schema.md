@@ -2,19 +2,19 @@
 title: 配列と入れ子構造を含むスキーマの分析
 description: Apache Spark と SQL を使用して配列と入れ子構造を分析する方法
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: spark
 ms.date: 06/15/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d4004887a4806a5b8e50429031fb204f4eec5000
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98219999"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627967"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Azure Synapse Analytics で複合データ型を分析する
 

@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 98be47200c12ab3097f9416b5647abf6465a89e7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375280"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675976"
 ---
 # <a name="protected-web-api---move-to-production"></a>保護された Web API - 運用環境への移行
 
-Web API を保護する方法を説明したので、運用環境への移行について説明します。
+Web API を保護する方法について説明しました。ここでは、アプリケーションを運用環境に移行する場合に考慮すべき点をいくつか示します。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

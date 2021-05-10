@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Sequr の統合 | Microsoft Docs'
-description: Azure Active Directory と Sequr の間にシングル サインオンを構成する方法について説明します。
+title: 'チュートリアル: Azure Active Directory と Genea Access Control の統合 | Microsoft Docs'
+description: Azure Active Directory と Genea Access Control の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,103 +9,78 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: d1993f89f8b1da4789541006c15380d2145d3d81
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 82c05f77781abdaea3b2c84aa1071656c206439a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674493"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669865"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sequr"></a>チュートリアル: Azure Active Directory と Sequr の統合
+# <a name="tutorial-azure-active-directory-integration-with-genea-access-control"></a>チュートリアル: Azure Active Directory と Genea Access Control の統合
 
-このチュートリアルでは、Sequr と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Sequr と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Genea Access Control と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Genea Access Control を統合すると、次のことができます。
 
-* Sequr にアクセスできる Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Sequr に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* Genea Access Control にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Genea Access Control に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Sequr と Azure AD の統合を構成するには、次のものが必要です。
+Azure AD と Genea Access Control の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-* Sequr でのシングル サインオンが有効なサブスクリプション
+* Genea Access Control のシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Sequr では、 **SP と IDP** によって開始される SSO がサポートされます
+* Genea Access Control では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-sequr-from-the-gallery"></a>ギャラリーからの Sequr の追加
 
-Azure AD への Sequr の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Sequr を追加する必要があります。
+## <a name="adding-genea-access-control-from-the-gallery"></a>ギャラリーからの Genea Access Control の追加
 
-**ギャラリーから Sequr を追加するには、次の手順を実行します。**
+Azure AD への Genea Access Control の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Genea Access Control を追加する必要があります。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Genea Access Control**」と入力します。
+1. 結果のパネルから **[Genea Access Control]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-genea-access-control"></a>Genea Access Control の Azure AD SSO の構成とテスト
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+**B.Simon** というテスト ユーザーを使用して、Genea Access Control に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと Genea Access Control の関連ユーザーの間で、リンク関係を確立する必要があります。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+Genea Access Control に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Genea Access Control の SSO の構成](#configure-genea-access-control-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Genea Access Control のテスト ユーザーの作成](#create-genea-access-control-test-user)** - Genea Access Control で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-4. 検索ボックスに「 **Sequr** 」と入力し、結果ウィンドウで **[Sequr]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-    ![結果一覧の Sequr](common/search-new-app.png)
+1. Azure portal の **Genea Access Control** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Sequr で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Sequr 内の関連ユーザーの間にリンク関係が確立されている必要があります。
-
-Sequr で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Sequr のシングル サインオンの構成](#configure-sequr-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Sequr のテスト ユーザーの作成](#create-sequr-test-user)** - Sequr で Britta Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-Sequr で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **Sequr** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
-
-    ![[Sequr のドメインと URL] のシングル サインオン情報](common/idp-identifier.png)
 
     **[識別子]** ボックスに、`https://login.sequr.io` という URL を入力します。
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    ![image](common/both-advanced-urls.png)
 
     a. **[サインオン URL]** テキスト ボックスに、URL として「`https://login.sequr.io`」と入力します。
 
@@ -115,31 +90,48 @@ Sequr で Azure AD シングル サインオンを構成するには、次の手
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-7. **[Set up Sequr]\(Sequr の設定\)** セクションで、要件どおりの適切な URL をコピーします。
+7. **[Genea Access Control のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
-    b. Azure AD 識別子
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-    c. ログアウト URL
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
-### <a name="configure-sequr-single-sign-on"></a>Sequr のシングル サインオンの構成
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-1. 別の Web ブラウザー ウィンドウで、Sequr 企業サイトに管理者としてサインインします。
+このセクションでは、B.Simon に Genea Access Control へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Genea Access Control]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+## <a name="configure-genea-access-control-sso"></a>Genea Access Control の SSO の構成
+
+1. 別の Web ブラウザー ウィンドウで、Genea Access Control 企業サイトに管理者としてサインインします。
 
 1. 左側のナビゲーション パネルから、 **[統合]** をクリックします。
 
-    ![ナビゲーション パネルから [統合] が選択された画面のスクリーンショット。](./media/sequr-tutorial/configure1.png)
+    ![ナビゲーション パネルから [統合] が選択された画面のスクリーンショット。](./media/sequr-tutorial/configure-1.png)
 
 1. **[シングル サインオン]** セクションまで下方向にスクロールして、 **[管理]** をクリックします。
 
-    ![[管理] ボタンが選択されている [シングル サインオン] セクションのスクリーンショット。](./media/sequr-tutorial/configure2.png)
+    ![[管理] ボタンが選択されている [シングル サインオン] セクションのスクリーンショット。](./media/sequr-tutorial/configure-2.png)
 
 1. **[シングル サインオンの管理]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの管理] セクションのスクリーンショット。ここで、説明されている値を入力できます。](./media/sequr-tutorial/configure3.png)
+    ![[シングル サインオンの管理] セクションのスクリーンショット。ここで、説明されている値を入力できます。](./media/sequr-tutorial/configure-3.png)
 
     a. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
@@ -149,70 +141,26 @@ Sequr で Azure AD シングル サインオンを構成するには、次の手
 
     d. **[保存]** をクリックします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-genea-access-control-test-user"></a>Genea Access Control のテスト ユーザーの作成
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Genea Access Control で Britta Simon というユーザーを作成します。 [Genea Access Control クライアント サポート チーム](mailto:support@sequr.io)と連携して、Genea Access Control プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+## <a name="test-sso"></a>SSO のテスト 
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-2. 画面の上部にある **[新しいユーザー]** を選択します。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-    ![[新しいユーザー] ボタン](common/new-user.png)
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Genea Access Control のサインオン URL にリダイレクトされます。  
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+* Genea Access Control のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Genea Access Control に自動的にサインインされます 
 
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで Genea Access Control タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Genea Access Control に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-    d. **Create** をクリックしてください。
+## <a name="next-steps"></a>次のステップ
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Sequr へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[Sequr]** の順に選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で **[Sequr]** を選択します。
-
-    ![アプリケーションの一覧の [Sequr] リンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
-### <a name="create-sequr-test-user"></a>Sequr のテスト ユーザーの作成
-
-このセクションでは、Sequr で Britta Simon というユーザーを作成します。 [Sequr クライアント サポート チーム](mailto:support@sequr.io)と連携し、Sequr プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
-
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
-
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-
-アクセス パネル上で [Sequr] タイルをクリックすると、SSO を設定した Sequr に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
-
-## <a name="additional-resources"></a>その他のリソース
-
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
-
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+Genea Access Control を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

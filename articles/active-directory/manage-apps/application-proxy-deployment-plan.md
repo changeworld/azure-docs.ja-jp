@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b0a3653d2cc840d745b1bb5788406b8d374c76d0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100580064"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533775"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -172,7 +172,7 @@ Azure AD アプリケーション プロキシを構成して実装するには�
 
 アプリケーションの発行では、すべての前提条件が満たされていることと、いくつかのコネクタが [アプリケーション プロキシ] ページに登録済みかつアクティブとして表示されていることが前提です。
 
-[PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview) を使用してアプリケーションを発行することもできます。
+[PowerShell](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) を使用してアプリケーションを発行することもできます。
 
 アプリケーションを発行するときに従ういくつかのベスト プラクティスを次に示します。
 
@@ -292,7 +292,7 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 
 #### <a name="application-audit-logs"></a>アプリケーションの監査ログ
 
-これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
+これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](/graph/api/resources/directoryaudit) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
 
 #### <a name="application-proxy-connector-monitoring"></a>アプリケーション プロキシ コネクタの監視
 

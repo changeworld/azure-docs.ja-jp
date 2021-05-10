@@ -3,12 +3,12 @@ title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a42a2bfcdc1621689421940c4db2fcf4f5e64b89
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562856"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781003"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -75,7 +75,7 @@ ACR タスクがコンテナー ビルド ワークフローを真に強化す�
 アプリケーション イメージをビルドするときに基本イメージ上の依存関係を追跡するように ACR タスクを設定できます。 更新された基本イメージがレジストリにプッシュされると、または基本イメージが Docker Hub などのパブリック リポジトリで更新されると、ACR タスクではそれに基づいてすべてのアプリケーション イメージを自動的にビルドできます。
 ACR タスクはこの自動検出とリビルドによって、更新された基本イメージを参照しているすべてのアプリケーション イメージを手動で追跡し、更新するために通常は必要となる時間と労力を削減しています。
 
-詳細については、ACR タスクの[基本イメージの更新トリガー](container-registry-tasks-base-images.md)に関する記事を参照してください。 また、基本イメージがコンテナー レジストリにプッシュされたときにイメージのビルドをトリガーする方法については、「[Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)」のチュートリアルを参照してください
+詳細については、ACR タスクの[基本イメージの更新トリガー](container-registry-tasks-base-images.md)に関する記事を参照してください。 また、基本イメージがコンテナー レジストリにプッシュされたときにイメージのビルドをトリガーする方法については、「[Azure Container Registry で基本イメージの更新時にコンテナー イメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)」のチュートリアルを参照してください
 
 ## <a name="schedule-a-task"></a>タスクのスケジュール設定
 
@@ -127,7 +127,7 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 
 ## <a name="view-task-output"></a>タスク出力の表示
 
-それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 タスクを手動でトリガーすると、タスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得できるように格納されます。 ソース コードのコミットや基本イメージの更新などによってタスクが自動的にトリガーされる場合、タスク ログは格納されるだけです。 実行ログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
+それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 タスクを手動でトリガーすると、タスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得できるように格納されます。 ソース コードのコミットや基本イメージの更新などによってタスクが自動的にトリガーされる場合、タスク ログは格納されるだけです。 実行ログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az_acr_task_logs) コマンドを使用します。
 
 [タスク ログの表示と管理](container-registry-tasks-logs.md)の詳細を確認してください。
 
@@ -135,7 +135,7 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 
 クラウドでコンテナー イメージのビルドと保守管理を自動化する準備ができたら、[ACR タスクのチュートリアル シリーズ](container-registry-tutorial-quick-task.md)をご覧ください。
 
-Azure コンテナー レジストリを操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
+Azure Container Registry を操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure Container Registry との間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
@@ -143,11 +143,11 @@ Azure コンテナー レジストリを操作するには、必要に応じて 
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-pack-build]: /cli/azure/acr/pack#az_acr_pack_build
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-login]: /cli/azure/reference-index#az_login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 
 <!-- IMAGES -->

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d432d20660cd1b7ee59c9ef72f9db04bc0009481
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942658"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306587"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace/overview.md)に関する記事を参照してください。
@@ -83,7 +83,8 @@ HDInsight アプリケーションのインストールに必要なすべての�
 ## <a name="publish-the-application"></a>アプリケーションを発行する
 HDInsight アプリケーションを発行するには:
 
-1. [Azure 発行](https://publish.windowsazure.com/)にサインインします。
+1. Azure 発行にサインインします。
+
 2. 左側のメニューで、**[ソリューション テンプレート]** を選択します。
 3. タイトルを入力し、**[Create a new solution template]\(新しいソリューション テンプレートを作成する\)** を選択します。
 4. 組織をまだ登録していない場合は、**[Create Dev Center account and join the Azure program]\(デベロッパー センター アカウントを作成して Azure プログラムに参加する\)** を選択します。  詳しくは、「[Microsoft 開発者アカウントの作成](../marketplace/overview.md)」を参照してください。

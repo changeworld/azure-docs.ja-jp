@@ -3,17 +3,19 @@ title: クイック スタート:Azure Resource Manager テンプレート (ARM 
 description: このクイックスタート記事では、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Traffic Manager プロファイルを作成する方法を説明します。
 services: traffic-manager
 author: duongau
-ms.service: traffic-manager
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.service: traffic-manager
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 03342d33731ed29b60908044cd29d529aaa5677b
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92676004"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531248"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Traffic Manager プロファイルを作成する
 

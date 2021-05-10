@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 21bb1856409b7fbea1eeffb8b3769dd63119da50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102612849"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278186"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall の機能
 
@@ -55,7 +55,7 @@ Azure Firewall Availability Zones は、Availability Zones をサポートする
 > [!NOTE]
 > Availability Zones は、デプロイ時にのみ構成できます。 既存のファイアウォールを構成して Availability Zones を含めることはできません。
 
-Availability Zones の詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」を参照してください
+Availability Zones の詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」を参照してください。
 
 ## <a name="unrestricted-cloud-scalability"></a>クラウドによる無制限のスケーラビリティ
 
@@ -86,6 +86,8 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 仮想ネットワーク トラフィックの送信 IP アドレスはすべて Azure Firewall パブリック IP に変換されます (送信元ネットワーク アドレス変換)。 仮想ネットワークからインターネット上のリモートの送信先に向かうトラフィックを特定して許可できます。 宛先 IP が [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) のプライベート IP 範囲である場合、Azure Firewall は SNAT を行いません。 
 
 組織でプライベート ネットワークに対してパブリック IP アドレス範囲を使用している場合、Azure Firewall は、SNAT を使用して、トラフィックのアドレスを AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスに変換します。 パブリック IP アドレス範囲の SNAT が **行われない** ように、Azure Firewall を構成することができます。 詳細については、「[Azure Firewall の SNAT プライベート IP アドレス範囲](snat-private-range.md)」を参照してください。
+
+Azure Firewall メトリックで SNAT ポートの使用率を監視できます。 SNAT ポートの使用率の詳細と推奨事項については、[ファイアウォールのログとメトリックのドキュメント](logs-and-metrics.md#metrics)を参照してください。
 
 ## <a name="inbound-dnat-support"></a>受信 DNAT のサポート
 

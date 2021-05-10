@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 ms.openlocfilehash: 8de2c27ce03c871e60b6437656ad630fc8de8408
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91963705"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces のしくみ

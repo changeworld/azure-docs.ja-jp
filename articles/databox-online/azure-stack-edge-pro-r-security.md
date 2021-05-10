@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 04/09/2021
 ms.author: alkohli
-ms.openlocfilehash: bd90a16c09dce65115cea2f097d18f2e0ced931a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f4f7e5f69e6b496395b74dbdcd58b3ada0a7f349
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102632035"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285202"
 ---
 # <a name="security-and-data-protection-for-azure-stack-edge-pro-r-and-azure-stack-edge-mini-r"></a>Azure Stack Edge Pro R および Azure Stack Edge Mini R のセキュリティとデータ保護
 
@@ -100,17 +100,23 @@ Azure Stack Edge のラグド デバイスを使用すると、独自の証明�
 > [!NOTE]
 > OS ディスクには、単一レイヤーの BitLocker XTS-AES-256 ソフトウェア暗号化が使用されます。
 
-デバイスがアクティブになると、キー ファイルを保存するように求められます。これには、デバイスが起動しない場合にデバイス上のデータを回復するのに役立つ回復キーが格納されます。 このファイル内には 2 つのキーがあります。
+デバイスをアクティブ化する前に、デバイスで保存時の暗号化を構成する必要があります。 これは必須の設定であり、これが正常に構成されないとデバイスをアクティブにすることができません。 
 
-- 1 つ目は、OS ボリューム上のデバイス構成を回復するキーです。
-<!-- - Second key is to unlock the BitLocker on the data disks. -->
-- 2 つ目は、データ ディスクのハードウェア暗号化のロックを解除するキーです。
+工場でデバイスがイメージ化されると、ボリューム レベルの BitLocker 暗号化が有効になります。 デバイスを受け取った後、保存時の暗号化を構成する必要があります。 ストレージ プールとボリュームが再作成されます。保存時の暗号化を有効にする BitLocker キーを指定することにより、保存データに対する別の暗号化レイヤーを作成できます。 
+
+保存時の暗号化キーは、自分で作成した、Base-64 でエンコードされた 32 文字のキーであり、これは実際の暗号化キーを保護するために使用されます。 保存時の暗号化キーはお客様のデータを保護するもので、Microsoft がこれにアクセスすることはできません。 キーは、デバイスがアクティブになった後、 **[Cloud details]\(クラウドの詳細\)** ページのキー ファイルに保存されます。
+
+デバイスがアクティブになると、キー ファイルを保存するように求められます。これには、デバイスが起動しない場合にデバイス上のデータを回復するのに役立つ回復キーが格納されます。 特定の回復シナリオでは、保存したキー ファイルを求められます。 キー ファイルには、次の回復キーがあります。
+
+- 暗号化の最初の層のロックを解除するキー。
+- データ ディスクのハードウェア暗号化のロックを解除するキー。
+- OS ボリュームのデバイス構成を回復するのに役立つキー。
+- Azure サービスを経由するデータを保護するキー。
 
 > [!IMPORTANT]
 > キー ファイルは、デバイス自体の外部にある安全な場所に保存してください。 デバイスが起動しない場合にキーがないと、データが失われる可能性があります。
 
-- 特定の回復シナリオでは、保存したキー ファイルを求められます。 
-<!--- If a node isn't booting up, you will need to perform a node replacement. You will have the option to swap the data disks from the failed node to the new node. For a 4-node device, you won't need a key file. For a 1-node device, you will be prompted to provide a key file.-->
+
 
 #### <a name="restricted-access-to-data"></a>データへの制限付きアクセス
 
@@ -132,7 +138,6 @@ Azure Stack Edge のラグド デバイスを使用すると、独自の証明�
 ### <a name="protect-data-in-storage-accounts"></a>ストレージ アカウント内のデータの保護
 
 [!INCLUDE [azure-stack-edge-gateway-data-rest](../../includes/azure-stack-edge-gateway-protect-data-storage-accounts.md)]
-
 - 承認されていないユーザーからのストレージ アカウントの保護に役立つように、定期的にストレージ アカウント キーをローテーションし、その後[同期](azure-stack-edge-gpu-manage-storage-accounts.md)します。
 
 ## <a name="manage-personal-information"></a>個人情報の管理

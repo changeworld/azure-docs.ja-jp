@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric イベント一覧
 description: クラスターの監視に役立つ、Azure Service Fabric によって提供されるイベントの包括的な一覧。
-author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
-ms.author: srrengar
-ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1ba21aaac831abb07544944420f2b77e1753955
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85846651"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279784"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric イベントの一覧 
 
@@ -39,6 +37,12 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 | 29630 | ClusterUpgradeRollbackCompleted | アップグレード | クラスターのアップグレードのロールバックが完了しました | CM | 警告 | 
 | 29631 | ClusterUpgradeDomainCompleted | アップグレード | アップグレード ドメインはクラスターのアップグレード中にアップグレードを完了しました | CM | Informational | 
 
+**配置イベント**
+| EventId | 名前 | カテゴリ | 説明 |ソース (タスク) | Level |
+| --- | --- | ---| --- | --- | --- |
+| 17616 | 決定 |StateTransition | 配置操作は、新しいレプリカの配置を決定するようにスケジュールされました。 | CRM | Informational |
+
+
 ## <a name="node-events"></a>ノード イベント
 
 **ノード ライフサイクル イベント** 
@@ -55,6 +59,13 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 | 25622 | NodeOpenFailed | StateTransition |  ノードは起動してリングに参加できませんでした | FabricNode | エラー | 
 | 25624 | NodeClosed | StateTransition |  ノードが正常にシャットダウンしました | FabricNode | Informational | 
 | 25626 | NodeAborted | StateTransition |  正常ではない方法でノードがシャットダウンしました | FabricNode | エラー | 
+
+**Ktl ロガー ノード イベント** 
+
+| EventId | 名前 | カテゴリ | 説明 |ソース (タスク) | Level |
+| --- | --- | --- | --- | --- | --- | 
+| 50187 | SharedLogWriteThrottled | 健康 | 共有ログへの書き込みが調整中です | KtlLoggerNode | Informational | 
+| 50188 | SharedLogWriteUnthrottled | 健康 | 共有ログへの書き込みが調整されていません | KtlLoggerNode | Informational | 
 
 ## <a name="application-events"></a>アプリケーション イベント
 

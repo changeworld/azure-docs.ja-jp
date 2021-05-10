@@ -1,17 +1,17 @@
 ---
 title: メトリック アラートを構成する - Azure portal - Azure Database for MySQL - フレキシブル サーバー
 description: この記事では、Azure portal から Azure Database for MySQL フレキシブル サーバーのメトリック アラートを構成およびアクセスする方法について説明します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 632aae766e6fd1328dc6e0135a88a942d7ad0910
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: be52bbe58f6c2ff6ee21703860e8d8e00ec30072
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100595786"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110153"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql---flexible-server"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのメトリックのアラートを設定する 
 

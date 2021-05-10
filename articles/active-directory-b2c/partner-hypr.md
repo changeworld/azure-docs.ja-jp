@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 357c8d79259986e211dd04580b1d8205c25824da
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94953765"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257978"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>HYPR と Azure Active Directory B2C を構成するチュートリアル
 
@@ -62,7 +62,7 @@ HYPR 統合には、次のコンポーネントが含まれています。
 
 1. ポリシー フォルダーの [Azure AD B2C HYPR ポリシー](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy)に移動します。
 
-2. この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
+2. この[ドキュメント](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
 
 3. Azure AD B2C テナントのポリシーを構成します。
 
@@ -93,4 +93,4 @@ HYPR 統合には、次のコンポーネントが含まれています。
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

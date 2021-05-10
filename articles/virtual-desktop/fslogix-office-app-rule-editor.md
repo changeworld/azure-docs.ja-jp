@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 7d66d370f321323ec1aeb45ad0fe628904b14fe6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+manager: femila
+ms.openlocfilehash: a144adcfbf6c7cefc6b946f95bdb734868de801f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744021"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446810"
 ---
 # <a name="install-microsoft-office-using-fslogix-application-containers"></a>FSLogix アプリケーション コンテナーを使用して Microsoft Office をインストールする
 

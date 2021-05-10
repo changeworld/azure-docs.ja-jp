@@ -1,93 +1,111 @@
 ---
-title: Azure Migrate Server Assessment の評価をカスタマイズする |Microsoft Docs
-description: Azure Migrate Server Assessment で作成された評価をカスタマイズする方法について説明します
+title: Azure Migrate の評価をカスタマイズする |Microsoft Docs
+description: Azure Migrate で作成された評価をカスタマイズする方法について説明します
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/15/2019
-ms.openlocfilehash: de90cffe8760a55aafebf079678d139c6f6f99e1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9bda4750f6b4340399bbbe070954dd23930b1ae1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751106"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785208"
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
-この記事では、Azure Migrate Server Assessment によって作成された評価をカスタマイズする方法について説明します。
+この記事では、Azure Migrate Discovery and assessment ツールによって作成された評価をカスタマイズする方法について説明します。
 
 [Azure Migrate](migrate-services-overview.md) は、オンプレミスのアプリとワークロード、およびプライベート/パブリック クラウド VM の検出、評価、および Azure への移行を追跡するための中央ハブとなります。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
 
-Azure Migrate Server Assessment ツールを使用すると、Azure への移行の準備として、オンプレミスの VMware VM と Hyper-V VM の評価を作成できます。 Server Assessment ツールでは、Azure IaaS 仮想マシンおよび Azure VMware Solution (AVS) への移行についてオンプレミス サーバーを評価します。 
+Azure Migrate Discovery and assessment ツールを使用すると、Azure への移行の準備として、オンプレミスの VMware VM と Hyper-V VM の評価を作成できます。 Discovery and assessment ツールでは、Azure IaaS 仮想マシンおよび Azure VMware Solution (AVS) への移行についてオンプレミス サーバーを評価します。 
 
 ## <a name="about-assessments"></a>評価について
 
-Server Assessment を使用して作成した評価は、特定の時点のデータのスナップショットです。 Azure Migrate:Server Assessment を使用して作成する方法について説明します。
+Discovery and assessment ツールを使用して作成した評価は、特定の時点におけるデータのスナップショットです。 Azure Migrate: Discovery and assessment を使用して作成できる評価には、2 つの種類があります。
 
 **評価の種類** | **詳細**
 --- | --- 
 **Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、[物理サーバー](how-to-set-up-appliance-physical.md)を評価できます。(concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> この種類の評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。[詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> この評価の種類を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。[詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
 
-Server Assessment での Azure VM の評価には、サイズ変更の設定基準のオプションが 2 つあります。
+Azure Migrate の評価でのサイズ変更の設定基準のオプション:
 
 **サイズ変更の設定基準** | **詳細** | **データ**
 --- | --- | ---
-**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、CPU とメモリの使用率データに基づきます。
+**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/>**Azure SQL の評価**: Azure SQL 構成は、CPU 使用率、メモリ使用率、IOPS (データおよびログ ファイル)、スループット、IO 操作の待機時間など、SQL インスタンスとデータベースのパフォーマンス データに基づいています。<br/><br/>**Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、CPU とメモリの使用率データに基づきます。
 **現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
-
 
 ## <a name="how-is-an-assessment-done"></a>評価の方法
 
-Azure Migrate Server Assessment で行われる評価には、3 つの段階があります。 アセスメントは適合性分析から始まり、次にサイズ設定が行われ、最後に月間コストの見積もりが行われます。 前の段階で合格したマシンだけが次の段階に進みます。 たとえば、マシンが Azure 適合性チェックで不合格になった場合、Azure に不適合とマークされ、サイズとコストは計算されません。 [詳細情報。](./concepts-assessment-calculation.md)
+Azure Migrate Discovery and assessment で行われる評価には、3 つの段階があります。 アセスメントは適合性分析から始まり、次にサイズ設定が行われ、最後に月間コストの見積もりが行われます。 前の段階で合格したマシンだけが次の段階に進みます。 たとえば、マシンが Azure 適合性チェックで不合格になった場合、Azure に不適合とマークされ、サイズとコストは計算されません。 [詳細情報。](./concepts-assessment-calculation.md)
 
 ## <a name="whats-in-an-azure-vm-assessment"></a>Azure VM の評価の内容
 
 **プロパティ** | **詳細**
 --- | ---
-**ターゲットの場所** | Azure 上の移行先となる場所。<br/> Server Assessment で現在サポートされているターゲット リージョンは次のとおりです。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、米国東部 2、ドイツ中部、ドイツ北東部、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2。
+**ターゲットの場所** | Azure 上の移行先となる場所。<br/> Azure VM の評価で現在サポートされているターゲット リージョンは次のとおりです。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、米国東部 2、ドイツ中部、ドイツ北東部、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2。
 **ストレージの種類** | このプロパティを使用して、Azure での移行先のディスクの種類を指定できます。<br/><br/> オンプレミス同様のサイズ設定の場合は、ターゲットのストレージの種類として、Premium マネージド ディスク、Standard SSD マネージド ディスク、Standard HDD マネージド ディスクのいずれかを指定できます。 パフォーマンス ベースのサイズ設定の場合は、ターゲットのディスクの種類として、Automatic、Premium マネージド ディスク、Standard HDD マネージド ディスク、Standard SSD マネージド ディスクのいずれかを指定できます。<br/><br/> ストレージの種類を Automatic として指定すると、ディスクのパフォーマンス データ (IOPS とスループット) に基づいてディスクに関する推奨事項が実行されます。 ストレージの種類に Premium/Standard を指定すると、選択したストレージの種類におけるディスク SKU が評価で推奨されます。 99.9% の単一インスタンス VM SLA を達成したい場合は、ストレージの種類に Premium マネージド ディスクを指定できます。 これにより、評価に含まれるすべてのディスクが Premium マネージド ディスクとして推奨されるようになります。 Azure
 **予約済みインスタンス (RI)** | このプロパティでは、Azure に[予約済みインスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)があるかどうかを指定し、評価のコスト見積もりで RI 割引が考慮されるようにするのに役立ちます。 予約インスタンスは、現在、Azure Migrate では従量課金制についてのみサポートされています。
 **サイズ変更の設定基準** | VM を Azure に適したサイズにするために使用される基準。 "*パフォーマンスベース*" でサイズ設定するか、またはパフォーマンス履歴を考慮せずに "*オンプレミスに合わせて*" VM のサイズを設定できます。
 **パフォーマンス履歴** | マシンのパフォーマンス データを評価するために考慮する期間。 このプロパティは、サイズ設定の基準が "*パフォーマンス ベース*" の場合にのみ適用されます。
 **百分位数の使用率** | 適切なサイズ設定のために考慮するパフォーマンス サンプル セットのパーセンタイル値。 このプロパティは、サイズ設定が "*パフォーマンスベース*" の場合にのみ適用されます。
 **VM シリーズ** |     適切なサイズ変更を検討する VM シリーズを指定できます。 たとえば、Azure で A シリーズ VM に移行する予定がない運用環境がある場合は、リストまたはシリーズから A シリーズを除外することができるため、選択したシリーズでのみ、適切なサイズ変更が実行されます。
-**快適性係数** | Azure Migrate Server Assessment では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。
+**快適性係数** | Azure VM の評価では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。
 **プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate はそれに応じてコストを見積もります。
 **通貨** | 請求通貨です。
 **割引率 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引です。<br/> 既定の設定は 0% です。
 **VM のアップタイム** | VM が Azure 上で 24 時間 365 日稼働する予定ではない場合は、Azure 上で稼働する期間 (1 か月あたりの日数と 1 日あたりの時間数) を指定できます。それに応じてコストの見積もりが行われます。<br/> 既定値は、1 か月あたり 31 日、1 日あたり 24 時間です。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、かつ [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 [はい] に設定すると、Windows VM に Windows Azure 以外の価格は考慮されません。 既定値は Yes です。
 
-## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価の内容
+## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) 評価には何が含まれますか?
 
-Server Assessment での AVS の評価に含まれる内容は次のとおりです。
+AVS の評価に含まれる内容は次のとおりです。
 
 
 | **プロパティ** | **詳細** |
 | - | - |
-| **ターゲットの場所** | 移行先となる AVS プライベート クラウドの場所を指定します。<br/><br/> Server Assessment での AVS の評価で現在サポートされているのは、以下のターゲット リージョンです。米国東部、西ヨーロッパ、米国西部。 |
+| **ターゲットの場所** | AVS プライベート クラウド上の移行先となる場所を指定します。<br/><br/> AVS 評価で現在サポートされているターゲット リージョンは次のとおりです: 米国東部、西ヨーロッパ、米国西部。 |
 | **ストレージの種類** | AVS で使用するストレージ エンジンを指定します。<br/><br/> AVS の評価では、既定のストレージの種類として vSAN のみがサポートされることに注意してください。 |
-**予約インスタンス (RI)** | このプロパティは、AVS で予約インスタンスを指定するのに役立ちます。 AVS ノードでは、現在 RI はサポートされていません。 |
+**予約インスタンス (RI)** | このプロパティは、AVS で予約インスタンスを指定するのに役立ちます。 現在、AVS ノードでは、RI はサポートされていません。 |
 **ノードの種類** | オンプレミスの VM をマップするために使用する [AVS ノードの種類](../azure-vmware/concepts-private-clouds-clusters.md)を指定します。 既定のノードの種類は、AV36 であることに注意してください。 <br/><br/> Azure Migrate では、VM を AVS に移行するために必要なノードの数が推奨されます。 |
-**FTT 設定、RAID レベル** | 適用可能な、許容するエラーと RAID の組み合わせを指定します。 選択した FTT オプションとオンプレミスの VM ディスク要件を組み合わせて、AVS で必要とされる vSAN ストレージの合計が決定されます。 |
-**サイズ変更の設定基準** | VM を AVS にとって _適切なサイズ_ にするために使用される基準を設定します。 _パフォーマンスに基づく_ サイズ設定、またはパフォーマンス履歴を考慮しない _オンプレミス同様_ のサイズ設定を選択できます。 |
+**FTT 設定、RAID レベル** | 適切な許容エラーと RAID の組み合わせを指定します。 選択した FTT オプションとオンプレミスの VM ディスク要件を組み合わせることにより、AVS で必要とされる vSAN ストレージの合計が決まります。 |
+**サイズ変更の設定基準** | VM を AVS に _適したサイズ_ にするために使用される基準を設定します。 _パフォーマンスベース_ のサイズ設定を選択することも、パフォーマンス履歴を考慮せずに _オンプレミスに合わせて_ 設定することもできます。 |
 **パフォーマンス履歴** | マシンのパフォーマンス データを評価するために考慮する期間を設定します。 このプロパティは、サイズ設定の基準が _パフォーマンス ベース_ の場合にのみ適用されます。 |
 **百分位数の使用率** | 適切なサイズ設定のために考慮するパフォーマンス サンプル セットのパーセンタイル値を指定します。 このプロパティは、サイズ設定がパフォーマンス ベースの場合にのみ適用されます。|
-**快適性係数** | Azure Migrate Server Assessment では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 |
+**快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 |
 **プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)を表示します。 Azure Migrate はそれに応じてコストを見積もります。|
 **通貨** | アカウントの請求通貨を表示します。 |
 **割引率 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引を一覧表示します。 既定の設定は 0% です。 |
-**Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、かつ [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 ノード ベースの料金であるため、これが Azure VMware Solution の価格に影響することはありませんが、お客様は AVS で Azure ハイブリッド特典を利用し、使用中のオンプレミスの OS ライセンス (Microsoft ベース) を引き続き適用できます。 RHEL など、その他のソフトウェア OS ベンダーは、独自のライセンス条項を提供する必要があります。 |
+**Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、かつ [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 ノード ベースの料金であるため、これが Azure VMware Solution の価格に影響することはありませんが、お客様は AVS で Azure ハイブリッド特典を利用し、使用中のオンプレミスの OS ライセンス (Microsoft ベース) を引き続き適用できます。 他のソフトウェア OS ベンダーは、RHEL などの独自のライセンス条項を提供する必要があります。 |
 **vCPU オーバーサブスクリプション** | AVS ノードの 1 つの物理コアに関連付けられる仮想コアの数の比率を指定します。 計算での既定値は、4 vCPU 対1 物理コア (AVS 内) です。 <br/><br/> API ユーザーは、この値を整数として設定できます。 vCPU オーバーサブスクリプションが 4 対 1 を上回る場合、パフォーマンスの低下が発生し始める可能性がありますが、Web サーバー タイプのワークロードには使用できます。 |
+
+## <a name="what-properties-are-used-to-create-and-customize-an-azure-sql-assessment"></a>Azure SQL 評価の作成とカスタマイズに使用するプロパティ
+
+Azure SQL 評価のプロパティに含まれるものは次のとおりです。
+
+**プロパティ** | **詳細**
+--- | ---
+**ターゲットの場所** | 移行先となる Azure リージョン。 Azure SQL 構成とコストに関する推奨事項は、指定した場所に基づいています。
+**Target deployment type (ターゲットのデプロイの種類)** | 評価を実行するターゲットのデプロイの種類: <br/><br/> Azure Migrate によって、Azure SQL MI および Azure SQL DB に移行するための SQL サーバーの対応性が評価され、最適なターゲット デプロイ オプション、ターゲット レベル、Azure SQL 構成、月間見積もりが推奨されるようにする場合は、 **[推奨]** を選択します。<br/><br/>Azure SQL Database への移行のみを目的として SQL サーバーを評価し、ターゲット レベル、Azure SQL DB 構成、月間見積もりを確認する場合は、 **[Azure SQL DB]** を選択します。<br/><br/>Azure SQL Database への移行のみを目的として SQL サーバーを評価し、ターゲット レベル、Azure SQL MI 構成、月間見積もりを確認する場合は、 **[Azure SQL MI]** を選択します。
+**予約容量** | 予約容量を指定します。これにより、評価でのコスト見積もりで考慮されます。<br/><br/> 予約容量オプションを選択した場合、[割引 (%)] を指定することはできません。
+**サイズ変更の設定基準** | このプロパティは、Azure SQL 構成を適切にサイズ設定するために使用されます。 <br/><br/> 既定値は **[パフォーマンスベース]** です。つまり、評価によって SQL Server インスタンスとデータベースのパフォーマンス メトリックが収集され、最適にサイズ設定された Azure SQL Managed Instance または Azure SQL Database あるいはその両方のレベルと構成に関する推奨事項が提示されます。
+**パフォーマンス履歴** | パフォーマンス履歴では、パフォーマンス データを評価するときに使用する期間を指定します。
+**百分位数の使用率** | 百分位の使用率では、サイズ設定に使用されるパフォーマンス サンプルのパーセンタイル値を指定します。
+**快適性係数** | 評価中に使用されるバッファー。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア インスタンスの結果は、通常 2 コア インスタンスになります。 快適性係数を 2.0 とした場合、結果は 4 コア インスタンスになります。
+**オファーまたはライセンス プログラム** | 自分が登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 現時点では、従量課金制または開発テスト用の従量課金制プランのみを選択できます。 従量課金制プランに加えて、予約容量と Azure ハイブリッド特典を適用することで、追加の割引を利用できることに注意してください。
+**サービス レベル** | Azure SQL Database や Azure SQL Managed Instance に移行するためのビジネス ニーズを満たすための最も適切なサービス レベル オプション:<br/><br/>Azure Migrate によってサーバーに最適なサービス レベルが推奨されるようにする場合は **[推奨]** 。 これを汎用目的またはビジネス クリティカルに設定することもできます。 <br/><br/> 予算重視のワークロード向けに設計された Azure SQL 構成が必要な場合は **[汎用]** 。 [詳細情報](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> 障害に対する高い回復性と高速フェールオーバーを備え、低遅延のワークロード向けに設計された Azure SQL 構成が必要な場合は **[ビジネス プラクティカル]** 。 [詳細情報](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**通貨** | アカウントの請求通貨。
+**割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引。 既定の設定は 0% です。
+**Azure ハイブリッド特典** | SQL Server ライセンスを既に所有しているかどうかを指定します。 <br/><br/> ライセンスを所有しており、SQL Server サブスクリプションのアクティブなソフトウェア アシュアランスの対象となっている場合は、ライセンスを Azure に持ち込む際に Azure ハイブリッド特典を申請できます。
 
 ## <a name="edit-assessment-properties"></a>評価のプロパティの編集
 
 評価を作成した後で評価のプロパティを編集するには、次の手順を実行します。
 
 1. Azure Migrate プロジェクトで、 **[サーバー]** をクリックします。
-2. **Azure Migrate:Server Assessment** で、評価カウントをクリックします。
+2. **Azure Migrate: Discovery and assessment** で、評価カウントをクリックします。
 3. **[評価]** で、関連する評価 > **[プロパティの編集]** をクリックします。
 5. 上の表に従って、評価のプロパティをカスタマイズします。
 6. **[保存]** をクリックして評価を更新します。
@@ -99,4 +117,6 @@ Server Assessment での AVS の評価に含まれる内容は次のとおりで
 ## <a name="next-steps"></a>次のステップ
 
 - Azure VM 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。
+- Azure SQL の評価の計算方法の[詳細を確認](concepts-azure-sql-assessment-calculation.md)します。
 - AVS 評価の計算方法の[詳細を確認](concepts-azure-vmware-solution-assessment-calculation.md)します。
+

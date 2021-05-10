@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32715ad1a01366d7d56e6fa8129151b15c315e1d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026524"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504177"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 
-ファイルへのログ記録は、Speech SDK のオプションの機能です。 開発時、ログ記録により、Speech SDK のコア コンポーネントから追加の情報や診断が提供されます。 ログを有効にするには、音声構成オブジェクト上のプロパティ `Speech_LogFilename` にログ ファイルの場所と名前を設定します。 ログは、その構成から認識エンジンが作成されると、グローバルにアクティブ化されます。アクティブ化された後に無効にすることはできません。 ログ セッションの実行中にログ ファイルの名前を変更することはできません。
+ファイルへのログ記録は、Speech SDK のオプションの機能です。 開発時、ログ記録により、Speech SDK のコア コンポーネントから追加の情報や診断が提供されます。 ログを有効にするには、音声構成オブジェクト上のプロパティ `Speech_LogFilename` にログ ファイルの場所と名前を設定します。 ログは、Speech SDK のネイティブ ライブラリの静的クラスによって処理されます。 任意の Speech SDK 認識エンジンまたはシンセサイザー インスタンスのログ記録を有効にすることができます。 同じプロセス内にあるインスタンスはすべて、ログ エントリを同じログ ファイルに書き込みます。
 
 > [!NOTE]
 > ログは、Speech SDK バージョン 1.4.0 から、サポートされるすべての Speech SDK プログラミング言語 (JavaScript を除く) で使用できます。

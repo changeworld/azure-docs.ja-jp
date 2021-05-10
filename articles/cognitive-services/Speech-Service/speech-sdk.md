@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 4c8ee3a65c26d1eb3acb7b9f4c18f11e870e4b82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65e55d8e9d81f4045dde29c943f034ed0a24bf4c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102434524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608087"
 ---
 # <a name="about-the-speech-sdk"></a>Speech SDK について
 
@@ -67,17 +67,17 @@ Speech SDK を使用した[音声アシスタント](voice-assistants.md)によ�
   - Java/Windows、Linux、macOS、および Android (Speech Devices SDK)
   - Go
 
-#### <a name="keyword-spotting"></a>キーワード認識
+#### <a name="keyword-recognition"></a>キーワード認識
 
 Speech SDK では、[キーワード認識](./custom-keyword-basics.md)の概念をサポートしています。 キーワード認識では、音声でキーワードを識別した後、キーワードを聞くとアクションが行われます。 たとえば、「やあ、Cortana」という音声により、Cortana アシスタントがアクティブになります。
 
-**キーワード認識 (KWS)** は、次のプラットフォームで使用できます。
+**キーワード認識** は、次のプラットフォームで使用できます。
 
   - C++/Windows および Linux
   - C#/Windows および Linux
   - Python/Windows および Linux
   - Java/Windows および Linux および Android (Speech Devices SDK)
-  - キーワード認識 (KWS) 機能は任意の種類のマイクでも動作する可能性がありますが、公式の KWS サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています
+  - キーワード認識機能は、どのような種類のマイクでも動作する可能性がありますが、公式のキーワード認識サポートは、現時点では Azure Kinect DK ハードウェアまたは Speech Devices SDK 内のマイク アレイに限定されています
 
 ### <a name="meeting-scenarios"></a>ミーティングのシナリオ
 
@@ -114,7 +114,7 @@ Speech SDK は、テレフォニー データが生成されるコール セン�
 
 ### <a name="codec-compressed-audio-input"></a>コーデック圧縮音声入力
 
-いくつかの Speech SDK プログラミング言語では、コーデック圧縮音声入力ストリームをサポートしています。 詳細については、「<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">圧縮音声入力形式を使用する</a>」を参照してください。
+いくつかの Speech SDK プログラミング言語では、コーデック圧縮音声入力ストリームをサポートしています。 詳細については、「<a href="/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">圧縮音声入力形式を使用する</a>」を参照してください。
 
 **コーデック圧縮音声入力** は、次のプラットフォームで使用できます。
 

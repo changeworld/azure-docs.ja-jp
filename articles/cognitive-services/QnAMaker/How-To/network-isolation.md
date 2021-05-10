@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: afb396bc364a2fa2db923fbcbe6bfe1b7aedbc26
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2fad19bd84418d41aca1b2e0770eaa3cde488b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467546"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043361"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
 
@@ -60,7 +60,7 @@ Cognitive Search インスタンスは、QnA Maker リソースの作成後、�
 
 QnA Maker App Service が App Service Environment を使用して制限される場合、同じ VNet を使用し、Cognitive Search インスタンスへのプライベート エンドポイント接続を作成できます。 VNet で新しい DNS エントリを作成し、Cognitive Search エンドポイントを Cognitive Search プライベート エンドポイント IP アドレスにマップします。 
 
-QnAMaker App Service に App Service Environment が使用されない場合、まず、新しい VNet リソースを作成してから Cognitive Search インスタンスへのプライベート エンドポイント接続を作成します。 この場合、Cognitive Search インスタンスに接続するには、QnA Maker App Service を [VNet と統合する](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)必要があります。 
+QnAMaker App Service に App Service Environment が使用されない場合、まず、新しい VNet リソースを作成してから Cognitive Search インスタンスへのプライベート エンドポイント接続を作成します。 この場合、Cognitive Search インスタンスに接続するには、QnA Maker App Service を [VNet と統合する](../../../app-service/web-sites-integrate-with-vnet.md)必要があります。 
 
 #  <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 

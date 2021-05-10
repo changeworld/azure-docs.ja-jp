@@ -1,17 +1,19 @@
 ---
 title: 'クイックスタート: Azure portal を使用して Azure Cache for Redis のイベントを Web エンドポイントにルーティングする'
 description: Azure Event Grid を使用して Azure Cache for Redis のイベントをサブスクライブし、それらのイベントを Webhook に送信して Web アプリケーションで処理します。
+author: curib
+ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-author: curib
-ms.author: cauribeg
-ms.openlocfilehash: 5bdd6b0e6f97f7e5a738ab17d68282cf402004b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom:
+- mode-portal
+ms.openlocfilehash: e021f386f255f1cef61e28cbd4fd6116fc2aa727
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99056484"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529315"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>クイックスタート: Azure portal を使用して Azure Cache for Redis のイベントを Web エンドポイントにルーティングする
 
@@ -123,4 +125,3 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 - [Azure Cache for Redis イベントへの対応](cache-event-grid.md)
 - [Event Grid について](../event-grid/overview.md)
-

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378708"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864042"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -200,9 +200,9 @@ Web ページでマップ コントロールを使用するには、次のいず
 
    ![レンダリングされた結果を示すマップ イメージ](./media/how-to-use-map-control/map-of-seattle.png)
 
-## <a name="localizing-the-map"></a>マップのローカライズ
+## <a name="localizing-the-map&quot;></a>マップのローカライズ
 
-Azure Maps には、レンダリングされたマップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 ("fr-FR") に、地域ビューを "auto" に設定します。
+Azure Maps には、レンダリングされたマップの言語と地域ビューを設定するための 2 つの異なる方法が用意されています。 最初のオプションでは、この情報をグローバルな `atlas` 名前空間に追加します。これにより、アプリ内のすべてのマップ コントロール インスタンスにより、これらの設定が既定で使用されます。 以下では、言語をフランス語 (&quot;fr-FR") に、地域ビューを "auto" に設定します。
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -258,10 +258,10 @@ Azure Maps REST サービスに直接アクセスする場合は、URL ドメイ
 
 JavaScript フレームワークを開発に使用している場合は、次のいずれかのオープンソース プロジェクトが役に立つでしょう。
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
-- [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure Maps の Angular 10 ラッパー。
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure Maps Blazor コンポーネント。
+* [Azure Maps React Component](https://github.com/WiredSolutions/react-azure-maps) - Azure Maps コントロール用の React ラッパー。
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) - Vue アプリケーション用の Azure Maps コンポーネント。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -275,10 +275,10 @@ JavaScript フレームワークを開発に使用している場合は、次の
 > [!div class="nextstepaction"]
 > [マップ スタイルを選択する](choose-map-style.md)
 
-マップにさらにデータを追加するには:
+ベスト プラクティスとサンプルを参照してください。
 
 > [!div class="nextstepaction"]
-> [マップを作成する](map-create.md)
+> [ベスト プラクティス](web-sdk-best-practices.md)
 
 > [!div class="nextstepaction"]
 > [コード サンプル](/samples/browse/?products=azure-maps)

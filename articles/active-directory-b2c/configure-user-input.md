@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4e709719d56aacacf61e247a5dbe215f766a891a
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102607953"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443442"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でユーザー属性を追加してユーザー入力をカスタマイズする
 
@@ -60,7 +60,7 @@ ms.locfileid: "102607953"
 1. **[Page layouts]\(ページ レイアウト\)** を選択します。
 1. **[ローカル アカウント サインアップ ページ]** を選択します。
 1. **[ユーザー属性]** で **[City]** を選択します。
-    1. **[ユーザー入力の種類]** ドロップダウンで、 **[DropdownSingleSelect]** を選択します。
+    1. **[ユーザー入力の種類]** ドロップダウンで、 **[DropdownSingleSelect]** を選択します。 省略可能: [上へ移動] または [下へ移動] ボタンを使用して、サインアップ ページのテキストの順序を調整します。
     1. **[省略可能]** ドロップダウンで、 **[なし]** を選択します。
 1. **[保存]** を選択します。 
 

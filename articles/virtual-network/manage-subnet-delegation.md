@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943664"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783415"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>サブネットの委任を追加または削除する
 
@@ -113,7 +113,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 このセクションでは、前のセクションで作成したサブネットを Azure サービスに委任します。 
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して、Azure サービスへの委任を行うように **mySubnet** という名前のサブネットを更新します。  この例では、委任の例として **Microsoft.DBforPostgreSQL/serversv2** を使用しています。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使用して、Azure サービスへの委任を行うように **mySubnet** という名前のサブネットを更新します。  この例では、委任の例として **Microsoft.DBforPostgreSQL/serversv2** を使用しています。
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-委任が適用されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットに委任されていることを確認します。
+委任が適用されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットに委任されていることを確認します。
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure サービスからサブネットの委任を削除する
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して、**mySubnet** という名前のサブネットから委任を削除します。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) を使用して、**mySubnet** という名前のサブネットから委任を削除します。
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
   --vnet-name myVnet \
   --remove delegations
 ```
-委任が削除されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットから削除されていることを確認します。
+委任が削除されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットから削除されていることを確認します。
 
 ```azurecli-interactive
   az network vnet subnet show \

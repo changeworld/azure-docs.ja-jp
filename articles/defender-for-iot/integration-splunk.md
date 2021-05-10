@@ -4,10 +4,10 @@ description: OT ネットワークのセキュリティと回復性への可視�
 ms.date: 1/4/2021
 ms.topic: article
 ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785922"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Defender for IoT と Splunk 用 ICS 脅威監視アプリケーション

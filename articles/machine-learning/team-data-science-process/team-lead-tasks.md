@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96000030"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process チームでのチーム リーダーのタスク
@@ -41,8 +41,8 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
   
 1. 必要に応じて、チームのデータおよび分析リソースを作成します。
    - チーム固有のユーティリティを **TeamUtilities** リポジトリに追加します。 
-   - チーム全体にとって役立つデータ資産を格納するための **Azure ファイル ストレージ** を作成します。 
-   - Azure ファイル ストレージをチーム リーダーの **Data Science Virtual Machine** (DSVM) にマウントし、データ資産を追加します。
+   - チーム全体にとって役立つデータ資産を格納するための **Azure File Storage** を作成します。 
+   - Azure File Storage をチーム リーダーの **Data Science Virtual Machine** (DSVM) にマウントし、データ資産を追加します。
 
 以下のチュートリアルでは、その手順を詳しく説明します。
 
@@ -57,7 +57,7 @@ TDSP は、予測分析ソリューションとインテリジェント アプ�
 - **GroupProjectTemplate** および **GroupUtilities** リポジトリ。Microsoft TDSP チームの **ProjectTemplate** および **Utilities** リポジトリの内容が設定されているもの
 - チーム用のプロジェクトとリポジトリを作成するための、組織のアカウントに対するアクセス許可
 
-ローカル コンピューターまたは DSVM でリポジトリを複製してその内容を変更したり、Azure ファイル ストレージを設定して DSVM にマウントしたりできるようにするには、次のものが必要です。
+ローカル コンピューターまたは DSVM でリポジトリを複製してその内容を変更したり、Azure File Storage を設定して DSVM にマウントしたりできるようにするには、次のものが必要です。
 
 - Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
@@ -267,16 +267,16 @@ git push
 
 ## <a name="create-team-data-and-analytics-resources"></a>チームのデータおよび分析リソースを作成する
 
-このステップは省略可能ですが、データと分析リソースをチーム全体で共有すると、パフォーマンスとコストの面でメリットがあります。 チーム メンバーは、共有リソースでプロジェクトを実行し、予算を節約し、効率的に共同作業を行うことができます。 Azure ファイル ストレージを作成し、それを DSVM にマウントして、チーム メンバーと共有することができます。 
+このステップは省略可能ですが、データと分析リソースをチーム全体で共有すると、パフォーマンスとコストの面でメリットがあります。 チーム メンバーは、共有リソースでプロジェクトを実行し、予算を節約し、効率的に共同作業を行うことができます。 Azure File Storage を作成し、それを DSVM にマウントして、チーム メンバーと共有することができます。 
 
 Azure HDInsight Spark クラスターなど、他のリソースをチームと共有する方法の詳細については、[プラットフォームとツール](platforms-and-tools.md)に関する記事をご覧ください。 このトピックでは、ニーズに適したリソースの選択に関するデータ サイエンスの観点からのガイダンスを提供し、製品ページと他の関連する便利なチュートリアルへのリンクを示します。
 
 >[!NOTE]
 > 低速でコストがかかる可能性のあるデータ センター間でのデータ転送を回避するため、Azure リソース グループ、ストレージ アカウント、DSVM がすべて同じ Azure リージョンでホストされていることを確認してください。 
 
-### <a name="create-azure-file-storage"></a>Azure ファイル ストレージを作成する
+### <a name="create-azure-file-storage"></a>Azure File Storage を作成する
 
-1. チーム全体にとって役に立つデータ資産用の Azure ファイル ストレージを作成するには、次のスクリプトを実行します。 スクリプトでは Azure サブスクリプションの情報の入力を求められるので、用意しておいてください。 
+1. チーム全体にとって役に立つデータ資産用の Azure File Storage を作成するには、次のスクリプトを実行します。 スクリプトでは Azure サブスクリプションの情報の入力を求められるので、用意しておいてください。 
 
    - Windows コンピューターでは、PowerShell コマンド プロンプトからスクリプトを実行します。
      
@@ -294,13 +294,13 @@ Azure HDInsight Spark クラスターなど、他のリソースをチームと�
    
 1. 求められたら Microsoft Azure アカウントにログインし、使用するサブスクリプションを選択します。
    
-1. 使用するストレージ アカウントを選択するか、選択したサブスクリプションに新しいストレージ アカウントを作成します。 Azure ファイル ストレージの名前には、小文字、数字、ハイフンを使用できます。
+1. 使用するストレージ アカウントを選択するか、選択したサブスクリプションに新しいストレージ アカウントを作成します。 Azure File Storage の名前には、小文字、数字、ハイフンを使用できます。
    
-1. ストレージのマウントと共有を容易にするため、Enter キーを押すか、「*Y*」と入力して、Azure ファイル ストレージの情報を現在のディレクトリ内のテキスト ファイルに保存します。 このテキスト ファイルを **TeamTemplate** リポジトリにチェックインし (理想的には、**Docs\DataDictionaries** の下)、チームのすべてのプロジェクトでアクセス可能にすることができます。 また、次のセクションで Azure DSVM に Azure ファイル ストレージをマウントするためにも、ファイルの情報が必要です。 
+1. ストレージのマウントと共有を容易にするため、Enter キーを押すか、「*Y*」と入力して、Azure File Storage の情報を現在のディレクトリ内のテキスト ファイルに保存します。 このテキスト ファイルを **TeamTemplate** リポジトリにチェックインし (理想的には、**Docs\DataDictionaries** の下)、チームのすべてのプロジェクトでアクセス可能にすることができます。 また、次のセクションで Azure DSVM に Azure File Storage をマウントするためにも、ファイルの情報が必要です。 
    
-### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>ローカル コンピューターまたは DSVM に Azure ファイル ストレージをマウントする
+### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>ローカル コンピューターまたは DSVM に Azure File Storage をマウントする
 
-1. Azure ファイル ストレージをローカル コンピューターまたは DSVM にマウントするには、次のスクリプトを使用します。
+1. Azure File Storage をローカル コンピューターまたは DSVM にマウントするには、次のスクリプトを使用します。
    
    - Windows コンピューターでは、PowerShell コマンド プロンプトからスクリプトを実行します。
      
@@ -316,9 +316,9 @@ Azure HDInsight Spark クラスターなど、他のリソースをチームと�
      bash AttachFileShare.sh
      ```
    
-1. 前のステップで Azure ファイル ストレージの情報ファイルを保存した場合は、Enter キーを押すか、「*Y*」と入力して続行します。 作成したファイルの完全なパスと名前を入力します。 
+1. 前のステップで Azure File Storage の情報ファイルを保存した場合は、Enter キーを押すか、「*Y*」と入力して続行します。 作成したファイルの完全なパスと名前を入力します。 
    
-   Azure ファイル ストレージの情報ファイルがない場合は、「*n*」と入力し、指示に従ってサブスクリプション、Azure ストレージ アカウント、Azure ファイル ストレージの情報を入力します。
+   Azure File Storage の情報ファイルがない場合は、「*n*」と入力し、指示に従ってサブスクリプション、Azure ストレージ アカウント、Azure File Storage の情報を入力します。
    
 1. ファイル共有をマウントするローカル ドライブまたは TDSP ドライブの名前を入力します。 既存のドライブ名の一覧が画面に表示されます。 まだ存在しないドライブ名を指定します。
    

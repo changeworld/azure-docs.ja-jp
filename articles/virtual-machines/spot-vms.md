@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101673945"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104721394"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Azure Spot Virtual Machines を使用する 
 
@@ -25,7 +25,7 @@ Azure Spot Virtual Machines を使用すると、大幅にコストを削減し�
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
-VM は、容量または設定した最大価格に基づいて削除できます。 Azure Spot Virtual Machine の作成では､削除ポリシーを *[割り当て解除]* (既定値) または *[削除]* に設定できます｡ 
+VM は、容量または設定した最大価格に基づいて削除できます。 Azure スポット仮想マシン の作成では､削除ポリシーを *[割り当て解除]* (既定値) または *[削除]* に設定できます｡ 
 
 *[割り当てを解除する]* ポリシーでは､VM が停止済み/割り当て解除済み状態に移行され､後でもう一度デプロイすることができます｡ ただし､割り当てが成功する保証はありません｡ 割り当てを解除された VM はクォータに影響を及ぼし、基になるディスクのストレージ コストが課金されます。 
 
@@ -58,9 +58,9 @@ Azure Spot Virtual Machines は、Microsoft Azure China 21Vianet を除き、任
 
 現在サポートされている[オファーの種類](https://azure.microsoft.com/support/legal/offer-details/)は次のとおりです。
 
--   Enterprise Agreement
--   従量課金制 (プラン コード: 003P)
--   スポンサー
+-   Enterprise Agreement 
+-   従量課金制プラン コード ( 003P)
+-   スポンサー (0036P および 0136P)
 - クラウド サービス プロバイダー (CSP) の場合、パートナーにお問い合わせください
 
 

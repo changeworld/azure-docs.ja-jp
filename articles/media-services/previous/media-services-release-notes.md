@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 019f0bc98de45fa1fe6f9b8c72ef74beb50ea2c2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fe42b98813f1687c78827b355a707b0147d6d2a4
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103017360"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067284"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -64,7 +64,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 #### <a name="action-required"></a>必須のアクション:
 
-ワークロードの中断を最小限に抑えるために、[移行ガイド](https://go.microsoft.com/fwlink/?linkid=2149150&clcid=0x409)を参照して、2024 年 2 月 29 日までにコードをバージョン 2 の API と SDK からバージョン 3 の API と SDK に移行してください。
+ワークロードの中断を最小限に抑えるために、[移行ガイド](../latest/migrate-v-2-v-3-migration-introduction.md)を参照して、2024 年 2 月 29 日までにコードをバージョン 2 の API と SDK からバージョン 3 の API と SDK に移行してください。
 **2024 年 2 月 29 日以降** は、Azure Media Services は、バージョン 2 の REST API、ARM アカウント管理 API バージョン 2015-10-01、またはバージョン 2 の .NET クライアント SDK からのトラフィックを受け入れなくなります。 これには、バージョン 2 の API を呼び出す可能性があるサードパーティ製のオープンソースのクライアント SDK が含まれます。  
 
 公式の [Azure の更新情報に関するお知らせ](https://azure.microsoft.com/updates/update-your-azure-media-services-rest-api-and-sdks-to-v3-by-29-february-2024/)をご確認ください。
@@ -78,7 +78,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 タスクの履歴を取得するには、Webhook を介して v2 ジョブ通知を使用するか、通知エンドポイントを使用してメッセージをキューに格納する必要があります。 詳細については次を参照してください:
 
-* [Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
+* [Azure Queue Storage を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
 * [Azure webhook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>2020 年 2 月
@@ -252,7 +252,7 @@ Azure SDK チームは [Azure SDK for PHP](https://github.com/Azure/azure-sdk-fo
 詳細については、次を参照してください。
 
 * 次の[コード サンプル](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)は、すぐに使い始めるときに役立ちます。
-  * **vodworkflow_aes.php**:この PHP ファイルは、AES-128 動的暗号化とキー配信サービスの使用方法を示します。 これは、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」で説明されている .NET サンプルに基づきます。
+  * **vodworkflow_aes.php**:この PHP ファイルは、AES-128 動的暗号化とキー配信サービスの使用方法を示します。 これは、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)」で説明されている .NET サンプルに基づきます。
   * **vodworkflow_aes.php**:この PHP ファイルは、PlayReady 動的暗号化とライセンス配信サービスの使用方法を示します。 これは、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」で説明されている .NET サンプルに基づきます。
   * **scale_encoding_units.php**:この PHP ファイルは、エンコード予約ユニットのスケーリング方法を示します。
 

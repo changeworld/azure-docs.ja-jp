@@ -8,7 +8,6 @@ author: KumudD
 manager: twooley
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -18,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 536a9e304d111b16e39c3187560a7a529d05c937
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 701df4353e8d2e36baf0496bd6944c4a95395414
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98013154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763269"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
 
@@ -63,7 +62,7 @@ Network Watcher を使ってネットワーク通信をテストするには、�
 
 ### <a name="enable-network-watcher"></a>ネットワーク ウォッチャーを有効にする
 
-米国東部リージョンで既に Network Watcher を有効にしている場合は、「[IP フローの確認を使用する](#use-ip-flow-verify)」に進んでください。 [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) コマンドを使用して、米国東部リージョンにネットワーク ウォッチャーを作成します。
+米国東部リージョンで既に Network Watcher を有効にしている場合は、「[IP フローの確認を使用する](#use-ip-flow-verify)」に進んでください。 [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) コマンドを使用して、米国東部リージョンにネットワーク ウォッチャーを作成します。
 
 ```azurecli-interactive
 az network watcher configure \
@@ -74,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>IP フローの確認を使用する
 
-VM を作成すると、Azure は既定に従って、VM との間でやり取りされるネットワーク トラフィックを許可および拒否します。 後で Azure の既定値をオーバーライドして、他の種類のトラフィックを許可または拒否する場合があります。 さまざまな送信先へのトラフィックまたは送信元 IP アドレスからのトラフィックが許可または拒否されるかどうかをテストするには、[az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow) コマンドを使います。
+VM を作成すると、Azure は既定に従って、VM との間でやり取りされるネットワーク トラフィックを許可および拒否します。 後で Azure の既定値をオーバーライドして、他の種類のトラフィックを許可または拒否する場合があります。 さまざまな送信先へのトラフィックまたは送信元 IP アドレスからのトラフィックが許可または拒否されるかどうかをテストするには、[az network watcher test-ip-flow](/cli/azure/network/watcher#az_network_watcher_test_ip_flow) コマンドを使います。
 
 VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 
@@ -126,7 +125,7 @@ az network watcher test-ip-flow \
 
 ## <a name="view-details-of-a-security-rule"></a>セキュリティ規則の詳細を表示する
 
-「[IP フローの確認を使用する](#use-ip-flow-verify)」の規則が通信を許可または拒否している理由を特定するには、[az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg) コマンドを使って、ネットワーク インターフェイスに対して有効なセキュリティ規則を確認します。
+「[IP フローの確認を使用する](#use-ip-flow-verify)」の規則が通信を許可または拒否している理由を特定するには、[az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg) コマンドを使って、ネットワーク インターフェイスに対して有効なセキュリティ規則を確認します。
 
 ```azurecli-interactive
 az network nic list-effective-nsg \

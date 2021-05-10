@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: b13feeda162f9babe1958402a694b728312ea4e5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b009c0844a0030da9698ba7e058cde8ba68c5f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103015405"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063318"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
-> * [Version 3](../latest/offline-widevine-for-android.md)
+> * [Version 3](../latest/drm-offline-widevine-for-android.md)
 > * [Version 2](offline-widevine-for-android.md)
 
 > [!NOTE]

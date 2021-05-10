@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - C++'
 description: このクイックスタートでは、C++ 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/21/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 246d2677c784daee4cc6b083cff04b6993ab3818
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e6832cc835a464a2a3d17d5ed286e71b17bc980e
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96006491"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312282"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>クイックスタート: C++ 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -40,7 +40,7 @@ C++ 用 Azure Blob Storage クライアント ライブラリ v12 を使用す�
 - [Azure Storage アカウント](../common/storage-account-create.md)
 - [C++ コンパイラ](https://azure.github.io/azure-sdk/cpp_implementation.html#supported-platforms)
 - [CMake](https://cmake.org/)
-- [Vcpkg - C および C++ パッケージ マネージャー](https://github.com/microsoft/vcpkg/blob/master/docs/index.md)
+- [Vcpkg - C および C++ パッケージ マネージャー](https://github.com/microsoft/vcpkg/blob/master/docs/README.md)
 - [LibCurl](https://curl.haxx.se/libcurl/)
 - [LibXML2](http://www.xmlsoft.org/)
 

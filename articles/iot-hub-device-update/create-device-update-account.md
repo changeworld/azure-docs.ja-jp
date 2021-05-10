@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0201882b74d2acf57c246d2dc63530ca8b1f010
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101692717"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558484"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>Device Update for IoT Hub リソース管理
 
@@ -127,7 +127,11 @@ IoT Hub を構成するには
 
 ## <a name="next-steps"></a>次の手順
 
-[Device Update for IoT Hub を使用して、更新をインポートします。](import-update.md)
+次のクイック チュートリアルのいずれかを使用して、デバイスを更新してみてください。
+
+ - [シミュレーターでのデバイス更新](device-update-simulator.md)
+ - [Raspberry Pi でのデバイス更新](device-update-raspberry-pi.md)
+ - [Ubuntu Server 18.04 x64 Package エージェントでのデバイス更新](device-update-ubuntu-agent.md)
 
 [Device Update アカウントおよびインスタンスについて確認します。](device-update-resources.md) 
 

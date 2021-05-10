@@ -3,12 +3,12 @@ title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレート (ARM テンプレート) を作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ff2b9ecf0e4004aa6689294867f5ff93006211ec
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99257999"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219945"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -160,7 +160,7 @@ ms.locfileid: "99257999"
 
 API バージョンにパラメーターを使用しないでください。 リソースのプロパティおよび値は、API バージョンによって異なる可能性があります。 パラメーターに API バージョンが設定されると、コード エディターの IntelliSense が適切なスキーマを決定できなくなります。 テンプレート内のプロパティと一致しない API バージョンを渡した場合、デプロイは失敗します。
 
-API バージョンに対しては変数を使用しないでください。 特に、デプロイ時に API バージョンを動的に取得するために、[プロバイダー関数](template-functions-resource.md#providers)を使用しないでください。 動的に取得された API バージョンが、テンプレート内のプロパティと一致しない可能性があります。
+API バージョンに対しては変数を使用しないでください。 
 
 ## <a name="resource-dependencies"></a>リソースの依存関係
 

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
 ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92142758"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>IoT デバイスを Azure に接続する: IoT Hub と Event Hubs
@@ -40,10 +40,10 @@ Azure IoT Hub は、IoT デバイスを接続してデータを収集し、ビ�
 | デバイスごとの ID | ![○][checkmark] | ![○][checkmark] |  |
 | 複数デバイスからのファイルのアップロード | ![○][checkmark] | ![○][checkmark] |  |
 | デバイス プロビジョニング サービス | ![○][checkmark] | ![○][checkmark] |  |
-| クラウドからデバイスへのメッセージ | ![チェック][checkmark] |  |  |
-| デバイス ツインとデバイス管理 | ![チェック][checkmark] |  |  |
-| デバイス ストリーム (プレビュー) | ![チェック][checkmark] |  |  |
-| IoT Edge | ![チェック][checkmark] |  |  |
+| クラウドからデバイスへのメッセージ | ![○][checkmark] |  |  |
+| デバイス ツインとデバイス管理 | ![○][checkmark] |  |  |
+| デバイス ストリーム (プレビュー) | ![○][checkmark] |  |  |
+| IoT Edge | ![○][checkmark] |  |  |
 
 唯一のユース ケースがデバイスからクラウドへのデータ インジェストである場合でも、IoT Hub は IoT デバイス接続用に設計されたサービスを提供するので、IoT Hub を使うことを強くお勧めします。 
 

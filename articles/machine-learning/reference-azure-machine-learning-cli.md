@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jordane
 author: jpe316
-ms.date: 06/22/2020
+ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e073310d62bfb772ea1120bd379cdc277137da0
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8e912e141ab769f3121fcccdecb9c3952920572f
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102519114"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516214"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning の CLI 拡張機能のインストールと使用
 
@@ -39,7 +39,7 @@ CLI は、Azure Machine Learning SDK に取って代わるものではありま�
 
 ## <a name="full-reference-docs"></a>詳細なリファレンス ドキュメント
 
-[Azure CLI の azure-cli-ml 拡張機能に関する詳細なリファレンス ドキュメント](/cli/azure/ext/azure-cli-ml/)を参照してください。
+[Azure CLI の azure-cli-ml 拡張機能に関する詳細なリファレンス ドキュメント](/cli/azure/ml/)を参照してください。
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Azure サブスクリプションへの CLI の接続
 
@@ -60,22 +60,7 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
-Machine Learning CLI 拡張機能をインストールするには、次のコマンドを使用します。
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-> [!TIP]
-> 以下のコマンドで使用できるサンプル ファイルは、[こちら](https://aka.ms/azml-deploy-cloud)にあります。
-
-メッセージが表示されたら、`y` を選択して拡張機能をインストールします。
-
-拡張機能がインストールされたことを確認するには、次のコマンドを使用して、ML 固有のサブコマンドの一覧を表示します。
-
-```azurecli-interactive
-az ml -h
-```
+拡張機能は、`az ml` で始まるコマンドの使用を初めて試したときに自動的にインストールされます。
 
 ## <a name="update-the-extension"></a>拡張機能を更新する
 
@@ -84,7 +69,6 @@ Machine Learning CLI 拡張機能を更新するには、次のコマンドを�
 ```azurecli-interactive
 az extension update -n azure-cli-ml
 ```
-
 
 ## <a name="remove-the-extension"></a>拡張機能を削除する
 

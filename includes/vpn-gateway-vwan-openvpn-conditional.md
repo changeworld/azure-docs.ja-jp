@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77471542"
 ---
 条件付きアクセスを使用すると、アプリケーションごとにきめ細かなアクセス制御を行うことができます。 条件付きアクセスを利用するには、条件付きアクセス規則の対象となるユーザーに対して Azure AD Premium 1 以上のライセンスが適用されている必要があります。
@@ -21,7 +21,7 @@ ms.locfileid: "77471542"
 
    - **[条件付きアクセス]** をクリックします。
    - **[新しいポリシー]** をクリックして **[新規]** ウィンドウを開きます。
-2. **新規**ペインで、**割り当て -> ユーザーとグループ** に移動します。 **ユーザーとグループ ->** **含める** タブで次の操作を行います。
+2. **新規** ペインで、**割り当て -> ユーザーとグループ** に移動します。 **ユーザーとグループ ->** **含める** タブで次の操作を行います。
 
    - **[ユーザーとグループの選択]** をクリックします。
    - **[ユーザーとグループ]** をクリックします。
@@ -40,6 +40,6 @@ ms.locfileid: "77471542"
 4. **ポリシーを有効化する** セクション:
 
    - **[ON]** を選択します。
-   - **Create** をクリックしてください。
+   - **[作成]** をクリックします。
 
    ![ポリシーを有効化する](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

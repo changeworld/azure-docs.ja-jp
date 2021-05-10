@@ -3,34 +3,34 @@ title: Azure Monitor ログに対するシステム関数
 description: システム関数を使用して Azure Monitor ログに対するカスタム クエリを記述する
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb45e6ad0250a1f8d10377fdd509e40051f25b9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102510431"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564910"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Azure Monitor ログに対するシステム関数
 
 Azure Backup には、システム関数またはソリューション関数と呼ばれる一連の関数が用意されています。既定では、これらをご利用の Log Analytics (LA) ワークスペース内で使用できます。
  
-これらの関数を使用すると、LA の[未加工の Azure Backup テーブル](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)のデータを操作し、書式を設定したデータを返すことができます。これにより、シンプルなクエリを使用して、バックアップ関連のすべてのエンティティの情報を容易に取得できます。 ユーザーはこれらの関数にパラメーターを渡すことで、これらの関数から返されるデータをフィルター処理することができます。 
+これらの関数を使用すると、LA の[未加工の Azure Backup テーブル](./backup-azure-reports-data-model.md)のデータを操作し、書式を設定したデータを返すことができます。これにより、シンプルなクエリを使用して、バックアップ関連のすべてのエンティティの情報を容易に取得できます。 ユーザーはこれらの関数にパラメーターを渡すことで、これらの関数から返されるデータをフィルター処理することができます。 
 
 LA ワークスペース内のバックアップ データに対してクエリを実行してカスタム レポートを作成する場合は、システム関数を使用することをお勧めします。以下のセクションに詳述するように、それらにはさまざまな利点があるためです。
 
 ## <a name="benefits-of-using-system-functions"></a>システム関数を使用することの利点
 
-* **よりシンプルなクエリ**: 関数を使用すると、クエリで必要とされる結合の数を減らすことができます。 既定で、これらの関数から返されるものは、クエリ対象のエンティティ (バックアップ インスタンス、ジョブ、コンテナーなど) に関するすべての情報を含む "フラット化された" スキーマです。 たとえば、バックアップ項目名とそれに関連付けられているコンテナーごとに、成功したバックアップ ジョブの一覧を取得する必要がある場合は、 **_AzureBackup_getJobs()** 関数を呼び出すだけで、ジョブごとに該当する情報をすべて取得できます。 一方、未加工のテーブルに対してクエリを直接実行する場合は、[AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) と [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) テーブル間で複数の結合を実行する必要があります。
+* **よりシンプルなクエリ**: 関数を使用すると、クエリで必要とされる結合の数を減らすことができます。 既定で、これらの関数から返されるものは、クエリ対象のエンティティ (バックアップ インスタンス、ジョブ、コンテナーなど) に関するすべての情報を含む "フラット化された" スキーマです。 たとえば、バックアップ項目名とそれに関連付けられているコンテナーごとに、成功したバックアップ ジョブの一覧を取得する必要がある場合は、 **_AzureBackup_getJobs()** 関数を呼び出すだけで、ジョブごとに該当する情報をすべて取得できます。 一方、未加工のテーブルに対してクエリを直接実行する場合は、[AddonAzureBackupJobs](./backup-azure-reports-data-model.md#addonazurebackupjobs) と [CoreAzureBackup](./backup-azure-reports-data-model.md#coreazurebackup) テーブル間で複数の結合を実行する必要があります。
 
-* **レガシ診断イベントからのより円滑な移行**: システム関数を使用すれば、[レガシ診断イベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) (AzureDiagnostics mode モードでの AzureBackupReport) から [リソース固有のイベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)に円滑に移行することができます。 Azure Backup に用意されているすべてのシステム関数でパラメーターを指定できます。それにより、関数では、リソース固有のテーブルからのデータに対してのみクエリを実行するか、(レコードの重複除去を使用して) レガシ テーブルとリソース固有のテーブルの両方からのデータに対してクエリを実行するかを選択することができます。
+* **レガシ診断イベントからのより円滑な移行**: システム関数を使用すれば、[レガシ診断イベント](./backup-azure-diagnostic-events.md#legacy-event) (AzureDiagnostics mode モードでの AzureBackupReport) から [リソース固有のイベント](./backup-azure-diagnostic-events.md#diagnostics-events-available-for-azure-backup-users)に円滑に移行することができます。 Azure Backup に用意されているすべてのシステム関数でパラメーターを指定できます。それにより、関数では、リソース固有のテーブルからのデータに対してのみクエリを実行するか、(レコードの重複除去を使用して) レガシ テーブルとリソース固有のテーブルの両方からのデータに対してクエリを実行するかを選択することができます。
     * リソース固有のテーブルへの移行が正常に完了した場合は、関数によるクエリの対象からレガシ テーブルを除外することを選択できます。
     * 現在、移行の過程にあって、分析に必要とする一部のデータがレガシ テーブル内にある場合は、レガシ テーブルを含めることを選択できます。 移行が完了し、レガシ テーブルからのデータが不要になった場合は、ご利用のクエリ内で関数に渡すパラメーターの値を更新するだけで、レガシ テーブルを除外することができます。
-    * レガシ テーブルのみを引き続き使用する場合、同じパラメーターを使用してレガシ テーブルを含めるように選択すれば、関数は今までどおりに機能します。 ただし、できるだけ早い段階で、[リソース固有のテーブルに切り替える](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace)ことをお勧めします。
+    * レガシ テーブルのみを引き続き使用する場合、同じパラメーターを使用してレガシ テーブルを含めるように選択すれば、関数は今までどおりに機能します。 ただし、できるだけ早い段階で、[リソース固有のテーブルに切り替える](./backup-azure-diagnostic-events.md#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace)ことをお勧めします。
 
 * **カスタム クエリが中断する可能性が少なくなる**: 将来のレポート シナリオに対応するために、基になる LA テーブルのスキーマの改善点が Azure Backup に導入された場合は、そのスキーマの変更を考慮するように関数の定義も更新されます。 したがって、システム関数を使用してカスタム クエリを作成すれば、テーブルの基になるスキーマに変更が加えられたとしても、ご利用のクエリが中断されることはありません。
 
 > [!NOTE]
-> システム関数は Microsoft によって管理されていて、ユーザーがその定義を編集することはできません。 編集可能な関数が必要な場合は、LA に[保存される関数](https://docs.microsoft.com/azure/azure-monitor/logs/functions) を作成できます。
+> システム関数は Microsoft によって管理されていて、ユーザーがその定義を編集することはできません。 編集可能な関数が必要な場合は、LA に[保存される関数](../azure-monitor/logs/functions.md) を作成できます。
 
 ## <a name="types-of-system-functions-offered-by-azure-backup"></a>Azure Backup に用意されているシステム関数の種類
 
@@ -390,4 +390,4 @@ LA ワークスペース内のバックアップ データに対してクエリ�
     ````
 
 ## <a name="next-steps"></a>次のステップ
-[バックアップ レポートに関する詳細を確認する](https://docs.microsoft.com/azure/backup/configure-reports)
+[バックアップ レポートに関する詳細を確認する](./configure-reports.md)

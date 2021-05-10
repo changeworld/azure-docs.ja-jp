@@ -1,24 +1,53 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 03/08/2021
+ms.date: 04/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104775512"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376054"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Active Directory (Azure AD) アプリケーションの管理証明書に関してよく寄せられる質問](application-management-certs-faq.md)
+- [アプリケーション管理用の Azure Active Directory PowerShell の例](app-management-powershell-samples.md)
+- [ホーム領域検出ポリシーを使用してユーザー サインイン時のフェデレーション IDP への自動高速化を無効にする](prevent-domain-hints-with-home-realm-discovery.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory マイ アプリの構成を計画する](my-apps-deployment-plan.md)
+- [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
+- [SharePoint との統合 (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [アプリケーション認証を Azure Active Directory に移行する](migrate-application-authentication-to-azure-active-directory.md)
+- [AD FS アプリケーション アクティビティ レポートを使用してアプリケーションを Azure AD に移行する](migrate-adfs-application-activity.md)
+- [シングル サインオンのデプロイを計画する](plan-sso-deployment.md)
+- [アプリケーション管理用の Azure Active Directory PowerShell の例](app-management-powershell-samples.md)
+- [Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+- [クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する](add-application-portal-setup-sso.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
+- [Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング](application-sign-in-other-problem-access-panel.md)
+- [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
+- [Azure Active Directory アプリケーション プロキシを使用してトラフィック フローを最適化する](application-proxy-network-topology.md)
+- [Azure AD アプリケーション プロキシは:バージョンのリリース履歴](application-proxy-release-version-history.md)
+- [ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](configure-authentication-for-federated-users-portal.md)
+- [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -46,7 +75,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)
 - [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
 - [アプリケーション管理とは](what-is-application-management.md)
-- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
 - [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Azure Active Directory 用の基幹業務アプリをの開発する](../develop/v2-overview.md)

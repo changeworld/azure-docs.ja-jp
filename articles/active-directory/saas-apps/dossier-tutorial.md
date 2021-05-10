@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: ff5da4b87589889172a9518fd67486fe14451630
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92454650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>チュートリアル: Azure Active Directory と Dossier の統合
@@ -101,7 +101,7 @@ Dossier で Azure AD シングル サインオンを構成するには、次の�
 
     ![[Dossier のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
     ```http
     https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn

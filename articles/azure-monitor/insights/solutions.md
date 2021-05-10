@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a63db154d055675b834e2949a330375633a5761d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728588"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766989"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -118,7 +118,7 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 
 1. サインインします。
 
-   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。
+   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用してサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。
 
     ```azurecli
     az login

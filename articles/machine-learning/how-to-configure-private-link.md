@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 6fd497e0bc0fd282d57779c483f1e39e8f5ab60a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505479"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056013"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する
 
@@ -175,7 +175,7 @@ Azure Virtual Machines について詳しくは、「[Virtual Machines のドキ
 状況によっては、VNet ではなくパブリック エンドポイント経由で、セキュリティで保護された自分のワークスペースにだれかが接続できるようにすることが必要になる場合があります。 プライベート エンドポイントを使用してワークスペースを構成した後で、必要に応じてワークスペースへのパブリック アクセスを有効にすることができます。 これを実行しても、プライベート エンドポイントは削除されません。 VNet の背後にあるコンポーネント間のすべての通信は、引き続きセキュリティで保護されます。 これにより、VNet 経由のプライベート アクセスに加えて、そのワークスペースのみへのパブリック アクセスが可能になります。
 
 > [!WARNING]
-> パブリック エンドポイント経由で接続する場合、スタジオの一部の機能がデータにアクセスできません。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。
+> パブリック エンドポイント経由で接続する場合、スタジオの一部の機能がデータにアクセスできません。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。 また、コンピューティング インスタンス Jupyter/JupyterLab/RStudio の機能と実行中のノートブックが動作しないことにも注意してください。
 
 プライベート リンクが有効なワークスペースへのパブリック アクセスを有効にするには、次の手順を使用します。
 

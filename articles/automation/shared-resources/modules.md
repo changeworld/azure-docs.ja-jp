@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: ae3329401a138bc0566ea93a8fbf2071fd44f02c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c86eab249167fab2d1ad72bba22e1d507122138c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503421"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169404"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -142,10 +142,10 @@ Automation アカウントに Az モジュールをインポートしても、Ru
 
 * Runbook がモジュールからコマンドレットを呼び出したとき。
 * Runbook で [Import-Module](/powershell/module/microsoft.powershell.core/import-module) コマンドレットを使用してモジュールが明示的にインポートされたとき。
-* Runbook で [using module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) ステートメントを使用してモジュールが明示的にインポートされたとき。 using ステートメントは、Windows PowerShell 5.0 以降でサポートされており、クラスと列挙型のインポートをサポートしています。
+* Runbook で [using module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) ステートメントを使用してモジュールが明示的にインポートされたとき。 using ステートメントは、Windows PowerShell 5.0 以降でサポートされており、クラスと列挙型のインポートをサポートしています。
 * Runbook が別の依存モジュールをインポートするとき。
 
-Az モジュールは Azure portal でインポートできます。 Az.Automation モジュール全体ではなく、必要な Az モジュールだけをインポートするようにしてください。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。
+Az モジュールを Automation アカウントにインポートするには、Azure portal を使用します。 利用可能なすべての Az モジュールではなく、必要な Az モジュールだけをインポートするようにしてください。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。
 
 1. Automation アカウントから、 **[共有リソース]** の **[モジュール]** を選択します。
 2. **[ギャラリーの参照]** を選択します。  
@@ -224,7 +224,7 @@ Import-DscResource -ModuleName <ModuleName> -ModuleVersion <version>
 
   switch ($PSCmdlet.ParameterSetName) {
      "UserAccount" {
-        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $UserName, $Password
+        $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $UserName, $Password
         Connect-Contoso -Credential $cred
      }
      "ConnectionObject" {
@@ -249,7 +249,7 @@ Import-DscResource -ModuleName <ModuleName> -ModuleVersion <version>
   ```powershell
   $contosoConnection = Get-AutomationConnection -Name 'ContosoConnection'
 
-  $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $contosoConnection.UserName, $contosoConnection.Password
+  $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $contosoConnection.UserName, $contosoConnection.Password
   Connect-Contoso -Credential $cred
   }
   ```

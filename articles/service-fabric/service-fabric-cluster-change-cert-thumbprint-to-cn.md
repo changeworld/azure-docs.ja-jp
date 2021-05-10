@@ -3,12 +3,12 @@ title: 証明書の共通名を使用するようにクラスターを更新す�
 description: Azure Service Fabric クラスター証明書を拇印ベースの宣言から共通名に変換する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: daf8d55e156f30b1f9e9ec5c50d60714e6f17884
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97900792"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308015"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>クラスター証明書を拇印ベースの宣言から共通名に変換する
 
@@ -45,7 +45,7 @@ Service Fabric は、次の 2 つの方法で CN による証明書の宣言を�
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>証明書をアップロードしてそれをスケールセットにインストールする
 
-Azure では、証明書を取得してプロビジョニングするために推奨されるメカニズムとして、Azure Key Vault とそのツールがあります。 クラスター証明書の宣言に一致する証明書は、クラスターを構成する仮想マシン スケール セットのすべてのノードにプロビジョニングする必要があります。 詳細については、[仮想マシン スケール セットのシークレット](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm)に関する記事を参照してください。
+Azure では、証明書を取得してプロビジョニングするために推奨されるメカニズムとして、Azure Key Vault とそのツールがあります。 クラスター証明書の宣言に一致する証明書は、クラスターを構成する仮想マシン スケール セットのすべてのノードにプロビジョニングする必要があります。 詳細については、[仮想マシン スケール セットのシークレット](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#how-do-i-securely-ship-a-certificate-to-the-vm-)に関する記事を参照してください。
 
 クラスターの証明書の宣言を変更する前に、クラスターのすべてのノードの種類の仮想マシンに現在のクラスター証明書とターゲット クラスター証明書の両方をインストールすることが重要です。 証明書の発行から Service Fabric ノードへのプロビジョニングまでのプロセスについては、「[証明書のプロセス](cluster-security-certificate-management.md#the-journey-of-a-certificate)」を参照してください。
 

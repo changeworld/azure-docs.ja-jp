@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 297c0a53fb2ab4ee0b2c5291cabf5a63c8841664
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587850"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604704"
 ---
 # <a name="securing-service-principals"></a>サービス プリンシパルのセキュリティ保護
 
@@ -96,6 +96,7 @@ PowerShell の使用
 サービス プリンシパルのセキュリティを評価するには、必ず、特権と資格情報の保存について評価してください。
 
 以下の情報を使用して、潜在的な課題を軽減します。
+
 |課題 | 軽減策|
 | - | - |
 | マルチテナント アプリに同意したユーザーを検出し、マルチテナント アプリに対する不正な同意の付与を検出します | 次の PowerShell を実行して、マルチテナント アプリを見つけます。<br>`Get-AzureADServicePrincipal -All:$true ? {$_.Tags -eq WindowsAzureActiveDirectoryIntegratedApp"}`<br>ユーザーの同意を無効にします。 <br>選択されたアクセス許可について、確認済みの発行元からのユーザーの同意を許可する (推奨) <br> 条件付きアクセスを使用して、信頼されていない場所からのサービス プリンシパルをブロックします。 これらをユーザー コンテキストのもとで構成します。また、それらのトークンを使用してサービス プリンシパルをトリガーする必要があります。|

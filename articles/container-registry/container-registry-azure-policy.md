@@ -3,12 +3,12 @@ title: Azure Policy を使用したコンプライアンス
 description: Azure Policy で組み込みポリシーを割り当て、Azure コンテナー レジストリのコンプライアンスを監査します
 ms.topic: article
 ms.date: 03/01/2021
-ms.openlocfilehash: 0fed0c4132043e1eaed7e634e1f45b27f7c6e933
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 62a1fd8d3c996fd3a0bac3cadf77fc7e7ace0ce3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103014300"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784175"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>Azure Policy を使用した Azure コンテナー レジストリのコンプライアンスの監査
 
@@ -51,7 +51,7 @@ Azure portal、Azure コマンドライン ツール、または Azure Policy SD
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI のポリシー コンプライアンス
 
-Azure CLI を利用してコンプライアンス データを取得することもできます。 たとえば、CLI で [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) コマンドを使用し、適用されている Azure Container Registry ポリシーのポリシー ID を取得します。
+Azure CLI を利用してコンプライアンス データを取得することもできます。 たとえば、CLI で [az policy assignment list](/cli/azure/policy/assignment#az_policy_assignment_list) コマンドを使用し、適用されている Azure Container Registry ポリシーのポリシー ID を取得します。
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'Container Registries')].{name:displayName, ID:id}" --output table
@@ -66,14 +66,14 @@ Container Registries should not allow unrestricted network access           /sub
 Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-次に [az policy state list](/cli/azure/policy/state#az-policy-state-list) を実行すると、特定のポリシー ID の下にあるすべてのリソースに関して JSON で書式設定されたコンプライアンスの状態が返されます。
+次に [az policy state list](/cli/azure/policy/state#az_policy_state_list) を実行すると、特定のポリシー ID の下にあるすべてのリソースに関して JSON で書式設定されたコンプライアンスの状態が返されます。
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-あるいは [az policy state list](/cli/azure/policy/state#az-policy-state-list) を実行すると、*myregistry* など、特定のレジストリ リソースの JSON で書式設定されたコンプライアンスの状態が返されます。
+あるいは [az policy state list](/cli/azure/policy/state#az_policy_state_list) を実行すると、*myregistry* など、特定のレジストリ リソースの JSON で書式設定されたコンプライアンスの状態が返されます。
 
 ```azurecli
 az policy state list \

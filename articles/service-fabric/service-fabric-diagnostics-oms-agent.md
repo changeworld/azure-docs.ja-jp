@@ -1,16 +1,14 @@
 ---
 title: Azure Monitor ログを使用したパフォーマンスの監視
 description: Azure Service Fabric クラスターのコンテナーとパフォーマンス カウンターを監視するように Log Analytics Agent を設定する方法を説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
-ms.author: srrengar
-ms.openlocfilehash: 47017fdb5f1fbaba800e71dea21afe2c39bd91e7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9bb89dc2eebe584a0a9f81a6707c0a2e4fa2fc30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100570144"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626675"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Azure Monitor ログを使用したパフォーマンスの監視
 

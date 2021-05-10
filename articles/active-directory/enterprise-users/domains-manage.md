@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/20/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47c991457925664c82baed1a47d89f77a323ff45
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561536"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577973"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -43,7 +43,7 @@ ms.locfileid: "102561536"
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Azure AD 組織にカスタム ドメイン名を追加する
 
-マネージド ドメインの名前は最大 900 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各組織に最大 450 件のドメイン名を追加できます。
+マネージド ドメインの名前は最大 5,000 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各組織に最大 2,500 件のドメイン名を追加できます。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>カスタム ドメインのサブドメインの追加
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 6e81736e3151c9e97a8926b1f67c0a7a0d4c2f3d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 53fc22e1dbdac3240f72e8d64fbaee690597950f
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98895885"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107373929"
 ---
 # <a name="how-the-translator-counts-characters"></a>Translator での文字数のカウント方法
 
@@ -38,5 +38,7 @@ Translator では、入力テキストのすべての Unicode コード ポイ�
 要求、単語、バイト、または文章の数は、文字数とは関係ありません。
 
 Detect メソッドと BreakSentence メソッドへの呼び出しは、文字消費においてカウントされません。 ただし、Detect メソッドと BreakSentence メソッドへの呼び出しは、カウントされる他の関数の使用に対して妥当な割合となっていることが求められます。 Detect または BreakSentence の呼び出しの数が、他のカウントされるメソッドの 100 倍を超えた場合に、Microsoft は Detect メソッドと BreakSentence メソッドの使用を制限する権利を留保します。
+
+translate 関数に送信されたすべての文字は、コンテンツが変更されていない場合や、ソースとターゲットの言語が同じ場合でもカウントされます。
 
 文字数のカウントの詳細については、「[Translator に関する FAQ](https://www.microsoft.com/en-us/translator/faq.aspx)」を参照してください。

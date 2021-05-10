@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: a6225fec30a87ca0bbe57e414733bc21489f87ad
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81683161"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577446"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux 用 OpenSSL の構成
 
@@ -50,6 +51,97 @@ Speech SDK を使用するプログラムを実行する前に、環境変数 `S
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+
+## <a name="certificate-revocation-checks"></a>証明書失効の確認
+Speech SDK は、Speech Service に接続するときに、Speech Service で使用される TLS 証明書が失効していないことを確認します。 この確認を行うため、Speech SDK は Azure で使用される証明機関の CRL 配布ポイントにアクセスする必要があります。 可能性がある CRL のダウンロード場所の一覧については、[このドキュメント](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)を参照してください。 証明書が失効しているか、CRL をダウンロードできない場合、Speech SDK は接続を中止し、Canceled イベントを発生させます。
+
+Speech SDK が使用されているネットワークが CRL のダウンロード場所へのアクセスを許可しない方法で構成されている場合は、CRL チェックを無効にするか、CRL を取得できない場合は失敗ではないように設定できます。 この構成は、認識エンジン オブジェクトの作成に使用される構成オブジェクトを介して行われます。
+
+CRL を取得できないときに接続を続行するには、プロパティ OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE を設定します。
+
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_CONTINUE_ON_CRL_DOWNLOAD_FAILURE"];
+```
+
+::: zone-end
+"true" に設定すると、CRL の取得が試行され、取得が成功した場合、証明書の失効が確認されます。取得に失敗した場合、接続の続行が許可されます。
+
+証明書の失効確認を完全に無効にするには、プロパティ OPENSSL_DISABLE_CRL_CHECK を "true" に設定します。
+::: zone pivot="programming-language-csharp"
+
+```csharp
+config.SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+config->SetProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```java
+config.setProperty("OPENSSL_DISABLE_CRL_CHECK", "true");
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+speech_config.set_property_by_name("OPENSSL_DISABLE_CRL_CHECK", "true")?
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```ObjectiveC
+[config setPropertyTo:@"true" byName:"OPENSSL_DISABLE_CRL_CHECK"];
+```
+
+::: zone-end
+
+
 > [!NOTE]
 > また、Linux の一部のディストリビューションでは、TMP または TMPDIR 環境変数が定義されていないことにも注意してください。 これにより、Speech SDK は、有効期限が切れるまで証明書失効リスト (CRL) を再利用できるようにディスクにキャッシュするのではなく、毎回 CRL をダウンロードします。 初回接続のパフォーマンスを向上させるには、[TMPDIR という名前の環境変数を作成し、選択した一時ディレクトリのパスに設定します](https://help.ubuntu.com/community/EnvironmentVariables)。
 

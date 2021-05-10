@@ -563,7 +563,7 @@
           items:
             - name: Red Hat Update Infrastructure
               href: ./workloads/redhat/redhat-rhui.md
-- name: 画像
+- name: イメージ
   items:
     - name: Azure Marketplace イメージの検索
       items:

@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7950bfb4a57db812da87f4e5f76f3075d50a8293
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98070919"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782278"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -360,13 +360,13 @@ Docker Hub は、イメージのホストとしてイメージ サービスと�
 
 Azure CLI コマンドを使用して、これらの項目を作成しましょう。 それぞれのコマンドからは、完了時に JSON 出力が返されます。
 
-1. [az login](/cli/azure/reference-index#az-login) コマンドを使用して、Azure にサインインします。
+1. [az login](/cli/azure/reference-index#az_login) コマンドを使用して、Azure にサインインします。
 
     ```azurecli
     az login
     ```
     
-1. [az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、`AzureFunctionsContainers-rg` という名前のリソース グループを `westeurope` リージョンに作成します。 (リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。)
+1. [az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、`AzureFunctionsContainers-rg` という名前のリソース グループを `westeurope` リージョンに作成します。 (リソース グループとリソースは通常、近くのリージョンに作成します。`az account list-locations` コマンドから返される利用可能なリージョンを使用してください。)
 
     ```azurecli
     az group create --name AzureFunctionsContainers-rg --location westeurope
@@ -375,7 +375,7 @@ Azure CLI コマンドを使用して、これらの項目を作成しましょ�
     > [!NOTE]
     > Linux と Windows のアプリを同じリソース グループ内でホストすることはできません。 Windows の関数アプリまたは Web アプリで `AzureFunctionsContainers-rg` という名前のリソース グループが存在する場合、別のリソース グループを使用する必要があります。
     
-1. [az storage account create](/cli/azure/storage/account#az-storage-account-create) コマンドを使用して、リソース グループとリージョン内に汎用ストレージ アカウントを作成します。 次の例の `<storage_name>` は適宜、グローバルに一意の名前に置き換えてください。 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` では、標準的な汎用アカウントを指定します。
+1. [az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用して、リソース グループとリージョン内に汎用ストレージ アカウントを作成します。 次の例の `<storage_name>` は適宜、グローバルに一意の名前に置き換えてください。 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` では、標準的な汎用アカウントを指定します。
 
     ```azurecli
     az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
@@ -397,7 +397,7 @@ Azure CLI コマンドを使用して、これらの項目を作成しましょ�
 
 Azure 上の関数アプリでは、ホスティング プランで関数の実行を管理します。 このセクションでは、前のセクションの Azure リソースを使用して、Docker Hub 上のイメージから関数アプリを作成し、Azure Storage への接続文字列を使用してそれを構成します。
 
-1. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して関数アプリを作成します。 次の例の `<storage_name>` は、前のセクションで使用したストレージ アカウントの名前に置き換えてください。 また、`<app_name>` は適宜グローバルに一意の名前に、`<docker_id>` は実際の Docker ID に置き換えます。
+1. [az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用して関数アプリを作成します。 次の例の `<storage_name>` は、前のセクションで使用したストレージ アカウントの名前に置き換えてください。 また、`<app_name>` は適宜グローバルに一意の名前に、`<docker_id>` は実際の Docker ID に置き換えます。
 
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
@@ -410,7 +410,7 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
     ```
     ::: zone-end
     
-    *deployment-container-image-name* パラメーターでは、関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) コマンドを使用して、別のイメージからデプロイすることもできます。
+    *deployment-container-image-name* パラメーターでは、関数アプリに使用するイメージを指定します。 デプロイに使用されているイメージに関する情報は、[az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) コマンドを使用して表示できます。 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) コマンドを使用して、別のイメージからデプロイすることもできます。
 
 1. 作成したストレージ アカウントの接続文字列を [az storage account show-connection-string](/cli/azure/storage/account) コマンドで表示します。 `<storage-name>` を、上で作成したストレージ アカウントの名前に置き換えます。
 
@@ -418,7 +418,7 @@ Azure 上の関数アプリでは、ホスティング プランで関数の実�
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
     ```
     
-1. [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドを使用して、この設定を関数アプリに追加します。 次のコマンドで、`<app_name>` を関数アプリの名前に置き換え、`<connection_string>` を前の手順の接続文字列 ("DefaultEndpointProtocol=" で始まる長いエンコード文字列) に置き換えます。
+1. [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_ppsettings_set) コマンドを使用して、この設定を関数アプリに追加します。 次のコマンドで、`<app_name>` を関数アプリの名前に置き換え、`<connection_string>` を前の手順の接続文字列 ("DefaultEndpointProtocol=" で始まる長いエンコード文字列) に置き換えます。
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
@@ -513,13 +513,13 @@ Azure 上の関数アプリにイメージをデプロイしたら、HTTP 要求
 
 レジストリ内のイメージを更新するたびに、イメージのデプロイを Azure Functions に自動的に更新させることができます。
 
-1. [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) コマンドを使用して継続的デプロイを有効にします。`<app_name>` は、実際の関数アプリの名前に置き換えてください。
+1. [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_config) コマンドを使用して継続的デプロイを有効にします。`<app_name>` は、実際の関数アプリの名前に置き換えてください。
 
     ```azurecli
     az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
     ```
     
-    このコマンドは、継続的デプロイを有効にして、デプロイの Webhook URL を返します。 (この URL は、後から [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) コマンドを使用していつでも取得できます。)
+    このコマンドは、継続的デプロイを有効にして、デプロイの Webhook URL を返します。 (この URL は、後から [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az_functionapp_deployment_container_show_cd_url) コマンドを使用していつでも取得できます。)
 
 1. デプロイの Webhook URL をクリップボードにコピーします。
 

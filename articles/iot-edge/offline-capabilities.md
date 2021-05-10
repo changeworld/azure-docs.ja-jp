@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c748034145781f639da244b16e3df7053da3d5d2
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: c9412e2adeb9b43b4c61437fb41e68bc96b86afd
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489967"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481839"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -50,7 +50,7 @@ IoT Edge デバイスがオフライン モードになると、IoT Edge ハブ�
 
 IoT Edge 以外のデバイスのみを子デバイスとして追加できます。
 
-最初の 1 回限りの同期後、IoT Edge デバイスとそれに割り当てられている子デバイスは、無期限にオフラインで機能できます。ただし、メッセージのストレージは、有効期限 (TTL) 設定と、メッセージを格納するための空きディスク容量により異なります。
+初期の 1 回限りの同期の後、IoT Edge デバイスとその割り当てられた子デバイスは、無期限にオフラインで機能できます。ただし、メッセージのストレージは、Time-to-live (TTL) 設定と、メッセージを格納するために使用可能なディスク領域によって異なります。
 
 ## <a name="set-up-parent-and-child-devices"></a>親デバイスと子デバイスを設定する
 
@@ -70,7 +70,7 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>オプション 2: `az` コマンドライン ツールを使用する
 
-[Azure コマンド ライン インターフェイス](/cli/azure/)と [IoT 拡張機能](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 以降) を使用して、[device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) サブコマンドにより親子関係を管理できます。 次の例では、ハブ内の IoT Edge 以外のすべてデバイスを IoT Edge デバイスの子デバイスとして割り当てるクエリを使用しています。
+[Azure コマンド ライン インターフェイス](/cli/azure/)と [IoT 拡張機能](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 以降) を使用して、[device-identity](/cli/azure/iot/hub/device-identity/) サブコマンドにより親子関係を管理できます。 次の例では、ハブ内の IoT Edge 以外のすべてデバイスを IoT Edge デバイスの子デバイスとして割り当てるクエリを使用しています。
 
 ```azurecli
 # Set IoT Edge parent device
@@ -140,7 +140,7 @@ az iot hub device-identity add-children \
 
 既定では、メッセージとモジュールの状態情報は、IoT Edge ハブのローカル コンテナー ファイルシステムに格納されます。 信頼性を向上させるために、特にオフラインで操作する場合は、専用のストレージをホスト IoT Edge デバイスに設定することもできます。 詳細については、「[Give modules access to a device's local storage](how-to-access-host-storage-from-module.md)」 (モジュールにデバイスのローカル ストレージへのアクセスを許可する) を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 親/子デバイス接続用の透過的なゲートウェイの設定方法の詳細を確認します。
 

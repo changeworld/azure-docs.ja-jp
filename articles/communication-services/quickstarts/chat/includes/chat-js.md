@@ -10,18 +10,18 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 322f54e4fa2e8096f68d5bbc216032a5b4e53c22
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495472"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726693"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 
 - アクティブなサブスクリプションがある Azure アカウントを作成します。 詳細については、[アカウントの無料作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)に関するページを参照してください。
-- [Node.js](https://nodejs.org/en/download/) アクティブ LTS およびメンテナンス LTS バージョン (8.11.1 および 10.14.1 を推奨) をインストールします。
+- [Node.js](https://nodejs.org/en/download/) のアクティブ LTS バージョンおよびメンテナンス LTS バージョンをインストールします。
 - Azure Communication Services リソースを作成します。 詳細については、[Azure Communication リソースの作成](../../create-communication-resource.md)に関するページを参照してください。 このクイックスタート用に、自分のリソースの **エンドポイントを記録する** 必要があります。
 - "*3 人*" の ACS ユーザーを作成し、それに対して [ユーザー アクセス トークン](../../access-tokens.md)を発行します。 スコープは必ず **chat** に設定し、**トークン文字列と userId 文字列をメモ** してください。 完全なデモでは、最初の 2 名の参加者でスレッドを作成し、3 人目の参加者をスレッドに追加します。
 
@@ -43,7 +43,7 @@ npm init -y
 
 ### <a name="install-the-packages"></a>パッケージのインストール
 
-`npm install` コマンドを使用して、以下の JavaScript 用の Communication Services クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、次に示した JavaScript 用の Communication Services SDK をインストールします。
 
 ```console
 npm install @azure/communication-common --save
@@ -66,7 +66,28 @@ npm install @azure/communication-chat --save
 npm install webpack webpack-cli webpack-dev-server --save-dev
 ```
 
-自分のプロジェクトのルート ディレクトリに、**index.html** ファイルを作成します。 このファイルをテンプレートとして使い、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
+ルート ディレクトリに、`webpack.config.js` ファイルを作成します。 このファイルに次の構成をコピーします。
+
+```
+module.exports = {
+  entry: "./client.js",
+  output: {
+    filename: "bundle.js"
+  },
+  devtool: "inline-source-map",
+  mode: "development"
+}
+```
+
+`start` スクリプトを `package.json` に追加します。このスクリプトは、アプリを実行する目的で使用します。 `package.json` の `scripts` セクション内に以下を追加します。
+
+```
+"scripts": {
+  "start": "webpack serve --config ./webpack.config.js"
+}
+```
+
+自分のプロジェクトのルート ディレクトリに、**index.html** ファイルを作成します。 このファイルをテンプレートとして使い、JavaScript 用 Azure Communication Chat SDK を使用してチャット機能を追加します。
 
 ```html
 <!DOCTYPE html>
@@ -90,7 +111,7 @@ Web アプリにチャット クライアントを作成するには、Communica
 
 ユーザーのアクセス トークンを使用することで、Azure Communication Services に対して直接認証を行うクライアント アプリケーションを作成できます。 このクイックスタートでは、チャット アプリケーションのトークンを管理するためのサービス レベルの作成については説明しません。 チャット アーキテクチャの詳細については、[チャットの概念](../../../concepts/chat/concepts.md)、アクセス トークンの詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照してください。
 
-**client.js** 内では、下のコードのエンドポイントとアクセス トークンを使用し、JavaScript 用 Azure Communication チャット クライアント ライブラリを使用してチャット機能を追加します。
+**client.js** 内では、下のコードのエンドポイントとアクセス トークンを使用し、JavaScript 用 Azure Communication Chat SDK を使用してチャット機能を追加します。
 
 ```JavaScript
 
@@ -111,9 +132,9 @@ console.log('Azure Communication Chat client created!');
 
 ### <a name="run-the-code"></a>コードの実行
 
-アプリをビルドして実行するには、`webpack-dev-server` を使用します。 次のコマンドを実行して、ローカルの Web サーバーにアプリケーション ホストをバンドルします。
+次のコマンドを実行して、ローカルの Web サーバーにアプリケーション ホストをバンドルします。
 ```console
-npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
+npm run start
 ```
 ブラウザーを開き、http://localhost:8080/ に移動します。
 ブラウザー内の開発者ツール コンソールには、次のように表示されます。
@@ -123,7 +144,7 @@ Azure Communication Chat client created!
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
-JavaScript 用 Azure Communication Services チャット クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+JavaScript 用 Azure Communication Services Chat SDK が備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -144,35 +165,37 @@ JavaScript 用 Azure Communication Services チャット クライアント ラ�
 
 ```JavaScript
 async function createChatThread() {
-    let createThreadRequest = {
-        topic: 'Preparation for London conference',
-        participants: [{
-                    id: { communicationUserId: '<USER_ID_FOR_JACK>' },
-                    displayName: 'Jack'
-                }, {
-                    id: { communicationUserId: '<USER_ID_FOR_GEETA>' },
-                    displayName: 'Geeta'
-                }]
-    };
-    let createChatThreadResult = await chatClient.createChatThread(createThreadRequest);
-    let threadId = createChatThreadResult.chatThread.id;
-    return threadId;
-    }
+  const createChatThreadRequest = {
+    topic: "Hello, World!"
+  };
+  const createChatThreadOptions = {
+    participants: [
+      {
+        id: '<USER_ID>',
+        displayName: '<USER_DISPLAY_NAME>'
+      }
+    ]
+  };
+  const createChatTtreadResult = await chatClient.createChatThread(
+    createChatThreadRequest,
+    createChatThreadOptions
+  );
+  const threadId = createChatThreadResult.chatThread.id;
+  return threadId;
+}
 
 createChatThread().then(async threadId => {
-    console.log(`Thread created:${threadId}`);
-    // PLACEHOLDERS
-    // <CREATE CHAT THREAD CLIENT>
-    // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
-    // <SEND MESSAGE TO A CHAT THREAD>
-    // <LIST MESSAGES IN A CHAT THREAD>
-    // <ADD NEW PARTICIPANT TO THREAD>
-    // <LIST PARTICIPANTS IN A THREAD>
-    // <REMOVE PARTICIPANT FROM THREAD>
-    });
+  console.log(`Thread created:${threadId}`);
+  // PLACEHOLDERS
+  // <CREATE CHAT THREAD CLIENT>
+  // <RECEIVE A CHAT MESSAGE FROM A CHAT THREAD>
+  // <SEND MESSAGE TO A CHAT THREAD>
+  // <LIST MESSAGES IN A CHAT THREAD>
+  // <ADD NEW PARTICIPANT TO THREAD>
+  // <LIST PARTICIPANTS IN A THREAD>
+  // <REMOVE PARTICIPANT FROM THREAD>
+  });
 ```
-
-**USER_ID_FOR_JACK** と **USER_ID_FOR_GEETA** は、ユーザーとトークンの作成 ([ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照) で取得したユーザー ID に置き換えてください。
 
 ブラウザー タブを最新の情報に更新すると、コンソールに以下が表示されます。
 ```console
@@ -193,6 +216,18 @@ console.log(`Chat Thread client for threadId:${threadId}`);
 Chat Thread client for threadId: <threadId>
 ```
 
+## <a name="list-all-chat-threads"></a>すべてのチャット スレッドを一覧表示する
+
+`listChatThreads` メソッドは、`ChatThreadItem` 型の `PagedAsyncIterableIterator` を返します。 これを使用すると、すべてのチャット スレッドを一覧表示できます。
+`[ChatThreadItem]` の反復子は、スレッドの一覧表示から返される応答です
+
+```JavaScript
+const threads = chatClient.listChatThreads();
+for await (const thread of threads) {
+   // your code here
+}
+```
+
 ## <a name="send-a-message-to-a-chat-thread"></a>チャット スレッドにメッセージを送信する
 
 threadId で識別されるスレッドにメッセージを送信するには、`sendMessage` メソッドを使用します。
@@ -209,17 +244,17 @@ threadId で識別されるスレッドにメッセージを送信するには�
 `SendChatMessageResult` は、メッセージの送信から返された応答です。ここには ID (メッセージの一意の ID) が含まれています。
 
 ```JavaScript
-let sendMessageRequest =
+const sendMessageRequest =
 {
-    content: 'Hello Geeta! Can you share the deck for the conference?'
+  content: 'Hello Geeta! Can you share the deck for the conference?'
 };
 let sendMessageOptions =
 {
-    senderDisplayName : 'Jack',
-    type: 'text'
+  senderDisplayName : 'Jack',
+  type: 'text'
 };
-let sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
-let messageId = sendChatMessageResult.id;
+const sendChatMessageResult = await chatThreadClient.sendMessage(sendMessageRequest, sendMessageOptions);
+const messageId = sendChatMessageResult.id;
 ```
 
 **client.js** の `<SEND MESSAGE TO A CHAT THREAD>` コメントをこのコードで置き換え、ブラウザー タブを最新の情報に更新してコンソールを確認します。
@@ -229,15 +264,15 @@ Message sent!, message id:<number>
 
 ## <a name="receive-chat-messages-from-a-chat-thread"></a>チャット スレッドからチャット メッセージを受信する
 
-リアルタイム シグナリングを使用すると、新しい受信メッセージをサブスクライブしてリッスンし、それに応じてメモリ内の現在のメッセージを更新することができます。 Azure Communication Services は、[サブスクライブ可能な一連のイベント](../../../concepts/chat/concepts.md#real-time-signaling)をサポートしています。
+リアルタイム シグナリングを使用すると、新しい受信メッセージをサブスクライブしてリッスンし、それに応じてメモリ内の現在のメッセージを更新することができます。 Azure Communication Services は、[サブスクライブ可能な一連のイベント](../../../concepts/chat/concepts.md#real-time-notifications)をサポートしています。
 
 ```JavaScript
 // open notifications channel
 await chatClient.startRealtimeNotifications();
 // subscribe to new notification
 chatClient.on("chatMessageReceived", (e) => {
-    console.log("Notification chatMessageReceived!");
-    // your code here
+  console.log("Notification chatMessageReceived!");
+  // your code here
 });
 
 ```
@@ -248,32 +283,16 @@ chatClient.on("chatMessageReceived", (e) => {
 
 ```JavaScript
 
-let pagedAsyncIterableIterator = await chatThreadClient.listMessages();
-let nextMessage = await pagedAsyncIterableIterator.next();
-    while (!nextMessage.done) {
-        let chatMessage = nextMessage.value;
-        console.log(`Message :${chatMessage.content}`);
-        // your code here
-        nextMessage = await pagedAsyncIterableIterator.next();
-    }
+const messages = chatThreadClient.listMessages();
+for await (const message of messages) {
+   // your code here
+}
 
 ```
 **client.js** の `<LIST MESSAGES IN A CHAT THREAD>` コメントをこのコードで置き換えます。
 タブを最新の情報に更新すると、このチャット スレッドで送信されたメッセージの一覧がコンソールに表示されます。
 
-
-`listMessages` は、メッセージに対して `updateMessage` や `deleteMessage` を使用して行われた編集や削除を含む、最新バージョンのメッセージを返します。
-削除されたメッセージについては、そのメッセージがいつ削除されたかを示す datetime 値が `chatMessage.deletedOn` から返されます。 編集されたメッセージについては、メッセージがいつ編集されたかを示す datetime が `chatMessage.editedOn` から返されます。 メッセージの最初の作成日時には、`chatMessage.createdOn` を使用してアクセスできます。これをメッセージの並べ替えに使用することができます。
-
-`listMessages` は、`chatMessage.type` で識別できるさまざまな種類のメッセージを返します。 次の種類があります。
-
-- `Text`:スレッド参加者によって送信された通常のチャット メッセージ。
-
-- `ThreadActivity/TopicUpdate`:トピックが更新されたことを示すシステム メッセージ。
-
-- `ThreadActivity/AddParticipant`:1 人以上の参加者がチャット スレッドに追加されたことを示すシステム メッセージ。
-
-- `ThreadActivity/RemoveParticipant`:参加者がチャット スレッドから削除されたことを示すシステム メッセージ。
+`listMessages` は、`chatMessage.type` で識別できるさまざまな種類のメッセージを返します。 
 
 詳細については、「[メッセージの種類](../../../concepts/chat/concepts.md#message-types)」を参照してください。
 
@@ -290,14 +309,14 @@ let nextMessage = await pagedAsyncIterableIterator.next();
 
 ```JavaScript
 
-let addParticipantsRequest =
+const addParticipantsRequest =
 {
-    participants: [
-        {
-            id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
-            displayName: 'Jane'
-        }
-    ]
+  participants: [
+    {
+      id: { communicationUserId: '<NEW_PARTICIPANT_USER_ID>' },
+      displayName: 'Jane'
+    }
+  ]
 };
 
 await chatThreadClient.addParticipants(addParticipantsRequest);
@@ -307,16 +326,10 @@ await chatThreadClient.addParticipants(addParticipantsRequest);
 
 ## <a name="list-users-in-a-chat-thread"></a>チャット スレッド内のユーザーをリストアップする
 ```JavaScript
-async function listParticipants() {
-   let pagedAsyncIterableIterator = await chatThreadClient.listParticipants();
-   let next = await pagedAsyncIterableIterator.next();
-   while (!next.done) {
-      let user = next.value;
-      console.log(`User :${user.displayName}`);
-      next = await pagedAsyncIterableIterator.next();
-   }
+const participants = chatThreadClient.listParticipants();
+for await (const participant of participants) {
+   // your code here
 }
-await listParticipants();
 ```
 **client.js** の `<LIST PARTICIPANTS IN A THREAD>` コメントをこのコードで置き換え、ブラウザー タブを最新の情報に更新してコンソールを確認すると、スレッド内のユーザーについての情報が表示されます。
 

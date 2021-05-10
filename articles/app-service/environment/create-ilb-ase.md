@@ -8,10 +8,10 @@ ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96009553"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
@@ -135,7 +135,7 @@ ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたド
 
 Web アプリケーション ファイアウォール (WAF) デバイスを ILB ASE と組み合わせることで、指定したアプリだけをインターネットに公開し、それ以外は VNet 内からしかアクセスできないようにすることができます。 これにより、セキュリティで特に保護された多層アプリケーションを構築できます。
 
-WAF デバイスを使用して ILB ASE を構成する方法の詳細については、[App Service 環境での Web アプリケーション ファイアウォールの構成][ASEWAF]に関するページを参照してください。 この記事では、Barracuda 仮想アプライアンスを ASE と使用する方法について示します。 Azure Application Gateway を使用する方法もあります。 Application Gateway は OWASP コア ルールを使用して、その背後に置かれたすべてのアプリケーションのセキュリティを確保します。 Application Gateway について詳しくは、「[Web アプリケーション ファイアウォール (WAF)][AppGW]」をご覧ください。
+WAF デバイスを使用して ILB ASE を構成する方法の詳細については、[App Service Environment での Web アプリケーション ファイアウォールの構成][ASEWAF]に関するページを参照してください。 この記事では、Barracuda 仮想アプライアンスを ASE と使用する方法について示します。 Azure Application Gateway を使用する方法もあります。 Application Gateway は OWASP コア ルールを使用して、その背後に置かれたすべてのアプリケーションのセキュリティを確保します。 Application Gateway について詳しくは、「[Web アプリケーション ファイアウォール (WAF)][AppGW]」をご覧ください。
 
 ## <a name="ilb-ases-made-before-may-2019"></a>2019 年 5 月より前に作成された ILB ASE
 
@@ -143,7 +143,7 @@ WAF デバイスを使用して ILB ASE を構成する方法の詳細につい�
 
 ## <a name="get-started"></a>はじめに ##
 
-* ASE の使用を開始するには、「[App Service 環境の概要][Intro]」をご覧ください。 
+* ASE の使用を開始するには、「[App Service Environment の概要][Intro]」をご覧ください。 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

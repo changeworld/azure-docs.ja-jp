@@ -6,19 +6,19 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9aa9a42422f3c114490d1dbb28a146b6e76ca8cd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102448830"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558620"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure Migrate: Server Migration を使用して ExpressRoute 経由でデータをレプリケートする
 
-この記事では、サーバーを Azure に移行するときに、ExpressRoute 回線経由でデータをレプリケートするための [Azure Migrate: Server Migration](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-migration-tool) の構成方法について説明します。
+この記事では、サーバーを Azure に移行するときに、ExpressRoute 回線経由でデータをレプリケートするための [Azure Migrate: Server Migration](./migrate-services-overview.md#azure-migrate-server-migration-tool) の構成方法について説明します。
 
 ## <a name="understand-azure-expressroute-circuits"></a>Azure ExpressRoute 回線について理解する
-ExpressRoute (ER) 回線は、オンプレミスのインフラストラクチャを接続プロバイダー経由で Microsoft に接続します。 ExpressRoute 回線は、プライベート ピアリング、Microsoft ピアリング、またはその両方を使用するように構成できます。 [ExpressRoute 回線とピアリング](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare)に関する記事を参照して、ExpressRoute で使用できるさまざまなピアリング オプションの詳細を確認してください。
+ExpressRoute (ER) 回線は、オンプレミスのインフラストラクチャを接続プロバイダー経由で Microsoft に接続します。 ExpressRoute 回線は、プライベート ピアリング、Microsoft ピアリング、またはその両方を使用するように構成できます。 [ExpressRoute 回線とピアリング](../expressroute/expressroute-circuit-peerings.md#peeringcompare)に関する記事を参照して、ExpressRoute で使用できるさまざまなピアリング オプションの詳細を確認してください。
 
 Azure Migrate の Server Migration ツールを使用すると、オンプレミスのサーバーと他のクラウドのサーバーを Azure の仮想マシンに簡単に移行できます。 このツールは、継続的なレプリケーション ストリームをセット アップして、移行対象サーバーから Azure サブスクリプションのマネージド ディスクにデータをレプリケートすることによって機能します。 サーバーを移行する準備ができたら、Azure 内のレプリケート済みデータを使用してサーバーを移行します。
 
@@ -104,7 +104,7 @@ Azure Migrate プロジェクトで (Azure portal のエクスペリエンスを
     > [!Note]
     > この仮想ネットワークは、ExpressRoute ゲートウェイ エンドポイントが含まれているか、ExpressRoute ゲートウェイを持つ仮想ネットワークに接続されている必要があります。 
 
-    **[プライベート DNS の統合]** セクションで **[はい]** を選択して、プライベート DNS ゾーンと統合します。 **[はい]** を選択すると、選択した仮想ネットワークに DNS ゾーンが自動的にリンクされ、プライベート エンドポイント用に作成された新しい IP と完全修飾ドメイン名の DNS 解決に必要な DNS レコードが追加されます。 詳細については、[プライベート DNS ゾーン](https://docs.microsoft.com/azure/dns/private-dns-overview)をご覧ください。
+    **[プライベート DNS の統合]** セクションで **[はい]** を選択して、プライベート DNS ゾーンと統合します。 **[はい]** を選択すると、選択した仮想ネットワークに DNS ゾーンが自動的にリンクされ、プライベート エンドポイント用に作成された新しい IP と完全修飾ドメイン名の DNS 解決に必要な DNS レコードが追加されます。 詳細については、[プライベート DNS ゾーン](../dns/private-dns-overview.md)をご覧ください。
 
     ![privatednszone](./media/replicate-using-expressroute/private-dns-zone.png)
 
@@ -144,14 +144,14 @@ Azure Migrate プロジェクトで (Azure portal のエクスペリエンスを
     b. **[レコード セットの追加]** ページで、完全修飾ドメイン名およびプライベート IP のエントリを A タイプのレコードとして追加します。
 
 > [!Important]
-> ソース環境からストレージ アカウントのプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。 必要な DNS 構成については、[こちら](https://docs.microsoft.com/azure/private-link/private-endpoint-dns#on-premises-workloads-using-a-dns-forwarder)の記事をご覧ください。
+> ソース環境からストレージ アカウントのプライベート エンドポイントのプライベート IP アドレスを解決するために、追加の DNS 設定が必要になる場合があります。 必要な DNS 構成については、[こちら](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)の記事をご覧ください。
 
 ## <a name="replicate-data-using-an-expressroute-circuit-with-microsoft-peering"></a>ExpressRoute 回線を使用して Microsoft ピアリングでデータをレプリケートする
 
 下の図に示すように、Microsoft ピアリングまたは既存のパブリック ピアリング ドメイン (新しい ExpressRoute 接続では非推奨) を使用して、ExpressRoute 回線経由でレプリケーション トラフィックをルーティングできます。
 ![replicationwithmicrosoftpeering](./media/replicate-using-expressroute/replication-with-microsoft-peering.png)
 
-レプリケーション データが Microsoft ピアリング回線を通る場合でも、Azure Migrate サービスとのその他の通信 (コントロール プレーン) についてはオンプレミス サイトからのインターネット接続が必要になります。 レプリケーション プロセスを調整するためにレプリケーション アプライアンスおよび Hyper-V ホストがアクセスする必要がある URL がいくつかあり、これらには ExpressRoute を介して到達できません。 [VMware エージェントレス移行](https://docs.microsoft.com/azure/migrate/migrate-appliance#public-cloud-urls)または[エージェントベース移行](https://docs.microsoft.com/azure/migrate/migrate-replication-appliance)の移行シナリオに基づいて、URL 要件を確認できます。  
+レプリケーション データが Microsoft ピアリング回線を通る場合でも、Azure Migrate サービスとのその他の通信 (コントロール プレーン) についてはオンプレミス サイトからのインターネット接続が必要になります。 レプリケーション プロセスを調整するためにレプリケーション アプライアンスおよび Hyper-V ホストがアクセスする必要がある URL がいくつかあり、これらには ExpressRoute を介して到達できません。 [VMware エージェントレス移行](./migrate-appliance.md#public-cloud-urls)または[エージェントベース移行](./migrate-replication-appliance.md)の移行シナリオに基づいて、URL 要件を確認できます。  
 
 オンプレミス サイトでプロキシを使用し、レプリケーション トラフィックに対して ExpressRoute を使用する場合は、オンプレミス アプライアンス上で、関連する URL に対してプロキシ バイパスを構成する必要があります。 
 
@@ -172,7 +172,7 @@ Azure Migrate プロジェクトで (Azure portal のエクスペリエンスを
 
 構成サーバーとプロセス サーバー上でプロキシ バイパス リストを構成するには、下の手順に従います。
 
-1. システム ユーザーのコンテキストにアクセスするための [PsExec ツールをダウンロード](https://docs.microsoft.com/sysinternals/downloads/psexec)します。
+1. システム ユーザーのコンテキストにアクセスするための [PsExec ツールをダウンロード](/sysinternals/downloads/psexec)します。
 2. コマンド ラインで psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe" を実行して、システム ユーザーのコンテキストでインターネット エクスプローラーを開きます。
 3. IE にプロキシ設定を追加します。
 4. バイパスの一覧に、Azure ストレージの URL (*.blob.core.windows.net) を追加します。  
@@ -185,10 +185,10 @@ Azure Migrate プロジェクトで (Azure portal のエクスペリエンスを
 - ターゲット Azure リージョンのリージョン BGP コミュニティ (移行用リージョン)
 - Azure Active Directory の BGP コミュニティ (12076:5060)
 
-詳細については、[ルート フィルター](https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal)と、[ExpressRoute の BGP コミュニティ](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)の一覧に関するページを参照してください。 
+詳細については、[ルート フィルター](../expressroute/how-to-routefilter-portal.md)と、[ExpressRoute の BGP コミュニティ](../expressroute/expressroute-routing.md#bgp)の一覧に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ExpressRoute 回線](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings)について詳しく学習する。
-- [ExpressRoute ルーティング ドメイン](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#peeringcompare)について詳しく学習する。
-- [プライベート エンドポイント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)について詳しく学習する。
+- [ExpressRoute 回線](../expressroute/expressroute-circuit-peerings.md)について詳しく学習する。
+- [ExpressRoute ルーティング ドメイン](../expressroute/expressroute-circuit-peerings.md#peeringcompare)について詳しく学習する。
+- [プライベート エンドポイント](../private-link/private-endpoint-overview.md)について詳しく学習する。

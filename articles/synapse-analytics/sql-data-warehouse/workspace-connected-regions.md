@@ -11,12 +11,12 @@ ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
-ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f788675d84f7714d4da5f30cf50875e5d006c6c7
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97511707"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534743"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>ご利用のリージョン内の専用 SQL プール (旧称 SQL DW) で Synapse ワークスペース機能を有効にします。
 
@@ -29,13 +29,13 @@ ms.locfileid: "97511707"
 |:--- |:--- |:--- |
 | オーストラリア中部 1 |\* |
 | オーストラリア中部 2 |\* |
-| 中国東部 2 |2021 年 3 月 31 日 |
-| 中国北部 2 |2021 年 3 月 31 日 |
-| インド南部 |2021 年 3 月 31 日 |
-| インド西部 |2021 年 3 月 31 日 |
-| 韓国南部 |2021 年 3 月 31 日 |
-| スイス西部 |2021 年 3 月 31 日 |
-| アラブ首長国連邦北部 |2021 年 3 月 31 日 |
+| 中国東部 2 |\* |
+| 中国北部 2 |\* |
+| インド南部 |\*|
+| インド西部 |\*|
+| 韓国南部 |\* |
+| スイス西部 |\* |
+| アラブ首長国連邦北部 |\*|
  
  
 > [!NOTE]

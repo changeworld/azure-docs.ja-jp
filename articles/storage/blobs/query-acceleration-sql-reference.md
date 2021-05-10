@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ca4fe1410c18357a1fab10cc9c971cf3a81542fd
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95908780"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963259"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>クエリ アクセラレーション SQL 言語リファレンス
 
@@ -122,8 +122,8 @@ JSON 形式のデータ、またはヘッダー行を含む CSV 形式のデー�
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |小文字データを大文字に変換して文字式を返します。|
 |[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |SQL Server で、文字、バイナリ、テキスト、またはイメージ型の式の一部を返します。|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |文字列の先頭と末尾にあるスペース文字 (32) または他の指定した文字を削除します。|
-|LEADING    |説明|
-|TRAILING    |説明|
+|LEADING    |文字列の先頭にあるスペース文字 (32) または他の指定した文字を削除します。|
+|TRAILING    |文字列の末尾にあるスペース文字 (32) または他の指定した文字を削除します。|
 
 以下にいくつか例を示します。
 

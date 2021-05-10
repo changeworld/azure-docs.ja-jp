@@ -1,18 +1,18 @@
 ---
-title: クイック スタート:Azure HDInsight での Apache Zeppelin を使用した Apache Hive
+title: 'クイックスタート: Azure HDInsight での Apache Zeppelin を使用した Apache Hive'
 description: このクイックスタートでは、Apache Zeppelin を使用して Apache Hive クエリを実行する方法について説明します。
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 75f758054f867c58dd4180fe5e728e66785e3b11
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941057"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869771"
 ---
-# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>クイック スタート:Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
+# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>クイックスタート: Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する
 
 このクイックスタートでは、Azure HDInsight で Apache Zeppelin を使用して [Apache Hive](https://hive.apache.org/) クエリを実行する方法について説明します。 HDInsight 対話型クエリ クラスターには、対話型 Hive クエリを実行するために使用できる [Apache Zeppelin](https://zeppelin.apache.org/) ノートブックが含まれています。
 
@@ -20,7 +20,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するセクションを参照してください。  クラスターの種類では、 **[インタラクティブ クエリ]** を必ず選択してください。
+HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作成については、[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するセクションを参照してください。  クラスターの種類では、**[インタラクティブ クエリ]** を必ず選択してください。
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin Note を作成する
 
@@ -28,14 +28,14 @@ HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作�
 
 2. クラスターのログイン ユーザー名とパスワードを入力します。 Zeppelin ページで、新しいノートを作成するか、既存のノートを開きます。 **HiveSample** には、サンプル Hive クエリが含まれています。  
 
-    ![HDInsight 対話型クエリ Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png" alt-text="HDInsight 対話型クエリ Zeppelin" border="true":::
 
 3. **[Create new note]\(新しいノートの作成\)** を選択します。
 
 4. **[Create new note]\(新しいノートの作成\)** ダイアログで、次の値を入力または選択します。
 
-    - [Note Name]\(ノート名\):ノートの名前を入力します。
-    - [Default interpreter]\(既定のインタープリター\):ドロップダウン リストから **[jdbc]** を選択します。
+    - [Note Name]\(ノート名\)： ノートの名前を入力します。
+    - [Default interpreter]\(既定のインタープリター\)： ドロップダウンリストから **[jdbc]** を選択します。
 
 5. **[Create Note]\(ノートの作成\)** を選択します。
 
@@ -46,7 +46,7 @@ HDInsight 対話型クエリ クラスター。 HDInsight クラスターの作�
     show tables
     ```
 
-    ![HDInsight 対話型クエリ Zeppelin でクエリを実行する](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png" alt-text="HDInsight 対話型クエリ Zeppelin でクエリを実行する" border="true":::
 
     最初の行の **%jdbc(hive)** ステートメントは、Hive JDBC インタープリターを使用するようにノートブックに指示します。
 

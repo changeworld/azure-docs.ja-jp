@@ -3,12 +3,12 @@ title: Azure Monitor と統合するパートナー
 description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
 ms.topic: conceptual
 ms.date: 02/19/2021
-ms.openlocfilehash: ca58023510eb9329bc8ddf1339df4d8c27aae5e6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2a8e03d4bcfac81a5a718c3572227d48da23ea5a
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101020"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374363"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -296,6 +296,14 @@ Site24x7 Azure Monitoring を使用すると、次のことができるように
 ## <a name="solarwinds"></a>SolarWinds
 
 [SolarWinds のドキュメント](https://www.solarwinds.com/topics/azure-monitoring)
+
+## <a name="speartip"></a>SpearTip
+
+![SpearTip ロゴ](./media/partners/speartip.png)
+
+24 時間 365 日稼働する SpearTip のセキュリティ オペレーション センターは、サイバー脅威がないかどうかについて Azure 環境を継続的に監視します。 Azure Monitor と ShadowSpear との統合を活用することで、セキュリティ イベントを収集し、高度な脅威がないかどうかを分析できます。また、SpearTip エンジニアは、脅威アクターの足跡を調査してその行動を阻止する対策を講じます。 統合はシームレスに行われ、展開直後から効果が得られます。
+
+[SpearTip のドキュメント](https://www.speartip.com/identify/)
 
 ## <a name="splunk"></a>Splunk
 

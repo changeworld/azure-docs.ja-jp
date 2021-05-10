@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: b122765a3d77428008c91dda471706cad53a5616
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fc2667dfddf4442acaf39f6783190e8640b22a89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430600"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561731"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -175,4 +175,4 @@ Power BI ウィンドウの右側にある **[フィールド]** ウィンドウ
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
->[Azure Databricks を使用した異常検出のストリーム配信](anomaly-detection-streaming-databricks.md)
+>[Azure Databricks を使用した異常検出のストリーム配信](../overview.md)

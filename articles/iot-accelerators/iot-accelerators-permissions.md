@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e3c9296a909ba23ee8a3475149911af629a01b1a
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97387838"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167466"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>azureiotsolutions.com サイトを使用してソリューション アクセラレータをデプロイする
 
@@ -54,7 +54,7 @@ Azure AD 内のユーザーとロールの詳細については、次のリソ�
 
 ## <a name="choose-your-device"></a>デバイスを選択する
 
-AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)にリンクします。
+AzureIoTSolutions.com サイトは、[Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com/)にリンクします。
 
 このカタログには、ユーザーが IoT ソリューションの構築を開始するためにソリューション アクセラレータに接続できる数百の認定された IoT ハードウェア デバイスが一覧表示されています。
 

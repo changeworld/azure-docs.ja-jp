@@ -3,12 +3,12 @@ title: Azure Functions をパッケージから実行する
 description: 関数アプリのプロジェクト ファイルが含まれたデプロイ パッケージ ファイルをマウントすることで、Azure Functions ランタイムで関数を実行します。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad6991d0ddd5c439d03e41adec63837a21db87b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639887"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104581594"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
@@ -63,6 +63,7 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 
 - パッケージから実行すると `wwwroot` が読み取り専用になるので、このディレクトリにファイルを書き込むときにエラーを受け取ります。
 - tar および gzip 形式はサポートされていません。
+- ZIP ファイルは、最大 1 GB にすることができます。
 - この機能はローカル キャッシュでは構成されません。
 - コールドスタートのパフォーマンスを向上するには、ローカルの Zip オプション (`WEBSITE_RUN_FROM_PACKAGE` = 1) を使用します。
 - パッケージからの実行は、デプロイ カスタマイズ オプション (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) と互換性がありません。ビルド ステップは、デプロイの間に無視されます。

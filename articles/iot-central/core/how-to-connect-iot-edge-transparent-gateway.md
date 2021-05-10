@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: bdfb5f65106f3f8843b4aa52b752f5e563ab03f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102619954"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045333"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>IoT Edge の透過的なゲートウェイを経由してデバイスを接続する方法
 
@@ -186,7 +186,7 @@ IoT Edge デバイスが透過的なゲートウェイとして機能するた�
 
 ## <a name="provision-a-downstream-device"></a>ダウンストリーム デバイスのプロビジョニング
 
-現時点では、IoT Edge でダウンストリーム デバイスを IoT Central アプリケーションに自動的にプロビジョニングすることはできません。 次の手順は、`thermostat1` デバイスをプロビジョニングする方法を示しています。 これらの手順を完了するには、Python 3.5 (またはそれ以降) がインストールされ、インターネットに接続されている環境が必要です。 [Azure Cloud Shell](https://shell.azure.com/) には Python 3.5 がプレインストールされています。
+現時点では、IoT Edge でダウンストリーム デバイスを IoT Central アプリケーションに自動的にプロビジョニングすることはできません。 次の手順は、`thermostat1` デバイスをプロビジョニングする方法を示しています。 これらの手順を完了するには、Python 3.6 (またはそれ以降) がインストールされ、インターネットに接続されている環境が必要です。 [Azure Cloud Shell](https://shell.azure.com/) には Python 3.7 がプレインストールされています。
 
 1. 次のコマンドを実行して、`azure.iot.device` モジュールをインストールします。
 

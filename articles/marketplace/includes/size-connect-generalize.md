@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 10/20/2020
-ms.openlocfilehash: c60d2a9b13cce9251ff0f730081a9d677206770d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.date: 03/25/2021
+ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105630016"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -52,7 +52,9 @@ VM の準備ができたら、Azure Shared Image Gallery でキャプチャで�
 8. **[確認と作成]** を選択して、選択内容を確認します。
 9. 検証に合格したら、 **[作成]** を選択します。
 
-公開するには、公開元アカウントに SIG イメージへの Owner アクセス権が必要です。 アクセス権を付与するには、次のようにします。
+公開するには、SIG を含む Azure サブスクリプションが、公開元アカウントと同じテナントにある必要があります。 また、公開元アカウントに SIG への所有者アクセス権が必要です。 
+
+アクセス権を付与するには、次のようにします。
 
 1. Shared Image Gallery にアクセスします。
 2. 左側のパネルで **[アクセス制御 (IAM)]** を選択します。

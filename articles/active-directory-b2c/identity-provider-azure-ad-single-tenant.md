@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 497b171cad956dee23139bcfb0ec76fad82bfb33
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 9a31fe8046e6bb0a933ade78ee2c7f4b208767a7
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488970"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028351"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -106,6 +106,8 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[保存]** を選択します。
 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>ユーザー フローに Azure AD ID プロバイダーを追加する 
+
+この時点では、Azure AD ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに Azure AD ID プロバイダーを追加するには:
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Azure AD ID プロバイダーを追加するユーザー フローをクリックします。
@@ -228,7 +230,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[Contoso Employee]** を選択し、Azure AD Contoso アカウントでサインインします。
 

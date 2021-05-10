@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: c4062dd086eeee712376a402da2792352fa3c3ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f0f61cc4ef02033a2c21ce5acde68caea483e743
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221344"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790133"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
@@ -32,13 +32,13 @@ ms.locfileid: "98221344"
 ローカル コンピューターから、または Azure Cloud Shell を使用して、次の手順を行うことができます。 ローカル コンピューターを使用する場合は、[Azure CLI がインストールされている](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)ことを確認してください。 Azure Cloud Shell を使用する場合は、任意のコマンド ボックスの右上隅にある **[試してみる]** を選択します。 Cloud Shell によって、Azure にサインインされます。
 
 1. Cloud Shell を使用する場合は、手順 2 に進みます。 コマンド セッションを開き、`az login` で Azure にサインインします。
-2. [az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、Azure の米国東部リージョンにリソース グループを作成します。
+2. [az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、Azure の米国東部リージョンにリソース グループを作成します。
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
    ```
 
-3. 仮想マシンを作成するには、[az vm create](/cli/azure/vm#az-vm-create) コマンドを使用します。 `--public-ip-address-allocation=static` オプションは、仮想マシンに静的パブリック IP アドレスを割り当てます。 次の例は、静的な Basic SKU パブリック IP アドレスを持つ *myPublicIpAddress* という名前の Ubuntu 仮想マシンを作成します。
+3. 仮想マシンを作成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 `--public-ip-address-allocation=static` オプションは、仮想マシンに静的パブリック IP アドレスを割り当てます。 次の例は、静的な Basic SKU パブリック IP アドレスを持つ *myPublicIpAddress* という名前の Ubuntu 仮想マシンを作成します。
 
    ```azurecli-interactive
    az vm create \
@@ -53,7 +53,7 @@ ms.locfileid: "98221344"
 
    パブリック IP アドレスが Standard SKU である必要がある場合は、上記のコマンドに `--public-ip-sku Standard` を追加します。 [パブリック IP アドレスの SKU](./public-ip-addresses.md#sku) の詳細を確認してください。 パブリック Azure Load Balancer のバックエンド プールに仮想マシンを追加する場合は、仮想マシンのパブリック IP アドレスの SKU がロード バランサーのパブリック IP アドレスの SKU と一致する必要があります。 詳細については、[Azure Load Balancer](../load-balancer/skus.md) に関する記事を参照してください。
 
-4. [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) を使用して、割り当てられたパブリック IP アドレスを表示し、それが静的な Basic SKU アドレスとして作成されたことを確認します。
+4. [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用して、割り当てられたパブリック IP アドレスを表示し、それが静的な Basic SKU アドレスとして作成されたことを確認します。
 
    ```azurecli-interactive
    az network public-ip show \
@@ -68,9 +68,11 @@ ms.locfileid: "98221344"
 > [!WARNING]
 > 仮想マシンのオペレーティング システム内の IP アドレス設定は変更しないでください。 オペレーティング システムは、Azure のパブリック IP アドレスを認識しません。 プライベート IP アドレスの設定をオペレーティング システムに追加できますが、必要でない限り、この操作は行わないことをお勧めします。必要な場合は、[オペレーティング システムへのプライベート IP アドレスの追加](virtual-network-network-interface-addresses.md#private)に関する記事を読んだ後で行うことをお勧めします。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、[az group delete](/cli/azure/group#az-group-delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes

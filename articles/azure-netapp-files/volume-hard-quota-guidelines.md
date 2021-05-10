@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e7f71f91e5778b4f096bb760bfe5a0a89b5cbcb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175993"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764281"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>ボリューム ハード クォータへの変更が Azure NetApp Files サービスに対して何を意味するかについて
 
 Azure NetApp Files には、サービスの開始当初から、容量プールのプロビジョニングと自動拡張のメカニズムが使用されています。 Azure NetApp Files のボリュームは、お客様がプロビジョニングした、選択されたレベルとサイズを持つ基になる容量プールに基づいて仮想プロビジョニングされます。 ボリュームのサイズ (クォータ) がパフォーマンスと容量を提供するために使用され、クォータはいつでも即時に調整できます。 この動作が意味するのは、現時点ではボリューム クォータが、ボリュームに対して帯域幅を制御するために使用されるパフォーマンス操作であるということです。 現時点では、基になる容量プールは、容量が上限いっぱいになると自動的に拡張されます。   
 
 > [!IMPORTANT] 
-> Azure NetApp Files のボリュームと容量プールのプロビジョニング動作は、"*手動*" で "*制御可能な*" メカニズムに変わります。 **2021 年 4 月 1 日以降 (更新) は、プロビジョニングされる容量だけでなく帯域幅のパフォーマンスもボリュームのサイズ (クォータ) で管理され、基になる容量プールは自動的に拡張されなくなります。** 
+> Azure NetApp Files のボリュームと容量プールのプロビジョニング動作は、"*手動*" で "*制御可能な*" メカニズムに変わります。 **2021 年 4 月 30 日以降 (更新) は、プロビジョニングされる容量だけでなく帯域幅のパフォーマンスもボリュームのサイズ (クォータ) で管理され、基になる容量プールは自動的に拡張されなくなります。** 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>ボリューム ハード クォータへの変更の理由
 
@@ -196,13 +196,13 @@ Azure CLI を使用して Azure NetApp Files リソースを管理するには�
 
 [ ![Cloud Shell ウィンドウを示すスクリーンショット。](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png) ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-次の例では、ボリュームのサイズを[表示](/cli/azure/netappfiles/volume#az-netappfiles-volume-show)および[更新](/cli/azure/netappfiles/volume#az-netappfiles-volume-update)するコマンドを使用しています。
+次の例では、ボリュームのサイズを[表示](/cli/azure/netappfiles/volume#az_netappfiles_volume_show)および[更新](/cli/azure/netappfiles/volume#az_netappfiles_volume_update)するコマンドを使用しています。
  
 [ ![PowerShell を使用したボリューム サイズの表示を示すスクリーンショット。](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [ ![PowerShell を使用したボリューム サイズの更新を示すスクリーンショット。](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-次の例では、容量プールのサイズを[表示](/cli/azure/netappfiles/pool#az-netappfiles-pool-show)および[更新](/cli/azure/netappfiles/pool#az-netappfiles-pool-update)するコマンドを使用しています。
+次の例では、容量プールのサイズを[表示](/cli/azure/netappfiles/pool#az_netappfiles_pool_show)および[更新](/cli/azure/netappfiles/pool#az_netappfiles_pool_update)するコマンドを使用しています。
 
 [ ![PowerShell を使用した容量プール サイズの表示を示すスクリーンショット。](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 

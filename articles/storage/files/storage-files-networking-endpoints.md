@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 42e83facec7817b6588bf69977fea5ab74b6b10d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96621333"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759881"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
 
@@ -23,7 +23,7 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 
 パブリックおよびプライベート エンドポイントは、Azure ストレージ アカウントに存在します。 ストレージ アカウントは、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。
 
-この記事では、Azure ファイル共有に直接アクセスするためのストレージ アカウントのエンドポイントを構成する方法について説明します。 このドキュメントに記載されている詳細のほとんどは、Azure File Sync とストレージ アカウントのパブリック エンドポイントおよびプライベート エンドポイントとの相互運用方法にも適用されますが、Azure File Sync のデプロイに対するネットワークに関する考慮事項の詳細については、[Azure File Sync プロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関する記事を参照してください。
+この記事では、Azure ファイル共有に直接アクセスするためのストレージ アカウントのエンドポイントを構成する方法について説明します。 このドキュメントに記載されている詳細のほとんどは、Azure File Sync とストレージ アカウントのパブリック エンドポイントおよびプライベート エンドポイントとの相互運用方法にも適用されますが、Azure File Sync のデプロイに対するネットワークに関する考慮事項の詳細については、[Azure File Sync プロキシとファイアウォールの設定の構成](../file-sync/file-sync-firewall-and-proxy.md)に関する記事を参照してください。
 
 このハウツー ガイドを読む前に、「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」を読むことをお勧めします。
 

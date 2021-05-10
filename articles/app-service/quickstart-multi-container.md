@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 2ba42e5e800ae607631e00aee50954bf2638ae43
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ea55c36c239b5ecdb51ef3dc7a3ff762718bd1e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97007145"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769004"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose 構成を使用してマルチコンテナー (プレビュー) アプリを作成する
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-Cloud Shell で [`az group create`](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *米国中南部* に作成します。 **Standard** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations) コマンドを実行します。
+Cloud Shell で [`az group create`](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *米国中南部* に作成します。 **Standard** レベルの Linux 上の App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations) コマンドを実行します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 ## <a name="create-an-azure-app-service-plan"></a>Azure App Service プランの作成
 
-Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。
+Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) コマンドを使用して、リソース グループに App Service プランを作成します。
 
 次の例では、**Standard** 価格レベル (`--sku S1`) を使用して、Linux コンテナー (`--is-linux`) に `myAppServicePlan` という名前の App Service プランを作成します。
 
@@ -100,7 +100,7 @@ App Service プランが作成されると、Azure CLI によって、次の例�
 > [!NOTE]
 > 現在、Azure App Service の Docker Compose には 4,000 文字の制限があります。
 
-Cloud Shell ターミナルで [az webapp create](/cli/azure/webapp#az-webapp-create) コマンドを使って、`myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](overview.md#app-service-on-linux)を作成します。 _\<app_name>_ は必ず固有のアプリ名で置き換えてください (有効な文字は `a-z`、`0-9`、`-` です)。
+Cloud Shell ターミナルで [az webapp create](/cli/azure/webapp#az_webapp_create) コマンドを使って、`myAppServicePlan` App Service プランにマルチコンテナーの [Web アプリ](overview.md#app-service-on-linux)を作成します。 _\<app_name>_ は必ず固有のアプリ名で置き換えてください (有効な文字は `a-z`、`0-9`、`-` です)。
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml

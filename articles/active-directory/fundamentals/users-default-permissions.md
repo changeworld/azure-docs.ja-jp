@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 348f1b4e6182739b3afbc96597853a5b887877c1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98724273"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748774"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロールの割り当て](active-directory-users-assign-role-azure-portal.md)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) では、すべてのユーザーに既定の�
 
 **領域** | **メンバー ユーザーのアクセス許可** | **既定のゲスト ユーザーのアクセス許可** | **制限されたゲスト ユーザーのアクセス許可 (プレビュー)**
 ------------ | --------- | ---------- | ----------
-ユーザーと連絡先 | <ul><li>すべてのユーザーと連絡先の一覧を列挙する<li>ユーザーと連絡先のすべてのパブリック プロパティを読み取る</li><li>ゲストを招待する<li>自分のパスワードを変更する<li>自分の携帯電話番号を管理する<li>自分の写真を管理する<li>自分の更新トークンを無効にする</li></ul> | <ul><li>自分のプロパティを読み取る<li>他のユーザーと連絡先の表示名、メール アドレス、サインイン名、写真、ユーザー プリンシパル名、ユーザーの種類の各プロパティを読み取る<li>自分のパスワードを変更する<li>別のユーザーを ObjectId で検索する (許可されている場合)<li>他のユーザーの上司と直属の部下の情報を読み取る</li></ul> | <ul><li>自分のプロパティを読み取る<li>自分のパスワードを変更する</li></ul>
+ユーザーと連絡先 | <ul><li>すべてのユーザーと連絡先の一覧を列挙する<li>ユーザーと連絡先のすべてのパブリック プロパティを読み取る</li><li>ゲストを招待する<li>自分のパスワードを変更する<li>自分の携帯電話番号を管理する<li>自分の写真を管理する<li>自分の更新トークンを無効にする</li></ul> | <ul><li>自分のプロパティを読み取る<li>他のユーザーと連絡先の表示名、メール アドレス、サインイン名、写真、ユーザー プリンシパル名、ユーザーの種類の各プロパティを読み取る<li>自分のパスワードを変更する<li>別のユーザーを ObjectId で検索する (許可されている場合)<li>他のユーザーの上司と直属の部下の情報を読み取る</li></ul> | <ul><li>自分のプロパティを読み取る<li>自分のパスワードを変更する</li><li>自分の携帯電話番号を管理する</li></ul>
 グループ | <ul><li>セキュリティ グループを作成する<li>Microsoft 365 グループを作成する<li>すべてのグループの一覧を列挙する<li>グループのすべてのプロパティを読み取る<li>非表示でないグループのメンバーシップを読み取る<li>参加しているグループで非表示にされている Microsoft 365 グループのメンバーシップを読み取る<li>ユーザーが所有するグループのプロパティ、所有権、メンバーシップを管理する<li>所有するグループにゲストを追加する<li>動的メンバーシップの設定を管理する<li>所有するグループを削除する<li>所有する Microsoft 365 グループを復元する</li></ul> | <ul><li>非表示でないグループ (不参加のグループも含む) のプロパティ (メンバーシップや所有権など) を読み取る<li>参加しているグループで非表示にされている Microsoft 365 グループのメンバーシップを読み取る<li>表示名または ObjectId でグループを検索する (許可されている場合)</li></ul> | <ul><li>参加しているグループのオブジェクト ID を読み取る<li>一部の Microsoft 365 アプリで参加しているグループのメンバーシップと所有権を読み取る (許可されている場合)</li></ul>
 アプリケーション | <ul><li>新しいアプリケーションを登録 (作成) する<li>すべてのアプリケーションの一覧を列挙する<li>登録済みアプリケーションとエンタープライズ アプリケーションのプロパティを読み取る<li>所有するアプリケーションのプロパティ、割り当て、資格情報を管理する<li>ユーザーのアプリケーション パスワードを作成または削除する<li>所有するアプリケーションを削除する<li>所有するアプリケーションを復元する</li></ul> | <ul><li>登録済みアプリケーションとエンタープライズ アプリケーションのプロパティを読み取る</li></ul> | <ul><li>登録済みアプリケーションとエンタープライズ アプリケーションのプロパティを読み取る
 デバイス</li></ul> | <ul><li>すべてのデバイスの一覧を列挙する<li>デバイスのすべてのプロパティを読み取る<li>所有するデバイスのすべてのプロパティを管理する</li></ul> | アクセス許可なし | アクセス許可なし
@@ -134,7 +134,6 @@ Guests user access restrictions (Preview) (ゲスト ユーザーのアクセス
 | microsoft.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
 | microsoft.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
 | microsoft.directory/groups/delete | Azure Active Directory での groups の削除。 |
-| microsoft.directory/groups/dynamicMembershipRule/update | Azure Active Directory での groups.dynamicMembershipRule プロパティの更新。 |
 | microsoft.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
 | microsoft.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
 | microsoft.directory/groups/restore | Azure Active Directory での groups の復元。 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: 74e09b4798a648b6a881fb05f1128831ad5f4aff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8003bf14bcade08f36a7877fdb3a53998aff9e63
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586438"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773070"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -67,9 +67,11 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 >[!Note]
 > Azure では、ネットワーク インターフェイスの仮想マシンへのアタッチと、仮想マシンの初回起動の後にのみ、ネットワーク インターフェイスに MAC アドレスが割り当てられます。 Azure によってネットワーク インターフェイスに割り当てられる MAC アドレスは指定できません。 MAC アドレスがネットワーク インターフェイスに割り当てられると、そのネットワーク インターフェイスが削除されるか、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられたプライベート IP アドレスが変更されるまで、その状態は変わりません。 IP アドレスと IP 構成の詳細については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関するページをご覧ください
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
@@ -96,7 +98,7 @@ Azure Resource Manager の一般的な設定:Azure Resource Manager の一般的
 
 IPv6 アドレスがネットワーク インターフェイスに割り当てられている場合、PowerShell の出力では、アドレスが割り当てられているという事実が返されますが、割り当てられたアドレスは返されません。 同様に、CLI では、アドレスが割り当てられているという事実が返されますが、そのアドレスの出力では *null* が返されます。
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic list](/cli/azure/network/nic) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic) ではネットワーク インターフェイスの設定を表示します。|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します|
@@ -117,7 +119,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -138,7 +140,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -158,7 +160,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
@@ -172,7 +174,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
@@ -188,7 +190,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-- Azure CLI: [az network nic update](/cli/azure/network/nic#az-network-nic-update)
+- Azure CLI: [az network nic update](/cli/azure/network/nic#az_network_nic_update)
 - PowerShell:[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>ネットワーク インターフェイスの削除
@@ -204,7 +206,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
@@ -227,7 +229,7 @@ Azure Network Watcher の IP フロー検証機能も、セキュリティ規則
 
 **コマンド**
 
-- Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
+- Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg)
 - PowerShell:[Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ### <a name="view-effective-routes"></a>有効なルートの表示
@@ -244,7 +246,7 @@ Azure Network Watcher の次ホップ機能も、ルートが仮想マシンと�
 
 **コマンド**
 
-- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
+- Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table)
 - PowerShell:[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="permissions"></a>アクセス許可

@@ -8,19 +8,16 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a24b62875fedcb976b06517cf61ddd69ab9abcf1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104729517"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726738"
 ---
 # <a name="quickstart-call-to-phone"></a>クイックスタート: 電話の呼び出し
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-Communication Services 通話クライアント ライブラリを使用して PSTN 通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
+Communication Services Calling SDK を使用して PSTN 通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/pstn-call-js.md)]
@@ -42,5 +39,5 @@ Communication Services サブスクリプションをクリーンアップして
 
 詳細については、次の記事を参照してください。
 
-- [Calling クライアント ライブラリの機能](./calling-client-samples.md)について学習する
+- [Calling SDK の機能](./calling-client-samples.md)について確認する
 - [通話のしくみ](../../concepts/voice-video-calling/about-call-types.md)の詳細について確認する

@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートを使用して、Azure Pi
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102561944"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>Azure Pipelines を使用した ARM テンプレートの統合

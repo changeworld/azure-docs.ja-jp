@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 05/07/2020
+ms.date: 03/17/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b4e4892c01775b472cd8cdcf0f35b920d7e5e86
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906912"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055678"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する
 
 Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、Azure portal を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
 
 > [!div class="checklist"]
-> * **ユーザー一括招待**を使用して、ユーザー情報と招待状のユーザー設定を含むコンマ区切り値 (.csv) ファイルを準備する
+> * **ユーザー一括招待** を使用して、ユーザー情報と招待状のユーザー設定を含むコンマ区切り値 (.csv) ファイルを準備する
 > * Azure AD に .csv ファイルをアップロードする
 > * ユーザーがディレクトリに追加されたことを確認する
 
@@ -41,7 +41,7 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
 
 - **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
 - **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Email address to invite [inviteeEmail] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+- **例の行**: このテンプレートには、各列の値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
@@ -56,18 +56,22 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
 
 ## <a name="invite-guest-users-in-bulk"></a>ゲスト ユーザーを一括招待する
 
-1. 組織のユーザー管理者アカウントで、Azure portal にサインインします。
+1. 組織のグローバル管理者アカウントで、Azure portal にサインインします。
 2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
-3. **[管理]** の **[ユーザー]**  >  **[一括招待]** を選択します。
+3. **[管理]** にある **[すべてのユーザー]** を選択します。
+4. **[一括操作]**  >  **[一括招待]** を選択します。
+
+    ![[一括招待] ボタン](media/tutorial-bulk-invite/bulk-invite-button.png)
+
 4. **[ユーザー一括招待]** ページで、 **[ダウンロード]** を選択して、招待のプロパティを含んだ有効な .csv テンプレートを取得します。
 
-    ![一括招待のダウンロード ボタン](media/tutorial-bulk-invite/bulk-invite-button.png)
+     ![CSV ファイルをダウンロードする](media/tutorial-bulk-invite/download-button.png)
 
-5. この .csv テンプレートを開いて、ゲスト ユーザーごとに 1 行追加します。 必要な値は次のとおりです。
+1. この .csv テンプレートを開いて、ゲスト ユーザーごとに 1 行追加します。 必要な値は次のとおりです。
 
    * **招待するメール アドレス** - 招待が送信されるユーザー
 
-   * **リダイレクト URL** - 招待されたユーザーが招待を承認した後に転送される URL
+   * **リダイレクト URL** - 招待されたユーザーが招待を承認した後に転送される URL。 ユーザーを [マイ アプリ] ページに転送する場合、この値を https://myapps.microsoft.com または https://myapplications.microsoft.com に変更する必要があります。
 
     ![ゲスト ユーザーが入力されている CSV ファイルの例](media/tutorial-bulk-invite/bulk-invite-csv.png)
 

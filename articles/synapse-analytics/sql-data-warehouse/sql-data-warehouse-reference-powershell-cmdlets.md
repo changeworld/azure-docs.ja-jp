@@ -2,21 +2,21 @@
 title: 専用 SQL プール (旧称 SQL DW) 用の PowerShell および REST API
 description: データベースを一時停止および再開する方法など、Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用の主要な PowerShell コマンドレット。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 83e6082025f068e91a3d531f052b746870ffd57a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1f00f470fb0aa8ac98b431c6fc9428f501b553ed
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584110"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566445"
 ---
 # <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用の PowerShell および REST API 
 

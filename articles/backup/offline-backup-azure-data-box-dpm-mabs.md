@@ -4,10 +4,10 @@ description: Azure Data Box を使用して、DPM および MABS からオフラ
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752551"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM および MABS の Azure Data Box を使用したオフライン シード処理 (プレビュー)
@@ -221,7 +221,7 @@ DPM サーバー上の Microsoft Azure Backup (MAB) エージェントによっ�
 
 ![Azure Recovery Services エージェント](./media/offline-backup-azure-data-box-dpm-mabs/azure-recovery-services-agent.png)
 
-#### <a name="step-2"></a>ステップ 2
+#### <a name="step-2"></a>手順 2.
 
 1. インストール パスの **Temp** フォルダーを開きます (既定の一時フォルダーのパスは、*C:\Program Files\Microsoft Azure Recovery Services Agent\Temp* です)。*CBUICurr* ファイルを見つけて、そのファイルを開きます。
 2. *CBUICurr* ファイルで、最後の行までスクロールし、エラーの原因が "Unable to create an Azure AD application credential in customer's account. 例外:Update to existing credential with KeyId \<some guid> isn't allowed (お客様のアカウントには Azure AD アプリケーション資格情報を作成できません。例外: KeyId が <some guid> の既存の資格情報を更新することはできません)" であるかどうかを確認します。

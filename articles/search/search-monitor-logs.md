@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: e29e20d071e992b941b2f6bd803c8dade044fbfd
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592479"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581615"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
-診断ログまたは操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスとワークロードのプロセスの監視に役立ちます。 内部的には、一部のシステム情報がバックエンドに存在しているのは、ユーザーがサポート チケットを提出した場合に調査と分析が行われるのに十分な短い時間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
+診断または操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスの正常性とプロセスの監視に役立ちます。 内部的には、システム情報をバックエンドに短期間 (約 30 日) 保存します。これは、サポート チケットを提出した場合の調査と分析に十分な期間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
 
 診断ログは、[Azure Monitor](../azure-monitor/index.yml) との統合を通じて有効になります。 
 
@@ -76,14 +76,14 @@ Blob Storage の場合は、コンテナーが Blob Storage に表示される�
 
 1. 次のクエリを入力して、表形式の結果セットを取得します。
 
-   ```
+   ```kusto
    AzureMetrics
-    | project MetricName, Total, Count, Maximum, Minimum, Average
+   | project MetricName, Total, Count, Maximum, Minimum, Average
    ```
 
 1. **AzureDiagnostics** について前の手順を繰り返し、すべての列の情報を取得した後、より選択的なクエリを実行して、さらに興味深い情報を抽出します。
 
-   ```
+   ```kusto
    AzureDiagnostics
    | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
    | where OperationName == "Query.Search" 
@@ -99,7 +99,7 @@ Blob Storage の場合は、コンテナーが Blob Storage に表示される�
 
 操作と各操作の回数のリストを取得します。
 
-```
+```kusto
 AzureDiagnostics
 | summarize count() by OperationName
 ```
@@ -108,7 +108,7 @@ AzureDiagnostics
 
 クエリ要求をインデックス作成操作に関連付け、時間グラフにデータ ポイントをレンダリングして同時に起こった操作を表示します。
 
-```
+```kusto
 AzureDiagnostics
 | summarize OperationName, Count=count()
 | where OperationName in ('Query.Search', 'Indexing.Index')

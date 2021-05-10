@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: 116e99339ac79e9e6a2de5e7a6222460a71bf4a1
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102615093"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行
@@ -143,7 +143,7 @@ Resource Manager デプロイ モデルでは、既定でアプリケーショ�
 | Compute | Azure Site Recovery 拡張機能を備えた VM | これらの拡張機能は、Azure Site Recovery サービスが構成された仮想マシンにインストールされます。 Site Recovery で使用されるストレージの移行は機能しますが、現在のレプリケーションに影響があります。 ストレージの移行後、VM のレプリケーションを無効にしてから有効にする必要があります。 |
 | ネットワーク |仮想マシンと Web/worker ロールを含む仮想ネットワーク |現在これはサポートされていません。 移行する前に、Web/ワーカー ロールを独自の仮想ネットワークに移動してください。 従来の仮想ネットワークが移行されると、それ以降、移行された Azure Resource Manager 仮想ネットワークは従来の仮想ネットワークを使ってピアリングされ、以前と同様の構成を実現できます。|
 | ネットワーク | クラシック Express Route 回線 |現在これはサポートされていません。 これらの回線は、IaaS 移行を開始する前に、Azure Resource Manager に移行する必要があります。 詳細については、「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](../expressroute/expressroute-move.md)」をご覧ください。|
-| Azure App Service |App Service 環境を含む仮想ネットワーク |現在これはサポートされていません。 |
+| Azure App Service |App Service Environment を含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure HDInsight |HDInsight サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services によって管理される仮想マシンを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure API Management |Azure API Management デプロイを含む仮想ネットワーク |現在これはサポートされていません。 IaaS VNET を移行するには、API Management デプロイの VNET を変更します。この操作では停止時間は発生しません。 |

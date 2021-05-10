@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103602892"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167500"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Azure AD Connect の選択的なパスワード ハッシュ同期の構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "103602892"
 一部のユーザーを Azure AD へのパスワード ハッシュ同期から除外する場合、この記事で説明されている手順に従って、選択的なパスワード ハッシュ同期を構成することができます。
 
 >[!Important]
-> 公式に文書化されている構成やアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 このような構成やアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについて効果的なテクニカル サポートを提供することを保証できなくなります。 
+> 公式に文書化されている構成やアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 このような構成やアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについて効果的なテクニカル サポートを提供できることを保障できなくなります。 
 
 
 ## <a name="consider-your-implementation"></a>実装について検討する  
@@ -36,6 +36,9 @@ ms.locfileid: "103602892"
 
 > [!Important]
 > いずれの構成オプションを選択しても、変更を適用するために必要な初期同期 (完全同期) が、次の同期サイクルで自動的に実行されます。
+
+> [!Important]
+> 選択的なパスワード ハッシュ同期を構成すると、パスワード ライトバックに直接影響します。 Azure Active Directory で開始されたパスワードの変更またはパスワードのリセットは、ユーザーがパスワード ハッシュ同期の対象になっている場合にのみ、オンプレミスの Active Directory に書き戻されます。 
 
 ### <a name="the-admindescription-attribute"></a>AdminDescription 属性
 どちらのシナリオも、ユーザーの adminDescription 属性を特定の値に設定することに依存しています。  これにより、規則が適用され、選択的な PHS が機能するようになります。
@@ -80,7 +83,7 @@ ms.locfileid: "103602892"
 - パスワード ハッシュ同期で許可するユーザーに対してスコープ属性として定義されていた Active Directory の属性値を設定します。 
 
 >[!Important]
->選択的なパスワード ハッシュ同期を構成するために指定された手順は、Active Directory で設定された属性 **adminDescription** (値は **phsfiltered**) を持つユーザー オブジェクトにのみ適用されます。
+>選択的なパスワード ハッシュ同期を構成するために指定された手順は、Active Directory で設定された属性 **adminDescription** (値は **phsfiltered**) を持つユーザー オブジェクトにのみ影響します。
 この属性が設定されていない場合、または値が **Phsfiltered** 以外の場合、これらの規則はユーザー オブジェクトに適用されません。
 
 
@@ -90,7 +93,7 @@ ms.locfileid: "103602892"
      ![同期規則エディターを起動する](media/how-to-connect-selective-password-hash-synchronization/exclude-1.png)
  2. 選択的なパスワード ハッシュ同期を構成する Active Directory フォレスト コネクタで、規則 **[In from AD – User AccountEnabled]** を選択し、 **[編集]** をクリックします。 次のダイアログ ボックスで **[はい]** を選択して、元の規則の編集可能なコピーを作成します。
      ![規則の選択](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
- 3. 最初の規則で、パスワード ハッシュ同期を無効にします。新しいカスタム規則に、「**In from AD - User AccountEnabled - Filter Users from PHS**」という名前を指定します。
+ 3. 最初のルールでは、パスワード ハッシュ同期を無効にします。新しいカスタム規則に **In from AD - User AccountEnabled - Filter Users from PHS** という名前を指定します。
  優先順位の値を 100 未満の数値に変更します (たとえば、**90** または使用している環境で使用可能な最小値)。
  **[パスワード同期を有効にする]** チェックボックスと **[無効]** チェックボックスがオフになっていることを確認します。
  **[次へ]** をクリックします。
@@ -134,6 +137,9 @@ ms.locfileid: "103602892"
    
   ![属性を編集する](media/how-to-connect-selective-password-hash-synchronization/exclude-11.png)
 
+次の PowerShell コマンドを使用して、ユーザーの **adminDescription** 属性を編集することもできます。
+
+```Set-ADUser myuser -Replace @{adminDescription="PHSFiltered"}```
 
 ## <a name="excluded-users-is-larger-than-included-users"></a>除外するユーザーが含めるユーザーよりも多い
 次のセクションでは、**除外** するユーザーの数が、**含める** ユーザー数より **大きい** 場合に、選択的なパスワード ハッシュ同期を有効にする方法について説明します。
@@ -149,7 +155,7 @@ ms.locfileid: "103602892"
 - パスワード ハッシュ同期で許可するユーザーに対してスコープ属性として定義されていた Active Directory の属性値を設定します。 
 
 >[!Important]
->選択的なパスワード ハッシュ同期を構成するために指定された手順は、Active Directory で設定された属性 **adminDescription** (値は **PHSIncluded**) を持つユーザー オブジェクトにのみ適用されます。
+>選択的なパスワード ハッシュ同期を構成するために指定された手順は、Active Directory で設定された属性 **adminDescription** (値は **PHSIncluded**) を持つユーザー オブジェクトにのみ影響します。
 この属性が設定されていない場合、または値が **PHSIncluded** 以外の場合、これらの規則はユーザー オブジェクトに適用されません。
 
 
@@ -159,7 +165,7 @@ ms.locfileid: "103602892"
      ![規則の種類](media/how-to-connect-selective-password-hash-synchronization/include-1.png)
  2. 選択的なパスワード ハッシュ同期を構成する Active Directory フォレスト コネクタで、規則 **[In from AD – User AccountEnabled]** をもう一度選択し、 **[編集]** をクリックします。 次のダイアログ ボックスで **[はい]** を選択して、元の規則の編集可能なコピーを作成します。
      ![In from AD](media/how-to-connect-selective-password-hash-synchronization/include-2.png)
- 3. 最初の規則で、パスワード ハッシュ同期を無効にします。新しいカスタム規則に、「**In from AD - User AccountEnabled - Filter Users from PHS**」という名前を指定します。
+ 3. 最初のルールでは、パスワード ハッシュ同期を無効にします。新しいカスタム規則に **In from AD - User AccountEnabled - Filter Users from PHS** という名前を指定します。
  優先順位の値を 100 未満の数値に変更します (たとえば、**90** または使用している環境で使用可能な最小値)。
  **[パスワード同期を有効にする]** チェックボックスと **[無効]** チェックボックスがオフになっていることを確認します。
  **[次へ]** をクリックします。
@@ -202,7 +208,9 @@ ms.locfileid: "103602892"
 
   ![属性の編集](media/how-to-connect-selective-password-hash-synchronization/include-11.png)
  
- 
+ 次の PowerShell コマンドを使用して、ユーザーの **adminDescription** 属性を編集することもできます。
+
+ ```Set-ADUser myuser -Replace @{adminDescription="PHSIncluded"}``` 
 
 ## <a name="next-steps"></a>次の手順
 - [パスワード ハッシュ同期とは](whatis-phs.md)

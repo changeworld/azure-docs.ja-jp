@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3820e7bf00f99a846dd2be0edeaf4248e0dfd8ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d30cc27fc3c546619e85bb9aabd0b31c10102e96
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97006085"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787811"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>CLI を使用して App Service を Application Gateway に統合する
 
@@ -45,16 +45,16 @@ ms.locfileid: "97006085"
 
 | コマンド | Notes |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | 仮想ネットワークを作成します。 |
-| [`az network public-ip create`](/cli/azure/network/public-ip#az-network-public-ip-create) | パブリック IP アドレスを作成します。 |
-| [`az network public-ip show`](/cli/azure/network/public-ip#az-network-public-ip-show) | パブリック IP アドレスの詳細を表示します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | App Service Web アプリを作成します。 |
-| [`az webapp show`](/cli/azure/webapp#az-webapp-show) | App Service Web アプリの詳細を表示します。 |
-| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az-webapp-config-access-restriction-add) | App Service Web アプリにアクセス制限を追加します。 |
-| [`az network application-gateway create`](/cli/azure/network/application-gateway#az-network-application-gateway-create) | アプリケーション ゲートウェイを作成します。 |
-| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az-network-application-gateway-http-settings-update) | Application Gateway の HTTP 設定を更新します。 |
+| [`az group create`](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az network vnet create`](/cli/azure/network/vnet#az_network_vnet_create) | 仮想ネットワークを作成します。 |
+| [`az network public-ip create`](/cli/azure/network/public-ip#az_network_public_ip_create) | パブリック IP アドレスを作成します。 |
+| [`az network public-ip show`](/cli/azure/network/public-ip#az_network_public_ip_show) | パブリック IP アドレスの詳細を表示します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | App Service Web アプリを作成します。 |
+| [`az webapp show`](/cli/azure/webapp#az_webapp_show) | App Service Web アプリの詳細を表示します。 |
+| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az_webapp_config_access_restriction_add) | App Service Web アプリにアクセス制限を追加します。 |
+| [`az network application-gateway create`](/cli/azure/network/application-gateway#az_network_application_gateway_create) | アプリケーション ゲートウェイを作成します。 |
+| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az_network-application-gateway-http_settings_update) | Application Gateway の HTTP 設定を更新します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

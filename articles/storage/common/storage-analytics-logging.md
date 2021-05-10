@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
 ms.openlocfilehash: a5d1d6af68fcbd6a5822b2652ee79c464d02241f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103200762"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
@@ -26,7 +26,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 > - [Azure Blob Storage の監視](../blobs/monitor-blob-storage.md)
 > - [Azure Files の監視](../files/storage-files-monitoring.md)
 > - [Azure Queue Storage の監視](../queues/monitor-queue-storage.md)
-> - [Azure Table ストレージの監視](../tables/monitor-table-storage.md)
+> - [Azure Table Storage の監視](../tables/monitor-table-storage.md)
 
  既定では、お使いのストレージ アカウントで Storage Analytics のログは有効になっていません。 これは、[Azure portal](https://portal.azure.com/) で、または PowerShell や Azure CLI を使用して有効にすることができます。 ステップ バイ ステップ ガイダンスについては、「[Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)」を参照してください。 
 

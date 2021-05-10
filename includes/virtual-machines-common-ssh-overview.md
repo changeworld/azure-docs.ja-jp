@@ -9,10 +9,10 @@ ms.date: 07/09/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 612e7dc2f3d1ef6aa5d3598999aa214a2f377e1f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96016373"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH とキーの概要

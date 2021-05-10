@@ -1,17 +1,17 @@
 ---
 title: 計画メンテナンス通知 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB の計画メンテナンス通知機能について説明します
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2f6667980d35db611cfba293839ebf06535ee6a3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664267"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107225853"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の計画メンテナンス通知
 

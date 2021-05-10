@@ -3,12 +3,12 @@ title: レジストリ アクションに応答するための Webhook
 description: レジストリ リポジトリでプッシュまたはプル アクションが発生したときに、Webhook を使用してイベントをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4f6fb719f8d9d51429a19616aa5548b32a2687e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101722247"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773402"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -47,7 +47,7 @@ Webhook フォームの例 :
 
 ## <a name="create-webhook---azure-cli"></a>Webhook の作成 - Azure CLI
 
-Azure CLI を使用して Webhook を作成するには、[az acr webhook create](/cli/azure/acr/webhook#az-acr-webhook-create) コマンドを使用します。 次のコマンドは、レジストリ *mycontainerregistry* 内のすべてのイメージの delete イベントに対して Webhook を作成します。
+Azure CLI を使用して Webhook を作成するには、[az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create) コマンドを使用します。 次のコマンドは、レジストリ *mycontainerregistry* 内のすべてのイメージの delete イベントに対して Webhook を作成します。
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -67,7 +67,7 @@ Webhook を使用する前に、 **[Ping]** ボタンを使ってテストでき
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook ping](/cli/azure/acr/webhook#az-acr-webhook-ping) コマンドを使用します。
+Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01

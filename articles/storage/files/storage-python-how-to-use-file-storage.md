@@ -8,12 +8,12 @@ ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 8bef69037fad8bf8ee9537e90f26ca967560b9d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d45ce3a782d7ee145f769283b82e34647c78f26e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876099"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799872"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
 
@@ -37,11 +37,11 @@ ms.locfileid: "91876099"
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-[Azure File Storage クライアント ライブラリ v12.x for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) には、Python 2.7 または 3.5 が必要です。
+[Azure File Storage クライアント ライブラリ v12.x for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) には、Python 2.7 または 3.6 以降が必要です。
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[Azure Storage SDK for Python](https://github.com/azure/azure-storage-python) には、Python 2.7、3.3、3.4、3.5、または 3.6 が必要です。
+[Azure Storage SDK for Python](https://github.com/azure/azure-storage-python) には、Python 2.7 または 3.6 以降が必要です。
 
 ---
 
@@ -175,7 +175,7 @@ file_service.create_file_from_path(
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-サブディレクトリ内のファイルとディレクトリを一覧表示するには、[list_directories_and_files](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.shareclient#list-directories-and-files-directory-name-none--name-starts-with-none--marker-none----kwargs-) メソッドを使用します。 このメソッドでは、反復可能な自動ページングが返されます。 次のコードでは、指定されたディレクトリ内の各ファイルとディレクトリの**名前**がコンソールに出力されます。
+サブディレクトリ内のファイルとディレクトリを一覧表示するには、[list_directories_and_files](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.shareclient#list-directories-and-files-directory-name-none--name-starts-with-none--marker-none----kwargs-) メソッドを使用します。 このメソッドでは、反復可能な自動ページングが返されます。 次のコードでは、指定されたディレクトリ内の各ファイルとディレクトリの **名前** がコンソールに出力されます。
 
 :::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_ListFilesAndDirs":::
 

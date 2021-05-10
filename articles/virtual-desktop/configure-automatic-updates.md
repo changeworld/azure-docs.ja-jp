@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: helohr
 ms.reviewer: v-cawood; clemr
-manager: lizross
-ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: fe2da5c60c06e5617d130940af4909c52272d551
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88010125"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448170"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>Microsoft Endpoint Configuration Manager を構成する
 

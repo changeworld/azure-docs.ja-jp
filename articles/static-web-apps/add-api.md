@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a42ca4cf69515c99bb2e0bd28bb62dfed0e18f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33adaf33ba15b49b0a7e4d3e8f1b2a8c435a7966
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100650688"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449037"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps プレビューに API を追加する
 
@@ -255,7 +255,7 @@ Visual Studio Code を使用して、変更をコミットし、リモート Git
 
     :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub ワークフロー":::
 
-1. 配置が完了したら、"_概要_" ページの _[URL]_ リンクをクリックすると、Web アプリに移動できます。
+1. 配置が完了した後、"_概要_" ページの _[URL]_ リンクをクリックすると、Web アプリに移動できます。
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Azure portal から静的アプリの URL にアクセスする":::
 

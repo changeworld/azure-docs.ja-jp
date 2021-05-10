@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
-ms.openlocfilehash: a167fedcb42560dec55cdbce40e36180d65e0179
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: e0982b4a43a931552574e447d5639d3fa92402d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951799"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773774"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -117,7 +117,7 @@ Hyperscale データベースの geo リストアについては、「[Hyperscal
 
 ## <a name="create-a-hyperscale-database"></a>ハイパースケール データベースの作成
 
-Hyperscale データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/create-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](/cli/azure/sql/db#az-sql-db-create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](service-tiers-vcore.md)を使用してのみ入手できます。
+Hyperscale データベースは、[Azure portal](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/create-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/new-azurermsqldatabase)、または [CLI](/cli/azure/sql/db#az_sql_db_create) を使用して作成できます。 ハイパースケール データベースは、[仮想コアベースの購入モデル](service-tiers-vcore.md)を使用してのみ入手できます。
 
 次の T-SQL コマンドによって、ハイパースケール データベースが作成されます。 `CREATE DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。 有効なサービス目標の一覧については[リソースの制限](./resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen4)に関するページを参照してください。
 
@@ -131,7 +131,7 @@ GO
 
 ## <a name="upgrade-existing-database-to-hyperscale"></a>既存のデータベースを Hyperscale にアップグレードする
 
-Azure SQL Database の既存のデータベースを Hyperscale に移行するには、[Azure portal](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/alter-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、または [CLI](/cli/azure/sql/db#az-sql-db-update) を使用します。 現時点で、これは一方向にしか移行できません。 データのエクスポートとインポート以外の方法で、Hyperscale から別のサービス レベルにデータベースを移動することはできません。 概念実証 (POC) のために、運用データベースのコピーを作成して、コピーを Hyperscale に移行することをお勧めします。 Azure SQL Database の既存のデータベースの Hyperscale レベルへの移行は、データ サイズに左右される操作です。
+Azure SQL Database の既存のデータベースを Hyperscale に移行するには、[Azure portal](https://portal.azure.com)、[T-SQL](/sql/t-sql/statements/alter-database-transact-sql)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、または [CLI](/cli/azure/sql/db#az_sql_db_update) を使用します。 現時点で、これは一方向にしか移行できません。 データのエクスポートとインポート以外の方法で、Hyperscale から別のサービス レベルにデータベースを移動することはできません。 概念実証 (POC) のために、運用データベースのコピーを作成して、コピーを Hyperscale に移行することをお勧めします。 Azure SQL Database の既存のデータベースの Hyperscale レベルへの移行は、データ サイズに左右される操作です。
 
 次の T-SQL コマンドによってデータベースがハイパースケール サービス レベルに移行されます。 `ALTER DATABASE` ステートメントにエディションとサービス目標の両方を指定する必要があります。
 
@@ -184,6 +184,7 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 - オーストラリア中部
 - ブラジル南部
 - カナダ中部
+- カナダ東部
 - 米国中部
 - 中国東部 2
 - 中国北部 2
@@ -226,7 +227,7 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 | Azure SQL Database サービス レベルを Hyperscale に変更した場合は、データベースに 1 TB を超えるデータ ファイルがあると操作は失敗する | 場合によっては、サービス レベルを Hyperscale に変更する前に、サイズの大きいファイルを 1 TB 未満に[圧縮](file-space-manage.md#shrinking-data-files)することで、この問題を回避できることがあります。 データベース ファイルの現在のサイズを確認するには、次のクエリを使用してください。 `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | 現在、Azure SQL Managed Instance は Hyperscale データベースではサポートされていません。 |
 | エラスティック プール |  エラスティック プールは、現在、Hyperscale ではサポートされていません。|
-| ハイパースケールへの移行は現在一方向 | データベースが Hyperscale にいったん移行されると、Hyperscale 以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポートおよびインポートすることです。Azure portal、PowerShell ([New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) と [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport))、Azure CLI ([az sql db export](/cli/azure/sql/db#az-sql-db-export) と [az sql db import](/cli/azure/sql/db#az-sql-db-import))、[REST API](/rest/api/sql/) から BACPAC のエクスポートとインポートを行うことはサポートされていません。 比較的小さい Hyperscale データベース (最大 200 GB) の BACPAC インポートと BACPAC エクスポートは、SSMS と [SqlPackage](/sql/tools/sqlpackage) バージョン 18.4 以降を使用することでサポートされます。 大きなデータベースでは、BACPAC エクスポートと BACPAC インポートに時間がかかり、さまざまな理由で失敗する可能性があります。|
+| ハイパースケールへの移行は現在一方向 | データベースが Hyperscale にいったん移行されると、Hyperscale 以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポートおよびインポートすることです。Azure portal、PowerShell ([New-AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) と [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport))、Azure CLI ([az sql db export](/cli/azure/sql/db#az_sql_db_export) と [az sql db import](/cli/azure/sql/db#az_sql_db_import))、[REST API](/rest/api/sql/) から BACPAC のエクスポートとインポートを行うことはサポートされていません。 比較的小さい Hyperscale データベース (最大 200 GB) の BACPAC インポートと BACPAC エクスポートは、SSMS と [SqlPackage](/sql/tools/sqlpackage) バージョン 18.4 以降を使用することでサポートされます。 大きなデータベースでは、BACPAC エクスポートと BACPAC インポートに時間がかかり、さまざまな理由で失敗する可能性があります。|
 | インメモリ OLTP オブジェクトを使用したデータベースの移行 | Hyperscale では、メモリ最適化テーブルの型、テーブル変数、ネイティブ コンパイルされたモジュールなど、インメモリ OLTP オブジェクトのサブセットがサポートされています。 ただし、どのような種類のインメモリ OLTP オブジェクトでも移行されているデータベースに存在すると、Premium および Business Critical サービス レベルから Hyperscale に移行できません。 このようなデータベースを Hyperscale に移行するには、すべてのインメモリ OLTP オブジェクトとその依存関係を削除する必要があります。 データベースを移行した後は、これらのオブジェクトを再作成できます。 永続的と非永続的なメモリ最適化テーブルは Hyperscale では現在サポートされておらず、ディスク テーブルに変更する必要があります。|
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
 | データベース コピー | Hyperscale のデータベース コピーがパブリック プレビューになりました。 |

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/18/2021
 ms.author: victorh
-ms.openlocfilehash: fba95214a6bbb0482166eab8f77f30911986fbb7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 38d83186c06eac0fc3a49834172c2a4b8542caff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102525455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590468"
 ---
 # <a name="deploy-and-configure-enterprise-ca-certificates-for-azure-firewall-preview"></a>Azure Firewall プレビュー用にエンタープライズ CA 証明書をデプロイおよび構成する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ルート CA の Web 登録サイト (通常は `https://<servername>/certsrv`) にアクセスし、 **[証明書の要求]** を選択します。
 1. **[証明書の要求の詳細設定]** を選択します。
 1. **[この CA への要求を作成し送信する]** リンクを選択します。
-1. 下位証明機関テンプレートを使用して、示されているようにフォームに入力します。
+1. 下位証明機関テンプレートを使用してフォームに入力します。
 1. 要求を送信し、証明書をインストールします。
 1. この要求が Internet Explorer を使用して Windows Server から行われた場合は、 **[インターネット オプション]** を開きます。
 1. **[コンテンツ]** タブに移動し、 **[証明書]** を選択します。

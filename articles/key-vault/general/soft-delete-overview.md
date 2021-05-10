@@ -4,15 +4,15 @@ description: Azure Key Vault での論理的な削除では、削除されたキ
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 12/15/2020
-ms.openlocfilehash: 7aeca89ed09182b7947b10f24c65b0cb58ed67ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/31/2021
+ms.openlocfilehash: 52cd7742f3c6961350f907cde8ffe19235cff9b8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452137"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753256"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -20,7 +20,7 @@ ms.locfileid: "102452137"
 > 直ちに、キー コンテナーで論理的な削除を有効にする必要があります。 論理的な削除をオプトアウトする機能は、間もなく非推奨になります。 詳細については、[こちら](soft-delete-change.md)を参照してください
 
 > [!IMPORTANT]
-> 論理的に削除されたコンテナーによって、Key Vault との統合サービス (つまり、Azure RBAC ロールの割り当て、Event Grid サブスクリプション、Azure Monitor の診断設定) の設定が削除されます。 論理的に削除されたキー コンテナーの回復後に、統合サービスの設定を手動で作成し直す必要があります。 
+> 論理的に削除されたコンテナーによって、Key Vault との統合サービス (つまり、Azure RBAC ロールの割り当て、Event Grid サブスクリプション) の設定が削除されます。 論理的に削除されたキー コンテナーの回復後に、統合サービスの設定を手動で作成し直す必要があります。 
 
 Key Vault の論理的な削除機能を使用すると、削除されたコンテナーと削除されたキー コンテナー オブジェクト (キー、シークレット、証明書など) を回復できます (論理的な削除として知られています)。 具体的には、以下のシナリオを扱います。この保護機能では、次の保護が提供されます。
 

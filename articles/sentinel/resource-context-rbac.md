@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 26124f8f650e1006244b4871e26962d417d90fd4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054250"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044177"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>リソースによる Azure Sentinel データへのアクセスを管理する
 
@@ -36,7 +36,7 @@ ms.locfileid: "102054250"
 
 - **Azure Monitor を使用する**: この方法は、複数のリソースまたはリソース グループにまたがるクエリを作成する必要がある場合に使用します。 Azure Monitor でログおよびブックに移動して、スコープを 1 つ以上の特定のリソース グループまたはリソースに定義します。
 
-Azure Monitor でリソースコンテキスト RBAC を有効にします。 詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](/azure/azure-monitor/logs/manage-access)」を参照してください。
+Azure Monitor でリソースコンテキスト RBAC を有効にします。 詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../azure-monitor/logs/manage-access.md)」を参照してください。
 
 > [!NOTE]
 > データが、Syslog、CEF、または AAD データなどの Azure リソースではない場合、またはカスタム コレクターによって収集されたデータである場合は、データを識別してアクセスを有効にするために使用されるリソース ID を手動で構成する必要があります。
@@ -66,7 +66,7 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 |---------|---------|
 |**子会社に、完全な Azure Sentinel エクスペリエンスを必要とする SOC チームがある**。     |  この場合は、マルチワークスペース アーキテクチャを使用して、データのアクセス許可を分離します。 <br><br>詳細については、次を参照してください。 <br>- [ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)<br>    - [多くのワークスペースのインシデントを一度に操作する](multiple-workspace-view.md)          |
 |**特定の種類のイベントへのアクセスを提供する必要がある**。     |  たとえば、Windows 管理者に対して、すべてのシステムで Windows セキュリティ イベントにアクセスできるようにします。 <br><br>このような場合は、[テーブルレベルの RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) を使用して、各テーブルのアクセス許可を定義します。       |
-| **リソースに基づくのではなく、アクセスをより詳細なレベルに制限するか、またはイベント内のフィールドのサブセットのみに制限する**   |   たとえば、ユーザーの子会社に基づいて Office 365 ログへのアクセスを制限することができます。 <br><br>この場合、[Power BI のダッシュボードおよびレポート](/azure/azure-monitor/platform/powerbi)で組み込みの統合を使用して、データへのアクセスを提供します。      |
+| **リソースに基づくのではなく、アクセスをより詳細なレベルに制限するか、またはイベント内のフィールドのサブセットのみに制限する**   |   たとえば、ユーザーの子会社に基づいて Office 365 ログへのアクセスを制限することができます。 <br><br>この場合、[Power BI のダッシュボードおよびレポート](../azure-monitor/visualize/powerbi.md)で組み込みの統合を使用して、データへのアクセスを提供します。      |
 | | |
 
 ## <a name="explicitly-configure-resource-context-rbac"></a>ソースコンテキスト RBAC を明示的に構成する
@@ -77,11 +77,11 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 
 **ソースコンテキスト RBAC を明示的に構成する場合**:
 
-1. Azure Monitor で、[リソースコンテキスト RBAC を有効にしている](/azure/azure-monitor/platform/manage-access)ことを確認します。 
+1. Azure Monitor で、[リソースコンテキスト RBAC を有効にしている](../azure-monitor/logs/manage-access.md)ことを確認します。 
 
-1. Azure Sentinel 環境全体を使用せずに、ご使用のリソースにアクセスする必要があるユーザーのチームごとに、[リソース グループを作成](/azure/azure-resource-manager/management/manage-resource-groups-portal)します。
+1. Azure Sentinel 環境全体を使用せずに、ご使用のリソースにアクセスする必要があるユーザーのチームごとに、[リソース グループを作成](../azure-resource-manager/management/manage-resource-groups-portal.md)します。
 
-    各チーム メンバーに[ログ閲覧者のアクセス許可](/azure/azure-monitor/platform/manage-access#resource-permissions)を割り当てます。
+    各チーム メンバーに[ログ閲覧者のアクセス許可](../azure-monitor/logs/manage-access.md#resource-permissions)を割り当てます。
 
 1. 作成したリソース チーム グループにリソースを割り当て、関連するリソース ID でイベントにタグを付けます。
 
@@ -110,7 +110,7 @@ Azure Monitor でリソースコンテキスト RBAC を有効にします。 �
 たとえば、VM を分離すると、チーム A に属する Syslog イベントは、コレクター VM A を使用して収集されます。
 
 > [!TIP]
-> - ログ フォワーダーとして、オンプレミスの VM または別のクラウド VM (AWS など) を使用する場合は、[Azure Arc](/azure/azure-arc/servers/overview) を実装して、その VM が確実にリソース ID を持つようにしてください。
+> - ログ フォワーダーとして、オンプレミスの VM または別のクラウド VM (AWS など) を使用する場合は、[Azure Arc](../azure-arc/servers/overview.md) を実装して、その VM が確実にリソース ID を持つようにしてください。
 > - ログ転送 VM 環境をスケーリングするには、CEF および Sylog ログを収集するための [VM スケール セット](https://techcommunity.microsoft.com/t5/azure-sentinel/scaling-up-syslog-cef-collection/ba-p/1185854)を作成することを検討してください。
 
 
@@ -145,7 +145,7 @@ Azure Sentinel [Logstash 出力プラグイン](connect-logstash.md)を使用し
 >
 ### <a name="resource-ids-with-the-log-analytics-api-collection"></a>Log Analytics API コレクションを使用するリソース ID
 
-[Log Analytics データ コレクター API](/azure/azure-monitor/platform/data-collector-api) を使用して収集する場合、HTTP [*x-ms-AzureResourceId*](/azure/azure-monitor/platform/data-collector-api#request-headers) 要求ヘッダーを使用して、イベントにリソース ID を割り当てます。
+[Log Analytics データ コレクター API](../azure-monitor/logs/data-collector-api.md) を使用して収集する場合、HTTP [*x-ms-AzureResourceId*](../azure-monitor/logs/data-collector-api.md#request-headers) 要求ヘッダーを使用して、イベントにリソース ID を割り当てます。
 
 リソースコンテキスト RBAC を使用しており、API によって収集されたイベントを特定のユーザーが使用できるようにする必要がある場合、[ユーザー用に作成した](#explicitly-configure-resource-context-rbac)リソース グループのリソース ID を使用します。
 

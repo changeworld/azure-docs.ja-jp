@@ -7,18 +7,18 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 0c220daab0d1d9ae7d50d37d9303d6677bd52cc1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1661fd78812bff14d9efddf9ef1c31a359aa959d
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97360307"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107365"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
 この記事では、新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成方法について説明します。 Dynamics 365 for Customer Engagement のすべてのアプリ (PowerApps、Sales、Service、Project Service、および Field Service) は、ソリューションの標準要件、互換性、および適切なプラクティスを確認する弊社の認定プロセスを通過する必要があります。 試用版エクスペリエンスでは、ユーザーがソリューションをライブの Dynamics 365 環境にデプロイできます。
 
-開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](../create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 >[!NOTE]
 > オファーが公開されると、そのオファーに対する編集は、パブリケーションのためにオファーを再送信した後、パートナー センターとオンライン ストアでのみ更新されます。

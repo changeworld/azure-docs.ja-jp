@@ -9,10 +9,10 @@ ms.date: 12/26/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8d26b6c92462abc13c42257d2c6e571156eacc0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011758"
 ---
 Azure ファイル共有は、ストレージの共有プールを表す最上位オブジェクトである "*ストレージ アカウント*" にデプロイされます。 このストレージのプールを使用すると、複数のファイル共有だけでなく、BLOB コンテナー、キュー、テーブルなどの他のストレージ リソースもデプロイできます。 ストレージ アカウントにデプロイされているすべてのストレージ リソースにより、そのストレージ アカウントに適用される制限が共有されます。 ストレージ アカウントの現在の制限を確認するには、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/files/storage-files-scale-targets.md)」をご覧ください。

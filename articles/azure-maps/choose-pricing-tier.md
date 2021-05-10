@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cb57e424642141e73588a61d026d1ff2f1a8b096
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5157716058833e2cd9ae8c9ce7b1eb36bb0f82f
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96905300"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256056"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
@@ -46,7 +46,7 @@ S0 価格レベルと S1 価格レベルでは、処理されるデータ スル
 | ジオフェンシング                                |                    |✓        |
 | Azure Maps Data (Preview)                |                     | ✓        |
 | Mobility (プレビュー)                       |                     | ✓        |
-| Weather (プレビュー)                        |✓                    |✓        |
+| Weather                       |✓                    |✓        |
 |  Creator (プレビュー)                         |                   |✓        |
 |  Elevation (プレビュー)                        |                   |✓        |
 

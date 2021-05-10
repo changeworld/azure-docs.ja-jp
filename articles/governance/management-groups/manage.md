@@ -3,12 +3,12 @@ title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
 ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 05e78d66c29e500842d14a6eeb563c4569ecf0bd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 09d11450ff63046ab458f930f64534d10863f451
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596489"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258352"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -388,5 +388,5 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 - [管理グループを作成して Azure リソースを整理する](./create-management-group-portal.md)
 - [管理グループを変更、削除、または管理する方法](./manage.md)
 - [Azure PowerShell Resources モジュールで管理グループを確認する](/powershell/module/az.resources#resources)
-- [REST API で管理グループを確認する](/rest/api/resources/managementgroups)
+- [REST API で管理グループを確認する](/rest/api/managementgroups/managementgroups)
 - [Azure CLI で管理グループを確認する](/cli/azure/account/management-group)

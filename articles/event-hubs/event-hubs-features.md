@@ -3,12 +3,12 @@ title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: da59d62cb7060389ea94b3af5e6f66a4b6347d7d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8ec4b7cdd13c3407747261ef54cb6b1fc58fdb69
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602623"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310082"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -85,7 +85,7 @@ Event Hubs では、 *発行元ポリシー* を介してイベント プロデ�
 
 [Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナーまたは Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
-## <a name="partitions"></a>メジャー グループ
+## <a name="partitions"></a>パーティション
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 
@@ -177,5 +177,5 @@ Event Hubs の詳細については、次のリンクを参照してください
     - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs の FAQ](event-hubs-faq.yml)
 * [Event Hubs サンプル](event-hubs-samples.md)

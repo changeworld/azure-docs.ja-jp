@@ -4,16 +4,16 @@ description: この記事を使用して、コンポーネントの状態およ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2020
+ms.date: 04/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7b3b8078a03ef0e891306f056c604545cde71459
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489459"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308270"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 
@@ -30,6 +30,8 @@ IoT Edge のトラブルシューティング時の最初のステップは、`c
 
 `check` コマンドは次のように実行できます。または、`--help` フラグを追加してオプションの完全なリストを表示できます。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Linux の場合:
 
 ```bash
@@ -42,6 +44,19 @@ Windows の場合:
 iotedge check
 ```
 
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.1 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge check
+```
+
+:::moniker-end
+<!-- end 1.2 -->
+
 トラブルシューティング ツールでは、次の 3 つのカテゴリに分類される多くのチェックが実行されます。
 
 * "*構成検査*" では、構成ファイルおよびコンテナー エンジンの問題を含め、IoT Edge デバイスからクラウドへの接続を妨げるおそれのある問題の詳細を調べます。
@@ -50,6 +65,18 @@ iotedge check
 
 IoT Edge チェック ツールでは、コンテナーを使用して診断が実行されます。 コンテナー イメージ `mcr.microsoft.com/azureiotedge-diagnostics:latest` は、[Microsoft Container Registry](https://github.com/microsoft/containerregistry) から入手できます。 インターネットに直接アクセスせずにデバイスのチェックを実行する必要がある場合は、デバイスにコンテナー イメージへのアクセス権が必要です。
 
+<!-- <1.2> -->
+:::moniker range=">=iotedge-2020-11"
+
+入れ子になった IoT Edge デバイスを使用するシナリオでは、親デバイスを経由してイメージのプルをルーティングすることで、子デバイスの診断イメージにアクセスできます。
+
+```bash
+sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:<port_for_api_proxy_module>/azureiotedge-diagnostics:1.2
+```
+
+<!-- </1.2> -->
+:::moniker-end
+
 エラーや警告が表示された場合の対処方法など、このツールが実行する各診断チェックの詳細については、[IoT Edge のトラブルシューティング チェック](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)に関するページを参照してください。
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>"support-bundle" コマンドを使用してデバッグ情報を収集する
@@ -57,6 +84,9 @@ IoT Edge チェック ツールでは、コンテナーを使用して診断が�
 IoT Edge デバイスからログを収集する必要がある場合、最も便利な方法は `support-bundle` コマンドを使用することです。 このコマンドを使うと、既定では、モジュールと IoT Edge Security Manager とコンテナー エンジンのログ、`iotedge check` の JSON 出力、および他の有用なデバッグ情報が収集されます。 共有しやすいように、それらが 1 つのファイルに圧縮されます。 `support-bundle` コマンドは、[リリース 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) 以降で使用できます。
 
 ログを取得する過去の期間を指定するには、`--since` フラグを指定して `support-bundle` コマンドを実行します。 たとえば、`6h` では過去 6 時間、`6d` では過去 6 日間、`6m` では過去 6 分間のログが取得されます。 オプションの完全な一覧を表示するには、`--help` フラグを含めます。
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 
 Linux の場合:
 
@@ -69,6 +99,19 @@ Windows の場合:
 ```powershell
 iotedge support-bundle --since 6h
 ```
+
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+```bash
+sudo iotedge support-bundle --since 6h
+```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 また、デバイスへの[ダイレクト メソッド](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)の呼び出しを使用して、support-bundle コマンドの出力を Azure Blob Storage にアップロードすることもできます。
 
@@ -102,10 +145,9 @@ iotedge support-bundle --since 6h
 
 [IoT Edge Security Manager](iot-edge-security-manager.md) は、デバイスの起動時およびプロビジョニングでの IoT Edge システムの初期化などの操作を担当します。 IoT Edge が開始されていない場合、セキュリティ マネージャーのログに有用な情報が提供されることがあります。
 
-Linux の場合:
-
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
+Linux の場合:
 
 * IoT Edge Security Manager の状態を確認します。
 
@@ -131,7 +173,7 @@ Linux の場合:
 
      ```bash
      [Service]
-     Environment=IOTEDGE_LOG=edgelet=debug
+     Environment=IOTEDGE_LOG=debug
      ```
 
   3. IoT Edge セキュリティ デーモンを再起動します。
@@ -141,42 +183,6 @@ Linux の場合:
      sudo systemctl daemon-reload
      sudo systemctl restart iotedge
      ```
-<!--end 1.1 -->
-:::moniker-end
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-* IoT Edge システム サービスの状態を表示します。
-
-   ```bash
-   sudo iotedge system status
-   ```
-
-* IoT Edge システム サービスのログを表示します。
-
-   ```bash
-   sudo iotedge system logs -- -f
-   ```
-
-* デバッグレベルのログを有効にして、IoT Edge システム サービスのより詳細なログを表示します。
-
-  1. デバッグレベルのログを有効にします。
-
-     ```bash
-     sudo iotedge system set-log-level debug
-     sudo iotedge system restart
-     ```
-
-  1. デバッグ後に既定の情報レベルのログに戻ります。
-
-     ```bash
-     sudo iotedge system set-log-level info
-     sudo iotedge system restart
-     ```
-
-<!-- end 1.2 -->
-:::moniker-end
 
 Windows の場合:
 
@@ -211,6 +217,43 @@ Windows の場合:
      ```powershell
      Restart-Service iotedge
      ```
+
+:::moniker-end
+<!--end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+* IoT Edge システム サービスの状態を表示します。
+
+   ```bash
+   sudo iotedge system status
+   ```
+
+* IoT Edge システム サービスのログを表示します。
+
+   ```bash
+   sudo iotedge system logs -- -f
+   ```
+
+* デバッグレベルのログを有効にして、IoT Edge システム サービスのより詳細なログを表示します。
+
+  1. デバッグレベルのログを有効にします。
+
+     ```bash
+     sudo iotedge system set-log-level debug
+     sudo iotedge system restart
+     ```
+
+  1. デバッグ後に既定の情報レベルのログに戻ります。
+
+     ```bash
+     sudo iotedge system set-log-level info
+     sudo iotedge system restart
+     ```
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ## <a name="check-container-logs-for-issues"></a>コンテナーのログで問題を確認する
 

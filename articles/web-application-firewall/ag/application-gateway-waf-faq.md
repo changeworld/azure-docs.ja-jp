@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 890688dba70a7fa654e97652b3e474b919f9a077
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785104"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585385"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Application Gateway の Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -53,6 +53,20 @@ WAF で現在サポートされているのは、CRS [2.2.9](application-gateway
 * アプリケーションのよくある構成ミスの検出 (Apache、IIS など)
 
 詳細については、[OWASP の 10 の脆弱性](https://owasp.org/www-project-top-ten/)に関するページを参照してください。
+
+## <a name="what-content-types-does-waf-support"></a>WAF はどのようなコンテンツ タイプをサポートしていますか。
+
+Application Gateway WAF は、次のコンテンツ タイプをサポートしています (マネージド ルールの場合)。
+
+* application/json
+* application/xml
+* application/x-www-form-urlencoded
+* multipart/form-data
+
+カスタム ルールの場合:
+
+* application/x-www-form-urlencoded
+* multipart/form-data
 
 ## <a name="does-waf-support-ddos-protection"></a>WAF は DDoS 保護をサポートしていますか?
 

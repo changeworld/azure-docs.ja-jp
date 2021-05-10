@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge でダイレクト メソッドを使用
 description: Live Video Analytics on IoT Edge では、いくつかのダイレクト メソッドが公開されています。 ダイレクト メソッドは、このトピックで説明する規則に基づいています。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 56fbf565af45a9b3877ff8d6c48a56713ddc3da6
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97656242"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076991"
 ---
 # <a name="direct-methods"></a>ダイレクト メソッド
 
@@ -381,7 +381,7 @@ Live Video Analytics on IoT Edge では、IoT Hub から呼び出すことがで
 | グラフ検証エラー | 400 | GraphValidationError |
 | モジュール検証エラー | 400 | ModuleValidationError |
 | リソース検証エラー | 409 | ResourceValidationError |
-| 一般的なサーバー エラー | 500 番台 |  |  |
+| 一般的なサーバー エラー | 500 番台 |  | 
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 

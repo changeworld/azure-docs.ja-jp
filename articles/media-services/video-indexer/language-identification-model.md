@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 40f2e146956919e154f59d90b56a1b03379abbb2
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "81687121"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600639"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>言語識別モデルを使用して音声言語を自動的に識別する
 
@@ -27,7 +27,7 @@ LID の現在のサポート対象: 英語、スペイン語、フランス語�
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>インデックス作成時の自動言語識別の選択
 
-API を使用して動画のインデックスを作成するとき、または[インデックスを再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)するときは、`sourceLanguage` パラメーターで `auto detect` オプションを選択します。
+API を使用して動画のインデックスを作成するとき、または[インデックスを再作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)するときは、`sourceLanguage` パラメーターで `auto detect` オプションを選択します。
 
 ポータルを使用している場合は、[Video Indexer](https://www.videoindexer.ai/) ホーム ページの **[アカウントのビデオ]** に移動し、インデックスを再作成するビデオの名前の上にカーソルを合わせます。 右下にあるインデックスの再作成ボタンをクリックします。 **[ビデオのインデックスの再作成]** ダイアログで、 **[ビデオのソース言語]** ドロップダウン ボックスから *[自動検出]* を選択します。
 

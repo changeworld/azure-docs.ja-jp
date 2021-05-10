@@ -1,7 +1,6 @@
 ---
 title: 専用 SQL プール用にユーザー定義の復元ポイントを作成する
 description: Azure portal を使用して、Azure Synapse Analytics で専用 SQL プール用に新しいユーザー定義の復元ポイントを作成する方法について説明します。
-services: synapse-analytics
 author: joannapea
 manager: igorstan
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 10/29/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21fd20100095040fda9f72b00e17147ff560fbca
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b695f6c7aabc21541fcc48efed54bbecd022f65a
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94579540"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567929"
 ---
 # <a name="user-defined-restore-points"></a>ユーザー定義の復元ポイント
 
