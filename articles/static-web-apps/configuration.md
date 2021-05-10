@@ -33,7 +33,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 詳細については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
 > [!IMPORTANT]
-> _staticwebapp.config.json_ がある場合、[_routers.json_ ファイル](./routes.md)は無視されます。
+> _staticwebapp.config.json_ がある場合、[_routes.json_ ファイル](./routes.md)は無視されます。
 
 ## <a name="routes"></a>ルート
 
