@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 868d1280179d63bd07b7e01d5e807339439c02f0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96349352"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163609"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory を使ってアプリケーションに対するグループ要求を構成する
 
@@ -29,9 +29,9 @@ Azure Active Directory では、アプリケーション内で使用するユー
 > [!IMPORTANT]
 > この機能については、留意すべき注意事項が複数あります。
 >
->- オンプレミスから同期される sAMAccountName およびセキュリティ識別子 (SID) の属性の使用に関するサポートは、AD FS およびその他の ID プロバイダーからの既存のアプリケーションの移動を有効にするように設計されています。 Azure AD 内で管理されるグループには、これらの要求を発行するために必要な属性は含まれていません。
->- 大規模な組織では、ユーザーがメンバーになっているグループ数が、Azure Active Directory によってトークンに追加される制限を超える可能性があります。 SAML トークンの場合は 150 グループ、JWT の場合は 200 グループです。 これは、予期しない結果につながります。 ユーザーが多数のグループ メンバーシップを保有している場合は、オプションを使用して、要求で出力されるグループをアプリケーションの関連するグループに制限することをお勧めします。  
->- 新規のアプリケーション開発の場合、またはアプリケーションをそれに合わせて構成できる場合および入れ子になったグループのサポートが必要ない場合は、アプリ内承認がグループではなく、アプリケーション ロールに基づくようにすることをお勧めします。  これにより、トークンに入力する必要がある情報の量が制限され、安全性が高まり、アプリの構成からユーザーの割り当てが分離されます。
+> - オンプレミスから同期される sAMAccountName およびセキュリティ識別子 (SID) の属性の使用に関するサポートは、AD FS およびその他の ID プロバイダーからの既存のアプリケーションの移動を有効にするように設計されています。 Azure AD 内で管理されるグループには、これらの要求を発行するために必要な属性は含まれていません。
+> - 大規模な組織では、ユーザーがメンバーになっているグループ数が、Azure Active Directory によってトークンに追加される制限を超える可能性があります。 SAML トークンの場合は 150 グループ、JWT の場合は 200 グループです。 これは、予期しない結果につながります。 ユーザーが多数のグループ メンバーシップを保有している場合は、オプションを使用して、要求で出力されるグループをアプリケーションの関連するグループに制限することをお勧めします。
+> - 新規のアプリケーション開発の場合、またはアプリケーションをそれに合わせて構成できる場合および入れ子になったグループのサポートが必要ない場合は、アプリ内承認がグループではなく、アプリケーション ロールに基づくようにすることをお勧めします。  これにより、トークンに入力する必要がある情報の量が制限され、安全性が高まり、アプリの構成からユーザーの割り当てが分離されます。
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>AD FS およびその他の ID プロバイダーから移行するアプリケーションに対するグループ要求
 
@@ -76,7 +76,7 @@ Active Directory Groups に対するグループ名を出力するように Azur
 
 ギャラリーまたは非ギャラリーの SAML アプリケーションに対するグループ要求を構成するには、 **[エンタープライズ アプリケーション]** を開き、一覧内で該当のアプリケーションをクリックします。次に、 **[Single Sign On configuration]\(シングル サインオン構成\)** を選択し、 **[ユーザー属性とクレーム]** を選択します。
 
-**[グループ要求を追加する]** をクリックします  
+**[グループ要求を追加する]** をクリックします
 
 ![[グループ要求を追加する] が選択された [ユーザー属性とクレーム] ページを示すスクリーンショット。](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
@@ -183,11 +183,11 @@ Azure AD objectID ではなく、Active Directory から同期されている Ac
    | **name:** | 必ず "groups" になります |
    | **source:** | 使用されていません。 省略するか、null を指定します |
    | **essential:** | 使用されていません。 省略するか、false を指定します |
-   | **additionalProperties:** | その他のプロパティのリスト。  有効なオプションは、"sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name"、"emit_as_roles" です |
+   | **additionalProperties:** | その他のプロパティのリスト。  有効なオプション: "sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name"、"emit_as_roles" |
 
    additionalProperties では、"sam_account_name"、"dns_domain_and_sam_account_name"、"netbios_domain_and_sam_account_name" のいずれか 1 つのみが必要です。  複数ある場合、最初の 1 つが使用され、それ以外は無視されます。
 
-   アプリケーションによっては、ロール要求内にユーザーに関するグループ情報が必要になります。  グループ要求からロール要求へ要求の種類を変更するには、"emit_as_roles" を追加のプロパティに付け加えます。  グループの値が、ロール要求内に出力されます。
+   アプリケーションによっては、ロール要求内にユーザーに関するグループ情報が必要になります。  要求の種類をグループ要求からロール要求に変更するには、"emit_as_roles" を追加のプロパティに付け加えます。  グループの値が、ロール要求内に出力されます。
 
    > [!NOTE]
    > "emit_as_roles" が使用された場合、ユーザーが割り当て済みとして構成されているアプリケーション ロールは、ロール要求には表示されません
@@ -203,7 +203,7 @@ OAuth アクセス トークンの中で、dnsDomainName\SAMAccountName の形�
         "additionalProperties": ["dns_domain_and_sam_account_name"]
     }]
 }
- ```
+```
 
 SAML および OIDC ID トークンの中でロール要求として netbiosDomain\samAccountName 形式で返されたグループ名を出力するには、次のように記述します。
 
@@ -218,8 +218,8 @@ SAML および OIDC ID トークンの中でロール要求として netbiosDoma
         "name": "groups",
         "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
     }]
- }
- ```
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

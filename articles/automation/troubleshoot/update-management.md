@@ -3,14 +3,15 @@ title: Azure Automation Update Management に関する問題のトラブルシ�
 description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 04/16/2021
+ms.date: 04/18/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: f23632ba6a6b83f92b2bfc90beb4c1a8613c090a
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5d73f7232afc9dcd6f7e069297efac763c242f7b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587365"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164257"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -393,10 +394,10 @@ Windows Update はいくつかのレジストリ キーによって変更でき�
 
 ### <a name="issue"></a>問題
 
-マシンが `Failed to start` の状態と表示されます。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
+あるマシンに `Failed to start` または `Failed` 状態が表示されます。 マシンの特定の詳細情報を表示すると、次のエラーが表示されます。
 
 ```error
-Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+For one or more machines in schedule, UM job run resulted in either Failed or Failed to start state. Guide available at https://aka.ms/UMSucrFailed.
 ```
 
 ### <a name="cause"></a>原因
@@ -410,6 +411,8 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * Automation アカウントで 200 個の同時ジョブの制限に達した場合、更新の実行が制限されました。 各展開は 1 つのジョブと見なされ、更新プログラムの展開内の各マシンは 1 つのジョブとカウントされます。 Automation アカウントで現在実行されている他のオートメーション ジョブや更新プログラムの展開は、すべて同時ジョブ制限の対象になります。
 
 ### <a name="resolution"></a>解決方法
+
+REST API を使用することで、プログラミングによりさらに多くの詳細を取得できます。 ソフトウェア更新プログラムの構成マシン実行の一覧を取得する方法か、ソフトウェア更新プログラムの構成マシン実行を 1 つ ID 別に取得する方法については、「[ソフトウェア更新プログラムの構成マシン実行](/rest/api/automation/softwareupdateconfigurationmachineruns)」を参照してください。
 
 該当する場合は、更新プログラムの展開に[動的グループ](../update-management/configure-groups.md)を使用します。 さらに、次の手順を実行できます。
 
@@ -505,11 +508,13 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 
 ### <a name="issue"></a>問題
 
-更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
+更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。 エラー メッセージ `For one or more machines in schedule, UM job run resulted in Maintenance Window Exceeded state. Guide available at https://aka.ms/UMSucrMwExceeded.` が表示されることがあります
 
 ### <a name="resolution"></a>解決方法
 
 正常に開始した後、更新プログラムの実行中にこれが発生した理由を理解するには、実行で影響を受けたマシンからの[ジョブ出力を確認](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。  
+
+REST API を使用することで、プログラミングによりさらに多くの詳細を取得できます。 ソフトウェア更新プログラムの構成マシン実行の一覧を取得する方法か、ソフトウェア更新プログラムの構成マシン実行を 1 つ ID 別に取得する方法については、「[ソフトウェア更新プログラムの構成マシン実行](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurationmachineruns)」を参照してください。
 
 スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
 

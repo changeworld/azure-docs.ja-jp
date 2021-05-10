@@ -16,19 +16,19 @@ ms.date: 01/25/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a014bd5c8f1edbfb00019b8541cef552271d65b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85f5322d43a26e35d86fd92f6d85a49815db0491
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98762842"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165733"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
 この記事は、Azure AD パススルー認証に関する一般的な問題のトラブルシューティング情報を見つける助けとなります。
 
->[!IMPORTANT]
->パススルー認証でユーザーのサインインの問題が発生している場合、フォールバックするためのクラウド専用グローバル管理者アカウントを用意せずに機能を無効にしたり、パススルー認証エージェントをアンインストールしたりしないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
+> [!IMPORTANT]
+> パススルー認証でユーザーのサインインの問題が発生している場合、フォールバックするためのクラウド専用グローバル管理者アカウントを用意せずに機能を無効にしたり、パススルー認証エージェントをアンインストールしたりしないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
 
 ## <a name="general-issues"></a>一般的な問題
 
@@ -42,34 +42,36 @@ ms.locfileid: "98762842"
 
 ### <a name="user-facing-sign-in-error-messages"></a>ユーザーに表示されるサインインのエラー メッセージ
 
-ユーザーがパススルー認証を使用してサインインできない場合、Azure AD のサインイン画面に、次のようなユーザー向けエラーの 1 つが表示されることがあります。 
+ユーザーがパススルー認証を使用してサインインできない場合、Azure AD のサインイン画面に、次のようなユーザー向けエラーの 1 つが表示されることがあります。
 
 |エラー|説明|解決方法
 | --- | --- | ---
-|AADSTS80001|Unable to connect to Active Directory (Active Directory に接続できません)|エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。  
+|AADSTS80001|Unable to connect to Active Directory (Active Directory に接続できません)|エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。
 |AADSTS8002|A timeout occurred connecting to Active Directory (Active Directory への接続中にタイムアウトが発生しました)|Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。
 |AADSTS80004|The username passed to the agent was not valid (エージェントに渡されたユーザー名が無効です)|サインインしようとしているユーザーのユーザー名が正しいことを確認してください。
 |AADSTS80005|Validation encountered unpredictable WebException (検証で予測外の WebException が発生しました)|一時的なエラーです。 要求をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに連絡してください。
 |AADSTS80007|An error occurred communicating with Active Directory (Active Directory との通信中にエラーが発生しました)|Check the agent logs for more information and verify that Active Directory is operating as expected. (エージェント ログで詳細を確認し、Active Directory が期待通りに動作していることを確認してください。)
 
-### <a name="users-get-invalid-usernamepassword-error"></a>ユーザーが無効なユーザー名またはパスワードのエラーを取得する 
+### <a name="users-get-invalid-usernamepassword-error"></a>ユーザーが無効なユーザー名またはパスワードのエラーを取得する
 
 これは、ユーザーのオンプレミスの UserPrincipalName (UPN) がユーザーのクラウドの UPN と異なる場合に発生する可能性があります。
 
 これが問題であることを確認するには、まずパススルー認証エージェントが正常に機能していることをテストします。
 
+1. テスト アカウントを作成します。
 
-1. テスト アカウントを作成します。  
 2. エージェント マシンに PowerShell モジュールをインポートします。
 
- ```powershell
- Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
- ```
-3. Invoke PowerShell コマンドを実行します。 
+   ```powershell
+   Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+   ```
 
- ```powershell
- Invoke-PassthroughAuthOnPremLogonTroubleshooter 
- ``` 
+3. Invoke PowerShell コマンドを実行します。
+
+   ```powershell
+   Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+   ```
+
 4. 資格情報の入力を求められたら、(https://login.microsoftonline.com) ) へのサインインに使用するものと同じユーザー名とパスワードを入力します。
 
 同じユーザー名またはパスワードのエラーが発生した場合、パススルー認証エージェントは正常に動作していて、オンプレミスの UPN がルーティング不可能であることが問題の可能性があることを意味しています。 詳細については、「[代替ログイン ID を構成する](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
@@ -94,12 +96,12 @@ ms.locfileid: "98762842"
 | 80004 | サインイン要求で使用されたユーザー プリンシパル名 (UPN) が正しくありません。 | 正しいユーザー名でサインインするようユーザーに求めます。
 | 80005 | 認証エージェント: エラーが発生しました。 | 一時的なエラーです。 後で再試行してください。
 | 80007 | 認証エージェントが Active Directory に接続できません。 | 認証エージェントから Active Directory に到達可能かどうかを調べます。
-| 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。 
+| 80010 | 認証エージェントはパスワードを復号化できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
 | 80014 | 検証要求からの応答が最大経過時間を超えました。 | 認証エージェントがタイムアウトしました。このエラーの詳細を調べるには、エラー コード、相関 ID、タイムスタンプを添えて、サポート チケットを開いてください
 
->[!IMPORTANT]
->パススルー認証エージェントでは、[Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
+> [!IMPORTANT]
+> パススルー認証エージェントでは、[Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) を呼び出して、Active Directory に対してユーザー名とパスワードを検証することで Azure AD ユーザーを認証します。 その結果、ワークステーションのログオン アクセスを制限するよう Active Directory の "ログオン先" を設定した場合は、"ログオン先" のサーバーの一覧に、パススルー認証エージェントをホストするサーバーも追加する必要があります。 これに失敗すると、Azure AD へのサインインからユーザーがブロックされます。
 
 ## <a name="authentication-agent-installation-issues"></a>認証エージェントのインストールに関する問題
 
@@ -157,8 +159,6 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 詳細な分析を取得するには、"セッション" ログを有効にします (このオプションを表示するにはイベント ビューアー アプリケーション内で右クリックします)。 通常の操作中に、このログを有効にして認証エージェントを実行しないでください。これはトラブルシューティングにのみ使用します。 ログの内容は、ログを再度無効にした後にのみ表示されます。
 
-
-
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 
 ユーザー サインイン エラーのトラブルシューティングを行うときは、 **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の表に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
@@ -193,5 +193,5 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ![パススルー認証のパフォーマンス モニター カウンター](./media/tshoot-connect-pass-through-authentication/pta12.png)
 
->[!IMPORTANT]
->パススルー認証では、負荷分散 _ではなく_、複数の認証エージェントを使用して高可用性を確保します お使いの構成によっては、必ずしもすべての認証エージェントがほぼ _同数_ の要求を受け取るとは _限りません_。 特定の認証エージェントがトラフィックを一切受け取らないということもあり得ます。
+> [!IMPORTANT]
+> パススルー認証では、負荷分散 _ではなく_、複数の認証エージェントを使用して高可用性を確保します お使いの構成によっては、必ずしもすべての認証エージェントがほぼ _同数_ の要求を受け取るとは _限りません_。 特定の認証エージェントがトラフィックを一切受け取らないということもあり得ます。

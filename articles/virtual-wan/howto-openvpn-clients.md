@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN 用に OpenVPN クライアントを構成する
-description: Azure Virtual WAN 用に OpenVPN クライアントを構成する手順
+description: この記事では、Azure Virtual WAN 向け OpenVPN クライアントを構成するときに役立ちます。 Windows、Mac、iOS、Linux のクライアント構成手順が含まれます。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 05502b344b1224dff5d12f95b96b05baace98970
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91b4a9a69912f7a5980348cc2b9a874673fa0eb2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491003"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163393"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>Azure Virtual WAN 用に OpenVPN クライアントを構成する
 

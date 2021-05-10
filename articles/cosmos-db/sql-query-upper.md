@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/08/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 06f85d97266e78b343ad8da233b77e369da5ee65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8781acbeceb8577588b7f3e3a4c44dfceefeaeac
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93334907"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160837"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,7 +53,7 @@ SELECT UPPER("Abc") AS upper
 
 ## <a name="remarks"></a>解説
 
-このシステム関数では、インデックスは使用されません。
+このシステム関数では、[インデックスは使用](index-overview.md#index-usage)されません。
 
 ## <a name="next-steps"></a>次のステップ
 

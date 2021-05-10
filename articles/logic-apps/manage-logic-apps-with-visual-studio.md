@@ -4,15 +4,15 @@ description: Visual Studio と Cloud Explorer を使用して、ロジック ア
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
-ms.topic: article
+ms.topic: conceptual
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: 56b74e440fcb09ab206bbb069517dd756221f809
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/23/2021
+ms.openlocfilehash: 443dd0a1172c98b67282b50659ffeb3611470413
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639565"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163771"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -241,31 +241,59 @@ Azure に展開されているロジック アプリを、Visual Studio から�
 
    ![各ステップの入力と出力を表示する](./media/manage-logic-apps-with-visual-studio/view-run-history-inputs-outputs.png)
 
-## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
+<a name="disable-enable-logic-apps"></a>
 
-ロジック アプリを削除することなく、次にトリガー条件が満たされたときにトリガーが発動しないようにすることができます。 ロジック アプリを無効にすると、それ以降、Logic Apps エンジンはロジック アプリのワークフロー インスタンスを作成および実行しなくなります。 Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[無効化]** を選びます。
+## <a name="disable-or-enable-logic-apps"></a>ロジック アプリを無効または有効にする
+
+次にトリガー条件が満たされたときにトリガーが発動しないようにするには、ロジック アプリを無効にします。 ロジック アプリを無効にすると、ワークフロー インスタンスに次のような影響が生じます。
+
+* Logic Apps サービスは、進行中および保留中の実行をすべてその完了まで続行します。 このプロセスは、ボリュームやバックログによっては、完了までに時間がかかる場合があります。
+
+* Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+
+* トリガーは、次にその条件が満たされたときに起動されません。
+
+* トリガーの状態には、ロジック アプリが停止したポイントが記憶されます。 そのため、ロジック アプリを再度有効にすると、前回の実行以降のすべての未処理の項目に対してトリガーが起動されます。
+
+  前回の実行以降の未処理の項目に対してトリガーが起動しないようにするには、ロジック アプリを再度有効にする前に、トリガーの状態をクリアします。
+
+  1. ロジック アプリで、ワークフローのトリガーをどこでもかまわないので編集します。
+  1. 変更を保存します。 この手順により、トリガーの現在の状態がリセットされます。
+  1. [ロジック アプリを再度有効にします](#enable-logic-apps)。
+
+<a name="disable-logic-apps"></a>
+
+### <a name="disable-logic-apps"></a>ロジック アプリを無効にする
+
+Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[無効化]** を選びます。
 
 ![Cloud Explorer でロジック アプリを無効にする](./media/manage-logic-apps-with-visual-studio/disable-logic-app-cloud-explorer.png)
 
-> [!NOTE]
-> ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。
+<a name="enable-logic-apps"></a>
 
-ロジック アプリを再度有効にするには、Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[有効化]** を選びます。
+### <a name="enable-logic-apps"></a>ロジック アプリを有効にする
+
+Cloud Explorer でロジック アプリのショートカット メニューを開き、**[有効化]** を選びます。
 
 ![Cloud Explorer でロジック アプリを有効にする](./media/manage-logic-apps-with-visual-studio/enable-logic-app-cloud-explorer.png)
 
-## <a name="delete-your-logic-app"></a>ロジック アプリを削除する
+<a name="delete-logic-apps"></a>
+
+## <a name="delete-logic-apps"></a>ロジック アプリを削除する
+
+ロジック アプリを削除すると、ワークフロー インスタンスに次のような影響が生じます。
+
+* 進行中および保留中の実行があれば、それらのキャンセルを Logic Apps サービスがベスト エフォートで試みます。
+
+  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、ランタイムがキャンセル プロセスに対応している間に、いくつかの実行が実行対象として選択されてしまう場合があります。
+
+* Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+
+* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
 
 Azure Portal からロジック アプリを削除するには、Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[削除]** を選びます。
 
 ![Azure portal からロジック アプリを削除する](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
-
-> [!NOTE]
-> ロジック アプリを削除にすると、新しい実行は開始されなくなります。 すべての進行中および保留中の実行は取り消されます。 何千もの実行がある場合、取り消しが完了するまでかなりの時間がかかる場合があります。
-
-> [!NOTE]
-> 子ロジック アプリを削除して再作成する場合は、親ロジック アプリを再保存する必要があります。 再作成された子アプリのメタデータは異なります。
-> 子を再作成した後に親ロジック アプリを再保存しないと、子ロジック アプリへの呼び出しは失敗し、"未承認" というエラーが表示されます。 この動作は、統合アカウントのアーティファクトを使用する親子ロジック アプリや、Azure Functions を呼び出す親子ロジック アプリに当てはまります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

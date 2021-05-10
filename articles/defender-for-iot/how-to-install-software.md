@@ -1,14 +1,14 @@
 ---
 title: Defender for IoT のインストール
 description: Azure Defender for IoT のセンサーとオンプレミス管理コンソールをインストールする方法について説明します。
-ms.date: 12/2/2020
+ms.date: 04/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 5bdb292750ea041be68a22519583511f58b3b517
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77ff5a6d29544599a74bd6176e8b8e99a5c41968
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782250"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076484"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT のインストール
 
@@ -210,7 +210,7 @@ Dell BIOS を構成するには:
 
 #### <a name="import-the-bios-configuration-file"></a>BIOS 構成ファイルをインポートする
 
-この記事では、構成ファイルを使用して BIOS を構成する方法について説明します。
+このセクションでは、構成ファイルを使用して BIOS を構成する方法について説明します。
 
 1. 静的 IP アドレス **10.100.100.200** が事前に構成された PC を **iDRAC** ポートに接続します。
 
@@ -328,11 +328,11 @@ BIOS にアクセスした後、 **[デバイス設定]** に移動します。
 
 1. **[SENSOR-RELEASE-\<version\> Enterprise]** を選択します。
 
-   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="バージョン選択を示すスクリーンショット。":::   
+   :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="センサーのバージョンとエンタープライズの種類を選択する。":::   
 
 1. アプライアンス プロファイルとネットワークのプロパティを定義します。
 
-   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="アプライアンス プロファイルを示すスクリーンショット。":::   
+   :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="アプライアンス プロファイルとネットワーク プロパティを示すスクリーンショット。":::   
 
    | パラメーター | 構成 |
    |--|--|
@@ -354,7 +354,7 @@ BIOS にアクセスした後、 **[デバイス設定]** に移動します。
 
 ## <a name="hpe-proliant-dl20-installation"></a>HPE ProLiant DL20 のインストール
 
-この記事では、HPE ProLiant DL20 のインストール プロセスについて説明します。これには次の手順が含まれます。
+このセクションでは、HPE ProLiant DL20 のインストール プロセスについて説明します。これには次の手順が含まれます。
 
   - リモート アクセスを有効にし、既定の管理者パスワードを更新する。
   - BIOS と RAID の設定を構成する。
@@ -470,7 +470,7 @@ HPE BIOS を構成するには:
 
     :::image type="content" source="media/tutorial-install-components/sensor-version-select-screen-v2.png" alt-text="バージョンを選択するための画面のスクリーンショット。":::
 
-1. インストール ウィザードで、アプライアンス プロファイルとネットワークのプロパティを定義します。
+1. インストール ウィザードで、ハードウェア プロファイルとネットワークのプロパティを定義します。
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="インストール ウィザードを示すスクリーンショット。":::
 
@@ -571,10 +571,101 @@ Enterprise 構成は同じです。
 
 1. **Enter** キーを選択して続行します。
 
+## <a name="hp-edgeline-300-installation"></a>HP EdgeLine 300 のインストール
+
+•   既定の管理ユーザーが提供されます。 ネットワーク構成中にパスワードを変更することをお勧めします。
+
+•   インストール プロセスには約 20 分かかります。 インストール後、システムが数回再起動されます。
+
+### <a name="hp-edgeline-300-back-panel"></a>HP EdgeLine 300 の背面パネル
+
+:::image type="content" source="media/tutorial-install-components/edgeline-el300-panel.png" alt-text="EL300 の背面パネルの表示":::
+
+### <a name="enable-remote-access"></a>リモート アクセスの有効化
+
+1. Web ブラウザーに iSM IP アドレスを入力します。
+
+1. アプライアンスで検出された既定のユーザー名とパスワードを使用してサインインします。
+
+1. **[Wired and Wireless Network]\(有線およびワイヤレス ネットワーク\)**  >  **[IPV4]** の順に移動します
+
+    :::image type="content" source="media/tutorial-install-components/wired-and-wireless.png" alt-text="強調表示されたセクションに移動する。":::
+
+1. **DHCP のトグル** を無効にします。
+
+1. IPv4 アドレスを次のように構成します。
+    - **IPv4 アドレス**: `192.168.1.125`
+    - **IPv4 サブネット マスク**: `255.255.255.0`
+    - **IPv4 ゲートウェイ**: `192.168.1.1`
+
+1. **[適用]** を選択します。
+
+1. サインアウトし、アプライアンスを再起動します。
+
+### <a name="configure-the-bios"></a>BIOS を構成する
+
+次の手順では、HP EL300 アプライアンス用に BIOS を構成する方法について説明します。
+
+BIOS を構成するには:
+
+1. アプライアンスをオンにし、**F9** キーを押して BIOS に入ります。
+
+1. **[Advanced]** を選択し、 **[CSM Support]** まで下にスクロールします。
+
+    :::image type="content" source="media/tutorial-install-components/csm-support.png" alt-text="CSM サポートを有効にして追加メニューを開く。":::
+
+1. **Enter** キーを押して CSM Support を有効にします。
+
+1. **[Storage]** に移動し、 **+/-** キーを押して [Legacy] に変更します。
+
+1. **[Video]** に移動し、 **+/-** キーを押して [Legacy] に変更します。
+
+    :::image type="content" source="media/tutorial-install-components/storage-and-video.png" alt-text="ストレージとビデオに移動し、それらを [Legacy] に変更する。":::
+
+1. **[Boot]**  >  **[Boot mode select]** の順に移動します。
+
+1. **+/-** キーを押して [Legacy] に変更します。
+
+    :::image type="content" source="media/tutorial-install-components/boot-mode.png" alt-text="Boot mode select を [LEGACY] に変更する。":::
+
+1. **[Save & Exit]** に移動します。
+
+1. **[Save Changes and Exit]** を選択します。
+
+    :::image type="content" source="media/tutorial-install-components/save-and-exit.png" alt-text="変更内容を保存し、システムを終了する。":::
+
+1. **[Yes]** を選択すると、アプライアンスが再起動します。
+
+1. **F11** キーを押して、**Boot Menu** に入ります。
+
+1. センサー イメージがあるデバイスを選択します。 **DVD** または **USB** です。
+
+1. 言語を選択します。
+
+1. **[sensor-10.0.3.12-62a2a3f724 Office: 4 CPUS, 8GB RAM, 100GB STORAGE]** を選択します。
+
+    :::image type="content" source="media/tutorial-install-components/sensor-select-screen.png" alt-text="表示されているセンサーのバージョンを選択する。":::
+
+1. インストール ウィザードで、アプライアンス プロファイルとネットワークのプロパティを定義します。
+
+    :::image type="content" source="media/tutorial-install-components/appliance-parameters.png" alt-text="以下のパラメーターを使用して、アプライアンス プロファイルおよびネットワーク構成を定義する。":::
+
+    | パラメーター | 構成 |
+    |--|--|
+    | **configure hardware profile** | **office** |
+    | **configure management network interface** | **enp3s0** <br />or <br />**設定可能な値** |
+    | **configure management network IP address:** | **顧客が指定した IP アドレス** |
+    | **configure subnet mask:** | **顧客が指定した IP アドレス** |
+    | **configure DNS:** | **顧客が指定した IP アドレス** |
+    | **configure default gateway IP address:** | **顧客が指定した IP アドレス** |
+    | **configure input interface(s)** | **enp4s0** <br />or <br />**設定可能な値** |
+    | **configure bridge interface(s)** | なし |
+
+1. 設定を受け入れ、「`Y`」と入力して続行します。
+
 ## <a name="sensor-installation-for-the-virtual-appliance"></a>仮想アプライアンスのセンサーのインストール
 
 次のアーキテクチャで、Defender for IoT センサー用の仮想マシンをデプロイできます。
-
 
 | アーキテクチャ | 仕様 | 使用方法 | 説明 |
 |---|---|---|---|
@@ -703,6 +794,111 @@ Enterprise 構成は同じです。
 
     :::image type="content" source="media/tutorial-install-components/defender-for-iot-sign-in-screen.png" alt-text="管理コンソールへのアクセスを示すスクリーンショット。":::
 
+## <a name="on-premises-management-console-installation"></a>オンプレミス管理コンソールのインストール
+
+アプライアンスにソフトウェアをインストールする前に、そのアプライアンスの BIOS 構成を調整する必要があります。
+
+### <a name="bios-configuration"></a>BIOS 構成
+
+アプライアンス用に BIOS を構成するには:
+
+1. [リモート アクセスを有効にし、パスワードを更新します](#enable-remote-access-and-update-the-password)。
+
+1. [BIOS を構成します](#configure-the-hpe-bios)。
+
+### <a name="software-installation"></a>ソフトウェア インストール
+
+インストール プロセスは約 20 分かかります。 インストール後、システムが数回再起動されます。 
+
+インストール プロセス中に、セカンダリ NIC を追加することができます。 インストール中にセカンダリ NIC をインストールしないことにした場合は、後で[セカンダリ NIC を追加](#add-a-secondary-nic)できます。 
+
+ソフトウェアをインストールするには:
+
+1. インストール プロセスに適した言語を選択します。
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-language-select.png" alt-text="インストール プロセスに適した言語を選択します。":::     
+
+1. **[MANAGEMENT-RELEASE-\<version\>\<deployment type\>]** を選択します。
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-install-screen.png" alt-text="使用しているバージョンを選択する。":::   
+
+1. インストール ウィザードで、ネットワークのプロパティを定義します。
+
+   :::image type="content" source="media/tutorial-install-components/on-prem-first-steps-install.png" alt-text="アプライアンス プロファイルを示すスクリーンショット。":::   
+
+   | パラメーター | 構成 |
+   |--|--|
+   | **configure management network interface** | Dell の場合: **eth0、eth1** <br /> HP の場合: **enu1、enu2** <br /> or <br />**設定可能な値** |
+   | **configure management network IP address:** | **顧客が指定した IP アドレス** |
+   | **configure subnet mask:** | **顧客が指定した IP アドレス** |
+   | **configure DNS:** | **顧客が指定した IP アドレス** |
+   | **configure default gateway IP address:** | **顧客が指定した IP アドレス** |
+   
+1. **(省略可能)** セカンダリ ネットワーク インターフェイスカード (NIC) をインストールする場合は、次のアプライアンス プロファイルとネットワーク プロパティを定義します。
+
+    :::image type="content" source="media/tutorial-install-components/on-prem-secondary-nic-install.png" alt-text="セカンダリ NIC のインストールに関する質問を示すスクリーンショット。":::
+
+   | パラメーター | 構成 |
+   |--|--|
+   | **configure sensor monitoring interface (Optional):** | **eth1**、または **設定可能な値** |
+   | **configure an IP address for the sensor monitoring interface:** | **顧客が指定した IP アドレス** |
+   | **configure a subnet mask for the sensor monitoring interface:** | **顧客が指定した IP アドレス** |
+
+1. 設定を受け入れ、「`Y`」と入力して続行します。 
+
+1. 約 10 分後に、2 つの資格情報のセットが表示されます。 1 つは **CyberX** ユーザーに関するもので、もう 1 つは **Support** ユーザーに関するものです。
+
+   :::image type="content" source="media/tutorial-install-components/credentials-screen.png" alt-text="これらの資格情報は再表示されないため、コピーしておく。":::  
+
+   ユーザー名とパスワードを保存します。これらの資格情報は、初めてプラットフォームを使用するときにアクセスするために必要になります。
+
+1. **Enter** キーを選択して続行します。
+
+アプライアンスの物理ポートを見つける方法については、「[ポートを見つける](#find-your-port)」を参照してください。
+
+### <a name="add-a-secondary-nic"></a>セカンダリ NIC を追加する
+
+セカンダリ NIC を追加することで、オンプレミスの管理コンソールのセキュリティを強化することができます。 セカンダリ NIC を追加して、ユーザー専用に 1 つ作成します。もう 1 つは、ルーティングされたネットワークのゲートウェイの構成をサポートするためのものとなります。 2 つ目の NIC は、IP アドレス範囲内のすべての接続されたセンサー専用です。
+
+どちらの NIC でもユーザー インターフェイス (UI) が有効になっています。 ルーティングが不要な場合、UI でサポートされているすべての機能がセカンダリ NIC で使用できるようになります。 高可用性はセカンダリ NIC で実行されます。
+
+セカンダリ NIC をデプロイしないことにした場合は、すべての機能がプライマリ NIC を介して使用できるようになります。 
+
+オンプレミスの管理コンソールを既に構成しており、オンプレミスの管理コンソールにセカンダリ NIC を追加したい場合は、次の手順を使用します。
+
+1. ネットワークの再構成コマンドを使用します。
+
+    ```bash
+    sudo cyberx-management-network-reconfigure
+    ```
+
+1. 以下の質問に対して、次の回答を入力します。
+
+    :::image type="content" source="media/tutorial-install-components/network-reconfig-command.png" alt-text="次の回答を入力してアプライアンスを構成する。":::
+
+    | パラメーター | 入力する回答 |
+    |--|--|
+    | **Management Network IP address** | `N` |
+    | **サブネット マスク** | `N` |
+    | **DNS** | `N` |
+    | **Default gateway IP Address** | `N` |
+    | **Sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information, see the Installation instructions)**| `Y`、**設定可能な値を選択します** |
+    | **An IP address for the sensor monitoring interface (accessible by the sensors)** | `Y`、**顧客が指定した IP アドレス**|
+    | **A subnet mask for the sensor monitoring interface (accessible by the sensors)** | `Y`、**顧客が指定した IP アドレス** |
+    | **hostname** | **顧客が指定** |
+
+1. すべての選択内容を確認し、「`Y`」と入力して変更を受け入れます。 システムが再起動します。
+
+### <a name="find-your-port"></a>ポートを見つける
+
+デバイスの物理ポートが見つからない場合は、次のコマンドを使用できます。
+
+```bash
+sudo ethtool -p <port value> <time-in-seconds>
+```
+
+このコマンドを実行すると、指定された期間、ポートのライトが点滅します。 たとえば、「`sudo ethtool -p eno1 120`」と入力すると、2 分間、ポート eno1 が点滅し、アプライアンスの背面のポートを見つけることができます。 
+
 ## <a name="virtual-appliance-on-premises-management-console-installation"></a>仮想アプライアンス:オンプレミス管理コンソールのインストール
 
 オンプレミス管理コンソール VM では、次のアーキテクチャがサポートされます。
@@ -823,11 +1019,7 @@ Hyper-V を使用して仮想マシンを作成するには:
 
 ### <a name="software-installation-esxi-and-hyper-v"></a>ソフトウェア インストール (ESXi および Hyper-V)
 
-仮想マシンを起動すると、ISO イメージからインストール プロセスが開始されます。 セキュリティを強化するために、オンプレミスの管理コンソールに 2 つ目のネットワーク インターフェイスを作成できます。 1 つのネットワーク インターフェイスはユーザー専用で、ルーティングされたネットワークのゲートウェイの構成をサポートできます。 2 つ目のネットワーク インターフェイスは、IP アドレス範囲内のすべての接続されたセンサー専用です。
-
-どちらのネットワーク インターフェイスでもユーザー インターフェイス (UI) が有効になっており、UI でサポートされているすべての機能は、ルーティングが不要であればセカンダリ ネットワーク インターフェイスで使用できるようになります。 高可用性は、セカンダリ ネットワーク インターフェイスで実行されます。
-
-セカンダリ ネットワーク インターフェイスをデプロイしないことを選択した場合は、すべての機能がプライマリ ネットワーク インターフェイスを介して使用できるようになります。 
+仮想マシンを起動すると、ISO イメージからインストール プロセスが開始されます。
 
 ソフトウェアをインストールするには:
 
@@ -837,22 +1029,9 @@ Hyper-V を使用して仮想マシンを作成するには:
 
 1. センサー管理ネットワークのネットワーク インターフェイスを定義します (インターフェイス、IP、サブネット、DNS サーバー、既定のゲートウェイ)。
 
-1. (省略可能) オンプレミスの管理コンソールに 2 つ目のネットワーク インターフェイスを追加します。
+1. サインイン資格情報が自動的に生成されます。 ユーザー名とパスワードを保存します。これらの資格情報は、初めてプラットフォームを使用するときにアクセスするために必要になります。
 
-    1. `Please type sensor monitoring interface (Optional. Applicable when sensors are on a different network segment. For more information see the Installation instructions): <name of interface>`
-    
-    1. `Please type an IP address for the sensor monitoring interface (accessible by the sensors): <ip address>`
-    
-    1. `Please type a subnet mask for the sensor monitoring interface (accessible by the sensors): <subnet>`
-
-1. サインイン資格情報が自動的に生成され、表示されます。 これらの資格情報は、サインインと管理に必要であるため、安全な場所に保管してください。
-
-    | ユーザー名 | 説明 |
-    |--|--|
-    | サポート | ユーザー管理のための管理ユーザー。 |
-    | CyberX | アプライアンスにアクセスするための root に相当します。 |
-
-1. アプライアンスが再起動されます。
+   その後、アプライアンスが再起動します。
 
 1. 以前に構成した IP アドレス `<https://ip_address>` を使用して管理コンソールにアクセスします。
 

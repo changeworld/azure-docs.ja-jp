@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c0cc93fee8aacc711a797925cb2e2808b73cafd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64514e69b41dda26fc39e747d7fef88706a64c64
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93338834"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163879"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,23 +62,7 @@ SELECT ENDSWITH("abc", "b", false) AS e1, ENDSWITH("abc", "bC", false) AS e2, EN
 
 ## <a name="remarks"></a>解説
 
-このシステム関数は、[範囲インデックス](index-policy.md#includeexclude-strategy)の恩恵を受けます。
-
-システム関数のプロパティのカーディナリティが増加するにつれて、EndsWith の RU 消費量は増加します。 つまり、プロパティ値に特定の文字列で終わるかどうかを確認する場合、クエリ RU の料金は、そのプロパティで使用可能な値の数によって決まります。
-
-たとえば、town と country という 2 つのプロパティで考えてみましょう。 town のカーディナリティは 5,000 で、country のカーディナリティは 200 です。 2 つのクエリの例を次に示します。
-
-```sql
-    SELECT * FROM c WHERE ENDSWITH(c.town, "York", false)
-```
-
-```sql
-    SELECT * FROM c WHERE ENDSWITH(c.country, "States", false)
-```
-
-最初のクエリの方が 2 番目のクエリよりも多くの RU を使用すると思われます。これは、town のカーディナリティの方が country よりも多いためです。
-
-EndsWith のプロパティ サイズが一部のドキュメントで 1 KB より大きい場合、クエリ エンジンはこれらのドキュメントを読み込む必要があります。 この場合、クエリ エンジンは、インデックスで EndsWith を完全には評価できなくなります。 プロパティ サイズが 1 KB より大きいドキュメントが多数ある場合、EndsWith の RU 料金は高くなります。
+この文字列システム関数でインデックスがどのように使用されるかについては[こちら](sql-query-string-functions.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

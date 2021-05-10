@@ -1,6 +1,6 @@
 ---
 title: サイト間接続用の強制トンネリングを構成する
-description: すべてのインターネットへのトラフィックをオンプレミスの場所に (強制的に) リダイレクトする方法。
+description: すべてのインターネットへのトラフィックをオンプレミスの場所に (強制的に) リダイレクトする方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: afd1c1d5312a9fbf39b401b0cbb4b9997f27407a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c53a59279a8101f29cb9bfb64f4ccd1b4921283e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869040"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205451"
 ---
 # <a name="configure-forced-tunneling"></a>強制トンネリングについて
 

@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
-ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3011309da477dcfad2285e5832dfa163f69cc419
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382805"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108183544"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 
@@ -106,6 +106,14 @@ ms.locfileid: "100382805"
 - **原因**:アクセス トークンを生成したユーザーは、リンクされたサービスに指定されている Databricks クラスターへのアクセスを許可されていません。
 
 - **推奨事項**:ワークスペースで必要なアクセス許可がユーザーにあることを確認します。
+
+<br/> 
+
+- **メッセージ**: `Job is not fully initialized yet. Please retry later.`
+
+- **原因**: ジョブが初期化されていません。
+
+- **推奨**: しばらく待ってから、後でもう一度お試しください。
 
 ### <a name="error-code-3203"></a>エラー コード:3203
 

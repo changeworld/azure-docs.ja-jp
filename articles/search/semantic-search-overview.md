@@ -9,19 +9,32 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 04300b8d148bb22bf585aa81481c475b347ad462
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4871f23577213430e530270d23b070e35d831bc4
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222046"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165355"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのセマンティック検索
 
 > [!IMPORTANT]
 > セマンティック検索はパブリック プレビュー段階にあり、プレビュー REST API とポータルを介してのみ利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。一般提供時に同じ実装があるとは限りません。 これらの機能は課金対象です。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
-セマンティック検索は、検索結果にセマンティックの関連性と Language Understanding を追加するクエリ関連の機能のコレクションです。 "*セマンティックの順位付け*" では、用語のコンテキストと関連性が検索され、クエリにとってより意味のある一致が昇格されます。 Language Understanding は、コンテンツ内の "*キャプション*" と "*回答*" が検索され、一致するドキュメントを要約したり質問に回答したりすることができます。これは、より生産性の高い検索エクスペリエンスになるように、検索結果ページに表示できます。
+セマンティック検索は、検索結果にセマンティックの関連性と Language Understanding を追加するクエリ関連の機能のコレクションです。 この記事はセマンティック検索全体の概要紹介になっています。各特徴とそれらが集まってどのように機能するかについて説明します。 埋め込まれている動画では、このテクノロジについて説明しています。終わりのセクションでは販売状況と価格について説明しています。
+
+この記事を読み、背景を知っていただくことをお勧めしますが、すぐに始める場合は、次の手順を行ってください。
+
+1. [リージョンとサービス レベルの要件](#availability-and-pricing)を満たすサービスの[プレビュー版を新規登録](https://aka.ms/SemanticSearchPreviewSignup)して入手します。
+1. [セマンティックのキャプションとハイライト](semantic-how-to-query-request.md)を返すよう、クエリを新規作成するか、既存のものを変更します。
+1. [セマンティックの答え](semantic-answers.md)も返すよう、さらにいくつかのプロパティを追加します。
+1. 必要に応じて、[スペル チェック](speller-how-to-add.md) クエリ プロパティを含め、精度とリコールの最大化します。
+
+## <a name="what-is-semantic-search"></a>セマンティック検索とは
+
+セマンティック検索とは検索関連 AI のオプション層であり、セマンティック ランク付けモデルで従来のクエリ実行パイプラインを拡張し、ユーザー エクスペリエンスを向上させる追加プロパティを返します。
+
+"*セマンティックの順位付け*" では、用語のコンテキストと関連性が検索され、クエリにとってより意味のある一致が昇格されます。 Language Understanding は、コンテンツ内の "*キャプション*" と "*回答*" が検索され、一致するドキュメントを要約したり質問に回答したりすることができます。これは、より生産性の高い検索エクスペリエンスになるように、検索結果ページに表示できます。
 
 概要作成と順位付けには、最先端の事前トレーニング済みモデルが使用されます。 ユーザーが検索に期待する高速なパフォーマンスを維持するために、セマンティック ベースの概要作成とランク付けは、 [既定の類似性スコアリング アルゴリズム](index-similarity-and-scoring.md#similarity-ranking-algorithms)のスコアに従って上位 50 件の結果にのみ適用されます。 セマンティック ランク付けでは、これらの結果をドキュメントのコーパスとして使用して、一致のセマンティック強度に基づいて結果を再スコアリングします。
 
@@ -68,12 +81,6 @@ ms.locfileid: "106222046"
 
 ## <a name="next-steps"></a>次のステップ
 
-新しいクエリ型により、セマンティック検索の関連性ランク付けと応答構造が可能になります。
+[新規登録](https://aka.ms/SemanticSearchPreviewSignup)し、前のセクションで注記したサービス レベルとリージョンの要件を満たす検索サービスのプレビュー版を申し込みます。
 
-[セマンティック クエリを作成](semantic-how-to-query-request.md)して開始します。 または、関連する情報について次の記事を参照してください。
-
-+ [クエリ用語にスペル チェックを追加する](speller-how-to-add.md)
-+ [セマンティック回答を返す](semantic-answers.md)
-+ [セマンティック ランク付け](semantic-ranking.md)
-+ [セマンティック検索の概要 (ブログの投稿)](https://techcommunity.microsoft.com/t5/azure-ai/introducing-semantic-search-bringing-more-meaningful-results-to/ba-p/2175636)
-+ [セマンティック機能を使用して有意義な洞察を見つける (AI ショー ビデオ)](https://channel9.msdn.com/Shows/AI-Show/Find-meaningful-insights-using-semantic-capabilities-in-Azure-Cognitive-Search)
+サービスの準備が完了したら、[セマンティック クエリを作成](semantic-how-to-query-request.md)し、実際のセマンティック ランク付けの様子を確認します。
