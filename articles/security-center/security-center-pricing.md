@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 03/23/2021
-ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: aa65989953f761ff915383fcb59da7f36ea98dab
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889452"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600484"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center (無料) と有効化された Azure Defender
 Azure Defender は、最初の 30 日間は無料で利用できます。 30 日経過した時点で、サービスの利用を継続することを選択した場合、使用量に応じた課金が自動的に開始されます。
@@ -70,7 +70,7 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-| Method                                          | Instructions                                                                                                                                       |
+| メソッド                                          | Instructions                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure portal の Azure Security Center ページ | [Azure Defender を有効にする](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [Pricings API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -119,7 +119,7 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 
 ### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>500 MB のデータの 1 日あたりの許容量には、、どの種類のデータが含まれますか?
 
-Security Center の課金は、Log Analytics の課金と密接に関連しています。 Security Center では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category.md#security)の次のサブセットに対して 1 日当たり 500 MB/ノードの許容量を示しています。
+Security Center の課金は、Log Analytics の課金と密接に関連しています。 Security Center では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security)の次のサブセットに対して 1 日当たり 500 MB/ノードの許容量を示しています。
 - WindowsEvent
 - SecurityAlert
 - SecurityBaseline

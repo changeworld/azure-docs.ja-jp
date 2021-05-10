@@ -7,13 +7,13 @@ ms.subservice: confidential-computing
 ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
-ms.custom: contentperf-fy21q3
-ms.openlocfilehash: b012a8a5856b344b366f1ddd89fc5059a6f3c8ae
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.custom: contentperf-fy21q3, devx-track-azurecli
+ms.openlocfilehash: 261deb0c4f5f28be51e806ab76261278709efc3b
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283526"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482876"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>クイックスタート: コンフィデンシャル コンピューティング ノードを含む AKS クラスターを Azure CLI を使用してデプロイする
 

@@ -10,42 +10,42 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 02/02/2021
-ms.openlocfilehash: 34613633b6b27fc3387e6a9fa63caf4a194ba963
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101691231"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543518"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database と Azure Synapse Analytics サーバーのリソース制限
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-この記事では、Azure SQL Database と Azure Synapse Analytics によって使用される論理サーバーのリソース制限の概要について説明します。 リソース制限が上限に達するか、または超過した場合の動作に関する情報を示すと共に、これらの制限の適用に利用されるリソース管理のメカニズムについて説明します。
+この記事では、Azure SQL Database と Azure Synapse Analytics によって使用される[論理サーバー](logical-servers.md)のリソース制限の概要について説明します。 リソース制限が上限に達するか、または超過した場合の動作に関する情報を示すと共に、これらの制限の適用に利用されるリソース管理のメカニズムについて説明します。
 
 > [!NOTE]
-> Azure SQL Managed Instance の制限については、[マネージド インスタンスに関する SQL Database のリソース制限](../managed-instance/resource-limits.md)に関するページを参照してください。
+> Azure SQL Managed Instance の制限については、[マネージド インスタンスに関するリソース制限](../managed-instance/resource-limits.md)に関するページを参照してください。
 
 ## <a name="maximum-resource-limits"></a>最大リソース制限
 
 | リソース | 制限 |
 | :--- | :--- |
-| サーバーあたりのデータベース数 | 5000 |
-| 任意のリージョンにおけるサブスクリプションあたりの既定のサーバー数 | 20 |
-| 任意のリージョンにおけるサブスクリプションあたりの最大サーバー数 | 200 |  
-| サーバーあたりの DTU/eDTU クォータ | 54,000 |  
-| サーバー/インスタンスあたりの仮想コア クォータ | 540 |
-| サーバーあたりの最大プール | DTU または仮想コアの数によって制限されます。 たとえば、各プールが 1000 DTU の場合、1 つのサーバーで 54 プールをサポートできます。|
+| 論理サーバーあたりのデータベース | 5000 |
+| 1 つのリージョンにおけるサブスクリプションあたりの既定の論理サーバー数 | 20 |
+| 1 つのリージョンにおけるサブスクリプションあたりの最大の論理サーバー数 | 200 |  
+| 論理サーバーあたりの DTU/eDTU クォータ | 54,000 |  
+| 論理サーバーあたりの仮想コア クォータ | 540 |
+| 論理サーバーあたりの最大プール | DTU または仮想コアの数によって制限されます。 たとえば、各プールが 1000 DTU の場合、1 つのサーバーで 54 プールをサポートできます。|
 |||
 
 > [!IMPORTANT]
-> データベースの数がサーバーあたりの制限に近づくと、次の状況が発生します。
+> データベースの数が論理サーバーあたりの制限に近づくと、次の状況が発生する可能性があります。
 >
-> - マスター データベースに対して実行するクエリの待機時間が増えます。  これには、リソース使用率統計情報のビューも含まれます (sys.resource_stats など)。
+> - マスター データベースに対して実行するクエリの待機時間が増えます。  これには、`sys.resource_stats` など、リソース使用率統計情報のビューも含まれます。
 > - サーバー内のデータベースの列挙を要する、管理操作やポータル ビュー ポイント表示の待機時間が長くなります。
 
 > [!NOTE]
-> 既定量よりも多い DTU/eDTU クォータ、仮想コア クォータ、またはサーバーを取得する場合は、Azure portal から新しいサポート リクエストを送信できます。 詳細については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。
+> 既定量よりも多い DTU/eDTU クォータ、仮想コア クォータ、または論理サーバーを取得する場合は、Azure portal から新しいサポート リクエストを送信してください。 詳細については、「[Azure SQL Database のクォータの増加を要求する](quota-increase-request.md)」を参照してください。
 
 ### <a name="storage-size"></a>ストレージ サイズ
 

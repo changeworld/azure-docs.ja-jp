@@ -3,19 +3,18 @@ title: Azure Key Vault アクセス ポリシーを割り当てる
 description: Azure portal、Azure CLI、または Azure PowerShell を使用して、セキュリティ プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について説明します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1c7c31f38d6a59f4ded17e1e1fd7e985ce59922a
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968732"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751420"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell を使用して Key Vault アクセス ポリシーを割り当てる
 
@@ -80,5 +79,5 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault セキュリティ: ID 管理とアクセス管理](security-overview.md#identity-management)
-- [キー コンテナーをセキュリティで保護する](secure-your-key-vault.md)
+- [キー コンテナーをセキュリティで保護する](security-overview.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)

@@ -5,14 +5,14 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: bbe36e072d10b81c421331b2212d8b161afd2693
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87094693"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313302"
 ---
-# <a name="microsoftcommonarmapicontrol-ui-element"></a>Microsoft.Common.ArmApiControl UI 要素
+# <a name="microsoftsolutionsarmapicontrol-ui-element"></a>Microsoft.Solutions.ArmApiControl UI 要素
 
 ArmApiControl を使用すると、Azure Resource Manager API の操作から結果を取得できます。 その結果を使用して、他のコントロール内に動的なコンテンツを格納します。
 
@@ -46,7 +46,14 @@ ArmApiControl を使用すると、Azure Resource Manager API の操作から結
 ## <a name="remarks"></a>解説
 
 - `request.method` プロパティでは、HTTP メソッドを指定します。 指定できるのは `GET` または `POST` だけです。
-- `request.path` プロパティでは、URL の相対パスを指定します。 これは、静的パスにすることも、他のコントロールの出力値を参照して動的に構築することもできます。
+- `request.path` プロパティには URL を指定します。これは、ARM エンドポイントへの相対パスである必要があります。 これは、静的パスにすることも、他のコントロールの出力値を参照して動的に構築することもできます。
+
+  たとえば、`Microsoft.Network/expressRouteCircuits` リソース プロバイダーへの ARM 呼び出しは次のようになります。
+
+  ```json
+  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  ```
+
 - `request.body` プロパティは省略可能です。 これを使用して、要求と共に送信される JSON 本文を指定します。 本文は、静的コンテンツにすることも、他のコントロールからの出力値を参照して動的に構築することもできます。
 
 ## <a name="example"></a>例
@@ -81,5 +88,5 @@ ArmApiControl を使用してリソース名が使用可能かどうかを調べ
 
 ## <a name="next-steps"></a>次のステップ
 
-* UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
-* UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。
+- UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
+- UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

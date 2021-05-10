@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 76c6d7caf3c63779e12443304688192f7311720a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 43707a99792ae3c4d817f47d770629287b8a774b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594565"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374337"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -238,6 +238,10 @@ Log Analytics エージェントでソリューション パックをダウン�
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  送信
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 送信
 
+
+>[!NOTE]
+> 2021 年 4 月 19 日以降、上記の設定は必要ありません。プライベート リンクを使用してソリューション パックのストレージ アカウントに接続できるようになります。 新しい機能では、AMPLS (2021 年 4 月 19 日以降) およびそれに接続されるプライベート エンドポイントを再作成する必要があります。 既存の AMPLS とプライベート エンドポイントには適用されません。
+
 ## <a name="configure-application-insights"></a>Application Insights の構成
 
 Azure Portal にアクセスします。 Azure Monitor Application Insights コンポーネント リソースの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このメニューから、2 つの異なる状態を制御できます。
@@ -246,7 +250,7 @@ Azure Portal にアクセスします。 Azure Monitor Application Insights コ�
 
 まず、この Application Insights リソースを、アクセス権を持つ任意の Azure Monitor Private Link Scope に接続できます。 **[追加]** を選択し、 **[Azure Monitor Private Link Scope]** を選択します。 [適用] を選択して接続します。 接続されているすべてのスコープがこの画面に表示されます。 この接続を確立すると、接続された仮想ネットワーク内のネットワーク トラフィックがこのコンポーネントに接続できるようになります。また、[Azure Monitor リソースを接続](#connect-azure-monitor-resources)した場合と同じように、スコープからの接続と同じ効果があります。 
 
-次に、このリソースに対して、前述の Pivate Link スコープ (AMPLS) の外部からアクセスする方法を制御できます。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンまたは SDK は、このコンポーネントにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、この Application Insights リソースのデータにアクセスできません。 このデータには、APM ログ、メトリック、ライブ メトリック ストリームへのアクセスと、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報など、その上に構築されたエクスペリエンスが含まれます。 
+その後、このリソースに対して、前述の Pivate Link スコープ (AMPLS) の外部からアクセスする方法を制御できます。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンまたは SDK は、このコンポーネントにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、この Application Insights リソースのデータにアクセスできません。 このデータには、APM ログ、メトリック、ライブ メトリック ストリームへのアクセスと、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報など、その上に構築されたエクスペリエンスが含まれます。 
 
 > [!NOTE]
 > ポータル以外の消費エクスペリエンスも、監視対象のワークロードを含むプライベート リンク VNET 内で実行する必要があります。

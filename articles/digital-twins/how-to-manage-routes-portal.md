@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: df826a682eec15d09b60857e63c363b0f9941c01
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 31f960b39e771e7bfbf67c6e52c5da8e1fc6e0ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104779938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932456"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure Digital Twins でのエンドポイントとルートの管理 (ポータル)
 
@@ -153,7 +153,9 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 いくつかの基本的な共通フィルター オプションから選択することも、高度なフィルター オプションを使用して独自のカスタム フィルターを作成することもできます。
 
 >[!NOTE]
-> フィルターでは **大文字と小文字が区別** され、ペイロード ケースで一致する必要があります (必ずしもモデル ケースと一致するとは限りません)。
+> フィルターは **大文字と小文字を区別** し、ペイロードの大文字と小文字と一致する必要があります。 
+>
+> テレメトリ フィルターの場合、これは、大文字と小文字の指定が、デバイスによって送信されたテレメトリ内の大文字と小文字の指定と一致する必要はあるが、必ずしもツインのモデル内に定義された大文字と小文字の指定に一致する必要はないことを意味します。
 
 #### <a name="use-the-basic-filters"></a>基本的なフィルターを使用する
 

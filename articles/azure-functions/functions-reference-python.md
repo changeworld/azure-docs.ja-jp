@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c87be334847974627299f8e21109fe201675f0c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455418"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762175"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -374,7 +374,7 @@ Azure Functions では次の Python バージョンがサポートされてい�
 
 <sup>*</sup>公式 CPython ディストリビューション
 
-Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) コマンドの `--runtime-version` オプションを使用します。 Functions ランタイム バージョンは `--functions-version` オプションによって設定されます。 Python バージョンは関数アプリの作成時に設定され、変更できません。
+Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az_functionapp_create) コマンドの `--runtime-version` オプションを使用します。 Functions ランタイム バージョンは `--functions-version` オプションによって設定されます。 Python バージョンは関数アプリの作成時に設定され、変更できません。
 
 ローカルで実行する場合、ランタイムは使用可能な Python バージョンを使用します。
 

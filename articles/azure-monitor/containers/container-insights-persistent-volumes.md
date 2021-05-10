@@ -3,12 +3,12 @@ title: Container insights で PV の監視を構成する | Microsoft Docs
 description: この記事では、Container insights で永続ボリュームを使用している Kubernetes クラスターの監視を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 578cfe128b7445f8b09771999d1e653e92c4befa
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 7c6ddd62bf06d313987289e444962378cea43fc8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200701"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627899"
 ---
 # <a name="configure-pv-monitoring-with-container-insights"></a>Container insights で PV の監視を構成する
 
@@ -17,9 +17,11 @@ ms.locfileid: "102200701"
 
 Container insights により、次のメトリックが 60 秒間隔で収集され **InsightMetrics** テーブルに格納されることで、PV 使用率の監視が自動的に開始されます。
 
-|メトリック名 |メトリック ディメンション (タグ) |メトリックの説明 | | `pvUsedBytes`| podUID、podName、pvcName、pvcNamespace、capacityBytes、clusterId、clusterName |特定のポッドによって使用される要求が含まれる特定の永続ボリュームのために使用される領域 (バイト単位)。 `capacityBytes` は、データ インジェスト コストを削減し、クエリを簡略化するために、ディメンションとして [タグ] フィールドに組み込まれています。|
+| メトリックの名前 | メトリック ディメンション (タグ) | メトリックの説明 |
+|-----|-----------|----------|
+| `pvUsedBytes`| podUID、podName、pvcName、pvcNamespace、capacityBytes、clusterId、clusterName| 特定のポッドによって使用される要求が含まれる特定の永続ボリュームのために使用される領域 (バイト単位)。 `capacityBytes` は、データ インジェスト コストを削減し、クエリを簡略化するために、ディメンションとして [タグ] フィールドに組み込まれています。|
 
-収集される PV メトリックを構成する方法に関する詳細については、[こちら](https://aka.ms/ci/pvconfig)を参照してください。
+収集される PV メトリックを構成する方法に関する詳細については、[こちら](./container-insights-agent-config.md)を参照してください。
 
 ## <a name="pv-inventory"></a>PV インベントリ
 
@@ -27,7 +29,7 @@ Azure Monitor for containers では、次の情報が 60 秒間隔で収集さ�
 
 |Data |Data Source| データの種類| フィールド|
 |-----|-----------|----------|-------|
-|Kubernetes クラスター内の永続ボリュームのインベントリ |Kube API |`KubePVInventory` | PVName、PVCapacityBytes、PVCName、PVCNamespace、PVStatus、PVAccessModes、PVType、PVTypeInfo、PVStorageClassName、PVCreationTimestamp、TimeGenerated、ClusterId、ClusterName、_ResourceId |
+|Kubernetes クラスター内の永続ボリュームのインベントリ |Kube API |`KubePVInventory` |    PVName、PVCapacityBytes、PVCName、PVCNamespace、PVStatus、PVAccessModes、PVType、PVTypeInfo、PVStorageClassName、PVCreationTimestamp、TimeGenerated、ClusterId、ClusterName、_ResourceId |
 
 ## <a name="monitor-persistent-volumes"></a>永続ボリュームを監視する
 
@@ -48,7 +50,7 @@ Azure Monitor for containers には、すべてのクラスター用のブック
 :::image type="content" source="./media/container-insights-persistent-volumes/pv-details-workbook-example.PNG" alt-text="Azure Monitor での PV の詳細ブックの例":::
 
 ### <a name="persistent-volume-usage-recommended-alert"></a>永続ボリュームの使用率に関する推奨アラート
-ポッドの平均 PV 使用率が 80% を超えた場合にアラートを通知する、推奨アラートを有効にすることができます。 アラートについては[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts)、および規定のしきい値を上書きする方法については[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-metric-alerts#configure-alertable-metrics-in-configmaps)を参照してください。
+ポッドの平均 PV 使用率が 80% を超えた場合にアラートを通知する、推奨アラートを有効にすることができます。 アラートについては[こちら](./container-insights-metric-alerts.md)、および規定のしきい値を上書きする方法については[こちら](./container-insights-metric-alerts.md#configure-alertable-metrics-in-configmaps)を参照してください。
 ## <a name="next-steps"></a>次のステップ
 
 - 収集される PV メトリックの詳細を[こちら](./container-insights-agent-config.md)で確認します。

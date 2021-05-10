@@ -3,12 +3,12 @@ title: Azure ネットワーク リソースを新しいサブスクリプショ
 description: Azure Resource Manager を使用して、仮想ネットワークおよびその他のネットワーク リソースを、新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 0cd6887d3489f2ffede0f5e3d63533a33a6ccc04
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b7aaf01b696b13136a0f4077f315b137c8917906
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "75476601"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120131"
 ---
 # <a name="move-guidance-for-networking-resources"></a>ネットワーク リソースの移動ガイダンス
 
@@ -16,7 +16,10 @@ ms.locfileid: "75476601"
 
 ## <a name="dependent-resources"></a>依存リソース
 
-仮想ネットワークを移動するときは、その依存リソースも移動する必要があります。 VPN ゲートウェイでは、IP アドレス、仮想ネットワーク ゲートウェイ、および関連付けられているすべての接続リソースを移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
+> [!NOTE]
+> パブリック IP アドレスに関連付けられている VPN ゲートウェイは、現在、リソース グループまたはサブスクリプション間で移動できないことに注意してください。
+
+リソースを移動するときは、依存リソース (パブリック IP アドレス、仮想ネットワーク ゲートウェイ、関連付けられているすべての接続リソースなど) も移動する必要があります。 各ローカル ネットワーク ゲートウェイは、異なるリソース グループ内に配置することができます。
 
 ネットワーク インターフェイス カードを使用している仮想マシンを新しいサブスクリプションに移動するには、すべての依存リソースを移動する必要があります。 ネットワーク インターフェイス カードに対応した仮想ネットワーク、仮想ネットワークに対応した他のすべてのネットワーク インターフェイス カード、および VPN ゲートウェイを移動します。
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: bbfafeaf9ce24911bb4893748d456d22e02fc411
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 870a04af244d18826e1041316895f746e27870eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877111"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786587"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
 
@@ -29,14 +29,14 @@ Azure Key Vault を使用すると、対象のアプリのトークン、パス�
 * [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 コマンド [az group create](/cli/azure/group#az-group-create) を使用して、Key Vault と Spring Cloud の両方を含むリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 コマンド [az group create](/cli/azure/group#az_group_create) を使用して、Key Vault と Spring Cloud の両方を含むリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>キー コンテナーを設定する
-キー コンテナーを作成するには、コマンド [az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用します。
+キー コンテナーを作成するには、コマンド [az keyvault create](/cli/azure/keyvault#az_keyvault_create) を使用します。
 
 > [!Important]
 > 各キー コンテナーには一意の名前が必要です。 次の例の <your-keyvault-name> は、ご自分のキー コンテナーの名前に置き換えてください。
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 "https://<your-keyvault-name>.vault.azure.net" 形式で返される `vaultUri` を書き留めます。 これは、後の手順で使用します。
 
-これで、コマンド [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) を使用して、対象のキー コンテナーにシークレットを格納できるようになりました。
+これで、コマンド [az keyvault secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) を使用して、対象のキー コンテナーにシークレットを格納できるようになりました。
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \

@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: c4ffb622482585e35337caf8e43b69e0f3b0385c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5faa85a4fac9fc0b8639f33c475283f4f043c627
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517265"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779257"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -71,7 +71,7 @@ Function App を作成するときは、BLOB、キュー、テーブル スト�
 
 "_この機能は現在、Linux で実行されている場合にのみ使用できます。_ " 
 
-既存の Azure Files 共有を Linux 関数アプリにマウントすることができます。 Linux 関数アプリに共有をマウントすることにより、既存の機械学習モデルや、関数内のその他のデータを活用できます。 既存の共有を Linux 関数アプリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用できます。 
+既存の Azure Files 共有を Linux 関数アプリにマウントすることができます。 Linux 関数アプリに共有をマウントすることにより、既存の機械学習モデルや、関数内のその他のデータを活用できます。 既存の共有を Linux 関数アプリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) コマンドを使用できます。 
 
 このコマンドで、`share-name` は既存の Azure Files 共有の名前で、`custom-id` は、Function App にマウントされたときに共有を一意に定義する任意の文字列にすることができます。 また、`mount-path` は、Function App で共有にアクセスするためのパスです。 `mount-path` は、`/dir-name` の形式にする必要があり、`/home` で開始することはできません。
 

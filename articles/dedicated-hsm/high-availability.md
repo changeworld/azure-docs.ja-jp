@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567254"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608869"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM の高可用性
 
@@ -25,7 +25,7 @@ Azure Dedicated HSM は、Microsoft の高可用データセンターによっ�
 
 ## <a name="high-availability-example"></a>高可用性の例
 
-ソフトウェア レベルで高可用性を実現するための HSM デバイスの構成方法については、「Thales Luna 7 HSM 管理ガイド」を参照してください。 このドキュメントは、[Thales HSM ページ](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)から入手できます。
+ソフトウェア レベルで高可用性を実現するための HSM デバイスの構成方法については、「Thales Luna 7 HSM 管理ガイド」を参照してください。 このドキュメントは、[Thales HSM ページ](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)から入手できます。
 
 次の図は、高可用アーキテクチャを示しています。 リージョン内の複数のデバイスと、別のリージョン内のペアリングされた複数のデバイスを使用しています。 このアーキテクチャは、4 つ以上の HSM デバイスと仮想ネットワーク コンポーネントを使用しています。
 
@@ -42,4 +42,4 @@ Azure Dedicated HSM は、Microsoft の高可用データセンターによっ�
 * [サポート可能性](supportability.md)
 * [Monitoring](monitoring.md)
 
-高可用性に対応する HSM デバイスの構成の詳細については、Thales カスタマー サポート ポータルの「管理者ガイド」のセクション 6 を参照してください。
+高可用性に対応する HSM デバイスの構成の詳細については、[Thales カスタマー サポート ポータル](https://supportportal.thalesgroup.com/csm)の「管理者ガイド」のセクション 6 を参照してください。

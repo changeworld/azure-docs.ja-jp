@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58b8cdef604861342a6489ef4e57ff1d057cd3f4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 756258db1c6e91002bf3a7c2bd0f71f921ce655d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377736"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769933"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する
 
@@ -102,7 +102,7 @@ ms.locfileid: "107377736"
 
    `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
 
-3. [az feature register](/cli/azure/feature#az-feature-register) コマンドを使用して、クエリ アクセラレーション機能を登録します。
+3. [az feature register](/cli/azure/feature#az_feature_register) コマンドを使用して、クエリ アクセラレーション機能を登録します。
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-登録が完了したことを確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを使用します。
+登録が完了したことを確認するには、[az feature](/cli/azure/feature#az_feature_show) コマンドを使用します。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース プロバイダーを登録するには、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用します。
+リソース プロバイダーを登録するには、[az provider register](/cli/azure/provider#az_provider_register) コマンドを使用します。
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'

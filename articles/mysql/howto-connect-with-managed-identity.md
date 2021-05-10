@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f790e20c257c81418c6fcd5b14be957a6ef43b4a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c9c5c938650d1932349f17bde6b30c65718ef72a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612604"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774685"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>マネージド ID を使用して Azure Database for MySQL に接続する
 
@@ -38,13 +38,13 @@ ms.locfileid: "105612604"
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>VM のユーザー割り当てマネージド ID を作成する
 
-[az identity create](/cli/azure/identity#az-identity-create) コマンドを使用して、サブスクリプション内に ID を作成します。 使用している仮想マシンが実行されているのと同じリソース グループを使用することも、別のものを使用することもできます。
+[az identity create](/cli/azure/identity#az_identity_create) コマンドを使用して、サブスクリプション内に ID を作成します。 使用している仮想マシンが実行されているのと同じリソース グループを使用することも、別のものを使用することもできます。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-後の手順で ID を構成するために、[az identity show](/cli/azure/identity#az-identity-show) コマンドを使用して、ID のリソース ID とクライアント ID を変数に格納します。
+後の手順で ID を構成するために、[az identity show](/cli/azure/identity#az_identity_show) コマンドを使用して、ID のリソース ID とクライアント ID を変数に格納します。
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -54,7 +54,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-これで、[az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、ユーザー割り当て ID を VM に割り当てることができるようになりました。
+これで、[az vm identity assign](/cli/azure/vm/identity#az_vm_identity_assign) コマンドを使用して、ユーザー割り当て ID を VM に割り当てることができるようになりました。
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

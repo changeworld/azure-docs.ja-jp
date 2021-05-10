@@ -6,18 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/22/2021
+ms.date: 04/12/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 53edd3ec9a8d30d0c25f994db4a8b6f0199c2169
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7f09e744dfdd7be73c62c70bcfa91804f14aaa68
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558416"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313676"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure 顧客の使用状況の属性
 
-顧客の使用状況の属性は、パートナーの IP をデプロイしているときに作成された顧客のサブスクリプションでの Azure リソースの使用状況をパートナーに関連付けます。 これらの関連付けを Microsoft システム内に形成することにより、パートナーのソフトウェアを実行している Azure の占有領域の可視性が向上します。 [コマーシャル マーケットプレースの Azure アプリケーション プラン](#commercial-marketplace-azure-apps)の場合、この追跡機能は、Microsoft セールス チームと連携し、Microsoft パートナー プログラムでの信頼を得るために役立ちます。
+顧客の使用状況の属性は、パートナーの IP をデプロイしているときに作成された顧客のサブスクリプションでの Azure リソースの使用状況をパートナーに関連付けます。 これらの関連付けを Microsoft システム内に形成することにより、パートナーのソフトウェアを実行している Azure の占有領域の可視性が向上します。 [コマーシャル マーケットプレースの Azure アプリケーション プラン](#commercial-marketplace-azure-apps)の場合、この追跡機能は、Microsoft セールス チームと連携し、Microsoft パートナー プログラムでの信頼を得るために役立ちます。 顧客の利用状況属性は [コマーシャル マーケットプレースの Azure 仮想マシン オファー](./azure-vm-create.md)には適用されません。 エンドカスタマー サブスクリプションで Azure の使用量が追跡されるようにするために、マーケットプレースのパブリッシャーが仮想マシン オファーに対して行う必要があることは何もありません。
 
 顧客の使用状況の属性では、以下の 3 つのデプロイ オプションがサポートされます。
 

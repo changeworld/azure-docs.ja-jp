@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: 706b2306fbe9f2a744d2874a8b55f78fa2fc8e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8009d98ddbfa778cf5f357248ecd943b810e06e3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89301111"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803418"
 ---
 ## <a name="create-a-release-pipeline-for-continuous-deployment"></a>継続的デプロイのためのリリース パイプラインを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "89301111"
 
    ![インターフェイスの成果物領域で [追加] をクリックします。](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-artifacts.png)
 
-5. **[成果物の追加] ページ**で、 **[ソースの種類]** として **[ビルド]** を選択します。 作成したプロジェクトとビルド パイプラインを選択します。 **[ソース エイリアス]** は、必要に応じてわかりやすいものに変更できます。 その後、 **[追加]** を選択します。
+5. **[成果物の追加] ページ** で、 **[ソースの種類]** として **[ビルド]** を選択します。 作成したプロジェクトとビルド パイプラインを選択します。 **[ソース エイリアス]** は、必要に応じてわかりやすいものに変更できます。 その後、 **[追加]** を選択します。
 
    ![成果物の追加ページで [追加] を選択して成果物を作成する](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-artifact.png)
 
@@ -59,12 +59,22 @@ ms.locfileid: "89301111"
 
     これらの構成によって、`deployment.template.json` ファイル内のモジュール イメージ URL を置き換えることができます。 また、**[Generate deployment manifest]\(配置マニフェストの生成\)** は、`deployment.template.json` ファイルで定義したのと同じ値に変数を置き換えるのにも役立ちます。 VS/VS Code では、`.env` ファイルに実際の値を指定します。 Azure Pipelines では、 **[リリース パイプライン変数]** タブで値を設定します。 **[変数]** タブに移動し、次のように名前と値を構成します。
 
-    * **ACR_ADDRESS**:Azure Container Registry の**ログイン サーバー**値。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。
+    * **ACR_ADDRESS**:Azure Container Registry の **ログイン サーバー** 値。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。
     * **ACR_PASSWORD**:Azure Container Registry のパスワード。
     * **ACR_USER**:Azure Container Registry のユーザー名。
 
-    プロジェクトに他の変数がある場合は、このタブでその名前と値を指定できます。 **[デプロイ マニフェストの生成]** で認識できるのは `${VARIABLE}` フレーバーの変数だけです。 `*.template.json` ファイルでこのフレーバーを使用していることを確認してください。
-
+    プロジェクトに他の変数がある場合は、このタブでその名前と値を指定できます。 **[デプロイ マニフェストの生成]** で認識できるのは `${VARIABLE}` フレーバー内の変数だけです。 `*.template.json` ファイルでこのフレーバーを使用していることを確認してください。
+    
+    ```json-interactive
+    "registryCredentials": {
+      "<ACR name>": { // Your Azure Container Registry **Registry name** value
+        "username": "${ACR_USER}",
+        "password": "${ACR_PASSWORD}",
+        "address": "${ACR_ADDRESS}"
+      }
+    }
+    ```
+    
     ![[変数] タブでリリース パイプラインの変数を構成する](./media/iot-edge-create-release-pipeline-for-continuous-deployment/configure-variables.png)
 
 10. 2 つ目の **[Azure IoT Edge]** タスクを選択し、次の値を使用して構成します。
@@ -76,9 +86,12 @@ ms.locfileid: "89301111"
     | デプロイ ファイル | パス `$(System.DefaultWorkingDirectory)/Drop/drop/configs/deployment.json` を設定します。 このパスは IoT Edge デプロイ マニフェスト ファイルです。 |
     | Azure サブスクリプション | IoT Hub が含まれているサブスクリプションを選択します。|
     | IoT Hub 名 | IoT ハブを選択します。|
-    | 1 つまたは複数のデバイスを選択 | リソース パイプラインを 1 つのデバイスまたは複数のデバイスのどちらにデプロイするかを選択します。 1 つのデバイスにデプロイする場合は、**IoT Edge デバイス ID** を入力します。 複数のデバイスにデプロイする場合は、デバイスの**ターゲット条件**を指定します。 ターゲット条件とは、IoT Hub 内の一連の IoT Edge デバイスと突き合わせるフィルターです。 デバイス タグを条件として使用する場合は、対応するデバイス タグを IoT Hub デバイス ツインに合わせて更新する必要があります。 詳細設定で、**IoT Edge デプロイ ID** と **IoT Edge デプロイの優先順位**を更新します。 複数のデバイスのデプロイを作成する方法の詳細については、[IoT Edge 自動デプロイについての理解](../articles/iot-edge/module-deployment-monitoring.md)に関するページを参照してください。 |
+    | 1 つまたは複数のデバイスを選択 | リソース パイプラインを 1 つのデバイスまたは複数のデバイスのどちらにデプロイするかを選択します。 1 つのデバイスにデプロイする場合は、**IoT Edge デバイス ID** を入力します。 複数のデバイスにデプロイする場合は、デバイスの **ターゲット条件** を指定します。 ターゲット条件とは、IoT Hub 内の一連の IoT Edge デバイスと突き合わせるフィルターです。 デバイス タグを条件として使用する場合は、対応するデバイス タグを IoT Hub デバイス ツインに合わせて更新する必要があります。 詳細設定で、**IoT Edge デプロイ ID** と **IoT Edge デプロイの優先順位** を更新します。 複数のデバイスのデプロイを作成する方法の詳細については、[IoT Edge 自動デプロイについての理解](../articles/iot-edge/module-deployment-monitoring.md)に関するページを参照してください。 |
     | デバイス ID またはターゲット条件 | 以前の選択に応じて、複数のデバイスにデプロイするためのデバイス ID または[ターゲット条件](../articles/iot-edge/module-deployment-monitoring.md#target-condition)を指定します。 |
     | 詳細設定 | IoT Edge デプロイ ID には、`$(System.TeamProject)-$(Release.EnvironmentName)` を指定します。 この変数により、プロジェクトとリリース名がその IoT Edge デプロイ ID を使用してマッピングされます。 |
+    
+
+    パブリック クラウドに表示されないプライベート Docker Trusted Registry に存在するイメージを使用するタスクの場合は、**SKIP_MODULE_IMAGE_VALIDATION** 環境変数を `true` に設定して、イメージの検証をスキップできます。 
 
     ![dev ステージに Azure IoT Edge タスクを追加する](./media/iot-edge-create-release-pipeline-for-continuous-deployment/add-quality-assurance-task.png)
 

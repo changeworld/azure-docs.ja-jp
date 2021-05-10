@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 43162c4c9812015952c749446d160ab1c0d84392
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88271075"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639409"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT デモ プロジェクト
 
@@ -29,7 +29,7 @@ ms.locfileid: "88271075"
 
 ## <a name="vfxt-performance"></a>vFXT のパフォーマンス
 
-* 「[Measure vFXT performance with vdbench](https://github.com/Azure/Avere/blob/master/docs/vdbench.md)」 (vdbench による vFXT パフォーマンスの測定) - vFXT メモリとディスク サブシステムをテストするための小規模から中規模のワークロードを生成するように設定された、基本的なテスト
+* [vdbench による vFXT パフォーマンスの測定](https://github.com/Azure/Avere/blob/master/docs/vdbench.md) - vFXT メモリとディスク サブシステムをテストするための小規模と中規模のワークロードを生成するように設定された基本的なテスト
 
 ## <a name="client-setup"></a>クライアントのセットアップ
 

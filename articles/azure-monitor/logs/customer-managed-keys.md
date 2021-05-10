@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4033421095ead47e2bd1e97c4f2f42672644d7df
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030989"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364857"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -59,7 +59,7 @@ Azure Monitor は、マネージド ID を使用して Azure Key Vault にアク
 - Log Analytics クラスター ストレージ アカウントでは、すべてのストレージ アカウントに対して一意の暗号化キーが生成されます。これは、AEK と呼ばれます。
 - AEK は、ディスクに書き込まれた各データ ブロックの暗号化に使用されるキーである DEK を派生させるために使用されます。
 - Key Vault でキーを構成し、それをクラスターで参照すると、Azure Storage によって Azure Key Vault に要求が送信され、AEK がラップおよびラップ解除されて、データの暗号化と解読の操作が実行されます。
-- KEK が Key Vault から離れることはありません。また、HSM キーの場合はハードウェアから離れることはありません。
+- KEK は Key Vault の外に出されることはありません。
 - Azure Storage により、"*クラスター*" リソースに関連付けられているマネージド ID を使用して、Azure Active Directory 経由での Azure Key Vault への認証とアクセスが行われます。
 
 ### <a name="customer-managed-key-provisioning-steps"></a>カスタマー マネージド キーのプロビジョニング手順
@@ -136,7 +136,7 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
   "identity": {
   "type": "UserAssigned",
     "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
       }
   }
   ```
@@ -168,6 +168,9 @@ Azure Key Vault で現在のバージョンのキーを選択して、キー識�
 ![Key Vault アクセス許可を付与する](media/customer-managed-keys/key-identifier-8bit.png)
 
 クラスターの KeyVaultProperties を、キー識別子の詳細で更新します。
+
+>[!NOTE]
+>キーの交換では、自動ローテーションまたは明示的なキー バージョンの更新という 2 つのモードがサポートされています。自分にとって最適な方法を決定するには、「[キーの交換](#key-rotation)」を参照してください。
 
 操作は非同期であり、完了するまでに時間がかかることがあります。
 
@@ -266,7 +269,9 @@ Content-type: application/json
 
 ## <a name="key-rotation"></a>キーの交換
 
-カスタマー マネージド キーのローテーションを行うには、Azure Key Vault の新しいキー バージョンでクラスターを明示的に更新する必要があります。 [キー識別子の詳細を使用してクラスターを更新します](#update-cluster-with-key-identifier-details)。 クラスターの新しいキー バージョンを更新しない場合、Log Analytics クラスター ストレージでの暗号化には以前のキーが引き続き使用されます。 クラスターの新しいキーを更新する前に古いキーを無効にしたり削除したりすると、[キーの失効](#key-revocation)状態になります。
+キーの交換には、次の 2 つのモードがあります。 
+- 自動ローテーション - ```"keyVaultProperties"``` を使用してクラスターを更新するときに ```"keyVersion"``` プロパティを省略したり、それを ```""``` に設定したりした場合、自動的に最新バージョンが使用されます。
+- 明示的なキー バージョンの更新 - クラスターを更新し、```"keyVersion"``` プロパティにキー バージョンを指定する場合、どの新しいキー バージョンも、クラスターでの明示的な ```"keyVaultProperties"``` の更新が必要です。「[キー識別子の詳細を使用してクラスターを更新する](#update-cluster-with-key-identifier-details)」を参照してください。 Key Vault で新しいキー バージョンを生成したが、それをクラスターで更新していない場合、以前のキーが引き続き使用されます。 クラスターの新しいキーを更新する前に古いキーを無効にしたり削除したりすると、[キーの失効](#key-revocation)状態になります。
 
 アカウント暗号化キー (AEK) は新しいキー暗号化キー (KEK) バージョンによって Key Vault で暗号化されるようになりますが、データは常に AEK によって暗号化されているため、キー ローテーション操作後も、すべてのデータにアクセスできます。
 

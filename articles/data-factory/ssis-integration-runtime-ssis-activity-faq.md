@@ -4,16 +4,16 @@ description: この記事では、SSIS 統合ランタイムでの SSIS パッ�
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: wenjiefu
-author: wenjiefu
+author: RodgeFu
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 2bc56d39de392c9e4c20c25b554e3bdeea048bfb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6eecedbc28bcb8bc0bd46534a2c2692636f6f2c1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361878"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934004"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -121,7 +121,10 @@ SSIS 統合ランタイムで多数のパッケージが並列に実行されて
 考えられる原因の 1 つは、Azure Analysis Services の認証用に、Azure AD Multi-Factor Authentication が有効になっているユーザー名またはパスワードが構成されていることです。 この認証は、SSIS 統合ランタイムではサポートされていません。 Azure Analysis Services の認証には、サービス プリンシパルを使用してみてください。
 
 1. 「[サービス プリンシパルによる自動化](../analysis-services/analysis-services-service-principal.md)」の説明に従って、サービス プリンシパルを準備します。
-2. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **AppID**、パスワードとして **clientSecret** を設定します。
+2. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **app: *&lt;AppID&gt;* @*&lt;TenantID&gt;** *、パスワードとして clientSecret を設定します。 正しい形式のユーザー名の例を次に示します。
+ 
+   `app:12345678-9012-3456-789a-bcdef012345678@9abcdef0-1234-5678-9abc-def0123456789abc`
+1. 接続マネージャーで、 **[特定のユーザー名とパスワードを使用する]** を構成します。ユーザー名として **AppID**、パスワードとして **clientSecret** を設定します。
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>エラー メッセージ:"ADO NET 変換元では、接続 {GUID} を取得できませんでした。エラー メッセージ: ユーザー 'NT AUTHORITY\ANONYMOUS LOGON' はログインできませんでした。'" (マネージド ID の使用時)
 

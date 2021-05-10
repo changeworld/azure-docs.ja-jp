@@ -1,7 +1,7 @@
 ---
 title: Python でのトレーニングの実行の開始、監視、およびキャンセル
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Python SDK を使用して、機械学習実験の実行を開始し、状態を監視し、管理する方法について説明します。
+description: Azure Machine Learning Python SDK を使用して、機械学習実験の実行を開始し、監視し、追跡する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,24 +12,24 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634788"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566287"
 ---
-# <a name="start-monitor-and-track-runs"></a>実行の開始、監視および追跡 
+# <a name="start-monitor-and-track-run-history"></a>実行履歴の開始、監視および追跡 
 
-[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、[Machine Learning CLI](reference-azure-machine-learning-cli.md)、および [Azure Machine Learning Studio](https://ml.azure.com) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
+[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、[Machine Learning CLI](reference-azure-machine-learning-cli.md)、および [Azure Machine Learning スタジオ](https://ml.azure.com) には、トレーニングおよび実験の実行を、監視、整理、追跡するさまざまな方法があります。 ML の実行履歴は、説明可能かつ反復可能な ML 開発プロセスの重要な部分です。
 
-この記事では、次のタスクの例を示します。
+この記事では、次のタスクの手順について説明します。
 
 * 実行のパフォーマンスの監視。
 * 電子メール通知による実行状態の監視。
 * 実行のタグ付けおよび検索。
 * 実行の説明の追加。 
-* 検索の実行。 
+* 実行履歴に対する検索の実行。 
 * 実行のキャンセルまたは失敗。
 * 子実行の作成。
  
@@ -134,7 +134,7 @@ ms.locfileid: "102634788"
         print(notebook_run.get_status())
         ```
     
-    * 実行 ID、実行時間、および実行に関する追加の詳細を取得するには、[`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) メソッドを使用します。
+    * 実行 ID、実行時間、および実行に関するその他の詳細を取得するには、[`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) メソッドを使用します。
     
         ```python
         print(notebook_run.get_details())
@@ -190,7 +190,7 @@ ms.locfileid: "102634788"
     
         **[すべての実行]** ページでは、タグ、実験、コンピューティング ターゲットなどで実行の一覧をフィルター処理し、自分の作業を整理したり、範囲を絞り込んだりすることができます。  
     
-    1. このページでは、比較する実行を選択したり、グラフを追加したり、フィルターを適用して、カスタマイズすることが可能です。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集または表示できます。 また、 **[共有ビュー]** を選択すると、カスタム ビューをチームメンバーと共有して、連携を強化できます。   
+    1. このページでは、比較する実行を選択したり、グラフを追加したり、フィルターを適用して、カスタマイズすることが可能です。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集、または表示できます。 また、 **[共有ビュー]** を選択すると、カスタム ビューをチームメンバーと共有して、連携を強化できます。   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="スクリーンショット: カスタム ビューを作成する":::
     
@@ -211,7 +211,7 @@ ms.locfileid: "102634788"
     1. **[宛先の詳細]** で、 **[Log Analytics ワークスペースに送信する]** を選択し、 **[サブスクリプション]** と **[Log Analytics ワークスペース]** を指定します。 
 
     > [!NOTE]
-    > **Azure Log Analytics ワークスペース** は、**Azure Machine Learning service ワークスペース** とは異なる種類の Azure Resource です。 そのリストにオプションがない場合は、[Log Analytics ワークスペースを作成](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace)することができます。 
+    > **Azure Log Analytics ワークスペース** は、**Azure Machine Learning service ワークスペース** とは異なる種類の Azure Resource です。 そのリストにオプションがない場合は、[Log Analytics ワークスペースを作成](../azure-monitor/logs/quick-create-workspace.md)することができます。 
     
     ![電子メール通知を保存する場所](./media/how-to-manage-runs/log-location.png)
 
@@ -219,13 +219,13 @@ ms.locfileid: "102634788"
 
     ![新しいアラート ルール](./media/how-to-manage-runs/new-alert-rule.png)
 
-1. [Azure Monitor を使用してログ アラートを作成および管理する方法](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log)に関するページを参照してください。
+1. [Azure Monitor を使用してログ アラートを作成および管理する方法](../azure-monitor/alerts/alerts-log.md)に関するページを参照してください。
 
 ## <a name="run-description"></a>実行の説明 
 
 実行に実行の説明を追加し、その実行に関するコンテキストおよび情報をより多く指定できます。 また、実行の一覧でこれらの説明を検索し、実行の一覧の列として実行の説明を追加することもできます。 
 
-自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行の説明を追加、編集または削除します。 お使いの既存のカスタム ビューまたは新しいカスタム ビューに変更を保存すると、この変更を実行の一覧に保存できます。 実行の説明には、次に示すように、イメージを埋め込んだり、ディープ リンクを設定したりすることができる Markdown 形式がサポートされています。
+自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行の説明を追加、編集、または削除します。 お使いの既存のカスタム ビューまたは新しいカスタム ビューに変更を保存すると、この変更を実行の一覧に保存できます。 実行の説明には、下に示すように、イメージを埋め込んだり、ディープ リンクを設定したりすることができる Markdown 形式がサポートされています。
 
 :::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="スクリーンショット: 実行の説明を作成する"::: 
 
@@ -285,7 +285,7 @@ Azure Machine Learning では、実行の整理にプロパティとタグを使
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
     
-    スタジオから実行のタグを追加、編集、または削除できます。 自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行を追加、編集または削除します。 実行の一覧ページから、これらのタグを検索したり、フィルター処理したりすることもできます。
+    スタジオから実行のタグを追加、編集、または削除できます。 自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行を追加、編集、または削除します。 実行の一覧ページから、これらのタグを検索したり、フィルター処理したりすることもできます。
     
     :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="スクリーンショット: 実行タグを追加、編集、または削除する":::
     
@@ -405,7 +405,7 @@ with exp.start_logging() as parent_run:
 
 親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成できます。 親のない子実行を作成することはできません。親実行で子実行が起動されただけであっても、階層を作成する必要があります。 すべての実行の状態は独立しています。1 つ以上の子実行が取り消されたか失敗した場合でも、親は正常に `"Completed"` の状態になります。  
 
-子実行で、親実行と異なる実行構成を使用することを望む場合があります。 たとえば、子に GPU ベースの構成を使用しながら、親に対して非力な CPU ベースの構成を使用できます。 他の一般的な目的は、各子に異なる引数とデータを渡すことです。 子実行をカスタマイズするには、子実行の `ScriptRunConfig` オブジェクトを作成します。 下のコードにより、次のことが行われます。
+子実行で、親実行と異なる実行構成を使用することを望む場合があります。 たとえば、子に GPU ベースの構成を使用しながら、親に対して非力な CPU ベースの構成を使用できます。 他の一般的な目的は、各子に異なる引数とデータを渡すことです。 子実行をカスタマイズするには、子実行の `ScriptRunConfig` オブジェクトを作成します。 下のコードでは、以下が実行されます。
 
 - `"gpu-cluster"` という名前のコンピューティング リソースを、ワークスペース `ws` から取得します
 - 子 `ScriptRunConfig` オブジェクトに渡される異なる引数値を繰り返します
@@ -455,7 +455,7 @@ print(parent_run.get_children())
 
 ### <a name="log-to-parent-or-root-run"></a>親またはルートの実行にログを記録する
 
-`Run.parent` フィールドを使用すると、現在の子実行を開始した実行にアクセスできます。 一般的なユースケースは、ログ結果を 1 か所に統合する場合です。 子実行は非同期に実行され、子実行が完了するまで待機する親の機能を超えた順序付けや同期の保証はないことに注意してください。
+`Run.parent` フィールドを使用すると、現在の子実行を開始した実行にアクセスできます。 `Run.parent` を使用する一般的なユースケースは、ログ結果を 1 か所に統合する場合です。 子実行は非同期に実行され、子実行が完了するまで待機する親の機能を超えた順序付けや同期の保証はないことに注意してください。
 
 ```python
 # in child (or even grandchild) run

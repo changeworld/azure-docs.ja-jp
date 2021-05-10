@@ -9,12 +9,12 @@ ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 8b331eaf52a0a97232d481dccfff932221cd5faa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 292abce3361c000eeeef2c399d5ffa2d2c4852e1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933459"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762859"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスのインスタンス保護
 
@@ -94,7 +94,7 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-スケール セット インスタンスにスケールイン保護を適用するには、[az vmss update](/cli/azure/vmss#az-vmss-update) を使用します。
+スケール セット インスタンスにスケールイン保護を適用するには、[az vmss update](/cli/azure/vmss#az_vmss_update) を使用します。
 
 次の例では、インスタンス ID が 0 に設定されたスケール セット内のインスタンスにスケールイン保護を適用します。
 
@@ -165,7 +165,7 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-スケール セット アクションからの保護をスケール セット インスタンスに適用するには、[az vmss update](/cli/azure/vmss#az-vmss-update) を使用します。
+スケール セット アクションからの保護をスケール セット インスタンスに適用するには、[az vmss update](/cli/azure/vmss#az_vmss_update) を使用します。
 
 次の例では、インスタンス ID 0 のスケール セット内のインスタンスにスケール セット アクションからの保護を適用します。
 

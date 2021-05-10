@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8664f9327af37345c7104c65b2521212669ae806
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078504"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786328"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -24,7 +24,7 @@ ms.locfileid: "106078504"
 
 ### <a name="how-to-check-backend-health"></a>バックエンドの正常性を確認する方法
 
-バックエンド プールの正常性を確認するには、Azure portal の **[バックエンド正常性]** ページを使用できます。 また、[Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az-network-application-gateway-show-backend-health)、または [REST API](/rest/api/application-gateway/applicationgateways/backendhealth) を使用することもできます。
+バックエンド プールの正常性を確認するには、Azure portal の **[バックエンド正常性]** ページを使用できます。 また、[Azure PowerShell](/powershell/module/az.network/get-azapplicationgatewaybackendhealth)、[CLI](/cli/azure/network/application-gateway#az_network_application_gateway_show_backend_health)、または [REST API](/rest/api/application-gateway/applicationgateways/backendhealth) を使用することもできます。
 
 これらのいずれかの方法で取得される状態は、次のいずれかになります。
 

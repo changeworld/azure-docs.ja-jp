@@ -90,7 +90,7 @@ AppGW/WAF を含む仮想ネットワークで DDoS Protection Standard が有�
 
 
 > [!NOTE]
-> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 Azure App Service 環境または API 管理は、どちらもネイティブにはサポートされていません。
+> パブリック IP を使用する仮想ネットワーク内での PowerApps 用 AzureApp Service Environment または API 管理は、どちらもネイティブにはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82d272f22295a5b68d1e8de3fb5a70c45d4c14a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89069661"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791213"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -54,7 +54,7 @@ $storageAccountKey = `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI でアカウント アクセス キーを一覧表示するには、次の例のように [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。 
+Azure CLI でアカウント アクセス キーを一覧表示するには、次の例のように [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。 
 
 ```azurecli-interactive
 az storage account keys list \
@@ -116,7 +116,7 @@ PowerShell を使用してストレージ アカウントのアクセス キー�
 Azure CLI を使用してストレージ アカウントのアクセス キーをローテーションするには:
 
 1. ストレージ アカウントのセカンダリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
-1. 次の例に示すように、[az storage account keys renew](/cli/azure/storage/account/keys#az-storage-account-keys-renew) コマンドを呼び出し、プライマリ アクセス キーを再生成します。
+1. 次の例に示すように、[az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) コマンドを呼び出し、プライマリ アクセス キーを再生成します。
 
     ```azurecli-interactive
     az storage account keys renew \

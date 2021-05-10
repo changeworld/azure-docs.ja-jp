@@ -4,28 +4,26 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 41a5f05f016a876894949c35a6610b2b49f9eb9d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488116"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073283"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
-- 通話クライアントを有効にするための `User Access Token`。 [`User Access Token` を取得する方法](../../access-tokens.md)についての詳細
-- 省略可能:[アプリケーションへの通話の追加の概要](../getting-started-with-calling.md)に関するクイックスタートを完了します
+- 通話クライアントを有効にするためのユーザー アクセス トークン。 詳細については、[アクセス トークンの作成と管理](../../access-tokens.md)に関する記事を参照してください。
+- 省略可能: クイックスタートを完了して、[アプリケーションに音声通話を追加します](../getting-started-with-calling.md)。
 
-## <a name="setting-up"></a>設定
-
-### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
+## <a name="install-the-sdk"></a>SDK のインストール
 
 > [!NOTE]
-> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.6 を使用します。
+> このドキュメントでは、ACS Calling Web SDK を使用します。
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話および共通クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話と共通の各 SDK をインストールします。
 
 ```console
 npm install @azure/communication-common --save
@@ -35,24 +33,30 @@ npm install @azure/communication-calling --save
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Azure Communication Services 通話クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+Azure Communication Services Calling SDK の主な機能のいくつかは、次のクラスとインターフェイスによって処理されます。
 
 | 名前                             | 説明                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。                                                                       |
-| CallAgent                        | CallAgent は、通話を開始および管理するために使用します。                                                                                            |
-| DeviceManager                    | DeviceManager は、メディア デバイスを管理するために使用します                                                                                           |
-| AzureCommunicationTokenCredential | AzureCommunicationTokenCredential クラスによって、CallAgent のインスタンス化に使用する CommunicationTokenCredential インターフェイスが実装されます。 |
+| `CallClient`                      | Calling SDK へのメイン エントリ ポイント。                                                                       |
+| `CallAgent`                        | 通話を開始および管理するために使用されます。                                                                                            |
+| `DeviceManager`                    | メディア デバイスを管理するために使用されます。                                                                                           |
+| `AzureCommunicationTokenCredential` | `callAgent` のインスタンス化に使用される `CommunicationTokenCredential` インターフェイスを実装します。 |
 
+## <a name="initialize-a-callclient-instance-create-a-callagent-instance-and-access-devicemanager"></a>CallClient インスタンスの初期化、CallAgent インスタンスの作成、deviceManager へのアクセスを行う
 
-## <a name="initialize-the-callclient-create-callagent-and-access-devicemanager"></a>CallClient を初期化し、Callclient を作成して、DeviceManager にアクセスする
+新しい `CallClient` インスタンスを作成します。 Logger インスタンスなどのカスタム オプションを使用して構成できます。
 
-新しい `CallClient` インスタンスをインスタンス化します。 Logger インスタンスなどのカスタム オプションを使用して構成できます。
-`CallClient` がインスタンス化されたら、`CallClient` インスタンスで `createCallAgent` メソッドを呼び出すことによって、`CallAgent` インスタンスを作成できます。 これにより、`CallAgent` インスタンス オブジェクトが非同期に返されます。
-`createCallAgent` メソッドが引数として受け取る `CommunicationTokenCredential` では、[ユーザー アクセス トークン](../../access-tokens.md)が受け入れられます。
-`DeviceManager` にアクセスするには、先に callAgent インスタンスを作成する必要があります。 その後、`CallClient` インスタンスで `getDeviceManager` メソッドを使用して、DeviceManager を取得できます。
+`CallClient` インスタンスを用意したら、`CallClient` インスタンスで `createCallAgent` メソッドを呼び出すことで、`CallAgent` インスタンスを作成できます。 これにより、`CallAgent` インスタンス オブジェクトが非同期に返されます。
+
+`createCallAgent` メソッドでは、`CommunicationTokenCredential` が引数として使用されます。 これは、[ユーザー アクセス トークン](../../access-tokens.md)を受け取ります。
+
+`callAgent` インスタンスを作成した後、`CallClient` インスタンスで `getDeviceManager` メソッドを使用して `deviceManager` にアクセスできます。
 
 ```js
+// Set the logger's log level
+setLogLevel('verbose');
+// Redirect logger output to wherever desired. By default it logs to console
+AzureLogger.log = (...args) => { console.log(...args) };
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationTokenCredential(userToken);
@@ -60,35 +64,38 @@ const callAgent = await callClient.createCallAgent(tokenCredential, {displayName
 const deviceManager = await callClient.getDeviceManager()
 ```
 
-## <a name="place-an-outgoing-call"></a>発信通話を行う
-
-通話を作成して開始するには、CallAgent で API の 1 つを使用し、Communication Services ID クライアント ライブラリを使用して作成したユーザーを指定する必要があります。
-
-通話の作成と開始は同期的に行います。 Call インスタンスを使用すると、通話イベントをサブスクライブできます。
-
 ## <a name="place-a-call"></a>通話を行う
 
-### <a name="place-a-11-call-to-a-user-or-pstn"></a>ユーザーまたは PSTN と 1:1 の通話を行う
-別の Communication Services ユーザーへの通話を行うには、`callAgent` の `startCall` メソッドを呼び出し、[Communication Services ID ライブラリで作成した](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens)呼び出し先の CommunicationUserIdentifier を渡します。
+通話を作成して開始するには、`callAgent` で API のいずれかを使用し、Communication Services ID SDK を使用して作成したユーザーを指定する必要があります。
+
+通話の作成と開始は同期的に行われます。 通話インスタンスを使用すると、通話イベントをサブスクライブできます。
+
+### <a name="place-a-1n-call-to-a-user-or-pstn"></a>ユーザーまたは PSTN と 1:n の通話を行う
+
+別の Communication Services ユーザーと通話を行うには、`callAgent` で `startCall` メソッドを呼び出し、[Communication Services 管理ライブラリで作成した](../../access-tokens.md)、受信者の `CommunicationUserIdentifier` を渡します。
 
 ```js
 const userCallee = { communicationUserId: '<ACS_USER_ID>' }
 const oneToOneCall = callAgent.startCall([userCallee]);
 ```
 
-PSTN の通話を行うには `callAgent` で `startCall` メソッドを呼び出し、呼び出し先の PhoneNumberIdentifier を渡します。
-PSTN 通話を許可するように Communication Services リソースを構成する必要があります。
-PSTN 番号に電話をかけるときは、代替の発信者 ID を指定する必要があります。 代替の発信者 ID は、PSTN 通話の呼び出し元を識別する電話番号 (E.164 標準に基づく) を示します。 たとえば、PSTN 通話に代替の発信者 ID を指定すると、通話を着信したときに、その電話番号が呼び出し先に表示されます。
+公衆交換電話網 (PSTN) の通話を行うには、`callAgent` で `startCall` メソッドを使用し、受信者の `PhoneNumberIdentifier` を渡します。 PSTN 通話を許可するように Communication Services リソースを構成する必要があります。
 
-> [!WARNING]
+PSTN 番号に電話をかけるときは、代替の発信者 ID を指定します。 代替の発信者 ID は、PSTN 通話の呼び出し元を識別する (E.164 標準に基づく) 電話番号です。 これは、着信通話の場合に通話受信者に表示される電話番号です。
+
+> [!NOTE]
 > PSTN 通話は、現在プライベート プレビュー段階にあります。 アクセスするには、[早期導入者プログラムに申し込みます](https://aka.ms/ACS-EarlyAdopter)。
+
+1:1 の通話の場合は、次のコードを使用します。
+
 ```js
 const pstnCalee = { phoneNumber: '<ACS_USER_ID>' }
 const alternateCallerId = {alternateCallerId: '<Alternate caller Id>'};
 const oneToOneCall = callAgent.startCall([pstnCallee], {alternateCallerId});
 ```
 
-### <a name="place-a-1n-call-with-users-and-pstn"></a>ユーザーと PSTN で 1:n の通話を行う
+1:n の通話の場合は、次のコードを使用します。
+
 ```js
 const userCallee = { communicationUserId: <ACS_USER_ID> }
 const pstnCallee = { phoneNumber: <PHONE_NUMBER>};
@@ -98,37 +105,59 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 ```
 
 ### <a name="place-a-11-call-with-video-camera"></a>ビデオ カメラを使用して 1:1 の通話を行う
-> [!WARNING]
+
+> [!IMPORTANT]
 > 現在、発信ローカル動画ストリームは 1 つしか使用できません。
-動画通話を行うには、deviceManager の `getCameras()` API を使用してローカル カメラを列挙する必要があります。
-目的のカメラを選択したら、それを使用して `LocalVideoStream` インスタンスを構築し、それを `startCall` メソッドへの `localVideoStream` 配列内の項目として、`videoOptions` に渡します。
-通話が接続されると、選択したカメラから他の参加者へのビデオ ストリームの送信が自動的に開始されます。 これは、Call.Accept() ビデオ オプションと CallAgent.join() ビデオ オプションにも適用されます。
+
+ビデオ通話を行うには、`deviceManager` の `getCameras()` メソッドを使用してカメラを指定する必要があります。
+
+カメラを選択したら、それを使用して `LocalVideoStream` インスタンスを作成します。 `videoOptions` 内のそれを `localVideoStream` 配列内の項目として `startCall` メソッドに渡します。
+
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const cameras = await deviceManager.getCameras();
-videoDeviceInfo = cameras[0];
-localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const camera = cameras[0]
+localVideoStream = new LocalVideoStream(camera);
 const placeCallOptions = {videoOptions: {localVideoStreams:[localVideoStream]}};
 const call = callAgent.startCall(['acsUserId'], placeCallOptions);
 
 ```
 
+通話が接続されると、選択したカメラから他の参加者への動画ストリームの送信が自動的に開始されます。 これは、`Call.Accept()` ビデオ オプションと `CallAgent.join()` ビデオ オプションにも適用されます。
+
 ### <a name="join-a-group-call"></a>グループ通話に参加する
-新しいグループ通話を始めるか、進行中のグループ通話に参加するには、"join" メソッドを使用して、`groupId` プロパティを含むオブジェクトを渡します。 値には GUID を指定する必要があります。
+
+> [!NOTE]
+> `groupId` パラメーターはシステム メタデータと見なされ、システムの実行に必要な操作のために Microsoft によって使用される場合があります。 `groupId` 値には個人データを含めないでください。 Microsoft ではこのパラメーターを個人データとして扱わず、そのコンテンツが Microsoft の従業員に表示されたり、長期間保管されたりすることがあります。
+>
+> `groupId` パラメーターのデータは GUID 形式でなければなりません。 ご利用のシステム内で個人データと見なされない、ランダムに生成された GUID を使用することをお勧めします。
+>
+
+新しいグループ通話を始めるか、進行中のグループ通話に参加するには、`join` メソッドを使用して、`groupId` プロパティを含むオブジェクトを渡します。 `groupId` 値には GUID を指定する必要があります。
+
 ```js
 
 const context = { groupId: <GUID>}
 const call = callAgent.join(context);
 
 ```
+
 ### <a name="join-a-teams-meeting"></a>Teams 会議に参加する
-Teams 会議に参加するには、'join' メソッドを使用し、会議リンクまたは会議の座標を渡します。
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Web SDK の "ベータ" リリースを使用してください
+
+Teams 会議に参加するには、`join` メソッドを使用し、会議リンクまたは座標を渡します。
+
+会議リンクを使用して参加する:
+
 ```js
-// Join using meeting link
 const locator = { meetingLink: <meeting link>}
 const call = callAgent.join(locator);
+```
 
-// Join using meeting coordinates
+会議の座標を使用して参加する:
+
+```js
 const locator = {
     threadId: <thread id>,
     organizerId: <organizer id>,
@@ -138,106 +167,118 @@ const locator = {
 const call = callAgent.join(locator);
 ```
 
-## <a name="receiving-an-incoming-call"></a>着信呼び出しの受信
+## <a name="receive-an-incoming-call"></a>着信した通話に出る
 
-ログインしている ID が着信呼び出しを受信すると、`CallAgent` インスタンスで `incomingCall` イベントが生成されます。 このイベントをリッスンするには、次の方法でサブスクライブします。
+ログインしている ID が着信通話を受信すると、`callAgent` インスタンスで `incomingCall` イベントが生成されます。 このイベントをリッスンするには、次のいずれかのオプションを使用してサブスクライブします。
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-    //Get information about caller
+
+    //Get incoming call ID
+    var incomingCallId = incomingCall.id
+
+    // Get information about caller
     var callerInfo = incomingCall.callerInfo
-    
-    //accept the call
+
+    // Accept the call
     var call = await incomingCall.accept();
 
-    //reject the call
+    // Reject the call
     incomingCall.reject();
+
+    // Subscribe to callEnded event and get the call end reason
+     incomingCall.on('callEnded', args => {
+        console.log(args.callEndReason);
+    });
+
+    // callEndReason is also a property of IncomingCall
+    var callEndReason = incomingCall.callEndReason;
 };
 callAgentInstance.on('incomingCall', incomingCallHander);
 ```
 
-`incomingCall` イベントにより、呼び出しを受け入れるか、拒否することができる `IncomingCall` のインスタンスが提供されます。
+`incomingCall` イベントには、受け入れまたは拒否できる `incomingCall` インスタンスが含まれています。
 
+## <a name="manage-calls"></a>通話を管理する
 
-## <a name="call-management"></a>通話の管理
+通話中、通話のプロパティにアクセスしたり、ビデオとオーディオの設定を管理したりできます。
 
-通話の間に、通話のプロパティにアクセスしてさまざまな操作を実行し、動画やオーディオに関連する設定を管理できます。
+### <a name="check-call-properties"></a>通話のプロパティを確認する
 
-### <a name="call-properties"></a>通話のプロパティ
-* この通話の一意の ID (文字列) を取得します。
-```js
+通話の一意の ID (文字列) を取得します。
 
-const callId: string = call.id;
+   ```js
+    const callId: string = call.id;
+   ```
 
-```
+通話の他の参加者について知るには、"call" インスタンスの `remoteParticipants` コレクションを調べます。
 
-* 通話の他の参加者について知るには、`call` インスタンスの `remoteParticipant` コレクションを調べます。 配列には、リスト `RemoteParticipant` オブジェクトが含まれています
-```js
-const remoteParticipants = call.remoteParticipants;
-```
+   ```js
+   const remoteParticipants = call.remoteParticipants;
+   ```
 
-* 通話が着信の場合の呼び出し元の識別子です。 識別子は `CommunicationIdentifier` 型の 1 つです
-```js
+着信通話の発信者を特定します。
 
-const callerIdentity = call.callerInfo.identifier;
+   ```js
+   const callerIdentity = call.callerInfo.identifier;
+   ```
 
-* Get the state of the Call.
-```js
+   `identifier` は `CommunicationIdentifier` の種類の 1 つです。
 
-const callState = call.state;
+通話の状態を取得します。
 
-```
-これにより、通話の現在の状態を表す文字列が返されます。
-* "None" - 通話の初期状態です
-* "Incoming" - 通話を着信中であり、受諾または拒否する必要があることを示します
-* "Connecting" - 通話が発信または受諾された後の初期遷移状態です
-* "Ringing" - 発信通話の場合 - リモート参加者に対して通話が発信されていることを示します。そちら側ではこれは "Incoming" です
-* "EarlyMedia" - 通話が接続される前に、アナウンスが再生されている状態を示します
-* "Connected" - 通話は接続されています
-* "LocalHold" - 通話はローカル参加者によって保留にされており、ローカル エンドポイントとリモート参加者の間でメディアは送信されていません
-* "RemoteHold" - 通話はリモート参加者によって保留にされており、ローカル エンドポイントとリモート参加者の間でメディアは送信されていません
-* "Disconnecting" - 通話は、"Disconnected" 状態になる前の移行状態です
-* "Disconnected" - 通話の最終状態です
-  * ネットワーク接続が失われると、状態は約 2 分後に "Disconnected" になります。
+   ```js
+   const callState = call.state;
+   ```
 
-* 特定の通話が終了した理由を確認するには、`callEndReason` プロパティを調べます。
-```js
+   これにより、通話の現在の状態を表す文字列が返されます。
 
-const callEndReason = call.callEndReason;
-// callEndReason.code (number) code associated with the reason
-// callEndReason.subCode (number) subCode associated with the reason
-```
+  - `None`: 通話の初期状態。
+  - `Connecting`: 通話が発信または受信されたときの初期遷移状態。
+  - `Ringing`: 発信通話の場合、リモート参加者に対して通話が発信されていることを示します。 参加者側では、これは `Incoming` です。
+  - `EarlyMedia`: 通話が接続される前に、アナウンスが再生されている状態を示します。
+  - `Connected`: 通話が接続されていることを示します。
+  - `LocalHold`: 通話がローカル参加者によって保留にされていることを示します。 ローカル エンドポイントとリモート参加者の間でメディアは送信されていません。
+  - `RemoteHold`: 通話がリモート参加者によって保留にされていることを示します。 ローカル エンドポイントとリモート参加者の間でメディアは送信されていません。
+  - `Disconnecting`: 通話が `Disconnected` 状態になる前の遷移状態。
+  - `Disconnected`: 通話の最終状態。 ネットワーク接続が失われると、2 分後に状態は `Disconnected` になります。
 
-* 現在の通話が着信通話か発信通話かを確認するには、`direction` プロパティを調べます。これにより `CallDirection` が返されます。
-```js
-const isIncoming = call.direction == 'Incoming';
-const isOutgoing = call.direction == 'Outgoing';
-```
+通話が終了した理由を確認するには、`callEndReason` プロパティを調べます。
 
-*  現在マイクがミュートされているかどうかを確認するには、`muted` プロパティを調べます。これは `Boolean` を返します。
-```js
+   ```js
+   const callEndReason = call.callEndReason;
+   const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+   const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
+   ```
 
-const muted = call.isMicrophoneMuted;
+現在の通話が着信か、発信かを知るには、`direction` プロパティを調べます。 `CallDirection` を返します。
 
-```
+  ```js
+   const isIncoming = call.direction == 'Incoming';
+   const isOutgoing = call.direction == 'Outgoing';
+   ```
 
-* 画面共有ストリームが特定のエンドポイントから送信されているかどうかを確認するには、`isScreenSharingOn` プロパティを調べます。これは `Boolean` を返します。
-```js
+現在マイクがミュートされているかどうかを調べます。 `Boolean` を返します。
 
-const isScreenSharingOn = call.isScreenSharingOn;
+   ```js
+   const muted = call.isMuted;
+   ```
 
-```
+画面共有ストリームが特定のエンドポイントから送信されているかどうかを確認するには、`isScreenSharingOn` プロパティを調べます。 `Boolean` を返します。
 
-* アクティブなビデオ ストリームを調べるには、`localVideoStreams` コレクションを確認します。これには、`LocalVideoStream` オブジェクトが含まれています
-```js
+   ```js
+   const isScreenSharingOn = call.isScreenSharingOn;
+   ```
 
-const localVideoStreams = call.localVideoStreams;
+アクティブな動画ストリームを調べるには、`localVideoStreams` コレクションを確認します。 これにより、`LocalVideoStream` オブジェクトが返されます。
 
-```
+   ```js
+   const localVideoStreams = call.localVideoStreams;
+   ```
 
-### <a name="call-ended-event"></a>通話終了イベント
+### <a name="check-a-callended-event"></a>callEnded イベントを確認する
 
-`Call` インスタンスにより、通話が終了したときに `callEnded` イベントが生成されます。 このイベントをリッスンするには、次の方法でサブスクライブします。
+`call` インスタンスにより、通話が終了したときに `callEnded` イベントが生成されます。 このイベントをリッスンするには、次のコードを使用してサブスクライブします。
 
 ```js
 const callEndHander = async (args: { callEndReason: CallEndReason }) => {
@@ -249,7 +290,7 @@ call.on('callEnded', callEndHander);
 
 ### <a name="mute-and-unmute"></a>ミュートとミュート解除
 
-ローカル エンドポイントをミュートまたはミュート解除するには、非同期 API の `mute` と `unmute` を使用できます。
+ローカル エンドポイントをミュートまたはミュート解除するには、非同期 API の `mute` と `unmute` を使用します。
 
 ```js
 
@@ -263,114 +304,115 @@ await call.unmute();
 
 ### <a name="start-and-stop-sending-local-video"></a>ローカル動画の送信を開始および停止する
 
-
-動画を開始するには、`deviceManager` オブジェクトで `getCameras` メソッドを使用して、カメラを列挙する必要があります。 次に、目的のカメラを引数として `startVideo` メソッドに渡して `LocalVideoStream` の新しいインスタンスを作成します。
-
+動画を開始するには、`deviceManager` オブジェクトで `getCameras` メソッドを使用して、カメラを指定する必要があります。 次に、目的のカメラを引数として `startVideo` メソッドに渡して `LocalVideoStream` の新しいインスタンスを作成します。
 
 ```js
-const localVideoStream = new LocalVideoStream(videoDeviceInfo);
+const deviceManager = await callClient.getDeviceManager();
+const cameras = await deviceManager.getCameras();
+const camera = cameras[0]
+const localVideoStream = new LocalVideoStream(camera);
 await call.startVideo(localVideoStream);
-
 ```
 
 動画の送信が正常に開始されると、通話インスタンスの `localVideoStreams` コレクションに `LocalVideoStream` インスタンスが追加されます。
 
 ```js
-
 call.localVideoStreams[0] === localVideoStream;
-
 ```
 
 ローカル動画を停止するには、`localVideoStreams` コレクションで使用可能な `localVideoStream` インスタンスを渡します。
 
 ```js
-
 await call.stopVideo(localVideoStream);
-
 ```
 
 `localVideoStream` インスタンスで `switchSource` を呼び出すことにより、動画の送信中に別のカメラ デバイスに切り替えることができます。
 
 ```js
 const cameras = await callClient.getDeviceManager().getCameras();
-localVideoStream.switchSource(cameras[1]);
-
+const camera = cameras[1];
+localVideoStream.switchSource(camera);
 ```
 
-## <a name="remote-participants-management"></a>リモート参加者の管理
+## <a name="manage-remote-participants"></a>リモート参加者を管理する
 
 すべてのリモート参加者は `RemoteParticipant` 型で表され、通話インスタンスの `remoteParticipants` コレクションを通して使用できます。
 
-### <a name="list-participants-in-a-call"></a>通話の参加者の一覧を取得する
-`remoteParticipants` コレクションで、特定の通話におけるリモート参加者の一覧が返されます。
+### <a name="list-the-participants-in-a-call"></a>通話の参加者を一覧表示する
+
+`remoteParticipants` コレクションで、通話におけるリモート参加者の一覧が返されます。
 
 ```js
-
 call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
-
 ```
 
-### <a name="remote-participant-properties"></a>リモート参加者のプロパティ
-リモート参加者には、プロパティのセットとコレクションが関連付けられています
-#### <a name="communicationidentifier"></a>CommunicationIdentifier
-このリモート参加者の識別子を取得します。
-ID は "CommunicationIdentifier" 型の 1 つです。
-```js
-const identifier = remoteParticipant.identifier;
-```
-'CommunicationIdentifier' 型のいずれかになります。
-  * { communicationUserId: '<ACS_USER_ID'> } - ACS ユーザーを表すオブジェクト
-  * { phoneNumber: '<E.164>' } - E.164 形式で電話番号を表すオブジェクト
-  * { microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" } - チーム ユーザーを表すオブジェクト
+### <a name="access-remote-participant-properties"></a>リモート参加者のプロパティにアクセスする
 
-#### <a name="state"></a>状態
-このリモート参加者の状態を取得します。
-```js
+リモート参加者には、一連のプロパティとコレクションが関連付けられています。
 
-const state = remoteParticipant.state;
-```
-状態は次のいずれかです
-* "Idle" - 初期状態です
-* "Connecting" - 参加者が通話に接続している間の遷移状態です
-* 'Ringing' - 参加者が発信しています
-* "Connected" - 参加者は通話に接続されています
-* "Hold" - 参加者は保留中です
-* "EarlyMedia" - 参加者が通話に接続される前に、アナウンスが再生されています
-* "Disconnected" - 最終状態 - 参加者は通話から切断されました
-  * リモート参加者がネットワーク接続を失った場合、リモート参加者の状態は約 2 分後に "Disconnected" になります。
+- `CommunicationIdentifier`: リモート参加者の識別子を取得します。 ID は `CommunicationIdentifier` の種類の 1 つです。
 
-#### <a name="call-end-reason"></a>通話終了の理由
-参加者が通話を終了した理由を確認するには、`callEndReason` プロパティを調べます。
-```js
-const callEndReason = remoteParticipant.callEndReason;
-// callEndReason.code (number) code associated with the reason
-// callEndReason.subCode (number) subCode associated with the reason
-```
-#### <a name="is-muted"></a>ミュートされている
-このリモート参加者がミュートされているかどうかを確認するには、`isMuted` プロパティを調べます。これは `Boolean` を返します
-```js
-const isMuted = remoteParticipant.isMuted;
-```
-#### <a name="is-speaking"></a>話し中である
-このリモート参加者が話しているかどうかを確認するには、`isSpeaking` プロパティを調べます。これは `Boolean` を返します
-```js
-const isSpeaking = remoteParticipant.isSpeaking;
-```
+  ```js
+  const identifier = remoteParticipant.identifier;
+  ```
 
-#### <a name="video-streams"></a>ビデオ ストリーム
-特定の参加者がこの通話で送信しているすべてのビデオ ストリームを調べるには、`videoStreams` コレクションを確認します。これには、`RemoteVideoStream` オブジェクトが含まれています
-```js
+  これは、次の `CommunicationIdentifier` の種類のいずれかになります。
 
-const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  - `{ communicationUserId: '<ACS_USER_ID'> }`: ACS ユーザーを表すオブジェクト。
+  - `{ phoneNumber: '<E.164>' }`: E.164 形式で電話番号を表すオブジェクト。
+  - `{ microsoftTeamsUserId: '<TEAMS_USER_ID>', isAnonymous?: boolean; cloud?: "public" | "dod" | "gcch" }`: Tems ユーザーを表すオブジェクト。
+  - `{ id: string }`: 他の識別子の種類に適合しない識別子を表すオブジェクト
 
-```
+- `state`: リモート参加者の状態を取得します。
 
+  ```js
+  const state = remoteParticipant.state;
+  ```
+
+  次の状態があります。
+
+  - `Idle`: 初期状態。
+  - `Connecting`: 参加者が通話に接続している間の遷移状態。
+  - `Ringing`: 参加者が発信しています。
+  - `Connected`: 参加者は通話に接続されています。
+  - `Hold`: 参加者は保留中です。
+  - `EarlyMedia`: 参加者が通話に接続する前に再生されるアナウンス。
+  - `Disconnected`: 最終状態。 参加者は通話から切断されました。 リモート参加者がネットワーク接続を失うと、2 分後に状態は `Disconnected` に変わります。
+
+- `callEndReason`: 参加者が通話を終了した理由を知るには、`callEndReason` プロパティを調べます。
+
+  ```js
+  const callEndReason = remoteParticipant.callEndReason;
+  const callEndReasonCode = callEndReason.code // (number) code associated with the reason
+  const callEndReasonSubCode = callEndReason.subCode // (number) subCode associated with the reason
+  ```
+
+- `isMuted` 状態: リモート参加者がミュートされているかどうかを確認するには、`isMuted` プロパティを調べます。 `Boolean` を返します。
+
+  ```js
+  const isMuted = remoteParticipant.isMuted;
+  ```
+
+- `isSpeaking` 状態: リモート参加者が話しているかどうかを確認するには、`isSpeaking` プロパティを調べます。 `Boolean` を返します。
+
+  ```js
+  const isSpeaking = remoteParticipant.isSpeaking;
+  ```
+
+- `videoStreams`: 特定の参加者がこの通話で送信しているすべての動画ストリームを調べるには、`videoStreams` コレクションを確認します。 これには、`RemoteVideoStream` オブジェクトが含まれています。
+
+  ```js
+  const videoStreams = remoteParticipant.videoStreams; // [RemoteVideoStream, ...]
+  ```
+- `displayName`: このリモート参加者の表示名を取得するには、文字列を返す `displayName` プロパティを調べます。 
+
+  ```js
+  const displayName = remoteParticipant.displayName;
+  ```
 
 ### <a name="add-a-participant-to-a-call"></a>通話に参加者を追加する
 
-通話に参加者を追加するには (ユーザーまたは電話番号のいずれか)、`addParticipant` を呼び出します。
-"Identifier" 型のいずれかを指定します。
-これにより、リモート参加者インスタンスが同期的に返されます。
+通話に参加者 (ユーザーまたは電話番号) を追加するには、`addParticipant` を使用します。 `Identifier` の種類のいずれかを指定します。 これにより、`remoteParticipant` インスタンスが返されます。
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -379,11 +421,9 @@ const remoteParticipant = call.addParticipant(userIdentifier);
 const remoteParticipant = call.addParticipant(pstnIdentifier, {alternateCallerId: '<Alternate Caller ID>'});
 ```
 
-### <a name="remove-participant-from-a-call"></a>通話から参加者を削除する
+### <a name="remove-a-participant-from-a-call"></a>通話から参加者を削除する
 
-通話から参加者を削除するには (ユーザーまたは電話番号のいずれか)、`removeParticipant` を呼び出します。
-"Identifier" 型のいずれかを渡す必要があります。これは、参加者が通話から削除されると、非同期的に解決されます。
-参加者は、`remoteParticipants` コレクションからも削除されます。
+通話から参加者 (ユーザーまたは電話番号) を削除するには、`removeParticipant` を呼び出します。 `Identifier` の種類のいずれかを渡す必要があります。 参加者が通話から削除されると、非同期的に解決されます。 参加者は、`remoteParticipants` コレクションからも削除されます。
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -401,23 +441,22 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-`RemoteVideoStream` をレンダリングするには、`isAvailableChanged` イベントをサブスクライブする必要があります。
-`isAvailable` プロパティが `true` に変更された場合、リモート参加者はストリームを送信しています。
-それが発生したら、`Renderer` の新しいインスタンスを作成し、非同期 `createView` メソッドを使用して新しい `RendererView` インスタンスを作成します。  その後、任意の UI 要素に `view.target` をアタッチできます。
-リモート ストリームの使用可能性が変わるたびに、レンダラー全体を破棄するか、特定の `RendererView` を破棄するか、それらを保持するかを選択できますが、これによって空の動画フレームが表示されます。
+`RemoteVideoStream` をレンダリングするには、`isAvailableChanged` イベントをサブスクライブする必要があります。 `isAvailable` プロパティが `true` に変更された場合、リモート参加者はストリームを送信しています。 それが発生したら、`VideoStreamRenderer` の新しいインスタンスを作成し、非同期 `createView` メソッドを使用して新しい `VideoStreamRendererView` インスタンスを作成します。  その後、任意の UI 要素に `view.target` を付加できます。
+
+リモート ストリームの使用可否が変わるたびに、`VideoStreamRenderer` 全体を破棄するか、特定の `VideoStreamRendererView` を破棄するか、それらを保持するかを選択できますが、これによって空の動画フレームが表示されます。
 
 ```js
 function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
-    let renderer: Renderer = new Renderer(remoteVideoStream);
+    let videoStreamRenderer: VideoStreamRenderer = new VideoStreamRenderer(remoteVideoStream);
     const displayVideo = () => {
-        const view = await renderer.createView();
+        const view = await videoStreamRenderer.createView();
         htmlElement.appendChild(view.target);
     }
-    remoteVideoStream.on('availabilityChanged', async () => {
+    remoteVideoStream.on('isAvailableChanged', async () => {
         if (remoteVideoStream.isAvailable) {
             displayVideo();
         } else {
-            renderer.dispose();
+            videoStreamRenderer.dispose();
         }
     });
     if (remoteVideoStream.isAvailable) {
@@ -427,77 +466,76 @@ function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
 ```
 
 ### <a name="remote-video-stream-properties"></a>リモート動画ストリームのプロパティ
+
 リモート動画ストリームには次のプロパティがあります。
 
-* `Id` - リモート ビデオ ストリームの ID です
+- `id`: リモート動画ストリームの ID。
+
+  ```js
+  const id: number = remoteVideoStream.id;
+  ```
+
+- `mediaStreamType`: `Video` または `ScreenSharing` を指定できます。
+
+  ```js
+  const type: MediaStreamType = remoteVideoStream.mediaStreamType;
+  ```
+
+- `isAvailable`: リモート参加者のエンドポイントによりストリームがアクティブに送信されているかどうか。
+
+  ```js
+  const type: boolean = remoteVideoStream.isAvailable;
+  ```
+
+### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer のメソッドとプロパティ
+
+リモート動画ストリームをレンダリングするためにアプリケーション UI に付加できる `VideoStreamRendererView` インスタンスを作成し、非同期 `createView()` メソッドを使用します。これにより、ストリームをレンダリングする準備ができたときに解決され、DOM ツリー内のどこにでも追加できる `video` 要素を表す `target` プロパティを含むオブジェクトが返されます
+
+  ```js
+  videoStreamRenderer.createView()
+  ```
+
+`videoStreamRenderer` と、それに関連付けられているすべての `VideoStreamRendererView` インスタンスを破棄します。
+
+  ```js
+  videoStreamRenderer.dispose()
+  ```
+
+### <a name="videostreamrendererview-methods-and-properties"></a>VideoStreamRendererView のメソッドとプロパティ
+
+`VideoStreamRendererView` を作成するときに、`scalingMode` と `isMirrored` プロパティを指定できます。 `scalingMode` は、`Stretch`、`Crop`、または `Fit` のいずれかです。 `isMirrored` を指定すると、レンダリングされたストリームは垂直方向に反転されます。
+
 ```js
-const id: number = remoteVideoStream.id;
+const videoStreamRendererView: VideoStreamRendererView = await videoStreamRenderer.createView({ scalingMode, isMirrored });
 ```
 
-* `StreamSize` - リモート動画ストリームのサイズ (幅と高さ)
-```js
-const size: {width: number; height: number} = remoteVideoStream.size;
-```
-
-* `MediaStreamType` - "Video" または "ScreenSharing" になります
-```js
-const type: MediaStreamType = remoteVideoStream.mediaStreamType;
-```
-* `isAvailable` - リモート参加者のエンドポイントでストリームをアクティブに送信されているかどうかを示します
-```js
-const type: boolean = remoteVideoStream.isAvailable;
-```
-
-### <a name="renderer-methods-and-properties"></a>Renderer のメソッドとプロパティ
-
-* 後でアプリケーションの UI にアタッチしてリモート動画ストリームをレンダリングできる `RendererView` インスタンスを作成します。
-```js
-renderer.createView()
-```
-
-* レンダラーと、それに関連付けられているすべての `RendererView` インスタンスを破棄します。
-```js
-renderer.dispose()
-```
-
-
-### <a name="rendererview-methods-and-properties"></a>RendererView のメソッドとプロパティ
-`RendererView` を作成するときに、`scalingMode` および `isMirrored` プロパティを指定できます。
-スケーリング モードは "Stretch"、"Crop"、"Fit" です。`isMirrored` を指定すると、レンダリングされたストリームは垂直方向に反転されます。
+すべての `VideoStreamRendererView` インスタンスには、レンダリング サーフェイスを表す `target` プロパティがあります。 アプリケーション UI にこのプロパティを付加します。
 
 ```js
-const rendererView: RendererView = renderer.createView({ scalingMode, isMirrored });
-```
-特定の `RendererView` インスタンスには、レンダリング サーフェイスを表す `target` プロパティがあります。 これを、アプリケーションの UI にアタッチする必要があります。
-```js
-document.body.appendChild(rendererView.target);
+htmlElement.appendChild(view.target);
 ```
 
-後で `updateScalingMode` メソッドを呼び出すことによって、スケーリング モードを更新できます。
+`scalingMode` は、`updateScalingMode` メソッドを呼び出すことで更新できます。
+
 ```js
 view.updateScalingMode('Crop')
 ```
 
 ## <a name="device-management"></a>デバイス管理
 
-`DeviceManager` を使用すると、オーディオと動画のストリームを送信する呼び出しで使用できるローカル デバイスを列挙できます。 また、ネイティブ ブラウザー API を使用してマイクやカメラにアクセスするために、ユーザーにアクセス許可を要求することもできます。
+`deviceManager` で、通話でオーディオとビデオのストリームを送信できるローカル デバイスを指定できます。 これにより、ネイティブ ブラウザー API を使用して、別のユーザーのマイクやカメラにアクセスするためのアクセス許可を要求することもできます。
 
 `callClient.getDeviceManager()` メソッドを呼び出すことによって `deviceManager` にアクセスできます。
-> [!WARNING]
-> 現在、DeviceManager にアクセスするには、`callAgent` オブジェクトを最初にインスタンス化する必要があります
 
 ```js
-
 const deviceManager = await callClient.getDeviceManager();
-
 ```
 
-### <a name="enumerate-local-devices"></a>ローカル デバイスを列挙する
+### <a name="get-local-devices"></a>ローカル デバイスを取得する
 
-ローカル デバイスにアクセスするには、デバイス マネージャーで列挙メソッドを使用します。 列挙は非同期アクションです。
+ローカル デバイスにアクセスするには、`deviceManager` で列挙メソッドを使用します。
 
 ```js
-
 //  Get a list of available video devices for use.
 const localCameras = await deviceManager.getCameras(); // [VideoDeviceInfo, VideoDeviceInfo...]
 
@@ -506,61 +544,58 @@ const localMicrophones = await deviceManager.getMicrophones(); // [AudioDeviceIn
 
 // Get a list of available speaker devices for use.
 const localSpeakers = await deviceManager.getSpeakers(); // [AudioDeviceInfo, AudioDeviceInfo...]
-
 ```
 
-### <a name="set-default-microphonespeaker"></a>既定のマイクとスピーカーを設定する
+### <a name="set-the-default-microphone-and-speaker"></a>既定のマイクまたはスピーカーを設定する
 
-デバイス マネージャーを使用すると、通話の開始時に使用される既定のデバイスを設定できます。
-クライアントの既定値が設定されていない場合、Communication Services は OS の既定値にフォールバックします。
+`deviceManager` で、通話を開始するために使用する既定のデバイスを設定できます。 クライアントの既定値が設定されていない場合、Communication Services はオペレーティング システムの既定値を使用します。
 
 ```js
-
 // Get the microphone device that is being used.
 const defaultMicrophone = deviceManager.selectedMicrophone;
 
 // Set the microphone device to use.
-await deviceManager.selectMicrophone(AudioDeviceInfo);
+await deviceManager.selectMicrophone(localMicrophones[0]);
 
 // Get the speaker device that is being used.
 const defaultSpeaker = deviceManager.selectedSpeaker;
 
 // Set the speaker device to use.
-await deviceManager.selectSpeaker(AudioDeviceInfo);
-
+await deviceManager.selectSpeaker(localSpeakers[0]);
 ```
 
 ### <a name="local-camera-preview"></a>ローカル カメラのプレビュー
 
-`DeviceManager` と `Renderer` を使用して、ローカル カメラからのストリームのレンダリングを開始できます。 このストリームは、他の参加者には送信されません。ローカル プレビュー フィードです。 これは、非同期アクションです。
+`deviceManager` と `VideoStreamRenderer` を使用して、ローカル カメラからのストリームのレンダリングを開始できます。 このストリームは、他の参加者には送信されません。ローカル プレビュー フィードです。
 
 ```js
 const cameras = await deviceManager.getCameras();
-const localVideoDevice = cameras[0];
-const localCameraStream = new LocalVideoStream(localVideoDevice);
-const renderer = new Renderer(localCameraStream);
-const view = await renderer.createView();
-document.body.appendChild(view.target);
+const camera = cameras[0];
+const localCameraStream = new LocalVideoStream(camera);
+const videoStreamRenderer = new VideoStreamRenderer(localCameraStream);
+const view = await videoStreamRenderer.createView();
+htmlElement.appendChild(view.target);
 
 ```
 
-### <a name="request-permission-to-cameramicrophone"></a>カメラとマイクへのアクセス許可を要求する
+### <a name="request-permission-to-camera-and-microphone"></a>カメラとマイクへのアクセス許可を要求する
 
-次のようにして、カメラとマイクのアクセス許可を付与するようにユーザーに要求します。
+カメラとマイクのアクセス許可を付与するようにユーザーに求めます。
 
 ```js
 const result = await deviceManager.askDevicePermission({audio: true, video: true});
 ```
-これは、`audio` および `video` のアクセス許可が付与されたかどうかを示すオブジェクトで非同期的に解決されます。
+
+これは、`audio` と `video` のアクセス許可が付与されたかどうかを示すオブジェクトを使用して解決されます。
+
 ```js
 console.log(result.audio);
 console.log(result.video);
 ```
 
-
-## <a name="call-recording-management"></a>通話記録の管理
-
-[!INCLUDE [Private Preview Notice](../../../includes/private-preview-include-section.md)]
+## <a name="record-calls"></a>通話を記録する
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Web SDK の "ベータ" リリースを使用してください
 
 通話記録は、コア `Call` API の拡張機能です。 まず、記録機能 API オブジェクトを取得する必要があります。
 
@@ -568,7 +603,7 @@ console.log(result.video);
 const callRecordingApi = call.api(Features.Recording);
 ```
 
-次に、通話が記録されているかどうかを確認するには、`callRecordingApi` の `isRecordingActive` プロパティを調べます。これにより `Boolean` が返されます。
+次に、通話が記録されているかどうかを確認するために、`callRecordingApi` の `isRecordingActive` プロパティを調べます。 `Boolean` を返します。
 
 ```js
 const isResordingActive = callRecordingApi.isRecordingActive;
@@ -585,7 +620,9 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 
 ```
 
-## <a name="call-transfer-management"></a>通話転送の管理
+## <a name="transfer-calls"></a>通話を転送する
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Web SDK の "ベータ" リリースを使用してください
 
 通話転送は、コア `Call` API の拡張機能です。 まず、転送機能 API オブジェクトを取得する必要があります。
 
@@ -593,27 +630,26 @@ callRecordingApi.on('isRecordingActiveChanged', isRecordingActiveChangedHandler)
 const callTransferApi = call.api(Features.Transfer);
 ```
 
-通話転送には、*転送者*、*転送元*、および *転送先* の 3 者が関与します。 転送フローは次のように動作します。
+通話転送には、次の 3 者が関与します。
 
-1. *転送者* と *転送元* の間に接続済みの通話が既に存在します
-2. *転送者* が通話を転送することを決定します (*転送元* -> *転送先*)
-3. *転送者* が `transfer` API を呼び出します
-4. *転送元* は、`transferRequested` イベント経由で、*転送先* への転送要求を `accept` するか、`reject` するかを決定します。
-5. *転送先* は *転送元* が転送要求を `accept` した場合にのみ着信通話を受信します
+- "*転送者*": 転送要求を開始するユーザー。
+- "*転送元*": 転送されるユーザー。
+- "*転送先*": 転送先のユーザー。
 
-### <a name="transfer-terminology"></a>転送の用語
+転送は、こちらの手順に従います。
 
-- 転送者 - 転送要求を開始するユーザー
-- 転送元 - 転送者によって、転送先に転送されるユーザー
-- 転送先 - 転送先のターゲットとなるユーザー
+1. "*転送者*" と "*転送元*" の間に接続済みの通話が既に存在します。 "*転送者*" が、"*転送元*" から "*転送先*" への通話の転送を決定します。
+1. "*転送者*" は `transfer` API を呼び出します。
+1. "*転送元*" は、`transferRequested` イベントを使用して "*転送先*" への転送要求を `accept` するか、`reject` するかを決定します。
+1. "*転送先*" は "*転送元*" が転送要求を受け入れる場合にのみ着信通話を受信します。
 
-現在の通話を転送するには、`transfer` 同期 API を使用できます。 `transfer` は、`disableForwardingAndUnanswered` フラグを設定できる省略可能な `TransferCallOptions` を受け取ります。
+現在の通話を転送するには、`transfer` API を使用します。 `transfer` は、`disableForwardingAndUnanswered` フラグを設定できる省略可能な `transferCallOptions` を受け取ります。
 
-- `disableForwardingAndUnanswered` = false - *転送先* が転送通話に応答しない場合、*転送先* の転送および未回答の設定に従います
-- `disableForwardingAndUnanswered` = true - *転送先* が転送通話に応答しない場合、転送試行は終了します
+- `disableForwardingAndUnanswered = false`: "*転送先*" が転送通話に応答しない場合、その転送は "*転送先*" の転送および未回答の設定に従います。
+- `disableForwardingAndUnanswered = true`: "*転送先*" が転送通話に応答しない場合、転送の試行は終了します。
 
 ```js
-// transfer target can be ACS user
+// transfer target can be an ACS user
 const id = { communicationUserId: <ACS_USER_ID> };
 ```
 
@@ -622,17 +658,17 @@ const id = { communicationUserId: <ACS_USER_ID> };
 const transfer = callTransferApi.transfer({targetParticipant: id});
 ```
 
-転送により、`transferStateChanged` イベントと `transferRequested` イベントにサブスクライブできます。 `transferRequsted` イベントが `call` インスタンスから生成され、`transferStateChanged` イベントと転送 `state` と `error` が `transfer` インスタンスから生成されます
+`transfer` API を使用すると、`transferStateChanged` と `transferRequested` のイベントにサブスクライブできます。 `transferRequested` イベントが `call` インスタンスから生成され、`transferStateChanged` イベントおよび転送の `state` と `error` が `transfer` インスタンスから生成されます。
 
 ```js
 // transfer state
 const transferState = transfer.state; // None | Transferring | Transferred | Failed
 
 // to check the transfer failure reason
-const transferError = transfer.error; // transfer error code that describes the failure if transfer request failed
+const transferError = transfer.error; // transfer error code that describes the failure if a transfer request failed
 ```
 
-転送元は、転送者によって `transferRequested` イベントで開始された転送要求を、`transferRequestedEventArgs` の `accept()` または `reject()` を介して、受け入れるか拒否することができます。 `transferRequestedEventArgs` で、`targetParticipant` 情報、`accept` メソッド、`reject` メソッドにアクセスできます。
+"*転送元*" は、`transferRequested` イベントで "*転送者*" によって開始された転送要求を、`transferRequestedEventArgs` の `accept()` または `reject()` を使用して、受け入れるか拒否することができます。 `transferRequestedEventArgs` で、`targetParticipant` 情報と `accept` または `reject` メソッドにアクセスできます。
 
 ```js
 // Transferee to accept the transfer request
@@ -646,13 +682,14 @@ callTransferApi.on('transferRequested', args => {
 });
 ```
 
-## <a name="eventing-model"></a>イベント モデル
-現在の値を検査し、将来の値の更新イベントをサブスクライブする必要があります。
+## <a name="learn-about-eventing-models"></a>イベント処理のモデルを理解する
+
+現在の値を調べて、将来の値の更新イベントをサブスクライブします。
 
 ### <a name="properties"></a>プロパティ
 
 ```js
-// Inspect current value
+// Inspect the current value
 console.log(object.property);
 
 // Subscribe to value updates
@@ -666,7 +703,7 @@ object.off('propertyChanged', () => {});
 
 
 
-// Example for inspecting call state
+// Example for inspecting a call state
 console.log(call.state);
 call.on('stateChanged', () => {
     console.log(call.state);
@@ -675,8 +712,9 @@ call.off('stateChanged', () => {});
 ```
 
 ### <a name="collections"></a>コレクション
+
 ```js
-// Inspect current collection
+// Inspect the current collection
 object.collection.forEach(v => {
     console.log(v);
 });
@@ -695,8 +733,6 @@ object.on('collectionUpdated', e => {
 
 // Unsubscribe from updates:
 object.off('collectionUpdated', () => {});
-
-
 
 // Example for subscribing to remote participants and their video streams
 call.remoteParticipants.forEach(p => {

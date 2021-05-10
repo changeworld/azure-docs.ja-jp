@@ -1,17 +1,17 @@
 ---
 title: Azure Active Directory の使用 - Azure Database for MySQL
 description: Azure Database for MySQL での認証に Azure Active Directory (Azure AD) を設定する方法について説明します
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
-ms.openlocfilehash: f5890ddb2a4b1599dbcfd1e624c9fbe71a564de7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 492e56e09129f9d47b863624cd72cd508801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442759"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728268"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>MySQL での認証に Azure Active Directory を使用する
 
@@ -78,7 +78,6 @@ Azure CLI ツールを起動して、手順 1 で認証された Azure AD ユー
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
-
 上記のリソース値は、示されているとおりに正確に指定する必要があります。 他のクラウドの場合、リソース値は次を使用して検索できます。
 
 ```azurecli-interactive
@@ -90,6 +89,13 @@ Azure CLI バージョン 2.0.71 以降では、すべてのクラウドに対�
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
+PowerShell を使用して、次のコマンドを実行してアクセス トークンを取得できます。
+
+```azurepowershell-interactive
+$accessToken = Get-AzAccessToken -ResourceUrl https://ossrdbms-aad.database.windows.net
+$accessToken.Token | out-file C:\temp\MySQLAccessToken.txt
+```
+
 
 認証が成功すると、Azure AD によってアクセス トークンが返されます。
 
@@ -105,13 +111,17 @@ az account get-access-token --resource-type oss-rdbms
 
 トークンは、認証されたユーザーに関するすべての情報をエンコードする Base 64 文字列であり、Azure Database for MySQL サービスをターゲットとしています。
 
-> [!NOTE]
-> アクセス トークンの有効性は、5 分から 60 分の範囲内です。 アクセス トークンは、Azure Database for MySQL へのログインを開始する直前に取得することをお勧めします。
+アクセス トークンの有効性は、***5 分から 60 分*** の範囲内です。 アクセス トークンは、Azure Database for MySQL へのログインを開始する直前に取得することをお勧めします。 次の Powershell コマンドを使用して、トークンの有効期限を確認できます。 
+
+```azurepowershell-interactive
+$accessToken.ExpiresOn.DateTime
+```
 
 ### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>手順 3:MySQL でログインするためのパスワードとしてトークンを使用する
 
-接続時には、MySQL ユーザー パスワードとしてアクセス トークンを使用する必要があります。 MySQLWorkbench などの GUI クライアントを使用する場合は、上記のメソッドを使用してトークンを取得できます。 
+接続時には、MySQL ユーザー パスワードとしてアクセス トークンを使用する必要があります。 MySQLWorkbench などの GUI クライアントを使用する場合は、上記の方法を使用してトークンを取得できます。 
 
+#### <a name="using-mysql-cli"></a>MySQL CLI を使用する
 CLI を使用する場合は、この短縮形を使用して接続できます。 
 
 **例 (Linux/macOS):**
@@ -121,8 +131,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+#### <a name="using-mysql-workbench"></a>MySQL Workbench を使用する
+* MySQL Workbench を起動し、[データベース] オプションをクリックして、[データベースへの接続] をクリックします
+* ホスト名フィールドに、MySQL の FQDN (たとえば mydb.mysql.database.azure.com) を入力します
+* ユーザー名フィールドに、MySQL Azure Active Directory の管理者名を入力して、FQDN ではなく MySQL サーバー名を追加します (例: user@tenant.onmicrosoft.com@mydb)
+* パスワード フィールドで、[Store in Vault]\(コンテナーに保管\) をクリックし、たとえば C:\temp\MySQLAccessToken.txt などのファイルのアクセス トークンを貼り付けます。
+* 詳細設定タブをクリックして、[Enable Cleartext Authentication Plugin]\(クリア テキスト認証プラグインを有効にする\) に必ずチェックを付けます
+* [OK] をクリックしてデータベースに接続します
 
-接続時の重要な考慮事項:
+#### <a name="important-considerations-when-connecting"></a>接続時の重要な考慮事項:
 
 * `user@tenant.onmicrosoft.com` は、接続に使用しようとしている Azure AD ユーザーまたはグループの名前です
 * Azure AD ユーザー/グループ名の後には常にサーバー名を付加してください (`@mydb` など)

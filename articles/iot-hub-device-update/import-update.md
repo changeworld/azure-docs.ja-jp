@@ -6,22 +6,22 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103008564"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932405"
 ---
 # <a name="import-new-update"></a>新しい更新プログラムのインポート
 新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。 基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Device Update for IoT Hub が有効になっている IoT ハブにアクセスできること](create-device-update-account.md)。 IoT ハブには、S1 (Standard) レベル以上を使用することをお勧めします。 
+* [Device Update for IoT Hub が有効になっている IoT ハブにアクセスできること](create-device-update-account.md)。 
 * Device Update 用にプロビジョニングされている、IoT Hub 内の IoT デバイス (またはシミュレーター)。
    * 実際のデバイスを使用する場合は、イメージ更新用の更新イメージ ファイル、またはパッケージの更新用の [APT マニフェスト ファイル](device-update-apt-manifest.md)が必要です。
-* [PowerShell 5](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) 以降。
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) 以降 (Linux、macOS、Windows のインストールを含む)
 * サポートされているブラウザー:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -35,7 +35,7 @@ ms.locfileid: "103008564"
 
 2. 更新イメージファイルまたは APT マニフェスト ファイルが配置されているディレクトリに、 **AduUpdate.psm1** という名前のテキスト ファイルを作成します。 次に、 [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell コマンドレットを開き、内容をテキスト ファイルにコピーして、テキスト ファイルを保存します。
 
-3. PowerShell で、手順 2 で作成した PowerShell コマンドレットを作成したディレクトリに移動します。 次に、次のコマンドを実行します。
+3. PowerShell で、手順 2 で作成した PowerShell コマンドレットを作成したディレクトリに移動します。 下の [コピー] オプションを使用し、PowerShell に貼り付けてコマンドを実行します。
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -57,13 +57,13 @@ ms.locfileid: "103008564"
 
     | パラメーター | 説明 |
     | --------- | ----------- |
-    | deviceManufacturer | 更新プログラムと互換性があるデバイスの製造元 (Contoso など)。 _製造元_ の[デバイス プロパティ](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)と一致する必要があります。
-    | deviceModel | 更新プログラムと互換性があるデバイスのモデル (toaster など)。 _モデル_ の[デバイス プロパティ](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)と一致する必要があります。
+    | deviceManufacturer | 更新プログラムと互換性があるデバイスの製造元 (Contoso など)。 _製造元_ の [デバイス プロパティ](./device-update-plug-and-play.md#device-properties)と一致する必要があります。
+    | deviceModel | 更新プログラムと互換性があるデバイスのモデル (toaster など)。 _モデル_ の [デバイス プロパティ](./device-update-plug-and-play.md#device-properties)と一致する必要があります。
     | updateProvider | 更新プログラムを作成または直接担当するエンティティ。 多くの場合、会社名になります。
     | updateName | 更新プログラムのクラスの識別子。 クラスには、任意のものを選択できます。 多くの場合、デバイス名またはモデル名になります。
     | updateVersion | 同じプロバイダーと名前を持つ他の更新プログラムとこの更新プログラムを区別するためのバージョン番号。 デバイス上の個々のソフトウェア コンポーネントのバージョンと一致しない場合があります (選択した場合は可能です)。
     | updateType | <ul><li>イメージの更新には `microsoft/swupdate:1` を指定します</li><li>パッケージの更新には `microsoft/apt:1` を指定します</li></ul>
-    | installedCriteria | <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の値を指定します</li><li>更新の種類 `microsoft/apt:1` には推奨値を指定します
+    | installedCriteria | <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の値を指定します</li><li>**name-version** を指定します。_name_ は APT マニフェストの名前で、_version_ は APT マニフェストのバージョンです。 例: contoso-iot-edge-1.0.0.0。
     | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス
 
 

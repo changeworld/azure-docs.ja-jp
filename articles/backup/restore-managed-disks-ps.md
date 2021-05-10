@@ -3,12 +3,12 @@ title: Azure PowerShell によるマネージド ディスクの復元
 description: Azure PowerShell を使用して、Azure マネージド ディスクを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 0ddf552947c39692ea01d0dea7e67f147d754fcc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6625b43c313d45d4b295dd406e29a2b1d85b387
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629745"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520039"
 ---
 # <a name="restore-azure-managed-disks-using-azure-powershell"></a>Azure PowerShell を使用した、Azure マネージド ディスクの復元
 
@@ -92,4 +92,4 @@ $job = Search-AzDataProtectionJobInAzGraph -Subscription $sub -ResourceGroupName
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure ディスク バックアップに関する FAQ](disk-backup-faq.md)
+- [Azure ディスク バックアップに関する FAQ](disk-backup-faq.yml)

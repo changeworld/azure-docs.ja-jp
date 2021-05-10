@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100986"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604789"
 ---
 # <a name="set-map-style-android-sdk"></a>マップ スタイルを設定する (Android SDK)
 
@@ -83,7 +83,7 @@ mapControl!!.onReady { map: AzureMap ->
 
 ## <a name="setting-the-map-camera"></a>マップ カメラの設定
 
-マップ カメラは、マップのどの部分がマップ内に表示されるかを制御します。 カメラは、コード内でプログラムを使用してレイアウト内に配置できます。 コードで設定する場合は、マップの位置を設定する主な方法として、中心とズームを使用する方法と境界ボックスを渡す方法の 2 つがあります。 次のコードは、`center` と `zoom` を使用する場合に、省略可能なすべてのカメラ オプションを設定する方法を示しています。
+マップ カメラは、マップ ビューポートに表示される世界の部分を制御します。 カメラは、コード内でプログラムを使用してレイアウト内に配置できます。 コードで設定する場合は、マップの位置を設定する主な方法として、中心とズームを使用する方法と境界ボックスを渡す方法の 2 つがあります。 次のコードは、`center` と `zoom` を使用する場合に、省略可能なすべてのカメラ オプションを設定する方法を示しています。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -104,7 +104,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -130,7 +130,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
@@ -162,7 +162,7 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -192,14 +192,14 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
 
 ::: zone-end
 
-境界ボックスの縦横比はマップの縦横比とは異なる場合があることに注意してください。そのため、マップには、多くの場合、境界ボックス領域全体が表示されますが、垂直方向と水平方向の一方のみがいっぱいになっていることがよくあります。
+境界ボックスの縦横比はマップの縦横比とは異なる場合があります。そのため、マップには、多くの場合、境界ボックス領域全体が表示されますが、垂直方向または水平方向の一方のみがきついことがよくあります。
 
 ## <a name="next-steps"></a>次のステップ
 

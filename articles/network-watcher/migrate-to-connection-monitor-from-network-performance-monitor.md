@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 18d0a24de6f0775fdb35799512f9796a323d353a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: be12a9054fd67b243530ff671c10fa53acafc308
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045486"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366353"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Network Performance Monitor から接続モニターに移行する
 
@@ -43,7 +43,7 @@ Network Performance Monitor (NPM) から機能が向上した新しい接続モ�
     
 ## <a name="prerequisites"></a>前提条件
 
-* お使いのサブスクリプションと Log Analytics ワークスペースのリージョンで Network Watcher を確実に有効にします。 
+* お使いのサブスクリプションと Log Analytics ワークスペースのリージョンで Network Watcher を確実に有効にします。 行われていない場合、"Before you attempt migrate, please enable Network watcher extension in selection subscription and location of LA workspace selected." (移行を実行する前に、選択したサブスクリプションと、選択した LA ワークスペースの場所で Network watcher extension を有効にしてください。) というエラーが表示されます。
 * Log Analytics ワークスペースとは異なるリージョン/サブスクリプションに属している Azure VM がエンドポイントとして使用されている場合、そのサブスクリプションとリージョンで Network Watcher が有効になっていることを確認します。   
 * Log Analytics エージェントがインストールされている Azure 仮想マシンで、Network Watcher 拡張機能を有効にする必要があります。
 
@@ -57,6 +57,10 @@ Network Performance Monitor から接続モニターにテストを移行する�
     
 1. ドロップダウン リストで、お使いのサブスクリプションとワークスペースを選択してから、移行する NPM 機能を選択します。 
 1. **[インポート]** を選択してテストを移行します。
+* ワークスペースで NPM が有効になっていない場合は、"No valid NPM config found" (有効な NPM 構成が見つかりませんでした) というエラーが表示されます。 
+* 手順 2 で選択した機能にテストが存在しない場合、"選択したワークスペースには、<feature> 構成がありません" というエラーが表示されます。
+* 有効なテストがない場合は、"Workspace selected does not have valid tests" (選択したワークスペースには有効なテストがありません) というエラーが表示されます。
+* テストには、現在はアクティブでないが、過去にアクティブだった可能性のあるエージェントが含まれている場合があります。 "いくつかのテストに、アクティブではなくなったエージェントが含まれています。 非アクティブなエージェントの一覧 - {0}。 これらのエージェントは、過去に実行されていた可能性がありますが、シャットダウンされたか、今はもう実行されていません。 エージェントを有効にして、接続モニターに移行してください。 非アクティブなエージェントが含まれていないテストを移行するには、[続行] をクリックします。" というエラーが表示されます。
 
 移行が開始されると、次の変更が行われます。 
 * 新しい接続モニター リソースが作成されます。

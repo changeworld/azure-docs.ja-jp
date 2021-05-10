@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fbc3502952e11830ef9abb06cb709fcc60288343
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561816"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739532"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub 用のデバイス更新と IoT プラグ アンド プレイ
 
@@ -64,7 +64,7 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 |名前|スキーマ|Direction|説明|
 |----|------|---------|-----------|
 |action|整数 (integer)|クラウドからデバイス|エージェントが実行する必要のあるアクションに対応する整数です。 値は後の一覧のとおりです。|
-|updateManifest|string|クラウドからデバイス|更新の内容を記述するために使用されます。 [マニフェストのインポート](import-update.md#create-device-update-import-manifest)から生成されます|
+|updateManifest|string|クラウドからデバイス|更新の内容を記述するために使用されます。 [マニフェストのインポート](import-update.md#create-a-device-update-import-manifest)から生成されます|
 |updateManifestSignature|JSON オブジェクト|クラウドからデバイス|ソースの検証に使用される JSON Web Signature (JWS) と JSON Web キー。|
 |fileUrls|マップ|クラウドからデバイス|`DownloadUri` への `FileHash` のマップ。 ダウンロードするファイルと、ファイルが正しくダウンロードされたことを検証するために使用するハッシュを、エージェントに指示します。|
 

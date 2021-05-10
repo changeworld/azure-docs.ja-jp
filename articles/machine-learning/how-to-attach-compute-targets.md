@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 9fa6a1758bc2e2a76291efc3bb239c5249a6e21e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149343"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167670"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -64,9 +64,12 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>リモート仮想マシン
 
-Azure Machine Learning では、Azure 仮想マシンのアタッチもサポートされています。 VM は、Azure Data Science Virtual Machine (DSVM) である必要があります。 この VM は、Azure での事前構成済みのデータ サイエンスおよび AI 開発環境です。 その VM では、完全なライフサイクルの機械学習開発用に精選されたツールとフレームワークが提供されます。 Azure Machine Learning での DSVM の使用方法について詳しくは、[開発環境の構成](./how-to-configure-environment.md#dsvm)に関する記事をご覧ください。
+Azure Machine Learning では、Azure 仮想マシンのアタッチもサポートされています。 VM は、Azure Data Science Virtual Machine (DSVM) である必要があります。 その VM では、完全なライフサイクルの機械学習開発用に精選されたツールとフレームワークが提供されます。 Azure Machine Learning での DSVM の使用方法について詳しくは、[開発環境の構成](./how-to-configure-environment.md#dsvm)に関する記事をご覧ください。
 
-1. **作成**:モデルのトレーニングに使用する DSVM を事前に作成します。 このリソースの作成については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](./data-science-virtual-machine/dsvm-ubuntu-intro.md)」をご覧ください。
+> [!TIP]
+> リモート VM ではなく、[Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)を使用することをお勧めします。 これは、Azure Machine Learning に固有のフル マネージドのクラウドベース コンピューティング ソリューションです。 詳細については、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」を参照してください。
+
+1. **作成する**: Azure Machine Learning によって、リモート VM を作成することはできません。 代わりに、ユーザーが VM を作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 DSVM の作成については、[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](./data-science-virtual-machine/dsvm-ubuntu-intro.md)に関する記事を参照してください。
 
     > [!WARNING]
     > Azure Machine Learning では、**Ubuntu** を実行する仮想マシンのみがサポートされます。 VM を作成するとき、または既存の VM を選択するときは、Ubuntu を使用する VM を選択する必要があります。
@@ -120,11 +123,16 @@ Azure Machine Learning では、Azure 仮想マシンのアタッチもサポー
    src = ScriptRunConfig(source_directory=".", script="train.py", compute_target=compute, environment=myenv) 
    ```
 
+> [!TIP]
+> ワークスペースから VM を __削除__ (デタッチ) する場合は、[RemoteCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) メソッドを使用します。
+>
+> Azure Machine Learning によって VM が削除されることはありません。 Azure portal、CLI、または Azure VM 用の SDK を使用して、VM を手動で削除する必要があります。
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight は、ビッグ データ分析のための一般的なプラットフォームです。 そのプラットフォームでは、モデルのトレーニングに使用できる Apache Spark が提供されます。
 
-1. **作成**:モデルのトレーニングに使用する HDInsight クラスターを、事前に作成します。 HDInsight クラスターで Spark を作成するには、[HDInsight での Spark クラスターの作成](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関する記事をご覧ください。 
+1. **作成する**: Azure Machine Learning によって HDInsight クラスターを作成することはできません。 代わりに、ユーザーがクラスターを作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 詳細については、[HDInsight での Spark クラスターの作成](../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関する記事を参照してください。 
 
     > [!WARNING]
     > Azure Machine Learning では、HDInsight クラスターに __パブリック IP アドレス__ が必要です。
@@ -165,8 +173,10 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
-
-コンピューティングをアタッチし、実行を構成したので、次のステップでは[トレーニング実行を送信](how-to-set-up-training-targets.md)します。
+> [!TIP]
+> ワークスペースから HDInsight クラスターを __削除__ (デタッチ) する場合は、[HDInsightCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) メソッドを使用します。
+>
+> Azure Machine Learning によって、HDInsight クラスターは削除されません。 Azure portal、CLI、または Azure HDInsight 用の SDK を使用して、手動で削除する必要があります。
 
 ## <a name="azure-batch"></a><a id="azbatch"></a>Azure Batch 
 
@@ -215,7 +225,7 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 
 Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、Azure Machine Learning パイプラインでコンピューティング先として使用できます。
 
-使用する前に、Azure Databricks ワークスペースを作成します。 ワークスペース リソースを作成するには、[Azure Databricks での Spark ジョブの実行](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
+> [!重要} Azure Machine Learning によって Azure Databricks コンピューティング先を作成することはできません。 代わりに、ユーザーが Azure Databricks ワークスペースを作成してから、Azure Machine Learning ワークスペースにアタッチする必要があります。 ワークスペース リソースを作成するには、[Azure Databricks での Spark ジョブの実行](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)に関するドキュメントを参照してください。
 
 コンピューティング先として Azure Databricks をアタッチするには、次の情報を指定します。
 
@@ -330,7 +340,6 @@ Azure Container Instances (ACI) は、モデルのデプロイ時に動的に作
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
 Azure Kubernetes Service (AKS) を Azure Machine Learning と組み合わせて使用すると、さまざまな構成オプションが使用できます。 詳細については、[Azure Kubernetes Service を作成してアタッチする方法](how-to-create-attach-kubernetes.md)に関するページを参照してください。
-
 
 ## <a name="notebook-examples"></a>ノートブックの例
 

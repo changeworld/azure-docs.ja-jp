@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543087"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034522"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) での制限
 
@@ -89,8 +89,12 @@ MySQL サービスでは、基になるファイル システムに直接アク�
 - ポイントインタイム リストアでは、基になるソース サーバーと同じコンピューティング構成とストレージ構成で、新しいサーバーが作成されます。 サーバーの作成後に、新しく復元されたサーバーのコンピューティングをスケールダウンできます。
 - 削除されたサーバーの復元はサポートされていません。
 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>シングル サーバーでは使用できるが、フレキシブル サーバーではまだサポートされていない機能 
+Azure Database for MySQL 単一サーバーで使用できるすべての機能が、フレキシブル サーバーで使用できるわけではまだありません。 単一サーバーとフレキシブル サーバーの機能の比較の詳しい一覧については、[Azure での適切な MySQL サーバー オプションの選択](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure)に関する記事を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-- [使用できるコンピューティング オプションとストレージ オプション](concepts-compute-storage.md)について理解する
+- [Azure での適切な MySQL サーバー オプションの選択](../select-right-deployment-type.md)について学習する
+- [フレキシブル サーバーで使用可能なコンピューティングとストレージのオプション](concepts-compute-storage.md)について理解する
 - [サポートされている MySQL のバージョンについて](concepts-supported-versions.md)学習する
-- [Azure portal を使用してサーバーのバックアップと復元を行う方法](how-to-restore-server-portal.md)を確認する
+- クイックスタート: [Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する](quickstart-create-server-portal.md)

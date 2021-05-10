@@ -1,14 +1,14 @@
 ---
 title: センサー アラートについて
 description: アラートを使用して、ネットワークのセキュリティと操作を強化します。
-ms.date: 11/30/2020
+ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781349"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729424"
 ---
 # <a name="about-sensor-alerts"></a>センサー アラートについて
 
@@ -64,9 +64,10 @@ ms.locfileid: "104781349"
 
   - ネットワーク デバイス上で検出されたマルウェア イベントは、リスク評価レポートで報告されます。 マルウェア イベントに関するアラートが "*ミュート*" されている場合、影響を受けるデバイスはリスク評価レポートでは計算されません。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-- [学習モードおよびスマート IT 学習モード](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-- [アラートで提供される情報の表示](how-to-view-information-provided-in-alerts.md)
-- [アラート イベントの管理](how-to-manage-the-alert-event.md)
-- [アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)
+[学習およびスマート IT 学習モード](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+[アラートで提供される情報の表示](how-to-view-information-provided-in-alerts.md)
+[アラート イベントの管理](how-to-manage-the-alert-event.md)
+[アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)
+[アラートの種類と説明](alert-engine-messages.md)

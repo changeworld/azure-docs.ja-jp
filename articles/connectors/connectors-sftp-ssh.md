@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: article
-ms.date: 04/05/2021
+ms.topic: conceptual
+ms.date: 04/19/2021
 tags: connectors
-ms.openlocfilehash: 5eae6b48a65f919ea233ad77a215ed5672425175
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a19253e117f748b4d4045bfd2a29552018bba91e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385855"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781561"
 ---
 # <a name="create-and-manage-sftp-files-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの作成と管理を行う
 
@@ -51,7 +51,7 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 
   | アクション | チャンクのサポート | チャンク サイズのオーバーライドのサポート |
   |--------|------------------|-----------------------------|
-  | **ファイルのコピー** | いいえ | 利用不可 |
+  | **ファイルのコピー** | いいえ | 適用なし |
   | **ファイルを作成する** | はい | はい |
   | **フォルダーの作成** | 適用なし | 適用なし |
   | **ファイルの削除** | 適用なし | 適用なし |
@@ -123,7 +123,7 @@ SFTP-SSH トリガーは SFTP ファイル システムをポーリングし、�
 
 ### <a name="trigger-recurrence-shift-and-drift"></a>トリガーの繰り返しのシフトやずれ
 
-最初に接続を作成する必要がある接続ベースのトリガー (SFTP-SSH トリガーなど) は、Azure Logic Apps でネイティブに実行される組み込みトリガー ([繰り返しトリガー](../connectors/connectors-native-recurrence.md)など) とは異なります。 繰り返し発生する接続ベースのトリガーでは、繰り返しスケジュールだけが実行を制御するわけではなく、タイム ゾーンによって最初の開始時刻のみが決定されます。 後続の実行は、繰り返しのスケジュール、最後のトリガーの実行、"*および*" 実行時間の移動や予期しない動作を引き起こす可能性があるその他の要因によって決まります。 たとえば、予期しない動作とは、夏時間 (DST) の開始および終了時に、指定されたスケジュールが維持されない場合などです。 DST が有効になったときに繰り返し時刻がシフトされないようにするには、繰り返しを手動で調整します。 このようにすると、ワークフローは引き続き予期された時刻に実行されます。 そうしないと、開始時刻が DST の開始時には 1 時間先に、DST の終了時には 1 時間前にシフトされます。 詳細については、[接続ベースのトリガーの繰り返し](../connectors/apis-list.md#recurrence-connection-based)に関するページを参照してください。
+最初に接続を作成する必要がある接続ベースのトリガー (SFTP-SSH トリガーなど) は、Azure Logic Apps でネイティブに実行される組み込みトリガー ([繰り返しトリガー](../connectors/connectors-native-recurrence.md)など) とは異なります。 繰り返し発生する接続ベースのトリガーでは、繰り返しスケジュールだけが実行を制御するわけではなく、タイム ゾーンによって最初の開始時刻のみが決定されます。 後続の実行は、繰り返しのスケジュール、最後のトリガーの実行、"*および*" 実行時間の移動や予期しない動作を引き起こす可能性があるその他の要因によって決まります。 たとえば、予期しない動作とは、夏時間 (DST) の開始および終了時に、指定されたスケジュールが維持されない場合などです。 DST が有効になったときに繰り返し時刻がシフトされないようにするには、繰り返しを手動で調整します。 このようにすると、ワークフローは引き続き予期された時刻に実行されます。 そうしないと、開始時刻が DST の開始時には 1 時間先に、DST の終了時には 1 時間前にシフトされます。 詳細については、[接続ベースのトリガーの繰り返し](../connectors/apis-list.md#recurrence-for-connection-based-triggers)に関するページを参照してください。
 
 <a name="convert-to-openssh"></a>
 

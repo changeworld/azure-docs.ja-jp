@@ -6,19 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 29d9dd7757319e59fc12b42d89c2ce16dec71b8b
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ef1ed584a609b2e4baa27111e47343df99146f5a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551069"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257502"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
 BLOB の論理的な削除を使用すると、削除されたデータがシステムに一定の期間保持されることにより、個々の BLOB、スナップショット、またはバージョンが誤った削除または上書きから保護されます。 保持期間中は、論理的に削除されたオブジェクトを削除された時点の状態に復元することができます。 保持期間が経過すると、オブジェクトは完全に削除されます。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="recommended-data-protection-configuration"></a>推奨されるデータ保護の構成
 
@@ -29,8 +31,6 @@ BLOB の論理的な削除は、BLOB データの包括的なデータ保護戦�
 - BLOB の論理的な削除。削除された BLOB、スナップショット、またはバージョンを復元します。 BLOB の論理的な削除も有効にする方法については、[BLOB の論理的な削除の有効化と管理](soft-delete-blob-enable.md)に関する記事をご覧ください。
 
 データ保護に関する Microsoft の推奨事項の詳細については、「[データ保護の概要](data-protection-overview.md)」を参照してください。
-
-[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-blob-soft-delete-works"></a>BLOB の論理的な削除のしくみ
 
@@ -93,12 +93,14 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 
 ## <a name="blob-soft-delete-and-versioning"></a>BLOB の論理的な削除とバージョン管理
 
-ストレージ アカウントで BLOB のバージョン管理と BLOB の論理的な削除の両方が有効になっている場合、BLOB を上書きすると、新しいバージョンが自動的に作成されます。 新しいバージョンは論理的に削除されず、論理的な削除の保有期間が過ぎても削除されません。 論理的に削除されたスナップショットは作成されません。 BLOB を削除すると、現在のバージョンの BLOB が前のバージョンになり、現在のバージョンは削除されます。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。
+ストレージ アカウントで BLOB のバージョン管理と BLOB の論理的な削除の両方が有効になっている場合、BLOB を上書きすると、新しいバージョンが自動的に作成されます。 新しいバージョンは論理的に削除されず、論理的な削除の保有期間が過ぎても削除されません。 論理的に削除されたスナップショットは作成されません。 ある BLOB を削除すると、その BLOB の現在のバージョンが前のバージョンになり、現在のバージョンは存在しなくなります。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。
 
-論理的な削除とバージョン管理を一緒に有効にすると、BLOB のバージョンが削除から保護されます。 論理的な削除が有効になっている場合、バージョンを削除すると、論理的に削除されたバージョンが作成されます。 BLOB の現在のバージョンが存在する限り、**Undelete Blob** 操作を使用して、論理的に削除されたバージョンを復元できます。 現在のバージョンがない場合は、**Undelete Blob** 操作を呼び出す前に、前のバージョンを現在のバージョンにコピーする必要があります。
+論理的な削除とバージョン管理を一緒に有効にすると、BLOB のバージョンが削除から保護されます。 論理的な削除が有効になっている場合、バージョンを削除すると、論理的に削除されたバージョンが作成されます。 **Undelete Blob** 操作を使用すると、論理的に削除されたバージョンを論理的な削除の保有期間中に復元できます。 **Undelete Blob** 操作では常に、BLOB の論理的に削除されたすべてのバージョンが復元されます。 論理的に削除された 1 つのバージョンのみを復元することはできません。
+
+論理的な削除の保有期間が経過した後、論理的に削除された BLOB のバージョンは完全に削除されます。
 
 > [!NOTE]
-> バージョン管理が有効になっている場合に、削除された BLOB に対して **Undelete Blob** 操作を呼び出すと、論理削除されたバージョンまたはスナップショットは復元されますが、ベース BLOB は復元されません。 ベース BLOB を復元するには、前のバージョンをベース BLOB にコピーすることによってレベルを上げます。
+> バージョン管理が有効になっている場合に、削除された BLOB に対して **Undelete Blob** 操作を呼び出すと、論理削除されたバージョンまたはスナップショットは復元されますが、現在のバージョンは復元されません。 現在のバージョンを復元するには、前のバージョンを現在のバージョンにコピーして昇格させます。
 
 最適なデータ保護のため、ストレージ アカウントのバージョン管理と BLOB の論理的な削除の両方を有効にすることをお勧めします。 BLOB のバージョン管理と論理的な削除の併用の詳細については、「[BLOB のバージョン管理と論理的な削除](versioning-overview.md#blob-versioning-and-soft-delete)」を参照してください。
 

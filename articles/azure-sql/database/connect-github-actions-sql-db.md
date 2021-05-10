@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 335879af93834665985fe2c14ce3cbd827387920
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ceb9f0f9ef2a88532d5af16a03fcfd0282da84f8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172141"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787289"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する
 
@@ -41,7 +41,7 @@ GitHub Actions ワークフローは、お使いのリポジトリの `/.github/
 
 ## <a name="generate-deployment-credentials"></a>デプロイ資格情報を生成する
 
-[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
+[サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)は、[Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用して作成できます。 このコマンドは、Azure portal で [Azure Cloud Shell](https://shell.azure.com/) を使用するか、 **[試してみる]** ボタンを選択して実行します。
 
 プレースホルダー `server-name` を、Azure でホストされている SQL サーバーの名前で置き換えます。 `subscription-id` と `resource-group` を、サブスクリプション ID と、SQL サーバーに接続されているリソース グループで置き換えます。  
 

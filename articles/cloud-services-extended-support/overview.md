@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169285"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293874"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) について
 
-> [!IMPORTANT]
-> Cloud Services (延長サポート) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) 製品向けの新しい  [Azure Resource Manager](../azure-resource-manager/management/overview.md) ベースのデプロイ モデルであり、現在パブリック プレビュー段階にあります。 Cloud Services (延長サポート) には、Azure Service Manager を使用してデプロイされた Azure Cloud Services との機能パリティと共に、リージョンの回復性を提供するという主な利点があります。 また、ロールベースのアクセスと制御 (RBAC)、タグ、ポリシーなどのいくつかの ARM 機能も提供し、デプロイ テンプレートをサポートしています。  
+Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) 製品向けの新しい  [Azure Resource Manager](../azure-resource-manager/management/overview.md) ベースのデプロイ モデルであり、現在一般提供されています。 Cloud Services (延長サポート) には、Azure Service Manager を使用してデプロイされた Azure Cloud Services との機能パリティと共に、リージョンの回復性を提供するという主な利点があります。 また、ロールベースのアクセスと制御 (RBAC)、タグ、ポリシーなどのいくつかの ARM 機能も提供され、デプロイ テンプレートがサポートされています。  
 
 この変更により、Cloud Services 向けの Azure Service Manager ベースのデプロイ モデルは [Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) という名前に変更されます。 Web およびクラウド アプリケーションやサービスを構築して迅速にデプロイする機能は保持されます。 現在の要求に基づいてクラウド サービスのインフラストラクチャをスケーリングすることができ、アプリケーションのパフォーマンスを維持しながら、同時にコストも削減できるようになります。  
 

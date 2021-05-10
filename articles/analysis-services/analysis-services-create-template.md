@@ -3,17 +3,18 @@ title: クイックスタート - Azure Resource Manager テンプレートを�
 description: Azure Resource Manager テンプレートを使用して Azure Analysis Services サーバー リソースを作成する方法についてのクイックスタート。
 author: minewiskan
 ms.author: owend
-tags: azure-resource-manager
-ms.service: azure-analysis-services
-ms.topic: quickstart
 ms.date: 08/31/2020
-ms.custom: subject-armqs, references_regions
-ms.openlocfilehash: 3e776bf41420d38a1b208ce11a6a34e97fa92a15
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: quickstart
+ms.service: azure-analysis-services
+tags:
+- azure-resource-manager
+ms.custom: devx-track-azurepowershell - subject-armqs - references_regions - mode-arm
+ms.openlocfilehash: e7203f4b5890ab81cbf337c5f3201d85a3aef0c0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89230791"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769371"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>クイック スタート:サーバーの作成 - ARM テンプレート
 

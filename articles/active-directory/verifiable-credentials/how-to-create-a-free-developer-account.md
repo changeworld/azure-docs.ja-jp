@@ -9,12 +9,12 @@ ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 1e8bb59c09622a39dad680940ff34e643ee0cc3b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a50c8b083c1cd453dbe3c51c63ec9cf53859c3bd
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222743"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587267"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>無料の Azure Active Directory 開発者テナントを作成する方法
 
@@ -45,7 +45,7 @@ P2 試用版ライセンスを使用して無料の Azure Active Directory を�
 
 この時点で、25 個の E5 ユーザー ライセンスを持つテナントが作成されました。 E5 ライセンスには、Azure AD P2 ライセンスが含まれています。 必要に応じて、開発環境でのテストに役立つ、ユーザー、グループ、メール、SharePoint が含まれるサンプル データ パックを追加できます。 検証可能な資格情報発行サービスの場合、それらは必要ありません。
 
-便宜上、新しく作成されたテナントに[ゲスト](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal.md)として自分の職場アカウントを追加し、そのアカウントを使用してテナントを管理できます。 ゲスト アカウントで検証可能な資格情報サービスを管理できるようにするには、そのユーザーに "グローバル管理者" ロールを割り当てる必要があります。
+便宜上、新しく作成されたテナントに[ゲスト](/azure/active-directory/external-identities/b2b-quickstart-add-guest-users-portal)として自分の職場アカウントを追加し、そのアカウントを使用してテナントを管理できます。 ゲスト アカウントで検証可能な資格情報サービスを管理できるようにするには、そのユーザーに "グローバル管理者" ロールを割り当てる必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

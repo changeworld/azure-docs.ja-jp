@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 50af05c7d59b9d25e0f97ad9bdee73d12848dc3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62f6e2999e9d3820404bdd4051817bc9a8785c47
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878258"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503390"
 ---
 # <a name="azcopy-jobs-list"></a>azcopy jobs list
 
@@ -30,9 +30,8 @@ azcopy jobs list [flags]
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 - [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>Options
+## <a name="options"></a>オプション
 
 |オプション|説明|
 |--|--|

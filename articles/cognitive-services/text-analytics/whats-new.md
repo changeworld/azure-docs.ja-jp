@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f1e509156beea0b3da3539306dc055291cbff0c8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598900"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314186"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -39,7 +39,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
-    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript)
     
 > [!div class="nextstepaction"]
 > [Text Analytics API v3.1-Preview.4 の詳細情報](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
@@ -51,11 +51,12 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
     * 新しい `Date` エンティティ型。
     * 否定検出を置き換えるアサーション検出 (API v3.1-preview. 4 でのみ利用可能)。
     * さまざまなオントロジおよびコーディング システムから正規化されるリンクされたエンティティの新しい優先`name`プロパティです (API v.3.1-preview. 4 でのみ使用できます)。 
-* タグ `3.0.015370001-onprem-amd64` と新しいモデルバージョン `2021-03-01`が付いた新しいコンテナー イメージが、 コンテナー プレビュー リポジトリにリリースされました。 
-* 正常性コンテナー イメージの Text Analytics は、翌月に新しいリポジトリに移動します。  新しいホームの場所でメール通信を視聴してください。
+* タグ `3.0.015490002-onprem-amd64` と新しいモデルバージョン `2021-03-01`が付いた新しいコンテナー イメージが、 コンテナー プレビュー リポジトリにリリースされました。 
+    * このコンテナー イメージは、2021 年 4 月 26 日以降、`containerpreview.azurecr.io` からダウンロードできなくなります。
+* この同じ model-version を持つ、医療向け Text Analytics の新しいコンテナー イメージが、`mcr.microsoft.com/azure-cognitive-services/textanalytics/healthcare` で入手できるようになりました。 4 月 26 日以降、コンテナーをダウンロードできるのは、このリポジトリのみになります。
+
 > [!div class="nextstepaction"]
 > [Text Analytics for Health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
->
 
 ### <a name="text-analytics-resource-portal-update"></a>Text Analytics リソース ポータルの更新プログラム
 * **処理されたテキスト レコード** は、Azure portal の Text Analytics リソースの **[監視]** セクションでメトリックとして使用できるようになりました。  

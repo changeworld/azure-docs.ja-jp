@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e176c0399b191c7a511ea1d26388219b2cef1df8
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034899"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107148"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database のブロックの問題の概要と解決策
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -429,3 +429,4 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 * [Azure SQL で一貫したパフォーマンスを提供する](/learn/modules/azure-sql-performance/)
 * [Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング](troubleshoot-common-errors-issues.md)
 * [Transient Fault Handling (一時的な障害の処理)](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)
+* [Azure SQL Database での並列処理の最大限度 (MAXDOP) の構成](configure-max-degree-of-parallelism.md)

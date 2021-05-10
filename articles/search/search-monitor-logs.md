@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3c8dd5cd9da2fd1e741635a6471c0662066d147e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f0d85f056cfaaa58fcc72eb9c2182b3e1a78affb
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709941"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581615"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
-診断ログまたは操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスとワークロードのプロセスの監視に役立ちます。 内部的には、システム情報をバックエンドに短期間 (約 30 日) 保存します。これは、サポート チケットを提出した場合の調査と分析に十分な期間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
+診断または操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスの正常性とプロセスの監視に役立ちます。 内部的には、システム情報をバックエンドに短期間 (約 30 日) 保存します。これは、サポート チケットを提出した場合の調査と分析に十分な期間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
 
 診断ログは、[Azure Monitor](../azure-monitor/index.yml) との統合を通じて有効になります。 
 

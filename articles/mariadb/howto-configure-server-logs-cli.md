@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42382076b6c14989eb153725e991c8ef047ad15b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662391"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774793"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB の低速クエリ ログを構成してアクセスする
 
@@ -42,14 +42,14 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ```
 
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーのログを一覧表示する
-**log_output** が [ファイル] に構成されている場合は、サーバーのローカル ストレージから直接ログにアクセスできます。 サーバーの利用可能な低速クエリ ログ ファイルを一覧表示するには、[az mariadb server-logs list](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) コマンドを実行します。
+**log_output** が [ファイル] に構成されている場合は、サーバーのローカル ストレージから直接ログにアクセスできます。 サーバーの利用可能な低速クエリ ログ ファイルを一覧表示するには、[az mariadb server-logs list](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mariadb.database.azure.com** のログ ファイルを一覧表示できます。 その後、ログ ファイルの一覧を **log\_files\_list.txt** という名前のテキスト ファイルに送信します。
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>サーバーからログをダウンロードする
-**log_output** が [ファイル] に構成されている場合は、[az mariadb server-logs download](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) コマンドを使用してサーバーから個々のログ ファイルをダウンロードできます。
+**log_output** が [ファイル] に構成されている場合は、[az mariadb server-logs download](/cli/azure/mariadb/server-logs#az_mariadb_server_logs_download) コマンドを使用してサーバーから個々のログ ファイルをダウンロードできます。
 
 次の例を使用して、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mariadb.database.azure.com** の特定のログ ファイルを、ローカル環境にダウンロードします。
 ```azurecli-interactive

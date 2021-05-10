@@ -22,7 +22,7 @@ ms.locfileid: "91355739"
 
 Application Gateway には、次のような機能があります。
 
-- [Secure Sockets Layer (SSL/TLS) 終了](#secure-sockets-layer-ssltls-termination)
+- [Secure Sockets Layer (SSL/TLS) 終端](#secure-sockets-layer-ssltls-termination)
 - [自動スケーリング](#autoscaling)
 - [ゾーン冗長性](#zone-redundancy)
 - [静的 VIP](#static-vip)
@@ -38,9 +38,9 @@ Application Gateway には、次のような機能があります。
 - [HTTP ヘッダーと URL の書き換え](#rewrite-http-headers-and-url)
 - [サイズ設定](#sizing)
 
-## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) 終了
+## <a name="secure-sockets-layer-ssltls-termination"></a>Secure Sockets Layer (SSL/TLS) 終端
 
-Application Gateway は、ゲートウェイの SSL 終了をサポートします。その後、通常、トラフィックは、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL/TLS 暗号化がサポートされています。
+Application Gateway は、ゲートウェイの SSL 終端をサポートします。その後、通常、トラフィックは、暗号化されないままバックエンド サーバーに渡されます。 この機能により、Web サーバーは、負荷の大きい暗号化と復号化のオーバーヘッドから開放されます。 ただし、サーバーに対する暗号化されていない通信を利用できない場合があります。 これは、セキュリティ要件やコンプライアンス要件が理由であったり、セキュリティで保護された接続以外はアプリケーションで受け入れられないためであったりします。 このようなアプリケーションのために、Application Gateway では、エンド ツー エンドの SSL/TLS 暗号化がサポートされています。
 
 詳細については、「[Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要](ssl-overview.md)」を参照してください
 

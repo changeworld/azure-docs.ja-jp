@@ -49,7 +49,7 @@ Azure Digital Twins サービスで使用するために、RDF ベースのモ�
 
 サンプルはここから入手できます:[**RdfToDtdlConverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
 
-コードをお使いのマシンにダウンロードするには、サンプルのランディング ページのタイトルの下にある *[ZIP のダウンロード]* ボタンをクリックします。 これで、*ZIP* ファイルが *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* という名前でダウンロードされます。その後、このファイルを解凍して探索することができます。
+コードをお使いのマシンにダウンロードするには、サンプルのランディング ページのタイトルの下にある *[Download ZIP]* ボタンをクリックします。 これで、*ZIP* ファイルが *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* という名前でダウンロードされます。その後、このファイルを解凍して探索することができます。
 
 このサンプルを使用して、コンテキストでの変換パターンを確認し、独自の具体的なニーズに応じてモデルの変換を実行する独自のアプリケーションのために、構成要素として用意することができます。
 

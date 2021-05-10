@@ -13,19 +13,22 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 18b79b105bcc4b5b0b65fc6f7d6b602ffff55561
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455824"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607118"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
 
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。
 
-サービス タグを使用して、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な *ソース* または *宛先* フィールドにサービス タグ名 (**ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグを使用して、[ネットワーク セキュリティ グループ](./network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な *ソース* または *宛先* フィールドにサービス タグ名 (**ApiManagement** など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 
+
+> [!NOTE] 
+> 2021 年 3 月の時点で、[ユーザー定義のルート](./virtual-networks-udr-overview.md)において、明示的な IP 範囲の代わりにサービス タグを使用することもできます。 現在、この機能はパブリック プレビュー段階にあります。 
 
 サービス タグを使用すると、ネットワーク分離を実現し、パブリック エンドポイントを持つ Azure サービスへのアクセス時に一般のインターネットから Azure リソースを保護できます。 受信/送信ネットワーク セキュリティ グループ規則を作成して、**インターネット** との間のトラフィックを拒否し、**AzureCloud** または他の特定の Azure サービスの [利用可能なサービス タグ](#available-service-tags)との間のトラフィックを許可します。
 
@@ -75,7 +78,7 @@ ms.locfileid: "102455824"
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
 | **AzureLoadBalancer** | Azure インフラストラクチャのロード バランサー。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](./network-security-groups-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 これにはプローブ トラフィックのみが含まれ、バックエンド リソースへの実際のトラフィックは含まれません。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning | 両方 | いいえ | はい |
-| **AzureMonitor** | Log Analytics、Application Insights、AzMon、およびカスタム メトリック (GiG エンドポイント)。<br/><br/>*注:* Log Analytics では、このタグは **Storage** タグに依存します。 | 送信 | いいえ | はい |
+| **AzureMonitor** | Log Analytics、Application Insights、AzMon、およびカスタム メトリック (GiG エンドポイント)。<br/><br/>*注:* Log Analytics の場合は、**Storage** タグも必要です。 Linux エージェントが使用されている場合は、**GuestAndHybridManagement** タグも必要です。 | 送信 | いいえ | はい |
 | **AzureOpenDatasets** | Azure Open Datasets。<br/><br/>*注:* このタグは、**AzureFrontDoor.Frontend** および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzurePlatformDNS** | 基本インフラストラクチャ (既定) の DNS サービス。<br/><br>このタグを使用すると、既定の DNS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](./network-security-groups-overview.md#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS)。これは基本的なインフラストラクチャ サービスです。<br/><br/>このタグを使用すると、既定の IMDS を無効にすることができます。 このタグを使用する場合は注意が必要です。 「[Azure プラットフォームに関する考慮事項](./network-security-groups-overview.md#azure-platform-considerations)」を参照することをお勧めします。 また、このタグを使用する前にテストを実行することをお勧めします。 | 送信 | いいえ | いいえ |
@@ -115,7 +118,7 @@ ms.locfileid: "102455824"
 >| クラシックのスペル | 同等のリソース マネージャー タグ |
 >|---|---|
 >| AZURE_LOADBALANCER | AzureLoadBalancer |
->| INTERNET | インターネット |
+>| INTERNET | Internet |
 >| VIRTUAL_NETWORK | VirtualNetwork |
 
 > [!NOTE]

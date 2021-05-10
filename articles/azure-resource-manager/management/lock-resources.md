@@ -2,14 +2,14 @@
 title: 変更されないようにリソースをロックする
 description: Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/07/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932762"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768725"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -39,6 +39,8 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 * **ストレージ アカウント** に読み取り専用ロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 この種類のロックでは、ストレージ アカウント自体が削除または変更されないように保護するだけであり、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイルのデータは保護されません。 
 
 * 読み取り専用ロックを **App Service** リソースに設定すると、Visual Studio のサーバー エクスプローラーの操作には書き込みアクセスが必要となるため、Visual Studio のサーバー エクスプローラーはリソース用のファイルを表示できなくなります。
+
+* **App Service プラン** を含む **リソース グループ** に対する読み取り専用ロックを設定すると、[プランのスケールアップやスケールアウト](../../app-service/manage-scale-up.md)はできません。
 
 * 読み取り専用ロックを、**仮想マシン** を含む **リソース グループ** に設定すると、どのユーザーも仮想マシンを起動したり、再起動したりできなくなります。 これらの操作では、POST 要求が必要です。
 
@@ -276,7 +278,7 @@ Remove-AzResourceLock -LockId $lockId
 
 ### <a name="azure-cli"></a>Azure CLI
 
-デプロイされているリソースを Azure CLI でロックするには、[az lock create](/cli/azure/lock#az-lock-create) コマンドを使います。
+デプロイされているリソースを Azure CLI でロックするには、[az lock create](/cli/azure/lock#az_lock_create) コマンドを使います。
 
 リソースをロックするには、対象となるリソースの名前とそのリソース タイプ、リソース グループ名を指定します。
 
@@ -290,7 +292,7 @@ az lock create --name LockSite --lock-type CanNotDelete --resource-group example
 az lock create --name LockGroup --lock-type CanNotDelete --resource-group exampleresourcegroup
 ```
 
-ロックについての情報を取得するには、[az lock list](/cli/azure/lock#az-lock-list) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
+ロックについての情報を取得するには、[az lock list](/cli/azure/lock#az_lock_list) を使います。 サブスクリプション内のすべてのロックを取得するには、次のように入力します。
 
 ```azurecli
 az lock list
@@ -324,7 +326,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-[管理ロック用の REST API](/rest/api/resources/managementlocks/managementlocks) を使用して、デプロイ済みのリソースをロックできます。 REST API を使用すると、ロックを作成し、削除できます。また、既存のロックに関する情報を取得することもできます。
+[管理ロック用の REST API](/rest/api/resources/managementlocks) を使用して、デプロイ済みのリソースをロックできます。 REST API を使用すると、ロックを作成し、削除できます。また、既存のロックに関する情報を取得することもできます。
 
 ロックを作成するには、次のように実行します。
 

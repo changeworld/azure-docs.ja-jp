@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: d4fa7348df647cf699ebd55dd6415a79454ab5f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93397952"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025477"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -73,7 +73,7 @@ Site Recovery で保護されるすべてのインスタンスは、保護を開
 
 ### <a name="can-i-replicate-vms-in-an-availability-zone-to-another-region"></a>可用性ゾーン内の VM を別のリージョンにレプリケートすることはできますか?
 
-はい、可用性ゾーン内の VM を別の Azure リージョンにレプリケートすることができます。 ターゲット VM は、可用性セット内で、またはターゲット リージョンでサポートされている場合は可用性ゾーン内で、1 つのインスタンスとしてデプロイできます。 
+はい、可用性ゾーン内の VM を別の Azure リージョンにレプリケートすることができます。 
 
 ### <a name="can-i-replicate-non-zone-vms-to-a-zone-within-the-same-region"></a>非ゾーンの VM を同じリージョン内のゾーンにレプリケートすることはできますか? 
 
@@ -321,7 +321,7 @@ Site Recovery での[復旧計画](site-recovery-create-recovery-plans.md)は、
 
 はい、ディザスター リカバリー リージョンで[予約 Azure VM](https://azure.microsoft.com/pricing/reserved-vm-instances/) を購入することができます。Site Recovery のフェールオーバー操作でその VM が使用されます。 追加の構成は必要ありません。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 

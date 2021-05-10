@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: c673f7a9556193fb05e05ea372bfccd17cd3c5ed
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d386b504475b308c2fb5146b47d3977cb87510f8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868513"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935679"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -128,10 +128,12 @@ SMB ボリュームへのアクセスはアクセス許可によって管理さ�
 
 ### <a name="share-permissions"></a>共有アクセス許可  
 
-既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 ドメイン管理者グループのメンバーは、Azure NetApp Files ボリュームに使用されているコンピューター アカウントで Computer Management を利用し、共有アクセス許可を変更できます。
+既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 Domain Admins グループのメンバーは、次のように共有アクセス許可を変更できます。  
 
-![SMB マウント パス](../media/azure-netapp-files/smb-mount-path.png) 
-![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png) 
+1. 共有とドライブをマッピングします。  
+2. ドライブを右クリックし、 **[プロパティ]** を選択して、 **[セキュリティ]** タブにアクセスします。
+
+[ ![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS ファイルおよびフォルダーの権限  
 

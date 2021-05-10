@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 3d43a532f57feab361c6a3de79269991f46fc55d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98684024"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732507"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>データ ラングリングを使用してデータを準備する
 
@@ -20,7 +20,7 @@ ms.locfileid: "98684024"
 データ ファクトリのデータ ラングリングを使用すると、対話型の Power Query マッシュアップを ADF でネイティブに構築し、ADF パイプライン内で大規模に実行することができます。
 
 > [!NOTE]
-> ADF での Power Query アクティビティは、現在パブリック プレビューで使用可能
+> ADF での Power Query アクティビティは、現在、パブリック プレビューで使用可能です
 
 ## <a name="create-a-power-query-activity"></a>Power Query アクティビティを作成する
 

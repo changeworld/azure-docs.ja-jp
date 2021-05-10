@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7e300f896bb11ed7c77738836f894cff41cc8bf3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074624"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781831"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -95,17 +95,17 @@ Resource changes: 1 to modify.
 
 テンプレートをデプロイする前に変更のプレビューを表示するには、次のコマンドを使用します。
 
-* [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) (リソース グループのデプロイの場合)
-* [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) (サブスクリプション レベルのデプロイの場合)
-* [az deployment mg what-if](/cli/azure/deployment/mg#az-deployment-mg-what-if) (管理グループのデプロイの場合)
-* [az deployment tenant what-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) (テナントのデプロイの場合)
+* [az deployment group what-if](/cli/azure/deployment/group#az_deployment_group_what_if) (リソース グループのデプロイの場合)
+* [az deployment sub what-if](/cli/azure/deployment/sub#az_deployment_sub_what_if) (サブスクリプション レベルのデプロイの場合)
+* [az deployment mg what-if](/cli/azure/deployment/mg#az_deployment_mg_what_if) (管理グループのデプロイの場合)
+* [az deployment tenant what-if](/cli/azure/deployment/tenant#az_deployment_tenant_what_if) (テナントのデプロイの場合)
 
 `--confirm-with-what-if` (または短縮形式 `-c`) を使用して、変更をプレビューし、デプロイを続行するかどうかを確認するプロンプトを表示することもできます。 このスイッチを次のコマンドに追加します。
 
-* [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)
-* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)
-* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
-* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
+* [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)
+* [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create)
+* [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)
 
 たとえば、リソース グループのデプロイの場合は `az deployment group create --confirm-with-what-if` または `-c` を使用します。
 

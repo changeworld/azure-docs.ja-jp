@@ -2,14 +2,14 @@
 title: 仮想ネットワークでプールをプロビジョニングする
 description: コンピューティング ノードがネットワーク内の他の VM (ファイル サーバーなど) と安全に通信できるように、Azure 仮想ネットワークで Batch プールを作成する方法。
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/26/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6e5de75164e098fc95f6c086d9f98a652dcee4a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7213637e89cfccd1352861002c47a696d942d30f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561917"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629310"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -56,6 +56,8 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 - Batch サービスは、タスクをスケジュールする目的でノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとに UDR を追加します。 Batch サービスの IP アドレスの一覧を取得するには、「[オンプレミスのサービス タグ](../virtual-network/service-tags-overview.md)」を参照してください。
 
 - Azure Storage への送信トラフィック (具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL) がオンプレミス ネットワークによってブロックされていないことを確認します。
+
+- 仮想ファイル マウントを使用する場合は、[ネットワーク要件](virtual-file-mount.md#networking-requirements)を調べ、必要なトラフィックがブロックされていないことを確認します。
 
 UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 **[次ホップの種類]** を **[インターネット]** に設定します。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f84b74b054a073f2c1ae5ba2ac7d0d0a968367c6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84705051"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767675"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
 
@@ -87,7 +87,7 @@ NetworkInterfaces
 
 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから CLI を実行することで実行できます。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にログインする必要もあります。
 
-[az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) を使用して、ネットワーク インターフェイスに対して有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMNic1* というネットワーク インターフェイスの有効なルートを取得します。
+[az network nic show-effective-route-table](/cli/azure/network/nic#az_network_nic_show_effective_route_table) を使用して、ネットワーク インターフェイスに対して有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMNic1* というネットワーク インターフェイスの有効なルートを取得します。
 
 ```azurecli-interactive
 az network nic show-effective-route-table \

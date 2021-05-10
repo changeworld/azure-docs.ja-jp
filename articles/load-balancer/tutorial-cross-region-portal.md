@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 16320021ede4a4e285c4e1973c166d2cdf643c4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221128"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529529"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -133,7 +133,6 @@ Azure portal に[サインイン](https://portal.azure.com)します。
     | Port | 「**80**」と入力します。|
     | バックエンド ポート | 「**80**」と入力します。 |
     | バックエンド プール | **[myBackendPool]** を選択します。|
-    | 正常性プローブ | **[myHealthProbe]** を選択します。 |
     | アイドル タイムアウト (分) | スライダーを **15** に移動します。 |
     | TCP リセット | **[Enabled]** を選択します。 |
 

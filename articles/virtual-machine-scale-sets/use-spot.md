@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61bb87d84b96f988ae065a70b85d445fc8b96ccf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722567"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762949"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
 
@@ -44,7 +44,7 @@ Azure Spot Virtual Machine は、Microsoft Azure China 21Vianet を除き、任�
 現在サポートされている[オファーの種類](https://azure.microsoft.com/support/legal/offer-details/)は次のとおりです。
 
 -   Enterprise Agreement
--   従量課金制 (プラン コード: 003P)
+-   従量課金制プラン コード ( 003P)
 -   スポンサー (0036P および 0136P)
 - クラウド サービス プロバイダー (CSP) については、[パートナー センター](/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
 
@@ -82,7 +82,7 @@ Azure Spot Virtual Machines を使用してスケール セットを作成する
 
 **CLI の使用**
 
-[az feature register](/cli/azure/feature#az-feature-register) を使用して、サブスクリプションでのプレビューを有効にします。 
+[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SpotTryRestore 
