@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 09/28/2020
 ms.author: ginle
-ms.openlocfilehash: 08b5f63f1fffc2369eff620ca1937f298c2d9ca5
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: daa71a6df0ad412823736b3ee094cfd3945af492
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019210"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220851"
 ---
 # <a name="configure-customer-managed-keys-at-rest"></a>保存状態のカスタマー マネージド キーを構成する
 
@@ -23,7 +23,7 @@ Azure では通常、これを実現するために、お客様の Azure Key Vau
 
 - [Azure サブスクリプション用の Azure Cosmos DB リソース プロバイダーを登録する](../../cosmos-db/how-to-setup-cmk.md#register-resource-provider) 
 - [Azure Key Vault インスタンスを構成する](../../cosmos-db/how-to-setup-cmk.md#configure-your-azure-key-vault-instance)
-- [Azure Key Vault インスタンスにアクセス ポリシーを追加する](../../cosmos-db/how-to-setup-cmk.md#add-an-access-policy-to-your-azure-key-vault-instance)
+- [Azure Key Vault インスタンスにアクセス ポリシーを追加する](../../cosmos-db/how-to-setup-cmk.md#add-access-policy)
 - [Azure Key Vault でキーを生成する](../../cosmos-db/how-to-setup-cmk.md#generate-a-key-in-azure-key-vault)
 
 ## <a name="using-azure-portal"></a>Azure Portal の使用

@@ -3,12 +3,12 @@ title: 'クイックスタート: Apache Storm を使用してイベントを受
 description: 'クイックスタート: この記事では、Apache Storm を使用して Azure Event Hubs からイベントを受信する方法について説明します。'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b79c2958a10d0193b706c92a28b1792d63c24b82
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87087579"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107302966"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>クイックスタート: Apache Storm を使用して Event Hubs からイベントを受信する
 
@@ -235,7 +235,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [Event Hubs の概要][Event Hubs overview]
 * [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs の FAQ](event-hubs-faq.yml)
 
 <!-- Links -->
 [Event Hubs overview]: ./event-hubs-about.md

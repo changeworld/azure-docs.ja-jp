@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94962282"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639792"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Azure Database Migration Service の一般的な問題やエラーのトラブルシューティング
 
@@ -102,7 +102,7 @@ Azure Database Migration Service プロジェクト ウィザードでソース�
 
 | 原因         | 解決方法    |
 | ------------- | ------------- |
-| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](./tutorial-sql-server-azure-sql-online.md)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](./tutorial-sql-server-azure-sql-online.md)にします。 <br><br><br><br><br><br><br><br> |
+| [ExpressRoute](https://azure.microsoft.com/services/expressroute/) を使用している場合、Azure Database Migration Service では、そのサービスに関連付けられた仮想ネットワーク サブネット上に次の 3 つのサービス エンドポイントをプロビジョニングする[必要があります](./tutorial-sql-server-to-azure-sql.md)。<br> -- サービス バス エンドポイント<br> -- ストレージ エンドポイント<br> -- ターゲット データベース エンドポイント (SQL エンドポイント、Cosmos DB エンドポイントなど)<br><br><br><br><br> | ソースと Azure Database Migration Service の間の ExpressRoute 接続に必要なサービス エンドポイントを[有効](./tutorial-sql-server-to-azure-sql.md)にします。 <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>MySQL データベースを Azure DB for MySQL に移行するときのロック待機タイムアウト エラー
 
@@ -126,13 +126,13 @@ Azure Database Migration Service を、名前付きインスタンスまたは�
 
 ## <a name="additional-known-issues"></a>その他の既知の問題
 
-* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-sql-online.md)
+* [Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項](./index.yml)
 * [Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-mysql-online.md)
 * [Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration) に関する記事を確認する。
+* [Azure Database Migration Service PowerShell](/powershell/module/azurerm.datamigration#data_migration) に関する記事を確認する。
 * 「[Azure portal を使用して Azure Database for MySQL のサーバー パラメーターを構成する方法](../mysql/howto-server-parameters.md)」を確認する。
 * 「[Azure Database Migration Service を使用するための前提条件の概要](./pre-reqs.md)」を確認する。
 * 「[Azure Database Migration Service の使用に関する FAQ](./faq.md)」を確認する。

@@ -1,23 +1,23 @@
 ---
 title: TDE 保護機能を削除する (PowerShell と Azure CLI)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Bring YOur Own Key (BYOK) をサポートする TDE を使用している Azure SQL Database または Azure Synapse Analytics の侵害された可能性のある TDE 保護機能に対応する方法について説明します。
+description: Bring Your Own Key (BYOK) をサポートする TDE を使用している Azure SQL Database または Azure Synapse Analytics で侵害された可能性のある TDE プロテクターに対応する方法について説明します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
-author: jaszymas
-ms.author: jaszymas
+author: shohamMSFT
+ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f98dcdd9c1a479703c82c01b4fd240507ea355de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461862"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784466"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -136,7 +136,7 @@ PowerShell コマンドの **az sql server key show**  では、クエリで�
 
 コマンド リファレンスについては、[Azure CLI keyvault](/cli/azure/keyvault/key) に関するページを参照してください。
 
-1. [Key Vault に新しいキー](/cli/azure/keyvault/key#az-keyvault-key-create)を作成します。 アクセス制御はコンテナー レベルでプロビジョニングされるため、この新しいキーは、侵害された可能性のある TDE 保護機能とは別のキー コンテナーに作成する必要があります。
+1. [Key Vault に新しいキー](/cli/azure/keyvault/key#az_keyvault_key_create)を作成します。 アクセス制御はコンテナー レベルでプロビジョニングされるため、この新しいキーは、侵害された可能性のある TDE 保護機能とは別のキー コンテナーに作成する必要があります。
 
 2. 新しいキーをサーバーに追加し、サーバーの新しい TDE 保護機能として更新します。
 

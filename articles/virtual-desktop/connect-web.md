@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+manager: femila
+ms.openlocfilehash: 80a090abee45f9cb3ec6ee5406aad6abf1d73a59
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89400638"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725010"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Web クライアントを使用して Windows Virtual Desktop に接続する
 
@@ -48,25 +48,6 @@ Web クライアントを利用すると、時間のかかるインストール 
 >Windows Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
 
 サインインすると、リソースの一覧が表示されます。 リソースを起動するには、 **[すべてのリソース]** タブで通常のアプリと同様にそのリソースを選択します。
-
-## <a name="using-an-input-method-editor"></a>Input Method Editor を使用する
-
-Web クライアントでは、バージョン **1.0.21.16 以降** で、リモート セッション時、Input Method Editor (IME) の使用をサポートしています。 リモート セッションで使用するキーボードの言語パックは、ホスト仮想マシンにインストールする必要があります。 リモート セッションで言語パックを設定する方法については、「[Windows 10 マルチセッション イメージへの言語パックの追加](language-packs.md)」を参照してください。
-
-Web クライアントを使用して IME 入力を有効にするには:
-
-1. リモート セッションに接続する前に、Web クライアントの **[設定]** パネルにアクセスします。
-
-2. **[Enable Input Method Editor]\(IME を有効にする\)** を **[オン]** に切り替えます。
-
-3. ドロップダウン メニューで、リモート セッションで使用するキーボードを選択します。
-
-4. リモート セッションに接続する
-
-Web クライアントでは、リモート セッションに焦点を合わせているとき、ローカル IME ウィンドウが非表示になります。 リモート セッションに既に接続しているとき、IME 設定を変更しても何の変化もありません。
-
->[!NOTE]
->言語パックがホスト仮想マシンにインストールされていない場合、リモート セッションは既定で英語 (米国) キーボードに設定されます。
 
 ## <a name="next-steps"></a>次のステップ
 

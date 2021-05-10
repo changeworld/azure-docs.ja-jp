@@ -1,6 +1,6 @@
 ---
-title: Azure Table ストレージの監視 | Microsoft Docs
-description: Azure Table ストレージのパフォーマンスと可用性を監視する方法について説明します。 Azure Table ストレージのデータを監視し、構成について説明します。また、メトリックとログ データを分析します。
+title: Azure Table Storage の監視 | Microsoft Docs
+description: Azure Table Storage のパフォーマンスと可用性を監視する方法について説明します。 Azure Table Storage のデータを監視し、構成について説明します。また、メトリックとログ データを分析します。
 author: normesta
 services: storage
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: d2973d95cf797123e02fd48dc2dfab1b172e05f5
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 11439afbe7bceb17dff5393d248c6c9f5d3f6b53
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499470"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767837"
 ---
-# <a name="monitoring-azure-table-storage"></a>Azure Table ストレージの監視
+# <a name="monitoring-azure-table-storage"></a>Azure Table Storage の監視
 
-Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure Table ストレージによって生成される監視データと、Azure Monitor の機能を使用してこのデータに関するアラートを分析する方法について説明します。
+Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure Table Storage によって生成される監視データと、Azure Monitor の機能を使用してこのデータに関するアラートを分析する方法について説明します。
 
 > [!NOTE]
 > Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 この機能は、Azure Resource Manager デプロイ モデルを使用して作成されたすべてのストレージ アカウントで使用できます。 「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
@@ -28,7 +28,7 @@ Azure リソースに依存するクリティカルなアプリケーション�
 各 Table ストレージ リソースについての Azure portal の **[概要]** ページには、要求や時間ごとの課金など、リソースの使用状況に関する簡単なビューが含まれています。 この情報は役立ちますが、使用できる監視データはごくわずかです。 このデータの一部は自動的に収集され、リソースを作成するとすぐに分析に使用できるようになります。 一定の構成によって追加の種類のデータ収集を有効にすることができます。
 
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
-Azure Table ストレージでは、Azure のフルスタック監視サービスである [Azure Monitor](../../azure-monitor/overview.md) を使用して監視データが作成されます。 Azure Monitor には、Azure リソースと、他のクラウドおよびオンプレミスのリソースを監視するための完全な機能セットが用意されています。 
+Azure Table Storage では、Azure のフルスタック監視サービスである [Azure Monitor](../../azure-monitor/overview.md) を使用して監視データが作成されます。 Azure Monitor には、Azure リソースと、他のクラウドおよびオンプレミスのリソースを監視するための完全な機能セットが用意されています。 
 
 まず「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」の記事にある次の事項の説明をお読みください。
 
@@ -44,7 +44,7 @@ Azure Table ストレージでは、Azure のフルスタック監視サービ�
 
 Azure Table ストレージでは、他の Azure リソースと同じ種類の監視データが収集されます。これについては、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関するページを参照してください。 
 
-Azure Table ストレージによって作成されるメトリックとログの詳細については、「[Azure Table ストレージ監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
+Azure Table Storage によって作成されるメトリックとログの詳細については、「[Azure Table Storage 監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
 
 Azure Monitor のメトリックとログでは、Azure Resource Manager ストレージ アカウントのみがサポートされています。 Azure Monitor では、従来のストレージ アカウントはサポートされていません。 従来のストレージ アカウントでメトリックまたはログを使用する場合、Azure Resource Manager ストレージ アカウントに移行する必要があります。 [Azure Resource Manager への移行](../../virtual-machines/migration-classic-resource-manager-overview.md)に関するページを参照してください。
 
@@ -214,7 +214,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 ログをストレージ アカウントにアーカイブすることを選択した場合は、ストレージ アカウントに送信されるログの量に対して課金されます。 具体的な料金については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)」ページの「**プラットフォーム ログ**」セクションを参照してください。
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -234,7 +234,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 ログをイベント ハブにストリーミングすることを選択した場合は、イベント ハブに送信されるログの量に対して課金されます。 具体的な料金については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)」ページの「**プラットフォーム ログ**」セクションを参照してください。
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -246,7 +246,7 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 #### <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
 
-[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用してログを有効にします。
+[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用してログを有効にします。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -278,12 +278,12 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 Azure Storage でサポートされるディメンションの完全な一覧については、「[メトリックのディメンション](monitor-table-storage-reference.md#metrics-dimensions)」をご覧ください。
 
-Azure Table ストレージのメトリックは、次の名前空間にあります。 
+Azure Table Storage のメトリックは、次の名前空間にあります。 
 
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/tableServices
 
-Azure Monitor でサポートされるすべてのメトリックの一覧 (Azure Table ストレージを含む) については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md)に関するページを参照してください。
+Azure Monitor でサポートされるすべてのメトリックの一覧 (Azure Table Storage を含む) については、[Azure Monitor でサポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md)に関するページを参照してください。
 
 
 ### <a name="accessing-metrics"></a>メトリックにアクセスする
@@ -317,7 +317,7 @@ Azure Monitor でサポートされるすべてのメトリックの一覧 (Azur
 
 #### <a name="list-the-account-level-metric-definition"></a>アカウント レベルのメトリック定義を一覧表示する
 
-ストレージ アカウントまたは Table ストレージ サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) コマンドを使用します。
+ストレージ アカウントまたは Table ストレージ サービスのメトリック定義を一覧表示できます。 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) コマンドを使用します。
  
 この例では、`<resource-ID>` プレースホルダーを、ストレージ アカウント全体のリソース ID または Table ストレージ サービスのリソース ID に置き換えます。 これらのリソース ID は、Azure portal 上のストレージ アカウントの **[プロパティ]** ページで確認できます。
 
@@ -327,7 +327,7 @@ Azure Monitor でサポートされるすべてのメトリックの一覧 (Azur
 
 #### <a name="read-account-level-metric-values"></a>アカウント レベルのメトリック値を読み取る
 
-ストレージ アカウントまたは Table ストレージ サービスのメトリック値を読み取ることができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) コマンドを使用します。
+ストレージ アカウントまたは Table ストレージ サービスのメトリック値を読み取ることができます。 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) コマンドを使用します。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -601,6 +601,6 @@ Azure Monitor ログ クエリを使用して、Log Analytics ワークスペー
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Table ストレージによって作成されるログおよびメトリックのリファレンスについては、「[Azure Table ストレージ監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
+- Azure Table Storage によって作成されるログおよびメトリックのリファレンスについては、「[Azure Table Storage 監視データのリファレンス](monitor-table-storage-reference.md)」を参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor で Azure リソースを管理する](../../azure-monitor/essentials/monitor-azure-resource.md)」をご覧ください。
 - メトリックの移行の詳細については、「[Azure Storage メトリックの移行](../common/storage-metrics-migration.md)」をご覧ください。

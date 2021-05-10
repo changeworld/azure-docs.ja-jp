@@ -9,24 +9,24 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "79199722"
 ---
-### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
+### <a name="create-a-console-application"></a>コンソール アプリケーションを作成する
 
 リレーの作成時に [クライアント認証が必要] オプションを無効にしていた場合には、ブラウザーを問わずハイブリッド接続 URL に要求を送信できます。 保護されているエンドポイントにアクセスするには、ここに示したように `ServiceBusAuthorization` ヘッダーでトークンを作成して渡す必要があります。
 
-Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成します。
+Visual Studio で、新しい **コンソール アプリ (.NET Framework)** プロジェクトを作成します。
 
 ### <a name="add-the-relay-nuget-package"></a>Relay NuGet パッケージを追加する
 
-1. 新しく作成したプロジェクトを右クリックしてから、 **[NuGet パッケージの管理]** を選択します。
+1. 新しく作成したプロジェクトを右クリックしてから、**[NuGet パッケージの管理]** を選択します。
 2. **[プレリリースを含める]** オプションを選択します。 
 3. **[参照]** を選択し、**Microsoft.Azure.Relay** を検索します。 検索結果から、"**Microsoft Azure Relay**" を選択します。
-4. バージョンには、 **[2.0.0-preview1-20180523]** を選択します。 
+4. バージョンには、**[2.0.0-preview1-20180523]** を選択します。 
 5. **[インストール]** を選択してインストールを完了します。 ダイアログ ボックスを閉じます。
 
 ### <a name="write-code-to-send-requests"></a>要求を送信するコードを記述する

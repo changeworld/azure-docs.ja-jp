@@ -6,13 +6,13 @@ ms.topic: troubleshooting
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+manager: femila
+ms.openlocfilehash: 4d515e75aba9b3912507da07267c3dcb31f1ee34
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652447"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445501"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 

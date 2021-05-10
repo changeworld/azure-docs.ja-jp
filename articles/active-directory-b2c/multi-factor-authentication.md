@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: eff33a8670ee8eb9ee32655956ee0e913ddaa4c1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033522"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258131"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 
@@ -56,6 +56,6 @@ Azure Active Directory B2C (Azure AD B2C) は [Azure AD Multi-Factor Authenticat
 
 ::: zone pivot="b2c-custom-policy"
 
-多要素認証を有効にするには、GitHub からカスタム ポリシー スターター パックを取得し、**SocialAndLocalAccountsWithMFA** スターター パック内の XML ファイルを Azure AD B2C テナント名で更新します。 **SocialAndLocalAccountsWithMFA** を使用すると、ソーシャル、ローカル、および多要素認証の各オプションを有効にできます。 詳細については、「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」を参照してください。 
+多要素認証を有効にするには、GitHub からカスタム ポリシー スターター パックを取得し、**SocialAndLocalAccountsWithMFA** スターター パック内の XML ファイルを Azure AD B2C テナント名で更新します。 **SocialAndLocalAccountsWithMFA** を使用すると、ソーシャル、ローカル、および多要素認証の各オプションを有効にできます。 詳細については、「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」を参照してください。 
 
 ::: zone-end

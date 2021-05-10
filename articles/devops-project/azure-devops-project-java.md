@@ -1,24 +1,30 @@
 ---
 title: クイック スタート:Java 用の CI/CD パイプラインを作成する - Azure DevOps Starter
 description: Azure DevOps Starter の簡素化されたエクスペリエンスを使用した、Azure Pipelines 内での Java アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインの設定について説明します。
-ms.prod: devops
-ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
+ms.author: mlearned
 manager: gwallace
+ms.date: 03/24/2020
+ms.prod: devops
+ms.technology: devops-cicd
+ms.topic: quickstart
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.topic: quickstart
-ms.date: 03/24/2020
-ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: d76c4206ca39518c3a09d27ee470c05db108ae6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom:
+- mvc
+- seo-java-july2019
+- seo-java-august2019
+- seo-java-september2019
+- devx-track-java
+- mode-api
+ms.openlocfilehash: 30ee97e0928f7b2995bd7bf02bec15bb8a46f7e2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102551883"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535434"
 ---
 # <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>Azure DevOps Starter を使用して Java アプリ用の CI/CD パイプラインを設定する
 

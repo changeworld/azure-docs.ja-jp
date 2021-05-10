@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c8776102602f5bdcf29139d808a6f603cc5c7473
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89295023"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784575"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>Azure Policy を使用した Azure SignalR Service リソースのコンプライアンスの監査
 
@@ -53,7 +53,7 @@ Azure portal、Azure コマンドライン ツール、または Azure Policy SD
 
 ### <a name="policy-compliance-in-the-azure-cli"></a>Azure CLI のポリシー コンプライアンス
 
-Azure CLI を利用してコンプライアンス データを取得することもできます。 たとえば、CLI で [az policy assignment list](/cli/azure/policy/assignment#az-policy-assignment-list) コマンドを使用し、適用されている Azure SignalR Service ポリシーのポリシー ID を取得します。
+Azure CLI を利用してコンプライアンス データを取得することもできます。 たとえば、CLI で [az policy assignment list](/cli/azure/policy/assignment#az_policy_assignment_list) コマンドを使用し、適用されている Azure SignalR Service ポリシーのポリシー ID を取得します。
 
 ```azurecli
 az policy assignment list --query "[?contains(displayName,'SignalR')].{name:displayName, ID:id}" --output table
@@ -67,13 +67,13 @@ Name                                                                            
 [Preview]: Azure SignalR Service should use private links  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.Authorization/policyAssignments/<assignmentId>
 ```
 
-次に、特定のリソース グループの下にあるリソースすべてのコンプライアンスの状態を JSON 形式で返すために、[az policy state list](/cli/azure/policy/state#az-policy-state-list) を実行します。
+次に、特定のリソース グループの下にあるリソースすべてのコンプライアンスの状態を JSON 形式で返すために、[az policy state list](/cli/azure/policy/state#az_policy_state_list) を実行します。
 
 ```azurecli
 az policy state list --g <resourceGroup>
 ```
 
-または、特定の SignalR リソースのコンプライアンスの状態を JSON 形式で返すために、[az policy state list](/cli/azure/policy/state#az-policy-state-list) を実行します。
+または、特定の SignalR リソースのコンプライアンスの状態を JSON 形式で返すために、[az policy state list](/cli/azure/policy/state#az_policy_state_list) を実行します。
 
 ```azurecli
 az policy state list \

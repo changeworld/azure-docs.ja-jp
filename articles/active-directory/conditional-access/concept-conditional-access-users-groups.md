@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f316b17096e1241fe23cbf2c965122fd8966522
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630879"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104952815"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
-条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。 この記事に加えて、 [条件付きアクセス ポリシーのユーザーを追加または除外する方法](https://www.youtube.com/watch?v=5DsW1hB3Jqs)について、下のようなプロセスを説明した動画を用意しています。 
+条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。 
 
-![条件付きアクセスによって下される決定のシグナルとしてのユーザー](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+> [!VIDEO https://www.youtube.com/embed/5DsW1hB3Jqs]
 
 ## <a name="include-users"></a>ユーザーを含める
 
@@ -38,7 +38,7 @@ ms.locfileid: "102630879"
    - すべてのゲストと外部ユーザー
       - この選択には、`user type` 属性が `guest` に設定されているすべてのユーザーを含めて、すべての B2B ゲストと外部ユーザーが含まれます。 この選択は、クラウド ソリューション プロバイダー (CSP) のような別の組織からサインインしたすべての外部ユーザーにも適用されます。 
    - ディレクトリ ロール
-      - 管理者は、ポリシー割り当てを決定するために使用される特定の組み込み Azure AD ディレクトリ ロールを選択できます。 たとえば組織で、全体管理者ロールを割り当てられるユーザーに対してより制限の厳しいポリシーを作成する場合があります。 管理単位スコープのディレクトリ ロール、カスタム ロールなど、その他のロールの種類はサポートされていません。
+      - 管理者は、ポリシー割り当てを決定するために使用される特定の組み込み Azure AD ディレクトリ ロールを選択できます。 たとえば組織で、全体管理者ロールを割り当てられるユーザーに対してより制限の厳しいポリシーを作成する場合があります。 管理単位スコープのロールやカスタム ロールなど、その他のロールの種類はサポートされていません。
    - ユーザーとグループ
       - 特定のユーザーのセットを対象にできます。 たとえば組織で人事部アプリがクラウド アプリとして選択されている場合は、人事部のすべてのメンバーを含むグループを選択できます。 Azure AD 内の任意の種類のグループを指定できます。これには、動的なグループや、割り当て済みのセキュリティ グループおよび配布グループが含まれます。 ポリシーは、入れ子になったユーザーおよびグループに適用されます。
 
@@ -77,7 +77,7 @@ ms.locfileid: "102630879"
 
 ![警告。自分自身をロックアウトしないでください。](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
-[Azure portal からロックアウトされた場合はどのように対処すればよいですか。](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)
+Azure portal からロックアウトされた場合は、「[Azure portal からロックアウトされた場合はどのように対処すればよいですか](troubleshoot-conditional-access.md#what-to-do-if-you-are-locked-out-of-the-azure-portal)」参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

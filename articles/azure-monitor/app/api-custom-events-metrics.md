@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d658d7e64f720a3fb700d157cd5194ff50a48c33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471621"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122103"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -702,6 +702,9 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 [メトリックス エクスプローラー](../essentials/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント** をカウントするグラフを作成できます。
 
 また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](./diagnostic-search.md)こともできます。
+
+> [!NOTE]
+> .NET Core SDK の [ApplicationInsightsServiceOptions クラスの EnableAuthenticationTrackingJavaScript プロパティ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)を使用すると、Application Insights JavaScript SDK によって送信される各トレースの認証 ID としてユーザー名を挿入するために必要な JavaScript 構成が簡略化されます。 このプロパティが true に設定されている場合、ASP.NET Core のユーザーのユーザー名が[クライアント側のテレメトリ](asp-net-core.md#enable-client-side-telemetry-for-web-applications)と共に出力されます。そのため、`appInsights.setAuthenticatedUserContext` を手動で追加する必要はなくなります。ASP.NET CORE の SDK によって既に挿入されているためです。 認証 ID は、[JavaScript API リファレンス](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#setauthenticatedusercontext)で説明されているように、サーバーにも送信され、そこで、.NET CORE の SDK によって識別され、サーバー側のテレメトリに使用されます。 ただし、ASP.NET Core MVC と同じ方法で動作しない JavaScript アプリケーション (SPA Web アプリなど) の場合は、やはり、`appInsights.setAuthenticatedUserContext` を手動で追加する必要があります。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>プロパティを使用したデータのフィルタリング、検索、セグメント化
 

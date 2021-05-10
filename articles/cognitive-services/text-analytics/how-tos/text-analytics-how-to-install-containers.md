@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
-ms.openlocfilehash: ac82781ed4a05fbbca7f5b16edb0b5349dfc400a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 012e725e31097af5af634a1aba7693048c4c6b3e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102432062"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277472"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -32,7 +32,7 @@ ms.locfileid: "102432062"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 > [!IMPORTANT]
-> 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル</a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](../overview.md#data-limits)」を参照してください。
+> 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル</a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](../concepts/data-limits.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,6 +49,8 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 |Text Analytics リソース |コンテナーを使用するためには、以下が必要です。<br><br>Free (F0) または Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)の Azure [Text Analytics リソース](../../cognitive-services-apis-create-account.md)。 Azure portal でリソースの **[Key and endpoint]\(キーとエンドポイント\)** ページに移動して、関連付けられている API キーとエンドポイント URI を取得する必要があります。 <br><br>**{API_KEY}** : 利用可能な 2 つのリソース キーのどちらか。 <br><br>**{ENDPOINT_URI}** : リソースのエンドポイント。 |
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+
+Text Analytics for Health コンテナーを使用している場合は、[責任ある AI](https://docs.microsoft.com/legal/cognitive-services/text-analytics/transparency-note-health) (RAI) 確認も `accept` の値で存在する必要があります。
 
 ## <a name="the-host-computer"></a>ホスト コンピューター
 

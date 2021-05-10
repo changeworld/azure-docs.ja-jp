@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 04/09/2021
 ms.author: ramakk
-ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d002932bca51300fa6a031ce7ab0d69186afe9c3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184486"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311687"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -46,7 +46,7 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 
 Azure NetApp Files には、次のネットワーク制限が適用されます。
 
-* Azure NetApp Files で使用される VNet の IP の数は (ピアリング VNet も含めて) 1,000 を超えることはできません。 Microsoft では、お客様のスケール ニーズに合わせてこの制限を引き上げることに取り組んでいます。 
+* Azure NetApp Files で使用される VNet の IP の数は (*今すぐ* ピアリングされた VNet も含めて) 1,000 を超えることはできません。 Microsoft では、お客様のスケール ニーズに合わせてこの制限を引き上げることに取り組んでいます。 
 * 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。
 
 

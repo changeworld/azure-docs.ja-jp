@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 11d22fd83106bb1802514d0c7d5f67724664464d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99226643"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788387"
 ---
 # <a name="understand-azure-files-billing"></a>Azure Files の課金について
 Azure Files には、プロビジョニングと従量課金制という 2 つの異なる課金モデルが用意されています。 プロビジョニング モデルは Premium ファイル共有でのみ使用できます。これは、**FileStorage** ストレージ アカウントの種類でデプロイされたファイル共有です。 従量課金制モデルは Standard ファイル共有でのみ使用できます。Standard ファイル共有は、**汎用バージョン 2 (GPv2)** ストレージ アカウントの種類でデプロイされたファイル共有です。 この記事では、Azure Files の毎月の請求書を理解できるように、両方のモデルがどのように機能するかについて説明します。
@@ -116,5 +116,5 @@ Standard ファイル共有を作成するときに、トランザクション�
 
 ## <a name="see-also"></a>関連項目
 - [「Azure Files 料金」ページ](https://azure.microsoft.com/pricing/details/storage/files/)。
-- 「[Azure Files のデプロイの計画](./storage-files-planning.md)」と「[Azure File Sync のデプロイの計画](./storage-sync-files-planning.md)」。
-- 「[ファイル共有を作成する](./storage-how-to-create-file-share.md)」と「[Azure File Sync のデプロイ](./storage-sync-files-deployment-guide.md)」。
+- 「[Azure Files のデプロイの計画](storage-files-planning.md)」と「[Azure File Sync のデプロイの計画](../file-sync/file-sync-planning.md)」。
+- 「[ファイル共有を作成する](storage-how-to-create-file-share.md)」と「[Azure File Sync のデプロイ](../file-sync/file-sync-deployment-guide.md)」。

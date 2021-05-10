@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529252"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104950520"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断のベスト プラクティス
 
@@ -34,7 +34,7 @@ Linux クラスターの場合、Azure Monitor ログは Azure プラットフ�
 
 ## <a name="watchdogs"></a>ウォッチドッグ
 
-一般的に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内の予期しない正常性イベントを報告する個別のサービスを指します。 これは、1 つのサービスのパフォーマンスのみに基づくと検出されない可能性があるエラーを防ぐために役立ちます。 またウォッチドッグは、ユーザー操作を必要としない修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でストレージ内のログ ファイル クリーンアップを行うなどです。 サンプルのウォッチドッグ サービス実装については、「[Syslog 内の Service Fabric Linux クラスター イベント](https://github.com/Azure-Samples/service-fabric-watchdog-service)」を参照してください。
+一般的に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内の予期しない正常性イベントを報告する個別のサービスを指します。 これは、1 つのサービスのパフォーマンスのみに基づくと検出されない可能性があるエラーを防ぐために役立ちます。 またウォッチドッグは、ユーザー操作を必要としない修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でのストレージ内のログ ファイル クリーンアップなどです。 使いやすいウォッチドッグ拡張モデルを含み、Windows と Linux の両方のクラスターで動作する、完全に実装されたオープン ソースの SF ウォッチドッグ サービスが必要な場合は、[FabricObserver](https://aka.ms/sf/FabricObserver) プロジェクトを参照してください。 FabricObserver は、実稼働可能なソフトウェアです。 テストおよび運用クラスターに FabricObserver をデプロイし、そのプラグイン モデルを使用してニーズに合わせて拡張するか、またはフォークして独自の組み込みのオブザーバーを作成することをお勧めします。 前者 (プラグイン) が推奨される方法です。
 
 ## <a name="next-steps"></a>次のステップ
 

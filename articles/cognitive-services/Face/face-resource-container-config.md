@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "80878427"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934038"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -67,7 +67,7 @@ ms.locfileid: "80878427"
 
 ### <a name="storage-scenario-settings"></a>ストレージ シナリオの設定
 
-Face コンテナーには、格納される内容に応じて、BLOB、キャッシュ、メタデータ、およびキュー データが格納されます。 たとえば、大きな人物グループのトレーニング インデックスと結果は、BLOB データとして格納されます。 Face コンテナーでは、これらの種類のデータを操作および格納する場合に、次の 2 つの異なるストレージ シナリオが提供されます。
+Face コンテナーには、格納される内容に応じて、BLOB、キャッシュ、メタデータ、およびキュー データが格納されます。 たとえば、**LargePersonGroup** のトレーニング インデックスと結果は、BLOB データとして格納されます。 Face コンテナーでは、これらの種類のデータを操作および格納する場合に、次の 2 つの異なるストレージ シナリオが提供されます。
 
 * メモリ  
   メモリには 4 つのすべての種類のデータが格納されます。 これらは分散されることはなく、永続的なものでもありません。 Face コンテナーが停止または削除された場合、そのコンテナーのストレージ内のデータはすべて破棄されます。  

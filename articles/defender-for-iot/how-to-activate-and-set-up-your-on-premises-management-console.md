@@ -1,18 +1,14 @@
 ---
 title: オンプレミス管理コンソールをアクティブにしてセットアップする
-description: 管理コンソールをアクティブにしてセットアップすると、センサーが Azure に登録され、オンプレミス管理コンソールに情報が送信されるようになります。また、オンプレミスの管理コンソールでは、接続されたセンサーに対する管理タスクを実行できます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 1/12/2021
+description: 管理コンソールをアクティブにすると、センサーが Azure に登録され、オンプレミス管理コンソールに情報が送信されるようになります。また、オンプレミス管理コンソールでは、接続されたセンサーに対する管理タスクを実行できます。
+ms.date: 4/6/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: db0d2a84feeb5bf52932842badda8c126994c05d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522582"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492156"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>オンプレミス管理コンソールをアクティブにしてセットアップする 
 
@@ -30,28 +26,44 @@ ms.locfileid: "100522582"
 
 管理コンソールにサインインするには、次のようにします。
 
-- Web ブラウザーを開き、システムのインストール時にオンプレミス管理コンソール用に受け取った IP アドレスとパスワードを入力します。 パスワードを忘れた場合は、 **[パスワードの回復]** を選択し、[パスワードの回復](how-to-manage-the-on-premises-management-console.md#password-recovery)に関するページを参照してください。
+1. システムのインストール時にオンプレミス管理コンソール用に受け取った IP アドレスへ移動します。
+ 
+1. システムのインストール時にオンプレミス管理コンソール用に受け取ったユーザー名とパスワードを入力します。 
 
-## <a name="upload-an-activation-file"></a>アクティブ化ファイルをアップロードする
 
-初回サインイン後、Azure Defender for IoT ポータルの **[価格]** ページからアクティブ化ファイルをダウンロードして、オンプレミス管理コンソールをアクティブにします。 このファイルには、オンボード プロセス中に定義された、集約されたコミット済みのデバイスが含まれています。 **[コミット済みのデバイス]** には、Defender for IoT によってサブスクリプションごとに監視されるデバイスの数が示されます。
+パスワードを忘れた場合は、 **[Recover Password]\(パスワードを回復する\)** オプションを選択してください。パスワードを回復する手順については、「[パスワードの回復](how-to-manage-the-on-premises-management-console.md#password-recovery)」を参照してください。
 
-アクティブ化ファイルをアップロードするには、次の手順を実行します。
+## <a name="activate-the-on-premises-management-console"></a>オンプレミスの管理コンソールをアクティブ化する
 
-1. Defender for IoT の **[価格]** ページに移動します。
-1. **[管理コンソールのアクティブ化ファイルのダウンロード]** タブを選択します。アクティブ化ファイルがダウンロードされます。
+初めてサインインした後に、アクティブ化ファイルを取得してアップロードし、オンプレミス管理コンソールをアクティブ化する必要があります。 
+
+オンプレミスの管理コンソールをアクティブ化するには、次のようにします。
+
+1. オンプレミス管理コンソールにサインインします。
+
+1. 画面の上部にあるアラート通知で、 **[対応策を取る]** リンクを選択します。
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/take-action.png" alt-text="画面の上部にあるアラートから [対応策を取る] リンクを選択する。":::
+
+1. [アクティブ化] ポップアップ画面で、**Azure portal** へのリンクを選択します。
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/azure-portal.png" alt-text="ポップアップ メッセージから Azure portal リンクを選択する。":::
+ 
+1. オンプレミスの管理コンソールを関連付けるサブスクリプションを選択し、 **[Download on-premises management console activation file]\(オンプレミスの管理コンソールのアクティブ化ファイルをダウンロード\)** ボタンを選択します。 アクティブ化ファイルがダウンロードされます。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="アクティブ化ファイルをダウンロードします。":::
 
-1. 管理コンソールで **[システム設定]** を選択します。
-1. **[アクティブ化]** を選択します。
-1. **[ファイルの選択]** を選択し、保存したファイルを選択します。
+   サブスクリプションをまだオンボードしていない場合は、[サブスクリプションをオンボード](how-to-manage-subscriptions.md#onboard-a-subscription)します。
 
-最初にアクティブ化した後に、監視されているデバイスの数がオンボード中に定義されたコミット済みのデバイスの数を超えることがあります。 これは、たとえば、管理コンソールにより多くのセンサーを接続した場合に発生する可能性があります。 監視されているデバイスの数とコミット済みのデバイスの数が一致しない場合は、管理コンソールに警告が表示されます。 これが発生した場合は、新しいアクティブ化ファイルをアップロードする必要があります。
+1. **[アクティベーション]** ポップアップ画面に戻り、 **[Choose File]\(ファイルの選択\)** を選択します。
+
+1. ダウンロードしたファイルを選択します。
+
+最初にアクティブ化した後に、監視するデバイスの数がオンボード中に定義したコミット済みデバイスの数を超えることがあります。 これは、管理コンソールに余分なセンサーを接続した場合に発生します。 監視するデバイスの数とコミット済みデバイスの数が一致しない場合は、管理コンソールに警告が表示されます。 これが発生した場合は、新しいアクティブ化ファイルをアップロードしてください。
 
 ## <a name="set-up-a-certificate"></a>証明書の設定
 
-管理コンソールのインストール後に、ローカルの自己署名証明書が生成され、コンソールにアクセスするために使用されます。 管理者が管理コンソールに初めてサインインすると、SSL/TLS 証明書を組み込むように求めるメッセージがそのユーザーに表示されます。 
+管理コンソールをインストールすると、ローカルの自己署名証明書が生成されます。 この証明書は、コンソールにアクセスするために使用されます。 管理者が管理コンソールに初めてサインインすると、SSL/TLS 証明書を組み込むように求めるメッセージがそのユーザーに表示されます。 
 
 次の 2 つのレベルのセキュリティを使用できます。
 
@@ -72,14 +84,17 @@ ms.locfileid: "100522582"
 証明書をアップロードするには、次の手順を実行します。
 
 1. サインイン後に求められた場合は、証明書名を定義します。
+
 1. CRT およびキー ファイルをアップロードします。
+
 1. パスフレーズを入力し、必要に応じて PEM ファイルをアップロードします。
 
-CA 署名証明書のアップロード後に、画面を更新する必要がある場合があります。
+CA 署名証明書のアップロード後に、画面を最新の情報に更新する必要がある場合があります。
 
 管理コンソールと接続されているセンサーの間の検証を無効にするには、次の手順を実行します。
 
 1. **[次へ]** を選択します。
+
 1. **[システム全体の検証を有効にする]** トグルをオフにします。
 
 新しい証明書、サポートされている証明書ファイルのアップロード、および関連項目の詳細については、「[オンプレミス管理コンソールの管理](how-to-manage-the-on-premises-management-console.md)」を参照してください。
@@ -96,21 +111,23 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 接続後、これらのセンサーを使用してサイトをセットアップする必要があります。
 
-### <a name="connect-sensors-from-the-sensor-console"></a>センサー コンソールからセンサーを接続する
+### <a name="connect-sensors-to-the-on-premises-management-console-from-the-sensor-console"></a>センサー コンソールからセンサーをオンプレミス管理コンソールに接続する
 
-センサー コンソールから特定のセンサーをオンプレミス管理コンソールに接続するには、次の手順を実行します。
+次の方法でセンサー コンソールからセンサーをオンプレミス管理コンソールに接続することができます。
 
-1. センサー コンソールの左側のペインで、 **[システム設定]** を選択します。
+1. オンプレミス管理コンソールで、 **[システム設定]** を選択します。
 
-2. **[管理への接続]** を選択します。
+1. **[Copy Connection String]\(接続文字列のコピー\)** をコピーします。
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-not-connected.png" alt-text="接続されていないことを示す、オンプレミス管理コンソールの状態ウィンドウのスクリーンショット。":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-string.png" alt-text="センサー用の接続文字列をコピーする。":::
 
-3. **[アドレス]** テキスト ボックスに、接続先のオンプレミス管理コンソールの IP アドレスを入力します。
+1. センサーで **[システム設定]** に移動し、 **[Connection to Management Console]\(管理コンソールへの接続\)** を選択します。:::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/connection-to-management-console.png" border="false":::
 
-4. **[接続]** を選択します。 状態が次のように変わります。
+1. オンプレミスの管理コンソールからコピーした接続文字列を **[Connection string]\(接続文字列\)** フィールドに貼り付けます。
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-connected.png" alt-text="接続されていることを示す、オンプレミス管理コンソールの状態ウィンドウのスクリーンショット。":::
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/paste-connection-string.png" alt-text="コピーした接続文字列を、接続文字列フィールド貼り付ける。":::
+
+1. **[接続]** を選択します。
 
 ### <a name="connect-sensors-by-using-tunneling"></a>トンネリングを使用してセンサーを接続する
 
@@ -157,61 +174,59 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 ### <a name="how-it-works"></a>しくみ
 
-各サイトに対して、部署と地域を定義できます。 その後、ネットワーク内の論理エンティティであるゾーンを追加できます。 
+組織内の各サイトに対して、部署とリージョンを定義できます。 その後、ネットワーク内に存在する論理エンティティであるゾーンを追加できます。 
 
-各ゾーンに対して、少なくとも 1 つのセンサーを割り当てる必要があります。 5 レベルのモデルでは、組織の構造を反映した保護システムを提供するために必要な柔軟性と細分性が提供されます。
-
-サイトは、任意のマップ ビューから直接編集できます。 マップ ビューからサイトを開くと、オープンされているアラートの数が各ゾーンの横に表示されます。
-
-:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="ベルリンのデータがオーバーレイされたオンプレミス管理コンソールのマップのスクリーンショット。":::
+各ゾーンに、少なくとも 1 つのセンサーを割り当てる必要があります。 5 レベルのモデルでは、組織の構造を反映した保護システムを提供するために必要な柔軟性と細分性が提供されます。
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/diagram-of-sensor-showing-relationships.png" alt-text="センサーと地域の関係を示す図。":::
+
+[Enterprise View]\(エンタープライズ ビュー\) を使用すると、サイトを直接編集できます。 [Enterprise View]\(エンタープライズ ビュー\) でサイトを選択すると、開いているアラートの数が各ゾーンの横に表示されます。
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="ベルリンのデータがオーバーレイされたオンプレミス管理コンソールのマップのスクリーンショット。":::
 
 サイトをセットアップするには、次の手順を実行します。
 
 1. 組織の論理的な構造を反映するために新しい部署を追加します。
 
-2. 組織のリージョンを反映するために新しいリージョンを追加します。
+   1. エンタープライズ ビューで、 **[すべてのサイト]**  >  **[部署の管理]** を選択します。
 
-3. サイトを追加します。
+      :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-business-unit.png" alt-text="エンタープライズ ビュー画面の [All Sites]\(すべてのサイト\) ドロップダウン メニューから [Manage Business Unit]\(ビジネス ユニットの管理\) を選択。":::
 
-4. サイトにゾーンを追加します。
+   1. 新しい部署の名前を入力し、 **[追加]** を選択します。
 
-5. センサーを接続します。
+1. 組織のリージョンを反映するために新しいリージョンを追加します。
 
-6. センサーをサイトのゾーンに割り当てます。
+   1. [Enterprise View]\(エンタープライズ ビュー\)で、 **[All Regions]\(すべてのリージョン\)**  >  **[Manage Regions]\(リージョンの管理\)** を選択します。
 
-部署を追加するには、次の手順を実行します。
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/manage-regions.png" alt-text="[All Regions]\(すべてのリージョン\)、[Manage Regions]\(リージョンの管理\) の順に選択して企業内のリージョンを管理する。":::
 
-1. エンタープライズ ビューで、 **[すべてのサイト]**  >  **[部署の管理]** を選択します。
+   1. 新しいリージョンの名前を入力し、 **[追加]** を選択します。
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-business-unit-screen.png" alt-text="[部署の管理] ビューを示すスクリーンショット。":::
+1. サイトを追加します。
 
-2. 新しい部署の名前を入力し、 **[追加]** を選択します。
+   1. エンタープライズ ビューで、上部のバーにある :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: を選択します。 カーソルがプラス記号 ( **+** ) として表示されます。
 
-新しいリージョンを追加するには、次の手順を実行します。
+   1. 新しいサイトの場所に **+** を合わせて、それを選択します。 **[新しいサイトの作成]** ダイアログ ボックスが表示されます。
 
-1. エンタープライズ ビューで、 **[すべてのリージョン]**  >  **[リージョンの管理]** を選択します。
+      :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="[新しいサイトの作成] ビューのスクリーンショット。":::
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/manage-regions-screen.png" alt-text="[リージョンの管理] ビューを示すスクリーンショット。":::
+   1. 新しいサイトの名前と物理アドレスを定義し、 **[保存]** を選択します。 新しいサイトがサイト マップに表示されます。
 
-2. 新しいリージョンの名前を入力し、 **[追加]** を選択します。
+4. [サイトにゾーンを追加する](#create-enterprise-zones)。
 
-新しいサイトを追加するには、次の手順を実行します。
+5. [センサーを接続する](how-to-manage-individual-sensors.md#connect-a-sensor-to-the-management-console)。
 
-1. エンタープライズ ビューで、上部のバーにある :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/new-site-icon.png" border="false"::: を選択します。 カーソルがプラス記号 ( **+** ) として表示されます。
+6. [センサーをサイトのゾーンに割り当てる](#assign-sensors-to-zones)。
 
-2. 新しいサイトの場所に **+** を合わせて、それを選択します。 **[新しいサイトの作成]** ダイアログ ボックスが表示されます。
+### <a name="delete-a-site"></a>サイトの削除
 
-   :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-site-screen.png" alt-text="[新しいサイトの作成] ビューのスクリーンショット。":::
-
-3. 新しいサイトの名前と物理アドレスを定義し、 **[保存]** を選択します。 新しいサイトがサイト マップに表示されます。
+サイトが不要になった場合は、オンプレミス管理コンソールから削除できます。
 
 サイトを削除するには、次の手順を実行します。
 
 1. **[サイトの管理]** ウィンドウで、サイト名が表示されているバーから :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: を選択し、 **[サイトの削除]** を選択します。 サイトの削除を確認する確認ボックスが表示されます。
 
-2. 確認ボックスで **[はい]** を選択します。 確認ボックスが閉じて、 **[サイトの管理]** ウィンドウが表示されますが、削除したサイトは表示されません。
+2. 確認ボックスで **[確認]** を選択します。
 
 ## <a name="create-enterprise-zones"></a>エンタープライズ ゾーンを作成する
 
@@ -246,11 +261,11 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
     :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/create-new-zone-screen.png" alt-text="[新しいゾーンの作成] ビューのスクリーンショット。":::
 
-2. ゾーン名を入力します。
+1. ゾーン名を入力します。
 
-3. 新しいゾーンの説明を入力します。サイトをゾーンに分割するために使用した特性を明確に記述します。
+1. 新しいゾーンの説明を入力します。サイトをゾーンに分割するために使用した特性を明確に記述します。
 
-4. **[SAVE]\(保存\)** を選択します。 新しいゾーンは、このゾーンが属しているサイトの **[サイトの管理]** ウィンドウに表示されます。
+1. **[SAVE]\(保存\)** を選択します。 新しいゾーンは、このゾーンが属しているサイトの **[サイトの管理]** ウィンドウに表示されます。
 
 ゾーンを編集するには、次の手順を実行します。
 
@@ -258,13 +273,13 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/zone-edit-screen.png" alt-text="[ゾーンの編集] ダイアログ ボックスを示すスクリーンショット。":::
 
-2. ゾーン パラメーターを編集し、 **[保存]** を選択します。
+1. ゾーン パラメーターを編集し、 **[保存]** を選択します。
 
 ゾーンを削除するには、次の手順を実行します。
 
 1. **[サイトの管理]** ウィンドウで、ゾーン名が表示されているバーから :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: を選択し、 **[ゾーンの削除]** を選択します。
 
-2. 確認ボックスで **[はい]** を選択します。
+1. 確認ボックスで **[はい]** を選択します。
 
 接続状態に従ってフィルター処理するには、次のようにします。
 
@@ -298,24 +313,24 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassigned-sensors-view.png" alt-text="[未割り当てのセンサー] ビューのスクリーンショット。":::
 
-2. **[接続]** の状態が [接続済み] であることを確認します。 接続されていない場合、接続の詳細については、「[センサーをオンプレミス管理コンソールに接続する](#connect-sensors-to-the-on-premises-management-console)」を参照してください。 
+1. **[接続]** の状態が [接続済み] であることを確認します。 接続されていない場合、接続の詳細については、「[センサーをオンプレミス管理コンソールに接続する](#connect-sensors-to-the-on-premises-management-console)」を参照してください。 
 
-3. 割り当てるセンサーの :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: を選択します。
+1. 割り当てるセンサーの :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: を選択します。
 
-4. **[センサーの割り当て]** ダイアログ ボックスで、割り当てる部署、リージョン、サイト、ゾーンを選択します。
+1. **[センサーの割り当て]** ダイアログ ボックスで、割り当てる部署、リージョン、サイト、ゾーンを選択します。
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-sensor-screen.png" alt-text="[センサーの割り当て] ビューのスクリーンショット。":::
 
-5. **[割り当て]** を選択します。
+1. **[割り当て]** を選択します。
 
 センサーの割り当てを解除して削除するには、次の手順を実行します。
 
 1. オンプレミス管理コンソールからセンサーを切断します。 詳細については、「[センサーをオンプレミス管理コンソールに接続する](#connect-sensors-to-the-on-premises-management-console)」を参照してください。
 
-2. **[サイトの管理]** ウィンドウで、センサーを選択して :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: を選択します。 しばらくすると、未割り当てのセンサーの一覧にそのセンサーが表示されます。
+1. **[サイトの管理]** ウィンドウで、センサーを選択して :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: を選択します。 しばらくすると、未割り当てのセンサーの一覧にそのセンサーが表示されます。
 
-3. 未割り当てのセンサーをサイトから削除するには、未割り当てのセンサーの一覧からセンサーを選択して、:::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: を選択します。
+1. 未割り当てのセンサーをサイトから削除するには、未割り当てのセンサーの一覧からセンサーを選択して、:::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [センサーとオンプレミスの管理コンソールのトラブルシューティング](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

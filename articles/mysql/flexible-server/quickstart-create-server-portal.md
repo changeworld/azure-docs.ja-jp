@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 074b799a4f0e83c47aac0b2b3fca5386bd45429f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 53878384f4eb056f0cb23ec9005043ac26c8fad2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100521970"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492593"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>クイックスタート: Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
@@ -51,11 +51,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     サブスクリプション|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象にするサブスクリプションを選択します。|
     Resource group|**myresourcegroup**| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。|
     サーバー名 |**mydemoserver**|フレキシブル サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 `mysql.database.azure.com` が追加されます。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。|
+    Region|ユーザーに最も近いリージョン| ユーザーに最も近い場所。|
+    ワークロードの種類| 開発 | 運用環境のワークロードでは、[max_connections](concepts-server-parameters.md#max_connections) の要件に応じて、小中規模または大規模を選択できます|
+    可用性ゾーン| [優先設定なし] | Azure VM、仮想マシン スケール セット、または AKS インスタンス内のアプリケーションが特定の可用性ゾーンでプロビジョニングされている場合、同じ可用性ゾーンでフレキシブル サーバーを指定してアプリケーションとデータベースを併置し、ゾーン間でのネットワーク待ち時間を短縮することで、パフォーマンスを向上させることができます。|
+    高可用性| Default | 運用サーバーでは、事業継続とゾーン障害に対する保護を目的として、ゾーン冗長による高可用性 (HA) を有効にすることを強くお勧めします|
+    MySQL のバージョン|**5.7**| MySQL のメジャー バージョン。|
     管理者ユーザー名 |**mydemouser**| サーバーに接続するときに使用する自分のサインイン アカウント。 管理ユーザー名を **azure_superuser**、**admin**、**administrator**、**root**、**guest**、または **public** にすることはできません。|
     Password |お使いのパスワード| サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 また、パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。|
-    Region|ユーザーに最も近いリージョン| ユーザーに最も近い場所。|
-    Version|**5.7**| MySQL のメジャー バージョン。|
-    コンピューティングとストレージ | **Burstable**、**Standard_B1ms**、**10 GiB**、**7 日** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[サーバーの構成]** を選択します。 **Burstable**、**Standard_B1ms**、**10 GiB**、**7 日** は、それぞれ **[コンピューティング レベル]** 、 **[コンピューティング サイズ]** 、 **[ストレージ サイズ]** 、 **[バックアップの保有期間]** の既定値です。 これらの値はそのままにすることも、調整することもできます。 コンピューティングとストレージの選択を保存するには、 **[保存]** を選択して構成を続行します。 次のスクリーンショットは、コンピューティングとストレージのオプションを示しています。|
+    コンピューティングとストレージ | **Burstable**、**Standard_B1ms**、**10 GiB**、**100 IOPS**、**7 日** | 新しいサーバーのコンピューティング、ストレージ、IOPS、およびバックアップ構成。 **[サーバーの構成]** を選択します。 **Burstable**、**Standard_B1ms**、**10 GiB**、**100 IOPS**、**7 日** は、それぞれ **[コンピューティング レベル]** 、 **[コンピューティング サイズ]** 、 **[ストレージ サイズ]** 、 **[IOPS]** 、 **[バックアップの保有期間]** の既定値です。 これらの値はそのままにすることも、調整することもできます。 移行中のデータ読み込みを高速化するために、IOPS をコンピューティング サイズでサポートされている最大サイズまで増やし、後でスケールダウンしてコストを節約することをお勧めします。 コンピューティングとストレージの選択を保存するには、 **[保存]** を選択して構成を続行します。 次のスクリーンショットは、コンピューティングとストレージのオプションを示しています。|
     
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="コンピューティングとストレージのオプションを示すスクリーンショット。":::
 
@@ -89,16 +92,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 パブリック アクセス (使用できる IP アドレス) を使用してフレキシブル サーバーを作成した場合は、サーバー上のファイアウォール規則のリストにローカル IP アドレスを追加できます。 詳細な手順については、[ファイアウォール規則の作成または管理](how-to-manage-firewall-portal.md)に関するドキュメントを参照してください。
 
-ローカル環境からサーバーに接続するには、[mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) または [MySQL Workbench](./connect-workbench.md) のどちらかを使用できます。 
+ローカル環境からサーバーに接続するには、[mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) または [MySQL Workbench](./connect-workbench.md) のどちらかを使用できます。 Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS) (以前の Secure Sockets Layer (SSL)) を使用した MySQL サービスへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルです。これを使用することで、ユーザーはコンプライアンス要件に準拠することができます。MySQL フレキシブル サーバーに接続するには、証明機関の検証のために[パブリック SSL 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードする必要があります。
+
+次の例は、mysql コマンド ライン インターフェイスを使用して、フレキシブル サーバーに接続する方法を示しています。 mysql コマンド ラインがまだインストールされていない場合は、まずインストールします。 SSL 接続に必要な DigiCertGlobalRootCA 証明書をダウンロードします。 --ssl-mode=REQUIRED 接続文字列設定を使用して、TLS/SSL 証明書の検証を適用します。 ローカルの証明書ファイルのパスを --ssl-ca パラメーターに渡します。 値を実際のサーバー名とパスワードに置き換えてください。
 
 ```bash
+sudo apt-get install mysql-client
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
-mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
+mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUIRED --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
 
 **パブリック アクセス** を使用してフレキシブル サーバーをプロビジョニングした場合、以下に示したように、[Azure Cloud Shell](https://shell.azure.com/bash) から、プレインストールされた mysql クライアントを使用してフレキシブル サーバーに接続することもできます。
 
-Azure Cloud Shell を使用してフレキシブル サーバーに接続するためには、Azure Cloud Shell からフレキシブル サーバーへのネットワーク アクセスを許可する必要があります。 そのためには、Azure portal で MySQL フレキシブル サーバーの **[ネットワーク]** ブレードに移動し、 **[ファイアウォール]** セクションの [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) というチェック ボックスをオンにし、[保存] をクリックして設定を保存します。
+Azure Cloud Shell を使用してフレキシブル サーバーに接続するためには、Azure Cloud Shell からフレキシブル サーバーへのネットワーク アクセスを許可する必要があります。 そのためには、Azure portal で MySQL フレキシブル サーバーの **[ネットワーク]** ブレードに移動し、次のスクリーンショットに示すように、 **[ファイアウォール]** セクションの [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) というチェック ボックスをオンにし、[保存] をクリックして設定を保存します。
+
+ > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="パブリック アクセス ネットワーク構成で Azure Cloud Shell から MySQL フレキシブル サーバーへのアクセスを許可する方法を示すスクリーンショット。":::
 
 > [!NOTE]
 > **[Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\)** チェック ボックスは、開発やテストの用途でのみオンにしてください。 すべての Azure サービス (または資産) に割り当てられた IP アドレスからの接続を許可するようにファイアウォールが構成されます。たとえば、他のユーザーのサブスクリプションからの接続も許可されます。
@@ -109,6 +117,9 @@ Azure Cloud Shell を使用してフレキシブル サーバーに接続する�
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl-ca=DigiCertGlobalRootCA.crt.pem
 ```
+> [!IMPORTANT]
+> Azure Cloud Shell を使用してフレキシブル サーバーに接続している間は、--ssl-mode=REQUIRED ではなく --ssl = true パラメーターを使用する必要があります。
+> その主な理由は、Azure Cloud Shell に付属する MariaDB ディストリビューションに含まれるインストール済み mysql.exe クライアントには --ssl パラメーターが必要ですが、Oracle のディストリビューションに含まれる mysql クライアントには --ssl-mode パラメーターが必要であるためです。
 
 上のコマンドの実行後、フレキシブル サーバーに接続しているときに次のエラー メッセージが表示された場合、ファイアウォール規則の設定に不備があります。前述の [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) の設定が済んでいないか、オプションが保存されていません。 ファイアウォールの設定を再試行して、もう一度やり直してください。
 

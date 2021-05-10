@@ -2,26 +2,26 @@
 title: 管理者の同意ワークフローの構成 - Azure Active Directory | Microsoft Docs
 description: 管理者の同意を必要とするアプリケーションへのアクセスをエンド ユーザーが要求できるように構成する方法について説明します。
 services: active-directory
-author: kenwith
-manager: daveba
+author: iantheninja
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: kenwith
+ms.author: iangithinji
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9811c3d1833a02ad3cbaf22b9f0b31fd2da5bb6d
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101643764"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107375187"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>管理者の同意ワークフローの構成 (プレビュー)
+# <a name="configure-the-admin-consent-workflow"></a>管理者の同意ワークフローの構成
 
-この記事では、管理者の同意を必要とするアプリケーションへのアクセスをエンド ユーザーが要求できるようになる、管理者の同意ワークフロー (プレビュー) 機能を有効にする方法について説明します。
+この記事では、管理者の同意ワークフロー機能を有効にする方法について説明します。これにより、エンド ユーザーは、管理者の同意を必要とするアプリケーションへのアクセスを要求できます。
 
 管理者の同意ワークフローがなければ、ユーザーの同意が無効になっているテナントのユーザーが、組織のデータにアクセスするためのアクセス許可を必要とするアプリにアクセスしようとした場合に、ブロックされてしまいます。 ユーザーには、アプリへのアクセスが許可されていないことを知らせる一般的なエラー メッセージが表示されるため、管理者に問い合わせる必要があります。 しかし、ユーザーは問い合わせ先を知らないことが多いため、操作を諦めるか、アプリケーションで新しいローカル アカウントを作成することになります。 管理者が知らせを受けた場合でも、管理者がユーザーにアクセス権を付与してそれを通知するための合理的なプロセスが常に存在するとは限りません。
  
@@ -38,7 +38,7 @@ ms.locfileid: "101643764"
 3. フィルターの検索ボックスに「**Azure Active Directory**」と入力して、 **[Azure Active Directory]** 項目を選択します。
 4. ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。 
 5. **[管理]** の下で **[ユーザー設定]** を選択します。
-6. **[管理者の同意要求 (プレビュー)]** で、 **[ユーザーは、自分が同意できないアプリに対して管理者の同意を要求できます]** を **[はい]** に設定します。
+6. **[管理者の同意要求]** で、 **[ユーザーは、自分が同意できないアプリに対して管理者の同意を要求できます]** を **[はい]** に設定します。
 
    ![管理者の同意ワークフロー設定の構成](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ ms.locfileid: "101643764"
 2. ナビゲーション メニューの左上部にある **[すべてのサービス]** をクリックします。 **[Azure Active Directory 拡張機能]** が開きます。
 3. フィルターの検索ボックスに「**Azure Active Directory**」と入力して、 **[Azure Active Directory]** 項目を選択します。
 4. ナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。
-5. **[アクティビティ]** で、 **[管理者の同意要求 (プレビュー)]** を選択します。
+5. **[アクティビティ]** で、 **[管理者の同意要求]** を選択します。
 
    > [!NOTE]
    > レビュー担当者には、レビュー担当者として指定された後に作成された管理者の要求のみが表示されます。
@@ -112,11 +112,7 @@ ms.locfileid: "101643764"
  
 ## <a name="audit-logs"></a>監査ログ 
  
-次の表は、管理者の同意ワークフローで使用できるシナリオと監査の値の概要を示します。 
-
-> [!NOTE]
-> 現時点ではどのシナリオでも、監査アクターのユーザー コンテキストが提示されません。 これは、プレビュー バージョンの既知の制限事項です。
-
+次の表は、管理者の同意ワークフローで使用できるシナリオと監査の値の概要を示します。
 
 |シナリオ  |監査サービス  |監査のカテゴリ  |監査アクティビティ  |監査アクター  |監査ログの制限事項  |
 |---------|---------|---------|---------|---------|---------|

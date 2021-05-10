@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 65af5810152034fd7b6014041edd07835eebd194
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 43707a99792ae3c4d817f47d770629287b8a774b
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101479"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374337"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -51,14 +51,16 @@ Azure Monitor Private Link のセットアップを設定する前に、ネッ�
 Private Link 接続を設定すると、DNS が更新され、VNet の IP 範囲からプライベート IP アドレスに Azure Monitor エンドポイントがマッピングされます。 この変更により、これらのエンドポイントの以前のマッピングがオーバーライドされます。これは、次のような重要な影響を与える可能性があります。 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor Private Link はすべての Azure Monitor リソースに適用されます (全か無か)
-一部の Azure Monitor エンドポイントはグローバルであるため、特定のコンポーネントまたはワークスペースの Private Link 接続を作成することはできません。 代わりに、1 つの Application Insights コンポーネントへの Private Link を設定すると、**すべての** Application Insights コンポーネントに対して DNS レコードが更新されます。 コンポーネントの取り込みまたはクエリを実行しようとすると、Private Link 経由で実行され、失敗する可能性があります。 同様に、1 つのワークスペースへの Private Link を設定すると、すべての Log Analytics クエリが Private Link クエリ エンドポイントを経由します (ただし、ワークスペース固有のエンドポイントを持つインジェスト要求を除きます)。
+一部の Azure Monitor エンドポイントはグローバルであるため、特定のコンポーネントまたはワークスペースの Private Link 接続を作成することはできません。 代わりに、1 つの Application Insights コンポーネントまたは Log Analytics ワークスペースへの Private Link を設定すると、**すべての** Application Insights コンポーネントに対して DNS レコードが更新されます。 コンポーネントの取り込みまたはクエリを実行しようとすると、Private Link 経由で実行され、失敗する可能性があります。 Log Analytics に関しては、インジェストと構成のエンドポイントはワークスペース固有のものです。つまり、Private Link の設定は、指定されたワークスペースにのみ適用されます。 他のワークスペースのインジェストと構成は、既定のパブリック Log Analytics エンドポイントに送られます。
 
 ![1 つの VNet での DNS オーバーライドの図](./media/private-link-security/dns-overrides-single-vnet.png)
 
 これは、特定の VNet についてだけではなく、同じ DNS サーバーを共有するすべての Vnet に当てはまります (「[DNS オーバーライドの問題](#the-issue-of-dns-overrides)」を参照してください)。 そのため、たとえば Application Insights コンポーネントにログを取り込む要求は、常に Private Link ルートを経由して送信されます。 AMPLS にリンクされていないコンポーネントは、Private Link の検証に失敗し、通過しません。
 
 > [!NOTE]
-> 結論:1 つのリソースへの Private Link 接続を設定すると、ネットワーク内のすべての Azure Monitor リソースに適用されます。すべてに適用されるか、どれにも適用されないかです。 実質的には、ネットワーク内のすべての Azure Monitor リソースを AMPLS に追加するか、そのいずれも追加しないようにする必要があります。
+> 結論: 1 つのリソースへの Private Link 接続を設定すると、ネットワーク全体の Azure Monitor リソースに適用されます。 Application Insights リソースの場合、これはすべてに適用されるか、どれにも適用されないかです。 実質的には、ネットワーク内のすべての Application Insights リソースを AMPLS に追加するか、そのいずれも追加しないようにする必要があります。
+> 
+> データ流出のリスクに対処するために、すべての Application Insights と Log Analytics リソースを AMPLS に追加して、ネットワークのエグレス トラフィックを可能な限りブロックすることをお勧めします。
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor Private Link はネットワーク全体に適用されます
 ネットワークによっては、複数の VNet で構成されるものもあります。 VNet で同じ DNS サーバーが使用されている場合は、互いの DNS マッピングがオーバーライドされ、場合によっては Azure Monitor との相互の通信が切断される可能性があります (「[DNS オーバーライドの問題](#the-issue-of-dns-overrides)」を参照してください)。 最終的には、最後の VNet のみが Azure Monitor と通信できるようになります。これは、DNS で Azure Monitor エンドポイントがこの VNet の範囲からプライベート IP にマッピングされるためです (他の VNet からはアクセスできない可能性があります)。
@@ -236,6 +238,10 @@ Log Analytics エージェントでソリューション パックをダウン�
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  送信
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 送信
 
+
+>[!NOTE]
+> 2021 年 4 月 19 日以降、上記の設定は必要ありません。プライベート リンクを使用してソリューション パックのストレージ アカウントに接続できるようになります。 新しい機能では、AMPLS (2021 年 4 月 19 日以降) およびそれに接続されるプライベート エンドポイントを再作成する必要があります。 既存の AMPLS とプライベート エンドポイントには適用されません。
+
 ## <a name="configure-application-insights"></a>Application Insights の構成
 
 Azure Portal にアクセスします。 Azure Monitor Application Insights コンポーネント リソースの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このメニューから、2 つの異なる状態を制御できます。
@@ -244,7 +250,7 @@ Azure Portal にアクセスします。 Azure Monitor Application Insights コ�
 
 まず、この Application Insights リソースを、アクセス権を持つ任意の Azure Monitor Private Link Scope に接続できます。 **[追加]** を選択し、 **[Azure Monitor Private Link Scope]** を選択します。 [適用] を選択して接続します。 接続されているすべてのスコープがこの画面に表示されます。 この接続を確立すると、接続された仮想ネットワーク内のネットワーク トラフィックがこのコンポーネントに接続できるようになります。また、[Azure Monitor リソースを接続](#connect-azure-monitor-resources)した場合と同じように、スコープからの接続と同じ効果があります。 
 
-次に、このリソースに対して、前述の Pivate Link スコープ (AMPLS) の外部からアクセスする方法を制御できます。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンまたは SDK は、このコンポーネントにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、この Application Insights リソースのデータにアクセスできません。 このデータには、APM ログ、メトリック、ライブ メトリック ストリームへのアクセスと、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報など、その上に構築されたエクスペリエンスが含まれます。 
+その後、このリソースに対して、前述の Pivate Link スコープ (AMPLS) の外部からアクセスする方法を制御できます。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、接続されているスコープ外のマシンまたは SDK は、このコンポーネントにデータをアップロードできません。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定した場合、スコープ外のマシンは、この Application Insights リソースのデータにアクセスできません。 このデータには、APM ログ、メトリック、ライブ メトリック ストリームへのアクセスと、ブック、ダッシュボード、クエリ API ベースのクライアント エクスペリエンス、Azure portal の分析情報など、その上に構築されたエクスペリエンスが含まれます。 
 
 > [!NOTE]
 > ポータル以外の消費エクスペリエンスも、監視対象のワークロードを含むプライベート リンク VNET 内で実行する必要があります。

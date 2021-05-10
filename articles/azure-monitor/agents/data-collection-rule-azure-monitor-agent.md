@@ -4,13 +4,13 @@ description: Azure Monitor エージェントを使用して、仮想マシン�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/19/2020
-ms.openlocfilehash: 93e244706d6d478155ac001d20fa3ce74fa6a887
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 03/16/2021
+ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723641"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022978"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
 
@@ -68,6 +68,34 @@ Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクシ�
 > [!NOTE]
 > データ収集ルールと関連付けが作成されたら、データが送信先に送信されるまでに最大で 5 分かかることがあります。
 
+## <a name="limit-data-collection-with-custom-xpath-queries"></a>カスタム XPath クエリを使用してデータ収集を制限する
+Log Analytics ワークスペースに収集されたデータに対して課金されるため、必要なデータのみを収集する必要があります。 Azure portal で基本構成を使用している場合、収集するイベントをフィルター処理する機能は限定されています。 アプリケーションおよびシステムのログの場合、これは特定の重要度が設定されたすべてのログです。 セキュリティ ログの場合、これは、すべての監査の成功またはすべての監査の失敗ログです。
+
+追加のフィルターを指定するには、カスタム構成を使用して、不要なイベントを除外する XPath を指定する必要があります。 XPath エントリは、`LogName!XPathQuery` の形式で記述されます。 たとえば、イベント ID が 1035 のイベントのみをアプリケーション イベント ログから返す必要があるとします。 これらのイベントを対象とする XPathQuery は `*[System[EventID=1035]]` になります。 アプリケーション イベント ログからイベントを取得する必要があるため、XPath は `Application!*[System[EventID=1035]]` になります
+
+Windows イベント ログでサポートされている XPath の制限事項の一覧については、「[XPath 1.0 の制限事項](/windows/win32/wes/consuming-events#xpath-10-limitations)」を参照してください。
+
+> [!TIP]
+> XPathQuery の有効性をテストするには、`FilterXPath` パラメーターを指定した PowerShell コマンドレット`Get-WinEvent` を使用します。 次のスクリプトは、一例を示しています。
+> 
+> ```powershell
+> $XPath = '*[System[EventID=1035]]'
+> Get-WinEvent -LogName 'Application' -FilterXPath $XPath
+> ```
+>
+> - イベントが返されたら、クエリは有効です。
+> - *[No events were found that match the specified selection criteria.]\(指定した選択条件に一致するイベントは見つかりませんでした。\)* というメッセージが表示された場合は、クエリはおそらく有効ですが、一致するイベントがローカル コンピューターにありません。
+> - *[The specified query is invalid]\(指定したクエリは無効です\)* というメッセージが表示された場合は、クエリ構文が無効です。 
+
+次の表は、カスタム XPath を使用してイベントをフィルター処理する例を示しています。
+
+| 説明 |  XPath |
+|:---|:---|
+| イベント ID = 4648 のシステム イベントのみを収集する |  `System!*[System[EventID=4648]]`
+| イベント ID = 4648 で、プロセス名が consent.exe であるシステム イベントのみを収集する | `Security!*[System[(EventID=4648)]] and *[EventData[Data[@Name='ProcessName']='C:\Windows\System32\consent.exe']]` |
+| イベント ID = 6 (ドライバーの読み込み) を除くすべての重大、エラー、警告、および情報のイベントをシステム イベント ログから収集する |  `System!*[System[(Level=1 or Level=2 or Level=3) and (EventID != 6)]]` |
+| イベント ID 4624 (成功したログオン) を除くすべての成功および失敗のセキュリティ イベントを収集する |  `Security!*[System[(band(Keywords,13510798882111488)) and (EventID != 4624)]]` |
+
 
 ## <a name="create-rule-and-association-using-rest-api"></a>REST API を使用したルールと関連付けを作成する
 
@@ -83,6 +111,8 @@ Azure portal の **[Azure Monitor]** メニューで、 **[設定]** セクシ�
 ## <a name="create-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用して関連付けを作成する
 
 Resource Manager テンプレートを使用してデータ収集ルールを作成することはできませんが、Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバー間の関連付けを作成することはできます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
+
+
 
 ## <a name="next-steps"></a>次の手順
 

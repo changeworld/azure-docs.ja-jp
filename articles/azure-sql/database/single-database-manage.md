@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: e50cce74f7291a6673e5d43f3485a1c63c81d827
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4aaabdb3d21c41b973b21e6e52442be132796196
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93319290"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781597"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Azure SQL Database でのサーバーと単一データベースの作成と管理
 
@@ -92,25 +92,25 @@ Azure PowerShell を利用して、サーバー、単一データベースおよ
 
 | コマンドレット | 説明 |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |データベースを作成します。|
-|[az sql db list](/cli/azure/sql/db#az-sql-db-list)|サーバー内のすべてのデータベースとデータ ウェアハウス、またはエラスティック プール内のすべてのデータベースを一覧表示します。|
-|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|利用可能なサービス目標と容量の上限を一覧表示します。|
-|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|データベースの使用状況を返します。|
-|[az sql db show](/cli/azure/sql/db#az-sql-db-show)|データベースまたはデータ ウェアハウスを取得します。|
-|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|データベースを更新します。|
-|[az sql db delete](/cli/azure/sql/db#az-sql-db-delete)|データベースを削除します。|
-|[az group create](/cli/azure/group#az-group-create)|リソース グループを作成します。|
-|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|サーバーを作成します。|
-|[az sql server list](/cli/azure/sql/server#az-sql-server-list)|サーバーを一覧表示します。|
-|[az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|サーバーの使用状況を返します。|
-|[az sql server show](/cli/azure/sql/server#az-sql-server-show)|サーバーを取得します。|
-|[az sql server update](/cli/azure/sql/server#az-sql-server-update)|サーバーを更新します。|
-|[az sql server delete](/cli/azure/sql/server#az-sql-server-delete)|サーバーを削除します。|
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|サーバーのファイアウォール規則を作成します。|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|サーバーのファイアウォール規則を一覧表示します。|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|ファイアウォール規則の詳細を表示します。|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|ファイアウォール規則を更新します。|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|ファイアウォール規則を削除します。|
+|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |データベースを作成します。|
+|[az sql db list](/cli/azure/sql/db#az_sql_db_list)|サーバー内のすべてのデータベースとデータ ウェアハウス、またはエラスティック プール内のすべてのデータベースを一覧表示します。|
+|[az sql db list-editions](/cli/azure/sql/db#az_sql_db_list_editions)|利用可能なサービス目標と容量の上限を一覧表示します。|
+|[az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|データベースの使用状況を返します。|
+|[az sql db show](/cli/azure/sql/db#az_sql_db_show)|データベースまたはデータ ウェアハウスを取得します。|
+|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|データベースを更新します。|
+|[az sql db delete](/cli/azure/sql/db#az_sql_db_delete)|データベースを削除します。|
+|[az group create](/cli/azure/group#az_group_create)|リソース グループを作成します。|
+|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|サーバーを作成します。|
+|[az sql server list](/cli/azure/sql/server#az_sql_server_list)|サーバーを一覧表示します。|
+|[az sql server list-usages](/cli/azure/sql/server#az_sql_server_list-usages)|サーバーの使用状況を返します。|
+|[az sql server show](/cli/azure/sql/server#az_sql_server_show)|サーバーを取得します。|
+|[az sql server update](/cli/azure/sql/server#az_sql_server_update)|サーバーを更新します。|
+|[az sql server delete](/cli/azure/sql/server#az_sql_server_delete)|サーバーを削除します。|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|サーバーのファイアウォール規則を作成します。|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|サーバーのファイアウォール規則を一覧表示します。|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|ファイアウォール規則の詳細を表示します。|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|ファイアウォール規則を更新します。|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|ファイアウォール規則を削除します。|
 
 ## <a name="transact-sql-t-sql"></a>Transact-SQL (T-SQL)
 
@@ -165,4 +165,3 @@ Transact-SQL を利用してサーバー、データベース、ファイアウ�
 
 - SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](migrate-to-database-from-sql-server.md)」を参照してください。
 - サポートされている機能については、[機能](features-comparison.md)に関する記事をご覧ください。
- 

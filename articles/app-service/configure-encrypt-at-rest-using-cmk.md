@@ -3,12 +3,12 @@ title: 保存時にアプリケーション ソースを暗号化する
 description: Azure Storage でアプリケーション データを暗号化し、パッケージ ファイルとしてデプロイする方法について説明します。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 5524b749b1e15342dd0133920d7190e33ced18ad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a26660723fbe96a9b765401af1f0c9cfc80dbc3f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92146046"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779436"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した保存時の暗号化
 
@@ -43,7 +43,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 `WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を、SAS でエンコードされた URL への Key Vault 参照に置き換えることができるようになりました。 これにより、SAS URL が Key Vault で暗号化され、追加のセキュリティ層が用意されます。
 
-1. 次の [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create) コマンドを使用して Key Vault インスタンスを作成します。       
+1. 次の [`az keyvault create`](/cli/azure/keyvault#az_keyvault_create) コマンドを使用して Key Vault インスタンスを作成します。       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -51,13 +51,13 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 1. [こちらの手順](app-service-key-vault-references.md#granting-your-app-access-to-key-vault)に従い、キー コンテナーへのアクセス権をアプリに付与します。
 
-1. 次の [`az keyvault secret set`](/cli/azure/keyvault/secret#az-keyvault-secret-set) コマンドを使用して、キー コンテナーにシークレットとして外部 URL を追加します。   
+1. 次の [`az keyvault secret set`](/cli/azure/keyvault/secret#az_keyvault_secret_set) コマンドを使用して、キー コンテナーにシークレットとして外部 URL を追加します。   
 
     ```azurecli    
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  次の [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) コマンドを使用して、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定を作成し、値を外部 URL への Key Vault 参照として指定します。
+1.  次の [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定を作成し、値を外部 URL への Key Vault 参照として指定します。
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    

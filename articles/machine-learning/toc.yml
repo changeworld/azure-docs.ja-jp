@@ -390,15 +390,12 @@
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: トレーニングの追跡と監視
           items:
-            - name: 実行の開始、監視、または取り消し
+            - name: 実行の追跡、監視、分析
               displayName: 'cancel, fail, status, child run'
-              href: how-to-manage-runs.md
-            - name: ログの有効化
-              displayName: 'troubleshoot, log, files, tracing'
-              href: how-to-track-experiments.md
-            - name: 実行のログとメトリックを表示する
+              href: how-to-track-monitor-analyze-runs.md
+            - name: メトリックおよびログ ファイルの記録および表示
               displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-monitor-view-training-logs.md
+              href: how-to-log-view-metrics.md
             - name: TensorBoard を使用して実行を視覚化する
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md
@@ -440,9 +437,6 @@
         - name: Databricks で自動 ML を使用する
           displayName: automl
           href: how-to-configure-databricks-automl-environment.md
-        - name: リモート コンピューティング ターゲットを使用する
-          displayName: automl automated auto ml
-          href: how-to-auto-train-remote.md
         - name: 予測モデルを自動トレーニングする
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -450,7 +444,7 @@
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-cross-validation-data-splits.md
         - name: 自動 ML での特徴量化 (Python)
-          displayName: 'automl, feature engineering, feature importance'
+          displayName: 'automl, feature engineering, feature importance, BERT'
           href: how-to-configure-auto-features.md
         - name: ML パイプラインでの自動 ML の使用 (Python)
           displayName: machine learning automl
@@ -556,6 +550,9 @@
             - name: データを変換する
               displayName: pipeline
               href: how-to-designer-transform-data.md
+            - name: パイプライン パラメーターを使用する
+              displayName: 'designer, pipeline parameters'
+              href: how-to-use-pipeline-parameter.md
             - name: 公開済みパイプラインを使用して再トレーニングする
               displayName: 'retrain, designer, published pipeline'
               href: how-to-retrain-designer.md
@@ -621,6 +618,8 @@
     - name: キュレーションされた環境
       displayName: 'environments, curated environments'
       href: resource-curated-environments.md
+    - name: Azure CLI
+      href: /cli/azure/ml
 - name: リソース
   items:
     - name: リリース ノート

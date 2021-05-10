@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1cc517ac3c903930eddb95a4813a8146cae2ec2c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3991eb421f42ec6645e3321d3a624e226fd12c67
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582662"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107314254"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 
@@ -68,7 +68,7 @@ Analysis Services は、ポータルの無料ツールの Azure メトリック�
 |RowsWrittenPerSec|処理:1 秒あたりの書き込み行数|CountPerSecond|Average|処理中に書き込まれた行の比率。|
 |qpu_metric|QPU|Count|Average|QPU. 範囲は S1 で 0 ～ 100、S2 で 0 ～ 200、S4 で 0 ～ 400|
 |QueryPoolBusyThreads|クエリ プール ビジー スレッド|Count|Average|クエリ スレッド プールのビジー スレッドの数。|
-|SuccessfullConnectionsPerSec|成功した接続数 (秒単位)|CountPerSecond|Average|接続が正常に完了した割合。|
+|SuccessfullConnectionsPerSec|1 秒ごとの成功した接続|CountPerSecond|Average|接続が正常に完了した割合。|
 |CommandPoolBusyThreads|スレッド:コマンド プールのビジー状態のスレッド|Count|Average|コマンド スレッド プール内にあるビジー状態のスレッドの数。|
 |CommandPoolIdleThreads|スレッド:コマンド プールのアイドル状態のスレッド|Count|Average|コマンド スレッド プール内にあるアイドル状態のスレッドの数。|
 |LongParsingBusyThreads|スレッド:長時間解析を行っているビジー状態のスレッド|Count|Average|長時間解析を行っているスレッド プール内にあるビジー状態のスレッドの数。|

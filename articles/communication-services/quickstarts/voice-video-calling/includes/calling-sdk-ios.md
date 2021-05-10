@@ -4,30 +4,31 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: e9c889dcffe42fde244f8a35ce42032e84d78fff
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 479aa522462d14f295177e6b2d2fcc4707657760
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488114"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106498799"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-android-ios.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
-- デプロイ済みの Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
-- 通話クライアントを有効にするための `User Access Token`。 [`User Access Token` を取得する方法](../../access-tokens.md)についての詳細
-- 省略可能:[アプリケーションへの通話の追加の概要](../getting-started-with-calling.md)に関するクイックスタートを完了します
+- デプロイ済みの Azure Communication Services リソース。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
+- 通話クライアントを有効にするためのユーザー アクセス トークン。 [ユーザー アクセス トークンを取得します](../../access-tokens.md)。
+- 省略可能: 「[音声通話をアプリに追加する](../getting-started-with-calling.md)」クイック スタートを完了します。
 
-## <a name="setting-up"></a>設定
+## <a name="set-up-your-system"></a>システムを設定する
 
-### <a name="creating-the-xcode-project"></a>Xcode プロジェクトを作成する
+### <a name="create-the-xcode-project"></a>Xcode プロジェクトを作成する
 
-> [!NOTE]
-> このドキュメントでは、呼び出し元のクライアント ライブラリのバージョン 1.0.0-beta.8 を使用します。
+Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー アプリ]** テンプレートを選択します。 このクイックスタートでは [SwiftUI フレームワーク](https://developer.apple.com/xcode/swiftui/)を使用します。そのため、 **[言語]** を **[Swift]** に、 **[ユーザー インターフェイス]** を **[SwiftUI]** に設定する必要があります。 
 
-Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー アプリ]** テンプレートを選択します。 このクイックスタートでは [SwiftUI フレームワーク](https://developer.apple.com/xcode/swiftui/)を使用します。そのため、 **[言語]** を **[Swift]** に設定し、 **[ユーザー インターフェイス]** を **[SwiftUI]** に設定する必要があります。 このクイックスタートでは、単体テストと UI テストは作成しません。 **[Include Unit Tests]\(単体テストを含める\)** のチェックをオフにし、また、 **[Include UI Tests]\(UI テストを含める\)** のチェックもオフにしてかまいません。
+このクイックスタートでは、単体テストと UI テストは作成しません。 **[Include Unit Tests]\(単体テストを含める\)** と **[Include UI Tests]\(UI テストを含める\)** のテキスト ボックスは自由にオフにしてかまいません。
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 内での新たな [新しいプロジェクト] ウィンドウの作成を示すスクリーンショット。":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Xcode 内にプロジェクトを作成するためのウィンドウを示すスクリーンショット。":::
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>CocoaPods でパッケージと依存関係をインストールする
 
@@ -44,11 +45,11 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
    ```
 
 2. `pod install` を実行します。
-3. XCode を使用して `.xcworkspace` を開きます。
+3. Xcode で `.xcworkspace` を開きます。
 
 ### <a name="request-access-to-the-microphone"></a>マイクへのアクセスを要求する
 
-デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` によって更新する必要があります。 関連付けられた値は `string` に設定します。これは、ユーザーからのアクセスの要求を求めるためにシステムが使用するダイアログに含まれます。
+デバイスのマイクにアクセスするには、アプリの情報プロパティ リストを `NSMicrophoneUsageDescription` で更新する必要があります。 関連付けられた値を `string` に設定します。これは、ユーザーからのアクセスを求めるためにシステムによって使用されるダイアログに含められます。
 
 プロジェクト ツリーの `Info.plist` のエントリを右クリックし、 **[Open As]\(形式を指定して開く\)**  >  **[Source Code]\(ソース コード\)** の順に選択します。 最上位の `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
 
@@ -59,31 +60,34 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
 
 ### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 
-プロジェクトの **ContentView. swift** ファイルを開き、ファイルの先頭に `import` 宣言を追加して `AzureCommunicationCalling library` をインポートします。 さらに、`AVFoundation` をインポートします。これは、コード内のオーディオ アクセス許可要求に必要になります。
+プロジェクトの *ContentView.swift* ファイルを開き、そのファイルの先頭に `import` 宣言を追加して `AzureCommunicationCalling` ライブラリをインポートします。 さらに、`AVFoundation` をインポートします。 これは、コード内のオーディオ アクセス許可要求に必要になります。
 
 ```swift
 import AzureCommunicationCalling
 import AVFoundation
 ```
 
-## <a name="object-model"></a>オブジェクト モデル
+## <a name="learn-the-object-model"></a>オブジェクト モデルについて学習する
 
-iOS 用 Azure Communication Services 通話クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+Azure Communication Services Calling SDK for iOS の主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+
+> [!NOTE]
+> このクイック スタートでは、バージョン 1.0.0-beta.8 の Calling SDK を使用します。
 
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient | CallClient は、通話クライアント ライブラリへのメイン エントリ ポイントです。|
-| CallAgent | CallAgent は、通話を開始および管理するために使用します。 |
-| CommunicationTokenCredential | CommunicationTokenCredential は、CallAgent をインスタンス化するためのトークン資格情報として使用されます。| 
-| CommunicationIdentifier | CommunicationIdentifier はユーザーの ID を表すために使用され、次のいずれかになります: CommunicationUserIdentifier/PhoneNumberIdentifier/CallingApplication。 |
+| `CallClient` | `CallClient` は、Calling SDK へのメイン エントリ ポイントです。|
+| `CallAgent` | `CallAgent` は、通話を開始および管理するために使用されます。 |
+| `CommunicationTokenCredential` | `CommunicationTokenCredential` は、`CallAgent` をインスタンス化するために資格情報トークンとして使用されます。| 
+| `CommunicationIdentifier` | `CommunicationIdentifier` は、ユーザーの ID を表すために使用されます。 その ID は、`CommunicationUserIdentifier`、`PhoneNumberIdentifier`、または `CallingApplication` にすることができます。 |
 
 > [!NOTE]
-> イベント デリゲートを実装する場合、アプリケーションによって、イベント サブスクリプションを必要とするオブジェクトへの強い参照が保持される必要があります。 たとえば、`call.addParticipant` メソッドの呼び出し時に `RemoteParticipant` オブジェクトが返され、アプリケーションによって `RemoteParticipantDelegate` でリッスンするようにデリゲートが設定された場合には、そのアプリケーションによって `RemoteParticipant` オブジェクトへの強い参照が保持される必要があります。 それ以外の場合に、このオブジェクトが収集されると、呼び出し元の SDK によってオブジェクトの呼び出しが試行されるときに、デリゲートによって致命的な例外がスローされます。
+> アプリケーションでは、イベント デリゲートを実装する際に、イベント サブスクリプションを必要とするオブジェクトへの強い参照を保持する必要があります。 たとえば、`call.addParticipant` メソッドの呼び出し時に `RemoteParticipant` オブジェクトが返され、アプリケーションによって `RemoteParticipantDelegate` でリッスンするようにデリゲートが設定された場合には、そのアプリケーションによって `RemoteParticipant` オブジェクトへの強い参照が保持される必要があります。 それ以外の場合に、このオブジェクトが収集されると、Calling SDK によってオブジェクトの呼び出しが試行されるときに、デリゲートによって致命的な例外がスローされます。
 
-## <a name="initialize-the-callagent"></a>CallAgent を初期化する
+## <a name="initialize-callagent"></a>CallAgent を初期化する
 
-`CallClient` から `CallAgent` インスタンスを作成するには、初期化されると `CallAgent` オブジェクトを非同期に返す `callClient.createCallAgent` メソッドを使用する必要があります。
+`CallClient` から `CallAgent` インスタンスを作成するには、初期化された後に `CallAgent` オブジェクトを非同期に返す `callClient.createCallAgent` メソッドを使用する必要があります。
 
 通話クライアントを作成するには、`CommunicationTokenCredential` オブジェクトを渡す必要があります。
 
@@ -102,14 +106,14 @@ var userCredential: CommunicationTokenCredential?
        return
 }
 
-// tokenProvider needs to be implemented by contoso which fetches new token
+// tokenProvider needs to be implemented by Contoso, which fetches a new token
 public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
     let newToken = self.tokenProvider!.fetchNewToken()
     onCompletion(newToken, nil)
 }
 ```
 
-上記で作成された `CommunicationTokenCredential` オブジェクトを `CallClient` に渡し、表示名を設定します。
+`CallClient` に作成した `CommunicationTokenCredential` オブジェクトを渡し、表示名を設定します。
 
 ```swift
 
@@ -131,9 +135,9 @@ callClient?.createCallAgent(userCredential: userCredential!,
 
 ## <a name="place-an-outgoing-call"></a>発信通話を行う
 
-通話を作成して開始するには、`CallAgent` でいずれかの API を呼び出し、Communication Services 管理クライアント ライブラリを使用してプロビジョニングしたユーザーの Communication Services ID を指定する必要があります。
+通話を作成して開始するには、`CallAgent` でいずれかの API を呼び出し、Communication Services 管理クライアント SDK を使用してプロビジョニングしたユーザーの Communication Services ID を指定する必要があります。
 
-通話の作成と開始は同期的に行います。 通話のすべてのイベントにサブスクライブできる通話インスタンスを受信します。
+通話の作成と開始は同期的に行われます。 通話のすべてのイベントにサブスクライブできる通話インスタンスを受信します。
 
 ### <a name="place-a-11-call-to-a-user-or-a-1n-call-with-users-and-pstn"></a>ユーザーに対する 1:1 の通話、またはユーザーおよび PSTN と 1:n の通話を行う
 
@@ -145,7 +149,8 @@ let oneToOneCall = self.callAgent.call(participants: callees, options: StartCall
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>ユーザーと PSTN で 1:n の通話を行う
-PSTN への通話を行うには、Communication Services で取得した電話番号を指定する必要があります
+PSTN への通話を行うには、Communication Services で取得した電話番号を指定する必要があります。
+
 ```swift
 
 let pstnCallee = PhoneNumberIdentifier(phoneNumber: '+1999999999')
@@ -154,8 +159,8 @@ let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options:
 
 ```
 
-### <a name="place-a-11-call-with-with-video"></a>動画を使用して 1:1 の通話を行う
-デバイス マネージャー インスタンスを取得するには、[こちら](#device-management)を参照してください
+### <a name="place-a-11-call-with-video"></a>動画を使用して 1:1 の通話を行う
+デバイス マネージャーのインスタンスを取得する場合は、[デバイスの管理](#manage-devices)に関するセクションを参照してください。
 
 ```swift
 
@@ -172,7 +177,7 @@ let call = self.callAgent?.call(participants: [callee], options: startCallOption
 ```
 
 ### <a name="join-a-group-call"></a>グループ通話に参加する
-通話に参加するには、*CallAgent* でいずれかの API を呼び出す必要があります
+通話に参加するには、`CallAgent` でいずれかの API を呼び出す必要があります。
 
 ```swift
 
@@ -181,8 +186,8 @@ let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCal
 
 ```
 
-### <a name="subscribe-for-incoming-call"></a>電話の着信をサブスクライブする
-電話の着信イベントをサブスクライブする
+### <a name="subscribe-to-an-incoming-call"></a>着信通話をサブスクライブする
+着信通話イベントをサブスクライブします。
 
 ```
 final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelegate
@@ -202,8 +207,8 @@ final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelega
 ```
 
 ### <a name="accept-an-incoming-call"></a>電話の着信を受け入れる
-着信を受け入れるには、呼び出しオブジェクトに対して "accept" メソッドを呼び出します。
-CallAgent にデリゲートを設定する 
+通話を受け入れるには、呼び出しオブジェクトに対して `accept` メソッドを呼び出します。 デリゲートを `CallAgent` に設定します。
+
 ```swift
 final class CallHandler: NSObject, CallAgentDelegate
 {
@@ -233,23 +238,23 @@ if let incomingCall = CallHandler().incomingCall {
 }
 ```
 
-## <a name="push-notification"></a>プッシュ通知
+## <a name="set-up-push-notifications"></a>プッシュ通知の設定
 
-モバイル プッシュ通知は、モバイル デバイスで受け取るポップアップ通知です。 通話に関しては、Microsoft では VoIP (ボイス オーバー IP 通話) プッシュ通知に注目しています。 プッシュ通知に登録し、プッシュ通知を処理し、プッシュ通知を登録解除する機能が提供される予定です。
+モバイル プッシュ通知は、モバイル デバイスで受け取るポップアップ通知です。 通話に関しては、VoIP (ボイス オーバー IP) でのプッシュ通知に焦点を絞ります。 
 
-### <a name="prerequisite"></a>前提条件
+以下のセクションでは、プッシュ通知の登録、処理、および登録解除を行う方法について説明します。 これらの作業を開始する前に、次の前提条件を満たす必要があります。
 
-- 手順 1:[Xcode] -> [Signing & Capabilities]\(署名と機能\) -> [Add Capability]\(機能の追加\) -> [Push Notifications]\(プッシュ通知\)
-- 手順 2:[Xcode] -> [Signing & Capabilities]\(署名と機能\) -> [Add Capability]\(機能の追加\) -> [Background Modes]\(バックグラウンド モード\)
-- 手順 3:[Background Modes]\(バックグラウンド モード\)-> [Voice over IP]\(ボイスオーバー IP\) と [リモート通知] を選択する
+1. Xcode で、 **[Signing & Capabilities]\(署名と機能\)** に移動します。 **[+ Capability]\(+ 機能\)** を選択して機能を追加してから、 **[プッシュ通知]** を選択します。
+2. **[+ Capability]\(+ 機能\)** を選択して別の機能を追加してから、 **[バックグラウンド モード]** を選びます。
+3. **[バックグラウンド モード]** で、 **[ボイス オーバー IP]** と **[リモート通知]** のチェックボックスをオンにします。
 
 :::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Xcode での機能の追加方法を示すスクリーンショット。" lightbox="../media/ios/xcode-push-notification.png":::
 
-#### <a name="register-for-push-notifications"></a>プッシュ通知に登録する
+### <a name="register-for-push-notifications"></a>プッシュ通知に登録する
 
-プッシュ通知に登録するには、デバイス登録トークンを使用して *CallAgent* インスタンスで registerPushNotification() を呼び出します。
+プッシュ通知に登録するには、デバイス登録トークンを使用して `CallAgent` インスタンスで `registerPushNotification()` を呼び出します。
 
-初期化が正常に完了した後、プッシュ通知の登録が呼び出される必要があります。 `callAgent` オブジェクトが破棄されると、`logout` が呼び出されて、プッシュ通知が自動的に登録解除されます。
+プッシュ通知への登録は、初期化が正常に完了した後に行われる必要があります。 `callAgent` オブジェクトが破棄されると、`logout` が呼び出されて、プッシュ通知の登録が自動的に解除されます。
 
 
 ```swift
@@ -265,8 +270,8 @@ callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
 
 ```
 
-#### <a name="push-notification-handling"></a>プッシュ通知の処理
-着信通話プッシュ通知を受信するには、ディクショナリ ペイロードを設定して *CallAgent* インスタンスで *handlePushNotification()* を呼び出します。
+### <a name="handle-push-notifications"></a>プッシュ通知を処理する
+着信通話のプッシュ通知を受信するには、ディクショナリ ペイロードを設定して `CallAgent` インスタンスで `handlePushNotification()` を呼び出します。
 
 ```swift
 
@@ -281,11 +286,12 @@ callAgent.handlePush(notification: callNotification) { (error) in
 }
 
 ```
-#### <a name="unregister-push-notification"></a>プッシュ通知の登録を解除する
+### <a name="unregister-push-notifications"></a>プッシュ通知の登録を解除する
 
-アプリケーションによって、プッシュ通知の登録はいつでも解除できます。 *CallAgent* で `unregisterPushNotification` メソッドを呼び出すだけです。
+アプリケーションによって、プッシュ通知の登録はいつでも解除できます。 `CallAgent` で `unregisterPushNotification` メソッドを呼び出すだけです。
+
 > [!NOTE]
-> ログアウト時に、プッシュ通知からアプリケーションが自動的に登録解除されることはありません。
+> ログアウト時に、プッシュ通知からアプリケーションの登録が自動的に解除されることはありません。
 
 ```swift
 
@@ -299,13 +305,13 @@ callAgent.unregisterPushNotifications { (error) in
 
 ```
 
-## <a name="mid-call-operations"></a>通話中の操作
+## <a name="perform-mid-call-operations"></a>通話中の操作を実行する
 
 通話の間にさまざまな操作を実行し、動画やオーディオに関連する設定を管理できます。
 
 ### <a name="mute-and-unmute"></a>ミュートとミュート解除
 
-ローカル エンドポイントをミュートまたはミュート解除するには、非同期 API の `mute` と `unmute` を使用できます。
+ローカル エンドポイントのミュートまたはその解除を行う場合は、非同期 API の `mute` と `unmute` を使用できます。
 
 ```swift
 call!.mute { (error) in
@@ -318,7 +324,7 @@ call!.mute { (error) in
 
 ```
 
-[非同期] ローカル ミュート解除
+ローカル エンドポイントのミュートを非同期に解除するには、次のコードを使用します。
 
 ```swift
 call!.unmute { (error) in
@@ -332,7 +338,7 @@ call!.unmute { (error) in
 
 ### <a name="start-and-stop-sending-local-video"></a>ローカル動画の送信を開始および停止する
 
-通話で他の参加者へのローカル動画の送信を開始するには、`startVideo` API を使用し、`camera` によって `localVideoStream` を渡します
+通話で他の参加者へのローカル動画の送信を開始するには、`startVideo` API を使用し、`camera` で `localVideoStream` を渡します。
 
 ```swift
 
@@ -349,7 +355,7 @@ call!.startVideo(stream: localVideoStream) { (error) in
 
 ```
 
-動画の送信を開始すると、`LocalVideoStream` インスタンスが通話インスタンスの `localVideoStreams` コレクションに追加されます。
+動画の送信を開始した後、`LocalVideoStream` インスタンスが通話インスタンスの `localVideoStreams` コレクションに追加されます。
 
 ```swift
 
@@ -357,7 +363,7 @@ call.localVideoStreams[0]
 
 ```
 
-[非同期] ローカル動画を停止するには、`call.startVideo` の呼び出しから返された `localVideoStream` を渡します。
+ローカル動画を停止するには、`call.startVideo` の呼び出しから返された `localVideoStream` インスタンスを渡します。 これは、非同期アクションです。
 
 ```swift
 
@@ -371,11 +377,11 @@ call!.stopVideo(stream: localVideoStream) { (error) in
 
 ```
 
-## <a name="remote-participants-management"></a>リモート参加者の管理
+## <a name="manage-remote-participants"></a>リモート参加者を管理する
 
 すべてのリモート参加者は `RemoteParticipant` 型で表され、通話インスタンスの `remoteParticipants` コレクションを通して使用できます。
 
-### <a name="list-participants-in-a-call"></a>通話の参加者を一覧表示する
+### <a name="list-participants-in-a-call"></a>通話の参加者の一覧を取得する
 
 ```swift
 
@@ -383,14 +389,14 @@ call.remoteParticipants
 
 ```
 
-### <a name="remote-participant-properties"></a>リモート参加者のプロパティ
+### <a name="get-remote-participant-properties"></a>リモート参加者のプロパティを取得する
 
 ```swift
 
 // [RemoteParticipantDelegate] delegate - an object you provide to receive events from this RemoteParticipant instance
 var remoteParticipantDelegate = remoteParticipant.delegate
 
-// [CommunicationIdentifier] identity - same as the one used to provision token for another user
+// [CommunicationIdentifier] identity - same as the one used to provision a token for another user
 var identity = remoteParticipant.identity
 
 // ParticipantStateIdle = 0, ParticipantStateEarlyMedia = 1, ParticipantStateConnecting = 2, ParticipantStateConnected = 3, ParticipantStateOnHold = 4, ParticipantStateInLobby = 5, ParticipantStateDisconnected = 6
@@ -412,7 +418,7 @@ var videoStreams = remoteParticipant.videoStreams // [RemoteVideoStream, RemoteV
 
 ### <a name="add-a-participant-to-a-call"></a>通話に参加者を追加する
 
-通話に参加者を追加するには (ユーザーまたは電話番号のいずれか)、`addParticipant` を呼び出します。 これにより、リモート参加者インスタンスが同期的に返されます。
+通話に参加者 (ユーザーまたは電話番号のいずれか) を追加する場合は、`addParticipant` を呼び出すことができます。 このコマンドにより、リモート参加者インスタンスが同期的に返されます。
 
 ```swift
 
@@ -421,7 +427,7 @@ let remoteParticipantAdded: RemoteParticipant = call.add(participant: Communicat
 ```
 
 ### <a name="remove-a-participant-from-a-call"></a>通話から参加者を削除する
-通話から参加者を削除するには (ユーザーまたは電話番号のいずれか)、`removeParticipant` API を呼び出します。 これは、非同期に解決されます。
+通話から参加者 (ユーザーまたは電話番号のいずれか) を削除する場合は、`removeParticipant` API を呼び出すことができます。 これは、非同期に解決されます。
 
 ```swift
 
@@ -439,7 +445,7 @@ call!.remove(participant: remoteParticipantAdded) { (error) in
 
 リモート参加者は、通話中に動画または画面共有を開始できます。
 
-### <a name="handle-remote-participant-videoscreen-sharing-streams"></a>リモート参加者の動画/画面共有ストリームを処理する
+### <a name="handle-video-sharing-or-screen-sharing-streams-of-remote-participants"></a>リモート参加者の動画共有または画面共有ストリームを処理する
 
 リモート参加者のストリームを一覧表示するには、`videoStreams` コレクションを調べます。
 
@@ -449,7 +455,7 @@ var remoteParticipantVideoStream = call.remoteParticipants[0].videoStreams[0]
 
 ```
 
-### <a name="remote-video-stream-properties"></a>リモート動画ストリームのプロパティ
+### <a name="get-remote-video-stream-properties"></a>リモート動画ストリームのプロパティを取得する
 
 ```swift
 
@@ -461,9 +467,9 @@ var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
 
 ```
 
-### <a name="render-remote-participant-stream"></a>リモート参加者のストリームをレンダリングする
+### <a name="render-remote-participant-streams"></a>リモート参加者ストリームをレンダリングする
 
-リモート参加者のストリームのレンダリングを開始するには、次を利用します。
+リモート参加者ストリームのレンダリングを開始するには、次のコードを使用します。
 
 ```swift
 
@@ -474,16 +480,16 @@ targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
 ```
 
-### <a name="remote-video-renderer-methods-and-properties"></a>リモート動画レンダラーのメソッドとプロパティ
+### <a name="get-remote-video-renderer-methods-and-properties"></a>リモート動画レンダラーのメソッドとプロパティを取得する
 
 ```swift
 // [Synchronous] dispose() - dispose renderer and all `RendererView` associated with this renderer. To be called when you have removed all associated views from the UI.
 remoteVideoRenderer.dispose()
 ```
 
-## <a name="device-management"></a>デバイス管理
+## <a name="manage-devices"></a>デバイスの管理
 
-`DeviceManager` を使用すると、オーディオと動画のストリームを送信するために通話内で使用できるローカル デバイスを列挙できます。 また、マイクやカメラにアクセスするための許可をユーザーに要求することもできます。 `callClient` オブジェクトの `deviceManager` にアクセスできます。
+`DeviceManager` を使用すると、オーディオまたは動画のストリームを送信するために通話内で使用できるローカル デバイスを列挙できます。 また、マイクやカメラにアクセスするための許可をユーザーに求めることもできます。 `callClient` オブジェクトの `deviceManager` にアクセスできます。
 
 ```swift
 
@@ -499,7 +505,7 @@ self.callClient!.getDeviceManager { (deviceManager, error) in
 
 ### <a name="enumerate-local-devices"></a>ローカル デバイスを列挙する
 
-ローカル デバイスにアクセスするには、デバイス マネージャーで列挙メソッドを使用します。 列挙は同期アクションです。
+ローカル デバイスにアクセスする場合は、デバイス マネージャーで列挙メソッドを使用できます。 列挙は同期アクションです。
 
 ```swift
 // enumerate local cameras
@@ -510,9 +516,9 @@ var localMicrophones = deviceManager.microphones! // [AudioDeviceInfo, AudioDevi
 var localSpeakers = deviceManager.speakers! // [AudioDeviceInfo, AudioDeviceInfo...]
 ``` 
 
-### <a name="set-default-microphonespeaker"></a>既定のマイクとスピーカーを設定する
+### <a name="set-the-default-microphone-or-speaker"></a>既定のマイクまたはスピーカーを設定する
 
-デバイス マネージャーを使用すると、通話の開始時に使用される既定のデバイスを設定できます。 スタックの既定値が設定されていない場合、Communication Services は OS の既定値にフォールバックします。
+デバイス マネージャーを使って、通話の開始時に使用される既定のデバイスを設定できます。 スタックの既定値が設定されていない場合、Communication Services は OS の既定値にフォールバックします。
 
 ```swift
 // get first microphone
@@ -525,7 +531,7 @@ var firstSpeaker = self.deviceManager!.speakers!
 deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 ```
 
-### <a name="local-camera-preview"></a>ローカル カメラのプレビュー
+### <a name="get-a-local-camera-preview"></a>ローカル カメラのプレビューを取得する
 
 `Renderer` を使用して、ローカル カメラからのストリームのレンダリングを開始できます。 このストリームは、他の参加者には送信されません。ローカル プレビュー フィードです。 これは、非同期アクションです。
 
@@ -538,7 +544,7 @@ self.view = try renderer!.createView()
 
 ```
 
-### <a name="local-camera-preview-properties"></a>ローカル カメラのプレビューのプロパティ
+### <a name="get-local-camera-preview-properties"></a>ローカル カメラのプレビューのプロパティを取得する
 
 レンダラーには、レンダリングを制御できるプロパティとメソッドのセットが用意されています。
 
@@ -565,16 +571,16 @@ localRenderer.dispose()
 
 ```
 
-## <a name="eventing-model"></a>イベント モデル
+## <a name="subscribe-to-notifications"></a>通知に登録する
 
 値が変更されたときに通知を受け取るように、ほとんどのプロパティとコレクションをサブスクライブすることができます。
 
 ### <a name="properties"></a>Properties
-`property changed` イベントをサブスクライブするには:
+`property changed` イベントをサブスクライブするには、次のコードを使用します。
 
 ```swift
 call.delegate = self
-// Get the property of the call state by doing get on the call's state member
+// Get the property of the call state by getting on the call's state member
 public func onCallStateChanged(_ call: Call!,
                                args: PropertyChangedEventArgs!)
 {
@@ -587,7 +593,7 @@ public func onCallStateChanged(_ call: Call!,
 ```
 
 ### <a name="collections"></a>コレクション
-`collection updated` イベントをサブスクライブするには:
+`collection updated` イベントをサブスクライブするには、次のコードを使用します。
 
 ```swift
 call.delegate = self

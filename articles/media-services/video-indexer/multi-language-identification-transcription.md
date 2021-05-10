@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 319bd408943c560622dc3208a6701417b8ca010c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98015557"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532921"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content"></a>複数言語のコンテンツを自動的に識別および文字起こしする
 
@@ -39,7 +39,7 @@ Video Indexer では、複数言語のコンテンツ内の自動的な言語識
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>API を使用してインデックス作成時に多言語識別を選択
 
-API を使用してビデオのインデックスを作成するとき、または[インデックスを再作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?)するときは、`sourceLanguage` パラメーターで `multi-language detection` オプションを選択します。
+API を使用してビデオのインデックスを作成するとき、または[インデックスを再作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video)するときは、`sourceLanguage` パラメーターで `multi-language detection` オプションを選択します。
 
 ### <a name="model-output"></a>モデルの出力
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 371cc78f3ebad638008f4195f164b66a64948c65
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601233"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504551"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows Virtual Desktop エージェントの概要
 
@@ -25,16 +25,20 @@ Windows Virtual Desktop サービス フレームワークには、リモート 
 
 ## <a name="initial-installation-process"></a>初期インストール プロセス
 
-Windows Virtual Desktop エージェントは、2 つの方法のいずれかで初期インストールされます。 Azure portal と Azure Marketplace で仮想マシン (VM) をプロビジョニングすると、エージェントとエージェント ブートローダーが自動的にインストールされます。 PowerShell を使用して VM をプロビジョニングする場合、[PowerShell で Windows Virtual Desktop ホスト プールを作成する](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)ときに、エージェントとエージェント ブートローダーの .msi ファイルを手動でダウンロードする必要があります。 エージェントがインストールされると、Windows Virtual Desktop サイドバイサイド スタックと Geneva Monitoring エージェントも同時にインストールされます。 このサイドバイサイド スタック コンポーネントは、ユーザーがサーバーからクライアントへの逆方向の接続を安全に確立するために必要です。 Geneva Monitoring エージェントは、エージェントの正常性を監視します。 この 3 つのコンポーネントは、エンドツーエンドのユーザー接続を正常に機能させるためにどれも不可欠です。
+Windows Virtual Desktop エージェントは、2 つの方法のいずれかで初期インストールされます。 Azure portal と Azure Marketplace で仮想マシン (VM) をプロビジョニングすると、エージェントとエージェント ブートローダーが自動的にインストールされます。 PowerShell を使用して VM をプロビジョニングする場合、[PowerShell で Windows Virtual Desktop ホスト プールを作成する](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)ときに、エージェントとエージェント ブートローダーの .msi ファイルを手動でダウンロードする必要があります。 エージェントがインストールされると、Windows Virtual Desktop サイドバイサイド スタックと Geneva Monitoring エージェントがインストールされます。 このサイドバイサイド スタック コンポーネントは、ユーザーがサーバーからクライアントへの逆方向の接続を安全に確立するために必要です。 Geneva Monitoring エージェントは、エージェントの正常性を監視します。 この 3 つのコンポーネントは、エンドツーエンドのユーザー接続を正常に機能させるためにどれも不可欠です。
 
 >[!IMPORTANT]
 >Windows Virtual Desktop エージェント、サイドバイサイド スタック、Geneva Monitoring エージェントを正常にインストールするために、[[必要な URL リスト]](safe-url-list.md#virtual-machines) にリストされているすべての URL のブロックを解除する必要があります。 これらの URL のブロックの解除は、Windows Virtual Desktop サービスを使用するために必須です。
 
 ## <a name="agent-update-process"></a>エージェントの更新プロセス
 
-更新プログラムが利用可能になるたびに、Windows Virtual Desktop サービスによってエージェントが自動的に更新されます。 エージェントの更新によって、新しい機能を組み込むことや、以前の問題を修正することができます。 Windows Virtual Desktop エージェントの初期バージョンがインストールされると、そのエージェントは Windows Virtual Desktop サービスに対してクエリを定期的に実行して、エージェントとそのコンポーネントの使用可能な新しいバージョンがないか確認します。 新しいバージョンがある場合は、エージェント ブートローダーによって、エージェント、サイドバイサイド スタック、Geneva Monitoring エージェントの最新バージョンが自動的にダウンロードされます。
+更新プログラムが利用可能になるたびに、Windows Virtual Desktop サービスによってエージェントが更新されます。 エージェントの更新には、新しい機能や以前の問題の修正を含めることができます。 Windows Virtual Desktop エージェントの初期バージョンがインストールされると、エージェントは Windows Virtual Desktop サービスに対してクエリを定期的に実行して、エージェント、スタック、または監視コンポーネントの使用可能な新しいバージョンがないか確認します。 いずれかのコンポーネントの新しいバージョンが既にデプロイされている場合は、更新されたコンポーネントが自動的にインストールされます。
+
+エージェントの新しいバージョンは、1 週間の期間内に一定間隔ですべての Azure サブスクリプションにデプロイされます。 これらの更新期間は "フライト" と呼ばれます。 フライトが発生した場合、ホスト プール内の VM では異なるタイミングでエージェントの更新を受け取ることがあります。 すべてのサブスクリプション内のすべての VM エージェントは、デプロイ期間の終了までに更新されます。 Windows Virtual Desktop のフライト システムでは、エージェントの更新における安定性と品質を確保することによって、サービスの信頼性を向上させます。
+
 
 >[!NOTE]
+>ホスト プール内の VM は異なるタイミングでエージェントの更新を受け取る可能性があるため、フライトの問題とエージェントの更新の失敗の違いを理解できる必要があります。 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** で VM のイベント ログにアクセスし、"ID 3277" というラベルのイベントが表示される場合は、エージェントの更新が機能しなかったことを意味します。 このイベントが表示されない場合、VM は別のフライトにあり、後で更新されます。
 >- Geneva Monitoring エージェントが最新バージョンに更新されると、新しい Monitoring エージェントの新しいタスクを作成する前に、古い Geneva タスクが検出され、無効になります。 最新バージョンの Monitoring エージェントに問題があり、修正のために以前のバージョンに戻す必要がある場合に備えて、以前のバージョンの Monitoring エージェントは削除されません。 最新バージョンに問題がある場合は、古い Monitoring エージェントが再び有効になり、監視データの配信が続行されます。 更新前にインストールした最後のモニターよりも古いすべてのバージョンのモニターが VM から削除されます。
 >- VM では、同時に 3 つのバージョンのサイドバイサイド スタックが保持されます。 これにより、更新プログラムで問題が発生した場合にすばやく回復できます。 スタックが更新されるたびに、最も古いバージョンのスタックが VM から削除されます。
 

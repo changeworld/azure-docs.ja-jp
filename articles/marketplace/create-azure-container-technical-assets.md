@@ -1,5 +1,5 @@
 ---
-title: Azure コンテナーの技術資産を準備する
+title: Azure Container の技術資産を準備する
 description: Azure Marketplace でコンテナー オファーを構成するのに役立つ技術リソースとガイドライン。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,13 +8,13 @@ author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
 ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96459320"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>Azure コンテナーの技術資産を準備する
+# <a name="prepare-your-azure-container-technical-assets"></a>Azure Container の技術資産を準備する
 
 この記事では、Azure Marketplace でコンテナー オファーを作成するのに役立つ技術リソースと推奨事項を示します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "96459320"
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)

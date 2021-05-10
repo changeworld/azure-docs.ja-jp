@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 8e0b94a46e96dd8ba16040e16b421520eb67de19
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102583612"
 ---
 # <a name="programmatic-access-paradigm"></a>プログラムによるアクセスのパラダイム
@@ -52,7 +52,7 @@ ms.locfileid: "102583612"
 
 *要求ヘッダー*
 
-| ヘッダー | 種類 | 説明 |
+| ヘッダー | Type | 説明 |
 | ------------- | ------------- | ------------- |
 | 承認 | string | 必須。 Azure Active Directory (Azure AD) アクセス トークン。 形式は `Bearer <token>` です。 |
 | Content-Type | `string` | `application/JSON` |
@@ -148,7 +148,7 @@ ms.locfileid: "102583612"
 
 *要求ヘッダー*
 
-| ヘッダー | 種類 | 説明 |
+| ヘッダー | Type | 説明 |
 | ------ | ---- | ----------- |
 | 承認 | string | 必須。 Azure Active Directory (Azure AD) アクセス トークン。 形式は `Bearer <token>` です。 |
 | コンテンツの種類 | string | `application/JSON` |
@@ -271,7 +271,7 @@ ms.locfileid: "102583612"
 
 *要求ヘッダー*
 
-| ヘッダー | 種類 | 説明 |
+| ヘッダー | Type | 説明 |
 | ------ | ------ | ------ |
 | 承認 | string | 必須。 Azure Active Directory (Azure AD) アクセス トークン。 形式は `Bearer <token>` です。 |
 | Content type | string | `application/json` |
@@ -283,7 +283,7 @@ ms.locfileid: "102583612"
 
 *Query parameter (クエリ パラメーター)*
 
-| パラメーター名 | 必須 | 種類 | 説明 |
+| パラメーター名 | 必須 | Type | 説明 |
 | ------------ | ------------- | ------------- | ------------- |
 | `reportId` | はい | string | この引数で指定された `reportId` を持つレポートのみの実行の詳細を取得するフィルター。 複数の `reportIds` を指定する場合は、セミコロン ";" で区切ります。 |
 | `executionId` | いいえ | string | この引数で指定された `executionId` を持つレポートのみの詳細を取得するフィルター。 複数の `executionIds` を指定する場合は、セミコロン ";" で区切ります。 |

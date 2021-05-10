@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1e1a8cb24b47277b38bd2d64b733a6f28ee8acff
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 33417a9bda9ad4ce36dd6e14f74a53911f3c3473
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742505"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587155"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Event Hubs 用の Azure セキュリティ ベースライン
 
@@ -44,7 +44,7 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.EventHub**:
 
@@ -68,7 +68,7 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 - [DDoS 保護を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
-- [Azure Security Center の統合された脅威インテリジェンスの詳細について](/azure/security-center/security-center-alerts-service-layer)
+- [Azure Security Center の統合された脅威インテリジェンスの詳細について](../security-center/azure-defender.md)
 
 **責任**: Customer
 
@@ -112,9 +112,9 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Event Hubs 名前空間用の Azure 組み込みポリシー](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Event Hubs 名前空間用の Azure 組み込みポリシー](../governance/policy/samples/built-in-policies.md#event-hub)
 
-- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -126,7 +126,7 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 **ガイダンス**: イベント ハブに関連付けられているネットワーク セキュリティおよびトラフィック フローに関連したネットワーク サービス グループやその他のリソースにタグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -136,9 +136,9 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Event Hubs に関連したネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -154,7 +154,7 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 - [Azure Event Hubs の診断設定を構成する方法](event-hubs-diagnostic-logs.md)
 
-- [Azure アクティビティ ログについて](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure アクティビティ ログについて](../azure-monitor/essentials/platform-logs-overview.md)
 
 **責任**: Customer
 
@@ -168,11 +168,11 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 - [Azure Event Hubs の診断設定を有効にする方法](event-hubs-diagnostic-logs.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 **責任**: Customer
 
-**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/home/mbaldwin/docs/asb/azure-docs-pr/articles/governance/policy/samples/azure-security-benchmark.md)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/security-center-recommendations.md)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/home/mbaldwin/docs/asb/azure-docs-pr/articles/security-center/azure-defender.md) プランが必要になる場合があります。
+**Azure Security Center の監視**: [Azure セキュリティ ベンチマーク](/azure/governance/policy/samples/azure-security-benchmark)は、Security Center の既定のポリシー イニシアチブであり、[Security Center の推奨事項](/azure/security-center/security-center-recommendations)の基礎となります。 このコントロールに関連する Azure Policy 定義は、Security Center によって自動的に有効になります。 このコントロールに関連するアラートでは、関連するサービスのために [Azure Defender](/azure/security-center/azure-defender) プランが必要になる場合があります。
 
 **Azure Policy 組み込み定義 - Microsoft.EventHub**:
 
@@ -182,7 +182,7 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 **ガイダンス**:Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定し、イベント ハブ関連のインシデントを取得して確認します。
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
 
@@ -192,9 +192,9 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 **ガイダンス**: 異常な動作についてログを分析および監視し、イベント ハブに関連する結果を定期的に確認します。 ログを確認し、ログ データに対してクエリを実行するには、Azure Monitor の Log Analytics を使用します。 または、Azure Sentinel またはサードパーティのシステム情報およびイベント管理ソリューションに対してデータを有効にしてオンボードすることもできます。
 
-- [Log Analytics ワークスペースの詳細について](/azure/azure-monitor/log-query/get-started-portal)
+- [Log Analytics ワークスペースの詳細について](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -208,11 +208,11 @@ Event Hubs を完全に Azure セキュリティ ベンチマークにマップ�
 
 または、Azure Sentinel に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログについて](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure アクティビティ ログについて](../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Azure Event Hubs の診断設定を構成する方法](event-hubs-diagnostic-logs.md)
 
-- [Log Analytics ワークスペースのログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics ワークスペースのログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -310,9 +310,9 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 **ガイダンス**: Azure Active Directory (Azure AD) Privileged Identity Management を使用して、環境内で疑わしいアクティビティまたは安全ではないアクティビティが発生したときにログとアラートを生成します。 Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。 追加のログ記録を行うには、Azure Security Center のリスク検出アラートを Azure Monitor に送信し、アクション グループを使用してカスタムのアラートまたは通知を構成します。
 
-- [Azure AD のリスク検出について](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出について](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](/azure/azure-monitor/platform/action-groups)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **責任**: Customer
 
@@ -346,7 +346,7 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 さらに、Event Hubs の Shared Access Signature を定期的にローテーションします。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -362,7 +362,7 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics 内で必要なログ アラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure AD を使用して Event Hubs リソースへのアクセスを承認する](authorize-access-azure-active-directory.md)
 
@@ -374,7 +374,7 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 **ガイダンス**: 検出された、Event Hubs 対応リソースに関連する疑わしいアクションに対する自動応答を構成するには、Azure Active Directory (Azure AD) の Identity Protection とリスク検出機能を使用します。 組織のセキュリティ対応を実装するには、Azure Sentinel によって自動応答を有効にする必要があります。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -388,7 +388,7 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 **ガイダンス**:現時点ではご利用いただけません。カスタマー ロックボックスは、Event Hubs ではまだサポートされていません。
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **責任**: Customer
 
@@ -402,7 +402,7 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 **ガイダンス**: Event Hubs に関連するリソースに対してタグを使用すると、機密情報を格納または処理する Azure リソースの追跡に役立ちます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -414,13 +414,13 @@ Event Hubs へのデータ プレーン アクセスは、マネージド ID ま
 
 また、ファイアウォールを使用して Azure Event Hubs 名前空間をセキュリティで保護することもできます。 Azure Event Hubs では、受信ファイアウォールをサポートするために IP ベースのアクセス制御に対応しています。 Azure portal または Azure Resource Manager テンプレートを使用するか、Azure CLI または Azure PowerShell を使用してファイアウォール規則を設定することができます。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
 - [Azure Event Hubs 名前空間に対する IP ファイアウォール規則を構成する](event-hubs-ip-filtering.md)
 
-- [タグを作成して利用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して利用する方法](../azure-resource-manager/management/tag-resources.md)
 
 - [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
@@ -440,7 +440,7 @@ Microsoft では、Azure Event Hubs 用の基になるインフラストラク�
 
 - [Azure Event Hubs を Azure Private Link と統合する](private-link-service.md)
 
-- [ネットワーク セキュリティ グループとサービス タグについて](/azure/virtual-network/security-overview)
+- [ネットワーク セキュリティ グループとサービス タグについて](../virtual-network/network-security-groups-overview.md)
 
 - [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
@@ -484,7 +484,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:Azure Event Hubs の運用インスタンスやその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -512,7 +512,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -522,11 +522,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: 必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、Azure Event Hubs 名前空間と関連リソースの整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-- [管理グループを作成する方法](/azure/governance/management-groups/create)
+- [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -562,7 +562,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -592,7 +592,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 追加情報については、参照先のリンクをご覧ください。
 
-- [Event Hubs 名前空間用の Azure 組み込みポリシー](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub)
+- [Event Hubs 名前空間用の Azure 組み込みポリシー](../governance/policy/samples/built-in-policies.md#event-hub)
 
 - [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
@@ -639,15 +639,15 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**:イベント ハブへのアクセスに使用される Azure App Service で実行されている Azure 仮想マシンまたは Web アプリの場合は、マネージド サービス ID を Azure Key Vault と組み合わせて使用して、Azure Event Hubs デプロイの Shared Access Signature の管理を簡素化し、セキュリティで保護します。 Key Vault は、論理的な削除を有効にして構成してください。
 
-- [Azure Active Directory (Azure AD) を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Azure Active Directory (Azure AD) を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](./authenticate-managed-identity.md?tabs=latest)
 
 - [Event Hubs 用にカスタマー マネージド キーを構成する](configure-customer-managed-key.md)
 
 - [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [キー コンテナーを作成する方法](/azure/key-vault/quick-create-portal)
+- [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
-- [マネージド ID で Key Vault の認証を提供する方法](/azure/key-vault/managed-identity)
+- [マネージド ID で Key Vault の認証を提供する方法](../key-vault/general/assign-access-policy-portal.md)
 
 **責任**: Customer
 
@@ -659,7 +659,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 マネージド ID を使用して、Azure Active Directory (Azure AD) で自動的に管理される ID を Azure サービスに提供します。 マネージド ID を使用すると、コード内に資格情報を記述することなく、Azure AD 認証をサポートする任意のサービス (Azure Key Vault を含む) に対して認証できます。
 
-- [Azure AD を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](https://docs.microsoft.com/azure/event-hubs/authenticate-managed-identity?tabs=latest)
+- [Azure AD を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する](./authenticate-managed-identity.md?tabs=latest)
 
 - [Event Hubs 用にカスタマー マネージド キーを構成する](configure-customer-managed-key.md)
 
@@ -703,7 +703,7 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cache for Redi
 
 **ガイダンス**: Azure Event Hubs の geo ディザスター リカバリーを構成します。 Azure リージョン全体またはデータ センター全体 (可用性ゾーンが使用されていない場合) にダウンタイムが発生した場合、別のリージョンまたはデータ センターでデータ処理が続行されることが重要です。 そのため、geo ディザスター リカバリーと geo レプリケーションは、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
-- [Azure Event Hubs の geo ディザスター リカバリーについて](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones)
+- [Azure Event Hubs の geo ディザスター リカバリーについて](./event-hubs-geo-dr.md#availability-zones)
 
 **責任**: Customer
 
@@ -739,11 +739,11 @@ Microsoft のマルウェア対策は、Azure サービス (Azure Cache for Redi
 
 Event Hubs データのキャプチャに使用される Azure ストレージ アカウントの論理的な削除を構成します。 この機能は、Azure Data Lake Storage Gen 2 ではまだサポートされていない点にご注意ください。
 
-- [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 - [キーを使用したキー コンテナーの設定](configure-customer-managed-key.md)
 
-- [Azure Storage Blob の論理的な削除](https://docs.microsoft.com//azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Storage Blob の論理的な削除](/azure/storage/blobs/soft-delete-blob-overview)
 
 **責任**: Customer
 
@@ -831,5 +831,5 @@ Event Hubs データのキャプチャに使用される Azure ストレージ �
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

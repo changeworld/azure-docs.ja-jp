@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6407f6af4b142333d2a52f60eb0b05024e64d88e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445769"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761182"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -66,7 +66,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 
 > [!NOTE]
-> Form Recognizer 3.1.0 SDK は、API バージョン 2.1 プレビューを反映しています
+> Form Recognizer 3.1.0 SDK は、"_API バージョン 2.1 プレビュー 2_" を反映しています。 "_API バージョン 2.1 プレビュー 3_" には [**REST API**](../../quickstarts/client-library.md) を使用してください。
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 

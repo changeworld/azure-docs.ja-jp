@@ -3,12 +3,14 @@ title: クイック スタート:ポータルでブループリントを作成�
 description: このクイックスタートでは、Azure Blueprints を使用して、Azure portal から成果物を作成、定義、デプロイします。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 75a4e9deca4859ac8b9f302fcb62ecc1d12dd8c9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 94555b1b73fdac7368c9ac96fa682fb09afc83eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98918332"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538974"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>ポータル内でブループリントを定義して割り当てる:
 

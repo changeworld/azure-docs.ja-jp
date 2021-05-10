@@ -6,16 +6,26 @@ ms.topic: conceptual
 ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: a8bb28892fe42215876b5cc8771ae73c7d2aab7f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744009"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563710"
 ---
 # <a name="troubleshooting-datadog-on-azure"></a>Azure での Datadog のトラブルシューティング
 
 このドキュメントには、Datadog を使用するソリューションのトラブルシューティングに関する情報が含まれています。
+
+## <a name="purchase-errors"></a>購入エラー
+
+* 購入に失敗するのは、有効なクレジット カードが Azure サブスクリプションに接続されていないか、支払い方法がサブスクリプションに関連付けられていないためです。
+
+  別の Azure サブスクリプションを使用してください。 または、サブスクリプションのクレジット カードまたは支払い方法を追加するか、更新してください。 詳細については、[クレジットと支払い方法の更新](../../cost-management-billing/manage/change-credit-card.md)に関するページを参照してください。
+
+* この EA サブスクリプションでは、Marketplace での購入は許可されていません。
+
+  別のサブスクリプションを使用してください。 または、お使いの EA サブスクリプションで Marketplace の購入が有効かどうかを確認してください。 詳細については、[Marketplace での購入を有効にする](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)方法に関する記事を参照してください。 これらの方法で問題が解決しない場合は、[Datadog のサポート](https://www.datadoghq.com/support)にお問い合わせください。
 
 ## <a name="unable-to-create-datadog-resource"></a>Datadog リソースを作成できない
 

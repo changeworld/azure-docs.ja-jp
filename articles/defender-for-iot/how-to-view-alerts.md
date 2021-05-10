@@ -1,20 +1,19 @@
 ---
-title: アラートを表示する
+title: '[アラート] ページからのアラートのフィルター処理と管理'
 description: さまざまなカテゴリに従ってアラートを表示し、検索機能を使用して目的のアラートを見つけることができます。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/02/2020
+ms.date: 3/22/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 391d1872124c7332bdaa6008a244490b47df4bf7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523670"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781587"
 ---
-# <a name="view-alerts"></a>アラートを表示する
+# <a name="filter-and-manage-alerts-from-the-alerts-page"></a>[アラート] ページからのアラートのフィルター処理と管理 
 
 この記事では、センサーによってトリガーされたアラートを表示し、アラート ツールで管理する方法について説明します。
 

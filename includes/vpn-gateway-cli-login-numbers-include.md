@@ -7,13 +7,13 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 52f828b9ba7bd286184b44a3d843c2cf8c75c592
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: include file, devex-tag-azurecli
+ms.openlocfilehash: 1a22c63eb01abc3775b2bf299d8464323e69c372
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755895"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107386614"
 ---
 1. [az login](/cli/azure/) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。 サインインの詳細については、「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 

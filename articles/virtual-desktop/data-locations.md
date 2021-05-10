@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 12ec71a86a5df5954c14097e6a0ec5c8a5138fc5
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+manager: femila
+ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652430"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447082"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Windows Virtual Desktop のデータとメタデータの場所
 

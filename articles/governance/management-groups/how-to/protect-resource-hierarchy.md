@@ -1,14 +1,14 @@
 ---
 title: リソース階層を保護する方法 - Azure のガバナンス
 description: 既定の管理グループの設定を含む階層設定を使用して、リソース階層を保護する方法について説明します。
-ms.date: 02/05/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 11c20ccf5aff74d810533cd56e0a7b116f2dc64b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594588"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303646"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>リソース階層を保護する方法
 
@@ -50,7 +50,7 @@ Azure portal でこの設定を構成するには、次の手順を実行しま�
 
 ### <a name="set-default-management-group-with-rest-api"></a>REST API を使用して既定の管理グループを設定する
 
-REST API を使用してこの設定を構成するために、[階層設定](/rest/api/resources/hierarchysettings)エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 `{rootMgID}` をルート管理グループの ID に置き換え、`{defaultGroupID}` を既定の管理グループにする管理グループの ID に置き換えます。
+REST API を使用してこの設定を構成するために、[階層設定](/rest/api/managementgroups/hierarchysettings)エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 `{rootMgID}` をルート管理グループの ID に置き換え、`{defaultGroupID}` を既定の管理グループにする管理グループの ID に置き換えます。
 
 - REST API URI
 
@@ -91,7 +91,7 @@ Azure portal でこの設定を構成するには、次の手順を実行しま�
 
 ### <a name="set-require-authorization-with-rest-api"></a>REST API を使用して承認の要求を設定する
 
-REST API を使用してこの設定を構成するために、[階層設定](/rest/api/resources/hierarchysettings)エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 この値は _boolean_ であるため、値として **true** または **false** を指定します。 **true** の値を指定すると、管理グループ階層を保護するこの方法が有効になります。
+REST API を使用してこの設定を構成するために、[階層設定](/rest/api/managementgroups/hierarchysettings)エンドポイントが呼び出されます。 これを行うには、次の REST API URI と本文の形式を使用します。 この値は _boolean_ であるため、値として **true** または **false** を指定します。 **true** の値を指定すると、管理グループ階層を保護するこの方法が有効になります。
 
 - REST API URI
 
@@ -110,6 +110,28 @@ REST API を使用してこの設定を構成するために、[階層設定](/r
   ```
 
 この設定をオフに戻すには、同じエンドポイントを使用し、**requireAuthorizationForGroupCreation** の値を **false** に設定します。
+
+## <a name="powershell-sample"></a>PowerShell のサンプル
+
+PowerShell には、既定の管理グループを設定したり、承認が必要なものを設定したりするための 'Az' コマンドはありませんが、回避策として、以下の PowerShell サンプルで REST API を利用できます。
+
+```powershell
+$root_management_group_id = "Enter the ID of root management group"
+$default_management_group_id = "Enter the ID of default management group (or use the same ID of the root management group)"
+
+$body = '{
+     "properties": {
+          "defaultManagementGroup": "/providers/Microsoft.Management/managementGroups/' + $default_management_group_id + '",
+          "requireAuthorizationForGroupCreation": true
+     }
+}'
+
+$token = (Get-AzAccessToken).Token
+$headers = @{"Authorization"= "Bearer $token"; "Content-Type"= "application/json"}
+$uri = "https://management.azure.com/providers/Microsoft.Management/managementGroups/$root_management_group_id/settings/default?api-version=2020-02-01"
+
+Invoke-RestMethod -Method PUT -Uri $uri -Headers $headers -Body $body
+```
 
 ## <a name="next-steps"></a>次のステップ
 

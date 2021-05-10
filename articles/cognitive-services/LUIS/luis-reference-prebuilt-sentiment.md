@@ -8,18 +8,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/01/2020
-ms.openlocfilehash: 2e8e5a127741625fde7910aaabd421836148fc35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/06/2021
+ms.openlocfilehash: 7524644b34a6fd479c08b9ce6418c547c836add5
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018669"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554027"
 ---
 # <a name="sentiment-analysis"></a>センチメント分析
 センチメント分析が構成されている場合、LUIS の json 応答には、センチメント分析が含まれます。 センチメント分析の詳細については、[Text Analytics](../text-analytics/index.yml) のドキュメントを参照してください。
 
 LUIS では Text Analytics V2 を使用します。 
+
+感情分析は、アプリケーションを公開するときに構成されます。 詳細については、[アプリを発行する方法](./luis-how-to-publish-app.md)に関する記事を参照してください。
 
 ## <a name="resolution-for-sentiment"></a>センチメントの解決
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a8ea32d84da521c8a1af926c6cb5e26bc2738de2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102054163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044840"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Azure Sentinel クエリとアクティビティの監査
 
@@ -132,7 +132,7 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 |設定の更新    |Microsoft.SecurityInsights/settings|
 | | |
 
-詳細については、「[Azure アクティビティ ログ イベント スキーマ](/azure/azure-monitor/essentials/activity-log-schema)」を参照してください。
+詳細については、「[Azure アクティビティ ログ イベント スキーマ](../azure-monitor/essentials/activity-log-schema.md)」を参照してください。
 
 
 ## <a name="auditing-with-laquerylogs"></a>LAQueryLogs を使用した監査
@@ -157,7 +157,7 @@ LAQueryLogs データには、次のような情報が含まれます。
 
 1. 現在の Log Analytics ワークスペースでは、**LAQueryLogs** テーブルは既定で有効になっていません。 Azure Sentinel で監査するときに **LAQueryLogs** データを使用するには、まず、Log Analytics ワークスペースの **[診断設定]** 領域で **LAQueryLogs** を有効にします。
 
-    詳細については、「[Azure Monitor ログでのクエリの監査](/azure/azure-monitor/logs/query-audit)」を参照してください。
+    詳細については、「[Azure Monitor ログでのクエリの監査](../azure-monitor/logs/query-audit.md)」を参照してください。
 
 
 1. 次に、他のテーブルの場合と同様に、KQL を使用してデータに対してクエリを実行します。

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.custom: cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 07828e7faff61086ea982b8017bc3c590e386be1
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 06ff04d8615b7ebdda07e993a3fc560d44fbf702
+ms.sourcegitcommit: bb330af42e70e8419996d3cba4acff49d398b399
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444870"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105157"
 ---
 Python 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、PiPy パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -353,6 +353,3 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 > [!div class="nextstepaction"]
 >[画像のモデレートの概念](../../image-moderation-api.md)
-
-* [Azure Content Moderator とは](../../overview.md)
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ContentModerator/ContentModeratorQuickstart.py) にあります。

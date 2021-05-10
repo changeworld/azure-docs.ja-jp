@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: ef2823b870f76922dd0dc157341aea9b502fb4bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d3ff8114c11b224a0bdbb0bd2d0e5686a7e57b55
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103564561"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565909"
 ---
 # <a name="use-rest-api-to-sync-data-between-multiple-databases"></a>REST API を使用して複数のデータベース間でデータを同期する 
 
@@ -31,7 +31,7 @@ SQL データ同期の概要については、[Azure の SQL データ同期を�
 
 ## <a name="create-sync-group"></a>同期グループを作成する
 
-同期グループを作成するには、[作成または更新](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate)テンプレートを使用します。
+同期グループを作成するには、[作成または更新](/rest/api/sql/syncgroups/createorupdate)テンプレートを使用します。
  
 同期グループを作成するときには、同期スキーマ (table\column) を渡さず、masterSyncMemberName を渡さないでください。これは現時点では、同期グループには table\column 情報がまだ含まれていないためです。
 
@@ -91,7 +91,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ## <a name="create-sync-member"></a>同期メンバーを作成する
 
-同期メンバーを作成するには、[作成または更新](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate)テンプレートを使用します。
+同期メンバーを作成するには、[作成または更新](/rest/api/sql/syncmembers/createorupdate)テンプレートを使用します。
 
 同期メンバー作成の要求の例:
 
@@ -151,7 +151,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 同期グループが正常に作成されたら、次のテンプレートを使用してスキーマを更新します。
 
-ハブ データベースのスキーマを更新するには、[ハブ スキーマの更新](https://docs.microsoft.com/rest/api/sql/syncgroups/refreshhubschema)テンプレートを使用します。 
+ハブ データベースのスキーマを更新するには、[ハブ スキーマの更新](/rest/api/sql/syncgroups/refreshhubschema)テンプレートを使用します。 
 
 ハブ データベース スキーマ更新の要求の例: 
 
@@ -165,17 +165,17 @@ POST https://management.azure.com/subscriptions/00000000-1111-2222-3333-44444444
 
 状態コード: 202
 
-ハブ データベース スキーマの一覧を表示するには、[ハブ スキーマの一覧表示](https://docs.microsoft.com/rest/api/sql/syncgroups/listhubschemas)テンプレートを使用します。 
+ハブ データベース スキーマの一覧を表示するには、[ハブ スキーマの一覧表示](/rest/api/sql/syncgroups/listhubschemas)テンプレートを使用します。 
 
-メンバー データベース スキーマを更新するには、[メンバー スキーマの更新](https://docs.microsoft.com/rest/api/sql/syncmembers/refreshmemberschema)テンプレートを使用します。 
+メンバー データベース スキーマを更新するには、[メンバー スキーマの更新](/rest/api/sql/syncmembers/refreshmemberschema)テンプレートを使用します。 
 
-メンバー データベース スキーマの一覧を表示するには、[メンバー スキーマの一覧表示](https://docs.microsoft.com/rest/api/sql/syncmembers/listmemberschemas)テンプレートを使用します。 
+メンバー データベース スキーマの一覧を表示するには、[メンバー スキーマの一覧表示](/rest/api/sql/syncmembers/listmemberschemas)テンプレートを使用します。 
 
 スキーマが正常に更新された場合のみ、次の手順に進みます。 
 
 ## <a name="update-sync-group"></a>同期グループを更新する 
 
-同期グループを更新するには、[作成または更新](https://docs.microsoft.com/rest/api/sql/syncgroups/createorupdate)テンプレートを使用します。
+同期グループを更新するには、[作成または更新](/rest/api/sql/syncgroups/createorupdate)テンプレートを使用します。
 
 同期スキーマを指定して、同期グループを更新します。 スキーマと masterSyncMemberName を含めます。これは、使用するスキーマが格納されている名前です。 
 
@@ -232,7 +232,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ```
 ## <a name="update-sync-member"></a>同期メンバーを更新する
 
-同期メンバーを更新するには、[作成または更新](https://docs.microsoft.com/rest/api/sql/syncmembers/createorupdate)テンプレートを使用します。
+同期メンバーを更新するには、[作成または更新](/rest/api/sql/syncmembers/createorupdate)テンプレートを使用します。
 
 同期メンバー更新の要求の例: 
 
@@ -291,7 +291,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ## <a name="trigger-sync"></a>同期 をトリガーする
 
-同期操作をトリガーするには、[同期のトリガー](https://docs.microsoft.com/rest/api/sql/syncgroups/triggersync) テンプレートを使用します。
+同期操作をトリガーするには、[同期のトリガー](/rest/api/sql/syncgroups/triggersync) テンプレートを使用します。
 
 同期操作トリガーの要求の例: 
 

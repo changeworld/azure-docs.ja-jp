@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225549"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284393"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -40,7 +40,7 @@ Azure Backup は Recovery Services コンテナーを使用して、各種のワ
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
 **ゾーン冗長ストレージ (ZRS)** | 英国南部 (UKS) リージョンと東南アジア (SEA) リージョンで利用できます。
-**プライベート エンドポイント** | Recovery Services コンテナーのプライベート エンドポイントを作成するための要件については、[こちらのセクション](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start)を参照してください。  
+**プライベート エンドポイント** | Recovery Services コンテナーのプライベート エンドポイントを作成するための要件については、[こちらのセクション](./private-endpoints.md#before-you-start)を参照してください。  
 
 ## <a name="on-premises-backup-support"></a>オンプレミス バックアップのサポート
 
@@ -151,8 +151,8 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | マネージド ディスクとアンマネージド ディスク両方の Azure VM でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部を除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
-| SQL/SAP HANA | プレビュー段階                                                      | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部を除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| Azure VM               | マネージド ディスクとアンマネージド ディスク両方の Azure VM でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| SQL/SAP HANA | プレビュー段階                                                      | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
 

@@ -22,30 +22,44 @@
       href: conceptual-agent-architecture.md
     - name: 構成と GitOps
       href: conceptual-configurations.md
-    - name: GitOps を使用した CI/CD ワークフロー
-      href: conceptual-gitops-ci-cd.md
+    - name: クラスター拡張機能
+      href: conceptual-extensions.md
+    - name: クラスター接続
+      href: conceptual-cluster-connect.md
+    - name: カスタムの場所
+      href: conceptual-custom-locations.md
+    - name: Azure RBAC
+      href: conceptual-azure-rbac.md
     - name: よく寄せられる質問
       href: faq.md
+    - name: GitOps を使用した CI/CD ワークフロー
+      href: conceptual-gitops-ci-cd.md
 - name: 操作方法ガイド
   items:
-    - name: Azure Arc への接続
-      items:
-        - name: サービス プリンシパルのオンボード
-          href: create-onboarding-service-principal.md
-    - name: 管理する
-      items:
-        - name: エージェントのアップグレード
-          href: agent-upgrade.md
+    - name: サービス プリンシパルを使用してクラスターを接続する
+      href: create-onboarding-service-principal.md
+    - name: エージェントのアップグレード
+      href: agent-upgrade.md
     - name: シナリオ
       items:
         - name: GitOps を使用して Helm グラフをデプロイする
           href: use-gitops-with-helm.md
         - name: Azure Policy を使用して GitOps を適用する
           href: use-azure-policy.md
+        - name: クラスター拡張機能のデプロイと管理
+          href: extensions.md
         - name: Azure Monitor を使用してコンテナーを監視する
-          href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.yml
+          href: ../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: Azure Defender を使用して脅威保護を適用する
+          href: ../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json
         - name: Azure Policy を使用した受付制御ポリシー
-          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.yml
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.json
+        - name: どこからでもクラスターに安全に接続する
+          href: cluster-connect.md
+        - name: 認可の確認に Azure AD RBAC を使用する
+          href: azure-rbac.md
+        - name: カスタムの場所を作成する
+          href: custom-locations.md
         - name: IoT ワークロードをデプロイする
           href: deploy-azure-iot-edge-workloads.md
     - name: トラブルシューティング

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: 0961aa3e573e511a6941bc59ddc335f64799abb4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ceb105409ff218cd633eb36d793e8fc16c7d135c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87047340"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961542"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services v3 プリセットと Video Indexer の比較 
 
@@ -31,7 +31,7 @@ ms.locfileid: "87047340"
 
 |機能|Video Indexer API |ビデオ アナライザーとオーディオ アナライザーのプリセット<br/>(Media Services v3 API)|
 |---|---|---|
-|メディア分析情報|[拡張](video-indexer-output-json-v2.md) |[基礎](../latest/analyzing-video-audio-files-concept.md)|
+|メディア分析情報|[拡張](video-indexer-output-json-v2.md) |[基礎](../latest/analyze-video-audio-files-concept.md)|
 |エクスペリエンス|サポートされている機能の完全な一覧を参照: <br/> [概要](video-indexer-overview.md)|ビデオの分析情報のみを返す|
 |課金|[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |コンプライアンス|最新のコンプライアンスの更新については、[Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) にアクセスし、"Video Indexer" を検索して、関心がある認証に準拠しているかどうかを確認します。|最新のコンプライアンスの更新については、[Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) を入手し、"Media Services" を検索して、関心がある認証に準拠しているかどうかを確認します。|

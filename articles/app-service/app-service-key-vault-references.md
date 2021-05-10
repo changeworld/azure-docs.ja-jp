@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100635389"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750772"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -28,10 +28,21 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
    > [!NOTE] 
    > Key Vault 参照では現在のところ、システム割り当てのマネージド ID のみをサポートしています。 ユーザー割り当て ID は使用できません。
 
-1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
+1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
-   > [!IMPORTANT]
-   > Key Vault 参照では現在、アプリが [App Service Environment](./environment/intro.md) 内でホストされている場合を除き、[ネットワーク制限](../key-vault/general/overview-vnet-service-endpoints.md)があるキー コンテナーに格納されているシークレットを解決できません。
+### <a name="access-network-restricted-vaults"></a>ネットワーク制限があるコンテナーにアクセスする
+
+> [!NOTE]
+> Linux ベースのアプリケーションでは現在、アプリが [App Service Environment](./environment/intro.md) 内でホストされている場合を除き、ネットワーク制限があるキー コンテナーのシークレットを解決できません。
+
+コンテナーが[ネットワーク制限](../key-vault/general/overview-vnet-service-endpoints.md)付きで構成されている場合は、アプリケーションがネットワークにアクセスできることを確認する必要もあります。
+
+1. [App Service のネットワーク機能](./networking-features.md)と [Azure Functions のネットワーク オプション](../azure-functions/functions-networking-options.md)のページの説明に従って、アプリケーションの送信ネットワーク機能が構成されていることを確認します。
+
+2. アプリがアクセスするネットワークまたはサブネットに対するコンテナーの構成アカウントがあることを確認します。
+
+> [!IMPORTANT]
+> 仮想ネットワーク統合によるコンテナーへのアクセスは、現在、[特定のバージョンが指定されていないシークレットの自動更新](#rotation)と両立できません。
 
 ## <a name="reference-syntax"></a>参照構文
 
@@ -56,6 +67,9 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 ```
 
 ## <a name="rotation"></a>回転
+
+> [!IMPORTANT]
+> [仮想ネットワーク統合によるコンテナーへのアクセス](#access-network-restricted-vaults)は、現在、特定のバージョンが指定されていないシークレットの自動更新と両立できません。
 
 参照でバージョンが指定されていない場合、アプリでは Key Vault に存在する最新バージョンを使用します。 回転イベントなどにより新しいバージョンが利用可能になると、アプリは自動的に更新され、1 日以内に最新バージョンの使用が開始されます。 アプリに対して行われた構成の変更により、参照されているすべてのシークレットの最新バージョンが即座に更新されます。
 

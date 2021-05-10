@@ -2,15 +2,15 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルにモジュールを追加する
 description: モジュールを使用して、生のリソース宣言の複雑な詳細をカプセル化します。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6efd9c230df49c83adc17361082af85b0ef9edc5
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102633140"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568768"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルにモジュールを追加する
 
@@ -128,4 +128,4 @@ Azure portal からリソース グループを探すことでデプロイを確
 次のチュートリアル シリーズでは、テンプレートのデプロイについてさらに詳しく取り上げます。
 
 > [!div class="nextstepaction"]
-> [モジュールを追加する](./bicep-tutorial-add-modules.md)
+> [ローカル テンプレートをデプロイする](./deployment-tutorial-local-template.md)

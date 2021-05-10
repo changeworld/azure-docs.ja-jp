@@ -6,16 +6,16 @@ author: mlee3gsd
 manager: rothja
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 28940272d39a08d790fe2cd913df808b02e7f426
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f342f39b62956cd85f269918e8e1ef1a2478a3d8
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102441892"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566360"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL アーキテクチャ 
 
@@ -49,7 +49,7 @@ Synapse SQL を使用すると、ストレージとコンピューティング�
 
 Synapse SQL では、ユーザー データを安全に保つために Azure Storage を使用します。 データは Azure Storage によって保存、管理されるため、ストレージの使用量が別途課金されます。 
 
-サーバーレス SQL プールでは、データ レイク ファイルにクエリを実行できます。専用 SQL プールでは、クエリを実行し、データ レイク ファイルからデータを取り込むことができます。 データを専用 SQL プールに取り込むと、システムのパフォーマンスを最適化するために、データは **ディストリビューション** にシャード化されます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次の 2 つのシャーディング パターンがサポートされています。
+サーバーレス SQL プールでは、データ レイク ファイルにクエリを実行できます。専用 SQL プールでは、クエリを実行し、データ レイク ファイルからデータを取り込むことができます。 データを専用 SQL プールに取り込むと、システムのパフォーマンスを最適化するために、データは **ディストリビューション** にシャード化されます。 どのシャーディング パターンを使用して、テーブルを定義するときにデータを分散するかを選択できます。 次のシャーディング パターンがサポートされています。
 
 * ハッシュ インデックス
 * ラウンド ロビン

@@ -1,18 +1,18 @@
 ---
 title: レジストリ認証オプション
-description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure コンテナー レジストリのための認証オプション。
+description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure Container Registry のための認証オプション。
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/15/2021
+ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92148555"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784283"
 ---
-# <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
+# <a name="authenticate-with-an-azure-container-registry"></a>Azure Container Registry での認証
 
-Azure コンテナー レジストリでの認証には複数の方法があり、それぞれ 1 つ以上のレジストリ使用シナリオに適用できます。
+Azure Container Registry での認証には複数の方法があり、それぞれ 1 つ以上のレジストリ使用シナリオに適用できます。
 
 [個々のログイン](#individual-login-with-azure-ad)によって直接レジストリに対して認証を受けるなどの方法が推奨されます。またはアプリケーションやコンテナー オーケストレーターで Azure Active Directory (Azure AD) [サービス プリンシパル](#service-principal)を使用して無人 ("ヘッドレス") 認証を実行することができます。
 
@@ -25,13 +25,13 @@ Azure コンテナー レジストリでの認証には複数の方法があり�
 | [個人の AD ID](#individual-login-with-azure-ad)                | Azure CLI の `az acr login`                              | 開発者、テスト担当者による対話型のプッシュ/プル                                    | はい                              | AD トークンを 3 時間ごとに更新する必要がある     |
 | [AD サービス プリンシパル](#service-principal)                  | `docker login`<br/><br/>Azure CLI の `az acr login`<br/><br/> API またはツールのレジストリ ログイン設定<br/><br/> [Kubernetes のプル シークレット](container-registry-auth-kubernetes.md)                                           | CI/CD パイプラインからの無人プッシュ<br/><br/> Azure または外部サービスへの無人プル  | はい                              | SP パスワードの既定の有効期限は 1 年である       |                                                           
 | [AKS との統合](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | AKS クラスターが作成または更新されたときにレジストリをアタッチする  | AKS クラスターへの無人プル                                                  | いいえ、プル アクセスのみ             | AKS クラスターでしか使用できない            |
-| [Azure リソースのマネージド ID](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI の  `az acr login`                                        | Azure CI/CD パイプラインからの無人プッシュ<br/><br/> Azure サービスへの無人プル<br/><br/>   | はい                              | [Azure リソースのマネージド ID をサポートする](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) Azure サービスからのみ使用              |
+| [Azure リソースのマネージド ID](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI の  `az acr login`                                        | Azure CI/CD パイプラインからの無人プッシュ<br/><br/> Azure サービスへの無人プル<br/><br/>   | はい                              | [Azure リソースのマネージド ID をサポートする](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)厳選した Azure サービスからのみ使用              |
 | [管理者ユーザー](#admin-account)                            | `docker login`                                          | 個人の開発者またはテスト担当者による対話型のプッシュ/プル<br/><br/>レジストリから Azure App Service または Azure Container Instances へのイメージのポータル展開                      | いいえ、常にプルおよびプッシュ アクセス  | レジストリごとに 1 つのアカウント (複数のユーザーの場合は推奨されません)         |
 | [リポジトリをスコープとしたアクセス トークン](container-registry-repository-scoped-permissions.md)               | `docker login`<br/><br/>Azure CLI の `az acr login`   | 個人の開発者またはテスト担当者によるリポジトリへの対話型のプッシュ/プル<br/><br/> 個々のシステムまたは外部デバイスによるリポジトリへの無人プッシュ/プル                  | Yes                              | 現時点では AD ID と統合されていない  |
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
-開発ワークステーションから作成したレジストリへのイメージのプッシュやプルなど、レジストリを直接操作するときは、個人の Azure ID を使用して認証します。 [az login](/cli/azure/reference-index#az-login) を使用して [Azure CLI](/cli/azure/install-azure-cli) にサインインし、[az acr login](/cli/azure/acr#az-acr-login) コマンドを実行します。
+開発ワークステーションから作成したレジストリへのイメージのプッシュやプルなど、レジストリを直接操作するときは、個人の Azure ID を使用して認証します。 [az login](/cli/azure/reference-index#az_login) を使用して [Azure CLI](/cli/azure/install-azure-cli) にサインインし、[az acr login](/cli/azure/acr#az_acr_login) コマンドを実行します。
 
 ```azurecli
 az login
@@ -65,11 +65,16 @@ az acr login --name <acrName> --expose-token
   "loginServer": "myregistry.azurecr.io"
 }
 ``` 
+レジストリ認証の場合は、トークン資格情報を安全な場所に保存し、[docker ログイン](https://docs.docker.com/engine/reference/commandline/login/)を管理するための推奨プラクティスに従うことをお勧めします。 たとえば、次のようにトークン値を環境変数に格納します。
+
+```bash
+TOKEN=$(az acr login --name <acrName> --expose-token --output tsv --query accessToken)
+```
 
 次に、`docker login` を実行し、ユーザー名として `00000000-0000-0000-0000-000000000000` を渡し、アクセス トークンをパスワードとして使用します。
 
 ```console
-docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password eyJhbGciOiJSUzI1NiIs[...]24V7wA
+docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
 ```
 
 ## <a name="service-principal"></a>サービス プリンシパル
@@ -86,13 +91,13 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ロールの完全な一覧については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」をご覧ください。
 
-Azure コンテナー レジストリを使用した認証のためのサービス プリンシパルを作成する CLI スクリプトと詳しいガイダンスについては、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」を参照してください。
+Azure Container Registry を使用した認証のためのサービス プリンシパルを作成する CLI スクリプトと詳しいガイダンスについては、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」を参照してください。
 
 ## <a name="admin-account"></a>管理者アカウント
 
 各コンテナー レジストリには管理者ユーザー アカウントが含まれており、このアカウントは既定で無効になっています。 Azure portal で、または Azure CLI や他の Azure ツールを使用して、管理者ユーザーを有効にし、その資格情報を管理できます。 管理者アカウントには、レジストリに対する完全なアクセス許可があります。
 
-コンテナー レジストリから特定の Azure サービスにイメージをデプロイするいくつかのシナリオでは、現在、管理者アカウントが必要です。 たとえば、管理者アカウントは、ポータルでコンテナー イメージをレジストリから [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal)または [Azure Web Apps for Containers](container-registry-tutorial-deploy-app.md) に直接デプロイする場合に必要になります。
+コンテナー レジストリから特定の Azure サービスにイメージをデプロイするいくつかのシナリオでは、現在、管理者アカウントが必要です。 たとえば、管理者アカウントは、Azure portal を使用してコンテナー イメージをレジストリから [Azure Container Instances](../container-instances/container-instances-using-azure-container-registry.md#deploy-with-azure-portal) または [Azure Web Apps for Containers](container-registry-tutorial-deploy-app.md) に直接デプロイする場合に必要になります。
 
 > [!IMPORTANT]
 > 管理者アカウントは、主にテストのために、1 人のユーザーがレジストリにアクセスすることを目的としています。 管理者アカウントの資格情報を複数のユーザーで共有しないことをお勧めします。 管理者アカウントで認証するすべてのユーザーが、レジストリへのプル/プッシュアクセス権を持つ 1 人のユーザーとして表示されます。 このアカウントを変更したり、無効にしたりすると、その資格情報を使用するすべてのユーザーのレジストリ アクセスが無効になります。 ユーザーおよびヘッドレス シナリオ用のサービス プリンシパルには、個人 ID を使用することをお勧めします。
@@ -104,9 +109,9 @@ Azure コンテナー レジストリを使用した認証のためのサービ�
 docker login myregistry.azurecr.io 
 ```
 
-ログイン資格情報の管理のベスト プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
+ログイン資格情報の管理の推奨プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスをご覧ください。
 
-既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr#az-acr-update) コマンドの `--admin-enabled` パラメーターを使用します。
+既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr#az_acr_update) コマンドの `--admin-enabled` パラメーターを使用します。
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

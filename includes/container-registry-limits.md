@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052961"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104803305"
 ---
 | リソース | Basic | Standard | Premium |
 |---|---|---|---|
@@ -30,6 +30,7 @@ ms.locfileid: "98052961"
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |
 | プライベート エンドポイントがあるプライベート リンク | 該当なし | 該当なし | [サポートされています][plink] |
 | &bull; プライベート エンドポイント | 該当なし | 該当なし | 10 |
+| パブリック IP ネットワーク ルール | 該当なし | 該当なし | 100 |
 | サービス エンドポイントの VNet アクセス | 該当なし | 該当なし | [プレビュー][vnet] |
 | カスタマー マネージド キー | 該当なし | 該当なし | [サポートされています][cmk] |
 | リポジトリがスコープ指定されたアクセス許可 | 該当なし | 該当なし | [プレビュー][token]|

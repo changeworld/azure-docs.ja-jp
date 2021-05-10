@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93087487"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>実行プロファイル ステップを使用して Gremlin のクエリを評価する方法
@@ -20,7 +20,7 @@ ms.locfileid: "93087487"
 
 この記事では、Azure Cosmos DB Gremlin API グラフ データベースの実行プロファイル ステップを使用する方法の概要を示します。 このステップでは、トラブルシューティングとクエリの最適化に関連する情報が提供され、Cosmos DB Gremlin API アカウントに対して実行できるすべての Gremlin クエリと互換性があります。
 
-このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され** 、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
+このステップを使用するには、Gremlin クエリの最後に `executionProfile()` 関数の呼び出しを追加するだけです。 **Gremlin クエリが実行され**、操作の結果でクエリ実行プロファイルを含む JSON 応答オブジェクトが返されます。
 
 次に例を示します。
 
@@ -139,21 +139,21 @@ ms.locfileid: "93087487"
 ## <a name="execution-profile-response-objects"></a>実行プロファイルの応答オブジェクト
 
 executionProfile() 関数の応答では、次の構造を持つ JSON オブジェクトの階層が生成されます。
-  - **Gremlin 操作オブジェクト** : 実行された Gremlin 操作全体を表します。 次のプロパティが含まれます。
-    - `gremlin`:実行された明示的な Gremlin ステートメント。
-    - `totalTime`:ステップの実行にかかった時間 (ミリ秒単位)。 
-    - `metrics`:クエリを満たすために実行された各 Cosmos DB ランタイム演算子が含まれる配列。 このリストは、実行の順序で並べられています。
+  - **Gremlin 操作オブジェクト**: 実行された Gremlin 操作全体を表します。 次のプロパティが含まれます。
+    - `gremlin`: 実行された明示的な Gremlin ステートメント。
+    - `totalTime`: ステップの実行にかかった時間 (ミリ秒単位)。 
+    - `metrics`: クエリを満たすために実行された各 Cosmos DB ランタイム演算子が含まれる配列。 このリストは、実行の順序で並べられています。
     
-  - **Cosmos DB ランタイム演算子** : Gremlin 操作全体の各コンポーネントを表します。 このリストは、実行の順序で並べられています。 各オブジェクトには次のプロパティが含まれます。
-    - `name`:演算子の名前。 これは、評価および実行されたステップの種類です。 詳しくは、後の表をご覧ください。
-    - `time`:特定の演算子にかかった時間 (ミリ秒単位)。
-    - `annotations`:実行された演算子に固有の追加情報が含まれます。
-    - `annotations.percentTime`:特定の演算子の実行にかかった合計時間の割合。
-    - `counts`:この演算子によって、ストレージ レイヤーから返されたオブジェクトの数。 これは、`counts.resultCount` スカラー値に含まれます。
-    - `storeOps`:1 つまたは複数のパーティションにまたがることができるストレージ操作を表します。
-    - `storeOps.fanoutFactor`:この特定のストレージ操作でアクセスされたパーティションの数を表します。
-    - `storeOps.count`:このストレージ操作で返された結果の数を表します。
-    - `storeOps.size`:特定のストレージ操作の結果のサイズを表します (バイト単位)。
+  - **Cosmos DB ランタイム演算子**: Gremlin 操作全体の各コンポーネントを表します。 このリストは、実行の順序で並べられています。 各オブジェクトには次のプロパティが含まれます。
+    - `name`: 演算子の名前。 これは、評価および実行されたステップの種類です。 詳しくは、後の表をご覧ください。
+    - `time`: 特定の演算子にかかった時間 (ミリ秒単位)。
+    - `annotations`: 実行された演算子に固有の追加情報が含まれます。
+    - `annotations.percentTime`: 特定の演算子の実行にかかった合計時間の割合。
+    - `counts`: この演算子によって、ストレージ レイヤーから返されたオブジェクトの数。 これは、`counts.resultCount` スカラー値に含まれます。
+    - `storeOps`: 1 つまたは複数のパーティションにまたがることができるストレージ操作を表します。
+    - `storeOps.fanoutFactor`: この特定のストレージ操作でアクセスされたパーティションの数を表します。
+    - `storeOps.count`: このストレージ操作で返された結果の数を表します。
+    - `storeOps.size`: 特定のストレージ操作の結果のサイズを表します (バイト単位)。
 
 Cosmos DB Gremlin ランタイム演算子|説明
 ---|---

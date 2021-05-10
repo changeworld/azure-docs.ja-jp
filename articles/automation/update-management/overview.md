@@ -3,18 +3,20 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 04/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485675"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166702"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
 Azure Automation の Update Management を使用すると、Azure、オンプレミス環境、およびその他のクラウド環境で、Azure での Windows と Linux 仮想マシンに対するオペレーティング システムの更新プログラムを管理できます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+
+サービス プロバイダーは、[Azure Lighthouse](../../lighthouse/overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、一度に複数の Azure Active Directory (Azure AD) テナントにわたって大規模に操作を実行できるため、自分が担当するテナントに対して Update Management などの管理タスクをより効率的に実行できます。
 
 > [!NOTE]
 > Update Management で構成されたコンピューターを使用して Azure Automation からカスタム スクリプトを実行することはできません。 このコンピューターで実行できるのは、Microsoft が署名した更新プログラム スクリプトのみです。
@@ -22,9 +24,9 @@ Azure Automation の Update Management を使用すると、Azure、オンプレ
 > [!NOTE]
 > 現時点では、Arc 対応サーバーから Update Management を直接有効にすることはサポートされていません。 要件とサーバーに対する有効化の方法を理解するには、「[Automation アカウントから Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md)」を参照してください。
 
-入手できる "*クリティカル*" パッチまたは "*セキュリティ*" パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/windows/automatic-vm-guest-patching.md)に関するページを参照してください。
+入手できる "*クリティカル*" パッチまたは "*セキュリティ*" パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/automatic-vm-guest-patching.md)に関するページを参照してください。
 
-Update Management をデプロイしてマシンを管理できるようにする前に、次のセクションの情報を理解しておいてださい。  
+Update Management をデプロイしてマシンを管理できるようにする前に、次のセクションの情報を理解しておいてださい。
 
 ## <a name="about-update-management"></a>Update Management について
 
@@ -40,7 +42,7 @@ Update Management で管理されるマシンでは、評価の実行と更新�
 
 ![Update Management ワークフロー](./media/overview/update-mgmt-updateworkflow.png)
 
-Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにデプロイできます。
+Update Management を使用すると、同じテナントにある、または [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を使用して複数のテナントにまたがる複数のサブスクリプション内のマシンにネイティブにデプロイできます。
 
 パッケージがリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 時間から 3 時間かかります。 Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 時間から 15 時間かかります。 マシンで更新プログラムのコンプライアンスを確認するためのスキャンが完了すると、エージェントによって情報が Azure Monitor ログに一括転送されます。 Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。 Linux マシンでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 Log Analytics エージェントを再起動した場合、コンプライアンス スキャンは 15 分以内に開始されます。
 
@@ -76,8 +78,8 @@ Update Management では、同期先として構成されたソースに基づ�
 |---------|---------|
 |Windows Server 2019 (Datacenter/Standard、Server Core を含む)<br><br>Windows Server 2016 (Datacenter/Standard、Server Core を除く)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
-|CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
-|Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
+|CentOS 6、7、および 8 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
+|Red Hat Enterprise 6、7、および 8 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |SUSE Linux Enterprise Server 12、15、および 15.1 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 SUSE 15.x の場合、マシンには Python 3 が必要です。      |
 |Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553104"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784985"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Azure CLI を使用して別のギャラリーからイメージをコピーする
 
@@ -36,13 +36,13 @@ ms.locfileid: "102553104"
 
 新しいギャラリーにコピーを作成できるように、ソース イメージ定義からの情報が必要になります。
 
-[az sig list](/cli/azure/sig#az-sig-list) を使用して利用可能なイメージ ギャラリーに関する情報を一覧表示すると、ソース ギャラリーに関する情報を見つけることができます。
+[az sig list](/cli/azure/sig#az_sig_list) を使用して利用可能なイメージ ギャラリーに関する情報を一覧表示すると、ソース ギャラリーに関する情報を見つけることができます。
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-[az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) を使用して、ギャラリー内のイメージ定義を一覧表示します。 この例では、*myGalleryRG* リソース グループ内の *myGallery* という名前のギャラリーでイメージ定義を検索しています。
+[az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) を使用して、ギャラリー内のイメージ定義を一覧表示します。 この例では、*myGalleryRG* リソース グループ内の *myGallery* という名前のギャラリーでイメージ定義を検索しています。
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -51,7 +51,7 @@ az sig image-definition list \
    -o table
 ```
 
-[az sig image-version list](/cli/azure/sig/image-version#az-sig-image-version-list) を使用してギャラリー内のイメージのバージョンを一覧表示すると、新しいギャラリーにコピーするイメージ バージョンを検索できます。 この例では、*myImageDefinition* イメージ定義の一部であるイメージバージョンをすべて検索しています。
+[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使用してギャラリー内のイメージのバージョンを一覧表示すると、新しいギャラリーにコピーするイメージ バージョンを検索できます。 この例では、*myImageDefinition* イメージ定義の一部であるイメージバージョンをすべて検索しています。
 
 ```azurecli-interactive
 az sig image-version list \
@@ -61,7 +61,7 @@ az sig image-version list \
    -o table
 ```
 
-必要な情報がすべて揃ったら、[az sig image-version show](/cli/azure/sig/image-version#az-sig-image-version-show) を使用してソース イメージ バージョンの ID を取得できます。
+必要な情報がすべて揃ったら、[az sig image-version show](/cli/azure/sig/image-version#az_sig_image_version_show) を使用してソース イメージ バージョンの ID を取得できます。
 
 ```azurecli-interactive
 az sig image-version show \
@@ -75,7 +75,7 @@ az sig image-version show \
 
 ## <a name="create-the-image-definition"></a>イメージ定義の作成 
 
-ソース イメージ バージョンのイメージ定義と一致するイメージ定義を作成する必要があります。 [az sig image definition show](/cli/azure/sig/image-definition#az-sig-image-definition-show) を使用して、新しいギャラリーでイメージ定義を再作成するために必要なすべての情報を確認できます。
+ソース イメージ バージョンのイメージ定義と一致するイメージ定義を作成する必要があります。 [az sig image definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show) を使用して、新しいギャラリーでイメージ定義を再作成するために必要なすべての情報を確認できます。
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -133,7 +133,7 @@ az sig image-definition create \
 
 ## <a name="create-the-image-version"></a>イメージ バージョンの作成
 
-[az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) を使用して、バージョンを作成します。 イメージ バージョンを作成するためにベースラインとして使用する、マネージド イメージの ID を渡す必要があります。 [az image list](/cli/azure/image?view#az-image-list) を使用して、リソース グループ内にあるイメージに関する情報を取得できます。 
+[az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) を使用して、バージョンを作成します。 イメージ バージョンを作成するためにベースラインとして使用する、マネージド イメージの ID を渡す必要があります。 [az image list](/cli/azure/image?view#az_image_list) を使用して、リソース グループ内にあるイメージに関する情報を取得できます。 
 
 イメージ バージョンで許可されている文字は、数字とピリオドです。 数字は、32 ビット整数の範囲内になっている必要があります。 形式:*MajorVersion*.*MinorVersion*.*Patch*。
 

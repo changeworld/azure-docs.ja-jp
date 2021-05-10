@@ -3,12 +3,12 @@ title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 ms.topic: overview
 ms.date: 01/28/2021
-ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a410f56da9e28403fb98d92332e6d67c064bac4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99055138"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934870"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -22,7 +22,8 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 
 :::image type="content" source="./media/overview/functional-model.png" alt-text="ソースとハンドラーの Event Grid モデル" lightbox="./media/overview/functional-model-big.png":::
 
-この図は、Event Grid によってソースとハンドラーが接続されるようすを示すもので、サポートされる統合の包括的な一覧ではありません。
+> [!NOTE]
+> この図は、Event Grid によってソースとハンドラーが接続されるようすを示すもので、サポートされる統合の包括的な一覧ではありません。 サポートされるすべてのイベント ソースの一覧については、次のセクションを参照してください。 
 
 ## <a name="event-sources"></a>イベント ソース
 
@@ -38,6 +39,7 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure リソース グループ](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

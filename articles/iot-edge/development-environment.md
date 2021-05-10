@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 517bcdab375db819b0942306df82e7285b9473b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a253ff5fde0667c80be5a5b3af00e74abebdc609
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103487702"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030255"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -123,5 +123,4 @@ IoT Edge デバイス コンテナーは、コンテナー エンジンを使用
 
 * [Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-continuous-integration-continuous-deployment.md)
 * [Azure DevOps Starter を使用して IoT Edge 用の CI/CD パイプラインを作成する](how-to-devops-starter.md)
-* [Azure IoT Edge Jenkins プラグイン](https://plugins.jenkins.io/azure-iot-edge)
 * [IoT Edge DevOps GitHub のリポジトリ](https://github.com/toolboc/IoTEdge-DevOps)

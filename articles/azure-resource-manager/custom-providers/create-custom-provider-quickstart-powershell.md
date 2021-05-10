@@ -3,16 +3,18 @@ title: Azure PowerShell を使用して Azure カスタム リソース プロ�
 description: Azure PowerShell を使用して Azure カスタム リソース プロバイダーを作成する方法について説明します
 author: MSEvanhi
 ms.author: evanhi
+ms.date: 09/22/2020
 ms.topic: quickstart
 ms.devlang: azurepowershell
-ms.date: 09/22/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6912f7f6fdc88c5d611bfbfd78f15e5f7a949f70
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom:
+- devx-track-azurepowershell
+- mode-api
+ms.openlocfilehash: 9c19eb41210b6fba1935a0d158c8240375f4f8f5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91951844"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533912"
 ---
 # <a name="quickstart-create-an-azure-custom-resource-provider-with-azure-powershell"></a>クイックスタート:Azure PowerShell を使用して Azure カスタム リソース プロバイダーを作成する
 

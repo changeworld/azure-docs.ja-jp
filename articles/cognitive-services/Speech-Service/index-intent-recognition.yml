@@ -11,19 +11,19 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: 6bc467ad0120c8e251eee39be2bcef001a497cad
-  ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+  ms.openlocfilehash: 718418b919b91dd84f2b4ac53bdc0d19cd60ed43
+  ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "92756976"
+  ms.lasthandoff: 04/08/2021
+  ms.locfileid: "107209779"
 landingContent:
 - title: 意図認識について
   linkLists:
   - linkListType: quickstart
     links:
     - text: 音声、意図、エンティティを認識する
-      url: quickstarts/intent-recognition.md
+      url: get-started-intent-recognition.md
 - title: 意図認識を使用して開発する
   linkLists:
   - linkListType: how-to-guide

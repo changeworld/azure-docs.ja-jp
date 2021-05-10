@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175653"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308967"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -131,13 +131,16 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 > [!NOTE]
 > この例は、デモンストレーション用です。 1 つのテンプレートでプロパティ `scriptContent` と `primaryScriptUri` の両方を指定することはできません。
 
+> [!NOTE]
+> _scriptContent_ には、複数の行を含むスクリプトが表示されます。  Azure portal および Azure DevOps パイプラインで複数行のデプロイ スクリプトを解析することはできません。 セミコロン、 _\\r\\n_、または _\\n_ を使用して PowerShell コマンドを 1 行にチェーンするか、外部のスクリプト ファイルで `primaryScriptUri` プロパティを使用することができます。 利用可能な無料の JSON 文字列エスケープ/エスケープ解除ツールが多数あります。 たとえば、 [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html) です。
+
 プロパティ値の詳細:
 
 - `identity`: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
 - `kind`: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
 - `forceUpdateTag`:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 `newGuid()` または `utcNow()` 関数を使用する場合は、どちらの関数もパラメーターの既定値でのみ使用できます。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
-- `containerSettings`:Azure Container Instance をカスタマイズするための設定を指定します。  `containerGroupName` は、コンテナー グループ名を指定するためのものです。 指定しない場合、グループ名は自動的に生成されます。
-- `storageAccountSettings`:既存のストレージ アカウントを使用するための設定を指定します。 指定しない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-existing-storage-account)」を参照してください。
+- `containerSettings`:Azure Container Instance をカスタマイズするための設定を指定します。 デプロイ スクリプトには、新しい Azure Container Instance が必要です。 既存の Azure Container Instance は指定できません。 ただし、`containerGroupName` を使用して、コンテナー グループ名をカスタマイズできます。 指定しない場合、グループ名は自動的に生成されます。
+- `storageAccountSettings`:既存のストレージ アカウントを使用するための設定を指定します。 `storageAccountName` が指定されていない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-existing-storage-account)」を参照してください。
 - `azPowerShellVersion`/`azCliVersion`:使用するモジュールのバージョンを指定します。 [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
 
   >[!IMPORTANT]
@@ -159,14 +162,11 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
 - `environmentVariables`:スクリプトに渡す環境変数を指定します。 詳細については、「[デプロイ スクリプトを開発する](#develop-deployment-scripts)」を参照してください。
 - `scriptContent`:スクリプトの内容を指定します。 外部スクリプトを実行するには、代わりに `primaryScriptUri` を使用します。 例については、「[インライン スクリプトを使用する](#use-inline-scripts)」および「[外部スクリプトを使用する](#use-external-scripts)」を参照してください。
-  > [!NOTE]
-  > Azure portal で複数行のデプロイ スクリプトを解析することはできません。 Azure portal からデプロイ スクリプトを使用してテンプレートをデプロイするには、セミコロンを使用して PowerShell コマンドを 1 行にチェーンするか、外部のスクリプト ファイルで `primaryScriptUri` プロパティを使用することができます。
-
-- `primaryScriptUri`:サポートされているファイル拡張子を含むプライマリ デプロイ スクリプトへのパブリックにアクセス可能な URL を指定します。
-- `supportingScriptUris`:`scriptContent` または `primaryScriptUri` で呼び出されるサポート ファイルへのパブリックにアクセス可能な URL の配列を指定します。
+- `primaryScriptUri`: サポートされているファイル拡張子を含むプライマリ デプロイ スクリプトへのパブリックにアクセス可能な URL を指定します。 詳細については、「[外部関数を使用する](#use-external-scripts)」を参照してください。
+- `supportingScriptUris`: `scriptContent` または `primaryScriptUri` で呼び出されるサポート ファイルへのパブリックにアクセス可能な URL の配列を指定します。 詳細については、「[外部関数を使用する](#use-external-scripts)」を参照してください。
 - `timeout`: [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定される、スクリプトの許容最長実行時間を指定します。 既定値は **P1D** です。
 - `cleanupPreference`. スクリプトの実行がターミナル状態になった際の、デプロイ リソースのクリーンアップ設定を指定します。 既定の設定は、**Always** です。これは、ターミナル状態 (Succeeded、Failed、Canceled) に関係なくリソースを削除することを意味します。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
-- `retentionInterval`:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 保持期間は 1 から 26 時間 (PT26H) です。 このプロパティは、`cleanupPreference` が **OnExpiration** に設定されている場合に使用されます。 **OnExpiration** プロパティは、現在有効になっていません。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
+- `retentionInterval`:デプロイ スクリプトの実行が終了状態に達した後、サービスがデプロイ スクリプト リソースを保持する間隔を指定します。 この期間が経過すると、デプロイ スクリプト リソースは削除されます。 期間は [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) のパターンに基づきます。 保持期間は 1 から 26 時間 (PT26H) です。 このプロパティは、`cleanupPreference` が **OnExpiration** に設定されている場合に使用されます。 詳細については、「[デプロイ スクリプト リソースのクリーンアップ](#clean-up-deployment-script-resources)」を参照してください。
 
 ### <a name="additional-samples"></a>その他のサンプル
 
@@ -212,7 +212,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 詳細については、[テンプレートの例](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)を参照してください。
 
-外部スクリプト ファイルにアクセスできる必要があります。 Azure ストレージ アカウントに格納されているスクリプト ファイルをセキュリティで保護するには、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](./secure-template-with-sas-token.md)」を参照してください。
+外部スクリプト ファイルにアクセスできる必要があります。 Azure ストレージ アカウントに格納されているスクリプト ファイルをセキュリティで保護するには、SAS トークンを生成し、テンプレートの URI に含めます。 デプロイの完了に必要な時間を確保できるように有効期限を設定します。 詳細については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](./secure-template-with-sas-token.md)」を参照してください。
 
 デプロイ スクリプトによって参照されるスクリプトの整合性を確保する必要があります (`primaryScriptUri` または `supportingScriptUris` のいずれか)。 信頼できるスクリプトのみを参照します。
 
@@ -245,7 +245,7 @@ Write-Host "Press [ENTER] to continue ..."
 最初のリソースでは、 `$DeploymentScriptOutputs` という名前の変数を定義し、それを使用して出力値を格納します。 テンプレート内の別のリソースから出力値にアクセスするには、次のように指定します。
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLI スクリプトからの出力を操作する
@@ -313,7 +313,7 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>セキュリティで保護された文字列をデプロイ スクリプトに渡す
 
-コンテナー インスタンスで環境変数 (EnvironmentVariable) を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 デプロイ スクリプトでは、Azure Container Instance と同じ方法で、セキュリティで、セキュリティで保護されていない環境変数と保護されている環境変数が処理されます。 詳細については、「[コンテナー インスタンスで環境変数を設定する](../../container-instances/container-instances-environment-variables.md#secure-values)」を参照してください。
+コンテナー インスタンスで環境変数 (EnvironmentVariable) を設定すると、コンテナーによって実行されるアプリケーションまたはスクリプトの動的な構成を提供できます。 デプロイ スクリプトでは、Azure Container Instance と同じ方法で、セキュリティで、セキュリティで保護されていない環境変数と保護されている環境変数が処理されます。 詳細については、「[コンテナー インスタンスで環境変数を設定する](../../container-instances/container-instances-environment-variables.md#secure-values)」を参照してください。 例については、「[サンプル テンプレート](#sample-templates)」を参照してください。
 
 環境変数の最大許容サイズは 64 KB です。
 

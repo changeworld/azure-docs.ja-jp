@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044325"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768797"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 
@@ -32,13 +32,13 @@ ms.locfileid: "102044325"
 
 ## <a name="1-prepare-your-environment"></a>1.環境を準備する
 
-+ アクティブなサブスクリプションが含まれる Azure アカウントを取得します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> with an active <abbr title="Azure でのリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ アクティブなサブスクリプションが含まれる Azure アカウントを取得します。 <abbr title="Azure の使用に関する課金情報を保持するプロファイル。">account</abbr> アクティブ <abbr title="Azure でのリソース管理に使用される基本的な組織構造。通常、組織内の部門または個人に関連付けられます。">subscription</abbr>. [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [.NET Core SDK 3.1](https://www.microsoft.com/net/download) をインストールします
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x をインストールします。
 
-+ Either the <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するための一連のクロスプラットフォーム コマンド ライン ツール。">Azure CLI</abbr> or <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するためのコマンドを提供する PowerShell モジュール。">Azure PowerShell</abbr> Azure リソースを作成するための
++ 次のいずれか <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するための一連のクロスプラットフォーム コマンド ライン ツール。">Azure CLI</abbr> or <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するためのコマンドを提供する PowerShell モジュール。">Azure PowerShell</abbr> Azure リソースを作成するための
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
@@ -157,7 +157,7 @@ ms.locfileid: "102044325"
     
 ## <a name="5-create-supporting-azure-resources-for-your-function"></a>5.関数用の関連 Azure リソースを作成する
 
-関数コードを Azure にデプロイする前に、次のコマンドを使用してリソース グループ、ストレージ アカウント、関数アプリを作成する必要があります。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>, a <abbr title="すべての Azure Storage データ オブジェクトを含むアカウント。 ストレージ アカウントによって、ストレージ データ用の一意の名前空間が提供されます。">ストレージ アカウント</abbr>, and a <abbr title="Azure でサーバーレス関数をホストするクラウド リソース。関数の実行基盤となるコンピューティング環境を提供します。">function app</abbr> by using the following commands:
+関数コードを Azure にデプロイする前に、次のコマンドを使用してリソース グループ、ストレージ アカウント、関数アプリを作成する必要があります。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>、 <abbr title="すべての Azure Storage データ オブジェクトを含むアカウント。 ストレージ アカウントによって、ストレージ データ用の一意の名前空間が提供されます。">ストレージ アカウント</abbr>、および <abbr title="Azure でサーバーレス関数をホストするクラウド リソース。関数の実行基盤となるコンピューティング環境を提供します。">関数アプリ</abbr> (次のコマンドを使用します)。
 
 1. まだ Azure にサインインしていない場合は、Azure にサインインします。
 
@@ -183,7 +183,7 @@ ms.locfileid: "102044325"
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
 
-    [az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 一般に、リソース グループとリソースは、 <abbr title="リソースが割り当てられている特定の Azure データ センターの地理的な呼称。">region</abbr> `az account list-locations` コマンドから返される利用可能なリージョンを使用してお近くのリージョンに作成します。
+    [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 一般に、リソース グループとリソースは、 <abbr title="リソースが割り当てられている特定の Azure データ センターの地理的な呼称。">region</abbr> `az account list-locations` コマンドから返される利用可能なリージョンを使用してお近くのリージョンに作成します。
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -214,7 +214,7 @@ ms.locfileid: "102044325"
 
     ---
 
-    `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 <abbr title="名前は、全 Azure ユーザーが使用するすべてのストレージ アカウント全体でグローバルに一意である必要があります。 たとえば、contosobizappstorage20 のように、個人名または会社名、アプリケーション名、数値 ID の組み合わせを使用できます">unique in Azure Storage</abbr>. 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
+    `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 <abbr title="名前は、全 Azure ユーザーが使用するすべてのストレージ アカウント全体でグローバルに一意である必要があります。 たとえば、contosobizappstorage20 のように、個人名または会社名、アプリケーション名、数値 ID の組み合わせを使用できます">Azure Storage 内で一意であること</abbr>. 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
 
 
 1. Azure に関数アプリを作成します。
@@ -297,7 +297,7 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="8-clean-up-resources"></a>8.リソースをクリーンアップする
 
-[次の手順](#next-steps)に進んで Azure Storage キュー出力バインディングを追加する場合、既存の作業をベースにするので、リソースはすべてそのままにしておいてください。 <abbr title="関数と他のリソースとの間の宣言型の接続。 入力バインドは関数にデータを提供し、出力バインドは関数から他のリソースにデータを提供します。">binding</abbr>, keep all your resources in place as you'll build on what you've already done.
+[次の手順](#next-steps)に進んで Azure Storage キュー出力バインディングを追加する場合、既存の作業をベースにするので、リソースはすべてそのままにしておいてください。 <abbr title="関数と他のリソースとの間の宣言型の接続。 入力バインドは関数にデータを提供し、出力バインドは関数から他のリソースにデータを提供します。">binding</abbr>を追加する場合、既存の作業をベースにするので、リソースはすべてそのままにしておいてください。
 
 それ以外の場合は、追加コストの発生を避けるために、次のコマンドを使用して、リソース グループとそこに含まれるすべてのリソースを削除してください。
 

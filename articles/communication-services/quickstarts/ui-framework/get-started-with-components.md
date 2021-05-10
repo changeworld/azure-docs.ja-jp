@@ -7,12 +7,12 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f4a8e8f26e88a73fc73c309ef336813282589f3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 336059007cfca40a74ad5a4395c6f9a59215bb58
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488178"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105825783"
 ---
 # <a name="quickstart-get-started-with-ui-framework-base-components"></a>クイックスタート: UI フレームワークの基本コンポーネントの概要
 
@@ -52,7 +52,7 @@ cd my-app
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話クライアント ライブラリをインストールします。 提供された tarball (プライベート プレビュー) を my-app ディレクトリに移動します。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話 SDK をインストールします。 提供された tarball (プライベート プレビュー) を my-app ディレクトリに移動します。
 
 ```console
 
@@ -76,7 +76,7 @@ npm run start
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Azure Communication Services UI クライアント ライブラリが備える主な機能のいくつかは、次のクラスとインターフェイスにより処理されます。
+Azure Communication Services UI SDK が備える主な機能のいくつかは、次のクラスとインターフェイスにより処理されます。
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

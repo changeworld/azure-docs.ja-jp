@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 14197516c0669055f756614b9559f1423703c6a8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9acc6de84c3e5bc43f482d36ade242d2315a2a4f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102053578"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565114"
 ---
 # <a name="create-an-azure-sql-assessment"></a>Azure SQL の評価を作成する
 
@@ -18,7 +18,7 @@ Azure への移行に取り組む過程では、オンプレミスのワーク�
 この記事では、Azure SQL への移行に備えて、Azure Migrate: 検出および評価ツールを使用して、検出された SQL インスタンスを評価する方法について説明します。
 
 > [!Note]
-> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
+> VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 [このチュートリアル](tutorial-discover-vmware.md)で作業を開始します。 既存のプロジェクトでこの機能を試す場合は、この記事の[前提条件](how-to-discover-sql-existing-project.md)を完了していることを確認してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -136,10 +136,10 @@ Azure SQL に移行する前に修正が可能な、移行に関する問題や�
         **Azure SQL DB 対応性** | **Azure SQL MI 対応性** | **推奨されるデプロイの種類** | **Azure SQL 構成とコスト見積もりは計算済みか?**
          --- | --- | --- | --- |
         準備 | 準備 | Azure SQL DB または Azure SQL MI ([詳細](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type)) | はい
-        Ready | 準備中または不明 | Azure SQL DB | はい
-        準備中または不明 | Ready | Azure SQL MI  | はい
+        Ready | 準備不完了または不明 | Azure SQL DB | はい
+        準備不完了または不明 | Ready | Azure SQL MI  | はい
         準備不完了 | 準備不完了 | Azure VM に対応の可能性あり ([詳細](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm)) | いいえ
-        準備中または不明 | 準備中または不明 | Unknown | いいえ
+        準備不完了または不明 | 準備不完了または不明 | Unknown | いいえ
     
     - **ターゲットのデプロイの種類** (評価のプロパティで選択): **Azure SQL DB**
     
@@ -192,4 +192,4 @@ Azure Migrate では、評価対象のすべての SQL インスタンスとデ�
 ## <a name="next-steps"></a>次の手順
 
 - Azure SQL の評価の計算方法の[詳細を確認](concepts-azure-sql-assessment-calculation.md)します。
-- [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用して、SQL インスタンスとデータベースの移行を開始します。
+- [Azure Database Migration Service](../dms/dms-overview.md) を使用して、SQL インスタンスとデータベースの移行を開始します。

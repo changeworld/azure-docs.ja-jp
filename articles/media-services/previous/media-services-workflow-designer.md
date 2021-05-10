@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
-ms.openlocfilehash: 8173da37792948e267aae2078fee9f864bf7bdc9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 744d302afd21e6521fb17bf7bef6e68d21fb8372
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011155"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639389"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "103011155"
 作成されたワークフロー ファイルはアセットとしてアップロードした後、メディア ファイルのエンコードに使用できます。 **.NET** を使用した **メディア エンコーダー プレミアム ワークフロー** によるエンコード方法の詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」を参照してください。
 
 ## <a name="modify-existing-workflows"></a><a id="existing_workflows"></a>既存のワークフローを変更する
-デザイナー ツールを使用して、 [既定の公開済みワークフロー](media-services-workflow-designer.md#existing_workflows) を変更できます。 既定のワークフロー ファイルは [こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手できます。 フォルダーにはこれらのファイルの説明も含まれています。
+デザイナー ツールを使用して、 [既定の公開済みワークフロー](media-services-workflow-designer.md#existing_workflows) を変更できます。 既定のワークフロー ファイルは [こちら](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md)から入手できます。 フォルダーにはこれらのファイルの説明も含まれています。
 
 以下のビデオでは、デザイナーの使用方法を示しています。
 

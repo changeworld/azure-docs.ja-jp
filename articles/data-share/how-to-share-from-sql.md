@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
-ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644683"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -36,7 +36,20 @@ Azure Data Share は、Azure SQL Database と Azure Synapse Analytics (旧称 Az
 SQL ソースからデータを共有するための前提条件の一覧を次に示します。 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) から共有するための前提条件
-[ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成できます。
+
+
+Azure Active Directory 認証を使用してデータを共有する場合の前提条件の一覧を次に示します。
+
+* 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
+* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
+* SQL Server の **Azure Active Directory 管理者**
+* SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で SQL サーバーに移動します。 左側のナビゲーションから *[ファイアウォールと仮想ネットワーク]* を選択します。
+    1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
+    1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
+    1. **[保存]** をクリックします。 
+
+SQL 認証を使用してデータを共有する場合の前提条件の一覧を下に示します。 [ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成できます。
 
 * 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
@@ -132,7 +145,9 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
     ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 
-1. ご利用の SQL サーバーまたは Synapse ワークスペースを選択し、資格情報を入力するよう求められたら入力し、 **[次へ]** を選択して共有したいオブジェクトに移動し、[データセットの追加] を選択します。 Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルとビュー、または Azure Synapse Analytics (ワークスペース) 専用 SQL プールからのテーブルを選択できます。 
+1. SQL サーバーまたは Synapse ワークスペースを選択します。 AAD 認証を使用していて **[Allow Data Share to run the above 'create user' SQL script on my behalf]\(Data Share が上記の 'ユーザーの作成' SQL スクリプトを実行することを許可する\)** チェックボックスが表示される場合は、このチェックボックスをオンにします。 SQL 認証を使用している場合は、資格情報を入力し、前提条件の手順に従って画面に表示されるスクリプトを実行します。 これにより、SQL DB から読み取るための Data Share リソース権限が与えられます。 
+
+   **[次へ]** を選択して共有するオブジェクトに移動し、[データセットの追加] を選択します。 Azure SQL Database と Azure Synapse Analytics (旧称 Azure SQL DW) からのテーブルとビュー、または Azure Synapse Analytics (ワークスペース) 専用 SQL プールからのテーブルを選択できます。 
 
     ![SelectDatasets](./media/select-datasets-sql.png "データセットを選択する")    
 
@@ -176,7 +191,18 @@ Azure Storage へのデータを受信することを選択する場合、前提
 Azure SQL Database、Azure Synapse Analytics へのデータを受信することを選択した場合、前提条件の一覧を以下に示します。 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) にデータを受信するための前提条件
-[ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成できます。
+
+自分が SQL サーバーの **Azure Active Directory 管理者** であり、その SQL サーバーにデータを受信する場合の前提条件の一覧を以下に示します。
+
+* Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
+* SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
+* SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
+    1. Azure portal で SQL サーバーに移動します。 左側のナビゲーションから *[ファイアウォールと仮想ネットワーク]* を選択します。
+    1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
+    1. **[+クライアント IP の追加]** をクリックします。 クライアントの IP アドレスは変わることがあります。 次回 Azure portal から SQL データを共有するときにも、このプロセスを繰り返すことが必要になる場合もあります。 IP 範囲を追加することもできます。
+    1. **[保存]** をクリックします。 
+    
+自分が **Azure Active Directory 管理者** ではない SQL サーバーにデータを受け入れる場合の前提条件の一覧を下に示します。 [ステップ バイ ステップのデモ](https://youtu.be/aeGISgK1xro)に従って、前提条件を構成できます。
 
 * Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。 
@@ -264,11 +290,11 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    ![ターゲットへのマップ](./media/dataset-map-target.png "ターゲットへのマップ") 
 
-1. データを配置するターゲット データ ストアを選択します。 パスと名前が同じターゲット データ ストア内のすべてのデータ ファイルまたはデータ テーブルが上書きされます。 
+1. データを配置するターゲット データ ストアを選択します。 パスと名前が同じターゲット データ ストア内のすべてのデータ ファイルまたはデータ テーブルが上書きされます。 データを SQL ターゲットに受け取っていて **[Allow Data Share to run the above 'create user' SQL script on my behalf]\(Data Share が上記の 'ユーザーの作成' SQL スクリプトを実行することを許可する\)** チェックボックスが表示される場合は、このチェックボックスをオンにします。 それ以外の場合は、前提条件の指示に従って画面に表示されるスクリプトを実行します。 これにより、Data Share リソースの書き込みアクセス許可が対象の SQL DB に付与されます。
 
    ![ターゲット ストレージ アカウント](./media/dataset-map-target-sql.png "ターゲット データ ストア") 
 
-1. スナップショットベースの共有の場合、データに定期的な更新を提供するためのスナップショット スケジュールがデータ プロバイダーによって作成されていれば、 **[スナップショット スケジュール]** タブを選択して、スナップショット スケジュールを有効にすることもできます。スナップショット スケジュールの横にあるチェック ボックスをオンにし、 **[+ Enable]\(+ 有効\)** を選択します。
+1. スナップショットベースの共有の場合、データに定期的な更新を提供するためのスナップショット スケジュールがデータ プロバイダーによって作成されていれば、 **[スナップショット スケジュール]** タブを選択して、スナップショット スケジュールを有効にすることもできます。スナップショット スケジュールの横にあるチェック ボックスをオンにし、 **[+ Enable]\(+ 有効\)** を選択します。 スケジュールされた最初のスナップショットが、スケジュールされた時刻から 1 分以内に開始され、以降のスナップショットがスケジュールされた時刻から数秒以内に開始されることに注意してください。
 
    ![スナップショット スケジュールを有効にする](./media/enable-snapshot-schedule.png "スナップショット スケジュールを有効にする")
 
@@ -299,21 +325,21 @@ SQL ソースからデータを共有するとき、スナップショットの�
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| Decimal |Decimal (10 進数型) |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | INT |Int32 |
-| money |Decimal |
+| money |Decimal (10 進数型) |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |Decimal (10 進数型) |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Decimal (10 進数型) |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |

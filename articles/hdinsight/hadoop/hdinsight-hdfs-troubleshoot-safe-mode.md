@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: d34bf8d82aee14f5ba835f68a061555d24ee2621
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98944439"
 ---
-# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>シナリオ:Azure HDInsight クラスター上のローカル HDFS がセーフ モードでスタックする
+# <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>シナリオ: Azure HDInsight クラスター上のローカル HDFS がセーフ モードでスタックする
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -33,7 +33,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 HDFS レプリケーション係数未満か、それに近いごく少数のノードにまで、HDInsight クラスターがスケール ダウンされました。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 1. 次のコマンドを使用して、HDInsight クラスター上の HDFS の状態をレポートします。
 

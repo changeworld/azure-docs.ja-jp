@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
 ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
-ms.openlocfilehash: 1371fb22b3474e37e50fe0eb67541d9ced69555f
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 28ba2ffd2007aeb45081cf66b05395a2b8456bf7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771874"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779707"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -138,55 +138,80 @@ Kubernetes のマニフェスト ファイルでは、どのコンテナー イ�
           app: azure-vote-back
       template:
         metadata:
-          name: azure-vote-back
-        spec:
-          ports:
-          - port: 6379
-          selector:
+          labels:
             app: azure-vote-back
-        ---
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: azure-vote-front
         spec:
-          replicas: 1
-          selector:
-            matchLabels:
-              app: azure-vote-front
-          template:
-            metadata:
-              labels:
-                app: azure-vote-front
-            spec:
-              nodeSelector:
-                "beta.kubernetes.io/os": linux
-              containers:
-              - name: azure-vote-front
-                image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
-                resources:
-                  requests:
-                    cpu: 100m
-                    memory: 128Mi
-                  limits:
-                    cpu: 250m
-                    memory: 256Mi
-                ports:
-                - containerPort: 80
-                env:
-                - name: REDIS
-                  value: "azure-vote-back"
-        ---
-        apiVersion: v1
-        kind: Service
+          nodeSelector:
+            "beta.kubernetes.io/os": linux
+          containers:
+          - name: azure-vote-back
+            image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+            env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                cpu: 250m
+                memory: 256Mi
+            ports:
+            - containerPort: 6379
+              name: redis
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: azure-vote-back
+    spec:
+      ports:
+      - port: 6379
+      selector:
+        app: azure-vote-back
+    ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: azure-vote-front
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: azure-vote-front
+      template:
         metadata:
-          name: azure-vote-front
-        spec:
-          type: LoadBalancer
-          ports:
-          - port: 80
-          selector:
+          labels:
             app: azure-vote-front
+        spec:
+          nodeSelector:
+            "beta.kubernetes.io/os": linux
+          containers:
+          - name: azure-vote-front
+            image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                cpu: 250m
+                memory: 256Mi
+            ports:
+            - containerPort: 80
+            env:
+            - name: REDIS
+              value: "azure-vote-back"
+    ---
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: azure-vote-front
+    spec:
+      type: LoadBalancer
+      ports:
+      - port: 80
+      selector:
+        app: azure-vote-front
     ```
 
 1. `kubectl apply` コマンドを使用してアプリケーションをデプロイし、ご利用の YAML マニフェストの名前を指定します。
@@ -287,8 +312,8 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 
 <!-- LINKS - internal -->
 [kubernetes-concepts]: concepts-clusters-workloads.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-delete]: /cli/azure/aks#az-aks-delete
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-delete]: /cli/azure/aks#az_aks_delete
 [aks-monitor]: ../azure-monitor/containers/container-insights-overview.md
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fea39388b6b4387dfc4fe95d1cdfb3e523a8089c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470777"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382438"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C に SAML アプリケーションを登録するためのオプション
 
@@ -34,7 +34,86 @@ ms.locfileid: "103470777"
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="encrypted-saml-assertions"></a>暗号化された SAML アサーション
+
+## <a name="saml-response-signature"></a>SAML 応答署名
+
+SAML メッセージに署名するために使用される証明書を指定することができます。 メッセージは、アプリケーションに送信される SAML 応答内の `<samlp:Response>` 要素です。
+
+まだポリシー キーがない場合は、[作成](saml-service-provider.md#create-a-policy-key)します。 次に、SAML トークン発行者の技術プロファイルで `SamlMessageSigning` メタデータ項目を構成します。 `StorageReferenceId` では、ポリシー キー名を参照する必要があります。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+### <a name="saml-response-signature-algorithm"></a>SAML 応答署名アルゴリズム
+
+SAML アサーションの署名に使用する署名アルゴリズムを構成できます。 指定できる値は、`Sha256`、`Sha384`、`Sha512`、および `Sha1` です。 技術プロファイルとアプリケーションで同じ署名アルゴリズムが使用されていることを確認します。 証明書でサポートされているアルゴリズムのみを使用してください。
+
+証明書利用者の `XmlSignatureAlgorithm` メタデータ要素内のメタデータ キーを使用して署名アルゴリズムを構成します。
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2"/>
+    <Metadata>
+      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
+    </Metadata>
+   ..
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+## <a name="saml-assertions-signature"></a>SAML アサーション署名
+
+アプリケーションが SAML アサーション セクションに署名することを想定している場合は、SAML サービス プロバイダーで `WantAssertionsSigned` が `true` に設定されていることを確認します。 `false` に設定されている場合、または存在しない場合、アサーション セクションは署名されません。 次の例は、`WantAssertionsSigned` が `true` に設定された SAML サービス プロバイダーのメタデータを示しています。
+
+```xml
+<EntityDescriptor ID="id123456789" entityID="https://samltestapp2.azurewebsites.net" validUntil="2099-12-31T23:59:59Z" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+  <SPSSODescriptor  WantAssertionsSigned="true" AuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+  ...
+  </SPSSODescriptor>
+</EntityDescriptor>
+```  
+
+### <a name="saml-assertions-signature-certificate"></a>SAML アサーション署名証明書
+
+ポリシーでは、SAML 応答の SAML アサーション セクションに署名するために使用する証明書を指定する必要があります。 まだポリシー キーがない場合は、[作成](saml-service-provider.md#create-a-policy-key)します。 次に、SAML トークン発行者の技術プロファイルで `SamlAssertionSigning` メタデータ項目を構成します。 `StorageReferenceId` では、ポリシー キー名を参照する必要があります。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SamlMessageCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
+```
+
+## <a name="saml-assertions-encryption"></a>SAML アサーションの暗号化
 
 SAML アサーションが暗号化形式であることをアプリケーションが想定する場合は、Azure AD B2C ポリシーで暗号化が有効になっていることを確認する必要があります。
 
@@ -158,26 +237,6 @@ SAML テスト アプリでテストに使用できる完全なサンプル ポ�
 1. `TenantId` をテナント名に一致するように更新します (例: *contoso.b2clogin.com*)。
 1. *B2C_1A_signup_signin_saml* のポリシー名をそのままにします。
 
-## <a name="saml-response-signature-algorithm"></a>SAML 応答署名アルゴリズム
-
-SAML アサーションの署名に使用する署名アルゴリズムを構成できます。 指定できる値は、`Sha256`、`Sha384`、`Sha512`、および `Sha1` です。 技術プロファイルとアプリケーションで同じ署名アルゴリズムが使用されていることを確認します。 証明書でサポートされているアルゴリズムのみを使用してください。
-
-証明書利用者の `XmlSignatureAlgorithm` メタデータ要素内のメタデータ キーを使用して署名アルゴリズムを構成します。
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
-  <TechnicalProfile Id="PolicyProfile">
-    <DisplayName>PolicyProfile</DisplayName>
-    <Protocol Name="SAML2"/>
-    <Metadata>
-      <Item Key="XmlSignatureAlgorithm">Sha256</Item>
-    </Metadata>
-   ..
-  </TechnicalProfile>
-</RelyingParty>
-```
-
 ## <a name="saml-response-lifetime"></a>SAML 応答の有効期間
 
 SAML 応答を有効にする期間を構成できます。 SAML トークン発行者技術プロファイル内の `TokenLifeTimeInSeconds` メタデータ項目を使用して有効期間を設定します。 この値は、トークンの発行時に計算された `NotBefore` タイムスタンプからの経過時間を秒数で示します。 有効期間の既定値は 300 秒 (5 分) です。
@@ -279,7 +338,7 @@ SAML 応答内の datetime の値からミリ秒を削除するかどうかを�
 
 `UseTechnicalProfileForSessionManagement` 要素と [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) を使用して、Azure AD B2C と SAML 証明書利用者アプリケーション間のセッションを管理できます。
 
-## <a name="force-users-to-re-authenticate"></a>ユーザーに再認証を強制する 
+## <a name="force-users-to-reauthenticate"></a>ユーザーに再認証を強制する 
 
 ユーザーに再認証を強制するために、アプリケーションで SAML 認証要求に `ForceAuthn` 属性を含めることができます。 `ForceAuthn` 属性はブール値です。 true に設定すると、ユーザー セッションは Azure AD B2C で無効になり、ユーザーは再認証するように強制されます。 次の SAML 認証要求では、`ForceAuthn` 属性を true に設定する方法を示しています。 
 
@@ -290,6 +349,28 @@ SAML 応答内の datetime の値からミリ秒を削除するかどうかを�
        ForceAuthn="true" ...>
     ...
 </samlp:AuthnRequest>
+```
+
+## <a name="sign-the-azure-ad-b2c-idp-saml-metadata"></a>Azure AD B2C IdP SAML メタデータに署名する
+
+アプリケーションで必要な場合は、Azure AD B2C に対して、SAML IdP メタデータ ドキュメントに署名するように指示できます。 まだポリシー キーがない場合は、[作成](saml-service-provider.md#create-a-policy-key)します。 次に、SAML トークン発行者の技術プロファイルで `MetadataSigning` メタデータ項目を構成します。 `StorageReferenceId` では、ポリシー キー名を参照する必要があります。
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Token Issuer</DisplayName>
+  <TechnicalProfiles>
+    <!-- SAML Token Issuer technical profile -->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>Token Issuer</DisplayName>
+      <Protocol Name="SAML2"/>
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+        ...
+      <CryptographicKeys>
+        <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlMetadataCert"/>
+        ...
+      </CryptographicKeys>
+    ...
+    </TechnicalProfile>
 ```
 
 ## <a name="debug-the-saml-protocol"></a>SAML プロトコルをデバッグする

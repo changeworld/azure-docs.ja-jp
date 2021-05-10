@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: 42c592e6aede4537dc983fd2cff043a878f81f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100593100"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
@@ -97,9 +97,9 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    > [!NOTE] 
    > 多くのテンプレートにはコネクタが含まれ、必要なプロパティが既に設定されていることがあります。 ただし、テンプレートによっては、ロジック アプリが正しくデプロイされるように値を指定することが必要な場合があります。 不足しているプロパティ フィールドを設定しないでデプロイしようとすると、エラー メッセージが表示されます。 
 
-## <a name="update-logic-apps-with-templates"></a>テンプレートでロジック アプリを更新する
+## <a name="update-logic-apps-with-templates&quot;></a>テンプレートでロジック アプリを更新する
 
-1. [Azure portal](https://portal.azure.com "Azure portal") のロジック アプリ デザイナーでロジック アプリを探して開きます。
+1. [Azure portal](https://portal.azure.com &quot;Azure portal") のロジック アプリ デザイナーでロジック アプリを探して開きます。
 
 2. デザイナーのツール バーで、 **[テンプレート]** を選択します。 そうすると、保存していない変更が破棄されるので、続行を確認する警告メッセージが表示されます。 確認するには、 **[OK]** を選びます。 次に例を示します。
 

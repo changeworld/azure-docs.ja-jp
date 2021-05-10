@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 03/10/2021
+ms.date: 04/06/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6161c2f53690140e2cd1140deaa8a22b3388dd2b
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633769"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505265"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -84,6 +84,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Citrix.Services/XenDesktopEssentials (Citrix Virtual Desktops Essentials)
 - Conexlink.MyCloudIt/accounts (MyCloudIT - Azure デスクトップ ホスティング)
 - Crypteron.DataSecurity/apps (Crypteron)
+- GitHub.Enterprise/accounts (GitHub AE)
 - gridpro.evops/accounts
 - gridpro.evops/accounts/eventrules
 - gridpro.evops/accounts/requesttemplates
@@ -96,7 +97,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.aadiam/azureadmetrics
 - microsoft.aadiam/privateLinkForAzureAD (Azure AD 用プライベート リンク)
 - microsoft.aadiam/tenants
-- microsoft.agfoodplatform/farmbeats
+- Microsoft.AgFoodPlatform/farmBeats (Azure FarmBeats PaaS)
 - microsoft.aisupercomputer/accounts
 - microsoft.aisupercomputer/accounts/jobgroups
 - microsoft.aisupercomputer/accounts/jobgroups/jobs
@@ -142,6 +143,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.AzureStackHCI/clusters (Azure Stack HCI)
 - microsoft.azurestackhci/galleryimages
 - microsoft.azurestackhci/networkinterfaces
+- microsoft.azurestackhci/virtualharddisks
 - Microsoft.AzureStackHCI/virtualmachines (Azure Stack HCI 仮想マシン - Azure Arc)
 - microsoft.azurestackhci/virtualnetworks
 - microsoft.baremetal/consoleconnections
@@ -186,7 +188,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Cognition/syntheticsAccounts (Synthetics アカウント)
 - Microsoft.CognitiveServices/accounts (Cognitive Services)
 - Microsoft.Compute/availabilitySets (可用性セット)
-- microsoft.compute/capacityreservationgroups
+- Microsoft.Compute/capacityReservationGroups (容量予約グループ)
 - microsoft.compute/capacityreservationgroups/capacityreservations
 - microsoft.compute/capacityreservations
 - Microsoft.Compute/cloudServices (クラウド サービス (延長サポート))
@@ -218,8 +220,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.ConnectedCache/cacheNodes (接続キャッシュ リソース)
 - microsoft.connectedvehicle/platformaccounts
 - microsoft.connectedvmwarevsphere/resourcepools
-- microsoft.connectedvmwarevsphere/vcenters
-- microsoft.connectedvmwarevsphere/virtualmachines
+- Microsoft.connectedVMwareVSphere/vCenters (VMware vCenters)
+- Microsoft.ConnectedVMwarevSphere/VirtualMachines (VMware + AVS 仮想マシン)
+- microsoft.connectedvmwarevsphere/virtualmachines/extensions
 - microsoft.connectedvmwarevsphere/virtualmachinetemplates
 - microsoft.connectedvmwarevsphere/virtualnetworks
 - Microsoft.ContainerInstance/containerGroups (コンテナー インスタンス)
@@ -230,7 +233,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.containerregistry/registries/taskruns
 - microsoft.containerregistry/registries/tasks
 - Microsoft.ContainerRegistry/registries/webhooks (コンテナー レジストリ Webhook)
-- Microsoft.ContainerService/containerServices (コンテナー サービス (非推奨))
+- microsoft.containerservice/containerservices
 - Microsoft.ContainerService/managedClusters (Kubernetes サービス)
 - microsoft.containerservice/openshiftmanagedclusters
 - microsoft.contoso/clusters
@@ -254,7 +257,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.DataMigration/services (Azure Database Migration Service)
 - Microsoft.DataMigration/services/projects (Azure Database Migration プロジェクト)
 - microsoft.datamigration/slots
+- microsoft.datamigration/sqlmigrationservices
 - Microsoft.DataProtection/BackupVaults (バックアップ コンテナー)
+- microsoft.dataprotection/resourceguards
 - microsoft.dataprotection/resourceoperationgatekeepers
 - Microsoft.DataShare/accounts (データ共有)
 - Microsoft.DBforMariaDB/servers (Azure Database for MariaDB サーバー)
@@ -262,7 +267,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.DBforMySQL/servers (Azure Database for MySQL サーバー)
 - Microsoft.DBforPostgreSQL/flexibleServers (Azure Database for PostgreSQL フレキシブル サーバー)
 - Microsoft.DBforPostgreSQL/serverGroups (Azure Database for PostgreSQL サーバー グループ)
-- microsoft.dbforpostgresql/servergroupsv2
+- Microsoft.DBforPostgreSQL/serverGroupsv2 (Azure Database for PostgreSQL サーバー グループ)
 - Microsoft.DBforPostgreSQL/servers (Azure Database for PostgreSQL サーバー)
 - Microsoft.DBforPostgreSQL/serversv2 (Azure Database for PostgreSQL サーバー v2)
 - microsoft.dbforpostgresql/singleservers
@@ -298,7 +303,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.DomainRegistration/domains (App Service ドメイン)
 - microsoft.edgeorder/addresses
 - microsoft.edgeorder/ordercollections
-- microsoft.edgeorder/orders
+- Microsoft.EdgeOrder/orders (Azure Edge)
 - Microsoft.Elastic/monitors (Elasticsearch)
 - microsoft.enterpriseknowledgegraph/services
 - Microsoft.EventGrid/domains (Event Grid ドメイン)
@@ -319,6 +324,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.HanaOnAzure/hanaInstances (SAP HANA on Azure)
 - Microsoft.HanaOnAzure/sapMonitors (SAP ソリューション向け Azure Monitor)
 - microsoft.hardwaresecuritymodules/dedicatedhsms
+- microsoft.hdinsight/clusterpools
+- microsoft.hdinsight/clusterpools/clusters
 - Microsoft.HDInsight/clusters (HDInsight クラスター)
 - Microsoft.HealthBot/healthBots (Azure Health Bot)
 - Microsoft.HealthcareApis/services (Azure API for FHIR)
@@ -361,7 +368,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.IntelligentITDigitalTwin/digitalTwins/testPlans (スイート)
 - Microsoft.IntelligentITDigitalTwin/digitalTwins/tests (スクリプト)
 - Microsoft.IoTCentral/IoTApps (IoT Central アプリケーション)
-- Microsoft.IoTSpaces/Graph (Digital Twins (非推奨))
+- microsoft.iotspaces/graph
 - microsoft.keyvault/hsmpools
 - microsoft.keyvault/managedhsms
 - Microsoft.KeyVault/vaults (キー コンテナー)
@@ -369,6 +376,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Kusto/clusters (Azure Data Explorer クラスター)
 - Microsoft.Kusto/clusters/databases (Azure Data Explorer データベース)
 - Microsoft.LabServices/labAccounts (ラボ サービス)
+- microsoft.labservices/labplans
+- microsoft.labservices/labs
 - Microsoft.LoadTestService/LoadTests (クラウド ネイティブ ロード テスト)
 - Microsoft.Logic/integrationAccounts (統合アカウント)
 - Microsoft.Logic/integrationServiceEnvironments (統合サービス環境)
@@ -380,6 +389,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.MachineLearning/webServices (Machine Learning スタジオ (クラシック) Web サービス)
 - Microsoft.MachineLearning/workspaces (Machine Learning スタジオ (クラシック) ワークスペース)
 - microsoft.machinelearningcompute/operationalizationclusters
+- microsoft.machinelearningexperimentation/accounts/workspaces
 - microsoft.machinelearningservices/modelinventories
 - microsoft.machinelearningservices/modelinventory
 - microsoft.machinelearningservices/virtualclusters
@@ -388,8 +398,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.machinelearningservices/workspaces/batchendpoints/deployments
 - microsoft.machinelearningservices/workspaces/inferenceendpoints
 - microsoft.machinelearningservices/workspaces/inferenceendpoints/deployments
-- Microsoft.MachineLearningServices/workspaces/onlineEndpoints (ML アプリ)
-- Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments (ML アプリのデプロイ)
+- Microsoft.MachineLearningServices/workspaces/onlineEndpoints (機械学習オンライン エンドポイント)
+- Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments (機械学習オンライン デプロイ)
 - Microsoft.Maintenance/maintenanceConfigurations (メンテナンス構成)
 - microsoft.maintenance/maintenancepolicies
 - microsoft.managedidentity/groups
@@ -407,7 +417,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.media/mediaservices/liveevents (ライブ イベント)
 - microsoft.media/mediaservices/streamingEndpoints (ストリーミング エンドポイント)
 - microsoft.media/mediaservices/transforms
-- microsoft.media/videoanalyzers
+- microsoft media/videoanalyzers (Video Analyzer)
 - microsoft.microservices4spring/appclusters
 - microsoft.migrate/assessmentprojects
 - microsoft.migrate/migrateprojects
@@ -506,8 +516,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.OperationalInsights/workspaces (Log Analytics ワークスペース)
 - Microsoft.OperationsManagement/solutions (ソリューション)
 - microsoft.operationsmanagement/views
-- microsoft.orbital/contactprofiles
-- microsoft.orbital/spacecrafts
+- Microsoft.Orbital/contactProfiles (ContactProfiles)
+- Microsoft.Orbital/spacecrafts (スペ-スクラフト)
 - Microsoft.Peering/peerings (ピアリング)
 - Microsoft.Peering/peeringServices (ピアリング サービス)
 - Microsoft.Portal/dashboards (共有ダッシュボード)
@@ -517,7 +527,8 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.powerbi/workspacecollections
 - microsoft.powerbidedicated/autoscalevcores
 - Microsoft.PowerBIDedicated/capacities (Power BI Embedded)
-- Microsoft.ProjectBabylon/Accounts (Babylon アカウント)
+- microsoft.powerplatform/enterprisepolicies
+- microsoft.projectbabylon/accounts
 - Microsoft.Purview/Accounts (Purview アカウント)
 - Microsoft.Quantum/Workspaces (Quantum ワークスペース)
 - Microsoft.RecoveryServices/vaults (Recovery Services コンテナー)
@@ -525,7 +536,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Relay/namespaces (リレー)
 - microsoft.remoteapp/collections
 - microsoft.resiliency/chaosexperiments
-- Microsoft.ResourceConnector/Appliances (アプライアンス)
+- Microsoft.ResourceConnector/Appliances (リソース ブリッジ)
 - Microsoft.resourcegraph/queries (Resource Graph クエリ)
 - Microsoft.Resources/deploymentScripts (デプロイ スクリプト)
 - Microsoft.Resources/templateSpecs (テンプレート スペック)
@@ -553,6 +564,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.servicefabricmesh/volumes
 - Microsoft.ServicesHub/connectors (サービス ハブ コネクタ)
 - Microsoft.SignalRService/SignalR (SignalR)
+- Microsoft.SignalRService/WebPubSub (Web PubSub サービス)
 - microsoft.singularity/accounts
 - microsoft.solutions/appliancedefinitions
 - microsoft.solutions/appliances
@@ -575,7 +587,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Storage/StorageAccounts (ストレージ アカウント)
 - microsoft.storagecache/amlfilesystems
 - Microsoft.StorageCache/caches (HPC キャッシュ)
-- microsoft.storagepool/diskpools
+- Microsoft.StoragePool/diskPools (Disk プール)
 - Microsoft.StorageSync/storageSyncServices (ストレージ同期サービス)
 - Microsoft.StorageSyncDev/storageSyncServices (ストレージ同期サービス)
 - Microsoft.StorageSyncInt/storageSyncServices (ストレージ同期サービス)
@@ -587,6 +599,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Synapse/privateLinkHubs (Azure Synapse Analytics (プライベート リンク ハブ))
 - Microsoft.Synapse/workspaces (Azure Synapse Analytics)
 - Microsoft.Synapse/workspaces/bigDataPools (Apache Spark プール)
+- microsoft.synapse/workspaces/kustopools
 - microsoft.synapse/workspaces/sqldatabases
 - Microsoft.Synapse/workspaces/sqlPools (専用 SQL プール)
 - microsoft.terraformoss/providerregistrations
@@ -603,7 +616,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.vmware/arczones
 - microsoft.vmware/resourcepools
 - microsoft.vmware/vcenters
-- Microsoft.VMware/VirtualMachines (AVS 仮想マシン)
+- microsoft.vmware/virtualmachines
 - microsoft.vmware/virtualmachinetemplates
 - microsoft.vmware/virtualnetworks
 - Microsoft.VMwareCloudSimple/dedicatedCloudNodes (CloudSimple ノード)
@@ -633,10 +646,6 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - MyGet.PackageManagement/services (MyGet - ホスト型 NuGet、NPM、Bower、Vsix)
 - Paraleap.CloudMonix/services (CloudMonix)
 - Pokitdok.Platform/services (PokitDok プラットフォーム)
-- Providers.Test/statefulIbizaEngines (アプリケーション評価)
-- providers.test/statefulresources
-- providers.test/statefulresources/nestedresources
-- providers.test/statelessresources
 - RavenHq.Db/databases (RavenHQ)
 - Raygun.CrashReporting/apps (Raygun)
 - Sendgrid.Email/accounts (SendGrid アカウント)
@@ -661,6 +670,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 
 - microsoft.security/assessments
 - microsoft.security/assessments/subassessments
+- microsoft.security/insights/classification
 - microsoft.security/iotalerts
 - microsoft.security/locations/alerts (セキュリティ アラート)
 - microsoft.security/pricings

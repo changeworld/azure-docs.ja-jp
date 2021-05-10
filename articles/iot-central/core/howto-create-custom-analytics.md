@@ -3,18 +3,18 @@ title: カスタム分析を使用して Azure IoT Central を拡張する |Micr
 description: ソリューション開発者は、カスタムの分析と視覚化を実行するために IoT Central アプリケーションを構成します。 このソリューションでは、Azure Databricks を使用します。
 author: TheRealJasonAndrew
 ms.author: v-anjaso
-ms.date: 02/18/2020
+ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 3132ec8fb3cb123653887d92a2f33788f40564c0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551319"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105033825"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 以下の設定を使用して、[Azure portal で Event Hubs 名前空間を作成](https://portal.azure.com/#create/Microsoft.EventHub)します。
 
-| 設定 | [値] |
+| 設定 | 値 |
 | ------- | ----- |
 | Name    | 名前空間名を選択します |
 | Pricing tier | Basic |
@@ -82,43 +82,63 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 必要なリソースを作成すると、次のスクリーンショットのような **IoTCentralAnalysis** リソース グループが表示されます。
 
-![IoT Central 分析リソース グループ](media/howto-create-custom-analytics/resource-group.png)
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="IoT Central 分析リソース グループの画像。":::
 
 ## <a name="create-an-event-hub"></a>イベント ハブの作成
 
 テレメトリをイベント ハブに連続してエクスポートするように IoT Central アプリケーションを構成できます。 このセクションでは、IoT Central アプリケーションからテレメトリを受信するイベント ハブを作成します。 このイベント ハブは、処理するためにテレメトリを Stream Analytics ジョブに配信します。
 
 1. Azure portal で Event Hubs 名前空間に移動し、 **[+ イベント ハブ]** を選択します。
-1. イベント ハブに **centralexport** という名前を付けて、 **[作成]** を選択します。
+1. イベント ハブに **centralexport** という名前を付けます。
 1. 名前空間内のイベント ハブの一覧で、**centralexport** を選択します。 次に、**[共有アクセス ポリシー]** を選択します。
-1. **[+ 追加]** を選択します。 **Listen** という名前のポリシーを **[リッスン]** 要求と共に作成します。
+1. **[+ 追加]** を選択します。 **[送信]** と **[リッスン]** の要求を含む、**SendListen** という名前のポリシーを作成します。
 1. ポリシーの準備ができたら、リストでそれを選択して、**[接続文字列 – 主キー]** の値をコピーします。
 1. この接続文字列をメモしておきます。これは後で、イベント ハブから読み取るように Databricks ノートブックを構成するときに使用します。
 
 次のスクリーンショットのような Event Hubs 名前空間が作成されます。
 
-![Event Hubs 名前空間](media/howto-create-custom-analytics/event-hubs-namespace.png)
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Event Hubs 名前空間の画像。":::
 
 ## <a name="configure-export-in-iot-central"></a>IoT Central でエクスポートを構成する
 
-[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、Contoso テンプレートから作成した IoT Central アプリケーションに移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
+このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。
 
-1. **[データのエクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
-1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、先ほど作成した IoT Central アプリケーションに移動します。 エクスポートを構成するには、まず宛先を作成します。
+
+1. **[データのエクスポート]** ページに移動し、 **[宛先]** を選択します。
+1. **[+ New destination]\(+ 新しい宛先\)** を選択します。
+1. 次の表の値を使用して、宛先を作成します。
+
+    | 設定 | 値 |
+    | ----- | ----- |
+    | 送信先の名前 | テレメトリ イベント ハブ |
+    | 変換先の型 | Azure Event Hubs |
+    | 接続文字列 | 先ほどメモしたイベント ハブの接続文字列 |
+
+    **[イベント ハブ]** は、**centralexport** と表示されます。
+
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="データのエクスポート先を示すスクリーンショット。":::
+
+1. **[保存]** を選択します。
+
+エクスポート定義を作成するには、次のようにします。
+
+1. **[データのエクスポート]** ページに移動し、 **[+ New Export]\(+ 新しいエクスポート\)** を選択します。
+
+1. 次の表の値を使用して、エクスポートを構成します。
 
     | 設定 | 値 |
     | ------- | ----- |
-    | 表示名 | Event Hubs へのエクスポート |
+    | エクスポート名 | イベント ハブ エクスポート |
     | 有効 | On |
-    | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
-    | イベント ハブ | centralexport |
-    | 測定 | On |
-    | デバイス | Off |
-    | デバイス テンプレート | Off |
+    | エクスポートするデータの種類 | 製品利用統計情報 |
+    | 変換先 | **[+ Destination]\(+ 宛先\)** を選択し、 **[Telemetry event hub]\(テレメトリ イベント ハブ\)** を選択します |
 
-![データ エクスポートの構成](media/howto-create-custom-analytics/cde-configuration.png)
+1. **[保存]** を選択します。
 
-エクスポートの状態が **[実行中]** になるまで待ってから、続行します。
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="データのエクスポート定義を示すスクリーンショット。":::
+
+続行する前に、 **[データのエクスポート]** ページでエクスポートの状態が **[正常]** になるまで待ちます。
 
 ## <a name="configure-databricks-workspace"></a>Databricks ワークスペースを構成する
 
@@ -164,7 +184,7 @@ Azure portal で、Azure Databricks サービスに移動し、**[ワークス�
 
 1. ライブラリの状態が **[Installed] \(インストール済み\)** になります。
 
-    ![インストールされたライブラリ](media/howto-create-custom-analytics/cluster-libraries.png)
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="インストールされたライブラリのスクリーンショット。":::
 
 ### <a name="import-a-databricks-notebook"></a>Databricks ノートブックをインポートする
 
@@ -178,9 +198,9 @@ IoT Central テレメトリを分析および視覚化するための Python コ
 
 1. **[ワークスペース]** を選択して、インポートされたノートブックを表示します。
 
-    ![インポートされたノートブック](media/howto-create-custom-analytics/import-notebook.png)
+:::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="インポートされたノートブックのスクリーンショット。":::
 
-1. 最初の Python セル内のコードを編集して、先ほど保存した Event Hubs 接続文字列を追加します。
+5. 最初の Python セル内のコードを編集して、先ほど保存した Event Hubs 接続文字列を追加します。
 
     ```python
     from pyspark.sql.functions import *
@@ -206,7 +226,7 @@ IoT Central テレメトリを分析および視覚化するための Python コ
 
 ノートブックで、セル 14 まで下にスクロールして、デバイスの種類別のローリング平均湿度のプロットを表示します。 このプロットは、ストリーミング テレメトリの到着に合わせて継続的に更新されます。
 
-![平滑化されたテレメトリのプロット](media/howto-create-custom-analytics/telemetry-plot.png)
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="平滑化されたテレメトリのプロットのスクリーンショット。":::
 
 ノートブックでグラフのサイズを変更できます。
 
@@ -214,7 +234,7 @@ IoT Central テレメトリを分析および視覚化するための Python コ
 
 ノートブックで、[ボックス プロット](https://en.wikipedia.org/wiki/Box_plot)を表示するには、セル 20 まで下にスクロールします。 ボックス プロットは静的データに基づいているため、それらを更新するにはセルを再実行する必要があります。
 
-![ボックス プロット](media/howto-create-custom-analytics/box-plots.png)
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="ボックス プロットのスクリーンショット。":::
 
 ノートブックでプロットのサイズを変更できます。
 

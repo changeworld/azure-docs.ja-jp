@@ -1,23 +1,20 @@
 ---
-title: Azure Stack での Azure Stream Analytics の実行 (プレビュー)
+title: Azure Stack での Azure Stream Analytics の実行
 description: Azure Stream Analytics Edge ジョブを作成し、IoT Edge ランタイムを使用して Azure Stack ハブに展開します。
 ms.service: stream-analytics
 author: an-emma
 ms.author: raan
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 03/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 315b2efa042721a19fa779794c4921f9ced1fc83
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020130"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104589805"
 ---
-# <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stack での Azure Stream Analytics の実行 (プレビュー)
-
-> [!IMPORTANT]
-> この機能はプレビュー段階であるため、運用環境では使用しないことをお勧めします。
+# <a name="run-azure-stream-analytics-on-azure-stack"></a>Azure Stack での Azure Stream Analytics の実行 
 
 Azure Stream Analytics は Azure Stack Hub で IoT Edge モジュールとして実行できます。 IoT Edge モジュールに構成が追加されたことにより、すべての Azure Stack Hub の利用で見つかったカスタム URI を使用できるようになることで、Azure Stack Hub サブスクリプションで実行されている BLOB ストレージ、Event Hubs、IoT Hub と対話できるようになります。
 

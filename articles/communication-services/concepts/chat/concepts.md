@@ -6,150 +6,105 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 22ffa59339d85af80a7398e581862d19eef17222
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 292f430a1b08d59efdf05405437b3d1aa49ea2b7
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490655"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168597"
 ---
-# <a name="chat-concepts"></a>チャットに関する概念
+# <a name="chat-concepts"></a>チャットに関する概念 
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
+
+Azure Communication Services Chat SDK を使用して、アプリケーションにリアルタイムのテキスト チャットを追加できます。 このページには、チャットの主な概念と機能がまとめられています。    
+
+特定の SDK の言語と機能の詳細については、[Communication Services Chat SDK の概要](./sdk-features.md)に関するページを参照してください。  
+
+## <a name="chat-overview"></a>チャットの概要    
+
+チャットの会話は、**チャット スレッド** 内で行われます。 チャット スレッドには次の特徴があります。
+
+- チャット スレッドは、それぞれの `ChatThreadId` によって一意に識別されます。 
+- チャット スレッドには、メッセージを送信できる参加者として 1 人以上のユーザーを含めることができます。 
+- ユーザーは、1 つ以上のチャット スレッドに参加できます。 
+- 特定のチャット スレッドにアクセスできるのは、そのスレッドの参加者のみで、彼らだけがチャット スレッドの操作を実行できます。 これらの操作には、メッセージの送受信、参加者の追加、参加者の削除が含まれます。 
+- ユーザーは、自分が作成したすべてのチャット スレッドに参加者として自動的に追加されます。
+
+### <a name="user-access"></a>ユーザー アクセス
+通常、スレッドの作成者と参加者は、スレッドに対して同じレベルのアクセス権限を持っており、SDK で利用可能なすべての関連する操作 (スレッドの削除を含む) を実行できます。 参加者には、他の参加者が送信したメッセージに対する書き込みアクセス権限がありません。つまり、送信済みメッセージを更新または削除できるのは、そのメッセージの送信者だけです。 別の参加者がその操作を行おうとすると、エラーが発生します。 
+
+一連のユーザーのチャット機能へのアクセスを制限する場合は、信頼されたサービスの一環としてアクセスを構成することができます。 信頼されたサービスとは、チャット参加者の認証と承認を調整するサービスです。 これについては、以下で詳しく説明します。  
+
+### <a name="chat-data"></a>チャット データ 
+Communication Services は、明示的に削除されるまで、チャットの履歴を保存します。 チャット スレッドの参加者は、`ListMessages` を使用して、特定のスレッドのメッセージの履歴を表示できます。 チャット スレッドから削除されたユーザーは、以前のメッセージの履歴を表示することはできますが、新しいメッセージをそのチャット スレッドの一部として送受信することはできません。 参加者のいない、完全にアイドル状態のスレッドは、30 日後に自動的に削除されます。 Communication Services で格納されるデータの詳細については、[プライバシー](../privacy.md)に関するドキュメントを参照してください。  
+
+### <a name="service-limits"></a>サービスの制限  
+- チャット スレッドで許可される参加者の最大数は 250 人です。   
+- 許可されている最大メッセージ サイズは約 28 KB です。  
+- 20 名を超える参加者がいるチャット スレッドの場合は、開封確認メッセージと入力インジケーターの機能はサポートされません。    
+
+## <a name="chat-architecture"></a>チャットのアーキテクチャ    
+
+チャットのアーキテクチャには、次の2つの主要な部分があります。1) 信頼されたサービスと 2) クライアント アプリケーション。    
+
+:::image type="content" source="../../media/chat-architecture.png" alt-text="Communication Services のチャットのアーキテクチャを示す図。"::: 
+
+ - **信頼されたサービス:** チャット セッションを適切に管理するには、リソース接続文字列を使用して Communication Services に接続できるようにするサービスが必要です。 このサービスには、チャット スレッドの作成、参加者の追加と削除、ユーザーへのアクセス トークンの発行を行う役割があります。 アクセス トークンの詳細については、[アクセス トークン](../../quickstarts/access-tokens.md)のクイックスタートを参照してください。  
+ - **クライアント アプリ:** クライアント アプリケーションが信頼されたサービスに接続し、ユーザーが直接 Communication Services に接続するために使用するアクセス トークンを受け取ります。 信頼されたサービスによってチャット スレッドが作成され、ユーザーが参加者として追加されたら、クライアント アプリを使用してチャット スレッドに接続し、メッセージを送信できるようになります。 クライアント アプリでリアルタイム通知機能 (以下で説明) を使用し、他の参加者によるメッセージおよびスレッドの更新情報を受信登録します。
+    
+        
+## <a name="message-types"></a>メッセージの種類    
+
+チャットでは、メッセージの履歴の一部として、システムによって生成されたメッセージだけでなく、ユーザーによって生成されたメッセージも共有されます。 システム メッセージは、チャット スレッドが更新されたときに生成され、参加者が追加または削除された日時やチャット スレッドのトピックが更新された日時を特定するのに役立ちます。 チャット スレッド上で `List Messages` または `Get Messages` を呼び出すと、その結果には、両方の種類のメッセージが時系列順に表示されます。
+
+ユーザーによって生成されたメッセージの場合、チャット スレッドにメッセージを送信する際に `SendMessageOptions` でメッセージの種類を設定できます。 値が指定されていない場合、Communication Services の既定値である `text` 型になります。 HTML を送信する場合、この値の設定は重要です。 `html` を指定すると、コンテンツは Communication Services によってサニタイズされ、クライアント デバイス上で安全にレンダリングされるようになります。
+ - `text`: チャット スレッドの一部としてユーザーが作成および送信するプレーンテキスト メッセージ。 
+ - `html`: チャット スレッドの一部としてユーザーが作成および送信する、HTML を使用して書式設定されたメッセージ。 
+
+システム メッセージの種類は次のとおりです。 
+ - `participantAdded`:1 人以上の参加者がチャット スレッドに追加されたことを示すシステム メッセージ。
+ - `participantRemoved`:参加者がチャット スレッドから削除されたことを示すシステム メッセージ。
+ - `topicUpdated`: スレッド トピックが更新されたことを示すシステム メッセージ。
+
+## <a name="real-time-notifications"></a>リアルタイム通知  
+
+一部の SDK (JavaScript Chat SDK など) では、リアルタイム通知がサポートされています。 これにより、クライアントは API をポーリングしなくても、Communication Services のチャット スレッドに対する更新情報や受信メッセージをリアルタイムでリッスンできます。 クライアント アプリは、次のイベントをサブスクライブできます。
+ - `chatMessageReceived` - 参加者によってチャット スレッドに新しいメッセージが送信されたとき。
+ - `chatMessageEdited` - チャット スレッドでメッセージが編集されたとき。 
+ - `chatMessageDeleted` - チャット スレッドでメッセージが削除されたとき。   
+ - `typingIndicatorReceived` - 別の参加者によってチャット スレッドに入力インジケーターが送信されたとき。    
+ - `readReceiptReceived` - 別の参加者によって開封済みのメッセージに対して開封確認メッセージが送信されたとき。  
+ - `chatThreadCreated` - Communication Services ユーザーによってチャット スレッドが作成されたとき。    
+ - `chatThreadDeleted` - Communication Services ユーザーによってチャット スレッドが削除されたとき。    
+ - `chatThreadPropertiesUpdated` - チャット スレッドのプロパティが更新されたとき。現在は、スレッドのトピックの更新のみがサポートされています。 
+ - `participantsAdded` - ユーザーがチャット スレッドの参加者として追加されたとき。     
+ - `participantsRemoved` - 既存の参加者がチャット スレッドから削除されたとき。
+
+リアルタイム通知を使用すると、ユーザーにリアルタイムのチャット エクスペリエンスを提供できます。 Communication Services は、ユーザーが不在のため見逃したメッセージに対してプッシュ通知を送信するために Azure Event Grid と統合されており、自分のカスタム アプリ通知サービスに接続できるチャット関連のイベント (投稿操作) を発行します。 詳細については、[サーバー イベント](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcommunication-services%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)に関する記事をご覧ください。
 
 
-Azure Communication Services の Chat クライアント ライブラリを使用して、アプリケーションにリアルタイムのテキスト チャットを追加できます。 このページには、チャットの主な概念と機能がまとめられています。
+## <a name="build-intelligent-ai-powered-chat-experiences"></a>AI を活用したインテリジェントなチャット エクスペリエンスを構築する   
 
-特定のクライアント ライブラリの言語と機能の詳細については、「[Communication Services の Chat クライアント ライブラリの概要](./sdk-features.md)」を参照してください。
+[Azure Cognitive API シリーズ](../../../cognitive-services/index.yml)と Chat SDK を使用して、次のようなユース ケースを構築できます。
 
-## <a name="chat-overview"></a>チャットの概要
-
-チャット会話は、チャット スレッド内で行われます。 チャット スレッドには、多くのメッセージと多くのユーザーを含めることができます。 各メッセージは 1 つのスレッドに属しており、1 人のユーザーは 1 つまたは複数のスレッドに参加できます。
-
-チャット スレッド内の各ユーザーは、メンバーと呼ばれます。 チャット スレッドには最大 250 名のメンバーを含めることができます。 スレッド メンバーだけが、チャット スレッドでメッセージを送受信したり、メンバーを追加/削除したりできます。 許可されている最大メッセージ サイズは約 28 KB です。 1 つのチャット スレッド内のすべてのメッセージを取得するには、`List/Get Messages` 操作を使用します。 Communication Services では、チャット スレッドまたはメッセージに対して削除操作を実行するまで、またはチャット スレッドにメンバーがいなくなった時点で孤立し、削除対象として処理されるまで、チャット履歴を保存します。
-
-20 名を超えるメンバーを持つチャット スレッドの場合は、開封確認メッセージと入力インジケーター機能が無効になっています。
-
-## <a name="chat-architecture"></a>チャットのアーキテクチャ
-
-チャットのアーキテクチャには、次の2つの主要な部分があります。1) 信頼されたサービスと 2) クライアント アプリケーション。
-
-:::image type="content" source="../../media/chat-architecture.png" alt-text="Communication Services のチャットのアーキテクチャを示す図。":::
-
- - **信頼されたサービス:** チャット セッションを適切に管理するには、リソース接続文字列を使用して Communication Services に接続できるようにするサービスが必要です。 このサービスで、チャット スレッドの作成、スレッド メンバーシップの管理、ユーザーへのアクセス トークンの提供を行います。 アクセス トークンの詳細については、[アクセス トークン](../../quickstarts/access-tokens.md)のクイックスタートを参照してください。
-
- - **クライアント アプリ:** クライアント アプリケーションが信頼されたサービスに接続してアクセス トークンを受け取り、これを使って Communication Services に直接接続します。 この接続が確立されると、クライアント アプリがメッセージを送受信できるようになります。
-
-信頼済みのサービス レベルを使用してアクセス トークンを生成することをお勧めします。 このシナリオでは、ユーザーの作成と管理、さらに、そのトークンの発行をサーバー側が担います。
-
-## <a name="message-types"></a>メッセージの種類
-
-Communication Services のチャットでは、ユーザーが生成したメッセージだけでなく、**スレッド アクティビティ** と呼ばれるシステム生成メッセージも共有されます。 スレッド アクティビティは、チャット スレッドが更新されたときに生成されます。 チャット スレッドで `List Messages` または `Get Messages` を呼び出すと、結果には、ユーザーが生成したテキスト メッセージとシステム メッセージが時系列順に含まれます。 これは、メンバーが追加または削除された日時や、チャット スレッドのトピックが更新された日時を特定するのに役立ちます。 サポートされているメッセージの種類は次のとおりです。
-
- - `Text`:チャット会話の一部としてユーザーが作成して送信するプレーンテキスト メッセージ。
- - `RichText/HTML`:書式設定されたテキスト メッセージ。 Communication Services ユーザーは現在、RichText メッセージを送信できないことに注意してください。 このメッセージ型は、Teams の相互運用シナリオで、Teams ユーザーから Communication Services ユーザーに送信されるメッセージでサポートされています。
-
- - `ThreadActivity/ParticipantAdded`: 1 人以上の参加者がチャット スレッドに追加されたことを示すシステム メッセージ。 次に例を示します。
-
-```
-{
-            "id": "1613589626560",
-            "type": "participantAdded",
-            "sequenceId": "7",
-            "version": "1613589626560",
-            "content":
-            {
-                "participants":
-                [
-                    {
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
-                        "displayName": "Jane",
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"
-                    }
-                ],
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:26Z"
-        }
-```
-
-- `ThreadActivity/ParticipantRemoved`:参加者がチャット スレッドから削除されたことを示すシステム メッセージ。 次に例を示します。
-
-```
-{
-            "id": "1613589627603",
-            "type": "participantRemoved",
-            "sequenceId": "8",
-            "version": "1613589627603",
-            "content":
-            {
-                "participants":
-                [
-                    {
-                        "id": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4df6-f40f-343a0d003226",
-                        "displayName": "Jane",
-                        "shareHistoryTime": "1970-01-01T00:00:00Z"
-                    }
-                ],
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:27Z"
-        }
-```
-
-- `ThreadActivity/TopicUpdate`: スレッド トピックが更新されたことを示すシステム メッセージ。 次に例を示します。
-
-```
-{
-            "id": "1613589623037",
-            "type": "topicUpdated",
-            "sequenceId": "2",
-            "version": "1613589623037",
-            "content":
-            {
-                "topic": "New topic",
-                "initiator": "8:acs:d2a829bc-8523-4404-b727-022345e48ca6_00000008-511c-4ce0-f40f-343a0d003224"
-            },
-            "createdOn": "2021-02-17T19:20:23Z"
-        }
-```
-
-## <a name="real-time-signaling"></a>リアルタイムの通知
-
-Chat JavaScript クライアント ライブラリには、リアルタイムの通知が含まれています。 これにより、クライアントは API をポーリングしなくても、チャット スレッドに対するリアルタイムの更新と受信メッセージをリッスンできます。 使用できるイベントは以下のとおりです。
-
- - `ChatMessageReceived` - ユーザーがメンバーになっているチャット スレッドに新しいメッセージが送信されたとき。 このイベントは、前のトピックで説明した自動生成されたシステム メッセージには送信されません。
- - `ChatMessageEdited` -ユーザーがメンバーになっているチャット スレッド内でメッセージが編集されたとき。
- - `ChatMessageDeleted` -ユーザーがメンバーになっているチャット スレッド内でメッセージが削除されたとき。
- - `TypingIndicatorReceived` -ユーザーがメンバーになっているチャット スレッド内で別のメンバーがメッセージを入力しているとき。
- - `ReadReceiptReceived` -ユーザーがチャット スレッドで送信したメッセージを別のユーザーが読んだとき。
-
-## <a name="chat-events"></a>チャット イベント
-
-リアルタイムの通知を使用すると、ユーザーはリアルタイムでチャットできます。 Azure Event Grid を使用して、チャット関連のイベントをサブスクライブできます。 詳細については、[イベント処理の概念](../event-handling.md)に関するトピックをご覧ください。
-
-## <a name="using-cognitive-services-with-chat-client-library-to-enable-intelligent-features"></a>Cognitive Services を Chat クライアント ライブラリと共に使用してインテリジェントな機能を有効にする
-
-[Azure Cognitive API](../../../cognitive-services/index.yml) を Chat クライアント ライブラリと共に使用して、インテリジェントな機能をアプリケーションに追加できます。 たとえば、次のように操作できます。
-
-- ユーザーがさまざまな言語で互いにチャットできるようにする。
-- サポート エージェントがチケットの優先順位を設定するために、顧客から受信した問題から否定的なセンチメントを検出する。
+- ユーザーがさまざまな言語で互いにチャットできるようにする。  
+- サポート エージェントがチケットの優先順位を設定するために、顧客から受信したメッセージから否定的なセンチメントを検出できるように支援する。 
 - 受信メッセージのキー検出とエンティティ認識を分析し、メッセージの内容に基づいてアプリ内でユーザーに関連情報を表示する。
 
-これを実現する 1 つの方法として、信頼されたサービスをチャット スレッドのメンバーとして機能させることができます。 たとえば、言語の翻訳を有効にするとします。 このサービスは、他のメンバーが交換するメッセージをリッスンし [1]、Cognitive API を呼び出してその内容を目的の言語に翻訳し [2、3]、翻訳結果をチャット スレッドのメッセージとして送信する [4] という役割を担います。
+これを実現する 1 つの方法として、信頼されたサービスをチャット スレッドの参加者として機能させることができます。 たとえば、言語の翻訳を有効にするとします。 このサービスは、他の参加者が交換するメッセージをリッスンし [1]、Cognitive API を呼び出してその内容を目的の言語に翻訳し [2、3]、翻訳結果をチャット スレッドのメッセージとして送信する [4] という役割を担います。
 
-これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](../../../cognitive-services/translator/quickstart-translator.md)をご覧ください。
+これにより、メッセージ履歴には元のメッセージと翻訳されたメッセージの両方が含まれます。 クライアント アプリケーションに、元のメッセージまたは翻訳されたメッセージを表示するロジックを追加できます。 Cognitive API を使用してテキストを別の言語に翻訳する方法については、[こちらのクイックスタート](../../../cognitive-services/translator/quickstart-translator.md)をご覧ください。 
+    
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services と対話する Cognitive Services を示す図。"::: 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Communication Services と対話する Cognitive Services を示す図。":::
+## <a name="next-steps"></a>次の手順   
 
-## <a name="next-steps"></a>次の手順
+> [!div class="nextstepaction"] 
+> [チャットを開始する](../../quickstarts/chat/get-started.md)    
 
-> [!div class="nextstepaction"]
-> [チャットを開始する](../../quickstarts/chat/get-started.md)
-
-次のドキュメントもご覧ください。
-
-- [Chat クライアント ライブラリ](sdk-features.md)について理解する
+次のドキュメントもご覧ください。  
+- [Chat SDK](sdk-features.md) について理解を深める

@@ -2,13 +2,13 @@
 title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
-ms.date: 03/15/2021
-ms.openlocfilehash: 4dd62c926cce765ebc2b21378308650e313716ff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/07/2021
+ms.openlocfilehash: 3ef3e6f3b67e8c92e0137f36e19c62cba79e1c14
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471015"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107030825"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -34,9 +34,9 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 
 一部の制限は、リージョンのレベルで管理されます。
 
-vCPU クォータを例に説明します。 vCPU のサポートでのクォータ引き上げを要求するには、どのリージョンでいくつの vCPU を使用するかを決める必要があります。 その後、必要な数量とリージョンについて、Azure リソース グループの vCPU クォータの具体的な要求を行います。 西ヨーロッパで 30 の vCPU を使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 の vCPU を要求します。 他のリージョンでの vCPU クォータは増やされず、西ヨーロッパだけが 30 vCPU クォータになります。
+vCPU クォータを例に説明します。 vCPU のサポートでのクォータ引き上げを要求するには、どのリージョンでいくつの vCPU を使用するかを決める必要があります。 その後、必要な数量とリージョンについて、vCPU クォータの増量に関する要求を行います。 西ヨーロッパで 30 の vCPU を使用してアプリケーションを実行する必要がある場合、具体的に、西ヨーロッパで 30 の vCPU を要求します。 他のリージョンでの vCPU クォータは増やされず、西ヨーロッパだけが 30 vCPU クォータになります。
 
-つまり、1 つのリージョンのワークロードに対して必要な Azure リソース グループ クォータを決定します。 その後、デプロイする各リージョンでの量を要求します。 特定のリージョンでの現在のクォータを確認する方法について詳しくは、「[リソース クォータのエラーを解決する](../templates/error-resource-quota.md)」を参照してください。
+つまり、1 つのリージョンのワークロードに対して必要なクォータを決定します。 その後、デプロイする各リージョンでの量を要求します。 特定のリージョンでの現在のクォータを確認する方法について詳しくは、「[リソース クォータのエラーを解決する](../templates/error-resource-quota.md)」を参照してください。
 
 ## <a name="general-limits"></a>全般的な制限
 
@@ -382,7 +382,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="azure-blob-storage-limits"></a>Azure BLOB ストレージの制限
+### <a name="azure-blob-storage-limits"></a>Azure Blob Storage の制限
 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 

@@ -64,8 +64,8 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 * [リモート ファイルのエンコードとビデオのストリーミング – REST](stream-files-tutorial-with-rest.md)
 * [アップロードされたファイルのエンコードとビデオのストリーム配信 - .NET](stream-files-tutorial-with-api.md)
 * [ライブ ストリーム配信 - .NET](stream-live-tutorial-with-api.md)
-* [ビデオの分析 - .NET](analyze-videos-tutorial-with-api.md)
-* [AES-128 動的暗号化 - .NET](protect-with-aes128.md)
+* [ビデオの分析 - .NET](analyze-videos-tutorial.md)
+* [AES-128 動的暗号化 - .NET](drm-playready-license-template-concept.md)
 
 ### <a name="samples"></a>サンプル
 
@@ -75,12 +75,12 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 タスクの完了方法を示すコード サンプルを含むハウツー ガイド。 このセクションでは、多くの例を見つけることができます。 いくつかを次に示します。
 
-* [アカウントの作成 - CLI](./create-account-howto.md)
+* [アカウントの作成 - CLI](./account-create-how-to.md)
 * [API へのアクセス - CLI](./access-api-howto.md)
 * [HTTPS をジョブの入力とするエンコード - .NET](job-input-from-http-how-to.md)  
 * [イベントの監視 - ポータル](monitoring/monitor-events-portal-how-to.md)
-* [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 
-* [カスタム変換を使用してエンコードする方法 - CLI](custom-preset-cli-howto.md)
+* [マルチ DRM を使用した動的な暗号化 - .NET](drm-protect-with-drm-tutorial.md) 
+* [カスタム変換を使用してエンコードする方法 - CLI](transform-custom-preset-cli-how-to.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

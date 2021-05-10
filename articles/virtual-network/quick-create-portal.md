@@ -1,22 +1,25 @@
 ---
-title: 仮想ネットワークの作成 - クイック スタート - Azure Portal
+title: 'クイック スタート: 仮想ネットワークを作成する - Azure portal'
 titleSuffix: Azure Virtual Network
-description: クイック スタート:Azure Portal で仮想ネットワークを作成します。 これらのネットワークにより、VM などの Azure リソースが相互におよびインターネットで安全に通信できるようになります。
+description: このクイックスタートでは、Azure portal を使用した仮想ネットワークの作成方法について説明します。
 author: KumudD
-tags: azure-resource-manager
-ms.service: virtual-network
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: virtual-network
-ms.workload: infrastructure
-ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: cc3ba3a0519400368e0cbfec7abe2d9bd1731b34
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 03/17/2021
+ms.topic: quickstart
+ms.service: virtual-network
+ms.workload: infrastructure
+ms.tgt_pltfrm: virtual-network
+ms.devlang: na
+tags:
+- azure-resource-manager
+ms.custom:
+- mode-portal
+ms.openlocfilehash: 43c45b43084656a45d2509ee2c7a4376cdc7c052
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217636"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531181"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用した仮想ネットワークの作成
 
@@ -28,28 +31,50 @@ ms.locfileid: "98217636"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-1. Azure Portal メニューから **[リソースの作成]** を選択します。 Azure Marketplace で、 **[ネットワーク]**  >  **[仮想ネットワーク]** を選択します。
+1. ポータルの左上隅にある **[リソースの作成]** を選択します。
 
-1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
+2. 検索ボックスに、「**仮想ネットワーク**」と入力します。 検索結果から **[仮想ネットワーク]** を選択します。
+
+3. **[仮想ネットワーク]** ページで、 **[作成]** を選択します。
+
+4. **[仮想ネットワークの作成]** の **[基本]** タブで次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
-    | サブスクリプション | サブスクリプションを選択します。|
-    | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
-    | 名前 | 「*myVirtualNetwork*」と入力します。 |
-    | 場所 | **[米国東部]** を選択します。|
+    | **プロジェクトの詳細** |   |
+    | サブスクリプション | サブスクリプションを選択します。 |
+    | Resource group | **[新規作成]** を選択します。  </br> 「**myResourceGroup**」と入力します。 </br> **[OK]** を選択します。 |
+    | **インスタンスの詳細** |   |
+    | 名前 | 「**myVNet**」と入力します。 |
+    | リージョン | **[(米国) 米国東部]** を選択します。 |
 
-1. **次へ:[Next: IP Addresses]\(次へ: IP アドレス\)** を選択し、 **[IPv4 アドレス空間]** に「*10.1.0.0/16*」と入力します。
+    :::image type="content" source="./media/quick-create-portal/create-virtual-network.png" alt-text="Azure portal で仮想ネットワークを作成する" border="true":::
 
-1. **[サブネットの追加]** を選択し、 **[サブネット名]** に「*myVirtualSubnet*」、 **[サブネットのアドレス範囲]** に「*10.1.0.0/24*」と入力します。
+5. **[IP アドレス]** タブを選択するか、ページ下部の **[次へ: IP アドレス]** ボタンを選択します。
 
-1. **[追加]** を選択し、 **[Review + create]\(確認と作成\)** を選択します。 残りは既定値のままにして、 **[作成]** を選択します。
+6. **[IPv4 アドレス空間]** で、既存のアドレス空間を選択し、「**10.1.0.0/16**」に変更します。
 
-1. **[仮想ネットワークの作成]** で、 **[作成]** を選択します。
+7. **[サブネットの追加]** を選択し、 **[サブネット名]** に「**MySubnet**」、 **[サブネットのアドレス範囲]** に「**10.1.0.0/24**」と入力します。
+
+8. **[追加]** を選択します。
+
+9. **[セキュリティ]** タブを選択するか、ページ下部にある **[次へ: セキュリティ]** ボタンを選択します。
+
+10. **[BastionHost]** で **[有効にする]** を選択します。 この情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | 要塞名 | 「**myBastionHost**」と入力します |
+    | AzureBastionSubnet のアドレス空間 | 「**10.1.1.0/24**」と入力します |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に「**myBastionIP**」と入力します。 </br> **[OK]** を選択します。 |
+
+11. **[確認と作成]** タブを選択するか、 **[確認と作成]** ボタンを選択します。
+
+12. **［作成］** を選択します
 
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
@@ -57,172 +82,168 @@ ms.locfileid: "98217636"
 
 ### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-1. Azure Portal メニューから **[リソースの作成]** を選択します。
+1. ポータルの左上で、 **[リソースの作成]**  >  **[Compute]**  >  **[仮想マシン]** を選択します。 
+   
+2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-1. Azure Marketplace で、 **[コンピューティング]**  >  **[Windows Server 2019 Datacenter]** を選択します。 **［作成］** を選択します
-
-1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | **プロジェクトの詳細** | |
-    | サブスクリプション | サブスクリプションを選択します。 |
-    | Resource group | **[myResourceGroup]** を選択します。 このリソース グループは、前のセクションで作成しました。 |
+    | 設定 | 値                                          |
+    |-----------------------|----------------------------------|
+    | **プロジェクトの詳細** |  |
+    | サブスクリプション | Azure サブスクリプションを選択します。 |
+    | リソース グループ | **[myResourceGroup]** を選択します |
     | **インスタンスの詳細** |  |
-    | 仮想マシン名 | 「*myVm1*」と入力します。 |
-    | リージョン | **[米国東部]** を選択します。 |
-    | 可用性のオプション | 既定値の **[インフラストラクチャ冗長は必要ありません]** になります。 |
-    | Image | 既定値の **[Windows Server 2019 Datacenter]** になります。 |
-    | サイズ | 既定値の **[Standard DS1 v2]** になります。 |
+    | 仮想マシン名 | 「**myVM1**」と入力します |
+    | リージョン | **[(米国) 米国東部]** を選択します |
+    | 可用性オプション | **[インフラストラクチャ冗長は必要ありません]** を選択します |
+    | Image | **[Windows Server 2019 Datacenter]** を選択します |
+    | Azure Spot インスタンス | **[いいえ]**  を選択します |
+    | サイズ | VM サイズを選択するか、既定の設定を使用します |
     | **管理者アカウント** |  |
-    | ユーザー名 | 任意のユーザー名を入力します。 |
-    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    | パスワードの確認 | パスワードを再入力します。 |
-    | **受信ポートの規則** |  |
-    | パブリック受信ポート | **[選択したポートを許可する]** を選択します。 |
-    | 受信ポートの選択 | 「*HTTP (80)* 」と「*RDP (3389)* 」と入力します。 |
-    | **コスト削減** |  |
-    | Windows ライセンスを既にお持ちの場合 | 既定値の **[いいえ]** になります。 |
+    | ユーザー名 | ユーザー名を入力します |
+    | Password | [パスワード] を入力します |
+    | [パスワードの確認入力] | パスワードを再入力します |
+    | **受信ポートの規則** |    |
+    | パブリック受信ポート | **[なし]** を選択します。 |
+    |
 
-1. **ディスク** を選択します。
-
-1. **[仮想マシンの作成 - Disk]** で、既定値のままにして、 **[Next:Networking]\(次へ : ネットワーク\)** を選択します。
-
-1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
+3. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。
+  
+4. [ネットワーク] タブで、次を選択または入力します。
 
     | 設定 | 値 |
-    | ------- | ----- |
-    | 仮想ネットワーク | 既定値の **[myVirtualNetwork]** になります。 |
-    | Subnet | 既定値の **[myVirtualSubnet (10.1.0.0/24)]** になります。 |
-    | パブリック IP | 既定値の **[(new) myVm-ip]** になります。 |
-    | NIC ネットワーク セキュリティ グループ | 既定値の **[Basic]** になります。 |
-    | パブリック受信ポート | 既定値の **[選択したポートを許可する]** になります。 |
-    | 受信ポートの選択 | 既定値の **[HTTP]** と **[RDP]** になります。
-
-1. **次へ:管理** を選択します。
-
-1. **[仮想マシンの作成 - 管理]** の **[診断ストレージ アカウント]** で **[新規作成]** を選択します。
-
-1. **[ストレージ アカウントの作成]** に次の情報を入力または選択します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | 名前 | 「*myvmstorageaccount*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
-    | アカウントの種類 | 既定値の **[Azure Storage General Purpose v1]** になります。 |
-    | パフォーマンス | 既定値の **[Standard]** になります。 |
-    | レプリケーション | 既定値の **[ローカル冗長ストレージ (LRS)]** になります。 |
-
-1. **[OK]** を選択し、 **[Review + create]\(確認と作成\)** を選択します。 **[確認および作成]** ページが表示され、Azure によって構成が検証されます。
-
-1. "**証に成功しました**" というメッセージが表示されたら、 **[作成]** を選択します。
+    |-|-|
+    | **ネットワーク インターフェイス** |  |
+    | 仮想ネットワーク | **[myVNet]** を選択します。 |
+    | Subnet | **mySubnet** の選択 |
+    | パブリック IP | **[なし]** を選択します |
+    | NIC ネットワーク セキュリティ グループ | **[Basic]** を選択します|
+    | パブリック受信ポート ネットワーク | **[なし]** を選択します。 |
+   
+5. **[Review + create]\(確認と作成\)** タブを選択するか、ページの下部にある青色の **[Review + create]\(確認と作成\)** ボタンを選択します。
+  
+6. 設定を確認し、 **[作成]** を選択します。
 
 ### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 
-前のセクションの手順を繰り返して、別の仮想マシンを作成します。
+1. ポータルの左上で、 **[リソースの作成]**  >  **[Compute]**  >  **[仮想マシン]** を選択します。 
+   
+2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-> [!IMPORTANT]
-> **[仮想マシン名]** に「*myVm2*」と入力します。
->
-> **[診断ストレージ アカウント]** には、 **[myvmstorageaccount]** を作成するのではなく、必ず選択してください。
+    | 設定 | 値                                          |
+    |-----------------------|----------------------------------|
+    | **プロジェクトの詳細** |  |
+    | サブスクリプション | Azure サブスクリプションを選択します。 |
+    | リソース グループ | **[myResourceGroup]** を選択します |
+    | **インスタンスの詳細** |  |
+    | 仮想マシン名 | 「**myVM2**」と入力します |
+    | リージョン | **[(米国) 米国東部]** を選択します |
+    | 可用性オプション | **[インフラストラクチャ冗長は必要ありません]** を選択します |
+    | Image | **[Windows Server 2019 Datacenter]** を選択します |
+    | Azure Spot インスタンス | **[いいえ]**  を選択します |
+    | サイズ | VM サイズを選択するか、既定の設定を使用します |
+    | **管理者アカウント** |  |
+    | ユーザー名 | ユーザー名を入力します |
+    | Password | [パスワード] を入力します |
+    | [パスワードの確認入力] | パスワードを再入力します |
+    | **受信ポートの規則** |    |
+    | パブリック受信ポート | **[なし]** を選択します。 |
+    |
 
-## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
+3. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。
+  
+4. [ネットワーク] タブで、次を選択または入力します。
 
-*myVm1* を作成した後、インターネットに接続します。
+    | 設定 | 値 |
+    |-|-|
+    | **ネットワーク インターフェイス** |  |
+    | 仮想ネットワーク | **[myVNet]** を選択します。 |
+    | Subnet | **mySubnet** の選択 |
+    | パブリック IP | **[なし]** を選択します |
+    | NIC ネットワーク セキュリティ グループ | **[Basic]** を選択します|
+    | パブリック受信ポート ネットワーク | **[なし]** を選択します。 |
+   
+5. **[Review + create]\(確認と作成\)** タブを選択するか、ページの下部にある青色の **[Review + create]\(確認と作成\)** ボタンを選択します。
+  
+6. 設定を確認し、 **[作成]** を選択します。
 
-1. Azure Portal で、*myVm1* を検索して選択します。
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
-1. **[接続]** 、 **[RDP]** の順に選択します。
+## <a name="connect-to-myvm1"></a>myVM1 に接続する
 
-    ![仮想マシンへの接続](./media/quick-create-portal/connect-to-virtual-machine.png)
+1. [Azure portal](https://portal.azure.com) に移動して、プライベート VM を管理します。 **[仮想マシン]** を検索して選択します。
 
-    **[接続]** ページが開きます。
+2. プライベート仮想マシンの名前「**myVM1**」を選択します。
 
-1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp*) ファイルが作成され、お使いのコンピューターにダウンロードされます。
+3. VM のメニュー バーで、 **[接続]** を選択し、 **[Bastion]** を選択します。
 
-1. RDP ファイルを開きます。 メッセージが表示されたら、 **[Connect]** を選択します。
+    :::image type="content" source="./media/quick-create-portal/connect-to-virtual-machine.png" alt-text="Azure Bastion を使用して myVM1 に接続する" border="true":::
 
-1. VM の作成時に指定したユーザー名とパスワードを入力します。
+4. **[接続]** ページで、青色の **[Bastion を使用する]** ボタンを選択します。
 
-    > [!NOTE]
-    > 場合によっては、 **[その他]**  >  **[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
+5. **[Bastion]** ページで、前に仮想マシン用に作成したユーザー名とパスワードを入力します。
 
-1. **[OK]** を選択します。
-
-1. サインインすると、証明書の警告を受け取ることがあります。 証明書の警告を受信する場合は、 **[はい]** または **[続行]** を選択します。
-
-1. VM デスクトップが表示されたら最小化してローカル デスクトップに戻ります。
+6. **[接続]** を選択します。
 
 ## <a name="communicate-between-vms"></a>VM 間の通信
 
-1. *myVm1* のリモート デスクトップで、PowerShell を開きます。
+1. **myVM1** の Bastion 接続で、PowerShell を開きます。
 
-1. 「`ping myVm2`」と入力します。
+2. 「`ping myvm2`」と入力します。
 
     次の出力のようなメッセージが返されます。
 
-    ```output
-    Pinging myVm2.0v0zze1s0uiedpvtxz5z0r0cxg.bx.internal.clouda
-    Request timed out.
-    Request timed out.
-    Request timed out.
-    Request timed out.
+    ```powershell
+    Pinging myvm2.cs4wv3rxdjgedggsfghkjrxuqf.bx.internal.cloudapp.net [10.1.0.5] with 32 bytes of data:
+    Reply from 10.1.0.5: bytes=32 time=3ms TTL=128
+    Reply from 10.1.0.5: bytes=32 time=1ms TTL=128
+    Reply from 10.1.0.5: bytes=32 time=1ms TTL=128
+    Reply from 10.1.0.5: bytes=32 time=1ms TTL=128
 
     Ping statistics for 10.1.0.5:
-    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+        Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+    Approximate round trip times in milli-seconds:
+        Minimum = 1ms, Maximum = 3ms, Average = 1ms
     ```
 
-    `ping`インターネット制御メッセージ プロトコル (ICMP) を使用しているため、`ping` は失敗します。 既定では、Windows ファイアウォールを介した ICMP は許可されていません。
+3. **myVM1** への Bastion 接続を閉じます。
 
-1. 後の手順で *myVm2* に *myVm1* への ping を許可するには、次のコマンドを入力します。
+4. 「[myVM1に接続する](#connect-to-myvm1)」の手順を完了し、「**myVM2**」に接続します。
+
+5. **myVM2** で PowerShell を開き、`ping myvm1` と入力します。
+
+    次のようなメッセージが表示されます。
 
     ```powershell
-    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
-    ```
-
-    このコマンドを実行すると、Windows ファイアウォールを介して ICMP を受信できます。
-
-1. *myVm1* へのリモート デスクトップ接続を閉じます。
-
-1. 「[インターネットから VM に接続する](#connect-to-a-vm-from-the-internet)」の手順をもう一度実行します。ただし、ここでは *myVm2* に接続します。
-
-1. コマンド プロンプトに `ping myvm1` と入力します。
-
-    次のようなメッセージが返されます。
-
-    ```output
-    Pinging myVm1.0v0zze1s0uiedpvtxz5z0r0cxg.bx.internal.cloudapp.net [10.1.0.4] with 32 bytes of data:
+    Pinging myvm1.cs4wv3rxdjgedggsfghkjrxuqf.bx.internal.cloudapp.net [10.1.0.4] with 32 bytes of data:
     Reply from 10.1.0.4: bytes=32 time=1ms TTL=128
-    Reply from 10.1.0.4: bytes=32 time<1ms TTL=128
-    Reply from 10.1.0.4: bytes=32 time<1ms TTL=128
-    Reply from 10.1.0.4: bytes=32 time<1ms TTL=128
+    Reply from 10.1.0.4: bytes=32 time=1ms TTL=128
+    Reply from 10.1.0.4: bytes=32 time=1ms TTL=128
+    Reply from 10.1.0.4: bytes=32 time=1ms TTL=128
 
     Ping statistics for 10.1.0.4:
         Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
     Approximate round trip times in milli-seconds:
-        Minimum = 0ms, Maximum = 1ms, Average = 0ms
+        Minimum = 1ms, Maximum = 1ms, Average = 1ms
     ```
 
-    ステップ 3 で *myVm1* VM での Windows ファイアウォール経由の ICMP を許可したため、*myVm1* から応答を受信します。
-
-1. *myVm2* へのリモート デスクトップ接続を閉じます。
+7. **myVM2** への Bastion 接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイック スタートでは、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、2 つの VM の間で安全に通信を行いました。
+このクイック スタートでは、既定の仮想ネットワークと 2 つの VM を作成しました。 
+
+インターネットから 1 つの VM に接続し、2 つの VM の間で安全に通信を行いました。
 
 仮想ネットワークと VM を使い終えたら、リソース グループと含まれるすべてのリソースを削除します。
 
-1. *myResourceGroup* を検索して選択します。
+1. **myResourceGroup** を検索して選択します。
 
 1. **[リソース グループの削除]** を選択します。
 
-1. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
+1. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「**myResourceGroup**」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
 仮想ネットワーク設定の詳細については、「[仮想ネットワークの作成、変更、削除](manage-virtual-network.md)」をご覧ください。
 
-Azure では、VM 間の安全な通信を既定で実行できます。 Azure では、インターネットから Windows VM への受信リモート デスクトップ接続のみが許可されています。 VM ネットワーク通信の種類の詳細については、[ネットワーク トラフィックのフィルター処理](tutorial-filter-network-traffic.md)に関する記事を参照してください。
-
-> [!NOTE] 
-> Azure サービスは有料です。 Azure Cost Management を使用すると、予算を設定して、支出を制御するためのアラートを構成できます。 Cost Management で Azure のコストを分析、管理、最適化しましょう。 詳細については、[コスト分析に関するクイック スタート](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)に関するページを参照してください。
+VM ネットワーク通信の種類の詳細については、[ネットワーク トラフィックのフィルター処理](tutorial-filter-network-traffic.md)に関する記事を参照してください。

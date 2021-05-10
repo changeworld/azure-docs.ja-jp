@@ -4,15 +4,15 @@ description: Azure ユーザーが SaaS オファーにサブスクライブで�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 03/19/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 760e7210d054e44dfec6d6a6e480baecd04d6807
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88606805"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044126"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS Fulfillment API についてよく寄せられる質問
 
@@ -40,7 +40,10 @@ SaaS オファーにサブスクライブしている間、ユーザーは Micro
 
 Azure ユーザーは、オファーにサブスクライブした後、Azure ですべてのオファーを検出および管理できます。 既定では、新しくサブスクライブされた SaaS オファーの状態は **"Provisioning, fulfillment pending" (プロビジョニング中、フルフィルメント保留中)** と表示されます。 この状態では、Azure ユーザーは、Azure portal で SaaS サブスクリプション管理エクスペリエンスを参照するために、 **[アカウントを構成]** するためのアクションが求められます。
 
-ユーザーが **[アカウントの構成]** を選択すると、SaaS サービスの Web サイトにリダイレクトされます。 この URL は、発行元がオファーの発行時に構成したものです。 このページは、発行元のランディング ページと呼ばれます。 Azure ユーザーは、Azure の既存の AAD 資格情報に基づいて、SaaS ランディング ページにサインインします。
+ユーザーが **[アカウントの構成]** を選択すると、SaaS サービスの Web サイトにリダイレクトされます。 この URL は、発行元がオファーの発行時に構成したものです。 このページは、発行元のランディング ページと呼ばれます。 Azure ユーザーは、Azure の既存の Azure Active Directory (Azure AD) 資格情報に基づいて、SaaS ランディング ページにサインインします。
+
+> [!IMPORTANT]
+> [ポリシー](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)で指示されているように、購入ユーザーは Azure Active Directory、シングルサインオン (Azure AD SSO) を使用してサインインする必要があります。 Microsoft Graph API から取得したユーザー リソースの `mail` プロパティにより、Azure AD と MSA の `userPrincipalName` の場合の連絡先情報が提供されます。 Azure AD の "mail" フィールドが空で、ユーザーのメール アドレスが記録されていないこともあります。 このような場合は、それを検出し、連絡先のメール アドレスを求めることをお勧めします。 これは、お客様のオンボード プロセス中またはその後に、お客様に連絡するための連絡先メール アドレスを取得する唯一のチャンスです。
 
 Azure ユーザーがランディング ページにリダイレクトされると、トークンがクエリ URL に追加されます。 このトークンは有効期間が短く、24 時間有効です。 その後、このトークンが存在していることを検出し、Microsoft の API を呼び出して、トークンに関連する追加のコンテキストを取得できます。
 

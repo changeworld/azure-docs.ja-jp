@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92520440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル: Azure Active Directory と TOPdesk - Public の統合
@@ -137,13 +137,13 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
     c. ログアウト URL
 
-### <a name="configure-topdesk---public-single-sign-on"></a>TOPdesk - Public シングル サインオンの構成
+### <a name="configure-topdesk---public-single-sign-on&quot;></a>TOPdesk - Public シングル サインオンの構成
 
 1. **TOPdesk - Public** 会社サイトに管理者としてサインインします。
 
 2. [**TOPdesk**] メニューで、[**設定**] をクリックします。
    
-    ![[設定]](./media/topdesk-public-tutorial/ic790598.png "設定")
+    ![[設定]](./media/topdesk-public-tutorial/ic790598.png &quot;設定")
 
 3. [**ログイン設定**] をクリックします。
    
@@ -247,17 +247,17 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-topdesk---public-test-user"></a>TOPdesk - Public のテスト ユーザーの作成
+### <a name="create-topdesk---public-test-user&quot;></a>TOPdesk - Public のテスト ユーザーの作成
 
 Azure AD ユーザーが TOPdesk - Public にサインインできるようにするには、そのユーザーを TOPdesk - Public にプロビジョニングする必要があります。 TOPdesk - Public の場合、プロビジョニングは手動で行います。
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
+### <a name=&quot;to-configure-user-provisioning-perform-the-following-steps&quot;></a>ユーザー プロビジョニングを構成するには、次の手順に従います。
 
 1. **TOPdesk - Public** 企業サイトに管理者としてサインオンします。
 
 2. 上部のメニューで、**[TOPdesk]\>[New]\>[Support Files]\>[Person]** の順にクリックします。
    
-    ![Person](./media/topdesk-public-tutorial/ic790628.png "人物")
+    ![Person](./media/topdesk-public-tutorial/ic790628.png &quot;人物")
 
 3. [New Person] ダイアログで、次の手順を実行します。
    

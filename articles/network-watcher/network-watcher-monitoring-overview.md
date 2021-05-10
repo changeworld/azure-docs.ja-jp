@@ -4,7 +4,6 @@ description: 仮想ネットワーク内のリソースを対象とする Azure 
 services: network-watcher
 documentationcenter: na
 author: damendo
-Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9b19beae43f1d4a5b0788d9d7662828355c3dd2c
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 5e032eaa5138f63122ed019441d29ad7eafca2a2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895888"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055894"
 ---
 # <a name="what-is-azure-network-watcher"></a>Azure Network Watcher とは
 
-Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。 Network Watcher は、Virtual Machines、Virtual Networks、アプリケーション ゲートウェイ、ロード バランサーなどの IaaS (サービスとしてのインフラストラクチャ) 製品のネットワーク正常性を監視および修復するように設計されています。注:これは、PaaS 監視または Web 分析を対象としたものではなく、それらには使用できません。 
+Azure Network Watcher は、Azure 仮想ネットワーク内のリソースの監視、診断、メトリックの表示、ログの有効化または無効化を行うツールを提供します。 Network Watcher は、Virtual Machines、Virtual Networks、アプリケーション ゲートウェイ、ロード バランサーなどの IaaS (サービスとしてのインフラストラクチャ) 製品のネットワーク正常性を監視および修復するように設計されています。注: これは、PaaS 監視または Web 分析を対象としたものではなく、それらには使用できません。 
 
 ## <a name="monitoring"></a>監視
 

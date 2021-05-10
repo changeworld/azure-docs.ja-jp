@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: jodowns
 ms.openlocfilehash: 9c67944717888439c0d6bd84e1615f51dd91fcac
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101098062"
 ---
 # <a name="ddos-protection-on-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) の DDoS 保護
@@ -63,4 +63,4 @@ Front Door は、大規模にスケーリングされたグローバル分散サ
 
 ## <a name="next-steps"></a>次のステップ
 
-[Front Door Standard/Premium を作成する](create-front-door-portal.md)方法について学習します。
+[Front Door Standard または Premium を作成する](create-front-door-portal.md)方法について学習します。

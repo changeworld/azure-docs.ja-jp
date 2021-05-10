@@ -3,16 +3,18 @@ title: クイック スタート:Azure DB for MariaDB を作成する - ARM テ�
 description: このクイックスタートの記事では、Azure Resource Manager テンプレートを使用して、Azure Database for MariaDB サーバーを作成する方法について説明します。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
-ms.topic: quickstart
-ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.topic: quickstart
+ms.service: mariadb
+ms.custom:
+- subject-armqs
+- mode-arm
+ms.openlocfilehash: 6bf7f4d30f2ad4f9e0181aed332e3f6cb9265ca0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98662075"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531338"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MariaDB サーバーを作成する
 

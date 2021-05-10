@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 042c70fdd08a6de2b97c4560eb2b6a24eec0bb34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98662162"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789989"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - この記事では、Azure CLI のバージョン 2.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-複数のサブスクリプションをお持ちの場合は、リソースが含まれているサブスクリプションまたはお客様が課金の対象となっているサブスクリプションを選択してください。 アカウントの特定のサブスクリプション ID を選択するには、[az account set](/cli/azure/account#az-account-set) コマンドを使用します。
+複数のサブスクリプションをお持ちの場合は、リソースが含まれているサブスクリプションまたはお客様が課金の対象となっているサブスクリプションを選択してください。 アカウントの特定のサブスクリプション ID を選択するには、[az account set](/cli/azure/account#az_account_set) コマンドを使用します。
 
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[az group create](/cli/azure/group#az_group_create) コマンドを使用して [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`myresourcegroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -43,7 +43,7 @@ az group create --name myresourcegroup --location westus
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーを作成する
 
-[az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) コマンドを使用して、Azure Database for MariaDB サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
+[az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create) コマンドを使用して、Azure Database for MariaDB サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 
 設定 | 値の例 | 説明
 ---|---|---
@@ -77,7 +77,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="configure-a-firewall-rule"></a>ファイアウォール規則を構成する
 
-[az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) コマンドを使用して、Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、mysql コマンドライン ツールや MySQL Workbench などの外部アプリケーションが、Azure Database for MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。
+[az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az_mariadb_server_firewall_rule_create) コマンドを使用して、Azure Database for MariaDB サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、mysql コマンドライン ツールや MySQL Workbench などの外部アプリケーションが、Azure Database for MariaDB サービスのファイアウォールを経由してサーバーに接続できるようになります。
 
 次の例では、特定の IP アドレス 192.168.0.1 からの接続を許可する、`AllowMyIP` と呼ばれるファイアウォール規則を作成しています。 お客様の接続元となる場所に対応する IP アドレスまたは IP アドレスの範囲に置き換えてください。
 
@@ -231,7 +231,7 @@ mysql コマンドライン ツールを使用してサーバーに接続する�
 az group delete --name myresourcegroup
 ```
 
-このクイック スタートで作成したサーバーだけを削除したい場合は、[az mariadb server delete](/cli/azure/mariadb/server#az-mariadb-server-delete) コマンドを実行します。
+このクイック スタートで作成したサーバーだけを削除したい場合は、[az mariadb server delete](/cli/azure/mariadb/server#az_mariadb_server_delete) コマンドを実行します。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

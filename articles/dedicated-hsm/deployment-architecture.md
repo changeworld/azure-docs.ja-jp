@@ -10,26 +10,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 6a0767b077886337331f24b15715247006f3fe2c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c454b2e4df7a9ce5fadd33386e5bb413b503c6e4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94888897"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608427"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
 Azure の専用 HSM は、暗号化キーの保管機能を Azure 内で実現するものです。 きわめて厳しいセキュリティ要件を満たしています。 次の条件が該当するお客様には、Azure の専用 HSM を使用するメリットがあります。
 
-* FIPS 140-2 レベル 3 認定を満たす必要がある
+* [FIPS 140-2 レベル 3](https://csrc.nist.gov/publications/detail/fips/140/2/final) 認定を満たす必要がある
 * HSM に排他的にアクセスする必要がある
 * デバイスを完全に制御する必要がある
 
 HSM は、Microsoft のデータ センター全体に分散され、高可用性ソリューションの基盤となる一対のデバイスとして容易にプロビジョニングできます。 災害に対する回復性の高いソリューションとなるよう、これらを複数のリージョン全体にデプロイすることもできます。 現在 Dedicated HSM を利用できるリージョンについては、[[リージョン別の製品]](https://azure.microsoft.com/global-infrastructure/services/?products=azure-dedicated-hsm) ページで確認できます。 
 
-各リージョンでは、2 つの独立したデータ センターか、少なくとも 2 つの独立した可用性ゾーンに HSM ラックがデプロイされています。 たとえば、可用性ゾーンは、東南アジアには 3 つ、米国東部 2 には 2 つ存在します。 Dedicated HSM サービスを提供するリージョンは、ヨーロッパ、アジア、米国全体で合計 8 つ存在しますが、新たなリージョンに新しい HSM ラックが追加されと、この情報は更新されます。 Azure リージョンの詳細については、公式の [Azure リージョン情報](https://azure.microsoft.com/global-infrastructure/regions/)を参照してください。
+* 米国東部
+* 米国東部 2
+* 米国西部
+* 米国西部 2
+* 米国中南部
+* 東南アジア
+* 東アジア
+* インド中部
+* インド南部
+* 東日本
+* 西日本
+* 北ヨーロッパ
+* 西ヨーロッパ
+* 英国南部
+* 英国西部
+* カナダ中部
+* カナダ東部
+* オーストラリア東部
+* オーストラリア南東部
+* スイス北部
+* スイス西部
+* US Gov バージニア州
+* US Gov テキサス
+
+これらの各リージョンでは、2 つの独立したデータ センターか、少なくとも 2 つの独立した可用性ゾーンに HSM ラックがデプロイされています。 可用性ゾーンは、東南アジアには 3 つ、米国東部 2 には 2 つ存在します。 専用 HSM サービスを提供するリージョンは、ヨーロッパ、アジア、北米全体で合計 23 存在します。 Azure リージョンの詳細については、公式の [Azure リージョン情報](https://azure.microsoft.com/global-infrastructure/regions/)を参照してください。
 専用 HSM ベースのソリューションでは、いくつかの設計要素として、場所/待ち時間、高可用性、他の分散アプリケーションのサポートが挙げられます。
 
 ## <a name="device-location"></a>デバイスの場所
@@ -46,7 +70,7 @@ HSM デバイスの場所として最適なのは、暗号化操作を実行す�
 
 ## <a name="next-steps"></a>次のステップ
 
-デプロイ アーキテクチャが決まれば、そのアーキテクチャを実装する大半の構成作業は Thales によって提供されます。 これには、デバイス構成やアプリケーション統合のシナリオが含まれます。 詳細については、[Thales のカスタマー サポート](https://supportportal.gemalto.com/csm/) ポータルを使用して、管理ガイドと構成ガイドをダウンロードしてください。 Microsoft パートナー サイトには、さまざまな統合ガイドがあります。
+デプロイ アーキテクチャが決まれば、そのアーキテクチャを実装する大半の構成作業は Thales によって提供されます。 これには、デバイス構成やアプリケーション統合のシナリオが含まれます。 詳細については、[Thales のカスタマー サポート](https://supportportal.thalesgroup.com/csm) ポータルを使用して、管理ガイドと構成ガイドをダウンロードしてください。 Microsoft パートナー サイトには、さまざまな統合ガイドがあります。
 デバイスのプロビジョニングや、アプリケーションの設計とデプロイの前に、高可用性やセキュリティなど、サービスのすべての主要概念を十分に理解しておくことをお勧めします。
 その他の概念レベルのトピックを次に示します。
 

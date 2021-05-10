@@ -9,20 +9,20 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: business-intelligence
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 952d69cccff86d1a0119391c400a40908c62ed69
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 829daaa9c739657528a9085201c61c88635931d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98208966"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608444"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 
 このチュートリアルでは、Power BI ワークスペースの作成方法、Azure Synapse ワークスペースのリンク方法、Azure Synapse ワークスペースのデータを利用する Power BI データ セットの作成方法について説明します。 
 
-> [!NOTE]
-> このチュートリアルを完了するには、[Power BI Desktop をインストール](https://aka.ms/pbidesktopstore)してください。
+## <a name="prerequisites"></a>前提条件
+このチュートリアルを完了するには、[Power BI Desktop をインストール](https://aka.ms/pbidesktopstore)してください。
 
 ## <a name="overview"></a>概要
 

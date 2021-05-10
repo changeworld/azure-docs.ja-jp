@@ -8,10 +8,10 @@ ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
 ms.openlocfilehash: 24091bafac7ad5c558b975d52064f12715b3d622
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92221402"
 ---
 # <a name="use-powershell-to-accept-a-data-share-invitation"></a>PowerShell を使用してデータ共有の招待を受け入れる
@@ -38,7 +38,7 @@ New-AzDataShareSubscription -ResourceGroupName $resourceGroupName -AccountName $
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | 送信されたデータ共有の招待を取得して一覧表示します。 |
 | [New-AzDataShareSubscription](/powershell/module/az.datashare/get-azdatasharesubscription) | データ共有サブスクリプションを作成します。 |

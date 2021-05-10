@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: c65825a6d8d2d7f9059e91a1f248367fa1788e1a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721839"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799498"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -106,7 +106,7 @@ Microsoft ピアリング パスを使用して、Microsoft クラウド サー�
 
 上記のレジストリでプレフィックスと AS 番号が自分に割り当てられていない場合は、プレフィックスと ASN を手動で検証するためにサポート ケースを開く必要があります。 サポートを受けるには、リソースの使用が許可されていることを証明するドキュメント (たとえば、承認状) が必要になります。
 
-Microsoft ピアリングではプライベート AS 番号を使用できますが、手動による検証も必要になります。 さらに、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 その結果、[Microsoft ピアリングのルーティングを制御するために](expressroute-optimize-routing.md)、AS PATH にプライベート AS 番号を付加できません。 
+Microsoft ピアリングではプライベート AS 番号を使用できますが、手動による検証も必要になります。 さらに、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 その結果、[Microsoft ピアリングのルーティングを制御するために](expressroute-optimize-routing.md)、AS PATH にプライベート AS 番号を付加できません。 また、IANA によってドキュメント用に予約されている AS 番号 64496 から 64511 は、パスには使用できません。
 
 > [!IMPORTANT]
 > パブリック インターネット向けと ExpressRoute 経由で同じパブリック IP ルートをアドバタイズしないでください。 非対称ルーティングの原因となる間違った構成のリスクを減らすために、ExpressRoute 経由で Microsoft にアドバタイズされる [NAT IP アドレス](expressroute-nat.md) は、インターネットにまったくアドバタイズされない範囲のものにすることを強くお勧めします。 これを実現するのが不可能な場合は、インターネット接続の範囲よりもさらに具体的な ExpressRoute 経由の範囲をアドバタイズしていることを確認する必要があります。 NAT 用のパブリック ルートに加えて、Microsoft 内の Microsoft 365 エンドポイントと通信するオンプレミスのネットワーク内のサーバーによって使用されるパブリック IP アドレスを ExpressRoute 経由でアドバタイズすることもできます。 

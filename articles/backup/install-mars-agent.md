@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェントをインス�
 description: Windows マシンをバックアップする目的で Microsoft Azure Recovery Services (MARS) エージェントをインストールする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3ea48aaa6aad4a51463c4c028ead22f31163f810
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98986872"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519223"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントをインストールする
 
@@ -158,7 +158,7 @@ Microsoft ピアリングを使用するには、次のサービス、リージ�
 
     ![サーバーの登録ウィザードを使用してコンテナーの資格情報を追加する](./media/backup-configure-vault/register1.png)
 
-1. **[暗号化の設定]** ページで、マシンのバックアップの暗号化と暗号化の解除に使用されるパスフレーズを指定します。 使用できるパスフレーズ文字の詳細については、[こちら](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)を参照してください。
+1. **[暗号化の設定]** ページで、マシンのバックアップの暗号化と暗号化の解除に使用されるパスフレーズを指定します。 使用できるパスフレーズ文字の詳細については、[こちら](backup-azure-file-folder-backup-faq.yml#what-characters-are-allowed-for-the-passphrase-)を参照してください。
 
     * 安全な場所にパスフレーズを保存します。 バックアップを復元するために必要になります。
     * パスフレーズを紛失または忘れた場合、Microsoft でもバックアップ データは回復できません。

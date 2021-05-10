@@ -6,16 +6,21 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0d9ef13de29ac140d94e9e4c05b14f35b9e5834c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968171"
 ---
 # <a name="what-is-document-translation-preview"></a>ドキュメント翻訳とは (プレビュー)
 
 ドキュメント翻訳は、[Azure Translator](../translator-info-overview.md) サービスのクラウドベースの機能であり、REST API の Azure Cognitive Services ファミリの一部です。 Document Translation API は、ドキュメントの構造とデータ形式を維持しながら、90 の言語および方言との間でドキュメントを翻訳します。
+
+このドキュメントには、次の種類の記事が含まれています。  
+
+* [**クイックスタート**](get-started-with-document-translation.md)は、サービスへの要求の実行方法を説明する概要手順です。
+* [**攻略ガイド**](create-sas-tokens.md)には、より具体的またはカスタマイズした方法で機能を使用するための手順が記載されています。  
 
 ## <a name="document-translation-key-features"></a>ドキュメント翻訳の主要機能
 
@@ -49,7 +54,6 @@ ms.locfileid: "101713016"
 |Microsoft Word|.docx| テキスト ドキュメント ファイル。|
 |Tab Separated Values/TAB|.tsv/.tab| スプレッドシート プログラムによって使用される、タブ区切りの生データ ファイル。|
 |テキスト|.txt| 書式設定のないテキスト ドキュメント。|
-|Translation Memory eXchange|.tmx|コンピューター支援翻訳 (CAT) とローカライズ アプリケーションによって作成された翻訳メモリ (TM) データを交換するために使用される、オープンな XML 規格。|
 
 ## <a name="supported-glossary-formats"></a>サポートされている用語集の形式
 
@@ -64,5 +68,3 @@ ms.locfileid: "101713016"
 
 > [!div class="nextstepaction"]
 > [ドキュメント翻訳を使ってみる](get-started-with-document-translation.md)
->
->

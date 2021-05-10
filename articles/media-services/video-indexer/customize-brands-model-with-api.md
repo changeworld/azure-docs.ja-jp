@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 03c74e9108b27856259eb4f17d7ba521007c4fa3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97586059"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312962"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API を使用してブランド モデルをカスタマイズする
 
@@ -28,7 +28,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="create-a-brand"></a>ブランドを作成する
 
-[ブランドの作成](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) API では、新しいカスタム ブランドを作成し、指定されたアカウント用のカスタム ブランド モデルに追加します。
+[ブランドの作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Brand) API では、新しいカスタム ブランドを作成し、指定されたアカウント用のカスタム ブランド モデルに追加します。
 
 > [!NOTE]
 > `enabled` (本文内) を true に設定すると、Video Indexer での検出対象として "*対象*" リストにブランドが配置されます。 `enabled` を false に設定すると、"*除外*" リストにブランドが配置されます。したがって、Video Indexer では検出されません。
@@ -62,7 +62,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="delete-a-brand"></a>ブランドを削除する
 
-[ブランドの削除](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) API では、指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは `accountId` パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、*[含める]* や *[除外]* のブランド リストに配置されなくなります。
+[ブランドの削除](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Delete-Brand) API では、指定されたアカウントのカスタム ブランド モデルからブランドを削除します。 アカウントは `accountId` パラメーターで指定されます。 呼び出しが正常に行われると、ブランドは、*[含める]* や *[除外]* のブランド リストに配置されなくなります。
 
 ### <a name="response"></a>Response
 
@@ -70,7 +70,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="get-a-specific-brand"></a>特定のブランドを取得する
 
-[ブランドの取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) API では、ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
+[ブランドの取得](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Brand) API では、ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
 
 ### <a name="response"></a>Response
 
@@ -99,7 +99,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="update-a-specific-brand"></a>特定のブランドを更新する
 
-[ブランドの更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) API では、ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
+[ブランドの更新](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Brand) API では、ブランド ID を使用して、指定されたアカウント用のカスタム ブランド モデルで、ブランドの詳細を検索できます。
 
 ### <a name="response"></a>Response
 
@@ -125,7 +125,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="get-all-of-the-brands"></a>すべてのブランドを取得する
 
-[すべてのブランドの取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) API では、ブランドが "*対象*" と "*除外*" のどちらのブランド リストに配置されるようになっているかに関係なく、指定されたアカウント用のカスタム ブランド モデルのブランドがすべて返されます。
+[すべてのブランドの取得](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Brands) API では、ブランドが "*対象*" と "*除外*" のどちらのブランド リストに配置されるようになっているかに関係なく、指定されたアカウント用のカスタム ブランド モデルのブランドがすべて返されます。
 
 ### <a name="response"></a>Response
 
@@ -165,7 +165,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="get-brands-model-settings"></a>ブランド モデルの設定を取得する
 
-[ブランドの設定の取得](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) API では、指定されたアカウントのブランド モデル設定が返されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
+[ブランドの設定の取得](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Brands) API では、指定されたアカウントのブランド モデル設定が返されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
 
 ### <a name="response"></a>Response
 
@@ -183,7 +183,7 @@ Video Indexer では、ビデオとオーディオ コンテンツのインデ�
 
 ## <a name="update-brands-model-settings"></a>ブランド モデルの設定を更新する
 
-[ブランドの更新](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) API では、指定されたアカウントのブランド モデル設定が更新されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
+[ブランドの更新](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Brands-Model-Settings) API では、指定されたアカウントのブランド モデル設定が更新されます。 モデル ブランド設定は、Bing ブランド データベースからの検出が有効であるかどうかを表します。 Bing ブランドが有効でない場合、Video Indexer では指定されたアカウントのカスタム ブランド モデルからのみブランドが検出されます。
 
 `useBuiltIn` が true に設定されている場合、これは Bing ブランドが有効であることを意味します。 `useBuiltin` が false の場合、Bing ブランドは無効です。
 

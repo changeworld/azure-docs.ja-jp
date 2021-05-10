@@ -1,19 +1,19 @@
 ---
 title: C++ クライアント ライブラリを使用して Azure Storage リソースを一覧表示する
 description: C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72b08a79ead90207c48c4fa682b708a0627b5df3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92784100"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279631"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 
@@ -34,7 +34,7 @@ ms.locfileid: "92784100"
 
 ## <a name="asynchronous-versus-synchronous"></a>非同期と同期
 
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 次に例を示します。
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 例:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -192,7 +192,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 * 限定的な一覧取得は、同期シナリオの便利なラッパーとして、ライブラリで提供されます。
 * どん欲な一覧取得は推奨されないため、ライブラリから削除されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Storage および C++ 用クライアント ライブラリの詳細については、以下のリソースを参照してください。
 
@@ -200,5 +200,5 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 * [C++ から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [C++ から Queue ストレージを使用する方法](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [C++ 用 Azure Storage クライアント ライブラリのドキュメント](https://azure.github.io/azure-storage-cpp/)
-* [Azure Storage Team Blog](/archive/blogs/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](/archive/blogs/windowsazurestorage/)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)

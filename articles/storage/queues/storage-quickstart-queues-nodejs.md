@@ -1,19 +1,21 @@
 ---
 title: 'クイックスタート: Azure Queue Storage クライアント ライブラリ v12 - JavaScript'
 description: JavaScript 用 Azure Queue Storage クライアント ライブラリ v12 を使用して、キューを作成し、そこにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 12/13/2019
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.custom: devx-track-js
-ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom:
+- devx-track-js
+- mode-api
+ms.openlocfilehash: 943678debc32116ff7a2e54810c4edcf2d331bd6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97586535"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534426"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>クイックスタート: JavaScript 用 Azure Queue Storage クライアント ライブラリ v12
 

@@ -1,14 +1,14 @@
 ---
-title: Azure VMware Solution の予約インスタンスを使用してコストを節約する
-description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。
+title: Azure VMware Solution の予約インスタンス
+description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。 予約インスタンスでは、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストが含まれます。
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/09/2021
+ms.openlocfilehash: 6f181d4b6ee7e2098130633fef0eb8558add0308
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99550977"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210026"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -135,7 +135,7 @@ CSP は、一定の制限付きで、顧客に代わって購入する予約の�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure VMware Solution の予約インスタンスの購入について確認したので、次の事項の学習に進むことができます。
+Azure VMware Solution の予約インスタンスについて確認したので、次の事項の学習に進むことができます。
 
 - [Azure VMware Solution 評価の作成](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
 - [Azure VMware Solution 用の DHCP の管理](manage-dhcp.md)。

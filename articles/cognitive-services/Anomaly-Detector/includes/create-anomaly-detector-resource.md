@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: feb79d047a6c3b25176a13dcc3c3afd53a51459e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102444753"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomaly Detector リソースを作成する
 
-1. <a href="https://portal.azure.com" target="_blank">Azure portal</a> にサインインします。
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal </a>にサインインします。
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank">[Anomaly Detector の作成]</a> リソースを選択します。
 1. すべての必須設定を入力します。
 

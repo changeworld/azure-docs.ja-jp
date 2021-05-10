@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a9545c040809331a5556b11f6cc7536931e2d421
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f06f2de1f373f72aa5e55da17c249ff119a36950
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289569"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581837"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -93,4 +93,5 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 
 ## <a name="see-also"></a>参照
 
+ - [Portal](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)、[Azure CLI](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-cli)、[Azure Powershell](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-powershell) を使用して Key Vault で証明書を作成するための攻略ガイド
  - [証明書作成の監視と管理](create-certificate-scenarios.md)

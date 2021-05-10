@@ -9,16 +9,16 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a04ac0e7c634a0d1d1909e691fabfcec3c52ebc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "77471541"
 ---
 **[Azure VPN のプロパティ]** ページで、サインインの設定を構成します。
 
-1. **ユーザーのサインインを有効にしますか？** で、**はい**を選択します。 この設定により、AD テナントのすべてのユーザーが、VPN に正常に接続できるようになります。
-2. **ユーザー割り当てが必用ですか？** で、Azure VPN に対するアクセス許可を持つユーザーのみにサインインを制限する場合は、**はい**を選択します。
+1. **ユーザーのサインインを有効にしますか？** で、**はい** を選択します。 この設定により、AD テナントのすべてのユーザーが、VPN に正常に接続できるようになります。
+2. **ユーザー割り当てが必用ですか？** で、Azure VPN に対するアクセス許可を持つユーザーのみにサインインを制限する場合は、**はい** を選択します。
 3. 変更を保存します。
 
    ![アクセス許可](./media/vpn-gateway-vwan-openvpn-sign-in/user2.jpg)

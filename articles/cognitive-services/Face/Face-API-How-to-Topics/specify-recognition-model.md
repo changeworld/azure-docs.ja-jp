@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d22f2fb0bb550d966cbc5e181882552514513b2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433558"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936582"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 
@@ -87,7 +87,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 
 ## <a name="find-similar-faces-with-specified-model"></a>指定されたモデルで似た顔を検索する
 
-類似検索のための認識モデルも指定できます。 [FaceList - Create] または [LargeFaceList - Create] で顔のリストを作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、既定では `recognition_01` モデルが使用されます。 顔リストは常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、その顔はこのモデルに関連付けられます。これは作成後に変更できません。 顔リストに設定されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
+類似検索のための認識モデルも指定できます。 [FaceList - Create] API または [LargeFaceList - Create] で **FaceList** を作成するときに、`recognitionModel` でモデルのバージョンを割り当てることができます。 このパラメーターを指定しない場合、既定では `recognition_01` モデルが使用されます。 **FaceList** は常に、その作成時に指定された認識モデルを使用します。新しい顔がリストに追加されると、それらはこのモデルに関連付けられます。これは作成後に変更できません。 **FaceList** に構成されているモデルを調べるには、_returnRecognitionModel_ パラメーターを **true** に設定して [FaceList - Get] API を使用します。
 
 .NET クライアント ライブラリの次のコード例を参照してください。
 
@@ -95,7 +95,7 @@ await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", 
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_04");
 ```
 
-このコードは、特徴抽出のための _recognition_04_ モデルを使用して、`My face collection` という名前の顔リストを作成します。 新しく検出された顔に似た顔をこの顔リストから検索するときは、その顔が _recognition_04_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
+このコードは、特徴抽出のための _recognition_04_ モデルを使用して、`My face collection` という名前の **FaceList** を作成します。 新しく検出された顔に似た顔をこの **FaceList** から検索するときは、その顔が _recognition_04_ モデルを使用して検出 ([Face - Detect]) 済みである必要があります。 前のセクションと同様に、モデルは一貫している必要があります。
 
 [Face - Find Similar] API に変更はありません。検出でモデルのバージョンを指定するだけです。
 

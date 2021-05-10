@@ -2,13 +2,13 @@
 title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: 2b6d942b21594fa608127bb8f403e72295671005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/12/2021
+ms.openlocfilehash: d557bcdfe246dc2c9bfccde17b7f9590c2686358
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89276662"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312044"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
@@ -210,6 +210,8 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 > [!NOTE]
 > ポータルで、カスタム テンプレート ブレードでパラメーター ファイルを使用することはできません。
+
+[Visual Studio で Azure リソース グループ プロジェクト](create-visual-studio-deployment-project.md)を使用している場合は、パラメーター ファイルの **ビルド アクション** が **[コンテンツ]** に設定されていることを確認してください。
 
 ## <a name="file-name"></a>ファイル名
 

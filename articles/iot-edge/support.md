@@ -4,18 +4,20 @@ description: Azure IoT Edge デーモンとランタイムを実行できるオ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/11/2021
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 75beb214682536b996cf4896588ea32d568579f1
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 67532fce2cac0ec9d05b4caa069e63014b813bd8
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045991"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576348"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 この記事では、公式またはプレビューの IoT Edge によってサポートされるシステムおよびコンポーネントについて、詳しく説明します。
 
@@ -23,7 +25,7 @@ ms.locfileid: "102045991"
 
 Azure IoT Edge サービスの使用中に問題が発生した場合は、いくつかの方法でサポートを求めることができます。 サポートについては、次のいずれかのチャネルをお試しください。
 
-**バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 修正プログラムはプロジェクトが製品の更新プログラムになるまでの時間を早めます。
+**バグの報告** – Azure IoT Edge 製品に関する開発の大多数は、IoT Edge のオープン ソース プロジェクトで発生します。 バグはプロジェクトの[問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 Azure IoT Edge for Linux on Windows に関するバグは、 [iotedge-eflow の問題ページ](https://github.com/azure/iotedge-eflow/issues)で報告できます。 修正プログラムでは、プロジェクトが製品の更新プログラムになるまでの時間を早めます。
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) から直接サポート チケットを作成することで、Microsoft カスタマー サポート チームとやり取りをすることができます。
 
@@ -50,18 +52,39 @@ Azure IoT Edge はコンテナーを実行できるほとんどのオペレー�
   * Microsoft がそのプラットフォームで非公式なテストを実施している、またはパートナーがそのプラットフォーム上で Azure IoT Edge を正常に実行していることを把握している
   * 他のプラットフォーム用のインストール パッケージがそれらのプラットフォームで機能することがある
 
-ホスト OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと常に一致する必要があります。 つまり、Linux コンテナーは Linux 上でのみ、Windows コンテナーは Windows 上でのみ使用できます。 Windows を使用している場合は、プロセス分離コンテナーのみがサポートされます (Hyper-V 分離コンテナーはサポートされません)。  
+ホスト OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと常に一致する必要があります。
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+つまり、Linux コンテナーは Linux 上でのみ、Windows コンテナーは Windows 上でのみ使用できます。 Windows コンテナーを使用している場合は、プロセス分離コンテナーのみがサポートされます (Hyper-V 分離コンテナーはサポートされません)。  
 
 IoT Edge for Linux on Windows では、Windows ホストで実行されている Linux 仮想マシンで IoT Edge を使用します。 この方法で、Windows デバイス上で Linux モジュールを実行できます。
+:::moniker-end
+<!-- end 1.1 -->
 
 ### <a name="tier-1"></a>レベル 1
 
 次の表に示すシステムは、一般提供またはパブリック プレビューにおいて、Microsoft によってサポートされており、新しいリリースごとにテストされています。
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Edge は、Linux コンテナーまたは Windows コンテナーとしてビルドされたモジュールをサポートします。 Linux コンテナーは、Linux デバイスにデプロイすることも、IoT Edge for Linux on Windows を使用して Windows デバイスにデプロイすることもできます。 Windows コンテナーは、Windows デバイスにのみ展開できます。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Edge バージョン 1.2 では、Linux コンテナーとしてビルドされたモジュールのみがサポートされます。
+
+現在、Windows デバイスで IoT Edge バージョン 1.2 を実行するためのサポートされている方法はありません。 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) は、Windows デバイスで IoT Edge を実行する場合に推奨される方法ですが、現在は IoT Edge 1.1 のみが実行されます。 詳細については、この記事の [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) バージョンを参照してください。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 #### <a name="linux-containers"></a>Linux コンテナー
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Linux コンテナーとしてビルドされたモジュールは、Linux デバイスまたは Windows デバイスにデプロイできます。 Linux デバイスの場合、IoT Edge ランタイムはホスト デバイスに直接インストールされます。 Windows デバイスの場合、IoT Edge ランタイムでビルドされた Linux 仮想マシンは、ホスト デバイスで実行されます。
 
 [IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) は現在パブリック プレビュー段階ですが、Windows デバイスで IoT Edge を実行する場合に推奨される方法です。
@@ -76,12 +99,27 @@ Linux コンテナーとしてビルドされたモジュールは、Linux デ�
 | Windows Server 2019 | パブリック プレビュー |  |  |
 
 すべての Windows オペレーティング システムは、バージョン 1809 (ビルド 17763) 以降である必要があります。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+| オペレーティング システム | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Raspberry Pi OS Stretch |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | パブリック プレビュー |
+
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >Ubuntu Server 16.04 のサポートは、IoT Edge バージョン1.1 のリリースで終了しました。
 
 #### <a name="windows-containers"></a>Windows コンテナー
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 >[!IMPORTANT]
 >IoT Edge 1.1 LTS は、Windows コンテナーをサポートする最後のリリース チャネルです。 バージョン 1.2 以降では、Windows コンテナーはサポートされません。 Windows デバイスで IoT Edge を実行するには、[IoT Edge for Linux on Windows](iot-edge-for-linux-on-windows.md) の使用またはこちらへの移行を検討してください。
 
@@ -97,6 +135,17 @@ Windows コンテナーとしてビルドされたモジュールは、Windows �
 
 >[!NOTE]
 >Windows 10 IoT Core のサポートは、IoT Edge バージョン1.1 のリリースで終了しました。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+IoT Edge 1.1 LTS は、Windows コンテナーをサポートする最後のリリース チャネルです。 バージョン 1.2 以降では、Windows コンテナーはサポートされません。
+
+Windows コンテナーでサポートされているオペレーティング システムの詳細については、この記事の [IoT Edge 1.1](?view=iotedge-2018-06&preserve-view=true) バージョンを参照してください。
+
+:::moniker-end
+<!-- end 1.2 -->
 
 ### <a name="tier-2"></a>レベル 2
 
@@ -122,19 +171,25 @@ Windows コンテナーとしてビルドされたモジュールは、Windows �
 
 IoT Edge のリリース アセットとリリース ノートは、[azure-iotedge リリース](https://github.com/Azure/azure-iotedge/releases) ページから入手できます。 このセクションでは、それらのリリース ノートの情報を基に、それぞれのバージョンのコンポーネントを視覚的にわかりやすく説明しています。
 
-IoT Edge のコンポーネントは、個別にインストールまたは更新することができ、以前のバージョンのコンポーネントとの下位互換性を備えています。 次の表は、各リリースに含まれているコンポーネントの一覧です。
+次の表は、1.2.0 以降の各リリースに含まれているコンポーネントの一覧です。 この表に一覧表示されているコンポーネントは、個別にインストールまたは更新することができ、以前のバージョンとの下位互換性を備えています。
 
-| Release | セキュリティ デーモン | Edge ハブ<br>Edge エージェント | Libiothsm | Moby |
+| Release | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
+| ------- | ---------- | -------------------- | ---------------------- |
+| **1.2** | 1.2.0      | 1.2.0                | 1.2.0                  |
+
+次の表は、1.1 LTS リリースまでの各リリースに含まれているコンポーネントの一覧です。 この表に一覧表示されているコンポーネントは、個別にインストールまたは更新することができ、以前のバージョンとの下位互換性を備えています。
+
+| Release | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1.0 LTS**<sup>1</sup> | 1.1.0 | 1.1.0 | 1.1.0 |   |
+| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br> | 1.1.0<br>1.1.1<br>1.1.2 | 1.1.0<br>1.1.1<br><br> |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
-| **1.0.9** | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.5<br>1.0.9.4<br>1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
-| **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl、CentOS) |
-| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
+| **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 3.0.4 (ARMv7hl、CentOS)<br>3.0.5 |
+| **1.0.6** | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-<sup>1</sup> IoT Edge 1.1 は、最初の長期サポート (LTS) リリース チャネルです。 このバージョンでは新機能は導入されていませんが、バグの修正とセキュリティ修正プログラムが適用されます。 IoT Edge 1.1 LTS では .NET Core 3.1 が使用され、これは [.NET Core および .NET 5 のリリース ライフサイクル](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に合わせて 2022 年 12 月 3 日までサポートされます。
+<sup>1</sup> IoT Edge 1.1 は、最初の長期サポート (LTS) リリース チャネルです。 このバージョンでは新機能は導入されていませんが、回帰に対するセキュリティ更新プログラムとバグの修正が適用されます。 IoT Edge 1.1 LTS では .NET Core 3.1 が使用され、これは [.NET Core および .NET 5 のリリース ライフサイクル](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に合わせて 2022 年 12 月 3 日までサポートされます。
 
 >[!IMPORTANT]
 >長期サポート チャネルがリリースされたため、現在 1.0.x を実行しているすべてのお客様は、継続的なサポートを受けるためにデバイスを 1.1.x にアップグレードすることをお勧めします。
@@ -143,7 +198,8 @@ IoT Edge では、Microsoft.Azure.Devices.Client SDK が使用されます。 �
 
 | IoT Edge のバージョン | Microsoft.Azure.Devices.Client SDK のバージョン |
 |------------------|--------------------------------------------|
-| 1.1.0 (LTS)      | 1.28.0                                     |
+| 1.2.0            | 1.33.4-NestedEdge
+| 1.1 (LTS)        | 1.28.0                                     |
 | 1.0.10           | 1.28.0                                     |
 | 1.0.9            | 1.21.1                                     |
 | 1.0.8            | 1.20.3                                     |
@@ -156,10 +212,28 @@ IoT Edge では、Microsoft.Azure.Devices.Client SDK が使用されます。 �
 Azure IoT Edge は仮想マシンで実行できます。 仮想マシンを IoT Edge デバイスとして使用することは、エッジ インテリジェンスで既存のインフラストラクチャを拡張しようとする場合によく行われます。 ホスト VM OS のファミリは、モジュールのコンテナー内で使用されるゲスト OS のファミリと一致する必要があります。 この要件は、Azure IoT Edge がデバイス上で直接実行されるときと同じです。 Azure IoT Edge は基盤となる仮想化テクノロジに依存しており、Hyper-V や vSphere などのプラットフォームを使用した VM で動作します。
 
 <br>
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+
+<center>
+
+![VM 内の Azure IoT Edge](./media/support/edge-on-vm-with-windows.png)
+
+</center>
+
+::: moniker-end
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
 <center>
 
 ![VM 内の Azure IoT Edge](./media/support/edge-on-vm.png)
+
 </center>
+
+:::moniker-end
 
 ## <a name="minimum-system-requirements"></a>最小システム要件
 

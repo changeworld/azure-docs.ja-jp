@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94ab61a5c6335d43842ada48f17572c186af773c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96182021"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077195"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday モバイル アプリケーションの統合
 
@@ -132,13 +132,11 @@ iOS デバイスがモバイル デバイス管理によって管理されてい
 
 | シナリオ | キーと値のペア |
 |----------------------------------------------------------------------------------------   |-----------|
-| 次の [テナント] および [Web アドレス] フィールドを自動的に設定します。<br>● 仕事用プロファイルで Android を有効にしている場合は、Android 上の Workday。<br>● iPad および iPhone 上の Workday。     | テナントの構成には、これらの値を使用します。 <br>● 構成キー = `UserGroupCode`<br>● 値の型 = String <br>●   構成値 = ご使用のテナントの名前。 例: `gms`<br>Web アドレスの構成には、これらの値を使用します。<br>●  構成キー = `AppServiceHost`<br>●   値の型 = String<br>●    構成値 = ご使用のテナントのベース URL。 例: `https://www.myworkday.com`                                |   |
+| 次の [テナント] および [Web アドレス] フィールドを自動的に設定します。<br>● 仕事用プロファイルで Android を有効にしている場合は、Android 上の Workday。<br>● iPad および iPhone 上の Workday。     | テナントの構成には、これらの値を使用します。 <br>● 構成キー = `UserGroupCode`<br>● 値の型 = String <br>●   構成値 = ご使用のテナントの名前。 例: `gms`<br>Web アドレスの構成には、これらの値を使用します。<br>●  構成キー = `AppServiceHost`<br>●   値の型 = String<br>●    構成値 = ご使用のテナントのベース URL。 例: `https://www.myworkday.com`                                | 
 | iPad および iPhone 上の Workday に対してこれらの操作を無効にします。<br>●    切り取り、コピー、貼り付け<br>●   印刷                       | 機能を無効にするには、次のキーの値 (ブール値) を `False` に設定します。<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
 | Android 上の Workday でスクリーンショットを無効にします。 |機能を無効にするには、`AllowScreenshots` キーの値 (ブール値) を `False` に設定します。|
 | ユーザーに推奨される更新プログラムを無効にします。|機能を無効にするには、`AllowSuggestedUpdates` キーの値 (ブール値) を `False` に設定します。|
 |アプリ ストアの URL をカスタマイズして、選択したアプリ ストアにモバイル ユーザーを誘導します。|アプリ ストアの URL を変更するには、これらの値を使用します。<br>● 構成キー = `AppUpdateURL`<br>● 値の型 = String<br> ●   構成値 = アプリ ストアの URL|
-|       |
-
 
 ## <a name="ios-configuration-policies"></a>iOS 構成ポリシー
 

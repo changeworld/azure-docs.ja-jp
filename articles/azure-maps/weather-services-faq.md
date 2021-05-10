@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps Weather Service (プレビュー) のよく寄せられる質問 (FAQ)
-description: Azure Maps Weather Service (プレビュー) のデータや機能に関する一般的な質問への回答を見つけてください。
+title: Microsoft Azure Maps Weather Service のよくあるご質問 (FAQ)
+description: Azure Maps Weather Service のデータや機能に関する一般的な質問への回答を見つけてください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -8,18 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 440ff94f4d5f3514d97d3e76299b60e462cebff3
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98678131"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257553"
 ---
-# <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure Maps Weather Service (プレビュー) のよく寄せられる質問 (FAQ)
-
-> [!IMPORTANT]
-> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="azure-maps-weather-services-frequently-asked-questions-faq"></a>Azure Maps Weather Service のよくあるご質問 (FAQ)
 
 この記事では、Azure Maps [Weather Service](/rest/api/maps/weather) のデータや機能に関する一般的な質問への回答を示します。 次のトピックが含まれています。
 
@@ -55,7 +51,7 @@ AccuWeather には、主に、多数の国家政府気象機関とのパート�
 
 グローバルな予測を作成するために、多数の気象予測ガイダンス システムが利用されています。 150 を超える数値予報モデルが毎日、外部データセットと内部データセットの両方で使用されます。 これには、ヨーロッパの Centre ECMWF や米国の Global Forecast System (GFS) などの政府モデルが含まれます。 さらに、AccuWeather には、より高い精度で気象を予測するために、予測を特定の場所や戦略的な地域ドメインにスケールダウンする独自の高解像度モデルが組み込まれています。 AccuWeather の固有の混合および重み付けアルゴリズムは、過去数 10 年間にわたって開発されてきました。 これらのアルゴリズムは、多数の予測入力を最適に利用して、きわめて正確な予測を提供します。
 
-## <a name="weather-services-preview-coverage-and-availability"></a>Weather Service (プレビュー) の対象範囲と可用性
+## <a name="weather-services-coverage-and-availability"></a>Weather Service の対象範囲と可用性
 
 **さまざまな国/地域に対して、どのような種類の対象範囲を期待できますか?**
 
@@ -77,11 +73,11 @@ Azure Maps の Forecast API は、最大 30 分間キャッシュされます。
 
 ## <a name="developing-with-azure-maps-sdks"></a>Azure Maps SDK を使用した開発
 
-**Azure Maps Web SDK は Weather Service (プレビュー) 統合をネイティブにサポートしていますか?**
+**Azure Maps Web SDK は Weather Service 統合をネイティブにサポートしていますか?**
 
 Azure Maps の Web SDK は、サービス モジュールを提供します。 このサービス モジュールは、 JavaScript または TypeScript を使用して、Web または Node.js アプリケーションで Azure Maps REST サービスを簡単に使用できるようにするヘルパー ライブラリです。 使用を開始するには、この[ドキュメント](./how-to-use-services-module.md)を参照してください。
 
-**Azure Maps Android SDK は Weather Service (プレビュー) 統合をネイティブにサポートしていますか?**
+**Azure Maps Android SDK は Weather Service 統合をネイティブにサポートしていますか?**
 
 Azure Maps Android SDK は、x/y/ズーム表記、クアッド キー表記、または EPSG 3857 境界ボックス表記を使用できる、Mercator のタイル レイヤーをサポートしています。
 
@@ -103,7 +99,7 @@ Azure Maps [Weather の概念に関する記事](./weather-services-concepts.md#
 
 **さまざまな天候のアイコンを提供していますか?**
 
-はい。 アイコンとそれに対応するコードは、[ここ](./weather-services-concepts.md#weather-icons)で見つけることができます。 応答で *iconCode* を返すのは、Weather Service (プレビュー) API の一部 ([Get Current Conditions API](/rest/api/maps/weather/getcurrentconditionspreview) など) だけであることに注意してください。 詳細については、現在の WeatherConditions のオープンソースの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)を参照してください。
+はい。 アイコンとそれに対応するコードは、[ここ](./weather-services-concepts.md#weather-icons)で見つけることができます。 応答で *iconCode* を返すのは、Weather Service (プレビュー) API の一部 ([Get Current Conditions API](/rest/api/maps/weather/getcurrentconditions) など) だけであることに注意してください。 詳細については、現在の WeatherConditions のオープンソースの[コード サンプル](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -114,15 +110,15 @@ Azure Maps [Weather の概念に関する記事](./weather-services-concepts.md#
 * Microsoft サポート。 新しいサポート要求を作成するには、[Azure portal](https://portal.azure.com/) の [ヘルプ] タブで、 **[ヘルプとサポート]** ボタンを選択してから **[新しいサポート要求]** を選択します。
 * 機能要求を送信するための [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps)。
 
-Azure Maps Weather Service (プレビュー) を使用して、リアルタイムの予測される気象データを要求する方法を学習する:
+Azure Maps Weather Service を使用して、リアルタイムの予測される気象データを要求する方法を学習する:
 > [!div class="nextstepaction"]
 > [リアルタイムの気象データを要求する ](how-to-request-weather-data.md)
 
-Azure Maps Weather Service (プレビュー) の概念に関する記事:
+Azure Maps Weather Service の概念に関す記事:
 > [!div class="nextstepaction"]
 > [Weather Service の概念](weather-coverage.md)
 
-Azure Maps Weather Service (プレビュー) API のドキュメントを確認する:
+Azure Maps Weather Service API のドキュメントを確認する:
 
 > [!div class="nextstepaction"]
 > [Azure Maps Weather Service](/rest/api/maps/weather)

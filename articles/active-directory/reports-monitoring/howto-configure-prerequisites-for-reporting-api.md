@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00c519ef06637c5193b347f0bbc906c6232a7ca8
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96348740"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532532"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
@@ -224,5 +224,5 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
-* [監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
-* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)
+* [監査 API リファレンス](/graph/api/resources/directoryaudit) 
+* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin)

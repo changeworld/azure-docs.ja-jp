@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 3cf97039983ecec44a7c3a32e178fdcf9f9c45ff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100576336"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104872185"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する
 
@@ -37,13 +37,13 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
     search *
     ```
 
-    ![Apache Ambari の分析によってすべてのメトリックを検索する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "すべてのメトリックを検索する")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png" alt-text="Apache Ambari の分析によってすべてのメトリックを検索する":::
 
 1. 左側のメニューから、**[フィルター]** タブを選択します。
 
 1. **[種類]** で **[ハートビート]** を選択します。 次に、**[適用して実行]** を選択します。
 
-    ![ログ分析での特定のメトリックの検索](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "特定のメトリックを検索する")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png" alt-text="ログ分析での特定のメトリックの検索":::
 
 1. テキスト ボックス内のクエリが次のように変更されていることに注意してください。
 
@@ -54,13 +54,13 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. 左側のメニューにあるオプションを使用して、詳しく調べることができます。 次に例を示します。
 
-    - 特定のノードからのログを表示するには、次のようにします。
+   - 特定のノードからのログを表示するには、次のようにします。
 
-        ![特定のエラーの output1 を検索する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "特定のエラーの output1 を検索する")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png" alt-text="特定のエラーの output1 を検索する":::
 
-    - 特定の時刻のログを表示するには、次のようにします。
+   - 特定の時刻のログを表示するには、次のようにします。
 
-        ![特定のエラーの output2 を検索する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "特定のエラーの output2 を検索する")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png" alt-text="特定のエラーの output2 を検索する":::
 
 1. **[適用して実行]** を選択し、結果を確認します。 クエリが次のように更新されたことにも注意してください。
 
@@ -102,11 +102,11 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
 1. ページの先頭にある **[新しいアラート ルール]** を選択します。
 
-    ![クエリを入力して alert1 を作成する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "クエリを入力して alert1 を作成する")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png" alt-text="新しいアラート ルール":::
 
 1. **[ルールの作成]** ウィンドウで、クエリとその他の情報を入力してアラートを作成し、**[アラート ルールの作成]** を選択します。
 
-    ![クエリを入力して alert2 を作成する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "クエリを入力して alert2 を作成する")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png" alt-text="アラートの条件を定義します。":::
 
 ### <a name="edit-or-delete-an-existing-alert"></a>既存のアラートを編集または削除する
 
@@ -120,7 +120,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
 1. **[保存]**、**[破棄]**、**[無効化]**、および **[削除]** の各オプションがあります。
 
-    ![HDInsight Azure Monitor ログ アラートの削除または編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    :::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png" alt-text="HDInsight Azure Monitor ログ アラートの削除または編集":::
 
 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../azure-monitor/alerts/alerts-metric.md)」を参照してください。
 

@@ -8,13 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ca46ce3355edf2b77400011d023cd6af330a3b58
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92125032"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770435"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -36,7 +35,7 @@ Azure プロバイダーと非 Azure プロバイダーは、Azure Data Box か�
 
 - **SharePoint Online** - Azure Data Box と SharePoint 移行ツール (SPMT) を使用して、ファイル共有の内容を SharePoint Online に移行します。 Data Box を使用することで、WAN リンク経由でデータを転送する必要がなくなります。 詳細については、「[Azure Data Box Heavy を使用してファイル共有のコンテンツを SharePoint Online に移行する](data-box-heavy-migrate-spo.md)」を参照してください。
 
-- **Azure File Sync** -  Data Box から Azure ファイル共有にファイルをレプリケートします。データへのローカル アクセスを維持すると共に、Azure におけるファイル サービスを一元化することができます。 詳細については、「[Azure File Sync のデプロイ](../storage/files/storage-sync-files-deployment-guide.md)」を参照してください。
+- **Azure File Sync** -  Data Box から Azure ファイル共有にファイルをレプリケートします。データへのローカル アクセスを維持すると共に、Azure におけるファイル サービスを一元化することができます。 詳細については、「[Azure File Sync のデプロイ](../storage/file-sync/file-sync-deployment-guide.md)」を参照してください。
 
 - **HDFS ストア** - Data Box を使用して、Hadoop クラスターのオンプレミス Hadoop 分散ファイル システム (HDFS) ストアから Azure Storage にデータを移行します。 詳細については、「[Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する](../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)」を参照してください。
 

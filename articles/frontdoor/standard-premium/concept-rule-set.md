@@ -5,21 +5,21 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: 8e6ceebc9e92dabe66baeb9aeff0ae9692e2bdad
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101097995"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067556"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard または Premium (プレビュー) のルール セットとは
 
 > [!Note]
 > このドキュメントは、Azure Front Door Standard/Premium (プレビュー) を対象としています。 Azure Front Door については、 [こちら](../front-door-overview.md)を参照してください。
 
-ルール セットとは、カスタマイズされたルール エンジンであり、複数のルールの組み合わせを 1 つのセットにまとめたものです。これを複数のルートに関連付けることができます。 ルール セットを使用すると、エッジで要求が処理される方法と、Azure Front Door でそれらの要求を処理する方法をカスタマイズできます。
+ルール セットとは、カスタマイズされたルール エンジンであり、複数のルールの組み合わせを 1 つのセットにまとめたものです。 ルール セットを複数のルートに関連付けることができます。 ルール セットを使用すると、エッジで要求が処理される方法と、Azure Front Door でそれらの要求を処理する方法をカスタマイズできます。
 
 > [!IMPORTANT]
 > Azure Front Door Standard/Premium (プレビュー) は現在、パブリック プレビュー段階です。
@@ -60,16 +60,19 @@ Azure Front Door のルール セットを使用すると、それぞれが一�
 
 クォータ制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
-* "*ルール セット*": 1 つまたは複数の[ルート](concept-route.md)に関連付けられる一連のルール。 各構成は 25 のルールに制限されます。 最大 10 個の構成を作成できます。
+* "*ルール セット*": 1 つまたは複数の[ルート](concept-route.md)に関連付けられる一連のルール。
 
 * "*ルール セット ルール*": 最大 10 個の一致条件と 5 個のアクションで構成されるルール。 ルールは 1 つのルール セットに対してローカルであり、ルール セット間で使用するためにエクスポートすることはできません。 ユーザーは、複数のルール セット内に同じルールを作成できます。
 
-* "*一致条件*": 受信要求を解析するために利用できる一致条件は多数あります。 1 つのルールに最大 10 個の一致条件を含めることができます。 一致条件は、**AND** 演算子で評価されます。 *条件では、正規表現がサポートされています*。 一致条件の完全な一覧については、[ルール セットのアクション](concept-rule-set-match-conditions.md)に関するページを参照してください。
+* "*一致条件*": 受信要求を解析するために利用できる一致条件は多数あります。 1 つのルールに最大 10 個の一致条件を含めることができます。 一致条件は、**AND** 演算子で評価されます。 *条件では、正規表現がサポートされています*。 一致条件の完全な一覧については、[ルール セットの一致条件](concept-rule-set-match-conditions.md)に関するページを参照してください。
 
 * "*アクション*": アクションでは、一致条件に基づいてAFD で着信要求がどのように処理されるかが示されます。 キャッシュ動作の変更、要求ヘッダーや応答ヘッダーの変更、URL の書き換えおよび URL のリダイレクトを行うことができます。 *サーバー変数は、アクションでサポートされています*。 1 つのルールに最大 10 個の一致条件を含めることができます。 アクションの完全な一覧については、[ルール セットのアクション](concept-rule-set-actions.md)に関するページをご覧ください。
+
+## <a name="arm-template-support"></a>ARM テンプレートのサポート
+
+ルール セットは Azure Resource Manager テンプレートを使用して構成できます。 [テンプレートの例を参照してください](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set)。 この動作をカスタマイズするには、[一致条件](concept-rule-set-match-conditions.md)と[アクション](concept-rule-set-actions.md)のドキュメントの例に含まれている JSON または Bicep スニペットを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Front Door Standard または Premium を作成する](create-front-door-portal.md)方法について説明します。
 * 最初の[ルール セット](how-to-configure-rule-set.md)を構成する方法について説明します。
- 

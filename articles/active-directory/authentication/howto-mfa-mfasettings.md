@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/16/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471654"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305465"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -231,12 +231,12 @@ Azure portal からサービス設定にアクセスするには、 **[Azure Act
 
 ## <a name="trusted-ips"></a>信頼できる IP
 
-Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能を使用すると、定義された IP アドレス範囲からサインインするユーザーに対する多要素認証プロンプトがバイパスされます。 オンプレミス環境の信頼できる IP 範囲は、これらの場所のいずれかにユーザーがいるときに、Azure AD Multi-Factor Authentication プロンプトが表示されないように設定できます。
+Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能を使用すると、定義された IP アドレス範囲からサインインするユーザーに対する多要素認証プロンプトがバイパスされます。 オンプレミス環境の信頼できる IP 範囲を設定して、これらの場所のいずれかにユーザーがいるときに、Azure AD Multi-Factor Authentication プロンプトが表示されないようにできます。 Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能には、Azure AD Premium P1 エディションが必要です。 
 
 > [!NOTE]
 > 信頼できる IP には、MFA Server を使用する場合にのみ、プライベート IP 範囲を含めることができます。 クラウドベースの Azure AD Multi-Factor Authentication では、パブリック IP アドレス範囲のみを使用できます。
 >
-> IPv6 範囲は、[ネームド ロケーション (プレビュー)](../conditional-access/location-condition.md#preview-features) インターフェイスでのみサポートされています。
+> IPv6 範囲は、[ネームド ロケーション (プレビュー)](../conditional-access/location-condition.md) インターフェイスでのみサポートされています。
 
 組織がオンプレミスのアプリケーションに MFA を提供するために NPS 拡張機能をデプロイしている場合は、認証が試行されるとき、常にソース IP アドレスが NPS サーバーとして表示されます。
 

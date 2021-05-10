@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 33d84ca86ac3cd4696dce3797b015b861884182a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fcb9fd9f0539b42d9253db783fd5da840f358e66
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216430"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960726"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Media Services v3 API に接続する - Node.js
 
@@ -32,7 +32,7 @@ ms.locfileid: "102216430"
 - Visual Studio Code のインストール。
 - [Node.js](https://nodejs.org/en/download/) をインストールします。
 - [Typescript](https://www.typescriptlang.org/download) をインストールします。
-- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- [Media Services アカウントを作成する](./account-create-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
 - アプリケーションのサービス プリンシパルを作成します。 [API へのアクセスする](./access-api-howto.md)に関するページを参照してください。<br/>**Pro ヒント!** このウィンドウを開いたままにするか、JSON タブ内のすべてをメモ帳にコピーします。 
 - [AzureMediaServices SDK for JavaScript](https://www.npmjs.com/package/@azure/arm-mediaservices) の最新バージョンを入手していることを確認してください。
 

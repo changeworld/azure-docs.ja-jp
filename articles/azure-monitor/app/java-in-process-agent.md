@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b695df29b7a4704ee9e4e25e402fa0de8f2b7685
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: dc6eaaec334e7373f1a673bd1513ef05b761fee6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008214"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106450023"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -34,11 +34,11 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 >
 > ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、すべての[構成オプション](./java-standalone-config.md)を注意深く確認してください。
 
-[applicationinsights-agent-3.0.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar) をダウンロードします
+[applicationinsights-agent-3.0.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar) をダウンロードする
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
@@ -54,7 +54,7 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.2.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.3.jar` と同じディレクトリに配置します。
 
 ```json
 {
@@ -130,6 +130,10 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * マイクロメーター (Spring Boot アクチュエータ メトリックを含む)
 * JMX メトリック
 
+### <a name="azure-sdks"></a>Azure SDK
+
+* この機能はプレビュー段階にあります。有効にする方法については、[構成オプション](./java-standalone-config.md#auto-collected-azure-sdk-telemetry)に関するページを参照してください。
+
 ## <a name="send-custom-telemetry-from-your-application"></a>アプリケーションからカスタム テレメトリを送信する
 
 3\.0 以降での目標は、標準 API を使用してカスタム テレメトリを送信できるようにすることです。
@@ -146,8 +150,8 @@ Application Insights Java 3.0 を使用すると、これらの API を使用し
 | **[カスタム イベント]**   |            |                     |  Yes    |
 | **カスタム メトリック**  |  はい       |                     |  はい    |
 | **依存関係**    |            |                     |  Yes    |
-| **例外**      |            |  Yes                |  Yes    |
-| **ページ ビュー**      |            |                     |  Yes    |
+| **例外**      |            |  はい                |  はい    |
+| **ページ ビュー**      |            |                     |  はい    |
 | **要求**        |            |                     |  Yes    |
 | **トレース**          |            |  はい                |  はい    |
 
@@ -328,7 +332,7 @@ requestTelemetry.setName("myname");
 ### <a name="get-the-request-telemetry-id-and-the-operation-id-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ ID と操作 ID を取得します。
 
 > [!NOTE]
-> この機能は、3.0.3 以降のベータ版でのみ提供されています。
+> この機能は、3.0.3 以降にのみ存在します
 
 アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 

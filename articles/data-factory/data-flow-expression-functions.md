@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.date: 03/26/2021
+ms.openlocfilehash: 313cca7a0db81502ac68a2cb7e9981f712a82548
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563934"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933113"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -143,13 +143,6 @@ ___
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
-### <code>collect</code>
-<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-集計されたグループ内の式のすべての値を配列に収集します。 この処理中に構造体を収集し、別の構造体に変換できます。 項目の数はそのグループの行数と等しくなります。また、null 値を含めることができます。 収集する項目の数は少なくするようにします。  
-* ``collect(salesPerson)``
-* ``collect(firstName + lastName))``
-* ``collect(@(name = salesPerson, sales = salesAmount) )``
-___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
 ストリームのすべての出力列の名前を取得します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。  
@@ -277,6 +270,10 @@ ___
 <code><b>escape(<i>&lt;string_to_escape&gt;</i> : string, <i>&lt;format&gt;</i> : string) => string</b></code><br/><br/>
 形式に従って、文字列をエスケープします。 使用できる形式のリテラル値は、'json'、'xml'、'ecmascript'、'html'、'java' です。
 ___
+### <code>expr</code>
+<code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
+結果は文字列からの式です。 これは、非リテラル形式でこの式を記述することと同じです。 これは、文字列表現としてパラメーターを渡すために使用できます。
+*   expr(‘price * discount’) => any ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 数値の階乗を計算します。  
@@ -856,6 +853,13 @@ ___
 条件に基づいて、列の値の平均を取得します。  
 * ``avgIf(region == 'West', sales)``  
 ___
+### <code>collect</code>
+<code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
+集計されたグループ内の式のすべての値を配列に収集します。 この処理中に構造体を収集し、別の構造体に変換できます。 項目の数はそのグループの行数と等しくなります。また、null 値を含めることができます。 収集する項目の数は少なくするようにします。  
+* ``collect(salesPerson)``
+* ``collect(firstName + lastName))``
+* ``collect(@(name = salesPerson, sales = salesAmount) )``
+___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
 値の集計カウントを取得します。 省略可能な列を指定すると、カウントの NULL 値が無視されます。  
@@ -900,6 +904,10 @@ ___
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+### <code>isDistinct</code>
+<code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
+列または列セットが個別かどうかを検出します。 null は個別の値としてカウントされません。*   ``isDistinct(custId, custName) => boolean``
+*   ___
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 列の尖度を取得します。  
@@ -1217,6 +1225,14 @@ ___
 
 変換関数は、データの変換とデータ型のテストに使用されます
 
+### <code>isBitSet</code>
+<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+ビット位置がこのビットセットに設定されているかどうかを確認します。* ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
+___
+### <code>setBitSet</code>
+<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+このビットセットにビット位置を設定します。* ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
+___  
 ### <code>isBoolean</code>
 <code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
 文字列値が ``toBoolean()`` の規則に従ったブール値であるかどうかを確認します 
@@ -1431,6 +1447,11 @@ ___
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
+### <code>byPath</code>
+<code><b>byPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => any</b></code><br/><br/>
+ストリームでの名前で階層パスを見つけます。 省略可能なストリーム名を 2 番目の引数として渡すことができます。 そのようなパスが見つからない場合は、null 値が返されます。 設計時に判明している列名やパスは、その名前またはドット表記パスだけで扱う必要があります。 計算入力はサポートされていませんが、パラメーター置換を使用することができます。  
+* ``byPath('grandpa.parent.child') => column`` 
+___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
 ストリーム内の相対位置 (1 から始まる) で列の値を選択します。 位置が範囲外にある場合は、NULL 値が返されます。 返された値は、いずれかの型変換関数 (TO_DATE、TO_STRING ...) で型変換する必要があります計算入力はサポートされていませんが、パラメーター置換を使用することができます。  
@@ -1439,6 +1460,11 @@ ___
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hasPath</code>
+<code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
+ストリームでの名前で特定の階層パスが存在するかどうかを確認します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。 設計時に判明している列名やパスは、その名前またはドット表記パスだけで扱う必要があります。 計算入力はサポートされていませんが、パラメーター置換を使用することができます。  
+* ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
 <code><b>hex(<value1>: binary) => string</b></code><br/><br/>

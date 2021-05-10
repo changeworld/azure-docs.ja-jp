@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd69e89954fab2256ffc7c23e22d3b8d44ab2a11
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 191722d02b493cfe0197c3e45771543fd8c5926a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455875"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961049"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -264,9 +264,10 @@ Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($Inp
 
 | バインド値 | Default | 説明 | 例 |
 | --- | --- | --- | --- |
-| `undefined` | Y | リッチ バインドを使用します | `def main(input: func.InputStream)` |
 | `string` | × | 汎用バインドを使用し、入力型を `string` としてキャストします | `def main(input: str)` |
 | `binary` | × | 汎用バインドを使用し、入力 BLOBを `bytes` Python オブジェクトとしてキャストします | `def main(input: bytes)` |
+
+function.json で `dataType` プロパティが定義されていない場合、既定値は `string` になります。
 
 Python コードを次に示します。
 
@@ -275,8 +276,11 @@ import logging
 import azure.functions as func
 
 
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
+# The type func.InputStream is not supported for blob input binding.
+# The input binding field inputblob can either be 'bytes' or 'str' depends
+# on dataType in function.json, 'binary' or 'string'.
+def main(queuemsg: func.QueueMessage, inputblob: bytes) -> bytes:
+    logging.info(f'Python Queue trigger function processed {len(inputblob)} bytes')
     return inputblob
 ```
 

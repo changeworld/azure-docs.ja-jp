@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688469"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552752"
 ---
 # <a name="email-one-time-passcode-authentication"></a>電子メール ワンタイム パスコード認証
 
@@ -64,7 +64,7 @@ ms.locfileid: "101688469"
 ![[Source]\(ソース\) の値が OTP のワンタイム パスワード ユーザーを示すスクリーンショット](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> ユーザーがワンタイム パスコードを使用した後、MSA、Azure AD アカウント、または他のフェデレーション アカウントを取得した場合、引き続きワンタイム パスコードによる認証が使用されます。 認証方法を更新する場合は、ゲスト ユーザー アカウントを削除して、招待し直すことができます。
+> ユーザーがワンタイム パスコードを使用した後、MSA、Azure AD アカウント、または他のフェデレーション アカウントを取得した場合、引き続きワンタイム パスコードによる認証が使用されます。 ユーザーの認証方法を更新する場合は、ユーザーの[利用状態をリセットする](reset-redemption-status.md)ことができます。
 
 ### <a name="example"></a>例
 
@@ -76,7 +76,7 @@ ms.locfileid: "101688469"
 
 > [!NOTE]
 >
-> お使いのテナントで電子メール ワンタイム パスコード機能が有効になっているときに、それを無効にした場合、ワンタイム パスコードを利用していたゲスト ユーザーは全員サインインできなくなります。 ゲスト ユーザーを削除して招待し直すと、別の認証方法を使用してもう一度サインインできるようになります。
+> お使いのテナントで電子メール ワンタイム パスコード機能が有効になっているときに、それを無効にした場合、ワンタイム パスコードを利用していたゲスト ユーザーは全員サインインできなくなります。 別の認証方法を使用してもう一度サインインできるように、[利用状態をリセットする](reset-redemption-status.md)ことができます。
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>電子メール ワンタイム パスコードを無効にするには
 

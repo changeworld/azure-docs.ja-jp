@@ -1,15 +1,15 @@
 ---
 title: コンテナー イメージの保存
 description: Azure Container Registry にコンテナー イメージやその他の成果物が保存される方法について、セキュリティ、冗長性、および容量も含めて詳細に説明します。
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183269"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047747"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -21,11 +21,9 @@ ms.locfileid: "102183269"
 
 ## <a name="regional-storage"></a>リージョンでの保存
 
-Azure Container Registry は、データの保存場所とコンプライアンス要件を満たすために、レジストリが作成されるリージョンにデータを格納します。
+Azure Container Registry は、データの保存場所とコンプライアンス要件を満たすために、レジストリが作成されるリージョンにデータを格納します。 ブラジル南部と東南アジアを除くすべてのリージョンで、Azure は同じ地域内のペアになっているリージョンにもレジストリ データを格納することがあります。 ブラジル南部および東南アジア リージョンでは、これらのリージョンのデータ所在地要件に対応するために、レジストリ データは常にそのリージョンに限定されています。
 
-データセンターの障害から保護するため、一部のリージョンは、特定のリージョンにある複数のデータセンターにデータがレプリケートされる、[ゾーン冗長](zone-redundancy.md)を備えています。
-
-パフォーマンス向上のために別々の地域の複数のリージョンにデータを保存したい場合、または特定の地域で障害が発生した場合に備えて回復性を確保したい場合は、[geo レプリケーション](container-registry-geo-replication.md)を有効にする必要があります。
+リージョンの障害が発生した場合、レジストリ データは使用できなくなる可能性あり、自動的には回復されません。 パフォーマンス向上のために別々の地域の複数のリージョンにレジストリ データを保存したい場合、または特定の地域で障害が発生した場合に備えて回復性を確保したい場合は、[geo レプリケーション](container-registry-geo-replication.md)を有効にする必要があります。
 
 ## <a name="geo-replication"></a>geo レプリケーション
 

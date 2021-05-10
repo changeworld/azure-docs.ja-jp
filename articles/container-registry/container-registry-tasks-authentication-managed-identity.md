@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 19d63861a98884ff2f5103946c19e2226c4b14b7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915949"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781165"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR タスクで Azure マネージド ID を使用する 
 
@@ -42,13 +42,13 @@ ACR タスクでは、一方または両方の種類の ID を有効にできま
 
 次の大まかな手順に従って、ACR タスクでマネージド ID を使用します。
 
-### <a name="1-optional-create-a-user-assigned-identity"></a>1.(省略可能) ユーザー割り当て ID を作成する
+### <a name="1-optional-create-a-user-assigned-identity"></a>1. (省略可能) ユーザー割り当て ID を作成する
 
 ユーザー割り当て ID の使用を予定している場合は、既存の ID を使用するか、Azure CLI またはその他の Azure ツールを使用して ID を作成します。 たとえば、[az identity create][az-identity-create] コマンドを使用します。 
 
 システム割り当て ID のみ使用する場合は、この手順はスキップしてください。 システム割り当て ID は ACR タスクを作成するときに作成します。
 
-### <a name="2-enable-identity-on-an-acr-task"></a>2.ACR タスクで ID を有効にする
+### <a name="2-enable-identity-on-an-acr-task"></a>2. ACR タスクで ID を有効にする
 
 ACR タスクを作成するときに、ユーザー割り当て ID、システム割り当て ID、またはこれらの両方を必要に応じて有効にします。 たとえば、Azure CLI で [az acr task create][az-acr-task-create] コマンドを実行するときに `--assign-identity` パラメーターを渡します。
 
@@ -82,7 +82,7 @@ az acr task create \
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3.他の Azure リソースにアクセスするためのアクセス許可を ID に付与する
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. 他の Azure リソースにアクセスするためのアクセス許可を ID に付与する
 
 タスクの要件に応じて、他の Azure リソースにアクセスするためのアクセス許可を ID に付与します。 たとえば、次のようになります。
 
@@ -140,10 +140,10 @@ az acr task credential add \
 
 
 <!-- LINKS - Internal -->
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az-acr-task-credential-add
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-show]: /cli/azure/identity#az_identity_show
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az_acr_task_credential_add
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 03/30/2021
 ms.author: victorh
-ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 622fde49a31105b2f66a678d3e55d48fabea9487
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490110"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966913"
 ---
 # <a name="what-are-security-partner-providers"></a>セキュリティ パートナー プロバイダーとは
 
@@ -30,17 +30,23 @@ Azure Firewall Manager の "*セキュリティ パートナー プロバイダ�
 
 次のシナリオでは、セキュリティ パートナーを使用してインターネット トラフィックをフィルター処理できます。
 
-- Virtual Network (VNet) からインターネットに
+- Virtual Network (VNet) からインターネットへ
 
-   Azure 上で実行されているクラウド ワークロードに対して、高度なユーザー対応のインターネット保護を利用します。
+   Azure 上で実行されているクラウド ワークロードに対して、高度なユーザー対応のインターネット保護を使用します。
 
-- ブランチからインターネットに
+- ブランチからインターネットへ
 
-   Azure の接続とグローバル分散を利用して、ブランチからインターネットへのシナリオにサードパーティの NSaaS フィルター処理を簡単に追加できます。 Azure Virtual WAN を使用して、グローバルな転送ネットワークとセキュリティ エッジを構築できます。
+   Azure の接続とグローバル分散を使用して、ブランチからインターネットへのシナリオにサードパーティの NSaaS フィルター処理を簡単に追加できます。 Azure Virtual WAN を使用して、グローバルな転送ネットワークとセキュリティ エッジを構築できます。
 
 次のシナリオがサポートされます。
-- セキュリティ パートナー プロバイダー経由で VNet/ブランチからインターネット、Azure Firewall 経由のその他のトラフィック (スポークからスポーク、スポークからブランチ、ブランチからスポーク)。
-- セキュリティ パートナー プロバイダー経由で VNet/ブランチからインターネット
+- ハブ内の 2 つのセキュリティ プロバイダー
+
+   セキュリティ パートナー プロバイダー経由で VNet またはブランチからインターネット、および Azure Firewall 経由のその他のトラフィック (スポークからスポーク、スポークからブランチ、ブランチからスポーク)。
+- ハブ内の単一プロバイダー
+
+   - Azure Firewall によって保護されたすべてのトラフィック (スポークからスポーク、スポークからブランチ、ブランチからスポーク、VNet またはブランチからインターネット)<br>
+      or
+   - セキュリティ パートナー プロバイダー経由で VNet またはブランチからインターネット
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>セキュリティで保護された仮想ハブでのインターネット トラフィック フィルター処理に関するベストプラクティス
 

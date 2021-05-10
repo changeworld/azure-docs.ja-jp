@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
 ms.openlocfilehash: d5342782c26b5c274699bacc4ea0c7cdf5b7f880
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101649412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>チュートリアル: Azure Active Directory と LogicMonitor の統合
@@ -95,7 +95,7 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -107,7 +107,7 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に LogicMonitor へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -119,13 +119,13 @@ LogicMonitor に対して Azure AD SSO を構成してテストするには、�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-### <a name="configure-logicmonitor-sso"></a>LogicMonitor の SSO の構成
+### <a name=&quot;configure-logicmonitor-sso&quot;></a>LogicMonitor の SSO の構成
 
 1. **LogicMonitor** 会社サイトに管理者としてログインします。
 
 2. 上部のメニューで **[Settings]** をクリックします。
 
-    ![設定](./media/logicmonitor-tutorial/ic790052.png "設定")
+    ![設定](./media/logicmonitor-tutorial/ic790052.png &quot;設定")
 
 3. 左側にあるナビゲーション バーで、 **[シングル サインオン]** をクリックします。
 

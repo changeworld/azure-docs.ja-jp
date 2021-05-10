@@ -5,59 +5,102 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7f5e5e4da9fea671fc85a55fc8cc191fa14b720f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: cd6e4e62123b4d4b927cf385aaf64a066eecc1e0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104887752"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>USB 接続で Azure Percept DK を更新する方法
 
-Azure Percept DK のキャリア ボードに対して USB 更新を実行する方法を学ぶには、このガイドに従ってください。
+無線 (OTA) の更新プログラムは、開発キットのオペレーティング システムとファームウェアを最新の状態に保つための最適な方法ですが、USB 接続を使用して必要に応じて開発キットを更新 (または "フラッシュ") するシナリオもあります。
+
+- 接続またはその他の技術的な問題のため、OTA 更新を実行できない
+- デバイスを工場出荷時の状態にリセットする必要がある
+
+このガイドでは、USB 接続を使用して開発キットのオペレーティング システムとファームウェアを正常に更新する方法について説明します。
+
+> [!WARNING]
+> USB を使用して開発キットを更新すると、AI モデルとコンテナーを含む、デバイス上の既存のデータがすべて削除されます。
+>
+> すべての手順を順番に実行します。 手順をスキップすると、開発キットが使用できない状態になる可能性があります。
 
 ## <a name="prerequisites"></a>前提条件
-- 使用可能な USB-C ポートまたは USB-A ポートがあるホスト コンピューター。
-- Azure Percept DK (開発キット) キャリア ボードと、付属の USB-C to USB-C ケーブル。 ホスト コンピューターに USB-A ポートはあるものの、USB-C ポートがない場合は、USB-C to USB-A ケーブル (別売り) を使用できます。
-- [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) をインストールします (管理者のアクセス権が必要です)。
-- NXP UUU ツールをインストールします。 [アセット] タブで、uuu.exe ファイル (Windows の場合) または uuu ファイル (Linux の場合) の[最新リリースをダウンロード](https://github.com/NXPmicro/mfgtools/releases)します。
-- [7-Zip をインストール](https://www.7-zip.org/)します。 このソフトウェアは、XZ 圧縮ファイルから生のイメージ ファイルを抽出するために使用されます。 適切な .exe ファイルをダウンロードし、インストールします。
 
-## <a name="steps"></a>手順
-1.  次の [3 つの USB 更新ファイル](https://go.microsoft.com/fwlink/?linkid=2155734)をダウンロードします。
-    - pe101-uefi-***&lt;バージョン番号&gt;***.raw.xz
-    - emmc_full.txt
+- Azure Percept DK
+- Wi-Fi 機能が搭載された Windows、Linux、または OS X ベースのホスト コンピューターと、使用可能な USB-C または USB-A ポート
+- USB-C to USB-A ケーブル (オプション、別売り)
+- [Azure Percept DK セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に作成された SSH ログイン
+
+## <a name="download-software-tools-and-update-files"></a>ソフトウェア ツールのダウンロードとファイルの更新
+
+1. [NXP UUU ツール](https://github.com/NXPmicro/mfgtools/releases)。 **[アセット]** タブで、uuu.exe ファイル (Windows の場合) または uuu ファイル (Linux の場合) の **最新リリース** をダウンロードします。
+
+1. [7-Zip](https://www.7-zip.org/)。 このソフトウェアは、XZ 圧縮ファイルから生のイメージ ファイルを抽出するために使用されます。 適切な .exe ファイルをダウンロードし、インストールします。
+
+1. [更新ファイルをダウンロードします](https://go.microsoft.com/fwlink/?linkid=2155734)。
+
+1. 次の 3 つのすべてのビルド アーティファクトが存在することを確認します。
+    - Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw.xz
     - fast-hab-fw.raw
- 
-1. pe101-uefi-* **&lt;バージョン番号&gt;** _.raw を、圧縮された pe101-uefi_* _&lt;バージョン番号&gt;_ **.raw.xz ファイルから抽出します。 抽出方法がわからない場合 7-Zip をダウンロードしてインストールし、 **.xz** イメージ ファイルを右クリックして、[7-Zip] &gt; [Extract Here]\(ここに抽出\) を選択します。
+    - emmc_full.txt
 
-1. UUU ツールが格納されているフォルダーに、次の 3 つのファイルをコピーします。
-    - 抽出された pe101-uefi-***&lt;バージョン番号&gt;***.raw ファイル (手順 2. より)。
-    - emmc_full.txt (手順 1. より)。
-    - fast-hab-fw.raw (手順 1. より)。
- 
-1. 開発キットの電源を入れます。
-1. [SSH 経由で開発キットに接続](./how-to-ssh-into-percept-dk.md)します
-1. Windows コマンド プロンプト ([スタート] &gt; 「cmd」) または Linux ターミナルを開き、更新ファイルが格納されているフォルダーに移動します。 次のコマンドを実行し、更新を開始します。
-    - Windows: ```uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    - Linux: ```sudo ./uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    
-これらのコマンドの実行後、コマンド プロンプトに "デバイスを待機しています..." というメッセージが表示されることがあります。 これは想定されていることなので、次の手順に進んでください。
-    
-1. USB ケーブルを使用して、開発キットのキャリア ボードをホスト コンピューターに接続します。 常に、キャリア ボードの USB-C ポートから、ホスト コンピューターの使用可能なポートに応じて USB-C ポートまたは USB-A ポートに接続するようにしてください (USB-C to USB-A ケーブルは別売り)。 
- 
-1. SSH または PuTTY ターミナルで、次のコマンドを入力して開発キットを USB モードに設定し、開発キットを再起動します。
-    - ```flagutil    -wBfRequestUsbFlash    -v1```
-    - ```reboot -f```
- 
-1. ホスト コンピューターがデバイスを認識し、更新プロセスが自動的に開始されることが示される場合があります。 状態を確認するためにコマンド プロンプトに戻ります。 このプロセスには最大で 10 分かかります。更新が成功すると、"Success 1 Failure 0 (成功 1 失敗 0)" というメッセージが表示されます
- 
-1. 更新が完了したら、キャリア ボードの電源をオフにします。 PC から USB ケーブルを取り外します。  USB ケーブルを使用して、Azure Percept Vision のモジュールをキャリア ボードに接続し直します。
+## <a name="set-up-your-environment"></a>環境を設定する
 
-1. キャリア ボードの電源を再度オンにします。
+1. コマンドラインを使用して簡単にアクセスできる場所にホスト コンピューター上のフォルダーまたはディレクトリを作成します。
+
+1. UUU ツール (**uuu.exe** または **uuu**) を新しいフォルダーにコピーします。
+
+1. **Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw.xz** を右クリックし、 **[7-Zip]** &gt; **[ここに展開]** を選択して、圧縮ファイルから **Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw** ファイルを抽出します。
+
+1. 抽出された **Azure-Percept-DK- *&lt;バージョン番号&gt;* .raw** ファイル、**fast-hab-fw.raw**、および **emmc_full.txt** を、UUU ツールが格納されているフォルダーに移動します。
+
+## <a name="update-your-device"></a>デバイスを更新する
+
+1. [開発キットに SSH で接続します](./how-to-ssh-into-percept-dk.md)。
+
+1. 次に、Windows コマンド プロンプト ( **[スタート]**  >  **「cmd」** ) または Linux ターミナルを開き、更新ファイルと UUU ツールが格納されているフォルダーに移動します。 コマンド プロンプトまたはターミナルで次のコマンドを入力して、フラッシュ可能なデバイスを受信するようにコンピューターを準備します。
+
+    - Windows:
+
+        ```console
+        uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw 
+        ```
+
+    - Linux:
+
+        ```bash
+        sudo ./uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw
+        ```
+
+1. Azure Percept Vision デバイスを、キャリア ボードの USB-C ポートから切断します。
+
+1. 指定された USB-C ケーブルを、キャリア ボードの USB-C ポートとホスト コンピューターの USB-C ポートに接続します。 コンピューターに USB-A ポートしかない場合は、USB-C to USB-A ケーブル (別売り) に接続して、キャリア ボードとホスト コンピューターに接続します。
+
+1. SSH クライアントのプロンプトで、次のコマンドを入力します。
+
+    1. デバイスを USB 更新モードに設定します。
+
+        ```bash
+        sudo flagutil    -wBfRequestUsbFlash    -v1
+        ```
+
+    1. デバイスを再起動します。 更新プログラムのインストールが開始されます。
+
+        ```bash
+        sudo reboot -f
+        ```
+
+1. 他のコマンド プロンプトまたはターミナルに戻ります。 更新が完了すると、```Success 1    Failure 0``` というメッセージが表示されます。
+
+    > [!NOTE]
+    > 更新後は、デバイスが工場出荷時の設定にリセットされ、Wi-Fi 接続と SSH ログインは失われます。
+
+1. 更新が完了したら、キャリア ボードの電源をオフにします。 PC から USB ケーブルを取り外します。  
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、開発キットが正常に更新されました。 開発キットを使用して開発と操作を続けることができます。
+[Azure Percept DK セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)を使用して、デバイスを再構成します。

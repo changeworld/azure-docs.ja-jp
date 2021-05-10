@@ -3,14 +3,14 @@ title: Azure Automation Update Management の更新プログラムの展開を�
 description: この記事では、更新プログラムの展開をスケジュールし、その状態を確認する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575894"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669680"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>更新プログラムを展開して結果を確認する方法
 
@@ -21,6 +21,9 @@ ms.locfileid: "100575894"
 * オペレーティング システムは、マシンの OS に基づいて自動的に事前に選択されます
 * 更新する対象マシンが自動的にターゲットに設定されます
 * スケジュールを構成するときに、**今すぐ更新**、1 回実行、または定期的なスケジュールの使用を指定できます。
+
+> [!IMPORTANT]
+> 更新プログラムの展開を作成すると、そのオペレーティング システムの更新プログラムを提供している会社によって規定されたソフトウェア ライセンス条項 (EULA) の条項に同意したことになります。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

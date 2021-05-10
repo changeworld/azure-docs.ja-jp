@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd982ab6dc66674e705f080511282bcfeb909872
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96493629"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787181"
 ---
 # <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Azure CLI を使用して Azure SQL Database の単一データベースを監視してスケーリングする
 
@@ -43,7 +43,7 @@ az account set -s $subscription # ...or use 'az login'
 [!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a database in Azure SQL Database")]
 
 > [!TIP]
-> [az sql db op list](/cli/azure/sql/db/op?#az-sql-db-op-list) を使用してデータベースで実行された操作の一覧を取得し、[az sql db op cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel) を使用してデータベースに対する更新操作を取り消します。
+> [az sql db op list](/cli/azure/sql/db/op?#az_sql_db_op_list) を使用してデータベースで実行された操作の一覧を取得し、[az sql db op cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) を使用してデータベースに対する更新操作を取り消します。
 
 ### <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -60,7 +60,7 @@ az group delete --name $resource
 | スクリプト | 説明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | サーバーのコマンド。 |
-| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | データベース サイズの使用量に関する情報を表示します。 |
+| [az sql db show-usage](/cli/azure/sql#az_sql_show_usage) | データベース サイズの使用量に関する情報を表示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

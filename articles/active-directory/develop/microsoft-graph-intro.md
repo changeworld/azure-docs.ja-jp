@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: a799d7c32ad632303931adf838ca8e2e715b2adc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2e689e620a5aeb7c5028f1a1b30dd6def8e447ab
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96860186"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529988"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -32,9 +32,9 @@ Microsoft Graph では、次の Microsoft 365 サービスのデータにアク�
 
 現在、Microsoft Graph では v1.0 とベータの 2 つのバージョンがサポートされています。 v1.0 バージョンには、一般提供の API が含まれています。 すべての運用アプリでは、v1.0 を使用してください。 ベータ版には、現在プレビュー段階にある API が含まれています。 ベータ版 API では破壊的変更が行われる可能性があるため、ベータ版は開発中のアプリをテストする場合にのみ使用することをお勧めします。運用アプリではベータ版 API を使用しないでください。 詳しくは、「[Microsoft Graph のバージョン管理、サポートと重大な変更の方針](/graph/versioning-and-support)」をご覧ください。
 
-ベータ版 API の使用を始めるには、「[Microsoft Graph ベータ版のエンドポイント リファレンス](/graph/api/overview?view=graph-rest-beta)」をご覧ください。
+ベータ版 API の使用を始めるには、「[Microsoft Graph ベータ版のエンドポイント リファレンス](/graph/api/overview?view=graph-rest-beta&preserve-view=true)」をご覧ください。
 
-v1.0 API の使用を始めるには、「[Microsoft Graph REST API v1.0 リファレンス](/graph/api/overview)」をご覧ください。
+v1.0 API の使用を始めるには、「[Microsoft Graph REST API v1.0 リファレンス](/graph/api/overview?view=graph-rest-1.0&preserve-view=true)」をご覧ください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -57,4 +57,4 @@ Microsoft Graph API の機能にアクセスする方法がわかるクイック
 
 Web ベースのツールである Microsoft Graph エクスプローラーを利用すると、Microsoft Graph API を使用して要求を作成し、テストできます。 Microsoft Graph エクスプローラーには、`https://developer.microsoft.com/graph/graph-explorer` でアクセスできます。
 
-Postman も、Microsoft Graph API を使用して要求を作成し、テストするために使用できるツールです。 Postman は `https://www.getpostman.com/` でダウンロードできます。 Postman で Microsoft Graph を操作するには、Postman の Microsoft Graph コレクションを使用します。 詳しくは、「[Microsoft Graph API で Postman を使用する](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)」をご覧ください。
+Postman も、Microsoft Graph API を使用して要求を作成し、テストするために使用できるツールです。 Postman は `https://www.getpostman.com/` でダウンロードできます。 Postman で Microsoft Graph を操作するには、Postman の Microsoft Graph コレクションを使用します。 詳しくは、「[Microsoft Graph API で Postman を使用する](/graph/use-postman)」をご覧ください。

@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
 ms.openlocfilehash: a92e37326cf9db0eba186b2bdca44c452c02ea91
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92521397"
 ---
 次のリソースも使用できます。
@@ -19,7 +19,7 @@ ms.locfileid: "92521397"
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアントと **RegistryManager** および **ServiceClient** クラスを使用した C# の例を示します。 **RegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **RegistryManager** クラスを使用して、IoT ハブ内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、 **ServiceClient** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceTwinId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアントと **RegistryManager** および **ServiceClient** クラスを使用した C# の例を示します。 **RegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **RegistryManager** クラスを使用して、IoT ハブ内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、**ServiceClient** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceTwinId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -51,7 +51,7 @@ Console.WriteLine($"Update the targetTemperature property to {desiredTargetTempe
 await registryManager.UpdateTwinAsync(deviceTwinId, twinPatch, twin.ETag);
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルでは、ツインの `ETag` を更新する前に取得する方法を示します。 プロパティは、 **Thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルでは、ツインの `ETag` を更新する前に取得する方法を示します。 プロパティは、**Thermostat1** コンポーネント内で定義されています。
 
 ```csharp
 Twin twin = await registryManager.GetTwinAsync(deviceTwinId);
@@ -115,7 +115,7 @@ catch (DeviceNotFoundException)
 }
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **Thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**Thermostat1** コンポーネント内で定義されています。
 
 ```csharp
 // Create command name to invoke for component. The command is formatted as <component name>*<command name>
@@ -258,7 +258,7 @@ HttpOperationHeaderResponse<DigitalTwinUpdateHeaders> updateDigitalTwinResponse 
 Console.WriteLine($"Update {digitalTwinId} digital twin response: {updateDigitalTwinResponse.Response.StatusCode}.");
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、 **Thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、**Thermostat1** コンポーネント内で定義されています。
 
 ```csharp
 int desiredTargetTemperature = 60;
@@ -327,7 +327,7 @@ catch (HttpOperationException e)
 }
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **Thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**Thermostat1** コンポーネント内で定義されています。
 
 ```csharp
 DateTimeOffset since = DateTimeOffset.Now.Subtract(TimeSpan.FromMinutes(2));

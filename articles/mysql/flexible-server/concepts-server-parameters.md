@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーター - Azure Database for MySQL - フレキシブル サーバー
 description: このトピックでは、Azure Database for MySQL - フレキシブル サーバーでのサーバー パラメーターの構成に関するガイドラインを示します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d64dc4f3c034279aee7401503bbb60883c9ed4e7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94496315"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492241"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーのサーバー パラメーター
 
@@ -39,9 +39,11 @@ Azure Database for MySQL フレキシブル サーバーでは、さまざまな
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-Azure Database for MySQL フレキシブル サーバーの場合、バイナリ ログは常に有効になっています (つまり、`log_bin` が ON に設定されています)。 トリガーを使用したい場合、"*SUPER 特権を持っておらず、バイナリ ログが有効になっています (より安全度の低い `log_bin_trust_function_creators` 変数を使用することもできます)* " のようなエラーが表示されます。 
+Azure Database for MySQL フレキシブル サーバーの場合、バイナリ ログは常に有効になっています (つまり、`log_bin` が ON に設定されています)。 フレキシブル サーバーでは、log_bin_trust_function_creators は既定で ON に設定されています。 
 
-バイナリ ログ形式は常に **行** であり、サーバーへのすべての接続では **常に** 行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログでは、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、[`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) を安全に **TRUE** に設定できます。
+バイナリ ログ形式は常に **行** であり、サーバーへのすべての接続では **常に** 行ベースのバイナリ ログが使用されます。 行ベースのバイナリ ログを使用すると、セキュリティ上の問題が存在せず、バイナリ ログを中断できないため、安全に [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) を **オン** のままにしておくことができます。
+
+[`log_bin_trust_function_creators`] がオフに設定されている場合、トリガーの作成を試みると、"*SUPER 特権を持っておらず、バイナリ ログが有効になっています (より安全度の低い`log_bin_trust_function_creators` 変数を使用することもできます)* " のようなエラーが表示されます。 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 

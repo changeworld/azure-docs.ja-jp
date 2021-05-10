@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e1cef56d15838d80079decc6e1da7ad830bd1cd9
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92206953"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029762"
 ---
 # <a name="what-is-azure-expressroute"></a>Azure ExpressRoute とは
 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Microsoft 365 などの Microsoft クラウド サービスへの接続を確立できます。
@@ -20,6 +20,10 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続はパブリックなインターネットを経由しません。 これにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も一定しており、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute 接続モデル](expressroute-connectivity-models.md)」を参照してください。
 
 ![ExpressRoute 接続の概要](./media/expressroute-introduction/expressroute-connection-overview.png)
+
+> [!NOTE]
+> ExpressRoute のコンテキストにおける Microsoft Edge とは、ExpressRoute 回線の Microsoft 側のエッジ ルーターを表します。 ExpressRoute 回線にとって、これは Microsoft のネットワークへの入口となります。
+> 
 
 ## <a name="key-benefits"></a>主な利点
 

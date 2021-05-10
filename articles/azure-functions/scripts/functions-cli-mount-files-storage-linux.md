@@ -4,12 +4,12 @@ description: Azure CLI を使用して、サーバーレス Python Function App 
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00bf0ecc9db3cf369fd75b427dcfba686aed0ed5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d0037cea24b1989c4f7a4d2ddd6bf3f8f7e812b3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98035123"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762283"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Azure CLI を使用してファイル共有を Python Function App にマウントする
 
@@ -38,13 +38,13 @@ ms.locfileid: "98035123"
 
 | コマンド | Notes |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Azure Storage アカウントを作成します。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Function App を作成します。 |
-| [az storage share create](/cli/azure/storage/share#az-storage-share-create) | ストレージ アカウントに Azure Files 共有を作成します。 | 
-| [az storage directory create](/cli/azure/storage/directory#az-storage-directory-create) | 共有内にディレクトリを作成します。 |
-| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) | 共有を Function App にマウントします。 |
-| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-list) | Function App にマウントされたファイル共有を表示します。 | 
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Azure Storage アカウントを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Function App を作成します。 |
+| [az storage share create](/cli/azure/storage/share#az_storage_share_create) | ストレージ アカウントに Azure Files 共有を作成します。 | 
+| [az storage directory create](/cli/azure/storage/directory#az_storage_directory_create) | 共有内にディレクトリを作成します。 |
+| [az webapp config storage-account add](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) | 共有を Function App にマウントします。 |
+| [az webapp config storage-account list](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_list) | Function App にマウントされたファイル共有を表示します。 | 
 
 ## <a name="next-steps"></a>次のステップ
 

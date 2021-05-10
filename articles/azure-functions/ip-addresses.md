@@ -3,21 +3,21 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98726733"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608233"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
-この記事では、関数アプリの IP アドレスに関連する次のトピックについて説明します。
+この記事では、関数アプリの IP アドレスに関連する次の概念について説明します。
 
-* 関数アプリが現在使用している IP アドレスを確認する方法。
-* 関数アプリの IP アドレスが変更される理由。
-* 関数アプリにアクセスできる IP アドレスを制限する方法。
-* 関数アプリの専用の IP アドレスを取得する方法。
+* 関数アプリが現在使用している IP アドレスの確認。
+* 関数アプリの IP アドレスが変更される条件。
+* 関数アプリにアクセスできる IP アドレスの制限。
+* 関数アプリの専用の IP アドレスの定義。
 
 IP アドレスは、個々の関数ではなく、関数アプリに関連付けられています。 着信 HTTP 要求は、着信 IP アドレスを使用して個々の関数を呼び出すことはできません。既定のドメイン名 (functionappname.azurewebsites.net) またはカスタム ドメイン名を使用する必要があります。
 
@@ -56,7 +56,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリで使用する送信 IP アドレスを許可リストに登録する必要がある場合、別の選択肢となるのは、関数アプリのデータ センター (Azure リージョン) を許可リストに登録することです。 [すべての Azure データ センターの IP アドレスが記述された JSON ファイルをダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=56519)してください。 次に、関数アプリを実行するリージョンに適用される JSON 要素を検索します。
 
-たとえば、西ヨーロッパの JSON 要素は、次のようになっています。
+たとえば、次の JSON フラグメントは、西ヨーロッパの許可リストがどのようになるかを示しています。
 
 ```
 {
@@ -99,10 +99,12 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが[従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行される場合、送信 IP アドレスは、[上記のような](#inbound-ip-address-changes)アクションを実行しなくても、変更される場合があります。
 
-送信 IP アドレスを意図的に変更するには、次のようにします。
+送信 IP アドレスの変更を意図的に強制するには、次の手順に従います。
 
 1. App Service プランの価格レベルを Standard から上げるか、または Premium v2 から下げます。
+
 2. 10 分間待ちます。
+
 3. 最初の価格レベルに戻します。
 
 ## <a name="ip-address-restrictions"></a>IP アドレスの制限
@@ -111,14 +113,22 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="dedicated-ip-addresses"></a>専用の IP アドレス
 
-静的な専用の IP アドレスが必要な場合は、[App Service 環境](../app-service/environment/intro.md) (App Service プランの [Isolated 階層](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service 環境の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
+関数アプリに静的な専用の IP アドレスが必要な場合は、検討可能ないくつかの方法があります。 
 
-関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
+### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>送信の静的な IP 用の仮想ネットワーク NAT ゲートウェイ
+
+仮想ネットワーク NAT ゲートウェイを使用して、静的パブリック IP アドレス経由でトラフィックを送信することで、関数からの送信トラフィックの IP アドレスを制御できます。 このトポロジは、[Premium プラン](functions-premium-plan.md)で実行する場合に使用できます。 詳しくは、「[チュートリアル: Azure 仮想ネットワーク NAT ゲートウェイを使用して Azure Functions の送信 IP を制御する](functions-how-to-use-nat-gateway.md)」を参照してください。
+
+### <a name="app-service-environments"></a>App Service Environment
+
+受信と送信の両方の IP アドレスを完全に制御するには、[App Service Environment](../app-service/environment/intro.md) (App Service プランの[分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service Environment の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
+
+関数アプリが App Service Environment 内で実行されるかどうかを確認するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
-4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
+4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service Environment の価格レベルは、 **[Isolated]** です。
  
 別の方法として、[Cloud Shell](../cloud-shell/quickstart.md) を使用することもできます。
 
@@ -126,7 +136,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service 環境 `sku` は `Isolated` です。
+App Service Environment `sku` は `Isolated` です。
 
 ## <a name="next-steps"></a>次のステップ
 

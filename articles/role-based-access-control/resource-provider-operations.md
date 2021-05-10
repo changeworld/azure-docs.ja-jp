@@ -7,18 +7,18 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/25/2021
+ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: c91172ff110b950335c66f2c0ea9ac59c37e0a76
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: d6126e9d782765b992ae2fd51016984389c9b187
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487853"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778303"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
-このセクションでは、組み込みロールで使用される、Azure リソース プロバイダーの操作を一覧表示します。 これらの操作を [Azure カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに対する詳細なアクセス制御を実現できます。 リソース プロバイダー操作は常に進化しています。 最新の操作を取得するには、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) または [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) を使用してください。
+このセクションでは、組み込みロールで使用される、Azure リソース プロバイダーの操作を一覧表示します。 これらの操作を [Azure カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに対する詳細なアクセス制御を実現できます。 リソース プロバイダー操作は常に進化しています。 最新の操作を取得するには、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) または [az provider operation list](/cli/azure/provider/operation#az_provider_operation_list) を使用してください。
 
 操作の一覧を表示するには、次の表にあるリソース プロバイダーの名前をクリックします。
 
@@ -94,11 +94,11 @@ ms.locfileid: "102487853"
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
 | **モノのインターネット** |
 | [Microsoft.Devices](#microsoftdevices) |
+| [Microsoft.DeviceUpdate](#microsoftdeviceupdate) |
 | [Microsoft.IoTCentral](#microsoftiotcentral) |
 | [Microsoft.NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights) |
 | **複合現実** |
-| [Microsoft.IoTSpaces](#microsoftiotspaces) |
 | [Microsoft.MixedReality](#microsoftmixedreality) |
 | **統合** |
 | [Microsoft.ApiManagement](#microsoftapimanagement) |
@@ -264,6 +264,7 @@ Azure サービス:[Azure Service Health](../service-health/index.yml)
 > | Microsoft.ResourceHealth/metadata/read | メタデータを取得します |
 > | Microsoft.ResourceHealth/Notifications/read | Azure Resource Manager 通知を受信します |
 > | Microsoft.ResourceHealth/Operations/read | Microsoft ResourceHealth で利用できる操作を取得します |
+> | Microsoft.ResourceHealth/potentialoutages/read |  |
 
 ### <a name="microsoftsupport"></a>Microsoft.Support
 
@@ -281,8 +282,6 @@ Azure サービス: コア
 > | Microsoft.Support/services/problemClassifications/read | Azure サービスの 1 つまたはすべての問題分類を一覧表示します |
 > | Microsoft.Support/supportTickets/read | 1 つまたはすべてのサポート チケットを一覧表示します |
 > | Microsoft.Support/supportTickets/write | サポート チケットの作成と更新を許可します |
-> | Microsoft.Support/supportTickets/communications/read | 1 つまたはすべてのサポート チケット コミュニケーションを一覧表示します |
-> | Microsoft.Support/supportTickets/communications/write | サポート チケットに新しいコミュニケーションを追加します |
 
 ## <a name="compute"></a>Compute
 
@@ -673,6 +672,7 @@ Azure サービス:[Content Delivery Network](../cdn/index.yml)
 > | アクション | 説明 |
 > | --- | --- |
 > | Microsoft.Cdn/register/action | CDN リソース プロバイダーにサブスクリプションを登録し、CDN プロファイルを作成できるようにします。 |
+> | Microsoft.Cdn/unregister/action | CDN リソース プロバイダーのサブスクリプションの登録を解除します。 |
 > | Microsoft.Cdn/CheckNameAvailability/action |  |
 > | Microsoft.Cdn/ValidateProbe/action |  |
 > | Microsoft.Cdn/CheckResourceUsage/action |  |
@@ -697,6 +697,8 @@ Azure サービス:[Content Delivery Network](../cdn/index.yml)
 > | Microsoft.Cdn/operationresults/profileresults/CheckResourceUsage/action |  |
 > | Microsoft.Cdn/operationresults/profileresults/GenerateSsoUri/action |  |
 > | Microsoft.Cdn/operationresults/profileresults/GetSupportedOptimizationTypes/action |  |
+> | Microsoft.Cdn/operationresults/profileresults/CheckHostNameAvailability/action |  |
+> | Microsoft.Cdn/operationresults/profileresults/Usages/action |  |
 > | Microsoft.Cdn/operationresults/profileresults/afdendpointresults/read |  |
 > | Microsoft.Cdn/operationresults/profileresults/afdendpointresults/write |  |
 > | Microsoft.Cdn/operationresults/profileresults/afdendpointresults/delete |  |
@@ -748,9 +750,9 @@ Azure サービス:[Content Delivery Network](../cdn/index.yml)
 > | Microsoft.Cdn/operationresults/profileresults/secretresults/write |  |
 > | Microsoft.Cdn/operationresults/profileresults/secretresults/delete |  |
 > | Microsoft.Cdn/operationresults/profileresults/secretresults/ValidateSecret/action |  |
-> | Microsoft.Cdn/operationresults/profileresults/securitypoliciesresults/read |  |
-> | Microsoft.Cdn/operationresults/profileresults/securitypoliciesresults/write |  |
-> | Microsoft.Cdn/operationresults/profileresults/securitypoliciesresults/delete |  |
+> | Microsoft.Cdn/operationresults/profileresults/securitypolicyresults/read |  |
+> | Microsoft.Cdn/operationresults/profileresults/securitypolicyresults/write |  |
+> | Microsoft.Cdn/operationresults/profileresults/securitypolicyresults/delete |  |
 > | Microsoft.Cdn/operations/read |  |
 > | Microsoft.Cdn/profiles/read |  |
 > | Microsoft.Cdn/profiles/write |  |
@@ -758,6 +760,8 @@ Azure サービス:[Content Delivery Network](../cdn/index.yml)
 > | Microsoft.Cdn/profiles/CheckResourceUsage/action |  |
 > | Microsoft.Cdn/profiles/GenerateSsoUri/action |  |
 > | Microsoft.Cdn/profiles/GetSupportedOptimizationTypes/action |  |
+> | Microsoft.Cdn/profiles/CheckHostNameAvailability/action |  |
+> | Microsoft.Cdn/profiles/Usages/action |  |
 > | Microsoft.Cdn/profiles/afdendpoints/read |  |
 > | Microsoft.Cdn/profiles/afdendpoints/write |  |
 > | Microsoft.Cdn/profiles/afdendpoints/delete |  |
@@ -791,6 +795,12 @@ Azure サービス:[Content Delivery Network](../cdn/index.yml)
 > | Microsoft.Cdn/profiles/endpoints/origins/read |  |
 > | Microsoft.Cdn/profiles/endpoints/origins/write |  |
 > | Microsoft.Cdn/profiles/endpoints/origins/delete |  |
+> | Microsoft.Cdn/profiles/getloganalyticslocations/read |  |
+> | Microsoft.Cdn/profiles/getloganalyticsmetrics/read |  |
+> | Microsoft.Cdn/profiles/getloganalyticsrankings/read |  |
+> | Microsoft.Cdn/profiles/getloganalyticsresources/read |  |
+> | Microsoft.Cdn/profiles/getwafloganalyticsmetrics/read |  |
+> | Microsoft.Cdn/profiles/getwafloganalyticsrankings/read |  |
 > | Microsoft.Cdn/profiles/origingroups/read |  |
 > | Microsoft.Cdn/profiles/origingroups/write |  |
 > | Microsoft.Cdn/profiles/origingroups/delete |  |
@@ -982,6 +992,12 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/ddosProtectionPlans/join/action | DDoS Protection プランを結合します。 警告不可能です。 |
 > | Microsoft.Network/dnsoperationresults/read | DNS 操作の結果を取得します。 |
 > | Microsoft.Network/dnsoperationstatuses/read | DNS 操作の状態を取得します。  |
+> | Microsoft.Network/dnsResolvers/read | JSON 形式で DNS リゾルバーのプロパティを取得します |
+> | Microsoft.Network/dnsResolvers/write | JSON 形式で DNS リゾルバーを作成または更新します |
+> | Microsoft.Network/dnsResolvers/delete | DNS リゾルバーを削除します |
+> | Microsoft.Network/dnsResolvers/inboundEndpoints/read | JSON 形式で DNS リゾルバーの受信エンドポイントを取得します |
+> | Microsoft.Network/dnsResolvers/inboundEndpoints/write | JSON 形式で DNS リゾルバーの受信エンドポイントを作成または更新します |
+> | Microsoft.Network/dnsResolvers/inboundEndpoints/delete | JSON 形式で DNS リゾルバーの受信エンドポイントを削除します |
 > | Microsoft.Network/dnszones/read | DNS ゾーンを JSON 形式で取得します。 ゾーンのプロパティには、タグ、ETag、numberOfRecordSets、maxNumberOfRecordSets があります。 このコマンドでは、ゾーン内のレコード セットは取得されません。 |
 > | Microsoft.Network/dnszones/write | リソース グループ内の DNS ゾーンを作成または更新します。  DNS ゾーン リソースのタグを更新する際に使用します。 このコマンドを使用して、ゾーン内のレコード セットを作成または更新することはできません。 |
 > | Microsoft.Network/dnszones/delete | JSON 形式の DNS ゾーンを削除します。 ゾーンのプロパティには、タグ、ETag、numberOfRecordSets、maxNumberOfRecordSets があります。 |
@@ -1143,6 +1159,8 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/locations/availablePrivateEndpointTypes/read | 使用できるプライベート エンドポイント リソースを取得します |
 > | Microsoft.Network/locations/availableServiceAliases/read | 使用可能なサービスの別名を取得します |
 > | Microsoft.Network/locations/checkDnsNameAvailability/read | 指定された場所で DNS ラベルを使用できるかどうかを確認します。 |
+> | Microsoft.Network/locations/dnsResolverOperationResults/read | JSON 形式で DNS リゾルバーの操作結果を取得します |
+> | Microsoft.Network/locations/dnsResolverOperationStatuses/read | DNS リゾルバーの操作状態を取得します |
 > | Microsoft.Network/locations/operationResults/read | 非同期の POST 操作または DELETE 操作の結果を取得します。 |
 > | Microsoft.Network/locations/operations/read | 非同期操作の状態を表す操作リソースを取得します。 |
 > | Microsoft.Network/locations/serviceTags/read | サービス タグを取得します |
@@ -1233,6 +1251,7 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/networkWatchers/pingMeshes/read | PingMesh の詳細を取得します。 |
 > | Microsoft.Network/networkWatchers/pingMeshes/write | PingMesh を作成します。 |
 > | Microsoft.Network/networkWatchers/pingMeshes/delete | PingMesh を削除します。 |
+> | Microsoft.Network/networkWatchers/topology/read | リソース グループ内のリソースとその関係のネットワーク レベル ビューを取得します。 |
 > | Microsoft.Network/operations/read | 使用可能な操作を取得します。 |
 > | Microsoft.Network/p2sVpnGateways/read | P2SVpnGateway を取得します。 |
 > | Microsoft.Network/p2sVpnGateways/write | P2SVpnGateway を設定します。 |
@@ -1394,6 +1413,8 @@ Azure サービス:[Application Gateway](../application-gateway/index.yml)、[Az
 > | Microsoft.Network/virtualNetworks/BastionHosts/action | 仮想ネットワーク内の踏み台ホストの参照を取得します。 |
 > | Microsoft.Network/virtualNetworks/bastionHosts/default/action | 仮想ネットワーク内の踏み台ホストの参照を取得します。 |
 > | Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | 指定された仮想ネットワークで IP アドレスを使用できるかどうかを確認します。 |
+> | Microsoft.Network/virtualNetworks/dnsForwardingRulesets/read | JSON 形式で Virtual Network の DNS 転送ルールセットを取得します |
+> | Microsoft.Network/virtualNetworks/dnsResolvers/read | JSON 形式で Virtual Network の DNS リゾルバーを取得します |
 > | Microsoft.Network/virtualNetworks/privateDnsZoneLinks/read | 仮想ネットワークのプロパティへのプライベート DNS ゾーンのリンクを JSON 形式で取得します。 |
 > | Microsoft.Network/virtualNetworks/subnets/read | 仮想ネットワーク サブネットの定義を取得します。 |
 > | Microsoft.Network/virtualNetworks/subnets/write | 仮想ネットワーク サブネットを作成するか、既存の仮想ネットワーク サブネットを更新します。 |
@@ -1546,6 +1567,7 @@ Azure サービス:[Azure Data Box](../databox/index.yml)
 > | Microsoft.DataBox/unregister/action | プロバイダー Microsoft.Databox を登録解除します |
 > | Microsoft.DataBox/jobs/cancel/action | 処理中の注文を取り消します。 |
 > | Microsoft.DataBox/jobs/bookShipmentPickUp/action | 返品の集配を予約できます。 |
+> | Microsoft.DataBox/jobs/mitigate/action | このメソッドは、解決コードでジョブに対して軽減アクションを実行するのに役立ちます |
 > | Microsoft.DataBox/jobs/listCredentials/action | 注文に関連する暗号化されていない資格情報を一覧表示します。 |
 > | Microsoft.DataBox/locations/validateInputs/action | このメソッドでは、すべての種類の検証が行われます。 |
 > | Microsoft.DataBox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
@@ -1664,6 +1686,7 @@ Azure サービス:[Azure NetApp Files](../azure-netapp-files/index.yml)
 > | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/BackupStatus/read |  |
 > | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/MountTargets/read | マウント ターゲット リソースを読み取ります。 |
 > | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/read | ボリューム レプリケーションの状態を読み取ります。 |
+> | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/RestoreStatus/read |  |
 > | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | スナップショット リソースを読み取ります。 |
 > | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | スナップショット リソースを書き込みます。 |
 > | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete | スナップショット リソースを削除します。 |
@@ -1745,6 +1768,7 @@ Azure サービス:[Storage](../storage/index.yml)
 > | Microsoft.Storage/storageAccounts/fileServices/read | ファイル サービスのプロパティを取得します |
 > | Microsoft.Storage/storageAccounts/fileServices/shares/delete | ファイル共有を削除します |
 > | Microsoft.Storage/storageAccounts/fileServices/shares/read | ファイル共有を取得します |
+> | Microsoft.Storage/storageAccounts/fileServices/shares/lease/action |  |
 > | Microsoft.Storage/storageAccounts/fileServices/shares/read | ファイル共有を一覧表示します |
 > | Microsoft.Storage/storageAccounts/fileServices/shares/write | ファイル共有を作成または更新します |
 > | Microsoft.Storage/storageAccounts/inventoryPolicies/delete |  |
@@ -2216,6 +2240,7 @@ Azure サービス:[Media Services](../media-services/index.yml)
 > | Microsoft.Media/mediaservices/listKeys/action | Media Services アカウントの ACS キーを一覧表示します。 |
 > | Microsoft.Media/mediaservices/syncStorageKeys/action | アタッチされた Azure Storage アカウントのストレージ キーを同期します。 |
 > | Microsoft.Media/mediaservices/listEdgePolicies/action | エッジ デバイスのポリシーを一覧表示します。 |
+> | Microsoft.Media/mediaservices/PrivateEndpointConnectionsApproval/action | プライベート エンドポイント接続を承認します |
 > | Microsoft.Media/mediaservices/accountfilters/read | アカウント フィルターを読み取ります。 |
 > | Microsoft.Media/mediaservices/accountfilters/write | アカウント フィルターを作成または更新します。 |
 > | Microsoft.Media/mediaservices/accountfilters/delete | アカウント フィルターを削除します。 |
@@ -2245,14 +2270,6 @@ Azure サービス:[Media Services](../media-services/index.yml)
 > | Microsoft.Media/mediaservices/liveEvents/liveOutputs/read | ライブ出力を読み取ります |
 > | Microsoft.Media/mediaservices/liveEvents/liveOutputs/write | ライブ出力を作成または更新します。 |
 > | Microsoft.Media/mediaservices/liveEvents/liveOutputs/delete | ライブ出力を削除します。 |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnectionProxies/read | ライブ イベントのプライベート エンドポイント接続プロキシを読み取ります |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnectionProxies/write | ライブ イベントのプライベート エンドポイント接続プロキシを作成します |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnectionProxies/delete | ライブ イベントのプライベート エンドポイント接続プロキシを削除します |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnectionProxies/validate/action | ライブ イベントのプライベート エンドポイント接続プロキシを検証します |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnections/read | ライブ イベントのプライベート エンドポイント接続を読み取ります |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnections/write | ライブ イベントのプライベート エンドポイント接続を作成します |
-> | Microsoft.Media/mediaservices/liveEvents/privateEndpointConnections/delete | ライブ イベントのプライベート エンドポイント接続を削除します |
-> | Microsoft.Media/mediaservices/liveEvents/privateLinkResources/read | ライブ イベントの Private Link リソースを読み取ります |
 > | Microsoft.Media/mediaservices/liveOutputOperations/read | ライブ出力操作を読み取ります。 |
 > | Microsoft.Media/mediaservices/mediaGraphs/read | 任意のメディア グラフを読み取ります |
 > | Microsoft.Media/mediaservices/mediaGraphs/write | 任意のメディア グラフを作成または更新します |
@@ -2275,14 +2292,6 @@ Azure サービス:[Media Services](../media-services/index.yml)
 > | Microsoft.Media/mediaservices/streamingEndpoints/start/action | ストリーミング エンドポイント操作を開始します。 |
 > | Microsoft.Media/mediaservices/streamingEndpoints/stop/action | ストリーミング エンドポイント操作を停止します。 |
 > | Microsoft.Media/mediaservices/streamingEndpoints/scale/action | ストリーミング エンドポイント操作をスケーリングします。 |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnectionProxies/read | ストリーミング エンドポイントのプライベート エンドポイント接続プロキシを読み取ります |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnectionProxies/write | ストリーミング エンドポイントのプライベート エンドポイント接続プロキシを作成します |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnectionProxies/delete | ストリーミング エンドポイントのプライベート エンドポイント接続プロキシを削除します |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnectionProxies/validate/action | ストリーミング エンドポイントのプライベート エンドポイント接続プロキシを検証します |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnections/read | ストリーミング エンドポイントのプライベート エンドポイント接続を読み取ります |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnections/write | ストリーミング エンドポイントのプライベート エンドポイント接続を作成します |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateEndpointConnections/delete | ストリーミング エンドポイントのプライベート エンドポイント接続を削除します |
-> | Microsoft.Media/mediaservices/streamingEndpoints/privateLinkResources/read | ストリーミング エンドポイントの Private Link リソースを読み取ります |
 > | Microsoft.Media/mediaservices/streamingLocators/read | ストリーミング ロケーターを読み取ります。 |
 > | Microsoft.Media/mediaservices/streamingLocators/write | ストリーミング ロケーターを作成または更新します。 |
 > | Microsoft.Media/mediaservices/streamingLocators/delete | ストリーミング ロケーターを削除します。 |
@@ -2291,8 +2300,6 @@ Azure サービス:[Media Services](../media-services/index.yml)
 > | Microsoft.Media/mediaservices/streamingPolicies/read | ストリーミング ポリシーを読み取ります。 |
 > | Microsoft.Media/mediaservices/streamingPolicies/write | ストリーミング ポリシーを作成または更新します。 |
 > | Microsoft.Media/mediaservices/streamingPolicies/delete | ストリーミング ポリシーを削除します。 |
-> | Microsoft.Media/mediaservices/streamingPrivateEndpointConnectionOperations/read | ストリーミング プライベート エンドポイント接続の操作を読み取ります |
-> | Microsoft.Media/mediaservices/streamingPrivateEndpointConnectionProxyOperations/read | ストリーミング プライベート エンドポイント接続プロキシの操作を読み取ります |
 > | Microsoft.Media/mediaservices/transforms/read | 変換を読み取ります |
 > | Microsoft.Media/mediaservices/transforms/write | 変換を作成または更新します。 |
 > | Microsoft.Media/mediaservices/transforms/delete | 変換を削除します。 |
@@ -2330,6 +2337,9 @@ Azure サービス:[Azure Search](../search/index.yml)
 > | Microsoft.Search/searchServices/privateEndpointConnectionProxies/write | 指定されたパラメーターでプライベート エンドポイント接続プロキシを作成するか、指定されたプライベート エンドポイント接続プロキシのプロパティまたはタグを更新します |
 > | Microsoft.Search/searchServices/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシの一覧を返すか、指定されたプライベート エンドポイント接続プロキシのプロパティを取得します |
 > | Microsoft.Search/searchServices/privateEndpointConnectionProxies/delete | 既存のプライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.Search/searchServices/privateEndpointConnections/write | 指定されたパラメーターでプライベート エンドポイント接続を作成するか、指定されたプライベート エンドポイント接続のプロパティまたはタグを更新します |
+> | Microsoft.Search/searchServices/privateEndpointConnections/read | プライベート エンドポイント接続の一覧を返すか、指定されたプライベート エンドポイント接続のプロパティを取得します |
+> | Microsoft.Search/searchServices/privateEndpointConnections/delete | 既存のプライベート エンドポイント接続を削除します |
 > | Microsoft.Search/searchServices/sharedPrivateLinkResources/write | 指定されたパラメーターを使用して新しい共有プライベート リンク リソースを作成するか、指定された共有プライベート リンク リソースのプロパティを更新します |
 > | Microsoft.Search/searchServices/sharedPrivateLinkResources/read | 共有プライベート リンク リソースの一覧を返すか、指定された共有プライベート リンク リソースのプロパティを取得します |
 > | Microsoft.Search/searchServices/sharedPrivateLinkResources/delete | 既存の共有プライベート リンク リソースを削除します |
@@ -2344,30 +2354,44 @@ Azure サービス:[Azure SignalR Service](../azure-signalr/index.yml)
 > | --- | --- |
 > | Microsoft.SignalRService/register/action | "Microsoft.SignalRService" リソース プロバイダーをサブスクリプションに登録します。 |
 > | Microsoft.SignalRService/unregister/action | "Microsoft.SignalRService" リソース プロバイダーのサブスクリプションの登録を解除します。 |
-> | Microsoft.SignalRService/locations/checknameavailability/action | 新しい SignalR サービスで名前を使用できるかどうかを確認します。 |
+> | Microsoft.SignalRService/locations/checknameavailability/action | 新しい Microsoft.SignalRService リソースで名前を使用できるかどうかを確認します。 |
 > | Microsoft.SignalRService/locations/operationresults/signalr/read | 場所に基づく非同期操作の結果のクエリを実行します |
-> | Microsoft.SignalRService/locations/operationStatuses/operationId/read | 場所に基づく非同期操作の状態のクエリを実行します |
+> | Microsoft.SignalRService/locations/operationresults/webpubsub/read | 場所に基づく非同期操作の結果のクエリを実行します |
 > | Microsoft.SignalRService/locations/operationStatuses/signalr/read | 場所に基づく非同期操作の状態のクエリを実行します |
-> | Microsoft.SignalRService/locations/usages/read | Azure SignalR Service のクォータ使用状況を取得します。 |
+> | Microsoft.SignalRService/locations/operationStatuses/webpubsub/read | 場所に基づく非同期操作の状態のクエリを実行します |
+> | Microsoft.SignalRService/locations/usages/read | Microsoft.SignalRService リソース プロバイダーのクォータの使用状況を取得します。 |
 > | Microsoft.SignalRService/operationresults/read | プロバイダー レベルの非同期操作の結果のクエリを実行します |
-> | Microsoft.SignalRService/operations/read | Azure SignalR Service の操作を一覧表示します。 |
+> | Microsoft.SignalRService/operations/read | Microsoft.SignalRService リソース プロバイダーに対する操作を一覧表示します。 |
 > | Microsoft.SignalRService/operationstatus/read | プロバイダー レベルの非同期操作の状態のクエリを実行します |
 > | Microsoft.SignalRService/SignalR/read | 管理ポータルで、または API を介して SignalR の設定と構成を表示します。 |
 > | Microsoft.SignalRService/SignalR/write | 管理ポータルで、または API を介して SignalR の設定と構成を変更します。 |
-> | Microsoft.SignalRService/SignalR/delete | SignalR Service 全体を削除します。 |
+> | Microsoft.SignalRService/SignalR/delete | SignalR リソースを削除します。 |
 > | Microsoft.SignalRService/SignalR/listkeys/action | 管理ポータルで、または API を使用して SignalR のアクセス キーの値を表示します。 |
 > | Microsoft.SignalRService/SignalR/regeneratekey/action | 管理ポータルで、または API を使用して SignalR のアクセス キーの値を変更します。 |
-> | Microsoft.SignalRService/SignalR/restart/action | 管理ポータルで、または API を使用して Azure SignalR Service を再起動します。 特定のダウンタイムが発生します。 |
-> | Microsoft.SignalRService/SignalR/eventGridFilters/read | 指定されたイベント グリッド フィルターのプロパティを取得するか、指定された SignalR のすべてのイベント グリッド フィルターを一覧表示します。 |
-> | Microsoft.SignalRService/SignalR/eventGridFilters/write | 指定されたパラメーターで SignalR のイベント グリッド フィルターを作成または更新します。 |
-> | Microsoft.SignalRService/SignalR/eventGridFilters/delete | SignalR からイベント グリッドのフィルターを削除します。 |
+> | Microsoft.SignalRService/SignalR/restart/action | 管理ポータルで、または API を使用して SignalR リソースを再起動します。 特定のダウンタイムが発生します。 |
+> | Microsoft.SignalRService/SignalR/eventGridFilters/read | 指定されたイベント グリッド フィルターのプロパティを取得するか、指定された SignalR リソースのすべてのイベント グリッド フィルターを一覧表示します。 |
+> | Microsoft.SignalRService/SignalR/eventGridFilters/write | 指定されたパラメーターで SignalR リソースのイベント グリッド フィルターを作成または更新します。 |
+> | Microsoft.SignalRService/SignalR/eventGridFilters/delete | SignalR リソースからイベント グリッドのフィルターを削除します。 |
 > | Microsoft.SignalRService/SignalR/privateEndpointConnectionProxies/validate/action | プライベート エンドポイント接続プロキシを検証します |
 > | Microsoft.SignalRService/SignalR/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを作成します |
 > | Microsoft.SignalRService/SignalR/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを読み取ります |
 > | Microsoft.SignalRService/SignalR/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
 > | Microsoft.SignalRService/SignalR/privateEndpointConnections/write | プライベート エンドポイント接続を承認または拒否します |
 > | Microsoft.SignalRService/SignalR/privateEndpointConnections/read | プライベート エンドポイント接続を読み取ります |
-> | Microsoft.SignalRService/SignalR/privateLinkResources/read | すべての SignalR Private Link リソースを一覧表示します |
+> | Microsoft.SignalRService/SignalR/privateLinkResources/read | SignalR リソースのすべての Private Link リソースを一覧表示します。 |
+> | Microsoft.SignalRService/WebPubSub/read | 管理ポータルで、または API を使用して WebPubSub の設定と構成を表示します |
+> | Microsoft.SignalRService/WebPubSub/write | 管理ポータルで、または API を使用して WebPubSub の設定と構成を変更します |
+> | Microsoft.SignalRService/WebPubSub/delete | WebPubSub リソースを削除します。 |
+> | Microsoft.SignalRService/WebPubSub/listkeys/action | 管理ポータルで、または API を使用して WebPubSub のアクセス キーの値を表示します |
+> | Microsoft.SignalRService/WebPubSub/regeneratekey/action | 管理ポータルで、または API を使用して WebPubSub のアクセス キーの値を変更します |
+> | Microsoft.SignalRService/WebPubSub/restart/action | 管理ポータルで、または API を使用して WebPubSub リソースを再起動します。 特定のダウンタイムが発生します。 |
+> | Microsoft.SignalRService/WebPubSub/privateEndpointConnectionProxies/validate/action | プライベート エンドポイント接続プロキシを検証します |
+> | Microsoft.SignalRService/WebPubSub/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを作成します |
+> | Microsoft.SignalRService/WebPubSub/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを読み取ります |
+> | Microsoft.SignalRService/WebPubSub/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.SignalRService/WebPubSub/privateEndpointConnections/write | プライベート エンドポイント接続を承認または拒否します |
+> | Microsoft.SignalRService/WebPubSub/privateEndpointConnections/read | プライベート エンドポイント接続を読み取ります |
+> | Microsoft.SignalRService/WebPubSub/privateLinkResources/read | WebPubSub リソースのすべての Private Link リソースを一覧表示します。 |
 > | **DataAction** | **説明** |
 > | Microsoft.SignalRService/SignalR/auth/accessKey/action | ClientToken に署名するための一時的な AccessKey を生成します。 |
 > | Microsoft.SignalRService/SignalR/auth/clientToken/action | クライアント接続を開始するための ClientToken を生成します。 |
@@ -2381,7 +2405,16 @@ Azure サービス:[Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.SignalRService/SignalR/serverConnection/write | サーバー接続を開始します。 |
 > | Microsoft.SignalRService/SignalR/user/send/action | 複数のクライアント接続で構成されている可能性のあるユーザーにメッセージを送信します。 |
 > | Microsoft.SignalRService/SignalR/user/read | ユーザーの存在を確認します。 |
-> | Microsoft.SignalRService/SignalR/user/write |  |
+> | Microsoft.SignalRService/SignalR/user/write | ユーザーを変更します。 |
+> | Microsoft.SignalRService/WebPubSub/clientConnection/send/action | クライアント接続にメッセージを直接送信します。 |
+> | Microsoft.SignalRService/WebPubSub/clientConnection/read | クライアント接続の存在を確認します。 |
+> | Microsoft.SignalRService/WebPubSub/clientConnection/write | クライアント接続を閉じます。 |
+> | Microsoft.SignalRService/WebPubSub/group/send/action | メッセージをグループにブロードキャストします。 |
+> | Microsoft.SignalRService/WebPubSub/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
+> | Microsoft.SignalRService/WebPubSub/group/write | グループに参加するか、グループから脱退します。 |
+> | Microsoft.SignalRService/WebPubSub/hub/send/action | ハブ内のすべてのクライアント接続にメッセージをブロードキャストします。 |
+> | Microsoft.SignalRService/WebPubSub/user/send/action | 複数のクライアント接続で構成されている可能性のあるユーザーにメッセージを送信します。 |
+> | Microsoft.SignalRService/WebPubSub/user/read | ユーザーの存在を確認します。 |
 
 ### <a name="microsoftweb"></a>microsoft.web
 
@@ -2457,6 +2490,8 @@ Azure サービス:[App Service](../app-service/index.yml)、[Azure Functions](.
 > | microsoft.web/hostingenvironments/resume/action | ホスティング環境を再開します。 |
 > | microsoft.web/hostingenvironments/suspend/action | ホスティング環境を中断します。 |
 > | microsoft.web/hostingenvironments/capacities/read | ホスティング環境の容量を取得します。 |
+> | Microsoft.Web/hostingEnvironments/configurations/networking/Read | App Service Environment のネットワーク構成を取得します |
+> | Microsoft.Web/hostingEnvironments/configurations/networking/Write | App Service Environment のネットワーク構成を更新します。 |
 > | microsoft.web/hostingenvironments/detectors/read | ホスティング環境の検出機能を取得します。 |
 > | microsoft.web/hostingenvironments/diagnostics/read | ホスティング環境の診断を取得します。 |
 > | Microsoft.Web/hostingEnvironments/eventGridFilters/delete | ホスティング環境で Event Grid フィルターを削除します。 |
@@ -2874,6 +2909,9 @@ Azure サービス:[App Service](../app-service/index.yml)、[Azure Functions](.
 > | Microsoft.Web/staticSites/builds/listappsettings/Action | 静的サイト ビルドのアプリの設定を一覧表示します |
 > | Microsoft.Web/staticSites/builds/zipdeploy/action | zip 圧縮したコンテンツから静的サイト ビルドを展開します |
 > | Microsoft.Web/staticSites/builds/config/Write | 静的サイト ビルドのアプリの設定を作成または更新します |
+> | Microsoft.Web/staticSites/builds/userProvidedFunctionApps/Delete | ユーザーが指定した関数アプリを静的サイト ビルドからデタッチします |
+> | Microsoft.Web/staticSites/builds/userProvidedFunctionApps/Read | 静的サイト ビルドのユーザー指定の関数アプリを取得します |
+> | Microsoft.Web/staticSites/builds/userProvidedFunctionApps/Write | ユーザーが指定した関数アプリを静的サイト ビルドに登録します |
 > | Microsoft.Web/staticSites/config/Write | 静的サイトのアプリの設定を作成または更新します |
 > | Microsoft.Web/staticSites/customdomains/Write | 静的サイトのカスタム ドメインを作成します |
 > | Microsoft.Web/staticSites/customdomains/Delete | 静的サイトのカスタム ドメインを削除します |
@@ -2884,6 +2922,9 @@ Azure サービス:[App Service](../app-service/index.yml)、[Azure Functions](.
 > | Microsoft.Web/staticSites/privateEndpointConnections/Read | 静的サイトのプライベート エンドポイント接続またはプライベート エンドポイント接続の一覧を取得します |
 > | Microsoft.Web/staticSites/privateEndpointConnections/Delete | 静的サイトのプライベート エンドポイント接続を削除します |
 > | Microsoft.Web/staticSites/privateLinkResources/Read | Private Link リソースを取得します |
+> | Microsoft.Web/staticSites/userProvidedFunctionApps/Delete | ユーザーが指定した関数アプリを静的サイトからデタッチします |
+> | Microsoft.Web/staticSites/userProvidedFunctionApps/Read | 静的サイトのユーザー指定の関数アプリを取得します |
+> | Microsoft.Web/staticSites/userProvidedFunctionApps/Write | ユーザーが指定した関数アプリを静的サイトに登録します |
 
 ## <a name="containers"></a>Containers
 
@@ -2969,6 +3010,9 @@ Azure サービス:[Container Registry](../container-registry/index.yml)
 > | Microsoft.ContainerRegistry/registries/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシが作成されます (NRP のみ) |
 > | Microsoft.ContainerRegistry/registries/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシが削除されます (NRP のみ) |
 > | Microsoft.ContainerRegistry/registries/privateEndpointConnectionProxies/operationStatuses/read | プライベート エンドポイント接続プロキシの非同期操作の状態が取得されます |
+> | Microsoft.ContainerRegistry/registries/privateEndpointConnections/read | プライベート エンドポイント接続のプロパティ、または指定されたコンテナー レジストリのすべてのプライベート エンドポイント接続の一覧を取得します |
+> | Microsoft.ContainerRegistry/registries/privateEndpointConnections/write | プライベート エンドポイント接続を承認/拒否します |
+> | Microsoft.ContainerRegistry/registries/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します |
 > | Microsoft.ContainerRegistry/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
 > | Microsoft.ContainerRegistry/registries/push/write | コンテナー レジストリにイメージをプッシュするか書き込みます。 |
 > | Microsoft.ContainerRegistry/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
@@ -3019,6 +3063,7 @@ Azure サービス:[Azure Kubernetes Service (AKS)](../aks/index.yml)
 > | Microsoft.ContainerService/locations/operationresults/read | 非同期操作結果の状態を取得します。 |
 > | Microsoft.ContainerService/locations/operations/read | 非同期操作の状態を取得します。 |
 > | Microsoft.ContainerService/locations/orchestrators/read | サポート対象のオーケストレーターを一覧表示します。 |
+> | Microsoft.ContainerService/locations/os-options/read | OS のオプションを取得します |
 > | Microsoft.ContainerService/managedClusters/read | マネージド クラスターを取得します。 |
 > | Microsoft.ContainerService/managedClusters/write | 新しいマネージド クラスターを作成するか、既存のものを更新します。 |
 > | Microsoft.ContainerService/managedClusters/delete | マネージド クラスターを削除します。 |
@@ -3381,6 +3426,7 @@ Azure サービス:[Azure Cache for Redis](../azure-cache-for-redis/index.yml)
 > | Microsoft.Cache/checknameavailability/action | 新しい Redis Cache で名前を使用できるかどうかを確認します。 |
 > | Microsoft.Cache/register/action | "Microsoft.Cache" リソース プロバイダーをサブスクリプションに登録します。 |
 > | Microsoft.Cache/unregister/action | サブスクリプションへの "Microsoft.Cache" リソース プロバイダーの登録を解除します。 |
+> | Microsoft.Cache/locations/checknameavailability/action | 新しい Redis Enterprise キャッシュで名前が使用できるかどうかを確認します |
 > | Microsoft.Cache/locations/asyncOperations/read | 非同期操作の状態を読み取ります。 |
 > | Microsoft.Cache/locations/operationResults/read | 前に "Location" ヘッダーがクライアントに返された、実行時間の長い操作の結果を取得します。 |
 > | Microsoft.Cache/locations/operationsStatus/read | 前にクライアントに対して "AzureAsync" ヘッダーが返された長期操作の結果を取得します |
@@ -3422,7 +3468,13 @@ Azure サービス:[Azure Cache for Redis](../azure-cache-for-redis/index.yml)
 > | Microsoft.Cache/redisEnterprise/databases/delete | Redis Enterprise データベースとそのコンテンツを削除します |
 > | Microsoft.Cache/redisEnterprise/databases/read | 管理ポータルで Redis Enterprise キャッシュ データベースの設定と構成を表示します |
 > | Microsoft.Cache/redisEnterprise/databases/write | 管理ポータルで Redis Enterprise キャッシュ データベースの設定と構成を変更します |
+> | Microsoft.Cache/redisEnterprise/databases/export/action | Redis Enterprise データベースからストレージ BLOB にデータをエクスポートします  |
 > | Microsoft.Cache/redisEnterprise/databases/forceUnlink/action | Georeplica Redis Enterprise データベースをその Peer ノードから強制的にリンク解除します |
+> | Microsoft.Cache/redisEnterprise/databases/import/action | ストレージ BLOB から Redis Enterprise データベースにデータをインポートします |
+> | Microsoft.Cache/redisEnterprise/databases/listKeys/action | 管理ポータルに Redis Enterprise データベースのアクセス キーの値を表示します |
+> | Microsoft.Cache/redisEnterprise/databases/regenerateKey/action | 管理ポータルで Redis Enterprise データベースのアクセス キーの値を変更します |
+> | Microsoft.Cache/redisEnterprise/databases/operationResults/read | 管理ポータルに Redis Enterprise データベース操作の結果を表示します |
+> | Microsoft.Cache/redisEnterprise/operationResults/read | 管理ポータルに Redis Enterprise 操作の結果を表示します |
 > | Microsoft.Cache/redisEnterprise/privateEndpointConnectionProxies/validate/action | プライベート エンドポイント接続プロキシを検証します |
 > | Microsoft.Cache/redisEnterprise/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを取得します |
 > | Microsoft.Cache/redisEnterprise/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを作成します |
@@ -3557,6 +3609,10 @@ Azure サービス:[Data Factory](../data-factory/index.yml)
 > | Microsoft.DataFactory/factories/privateEndpointConnectionProxies/validate/action | プライベート エンドポイント接続プロキシが検証されます |
 > | Microsoft.DataFactory/factories/privateEndpointConnectionProxies/operationresults/read | プライベート エンドポイント接続プロキシの作成の結果を読み取ります。 |
 > | Microsoft.DataFactory/factories/privateEndpointConnectionProxies/operationstatuses/read | プライベート エンドポイント接続プロキシの作成状態を読み取ります。 |
+> | Microsoft.DataFactory/factories/privateEndpointConnections/read | プライベート エンドポイント接続を読み取ります。 |
+> | Microsoft.DataFactory/factories/privateEndpointConnections/write | プライベート エンドポイント接続を作成または更新します。 |
+> | Microsoft.DataFactory/factories/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します。 |
+> | Microsoft.DataFactory/factories/privateLinkResources/read | Private Link リソース読み取ります。 |
 > | Microsoft.DataFactory/factories/queryFeaturesValue/read | 機能の一覧に対する公開制御機能の値を読み取ります。 |
 > | Microsoft.DataFactory/factories/querypipelineruns/read | クエリ パイプライン実行の結果を読み取ります。 |
 > | Microsoft.DataFactory/factories/querytriggerruns/read | トリガー実行の結果を読み取ります。 |
@@ -3912,6 +3968,8 @@ Azure サービス:[Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/cassandraClusters/read | マネージド Cassandra クラスターを読み取るか、すべてのマネージド Cassandra クラスターを一覧表示します |
 > | Microsoft.DocumentDB/cassandraClusters/write | マネージド Cassandra クラスターを作成または更新します |
 > | Microsoft.DocumentDB/cassandraClusters/delete | マネージド Cassandra クラスターを削除します |
+> | Microsoft.DocumentDB/cassandraClusters/repair/action | 管理された Cassandra キースペースの修復を要求します |
+> | Microsoft.DocumentDB/cassandraClusters/fetchNodeStatus/action | 管理された Cassandra クラスター内のすべてのノードのノード状態を非同期に取得します |
 > | Microsoft.DocumentDB/cassandraClusters/dataCenters/read | マネージド Cassandra クラスターのデータセンターを読み取るか、マネージド Cassandra クラスター内のすべてのデータセンターを一覧表示します |
 > | Microsoft.DocumentDB/cassandraClusters/dataCenters/write | マネージド Cassandra クラスターのデータセンターを作成または更新します |
 > | Microsoft.DocumentDB/cassandraClusters/dataCenters/delete | マネージド Cassandra クラスターのデータセンターを削除します |
@@ -4137,6 +4195,7 @@ Azure サービス:[Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/operationResults/read | 非同期操作の状態を読み取ります。 |
 > | Microsoft.DocumentDB/databaseAccounts/usages/read | データベース アカウントの使用状況を読み取ります。 |
 > | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/action | 仮想ネットワークまたはサブネットが削除されていることを Microsoft.DocumentDB に通知します。 |
+> | Microsoft.DocumentDB/locations/read | 場所のメタデータを読み取るか、場所のメタデータをすべて一覧表示します |
 > | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/operationResults/read | deleteVirtualNetworkOrSubnets 非同期操作の状態を読み取ります。 |
 > | Microsoft.DocumentDB/locations/operationsStatus/read | 非同期操作の状態を読み取ります |
 > | Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read | 復元可能なデータベース アカウントを読み取るか、すべての復元可能なデータベースアカウントを一覧表示します |
@@ -4181,6 +4240,8 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/locations/extendedAuditingSettingsOperationResults/read | 拡張サーバー BLOB 監査ポリシー設定操作の結果を取得します。 |
 > | Microsoft.Sql/locations/firewallRulesAzureAsyncOperation/read | ファイアウォール規則操作の状態を取得します。 |
 > | Microsoft.Sql/locations/firewallRulesOperationResults/read | ファイアウォール規則操作の状態を取得します。 |
+> | Microsoft.Sql/locations/hybridCertificateAzureAsyncOperation/read | Azure SQL Managed Instance での長期ハイブリッド証明書の非同期操作の状態を取得します。 |
+> | Microsoft.Sql/locations/hybridCertificateOperationResults/read | 長期ハイブリッド証明書の非同期操作の状態を取得します。 |
 > | Microsoft.Sql/locations/hybridLinkAzureAsyncOperation/read | Azure SQL Managed Instance での長期ハイブリッド リンクの非同期操作の状態を取得します。 |
 > | Microsoft.Sql/locations/hybridLinkOperationResults/read | 長期ハイブリッド リンクの非同期操作の状態を取得します。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/read | インスタンス フェールオーバー グループの一覧を返すか、指定されたインスタンス フェールオーバー グループのプロパティを取得します。 |
@@ -4246,10 +4307,11 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/locations/virtualNetworkRulesAzureAsyncOperation/read | 指定された仮想ネットワーク規則の Azure 非同期操作の詳細を返します。  |
 > | Microsoft.Sql/locations/virtualNetworkRulesOperationResults/read | 指定された仮想ネットワーク規則の操作の詳細を返します。  |
 > | Microsoft.Sql/managedInstances/tdeCertificates/action | TDE 証明書を作成/更新します |
+> | Microsoft.Sql/managedInstances/joinServerTrustGroup/action | ユーザーがマネージド サーバーをサーバー信頼グループに参加させることが許可されているかどうかを判断します |
+> | Microsoft.Sql/managedInstances/hybridCertificate/action | 指定されたパラメーターでハイブリッド証明書を作成または更新します。 |
 > | Microsoft.Sql/managedInstances/read | マネージド インスタンスの一覧を返すか、指定されたマネージド インスタンスのプロパティを取得します。 |
 > | Microsoft.Sql/managedInstances/write | 指定されたパラメーターでマネージド インスタンスを作成するか、指定されたマネージド インスタンスのプロパティまたはタグを更新します。 |
 > | Microsoft.Sql/managedInstances/delete | 既存のマネージド インスタンスを削除します。 |
-> | Microsoft.Sql/managedInstances/joinServerTrustGroup/action | ユーザーがマネージド サーバーをサーバー信頼グループに参加させることが許可されているかどうかを判断します |
 > | Microsoft.Sql/managedInstances/failover/action | 顧客が開始したマネージド インスタンスのフェールオーバー。 |
 > | Microsoft.Sql/managedInstances/administrators/read | Managed Instance の管理者の一覧を取得します。 |
 > | Microsoft.Sql/managedInstances/administrators/write | 指定されたパラメーターでマネージド インスタンスの管理者を作成または更新します。 |
@@ -4429,6 +4491,7 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/read | 指定されたデータベースの機密ラベルを一覧表示します。 |
 > | Microsoft.Sql/servers/databases/recommendedSensitivityLabels/write | 推薦される機密ラベルをバッチ更新します |
 > | Microsoft.Sql/servers/databases/replicationLinks/read | レプリケーション リンクの一覧を返すか、指定されたレプリケーション リンクのプロパティを取得します。 |
+> | Microsoft.Sql/servers/databases/replicationLinks/delete | レプリケーション関係を強制的に終了します。データが失われる可能性があります。 |
 > | Microsoft.Sql/servers/databases/replicationLinks/failover/action | プライマリからすべての変更を同期した後にフェールオーバーします。このデータベースがレプリケーション関係のプライマリになり、リモート プライマリがセカンダリになります。 |
 > | Microsoft.Sql/servers/databases/replicationLinks/forceFailoverAllowDataLoss/action | 即座にフェールオーバーします。このデータベースがレプリケーション関係のプライマリになり、リモート プライマリがセカンダリになります。データが失われる可能性があります。 |
 > | Microsoft.Sql/servers/databases/replicationLinks/updateReplicationMode/action | リンクのレプリケーション モードを同期モードまたは非同期モードに更新します。 |
@@ -4542,6 +4605,9 @@ Azure サービス:[Azure SQL Database](../azure-sql/database/index.yml)、[Azur
 > | Microsoft.Sql/servers/keys/delete | 既存のサーバー キーを削除します。 |
 > | Microsoft.Sql/servers/operationResults/read | 進行中のサーバー操作を取得します。 |
 > | Microsoft.Sql/servers/operations/read | サーバーで実行された操作の一覧を返します |
+> | Microsoft.Sql/servers/outboundFirewallRules/read | 送信ファイアウォール規則を読み取ります |
+> | Microsoft.Sql/servers/outboundFirewallRules/delete | 送信ファイアウォール規則を削除します |
+> | Microsoft.Sql/servers/outboundFirewallRules/write | 送信ファイアウォール規則を作成します |
 > | Microsoft.Sql/servers/privateEndpointConnectionProxies/updatePrivateEndpointProperties/action | NRP で、プライベート エンドポイント接続にプロパティをバックフィルするために使用されます |
 > | Microsoft.Sql/servers/privateEndpointConnectionProxies/validate/action | NRP 側からのプライベート エンドポイント接続作成呼び出しを検証します |
 > | Microsoft.Sql/servers/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシの一覧を返すか、指定されたプライベート エンドポイント接続プロキシのプロパティを取得します。 |
@@ -4912,9 +4978,16 @@ Azure サービス:[Azure Data Explorer](/azure/data-explorer/)
 > | Microsoft.Kusto/Clusters/DataConnections/read | クラスターのデータ接続リソースが読み取られます。 |
 > | Microsoft.Kusto/Clusters/DataConnections/write | クラスターのデータ接続リソースが書き込まれます。 |
 > | Microsoft.Kusto/Clusters/DataConnections/delete | クラスターのデータ接続リソースが削除されます。 |
+> | Microsoft.Kusto/Clusters/ManagedPrivateEndpoints/read | アタッチされているデータベース構成リソースを読み取ります。 |
+> | Microsoft.Kusto/Clusters/ManagedPrivateEndpoints/write |  |
+> | Microsoft.Kusto/Clusters/ManagedPrivateEndpoints/delete |  |
 > | Microsoft.Kusto/Clusters/PrincipalAssignments/read | クラスター プリンシパルの割り当てリソースを読み取ります。 |
 > | Microsoft.Kusto/Clusters/PrincipalAssignments/write | クラスター プリンシパルの割り当てリソースを書き込みます。 |
 > | Microsoft.Kusto/Clusters/PrincipalAssignments/delete | クラスター プリンシパルの割り当てリソースを削除します。 |
+> | Microsoft.Kusto/Clusters/PrivateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを読み取ります |
+> | Microsoft.Kusto/Clusters/PrivateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを書き込みます |
+> | Microsoft.Kusto/Clusters/PrivateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
+> | Microsoft.Kusto/Clusters/PrivateEndpointConnectionProxies/Validate/action | プライベート エンドポイント接続プロキシを検証します |
 > | Microsoft.Kusto/Clusters/SKUs/read | クラスター SKU リソースを読み取ります。 |
 > | Microsoft.Kusto/Locations/CheckNameAvailability/action | リソース名の可用性を確認します。 |
 > | Microsoft.Kusto/Locations/GetNetworkPolicies/action | ネットワーク インテント ポリシーを取得します |
@@ -5089,6 +5162,9 @@ Azure サービス:[Azure Synapse Analytics](../synapse-analytics/index.yml)
 > | Microsoft.Synapse/workspaces/libraries/read | ライブラリ成果物を読み取ります |
 > | Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings/write | ワークスペースでマネージド ID の SQL コントロールの設定を更新します |
 > | Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings/read | マネージド ID の SQL コントロールの設定を取得します |
+> | Microsoft.Synapse/workspaces/managedVirtualNetworks/managedPrivateEndpoints/read | マネージド プライベート エンドポイントを読み取ります。 |
+> | Microsoft.Synapse/workspaces/managedVirtualNetworks/managedPrivateEndpoints/delete | マネージド プライベート エンドポイントを削除します。 |
+> | Microsoft.Synapse/workspaces/managedVirtualNetworks/managedPrivateEndpoints/write | マネージド プライベート エンドポイントを作成または更新します。 |
 > | Microsoft.Synapse/workspaces/operationResults/read | 非同期操作の結果を読み取ります。 |
 > | Microsoft.Synapse/workspaces/operationStatuses/read | 非同期操作の状態を読み取ります。 |
 > | Microsoft.Synapse/workspaces/privateEndpointConnections/write | プライベート エンドポイント接続を作成または更新します |
@@ -5105,6 +5181,8 @@ Azure サービス:[Azure Synapse Analytics](../synapse-analytics/index.yml)
 > | Microsoft.Synapse/workspaces/sqlAdministrators/write | ワークスペースに Active Directory 管理者を設定します |
 > | Microsoft.Synapse/workspaces/sqlAdministrators/read | ワークスペース Active Directory 管理者を取得します |
 > | Microsoft.Synapse/workspaces/sqlAdministrators/delete | ワークスペース Active Directory 管理者を削除します |
+> | Microsoft.Synapse/workspaces/sqlDatabases/write | SQL Analytics データベースを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlDatabases/read | SQL Analytics データベースを読み取ります。 |
 > | Microsoft.Synapse/workspaces/sqlPools/write | SQL Analytics プールを作成または更新します。 |
 > | Microsoft.Synapse/workspaces/sqlPools/read | SQL Analytics プールを読み取ります。 |
 > | Microsoft.Synapse/workspaces/sqlPools/delete | SQL Analytics プールを削除します。 |
@@ -5248,6 +5326,11 @@ Azure サービス:[Azure Bot Service](/azure/bot-service/)
 > | Microsoft.BotService/checknameavailability/providers/Microsoft.Insights/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
 > | Microsoft.BotService/checknameavailability/providers/Microsoft.Insights/logDefinitions/read | &lt;リソースの名前&gt;に使用できるログを取得します |
 > | Microsoft.BotService/checknameavailability/providers/Microsoft.Insights/metricDefinitions/read | リソースの診断設定を作成または更新します。 |
+> | Microsoft.BotService/hostsettings/read | ボット サービスをホストするために必要な設定を取得します |
+> | Microsoft.BotService/hostsettings/providers/Microsoft.Insights/diagnosticSettings/read | リソースの診断設定を取得します。 |
+> | Microsoft.BotService/hostsettings/providers/Microsoft.Insights/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
+> | Microsoft.BotService/hostsettings/providers/Microsoft.Insights/logDefinitions/read | &lt;リソースの名前&gt;に使用できるログを取得します |
+> | Microsoft.BotService/hostsettings/providers/Microsoft.Insights/metricDefinitions/read | リソースの診断設定を作成または更新します。 |
 > | Microsoft.BotService/listauthserviceproviders/providers/Microsoft.Insights/diagnosticSettings/read | リソースの診断設定を取得します。 |
 > | Microsoft.BotService/listauthserviceproviders/providers/Microsoft.Insights/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
 > | Microsoft.BotService/listauthserviceproviders/providers/Microsoft.Insights/logDefinitions/read | &lt;リソースの名前&gt;に使用できるログを取得します |
@@ -5574,26 +5657,55 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/ImageSearch/trending/action | 現在の注目の画像を取得します。 |
 > | Microsoft.CognitiveServices/accounts/ImmersiveReader/getcontentmodelforreader/action | イマーシブ リーダー セッションを作成します |
 > | Microsoft.CognitiveServices/accounts/LUIS/predict/action | 指定されたクエリについて公開されたエンドポイント予測を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/unlabeled/action | ラベルのないデータを対応するアプリケーションに追加します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/write | 新しい LUIS アプリを作成します。 アプリケーションの名前または説明を更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/azureaccounts/action | アプリケーションに Azure アカウントを割り当てます。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/delete | アプリケーションを削除します。 |
-> | Microsoft.CognitiveServices/accounts/LUIS/apps/read | アプリケーション情報を取得します。 すべてのユーザー アプリケーションを一覧表示します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/read | アプリケーション情報を取得します。 すべてのユーザー アプリケーションを一覧表示します。 アプリケーションの一覧を返します* |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/import/action | アプリケーションを LUIS にインポートします。アプリケーションの JSON が要求本文に含まれている必要があります。 新しいアプリ ID を返します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/publish/action | アプリケーションの特定のバージョンを発行します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/querylogsasync/action | アプリケーションの過去 1 か月のクエリ ログのダウンロード要求を開始します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/move/action | アプリを別の LUIS オーサリング Azure リソースに移動します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/subscriptions/action | 指定されたアプリケーションにサブスクリプション情報を割り当てます。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/unlabeled/action | ラベルのないデータを csv ファイルからアプリケーションにアップロードします |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/testdatasets/action | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/activeversion/write | 指定されたアプリの現在アクティブなバージョンを更新します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/assistants/read | **この API は非推奨です。** |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/azureaccounts/read | Azure Resource Manager トークンを使用して、ユーザーのアプリケーションに割り当てられた LUIS Azure アカウントを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/azureaccounts/delete | Azure Resource Manager トークンを使用して、ユーザーの LUIS Azure アカウントを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/cultures/read | サポートされている LUIS アプリケーション カルチャを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/cultures/tokenizerversions/read | LUIS アプリケーションのカルチャと、そのカルチャでサポートされているトークナイザーのバージョンを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/customprebuiltdomains/write | 事前構築済みのドメインとそのモデルを新しいアプリケーションとして追加します。 新しいアプリ ID を返します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/customprebuiltdomains/read | 特定のカルチャで使用可能なすべてのカスタム事前構築済みドメインを取得します。すべてのカルチャで使用可能なすべてのカスタム事前構築済みドメインを取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/domains/read | 使用可能なアプリケーション ドメインを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/endpoints/read | 使用可能なエンドポイント デプロイ リージョンと URL を返します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/metadata/read | アプリケーション メタデータを取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/metadata/write | アプリケーション メタデータを更新します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/permissions/write | この LUIS アプリケーションにアクセスできるユーザーの許可リストにユーザーを追加します。 現在のユーザーのアクセス リストを、本文で送信されたものに置き換えます。* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/permissions/read | アプリケーションにアクセスするためのアクセス許可を持つユーザー メールアドレスの一覧を取得します。  |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/permissions/delete | この LUIS アプリケーションにアクセスできるユーザーの許可リストからユーザーを削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/publishsettings/read | アプリケーションの発行設定を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/publishsettings/write | アプリケーション発行設定を更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/querylogs/read | アプリケーションの過去 1 か月のクエリ ログを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/querylogsasync/read | クエリ ログのダウンロード要求の状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/runtimepermissions/bot/action | ボット ランタイム アクセス許可をアプリケーションに追加します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/runtimepermissions/bot/delete | ボット ランタイム アプリケーション アクセス許可を削除します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/runtimepermissions/bot/read | アプリケーションのボット ランタイム アクセス許可を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/settings/read | アプリケーションの設定を取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/settings/write | アプリケーションの設定を更新します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/slots/predict/action | 特定のクエリを使用して、指定されたスロットの公開済み予測を取得します。 現在の最大クエリ サイズは 500 文字です。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/slots/evaluations/action | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/slots/evaluations/result/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/slots/evaluations/status/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/slots/predict/read | 特定のクエリを使用して、指定されたスロットの公開済み予測を取得します。 現在の最大クエリ サイズは 500 文字です。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/stats/detailedendpointhitshistory/read | 特定の期間の各日のエンドポイント ヒット履歴を、スロットとリージョンの詳細と共に取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/subscriptions/read | アプリケーションに割り当てられたサブスクリプションの情報を返します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/subscriptions/delete | アプリケーションに割り当てられたサブスクリプションから、指定された ID のサブスクリプションを削除します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/testdatasets/delete | 特定のアプリケーションから特定のデータセットを削除します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/testdatasets/read | 特定のバッチ テスト メタデータを取得します。 特定のアプリケーションのすべてのバッチ テスト データセットの一覧を返します。* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/testdatasets/write | 特定のアプリケーションの既存のバッチ テスト データ セットの最後のテスト結果を更新します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/testdatasets/download/read | 特定の ID のデータセットをダウンロードします。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/testdatasets/rename/write | 特定のアプリケーションの既存のバッチ テスト データ セットの名前を更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/usagescenarios/read | アプリケーションで使用可能な使用シナリオを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/train/action | 指定した LUIS アプリケーションのバージョンのトレーニング要求を送信します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/clone/action | 選択したアプリケーション バージョンの現在のスナップショットに相当する、新しいアプリケーション バージョンを作成します。 |
@@ -5601,9 +5713,17 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/read | アプリケーション バージョン情報を取得します。 アプリケーション バージョンの一覧の情報を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/import/action | 新しいバージョンを LUIS アプリケーションにインポートします。バージョンの JSON が、要求本文に含まれている必要があります。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/write | アプリケーション バージョンの名前または説明を更新します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/predict/action | 特定のクエリを使用して、指定されたアプリケーション バージョンの公開済み予測を取得します。 現在の最大クエリ サイズは 500 文字です。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/evaluations/action | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/action | アプリケーション バージョンのトレーニング統計を計算します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/releasedispatch/action | アプリケーションのディスパッチで使用される、選択されたアプリケーション バージョンの新しいスナップショットをリリースします |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/assignedkey/write | **これは非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/assignedkey/read | **これは非推奨です。** |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/write | リスト エンティティを LUIS アプリに追加します。 既存の closedlist にサブリストのバッチを追加します。* 閉じたリスト モデルを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/delete | 閉じたリスト エンティティをアプリケーションから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/read | 閉じたリスト モデルの情報を取得します。 closedlist モデルに関する情報を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/suggest/action | 既存または新規作成の限定されたリストに対して新しいエントリを提案します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/presuggestion/read | 限定されたリスト エンティティの前の提案結果を読み込みます。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/roles/write | 閉じたリスト エンティティ モデルのロールを追加します。閉じたリスト エンティティ モデルのロールを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/roles/delete | 閉じたリスト エンティティ モデルのロールを削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/closedlists/roles/read | 閉じたリスト エンティティ モデルのロールを取得します。 閉じたリスト エンティティ モデルのロールを取得します。 |
@@ -5617,6 +5737,9 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/compositeentities/roles/write | 複合エンティティ モデルのロールを追加します。 複合エンティティ モデルのロールを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/compositeentities/roles/delete | 複合エンティティ モデルのロールを削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/compositeentities/roles/read | 複合エンティティ モデルのロールを取得します。 複合エンティティ モデルのロールを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/connectedservices/write | インテントとサービスの間のマッピングを作成し、インテントとサービスの間のマッピングを更新します* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/connectedservices/delete | インテントとサービスの間のマッピングを削除します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/connectedservices/read | インテントとサービスの間のマッピングを取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltdomains/write | カスタマイズ可能な事前構築済みドメインとそのすべてのモデルをこのアプリケーション バージョンに追加します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltdomains/delete | 事前構築済みドメインのモデルをアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltentities/write | カスタムの事前構築済みドメイン エンティティ モデルをアプリケーション バージョンに追加します。 エンティティ ID で、[エンティティの削除](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1f)を使用して、このエンティティを削除します。 |
@@ -5626,20 +5749,35 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltentities/roles/read | カスタムの事前構築済みドメイン エンティティ モデルのロールを取得します。 カスタムの事前構築済みドメイン エンティティ モデルのロールを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltintents/write | カスタムの事前構築済みドメイン意図モデルをアプリケーションに追加します。 意図 ID で、[意図の削除](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1c)を使用して、この意図を削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltintents/read | このアプリケーション バージョンのカスタムの事前構築済み意図情報を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltintentsbatch/write | 事前に構築されたカスタムのドメイン意図をアプリケーションに一括で追加します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/customprebuiltmodels/read | このアプリケーション バージョンのすべてのカスタムの事前構築済みドメイン モデルを取得します。 |
-> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/write | シンプル エンティティ エクストラクターをアプリケーション バージョンに追加します。 エンティティ エクストラクターの名前を更新します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/detailedmodels/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/write | シンプル エンティティ エクストラクターをアプリケーション バージョンに追加します。 エンティティ エクストラクターの名前を更新します。 エンティティ エクストラクターを更新します。* |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/delete | シンプル エンティティ エクストラクターをアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/read | シンプル エンティティ モデルに関する情報を取得します。 アプリケーション バージョンのシンプル エンティティ モデルに関する情報を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/children/write | 既存の構造エンティティ モデルに単一の子を作成します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/features/write | エンティティ モデルの機能の関係を追加し、そのエンティティの機能の関係の一覧を更新します* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/features/delete | エンティティ モデルの機能の関係を削除します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/features/read | エンティティ モデルの機能の関係を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/roles/write | シンプル エンティティ モデルのロールを追加します。シンプル エンティティ モデルのロールを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/roles/delete | シンプル エンティティ モデルのロールを削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/roles/read | シンプル エンティティ モデルのロールを取得します。 シンプル エンティティ モデルのロールを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/roles/suggest/read | エンティティ モデルの精度を向上させる例を提案します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/stats/endpointscores/read | エンティティ モデルが最上位の意図としてスコア付けされた回数を取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/entities/suggest/read | エンティティ モデルの精度を向上させる例を提案します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/evaluations/result/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/evaluations/status/read | *NotDefined* |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/example/write | ラベル付きの例をアプリケーション バージョンに追加します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/examples/write | 重複しないラベル付きの例のバッチを、指定したアプリケーションに追加します。 バッチに階層構造の子エンティティを含めることはできません。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/examples/delete | 指定した ID を持つラベルを削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/examples/read | レビューするエンドポイントの例のサブセットを返します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/export/read | LUIS アプリケーション バージョンを JSON 形式にエクスポートします。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/externalkeys/delete | この API は非推奨です。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/externalkeys/read | **これは非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/externalkeys/write | **これは非推奨です。** |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/features/read | すべてのアプリケーション バージョン機能を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/featuresuggestion/status/read | アプリケーション バージョンの機能に関する提案の状態を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/featuresuggestion/suggestions/read | アプリケーション バージョンの機能に関する提案を取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/hierarchicalentities/write | 階層構造エンティティ エクストラクターをアプリケーション バージョンに追加します。 階層構造エンティティ エクストラクター モデルの名前と子を更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/hierarchicalentities/delete | 階層構造エンティティ エクストラクターをアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/hierarchicalentities/read | 階層構造エンティティ モデルに関する情報を取得します。 アプリケーション バージョンの階層構造エンティティ モデルに関する情報を取得します。 |
@@ -5652,10 +5790,22 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/write | 意図分類子をアプリケーション バージョンに追加します。 意図分類子の名前を更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/delete | 意図分類子をアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/read | 意図モデルに関する情報を取得します。 アプリケーション バージョンの意図モデルに関する情報を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/entitiescount/read | 特定のアプリの特定のタスクにおける特定の意図のラベル付き発話のエンティティ数を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/features/write | インテント モデルの機能の関係を追加し、そのインテントの機能の関係の一覧を更新します* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/features/delete | インテント モデルの機能の関係を削除します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/features/read | インテント モデルの機能の関係を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/patternrules/read | 特定の意図のパターンを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/stats/read | 意図別のアプリケーション バージョンのトレーニング統計を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/stats/endpointscores/read | 意図モデルが最上位の意図としてスコア付けされた回数を取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/intents/suggest/read | 意図モデルの精度を向上させる例を提案します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/labeleddata/read | 指定したアプリケーションのラベル付けされたデータを取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/listprebuilts/read | アプリケーションのカルチャに基づいて、アプリケーションで使用可能なすべての事前構築済みエンティティを取得します。 |
-> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/read | アプリケーション バージョン モデルに関する情報を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/read | アプリケーション バージョン モデルに関する情報を取得します。 モデルに関する情報を取得します。* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/endpointscoreshistory/read | 意図モデルが特定の期間に最上位の意図履歴としてスコア付けされた回数を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/examples/read | モデルの例の一覧を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/review/read | 特定のアプリの特定のタスクにおける特定のモデルのラベル付き発話を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/reviewlabels/read | 特定のアプリの特定のタスクにおける特定のモデルのラベル付き発話を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/models/reviewpredictions/read | 特定のアプリの特定のタスクにおける特定のモデルのラベル付き発話を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/patternanyentities/write | Pattern.any エンティティ エクストラクターをアプリケーション バージョンに追加します。 Pattern.any エンティティ エクストラクターを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/patternanyentities/delete | Pattern.any エンティティ エクストラクターをアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/patternanyentities/read | Pattern.any エンティティ モデルに関する情報を取得します。 アプリケーション バージョンの Pattern.any エンティティ モデルに関する情報を取得します。 |
@@ -5675,12 +5825,15 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/phraselists/write | 新しい phraselist 機能を作成します。 phraselist 機能のフレーズ、状態、および名前を更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/phraselists/delete | phraselist 機能をアプリケーションから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/phraselists/read | Phraselist 機能情報を取得します。 アプリケーション バージョンのすべての phraselist 機能を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/phraselists/suggest/action | 既存または新規作成のフレーズ リストに対して新しいエントリを提案します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/phraselists/presuggestion/read | phraselist 機能の前の提案結果を読み込みます。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/prebuilts/write | 事前構築済みエンティティ エクストラクターのリストをアプリケーション バージョンに追加します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/prebuilts/delete | 事前構築済みエンティティ エクストラクターをアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/prebuilts/read | 事前構築済みエンティティ モデルに関する情報を取得します。 アプリケーション バージョンの事前構築済みエンティティ モデルに関する情報を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/prebuilts/roles/write | 事前構築済みエンティティ モデルのロールを追加します。事前構築済みエンティティ モデルのロールを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/prebuilts/roles/delete | 事前構築済みエンティティ モデルのロールを削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/prebuilts/roles/read | 事前構築済みエンティティ モデルのロールを取得します。 事前構築済みエンティティ モデルのロールを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/predict/read | 特定のクエリを使用して、指定されたアプリケーション バージョンの公開済み予測を取得します。 現在の最大クエリ サイズは 500 文字です。 特定の発話の予測 (意図/エンティティ) を取得します。* |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/regexentities/write | 正規表現エンティティ エクストラクターをアプリケーション バージョンに追加します。 正規表現エンティティ モデルを更新します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/regexentities/delete | 正規表現エンティティ モデルをアプリケーション バージョンから削除します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/regexentities/read | 正規表現エンティティ モデルに関する情報を取得します。 アプリケーション バージョンの正規表現エンティティ モデルに関する情報を取得します。 |
@@ -5689,11 +5842,82 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/regexentities/roles/read | 正規表現エンティティ モデルのロールを取得します。 正規表現エンティティ モデルのロールを取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/settings/read | アプリケーション バージョン設定を取得します。 |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/settings/write | アプリケーション バージョン設定を更新します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/state/read | アプリ バージョンが以前にトレーニングされているかどうかを示すフラグを取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/read | アプリケーション バージョンのトレーニング統計を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/endpointhitshistory/read | 特定の期間の各日のエンドポイント ヒット履歴を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/examplesperentity/read | 特定のアプリケーションのエンティティごとの例の数を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/labelsperentity/read | 特定のアプリケーションのエンティティごとのラベルの数を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/labelsperintent/read | 特定のアプリケーションの意図ごとのラベルの数を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/stats/operations/read | アプリケーション バージョンのトレーニング統計の有効期限が切れていない操作情報を取得します。アプリケーションバージョンのトレーニング統計の有効期限が切れていない操作を取得します* |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/statsmetadata/read | アプリケーション バージョンのトレーニング統計メタデータを取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/suggest/delete | エンドポイント発話を削除しました。 この発話は、"エンドポイントの発話を確認する" リストにあります。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/testdatasets/run/read | アプリケーション ID とデータセット ID によって指定されたバッチ テストを実行します |
 > | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/train/read | 指定したアプリケーション バージョンのすべてのモデル (意図とエンティティ) のトレーニング状態を取得します。 トレーニング API を呼び出して、トレーニング状態を取得する前に、この API を呼び出して、LUIS アプリをトレーニングする必要があります。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/apps/versions/trainingstatus/read | アプリ バージョンが以前にトレーニングされているかどうかを示すフラグを取得します |
 > | Microsoft.CognitiveServices/accounts/LUIS/azureaccounts/read | Azure Resource Manager トークンを使用して、ユーザーの LUIS Azure アカウントを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/compositesmigration/apps/versions/migrate/action | アプリケーション バージョンの複合を移行します |
+> | Microsoft.CognitiveServices/accounts/LUIS/compositesmigration/apps/versions/operations/migrate/read | 複合移行の結果を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/compositesmigration/apps/versions/operations/migrate/status/read | 複合移行操作の状態を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/compositesmigration/needmigrationapps/read | 複合移行が必要なアプリケーションを取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/conversations/previewfeatures/read | 現在の所有者におけるプレビュー機能の適格性の状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/classifierslabelscount/read | 各分類子のラベル数を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/documents/models/trellis/action | トレリスの抽出操作を送信します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/documents/models/operations/trellis/read | トレリスの抽出操作の応答を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/documents/models/operations/trellis/status/read | トレリスの抽出操作の状態を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/extractorslabelscount/read | 各エクストラクターのラベル数を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/modeltracker/action | モデル トラッカー操作の開始要求を送信します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/predict/action | ドキュメントの予測操作をトリガーします |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/predicttext/action | ドキュメント テキストの予測操作をトリガーします |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/clone/action | 同じアプリ バージョン内でモデルをクローンします。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/modeltracker/read | モデル トラッカー操作の応答を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/modeltracker/metadata/read | モデル トラッカー操作のメタデータ応答を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/modeltracker/status/read | モデル トラッカー操作の状態を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/predict/read | ドキュメントの予測操作の応答を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/predict/status/read | ドキュメントの予測操作の状態を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/predicttext/read | ドキュメント テキストの予測操作の応答を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/models/operations/predicttext/status/read | ドキュメント テキストの予測操作の状態を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/apps/operations/read | アプリケーションの操作を取得します |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/entity/exploratorysuggestions/suggestions/action | 特定のモデルに対する探索的エンティティ提案を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/entity/exploratorysuggestions/results/read | 特定のモデルに対する上位 N 個の探索的エンティティ提案を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/entity/exploratorysuggestions/status/read | 特定のモデルに対する探索的エンティティ提案の処理状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/entitysuggestions/suggestions/action | 特定のモデルに対する提案を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/entitysuggestions/results/read | 特定のモデルに対する提案を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/entitysuggestions/status/read | 特定のモデルに対する提案の処理状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/featurerepositorysearch/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/featurerepositorystore/features/data/read | 特定のストリームにアクセスします。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/featurerepositorystore/manifest/read | グローバル ストアの Manifest オブジェクトを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/read | ストレージ アカウント コンテナー情報を取得します。 ストレージ アカウントに属している、以前に登録されたコンテナーを取得します。* |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/status/action | 指定されたストレージ アカウント コンテナーの進行状況を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/prepare/action | ドキュメント アプリケーションで使用するストレージ アカウント コンテナーを準備するために要求をキューに登録します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/sync/action | 既に準備済みのストレージ アカウント コンテナーを更新するために要求をキューに登録します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/write | ストレージ アカウント情報を更新します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/operations/prepare/status/read | ストレージ アカウント コンテナーの準備操作の状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/operations/sync/status/read | ストレージ アカウント コンテナーの更新操作の状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/prepare/result/read | 最新の準備操作の結果を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/documents/storageaccounts/containers/sync/result/read | 最新の同期操作の結果を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/externalkeys/write | **この API は非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/externalkeys/delete | **この API は非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/externalkeys/read | **この API は非推奨です。** |
 > | Microsoft.CognitiveServices/accounts/LUIS/package/slot/gzip/read | 公開された LUIS アプリケーションを GZip としてパッケージ化します |
 > | Microsoft.CognitiveServices/accounts/LUIS/package/versions/gzip/read | トレーニング済みの LUIS アプリケーションを GZip としてパッケージ化します |
+> | Microsoft.CognitiveServices/accounts/LUIS/ping/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/previewfeatures/read | 現在の所有者におけるプレビュー機能の適格性の状態を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/programmatickey/write | **この API は非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/resources/apps/count/read | ユーザーが所有しているアプリケーションの数を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/resources/apps/versions/count/read | 特定のアプリケーションのバージョンの数を取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/subscriptions/write | **この API は非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/subscriptions/delete | **この API は非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/subscriptions/read | **この API は非推奨です。** |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/termsofuse/action | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/delete | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/write | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/authoringazureaccount/write | ユーザーの APIM オーサリング キーを移行して Azure リソースにします。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/collaborators/read | ユーザーがコラボレーターを擁しているすべてのアプリについて、アプリごとにユーザーを取得します。 |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/detailedinfo/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/programmatickey/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/programmatickeywithendpointurl/read | *NotDefined* |
+> | Microsoft.CognitiveServices/accounts/LUIS/user/unownedappsowners/read | ユーザーが共同作業を行っているアプリの所有者を取得します。 |
 > | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/write | 異常アラート構成を作成または更新します |
 > | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/delete | 異常アラート構成を削除します |
 > | Microsoft.CognitiveServices/accounts/MetricsAdvisor/alert/anomaly/configurations/read | 単一の異常アラート構成をクエリします |
@@ -5780,12 +6004,65 @@ Azure サービス:[Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/create/write | 新しいナレッジベースを作成する非同期操作。 |
 > | Microsoft.CognitiveServices/accounts/QnAMaker/knowledgebases/download/read | ナレッジベースをダウンロードします。 |
 > | Microsoft.CognitiveServices/accounts/QnAMaker/operations/read | 長期実行されている特定の操作の詳細を取得します。 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/models/action | このメソッドを使用すると、一方の場所から他方にモデルをコピーできます。 ターゲット サブスクリプションの場合 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/webhooks/action | Web hook の操作 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/datasets/write | データセットを作成または更新します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/datasets/delete | データセットの削除 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/datasets/read | 1 つ以上のデータセットを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/datasets/files/read | 1 つ以上のデータセット ファイルを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/endpoints/write | エンドポイントを作成または更新します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/endpoints/delete | エンドポイントの削除 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/endpoints/read | 1 つ以上のエンドポイントを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/endpoints/files/logs/write | エンドポイント データ エクスポートを作成します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/endpoints/files/logs/delete | 一部またはすべてのカスタム モデル エンドポイント ログを削除します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/endpoints/files/logs/read | 1 つ以上のカスタム モデル エンドポイント ログを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/evaluations/write | 評価を作成または更新します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/evaluations/delete | 評価を削除します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/evaluations/read | 1 つ以上の評価を取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/evaluations/files/read | 1 つ以上の評価ファイルを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/healthstatus/read | 正常性状態を取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/models/write | 3D モデルを作成または更新します。 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/models/delete | モデルを削除する |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/models/read | 1 つ以上のモデルを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/models/base/manifest/read | オンプレミスのコンテナーで使用できる、この基本モデルのマニフェストを返します。 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/models/manifest/read | オンプレミスのコンテナーで使用できる、このモデルのマニフェストを返します。 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/projects/write | プロジェクトを作成または更新します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/projects/delete | プロジェクトを削除する |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/projects/read | 1 つ以上のプロジェクトを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/transcriptions/write | 文字起こしを作成または更新します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/transcriptions/delete | 文字起こしを削除します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/transcriptions/read | 1 つ以上の文字起こしを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/transcriptions/files/read | 1 つ以上の文字起こしファイルを取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/webhooks/write | Web hook を作成または更新します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/webhooks/delete | Web hook を削除します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/speechrest/webhooks/read | 1 つ以上の Web hook を取得します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/unified-speech/frontend/action | このエンドポイントは、音声フロントエンドを管理します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/unified-speech/management/action | このエンドポイントは、音声フロントエンドを管理します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/unified-speech/probes/action | このエンドポイントは、音声フロントエンドの正常性を監視します |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/unified-speech/languages/action | このエンドポイントには、REST 言語 API が用意されています。 |
+> | Microsoft.CognitiveServices/accounts/SpeechServices/unified-speech/legacy/query/action | 音声サービスのレガシ REST API。 |
 > | Microsoft.CognitiveServices/accounts/SpellCheck/spellcheck/action | GET または POST を使用してスペル チェック クエリの結果を取得します。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/languages/action | この API は、検出した言語と 0 から 1 までの数値スコアを返します。 1 に近いスコアは、100% の確実性で正しい言語が特定されたことを示します。 合計で 120 種類の言語がサポートされています。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/entities/action | この API は、指定されたドキュメント内の既知のエンティティと一般的な名前付きエンティティ (\"Person\"、\"Location\"、\"Organization\" など) を返します。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/keyphrases/action | API は、入力テキストの要点を示す文字列のリストを返します。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | この API は 0 から 1 までの数値スコアを返します。<br>1 に近いスコアは正のセンチメントを表し、0 に近いスコアは負のセンチメントを表します。<br>スコア 0.5 はセンチメント不足を示します (例:<br>factoid ステートメントなど)。 |
 > | Microsoft.CognitiveServices/accounts/TextAnalytics/analyze/action | 分析用のテキスト ドキュメントのコレクションを送信します。 実行する 1 つまたは複数の一意のタスクを指定します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/action | QnA Maker |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/alterations/read | ランタイムから変更をダウンロードします。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/alterations/write | 変更データを置換します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/endpointkeys/read | エンドポイント用のエンドポイント キーを取得します |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/endpointkeys/refreshkeys/action | エンドポイント キーを再生成します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/endpointsettings/read | エンドポイントのエンドポイント設定を取得します |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/endpointsettings/write | エンドポイントのエンドポイント設定を更新します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/publish/action | ナレッジベースのテスト インデックス内のすべての変更を、その製品インデックスに発行します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/delete | ナレッジベースとそのすべてのデータを削除します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/read | ナレッジベースの一覧または特定のナレッジベースの詳細を取得します。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/write | ナレッジベースを変更する、またはナレッジベースの内容を置き換えるための非同期操作。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/generateanswer/action | ナレッジベースのクエリを実行するための GenerateAnswer 呼び出し。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/train/action | ナレッジベースに提案を追加する呼び出しをトレーニングします。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/create/write | 新しいナレッジベースを作成する非同期操作。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/knowledgebases/download/read | ナレッジベースをダウンロードします。 |
+> | Microsoft.CognitiveServices/accounts/TextAnalytics/QnaMaker/operations/read | 長期実行されている特定の操作の詳細を取得します。 |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/detect/action | テキストの一部の言語を識別します。 |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/breaksentence/action | 文章内で文の境界の位置を識別します。 |
 > | Microsoft.CognitiveServices/accounts/TextTranslation/translate/action | テキストを翻訳します。 |
@@ -5841,6 +6118,10 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/locations/usages/read | サブスクリプション内の AML コンピューティング リソースの使用状況レポート |
 > | Microsoft.MachineLearningServices/locations/vmsizes/read | サポートされる VM のサイズを取得します。 |
 > | Microsoft.MachineLearningServices/operations/read | Machine Learning Services リソース プロバイダーの操作をすべて取得します |
+> | Microsoft.MachineLearningServices/virtualclusters/read | Machine Learning Services 仮想クラスターを取得します |
+> | Microsoft.MachineLearningServices/virtualclusters/write | Machine Learning Services 仮想クラスターを作成または更新します |
+> | Microsoft.MachineLearningServices/virtualclusters/delete | Machine Learning Services 仮想クラスターを削除します |
+> | Microsoft.MachineLearningServices/virtualclusters/jobs/submit/action | Machine Learning Services 仮想クラスターにジョブを送信します |
 > | Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action | Machine Learning Services ワークスペース内のバッチ計算エンドポイントの名前を確認します |
 > | Microsoft.MachineLearningServices/workspaces/read | Machine Learning Services ワークスペースを取得します。 |
 > | Microsoft.MachineLearningServices/workspaces/write | Machine Learning Services ワークスペースを作成または更新します。 |
@@ -5870,7 +6151,9 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/computes/start/action | Machine Learning Services ワークスペースでコンピューティング リソースが起動されます |
 > | Microsoft.MachineLearningServices/workspaces/computes/stop/action | Machine Learning Services ワークスペースでコンピューティング リソースが停止されます |
 > | Microsoft.MachineLearningServices/workspaces/computes/restart/action | Machine Learning Services ワークスペースでコンピューティング リソースが再起動されます |
+> | Microsoft.MachineLearningServices/workspaces/computes/updateDataMounts/action | Machine Learning Services ワークスペースのコンピューティング データ マウントを更新します |
 > | Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action | Machine Learning Services ワークスペースのコンピューティング リソースにアクセスします |
+> | Microsoft.MachineLearningServices/workspaces/computes/updateSchedules/action | コンピューティングの開始および停止スケジュールを編集します |
 > | Microsoft.MachineLearningServices/workspaces/connections/read | Machine Learning Services ワークスペースの接続を取得します |
 > | Microsoft.MachineLearningServices/workspaces/connections/write | Machine Learning Services の接続を作成または更新します |
 > | Microsoft.MachineLearningServices/workspaces/connections/delete | Machine Learning Services の接続を削除します |
@@ -5907,6 +6190,7 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action | Machine Learning Services ワークスペース内のスクリプトの実行を作成または更新します |
 > | Microsoft.MachineLearningServices/workspaces/experiments/runs/read | Machine Learning Services ワークスペース内の実行を取得します |
 > | Microsoft.MachineLearningServices/workspaces/experiments/runs/write | Machine Learning Services ワークスペース内の実行を作成または更新します |
+> | Microsoft.MachineLearningServices/workspaces/experiments/runs/delete | Machine Learning Services ワークスペース内の実行を削除します |
 > | Microsoft.MachineLearningServices/workspaces/features/read | Machine Learning Services ワークスペースで有効なすべての機能が取得されます |
 > | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/read | Machine Learning Services ワークスペース内の Inference 推論エンドポイントを取得します |
 > | Microsoft.MachineLearningServices/workspaces/inferenceEndpoints/write | Machine Learning Services ワークスペース内の Inference 推論エンドポイントを作成または更新します |
@@ -5954,7 +6238,9 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/read | Machine Learning Services ワークスペース内のオンライン推論エンドポイントを取得します |
 > | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/write | Machine Learning Services ワークスペース内のオンライン推論エンドポイントを作成または更新します |
 > | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/delete | Machine Learning Services ワークスペース内のオンライン推論エンドポイントを削除します |
-> | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/score/action | Machine Learning Services ワークスペース内のオンライン推論エンドポイントをスコア付けします |
+> | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/score/action | Machine Learning Services ワークスペースのオンライン エンドポイントをスコア付けする認証トークンまたはキーを取得します |
+> | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/token/action | Machine Learning Services ワークスペースのオンライン エンドポイントをスコア付けする認証トークンを取得します |
+> | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/listkeys/action | Machine Learning Services ワークスペースのオンライン エンドポイントをスコア付けする認証キーを取得します |
 > | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/checkNameAvailability/read | Machine Learning Services ワークスペース内のオンライン推論エンドポイントの名前を確認します |
 > | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments/read | Machine Learning Services ワークスペース内のオンライン推論エンドポイントのデプロイを取得します |
 > | Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments/write | Machine Learning Services ワークスペース内のオンライン推論エンドポイントのデプロイを作成または更新します |
@@ -5974,7 +6260,7 @@ Azure サービス:[Machine Learning service](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/workspaces/services/aks/write | Machine Learning Services ワークスペース内の AKS サービスを作成または更新します |
 > | Microsoft.MachineLearningServices/workspaces/services/aks/listkeys/action | Machine Learning Services ワークスペース内の AKS サービスのキーを一覧表示します |
 > | Microsoft.MachineLearningServices/workspaces/services/aks/delete | Machine Learning Services ワークスペース内の AKS サービスを削除します |
-> | Microsoft.MachineLearningServices/workspaces/services/aks/score/action | Machine Learning Services ワークスペース内の AKS サービスをスコア付けします |
+> | Microsoft.MachineLearningServices/workspaces/services/aks/score/action | Machine Learning Services ワークスペースの AKS サービスをスコア付けする認証トークンまたはキーを取得します |
 
 ## <a name="internet-of-things"></a>モノのインターネット
 
@@ -6122,6 +6408,54 @@ Azure サービス:[IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning
 > | Microsoft.Devices/provisioningServices/skus/Read | 有効な IotDps SKU を取得します。 |
 > | Microsoft.Devices/usages/Read | このプロバイダーのサブスクリプションの使用状況の詳細を取得します。 |
 > | Microsoft.Devices/usages/Read | このプロバイダーのサブスクリプションの使用状況の詳細を取得します。 |
+> | **DataAction** | **説明** |
+> | Microsoft.Devices/IotHubs/cloudToDeviceMessages/send/action | cloud-to-device メッセージを任意のデバイスに送信します  |
+> | Microsoft.Devices/IotHubs/cloudToDeviceMessages/feedback/action | cloud-to-device メッセージのフィードバック通知を受信、完了、または破棄します |
+> | Microsoft.Devices/IotHubs/cloudToDeviceMessages/queue/purge/action | デバイスの保留中のすべてのコマンドを削除します |
+> | Microsoft.Devices/IotHubs/configurations/read | デバイス管理構成を読み取ります |
+> | Microsoft.Devices/IotHubs/configurations/write | デバイス管理構成を作成または更新します |
+> | Microsoft.Devices/IotHubs/configurations/delete | デバイス管理構成を削除します |
+> | Microsoft.Devices/IotHubs/configurations/applyToEdgeDevice/action | エッジ デバイスに構成内容を適用します |
+> | Microsoft.Devices/IotHubs/configurations/testQueries/action | 構成のターゲット条件およびカスタム メトリック クエリを検証します |
+> | Microsoft.Devices/IotHubs/devices/read | デバイスまたはモジュール ID を読み取ります |
+> | Microsoft.Devices/IotHubs/devices/write | デバイスまたはモジュール ID を作成または更新します |
+> | Microsoft.Devices/IotHubs/devices/delete | デバイスまたはモジュール ID を削除します |
+> | Microsoft.Devices/IotHubs/directMethods/invoke/action | デバイスでダイレクト メソッドを呼び出します |
+> | Microsoft.Devices/IotHubs/fileUpload/notifications/action | ファイルのアップロード通知を受信、完了、または破棄します |
+> | Microsoft.Devices/IotHubs/jobs/read | ジョブの一覧を返します |
+> | Microsoft.Devices/IotHubs/jobs/write | ジョブを作成または更新します |
+> | Microsoft.Devices/IotHubs/jobs/delete | ジョブを削除します |
+> | Microsoft.Devices/IotHubs/statistics/read | デバイスとサービスの統計情報を読み取ります |
+> | Microsoft.Devices/IotHubs/twins/read | デバイスまたはモジュール ツインを読み取ります |
+> | Microsoft.Devices/IotHubs/twins/write | デバイスまたはモジュール ツインを書き込みます |
+
+### <a name="microsoftdeviceupdate"></a>Microsoft.DeviceUpdate
+
+Azure サービス: [IoT Hub 用の Device Update](../iot-hub-device-update/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | Microsoft.DeviceUpdate/checkNameAvailability/action | 名前を使用できるかどうかを確認します |
+> | Microsoft.DeviceUpdate/register/action | Device Update を登録します |
+> | Microsoft.DeviceUpdate/unregister/action | Device Update の登録を解除します |
+> | Microsoft.DeviceUpdate/accounts/read | Device Update アカウントの一覧を返します |
+> | Microsoft.DeviceUpdate/accounts/write | Device Update アカウントを作成または更新します |
+> | Microsoft.DeviceUpdate/accounts/delete | Device Update アカウントを削除します |
+> | Microsoft.DeviceUpdate/accounts/instances/read | Device Update インスタンスの一覧を返します |
+> | Microsoft.DeviceUpdate/accounts/instances/write | Device Update インスタンスを作成または更新します |
+> | Microsoft.DeviceUpdate/accounts/instances/delete | Device Update インスタンスを削除します |
+> | Microsoft.DeviceUpdate/locations/operationStatuses/read | 操作状態を取得します |
+> | Microsoft.DeviceUpdate/locations/operationStatuses/write | 操作状態を更新します |
+> | Microsoft.DeviceUpdate/operations/read | Device Update 操作を一覧表示します |
+> | Microsoft.DeviceUpdate/registeredSubscriptions/read | 登録済みサブスクリプションを読み取ります |
+> | **DataAction** | **説明** |
+> | Microsoft.DeviceUpdate/accounts/instances/management/read | 管理に関連する読み取り操作を実行します |
+> | Microsoft.DeviceUpdate/accounts/instances/management/write | 管理に関連する書き込み操作を実行します |
+> | Microsoft.DeviceUpdate/accounts/instances/management/delete | 管理に関連する削除操作を実行します |
+> | Microsoft.DeviceUpdate/accounts/instances/updates/read | 更新に関連する読み取り操作を実行します |
+> | Microsoft.DeviceUpdate/accounts/instances/updates/write | 更新に関連する書き込み操作を実行します |
+> | Microsoft.DeviceUpdate/accounts/instances/updates/delete | 更新に関連する削除操作を実行します |
 
 ### <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -6203,18 +6537,6 @@ Azure サービス:[Time Series Insights](../time-series-insights/index.yml)
 > | Microsoft.TimeSeriesInsights/environments/status/read | 環境の状態、およびそれに関連するイングレスなどの操作の状態を取得します。 |
 
 ## <a name="mixed-reality"></a>複合現実
-
-### <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-
-Azure サービス:[Azure Digital Twins](../digital-twins/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> | Microsoft.IoTSpaces/register/action | Microsoft.IoTSpaces Graph リソース プロバイダーのサブスクリプションを登録して、リソースの作成を有効にします |
-> | Microsoft.IoTSpaces/Graph/write | Microsoft.IoTSpaces Graph リソースを作成します |
-> | Microsoft.IoTSpaces/Graph/read | Microsoft.IoTSpaces Graph リソースを取得します |
-> | Microsoft.IoTSpaces/Graph/delete | Microsoft.IoTSpaces Graph リソースを削除します |
 
 ### <a name="microsoftmixedreality"></a>Microsoft.MixedReality
 
@@ -6430,7 +6752,7 @@ Azure サービス:[API Management](../api-management/index.yml)
 > | Microsoft.ApiManagement/service/policy/delete | テナント レベルでポリシー構成を削除します |
 > | Microsoft.ApiManagement/service/policyDescriptions/read | すべてのポリシーの説明を一覧表示します。 |
 > | Microsoft.ApiManagement/service/policySnippets/read | すべてのポリシーのスニペットを一覧表示します。 |
-> | Microsoft.ApiManagement/service/portalRevisions/read | 開発者ポータルのリビジョンのコレクションを一覧表示します。 または、識別子によって指定された開発者ポータルのリビジョンを取得します。 |
+> | Microsoft.ApiManagement/service/portalRevisions/read | 開発者ポータルのリビジョン エンティティのコレクションを一覧表示します。 または、識別子によって指定された開発者ポータルのリビジョンを取得します。 |
 > | Microsoft.ApiManagement/service/portalRevisions/write | 新しい開発者ポータルのリビジョンを作成します。 または、指定されたポータルのリビジョンの説明を更新するか、最新のものにします。 |
 > | Microsoft.ApiManagement/service/portalSettings/read | ポータル設定のコレクションを一覧表示します。 または、ポータルのサインイン、サインアップ、あるいは委任の各設定を取得します。 |
 > | Microsoft.ApiManagement/service/portalSettings/write | サインインの設定を更新します。 または、サインインの設定を作成または更新します。 または、サインアップ、サインアップ、または委任の設定を更新します。 または、委任の設定を作成または更新します。 |
@@ -6716,6 +7038,7 @@ Azure サービス:[Event Grid](../event-grid/index.yml)
 > | Microsoft.EventGrid/eventSubscriptions/read | eventSubscription を削除します。 |
 > | Microsoft.EventGrid/eventSubscriptions/delete | eventSubscription を削除します。 |
 > | Microsoft.EventGrid/eventSubscriptions/getFullUrl/action | イベント サブスクリプションの完全な URL を取得します。 |
+> | Microsoft.EventGrid/eventSubscriptions/getDeliveryAttributes/action | EventSubscription の配信属性を取得します |
 > | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/read | イベント サブスクリプションの診断設定を取得します。 |
 > | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/diagnosticSettings/write | イベント サブスクリプションの診断設定を作成または更新します。 |
 > | Microsoft.EventGrid/eventSubscriptions/providers/Microsoft.Insights/metricDefinitions/read | eventSubscription で使用可能なメトリックを取得します。 |
@@ -6750,6 +7073,11 @@ Azure サービス:[Event Grid](../event-grid/index.yml)
 > | Microsoft.EventGrid/partnerTopics/delete | パートナー トピックを削除します |
 > | Microsoft.EventGrid/partnerTopics/activate/action | パートナー トピックをアクティブ化します |
 > | Microsoft.EventGrid/partnerTopics/deactivate/action | パートナー トピックを非アクティブ化します |
+> | Microsoft.EventGrid/partnerTopics/eventSubscriptions/write | PartnerTopic eventSubscription を作成または更新します |
+> | Microsoft.EventGrid/partnerTopics/eventSubscriptions/read | PartnerTopic eventSubscription を読み取ります |
+> | Microsoft.EventGrid/partnerTopics/eventSubscriptions/delete | PartnerTopic eventSubscription を削除します |
+> | Microsoft.EventGrid/partnerTopics/eventSubscriptions/getFullUrl/action | PartnerTopic イベント サブスクリプションの完全な URL を取得します |
+> | Microsoft.EventGrid/partnerTopics/eventSubscriptions/getDeliveryAttributes/action | PartnerTopic EventSubscription の配信属性を取得します |
 > | Microsoft.EventGrid/partnerTopics/providers/Microsoft.Insights/diagnosticSettings/read | パートナー トピックの診断設定を取得します |
 > | Microsoft.EventGrid/partnerTopics/providers/Microsoft.Insights/diagnosticSettings/write | パートナー トピックの診断設定を作成または更新します |
 > | Microsoft.EventGrid/partnerTopics/providers/Microsoft.Insights/logDefinitions/read | 診断ログへのアクセスを許可します |
@@ -6758,6 +7086,11 @@ Azure サービス:[Event Grid](../event-grid/index.yml)
 > | Microsoft.EventGrid/systemTopics/read | システム トピックを読み取ります |
 > | Microsoft.EventGrid/systemTopics/write | システム トピックを作成または更新します |
 > | Microsoft.EventGrid/systemTopics/delete | システム トピックを削除します |
+> | Microsoft.EventGrid/systemTopics/eventSubscriptions/write | SystemTopic eventSubscription を作成または更新します |
+> | Microsoft.EventGrid/systemTopics/eventSubscriptions/read | SystemTopic eventSubscription を読み取ります |
+> | Microsoft.EventGrid/systemTopics/eventSubscriptions/delete | SystemTopic eventSubscription を削除します |
+> | Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action | SystemTopic イベント サブスクリプションの完全な URL を取得します |
+> | Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action | SystemTopic EventSubscription の配信属性を取得します |
 > | Microsoft.EventGrid/systemTopics/providers/Microsoft.Insights/diagnosticSettings/read | システム トピックの診断設定を取得します |
 > | Microsoft.EventGrid/systemTopics/providers/Microsoft.Insights/diagnosticSettings/write | システム トピックの診断設定を作成または更新します |
 > | Microsoft.EventGrid/systemTopics/providers/Microsoft.Insights/logDefinitions/read | 診断ログへのアクセスを許可します |
@@ -7245,12 +7578,15 @@ Azure サービス:[Key Vault](../key-vault/index.yml)
 > | Microsoft.KeyVault/register/action | サブスクリプションを登録します。 |
 > | Microsoft.KeyVault/unregister/action | サブスクリプションの登録を解除します。 |
 > | Microsoft.KeyVault/checkNameAvailability/read | Key Vault 名が有効であり、使用されていないことを確認します。 |
+> | Microsoft.KeyVault/deletedManagedHsms/read | 削除されたマネージド HSM のプロパティを表示します |
 > | Microsoft.KeyVault/deletedVaults/read | 論理的に削除された Key Vault のプロパティを表示します。 |
 > | Microsoft.KeyVault/hsmPools/read | HSM プールのプロパティを表示します。 |
 > | Microsoft.KeyVault/hsmPools/write | 新しい HSM プールを作成するか、既存の HSM プールのプロパティを更新します。 |
 > | Microsoft.KeyVault/hsmPools/delete | HSM プールを削除します。 |
 > | Microsoft.KeyVault/hsmPools/joinVault/action | HSM プールにキー コンテナーを結合します。 |
 > | Microsoft.KeyVault/locations/deleteVirtualNetworkOrSubnets/action | 仮想ネットワークまたはサブネットが削除されていることを Microsoft.KeyVault に通知します。 |
+> | Microsoft.KeyVault/locations/deletedManagedHsms/read | 削除されたマネージド HSM のプロパティを表示します |
+> | Microsoft.KeyVault/locations/deletedManagedHsms/purge/action | 論理的に削除されたマネージド HSM を消去します |
 > | Microsoft.KeyVault/locations/deletedVaults/read | 論理的に削除された Key Vault のプロパティを表示します。 |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | 論理的に削除された Key Vault を消去します。 |
 > | Microsoft.KeyVault/locations/operationResults/read | 長時間実行された操作の結果を確認します。 |
@@ -7484,6 +7820,8 @@ Azure サービス:[Azure Sentinel](../sentinel/index.yml)
 > | Microsoft.SecurityInsights/dataConnectors/read | データ コネクタを取得します |
 > | Microsoft.SecurityInsights/dataConnectors/write | データ コネクタを更新します |
 > | Microsoft.SecurityInsights/dataConnectors/delete | データ コネクタを削除します |
+> | Microsoft.SecurityInsights/enrichment/domain/whois/read | ドメインの whois エンリッチメントを取得します |
+> | Microsoft.SecurityInsights/enrichment/ip/geodata/read | IP の geodata エンリッチメントを取得します |
 > | Microsoft.SecurityInsights/entities/read | Sentinel のエンティティ グラフを取得します |
 > | Microsoft.SecurityInsights/entities/gettimeline/action | 特定の範囲のエンティティ タイムラインを取得します |
 > | Microsoft.SecurityInsights/entities/getInsights/action | 特定の範囲のエンティティ分析情報を取得します |
@@ -7494,6 +7832,7 @@ Azure サービス:[Azure Sentinel](../sentinel/index.yml)
 > | Microsoft.SecurityInsights/incidents/read | インシデントが取得されます |
 > | Microsoft.SecurityInsights/incidents/write | インシデントを更新します |
 > | Microsoft.SecurityInsights/incidents/delete | インシデントが削除されます |
+> | Microsoft.SecurityInsights/incidents/createTeam/action | 参加者間で情報と分析情報を共有してインシデントを調査する Microsoft チームを作成します |
 > | Microsoft.SecurityInsights/incidents/comments/read | インシデント コメントが取得されます |
 > | Microsoft.SecurityInsights/incidents/comments/write | インシデントのコメントが作成されます |
 > | Microsoft.SecurityInsights/incidents/comments/delete | インシデントのコメントを削除します |
@@ -8764,6 +9103,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/notificationSettings/delete | ワークスペースのユーザーの通知設定を削除します。 |
 > | microsoft.operationalinsights/workspaces/operations/read | OperationalInsights ワークスペース操作の状態を取得します。 |
 > | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/query/AACHttpRequest/read | AACHttpRequest テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/AADDomainServicesAccountLogon/read | AADDomainServicesAccountLogon テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/AADDomainServicesAccountManagement/read | AADDomainServicesAccountManagement テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/AADDomainServicesDirectoryServiceAccess/read | AADDomainServicesDirectoryServiceAccess テーブルからデータを読み取ります |
@@ -8778,6 +9118,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/ABSBotRequests/read | ABSBotRequests テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ABSChannelToBotRequests/read | ABSChannelToBotRequests テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ABSDependenciesRequests/read | ABSDependenciesRequests テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/ACSAuthIncomingOperations/read | ACSAuthIncomingOperations テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ACSBillingUsage/read | ACSBillingUsage テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ACSChatIncomingOperations/read | ACSChatIncomingOperations テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ACSSMSIncomingOperations/read | ACSSMSIncomingOperations テーブルからデータを読み取ります |
@@ -8799,6 +9140,8 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/ADFSSISPackageExecutionComponentPhases/read | ADFSSISPackageExecutionComponentPhases テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ADFSSISPackageExecutionDataStatistics/read | ADFSSISPackageExecutionDataStatistics テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ADFTriggerRun/read | ADFTriggerRun テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/ADPAudit/read | ADPAudit テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/ADPRequests/read | ADPRequests テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ADReplicationResult/read | ADReplicationResult テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/ADSecurityAssessmentRecommendation/read | ADSecurityAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/ADTDigitalTwinsOperation/read | ADTDigitalTwinsOperation テーブルからデータを読み取ります |
@@ -8853,6 +9196,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/AutoscaleScaleActionsLog/read | AutoscaleScaleActionsLog テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/AWSCloudTrail/read | AWSCloudTrail テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | AzureActivity テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/AzureActivityV2/read | AzureActivityV2 テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/AzureAssessmentRecommendation/read | AzureAssessmentRecommendation テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/AzureDevOpsAuditing/read | AzureDevOpsAuditing テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/AzureDiagnostics/read | AzureDiagnostics テーブルからデータを読み取ります |
@@ -8925,6 +9269,10 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/DnsInventory/read | DnsInventory テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/DynamicEventCollection/read | DynamicEventCollection テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/Dynamics365Activity/read | Dynamics365Activity テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/EmailAttachmentInfo/read | EmailAttachmentInfo テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/EmailEvents/read | EmailEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/EmailPostDeliveryEvents/read | EmailPostDeliveryEvents テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/EmailUrlInfo/read | EmailUrlInfo テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ETWEvent/read | ETWEvent テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/Event/read | Event テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/ExchangeAssessmentRecommendation/read | ExchangeAssessmentRecommendation テーブルからデータを読み取ります。 |
@@ -8940,6 +9288,8 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightHBaseMetrics/read | HDInsightHBaseMetrics テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightHiveAndLLAPLogs/read | HDInsightHiveAndLLAPLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightHiveAndLLAPMetrics/read | HDInsightHiveAndLLAPMetrics テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/HDInsightHiveQueryAppStats/read | HDInsightHiveQueryAppStats テーブルからデータを読み取ります |
+> | Microsoft.OperationalInsights/workspaces/query/HDInsightHiveTezAppStats/read | HDInsightHiveTezAppStats テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightJupyterNotebookEvents/read | HDInsightJupyterNotebookEvents テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightKafkaLogs/read | HDInsightKafkaLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/HDInsightKafkaMetrics/read | HDInsightKafkaMetrics テーブルからデータを読み取ります |
@@ -9057,6 +9407,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/PowerBIDatasetsWorkspace/read | PowerBIDatasetsWorkspace テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/PowerBIDatasetsWorkspacePreview/read | PowerBIDatasetsWorkspacePreview テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | ProtectionStatus テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/PurviewScanStatusLogs/read | PurviewScanStatusLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/requests/read | requests テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | SCCMAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/SCOMAssessmentRecommendation/read | SCOMAssessmentRecommendation テーブルからデータを読み取ります。 |
@@ -9083,6 +9434,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/SigninLogs/read | SigninLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/SPAssessmentRecommendation/read | SPAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/SQLAssessmentRecommendation/read | SQLAssessmentRecommendation テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/SqlAtpStatus/read | SqlAtpStatus テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/SqlDataClassification/read | SqlDataClassification テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | SQLQueryPerformance テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/SqlVulnerabilityAssessmentResult/read | SqlVulnerabilityAssessmentResult テーブルからデータを読み取ります |
@@ -9137,6 +9489,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/VMConnection/read | VMConnection テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/VMProcess/read | VMProcess テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/W3CIISLog/read | W3CIISLog テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/W3CIISLogV2/read | W3CIISLogV2 テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/WaaSDeploymentStatus/read | WaaSDeploymentStatus テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/WaaSInsiderStatus/read | WaaSInsiderStatus テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/WaaSUpdateStatus/read | WaaSUpdateStatus テーブルからデータを読み取ります。 |
@@ -9148,6 +9501,7 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/query/WindowsFirewall/read | WindowsFirewall テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/WindowsServerAssessmentRecommendation/read | WindowsServerAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/WireData/read | WireData テーブルからデータを読み取ります。 |
+> | Microsoft.OperationalInsights/workspaces/query/WorkloadDiagnosticLogs/read | WorkloadDiagnosticLogs テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/WorkloadMonitoringPerf/read | WorkloadMonitoringPerf テーブルからデータを読み取ります |
 > | Microsoft.OperationalInsights/workspaces/query/WUDOAggregatedStatus/read | WUDOAggregatedStatus テーブルからデータを読み取ります。 |
 > | Microsoft.OperationalInsights/workspaces/query/WUDOStatus/read | WUDOStatus テーブルからデータを読み取ります。 |
@@ -9180,6 +9534,9 @@ Azure サービス:[Azure Monitor](../azure-monitor/index.yml)
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/delete | ストレージ構成を削除します。 これにより、Microsoft Operational Insights はストレージ アカウントからデータを読み取らなくなります。 |
 > | Microsoft.OperationalInsights/workspaces/upgradetranslationfailures/read | ワークスペースの検索アップグレード変換のエラー ログを取得します |
 > | Microsoft.OperationalInsights/workspaces/usages/read | ワークスペースで読み取られたデータの量など、ワークスペースの使用状況データを取得します。 |
+> | microsoft.operationalinsights/workspaces/views/read | ワークスペース ビューを取得します。 |
+> | microsoft.operationalinsights/workspaces/views/write | ワークスペース ビューを作成または更新します。 |
+> | microsoft.operationalinsights/workspaces/views/delete | ワークスペース ビューを削除します。 |
 
 ### <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -9492,6 +9849,7 @@ Azure サービス:[コストの管理と請求](../cost-management-billing/inde
 > | Microsoft.Billing/billingAccounts/read |  |
 > | Microsoft.Billing/billingAccounts/listInvoiceSectionsWithCreateSubscriptionPermission/action |  |
 > | Microsoft.Billing/billingAccounts/write |  |
+> | Microsoft.Billing/billingAccounts/confirmTransition/action |  |
 > | Microsoft.Billing/billingAccounts/billingProfiles/write |  |
 > | Microsoft.Billing/billingAccounts/billingProfiles/read |  |
 > | Microsoft.Billing/billingAccounts/billingProfiles/write |  |
@@ -9724,6 +10082,12 @@ Azure サービス:[Azure Arc](../azure-arc/index.yml)
 > | Microsoft.HybridCompute/machines/patchInstallationResults/read | Azure Arc patchInstallationResults を読み取ります |
 > | Microsoft.HybridCompute/machines/patchInstallationResults/softwarePatches/read | Azure Arc patchInstallationResults/softwarePatches を読み取ります |
 > | Microsoft.HybridCompute/operations/read | Azure Arc for servers に対するすべての操作が読み取られます |
+> | Microsoft.HybridCompute/privateLinkScopes/read | Azure Arc privateLinkScopes を読み取ります |
+> | Microsoft.HybridCompute/privateLinkScopes/write | Azure Arc privateLinkScopes を書き込みます |
+> | Microsoft.HybridCompute/privateLinkScopes/delete | Azure Arc privateLinkScopes を削除します |
+> | Microsoft.HybridCompute/privateLinkScopes/privateEndpointConnections/read | Azure Arc privateEndpointConnections を読み取ります |
+> | Microsoft.HybridCompute/privateLinkScopes/privateEndpointConnections/write | Azure Arc privateEndpointConnections を書き込みます |
+> | Microsoft.HybridCompute/privateLinkScopes/privateEndpointConnections/delete | Azure Arc privateEndpointConnections を削除します |
 
 ### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
@@ -10146,83 +10510,83 @@ Azure サービス:[Site Recovery](../site-recovery/index.yml)
 > | アクション | 説明 |
 > | --- | --- |
 > | Microsoft.RecoveryServices/register/action | 指定されたリソース プロバイダーにサブスクリプションを登録します。 |
-> | microsoft.recoveryservices/Locations/backupCrossRegionRestore/action | リージョンをまたがる復元をトリガーします。 |
-> | microsoft.recoveryservices/Locations/backupCrrJob/action | Recovery Services コンテナーのセカンダリ リージョンにおけるリージョンをまたがる復元ジョブの詳細を取得します。 |
-> | microsoft.recoveryservices/Locations/backupCrrJobs/action | Recovery Services コンテナーのセカンダリ リージョンにおけるリージョンをまたがる復元ジョブを一覧表示します。 |
-> | microsoft.recoveryservices/Locations/backupPreValidateProtection/action |  |
-> | microsoft.recoveryservices/Locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
-> | microsoft.recoveryservices/Locations/backupValidateFeatures/action | 機能を検証します。 |
+> | Microsoft.RecoveryServices/Locations/backupCrossRegionRestore/action | リージョンをまたがる復元をトリガーします。 |
+> | Microsoft.RecoveryServices/Locations/backupCrrJob/action | Recovery Services コンテナーのセカンダリ リージョンにおけるリージョンをまたがる復元ジョブの詳細を取得します。 |
+> | Microsoft.RecoveryServices/Locations/backupCrrJobs/action | Recovery Services コンテナーのセカンダリ リージョンにおけるリージョンをまたがる復元ジョブを一覧表示します。 |
+> | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
+> | Microsoft.RecoveryServices/Locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 機能を検証します。 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp は、サービスによって使用される内部操作です。 |
 > | Microsoft.RecoveryServices/locations/checkNameAvailability/action | リソース名の可用性がリソース名を使用できるかどうかを確認するための API であることを確認します |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
-> | microsoft.recoveryservices/Locations/backupAadProperties/read | リージョンをまたがる復元の 3 番目のリージョンにおける認証用 AAD プロパティを取得します。 |
-> | microsoft.recoveryservices/Locations/backupCrrOperationResults/read | Recovery Services コンテナーに対する CRR 操作の結果を返します。 |
-> | microsoft.recoveryservices/Locations/backupCrrOperationsStatus/read | Recovery Services コンテナーに対する CRR 操作の状態を返します。 |
-> | microsoft.recoveryservices/Locations/backupProtectedItem/write | バックアップ保護項目を作成します。 |
-> | microsoft.recoveryservices/Locations/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
+> | Microsoft.RecoveryServices/Locations/backupAadProperties/read | リージョンをまたがる復元の 3 番目のリージョンにおける認証用 AAD プロパティを取得します。 |
+> | Microsoft.RecoveryServices/Locations/backupCrrOperationResults/read | Recovery Services コンテナーに対する CRR 操作の結果を返します。 |
+> | Microsoft.RecoveryServices/Locations/backupCrrOperationsStatus/read | Recovery Services コンテナーに対する CRR 操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | バックアップ保護項目を作成します。 |
+> | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
-> | microsoft.recoveryservices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | microsoft.recoveryservices/Vaults/backupSecurityPIN/action | Recovery Services コンテナーのセキュリティ PIN 情報を返します。 |
-> | microsoft.recoveryservices/Vaults/backupValidateOperation/action | 保護された項目に対する操作を検証します |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
+> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | Recovery Services コンテナーのセキュリティ PIN 情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 保護された項目に対する操作を検証します |
 > | Microsoft.RecoveryServices/Vaults/write | "コンテナーの作成" 操作では、"コンテナー" 型の Azure リソースを作成します。 |
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/delete | "コンテナーの削除" 操作では、指定された "コンテナー" 型の Azure リソースを削除します。 |
-> | microsoft.recoveryservices/Vaults/backupconfig/read | Recovery Services コンテナーの構成を返します。 |
-> | microsoft.recoveryservices/Vaults/backupconfig/write | Recovery Services コンテナーの構成を更新します。 |
-> | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/read | バックアップ リソースの暗号化構成を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupEncryptionConfigs/write | バックアップ リソースの暗号化構成を更新します |
-> | microsoft.recoveryservices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/delete | バックアップ保護の意図を削除します |
-> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/read | バックアップ保護の意図を取得します |
-> | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
-> | microsoft.recoveryservices/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/operationsStatus/read | 操作の状態を返します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectableContainers/read | すべての保護可能なコンテナーを取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/delete | 登録済みコンテナーを削除します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/inquire/action | コンテナー内のワークロードを照会します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/read | すべての登録済みコンテナーを返します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/write | 登録済みコンテナーを作成します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/items/read | コンテナー内のすべての項目を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対して実行された操作の結果を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 保護コンテナーに対して実行された操作の状態を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 保護された項目のバックアップを実行します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 保護された項目を削除します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 保護された項目のオブジェクトの詳細を返します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPointsRecommendedForMove/action | 別の層への移動に推奨される復旧ポイントを取得します |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ保護項目を作成します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 保護された項目に対して実行された操作の結果を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 保護された項目に対して実行された操作の状態を返します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | リージョンをまたがる復元の AccessToken を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/move/action | 復旧ポイントを別の層に移動します |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 保護された項目のインスタント項目回復をプロビジョニングします。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 保護された項目の復旧ポイントを取得します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 保護された項目の復旧ポイントを復元します。 |
-> | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 保護された項目のインスタント項目回復を取り消します。 |
-> | microsoft.recoveryservices/Vaults/backupJobs/cancel/action | ジョブを取り消します。 |
-> | microsoft.recoveryservices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
-> | microsoft.recoveryservices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
-> | microsoft.recoveryservices/Vaults/backupJobs/operationsStatus/read | ジョブ操作の状態を返します。 |
-> | microsoft.recoveryservices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
-> | microsoft.recoveryservices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
-> | microsoft.recoveryservices/Vaults/backupOperationVaultGuardProxies/delete | "VaultGuard の削除" プロキシ操作は、指定された "VaultGuard プロキシ" 型の Azure リソースを削除します |
-> | microsoft.recoveryservices/Vaults/backupOperationVaultGuardProxies/read | "VaultGuard の取得" 操作は、"VaultGuard プロキシ" 型の Azure リソースを表すオブジェクトを取得します |
-> | microsoft.recoveryservices/Vaults/backupOperationVaultGuardProxies/read | リソースの VaultGuard プロキシの一覧を取得します |
-> | microsoft.recoveryservices/Vaults/backupOperationVaultGuardProxies/unlockDelete/action | "VaultGuard の削除のロック解除" プロキシ操作は、次の重要な削除操作のロックを解除します |
-> | microsoft.recoveryservices/Vaults/backupOperationVaultGuardProxies/write | "VaultGuard の作成" プロキシ操作は、"VaultGuard プロキシ" 型の Azure リソースを作成します |
-> | microsoft.recoveryservices/Vaults/backupPolicies/delete | 保護ポリシーを削除します。 |
-> | microsoft.recoveryservices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
-> | microsoft.recoveryservices/Vaults/backupPolicies/write | 保護ポリシーを作成します。 |
-> | microsoft.recoveryservices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupPolicies/operations/read | ポリシー操作の状態を取得します。 |
-> | microsoft.recoveryservices/Vaults/backupProtectableItems/read | すべての保護可能な項目の一覧を返します。 |
-> | microsoft.recoveryservices/Vaults/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
-> | microsoft.recoveryservices/Vaults/backupProtectionContainers/read | サブスクリプションに属するすべてのコンテナーを返します。 |
-> | microsoft.recoveryservices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
-> | microsoft.recoveryservices/Vaults/backupstorageconfig/read | Recovery Services コンテナーのストレージ構成を返します。 |
-> | microsoft.recoveryservices/Vaults/backupstorageconfig/write | Recovery Services コンテナーのストレージ構成を更新します。 |
-> | microsoft.recoveryservices/Vaults/backupUsageSummaries/read | Recovery Services の保護された項目と保護されたサーバーの概要を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/read | Recovery Services コンテナーの構成を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/write | Recovery Services コンテナーの構成を更新します。 |
+> | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/read | バックアップ リソースの暗号化構成を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupEncryptionConfigs/write | バックアップ リソースの暗号化構成を更新します |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | バックアップ保護の意図を削除します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | バックアップ保護の意図を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationsStatus/read | 操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | 登録済みコンテナーを削除します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | コンテナー内のワークロードを照会します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | すべての登録済みコンテナーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 登録済みコンテナーを作成します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | コンテナー内のすべての項目を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対して実行された操作の結果を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 保護コンテナーに対して実行された操作の状態を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 保護された項目のバックアップを実行します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 保護された項目を削除します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 保護された項目のオブジェクトの詳細を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPointsRecommendedForMove/action | 別の層への移動に推奨される復旧ポイントを取得します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ保護項目を作成します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 保護された項目に対して実行された操作の結果を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 保護された項目に対して実行された操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | リージョンをまたがる復元の AccessToken を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/move/action | 復旧ポイントを別の層に移動します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 保護された項目のインスタント項目回復をプロビジョニングします。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 保護された項目の復旧ポイントを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 保護された項目の復旧ポイントを復元します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 保護された項目のインスタント項目回復を取り消します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | ジョブを取り消します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/operationsStatus/read | ジョブ操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupOperationVaultGuardProxies/delete | "VaultGuard の削除" プロキシ操作は、指定された "VaultGuard プロキシ" 型の Azure リソースを削除します |
+> | Microsoft.RecoveryServices/Vaults/backupOperationVaultGuardProxies/read | リソースの VaultGuard プロキシの一覧を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupOperationVaultGuardProxies/read | "VaultGuard の取得" 操作は、"VaultGuard プロキシ" 型の Azure リソースを表すオブジェクトを取得します |
+> | Microsoft.RecoveryServices/Vaults/backupOperationVaultGuardProxies/unlockDelete/action | "VaultGuard の削除のロック解除" プロキシ操作は、次の重要な削除操作のロックを解除します |
+> | Microsoft.RecoveryServices/Vaults/backupOperationVaultGuardProxies/write | "VaultGuard の作成" プロキシ操作は、"VaultGuard プロキシ" 型の Azure リソースを作成します |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 保護ポリシーを削除します。 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 保護ポリシーを作成します。 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | ポリシー操作の状態を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | すべての保護可能な項目の一覧を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | サブスクリプションに属するすべてのコンテナーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
+> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | Recovery Services コンテナーのストレージ構成を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | Recovery Services コンテナーのストレージ構成を更新します。 |
+> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Recovery Services の保護された項目と保護されたサーバーの概要を返します。 |
 > | Microsoft.RecoveryServices/Vaults/certificates/write | "リソース証明書を更新" 操作では、リソース/コンテナー資格情報証明書を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | "拡張情報の取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトの拡張情報を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | "拡張情報の取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトの拡張情報を取得します。 |
@@ -10231,14 +10595,14 @@ Azure サービス:[Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | アラートを解決する。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | Recovery Services コンテナーの通知構成を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | Recovery Services コンテナーへのメール通知を構成します。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/delete | しばらくしてから操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/read | すべての保護可能なコンテナーを取得します。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/validate/action | すべての保護可能なコンテナーを取得します。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/write | すべての保護可能なコンテナーを取得します。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnectionProxies/operationsStatus/read | すべての保護可能なコンテナーを取得します。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnections/delete | プライベート エンドポイント要求を削除します。 この呼び出しは、バックアップ管理者によって行われます。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnections/write | プライベート エンドポイント要求を承認または拒否します。 この呼び出しは、バックアップ管理者によって行われます。 |
-> | microsoft.recoveryservices/Vaults/privateEndpointConnections/operationsStatus/read | プライベート エンドポイント接続の操作状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/delete | しばらくしてから操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/read | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/validate/action | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/write | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnectionProxies/operationsStatus/read | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/delete | プライベート エンドポイント要求を削除します。 この呼び出しは、バックアップ管理者によって行われます。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/write | プライベート エンドポイント要求を承認または拒否します。 この呼び出しは、バックアップ管理者によって行われます。 |
+> | Microsoft.RecoveryServices/Vaults/privateEndpointConnections/operationsStatus/read | プライベート エンドポイント接続の操作状態を返します。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | "サービス コンテナーを登録" 操作を使用すると、コンテナーを Recovery Services に登録できます。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | " コンテナーを取得" 操作を使用すると、リソースの登録済みコンテナーを取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/delete | "コンテナーの登録を解除" 操作を使用すると、コンテナーの登録を解除できます。 |
@@ -10359,7 +10723,7 @@ Azure サービス:[Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/vaults/replicationVaultSettings/read | サポート対象のオペレーティング システムを読み取ります  |
 > | Microsoft.RecoveryServices/vaults/replicationVaultSettings/write | を作成または更新します  |
 > | Microsoft.RecoveryServices/vaults/replicationvCenters/read | vCenter を読み取ります |
-> | microsoft.recoveryservices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
+> | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/vaults/usages/read | コンテナーの使用状況を読み取ります |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 
@@ -10527,6 +10891,7 @@ Azure サービス:[Windows Virtual Desktop](../virtual-desktop/index.yml)
 > | Microsoft.DesktopVirtualization/hostpools/read | Hostpools を読み取ります |
 > | Microsoft.DesktopVirtualization/hostpools/write | hostpools を書き込みます |
 > | Microsoft.DesktopVirtualization/hostpools/delete | hostpools を削除します |
+> | Microsoft.DesktopVirtualization/hostpools/retrieveRegistrationToken/action | ホスト プールの登録トークンを取得します |
 > | Microsoft.DesktopVirtualization/hostpools/providers/Microsoft.Insights/diagnosticSettings/read | 診断設定を取得します |
 > | Microsoft.DesktopVirtualization/hostpools/providers/Microsoft.Insights/diagnosticSettings/write | 診断設定を作成または更新します |
 > | Microsoft.DesktopVirtualization/hostpools/providers/Microsoft.Insights/logDefinitions/read | 利用可能なログを取得します |

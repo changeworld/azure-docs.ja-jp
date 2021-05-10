@@ -6,13 +6,13 @@ ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 2/5/2021
-ms.openlocfilehash: 2966618619aa40ed60c2f3d0fb2c8e080d34a016
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.date: 3/24/2021
+ms.openlocfilehash: 7d6baee49250509e50cdeeea8cf8ca6cec5b362d
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102617048"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222162"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類
 
@@ -28,7 +28,7 @@ Azure Purview Data Catalog には、データ資産に含まれている可能�
 
 ## <a name="steps-to-create-a-custom-classification"></a>カスタム分類の作成手順
 
-カスタム分類を作成するには、次の手順を実行します。
+カスタム分類ルールを作成するには、次の手順に従います。
 
 1. カタログで、左側のメニューから **[管理センター]** を選択します。
 
@@ -68,7 +68,7 @@ Microsoft のシステム分類は、予約済みの `MICROSOFT.` 名前空間�
 
 ## <a name="custom-classification-rules"></a>カスタム分類ルール
 
-カタログ サービスには、特定のデータの種類を自動的に検出するためにスキャナーによって使用される、既定の分類ルールのセットが用意されています。 また、独自のカスタム分類ルールを追加して、データ資産全体で検索する意味がある、他の種類のデータを検出することもできます。 この機能は、データ資産内でデータを検索する際に、非常に役に立ちます。
+カタログ サービスには、特定のデータの種類を自動的に検出するためにスキャナーによって使用される、既定の分類ルールのセットが用意されています。 また、独自のカスタム分類ルールを追加して、データ資産全体で検索する意味がある、他の種類のデータを検出することもできます。 この機能は、データ資産内でデータを検索する際に、役に立ちます。
 
 たとえば、Contoso という名前の会社に、\"Employee\" という単語の後に GUID を付けて EMPLOYEE{GUID} とするように会社全体で標準化された従業員 ID があるとします。 たとえば、従業員 ID の 1 つのインスタンスは、`EMPLOYEE9c55c474-9996-420c-a285-0d0fc23f1f55` のようになります。
 
@@ -109,7 +109,7 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="新しい正規表現ルールの作成" border="true":::
 
-1. 提案された正規表現パターンを生成する場合は、ファイルをアップロードした後で、提案されたパターンのいずれかを選択し、 **[Add to Patterns]\(パターンに追加\)** をクリックして、提案されたデータと列のパターンを使用します。 推奨されるパターンを調整することも、ファイルをアップロードせずに独自のパターンを入力することもできます。
+1. 提案された正規表現パターンを生成する場合は、ファイルをアップロードした後で、提案されたパターンのいずれかを選択し、 **[Add to Patterns]\(パターンに追加\)** を選択して、提案されたデータと列のパターンを使用します。 推奨されるパターンを調整することも、ファイルをアップロードせずに独自のパターンを入力することもできます。
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="提案された正規表現の生成" border="true":::
 
@@ -128,6 +128,14 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="ルールを作成前に検証" border="true":::
 
+1. 作成プロセスを完了する前に分類ルールをテストして、資産にタグが適用されることを検証します。 ルールの分類は、スキャンと同様に、アップロードされるサンプル データに適用されます。 これは、すべてのシステム分類とカスタム分類がファイル内のデータと一致することを意味します。
+
+   入力ファイルには、区切りファイル (CSV、PSV、SSV、TSV)、JSON、または XML コンテンツを含めることができます。 コンテンツは、入力ファイルのファイル拡張子に基づいて解析されます。 区切りデータには、記述された型のいずれかと一致するファイル拡張子が付いている場合があります。 たとえば、TSV データは MySampleData.csv という名前のファイルに存在することができます。 区切りコンテンツには、少なくとも 3 つの列が必要です。
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-screen.png" alt-text="作成前にルールをテストする" border="true":::
+
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/test-rule-uploaded-file-result-screen.png" alt-text="テスト ファイルのアップロード後に適用された分類を表示する" border="true":::
+
 ### <a name="creating-a-dictionary-rule"></a>辞書ルールを作成する
 
 1. 辞書ルールを作成する場合は、次の画面が表示されます。 作成する分類に使用できるすべての値を含むファイルを 1 つの列にアップロードします。
@@ -136,9 +144,9 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
 1. 辞書が生成された後、個別の一致と最小一致のしきい値を調整して、ルールを送信することができます。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="Purview 辞書ルール - 個別の一致しきい値と最小一致しきい値の調整" border="true":::
+- **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 個別の一致のしきい値は、パターン マッチングとは関係ありませんが、パターン マッチングの前提条件です。 推奨値は 8 です。 この値は、2 から 32 の範囲で手動で調整できます。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="辞書が生成されたというチェックマークがある、辞書ルールの作成。" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="辞書が生成されたというチェックマークがある、辞書ルールを作成します。" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

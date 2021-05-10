@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 293a47bc3e8499d7eda4e64bb68bc95eb4c85ab0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 36dfc8c906c52c6822e583db3a08c891306f7e78
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98108400"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047934"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Azure Kubernetes Service にデプロイされたマイクロサービスで Azure API Management を使用する
 
@@ -95,7 +95,7 @@ API にアクセスするためのサブスクリプション キーを取得す
 
 ### <a name="option-3-deploy-apim-inside-the-cluster-vnet"></a>オプション 3:クラスター VNet 内に APIM をデプロイする
 
-規制上の制約または厳密なセキュリティ要件を持つ顧客の場合、オプション 1 と 2 は、エンドポイントが公開されるため、ソリューションとして使用できないことがあります。 また、AKS クラスターとマイクロサービスを使用するアプリケーションが同じ VNet 内に存在し、すべての API トラフィックが VNet 内に留まるため、クラスターを公開する必要がない場合があります。 これらのシナリオでは、API Management をクラスターの VNet にデプロイできます。 [API Management Premium レベル](https://aka.ms/apimpricing)では、VNet のデプロイがサポートされています。 
+規制上の制約または厳密なセキュリティ要件を持つ顧客の場合、オプション 1 と 2 は、エンドポイントが公開されるため、ソリューションとして使用できないことがあります。 また、AKS クラスターとマイクロサービスを使用するアプリケーションが同じ VNet 内に存在し、すべての API トラフィックが VNet 内に留まるため、クラスターを公開する必要がない場合があります。 これらのシナリオでは、API Management をクラスターの VNet にデプロイできます。 [API Management Developer と Premium の階層](https://aka.ms/apimpricing)では、VNet のデプロイがサポートされています。 
 
 [VNet への API Management のデプロイ](./api-management-using-with-vnet.md)には、外部と内部の 2 つのモードがあります。 
 

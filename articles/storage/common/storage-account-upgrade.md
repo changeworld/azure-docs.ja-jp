@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.author: tamram
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85520032e9bc63b6296e40dd1c1055e36762dcc8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: d6d94efea52d920b8bfe69be2ee07c8b829792d8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102555008"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484100"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -28,7 +28,7 @@ ms.locfileid: "102555008"
 > [!NOTE]
 > Microsoft ではほとんどのシナリオで汎用 v2 アカウントを推奨していますが、Microsoft では新規および既存のお客様向けに汎用 v1 アカウントを引き続きサポートしています。 これらのリージョンで Azure Storage を利用できる場合は常に、新しいリージョンに汎用 v1 ストレージ アカウントを作成できます。 Microsoft では、現時点で汎用 v1 アカウントのサポートを廃止する予定はなく、Azure Storage 機能のサポート終了の少なくとも 1 年前に事前通知する予定です。 Microsoft では、汎用 v1 アカウントのセキュリティ更新プログラムを引き続き提供しますが、このアカウントの種類に対して新しい機能の開発は予定されていません。
 >
-> 2020 年 10 月 1 日の時点で、新しい Azure Storage リージョンでの汎用 v1 アカウントの価格は、これらのリージョンの汎用 v2 アカウントの料金と同じです。 既存の Azure Storage リージョンの価格は変更されていません。 特定のリージョンの汎用 v1 アカウントの価格の詳細については、Azure Storage の価格ページを参照してください。 リージョンを選択し、 **[価格プラン]** の横にある **[その他]** を選択してください。
+> 2020 年 10 月 1 日以降にオンラインになった新しい Azure リージョンでは、汎用 v1 アカウントの料金は変更されており、これらのリージョンの汎用 v2 アカウントの料金と同じです。 2020 年 10 月 1 日より前に存在していた Azure リージョンの汎用 v1 アカウントの料金は変更されていません。 特定のリージョンの汎用 v1 アカウントの価格の詳細については、Azure Storage の価格ページを参照してください。 リージョンを選択し、 **[価格プラン]** の横にある **[その他]** を選択してください。
 
 ## <a name="upgrade-an-account"></a>アカウントのアップグレード
 

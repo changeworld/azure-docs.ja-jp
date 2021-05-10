@@ -11,10 +11,10 @@ ms.date: 11/03/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 083077b2b29bc415e83d6f5a76941fa83fa853e3
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101674149"
 ---
 # <a name="stored-procedures-using-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL を使用したストアド プロシージャ

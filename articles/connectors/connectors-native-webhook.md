@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 08/27/2020
 tags: connectors
-ms.openlocfilehash: 7c6f3c4e3e4a2a29fe6a02c03043e3dfb81a2010
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cdbf853a96f319cb27c10136004a1398014e602f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89227901"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109154"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Azure Logic Apps で HTTP Webhook を使用して、自動化されたイベントベースのワークフローを作成して実行する
 
@@ -145,9 +145,9 @@ Webhook アクションもイベントに基づいており、指定されたサ
 | プロパティ名 | Type | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
-| body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
+| body | object | 要求の本文の内容を含むオブジェクト |
 | status code | INT | 要求の状態コード |
-|||
+||||
 
 | status code | 説明 |
 |-------------|-------------|

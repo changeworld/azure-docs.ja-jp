@@ -3,12 +3,12 @@ title: MARS を使用してボリューム内のすべてのファイルを復�
 description: MARS エージェントを使用して、ボリューム内のすべてのファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/17/2021
-ms.openlocfilehash: 44c12809fc94f78721ab1788cb352076dfebabe4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d04e9f77b9f92594def9381f973c999e96b2cb2
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98612887"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516503"
 ---
 # <a name="restore-all-the-files-in-a-volume-using-the-mars-agent"></a>MARS エージェントを使用してボリューム内のすべてのファイルを復元する
 
@@ -92,7 +92,7 @@ ms.locfileid: "98612887"
 
 1. サンプルのコンテナーに対応するコンテナー資格情報ファイルを指定し、 **[次へ]** を選択します。
 
-    コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure portal で[サンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
+    コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure portal で[サンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-)。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
 
 1. **[バックアップ サーバーの選択]** ページで、表示されているコンピューターの一覧からソース コンピューターを選択し、パスフレーズを指定します。 **[次へ]** を選択します。
 
@@ -130,4 +130,4 @@ ms.locfileid: "98612887"
 ## <a name="next-steps"></a>次のステップ
 
 - ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。
-- [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.md)を確認する。
+- [ファイルとフォルダーのバックアップに関する一般的な質問](backup-azure-file-folder-backup-faq.yml)を確認する。

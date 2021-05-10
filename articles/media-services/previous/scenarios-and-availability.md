@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: cb7500489cc4516b8cf44dd029c0831103dc53a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: add2a4aba1f7664b919e88992b2a1d71e8291b53
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103007936"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226771"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Microsoft Azure Media Services の一般的なシナリオ
 
@@ -49,7 +49,7 @@ Microsoft Azure Media Services (AMS) を使用すると、各種クライアン�
 
 [![Azure Media Services オブジェクト データ モデルに対する開発時に最もよく使用されるオブジェクトの一部を示す図](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
-モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.15)で確認できます。  
+モデル全体は、[こちら](https://m.eet.com/media/1170326/ms-part1.pdf)で確認できます。  
 
 ## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>ストレージのコンテンツを保護し、ストリーミング メディアを平文 (暗号化されていない) で配信する
 

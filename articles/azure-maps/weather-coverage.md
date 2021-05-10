@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps Weather Service (プレビュー) の対象範囲
-description: Microsoft Azure Maps Weather Service (プレビュー) の対象範囲について説明します
+title: Microsoft Azure Maps Weather Service の対象範囲
+description: Microsoft Azure Maps Weather Service の対象範囲について説明します
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,19 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96905487"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257672"
 ---
-# <a name="azure-maps-weather-services-preview-coverage"></a>Azure Maps Weather Service (プレビュー) の対象範囲
-
-> [!IMPORTANT]
-> Azure Maps Weather Service は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
+# <a name="azure-maps-weather-services-coverage"></a>Azure Maps Weather Service の対象範囲
 
 この記事では、Azure Maps [Weather Services](/rest/api/maps/weather) の対象範囲情報を提供します。 Azure Maps Weather データ サービスを使用すると、レーダー タイル、現在の気象状況、天気予報、ルートに沿った天気などの詳細を返すことができます。
 

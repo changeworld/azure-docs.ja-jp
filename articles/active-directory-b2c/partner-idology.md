@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df0fcaf7987e30f9c2599346aaef5fcabb4f04e9
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96928683"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256652"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して IDology を構成するためのチュートリアル 
 
@@ -93,7 +93,7 @@ IDology 統合には、次のコンポーネントが含まれています。
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>パート 4 - Azure AD B2C ポリシーを構成する
 
-1. この[ドキュメント](custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードし、Azure AD B2C テナント用にポリシーを構成します。 手順に従って、「**カスタム ポリシーをテストする**」セクションを完了します。
+1. この[ドキュメント](tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードし、Azure AD B2C テナント用にポリシーを構成します。 手順に従って、「**カスタム ポリシーをテストする**」セクションを完了します。
 
 2. [こちら](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/policy)で 2 つのサンプル ポリシーをダウンロードします。
 
@@ -145,4 +145,4 @@ IDology 統合には、次のコンポーネントが含まれています。
 
 - [Azure AD B2C のカスタム ポリシー](custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

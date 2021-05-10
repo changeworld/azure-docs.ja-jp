@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/24/2021
 ms.author: lle
-ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e94ea989002d3d3c6d0e96123d5b8ddb5f078c3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706149"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568037"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
@@ -182,7 +182,7 @@ Azure Blob Storage アカウントのパブリック アクセスを使用して
 
 #### <a name="cause"></a>原因
 
-ADF では引き続きマネージド VNet IR を使用できますが、[マネージド仮想ネットワークとマネージド プライベート エンドポイント](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)に関する記事に説明されているように、マネージド VNet 内の Azure Blob Storage へのパブリック エンドポイントにはテスト結果に基づく信頼性がなく、ADF マネージド仮想ネットワークからパブリック エンドポイントを経由する Azure Blob Storage と Azure Data Lake Gen2 へ接続はサポートされていないため、このようなエラーが発生することがあります。
+ADF では引き続きマネージド VNet IR を使用できますが、[マネージド仮想ネットワークとマネージド プライベート エンドポイント](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)に関する記事に説明されているように、マネージド VNet 内の Azure Blob Storage へのパブリック エンドポイントにはテスト結果に基づく信頼性がなく、ADF マネージド仮想ネットワークからパブリック エンドポイントを経由する Azure Blob Storage と Azure Data Lake Gen2 へ接続はサポートされていないため、このようなエラーが発生することがあります。
 
 #### <a name="solution"></a>解決策
 

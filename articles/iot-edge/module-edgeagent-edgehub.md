@@ -4,16 +4,16 @@ description: edgeAgent および edgeHub モジュール ツインの特定の�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/31/2020
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 29ec958764f4a464d51f29f4b9c8223d5d7a1760
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489950"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576008"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 
@@ -84,7 +84,6 @@ IoT Edge エージェントの報告されるプロパティには、次の 3 �
 | lastDesiredVersion | この整数は、IoT Edge エージェントによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、IoT Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 使用できる値は以下の通りです。`200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
-| deviceHealth | `healthy` すべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
 | configurationHealth.{deploymentId}.health | `healthy` デプロイ {deploymentId} によって設定されたすべてのモジュールのランタイムの状態が `running` または `stopped` のどちらかである場合、`unhealthy` それ以外の場合 |
 | runtime.platform.OS | デバイス上で実行されている OS の報告 |
 | runtime.platform.architecture | デバイス上の CPU のアーキテクチャの報告 |

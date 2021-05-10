@@ -1,16 +1,14 @@
 ---
 title: Service Fabric での正常性の監視
 description: クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008278"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311279"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
@@ -79,6 +77,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 
 ### <a name="cluster-health-policy"></a>クラスターの正常性ポリシー
 [クラスターの正常性ポリシー](/dotnet/api/system.fabric.health.clusterhealthpolicy) は、クラスターの正常性状態とノードの正常性状態を評価するために使用されます。 このポリシーは、クラスター マニフェストで定義できます。 存在しない場合は、既定のポリシー (許容エラー数: 0) が使用されます。
+
 クラスターの正常性ポリシーには以下のものが含まれます。
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror)。 警告の正常性レポートを正常性の評価中にエラーとして処理するかどうかを指定します。 既定値は false です。
@@ -87,18 +86,33 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
 * [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap)。 アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なアプリケーションの種類を記述できます。 既定では、すべてのアプリケーションはプールに入れられ、MaxPercentUnhealthyApplications を使用して評価されます。 一部の種類のアプリケーションは、異なる方法で扱う必要がある場合にグローバル プールから除外することができます。 代わりに、マップでアプリケーションの種類名に関連付けられているパーセンテージに照らして評価されます。 たとえば、クラスターには、異なる種類の数千ものアプリケーションがあり、特別なアプリケーションの種類の制御アプリケーション インスタンスの数はわずかです。 制御アプリケーションがエラー状態になることはありません。 グローバルな MaxPercentUnhealthyApplications を 20% に指定していくつかのエラーを許容することはできますが、アプリケーションの種類が "ControlApplicationType" の場合は、MaxPercentUnhealthyApplications を 0 に設定します。 このようにすると、多くのアプリケーションのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。 警告の正常性状態はクラスターのアップグレードや、エラーの正常性状態によりトリガーされる他の監視には影響しません。 しかし、エラーになっている制御アプリケーションが 1 つでもある場合、クラスターが異常になり、アップグレードの構成に応じて、ロールバックがトリガーされたり、クラスター アップグレードが一時停止されたりします。
   マップで定義されているアプリケーションの種類の場合は、すべてのアプリケーション インスタンスがアプリケーションのグローバル プールから除外されます。 これらは、マップの特定の MaxPercentUnhealthyApplications を使用して、該当するアプリケーションの種類のアプリケーションの総数に基づいて評価されます。 残りのアプリケーションはすべてグローバル プールで保持され、MaxPercentUnhealthyApplications を使用して評価されます。
 
-次の例は、クラスター マニフェストからの抜粋です。 アプリケーションの種類マップでエントリを定義するには、パラメーター名の先頭に "ApplicationTypeMaxPercentUnhealthyApplications-" というプレフィックスを付け、パラメーター名の後にアプリケーションの種類名を続けます。
+  次の例は、クラスター マニフェストからの抜粋です。 アプリケーションの種類マップでエントリを定義するには、パラメーター名の先頭に "ApplicationTypeMaxPercentUnhealthyApplications-" というプレフィックスを付け、パラメーター名の後にアプリケーションの種類名を続けます。
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* `NodeTypeHealthPolicyMap`. ノードの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なノードの種類を記述できます。 ノードの種類は、マップでノードの種類名に関連付けられているパーセンテージに照らして評価されます。 この値を設定しても、 `MaxPercentUnhealthyNodes` に使用されるノードのグローバル プールには影響しません。 たとえば、クラスターにはさまざまな種類の数百のノードがありますが、重要な作業をホストするのは少数のノードの種類です。 この種類のノードはダウンさせてはなりません。 すべてのノードについて、一部の失敗を許容するようグローバル `MaxPercentUnhealthyNodes` を 20% に設定できますが、ノードの種類 `SpecialNodeType` については `MaxPercentUnhealthyNodes` を 0 に設定してください。 このようにすると、多くのノードのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。 正常性状態が警告であっても、クラスターのアップグレードや、正常性状態がエラーとなった場合にトリガーされる他の監視には影響しません。 ただし、`SpecialNodeType` ノードのうち 1 つでも正常性状態がエラーとなった場合はクラスター異常となり、アップグレードの構成に応じて、ロールバックがトリガーされるか、クラスターのアップグレードが一時停止されます。 逆にグローバル `MaxPercentUnhealthyNodes` を 0 に設定した場合、`SpecialNodeType` の異常ノードを最大 100% に設定したとしても、グローバルな制限の方が厳しいため、`SpecialNodeType` の種類のノードが 1 つでもエラー状態になればクラスターはエラー状態となります。 
+
+  次の例は、クラスター マニフェストからの抜粋です。 ノードの種類のマップにエントリを定義するには、"NodeTypeMaxPercentUnhealthyNodes-" というプレフィックスを使い、ノード タイプ名を続けてください。
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>アプリケーションの正常性ポリシー
 [アプリケーションの正常性ポリシー](/dotnet/api/system.fabric.health.applicationhealthpolicy) は、アプリケーションとその子に関して、イベントの評価方法および子の状態の集計方法を記述します。 これは、アプリケーション パッケージにある、アプリケーション マニフェストの **ApplicationManifest.xml** ファイルで定義できます。 ポリシーが指定されていない場合、正常性状態が警告またはエラーの正常性レポートか子が見つかれば、Service Fabric はエンティティを異常と見なします。

@@ -3,12 +3,12 @@ title: テンプレートを使用してマルチ VM 環境と PaaS リソース
 description: Azure Resource Manager テンプレートから Azure DevTest Labs で複数 VM の環境と PaaS リソースを作成する方法について説明します
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f285acffe642a85fa27792ee51ea67a57f6d35a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88182410"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790115"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
@@ -264,7 +264,7 @@ Azure portal を使用してラボに 1 つの環境を追加することはで�
 また、Azure CLI を使用して、Resource Manager テンプレートでリソースをデプロイすることもできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure CLI](../azure-resource-manager/templates/deploy-cli.md)」 (Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ) を参照してください。
 
 > [!NOTE]
-> ラボ所有者権限を持つユーザーだけが、Azure PowerShell を使用して Resource Manager テンプレートから VM を作成できます。 Resource Manager テンプレートを使用して VM の作成を自動化する場合でユーザー権限しか持っていない場合は、CLI コマンド [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create) を使用します。
+> ラボ所有者権限を持つユーザーだけが、Azure PowerShell を使用して Resource Manager テンプレートから VM を作成できます。 Resource Manager テンプレートを使用して VM の作成を自動化する場合でユーザー権限しか持っていない場合は、CLI コマンド [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create) を使用します。
 
 ## <a name="resource-manager-template-limitations-in-devtest-labs"></a>DevTest Labs での Resource Manager テンプレートの制限事項
 

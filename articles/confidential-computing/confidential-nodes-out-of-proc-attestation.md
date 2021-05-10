@@ -2,16 +2,17 @@
 title: Azure の Intel SGX クォート ヘルパー デーモンセットによるアウトプロセス構成証明のサポート (プレビュー)
 description: SGX アプリケーションのプロセス外でクォートを生成するためのデーモンセット。 この記事では、コンテナー内で実行される機密性の高いワークロードに対し、アウトプロセス構成証明機能がどのように提供されるかについて説明します。
 ms.service: container-service
+ms.subservice: confidential-computing
 author: agowdamsft
 ms.topic: overview
 ms.date: 2/12/2021
 ms.author: amgowda
-ms.openlocfilehash: 5d872032ea5b4e08c3f436dd3bfc202786d8514d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0ebeb96557b7e20d123577c0ab9c8fc392abbfba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102553257"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932632"
 ---
 # <a name="platform-software-management-with-sgx-quote-helper-daemon-set-preview"></a>SGX クォート ヘルパー デーモン セットによるプラットフォーム ソフトウェア管理 (プレビュー)
 

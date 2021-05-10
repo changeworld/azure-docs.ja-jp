@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 218c0f345e4ea453a2300b3de85ac8856a09c6ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f7c28ecbaa58731c528a9ecb5f869eba2bc0c99f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199287"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484423"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Azure IoT Edge デバイスに対する継続的インテグレーションと継続的配置 (クラシック エディター)
 
@@ -162,7 +162,7 @@ Azure Pipelines 内の組み込み Azure IoT Edge タスクを使用して、Azu
 >[!NOTE]
 >パイプラインで **階層型配置** を使用する場合、Azure DevOps の Azure IoT Edge タスクでは、階層型配置はまだサポートされていません。
 >
->ただし、[Azure DevOps の Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用すると、階層型配置として配置を作成できます。 **インライン スクリプト** 値については、[az iot edge deployment create コマンド](/cli/azure/ext/azure-iot/iot/edge/deployment)を使用できます。
+>ただし、[Azure DevOps の Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用すると、階層型配置として配置を作成できます。 **インライン スクリプト** 値については、[az iot edge deployment create コマンド](/cli/azure/iot/edge/deployment)を使用できます。
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

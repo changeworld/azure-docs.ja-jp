@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+manager: femila
+ms.openlocfilehash: 5eca75da57027789a06259e22e7c6cd5231404b6
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018377"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448153"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 

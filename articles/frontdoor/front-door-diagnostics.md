@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 58db217ca173acbe0356596de916216c4ab7f241
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a972123604cafbfc4c6753c1fe3ad21147b53b2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715549"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106550661"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure Front Door でのメトリックとログの監視
 
@@ -71,7 +71,7 @@ Front Door の診断ログを構成するには、以下の手順を実行しま
 
 3. **[診断を有効にする]** を選択します。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Azure Monitor ログに送信したりします。
 
-現在、Front Door では診断ログ (1 時間ごとにバッチ処理) が提供されています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
+現在、Front Door では診断ログが提供されています。 診断ログでは、次のスキーマを使用した各エントリが個々の API 要求に提供されます。
 
 | プロパティ  | 説明 |
 | ------------- | ------------- |

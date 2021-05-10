@@ -1,14 +1,14 @@
 ---
 title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
-ms.date: 01/27/2021
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 5ad86ec2598cd7f24b8e0cd2208889bb7a088568
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594648"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219078"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -145,6 +145,10 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 - **beforeSnapshot** - 変更が検出される前に取得されたリソース スナップショットの **snapshotId** と **timestamp** が含まれています。
 - **afterSnapshot** - 変更が検出された後に取得されたリソース スナップショットの **snapshotId** と **timestamp** が含まれています。
 - **changeType** - **beforeSnapshot** と **afterSnapshot** の間の変更レコード全体に対して検出された変更の種類が示されます。 値は次のとおりです。_Create_、_Update_、_Delete_。 **propertyChanges** プロパティ配列は、**changeType** が _Update_ の場合にのみ含まれます。
+
+  > [!IMPORTANT]
+  > _Create_ は、以前に存在していて過去 14 日以内に削除されたリソースのみに使用できます。
+
 - **propertyChanges** - このプロパティの配列では、**beforeSnapshot** と **afterSnapshot** の間で更新されたすべてのリソース プロパティの詳細が示されます。
   - **propertyName** - 変更されたリソース プロパティの名前。
   - **changeCategory** - 変更内容が示されます。 値は次のとおりです。_System_ と _User_。

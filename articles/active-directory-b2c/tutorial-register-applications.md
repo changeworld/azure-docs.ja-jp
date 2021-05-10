@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 2ec67669edeb52af1044c97c984eb6ba36fd1a0b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918214"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579639"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C に Web アプリケーションを登録する
 
@@ -80,7 +80,7 @@ Web アプリケーションを Azure AD B2C テナントに登録するには�
 
 ## <a name="create-a-client-secret"></a>クライアント シークレットの作成
 
-Web アプリケーションの場合は、アプリケーション シークレットを作成する必要があります。 このシークレットは、認可コードをアクセス トークンと交換するためにアプリケーションによって使用されます。
+Web アプリケーションの場合は、アプリケーション シークレットを作成する必要があります。 クライアント シークレットは、"*アプリケーション パスワード*" とも呼ばれます。 このシークレットは、承認コードをアクセス トークンと交換するためにアプリケーションによって使用されます。
 
 #### <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
@@ -89,7 +89,7 @@ Web アプリケーションの場合は、アプリケーション シークレ
 1. **[新しいクライアント シークレット]** を選択します。
 1. **[説明]** ボックスにクライアント シークレットの説明を入力します。 たとえば、*clientsecret1* のようにします。
 1. **[有効期限]** で、シークレットが有効な期間を選択してから、 **[追加]** を選択します。
-1. シークレットの **値** を記録します。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
+1. クライアント アプリケーションのコードで使用できるように、シークレットの **値** を記録します。 このページからの移動後は、このシークレットの値は "二度と表示されません"。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
 
 #### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
@@ -98,6 +98,9 @@ Web アプリケーションの場合は、アプリケーション シークレ
 1. **[保存]** を選択し、キーを参照します。 **アプリ キー** の値をメモしておきます。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
 
 * * *
+
+> [!NOTE]
+> セキュリティ上の理由から、アプリケーション シークレットは定期的にロール オーバーできるほか、万一緊急事態が発生した場合には直ちにロール オーバーすることができます。 Azure AD B2C と連携するすべてのアプリケーションは、発生頻度に関係なくシークレットのロールオーバー イベントを処理できるようになっている必要があります。 アプリケーションのシークレットは 2 つ設定できます。これによりアプリケーションは、そのシークレットのローテーション イベント中に古いシークレットを使用し続けることができます。 別のクライアント シークレットを追加するには、このセクションの手順を繰り返します。 
 
 ## <a name="enable-id-token-implicit-grant"></a>ID トークンの暗黙的な許可の有効化
 

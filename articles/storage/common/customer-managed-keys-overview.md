@@ -5,25 +5,28 @@ description: 独自の暗号化キーを使用して、ストレージ アカウ
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/09/2021
+ms.date: 03/30/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 358be21a1f7f13c0c0ce1bf0e57dda53174216b2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102517533"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059447"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure Storage の暗号化のためのカスタマー マネージド キー
 
 独自の暗号化キーを使用して、ストレージ アカウントのデータを保護できます。 カスタマー マネージド キーを指定すると、データを暗号化するキーへのアクセスを保護および制御するために、そのキーが使用されます。 カスタマー マネージド キーを使用すると、アクセス制御をより柔軟に管理できます。
 
-カスタマー マネージド キーを格納するには、Azure Key Vault または Azure Key Vault Managed Hardware Security Module (HSM) (プレビュー) のいずれかを使用する必要があります。 独自のキーを作成してキー コンテナーまたはマネージド HSM に格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーまたはマネージド HSM は同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。
+カスタマー マネージド キーを格納するには、次のいずれかの Azure キー ストアを使用する必要があります。
 
-Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/general/overview.md)」をご覧ください。
+- [Azure Key Vault](../../key-vault/general/overview.md)
+- [Azure Key Vault のマネージド ハードウェア セキュリティ モジュール (HSM) (プレビュー)](../../key-vault/managed-hsm/overview.md)
+
+独自のキーを作成してキー コンテナーまたはマネージド HSM に格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーまたはマネージド HSM は同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在する必要がありますが、サブスクリプションは異なっていてもかまいません。
 
 > [!IMPORTANT]
 >

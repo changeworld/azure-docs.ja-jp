@@ -8,20 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d61314dc89d341e376de7d3904568825ad3cfb04
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618476"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106293874"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) について
 
-> [!IMPORTANT]
-> Cloud Services (延長サポート) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) 製品向けの新しい  [Azure Resource Manager](../azure-resource-manager/management/overview.md) ベースのデプロイ モデルであり、現在パブリック プレビュー段階にあります。 Cloud Services (延長サポート) には、Azure Service Manager を使用してデプロイされた Azure Cloud Services との機能パリティと共に、リージョンの回復性を提供するという主な利点があります。 また、ロールベースのアクセスと制御 (RBAC)、タグ、ポリシーなどのいくつかの ARM 機能も提供し、デプロイ テンプレートをサポートしています。  
+Cloud Services (延長サポート) は、 [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) 製品向けの新しい  [Azure Resource Manager](../azure-resource-manager/management/overview.md) ベースのデプロイ モデルであり、現在一般提供されています。 Cloud Services (延長サポート) には、Azure Service Manager を使用してデプロイされた Azure Cloud Services との機能パリティと共に、リージョンの回復性を提供するという主な利点があります。 また、ロールベースのアクセスと制御 (RBAC)、タグ、ポリシーなどのいくつかの ARM 機能も提供され、デプロイ テンプレートがサポートされています。  
 
 この変更により、Cloud Services 向けの Azure Service Manager ベースのデプロイ モデルは [Cloud Services (クラシック)](../cloud-services/cloud-services-choose-me.md) という名前に変更されます。 Web およびクラウド アプリケーションやサービスを構築して迅速にデプロイする機能は保持されます。 現在の要求に基づいてクラウド サービスのインフラストラクチャをスケーリングすることができ、アプリケーションのパフォーマンスを維持しながら、同時にコストも削減できるようになります。  
 
@@ -48,12 +44,9 @@ Cloud Services (延長サポート) をデプロイするには、サービス�
 - [Azure Resource Manager](../azure-resource-manager/templates/overview.md) を使用してデプロイされたリソースはすべて、仮想ネットワークの内部に存在する必要があります。 仮想ネットワークとサブネットは、既存の Azure Resource Manager API を使用して Azure Resource Manager で作成され、Cloud Services (延長サポート) をデプロイするときに .cscfg の NetworkConfiguration セクション内で参照する必要があります。   
 
 - 各クラウド サービス (延長サポート) は、1 つの独立したデプロイです。 クラウド サービス (延長サポート) では、1 つのクラウド サービス内の複数のスロットはサポートされません。  
-    - VIP スワップ<sup>*</sup>機能を使用すると、2 つのクラウド サービス (延長サポート) 間でのスワップが可能になります。 クラウド サービスの新しいリリースをテストしてステージングするには、クラウド サービス (延長サポート) をデプロイし、それを別のクラウド サービス (延長サポート) との VIP スワップ可能としてタグ付けします。  
+    - VIP スワップ機能を使用すると、2 つのクラウド サービス (延長サポート) 間でのスワップが可能になります。 クラウド サービスの新しいリリースをテストしてステージングするには、クラウド サービス (延長サポート) をデプロイし、それを別のクラウド サービス (延長サポート) との VIP スワップ可能としてタグ付けします。  
 
 - ドメイン ネーム サービス (DNS) ラベルは、クラウド サービス (延長サポート) では省略可能です。 Azure Resource Manager では、DNS ラベルは、クラウド サービスに関連付けられているパブリック IP リソースのプロパティです。 
-
-
-<sup>*</sup> Cloud Services (延長サポート) の VIP スワップは、パブリック プレビュー段階では使用できません。  
 
 ## <a name="migration-to-azure-resource-manager"></a>Azure Resource Manager への移行
 

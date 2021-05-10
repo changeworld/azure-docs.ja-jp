@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98797790"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029728"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>お使いのアプリに Video Indexer ウィジェットを埋め込む
 
@@ -66,16 +66,15 @@ ms.locfileid: "98797790"
 
 <sup>*</sup>所有者は、注意して `accessToken` を提供する必要があります。
 
-## <a name="embedding-videos"></a>ビデオの埋め込み
+## <a name="embed-videos"></a>ビデオの埋め込み
 
-このセクションでは、アプリへのパブリック コンテンツとプライベート コンテンツの埋め込みについて説明します。
+このセクションでは、[ポータルを使用](#the-portal-experience)して、またはアプリに [URL を手動でアセンブル](#assemble-the-url-manually)してビデオを埋め込む方法について説明します。 
 
 埋め込みリンクには、`location` パラメーターを含める必要があります。[リージョンの名前を取得する方法](regions.md)に関するページを参照してください。 ご利用のアカウントがプレビューである場合は、location の値に `trial` を使用する必要があります。 `trial` は、`location` パラメーターの既定値です。 (例: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`)。
 
-> [!IMPORTANT]
-> **プレーヤー** ウィジェットまたは **分析情報** ウィジェットのリンクを共有すると、アクセス トークンが追加され、読み取り専用アクセス許可がアカウントに付与されます。
+### <a name="the-portal-experience"></a>ポータル エクスペリエンス
 
-### <a name="public-content"></a>パブリック コンテンツ
+ビデオを埋め込むには、次の説明に従ってポータルを使用します。
 
 1. [Video Indexer](https://www.videoindexer.ai/) の Web サイトにサインインします。
 1. 作業するビデオを選択し、 **[再生]** を押します。
@@ -84,18 +83,27 @@ ms.locfileid: "98797790"
 5. 埋め込みコードをコピーします ( **に表示されます。埋め込みコード** を、**共有 & 埋め込み** ダイアログにコピーします)。
 6. コードをお使いのアプリに追加します。
 
-### <a name="private-content"></a>プライベート コンテンツ
+> [!NOTE]
+> **プレーヤー** ウィジェットまたは **分析情報** ウィジェットのリンクを共有すると、アクセス トークンが追加され、読み取り専用アクセス許可がアカウントに付与されます。
 
-プライベート ビデオを埋め込むには、iframe の `src` 属性にアクセス トークンを渡す必要があります。
+### <a name="assemble-the-url-manually"></a>URL をアセンブルする
+
+#### <a name="public-videos"></a>パブリック ビデオ
+
+パブリック ビデオを埋め込むには、次のように URL をアセンブルします。
+
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>`
+  
+  
+#### <a name="private-videos"></a>プライベート ビデオ
+
+プライベート ビデオを埋め込むには、iframe の `src` 属性にアクセス トークンを渡す必要があります ([Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) を使用)。
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
-    
-コグニティブな分析情報ウィジェットのコンテンツを取得するには、次の方法のいずれかを使用します。
+  
+### <a name="provide-editing-insights-capabilities"></a>分析情報の編集機能を提供する
 
-- [Get Insights Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API。<br/>
-- [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?)。 これをクエリ パラメーターとして URL に追加します。 前に示したように、この URL を iframe の `src` 値として指定します。
-
-埋め込みのウィジェットで分析情報の編集機能を提供するには、編集アクセス許可を含むアクセス トークンを渡す必要があります。 `&allowEdit=true` を指定して、[Get Insights Widget](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) または [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) を使用します。
+埋め込みのウィジェットで分析情報の編集機能を提供するには、編集アクセス許可を含むアクセス トークンを渡す必要があります。 `&allowEdit=true` を指定して [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) を使用します。
 
 ## <a name="widgets-interaction"></a>ウィジェットの対話
 

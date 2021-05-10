@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/24/2021
+ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699030"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777151"
 ---
 # <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Azure Logic Apps の価格および課金モデル
 
@@ -27,9 +27,9 @@ ms.locfileid: "101699030"
 
 | 項目 | 説明 |
 |-------|-------------|
-| [組み込みの](../connectors/apis-list.md#built-in)トリガーとアクション | Logic Apps サービスでネイティブに実行され、[**アクション** の価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 <p><p>たとえば、HTTP トリガーと Request トリガーは組み込みトリガーですが、HTTP アクションと Response アクションは組み込みアクションです。 データ操作、バッチ操作、変数操作のほか、ループ、条件、スイッチ、並列分岐などの[ワークフロー制御アクション](../connectors/apis-list.md#control-workflow)も組み込みアクションです。 |
-| [Standard コネクタ](../connectors/apis-list.md#managed-connectors)のトリガーとアクション <p><p>[カスタム コネクタ](../connectors/apis-list.md#custom)のトリガーとアクション | [Standard コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
-| [エンタープライズ コネクタ](../connectors/apis-list.md#managed-connectors)のトリガーとアクション | [エンタープライズ コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 ただし、パブリック プレビュー期間中のエンタープライズ コネクタは、[*Standard* コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
+| [組み込みの](../connectors/built-in.md)トリガーとアクション | Logic Apps サービスでネイティブに実行され、[**アクション** の価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 <p><p>たとえば、HTTP トリガーと Request トリガーは組み込みトリガーですが、HTTP アクションと Response アクションは組み込みアクションです。 データ操作、バッチ操作、変数操作のほか、ループ、条件、スイッチ、並列分岐などの[ワークフロー制御アクション](../connectors/built-in.md)も組み込みアクションです。 |
+| [Standard コネクタ](../connectors/managed.md)のトリガーとアクション <p><p>[カスタム コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)のトリガーとアクション | [Standard コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
+| [エンタープライズ コネクタ](../connectors/managed.md)のトリガーとアクション | [エンタープライズ コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 ただし、パブリック プレビュー期間中のエンタープライズ コネクタは、[*Standard* コネクタの価格](https://azure.microsoft.com/pricing/details/logic-apps/)を使用して従量課金されます。 |
 | [ループ](logic-apps-control-flow-loops.md)内のアクション | ループで実行される各アクションは、実行されるループ サイクルごとに従量課金されます。 <p><p>たとえば、リストを処理するアクションを含む "for each" ループがあるものとします。 Logic Apps サービスでは、リスト項目の数にループ内のアクションの数を乗算することによって、そのループで実行される各アクションに従量課金し、ループを開始するアクションを加算します。 したがって、10 項目のリストの場合の計算は (10 * 1) + 1 になり、結果は 11 個のアクション実行になります。 |
 | 再試行 | 最も基本的な例外とエラーを処理するために、サポートされているトリガーとアクションに対して[再試行ポリシー](logic-apps-exception-handling.md#retry-policies)を設定できます。 これらの再試行は、元の要求と共に、トリガーまたはアクションの種類 (組み込み、Standard、エンタープライズ) に応じた料金で課金されます。 たとえば、アクションを実行して再試行が 2 回だった場合、3 回のアクション実行として課金されます。 |
 | [データ保持とストレージ消費](#data-retention) | データ保持料金を使用して従量課金されます。[Logic Apps の価格ページ](https://azure.microsoft.com/pricing/details/logic-apps/)の「**価格の詳細**」表で確認できます。 |
@@ -80,8 +80,8 @@ ms.locfileid: "101699030"
 
 | 項目 | 説明 |
 |-------|-------------|
-| [組み込みの](../connectors/apis-list.md#built-in)トリガーとアクション | **Core** というラベルが表示され、ロジック アプリと同じ ISE で実行されます。 |
-| [Standard コネクタ](../connectors/apis-list.md#managed-connectors) <p><p>[エンタープライズ コネクタ](../connectors/apis-list.md#enterprise-connectors) | - **ISE** というラベルが表示されるマネージド コネクタは、オンプレミス データ ゲートウェイなしで機能するように特別に設計されており、ロジック アプリと同じ ISE で実行されます。 ISE の価格には、必要な数のエンタープライズ接続が含まれています。 <p><p>- ISE というラベルが表示されないコネクタは、マルチテナントの Logic Apps サービスで実行されます。 ただし、ISE の価格には、ISE で実行されるロジック アプリに関するこれらの実行が含まれます。 |
+| [組み込みの](../connectors/built-in.md)トリガーとアクション | **Core** というラベルが表示され、ロジック アプリと同じ ISE で実行されます。 |
+| [Standard コネクタ](../connectors/managed.md) <p><p>[エンタープライズ コネクタ](../connectors/managed.md#enterprise-connectors) | - **ISE** というラベルが表示されるマネージド コネクタは、オンプレミス データ ゲートウェイなしで機能するように特別に設計されており、ロジック アプリと同じ ISE で実行されます。 ISE の価格には、必要な数のエンタープライズ接続が含まれています。 <p><p>- ISE というラベルが表示されないコネクタは、マルチテナントの Logic Apps サービスで実行されます。 ただし、ISE の価格には、ISE で実行されるロジック アプリに関するこれらの実行が含まれます。 |
 | [ループ](logic-apps-control-flow-loops.md)内のアクション | ISE の価格には、実行されるループ サイクルごとにループで実行される各アクションが含まれます。 <p><p>たとえば、リストを処理するアクションを含む "for each" ループがあるものとします。 アクションの合計実行数を得るには、リスト項目の数とループ内のアクションの数を乗算し、ループを開始するアクションを加算します。 したがって、10 項目のリストの場合の計算は (10 * 1) + 1 になり、結果は 11 個のアクション実行になります。 |
 | 再試行 | 最も基本的な例外とエラーを処理するために、サポートされているトリガーとアクションに対して[再試行ポリシー](logic-apps-exception-handling.md#retry-policies)を設定できます。 ISE の価格には、元の要求に加えて再試行が含まれます。 |
 | [データ保持とストレージ消費](#data-retention) | ISE 内のロジック アプリには、保持およびストレージのコストはかかりません。 |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: charwen
 ms.openlocfilehash: 001d2ff6789ec4cfcc391171f0859b67ab1ee0a5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92077781"
 ---
 # <a name="connect-to-a-virtual-machine-scale-set-using-azure-bastion"></a>Azure Bastion を使用して仮想マシン スケール セットに接続する
@@ -24,7 +24,7 @@ ms.locfileid: "92077781"
 
 ## <a name="connect-using-rdp"></a><a name="rdp"></a>RDP を使用して接続する
 
-1. [Azure portal](https://portal.azure.com) を開きます。 接続先の仮想マシン スケール セットに移動します。
+1. [Azure Portal](https://portal.azure.com)を開きます。 接続先の仮想マシン スケール セットに移動します。
 
    ![移動](./media/bastion-connect-vm-scale-set/1.png)
 2. 接続先の仮想マシン スケール セットのインスタンスに移動し、**[接続]** を選択します。 RDP 接続を使用するときは、仮想マシン スケール セットは Windows 仮想マシン スケール セットである必要があります。

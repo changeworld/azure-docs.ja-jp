@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 67e807e948caf1fec014457814c1b7f105630f9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99095360"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784427"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 
@@ -225,7 +225,7 @@ PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを�
 
 ## <a name="powershell-alternative"></a>PowerShell による代替
 
-スクリプトでは、PowerShell コマンドレット **New-AzSqlServerVirtualNetworkRule** または [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して仮想ネットワーク規則を作成することもできます。 関心をお持ちの場合は、[PowerShell での仮想ネットワーク サービス エンドポイントと SQL Database の規則の作成][sql-db-vnet-service-endpoint-rule-powershell-md-52d]に関する記事を参照してください。
+スクリプトでは、PowerShell コマンドレット **New-AzSqlServerVirtualNetworkRule** または [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワーク規則を作成することもできます。 関心をお持ちの場合は、[PowerShell での仮想ネットワーク サービス エンドポイントと SQL Database の規則の作成][sql-db-vnet-service-endpoint-rule-powershell-md-52d]に関する記事を参照してください。
 
 ## <a name="rest-api-alternative"></a>REST API の代替手段
 

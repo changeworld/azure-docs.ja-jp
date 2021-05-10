@@ -3,20 +3,18 @@ title: Azure Key Vault のコンテナーを別のサブスクリプションに
 description: キー コンテナーを別のサブスクリプションに移動するためのガイダンス。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: a84627b2b426385d21ad72b85780db86e7dd5ee3
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101096082"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751852"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 
@@ -125,5 +123,5 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 - [キー、シークレット、証明書](about-keys-secrets-certificates.md)について学習します
 - 概念的な情報については、Key Vault のログを解釈する方法を含め、[Key Vault のログ記録](logging.md)に関するページを参照してください
 - [Key Vault 開発者ガイド](../general/developers-guide.md)
-- [キー コンテナーのセキュリティ保護](secure-your-key-vault.md)
+- [キー コンテナーのセキュリティ保護](security-overview.md)
 - [Azure Key Vault のファイアウォールと仮想ネットワークを構成する](network-security.md)

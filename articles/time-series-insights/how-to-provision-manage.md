@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: cbd28bdf5318bdaf932447f5d1f936d2c614a7f3
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103461897"
 ---
 # <a name="manage-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 の管理

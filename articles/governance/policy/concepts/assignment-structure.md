@@ -1,14 +1,14 @@
 ---
 title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581962"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604867"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -89,6 +89,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 ## <a name="non-compliance-messages"></a>非コンプライアンス メッセージ
 
 リソースがポリシーまたはイニシアチブ定義に準拠していない理由を説明するカスタム メッセージを設定するには、割り当て定義で `nonComplianceMessages` を設定します。 このノードは `message` エントリの配列です。 このカスタム メッセージは、非コンプライアンスの既定のエラー メッセージというだけでなく、オプションでもあります。
+
+> [!IMPORTANT]
+> コンプライアンス非対応向けのカスタム メッセージは、[Resource Manager モード](./definition-structure.md#resource-manager-modes)定義を使用した定義またはイニシアチブでのみサポートされます。
 
 ```json
 "nonComplianceMessages": [

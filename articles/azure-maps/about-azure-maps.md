@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 55955f883425651749809da951832484f098aeaf
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97680817"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256125"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -169,11 +169,11 @@ Traffic Service は、交通情報を必要とする Web またはモバイル �
 
 詳細については、[Traffic Service のドキュメント](/rest/api/maps/traffic)を参照してください。
 
-### <a name="weather-services-preview"></a>Weather Service (プレビュー) 
+### <a name="weather-services"></a>Weather Service
 
 Weather Service では、開発者が特定の場所の気象情報を取得するために使用できる API シリーズが提供されます。 この情報には、観測日時、気象条件の短い説明、気象アイコン、降水量インジケーター フラグ、気温、風速情報などの詳細が含まれています。 RealFeel™ の気温と UV の指数などの追加情報も返されます。
 
-開発者は[ルートに沿った気象の取得 API](/rest/api/maps/weather/getweatheralongroutepreview) を使用して、特定のルートに沿った気象情報を取得できます。 また、このサービスでは、洪水や大雨など、気象災害の影響を受ける通過地点に関する気象通知の生成もサポートされています。
+開発者は[ルートに沿った気象の取得 API](/rest/api/maps/weather/getweatheralongroute) を使用して、特定のルートに沿った気象情報を取得できます。 また、このサービスでは、洪水や大雨など、気象災害の影響を受ける通過地点に関する気象通知の生成もサポートされています。
 
 [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview) を使用すると、過去、現在、および未来のレーダー タイルおよび衛星タイルを要求できます。
 

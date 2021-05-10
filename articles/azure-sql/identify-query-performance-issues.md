@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
-ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 039332a8728e5d7e5b605f51f4bb53e6dcbb6381
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98217228"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109171"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database での検出可能なクエリ パフォーマンス ボトルネックの種類
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -139,7 +139,7 @@ RECOMPILE ヒントを使用した場合、プランはキャッシュされま�
 
 - **物理的設計の変更**:たとえば、新しく作成されたインデックスは、クエリの要件により効果的に対応します。 この新しいインデックスは、クエリ実行の最初のバージョン用に元々選択されていたデータ構造を使用するよりも、この新しいインデックスを使用した方がより最適であるとクエリ オプティマイザーが判断した場合、新しいコンパイルで使用される可能性があります。 参照されているオブジェクトに物理的変更が行われた場合、コンパイル時に新しいプランが選択されることがあります。
 
-- **サーバー リソースの違い**:あるシステムのプランが別のシステムのプランと異なる場合、利用可能なプロセッサの数などのリソースの可用性が、生成されるプランに影響を与える可能性があります。 たとえば、1 つのシステムでプロセッサの数が多い場合は、並列プランが選択される可能性があります。
+- **サーバー リソースの違い**:あるシステムのプランが別のシステムのプランと異なる場合、利用可能なプロセッサの数などのリソースの可用性が、生成されるプランに影響を与える可能性があります。 たとえば、1 つのシステムでプロセッサの数が多い場合は、並列プランが選択される可能性があります。 Azure SQL Database での並列処理の詳細については、「[Azure SQL Database での並列処理の最大限度 (MAXDOP) の構成](database/configure-max-degree-of-parallelism.md)」を参照してください。
 
 - **異なる統計**:参照されているオブジェクトに関連する統計情報が変更されていたり、元のシステムの統計と実質的に異なる場合があります。 統計が変更され再コンパイルが発生すると、クエリ オプティマイザーは、変更された時点からの統計を使用します。 変更された統計のデータの分布と頻度は、元のコンパイルのものとは異なる可能性があります。 これらの変更は、カーディナリティ推定を作成するために使用されます。 (*カーディナリティ推定* は、論理クエリ ツリーを経由してフローすると予想される行数です。)カーディナリティ推定が変更されると、異なる物理演算子、および関連する操作順序の選択が必要になる場合があります。 統計に対する変更が小さくても、クエリ実行プランが変更される可能性があります。
 
@@ -181,6 +181,8 @@ CPU の問題を引き起こしているワークロード ボリュームの変
 
 Intelligent Insights を使用して[ワークロードの増加](database/intelligent-insights-troubleshoot-performance.md#workload-increase)と[プランの回帰](database/intelligent-insights-troubleshoot-performance.md#plan-regression)を検出します。
 
+- **並列処理**: 過剰な並列処理によって CPU とワーカー スレッド リソースの他のクエリが逼迫し、他の同時実行ワークロードのパフォーマンスが悪化する場合があります。 Azure SQL Database での並列処理の詳細については、「[Azure SQL Database での並列処理の最大限度 (MAXDOP) の構成](database/configure-max-degree-of-parallelism.md)」を参照してください。
+
 ## <a name="waiting-related-problems"></a>待機関連の問題
 
 最適化されていないプランと、実行の問題に関係している "*待機関連の問題*" を取り除いたら、一般的には、パフォーマンスの問題としてクエリが何らかのリソースを待機している可能性があります。 待機に関連する問題の原因として、次のことが考えられます。
@@ -220,6 +222,11 @@ CPU の使用率が高いシナリオでは、次の場合にクエリ ストア
 > - [TigerToolbox 待機およびラッチ](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
+## <a name="see-also"></a>関連項目
+
+* [Azure SQL Database での並列処理の最大限度 (MAXDOP) の構成](database/configure-max-degree-of-parallelism.md)
+* [Azure SQL Database における Azure SQL Database のブロックの問題の概要と解決策](database/understand-resolve-blocking.md)
+
 ## <a name="next-steps"></a>次のステップ
 
-[SQL Database の監視とチューニングの概要](database/monitor-tune-overview.md)
+* [SQL Database の監視とチューニングの概要](database/monitor-tune-overview.md)

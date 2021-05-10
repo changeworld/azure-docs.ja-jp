@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 8f193cface177e6be6343f28ef4dc27c2d6c6a7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8fa0344a6959025856f002e1de4eb8700c32da5
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030904"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311313"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 このドキュメントでは、[Azure トラスト センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
@@ -103,7 +103,7 @@ Log Analytics には、すべての Microsoft サービスが準拠するイン�
   * Microsoft Azure サービスで作業しているオペレーターは、顧客データをホストする機密性の高いシステムへのアクセスに関連する、追加のトレーニングを受ける義務があります。
   * Microsoft セキュリティ対応担当者は、役割に対する専門的なトレーニングを受けます。
 
-顧客のデータの損失が発生した場合、1 日以内に顧客に通知します。 ただし、サービスで顧客データの損失が発生したことはありません。 
+非常にまれですが、顧客データが大量に失われた場合、Microsoft は 1 日以内にそれぞれのお客様に通知します。 
 
 Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 

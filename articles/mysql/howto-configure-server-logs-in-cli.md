@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 945a67f81010a61adf814f6f6f422eba5001b48d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d5fc2b14a655251e59a9209e078b0534f08baf9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95998551"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763237"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して低速クエリ ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL の低速クエリ ログをダウンロードできます。
@@ -41,14 +41,14 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 ```
 
 ## <a name="list-logs-for-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのログの一覧表示
-**log_output** が [ファイル] に構成されている場合は、サーバーのローカル ストレージから直接ログにアクセスできます。 サーバーの利用可能な低速クエリ ログ ファイルを一覧表示するには、[az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) コマンドを実行します。
+**log_output** が [ファイル] に構成されている場合は、サーバーのローカル ストレージから直接ログにアクセスできます。 サーバーの利用可能な低速クエリ ログ ファイルを一覧表示するには、[az mysql server-logs list](/cli/azure/mysql/server-logs#az_mysql_server_logs_list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **mydemoserver.mysql.database.azure.com** のログ ファイルを一覧表示できます。 その後、ログ ファイルの一覧を **log\_files\_list.txt** という名前のテキスト ファイルに送信します。
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>サーバーからログをダウンロードする
-**log_output** が [ファイル] に構成されている場合は、[az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) コマンドを使用してサーバーから個々のログ ファイルをダウンロードできます。
+**log_output** が [ファイル] に構成されている場合は、[az mysql server-logs download](/cli/azure/mysql/server-logs#az_mysql_server_logs_download) コマンドを使用してサーバーから個々のログ ファイルをダウンロードできます。
 
 次の例を使用して、リソース グループ **myresourcegroup** のサーバー **mydemoserver.mysql.database.azure.com** の特定のログ ファイルを、ローカル環境にダウンロードします。
 ```azurecli-interactive

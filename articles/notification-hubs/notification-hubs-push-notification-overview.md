@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: ba5a329d12735fbddc86ff2e3725a1e7de6d9d89
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546467"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Azure Notification Hubs とは
@@ -99,7 +99,7 @@ Notification Hubs はすぐに利用できるプッシュ エンジンであり�
   - 動的タグを使用したセグメントへのプッシュ: タグ機能は、デバイスをセグメント化し、1 つのセグメントまたはセグメントの式 (たとえば、アクティブ AND シアトルに在住 NOT 新規ユーザー) のどちらに送信しているかにかかわらず、ニーズに応じてそれらのデバイスにプッシュするのに役立ちます。 発行-サブスクライブに制限されず、デバイス タグはいつでもどこでも更新することができます。
   - ローカライズされたプッシュ: テンプレート機能は、バックエンド コードに影響を与えることなくローカライズを実現するのに役立ちます。
   - サイレント プッシュ: デバイスにサイレント通知を送信し、それらをトリガーして特定のプルまたはアクションを完了することによって、push-to-pull パターンを有効にできます。
-  - スケジュールされたプッシュ: いつでも通知の送信をスケジュールできます。
+  - プッシュのスケジュール:通知をいつ送信するかをスケジュールすることができます。
   - ダイレクト プッシュ: Notification Hubs サービスへのデバイスの登録を省略し、デバイス ハンドルの一覧に直接バッチでプッシュできます。
   - 個人用に設定されたプッシュ: デバイスのプッシュ変数は、カスタマイズされたキーと値のペアを使用して、デバイス固有の個人用に設定されたプッシュ通知を送信するのに役立ちます。
 - **豊富なテレメトリ**
@@ -113,7 +113,7 @@ Notification Hubs はすぐに利用できるプッシュ エンジンであり�
 
 ## <a name="next-steps"></a>次のステップ
 
-通知ハブの作成および使用を開始してください。その手順は、[モバイル アプリケーションにプッシュ通知を送信するチュートリアル](notification-hubs-android-push-notification-google-fcm-get-started.md)に説明されています。
+「[チュートリアル: モバイル アプリケーションにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」に従うことによって、通知ハブの作成および使用を開始してください。
 
 [0]: ./media/notification-hubs-overview/registration-diagram.png
 [1]: ./media/notification-hubs-overview/notification-hub-diagram.png

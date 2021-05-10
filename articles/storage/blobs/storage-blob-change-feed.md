@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101095570"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552439"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードのサポート
 
@@ -67,14 +67,11 @@ ms.locfileid: "101095570"
 Azure portal を使用して、ストレージ アカウントで変更フィードを有効にします。
 
 1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
+1. **[Blob service]** の下の **[データ保護]** オプションに移動します。
+1. **[追跡]** で、 **[BLOB の変更フィードを有効にする]** を選択します。
+1. **[保存]** ボタンを選択して、データ保護設定を確認します。
 
-2. **[Blob service]** の下の **[データ保護]** オプションに移動します。
-
-3. **[BLOB の変更フィード]** で、 **[有効]** をクリックします。
-
-4. **[保存]** ボタンを選択して **[データ保護]** 設定を確認します。
-
-    ![データ保護設定を示すスクリーンショット。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
+    :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="Azure portal で変更フィードを有効にする方法を示すスクリーンショット":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

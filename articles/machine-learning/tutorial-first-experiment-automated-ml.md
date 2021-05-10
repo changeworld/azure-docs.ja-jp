@@ -1,7 +1,7 @@
 ---
 title: 自動 ML 分類モデルを作成する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して分類モデルをトレーニングおよびデプロイする方法について説明します。
+description: Azure Machine Learning の自動機械学習 (自動 ML) インターフェイスを使用して、コードを記述せずに分類モデルをトレーニングしてデプロイする
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,29 +11,31 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: ad8a9f7af9ddabe969d090f80378ba5ff891d7f1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d0e236891e48a20adf1901d2f95a90ae25969c49
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691945"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210848"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>チュートリアル:Azure Machine Learning の自動 ML で分類モデルを作成する
 
-
-このチュートリアルでは、Azure Machine Learning Studio で自動機械学習を使用して、1 行のコードも記述せずに単純な分類モデルを作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
+Azure Machine Learning スタジオで自動機械学習を使用して、1 行のコードも記述せずに[単純な分類モデル](concept-automated-ml.md#classification)を作成する方法について説明します。 この分類モデルは、クライアントが金融機関に定期預金を申し込むかどうかを予測します。
 
 自動機械学習を使用することで、時間がかかるタスクを自動化することができます。 自動機械学習では、アルゴリズムとハイパーパラメーターのさまざまな組み合わせをすばやく反復し、選択された成功のメトリックに基づいて最適なモデルを効率的に発見します。
 
-時系列予測の例については、「[チュートリアル: 需要予測と AutoML](tutorial-automated-ml-forecast.md)」を参照してください。
-
-このチュートリアルでは、次のタスクを実施する方法について説明します。
+このチュートリアルではコードを一切記述しません。スタジオのインターフェイスを使用してトレーニングを実行します。  次のタスクを実行する方法について説明します。
 
 > [!div class="checklist"]
 > * Azure Machine Learning ワークスペースを作成します。
 > * 自動機械学習の実験を実行します。
 > * 実験の詳細を表示します。
 > * モデルをデプロイします。
+
+他のタイプのモデルについても、自動機械学習を試してみましょう。
+
+* ノー コードの予測の例については、[需要予測と AutoML に関するチュートリアル](tutorial-automated-ml-forecast.md)を参照してください。
+* コード ファーストの回帰モデルの例については、「[チュートリアル: 自動機械学習を使用してタクシー料金を予測する](tutorial-auto-train-models.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +54,7 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 >[!IMPORTANT] 
 > お使いの **ワークスペース** と **サブスクリプション** をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で開始する
+## <a name="sign-in-to-the-studio"></a>スタジオにサインインする
 
 https://ml.azure.com で Azure Machine Learning Studio を使用して、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合 Web インターフェイスです。 Internet Explorer ブラウザーでは、Studio はサポートされません。
 

@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225345"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285685"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance (プレビュー) でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "99225345"
   > [!NOTE]
   > Azure SQL Managed Instance のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) を使用している必要があります。
 
-### <a name="components"></a>コンポーネント
+### <a name="components"></a>Components
 
 トランザクション レプリケーションの主要なコンポーネントは、次の図の **パブリッシャー**、**ディストリビューター**、**サブスクライバー** です。  
 
@@ -154,7 +154,7 @@ Azure SQL Managed Instance では、次のバージョンの SQL Server をサ�
 
 [アクティブ geo レプリケーション](../database/active-geo-replication-overview.md)は、トランザクション レプリケーションを使用している SQL Managed Instance ではサポートされていません。 アクティブ geo レプリケーションの代わりに、[自動フェールオーバー グループ](../database/auto-failover-group-overview.md)を使用します。ただし、パブリケーションをプライマリ マネージド インスタンスから[手動で削除](transact-sql-tsql-differences-sql-server.md#replication)し、フェールオーバー後にセカンダリ SQL Managed Instance 上で再作成する必要があることにご注意ください。
 
-geo レプリケーションが、[フェールオーバー グループ](../database/auto-failover-group-overview.md)の **パブリッシャー** または **ディストリビューター** SQL Managed Instance 上で有効化されている場合、フェールオーバーが発生した後、SQL Managed Instance 管理者が、古いプライマリ上のすべてのパブリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
+**パブリッシャー** または **ディストリビューター** の SQL Managed Instance が[フェールオーバー グループ](../database/auto-failover-group-overview.md)に存在する場合、フェールオーバーが発生した後に、SQL Managed Instance 管理者が、古いプライマリ上のすべてのパブリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
 
 1. データベース上で実行されているレプリケーション ジョブがある場合は、すべて停止します。
 1. パブリッシャーからサブスクリプションのメタデータを削除するには、パブリッシャー データベース上で次のスクリプトを実行します。

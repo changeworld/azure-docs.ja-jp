@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 0a56cfc147d4fb5cbdccf13363ad28bc602d8216
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 4c116b378c72d87641157fc453d65e46be9f43ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102182759"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787168"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Azure SQL Managed Instance のデータベースを以前の時点に復元します
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -128,7 +128,7 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-使用可能なパラメーターの詳細については、[SQL Managed Instance でのデータベースの復元に関する CLI のドキュメント](/cli/azure/sql/midb#az-sql-midb-restore)を参照してください。
+使用可能なパラメーターの詳細については、[SQL Managed Instance でのデータベースの復元に関する CLI のドキュメント](/cli/azure/sql/midb#az_sql_midb_restore)を参照してください。
 
 ---
 

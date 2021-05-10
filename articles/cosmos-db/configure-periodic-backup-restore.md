@@ -4,15 +4,15 @@ description: この記事では、バックアップ間隔を指定した定期�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 69a9f0a82f5c19504564825e47f69ab8414e0909
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102565837"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284042"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>定期的バックアップを使用して Azure Cosmos DB アカウントを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,11 +31,32 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
 
 * バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
 
+## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
+
+既定では、Azure Cosmos DB は、[ペアのリージョン](../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長 [BLOB ストレージ](../storage/common/storage-redundancy.md)に定期的モードのバックアップ データを格納します。  
+
+Azure Cosmos DB がプロビジョニングされているのと同じリージョンにバックアップ データが保持されるようにするには、既定の geo 冗長バックアップ ストレージを変更し、ローカル冗長またはゾーン冗長のストレージを構成することができます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) からバックアップを保護するため、バックアップのコピーが複数格納されます。
+
+Azure Cosmos DB のバックアップ データは、プライマリ リージョンで 3 回レプリケートされます。 定期的なバックアップ モード用のストレージの冗長性は、アカウントの作成時に構成することも、既存のアカウントに対して更新することもできます。 定期的なバックアップ モードでは、次の 3 つのデータ冗長オプションを使用できます。
+
+* **geo 冗長バックアップ ストレージ:** このオプションは、ペアのリージョン間でデータを非同期的にコピーします。
+
+* **ゾーン冗長バックアップ ストレージ:** このオプションは、プライマリ リージョンの 3 つの Azure 可用性ゾーン間でデータを非同期的にコピーします。
+
+* **ローカル冗長ストレージ:** このオプションは、プライマリ リージョンの 1 つの物理的な場所内で、データを非同期的に 3 回コピーします。
+
+> [!NOTE]
+> ゾーン冗長ストレージは現在、[特定のリージョン](high-availability.md#availability-zone-support)でのみ利用できます。 選択したリージョンに基づき、このオプションは、新規または既存のアカウントでは使用できません。
+>
+> バックアップ ストレージの冗長性を更新しても、バックアップ ストレージの価格には影響しません。
+
 ## <a name="modify-the-backup-interval-and-retention-period"></a><a id="configure-backup-interval-retention"></a>バックアップ間隔と保有期間を変更する
 
 Azure Cosmos DB によって、データが 4 時間ごとと任意の時点で自動的に完全バックアップされ、最新の 2 回分のバックアップが保存されます。 この構成は既定のオプションであり、追加コストなしで提供されます。 Azure Cosmos アカウントの作成時またはアカウントの作成後に、既定のバックアップ間隔と保有期間を変更できます。 バックアップ構成は Azure Cosmos アカウント レベルで設定されるので、アカウントごとに構成する必要があります。 アカウントのバックアップ オプションを構成すると、そのアカウント内のすべてのコンテナーに適用されます。 現在、バックアップ オプションは Azure portal でのみ変更できます。
 
 誤ってデータを削除または破損した場合は、**データを復元するためのサポート リクエストを作成する前に、アカウントのバックアップ保有期間を 7 日以上に増やしてください。このイベントの 8 時間以内に保有期間を延長することをお勧めします。** このようにすると、Azure Cosmos DB チームはアカウントを復元するのに十分な時間を確保できます。
+
+### <a name="modify-backup-options-for-an-existing-account"></a>既存アカウントのバックアップ オプションを変更する
 
 既存の Azure Cosmos アカウントの既定のバックアップ オプションを変更するには、次の手順のようにします。
 
@@ -48,11 +69,18 @@ Azure Cosmos DB によって、データが 4 時間ごとと任意の時点で�
 
    * **Copies of data retained (保持するデータのコピー数)** - 既定では、データの 2 つのバックアップ コピーが無料で提供されます。 必要なコピーが 2 つを超える場合、追加料金が発生します。 追加コピーの正確な価格については、[価格ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)の「消費されたストレージ」セクションを参照してください。
 
-   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-interval-retention.png" alt-text="既存の Azure Cosmos アカウントのバックアップ間隔と保有期間を構成する。" border="true":::
+   * **バックアップ ストレージの冗長性** - 必要なストレージ冗長オプションを選択します。使用可能なオプションについては、「[バックアップ ストレージの冗長性](#backup-storage-redundancy)」セクションをご覧ください。 既定では、既存の定期的なバックアップ モード アカウントに geo 冗長ストレージがあります。 ローカル冗長など他のストレージを選択して、バックアップが別のリージョンにレプリケートされないようにすることができます。 既存のアカウントに加えられた変更は、今後のバックアップのみに適用されます。 既存のアカウントのバックアップ ストレージの冗長性を更新した後は、変更が有効になるまでに最大 2 倍のバックアップ間隔がかかる場合があります。また、**以前のバックアップを直ちに復元するためのアクセス権が失われます**。
 
-アカウント作成の間にバックアップ オプションを構成する場合は、**バックアップ ポリシー** を構成することができます。これは、**定期的** または **継続的** です。 定期的なポリシーでは、バックアップ間隔とバックアップ保有期間を構成できます。 継続的ポリシーは、現在、サインアップのみで使用できます。 Azure Cosmos DB チームによりワークロードが評価されて、要求が承認されます。
+   > [!NOTE]
+   > バックアップ ストレージの冗長性を構成するには、サブスクリプション レベルで Azure [Cosmos DB アカウントの閲覧者ロール](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)が割り当てられている必要があります。
 
-:::image type="content" source="./media/configure-periodic-backup-restore/configure-periodic-continuous-backup-policy.png" alt-text="新しい Azure Cosmos アカウントに対して定期的または継続的バックアップ ポリシーを構成する。" border="true":::
+   :::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-existing-accounts.png" alt-text="既存の Azure Cosmos アカウントのバックアップ間隔、保有期間、ストレージ冗長を構成します。" border="true":::
+
+### <a name="modify-backup-options-for-a-new-account"></a>新しいアカウントのバックアップ オプションを変更する
+
+新しいアカウントをプロビジョニングする場合は、 **[バックアップ ポリシー]** タブで、**定期的** _ バックアップ ポリシーを選択します。 定期的なポリシーでは、バックアップ間隔、バックアップ保有期間、バックアップ ストレージ冗長を構成できます。 たとえば、_ *ローカル冗長バックアップ ストレージ** または **ゾーン冗長バックアップ ストレージ** オプションを選択して、リージョン外でのバックアップ データ レプリケーションを防ぐことができます。
+
+:::image type="content" source="./media/configure-periodic-backup-restore/configure-backup-options-new-accounts.png" alt-text="新しい Azure Cosmos アカウントに対して定期的または継続的バックアップ ポリシーを構成する。" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a><a id="request-restore"></a>バックアップからのデータ復元を要求する
 
@@ -115,8 +143,7 @@ Azure Cosmos データベースを誤って削除したときは、データベ�
 [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)、所有者、または共同作成者のロールの一部であるプリンシパルは、復元を要求したり、保有期間を変更したりできます。
 
 ## <a name="understanding-costs-of-extra-backups"></a>追加バックアップのコストについて
-2 回のバックアップは無料で提供され、追加のバックアップは、[バックアップ ストレージの料金](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)セクションに記載されている、リージョンに基づくバックアップ ストレージの価格に従って課金されます。 たとえば、バックアップの保有期間が 240 時間 (つまり、10日間)、バックアップ間隔が 24 時間に構成されているとします。 これは、バックアップ データのコピー 10 個を意味します。 米国西部 2 で 1 TB のデータを想定した場合、任意の月のバックアップ ストレージのコストは 0.12 * 1000 * 8 になります。 
-
+2 回のバックアップは無料で提供され、追加のバックアップは、[バックアップ ストレージの料金](https://azure.microsoft.com/pricing/details/cosmos-db/)セクションに記載されている、リージョンに基づくバックアップ ストレージの価格に従って課金されます。 たとえば、バックアップの保有期間が 240 時間 (つまり、10日間)、バックアップ間隔が 24 時間に構成されているとします。 これは、バックアップ データのコピー 10 個を意味します。 米国西部 2 で 1 TB のデータを想定した場合、任意の月のバックアップ ストレージのコストは 0.12 * 1000 * 8 になります。
 
 ## <a name="options-to-manage-your-own-backups"></a>独自のバックアップを管理するためのオプション
 

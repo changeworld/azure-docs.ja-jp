@@ -1,14 +1,14 @@
 ---
 title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
-ms.date: 10/22/2020
+ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220747"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305193"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -95,11 +95,11 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 - Azure CLI:コマンド [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) とパラメーター **params**
 - Azure PowerShell:コマンドレット [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) とパラメーター **PolicyParameter**
-- REST API:要求本文の一部としての _PUT_ [作成](/rest/api/resources/policyassignments/create)操作において、**properties.parameters** プロパティの値として
+- REST API:要求本文の一部としての _PUT_ [作成](/rest/api/policy/policyassignments/create)操作において、**properties.parameters** プロパティの値として
 
 ## <a name="using-arrays-in-conditions"></a>条件内で配列を使用する
 
-### <a name="in-and-notin"></a>`In` および `notIn`
+### <a name="in-and-notin"></a>in と notIn
 
 `in` と `notIn` の条件は、配列の値に対してのみ機能します。 これらは、配列内に値が存在するかどうかを確認します。 配列には、リテラル JSON 配列または配列パラメーターへの参照を指定できます。 以下に例を示します。
 
@@ -135,7 +135,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 }
 ```
 
-式を評価するために、Azure Policy は `[ "test*", "dev*", "prod*" ]` の各メンバーに対して 1 回ずつ `where` 条件を 3 回評価し、`true` に評価された回数をカウントします。 各反復では、現在の配列メンバーの値が、`count.name`によって定義された `pattern` インデックス名とペアになります。 これでこの値は、特殊なテンプレート関数 `current('pattern')` を呼び出すことで `where` 条件内で参照できるようになります。
+式を評価するため、Azure Policy により `[ "test*", "dev*", "prod*" ]` のメンバーごとに 1 回ずつ `where` 条件が 3 回評価され、`true` に評価された回数がカウントされます。 各反復では、現在の配列メンバーの値が、`count.name`によって定義された `pattern` インデックス名とペアになります。 これでこの値は、特殊なテンプレート関数 `current('pattern')` を呼び出すことで `where` 条件内で参照できるようになります。
 
 | イテレーション | `current('pattern')` 戻り値 |
 |:---|:---|
@@ -161,7 +161,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 }
 ```
 
-**値のカウント** 式が他のどの **count** 式にも含まれていない場合、`count.name` は省略可能になり、`current()` 関数は引数を指定せずに使用できます。
+**値のカウント** 式が他のどの **カウント** 式にも含まれていない場合、`count.name` は省略可能になり、`current()` 関数は引数を指定せずに使用できます。
 
 ```json
 {
@@ -243,7 +243,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 #### <a name="referencing-the-array"></a>配列の参照
 
-最初のエイリアスは、要求内容の `stringArray` プロパティの値である 1 つの値を表します。 そのプロパティの値は配列であるため、ポリシー条件ではあまり役に立ちません。 次に例を示します。
+最初のエイリアスは、要求内容の `stringArray` プロパティの値である 1 つの値を表します。 そのプロパティの値は配列であるため、ポリシー条件では役に立ちません。 次に例を示します。
 
 ```json
 {
@@ -290,9 +290,9 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 }
 ```
 
-`objectArray` 内のすべての `property` プロパティの値が `"value"` と等しい場合、この条件は true です。 その他の例については、「[その他の \[\*\] エイリアスの例](#appendix--additional--alias-examples)」を参照してください。
+`objectArray` 内のすべての `property` プロパティの値が `"value"` と等しい場合、この条件は true です。 その他の例については、「[その他の \[\*\] エイリアスの例](#additional--alias-examples)」を参照してください。
 
-`field()` 関数を使用して配列エイリアスを参照すると、返される値は、選択された値すべての配列になります。 この動作は、テンプレート関数をリソース プロパティ値に適用する機能である `field()` 関数の一般的なユース ケースが非常に限られていることを意味します。 この場合に使用できるテンプレート関数は、配列の引数を受け入れるものだけです。 たとえば、`[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` で配列の長さを取得することはできます。 ただし、テンプレート関数を各配列メンバーに適用し、それを目的の値と比較するといった、より複雑なシナリオは `count` 式を使用した場合にのみ可能です。 詳細については、「[フィールドのカウント式](#field-count-expressions)」を参照してください。
+`field()` 関数を使用して配列エイリアスを参照すると、返される値は、選択された値すべての配列になります。 この動作は、テンプレート関数をリソース プロパティ値に適用する機能である `field()` 関数の一般的なユース ケースが限られていることを意味します。 この場合に使用できるテンプレート関数は、配列の引数を受け入れるものだけです。 たとえば、`[length(field('Microsoft.Test/resourceType/objectArray[*].property'))]` で配列の長さを取得することはできます。 ただし、テンプレート関数を各配列メンバーに適用し、それを目的の値と比較するといった、より複雑なシナリオは `count` 式を使用した場合にのみ可能です。 詳細については、「[フィールドのカウント式](#field-count-expressions)」を参照してください。
 
 要約として、次のリソース コンテンツの例と、さまざまなエイリアスによって返される選択された値を参照してください。
 
@@ -382,7 +382,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 }
 ```
 
-`count` の累乗が `where` 条件に含まれます。 これが指定されている場合、Azure Policy は配列メンバーを列挙し、それぞれを条件に対して評価し、`true` に評価された配列メンバーの数をカウントします。 具体的には、`where` 条件の評価の各反復で、Azure Policy は 1 つの配列メンバー ***i** _ を選択し、 _* **_i_*_ が配列の唯一のメンバーであるかのように_* `where` 条件に対してリソース コンテンツを評価します。 各反復で使用できる配列メンバーを 1 つだけにすると、個々の配列メンバーに複雑な条件を適用する方法を使用できます。
+`count` の累乗が `where` 条件に含まれます。 これが指定されている場合、Azure Policy によって配列メンバーが列挙され、それぞれが条件に対して評価されて、`true` に評価された配列メンバーの数がカウントされます。 具体的には、`where` 条件の評価の各反復において、Azure Policy により 1 つの配列メンバー ***i** _ が選択され、 _****i**_ が配列の唯一のメンバーであるかのように_* `where` 条件に対してリソース コンテンツが評価されます。 各反復で使用できる配列メンバーを 1 つだけにすると、個々の配列メンバーに複雑な条件を適用する方法を使用できます。
 
 例:
 
@@ -398,7 +398,9 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
   "equals": 1
 }
 ```
-`count` 式を評価するために、Azure Policy は `stringArray` の各メンバーに対して 1 回ずつ `where` 条件を 3 回評価し、`true` に評価された回数をカウントします。 `where` 条件で `Microsoft.Test/resourceType/stringArray[*]` 配列メンバーが参照される場合は、`stringArray` のすべてのメンバーが選択されるのではなく、毎回 1 つの配列メンバーのみが選択されることになります。
+
+`count` 式を評価するため、Azure Policy により `stringArray` のメンバーごとに 1 回ずつ `where` 条件が 3 回評価され、`true` に評価された回数がカウントされます。
+`where` 条件で `Microsoft.Test/resourceType/stringArray[*]` 配列メンバーが参照される場合は、`stringArray` のすべてのメンバーが選択されるのではなく、毎回 1 つの配列メンバーのみが選択されることになります。
 
 | 反復 | 選択された `Microsoft.Test/resourceType/stringArray[*]` 値 | `where` の評価結果 |
 |:---|:---|:---|
@@ -406,7 +408,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 | 2 | `"b"` | `false` |
 | 3 | `"c"` | `false` |
 
-したがって、`count` は `1` を返します。
+`count` からは `1` が返されます。
 
 より複雑な式を次に示します。
 
@@ -436,7 +438,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 | 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `false` |
 | 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2"` </br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4`| `true` |
 
-したがって、`count` は `1` を返します。
+`count` からは `1` が返されます。
 
 (現在列挙されている配列メンバーのみに対する変更を含む) 要求内容 **全体** に対して `where` 式が評価されるという事実は、`where` 条件が配列外部のフィールドも参照できるということを意味します。
 
@@ -448,7 +450,8 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +460,60 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-入れ子になった count 式も許可されています。
+入れ子になった count 式を使用すると、入れ子になった配列フィールドに条件を適用できます。 たとえば、次の条件では、`objectArray[*]` 配列に、1 つ以上のメンバーを含む `nestedArray[*]` を持つメンバーが厳密に 2 つあることが確認されます。
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| 外側のループの反復 | 選択された値 | 内側のループの反復 | 選択された値 |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| 反復 | 選択された値 | 入れ子になったカウントの評価結果 |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` には 2 つのメンバーが含まれる => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` には 2 つのメンバーが含まれる => `true` |
+
+`objectArray[*]` の両方のメンバーには 2 つのメンバーを含む子配列 `nestedArray[*]` があるため、外側のカウント式からは `2` が返されます。
+
+より複雑な例: `objectArray[*]` 配列に、`2` または `3` と等しいメンバーを含む `nestedArray[*]` を持つメンバーが厳密に 2 つあることを確認します。
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| 反復 | 選択された値 | 入れ子になったカウントの評価結果
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` には `2` => `true` が含まれる |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` には `3` => `true` が含まれる |
+
+`objectArray[*]` の両方のメンバーには `2` または `3` を含む子配列 `nestedArray[*]` があるため、外側のカウント式は `2` を返します。
+
+> [!NOTE]
+> 入れ子になったフィールドのカウント式で参照できるのは、入れ子になった配列のみです。 たとえば、`Microsoft.Test/resourceType/objectArray[*]` を参照している count 式には、入れ子になった配列 `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` をターゲットにする入れ子になった count を含めることができますが、`Microsoft.Test/resourceType/stringArray[*]` をターゲットにする入れ子になった count 式を含めることはできません。
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>テンプレート関数を使用して現在の配列メンバーにアクセスする
 
@@ -517,13 +540,13 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 #### <a name="the-field-function-inside-where-conditions"></a>where 条件内の field 関数
 
-`field()` 関数は、**count** 式が **存在条件** の内部にない限り、現在の配列メンバーの値へのアクセスにも使用できます (`field()` 関数は常に、**if** 条件で評価されたリソースを参照します)。
-評価された配列を参照する場合の `field()` の動作は、次の概念に基づいています。
+`field()` 関数は、**count** 式が **存在条件** の内部にない限り、現在の配列メンバーの値へのアクセスにも使用できます (`field()` 関数は常に、**if** 条件で評価されたリソースを参照します)。 評価された配列を参照する場合の `field()` の動作は、次の概念に基づいています。
+
 1. 配列エイリアスは、すべての配列メンバーから選択された値のコレクションに解決されます。
 1. 配列エイリアスを参照する `field()` 関数は、選択された値を含む配列を返します。
 1. カウントされた配列エイリアスを `where` 条件内で参照すると、現在の反復で評価される配列メンバーから選択された 1 つの値を含むコレクションが返されます。
 
-この動作は、カウントされた配列メンバーを `where` 条件内の `field()` 関数で参照すると、**1 つのメンバーを含む配列が返される** ことを意味します。 これは直観的ではないかもしれませんが、配列エイリアスは、選択されたプロパティのコレクションを必ず返すという考えと一致しています。 次に例を示します。
+この動作は、カウントされた配列メンバーを `where` 条件内の `field()` 関数で参照すると、**1 つのメンバーを含む配列が返される** ことを意味します。 この動作は直観的ではないかもしれませんが、配列エイリアスは、選択されたプロパティのコレクションを必ず返すという考えと一致しています。 次に例を示します。
 
 ```json
 {
@@ -587,9 +610,9 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 詳細については、「[Append の例](../concepts/effects.md#append-examples)」を参照してください。
 
-## <a name="appendix--additional--alias-examples"></a>付録 - その他の [*] エイリアスの例
+## <a name="additional--alias-examples"></a>その他の [*] エイリアスの例
 
-要求コンテンツ内の配列の 'すべて' または 'いずれか' のメンバーが条件を満たしているかどうかを確認するには、[フィールドのカウント式](#field-count-expressions)を使用することをお勧めします。 ただし、一部の単純な条件では、配列エイリアスを指定したフィールド アクセサーを使用することで同じ結果を得ることができます (「[配列メンバー コレクションの参照](#referencing-the-array-members-collection)」の説明を参照してください)。 これは、許容された **count** 式の制限を超えるポリシー ルールで役立つ可能性があります。 一般的なユース ケースの例を次に示します。
+要求コンテンツ内の配列の "すべて" または "いずれか" のメンバーが条件を満たしているかどうかを確認するには、[フィールドのカウント式](#field-count-expressions)を使用することをお勧めします。 ただし、「[配列メンバー コレクションの参照](#referencing-the-array-members-collection)」で説明されているように、一部の単純な条件では、配列エイリアスを指定したフィールド アクセサーを使用することで同じ結果を得ることができます。 このパターンは、許容された **count** 式の制限を超えるポリシー ルールで役立つ可能性があります。 一般的なユース ケースの例を次に示します。
 
 下のシナリオ テーブルのポリシー ルール例:
 

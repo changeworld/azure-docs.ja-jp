@@ -6,12 +6,13 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.custom: synapse-cosmos-db
+ms.openlocfilehash: d871a33b6d8adbae179e592122878eee5db1c0b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692268"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869006"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +34,10 @@ Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB �
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>複数リージョン アカウント構成内のすべてのリージョンではなく、特定のリージョンに対してのみ Azure Synapse Link を有効にすることを選択できますか?
 
 複数リージョンのアカウントに対して Azure Synapse Link が有効になっている場合、すべてのリージョンで分析ストアが作成されます。 基になるデータは、トランザクション ストアでのスループットとトランザクションの一貫性を確保するために最適化されます。
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>分析ストアはすべての Azure Cosmos DB リージョンでサポートされていますか?
+
+はい。
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure Synapse Link が有効になっているアカウントでは、バックアップと復元はサポートされますか?
 
@@ -165,6 +170,10 @@ Azure Synapse Link の課金モデルには、Azure Cosmos DB 分析ストアと
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>分析ストアから Spark 構造化ストリーミングを実行できますか?
 
 現在、Azure Cosmos DB に対する Spark 構造化ストリーミングのサポートは、トランザクション ストアの変更フィード機能を使用して実装されていて、分析ストアからはまだサポートされません。
+
+### <a name="is-streaming-supported"></a>ストリーミングはサポートされていますか?
+
+分析ストアからのデータのストリーミングはサポートされていません。
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

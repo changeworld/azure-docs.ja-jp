@@ -1,22 +1,25 @@
 ---
-title: Azure Synapse Analytics をスキャンする方法
-description: この攻略ガイドでは、Azure Synapse Analytics をスキャンする方法について詳しく説明します。
+title: 専用 SQL プールをスキャンする方法
+description: この攻略ガイドでは、専用 SQL プールをスキャンする方法の詳細について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875011"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106974"
 ---
-# <a name="register-and-scan-azure-synapse-analytics"></a>Azure Synapse Analytics の登録とスキャン
+# <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) の登録とスキャン
 
-この記事では、Purview で Azure Synapse Analytics (旧称 SQL DW) のインスタンスを登録およびスキャンする方法について説明します。
+> [!NOTE]
+> Synapse ワークスペース内で専用 SQL データベースを登録およびスキャンする場合は、[こちら](register-scan-synapse-workspace.md)の手順に従う必要があります。
+
+この記事では、Purview で専用 SQL プール (以前の SQL DW) のインスタンスを登録およびスキャンする方法について説明します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -24,7 +27,8 @@ Azure Synapse Analytics (旧称 SQL DW) では、メタデータとスキーマ�
 
 ### <a name="known-limitations"></a>既知の制限事項
 
-Azure Purview では、Azure Synapse Analytics の[ビュー](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true)のスキャンはサポートされません。
+> * Azure Purview では、Azure Synapse Analytics での[ビュー](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true)のスキャンはサポートされていません。
+> * Azure Purview の [スキーマ] タブでは 300 を超える列がサポートされておらず、"Additional-Columns-Truncated (その他の列は切り詰められています)" と表示されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -93,7 +97,7 @@ GO
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
 GO
 
-EXEC sp_addrolemember 'db_owner', [ServicePrincipalName]
+ALTER ROLE db_owner ADD MEMBER [ServicePrincipalName]
 GO
 ```
 
@@ -114,20 +118,20 @@ GO
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、キーを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
-## <a name="register-an-azure-synapse-analytics-instance-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW) インスタンスの登録
+## <a name="register-a-sql-dedicated-pool-formerly-sql-dw"></a>SQL 専用プール (以前の SQL DW) を登録する
 
 新しい Azure Synapse Analytics サーバーをデータ カタログに登録するには、次の操作を行います。
 
 1. Purview アカウントに移動します。
 1. 左側のナビゲーションで **[ソース]** を選択します。
 1. **[登録]** を選択します
-1. **[ソースの登録]** で、 **[Azure Synapse Analytics (旧称 SQL DW)]** を選択します
+1. **[ソースの登録]** で、 **[SQL 専用プール (以前の SQL DW)]** を選択します
 1. **[続行]** を選択します。
 
 **[ソースの登録 (Azure Synapse Analytics)]** 画面で、次の操作を行います。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-1. 目的のストレージ アカウントを指し示す方法を選択します。
+1. 目的の論理 SQL Server を指し示す方法を選択します。
    1. **[Azure サブスクリプションから]** を選択して、 **[Azure サブスクリプション]** ドロップダウン ボックスから適切なサブスクリプションを選択し、 **[サーバー名]** ドロップダウン ボックスから適切なサーバーを選択します。
    1. または、 **[手動で入力]** を選択して、**サーバー名** を入力することもできます。
 1. **[完了]** を選択して、データ ソースを登録します。

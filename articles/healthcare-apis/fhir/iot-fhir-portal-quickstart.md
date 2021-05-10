@@ -6,14 +6,14 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: quickstart
-ms.date: 11/13/2020
+ms.date: 04/05/2021
 ms.author: punagpal
-ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
-ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
+ms.openlocfilehash: 0a382ad948e7fd2efc6ab59eb94da3d6cbb210d7
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2021
-ms.locfileid: "105644848"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443775"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -50,7 +50,7 @@ Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソ�
 
 [![IoT コネクタを作成する](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg#lightbox)
 
-|設定|[値]|説明 |
+|設定|値|説明 |
 |---|---|---|
 |コネクタ名|一意の名前|Azure IoT Connector for FHIR を識別する名前を入力します。この名前は、Azure API for FHIR リソース内で一意である必要があります。 名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 名前の先頭と末尾は文字または数字である必要があります。また、長さは 3 から 24 文字までにする必要があります。|
 |解決の種類|[Lookup]\(検索\) または [作成]|Azure API for FHIR 内に [Device](https://www.hl7.org/fhir/device.html) および [Patient](https://www.hl7.org/fhir/patient.html) FHIR リソースを作成する帯域外プロセスがある場合、 **[Lookup]\(検索\)** を選択します。 Azure IoT Connector for FHIR では、デバイス データを表す [Observation](https://www.hl7.org/fhir/observation.html) FHIR リソースを作成する場合に、これらのリソースへの参照を使用します。 Azure IoT Connector for FHIR により、デバイス データ内にあるそれぞれの識別子の値を使用して、Azure API for FHIR 内に最小限の Device および Patient リソースを作成する場合は、 **[Create]\(作成\)** を選択します。|
@@ -171,6 +171,11 @@ Azure では、IoT デバイスを接続し、管理するための幅広い IoT
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT データを Azure IoT Connector for FHIR (プレビュー) に接続する
 
 IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../../iot-central/core/howto-export-data.md)必要があります。 まず、宛先への接続を作成する必要があります。次に、データエクスポートジョブを作成して継続的に実行します。 
+
+> [!NOTE]
+> このセクションの IoT Central アプリの設定で、[ **データのエクスポート** ] と [データの **エクスポート] (レガシ)** を選択します。
+
+[![データエクスポート設定の IoT Central](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png)](media/quickstart-iot-fhir-portal/iot-central-data-export-dashboard.png#lightbox)
 
 新しい変換先の作成:
 - [ **変換** 先] タブに移動し、新しい変換先を作成します。

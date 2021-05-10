@@ -6,7 +6,6 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-Customer intent: I want to create a load balancer so that I can load balance internal traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 10ac477bed97d2a48344aa8ef9b570d2b6203345
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 2db30024b26352bcc038d606bcdc760b6350d413
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "101702625"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788837"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用した内部ロード バランサーの作成
 
@@ -31,9 +30,6 @@ Azure CLI を使用して内部ロード バランサーと 3 つの仮想マシ
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
 このクイックスタートには、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
->[!NOTE]
->Azure Load Balancer Standard は、運用環境のワークロードに推奨される選択肢です。 この記事には、Azure Load Balancer Standard および Azure Load Balancer Basic に関する情報が含まれています。 SKU の詳細については、「[Azure Load Balancer の SKU](skus.md)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -48,7 +44,11 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure Load Balancer Standard
+---
+# <a name="standard-sku"></a>[**Standard SKU**](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 次の図は、このクイックスタートで作成されるリソースを示したものです。
 
@@ -60,7 +60,7 @@ VM をデプロイしてロード バランサーをデプロイする前に、�
 
 #### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、仮想ネットワークを作成します。 次の指定を行います。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して、仮想ネットワークを作成します。 次の指定を行います。
 
 * 名前は **myVNet** にします
 * アドレス プレフィックスは **10.1.0.0/16** にします
@@ -81,7 +81,7 @@ VM をデプロイしてロード バランサーをデプロイする前に、�
 
 #### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、Azure Bastion ホストのパブリック IP アドレスを作成します。 次の指定を行います。
+[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) を使用して、Azure Bastion ホストのパブリック IP アドレスを作成します。 次の指定を行います。
 
 * **myBastionIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -94,7 +94,7 @@ az network public-ip create \
 ```
 #### <a name="create-an-azure-bastion-subnet"></a>Azure Bastion サブネットを作成する
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) を使用して、サブネットを作成します。 次の指定を行います。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用して、サブネットを作成します。 次の指定を行います。
 
 * 名前は **AzureBastionSubnet** にします
 * アドレス プレフィックスは **10.1.1.0/24** にします
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
 #### <a name="create-an-azure-bastion-host"></a>Azure Bastion ホストを作成する
 
-[az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) を使用して、ホストを作成します。 次の指定を行います。
+[az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) を使用して、ホストを作成します。 次の指定を行います。
 
 * 名前は **myBastionHost** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -132,7 +132,7 @@ Azure Bastion ホストがデプロイされるまでに数分かかる場合が
 
 #### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-Standard ロード バランサーの場合、VM には、ネットワーク セキュリティ グループに属しているネットワーク インターフェイスが必要です。 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して、ネットワーク セキュリティ グループを作成します。 次の指定を行います。
+Standard ロード バランサーの場合、VM には、ネットワーク セキュリティ グループに属しているネットワーク インターフェイスが必要です。 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) を使用して、ネットワーク セキュリティ グループを作成します。 次の指定を行います。
 
 * 名前は **myNSG** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -145,7 +145,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-a-network-security-group-rule"></a>ネットワーク セキュリティ グループ規則を作成する
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用して、ネットワーク セキュリティ グループの規則を作成します。 次の指定を行います。
+[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、ネットワーク セキュリティ グループの規則を作成します。 次の指定を行います。
 
 * 名前は **myNSGRuleHTTP** にします
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします
@@ -182,7 +182,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-network-interfaces-for-the-virtual-machines"></a>仮想マシンのネットワーク インターフェイスを作成する
 
-[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して、3 つのネットワーク インターフェイスを作成します。 次の指定を行います。
+[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して、3 つのネットワーク インターフェイスを作成します。 次の指定を行います。
 
 * それぞれ名前は **myNicVM1**、**myNicVM2**、**myNicVM3** とします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -205,7 +205,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-the-virtual-machines"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。 次の指定を行います。
+[az vm create](/cli/azure/vm#az_vm_create) で、仮想マシンを作成します。 次の指定を行います。
 
 * それぞれの名前は **myVM1**、**myVM2**、**myVM3** とします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -230,6 +230,9 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 VM がデプロイされるまでに、数分かかる場合があります。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
+
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
@@ -241,7 +244,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
 
-[az network lb create](/cli/azure/network/lb#az-network-lb-create) を使用して、パブリック ロード バランサーを作成します。 次の指定を行います。
+[az network lb create](/cli/azure/network/lb#az_network_lb_create) を使用して、パブリック ロード バランサーを作成します。 次の指定を行います。
 
 * 名前は **myLoadBalancer** にします
 * プールの名前は **myFrontEnd** にします
@@ -264,7 +267,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
 
-正常性プローブは、[az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) で作成します。 次の指定を行います。
+正常性プローブは、[az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) で作成します。 次の指定を行います。
 
 * 仮想マシンの正常性を監視します
 * 名前は **myHealthProbe** にします
@@ -288,7 +291,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 * トラフィックを受信するための IP プール。
 * 必要な発信元ポートと宛先ポート。 
 
-ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) で作成します。 次の指定を行います。
+ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) で作成します。 次の指定を行います。
 
 * 名前は **myHTTPRule** にします
 * プール **myFrontEnd** で **ポート 80** をリッスンします
@@ -315,7 +318,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="add-vms-to-the-load-balancer-pool"></a>VM をロード バランサー プールに追加する
 
-[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) を使用して、仮想マシンをバックエンド プールに追加します。 次の指定を行います。
+[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) を使用して、仮想マシンをバックエンド プールに追加します。 次の指定を行います。
 
 * アドレス プールは **myBackEndPool** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -336,7 +339,10 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure Load Balancer Basic
+# <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-load-balancer-basic)
+
+>[!NOTE]
+>運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 次の図は、このクイックスタートで作成されるリソースを示したものです。
 
@@ -348,7 +354,7 @@ VM をデプロイしてロード バランサーをデプロイする前に、�
 
 #### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-createt) を使用して、仮想ネットワークを作成します。 次の指定を行います。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_createt) を使用して、仮想ネットワークを作成します。 次の指定を行います。
 
 * 名前は **myVNet** にします
 * アドレス プレフィックスは **10.1.0.0/16** にします
@@ -369,7 +375,7 @@ VM をデプロイしてロード バランサーをデプロイする前に、�
 
 #### <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
 
-[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、Azure Bastion ホストのパブリック IP アドレスを作成します。 次の指定を行います。
+[az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) を使用して、Azure Bastion ホストのパブリック IP アドレスを作成します。 次の指定を行います。
 
 * **myBastionIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -382,7 +388,7 @@ az network public-ip create \
 ```
 #### <a name="create-an-azure-bastion-subnet"></a>Azure Bastion サブネットを作成する
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) を使用して、サブネットを作成します。 次の指定を行います。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用して、サブネットを作成します。 次の指定を行います。
 
 * 名前は **AzureBastionSubnet** にします
 * アドレス プレフィックスは **10.1.1.0/24** にします
@@ -399,7 +405,7 @@ az network vnet subnet create \
 
 #### <a name="create-an-azure-bastion-host"></a>Azure Bastion ホストを作成する
 
-[az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) を使用して、ホストを作成します。 次の指定を行います。
+[az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) を使用して、ホストを作成します。 次の指定を行います。
 
 * 名前は **myBastionHost** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -420,7 +426,7 @@ Azure Bastion ホストがデプロイされるまでに数分かかる場合が
 
 #### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-Standard ロード バランサーの場合、VM には、ネットワーク セキュリティ グループに属しているネットワーク インターフェイスが必要です。 [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して、ネットワーク セキュリティ グループを作成します。 次の指定を行います。
+Standard ロード バランサーの場合、VM には、ネットワーク セキュリティ グループに属しているネットワーク インターフェイスが必要です。 [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) を使用して、ネットワーク セキュリティ グループを作成します。 次の指定を行います。
 
 * 名前は **myNSG** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -433,7 +439,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-a-network-security-group-rule"></a>ネットワーク セキュリティ グループ規則を作成する
 
-[az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) を使用して、ネットワーク セキュリティ グループの規則を作成します。 次の指定を行います。
+[az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、ネットワーク セキュリティ グループの規則を作成します。 次の指定を行います。
 
 * 名前は **myNSGRuleHTTP** にします
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします
@@ -471,7 +477,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-network-interfaces-for-the-virtual-machines"></a>仮想マシンのネットワーク インターフェイスを作成する
 
-[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して、3 つのネットワーク インターフェイスを作成します。 次の指定を行います。
+[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して、3 つのネットワーク インターフェイスを作成します。 次の指定を行います。
 
 * それぞれ名前は **myNicVM1**、**myNicVM2**、**myNicVM3** とします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -494,7 +500,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-the-availability-set-for-the-virtual-machines"></a>仮想マシンの可用性セットを作成する
 
-[az vm availability-set create](/cli/azure/vm/availability-set#az-vm-availability-set-create) で、可用性セットを作成します。 次の指定を行います。
+[az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create) で、可用性セットを作成します。 次の指定を行います。
 
 * 名前は **myAvailabilitySet** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -510,7 +516,7 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 
 #### <a name="create-the-virtual-machines"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az-vm-create) で、仮想マシンを作成します。 次の指定を行います。
+[az vm create](/cli/azure/vm#az_vm_create) で、仮想マシンを作成します。 次の指定を行います。
 
 * それぞれの名前は **myVM1**、**myVM2**、**myVM3** とします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -535,6 +541,9 @@ Standard ロード バランサーの場合、VM には、ネットワーク セ
 ```
 VM がデプロイされるまでに、数分かかる場合があります。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
+
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 
 このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
@@ -546,7 +555,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 #### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
 
-[az network lb create](/cli/azure/network/lb#az-network-lb-create) を使用して、パブリック ロード バランサーを作成します。 次の指定を行います。
+[az network lb create](/cli/azure/network/lb#az_network_lb_create) を使用して、パブリック ロード バランサーを作成します。 次の指定を行います。
 
 * 名前は **myLoadBalancer** にします
 * プールの名前は **myFrontEnd** にします
@@ -569,7 +578,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
 
-正常性プローブは、[az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) で作成します。 次の指定を行います。
+正常性プローブは、[az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) で作成します。 次の指定を行います。
 
 * 仮想マシンの正常性を監視します
 * 名前は **myHealthProbe** にします
@@ -593,7 +602,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 * トラフィックを受信するための IP プール。
 * 必要な発信元ポートと宛先ポート。 
 
-ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) で作成します。 次の指定を行います。
+ロード バランサー規則は、[az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) で作成します。 次の指定を行います。
 
 * 名前は **myHTTPRule** にします
 * プール **myFrontEnd** で **ポート 80** をリッスンします
@@ -617,7 +626,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 ```
 #### <a name="add-vms-to-the-load-balancer-pool"></a>VM をロード バランサー プールに追加する
 
-[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az-network-nic-ip-config-address-pool-add) を使用して、仮想マシンをバックエンド プールに追加します。 次の指定を行います。
+[az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add) を使用して、仮想マシンをバックエンド プールに追加します。 次の指定を行います。
 
 * アドレス プールは **myBackEndPool** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -637,10 +646,10 @@ VM がデプロイされるまでに、数分かかる場合があります。
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
-[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して、ネットワーク インターフェイスを作成します。 次の指定を行います。
+[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して、ネットワーク インターフェイスを作成します。 次の指定を行います。
 
 * 名前は **myNicTestVM** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -656,7 +665,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
     --subnet myBackEndSubnet \
     --network-security-group myNSG
 ```
-[az vm create](/cli/azure/vm#az-vm-create) を使用して、仮想マシンを作成します。 次の指定を行います。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して、仮想マシンを作成します。 次の指定を行います。
 
 * 名前は **myTestVM** にします
 * 作成先のリソース グループは **CreateIntLBQS-rg** とします
@@ -717,7 +726,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-リソースが不要になったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除します。
+リソースが不要になったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、ロード バランサー、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
   az group delete \

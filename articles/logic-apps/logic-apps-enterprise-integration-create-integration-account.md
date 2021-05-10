@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9a7a0795a15de52c34b8591c4224c3ca5883445c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705587"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772075"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -49,7 +49,7 @@ ms.locfileid: "101705587"
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](/cli/azure/resource#az-resource-create) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](/cli/azure/resource#az_resource_create) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -223,7 +223,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで [**az resource** コマンド](/cli/azure/resource#az-resource-update)を入力し、`skuName` を目的の上位レベルに設定します。
+1. コマンド プロンプトで [**az resource** コマンド](/cli/azure/resource#az_resource_update)を入力し、`skuName` を目的の上位レベルに設定します。
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -249,7 +249,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
    ![Azure Cloud Shell を開く](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. コマンド プロンプトで、[**az resource** コマンド](/cli/azure/resource#az-resource-update)を入力し、`skuName` を目的のレベルに設定します。
+1. コマンド プロンプトで、[**az resource** コマンド](/cli/azure/resource#az_resource_update)を入力し、`skuName` を目的のレベルに設定します。
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -309,7 +309,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 統合アカウントを別の Azure リソース グループまたは Azure サブスクリプションに移動できます。 リソースを移動すると、Azure によって新しいリソース ID が作成されるため、代わりに新しい ID を使用し、移動したリソースに関連付けられているスクリプトまたはツールを更新してください。 サブスクリプションを変更する場合は、既存のリソース グループまたは新しいリソース グループも指定する必要があります。
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource#az-resource-move) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource#az_resource_move) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -341,7 +341,7 @@ az logic integration-account delete --name integration_account_01 --resource-gro
 
 ## <a name="delete-integration-account"></a>統合アカウントの削除
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource#az-resource-delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](/cli/azure/resource#az_resource_delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 

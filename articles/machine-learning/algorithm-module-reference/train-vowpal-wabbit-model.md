@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210207"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104657656"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Train Vowpal Wabbit Model (Vowpal Wabbit モデルのトレーニング)
 この記事では、Azure Machine Learning デザイナーで **Train Vowpal Wabbit Model** モジュールを使用し、Vowpal Wabbit を使用して機械学習モデルを作成する方法について説明します。  
@@ -91,6 +91,13 @@ Vowpal Wabbit では、既存のモデルに新しいデータを追加するこ
 
 6. パイプラインを送信します。  
 7. モジュールを選択し、右側のペインの **[Outputs+logs]\(出力 + ログ\)** タブで **[Register dataset]\(データ セットの登録\)** を選択して、更新されたモデルを Azure Machine Learning ワークスペースに保持します。  新しい名前を指定しないと、更新されたモデルにより既存の保存されているモデルが上書きされます。
+
+## <a name="results"></a>結果
+
++ モデルからスコアを生成するには、[Score Vowpal Wabbit Model (Vowpal Wabbit モデルのスコアリング)](score-vowpal-wabbit-model.md) を使用します。
+
+> [!NOTE]
+> トレーニング済みのモデルをデザイナーに配置する必要がある場合は、**Score Model (モデルのスコア付け)** ではなく、[Score Vowpal Wabbit Model (Vowpal Wabbit モデルのスコアリング)](score-vowpal-wabbit-model.md) が、推論パイプラインの [Web Service Output (Web サービスの出力) モジュール](web-service-input-output.md)の入力に接続されていることを確認してください。
 
 ## <a name="technical-notes"></a>テクニカル ノート
 

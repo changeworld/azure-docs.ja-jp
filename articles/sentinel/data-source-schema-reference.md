@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 0cc1a083e1400b5a3167376e374af6c7bf7ab7c7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4601f2d6eddbbe8809dfd46a7e0cc5aa3c40c722
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698350"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107209572"
 ---
 # <a name="data-source-schema-reference"></a>データ ソース スキーマ リファレンス
 
@@ -51,7 +51,7 @@ ms.locfileid: "101698350"
 | **Network** | Fortigate   | ALL   | CommonSecurityLog | [ログ スキーマの構造](https://docs.fortinet.com/document/fortigate/6.2.3/fortios-log-message-reference/738142/log-schema-structure)         |
 | **Network** | Barracuda | Web アプリケーション ファイアウォール |  CommonSecurityLog   | [Syslog と他のログを構成する方法](https://campus.barracuda.com/product/webapplicationfirewall/doc/4259935/how-to-configure-syslog-and-other-logs/)  |
 | **Network** | Cisco | ASA | CommonSecurityLog | [Cisco ASA シリーズの Syslog メッセージ](https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/about.html)    |
-| **Network** | Cisco | Firepower   | CommonSecurityLog | [Cisco Firepower Threat Defense の Syslog メッセージ](https://www.cisco.com/c/en/us/td/docs/security/firepower/Syslogs/b_fptd_syslog_guide.pdf)    |
+| **Network** | Cisco | Firepower   | CommonSecurityLog | [Cisco Firepower Threat Defense の Syslog メッセージ](https://www.cisco.com/c/en/us/td/docs/security/firepower/Syslogs/b_fptd_syslog_guide.html)    |
 | **Network** | Cisco   | Umbrella  | カスタム ログ テーブル  | [ログの形式とバージョン管理](https://docs.umbrella.com/deployment-umbrella/docs/log-formats-and-versioning)   |
 | **Network**   | Cisco | Meraki    | CommonSecurityLog |   [Syslog イベントの種類とログ サンプル](https://documentation.meraki.com/zGeneral_Administration/Monitoring_and_Reporting/Syslog_Event_Types_and_Log_Samples)    |
 | **Network**   | Zscaler | Nano Streaming Service (NSS)|   CommonSecurityLog | [NSS フィードの書式設定](https://help.zscaler.com/zia/documentation-knowledgebase/analytics/nss/nss-feeds/formatting-nss-feeds) (Web、ファイアウォール、DNS、トンネルのログのみ) |
@@ -62,6 +62,9 @@ ms.locfileid: "101698350"
 |**Host** |Trend Micro |All |CommonSecurityLog | [Syslog コンテンツのマッピング - CEF](https://docs.trendmicro.com/en-us/enterprise/control-manager-70/appendices/syslog-mapping-cef.aspx) |
 | | | | | |
 
+> [!NOTE]
+> 詳細については、[CEF および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)に関するページも参照してください。
+> 
 ## <a name="next-steps"></a>次のステップ
 
 CEF、Syslog、ダイレクト、エージェント、カスタム コネクタなど、サポートされている Azure Sentinel コネクタについて説明します。

@@ -9,10 +9,10 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: 5931cb28721e8658a771ceea1cd94624a0c09f7c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392920"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
@@ -43,7 +43,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |type プロパティは **AzureDataLakeAnalytics** に設定する必要があります。 |はい |
+| **type** |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | **accountName** |Azure Data Lake Analytics アカウント名。 |はい |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ |
 | **subscriptionId** |Azure サブスクリプション ID |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 1983e7560c986df241e9c592aaaa6b646a99840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "67181108"
 ---
 ## <a name="planning-and-implementation"></a>計画と導入
@@ -34,7 +34,7 @@ ms.locfileid: "67181108"
 
 概要: このホワイト ペーパーでは、SAP と連携させる DBMS システムの計画と導入に関する注意点を取り上げています。 最初のパートでは、全般的な注意点が列挙されています。 その後、SAP でサポートされる各種 DBMS を Azure にデプロイする作業に関連した説明が続きます。 列挙されている DBMS は、Linux、Unix、および Windows 用の SQL Server、SAP ASE、Oracle、SAP MaxDB および IBM DB2 です。 その個々の領域において、これらの DBMS と共に SAP システムを Azure で実行する際に考慮する必要のある事柄を説明します。 Azure 上の各種 DBMS でサポートされるバックアップと高可用性の手法といったテーマは、SAP アプリケーションの使用法の観点から取り上げています。
 
-更新日: 2015 年 12 月
+更新:2015 年 12 月
 
 [このガイドを今すぐダウンロードする](https://go.microsoft.com/fwlink/?LinkId=397965)
 

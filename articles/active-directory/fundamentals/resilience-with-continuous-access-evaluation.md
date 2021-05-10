@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d792c1eb0a85f2a898d1dc5c63047a4553f13b0
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724629"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106774"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>継続的アクセス評価を使用して回復性を強化する
 
@@ -36,7 +36,7 @@ ms.locfileid: "98724629"
 
 これにより、アプリケーションは Azure AD から通知されたイベントに基づいて、期限が切れていないトークンを拒否できます (次の図を参照)。CAE の概念図
 
-![conceptualiagram of CAE](./media/resilience-with-cae/admin-resilience-continuous-access-evaluation.png)
+![CAE の概念図](./media/resilience-with-cae/admin-resilience-continuous-access-evaluation.png)
 
 ## <a name="how-does-cae-help"></a>CAE がもたらすメリット
 
@@ -47,6 +47,8 @@ CAE を使用するには、サービスとクライアントの両方が CAE �
 Microsoft は業界と連携して、サードパーティのアプリケーションがこの機能を使用できるようにするための[標準](https://openid.net/wg/sse/)を作成しています。 CAE 対応のアプリケーションを開発することも可能です。 詳細については、アプリケーションで回復性を強化する方法に関するページを参照してください。
 
 ## <a name="how-do-i-implement-cae"></a>CAE を実装する方法
+
+* [CAE 対応 API を使用するようにコードを更新します](../develop/app-resilience-continuous-access-evaluation.md)。
 
 * Azure AD セキュリティ構成で [CAE を有効化](../conditional-access/concept-continuous-access-evaluation.md)します。
 

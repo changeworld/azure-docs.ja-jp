@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2
-ms.openlocfilehash: e6971fa129c01fc4cdf64e0dc681ac0fab4f707b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f7b24c711d99b1127ee77a920b305acb114d20e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99833815"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505129"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central とは
 
@@ -23,16 +23,16 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 
 この記事では、IoT Central に関して以下の概要を説明します。
 
-- プロジェクトに関連する代表的なペルソナ。
+- プロジェクトに関連付けられる一般的なユーザー ロール。
 - アプリケーションを作成する方法。
 - デバイスをアプリケーションに接続する方法。
 - アプリケーションを管理する方法。
 - IoT Central での Azure IoT Edge 機能。
 - Azure IoT Edge ランタイム搭載デバイスをアプリケーションに接続する方法。
 
-## <a name="personas"></a>ペルソナ
+## <a name="user-roles"></a>ユーザー ロール
 
-この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のペルソナに言及しています。
+この IoT Central ドキュメントでは、IoT Central アプリケーションと対話する 4 種類のユーザー ロールに言及しています。
 
 - "_ソリューション ビルダー_": [アプリケーションの作成](quick-deploy-iot-central.md)、[ルールとアクションの構成](quick-configure-rules.md)、[他のサービスとの統合の定義](howto-export-data.md)のほか、オペレーターおよびデバイス開発者向けのアプリケーションのカスタマイズを行う役割を担います。
 - "_オペレーター_": アプリケーションに接続される [デバイスを管理](howto-manage-devices.md)します。

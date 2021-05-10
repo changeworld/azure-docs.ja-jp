@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: d0298bcd675b1b94999dab3a1ad1c40a6feb7438
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: cdcb61249f6cb8f7b60c891dd4899d2e5cedbae6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135808"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612554"
 ---
 :::row:::
     :::column span="3":::
-        音声 SDK は、Linux で使用する際、 **Ubuntu 16.04/18.04/20.04** 、 **Debian 9/10** 、 **Red Hat Enterprise Linux (RHEL) 7/8** 、 **CentOS 7/8** のみをサポートしています。
+        音声 SDK は、Linux で使用する際、**Ubuntu 16.04/18.04/20.04**、**Debian 9/10**、**Red Hat Enterprise Linux (RHEL) 7/8**、**CentOS 7/8** のみをサポートしています。
     :::column-end:::
     :::column:::
         <br>
@@ -30,6 +30,9 @@ ms.locfileid: "93135808"
 
 > [!IMPORTANT]
 > Linux ARM64 上の C# については、.NET Core 3.x (dotnet-sdk-3.x パッケージ) が必要です。
+
+> [!NOTE]
+> Alpine Linux で Speech SDK を使用するには、[glibc プログラムの実行](https://wiki.alpinelinux.org/wiki/Running_glibc_programs)に関する Alpine Linux Wiki で説明されているように、Debian chroot 環境を作成してから、こちらの Debian の手順に従います。
 
 ### <a name="system-requirements"></a>システム要件
 

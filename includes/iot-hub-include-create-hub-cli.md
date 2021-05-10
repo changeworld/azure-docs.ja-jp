@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102244664"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766527"
 ---
 以降のセクションでは、ターミナルを設定し、Azure CLI を使用して IoT ハブを設定します。 Azure CLI コマンドを実行するターミナルを構成するには、ブラウザーベースの Azure Cloud Shell を使用するか、またはローカル ターミナルを使用してください。
 * Cloud Shell を使用するには、次のセクション「[Cloud Shell を起動する](#launch-the-cloud-shell)」に進みます。 
@@ -65,7 +65,7 @@ Cloud Shell ではなくローカル ターミナルを使用する場合は、�
 > [!IMPORTANT]
 > 以降このクイックスタートに出現するターミナル コマンドは、Cloud Shell でもローカル ターミナルでも同じように機能します。 コマンドを実行するには、 **[コピー]** を選択してこのクイックスタートのコード ブロックをコピーします。 それを CLI シェルに貼り付けて実行します。
 
-[az extension add](/cli/azure/extension#az-extension-add) コマンドを実行します。 
+[az extension add](/cli/azure/extension#az_extension_add) コマンドを実行します。 
 
    ```azurecli
    az extension add --name azure-iot
@@ -77,7 +77,7 @@ Cloud Shell ではなくローカル ターミナルを使用する場合は、�
 
 IoT ハブとリソース グループを作成するには、次のようにします。
 
-1. [az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
+1. [az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
     >[!NOTE]
     > 必要に応じて、別の場所を設定することもできます。 選択できる場所を確認するには、`az account list-locations` を実行します。 コマンド例を見るとわかるように、このチュートリアルでは *eastus* を使用しています。 
 
@@ -85,7 +85,7 @@ IoT ハブとリソース グループを作成するには、次のようにし
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
+1. [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
 
     *YourIotHubName*: 以下のコマンドでは、このプレースホルダーとその前後の中かっこを実際の IoT ハブの名前に置き換えます。 IoT ハブ名は Azure でグローバルに一意である必要があります。 以降、このクイックスタートに出現しているプレースホルダーにはすべて、実際の IoT ハブの名前を使用してください。
 

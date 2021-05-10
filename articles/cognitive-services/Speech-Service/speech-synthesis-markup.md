@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0a0f48a311e5adf0dd7c70c43317d99cc94fca86
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470525"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105966947"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -44,7 +44,7 @@ SSML を使用するとき、引用符、アポストロフィ、角かっこな
 
 ## <a name="supported-ssml-elements"></a>サポートされている SSML 要素
 
-SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して作成されます。 これらの要素は、ピッチ、韻律、音量などの調整に使用されます。 次のセクションでは、各要素の使用方法と、要素がいつ必須か省略可能かについて説明します。  
+SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して作成されます。 これらの要素は、ピッチ、韻律、音量などの調整に使用されます。 次のセクションでは、各要素の使用方法と、要素がいつ必須か省略可能かについて説明します。
 
 > [!IMPORTANT]
 > 必ず二重引用符を使用して属性値を囲んでください。 適切な形式の有効な XML の標準では、属性値を二重引用符で囲む必要があります。 たとえば、`<prosody volume="90">` は適切な形式で有効な要素ですが、`<prosody volume=90>` はそうではありません。 SSML は、引用符で囲まれていない属性値を認識しない場合があります。
@@ -100,7 +100,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 ## <a name="use-multiple-voices"></a>複数の音声の使用
 
-`speak` 要素内には、テキスト読み上げの出力用の複数の音声を指定することができます。 これらの音声はさまざまな言語で指定できます。 音声ごとに、テキストを `voice` 要素にラップする必要があります。 
+`speak` 要素内には、テキスト読み上げの出力用の複数の音声を指定することができます。 これらの音声はさまざまな言語で指定できます。 音声ごとに、テキストを `voice` 要素にラップする必要があります。
 
 **属性**
 
@@ -117,7 +117,7 @@ Speech SDK 言語に基づき、`SpeechConfig` オブジェクトのインスタ
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-詳細については、<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a> を参照してください。
+詳細については、<a href="/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty" target="_blank"> `SetProperty` </a> を参照してください。
 
 ```csharp
 speechConfig.SetProperty(
@@ -126,7 +126,7 @@ speechConfig.SetProperty(
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-詳細については、<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a> を参照してください。
+詳細については、<a href="/cpp/cognitive-services/speech/speechconfig#setproperty" target="_blank"> `SetProperty` </a> を参照してください。
 
 ```cpp
 speechConfig->SetProperty(
@@ -135,7 +135,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-詳細については、<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a> を参照してください。
+詳細については、<a href="/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` </a> を参照してください。
 
 ```java
 speechConfig.setProperty(
@@ -144,7 +144,7 @@ speechConfig.setProperty(
 
 # <a name="python"></a>[Python](#tab/python)
 
-詳細については、<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a> を参照してください。
+詳細については、<a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#set-property-by-name-property-name--str--value--str-" target="_blank"> `set_property_by_name` </a> を参照してください。
 
 ```python
 speech_config.set_property_by_name(
@@ -153,7 +153,7 @@ speech_config.set_property_by_name(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-詳細については、<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a> を参照してください。
+詳細については、<a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#setproperty-string--string-" target="_blank"> `setProperty`</a> を参照してください。
 
 ```javascript
 speechConfig.setProperty(
@@ -162,7 +162,7 @@ speechConfig.setProperty(
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-詳細については、<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
+詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
 
 ```objectivec
 [speechConfig setPropertyTo:@"false" byName:@"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"];
@@ -170,7 +170,7 @@ speechConfig.setProperty(
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-詳細については、<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
+詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechconfiguration#setpropertytobyname" target="_blank"> `setPropertyTo` </a> を参照してください。
 
 ```swift
 speechConfig!.setPropertyTo(
@@ -213,14 +213,9 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxuanNeural` (プレビュー)
 * `zh-CN-XiaoruiNeural` (プレビュー)
 
-ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 
+ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
 
-現在、これらのニューラル音声では話し方の調整がサポートされています。
-* `zh-CN-XiaoxiaoNeural`
-
-話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、男性の声がピッチを上げて女性の音声を模倣するように、イントネーションを変更できます。
-
-現在、これらのニューラル音声ではロールプレイの調整がサポートされています。
+話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、女性の音声を模倣するために、男性の音声のピッチを上げ、イントネーションを変更することはできますが、音声名は変更されません。 現在、ロールプレイの調整は、次の中国語 (標準、簡体字) のニューラル音声でサポートされています。
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
@@ -238,15 +233,15 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 現時点では、`styledegree` では zh-CN-XiaoxiaoNeural のみがサポートされています。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
+> 現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
 
 **属性**
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `style` | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、スタイルを指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
-| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | オプション (現時点では、`styledegree` では zh-CN-XiaoxiaoNeural のみがサポートされています)。|
-| `role` | 読み上げロールプレイを指定します。 音声は、異なる年齢と性別として動作します。  | オプション (現時点では、`role` では zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています)。|
+| `styledegree` | 話し方の強度を指定します。 **指定可能な値**:0.01 ～ 2 (0.01 と 2 を含む)。 既定値は、定義済みのスタイル強度を表す 1 です。 最小単位は 0.01 で、ターゲットのスタイルにわずかに傾きます。 値を 2 にすると、既定のスタイル強度が 2 倍になります。  | オプション (現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。)|
+| `role` | 読み上げロールプレイを指定します。 音声は別の年齢と性別として動作しますが、音声名は変更されません。  | オプション (現時点では、`role` では zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています)。|
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
@@ -254,6 +249,7 @@ speechConfig!.setPropertyTo(
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | ニュースを配信するときの改まった、自信に満ちた、威厳のある語調を表します |
 |                         | `style="newscast-casual"` | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します        |
+|                         | `style="narration-professional"` | コンテンツの読み取り用の職業的で客観的な語調を表します        |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
 |                         | `style="chat"`            | カジュアルでリラックスした語調を表します                         |
 |                         | `style="cheerful"`        | 肯定的で幸せな語調を表します                         |
@@ -275,11 +271,11 @@ speechConfig!.setPropertyTo(
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
 |                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
 |                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。          |
-|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |     
-|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
-|                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |   
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  | 
-| `zh-CN-YunyeNeural`     | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。    | 
+|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
+|                         | `style="lyrical"`         | 音楽的でセンチメンタルな方法で感情を表現します         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。    |
 |                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
 |                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
@@ -301,37 +297,39 @@ speechConfig!.setPropertyTo(
 |                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
 |                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
 |                         | `style="embarrassed"`     | 話者が不快感を感じているときの、自信がなく気後れしている語調を表します。   |
-|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |     
-|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
+|                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
 | `zh-CN-XiaomoNeural`    | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
 |                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
 |                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
 |                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
-|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |  
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
 | `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
 |                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
 |                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
 |                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
-|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |   
+|                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
 | `zh-CN-XiaoruiNeural`    | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
 
-各ニューラル音声でサポートされているロールを確認するには、次の表を使用してください。
+このテーブルを使用して、サポートされているロールとその定義を確認します。
 
-| 音声                   | ロール                       | 説明                                                 |
-|-------------------------|----------------------------|-------------------------------------------------------------|
-| `zh-CN-XiaomoNeural`    | `role="YoungAdultFemale"`  | 音声は若い成人の女性を模倣します。                 |
-|                         | `role="OlderAdultMale"`    | 音声は年配の男性を模倣します。                   |
-|                         | `role="Girl"`              | 音声は少女を模倣します。                               |
-|                         | `role="Boy"`               | 模倣は少年を模倣します。                                |
-| `zh-CN-XiaoxuanNeural`  | `role="YoungAdultFemale"`  | 音声は若い成人の女性を模倣します。                 |
-|                         | `role="OlderAdultFemale"`  | 音声は年配の女性を模倣します。                 |
-|                         | `role="OlderAdultMale"`    | 音声は年配の男性を模倣します。                   |
+|ロール                     | 説明                |
+|-------------------------|----------------------------|
+|`role="Girl"`            | 音声は少女を模倣します。 |
+|`role="Boy"`             | 模倣は少年を模倣します。 |
+|`role="YoungAdultFemale"`| 音声は若い成人の女性を模倣します。|
+|`role="YoungAdultMale"`  | 音声は若い成人の男性を模倣します。|
+|`role="OlderAdultFemale"`| 音声は年配の女性を模倣します。|
+|`role="OlderAdultMale"`  | 音声は年配の男性を模倣します。|
+|`role="SeniorFemale"`    | 音声は高齢の女性を模倣します。|
+|`role="SeniorMale"`      | 音声は高齢の男性を模倣します。|
+
 
 **例**
 
@@ -403,7 +401,7 @@ speechConfig!.setPropertyTo(
 | なし、または値が指定されていない場合 | 0 ミリ秒        |
 | x-weak                        | 250 ミリ秒      |
 | weak                          | 500 ミリ秒      |
-| 中                        | 750 ミリ秒      |
+| medium                        | 750 ミリ秒      |
 | strong                        | 1000 ミリ秒     |
 | x-strong                      | 1250 ミリ秒     |
 
@@ -418,10 +416,10 @@ speechConfig!.setPropertyTo(
 ```
 ## <a name="add-silence"></a>無音を追加する
 
-`mstts:silence` 要素を使用して、テキストの前後または 2 つの隣接する文の間に一時停止を挿入します。 
+`mstts:silence` 要素を使用して、テキストの前後または 2 つの隣接する文の間に一時停止を挿入します。
 
 > [!NOTE]
->`mstts:silence` と `break` の違いとして、`break` はテキスト内の任意の場所に追加できますが、無音は入力テキストの先頭または末尾、または 2 つの隣接する文の境界でのみ機能します。  
+>`mstts:silence` と `break` の違いとして、`break` はテキスト内の任意の場所に追加できますが、無音は入力テキストの先頭または末尾、または 2 つの隣接する文の境界でのみ機能します。
 
 
 **構文**
@@ -434,18 +432,18 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `type` | 無音を追加する場所を指定します。 <ul><li>Leading - テキストの先頭 </li><li>Tailing - テキストの末尾 </li><li>Sentenceboundary - 隣接する文の間 </li></ul> | 必須 |
+| `type` | 無音を追加する場所を指定します。 <ul><li>`Leading` – テキストの先頭 </li><li>`Tailing` - テキストの末尾 </li><li>`Sentenceboundary` - 隣接する文の間 </li></ul> | 必須 |
 | `Value` | 一時停止の絶対継続時間を秒またはミリ秒単位で指定します。この値は 5000 ms 未満に設定する必要があります。 `2s` や `500ms` は有効な値の例です | 必須 |
 
 **例** この例では、`mtts:silence` を使用して、2 つの文の間に 200 ms の無音を追加します。
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
-<voice name="en-US-AriaNeural"> 
-<mstts:silence  type="Sentenceboundary" value="200ms"/> 
-If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
-A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
-</voice> 
-</speak> 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<voice name="en-US-AriaNeural">
+<mstts:silence  type="Sentenceboundary" value="200ms"/>
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way.
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time.
+</voice>
+</speak>
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>段落や文を指定する
@@ -533,7 +531,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 テキスト読み上げサービスでは、単語を正確に発音できない場合があります。 たとえば、会社名や医学用語などです。 開発者は、`phoneme` および `sub` タグを使用して、SSML で 1 つのエンティティの読み方を定義できます。 一方、複数のエンティティの読み方を定義する必要がある場合は、`lexicon` タグを使用してカスタム辞書を作成できます。
 
 > [!NOTE]
-> 現在、カスタム辞書では UTF-8 エンコードがサポートされています。 
+> 現在、カスタム辞書では UTF-8 エンコードがサポートされています。
 
 > [!NOTE]
 > 現時点では、これらの 5 つの音声 (et-EE-AnuNeural、ga-IE-OrlaNeural、lt-LT-OnaNeural、lv-LV-EveritaNeural、および mt-MT-GarceNeural) ではカスタム辞書はサポートされていません。
@@ -557,18 +555,18 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="ipa" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias>By the way</alias> 
+    <grapheme>BTW</grapheme>
+    <alias>By the way</alias>
   </lexeme>
   <lexeme>
-    <grapheme> Benigni </grapheme> 
+    <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
 </lexicon>
@@ -580,11 +578,11 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>ScotlandMV</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>ScotlandMV</alias>
   </lexeme>
   <lexeme>
-    <grapheme>ScotlandMV</grapheme> 
+    <grapheme>ScotlandMV</grapheme>
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
@@ -592,8 +590,8 @@ A good place to start is by trying out the slew of educational apps that are hel
 また、頭字語または略語に対して期待される `alias` を直接指定することもできます。 次に例を示します。
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>Scotland Media Wave</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>Scotland Media Wave</alias>
   </lexeme>
 ```
 
@@ -610,8 +608,8 @@ A good place to start is by trying out the slew of educational apps that are hel
 > `lexicon` 要素は `voice` 要素内に指定する必要があります。
 
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
-          xmlns:mstts="http://www.w3.org/2001/mstts" 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+          xmlns:mstts="http://www.w3.org/2001/mstts"
           xml:lang="en-US">
     <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
@@ -621,7 +619,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 </speak>
 ```
 
-このカスタム辞書を使用すると、"BTW" は "By the way" と読まれます。 "Benigni" は、IPA の指定により、"bɛˈniːnji" と読まれます。  
+このカスタム辞書を使用すると、"BTW" は "By the way" と読まれます。 "Benigni" は、IPA の指定により、"bɛˈniːnji" と読まれます。
 
 **制限事項**
 - ファイル サイズ: カスタム辞書ファイル サイズの上限は 100 KB です。このサイズを超えると、合成要求は失敗します。
@@ -637,7 +635,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
@@ -681,7 +679,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する
 
-読み上げ速度は、ニューラル音声と標準音声に対して単語または文章レベルで適用できます。 
+読み上げ速度は、ニューラル音声と標準音声に対して単語または文章レベルで適用できます。
 
 **例**
 
@@ -736,7 +734,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-AriaNeural">
         <prosody contour="(60%,-60%) (100%,+80%)" >
-            Were you the only person in the room? 
+            Were you the only person in the room?
         </prosody>
     </voice>
 </speak>
@@ -782,7 +780,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 **例**
 
 音声合成エンジンは、"Your first request was for one room on October nineteenth twenty ten with early arrival at twelve thirty five PM" (最初のリクエストは 2010 年 10 月 19 日に 1 部屋、午後 12 時 35 分にアーリー アライバル、というものでした) という例を読み上げます。
- 
+
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
@@ -868,6 +866,163 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
     </voice>
 </speak>
 ```
+
+## <a name="bookmark-element"></a>ブックマーク要素
+
+ブックマーク要素を使用すると、SSML にカスタムマーカーを挿入して、オーディオ ストリーム内の各マーカーのオフセットを取得できます。
+ブックマーク要素は読み取られません。
+ブックマーク要素は、テキストまたはタグ シーケンス内の特定の場所を参照するために使用できます。
+
+> [!NOTE]
+> `bookmark` 要素は、現時点では `en-US-AriaNeural` 音声に対してのみ機能します。
+
+**構文**
+
+```xml
+<bookmark mark="string"/>
+```
+
+**属性**
+
+| 属性 | 説明                                   | 必須/省略可能                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+|  `mark`   | `bookmark`要素の参照テキストを指定し ます。 | 必須。 |
+
+**例**
+
+例として、次のように各花言葉の時間オフセットを調べることができます
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaNeural">
+        We are selling <bookmark mark='flower_1'/>roses and <bookmark mark='flower_2'/>daisies.
+    </voice>
+</speak>
+```
+
+### <a name="get-bookmark-using-speech-sdk"></a>音声 SDK を使用してブックマークを取得する
+
+音声 SDK で`BookmarkReached`イベントをサブスクライブして、ブックマーク オフセットを取得できます。
+
+> [!NOTE]
+> `BookmarkReached` イベントは、音声 SDK バージョン 1.16.0 以降でのみ使用できます。
+
+`BookmarkReached` イベントは、出力オーディオ データが使用可能になると発生します。これは、出力デバイスへの再生よりも高速です。
+
+* `AudioOffset` は、合成の開始からブックマーク要素までの間の出力オーディオの経過時間を報告します。 これは 100 ナノ秒単位 (HNS) で測定されます (10,000 HNS は 1 ミリ秒に相当します)。
+* `Text` は、`mark` 属性で設定した文字列であるブックマーク要素の参照テキストです。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+詳細については、<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a> を参照してください。
+
+```csharp
+synthesizer.BookmarkReached += (s, e) =>
+{
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    Console.WriteLine($"Bookmark reached. Audio offset: " +
+        $"{e.AudioOffset / 10000}ms, bookmark text: {e.Text}.");
+};
+```
+
+上の例の SSML では、 `BookmarkReached` イベントは 2 回トリガーされ、コンソールの出力は次のようになります
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="c"></a>[C++](#tab/cpp)
+
+詳細については、<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a> を参照してください。
+
+```cpp
+synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
+{
+    cout << "Bookmark reached. "
+        // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+        << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
+        << "bookmark text: " << e.Text << "." << endl;
+};
+```
+
+上の例の SSML では、 `BookmarkReached` イベントは 2 回トリガーされ、コンソールの出力は次のようになります
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+詳細については、<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a> を参照してください。
+
+```java
+synthesizer.BookmarkReached.addEventListener((o, e) -> {
+    // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
+    System.out.print("Bookmark reached. Audio offset: " + e.getAudioOffset() / 10000 + "ms, ");
+    System.out.println("bookmark text: " + e.getText() + ".");
+});
+```
+
+上の例の SSML では、 `BookmarkReached` イベントは 2 回トリガーされ、コンソールの出力は次のようになります
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+詳細については、<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a> を参照してください。
+
+```python
+# The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
+speech_synthesizer.bookmark_reached.connect(lambda evt: print(
+    "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
+```
+
+上の例の SSML では、 `bookmark_reached` イベントは 2 回トリガーされ、コンソールの出力は次のようになります
+```text
+Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+詳細については、<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached`</a> を参照してください。
+
+```javascript
+synthesizer.bookmarkReached = function (s, e) {
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms, bookmark text: " + e.text);
+}
+```
+
+上の例の SSML では、 `bookmarkReached` イベントは 2 回トリガーされ、コンソールの出力は次のようになります
+```text
+(Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
+(Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="objective-c"></a>[Objective-C](#tab/objectivec)
+
+詳細については、<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a> を参照してください。
+
+```objectivec
+[synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {
+    // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
+    NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
+}];
+```
+
+上の例の SSML では、 `BookmarkReached` イベントは 2 回トリガーされ、コンソールの出力は次のようになります
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
+# <a name="swift"></a>[Swift](#tab/swift)
+
+詳細については、「<a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>」を参照してください。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

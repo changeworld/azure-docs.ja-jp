@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556827"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601834"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md)こともできます。 
@@ -81,7 +81,7 @@ sdc     3:0:0:0       4G
 
 より複雑な例として、複数のデータ ディスクがポータルでどのように表示されるかを次に示します。
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="ディスク設定を確認する":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="ポータルで複数のディスクを表示したスクリーンショット。":::
 
 この画像には、次の 3 つのデータ ディスクがあることがわかります: LUN 0 の 4 GB、LUN 1 の 16 GB、LUN 2 の 32 G。
 
@@ -227,6 +227,6 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細およびディスクの問題のトラブルシューティングについては、「[Linux VM デバイス名の変更のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)」を参照してください。
+詳細およびディスクの問題のトラブルシューティングについては、「[Linux VM デバイス名の変更のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)」を参照してください。
 
 Azure CLI を利用し、[データ ディスクを接続する](add-disk.md)こともできます。

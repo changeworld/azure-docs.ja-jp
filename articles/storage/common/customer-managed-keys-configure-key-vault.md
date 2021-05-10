@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 24fbe843986b732a04c9e356c54f3d768d6739be
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 77a01a270f47ddacb71962188e7fedd0a0a9f6d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100558182"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790439"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する
 
@@ -83,7 +83,7 @@ Set-AzKeyVaultAccessPolicy `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して新しいキー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) を呼び出します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
+Azure CLI を使用して新しいキー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az_keyvault_create) を呼び出します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
 az keyvault create \
@@ -97,7 +97,7 @@ Azure CLI を使用して既存のキー コンテナーに対する消去保護
 
 次に、ストレージ アカウントにシステム割り当てマネージド ID を割り当てます。 このマネージド ID を使って、キー コンテナーへのアクセス許可をストレージ アカウントに付与します。 システム割り当てマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
-Azure CLI を使用してマネージド ID を割り当てるには、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。
+Azure CLI を使用してマネージド ID を割り当てるには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出します。
 
 ```azurecli-interactive
 az storage account update \
@@ -108,7 +108,7 @@ az storage account update \
 
 最後に、キー コンテナーのアクセス ポリシーを構成し、ストレージ アカウントからアクセスできるようにします。 この手順では、以前にストレージ アカウントに割り当てたマネージド ID を使用します。
 
-キー コンテナーのアクセス ポリシーを設定するには、[az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) を呼び出します。
+キー コンテナーのアクセス ポリシーを設定するには、[az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) を呼び出します。
 
 ```azurecli-interactive
 storage_account_principal=$(az storage account show \
@@ -147,7 +147,7 @@ $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してキーを追加するには、[az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) を呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
+Azure CLI を使用してキーを追加するには、[az keyvault key create](/cli/azure/keyvault/key#az_keyvault_key_create) を呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
 ```azurecli-interactive
 az keyvault key create \
@@ -213,7 +213,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 Azure CLI を使用してキーのバージョンを自動的に更新するようにカスタマー マネージド キーを構成するには、[Azure CLI バージョン 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020) 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。
+カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。
 
 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
@@ -273,7 +273,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-キーのバージョンを手動更新するようにカスタマー マネージド キーを構成するには、ストレージ アカウントの暗号化を設定するときに、キーのバージョンを明示的に指定します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。
+キーのバージョンを手動更新するようにカスタマー マネージド キーを構成するには、ストレージ アカウントの暗号化を設定するときに、キーのバージョンを明示的に指定します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出します。 `--encryption-key-source` パラメーターを含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。
 
 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
@@ -297,7 +297,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-キー バージョンを手動で更新する場合は、新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新する必要があります。 まず、[az keyvault show](/cli/azure/keyvault#az-keyvault-show) を呼び出すことでキー コンテナーの URI を照会し、[az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) を呼び出すことでキーのバージョンを照会します。 次に、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出して、キーの新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新します (前の例を参照)。
+キー バージョンを手動で更新する場合は、新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新する必要があります。 まず、[az keyvault show](/cli/azure/keyvault#az_keyvault_show) を呼び出すことでキー コンテナーの URI を照会し、[az keyvault key list-versions](/cli/azure/keyvault/key#az_keyvault_key_list-versions) を呼び出すことでキーのバージョンを照会します。 次に、[az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出して、キーの新しいバージョンを使用するようにストレージ アカウントの暗号化設定を更新します (前の例を参照)。
 
 ---
 
@@ -319,7 +319,7 @@ PowerShell を使用してキーを変更するには、「[カスタマー マ�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してキーを変更するには、「[カスタマー マネージド キーによる暗号化を構成する](#configure-encryption-with-customer-managed-keys)」で示しているように [az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出して、新しいキーの名前とバージョンを指定します。 新しいキーが別のキー コンテナーにある場合は、キー コンテナー URI も更新する必要があります。
+Azure CLI を使用してキーを変更するには、「[カスタマー マネージド キーによる暗号化を構成する](#configure-encryption-with-customer-managed-keys)」で示しているように [az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出して、新しいキーの名前とバージョンを指定します。 新しいキーが別のキー コンテナーにある場合は、キー コンテナー URI も更新する必要があります。
 
 ---
 
@@ -342,7 +342,7 @@ Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-キー コンテナーのアクセス ポリシーを削除すると、カスタマー マネージド キーを取り消すことができます。 Azure CLI を使用してカスタマー マネージド キーを取り消すには、次の例に示すように、[az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+キー コンテナーのアクセス ポリシーを削除すると、カスタマー マネージド キーを取り消すことができます。 Azure CLI を使用してカスタマー マネージド キーを取り消すには、次の例に示すように、[az keyvault delete-policy](/cli/azure/keyvault#az_keyvault_delete_policy) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 
 ```azurecli-interactive
 az keyvault delete-policy \
@@ -375,7 +375,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してカスタマー マネージド キーを無効にするには、次の例に示すように、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出して、`--encryption-key-source parameter` を `Microsoft.Storage` に設定します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
+Azure CLI を使用してカスタマー マネージド キーを無効にするには、次の例に示すように、[az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出して、`--encryption-key-source parameter` を `Microsoft.Storage` に設定します。 角かっこ内のプレースホルダー値を独自の値に置き換え、前の例で定義した変数を使用してください。
 
 ```azurecli-interactive
 az storage account update

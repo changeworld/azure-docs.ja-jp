@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f5739604537ccc67e2cf57310269369909038d67
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102508757"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219265"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
@@ -69,11 +69,11 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 
 リソース グループが Azure に作成され、そのショートカットがポータルにピン留めされます。
 
-## <a name="create-the-network-and-subnets"></a>ネットワークとサブネットの作成
+## <a name="create-the-network-and-subnet"></a>ネットワークとサブネットの作成
 
 次は、Azure リソース グループにネットワークとサブネットを作成します。
 
-ここでは、1 つの仮想ネットワークと 2 つのサブネットを使用します。 Azure におけるネットワークの詳細については、[仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
+このソリューションでは、1 つの仮想ネットワークと 1 つのサブネットを使用します。 Azure におけるネットワークの詳細については、[仮想ネットワークの概要](../../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
 Azure portal で仮想ネットワークを作成するには:
 
@@ -100,48 +100,13 @@ Azure portal で仮想ネットワークを作成するには:
 
    実際のアドレス空間とサブネット アドレス範囲は、この表とは異なる場合があります。 サブスクリプションによっては、使用できるアドレス空間とそれに対応するサブネット アドレス範囲がポータルで提示されます。 アドレス空間が足りない場合は、異なるサブスクリプションを使用してください。
 
-   この例では、**Admin** というサブネット名を使用します。このサブネットは、ドメイン コントローラー用です。
+   この例では、**Admin** というサブネット名を使用します。このサブネットは、ドメイン コントローラーと SQL Server VM 用です。
 
 5. **［作成］** を選択します
 
    ![仮想ネットワークの構成](./media/availability-group-manually-configure-prerequisites-tutorial-/06-configurevirtualnetwork.png)
 
 新しいネットワークが作成されると、画面がポータル ダッシュボードに切り替わって通知が表示されます。
-
-### <a name="create-a-second-subnet"></a>2 つ目のサブネットの作成
-
-新しい仮想ネットワークには、**Admin** という名前のサブネットが 1 つあります。このサブネットはドメイン コントローラーが使用します。 SQL Server VM には、**SQL** というもう 1 つのサブネットを使用します。 このサブネットを構成するには、次のようにします。
-
-1. ダッシュボードで、先ほど作成したリソース グループ (**SQL-HA-RG**) を選択します。 このリソース グループ内のネットワークを **[リソース]** から探します。
-
-    **SQL-HA-RG** が表示されない場合は、 **[リソース グループ]** を選択し、リソース グループ名でフィルター処理を行ってください。
-
-2. リソースの一覧で **[autoHAVNET]** を選択します。 
-3. **autoHAVNET** 仮想ネットワークの **[設定]** で、 **[サブネット]** を選択します。
-
-    既に作成してあるサブネットに注目してください。
-
-   ![既に作成してあるサブネットに注目してください](./media/availability-group-manually-configure-prerequisites-tutorial-/07-addsubnet.png)
-
-5. 2 つ目のサブネットを作成するには、 **[+ サブネット]** を選択します。
-6. **[サブネットの追加]** で、 **[名前]** に「**sqlsubnet**」と入力してサブネットを構成します。 有効な **アドレス範囲** が Azure によって自動的に指定されます。 このアドレス範囲に含まれるアドレスが 10 個以上あることを確認してください。 運用環境では、さらに多くのアドレスが必要になる場合があります。
-7. **[OK]** を選択します。
-
-    ![サブネットを構成する](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
-
-次の表は、ネットワーク構成の設定をまとめたものです。
-
-| **フィールド** | 値 |
-| --- | --- |
-| **名前** |**autoHAVNET** |
-| **アドレス空間** |この値は、サブスクリプションで使用できるアドレス空間によって異なります。 標準的な値は 10.0.0.0/16 です。 |
-| **サブネット名** |**admin** |
-| **サブネットのアドレス範囲** |この値は、サブスクリプションで使用できるアドレス範囲によって異なります。 標準的な値は 10.0.0.0/24 です。 |
-| **サブネット名** |**sqlsubnet** |
-| **サブネットのアドレス範囲** |この値は、サブスクリプションで使用できるアドレス範囲によって異なります。 標準的な値は 10.0.1.0/24 です。 |
-| **サブスクリプション** |使用するサブスクリプションを指定します。 |
-| **リソース グループ** |**SQL-HA-RG** |
-| **場所** |リソース グループと同じ場所を指定します。 |
 
 ## <a name="create-availability-sets"></a>可用性セットを作成する
 

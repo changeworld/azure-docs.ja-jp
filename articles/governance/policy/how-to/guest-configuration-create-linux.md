@@ -1,15 +1,15 @@
 ---
 title: Linux 用のゲスト構成ポリシーを作成する方法
 description: Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d356960987ecfe9a1e1858a28b93060dbf4aa634
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99525349"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096565"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -90,9 +90,7 @@ DSC は InSpec のラッパーとして機能し、実行方法、パラメー�
 
 カスタム構成の名前は、すべての場所で一貫している必要があります。 コンテンツ パッケージの .zip ファイルの名前、MOF ファイル内の構成名、および Azure Resource Manager テンプレート (ARM テンプレート) 内のゲスト割り当て名は同じである必要があります。
 
-PowerShell コマンドレットは、パッケージの作成に役立ちます。
-ルート レベル フォルダーまたはバージョン フォルダーは必要ありません。
-パッケージ形式は .zip ファイルである必要があります。 圧縮されていない場合、合計サイズは 100 MB を超えることはできません。
+PowerShell コマンドレットは、パッケージの作成に役立ちます。 ルート レベル フォルダーまたはバージョン フォルダーは必要ありません。 パッケージ形式は .zip ファイルである必要があります。 圧縮されていない場合、合計サイズは 100 MB を超えることはできません。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
@@ -211,7 +209,7 @@ New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/
 - **パス**:発行するパッケージの場所
 - **ResourceGroupName**:ストレージ アカウントが配置されているリソース グループの名前
 - **StorageAccountName**:パッケージを発行する必要があるストレージ アカウントの名前
-- **StorageContainerName**: (既定: *guestconfiguration*) ストレージ アカウントのストレージ コンテナーの名前
+- **StorageContainerName**: (既定: _guestconfiguration_) ストレージ アカウントのストレージ コンテナーの名前
 - **Force**:同じ名前のストレージ アカウント内の既存のパッケージを上書きする
 
 次の例では、パッケージをストレージ コンテナー名 'guestconfiguration' に発行します。
@@ -277,7 +275,7 @@ Azure で作成されるポリシーに関する最後のステップでは、�
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>カスタム ゲスト構成ポリシーでのパラメーターの使用
 
-ゲスト構成では、実行時に構成のプロパティをオーバーライドすることができます。 この機能は、パッケージの MOF ファイル内の値を静的と見なす必要がないことを意味します。 オーバーライドする値は Azure Policy を通じて提供され、構成の作成方法またはコンパイル方法には影響しません。
+ゲスト構成では、実行時に構成のプロパティをオーバーライドすることができます。 この機能は、パッケージの MOF ファイル内の値を静的と見なす必要がないことを意味します。 オーバーライドする値は Azure Policy を通じて提供されます。構成の作成方法およびコンパイル方法は変更されません。
 
 InSpec では、通常、パラメーターは、実行時に入力として、または属性を使用したコードとして処理されます。 ゲスト構成はこのプロセスを難読化するため、ポリシーが割り当てられたときに入力を提供できます。 属性ファイルは、マシン内に自動的に作成されます。 プロジェクトにファイルを作成して追加する必要はありません。 Linux 監査プロジェクトにパラメーターを追加するには、2 つの手順を実行します。
 
@@ -350,8 +348,7 @@ New-GuestConfigurationPolicy -ContentUri $uri `
 > [!NOTE]
 > ゲスト構成割り当ての `version` プロパティは、Microsoft によってホストされているパッケージにのみ影響します。 カスタム コンテンツのバージョン管理のベスト プラクティスは、ファイル名にバージョンを含めることです。
 
-まず、`New-GuestConfigurationPackage` を実行するときに、以前のバージョンと異なる一意のパッケージの名前を指定します。 名前には、`PackageName_1.0.0` などのバージョン番号を含めることができます。
-この例の番号は、パッケージを一意にするためにのみ使用されており、パッケージを他のパッケージよりも新しいまたは古いものとして見なすように指定するものではありません。
+まず、`New-GuestConfigurationPackage` を実行するときに、以前のバージョンと異なる一意のパッケージの名前を指定します。 名前には、`PackageName_1.0.0` などのバージョン番号を含めることができます。 この例の番号は、パッケージを一意にするためにのみ使用されており、パッケージを他のパッケージよりも新しいまたは古いものとして見なすように指定するものではありません。
 
 次に、以下の各説明に従って、`New-GuestConfigurationPolicy` コマンドレットで使用するパラメーターを更新します。
 

@@ -5,17 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/04/2021
+ms.date: 04/01/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c9568c51fe3a59dba83a66fc35c8d9112ade167f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101750028"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106178497"
 ---
 Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) のプロファイルを展開できます。 この記事では、カスタム設定を使用して Intune プロファイルを作成する方法について説明します。
+
+> [!NOTE]
+>* この記事は、認証にのみ Azure Active Directory を使用するプロファイルの展開に適用されます。
+
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -2,14 +2,14 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 051f903c0b203045886b80f72d868adc1fa85f73
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b602cbfde22cc87b42a32b007c19b626814d1660
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886100"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554554"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,9 +25,9 @@ Azure Communication Services のリソースを作成するには、まず [Azur
 
 :::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="検索バーでの Communication Services の検索を示すスクリーンショット。":::
 
-結果から **[Communication Services]** を選択し、 **[追加]** を選択します。
+結果から **[Communication Services]** を選択し、 **[作成]** を選択します。
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="[追加] ボタンが強調表示された Azure パネルを示すスクリーンショット。":::
+:::image type="content" source="../media/create-a-communication-resource/create-communication-portal.png" alt-text="[作成] ボタンが強調表示された [Communication Services] パネルを示すスクリーンショット。":::
 
 これで、Communication Services のリソースを構成できます。 作成プロセスの最初のページで、次の内容を指定するように求められます。
 

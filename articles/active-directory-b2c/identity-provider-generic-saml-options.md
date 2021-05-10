@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488875"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798240"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して SAML ID プロバイダー オプションを構成する
 
@@ -85,9 +85,11 @@ SAML 要求は、ID プロバイダーのメタデータ `SingleSignOnService` �
 </IDPSSODescriptor>
 ```
 
-SAML 応答は、HTTP POST バインドを介して Azure AD B2C に送信されます。 Azure AD B2C ポリシー メタデータによって、`AssertionConsumerService` バインドが `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST` に設定されます。
+### <a name="assertion-consumer-service"></a>Assertion Consumer Service
 
-Azure AD B2C ポリシー メタデータの Assertion Consumer Service 要素の例を次に示します。
+Assertion Consumer Service (または ACS) は、ID プロバイダーの SAML 応答を Azure AD B2C で送受信できる場所です。 SAML 応答は、HTTP POST バインドを介して Azure AD B2C に送信されます。 ACS の場所は、証明書利用者の基本ポリシーを指します。 たとえば、依存するポリシーが *B2C_1A_signup_signin* である場合、ACS は *B2C_1A_TrustFrameworkBase* などの *B2C_1A_signup_signin* の基本ポリシーとなります。
+
+Azure AD B2C ポリシー メタデータの Assertion Consumer Service 要素の例を次に示します。 
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -379,7 +381,7 @@ SAML ID プロバイダーとのフェデレーションの構成とデバッグ
 * ID プロバイダーによってエラー メッセージが返されるかどうかを確認します。
 * アサーション セクションが暗号化されているかどうかを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Application Insights](troubleshoot-with-application-insights.md) を使用してカスタム ポリシーに関する問題を診断する方法について説明します。 
 

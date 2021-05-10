@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 244012f0945f467fe79e95d652ba22e3b62a1b7a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ad9e5665204dbd3f99f83af3578b1996814d6fa0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596935"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728845"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -67,7 +67,7 @@ Windows で AzCopy を実行していて、プロキシを使用 _しない_ よ
 
 パフォーマンス ベンチマーク テストを実行するには、次のコマンドを使用します。
 
-|    |     |
+| 構文/例  |  コード |
 |--------|-----------|
 | **構文** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **例** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
@@ -103,14 +103,16 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 ### <a name="optimize-memory-use"></a>メモリ使用量を最適化する
 
-`AZCOPY_BUFFER_GB` 環境変数を設定して、ファイルをダウンロードおよびアップロードするときに AzCopy で使用するシステム メモリの最大量を指定します。
-この値はギガバイト (GB) 単位で指定します。
+`AZCOPY_BUFFER_GB` 環境変数を設定して、ファイルをダウンロードおよびアップロードするときに AzCopy でバッファリング用に使用するシステム メモリの最大量を指定します。 この値はギガバイト (GB) 単位で指定します。
 
 | オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
+
+> [!NOTE]
+> ジョブの追跡では、メモリ使用量で追加のオーバーヘッドが常に発生します。 この量は、ジョブでの転送数によって異なります。 バッファーは、メモリ使用量の最大のコンポーネントです。 `AZCOPY_BUFFER_GB` を使用してオーバーヘッドを制御することで、要件をほぼ満たすとができますが、全体的なメモリ使用量を厳密に制限するフラグは使用できません。
 
 ### <a name="optimize-file-synchronization"></a>ファイル同期を最適化する
 

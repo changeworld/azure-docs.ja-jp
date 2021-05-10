@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 47d1f9797a44d7dc918677c21ffc7a124808525d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98943292"
 ---
-# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari のディレクトリに関するアラート
+# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>シナリオ: Azure HDInsight での Apache Ambari のディレクトリに関するアラート
 
 この記事では、Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策について説明します。
 
@@ -28,7 +28,7 @@ Apache Ambari から次のようなエラーが表示されます。
 
 Ambari アラートで言及されているディレクトリが、影響を受けるワーカー ノードにありません。
 
-## <a name="resolution"></a>解像度
+## <a name="resolution"></a>解決方法
 
 欠落しているディレクトリを、影響を受けるワーカー ノードに手動で作成します。
 

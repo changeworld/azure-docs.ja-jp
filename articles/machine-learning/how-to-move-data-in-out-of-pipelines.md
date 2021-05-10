@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: a4d1d1c4f4d6354d0206bf598a0622112dc99453
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3f6071813a8189605d632231a5f9b8942068a48a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102518706"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067437"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -28,7 +28,7 @@ ms.locfileid: "102518706"
 - トレーニングや検証のサブセットなど、`Dataset` データをサブセットに分割する
 - 次のパイプライン ステップにデータを転送する `OutputFileDatasetConfig` オブジェクトを作成する
 - パイプライン ステップへの入力として `OutputFileDatasetConfig` オブジェクトを使用する
-- 永続化させる新しい `Dataset` オブジェクトを `OutputFileDatasetConfig` から作成する
+- 永続化する `OutputFileDatasetConfig` から新しい `Dataset` オブジェクトを作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 
@@ -245,7 +245,7 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 `OutputFileDatasetConfig` で書き込まれた中間データは、Azure によって自動的に削除されません。 大量の不要なデータに対するストレージの課金を回避するには、次のいずれかを行う必要があります。
 
 * パイプライン実行の終了時に中間データをプログラムで削除する (不要になった場合)
-* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)」を参照してください) 
+* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)」を参照してください) 
 * 不要になったデータを定期的に確認して削除する
 
 詳細については、「[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)」を参照してください。

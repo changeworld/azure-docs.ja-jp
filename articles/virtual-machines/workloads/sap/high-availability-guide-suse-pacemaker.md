@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: ddee5edcf1d19af0fb088976c590b62866a1484e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa2006ecfad91e21ac13a1e63be23302b2a70399
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674421"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551035"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Azure の SUSE Linux Enterprise Server に Pacemaker をセットアップする
 
@@ -584,7 +584,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. [Certificates and Secrets]\(証明書とシークレット\) を選択し、[New client secret]\(新しいクライアント シークレット\) をクリックします
 1. 新しいキーの説明を入力し、[Never expires]\(有効期限なし\) を選択して [追加] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの **パスワード** として使用します
-1. [概要] を選択します。 アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の **ログイン ID**) として使用します
+1. [概要] を選択します。 アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名として使用します
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** フェンス エージェントのカスタム ロールを作成する
 
@@ -642,9 +642,9 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 <pre><code>sudo crm configure property stonith-enabled=true
 crm configure property concurrent-fencing=true
-# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+# replace the bold string with your subscription ID, resource group of the VM, tenant ID, service principal application ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>application ID</b>" passwd="<b>password</b>" \
   pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 <b>pcmk_host_map="prod-cl1-0:prod-cl1-0-vm-name;prod-cl1-1:prod-cl1-1-vm-name"</b> \
   op monitor interval=3600 timeout=120
 

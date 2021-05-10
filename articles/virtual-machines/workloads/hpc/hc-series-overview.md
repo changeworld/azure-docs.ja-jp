@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 746c7ec91c888d9a55722c00f8765915d0043a98
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c251634710811820ba920b72c1759938758f5d2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666068"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802822"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC シリーズの仮想マシンの概要
 
@@ -31,7 +31,7 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 
 次の図は、Azure Hypervisor と HC シリーズ VM 用に予約されているコアの分離を示しています。
 
-![Azure Hypervisor と HC シリーズ VM 用に予約されているコアの分離](./media/hc-series-overview/segregation-cores.png)
+![Azure Hypervisor と HC シリーズ VM 用に予約されているコアの分離](./media/architecture/hc-segregation-cores.png)
 
 ## <a name="hardware-specifications"></a>ハードウェア仕様
 
@@ -51,13 +51,13 @@ Intel Xeon Platinum、Gold、および Silver の CPU は、CPU ソケット内�
 |-----------------------------|-----------------------|
 | 最大 MPI ジョブ サイズ            | 13200 コア (1 つの仮想マシン スケール セットに 300 台の VM、singlePlacementGroup=true)  |
 | MPI のサポート                 | HPC-X、Intel MPI、OpenMPI、MVAPICH2、MPICH、Platform MPI  |
-| その他のフレームワーク       | Unified Communication X、libfabric、PGAS |
+| その他のフレームワーク       | UCX、libfabric、PGAS |
 | Azure Storage のサポート       | Standard および Premium ディスク (最大 4 ディスク) |
-| SRIOV RDMA の OS サポート   | CentOS/RHEL 7.6 以降、SLES 12 SP4 以降、WinServer 2016 以降  |
-| Orchestrator のサポート        | CycleCloud、Batch  |
+| SRIOV RDMA の OS サポート   | CentOS/RHEL 7.6 以降、Ubuntu 16.04 以降、SLES 12 SP4 以降、WinServer 2016 以降  |
+| Orchestrator のサポート        | CycleCloud、Batch、AKS、[クラスター構成オプション](../../sizes-hpc.md#cluster-configuration-options)  |
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Intel Xeon SP アーキテクチャ](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)の詳細を確認します。
-- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

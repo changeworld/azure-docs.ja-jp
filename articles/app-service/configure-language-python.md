@@ -2,15 +2,15 @@
 title: Linux Python アプリを構成する
 description: Azure portal と Azure CLI の両方を使用して、Web アプリが実行される Python コンテナーを構成する方法について説明します。
 ms.topic: quickstart
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e698061122fcc8ff8019907b5fdeba5b2df58407
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101709089"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779347"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -27,7 +27,7 @@ App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local
 - **Azure CLI**: 2 つのオプションがあります。
 
     - [Azure Cloud Shell](../cloud-shell/overview.md) でコマンドを実行します。
-    - 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールしてコマンドをローカルで実行してから、[az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。
+    - 最新バージョンの [Azure CLI](/cli/azure/install-azure-cli) をインストールしてコマンドをローカルで実行してから、[az login](/cli/azure/reference-index#az_login) を使用して Azure にサインインします。
     
 > [!NOTE]
 > Linux は現在、App Service で Python アプリを実行するための推奨されるオプションです。 Windows オプションについては、[Windows フレーバーの App Service での Python](/visualstudio/python/managing-python-on-azure-app-service) に関するページを参照してください。
@@ -114,7 +114,7 @@ App Service で Linux の Python アプリを実行、ビルドする方法の�
 
 1. **アプリの起動**: この記事の後半の「[コンテナーのスタートアップ プロセス](#container-startup-process)」セクションを参照して、App Service がアプリを実行する方法を理解します。 App Service では、既定で Gunicorn Web サーバーを使用します。このサーバーは、対象のアプリ オブジェクトまたは *wsgi.py* フォルダーを見つけることができる必要があります。 必要に応じて、[スタートアップ コマンドをカスタマイズ](#customize-startup-command)することができます。
 
-1. **継続的なデプロイ**:「[Azure App Service への継続的デプロイ](deploy-continuous-deployment.md)」(Azure Pipelines または Kudu デプロイを使用している場合) または「[GitHub Actions を使用した App Service へのデプロイ](deploy-github-actions.md)」(GitHub アクションを使用している場合) の説明に従って、継続的デプロイを設定します。
+1. **継続的なデプロイ**:「[Azure App Service への継続的デプロイ](deploy-continuous-deployment.md)」(Azure Pipelines または Kudu デプロイを使用している場合) または「[GitHub Actions を使用した App Service へのデプロイ](./deploy-continuous-deployment.md)」(GitHub アクションを使用している場合) の説明に従って、継続的デプロイを設定します。
 
 1. **カスタム アクション**: 対象のアプリをホストする App Service コンテナー内で Django データベースの移行などのアクションを実行するには、[SSH 経由でコンテナーに接続](configure-linux-open-ssh-session.md)します。 Django データベースの移行を実行する例については、[PostgreSQL を使用して Django Web アプリをデプロイする方法のチュートリアルの、データベースの移行の実行に関するセクション](tutorial-python-postgresql-app.md#43-run-django-database-migrations)を参照してください。
     - 継続的デプロイを使用している場合は、前の「[ビルドの自動化のカスタマイズ](#customize-build-automation)」で説明したように、ビルド後コマンドを使用してこれらのアクションを実行できます。
@@ -324,7 +324,7 @@ db_server = os.environ['DATABASE_SERVER']
 
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
-App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
+App Service では、[SSL 終端](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
@@ -373,6 +373,7 @@ SSH セッションへの接続に成功すると、ウィンドウ下部に "SS
 - [アプリが表示されない - "サービスを利用できません" というメッセージ](#service-unavailable)
 - [setup.py または requirements.txt が見つからない](#could-not-find-setuppy-or-requirementstxt)
 - [スタートアップ時の ModuleNotFoundError](#modulenotfounderror-when-app-starts)
+- [データベースがロックされている](#database-is-locked)
 - [SSH セッションで、入力したパスワードが表示されない](#other-issues)
 - [SSH セッションで、コマンドが途切れたように表示される](#other-issues)
 - [Django アプリに静的資産が表示されない](#other-issues)
@@ -409,6 +410,14 @@ SSH セッションへの接続に成功すると、ウィンドウ下部に "SS
 #### <a name="modulenotfounderror-when-app-starts"></a>アプリ起動時の ModuleNotFoundError
 
 `ModuleNotFoundError: No module named 'example'` のようなエラーが表示される場合、これは Python の起動時に 1 つ以上のモジュールが見つからなかったことを意味します。 これは、コードを使用して仮想環境をデプロイする場合によく発生します。 仮想環境は移植可能ではないため、アプリケーション コードを使用して仮想環境をデプロイしないでください。 代わりに、Oryx を使用して仮想環境を作成し、アプリ設定 `SCM_DO_BUILD_DURING_DEPLOYMENT` を作成し、それを `1` に設定して、Web アプリにパッケージをインストールします。 こうすることで、App Service にデプロイするたびに、Oryx によってパッケージが強制的にインストールされます。 詳細については、[仮想環境の移植性に関するこの記事](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)を参照してください。
+
+### <a name="database-is-locked"></a>データベースがロックされている
+
+Django アプリを使用してデータベースの移行を実行しようとすると、次のように表示される場合があります。"sqlite3. OperationalError: database is locked." (sqlite3. OperationalError: データベースロックされています。) このエラーは、お使いのアプリケーションで、Azure 用 PostgreSQL などのクラウド データベースが使用される代わりに、Django が既定で構成されている SQLite データベースが使用されていることを示しています。
+
+アプリの *settings.py* ファイルの `DATABASES` 変数を確認して、アプリで SQLite ではなくクラウド データベースが使用されていることを確認してください。
+
+[チュートリアル: PostgreSQL を使用する Django Web アプリのデプロイ](tutorial-python-postgresql-app.md)に関するページにあるサンプルでこのエラーが発生している場合は、「[データベースに接続するための環境変数を構成する](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database)」の手順を完了していることを確認してください。
 
 #### <a name="other-issues"></a>その他の問題
 

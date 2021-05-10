@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 02/17/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ee066ff46f319749469a41e6decf12b35c0ee27e
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: e160b21581bc7b5fa38b12309bd9deb90bfbbe51
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100651947"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107251417"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
 | クォータ名 | Scope | Notes | 値 |
 | --- | --- | --- | --- |
-| Azure サブスクリプションごとの Basic または Standard 名前空間の最大数 |名前空間 |追加の Basic または Standard 名前空間に関する後続の要求は Azure portal で拒否されます。 |100|
-| Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 |100 |
+| Azure サブスクリプションごとの Basic または Standard 名前空間の最大数 |名前空間 |追加の Basic または Standard 名前空間に関する後続の要求は Azure portal で拒否されます。 | 既定値は 100 です。 <br/> 最大数は 1,000 です。 <br/><br/> この上限を増やすには、Azure サポートへお問い合わせください。 |
+| Azure サブスクリプションごとの Premium 名前空間の最大数 |名前空間 |追加の Premium 名前空間に関する後続の要求はポータルで拒否されます。 | 既定値は 100 です。 <br/> 最大数は 1,000 です。 <br/><br/> この上限を増やすには、Azure サポートへお問い合わせください。 |
 | キューまたはトピックのサイズ |Entity |キューまたはトピックの作成時に定義されます。 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元コードが例外を受け取ります。 |1、2、3、4、または 5 GB。<br /><br />Premium SKU と、[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md)が有効な Standard SKU では、キューまたはトピックの最大サイズは 80 GB です。 |
 | 名前空間のコンカレント接続数 |名前空間 |追加の接続に関する後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |ネット メッセージング:1,000。<br /><br />AMQP:5,000。 |
 | キュー、トピック、またはサブスクリプション エンティティの同時受信要求数 |Entity |後続の受信要求が拒否され、呼び出し元コードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |5,000 |
@@ -38,6 +38,6 @@ ms.locfileid: "100651947"
 | SQL フィルターまたはアクションのサイズ |名前空間 |追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |フィルター条件文字列の最大長:1,024 (1 K)。<br /><br />規則アクション文字列の最大長:1,024 (1 K)。<br /><br />規則アクションごとの式の最大数:32. |
 | 名前空間、キュー、トピックごとの共有アクセス承認規則の数 |エンティティ、名前空間 |追加の規則を作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |エンティティ型ごとの規則の最大数:12. <br /><br /> Service Bus 名前空間に構成されている規則は、キューやトピックのすべての型に適用されます。 |
 | トランザクションあたりのメッセージ数 | トランザクション | それ以上の受信メッセージは拒否され、呼び出し元コードが "1 回のトランザクションで 100 個を超えるメッセージを送信することができない" ことを示す例外を受け取ります。 | 100 <br /><br /> **Send()** 操作および **SendAsync()** 操作両方に対して。 |
-| 仮想ネットワークと IP フィルター規則の数 | 名前空間 | &nbsp; | 128 | 
+| 仮想ネットワークと IP フィルター規則の数 | 名前空間 | &nbsp; | 128 |
 
 [Azure portal]: https://portal.azure.com

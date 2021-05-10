@@ -8,21 +8,38 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2021
+ms.date: 04/05/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b15c63545c71d4513abe9102b4de165e2ab5857a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499851"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443408"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
 ページ レイアウト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
 
+## <a name="jquery-version"></a>jQuery バージョン
+
+[Azure AD B2C] ページのレイアウトでは、次のバージョンの [jQuery ライブラリ](https://jquery.com/)を使用します。
+
+|ページ レイアウトのバージョンから  |jQuery バージョン  |
+|---------|---------|
+|2.1.4 | 3.5.1 |
+|1.2.0 | 3.4.1 |
+|1.1.0 | 1.10.2 |
+
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
+
+**2.1.4**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
+**2.1.3**
+- セキュリティの修正。
 
 **2.1.2**
 - スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
@@ -77,6 +94,14 @@ ms.locfileid: "102499851"
 > [!TIP]
 > 複数のロケールまたはユーザー フローの言語をサポートするようにページをローカライズする場合。 [ローカライズ ID](localization-string-ids.md) に関する記事に、選択したページ バージョンで使用できるローカライズ ID の一覧が記載されています。
 
+**2.1.4**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
+**2.1.3**
+- セキュリティの修正。
+- 軽微なバグの修正。
+
 **2.1.2**
 - スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
 - [パスワードを忘れた場合] リンクを、要求交換として使用できるようにします。 詳細については、「[セルフサービス パスワード リセット](add-password-reset-policy.md#self-service-password-reset-recommended)」を参照してください。
@@ -116,6 +141,15 @@ ms.locfileid: "102499851"
 
 ## <a name="mfa-page-multifactor"></a>MFA ページ (多要素)
 
+**1.2.4**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
+**1.2.3**
+- 言語のローカライズによりヒントの文字列をオーバーライドできるようになりました。
+- セキュリティの修正。
+- 軽微なバグの修正。
+
 **1.2.2**
 - iOS を使用する場合の確認コードの自動入力に関する問題を修正しました。
 - Android Webview から証明書利用者へのトークンのリダイレクトに関する問題を修正しました。 
@@ -152,6 +186,10 @@ ms.locfileid: "102499851"
 
 ## <a name="exception-page-globalexception"></a>例外ページ (globalexception)
 
+**1.2.1**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
+
 **1.2.0**
 
 - アクセシビリティの修正
@@ -172,6 +210,10 @@ ms.locfileid: "102499851"
 - 最初のリリース
 
 ## <a name="other-pages-providerselection-claimsconsent-unifiedssd"></a>その他のページ (ProviderSelection、ClaimsConsent、UnifiedSSD)
+
+**1.2.1**
+- jQuery のバージョンが 3.5.1 に更新されました。
+- HandlebarJS のバージョンが 4.7.6 に更新されました。
 
 **1.2.0**
 

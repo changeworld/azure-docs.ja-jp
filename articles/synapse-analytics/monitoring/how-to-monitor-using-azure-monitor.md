@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102549857"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553993"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Synapse Analytics ワークスペースで Azure Monitor を使用する
 
@@ -103,10 +103,14 @@ Azure portal にサインインし、 **[モニター]**  >  **[アラート]** 
 
 Azure Synapse Analytics ワークスペースによって出力されるログを次に示します。
 
-| Log Analytics テーブル名 | ログのカテゴリ名                 | 説明 |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | Azure Synapse gateway API 要求。 |
-| SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse ロールベースのアクセス制御 (SRBAC) 操作。 |
+| Log Analytics テーブル名       | ログのカテゴリ名              | 説明          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | Azure Synapse gateway API 要求。 |
+| SynapseRbacOperations          | SynapseRbacOperations          | Azure Synapse ロールベースのアクセス制御 (SRBAC) 操作。 |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | Azure Synapse の組み込みのサーバーレス SQL プールが要求を終了。 |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Azure Synapse 統合パイプラインの実行。 |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Azure Synapse 統合アクティビティの実行。 |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Azure Synapse 統合トリガーの実行。 |
 
 ### <a name="dedicated-sql-pool-logs"></a>専用 SQL プールのログ
 
@@ -171,7 +175,7 @@ Azure Monitor 診断設定を使用すると、診断ログを複数の異なる
 1. 設定に名前を付け、 **[Log Analytics への送信]** を選択して、 **[Log Analytics ワークスペース]** からワークスペースを選択します。
 
     > [!NOTE]
-    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Azure Diagnostics のログ リファレンス](/azure-monitor/reference/tables/azurediagnostics#additionalfields-column)に関するページを参照してください。
+    > Azure ログ テーブルには 500 個を超える列を含めることができないため、"_リソース固有モード_" を選択することを **強くお勧めします**。 詳細については、[Azure Diagnostics のログ リファレンス](/azure/azure-monitor/reference/tables/azurediagnostics)に関するページを参照してください。
 
 1. **[保存]** を選択します。
 

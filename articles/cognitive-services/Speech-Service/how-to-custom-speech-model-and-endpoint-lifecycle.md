@@ -8,20 +8,20 @@ manager: dongli
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/2/2021
 ms.author: heikora
-ms.openlocfilehash: b8e02071eca139cde02a8bad1b0e0e443db6ab86
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b82a732533c3d069b519b07c3209d4b96c472900
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103547955"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385027"
 ---
 # <a name="model-and-endpoint-lifecycle"></a>モデルとエンドポイントのライフサイクル
 
-Custom Speech には、*基本モデル* と *カスタム モデル* の両方が使用されます。 言語ごとに、1 つ以上の基本モデルがあります。 一般に、新しい音声モデルが通常の音声サービスにリリースされると、新しい基本モデルとして Custom Speech サービスにもインポートされます。 6 から 12 か月ごとに更新されます。 普通は最新のモデルの方が正確性が高いため、古いモデルは時間の経過と共にあまり役に立たなくなります。
-
-対照的に、カスタム モデルは、選択した基本モデルを、特定の顧客シナリオからのデータに合わせて適応させることで作成されます。 ニーズに合った特定のカスタム モデルを確保した後は、それを長期間使用し続けることができます。 ただし、定期的に最新の基本モデルに更新し、それを時間の経過と共に追加データを使用して再トレーニングすることをお勧めします。 
+標準 (カスタマイズされていない) 音声は、基本モデルと呼ばれる AI モデルに基づいて構築されています。 ほとんどの場合、サポートされている音声言語ごとに異なる基本モデルをトレーニングしています。  音声サービスは、精度と品質を向上させるために、数か月ごとに新しい基本モデルを使用して更新されています。  
+Custom Speech の場合、カスタム モデルは選択した基本モデルを特定の顧客シナリオからのデータに合わせて適応させることで作成されます。 カスタム モデルを作成すると、そのモデルが適応された対応する基本モデルが標準の音声サービスで更新された場合でも、そのモデルは更新または変更されることはありません。  
+このポリシーにより、ユーザーはニーズに合ったカスタム モデルを作成できたら、その特定のカスタム モデルを長期間使用し続けることができます。  ただし、カスタム モデルを定期的に再作成して、最新の基本モデルを適応させ、精度と品質の向上を活用できるようにすることをお勧めします。
 
 モデルのライフサイクルに関しては、他に次のような用語が重要です。
 
@@ -59,7 +59,7 @@ Custom Speech には、*基本モデル* と *カスタム モデル* の両方�
 
 また、[`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetModel) または [`GetBaseModel`](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModel) Custom Speech API を使用し、JSON 応答の `deprecationDates` プロパティで、有効期限を確認することもできます。
 
-GetModel API 呼び出しの有効期限データの例を次に示します。 "DEPRECATIONDATES" に次が表示されます。 
+GetModel API 呼び出しの有効期限データの例を次に示します。 **DEPRECATIONDATES** は、モデルの有効期限が切れたときに表示されます。 
 ```json
 {
     "SELF": "HTTPS://WESTUS2.API.COGNITIVE.MICROSOFT.COM/SPEECHTOTEXT/V3.0/MODELS/{id}",
@@ -80,7 +80,7 @@ GetModel API 呼び出しの有効期限データの例を次に示します。 
     },
     "PROPERTIES": {
     "DEPRECATIONDATES": {
-        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date this model can be used for adaptation
+        "ADAPTATIONDATETIME": "2022-01-15T00:00:00Z",     // last date the base model can be used for adaptation
         "TRANSCRIPTIONDATETIME": "2023-03-01T21:27:29Z"   // last date this model can be used for decoding
     }
     },
@@ -96,6 +96,13 @@ GetModel API 呼び出しの有効期限データの例を次に示します。 
 }
 ```
 Speech Studio のデプロイ セクションで、または Custom Speech API を使用して、エンドポイントで使用されているモデルを変更することにより、ダウンタイムなしで Custom Speech エンドポイントのモデルをアップグレードできます。
+
+## <a name="what-happens-when-models-expire-and-how-to-update-them"></a>モデルの有効期限が切れたときの動作と更新方法
+モデルの有効期限が切れた場合の動作とモデルの更新方法は、その使用方法によって異なります。
+### <a name="batch-transcription"></a>バッチ文字起こし
+[バッチ文字起こし](batch-transcription.md)で使用されるモデルの有効期限が切れた場合、要求は 4xx エラーで失敗します。 これを防ぐには、**文字起こしの作成** 要求の本文で送信される JSON の `model` パラメーターを更新して、より新しい基本モデルまたはより新しいカスタム モデルを指すようにします。 JSON から `model` エントリを削除すると、常に最新の基本モデルを使用することもできます。
+### <a name="custom-speech-endpoint"></a>カスタム音声エンドポイント
+[カスタム音声エンドポイント](how-to-custom-speech-train-model.md)で使用されるモデルの有効期限が切れると、サービスは使用している言語の最新の基本モデルを使用するように自動的にフォールバックします。 ページ上部にある **[Custom Speech]** メニューの **[配置]** を選択してエンドポイント名をクリックすると、その詳細を表示できます。 詳細ページの上部には、このエンドポイントで使用するモデルをダウンタイムなしでシームレスに更新できる **[モデルの更新]** ボタンが表示されます。 この変更は、[**Update Model**](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UpdateModel) Rest API を使用してプログラムで行うこともできます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,17 +3,17 @@ title: 'ML スタジオ (クラシック): Azure Machine Learning に移行す�
 description: スタジオ (クラシック) の R スクリプトの実行モジュールを再構築し、Azure Machine Learning で実行します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 03/08/2021
-ms.openlocfilehash: ac9ad296029451d624345d8b3bb365d881ba9a84
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18d9013b1a5afcf57b54cffc01a15948382210bb
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103565613"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311041"
 ---
 # <a name="migrate-execute-r-script-modules-in-studio-classic"></a>スタジオで R スクリプトの実行モジュールを移行する (クラシック)
 

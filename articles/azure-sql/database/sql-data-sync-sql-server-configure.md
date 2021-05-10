@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: d6b5bab1c1b6c8db4821fdf84728eb66eb55b899
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98882231"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968613"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>チュートリアル:Azure SQL Database と SQL Server のデータベース間の SQL データ同期を設定する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
    | **Private Link を使用する** | サービス マネージド プライベート エンドポイントを選択して、同期サービスとハブ データベースの間にセキュリティで保護された接続を確立します。 |
 
    > [!NOTE]
-   > Microsoft では、**同期メタデータ データベース** として使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。 このデータベースは、選択したリージョンとサブスクリプション内のすべての同期グループの **同期メタデータ データベース** として共有されます。 リージョン内のすべての同期グループと同期エージェントを削除しないと、データベースまたはその名前を変更することはできません。
+   > Microsoft では、**同期メタデータ データベース** として使用する新しい空のデータベースを作成することをお勧めしています。 データ同期は、このデータベースにテーブルを作成し、頻繁に発生するワークロードを実行します。 このデータベースは、選択したリージョンとサブスクリプション内のすべての同期グループの **同期メタデータ データベース** として共有されます。 リージョン内のすべての同期グループと同期エージェントを削除しないと、データベースまたはその名前を変更することはできません。 さらに、エラスティック ジョブ データベースを SQL データ同期メタデータ データベースとして使用することはできません。その逆も同様です。  
 
    **[OK]** を選択し、同期グループが作成されてデプロイされるまで待ちます。
    

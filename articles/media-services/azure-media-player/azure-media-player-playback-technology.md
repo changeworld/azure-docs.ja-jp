@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0fadb679260582a788eb6408ff3761f00c2ceb1a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97916339"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448827"
 ---
 # <a name="playback-technology-tech"></a>再生テクノロジ ("テクノロジ") #
 
@@ -21,7 +21,7 @@ ms.locfileid: "97916339"
 - **azureHtml5JS**: ビデオ要素と共に MSE および EME 標準を利用し、DASH コンテンツをプラグインなしで再生します。Azure Media Services によって、AES-128 ビット エンベロープ暗号化コンテンツまたは DRM の一般的な暗号化コンテンツ (ブラウザーでサポートされている場合に PlayReady および Widevine を使用) がサポートされます。
 - **flashSS**: Flash Player テクノロジを利用して Smooth コンテンツを再生します。Azure Media Services によって AES-128 ビット エンベロープ暗号化がサポートされており、Flash バージョン 11.4 以上が必要です。
 - **html5FairPlayHLS**: ビデオ要素を使用して、HLS 経由で Safari 固有のインブラウザーベースの再生テクノロジを利用します。 このテクノロジでは、FairPlay で保護されたコンテンツを Azure Media Services から再生する必要があります。2016 年 10 月 19 日に techOrder に追加されました。
-- **silverlightSS**: Silverlight テクノロジを利用して Smooth コンテンツを再生します。PlayReady で保護されたコンテンツが Azure Media Services によってサポートされます。
+- **SilverlightSS**: Silverlight テクノロジを利用して Smooth コンテンツを再生します。PlayReady で保護されたコンテンツが Azure Media Services によってサポートされます。
 - **html5**: ビデオ要素を使用して、インブラウザーベースの再生テクノロジを利用します。  Apple iOS または Android デバイスの場合、このテクノロジで HLS ストリームの再生が可能です。基本的な AES-128 ビット エンベロープ暗号化または DRM コンテンツ (ブラウザーでサポートされている場合に FairPlay を使用) が一部サポートされます。
 
 ## <a name="tech-order"></a>テクノロジの順序 ##
@@ -45,16 +45,16 @@ Azure Media Services のストリーミング コンテンツでテクノロジ�
 | Browser        | OS                                                       | 想定されるテクノロジ (クリア)  | 想定されるテクノロジ (AES)  | 想定されるテクノロジ (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
 | EdgeIE 11      | Windows 10、Windows 8.1、Windows Phone 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11          | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| IE 11          | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | サポート対象外                |
 | Edge           | Xbox One<sup>1</sup> (2015 年 11 月の更新)                   | azureHtml5JS           | azureHtml5JS         | サポート対象外                |
 | Chrome 37 以降     | Windows 10、Windows 8.1、macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Firefox 47 以降    | Windows 10、Windows 8.1、macOS X Yosemite 以降<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 42 ～ 46  | Windows 10、Windows 8.1、macOS X Yosemite 以降<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | silverlightSS (PlayReady)    |
-| Firefox 35 ～ 41  | Windows 10、Windows 8.1                                  | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Firefox 42 ～ 46  | Windows 10、Windows 8.1、macOS X Yosemite 以降<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | SilverlightSS (PlayReady)    |
+| Firefox 35 ～ 41  | Windows 10、Windows 8.1                                  | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | Safari         | iOS 6 以降                                                   | html5                  | html5 (トークンなし) 3    | サポート対象外                |
 | Safari 8 以降      | OS X Yosemite 以降                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
-| Safari 6       | OS X Mountain Lion<sup>1</sup>                           | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| Safari 6       | OS X Mountain Lion<sup>1</sup>                           | flashSS                | flashSS              | SilverlightSS (PlayReady)    |
 | Chrome 37 以降     | Android 4.4.4 以降<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome 37 以降     | Android 4.02                                             | html5                  | html5 (トークンなし)<sup>3</sup>    | サポート対象外                |
 | Firefox 42 以降    | Android 5.0 以降<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | サポート対象外                |

@@ -8,36 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bce09fad6ffa169a019628498a686226eff266c7
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728112"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384980"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services をデプロイするための前提条件 (延長サポート)
 
-> [!IMPORTANT]
-> Cloud Services (延長サポート) は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 Cloud Services (延長サポート) のデプロイを成功させるには、下の手順を確認し、デプロイを試行する前に各項目を完了します。 
-
-## <a name="register-the-cloudservices-feature"></a>Cloud Services 機能を登録する
-サブスクリプションに機能を登録します。 登録が完了するまでに数分かかる場合があります。 
-
-```powershell
-Register-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
-```
-
-以下を使用して登録の状態を確認します。  
-```powershell
-Get-AzProviderFeature 
-
-#Sample output
-FeatureName               ProviderName      RegistrationState
-CloudServices           Microsoft.Compute    Registered
-```
 
 ## <a name="required-service-configuration-cscfg-file-updates"></a>必要なサービス構成 (.cscfg) ファイルの更新
 
@@ -78,8 +58,16 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2021-12-17T23:59:59.0000000+05:30" /> 
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" /> 
 ```
+サービス構成 (.cscfg) ファイルの各ロールの古い診断設定を削除します。
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+```
 
 ## <a name="required-service-definition-file-csdef-updates"></a>必要なサービス定義ファイル (.csdef) の更新
+
+> [!NOTE]
+> サービス定義ファイル (.csdef) を変更するには、パッケージ ファイル (.cspkg) を再度生成する必要があります。 .csdef ファイルに次の変更を加え、クラウド サービスの最新の設定を取得した後で、.cspkg をビルドして再パッケージ化してください
 
 ### <a name="1-virtual-machine-sizes"></a>1) 仮想マシンのサイズ
 次のサイズは Azure Resource Manager では非推奨です。 ただし、これらを引き続き使用する場合は、関連する Azure Resource Manager の名前付け規則に従って `vmsize` 名を更新してください。  
@@ -117,10 +105,15 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 <Import moduleName="RemoteForwarder" /> 
 </Imports> 
 ```
+古い診断プラグインを使用したデプロイでは、ロールごとにサービス定義 (.csdef) ファイルから削除した設定が必要です。
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+```
 
 ## <a name="key-vault-creation"></a>Key Vault の作成 
 
-Key Vault は、Cloud Services (延長サポート) に関連付けられている証明書を格納するために使用されます。 証明書を Key Vault に追加してから、サービス構成ファイルでその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースで Key Vault からシークレットとして格納されている証明書を取得できるようにするために、適切なアクセス許可に対して Key Vault を有効にする必要があります。 Key Vault は、[Azure portal](../key-vault/general/quick-create-portal.md) および [PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。 Key Vault は、Cloud Service と同じリージョンおよびサブスクリプションに作成する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
+Key Vault は、Cloud Services (延長サポート) に関連付けられている証明書を格納するために使用されます。 証明書を Key Vault に追加してから、サービス構成ファイルでその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで "Azure Virtual Machines (展開用)" に対する "アクセス ポリシー" を (ポータル上で) 有効にする必要もあります。 Key Vault を [Azure portal](../key-vault/general/quick-create-portal.md) で、または[PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。 Key Vault は、クラウド サービスと同じリージョンおよびサブスクリプションに作成する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。

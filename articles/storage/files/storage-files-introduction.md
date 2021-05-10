@@ -7,20 +7,15 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7279c5578d969db9178ce85734e3a43f9eccdf8d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98070135"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780049"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
 Azure Files では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)または[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System)を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスのデプロイにより、同時にマウントできます。 Azure Files SMB ファイル共有には、Windows、Linux、および macOS クライアントからアクセスできます。 Azure Files NFS ファイル共有には、Linux または macOS クライアントからアクセスできます。 さらに、データが使用されている場所の近くから高速アクセスするため、Azure File Sync を使用して、Windows サーバーに Azure Files SMB ファイル共有をキャッシュできます。
-
-## <a name="videos"></a>ビデオ
-| Azure File Sync の概要 | Azure Files と Sync (Ignite 2019)  |
-|-|-|
-| [![Azure File Sync の概要に関する動画のスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure Files と Sync に関するプレゼンテーションのスクリーンキャスト - クリックして再生](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
 
 Azure Files の一般的なユース ケースに関するビデオをいくつかご紹介します。
 * [ファイル サーバーをサーバーレス Azure ファイル共有に置き換える](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)

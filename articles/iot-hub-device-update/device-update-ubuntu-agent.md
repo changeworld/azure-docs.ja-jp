@@ -6,20 +6,20 @@ ms.author: vimeht
 ms.date: 2/16/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: f7e12567269304b33a98ff1eb9727cfdf0afbdc4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6464ad632251053ac481fbd1f6a3e1197aa470df
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418642"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121304"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-package-agent-on-ubuntu-server-1804-x64"></a>Ubuntu Server 18.04 x64 上のパッケージ エージェントを使用した Device Update for Azure IoT Hub のチュートリアル
 
 Device Update for IoT Hub では、イメージベースとパッケージベースの 2 つの形式の更新がサポートされています。
 
-パッケージベースの更新は、デバイス上の特定のコンポーネントまたはアプリケーションのみを変更するターゲット指定の更新となります。 これにより、帯域幅の消費量が少なくなるほか、更新のダウンロードとインストールにかかる時間が短縮されます。 通常、パッケージ更新プログラムを使用すると、更新プログラムを適用する際のデバイスのダウンタイムを短縮し、イメージ作成のオーバーヘッドを回避できます。
+パッケージベースの更新は、デバイス上の特定のコンポーネントまたはアプリケーションのみを変更するターゲット指定の更新となります。 パッケージベースの更新により、帯域幅の消費量が少なくなるほか、更新のダウンロードとインストールにかかる時間が短縮されます。 通常、パッケージ更新プログラムを使用すると、更新プログラムを適用する際のデバイスのダウンタイムを短縮し、イメージ作成のオーバーヘッドを回避できます。
 
-このチュートリアルでは、Device Update for IoT Hub を通じて、エンド ツー エンドのパッケージベースの更新を行う手順について説明します。 このチュートリアルでは、Azure IoT Edge と Device Update パッケージ エージェントが実行されている Ubuntu Server 18.04 x64 を使用します。 このチュートリアルではサンプル パッケージの更新を扱いますが、同様の手順を使用すれば、他のパッケージ、たとえば Azure IoT Edge やそこで使用されているコンテナー エンジンを更新することもできます。
+このエンド ツー エンドのチュートリアルでは、Device Update パッケージ エージェントを使用して、Ubuntu Server 18.04 x64 の Azure IoT Edge を更新する手順について説明します。 このチュートリアルでは IoT Edge の更新を扱いますが、同様の手順を使用すれば、他のパッケージ、たとえば使用されているコンテナー エンジンを更新することもできます。
 
 このチュートリアルで取り上げるツールと概念は、使用を検討している OS プラットフォーム構成が異なる場合にも当てはまります。 このエンド ツー エンドの更新プロセスの概要を完了したら、使用する更新の形式や OS プラットフォームを選択して、詳細に進みます。
 
@@ -32,23 +32,19 @@ Device Update for IoT Hub では、イメージベースとパッケージベー
 > * パッケージの更新をデプロイする
 > * 更新プログラムのデプロイを監視する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
 ## <a name="prerequisites"></a>前提条件
 
-* IoT Hub へのアクセス。 S1 (Standard) レベル以上を使用することをお勧めします。
-* ご使用の IoT ハブにリンクされている Device Update インスタンスおよびアカウント。
-  * [Device Update アカウントの作成とリンク](create-device-update-account.md)がまだ済んでいない場合は、ガイドに従って行ってください。
+* まだ [Device Update アカウントとインスタンス](create-device-update-account.md)を作成していない場合は作成します (IoT ハブの構成も含む)。
 * [IoT Edge デバイスの接続文字列](../iot-edge/how-to-register-device.md?view=iotedge-2020-11&preserve-view=true#view-registered-devices-and-retrieve-connection-strings)。
 
 ## <a name="prepare-a-device"></a>デバイスを準備する
 ### <a name="using-the-automated-deploy-to-azure-button"></a>自動化された [Azure へのデプロイ] ボタンを使用する
 
-Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、このチュートリアルでは便宜上 [cloud-init](../virtual-machines/linux/using-cloud-init.md) ベースの [Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用します。 Azure IoT Edge ランタイムと Device Update パッケージ エージェントの両方がインストールされた後、指定した IoT Edge デバイスのデバイス接続文字列 (前提条件) を使用して、プロビジョニング情報を基にデバイスの構成が自動的に行われます。 そのため、設定を行うために SSH セッションを開始する必要はありません。
+Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、このチュートリアルでは便宜上 [cloud-init](../virtual-machines/linux/using-cloud-init.md) ベースの [Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)を使用します。 Azure IoT Edge ランタイムと Device Update パッケージ エージェントの両方がインストールされた後、指定した IoT Edge デバイスのデバイス接続文字列 (前提条件) を使用して、プロビジョニング情報を基にデバイスの構成が自動的に行われます。 また、Azure Resource Manager テンプレートを使用すれば、セットアップを行うために SSH セッションを開始する必要はありません。
 
 1. 開始するには、以下のボタンをクリックします。
 
-   [![iotedge-vm-deploy の [Deploy to Azure] ボタン](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2F1.2.0-rc4%2FedgeDeploy.json)
+   [![iotedge-vm-deploy の [Deploy to Azure] ボタン](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fdevice-update-tutorial%2FedgeDeploy.json)
 
 1. 新しく起動されたウィンドウで、使用可能なフォームフィールドに入力します。
 
@@ -90,7 +86,7 @@ Ubuntu 18.04 LTS 仮想マシンを短時間で設定しやすいように、こ
    > 設定後にこの VM に SSH 接続する場合は、以下のコマンドで、関連付けられている **DNS 名** を使用します。`ssh <adminUsername>@<DNS_Name>`
 
 ### <a name="optional-manually-prepare-a-device"></a>(省略可) デバイスを手動で準備する
-デバイスのインストールと構成を手動で行う次の手順は、この [cloud-init スクリプト](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)によって自動化された手順に相当します。 これに従って物理デバイスを準備することができます。
+以下に示したのは、[cloud-init スクリプト](https://github.com/Azure/iotedge-vm-deploy/blob/1.2.0-rc4/cloud-init.txt)によって自動化される手順と同じようにデバイスのインストールと構成を手動で行う手順です。 これらの手順に従って物理デバイスを準備することができます。
 
 1. [Azure IoT Edge ランタイムのインストール](../iot-edge/how-to-install-iot-edge.md?view=iotedge-2020-11&preserve-view=true)手順に従います。
    > [!NOTE]
@@ -114,9 +110,9 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 1. [Azure portal](https://portal.azure.com) にログインし、IoT Hub に移動します。
 
-2. 左側のナビゲーション ペインの [IoT Edge] から、対象の IoT Edge デバイスを見つけて、[デバイス ツイン] に移動します。
+2. 左側のナビゲーション ペインの [IoT Edge] から、対象の IoT Edge デバイスを見つけて、[デバイス ツイン] または [モジュール ツイン] に移動します。
 
-3. デバイス ツインで、Device Update の既存のタグ値を null に設定することで削除します。
+3. Device Update エージェント モジュールの [モジュール ツイン] で、既存の Device Update タグ値を null 値に設定して削除します。 Device Update エージェントでデバイス ID を使用している場合は、[デバイス ツイン] でそれらの変更を行います。
 
 4. 次に示すように、Device Update の新しいタグ値を追加します。
 
@@ -128,11 +124,11 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 ## <a name="import-update"></a>更新プログラムをインポートする
 
-1. Github の [デバイス更新プログラムのリリース](https://github.com/Azure/iot-hub-device-update/releases)に関するページ移動し、[Assets] ドロップダウンをクリックします。
+1. GitHub の[デバイス更新プログラムのリリース](https://github.com/Azure/iot-hub-device-update/releases)に関するページに移動し、[Assets]\(資産\) ドロップダウンをクリックします。
 
-3. [`apt-update-import-samples.zip`] をクリックしてダウンロードします。
+3. [`Edge.package.update.samples.zip`] をクリックしてダウンロードします。
 
-5. フォルダーの内容を抽出して、さまざまな更新プログラムのサンプルとそれに対応するインポー トマニフェストを見つけます。 
+5. フォルダーの内容を抽出して、更新プログラムのサンプルとそれに対応するインポー トマニフェストを見つけます。 
 
 2. Azure portal で、IoT Hub の左側のナビゲーション バーから [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 
@@ -140,10 +136,8 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 4. [+ 新しい更新プログラムのインポート] を選択します。
 
-5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 前にダウンロードしたフォルダーで、`sample-package-update-1.0.1-importManifest.json` インポート マニフェストを選択します。 次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 以前にダウンロードしたフォルダーから、`sample-1.0.1-libcurl4-doc-apt-manifest.json` apt マニフェスト更新ファイルを選択します。
-この更新プログラムにより、使用可能な最新バージョンの `libcurl4-doc package` が、お使いのデバイスにインストールされます。
-
-   または、前にダウンロードしたフォルダーで、`sample-package-update-2-2.0.1-importManifest.json` インポート マニフェスト ファイルと `sample-2.0.1-libcurl4-doc-7.58-apt-manifest.json` apt マニフェスト更新ファイルを選択することもできます。 これにより、特定バージョン (v7.58.0) の `libcurl4-doc package` が自分のデバイスにインストールされます。
+5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 前にダウンロードしたフォルダーで、`sample-1.0.1-aziot-edge-importManifest.json` インポート マニフェストを選択します。 次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 以前にダウンロードしたフォルダーから、`sample-1.0.1-aziot-edge-apt-manifest.json` apt マニフェスト更新ファイルを選択します。
+この更新プログラムによって、デバイスの `aziot-identity-service` パッケージと `aziot-edge` パッケージがバージョン 1.2.0~rc4-1 に更新されます。
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="更新ファイルの選択を示すスクリーンショット。" lightbox="media/import-update/select-update-files.png":::
 
@@ -155,7 +149,7 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 8. [送信] を選択してインポート プロセスを開始します。
 
-9. インポート プロセスが開始され、画面が [インポートの履歴] セクションに変わります。 [更新] を選択すると、インポート プロセスが完了するまで進行状況が表示されます。 更新プログラムのサイズに応じて、これは数分で完了する場合も、それよりも長くかかる場合もあります。
+9. インポート プロセスが開始され、画面が [インポートの履歴] セクションに変わります。 [更新] を選択すると、インポート プロセスが完了するまで進行状況が表示されます。 更新プログラムのサイズに応じて、インポート プロセスは数分で完了する場合も、それよりも長くかかる場合もあります。
 
    :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="更新プログラムのインポート シーケンスを示すスクリーンショット。" lightbox="media/import-update/update-publishing-sequence-2.png":::
 
@@ -216,15 +210,9 @@ Device Update for Azure IoT Hub ソフトウェア パッケージには、次�
 
 これで、Ubuntu Server 18.04 x64 デバイス上で Device Update for IoT Hub を使用して、エンド ツー エンドのパッケージ更新が正常に完了しました。 
 
-## <a name="bonus-steps"></a>ボーナス ステップ
-
-1. 「更新プログラムをインポートする」セクションと「更新プログラムをデプロイする」セクションを繰り返します
-
-3. 「更新プログラムをインポートする」の手順中に、前にダウンロードしたフォルダーで、`sample-package-update-1.0.2-importManifest.json` インポート マニフェスト ファイルと `sample-1.0.2-libcurl4-doc-remove-apt-manifest.json` apt マニフェスト更新ファイルを選択することもできます。 この更新プログラムによって、インストールされている `libcurl4-doc package` がデバイスから削除されます。
-
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不要になったら、Device Update アカウント、インスタンス、IoT Hub、IoT Edge デバイス ([Azure へのデプロイ] ボタンで VM を作成した場合) をクリーンアップしてください。 これを行うには、個々のリソースに移動し、[削除] を選択します。 デバイス更新アカウントをクリーンアップする前に、デバイス更新インスタンスをクリーンアップする必要があることに注意してください。
+不要になったら、Device Update アカウント、インスタンス、IoT Hub、IoT Edge デバイス ([Azure へのデプロイ] ボタンで VM を作成した場合) をクリーンアップしてください。 これを行うには、個々のリソースに移動し、[削除] を選択します。 デバイス更新アカウントをクリーンアップする前に、デバイス更新インスタンスをクリーンアップする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

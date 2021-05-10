@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 75e6ebaea4c5ba883820d2309212b35fed128142
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 5d768fdc2540496769883d839cfbb4f009a2000c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422129"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077637"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge のモジュールと接続を設定する
 
@@ -42,12 +42,12 @@ Azure SQL Edge で鉄鉱石の不純物を予測する、この 3 部構成チ�
 
 4. **[コンテナー レジストリの資格情報]** で、次の値を入力します。
 
-   _フィールド_|_Value_
-   -------|-------
-   名前|レジストリ名
-   Address|ログイン サーバー
-   [ユーザー名]|ユーザー名
-   Password|Password
+   | _フィールド_   | _Value_       |
+   | -------   | -------       |
+   | 名前      | レジストリ名 |
+   | Address   | ログイン サーバー  | 
+   | [ユーザー名] | ユーザー名      | 
+   | Password  | Password      | 
   
 ## <a name="build-push-and-deploy-the-data-generator-module"></a>データ ジェネレーター モジュールのビルド、プッシュ、およびデプロイ
 

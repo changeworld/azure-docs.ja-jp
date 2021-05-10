@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/07/2020
+ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: c26c56940e95fe32b709aa01fbaa9e567e797197
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100376362"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074541"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -56,6 +56,97 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >Azure AD Connect を最新バージョンにアップグレードする方法の詳細については、[この記事](./how-to-upgrade-previous-version.md)を参照してください。
 >
 >廃止されたバージョンのバージョン履歴情報については、[Azure AD Connect バージョンのリリース履歴アーカイブ](reference-connect-version-history-archive.md)に関する記事を参照してください。
+
+## <a name="1640"></a>1.6.4.0
+
+### <a name="release-status"></a>リリースの状態
+3/31/2021: ダウンロード専用にリリース。自動アップグレードには使用できません
+
+### <a name="bug-fixes"></a>バグの修正
+- このリリースでは、バージョン 1.6.2.4 のバグが修正されています。このリリースにアップグレードした後に、Azure AD Connect Health 機能が正しく登録されず、機能しませんでした。 ビルド 1.6.2.4 をデプロイしたお客様には、このビルドを使用して Azure AD Connect サーバーを更新することが要求されます。これにより、Health 機能が正しく登録されます。 
+
+## <a name="1624"></a>1.6.2.4
+>[!IMPORTANT]
+> 2021 年 3 月 30 日の更新: このビルドで問題が検出されました。 このビルドをインストールすると、Health サービスが登録されません。 このビルドをインストールしないことをお勧めします。 修正プログラムが間もなくリリースされる予定です。
+> このビルドが既にインストールされている場合は、[こちらの記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#manually-register-azure-ad-connect-health-for-sync)に示されているように、コマンドレットを使用して手動で Health サービスを登録できます
+
+>[!NOTE]
+> - このリリースはダウンロードでのみ提供されます。
+> - 同期規則の変更のため、このリリースにアップグレードする場合は完全な同期が必要になります。
+> - このリリースでは、AADConnect サーバーは既定で、新しい V2 エンド ポイントに設定されます。 このエンド ポイントは、ドイツ国内クラウド、中国国内クラウド、米国政府のクラウドではサポートされていないことに注意してください。これらのクラウドにこのバージョンをデプロイする必要がある場合は、[こちらの手順](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback)に従って V1 エンド ポイントに戻す必要があります。 そのようにしないと、同期でエラーが発生します。
+
+### <a name="release-status"></a>リリースの状態
+3/19/2021: ダウンロード用にリリース。自動アップグレードには使用できません
+
+### <a name="functional-changes"></a>機能の変更点
+
+ - 書き戻されるグループ内のメンバーシップ数を 5 万に制限するように、既定の同期規則が更新されました。
+   - グループの書き戻しにおけるメンバーシップ数の制限 (Out to AD - Group Writeback Member Limit) と、Azure Active Directory グループへのグループの同期の制限 (Out to AAD - Group Writeup Member Limit) のため、新しい既定の同期規則が追加されました。
+   - 書き戻しグループ内のメンバー数を 5 万に制限するため、"Out to AD - Group SOAInAAD - Exchange" ルールにメンバー属性が追加されました
+ - "In from AAD - Group SOAInAAD" 規則がクローンされ、AADConnect がアップグレードされた場合に Group Writeback v2 をサポートするため、同期規則が更新されました。
+     -更新された規則は既定で無効になるため、targetWritebackType は null になります。
+     - AADConnect では (書き戻しが有効になっている Azure Active Directory セキュリティ グループを含め)、すべてのクラウド グループを配布グループとして書き戻します。
+   -"Out to AD - Group SOAInAAD" 規則がクローンされ、AADConnect がアップグレードされた場合。
+     - 更新された規則は既定で無効になります。 ただし、追加された新しい同期規則 "Out to AD - Group SOAInAAD - Exchange" が有効になります。
+     - Cloned Custom Sync Rule の優先順位に応じて、AADConnect により、Mail 属性と Exchange 属性が流されます。
+     - 何らかの Mail 属性や Exchange 属性が Cloned Custom Sync Rule によって流されない場合、それらの属性は新しい Exchange Sync Rule によって追加されます。
+ - [選択的なパスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)のサポートが追加されました
+ - 新しい[単一オブジェクト同期コマンドレット](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync)が追加されました。 このコマンドレットは、Azure AD Connect の同期の構成をトラブルシューティングするために使用します。 
+ -  Azure AD Connect では、サービスを構成するための、ハイブリッド ID の管理者の役割をサポートするようになりました。
+ - AADConnectHealth エージェントが 3.1.83.0 に更新されました
+ - 新しいバージョンの [ADSyncTools PowerShell モジュール](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools)。これには、新しいコマンドレットや改良されたコマンドレットがいくつかあります。 
+ 
+   - Clear-ADSyncToolsMsDsConsistencyGuid
+   - ConvertFrom-ADSyncToolsAadDistinguishedName
+   - ConvertFrom-ADSyncToolsImmutableID
+   - ConvertTo-ADSyncToolsAadDistinguishedName
+   - ConvertTo-ADSyncToolsCloudAnchor
+   - ConvertTo-ADSyncToolsImmutableID
+   - Export-ADSyncToolsAadDisconnectors
+   - Export-ADSyncToolsObjects
+   - Export-ADSyncToolsRunHistory
+   - Get-ADSyncToolsAadObject
+   - Get-ADSyncToolsMsDsConsistencyGuid
+   - Import-ADSyncToolsObjects
+   - Import-ADSyncToolsRunHistory
+   - Remove-ADSyncToolsAadObject
+   - Search-ADSyncToolsADobject
+   - Set-ADSyncToolsMsDsConsistencyGuid
+   - Trace-ADSyncToolsADImport
+   - Trace-ADSyncToolsLdapQuery
+
+ - トークン取得の失敗に関するエラーのログ記録が更新されました。
+ - リンクされている情報の詳細を表示するための、構成ページの [詳細情報] リンクが更新されました。
+ - 以前の同期 UI の [CS 検索] ページから、[明示] 列が削除されました
+ - 以前の手順で資格情報がまだ指定されていない場合に、ユーザーに資格情報の入力を求めたり、ADSyncConfig モジュールを使用して独自のアクセス許可を構成したりするため、グループ書き戻しフローに追加の UI が設けられました。
+ - DC 上の ADSync サービス アカウント用の MSA を自動作成します。 
+ -  既存のコマンドレットで Azure Active Directory DirSync 機能の Group Writeback V2 を設定し、取得する機能が追加されました。
+    - Set-ADSyncAADCompanyFeature
+    - Get-ADSyncAADCompanyFeature
+ - AWS API バージョンを読み取るコマンドレットが 2 つ追加されました
+    - Get-ADSyncAADConnectorImportApiVersion - AWS API の get import のバージョンを取得します
+    - Get-ADSyncAADConnectorExportApiVersion - AWS API の get export のバージョンを取得します
+
+ - サービスでの変更に関するトラブルシューティングを支援するため、同期規則に加えられた変更が追跡されるようになりました。 コマンドレット "Get-ADSyncRuleAudit" を使用して、追跡された変更を取得します。
+ - ADSyncAdmin グループのユーザーが AD DS コネクタ アカウントを変更できるように、[ADSyncConfig PowerShell モジュール](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account#using-the-adsyncconfig-powershell-module)の Add-ADSyncADDSConnectorAccount が更新されました。 
+
+### <a name="bug-fixes"></a>バグの修正
+ - 白い背景での明るさの要件を満たすため、無効にされる前景色が更新されました。 明るさの要件を満たすため、無効にされているページが選択されたときは前景のテキストの色を白に設定する、ナビゲーション ツリーでの追加の条件が用意されました。
+ - Set-ADSyncPasswordHashSyncPermissions コマンドレットの粒度が向上しています。省略可能な "ADobjectDN" パラメーターを含めるため、PHS アクセス許可スクリプト (Set-ADSyncPasswordHashSyncPermissions) が更新されています。 
+ - アクセシビリティ バグの修正。 スクリーン リーダーでは、フォレストの一覧を保持する UX 要素を、"**フォレストの一覧の一覧**" ではなく "**フォレストの一覧**" として記述するようになりました。
+ - Azure AD Connect ウィザードの一部の項目について、スクリーン リーダーの出力が更新されました。 コントラストの要件を満たすため、ボタンをポイントしたときの色が更新されました。 コントラストの要件を満たすため、Sychronization Service Manager のタイトル色が更新されました。
+ - カスタム拡張属性を持つエクスポートされた構成から AADConnect をインストールする場合の問題を修正しました。同期規則の適用中に、ターゲット スキーマで拡張属性の確認をスキップするための条件が追加されました。
+ - グループ書き戻し機能が有効になっている場合は、インストール時に適切なアクセス許可が追加されます。
+ - インポート時に、重複している既定の同期規則の優先順位が修正されます
+ - 正常性ポータルで修正されたオブジェクトが競合するとき、V2 API 差分インポート中、ステージング エラーが発生した問題を解決しました。
+ - CS オブジェクトのリンク状態の一貫性が失われる原因となった同期エンジンの問題が修正されています
+ - Get-ADSyncConnectorStatistics 出力にインポート カウンターが追加されました。
+ - pass2 ウィザード中のいくつかのまれなケースで発生する、到達できないドメインの選択解除 (以前に選択済み) に関する問題が修正されています。
+ - カスタム規則の優先順位が重複している場合はポリシーのインポートとエクスポートが失敗するように変更されています 
+ - ドメイン選択ロジックのバグが修正されています。
+ - ソース アンカーとして mS-DS-ConsistencyGuid を使用し、In from AD - Group Join 規則をクローンした場合にビルド 1.5.18.0 で起きる問題を修正します。
+ - AADConnect を新規インストールすると、使用可能なものが存在しており、別のものが渡されていない場合は、クラウドに格納されているエクスポート削除のしきい値が使用されます。
+ - AADConnect で、ハイブリッド参加デバイスの AD displayName の変更が読み取られない問題を修正しました
 
 ## <a name="15450"></a>1.5.45.0
 
