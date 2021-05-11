@@ -9,15 +9,15 @@ metadata:
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 09/28/2020
-  author: kenwith
-  ms.author: kenwith
-  manager: celested
-  ms.openlocfilehash: e3f258813fd937fa82ce108150b84e9ce78f77aa
-  ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+  author: iantheninja
+  manager: CelesteDG
+  ms.author: iangithinji
+  ms.openlocfilehash: f7e1956f1c4f1469c9c46c60ace44c19e53c59ca
+  ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99052264"
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108317597"
 landingContent:
 - title: アプリ管理について
   linkLists:
@@ -79,10 +79,10 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: アプリ プロキシとは
-      url: what-is-application-proxy.md
+    - text: アプリケーション プロキシとは
+      url: ../app-proxy/what-is-application-proxy.md
     - text: アプリ プロキシのデプロイ
-      url: application-proxy-deployment-plan.md
+      url: ../app-proxy/application-proxy-deployment-plan.md
 - title: アプリのセキュリティ保護
   linkLists:
   - linkListType: learn

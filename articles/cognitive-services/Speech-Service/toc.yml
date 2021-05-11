@@ -43,8 +43,6 @@
           items:
             - name: Custom Speech とは
               href: custom-speech-overview.md
-            - name: Speech Studio でのオーディオ ファイルを使用したモデルのテスト
-              href: quickstarts/speech-studio-test-model.md
             - name: Custom Speech 用のテスト データを準備する
               href: how-to-custom-speech-test-and-train.md
             - name: Custom Speech データを検査する
@@ -586,9 +584,7 @@
     - name: Speech Studio
       items:
         - name: Speech Studio の概要
-          href: 'https://speech.microsoft.com'
-        - name: Speech Studio を使用してカスタム コマンド アプリを作成する
-          href: ./quickstart-custom-commands-application.md
+          href: speech-studio-overview.md
     - name: エンタープライズ対応
       items:
         - name: リージョンのサポート

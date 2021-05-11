@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 01/28/2021
-  ms.openlocfilehash: 11e3de57bdf2853e94ec61a21ab54ae085f4f6b1
-  ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+  ms.openlocfilehash: ada227d0746b49ba73b6bea2104d3a7adcbaa1c5
+  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/29/2021
-  ms.locfileid: "99062148"
+  ms.lasthandoff: 04/07/2021
+  ms.locfileid: "107027467"
 landingContent:
 - title: Virtual Network について
   linkLists:
@@ -64,10 +64,6 @@ landingContent:
     links:
     - text: Azure リソースへのアクセスをセキュリティで保護して分離する
       url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
-  - linkListType: video
-    links:
-    - text: Azure Private Link を使用して Azure PaaS リソースに安全にアクセスする
-      url: https://www.youtube.com/watch?v=PWKM5KXjWno
 - title: 仮想ネットワークの接続
   linkLists:
   - linkListType: concept
@@ -104,6 +100,10 @@ landingContent:
     links:
     - text: ネットワーク トラフィックのルーティング - ポータル
       url: tutorial-create-route-table-portal.md
+  - linkListType: learn
+    links:
+    - text: ルートを使用して Azure デプロイでのトラフィック フローを管理および制御する
+      url: /learn/modules/control-network-traffic-flow-with-routes/
 - title: IP アドレスの作成
   linkLists:
   - linkListType: concept

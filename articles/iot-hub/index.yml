@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 391d4372e71241854c3a9920c35ce0711fe6634e
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 06950bec1cdc7e5abc08f147417df6f1da8c502e
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102030666"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108133549"
 landingContent:
 - title: 作業の開始
   linkLists:
@@ -139,7 +139,7 @@ landingContent:
     - text: X.509 CA 証明書を使用したデバイス認証
       url: iot-hub-x509ca-overview.md
     - text: X.509 セキュリティと IoT Hub
-      url: iot-hub-security-x509-get-started.md
+      url: ./tutorial-x509-scripts.md
     - text: X.509 CA 証明書セキュリティの概念
       url: iot-hub-x509ca-concept.md
 - title: Iot Hub への Azure CLI の使用

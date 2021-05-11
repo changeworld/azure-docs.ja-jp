@@ -10,12 +10,12 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 01/02/2020
-  ms.openlocfilehash: 4cdd9b4e93196ddb737861f87882e58f3964a601
-  ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+  ms.openlocfilehash: dba09c46a26b8daf50df546bd38d1aa58868ece3
+  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/08/2021
-  ms.locfileid: "102456030"
+  ms.lasthandoff: 04/19/2021
+  ms.locfileid: "107726558"
 landingContent:
 - title: Azure Resource Manager について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
     - text: リソース グループとサブスクリプションをまたがる移動
       url: move-resource-group-and-subscription.md
     - text: リージョン間で移動する
-      url: move-region.md
+      url: move-resources-overview.md
     - text: リソースへのタグ付け
       url: tag-resources.md
     - text: リソースのロック
@@ -79,7 +79,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: アクティビティ ログを表示する
+    - text: アクティビティ ログの表示
       url: view-activity-logs.md
     - text: 要求の制限と調整
       url: request-limits-and-throttling.md

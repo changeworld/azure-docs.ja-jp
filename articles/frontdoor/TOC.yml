@@ -41,7 +41,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/front-door-security-baseline?toc=/azure/frontdoor/TOC.json
     - name: バック エンドとバックエンド プール
       href: front-door-backend-pool.md
     - name: Front Door でのキャッシュ
@@ -49,7 +49,7 @@
     - name: DDoS 保護
       href: front-door-ddos.md
     - name: Front Door に関する FAQ
-      href: front-door-faq.md
+      href: front-door-faq.yml
     - name: geo フィルタリング
       href: front-door-geo-filtering.md
     - name: 正常性プローブ
@@ -99,7 +99,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/front-door/
+      href: /cli/azure/afd/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor
     - name: REST API

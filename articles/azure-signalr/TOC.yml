@@ -82,10 +82,10 @@
       href: signalr-concept-authenticate-oauth.md
     - name: イベント処理
       href: signalr-concept-event-grid-integration.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/signalr-security-baseline?toc=/azure/azure-signalr/TOC.json
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
 - name: 操作方法ガイド
@@ -129,7 +129,7 @@
 - name: References
   items:
     - name: Azure CLI
-      href: signalr-reference-cli.md
+      href: /cli/azure/signalr
     - name: REST API
       href: 'https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md'
     - name: ASP.NET Core SignalR
