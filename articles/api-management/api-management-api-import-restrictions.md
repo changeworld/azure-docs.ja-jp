@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 6a53cc2b2ec6d46b4bde54af58b4e5542ff6cf79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3205d4c4c6d8d7d821cb65400a4c1f19d6484005
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91932636"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226536"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 

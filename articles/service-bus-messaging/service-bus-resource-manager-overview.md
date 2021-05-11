@@ -8,12 +8,12 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df8a7fde9114f03521f0e57e072f81a867efcf39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5af10bc30a7a3bd8ca211c3fd74364c74ee36fb5
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89075258"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278508"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Service Bus リソースを作成する
 
@@ -38,7 +38,7 @@ Azure Resource Manager テンプレートを使用すると、ソリューショ
 
 ## <a name="deploy-with-powershell"></a>PowerShell でデプロイする
 
-次の手順では、PowerShell を使用して、Azure Resource Manager テンプレートをデプロイします。標準レベルの Service Bus 名前空間と、名前空間内にキューが作成されます。 この例は、[キューを使用した Service Bus 名前空間の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue)テンプレートに基づいています。 ワークフローの概要は次のとおりです。
+次の手順では、PowerShell を使用して、Azure Resource Manager テンプレートをデプロイします。標準レベルの Service Bus 名前空間と、名前空間内にキューが作成されます。 この例は、[キューを使用した Service Bus 名前空間の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json)テンプレートに基づいています。 ワークフローの概要は次のとおりです。
 
 1. PowerShell をインストールします。
 2. テンプレートと (必要に応じて) パラメーター ファイルを作成します。
@@ -56,7 +56,7 @@ Azure Resource Manager テンプレートのデプロイの詳細については
 
 ### <a name="create-a-template"></a>テンプレートの作成
 
-GitHub からリポジトリを複製するか、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) テンプレートをコピーします。
+GitHub からリポジトリをクローンするか、[servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.json) テンプレートをコピーします。
 
 ```json
 {
@@ -131,7 +131,7 @@ GitHub からリポジトリを複製するか、[201-servicebus-create-queue](h
 
 ### <a name="create-a-parameters-file-optional"></a>パラメーター ファイルを作成する (省略可能)
 
-省略可能なパラメーター ファイルを使用するには、[201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) ファイルをコピーします。 `serviceBusNamespaceName` の値を、このデプロイで作成する Service Bus 名前空間の名前で置き換えます。また、`serviceBusQueueName` の値を、作成するキューの名前で置き換えます。
+省略可能なパラメーター ファイルを使用するには、[servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.servicebus/servicebus-create-queue/azuredeploy.parameters.json) ファイルをコピーします。 `serviceBusNamespaceName` の値を、このデプロイで作成する Service Bus 名前空間の名前で置き換えます。また、`serviceBusQueueName` の値を、作成するキューの名前で置き換えます。
 
 ```json
 {

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 04/30/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cb3b3fd2010bf4ad1288b767d62d3d76f7b37e3
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 7e9c7d246c1cfb10c43979365c090a3a70775767
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550967"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315545"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -31,7 +31,7 @@ Google とのフェデレーションを設定することで、招待された�
 > Google フェデレーションは Gmail ユーザー専用に設計されています。 G Suite ドメインとのフェデレーションを行うには、[直接フェデレーション](direct-federation.md)を使用します。
 
 > [!IMPORTANT]
-> **2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+> **2021 年の下半期以降**、Google は [Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 
@@ -56,34 +56,41 @@ Google ゲスト ユーザーは、テナント情報を含むアプリケーシ
 
 また、`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のようにテナント情報を含めることによって、アプリケーションまたはリソースへの直接リンクを Google ゲスト ユーザーに提供することもできます。
 
-## <a name="deprecation-of-webview-sign-in-support"></a>WebView サインイン サポートの廃止
+## <a name="deprecation-of-web-view-sign-in-support"></a>Web ビュー サインイン サポートの廃止
 
-2021 年 1 月 4 日以降、Google は [埋め込み WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 [Gmail で Google フェデレーションまたはセルフサービス サインアップ](identity-providers.md)を使用している場合は、基幹業務ネイティブ アプリケーションの互換性をテストする必要があります。 認証を必要とする WebView コンテンツがアプリに含まれている場合、Google Gmail ユーザーは認証を受けることができません。 Gmail ユーザーに影響を与える既知のシナリオを次に示します。
+2021 年の下半期以降、Google は[埋め込み Web ビュー サインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 B2B または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 用の Google フェデレーションを使用している場合、[Gmail でセルフサービス サインアップ](identity-providers.md)を使用している場合、またはアプリで埋め込みの Web ビューを使用してユーザーを認証している場合は、Google Gmail ユーザーは認証できなくなります。
 
-- 以前のバージョンの Windows で埋め込み WebView または WebAccountManager (WAM) を使用する Windows アプリ。
-- 認証のために埋め込みブラウザー フレームワークを使用する、自分が開発したその他のネイティブ アプリ。
+Gmail ユーザーに影響を与える既知のシナリオを次に示します。
+- [WebView](https://docs.microsoft.com/windows/communitytoolkit/controls/wpf-winforms/webview) コントロール、[WebView2](https://docs.microsoft.com/microsoft-edge/webview2/)、または古い WebBrowser コントロールを認証で使用する Windows アプリ。 これらのアプリは、Web アカウント マネージャー (WAM) フローの使用へ移行する必要があります。
+- WebView UI 要素を使用した Android アプリケーション 
+- UIWebView または WKWebview を使用した iOS アプリケーション 
+- ADAL を使用したアプリ
 
 この変更は以下のものには影響しません。
 
-- 最新バージョンの Windows で埋め込み WebView または WebAccountManager (WAM) を使用する Windows アプリ
-- Microsoft iOS アプリ
+- Windows 上の Microsoft アプリ
+- Web アプリ
+- 認証でシステム Web ビューを使用したモバイルアプリ (iOS の [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android の[カスタム タブ](https://developer.chrome.com/docs/android/custom-tabs/overview/))。  
 - G Suite ID (たとえば、G Suite との SAML ベースの[直接フェデレーション](direct-federation.md)を使用している場合)
 
+この変更によって次のような影響があるか Google に確認しています。
+- Web アカウント マネージャー (WAM) または Web 認証ブローカー (WAB) を使用する Windows アプリ。  
+
 Microsoft はさまざまなプラットフォームおよびシナリオのテストを継続しており、それに応じてこの記事を更新する予定です。
-### <a name="to-test-your-apps-for-compatibility"></a>アプリの互換性をテストするには
+### <a name="action-needed-for-embedded-web-views"></a>埋め込み Web ビューに必要な対応
+サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers#embedded-vs-system-web-ui)」を参照してください。 すべての MSAL SDK が既定でシステム Web ビューを使用します。
+### <a name="what-to-expect"></a>ウィザードの内容
+Google が 2021 年下半期にこれらの変更を実施する前に、Microsoft はまだ埋め込み Web ビューを使用しているアプリのための回避策を配備して、認証がブロックされないようにします。
 
-1. [Google のガイダンス](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)に従って、ご利用のアプリが影響を受けるかどうかを判断します。
-2. Fiddler または別のテスト ツールを使用して、サインイン時にヘッダーを挿入し、Google 外部 ID を使用してサインインをテストします。
+許可された認証用 Web ビューに移行しているアプリケーションには影響はなく、ユーザーは通常どおり Google 経由で認証することができます。
 
-   1. 要求が accounts.google.com に送信されるときに、HTTP 要求ヘッダーに Google-Accounts-Check-OAuth-Login:true を追加します。
-   1. accounts.google.com サインイン ページで Gmail アドレスを入力して、アプリへのサインインを試行します。
-   1. サインインに失敗し、[This browser or app may not be secure]\(このブラウザーまたはアプリはセキュリティで保護されていない可能性があります\) などのエラーが表示された場合、ご利用の Google 外部 ID でのサインインはブロックされます。
+このドキュメントは、Google により日付と詳細情報が共有されたら更新される予定です。
 
-3. 次のいずれかを実行して、問題を解決します。
+### <a name="distinguishing-between-cefelectron-and-embedded-web-views"></a>CEF/Electron と埋め込み Web ビューを区別する
+[埋め込み Web ビューとフレームワーク サインイン サポートの廃止](#deprecation-of-web-view-sign-in-support)に加えて、Google は [Chromium Embedded Framework (CEF) ベースの Gmail 認証の廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)も行います。 Electron アプリなど、CEF で構築されたアプリケーションについて、Google は 2021 年 6 月 30 日に認証を無効にします。 影響を受けるアプリケーションには Google から直接通知が送られており、このドキュメントでは説明していません。  このドキュメントは、Google が 2021 年後半の別の日付で制限する予定である、上で説明した埋め込み Web ビューに関連しています。
 
-   - 以前のバージョンの Windows で Windows アプリが埋め込み WebView または WebAccountManager (WAM) を使用している場合は、最新バージョンの Windows に更新してください。
-   - サインインにシステム ブラウザーを使用するようにアプリを変更します。 詳細については、MSAL.NET のドキュメントの「[埋め込み Web UI とシステム Web UI の比較](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)」を参照してください。  
-
+### <a name="action-needed-for-embedded-frameworks"></a>埋め込みフレームワークに必要な対応
+[Google のガイダンス](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)に従って、ご利用のアプリが影響を受けるかどうかを判断します。
 
 ## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure Active Directory (Azure AD) に後で追加できるクライアント ID とクライアント シークレットを取得します。 

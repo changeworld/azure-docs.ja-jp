@@ -1,19 +1,19 @@
 ---
 title: Virtual WAN と SD-WAN の接続とアーキテクチャ
 titleSuffix: Azure Virtual WAN
-description: プライベート SD-WAN と Azure Virtual WAN の相互接続について説明します
+description: プライベート SD-WAN と Azure Virtual WAN の相互接続について説明します。
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: ea9ddd05fe6fc745a3eefc29ab4f1d6aababc936
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb6ae05b0e3c296a1ca56d3ea6085b8cd4586c23
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94564703"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165697"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Azure Virtual WAN を使用した SD-WAN 接続アーキテクチャ
 
@@ -32,7 +32,7 @@ Azure Virtual WAN 自体はソフトウェア定義 WAN (SD-WAN) ですが、プ
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct.png" alt-text="直接相互接続モデル":::
 
-このアーキテクチャ モデルでは、SD-WAN ブランチの顧客構内機器 (CPE) は、IPsec 接続を介して Virtual WAN ハブに直接接続されます。 ブランチ CPE は、プライベート SD-WAN 経由で他のブランチに接続することも、ブランチ間の接続に Virtual WAN を利用することもできます。 Azure のワークロードにアクセスする必要があるブランチは、Virtual WAN ハブで終端する IPsec トンネルを介して Azure に直接、安全にアクセスできます。
+このアーキテクチャ モデルでは、SD-WAN ブランチの顧客構内機器 (CPE) は、IPsec 接続を介して Virtual WAN ハブに直接接続されます。 ブランチ CPE は、プライベート SD-WAN 経由で他のブランチに接続することも、ブランチ間の接続に Virtual WAN を使用することもできます。 Azure のワークロードにアクセスする必要があるブランチは、Virtual WAN ハブで終端する IPsec トンネルを介して Azure に直接、安全にアクセスできます。
 
 SD-WAN CPE パートナーは、それぞれの CPE デバイスからの、通常は面倒でエラーが発生しやすい IPsec 接続を自動化するために自動化を有効にすることができます。 自動化により、SD-WAN コントローラーは、Virtual WAN API を介して Azure と通信して Virtual WAN サイトを構成し、必要な IPsec トンネル構成をブランチ CPE にプッシュできます。 さまざまな SD-WAN パートナーによる Virtual WAN 相互接続の自動化については、[自動化のガイドライン](virtual-wan-configure-automation-providers.md)に関する記事をご覧ください。
 

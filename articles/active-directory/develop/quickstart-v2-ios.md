@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: d2c5af6aeccfbae0851513ff575bde3c39e3ca5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20138e7e3f24dcc09898b33aa24bf4550d87134b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103789"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166093"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
@@ -57,7 +57,7 @@ ms.locfileid: "100103789"
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
-> 1. **Azure Active Directory** を検索して選択します。    
+> 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 > 1. **[登録]** を選択します。
@@ -99,23 +99,29 @@ ms.locfileid: "100103789"
 > > `Enter_the_Supported_Account_Info_Here`
 >
 > [!div renderon="docs"]
->#### <a name="step-4-configure-your-project"></a>手順 4:プロジェクトを構成する
+> #### <a name="step-4-configure-your-project"></a>手順 4:プロジェクトを構成する
 > 上のオプション 1 を選択した場合は、以下の手順を省略できます。
 > 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
 > 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットに置き換えます。 `kClientID` の値を、このクイック スタートの前の手順でポータルにアプリを登録したときに保存したクライアント ID に必ず更新してください。
+>
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
+
 > 1. [Azure AD 国内クラウド](/graph/deployments#app-registration-and-token-service-root-endpoints)向けのアプリを作成している場合は、"let kGraphEndpoint" および "let kAuthority" で始まる行を適切なエンドポイントに置き換えます。 グローバル アクセスの場合は、既定値を使用してください。
->     ```swift
->     let kGraphEndpoint = "https://graph.microsoft.com/"
->     let kAuthority = "https://login.microsoftonline.com/common"
->     ```
+>
+>    ```swift
+>    let kGraphEndpoint = "https://graph.microsoft.com/"
+>    let kAuthority = "https://login.microsoftonline.com/common"
+>    ```
+
 > 1. その他のエンドポイントは、[こちら](/graph/deployments#app-registration-and-token-service-root-endpoints)に記載されています。 たとえば、このクイックスタートを Azure AD Germany で実行するには、次のコードを使用します。
->     ```swift
->     let kGraphEndpoint = "https://graph.microsoft.de/"
->     let kAuthority = "https://login.microsoftonline.de/common"
->     ```
+>
+>    ```swift
+>    let kGraphEndpoint = "https://graph.microsoft.de/"
+>    let kAuthority = "https://login.microsoftonline.de/common"
+>    ```
+
 > 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した **バンドル ID** を入力します。
 > 1. **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
 > 1. dict ルート ノードの下の `Enter_the_bundle_Id_Here` を、ポータルで使用した "***バンドル ID***" に置き換えます。
@@ -130,8 +136,8 @@ ms.locfileid: "100103789"
 >          </array>
 >       </dict>
 >    </array>
->
 >    ```
+
 > 1. アプリをビルドして実行します。
 
 ## <a name="more-information"></a>詳細情報
@@ -144,8 +150,8 @@ MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-libra
 
 ```
 $ vi Podfile
-
 ```
+
 次の内容を (プロジェクトのターゲットと共に) この podfile に追加します。
 
 ```
@@ -154,12 +160,11 @@ use_frameworks!
 target 'MSALiOS' do
    pod 'MSAL'
 end
-
 ```
 
 CocoaPods インストール コマンドを実行します。
 
-```pod install```
+`podinstall`
 
 ### <a name="initialize-msal"></a>MSAL の初期化
 
@@ -188,31 +193,30 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 アプリでは、`AppDelegate` 内に次の内容も必要です。 これにより、認証を実行するときに MSAL SDK による Auth ブローカー アプリからのトークン応答の処理が可能になります。
 
- ```swift
- func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+```swift
+func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
 
-        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
-    }
-
- ```
+    return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+}
+```
 
 > [!NOTE]
 > iOS 13 以降では、`UIApplicationDelegate` ではなく `UISceneDelegate` を採用する場合は、代わりに `scene:openURLContexts:` のコールバックにこのコードを配置します ([Apple のドキュメント](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)を参照してください)。
 > 以前の iOS との互換性を保持するために UISceneDelegate と UIApplicationDelegate の両方をサポートしている場合は、MSAL コールバックを両方の場所に配置する必要があります。
 
- ```swift
- func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+```swift
+func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
 
-        guard let urlContext = URLContexts.first else {
-            return
-        }
+   guard let urlContext = URLContexts.first else {
+      return
+   }
 
-        let url = urlContext.url
-        let sourceApp = urlContext.options.sourceApplication
+   let url = urlContext.url
+   let sourceApp = urlContext.options.sourceApplication
 
-        MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
-    }
- ```
+   MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
+}
+```
 
 最後に、アプリでは、`LSApplicationQueriesSchemes` エントリが ***Info.plist*** に `CFBundleURLTypes` と並んで存在している必要があります。 サンプルにはこれが含まれています。
 

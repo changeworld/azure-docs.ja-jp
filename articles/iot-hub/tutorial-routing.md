@@ -2,23 +2,22 @@
 title: チュートリアル - Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 description: チュートリアル - Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 03/12/2019
+ms.date: 04/04/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: d7a10aac82286616273f7283bc3fba74f2c58f35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 965738a735052947940ec3763c664e5e90909ee1
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625217"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278294"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -152,14 +151,14 @@ az servicebus queue create --name $sbQueueName \
 
 6. **[コンテナーを選択します]** を選択します。 ストレージ アカウントの一覧が表示されます。 準備ステップで設定したものを選択します。 このチュートリアルでは、**contosostorage** を使います。 そのストレージ アカウント内のコンテナーの一覧が表示されます。 準備ステップで設定したコンテナーを **選択** します。 このチュートリアルでは、**contosoresults** を使います。 **[ストレージ エンドポイントの追加]** ウィンドウに戻り、選択した内容が表示されます。
 
-7. エンコードを AVRO または JSON に設定します。 このチュートリアルでは、残りのフィールドには既定値を使用します。 選択したリージョンが JSON エンコードをサポートしていない場合、このフィールドは灰色表示されます。
+7. エンコードを AVRO または JSON に設定します。 このチュートリアルでは、残りのフィールドには既定値を使用します。 選択したリージョンで JSON エンコードがサポートされていない場合、このフィールドは淡色表示されます。
 
    > [!NOTE]
    > BLOB 名の形式は、 **[BLOB ファイル名形式]** を使用して設定することができます。 既定では、 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`です。 形式には任意の順序で {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH}、および {mm} を含める必要があります。
    >
    > たとえば、既定の BLOB ファイル名形式を使用して、ハブ名が ContosoTestHub であり、日付/時刻が 2018 年 10 月 30 日午前 10:56 である場合、BLOB 名は `ContosoTestHub/0/2018/10/30/10/56` のようになります。
    > 
-   > BLOB は、Avro 形式で書き込まれます。
+   > 既定では、BLOB は AVRO 形式で書き込まれます。
    >
 
 8. **[作成]** を選択してストレージ エンドポイントを作成し、ルートに追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。

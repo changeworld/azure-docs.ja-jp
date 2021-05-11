@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6774e172c4e8607bfadd95f947d650afa62a984f
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 16edc850382ba9023b54eb34cebb7ebafb539161
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106550424"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286674"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -125,7 +125,7 @@ Azure AD 内の Azure AD 登録済みデバイスを無効化または削除し�
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Azure portal での古いデバイスのクリーンアップ  
 
-Azure portal で古いデバイスをクリーンアップすることはできますが、PowerShell スクリプトを使用してこのプロセスを処理したほうが効率的です。 最新の PowerShell V1 モジュールを使い、タイムスタンプ フィルターを使用してオートパイロットなどのシステム管理デバイスを除外します。 現時点では、PowerShell V2 の使用は推奨されていません。
+Azure portal で古いデバイスをクリーンアップすることはできますが、PowerShell スクリプトを使用してこのプロセスを処理したほうが効率的です。 最新の PowerShell V2 モジュールを使い、タイムスタンプ フィルターを使用して Autopilot などのシステム管理デバイスを除外します。
 
 一般的なルーチンは次の手順で構成されます。
 

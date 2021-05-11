@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 266a6c27261107b883fdc0c1cdd274e6345de6db
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4419c9d64eac6eb468c5eb4414a3c9b844d7d8a7
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483454"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181726"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -26,10 +26,12 @@ ms.locfileid: "107483454"
 
 ## <a name="storage-permissions"></a>ストレージのアクセス許可
 
-Synapse Analytics ワークスペースのサーバーレス SQL プールでは、Azure Data Lake ストレージに格納されているファイルの内容を読み取ることができます。 SQL クエリを実行するユーザーがファイルを読み取ることができるようにするには、ストレージに対するアクセス許可を構成する必要があります。 ファイルへのアクセスを有効にするには、次の 3 つの方法があります>
-- **[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md)** を使用すると、ストレージが配置されているテナント内の一部の Azure AD ユーザーにロールを割り当てることができます。 RBAC ロールは Azure AD ユーザーに割り当てることができます。 閲覧者は、`Storage Blob Data Reader`、`Storage Blob Data Contributor`、または `Storage Blob Data Owner` のロールを持っている必要があります。 Azure Storage にデータを書き込むユーザーは、`Storage Blob Data Writer` または `Storage Blob Data Owner` のロールを持っている必要があります。 `Storage Owner` ロールは、ユーザーが `Storage Data Owner` でもあることを意味するものではないことに注意してください。
-- **アクセス制御リスト (ACL)** を使用すると、Azure Storage 内のファイルとディレクトリに対してきめ細かなアクセス許可モデルを定義できます。 ACL は Azure AD ユーザーに割り当てることができます。 閲覧者が Azure Storage のパスにあるファイルを読み取る場合は、ファイル パス内のすべてのフォルダーに対する実行 (X) ACL と、ファイルに対する読み取り (R) ACL を保持している必要があります。 [ストレージ レイヤーで ACL アクセス許可を設定する方法をご確認ください](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)
+Synapse Analytics ワークスペースのサーバーレス SQL プールでは、Azure Data Lake ストレージに格納されているファイルの内容を読み取ることができます。 SQL クエリを実行するユーザーがファイルを読み取ることができるようにするには、ストレージに対するアクセス許可を構成する必要があります。 ファイルへのアクセスを有効にするには、次の 3 つの方法があります。
+- **[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md)** を使用すると、ストレージが配置されているテナント内の一部の Azure AD ユーザーにロールを割り当てることができます。 閲覧者には、ストレージ アカウントに対する `Storage Blob Data Reader`、`Storage Blob Data Contributor`、`Storage Blob Data Owner` のいずれかの RBAC の役割が必要です。 Azure Storage にデータを書き込むユーザーは、`Storage Blob Data Writer` または `Storage Blob Data Owner` のロールを持っている必要があります。 `Storage Owner` ロールは、ユーザーが `Storage Data Owner` でもあることを意味するものではないことに注意してください。
+- **アクセス制御リスト (ACL)** を使用すると、Azure Storage 内のファイルとディレクトリに対してきめ細かな[読み取り (R)、書き込み (W)、実行 (X) アクセス許可](../../storage/blobs/data-lake-storage-access-control.md#levels-of-permission)を定義できます。 ACL は Azure AD ユーザーに割り当てることができます。 閲覧者が Azure Storage のパスにあるファイルを読み取る場合は、ファイル パス内のすべてのフォルダーに対する実行 (X) ACL と、ファイルに対する読み取り (R) ACL を保持している必要があります。 [ストレージ レイヤーで ACL アクセス許可を設定する方法をご確認ください](../../storage/blobs/data-lake-storage-access-control.md#how-to-set-acls)。
 - **Shared Access Signature (SAS)** を使用すると、閲覧者は、時間制限付きのトークンを使用して Azure Data Lake ストレージ上のファイルにアクセスできます。 閲覧者は、Azure AD ユーザーとして認証される必要はありません。 SAS トークンには、閲覧者に付与されたアクセス許可と、トークンが有効である期間が含まれています。 SAS トークンは、同じ Azure AD テナントに属している必要さえもない任意のユーザーに対して時間制限付きアクセスを許可する場合に適しています。 SAS トークンは、ストレージ アカウントまたは特定のディレクトリに対して定義できます。 [Shared Access Signature を使用して Azure Storage リソースへの制限付きアクセスを許可する方法](../../storage/common/storage-sas-overview.md)の詳細をご確認ください。
+
+別の方法として、匿名アクセスを許可することで、ファイルを公開することもできます。 非公開のデータがある場合は、この方法を使用しないでください。 
 
 ## <a name="supported-storage-authorization-types"></a>サポートされているストレージ承認の種類
 

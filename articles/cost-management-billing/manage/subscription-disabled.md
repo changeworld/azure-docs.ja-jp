@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 37093900bf49e8a7613e2e3f4311548675791ceb
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: aad194babdf539584f3e349e8050105ed801bbf0
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220885"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331738"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>無効な Azure サブスクリプションを再度有効にする
 
@@ -23,7 +23,7 @@ Azure サブスクリプションは、クレジットの有効期限が切れ�
 
 ## <a name="your-credit-is-expired"></a>クレジットの有効期限が切れている
 
-Azure 無料アカウントにサインアップすると、無料試用版のサブスクリプションを入手でき、30 日間試用できる 200 米国ドルの Azure クレジットが請求通貨で付与されるほか、12 か月間の無料サービスが提供されます。 30 日目の終了時点で、Azure はサブスクリプションを無効にします。 サブスクリプションに含まれるクレジットと無料サービスを超えた使用による意図しない料金の発生を防止するために、お使いのサブスクリプションは無効になります。 Azure サービスを引き続き使用するには、[サブスクリプションをアップグレードする](upgrade-azure-subscription.md)必要があります。 サブスクリプションのアップグレード後も、12 か月間の無料サービスを利用できます。 無料サービスの数量の限度を超えた使用分にのみ課金されます。
+Azure 無料アカウントにサインアップすると、無料試用版のサブスクリプションを入手でき、30 日間試用できる 200 ドルの Azure クレジットが請求通貨で付与されるほか、12 か月間の無料サービスが提供されます。 30 日目の終了時点で、Azure はサブスクリプションを無効にします。 サブスクリプションに含まれるクレジットと無料サービスを超えた使用による意図しない料金の発生を防止するために、お使いのサブスクリプションは無効になります。 Azure サービスを引き続き使用するには、[サブスクリプションをアップグレードする](upgrade-azure-subscription.md)必要があります。 サブスクリプションのアップグレード後も、12 か月間の無料サービスを利用できます。 無料サービスの数量の限度を超えた使用分にのみ課金されます。
 
 ## <a name="you-reached-your-spending-limit"></a>使用制限に達している
 

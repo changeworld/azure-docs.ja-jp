@@ -7,13 +7,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
-ms.custom: devx-track-java
-ms.openlocfilehash: d94232a78257d21f5400b2cddbf8269635962542
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: devx-track-java, subject-rbac-steps
+ms.openlocfilehash: b8474e7f322025609222b4867db988d22aa2bcb9
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144603"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291210"
 ---
 # <a name="access-config-server-and-service-registry"></a>Config Server とサービス レジストリにアクセスする
 
@@ -21,19 +21,9 @@ ms.locfileid: "108144603"
 
 ## <a name="assign-role-to-azure-ad-usergroup-msi-or-service-principal"></a>Azure AD ユーザーまたはグループ、MSI、またはサービス プリンシパルにロールを割り当てる
 
-Azure AD と RBAC を使用するには、次の手順で *Azure Spring Cloud Data Reader* ロールをユーザー、グループ、またはサービス プリンシパルに割り当てる必要があります。
+[management-group | subscription | resource-group | resource] スコープで [azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader) ロールを [user | group | service-principal | managed-identity] に割り当てます。
 
-1. サービス インスタンスのサービスの概要ページに移動します。
-
-2. **[アクセス制御 (IAM)]** をクリックしてアクセス制御ブレードを開きます。
-
-3. **[追加]** ボタンと **[Add role assignments]\(ロールの割り当ての追加\)** をクリックします (追加するには承認が必要な場合があります)。
-
-4. **[ロール]** の下にある *Azure Spring Cloud Data Reader* を見つけて選択します。
-5. ユーザーの種類に応じて、`User, group, or service principal` または `User assigned managed identity` へのアクセスを割り当てます。 ユーザーを検索して選択します。  
-6. [`Save`] をクリックします。
-
-   ![assign-role](media/access-data-plane-aad-rbac/assign-data-reader-role.png)
+詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="access-config-server-and-service-registry-endpoints"></a>Config Server とサービス レジストリ エンドポイントにアクセスする
 

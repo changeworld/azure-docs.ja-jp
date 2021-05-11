@@ -1,6 +1,6 @@
 ---
 title: 'コンピューターから VNet に接続する - P2S VPN とネイティブ Azure 証明書認証: PowerShell'
-description: Azure Virtual Network に対し、P2S と自己署名または CA によって発行された証明書を使用して安全に Windows および macOS クライアントを接続します。 この記事では、PowerShell を使用します。
+description: P2S と自己署名または CA によって発行された証明書を使用して、Windows および macOS クライアントを Azure Virtual Network に安全に接続する方法について説明します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: ed0a60c88c33af70b7d780d6c4735c5f8e65b35b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf1cd8eb2d9723d435f277b9c029b15c843b9afd
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660408"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226392"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:PowerShell
 

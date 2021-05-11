@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 10/19/2020
+ms.date: 04/29/2021
 ms.author: tamram
-ms.openlocfilehash: edadcc4025913052e048ea94d47cac253e4bcd1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e181394a67cb6762965e600ada46ab48c753fbc
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95523333"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317463"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -29,13 +29,13 @@ ms.locfileid: "95523333"
 Azure Portal でコンテナーを作成するには、次の手順に従います。
 
 1. Azure Portal で新しいストレージ アカウントに移動します。
-2. ストレージ アカウントの左側のメニューで、 **[Blob service]** セクションまでスクロールしてから、 **[コンテナー]** を選択します。
-3. **[+ コンテナー]** ボタンを選択します。
-4. 新しいコンテナーの名前を入力します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。 コンテナーと BLOB の名前の詳細については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
-5. コンテナーにパブリック アクセスのレベルを設定します。 既定のレベルは **[ プライベート (匿名アクセスなし)]** です。
-6. **[OK]** を選択してコンテナーを作成します。
+1. ストレージ アカウントの左側のメニューで、 **[データ ストレージ]** セクションまでスクロールし、 **[BLOB コンテナー]** を選択します。
+1. **[+ コンテナー]** ボタンを選択します。
+1. 新しいコンテナーの名前を入力します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。 コンテナーと BLOB の名前の詳細については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
+1. コンテナーにパブリック アクセスのレベルを設定します。 既定のレベルは **[ プライベート (匿名アクセスなし)]** です。
+1. **[OK]** を選択してコンテナーを作成します。
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/create-container.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/create-container.png" alt-text="Azure Portal でコンテナーを作成する方法を示したスクリーンショット" lightbox="media/storage-quickstart-blobs-portal/create-container.png":::
 
 ## <a name="upload-a-block-blob"></a>ブロック BLOB をアップロードする
 

@@ -5,24 +5,24 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: how-to
-ms.date: 08/10/2019
+ms.date: 04/27/2021
 ms.author: rohink
-ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3817829b99d64b6874eeb94379a64cbda79430f0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94954513"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164653"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
-DNS プロトコルでは、ゾーンの頂点で A または AAAA レコード以外のものを割り当てることはできません。 ゾーンの頂点の例として、contoso.com があります。 Traffic Manager の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 ゾーンの頂点レコードから Traffic Manager プロファイルをポイントすることはできません。 そのため、アプリケーションの所有者は回避策を使用する必要があります。 アプリケーション レイヤーでのリダイレクトでは、ゾーンの頂点から別のドメインにリダイレクトする必要があります。 たとえば、contoso.com から www\.contoso.com へのリダイレクトです。 このようにすると、リダイレクト機能に単一障害点が発生します。
+DNS プロトコルでは、ゾーンの頂点で A または AAAA レコード以外のものを割り当てることはできません。 ゾーンの頂点の例として、contoso.com があります。 Traffic Manager の背後でアプリケーションの負荷分散を行っているアプリケーションの所有者にとっては、この制限によって問題が生じます。 ゾーンの頂点レコードから Traffic Manager プロファイルをポイントすることはできません。 そのため、アプリケーションの所有者は回避策を使用する必要があります。 アプリケーション レイヤーでのリダイレクトでは、ゾーンの頂点から別のドメインにリダイレクトする必要があります。 たとえば、`contoso.com` から `www.contoso.com` へのリダイレクトです。 このようにすると、リダイレクト機能に単一障害点が発生します。
 
-エイリアス レコードを使用すると、この問題がなくなります。 アプリケーションの所有者は、ゾーンの頂点のレコードで、外部エンドポイントを持つ Traffic Manager プロファイルをポイントできます。 アプリケーションの所有者は、DNS ゾーン内の他のドメインで使用されているのと同じ Traffic Manager プロファイルをポイントできます。
+エイリアス レコードを使用すると、この問題は発生しなくなります。 ゾーンの頂点のレコードで、外部エンドポイントを持つ Traffic Manager プロファイルをポイントできます。 DNS ゾーン内の他のドメインで使用されているのと同じ Traffic Manager プロファイルをポイントすることもできます。
 
-たとえば、contoso.com と www\.contoso.com で、同じ Traffic Manager プロファイルをポイントできます。 これは、Traffic Manager に外部エンドポイントのみが構成されている場合に限ります。
+たとえば、`contoso.com` と `www.contoso.com` で、同じ Traffic Manager プロファイルをポイントできます。 Traffic Manager プロファイルに外部エンドポイントのみが構成されている限り、このセットアップは機能します。
 
-この記事では、ドメインの頂点に対するエイリアス レコードを作成し、Web アプリ用に Traffic Manager プロファイルのエンドポイントを構成する方法について説明します。
+この記事では、ドメインの頂点のエイリアス レコードを作成する方法について説明します。 次に、Web アプリの Traffic Manager プロファイル エンドポイントを構成します。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -40,7 +40,7 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 
 ## <a name="create-app-service-plans"></a>App Service プランを作成する
 
-次の表で示す構成情報を使用して、リソース グループに 2 つの Web App Service プランを作成します。 App Service プランの作成の詳細については、「[Azure で App Service プランを管理する](../app-service/app-service-plan-manage.md)」をご覧ください。
+2 つの Web App サービス プランをリソース グループに作成します。 次の表を使用すると、このセットアップを構成するのに役立ちます。 App Service プランの作成の詳細については、「[Azure で App Service プランを管理する](../app-service/app-service-plan-manage.md)」をご覧ください。
 
 
 |名前  |オペレーティング システム  |場所  |価格レベル  |
@@ -76,7 +76,7 @@ Web アプリの IP アドレスとホスト名を書き留めておく必要が
 
 リソース グループで Traffic Manager プロファイルを作成します。 既定値を使用し、trafficmanager.net 名前空間内で一意の名前を入力します。
 
-Traffic Manager プロファイルの作成方法の詳細については、[Web アプリケーションに高可用性を実現する Traffic Manager プロファイルの作成に関するクイック スタート](../traffic-manager/quickstart-create-traffic-manager-profile.md)を参照してください。
+詳細については、「[クイック スタート: Web アプリケーションの高可用性を実現する Traffic Manager プロファイルの作成](../traffic-manager/quickstart-create-traffic-manager-profile.md)」を参照してください。
 
 ### <a name="create-endpoints"></a>エンドポイントを作成する
 

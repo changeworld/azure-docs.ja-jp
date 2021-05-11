@@ -1,18 +1,19 @@
 ---
-title: 'VPN Gateway: ゲートウェイの IP アドレスの設定を変更する: Azure portal'
-description: この記事では、Azure Portal を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する手順について説明します
+title: 'ゲートウェイの IP アドレス設定の変更: Azure portal'
+titleSuffix: Azure VPN Gateway
+description: Azure portal を使用して、ローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ff4f1238764d7bdab6e74d29254a6388ea76d78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eab7c2d8468d3895f70d954ed3b1ef6dfdb25245
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92143126"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288420"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure Portal を使用したローカル ネットワーク ゲートウェイの設定の変更
 

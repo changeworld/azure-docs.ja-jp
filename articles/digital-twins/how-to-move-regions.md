@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b21915b6cf0cd018ccbf7b79fc9a5ab8dc222925
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483579"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076075"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
@@ -95,9 +95,9 @@ Azure Digital Twins Explorer の設定を進めるには、まず、サンプル
 
 これで、コンピューター上のブラウザーで Azure Digital Twins Explorer サンプル アプリが実行されます。 このサンプルが、元の Azure Digital Twins インスタンスに接続していることを確認します。
 
-:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが含まれる。画面上にはまだデータがない。" lightbox="media/how-to-move-regions/explorer-blank.png":::
+:::image type="content" source="media/how-to-move-regions/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリが表示されたブラウザー ウィンドウ。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル、ツイン グラフ、プロパティの各ボックスが含まれています。画面上にデータはまだありません。" lightbox="media/how-to-move-regions/explorer-blank.png":::
 
-接続を確認するには、 **[クエリの実行]** ボタンを選択して既定のクエリを実行します。これにより、 **[グラフ エクスプローラー]** ボックスのグラフにすべてのツインとリレーションシップが表示されます。
+接続を確認するには、 **[クエリの実行]** ボタンを選択して既定のクエリを実行します。これにより、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスのグラフにすべてのツインとリレーションシップが表示されます。
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンが強調表示されている。" lightbox="media/how-to-move-regions/run-query.png":::
 
@@ -107,13 +107,13 @@ Azure Digital Twins Explorer の設定を進めるには、まず、サンプル
 
 次に、ソリューションのモデル、ツイン、グラフをコンピューターにダウンロードします。
 
-これらのアイテムをすべて一度にダウンロードするには、まず、 **[グラフ ビュー]** ボックスに完全なグラフが表示されていることを確認します。 完全なグラフがまだ表示されていない場合は、 **[クエリ エクスプローラー]** ボックスで `SELECT * FROM digitaltwins` の既定のクエリを再実行します。
+これらのアイテムをすべて一度にダウンロードするには、まず、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスに完全なグラフが表示されていることを確認します。 完全なグラフがまだ表示されていない場合は、 **[クエリ エクスプローラー]** ボックスで `SELECT * FROM digitaltwins` の既定のクエリを再実行します。
  
-その後、 **[グラフ ビュー]** ボックス内の **[グラフのエクスポート]** アイコンを選択します。
+その後、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックス内の **[グラフのエクスポート]** アイコンを選択します。
 
-:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドから外に向かう矢印を示している。" lightbox="media/how-to-move-regions/export-graph.png":::
+:::image type="content" source="media/how-to-move-regions/export-graph.png" alt-text="[TWIN GRAPH]\(ツイン グラフ\) ボックスで強調表示されているアイコン。クラウドから外に向かう矢印を示している。" lightbox="media/how-to-move-regions/export-graph.png":::
 
-この操作を行うと、 **[グラフ ビュー]** ボックスで **[ダウンロード]** リンクが有効になります。 これを選択して、モデル、ツイン、リレーションシップを含む、クエリ結果の JSON ベースの表現をダウンロードします。 この操作を行うと、.json ファイルがコンピューターにダウンロードされるはずです。
+この操作を行うと、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスで **[ダウンロード]** リンクが有効になります。 これを選択して、モデル、ツイン、リレーションシップを含む、クエリ結果の JSON ベースの表現をダウンロードします。 この操作を行うと、.json ファイルがコンピューターにダウンロードされるはずです。
 
 >[!NOTE]
 >ダウンロードしたファイルのファイル拡張子が違っている場合は、拡張子を直接編集して .json に変更してみてください。
@@ -155,15 +155,15 @@ Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタ
 
 次に、以前にダウンロードしたソリューション コンポーネントを新しいインスタンスにアップロードします。
 
-モデル、ツイン、グラフをアップロードするには、 **[グラフ ビュー]** ボックスにある **[グラフのインポート]** アイコンを選択します。 このオプションを選ぶと、これら 3 つのコンポーネントがすべて一度にアップロードされます。 また、グラフで現在使用されていないモデルもアップロードされます。
+モデル、ツイン、グラフをアップロードするには、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスにある **[グラフのインポート]** アイコンを選択します。 このオプションを選ぶと、これら 3 つのコンポーネントがすべて一度にアップロードされます。 また、グラフで現在使用されていないモデルもアップロードされます。
 
-:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/how-to-move-regions/import-graph.png":::
+:::image type="content" source="media/how-to-move-regions/import-graph.png" alt-text="[TWIN GRAPH]\(ツイン グラフ\) ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/how-to-move-regions/import-graph.png":::
 
 ファイル選択ボックスで、ダウンロードしたグラフに移動します。 グラフの **.json** ファイルを選び、 **[開く]** を選択します。
 
 数秒後、Azure Digital Twins Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
 
-グラフのアップロードを確認するには、 **[グラフ ビュー]** ボックスの右上隅にある **[保存]** アイコンを選択します。
+グラフのアップロードを確認するには、 **[TWIN GRAPH]\(ツイン グラフ\)** ボックスの右上隅にある **[保存]** アイコンを選択します。
 
 :::row:::
     :::column:::
@@ -181,17 +181,15 @@ Azure Digital Twins Explorer は現在、元の Azure Digital Twins インスタ
     :::column-end:::
     :::column:::
     :::column-end:::
-    :::column:::
-    :::column-end:::
 :::row-end:::
 
-すべてが正常にアップロードされたことを確認するには、 **[グラフ エクスプローラー]** ボックスにある **[クエリの実行]** ボタンを選択して、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 この操作を行うと、 **[モデル ビュー]** ボックスのモデルの一覧も更新されます。
+すべてが正常にアップロードされたことを確認するには、 **[TWIN GRAPH]\(ツイン グラフ\)** タブに切り替えて戻り、 **[クエリ エクスプローラー]** ボックスにある **[クエリの実行]** ボタンを選択して、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 この操作を行うと、 **[モデル]** ボックスのモデルの一覧も更新されます。
 
 :::image type="content" source="media/how-to-move-regions/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンの周囲が強調表示されている。" lightbox="media/how-to-move-regions/run-query.png":::
 
-すべてのツインとリレーションシップを表示したグラフが **[グラフ エクスプローラー]** ボックスに表示されます。 **[モデル ビュー]** ボックスにもモデルの一覧が表示されます。
+すべてのツインとリレーションシップを表示したグラフが **[TWIN GRAPH]\(ツイン グラフ\)** ボックスに表示されます。 **[モデル]** ボックスにもモデルの一覧が表示されます。
 
-:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル ビュー] ボックス内で強調表示された 2 つのモデルと、[グラフ エクスプローラー] ボックス内で強調表示されたグラフを示す Azure Digital Twins Explorer のビュー。" lightbox="media/how-to-move-regions/post-upload.png":::
+:::image type="content" source="media/how-to-move-regions/post-upload.png" alt-text="[モデル] ボックス内で強調表示された 2 つのモデルと、[Twin Graph]\(ツイン グラフ\) ボックス内で強調表示されたグラフを示す Azure Digital Twins Explorer のビュー。" lightbox="media/how-to-move-regions/post-upload.png":::
 
 これらのビューで、モデル、ツイン、グラフがターゲット リージョンの新しいインスタンスに再アップロードされたことを確認できます。
 

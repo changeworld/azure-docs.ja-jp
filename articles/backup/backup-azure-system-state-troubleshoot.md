@@ -4,12 +4,12 @@ description: この記事では、オンプレミスの Windows Server のシス
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 07e101fe87fb3f5db0bb716f0bc9ea6f8773aa3e
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 54425496428c3534c4c7ae47d10bc3a68256a656
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518560"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163969"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -42,15 +42,15 @@ ms.locfileid: "107518560"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Backup でシステム状態のバックアップをトラブルシューティングする前に、以下の前提条件の確認を実行してください。  
+Azure Backup でシステム状態のバックアップをトラブルシューティングする前に、以下の前提条件の確認を実行してください。
 
 ### <a name="verify-windows-server-backup-is-installed"></a>Windows Server バックアップがインストールされていることを確認する
 
 Windows Server バックアップがインストールされ、サーバーで有効になっていることを確認します。 インストールの状態を確認するには、次の PowerShell コマンドを実行します。
 
- ```powershell
+```powershell
 Get-WindowsFeature Windows-Server-Backup
- ```
+```
 
 出力で、**Install State** が **available** と表示される場合は、Windows Server バックアップ機能をインストールできるが、サーバーにはインストールされていないことを意味します。 ただし、Windows Server バックアップがインストールされていない場合は、以下のいずれかの方法を使用してインストールします。
 
@@ -118,7 +118,7 @@ Windows Server バックアップの状態を検証するには、以下の手�
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
       > [!NOTE]
-      >X を、システム状態のバックアップ イメージを格納するボリュームのドライブ文字に置き換えてください。
+      > X を、システム状態のバックアップ イメージを格納するボリュームのドライブ文字に置き換えてください。
 
     - 管理者特権の PowerShell から `Get-WBJob` コマンドを実行して、ジョブの状態を定期的に確認します。
     - バックアップ ジョブが完了したら、`Get-WBJob -Previous 1` コマンドを実行して、ジョブの最終状態を確認します。
@@ -129,9 +129,9 @@ Windows Server バックアップの状態を検証するには、以下の手�
 
 ### <a name="vss-writer-timeout-error"></a>VSS ライターのタイムアウト エラー
 
-| 症状 | 原因 | 解像度
+| 症状 | 原因 | 解決方法
 | -- | -- | --
-| - MARS エージェントが次のエラー メッセージで失敗する:"VSS エラーで WSB ジョブが失敗しました。 エラーを解決するには、VSS イベント ログを確認してください"<br/><br/> - VSS アプリケーション イベント ログに次のエラー ログが存在する:"A VSS writer has rejected an event with error 0x800423f2, the writer's timeout expired between the Freeze and Thaw events" (VSS ライターでイベントがエラー 0x800423f2 で拒否されています。ライターのタイムアウトは Freeze イベントと Thaw イベントの間に発生しました)| コンピューターで CPU とメモリ リソースが不足しているため、VSS ライターを時間内に完了できません <br/><br/> 別のバックアップ ソフトウェアが既に VSS ライターを使用しています。その結果、このバックアップに対するスナップショット操作を完了できませんでした | システムの CPU/メモリが解放されるまで待つか、メモリ/CPU の使用量が多すぎるプロセスを中止して操作をやり直します。 <br/><br/>  進行中のバックアップが完了するまで待つか、コンピューター上で後でバックアップが実行されていないときに操作をやり直します。
+| - MARS エージェントが次のエラー メッセージで失敗する: "WSB job failed with VSS errors. Check VSS event logs to resolve the failure (VSS エラーで WSB ジョブが失敗しました。エラーを解決するには、VSS イベント ログを確認してください)"<br/><br/> - VSS アプリケーション イベント ログに次のエラー ログが存在する:"A VSS writer has rejected an event with error 0x800423f2, the writer's timeout expired between the Freeze and Thaw events" (VSS ライターでイベントがエラー 0x800423f2 で拒否されています。ライターのタイムアウトは Freeze イベントと Thaw イベントの間に発生しました)| コンピューターで CPU とメモリ リソースが不足しているため、VSS ライターを時間内に完了できません <br/><br/> 別のバックアップ ソフトウェアが既に VSS ライターを使用しています。その結果、このバックアップに対するスナップショット操作を完了できませんでした | システムの CPU/メモリが解放されるまで待つか、メモリ/CPU の使用量が多すぎるプロセスを中止して操作をやり直します。 <br/><br/>  進行中のバックアップが完了するまで待つか、コンピューター上で後でバックアップが実行されていないときに操作をやり直します。
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>シャドウ コピーを拡大するためのディスク領域が不足している
 

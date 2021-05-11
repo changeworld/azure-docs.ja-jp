@@ -1,23 +1,23 @@
 ---
-title: S2S VPN および VNet-to-VNet 接続用の IPsec/IKE ポリシー
+title: 'サイト間 VPN および VNet 間接続の IPsec/IKE ポリシー: PowerShell'
 titleSuffix: Azure VPN Gateway
-description: Azure Resource Manager と PowerShell を使用して、Azure VPN Gateway で S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成します。
+description: PowerShell を使用して、Azure VPN Gateway で S2S または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 14c26c7e1f5751fee3ad53db2e1f72ee975aeaa3
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94649264"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229632"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
-この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、サイト間の VPN または VNet 間の接続の IPsec/IKE ポリシーを作成する手順について説明します。
+この記事では、PowerShell を使用して、サイト間 VPN または VNet 間接続の IPsec/IKE ポリシーを構成する手順について説明します。
 
 
 

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72220b33ea0d10b16ec5be94da6a26d91b9bfc1e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99221110"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161845"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング
 
@@ -31,7 +31,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
 2. 次の PowerShell スクリプトを使用して、未加工の形式のログを表形式に変換します。
 
-   ```Powershell
+   ```powershell
    $Columns = 
         (   "version-number",
             "request-start-time",
@@ -65,7 +65,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
             "client-request-id"
         )
 
-   $logs = Import-Csv “REPLACE THIS WITH FILE PATH” -Delimiter ";" -Header $Columns
+   $logs = Import-Csv "REPLACE THIS WITH FILE PATH" -Delimiter ";" -Header $Columns
 
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
@@ -73,7 +73,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 3. 次に示すように、スクリプトによって GUI ウィンドウが起動され、情報を列でフィルター処理できます。
 
    ![Storage Analytics ログ パーサー ウィンドウ](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
- 
+
 4. "operation-type" に基づいてログ エントリを絞り込み、問題の期間中に作成されたログ エントリを探します。
 
    ![operation-type のログ エントリ](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
@@ -119,7 +119,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 **推奨事項:**
 
 * クライアントのコードを調査します。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。 
+* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
 
 ### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 操作:RequestStatus = (SAS)NetworkError
 
@@ -134,7 +134,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 **推奨事項:**
 
 * クライアントのコードを調べて、Storage サービスからクライアントが切断した理由とタイミングを把握してください。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。 
+* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
 
 ### <a name="put-operation-requeststatus--success"></a>Put 操作:RequestStatus = Success
 
@@ -149,7 +149,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 **推奨事項:**
 
 * クライアントのコードを調査します。
-* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。 
+* Wireshark、Microsoft Message Analyzer、または Tcping を使用して、クライアントからネットワーク接続の問題を調査します。
 
 ### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put 操作:RequestStatus = (SAS)NetworkError
 

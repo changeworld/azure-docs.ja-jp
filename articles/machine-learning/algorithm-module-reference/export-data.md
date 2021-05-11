@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/19/2021
-ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82821b29669139f378d4dd24e4a96ab66f3d56e1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656908"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321935"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
@@ -60,6 +60,10 @@ ms.locfileid: "104656908"
 1. **[ファイル形式]** で、データの保存形式を選択します。
  
 1. パイプラインを送信します。
+
+## <a name="limitations"></a>制限事項
+
+データストアのアクセス制限により、推論パイプラインに **データのエクスポート** モジュールが含まれている場合、これはリアルタイム エンドポイントへのデプロイ時に自動的に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

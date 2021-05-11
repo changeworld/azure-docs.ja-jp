@@ -8,12 +8,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 3/19/2021
 ms.author: jeffpatt
-ms.openlocfilehash: 90a8fd3344936e09604f058cdf381fda2ae4c609
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: afdcfe553d7dc2e236b0bda28212bd09360a0fba
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122999"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330856"
 ---
 # <a name="azure-files-and-azure-netapp-files-comparison"></a>Azure Files と Azure NetApp Files の比較
 
@@ -26,7 +26,7 @@ ms.locfileid: "108122999"
 | カテゴリ | Azure Files | Azure NetApp Files |
 |---------|-------------------------|---------|
 | 説明 | [Azure Files](https://azure.microsoft.com/services/storage/files/) は、フル マネージド、高可用性、エンタープライズグレードのサービスであり、インプレース データ更新を使用するランダム アクセス ワークロード用に最適化されています。<br><br> Azure Files は、Azure BLOB などの他のサービスと同じ Azure Storage プラットフォーム上に構築されています。 | [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) はフル マネージドの高可用性かつエンタープライズ グレードの NAS サービスであり、高度なデータ管理機能を必要とする、要求の厳しい、高パフォーマンスかつ低遅延のワークロードを処理できます。 これがなければ「移行不可能」とみなされるようなワークロードも移行することができます。<br><br>  ANF は、ONTAP ストレージ OS を搭載し、Azure データセンター内で実行されている NetApp 製のベアメタル上に構築されており、一貫した Azure 体験とオンプレミスと同様のパフォーマンスを実現します。 |
-| プロトコル | Premium<br><ul><li>SMB 2.1、3.0</li><li>NFS 4.1 (プレビュー)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2.1、3.0</li><li>REST</li></ul><br> 詳細については、「[使用可能なファイル共有プロトコル](./storage-files-compare-protocols.md)」を参照してください。 | すべてのレベル<br><ul><li>SMB 1、2.x、3.x</li><li>NFS 3.0、4.1</li><li>デュアル プロトコル アクセス (NFSv3/SMB)</li></ul><br> 詳細については、[NFS](../../azure-netapp-files/azure-netapp-files-create-volumes.md)、[SMB](../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md)、または[デュアル プロトコル](../../azure-netapp-files/create-volumes-dual-protocol.md) ボリュームの作成方法を参照してください。 |
+| プロトコル | Premium<br><ul><li>SMB 2.1、3.0、3.1.1</li><li>NFS 4.1 (プレビュー)</li><li>REST</li></ul><br>Standard<br><ul><li>SMB 2.1、3.0、3.1.1</li><li>REST</li></ul><br> 詳細については、「[使用可能なファイル共有プロトコル](./storage-files-compare-protocols.md)」を参照してください。 | すべてのレベル<br><ul><li>SMB 1、2.x、3.x</li><li>NFS 3.0、4.1</li><li>デュアル プロトコル アクセス (NFSv3/SMB)</li></ul><br> 詳細については、[NFS](../../azure-netapp-files/azure-netapp-files-create-volumes.md)、[SMB](../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md)、または[デュアル プロトコル](../../azure-netapp-files/create-volumes-dual-protocol.md) ボリュームの作成方法を参照してください。 |
 | 利用可能なリージョン | Premium<br><ul><li>30 リージョン以上</li></ul><br>Standard<br><ul><li>すべてのリージョン</li></ul><br> 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。 | すべてのレベル<br><ul><li>25 リージョン以上</li></ul><br> 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。 |
 | 冗長性 | Premium<br><ul><li>LRS</li><li>ZRS</li></ul><br>Standard<br><ul><li>LRS</li><li>ZRS</li><li>GRS</li><li>GZRS</li></ul><br> 詳細については、「[冗長性](./storage-files-planning.md#redundancy)」を参照してください。 | すべてのレベル<br><ul><li>組み込みのローカル HA</li><li>[リージョン間レプリケーション](../../azure-netapp-files/cross-region-replication-introduction.md)</li></ul> |
 | サービス レベル アグリーメント (SLA)<br><br> Azure Files と Azure NetApp Files の SLA は異なる方法で計算されることに注意してください。 | [Azure Files の SLA](https://azure.microsoft.com/support/legal/sla/storage/) | [Azure NetApp Files の SLA](https://azure.microsoft.com/support/legal/sla/netapp) |  
@@ -42,11 +42,11 @@ ms.locfileid: "108122999"
 
 | カテゴリ | Azure Files | Azure NetApp Files |
 |---------|---------|---------|
-| 共有またはボリュームの最小サイズ | Premium<br><ul><li>100 GiB</li></ul><br>Standard<br><ul><li>1 GiB</li></ul> | すべてのレベル<br><ul><li>100 GiB (容量プールの最小サイズ: 4 TiB)</li></ul> |
-| 共有またはボリュームの最大サイズ | Premium<br><ul><li>100 TiB</li></ul><br>Standard<br><ul><li>100 TiB</li></ul> | すべてのレベル<br><ul><li>100 TiB (容量プール上限: 500-TiB)</li></ul><br>Azure NetApp アカウントごとに最大 12.5 PiB まで |
+| 共有またはボリュームの最小サイズ | Premium<br><ul><li>100 GiB</li></ul><br>Standard<br><ul><li>最小なし。</li></ul> | すべてのレベル<br><ul><li>100 GiB (容量プールの最小サイズ: 4 TiB)</li></ul> |
+| 共有またはボリュームの最大サイズ | 100 TiB | すべてのレベル<br><ul><li>100 TiB (容量プール上限: 500-TiB)</li></ul><br>Azure NetApp アカウントごとに最大 12.5 PiB まで |
 | 共有またはボリュームの最大 IOPS | Premium<br><ul><li>最大 100 k</li></ul><br>Standard<br><ul><li>最大 10 k</li></ul> | Ultra および Premium<br><ul><li>最大 450 k </li></ul><br>Standard<br><ul><li>最大 320 k</li></ul> |
 | 共有またはボリュームの最大スループット | Premium<br><ul><li>最大 10 GiB/秒</li></ul><br>Standard<br><ul><li>最大 300 MiB/秒</li></ul> | Ultra および Premium<br><ul><li>最大 4.5 GiB/秒</li></ul><br>Standard<br><ul><li>最大 3.2 GiB/秒</li></ul> |
-| 最大ファイル サイズ | Premium<br><ul><li>4 TiB</li></ul><br>Standard<br><ul><li>1 TiB</li></ul> | すべてのレベル<br><ul><li>16 TiB</li></ul> |
+| 最大ファイル サイズ | 4 TiB | 16 TiB |
 | ファイルあたりの最大 IOPS | Premium<br><ul><li>最大 8,000</li></ul><br>Standard<br><ul><li>1,000</li></ul> | すべてのレベル<br><ul><li>ボリューム上限まで</li></ul> |
 | ファイルあたりの最大スループット | Premium<br><ul><li>300 MiB/秒 (SMB マルチチャネルで最大 1 GiB/秒)</li></ul><br>Standard<br><ul><li>60 MiB/秒</li></ul> | すべてのレベル<br><ul><li>ボリューム上限まで</li></ul> |
 | SMB マルチチャネル | はい ([プレビュー](./storage-files-smb-multichannel-performance.md)) | はい |

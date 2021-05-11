@@ -4,19 +4,19 @@ description: 計画ステージで収集した情報を使用して、Azure VMwa
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
 ms.date: 04/23/2021
-ms.openlocfilehash: 9a9f01788ccfaa7f304d71897efa3bcb0511d8fd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fe5e34ecb0ed3d8984432d44bbed5678c4592553
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126383"
+ms.locfileid: "108175858"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
 この記事では、[計画セクション](production-ready-deployment-steps.md)の情報を使用して、Azure VMware Solution をデプロイおよび構成します。 
 
 >[!IMPORTANT]
->情報をまだ定義していない場合は、続行する前に[計画セクション](production-ready-deployment-steps.md)に戻ってください。
+>必ず先に[計画セクション](production-ready-deployment-steps.md)に目を通してください。
 
 ## <a name="step-1-register-the-microsoftavs-resource-provider"></a>手順 1. **Microsoft.AVS** リソース プロバイダーを登録する
 
@@ -72,5 +72,6 @@ ExpressRoute の終点となる Azure Virtual Network と Azure VMware Solution 
 ## <a name="next-steps"></a>次のステップ
 
 次のセクションでは、ExpressRoute 経由で Azure VMware Solution をオンプレミス ネットワークに接続します。
+
 > [!div class="nextstepaction"]
 > [オンプレミスの環境に接続する](tutorial-expressroute-global-reach-private-cloud.md)

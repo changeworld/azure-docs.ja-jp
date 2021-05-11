@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e2f4cbdf7f84f7b6cbd749225a2e0f7ed60cdd5
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015258"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202877"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Speech サービスによる保存データの暗号化
 
@@ -34,6 +34,8 @@ Custom Speech とカスタム音声を使用すると、Speech サービスに�
 既定では、データは Microsoft のストレージに格納され、サブスクリプションでは Microsoft のマネージド暗号化キーが使用されます。 独自のストレージ アカウントを準備するオプションもあります。 ストアへのアクセスはマネージド ID によって管理され、Speech サービスでは、音声トレース データ、カスタマイズ トレーニング データ、カスタム モデルなど、独自のデータに直接アクセスすることはできません。
 
 詳しくは、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。
+
+一方、カスタム コマンドを使用すると、独自の暗号化キーを使用してサブスクリプションを管理できます。 カスタマー マネージド キー (CMK、Bring Your Own Key (BYOK) とも呼ばれます) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。 カスタム コマンドと CMK の詳細については、「[カスタム コマンドによる保存データの暗号化](custom-commands-encryption-of-data-at-rest.md)」を参照してください。
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>カスタマイズとログ記録のための独自ストレージの持ち込み (BYOS)
 

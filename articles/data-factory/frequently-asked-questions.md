@@ -5,13 +5,13 @@ author: ssabat
 ms.author: susabat
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e40f5bfb47ff4686828457308882fb9f50ab5b4a
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/29/2021
+ms.openlocfilehash: d3cc2d73fb3f1076af62b8ea028260bfd5e600ed
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906136"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317993"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -231,6 +231,94 @@ Microsoft では、データ フローに関するサポートやトラブルシ
 ### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>データ フロー コンピューティング エンジンは複数のテナントにサービスを提供しますか?
 
 クラスターが共有されることはありません。 運用環境で実行されるジョブごとの分離が保証されています。 デバッグ シナリオの場合、1 人のユーザーが 1 つのクラスターを取得し、そのユーザーによって開始されるそのクラスターにすべてのデバッグが送られます。
+
+### <a name="is-there-a-way-to-write-attributes-in-cosmos-db-in-the-same-order-as-specified-in-the-sink-in-adf-data-flow"></a>属性を ADF データ フローのシンクで指定されているのと同じ順序で Cosmos DB に書き込む方法はありますか?    
+
+Cosmos DB では、各ドキュメントの基になる形式は、順序付けられていない名前と値のペアである JSON オブジェクトであるため、順序を予約することはできません。 データ フローでは、統合ランタイムでも、TTL とコストに関する 15 分の TTL 構成のデータフロー アドバイザリによってクラスターがスピンアップされます。このトラブルシューティング ドキュメントは[データ フローのパフォーマンス](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance#time-to-live)に関するページです。
+
+
+###  <a name="why-an-user-is-unable-to-use-data-preview-in-the-data-flows"></a>ユーザーがデータ フローでデータ プレビューを使用できないのはなぜですか?   
+
+カスタム ロールのアクセス許可を確認してください。 データフロー データのプレビューには複数のアクションが関係しています。 まず、ブラウザーでデバッグ中にネットワーク トラフィックをチェックします。 すべてのアクションに従ってください。詳細については、[リソース プロバイダー](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdatafactory)に関するページを参照してください。
+
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>データ フロー コンピューティング エンジンは複数のテナントにサービスを提供しますか?   
+
+この問題の解決には、[複数のテナント](https://docs.microsoft.com/azure/data-factory/frequently-asked-questions#does-the-data-flow-compute-engine-serve-multiple-tenants)に関するトラブルシューティング ドキュメントが役に立つ場合があります。
+
+
+###  <a name="in-adf-can-i-calculate-value-for-a-new-column-from-existing-column-from-mapping"></a>ADF では、マッピングからの既存の列から新しい列の値を計算できますか?  
+
+マッピング データ フローで派生変換を使用して、必要なロジックで新しい列を作成できます。 派生列を作成するときは、新しい列を生成するか、既存の列を更新することができます。 [列] ボックスに、作成する列を入力します。 スキーマ内の既存の列を上書きするには、列ドロップダウンを使用できます。 派生列の式を作成するには、 [式の入力] ボックスをクリックします。 式の入力を開始するか、式ビルダーを開いてロジックを作成することができます。
+
+### <a name="why-mapping-data-flow-preview-failing-with-gateway-timeout"></a>マッピング データ フローのプレビューがゲートウェイのタイムアウトで失敗するのはなぜですか? 
+
+より大きなクラスターを使用し、デバッグ出力のサイズを小さくするために、デバッグ設定の行制限を利用して値を小さくしてみてください。
+
+### <a name="how-to-parameterize-column-name-in-dataflow"></a>データフローの列名をパラメーター化する方法は?
+
+列名は、他のプロパティと同様にパラメーター化できます。 派生列の場合と同様に、お客様は、 **$ColumnNameParam = toString(byName($myColumnNameParamInData))** を使用できます。 これらのパラメーターは、パイプラインの実行からデータ フローに渡すことができます。
+
+
+
+## <a name="wrangling-data-flow-data-flow-power-query"></a>ラングリング データ フロー (データ フローの Power Query)
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>ラングリング データ フローでサポートされているリージョンを教えてください。
+
+データ ファクトリは、次の[リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)でご利用いただけます。
+Power Query 機能はすべてのリージョンにロールアウトされています。 ご使用のリージョンでこの機能を利用できない場合は、サポートにお問い合わせください。
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow-"></a>ラングリング データ フローに制限や制約はありますか?
+
+データセット名に使用できるのは英数字のみです。 次のデータ ストアがサポートされています。
+
+* アカウント キー認証を使用した Azure Blob Storage の DelimitedText データセット
+* アカウント キーまたはサービス プリンシパル認証を使用した Azure Data Lake Storage Gen2 の DelimitedText データセット
+* サービス プリンシパル認証を使用した Azure Data Lake Storage Gen1 の DelimitedText データセット
+* SQL 認証を使用した Azure SQL Database と Data Warehouse。 下の「サポートされている SQL の型」を参照してください。 データ ウェアハウスの PolyBase やステージングはサポートされていません。
+
+現時点では、ラングリング データ フローで、リンクされたサービス Key Vault 統合はサポートされていません。
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>マッピング データ フローとラングリング データ フローの違いを教えてください。
+
+データ フローのマッピングには、コーディングなしでデータを大規模に変換する機能が備わっています。 データ フロー キャンバスで一連の変換を構築することで、データ変換ジョブを設計できます。 任意の数のソースの変換から始め、その後にデータ変換手順を実行します。 シンクを使ってデータ フローを完了し、結果を宛先に書き込みます。 データ フローのマッピングは、シンクとソース内の既知のスキーマと不明なスキーマの両方でのデータのマップや変換に最適です。
+
+ラングリング データ フローを使うと、Spark の実行を通じて Power Query Online マッシュアップ エディターを大規模に使用して、アジャイルなデータ準備と探索を行うことができます。 データ レイクの使用が増加するなか、単にデータセットを探索したり、レイクにデータセットを作成したりしたい場合があります。 既知のターゲットにマッピングするのでなければ、 ラングリング データ フローは、それほど厳格でないモデルベースの分析シナリオで使用されます。
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Power Platform データフローとラングリング データ フローの違いを教えてください。
+
+Power Platform データフローを使用すると、ユーザーはさまざまなデータソースのデータを Common Data Service や Azure Data Lake にインポートして変換し、PowerApps アプリケーション、Power BI レポート、フロー自動化を構築できます。 Power Platform データフローでは、Power BI や Excel と同様に、確立された Power Query データ準備エクスペリエンスが使用されます。 また、Power Platform データフローを使用すると、組織内での再利用が容易になり、オーケストレーションを自動的に処理できます (たとえば、前のデーターフローが更新されると、別のデータフローに依存しているデータフローを自動的に更新する)。
+
+マネージド データ統合サービスである Azure Data Factory (ADF) を使用すると、データ エンジニアやデータ統合担当者は、複雑なハイブリッド抽出-変換-読み込み (ETL) や抽出-読み込み-変換 (ELT) ワークフローを作成できます。 ラングリング データ フローを ADF で使用すると、ユーザーはコーディング不要でサーバーレスの環境を利用でき、それによりクラウドのデータ準備が簡素化され、あらゆるデータ サイズにスケーリングすることができます。インフラストラクチャの管理は必要ありません。 データの準備と整形を行うために (また、Power Platform データフロー、Excel、Power BI でも)、Power Query データ準備テクノロジが使用されます。 ランダリング データ フローはすべての複雑な処理を管理し、ビッグ データ統合の課題を調整できるように作成されており、ユーザーは Spark の実行を通じてすばやく大規模にデータを準備できます。 ユーザーは、ブラウザーベースのインターフェイスを使用して回復性のあるデータ パイプラインをアクセシビリティの高いビジュアル環境に作成し、ADF によって複雑な Spark の実行を処理できます。 ADF 監視ポータルから、パイプラインのスケジュールを作成して、データ フロー実行を監視できます。 ADF の機能豊富な可用性監視機能とアラートにより、データ可用性に関する SLA を簡単に管理でき、組み込みの継続的インテグレーションとデプロイ機能を活用してフローを管理された環境内に保存し、管理することができます。 また、アラートとビューの実行プランを策定して、データ フローの調整中にロジックが計画どおりに実行されているかどうかを検証できます。
+
+### <a name="supported-sql-types"></a>サポートされている SQL の型
+
+ラングリング データ フローでは、SQL で次のデータ型がサポートされています。 サポートされていないデータ型を使用すると、検証エラーが表示されます。
+
+* short
+* double
+* real
+* float
+* char
+* nchar
+* varchar
+* nvarchar
+* 整数 (integer)
+* INT
+* bit
+* boolean
+* smallint
+* tinyint
+* bigint
+* long
+* text
+* date
+* DATETIME
+* datetime2
+* smalldatetime
+* timestamp
+* UNIQUEIDENTIFIER
+* xml
+
 
 ## <a name="next-steps"></a>次のステップ
 

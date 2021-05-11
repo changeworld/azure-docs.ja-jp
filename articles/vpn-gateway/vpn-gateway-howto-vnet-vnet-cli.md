@@ -1,6 +1,6 @@
 ---
 title: 'VNet 対 VNet 接続を使用して VNet を VNet に接続する: Azure CLI'
-description: VNet 間接続と Azure CLI を使用して仮想ネットワークどうしを接続します。
+description: VNet 間接続と Azure CLI を使用して仮想ネットワーク同士を接続する方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b9502f3fbd50aad756e15daa4db1badda2abf9ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4f247131c2ce20ec9e95e8b5327ae7e7249f93f
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660068"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229668"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 

@@ -1,6 +1,6 @@
 ---
 title: 'VPN Gateway を使用して VNet を複数のサイトに接続する: クラシック'
-description: VPN Gateway を使用して複数のローカルのオンプレミスのサイトをクラシック仮想ネットワークに接続します。
+description: VPN ゲートウェイを使用して複数のオンプレミスのサイトをクラシック仮想ネットワークに接続する方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: yushwang
-ms.openlocfilehash: 168bb9e06c73ec27ec1304813023889c9549b8e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc2aad5d5b815c59d7f8add34b9700d7448e091
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660697"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292722"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 

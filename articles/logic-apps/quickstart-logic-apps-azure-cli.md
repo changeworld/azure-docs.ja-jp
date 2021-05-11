@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
-ms.date: 11/23/2020
-ms.openlocfilehash: afc39673a30f5c99455696c7a075cb1a6a33ecd1
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 04/23/2021
+ms.openlocfilehash: 48d71d3736737e88825bbae19e0a5274bacd21a1
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875505"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161089"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してロジック アプリを作成し、管理する
 
@@ -43,22 +43,18 @@ Logic Apps を初めて使用する場合は、[Azure portal](quickstart-create-
 ロジック アプリのリソース グループがまだない場合は、コマンド `az group create` を実行してグループを作成します。 たとえば、次のコマンドを実行すると、場所 `westus` に `testResourceGroup` という名前のリソース グループが作成されます。
 
 ```azurecli-interactive
-
 az group create --name testResourceGroup --location westus
-
 ```
 
 リソース グループが正常に作成された場合、出力には、`provisioningState` が `Succeeded` として示されます。
 
 ```output
-
 <...>
   "name": "testResourceGroup",
   "properties": {
     "provisioningState": "Succeeded"
   },
 <...>
-
 ```
 
 ## <a name="workflow-definition"></a>ワークフロー定義
@@ -72,7 +68,6 @@ Azure CLI を使用して、[新しいロジック アプリを作成する](#cr
 コマンド [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) と定義の JSON ファイルを使用して、Azure CLI からロジック アプリのワークフローを作成することができます。
 
 ```azurecli
-
 az logic workflow create --definition
                          --location
                          --name
@@ -83,7 +78,6 @@ az logic workflow create --definition
                          [--integration-service-environment]
                          [--state {Completed, Deleted, Disabled, Enabled, NotSpecified, Suspended}]
                          [--tags]
-
 ```
 
 コマンドには、次の[必須パラメーター](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters)を含める必要があります。
@@ -94,6 +88,7 @@ az logic workflow create --definition
 | 場所 | `--location -l` | ロジック アプリを配置する Azure リージョン。 |
 | 名前 | `--name -n` | ロジック アプリの名前。 名前に含めることができるのは、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`()`)、ピリオド (`.`) のみです。 また、名前はリージョン全体で一意である必要があります。 |
 | リソース グループ名 | `--resource-group -g` | ロジック アプリを作成する [Azure リソース グループ](../azure-resource-manager/management/overview.md)。 ロジック アプリのリソース グループがまだない場合は、開始する前に、[リソース グループを作成](#example---create-resource-group)します。 |
+||||
 
 さらに、[省略可能なパラメーター](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters)を追加して、ロジック アプリのアクセス制御、エンドポイント、統合アカウント、統合サービス環境、状態、リソース タグを構成することもできます。
 
@@ -102,9 +97,7 @@ az logic workflow create --definition
 この例では、`testLogicApp` という名前のワークフローを場所 `westus` にあるリソース グループ `testResourceGroup` に作成します。 JSON ファイル `testDefinition.json` には、ワークフロー定義が含まれています。
 
 ```azurecli-interactive
-
 az logic workflow create --resource-group "testResourceGroup" --location "westus" --name "testLogicApp" --definition "testDefinition.json"
-
 ```
 
 ワークフローが正常に作成されると、CLI によって、新しいワークフロー定義の JSON コードが表示されます。 ワークフローの作成に失敗した場合は、[発生する可能性のあるエラーの一覧](#errors)を参照してください。
@@ -116,7 +109,6 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 コマンドには、[ロジック アプリを作成する](#create-logic-apps-from-cli)場合と同じ[必須パラメーター](/cli/azure/logic/workflow#az_logic_workflow_create-required-parameters)を含める必要があります。 また、ロジック アプリを作成する場合と同じ[省略可能なパラメーター](/cli/azure/logic/workflow#az_logic_workflow_create-optional-parameters)を追加することもできます。
 
 ```azurecli
-
 az logic workflow create --definition
                          --location
                          --name
@@ -127,7 +119,6 @@ az logic workflow create --definition
                          [--integration-service-environment]
                          [--state {Completed, Deleted, Disabled, Enabled, NotSpecified, Suspended}]
                          [--tags]
-
 ```
 
 ### <a name="example---update-logic-app"></a>例 - ロジック アプリの更新
@@ -135,9 +126,7 @@ az logic workflow create --definition
 この例では、[前のセクションで作成したサンプル ワークフロー](#example---create-logic-app)を更新して、別の JSON 定義ファイル `newTestDefinition.json` を使用し、説明の値を含む 2 つのリソース タグ `testTag1` と `testTag2` を追加します。
 
 ```azurecli-interactive
-
 az logic workflow create --resource-group "testResourceGroup" --location "westus" --name "testLogicApp" --definition "newTestDefinition.json" --tags "testTag1=testTagValue1" "testTag2=testTagValue"
-
 ```
 
 ワークフローが正常に更新されると、CLI によって、ロジック アプリの更新されたワークフロー定義が表示されます。 更新が失敗した場合は、[発生する可能性のあるエラーの一覧](#errors)を参照してください。
@@ -152,23 +141,20 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 | --------- | ----- | ----------- |
 | 名前 | `--name -n` | ロジック アプリの名前。 |
 | リソース グループ名 | `-resource-group -g` | ロジック アプリを配置するリソース グループ。 |
+||||
 
 [省略可能なパラメーター](/cli/azure/logic/workflow#az_logic_workflow_delete-optional-parameters)を含めて、確認プロンプト `--yes -y` をスキップすることもできます。
 
 ```azurecli
-
 az logic workflow delete --name
                          --resource-group
                          [--yes]
-
 ```
 
 この後、CLI によって、ロジック アプリの削除を確認するように求められます。 コマンドで省略可能なパラメーター `--yes -y` を使用すると、確認プロンプトをスキップできます。
 
-```azurecli
-
+```output
 Are you sure you want to perform this operation? (y/n):
-
 ```
 
 ロジック アプリの定義を確認するには、[CLI でロジック アプリの一覧を表示する](#list-logic-apps-in-cli)か、または Azure portal でロジック アプリを表示します。
@@ -178,22 +164,30 @@ Are you sure you want to perform this operation? (y/n):
 この例では、[前のセクションで作成したサンプル ワークフロー](#example---create-logic-app)を削除します。
 
 ```azurecli-interactive
-
 az logic workflow delete --resource-group "testResourceGroup" --name "testLogicApp"
-
 ```
 
 確認プロンプトに `y` で応答すると、ロジック アプリが削除されます。
+
+### <a name="considerations---delete-logic-app"></a>考慮事項 - ロジック アプリの削除
+
+ロジック アプリを削除すると、ワークフロー インスタンスに次のような影響が生じます。
+
+* 進行中および保留中の実行があれば、それらのキャンセルを Logic Apps サービスがベスト エフォートで試みます。
+
+  大量のボリュームやバックログがあったとしても、ほとんどの実行は完了前または開始前にキャンセルされます。 ただし、キャンセル プロセスは完了までに時間がかかる場合があります。 その間、ランタイムがキャンセル プロセスに対処する傍ら、いくつかの実行が実行対象として選択されてしまう可能性があります。
+
+* Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+
+* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
 
 ## <a name="show-logic-apps-in-cli"></a>CLI でロジック アプリを表示する
 
 コマンド [`az logic workflow show`](/cli/azure/logic/workflow#az_logic_workflow_show) を使用して、特定のロジック アプリ ワークフローを取得することができます。
 
 ```azurecli
-
 az logic workflow show --name
                        --resource-group
-
 ```
 
 コマンドには、次の[必須パラメーター](/cli/azure/logic/workflow#az_logic_workflow_show-required-parameters)を含める必要があります
@@ -202,15 +196,14 @@ az logic workflow show --name
 | --------- | ----- | ----------- |
 | 名前 | `--name -n` | ロジック アプリの名前。 |
 | リソース グループ名 | `--resource-group -g` | ロジック アプリを配置するリソース グループの名前。 |
+||||
 
 ### <a name="example---get-logic-app"></a>例 - ロジック アプリの取得
 
 この例では、デバッグ用に、リソース グループ `testResourceGroup` 内のロジック アプリ `testLogicApp` が、完全なログと共に返されます。
 
 ```azurecli-interactive
-
 az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp" --debug
-
 ```
 
 ## <a name="list-logic-apps-in-cli"></a>CLI でロジック アプリを一覧表示する
@@ -224,13 +217,12 @@ az logic workflow show --resource-group "testResourceGroup" --name "testLogicApp
 | リソース グループ名 | `--resource-group -g` | 結果をフィルター処理するリソース グループの名前。 |
 | 項目数 | `--top` | 結果に含める項目の数。 |
 | Assert | `--filter` | 一覧で使用するフィルターの種類。 状態 (`State`)、トリガー (`Trigger`)、参照先リソースの識別子 (`ReferencedResourceId`) でフィルター処理できます。 |
+||||
 
 ```azurecli
-
 az logic workflow list [--filter]
                        [--resource-group]
                        [--top]
-
 ```
 
 ### <a name="example---list-logic-apps"></a>例 - ロジック アプリの一覧表示
@@ -238,9 +230,7 @@ az logic workflow list [--filter]
 この例では、リソース グループ `testResourceGroup` 内の有効化されたすべてのワークフローが ASCII テーブル形式で返されます。
 
 ```azurecli-interactive
-
 az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 'Enabled')" --output "table"
-
 ```
 
 ## <a name="errors"></a>エラー
@@ -248,17 +238,13 @@ az logic workflow list --resource-group "testResourceGroup" --filter "(State eq 
 次のエラーは、Azure Logic Apps CLI 拡張機能がインストールされていないことを示します。 前提条件の手順に従って、ご利用のコンピューターに [Logic Apps 拡張機能をインストール](#prerequisites)します。
 
 ```output
-
 az: 'logic' is not in the 'az' command group. See 'az --help'. If the command is from an extension, please make sure the corresponding extension is installed. To learn more about extensions, please visit https://docs.microsoft.com/cli/azure/azure-cli-extensions-overview
-
 ```
 
 次のエラーは、ワークフロー定義をアップロードするためのファイル パスが正しくないことを示している可能性があります。
 
 ```output
-
 Expecting value: line 1 column 1 (char 0)
-
 ```
 
 ## <a name="global-parameters"></a>グローバル パラメーター
@@ -273,6 +259,7 @@ Expecting value: line 1 column 1 (char 0)
 | デバッグ | `--debug` | すべてのデバッグ ログを表示します。 |
 | ヘルプ メッセージ | `--help -h` | ヘルプ ダイアログを表示します。 |
 | クエリ | `--query` | JSON 形式の出力の JMESPath クエリ文字列を設定します。 |
+||||
 
 ## <a name="next-steps"></a>次のステップ
 

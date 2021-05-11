@@ -6,14 +6,14 @@ author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/25/2020
+ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 789f493640e9795c58fd278db6cc0b11902c1cfa
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 8884dce5fed3b5c5125f0169521429658b80a7e9
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107925343"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108333418"
 ---
 Python 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -81,7 +81,18 @@ pip install --upgrade azure-ai-anomalydetector
 
 新しい Anomaly Detector クライアントをインスタンス化するには、Anomaly Detector のサブスクリプション キーおよび関連するエンドポイントを渡す必要があります。 また、データソースも設定します。  
 
-Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector 多変量 API シリーズを使用するには、最初に独自のモデルをトレーニングする必要があります。 トレーニング データは、次の要件を満たす複数の時系列のセットです。
+
+各時系列は、ヘッダー行として "timestamp" と "value" (すべて小文字) の 2 つの列のみを含む CSV ファイルである必要があります。 "timestamp" の値は、ISO 8601 に準拠している必要があります。"value" は、整数または小数点以下の桁数が任意の小数にすることができます。 次に例を示します。
+
+|timestamp | value|
+|-------|-------|
+|2019-04-01T00:00:00Z| 5|
+|2019-04-01T00:01:00Z| 3.6|
+|2019-04-01T00:02:00Z| 4|
+|`...`| `...` |
+
+各 CSV ファイルには、モデルのトレーニングに使用する異なる変数に基づいて名前を付ける必要があります。 たとえば、"temperature.csv" や "humidity.csv" などです。 すべての CSV ファイルは、サブフォルダーを使用しないで 1 つの ZIP ファイルに圧縮する必要があります。 ZIP ファイルには任意の名前を付けることができます。 ZIP ファイルは Azure Blob Storage にアップロードする必要があります。 その ZIP ファイルの BLOB SAS (Shared Access Signature) URL を生成したら、それをトレーニングに使用できます。 Azure Blob Storage から SAS URL を生成する方法については、このドキュメントを参照してください。
 
 ```python
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):

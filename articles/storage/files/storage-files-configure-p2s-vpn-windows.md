@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: de342267292c6a93c4a1ba2eae232403ccaf9514
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e7b7445fe293ae6cec975409a15e979873ec64aa
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785273"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331252"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -26,56 +26,45 @@ ms.locfileid: "107785273"
 
 - オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。
 
-- オンプレミスにマウントする Azure ファイル共有を含むストレージ アカウント用のプライベート エンドポイント。 プライベート エンドポイントを作成する方法の詳細については、「[Azure Files ネットワーク エンドポイントの構成](storage-files-networking-endpoints.md?tabs=azure-powershell)」を参照してください。 
+- オンプレミスにマウントする Azure ファイル共有を含むストレージ アカウント用のプライベート エンドポイントを持つ仮想ネットワーク。 プライベート エンドポイントを作成する方法の詳細については、「[Azure Files ネットワーク エンドポイントの構成](storage-files-networking-endpoints.md?tabs=azure-powershell)」を参照してください。 
 
-## <a name="deploy-a-virtual-network"></a>仮想ネットワークをデプロイする
-ポイント対サイト VPN 経由でオンプレミスから Azure ファイル共有やその他の Azure リソースにアクセスするには、仮想ネットワーク (VNet) を作成する必要があります。 自動的に作成される P2S VPN 接続は、オンプレミスの Windows コンピューターとこの Azure 仮想ネットワークの間のブリッジです。
+## <a name="collect-environment-information"></a>環境情報の収集
+ポイント対サイト VPN を設定するには、まず、ガイドを通して使用する環境に関する情報を収集する必要があります。 ストレージ アカウント、仮想ネットワーク、またはプライベート エンドポイントをまだ作成していない場合は、「[前提条件](#prerequisites)」セクションを参照してください。
 
-次の PowerShell は、ストレージ アカウントのサービス エンドポイント用に 1 つ、ストレージ アカウントのプライベート エンドポイント用に 1 つ (これは、変化する可能性があるストレージ アカウントのパブリック IP のカスタム ルーティングを作成することなく、オンプレミスのストレージ アカウントにアクセスするために必要です)、および VPN サービスを提供する仮想ネットワーク ゲートウェイ用に 1 つの 3 つのサブネットを含む Azure 仮想ネットワークを作成します。 
-
-忘れずに、`<region>`、`<resource-group>`、および `<desired-vnet-name>` を実際の環境の適切な値に置き換えてください。
+忘れずに、`<resource-group>`、`<vnet-name>`、`<subnet-name>` および `<storage-account-name>` を実際の環境の適切な値に置き換えてください。
 
 ```PowerShell
-$region = "<region>"
-$resourceGroupName = "<resource-group>" 
-$virtualNetworkName = "<desired-vnet-name>"
+$resourceGroupName = "<resource-group-name>" 
+$virtualNetworkName = "<vnet-name>"
+$subnetName = "<subnet-name>"
+$storageAccountName = "<storage-account-name>"
 
-$virtualNetwork = New-AzVirtualNetwork `
-    -ResourceGroupName $resourceGroupName `
-    -Name $virtualNetworkName `
-    -Location $region `
-    -AddressPrefix "192.168.0.0/16"
-
-Add-AzVirtualNetworkSubnetConfig `
-    -Name "ServiceEndpointSubnet" `
-    -AddressPrefix "192.168.0.0/24" `
-    -VirtualNetwork $virtualNetwork `
-    -ServiceEndpoint "Microsoft.Storage" `
-    -WarningAction SilentlyContinue | Out-Null
-
-Add-AzVirtualNetworkSubnetConfig `
-    -Name "PrivateEndpointSubnet" `
-    -AddressPrefix "192.168.1.0/24" `
-    -VirtualNetwork $virtualNetwork `
-    -WarningAction SilentlyContinue | Out-Null
-
-Add-AzVirtualNetworkSubnetConfig `
-    -Name "GatewaySubnet" `
-    -AddressPrefix "192.168.2.0/24" `
-    -VirtualNetwork $virtualNetwork `
-    -WarningAction SilentlyContinue | Out-Null
-
-$virtualNetwork | Set-AzVirtualNetwork | Out-Null
 $virtualNetwork = Get-AzVirtualNetwork `
     -ResourceGroupName $resourceGroupName `
     -Name $virtualNetworkName
 
-$serviceEndpointSubnet = $virtualNetwork.Subnets | `
-    Where-Object { $_.Name -eq "ServiceEndpointSubnet" }
-$privateEndpointSubnet = $virtualNetwork.Subnets | `
-    Where-Object { $_.Name -eq "PrivateEndpointSubnet" }
-$gatewaySubnet = $virtualNetwork.Subnets | ` 
-    Where-Object { $_.Name -eq "GatewaySubnet" }
+$subnetId = $virtualNetwork | `
+    Select-Object -ExpandProperty Subnets | `
+    Where-Object { $_.Name -eq "StorageAccountSubnet" } | `
+    Select-Object -ExpandProperty Id
+
+$storageAccount = Get-AzStorageAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Name $storageAccountName
+
+$privateEndpoint = Get-AzPrivateEndpoint | `
+    Where-Object {
+        $subnets = $_ | `
+            Select-Object -ExpandProperty Subnet | `
+            Where-Object { $_.Id -eq $subnetId }
+
+        $connections = $_ | `
+            Select-Object -ExpandProperty PrivateLinkServiceConnections | `
+            Where-Object { $_.PrivateLinkServiceId -eq $storageAccount.Id }
+        
+        $null -ne $subnets -and $null -ne $connections
+    } | `
+    Select-Object -First 1
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>VPN 認証用のルート証明書の作成

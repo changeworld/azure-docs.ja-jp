@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 9dcb5b84faa47b7307ce8441003e8591d7c2757b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4d96d116bc4350a3326722c87f65e887d5a54791
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604789"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326545"
 ---
 # <a name="set-map-style-android-sdk"></a>マップ スタイルを設定する (Android SDK)
 
@@ -22,7 +22,11 @@ ms.locfileid: "105604789"
 
 ## <a name="prerequisites"></a>前提条件
 
-必ず、[クイック スタート:Android アプリの作成](quick-android-map.md)に関するドキュメントの手順を完了してください。
+[クイックスタート: Android アプリの作成](quick-android-map.md)に関する記事の手順を必ず完了してください。
+
+>[!important]
+>このセクションの手順には、Gen 1 または Gen 2 価格レベルの Azure Maps アカウントが必要です。 価格レベルの詳細については、「[Azure Maps での適切な価格レベルの選択](choose-pricing-tier.md)」を参照してください。
+
 
 ## <a name="set-map-style-in-the-layout"></a>レイアウトでのマップ スタイルの設定
 

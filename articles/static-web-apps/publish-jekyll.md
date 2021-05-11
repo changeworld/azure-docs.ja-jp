@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 04/28/2021
 ms.author: cshoe
-ms.openlocfilehash: 8c6764ad5b63aa2fde07326ab986404ea4312316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f572d49867fe9149416664a405309253dd01af2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99585179"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202941"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>チュートリアル:Jekyll サイトを Azure Static Web Apps プレビューに公開する
 
@@ -23,7 +23,7 @@ ms.locfileid: "99585179"
 > [!div class="checklist"]
 >
 > - Jekyll Web サイトを作成する
-> - Azure Static Web Apps をセットアップする
+> - Azure Static Web Apps リソースのセットアップ
 > - Jekyll アプリを Azure にデプロイする
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -111,7 +111,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 1. _[SKU]_ で、 **[Free]** を選択します。
 
-    :::image type="content" source="./media/publish-jekyll/basic-app-details.png" alt-text="詳細情報の入力":::
+1. _[デプロイの詳細]_ で、 _[ソース]_ に **[GitHub]** を選択します。
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -121,19 +121,19 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 1. _[ブランチ]_ では、**main** を選択します。
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
-
 ### <a name="build"></a>Build
 
 次に、ビルド プロセスがアプリのビルドに使用する構成設定を追加します。 次の設定では、GitHub アクション ワークフロー ファイルが構成されます。
 
-1. **[次へ:ビルド >]** をクリックして、ビルド構成を編集します。
+1. _[ビルドのプリセット]_ で **[カスタム]** を選択します。
 
-1. _[App location]\(アプリの場所\)_ を **/_site** に設定します。
+1. _[App location]\(アプリの場所\)_ を「 **/** 」に設定します。
 
-1. _[App artifact location]\(アプリ成果物の場所\)_ を空白のままにします。
+1. _[出力場所]_ を **[_site]** に設定します。
 
    この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
+
+   :::image type="content" source="./media/publish-jekyll/github-actions-inputs.png" alt-text="GitHub Actions の入力":::
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
@@ -141,40 +141,35 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 
-1. 最初のデプロイは失敗します。これは、ワークフロー ファイルに Jekyll 固有の設定が必要であるためです。 この設定を追加するには、ターミナルに移動し、GitHub アクションを使用してマシンにコミットをプルします。
-
-   ```bash
-   git pull
-   ```
-
-1. Jekyll アプリをテキスト エディターで開き、 _.github/workflows/azure-pages-<ワークフロー名>.yml_ ファイルを開きます。
-
-1. 行 `- name: Build And Deploy` の前に次の構成ブロックを追加します。
-
-    ```yml
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1.59.1
-      with:
-        ruby-version: 2.6
-    - name: Install dependencies
-      run: bundle install
-    - name: Jekyll build
-      run: jekyll build
-    ```
-
-1. 更新されたワークフローをコミットし、GitHub にプッシュします。
-
-    ```bash
-    git add -A
-    git commit -m "Updating GitHub Actions workflow"
-    git push
-    ```
-
 1. GitHub アクションが完了するのを待ちます。
 
-1. Azure portal の _[概要]_ ウィンドウで _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。
+1. Azure portal で新しく作成された Azure Static Web Apps リソースの _[概要]_ ウィンドウに移動し、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。
 
    :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="デプロイされたアプリケーション":::
+
+#### <a name="custom-jekyll-settings"></a>カスタム Jekyll の設定
+
+静的 Web アプリを生成すると、アプリケーションの発行構成設定を含む[ワークフロー ファイル](./github-actions-workflow.md)が生成されます。
+
+`JEKYLL_ENV` などの環境変数を構成するには、ワークフローの Azure Static Web Apps GitHub アクションに `env` セクションを追加します。
+
+```yaml
+- name: Build And Deploy
+   id: builddeploy
+   uses: Azure/static-web-apps-deploy@v0.0.1-preview
+   with:
+      azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+      repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+      action: "upload"
+      ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+      # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+      app_location: "/" # App source code path
+      api_location: "" # Api source code path - optional
+      output_location: "_site_" # Built app content directory - optional
+      ###### End of Repository/Build Configurations ######
+   env:
+      JEKYLL_ENV: production
+```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

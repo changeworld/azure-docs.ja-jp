@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 04/27/2021
 ms.author: tisande
-ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd77d8fe2e934ebfe9d4fad994e8aa9c6644ef8e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378810"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165661"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -337,7 +337,7 @@ ORDER BY c.firstName, c.lastName
 > インデックス変換は[要求ユニット](request-units.md)を消費する操作です。 [サーバーレス](serverless.md) コンテナーを使用している場合、現在のところ、インデックス変換によって消費される要求単位には課金されません。 これらの要求単位は、サーバーレスが一般提供されるようになったときに課金されます。
 
 > [!NOTE]
-> [いずれかの SDK を使用して](how-to-manage-indexing-policy.md)、インデックス変換の進行状況を追跡できます。
+> インデックス変換の進行状況は、Azure portal で、または[いずれかの SDK を使用して](how-to-manage-indexing-policy.md)追跡できます。
 
 インデックス変換中に、書き込み可用性への影響はありません。 インデックス変換にはプロビジョニングされた RU が使用されますが、CRUD 操作やクエリよりも低い優先順位になります。
 

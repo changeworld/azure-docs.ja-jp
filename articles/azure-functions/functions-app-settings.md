@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2fb21e4a5ecffe1b6391a56decd72e3b25d4ef5c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b1a3563d766f0f4636086024a1f23d157e8e9a06
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126581"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228606"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -313,6 +313,10 @@ IP アドレスの解決時にアプリによって使用される DNS サーバ
 |Key|値の例|
 |---|------------|
 |WEBSITE\_DNS\_SERVER|168.63.129.16|
+
+## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING 
+
+圧縮のために既定の gzip 圧縮ではなく、Brotli エンコーディングが使用されるかどうかを制御します。 `WEBSITE_ENABLE_BROTLI_ENCODING` が `1` に設定されている場合は Brotli エンコーディングが使用され、それ以外の場合は gzip エンコーディングが使用されます。 
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 

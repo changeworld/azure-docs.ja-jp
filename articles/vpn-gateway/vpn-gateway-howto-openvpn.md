@@ -1,18 +1,19 @@
 ---
-title: Azure VPN Gateway 用に OpenVPN を構成する方法
-description: ポイント対サイト環境用に Azure VPN Gateway で OpenVPN プロトコルを有効にする方法について学習します。
+title: P2S VPN ゲートウェイで OpenVPN を有効にする方法
+titleSuffix: Azure VPN Gateway
+description: ポイント対サイト構成用に VPN ゲートウェイで OpenVPN プロトコルを有効にする方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: cherylmc
-ms.openlocfilehash: 137e4e1372ef1af3319c0b9af7ba965fffcb9e34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 056e9a44009f90be23d66c5da005902ccc8ebebf
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104584042"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205433"
 ---
 # <a name="configure-openvpn-for-point-to-site-vpn-gateways"></a>ポイント対サイト VPN Gateway 用に OpenVPN を構成する
 

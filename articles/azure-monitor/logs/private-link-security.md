@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 67af304de8ca6b7210e9a5d132a0eb7db3657a53
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 5db990fe4bf54c5604eb58af677ec4891639eb1b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988372"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165625"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -73,7 +73,7 @@ Private Link 接続を設定すると、DNS が更新され、VNet の IP 範囲
 > 結論:AMPLS のセットアップは、同じ DNS ゾーンを共有するすべてのネットワークに影響します。 互いの DNS エンドポイント マッピングがオーバーライドされないようにするには、ピアリングされたネットワーク (ハブ VNet など) に単一のプライベート エンドポイントをセットアップするか、DNS レベルでネットワークを分離することをお勧めします (たとえば、DNS フォワーダーを使用するか、DNS サーバーを完全に分離します)。
 
 ### <a name="hub-spoke-networks"></a>ハブスポーク ネットワーク
-ハブスポーク トポロジでは、各 VNet の Private Link を個別に設定するのではなく、ハブ (メイン) VNet に Private Link を設定することによって、DNS オーバーライドの問題を回避できます。 このセットアップは特に、スポーク VNet で使用される Azure Monitor リソースが共有されている場合に合理的です。 
+ハブスポーク トポロジでは、ハブ (メイン) VNet に Private Link を設定し、各スポーク VNet には設定しないことにより、DNS オーバーライドの問題を回避できます。 このセットアップは特に、スポーク VNet で使用される Azure Monitor リソースが共有されている場合に合理的です。 
 
 ![ハブアンドスポークのシングル PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
@@ -90,6 +90,9 @@ Private Link 接続を設定すると、DNS が更新され、VNet の IP 範囲
 * ワークスペース 2 は、使用可能な AMPLS 接続 5 個のうち 2 個を使用して、AMPLS A と AMPLS B に接続します。
 
 ![AMPLS の制限に関する図](./media/private-link-security/ampls-limits.png)
+
+> [!NOTE]
+> Update Management、Change Tracking、Inventory などの、Automation アカウントを必要とする Log Analytics ソリューションを使用する場合は、Automation アカウント用に個別の Private Link を設定する必要もあります。 詳細は、「[Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する](https://docs.microsoft.com/azure/automation/how-to/private-link-security)」を参照してください。
 
 
 ## <a name="example-connection"></a>接続の例
@@ -204,7 +207,7 @@ Azure Monitor リソース (Log Analytics ワークスペースと Application I
 
 
 ### <a name="validating-you-are-communicating-over-a-private-link"></a>プライベート リンクを介して通信が行われていることの検証
-* 自分の要求がプライベート エンドポイントおよびプライベート IP にマップされたエンドポイントを介して送信されるようになっていることを検証するには、ネットワーク追跡ツール (またはご利用のブラウザー) を使用してそれらを確認できます。 たとえば、ご利用のワークスペースまたはアプリケーションに対してクエリを試みる場合は、API エンドポイントにマップされたプライベート IP に要求が送信されることを確認します。この例では、*172.17.0.9* です。
+* 自分の要求がプライベート エンドポイントを介して送信されたことを検証するために、ネットワーク追跡ツール (またはご利用のブラウザー) を使用してそれらを確認できます。 たとえば、ご利用のワークスペースまたはアプリケーションに対してクエリを試みる場合は、API エンドポイントにマップされたプライベート IP に要求が送信されることを確認します。この例では、*172.17.0.9* です。
 
     注: ブラウザーによっては、他の DNS 設定が使用されます (「[ブラウザーの DNS 設定](#browser-dns-settings)」を参照してください)。 目的の DNS 設定が適用されていることを確認します。
 

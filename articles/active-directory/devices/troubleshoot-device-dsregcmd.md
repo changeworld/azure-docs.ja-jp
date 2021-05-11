@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ced48308673c6688def7b949fc225eeb5b2ced4
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ea502deee0caf5418bf5554473180eb405792567
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551732"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287052"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -36,10 +36,10 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 > [!NOTE]
 > Workplace Join (Azure AD 登録済み) 状態は、[User State]\(ユーザー状態\) セクションに表示されます
 
-- **AzureAdJoined:** -デバイスが Azure AD に参加している場合は、"YES" に設定されます。 それ以外の場合は "NO" です。
-- **Enterprisejoined:** - デバイスがオンプレミスの DRS に参加している場合は "YES" に設定されます。 デバイスに EnterpriseJoined と AzureAdJoined の両方を指定することはできません。
-- **DomainJoined:** -デバイスがドメイン (AD) に参加している場合は、"YES" に設定されます。
-- **DomainName:** -デバイスがドメインに参加している場合は、ドメインの名前に設定されます。
+- **AzureAdJoined:** デバイスが Azure AD に参加している場合は、"YES" に設定されます。 それ以外の場合は "NO" です。
+- **Enterprisejoined:** デバイスがオンプレミスの DRS に参加している場合は "YES" に設定されます。 デバイスに EnterpriseJoined と AzureAdJoined の両方を指定することはできません。
+- **DomainJoined:** デバイスがドメイン (AD) に参加している場合は、"YES" に設定されます。
+- **DomainName:** デバイスがドメインに参加している場合は、ドメインの名前に設定されます。
 
 ### <a name="sample-device-state-output"></a>デバイスの状態の出力例
 
@@ -58,12 +58,12 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 
 デバイスが Azure AD 参加済みまたはハイブリッド Azure AD 参加済み (Azure AD に未登録) の場合にのみ表示されます。 このセクションには、クラウドに格納されている詳細を識別するデバイスの一覧が示されます。
 
-- **DeviceId:** -Azure AD テナント内のデバイスの一意の ID
-- **Thumbprint:** -デバイス証明書の拇印 
-- **DeviceCertificateValidity:** -デバイス証明書の有効性
+- **DeviceId:** Azure AD テナント内のデバイスの一意の ID
+- **Thumbprint:** デバイス証明書の拇印
+- **DeviceCertificateValidity:** デバイス証明書の有効性
 - **KeyContainerId:** -デバイス証明書に関連付けられているデバイスの秘密キーの ContainerId
-- **Keyprovider:** -デバイスの秘密キーを格納するために使用される KeyProvider (ハードウェア/ソフトウェア)。
-- **TpmProtected:** - デバイスの秘密キーがハードウェア TPM に格納されている場合は "YES"。
+- **Keyprovider:** デバイスの秘密キーを格納するために使用される KeyProvider (ハードウェア/ソフトウェア)。
+- **TpmProtected:** デバイスの秘密キーがハードウェア TPM に格納されている場合は "YES"。
 
 ### <a name="sample-device-details-output"></a>デバイスの詳細の出力例
 
@@ -89,7 +89,7 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 > このセクションの MDM URL が空である場合は、MDM が構成されなかったか、または現在のユーザーが MDM 登録の範囲内にないことを示します。 Azure AD のモビリティ設定をチェックして MDM の構成を確認してください。
 
 > [!NOTE]
-> MDM の URL が表示されている場合でも、デバイスが MDM によって管理されているわけではありません。 この情報は、デバイス自体が管理されていない場合でも、テナントが自動登録のための MDM 構成を持っている場合に表示されます。 
+> MDM の URL が表示されている場合でも、デバイスが MDM によって管理されているわけではありません。 この情報は、デバイス自体が管理されていない場合でも、テナントが自動登録のための MDM 構成を持っている場合に表示されます。
 
 ### <a name="sample-tenant-details-output"></a>テナントの詳細の出力例
 
@@ -129,15 +129,15 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 > [!NOTE]
 > 有効な状態を取得するには、コマンドをユーザー コンテキストで実行する必要があります。
 
-- **NgcSet:** - 現在ログオンしているユーザーに対して Windows Hello キーが設定されている場合は、"YES" に設定されます。
-- **NgcKeyId:** - Windows Hello キーの ID (現在ログオンしているユーザーに対して設定されている場合)。
-- **CanReset:** - ユーザーが Windows Hello キーをリセットできるかどうかを示します。 
-- **使用可能な値:** - DestructiveOnly、NonDestructiveOnly、DestructiveAndNonDestructive、またはエラーの場合は Unknown。 
-- **WorkplaceJoined:** - Azure AD の登録済みアカウントが現在の NTUSER コンテキストでデバイスに追加された場合は、"YES" に設定されます。
-- **WamDefaultSet:** - ログインしているユーザーに対して WAM の既定の WebAccount が作成されている場合は "YES" に設定されます。 このフィールドでは、dsreg/status が管理者特権でのコマンド プロンプトから実行されている場合にエラーが表示されることがあります。 
-- **WamDefaultAuthority:** - Azure AD の場合は "organizations" に設定されます。
-- **WamDefaultId:** - Azure AD の場合は常に "https://login.microsoft.com" です。
-- **WamDefaultGUID:** - 既定の WAM WebAccount の WAM プロバイダーの (Azure AD/Microsoft アカウント) GUID。 
+- **NgcSet:** 現在ログオンしているユーザーに対して Windows Hello キーが設定されている場合は、"YES" に設定されます。
+- **NgcKeyId:** Windows Hello キーの ID (現在ログオンしているユーザーに対して設定されている場合)。
+- **CanReset:** ユーザーが Windows Hello キーをリセットできるかどうかを示します。
+- **使用可能な値:** DestructiveOnly、NonDestructiveOnly、DestructiveAndNonDestructive、またはエラーの場合は Unknown。
+- **WorkplaceJoined:** Azure AD の登録済みアカウントが現在の NTUSER コンテキストでデバイスに追加された場合は、"YES" に設定されます。
+- **WamDefaultSet:** ログインしているユーザーに対して WAM の既定の WebAccount が作成されている場合は "YES" に設定されます。 このフィールドでは、dsreg/status が管理者特権でのコマンド プロンプトから実行されている場合にエラーが表示されることがあります。
+- **WamDefaultAuthority:** Azure AD の場合は "organizations" に設定されます。
+- **WamDefaultId:** Azure AD の場合は常に "https://login.microsoft.com" です。
+- **WamDefaultGUID:** 既定の WAM WebAccount の WAM プロバイダーの (Azure AD/Microsoft アカウント) GUID。
 
 ### <a name="sample-user-state-output"></a>ユーザーの状態の出力例
 
@@ -165,14 +165,14 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 > [!NOTE]
 > ユーザーの有効な状態を取得するには、コマンドをユーザー コンテキストで実行する必要があります。
 
-- **AzureAdPrt:** - ログオン ユーザーのデバイスに PRT が存在する場合は、"YES" に設定されます。
-- **AzureAdPrtUpdateTime:** - PRT が最後に更新されたときの UTC 時刻に設定されます。
-- **AzureAdPrtExpiryTime:** - 更新されない場合に PRT が期限切れになる UTC 時刻に設定されます。
-- **AzureAdPrtAuthority:** - Azure AD 機関の URL
-- **EnterprisePrt:** - オンプレミス ADFS からの PRT がデバイスにある場合は、"YES" に設定されます。 ハイブリッド Azure AD 参加済みデバイスの場合、デバイスには Azure AD とオンプレミスの AD からの PRT を同時に指定できます。 オンプレミスの参加済みデバイスでは、エンタープライズ PRT のみ指定されます。
-- **EnterprisePrtUpdateTime:** - エンタープライズ PRT が最後に更新されたときの UTC 時刻に設定されます。
-- **EnterprisePrtExpiryTime:** - 更新されない場合に PRT が期限切れになる UTC 時刻に設定されます。
-- **EnterprisePrtAuthority:** - ADFS 機関 URL
+- **AzureAdPrt:** ログオン ユーザーのデバイスに PRT が存在する場合は、"YES" に設定されます。
+- **AzureAdPrtUpdateTime:** PRT が最後に更新されたときの UTC 時刻に設定されます。
+- **AzureAdPrtExpiryTime:** 更新されない場合に PRT が期限切れになる UTC 時刻に設定されます。
+- **AzureAdPrtAuthority:** Azure AD 機関の URL
+- **EnterprisePrt:** オンプレミス ADFS からの PRT がデバイスにある場合は、"YES" に設定されます。 ハイブリッド Azure AD 参加済みデバイスの場合、デバイスには Azure AD とオンプレミスの AD からの PRT を同時に指定できます。 オンプレミスの参加済みデバイスでは、エンタープライズ PRT のみ指定されます。
+- **EnterprisePrtUpdateTime:** エンタープライズ PRT が最後に更新されたときの UTC 時刻に設定されます。
+- **EnterprisePrtExpiryTime:** 更新されない場合に PRT が期限切れになる UTC 時刻に設定されます。
+- **EnterprisePrtAuthority:** ADFS 機関 URL
 
 ### <a name="sample-sso-state-output"></a>SSO 状態の出力例
 
@@ -201,33 +201,35 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 
 このセクションでは、参加エラーの診断に役立つさまざまなテストを実行します。 このセクションには、前の (?) の詳細も含まれています。 この情報には、エラー フェーズ、エラー コード、サーバー要求 ID、サーバー応答の http 状態、サーバー応答のエラー メッセージが含まれます。
 
-- **User Context:** - 診断が実行されるコンテキスト。 指定できる値SYSTEM、UN-ELEVATED User、ELEVATED User。 
+- **User Context:** 診断が実行されるコンテキスト。 指定できる値SYSTEM、UN-ELEVATED User、ELEVATED User。
 
    > [!NOTE]
    > 実際の参加は SYSTEM コンテキストで実行されるため、SYSTEM コンテキストでの診断の実行が、実際の参加シナリオに最も近いものになります。 SYSTEM コンテキストで診断を実行するには、管理者特権でのコマンド プロンプトから dsregcmd /status コマンドを実行する必要があります。
 
-- **Client Time:** - システムの UTC 時刻。
-- **AD Connectivity Test:** - ドメイン コントローラーへの接続テストを実行します。 このテストでエラーが発生すると、事前チェック フェーズで参加エラーが発生する可能性があります。
-- **AD Configuration Test:** - テストでは、SCP オブジェクトがオンプレミスの AD フォレストで適切に構成されているかどうかを読み取って確認します。 このテストでエラーが発生すると、検出フェーズでエラー コード0x801c001d で参加エラーが発生する可能性があります。
-- **DRS Discovery Test:** - テストでは、検出メタデータ エンドポイントから DRS エンドポイントを取得し、ユーザー領域要求を実行します。 このテストでエラーが発生すると、検出フェーズで参加エラーが発生する可能性があります。
-- **DRS Connectivity Test:** - DRS エンドポイントへの基本接続テストを実行します。
-- **Token acquisition Test:** -ユーザー テナントがフェデレーションされている場合、テストでは Azure AD 認証トークンの取得が試行されます。 このテストでエラーが発生すると、認証フェーズで参加エラーが発生する可能性があります。 認証に失敗した場合、下のレジストリ キー設定でフォールバックが明示的に無効になっていない限り、フォールバックとして同期参加が試行されます。
+- **Client Time:** システムの UTC 時刻。
+- **AD Connectivity Test:** ドメイン コントローラーへの接続テストを実行します。 このテストでエラーが発生すると、事前チェック フェーズで参加エラーが発生する可能性があります。
+- **AD Configuration Test:** テストでは、SCP オブジェクトがオンプレミスの AD フォレストで適切に構成されているかどうかを読み取って確認します。 このテストでエラーが発生すると、検出フェーズでエラー コード0x801c001d で参加エラーが発生する可能性があります。
+- **DRS Discovery Test:** テストでは、検出メタデータ エンドポイントから DRS エンドポイントを取得し、ユーザー領域要求を実行します。 このテストでエラーが発生すると、検出フェーズで参加エラーが発生する可能性があります。
+- **DRS Connectivity Test:** DRS エンドポイントへの基本接続テストを実行します。
+- **Token acquisition Test:** ユーザー テナントがフェデレーションされている場合、テストでは Azure AD 認証トークンの取得が試行されます。 このテストでエラーが発生すると、認証フェーズで参加エラーが発生する可能性があります。 認証に失敗した場合、下のレジストリ キー設定でフォールバックが明示的に無効になっていない限り、フォールバックとして同期参加が試行されます。
+
 ```
-    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
-    Value: FallbackToSyncJoin
-    Type:  REG_DWORD
-    Value: 0x0 -> Disabled
-    Value: 0x1 -> Enabled
-    Default (No Key): Enabled
- ```
-- **Fallback to Sync-Join:** - 上のレジストリ キー (認証失敗で同期参加にフォールバックすることを避けるためのもの) が存在しない場合、"Enabled" に設定されます。 このオプションは、Windows 10 1803 以降で使用できます。
-- **Previous Registration:** - 前回の参加試行が発生した時刻。 失敗した参加試行だけがログに記録されます。
-- **Error Phase:** - 中止された参加のステージ。 可能値は、pre-check、discover、auth、join です。
-- **Client ErrorCode:** - 返されたクライアント エラー コード (HRESULT)。
-- **Server ErrorCode:** - サーバーに要求が送信され、サーバーがエラー コードを返して応答した場合のサーバー エラー コード。 
-- **Server Message:** - エラーコードと共に返されたサーバー メッセージ。
-- **Https Status:** - サーバーから返された HTTP の状態。
-- **Request ID:** - サーバーに送信されるクライアントの requestId。 サーバー側のログと相関させるのに役立ちます。
+Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+Value: FallbackToSyncJoin
+Type:  REG_DWORD
+Value: 0x0 -> Disabled
+Value: 0x1 -> Enabled
+Default (No Key): Enabled
+```
+
+- **Fallback to Sync-Join:** 上のレジストリ キー (認証失敗で同期参加にフォールバックすることを避けるためのもの) が存在しない場合、"Enabled" に設定されます。 このオプションは、Windows 10 1803 以降で使用できます。
+- **Previous Registration:** 前回の参加試行が発生した時刻。 失敗した参加試行だけがログに記録されます。
+- **Error Phase:** 中止された参加のステージ。 可能値は、pre-check、discover、auth、join です。
+- **Client ErrorCode:** 返されたクライアント エラー コード (HRESULT)。
+- **Server ErrorCode:** サーバーに要求が送信され、サーバーがエラー コードを返して応答した場合のサーバー エラー コード。
+- **Server Message:** エラー コードと共に返されたサーバー メッセージ。
+- **Https Status:** サーバーから返された HTTP の状態。
+- **Request ID:** サーバーに送信されるクライアントの requestId。 サーバー側のログと相関させるのに役立ちます。
 
 ### <a name="sample-pre-join-diagnostics-output"></a>参加前の診断の出力例
 
@@ -288,8 +290,8 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 
 このセクションには、クラウドに参加しているデバイスで実行されたサニティ チェックの出力が表示されます。
 
-- **AadRecoveryEnabled:** - "YES" の場合、デバイスに格納されているキーは使用できず、デバイスは復旧対象としてマークされます。 次回のサインインでは復旧フローがトリガーされ、デバイスが再登録されます。
-- **KeySignTest:** - "PASSED" の場合、デバイス キーは正常な状態です。 KeySignTest が失敗した場合、デバイスは通常、復旧対象としてマークされます。 次回のサインインでは復旧フローがトリガーされ、デバイスが再登録されます。 ハイブリッド Azure AD 参加済みデバイスの場合、復旧はサイレントです。 Azure AD 参加済みまたは Azure AD 登録済みの場合、デバイスは必要に応じてデバイスの復旧と再登録のためにユーザー認証を要求します。 **KeySignTest には、昇格された特権が必要です。**
+- **AadRecoveryEnabled:** "YES" の場合、デバイスに格納されているキーは使用できず、デバイスは復旧対象としてマークされます。 次回のサインインでは復旧フローがトリガーされ、デバイスが再登録されます。
+- **KeySignTest:** "PASSED" の場合、デバイス キーは正常な状態です。 KeySignTest が失敗した場合、デバイスは通常、復旧対象としてマークされます。 次回のサインインでは復旧フローがトリガーされ、デバイスが再登録されます。 ハイブリッド Azure AD 参加済みデバイスの場合、復旧はサイレントです。 Azure AD 参加済みまたは Azure AD 登録済みの場合、デバイスは必要に応じてデバイスの復旧と再登録のためにユーザー認証を要求します。 **KeySignTest には、昇格された特権が必要です。**
 
 #### <a name="sample-post-join-diagnostics-output"></a>参加後の診断の出力例
 
@@ -305,22 +307,22 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 
 ## <a name="ngc-prerequisite-check"></a>NGC の前提条件チェック
 
-このセクションでは、Windows Hello for Business (WHFB) をプロビジョニングするための前提条件チェックを実行します。 
+このセクションでは、Windows Hello for Business (WHFB) をプロビジョニングするための前提条件チェックを実行します。
 
 > [!NOTE]
 > ユーザーが既に WHFB を適切に構成している場合は、dsregcmd /status で NGC の前提条件チェックの詳細が表示されないことがあります。
 
-- **IsDeviceJoined:** - デバイスが Azure AD に参加している場合は、"YES" に設定されます。
-- **IsUserAzureAD:** - ログインしているユーザーが Azure AD に存在する場合は、"YES" に設定されます。
-- **PolicyEnabled:** - デバイスで WHFB ポリシーが有効になっている場合は "YES" に設定されます。
-- **PostLogonEnabled:** - WHFB 登録がプラットフォームによってネイティブでトリガーされる場合は、"YES" に設定されます。 "NO" に設定されている場合は、Windows Hello for Business の登録がカスタム メカニズムによってトリガーされることを示します。
-- **DeviceEligible:** - デバイスが WHFB に登録するためのハードウェア要件を満たしている場合は、"YES" に設定されます。
-- **SessionIsNotRemote:** - 現在のユーザーがリモートではなくデバイスに直接ログインしている場合は、"YES" に設定されます。
-- **CertEnrollment:** - WHFB 証明書信頼展開に固有であり、WHFB の証明書登録機関を示します。 WHFB ポリシーのソースがグループ ポリシーの場合は "enrollment authority" に設定され、ソースが MDM の場合は "mobile device management" に設定されます。 それ以外の場合は "none" になります。
-- **AdfsRefreshToken:** - WHFB 証明書信頼展開固有です。 CertEnrollment が "enrollment authority" の場合にのみ存在します。 ユーザー用のエンタープライズ PRT がデバイスにあるかどうかを示します。
-- **AdfsRaIsReady:** - WHFB 証明書信頼展開固有です。  CertEnrollment が "enrollment authority" の場合にのみ存在します。 探索メタデータに示されている ADFS で WHFB がサポートされ、"*かつ*" ログオン証明書テンプレートを利用できる場合は "YES" に設定されます。
-- **LogonCertTemplateReady:** - WHFB 証明書信頼展開固有です。 CertEnrollment が "enrollment authority" の場合にのみ存在します。 ログオン証明書テンプレートの状態が有効であり、ADFS RA のトラブルシューティングに役立つ場合は、"YES" に設定されます。
-- **PreReqResult:** - すべての WHFB の前提条件評価の結果が提示されます。 ユーザーが次回サインインするときに、ログオン後のタスクとして WHFB 登録を起動する場合は、"Will Provision" に設定されます。
+- **IsDeviceJoined:** デバイスが Azure AD に参加している場合は、"YES" に設定されます。
+- **IsUserAzureAD:** ログインしているユーザーが Azure AD に存在する場合は、"YES" に設定されます。
+- **PolicyEnabled:** デバイスで WHFB ポリシーが有効になっている場合は "YES" に設定されます。
+- **PostLogonEnabled:** WHFB 登録がプラットフォームによってネイティブでトリガーされる場合は、"YES" に設定されます。 "NO" に設定されている場合は、Windows Hello for Business の登録がカスタム メカニズムによってトリガーされることを示します。
+- **DeviceEligible:** デバイスが WHFB に登録するためのハードウェア要件を満たしている場合は、"YES" に設定されます。
+- **SessionIsNotRemote:** 現在のユーザーがリモートではなくデバイスに直接ログインしている場合は、"YES" に設定されます。
+- **CertEnrollment:** WHFB 証明書信頼展開に固有であり、WHFB の証明書登録機関を示します。 WHFB ポリシーのソースがグループ ポリシーの場合は "enrollment authority" に設定され、ソースが MDM の場合は "mobile device management" に設定されます。 それ以外の場合は "none" になります。
+- **AdfsRefreshToken:** WHFB 証明書信頼展開固有です。 CertEnrollment が "enrollment authority" の場合にのみ存在します。 ユーザー用のエンタープライズ PRT がデバイスにあるかどうかを示します。
+- **AdfsRaIsReady:** WHFB 証明書信頼展開固有です。  CertEnrollment が "enrollment authority" の場合にのみ存在します。 探索メタデータに示されている ADFS で WHFB がサポートされ、"*かつ*" ログオン証明書テンプレートを利用できる場合は "YES" に設定されます。
+- **LogonCertTemplateReady:** WHFB 証明書信頼展開固有です。 CertEnrollment が "enrollment authority" の場合にのみ存在します。 ログオン証明書テンプレートの状態が有効であり、ADFS RA のトラブルシューティングに役立つ場合は、"YES" に設定されます。
+- **PreReqResult:** すべての WHFB の前提条件評価の結果が提示されます。 ユーザーが次回サインインするときに、ログオン後のタスクとして WHFB 登録を起動する場合は、"Will Provision" に設定されます。
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>NGC の前提条件チェックの出力例
 
@@ -345,4 +347,4 @@ Azure AD 登録済みデバイスについては、このセクションを無�
 
 ## <a name="next-steps"></a>次のステップ
 
-ご不明な点がある場合は、[デバイス管理の FAQ](faq.yml) をご覧ください。
+- [Microsoft エラー ルックアップ ツール](/windows/win32/debug/system-error-code-lookup-tool)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ef9efe389894af7c792e980922ca422e9d05929b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5124a9bfcc0d98f32ae42457c79e9f74308a1e8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96028224"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108212737"
 ---
 次の表では、Azure の汎用 v1、v2、BLOB ストレージ、ブロック BLOB ストレージのアカウントに対する既定の制限について説明します。 "*受信*" 制限は、ストレージ アカウントに送信されるすべてのデータを指します。 *送信* 制限は、ストレージ アカウントから受信するすべてのデータを指します。
 
@@ -31,8 +31,10 @@ ms.locfileid: "96028224"
 | 汎用 v2 および BLOB ストレージ アカウントの最大送信速度 (すべてのリージョン) | 50 Gbps |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国リージョン) | RA-GRS/GRS が有効な場合は 20 Gbps、LRS/ZRS<sup>2</sup> の場合は 30 Gbps |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS<sup>2</sup> の場合は 15 Gbps |
-| ストレージアカウントごとの仮想ネットワーク規則の最大数 | 200 |
 | ストレージアカウントごとの IP アドレス規則の最大数 | 200 |
+| ストレージアカウントごとの仮想ネットワーク規則の最大数 | 200 |
+| ストレージアカウントごとのリソース インスタンス ルールの最大数 | 200 |
+| ストレージ アカウントごとのプライベート エンドポイントの最大数 | 200 |
 
 <sup>1</sup> Azure Storage 標準アカウントは、要求によるより高い容量制限とより高いイングレス制限をサポートします。 アカウント制限の引き上げを希望する場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/faq/)。
 

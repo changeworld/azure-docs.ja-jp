@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 24dc0d2b243eb6c13e5670a1438876132c5e429e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 25880a60bd086afa84b0c3eaf901bfb987190f4a
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833654"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166345"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -35,8 +35,8 @@ Azure Monitor Log Analytics ワークスペースがない場合は、ワーク�
 
 Hybrid Runbook Worker ロールには、サポートされている Linux オペレーティング システム用の [Log Analytics エージェント](../azure-monitor/agents/log-analytics-agent.md)が必要です。 Azure の外部でホストされているサーバーまたはマシンの場合、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用すれば Log Analytics エージェントをインストールできます。
 
->[!NOTE]
->Linux 用 Log Analytics エージェントをインストールした後は、`sudoers.d` フォルダーまたはその所有権のアクセス許可を変更しないでください。 sudo アクセス許可は **nxautomation** アカウントに必要です。これは Hybrid Runbook Worker を実行するユーザー コンテキストです。 アクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。
+> [!NOTE]
+> Linux 用 Log Analytics エージェントをインストールした後は、`sudoers.d` フォルダーまたはその所有権のアクセス許可を変更しないでください。 sudo アクセス許可は **nxautomation** アカウントに必要です。これは Hybrid Runbook Worker を実行するユーザー コンテキストです。 アクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。
 >
 
 ### <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
@@ -76,8 +76,8 @@ Linux システムおよびユーザー Hybrid Runbook Worker の最小要件は
 
 ご利用の Automation アカウントのいずれか 1 つの Hybrid Runbook Worker グループに worker マシンを追加できます。 Update Management によって管理されているシステム Hybrid Runbook Worker をホストしているマシンの場合は、Hybrid Runbook Worker グループに追加できます。 しかし、Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じ Automation アカウントを使用する必要があります。
 
->[!NOTE]
->Azure Automation [Update Management](./update-management/overview.md) を使用すると、Update Management に対して有効になっている Azure または Azure 以外のマシンに、システム Hybrid Runbook Worker が自動的にインストールされます。 ただし、この worker は、Automation アカウント内の Hybrid Runbook Worker グループには登録されません。 これらのマシン上で Runbook を実行するには、それを Hybrid Runbook Worker グループに追加する必要があります。 それをグループに追加するには、「[Linux Hybrid Runbook Worker をインストールする](#install-a-linux-hybrid-runbook-worker)」セクションの手順 4 に従ってください。
+> [!NOTE]
+> Azure Automation [Update Management](./update-management/overview.md) を使用すると、Update Management に対して有効になっている Azure または Azure 以外のマシンに、システム Hybrid Runbook Worker が自動的にインストールされます。 ただし、この worker は、Automation アカウント内の Hybrid Runbook Worker グループには登録されません。 これらのマシン上で Runbook を実行するには、それを Hybrid Runbook Worker グループに追加する必要があります。 それをグループに追加するには、「[Linux Hybrid Runbook Worker をインストールする](#install-a-linux-hybrid-runbook-worker)」セクションの手順 4 に従ってください。
 
 ## <a name="supported-linux-hardening"></a>Linux のセキュリティ強化のサポート
 
@@ -209,9 +209,9 @@ Linux Hybrid Runbook Worker をインストールして構成するには、次�
 
 既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 worker に対して署名されていない Runbook を実行すると、`Signature validation failed` エラーが表示されます。 署名の検証をオフにするには、次のコマンドを実行します。 2 番目のパラメーターは Log Analytics のワークスペース ID に置き換えます。
 
- ```bash
- sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
- ```
+```bash
+sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
+```
 
 ## <a name="remove-the-hybrid-runbook-worker"></a><a name="remove-linux-hybrid-runbook-worker"></a>Hybrid Runbook Worker を削除します。
 

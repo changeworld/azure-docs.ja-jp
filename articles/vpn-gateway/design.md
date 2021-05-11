@@ -1,18 +1,18 @@
 ---
-title: Azure VPN Gateway の設計について
-description: Azure 仮想ネットワークに接続するように VPN ゲートウェイ トポロジを設計する方法について説明します。
+title: Azure VPN Gateway のトポロジと設計
+description: オンプレミスの場所を仮想ネットワークに接続するための VPN Gateway トポロジと設計について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2283af1f2fc64e5a0d547fb462695a7442cad2f5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ce2bf657b54ae824410fe4607e1c37bdfd84ac54
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122945"
+ms.locfileid: "108205883"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway の設計
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 47d899534de535b5cd6a7c3fb2df78cdadbe11f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8e24474cea4607281baf9c79ad20a465b3dfaef
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93338052"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165013"
 ---
 # <a name="stringequals-azure-cosmos-db"></a>STRINGEQUALS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,7 +62,7 @@ SELECT STRINGEQUALS("abc", "abc", false) AS c1, STRINGEQUALS("abc", "ABC", false
 
 ## <a name="remarks"></a>解説
 
-このシステム関数は、[範囲インデックス](index-policy.md#includeexclude-strategy)の恩恵を受けます。
+この文字列システム関数でインデックスがどのように使用されるかについては[こちら](sql-query-string-functions.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

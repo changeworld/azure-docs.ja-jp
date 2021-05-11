@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 69af7e2129136128e87b4c9b28806b2f02f09e27
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551375"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205397"
 ---
 # <a name="np-series"></a>NP シリーズ 
 NP シリーズの仮想マシンでは、機械学習の推論、ビデオのトランスコード、データベースの検索と分析など、ワークロードを加速させるために [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA を利用しています。 また、NP シリーズの VM は Intel Xeon 8171M (Skylake) の CPU を搭載し、全コア ターボ クロック速度は 3.2 GHz です。
@@ -43,10 +43,17 @@ VM 世代サポート: 第 1 世代<br>
 
 **A:** Xilinx では [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html) を推奨しています。
 
-
 **Q:** ソリューションを開発するために NP VM を使用する必要がありますか。 
 
-**A:** いいえ。オンプレミスで開発し、クラウドにデプロイできます。 構成証明のドキュメントに従って、NP VM にデプロイしてください。 
+**A:** いいえ。オンプレミスで開発し、クラウドにデプロイできます。 [構成証明のドキュメント](https://docs.microsoft.com/azure/virtual-machines/field-programmable-gate-arrays-attestation)に従って、NP VM にデプロイしてください。 
+
+**Q:** NP VM で FPGA をプログラミングするとき、構成証明から返されたどのファイルを使用すべきですか。
+
+**A:** 構成証明によって、2 つの xclbins (**design.bit.xclbin** および **design.azure.xclbin**) が返されます。 **design.azure.xclbin** を使用してください。
+
+**Q:** すべての XRT/プラットフォーム ファイルはどこで入手できますか。
+
+**A:** すべてのファイルについては、Xilinx の [Microsoft Azure](https://www.xilinx.com/microsoft-azure.html) サイトを参照してください。
 
 **Q:** 使用すべき XRT のバージョンを教えてください。
 
@@ -135,6 +142,15 @@ Host_Mem(SB) を無効にするには: sudo xbutil host_mem --disable
 **Q:** PLP 情報を照会するにはどのようにすればよいですか。 
 
 **A:** xbutil クエリを実行し、下の部分を確認する必要があります。 
+
+**Q:** 独自の VM を作成して XRT を手動でデプロイした場合、どのような追加の変更を行う必要がありますか? 
+
+**A:** /opt/xilinx/xrt/setup.sh で、 /opt/xilinx/xrt/xrt.ini をポイントする XRT_INI_PATH エントリを追加してください
+
+ 
+/Opt/xilinx/xrt/xrt.ini の内容には次が含まれている必要があります。 <br>
+[Runtime]<br>
+ert=false <br>
 
 ## <a name="other-sizes"></a>その他のサイズ
 

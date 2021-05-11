@@ -4,18 +4,16 @@ description: Azure VMware Solution のプライベート クラウドに対す�
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
 ms.date: 04/27/2021
-ms.openlocfilehash: 52248eea866712782a5e04ee797c15d8c098bc9a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: fb0d8bc8391c96449cdf260c543cfed1af1125f5
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074649"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176110"
 ---
 # <a name="peer-on-premises-environments-to-azure-vmware-solution"></a>オンプレミス環境を Azure VMware Solution にピアリングする
 
-クイック スタートのこの手順では、[計画フェーズで収集された情報](production-ready-deployment-steps.md)を使用して、Azure VMware Solution をオンプレミス環境に接続します。
-
-ExpressRoute Global Reach では、オンプレミス環境を Azure VMware Solution のプライベート クラウドに接続します。 プライベート クラウドの ExpressRoute 回線と、オンプレミス環境への既存の ExpressRoute 接続との間に、ExpressRoute Global Reach 接続が確立されます。 
+このクイックスタート手順では、Azure VMware Solution をオンプレミス環境に接続します。 ExpressRoute Global Reach では、オンプレミス環境を Azure VMware Solution のプライベート クラウドに接続します。 プライベート クラウドの ExpressRoute 回線と、オンプレミス環境への既存の ExpressRoute 接続との間に、ExpressRoute Global Reach 接続が確立されます。 
 
 
 >[!NOTE]

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a6d98f827c39f973714441e308dcc4f2bd061c9b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7e5c94cad817f398ae56fb1aa9cbbd1c43cd47a4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835580"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291822"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -121,10 +121,10 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 ## <a name="supported-virtual-machine-os-images"></a>サポートされている仮想マシン OS イメージ
 
-Windows Virtual Desktop は、次の x64 オペレーティング システム イメージをサポートします。
+Windows Virtual Desktop は、[Microsoft ライフサイクル ポリシー](https://docs.microsoft.com/lifecycle/)に従っており、次の x64 オペレーティング システム イメージをサポートしています。
 
-* Windows 10 Enterprise マルチセッション、バージョン 1809 以降
-* Windows 10 Enterprise バージョン 1809 以降 (半期チャネルのみ)
+* Windows 10 (Enterprise マルチセッション)
+* Windows 10 Enterprise
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
@@ -136,13 +136,11 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 |オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (マルチセッション)、バージョン 2004|はい|Yes|Yes|はい|
-|Windows 10 Enterprise (マルチセッション)、バージョン 1909|はい|Yes|Yes|はい|
-|Windows 10 Enterprise (マルチセッション)、バージョン 1903|はい|はい|いいえ|いいえ|
-|Windows 10 Enterprise (マルチセッション)、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 10 Enterprise マルチセッション、バージョン 1909 以降|はい|はい|はい|はい|
+|Windows 10 Enterprise、バージョン 1909 以降|はい|はい|はい|はい|
 |Windows 7 Enterprise|はい|はい|いいえ|いいえ|
 |Windows Server 2019|はい|はい|いいえ|いいえ|
-|Windows Server 2016|はい|Yes|Yes|はい|
+|Windows Server 2016|はい|はい|はい|はい|
 |Windows Server 2012 R2|はい|はい|いいえ|いいえ|
 
 ## <a name="next-steps"></a>次のステップ

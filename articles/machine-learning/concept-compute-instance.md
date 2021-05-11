@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 8bc3c3dfba8414381c4bc26508e96d12925df7ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a3677e50d9dab99eaedc88cdd61e8e2ed9a3761b
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135781"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321755"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -98,7 +98,7 @@ Python パッケージはすべて、**Python 3.6 - AzureML** 環境にインス
 
 小さいファイルの書き込みをネットワーク ドライブに対して行うと、コンピューティング インスタンス自体のローカル ディスクに書き込む場合よりも遅くなる可能性があります。  小さなファイルを多数作成する場合は、コンピューティング インスタンス上に直接配置されているディレクトリ (`/tmp` ディレクトリなど) を使用するようにしてください。 なお、これらのファイルには、他のコンピューティング インスタンスからはアクセスできなくなることにご注意ください。 
 
-一時データにはコンピューティング インスタンスの `/tmp` ディレクトリを使用できます。  ただし、コンピューティング インスタンスの OS ディスクに大量のデータ ファイルを書き込むことは避けてください。  代わりに[データストア](concept-azure-machine-learning-architecture.md#datasets-and-datastores)を使用してください。 JupyterLab git 拡張機能をインストールしている場合も、コンピューティング インスタンスのパフォーマンスが低下する可能性があります。
+一時データにはコンピューティング インスタンスの `/tmp` ディレクトリを使用できます。  ただし、コンピューティング インスタンスの OS ディスクに非常に大きなデータ ファイルを書き込むことは避けてください。 コンピューティング インスタンス上の OS ディスクには 128 GB の容量があります。 また、ノートブック ファイル共有に大量のトレーニング データを格納することも避けてください。 代わりに、[データストアとデータセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)を使用してください。 
 
 ## <a name="managing-a-compute-instance"></a>コンピューティング インスタンスの管理
 

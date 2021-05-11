@@ -6,14 +6,14 @@ ms.date: 04/05/2021
 ms.topic: article
 author: shashankbarsin
 ms.author: shasb
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurecli
 description: カスタムの場所を使用して、Azure Arc 対応 Kubernetes クラスターに Azure PaaS サービスをデプロイします
-ms.openlocfilehash: b3a0d89f0c352b8344aea68a613653eae43a41e4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d8e1c11069a1097b0bfea3319eeb90fcee3eec82
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147771"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287737"
 ---
 # <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 上のカスタムの場所
 
@@ -74,6 +74,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 > [!NOTE]
 > 1. カスタムの場所機能は、クラスター接続機能に依存します。 そのため、カスタムの場所を使用するには、両方の機能が有効になっている必要があります。
 > 2. 機能を有効にするクラスターを指している `kubeconfig` ファイルが存在するマシン上で、`az connectedk8s enable-features` を実行する必要があります。
+> 3. サービス プリンシパルを使用して Azure CLI にログインしている場合は、カスタムの場所機能を有効にする前に、[追加のアクセス許可](troubleshooting.md#enable-custom-locations-using-service-principal)をサービス プリンシパルに付与する必要があります。
 
 ## <a name="create-custom-location"></a>カスタムの場所を作成する
 

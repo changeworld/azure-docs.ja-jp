@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dcda93e2001e982ff2fb470f0e7a4bc9c366a8d7
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a9eeb7ed664f67e1273a7dfff701a18970cd91fd
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108174526"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-sign-up-user-flows"></a>API コネクタを使用してサインアップ ユーザー フローをカスタマイズおよび拡張する
 
@@ -282,8 +282,8 @@ REST API サービスとその基になるコンポーネント (データベー
 
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
-- [チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)
-- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-validation.md)
+- [チュートリアル: API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
+- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-exchange.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)
 - [リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
 

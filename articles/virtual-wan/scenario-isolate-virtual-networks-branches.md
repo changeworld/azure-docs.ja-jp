@@ -1,19 +1,19 @@
 ---
 title: シナリオ:仮想ネットワークとブランチのカスタム分離
 titleSuffix: Azure Virtual WAN
-description: ルーティングのシナリオ - 選択された VNet とブランチが相互に通信できないようにする
+description: 一部の VNet およびブランチが相互に到達できないようにするための、Virtual WAN ルーティング シナリオについて説明します。
 services: virtual-wan
 author: wellee
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 04/27/2021
 ms.author: wellee
-ms.openlocfilehash: e8e5a5a1b9325f40fdd51133155a0daffaa55a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 024d3c34094ac82e158198e569e0b6f3b12bdf4c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99396244"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162025"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>シナリオ:仮想ネットワークとブランチのカスタム分離
 
@@ -85,7 +85,7 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 3. 赤の VNet の **RT_RED** ルーティング テーブルにも同じ手順を繰り返します。
 4. 仮想 WAN で Azure Firewall をプロビジョニングします。 仮想 WAN ハブでの Azure Firewall の詳細については、[仮想 WAN ハブでの Azure Firewall の構成](howto-firewall.md)に関するトピックを参照してください。
 5. 仮想ハブの **既定** のルーティング テーブルに静的ルートを追加して、VNet アドレス空間 (青と赤の両方) 宛てのすべてのトラフィックを Azure Firewall に誘導します。 この手順により、ブランチからのパケットが検査のために Azure Firewall に送信されるようになります。
-    * 例:**宛先プレフィックス**: 10.0.0.0/24 **次ホップ**:Azure Firewall
+    * 例: **Destination Prefix**:  10.0.0.0/8 **Next Hop**: Azure Firewall
     >[!NOTE]
     > この手順は、Azure Firewall Manager を使用して、[セキュリティで保護されたプライベート トラフィック] オプションを選択することによっても実行できます。 これにより、VNet とブランチに適用されるすべての RFC1918 プライベート IP アドレスのルートが追加されます。 RFC1918 に準拠していないすべてのブランチまたは仮想ネットワークには、手動で追加する必要があります。 
 

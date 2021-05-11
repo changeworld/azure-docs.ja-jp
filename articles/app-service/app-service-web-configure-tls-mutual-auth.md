@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a5b0a576e2994bd852ee5b0a356543882601fc0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97347744"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076241"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -44,11 +44,11 @@ az webapp update --set clientCertEnabled=true --name <app-name> --resource-group
 
 1. **[Client exclusion paths]\(クライアントの除外パス\)** の横にある編集アイコンをクリックします。
 
-1. **[新しいパス]** をクリックし、パスを指定して、 **[OK]** をクリックします。
+1. **[新しいパス]** をクリックし、1 つのパスか、`,` または `;` で区切られたパスの一覧を指定して、 **[OK]** をクリックします。
 
 1. ページの上部にある **[保存]** をクリックします。
 
-次のスクリーンショットでは、アプリの `/public` パスの下にあるものは、クライアント証明書を必要としません。
+次のスクリーンショットでは、`/public` で始まるアプリのパスは、クライアント証明書を必要としません。 パスの照合では、大文字と小文字は区別されません。
 
 ![証明書不要のパス][exclusion-paths]
 

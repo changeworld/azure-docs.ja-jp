@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/01/2019
+ms.date: 04/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc66dec0ff66e61038503b752f6bd1f2760e9859
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87907735"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162997"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>例: Active Directory フェデレーション サービス (AD FS) との直接フェデレーション (プレビュー)
 
@@ -153,4 +153,4 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 1.  **[OK]** をクリックします。 これで、WS-Fed を使用した直接フェデレーション用に AD FS サーバーが構成されました。
 
 ## <a name="next-steps"></a>次のステップ
-次に、Azure AD ポータルで、または PowerShell を使用して、[Azure AD 上で直接フェデレーションを構成](direct-federation.md#step-2-configure-direct-federation-in-azure-ad)します。 
+次に、Azure AD ポータルで、または PowerShell を使用して、[Azure AD 上で直接フェデレーションを構成](direct-federation.md#step-3-configure-direct-federation-in-azure-ad)します。 

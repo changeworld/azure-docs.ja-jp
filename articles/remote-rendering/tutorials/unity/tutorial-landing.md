@@ -5,16 +5,19 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e9bcabc05f0a967c788c5811dce0d99dc5cf38c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b01e53161bce448400d2bf641fee76987b7b841e
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207683"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316787"
 ---
 # <a name="azure-remote-rendering-tutorials"></a>Azure Remote Rendering のチュートリアル
 
 Azure Remote Rendering のチュートリアルをご覧いただきありがとうございます。 これらのチュートリアルは読者参加型のレッスンとなっており、Azure Remote Rendering の主要概念に加え、リモート レンダリングされたモデルを表示、操作、カスタマイズする手順や、安全な商用対応のアプリケーションを作成するうえでの注意点について取り上げています。
+
+> [!TIP]
+> これらのレッスンでは、いくつかの手順でサンプル アプリを構築する方法を詳述しています。 HoloLens 2 にすばやくデプロイできる、よりコンパクトな例を確認したい場合は、[Unity のクイックスタート](../../quickstarts/render-model.md)をご覧ください。
 
 ### <a name="azure-remote-rendering-tutorials"></a>Azure Remote Rendering のチュートリアル
 

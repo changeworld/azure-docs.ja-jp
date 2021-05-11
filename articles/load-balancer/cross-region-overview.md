@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8e14b22895c4734f1efd8688a5b20c946422a080
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a08dfd1771ab0a8f866ffad1faa2c7d867b3072
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225627"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075503"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -152,5 +152,5 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 ## <a name="next-steps"></a>次の手順
 
 - 「[チュートリアル:Azure portal を使用してリージョン間ロード バランサーを作成する](tutorial-cross-region-portal.md)」を参照して、リージョン間ロードバランサーを作成する。
-- 「[パブリック標準ロード バランサーを作成する](quickstart-load-balancer-standard-public-portal.md)」を参照して、標準リージョン ロード バランサーを作成する。
+- [リージョン間ロード バランサー](https://www.youtube.com/watch?v=3awUwUIv950)についてさらに詳しく学習する。
 - [Azure Load Balancer](load-balancer-overview.md) についてさらに詳しく学習する。

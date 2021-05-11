@@ -1,6 +1,6 @@
 ---
 title: 'ゲートウェイの IP アドレスの設定を変更する: PowerShell'
-description: この記事では、PowerShell を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する手順について説明します
+description: PowerShell を使用してローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 07d9124105424d42970800b1c5bca956d512722d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e2edd8b00be0ce7ef0cff2b3aa01a111b1c4c5e5
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100388670"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229578"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更
 

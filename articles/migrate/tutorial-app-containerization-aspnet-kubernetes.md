@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 464e2450b4d4dea9fc650ad8869af4215d3db1a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24fd5cb0abbf36df74d6e2300c570e7e39b875ad
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561799"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180574"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-kubernetes-service"></a>ASP.NET アプリのコンテナ化と Azure Kubernetes Service への移行
 
@@ -110,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="launch-the-app-containerization-tool"></a>App Containerization ツールを起動する
 
-1. App Containerization ツールを実行する Windows コンピューターに接続できる任意のコンピューターでブラウザーを開き、ツールの URL: **https://*コンピューター名または IP アドレス*: 44368** を開きます。
+1. App Containerization ツールを実行する Windows マシンに接続できる任意のマシンでブラウザーを開き、ツールの URL: **https://<*コンピューター名または IP アドレス*>: 44369** を開きます。
 
    または、アプリのショートカットを選択して、デスクトップからアプリを開くこともできます。
 

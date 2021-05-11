@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 84db002e35f88bcee1e59a22b678f2a76047b5ef
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: fbe9c1585ab2eee6e0d38c309a2d1d279ffab0b4
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885832"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331486"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -80,7 +80,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
     :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="一覧からコンピューティングの状態を表示する":::
 
 
-### <a name="compute-instance"></a>コンピューティング インスタンス
+### <a name="compute-instance"></a><a name="compute-instance"></a> コンピューティング インスタンス
 
 [上の手順](#portal-create)を使用して、コンピューティング インスタンスを作成します。  その後、次のようにフォームに入力します。
 
@@ -93,7 +93,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 |仮想マシンのタイプ |  CPU または GPU を選択します。 このタイプは作成後に変更することはできません     |
 |仮想マシンのサイズ     |  サポートされる仮想マシンのサイズがお客様のリージョンで制限されている可能性があります。 [利用可能な製品のリスト](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)に関するページを確認してください     |
 |SSH アクセスの有効化/無効化     |   SSH アクセスは既定では無効になっています。  SSH アクセスは、 作成後に変更することはできません。 [VS Code Remote](how-to-set-up-vs-code-remote.md) を使用して対話形式でデバッグする場合は、アクセスを有効にする必要があります   |
-|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)に関するページを参照してください。  |
+|詳細設定     |  省略可能。 仮想ネットワークを構成する。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)に関するページを参照してください。  また、詳細設定を使用して、[セットアップ スクリプト](how-to-create-manage-compute-instance.md#setup-script)を指定します。 |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> コンピューティング クラスター
 

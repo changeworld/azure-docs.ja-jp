@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 594d38425be0304a9f7737bdfba60b29187a2e2d
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 17db5f566b45af8ea67d551972dc9e12235f5b6c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363514"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290958"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v3:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,6 +90,9 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 | **パフォーマンスに関するヒント**| [Java SDK v4 のパフォーマンスに関するヒント (Spring Data に適用可能)](performance-tips-java-sdk-v4-sql.md)| 
 | **トラブルシューティング** | [Java SDK v4 のトラブルシューティング (Spring Data に適用可能)](troubleshoot-java-sdk-v4-sql.md) | 
 | **Azure Cosmos DB のワークショップとラボ** |[Cosmos DB ワークショップのホーム ページ](https://aka.ms/cosmosworkshop)
+
+> [!IMPORTANT]
+> * 3\.5.0 リリースでは、Spring Boot 2.4.3 以降がサポートされています。
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 

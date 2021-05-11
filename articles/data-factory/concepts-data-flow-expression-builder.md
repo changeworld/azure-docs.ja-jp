@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/29/2021
+ms.openlocfilehash: e335176b5cd7c6c35477ac9318cf20ce4b64b82d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99584925"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291012"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
@@ -71,7 +71,7 @@ ms.locfileid: "99584925"
 
 ### <a name="parameters"></a>パラメーター
 
-パラメーターは、実行時にパイプラインからデータ フローに渡される値です。 パラメーターを参照するには、 **[Expression elements]\(式の要素\)** ビューでパラメーターをクリックするか、名前の前にドル記号を付けて参照します。 たとえば、parameter1 という名前のパラメーターは `$parameter1` によって参照されます。 詳細については、「[マッピング データ フローをパラメーター化する](parameters-data-flow.md)」を参照してください。
+パラメーターは、実行時にパイプラインからデータ フローに渡される値です。 パラメーターを参照するには、 **[Expression elements]\(式の要素\)** ビューでパラメーターをクリックするか、名前の前にドル記号を付けて参照します。 たとえば、parameter1 という名前のパラメーターは `$parameter1` によって参照されます。 詳細については、「[マッピング データ フローをパラメーター化する](parameters-data-flow.md)」を参照してください。 
 
 ### <a name="cached-lookup"></a>キャッシュされた検索
 
@@ -169,6 +169,12 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 ### <a name="find-time-from-epoch-or-unix-time"></a>エポックまたは Unix 時刻から時刻を検索する
 
 toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
+
+### <a name="data-flow-time-evaluation"></a>データ フローの時刻の評価
+
+データ フローは、ミリ秒単位まで処理します。 *2018-07-31T20:00:00.2170000* の場合は、出力に *2018-07-31T20:00:00.217* が表示されます。
+ADF ポータルでは、 **[current browser setting]\(現在のブラウザーの設定\)** にタイムスタンプが表示されています。ここでは 217 が表示されていない可能性がありますが、データフローを最後まで実行すると、217 (ミリ秒部分) も同様に処理されます。 toString(myDateTimeColumn) を式として使用すると、データを完全な精度でプレビュー表示することができます。 実際上は、datetime を文字列ではなく datetime として処理します。
+ 
 
 ## <a name="next-steps"></a>次のステップ
 

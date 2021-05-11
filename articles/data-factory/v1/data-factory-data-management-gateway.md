@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0634f75f000689f409ee81279e7d52f680ab98d8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100375206"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209231"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -199,8 +199,8 @@ HTTP プロキシを表示して更新するには、構成マネージャー �
 ### <a name="configure-proxy-server-settings"></a>プロキシ サーバーの設定を構成する
 HTTP プロキシに対して **[システム プロキシを使用する]** 設定を選択すると、ゲートウェイは、diahost.exe.config と diawp.exe.config のプロキシ設定を使用します。diahost.exe.config と diawp.exe.config でプロキシが指定されていない場合、ゲートウェイはプロキシを経由せず直接クラウド サービスに接続します。 diahost.exe.config ファイルを更新する手順を次に示します。
 
-1. ファイル エクスプローラーで、*C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config* の安全なコピーを作成して、元のファイルをバックアップします。
-2. 管理者として Notepad.exe を起動し、テキスト ファイル *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config* を開きます。次のコードに示されている system.net の既定のタグを確認します。
+1. ファイル エクスプ ローラーで、*C:\\Program Files\\Microsoft Integration Runtime\\5.0\\Shared\\diahost.exe.config* の安全なコピーを作成して、元のファイルをバックアップします。
+2. 管理者として Notepad.exe を起動し、テキスト ファイル *C:\\Program Files\\Microsoft Integration Runtime\\5.0\\Shared\\diahost.exe.config* を開きます。次のコードに示されている system.net の既定のタグを確認します。
 
     ```
     <system.net>
@@ -276,7 +276,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 
 [シングル ノード ゲートウェイ]
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* フォルダーに切り替えます。
+2. *C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
     ```powershell
@@ -289,7 +289,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
     ```
    [高可用性とスケーラビリティを備えたマルチノード ゲートウェイ](data-factory-data-management-gateway-high-availability-scalability.md)
 1. ゲートウェイ コンピューターで Windows PowerShell を起動します。
-2. *C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* フォルダーに切り替えます。
+2. *C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* フォルダーに切り替えます。
 3. 自動更新機能をオフ (無効) にするには、次のコマンドを実行します。
 
     高可用性機能を備えたゲートウェイについては、別途 AuthKey パラメーターが必要となります。
@@ -306,14 +306,14 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 ゲートウェイをインストールした後、次のどれかの方法で Data Management Gateway 構成マネージャーを起動できます。
 
 1. **[検索]** ウィンドウに、このユーティリティにアクセスする **Data Management Gateway** を入力します。
-2. 次のフォルダー内にある実行可能な *ConfigManager.exe* を実行します: *C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared*。
+2. *C:\\Program Files\\Microsoft Integration Runtime\\5.0\\Shared\\* フォルダーにある実行可能ファイル *ConfigManager.exe* を実行します。
 
 ### <a name="home-page"></a>ホーム ページ
 ホーム ページでは、次の操作を行うことができます。
 
 * (クラウド サービスなどに接続されている) ゲートウェイの状態を表示する。
 * **[登録]** する。
-* ゲートウェイ コンピューターで **Data Management Gateway ホスト サービス** を **停止** および開始する。
+* ゲートウェイ コンピューターで **Integration Runtime サービス** を **停止** および開始する。
 * **更新のスケジュール** を特定の時刻に設定する。
 * ゲートウェイの **最終更新日時** を確認する。
 
@@ -326,7 +326,7 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 * **SSL 証明書** を表示する。この証明書は、データ ソースの資格情報を設定するためにポータルとゲートウェイ間の TLS/SSL 通信に使用されます。
 
 ### <a name="remote-access-from-intranet"></a>イントラネットからのリモート アクセス
-この機能は今後有効になります。 今後の更新プログラム (v3.4 以降) で、資格情報を暗号化するために PowerShell または資格情報マネージャー アプリケーションを使用しながら、ポート 8050 (前のセクションを参照) を使用して現在発生しているすべてのリモート接続を有効または無効にできます。
+資格情報を暗号化するために PowerShell または資格情報マネージャー アプリケーションを使用しながら、ポート 8050 (前のセクションを参照) を使用して現在発生しているすべてのリモート接続を有効または無効にできます。
 
 ### <a name="diagnostics-page"></a>[診断] ページ
 [診断] ページでは、次の操作を行うことができます。
@@ -507,7 +507,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell で、*C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* フォルダーに切り替えます。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた *RegisterGateway.ps1* スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+1. Azure PowerShell で、*C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* フォルダーに切り替えます。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた *RegisterGateway.ps1* スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

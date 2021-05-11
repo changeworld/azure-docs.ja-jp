@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: 15816d58105841ee53f3724158ebcbfa65df4877
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5579aa764eaa9f367364dce6ca5db09184e04fa2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133135"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330172"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 
@@ -68,6 +68,12 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 サインアップし、発行元契約に同意すると、パートナー センターのコマーシャル マーケットプレースのページにアクセスできるようになります。 ここで、オファーの作成と管理、および分析レポートの表示を行います。 Microsoft 365 アプリの場合は、パートナー センター内で Office ストア プログラムをアクティブ化する必要もあります。
 
 詳しくは、「[コマーシャル マーケットプレースにようこそ](index.yml)」と [Microsoft コマーシャル マーケットプレースを通して Microsoft 365 アドインを収益化する](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)方法に関するページをご覧ください。
+
+### <a name="how-can-my-own-employees-use-our-offers-from-the-marketplace-without-being-charged"></a>当社の従業員が、マーケットプレースの自社のオファーを課金されることなく使用するにはどうすればよいですか?
+
+Microsoft が、自社のオファーの売上に関して、従業員への課金とストア サービス料金の評価を行わないようにするには、最初に $0 の価格でオファーの[プライベート プラン](/azure/marketplace/private-offers)を作成し、その購入を希望する社内ユーザーにこのオファーを送信する必要があります。
+
+また、[プライベート Marketplace](/marketplace/create-manage-private-azure-marketplace) 機能を使用して、社内ユーザーが管理者によって承認された特定のプランのみを購入できるようにすることもできます。
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースに関するサポートを受けるにはどうすればよいですか?
 

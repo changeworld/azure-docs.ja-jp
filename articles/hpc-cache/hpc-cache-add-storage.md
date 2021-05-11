@@ -4,14 +4,15 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 04/28/2021
+ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 47cbb3caa46f62ef6b1d4384c50d161963cce908
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 81d361a82a05bed83156857b2381be0d6d113827
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905560"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209897"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -83,26 +84,43 @@ Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ �
 
 この作業は事前に行えるほか、Blob Storage ターゲットを追加するページ上のリンクをクリックして行うこともできます。 ロールの設定を Azure 環境経由で反映させるとき、最大 5 分かかる場合があることにご留意ください。ロールの追加後、少し待ってからストレージ ターゲットを作成してください。
 
-Azure ロールを追加する手順:
+1. ストレージ アカウントの **[アクセス制御 (IAM)]** を開きます。
 
-1. ストレージ アカウントの **[アクセス制御 (IAM)]** ページを開きます ( **[ストレージ ターゲットの追加]** ページのリンクをクリックすると自動的に、選択したアカウントについて、このページが表示されます)。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-1. ページ上部の **+** をクリックして **[ロールの割り当てを追加する]** を選択します。
+1. 一度に 1 つずつ、次のロールを割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | ロール | [Storage Account Contributor](../role-based-access-control/built-in-roles.md#storage-account-contributor) <br/>  [ストレージ BLOB データ共同作成者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) |
+    | アクセスの割り当て先 | HPC Cache リソース プロバイダー |
 
-1. [ストレージ アカウント共同作成者] ロールを一覧から選択します。
-
-1. **[アクセスの割り当て先]** フィールドでは、既定値を選択したままにしてください ("Azure AD のユーザー、グループ、サービス プリンシパル")。  
-
-1. **[選択]** フィールドで、"hpc" を検索します。  この文字列は "HPC Cache リソース プロバイダー" という名前の 1 つのセキュリティ プリンシパルと一致するはずです。 そのプリンシパルをクリックして選択します。
+    ![[ロールの割り当ての追加] ページ](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > "hpc" の検索が機能しない場合は、代わりに文字列 "storagecache" を使用してみてください。 (一般提供開始前に) プレビューに参加したユーザーは、サービス プリンシパルに以前の名前を使用しなければならない可能性があります。
+   > HPC Cache リソース プロバイダーが見つからない場合は、代わりに文字列 "storagecache" を検索してみてください。 (一般提供開始前に) HPC Cache のプレビューに参加したユーザーは、サービス プリンシパルに以前の名前を使用しなければならない可能性があります。
 
-1. 下部にある **[保存]** をクリックします。
+<!-- 
+Steps to add the Azure roles:
 
-1. このプロセスを繰り返して、"Storage Blob Data Contributor" というロールを割り当てます。  
+1. Open the **Access control (IAM)** page for the storage account. (The link in the **Add storage target** page automatically opens this page for the selected account.)
 
-![ロールの割り当ての追加の GUI のスクリーンショット](media/hpc-cache-add-role.png)
+1. Click the **+** at the top of the page and choose **Add a role assignment**.
+
+1. Select the role "Storage Account Contributor" from the list.
+
+1. In the **Assign access to** field, leave the default value selected ("Azure AD user, group, or service principal").  
+
+1. In the **Select** field, search for "hpc".  This string should match one service principal, named "HPC Cache Resource Provider". Click that principal to select it.
+
+   > [!NOTE]
+   > If a search for "hpc" doesn't work, try using the string "storagecache" instead. Users who participated in previews (before GA) might need to use the older name for the service principal.
+
+1. Click the **Save** button at the bottom.
+
+1. Repeat this process to assign the role "Storage Blob Data Contributor".  
+
+![screenshot of add role assignment GUI](media/hpc-cache-add-role.png) -->
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/25/2021
 ms.author: mjbrown
-ms.openlocfilehash: b13f5bfffced9afd80663d606e30e028e52643ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04f79c4ab67dc2fa2e1e969bfdff169042f0d576
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563838"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227562"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos Core (SQL) API リソースの管理
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "94563838"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- この記事では、Azure CLI のバージョン 2.12.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+- この記事では、Azure CLI のバージョン 2.22.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 他の API の Azure CLI サンプルについては、[CLI Samples for Cassandra](cli-samples-cassandra.md)、[CLI Samples for MongoDB API](cli-samples-mongodb.md)、[CLI Samples for Gremlin](cli-samples-gremlin.md)、[CLI Samples for Table](cli-samples-table.md) を参照してください。
 
@@ -70,6 +70,8 @@ az cosmosdb create \
 > Azure Cosmos アカウントに対し、リージョン (`locations`) の追加 (または削除) と他のプロパティの変更を同時に行うことはできません。 リージョンの変更は、アカウント リソースに対する他のあらゆる変更とは別の操作として実行する必要があります。
 > [!NOTE]
 > このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更したり手動フェールオーバーをトリガーしたりすることはできません。 [フェールオーバーの優先度](#set-failover-priority)と[手動フェールオーバーのトリガー](#trigger-manual-failover)に関する説明を参照してください。
+> [!TIP]
+> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'

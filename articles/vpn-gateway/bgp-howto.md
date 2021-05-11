@@ -1,19 +1,19 @@
 ---
 title: VPN Gateway に BGP を構成する:ポータル
 titleSuffix: Azure VPN Gateway
-description: この記事では、PowerShell を使用して Azure VPN Gateway で BGP を構成する手順について説明します。
+description: Azure VPN Gateway. 用に BGP を構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: df42925b50cba4d32ea554ae54dbcb09a5e04377
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104863583"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205955"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>Azure VPN Gateway で BGP を構成する方法
 

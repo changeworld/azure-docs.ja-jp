@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 66f26cfa14d51a985e2bb420bec294f7ef3a6cd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4b2bb3659d68ec5c4a4ed7d21f39542d1329452b
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048150"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331594"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | リアルタイム パーソナル化、小売在庫目録、アプリ開発 | ブラジル|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発  |    米国     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL の移行      |   米国      |
-| [Ricoh Digital Services](https://www.ricoh.com/) | IoT、リアルタイム パーソナル化、小売在庫目録、NoSQL 移行 | 英国  |
+| [Ricoh Digital Experience](https://www.ricoh-europe.com/contact-us) | IoT、リアルタイム パーソナル化、小売在庫目録、NoSQL 移行 | 英国、ヨーロッパ  |
 |[SNP Technologies](https://www.snp.com/) | NoSQL の移行| 米国 |
 | [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL の移行 | クロアチア、スウェーデン、デンマーク、アイルランド、ブルガリア、スロベニア、キプロス、マルタ、リトアニア、チェコ共和国、アイスランド、スイス、リヒテンシュタイン|
 | [Spanish Point Technologies](https://www.spanishpoint.ie/) | NoSQL の移行| アイルランド|

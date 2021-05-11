@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 87de8f27114c8b79c297f65805226a33c70b11a9
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551766"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286962"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -421,6 +421,6 @@ WamDefaultAuthority: organizations
 
 ## <a name="next-steps"></a>次のステップ
 
-[dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。
+- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。
 
-ご不明な点がある場合は、[デバイス管理の FAQ](faq.yml) をご覧ください。
+- [Microsoft エラー ルックアップ ツール](/windows/win32/debug/system-error-code-lookup-tool)

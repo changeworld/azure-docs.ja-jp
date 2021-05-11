@@ -1,18 +1,19 @@
 ---
-title: 'VNet 対 VNet の VPN Gateway 接続を構成する: Azure portal'
-description: Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。
+title: 'VNet 間 VPN ゲートウェイ接続の構成: Azure portal'
+titleSuffix: Azure VPN Gateway
+description: Vnet 間で VPN ゲートウェイ接続を作成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bf603d29b5e949ef83c872017bae49e71b2fcb0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98872402"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204875"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
@@ -65,7 +66,7 @@ VNet 間接続を使用する仮想ネットワークの接続が望ましいの
 
 マルチサイト構成と VNet 間通信を組み合わせることができます。 これらの構成では、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 接続の図":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections-diagram.png" alt-text="VNet 接続の図。":::
 
 この記事では、VNet 間という接続の種類を使用して、VNet を接続する方法を示します。 演習として以下の手順に従う場合は、次の例の設定値を使用できます。 この例では、仮想ネットワークは同じサブスクリプション内にありながら、異なるリソース グループに含まれます。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 代わりに、[PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) または [CLI](vpn-gateway-howto-vnet-vnet-cli.md) を使用します。 VNet 間接続の詳細については、「[VNet 間接続に関してよく寄せられる質問](#vnet-to-vnet-faq)」を参照してください。
 

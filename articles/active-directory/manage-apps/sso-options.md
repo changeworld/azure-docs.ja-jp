@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 820f27e770e3168277e12b85e7766cd16975ef7f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751456"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315005"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD のシングル サインオン オプション
 
@@ -76,7 +76,7 @@ SAML ベースのシングル サインオンのために SaaS アプリケー�
 
 WS-Federation のためにアプリケーションを構成するには、SAML ベースのシングル サインオンのためにアプリケーションを構成する場合と同じガイダンスに従います。 Azure AD を使用するようにアプリケーションを構成する手順では、WS-Federation エンドポイントの Azure AD ログイン URL `https://login.microsoftonline.com/<tenant-ID>/wsfed` と置き換える必要があります。
 
-SAML ベースのシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](application-proxy-configure-single-sign-on-on-premises-apps.md)」を参照してください。
+SAML ベースのシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](../app-proxy/application-proxy-configure-single-sign-on-on-premises-apps.md)」を参照してください。
 
 SAML プロトコルの詳細については、「[シングル サインオンの SAML プロトコル](../develop/single-sign-on-saml-protocol.md)」を参照してください。
 
@@ -86,7 +86,7 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 
 パスワード ベースのシングル サインオンでは、アプリケーションによって提供される既存の認証プロセスが使用されます。 アプリケーションでパスワードによるシングル サインオンを有効にすると、Azure AD がそのアプリケーション用のユーザー名とパスワードを収集し、安全に保存します。 ユーザーの資格情報は、暗号化された状態でディレクトリ内に保存されます。
 
-さらに、管理者は、パスワードベースの SSO に対して Azure AD 条件付きアクセス ポリシーまたは多要素認証を有効にすることができます。
+さらに、管理者は、パスワードベースの SSO に対して、Azure AD 条件付きアクセス ポリシーまたは多要素認証を有効にすることができます。
 
 パスワードベースのシングル サインオンは以下の場合に選択します。
 
@@ -107,7 +107,7 @@ SAML プロトコルの詳細については、「[シングル サインオン�
 
 クラウド アプリケーションでパスワードベースのシングル サインオンを構成するには、[パスワード シングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)に関するページを参照してください。
 
-アプリケーション プロキシ経由のシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管](application-proxy-configure-single-sign-on-password-vaulting.md)」を参照してください
+アプリケーション プロキシ経由のシングル サインオンのためにオンプレミス アプリケーションを構成するには、「[アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)」を参照してください
 
 ### <a name="how-authentication-works-for-password-based-sso"></a>パスワードベースの SSO の場合の認証のしくみ
 
@@ -157,16 +157,16 @@ SP によって開始された SAML ベースのシングル サインオン用�
 
 ## <a name="integrated-windows-authentication-iwa-sso"></a>統合 Windows 認証 (IWA) による SSO
 
-[アプリケーション プロキシ](application-proxy.md)は、[統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションや要求対応のアプリケーションに対するシングル サインオン (SSO) を提供します。 アプリケーションで IWA が使用されている場合、アプリケーション プロキシは Kerberos の制約付き委任 (KCD) を使用して、アプリケーションに対する認証を行います。 Azure Active Directory を信頼している要求対応のアプリケーションでは、ユーザーは Azure AD を使用して既に認証されているため、シングル サインオンが機能します。
+[アプリケーション プロキシ](../app-proxy/application-proxy.md)は、[統合 Windows 認証 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) を使用するアプリケーションや要求対応のアプリケーションに対するシングル サインオン (SSO) を提供します。 アプリケーションで IWA が使用されている場合、アプリケーション プロキシは Kerberos の制約付き委任 (KCD) を使用して、アプリケーションに対する認証を行います。 Azure Active Directory を信頼している要求対応のアプリケーションでは、ユーザーは Azure AD を使用して既に認証されているため、シングル サインオンが機能します。
 
 統合 Windows 認証のシングル サインオン モードを選択して、IWA を利用して認証するオンプレミス アプリにシングル サインオンを提供します。
 
-IWA のためのオンプレミス アプリの構成については、[アプリケーション プロキシを使用して、アプリケーションに対するシングル サインオンのための Kerberos 制約付き委任を行う](application-proxy-configure-single-sign-on-with-kcd.md)ことに関するページを参照してください。
+IWA のためのオンプレミス アプリの構成については、[アプリケーション プロキシを使用して、アプリケーションに対するシングル サインオンのための Kerberos 制約付き委任を行う](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)ことに関するページを参照してください。
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>KCD を使ったシングル サインオンのしくみ
 この図は、IWA を使用するオンプレミス アプリケーションにユーザーがアクセスするときの流れを説明するものです。
 
-![Microsoft Azure AD 認証フロー図](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Microsoft Azure AD 認証フロー図](../app-proxy/media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
 1. ユーザーは、オンプレミスのアプリケーションにアプリケーション プロキシをとおしてアクセスするための URL を入力します。
 1. この要求がアプリケーション プロキシによって Azure AD 認証サービスにリダイレクトされて、事前認証が行われます。 この時点で、Azure AD の認証および承認のポリシーのうち、該当するものが適用されます (たとえば多要素認証)。 ユーザーの正当性が確認された場合は、Azure AD によってトークンが作成されてユーザーに送信されます。
@@ -183,10 +183,10 @@ IWA のためのオンプレミス アプリの構成については、[アプ�
 
 オンプレミスのアプリケーションに対してアプリケーション プロキシが構成されている場合は、ヘッダーベースのシングル サインオンを選択します。
 
-ヘッダーベースの認証の詳細については、[ヘッダーベースの SSO](application-proxy-configure-single-sign-on-with-headers.md) に関する記事をご覧ください。
+ヘッダーベースの認証の詳細については、[ヘッダーベースの SSO](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md) に関する記事をご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
 * [シングル サインオンのデプロイを計画する](plan-sso-deployment.md)
-* [オンプレミス アプリでのシングル サインオン](application-proxy-config-sso-how-to.md)
+* [オンプレミス アプリでのシングル サインオン](../app-proxy/application-proxy-config-sso-how-to.md)

@@ -3,18 +3,18 @@ title: チュートリアル:Microsoft Azure Maps で Azure Notebooks (Python) �
 description: Microsoft Azure Maps のルート指定 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内する方法に関するチュートリアル
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce6cb60754ed0afae27c5b5d316a7158961b55a3
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98680334"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323377"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -34,16 +34,13 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 > * 到達可能範囲の境界線と充電スタンドをマップ上にレンダリングする。
 > * 走行時間に基づいて最も近い電気自動車充電スタンドまでのルートを特定し、視覚化する。
 
+## <a name="prerequisites"></a>前提条件
 
-## <a name="prerequisites"></a>前提条件 
+1. [Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)し、[Gen 2 または S1 価格レベルのいずれかを選択](choose-pricing-tier.md)します。
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-このチュートリアルを完了するには、まず Azure Maps アカウントを作成して、プライマリ キー (サブスクリプション キー) を取得する必要があります。 
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
-Azure Maps アカウントのサブスクリプションを作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するセクションの手順に従います。 S1 価格帯の Azure Maps アカウントのサブスクリプションが必要です。 
-
-アカウントの主サブスクリプション キーを取得するには、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従います。
-
-Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="create-an-azure-notebooks-project"></a>Azure Notebooks プロジェクトを作成する
 

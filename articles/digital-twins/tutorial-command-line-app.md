@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c18366fd4bc510f32ac0ef255b27709797a3b626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 419e609c4b78007f215d67ab4a69671bc9cbb198
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493708"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205631"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>チュートリアル: サンプル クライアント アプリを使用して Azure Digital Twins グラフを作成する
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、Azure Digital Twins インスタンスを操作するための **サンプル コマンドライン クライアント アプリケーション** です。 このクライアント アプリは、"[*クライアント アプリのコーディングに関するチュートリアル*](tutorial-code.md)" で作成したアプリに似ています。
+このチュートリアルでは、モデル、ツイン、およびリレーションシップを使用して、Azure Digital Twins でグラフを作成します。 このチュートリアルのツールは、Azure Digital Twins インスタンスを操作するための **サンプル コマンドライン クライアント アプリケーション** です。 このクライアント アプリは、[クライアント アプリのコーディングに関するチュートリアル](tutorial-code.md)で作成したアプリに似ています。
 
 このサンプルを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins アクションを実行することができます。 [サンプルのコード](https://github.com/Azure-Samples/digital-twins-samples/tree/master/)を見て、Azure Digital Twins の API について学んだり、サンプル プロジェクトに自由に変更を加えながら、独自のコマンドを実装する練習をしたりすることもできます。
 
@@ -55,7 +55,7 @@ ms.locfileid: "103493708"
 
 Azure Digital Twins インスタンスとサンプル アプリが設定されたので、シナリオのグラフの作成を開始できます。 
 
-Azure Digital Twins ソリューションを作成するにあたり最初にすべきことは、対象となる環境のツイン [**モデル**](concepts-models.md)の定義です。 
+Azure Digital Twins ソリューションを作成するにあたり最初にすべきことは、対象となる環境のツイン [モデル](concepts-models.md)の定義です。 
 
 モデルは、オブジェクト指向プログラミング言語におけるクラスに似ています。つまりモデルは、[デジタル ツイン](concepts-twins-graph.md)のユーザー定義のテンプレートとなります。デジタル ツインは、そのテンプレートに従ってインスタンス化されることになります。 モデルは、**Digital Twins Definition Language (DTDL)** という JSON に似た言語で記述され、ツインの "*プロパティ*"、"*テレメトリ*"、"*リレーションシップ*"、"*コンポーネント*" を定義することができます。
 
@@ -95,7 +95,7 @@ CreateModels Room
 ```
 
 モデルを上書きすることはできないので、今度はサービス エラーが返されます。
-既存のモデルを削除する方法について詳しくは、[*方法: DTDL モデルの管理*](how-to-manage-model.md)に関する記事を参照してください。
+既存のモデルを削除する方法について詳しくは、[方法: DTDL モデルの管理](how-to-manage-model.md)に関する記事を参照してください。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -112,7 +112,7 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="create-digital-twins"></a>デジタル ツインを作成する
 
-Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に基づいて [**デジタル ツイン**](concepts-twins-graph.md)を作成できます。 デジタル ツインは、農場のセンサー、建物内の部屋、車内の照明など、対象となるビジネス環境内のエンティティを表します。 
+Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に基づいて[デジタル ツイン](concepts-twins-graph.md)を作成できます。 デジタル ツインは、農場のセンサー、建物内の部屋、車内の照明など、対象となるビジネス環境内のエンティティを表します。 
 
 デジタル ツインを作成するには、`CreateDigitalTwin` コマンドを使用します。 ツインのベースとなるモデルを参照する必要があります。モデルのプロパティには、必要に応じて初期値を定義することができます。 この段階では、リレーションシップ情報を渡す必要はありません。
 
@@ -157,9 +157,9 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 
 ## <a name="create-a-graph-by-adding-relationships"></a>リレーションシップを追加してグラフを作成する
 
-次に、ツイン間にいくつかの **リレーションシップ** を作成することで、それらのツインを接続し、[**ツイン グラフ**](concepts-twins-graph.md)を形成することができます。 ツイン グラフは、環境全体を表すために使用されます。 
+次に、ツイン間にいくつかの **リレーションシップ** を作成することで、それらのツインを接続し、[ツイン グラフ](concepts-twins-graph.md)を形成することができます。 ツイン グラフは、環境全体を表すために使用されます。 
 
-あるツインから別のものへと作成できるリレーションシップの種類は、前にアップロードした[モデル](#model-a-physical-environment-with-dtdl)内に定義されています。 [*Floor* のモデル定義](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)では、フロアに *contains* という種類のリレーションシップを設定できることが指定されています。 これにより、各 *Floor* ツインから、それに含まれる対応する部屋への *contains* の種類のリレーションシップを作成できるようになります。
+あるツインから別のものへと作成できるリレーションシップの種類は、前にアップロードした[モデル](#model-a-physical-environment-with-dtdl)内に定義されています。 [Floor のモデル定義](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)では、フロアに *contains* という種類のリレーションシップを設定できることが指定されています。 これにより、各 *Floor* ツインから、それに含まれる対応する部屋への *contains* の種類のリレーションシップを作成できるようになります。
 
 リレーションシップを追加するには、`CreateRelationship` コマンドを使用します。 リレーションシップの接続元となるツインと、リレーションシップの種類、リレーションシップの接続先のツインを指定します。 最後に、リレーションシップに一意の ID を指定します。
 
@@ -171,7 +171,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
     ```
 
     >[!TIP]
-    >また、[*Floor* モデル](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)内の *contains* リレーションシップは、`ownershipUser` と `ownershipDepartment` の 2 つの文字列プロパティを指定して定義されていたため、リレーションシップを作成するときに、これらの初期値を引数として指定することもできます。
+    >また、[Floor モデル](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json)内の *contains* リレーションシップは、`ownershipUser` と `ownershipDepartment` の 2 つの文字列プロパティを指定して定義されていたため、リレーションシップを作成するときに、これらの初期値を引数として指定することもできます。
     > *relationship0* を作成する上記のコマンドの代替バージョンを次に示します。これは、これらのプロパティの初期値も指定しています。
     > ```cmd/sh
     > CreateRelationship floor0 contains room0 relationship0 ownershipUser string MyUser ownershipDepartment string myDepartment
@@ -279,4 +279,4 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 次のチュートリアルに進み、Azure Digital Twins を他の Azure サービスと組み合わせて、データ ドリブンのエンド ツー エンドのシナリオを完了してください。
 > [!div class="nextstepaction"]
-> [*チュートリアル:エンド ツー エンドのソリューションを接続する*](tutorial-end-to-end.md)"
+> [チュートリアル:エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)

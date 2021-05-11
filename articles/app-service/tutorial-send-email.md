@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6b15c09162146de7aef8abfcdba40627eb77621c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 04bdab82c9d1efed6da3f533617f19b82cf0781e
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830936"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290706"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -52,9 +52,9 @@ ms.locfileid: "107830936"
 
 ---
 
-## <a name="create-the-logic-app"></a>ロジック アプリを作成する
+## <a name="create-the-logic-app"></a>ロジック アプリの作成
 
-1. [Azure portal](https://portal.azure.com) で、「[ロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)」の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー** が表示されたら、このチュートリアルに戻ります。
+1. [Azure portal](https://portal.azure.com) で、[初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事の手順に従って、空のロジック アプリを作成します。 **Logic Apps デザイナー** が表示されたら、このチュートリアルに戻ります。
 1. Logic Apps デザイナーのスプラッシュ ページで、 **[一般的なトリガーで開始する]** の **[HTTP 要求の受信時]** を選択します。
 
     ![Logic Apps Designer のスプラッシュ ページのスクリーンショット。[HTTP 要求の受信時] が強調表示されています。](./media/tutorial-send-email/receive-http-request.png)
@@ -81,7 +81,7 @@ ms.locfileid: "107830936"
 
     この HTTP 要求定義は、Gmail であるかそれ以外の何かであるかにかかわらず、このロジック アプリで実行するすべての処理のトリガーです。 後で、App Service アプリでこの URL を呼び出します。 要求トリガーの詳細については、[HTTP 要求と応答のリファレンス](../connectors/connectors-native-reqres.md)を参照してください。
 
-1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力して、 **[メールの送信 (V2)]** を見つけて選択します。
+1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力します。 **[メールの送信 (V2)]** を見つけて選択します。
     
     > [!TIP]
     > SendGrid、MailChimp、Microsoft 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。

@@ -10,28 +10,29 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba92ca8a959fae389dbdb30c295e6592f76100eb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949789"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288528"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
 PostgreSQL は、拡張機能で使用する場合に最適です。 実際、独自の Hyperscale 機能の主要素は、Microsoft 提供の `citus` 拡張機能です。これは既定でインストールされ、Postgres で、複数ノード間のデータの透過的なシャード化を可能にします。
 
-
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="supported-extensions"></a>サポートされる拡張機能
 標準の [`contrib`](https://www.postgresql.org/docs/12/contrib.html) 拡張機能と以下の拡張機能は、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのコンテナーに既にデプロイされています。
-- [`citus`](https://github.com/citusdata/citus)、v: 9.4。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
-- [`pg_cron`](https://github.com/citusdata/pg_cron)、v: 1.2
+- [`citus`](https://github.com/citusdata/citus)、v: 10.0。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
+- [`pg_cron`](https://github.com/citusdata/pg_cron)、v: 1.3
 - [`pgaudit`](https://www.pgaudit.org/)、v: 1.4
 - plpgsql、v: 1.0
 - [`postgis`](https://postgis.net)、v: 3.0.2
 - [`plv8`](https://plv8.github.io/)、v: 2.3.14
+- [`pg_partman`](https://github.com/pgpartman/pg_partman)、v: 4.4.1/
+- [`tdigest`](https://github.com/tvondra/tdigest)、v: 1.0.1
 
 時間が経過して変化があったときには、この一覧に対する更新が投稿されます。
 
@@ -52,10 +53,10 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 |`postgis`      |いいえ       |はい        |
 |`plv8`      |いいえ       |はい        |
 
-## <a name="add-extensions-to-the-shared_preload_libraries"></a>拡張機能を shared_preload_libraries に追加する
-shared_preload_libraries の詳細については、[こちら](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)の PostgreSQL ドキュメントを参照してください。
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>`shared_preload_libraries` に拡張機能を追加する
+`shared_preload_libraries` の詳細については、[こちら](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)の PostgreSQL ドキュメントを参照してください。
 - この手順は、`contrib` に含まれる拡張機能については必要ありません
-- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」を飛ばし進むことができます。
+- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」に進むことができます。
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を追加する
 ```console

@@ -4,14 +4,15 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 04/14/2021
+ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 09aab71513b1152924de4eae91a718bad23d1012
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 33402eb41ed9c22cf38890229d833cd2ab00d65d
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518003"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279516"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
@@ -33,7 +34,7 @@ Azure Automation で Azure Resource Manager と PowerShell コマンドレット
 
 ## <a name="managed-identities-preview"></a>マネージド ID (プレビュー)
 
-Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) に関するページを参照してください。
+Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
 以下に、マネージド ID を使用するベネフィットをいくつか紹介します。
 
@@ -68,7 +69,10 @@ Azure Resource Manager とクラシック デプロイ モデルの詳細につ�
 >[!NOTE]
 >Azure Cloud Solution Provider (CSP) サブスクリプションでは、Azure Resource Manager モデルのみがサポートされます。 Azure Resource Manager 以外のサービスは、プログラムでは使用できません。 CSP サブスクリプションを使用する場合、Azure クラシック実行アカウントは作成されませんが、Azure 実行アカウントは作成されます。 CSP サブスクリプションの詳細については、[CSP サブスクリプションで利用可能なサービス](/azure/cloud-solution-provider/overview/azure-csp-available-services)に関するページを参照してください。
 
-Automation アカウントを作成するとき、Azure 実行アカウントは既定では同時に作成されます。 Automation アカウントと共に作成しないことを選択した場合は、後で個別に作成できます。 Azure クラシック実行アカウントはオプションです。クラシック リソースを管理する必要がある場合は、個別に作成されます。
+Automation アカウントを作成するときに、既定では、実行アカウントが自己署名証明書を使用して同時に作成されます。 Automation アカウントと共に作成しないことを選択した場合は、後で個別に作成できます。 Azure クラシック実行アカウントはオプションです。クラシック リソースを管理する必要がある場合は、個別に作成されます。
+
+既定の自己署名証明書ではなく、エンタープライズまたはサードパーティの証明機関 (CA) によって発行された証明書を使用する場合、実行およびクラシック実行アカウントに対して [[実行アカウントを作成する PowerShell スクリプト]](create-run-as-account.md#powershell-script-to-create-a-run-as-account) オプションを使用できます。
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
@@ -145,4 +149,4 @@ Azure VM 上で Hybrid Runbook Worker を使用する Runbook の場合は、実
 * Azure portal からの Automation アカウントの作成については、「[スタンドアロン Azure Automation アカウントを作成する](automation-create-standalone-account.md)」を参照してください。
 * テンプレートを使用してアカウントを作成したい場合は、「[Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](quickstart-create-automation-account-template.md)」を参照してください。
 * アマゾン ウェブ サービスを使用した認証については、[アマゾン ウェブ サービスによる Runbook の認証](automation-config-aws-account.md)に関するページを参照してください。
-* Azure リソースのマネージド ID 機能をサポートする Azure サービスの一覧については、「[Services that support managed identities for Azure resources (Azure リソースのマネージド ID をサポートするサービス)](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)」を参照してください。
+* Azure リソースのマネージド ID 機能をサポートする Azure サービスの一覧については、「[Services that support managed identities for Azure resources (Azure リソースのマネージド ID をサポートするサービス)](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。

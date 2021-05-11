@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 37804be38918713cdfa7aea59763054e444daa7e
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 100f4252768f6a141253d4df03a73da9f4f6b4bc
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015719"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290213"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -40,7 +40,7 @@ Azure のコスト データを Azure Storage にエクスポートするスケ�
 - 共同作成者 - スケジュールされたエクスポートを作成、変更、または削除できます。 他のユーザーが作成したスケジュールされたエクスポートの名前を変更できます。
 - 閲覧者 - アクセス許可を持っているエクスポートをスケジュールできます。
 
-Enterprise Agreement および Microsoft 顧客契約のスコープのエクスポートを構成するために必要なアクセス権など、スコープの詳細については、「[スコープを理解して使用する](understand-work-scopes.md)」を参照してください。
+**Enterprise Agreement および Microsoft 顧客契約のスコープのエクスポートを構成するために必要なアクセス権など、スコープの詳細については、「[スコープを理解して使用する](understand-work-scopes.md)」を参照してください。**
 
 Azure Storage アカウントの場合:
 - エクスポートに関するアクセス許可に関係なく、構成されているストレージ アカウントを変更するには書き込みアクセス許可が必要です。
@@ -55,11 +55,11 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-データ エクスポートを作成または表示する場合、またはエクスポートをスケジュールする場合は、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 [コスト分析] ページの上部で、 **[設定]** 、 **[エクスポート]** の順に選択します。
+データ エクスポートを作成または表示する場合、またはエクスポートをスケジュールする場合は、Azure portal でスコープを選択し、メニューで **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 [コスト分析] ページの上部で、 **[設定]** 、 **[エクスポート]** の順に選択します。
 
 > [!NOTE]
 > - サブスクリプション以外にも、リソース グループ、管理グループ、部門、および登録に対してエクスポートを作成できます。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
->- 課金アカウント スコープまたは顧客のテナントでパートナーとしてサインインしている場合は、パートナーのストレージ アカウントにリンクされている Azure Storage アカウントにデータをエクスポートすることができます。 ただし、CSP テナントにアクティブなサブスクリプションが必要です。
+> - 課金アカウント スコープまたは顧客のテナントでパートナーとしてサインインしている場合は、パートナーのストレージ アカウントにリンクされている Azure Storage アカウントにデータをエクスポートすることができます。 ただし、CSP テナントにアクティブなサブスクリプションが必要です。
 
 1. **[追加]** を選択し、エクスポートの名前を入力します。
 1. **[メトリック]** で、次のいずれかを選択します。
@@ -68,7 +68,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 1. **[エクスポートの種類]** で、次のいずれかを選択します。
     - **[月度累計コストの日単位のエクスポート]** - 月度累計コストに関する新しいエクスポート ファイルが毎日提供されます。 最新のデータは、以前の毎日のエクスポートから集計されます。
     - **[過去 7 日間のコストの週単位のエクスポート]** - 選択したエクスポートの開始日からさかのぼって 7 日間のコストに関するエクスポートが週単位で作成されます。
-    - **[先月のコストに関する月単位のエクスポート]** - エクスポートを作成している現在の月の前月のコストに関するエクスポートが提供されます。 それ以降は、スケジュールによって、毎月 5 日に前月分のコストを使用してエクスポートが実行されます。
+    - **[先月のコストに関する月単位のエクスポート]** - エクスポートを作成している月の前月のコストに関するエクスポートが提供されます。 それ以降は、スケジュールによって、毎月 5 日に前月分のコストを使用してエクスポートが実行されます。
     - **[ワンタイム エクスポート]** - 履歴データの日付範囲を選択して、Azure Blob Storage にエクスポートすることができます。 選択した日付から最大 90 日間の履歴コストをエクスポートできます。 このエクスポートはすぐに実行され、2 時間以内にストレージ アカウント内で利用できます。
         エクスポートの種類に応じて、開始日を選択するか、 **[開始日]** と **[To]\(終了日\)** の日付を選択します。
 1. Azure ストレージ アカウントのサブスクリプションを指定し、お使いのリソース グループを選択するか、新しいリソース グループを作成します。
@@ -251,12 +251,48 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 
 他の種類のサブスクリプションでは、管理グループのエクスポートはサポートされません。
 
-1. まだ管理グループを作成していない場合は作成し、そのグループにサブスクリプションを割り当てます。
+1. まだ管理グループを作成していない場合は、グループを作成し、それにサブスクリプションを割り当てます。
 1. コスト分析で、管理グループにスコープを設定し、 **[Select this management group]\(この管理グループを選択する\)** を選択します。
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="[Select this management group]\(この管理グループを選択する\) オプションを示す例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. そのスコープでエクスポートを作成し、管理グループに含まれるサブスクリプションのコスト管理データを取得します。
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="新しいエクスポートの作成オプションを示す例。スコープとして管理グループが設定されています":::
 
+### <a name="file-partitioning-for-large-datasets"></a>大規模なデータセットのファイルのパーティション分割
+
+Microsoft 顧客契約または Microsoft Partner Agreement を結んでいる場合は、エクスポートを使用して、ファイルを複数の小さなファイル パーティションに分割し、データ インジェストに役立てることができます。 最初にエクスポートを構成するときに、 **[File Partitioning]\(ファイルのパーティション分割\)** 設定を **[オン]** に設定します。 既定では、この設定は **[オフ]** です。
+
+:::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="[File Partitioning]\(ファイルのパーティション分割\) オプションを示すスクリーンショット。" lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
+
+#### <a name="update-existing-exports-to-use-file-partitioning"></a>ファイルのパーティション分割を使用するよう既存のエクスポートを更新する
+
+既存のエクスポートがあり、ファイルのパーティション分割を設定する場合は、新しいエクスポートを作成します。 ファイルのパーティション分割は、エクスポートの最新バージョンでのみ使用できます。 作成される使用状況ファイルの一部のフィールドに軽微な変更が加えられている場合があります。
+
+既存のエクスポートでファイルのパーティション分割を有効にすると、ファイル出力のフィールドに対して軽微な変更が加えられる場合があります。 変更はすべて、最初に設定した後にエクスポートに加えられた更新に起因します。
+
+#### <a name="partitioning-output"></a>パーティション分割の出力
+
+ファイルのパーティション分割を有効にした場合、エクスポートのデータの各パーティションのファイルと _manifest.json ファイルが作成されます。 マニフェストには、完全なデータセットの概要と、その中の各ファイル パーティションに関する情報が含まれています。 各ファイル パーティションにはヘッダーがあり、完全なデータセットのサブセットのみが含まれています。 完全なデータセットを処理するには、エクスポートの各パーティションを取り込む必要があります。
+
+マニフェスト ファイルの _manifest.json の例を示します。
+
+```json
+{
+  "manifestVersion": "2021-01-01",
+  "dataFormat": "csv",
+  "blobCount": 1,
+  "byteCount": 160769,
+  "dataRowCount": 136,
+  "blobs": [
+    {
+      "blobName": "blobName.csv",
+      "byteCount": 160769,
+      "dataRowCount": 136,
+      "headerRowCount": 1,
+      "contentMD5": "md5Hash"
+    }
+  ]
+}
+```
 ## <a name="verify-that-data-is-collected"></a>データが収集されたことを確認する
 
 コスト管理データが収集されていることは簡単に確認できます。また、Azure Storage Explorer を利用し、エクスポートした CSV データを簡単に表示できます。

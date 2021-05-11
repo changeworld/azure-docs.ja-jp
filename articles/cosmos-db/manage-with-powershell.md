@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/13/2020
+ms.date: 04/25/2021
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 2d99a760e3bf44febcee05bf9827479616bf7bd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f967c5b40facbcbfe21ae87ae962241632135c34
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93333443"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228205"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB Core (SQL) API リソースを管理する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -120,6 +120,8 @@ Get-AzCosmosDBAccount -ResourceGroupName $resourceGroupName -Name $accountName
 > Azure Cosmos アカウントに対し、リージョン (`locations`) の追加 (または削除) と他のプロパティの変更を同時に行うことはできません。 リージョンの変更は、アカウントに対する他のあらゆる変更とは別の操作として実行する必要があります。
 > [!NOTE]
 > このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更したり手動フェールオーバーをトリガーしたりすることはできません。 「[フェールオーバー優先度を変更する](#modify-failover-priority)」と「[手動フェールオーバーをトリガーする](#trigger-manual-failover)」を参照してください。
+> [!TIP]
+> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。
 
 ```azurepowershell-interactive
 # Create account with two regions

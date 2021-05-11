@@ -6,30 +6,25 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 04/08/2021
+ms.date: 04/29/2021
 ms.author: banders
-ms.openlocfilehash: 4cfb5c0b746ab8cf4ebb26ee0f755b34b6289982
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c3294c09012339cb19f04327f1933688b05ae077
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481431"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321467"
 ---
 # <a name="transfer-azure-subscription-billing-ownership-for-a-microsoft-customer-agreement"></a>Azure サブスクリプションの課金所有権を Microsoft 顧客契約で使用するために譲渡する
 
-既存の課金所有者が組織を離れる場合や、課金アカウントを通じてサブスクリプションの支払いを行いたい場合は、Azure サブスクリプションの所有権を引き継ぐことができます。 所有権を取得すると、サブスクリプションの課金の責任は、自身のアカウントに移されます。
-
-この記事では、Microsoft 顧客契約の課金アカウントについて説明します。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
-
-課金所有権を要求するには、**請求書セクション所有者** または **請求書セクション共同作成者** であることが必要です。 詳細については、[請求書セクションのロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するページを参照してください。
+次の場合に、ご自分の Azure サブスクリプションの課金所有権を譲渡する必要があります。
+- サブスクリプションの請求責任を別の課金所有者に移動する必要がある。
+- ご自分の Azure サブスクリプションをライセンス契約間で譲渡する。 たとえば、Enterprise Agreement またはマイクロソフト オンライン サブスクリプション契約 (MOSA) から Microsoft 顧客契約などです。 [Microsoft 顧客契約にアクセスできるかどうかを確認してください](#check-for-access)。
 
 課金所有権を要求するユーザーには、次のいずれかのロールが必要です。
-
-- エンタープライズ Microsoft 顧客契約の場合、ユーザーは課金所有者である必要があります。
-- マイクロソフト エンタープライズ契約の場合、ユーザーはアカウント オーナーである必要があります。
-- Microsoft オンライン サービス プログラムの課金アカウントの場合、ユーザーはアカウント管理者である必要があります。
-
-詳細については、[Azure portal での請求先アカウントの表示](view-all-accounts.md)に関するページを参照してください。
+- Microsoft 顧客契約の場合は、課金アカウントあるいは関連する課金プロファイルまたは請求書セクションの所有者または共同作成者のロールが必要です。 詳細については、[課金のロールとタスク](understand-mca-roles.md#invoice-section-roles-and-tasks)に関するセクションを参照してください。
+- Enterprise Agreement の場合は、アカウント オーナーである必要があります。
+- マイクロソフト オンライン サブスクリプション契約の場合は、アカウント管理者である必要があります。
 
 ## <a name="request-billing-ownership"></a>課金所有権を要求する
 
@@ -137,7 +132,36 @@ ms.locfileid: "107481431"
 
 ## <a name="additional-information"></a>関連情報
 
-次のセクションでは、譲渡サブスクリプションに関する追加情報が示されます。
+次のセクションには、譲渡サブスクリプションに関する追加情報が示されています。
+
+### <a name="cancel-a-prior-support-plan"></a>以前のサポート プランを解約する
+
+Azure サポート プランに加入していて、ご自分のすべての Azure サブスクリプションを新しい契約に譲渡する場合、サポート プランは、サブスクリプションと共には譲渡されないため、解約する必要があります。 たとえば、マイクロソフト オンライン サブスクリプション契約 (Web 上で購入した Azure サブスクリプション) を Microsoft 顧客契約に転送する場合などです。 サポート プランを解約するには:
+
+資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、古いアカウントのアカウント管理者の資格情報を使用する必要があります。
+
+1.  Azure Portal ( https://portal.azure.com ) にサインインします。
+1.  **[コストの管理と請求]** に移動します。
+1.  左側のペインで **[課金スコープ]** を選択します。
+1.  Microsoft サポート プランに関連付けられている課金アカウントを選択します。
+    - Microsoft 顧客契約の場合:
+        - 左側のペインで **[当月サービス利用料金]** を選択します。
+        - 右側のペインで、サポート プラン明細項目の右側にある省略記号 ( **[...]** ) を選択し、 **[自動更新をオフにします]** を選択します。
+    - マイクロソフト オンライン サブスクリプション契約 (MOSA) の場合:
+        - 左側のペインで **[サブスクリプション]** を選択します。
+        - 右側のペインでサポート プランのサブスクリプションを選択し、 **[キャンセル]** を選択します。
+
+### <a name="access-your-historical-invoices"></a>過去の請求書にアクセスする
+
+新しい Microsoft 顧客契約アカウントに課金所有権を譲渡した後、古いマイクロソフト オンライン サブスクリプション契約アカウント (Web 上で購入した Azure サブスクリプション) の請求書にアクセスすることができます。 そのためには、次の手順を行ってください。
+
+資格情報が新しい Microsoft 顧客契約アカウントへのアクセスに使用するものと異なる場合は、古いアカウントのアカウント管理者の資格情報を使用する必要があります。
+
+1.  Azure Portal ( https://azure.portal.com ) にサインインします。
+1.  **[コストの管理と請求]** に移動します。
+1.  左側のペインで **[課金スコープ]** を選択します。
+1.  マイクロソフト オンライン サブスクリプション契約アカウントに関連付けられている課金アカウントを選択します。
+1.  左側のペインで **[請求書]** を選択して、過去の請求書にアクセスします。
 
 ### <a name="no-service-downtime"></a>サービスのダウンタイムは発生しない
 
@@ -162,10 +186,6 @@ Azure Marketplace 製品は、それぞれのサブスクリプションとと�
 ### <a name="access-to-azure-services"></a>Azure サービスへのアクセス
 
 [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用して割り当てられた既存のユーザー、グループ、またはサービス プリンシパルへのアクセスは、移転中に影響を受けることはありません。
-
-### <a name="azure-support-plan"></a>Azure サポート プラン
-
-Azure サポートは、サブスクリプションとともには譲渡されません。 ユーザーは、すべての Azure サブスクリプションを譲渡する場合、サポート プランをキャンセルするように依頼してください。
 
 ### <a name="charges-for-transferred-subscription"></a>譲渡されたサブスクリプションの料金
 

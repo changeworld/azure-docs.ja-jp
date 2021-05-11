@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: 619123cc2723fcf8e4bd80410c6b098b113d61c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 6c486b5085ee5e3152367229944b7782f04dc854
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106286319"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204461"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep のトラブルシューティング
 
@@ -152,11 +152,11 @@ ParallelRunStep ジョブには分散型の性質があるため、複数の異�
 
 EntryScript ヘルパーおよび PRINT ステートメントを使用したエントリ スクリプトから生成されたログは、次のファイルにあります。
 
-- `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`:これらのファイルは、EntryScript ヘルパーを使用して entry_script から書き込まれたログです。
+- `~/logs/user/entry_script_log/<node_id>/<process_name>.log.txt`:これらのファイルは、EntryScript ヘルパーを使用して entry_script から書き込まれたログです。
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: これらのファイルは、entry_script の stdout (PRINT ステートメントなど) のログです。
+- `~/logs/user/stdout/<node_id>/<process_name>.stdout.txt`: これらのファイルは、entry_script の stdout (PRINT ステートメントなど) のログです。
 
-- `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`:これらのファイルは、entry_script の stderr のログです。
+- `~/logs/user/stderr/<node_id>/<process_name>.stderr.txt`:これらのファイルは、entry_script の stderr のログです。
 
 スクリプトのエラーを簡潔に理解するために、次のものがあります。
 
@@ -168,7 +168,7 @@ EntryScript ヘルパーおよび PRINT ステートメントを使用したエ�
 
 各ノードによってスコアリング スクリプトがどのように実行されたかを十分に理解する必要がある場合は、ノードごとの各プロセス ログを確認してください。 プロセス ログは、ワーカー ノード別にグループ化されて `sys/node` フォルダーにあります。
 
-- `~/logs/sys/node/<ip_address>/<process_name>.txt`:このファイルは、各ミニバッチがワーカーによって収集または完了される際に、その詳細情報を提供します。 各ミニバッチについて、次の情報が記録されます。
+- `~/logs/sys/node/<node_id>/<process_name>.txt`:このファイルは、各ミニバッチがワーカーによって収集または完了される際に、その詳細情報を提供します。 各ミニバッチについて、次の情報が記録されます。
 
     - ワーカー プロセスの IP アドレスと PID。 
     - 項目の合計数、正常に処理された項目数、および失敗した項目数。
@@ -176,7 +176,7 @@ EntryScript ヘルパーおよび PRINT ステートメントを使用したエ�
 
 また、各ノードのリソース使用率の定期的チェックの結果を表示することもできます。 ログ ファイルとセットアップ ファイルは次のフォルダーにあります。
 
-- `~/logs/perf`:秒単位でチェック間隔を変更するには、`--resource_monitor_interval` を設定します。 既定の間隔は `600` で、これは約 10 分です。 監視を停止するには、値を `0` に設定します。 各 `<ip_address>` フォルダーには次のものが含まれます。
+- `~/logs/perf`:秒単位でチェック間隔を変更するには、`--resource_monitor_interval` を設定します。 既定の間隔は `600` で、これは約 10 分です。 監視を停止するには、値を `0` に設定します。 各 `<node_id>` フォルダーには次のものが含まれます。
 
     - `os/`:ノードで実行されているすべてのプロセスに関する情報。 1 回のチェックでオペレーティング システムのコマンドが実行され、その結果がファイルに保存されます。 Linux では、コマンドは `ps`です。 Windows では、`tasklist` を使用します。
         - `%Y%m%d%H`:サブフォルダー名は、time to hour です。
@@ -194,14 +194,14 @@ ParallelRunStep は、process_count_per_node に基づいて、1 つのノード
 from azureml_user.parallel_run import EntryScript
 
 def init():
-    """ Initialize the node."""
+    """Init once in a worker process."""
     entry_script = EntryScript()
     logger = entry_script.logger
     logger.debug("This will show up in files under logs/user on the Azure portal.")
 
 
 def run(mini_batch):
-    """ Accept and return the list back."""
+    """Call once for a mini batch. Accept and return the list back."""
     # This class is in singleton pattern and will return same instance as the one in init()
     entry_script = EntryScript()
     logger = entry_script.logger
@@ -209,6 +209,29 @@ def run(mini_batch):
     ...
 
     return mini_batch
+```
+
+### <a name="where-does-the-message-from-python-logging-sink-to"></a>Python の `logging` からのメッセージはどこにシンクされますか。
+ParallelRunStep ではルート ロガーにハンドラーが設定され、これによってメッセージは `logs/user/stdout/<node_id>/processNNN.stdout.txt` にシンクされます。
+
+`logging` の既定値は `WARNING` レベルです。 既定では、`INFO` や `DEBUG` のような `WARNING` より低いレベルは表示されません。
+
+### <a name="where-is-the-message-from-subprocess-created-with-popen"></a>Popen() で作成されたサブプロセスからのメッセージはどこにありますか。
+`stdout` および `stderr` が指定されていない場合、サブプロセスではワーカー プロセスの設定が継承されます。
+
+`stdout` では `logs/sys/node/<node_id>/processNNN.stdout.txt` に、`stderr` では `logs/sys/node/<node_id>/processNNN.stderr.txt` に書き込みます。
+
+### <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>ポータルに表示するファイルに書き込むにはどうすればよいですか。
+`logs` フォルダー内のファイルはアップロードされ、ポータルに表示されます。
+下のようにフォルダー `logs/user/entry_script_log/<node_id>` を取得し、書き込むファイル パスを作成できます。
+```python
+from pathlib import Path
+def init():
+    """Init once in a worker process."""
+    entry_script = EntryScript()
+    folder = entry_script.log_dir
+
+    fil_path = Path(folder) / "<file_name>"
 ```
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>ファイルや、参照テーブルを含むファイルなどのサイド入力を担当者全員に渡す方法はありますか。

@@ -3,14 +3,14 @@ author: v-demjoh
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/15/2020
+ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: ec34ba7b2d3bc026376aeb1cb91847d8eac1cac5
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 20c394520e8d4100470c0176c284cf4136e9d3db
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073699"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227986"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -28,8 +28,7 @@ Windows に Speech CLI をインストールするには、次の手順に従い
 「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
 > [!NOTE]
-> NuGet の代わりに、Speech CLI の [zip アーカイブ](https://aka.ms/speech/spx-zips.zip)をダウンロードして抽出し、`spx-zips` ディレクトリからお使いのプラットフォームを検索して抽出し、`spx` パスをシステムの **PATH** 変数に追加することができます。
-
+> NuGet を使用せずに、Speech CLI for Windows を [ZIP ファイル](https://aka.ms/speech/spx-windows)としてダウンロードして展開することもできます。
 
 ### <a name="font-limitations"></a>フォントの制限事項
 
@@ -60,7 +59,8 @@ Linux の x64 CPU で Speech CLI をインストールするには、次の手�
 「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
 > [!NOTE]
-> NuGet の代わりに、[zip アーカイブ](https://aka.ms/speech/spx-zips.zip)でバイナリをダウンロードし、`spx-netcore-30-linux-x64.zip` を新しい `~/spx` ディレクトリに抽出し、バイナリに `sudo chmod +r+x spx` を入力して、PATH システム変数に `~/spx` パスを追加することもできます。
+> NuGet を使用せずに、Linux バイナリを [ZIP ファイル](https://aka.ms/speech/spx-linux)としてダウンロードすることもできます。
+> `spx-netcore-30-linux-x64.zip` を新しい `~/spx` ディレクトリに抽出し、バイナリに対する「`sudo chmod +r+x spx`」を入力して、PATH システム変数に `~/spx` パスを追加します。
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker のインストール (Windows、Linux、macOS)](#tab/dockerinstall)

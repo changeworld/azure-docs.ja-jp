@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 04/25/2021
-ms.openlocfilehash: 24138b1cbdf496f29a4975ebfd19acdc19cddd87
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.date: 04/29/2021
+ms.openlocfilehash: f0a87ef34ac4dfdccba0798a8c47f6ca6421c517
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001234"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227175"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -77,9 +77,9 @@ Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設�
 
 セルフホステッド IR と Azure Blob Storage のリンク サービスをステージング用に準備したので、次にデータ ファクトリ ポータルまたはアプリでセルフホステッド IR をプロキシとして使用して、新規または既存の Azure-SSIS IR を構成することができます。 ただし、上記を実行する前に、既存の Azure-SSIS IR が実行されている場合は、これを停止し、後で再起動してください。
 
-1. **[Integration Runtime Setup]\(統合ランタイムの設定\)** ペインで、 **[次へ]** を選択して、 **[全般設定]** と **[SQL 設定]** セクションをスキップします。 
+1. **[統合ランタイムのセットアップ]** ペインで、 **[続行]** ボタンを選択して、 **[全般設定]** と **[デプロイ設定]** ページをスキップします。 
 
-1. **[詳細設定]** セクションで、次の手順を実行します。
+1. **[詳細設定]** ページで、次の手順を実行します。
 
    1. **[Set up Self-Hosted Integration Runtime as a proxy for your Azure-SSIS Integration Runtime]\(セルフホステッド IR を Azure-SSIS 統合ランタイムのプロキシとして設定する\)** チェックボックスをオンにします。 
 
@@ -89,7 +89,7 @@ Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設�
 
    1. **[ステージング パス]** ボックスで、選択した Azure ストレージ アカウント内の BLOB コンテナーを指定するか、またはこれを空のままにしてステージング用の既定のパスを使用します。
 
-   1. **[続行]** をクリックします。
+   1. **[Continue]\(続行\)** を選択します。
 
    ![セルフホステッド IR の詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -133,13 +133,13 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 * [Visual Studio 用の SSIS プロジェクト拡張機能をダウンロードする](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
 * [スタンドアロン インストーラーをダウンロードする](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
-オンプレミスでデータにアクセスするコンポーネントを持つデータ フロー タスクを含む新しいパッケージを設計する場合、`ConnectByProxy` プロパティを有効にするには、関連する接続マネージャーの **[プロパティ]** ウィンドウでこれを "*True*" に設定します。  
-
-![ConnectByProxy プロパティを有効にする](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
+オンプレミスでデータにアクセスするコンポーネントを持つデータ フロー タスクを含む新しいパッケージを設計する場合、`ConnectByProxy` プロパティを有効にするには、関連する接続マネージャーの **[プロパティ]** ウィンドウでこれを "*True*" に設定します。
 
 オンプレミスで実行する SQL 実行タスクを含む新しいパッケージを設計する場合、`ExecuteOnProxy` プロパティを有効にするには、関連するタスク自身の **[プロパティ]** ウィンドウでこれを "*True*" に設定します。
 
-また、既存のパッケージを実行する場合も、それらを 1 つずつ手動で変更することなく、`ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。  2 つのオプションがあります。
+![ConnectByProxy プロパティを有効にする](media/self-hosted-integration-runtime-proxy-ssis/shir-proxy-properties.png)
+
+また、既存のパッケージを実行する場合も、それらを 1 つずつ手動で変更することなく、`ConnectByProxy`/`ExecuteOnProxy` プロパティを有効にできます。 2 つのオプションがあります。
 - **オプション A**: Azure-SSIS IR で実行する、最新の SSDT を備えたこれらのパッケージを含むプロジェクトを開いて、再構築し、再デプロイする。 SSMS からパッケージを実行するときに **[パッケージの実行**] ポップアップ ウィンドウの **[接続マネージャー]** タブに表示される、関連する接続マネージャーに対して *True* に設定することで `ConnectByProxy` プロパティを有効にできます。
 
   ![ConnectByProxy プロパティを有効にする 2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
@@ -158,7 +158,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="debug-the-on-premises-tasks-and-cloud-staging-tasks"></a>オンプレミス タスクとクラウドのステージング タスクをデバッグする
 
-セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスク/SQL 実行タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。  クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
+セルフホステッド IR では、ランタイム ログは *C:\ProgramData\SSISTelemetry* フォルダー内にあり、オンプレミスのステージング タスク/SQL 実行タスクの実行ログは *C:\ProgramData\SSISTelemetry\ExecutionLog* フォルダー内にあります。 クラウドにあるステージング タスクの実行ログは、パッケージを格納した場所が SSISDB であるかどうかや、[Azure Monitor の統合](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)などを有効にするかどうかに応じて、SSISDB 内、指定されたロギング ファイル パス、または Azure Monitor にあります。オンプレミスのステージング タスクの一意の ID も、クラウドにあるステージング タスクの実行ログ内にあります。 
 
 ![1 番目のステージング タスクの一意の ID](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -192,7 +192,7 @@ Azure-SSIS IR のプロキシとしてセルフホステッド IR を使用し�
 
 ## <a name="enforce-tls-12"></a>TLS 1.2 を適用する
 
-強力な暗号化やより安全なネットワークプロトコル (TLS 1.2) を使用し、セルフホステッド IR で同時に以前の SSL/TLS バージョンを無効にする必要がある場合は、パブリック プレビューの BLOB コンテナーの *CustomSetupScript/UserScenarios/TLS 1.2* フォルダーに置かれた、*main.cmd* スクリプトをダウンロードして実行できます。  [Azure Storage Explorer](https://storageexplorer.com/) を使用して、次の SAS URI を入力することで、パブリック プレビュー BLOB コンテナーに接続できます。
+強力な暗号化やより安全なネットワークプロトコル (TLS 1.2) を使用し、セルフホステッド IR で同時に以前の SSL/TLS バージョンを無効にする必要がある場合は、パブリック プレビューの BLOB コンテナーの *CustomSetupScript/UserScenarios/TLS 1.2* フォルダーに置かれた、*main.cmd* スクリプトをダウンロードして実行できます。 [Azure Storage Explorer](https://storageexplorer.com/) を使用して、次の SAS URI を入力することで、パブリック プレビュー BLOB コンテナーに接続できます。
 
 `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 

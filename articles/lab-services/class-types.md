@@ -3,21 +3,31 @@ title: Azure Lab Services における各種クラスの例 | Microsoft Docs
 description: Azure Lab Services を使用してラボを設定できる、いくつかの種類のクラスを提供します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81b3426446894b9dd7bfccc942e04c3d9a7ea492
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627435"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278760"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services
 
 Azure Lab Services を使用すると、クラウド内にクラスルーム ラボ環境をすばやく設定することができます。 このセクションの記事では、Azure Lab Services を使用していくつかの種類のラボを設定する方法に関するガイダンスを提供します。
 
+## <a name="adobe-creative-cloud"></a>Adobe Creative Cloud
+アプリケーションの [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) コレクションは、デジタル アートおよびメディア クラスでよく使用されています。  
+
+この種類のラボを設定する方法の詳細については、[Adobe Creative Cloud のラボを設定する](class-type-adobe-creative-cloud.md)ことに関する記事を参照してください。
+
 ## <a name="arcgis"></a>「ArcGIS」
 [ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) は、地理情報システム (GIS) の一種です。  ArcGIS Desktop の [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm) などのさまざまなアプリケーションを使用して、2D マップを作成、編集、分析するラボを設定できます。
 
 この種類のラボを設定する方法の詳細については、「[ArcMap\ArcGIS Desktop のラボを設定する](class-type-arcgis.md)」を参照してください。
+
+## <a name="autodesk"></a>Autodesk
+[Autodesk](https://www.autodesk.com/) は、アーキテクチャ、エンジニアリング、建設、設計、製造などのソフトウェア ソリューションを提供しています。  これらのソリューションはエンジニアリング クラスおよび [Project Lead the Way](class-type-pltw.md) カリキュラムでよく使用されます。
+
+この種類のラボを設定する方法の詳細については、「[Autodesk](class-type-autodesk.md)」を参照してください。
 
 ## <a name="big-data-analytics"></a>ビッグ データ分析
 ビッグ データ分析クラスを教えるための GPU ラボを設定できます。 この種類のクラスでは、学生は大量のデータを処理し、機械と統計の学習のアルゴリズムを適用してデータの分析情報を導き出す方法について学習します。 学生の主な目的は、ビッグ データを格納、管理、および処理するためのツールを提供する Apache Hadoop のオープンソース ソフトウェア パッケージなどのデータ分析ツールを使用する方法について学習することです。 

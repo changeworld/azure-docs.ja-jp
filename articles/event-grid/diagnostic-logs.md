@@ -3,12 +3,12 @@ title: Azure Event Grid - トピックまたはドメインの診断ログ
 description: この記事では、Azure Event Grid のトピックまたはドメインの診断ログの概念に関する情報を提供します。
 ms.topic: conceptual
 ms.date: 12/03/2020
-ms.openlocfilehash: 36ade14932b5d25c7a1fe05632da671de68ba3bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13577e02cba07fc788bb4846cddd3c0ed894f2b1
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96574988"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314929"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Azure Event Grid のトピックまたはドメインの診断ログ
 Event Grid ユーザーは、診断設定を使用して、Azure ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースのいずれかで **発行および配信エラー** ログをキャプチャして表示することができます。 この記事では、ログのスキーマとログ エントリの例を示します。
@@ -37,6 +37,8 @@ Event Grid ユーザーは、診断設定を使用して、Azure ストレージ
     "message": "Message:outcome=NotFound, latencyInMs=2635, id=xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx, systemId=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
 }
 ```
+
+`Outcome` に指定できる値は、`Aborted`、`TimedOut`、`GenericError`、`Busy` です。 Event Grid では、`message` のイベント ハンドラーから受信したあらゆる情報をログに記録します。 たとえば、`GenericError` の場合、HTTP ステータス コード、エラー コード、エラー メッセージをログに記録します。 
 
 ## <a name="next-steps"></a>次のステップ
 トピックまたはドメインの診断ログを有効にする方法については、[診断ログの有効化](enable-diagnostic-logs-topic.md)に関するページを参照してください。

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2eb0e3ce2ac20c89d9c0176ca3e7b33dc839c923
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: fca83b895596568fba7b9641956dba8e4843d2ca
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718829"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206819"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>クイック スタート:IoT Central アプリケーションにシミュレートされたデバイスを追加する
 

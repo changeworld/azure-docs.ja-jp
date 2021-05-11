@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 17968f2c137eef51eecdb6c7098c7056944dc970
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cb22c2a9cacf4e226338b45fed79f7fa135874e7
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782191"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228822"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions の Azure Event Grid トリガー
 
@@ -358,6 +358,9 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 > [!NOTE]
 > Functions 1.x では、`Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに「非推奨」メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` 使用するよう推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。
 
+### <a name="additional-types"></a>その他の型 
+3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。
+
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
 Azure Functions 1.x では、Event Grid トリガーに次のパラメーター型を使用できます。
@@ -371,6 +374,9 @@ Azure Functions 2.x では、Event Grid トリガーに次のパラメーター�
 
 > [!NOTE]
 > Functions 1.x では、`Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` にバインドしようとした場合、コンパイラに「非推奨」メッセージが表示され、代わりに `Microsoft.Azure.EventGrid.Models.EventGridEvent` 使用するよう推奨されます。 新しい種類を使用するには、[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet パッケージを参照し、`EventGridEvent` の種類名の先頭に `Microsoft.Azure.EventGrid.Models` を付けることによって完全修飾します。 C# スクリプト関数で NuGet パッケージを参照する方法については、「[NuGet パッケージを使用する](functions-reference-csharp.md#using-nuget-packages)」をご覧ください
+
+### <a name="additional-types"></a>その他の型 
+3\.0.0 以降のバージョンの Event Grid 拡張機能を使用するアプリでは、[Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 名前空間の `EventGridEvent` 型を使用します。
 
 # <a name="java"></a>[Java](#tab/java)
 

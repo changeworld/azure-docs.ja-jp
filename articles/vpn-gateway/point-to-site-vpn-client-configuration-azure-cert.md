@@ -1,19 +1,19 @@
 ---
 title: 'P2S VPN クライアント構成ファイルを作成してインストールする: 証明書認証'
 titleSuffix: Azure VPN Gateway
-description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および macOS X VPN クライアント構成ファイルを作成してインストールします。
+description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および macOS X の VPN クライアント構成ファイルを作成してインストールする方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 239166c872578b310fe8eb0393a7a37f4d25129f
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94556166"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202553"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 

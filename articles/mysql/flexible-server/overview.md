@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 2f92c0646ef8c14134e8fc2f9b7558519f71fe8d
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 2b1a66c5f277f4aa46a0a8befe3a92a39b04d296
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107931003"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229686"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -35,7 +35,7 @@ Azure Database for MySQL フレキシブル サーバーは、データベース
 
 ## <a name="high-availability-within-and-across-availability-zones"></a>可用性ゾーン内および可用性ゾーン間での高可用性
 
-フレキシブル サーバー デプロイ モデルは、単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性をサポートするように設計されています。 このアーキテクチャでは、コンピューティングとストレージが分離されています。 データベース エンジンは仮想マシン上で実行され、データ ファイルは Azure Storage に格納されます。 ストレージには、データベース ファイルの 3 つのローカル冗長同期コピーが保持され、常にデータの持続性が確保されます。 
+フレキシブル サーバー デプロイ モデルは、単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性をサポートするように設計されています。 このアーキテクチャでは、コンピューティングとストレージが分離されます。 データベース エンジンは Linux 仮想マシン上で実行され、データ ファイルはリモートの Azure Premium Storage 上に配置されます。 ストレージには、データベース ファイルの 3 つのローカル冗長同期コピーが保持され、常にデータの持続性が確保されます。 
 
 1 つの可用性ゾーン内では、計画的なイベントまたは計画外のイベントによってサーバーがダウンした場合、サービスによって次の自動化された手順を使用してサーバーの高可用性が維持されます。
 
@@ -147,7 +147,7 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | Japan East | :heavy_check_mark: | :heavy_check_mark: | 
 | オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: |
 | フランス中部 | :heavy_check_mark: | :x:|
-| ブラジル南部 | :heavy_check_mark: | :x: |
+| Brazil South | :heavy_check_mark: | :x: |
 
 近日中に新しいリージョンを追加できるよう取り組んでいます。
 

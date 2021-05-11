@@ -1,35 +1,35 @@
 ---
-title: チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
+title: Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
+description: この記事では、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法について説明します。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
-ms.date: 04/27/2021
+ms.topic: how-to
+ms.date: 04/29/2021
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 2fbf0e4df1e9ee7dca7219891acc296c3493be9e
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 36605d6bf17c7652e7f21b89a83af08972765a30
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074963"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287605"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
 オンプレミス ネットワークを Azure 仮想ネットワークに接続してハイブリッド ネットワークを作成する場合、ご利用の Azure ネットワーク リソースへのアクセスを制御する機能が、全体的なセキュリティ プランの中で重要な役割を果たします。
 
 Azure Firewall を使用すれば、許可するネットワーク トラフィックと拒否するネットワーク トラフィックを定義するルールを使って、ハイブリッド ネットワークにおけるネットワーク アクセスを制御できます。
 
-このチュートリアルでは、3 つの仮想ネットワークを作成します。
+この記事では、3 つの仮想ネットワークを作成します。
 
 - **VNet-Hub** - ファイアウォールは、この仮想ネットワーク内に存在します。
 - **VNet-Spoke** - スポーク仮想ネットワークは Azure 上のワークロードを表します。
-- **VNet-Onprem** - オンプレミス仮想ネットワークはオンプレミス ネットワークを表します。 実際のデプロイでは、VPN 接続または ExpressRoute 接続のいずれかで接続できます。 わかりやすくするため、このチュートリアルでは VPN ゲートウェイ接続を使用し、Azure に配置された仮想ネットワークがオンプレミス ネットワークを表すために使用されます。
+- **VNet-Onprem** - オンプレミス仮想ネットワークはオンプレミス ネットワークを表します。 実際のデプロイでは、VPN 接続または ExpressRoute 接続のいずれかで接続できます。 わかりやすくするために、この手順では VPN ゲートウェイ接続を使用し、Azure に配置された仮想ネットワークがオンプレミス ネットワークを表すために使用されます。
 
 ![ハイブリッド ネットワークでのファイアウォール](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 > * ファイアウォールのハブ仮想ネットワークを作成する
@@ -42,10 +42,10 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 > * 仮想マシンの作成
 > * ファイアウォールをテストする
 
-Azure PowerShell を使用してこのチュートリアルを実行する場合は、「[Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-ps.md)」をご覧ください。
+この手順の実行に、代わりに Azure PowerShell を使用する場合は、「[Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-ps.md)」を参照してください。
 
 > [!NOTE]
-> このチュートリアルでは、従来のファイアウォール規則を使用してファイアウォールを管理します。 推奨される方法は、[ファイアウォール ポリシー](../firewall-manager/policy-overview.md)を使用することです。 ファイアウォール ポリシーを使用してこのチュートリアルを実行するには、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall とポリシーをデプロイして構成する](tutorial-hybrid-portal-policy.md)」をご覧ください。
+> この記事では、従来のファイアウォール規則を使用してファイアウォールを管理します。 推奨される方法は、[ファイアウォール ポリシー](../firewall-manager/policy-overview.md)を使用することです。 ファイアウォール ポリシーを使用してこの手順を実行するには、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall とポリシーをデプロイして構成する](tutorial-hybrid-portal-policy.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +59,7 @@ Azure PowerShell を使用してこのチュートリアルを実行する場合
 - スポーク サブネット トラフィックをハブ ファイアウォール経由でルーティングするには、 **[仮想ネットワーク ゲートウェイのルート伝達]** オプションが無効になったファイアウォールを指すユーザー定義ルート (UDR) を使用してください。 **[仮想ネットワーク ゲートウェイのルート伝達]** オプションが無効になっていると、スポーク サブネットへのルート配布ができなくなります。 これにより、学習されたルートと UDR との競合が防止されます。 **[仮想ネットワーク ゲートウェイのルート伝達]** を有効にしておきたい場合は必ず、ファイアウォールへのルートを具体的に定義して、オンプレミスから BGP で発行されたルートをオーバーライドしてください。
 - ハブ ゲートウェイ サブネット上の UDR を、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すように構成します。 Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
 
-これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
+これらのルートの作成方法については、この記事の「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
 
 >[!NOTE]
 >Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>ファイアウォールのハブ仮想ネットワークを作成する
 
-まず、このチュートリアルのリソースを含めるためのリソース グループを作成します。
+まず、リソースを含めるためのリソース グループを作成します。
 
 1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. Azure portal のホーム ページで **[リソース グループ]**  >  **[追加]** の順に選択します。
@@ -462,11 +462,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ファイアウォール リソースは、次のチュートリアルのために残しておいてもかまいませんが、不要であれば、**FW-Hybrid-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
+さらにテストを行うために、ファイアウォール リソースを残しておいてもかまいませんが、不要であれば、**FW-Hybrid-Test** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 次に、Azure Firewall のログを監視することができます。
 
-> [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)
+[チュートリアル:Azure Firewall のログを監視する](./firewall-diagnostics.md)

@@ -2,14 +2,14 @@
 title: Event Hubs の Azure スキーマ レジストリ (プレビュー)
 description: この記事では、Azure Event Hubs での Schema Registry のサポート (プレビュー) に関する概要について説明します。
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 04/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 578bb082cf439d48b186461742ed51c39ce85e80
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92330497"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226446"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに、Apache Avro のようなスキーマ駆動型の形式を使用してシリアル化または逆シリアル化された構造化データが含まれています。 送信側と受信側のどちらであっても、JSON スキーマのようなスキーマ ドキュメントでデータの整合性を検証したい場合があります。 スキーマ駆動型の形式の場合、メッセージ コンシューマーでスキーマを使用できるようにすることは、コンシューマーでデータを逆シリアル化できるようにするための前提条件です。 
@@ -48,7 +48,7 @@ Avro シリアライザーを含む次のライブラリのいずれかを使用
 :::image type="content" source="./media/schema-registry-overview/flow-diagram.png" alt-text="フロー図":::
 
 ## <a name="standard-vs-dedicated-limits"></a>Standard と Dedicated の制限
-Event Hubs の Standard レベルと Dedicated レベルの間で同じ、または異なる制限 (例: 名前空間内のスキーマ グループの数) については、[Schema Registry の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations)に関するページを参照してください
+Event Hubs の Standard レベルと Dedicated レベルの間で同じ、または異なる制限 (例: 名前空間内のスキーマ グループの数) については、[Event Hubs のクォータと制限](event-hubs-quotas.md)に関するページを参照してください
 
 ## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 プログラムを使用してスキーマ レジストリにアクセスする場合は、Azure Active Directory (Azure AD) にアプリケーションを登録し、Azure ロールベースのアクセス制御 (Azure RBAC) ロールのいずれかにアプリケーションのセキュリティ プリンシパルを追加する必要があります。

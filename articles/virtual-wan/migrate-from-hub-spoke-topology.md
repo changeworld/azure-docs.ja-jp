@@ -1,18 +1,18 @@
 ---
 title: アーキテクチャ:Azure Virtual WAN に移行する
-description: Azure Virtual WAN に移行する方法について説明します。
+description: お客様が管理する既存のハブアンドスポーク トポロジから、Microsoft が管理する Virtual WAN ハブを活用した設計へ移行する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 447f85657abadb688cc9415b54ba765561daa374
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91839641"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161755"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Azure Virtual WAN に移行する
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
-description: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
+title: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを CLI から作成する
+description: Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを CLI から作成する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 046f9d80c034e1ac1f2e7ffe144b4f389861b043
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebc8405a2afe9a6e2d802b68c59142f6fbf01de5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687942"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288114"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -234,6 +234,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
 ## <a name="next-steps"></a>次のステップ
 
+- Azure Arc 対応 PostgreSQL Hyperscale に接続します。[接続エンドポイントと接続文字列の取得](get-connection-endpoints-and-connection-strings-postgres-hyperscale.md)に関する記事を参照してください。
 - 複数の PostgreSQL Hyperscale ノードにわたってデータを分散させ、パフォーマンス向上の可能性があるという利点を得るため、Azure Database for PostgreSQL Hyperscale の概念と使い方に関するガイドを参照してください。
     * [ノードとテーブル](../../postgresql/concepts-hyperscale-nodes.md)
     * [アプリケーションの種類の決定](../../postgresql/concepts-hyperscale-app-type.md)

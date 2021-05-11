@@ -1,6 +1,6 @@
 ---
-title: Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
-description: VPN および ExpressRoute ゲートウェイを Azure Availability Zones にデプロイして、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、より高い可用性をもたらします。
+title: Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイ
+description: 仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、より高い可用性をもたらすために、VPN および ExpressRoute ゲートウェイを Azure Availability Zones にデプロイする方法について説明します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2d0e6464e81c0b0d04b9a0f483bcd14f075fa399
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2441832ce13c98410cbd0d087ec4302ff7fa6428
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065164"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205901"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: a30980ba61a1dfec918dce1a55e78f1be2a36dd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaca73d71731ee18eb8f12468ec26ece746f1b8f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677849"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288366"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -87,7 +87,7 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 サービス プリンシパルまたはマネージド ID には、データベース、スキーマ、およびテーブルのメタデータを取得するためのアクセス許可が必要です。 また、分類用のサンプリングを行うために、テーブルに対してクエリを実行できる必要もあります。
 - [Azure SQL での Azure AD 認証を構成して管理する](../azure-sql/database/authentication-aad-configure.md)
 - 「[Azure AD ID にマップされる包含ユーザーを作成する](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities)」の前提条件とチュートリアルに従って、Azure SQL Database Managed Instance に Azure AD ユーザーを作成する
-- `db_owner` (**推奨**) アクセス許可を ID に割り当てる
+- ID に `db_datareader` アクセス許可を割り当てる
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する
 
@@ -97,7 +97,7 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) で自分のサービス プリンシパルに移動します
-1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
+1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: ddb61a79e6af402b06fe8c18df8c62f9287437a3
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: cacf317e433ec89b3bc82f86844e5e6b5e143547
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209716"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330560"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
@@ -64,8 +64,8 @@ Speech Service リソース (無料または有料レベル) を Azure アカウ
 1. **新規** ウィンドウで、検索ボックスに「speech」と入力し、Enter キーを押します。
 
 1. 検索結果で、 **[Speech]** を選択します。
-
-   ![speech の検索結果](media/index/speech-search.png)
+   
+   :::image type="content" source="media/index/speech-search.png" alt-text="Azure portal で Speech リソースを作成します。":::
 
 1. **[作成]** を選択して、次のことを行います。
 

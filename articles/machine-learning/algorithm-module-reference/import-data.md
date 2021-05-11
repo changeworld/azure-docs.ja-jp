@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/13/2020
-ms.openlocfilehash: 69d27c102ca059974da87224e44f0ad7aa103fff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b55cafcb45cd2004702dc0f10ddf6c7b2d7f0c47
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94592636"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317777"
 ---
 # <a name="import-data-module"></a>データのインポート モジュール
 
@@ -98,6 +98,10 @@ ms.locfileid: "94592636"
 - 変換する、またはモデル化で使用する列のサブセットを選択するには、[[データセット内の列の選択]](./select-columns-in-dataset.md) を使用します。 変換された列や削除された列は、[列の追加](./add-columns.md)モジュールを使用することで、元のデータセットに簡単に戻すことができます。  
 
 - データセットを分割したり、サンプリングを実行したり、上位 n 行を取得したりするには、[[パーティションとサンプル]](./partition-and-sample.md) を使用します。
+
+## <a name="limitations"></a>制限事項
+
+データストアのアクセス制限により、推論パイプラインに **データのインポート** モジュールが含まれている場合、これはリアルタイム エンドポイントへのデプロイ時に自動的に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

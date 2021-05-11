@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c4f003fc9e418501af76281c10277fce3606e24c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b8730d9a3e50eb1373cdc2f8f2984c6cc5bbccf
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102124229"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208007"
 ---
 # <a name="adopting-an-industry-ontology"></a>業界オントロジの採用
 
@@ -24,7 +24,7 @@ ms.locfileid: "102124229"
 
 ## <a name="realestatecore-smart-building-ontology"></a>RealEstateCore スマート ビル オントロジ
 
-*このオントロジについてはこちら: [**スマート ビルに関する Digital Twins Definition Language ベースの RealEstateCore オントロジ**](https://github.com/Azure/opendigitaltwins-building)* 。
+*このオントロジについてはこちら:* [スマート ビルに関する Digital Twins Definition Language ベースの RealEstateCore オントロジ](https://github.com/Azure/opendigitaltwins-building)。
 
 Microsoft は、不動産所有者、ソフトウェア ベンダー、研究機関からなるスウェーデンのコンソーシアムである [RealEstateCore](https://www.realestatecore.io/) と提携しています。この目的は、不動産業界向けにこのオープンソースの  DTDL オントロジを提供することです。
 
@@ -36,7 +36,7 @@ Microsoft は、不動産所有者、ソフトウェア ベンダー、研究機
 
 ## <a name="smart-cities-ontology"></a>スマート シティのオントロジ
 
-*このオントロジについてはこちら: [**スマート シティに関する Digital Twins Definition Language (DTDL) オントロジ**](https://github.com/Azure/opendigitaltwins-smartcities)* 。
+*このオントロジについてはこちら:* [スマート シティに関する Digital Twins Definition Language (DTDL) オントロジ](https://github.com/Azure/opendigitaltwins-smartcities)。
 
 Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) および [Sirus](https://sirus.be/) と共同で、[ETSI CIM NGSI-LD](https://www.etsi.org/committee/cim) を始めとする、スマート シティに関する DTDL ベースのオントロジを提供しています。 ETSI NGSI-LD に加え、Saref4City、CityGML、ISO なども評価しています。
 
@@ -48,6 +48,6 @@ Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) およ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 仕様に合うように業界標準のオントロジを拡張する方法について学習します。"[*概念: 業界のオントロジの拡張*](concepts-ontologies-extend.md)" に関する記事。
+* 仕様に合うように業界標準のオントロジを拡張する方法について学習します。"[概念: 業界のオントロジの拡張](concepts-ontologies-extend.md)" に関する記事。
 
-* または、オントロジに基づいてモデルを開発するためのパスを続行します。[*モデル開発パスでのオントロジ戦略の使用*](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)に関する記事。
+* または、オントロジに基づいてモデルを開発するためのパスを続行します。[モデル開発パスでのオントロジ戦略の使用](concepts-ontologies.md#using-ontology-strategies-in-a-model-development-path)に関する記事。

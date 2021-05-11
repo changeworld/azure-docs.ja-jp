@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: c16e324809fd688adf4a970f105cb364e73d7004
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a0c0c04d33c994279fe15a8fe7f677b2c25a55de
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128795"
+ms.locfileid: "108166039"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP シリーズ VM の FPGA 構成証明 (プレビュー)
 
@@ -24,15 +24,11 @@ Azure サブスクリプションと Azure Storage アカウントが必要に�
 
 構成証明要求を送信するための PowerShell および Bash スクリプトが用意されています。   スクリプトには Azure CLI を使用します。これは、Windows および Linux で実行できます。 PowerShell は Windows、Linux、および macOS 上で実行できます。  
 
-Azure CLI ダウンロード (必須):  
+[Azure CLI ダウンロード (必須)](/cli/azure/install-azure-cli)
 
-https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest  
+[Windows、Linux、macOS 用 PowerShell のダウンロード (PowerShell スクリプトのみ)](/powershell/scripting/install/installing-powershell)
 
-Windows、Linux、macOS 用 PowerShell のダウンロード (PowerShell スクリプトのみ):  
-
-https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7  
-
-構成証明サービスに送信するには、テナントとサブスクリプション ID が承認されている必要があります。 アクセスを要求するには、 https://aka.ms/AzureFPGAAttestationPreview にアクセスしてください。 
+構成証明サービスに送信するには、テナントとサブスクリプション ID が承認されている必要があります。 アクセスを要求するには、[https://aka.ms/AzureFPGAAttestationPreview](https://aka.ms/AzureFPGAAttestationPreview) にアクセスしてください。 
 
 ## <a name="building-your-design-for-attestation"></a>構成証明の設計を構築する  
 
@@ -40,13 +36,11 @@ https://docs.microsoft.com/powershell/scripting/install/installing-powershell?vi
 
 ビットストリームの代わりに netlist を含む xclbin ファイルを構築するには、Vitis (v++ コマンド ライン) に次の引数を含める必要があります。   
 
-```--advanced.param compiler.acceleratorBinaryContent=dcp  ```
+`--advanced.param compiler.acceleratorBinaryContent=dcp`
 
 ## <a name="logging-into-azure"></a>Azure へのログイン  
 
-Azure で何らかの操作を実行する前に、Azure にログインし、サービスを呼び出すことが許可されているサブスクリプションを設定する必要があります。 その場合は ```az login``` と ```az account set –s <Sub ID or Name>``` コマンドを使用します。 このプロセスの詳細については、次のドキュメントを参照してください:  
-
-https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest. コマンドラインで、’対話操作でサインインする’ か、‘資格情報を使用してサインインする‘ オプションのいずれかを使用します。  
+Azure で何らかの操作を実行する前に、Azure にログインし、サービスを呼び出すことが許可されているサブスクリプションを設定する必要があります。 その場合は `az login` と `az account set –s <Sub ID or Name>` コマンドを使用します。 このプロセスの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。 コマンド ラインで、"**対話操作でサインインする**" または "**資格情報を使用してサインインする**" オプションのいずれかを使用します。  
 
 ## <a name="creating-a-storage-account-and-blob-container"></a>ストレージ アカウントと BLOB コンテナーの作成  
 
@@ -66,7 +60,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 検証スクリプトは、次の Azure ストレージ BLOB コンテナーからダウンロードできます。  
 
-https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip  
+[https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip](https://fpgaattestation.blob.core.windows.net/validationscripts/validate.zip)
 
 zip ファイルには、送信用と監視用の 2 つの PowerShell スクリプトが含まれています。3 番目のファイルは、両方の機能を実行するバッシュ スクリプトです。  
 
@@ -82,15 +76,19 @@ Shared Access Signature の概要については、こちらを参照してく�
 
 ### <a name="powershell"></a>PowerShell   
 
-```$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)  ```
+```powershell
+$sas=$(az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <e.g., 2021-01-07T17:00Z> --output tsv)
 
-```.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>  ```
+.\Validate-FPGAImage.ps1 -StorageAccountName <storage acct name> -Container <blob container name> -BlobContainerSAS $sas -NetlistName <netlist blob filename>
+```
 
 ### <a name="bash"></a>Bash  
 
-``` sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  ```
+```bash
+sas=az storage container generate-sas --account-name <storage acct name> --name <blob container name> --https-only --permissions rwc --expiry <2021-01-07T17:00Z> --output tsv  
 
-```validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas ``` 
+validate-fpgaimage.sh --storage-account <storage acct name> --container <blob container name> --netlist-name <netlist blob filename> --blob-container-sas $sas
+``` 
 
 ## <a name="checking-on-the-status-of-your-submission"></a>送信状態の確認  
 
@@ -98,23 +96,19 @@ Shared Access Signature の概要については、こちらを参照してく�
 
 Monitor-Validation.ps1 スクリプトを呼び出せば、いつでも構成証明の状態と結果を取得できます。ここでは、オーケストレーション ID を引数として指定します。  
 
-```.\Monitor-Validation.ps1 -OrchestrationId < Orchestration ID>  ```
+`.\Monitor-Validation.ps1 -OrchestrationId <orchestration ID>`
 
 または、HTTP 投稿要求を構成証明サービス エンドポイントに送信することもできます。  
 
-https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus  
+`https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus`
 
 要求本文には、構成証明要求のサブスクリプション ID、テナント ID、およびオーケストレーション ID を含めてください。  
 
-```
+```json
 {  
-
-  "OrchestrationId": ”< orchestration ID>”,  
-
-  "ClientSubscriptionId": “<your subscription ID>”,  
-
-  "ClientTenantId": “<your tenant ID>”  
-
+  "OrchestrationId": "<orchestration ID>",  
+  "ClientSubscriptionId": "<your subscription ID>",  
+  "ClientTenantId": "<your tenant ID>"
 }
 ```
 

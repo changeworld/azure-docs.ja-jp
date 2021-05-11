@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c9bbdb831df9c51c6d80e6c441ac7bdd2778428
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bafbbb8faee98bacbd6d1f314c1411ce2593296a
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044551"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316283"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API コネクタをユーザー フローに追加する
 
 [API コネクタ](api-connectors-overview.md)を使用するには、まず API コネクタを作成してから、ユーザー フローで有効にします。
 
 > [!IMPORTANT]
->**2021 年 1 月 4 日以降**、Google は [WebView サインインのサポートを廃止](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)します。 Gmail で Google フェデレーションまたはセルフサービス サインアップを使用している場合は、[基幹業務ネイティブ アプリケーションの互換性をテストする](google-federation.md#deprecation-of-webview-sign-in-support)必要があります。
+> **2021 年の下半期から**、Google の [Web ビュー サインイン サポートが非推奨になります](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 B2B 招待または [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) に Google フェデレーションを使用している場合、または Gmail でセルフサービス サインアップを使用している場合、アプリで埋め込みの Web ビューを使用してユーザーを認証すると、Google Gmail ユーザーがサインインできなくなります。 [詳細については、こちらを参照してください](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>API コネクタを作成する
 
@@ -53,17 +53,17 @@ HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義�
 > [!IMPORTANT]
 > この機能はプレビュー段階であり、サービス レベル アグリーメントなしで提供されます。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-クライアント証明書の認証は証明書ベースの相互認証方法であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure Active Directory は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、SSL ハンドシェイクの一部として発生します。 API サービスは、その後、適切な証明書を持つサービスのみにアクセスを制限できます。 クライアント証明書は、PKCS12 (PFX) X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
+クライアント証明書の認証は証明書ベースの相互認証方法であり、クライアントがクライアント証明書をサーバーに提供し、その ID を証明します。 この場合、Azure Active Directory は API コネクタ構成の一部としてアップロードした証明書を使用します。 これは、SSL ハンドシェイクの一部として発生します。 これにより、API サービスはアクセスを、適切な証明書を持つサービスのみに制限できます。 クライアント証明書は、PKCS12 (PFX) X.509 デジタル証明書です。 運用環境では、証明機関によって署名されている必要があります。 
 
 証明書を作成するには、[Azure Key Vault](../../key-vault/certificates/create-certificate.md) を使用できます。これには、自己署名証明書のオプションと、署名された証明書の証明書発行者プロバイダーとの統合があります。 推奨設定には次が含まれます。
-- **サブジェクト**: `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
-- **コンテンツの種類**: `PKCS #12`
-- **有効期間のアクション タイプ**: `Email all contacts at a given percentage lifetime` または `Email all contacts a given number of days before expiry`
-- **キーの種類**: `RSA`
-- **キー サイズ**: `2048`
-- **エクスポート可能な秘密キー**: `Yes` (pfx ファイルをエクスポートできるようにするため)
+- **[サブジェクト]** : `CN=<yourapiname>.<tenantname>.onmicrosoft.com`
+- **[コンテンツの種類]** : `PKCS #12`
+- **[有効期間のアクション タイプ]** : `Email all contacts at a given percentage lifetime` または `Email all contacts a given number of days before expiry`
+- **[キーの種類]** : `RSA`
+- **[キー サイズ]** : `2048`
+- **[エクスポート可能な秘密キー]** : `Yes` (pfx ファイルをエクスポートできるようにするため)
 
-その後、[証明書をエクスポート](../../key-vault/certificates/how-to-export-certificate.md)できます。 別の選択肢として、PowerShell の [New-SelfSignedCertificate コマンドレット](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional)を使用して自己署名証明書を生成することもできます。
+これで、[証明書をエクスポート](../../key-vault/certificates/how-to-export-certificate.md)できます。 別の選択肢として、PowerShell の [New-SelfSignedCertificate](../../active-directory-b2c/secure-rest-api.md#prepare-a-self-signed-certificate-optional) コマンドレットを使用して自己署名証明書を生成することもできます。
 
 証明書を取得したら、それを API コネクタ構成の一部としてアップロードできます。 パスワードは、パスワードで保護されている証明書ファイルにのみ必要です。
 

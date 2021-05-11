@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 992ea75c48b2630032e1314610986fbc610eec7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0b02e5b4e58cda246751b16542a0a2ac587e7b6
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025783"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289626"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Azure Arc 対応 Kubernetes のトラブルシューティング
 
@@ -192,3 +192,20 @@ metadata:
 ```console
 juju config kubernetes-worker allow-privileged=true
 ```
+
+## <a name="enable-custom-locations-using-service-principal"></a>サービス プリンシパルを使用してカスタムの場所を有効にする
+
+クラスターを Azure Arc に接続するとき、または既存のクラスターで "カスタムの場所" 機能を有効にするときに、次の警告が表示される場合があります。
+
+```console
+Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the feature. Insufficient privileges to complete the operation.
+```
+
+この警告は、サービス プリンシパルを使用して Azure にログインしており、Azure Arc サービスで使用されるアプリケーションの情報を取得するためのアクセス許可がこのサービス プリンシパルにない場合に発生します。 次のコマンドを実行して、必要なアクセス許可を付与します。
+
+```console
+az ad app permission add --id <service-principal-app-id> --api 00000002-0000-0000-c000-000000000000 --api-permissions 3afa6a7d-9b1a-42eb-948e-1650a849e176=Role
+az ad app permission admin-consent --id <service-principal-app-id>
+```
+
+このアクセス許可が付与されると、クラスターで ["カスタムの場所" 機能の有効化](custom-locations.md#enable-custom-locations-on-cluster)に進めるようになります。

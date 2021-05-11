@@ -8,36 +8,44 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/28/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 55034efe35ae572fb7b2d5d8eeacb6048bcb8e51
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717695"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175444"
 ---
-# <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
+# <a name="secure-your-api-connector"></a>API コネクタのセキュリティ保護 
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure AD B2C ユーザー体験内で REST API を統合する場合は、認証を使用して REST API エンドポイントを保護する必要があります。 これにより、Azure AD B2C などの適切な資格情報を持つサービスだけが REST API エンドポイントを呼び出すことができます。
+Azure AD B2C ユーザー フロー内で REST API を統合する場合は、認証を使用して REST API エンドポイントを保護する必要があります。 REST API 認証により、Azure AD B2C などの適切な資格情報を持つサービスだけが REST API エンドポイントを呼び出すことができます。 この記事では、REST API をセキュリティで保護する方法について説明します。 
 
-[ユーザー入力の検証](custom-policy-rest-api-claims-validation.md)で Azure AD B2C ユーザー体験内の REST API を統合する方法、および[カスタム ポリシーに REST API 要求交換を追加](custom-policy-rest-api-claims-exchange.md)する方法の記事について説明します。
+## <a name="prerequisites"></a>必須コンポーネント
 
-この記事では、HTTP 基本、クライアント証明書、OAuth2 認証のいずれかを使用して REST API を保護する方法について説明します。 
-
-## <a name="prerequisites"></a>前提条件
-
-次のいずれかの ’ハウツー’ ガイドの手順を実行します。
-
-- [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する方法](custom-policy-rest-api-claims-validation.md)に関するページ。
-- [REST API 要求の交換をカスタム ポリシーに追加する方法](custom-policy-rest-api-claims-exchange.md)に関するページ
+チュートリアル「[API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)」ガイドの手順を完了している。
 
 ## <a name="http-basic-authentication"></a>HTTP 基本認証
 
 HTTP 基本認証は [RFC 2617](https://tools.ietf.org/html/rfc2617) で定義されています。 基本認証は、次のように動作します。Azure AD B2C は、Authorization ヘッダー内にクライアント資格情報を持つ HTTP 要求を送信します。 資格情報は、Base64 でエンコードされた文字列 "name: password" として書式設定されます。  
+
+::: zone pivot="b2c-user-flow"
+
+HTTP 基本認証を使用して API コネクタを構成するには、次の手順を実行します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
+1. **[API コネクタ (プレビュー)]** を選択し、構成する **[API コネクタ]** を選択します。
+1. **[認証の種類]** で、 **[基本]** を選択します。
+1. REST API エンドポイントの **[ユーザー名]** と **[パスワード]** を指定します。
+1. **[保存]** を選択します。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 ### <a name="add-rest-api-username-and-password-policy-keys"></a>REST API ユーザー名とパスワードのポリシーのキーを追加する
 
@@ -80,7 +88,7 @@ HTTP 基本認証を使用して REST API の技術プロファイルを構成�
     </CryptographicKeys>
     ```
 
-HTTP 基本認証を使用して構成された RESTful 技術プロファイルの例を次に示します。
+HTTP 基本認証を使用して構成された RESTful 技術プロファイルの例を次の XML スニペットに示します。
 
 ```xml
 <ClaimsProvider>
@@ -104,6 +112,7 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
+::: zone-end
 
 ## <a name="https-client-certificate-authentication"></a>HTTPS クライアント証明書認証
 
@@ -111,24 +120,25 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
 
 ### <a name="prepare-a-self-signed-certificate-optional"></a>自己署名証明書を準備する (省略可能)
 
-非運用環境では、証明書をまだ持っていない場合は、自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
-1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
-    ```powershell
-    New-SelfSignedCertificate `
-        -KeyExportPolicy Exportable `
-        -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
-        -KeyAlgorithm RSA `
-        -KeyLength 2048 `
-        -KeyUsage DigitalSignature `
-        -NotAfter (Get-Date).AddMonths(12) `
-        -CertStoreLocation "Cert:\CurrentUser\My"
-    ```    
-1. **[ユーザー証明書の管理]**  >  **[現在のユーザー]**  >  **[個人用]**  >  **[証明書]**  > *yourappname.yourtenant.onmicrosoft.com* を開きます。
-1. 証明書 > **[アクション]**  >  **[すべてのタスク]**  >  **[エクスポート]** を選択します。
-1. **[はい]**  >  **[次へ]**  >  **[はい、秘密キーをエクスポートします]**  >  **[次へ]** を選択します。
-1. **[エクスポート ファイルの形式]** の既定値を受け入れます。
-1. 証明書のパスワードを指定します。
+::: zone pivot="b2c-user-flow"
+
+### <a name="configure-your-api-connector"></a>API コネクタを構成する
+
+クライアント証明書認証を使用して API コネクタを構成するには、次の手順を実行します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
+1. **[API コネクタ (プレビュー)]** を選択し、構成する **[API コネクタ]** を選択します。
+1. **[認証の種類]** で **[証明書]** を選択します。
+1. **[証明書のアップロード]** ボックスで、秘密キーを備えた証明書の .pfx ファイルを選択します。
+1. **[パスワードの入力]** ボックスに、証明書のパスワードを入力します。
+1. **[保存]** を選択します。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 ### <a name="add-a-client-certificate-policy-key"></a>クライアント証明書ポリシー キーを追加する
 
@@ -160,7 +170,7 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
     </CryptographicKeys>
     ```
 
-HTTP クライアント証明書を使用して構成された RESTful 技術プロファイルの例を次に示します。
+HTTP クライアント証明書を使用して構成された RESTful 技術プロファイルの例を次の XML スニペットに示します。
 
 ```xml
 <ClaimsProvider>
@@ -236,10 +246,10 @@ Authorization: Bearer <token>
 
 次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」をご覧ください。 
 
-Azure AD アクセス トークンを取得するには、Azure AD テナントでアプリケーションを作成します。
+技術プロファイルがアクセストークンを取得するために Azure AD と対話できるようにするには、アプリケーションを登録する必要があります。 Azure AD B2C は、Azure AD プラットフォームに依存しています。 アプリは、Azure AD B2C テナント、または管理する任意の Azure AD テナントで作成できます。 アプリケーションを登録するには、以下を行います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD テナントを含むディレクトリを選択します。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD またはAzure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。 または、 **[すべてのサービス]** を選択してから、 **[Azure Active Directory]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの **名前** を入力します。 たとえば、*Client_Credentials_Auth_app* のように入力します。
@@ -250,7 +260,7 @@ Azure AD アクセス トークンを取得するには、Azure AD テナント�
 
 クライアント資格情報フローの場合は、アプリケーション シークレットを作成する必要があります。 クライアント シークレットは、"アプリケーション パスワード" とも呼ばれます。 このシークレットは、アクセス トークンを取得するためにアプリケーションによって使用されます。
 
-1. **[Azure AD B2C - アプリの登録]** ページで、作成したアプリケーション (例: *Client_Credentials_Auth_app*) を選択します。
+1. **[Azure AD - アプリの登録]** ページで、作成したアプリケーション (例: *Client_Credentials_Auth_app*) を選択します。
 1. 左側のメニューで、 **[管理]** の **[証明書とシークレット]** を選択します。
 1. **[新しいクライアント シークレット]** を選択します。
 1. **[説明]** ボックスにクライアント シークレットの説明を入力します。 たとえば、*clientsecret1* のようにします。
@@ -270,7 +280,7 @@ Azure AD B2C テナントで前に記録したクライアント ID およびク
 7. ポリシー キーの **名前** を入力します (`SecureRESTClientId`)。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
 8. **[シークレット]** に、前に記録したクライアント ID を入力します。
 9. **[キー使用法]** として [`Signature`] を選択します。
-10. **Create** をクリックしてください。
+10. **［作成］** を選択します
 11. 次の設定で別のポリシー キーを作成します。
     -   **[名前]** : `SecureRESTClientSecret`。
     -   **[シークレット]** : 前に記録したクライアント シークレットを入力します
@@ -278,7 +288,7 @@ Azure AD B2C テナントで前に記録したクライアント ID およびク
 ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換えます。 使用可能なすべてのオプションについては、[RESTful 技術プロファイル](restful-technical-profile.md)のリファレンスを参照してください。
 
 ```xml
-<TechnicalProfile Id="SecureREST-AccessToken">
+<TechnicalProfile Id="REST-AcquireAccessToken">
   <DisplayName></DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
@@ -312,7 +322,7 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
     ```xml
     <Item Key="AuthenticationType">Bearer</Item>
     ```
-1. 次のように、*UseClaimAsBearerToken* を *bearerToken* に変更または追加します。 *bearerToken* は、ベアラー トークンの取得元になる要求の名前 (`SecureREST-AccessToken` からの出力要求) です。
+1. 次のように、*UseClaimAsBearerToken* を *bearerToken* に変更または追加します。 *bearerToken* は、ベアラー トークンの取得元になる要求の名前 (`REST-AcquireAccessToken` からの出力要求) です。
 
     ```xml
     <Item Key="UseClaimAsBearerToken">bearerToken</Item>
@@ -382,7 +392,7 @@ OAuth2 ベアラー トークンを使用して REST API の技術プロファ�
     </CryptographicKeys>
     ```
 
-ベアラー トークン認証を使用して構成された RESTful 技術プロファイルの例を次に示します。
+ベアラー トークン認証を使用して構成された RESTful 技術プロファイルの例を次の XML スニペットに示します。
 
 ```xml
 <ClaimsProvider>
@@ -445,7 +455,7 @@ API キー認証を使用して REST API の技術プロファイルを構成す
 
 暗号化キーの **ID** によって、HTTP ヘッダーが定義されます。 この例では、API キーは **x-functions-key** として送信されます。
 
-API キー認証で Azure 関数を呼び出すように構成された RESTful 技術プロファイルの例を次に示します。
+API キー認証で Azure 関数を呼び出すように構成された RESTful 技術プロファイルの例を次の XML スニペットに示します。
 
 ```xml
 <ClaimsProvider>
@@ -471,4 +481,6 @@ API キー認証で Azure 関数を呼び出すように構成された RESTful 
 
 ## <a name="next-steps"></a>次のステップ
 
-- IEF のリファレンスで [Restful 技術プロファイル](restful-technical-profile.md)要素についてさらに学習します。
+- カスタム ポリシー リファレンスで [Restful 技術プロファイル](restful-technical-profile.md)要素の詳細を確認します。
+
+::: zone-end

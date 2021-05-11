@@ -1,19 +1,19 @@
 ---
 title: BGP の状態とメトリックの表示
 titleSuffix: Azure VPN Gateway
-description: トラブルシューティングのために、BGP 関連の重要な情報を表示できます。
+description: トラブルシューティングのために、BGP 関連の重要な情報を表示する方法について説明します。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 03/10/2021
 ms.author: alzam
-ms.openlocfilehash: f97bbccc980705699af822ba2730233239cdfd5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f7ef69494281684d7846e4490dfcc27ba08080e
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103148848"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206729"
 ---
 # <a name="view-bgp-metrics-and-status"></a>BGP のメトリックと状態の表示
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50e3272be139e8b0cd30f9e5867e263efc92ae24
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96860934"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178756"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
 
@@ -63,7 +63,7 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
       1. キーのパス: **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. 値の名前: **TenantId**
       1. 値の種類: **REG_SZ**
-      1. 値のデータ: Azure AD インスタンスの GUID または **ディレクトリ ID** (この値は、**Azure portal** >  **[Azure Active Directory]**  >  **[プロパティ]**  >  **[ディレクトリ ID]** にあります)
+      1. 値のデータ: Azure AD インスタンスの GUID または **テナント ID** (この値は、**Azure portal** >  **[Azure Active Directory]**  >  **[プロパティ]**  >  **[テナント ID]** にあります)
    1. **[OK]**
 1. [レジストリ] を右クリックして、 **[新規]**  >  **[レジストリ項目]** を選択します
    1. **[全般]** タブで、次を構成します

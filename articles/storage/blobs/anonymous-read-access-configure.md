@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 31812a7b2dddad474ab5cd422a15f6e5368dba5c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7050718955c9a2651ecf8c646ceae7c5bb8cdd02
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774631"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319012"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する
 
@@ -195,13 +195,13 @@ BLOB パブリック アクセスを許可または禁止するには、Azure St
 Azure portal で 1 つ以上の既存のコンテナーのパブリック アクセス レベルを更新するには、次の手順を実行します。
 
 1. Azure portal でご利用のストレージ アカウントの概要に移動します。
-1. メニュー ブレードの **[BLOB サービス]** で、 **[コンテナー]** を選択します。
+1. メニュー ブレードの **[データ ストレージ]** で、 **[BLOB コンテナー]** を選択します。
 1. パブリック アクセス レベルを設定するコンテナーを選択します。
 1. **[アクセス レベルの変更]** ボタンを使用して、パブリック アクセスの設定を表示します。
 1. **[パブリック アクセス レベル]** ドロップダウンから目的のパブリック アクセス レベルを選択し、[OK] ボタンをクリックして選択したコンテナーに変更を適用します。
 
-    ![ポータルでパブリック アクセス レベルを設定する方法を示すスクリーンショット](./media/anonymous-read-access-configure/configure-public-access-container.png)
-
+    :::image type="content" source="media/anonymous-read-access-configure/configure-public-access-container.png" alt-text="ポータルでパブリック アクセス レベルを設定する方法を示すスクリーンショット。" lightbox="media/anonymous-read-access-configure/configure-public-access-container.png":::
+    
 ストレージ アカウントのパブリック アクセスが禁止されている場合、コンテナーのパブリック アクセス レベルは設定できません。 コンテナーのパブリック アクセス レベルを設定しようとすると、アカウントでパブリック アクセスが禁止されているため、設定が無効になります。
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="パブリック アクセスが禁止されているときはコンテナーのパブリック アクセス レベルの設定がブロックされることを示すスクリーンショット":::

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 371f902cafae7fe396a34e04d7fcc432c1934d61
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 767b8b585b69ad35cd0dbd47f2d10dcdc4ecf6dd
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865139"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180764"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -41,6 +41,7 @@ ms.locfileid: "107865139"
 |[Azure Monitor ですべてのリージョンからアクティビティ ログを収集する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41388f1c-2db0-4c25-95b2-35d7f5ccbfa9) |このポリシーでは、グローバルを含め、Azure がサポートするすべてのリージョンからアクティビティをエクスポートしない Azure Monitor ログ プロファイルを監査します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_CaptureAllRegions.json) |
 |[Azure Monitor ソリューション "Security and Audit" をデプロイする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |このポリシーでは、Security and Audit が確実にデプロイされるようにします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure サブスクリプションにはアクティビティ ログのログ プロファイルが必要](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |このポリシーでは、アクティビティ ログのエクスポートがログ プロファイルで有効になっているかどうかを確認します。 また、ログをストレージ アカウントまたはイベント ハブにエクスポートするためのログ プロファイルが作成されていないかどうかを監査します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
+|[指定された Log Analytics ワークスペースにストリーミングするように Azure アクティビティ ログを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2465583e-4e78-4c15-b6be-a36cbc7c8b0f) |Azure Activity の診断設定をデプロイして、サブスクリプションの監査ログを Log Analytics ワークスペースにストリーミングし、サブスクリプション レベルのイベントを監視します |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DataConnectorsAzureActivity.json) |
 |[レプリケーションを有効にして、仮想マシンでのディザスター リカバリーを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac34a73f-9fa5-4067-9247-a3ecae514468) |ディザスター リカバリー構成のない仮想マシンは、障害やその他の中断に対して脆弱です。 仮想マシンでディザスター リカバリーがまだ構成されていない場合は、事前設定された構成を使用してレプリケーションを有効にすることで同じことが開始され、ビジネス継続性が促進されます。 ディザスター リカバリーの詳細については、[https://aka.ms/asr-doc](https://aka.ms/asr-doc) にアクセスしてください。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AzureSiteRecovery-Replication-Policy.json) |
 |[デプロイ - Azure Security Center アラートの抑制ルールを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F80e94a21-c6cd-4c95-a2c7-beb5704e61c0) |管理グループまたはサブスクリプションに対して抑制ルールをデプロイして Azure Security Center アラートを抑制し、アラート疲れを軽減します。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_SuppressionRulesForAlerts_Deploy.json) |
 |[Azure Security Center データのイベント ハブへのエクスポートをデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdfcce10-4578-4ecd-9703-530938e4abcb) |Azure Security Center データのイベント ハブへのエクスポートを有効にします。 このポリシーは、割り当てられたスコープに対する条件とターゲット イベント ハブを使用して、イベント ハブ構成へのエクスポートをデプロイします。 新しく作成されたサブスクリプションにこのポリシーをデプロイするには、[コンプライアンス] タブを開き、該当する準拠していない割り当てを選択して、修復タスクを作成します。 |deployIfNotExists |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ExportToEventHubAzureSecurityCenterAlertsAndRecommendations_Deploy.json) |

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: fb5f00cf2e7078ab8d85f0ac1c2a2d54be907f89
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5b0fcbabfa97312622bc13fbfa4e4bba4b0d847e
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127175"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227337"
 ---
-# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Linux 仮想マシン スケール セットの Azure ハイブリッド特典 (パブリック プレビュー)
+# <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Linux 仮想マシン スケール セットの Azure ハイブリッド特典
 
-**Linux 仮想マシン スケール セットの Azure ハイブリッド特典は、現在パブリック プレビューの段階です**。 AHB 特典により、RHEL および SLES [仮想マシン スケール セット](./overview.md)を実行するためのコストを削減できます。
+**Linux 仮想マシン スケール セットの Azure ハイブリッド特典は現在、一般提供の段階です**。 AHB 特典により、RHEL および SLES [仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)を実行するためのコストを削減できます。
 
 この特典により、スケール セットのインフラストラクチャ コストのみ支払うだけで済みます。 この特典は、すべての RHEL および SLES Marketplace の従量課金制 (PAYG) イメージに利用できます。
 
@@ -71,7 +71,23 @@ SUSE の特典の使用を開始するには:
 
 
 ## <a name="enable-and-disable-the-benefit-on-azure-portal"></a>Azure portal で特典を有効または無効にする 
-仮想マシン スケール セットに対して AHB を有効または無効にするためのポータル操作は、**現在使用できません**。
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation"></a>作成中に特典を有効にする Azure portal の例:
+1. [Microsoft Azure portal](https://portal.azure.com/) に移動します。
+1. ポータルの [仮想マシン スケール セットの作成] ページに移動します。
+ ![VMSS の作成中の AHB](./media/azure-hybrid-benefit-linux/create-vmss-ahb.png)
+1. AHB 変換を有効にし、クラウド アクセス ライセンスを使用するためのチェックボックスをオンにします。
+ ![VMSS の作成中の AHB のチェックボックス](./media/azure-hybrid-benefit-linux/create-vmss-ahb-checkbox.png)
+1. 次の一連の手順に従って、仮想マシン スケール セットを作成します。
+1. **[構成]** ブレードを確認すると、オプションが有効になっていることがわかります。 
+![作成後の AHB OS ブレード](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-virtual-machine-scale-set"></a>既存の仮想マシン スケール セットの特典を有効にする Azure portal の例:
+1. [Microsoft Azure portal](https://portal.azure.com/) に移動します。
+1. 変換を適用する [仮想マシン スケール セット] ページを開きます。
+1. 左側の **[オペレーティング システム]** オプションにアクセスします。 [ライセンス] セクションが表示されます。 AHB 変換を有効にするには、[はい] ラジオ ボタンをオンにし、[確認] チェックボックスをオンにします。
+![作成後の AHB の [構成] ブレード](./media/azure-hybrid-benefit-linux/create-vmss-ahb-os-blade.png)
+
+
 
 ## <a name="enable-and-disable-the-benefit-using-azure-cli"></a>Azure CLI を使用して特典を有効または無効にする
 

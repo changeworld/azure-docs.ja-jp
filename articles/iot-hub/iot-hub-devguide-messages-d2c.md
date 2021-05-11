@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 545272b15862ebab81d839cb8a885560f8920b76
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642508"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286314"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -59,7 +59,7 @@ IoT Hub は JSON 形式だけでなく、[Apache Avro](https://avro.apache.org/)
 
 このエンコード形式は、Blob Storage エンドポイントが構成されている場合にのみ設定できます。既存のエンドポイントに応じて編集することはできません。 既存のエンドポイントのエンコード形式を切り替えるには、カスタム エンドポイントを削除してから必要な形式で再作成する必要があります。 便利な方法の 1 つとして、目的のエンコード形式で新しいカスタム エンドポイントを作成し、そのエンドポイントに並列ルートを追加する方法があります。 これにより、既存のエンドポイントを削除する前にデータを確認できます。
 
-エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、Azure portal、[Azure CLI](/cli/azure/iot/hub/routing-endpoint)、または [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint) を使用して選択できます。 次の画像は、Azure portal でエンコード形式を選択する方法を示しています。
+エンコード形式は、IoT Hub の作成または更新 REST API (具体的には [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties))、[Azure portal](https://portal.azure.com)、[Azure CLI](/cli/azure/iot/hub/routing-endpoint)、または [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint) を使用して選択できます。 次の画像は、Azure portal でエンコード形式を選択する方法を示しています。
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 

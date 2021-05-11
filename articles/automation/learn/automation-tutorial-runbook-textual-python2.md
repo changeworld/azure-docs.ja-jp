@@ -1,17 +1,17 @@
 ---
 title: Azure Automation で Python Runbook を作成する
-description: この記事では、シンプルな Python Runbook を作成、テスト、発行する方法を説明します。
+description: この記事では、簡単な Python Runbook を Azure Automation アカウントで作成、テスト、発行する方法を説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/19/2020
+ms.date: 04/28/2021
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
-ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84b448b6a31dc9bdbad1b604a0a385aeae742b53
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87847926"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205019"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>チュートリアル:Python Runbook を作成する
 
@@ -31,8 +31,10 @@ ms.locfileid: "87847926"
 このチュートリアルを完了するには、以下が必要です。
 
 - Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-- [Automation アカウント](../index.yml)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
-- Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
+
+- [Automation アカウント](../automation-security-overview.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。 このチュートリアルには[実行アカウント](../automation-security-overview.md#run-as-accounts)が必要です。 
+
+- Azure 仮想マシン。 このチュートリアルでは、このマシンを停止して起動するため、運用 VM を使用しないでください。
 
 ## <a name="create-a-new-runbook"></a>新しい Runbook の作成
 
@@ -79,7 +81,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 
 ## <a name="publish-and-start-the-runbook"></a>Runbook を発行して開始する
 
-前の手順で作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
+作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 
@@ -110,13 +112,13 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 ## <a name="add-authentication-to-manage-azure-resources"></a>Azure リソースを管理するための認証を追加する
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。
-これを行うには、スクリプトで、ご利用の Automation アカウントの資格情報を使用して認証する必要があります。 [Azure Automation ユーティリティ パッケージ](https://github.com/azureautomation/azure_automation_utility)を使用して、Azure リソースの認証とやりとりをより容易にできます。
+そのためにはスクリプトが、ご利用の Automation アカウントの実行アカウントの資格情報を使用して認証を行う必要があります。 [Azure Automation ユーティリティ パッケージ](https://github.com/azureautomation/azure_automation_utility)を使用して、Azure リソースの認証とやりとりをより容易にできます。
 
 > [!NOTE]
-> Automation アカウントは、実行証明書を作成するために、サービス プリンシパルの機能を使用して作成されている必要があります。
-> ご利用の Automation アカウントがサービス プリンシパルを使用せずに作成されたものである場合は、[Python 用 Azure 管理ライブラリを使用した認証](/azure/python/python-sdk-azure-authenticate)に関するページで説明されているようにして認証することができます。
+> Automation アカウントは、実行証明書を作成するために、実行アカウントを使用して作成されている必要があります。
+> ご利用の Automation アカウントが実行アカウントを使用せずに作成されたものである場合は、[Python 用 Azure 管理ライブラリを使用した認証](/azure/python/python-sdk-azure-authenticate)に関するページや[実行アカウントを作成する方法](../create-run-as-account.md)に関するページで説明されているようにして認証することができます。
 
-1. MyFirstRunbook-Python のウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。
+1. **[MyFirstRunbook-Python]** ペインで **[編集]** をクリックして、テキスト エディターを開きます。
 
 2. Azure への認証に、次のコードを追加します。
 
@@ -206,7 +208,7 @@ async_vm_start = compute_client.virtual_machines.start(
 async_vm_start.wait()
 ```
 
-Python Runbook を (テスト ペイン上で、または発行済みの Runbook として) 開始すると、[Runbook の開始] ページの **[パラメーター]** でパラメーターの値を入力できます。
+Python Runbook を ( **[テスト]** ペイン上で、または発行済みの Runbook として) 開始すると、 **[Runbook の開始]** ページの **[パラメーター]** でパラメーターの値を入力できます。
 
 最初のボックスに値を入力し始めると、2 番目のボックスが表示され、順次必要に応じた数のパラメーター値を入力できます。
 
@@ -244,9 +246,7 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>次のステップ
 
-- PowerShell Runbook の使用を開始するには、「[PowerShell Runbook を作成する](automation-tutorial-runbook-textual-powershell.md)」を参照してください。
-- グラフィカル Runbook の使用を開始するには、「[グラフィカル Runbook を作成する](automation-tutorial-runbook-graphical.md)」を参照してください。
-- PowerShell Workflow Runbook の使用を開始するには、「[PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)」を参照してください。
 - Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](../automation-runbook-types.md)」を参照してください。
 - Python を使用した Azure の開発については、「[Python 開発者向けの Azure](/azure/python/)」をご覧ください。
-- サンプル Python 2 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) を参照してください。
+
+- サンプル Python 2 Runbook を表示するには、[Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) リポジトリを参照してください。

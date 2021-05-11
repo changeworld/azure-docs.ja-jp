@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a7d26eebb24662a448d8ccb44d037e7706fe776b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cc9c0825761099f7f5f665cd3a7f27c88f9cdbc
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99832846"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325321"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>チュートリアル:デバイス グループを使用してデバイス テレメトリを分析する
 
@@ -37,15 +37,13 @@ ms.locfileid: "99832846"
 
 :::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="5 つのシミュレートされたセンサー コントローラー デバイスを示すスクリーンショット":::
 
-シミュレートされたセンサー デバイスの 4 つには、 **[デバイスの管理]** ビューを使用して、顧客名を「*Contoso*」に設定します。
+シミュレートされたセンサー デバイスの 4 つに対し、 **[デバイスの管理]** ビューを使用して、顧客名を *Contoso* に設定し、 **[保存]** を選択します。
 
 :::image type="content" source="media/tutorial-use-device-groups/customer-name.png" alt-text="[顧客名] クラウド プロパティの設定方法を示すスクリーンショット":::
 
 ## <a name="create-a-device-group"></a>デバイス グループを作成する
 
-デバイス グループを作成するには、次の手順を実行します。
-
-1. 左側のペインで **[デバイス グループ]** を選択します。
+1. 左側のペインで **[デバイス グループ]** を選択して、デバイス グループ ページに移動します。
 
 1. **[+新規]** を選択します。
 

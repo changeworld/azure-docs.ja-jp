@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 423e08511003c8ba1f810bd024d0e253df612473
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588379"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293280"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -62,7 +62,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `version` | ドキュメント マークアップの解釈に使用される SSML 仕様のバージョンを指定します。 現行バージョンは 1.0 です。 | 必須 |
-| `xml:lang` | ルート ドキュメントの言語を指定します。 この値には、小文字、2 文字の言語コード (`en` など)、または言語コードと大文字の国/地域 (`en-US` など) を含めることができます。 | 必須 |
+| `xml:lang` | ルート ドキュメントの言語を指定します。 この値には、小文字、2 文字の言語コード (`en` など)、または言語コードと大文字の国や地域 (`en-US` など) を含めることができます。 | 必須 |
 | `xmlns` | SSML のドキュメントのマークアップ ボキャブラリ (要素型と属性名) を定義するドキュメントへの URI を指定します。 現在の URI は http://www.w3.org/2001/10/synthesis です。 | 必須 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>テキスト読み上げのための音声を選択する
@@ -208,6 +208,9 @@ speechConfig!.setPropertyTo(
 * `zh-CN-XiaoxuanNeural` (プレビュー)
 * `zh-CN-XiaoruiNeural` (プレビュー)
 
+> [!NOTE]
+> プレビュー段階の音声は 3 つのリージョン (米国東部、西ヨーロッパ、東南アジア) でのみ使用できます。
+
 ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
 
 話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、女性の音声を模倣するために、男性の音声のピッチを上げ、イントネーションを変更することはできますが、音声名は変更されません。 現在、ロールの調整は、次の中国語 (標準、簡体字) のニューラル音声でサポートされています。
@@ -228,7 +231,7 @@ speechConfig!.setPropertyTo(
 <mstts:express-as role="string" style="string"></mstts:express-as>
 ```
 > [!NOTE]
-> 現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。
+> 現時点では、`styledegree` でサポートされているのは、中国語 (標準、簡体字) のニューラル音声のみです。 `role` では、zh-CN-XiaomoNeural と zh-CN-XiaoxuanNeural のみがサポートされています。 
 
 **属性**
 
@@ -277,7 +280,8 @@ speechConfig!.setPropertyTo(
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
 |                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
 |                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。          |
-| `zh-CN-YunxiNeural`     | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+|   `zh-CN-YunxiNeural`   | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
+|                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
 |                         | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
@@ -294,23 +298,25 @@ speechConfig!.setPropertyTo(
 |                         | `style="embarrassed"`     | 話者が不快感を感じているときの、自信がなく気後れしている語調を表します。   |
 |                         | `style="affectionate"`    | 高いピッチと音声エネルギーにより、温かみのある優しい語調を表します。 話者は、聞き手の注目を集める状態にあります。 多くの場合、話者の「パーソナリティ」が実際に聞き手の心を引きつけています。          |
 |                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
-| `zh-CN-XiaomoNeural`    | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+| `zh-CN-XiaomoNeural`    | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。                         |
+|                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                 |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
-|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
-|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
-|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                       |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。         |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。  |
 |                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
 |                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
-| `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                         |
+| `zh-CN-XiaoxuanNeural`  | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。                         |
+|                         | `style="cheerful"`        | 高いピッチと音声エネルギーにより、陽気で熱狂的な語調を表します                              |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
-|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
-|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。              |
-|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。    |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                       |
+|                         | `style="disgruntled"`     | 軽蔑的で不満のある語調を表します。 この感情の音声は、不満と軽蔑を表します。         |
+|                         | `style="serious"`         | 厳しく威圧するような語調を表します。 話者は、多くの場合、安定したリズムで、堅苦しい緊張感の高い話し方をします。  |
 |                         | `style="depressed"`       | ピッチとエネルギーの低い、憂鬱で沈んだ語調を表します。    |
 |                         | `style="gentle"`          | 低いピッチと音声エネルギーにより、穏やかで礼儀正しく心地よい語調を表します         |
-| `zh-CN-XiaoruiNeural`    | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。            |
+| `zh-CN-XiaoruiNeural`   | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。         |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
-|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                          |
+|                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                       |
 
 このテーブルを使用して、サポートされているロールとその定義を確認します。
 
@@ -477,7 +483,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 `ph` 要素は、SSML ドキュメントの発音のために使用します。 `ph` 要素に含めることができるのはテキストのみで、その他の要素を含めることはできません。 常に人間が判読できる音声をフォールバックとして提供します。
 
-音標文字は音素で構成され、英字、数字、または文字から成り、場合によってはその組み合わせで構成されます。 それぞれの音素は、音声の一意の音を示します。 これは、文字が複数の話された音を表す場合があるラテン文字とは対照的です。 "candy" と "cease" という単語の文字 "c" の異なる発音や、"thing" と "those" の文字の組み合わせ "th" の異なる発音を考えてみてください。
+音標文字は音素で構成され、英字、数字、または文字から成り、場合によってはその組み合わせで構成されます。 それぞれの音素は、音声の一意の音を示します。 これは、1 つの文字が複数の発音を表す場合があるラテン文字とは対照的です。 "candy" と "cease" という単語の文字 "c" の異なる発音や、"thing" と "those" の文字の組み合わせ "th" の異なる発音を考えてみてください。
 
 > [!NOTE]
 > 現時点では、これらの 5 つの音声 (et-EE-AnuNeural、ga-IE-OrlaNeural、lt-LT-OnaNeural、lv-LV-EveritaNeural、および mt-MT-GarceNeural) では音素タグはサポートされていません。
@@ -492,7 +498,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `alphabet` | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できる可能性のあるアルファベットは次のとおりです。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 </a></li><li>`sapi` &ndash; [Speech サービス発音アルファベット](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 汎用音素セット</a></li></ul><br>アルファベットは、要素内の `phoneme` にのみ適用されます。 | 省略可能 |
+| `alphabet` | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できるアルファベットは次のとおりです。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 </a></li><li>`sapi` &ndash; [Speech サービス発音アルファベット](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 汎用音素セット</a></li></ul><br>アルファベットは、要素内の `phoneme` にのみ適用されます。 | 省略可能 |
 | `ph` | `phoneme` 要素内の単語の発音を指定する音素を含む文字列。 指定した文字列に認識されない音素が含まれている場合、テキスト読み上げ (TTS) サービスは SSML ドキュメント全体を拒否し、ドキュメントに指定されている音声出力を生成しません。 | 音素を使用する場合は必須です。 |
 
 **使用例**
@@ -665,12 +671,12 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、「 `<prosody pitch="600Hz">some text</prosody>` 」のように入力します。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、`<prosody pitch="+80Hz">some text</prosody>` や `<prosody pitch="-2st">some text</prosody>` などです。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul> | 省略可能 |
+| `pitch` | テキストのベースラインのピッチを示します。 ピッチは次のように表すことができます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、「 `<prosody pitch="600Hz">some text</prosody>` 」のように入力します。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、`<prosody pitch="+80Hz">some text</prosody>` や `<prosody pitch="-2st">some text</prosody>` などです。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul> | 省略可能 |
 | `contour` |ニューラル音声と標準音声の両方で音調がサポートされるようになりました。 音調とは音の高さの変化です。 この変化は、音声出力において指定の時間位置にあるターゲットの配列として表わされます。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | `range` | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
-| `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
+| `rate` | テキストの読み上げ速度を示します。 `rate` は次のように表すことができます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *0.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
 | `duration` | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 duration では、標準の音声のみがサポートされます。| 省略可能 |
-| `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
+| `volume` | 読み上げている音声の音量レベルを示します。 音量は次のように表すことができます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10、-5.5。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する
 
@@ -749,7 +755,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 | 属性 | 説明 | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 要素のテキストのコンテンツの種類を示します。 種類の一覧については、次の表を参照してください。 | 必須 |
-| `format` | あいまいな形式を持つ可能性のあるコンテンツの種類に対して、要素のテキストの正確な書式設定に関する追加情報を提供します。 SSML では、それらを使用するコンテンツの種類の形式が定義されます (次の表を参照)。 | 省略可能 |
+| `format` | あいまいな形式を持つ可能性のあるコンテンツ タイプに対して、要素のテキストの正確な書式設定に関する追加情報を提供します。 SSML では、それらを使用するコンテンツの種類の形式が定義されます (次の表を参照)。 | 省略可能 |
 | `detail` | 読み上げられる詳細のレベルを示します。 たとえば、この属性では、音声合成エンジンが句読点を発音するように要求する場合があります。 `detail` に対して定義されている標準値はありません。 | 省略可能 |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
@@ -765,12 +771,12 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 | `digits`, `number_digit` | | テキストは、個別の数字のシーケンスとして読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9"。 |
 | `fraction` | | テキストは分数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"three eighths of an inch" (1 インチの 8 分の 3)。 |
 | `ordinal` | | テキストは序数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"3 つ目のオプションを選択します"。 |
-| `telephone` | | テキストは電話番号として読み上げられます。 `format` 属性には、国番号を表す数字を含めることができます。 たとえば、米国の場合は "1"、イタリアの場合は "39" になります。 音声合成エンジンでは、この情報を使用して、電話番号の発音するガイドにすることができます。 電話番号には、国番号を含めることもできます。その場合は、`format` の国番号よりも優先されます。 音声合成エンジンでは次のように発音されます。<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"My number is area code eight eight eight five five five one two one two" (私の番号は市外局番 888 555 1212 です)。 |
+| `telephone` | | テキストは電話番号として読み上げられます。 `format` 属性には、国番号を表す数字を含めることができます。 たとえば、米国の場合は "1"、イタリアの場合は "39" になります。 音声合成エンジンでは、この情報を電話番号の発音のガイドに使用することができます。 電話番号には、国番号を含めることもできます。その場合は、`format` の国番号よりも優先されます。 音声合成エンジンでは次のように発音されます。<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"My number is area code eight eight eight five five five one two one two" (私の番号は市外局番 888 555 1212 です)。 |
 | `time` | hms12、hms24 | テキストは時刻として読み上げられます。 `format` 属性では、時刻が 12 時間形式 (hms12) または 24 時間形式 (hms24) のいずれを使用するかを指定します。 時間、分、秒を表す数字を区切るには、コロンを使用します。 有効な時刻の例を次に示します。12:35、1:14:32、08:15、02:50:45。 音声合成エンジンでは次のように発音されます。<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"The train departs at four A M" (この電車は午前 4 時に発車します)。 |
 
 **使用方法**
 
-`say-as` 要素にはテキストのみを含めることができます。
+`say-as` 要素に含めることができるのはテキストのみです。
 
 **例**
 
@@ -789,7 +795,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 ## <a name="add-recorded-audio"></a>録音されたオーディオを追加する
 
-`audio` は、MP3 オーディオを SSML ドキュメントに挿入できるようにする省略可能な要素です。 オーディオ要素の本文には、オーディオ ファイルが使用不可の場合や再生できない場合に読み上げられるプレーン テキストや SSML マークアップが含まれていることがあります。 さらに、`audio` 要素には、テキストと、要素 `audio`、`break`、`p`、`s`、`phoneme`、`prosody`、`say-as`、および `sub` を含めることができます。
+`audio` は、MP3 オーディオを SSML ドキュメントに挿入できるようにする省略可能な要素です。 オーディオ要素の本文には、オーディオ ファイルが使用不可の場合や再生できない場合に読み上げられるプレーン テキストや SSML マークアップを含めることができます。 さらに、`audio` 要素には、テキストと、要素 `audio`、`break`、`p`、`s`、`phoneme`、`prosody`、`say-as`、および `sub` を含めることができます。
 
 SSML ドキュメントに含まれるオーディオは、次の要件を満たしている必要があります。
 
@@ -909,7 +915,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-詳細については、<a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a> を参照してください。
+詳細については、<a href="/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkreached" target="_blank"> `BookmarkReached` </a> を参照してください。
 
 ```csharp
 synthesizer.BookmarkReached += (s, e) =>
@@ -928,7 +934,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-詳細については、<a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a> を参照してください。
+詳細については、<a href="/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a> を参照してください。
 
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
@@ -948,7 +954,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="java"></a>[Java](#tab/java)
 
-詳細については、<a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a> を参照してください。
+詳細については、<a href="/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer.bookmarkReached#com_microsoft_cognitiveservices_speech_SpeechSynthesizer_BookmarkReached" target="_blank"> `BookmarkReached` </a> を参照してください。
 
 ```java
 synthesizer.BookmarkReached.addEventListener((o, e) -> {
@@ -966,7 +972,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="python"></a>[Python](#tab/python)
 
-詳細については、<a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a> を参照してください。
+詳細については、<a href="/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a> を参照してください。
 
 ```python
 # The unit of evt.audio_offset is tick (1 tick = 100 nanoseconds), divide it by 10,000 to convert to milliseconds.
@@ -982,7 +988,7 @@ Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-詳細については、<a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached`</a> を参照してください。
+詳細については、<a href="/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached`</a> を参照してください。
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
@@ -998,7 +1004,7 @@ synthesizer.bookmarkReached = function (s, e) {
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
 
-詳細については、<a href="https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a> を参照してください。
+詳細については、<a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a> を参照してください。
 
 ```objectivec
 [synthesizer addBookmarkReachedEventHandler: ^ (SPXSpeechSynthesizer *synthesizer, SPXSpeechSynthesisBookmarkEventArgs *eventArgs) {

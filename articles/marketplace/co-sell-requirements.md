@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: 3fc50ef5a50c2c499b1c886bcf5aa73b11ba7c45
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 04/16/2021
+ms.openlocfilehash: 7a5e4375ebe289bb5ae012f94ba9dd050563bbbb
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133351"
+ms.locfileid: "108209861"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
@@ -30,6 +30,9 @@ ms.locfileid: "108133351"
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>共同販売の準備完了ステータスの要件
+
+> [!NOTE]
+> コマーシャル マーケットプレース開発者プログラムを通じてパートナー センターで公開されるオファーは、共同販売の準備完了の要件が満たされている場合、共同販売の準備完了ステータスを取得する資格を有します。 Office のアプリやアドインは資格外です (例: Teams、SharePoint ソリューション、Outlook、Excel)。
 
 プランが共同販売の準備完了ステータスになるには、次の要件を満たす必要があります。
 

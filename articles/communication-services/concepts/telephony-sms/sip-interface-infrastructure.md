@@ -1,6 +1,6 @@
 ---
-title: SIP インターフェイスのインフラストラクチャ要件 - Azure Communication Services
-description: Azure Communication Services SIP インターフェイス構成のインフラストラクチャ要件を確認します
+title: Azure 直接ルーティングのインフラストラクチャ要件 - Azure Communication Services
+description: Azure Communication Services 直接ルーティング構成のインフラストラクチャ要件を確認します
 author: boris-bazilevskiy
 manager: nmurav
 services: azure-communication-services
@@ -8,34 +8,34 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ede650ae072ef53ed40a9372a292ab69fe8cc1af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f6e5aceaa6824d4bb6fd1bf938973c79cb5847e1
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492729"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324589"
 ---
-# <a name="sip-interface-infrastructure-requirements"></a>SIP インターフェイスのインフラストラクチャ要件 
+# <a name="azure-direct-routing-infrastructure-requirements"></a>Azure 直接ルーティングのインフラストラクチャ要件 
 
 [!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
  
-この記事では、SIP インターフェイスのデプロイを計画する際に留意すべきインフラストラクチャ、ライセンス、セッション ボーダー コントローラー (SBC) 接続について詳しく説明します。
+この記事では、Azure 直接ルーティングのデプロイを計画する際に留意すべきインフラストラクチャ、ライセンス、セッション ボーダー コントローラー (SBC) 接続について詳しく説明します。
 
 
 ## <a name="infrastructure-requirements"></a>インフラストラクチャの要件
-次の表は、SIP インターフェイスをデプロイするためのインフラストラクチャ要件として、サポートされる SBC やドメインなど、各種ネットワーク接続の要件が記載されています。  
+Azure 直接ルーティングをデプロイするために必要な、サポートされている SBC のインフラストラクチャ要件、ドメイン、およびその他のネットワーク接続要件を次の表に示します。  
 
 |インフラストラクチャ要件|必要なもの|
 |:--- |:--- |
 |セッション ボーダー コントローラー (SBC)|サポートされている SBC。 詳細については、[サポートされる SBC](#supported-session-border-controllers-sbcs) に関するページを参照してください。|
-|SBC に接続されたテレフォニー トランク|SBC に接続された 1 つまたは複数のテレフォニー トランク。 SBC の片側は、SIP インターフェイスを介して Azure Communication Services に接続されます。 PBX や Analog Telephony Adapter など、サードパーティのテレフォニー エンティティに SBC を接続することもできます。 SBC に接続された任意の PSTN 接続オプションを使用できます (SBC に対する PSTN トランクの構成については、SBC ベンダーまたはトランク プロバイダーにお問い合わせください)。|
+|SBC に接続されたテレフォニー トランク|SBC に接続された 1 つまたは複数のテレフォニー トランク。 一方のエンドで、SBC は直接ルーティングを介して Azure Communication Service に接続されます。 PBX や Analog Telephony Adapter など、サードパーティのテレフォニー エンティティに SBC を接続することもできます。 SBC に接続された任意の PSTN 接続オプションを使用できます (SBC に対する PSTN トランクの構成については、SBC ベンダーまたはトランク プロバイダーにお問い合わせください)。|
 |Azure サブスクリプション|ACS リソースを作成したり、SBC の構成と SBC への接続を作成したりする際に使用する Azure サブスクリプション。|
 |Communication Services のアクセス トークン|電話をかけるには、`voip` スコープの有効なアクセス トークンが必要です。 「[アクセス トークン](../identity-model.md#access-tokens)」を参照してください。|
 |SBC のパブリック IP アドレス|SBC への接続に使用できるパブリック IP アドレス。 SBC の種類によっては NAT を使用できます。|
 |SBC の完全修飾ドメイン名 (FQDN)|SBC の FQDN。この FQDN のドメイン部分は、Microsoft 365 や Office 365 組織の登録済みドメインとは一致しません。 詳細については、「[SBC ドメイン名](#sbc-domain-names)」を参照してください。|
 |SBC のパブリック DNS エントリ |SBC の FQDN をパブリック IP アドレスにマップするパブリック DNS エントリ。 |
-|SBC の信頼済みの公開証明書 |SIP インターフェイスとのすべての通信に使用される SBC の証明書。 詳細については、「[SBC の信頼済みの公開証明書](#public-trusted-certificate-for-the-sbc)」を参照してください。|
+|SBC の信頼済みの公開証明書 |Azure 直接ルーティングとのすべての通信に使用される SBC の証明書。 詳細については、「[SBC の信頼済みの公開証明書](#public-trusted-certificate-for-the-sbc)」を参照してください。|
 |ファイアウォールの IP アドレスとポート (SIP シグナリングとメディア用) |SBC は、クラウド内の次のサービスと通信を行います。<br/><br/>SIP プロキシ: シグナリングを処理します<br/>メディア プロセッサ: メディアを処理します<br/><br/>Microsoft Cloud では、この 2 つのサービスに別々の IP アドレスが割り当てられます。この点については、このドキュメントの中で後述します。
 
 
@@ -43,7 +43,7 @@ ms.locfileid: "103492729"
 
 Office 365 を利用していない場合は、公開証明書を取得できる任意のドメイン名を使用できます。
 
-次の表では、テナント用に登録されている DNS 名の例、その名前が SBC の完全修飾ドメイン名 (FQDN) として使用できるかどうか、および有効な FQDN 名の例を示しています。
+次の表では、テナント用に登録されている DNS 名の例、その名前を SBC の完全修飾ドメイン名 (FQDN) として使用できるかどうか、および有効な FQDN 名の例を示しています。
 
 |DNS name|SBC の FQDN として使用できるか|FQDN 名の例|
 |:--- |:--- |:--- |
@@ -68,7 +68,7 @@ SBC の証明書は、証明書署名要求 (CSR) を生成することによっ
 
 証明書には、共通名 (CN) またはサブジェクトの別名 (SAN) フィールドとして SBC FQDN が必要です。 証明書は、中間プロバイダーからではなく証明機関から直接発行してもらう必要があります。
 
-また、Communication Services の SIP インターフェイスは、CN や SAN におけるワイルドカードをサポートしています。ワイルドカードは標準の [RFC HTTP OVER TLS](https://tools.ietf.org/html/rfc2818#section-3.1) に準拠している必要があります。 
+また、Communication Services の直接ルーティングでは、CN や SAN におけるワイルドカードがサポートされています。ワイルドカードは標準の [RFC HTTP Over TLS](https://tools.ietf.org/html/rfc2818#section-3.1) に準拠している必要があります。 
 
 たとえば、`\*.contoso.com` は、SBC FQDN `sbc.contoso.com` と一致しますが、`sbc.test.contoso.com` とは一致しません。
 
@@ -103,7 +103,7 @@ Microsoft はお客様からのご要望に基づき、さらなる証明機関�
 
 ## <a name="sip-signaling-fqdns"></a>SIP シグナリング: FQDN 
 
-次の 3 つの FQDN が、Communication Services の SIP インターフェイスの接続ポイントとなります。
+次の 3 つの FQDN が、Communication Services の直接ルーティングの接続ポイントとなります。
 
 - **sip.pstnhub.microsoft.com** - グローバル FQDN。最初に試行される必要があります。 この名前の解決要求を SBC が送信すると、SBC に割り当てられたプライマリ Azure データセンターを指す IP アドレスが Microsoft Azure DNS サーバーから返されます。 この割り当ては、データセンターのパフォーマンス メトリックと SBC との地理的近接性に基づいています。 返される IP アドレスは、プライマリ FQDN に相当します。
 - **sip2.pstnhub.microsoft.com** - 第 2 の FQDN。優先度が 2 番目のリージョンに地理的にマップされます。
@@ -129,7 +129,7 @@ Microsoft はお客様からのご要望に基づき、さらなる証明機関�
 
 ## <a name="sip-signaling-ports"></a>SIP シグナリング: Port
 
-Communication Services の SIP インターフェイスには、次のポートを使用します。
+Communication Services の Azure 直接ルーティングには、次のポートを使用します。
 
 |トラフィック|ソース|終了|送信元ポート|宛先ポート|
 |:--- |:--- |:--- |:--- |:--- |
@@ -175,7 +175,7 @@ SIP プロキシとメディア プロセッサの両方のコンポーネント
 ### <a name="leg-between-sbc-and-cloud-media-processor-or-microsoft-teams-client"></a>SBC とクラウド メディア プロセッサ (または Microsoft Teams クライアント) の区間
 メディア バイパスのケースとメディア バイパスでないケースの両方が対象となります。
 
-セッション ボーダー コントローラーとクラウド メディア プロセッサの区間のダイレクト ルーティング インターフェイスでは、次のコーデックを使用できます。
+セッション ボーダー コントローラーとクラウド メディア プロセッサの区間の Azure 直接ルーティング インターフェイスでは、次のコーデックを使用できます。
 
 - SILK、G.711、G.722、G.729
 

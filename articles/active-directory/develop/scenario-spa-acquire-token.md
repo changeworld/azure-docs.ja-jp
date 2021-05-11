@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/20/2019
+ms.date: 04/2/2021
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d3fe7369d3463b8508f65345729898481815070f
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 2e4369c729fc5497f615f64c1f7235d19c293f98
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947575"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227742"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>シングルページ アプリケーション：API を呼び出すトークンを取得する
 
-MSAL.js を使用して API 用のトークンを取得するパターンは、`acquireTokenSilent` メソッドを使用してサイレント トークン要求を最初に試行することです。 このメソッドが呼び出されると、ライブラリでは、まずブラウザー ストレージ内のキャッシュに有効なトークンが存在するかどうかが確認され、それが返されます。 キャッシュ内に有効なトークンがない場合は、非表示の iframe から Azure Active Directory (Azure AD) にサイレント トークン要求が送信されます。 このメソッドを使用すれば、ライブラリでトークンを更新することもできます。 シングル サインオン セッションおよび Azure AD 内のトークン有効期間値の詳細については、[トークンの有効期間](active-directory-configurable-token-lifetimes.md)に関するページを参照してください。
+[MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js) を使用して API 用のトークンを取得するパターンは、`acquireTokenSilent` メソッドを使用してサイレント トークン要求を最初に試行することです。 このメソッドが呼び出されると、ライブラリでは、まずブラウザー ストレージ内のキャッシュに有効なトークンが存在するかどうかが確認され、それが返されます。 キャッシュに有効なトークンがない場合は、更新トークンを使用してトークンを取得しようとします。 更新トークンの 24 時間の有効期限が切れている場合、MSAL.js は非表示の iframe を開き、新しい認証コードをサイレントに要求します。この認証コードは新しい有効な更新トークンと交換されます。 シングル サインオン セッションおよび Azure AD 内のトークン有効期間値の詳細については、[トークンの有効期間](active-directory-configurable-token-lifetimes.md)に関するページを参照してください。
 
-Azure AD へのサイレント トークン要求は、Azure AD セッションの有効期限切れやパスワードの変更などの理由により、失敗する場合があります。 その場合は、トークンを取得するために対話型メソッド (ユーザーにプロンプトを表示する) のいずれかを呼び出すことができます。
+Azure AD へのサイレント トークン要求は、パスワードの変更や条件付きアクセス ポリシーの更新などの理由により、失敗する場合があります。  エラーは多くの場合、更新トークンの 24 時間の有効期限が切れ、[ブラウザーがサード パーティの Cookie をブロックしている](reference-third-party-cookies-spas.md)ことが原因で発生します。この場合、非表示の iframe を使用してユーザーの認証を継続することができなくなります。  このような場合は、トークンを取得するために、(ユーザーにプロンプトを表示できる) 対話型のメソッドのいずれかを呼び出す必要があります。
 
 * `acquireTokenPopup` を使用して[ポップアップ ウィンドウ](#acquire-a-token-with-a-pop-up-window)でトークンを取得する
 * `acquireTokenRedirect` を使用して[リダイレクト](#acquire-a-token-with-a-redirect)によりトークンを取得する

@@ -1,19 +1,19 @@
 ---
 title: 'P2S VPN と複数の認証の種類を使用して VNet に接続する: ポータル'
 titleSuffix: Azure VPN Gateway
-description: Azure portal で複数の認証の種類を使用して、P2S 経由で VNet に接続します。
+description: 複数の認証の種類を使用して、P2S 経由で VNet に接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: d405f4b10808b7d39c0d116f2c9006c85532b4f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8141d44aa4da394726d8c45a1f8514bdcaac09aa
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743845"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229380"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-multiple-authentication-types-azure-portal"></a>複数の認証の種類を使用して VNet へのポイント対サイト VPN 接続を構成する: Azure portal
 

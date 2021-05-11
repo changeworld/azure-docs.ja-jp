@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3dbdfb461bc2ae79439f39df3efbc2c564782110
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13587862f079c028a9848e36afcff74a9c725547
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548395"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207503"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証
 
@@ -24,30 +24,30 @@ ms.locfileid: "102548395"
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>クライアント プロファイルの操作
 
-接続するには、VNet への接続を必要とするすべてのコンピューターで Azure VPN クライアントをダウンロードしたうえで、それぞれに VPN クライアント プロファイルを構成する必要があります。 1 つのコンピューターでクライアント プロファイルを作成した後、それをエクスポートして、別のコンピューターにインポートすることもできます。
+VPN クライアント経由で VNet に接続するすべてのコンピューターについて、そのコンピューター用の Azure VPN クライアントをダウンロードし、VPN クライアント プロファイルを構成する必要があります。 複数のコンピューターを構成する場合は、1 台のコンピューターでクライアント プロファイルを作成してエクスポートし、他のコンピューターにインポートすることができます。
 
-### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
+### <a name="to-download-the-azure-vpn-client"></a>Azure VPN クライアントをダウンロードするには
 
-この[リンク](https://go.microsoft.com/fwlink/?linkid=2117554)を使用して、Azure VPN Client をダウンロードします。 Azure VPN クライアントにバックグラウンドで実行するためのアクセス許可があることを確認してください。 アクセス許可を確認または有効にするには、次の手順に従います。
+1. [Azure VPN クライアント](https://go.microsoft.com/fwlink/?linkid=2117554)をコンピューターにダウンロードします。
+1. Azure VPN クライアントにバックグラウンドで実行するためのアクセス許可があることを確認してください。 アクセス許可を確認して有効にするには、 **[スタート] -> [設定] -> [プライバシー] -> [バックグラウンド アプリ]** に移動します。
 
-1. [スタート] にアクセスし、[設定]-> [プライバシー]-> [バックグラウンド アプリ] を選択します。
-2. [バックグラウンド アプリ] で、 **[アプリのバックグラウンド実行を許可する]** がオンになっていることを確認します。
-3. [バックグラウンドでの実行を許可するアプリを選んでください] で、Azure VPN クライアントの設定を **[オン]** にします。
+   * **[バックグラウンド アプリ]** で、 **[アプリのバックグラウンド実行を許可する]** が **[オン]** になっていることを確認します。
+   * **[バックグラウンドでの実行を許可するアプリを選んでください]** で、 **[Azure VPN クライアント]** の設定を **[オン]** にします。
 
-  ![権限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+     ![バックグラウンド アプリを示すスクリーンショット。](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
 ### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>証明書ベースのクライアント プロファイルを作成するには
 
 証明書ベースのプロファイルを使用する場合は、クライアント コンピューターに適切な証明書がインストールされていることを確認してください。 証明書の詳細については、「[クライアント証明書のインストール](certificates-point-to-site.md)」を参照してください。
 
-  ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
+![証明書認証の認証を示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
 ### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>RADIUS クライアント プロファイルを作成するには
 
-  ![radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+![RADIUS 接続クライアント情報を示すスクリーンショット。](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
 > [!NOTE]
-> サーバー シークレットは、P2S VPN クライアント プロファイルでエクスポートできます。  クライアント プロファイルをエクスポートする手順については、[こちら](about-vpn-profile-download.md)を参照してください。
+> サーバー シークレットは、P2S VPN クライアント プロファイルでエクスポートできます。 クライアント プロファイルをエクスポートするには、[ユーザー VPN クライアント プロファイル](about-vpn-profile-download.md)に関するページを参照してください。
 >
 
 ### <a name="to-export-and-distribute-a-client-profile"></a><a name="export"></a>クライアント プロファイルをエクスポートして配布するには
@@ -158,7 +158,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>VPN クライアントに DNS サフィックスを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>VPN クライアントにカスタム DNS サーバーを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>VPN クライアントにカスタム ルートを追加する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -212,9 +212,10 @@ Always-on を使用して自動的に接続するように構成するには、�
 </clientconfig>
 </azvpnprofile>
 ```
-### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>すべてのトラフィックを VPN トンネルに転送する方法 (強制トンネル)
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a><a name="force-tunneling"></a>すべてのトラフィックを VPN トンネルに転送する方法 (強制トンネル)
+
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -235,7 +236,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>VPN クライアントからルートをブロック (除外) する方法
 
-ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** タグを追加することができます
+ダウンロードしたプロファイル XML ファイルを変更して、 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** タグを追加することができます。
 
 ```
 <azvpnprofile>
@@ -250,6 +251,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 </clientconfig>
 </azvpnprofile>
 ```
+
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>コマンド ライン プロンプトからプロファイルをインポートできますか?
 
 ダウンロードした **azurevpnconfig.xml** ファイルを **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** フォルダーに置き、次のコマンドを実行することにより、コマンド ライン プロンプトからプロファイルをインポートできます。
@@ -257,7 +259,7 @@ Always-on を使用して自動的に接続するように構成するには、�
 ```
 azurevpn -i azurevpnconfig.xml 
 ```
-強制的にインポートするには、 **-f** スイッチも使用します
+強制的にインポートするには、 **-f** スイッチを使用します。
 
 
 ## <a name="next-steps"></a>次のステップ

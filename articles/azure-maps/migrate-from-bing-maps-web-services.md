@@ -3,18 +3,18 @@ title: チュートリアル:Bing 地図から Web サービスを移行する |
 description: Bing 地図から Microsoft Azure Maps に Web サービスを移行する方法に関するチュートリアルです。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f108062c04292c322d07980155fea9c8808beb0a
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97679071"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326743"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>チュートリアル:Bing 地図から Web サービスを移行する
 
@@ -281,8 +281,8 @@ Azure Maps では、[ルートの道順](/rest/api/maps/route/postroutedirection
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - Post 要求の本文にこれらのポイントを渡します  |
 | `interpolate`              | N/A                                                                 |
-| `includeSpeedLimit`        | 該当なし                                                                 |
-| `includeTruckSpeedLimit`   | 該当なし                                                                 |
+| `includeSpeedLimit`        | なし                                                                 |
+| `includeTruckSpeedLimit`   | なし                                                                 |
 | `speedUnit`                | N/A                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` - ドキュメント「[Azure Maps による認証](./azure-maps-authentication.md)」も参照してください。 |
@@ -343,7 +343,7 @@ Azure Maps には、静的マップ イメージにデータを重ねてレン�
 | `mapLayer` (`ml`)        | N/A                                            |
 | `mapSize` (`ms`)         | `width` および `height` - 最大 8192 x 8192 のサイズを指定できます。 |
 | `declutterPins` (`dcl`)  | N/A                                            |
-| `dpi`                    | 該当なし                                            |
+| `dpi`                    | なし                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | N/A                                            |
 | `pitch`                  | 該当なし - ストリート ビューはサポートされていません。                |
@@ -615,9 +615,9 @@ Bing 地図の Spatial Data Services では、3 つの主要な機能が提供�
 
 Bing 地図では、1 つのバッチ ジオコーディング要求で最大 200,000 個の住所を解析できます。 この要求はキューに入れられ、データ セットのサイズとサービスにかかる負荷に応じて、通常は数分から数時間の間に処理されます。 要求に含まれる住所ごとに、トランザクションが生成されました。
 
-Azure Maps にもバッチ ジオコーディング サービスはありますが、1 つの要求で渡すことのできる住所は最大 10,000 個であり、要求の処理にかかる時間は、データ セットのサイズとサービスにかかる負荷にもよりますが数秒から数分です。 要求に含まれる住所ごとに、トランザクションが生成されました。 Azure Maps でバッチ ジオコーディング サービスを利用できるのは、S1 サービス レベルのみです。
+Azure Maps にもバッチ ジオコーディング サービスはありますが、1 つの要求で渡すことのできる住所は最大 10,000 個であり、要求の処理にかかる時間は、データ セットのサイズとサービスにかかる負荷にもよりますが数秒から数分です。 要求に含まれる住所ごとに、トランザクションが生成されました。 Azure Maps でバッチ ジオコーディング サービスを利用できるのは、Gen 2 または S1 価格レベルのみです。 価格レベルの詳細については、「[Azure Maps での適切な価格レベルの選択](choose-pricing-tier.md)」を参照してください。
 
-Azure Maps での大量の住所のジオコーディングでは、標準の検索 API に並列要求を行う方法もあります。 これらのサービスでは、要求ごとに 1 つの住所しか受け入れられませんが、使用量制限のない S0 サービス レベルでも使用可能です。 S0 サービス レベルでは、1 つのアカウントから 1 秒あたり最大 50 個の要求を Azure Maps プラットフォームに行うことができます。 そのため、これらの制限の範囲内で処理を行うのであれば、1 時間に最大 18 万個の住所をジオコーディングできます。 S1 サービス レベルでは、1 つのアカウントから 1 秒あたりに実行可能なクエリの数に関する制限の規定はないため、この価格レベルでは大量のデータを短時間で処理できます。ただし、バッチ ジオコーディング サービスを使うと、転送されるデータの総量を抑え、ネットワーク トラフィックを大幅に削減できます。
+Azure Maps での大量の住所のジオコーディングでは、標準の検索 API に並列要求を行う方法もあります。 これらのサービスでは、要求ごとに 1 つの住所しか受け入れられませんが、使用量制限のない S0 サービス レベルでも使用可能です。 S0 サービス レベルでは、1 つのアカウントから 1 秒あたり最大 50 個の要求を Azure Maps プラットフォームに行うことができます。 そのため、これらの制限の範囲内で処理を行うのであれば、1 時間に最大 18 万個の住所をジオコーディングできます。 Gen 2 または S1 価格レベルでは 1 つのアカウントから 1 秒あたりに実行可能なクエリの数に関する制限の規定がないため、この価格レベルを使用するとより多くのデータをより高速に処理できます。また、バッチ ジオコーディング サービスを使うことで、転送されるデータの総量を抑え、ネットワーク トラフィックを大幅に削減できます。
 
 -   [自由形式の住所のジオコーディング](/rest/api/maps/search/getsearchaddress): 1 行の住所文字列 (`"1 Microsoft way, Redmond, WA"` など) を指定します。要求は直ちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要がある場合に推奨されます。
 -   [構造化された住所のジオコーディング](/rest/api/maps/search/getsearchaddressstructured): 単一の住所の一部 (番地、市区町村、国、郵便番号など) を指定します。要求はただちに処理されます。 このサービスは、個々の住所を迅速にジオコーディングする必要があり、データが既に個別の住所の一部として解析されている場合に推奨されます。

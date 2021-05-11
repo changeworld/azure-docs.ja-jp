@@ -1,19 +1,19 @@
 ---
-title: HPC VM で InifinBand を有効にする - Azure Virtual Machines | Microsoft Docs
+title: HPC VM で InfiniBand を有効にする - Azure Virtual Machines | Microsoft Docs
 description: Azure HPC VM で InfiniBand を有効にする方法について説明します。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: dba336c8690bba2bb388a8b9ab2d52b651166da5
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 6f2a9502074543272b69f01b567da89b421f6fa6
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599606"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227760"
 ---
 # <a name="enable-infiniband"></a>InfiniBand の有効化
 
@@ -22,9 +22,7 @@ ms.locfileid: "107599606"
 対応する VM サイズで InfiniBand を有効にするには、さまざまな方法があります。
 
 ## <a name="vm-images-with-infiniband-drivers"></a>InfiniBand ドライバーが含まれる VM イメージ
-Marketplace でサポートされている VM イメージの一覧については、「[VM イメージ](configure.md#vm-images)」を参照してください。これらは、InfiniBand ドライバーとともにあらかじめ読み込まれています (SR-IOV または非 SR-IOV の VM の場合)。または、[RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) に適切なドライバーを使用して構成できます。
-- Marketplace の [CentOS-HPC](configure.md#centos-hpc-vm-images) VM イメージが、最も簡単な作業の開始方法です。
-- [Ubuntu](configure.md#ubuntu-vm-images) VM イメージは、適正な IB ドライバーを使用して構成できます。
+Marketplace でサポートされている VM イメージの一覧については、「[VM イメージ](configure.md#vm-images)」を参照してください。これらは、InfiniBand ドライバーとともにあらかじめ読み込まれています (SR-IOV または非 SR-IOV の VM の場合)。または、[RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) に適切なドライバーを使用して構成できます。  Marketplace の [CentOS-HPC](configure.md#centos-hpc-vm-images) および [Ubuntu-HPC](configure.md#ubuntu-hpc-vm-images) VM イメージが、最も簡単な作業の開始方法です。
 
 ## <a name="infiniband-driver-vm-extensions"></a>InfiniBand ドライバー VM 拡張機能
 Linux の場合、SR-IOV が有効になっている H シリーズと N シリーズの VM で、[InfiniBandDriverLinux VM 拡張機能](../../extensions/hpc-compute-infiniband-linux.md) を使用して、Mellanox OFED ドライバーをインストールし、InfiniBand を有効にすることができます。

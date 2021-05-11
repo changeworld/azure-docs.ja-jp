@@ -9,16 +9,16 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 11cce223a0802c20c5fc144eed681327f989a949
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cabf4ba9ea17c1ad2d8af9fd17e7d6f09838e745
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103488382"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293154"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>クイックスタート: Azure Communication Services を使用して Azure Logic Apps で携帯ショートメール (SMS) メッセージを送信する
 
-[Azure Communication Services SMS](../../overview.md) コネクタと [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md) を使用すると、携帯ショートメール (SMS) メッセージを送信できる自動化されたワークフロー ("*ロジック アプリ*") を作成できます。 このクイックスタートでは、ロジック アプリ ワークフローの最初のステップであるトリガー イベントに反応する形で自動的に携帯ショートメール (SMS) を送信する方法を説明します。 トリガー イベントは、受信電子メール メッセージ、定期実行スケジュール、[Azure Event Grid](../../../event-grid/overview.md) リソース イベントなど、[Azure Logic Apps でサポートされるトリガー](/connectors/connector-reference/connector-reference-logicapps-connectors)であれば何でもかまいません。
+[Azure Communication Services SMS](../../overview.md) コネクタと [Azure Logic Apps](../../../logic-apps/logic-apps-overview.md) を使用すると、携帯ショートメール (SMS) メッセージを送信できる自動化されたワークフローを作成できます。 このクイックスタートでは、ロジック アプリ ワークフローの最初のステップであるトリガー イベントに反応する形で自動的に携帯ショートメール (SMS) を送信する方法を説明します。 トリガー イベントは、受信電子メール メッセージ、定期実行スケジュール、[Azure Event Grid](../../../event-grid/overview.md) リソース イベントなど、[Azure Logic Apps でサポートされるトリガー](/connectors/connector-reference/connector-reference-logicapps-connectors)であれば何でもかまいません。
 
 :::image type="content" source="./media/logic-app/azure-communication-services-connector.png" alt-text="Azure portal をロジック アプリ デザイナーから開いた画面のスクリーンショット。Azure Communication Services コネクタの携帯ショートメール (SMS) 送信アクションを使用するロジック アプリの例。":::
 
@@ -73,11 +73,11 @@ Azure Communication Services SMS コネクタを使用して、ワークフロ�
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
-次に、テストのためにロジック アプリを実行します。
+次に、テストのためにロジック アプリ ワークフローを実行します。
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
-ロジック アプリを手動で開始するには、デザイナーのツール バーの **[実行]** を選択します。 または、ロジック アプリがトリガーされるまで待ってください。 どちらの場合も、指定した送信先電話番号に、ロジック アプリから携帯ショートメール (SMS) メッセージが送信されます。 ロジック アプリの実行について詳しくは、[ロジック アプリの実行方法](../../../logic-apps/quickstart-create-first-logic-app-workflow.md#run-your-logic-app)に関するセクションを確認してください。
+ワークフローを手動で開始するには、デザイナーのツール バーの **[実行]** を選択します。 または、トリガーが起動するまで待つこともできます。 どちらの場合も、ワークフローによって、指定した送信先電話番号に携帯ショートメール (SMS) メッセージが送信されます。 詳細については、[ワークフローを実行する方法](../../../logic-apps/quickstart-create-first-logic-app-workflow.md#run-workflow)を確認してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

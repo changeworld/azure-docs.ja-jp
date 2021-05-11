@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2017
+ms.date: 04/28/2021
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5d902e0172a048527ce8f2fa9e22c5fc9bf22e0b
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 871fa6456847655f4e75ddf8e145a2423715dd08
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203625"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203345"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS で DNS ゾーンを管理する方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "102203625"
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
-このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
+この記事では、クロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 Azure CLI は、Windows、Mac、Linux に対応しています。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
 
 このガイドでは、特にパブリック DNS ゾーンについて説明します。 Azure CLI を使用した Azure DNS での Private Zones の管理については、[Azure CLI を使用した Azure DNS Private Zones での作業の開始](private-dns-getstarted-cli.md)に関するページを参照してください。
 
@@ -47,7 +47,7 @@ ms.locfileid: "102203625"
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](/cli/azure/authenticate-azure-cli)」をご覧ください。
+コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI を使用して Azure にサインインする](/cli/azure/authenticate-azure-cli)」を参照してください
 
 ```
 az login
@@ -63,23 +63,24 @@ az account list
 
 使用する Azure サブスクリプションを選択します。
 
-```azurecli
+```azurecli-interactive
 az account set --subscription "subscription name"
 ```
 
 ### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>省略可能: Azure DNS Private Zones の機能のインストール/使用
 Azure DNS Private Zone の機能は、Azure CLI の拡張機能を介して利用できます。 "dns" Azure CLI 拡張機能をインストールしてください。 
+
 ```
 az extension add --name dns
 ``` 
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
-Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。 ただし、すべての DNS リソースはグローバルであり、リージョンの違いがないため、リソース グループの場所を選択しても、Azure DNS には影響しません。
+Azure Resource Manager では、リソース グループの場所を指定する必要があります。 この場所は、そのリソース グループ内のすべてのリソースの既定の保存先として使用されます。 すべての DNS リソースはグローバルであるため、リソース グループの場所の選択は Azure DNS には影響しません。
 
-既存のリソース グループを使用する場合は、この手順をスキップしてください。
+既存のリソース グループを使用する場合は、この手順をスキップしてかまいません。
 
-```azurecli
+```azurecli-interactive
 az group create --name myresourcegroup --location "West US"
 ```
 
@@ -87,7 +88,7 @@ az group create --name myresourcegroup --location "West US"
 
 Azure DNS に関連するすべての Azure CLI コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  次に例を示します。
 
-```azurecli
+```azurecli-interactive
 az network dns --help
 az network dns zone --help
 az network dns zone create --help
@@ -99,7 +100,7 @@ DNS ゾーンは、`az network dns zone create` コマンドを使用して作�
 
 次の例では、*MyResourceGroup* というリソース グループに *contoso.com* という DNS ゾーンを作成します。
 
-```azurecli
+```azurecli-interactive
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
@@ -107,7 +108,7 @@ az network dns zone create --resource-group MyResourceGroup --name contoso.com
 
 次の例では、`--tags` パラメーター (短縮形 `-t`) を使用して、*project = demo* と *env = test* の 2 つ [Azure Resource Manager タグ](dns-zones-records.md#tags)を含む DNS ゾーンを作成する方法を示します。
 
-```azurecli
+```azurecli-interactive
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
 ```
 
@@ -117,7 +118,7 @@ DNS ゾーンを取得するには、 `az network dns zone show`を使用しま�
 
 次の例では、リソース グループ *MyResourceGroup* から DNS ゾーン *contoso.com* とその関連データを返します。 
 
-```azurecli
+```azurecli-interactive
 az network dns zone show --resource-group myresourcegroup --name contoso.com
 ```
 
@@ -143,8 +144,7 @@ az network dns zone show --resource-group myresourcegroup --name contoso.com
 }
 ```
 
-`az network dns zone show` では DNS レコードが返されないことにご注意ください。 DNS レコードを一覧表示するには、`az network dns record-set list` を使用します。
-
+DNS レコードを一覧表示するには、`az network dns record-set list` を使用します。
 
 ## <a name="list-dns-zones"></a>DNS ゾーンの一覧表示
 
@@ -152,13 +152,13 @@ DNS ゾーンを列挙するには、`az network dns zone list` を使用しま�
 
 リソース グループを指定すると、リソース グループ内のゾーンのみが一覧表示されます。
 
-```azurecli
+```azurecli-interactive
 az network dns zone list --resource-group MyResourceGroup
 ```
 
 リソース グループを省略すると、サブスクリプション内のすべてのゾーンが一覧表示されます。
 
-```azurecli
+```azurecli-interactive
 az network dns zone list 
 ```
 
@@ -170,7 +170,7 @@ DNS ゾーンのリソースへの変更は、 `az network dns zone update`を�
 
 次の例では、DNS ゾーンのタグを更新する方法を示します。 既存のタグは、指定された値に置き換えられます。
 
-```azurecli
+```azurecli-interactive
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
 ```
 
@@ -187,7 +187,7 @@ DNS ゾーンは、`az network dns zone delete` を使用して削除できま�
 
 次の例は、リソース グループ *MyResourceGroup* から *contoso.com* ゾーンを削除する方法を示します。
 
-```azurecli
+```azurecli-interactive
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
 ```
 

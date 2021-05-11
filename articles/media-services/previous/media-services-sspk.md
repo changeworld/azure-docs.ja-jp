@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: f2c66b08d399ddf53686074079665e36be9aace7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02374cc619e8e72d4e341d09d58dd0f8589bb3e9
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870470"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228717"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -123,6 +123,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * EXPRESS LUCK TECHNOLOGY LIMITED
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
+* Hisense Broadband Multimedia Technologies Co.,Ltd.
 * Hisense International Co., Ltd.
 * Hisense Visual Technology Co., Ltd
 * HKC Corporation Limited

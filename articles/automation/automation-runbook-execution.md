@@ -3,15 +3,15 @@ title: Azure Automation での Runbook の実行
 description: この記事では、Azure Automation における Runbook の処理の概要を示します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/23/2021
+ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0807b11adfc46b9c32a8f7bd36a2f7d4db519975
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a0c734d7717f157ba062b1c9369be5dd95be03af
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830522"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278472"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -118,7 +118,13 @@ Runbook には、資格情報を通じて Azure に対する認証を行うた�
 
 ## <a name="modules"></a>モジュール
 
-Azure Automation は、いくつかの AzureRM モジュール (AzureRM.Automation)、いくつかの内部コマンドレットを含むモジュールなど、多くの既定のモジュールをサポートしています。 また、AzureRM モジュールに優先して現在使用されている Az モジュール (Az.Automation) など、インストール可能なモジュールもサポートされています。 Runbook と DSC 構成で使用できるモジュールの詳細については、「[Azure Automation でモジュールを管理する](shared-resources/modules.md)」を参照してください。
+Azure Automation には、次の PowerShell モジュールが含まれています。
+
+* Orchestrator.AssetManagement.Cmdlets - Azure サンドボックス環境内または Windows Hybrid Runbook Worker 上で Runbook を実行する場合にのみ利用可能ないくつかの内部コマンドレットが含まれています。 これらのコマンドレットは、Automation アカウント リソースを操作するために Azure PowerShell コマンドレットの代わりに使用するように設計されています。
+* Az.Automation - AzureRM Automation モジュールを置き換える Azure Automation を操作するために推奨される PowerShell モジュールです。 Az.Automation モジュールは、Automation アカウントを作成するときに自動的に含められないため、手動でインポートする必要があります。 
+* AzureRM.Automation - Automation アカウントを作成するときに既定でインストールされます。 
+
+また、Runbook と DSC 構成に必要なコマンドレットに基づいて、インストール可能なモジュールもサポートされています。 Runbook と DSC 構成で使用できるモジュールの詳細については、「[Azure Automation でモジュールを管理する](shared-resources/modules.md)」を参照してください。
 
 ## <a name="certificates"></a>証明書
 

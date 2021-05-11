@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: bf3921762c94695f0c03e653c6ea06ebc145501b
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 16e758ac520c8584a11c88c0823fac7cfec43c0b
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929779"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226302"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールをインストールする
 
-この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合スナップショット ツールをインストールするためのガイドを提供します。
+この記事では、Azure NetApp Files または Azure Large Instance で使用できる Azure アプリケーション整合スナップショット ツールをインストールするためのガイドを提供します。
+
+> [!IMPORTANT]
+> 分散インストールはプライベート ネットワークにデプロイされるため、**Azure Large Instance** システムの唯一のオプションです。  そのため、AzAcSnap のインストールは、接続を確保するためにシステムごとに行う必要があります。
 
 ## <a name="introduction"></a>はじめに
 

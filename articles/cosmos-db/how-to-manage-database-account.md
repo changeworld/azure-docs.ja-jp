@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 01/06/2021
+ms.date: 04/25/2021
 ms.author: mjbrown
-ms.openlocfilehash: d542e2b4e5db86fd3354514790e718f0694a09a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ce01bf2f285513e6422f16de927fd532f148f9d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489754"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228750"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos アカウントを管理する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,9 @@ ms.locfileid: "102489754"
 [Azure Resource Manager テンプレートを使用した Azure Cosmos DB アカウントの作成](./manage-with-templates.md)に関する記事を参照してください。
 
 ## <a name="addremove-regions-from-your-database-account"></a>データベース アカウントのリージョンの追加/削除
+
+> [!TIP]
+> 新しいリージョンが追加されるとき、すべてのデータが新しいリージョンに完全にレプリケートおよびコミットされるまで、リージョンには使用可能のマークが付きません。 この操作にかかる時間は、アカウント内に保存されているデータの量によって変動します。
 
 ### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure Portal
 
@@ -115,7 +118,7 @@ ms.locfileid: "102489754"
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2019-08-01",
+            "apiVersion": "2021-03-15",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {

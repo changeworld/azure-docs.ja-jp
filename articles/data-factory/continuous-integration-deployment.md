@@ -6,13 +6,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: d6daf9788a632d329714dad186203c58f304aa21
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 04/27/2021
+ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904300"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177377"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -181,9 +181,9 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 ## <a name="manually-promote-a-resource-manager-template-for-each-environment"></a>各環境用の Resource Manager テンプレートを手動でプロモートする
 
-1. **[ARM テンプレート]** 一覧から、 **[ARM テンプレートのエクスポート]** を選択して、データ ファクトリ用の Resource Manager テンプレートを開発環境にエクスポートします。
+1. データ ファクトリの **[管理]** ハブに移動し、[ソース管理] セクションの **[ARM テンプレート]** を選択します。 **[ARM テンプレート]** セクションで、 **[ARM テンプレートのエクスポート]** を選択して、開発環境にデータ ファクトリ用の Resource Manager テンプレートをエクスポートします。
 
-   ![Resource Manager テンプレートのエクスポート](media/continuous-integration-deployment/continuous-integration-image1.png)
+   ![Resource Manager テンプレートのエクスポート](media/continuous-integration-deployment/continuous-integration-image-1.png)
 
 1. テストおよび運用データ ファクトリで、 **[Import ARM template]\(ARM テンプレートのインポート\)** を選択します。 このアクションによって Azure Portal に移動して、エクスポートされたテンプレートをインポートできます。 **[Build your own template in the editor]\(エディターで独自のテンプレートを作成する\)** を選択して、Resource Manager テンプレート エディターを開きます。
 

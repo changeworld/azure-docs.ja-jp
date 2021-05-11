@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/28/2021
+ms.date: 04/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8ddc02075d2cdeba4a4fa83a2475ec20c3f18d6e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5f7db6b360769b7a3c2e3ffdafe66f94c2582aa
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103418081"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178306"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -26,6 +26,30 @@ ms.locfileid: "103418081"
 Microsoft Authenticator アプリは、Azure AD Authenticator アプリに置き換わり、これは Azure 多要素認証を使用するときに推奨されるアプリです。 Microsoft Authenticator アプリは、[Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) および [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458) で利用できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+### <a name="permission-to-access-your-location"></a>位置情報にアクセスするためのアクセス許可
+
+**Q**: 位置情報にアクセスするためのアクセス許可をアプリに付与するように求めるプロンプトが表示されました。 このページが表示される理由:
+
+**A**: 特定のリソースへのアクセスを許可する前にユーザーの GPS の位置情報を共有することを求めるポリシーを IT 管理者が作成している場合、Microsoft Authenticator から位置情報へのアクセスを求めるプロンプトが表示されます。 リソースへのアクセスが許可されている国に居ることを確認するため、ユーザーは 1 時間ごとに位置情報を共有する必要があります。
+
+Microsoft は、iOS ではアプリに位置情報へのアクセスを常に許可することを推奨しています。 そのアクセス許可を付与するには、iOS のプロンプトに従ってください。 それぞれの許可レベルの意味は次のとおりです。
+
+- **アプリの使用中は許可**: このオプションを選択した場合は、さらに 2 つのオプションを選択するように求められます。
+- **常に許可 (推奨)** : 保護されたリソースにアクセスしている間は、その後 24 時間経過するまでデバイスから 1 時間に 1 回、通知なしで位置情報が共有されます。そのため、電話を取り出して 1 時間ごとに手動で承認する必要はありません。
+- **使用中のみ許可**: 保護されたリソースにアクセスしている間は、1 時間ごとにデバイスを取り出して、要求を手動で承認する必要があります。
+- **1 度だけ許可**: アプリを使用している間の 1 時間ごとに 1 回、またはリソースにアクセスしようとした次の機会に、再度許可を与える必要があります。 [設定] にアクセスし、アクセス許可を手動で有効にする必要があります。 
+- **許可しない**: このオプションを選択すると、リソースへのアクセスがブロックされます。 気が変わった場合は、[設定] からアクセス許可を手動で有効にする必要があります。
+
+Microsoft は、Android ではアプリに位置情報へのアクセスを常に許可することを推奨しています。 そのアクセス許可を付与するには、Android のプロンプトに従ってください。 それぞれの許可レベルの意味は次のとおりです。
+
+- **常に許可 (推奨)** : 保護されたリソースにアクセスしている間は、その後 24 時間経過するまでデバイスから 1 時間に 1 回、通知なしで位置情報が共有されます。そのため、電話を取り出して 1 時間ごとに手動で承認する必要はありません。
+- **アプリの使用中のみ許可**: 保護されたリソースにアクセスしている間は、1 時間ごとにデバイスを取り出して、要求を手動で承認する必要があります。
+- **Deny and don’t ask again (拒否して二度と表示しない)** : このオプションを選択すると、リソースへのアクセスがブロックされます。
+
+**Q**: 位置情報はどのように使用および保存されますか。
+
+**A**: Authenticator アプリは、GPS 情報を収集して、ユーザーがどの国に所在しているかを判断します。 国名と位置座標は、保護されたリソースへのアクセスがユーザーに許可されているかどうかを判断するためにシステムに送り返されます。 国名は保存されて IT 管理者に報告されますが、実際の座標は保存されず、Microsoft のサーバーに保存されることもありません。
 
 ### <a name="registering-a-device"></a>デバイスの登録
 

@@ -3,12 +3,12 @@ title: Azure Security Center 統合を使用して Azure VMware Solution VM を�
 description: Azure Security Center のダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護します。
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.openlocfilehash: 7292ea4486a61f5b0cfd8f656d2763a3ce655e79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2917fbc5d93447dcdde6385576a2a404e95d250
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578256"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205857"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
@@ -24,7 +24,7 @@ Azure ネイティブ サービスの簡単な概要を次に示します。
 
 ## <a name="topology"></a>トポロジ
 
-![Azure 統合セキュリティのアーキテクチャを示す図。](media/azure-security-integration/azure-integrated-security-architecture.png)
+:::image type="content" source="media/azure-security-integration/azure-integrated-security-architecture.png" alt-text="Azure 統合セキュリティのアーキテクチャを示す図。" border="false":::
 
 Log Analytics エージェントを使用すると、Azure、Azure VMware Solution、オンプレミスの VM からのログ データの収集が可能になります。 ログ データは Azure Monitor ログに送信され、Log Analytics ワークスペースに格納されます。 Arc 対応サーバーの [VM 拡張機能のサポート](../azure-arc/servers/manage-vm-extensions.md)を使用して、新しい VM や既存の VM のために Log Analytics エージェントをデプロイできます。 
 
@@ -72,11 +72,11 @@ Azure Defender は、オンプレミスとクラウド内の両方で、ハイ�
 
 2. [リソース] の下で **[サーバー]** を選択してから、 **[+追加]** を選択します。
 
-    :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Azure に Azure VMware Solution VM を追加するための Azure Arc サーバーのページを示すスクリーンショット。":::
+   :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Azure に Azure VMware Solution VM を追加するための Azure Arc サーバーのページを示すスクリーンショット。":::
 
 3. **[スクリプトの生成]** を選択します。
  
-    :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="対話型スクリプトを使用してサーバーを追加するためのオプションを示す Azure Arc ページのスクリーンショット。"::: 
+   :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="対話型スクリプトを使用してサーバーを追加するためのオプションを示す Azure Arc ページのスクリーンショット。"::: 
  
 4. **[前提条件]** タブで、 **[次へ]** を選択します。
 
@@ -101,13 +101,13 @@ Azure Defender は、オンプレミスとクラウド内の両方で、ハイ�
 
 2. [リソースの種類] で、 **[サーバー - Azure Arc]** を選択します。
  
-     :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="[リソースの種類] で [サーバー - Azure Arc] が選択されていることを示す、Azure Security Center の [インベントリ] ページのスクリーンショット。":::
+   :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="[リソースの種類] で [サーバー - Azure Arc] が選択されていることを示す、Azure Security Center の [インベントリ] ページのスクリーンショット。":::
 
 3. リソースの名前を選択します。 リソースのセキュリティ正常性の詳細を示すページが表示されます。
 
 4. **[推奨事項の一覧]** で、 **[推奨事項]** タブ、 **[合格した評価]** タブ、 **[利用できない評価]** タブを選択して、以下の詳細を表示します。
 
-    :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="セキュリティの推奨事項と評価を示す Azure Security Center のスクリーンショット。":::
+   :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="セキュリティの推奨事項と評価を示す Azure Security Center のスクリーンショット。":::
 
 ## <a name="deploy-an-azure-sentinel-workspace"></a>Azure Sentinel ワークスペースをデプロイする
 
@@ -242,6 +242,6 @@ Windows サーバーへのサインインの試みが 3 回失敗すると、作
 
 Azure VMware Solution VM を保護する方法について説明したので、次のことについて学習します。
 
-- [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用。
-- [Azure Sentinel での高度なマルチステージ攻撃の検出](../azure-monitor/logs/quick-create-workspace.md)。
-- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- [Azure Defender ダッシュボード](../security-center/azure-defender-dashboard.md)の使用
+- [Azure Sentinel の高度なマルチステージ攻撃の検出](../azure-monitor/logs/quick-create-workspace.md)
+- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)

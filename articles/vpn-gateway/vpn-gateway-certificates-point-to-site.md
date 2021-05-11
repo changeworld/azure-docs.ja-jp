@@ -1,19 +1,19 @@
 ---
 title: 'P2S 用の証明書を生成してエクスポートする: PowerShell'
 titleSuffix: Azure VPN Gateway
-description: Windows 10 または Windows Server 2016 で PowerShell を使用して、自己署名ルート証明書の作成、公開キーのエクスポート、P2S 用クライアント証明書の生成を行います。
+description: VPN Gateway ポイント対サイト接続のために、自己署名ルート証明書を作成し、公開キーをエクスポートし、クライアント証明書を生成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: c1c69b301199b054fe6b1ef42cfcf7878a7a161c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a0d8303f74da60f5acaa674947129aade508ffd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91306686"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202463"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>PowerShell を使用したポイント対サイトの証明書の生成とエクスポート
 

@@ -1,18 +1,19 @@
 ---
-title: Azure VPN Gateway:オンプレミスのポリシー ベースの複数の VPN デバイスにゲートウェイを接続する
-description: Azure Resource Manager と PowerShell を使用して、複数のポリシー ベース VPN デバイスに Azure ルート ベース VPN ゲートウェイを構成します。
+title: オンプレミスのポリシー ベースの複数の VPN デバイスに VPN ゲートウェイを接続する
+titleSuffix: Azure VPN Gateway
+description: PowerShell を使用して複数のポリシー ベース VPN デバイスに Azure ルート ベース VPN ゲートウェイを構成する方法について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 2a85204fef026940394a19934bef1c631a8e2d21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a0d42dbeb3713202ef0b2c5c05f08d51bd8a6db
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89418881"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291174"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 

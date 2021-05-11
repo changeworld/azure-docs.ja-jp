@@ -97,6 +97,8 @@
           href: how-to-run-a-reindex.md
         - name: Azure API for FHIR を検索する
           href: search-samples.md
+    - name: プロファイルの検証
+      href: validation-against-profiles.md
     - name: データのエクスポート
       expanded: false
       items:

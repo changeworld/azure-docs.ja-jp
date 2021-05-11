@@ -3,12 +3,12 @@ title: SQL Server のデータベース バックアップに関するトラブ�
 description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc53494ec8dad7cab4a1cf267e9ad838b9d34a29
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99557744"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277428"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup を使用した SQL Server データベースのバックアップのトラブルシューティング
 
@@ -103,115 +103,128 @@ VM 内で実行されているすべての SQL インスタンスが正常であ
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | データベース復旧モデルが要求されたバックアップの種類を許可していない場合に発生します。 このエラーは、以下の状況で発生する可能性があります。 <br/><ul><li>単純復旧モデルを使用するデータベースで、ログ バックアップが許可されていない。</li><li>マスター データベースで、差分バックアップとログ バックアップが許可されていません。</li></ul>詳細については、[SQL Server 復旧モデル](/sql/relational-databases/backup-restore/recovery-models-sql-server)に関するドキュメントを参照してください。 | 単純復旧モデルのデータベースのログ バックアップが失敗した場合は、次のいずれかのオプションを試してください。<ul><li>データベースが単純復旧モードの場合は、ログ バックアップを無効にします。</li><li>データベースの復旧モデルを完全または一括ログに変更するには、[SQL Server のドキュメント](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)を参照してください。 </li><li> 復旧モデルを変更したくない場合で、変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップと差分バックアップはスケジュールに従って動作します。 ログ バックアップはスキップされますが、この場合は想定どおりの動作です。</li></ul>これがマスター データベースで、差分バックアップまたはログ バックアップを構成した場合は、次のいずれかの手順を実行します。<ul><li>ポータルを使用して、マスター データベースのバックアップ ポリシー スケジュールを [完全] に変更します。</li><li>変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップはスケジュールに従って動作します。 差分バックアップまたはログ バックアップは行われませんが、この場合は想定どおりの動作です。</li></ul> |
-| 競合する操作が既に同じデータベースに対して実行されているため、操作がキャンセルされました。 | 同時に実行される[バックアップと復元の制限事項に関するブログ エントリ](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)を参照してください。| [SQL Server Management Studio (SSMS) を使用してバックアップ ジョブを監視します](manage-monitor-sql-database-backup.md)。 競合する操作が失敗したら、操作を再開します。|
+
+### <a name="operationcancelledbecauseconflictingoperationrunningusererror"></a>OperationCancelledBecauseConflictingOperationRunningUserError
+
+| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+|---|---|---|
+| 同じデータベース上で競合する操作が既に実行されているため、操作はキャンセルされました。 | このエラーコードが表示される可能性があるケースを次に示します。<br><ul><li>バックアップの実行中のデータベースへのファイルの追加または削除。</li><li>データベース バックアップの実行中のファイルの圧縮。</li><li>データベース用に構成された別のバックアップ製品によるデータベース バックアップが進行中で、Azure Backup 拡張機能によって、バックアップ ジョブがトリガーされる。</li></ul>| 問題を解決するには、他のバックアップ製品を無効にします。
+
+
+### <a name="usererrorfilemanipulationisnotallowedduringbackup"></a>UserErrorFileManipulationIsNotAllowedDuringBackup
+
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
+|---|---|---|
+| データベースに対するバックアップ操作、ファイル操作 (ALTER DATABASE ADD FILE など)、および暗号化の変更はシリアル化する必要があります。 | このエラーは、オンデマンドでトリガーされた場合、またはスケジュールされたバックアップ ジョブが、同じデータベースに対する Azure Backup 拡張機能によってトリガーされた既に実行中のバックアップ操作と競合している場合に発生することがあります。<br> このエラーコードが表示される可能性があるシナリオを次に示します。<br><ul><li>データベースに対して完全バックアップが実行されており、別の完全バックアップがトリガーされる。</li><li>データベースに対して差分バックアップが実行されており、別の差分バックアップがトリガーされる。</li><li>データベースに対してログ バックアップが実行されており、別のログ バックアップがトリガーされる。</li></ul>| 競合する操作が失敗したら、操作を再開します。
+
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | SQL データベースが存在しません。 | データベースは削除されたか、名前が変更されました。 | データベースが誤って削除されたか、名前が変更されたかを確認してください。<br/><br/> 誤ってデータベースを削除した場合、バックアップを続行するために、元の場所にデータベースを復元してください。<br/><br/> データベースを削除し、今後のバックアップが必要ない場合は、Recovery Services コンテナーで **[バックアップの停止]** を選択し、 **[バックアップ データの保持]** または **[バックアップ データの削除]** を指定します。 詳細については、「[バックアップされる SQL Server データベースを管理および監視する](manage-monitor-sql-database-backup.md)」を参照してください。
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | ログ チェーンが壊れています。 | データベースまたは VM は、ログ チェーンを切り捨てる別のバックアップ ソリューションを使用してバックアップされます。|<ul><li>他のバックアップ ソリューションまたはスクリプトが使用されているかどうかを確認します。 使用されている場合は、他のバックアップ ソリューションを停止します。 </li><li>バックアップがオンデマンド ログ バックアップの場合は、完全バックアップをトリガーして新しいログ チェーンを開始します。 スケジュールされたログ バックアップの場合、Azure Backup サービスがこの問題を解決するために完全バックアップを自動的にトリガーするため、対処は必要ありません。</li>|
 
 ### <a name="usererroropeningsqlconnection"></a>UserErrorOpeningSQLConnection
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | Azure Backup は SQL インスタンスに接続できません。 | Azure Backup は SQL Server インスタンスに接続できません。 | Azure portal のエラー メニューで追加情報を使用して、根本原因を絞り込んでください。 エラーの修正については、[SQL バックアップのトラブルシューティング](/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine)に関するページを参照してください。<br/><ul><li>既定の SQL 設定でリモート接続が許可されていない場合は、設定を変更します。 設定の変更については、次の記事を参照してください。<ul><li>[MSSQLSERVER_-1](/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>ログインの問題がある場合は、これらのリンクを使用して修正してください。<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | このデータ ソースの最初の完全バックアップが見つかりません。 | データベースの完全バックアップが見つかりません。 ログ バックアップと差分バックアップは、完全バックアップの親なので、差分バックアップまたはログ バックアップをトリガーする前に必ず完全バックアップを作成してください。 | オンデマンド完全バックアップをトリガーします。   |
 
 ### <a name="usererrorbackupfailedastransactionlogisfull"></a>UserErrorBackupFailedAsTransactionLogIsFull
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | データ ソースのトランザクション ログがいっぱいなので、バックアップを作成できません。 | データベースのトランザクション ログ領域がいっぱいです。 | この問題を解決するには、[SQL Server のドキュメント](/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error)を参照してください。 |
 
 ### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | 同じ名前のデータベースが既にターゲットの場所に存在しています | ターゲットの復元先には既に同じ名前のデータベースがあります。  | <ul><li>ターゲット データベース名を変更してください。</li><li>または、復元ページで強制上書きオプションを使用します。</li> |
 
 ### <a name="usererrorrestorefaileddatabasecannotbeofflined"></a>UserErrorRestoreFailedDatabaseCannotBeOfflined
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | データベースをオフラインにできないため、復元に失敗しました。 | 復元の実行中は、ターゲット データベースをオフラインにする必要があります。 Azure Backup は、このデータをオフラインにできません。 | Azure portal のエラー メニューで追加情報を使用して、根本原因を絞り込んでください。 詳細については [SQL Server のドキュメント](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)を参照してください。 |
 
 ### <a name="wlextgenericiofaultusererror"></a>WlExtGenericIOFaultUserError
 
-|エラー メッセージ |考えられる原因  |推奨される操作  |
+|エラー メッセージ |考えられる原因  |推奨アクション  |
 |---------|---------|---------|
 |操作の実行中に入出力エラーが発生しました。 仮想マシンの一般的な IO エラーを確認してください。   |   ターゲットのアクセス許可または領域の制約。       |  仮想マシンの一般的な IO エラーを確認してください。 マシン上のターゲット ドライブおよびネットワーク共有について、以下を確実にしてください。 <li> マシンのアカウント NT AUTHORITY\SYSTEM に対する読み取りおよび書き込みアクセス許可がある。 <li> 操作を正常に完了することができる十分な領域がある。<br> 詳細については、「[ファイルとして復元](restore-sql-database-azure-vm.md#restore-as-files)」を参照してください。
        |
 
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | ターゲット上に拇印のあるサーバー証明書が見つかりません。 | 宛先のインスタンス上のマスター データベースに有効な暗号化拇印がありません。 | ソース インスタンスで使用されている有効な証明書の拇印をターゲット インスタンスにインポートしてください。 |
 
 ### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | 復旧に使用されるログ バックアップに一括ログの変更が含まれています。 これを、SQL ガイドラインに従って任意の時点で停止するために使用することはできません。 | データベースが一括ログ復旧モードである場合は、一括ログ トランザクションと次のログ トランザクションの間のデータを復旧できません。 | 別の復旧時点を選択してください。 [詳細については、こちらを参照してください](/sql/relational-databases/backup-restore/recovery-models-sql-server)。
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | 可用性グループの一部のノードが登録されていないため、SQL Always On 可用性グループのバックアップ設定を満たすことができません。 | バックアップを実行するために必要なノードが登録されていないか、到達できません。 | <ul><li>このデータベースのバックアップを実行するために必要なすべてのノードが登録され、正常であることを確認してから、操作を再試行してください。</li><li>SQL Server Always On 可用性グループのバックアップ設定を変更してください。</li></ul> |
 
 ### <a name="vmnotinrunningstateusererror"></a>VMNotInRunningStateUserError
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | SQL Server VM はシャットダウンされており、Azure Backup サービスにアクセスできません。 | VM がシャットダウンされています。 | SQL Server インスタンスが実行されていることを確認してください。 |
 
 ### <a name="guestagentstatusunavailableusererror"></a>GuestAgentStatusUnavailableUserError
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | Azure Backup サービスは Azure VM ゲスト エージェントを使用してバックアップを行いますが、ターゲット サーバーではゲスト エージェントを使用できません。 | ゲスト エージェントが有効でないか、正常ではありません。 | [VM ゲスト エージェントを手動でインストール](../virtual-machines/extensions/agent-windows.md)します。 |
 
 ### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 | 自動保護の意図が削除されたか、有効でなくなりました。 | SQL Server インスタンスで自動保護を有効にすると、そのインスタンス内のすべてのデータベースに対して **[バックアップの構成]** のジョブが実行されます。 ジョブの実行中に自動保護を無効にした場合、 **[In-Progress]\(進行中\)** のジョブはこのエラー コードでキャンセルされます。 | 残りすべてのデータベースを保護するために、自動保護をもう一度有効にしてください。 |
 
 ### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 24 時間に許容されている操作数の上限に達したため、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 <br> 次に例を示します。1 日にトリガーできるバックアップ ジョブの構成数の上限に達した場合、新しい項目に対してバックアップを構成しようとすると、このエラーが表示されます。 | 通常、24 時間経過してから操作を再試行すると、この問題は解決します。 ただし、問題が解決しない場合は、Microsoft サポートにお問い合わせください。
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 コンテナーが 24 時間の範囲で許可されているこのような操作数の上限に達すると、操作はブロックされます。 | 24 時間の範囲で 1 つの操作に許容されている最大許容制限に達した場合、このエラーが発生します。 このエラーは通常、ポリシーの変更や自動保護などの大規模な操作がある場合に発生します。 CloudDosAbsoluteLimitReached の場合とは異なり、この状態を解決するためにできることはあまりありません。 実際、Azure Backup サービスによって、問題のあるすべての項目に対して内部的に操作が再試行されます。<br> 次に例を示します。ポリシーで保護されているデータソースが多数あり、そのポリシーを変更しようとすると、保護されている各項目に対して保護ジョブの構成がトリガーされ、そのような操作に対して 1 日に許容されている上限を超えることがあります。| Azure Backup サービスでは、24 時間後にこの操作が自動的に再試行されます。
 
 ### <a name="workloadextensionnotreachable"></a>WorkloadExtensionNotReachable
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 AzureBackup ワークロード拡張機能操作に失敗しました。 | VM がシャットダウンされています。または、インターネット接続の問題により、VM から Azure Backup サービスに接続できません。| <li> VM が稼働中であり、インターネットに接続されていることを確実にします。<li> [SQL Server VM で拡張を再登録します](manage-monitor-sql-database-backup.md#re-register-extension-on-the-sql-server-vm)。
 
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
+| エラー メッセージ | 考えられる原因 | 推奨アクション |
 |---|---|---|
 VM は、インターネット接続の問題により、Azure Backup サービスに接続できません。 | VM には、Azure Backup サービス、Azure Storage、または Azure Active Directory サービスへの送信接続が必要です。| <li> NSG を使用して接続を制限する場合は、*AzureBackup* サービス タグを使用して、Azure Backup サービスへの発信アクセスを許可する必要があります。Azure AD (*AzureActiveDirectory*) サービスと Azure Storage(*Storage*) サービスも同様です。 アクセス権を付与するには、次の[手順](./backup-sql-server-database-azure-vms.md#nsg-tags)に従います。 <li> DNS が Azure エンドポイントを解決することを確保します。 <li> VM が、インターネット アクセスをブロックするロード バランサーの背後にあるかどうかを確認します。 パブリック IP を VM に割り当てることで、検出が機能します。 <li> 上記の 3 つのターゲット サービスへの呼び出しをブロックするファイアウォール、ウイルス対策、およびプロキシが存在しないことを確認します。
 

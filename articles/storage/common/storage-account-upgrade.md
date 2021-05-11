@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 786eb981acd61d952f95f89a7d90e4f732f3cda4
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7c4e0fed78eb85e0e5326cbee6c6823466811c16
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887650"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108321873"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
@@ -38,12 +38,12 @@ ms.locfileid: "107887650"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ストレージ アカウントに移動します。
-3. **[設定]** セクションで **[構成]** をクリックします。
-4. **[アカウントの種類]** の **[アップグレード]** をクリックします。
-5. **[アップグレードの確認]** で、アカウントの名前を入力します。
-6. ブレードの下部にある **[アップグレード]** をクリックします。
+3. **[設定]** セクションで、 **[構成]** を選択します。
+4. **[アカウントの種類]** の下にある **[アップグレード]** を選択します。
+5. **[アップグレードの確認]** に、アカウントの名前を入力します。
+6. ブレードの下部にある **[アップグレード]** を選択します。
 
-    ![アカウントの種類をアップグレードする](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    :::image type="content" source="../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png" alt-text="[構成] ブレードのスクリーンショット。アップグレードするアカウントの種類が強調表示されています。" lightbox="../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

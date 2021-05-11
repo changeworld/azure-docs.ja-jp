@@ -1,20 +1,20 @@
 ---
 title: カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 titleSuffix: Azure Virtual WAN
-description: このシナリオでは、インターネットへのトラフィックに別の NVA を使用することで、NVA 経由でトラフィックをルーティングできます。
+description: ネットワーク仮想アプライアンス (NVA) 経由でトラフィックをルーティングするための Virtual WAN ルーティングのシナリオについて説明します。 このシナリオでは、インターネットへのトラフィックに別の NVA を使用して、またカスタム設定を使用して、NVA 経由でトラフィックをルーティングします。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 153e3dd64546dfa713abefcff106652fc061a6a2
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036875"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165823"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>シナリオ:カスタム設定を使用して NVA 経由でトラフィックをルーティングする
 

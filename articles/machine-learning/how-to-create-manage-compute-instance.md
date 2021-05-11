@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 4ae4094e4a356c5394c2bdf887d3b60e40989ecd
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: f3e0a14ee917bf9b1396eef9d1ec36709e5e706a
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885742"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331397"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -41,6 +41,10 @@ Azure Machine Learning ワークスペースで[コンピューティング イ�
 * [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
 ## <a name="create"></a>作成
+
+> [!IMPORTANT]
+> 以下に ("プレビュー") と付記されている項目は、現在、パブリック プレビュー段階です。
+> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 **推定所要時間**: 約 5 分です。
 
@@ -105,10 +109,14 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 また、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)を使用してコンピューティング インスタンスを作成することもできます。 
 
-### <a name="create-on-behalf-of-preview"></a>代理作成 (プレビュー)
+
+
+## <a name="create-on-behalf-of-preview"></a>代理作成 (プレビュー)
 
 管理者は、データ科学者に代わってコンピューティング インスタンスを作成し、次のようにして彼らにそのインスタンスを割り当てることができます。
+
 * [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)  このテンプレートに必要な TenantID と ObjectID を見つける方法の詳細については、「[認証構成のための ID オブジェクト ID を見つける](../healthcare-apis/fhir/find-identity-object-ids.md)」を参照してください。  これらの値は Azure Active Directory ポータルでも見つけることができます。
+
 * REST API
 
 データ科学者向けにコンピューティング インスタンスを作成する場合は、次に示す [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) アクセス許可が必要です。 
@@ -122,6 +130,93 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 * JupyterLab
 * RStudio
 * 統合されたノートブック
+
+## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> スクリプトを使用したコンピューティング インスタンスのカスタマイズ (プレビュー)
+
+> [!TIP]
+> 現在、このプレビュー版は、米国中西部と米国東部リージョンのワークスペースでご利用いただけます。
+
+プロビジョニング時にコンピューティング インスタンスを自動的にカスタマイズして構成するには、セットアップ スクリプトを使用します。 管理者は、要件に従ってワークスペース内のすべてのコンピューティング インスタンスをプロビジョニングするために使用する、カスタマイズ スクリプトを作成できます。 
+
+セットアップ スクリプトを使用して実行できる操作の例を次に示します。
+
+* パッケージとツールのインストール
+* データのマウント
+* カスタムの Conda 環境と Jupyter カーネルの作成
+* Git リポジトリの複製
+
+### <a name="create-the-setup-script"></a>セットアップ スクリプトを作成する
+
+セットアップ スクリプトは、*azureuser* として実行されるシェル スクリプトです。  **ノートブック** ファイルにスクリプトを作成するか、アップロードします。
+
+1. [スタジオ](https://ml.azure.com)にサインインし、お使いのワークスペースを選択します。
+1. 左側にある **[ノートブック]** を選択します
+1. **[ファイルの追加]** ツールを使用して、セットアップ シェル スクリプトを作成またはアップロードします。  スクリプトのファイル名の末尾が ".sh" であることを確認してください。  新しいファイルを作成する場合は、**ファイルの種類** も *bash(.sh)* に変更します。
+
+:::image type="content" source="media/how-to-create-manage-compute-instance/create-or-upload-file.png" alt-text="スタジオのノートブック ファイルにセットアップ スクリプトを作成またはアップロード":::
+
+スクリプトを実行すると、現在の作業ディレクトリはそれがアップロードされたディレクトリになります。  スクリプトを **Users > admin** にアップロードした場合、**ciname** という名前のコンピューティング インスタンスをプロビジョニングするときに、ファイルの場所は */mnt/batch/tasks/shared/LS_root/mounts/clusters/**ciname**/code/Users/admin* になります。
+
+スクリプトの引数は、スクリプト内で $1、$2 などのように参照することができます。例えば、`scriptname ciname` を実行した場合、スクリプトの中で `cd /mnt/batch/tasks/shared/LS_root/mounts/clusters/$1/code/admin` を実行すると、スクリプトが保存されているディレクトリに移動します。
+
+スクリプト内のパスを取得することもできます。
+
+```shell
+#!/bin/bash 
+SCRIPT=$(readlink -f "$0") 
+SCRIPT_PATH=$(dirname "$SCRIPT") 
+```
+
+### <a name="use-the-script-in-the-studio"></a>スタジオでスクリプトを使用する
+
+スクリプトを保存したら、コンピューティング インスタンスの作成時にそれを指定します。
+
+1. [スタジオ](https://ml.azureml.com)にサインインし、お使いのワークスペースを選択します。
+1. 左側にある **[コンピューティング]** を選択します。
+1. **[新規]** を選択して、新しいコンピューティング インスタンスを作成します。
+1. [フォームに記入します](how-to-create-attach-compute-studio.md#compute-instance)。
+1. フォームの 2 ページ目で、 **[詳細設定の表示]** を開きます
+1. **[セットアップ スクリプトを使用したプロビジョニング]** をオンにします
+1. 保存したシェル スクリプトを参照します。  または、コンピューターからスクリプトをアップロードします。
+1. 必要に応じてコマンド引数を追加します。
+
+:::image type="content" source="media/how-to-create-manage-compute-instance/setup-script.png" alt-text="スタジオのセットアップ スクリプトでコンピューティング インスタンスをプロビジョニングします。":::
+
+### <a name="use-script-in-a-resource-manager-template"></a>Resource Manager テンプレートでスクリプトを使用する
+
+Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)に `setupScripts` を追加して、コンピューティング インスタンスがプロビジョニングされたときにセットアップ スクリプトを呼び出すようにします。 次に例を示します。
+
+```json
+"setupScripts":{
+    "scripts":{
+        "creationScript":{
+        "scriptSource":"workspaceStorage",
+        "scriptData":"[parameters('creationScript.location')]",
+        "scriptArguments":"[parameters('creationScript.cmdArguments')]"
+        }
+    }
+}
+```
+
+代わりに、Resource Manager テンプレートでスクリプトをインラインで指定することもできます。  shell コマンドを使用して、ノートブック ファイル共有にアップロードされた任意の依存関係を参照できます。  インライン文字列を使用する場合、スクリプトの作業ディレクトリは */mnt/batch/tasks/shared/LS_root/mounts/clusters/**ciname**/code/Users* になります。
+
+たとえば、次のように `scriptData` の base64 でエンコードされたコマンド文字列を指定します。
+
+```json
+"setupScripts":{
+    "scripts":{
+        "creationScript":{
+        "scriptSource":"inline",
+        "scriptData":"[base64(parameters('inlineCommand'))]",
+        "scriptArguments":"[parameters('creationScript.cmdArguments')]"
+        }
+    }
+}
+```
+
+### <a name="setup-script-logs"></a>セットアップ スクリプトのログ
+
+セットアップ スクリプトの実行のログは、コンピューティング インスタンスの詳細ページにある [ログ] フォルダーに表示されます。 ログは、ログ \<compute instance name> フォルダーの下のノートブック ファイル共有に保存されます。 特定のコンピューティング インスタンスのスクリプト ファイルとコマンド引数は、詳細ページに表示されます。
 
 ## <a name="manage"></a>管理する
 

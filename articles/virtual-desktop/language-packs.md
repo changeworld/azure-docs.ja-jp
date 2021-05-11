@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: db1ac3f5de507a5cfdbfec7216afea9a0f4ac541
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 87a12ec80c19e34cfb1bebfe29d14b118ae1eb93
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515041"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317237"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
@@ -55,7 +55,7 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
           - [Windows 10 バージョン 2004 または 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
           - [Windows 10 バージョン 2004 または 20H2 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
           - [Windows 10 バージョン 2004 または 20H2 **2C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
-          - [Windows 10 バージョン 2004 または 20H2 **3C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2103C.iso)
+          - [Windows 10 バージョン 2004 または 20H2 **4B** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 
@@ -176,51 +176,38 @@ Set-WinUserLanguageList $LanguageList -force
 
 スクリプトの実行が完了したら、言語パックが正しくインストールされていることを確認します。そのためには、 **[スタート]**  >  **[設定]**  >  **[時刻と言語]**  >  **[言語]** に移動します。 そこに言語ファイルがある場合は、完了しています。
 
-Windows イメージに言語を追加したら、追加した言語がサポートされるように受信トレイ アプリを更新する必要もあります。 これを行うには、プレインストールされているアプリを受信トレイ アプリ ISO のコンテンツで更新します。 この更新を切断されている (VM からインターネットにアクセスできない) 環境で実行するには、次の PowerShell スクリプト サンプルを使用してプロセスを自動化します。
+Windows イメージに言語を追加したら、追加した言語がサポートされるように受信トレイ アプリを更新する必要もあります。 これを行うには、プレインストールされているアプリを受信トレイ アプリ ISO のコンテンツで更新します。
+VM にインターネット アクセスがない環境でこの更新を実行するには、次の PowerShell スクリプト テンプレートを使用して、プロセスを自動化し、インストールされている受信トレイ アプリのバージョンのみを更新することができます。
 
 ```powershell
 #########################################
 ## Update Inbox Apps for Multi Language##
 #########################################
 ##Set Inbox App Package Content Stores##
-[string]$InboxApps = "F:\"
-##Update Inbox Store Apps##
-$AllAppx = Get-Item $inboxapps\*.appx | Select-Object name
-$AllAppxBundles = Get-Item $inboxapps\*.appxbundle | Select-Object name
-$allAppxXML = Get-Item $inboxapps\*.xml | Select-Object name
-foreach ($Appx in $AllAppx) {
-    $appname = $appx.name.substring(0,$Appx.name.length-5)
-    $appnamexml = $appname + ".xml"
-    $pathappx = $InboxApps + "\" + $appx.Name
-    $pathxml = $InboxApps + "\" + $appnamexml
-    
-    if($allAppxXML.name.Contains($appnamexml)){
-    
-    Write-Host "Handeling with xml $appname"  
-  
-    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
+[string] $AppsContent = "F:\"
+
+##Update installed Inbox Store Apps##
+foreach ($App in (Get-AppxProvisionedPackage -Online)) {
+    $AppPath = $AppsContent + $App.DisplayName + '_' + $App.PublisherId
+    Write-Host "Handling $AppPath"
+    $licFile = Get-Item $AppPath*.xml
+    if ($licFile.Count) {
+        $lic = $true
+        $licFilePath = $licFile.FullName
     } else {
-      
-      Write-Host "Handeling without xml $appname"
-      
-      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
+        $lic = $false
+    }
+    $appxFile = Get-Item $AppPath*.appx*
+    if ($appxFile.Count) {
+        $appxFilePath = $appxFile.FullName
+        if ($lic) {
+            Add-AppxProvisionedPackage -Online -PackagePath $appxFilePath -LicensePath $licFilePath 
+        } else {
+            Add-AppxProvisionedPackage -Online -PackagePath $appxFilePath -skiplicense
+        }
     }
 }
-foreach ($Appx in $AllAppxBundles) {
-    $appname = $appx.name.substring(0,$Appx.name.length-11)
-    $appnamexml = $appname + ".xml"
-    $pathappx = $InboxApps + "\" + $appx.Name
-    $pathxml = $InboxApps + "\" + $appnamexml
-    
-    if($allAppxXML.name.Contains($appnamexml)){
-    Write-Host "Handeling with xml $appname"
-    
-    Add-AppxProvisionedPackage -Online -PackagePath $pathappx -LicensePath $pathxml
-    } else {
-       Write-Host "Handeling without xml $appname"
-      Add-AppxProvisionedPackage -Online -PackagePath $pathappx -skiplicense
-    }
-}
+
 ```
 
 >[!IMPORTANT]

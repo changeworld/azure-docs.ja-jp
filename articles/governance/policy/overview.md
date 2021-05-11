@@ -1,14 +1,14 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 01/14/2021
+ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d261cc958a104b4a11a6f82a8f86352159c0275
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98220730"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323701"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 

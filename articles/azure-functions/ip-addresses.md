@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 30b45394ea620d05a89c3b2fd747573f1ea8017d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608233"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205001"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -92,14 +92,24 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="outbound-ip-address-changes"></a>送信 IP アドレスの変更
 
-次の操作を行うと、関数アプリの一連の使用可能な送信 IP アドレスが変更される場合があります。
+送信 IP アドレスの相対的な安定性は、ホスティング プランによって異なります。  
+
+### <a name="consumption-and-premium-plans"></a>従量課金および Premium プラン
+
+自動スケールの動作により、送信 IP は、[従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行しているときにいつでも変更できます。 
+
+許可リストに追加する必要がある場合など、関数アプリの送信 IP アドレスを制御する必要がある場合は、Premium プランに[仮想ネットワーク NAT ゲートウェイ](#virtual-network-nat-gateway-for-outbound-static-ip)を実装することを検討してください。
+
+### <a name="dedicated-plans"></a>専用プラン
+
+専用 (App Service) プランで実行する場合は、次のような場合に、関数アプリに使用できる送信 IP アドレスのセットが変更される可能性があります。
 
 * 着信 IP アドレスが変更される可能性のあるアクションを実行する。
-* App Service プランの価格レベルを変更する。 すべての価格レベルについて、アプリで使用可能なすべての送信 IP アドレスのリストが `possibleOutboundIPAddresses` プロパティに含まれています。 「[IP アドレスを見つける](#find-outbound-ip-addresses)」を参照してください。
+* 専用 (App Service) プランの価格レベルを変更する。 すべての価格レベルについて、アプリで使用可能なすべての送信 IP アドレスのリストが `possibleOutboundIPAddresses` プロパティに含まれています。 「[IP アドレスを見つける](#find-outbound-ip-addresses)」を参照してください。
 
-関数アプリが[従量課金プラン](consumption-plan.md)または [Premium プラン](functions-premium-plan.md)で実行される場合、送信 IP アドレスは、[上記のような](#inbound-ip-address-changes)アクションを実行しなくても、変更される場合があります。
+#### <a name="forcing-an-outbound-ip-address-change"></a>送信 IP アドレスの変更の強制
 
-送信 IP アドレスの変更を意図的に強制するには、次の手順に従います。
+専用 (App Service) プランの送信 IP アドレスの変更を意図的に強制するには、次の手順に従います。
 
 1. App Service プランの価格レベルを Standard から上げるか、または Premium v2 から下げます。
 
@@ -123,12 +133,12 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 受信と送信の両方の IP アドレスを完全に制御するには、[App Service Environment](../app-service/environment/intro.md) (App Service プランの[分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service 環境の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
 
-関数アプリが App Service Environment 内で実行されるかどうかを確認するには、次のようにします。
+関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
-4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service Environment の価格レベルは、 **[Isolated]** です。
+4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
  
 別の方法として、[Cloud Shell](../cloud-shell/quickstart.md) を使用することもできます。
 
@@ -136,7 +146,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service Environment `sku` は `Isolated` です。
+App Service 環境 `sku` は `Isolated` です。
 
 ## <a name="next-steps"></a>次のステップ
 

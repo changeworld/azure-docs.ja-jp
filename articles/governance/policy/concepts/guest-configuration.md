@@ -1,14 +1,14 @@
 ---
 title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
-ms.date: 01/14/2021
+ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e1867c2ba86d237a7b8937b689fef11235c1a202
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 863f85c1eeeed381eda12a066a247c2605a1d68f
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073703"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326131"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -116,7 +116,7 @@ Azure Arc によって接続されている Azure の外部にあるノードで
 **AuditIfNotExists** ポリシー定義は、マシン上のすべての要件が満たされるまで、コンプライアンスの結果を返しません。 要件については、「[Azure 仮想マシンの要件をデプロイする](#deploy-requirements-for-azure-virtual-machines)」セクションをご覧ください
 
 > [!IMPORTANT]
-> 以前のリリースのゲスト構成では、**DeployIfNoteExists** 定義と **AuditIfNotExists** 定義を組み合わせるためにイニシアチブが必要でした。 **DeployIfNotExists** 定義は不要になりました。 定義とイニシアチブには `[Deprecated]` ラベルが付けられていますが、既存の割り当ては引き続き機能します。 詳細については、ブログ記事の「[ゲスト構成の監査ポリシーに関してリリースされた重要な変更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)」をご覧ください。
+> ゲスト構成の以前のリリースでは、**DeployIfNotExists** 定義と **AuditIfNotExists** 定義を組み合わせるためにイニシアティブが必要でした。 **DeployIfNotExists** 定義は不要になりました。 定義とイニシアチブには `[Deprecated]` ラベルが付けられていますが、既存の割り当ては引き続き機能します。 詳細については、ブログ記事の「[ゲスト構成の監査ポリシーに関してリリースされた重要な変更](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316)」をご覧ください。
 
 ### <a name="what-is-a-guest-assignment"></a>ゲストの割り当てとは
 

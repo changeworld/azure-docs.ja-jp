@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cff76672c7c687d1755996ba0dbf81daf947b8c2
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: eeb189434eea2bf65bdbbc65f0fde5e922e95f14
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070625"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175408"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -290,6 +290,6 @@ public class ResponseContent
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
 - [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](api-connectors-overview.md)
-- [チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)
-- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-validation.md)
+- [チュートリアル: API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
+- [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-exchange.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)

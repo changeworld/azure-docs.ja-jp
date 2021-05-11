@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/27/2021
+ms.date: 04/29/2021
 ms.author: memildin
-ms.openlocfilehash: 35873711753400132f47933f009365cc6383429b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f9f8078bbd3410a3dac5eb3a6a8aeb3a8fe82b54
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123485"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278886"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -28,19 +28,40 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 ## <a name="april-2021"></a>2021 年 4 月
 
 4 月の更新プログラムには次のものが含まれます。
-- [最近プルされたコンテナー レジストリ イメージが毎週再スキャンされるようになる (一般提供)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
-- [Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
-- [Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
+- [更新された [リソース正常性] ページ (プレビュー)](#refreshed-resource-health-page-in-preview)
+- [最近プルされたコンテナー レジストリ イメージを毎週再スキャン (一般提供 (GA) リリース)](#container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga)
+- [Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)
+- [Azure Defender と Microsoft Defender for Endpoint の統合で、Windows Server 2019 および Windows 10 Virtual Desktop (WVD) をサポート (一般提供 (GA) リリース)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga)
+- [Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview)
 - [追加された 3 つの規制コンプライアンス標準: Azure CIS 1.3.0、CMMC レベル 3、New Zealand ISM Restricted](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
-- [ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)](#four-new-recommendations-related-to-guest-configuration-preview)
+- [ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)](#four-new-recommendations-related-to-guest-configuration-in-preview)
 - [CMK の推奨事項をベスト プラクティスのセキュリティ コントロールに移動](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 個の Azure Defender アラートを非推奨化](#11-azure-defender-alerts-deprecated)
 - ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 - [[Azure Defender for SQL on machine] タイルを Azure Defender ダッシュボードから削除](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 - [21 個の推奨事項をセキュリティ コントロール間で移動](#21-recommendations-moved-between-security-controls)
 
+### <a name="refreshed-resource-health-page-in-preview"></a>更新された [リソース正常性] ページ (プレビュー)
 
-### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>最近プルされたコンテナー レジストリ イメージが毎週再スキャンされるようになる (一般提供)
+Security Center のリソース正常性が拡張、強化、改善され、1 つのリソースの全体的な正常性のスナップショット ビューが提供されるようになりました。 
+
+リソースに関する詳細情報と、そのリソースに適用されるすべての推奨事項を確認できます。 また、[Azure Defender](azure-defender.md) を使用している場合は、その特定のリソースに関する未処理のセキュリティ アラートも表示されます。
+
+リソースの [リソース正常性] ページを開くには、[資産インベントリ ページ](asset-inventory.md)でリソースを選択します。
+
+Security Center のポータル ページにあるこのプレビュー ページには、次の情報が表示されます。
+
+1. **リソース情報** - リソースが属するリソース グループとサブスクリプション、地理的な場所など。
+1. **適用されているセキュリティ機能** - そのリソースに対して Azure Defender が有効になっているかどうか。
+1. **未処理の推奨事項とアラートの数** - 未処理のセキュリティに関する推奨事項と Azure Defender アラートの数。
+1. **実行可能な推奨事項とアラート** - リソースに適用される推奨事項とアラートが 2 つのタブに一覧表示されます。
+
+:::image type="content" source="media/investigate-resource-health/resource-health-page-virtual-machine.gif" alt-text="仮想マシンの正常性情報を示す Azure Security Center の [リソース正常性] ページ":::
+
+詳細については、「[チュートリアル: リソースの正常性を調査する](investigate-resource-health.md)」をご覧ください。
+
+
+### <a name="container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga"></a>最近プルされたコンテナー レジストリ イメージを毎週再スキャン (一般提供 (GA) リリース)
 
 コンテナー レジストリ用 Azure Defender には、組み込みの脆弱性スキャナーが含まれています。 このスキャナーは、レジストリにプッシュされたイメージと、過去 30 日以内にプルされたすべてのイメージを即座にスキャンします。
 
@@ -51,7 +72,7 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 このスキャナーの詳細については、「[コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする](defender-for-container-registries-usage.md)」を参照してください。
 
 
-### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview"></a>Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)
 
 Azure Defender for Kubernetes は、クラスターがどこにデプロイされていても防御できるように、脅威保護機能が拡張されています。 これは、[Azure Arc 対応 Kubernetes](../azure-arc/kubernetes/overview.md) とその新しい[拡張機能](../azure-arc/kubernetes/extensions.md)との統合によって実現されています。 
 
@@ -72,7 +93,19 @@ Azure Security Center、Azure Defender、および Azure Arc 対応 Kubernetes �
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Arc 対応 Kubernetes クラスター用の Azure Defender 拡張機能をデプロイするための Azure Security Center の推奨事項。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
 
 
-### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)
+### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga"></a>Azure Defender と Microsoft Defender for Endpoint の統合で、Windows Server 2019 および Windows 10 Virtual Desktop (WVD) をサポート (一般提供 (GA) リリース)
+
+Microsoft Defender for Endpoint は、クラウドで提供される包括的なエンドポイント セキュリティ ソリューションです。 リスクベースによる脆弱性の管理と評価、およびエンドポイントでの検出と対応 (EDR) を提供します。 Defender for Endpoint を Azure Security Center と併用するメリットの全容については、「[Security Center に統合された EDR ソリューション Microsoft Defender for Endpoint でエンドポイントを保護する](security-center-wdatp.md)」を参照してください。
+
+Windows サーバー上のサーバーに Azure Defender を有効にした場合、プランに Defender for Endpoint のライセンスが含まれています。 サーバーに対して既に Azure Defender を有効にしており、サブスクリプションに Windows 2019 サーバーが存在する場合には、今回の更新により自動的に Defender for Endpoint が追加されます。 特に何か操作をする必要はありません。 
+
+このたびサポートが拡張され、Windows Server 2019 と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) が含まれるようになりました。
+
+> [!NOTE]
+> Windows Server 2019 のマシンで Defender for Endpoint を有効にする場合には、マシンが「[Microsoft Defender for Endpoint 統合を有効にする](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)」に記載されている前提条件を満たしていることを確認してください。
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview"></a>Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)
 
 [Azure defender For Resource Manager](defender-for-resource-manager-introduction.md) と [Azure Defender for DNS](defender-for-dns-introduction.md) を有効にするプロセスを簡略化するために、2 つの新しい推奨事項が追加されました。
 
@@ -102,7 +135,7 @@ Azure Security Center で使用するための 3 つの標準が追加されま�
 - [チュートリアル:規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)
 - [FAQ - 規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
-### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)
+### <a name="four-new-recommendations-related-to-guest-configuration-in-preview"></a>ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)
 
 Azure の[ゲスト構成拡張機能](../governance/policy/concepts/guest-configuration.md)により、仮想マシンのゲスト内設定の確実な強化を支援するように Security Center に対してレポートが行われます。 この拡張機能は Arc 接続マシン エージェントに含まれているため、Arc 対応サーバーには必要ありません。 この拡張機能を使用するには、マシンにシステムマネージド ID が必要です。
 

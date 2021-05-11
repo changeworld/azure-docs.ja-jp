@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 04/28/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 57dec4187ea42476ff1c0a993b751a7389da5639
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 033893ac0f939929eda597a1eb978e0dde4c57d9
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490354"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108181492"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)
 
@@ -96,21 +96,42 @@ Linux クライアントは、Azure 仮想マシン (VM) またはオンプレ�
 > [!IMPORTANT]
 > オンプレミスのネットワークから接続している場合は、クライアントがポート 111 および 2048 を介した発信を許可していることを確認します。 NFS 3.0 プロトコルでは、これらのポートが使用されます。
 
-## <a name="azure-storage-features-not-yet-supported"></a>まだサポートされていない Azure Storage の機能
+<a id="azure-storage-features-not-yet-supported"></a>
 
-アカウントで NFS 3.0 プロトコルを有効にした場合、次の Azure Storage 機能はサポートされません。 
+## <a name="support-for-azure-storage-features"></a>Azure Storage 機能のサポート
 
-- Azure Active Directory (AD) セキュリティ
+次の表は、NFS 3.0 機能が有効になっているアカウントにおける Azure Storage 機能の現在のサポート レベルを示しています。 
 
-- POSIX と同様のアクセス制御リスト (ACL)
+サポートは継続的に拡張されるため、この表に示されている項目の状態は時間の経過と共に変化します。
 
-- 既存のストレージ アカウントで NFS 3.0 のサポートを有効にする機能
+| ストレージ機能 | Premium | Standard |ストレージ機能 | Premium | Standard |
+|-----------------|---------|----------|----------------|---------|----------|
+| [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)  | ✔️ |  ⛔ | [Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2) | ⛔ |    ⛔ |
+| [Azure Blob Storage のアクセス層](storage-blob-storage-tiers.md) |    ✔️ |    ⛔ | [BLOB インデックス タグ](storage-blob-index-how-to.md) |   ⛔ | ⛔ |
+| [Azure Blob Storage ライフサイクル管理](storage-lifecycle-management-concepts.md) | ✔️  |   ⛔ | [Azure Storage Analytics のログ](../common/storage-analytics-logging.md?toc=/azure/storage/blobs/toc.json) | ⛔ |   ⛔ |
+|  [Azure Storage BLOB インベントリ](blob-inventory.md) |  ✔️  |   ⛔ | [変更フィード](storage-blob-change-feed.md) |    ⛔ | ⛔ |
+| [Azure Monitor](monitor-blob-storage.md) |    ✔️ |    ⛔ | [BLOB のバージョン管理](versioning-enable.md) | ⛔ |   ⛔ |
+| [BLOB のスナップショット](snapshots-overview.md) | ✔️  |   ⛔ | [ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md) | ⛔ |    ⛔ |
+| [プライベート エンドポイント](../common/storage-private-endpoints.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [Azure Backup 統合](/azure/backup/blob-backup-overview) | ⛔ |    ⛔ |
+| [サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md) | ✔️  |  ⛔ | [コンテナーの論理的な削除](soft-delete-container-overview.md) |   ⛔ | ⛔ |
+| [ファイアウォール規則](../common/storage-network-security.md?toc=/azure/storage/blobs/toc.json) | ✔️  | ⛔ | [BLOB の論理的な削除](soft-delete-blob-overview.md) | ⛔ | ⛔ |
+| [共有キーによる認可の禁止](../common/shared-key-authorization-prevent.md)  | ✔️ |    ⛔ | [ライフサイクル管理のための最終アクセス時刻の追跡](storage-lifecycle-management-concepts.md#move-data-based-on-last-accessed-date-preview) |  ⛔|  ⛔ |
+| [Azure Storage の暗号化のためのカスタマー マネージド キー](../common/customer-managed-keys-overview.md) |   ✔️ |    ⛔ | [Azure Storage の暗号化のためのカスタマー指定のキー](encryption-customer-provided-keys.md)  |  ⛔ | ⛔ |
+| [不変 BLOB ストレージ](storage-blob-immutable-storage.md) | ✔️    | ⛔ | [静的な Web サイトのホスティング](storage-blob-static-website.md) | ⛔  |    ⛔ |
+| [追加 BLOB](storage-blobs-introduction.md#blobs) | ✔️   |  ⛔ | [ページ BLOB](storage-blobs-introduction.md#blobs) | ⛔ | ⛔ |
+| [Azure Active Directory (AD) セキュリティ](../common/storage-auth-aad.md?toc=/azure/storage/blobs/toc.json) | ⛔ | ⛔ | [暗号化スコープ](encryption-scope-overview.md)  |    ⛔ | ⛔ |
+| [ブロック BLOB のオブジェクト レプリケーション](object-replication-overview.md) | ⛔  |   ⛔ | [カスタマー マネージド アカウントのフェールオーバー](../common/storage-disaster-recovery-guidance.md?toc=/azure/storage/blobs/toc.json) | ⛔ |    ⛔ |
 
-- ストレージ アカウントで NFS 3.0 のサポートを無効にする機能 (有効にした後)
-
-- REST API または SDK を使用して BLOB に書き込む機能。 
   
-## <a name="nfs-30-features-not-yet-supported"></a>まだサポートされていない NFS 3.0 の機能
+## <a name="known-issues"></a>既知の問題
+
+- 既存のストレージ アカウントで NFS 3.0 のサポートを有効にすることはできません。
+
+- ストレージ アカウントで NFS 3.0 のサポートを有効にした後、それを無効にすることはできません。
+
+-  Azure portal または Azure Storage Explorer でファイルを表示することはできません。 ファイルとディレクトリを一覧表示するには、[NFS 3.0 プロトコルを使用して Blob Storage コンテナーをマウントする](network-file-system-protocol-support-how-to.md)か、[Blob service REST API](/rest/api/storageservices/blob-service-rest-api) を使用します。
+
+### <a name="nfs-30-features-not-yet-supported"></a>まだサポートされていない NFS 3.0 の機能
 
 次の NFS 3.0 の機能はまだサポートされていません。
 
@@ -128,7 +149,7 @@ Linux クライアントは、Azure 仮想マシン (VM) またはオンプレ�
 
 - コンテナーを読み取り専用としてエクスポートする
 
-## <a name="nfs-30-clients-not-yet-supported"></a>まだサポートされていない NFS 3.0 クライアント
+### <a name="nfs-30-clients-not-yet-supported"></a>まだサポートされていない NFS 3.0 クライアント
 
 次の NFS 3.0 クライアントはまだサポートされていません。
 

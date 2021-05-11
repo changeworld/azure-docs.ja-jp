@@ -4,12 +4,12 @@ description: オンプレミスまたは Microsoft Azure Web アプリケーシ�
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e832da335453151ee60a458cb259d4add15d6e1d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102045294"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228177"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -90,7 +90,7 @@ Web ページの場合、Application Insights JavaScript SDK によって AJAX �
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>詳細な SQL 追跡で完全な SQL クエリを取得する
 
 > [!NOTE]
-> Azure Functions には、SQL テキスト コレクションを有効にするための別の設定が必要です。詳細については、[Azure Functions の監視の構成](../../azure-functions/configure-monitoring.md)に関するページを参照してください。
+> Azure Functions には、SQL テキスト コレクションを有効にするための別の設定が必要です。[host.json](../../azure-functions/functions-host-json.md#applicationinsights) 内の `applicationInsights` で `"EnableDependencyTracking": true,` および `"DependencyTrackingOptions": { "enableSqlCommandTextInstrumentation": true }` を設定します。
 
 SQL 呼び出しの場合、サーバーとデータベースの名前が常に収集され、収集された `DependencyTelemetry` の名前として保存されます。 "データ" という名称の追加フィールドがあります。これに完全な SQL クエリ テキストを含めることができます。
 

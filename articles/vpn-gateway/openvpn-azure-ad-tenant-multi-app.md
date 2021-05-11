@@ -1,18 +1,19 @@
 ---
-title: 'VPN Gateway: さまざまなユーザー グループの Azure AD テナント: Azure AD 認証'
-description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
+title: 'P2S OpenVPN プロトコル接続用の Azure AD テナントを作成する方法: Azure AD 認証'
+titleSuffix: Azure VPN Gateway
+description: P2S OpenVPN 認証用の Azure AD テナントを設定し、さまざまなユーザーとグループに異なるアクセスを許可するように複数のアプリを Azure AD に登録する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1305ca603aef63dafcc7b055d55e3f0fe281f4fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cfb89358cf733cb17fe4a496f1799dc0952fc4f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91819678"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286440"
 ---
 # <a name="create-an-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Active Directory (AD) テナントを作成する
 

@@ -9,18 +9,18 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 04/06/2021
 ms.topic: overview
-ms.openlocfilehash: 220618f167237d5937766eb5e28b9b6569cef76a
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 91bf9674bfc49458dd2e8b1824b521a37b446a0a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031350"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289284"
 ---
 #  <a name="deploy-azure-arc-data-controller--direct-connect-mode"></a>Azure Arc データ コントローラーをデプロイする | 直接接続モード
 
 この記事では、Azure Arc データ コントローラーを直接接続モードでデプロイする方法について説明します (この機能は現在プレビュー段階です)。 
 
-現在は、Azure Arc データ コントローラーを Azure portal から作成できます。 Azure Arc 対応データ サービス向けのその他のツールでは、直接接続モードでのデータ コントローラーの作成がサポートされていません。 詳細については、「[既知の問題 - Azure Arc 対応データ サービス (プレビュー)](known-issues.md)」を参照してください。
+現在は、Azure Arc データ コントローラーを Azure portal から作成できます。 Azure Arc 対応データ サービス向けのその他のツールでは、直接接続モードでのデータ コントローラーの作成がサポートされていません。 詳細については、[リリース ノート](release-notes.md)をご覧ください。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 

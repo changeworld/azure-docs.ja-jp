@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: e5d335ee14709ec330405419f5be8ac5fbd6ce75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83d8d6498a5ec4906f7cdd7187ae88e4a2f45126
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943776"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318029"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>チュートリアル:VSCode で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
@@ -84,7 +84,9 @@ Azure に接続するには、これらの手順に従います。
 
 4. Azure アカウントに[接続](#connect-to-your-spark-pools)します (まだ接続していない場合)。
 
-5. 現在のスクリプト ファイルの既定の Spark プールにする Spark プールを選択します。 ツールによって、構成ファイルである **.VSCode\settings.json** が自動的に更新されます。
+5. 現在のスクリプト ファイルの既定の Spark プールにする Spark プールを選択します。 
+
+6. **Synapse: PySpark Interactive** を使用してこのファイルを送信します。 ツールによって、構成ファイルである **.VSCode\settings.json** が自動的に更新されます。
 
      ![既定のクラスター構成を設定する](./media/vscode-tool-synapse/set-default-cluster-configuration.png)
 

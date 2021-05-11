@@ -6,15 +6,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 04/29/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: f32c43b08b8259467fb00a75ca2e7089d7ec87e8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60d42598da2e0b7f29bfea832d27dc5156761556
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107485622"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108322061"
 ---
 # <a name="key-next-steps-after-accepting-your-microsoft-customer-agreement"></a>Microsoft 顧客契約への同意後に重要となる次のステップ
 
@@ -45,7 +45,7 @@ ms.locfileid: "107485622"
 
 サブスクリプションの移動後、管理下のユーザーに関して、サブスクリプションへのアクセスに変更が生じることはありません。 そのサブスクリプションで発生したすべての使用は、新しい契約の下で請求書がルーティングされます。
 
-Azure サービスの利用を開始すると、各月の 5 日に、Microsoft 顧客契約の下で新しい請求書が生成されます。[課金プロファイルで発注番号を必ず更新](../manage/change-azure-account-profile.md)してください。 既定の支払い方法は電信送金です。 遅延が生じないように支払い方法を設定する方法については、[サブスクリプションの支払い方法](../understand/pay-bill.md#wire-bank-details)に関するセクションを参照してください。 この記事では、必要な銀行支払い情報を取得する方法について説明します。
+Azure サービスの利用を開始すると、各月の 5 日に、Microsoft 顧客契約の下で新しい請求書が生成されます。 既定の支払い方法は電信送金です。 遅延が生じないように支払い方法を設定する方法については、[サブスクリプションの支払い方法](../understand/pay-bill.md#wire-bank-details)に関するセクションを参照してください。 この記事では、必要な銀行支払い情報を取得する方法について説明します。
 
 ## <a name="confirm-payment-details"></a>支払いの詳細を確認する
 
@@ -67,6 +67,22 @@ Azure サービスの利用を開始すると、各月の 5 日に、Microsoft �
 ## <a name="complete-outstanding-payments"></a>未処理の支払いを完了する
 
 以前使用していた[従量課金制](../understand/download-azure-invoice.md)または [EA](../manage/ea-portal-enrollment-invoices.md) 契約のサブスクリプションの請求書について、未処理の支払いがあれば、それらを完了する必要があります。 詳細については、[Azure における Microsoft 顧客契約の請求書の理解](../understand/mca-understand-your-invoice.md#billing-period)に関するセクションを参照してください。
+
+## <a name="update-a-po-number"></a>発注番号を更新する
+
+課金プロファイルの請求書には、既定では発注番号が関連付けられません。 課金プロファイルの請求書に発注番号が表示されるのは、課金プロファイルの発注番号を追加した後になります。
+
+課金プロファイルの発注番号を追加または変更するには、次の手順に従います。
+
+1.  Azure portal にサインインします。
+1.  「**コストの管理と請求**」を検索し、 **[課金スコープ]** を選択します。
+1.  ご使用の課金スコープを選択します。
+1.  左側のメニューで、 **[課金]** の **[課金プロファイル]** を選択します。
+1.  適切な課金プロファイルを選択します。
+1.  左側のメニューの **[設定]** で、 **[プロパティ]** を選択します。
+1.  **[発注番号の更新]** を選択します。
+1.  発注番号を入力し、 **[更新]** を選択します。
+
 
 ## <a name="update-your-tax-id"></a>税 ID を更新する
 

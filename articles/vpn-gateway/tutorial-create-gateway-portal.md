@@ -1,17 +1,18 @@
 ---
 title: 'チュートリアル - VPN ゲートウェイを作成して管理する: Azure portal'
-description: このチュートリアルでは、ポータルを使用して Azure VPN Gateway を作成、デプロイ、管理する方法について説明します。
+description: このチュートリアルでは、ポータルを使用して Azure VPN ゲートウェイを作成、デプロイ、管理する方法について説明します。
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: 820482a268af038737557c517ccda086cd65d943
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 29f479444679d1f76dc90eec4546539faea5337f
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880561"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202571"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>チュートリアル:Azure portal を使用して VPN ゲートウェイを作成、管理する
 
@@ -28,7 +29,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 次の図は、このチュートリアルの一環として作成する仮想ネットワークと VPN ゲートウェイを示しています。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet と VPN ゲートウェイの図":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/gateway-diagram.png" alt-text="VNet と VPN ゲートウェイの図。":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,7 +75,7 @@ Azure VPN ゲートウェイは、お客様のオンプレミスと Azure 間の
 
 ゲートウェイのパブリック IP アドレスは、ご利用のゲートウェイの **[概要]** ページで確認できます。
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="[概要] ページ":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="[概要] ページのスクリーンショット。":::
 
 パブリック IP アドレス オブジェクトに関する詳しい情報を表示するには、 **[パブリック IP アドレス]** の横にある名前 (または IP アドレス) リンクをクリックします。
 

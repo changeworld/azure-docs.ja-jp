@@ -9,101 +9,44 @@ ms.reviewer: luquinta
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.date: 12/22/2020
-ms.openlocfilehash: f414c4a80750faac590a0c4c734f3634a85b79f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/2/2021
+ms.openlocfilehash: 16d5cbc1d48b4559ac34314582b9c01b7c6bb58c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97740931"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166651"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning のキュレーションされた環境
 
 この記事では、Azure Machine Learning のキュレーション環境の一覧を示します。 キュレートされた環境は Azure Machine Learning から提供され、既定でお使いのワークスペースで利用できます。 Azure Machine Learning SDK の最新バージョンを使用したキャッシュ済みの Docker イメージでサポートされるため、実行準備コストが削減され、デプロイ時間を短縮できます。 このような環境を使用すれば、さまざまな機械学習フレームワークをすぐに使い始めることができます。
 
 > [!NOTE]
-> このリストは、2020 年 12 月時点の情報で更新されています。 環境とその依存関係の最新の一覧は、Python SDK を使用して取得してください。 詳細については、[環境に関する記事](./how-to-use-environments.md#use-a-curated-environment)を参照してください。
-
-## <a name="automl"></a>AutoML
-
-- AzureML-AutoML
-- AzureML-AutoML-DNN
-- AzureML-AutoML-DNN-GPU
-- AzureML-AutoML-DNN-Vision-GPU
-- AzureML-AutoML-GPU
-
-## <a name="chainer"></a>Chainer
-
-- AzureML-Chainer-5.1.0-CPU
-- AzureML-Chainer-5.1.0-GPU
-
-## <a name="dask"></a>Dask
-
-- AzureML-Dask-CPU
-- AzureML-Dask-GPU
-
-## <a name="deepspeed"></a>DeepSpeed
-
-- AzureML-DeepSpeed-0.3-GPU
-
-## <a name="hyperdrive"></a>Hyperdrive
-
-- AzureML-Hyperdrive-ForecastDNN
-
-## <a name="minimal"></a>最小
-
-- AzureML-Minimal
-
-## <a name="pyspark"></a>PySpark
-
-- AzureML-PySpark-MmlSpark-0.15
+> このリストは、2021 年 4 月時点の情報で更新されています。 環境とその依存関係の最新の一覧は、Python SDK または CLI を使用して取得してください。 詳細については、[環境に関する記事](./how-to-use-environments.md#use-a-curated-environment)を参照してください。 この新しいセットのリリース後、以前のキュレーションされた環境は非表示になりますが、引き続き使用することができます。 
 
 ## <a name="pytorch"></a>PyTorch
-
-- AzureML-PyTorch-1.0-CPU
-- AzureML-PyTorch-1.0-GPU
-- AzureML-PyTorch-1.1-CPU
-- AzureML-PyTorch-1.1-GPU
-- AzureML-PyTorch-1.2-CPU
-- AzureML-PyTorch-1.2-GPU
-- AzureML-PyTorch-1.3-CPU
-- AzureML-PyTorch-1.3-GPU
-- AzureML-PyTorch-1.4-CPU
-- AzureML-PyTorch-1.4-GPU
-- AzureML-PyTorch-1.5-CPU
-- AzureML-PyTorch-1.5-GPU
-- AzureML-PyTorch-1.6-CPU
-- AzureML-PyTorch-1.6-GPU
+- AzureML-Pytorch1.7-Cuda11-OpenMpi4.1.0-py36
+     - Azure ML SDK および追加の python パッケージを含む PyTorch を使用したディープ ラーニング用の環境。
+     - PyTorch のバージョン: 1.7
+     - Python のバージョン: 3.6.9
+     - 基本イメージ: mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04
+     - CUDA のバージョン: 11.0.3
+     - OpenMPI: 4.1.0
 
 ## <a name="scikit"></a>Scikit
-
-- AzureML-Scikit-learn-0.20.3
+- AzureML-Scikit-learn0.20.4-Cuda11-OpenMpi4.1.0-py36
+     - 回帰、クラスタリング、Scikit-learn を用いた分類などのタスクのための環境。 Azure ML SDK と追加の python パッケージが含まれています。
+     - Scikit-learn のバージョン: 20.4
+     - Python のバージョン: 3.6.9
+     - 基本イメージ: mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04
+     - CUDA のバージョン: 11.0.3
+     - OpenMPI: 4.1.0
 
 ## <a name="tensorflow"></a>TensorFlow
-
-- AzureML-TensorFlow-1.10-CPU
-- AzureML-TensorFlow-1.10-GPU
-- AzureML-TensorFlow-1.12-CPU
-- AzureML-TensorFlow-1.12-GPU
-- AzureML-TensorFlow-1.13-CPU
-- AzureML-TensorFlow-1.13-GPU
-- AzureML-TensorFlow-2.0-CPU
-- AzureML-TensorFlow-2.0-GPU
-- AzureML-TensorFlow-2.1-CPU
-- AzureML-TensorFlow-2.1-GPU
-- AzureML-TensorFlow-2.2-CPU
-- AzureML-TensorFlow-2.2-GPU
-- AzureML-TensorFlow-2.3-CPU
-- AzureML-TensorFlow-2.3-GPU
-
-## <a name="triton"></a>Triton
-
-- AzureML-Triton
-
-## <a name="tutorial"></a>チュートリアル
-
-- AzureML-Tutorial
-
-## <a name="vowpalwabbit"></a>VowpalWabbit
-
-- AzureML-VowpalWabbit-8.8.0
+- AzureML-TensorFlow2.4-Cuda11-OpenMpi4.1.0-py36
+     - Azure ML SDK および追加の python パッケージを含む Tensorflow を使用したディープ ラーニング用の環境。
+     - Tensorflow のバージョン: 2.4
+     - Python のバージョン: 3.6.9
+     - 基本イメージ: mcr.microsoft.com/azureml/openmpi4.1.0-cuda11.0.3-cudnn8-ubuntu18.04
+     - CUDA のバージョン: 11.0.3
+     - OpenMPI: 4.1.0

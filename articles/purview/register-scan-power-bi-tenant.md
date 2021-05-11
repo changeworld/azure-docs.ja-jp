@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 402618872c5a3ee8dd01c35021656312f1fe3371
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600864"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228444"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -99,6 +99,7 @@ Power BI テナントの Admin API に接続するための Purview のマネー
     > [!Note]
     > * 個人用ワークスペースを含める、または除外するようにスキャンの構成を切り替えると、PowerBI ソースのフル スキャンがトリガーされます
     > * スキャンの名前の長さは 3 から 63 文字で、文字、数字、アンダースコア、およびハイフンのみを使用できます。 スペースは使用できません。
+    > * スキーマ タブでスキーマが使用できません。
 
 5. スキャン トリガーを設定します。 オプションとしては、 **[1 度]** 、 **[7 日ごと]** 、 **[30 日ごと]** があります。
 

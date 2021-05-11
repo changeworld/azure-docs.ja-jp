@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e8bdb843ab6304f2f38228f37d8709e4084ee52e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b6e6de7eba912fec62adf7c661128afadec0bf6
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775333"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208799"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -24,14 +24,14 @@ ms.locfileid: "107775333"
 
 操作を続行する前に完了しておく前提条件を次に示します。
 
-* この記事でソリューションを Azure SignalR Service と統合する前に、Azure Digital Twins の「[_**チュートリアル: エンド ツー エンドのソリューションを接続する**_](tutorial-end-to-end.md)」を完了する必要があります。それに基づいてこの操作方法の記事が作成されているからです。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。 この操作方法の記事では、Azure SignalR Service を使用してそれらの更新プログラムをサンプル Web アプリに接続します。
+* この記事でソリューションを Azure SignalR Service と統合する前に、Azure Digital Twins の「[チュートリアル: エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)」を完了する必要があります。それに基づいてこの操作方法の記事が作成されているからです。 そのチュートリアルでは、仮想 IoT デバイスで動作してデジタル ツインの更新をトリガーする Azure Digital Twins インスタンスを設定する手順が示されています。 この操作方法の記事では、Azure SignalR Service を使用してそれらの更新プログラムをサンプル Web アプリに接続します。
 
 * そのチュートリアルから次の値が必要になります。
   - Event Grid トピック
   - Resource group
   - App Service/関数アプリの名前
     
-* お使いのコンピューターに [**Node.js**](https://nodejs.org/) がインストールされている必要があります。
+* お使いのコンピューターに [Node.js](https://nodejs.org/) がインストールされている必要があります。
 
 [Azure portal](https://portal.azure.com/) に移動し、Azure アカウントでサインインすることも必要です。
 
@@ -44,13 +44,13 @@ ms.locfileid: "107775333"
 ## <a name="download-the-sample-applications"></a>サンプル アプリケーションのダウンロード
 
 最初に、必要なサンプル アプリをダウンロードします。 次の両方が必要になります。
-* [**Azure Digital Twins のエンドツーエンド サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンスにデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、「[*チュートリアル:エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)」に関するページを参照)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
-    - 「[*前提条件*](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、サンプルの [リンク](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)に移動し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、 *.ZIP* 形式でこれをダウンロードできます。
+* [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンスにデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、「[チュートリアル:エンド ツー エンドのソリューションの接続](tutorial-end-to-end.md)」に関するページを参照)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
+    - 「[前提条件](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、[サンプルにアクセス](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。サンプルは、" *[Code]\(コード\)* " ボタンと、" *[Download ZIP]\(ZIP のダウンロード\)* " を選択して、 *.ZIP* としてダウンロードできます。
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリの図。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
 
     これにより、お使いのマシンにサンプル リポジトリのコピーが **digital-twins-samples-master.zip** としてダウンロードされます。 フォルダーを解凍します。
-* [**SignalR 統合 Web アプリのサンプル**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/):これは、Azure SignalR Service からの Azure Digital Twins テレメトリ データを使用する React の Web アプリのサンプルです。
+* [SignalR 統合 Web アプリのサンプル](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/):これは、Azure SignalR Service からの Azure Digital Twins テレメトリ データを使用する React の Web アプリのサンプルです。
     -  サンプル リンクに移動し、同じダウンロード プロセスを使用してサンプルのコピーをお使いのコンピューターに _**digitaltwins-signalr-webapp-sample-main.zip**_ としてダウンロードします。 フォルダーを解凍します。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -78,7 +78,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
     これにより、そのクラスに含まれる依存関係の問題が解決されます。
 
-1. 「*エンド ツー エンドのソリューションを接続する*」のチュートリアルの「[*アプリの発行*」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
+1. 「*エンド ツー エンドのソリューションを接続する*」のチュートリアルの[「アプリの発行」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
 
 次に、Azure SignalR インスタンスと通信するように関数を構成します。 まず、SignalR インスタンスの **接続文字列** を収集し、関数アプリの設定に追加します。
 
@@ -139,7 +139,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="&quot;negotiate&quot; 関数の Azure portal ビュー。[関数の URL の取得] ボタンと、URL の先頭から &quot;/api&quot; までの部分が強調表示されています":::
 
-1. Visual Studio または任意のコード エディターを使用して、「[*サンプル アプリケーションのダウンロード*](#download-the-sample-applications)」セクションでダウンロードした解凍済みの _**digitaltwins-signalr-webapp-sample-main**_ フォルダーを開きます。
+1. Visual Studio または任意のコード エディターを使用して、「[サンプル アプリケーションのダウンロード](#download-the-sample-applications)」セクションでダウンロードした解凍済みの _**digitaltwins-signalr-webapp-sample-main**_ フォルダーを開きます。
 
 1. *src/App.js* ファイルを開き、`HubConnectionBuilder` 内の関数 URL を、前の手順で保存した **negotiate** 関数の HTTP エンドポイント URL に置き換えます。
 
@@ -210,7 +210,7 @@ az group delete --name <your-resource-group>
 この記事では、Azure Digital Twins のテレメトリ イベントをサンプル クライアントアプリケーションにブロードキャストするように、SignalR で Azure 関数を設定しました。
 
 次に、Azure SignalR Service の詳細を確認します。
-* [*Azure SignalR サービスとは*](../azure-signalr/signalr-overview.md)
+* [Azure SignalR サービスとは](../azure-signalr/signalr-overview.md)
 
 または、Azure Functions を使用した Azure SignalR Service 認証の詳細を確認します。
-* [*Azure SignalR Service の認証*](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)
+* [Azure SignalR Service の認証](../azure-signalr/signalr-tutorial-authenticate-azure-functions.md)

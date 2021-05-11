@@ -9,20 +9,20 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 04/28/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 識別
-ms.openlocfilehash: 36cbd7bd24304871593b107f9b8ed9be02ce46de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3af013000b49690a4edd71c16e607ed57b3ca163
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706794"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291030"
 ---
-# <a name="install-and-run-face-containers-preview"></a>Face コンテナーのインストールと実行 (プレビュー)
+# <a name="install-and-run-face-containers-retiring"></a>Face コンテナーのインストールと実行 (廃止)
 
 > [!IMPORTANT]
-> Face コンテナーのユーザー制限に達しました。 現在、Face コンテナーの新しいアプリケーションは受け付けていません。
+> Face コンテナー プレビューはアプリケーションを受け付けなくなり、2021 年 4 月 29 日の時点で非推奨となりました。 Face コンテナーは 2021 年 7 月 26 日に完全に廃止されます。
 
 Azure Cognitive Services Face API には、画像内の人間の顔を検出して分析する Linux Docker コンテナーが用意されています。 また、鼻や目などの顔のパーツ、性別、年齢のほか、マシンが予測するその他の顔の特徴など、さまざまな属性が識別されます。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認できます。 また、Face では顔をデータベースと照合して、似ている顏や同一の顔が既に存在するかどうかを調べることもできます。 さらに、同じ視覚的特徴を使用して、似た顔をグループに整理することもできます。
 

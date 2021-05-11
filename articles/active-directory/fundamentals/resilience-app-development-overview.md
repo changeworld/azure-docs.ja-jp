@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 5d469ed875a33aa6e451775521cb3ab734a9cdc7
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 2076b2087c7cd90c83e1fe31c024d2c253109ee3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929617"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162187"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>開発する認証と認可のアプリケーションの回復性を向上させる
 
@@ -30,4 +30,4 @@ Microsoft ID では、トークンベースの最新の認証と認可が使用�
 - [ユーザーなしのアプリケーションの回復性を強化する](resilience-daemon-app.md)
 - [ID およびアクセス管理インフラストラクチャで回復性を強化する](resilience-in-infrastructure.md)
 - [CIAM システムで回復性を強化する](resilience-b2c.md)
-- [メタデータの更新に回復性のあるサービスを構築する](../develop/howto-build-services-resilent-to-metadata-refresh.md)
+- [メタデータの更新に回復性のあるサービスを構築する](../develop/howto-build-services-resilient-to-metadata-refresh.md)

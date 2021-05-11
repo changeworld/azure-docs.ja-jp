@@ -1,18 +1,19 @@
 ---
-title: Azure VPN Gateway 用に OpenVPN クライアントを構成する方法 | Microsoft Docs
-description: オペレーティング システム クライアントである Windows、Linux、Mac で Azure VPN Gateway 用に OpenVPN を構成する方法について説明します。
+title: P2S VPN ゲートウェイ用に OpenVPN クライアントを構成する方法
+titleSuffix: Azure VPN Gateway
+description: Azure VPN Gateway 用に OpenVPN クライアントを構成する方法について説明します。 この記事は、Windows、Linux、iOS、および Mac クライアントを構成する際に役立ちます。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4be903fa17ce95e96c82241249b421e1d794c80f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a7b125ef89d5d598e22fc4458b5b1c7f8c4a41c
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89435781"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289356"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する
 

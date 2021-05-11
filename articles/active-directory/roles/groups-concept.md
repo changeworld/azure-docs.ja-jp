@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 04/27/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1fea64305d4735c5bf1bf59b86ae5283600e622
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 236606bea3ff4edcd6786828f4cb2379251a77f8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502200"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203327"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) には、Azure AD の組み込みロールに�
 
 ## <a name="how-this-feature-works"></a>この機能のしくみ
 
-"isAssignableToRole" プロパティを "true" に設定して、新しい Microsoft 365 またはセキュリティ グループを作成します。 このプロパティは、Azure portal でグループを作成するときに、 **[グループに Azure AD ロールを割り当てることができる]** をオンにすることによって有効にすることもできます。 どちらの場合も、ユーザーにロールを割り当てるのと同じ方法で、1 つまたは複数の Azure AD ロールにグループを割り当てることができます。 1 つの Azure AD 組織 (テナント) には、最大 250 個のロール割り当て可能なグループを作成できます。
+"isAssignableToRole" プロパティを "true" に設定して、新しい Microsoft 365 またはセキュリティ グループを作成します。 このプロパティは、Azure portal でグループを作成するときに、 **[グループに Azure AD ロールを割り当てることができる]** をオンにすることによって有効にすることもできます。 どちらの場合も、ユーザーにロールを割り当てるのと同じ方法で、1 つまたは複数の Azure AD ロールにグループを割り当てることができます。 1 つの Azure AD 組織 (テナント) には、最大 300 個のロール割り当て可能なグループを作成できます。
 
 グループのメンバーにロールへの継続的なアクセスを許可しない場合は、Azure AD Privileged Identity Management を使用できます。 Azure AD ロールの有資格メンバーとしてグループを割り当てます。 その後、グループの各メンバーは、そのグループが割り当てられているロールに対して割り当てをアクティブにすることができます。 その後、一定期間、ロールの割り当てをアクティブ化できます。
 

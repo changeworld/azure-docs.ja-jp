@@ -1,18 +1,19 @@
 ---
-title: Azure VPN Gateway:概要 - 高可用性ゲートウェイの構成
-description: この記事では、Azure VPN Gateway を使用した高可用性構成オプションの概要を説明します。
+title: 高可用性ゲートウェイの構成について
+titleSuffix: Azure VPN Gateway
+description: Azure VPN Gateway を使用した高可用性構成オプションについて説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: d193850461eeaa5041e1cfd6d64def503ad676d4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f7b36b65ee14e66de7b35d38d835fb5f2d5dd229
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374762"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205469"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway に関する FAQ
-description: VPN Gateway に関する FAQ です。 Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ。
+description: VPN Gateway のクロスプレミス接続、ハイブリッド構成接続、および仮想ネットワーク ゲートウェイに関してよく寄せられる質問について説明します。 この FAQ には、ポイント対サイト、サイト間、VNet 間の構成設定に関する包括的な情報が含まれています。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 3d29e99f3b539fdbea2a19df7ffc25d4e41a5376
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0fee7a7a58a6aabc7d545981b1f8b56033bf9857
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731260"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108203759"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -258,7 +258,7 @@ ExpressRoute に接続されているブランチと、サイト間 VPN 接続�
 
 ## <a name="virtual-network-faq"></a><a name="faq"></a>Virtual Network FAQ
 
-「 [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
+「[Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
 
 ## <a name="next-steps"></a>次の手順
 

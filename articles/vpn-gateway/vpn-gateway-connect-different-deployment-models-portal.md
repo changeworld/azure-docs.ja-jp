@@ -1,18 +1,19 @@
 ---
-title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: ポータル | Microsoft Docs'
-description: VPN Gateway とポータルを使用して従来の VNets を Resource Manager VNets に接続する手順
+title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: ポータル'
+titleSuffix: Azure VPN Gateway
+description: ポータルを使用してクラシック VNet を Resource Manager VNet に接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9d31bcaad01b9b762e57bd619d45c1f53ffb201e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a8511c09b863550a8e5e71b2a4e6a91a4a3f757c
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376804"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229110"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 

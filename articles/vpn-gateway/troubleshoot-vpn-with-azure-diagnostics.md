@@ -1,18 +1,18 @@
 ---
 title: 診断ログを使用した Azure VPN Gateway のトラブルシューティング
-description: 診断ログを使用した Azure VPN Gateway のトラブルシューティング
+description: 診断ログを使用して Azure VPN Gateway をトラブルシューティングする方法について説明します。
 services: vpn-gateway
 author: stegag
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: stegag
-ms.openlocfilehash: 96a43e9a71d5fe6cdec772ec5e32d5dd639ab068
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8b240b31d7b3fc90ad9dc62eaf49aed6af6dd93d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134393"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229074"
 ---
 # <a name="troubleshoot-azure-vpn-gateway-using-diagnostic-logs"></a>診断ログを使用した Azure VPN Gateway のトラブルシューティング
 

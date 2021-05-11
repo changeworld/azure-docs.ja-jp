@@ -1,0 +1,203 @@
+---
+title: 'チュートリアル: サーバーレス SQL プールを使用して論理データ ウェアハウスを作成する'
+description: このチュートリアルでは、サーバーレス SQL プールを使用して、Azure データ ソース上に論理データ ウェアハウスを簡単に作成する方法を説明します。
+services: synapse-analytics
+author: jovanpop-msft
+ms.service: synapse-analytics
+ms.topic: tutorial
+ms.subservice: sql
+ms.date: 04/28/2021
+ms.author: jovanpop
+ms.reviewer: jrasnick
+ms.openlocfilehash: 4e408832affd84fcde41c79d33ec7f157611ef08
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108166811"
+---
+# <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>チュートリアル: サーバーレス SQL プールを使用して論理データ ウェアハウスを作成する
+
+このチュートリアルでは、Azure ストレージと Azure Cosmos DB 上に論理データ ウェアハウス (LDW) を作成する方法について説明します。
+
+LDW は、Azure Data Lake Storage (ADLS)、Azure Cosmos DB 分析ストレージ、Azure Blob Storage などの Azure データ ソース上に構築されるリレーショナル レイヤーです。
+
+## <a name="create-an-ldw-database"></a>LDW データベースを作成する
+
+外部のデータ ソースを参照する外部テーブルとビューの格納先となるカスタム データベースを作成する必要があります。
+
+```sql
+CREATE DATABASE Ldw
+      COLLATE Latin1_General_100_BIN2_UTF8;
+```
+
+この照合順序によって、Parquet と Cosmos DB の読み取り中に最適なパフォーマンスが得られます。 データベースの照合順序を指定しない場合は、列の定義でこの照合順序を指定してください。
+
+## <a name="configure-data-sources-and-formats"></a>データ ソースと形式を構成する
+
+まず、データ ソースを構成し、リモートに格納されるデータのファイル形式を指定する必要があります。
+
+### <a name="create-data-source"></a>データ ソースの作成
+
+データ ソースとは、データの格納場所とデータ ソースに対する認証方法を記述した接続文字列情報のことです。
+
+次に示したのは、パブリックな [ECDC COVID 19 Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/)を参照するデータ ソース定義の一例です。
+
+```sql
+CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
+    LOCATION = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/'
+);
+```
+
+データ ソースの所有者によって匿名アクセスが許可されている場合や、呼び出し元の Azure AD ID に明示的なアクセス権が与えられている場合、呼び出し元は、資格情報なしでデータ ソースにアクセスすることができます。
+
+外部データ ソース上のデータへのアクセス中に使用されるカスタムの資格情報を明示的に定義できます。
+- Synapse ワークスペースのマネージド ID
+- Azure ストレージの Shared Access Signature
+- 読み取り専用 Cosmos DB アカウント キー
+
+前提条件として、データベースにはマスター キーを作成する必要があります。
+```sql
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Setup you password - you need to create master key only once';
+```
+
+次の外部データ ソースでは、Synapse SQL プールがストレージ内のデータにアクセスするために、ワークスペースのマネージド ID を使用する必要があります。
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
+WITH IDENTITY = 'Managed Identity';
+GO
+CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
+    LOCATION = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/',
+    CREDENTIAL = WorkspaceIdentity
+);
+```
+
+Cosmos DB 分析ストレージにアクセスするためには、読み取り専用 Cosmos DB アカウント キーが含まれた資格情報を定義する必要があります。
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+```
+
+### <a name="define-external-file-formats"></a>外部ファイルの形式を定義する
+
+外部ファイルの形式は、外部データ ソース上に格納されるファイルの構造を定義します。 外部ファイルの形式として、Parquet と CSV を定義できます。
+
+```sql
+CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
+GO
+CREATE EXTERNAL FILE FORMAT CsvFormat WITH (  FORMAT_TYPE = CSV );
+```
+
+## <a name="explore-your-data"></a>データを調査する
+
+データ ソースを設定したら、`OPENROWSET` 関数を使用してデータを調査できます。 [OPENROWSET](develop-openrowset.md) 関数は、リモート データ ソース (ファイルなど) の内容を読み取って行のセットとして返します。
+
+```sql
+select top 10  *
+from openrowset(bulk 'latest/ecdc_cases.parquet',
+                data_source = 'ecdc_cases'
+                format='parquet') as a
+```
+
+`OPENROWSET` 関数からは、外部のファイルまたはコンテナーに含まれている列についての情報が得られます。これにより、外部テーブルとビューのスキーマを定義することができます。
+
+## <a name="create-external-tables-on-azure-storage"></a>Azure ストレージに外部テーブルを作成する
+
+スキーマが見つかったら、外部データ ソース上に外部テーブルとビューを作成できます。 テーブルとビューは、データベース スキーマで整理することをお勧めします。 Azure Data Lake Storage 内の ECDC COVID データ セットにアクセスするすべてのオブジェクトの配置先となるスキーマは、次のクエリで作成できます。
+
+```sql
+create schema ecdc_adls;
+```
+
+データベース スキーマは、スキーマごとにオブジェクトをグループ化したりアクセス許可を定義したりするための有効な手段となります。 
+
+スキーマの定義後、ファイルを参照する外部テーブルを作成できます。
+次の外部テーブルは、Azure ストレージに格納された ECDC COVID Parquet ファイルを参照しています。
+
+```sql
+create external table ecdc_adls.cases (
+    date_rep        date,
+    day    smallint,
+    month             smallint,
+    year  smallint,
+    cases smallint,
+    deaths            smallint,
+    countries_and_territories       varchar(256),
+    geo_id             varchar(60),
+    country_territory_code           varchar(16),
+    pop_data_2018           int,
+    continent_exp             varchar(32),
+    load_date      datetime2(7),
+    iso_country   varchar(16)
+) with (
+    data_source= ecdc_cases,
+    location = 'latest/ecdc_cases.parquet',
+    file_format = ParquetFormat
+);
+```
+
+クエリのパフォーマンスを最適化するために、文字列と数値の列には、可能な限り小さい型を使用してください。
+
+## <a name="create-views-on-azure-cosmos-db"></a>Azure Cosmos DB 上にビューを作成する
+
+外部データには、外部テーブルの代わりにビューを作成することもできます。 
+
+前の例に示したテーブルと同様、ビューはそれぞれ異なるスキーマに配置することができます。
+
+```sql
+create schema ecdc_cosmosdb;
+```
+
+これで、Cosmos DB コンテナーを参照するスキーマにビューを作成できるようになりました。
+
+```sql
+CREATE OR ALTER VIEW ecdc_cosmosdb.Ecdc
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
+      CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) WITH
+     ( date_rep varchar(20), 
+       cases bigint,
+       geo_id varchar(6) 
+     ) as rows
+```
+
+スキーマの `WITH` 定義では、パフォーマンスを最適化するために、可能な限り小さい型を使用する必要があります。
+
+> [!NOTE]
+> Azure Cosmos DB アカウント キーは、別個の資格情報に格納し、その資格情報を `OPENROWSET` 関数から参照する必要があります。
+> ビュー定義でアカウント キーを保持しないでください。
+
+## <a name="access-and-permissions"></a>アクセスおよびアクセス許可
+
+最後の手順として、LDW にアクセスできるデータベース ユーザーを作成し、外部テーブルとビューのデータを選択するためのアクセス許可をそれらのユーザーに与える必要があります。
+新しいユーザーを追加して、データの読み取りアクセス許可を与える方法は、次のスクリプトでご覧いただけます。
+
+```sql
+CREATE USER [jovan@contoso.com] FROM EXTERNAL PROVIDER;
+GO
+DENY ADMINISTER DATABASE BULK OPERATIONS TO [jovan@contoso.com]
+GO
+GRANT SELECT ON SCHEMA::ecdc_adls TO [jovan@contoso.com]
+GO
+GRANT SELECT ON OBJECT::ecdc_cosmosDB.cases TO [jovan@contoso.com]
+GO
+GRANT REFERENCES ON CREDENTIAL::MyCosmosDbAccountCredential TO [jovan@contoso.com]
+GO
+```
+
+セキュリティ規則は、セキュリティ ポリシーによって異なります。 一般的なガイドラインを次に示します。
+- 自分が用意した外部テーブルとビューを使用することによってのみデータの読み取りを許可する必要があるため、新しいユーザーには、`ADMINISTER DATABASE BULK OPERATIONS` アクセス許可を拒否します。
+- `SELECT` アクセス許可は、ユーザーに使用を許可すべきテーブルに限定して付与するようにします。
+- ビューを使用してデータへのアクセスを提供する場合、外部データ ソースへのアクセスに使用される資格情報に対し、`REFERENCES` アクセス許可を付与します。
+
+## <a name="next-steps"></a>次のステップ
+
+- サーバーレス SQL プールを Power BI Desktop に接続してレポートを作成する方法については、[サーバーレス SQL プールの Power BI Desktop への接続とレポートの作成](tutorial-connect-power-bi-desktop.md)に関する記事をご覧ください。
+- サーバーレス SQL プールで外部テーブルを使用する方法については、「[Synapse SQL で外部テーブルを使用する](develop-tables-external-tables.md?tabs=sql-pool)」をご覧ください。
+

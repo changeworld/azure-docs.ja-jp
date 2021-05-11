@@ -5,22 +5,22 @@ description: Azure Synapse Analytics と Azure Machine Learning のデータ ラ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
-ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 1852bfdb4bf8513aaa5d43993e2b6ff804808dbd
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.custom: devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: f175e8d5c3dd19b212dfbdd04025d12f549667ed
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575651"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108293298"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>データ ラングリング用に (Azure Synapse Analytics によって機能する) Apache Spark プールをアタッチする (プレビュー)
 
-この記事では、 [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) を使用している Apache Spark プールを Azure Machine Learning ワークスペースに接続する方法について説明します。これにより、Azure Machine Learning ワークスペースを起動し、データ ラングリングを規模に応じて実行することができます。 
+この記事では、[Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) を使用している Apache Spark プールを [Azure Machine Learning ワークスペース](concept-workspace.md)にアタッチする方法について説明します。これにより、Azure Machine Learning ワークスペースを起動し、データ ラングリングを大規模に実行することができます。 
 
 この記事には、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) を使用して、Jupyter Notebook の専用 Synapse セッション内で対話形式でデータ ラングリング タスクを実行するためのガイダンスが含まれています。 Azure Machine Learning パイプラインを使用する場合は、「[機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)](how-to-use-synapsesparkstep.md)」を参照してください。
 
@@ -306,7 +306,7 @@ df.write.format("csv").mode("overwrite").save("wasbs://demo@dprepdata.blob.core.
 * 準備済みのデータを保存したストレージ サービスに接続するデータストアが作成済みであることを前提としています。  
 * その既存のデータストア (`mydatastore`) を、get() メソッドでワークスペース (`ws`) から取得します。
 * `mydatastore` の `training_data` ディレクトリに格納されている準備済みのデータ ファイルを参照する [FileDataset](how-to-create-register-datasets.md#filedataset) (`train_ds`) を作成します。  
-* 変数 `input1` を作成します。後でこの変数を使用して、コンピューティング先から利用できる `train_ds` データセットのデータ ファイルを作成できます。
+* 変数 `input1` を作成します。後でこの変数を使用して、コンピューティング先からトレーニング タスクで利用できる `train_ds` データセットのデータ ファイルを作成できます。
 
 ```python
 from azureml.core import Datastore, Dataset
@@ -318,14 +318,36 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+
 ## <a name="use-a-scriptrunconfig-to-submit-an-experiment-run-to-a-synapse-spark-pool"></a>`ScriptRunConfig` を使用して Synapse Spark プールに実験の実行を送信する
 
-また、以前にコンピューティング ターゲットとして [接続した Synapse spark クラスターを活用](#attach-a-pool-with-the-python-sdk)して、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) オブジェクトで実験の実行を送信することもできます。
+データ ラングリング タスクを自動化して作成する準備ができたら、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) オブジェクトを使用して、[先ほどアタッチした Synapse Spark プール](#attach-a-pool-with-the-python-sdk)に実験の実行を送信できます。  
+
+同様に、Azure Machine Learning パイプラインがある場合は、[SynapseSparkStep を使用して、パイプラインのデータ準備手順のコンピューティング先として Synapse Spark プールを指定](how-to-use-synapsesparkstep.md)できます。
+
+データを Synapse Spark プールで使用できるようにする方法は、データセットの種類によって異なります。 
+
+* FileDataset の場合は、[`as_hdfs()`](/python/api/azureml-core/azureml.data.filedataset#as-hdfs--) メソッドを使用できます。 実行が送信されると、データセットは Hadoop 分散ファイル システム (HFDS) として Synapse Spark プールで使用できるようになります。 
+* [TabularDataset](how-to-create-register-datasets.md#tabulardataset) の場合は、[`as_named_input()`](/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset#as-named-input-name-) メソッドを使用できます。 
+
+次のコードによって、以下の処理が実行されます。 
+
+* 前のコード例で作成した FileDataset `train_ds` から変数 `input2` を作成します。
+* HDFSOutputDatasetConfiguration クラスを使用して変数 `output` を作成します。 実行が完了すると、このクラスによって、実行の出力をデータセット `test` としてデータストア `mydatastore` に保存できるようになります。 [Azure Machine Learning] ワークスペースでは、`test` データセットは `registered_dataset` という名前で登録されます。 
+* Synapse Spark プールでの実行のために、実行で使用される設定を構成します。 
+* 以下のために、ScriptRunConfig パラメーターを定義します。 
+  * 実行のために `dataprep.py` を使用します。 
+  * 入力として使用するデータと、それを Synapse Spark プールで使用できるようにする方法を指定します。
+  * 出力データを格納する場所 `output` を指定します。  
 
 ```Python
+from azureml.core import Dataset, HDFSOutputDatasetConfig
 from azureml.core import RunConfiguration
 from azureml.core import ScriptRunConfig 
 from azureml.core import Experiment
+
+input2 = train_ds.as_hdfs()
+output = HDFSOutputDatasetConfig(destination=(datastore, "test").register_on_complete(name="registered_dataset")
 
 run_config = RunConfiguration(framework="pyspark")
 run_config.target = synapse_compute_name
@@ -340,8 +362,7 @@ run_config.environment.python.conda_dependencies = conda_dep
 
 script_run_config = ScriptRunConfig(source_directory = './code',
                                     script= 'dataprep.py',
-                                    arguments = ["--tabular_input", input1, 
-                                                 "--file_input", input2,
+                                    arguments = ["--file_input", input2,
                                                  "--output_dir", output],
                                     run_config = run_config)
 ```
@@ -355,11 +376,16 @@ exp = Experiment(workspace=ws, name="synapse-spark")
 run = exp.submit(config=script_run_config) 
 run
 ```
-この例で使用した `dataprep.py` スクリプトのような、その他の詳細については、[サンプルの Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) のページを参照してください。
+
+この例で使用した `dataprep.py` スクリプトのような、その他の詳細については、[サンプルの Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb) のページを参照してください。
+
+データの準備が完了すると、データをトレーニング ジョブの入力として使用できるようになります。 前述のコード例では、トレーニング ジョブの入力データとして `registered_dataset` を指定しています。 
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 
-この[サンプルの Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb) で、Azure Synapse Analytics と Azure Machine Learning の統合機能の詳細な概念とデモをご覧ください。
+サンプルの Notebook で、Azure Synapse Analytics と Azure Machine Learning の統合機能の詳細な概念とデモをご覧ください。
+* [Azure Machine Learning ワークスペース内の Notebook から対話型の Spark セッションを実行します](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb)。
+* [コンピューティング先として Synapse Spark プールを使用して Azure Machine Learning 実験の実行を送信します](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)。
 
 ## <a name="next-steps"></a>次のステップ
 

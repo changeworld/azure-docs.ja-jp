@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: ec563371ab505113117707f56c31f506f7fdf377
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1846b5478c824caa954b85ea6346d773f46b279c
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659525"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315671"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>チュートリアル:デザイナーで機械学習モデルをデプロイする
 
@@ -140,6 +140,8 @@ Web サービスの使用方法の詳細については、[Web サービスと�
 
 ## <a name="limitations"></a>制限事項
 
+### <a name="update-inference-pipeline"></a>推論パイプラインを更新する
+
 トレーニング パイプラインに何らかの変更を加える場合は、トレーニング パイプラインを再送信し、推論パイプラインを **更新** して、推論パイプラインを再度実行する必要があります。
 
 推論パイプラインではトレーニング済みのモデルのみが更新され、データ変換は更新されないことに注意してください。
@@ -153,6 +155,10 @@ Web サービスの使用方法の詳細については、[Web サービスと�
 ![変換モジュールの置換方法を示すスクリーンショット](./media/tutorial-designer-automobile-price-deploy/replace-td-module.png)
 
 その後、更新されたモデルおよび変換と共に推論パイプラインを送信し、デプロイできます。
+
+### <a name="deploy-real-time-endpoint"></a>リアルタイム エンドポイントをデプロイする
+
+データストアのアクセス制限により、推論パイプラインに **データのインポート** モジュールまたは **データのエクスポート** モジュールが含まれている場合、リアルタイム エンドポイントへのデプロイ時にこれらは自動的に削除されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

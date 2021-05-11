@@ -1,19 +1,19 @@
 ---
 title: 'P2S を使用してコンピューターを仮想ネットワークに接続する: 証明書認証:Azure portal (クラシック)'
 titleSuffix: Azure VPN Gateway
-description: Azure portal を使用してクラシックのポイント対サイト VPN Gateway 接続を作成します。
+description: Azure portal を使用してクラシックのポイント対サイト VPN Gateway 接続を作成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 42b0945de55775f55f20cefdeb547cb5d6492c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90f2c6dd8d82b40f6a12195c2ce89b28ca4e9305
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94657076"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228912"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>証明書認証 (クラシック) を使用してポイント対サイト接続を構成する
 

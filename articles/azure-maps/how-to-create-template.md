@@ -1,17 +1,17 @@
 ---
-title: ARM テンプレートを使用して Azure Maps アカウントを作成する | Microsoft Azure Maps
-description: Azure Resource Manager (ARM) テンプレートを使用して Azure Maps アカウントを作成する方法について説明します。
+title: Azure Resource Manager テンプレートを使用して Azure Maps アカウントを作成する
+description: Azure Resource Manager テンプレートを使用して Azure Maps アカウントを作成する方法について説明します。
 author: philmea
 ms.author: philmea
-ms.date: 10/20/2020
+ms.date: 04/27/2021
 ms.topic: how-to
 ms.service: azure-maps
-ms.openlocfilehash: c715c0639e962f76f669515c1d2c826c8cf6cc9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2434494a769fb9a4695e698b3d9215dffc18974
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92525009"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326869"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>ARM テンプレートを使用して Azure Maps アカウントを作成する
 

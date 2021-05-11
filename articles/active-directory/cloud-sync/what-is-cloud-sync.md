@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af4eaa5912cdf7463c81f501d71b69e934f8febb
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: df178b49e3f9853bd8561794e7e6444e73630edd
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306009"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323675"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期とは
 Azure AD Connect クラウド同期は、ユーザー、グループ、連絡先を Azure AD に同期するためのハイブリッド ID の目標を満たすために設計された Microsoft の新しいオファリングです。  Azure AD Connect アプリケーションではなく Azure AD クラウド プロビジョニング エージェントを使用してこれを実現します。  ただし、これは Azure AD Connect 同期と共に使用することができ、次のような利点があります。
@@ -73,7 +73,8 @@ Azure AD Connect クラウド同期では、Microsoft Online Services で AD か
 | Azure AD Domain Services のサポート|● | |
 | [Exchange ハイブリッドの書き戻し](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | AD ドメインあたり最大 150,000 オブジェクトのサポート |● |● |
-| 大規模なグループ (最大 50,000 メンバー) のサポート |● |● |
+| メンバー数が 50,000 人までのグループ |● |● |
+| メンバー数が 250,000 人までの大規模なグループ |● |  |
 | クロス ドメイン参照|● | |
 | オンデマンド プロビジョニング| |● |
 

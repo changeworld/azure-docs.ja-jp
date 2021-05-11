@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 666990d59fe92935150c2ae78712830a186723a8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677174"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205325"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -28,9 +28,9 @@ ms.locfileid: "101677174"
 
 Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Database を使用して、Azure インフラストラクチャで Oracle データベースを実行します。
 
-* Oracle Database 12.1、12.2、および 18.3 Enterprise Edition 
+* Oracle Database 12.2、および 18.3 Enterprise Edition 
 
-* Oracle Database 12.1、12.2、および 18.3 Standard Edition
+* Oracle Database 12.2、および 18.3 Standard Edition
 
 * Oracle データベース 19.3
 

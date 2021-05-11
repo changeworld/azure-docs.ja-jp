@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 04/21/2021
-ms.openlocfilehash: 2defeb0e578c6775577fef50d764f97c3b7f4ac2
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 9274bb2b28613c4b61ca139995ba54df0f402edd
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903969"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228228"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -122,9 +122,11 @@ Azure Container Instance にモデルをデプロイするときにキーを使�
 
 ### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
-Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。
+Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。 
 
 各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 `hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースでは、ディスクは既定で暗号化されます。 この環境は、実行中だけ有効期間が短く、暗号化のサポートはシステム管理キーのみに制限されています。
+
+コンピューティング インスタンスの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 コンピューティング インスタンスのローカル一時ディスクは、`hbi_workspace` パラメーターが `TRUE` に設定されているワークスペースの Microsoft マネージド キーで暗号化されています。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 

@@ -7,16 +7,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 15c97640ab1f4e862aab0aff4b3965822daafb2b
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 553483a1d7005f73bf62e2afb5cc427d96b2e211
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219826"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331198"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 
-Azure の無料アカウント作成後、最初の 30 日間は、サードパーティの Marketplace での購入を除き、すべてのサービスに使用できる 200 米国ドルのクレジットが請求通貨で付与されます。 無料のクレジットを使用して、Azure サービスのさまざまなレベルと種類を実際に使ってみることができます。 この期間中に無料ではないサービスや Azure リソースを使用すると、クレジットから料金が差し引かれます。
+Azure の無料アカウント作成後、最初の 30 日間は、サードパーティの Marketplace での購入を除き、すべてのサービスに使用できる 200 ドルのクレジットが請求通貨で付与されます。 無料のクレジットを使用して、Azure サービスのさまざまなレベルと種類を実際に使ってみることができます。 この期間中に無料ではないサービスや Azure リソースを使用すると、クレジットから料金が差し引かれます。
 
 最初の 30 日の終わりまでにクレジットを使い切らなかった場合は、失われます。 最初の 30 日が過ぎてからサインアップ後最大 12 か月間使用できるのは、容量が制限された "*一部のサービス*" のみです。すべての Azure サービスが無料になるわけではありません。 30 日が経過する前にアップグレードし、クレジットが残っている場合、残りの日数の間、従量課金制サブスクリプションでクレジットの残りを使用できます。 たとえば、11 月 1 日に無料アカウントにサインアップし、11 月 5 日にアップグレードした場合、11 月 30 日までは新しい従量課金制サブスクリプションでクレジットを使用することができます。 
 

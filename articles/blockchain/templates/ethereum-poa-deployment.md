@@ -5,12 +5,12 @@ ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: f4b12a9b3b830fcc4f45cb5e957232fee5a756a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 0ced84afc47c188dc8f5d911794a90cdbeeebd81
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078647"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164923"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
@@ -241,7 +241,7 @@ Transaction Permission Contract\(トランザクションのアクセス許可�
 
 ![Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
-```Powershell
+```powershell
 $MyGatewayResourceId = "<EXISTING_MEMBER_RESOURCEID>"
 $OtherGatewayResourceId = "<NEW_MEMBER_RESOURCEID]"
 $ConnectionName = "Leader2Member"
@@ -288,7 +288,7 @@ Proof-of-Authority の中核をなすのは分散型ガバナンスです。 Pro
 
 ガバナンス DApp を使用して任意の種類のトランザクションを実行するには、Ethereum ウォレットを使用する必要があります。 最も簡単な方法は、[MetaMask](https://metamask.io) などのブラウザー内ウォレットを使用することですが、これらのスマート コントラクトはネットワークにデプロイされているため、ガバナンス コントラクトとのやり取りを自動化することもできます。
 
-MetaMask をインストールした後、ブラウザーのガバナンス DApp に移動します。  URL は、Azure portal を使用してデプロイの出力で見つけることができます。  ブラウザー内ウォレットがインストールされていない場合、アクションを実行することはできませんが、管理者の状態を表示することは可能です。  
+MetaMask をインストールした後、ブラウザーのガバナンス DApp に移動します。  URL は、Azure portal を使用してデプロイの出力で見つけることができます。  ブラウザー内ウォレットがインストールされていない場合、アクションを実行することはできませんが、管理者の状態を表示することは可能です。
 
 ### <a name="becoming-an-admin"></a>管理者になる
 

@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fde473453aa79e0078765df394acdeb54b3c7fe9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f662c825dba99ec7513a523ab511cb75ebb1f0f9
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102433320"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208619"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
 Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ** を介して接続された個々のデジタル ツインで構成されています。 
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで [認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-portal.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
-この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、[ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
+この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインを操作については、[「デジタル ツインを管理する」方法](how-to-manage-twin.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +59,7 @@ Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](co
 
 複数のリレーションシップを作成する場合は、同じメソッドの呼び出しを繰り返して、異なるリレーションシップの種類を引数に渡すことができます。 
 
-ヘルパー クラス `BasicRelationship` の詳細については、[ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md#serialization-helpers)を参照してください。
+ヘルパー クラス `BasicRelationship` の詳細については、[「Azure Digital Twins の API および SDK を使用する」方法](how-to-use-apis-sdks.md#serialization-helpers)を参照してください。
 
 ### <a name="create-multiple-relationships-between-twins"></a>ツイン間でリレーションシップの作成
 
@@ -152,7 +152,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 
 ### <a name="set-up-the-runnable-sample"></a>実行可能なサンプルを設定する
 
-このスニペットでは、[*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [*Floor.json*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) モデル定義を使用しています。「[*チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す*](tutorial-command-line-app.md)」のものです。 これらのリンクを使用してファイルに直接移動するか、[こちら](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の完全なエンドツーエンドのサンプル プロジェクトの一部としてダウンロードすることができます。 
+このスニペットでは、[Room.json](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) と [Floor.json](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) モデル定義を使用しています。「[チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す](tutorial-command-line-app.md)」のものです。 これらのリンクを使用してファイルに直接移動するか、[完全なエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部としてダウンロードすることができます。 
 
 このサンプルを実行する前に、以下を実行します。
 1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
@@ -178,7 +178,7 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 :::image type="content" source="./media/how-to-manage-graph/console-output-twin-graph.png" alt-text="ツインの詳細、ツインの受信および発信リレーションシップが表示されているコンソール出力。" lightbox="./media/how-to-manage-graph/console-output-twin-graph.png":::
 
 > [!TIP]
-> ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の "[*視覚化*](how-to-manage-graph.md#visualization)" に関するセクションを参照してください。 
+> ツイン グラフは、ツイン間にリレーションシップを作成する概念です。 ツイン グラフの視覚的表現を表示する場合は、この記事の "[視覚化](how-to-manage-graph.md#visualization)" に関するセクションを参照してください。 
 
 ## <a name="create-graph-from-a-csv-file"></a>CSV ファイルからグラフを作成する
 
@@ -202,5 +202,5 @@ Azure Digital Twins には、特定のツインとのすべての **受信** リ
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins ツイン グラフのクエリについて確認します。
-* "[*概念: クエリ言語*](concepts-query-language.md)
-* [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)
+* [概念:クエリ言語](concepts-query-language.md)
+* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)

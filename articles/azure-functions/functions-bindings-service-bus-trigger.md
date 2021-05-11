@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4b95c25400317b2baac694f4ba2b1b1dc1eae098
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3ecc0e84541a9566b3f9e39d40f90a378ea87db5
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102435156"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226266"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions の Azure Service Bus トリガー
 
@@ -331,7 +331,7 @@ def main(msg: func.ServiceBusMessage):
 |**queueName**|**QueueName**|監視するキューの名前。  トピックではなくキューを監視する場合にのみ設定します。
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックを監視する場合にのみ設定します。|
-|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
+|**connection**|**接続**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、[管理資格情報の取得](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)に関する記事の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 <br><br>[バージョン 5.x またはそれ以降の拡張機能](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)を使用している場合は、接続文字列の代わりに、接続を定義する構成セクションへの参照を指定できます。 「[接続](./functions-reference.md#connections)」を参照してください。|
 |**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が **管理** アクセス許可を持つことを示します。 **管理** アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Service Bus SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x 以降ではこのプロパティを利用できません。|
 |**isSessionsEnabled**|**IsSessionsEnabled**|[セッション対応の](../service-bus-messaging/message-sessions.md)キューまたはサブスクリプションに接続する場合は `true`。 それ以外の場合は `false` (既定値)。|
 
@@ -347,9 +347,14 @@ def main(msg: func.ServiceBusMessage):
 * `byte[]` - バイナリ データの場合に便利です。
 * カスタム型 - メッセージに JSON が含まれている場合、Azure Functions は JSON データの逆シリアル化を試みます。
 * `BrokeredMessage` - [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドで逆シリアル化されたメッセージを返します。
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) - メッセージ コンテナーからのメッセージを受信および確認するために使用します ([`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) が `false` に設定されている場合に必要です)
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) - メッセージ コンテナーからのメッセージを受信および確認するために使用します ([`autoComplete`](functions-bindings-service-bus.md#hostjson-settings) が `false` に設定されている場合に必要です)
 
 これらのパラメーター型は Azure Functions バージョン 1.x 用です。2.x 以降では、`BrokeredMessage` の代わりに [`Message`](/dotnet/api/microsoft.azure.servicebus.message) を使用してください。
+
+### <a name="additional-types"></a>その他の型 
+5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 名前空間の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) の `ServiceBusReceivedMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
@@ -361,6 +366,16 @@ def main(msg: func.ServiceBusMessage):
 * `BrokeredMessage` - [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドで逆シリアル化されたメッセージを返します。
 
 これらのパラメーターは Azure Functions バージョン 1.x 用です。2.x 以降では、`BrokeredMessage` の代わりに [`Message`](/dotnet/api/microsoft.azure.servicebus.message) を使用してください。
+
+### <a name="additional-types"></a>その他の型 
+5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message) 名前空間の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) の `ServiceBusReceivedMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage)
+
+### <a name="additional-types"></a>その他の型 
+5\.0.0 以降のバージョンの Service Bus 拡張機能を使用するアプリでは、[Microsoft.Azure.ServiceBus 名前空間](/dotnet/api/microsoft.azure.servicebus.message)の代わりに [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) の `ServiceBusReceivedMessage` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Message` 型のサポートがなくなります。
+
+- [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody)
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -396,7 +411,7 @@ Functions ランタイムは、メッセージを [PeekLock モード](../servic
 
 Service Bus トリガーには、いくつかの[メタデータ プロパティ](./functions-bindings-expressions-patterns.md#trigger-metadata)があります。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらのプロパティは [Message](/dotnet/api/microsoft.azure.servicebus.message) クラスのメンバーです。
 
-|プロパティ|種類|説明|
+|プロパティ|Type|説明|
 |--------|----|-----------|
 |`ContentType`|`string`|アプリケーション固有のロジックのために送信者と受信者が利用するコンテンツ タイプ識別子。|
 |`CorrelationId`|`string`|関連付け ID。|
@@ -411,9 +426,20 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 |`ReplyTo`|`string`|キュー アドレスへの返信。|
 |`SequenceNumber`|`long`|Service Bus によってメッセージに割り当てられる一意の番号。|
 |`To`|`string`|送信先アドレス。|
-|`UserProperties`|`IDictionary<string, object>`|送信者によって設定されたプロパティ。|
+|`UserProperties`|`IDictionary<string, object>`|送信者によって設定されたプロパティ。 (バージョン 5.x 以降の拡張機能については、これはサポートされていません。`ApplicationProperties` を使用してください。)|
 
 この記事の前半でこれらのプロパティを使用している[コード例](#example)を参照してください。
+
+### <a name="additional-message-metadata"></a>追加のメッセージ メタデータ
+
+以下のメタデータ プロパティは、5.0.0 以降の拡張機能を使用するアプリでサポートされています。 これらのプロパティは [ServiceBusReceivedMessage](/dotnet/api/azure.messaging.servicebus.servicebusreceivedmessage) クラスのメンバーです。
+
+|プロパティ|Type|説明|
+|--------|----|-----------|
+|`ApplicationProperties`|`ApplicationProperties`|送信者によって設定されたプロパティ。 `UserProperties` メタデータ プロパティの代わりにこれを使用します。|
+|`Subject`|`string`|`Label` メタデータ プロパティの代わりに使用できるアプリケーション固有のラベル。|
+|`MessageActions`|`ServiceBusMessageActions`|`ServiceBusReceivedMessage` に対して実行できるアクションのセット。 これは `MessageReceiver` メタデータ プロパティの代わりに使用できます。
+|`SessionActions`|`ServiceBusSessionMessageActions`|セッションと `ServiceBusReceivedMessage` に対して実行できるアクションのセット。 これは `MessageSession` メタデータ プロパティの代わりに使用できます。|
 
 ## <a name="next-steps"></a>次のステップ
 

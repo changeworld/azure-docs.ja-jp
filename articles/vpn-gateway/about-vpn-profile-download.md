@@ -1,22 +1,23 @@
 ---
-title: Azure VPN Gateway:P2S VPN クライアント プロファイルについて
-description: この記事を利用して、VPN クライアント プロファイルに必要な情報を確認できます。
+title: ポイント対サイト VPN クライアント プロファイルについて
+titleSuffix: Azure VPN Gateway
+description: P2S VPN クライアント プロファイル ファイルについて説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9bb66363d525648df08f32451842402ad1d0d93b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d26f65dfa8419b3c07825774423dec4bd5557a05
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99979074"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227814"
 ---
 # <a name="working-with-p2s-vpn-client-profile-files"></a>P2S VPN クライアント プロファイル ファイルの操作
 
-このプロファイル ファイルには、VPN 接続の構成に必要な情報が含まれています。 この記事は、VPN クライアント プロファイルに必要な情報を取得して理解するのに役立ちます。
+プロファイル ファイルには、VPN 接続の構成に必要な情報が含まれています。 この記事は、VPN クライアント プロファイルに必要な情報を取得して理解するのに役立ちます。
 
 ## <a name="generate-and-download-profile"></a>プロファイルを生成してダウンロードする
 

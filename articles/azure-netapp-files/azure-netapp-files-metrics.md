@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b581470a886ff73739edfee7f45c64295eeeb1f0
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 5282c806f5c6011418dabc14d6f82d6b9c0df251
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388612"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206351"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
@@ -59,6 +59,9 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
    ボリュームのすべてのスナップショットのサイズ。  
 
 ## <a name="performance-metrics-for-volumes"></a>ボリュームのパフォーマンス メトリック
+
+> [!NOTE] 
+> *読み取りの平均待機時間* および *書き込みの平均待機時間* のボリューム待機時間は、ストレージ サービスの内部で測定され、ネットワーク待機時間を含みません。
 
 - "*読み取りの平均待機時間*"   
     ボリュームからの読み取りの平均時間 (ミリ秒) です。

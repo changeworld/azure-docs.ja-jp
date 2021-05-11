@@ -8,12 +8,12 @@ ms.author: philmea
 ms.date: 12/28/2020
 ms.topic: include
 manager: dominicbetts
-ms.openlocfilehash: 94d458edd7ab9357ac5eb318036febd040dd0562
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cf02b9ff2b17472f4ed107d1460fb578b82e9d23
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107881272"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108211008"
 ---
 > [!WARNING]
 > IoT Central アプリを作成するには、Azure サブスクリプションに対する共同作成者のアクセス権が必要です。 アプリを作成するための別のアクセス レベルが存在する場合がありますが、サブスクリプションに対する共同作成者レベルのアクセス権を持つことが推奨パスです。

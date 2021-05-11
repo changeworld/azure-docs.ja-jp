@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー違反やブループリント パラメーター関数などの、ブループリントを作成、割り当て、および削除するときの問題をトラブルシューティングする方法について説明します。
-ms.date: 01/27/2021
+ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 183d27235ce738d884a02b53a498f77ebed41e66
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918846"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326419"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -38,7 +38,7 @@ ms.locfileid: "98918846"
 
 #### <a name="cause"></a>原因
 
-ポリシーはさまざまな理由からデプロイと競合することがあります。
+ポリシーは以下の理由からデプロイと競合することがあります。
 
 - 作成されるリソースはポリシーの制約を受けます (一般的には SKU または場所の制約)
 - デプロイはポリシーによって構成される設定フィールドです (タグで一般的)

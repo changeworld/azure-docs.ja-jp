@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c7083cb6669d7bc779a8e69babfef38988819f8c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 457b21a0d84202cc712d5b1b719f5239de0e3391
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483775"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324673"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud での Application Insights Java In-Process Agent (プレビュー)
 
-このドキュメントでは、Azure Spring Cloud で Application Insights Java エージェントを使用してアプリとマイクロサービスを監視する方法について説明します。 
+この記事では、Azure Spring Cloud で Application Insights Java エージェントを使用してアプリとマイクロサービスを監視する方法について説明します。 
 
 この機能を使用すると、次のことができます。
 
@@ -88,6 +88,7 @@ Application Insights には、次のようにさまざまな観察できるパ�
   [ ![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
 ## <a name="arm-template"></a>ARM テンプレート
+
 Azure Resource Manager テンプレートを使用するには、次の内容を `azuredeploy.json` にコピーします。
 
 ```json
@@ -121,6 +122,7 @@ Azure Resource Manager テンプレートを使用するには、次の内容を
 ```
 
 ## <a name="cli"></a>CLI
+
 CLI コマンドを使用して ARM テンプレートを適用します。
 
 * 既存の Azure Spring Cloud インスタンスの場合:
@@ -140,7 +142,29 @@ az spring-cloud app-insights update --disable â€“name "assignedName" â€�
 
 ```
 
+## <a name="java-agent-updateupgrade"></a>Java エージェントの更新またはアップグレード
+
+Java エージェントは、JDK を使用して定期的に更新またはアップグレードされます。これにより、次のシナリオが影響を受ける可能性があります。
+
+> [!Note]
+> JDK バージョンは、四半期ごとに 1 回更新またはアップグレードされます。
+
+* 更新またはアップグレードの前に Java エージェントを使用していた既存のアプリケーションは影響を受けません。
+* 更新またはアップグレードの後に作成されたアプリケーションは、新しいバージョンの Java エージェントを利用します。
+* 以前に Java エージェントを使用していなかった既存のアプリケーションでは、新しいバージョンの Java エージェントを利用するには再起動または再展開が必要になります。
+
+## <a name="java-agent-configuration-hot-loading"></a>Java エージェント構成のホット ローディング
+
+Azure Spring Cloud では、アプリケーションの再起動なしでエージェント構成の設定を調整するために、ホット ローディングのメカニズムを有効にしています。
+
+> [!Note]
+> ホット ローディングのメカニズムには、分単位の遅延があります。
+
+* Java エージェントが既に有効になっている場合は、Application Insights インスタンスまたは SamplingRate を変更しても、アプリケーションを再起動する必要はありません。
+* Java エージェントを有効にする場合は、アプリケーションを再起動する必要があります。
+* Java エージェントを無効にすると、アプリケーションでは、分単位の遅延の後にすべての監視データの送信を停止します。 アプリケーションを再起動すると、このエージェントを Java ランタイム環境から削除できます。
+
 ## <a name="see-also"></a>関連項目
-* [Azure Spring Cloud で分散トレースを使用する](spring-cloud-howto-distributed-tracing.md)
+* [Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)
 * [ログとメトリックの分析](diagnostic-services.md)
-* [リアルタイムでログをストリームする](spring-cloud-howto-log-streaming.md)
+* [リアルタイムでログをストリームする](./how-to-log-streaming.md)

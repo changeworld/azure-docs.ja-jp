@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8c2559315e3bfffc41c138be6826adae95dd7b07
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 6dae6e7ef5a442392972a39f75bbea8046b4beff
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588107"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324727"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure Communication Services とは
 
@@ -42,6 +42,7 @@ Communication Services リソースを作成した後は、音声通話やビデ
 |---                                    |---                                   |
 |**[最初のユーザー アクセス トークンを作成する](./quickstarts/access-tokens.md)**|ユーザー アクセス トークンは、Azure Communication Services リソースに対してクライアントを認証するために使用されます。 これらのトークンは、Communication Services SDK を使用してプロビジョニングされ、再発行されます。|
 |**[音声およびビデオ通話の使用を開始する](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Communication Services を使用すると、Calling SDK を使用して自分のブラウザー アプリまたはネイティブ アプリに音声およびビデオ通話を追加できます。 |
+|**[テレフォニー通話をアプリに追加する](./quickstarts/voice-video-calling/pstn-call.md)**|Azure Communication Services を使用すると、アプリケーションにテレフォニー通話機能を追加できます。|
 |**[通話アプリを Teams の会議に参加させる](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services を使用すると、Microsoft Teams と対話するカスタム会議エクスペリエンスを作成できます。 Communication Services ソリューションのユーザーは、音声、ビデオ、チャット、画面共有を通じて、Teams の参加者と対話することができます。|
 |**[チャットの使用を開始する](./quickstarts/chat/get-started.md)**|Azure Communication Services Chat SDK を使用して、アプリケーションにリアルタイムのリッチ テキスト チャットを追加できます。|
 
@@ -54,6 +55,7 @@ Communication Services リソースを作成した後は、音声通話やビデ
 |---                                    |---                                   |
 |**[グループ通話のヒーロー サンプル](./samples/calling-hero-sample.md)**| ブラウザー、iOS、Android デバイス向けに設計された、グループ通話のアプリケーション サンプルをダウンロードします。 |
 |**[グループ チャットのヒーロー サンプル](./samples/chat-hero-sample.md)**| ブラウザー向けに設計された、グループメッセージ チャットのアプリケーション サンプルをダウンロードします。 |
+|**[Web 通話のサンプル](./samples/web-calling-sample.md)**| 音声、ビデオ、および PSTN 通話向けに設計された Web アプリケーション サンプルをダウンロードします。 |
 
 
 ## <a name="platforms-and-sdk-libraries"></a>プラットフォームと SDK ライブラリ

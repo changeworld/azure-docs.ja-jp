@@ -7,14 +7,14 @@ manager: carmonm
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/20/2021
+ms.date: 04/27/2021
 ms.author: bwren
-ms.openlocfilehash: 8c0342d477d3bbe0edc2750cd5219e3016169761
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 5c8256e453763d9cd2fdc18687df3064552dcf2b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015464"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289536"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor メトリックの概要
 Azure Monitor メトリックは、[監視対象のリソース](../monitor-reference.md)から時系列データベースに数値データを収集する Azure Monitor の機能です。 メトリックは、一定の間隔で収集される数値であり、特定の時刻におけるシステムの何らかの特性を表しています。 Azure Monitor のログは軽量であり、ほぼリアルタイムのシナリオをサポートできるため、アラートと問題の迅速な検出に特に役立ちます。 メトリック エクスプローラーを使用すると、対話形式で分析することができます。値がしきい値を超えるときにアラートで事前に通知したり、ブックやダッシュボードで視覚化したりすることができます。
@@ -120,15 +120,14 @@ Azure Monitor メトリックによって収集されるデータは、タイム
 
 
 ## <a name="retention-of-metrics"></a>メトリックの保有期間
-Azure の多くのリソースでは、メトリックは 93 日間保存されます。 ただし、例外があります。
+Azure のほとんどのリソースでは、プラットフォーム メトリックは 93 日間保存されます。 ただし、例外があります。
 
 **ゲスト OS メトリック**
--   **クラシック ゲストの OS メトリック**。 これらは [Windows Diagnostic Extension (WAD)](../agents/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックは少なくとも 14 日間は保持されます。ただし、実際の有効期限はストレージ アカウントに記載されていません。 パフォーマンス上の理由により、ポータルでは、表示されるデータの量をボリュームに基づいて制限しています。 したがって、作成されるデータの量があまり多くない場合、ポータルにより取得される実際の日数は 14 日間より長くなる場合があります。  
--   **Azure Monitor メトリックに送信されるゲスト OS メトリック**。 これらは [Windows Diagnostic 拡張機能 (WAD)](../agents/diagnostics-extension-overview.md) によって収集され、[Azure Monitor データ シンク](../agents/diagnostics-extension-overview.md#data-destinations)に送信されるか、Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)を介して収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
--   **Log Analytics エージェントによって収集されるゲスト OS メトリック**。 これらは、Log Analytics エージェントによって収集され、Log Analytics ワークスペースに送信されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 31 日で、最大 2 年間まで延長できます。
+-   **従来のゲスト OS メトリック** - 14 日間 以上。 これらは [Windows Diagnostic Extension (WAD)](../agents/diagnostics-extension-overview.md) または [Linux Diagnostic Extension (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) によって収集され、Azure ストレージ アカウントにルーティングされるパフォーマンス カウンターです。 これらのメトリックは少なくとも 14 日間は保持されます。ただし、実際の有効期限はストレージ アカウントに記載されていません。 パフォーマンス上の理由により、ポータルでは、表示されるデータの量をボリュームに基づいて制限しています。 したがって、作成されるデータの量があまり多くない場合、ポータルにより取得される実際の日数は 14 日間より長くなる場合があります。  
+-   **Azure Monitor メトリックに送信されるゲスト OS メトリック** - 93 日間。 これらは、[Windows 診断拡張機能 (WAD)](../agents/diagnostics-extension-overview.md) によって収集され、[Azure Monitor データ シンク](../agents/diagnostics-extension-overview.md#data-destinations)に送信されるか、あるいは Linux マシン上の [InfluxData Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)、またはデータ収集ルールを使用して新しい [Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md) (AMA) によって収集されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 93 日です。
+-   **Log Analytics エージェントによって収集されるゲスト OS メトリック** - 31 日～ 2 年間。 これらは、Log Analytics エージェントによって収集され、Log Analytics ワークスペースに送信されるパフォーマンス カウンターです。 これらのメトリックの保有期間は 31 日で、最大 2 年間まで延長できます。
 
-**Application Insights ログベースのメトリック** 
-- バック グラウンドで[ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md)をログ クエリに変換します。 そのリテンション期間は、基になるログのイベントのリテンション期間と一致します。 Application Insights リソースの場合、ログは 90 日間保存されます。
+**Application Insights ログベースのメトリック** 状況に応じて異なります。 - [ログ ベースのメトリック](../app/pre-aggregated-metrics-log-metrics.md)は、バックグラウンドでログ クエリに変換されます。 その保有期間は、基になるログ内のイベントの保有期間 (31 日～ 2 年間) と一致します。 Application Insights リソースの場合、ログは 90 日間保存されます。
 
 
 > [!NOTE]

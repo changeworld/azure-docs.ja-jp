@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c1cd4e7d65897634b5a8a8fa8be46275bbd4b88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 364953de1c56bcf41efb1a3ac9481b17603f3dec
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676860"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227796"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) とは
 
@@ -57,7 +57,7 @@ HANA L インスタンス ガイダンスの別のドキュメントでは、次
 - [Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)
 - [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視](troubleshooting-monitoring.md)
 - [STONITH を使用した SUSE での高可用性のセットアップ](./ha-setup-with-stonith.md)
-- [リビジョン 3 スタンプの Type II SKU の OS バックアップと復元](./os-backup-type-ii-skus.md)
+- [OS のバックアップ](./large-instance-os-backup.md)
 - [Azure 予約を使用して SAP HANA Large Instances に保存する](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **次の手順**

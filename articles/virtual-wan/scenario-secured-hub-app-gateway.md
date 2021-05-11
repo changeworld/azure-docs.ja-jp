@@ -1,19 +1,19 @@
 ---
 title: Application Gateway とバックエンド プール間のトラフィックをセキュリティで保護する
 titleSuffix: Azure Virtual WAN
-description: 'ルーティングのシナリオ: セキュリティで保護された Virtual WAN のハブに接続されているスポーク VNet にデプロイされたアプリケーション ゲートウェイを経由するトラフィックをセキュリティで保護します。'
+description: アプリケーション ゲートウェイを通過する安全なトラフィックのための Virtual WAN ルーティングのシナリオについて説明します。 アプリケーション ゲートウェイは、セキュリティで保護された Virtual WAN ハブに接続されているスポーク VNet にデプロイされます。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: d9cb1251b90cf1c928f8286072bcd91e5ddf767e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9bb3343bc9c3dffa8f84280cd0799c7e92f4f50c
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315342"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165805"
 ---
 # <a name="scenario-secure-traffic-between-application-gateway-and-backend-pools"></a>シナリオ: Application Gateway とバックエンド プール間のトラフィックをセキュリティで保護する
 

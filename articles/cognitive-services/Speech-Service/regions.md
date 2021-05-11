@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab3e61a9c6593f8ee3075dd0ef6f0dee62c3a9c2
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98786793"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315257"
 ---
 # <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
@@ -42,7 +42,7 @@ Speech サービスは、以下のリージョンで **音声認識**、**テキ
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-[Speech SDK](speech-sdk.md) を使用する場合、リージョンは **リージョン識別子** によって (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 リージョンがサブスクリプションのリージョンと一致していることを確認してください。
+[Speech SDK](speech-sdk.md) を使用する場合、リージョンは **リージョン識別子** によって (たとえば、`SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。 このリージョンが、サブスクリプションのリージョンと一致していることを確認してください。
 
 オーディオ データを使用してカスタム モデルをトレーニングする場合は、トレーニングを高速化するために[専用のハードウェアを備えたリージョン](custom-speech-overview.md#set-up-your-azure-account)のいずれかを使用します。 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を使用して、完全にトレーニングされたモデルを後から別のリージョンにコピーできます。
 

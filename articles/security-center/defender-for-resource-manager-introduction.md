@@ -7,12 +7,12 @@ ms.date: 12/07/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 71209d9e20ec0f0cbc263e84d04bf8eba6e98b99
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100663"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279066"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -35,7 +35,7 @@ ms.locfileid: "102100663"
 
 Azure Defender for Resource Manager は、次のような問題からの保護対策となります。
 
-- **不審なリソース管理操作**: 不審な IP アドレスからの操作、マルウェア対策ソフトの無効化、VM の拡張機能で実行される不審なスクリプトなど
+- **不審なリソース管理操作**: 悪意のある IP アドレスからの操作、マルウェア対策ソフトの無効化、VM 拡張機能で実行される不審なスクリプトなど
 - **悪用ツールキット**: Microburst、PowerZure など
 - **侵入拡大**: Azure 管理レイヤーから Azure リソースのデータ プレーンへの侵入
 

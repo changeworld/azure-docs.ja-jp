@@ -12,12 +12,12 @@ ms.date: 02/12/2021
 ms.author: iangithinji
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1af80979a4712f6d25d994835128f9d5d2205f42
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d4dc415d4ce7b32c1581618c7a351110af8edaa3
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534741"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108160765"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "107534741"
 
 ## <a name="auto-acceleration"></a>自動高速化
 
-組織によっては、Azure Active Directory テナント内のドメインを、ユーザー認証用の別の IdP (AD FS など) とフェデレーションするように構成することがあります。  
+組織によっては、Azure Active Directory テナント内のドメインを、ユーザー認証用の別の IdP (AD FS など) とフェデレーションするように構成することがあります。
 
 ユーザーがアプリケーションにサインインすると、最初に Azure AD のサインイン ページが表示されます。 UPN を入力した後、フェデレーション ドメイン内にいると、そのドメインにサービスを提供している IdP のサインイン ページが表示されます。 状況によっては、管理者は特定のアプリケーションにサインインしたユーザーに対してサインイン ページを表示したい場合があります。
 
@@ -47,8 +47,8 @@ ms.locfileid: "107534741"
 
 テナントがサインイン用の別の IdP にフェデレーションされている場合、自動高速化によりユーザー サインインがいっそう効率化されます。  自動高速化は個々 のアプリケーションに対して構成できます。
 
->[!NOTE]
->自動高速化のためにアプリケーションを構成する場合、ユーザーは管理された資格情報 (FIDO など) を使用できず、ゲスト ユーザーはサインインできません。 ユーザーを認証用のフェデレーション IdP に導く場合、Azure Active Directory のサインイン ページに戻ることはできません。 ゲスト ユーザーは、他のテナントや Microsoft アカウントなどの外部 IdP に移動されなければならない場合があり、ホーム領域検出の手順がスキップされるため、そのアプリケーションにサインインすることはできません。  
+> [!NOTE]
+> 自動高速化のためにアプリケーションを構成する場合、ユーザーは管理された資格情報 (FIDO など) を使用できず、ゲスト ユーザーはサインインできません。 ユーザーを認証用のフェデレーション IdP に導く場合、Azure Active Directory のサインイン ページに戻ることはできません。 ゲスト ユーザーは、他のテナントや Microsoft アカウントなどの外部 IdP に移動されなければならない場合があり、ホーム領域検出の手順がスキップされるため、そのアプリケーションにサインインすることはできません。
 
 フェデレーション IdP に対する自動高速化を制御する方法は 3 つあります。
 
@@ -58,7 +58,7 @@ ms.locfileid: "107534741"
 
 ### <a name="domain-hints"></a>ドメイン ヒント
 
-ドメイン ヒントは、アプリケーションからの認証要求に含まれるディレクティブです。 ドメイン ヒントを使用して、ユーザーのフェデレーション IdP サインイン ページへの移動を高速化できます。 または、マルチテナント アプリケーションで使用して、テナント用にブランディングされた Azure AD サインイン ページをすぐに表示することができます。  
+ドメイン ヒントは、アプリケーションからの認証要求に含まれるディレクティブです。 ドメイン ヒントを使用して、ユーザーのフェデレーション IdP サインイン ページへの移動を高速化できます。 または、マルチテナント アプリケーションで使用して、テナント用にブランディングされた Azure AD サインイン ページをすぐに表示することができます。
 
 たとえば、"largeapp.com" というアプリケーションがあり、顧客は "contoso.largeapp.com" というカスタム URL でアプリケーションにアクセスできるものとします。 アプリは、認証要求に contoso.com へのドメイン ヒントを組み込んでいる可能性もあります。
 
@@ -79,16 +79,16 @@ ms.locfileid: "107534741"
 
 Azure Active Directory によってサポートされるドメイン ヒントを使った自動高速化について詳しくは、[Enterprise Mobility + Security のブログ](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/)をご覧ください。
 
->[!NOTE]
->認証要求にドメイン ヒントが含まれていて、[優先する必要がある](#home-realm-discovery-policy-to-prevent-auto-acceleration)場合、そのドメイン ヒントにより、HRD ポリシー内でアプリケーションに対して設定されている自動高速化がオーバーライドされます。
+> [!NOTE]
+> 認証要求にドメイン ヒントが含まれていて、[優先する必要がある](#home-realm-discovery-policy-to-prevent-auto-acceleration)場合、そのドメイン ヒントにより、HRD ポリシー内でアプリケーションに対して設定されている自動高速化がオーバーライドされます。
 
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>自動高速化に対するホーム領域検出ポリシー
 
-アプリケーションで、出力される認証要求を構成する手段が提供されていない場合があります。 そのような場合は、ドメイン ヒントを使って自動高速化を制御することはできません。 ホーム領域検出ポリシーによって自動高速化を構成し、同じ動作を実現することができます。  
+アプリケーションで、出力される認証要求を構成する手段が提供されていない場合があります。 そのような場合は、ドメイン ヒントを使って自動高速化を制御することはできません。 ホーム領域検出ポリシーによって自動高速化を構成し、同じ動作を実現することができます。
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>自動高速化を防止するに対するホーム領域検出ポリシー
 
-一部の Microsoft アプリケーションや SaaS アプリケーションには、自動的に domain_hints が含められます (たとえば `https://outlook.com/contoso.com` は、`&domain_hint=contoso.com` が追加されたログイン要求になります)。これによって、FIDO などの管理された資格情報のロールアウトが中断される可能性があります。  [ホーム領域検出ポリシー](/graph/api/resources/homeRealmDiscoveryPolicy)を使用して、管理された資格情報のロールアウト中に特定アプリまたは特定ドメインのドメイン ヒントを無視することができます。  
+一部の Microsoft アプリケーションや SaaS アプリケーションには、自動的に domain_hints が含められます (たとえば `https://outlook.com/contoso.com` は、`&domain_hint=contoso.com` が追加されたログイン要求になります)。これによって、FIDO などの管理された資格情報のロールアウトが中断される可能性があります。  [ホーム領域検出ポリシー](/graph/api/resources/homeRealmDiscoveryPolicy)を使用して、管理された資格情報のロールアウト中に特定アプリまたは特定ドメインのドメイン ヒントを無視することができます。
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>レガシ アプリケーションに対するフェデレーション ユーザーの直接 ROPC 認証を有効にする
 
@@ -109,21 +109,21 @@ Azure Active Directory によってサポートされるドメイン ヒント�
 
 ポリシーは、サービス プリンシパルにアタッチされてはじめて、特定のアプリケーションに対して有効になります。
 
-サービス プリンシパル上でアクティブにできる HRD ポリシーは、一度に 1 つだけです。  
+サービス プリンシパル上でアクティブにできる HRD ポリシーは、一度に 1 つだけです。
 
 Azure Active Directory の PowerShell コマンドレットを使用して、HRD ポリシーを作成および管理できます。
 
 HRD ポリシーの定義の例を次に示します。
 
- ```JSON
-   {  
-    "HomeRealmDiscoveryPolicy":
-    {  
+```json
+{  
+  "HomeRealmDiscoveryPolicy":
+  {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
     "AllowCloudPasswordValidation":false,    
-    }
-   }
+  }
+}
 ```
 
 ポリシーの種類は、"[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)" です。
@@ -174,13 +174,13 @@ Azure AD PowerShell コマンドレットを使って次のようなシナリオ
 
 2. Azure AD PowerShell コマンドレットをダウンロードした後、Connect コマンドを実行して、Azure AD に管理者アカウントでサインインします。
 
-    ``` powershell
+    ```powershell
     Connect-AzureAD -Confirm
     ```
 
 3. 次のコマンドを実行して、組織内のすべてのポリシーを表示します。
 
-    ``` powershell
+    ```powershell
     Get-AzureADPolicy
     ```
 
@@ -198,25 +198,25 @@ Azure AD PowerShell コマンドレットを使って次のようなシナリオ
 
 以下のポリシーは、テナント内のドメインが 1 つのみの場合、ユーザーがアプリケーションにサインインするときに、AD FS サインイン画面への移動を自動高速化します。
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 以下のポリシーは、テナント内にフェデレーション ドメインが複数あるときに、AD FS サインイン画面への移動を自動高速化します。 アプリケーションのユーザーを認証するフェデレーション ドメインが複数ある場合は、自動高速化するドメインを指定する必要があります。
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, `"PreferredDomain`":`"federated.example.edu`"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 特定のアプリケーション用の Azure Active Directory に対し、ユーザー名とパスワードを使用してフェデレーション ユーザーを直接認証できるようにするポリシーを作成するには、以下のコマンドを実行します。
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuthPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 新しいポリシーを表示し、その **ObjectId** を取得するには、次のコマンドを実行します。
 
-``` powershell
+```powershell
 Get-AzureADPolicy
 ```
 
@@ -230,7 +230,7 @@ Get-AzureADPolicy
 
 PowerShell を使用しているため、次のコマンドレットを使用してサービス プリンシパルとその ID を一覧表示できます。
 
-``` powershell
+```powershell
 Get-AzureADServicePrincipal
 ```
 
@@ -238,7 +238,7 @@ Get-AzureADServicePrincipal
 
 自動高速化を構成するアプリケーションのサービス プリンシパルの **ObjectID** を入手した後、次のコマンドを実行します。 このコマンドは、手順 1 で作成した HRD ポリシーを、手順 2 で取得したサービス プリンシパルに関連付けます。
 
-``` powershell
+```powershell
 Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 ```
 
@@ -250,7 +250,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 
 HRD ポリシーがどのアプリケーションに構成されているかを確認するには、**Get-AzureADPolicyAppliedObject** コマンドレットを使用します。 そして、確認するポリシーの **ObjectID** を渡します。
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
@@ -262,15 +262,15 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 
 #### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>手順 1:組織内で作成されたすべてのポリシーを一覧表示する
 
-``` powershell
+```powershell
 Get-AzureADPolicy
 ```
 
 割り当てを一覧表示するポリシーの **ObjectID** をメモします。
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>手順 2:ポリシーが割り当てられているサービス プリンシパルを一覧表示する  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>手順 2:ポリシーが割り当てられているサービス プリンシパルを一覧表示する
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
@@ -280,15 +280,15 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 
 先述の例を使って、ポリシーの **ObjectID** と、ポリシーを削除するアプリケーション サービス プリンシパルのオブジェクト ID を取得します。
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>手順 2:アプリケーション サービス プリンシパルからポリシーの割り当てを削除する  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>手順 2:アプリケーション サービス プリンシパルからポリシーの割り当てを削除する
 
-``` powershell
+```powershell
 Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>手順 3:ポリシーが割り当てられているサービス プリンシパルを一覧表示して、削除を確認する
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 

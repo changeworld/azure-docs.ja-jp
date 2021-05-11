@@ -9,16 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2021
 ms.author: aahi
-ms.openlocfilehash: 5287fe6df4a2f0cb728bf0e705a4ce989ca38487
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dc9aa1636bf4594d1e0b51315b520c6e893ced88
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934038"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288474"
 ---
-# <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
+# <a name="configure-face-docker-containers-retiring"></a>Face Docker コンテナーの構成 (廃止)
+
+> [!IMPORTANT]
+> Face コンテナー プレビューはアプリケーションを受け付けなくなり、2021 年 4 月 29 日時点で非推奨となりました。 Face コンテナーは 2021 年 7 月 26 日で完全に廃止されます。
 
 **Face** コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 このコンテナーには、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、課金設定です。 
 

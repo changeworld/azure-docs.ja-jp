@@ -1,18 +1,19 @@
 ---
 title: ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続
-description: この記事では、トラフィックを暗号化するために、ExpressRoute プライベート ピアリング経由でサイト間 VPN を有効にする方法について説明します。
+titleSuffix: Azure VPN Gateway
+description: トラフィックを暗号化するために ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を構成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c84b46fe3265b5ada792cbe47d92768e602fa20
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880527"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229038"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング経由のサイト間 VPN 接続を構成する
 

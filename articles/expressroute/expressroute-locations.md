@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: c07e4391f30d778520d8c2042d2715e3647e7935
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 524ce2b1049d9ce9818c1cfdcd8c272063b4ddb9
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127661"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324421"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -104,6 +104,8 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、シリコン バレー 2、ワシントン DC、ワシントン DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | サポートされています |サポートされています |アムステルダム 2、ドバイ 2、フランクフルト、マルセイユ、ムンバイ、ミュンヘン、ニューヨーク |
 | **[Devoli](https://devoli.com/expressroute)** | サポートされています |サポートされています | オークランド、メルボルン、シドニー |
+| **[Deutsche Telekom AG IntraSelect]()** | サポートされています |サポートされています |フランクフルト |
+| **[Deutsche Telekom AG]()** | サポートされています |サポートされています |Frankfurt2 |
 | **du datamena** |サポートされています |サポートされています | ドバイ 2 |
 | **eir** |サポートされています |サポートされています |ダブリン|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f65614de97e8ff6eed732e624ae30c3f2b70bd60
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 94dab0124a1f5e0144aab2e271fbf89e02111d3a
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589008"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108206801"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -31,13 +31,13 @@ ms.locfileid: "107589008"
 
 1. ルール名として「**Environmental humidity**」と入力します。
 
-1. **[ターゲット デバイス]** セクションで、デバイス テンプレートとして **[Sensor Controller]** を選択します。 このオプションは、デバイス テンプレートの種類によってルールが適用されるデバイスをフィルター処理します。 **[+ フィルター]** を選択することで、さらにフィルター条件を追加できます。
+1. **[ターゲット デバイス]** セクションで、 **[デバイス テンプレート]** として **[Sensor Controller]** を選択します。 このオプションは、デバイス テンプレートの種類によってルールが適用されるデバイスをフィルター処理します。 **[+ フィルター]** を選択することで、さらにフィルター条件を追加できます。
 
 1. **[条件]** セクションで、ルールをトリガーする条件を定義します。 次の情報を使用して、温度テレメトリに基づいて条件を定義します。
 
-    | フィールド        | Value            |
+    | フィールド        | 値            |
     | ------------ | ---------------- |
-    | Measurement  | SensorHumid      |
+    | 製品利用統計情報    | SensorHumid      |
     | 演算子     | が次の値より大きい  |
     | Value        | 55               |
 
@@ -60,7 +60,7 @@ ms.locfileid: "107589008"
 
     :::image type="content" source="media/quick-configure-rules/action.png" alt-text="ルールに追加された電子メール アクションを示すスクリーンショット":::
 
-1. **[保存]** を選択します。 ルールが **[ルール]** ページに表示されます。
+1. **[保存]** を選択します。 これでルールが **[ルール]** ページに表示されます。
 
 ## <a name="test-the-rule"></a>ルールをテストする
 

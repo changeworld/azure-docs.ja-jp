@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 04/14/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 42b6cb96cdcfbf4e9c2e927265954776093bb330
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: d59df677fda920be5ed9547bee3855d4c9511187
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992325"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330838"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Form Recognizer 事前構築済み身分証明書類 (ID) モデル
 
@@ -75,7 +75,11 @@ Form Recognizer IDs サービスを試してみるには、オンラインのサ
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>サポートされる ID の種類
+## <a name="supported-locales"></a>サポート対象のロケール
+
+ **事前構築済み ID v2.1-preview.3** (プレビュー) では、**en-us** ロケールで ID ドキュメントがサポートされています。
+
+## <a name="supported-identity-document-types"></a>サポートされている ID ドキュメントの種類
 
 * **Pre-built IDs v2.1-preview.3** 世界各国のパスポートと米国の運転免許証から主要な値が抽出されます。
 

@@ -8,16 +8,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: banders
-ms.openlocfilehash: 426d7f5ee117b346280a712cc9f71ab0e617d64f
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: cac3126706b5c2c7e890890013a506d04f104bb2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220740"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331000"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Azure 無料アカウントでの課金を避ける
 
-資格のある新規ユーザーには、[Azure 無料アカウント](https://azure.microsoft.com/free/)によって、最初の 30 日間に使用できる 200 米国ドルの Azure クレジットが請求通貨で付与されるほか、12 か月間の無料サービス (数に制限あり) が提供されます。 無料サービスの限度の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。 有効期限内のクレジットがあるか、または無料のサービスを制限の範囲内で使用する限り、料金は請求されません。
+資格のある新規ユーザーには、[Azure 無料アカウント](https://azure.microsoft.com/free/)によって、最初の 30 日間に使用できる 200 ドルの Azure クレジットが請求通貨で付与されるほか、12 か月間の無料サービス (数に制限あり) が提供されます。 無料サービスの限度の詳細については、「[Azure 無料アカウント FAQ](https://azure.microsoft.com/free/free-account-faq/)」を参照してください。 有効期限内のクレジットがあるか、または無料のサービスを制限の範囲内で使用する限り、料金は請求されません。
 
 Azure 無料アカウントに対して課金が課せられる理由のいくつかを見てみましょう。
 

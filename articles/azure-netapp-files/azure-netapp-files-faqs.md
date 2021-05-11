@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: d1cc59fe2eb3a2938dc776fd62e6645aec62bb1f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726846"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291802"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -65,6 +65,10 @@ NFSv3 または SMB3 クライアントから Azure NetApp Files ボリューム
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>ストレージは保存時に暗号化できますか?
 
 Azure NetApp Files のすべてのボリュームは、FIPS 140-2 標準を使用して暗号化されます。 すべてのキーは Azure NetApp Files サービスによって管理されています。 
+
+### <a name="is-azure-netapp-files-cross-region-replication-traffic-encrypted"></a>Azure NetApp Files のリージョン間レプリケーションのトラフィックは暗号化されますか?
+
+Azure NetApp Files のリージョン間レプリケーションでは、TLS 1.2 AES-256 GCM 暗号化を使用して、ソース ボリュームと宛先ボリュームの間で転送されるすべてのデータを暗号化します。 この暗号化は、Azure NetApp Files のリージョン間レプリケーションを含むすべての Azure トラフィックに対して既定で有効になっている [Azure MACSec 暗号化](../security/fundamentals/encryption-overview.md)に加えて行われます。 
 
 ### <a name="how-are-encryption-keys-managed"></a>暗号化キーはどのように管理されるのですか? 
 
@@ -133,10 +137,6 @@ NFSv 4.1 のセキュリティ オプション、テスト済みのパフォー�
 VM の起動または再起動時に NFS ボリュームを自動的にマウントする場合は、ホスト上の `/etc/fstab` ファイルにエントリを追加します。 
 
 詳細については、「[Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)」を参照してください。  
-
-### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>NFS クライアントでの DF コマンドでプロビジョニングされたボリューム サイズが表示されないのはなぜでしょうか?
-
-DF で報告されるボリューム サイズは、Azure NetApp Files ボリュームを拡張できる最大サイズです。 DF コマンドでの Azure NetApp Files ボリュームのサイズは、クォータやボリュームのサイズを反映するものではありません。  API Azure NetApp Files ボリュームのサイズまたはクォータは、Azure portal または API を使用して取得できます。
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Azure NetApp Files でサポートされている NFS のバージョンを何ですか?
 
@@ -214,6 +214,11 @@ SMB クライアントで報告されるボリューム サイズは、Azure Net
 
 ボリュームの概要ペインの **[JSON ビュー]** リンクを使用して、 **[プロパティ]**  ->  **[mountTargets]** の下で **[startIp]** 識別子を探します。
 
+### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Azure NetApp Files SMB 共有を、DFS 名前空間 (DFS-N) のルートとして使用できますか。
+
+いいえ。 ただし、Azure NetApp Files SMB 共有は、DFS 名前空間 (DFS-N) のフォルダー ターゲットとして使用できます。   
+Azure NetApp Files SMB 共有を DFS-N のフォルダー ターゲットとして使用するには、[DFS のフォルダー ターゲット追加](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)に関する記事の手順に従って、Azure NetApp Files SMB 共有のマウント ポイントの汎用名前付け規則 (UNC) パスを設定します。  
+
 ### <a name="smb-encryption-faqs"></a>SMB 暗号化に関する FAQ
 
 このセクションでは、SMB 暗号化 (SMB 3.0 および SMB 3.1.1) に関してよく寄せられる質問に回答します。
@@ -257,17 +262,17 @@ SMB 暗号化は、クライアント (メッセージの暗号化と復号化�
 
 Azure NetApp Files には、容量プールとボリュームの使用状況のメトリックが用意されています。 また、Azure Monitor を使用して Azure NetApp Files の使用状況を監視することもできます。 詳細については、「[Azure NetApp Files のメトリック](azure-netapp-files-metrics.md)」を参照してください。 
 
-### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Azure NetApp Files は Azure Storage Explorer を使用して管理できますか?
-
-いいえ。 Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
-
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>ディレクトリがサイズ制限に近づいているかどうかを確認するにはどうすればよいですか?
 
-クライアントから `stat` コマンドを使用することで、ディレクトリがディレクトリ メタデータのサイズ上限 (320 MB) に近づいているかどうかを確認できます。   
+ディレクトリがディレクトリ メタデータの[最大サイズの制限](azure-netapp-files-resource-limits.md#resource-limits) (320 MB) に近づいているかどうかを確認するには、クライアントから `stat` コマンドを使用できます。
+上限と計算方法については「[Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md#directory-limit)」をご覧ください。 
 
-320 MB のディレクトリの場合、ブロック数は 655,360、各ブロック サイズは 512 バイトです  (つまり、320 x 1,024 x 1,024/512)。320 MB のディレクトリの場合、この数値は最大約 400 万ファイルに換算できます。 ただし、ASCII 以外の文字を含むファイルがディレクトリ内にどの程度存在するかといった要因によっては、実際の最大ファイル数が少なくなる場合があります。 そのため、次のように `stat` コマンドを使用して、ディレクトリが上限に近づいているかどうかを確認する必要があります。  
+<!-- 
+You can use the `stat` command from a client to see whether a directory is approaching the maximum size limit for directory metadata (320 MB).   
 
-例 :
+For a 320-MB directory, the number of blocks is 655360, with each block size being 512 bytes.  (That is, 320x1024x1024/512.)  This number translates to approximately 4 million files maximum for a 320-MB directory. However, the actual number of maximum files might be lower, depending on factors such as the number of files containing non-ASCII characters in the directory. As such, you should use the `stat` command as follows to determine whether your directory is approaching its limit.  
+
+Examples:
 
 ```console
 [makam@cycrh6rtp07 ~]$ stat bin
@@ -282,7 +287,28 @@ Size: 12288           Blocks: 24         IO Block: 65536  directory
 File: 'tmp1'
 Size: 4096            Blocks: 8          IO Block: 65536  directory
 ```
+--> 
 
+### <a name="does-snapshot-space-count-towards-the-usable--provisioned-capacity-of-a-volume"></a>スナップショット領域は、ボリュームの使用可能な容量またはプロビジョニングされた容量にカウントされますか?
+
+はい。[消費されたスナップショット容量](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots)は、ボリューム内のプロビジョニングされた領域にカウントされます。 ボリュームがいっぱいになった場合は、次のアクションを実行することを検討してください。
+
+* [ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)。
+* ホストしているボリューム内の領域を解放するために、[以前のスナップショットを削除する](azure-netapp-files-manage-snapshots.md#delete-snapshots)。 
+
+### <a name="does-azure-netapp-files-support-auto-grow-for-volumes-or-capacity-pools"></a>Azure NetApp Files では、ボリュームまたは容量プールの自動拡張をサポートしていますか?
+
+いいえ。Azure NetApp Files ボリュームおよび容量プールは、いっぱいになっても自動拡張されません。 「[Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md)」を参照してください。   
+
+容量ベースのアラート ルールを管理するには、コミュニティでサポートされている [Logic Apps ANFCapacityManager ツール](https://github.com/ANFTechTeam/ANFCapacityManager)を使用できます。 このツールでは、ボリュームの領域が不足しないように、ボリューム サイズを自動的に増やすことができます。
+
+### <a name="does-the-destination-volume-of-a-replication-count-towards-hard-volume-quota"></a>レプリケーションの宛先ボリュームは、ハード ボリューム クォータにカウントされますか?  
+
+いいえ。レプリケーションの宛先ボリュームは、ハード ボリューム クォータにカウントされません。
+
+### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Azure NetApp Files は Azure Storage Explorer を使用して管理できますか?
+
+いいえ。 Azure NetApp Files は、Azure Storage Explorer ではサポートされていません。
 
 ## <a name="data-migration-and-protection-faqs"></a>データの移行と保護に関する FAQ
 
@@ -303,6 +329,8 @@ NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sy
 ### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Azure NetApp Files ボリュームのコピーを別の Azure リージョンに作成するには、どうすればよいですか?
     
 Azure NetApp Files には NFS ボリュームと SMB ボリュームがあります。  ファイル ベースのコピー ツールは、Azure リージョン間でデータをレプリケートするために使用できます。 
+
+[リージョン間レプリケーション](cross-region-replication-introduction.md)機能を使用すると、あるリージョン内の Azure NetApp Files ボリューム (ソース) から別のリージョン内の別の Azure NetApp Files ボリューム (宛先) にデータを非同期的にレプリケートできます。  さらに、[既存のボリュームのスナップショットを使用して新しいボリュームを作成](azure-netapp-files-manage-snapshots.md#restore-a-snapshot-to-a-new-volume)できます。
 
 NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service) があります。このソリューションでは、NFS または SMB のデータを、Azure NetApp Files の NFS エクスポートまたは SMB 共有にレプリケートすることができます。 
 
@@ -331,6 +359,10 @@ Azure NetApp Files NFS ボリュームは、AVS Windows VM または Linux VM �
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware Solution (AVS) で Azure NetApp Files NFS または SMB ボリュームを使用する場合、どのリージョンがサポートされますか?
 
 AVS での Azure NetApp Files NFS または SMB ボリュームの使用は、米国東部、米国西部、西ヨーロッパ、およびオーストラリア東部の各リージョンでサポートされます。
+
+### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp Files で Azure Policy を使用できますか。
+
+はい。 Azure NetApp Files はファーストパーティーのサービスです。 Azure リソース プロバイダーの標準に完全に準拠しています。 そのため Azure NetApp Files は、*カスタム ポリシー定義* によって Azure Policy に統合できます。 Azure NetApp Files でカスタム ポリシーを使用する方法は、Microsoft Tech Community の [Azure NetApp Files での Azure Policy の使用](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)に関するページをご覧ください。 
 
 ## <a name="next-steps"></a>次のステップ  
 

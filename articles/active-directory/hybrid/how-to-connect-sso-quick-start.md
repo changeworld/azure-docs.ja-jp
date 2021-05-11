@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 349aef1bb9382eec19d9ad9c7f6d4579c82b62de
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba3bdc3f58395f17911042c699a0aca3cbae92a2
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043939"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290634"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -208,7 +208,7 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
 
 #### <a name="known-browser-limitations"></a>ブラウザーの既知の制限事項
 
-シームレス SSO は、Firefox および Microsoft Edge (レガシー) ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 シームレス SSO では、Chromium に基づく Microsoft Edge の次期バージョンがサポートされています。仕様により InPrivate とゲスト モードで機能します。
+シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。 シームレス SSO では、Chromium に基づく Microsoft Edge の次期バージョンがサポートされています。仕様により InPrivate とゲスト モードで機能します。 Microsoft Edge (レガシ) はサポートされなくなりました。
 
 ## <a name="step-4-test-the-feature"></a>手順 4:機能をテストする
 

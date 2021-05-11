@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 60b7cfa744de244015f99a2e42070eb3430878c7
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 757de37fdc3f55170d8c620a69adf104b8884b14
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015665"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204281"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -71,7 +71,7 @@ Azure EA サブスクリプションの場合、予算を表示するには読�
 - 共同作成者と Cost Management 共同作成者 - 自分の予算を作成、変更、削除できます。 他のユーザーによって作成された予算の予算金額を変更できます。
 - 閲覧者と Cost Management 閲覧者 - 自分がアクセス許可を持っている予算を表示できます。
 
-スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。 Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](./assign-access-acm-data.md)」をご覧ください。
+**Enterprise Agreement および Microsoft 顧客契約のスコープのエクスポートを構成するために必要なアクセス権など、スコープの詳細については、「[スコープを理解して使用する](understand-work-scopes.md)」を参照してください。** Cost Management データに対するアクセス許可の割り当てについて詳しくは、「[Cost Management のデータへのアクセス許可を割り当てる](./assign-access-acm-data.md)」をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

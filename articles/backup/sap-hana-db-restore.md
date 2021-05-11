@@ -3,12 +3,12 @@ title: Azure VM 上の SAP HANA データベースの復元
 description: この記事では、Azure Virtual Machines 上で実行されている SAP HANA データベースを復元する方法について説明します。 [リージョンをまたがる復元] を使用して、データベースをセカンダリ リージョンに復元することもできます。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0b1af610ffa19f2a7708ee6f96de335a1886f78
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021675"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279984"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースの復元
 
@@ -152,7 +152,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
     ![復元ポイントの選択](media/sap-hana-db-restore/select-restore-point.png)
 
 1. 選択した復元ポイントに関連付けられているすべてのバックアップ ファイルが、この宛先パスにダンプされます。
-1. 選択した復元ポイントの種類 (**ポイント イン タイム** または **完全および差分**) に基づいて、宛先パスに 1 つまたは複数のフォルダーが作成されるのを確認できます。 `Data_<date and time of restore>` という名前のフォルダーの 1 つには、完全および差分バックアップが含まれ、`Log` という名前の他のフォルダーにはログ バックアップが含まれます。
+1. 選択した復元ポイントの種類 (**ポイント イン タイム** または **完全および差分**) に基づいて、宛先パスに 1 つまたは複数のフォルダーが作成されるのを確認できます。 `Data_<date and time of restore>` という名前のフォルダーには完全バックアップが格納され、`Log` という名前の別のフォルダーにはログ バックアップと他のバックアップ (差分、増分など) が格納されます。
 1. これらの復元されたファイルを、データベースとして復元する先の SAP HANA サーバーに移動します。
 1. その後、次の手順に従います。
     1. 次のコマンドを使用して、バックアップ ファイルが格納されているフォルダーまたはディレクトリに対してアクセス許可を設定します。
@@ -176,7 +176,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
         上記のコマンドでは:
 
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
-        * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
+        * `<LogFilesDir>` - ログ バックアップと、差分および増分バックアップ (存在する場合) が格納されているフォルダー
         * `<PathToPlaceCatalogFile>` - 生成されたカタログ ファイルを配置する必要があるフォルダー
 
     1. HANA Studio を通して新たに生成されたカタログ ファイルを使用して復元するか、この新しく生成されたカタログを使用して HDBSQL 復元クエリを実行します。 HDBSQL クエリを以下に示します。
@@ -196,7 +196,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
         * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する **ホスト**/SAP HANA サーバーの名前。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
         * `<PathToGeneratedCatalogInStep3>` - **手順 C** で生成されたカタログ ファイルへのパス
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
-        * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
+        * `<LogFilesDir>` - ログ バックアップと、差分および増分バックアップ (存在する場合) が格納されているフォルダー
         * `<BackupIdFromJsonFile>` - **手順 C** で抽出された **BackupId**
 
     * 特定の完全または差分バックアップに復元するには、次のようにします。
@@ -212,7 +212,7 @@ Azure Backup は、Azure VM 上で実行されている SAP HANA データベー
         * `<DatabaseName@HostName>` - バックアップが復元に使用されるデータベースの名前と、このデータベースが存在する **ホスト** / SAP HANA サーバー名。 `USING SOURCE <DatabaseName@HostName>` オプションでは、データ バックアップ (復元に使用) が、ターゲットの SAP HANA マシンとは異なる SID または名前を持つデータベースであることが指定されます。 そのため、バックアップが作成されたのと同じ HANA サーバーで復元を実行する場合には、これを指定する必要はありません。
         * `<PathToGeneratedCatalogInStep3>` - **手順 C** で生成されたカタログ ファイルへのパス
         * `<DataFileDir>` - 完全バックアップが格納されているフォルダー
-        * `<LogFilesDir>` - ログ バックアップが格納されているフォルダー
+        * `<LogFilesDir>` - ログ バックアップと、差分および増分バックアップ (存在する場合) が格納されているフォルダー
         * `<BackupIdFromJsonFile>` - **手順 C** で抽出された **BackupId**
 
 ### <a name="restore-to-a-specific-point-in-time"></a>特定の時点に復元する

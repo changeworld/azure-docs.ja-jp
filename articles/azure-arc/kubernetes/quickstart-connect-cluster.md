@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: 8da5ba5c4408cb96008c3d9802ce3a5ccdc25f1f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: de701e79677f7e862d953eb5f03534b4eaefb367
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140177"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290761"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する 
 
@@ -27,7 +27,7 @@ ms.locfileid: "108140177"
     * [Docker 内の Kubernetes (KIND)](https://kind.sigs.k8s.io/)
     * [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) または [Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 用の Docker を使用して Kubernetes クラスターを作成する
     * [Cluster API](https://cluster-api.sigs.k8s.io/user/quick-start.html) を使用したセルフマネージド Kubernetes クラスター
-    * OpenShift クラスターを Azure Arc に接続したい場合は、`az connectedk8s connect` を実行する前に、クラスターで次のコマンドを 1 回だけ実行する必要があります。
+    * OpenShift クラスターを Azure Arc に接続する場合は、`az connectedk8s connect` を実行する前に、クラスターで次のコマンドを 1 回だけ実行する必要があります。
         
         ```console
         oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
@@ -48,11 +48,8 @@ ms.locfileid: "108140177"
   az extension add --name connectedk8s
   ```
 
-
-
 >[!TIP]
 > `connectedk8s` 拡張機能が既にインストールされている場合は、次のコマンドを使用して最新バージョンに更新してください - `az extension update --name connectedk8s`
-
 
 >[!NOTE]
 >Azure Arc 対応 Kubernetes でサポートされているリージョンの一覧については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)を参照してください。
@@ -148,6 +145,9 @@ eastus      AzureArcTest
 
 > [!TIP]
 > location パラメーターを指定せずに上記のコマンドを実行すると、リソース グループと同じ場所に Azure Arc 対応 Kubernetes リソースが作成されます。 Azure Arc 対応 Kubernetes リソースを別の場所に作成するには、`az connectedk8s connect` コマンドの実行時に `--location <region>` または `-l <region>` のいずれかを指定します。
+
+> [!NOTE]
+> サービス プリンシパルを使用して Azure CLI にログインしている場合は、クラスターを Azure Arc に接続するときにカスタムの場所機能を有効にするために、サービス プリンシパルに対する[追加のアクセス許可](troubleshooting.md#enable-custom-locations-using-service-principal)が必要です。
 
 ## <a name="verify-cluster-connection"></a>クラスターの接続を確認する
 

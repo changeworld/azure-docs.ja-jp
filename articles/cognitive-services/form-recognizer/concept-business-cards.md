@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5211c1263af599eb5fd09ad276545c725ce5c867
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7fb5eeb90a26d85b3e56706e0c2b32ceadc8d11
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466995"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330892"
 ---
-# <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル 
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Form Recognizer の事前構築済みの名刺モデル
 
-Azure Form Recognizer では、事前構築済みの名刺モデルを使用して、名刺から連絡先情報を分析して抽出できます。 これは、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。 
+Azure Form Recognizer では、事前構築済みの名刺モデルを使用して、名刺から連絡先情報を分析して抽出できます。 これは、強力な光学式文字認識 (OCR) 機能と名刺解釈モデルを組み合わせて、英語の名刺から重要な情報を抽出します。 抽出されるのは、個人の連絡先情報、会社名、役職などです。 Form Recognizer v2.1 プレビューで事前構築済み Business Card API が公開されています。
 
 ## <a name="what-does-the-business-card-service-do"></a>名刺サービスにはどのような機能がありますか。
 
@@ -27,32 +27,40 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 
 ![FOTT + JSON 出力からの Contoso の明細画像](./media/business-card-example.jpg)
 
-
-
 ### <a name="fields-extracted"></a>抽出されるフィールド:
 
-|名前| Type | 説明 | Text | 
+|名前| Type | 説明 | Text |
 |:-----|:----|:----|:----|
 | ContactNames | オブジェクトの配列 | 名刺から抽出された連絡先の名前 | [{ "FirstName":"John", "LastName":"Doe" }] |
-| FirstName | string | 連絡先の名 | "John" | 
-| LastName | string | 連絡先の姓 |     "Doe" | 
-| CompanyNames | 文字列の配列 | 名刺から抽出された会社名 | ["Contoso"] | 
-| Departments | 文字列の配列 | 連絡先の部署または組織 | ["R&D"] | 
-| JobTitles | 文字列の配列 | リストされている連絡先の役職 | ["Software Engineer"] | 
-| メール | 文字列の配列 | 名刺から抽出された連絡先のメールアドレス | ["johndoe@contoso.com"] | 
-| Websites | 文字列の配列 | 名刺から抽出された Web サイト | ["https://www.contoso.com"] | 
-| アドレス | 文字列の配列 | 名刺から抽出された住所 | ["123 Main Street, Redmond, WA 98052"] | 
+| FirstName | string | 連絡先の名 | "John" |
+| LastName | string | 連絡先の姓 |     "Doe" |
+| CompanyNames | 文字列の配列 | 名刺から抽出された会社名 | ["Contoso"] |
+| Departments | 文字列の配列 | 連絡先の部署または組織 | ["R&D"] |
+| JobTitles | 文字列の配列 | リストされている連絡先の役職 | ["Software Engineer"] |
+| メール | 文字列の配列 | 名刺から抽出された連絡先のメールアドレス | ["johndoe@contoso.com"] |
+| Websites | 文字列の配列 | 名刺から抽出された Web サイト | ["https://www.contoso.com"] |
+| アドレス | 文字列の配列 | 名刺から抽出された住所 | ["123 Main Street, Redmond, WA 98052"] |
 | MobilePhones | 電話番号の配列 | 名刺から抽出された携帯電話番号 | ["+19876543210"] |
 | Fax | 電話番号の配列 | 名刺から抽出された Fax 電話番号 | ["+19876543211"] |
 | WorkPhones | 電話番号の配列 | 名刺から抽出された勤務先電話番号 | ["+19876543231"] |
 | OtherPhones     | 電話番号の配列 | 名刺から抽出されたその他の電話番号 | ["+19876543233"] |
 
 
-また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。  
+また、Business Card API では、名刺から認識されたすべてのテキストを返すこともできます。 この OCR 出力は JSON 応答に含まれています。
 
-### <a name="input-requirements"></a>入力要件 
+### <a name="input-requirements"></a>入力要件
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+
+## <a name="supported-locales"></a>サポート対象のロケール
+
+**事前構築済み名刺 v2.1-preview.3** (パブリック プレビュー) は、次のロケールをサポートしています。
+
+* **ja-JP**
+* **en-au**
+* **en-ca**
+* **en-gb**
+* **en-in**
 
 ## <a name="the-analyze-business-card-operation"></a>名刺の分析操作
 
@@ -79,7 +87,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 名刺の分析結果の取得操作への応答は、抽出されたすべての情報が含まれる名刺の構造化表現になります。  [サンプルの名刺ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-english.jpg)と、その構造化された出力である[サンプルの名刺出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/business-card-result.json)を参照してください。
 
 成功した JSON 応答の例を次に示します。
-* `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 
+* `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。
 * `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切な連絡先情報が存在する場所です。
 
 ```json
@@ -96,7 +104,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-                   "lines": 
+                   "lines":
                              {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
@@ -115,7 +123,7 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
                                 "boundingBox": [
                                     419,
                             ]
-    
+
             }
         ],
         "documentResults": [
@@ -384,14 +392,14 @@ Azure Form Recognizer では、事前構築済みの名刺モデルを使用し�
 
 [クイックスタート](./QuickStarts/client-library.md)に従って、Python と REST API を使用した名刺データ抽出を実装します。
 
-## <a name="customer-scenarios"></a>顧客シナリオ  
+## <a name="customer-scenarios"></a>顧客シナリオ
 
 Business Card API で抽出されたデータは、さまざまなタスクを実行するために使用できます。 このように連絡先情報を自動的に抽出すると、クライアントに対応するロールを持つユーザーの時間を節約できます。 次に、顧客が Business Card API を使用して行った作業の例をいくつかご紹介します。
 
-* 名刺から連絡先情報を抽出し、連絡先の電話番号をすばやく作成します。 
-* CRM と統合して、名刺画像を使用して自動的に連絡先を作成します。 
-* 潜在顧客を追跡します。  
-* 既存の名刺画像から、連絡先情報を一括して抽出します。 
+* 名刺から連絡先情報を抽出し、連絡先の電話番号をすばやく作成します。
+* CRM と統合して、名刺画像を使用して自動的に連絡先を作成します。
+* 潜在顧客を追跡します。
+* 既存の名刺画像から、連絡先情報を一括して抽出します。
 
 また、Business Card API では、[AI Builder の名刺処理機能](/ai-builder/prebuilt-business-card)も強化されています。
 

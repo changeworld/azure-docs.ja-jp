@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/12/2021
+ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9a39a1b0df364aeed970f3ed0e0d99d4d31585b2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498154"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175480"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>チュートリアル:SCIM エンドポイントのプロビジョニングを開発および計画する
 
@@ -213,10 +213,11 @@ AAD との互換性を確保するために、SCIM エンドポイントの実�
 * エンタイトルメント属性はサポートされていません。
 * SCIM エンドポイントで HTTPS をサポートします。
 * [スキーマ検出](#schema-discovery)
-  * スキーマの検出は、カスタム アプリケーションでは現在サポートされていませんが、ある特定のギャラリー アプリケーションでは使用されています。 今後は、コネクタに属性を追加するための主要な手段としてスキーマ検出が使用されます。 
+  * スキーマの検出は、カスタム アプリケーションでは現在サポートされていませんが、ある特定のギャラリー アプリケーションでは使用されています。 今後は、既存のコネクタに属性を追加するための唯一の手段としてスキーマ検出が使用されます。 
   * 値が存在しない場合でも、null 値を送信しないでください。
   * プロパティ値はキャメル ケース (例: readWrite) にする必要があります。
   * リストの応答を返す必要があります。
+  * だれかが Azure portal でプロビジョニング構成を保存するたび、または、ユーザーが Azure portal のプロビジョニング編集ページにアクセスするたび、Azure AD SCIM クライアントから /schemas 要求が送信されます。 その他、検出された属性は、[対象の属性] リストにある属性マッピングでお客様に示されます。 スキーマ検出では、対象の属性が新たに追加されるだけです。 属性が削除されることはありません。 
   
 ### <a name="user-provisioning-and-deprovisioning"></a>ユーザーのプロビジョニングとプロビジョニング解除
 

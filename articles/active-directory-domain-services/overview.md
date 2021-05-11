@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/20/2021
+ms.date: 04/28/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 194a5420f38e99d45f74241f67ae8cfbbaaee8f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5854d8cecd1de8121b6129d86a70c1f5ad9518f2
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660999"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175390"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
@@ -50,9 +50,9 @@ Azure AD DS では、ID 情報が Azure AD からレプリケートされるた�
 * オンプレミスの AD DS 環境を既に使用している場合は、ユーザー アカウント情報を同期させて、ユーザーに一貫性のある ID を提供できます。 詳細については、[マネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ][synchronization]に関するページを参照してください。
 * クラウド専用の環境では、従来のオンプレミスの AD DS 環境を必要とすることなく、Azure AD DS で提供される ID の集中管理サービスを利用できます。
 
-マネージド ドメインを拡張して、Azure AD テナントごとに複数のレプリカ セットを使用できます。 レプリカ セットは、Azure AD DS がサポートされている任意の Azure リージョンの、ピアリングされた任意の仮想ネットワークに追加できます。 異なる Azure リージョンにレプリカ セットを追加することで、1 つの Azure リージョンがオフラインになった場合に、レガシ アプリケーションの地理的なディザスター リカバリーが実現されます。 レプリカ セットは現在プレビュー段階です。 詳細については、[マネージド ドメインのレプリカ セットの概念と機能][concepts-replica-sets]に関するページを参照してください。
+マネージド ドメインを拡張して、Azure AD テナントごとに複数のレプリカ セットを使用できます。 レプリカ セットは、Azure AD DS がサポートされている任意の Azure リージョンの、ピアリングされた任意の仮想ネットワークに追加できます。 異なる Azure リージョンにレプリカ セットを追加することで、1 つの Azure リージョンがオフラインになった場合に、レガシ アプリケーションの地理的なディザスター リカバリーが実現されます。 詳細については、[マネージド ドメインのレプリカ セットの概念と機能][concepts-replica-sets]に関するページを参照してください。
 
-次のビデオでは、Azure AD DS により、アプリケーションおよびワークロードを統合して、クラウドで ID サービスを提供する方法の概要を説明します。
+Azure AD DS がアプリケーションやワークロードとの統合を通じて、クラウドにおける ID サービスを提供する方法について取り上げたビデオをご覧ください。
 
 <br />
 

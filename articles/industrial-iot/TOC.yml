@@ -1,0 +1,62 @@
+- name: Azure Industrial IoT ドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: 産業用 IoT とは
+      href: overview-what-is-industrial-iot.md
+    - name: OPC Publisher の概要
+      href: overview-what-is-opc-publisher.md
+- name: チュートリアル
+  items:
+    - name: OPC Publisher のスタンドアロン チュートリアル
+      items:
+        - name: OPC Publisher をスタンドアロン モードでデプロイする
+          href: tutorial-publisher-deploy-opc-publisher-standalone.md
+        - name: OPC Publisher の構成
+          href: tutorial-publisher-configure-opc-publisher.md
+        - name: OPC Publisher のパフォーマンスとメモリの調整
+          href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
+    - name: IIoT プラットフォームのチュートリアル (調整モード)
+      items:
+        - name: IIoT プラットフォームのデプロイ
+          href: tutorial-deploy-industrial-iot-platform.md
+        - name: IIoT コンポーネントの構成
+          href: tutorial-configure-industrial-iot-components.md
+        - name: IIoT データを ADX にプルする
+          href: tutorial-industrial-iot-azure-data-explorer.md
+        - name: Time Series Insights を使用してデータを視覚化および分析する
+          href: tutorial-visualize-data-time-series-insights.md
+- name: リファレンス
+  items:
+    - name: コマンドライン引数
+      href: reference-command-line-arguments.md
+    - name: OPC Publisher のテレメトリ構成ファイルの形式
+      href: reference-opc-publisher-telemetry-format.md
+- name: リソース
+  items:
+    - name: OPC Publisher GitHub リポジトリ
+      href: 'https://github.com/Azure/Industrial-IoT'
+    - name: IIoT Platform GitHub リポジトリ
+      href: 'https://github.com/Azure/iot-edge-opc-publisher'
+    - name: サポート オプションとヘルプ オプション
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: Azure IoT のサービス
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT Central
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT ソリューション アクセラレータ
+          href: ./index.yml
+        - name: IoT プラグ アンド プレイ
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml

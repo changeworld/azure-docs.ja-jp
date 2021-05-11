@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 04/26/2021
+ms.date: 04/29/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7b3528cf44c5b72f44e8b494147e597a4d460f26
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: bf4630fbc60088f87ad77f5b26f552e7b58e2565
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001925"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108285046"
 ---
 このカテゴリには **67 個** の推奨事項があります。
 
@@ -21,7 +21,7 @@ ms.locfileid: "108001925"
 |SQL Server に対して Azure Active Directory 管理者をプロビジョニングする必要がある |SQL Server に Azure AD 管理者をプロビジョニングして、Azure AD 認証を有効にします。 Azure AD 認証を使用して、アクセス許可の管理を簡単にし、データベース ユーザーとその他の Microsoft サービスの ID を一元管理できます。<br />(関連ポリシー:[SQL サーバーに対して Azure Active Directory 管理者をプロビジョニングする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1f314764-cb73-4fc9-b863-8eca98ac36e9)) |高 |
 |API Management サービスには仮想ネットワークが使用されている必要がある |Azure Virtual Network のデプロイにより、セキュリティが強化され、分離が行われ、インターネット ルーティングできないネットワークに API Management サービスを配置して、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用してオンプレミス ネットワークに接続できます。これにより、ネットワークやオンプレミス内のバックエンド サービスにアクセスできるようになります。 開発者ポータルと API ゲートウェイは、インターネットから、または仮想ネットワーク内でのみアクセスできるように構成可能です。<br />(関連ポリシー: [API Management サービスでは仮想ネットワークを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fef619a2c-cc4d-4d03-b2ba-8c94a834d85b)) |Medium |
 |App Configuration ではプライベート リンクを使用する必要がある |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート リンク プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 サービス全体ではなく、アプリ構成インスタンスにプライベート エンドポイントをマッピングすることで、データ漏えいのリスクからも保護されます。 詳細については、https://aka.ms/appconfig/private-endpoint を参照してください。<br />(関連ポリシー:[App Configuration ではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fca610c1d-041c-4332-9d88-7ed3094967c7)) |Medium |
-|SQL サーバーの監査のリテンション期間は少なくとも 90 日に設定する必要がある |監査期間が 90 日未満に構成されている SQL サーバーを監査します。<br />(関連ポリシー:[SQL サーバーでは、90 日以上の監査リテンション期間を構成する必要がある。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |低 |
+|SQL サーバーの監査のリテンション期間は少なくとも 90 日に設定する必要がある |監査期間が 90 日未満に構成されている SQL サーバーを監査します。<br />(関連ポリシー: [ストレージ アカウント ターゲットに対する SQL サーバーの監査データの保有期間を 90 日以上に構成する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f89099bee-89e0-4b26-a5f4-165451757743)) |低 |
 |SQL Server の監査を有効にする必要があります |SQL サーバーに対する監査を有効にすることで、サーバー上のすべてのデータベースについてそのアクティビティを追跡し、監査ログに保存します。<br />(関連ポリシー:[SQL サーバーの監査を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9)) |低 |
 |サブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。<br />(関連ポリシー:[自分のサブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f475aae12-b88a-4572-8b36-9b712b2b3a17)) |低 |
 |Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のすべてのコントロール プレーン (マスター) ノードからデータを収集し、それをクラウドの Azure Defender for Kubernetes のバックエンドに送信して、さらなる分析を行うことができます。 詳細については、「https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc」を参照してください。<br />(関連ポリシーはありません) |高 |

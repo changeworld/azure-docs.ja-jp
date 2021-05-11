@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: dech
-ms.openlocfilehash: 4e31cb989ded35f5f9773343340a6e252f9912a2
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 6329935c780494722a78e00e82446834f72aa37b
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064733"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209303"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner---sql-api"></a>Azure Cosmos DB Capacity Planner を使用して RU/秒を見積もる - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "108064733"
 
 |**入力**  |**説明**  |
 |---------|---------|
-| API |SQL (コア) API を選択する |
+| API |SQL (コア) API を選択します |
 |リージョンの数|Azure Cosmos DB は、すべての Azure リージョンで利用できます。 該当のワークロードに必要なリージョンの数を選択します。 ご使用の Cosmos アカウントには、任意の数のリージョンを関連付けることができます。 詳細については、Azure Cosmos DB の[グローバル分散](distribute-data-globally.md)に関する記事を参照してください。|
 |マルチリージョンの書き込み|[マルチリージョンの書き込み](distribute-data-globally.md#key-benefits-of-global-distribution)を有効にすると、お使いのアプリケーションは任意の Azure リージョンに対して読み取りおよび書き込みを行うことができます。 マルチリージョンの書き込みを無効にすると、アプリケーションは単一リージョンに対してデータの書き込みを行うことができます。 <br/><br/> さまざまなリージョンでの待機時間の短い書き込みを必要とするアクティブ/アクティブのワークロードが予期される場合は、マルチリージョンの書き込みを有効にしてください。 たとえば、さまざまなリージョンでデータベースにデータを大量に書き込む IOT ワークロードがあります。 <br/><br/> マルチリージョンの書き込みでは、99.999% の読み取りと書き込みの可用性が保証されます。 マルチリージョンの書き込みでは、単一の書き込みリージョンと比べて、より多くのスループットが必要になります。 詳細については、[単一の書き込みリージョンと複数の書き込みリージョンでの RU の違い](optimize-cost-regions.md)に関する記事を参照してください。|
 |トランザクション ストアに保存されているデータの合計 |1 つのリージョンのトランザクション ストアに保存されているデータの推定合計 (GB)。|
@@ -35,10 +35,10 @@ ms.locfileid: "108064733"
 |クエリ数/秒 |リージョンごとに 1 秒あたりに予想されるクエリの数。 クエリを実行するための平均 RU 料金は、10 RU で推定されます。 |
 |1 秒あたりのポイント読み取り数 |リージョンごとに 1 秒あたりに予想されるポイント読み取り操作数。 ポイントの読み取りは、1 つの項目 ID およびパーティション キーにおいてキーと値の参照を行うことです。 ポイント読み取りの詳細については、[データを読み取るためのオプション](optimize-cost-reads-writes.md#reading-data-point-reads-and-queries)に関する記事を参照してください。 |
 |1 秒あたりの作成数 |リージョンごとに 1 秒あたりに予想される作成操作数。 |
-|1 秒あたりの更新数 |リージョンごとに 1 秒あたりに予想される更新操作数。 |
+|1 秒あたりの更新数 |リージョンごとに 1 秒あたりに予想される更新操作数。 自動インデックス作成を選択すると、更新操作の推定 RU/秒は、1 回の更新ごとに 1 つのプロパティが変更されるものとして計算されます。 |
 |1 秒あたりの削除数 |リージョンごとに 1 秒あたりに予想される削除操作数。 |
 
-必要な詳細を入力したら、 **[計算]** を選択します。 **[コストの見積もり]** タブに、ストレージとプロビジョニング済みスループットの合計コストが表示されます。 このタブの **[詳細の表示]** リンクを展開すると、各種の CRUD 要求に必要なスループットの内訳が表示されます。 フィールドの値を変更するたびに、 **[計算]** を選択して見積もりコストを再計算してください。
+必要な詳細を入力したら、 **[計算]** を選択します。 **[コストの見積もり]** タブに、ストレージとプロビジョニング済みスループットの合計コストが表示されます。 このタブの **[詳細の表示]** リンクを展開すると、各種の CRUD およびクエリ要求に必要なスループットの内訳が表示されます。 フィールドの値を変更するたびに、 **[計算]** を選択して見積もりコストを再計算してください。
 
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png" alt-text="Capacity Planner の基本モード" border="true":::
 
@@ -72,12 +72,6 @@ ms.locfileid: "108064733"
 :::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode-sql-api.png" alt-text="Capacity Planner の詳細モード" border="true":::
 
 Azure Cosmos DB Capacity Planner に表示される価格は、スループットとストレージの公開価格料金に基づいた見積もりです。 すべての価格は米ドルで表示されます。 リージョン別のすべての料金を確認するには、[Azure Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。  
-
-## <a name="estimating-throughput-for-queries"></a>クエリのスループットの見積もり
-
-Azure Cosmos Capacity Calculator は、ワークロードに対するポイント読み取り (ID とパーティション キー値による単一項目 (ドキュメントなど) の読み取り) と書き込みを前提としています。 クエリに必要なスループットを見積もるには、Cosmos コンテナーで代表的なデータ セットに対するクエリを実行して、[RU 料金を取得](find-request-unit-charge.md)します。 その RU 料金を、1 秒あたりに実行されると予測されるクエリの数で乗算して、必要な RU/秒の合計を取得します。 
-
-たとえば、1 秒あたり 100 回実行されるクエリ ``SELECT * FROM c WHERE c.id = 'Alice'`` がワークロードに必要で、このクエリの RU 料金が 10 RU の場合、これらの要求を処理するには、100 クエリ/秒 * 10 RU/クエリ = 1000 RU/秒が必要になります。 これらの RU/秒 を、ワークロードで発生する読み取りや書き込みに必要な RU/秒に追加します。
 
 ## <a name="next-steps"></a>次のステップ
 

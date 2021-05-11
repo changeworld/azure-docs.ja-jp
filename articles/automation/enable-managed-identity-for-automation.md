@@ -3,14 +3,15 @@ title: Azure Automation アカウントのマネージド ID を有効にする 
 description: この記事では、Azure Automation アカウントのマネージド ID を設定する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/20/2021
+ms.date: 04/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1f06fb89111236c7465cf5237acc2d187f72fe98
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1bdba095c18943be5b367bd605d1a22d6eb6499f
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896497"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323676"
 ---
 # <a name="enable-a-managed-identity-for-your-azure-automation-account-preview"></a>Azure Automation アカウントのマネージド ID を有効にする (プレビュー)
 
@@ -32,7 +33,7 @@ ms.locfileid: "107896497"
 ## <a name="enable-system-assigned-identity"></a>システム割り当て ID を有効にする
 
 >[!IMPORTANT]
->新しい Automation アカウント レベルの ID は、以前の VM レベルのシステム割り当て ID (「[マネージド ID で Runbook 認証を使用する](/automation-hrw-run-runbooks#runbook-auth-managed-identities)」を参照) をオーバーライドします。 VM のシステム割り当て ID を使用して Runbook リソースにアクセスする Azure VM でハイブリッド ジョブを実行している場合は、そのハイブリッド ジョブに対して Automation アカウント ID が使用されます。 これは、Automation アカウントのカスタマー マネージド キー (CMK) 機能を使用している場合に、既存のジョブの実行が影響を受ける可能性があることを意味します。<br/><br/>VM のマネージド ID を引き続き使用する場合は、Automation アカウント レベルの ID を有効にしないでください。 それを既に有効にしている場合は、Automation アカウントのマネージド ID を無効にできます。 [Azure Automation アカウントのマネージド ID の無効化](https://docs.microsoft.com/azure/automation/disable-managed-identity-for-automation)に関する記事を参照してください。
+>新しい Automation アカウントレベルの ID によって、以前の VM レベルのシステム割り当て ID (「[マネージド ID で Runbook 認証を使用する](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)」で説明されている) がオーバーライドされます。 VM のシステム割り当て ID を使用して Runbook リソースにアクセスする Azure VM でハイブリッド ジョブを実行している場合は、そのハイブリッド ジョブに対して Automation アカウント ID が使用されます。 これは、Automation アカウントのカスタマー マネージド キー (CMK) 機能を使用している場合に、既存のジョブの実行が影響を受ける可能性があることを意味します。<br/><br/>VM のマネージド ID を引き続き使用する場合は、Automation アカウント レベルの ID を有効にしないでください。 それを既に有効にしている場合は、Automation アカウントのマネージド ID を無効にできます。 [Azure Automation アカウントのマネージド ID の無効化](./disable-managed-identity-for-automation.md)に関する記事を参照してください。
 
 Azure Automation に対するシステム割り当て ID の設定は、2 つの方法のいずれかで実行できます。 Azure portal または Azure REST API を使用できます。
 
@@ -87,7 +88,7 @@ PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-|プロパティ (JSON) | 値 | [説明]|
+|プロパティ (JSON) | 値 | 説明|
 |----------|-----------|------------|
 | principalid | \<principal-ID\> | Azure AD テナント内の Automation アカウントを表すマネージド ID に対するサービス プリンシパル オブジェクトのグローバル一意識別子 (GUID)。 この GUID は、"オブジェクト ID" (objectID) として表されることがあります。 |
 | tenantid | \<Azure-AD-tenant-ID\> | Automation アカウントが現在メンバーである Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは Automation アカウントと同じ名前です。 |
@@ -152,7 +153,7 @@ Write-Output $accessToken.access_token
 
 ID を有効にしたことを確認してから、このスクリプトを試します。 「[システム割り当て ID を有効にする](#enable-system-assigned-identity)」を参照してください。
 
-Azure SQL データベースへのアクセス権のプロビジョニングの詳細は、[Azure AD 管理者のプロビジョニング (SQL Database)](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-database) に関するセクションを参照してください。
+Azure SQL データベースへのアクセス権のプロビジョニングの詳細は、[Azure AD 管理者のプロビジョニング (SQL Database)](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-database) に関するセクションを参照してください。
 
 ```powershell
 $queryParameter = "?resource=https://database.windows.net/" 
@@ -223,7 +224,9 @@ response = requests.request("GET", endPoint, headers=headers, data=payload)
 print(response.text) 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+
+- Runbook が正常に完了しない場合は、「[Azure Automation マネージド ID に関する問題のトラブルシューティング (プレビュー)](troubleshoot/managed-identity.md)」を参照してください。
 
 - マネージド ID を無効にする必要がある場合は、「[Azure Automation アカウントのマネージド ID を無効にする (プレビュー)](disable-managed-identity-for-automation.md)」を参照してください。
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97c07f010fad6c12424b1684d4ff5e12c7cac3ce
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b785a8853e37e1a24e3eb9bd4fd13c49be39069
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553245"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229398"
 ---
 # <a name="operating-system-upgrade"></a>オペレーティング システムのアップグレード
 このドキュメントでは､HANA ラージ インスタンスでのオペレーティング システムについての詳細を説明します｡
@@ -153,4 +153,4 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## <a name="next-steps"></a>次のステップ
 - OS バックアップのタイプ I SKU クラスについては､[バックアップと復元](hana-overview-high-availability-disaster-recovery.md)を参照してください｡
-- Type II SKU クラスについては、[リビジョン 3 スタンプの Type II SKU の OS バックアップ](os-backup-type-ii-skus.md) に関するページを参照してください。
+- HLI の [OS バックアップ](./large-instance-os-backup.md)に関するページを参照してください。

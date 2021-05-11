@@ -1,18 +1,19 @@
 ---
-title: Azure ポイント対サイト VPN 接続について | VPN Gateway
-description: この記事は、ポイント対サイト接続を理解するうえで役に立つほか、どの種類の P2S VPN ゲートウェイ認証を使用するかを決定するうえで役立ちます。
+title: Azure ポイント対サイト VPN 接続について
+titleSuffix: Azure VPN Gateway
+description: ポイント対サイト接続と、どの種類の P2S VPN ゲートウェイ認証を使用するかについて説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 6caf72884ce2566ad25b7dd6d80b15d737bbe664
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7c9d1ad6aefe9fc05b77925ee6bbf4160b988d8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543586"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108202409"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 

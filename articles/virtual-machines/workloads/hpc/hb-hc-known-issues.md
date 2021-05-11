@@ -5,22 +5,24 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 04/16/2021
+ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 7f9a10aca24203b69ff38ff5fab7960681145af5
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599589"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227832"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
 この記事は、[H シリーズ](../../sizes-hpc.md)と [N シリーズ](../../sizes-gpu.md)の HPC および GPU VM の使用時に最近よく発生している問題とその解決方法を一覧で示すことを意図したものです。
 
-## <a name="qp0-access-restriction"></a>qp0 アクセス制限
+## <a name="cache-topology-on-standard_hb120rs_v3"></a>Standard_HB120rs_v3 のキャッシュ トポロジ
+`lstopo` で、Standard_HB120rs_v3 の VM サイズについて誤ったキャッシュ トポロジが表示されます。 NUMA あたりの L3 が 32 MB しかないと表示される場合があります。 ただし実際には、コア数が制限された他の HBv3 VM サイズと同じように 480 MB の L3 が VM 全体で使用できるため、NUMA あたり 120 MB の L3 が期待どおりに存在します。 これは、値の表示の正確性に関わる表面的なエラーであり、ワークロードへの影響はありません。
 
+## <a name="qp0-access-restriction"></a>qp0 アクセス制限
 セキュリティの脆弱性の原因となる可能性がある低レベルのハードウェア アクセスを防ぐために、Queue Pair 0 はゲスト VM からアクセスできません。 これは、通常、ConnectX InfiniBand NIC の管理や、ibdiagnet などの InfiniBand 診断の実行に関連するアクションのみに影響します。エンド ユーザー アプリケーションには影響しません。
 
 ## <a name="mofed-installation-on-ubuntu"></a>Ubuntu での MOFED のインストール

@@ -3,12 +3,12 @@ title: Azure Lab Services を使用して Project Lead The Way ラボを設定�
 description: Project Lead The Way クラスの授業用ラボを設定する方法について説明します。
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12efa11d2062b5a4d919dbdcdb4a824dec33f5fb
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95024621"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278724"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Project Lead The Way クラス用ラボを設定する
 
@@ -75,15 +75,15 @@ PLTW クラスに使用する仮想マシン (VM) の推奨サイズは、学生
 
 | ラボの設定 | 値と説明 | 使用が推奨されるクラス |
 | ------------ | ------------------ | --- |
-| 仮想マシンのサイズ | **Small GPU (視覚化)**<br>OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: 土木工学とアーキテクチャ、デジタル エレクトロニクス、コンピューター統合製造、エンジニアリング設計と開発。
-| 仮想マシンのサイズ | **Large**<br>高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: エンジニアリング設計の概要、エンジニアリングの原則、コンピューター サイエンスの基本、コンピューター サイエンスの原則、コンピューター サイエンス A。 |
+| 仮想マシンのサイズ | **Small GPU (視覚化)**<br>OpenGL や DirectX などのフレームワークを使用するリモート視覚化、ストリーミング、ゲーム、エンコードに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: 土木工学とアーキテクチャ、デジタル エレクトロニクス、コンピューター統合製造、エンジニアリング設計と開発、エンジニアリング設計の概要。
+| 仮想マシンのサイズ | **Large**<br>高速の CPU、ローカル ディスクのより優れたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 | 次の PLTW クラスには、このサイズを使用することをお勧めします: エンジニアリングの原則、コンピューター サイエンスの基本、コンピューター サイエンスの原則、コンピューター サイエンス A。 |
 
 <br>
 
 ### <a name="license-server"></a>ライセンス サーバー
 前述の PLTW クラスで使用されるソフトウェアの多くでは、ライセンス サーバーへのアクセスは必要と "*なりません*"。  ただし、次のソフトウェアに Autodesk のネットワーク ライセンス モデルを使用する予定がある場合は、ライセンス サーバーにアクセスする必要があります。
 -   Revit
--   Inventor
+-   Inventor CAD
 -   Inventor CAM
 
 Autodesk のソフトウェアでネットワーク ライセンスを使用するために、PLTW は、Autodesk の Network License Manager をライセンス サーバーにインストールするための[詳細な手順](https://www.pltw.org/pltw-software)を提供しています。  通常、このライセンス サーバーは、オンプレミスのネットワークに配置されているか、Azure 仮想ネットワーク内の Azure 仮想マシン (VM) でホストされています。

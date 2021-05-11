@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c5c596735ad91f38d5ba4217135a9373d2856182
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cd038a0632823e4833e75596378f9b25c386d9d0
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538448"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330532"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -110,7 +110,7 @@ Windows Virtual Desktop では、公開された MSIX パッケージは、Activ
 
 .CIM は、複合イメージ ファイル システム (CimFS) に関連付けられた新しいファイル拡張子です。 CIM ファイルのマウントとマウント解除は、VHD ファイルよりも高速です。 また、CIM の場合、CPU とメモリの消費量が VHD よりも少なくなります。
 
-CIM ファイルは .CIM という拡張子を持ち、メタデータと、実際のデータが含まれた 6 つ以上の追加ファイルを含むファイルです。 CIM ファイル内のファイルには拡張子がありません。 次の表は、CIM 内で見つかるファイルの例を示しています。
+CIM ファイルは .CIM という拡張子を持ち、メタデータと、実際のデータが含まれた 2 つ以上の追加ファイルを含むファイルです。 CIM ファイル内のファイルには拡張子がありません。 次の表は、CIM 内で見つかるファイルの例を示しています。
 
 | ファイル名 | 拡張機能 | サイズ |
 |-----------|-----------|------|

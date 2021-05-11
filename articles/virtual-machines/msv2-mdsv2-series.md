@@ -7,30 +7,23 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: d85623184ad52fb0d4acd4c49d08badfaf886b30
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 696125f75e41d39b4f9aaa1ff852b03eff589fb0
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728232"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204245"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 および Mdsv2 シリーズのミディアム メモリ
 
 Msv2 および Mdsv2 ミディアム メモリ VM シリーズには、全コア ベース周波数 2.7 GHz、シングル コア ターボ周波数 4.0 GHz の、Intel® Xeon® Platinum 8280 (Cascade Lake) プロセッサが搭載されています。 これらの VM により、ローカル ディスクありとディスクなしのオプションで柔軟性が向上します。 また、最大で 192 の vCPU、4 TiB のメモリにまで拡張できる、より多くの CPU とメモリを備えた、新しい一連の分離された VM サイズにアクセスできます。 
 
-
-Msv2 および Mdsv2 シリーズの VM は第 2 世代のみであり、第 2 世代でサポートされているイメージのサブセットがサポートされます。 Msv2 および Mdsv2 シリーズでサポートされているイメージの完全な一覧については、以下を参照してください。  
-
-- Windows Server 2019 以降
-- SUSE Linux Enterprise Server 12 SP4 以降または SUSE Linux Enterprise Server 15 SP1 以降
-- Red Hat Enterprise Linux 7.6、7.7、8.1 以降 
-- Oracle Enterprise Linux 7.7 以降
-
-第 2 世代仮想マシンの詳細については、「[Azure での第 2 世代 VM のサポート](./generation-2.md)」を参照してください。
+> [!NOTE]
+> Msv2 および Mdsv2 ミディアム メモリ VM は第 2 世代のみです。 第 2 世代仮想マシンの詳細については、「[Azure での第 2 世代 VM のサポート](./generation-2.md)」を参照してください。
 
 
 
-[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>

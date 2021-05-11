@@ -1,20 +1,20 @@
 ---
 title: シナリオ:Virtual WAN 用の Azure Firewall のカスタム ルーティング
 titleSuffix: Azure Virtual WAN
-description: ルーティングのシナリオ - VNet 間ではトラフィックを直接ルーティングする一方、"VNet -> インターネットまたはブランチ" と "ブランチ対 VNet" のトラフィック フローには Azure Firewall を使用します
+description: VNet 間ではトラフィックを直接ルーティングする一方、VNet からインターネットまたはブランチとブランチから VNet のトラフィック フローには Azure Firewall を使用するルーティングのシナリオについて学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d083607782f96744ecbd7d23976f77ee53fec49d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebe1f337e2799e2ebeafc0f4a051ed7c3d81e434
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94515571"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162007"
 ---
 # <a name="scenario-azure-firewall---custom"></a>シナリオ:Azure Firewall - カスタム
 

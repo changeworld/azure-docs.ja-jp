@@ -1,6 +1,6 @@
 ---
 title: 仮想ネットワーク ゲートウェイの削除:Azure クラシック
-description: クラシック デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
+description: クラシック デプロイ モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除する方法について説明します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 39585a68c5cddc50cd04e82caca71209270f7b68
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e26c317295081531f295042efa812f091f06814a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91874120"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291084"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する (クラシック)
 

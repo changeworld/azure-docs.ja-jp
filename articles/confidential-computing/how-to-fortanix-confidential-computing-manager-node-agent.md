@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: JenCook
-ms.openlocfilehash: 91a3f0a38d1182e445eba39bf31092be17f9a1fd
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 228f66a4dc10e7a518abdace22836c66bc717288
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111054"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204800"
 ---
 # <a name="how-to-run-an-application-with-fortanix-confidential-computing-manager"></a>方法:Fortanix Confidential Computing Manager によってアプリケーションを実行する
 
@@ -46,8 +46,8 @@ Fortanix 固有のサポートについては、[Fortanix Slack コミュニテ�
 
    :::image type="content" source="media/how-to-fortanix-confidential-computing-manager-node-agent/create-account-new.png" alt-text="アカウントの作成方法を示すスクリーンショット。":::
 
-1. アカウントが作成されたら、 **[SELECT]** をクリックして、新しく作成したアカウントを選択します。 これで、コンピューティング ノードの登録とアプリケーションの作成を開始できます。
-1. **[+ APPLICATION]** ボタンを選択してアプリケーションを追加します。 この例では、Flask Server Enclave OS アプリケーションを追加します。
+1. アカウントが作成されたら、 **[SELECT ACCOUNT]** をクリックして、新しく作成したアカウントを選択します。 これで、コンピューティング ノードの登録とアプリケーションの作成を開始できます。
+1. **[Applications]** タブにアクセスし、 **[+ APPLICATION]** をクリックしてアプリケーションを追加します。 この例では、Python Flask サーバーを実行している Enclave OS アプリケーションを追加します。
 
 1. Enclave OS アプリケーションの **[ADD]** ボタンを選択します。
 
@@ -61,13 +61,13 @@ Fortanix 固有のサポートについては、[Fortanix Slack コミュニテ�
     - **アプリケーション名**:Python アプリケーション サーバー
     - **説明**:Python Flask Server
     - **入力イメージ名**: fortanix/python-flask
-    - **出力イメージ名**: fortanx-private/python-flask-sgx
+    - **出力イメージ名**: fortanix-private/python-flask-sgx (独自のレジストリに置き換えます)
     - **ISVPRODID**:1
     - **ISVSVM**:1
     - **メモリ サイズ**:1 GB
     - **スレッド数**:128
 
-    *省略可能*:アプリケーションを実行します。
+    *省略可能*: 変換されていないアプリケーションを実行します。
     - **Docker Hub**: [https://hub.docker.com/u/fortanix](https://hub.docker.com/u/fortanix)
     - **アプリ**: fortanix/python-flask
 
@@ -76,30 +76,30 @@ Fortanix 固有のサポートについては、[Fortanix Slack コミュニテ�
       ```bash
          sudo docker run fortanix/python-flask
       ```
+      > [!NOTE]
+      > 出力イメージの格納には、プライベート Docker レジストリを使用しないことをお勧めします。
 
 1. 証明書を追加します。 以下の詳細を使用して情報を入力し、 **[NEXT]** を選択します。
-    - **[Domain]** : myapp.domain.dom
+    - **[Domain]** : myapp.domain.com
     - **[種類]** :Confidential Computing Manager によって発行された証明書
-    - **[Key path]** : /appkey.pem
+    - **[Key path]** : /run/key.pem
     - **[Key type]** :RSA
-    - **[Certificate path]** : /appcert.pem
+    - **[Certificate path]** : /run/cert.pem
     - **[RSA Key Size]** :2048 ビット
 
 ## <a name="create-an-image"></a>イメージを作成する
 
 Fortanix CCM イメージは、アプリケーションのソフトウェア リリースまたはバージョンです。 各イメージは、1 つのエンクレーブ ハッシュ (MRENCLAVE) に関連付けられています。
 
-1. **[Add Image]** ページで、 **[Output image name]** に **レジストリ資格** 情報を入力します。 これらの資格情報は、イメージがプッシュされるプライベート docker レジストリにアクセスするために使用されます。
+1. **[Add Image]** ページで、 **[Output image name]** に **レジストリ資格** 情報を入力します。 これらの資格情報は、イメージがプッシュされるプライベート docker レジストリにアクセスするために使用されます。 入力イメージはパブリック レジストリに格納されるため、入力イメージの資格情報を提供する必要はありません。
+1. イメージ タグを指定し、 **[CREATE]** を選択します。
 
    :::image type="content" source="media/how-to-fortanix-confidential-computing-manager-node-agent/create-image.png" alt-text="イメージの作成方法を示すスクリーンショット。":::
 
-1. イメージ タグを指定し、 **[Create]** を選択します。
-
-   :::image type="content" source="media/how-to-fortanix-confidential-computing-manager-node-agent/add-tag.png" alt-text="タグを追加する方法を示すスクリーンショット。":::
 
 ## <a name="domain-and-image-allowlist"></a>ドメインとイメージの許可リスト
 
-ドメインが許可リストに追加されたアプリケーションは、Fortanix Confidential Computing Manager から TLS 証明書を取得します。 同様に、変換されたイメージからアプリケーションを実行すると、Fortanix Confidential Computing Manager に接続しようとします。 その後、アプリケーションは TLS 証明書を要求します。
+ドメインが許可リストに追加されたアプリケーションは、Fortanix Confidential Computing Manager から TLS 証明書を取得します。 Enclave OS アプリケーションが起動すると、その TLS 証明書を受信するために Fortanix Confidential Computing Manager に接続されます。
 
 左側の **[Tasks]** タブに切り替え、保留中の要求を承認して、ドメインとイメージを許可します。
 
@@ -109,15 +109,15 @@ Fortanix CCM イメージは、アプリケーションのソフトウェア リ
 
 Fortanix Confidential Computing Manager で、トークンを作成します。 このトークンにより、Azure のコンピューティング ノードが自身を認証できるようになります。 このトークンを Azure 仮想マシンに渡す必要があります。
 
-1. 管理コンソールで、 **[+ ENROLL NODE]** ボタンを選択します。
-1. **[GENERATE TOKEN]** を選択して、参加トークンを生成します。 トークンをコピーします。
+1. **[Compute Nodes]** タブにアクセスし、 **[+ ENROLL NODE]** ボタンをクリックします。
+1. **[COPY]** ボタンをクリックして、参加トークンをコピーします。 この参加トークンは、コンピューティング ノードが自身を認証するために使用されます。
 
 ### <a name="enroll-nodes-into-fortanix-node-agent-in-azure-marketplace"></a>Azure Marketplace で Fortanix Node Agent にノードを登録する
 
 Fortanix Node Agent を作成すると、仮想マシン、ネットワーク インターフェイス、仮想ネットワーク、ネットワーク セキュリティ グループ、およびパブリック IP アドレスが Azure リソース グループにデプロイされます。 Azure サブスクリプションは、仮想マシンに対して時間単位で課金されます。 Fortanix Node Agent を作成する前に、DCsv2 シリーズについての Azure [仮想マシンの価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)を参照してください。 使用しない場合は Azure リソースを削除します。
 
 1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) に移動し、Azure 資格情報を使用してサインインします。
-1. 検索バーに「**Fortanix Confidential Computing Node Agent**」と入力します。 **Fortanix Confidential Computing Node Agent** という検索ボックスに表示されるアプリを選択して、オファリングのホームページにアクセスします。
+1. 検索バーに「**Fortanix Confidential Computing Node Agent**」と入力します。 **Fortanix Confidential Computing Node Agent** という検索ボックスに表示されるアプリを選択して、オファリングのホームページにアクセスします。 必要に応じて、URL https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent?tab=OverviewFortanix をクリックして Node Agent にアクセスします。
 
    ![search marketplace](media/how-to-fortanix-confidential-computing-manager-node-agent/search-fortanix-marketplace.png)
 1. **[今すぐ入手]** を選択し、必要に応じて情報を入力して、 **[続行]** を選択します。 Azure portal にリダイレクトされます。
@@ -144,25 +144,24 @@ Fortanix Node Agent を作成すると、仮想マシン、ネットワーク �
 このチュートリアルでは、次のコマンドを実行します。
 
 ```bash
-    sudo docker run `
-        --device /dev/isgx:/dev/isgx `
-        --device /dev/gsgx:/dev/gsgx `
-        -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket `
+    sudo docker run \
+        --device /dev/isgx:/dev/isgx \
+        --device /dev/gsgx:/dev/gsgx \
+        -v /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket \
         -e NODE_AGENT_BASE_URL=http://52.152.206.164:9092/v1/ fortanix-private/python-flask-sgx
 ```
 
 この場合、
 
-- *52.152.206.164* は Node Agent のホスト IP です
-- *9092* は Node Agent がリッスンするポートです
+- *52.152.206.164* は Node Agent のホスト IP です。
+- *9092* は、Node Agent でリッスンする既定のポートです。
 - *fortanix-private/python-flask-sgx* は変換されたアプリであり、Fortanix Confidential Computing Manager Web ポータルの [Images] タブで、 **[Images]** テーブルの **[Image Name]** 列から確認できます。
 
 ## <a name="verify-and-monitor-the-running-application"></a>実行中のアプリケーションを確認して監視する
 
 1. [Fortanix Confidential Computing Manager](https://ccm.fortanix.com/console) に戻ります。
 1. ノードを登録した **アカウント** 内で作業していることを確認します。
-1. 左側のナビゲーション ペインの上部アイコンを選択して、 **[管理コンソール]** にアクセスします。
-1. **[アプリケーション]** タブを選択します。
+1. [**アプリケーション**] タブを選択します。
 1. コンピューティング ノードが関連付けられている実行中のアプリケーションがあることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
@@ -171,7 +170,7 @@ Fortanix Node Agent を作成すると、仮想マシン、ネットワーク �
 
 仮想マシンのリソース グループを選択し、 **[削除]** をクリックします。 リソース グループの名前を確認してリソースの削除を終了します。
 
-作成した Fortanix Confidential Computing Manager アカウントを削除するには、Fortanix Confidential Computing Manager の[アカウント ページ](https://ccm.fortanix.com/accounts)に移動します。 削除するアカウントにマウス ポインターを移動します。 右上隅の垂直方向の黒いドットを選択し、 **[Delete Account]** を選択します。
+作成した Fortanix Confidential Computing Manager アカウントを削除するには、Fortanix Confidential Computing Manager の[アカウント ページ](https://ccm.fortanix.com/accounts)に移動します。 削除するアカウントにマウス ポインターを移動します。 右上隅の垂直方向の黒いドットを選択し、 **[DELETE ACCOUNT]** を選択します。
 
 :::image type="content" source="media/how-to-fortanix-confidential-computing-manager-node-agent/delete-account.png" alt-text="アカウントを削除する方法を示すスクリーンショット。":::
 

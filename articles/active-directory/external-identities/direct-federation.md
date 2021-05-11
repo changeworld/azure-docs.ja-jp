@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 04/28/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a6d054f64201bec04ee18f492f7ba69c3cc810
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: fa7f62c43f9d015c1ab10a204189ccebc2999ae9
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987598"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163015"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -26,6 +26,10 @@ ms.locfileid: "107987598"
 
 この記事では、B2B コラボレーションのために別の組織との直接フェデレーションを設定する方法について説明します。 任意の組織の ID プロバイダー (IdP) が SAML 2.0 または WS-Fed プロトコルをサポートしていれば、その組織との直接フェデレーションを設定することができます。
 パートナーの IdP との直接フェデレーションを設定すると、そのドメインに属する新しいゲスト ユーザーがご自身の Azure AD テナントに、そのユーザー自身の組織アカウント (IdP が管理する) を使用してサインインし、コラボレーションを開始できます。 ゲスト ユーザーが別個の Azure AD アカウントを作成する必要はありません。
+
+> [!IMPORTANT]
+> - 認証 URL ドメインがターゲット ドメインと一致するか、許可されている ID プロバイダーからのものである必要があるという制限が削除されました。 詳細については、「[手順 1: パートナーが DNS テキスト レコードを更新する必要があるかどうかを判断する](#step-1-determine-if-the-partner-needs-to-update-their-dns-text-records)」を参照してください。
+>-  パートナーは、SAML または WS-Fed ベースの IdP の対象ユーザーをテナントの対象ユーザーに設定することをお勧めします。 下記の [SAML 2.0](#required-saml-20-attributes-and-claims) および [WS-Fed](#required-ws-fed-attributes-and-claims) の必須の属性および要求のセクションを参照してください。
 
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>ゲスト ユーザーが直接フェデレーションを使用で認証されるタイミング
 組織との直接フェデレーションを設定した後、招待した新しいゲスト ユーザーは、直接フェデレーションを使用して認証されます。 重要なこととして、直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されないことに注意してください。 次に例をいくつか示します。
@@ -57,21 +61,6 @@ ms.locfileid: "107987598"
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
 フェデレーションを行うドメインは、Azure AD で DNS 検証済み ***でない*** ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
 
-### <a name="authentication-url"></a>認証 URL
-直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
-
--   accounts.google.com
--   pingidentity.com
--   login.pingone.com
--   okta.com
--   oktapreview.com
--   okta-emea.com
--   my.salesforce.com
--   federation.exostar.com
--   federation.exostartest.com
-
-たとえば、**fabrikam.com** に対して直接フェデレーションを設定する場合、`https://fabrikam.com/adfs` という認証 URL は検証に合格します。 同じドメイン内のホストも合格します (たとえば `https://sts.fabrikam.com/adfs`)。 ただし、同じドメインの `https://fabrikamconglomerate.com/adfs` または `https://fabrikam.com.uk/adfs` という認証 URL は、合格しません。
-
 ### <a name="signing-certificate-renewal"></a>署名証明書の更新
 ID プロバイダーの設定でメタデータ URL を指定した場合、署名証明書が有効期限切れになると、Azure AD によって自動的に更新されます。 ただし、証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
 
@@ -90,8 +79,36 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 いいえ。このシナリオでは、[電子メールのワンタイム パスコード](one-time-passcode.md)機能を使用する必要があります。 "部分的に同期されたテナント" とは、オンプレミスのユーザー ID がクラウドに完全には同期されていないパートナーの Azure AD テナントのことです。 クラウド上に ID がまだ存在していないゲストが、B2B の招待を利用しようとした場合、そのゲストはサインインできません。 ワンタイム パスコード機能であれば、このゲストをサインインさせることができます。 直接フェデレーション機能は、IdP によって管理される独自の組織アカウントをゲストが持っているが、その組織に Azure AD の存在がまったくないというシナリオに対応しています。
 ### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>組織で直接フェデレーションを構成した場合、各ゲストに個別の招待を送り、ゲストはその招待を利用する必要がありますか。
 直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されません。 ゲスト ユーザーの認証方法を更新するには、[利用状態をリセット](reset-redemption-status.md)します。
-## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>手順 1:取引先組織の ID プロバイダーを構成する
-最初に、取引先組織において、必須の要求と証明書利用者信頼を指定して ID プロバイダーを構成する必要があります。 
+
+## <a name="step-1-determine-if-the-partner-needs-to-update-their-dns-text-records"></a>手順 1: パートナーが DNS テキスト レコードを更新する必要があるかどうかを判断する
+
+パートナーの IdP によっては、パートナーが自身の DNS レコードを更新して、直接フェデレーションを有効にする必要がある場合があります。 DNS の更新が必要かどうかを判断するには、次の手順に従います。
+
+1. パートナーの IdP が以下に示す許可された ID プロバイダーの 1 つである場合は、DNS の変更は必要ありません (この一覧は変更される可能性があります)。
+
+     - accounts.google.com
+     - pingidentity.com
+     - login.pingone.com
+     - okta.com
+     - oktapreview.com
+     - okta-emea.com
+     - my.salesforce.com
+     - federation.exostar.com
+     - federation.exostartest.com
+     - idaptive.app
+     - idaptive.qa
+
+2. IdP が前の手順の一覧に表示されている許可されたプロバイダーのいずれでもない場合は、パートナーの IdP 認証 URL を調べて、ドメインがターゲット ドメインまたはターゲット ドメイン内のホストと一致するかどうかを確認します。 すなわち、`fabrikam.com` との直接フェデレーションを設定する場合は次のようになります。
+
+     - 認証 URL が `https://fabrikam.com` または `https://sts.fabrikam.com/adfs` (同じドメイン内のホスト) の場合、DNS の変更は必要ありません。
+     - 認証 URL が `https://fabrikamconglomerate.com/adfs`  または  `https://fabrikam.com.uk/adfs` の場合、ドメインは fabrikam.com ドメインと一致していないので、パートナーは DNS 構成に認証 URL のテキスト レコードを追加する必要があります。次の手順に進みます。
+
+3. 前の手順に基づいて DNS の変更が必要な場合は、次の例のように、ドメインの DNS レコードに TXT レコードを追加するようにパートナーに依頼します。
+
+   `fabrikam.com.  IN   TXT   DirectFedAuthUrl=https://fabrikamconglomerate.com/adfs`
+## <a name="step-2-configure-the-partner-organizations-identity-provider"></a>手順 2: パートナー組織の ID プロバイダーを構成する
+
+次に、パートナー組織において、必須の要求と証明書利用者の信頼を指定して ID プロバイダーを構成する必要があります。
 
 > [!NOTE]
 > 直接フェデレーション用の ID プロバイダーを構成する方法を示すために、例として Active Directory フェデレーション サービス (AD FS) を使用します。 [AD FS との直接フェデレーションの構成](direct-federation-adfs.md)に関する記事を参照してください。直接フェデレーションの準備として、AD FS を SAML 2.0 または WS-Fed の ID プロバイダーとして構成する方法の例が示されています。
@@ -111,7 +128,7 @@ IdP からの SAML 2.0 応答に必須の属性:
 |属性  |値  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|対象ユーザー     |`urn:federation:MicrosoftOnline`         |
+|対象ユーザー     |`https://login.microsoftonline.com/<tenant ID>/` (推奨されるテナントの対象ユーザー) `<tenant ID>` を、直接フェデレーションを設定する Azure AD テナントのテナント ID に置き換えます。<br><br>`urn:federation:MicrosoftOnline` (この値は非推奨です。)          |
 |発行者     |パートナー IdP の発行者 URI (たとえば `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
 
@@ -137,7 +154,7 @@ IdP からの WS-Fed メッセージに必須の属性:
 |属性  |値  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|対象ユーザー     |`urn:federation:MicrosoftOnline`         |
+|対象ユーザー     |`https://login.microsoftonline.com/<tenant ID>/` (推奨されるテナントの対象ユーザー) `<tenant ID>` を、直接フェデレーションを設定する Azure AD テナントのテナント ID に置き換えます。<br><br>`urn:federation:MicrosoftOnline` (この値は非推奨です。)          |
 |発行者     |パートナー IdP の発行者 URI (たとえば `http://www.example.com/exk10l6w90DHM0yi...`)         |
 
 IdP によって発行される WS-Fed トークンに必須の要求:
@@ -147,7 +164,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-## <a name="step-2-configure-direct-federation-in-azure-ad"></a>手順 2:Azure AD で直接フェデレーションを構成する 
+## <a name="step-3-configure-direct-federation-in-azure-ad"></a>手順 3: Azure AD で直接フェデレーションを構成する 
 次に、手順 1 で構成した ID プロバイダーとのフェデレーションを Azure AD 上で構成します。 Azure AD ポータルまたは PowerShell のいずれかを使用できます。 直接フェデレーション ポリシーが有効になるまで 5 分から 10 分かかる場合があります。 この間、直接フェデレーション ドメインの招待を利用することを試みないでください。 次の属性は必須です。
 - パートナー IdP の発行者 URI
 - パートナー IdP のパッシブ認証エンドポイント (サポートされているのは https のみ)
@@ -178,13 +195,13 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>PowerShell を使用して Azure AD で直接フェデレーションを構成するには
 
-1. 最新バージョンの Azure AD PowerShell for Graph モジュールをインストールします ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。 (詳細な手順が必要な場合は、[PowerShell モジュール](b2b-quickstart-invite-powershell.md#prerequisites)のガイダンスがクイックスタートに含まれています。)
+1. 最新バージョンの Azure AD PowerShell for Graph モジュールをインストールします ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。 詳細な手順が必要な場合は、クイックスタートに [PowerShell モジュール](b2b-quickstart-invite-powershell.md#prerequisites)のガイダンスが含まれています。
 2. 次のコマンドを実行します。 
    ```powershell
    Connect-AzureAD
    ```
-1. サインイン プロンプトで、マネージド グローバル管理者アカウントを使用してサインインします。 
-2. フェデレーション メタデータ ファイルにある値に置き換えたうえで、次のコマンドを実行します。 AD FS サーバーと Okta の場合、フェデレーション ファイルは federationmetadata.xml です (例: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`)。 
+3. サインイン プロンプトで、マネージド グローバル管理者アカウントを使用してサインインします。 
+4. フェデレーション メタデータ ファイルにある値に置き換えたうえで、次のコマンドを実行します。 AD FS サーバーと Okta の場合、フェデレーション ファイルは federationmetadata.xml です (例: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`)。 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -198,7 +215,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
    New-AzureADExternalDomainFederation -ExternalDomainName $domainName  -FederationSettings $federationSettings
    ```
 
-## <a name="step-3-test-direct-federation-in-azure-ad"></a>手順 3:Azure AD で直接フェデレーションをテストする
+## <a name="step-4-test-direct-federation-in-azure-ad"></a>手順 4: Azure AD で直接フェデレーションをテストする
 次に、新しい B2B ゲスト ユーザーを招待して直接フェデレーションの設定をテストします。 詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)」を参照してください。
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>直接フェデレーション関係を編集する方法

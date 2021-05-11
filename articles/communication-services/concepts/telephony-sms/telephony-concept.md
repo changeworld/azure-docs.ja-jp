@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e94ac79bcce2e7489e881c9dcfb88aeffecf6a8d
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 3e698abbdad4b45a58f14e350e1f2b268a7de371
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018639"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108324493"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 
@@ -22,37 +22,39 @@ ms.locfileid: "108018639"
 Azure Communication Services の Calling SDK を使用すると、アプリケーションにテレフォニーと PSTN を追加することができます。 このページには、テレフォニーの主な概念と機能がまとめられています。 具体的な SDK の言語と機能の詳細については、[通話ライブラリ](../../quickstarts/voice-video-calling/calling-client-samples.md)に関するページを参照してください。
 
 ## <a name="overview-of-telephony"></a>テレフォニーの概要
-ユーザーが従来の電話番号を使用して対話すると、通話は常に PSTN (公衆交換電話網) 音声通話によって行われます。 PSTN 通話を発信および受信するには、Azure Communication Services リソースにテレフォニー機能を追加する必要があります。 この場合、信号とメディアでは、ユーザーを接続するために、IP ベースおよび PSTN ベースのテクノロジが組み合わされて使用されます。 PSTN ネットワークに接続する手段として、Communication Services には 2 とおりの方法が用意されています。Azure Cloud Calling と SIP インターフェイスです。
+ユーザーが従来の電話番号を使用して対話すると、通話は常に PSTN (公衆交換電話網) 音声通話によって行われます。 PSTN 通話を発信および受信するには、Azure Communication Services リソースにテレフォニー機能を追加する必要があります。 この場合、信号とメディアでは、ユーザーを接続するために、IP ベースおよび PSTN ベースのテクノロジが組み合わされて使用されます。 Communication Services には、PSTN ネットワークに接続するための 2 つの異なる方法として、音声通話 (PSTN) と Azure 直接ルーティングが用意されています。
 
-### <a name="azure-cloud-calling"></a>Azure Cloud Calling
+### <a name="voice-calling-pstn"></a>音声通話 (PSTN)
 
 アプリまたはサービスに PSTN 接続を追加する簡単な方法として、この場合は、Microsoft が電気通信プロバイダーになります。 番号は Microsoft から直接購入できます。 Azure Cloud Calling は、Communication Services のためのオールインクラウドのテレフォニー ソリューションです。 きわめてシンプルな方法で、公衆交換電話網 (PSTN) に ACS を接続して世界中の固定電話や携帯電話への通話を実現することができます。 この方法では、次の図に示すように Microsoft が PSTN 通信事業者としての役割を果たします。
 
-![Azure Cloud Calling の図。](../media/telephony-concept/azure-calling-diagram.png)
+![音声通話 (PSTN) の図。](../media/telephony-concept/azure-calling-diagram.png)
 
-次の項目が該当する場合は、Azure Cloud Calling が最適なソリューションです。
-- 自分のリージョンで Azure Cloud Calling が提供されている。
+次の項目が該当する場合は、音声通話 (PSTN) が最適なソリューションです。
+- お客様のリージョンで音声通話 (PSTN) が提供されている。
 - 現在の PSTN 通信事業者にこだわる必要がない。
 - Microsoft が管理する PSTN アクセスを利用したい。
 
 このオプションでは、
 - Microsoft から直接番号を取得し、世界中に電話をかけることができます。
-- Azure Cloud Calling は Azure Communication Services の外で稼動しているため、オンプレミス環境のデプロイやメンテナンスは必要ありません。
-- 注:サードパーティの PBX やアナログ デバイスなど、セッション ボーダー コントローラー (SBC) でサポートされるサードパーティのテレフォニー機器との相互運用性を確保するために、必要であれば、サポートされている SBC を SIP インターフェイス経由で接続することもできます。
+- 音声通話 (PSTN) は Azure Communication Services の外で稼動しているため、オンプレミス環境のデプロイやメンテナンスは必要ありません。
+- 注: サードパーティの PBX、アナログ デバイス、その他のセッション ボーダー コントローラー (SBC) でサポートされるサードパーティのテレフォニー機器との相互運用性を確保するために、必要であれば、サポートされている SBC を Azure 直接ルーティング経由で接続することもできます。
 
 この方法を選択する場合は、Azure Communication Services への接続が中断されないようにする必要があります。
 
-### <a name="sip-interface"></a>SIP インターフェイス
+### <a name="azure-direct-routing"></a>Azure 直接ルーティング
 
-この方法を選択すると、従来のオンプレミス テレフォニーと任意の通信事業者を Azure Communication Services に接続することができます。 お住まいの国または地域で Azure Cloud Calling が提供されていなくても、これにより、ACS アプリケーションから PSTN 通話機能を利用することができます。 
+[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
 
-![SIP インターフェイスの図。](../media/telephony-concept/sip-interface-diagram.png)
+この方法を選択すると、従来のオンプレミス テレフォニーと任意の通信事業者を Azure Communication Services に接続することができます。 お客様の国またはリージョンで音声通話 (PSTN) が提供されていなくても、これにより、ACS アプリケーションから PSTN 通話機能を利用することができます。 
 
-次の項目に 1 つでも該当すれば、SIP インターフェイスが適切なソリューションです。
+![Azure 直接ルーティングの図。](../media/telephony-concept/sip-interface-diagram.png)
+
+次の項目に 1 つでも該当すれば、Azure 直接ルーティングが適切なソリューションです。
 
 - ACS を PSTN 通話機能と共に使用したい。
 - 現在の PSTN 通信事業者を引き続き使用する必要がある。
-- ルーティングを混在させて、Azure Cloud Calling を経由する通話と通信事業者を経由する通話を使い分けたい。
+- ルーティングを混在させて、音声通話 (PSTN) を経由する通話と通信事業者を経由する通話を使い分けたい。
 - サードパーティの PBX や装置 (コール システムやアナログ デバイスなど) との相互運用性を確保する必要がある。
 
 このオプションでは、
@@ -73,7 +75,7 @@ Azure Communication Services の Calling SDK を使用すると、アプリケ�
 ### <a name="conceptual-documentation"></a>概念説明のドキュメント
 
 - [Azure Communication Services での電話番号の種類](./plan-solution.md)
-- [SIP インターフェイスのプラン](./sip-interface-infrastructure.md)
+- [Azure 直接ルーティングを計画する](./sip-interface-infrastructure.md)
 - [料金](../pricing.md)
 
 ### <a name="quickstarts"></a>クイックスタート

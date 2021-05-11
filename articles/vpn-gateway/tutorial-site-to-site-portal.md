@@ -1,18 +1,18 @@
 ---
 title: 'チュートリアル - オンプレミス ネットワークを仮想ネットワークに接続する: Azure portal'
-description: ポータルを使用して、オンプレミス ネットワークから Azure 仮想ネットワークへのパブリック インターネット経由のサイト間 VPN Gateway IPsec 接続を作成します。
+description: このチュートリアルでは、オンプレミス ネットワークから VNet へのサイト間 VPN ゲートウェイの IPsec 接続を作成する方法について説明します。
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 12/04/2020
-ms.openlocfilehash: ccb43c3e7efb9289450ad9a71c003f54e5362b66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/28/2021
+ms.openlocfilehash: 83c2e42db4cc3e1a287341592f4917afce7309e2
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945201"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204227"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>チュートリアル:Azure Portal でサイト間接続を作成する
 

@@ -1,18 +1,18 @@
 ---
 title: ユーザー VPN 接続用に Azure AD 認証を構成する:Virtual WAN
-description: ユーザー VPN 用に Azure Active Directory 認証を構成する方法について説明します。
+description: Virtual WAN のユーザー VPN (ポイント対サイト) 用に Azure Active Directory 認証を構成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 9cc68eb60096c4431acfc988c87ca9bf99f1f045
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f16a7675805fa2665c25b5d4a9c3847b710ec71b
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93043398"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164203"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
 
