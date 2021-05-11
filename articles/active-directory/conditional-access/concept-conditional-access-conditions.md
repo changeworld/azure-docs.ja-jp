@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab840b46503aed1a318e3b39a4e8fe3e4d11735c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 59664a0b5127e9fde8f2890cd396bec120eff29d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579129"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330659"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
@@ -120,7 +120,7 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 | macOS | Chrome、Safari |
 
 > [!NOTE]
-> Edge 85+ の場合、デバイス ID を適切に渡すには、ユーザーがブラウザーにサインインする必要があります。 そうしない場合、アカウントの拡張機能のない Chrome のように動作します。 Hybrid Azure AD Join シナリオでは、このサインインが自動的に行われないことがあります。 
+> Edge 85+ の場合、デバイス ID を適切に渡すには、ユーザーがブラウザーにサインインする必要があります。 そうしない場合、アカウントの拡張機能のない Chrome のように動作します。 Hybrid Azure AD Join シナリオでは、このサインインが自動的に行われないことがあります。 Safari はデバイスベースの条件付きアクセスでサポートされていますが、**承認済みクライアント アプリを必須にする** または **アプリの保護ポリシーを必須にする** の条件を満たすことができません。 Microsoft Edge のような管理対象ブラウザーは、承認済みクライアント アプリとアプリ保護ポリシーの要件を満たしています。
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>ブラウザーに証明書のプロンプトが表示される理由
 
