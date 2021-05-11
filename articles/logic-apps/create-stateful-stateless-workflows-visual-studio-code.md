@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/30/2021
-ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/23/2021
+ms.openlocfilehash: 0099e039c87ccf29848ecb602bc5eeff8b82f689
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772507"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163627"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (プレビュー) 拡張機能を使用して Visual Studio Code でステートフルおよびステートレスのワークフローを作成する
 
@@ -1028,7 +1028,10 @@ Visual Studio Code では、リソースの種類が元の **[ロジック ア�
 
 1. 管理するロジック アプリを開きます。 ロジック アプリのショートカット メニューで、実行するタスクを選択します。
 
-   たとえば、デプロイしたロジック アプリの停止、開始、再起動、削除などのタスクを選択できます。
+   たとえば、デプロイしたロジック アプリの停止、開始、再起動、削除などのタスクを選択できます。 [Azure portal を使用してワークフローを無効または有効にする](create-stateful-stateless-workflows-azure-portal.md#disable-enable-workflows)ことができます。
+
+   > [!NOTE]
+   > ロジック アプリの停止とロジック アプリの削除の操作は、さまざまな方法でワークフロー インスタンスに影響を与えます。 詳細については、「[ロジック アプリの停止に関する考慮事項](#considerations-stop-logic-apps)」と「[ロジック アプリの削除に関する考慮事項](#considerations-delete-logic-apps)」をご覧ください。
 
    ![Visual Studio Code と、開いている "Azure Logic Apps (プレビュー)" 拡張機能ウィンドウ、デプロイされたワークフローを示すスクリーンショット。](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
@@ -1052,11 +1055,45 @@ Visual Studio Code では、リソースの種類が元の **[ロジック ア�
 
    ![Azure portal と、デプロイされているロジック アプリの検索結果が表示された検索バーを示すスクリーンショット。選択された状態で表示されます。](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
 
+<a name="considerations-stop-logic-apps"></a>
+
+### <a name="considerations-for-stopping-logic-apps"></a>ロジック アプリの停止に関する考慮事項
+
+ロジック アプリを停止すると、ワークフロー インスタンスに次のような影響が生じます。
+
+* Logic Apps サービスは、進行中および保留中のすべての実行を直ちに取り消します。
+
+* Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+
+* トリガーは、次にその条件が満たされたときに起動されません。 ただし、トリガーの状態には、ロジック アプリが停止したポイントが記憶されます。 そのため、ロジック アプリを再起動すると、前回の実行以降のすべての未処理の項目に対してトリガーが起動されます。
+
+  前回の実行以降の未処理の項目に対してトリガーが起動しないようにするには、ロジック アプリを再起動にする前に、トリガーの状態をクリアします。
+
+  1. Visual Studio Code の左側のツールバーで、[Azure] アイコンを選択します。 
+  1. **[Azure: Logic Apps (プレビュー)]** ウィンドウで、サブスクリプションを展開します。これによって、そのサブスクリプションにデプロイされているすべてのロジック アプリが表示されます。
+  1. ロジック アプリを展開し、 **[ワークフロー]** ノードを展開します。
+  1. ワークフローを開き、そのワークフローのトリガーの任意の部分を編集します。
+  1. 変更を保存します。 この手順により、トリガーの現在の状態がリセットされます。
+  1. 各ワークフローに対してこの手順を繰り返します。
+  1. 完了したら、ロジック アプリを再起動します。
+
+<a name="considerations-delete-logic-apps"></a>
+
+### <a name="considerations-for-deleting-logic-apps"></a>ロジック アプリの削除に関する考慮事項
+
+ロジック アプリを削除すると、ワークフロー インスタンスに次のような影響が生じます。
+
+* Logic Apps サービスは、進行中および保留中の実行を直ちに取り消しますが、アプリによって使用されているストレージ上でクリーンアップ タスクは実行されません。
+
+* Logic Apps サービスは、新しいワークフロー インスタンスを作成することも実行することもありません。
+
+* ワークフローを削除してから同じワークフローを再作成しても、再作成されたワークフローに、削除したワークフローと同じメタデータが割り当てられることはありません。 削除したワークフローの呼び出し元となったワークフローを再保存する必要があります。 これにより、呼び出し元は、再作成されたワークフローの正しい情報を取得します。 それ以外の場合、再作成したワークフローの呼び出しは、`Unauthorized` エラーで失敗します。 この動作は、統合アカウントのアーティファクトを使用するワークフローや、Azure 関数を呼び出すワークフローにも当てはまります。
+
 <a name="manage-deployed-apps-portal"></a>
 
 ## <a name="manage-deployed-logic-apps-in-the-portal"></a>デプロイされたロジック アプリをポータルで管理する
 
-Azure portal では、リソースの種類が元の **[ロジック アプリ]** であるか **[ロジック アプリ (プレビュー)]** であるかに関係なく、Azure サブスクリプションでデプロイされたすべてのロジック アプリを表示できます。 現時点では、各リソースの種類は Azure で個別のカテゴリとして編成および管理されています。 **[ロジック アプリ (プレビュー)]** リソースの種類を持つロジック アプリを検索するには、次の手順を実行します。
+ロジック アプリを Visual Studio Code から Azure portal にデプロイした後、リソースの種類が元の **[ロジック アプリ]** であるか **[ロジック アプリ (プレビュー)]** であるかに関係なく、Azure サブスクリプションでデプロイされたすべてのロジック アプリを表示できます。 現時点では、各リソースの種類は Azure で個別のカテゴリとして編成および管理されています。 **[ロジック アプリ (プレビュー)]** リソースの種類を持つロジック アプリを検索するには、次の手順を実行します。
 
 1. Azure portal の検索ボックスに、「`logic app preview`」と入力します。 結果の一覧が表示されたら、 **[サービス]** で、 **[ロジック アプリ (プレビュー)]** を選択します。
 

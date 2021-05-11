@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Azure Industrial IoT Platform ドキュメント
+summary: Azure Industrial IoT Platform は、Azure にデプロイされる Microsoft のモジュールとサービスのスイートです。
+metadata:
+  description: 次について学習する
+  ms.service: industrial-iot
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 3/22/2021
+  ms.openlocfilehash: bced3bdbb854af75e7b521f7c5c3f2e1022a161b
+  ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/21/2021
+  ms.locfileid: "107813832"
+landingContent:
+- title: Azure Industrial IoT Platform について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 産業用 IoT (IIoT) の概要
+      url: overview-what-is-industrial-iot.md
+    - text: OPC Publisher とは
+      url: overview-what-is-opc-publisher.md
+- title: 産業用 IoT プラットフォーム (IIoT) の概要
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Industrial IoT プラットフォームをデプロイする
+      url: tutorial-deploy-industrial-iot-platform.md
+    - text: 産業用 IoT コンポーネントを構成する
+      url: tutorial-configure-industrial-iot-components.md
+    - text: Azure Industrial IoT データを ADX にプルする
+      url: tutorial-industrial-iot-azure-data-explorer.md
+    - text: Time Series Insights (TSI) を使用したデータの視覚化
+      url: tutorial-visualize-data-time-series-insights.md
+- title: OPC Publisher を操作する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: OPC Publisher をデプロイする
+      url: tutorial-publisher-deploy-opc-publisher-standalone.md
+    - text: OPC Publisher の構成
+      url: tutorial-publisher-configure-opc-publisher.md
+    - text: OPC Publisher のパフォーマンスとメモリを調整する
+      url: tutorial-publisher-performance-memory-tuning-opc-publisher.md

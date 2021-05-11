@@ -1,18 +1,19 @@
 ---
-title: P2S を使用したリモート作業:Azure VPN Gateway
-description: このページでは、COVID-19 の世界的流行により、VPN Gateway を利用してリモートで作業できるようにする方法について説明します。
+title: リモート ワークとポイント対サイト VPN ゲートウェイ
+titleSuffix: Azure VPN Gateway
+description: COVID-19 が流行しているなかリモートで作業するために VPN Gateway ポイント対サイト接続を使用する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: alzam
-ms.openlocfilehash: eb0291b18952efc643de18e111154ebe58f041af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57328748f21dda9efe3b2208aeb4854360a76e38
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880086"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288684"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Gateway ポイント対サイトを使用したリモート作業
 

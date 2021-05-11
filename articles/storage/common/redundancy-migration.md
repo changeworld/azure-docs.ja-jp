@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb8bbf852803df53c43cef90bd2229bfcddd60d4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 222518f21cb9940efd4fbf266b9248e4b0414f43
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766189"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316329"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -62,10 +62,10 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 Azure portal でストレージ アカウントの冗長オプションを変更するには、以下の手順に従います。
 
 1. Azure Portal のストレージ アカウントに移動します。
-1. **[構成]** 設定を選択します。
+1. **[設定]** で **[構成]** を選択します。
 1. **[レプリケーション]** 設定を更新します。
 
-![ポータルでレプリケーション オプションを変更する方法を示すスクリーンショット](media/redundancy-migration/change-replication-option.png)
+    :::image type="content" source="media/redundancy-migration/change-replication-option.png" alt-text="ポータルでレプリケーション オプションを変更する方法を示すスクリーンショット。" lightbox="media/redundancy-migration/change-replication-option.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

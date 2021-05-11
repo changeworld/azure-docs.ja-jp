@@ -4,12 +4,12 @@ description: Linux にランタイムと SDK をインストールし、ロー�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: a06e649fbbe3e7ea1036d9511a87169a5b0a655a
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869403"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288258"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -26,17 +26,13 @@ Azure Service Fabric コマンド ライン インターフェイス (CLI) を�
 
 ## <a name="prerequisites"></a>前提条件
 
-開発用に、次のオペレーティング システムのバージョンがサポートされています。
+- サポートされている [Linux バージョン](service-fabric-versions.md#supported-linux-versions-and-support-end-date)を使用していることを確認します。
 
-* Ubuntu 16.04 (`Xenial Xerus`)、18.04 (`Bionic Beaver`)
-
-    `apt-transport-https` パッケージがインストールされていることを確認してください。
+- `apt-transport-https` パッケージのインストール:
          
     ```bash
     sudo apt-get install apt-transport-https
     ```
-* Red Hat Enterprise Linux 7.4 (Service Fabric プレビュー サポート)
-
 
 ## <a name="installation-methods"></a>インストール方法
 
