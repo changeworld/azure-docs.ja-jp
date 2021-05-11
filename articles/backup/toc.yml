@@ -212,6 +212,8 @@
               href: backup-azure-system-state.md
         - name: 復元
           items:
+            - name: 概要
+              href: about-restore-microsoft-azure-recovery-services.md
             - name: Azure から Windows Server へのファイルの回復
               href: backup-azure-restore-windows-server.md
             - name: ボリューム内のすべてのファイルの復元
@@ -240,10 +242,18 @@
       items:
         - name: 概要
           href: blob-backup-overview.md
-        - name: 構成と管理
-          href: blob-backup-configure-manage.md
-        - name: 復元
-          href: blob-restore.md
+        - name: Azure portal から
+          items:
+            - name: 構成と管理
+              href: blob-backup-configure-manage.md
+            - name: 復元
+              href: blob-restore.md
+        - name: PowerShell の場合
+          items:
+            - name: バックアップ
+              href: backup-blobs-storage-account-ps.md
+            - name: 復元
+              href: restore-blobs-storage-account-ps.md
     - name: Azure ファイル共有のバックアップ
       items:
         - name: 概要
@@ -460,7 +470,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: /security/benchmark/azure/baselines/backup-security-baseline
+          href: /security/benchmark/azure/baselines/backup-security-baseline?toc=/azure/backup/toc.json
     - name: アクセス層
       items:
         - name: アーカイブ層

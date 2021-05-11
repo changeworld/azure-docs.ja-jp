@@ -45,10 +45,10 @@
       items:
         - name: Traffic Manager で使用される国/地域の階層
           href: traffic-manager-geographic-regions.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/traffic-manager-security-baseline?toc=/azure/traffic-manager/toc.json
     - name: 入れ子になった Traffic Manager プロファイル
       href: traffic-manager-nested-profiles.md
     - name: エンドポイントの種類

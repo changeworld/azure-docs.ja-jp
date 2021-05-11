@@ -46,7 +46,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/firewall-manager-security-baseline?toc=/azure/firewall-manager/toc.json
 - name: 操作方法ガイド
   items:
     - name: セキュリティ パートナー プロバイダーのデプロイ
@@ -64,7 +64,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall/policy
+      href: /cli/azure/network/firewall/policy
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewallpolicy
     - name: .NET

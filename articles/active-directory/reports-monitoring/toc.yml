@@ -15,8 +15,6 @@
       href: quickstart-download-sign-in-report.md
     - name: 監査レポートのダウンロード
       href: quickstart-download-audit-report.md
-    - name: ネームド ロケーションの構成
-      href: quickstart-configure-named-locations.md
     - name: ストレージ アカウントへのログのルーティング
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: チュートリアル
@@ -29,33 +27,29 @@
       href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
-    - name: レポートと監視のデプロイを計画する
-      href: plan-monitoring-and-reporting.md
     - name: 監査ログ
       href: concept-audit-logs.md
     - name: 新しいサインイン ログ - プレビュー
       href: concept-all-sign-ins.md
     - name: サインイン ログ
       href: concept-sign-ins.md
-    - name: 使用状況と分析情報のレポート
-      href: concept-usage-insights-report.md
-    - name: リスクの高いサインイン
-      href: ../identity-protection/overview-identity-protection.md
-    - name: リスク検出
-      href: ../identity-protection/overview-identity-protection.md
-    - name: リスクのあるユーザー
-      href: ../identity-protection/overview-identity-protection.md
     - name: プロビジョニング ログ
       href: concept-provisioning-logs.md
+    - name: 使用状況と分析情報のレポート
+      href: concept-usage-insights-report.md
     - name: レポート API
       href: concept-reporting-api.md
     - name: Azure Monitor での Azure AD ログ
       href: concept-activity-logs-azure-monitor.md
+    - name: レポートと監視のデプロイを計画する
+      href: plan-monitoring-and-reporting.md
 - name: 操作方法ガイド
   expanded: true
   items:
     - name: Reports
       items:
+        - name: ログをダウンロードする
+          href: howto-download-logs.md
         - name: Azure AD での非アクティブなユーザー アカウントの管理
           href: howto-manage-inactive-user-accounts.md
         - name: アクティビティ レポートの検出
@@ -107,11 +101,7 @@
       href: reference-reports-data-retention.md
     - name: レポート待機時間
       href: reference-reports-latencies.md
-    - name: サインイン エラー コード
-      href: reference-sign-ins-error-codes.md
     - name: よく寄せられる質問
       href: reports-faq.md
-    - name: 監査ログのスキーマ
-      href: reference-azure-monitor-audit-log-schema.md
     - name: サインイン ログのスキーマ
       href: reference-azure-monitor-sign-ins-log-schema.md

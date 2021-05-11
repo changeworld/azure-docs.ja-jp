@@ -16,7 +16,7 @@
 - name: 概念
   items:
     - name: セキュリティ ベースライン
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/advisor-security-baseline?toc=/azure/advisor/toc.json
 - name: チュートリアル
   items:
     - name: Advisor の使用を開始する

@@ -24,3 +24,7 @@
           href: ./datadog/manage.md
         - name: トラブルシューティング
           href: ./datadog/troubleshoot.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/confluent

@@ -59,7 +59,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/container-instances-security-baseline?toc=/azure/container-instances/TOC.json
         - name: セキュリティに関する考慮事項
           href: container-instances-image-security.md
     - name: 仮想ネットワーク
@@ -156,6 +156,9 @@
       href: container-instances-reference-yaml.md
     - name: コネクタ
       href: /connectors/aci
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

@@ -46,10 +46,10 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/dns-security-baseline?toc=/azure/dns/TOC.json
     - name: パブリック DNS
       items:
         - name: ゾーンとレコード
@@ -59,13 +59,13 @@
         - name: Azure DNS による委任
           href: dns-domain-delegation.md
         - name: よく寄せられる質問
-          href: dns-faq.md
+          href: dns-faq.yml
         - name: DNS メトリックとアラート
           href: dns-alerts-metrics.md
         - name: 逆引き DNS
           href: dns-reverse-dns-overview.md
         - name: Azure DNS と Traffic Manager を使用したディザスター リカバリー
-          href: ../networking/disaster-recovery-dns-traffic-manager.md
+          href: ../networking/disaster-recovery-dns-traffic-manager.md?toc=%2fazure%2fdns%2ftoc.json
     - name: プライベート DNS
       items:
         - name: プライベート DNS ゾーン
@@ -77,9 +77,9 @@
         - name: プライベート DNS のシナリオ
           href: private-dns-scenarios.md
         - name: 仮想ネットワークでの DNS 解決
-          href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
+          href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md?toc=%2fazure%2fdns%2ftoc.json
         - name: よく寄せられる質問
-          href: dns-faq-private.md
+          href: dns-faq-private.yml
 - name: 操作方法ガイド
   items:
     - name: パブリック DNS
@@ -111,9 +111,11 @@
         - name: DNS ゾーン ファイルのインポートとエクスポート
           href: dns-import-export.md
         - name: サブドメインの委任
-          href: delegate-subdomain.md
-        - name: PowerShell を使用したサブドメインの委任
-          href: delegate-subdomain-ps.md
+          items:
+            - name: Azure portal
+              href: delegate-subdomain.md
+            - name: Azure PowerShell
+              href: delegate-subdomain-ps.md
         - name: 他の Azure サービスとの統合
           href: dns-for-azure-services.md
         - name: DNS ゾーンとレコードを保護する
@@ -126,6 +128,8 @@
       items:
         - name: プライベート DNS ゾーンとレコードを保護する
           href: dns-protect-private-zones-recordsets.md
+        - name: DNS ゾーン ファイルのインポートとエクスポート
+          href: private-dns-import-export.md
     - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド

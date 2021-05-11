@@ -10,12 +10,12 @@ metadata:
   author: rohinkoul
   ms.author: rohink
   ms.date: 09/20/2019
-  ms.openlocfilehash: 57d6dfe02a92da48525626719b31bab5b8d1ec22
-  ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+  ms.openlocfilehash: 7276b26944b7eeca90bdc74fa40507688d591c05
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94968487"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108765276"
 landingContent:
 - title: Azure DNS について
   linkLists:
@@ -46,7 +46,7 @@ landingContent:
     - text: Azure DNS Private Zones のシナリオ
       url: private-dns-scenarios.md
     - text: Azure プライベート DNS に関する FAQ
-      url: dns-faq-private.md
+      url: dns-faq-private.yml
   - linkListType: quickstart
     links:
     - text: Azure portal を使用して Azure DNS プライベート ゾーンを作成する

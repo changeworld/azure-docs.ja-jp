@@ -58,8 +58,6 @@
           href: users-close-account.md
         - name: ゲスト ユーザーを追加する
           href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
-        - name: ゲスト ユーザーにロールを割り当てる
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: ゲスト ユーザーのアクセスを制限する
           href: users-restrict-guest-permissions.md
         - name: 動的グループとゲスト

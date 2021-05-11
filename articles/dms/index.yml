@@ -10,12 +10,12 @@ metadata:
   ms.service: dms
   ms.topic: landing-page
   ms.custom: seo-azure-migrate
-  ms.openlocfilehash: a154a3a6579ff3414502b16dcfe6d60748840a6c
-  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.openlocfilehash: 51fbcc1431b77aca794df3b7142e239f9f09ed8f
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102183302"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108766405"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:
@@ -120,23 +120,15 @@ landingContent:
     - text: データベース移行ガイド
       url: https://datamigration.microsoft.com/
     - text: Data Migration Assistant
-      url: /sql/dma/dma-overview?view=sql-server-2017
+      url: /sql/dma/dma-overview
     - text: SQL Server Migration Assistant
-      url: /sql/ssma/sql-server-migration-assistant?view=sql-server-2017
+      url: /sql/ssma/sql-server-migration-assistant
     - text: Database Experimentation Assistant
-      url: /sql/dea/database-experimentation-assistant-overview?view=sql-server-2017
+      url: /sql/dea/database-experimentation-assistant-overview
     - text: データ アクセス移行ツールキット
       url: https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit
 - title: Oracle を Azure に移行する
   linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Azure Database for PostgreSQL に移行する - 単一サーバー - オンライン
-      url: tutorial-oracle-azure-postgresql-online.md
-  - linkListType: reference
-    links:
-    - text: 既知の問題 - Azure Database for PostgreSQL へのオンライン移行 - 単一サーバー
-      url: known-issues-oracle-azure-postgresql-online.md
   - linkListType: video
     links:
     - text: SQL Database 単一データベースに移行する
