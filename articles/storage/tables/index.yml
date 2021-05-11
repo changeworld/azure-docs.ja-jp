@@ -11,12 +11,12 @@ metadata:
   author: tamram
   ms.author: tamram
   ms.date: 12/23/2019
-  ms.openlocfilehash: e6abd9bdcff495ffc040f6e84e70d885765ded77
-  ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+  ms.openlocfilehash: 2a7eff173cbc2eccb8514d269c45a2bd5662b259
+  ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/20/2020
-  ms.locfileid: "94991827"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107739118"
 landingContent:
 - title: Table Storage について
   linkLists:
@@ -54,5 +54,5 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure portal でテーブルを作成する
+    - text: Azure portal でのテーブルの作成
       url: table-storage-quickstart-portal.md

@@ -44,7 +44,7 @@
               displayName: 'regulatory, compliance, standards, domains'
               href: ./security-controls-policy.md
             - name: セキュリティ ベースライン
-              href: security-baseline.md
+              href: /security/benchmark/azure/baselines/container-registry-security-baseline?toc=/azure/container-registry/TOC.json
         - name: コンテナー レジストリのサービス レベルと制限
           href: container-registry-skus.md
         - name: レジストリ、リポジトリ、イメージ

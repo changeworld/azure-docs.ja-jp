@@ -13,7 +13,7 @@
     - name: プロファイルとエンドポイントの作成
       href: cdn-create-new-endpoint.md
     - name: プロファイルとエンドポイントの作成 - Resource Manager テンプレート
-      displayName: Resource Manager
+      displayName: 'Resource Manager, az group, az deployment group, New-AzResourceGroup, New-AzResourceGroupDeployment, Remove-AzResourceGroup'
       href: create-profile-endpoint-template.md
 - name: チュートリアル
   items:
@@ -31,12 +31,17 @@
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
+    - name: Azure CLI
+      items:
+        - name: プロファイルとエンドポイントの作成
+          displayName: 'az cdn profile, az cdn endpoint, az cdn origin, az cdn custom-domain, cdn origin-group'
+          href: ./scripts/cli/cdn-azure-cli-create-endpoint.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/content-delivery-network-security-baseline?toc=/azure/cdn/TOC.json
     - name: キャッシュのしくみ
       href: cdn-how-caching-works.md
     - name: 中国でのコンテンツ配信
@@ -172,6 +177,8 @@
           href: cdn-http-debug-headers.md
     - name: Microsoft 固有 HTTP ヘッダー
       href: cdn-msft-http-debug-headers.md
+    - name: Azure CLI
+      href: /cli/azure/cdn
     - name: Azure PowerShell
       href: /powershell/module/az.cdn
     - name: .NET
