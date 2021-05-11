@@ -1,19 +1,19 @@
 ---
 title: 'P2S VPN と証明書認証を使用して VNet に接続する: ポータル'
 titleSuffix: Azure VPN Gateway
-description: P2S と自己署名証明書または CA によって発行された証明書を使用して、Windows、macOS、Linux の各クライアントを Azure 仮想ネットワークに安全に接続します。 この記事では Azure Portal を使用します。
+description: VPN Gateway ポイント対サイト接続と自己署名または CA 発行の証明書を使用して、Windows、macOS、Linux クライアントを VNet に安全に接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: b515ed37b5d2c71843cb138240bd2fa77fe2fd8d
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: cb296d12d03bf05ffe628bd435ae15cfbb7b79e5
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365554"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204947"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:Azure portal
 

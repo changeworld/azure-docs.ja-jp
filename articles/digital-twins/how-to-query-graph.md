@@ -8,21 +8,23 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6979f44600d29c0bcc18ebf7fc7e444e9b6bcf73
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 52adba94650c09f731cfb6142852b28a0e3f3906
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107902950"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288647"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
-この記事では、クエリの例について、および **Azure Digital Twins クエリ言語** を使用して情報の [ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する手順の詳細について説明します。 (クエリ言語の概要とその機能の完全な一覧については、["*クエリ言語の概念*"](concepts-query-language.md) に関する記事を参照してください。)
+この記事では、クエリの例と、**Azure Digital Twins クエリ言語** を使用して[ツイン グラフ](concepts-twins-graph.md)で情報をクエリする手順について説明します。 (クエリ言語の概要については、[クエリ言語の概念](concepts-query-language.md)に関する記事を参照してください。)
 
-この記事では、デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて冒頭で説明します。 次に、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそのクエリを実行する方法について説明します。
+デジタル ツインのクエリ言語の構造および共通のクエリ操作を示すサンプル クエリについて説明します。 また、Azure Digital Twins の [Query API](/rest/api/digital-twins/dataplane/query) または [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用して、クエリを作成した後にそれらを実行する方法について説明します。
 
 > [!NOTE]
 > 次のサンプル クエリを、API または SDK の呼び出しで実行している場合は、クエリ テキストを 1 行にまとめる必要があります。
+
+[!INCLUDE [digital-twins-query-reference.md](../../includes/digital-twins-query-reference.md)]
 
 ## <a name="show-all-digital-twins"></a>すべてのデジタル ツインを表示する
 
@@ -59,7 +61,7 @@ ms.locfileid: "107902950"
 
 ## <a name="query-by-model"></a>モデルでクエリを実行する
 
-`IS_OF_MODEL` 演算子を使用すると、ツインの [**モデル**](concepts-models.md)に基づいてフィルター処理できます。
+`IS_OF_MODEL` 演算子を使用すると、ツインの[モデル](concepts-models.md)に基づいてフィルター処理できます。
 
 [継承](concepts-models.md#model-inheritance) とモデルの [バージョン管理](how-to-manage-model.md#update-models)を調べた上で、指定されたツインが次のいずれかの条件を満たしている場合に、そのツインに対して **true** として評価されます。
 
@@ -149,7 +151,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount1":::
 
-`WHERE` 句を追加することで、特定の条件に一致する項目の数をカウントします。 ツイン モデルの種類に基づいて適用されたフィルターを使用してカウントする例をいくつか次に示します (この構文の詳細については、後述する [ *「モデルでクエリを実行する」*](#query-by-model)を参照してください)。
+`WHERE` 句を追加することで、特定の条件に一致する項目の数をカウントします。 ツイン モデルの種類に基づいて適用されたフィルターを使用してカウントする例をいくつか次に示します (この構文の詳細については、後述する [「モデルでクエリを実行する」](#query-by-model) を参照してください)。
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="SelectCount2":::
 
@@ -227,7 +229,7 @@ Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレ�
 
 ## <a name="run-queries-with-the-api"></a>API を使用してクエリを実行する
 
-クエリ文字列を決定したら、[**Query API**](/rest/api/digital-twins/dataplane/query) を呼び出して実行します。
+クエリ文字列を決定したら、[Query API](/rest/api/digital-twins/dataplane/query) を呼び出して実行します。
 
 API を直接呼び出すか、Azure Digital Twins で使用可能な [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) のいずれかを使用することができます。
 

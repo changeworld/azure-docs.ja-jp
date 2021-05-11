@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 0f4064e6baf6c6ce237371a2a725fbe023b1e9f2
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011175"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277698"
 ---
 # <a name="speech-service-quotas-and-limits"></a>Speech サービスのクォータと制限
 
@@ -31,9 +31,9 @@ ms.locfileid: "107011175"
 
 | Quota | Free (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| **同時要求の制限 - 基本モデル** | 1 | 100 (既定値) |
+| **同時要求の制限 - 基本モデル エンドポイント** | 1 | 100 (既定値) |
 | 調整可能 | いいえ<sup>2</sup> | はい<sup>2</sup> |
-| **同時要求の制限 - カスタム モデル** | 1 | 20 (既定値) |
+| **同時要求の制限 - カスタム エンドポイント** | 1 | 100 (既定値) |
 | 調整可能 | いいえ<sup>2</sup> | はい<sup>2</sup> |
 
 #### <a name="batch-transcription"></a>バッチ文字起こし
@@ -98,10 +98,10 @@ ms.locfileid: "107011175"
 「[テキスト読み上げ:Custom Voice における文字起こしの同時要求の上限を上げる](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)」に移動する
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>音声テキスト変換: オンライン文字起こしの同時要求の上限を上げる
-既定では、同時要求の数は Speech リソース (ベース モデル) あたり 100、およびカスタム エンドポイント (カスタム モデル) あたり 20 に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
+既定では、同時要求の数は音声リソースあたり 100 (ベース モデル)、およびカスタム エンドポイントあたり 100 (カスタム モデル) に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
 
 >[!NOTE]
-> カスタム モデルを使用する場合は、1 つの Speech リソースが多数のカスタム モデル デプロイをホストしている多数のカスタム エンドポイントに関連付けられている可能性があることに注意してください。 各カスタム エンドポイントには、既定の数の同時要求の上限 (20) が作成によって設定されています。 調整が必要な場合は、各カスタム エンドポイントの調整を **個別に** 行ってください。 また、Speech リソースのベース モデルの同時要求数の上限値は、このリソースに関連付けられているカスタム エンドポイントに影響 **しない** ことにも注意してください。
+> カスタム モデルを使用する場合は、1 つの Speech リソースが多数のカスタム モデル デプロイをホストしている多数のカスタム エンドポイントに関連付けられている可能性があることに注意してください。 各カスタム エンドポイントには、既定の同時要求の上限数 (100) が作成時に設定されています。 調整が必要な場合は、各カスタム エンドポイントの調整を **個別に** 行ってください。 また、Speech リソースのベース モデルの同時要求数の上限値は、このリソースに関連付けられているカスタム エンドポイントに影響 **しない** ことにも注意してください。
 
 
 同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech サービスでは、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。

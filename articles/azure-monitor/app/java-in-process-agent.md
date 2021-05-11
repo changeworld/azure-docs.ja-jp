@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b3d73221793ec8ced4aaac9eace545ac78c31660
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b32b1fb3e0e21374fab2068d337440003005b1e7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143919"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291318"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -92,9 +92,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 
 詳細については、[構成オプション](./java-standalone-config.md)に関するページを参照してください。
 
-## <a name="auto-collected-requests-dependencies-logs-and-metrics"></a>自動収集された要求、依存関係、ログ、およびメトリック
-
-### <a name="requests"></a>Requests
+## <a name="auto-collected-requests"></a>自動収集される要求
 
 * JMS コンシューマー
 * Kafka コンシューマー
@@ -102,7 +100,9 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * Servlets
 * Spring スケジュール
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>分散トレース伝達での依存関係
+## <a name="auto-collected-dependencies"></a>自動収集される依存関係
+
+自動収集される依存関係とダウンストリームへの分散トレースの伝達:
 
 * Apache HttpClient と HttpAsyncClient
 * gRPC
@@ -112,27 +112,27 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * Netty クライアント
 * OkHttp
 
-### <a name="other-dependencies"></a>その他の依存関係
+自動収集される依存関係 (ダウンストリームへの分散トレースの伝達なし):
 
 * Cassandra
 * JDBC
 * MongoDB (非同期および同期)
 * Redis (Lettuce および Jedis)
 
-### <a name="logs"></a>ログ
+## <a name="auto-collected-logs"></a>自動収集されるログ
 
 * java.util.logging
 * Log4j (MDC プロパティを含む)
 * SLF4J/Logback (MDC プロパティを含む)
 
-### <a name="metrics"></a>メトリック
+## <a name="auto-collected-metrics"></a>自動収集されるメトリック
 
 * マイクロメーター (Spring Boot アクチュエータ メトリックを含む)
 * JMX メトリック
 
-### <a name="azure-sdks-preview"></a>Azure SDKs (プレビュー)
+## <a name="azure-sdks-preview"></a>Azure SDKs (プレビュー)
 
-このプレビュー機能を有効にし、次の Azure SDK から送信されるテレメトリをキャプチャするための[構成オプション](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview)をご覧ください。
+このプレビュー機能を有効にし、次の Azure SDK から送信されるテレメトリを自動収集するための[構成オプション](./java-standalone-config.md#auto-collected-azure-sdk-telemetry-preview)をご覧ください。
 
 * [App Configuration](/java/api/overview/azure/data-appconfiguration-readme) 1.1.10+
 * [Cognitive Search](/java/api/overview/azure/search-documents-readme) 11.3.0+
