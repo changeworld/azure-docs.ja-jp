@@ -51,7 +51,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/network-watcher-security-baseline?toc=/azure/network-watcher/toc.json
     - name: データの保存場所
       href: data-residency.md
 - name: 操作方法ガイド

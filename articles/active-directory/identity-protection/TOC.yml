@@ -41,7 +41,7 @@
     - name: リスク検出に関するフィードバックの提供
       href: howto-identity-protection-risk-feedback.md
     - name: FAQ
-      href: troubleshooting-identity-protection-faq.md
+      href: troubleshooting-identity-protection-faq.yml
 - name: リファレンス
   items:
     - name: Graph API

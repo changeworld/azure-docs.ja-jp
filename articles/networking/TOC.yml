@@ -1,7 +1,7 @@
 - name: 概要
   items:
     - name: Azure のネットワークについて
-      href: networking-overview.md
+      href: fundamentals/networking-overview.md
     - name: Architecture
       items:
         - name: ネットワーク エンジニア向けの Azure

@@ -8,15 +8,15 @@ metadata:
   ms.service: data-factory
   ms.topic: landing-page
   ms.collection: collection
-  author: markingmyname
-  ms.author: maghan
+  author: jonburchel
+  ms.author: jburchel
   ms.date: 10/02/2019
-  ms.openlocfilehash: b30ce72830eab14262e2df6258ca052a897abe7e
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+  ms.openlocfilehash: 719d57bbc676e699a82104f9a341bd443cf768ff
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98555533"
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108293136"
 landingContent:
 - title: Azure Data Factory について
   linkLists:

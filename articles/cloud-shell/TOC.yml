@@ -22,10 +22,10 @@
           href: example-terraform-bash.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/cloud-shell-security-baseline?toc=/azure/cloud-shell/TOC.json
 - name: 操作方法ガイド
   items:
     - name: Windows ユーザー向けの PowerShell Cloud Shell

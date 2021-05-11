@@ -57,7 +57,7 @@
         - name: Office 365 での MFA
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: よく寄せられる質問
-          href: multi-factor-authentication-faq.md
+          href: multi-factor-authentication-faq.yml
     - name: パスワード保護
       items:
         - name: クラウドで脆弱なパスワードを排除する
@@ -151,7 +151,7 @@
         - name: トラブルシューティング
           href: howto-password-ban-bad-on-premises-troubleshoot.md
         - name: FAQ
-          href: howto-password-ban-bad-on-premises-faq.md
+          href: howto-password-ban-bad-on-premises-faq.yml
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: 一時アクセス パス (プレビュー) の使用
@@ -232,9 +232,9 @@
         - name: SSPR の書き戻し
           href: troubleshoot-sspr-writeback.md
         - name: SSPR に関する FAQ
-          href: active-directory-passwords-faq.md
+          href: active-directory-passwords-faq.yml
         - name: MFA に関する FAQ
-          href: multi-factor-authentication-faq.md
+          href: multi-factor-authentication-faq.yml
         - name: NPS 拡張機能
           href: howto-mfa-nps-extension-errors.md
 - name: リファレンス

@@ -26,7 +26,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/data-lake-analytics-security-baseline?toc=/azure/data-lake-analytics/TOC.json
 - name: 操作方法ガイド
   items:
     - name: Data Lake Analytics の管理

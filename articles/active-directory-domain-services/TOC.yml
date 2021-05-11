@@ -149,10 +149,17 @@
               href: alert-service-principal.md
             - name: Secure LDAP アラート
               href: alert-ldaps.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.addomainservices/
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: FAQ
-      href: faqs.md
+      href: faqs.yml
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
     - name: 価格

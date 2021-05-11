@@ -175,7 +175,9 @@
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-dps/toc.json&bc=/azure/iot-dps/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
@@ -213,7 +215,7 @@
         - name: iOS プラットフォーム
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
     - name: IoT デバイス カタログ向けの Azure 認定
-      href: 'https://catalog.azureiotsolutions.com/'
+      href: 'https://devicecatalog.azure.com/'
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: 顧客データ要求

@@ -31,15 +31,15 @@
 - name: References
   items:
     - name: Unity 用ランタイム SDK
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.ObjectAnchors/'
+      href: /dotnet/api/Microsoft.Azure.ObjectAnchors/
     - name: HoloLens C++/WinRT 用ランタイム SDK
-      href: 'https://docs.microsoft.com/cpp/api/object-anchors/winrt/'
+      href: /cpp/api/object-anchors/winrt/
 - name: リソース
   items:
     - name: リリース ノート
       href: 'https://github.com/Azure/azure-object-anchors/releases'
     - name: Azure Mixed Reality Resource Management REST API
-      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+      href: /rest/api/mixedreality/
     - name: よく寄せられる質問
       href: faq.md
     - name: Stack Overflow

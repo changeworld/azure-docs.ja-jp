@@ -28,6 +28,12 @@
               href: hbv2-series-overview.md
             - name: パフォーマンス
               href: hbv2-performance.md
+        - name: HBv3 シリーズ
+          items:
+            - name: 概要
+              href: hbv3-series-overview.md
+            - name: パフォーマンス
+              href: hbv3-performance.md
         - name: HC シリーズ
           items:
             - name: 概要
