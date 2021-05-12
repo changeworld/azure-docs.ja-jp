@@ -1,17 +1,17 @@
 ---
 title: データ アクセス戦略
 description: Azure Data Factory で、静的 IP アドレス範囲がサポートされるようになりました。
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: edc773ec2db078b6c50b55c81ad6570758a3f5f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 904b1506bfc8d975cad101329e1fcd15844aa284
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389248"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481627"
 ---
 # <a name="data-access-strategies"></a>データ アクセス戦略
 

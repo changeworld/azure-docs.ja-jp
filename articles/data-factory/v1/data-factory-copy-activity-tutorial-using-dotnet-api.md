@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8c2baf4da4e7893b650e1f885fb66be835c4b736
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02171f4a8d8a7d27b4b6f885ff76fc4a60e1a2b8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377076"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767014"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>チュートリアル:コピー アクティビティがあるパイプラインを .NET API で作成する
 > [!div class="op_single_selector"]
@@ -518,7 +518,7 @@ Data Factory の .NET API に関する完全なドキュメントについては
 
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 データ ストアにデータをコピーしたり、データ ストアからデータをコピーしたりする方法を確認するには、表のデータ ストアのリンクをクリックしてください。
 

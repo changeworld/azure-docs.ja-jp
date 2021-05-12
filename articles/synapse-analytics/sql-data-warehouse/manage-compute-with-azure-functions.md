@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d471991be570cd5242b5e163409e319e5af4094
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96448377"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790345"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Functions を使用して Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のコンピューティング リソースを管理する
 
@@ -42,7 +42,8 @@ ms.locfileid: "96448377"
 
 テンプレートを展開すると、3 つのリソースが新たに追加されていることがわかります。無料の Azure App Service プランと、使用量ベースの Function App プラン、そして、ログと操作キューを担うストレージ アカウントです。 デプロイされた関数を実際の要件に合わせて変更する方法については、引き続き他のセクションもご覧ください。
 
-## <a name="change-the-compute-level"></a>コンピューティング レベルを変更する
+## <a name="change-the-time-of-the-scale-operation"></a>スケール操作の時間を変更する
+
 
 1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。
 
@@ -66,7 +67,7 @@ ms.locfileid: "96448377"
 
    たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)を参照してください。
 
-## <a name="change-the-time-of-the-scale-operation"></a>スケール操作の時間を変更する
+## <a name="change-the-compute-level"></a>コンピューティング レベルを変更する
 
 1. ご利用の Function App サービスに移動します。 テンプレートを既定値のままデプロイした場合、このサービスの名前は *DWOperations* になります。 Function App を開くと、Function App サービスに 5 つの関数がデプロイされていることがわかります。
 

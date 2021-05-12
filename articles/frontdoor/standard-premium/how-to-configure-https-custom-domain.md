@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 3f3b4d3e431d9e24549bdb8caa4b2d17f547c82c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 5b14ac194d3cf08a11edc47a84825f447be79e34
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064054"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516598"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>Azure portal を使用して Front Door Standard/Premium SKU (プレビュー) のカスタム ドメインで HTTPS を構成する
 
@@ -49,7 +49,7 @@ Azure Front Door Standard/Premium では Azure マネージド証明書とカス
 
 1. [カスタム ドメイン](how-to-add-custom-domain.md)を有効にする手順に従って、カスタム ドメインを検証してエンドポイントに関連付けます。
 
-1. カスタム ドメインがエンドポイントに正常に関連付けられると、Azure マネージド証明書が Front Door にデプロイされます。 このプロセスが完了するまでに数分かかることがあります。
+1. カスタム ドメインがエンドポイントに正常に関連付けられると、Azure マネージド証明書が Front Door にデプロイされます。 このプロセスの完了には数分かかる場合があります。
 
 ## <a name="using-your-own-certificate"></a>独自の証明書の使用
 

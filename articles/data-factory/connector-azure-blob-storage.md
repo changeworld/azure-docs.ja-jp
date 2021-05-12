@@ -1,18 +1,18 @@
 ---
 title: Azure Blob Storage のデータをコピーし変換する
 description: BLOB ストレージとの間でデータをコピーする方法、および Data Factory を使用して BLOB ストレージのデータを変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: c1e0dffafafa76e90ec57ce1a00fb8e155ff4edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f3880b74fe570410d24b28752f5b3d4068d978d
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608097"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481393"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage のデータをコピーおよび変換する
 
@@ -47,7 +47,7 @@ ms.locfileid: "104608097"
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Blob Storage に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -223,7 +223,7 @@ Azure Storage サービス プリンシパル認証の全般的な情報につ�
     - **ソースとして**、**アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ閲覧者** のロールを付与します。
     - **シンクとして**、**アクセス制御 (IAM)** で、少なくとも **ストレージ BLOB データ共同作成者** のロールを付与します。
 
-Azure Blob Storage のリンクされたサービスでは、次のプロパティがサポートされます。
+Azure BLOB ストレージのリンクされたサービスでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -325,7 +325,7 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Azure Blob Storage では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -369,7 +369,7 @@ Azure Blob Storage では、形式ベースのデータセットの `location` �
 
 ### <a name="blob-storage-as-a-source-type"></a>ソースの種類として Blob Storage を設定する
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Azure Blob Storage では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -440,7 +440,7 @@ Azure Blob Storage では、形式ベースのコピー ソースの `storeSetti
 
 ### <a name="blob-storage-as-a-sink-type"></a>シンクの種類として Blob Storage を設定する
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)] 
 
 Azure Blob Storage では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory での区切りテキスト形式
 description: このトピックでは、Azure Data Factory で区切りテキスト形式を処理する方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.author: jingwang
-ms.openlocfilehash: 1cff49e4ddb7423e1e5956e1436cefd18abe6dfe
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.author: jianleishen
+ms.openlocfilehash: 5f5b7205c5ed0ad353ee6e0b4ff814288b0c1a26
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107076"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486595"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Azure Data Factory での区切りテキスト形式
 

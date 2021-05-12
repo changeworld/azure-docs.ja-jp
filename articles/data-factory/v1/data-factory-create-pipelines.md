@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f60ff3c8511472ee456d392257b815c0ab64f69c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7919d32326e7cb82720714a2bff574ad21f0d5d9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779802"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753240"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -45,7 +45,7 @@ Data Factory では、データ移動アクティビティとデータ変換ア�
 ### <a name="data-movement-activities"></a>データ移動アクティビティ
 Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は次のデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
@@ -53,7 +53,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
 ### <a name="data-transformation-activities"></a>データ変換アクティビティ
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 詳細については、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事を参照してください。
 

@@ -1,24 +1,24 @@
 ---
 title: Azure Data Factory のコピー アクティビティでサポートされているファイル形式
 description: このトピックでは、Azure Data Factory のコピー アクティビティでサポートされているファイル形式や圧縮コードについて説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: jingwang
-ms.openlocfilehash: bb773d01124b99b4837f393b610e00ecbfa510fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: a106ab7a4634547b446f3c1fb1613f0d6d7b3f2a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364615"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488503"
 ---
 # <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティでサポートされているファイル形式と圧縮コーデック
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 [コピー アクティビティ](copy-activity-overview.md)を使用すると、ファイル ベースの 2 つのデータ ストア間でファイルをそのままコピーできます。その場合、データはシリアル化または逆シリアル化なしで効率的にコピーされます。 
 

@@ -8,18 +8,18 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: f096e53f8054039f361bde1c5f2adffac615c53d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ffa7e35bed1713a5ef9e04b59a8dbdb692b9630f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371942"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790957"
 ---
 # <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレース向けのマネージド サービス オファーを計画する方法
 
 この記事では、パートナー センターを使用して、マネージド サービス オファーを Microsoft コマーシャル マーケットプレースに公開するための要件について説明します。
 
-マネージド サービスは、Azure Lighthouse によるテナント間およびマルチテナント管理を可能にする Azure Marketplace のオファーです。 詳細については、「[Azure Lighthouse とは](../lighthouse/overview.md)」をご覧ください。 顧客は、マネージド サービス オファーを購入するときに、1 つ以上のサブスクリプションまたはリソース グループを委任できます。 その後、Azure Lighthouse の [Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)機能を使用して、これらのリソースを操作できます。
+マネージド サービスは、Azure Lighthouse によるテナント間およびマルチテナント管理を可能にする Azure Marketplace のオファーです。 詳細については、「[Azure Lighthouse とは](../lighthouse/overview.md)」をご覧ください。 顧客は、マネージド サービス オファーを購入するときに、1 つ以上のサブスクリプションまたはリソース グループを委任できます。 その後、Azure Lighthouse の [Azure の委任されたリソース管理](../lighthouse/concepts/architecture.md)機能を使用して、これらのリソースを操作できます。
 
 ## <a name="eligibility-requirements"></a>資格要件
 

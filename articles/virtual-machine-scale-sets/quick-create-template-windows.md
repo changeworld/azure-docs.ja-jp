@@ -9,12 +9,12 @@ ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: d968225ea9d6ed966091c8c8dabcca10d454d88c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: db914a73845e0bdb36cd5a58156880c2ac2c2358
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935467"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740377"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシン スケール セットを作成する
 
@@ -26,7 +26,7 @@ ARM テンプレートを使用して、関連するリソースのグループ�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fvmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートで使用されるテンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/demos/vmss-windows-webapp-dsc-autoscale/azuredeploy.json":::
 
 テンプレートでは、次のリソースが定義されています。
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 テンプレートは、 **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンを選択することでデプロイできます。 このボタンは、Azure ポータルを開き、完全なテンプレートを読み込み、スケール セットの名前、インスタンス数、管理者の資格情報などのいくつかのパラメーターの入力を求めます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fdemos%2Fvmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
 Resource Manager テンプレートは、Azure PowerShell を使用してデプロイすることもできます。
 
@@ -94,7 +94,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 # Deploy template into resource group
 New-AzResourceGroupDeployment `
     -ResourceGroupName myResourceGroup `
-    -TemplateURI https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json
+    -TemplateURI https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/vmss-windows-webapp-dsc-autoscale/azuredeploy.json
 
 # Update the scale set and apply the extension
 Update-AzVmss `

@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 355d36d58935372e9d8a92599e8f810fec9ebf19
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4c50c7de84f92f1050b88a9c5c7179c69211bb42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785344"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766935"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (バージョン 1) のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -140,7 +140,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 ## <a name="dataset-type"></a><a name="Type"></a> データセットの型
 データセットの型は、使用するデータ ストアに依存します。 Data Factory でサポートされているデータ ストアの一覧については、次の表を参照してください。 データ ストアをクリックすると、そのデータ ストアに対応するリンクされたサービスとデータセットの作成方法を確認できます。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > \* が付いているデータ ストアは、オンプレミスと Azure IaaS (サービスとしてのインフラストラクチャ) のどちらにある場合もサポートされています。 これらのデータ ストアでは、[Data Management Gateway](data-factory-data-management-gateway.md) のインストールが必要になります。

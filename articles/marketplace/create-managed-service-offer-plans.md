@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 12/23/2020
-ms.openlocfilehash: 9b5526af03bdbefeb54633c49bbd43743555f60b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a20571e411b2849c3487582a9c316f0f0b35c91d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383230"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790939"
 ---
 # <a name="how-to-create-plans-for-your-managed-service-offer"></a>マネージド サービス オファーのプランを作成する方法
 
@@ -79,7 +79,7 @@ Azure サブスクリプション ID を使用して、プライベート プラ
 
 ## <a name="technical-configuration"></a>技術的な構成
 
-このセクションでは、顧客リソースを管理するための承認情報を含むマニフェストを作成します。 この情報は、[Azure の委任されたリソース管理](../lighthouse/concepts/azure-delegated-resource-management.md)を有効にするために必要です。
+このセクションでは、顧客リソースを管理するための承認情報を含むマニフェストを作成します。 この情報は、[Azure の委任されたリソース管理](../lighthouse/concepts/architecture.md)を有効にするために必要です。
 
 「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles)」を見直して、サポートされているロールと、承認を定義する際のベスト プラクティスを確認してください。
 

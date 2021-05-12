@@ -1,0 +1,66 @@
+- name: Azure Web PubSub サービスに関するドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Web PubSub サービスについて
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: ライブ デモを試す
+      href: quickstart-live-demo.md
+    - name: 単純なチャットルーム サーバーレス アプリケーションから始める
+      href: quickstart-serverless.md
+- name: 操作方法ガイド
+  expanded: true
+  items:
+    - name: 開発
+      items:
+        - name: インスタンスを作成する
+          href: howto-develop-create-instance.md
+        - name: メッセージの発行とサブスクライブ
+          href: 'https://azure.github.io/azure-webpubsub/getting-started/publish-messages/js-publish-message'
+        - name: サブプロトコルの操作
+          href: 'https://azure.github.io/azure-webpubsub/getting-started/using-pubsub-subprotocol/js-work-with-subprotocols'
+        - name: 認証とアクセス許可
+          href: 'https://azure.github.io/azure-webpubsub/getting-started/auth-and-permissions/js-auth-and-permissions'
+    - name: セキュリティで保護
+      items:
+        - name: アクセス キーを保護する
+          href: howto-secure-rotate-access-key.md
+    - name: トラブルシューティング
+      items:
+        - name: ネットワーク トレースを収集する
+          href: howto-troubleshoot-network-trace.md
+        - name: 診断ログのキャプチャ
+          href: howto-troubleshoot-diagnostic-logs.md
+- name: 概念
+  items:
+    - name: Azure Web PubSub サービスの内部構造
+      href: 'https://azure.github.io/azure-webpubsub/concepts/service-internals'
+    - name: 課金モデル
+      href: concept-billing-model.md
+- name: リファレンス
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/webpubsub'
+    - name: PubSub WebSocket サブプロトコル
+      href: 'https://azure.github.io/azure-webpubsub/references/pubsub-websocket-subprotocol'
+    - name: Web PubSub CloudEvents
+      href: 'https://azure.github.io/azure-webpubsub/references/protocol-cloudevents'
+    - name: サーバー SDK
+      href: choose-server-sdks.md
+- name: リソース
+  items:
+    - name: ソリューション
+      href: /azure/architecture/
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=web-pubsub'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/web-pubsub/'
+    - name: FAQ
+      href: resource-faq.md
+    - name: Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-web-pubsub.html'
+    - name: StackOverflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-web-pubsub'

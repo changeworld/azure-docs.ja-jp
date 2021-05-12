@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 04/16/2021
-ms.openlocfilehash: a56a9e6f04aa800e16bbab0190ce7b41d87da590
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 04/23/2021
+ms.openlocfilehash: 5a347a9041423c7e466499cdd65fe27e6623ab98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107740090"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737407"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -112,6 +112,7 @@ ms.locfileid: "107740090"
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTHub](#microsoftiothub)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kubernetes](#microsoftkubernetes)
@@ -399,7 +400,7 @@ ms.locfileid: "107740090"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | batchaccounts | はい | はい | Batch アカウントを別のリージョンに直接移行することはできませんが、テンプレートを使用し、テンプレートをエクスポートしてそれを変更し、テンプレートを新しいリージョンにデプロイすることはできます。 <br/><br/> [リージョン間で Batch アカウントを移行する](../../batch/best-practices.md#moving-batch-accounts-across-regions)方法を参照してください。 |
+> | batchaccounts | はい | はい | Batch アカウントを別のリージョンに直接移行することはできませんが、テンプレートを使用し、テンプレートをエクスポートしてそれを変更し、テンプレートを新しいリージョンにデプロイすることはできます。 <br/><br/> [リージョン間で Batch アカウントを移行する](../../batch/account-move.md)方法を参照してください。 |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -586,7 +587,7 @@ ms.locfileid: "107740090"
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | accounts | はい | はい | いいえ |
-> | Cognitive Search | **保留中** | **保留中** | 手動の手順でサポートされています。<br/><br/> [Azure Cognitive Search サービスを別のリージョンに移行する](../../search/search-howto-move-across-regions.md)方法を参照してください。 |
+> | Cognitive Search | はい | はい | 手動の手順でサポートされています。<br/><br/> [Azure Cognitive Search サービスを別のリージョンに移行する](../../search/search-howto-move-across-regions.md)方法を参照してください。 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -1103,7 +1104,7 @@ ms.locfileid: "107740090"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | accounts | **保留中** | **保留中** | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
+> | accounts | はい | はい | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
 > | actiongroups | はい | はい | いいえ |
 > | activitylogalerts | いいえ | いいえ | いいえ |
 > | alertrules | はい | はい | いいえ |
@@ -1155,7 +1156,7 @@ ms.locfileid: "107740090"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | iothub | **保留中** | **保留中** | はい (ハブを複製) <br/><br/> [IoT ハブを別のリージョンに複製する](../../iot-hub/iot-hub-how-to-clone.md) |
+> | iothub | はい | はい | はい (ハブを複製) <br/><br/> [IoT ハブを別のリージョンに複製する](../../iot-hub/iot-hub-how-to-clone.md) |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 

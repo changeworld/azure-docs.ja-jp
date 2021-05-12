@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して Sybase からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.author: jingwang
-ms.openlocfilehash: 2ef63eded5403c1cf5faddec71ed3503c3ae2138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: eb183b4d5c88f7808cde2b7677e93ba6d553708f
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384811"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485155"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -46,7 +46,7 @@ Sybase IQ と ASE はサポートされていません。 代わりに、Sybase 
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Sybase コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

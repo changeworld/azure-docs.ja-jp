@@ -4,12 +4,12 @@ description: GitHub Actions を使用して Azure Resource Manager テンプレ�
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 020e142788cf2bd31edeada8d051be74132310cf
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: fb14c6e452ea4923ece7561ca8af968626f4af77
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075431"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737029"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub Actions を使用した ARM テンプレートのデプロイ
 
@@ -88,7 +88,7 @@ Azure の資格情報、リソース グループ、およびサブスクリプ�
 Resource Manager テンプレートを GitHub リポジトリに追加します。 このテンプレートでは、ストレージ アカウントが作成されます。
 
 ```url
-https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 ```
 
 ファイルは、リポジトリ内のどこに置いてもかまいません。 次のセクションのワークフロー サンプルでは、テンプレート ファイル名が **azuredeploy.json** であり、リポジトリのルートに保存されていることを想定しています。

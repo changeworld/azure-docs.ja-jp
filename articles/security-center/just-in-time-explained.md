@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 9a52596aa0dd5fa7b9a7226d2ae57259dab08d37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4720cbfea072561e5413afd54407b7b0a7878ba
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93285727"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229650"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 
@@ -63,7 +63,7 @@ JIT の利点を得られるマシンが Security Center で検出されると�
 ![Just-In-Time (JIT) 仮想マシン (VM) のアクセスに関する推奨事項](./media/just-in-time-explained/unhealthy-resources.png)
 
 
-## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>FAQ - Just-In-Time 仮想マシンへのアクセスに関する質問
+## <a name="faq---just-in-time-virtual-machine-access"></a>FAQ - Just-In-Time 仮想マシン アクセス
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>JIT を構成して使用するために必要なアクセス許可は何ですか?
 

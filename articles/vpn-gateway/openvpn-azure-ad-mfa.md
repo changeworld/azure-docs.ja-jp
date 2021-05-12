@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 05/05/2021
 ms.author: alzam
-ms.openlocfilehash: 34d10a5ffaea09c1ccb5f0370012472422371aa4
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 702f4259ba1003c2cf4f52f7a840558fd3abf42f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228300"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754759"
 ---
 # <a name="enable-azure-ad-multi-factor-authentication-mfa-for-vpn-users"></a>VPN ユーザーの Azure AD Multi-Factor Authentication (MFA) を有効にする
 

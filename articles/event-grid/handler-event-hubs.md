@@ -3,12 +3,12 @@ title: Azure Event Grid イベントに対するイベント ハンドラーと�
 description: Azure Event Grid イベントのイベント ハンドラーとしてイベント ハブを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 446fef6df65f59206519e282c74d59c2ed1bfa9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b69e06335b4461ad9ee72f32d38e7e7f7056febc
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005633"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734812"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのイベント ハブ
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Event Hubs** はその 1 つです。 
@@ -21,7 +21,7 @@ Event Grid からのイベントが速すぎて、ソリューションで処理
 |タイトル  |説明  |
 |---------|---------|
 | [クイック スタート: Azure CLI を使用してカスタム イベントを Azure Event Hubs にルーティングする](custom-event-to-eventhub.md) | アプリケーションで処理するためにカスタム イベントをイベント ハブに送信します。 |
-| [Resource Manager テンプレート:Event Grid カスタム トピックを作成し、イベント ハブにイベントを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
+| [Resource Manager テンプレート:Event Grid カスタム トピックを作成し、イベント ハブにイベントを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
 
 [!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
@@ -33,18 +33,18 @@ Event Grid からのイベントが速すぎて、ソリューションで処理
 
 ```json
 {
-    "properties": 
+  "properties": 
+  {
+    "destination": 
     {
-        "destination": 
-        {
-            "endpointType": "EventHub",
-            "properties": 
-            {
-                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
-            }
-        },
-        "eventDeliverySchema": "EventGridSchema"
-    }
+      "endpointType": "EventHub",
+      "properties": 
+      {
+        "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+      }
+    },
+    "eventDeliverySchema": "EventGridSchema"
+  }
 }
 ```
 
@@ -52,24 +52,24 @@ Event Grid からのイベントが速すぎて、ソリューションで処理
 
 ```json
 {
-    "properties": {
-        "deliveryWithResourceIdentity": 
+  "properties": {
+    "deliveryWithResourceIdentity": 
+    {
+      "identity": 
+      {
+        "type": "SystemAssigned"
+      },
+      "destination": 
+      {
+        "endpointType": "EventHub",
+        "properties": 
         {
-            "identity": 
-            {
-                "type": "SystemAssigned"
-            },
-            "destination": 
-            {
-                "endpointType": "EventHub",
-                "properties": 
-                {
-                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
-                }
-            }
-        },
-        "eventDeliverySchema": "EventGridSchema"
-    }
+          "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUBS NAMESPACE NAME>/eventhubs/<EVENT HUB NAME>"
+        }
+      }
+    },
+    "eventDeliverySchema": "EventGridSchema"
+  }
 }
 ```
 

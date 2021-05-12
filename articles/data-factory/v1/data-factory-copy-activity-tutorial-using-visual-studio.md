@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f6ff31c3c0d37078f8dfbd934593adb4b6a6ef4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c00c1fe59da5de8e4964fd6e7683b3cd980d0524
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377110"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753499"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -525,6 +525,6 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 ## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL Database をターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 データ ストアにデータをコピーしたり、データ ストアからデータをコピーしたりする方法を確認するには、表のデータ ストアのリンクをクリックしてください。

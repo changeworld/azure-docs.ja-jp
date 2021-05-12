@@ -6,16 +6,15 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d6886b6a199de39af8b94e5e3825e774d8f0b93
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774968"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740269"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](./overview.md)」を参照してください。
@@ -39,7 +38,7 @@ ms.locfileid: "104774968"
 - 個々の VM はネイティブ ディスクからマネージド ディスクに移行できますが、スケール セット内の VM を移行することはできません。
 - 個々の VM の仮想ネットワーク インターフェイスカード (NIC) に IPv6 パブリック IP アドレスを割り当てることはできますが、スケール セット内の VM インスタンスに割り当てることはできません。 個々の VM でもスケール セット内の VM でも、前面のロード バランサーには IPv6 パブリック IP アドレスを割り当てることができます。
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Azure Managed Disksでのスケール セット
 スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。

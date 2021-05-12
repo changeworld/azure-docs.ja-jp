@@ -6,14 +6,14 @@ services: sql-database
 ms.service: sql-database
 ms.topic: quickstart
 ms.author: jukullam
-ms.date: 10/12/2020
+ms.date: 05/05/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: ceb9f0f9ef2a88532d5af16a03fcfd0282da84f8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 483763c9d29cc736608dac7907b8f3fa0aa84bac
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787289"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753805"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する
 
@@ -143,7 +143,7 @@ Azure portal でご自分の Azure SQL データベースにアクセスし、 *
       with:
         server-name: SQL_SERVER_NAME
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        sql-file: './Database.dacpac'
+        dacpac-package: './Database.dacpac'
     ``` 
 
 1. Azure のログアウトにアクションを追加して、ワークフローを完成させます。 完成したワークフローを次に示します。 このファイルは、リポジトリの `.github/workflows` フォルダー内に表示されます。
@@ -171,7 +171,7 @@ Azure portal でご自分の Azure SQL データベースにアクセスし、 *
       with:
         server-name: SQL_SERVER_NAME
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        sql-file: './Database.dacpac'
+        dacpac-package: './Database.dacpac'
 
         # Azure logout 
     - name: logout

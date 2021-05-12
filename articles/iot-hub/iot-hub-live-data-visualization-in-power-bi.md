@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b099f4ce91fd24e8d7baec054bcfc5a6cf0b032
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 6ff0a0bb8bc1ca9b26968d002bb44d206c36e158
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567113"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483913"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -26,7 +26,7 @@ ms.locfileid: "107567113"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
   
   * 有効な Azure サブスクリプション
   * サブスクリプション内の Azure IoT Hub。
@@ -48,7 +48,7 @@ ms.locfileid: "107567113"
 
    **ジョブ名**:ジョブの名前。 名前はグローバルに一意である必要があります。
 
-   **[リソース グループ]** :IoT Hub と同じリソース グループを使用します。
+   **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
 
    **[場所]** :リソース グループと同じ場所を使用します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "107567113"
 
    **エンドポイント**: **[メッセージング]** を選びます。
 
-   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT ハブに使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT ハブ上で既定で作成され、IoT ハブによって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
+   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT ハブに使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT ハブ上で既定で作成され、IoT ハブによって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-dev-guide-sas.md#access-control-and-permissions)」を参照してください。
 
    **[共有アクセス ポリシー キー]** :このフィールドは、共有アクセス ポリシー名の選択内容に基づいて自動的に入力されます。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 20c394520e8d4100470c0176c284cf4136e9d3db
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3221712fcf74022f2899380b4573ab3a821dce4d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227986"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109627249"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -64,6 +64,9 @@ Linux の x64 CPU で Speech CLI をインストールするには、次の手�
 
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker のインストール (Windows、Linux、macOS)](#tab/dockerinstall)
+
+> [!WARNING]
+> Docker コンテナー内で Speech CLI を実行するときは、コンピューターのマイクを使用することはできません。 ただし、ローカルにマウントされたディレクトリ内のオーディオ ファイルを読み取って保存することができます。 
 
 Docker コンテナー内に Speech CLI をインストールするには、次の手順に従います。
 
@@ -126,9 +129,6 @@ Windows では、このコマンドを入力して、対話型のコマンド �
 ```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
-
-> [!WARNING]
-> Docker コンテナー内で Speech CLI を実行するときは、コンピューターのマイクを使用することはできません。 ただし、ローカルにマウントされたディレクトリ内のオーディオ ファイルを読み取って保存することができます。 
 
 <!-- Need to troubleshoot issues with docker pull image
 

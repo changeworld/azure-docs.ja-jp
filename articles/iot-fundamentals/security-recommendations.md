@@ -12,12 +12,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eeb8a8132b905254c02c86460c376d69948b9264
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96457618"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481411"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure のモノのインターネット (IoT) デプロイのセキュリティに関する推奨事項
 
@@ -40,14 +40,14 @@ ms.locfileid: "96457618"
 
 | 推奨 | 説明 | ASC によるサポート |
 |-|----|--|
-| ハブのアクセス制御を定義する | 機能に基づき、IoT Hub ソリューションで各コンポーネントに付与される[アクセス権の種類を理解して定義](iot-security-deployment.md#securing-the-cloud)します。 許可される権限は、*Registry Read*、*RegistryReadWrite*、*ServiceConnect*、および *DeviceConnect* です。 既定の [IoT ハブの共有アクセス ポリシー](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)は、各コンポーネントの権限をそのロールで定義するのにも役立ちます。 | - |
+| ハブのアクセス制御を定義する | 機能に基づき、IoT Hub ソリューションで各コンポーネントに付与される[アクセス権の種類を理解して定義](iot-security-deployment.md#securing-the-cloud)します。 許可される権限は、*Registry Read*、*RegistryReadWrite*、*ServiceConnect*、および *DeviceConnect* です。 既定の [IoT ハブの共有アクセス ポリシー](../iot-hub/iot-hub-dev-guide-sas.md#access-control-and-permissions)は、各コンポーネントの権限をそのロールで定義するのにも役立ちます。 | - |
 | バックエンド サービスのアクセス制御を定義する | IoT Hub ソリューションによって取り込まれたデータは、[Cosmos DB](../cosmos-db/index.yml)、[Stream Analytics](../stream-analytics/index.yml)、[App Service](../app-service/index.yml)、[Logic Apps](../logic-apps/index.yml)、および [Blob Storage](../storage/blobs/storage-blobs-introduction.md) などの他の Azure サービスで使用することができます。 これらのサービスに関する文書化された適切なアクセス権限を必ず理解し、許可してください。 | - |
 
 ## <a name="data-protection"></a>データ保護
 
 | 推奨 | 説明 | ASC によるサポート |
 |-|----|--|
-| デバイス認証をセキュリティで保護する | [一意の ID キーまたはセキュリティ トークン](iot-security-deployment.md#iot-hub-security-tokens)、あるいは各デバイスの[デバイス上の X.509 証明書](iot-security-deployment.md#x509-certificate-based-device-authentication)を使用して、デバイスと IoT ハブ間のセキュリティで保護された通信を確保します。 適切な方法を使って、[選択されたプロトコル (MQTT、AMQP、または HTTPS) に基づいてセキュリティ トークンを使用](../iot-hub/iot-hub-devguide-security.md)します。 | - |
+| デバイス認証をセキュリティで保護する | [一意の ID キーまたはセキュリティ トークン](iot-security-deployment.md#iot-hub-security-tokens)、あるいは各デバイスの[デバイス上の X.509 証明書](iot-security-deployment.md#x509-certificate-based-device-authentication)を使用して、デバイスと IoT ハブ間のセキュリティで保護された通信を確保します。 適切な方法を使って、[選択されたプロトコル (MQTT、AMQP、または HTTPS) に基づいてセキュリティ トークンを使用](../iot-hub/iot-hub-dev-guide-sas.md)します。 | - |
 | デバイスの通信をセキュリティで保護する | IoT Hub では、バージョン 1.2 および 1.0 がサポートされる、トランスポート層セキュリティ (TLS) 標準を使用して、デバイスへの接続をセキュリティで保護します。 最大のセキュリティを確保するには、[TLS 1.2](https://tools.ietf.org/html/rfc5246) を使用します。 | - |
 | サービスの通信をセキュリティで保護する | IoT Hub では、[Azure Storage](../storage/index.yml) または [Event Hubs](../event-hubs/index.yml) (TLS プロトコルのみを使用) などのバックエンド サービスに接続するためのエンドポイントが提供され、エンドポイントは非暗号化チャネルでは公開されません。 このデータが格納または分析のためにこれらのバックエンド サービスに達したら、必ず、そのサービスに適したセキュリティと暗号化の方法を採用し、バックエンドの機密情報を保護するようにしてください。 | - |
 

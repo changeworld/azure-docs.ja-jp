@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 90d969b9b9f14a564752baea5abd022e8ffcd8c3
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 3cbb8496cbb8473c9b94c1d1e9d0e89286d1f75d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893277"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109627266"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
@@ -227,14 +227,14 @@ new_users = [identity_client.create_user() for i in range(2)]
 # user_display_name = "Wilma Flinstone"
 # new_user = CommunicationUserIdentifier(user_id)
 # participant = ChatParticipant(
-#     user=new_user,
+#     identifier=new_user,
 #     display_name=user_display_name,
 #     share_history_time=datetime.utcnow())
 
 participants = []
 for _user in new_users:
   chat_thread_participant = ChatParticipant(
-    user=_user,
+    identifier=_user,
     display_name='Fred Flinstone',
     share_history_time=datetime.utcnow()
   ) 

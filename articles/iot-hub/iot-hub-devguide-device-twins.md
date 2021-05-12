@@ -11,12 +11,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc1f9aaa0409300f99535b0b64f5719f8e8c97ad
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093031"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484615"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -224,7 +224,7 @@ ms.locfileid: "101093031"
     }
     ```
 
-上述の操作はすべて [オプティミスティック コンカレンシー](iot-hub-devguide-device-twins.md#optimistic-concurrency)をサポートしており、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」で定義されているとおり、**ServiceConnect** アクセス許可を必要とします。
+上述の操作はすべて [オプティミスティック コンカレンシー](iot-hub-devguide-device-twins.md#optimistic-concurrency)をサポートしており、「[IoT Hub へのアクセスの制御](iot-hub-dev-guide-sas.md)」で定義されているとおり、**ServiceConnect** アクセス許可を必要とします。
 
 これらの操作の他に、ソリューション バックエンドでは以下を実行できます。
 
@@ -242,7 +242,7 @@ ms.locfileid: "101093031"
 
 * **必要なプロパティの監視** 現在接続されているデバイスでは、必要なプロパティの更新が行われたときに通知をするように設定できます。 デバイスは、ソリューション バックエンドによって実行される更新 (部分的または完全な置換) と同じフォームを受け取ります。
 
-「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」に定義されているように、上述の操作にはすべて **DeviceConnect** アクセス許可が必要です。
+「[IoT Hub へのアクセスの制御](iot-hub-dev-guide-sas.md)」に定義されているように、上述の操作にはすべて **DeviceConnect** アクセス許可が必要です。
 
 [Azure IoT device SDK](iot-hub-devguide-sdks.md) を使用すると、多数の言語とプラットフォームで上述の操作を簡単に使用できます。 必要なプロパティを同期させるための IoT Hub プリミティブの詳細については、「[デバイスの再接続フロー](iot-hub-devguide-device-twins.md#device-reconnection-flow)」を参照してください。
 
