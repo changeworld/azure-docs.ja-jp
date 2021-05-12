@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して MariaDB のデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MariaDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jingwang
-ms.openlocfilehash: f515738ad2af6b7779495b55226c10fef9272b13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 95132ef3050b75be6cdf887930030b71e013510e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385678"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482203"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して MariaDB のデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,11 +33,11 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、MariaDB コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 73f3caf77bcf1f0e77f7f97ef747d4a8f35033e5
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 3cc8ba29629c36cc9fcb295b1cdd348fbcae1584
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886642"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732904"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
@@ -68,8 +68,8 @@ ms.locfileid: "107886642"
 Premium Functions サイトでは、正常性チェックを有効にしないでください。 Premium Functions の迅速なスケーリングにより、正常性チェックの要求によって HTTP トラフィックが不必要に変動する可能性があります。 Premium Functions には、スケーリングの決定を通知するために使用される、独自の内部正常性プローブが用意されています。
 
 ## <a name="next-steps"></a>次のステップ
-- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)
 
 [1]: ./media/app-service-monitor-instances-health-check/health-check-success-diagram.png
 [2]: ./media/app-service-monitor-instances-health-check/health-check-failure-diagram.png

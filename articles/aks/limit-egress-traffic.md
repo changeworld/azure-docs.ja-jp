@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 01/12/2021
 author: palma21
-ms.openlocfilehash: 4c14d77ba87ab4bd3f4465d915b911a1d44aefab
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: bf006c6ade92cc2d1286dc1173d09efea0294f50
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166453"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754471"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -209,9 +209,7 @@ Azure Policy が有効になっている AKS クラスターの場合、次の F
 |-----------------------------------------------|-----------|----------|
 | **`data.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、Kubernetes ポリシーをプルし、クラスターのコンプライアンス状態をポリシー サービスにレポートするために使用されます。 |
 | **`store.policy.core.windows.net`** | **`HTTPS:443`** | このアドレスは、組み込みポリシーの Gatekeeper アーティファクトをプルするために使用されます。 |
-| **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | このアドレスは、Azure Policy の適切な操作のために使用されます。  |
-| **`raw.githubusercontent.com`**               | **`HTTPS:443`** | このアドレスは、Azure Policy の正しい動作のために組み込みポリシーを GitHub から取得するために使用されます。 |
-| **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
+| **`dc.services.visualstudio.com`** | **`HTTPS:443`** | テレメトリ データを Application Insights エンドポイントに送信するAzure Policy アドオン。 |
 
 #### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure China 21Vianet に必要な FQDN とアプリケーションの規則
 

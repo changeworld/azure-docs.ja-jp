@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: f1acd7b309a31dfe437f1f82cb9bbf73f4a5cca5
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9edbcf30b7108c34fedddba365c20922a211777d
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061079"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485389"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -38,7 +38,7 @@ ms.locfileid: "106061079"
 
 ### <a name="cause-1"></a>原因 1
 
-[IoT Hub に接続するために使用される SAS トークン](iot-hub-devguide-security.md#security-tokens)が期限切れになりました。その結果、IoT Hub によってデバイスが切断されました。 デバイスによってトークンが更新されると、接続は再確立されます。 たとえば、[C SDK の場合、SAS トークンは既定で 1 時間ごとに期限切れになります](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)。その結果、定期的に切断される可能性があります。
+[IoT Hub に接続するために使用される SAS トークン](iot-hub-dev-guide-sas.md#security-tokens)が期限切れになりました。その結果、IoT Hub によってデバイスが切断されました。 デバイスによってトークンが更新されると、接続は再確立されます。 たとえば、[C SDK の場合、SAS トークンは既定で 1 時間ごとに期限切れになります](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-authentication)。その結果、定期的に切断される可能性があります。
 
 詳細については、[401003 IoTHubUnauthorized の原因](iot-hub-troubleshoot-error-401003-iothubunauthorized.md#cause-1)に関する記事を参照してください。
 

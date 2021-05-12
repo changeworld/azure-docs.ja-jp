@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: d9c1828732b9a4e0e85c3af2263f097edd54437d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c949579d23e3acfbecde3111534209151ed61ac
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91332850"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314555"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>パブリック エンドポイントで安全に Azure SQL Managed Instance を使用する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL Managed Instance は、[パブリック エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)経由でユーザーに接続性を提供できます。 この記事では、この構成をより安全にする方法について説明します。
+Azure SQL Managed Instance は、[パブリック エンドポイント](public-endpoint-configure.md)経由でユーザーに接続性を提供できます。 この記事では、この構成をより安全にする方法について説明します。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -44,7 +44,7 @@ Azure SQL Managed Instance では、その仮想ネットワーク内から接�
 
 ![インバウンド接続とアウトバウンド接続をロック ダウンするためのセキュリティ構成](./media/public-endpoint-overview/managed-instance-vnet.png)
 
-マネージド インスタンスには、[専用パブリック エンドポイント アドレス](management-endpoint-find-ip-address.md)があります。 クライアント側の送信ファイアウォールとネットワーク セキュリティ グループの規則で、このパブリック エンドポイント IP アドレスを、送信接続を制限するように設定します。
+マネージド インスタンスには、顧客専用のパブリック エンドポイント アドレスがあります。 このエンドポイントは、[管理エンドポイント](management-endpoint-find-ip-address.md)と IP を共有しますが、別のポートを使用します。 クライアント側の送信ファイアウォールとネットワーク セキュリティ グループの規則で、このパブリック エンドポイント IP アドレスを、送信接続を制限するように設定します。
 
 マネージド インスタンスへのトラフィックが、信頼できる送信元から送られてくるようにするには、既知の IP アドレスを持つ送信元と接続することをお勧めします。 ネットワーク セキュリティ グループを使用して、ポート 3342 でのマネージド インスタンス パブリック エンドポイントへのアクセスを制限します。
 

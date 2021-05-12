@@ -4,12 +4,12 @@ description: プログラミング言語とバインドを問わず、Azure で�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 7030ca1c1950f7c06580ce7417a4429fbe330c4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a526edfccda1e4e0e60646989a59d23ad19501ab
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614821"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227112"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -121,6 +121,7 @@ ID ベースの接続は、次のトリガーおよびバインド拡張機能�
 | Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | いいえ                                    |
 | Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | いいえ                                    |
 | Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | いいえ                                    |
+| Azure Service Bus    | [バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | いいえ                                    |
 
 > [!NOTE]
 > 主な動作に対して Functions ランタイムによって使用されるストレージ接続では、ID ベースの接続のサポートはまだ利用できません。 これは、`AzureWebJobsStorage` 設定が接続文字列である必要があることを意味します。
@@ -132,7 +133,7 @@ Azure サービスに対する ID ベースの接続では、次のプロパテ�
 | プロパティ    | 拡張機能に必要 | 環境変数 | 説明 |
 |---|---|---|---|
 | サービス URI | Azure Blob、Azure キュー | `<CONNECTION_NAME_PREFIX>__serviceUri` |  接続先サービスのデータ プレーン URI。 |
-| 完全修飾名前空間 | Event Hubs | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全修飾イベント ハブの名前空間。 |
+| 完全修飾名前空間 | Event Hubs、Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Event Hubs と Service Bus の完全修飾名前空間。 |
 
 特定の接続の種類に対して、追加のオプションがサポートされている場合があります。 接続を確立するコンポーネントのドキュメントを参照してください。
 
@@ -178,6 +179,15 @@ Azure Blob との ID ベースの接続に必要な `local.settings.json` プロ
 #### <a name="grant-permission-to-the-identity"></a>ID にアクセス許可を付与する
 
 使用されている ID が何であれ、目的のアクションを実行するためのアクセス許可が必要です。 これは通常、接続先のサービスに応じて、Azure RBAC でロールを割り当てるか、アクセスポリシーで ID を指定することによって行われます。 必要なアクセス許可とその設定方法については、各サービスのドキュメントを参照してください。
+
+次のロールでは、通常の操作で拡張機能別に必要なプライマリ アクセス許可がすべて与えられます。
+
+| サービス     | 組み込みロールの例 |
+|-------------|------------------------|
+| Azure BLOB  | [Storage Blob Data Reader](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)、[Storage Blob Data Owner](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)                 |
+| Azure キュー | [Storage Queue Data Reader](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[Storage Queue Data Message Processor](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[Storage Queue Data Message Sender](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[Storage Queue Data Contributor](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
+| Event Hubs   |    [Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure Event Hubs Data Sender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure Event Hubs Data Owner](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
+| Service Bus | [Azure Service Bus Data Receiver](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure Service Bus Data Sender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure Service Bus Data Owner](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
 
 > [!IMPORTANT]
 > すべてのコンテキストに必要ではない一部のアクセス許可がサービスによって公開される場合があります。 可能であれば、**最小限の特権の原則** に従い、必要な特権だけを ID に付与します。 たとえば、アプリが BLOB からの読み取りのみを必要とする場合、[ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)では読み取り操作に対して過剰なアクセス許可が含まれるため、[ストレージ BLOB データ閲覧者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)ロールを使用します。

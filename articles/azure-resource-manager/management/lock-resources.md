@@ -2,14 +2,14 @@
 title: 変更されないようにリソースをロックする
 description: Azure リソースの更新または削除をユーザーに禁止するには、すべてのユーザーとロールを対象にロックを適用します。
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 71637318a60e66bf5000de2f564d740cc101cc60
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/28/2021
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 52e61dd1c84e0f5fa6267e687ab55ce386d5767b
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768725"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108314807"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -47,6 +47,8 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 * 削除不可ロックを **リソース グループ** に設定すると、Azure Resource Manager が履歴内の [デプロイを自動的に削除](../templates/deployment-history-deletions.md)できなくなります。 履歴内のデプロイが 800 に達した場合、デプロイは失敗します。
 
 * **Azure Backup サービス** によって作成された **リソース グループ** に削除不可のロックを設定した場合、バックアップは失敗するようになります。 このサービスでは、最大 18 個の復元ポイントがサポートされています。 ロックされている場合、バックアップ サービスは復元ポイントをクリーンアップできません。 詳細については、「[よく寄せられる質問 - Azure VM のバックアップ](../../backup/backup-azure-vm-backup-faq.yml)」を参照してください。
+
+* **リソース グループ** で削除不可のロックを使用すると、**Azure Machine Learning** によって [Azure Machine Learning コンピューティング クラスター](../../machine-learning/concept-compute-target.md#azure-machine-learning-compute-managed)が自動スケールされ、使用されていないノードが削除されるのを防ぐことができます。
 
 * **サブスクリプション** に読み取り専用ロックを設定すると、**Azure Advisor** が正常に機能しなくなります。 Advisor は、クエリの結果を格納できません。
 

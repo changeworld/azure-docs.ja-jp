@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/27/2021
+ms.date: 05/06/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 660d76d03db3b3d918ad616da9d6ab7b4205860d
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6c7d617473f684317e5bb954c8ac82db24d4e4eb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186768"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481249"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してオンプレミス API に安全にアクセスする
 
@@ -110,7 +110,7 @@ AppProxyNativeAppSample ネイティブ アプリを登録するには、次の�
 
    1. **[名前]** に *AppProxyNativeAppSample* と入力します。
 
-   1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+   1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウント]** を選択します。
 
    1. **[リダイレクト URL]** で、ドロップダウンから **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、 *https://login.microsoftonline.com/common/oauth2/nativeclient* と入力します。
 

@@ -1,18 +1,19 @@
 ---
-title: 'VPN Gateway: P2S VPN 接続用の Azure AD テナント:Azure AD 認証'
+title: 'P2S VPN 接続用の Azure AD テナントを作成する: Azure AD 認証'
+titleSuffix: Azure VPN Gateway
 description: P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0d3aa376f11ca6b05a8fcbd10562ff2fed83258
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390166"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228660"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 

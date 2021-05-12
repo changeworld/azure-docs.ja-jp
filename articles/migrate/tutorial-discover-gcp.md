@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: c5d57705ca0d49db1fb1d67e20beb609f21b1d5b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5a581652bfd084118b47b5693a2b2ca9e92feda9
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771432"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751187"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate の検出および評価を使用して Google Cloud Platform (GCP) インスタンスを検出する
 
@@ -123,7 +123,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Migrate アプライアンスは、次の操作を行うために Azure Migrate の検出および評価によって使用される軽量アプライアンスです。
 
 * オンプレミスのサーバーを検出する。
-* 検出されたサーバーのメタデータとパフォーマンス データを、Azure Migrate の検出および評価に送信する。
+* 検出されたサーバーのメタデータとパフォーマンス データを、Azure Migrate: Discovery and Assessment に送信する。
 
 Azure Migrate アプライアンスに関する[詳細を確認](migrate-appliance.md)します。
 
@@ -176,7 +176,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 - エージェントと、GCP サーバーの検出と評価のための Web アプリをインストールする。
 - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
-- IIS 書き込み可能モジュールをダウンロードしてインストールする。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
+- IIS 書き込み可能モジュールをダウンロードしてインストールする。
 - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
 - パスに次のファイルを作成する。
     - **構成ファイル**: %Programdata%\Microsoft Azure\Config
@@ -243,7 +243,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 1. **[ステップ 1:Provide credentials for discovery of Windows and Linux physical or virtual servers]\(Windows および Linux 物理サーバーまたは仮想サーバーを検出するための資格情報を指定する\)** で、 **[資格情報の追加]** をクリックします。
 1. Windows サーバーの場合、ソースの種類として **[Windows サーバー]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
-1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux Server (Password-based)]\(Linux サーバー (パスワードベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
+1. Linux サーバーでパスワードベースの認証を使用している場合は、ソースの種類として **[Linux サーバー (パスワードベース)]** を選択し、資格情報のフレンドリ名を指定して、ユーザー名とパスワードを追加します。 **[Save]** をクリックします。
 1. Linux サーバーで SSH キーベースの認証を使用している場合は、ソースの種類として **[Linux Server (SSH key-based)]\(Linux サーバー (SSH キーベース)\)** を選択し、資格情報のフレンドリ名を指定して、ユーザー名を追加します。SSH 秘密キー ファイルを参照して選択します。 **[Save]** をクリックします。
 
     - Azure Migrate では、RSA、DSA、ECDSA、ed25519 の各アルゴリズムを使用して、ssh-keygen コマンドによって生成された SSH 秘密キーがサポートされています。
@@ -259,7 +259,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 4. 一度に **1 つの項目を追加** するか、一括で **複数の項目を追加** することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
 
     - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **IP アドレスまたは FQDN** を追加して、 **[保存]** をクリックします。
-    - **[Add multiple items]\(複数の項目を追加\)** を選択した場合は、テキスト ボックスでサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 追加したレコードを確認し、 **[保存]** をクリックします。
+    - **[複数の項目を追加]** を選択した場合は、テキスト ボックスでサーバーの **[IP アドレスまたは FQDN]** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 追加したレコードを確認し、 **[保存]** をクリックします。
     - **[Import CSV]\(CSV のインポート\)** _(既定で選択)_ を選択した場合は、CSV テンプレート ファイルをダウンロードし、そのファイルにサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** および資格情報のフレンドリ名を入力します。 その後、ファイルをアプライアンスにインポートし、ファイル内のレコードを **[Verify]\(検証\)** して、 **[保存]** をクリックします。
 
 5. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。

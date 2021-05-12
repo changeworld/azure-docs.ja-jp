@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway メトリックを表示する
-description: VPN Gateway メトリックを表示する手順
+description: VPN Gateway メトリックを表示する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: alzam
-ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cff09df246bf83618b5bc7e2593657c9b30094c7
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89443179"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289500"
 ---
 # <a name="view-vpn-gateway-metrics"></a>VPN Gateway メトリックを表示する
 

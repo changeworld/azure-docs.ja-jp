@@ -7,12 +7,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 889df16191104ca5b335d067abe0f3d1311c4603
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 095e746e3cb40767fe1afb9c6fbd75cd2c1450d4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450108"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736801"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -527,7 +527,7 @@ json ファイルは次のようになります。
 - `<filename>` は、対象のファイルの名前に置き換えます。
 - ファイルが保存されているフォルダー以外のパスからコマンドを実行する場合は、ファイルのフォルダー パスをコマンドに含めます。
 
-```bash
+```azurecli-interactive
 az role definition create --role-definition "<filename>.json"
 ```
 

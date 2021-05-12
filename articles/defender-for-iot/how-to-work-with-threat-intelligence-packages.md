@@ -3,12 +3,12 @@ title: 脅威インテリジェンス データを更新する
 description: 脅威インテリジェンス データ パッケージは、新しい Defender for IoT バージョンごとに、またはリリース間で必要に応じて提供されます。
 ms.date: 04/17/2021
 ms.topic: how-to
-ms.openlocfilehash: bb38d0a2486bda336d6881ec6f4c5d680906c973
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f5282002f406c62341f5d104c14aa1cbe9ad32dd
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750466"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208889"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>脅威インテリジェンスの調査とパッケージ #
 ## <a name="overview"></a>概要 ##
@@ -32,7 +32,9 @@ Microsoft のセキュリティ チームは、独自の ICS 脅威インテリ�
 
 ## <a name="when-are-packages-delivered"></a>パッケージが配信されるタイミング ##
 
-脅威インテリジェンス パッケージは、約 1 か月に 1 回、または必要に応じてより頻繁に提供されます。 新しいパッケージに関するお知らせは、 https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT から確認できます。 
+脅威インテリジェンス パッケージは、約 1 か月に 1 回、または必要に応じてより頻繁に提供されます。 新しいパッケージに関するお知らせは、 https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT から確認できます。
+
+Defender for IoT ポータルの **[更新]** ページの **[Threat intelligence update]\(脅威インテリジェンス更新\)** セクションから配信される最新パッケージも確認できます。  
 
 ## <a name="update-threat-intelligence-packages-to-your-sensors"></a>ご自分のセンサーの脅威インテリジェンス パッケージを更新する ##
 

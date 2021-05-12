@@ -1,15 +1,15 @@
 ---
 title: New Zealand ISM Restricted に関する規制コンプライアンスの詳細
 description: New Zealand ISM Restricted コンプライアンス規制の組み込みイニシアティブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f7572f59ead4c14c3bb64da4f77fc7faa35947b0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 566bcde7a5b5ba5f167e63f62749049d2630932c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179908"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743527"
 ---
 # <a name="details-of-the-new-zealand-ism-restricted-regulatory-compliance-built-in-initiative"></a>New Zealand ISM Restricted コンプライアンス規制の組み込みイニシアティブの詳細
 

@@ -3,12 +3,12 @@ title: センサーとオンプレミスの管理コンソールのトラブル�
 description: センサーとオンプレミスの管理コンソールをトラブルシューティングして、発生している可能性のある問題を排除します。
 ms.date: 03/14/2021
 ms.topic: article
-ms.openlocfilehash: 83ffec959a5b38e9f4fd4d7d0dcfd3b1b9faa096
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e20c11e869ebeea0b4fc7f917dd8cebba7a69c5c
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785446"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108209051"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>センサーとオンプレミスの管理コンソールのトラブルシューティング
 
@@ -127,7 +127,7 @@ ms.locfileid: "104785446"
 
 :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/broadcasting-devices.png" alt-text="ブロードキャスト デバイスを表示します。":::
 
-このような場合は、ブロードキャスト トラフィックのみを表示できることを検証する必要があります。 次に、ユニキャスト トラフィックを表示できるように SPAN ポート構成を修正するようネットワーク エンジニアに依頼します。
+このような場合、ブロードキャスト トラフィックだけが表示されていることを確認し、ユニキャスト トラフィックも表示されるよう、SPAN ポート構成の修正をネットワーク エンジニアに依頼してください。
 
 ブロードキャスト トラフィックのみが表示されていることを確認するには:
 

@@ -3,16 +3,16 @@ title: Dynamics でデータをコピーする (Common Data Service)
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service (Microsoft Dataverse)) からサポート対象のシンク データ ストアに、またはサポート対象のソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c949ed8d0ecb35df0a2c31bb90514c18cf3a3755
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565981"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484327"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -63,7 +63,7 @@ Dynamics のバージョンおよび製品でサポートされている認証�
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Dynamics に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

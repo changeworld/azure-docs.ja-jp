@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/13/2020
-ms.openlocfilehash: 08b22af8743082bab1d547205e51917cb9d92a11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 66ed42b79e4f6b5bac7fcb76b95a04257a437daf
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695772"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733156"
 ---
 # <a name="supported-data-stores"></a>サポートされているデータ ストア
 
@@ -36,6 +36,34 @@ Purview では、次のデータ ストアがサポートされています。 �
 |Power BI|[Power BI](register-scan-power-bi-tenant.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 |サービスとアプリ|[SAP ECC](register-scan-sapecc-source.md)|はい| はい| いいえ| はい| はい| はい|
 ||[SAP S4HANA](register-scan-saps4hana-source.md)|はい| はい| いいえ| はい| はい| はい|
+
+## <a name="scan-regions"></a>スキャンのリージョン
+Purview スキャナーが実行されるすべての Azure データ ソース (データセンター) リージョンの一覧を次に示します。 Azure データ ソースがこの一覧にないリージョンにある場合、スキャナーは Purview インスタンスのリージョンで実行されます。
+ 
+### <a name="purview-scanner-regions"></a>Purview スキャナーのリージョン
+
+- EastUs
+- EastUs2 
+- SouthCentralUS
+- WestUs
+- WestUs2
+- SoutheastAsia
+- 西ヨーロッパ
+- NorthEurope
+- UkSouth
+- AustraliaEast
+- CanadaCentral
+- BrazilSouth
+- CentralIndia
+- JapanEast
+- SouthAfricaNorth
+- FranceCentral
+- KoreaCentral
+- CentralUS
+- NorthCentralUS
+- EastAsia
+- WestCentralUS
+- AustraliaSoutheast
 
 ## <a name="next-steps"></a>次のステップ
 

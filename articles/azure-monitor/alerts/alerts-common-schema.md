@@ -3,12 +3,12 @@ title: Azure Monitor アラートの共通アラート スキーマ
 description: 共通アラート スキーマの理解、使用すべき理由と有効化の方法
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 39ea469b4109f4715db0d0a73ad069121058a46f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea05c010ff9ee732302054a07c8157e02e3e0034
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038259"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739801"
 ---
 # <a name="common-alert-schema"></a>共通アラート スキーマ
 
@@ -32,7 +32,6 @@ ms.locfileid: "102038259"
 
 | アクション | 機能強化|
 |:---|:---|
-| sms | すべてのアラートの種類における一貫性のある SMS テンプレート。 |
 | Email | 一貫性のある詳細な電子メール テンプレート。これにより、一目で問題を診断できます。 ポータルおよび影響を受けるリソース上のアラート インスタンスへの埋め込みディープ リンクにより、即座に修復プロセスに移動できます。 |
 | Webhook、Logic App、Azure Function、Automation Runbook | すべてのアラートの種類における一貫性のある JSON 構造により、異なるアラートの種類にわたって簡単に統合を構築できます。 |
 

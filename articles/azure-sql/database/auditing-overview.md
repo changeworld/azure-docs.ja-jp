@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/17/2021
+ms.date: 05/02/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: ee8451365dd6a5d4e8e4b155c081e24e959730af
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 49cd718bc0beb5128980e5e25a01cef94e966221
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128471"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754021"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -290,9 +290,9 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 
 以下の例で確認できるように、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) テンプレートを使用して Azure SQL Database の監査を管理できます。
 
-- [Azure BLOB ストレージ アカウントに監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Log Analytics に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
-- [Event Hubs に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+- [Azure BLOB ストレージ アカウントに監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
+- [Log Analytics に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-oms/)
+- [Event Hubs に監査ログを書き込むように監査機能を有効にした Azure SQL Database をデプロイする](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-eventhub/)
 
 > [!NOTE]
 > リンクされたサンプルは、外部の公開リポジトリにあり、保証なしに "手を加えず" に提供され、Microsoft サポート プログラム/サービスのサポート対象ではなありません。

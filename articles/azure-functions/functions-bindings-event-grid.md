@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bbe52f6902d1c0803727fe325b51a238e46c0ff1
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92104548"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228552"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions における Azure Event Grid のバインド
 
@@ -45,6 +45,19 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 [core tools]: ./functions-run-local.md
 [拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid
+[拡張機能の更新]: ./functions-bindings-register.md
+[Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
+#### <a name="event-grid-extension-3x-and-higher"></a>Event Grid 拡張機能 3.x 以降
+
+Event Grid のバインド拡張機能の新しいバージョンは、[プレビュー NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.1)として入手できます。 .NET アプリケーションの場合、バインドできる型が変更されます。これにより、`Microsoft.Azure.EventGrid.Models` の型が [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) の新しい型に置き換えられます。
+
+> [!NOTE]
+> このプレビュー パッケージは拡張機能バンドルに含まれていないため、手動でインストールする必要があります。 .NET アプリの場合は、パッケージへの参照を追加します。 その他のすべてのアプリの種類については、[拡張機能の更新]に関する記事を参照してください。
+
+[core tools]: ./functions-run-local.md
+[拡張機能バンドル]: ./functions-bindings-register.md#extension-bundles
+[NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
 [拡張機能の更新]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory UI を使用して Azure データ ファクトリを作成する
 description: Azure Blob Storage 内のある場所から別の場所へデータをコピーするパイプラインを使用して、データ ファクトリを作成します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: quickstart
 ms.date: 12/14/2020
-ms.author: jingwang
-ms.openlocfilehash: 8b33005b7f0d08e6da963457813b012199d89f5f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: 888350dacd2437f585c6571b991ae06eed2d32ab
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655102"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482167"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -26,7 +26,7 @@ ms.locfileid: "104655102"
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](introduction.md)」を参照してください。 
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
+[!INCLUDE [data-factory-quickstart-prerequisites](includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="video"></a>ビデオ 
 このビデオを視聴すると、Data Factory UI を理解できます。 

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して HTTP ソースからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HTTP ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: 247bec30e9933dfd75b7c31cbce15ff043959243
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: c04bf94b26535ec7791bfd0c2354432aaa6fc98e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588887"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485029"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -49,11 +49,11 @@ HTTP ソースから、サポートされている任意のシンク データ �
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、HTTP コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
 
@@ -197,7 +197,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 HTTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -243,7 +243,7 @@ HTTP では、形式ベースのデータセットの `location` 設定におい
 
 ### <a name="http-as-source"></a>ソースとしての HTTP
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 HTTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 

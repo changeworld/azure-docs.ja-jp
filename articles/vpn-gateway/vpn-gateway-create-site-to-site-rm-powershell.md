@@ -1,19 +1,19 @@
 ---
-title: オンプレミス ネットワークから Azure Virtual Network への接続:サイト間 VPN:PowerShell
-description: PowerShell を使用し、オンプレミスのネットワークから Azure 仮想ネットワークへのパブリック インターネット経由の IPsec サイト間 VPN Gateway 接続を作成します。
+title: 'オンプレミス ネットワークから Azure VNet への接続: サイト間 VPN: PowerShell'
+description: PowerShell を使用し、オンプレミス ネットワークと Azure VNet の間でサイト間 VPN Gateway 接続を作成する方法について説明します。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1488aa6f48c05a8c2dfa2c6162c1bd1df35d4f58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f9b408cd6f6fbeb9123f8e2dc506b14fe0427a1
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380496"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229704"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>PowerShell を使用してサイト間 VPN 接続を備えた VNet を作成する
 

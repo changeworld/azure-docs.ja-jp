@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して OData ソースからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/30/2021
-ms.author: jingwang
-ms.openlocfilehash: 9dd86b4982edf5d206e64431a5e1458c4b848e9e
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.author: jianleishen
+ms.openlocfilehash: 91d1206bcaf80d054c6adde1ee5a23456083b97b
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968497"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485191"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,11 +38,11 @@ OData ストアから、サポートされている任意のシンク データ 
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以降のセクションでは、OData コネクタに固有の Data Factory エンティティを定義するために使用できるプロパティについて詳細に説明します。
 

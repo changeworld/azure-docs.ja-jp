@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5487e51ad73ab903e7b61de266e2c28d282a56c1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5b17df9e074375b8cdbe769c840aaf030eaff8af
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568660"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317435"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>エージェントレスの VMware VM 移行におけるレプリケーションの問題のトラブルシューティング
 
@@ -240,7 +240,7 @@ Azure にデータをレプリケートしようとしているコンポーネ�
 - VM のレプリケーションをトリガーしたときに [はい] を選択して [レプリケーションの自動修復] を選択した場合は、ツールによって修復が試行されます。 VM を右クリックし、[レプリケーションの修復] を選択します。
 - [レプリケーションの自動修復] を選択しなかった場合、または上記の手順が機能しなかった場合は、仮想マシンのレプリケーションを停止し、仮想マシン上の[変更されたブロック追跡をリセット](https://go.microsoft.com/fwlink/?linkid=2139203)して、レプリケーションを再構成します。
 
-VMware vSphere 5.5 で仮想マシンの CBT のリセットが発生する可能性のある既知の問題の 1 つについて、「[VMware KB 2048201: Changed Block Tracking](https://go.microsoft.com/fwlink/?linkid=2138888) が vSphere 5.x でのストレージ vMotion 操作の後で変更ブロック追跡がリセットされる」で説明されています。 VMware vSphere 5.5 を使用している場合は、この KB で説明されている更新プログラムを適用してください。
+VMware vSphere 5.5 で仮想マシンの CBT のリセットが発生する可能性のある既知の問題の 1 つについて、「[VMware KB 1020128: Changed Block Tracking](https://kb.vmware.com/s/article/1020128) が vSphere 5.x でのストレージ vMotion 操作の後で変更ブロック追跡がリセットされる」で説明されています。 VMware vSphere 5.5 を使用している場合は、この KB で説明されている更新プログラムを適用してください。
 
 または、VMware PowerCLI を使用して、仮想マシンで VMware の変更ブロック追跡をリセットすることもできます。
 

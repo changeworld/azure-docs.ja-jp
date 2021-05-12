@@ -3,12 +3,12 @@ title: Cloud Shell を使用したテンプレートのデプロイ
 description: Azure Resource Manager と Azure Cloud Shell を使用してリソースを Azure にデプロイします。 リソースは Azure Resource Manager テンプレート (ARM テンプレート) で定義されます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7697eb0a6786a07546bb0de679df69d64da30b1b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028609"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742348"
 ---
 # <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Azure Cloud Shell から ARM テンプレートをデプロイする
 
@@ -33,7 +33,7 @@ ms.locfileid: "98028609"
    az deployment group create \
      --name ExampleDeployment \
      --resource-group ExampleGroup \
-     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+     --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json" \
      --parameters storageAccountType=Standard_GRS
    ```
 
@@ -44,7 +44,7 @@ ms.locfileid: "98028609"
    New-AzResourceGroupDeployment `
      -DeploymentName ExampleDeployment `
      -ResourceGroupName ExampleGroup `
-     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
+     -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
      -storageAccountType Standard_GRS
    ```
 

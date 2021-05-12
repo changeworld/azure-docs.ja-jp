@@ -5,18 +5,18 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: ce6a33b569a86cd539de99264dd8e7f583559a6f
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 8ff365200828b786b4cf770508e5a811983abd58
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018333"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732742"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用を開始する
 
 この記事では、Azure Automation State Configuration を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する手順について説明します。 State Configuration の概要については、[State Configuration の概要](automation-dsc-overview.md)に関するページを参照してください。 Desired State Configuration (DSC) のドキュメントについては、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」を参照してください。
 
-この記事で説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、[Azure Automation マネージド ノード テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration)を使用できます。 このテンプレートを使用すると、State Configuration (DSC) で管理される Azure VM を含む、完全な State Configuration (DSC) 環境が設定されます。
+この記事で説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、[Azure Automation マネージド ノード テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration)を使用できます。 このテンプレートを使用すると、State Configuration (DSC) で管理される Azure VM を含む、完全な State Configuration (DSC) 環境が設定されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -216,7 +216,7 @@ State Configuration でマネージド ノードの整合性チェックが実�
 
 ## <a name="unregister-a-node"></a>ノードを登録解除する
 
-ノードを State Configuration で管理する必要がなくなった場合は、ノードの登録を解除できます。 「[Automation の状態の構成から構成とノードを削除する方法](./how-to/remove-desired-state-configuration-package.md)」を参照してください。
+ノードを State Configuration で管理する必要がなくなった場合は、ノードの登録を解除できます。 「[Automation の状態の構成から構成とノードを削除する方法](./state-configuration/remove-node-and-configuration-package.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

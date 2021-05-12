@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/12/2021
 ms.author: apimpm
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 5808cda95cdf9ce6477f47fcdbb8a0421d92e72a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 39e4661cb4ac664580539aca061fed4eb0f411fa
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817131"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737512"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -51,7 +51,7 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 1. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
 
     :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="Azure portal で仮想ネットワークを選択します。":::
-    
+
 1. 目的のアクセスの種類を選択します。
 
     * **Off**:これは既定値です。 API Management は仮想ネットワークにデプロイされません。
@@ -71,7 +71,7 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
     > [!IMPORTANT]
     > * クライアントで **API バージョン 2020-12-01 以前** を使用して Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、Azure API Management インスタンス以外のリソースを含まない専用サブネット内にサービスが存在する必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
-    > * クライアントで **API バージョン 2021-01-01-preview 以降** を使用して Azure API Management インスタンスを仮想ネットワークにデプロイする場合は、Resource Manager 仮想ネットワークのみがサポートされます。 また、使用するサブネットには他のリソースを含めることもできます。 API Management インスタンス専用のサブネットを使用する必要はありません。 
+    > * クライアントで **API バージョン 2021-01-01-preview 以降** を使用して Azure API Management インスタンスを仮想ネットワークにデプロイする場合は、Resource Manager 仮想ネットワークのみがサポートされます。 また、使用するサブネットには他のリソースを含めることもできます。 API Management インスタンス専用のサブネットを使用する必要はありません。
 
 1. **[適用]** を選択します。 API Management インスタンスの **[仮想ネットワーク]** ページが、新しい仮想ネットワークとサブネットの選択によって更新されます。
 
@@ -99,9 +99,9 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 ### <a name="api-version-2020-12-01"></a>API バージョン 2020-12-01
 
-* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-external-vnet)
-    
-     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
+* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.apimanagement/api-management-create-with-external-vnet)
+
+     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.apimanagement%2Fapi-management-create-with-external-vnet%2Fazuredeploy.json)
 
 * Azure PowerShell コマンドレット - 仮想ネットワークで API Management インスタンスを[作成](/powershell/module/az.apimanagement/new-azapimanagement)または[更新](/powershell/module/az.apimanagement/update-azapimanagementregion)する
 
@@ -170,12 +170,12 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 + **Azure Load Balancer**:サービスタグ `AZURE_LOAD_BALANCER` からの受信要求を許可することは、`Developer` SKU の要件ではありません (背後に 1 つのコンピューティング ユニットをデプロイするだけのため)。 ただし、Load Balancer からの正常性プローブのエラーでデプロイに失敗したために、`Premium` のような上位の SKU にスケーリングするときは、[168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) からの受信が重要になります。
 
-+ **Application Insights**:API Management で [Azure Application Insights](api-management-howto-app-insights.md) 監視が有効になっている場合は、Virtual Network から [テレメトリ エンドポイント](../azure-monitor/app/ip-addresses.md#outgoing-ports)への送信接続を許可する必要があります。 
++ **Application Insights**:API Management で [Azure Application Insights](api-management-howto-app-insights.md) 監視が有効になっている場合は、Virtual Network から [テレメトリ エンドポイント](../azure-monitor/app/ip-addresses.md#outgoing-ports)への送信接続を許可する必要があります。
 
 + **Express Route またはネットワーク仮想アプライアンスを使用したオンプレミスのファイアウォールへのトラフィックの強制トンネリング**: 顧客の一般的な構成では、API Management の委任されたサブネットからのすべてのトラフィックを、オンプレミスのファイアウォールまたはネットワーク仮想アプライアンスに強制的に流す、独自の既定のルート (0.0.0.0/0) が定義されています。 このトラフィック フローでは、Azure API Management を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。 これを解決するには、いくつかのことを実行する必要があります。
 
   * API Management サービスがデプロイされているサブネット上でサービス エンドポイントを有効にします。 Azure SQL、Azure Storage、Azure EventHub、Azure ServiceBus の[サービス エンドポイント][ServiceEndpoints]を有効にする必要があります。 これらのサービスに対して、API Management の委任されたサブネットからエンドポイントを直接有効にすると、サービス トラフィックの最適なルーティングを提供する Microsoft Azure バックボーン ネットワークを使用できるようになります。 トンネリングが強制された API Management でサービス エンドポイントを使用すると、上記の Azure サービス のトラフィックが強制的にトンネリングされることはありません。 API Management サービスの他の 依存関係トラフィックは強制的にトンネリングされ、失われることはありません。依存関係トラフィックが失われた場合、API Management サービスが適切に機能しなくなります。
-    
+
   * インターネットから API Management サービスの管理エンドポイントへのすべてのコントロール プレーン トラフィックは、API Management によってホストされている受信 IP の特定のセットを使用してルーティングされます。 トラフィックが強制的にトンネリングされると、応答がこれらの受信送信元 IP に対称的にマップされなくなります。 この制限を克服するには、次のユーザー定義ルート ([UDR][UDRs]) を追加し、これらのホスト ルートの宛先を "Internet" に設定することによってトラフィックを Azure に誘導する必要があります。 コントロール プレーン トラフィックの受信 IP セットは、「[コントロール プレーンの IP アドレス](#control-plane-ips)」に記載されています
 
   * 強制的にトンネリングされる、API Management サービスの他の依存関係については、ホスト名を解決し、エンドポイントに到達するための方法が必要です。 次のような方法があります。

@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 057aba3e49d32694563f412101be499342f2aad0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09a23e9e1e4508b10003f95f6e8c3502ea214d64
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550605"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733769"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -82,10 +82,6 @@ VM 内で非暗号化されたディスクが、ポータルで暗号化済み�
 PowerShell で Azure Disk Encryption を無効にするには、最初に [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)、次に [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) を使用します。 暗号化を無効にする前に Remove-AzVMDiskEncryptionExtension を実行すると、失敗します。
 
 CLI で Azure Disk Encryption を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption) を使用します。 
-
-## 
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

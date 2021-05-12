@@ -3,16 +3,16 @@ title: Purview を使用した ADF でのデータの検出と探索
 description: Purview を使用した Azure Data Factory でのデータの検出と探索の方法について説明します
 ms.service: data-factory
 ms.topic: conceptual
-author: lrtoyou1223
-ms.author: lle
+author: linda33wj
+ms.author: jingwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 031e7ceee739ffd666ad367bd6778865a297a25d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f37d2461a0e9c2db0cb3c7aa911dfb0ff5e049af
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386273"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486487"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Purview を使用した ADF でのデータの検出と探索
 

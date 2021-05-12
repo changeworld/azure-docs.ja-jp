@@ -1,22 +1,23 @@
 ---
-title: Azure IoT Hub クォータと調整について | Microsoft Docs
+title: コンテンツのパフォーマンス http://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling
 description: 開発者ガイド - IoT Hub に適用されるクォータと予想される調整動作の説明。
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/05/2021
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 394e4da38f599b9662c8a764cac2a3abbbcad04b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+- ms.custom:contperf-fy21q4
+ms.openlocfilehash: a18ca18a6e9f7e26c6189cf66322b16f36a42ecb
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147303"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277806"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -79,7 +80,7 @@ IoT プラグ アンド プレイ デバイスでは、インターフェイス�
 
 ### <a name="traffic-shaping"></a>トラフィック シェイプ
 
-トラフィックのバーストに対応できるように、IoT Hub では限られた期間だけスロットルを上回る要求を受け入れます。 これらの要求のうち最初のいくつかは即座に処理されます。 ただし、要求の数が引き続きスロットルに違反する場合、IoT Hub は要求をキューに配置し始めて、制限された速度で処理を行います。 この効果は "*トラフィック シェイプ*" と呼ばれます。 さらに、このキューのサイズも制限されています。 スロットル違反が続くと、最後にはキューがいっぱいになり、IoT Hub は `429 ThrottlingException` で要求を拒否し始めます。
+トラフィックのバーストに対応できるように、IoT Hub では限られた期間だけスロットルを上回る要求を受け入れます。 これらの要求のうち最初のいくつかは即座に処理されます。 ただし、要求の数が引き続きスロットルに違反している場合は、IoT Hub によって要求がキューに入れられ、制限された速度で要求が処理されます。 この効果は "*トラフィック シェイプ*" と呼ばれます。 さらに、このキューのサイズも制限されています。 スロットル違反が続くと、最後にはキューがいっぱいになり、IoT Hub は `429 ThrottlingException` で要求を拒否し始めます。
 
 たとえば、シミュレートされたデバイスを使用して、S1 IoT Hub (1 秒あたり 100 個の D2C 送信という制限があります) に 1 秒あたり 200 個の device-to-cloud メッセージを送信するとします。 最初の 1、2 分の間、メッセージは即座に処理されます。 ただし、デバイスが引き続きスロットルの制限を超えるメッセージを送信するため、IoT Hub は 1 秒あたり 100 個のみのメッセージの処理を開始し、残りをキューに配置します。 ユーザーは待機時間が長くなっていることに気付き始めます。 最終的にキューがいっぱいになると `429 ThrottlingException` が発生し始め、[IoT Hub のメトリックの "スロットル エラー数"](monitor-iot-hub-reference.md#device-telemetry-metrics) が増え始めます。 メトリックに基づいてアラートとグラフを作成する方法については、[IoT Hub の監視](monitor-iot-hub.md)に関するページを参照してください。
 

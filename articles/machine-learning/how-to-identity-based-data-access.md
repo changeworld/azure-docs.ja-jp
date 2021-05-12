@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: sihhu
-author: MayMSFT
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 8bc85e8991ebf0a5ba7418f63943b0515c9f264d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2ca7eec3bcc40d5c0f93c43cc32b9395feb1e5d0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885004"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790417"
 ---
 # <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>ID ベースのデータ アクセスを使用してストレージに接続する (プレビュー)
 
