@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: c7eedee50e8a8bfd270640ff332d21f28108239a
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: c9ed45d452f2a6ed89ee71826fbee5e107a395ae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065198"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761635"
 ---
 # <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの自動登録機能とは
 
@@ -37,4 +37,4 @@ Azure DNS プライベート ゾーンの自動登録機能では、仮想ネッ
 
 * [プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関しては、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを参照してください。
 
-* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事をご覧ください。
+* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.yml) に関する記事をご覧ください。特定の種類の操作で期待できる固有の動作についても説明があります。

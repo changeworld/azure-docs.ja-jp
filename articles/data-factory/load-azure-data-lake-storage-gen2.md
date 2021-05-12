@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen2 にデータを読み込む
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータをコピーします
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 075778e2650d3b1f67447078eb6cb130849bbb35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dc71dbb50478494b30bb78f4ae55a7f4a6423d62
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593783"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488629"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 

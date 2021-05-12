@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6271875c368f637140010401cf2ebe21039be9a9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a9afef0e2616664578e66be3735104c47bfcffa9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897363"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760753"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
@@ -252,7 +252,7 @@ from azureml.core import Workspace
 
 ### <a name="download-a-configuration-file"></a>構成ファイルをダウンロードする
 
-[コンピューティング インスタンス](tutorial-1st-experiment-sdk-setup.md#azure)を作成する場合は、この手順をスキップしてください。  このファイルのコピーは、コンピューティング インスタンスによって既に作成されています。
+[コンピューティング インスタンス](quickstart-create-resources.md)を作成する場合は、この手順をスキップしてください。  このファイルのコピーは、コンピューティング インスタンスによって既に作成されています。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -391,8 +391,7 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 ## <a name="examples"></a>例
 
 ワークスペースの作成例:
-* Azure portal を使用して、[ワークスペースとコンピューティング インスタンスを作成する](tutorial-1st-experiment-sdk-setup.md)
-* Python SDK を使用して、[独自の環境内にワークスペースを作成する](tutorial-1st-experiment-sdk-setup-local.md)
+* Azure portal を使用して、[ワークスペースとコンピューティング インスタンスを作成する](quickstart-create-resources.md)
 
 ## <a name="next-steps"></a>次のステップ
 

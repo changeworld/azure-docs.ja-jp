@@ -10,14 +10,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/25/2020
+ms.date: 05/10/2021
 ms.author: allensu
-ms.openlocfilehash: c877ed464d539d6c15e48cecbeba4d3645f2ac8c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 01aef74b5a4242f5d9b3213c447116e5c4b382ac
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071435"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751691"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>クイック スタート:Azure CDN のプロファイルとエンドポイントの作成 - ARM テンプレート
 
@@ -27,7 +27,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cdn%2Fcdn-with-custom-origin%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 * プロファイル
 * エンドポイント
 
-:::code language="json" source="~/quickstart-templates/101-cdn-with-custom-origin/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cdn/cdn-with-custom-origin/azuredeploy.json":::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 
@@ -55,7 +55,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 ```azurecli-interactive
 read -p "Enter the location (i.e. eastus): " location
 resourceGroupName="myResourceGroupCDN"
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cdn-with-custom-origin/azuredeploy.json" 
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.cdn/cdn-with-custom-origin/azuredeploy.json"
 
 az group create \
 --name $resourceGroupName \
@@ -70,7 +70,7 @@ az deployment group create \
 
 ```azurepowershell-interactive
 $location = Read-Host -Prompt "Enter the location (i.e. eastus)"
-$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cdn-with-custom-origin/azuredeploy.json"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.cdn/cdn-with-custom-origin/azuredeploy.json"
 
 $resourceGroupName = "myResourceGroupCDN"
 
@@ -80,7 +80,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ### <a name="portal"></a>ポータル
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cdn-with-custom-origin%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cdn%2Fcdn-with-custom-origin%2Fazuredeploy.json)
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
@@ -100,7 +100,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 リソース グループとそこに含まれているすべてのリソースは、不要になったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して削除できます。
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete \
     --name myResourceGroupCDN
 ```
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
 
-```azurepowershell-interactive 
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupCDN
 ```
 

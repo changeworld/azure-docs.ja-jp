@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 description: Data Factory サービスの Teradata コネクタを使用すると、Teradata Vantage から、Data Factory によってサポートされているデータ ストアに、シンクとしてデータをコピーすることができます。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2021
-ms.author: jingwang
-ms.openlocfilehash: c65b295dca16a3453b2ee5472b9a3ee5e8d62df7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 9ebf320dc92ef8a39bc8b7569272ce2d0e2b2a68
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381768"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486757"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 
@@ -41,13 +41,13 @@ Teradata Vantage から、サポートされている任意のシンク デー�
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 セルフホステッド統合ランタイムを使用している場合は、バージョン 3.18 以降、組み込みの Teradata ドライバーが用意されていることに注意してください。 ドライバーを手動でインストールする必要はありません。 このドライバーでは、セルフホステッド統合ランタイム マシンに "Visual C++ 再頒布可能パッケージ 2012 Update 4" が必要です。 まだインストールしていない場合は、[こちら](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)からダウンロードしてください。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Teradata コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

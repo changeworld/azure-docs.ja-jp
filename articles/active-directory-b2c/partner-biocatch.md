@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2462b585bb37db769aafafbb0d224557c53ee81d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f9518466aacddee9e31d8bc15f3b89c1f214ab58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127085"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738001"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C と共に BioCatch を構成する
 
@@ -74,7 +74,7 @@ BioCatch 統合には、次のコンポーネントが含まれています。
 
 クライアントセッション ID フィールドを非表示にすることをお勧めします。 このフィールドを非表示にするには、CSS、JavaScript、またはその他のメソッドを使用します。 テスト目的の場合は、フィールドの非表示を解除できます。 たとえば、JavaScript を使用して入力フィールドを非表示にするには、次のようにします。
 
-```
+```JavaScript
 document.getElementById("clientSessionId").style.display = 'none';
 ```
 
@@ -84,7 +84,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 2. 拡張機能ファイルを継承する新しいファイルを作成します。
 
-    ```
+    ```XML
     <BasePolicy> 
 
         <TenantId>tenant.onmicrosoft.com</TenantId> 
@@ -96,7 +96,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 3. BuildingBlocks リソースの下に、入力ボックスを非表示にするカスタム UI への参照を作成します。
 
-    ```
+    ```XML
     <ContentDefinitions> 
 
         <ContentDefinition Id="api.selfasserted"> 
@@ -112,7 +112,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. BuildingBlocks リソースの下に次のクレームを追加します。
 
-    ```
+    ```XML
     <ClaimsSchema> 
 
           <ClaimType Id="riskLevel"> 
@@ -146,7 +146,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 5. クライアント セッション ID フィールドに対して、セルフアサート クレーム プロバイダーを構成します。
 
-    ```
+    ```XML
     <ClaimsProvider> 
 
           <DisplayName>Client Session ID Claims Provider</DisplayName> 
@@ -190,7 +190,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 6. BioCatch に対して REST API クレーム プロバイダーを構成します。 
 
-    ```
+    ```XML
     <TechnicalProfile Id="BioCatch-API-GETSCORE"> 
 
           <DisplayName>Technical profile for BioCatch API to return session information</DisplayName> 
@@ -247,7 +247,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
    1. 返されたクレームの "*リスク*" が "*低い*" 場合は、MFA の手順をスキップします。それ以外の場合は、MFA をユーザーに強制します
 
-    ```
+    ```XML
     <OrchestrationStep Order="8" Type="ClaimsExchange"> 
 
               <ClaimsExchanges> 
@@ -296,7 +296,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
     BioCatch から返された情報 (特に *risklevel* と *score*) をトークン内のクレームとしてアプリケーションに渡すと役立ちます。
 
-    ```
+    ```XML
     <RelyingParty> 
 
         <DefaultUserJourney ReferenceId="SignUpOrSignInMfa" /> 
@@ -373,7 +373,7 @@ document.getElementById("clientSessionId").style.display = 'none';
 
 4. サインアップ フローを実行し、アカウントを作成します。 JWT.MS に返されるトークンには、riskLevel と score に対する 2 倍のクレームが含まれているはずです。 例に従ってください。  
 
-    ```
+    ```JavaScript
     { 
 
       "typ": "JWT", 

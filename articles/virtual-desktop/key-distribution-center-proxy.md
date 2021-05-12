@@ -3,22 +3,17 @@ title: Kerberos キー配布センター プロキシ Windows Virtual Desktop �
 description: Kerberos キー配布センター プロキシを使用するように Windows Virtual Desktop ホスト プールを設定する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/20/2021
+ms.date: 05/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 79ae61d21693ae56dff280402c7a3d114822be7f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 74fc1eeabe8af754d3ac5809818b6d648453ee45
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132361"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108732727"
 ---
-# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos キー配布センター プロキシを構成する (プレビュー)
-
-> [!IMPORTANT]
-> 現在、この機能はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="configure-a-kerberos-key-distribution-center-proxy"></a>Kerberos キー配布センター プロキシを構成する
 
 金融機関や政府機関など、セキュリティ意識の高いお客様は、多くの場合、スマートカードを使用してサインインしています。 スマートカードでは、多要素認証 (MFA) を要求することで、デプロイのセキュリティを強化できます。 ただし、Windows Virtual Desktop セッションの RDP の部分については、Kerberos 認証用の Active Directory (AD) ドメイン コントローラーを使用した直接接続または "照準線" がスマートカードに必要になります。 この直接接続がないと、ユーザーはリモート接続から組織のネットワークに自動的にサインインできません。 Windows Virtual Desktop デプロイのユーザーは、KDC プロキシ サービスを使用して、この認証トラフィックをプロキシし、リモートでサインインできます。 KDC プロキシでは、Windows Virtual Desktop セッションのリモート デスクトップ プロトコルに対する認証が可能なため、ユーザーは安全にサインインできます。 これにより、自宅での作業がはるかに簡単になり、特定のディザスター リカバリーのシナリオを円滑に実行できます。
 

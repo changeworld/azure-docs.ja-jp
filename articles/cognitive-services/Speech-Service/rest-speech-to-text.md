@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0c041d64b3dbd0c38979f4d8d0fa563a72f6a4b1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1f48a3db0cae86f82f22e2c55a6e581c5d18a454
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168197"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758269"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -286,13 +286,20 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
   "Offset": "1236645672289",
   "Duration": "1236645672289",
   "NBest": [
-      {
-        "Confidence" : "0.87",
-        "Lexical" : "remind me to buy five pencils",
-        "ITN" : "remind me to buy 5 pencils",
-        "MaskedITN" : "remind me to buy 5 pencils",
-        "Display" : "Remind me to buy 5 pencils.",
-      }
+    {
+      "Confidence": 0.9052885,
+      "Display": "What's the weather like?",
+      "ITN": "what's the weather like",
+      "Lexical": "what's the weather like",
+      "MaskedITN": "what's the weather like"
+    },
+    {
+      "Confidence": 0.92459863,
+      "Display": "what is the weather like",
+      "ITN": "what is the weather like",
+      "Lexical": "what is the weather like",
+      "MaskedITN": "what is the weather like"
+    }
   ]
 }
 ```

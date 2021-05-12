@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/25/2020
-ms.author: jingwang
-ms.openlocfilehash: 974682aa9e9bebd6e2d17237decd8389174ff28d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 3de92c047a23e132ddcd474fa29d36186af56108
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383672"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487351"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
@@ -36,7 +36,7 @@ Concur から、サポートされている任意のシンク データ スト�
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Concur コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

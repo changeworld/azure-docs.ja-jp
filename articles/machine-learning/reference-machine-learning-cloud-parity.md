@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a720b1b51c2f1bafa581e75cb8ab00b15a4b2d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97725022"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750431"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -180,7 +180,7 @@ Microsoft では、パブリック クラウドとソブリン リージョン�
 | トレーニングのための Virtual Network (VNet) サポート                                | GA               | YES       | 該当なし        |
 | 推論のための Virtual Network (VNet) のサポート                               | GA               | YES       | 該当なし        |
 | エンドポイント認証のスコア付け                                            | パブリック プレビュー   | YES       | 該当なし        |
-| ワークプレース プライベート リンク                                                     | パブリック プレビュー   | NO        | 該当なし        |
+| ワークプレース プライベート リンク                                                     | GA               | NO        | 該当なし        |
 | VNet の背後にある ACI                                                            | パブリック プレビュー   | NO        | 該当なし        |
 | VNet の背後にある ACR                                                            | パブリック プレビュー   | NO        | 該当なし        |
 | AKS クラスターのプライベート IP                                                  | パブリック プレビュー   | NO        | 該当なし        |

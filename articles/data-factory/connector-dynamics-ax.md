@@ -1,18 +1,18 @@
 ---
 title: Dynamics AX からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Dynamics AX のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 38ff77ad56f16fbd33b77021b18be77f6a153b3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69972bc9ca0b4082eaa6148b5879b487f240e78f
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100380986"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487189"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする
 
@@ -36,7 +36,7 @@ Dynamics AX から、サポートされている任意のシンク データ ス
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以降のセクションでは、Dynamics AX コネクタに固有の Data Factory エンティティを定義するために使用できるプロパティについて詳細に説明します。
 

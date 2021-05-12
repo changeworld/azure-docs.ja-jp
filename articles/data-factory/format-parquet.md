@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory での Parquet 形式
 description: このトピックでは、Azure Data Factory で Parquet 形式を処理する方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/27/2020
-ms.author: jingwang
-ms.openlocfilehash: a10403b5f26b551458a9e20330bc817512f707de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 279df09cddf2bb8b2bcb5a936666e302987cac27
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386393"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486613"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -164,7 +164,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK の使用方法**:IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
-- **Microsoft Visual C++ 2010 再頒布可能パッケージのインストール方法**:Visual C++ 2010 再頒布可能パッケージは、セルフホステッド IR インストールではインストールされません。 [こちら](https://www.microsoft.com/download/details.aspx?id=14632)から入手できます。
+- **Microsoft Visual C++ 2010 再頒布可能パッケージのインストール方法**:Visual C++ 2010 再頒布可能パッケージは、セルフホステッド IR インストールではインストールされません。 [こちら](https://www.microsoft.com/download/details.aspx?id=26999)から入手できます。
 
 > [!TIP]
 > セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。

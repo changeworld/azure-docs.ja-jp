@@ -4,12 +4,12 @@ description: Azure Resource Manager と Azure PowerShell を使用してリソ�
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: db43613b1b359e6d6378e081f3f61ee1449bd641
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2f7d9709a62d7c791296e26d28f391c1eeeab728
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314645"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737047"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -19,7 +19,7 @@ Bicep ファイルをデプロイするには、[Azure PowerShell バージョ�
 
 ## <a name="prerequisites"></a>前提条件
 
-デプロイするテンプレートが必要です。 デプロイするテンプレートがない場合は、Azure クイック スタート テンプレート リポジトリから[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)を保存します。 この記事で使用されているローカル ファイル名は、_C:\MyTemplates\azuredeploy.json_ です。
+デプロイするテンプレートが必要です。 デプロイするテンプレートがない場合は、Azure クイック スタート テンプレート リポジトリから[サンプル テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json)を保存します。 この記事で使用されているローカル ファイル名は、_C:\MyTemplates\azuredeploy.json_ です。
 
 Azure PowerShell をインストールし、Azure に接続する必要があります。
 
@@ -134,7 +134,7 @@ New-AzResourceGroup -Name ExampleGroup -Location "Central US"
 New-AzResourceGroupDeployment `
   -Name remoteTemplateDeployment `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 ```
 
 前の例では、テンプレートにはパブリックにアクセスできる URI が必要になります。テンプレートに機密データを含めてはいけないため、この方法は多くの場合に利用できます。 機密データ (管理者パスワードなど) を指定する必要がある場合は、セキュリティで保護されたパラメーターとしてその値を渡します。 ただし、テンプレートへのアクセスを管理する場合は、[テンプレート スペック](#deploy-template-spec)を使用することを検討してください。
@@ -243,8 +243,8 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
-  -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
+  -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.parameters.json
 ```
 
 ## <a name="next-steps"></a>次のステップ

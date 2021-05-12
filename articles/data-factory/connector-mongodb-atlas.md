@@ -1,18 +1,18 @@
 ---
 title: MongoDB Atlas のデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB Atlas のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 09/28/2020
-ms.openlocfilehash: b2f77e4bd8df66084937da3dd203ebb71d9a3511
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 517f32a526ed6695c7890a330359f52667367979
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368797"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487675"
 ---
 # <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB Atlas のデータをコピーする
 
@@ -32,7 +32,7 @@ MongoDB Atlas データベースのデータを、サポートされているシ
 
 ## <a name="getting-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、MongoDB Atlas コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細について説明します。
 

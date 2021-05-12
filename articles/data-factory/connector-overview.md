@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory コネクタの概要
 description: Data Factory でサポートされるコネクタについて説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2021
-ms.author: jingwang
-ms.openlocfilehash: cfd3376174ec0f7789389988245f7377b9896a00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 072abfacb4fc62dd381c53b2bfd38d4000828d81
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015924"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487153"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Azure Data Factory コネクタの概要
 
@@ -21,7 +21,7 @@ Azure Data Factory では、コピー、データ フロー、ルックアップ
 
 ## <a name="supported-data-stores"></a>サポートされているデータ ストア
 
-[!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+[!INCLUDE [Connector overview](includes/data-factory-v2-connector-overview.md)]
 
 ## <a name="integrate-with-more-data-stores"></a>より多くのデータ ストアとの統合
 

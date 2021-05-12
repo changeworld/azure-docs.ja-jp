@@ -1,18 +1,18 @@
 ---
 title: Amazon Simple Storage Service (S3) からデータをコピーする
 description: Azure Data Factory を使用して、Amazon Simple Storage Service (S3) のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 03b0cd852f34e115cc5bbc60448e45fcbb680474
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8da9960e363e72bd6c108a9d72cfed4cc7769cf
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601229"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488719"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
@@ -51,7 +51,7 @@ Amazon S3 のアクセス許可の完全な一覧については、[ポリシー
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
 
 以下のセクションで、Amazon S3 に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -126,7 +126,7 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Amazon S3 では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -171,7 +171,7 @@ Amazon S3 では、形式ベースのデータセットの `location` 設定に�
 
 ### <a name="amazon-s3-as-a-source-type"></a>ソースの種類としての Amazon S3
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
