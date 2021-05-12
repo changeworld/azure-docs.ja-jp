@@ -6,15 +6,15 @@ services: virtual-network
 author: KumudD
 ms.service: virtual-network
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 05/11/2021
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bc0ac1a6e882f4197828bf79c7989c16b2eb16f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28513132e75797adaafc7de32d94379b92f298ee
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98217670"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752429"
 ---
 # <a name="quickstart-create-a-virtual-network---resource-manager-template"></a>クイック スタート:仮想ネットワークを作成する - Resource Manager テンプレート
 
@@ -31,9 +31,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vnet-two-subnets/azuredeploy.json)からのものです
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.json)からのものです
 
-:::code language="json" source="~/quickstart-templates/101-vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/vnet-two-subnets/azuredeploy.json" range="001-96" highlight="56-92":::
 
 このテンプレートには、次の Azure リソースが定義されています。
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks): Azure 仮想ネットワークを作成します。

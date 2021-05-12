@@ -8,13 +8,13 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e6bf5404a33e0b4e57c2ff8d82d8791eda3d0f06
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: fdfeae56ba1ef46b58fdb8f5beb32f85a6e2fcb4
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834194"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752321"
 ---
 # <a name="repair-an-automanage-account"></a>Automanage アカウントの修復
 [Azure Automanage アカウント](./automanage-virtual-machines.md#automanage-account)は、自動化された操作が行われるセキュリティ コンテキストまたは ID です。 最近、Automanage アカウントを含むサブスクリプションを新しいテナントに移動した場合は、そのアカウントを再構成する必要があります。 再構成するには、ID の種類をリセットし、アカウントに適切なロールを割り当てる必要があります。

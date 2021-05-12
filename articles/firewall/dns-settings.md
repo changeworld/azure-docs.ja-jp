@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 04/30/2021
 ms.author: victorh
-ms.openlocfilehash: d6a79e87e9999dd520358e0722011cf4e54d8c63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4692b21333999dfc6fcc8edcbba8af800989ee1d
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546246"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325519"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
@@ -63,12 +63,12 @@ $azFw | Set-AzFirewall
 
 ## <a name="dns-proxy"></a>DNS プロキシ
 
-Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。 カスタム DNS サーバーを構成する場合は、DNS 解決の不一致を回避するために DNS プロキシを有効にして、ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にします。
+Azure Firewall が DNS プロキシとして機能するように構成できます。 DNS プロキシは、クライアント仮想マシンから DNS サーバーへの DNS 要求の仲介役です。 ネットワーク ルールで FQDN (完全修飾ドメイン名) フィルタリングを有効にする場合は、DNS プロキシを有効にし、ファイアウォールを DNS プロキシとして使用するように仮想マシンの構成を更新します。
 
 :::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="カスタム DNS サーバーを使用した DNS プロキシ構成。":::
 
+ネットワーク ルールで FQDN フィルタリングを有効にし、ファイアウォールを DNS プロキシとして使用するようにクライアント仮想マシンを構成していない場合、これらのクライアントからの DNS 要求が、ファイアウォールとは異なる時刻に DNS サーバーに送信されたり、異なる応答が返されことがあります。 DNS プロキシでは、不整合を回避するために、クライアント要求のパスに Azure Firewall が配置されます。
 
-DNS プロキシを有効にしない場合、クライアントからの DNS 要求については、別の時刻に DNS サーバーに移動することもあれば、ファイアウォールのものとは異なる応答が返されることもあります。 DNS プロキシでは、不整合を回避するために、クライアント要求のパスに Azure Firewall が配置されます。
 
 Azure Firewall が DNS プロキシの場合、次の 2 種類のキャッシュ関数を使用できます。
 

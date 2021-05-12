@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して FTP サーバーからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、FTP サーバーからサポートされているシンク データ ストアにデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: a85f22381ff6d9d4568c2558beb229b4458d940a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 34c484bc596f9f7e5012339ea29ac70408cca402
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583113"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485227"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して FTP サーバーからデータをコピーする
 
@@ -41,11 +41,11 @@ FTP コネクタは、パッシブ モードで実行されている FTP サー�
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、FTP に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -121,7 +121,7 @@ FTP のリンクされたサービスでは、次のプロパティがサポー�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 FTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -163,7 +163,7 @@ FTP では、形式ベースのデータセットの `location` 設定におい�
 
 ### <a name="ftp-as-source"></a>ソースとしての FTP
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 FTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 

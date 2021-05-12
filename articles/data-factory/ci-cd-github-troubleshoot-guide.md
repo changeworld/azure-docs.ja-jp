@@ -6,19 +6,19 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/12/2021
-ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/27/2021
+ms.openlocfilehash: e5745f195fe7620aeb7ffe009c13c52cd5f02e62
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802035"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228642"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-ここでは、Azure Data Factory での、継続的インテグレーションと継続的デプロイ (CI-CD)、Azure DevOps、および GitHub の問題に関する一般的なトラブルシューティング方法について説明します。
+この記事では、Azure Data Factory での、継続的インテグレーションと継続的デプロイ (CI-CD)、Azure DevOps、および GitHub の問題に関する一般的なトラブルシューティング方法について説明します。
 
 ソース管理または DevOps 手法の使用に関する質問や問題がある場合は、役に立つ記事がいくつかあります。
 
@@ -39,7 +39,7 @@ HTTP ステータス 401 のような認証の問題が発生することがあ�
 
 #### <a name="recommendation"></a>推奨
 
-代わりに、ゲスト テナントから発行されたトークンを使用する必要があります。 たとえば、同じ Azure Active Directory をゲスト テナントと DevOps に割り当てる必要があります。これにより、トークンの動作を正しく設定し、正しいテナントを使用できるようになります。
+ゲスト テナントから発行されたトークンを使用する必要があります。 たとえば、同じ Azure Active Directory をゲスト テナントと DevOps に割り当てる必要があります。これにより、トークンの動作を正しく設定し、正しいテナントを使用できるようになります。
 
 ### <a name="template-parameters-in-the-parameters-file-are-not-valid"></a>パラメーター ファイルのテンプレート パラメーターが有効ではありません
 
@@ -57,7 +57,7 @@ CI/CD パイプラインは次のエラーで失敗します。
 
 #### <a name="recommendation"></a>推奨
 
-このエラーは、パラメーター化されたトリガーを削除することが多いために発生します。パラメーターは ARM テンプレートでは使用できなくなります (トリガーが存在しなくなったため)。 パラメーターが ARM テンプレートになくなるため、DevOps パイプラインでオーバーライドされたパラメーターを更新する必要があります。 そうしないと、ARM テンプレート内のパラメーターが変更されるたびに、DevOps パイプラインでオーバーライドされたパラメーターを更新する必要があります (デプロイ タスク)。
+このエラーは、パラメーター化されたトリガーを削除することが多いために発生します。パラメーターは Azure Resource Manager (ARM) テンプレートでは使用できなくなります (トリガーが存在しなくなったため)。 パラメーターが ARM テンプレートになくなるため、DevOps パイプラインでオーバーライドされたパラメーターを更新する必要があります。 そうしないと、ARM テンプレート内のパラメーターが変更されるたびに、DevOps パイプラインでオーバーライドされたパラメーターを更新する必要があります (デプロイ タスク)。
 
 ### <a name="updating-property-type-is-not-supported"></a>プロパティの型の更新はサポートされていません
 
@@ -77,7 +77,7 @@ CI/CD リリース パイプラインが次のエラーで失敗しています�
 
 #### <a name="cause"></a>原因
 
-これは、ターゲット ファクトリに、同じ名前だが、型が異なる統合ランタイムがあるためです。 Integration Runtime は、デプロイ時に同じ型である必要があります。
+このエラーは、ターゲット ファクトリに、同じ名前だが、型が異なる統合ランタイムがあるためです。 Integration Runtime は、デプロイの間に同じ型である必要があります。
 
 #### <a name="recommendation"></a>推奨
 
@@ -103,7 +103,7 @@ Data Factory に変更を発行しようとすると、次のエラー メッセ
 `
 ### <a name="cause"></a>原因
 
-Git 構成をデタッチし、"リソースのインポート" フラグをオンにして再設定しました。これにより、Data Factory が "同期" として設定されます。 これは、発行する変更がないことを意味します。
+Git 構成をデタッチし、"リソースのインポート" フラグをオンにして再設定しました。これにより、Data Factory が "同期" として設定されます。 これは、発行の間に変更が行われないことを意味します。
 
 #### <a name="resolution"></a>解決策
 
@@ -131,7 +131,7 @@ Data Factory をリソース グループ間で移動できないため、次の
 
 #### <a name="resolution"></a>解決方法
 
-移動できるようにするには、SSIS-IR および共有 IR を削除する必要があります。 統合ランタイムを削除しない場合は、コピーとクローンのドキュメントに従ってコピーを行い、完了後に古い Data Factory を削除することをお勧めします。
+SSIS-IR と共有 IR を削除することで、移動できるようにすることができます。 統合ランタイムを削除しない場合は、コピーとクローンのドキュメントに従ってコピーを行い、完了後に古い Data Factory を削除することをお勧めします。
 
 ###  <a name="unable-to-export-and-import-arm-template"></a>ARM テンプレートをエクスポートおよびインポートできません
 
@@ -157,9 +157,9 @@ ARM テンプレートをエクスポートおよびインポートできませ�
 
 #### <a name="resolution"></a>解決方法
 
-CI/CD プロセスが拡張されました。 **自動発行** 機能によって、ADF UX からすべての Azure Resource Manager (ARM) テンプレート機能が取得、検証、およびエクスポートされます。 これにより、一般公開されている npm パッケージ [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) を介してそのロジックが使用可能になります。 これにより、ADF UI に移動してボタンをクリックする代わりに、プログラムによってこれらのアクションをトリガーできます。 これにより、CI/CD パイプラインで **真の** 継続的インテグレーション エクスペリエンスを利用できます。 詳細については、[ADF CI/CD 発行の機能強化](./continuous-integration-deployment-improvements.md)に関する記事に従ってください。 
+CI/CD プロセスが拡張されました。 **自動** 発行機能によって、ADF UX からすべての ARM テンプレート機能が取得、検証、エクスポートされます。 これにより、一般公開されている npm パッケージ [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) を介してそのロジックが使用可能になります。 この方法により、ADF UI に移動してボタンをクリックする代わりに、プログラムによってこれらのアクションをトリガーできます。 この方法を使用すると、CI/CD パイプラインで **真の** 継続的インテグレーション エクスペリエンスを利用できます。 詳細については、[ADF CI/CD 発行の機能強化](./continuous-integration-deployment-improvements.md)に関する記事に従ってください。 
 
-###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4 MB の ARM テンプレート制限が原因で発行できない  
+###  <a name="cannot-publish-because-of-4-mb-arm-template-limit"></a>4 MB の ARM テンプレート制限が原因で発行できない  
 
 #### <a name="issue"></a>問題
 
@@ -171,7 +171,7 @@ Azure Resource Manager では、テンプレート サイズは 4 MB に制限�
 
 #### <a name="resolution"></a>解決方法
 
-中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 [リンクされた、およびネストされたテンプレートの使用](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)に関する記事に記載されているベスト プラクティスに従ってください。
+中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 [リンクされた、およびネストされたテンプレートの使用](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)に関する記事のベスト プラクティスに従ってください。
 
 ### <a name="cannot-connect-to-git-enterprise"></a>Git Enterprise に接続できない  
 
@@ -191,13 +191,11 @@ Azure Resource Manager では、テンプレート サイズは 4 MB に制限�
 ### <a name="cannot-recover-from-a-deleted-data-factory"></a>削除されたデータ ファクトリから復旧できない
 
 #### <a name="issue"></a>問題
-お客様が、データ ファクトリを削除したか、またはデータ ファクトリが含まれるリソース グループを削除しました。 削除されたデータ ファクトリを復元する方法を知る必要があります。
+お客様が、データ ファクトリを削除したか、またはデータ ファクトリが含まれるリソース グループを削除しました。 お客様は、削除されたデータ ファクトリを復元する方法を知る必要があります。
 
 #### <a name="cause"></a>原因
 
-お客様がソース管理 (DevOps または Git) を構成している場合にのみ、データ ファクトリを復旧することができます。 これにより、発行された最新のリソースはすべて復旧されますが、発行されていないパイプライン、データセット、リンク サービスは復元 **されません**。
-
-ソース管理が使用されていない場合は、サービスが削除コマンドを受け取ると、インスタンスが削除されて、バックアップは格納されないため、削除されたデータ ファクトリをバックエンドから復旧することはできません。
+お客様がソース管理 (DevOps または Git) を構成している場合にのみ、データ ファクトリを復旧することができます。 このアクションにより、発行された最新のリソースはすべて復旧されますが、発行されていないパイプライン、データセット、リンク サービスは復元 **されません**。 ソース管理が使用されていない場合は、サービスが削除コマンドを受け取ると、インスタンスが削除されて、バックアップは格納されないため、削除されたデータ ファクトリをバックエンドから復旧することはできません。
 
 #### <a name="resolution"></a>解決方法
 
@@ -211,6 +209,29 @@ Azure Resource Manager では、テンプレート サイズは 4 MB に制限�
 
  * 削除された ADF にセルフホステッド統合ランタイムがあった場合は、新しい ADF に新しいインスタンスを作成する必要があります。また、新しいキーを取得して、オンプレミスのコンピューターや VM 上のインスタンスをアンインストールして再インストールする必要があります。 IR の設定が完了した後、お客様は、新しい IR を指すようにリンク サービスを変更して、接続をテストする必要があります。そうしないと、**無効な参照** エラーで失敗します。
 
+### <a name="cannot-deploy-to-different-stage-using-automatic-publish-method"></a>自動発行方法を使用して別のステージにデプロイできない
+
+#### <a name="issue"></a>問題
+お客様は、NPM パッケージのインストールや、Azure DevOps と ADF を使用したより高いステージの設定など、必要なすべての手順に従いました。 しかし、デプロイは行われていません。
+
+#### <a name="cause"></a>原因
+
+npm パッケージはさまざまな方法で使用できますが、主な利点の 1 つは、Azure パイプラインを介して使用されることです。 コラボレーション ブランチへの各マージでは、最初にすべてのコードを検証してから、リリース パイプラインで使用できるビルド成果物に ARM テンプレートをエクスポートするパイプラインをトリガーできます。 スタート パイプラインでは、YAML ファイルが有効で完全である必要があります。
+
+
+#### <a name="resolution"></a>解決方法
+
+package.json フォルダーが有効ではないため、次のセクションは無効です。
+
+```
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.Repository.LocalPath)/<folder-of-the-package.json-file>' #replace with the package.json folder
+    customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'
+  displayName: 'Validate'
+```
+次のように、DataFactory が customCommand に含まれている必要があります: *'run build validate $(Build.Repository.LocalPath)/DataFactory/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName'* 。 上位ステージ用に生成された YAML ファイルに、必要な JSON アーティファクトがあることを確認します。
 
 
 ## <a name="next-steps"></a>次のステップ

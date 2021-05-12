@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
 description: Azure Data Factory を使用して、Google Cloud Storage からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: b8e518ba23c877ee80197ad94a6bc01b23b044a3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: bb745a7b50a6bcb94367a82b37a4e4e0170b5939
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588991"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482221"
 ---
 # <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google Cloud Storage からデータをコピーする
 
@@ -51,7 +51,7 @@ Google Cloud Storage のロールと関連するアクセス許可の完全な�
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)] 
 
 次のセクションでは、Google Cloud Storage に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -92,7 +92,7 @@ Google Cloud Storage のリンクされたサービスでは、次のプロパ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Google Cloud Storage では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -136,7 +136,7 @@ Google Cloud Storage では、形式ベースのデータセットの `location`
 
 ### <a name="google-cloud-storage-as-a-source-type"></a>ソース タイプとしての Google Cloud Storage
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Google Cloud Storage では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -156,7 +156,7 @@ Google Cloud Storage では、形式ベースのコピー ソースの `storeSet
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                                          |
 | enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
 | partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ                                                          |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ                                                          |
 
 **例:**
 

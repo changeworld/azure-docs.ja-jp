@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 9052cbd3dc728b50b62c33f3a11a5e36a7504f29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c185fc20c68dab549461f64d9ff8f0540a2b06a
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771568"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753099"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -29,7 +29,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 アプライアンスを設定するには、次のようにします。
 
-- アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
+- ポータルで、アプライアンス名を指定してプロジェクト キーを生成します。
 - Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
 - ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
 - PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
@@ -37,10 +37,10 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 ### <a name="generate-the-project-key"></a>プロジェクト キーを生成する
 
-1. **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]** で、 **[検出]** を選択します。
+1. **[移行の目標]**  >  **[Windows、Linux、SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)** で、 **[検出]** を選択します。
 2. **[サーバーの検出]**  >  **[サーバーは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
 3. **[1: プロジェクト キーを生成します]** で、物理または仮想サーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
-1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [サーバーの検出] ページを閉じないでください。
+1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [Discover Servers]\(サーバーの検出\) ページを閉じないでください。
 1. Azure リソースが正常に作成されると、**プロジェクト キー** が生成されます。
 1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
@@ -70,7 +70,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 - エージェントと、物理サーバーの検出と評価のための Web アプリケーションをインストールする。
 - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
-- IIS 書き込み可能モジュールをダウンロードしてインストールする。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
+- IIS 書き込み可能モジュールをダウンロードしてインストールする。
 - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
 - パスに次のファイルを作成する。
     - **構成ファイル**: %Programdata%\Microsoft Azure\Config
@@ -115,11 +115,11 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
         - サポートされるのは HTTP プロキシのみです。
         - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
     - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**: Azure Migrate: Discovery and Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+    - **更新プログラムのインストール**: Azure Migrate の検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. ポータルからコピーした **プロジェクト キー** を貼り付けます。 このキーがない場合は、 **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\) > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
 1. Azure で認証するには、デバイス コードが必要です。 **[ログイン]** をクリックすると、次に示すように、デバイス コードを含むモーダルが開きます。
 
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
@@ -156,7 +156,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
     ![検出ソースを追加するための選択](./media/tutorial-assess-physical/add-discovery-source-physical.png)
 
     - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **IP アドレスまたは FQDN** を追加して、 **[保存]** をクリックします。
-    - **[複数の項目を追加]** を選択した場合は、テキスト ボックスでサーバーの **[IP アドレスまたは FQDN]** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 ** 追加したレコードを確認し、 **[保存]** をクリックします。
+    - **[複数の項目を追加]** を選択した場合は、テキスト ボックスでサーバーの **[IP アドレスまたは FQDN]** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。 追加したレコードを確認し、 **[保存]** をクリックします。
     - **[Import CSV]\(CSV のインポート\)** _(既定で選択)_ を選択した場合は、CSV テンプレート ファイルをダウンロードし、そのファイルにサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** および資格情報のフレンドリ名を入力します。 その後、ファイルをアプライアンスにインポートし、ファイル内のレコードを **[Verify]\(検証\)** して、 **[保存]** をクリックします。
 
 1. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。
@@ -173,7 +173,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 検出の完了後、サーバーがポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - Windows、Linux および SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]** ページで、 **[検出済みサーバー]** の数が表示されているアイコンをクリックします。
+2. **[Azure Migrate - Windows、Linux および SQL Server]**  >  **[Azure Migrate: Discovery and Assessment]\(Azure Migrate: 検出および評価\)** ページで、 **[検出済みサーバー]** の数が表示されているアイコンをクリックします。
 
 
 ## <a name="next-steps"></a>次のステップ

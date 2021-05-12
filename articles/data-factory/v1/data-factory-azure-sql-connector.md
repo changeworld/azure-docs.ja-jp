@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 738b875a273faddd20a67be0f6feb90825f66c9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67163cd2e2af43d58133dd5ff843b475fc70e3fc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370514"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767079"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -27,11 +27,11 @@ ms.locfileid: "100370514"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure SQL Database から** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **Azure SQL Database に** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-authentication-type"></a>サポートされている認証の種類
 Azure SQL Database コネクタは基本認証をサポートしています。

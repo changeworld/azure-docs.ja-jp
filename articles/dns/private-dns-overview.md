@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: 4c867ad3888544df93f8a6e5a6236a01197eefc2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eb66facb8d36884205bc9cd8e562ab97f92c3dd8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127841"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745039"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure プライベート DNS とは
 
@@ -74,7 +74,7 @@ Azure DNS には次の制限事項があります。
 
 * [プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関しては、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを参照してください。
 
-* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事を参照してください。
+* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.yml) に関する記事を参照してください。
 
 * 「[DNS ゾーンとレコードの概要](dns-zones-records.md)」で DNS ゾーンとレコードについて学びます。
 

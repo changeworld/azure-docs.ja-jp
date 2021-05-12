@@ -7,13 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: victorh
-ms.reviewer: tyao
-ms.openlocfilehash: 8fc6e71494df36cd6f823661b18e4a3d8ce2938c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c764193e92884ac2431cac8f2d6592e173e59e19
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563683"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632297"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Azure Web アプリケーション ファイアウォール (WAF) に対するカスタム応答を構成する
 

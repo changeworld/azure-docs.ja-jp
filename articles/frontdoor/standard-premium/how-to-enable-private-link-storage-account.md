@@ -7,13 +7,13 @@ author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/04/2021
-ms.author: tyao
-ms.openlocfilehash: 885b4d132208ab6f8b470d147438e26a5fd4bab7
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.author: duau
+ms.openlocfilehash: 991727c369b70fdd84507f6d32b6f8a3405fa4ac
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201670"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633557"
 ---
 # <a name="connect-azure-front-door-premium-to-a-storage-account-origin-with-private-link"></a>Private Link を使用して Azure Front Door Premium をストレージ アカウントの配信元に接続する
 
@@ -39,7 +39,7 @@ ms.locfileid: "102201670"
 
     | 設定 | 値 |
     | ------- | ----- |
-    | リージョン | 配信元と同じまたは最も近いリージョンを選択します。 |
+    | リージョン | 配信元と同じか最も近いリージョンを選択します。 |
     | リソースの種類 | **Microsoft.Storage/storageAccounts** を選択します。 |
     | リソース | 使うストレージ アカウントを選びます。 |
     | 対象サブ リソース | *blob* または *web* を選択できます。 |

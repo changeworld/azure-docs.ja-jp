@@ -7,13 +7,13 @@ author: duongau
 ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/16/2021
-ms.author: tyao
-ms.openlocfilehash: 6876692bcf752570ecdc5d42b65da81992ad3743
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: duau
+ms.openlocfilehash: 80013ca5d4d20366672eda417862ff7bb1309b0c
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803187"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633161"
 ---
 # <a name="connect-azure-front-door-premium-to-an-internal-load-balancer-origin-with-private-link"></a>プライベート リンクを使用して Azure Front Door Premium を配信元に接続する
 

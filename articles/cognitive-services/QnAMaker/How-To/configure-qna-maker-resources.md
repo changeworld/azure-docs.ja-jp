@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 3c6f75eafad51c99f60b78ce49862d2488d5926f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48a56500646e4bd5e24cdcf3e076f46f1de94741
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102230950"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743905"
 ---
 # <a name="configure-qna-maker-resources"></a>QnA Maker のリソースを構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "102230950"
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-### <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker を構成する
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker を構成する
 
 ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
 
@@ -47,7 +47,7 @@ Azure Resource Manager テンプレートを使用して QnA サービスを作�
 
 詳しくは、App Service の[アプリケーションの設定](../../../app-service/configure-common.md#configure-app-settings)を構成する方法をご覧ください。
 
-### <a name="get-the-latest-runtime-updates"></a>最新のランタイム更新プログラムを取得する
+## <a name="get-the-latest-runtime-updates"></a>最新のランタイム更新プログラムを取得する
 
 QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成する](./set-up-qnamaker-service-azure.md)ときにデプロイされる Azure App Service インスタンスの一部です。 ランタイムの更新は定期的に行われます。 QnA Maker App Service インスタンスは、2019 年 4 月のサイト拡張リリース (バージョン 5+) 以降は自動更新モードになります。 この更新は、アップグレード中のダウンタイムがゼロになるように設計されています。
 
@@ -68,7 +68,7 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
     ![QnA Maker App Service インスタンスの再起動](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-### <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>タイムアウトを回避するように App Service のアイドル設定を構成する
+## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>タイムアウトを回避するように App Service のアイドル設定を構成する
 
 公開されたナレッジ ベースの QnA Maker 予測ランタイムを提供するアプリ サービスにはアイドル タイムアウトの構成があり、サービスがアイドル状態の場合、既定では自動的にタイムアウトします。 QnA Maker の場合、これは、予測ランタイム GenerateAnswer API は、一定期間トラフィックがないとタイムアウトする場合があることを意味します。
 
@@ -87,7 +87,7 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
 詳しくは、App Service の[一般設定](../../../app-service/configure-common.md#configure-general-settings)を構成する方法をご覧ください。
 
-### <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性
+## <a name="business-continuity-with-traffic-manager"></a>トラフィック マネージャーを使用したビジネス継続性
 
 ビジネス継続性計画の主な目的は、回復性に優れたナレッジ ベース エンドポイントを作成し、そのナレッジ ベース エンドポイントを使用するボットまたはアプリケーションにダウン タイムが発生しないようにすることです。
 
@@ -112,7 +112,7 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
-### <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker マネージド (プレビュー) サービスを構成する
+## <a name="configure-qna-maker-managed-preview-service-to-use-different-cognitive-search-resource"></a>別の Cognitive Search リソースを使用するように QnA Maker マネージド (プレビュー) サービスを構成する
 
 ポータルを使用して QnA マネージド (プレビュー) サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker マネージド (プレビュー) サービスにリンクされます。 これらのリソースが作成されたら、 **[構成]** タブで Search サービスを更新することができます。
 
