@@ -11,12 +11,12 @@ ms.service: data-science-vm
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 0683634223a63281ce2b42ebb02f87f9211a589e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 25310abebb1b938bb0ff453f6525165531685448
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530655"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749503"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Data Science Virtual Machine を作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "107530655"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fdatascience%2Fvm-ubuntu-DSVM-GPU-or-CPU%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "107530655"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/application-workloads/datascience/vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json":::
 
 このテンプレートでは、次のリソースが定義されています。
 
@@ -59,7 +59,7 @@ read -p "Enter the Azure location (e.g., centralus):" location &&
 read -p "Enter the authentication type (must be 'password' or 'sshPublicKey') :" authenticationType &&
 read -p "Enter the login name for the administrator account (may not be 'admin'):" adminUsername &&
 read -p "Enter administrator account secure string (value of password or ssh public key):" adminPasswordOrKey &&
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" &&
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/application-workloads/datascience/vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" &&
 az group create --name $resourceGroupName --location "$location" &&
 az deployment group create --resource-group $resourceGroupName --template-uri $templateUri --parameters adminUsername=$adminUsername authenticationType=$authenticationType adminPasswordOrKey=$adminPasswordOrKey &&
 echo "Press [ENTER] to continue ..." &&

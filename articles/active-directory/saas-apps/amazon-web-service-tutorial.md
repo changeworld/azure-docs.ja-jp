@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: jeedes
-ms.openlocfilehash: eb469c757e2898a9925dd7d3358cfe95734cb2e9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cb8ae273dbe9f7b26cafe6b291a0fd6b5e4ef093
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537726"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802200"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-account-access"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AWS Single-Account Access の統合
 
@@ -140,7 +140,7 @@ AWS Single-Account Access で Azure AD SSO を構成してテストするには�
     | SessionDuration | 「900 秒 (15 分) から43200 秒 (12 時間) の値を指定してください」 |  `https://aws.amazon.com/SAML/Attributes` |
 
     > [!NOTE]
-    > AWS では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)を参照してください
+    > AWS では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)を参照してください
 
 1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** (手順 3) ダイアログ ボックスで、 **[証明書の追加]** を選択します。
 
