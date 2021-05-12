@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: 669dd99b24d605953a5bbf99a1612a07874b642f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a3b3c8760c3bf7d6bf4bee444bef7ed77134fb5a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137763"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748306"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプッシュする
 
@@ -27,36 +27,12 @@ ms.locfileid: "108137763"
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
-[サービス接続](/azure/devops/pipelines/library/service-endpoints)により、Azure DevOps プロジェクトから Azure サブスクリプション内のリソースにアクセスできます。
-
-1. Azure DevOps で、ターゲットのパイプラインを含むプロジェクトに移動し、左下にある **[プロジェクトの設定]** を開きます。
-1. **[パイプライン]** で、 **[サービス接続]** を選択し、右上にある **[新しいサービス接続]** を選択します。
-1. **[Azure Resource Manager]** を選択します。
-![[新しいサービス接続] ドロップダウン リストからの [Azure Resource Manager] の選択を示すスクリーンショット。](./media/new-service-connection.png)
-1. **[認証方法]** ダイアログで、 **[サービス プリンシパル (自動)]** を選択して新しいサービス プリンシパルを作成するか、 **[サービス プリンシパル (手動)]** を選択して[既存のサービス プリンシパルを使用](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops#use-spn)します。
-1. サブスクリプションとリソースを入力します。 サービス接続に名前を付けます。
-
-新しいサービス プリンシパルを作成した場合、サービス接続に割り当てられているサービス プリンシパルの名前を探します。 次の手順では、このサービス プリンシパルに新しいロールの割り当てを追加します。
-
-1. **[プロジェクトの設定]**  >  **[サービス接続]** の順に移動します。
-1. 前のセクションで作成したサービス接続を選択します。
-1. **[サービス プリンシパルの管理]** を選択します。
-1. 一覧表示された **[表示名]** をメモします。
-![サービス プリンシパルの表示名を示すスクリーンショット。](./media/service-principal-display-name.png)
+[!INCLUDE [azure-app-configuration-service-connection](../../includes/azure-app-configuration-service-connection.md)]
 
 ## <a name="add-role-assignment"></a>ロールの割り当ての追加
 
-タスクで App Configuration ストアにアクセスできるように、タスク内で使用する資格情報に、適切な App Configuration のロールの割り当てを割り当てます。
+[!INCLUDE [azure-app-configuration-role-assignment](../../includes/azure-app-configuration-role-assignment.md)]
 
-1. ターゲットの App Configuration ストアに移動します。 
-1. 左側で、 **[アクセス制御 (IAM)]** を選択します。
-1. 右側で、 **[ロールの割り当ての追加]** ボタンをクリックします。
-![[ロールの割り当ての追加] ボタンを示すスクリーンショット。](./media/add-role-assignment-button.png)
-1. **[ロール]** で、 **[App Configuration データ所有者]** を選択します。 このロールを使用すると、タスクで App Configuration ストアに対して読み取りや書き込みを行うことができます。 
-1. 前のセクションで作成したサービス接続に関連付けるサービス プリンシパルを選択します。
-![[ロールの割り当ての追加] ダイアログを示すスクリーンショット。](./media/add-role-assignment.png)
-
-  
 ## <a name="use-in-builds"></a>ビルドでの使用
 
 このセクションでは、Azure DevOps ビルド パイプラインで Azure App Configuration Push タスクを使用する方法について説明します。

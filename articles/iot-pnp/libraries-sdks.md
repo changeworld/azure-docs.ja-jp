@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 31e06777a2f2e26f6ef546e60fd0bf4428d272c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c55797355b2442fe0100144e5229b318b525631
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503812"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278076"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>IoT プラグ アンド プレイ用の Microsoft SDK
 
@@ -28,7 +28,7 @@ IoT プラグ アンド プレイ ライブラリと SDK を使用すると、�
 | Java - デバイス | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/java/api/com.microsoft.azure.sdk.iot.device) |
 | Python - デバイス | [pip 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/python/api/azure-iot-device/azure.iot.device) |
 | Node - デバイス | [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [IoT Hub への接続](quickstart-connect-device.md) | [リファレンス](/javascript/api/azure-iot-device/) |
-| 埋め込み C - デバイス | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [サンプル](howto-use-embedded-c.md#samples) | [埋め込み C の使用方法](howto-use-embedded-c.md) | 該当なし
+| 埋め込み C - デバイス | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [サンプル](quickstart-connect-device.md?pivots=programming-language-embedded-c#samples) | [埋め込み C の使用方法](quickstart-connect-device.md?pivots=programming-language-embedded-c) | 該当なし
 
 ## <a name="service-sdks"></a>サービス SDK
 

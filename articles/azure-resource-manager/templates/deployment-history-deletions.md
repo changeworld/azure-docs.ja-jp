@@ -3,13 +3,13 @@ title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7b82c4a5be256e75979cb26b11db9f679f10ce9a
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: e2920eb1daa626b6a817b2fe3b388e8c531f12e4
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320315"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751620"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 

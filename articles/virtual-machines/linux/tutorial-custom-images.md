@@ -3,19 +3,19 @@ title: チュートリアル - Azure CLI を使用したカスタム VM イメ�
 description: このチュートリアルでは、Azure CLI を使用して、Azure でカスタム仮想マシン イメージを作成する方法について説明します
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.reviewer: akjosh
-ms.openlocfilehash: 81bbf0b49919db68407a85b9ea2f731c5f8e1d91
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: mimckitt
+ms.openlocfilehash: 64c80ec32b0fe151daa24628a22c27fce4c5f21b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769879"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768231"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM のカスタム イメージを作成する
 

@@ -4,17 +4,17 @@ description: Oracle Linux オペレーティング システムを格納した A
 author: danielsollondon
 ms.service: virtual-machines
 ms.collection: linux
-ms.subservice: disks
+ms.subservice: oracle
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 9984589b19f15ab00e895bca75c295a92a68d0fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0ec82b3ad031cff98768b0cf9f1ee3bc5e650b69
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557796"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737983"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Azure 用の Oracle Linux 仮想マシンの準備
 

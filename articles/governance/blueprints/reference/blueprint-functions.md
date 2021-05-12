@@ -3,12 +3,12 @@ title: Azure Blueprints の関数
 description: Azure Blueprints の定義と割り当てに使用できる関数について説明します。
 ms.date: 05/01/2021
 ms.topic: reference
-ms.openlocfilehash: 0712051ef91ad114380f4f51063e31e4fc01f1b2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 88ccb5bc7c19fb6686a566a12e5a9a5e508b7b12
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326492"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757909"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数
 
@@ -34,7 +34,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | artifactName |はい |string |ブループリント アーティファクトの名前。 |
 
@@ -123,7 +123,7 @@ _myTemplateArtifact_ サンプルからデータを取得する例を次にい�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | string1 |はい |string |連結の最初の値。 |
 | 残りの引数 |いいえ |string |連結する順番での追加の値 |
@@ -148,7 +148,7 @@ Azure Blueprint 関数は、文字列でのみ動作する点が、ARM テンプ
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -269,7 +269,7 @@ Azure Blueprint 関数は、ARM テンプレート関数と異なります。 `r
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |はい |string |取得するリソース グループ アーティファクトのプレースホルダーの名前。 |
 

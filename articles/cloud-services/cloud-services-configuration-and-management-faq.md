@@ -3,17 +3,18 @@ title: 構成と管理に関する問題についてよくあるご質問
 description: この記事では、Microsoft Azure Cloud Services の構成と管理についてよくあるご質問を紹介します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 31659f4e8e4f9e25a997be54223b8856edfa8abe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 56bc159416e93ac6bed868401511d91d1bc9d37f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612985"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736183"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) の構成と管理の問題: よく寄せられる質問 (FAQ)
 

@@ -4,14 +4,14 @@ description: Azure App Service で Linux コンテナーに初めての Ruby ア
 keywords: Azure App Service、Linux、OSS、Ruby、Rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 04/27/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: dc64dfa277e97fe7487ce91a140e73b9ec44e086
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9cc8f3659633d7029729a006c0fdebd001f2fe46
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483539"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "109752960"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>App Service で Ruby on Rails アプリを作成する
 

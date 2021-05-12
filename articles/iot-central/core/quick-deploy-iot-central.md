@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 7b33beaad580e64a4760b0557f04f266ecfc1b4d
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: ef76b1283215da9ff08efb4d151d8e0e99a228f0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718811"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768753"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>クイックスタート - Azure IoT Central アプリケーションを作成する
 
@@ -76,6 +76,3 @@ ms.locfileid: "107718811"
 > [!div class="nextstepaction"]
 > [Azure IoT Central アプリケーションにシミュレートされたデバイスを追加する](./quick-create-simulated-device.md)
 
-デバイス開発者として、一部のコードについて詳しく調べる場合、推奨される次の手順は以下のとおりです。
-> [!div class="nextstepaction"]
-> [クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](./tutorial-connect-device.md)

@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 7c66a8b8483673a9d8fbdc9922b9cc377781bab3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af47182219441a373fd3e05585dbbb9484d06b37
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91976667"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753034"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレート内でのディスクの使用
 
@@ -168,7 +168,7 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 }
 ```
 
-VM オブジェクト内で、アタッチするディスク オブジェクトを参照します。 作成した管理ディスクのリソース ID を `managedDisk` プロパティに指定しておけば、VM が作成されるときにディスクがアタッチされます。 VM リソースの `apiVersion` は `2017-03-30` に設定されています。 VM の作成前にディスク リソースが作成されるように、ディスク リソースへの依存関係が追加されます。 
+VM オブジェクト内で、アタッチするディスク オブジェクトを参照します。 作成した管理ディスクのリソース ID を `managedDisk` プロパティに指定しておけば、VM が作成されるときにディスクがアタッチされます。 VM リソースの `apiVersion` は `2017-03-30` に設定されています。 VM の作成前にディスク リソースが作成されるように、ディスク リソースへの依存関係が追加されます。
 
 ```json
 {
@@ -252,11 +252,11 @@ Resource Manager テンプレートで Standard SSD ディスクを作成する�
 }
 ```
 
-テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)に関するページを参照してください。
+テンプレートを使用して Standard SSD ディスクを作成する方法における完全なテンプレート例については、[Standard SSD データ ディスクを含む Windows イメージから VM を作成](https://github.com/azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-with-standardssd-disk/)に関するページを参照してください。
 
 ### <a name="additional-scenarios-and-customizations"></a>その他のシナリオとカスタマイズ
 
-REST API の仕様の詳細については、[マネージド ディスク作成の REST API に関するドキュメント](/rest/api/manageddisks/disks/disks-create-or-update)を参照してください。 その他のシナリオや、テンプレートのデプロイ時に API に送信できる既定値や許容値についても説明されています。 
+REST API の仕様の詳細については、[マネージド ディスク作成の REST API に関するドキュメント](/rest/api/manageddisks/disks/disks-create-or-update)を参照してください。 その他のシナリオや、テンプレートのデプロイ時に API に送信できる既定値や許容値についても説明されています。
 
 ## <a name="next-steps"></a>次のステップ
 

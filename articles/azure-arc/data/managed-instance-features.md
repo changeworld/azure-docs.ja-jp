@@ -4,17 +4,17 @@ description: Azure Arc 対応 SQL Managed Instance の機能
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 61ecbcdd1a96fcc36caa7d0d8c21c66d856d7f89
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: d73505c3a0535c3f41b48a82545f6d2f9ac72608
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989002"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735100"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance の機能
 

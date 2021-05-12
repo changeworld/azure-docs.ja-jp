@@ -6,15 +6,15 @@ ms.author: danis
 ms.reviewer: cynthn
 ms.date: 01/27/2021
 ms.topic: article
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.collection: windows
-ms.subservice: imaging
-ms.openlocfilehash: 69718b219d239ac13e5d932b05a7dd29619adaa3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.subservice: image-builder
+ms.openlocfilehash: 45f4cbea20d6e223738adf3bcb9782a0c939946d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045588"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744139"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Windows Virtual Desktop イメージを作成する
 

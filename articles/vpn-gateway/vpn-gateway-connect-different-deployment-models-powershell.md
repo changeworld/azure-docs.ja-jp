@@ -1,6 +1,6 @@
 ---
 title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: PowerShell'
-description: VPN Gateway と PowerShell を使用して、クラシック VNet と Resource Manager VNet の間に VPN 接続を作成します。
+description: PowerShell を使用してクラシック VNet を Resource Manager VNet に接続する方法について説明します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7012a696684a4e7bc1d3b52943b11ba413c43037
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ef4d848eebb820ecb8b74a480503fa313246ac8
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376490"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229020"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 

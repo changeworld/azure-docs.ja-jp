@@ -5,22 +5,43 @@ description: Microsoft ID プラットフォームの新規および更新され
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/15/2020
+ms.date: 04/30/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 5e40f7a84b08983c6541a134e75e1f418577fb07
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 05d8e2e9555dbd24a812d626ce4be8900991230a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130847"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748693"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [要求のマッピング ポリシーの種類](reference-claims-mapping-policy-type.md)
+- [Node.js アプリを ADAL から MSAL に移行する方法](msal-node-migration.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)](active-directory-configurable-token-lifetimes.md)
+- [トークンの有効期間ポリシーを構成する (プレビュー)](configure-token-lifetimes.md)
+- [Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)
+- [Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)
+- [クイックスタート: 認証コード フローを使用して Node.js Web アプリ内でユーザーをサインインさせ、アクセス トークンを取得する](quickstart-v2-nodejs-webapp-msal.md)
+- [クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する](quickstart-v2-angular.md)
+- [シングルページ アプリケーション：API を呼び出すトークンを取得する](scenario-spa-acquire-token.md)
+- [シングルページ アプリケーション：コード構成](scenario-spa-app-configuration.md)
+- [シングルページ アプリケーション：サインインとサインアウト](scenario-spa-sign-in.md)
+- [国内クラウド環境で MSAL を使用する](msal-national-cloud.md)
+- [Azure AD アプリケーションの同意エクスペリエンスについて](application-consent-experience.md)
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -71,26 +92,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [クイックスタート: テナントを設定する](quickstart-create-new-tenant.md)
 - [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
 - [クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-java-daemon.md)
-
-## <a name="january-2021"></a>2021 年 1 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [Android 用の MSAL でのログ記録](msal-logging-android.md)
-- [MSAL.NET でのログ](msal-logging-dotnet.md)
-- [iOS および macOS 用の MSAL でのログ記録](msal-logging-ios.md)
-- [MSAL for Java でのログ記録](msal-logging-java.md)
-- [MSAL.js でのログ記録](msal-logging-js.md)
-- [Python 用の MSAL でのログ記録](msal-logging-python.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [発行者の確認のトラブルシューティング](troubleshoot-publisher-verification.md)
-- [アプリケーション モデル](application-model.md)
-- [認証と承認](authentication-vs-authorization.md)
-- [方法:Azure AD アプリを Azure AD テナントの一連のユーザーに制限する](howto-restrict-your-app-to-a-set-of-users.md)
-- [Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](v2-permissions-and-consent.md)
-- [Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)](active-directory-configurable-token-lifetimes.md)
-- [トークンの有効期間ポリシーを構成する (プレビュー)](configure-token-lifetimes.md)
-- [Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)
-- [Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー](v2-oauth2-auth-code-flow.md)

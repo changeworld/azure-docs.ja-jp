@@ -8,12 +8,12 @@ ms.date: 01/22/2018
 ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
-ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaeead3120139553e0430aae885e412693d621c4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379405"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771021"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -28,11 +28,11 @@ ms.locfileid: "100379405"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure Data Lake Store から** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sinks](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **Azure Data Lake Store に** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
 > コピー アクティビティを含むパイプラインを作成する前に、Data Lake Store アカウントを作成します。 詳細については、[Azure Data Lake Store の使用](../../data-lake-store/data-lake-store-get-started-portal.md)に関するページをご覧ください。
