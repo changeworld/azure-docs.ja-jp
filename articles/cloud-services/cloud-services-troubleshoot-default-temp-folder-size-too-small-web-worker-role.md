@@ -1,19 +1,19 @@
 ---
 title: ロールに対する既定の TEMP フォルダーのサイズが小さすぎる | Microsoft Docs
 description: クラウド サービス ロールでは、TEMP フォルダー用の領域量が限られています。 この記事では、領域不足の回避方法に関する推奨事項をいくつか示します。
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 1b7bfb47168c31f9e2e1b7e40764439118c00805
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4afe520a747fb7f14c82f7163dd62c4b84067178
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743204"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735913"
 ---
 # <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-classic-webworker-role"></a>クラウド サービス (クラシック) の Web/worker ロールに対する既定のTEMP フォルダーのサイズが小さすぎる
 

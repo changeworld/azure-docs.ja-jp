@@ -9,19 +9,16 @@ ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/30/2019
-ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: e8b37dd0f4037f2d348a98f871706c4c67723f24
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84708677"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715000"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>チュートリアル:T-SQL DDL 構文を使用して SQL Server インスタンスの Windows ユーザーとグループを Azure SQL Managed Instance に移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
-
-> [!NOTE]
-> この記事でユーザーとグループを SQL Managed Instance に移行するために使用する構文は、**パブリック プレビュー** 段階です。
 
 この記事では、T-SQL 構文を使用して、オンプレミスの SQL Server 内の Windows ユーザーとグループを Azure SQL Managed Instance に移行するプロセスについて説明します。
 
@@ -49,7 +46,7 @@ ms.locfileid: "84708677"
 - ネットワーク内の SQL Managed Instance に接続できます。 その他の情報については、次の記事を参照してください。
   - [アプリケーションを Azure SQL Managed Instance に接続する](connect-application-instance.md)
   - [クイック スタート: オンプレミスから Azure SQL Managed Instance へのポイント対サイト接続を構成する](point-to-site-p2s-configure.md)
-  - [Azure SQL Managed Instance のパブリック エンドポイントを構成する](public-endpoint-configure.md)
+  - [Azure SQL マネージド インスタンスのパブリック エンドポイントを構成する](public-endpoint-configure.md)
 
 ## <a name="t-sql-ddl-syntax"></a>T-SQL DDL 構文
 

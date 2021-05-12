@@ -3,12 +3,12 @@ title: リソースのプロパティについて
 description: リソースのプロパティの確認方法について説明します。
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aaa7bb13f49c1c742e44a255d4bbdbd2b1730939
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91327750"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736687"
 ---
 # <a name="discover-resource-properties"></a>リソースのプロパティについて
 
@@ -69,7 +69,7 @@ Azure Resource Manager テンプレート リファレンスは、テンプレ�
 
 リソース エクスプローラーは、Azure portal に埋め込まれています。 この方法を使用するには、ストレージ アカウントが必要です。 所有していない場合は、次のボタンを選択して作成します。
 
-[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 検索ボックスに **"resource explorer"** と入力し、 **[リソース エクスプローラー]** を選択します。
@@ -97,7 +97,7 @@ Resources.azure.com は一般向けの Web サイトで、Azure サブスクリ�
 
 このツールを使用してスキーマ情報の取得方法を示すには、ストレージ アカウントが必要です。 所有していない場合は、次のボタンを選択して作成します。
 
-[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
+[![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.storage%2Fstorage-account-create%2Fazuredeploy.json)
 
 1. [resources.azure.com](https://resources.azure.com/) に移動します。 左側のウィンドウに内容が表示されるまで、しばらく時間がかかります。
 1. **[サブスクリプション]** を選択します。

@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する'
 description: このクイックスタートでは、Azure Arc 対応 Kubernetes クラスターを接続する方法について説明します。
-author: mgoedtel
-ms.author: magoedte
+author: mlearned
+ms.author: mlearned
 ms.service: azure-arc
 ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: de701e79677f7e862d953eb5f03534b4eaefb367
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 040f69adf318cb224a56e7838c8abf8e03a60286
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290761"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783695"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する 
 
