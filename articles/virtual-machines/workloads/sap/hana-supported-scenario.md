@@ -3,7 +3,7 @@ title: SAP HANA on Azure (L インスタンス) のサポートされるシナ�
 description: SAP HANA on Azure (L インスタンス) のサポートされるシナリオとそのアーキテクチャの詳細
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/26/2019
-ms.author: saghorpa
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a49c55da0bb8018b3faa7c6f70b02e79d9478603
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e1868514919cdb40a0ac607b446ab944e8c36da
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666681"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738844"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 この記事では、HANA L インスタンス (HLI) のサポートされるシナリオとアーキテクチャの詳細について説明します。

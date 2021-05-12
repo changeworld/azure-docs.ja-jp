@@ -2,7 +2,7 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: azure-communication-services
-author: pvicencio
+author: paolamvhz
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
@@ -10,12 +10,12 @@ ms.date: 03/12/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: cdf1267d53abc2214521f584b6cfb4738b808204
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: b11be98718db282e219f3d1d151ceab235efe5e2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106112961"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109805121"
 ---
 Communication Services Java SMS SDK を使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -64,7 +64,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-core</artifactId>
-    <version>1.13.0</version> <!-- {x-version-update;com.azure:azure-core;dependency} -->
+    <version>1.16.0</version> <!-- {x-version-update;com.azure:azure-core;dependency} -->
 </dependency>
 ```
 

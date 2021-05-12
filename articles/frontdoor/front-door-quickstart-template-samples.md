@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: duau
-ms.openlocfilehash: bac1df020bf2a683fc04a4d05ae73311e149f70c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e84f724bcccd18f182051b51cb67858745d36d1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511775"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738502"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 
-次の表は、Azure Front Door のための Azure Resource Manager デプロイ モデル テンプレートのリンク一覧です。 
+次の表は、Azure Front Door のための Azure Resource Manager デプロイ モデル テンプレートのリンク一覧です。
 
 | Template | 説明 |
 | ---| ---|
@@ -31,9 +31,9 @@ ms.locfileid: "97511775"
 | [アクティブ/スタンバイ バックエンド構成を備えた Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-priority-lb)| アクティブ/スタンバイ アプリケーション トポロジの優先順位ベースのルーティングをデモする Front Door を作成します。つまり、デフォルトではプライマリ (最高の優先順位) バックエンドが使用できなくなるまですべてのトラフィックをこのバックエンドに送信します。 |
 | [特定のルートのキャッシュを有効にした Front Door の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-create-caching)| 定義済みのルーティング構成でキャッシュが有効になっている、つまりワークロードの任意の静的資産をキャッシュする Front Door を作成します。 |
 | [Front Door のホスト名のセッション アフィニティの構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-session-affinity) | Front Door を更新してフロントエンド ホストのセッション アフィニティを有効にすることによって、後続のトラフィックを同じユーザー セッションから同じバックエンドに送信します。 |
-| [クライアント IP の許可リスト登録またはブロックリスト登録用の Front Door の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-clientip)| Front Door を構成して、クライアント IP を使用するカスタム アクセス コントロールを使用して特定のクライアント IP のトラフィックを制限します。 |
-| [特定の http パラメーターでアクションを実行する Front Door の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-waf-http-params)| Front Door を構成して、http パラメーターを使用するアクセス コントロールのカスタム ルールを使用して受信要求の http パラメーターに基づいて特定のトラフィックを許可またはブロックします。 |
-| [Front Door レート制限の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-rate-limiting)| Front Door を構成して、特定のフロントエンド ホストの受信トラフィックのレート制限を行います。 |
+| [クライアント IP の許可リスト登録またはブロックリスト登録用の Front Door の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-clientip)| Front Door を構成して、クライアント IP を使用するカスタム アクセス コントロールを使用して特定のクライアント IP のトラフィックを制限します。 |
+| [特定の http パラメーターでアクションを実行する Front Door の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-waf-http-params)| Front Door を構成して、http パラメーターを使用するアクセス コントロールのカスタム ルールを使用して受信要求の http パラメーターに基づいて特定のトラフィックを許可またはブロックします。 |
+| [Front Door レート制限の構成](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-rate-limiting)| Front Door を構成して、特定のフロントエンド ホストの受信トラフィックのレート制限を行います。 |
 | | |
 
 ## <a name="next-steps"></a>次のステップ

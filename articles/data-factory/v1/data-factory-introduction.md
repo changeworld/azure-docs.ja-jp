@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea7c5a82a6219e673454d627a4350291c5b3f047
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786466"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761653"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -83,12 +83,12 @@ Data Factory を使用すれば、データ パイプラインのコピー ア�
 ### <a name="data-movement-activities"></a>データ移動アクティビティ
 Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアを選択すると、そのストアとの間でデータをコピーする方法がわかります。 Data Factory は次のデータ ストアをサポートしています。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-movement-activities.md)」を参照してください。
 
 ### <a name="data-transformation-activities"></a>データ変換アクティビティ
-[!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
+[!INCLUDE [data-factory-transformation-activities](includes/data-factory-transformation-activities.md)]
 
 詳細については、「[コピー アクティビティを使用したデータの移動](data-factory-data-transformation-activities.md)」を参照してください。
 

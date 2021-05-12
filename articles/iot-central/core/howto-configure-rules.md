@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c78b95e7651117f85f3cf38f5cbff1b890145dae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796790"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759547"
 ---
 # <a name="configure-rules"></a>ルールを構成する
-
-*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 IoT Central のルールは、接続されているデバイスからアクティブに監視されているイベントでトリガーする、カスタマイズ可能な応答ツールとして機能します。 以下のセクションで、ルールの評価方法について説明します。
 

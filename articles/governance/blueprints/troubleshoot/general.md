@@ -3,12 +3,12 @@ title: 一般的なエラーのトラブルシューティング
 description: ポリシー違反やブループリント パラメーター関数などの、ブループリントを作成、割り当て、および削除するときの問題をトラブルシューティングする方法について説明します。
 ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 183d27235ce738d884a02b53a498f77ebed41e66
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ca86b81f846465c996d05f08d3a721829f8e496f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326419"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733897"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -43,7 +43,7 @@ ms.locfileid: "108326419"
 - 作成されるリソースはポリシーの制約を受けます (一般的には SKU または場所の制約)
 - デプロイはポリシーによって構成される設定フィールドです (タグで一般的)
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 ブルー プリントを変更して、エラーの詳細に含まれているポリシーと競合しないようにします。 変更できない場合、代替として、ブループリントがポリシーと競合しないようにポリシー割り当てのスコープを変更するという選択肢があります。
 
@@ -57,7 +57,7 @@ ms.locfileid: "108326419"
 
 `[resourceGroup().tags.myTag]` などの関数を使用するブループリント パラメーターを成果物に渡すと、動的関数ではなく、成果物に対して関数が設定されます。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解像度
 
 関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints サービスによって成果物に配置され、意図したとおりに動的になります。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
@@ -82,5 +82,5 @@ ms.locfileid: "108326419"
 問題がわからなかった場合、または問題を解決できない場合は、次のいずれかのチャネルでサポートを受けてください。
 
 - [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
-- [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる – Microsoft Azure 公式アカウントです。Azure コミュニティを適切なリソース (回答、サポート、エキスパート) に結び付けることで、カスタマー エクスペリエンスを向上します。
+- [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 - さらにヘルプが必要であれば、Azure サポート インシデントを送信できます。 その場合は、 [Azure サポートのサイト](https://azure.microsoft.com/support/options/) に移動して、 **[サポートの要求]** をクリックします。

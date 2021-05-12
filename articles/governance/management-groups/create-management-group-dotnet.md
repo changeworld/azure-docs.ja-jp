@@ -4,12 +4,12 @@ description: このクイックスタートでは、.NET Core を使用して、
 ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 82382160465684b0da40094012c6cb6561bf5036
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 422382ca438e203b2ee77deddc9ca82d73cd1ed4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323287"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733773"
 ---
 # <a name="quickstart-create-a-management-group-with-net-core"></a>クイック スタート: .NET Core を使用して管理グループを作成する
 
@@ -60,7 +60,7 @@ ms.locfileid: "108323287"
    using Microsoft.Rest;
    using Microsoft.Azure.Management.ManagementGroups;
    using Microsoft.Azure.Management.ManagementGroups.Models;
-   
+
    namespace mgCreate
    {
        class Program
@@ -72,12 +72,12 @@ ms.locfileid: "108323287"
                string strClientSecret = args[2];
                string strGroupId = args[3];
                string strDisplayName = args[4];
-   
+
                var authContext = new AuthenticationContext($"https://login.microsoftonline.com/{strTenant}");
                var authResult = await authContext.AcquireTokenAsync(
                       "https://management.core.windows.net",
                       new ClientCredential(strClientId, strClientSecret));
-   
+
                using (var client = new ManagementGroupsAPIClient(new TokenCredentials(authResult.AccessToken)))
                {
                    var mgRequest = new CreateManagementGroupRequest
