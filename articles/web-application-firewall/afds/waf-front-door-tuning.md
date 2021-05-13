@@ -7,13 +7,13 @@ ms.service: web-application-firewall
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
-ms.reviewer: tyao
-ms.openlocfilehash: c0879edc0e3fbd6cf6bcadc26dd862f95ecf4fd4
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.reviewer: victorh
+ms.openlocfilehash: afdfb9ea9a04c732da150c22753997c08eb2bff0
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872355"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633953"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Azure Front Door 用に Web Application Firewall (WAF) を調整する
  

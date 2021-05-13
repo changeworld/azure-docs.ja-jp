@@ -26,8 +26,10 @@
           href: quickstarts/chat/meeting-interop.md
     - name: テレフォニーと SMS
       items:
-        - name: 電話番号の管理
+        - name: 電話番号の取得
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: 電話番号を Azure に移植する
+          href: quickstarts/telephony-sms/port-phone-number.md
         - name: 電話の呼び出しのアプリへの追加
           href: quickstarts/voice-video-calling/pstn-call.md
         - name: SMS メッセージの送信
@@ -40,9 +42,9 @@
       items:
         - name: 音声通話をアプリに追加する
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
-        - name: 音声通話をアプリに追加する (JavaScript)
+        - name: ビデオ通話をアプリに追加する
           href: quickstarts/voice-video-calling/get-started-with-video-calling.md
-        - name: 通話クライアント ライブラリを使用する
+        - name: Calling SDK を使用する
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: 通話アプリを Teams の会議に参加させる
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
@@ -63,18 +65,20 @@
       href: tutorials/hmac-header-tutorial.md
     - name: Communication Services 用の Web アプリを準備する (Node.js)
       href: tutorials/building-app-start.md
+    - name: Postman で ACS の SMS API に署名して要求を行う
+      href: tutorials/postman-tutorial.md
 - name: 概念
   expanded: false
   items:
     - name: チャット
       items:
-        - name: チャット クライアント ライブラリの概要
+        - name: Chat SDK の概要
           href: concepts/chat/sdk-features.md
         - name: チャットに関する概念
           href: concepts/chat/concepts.md
     - name: テレフォニーと SMS
       items:
-        - name: SMS クライアント ライブラリの概要
+        - name: SMS SDK の概要
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS に関する概念
           href: concepts/telephony-sms/concepts.md
@@ -82,14 +86,22 @@
           href: concepts/telephony-sms/telephony-concept.md
         - name: 電話番号の種類
           href: concepts/telephony-sms/plan-solution.md
-        - name: SIP インターフェイスのインフラストラクチャ要件
+        - name: Azure ダイレクト ルーティング インフラストラクチャの要件
           href: concepts/telephony-sms/sip-interface-infrastructure.md
+        - name: SMS に関する FAQ
+          href: concepts/telephony-sms/sms-faq.md
+        - name: メッセージング ポリシー
+          href: concepts/telephony-sms/messaging-policy.md
     - name: 音声およびビデオによる通話
       items:
-        - name: 通話クライアント ライブラリの概要
+        - name: 既知の問題
+          href: concepts/known-issues.md
+        - name: Calling SDK の概要
           href: concepts/voice-video-calling/calling-sdk-features.md
-        - name: 音声とビデオに関する概念
+        - name: 音声とビデオの概念
           href: concepts/voice-video-calling/about-call-types.md
+        - name: ネットワークの要件
+          href: concepts/voice-video-calling/network-requirements.md
         - name: 通話のフロー
           href: concepts/call-flows.md
         - name: 通話フローのトポロジ
@@ -100,16 +112,6 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: UI フレームワークの機能
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: データと操作
-      items:
-        - name: サービス イベント (EventGrid)
-          href: concepts/event-handling.md
-        - name: ログ記録と診断
-          href: concepts/logging-and-diagnostics.md
-        - name: メトリック
-          href: concepts/metrics.md
-        - name: トラブルシューティング
-          href: concepts/troubleshooting-info.md
     - name: SDK と REST API
       href: concepts/sdk-options.md
     - name: クライアントとサーバーのアーキテクチャ
@@ -126,10 +128,19 @@
       href: concepts/notifications.md
     - name: Teams の相互運用性
       href: concepts/teams-interop.md
-    - name: 既知の問題
-      href: concepts/known-issues.md
+    - name: サービス イベント (EventGrid)
+      href: ../event-grid/event-schema-communication-services.md
+      maintainContext: true
+    - name: ログ記録と診断
+      href: concepts/logging-and-diagnostics.md
+    - name: メトリック
+      href: concepts/metrics.md
+    - name: トラブルシューティング
+      href: concepts/troubleshooting-info.md
 - name: サンプル
   items:
+    - name: 概要
+      href: samples/overview.md
     - name: グループ通話のヒーロー サンプル
       href: samples/calling-hero-sample.md
     - name: グループ チャットのヒーロー サンプル
@@ -140,14 +151,16 @@
   items:
     - name: リファレンス ドキュメントの概要
       href: concepts/reference.md
+    - name: Azure CLI
+      href: /cli/azure/communication
     - name: REST API のドキュメント
       href: /rest/api/communication/
     - name: ライブラリの呼び出し
       items:
         - name: 呼び出し (JavaScript)
-          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/
         - name: 呼び出し (Android/Java)
-          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
+          href: /java/api/com.azure.android.communication.calling?view=communication-services-java-android
         - name: 呼び出し (iOS)
           href: /objectivec/communication-services/calling/
     - name: チャット ライブラリ

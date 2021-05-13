@@ -36,7 +36,7 @@
           href: connect-ios.md
         - name: Microsoft Store クライアントを使用した接続
           href: connect-microsoft-store.md
-        - name: Linux デバイスを使用した接続
+        - name: シン クライアントを使用して接続する
           href: linux-overview.md
     - name: デバイスのリダイレクトを構成する
       href: configure-device-redirections.md
@@ -126,8 +126,14 @@
       href: disaster-recovery.md
     - name: KDC プロキシを設定する
       href: key-distribution-center-proxy.md
-    - name: RD ゲートウェイのロールを設定する
-      href: rd-gateway-role.md
+    - name: Start VM on Connect
+      items:
+        - name: Start VM on Connect を設定する
+          href: start-virtual-machine-connect.md
+        - name: Start VM on Connect のよくあるご質問
+          href: start-virtual-machine-connect-faq.md
+    - name: ドレイン モードを設定する
+      href: drain-mode.md
 - name: 概念
   items:
     - name: 組み込みのロール
@@ -150,6 +156,8 @@
           href: safe-url-list.md
         - name: 帯域幅に関する考慮事項
           href: rdp-bandwidth.md
+        - name: プロキシのサポートに関するガイドライン
+          href: proxy-server-support.md
         - name: ユーザー接続の待ち時間の特定
           href: connection-latency.md
     - name: Windows Virtual Desktop における委任されたアクセス
@@ -160,12 +168,10 @@
       href: fslogix-containers-azure-files.md
     - name: FSLogix プロファイル コンテナー用のストレージ オプション
       href: store-fslogix-profile.md
-    - name: パートナー統合
-      href: partners.md
     - name: Windows Virtual Desktop に関する FAQ
       href: faq.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
-      href: windows-10-multisession-faq.md
+      href: windows-10-multisession-faq.yml
     - name: MSIX アプリのアタッチ
       items:
         - name: MSIX アプリのアタッチとは
@@ -181,7 +187,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/windows-virtual-desktop-security-baseline?context=/azure/virtual-desktop/context/context
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
@@ -210,12 +216,16 @@
       href: security-guide.md
     - name: Linux Support
       href: linux-overview.md
+    - name: Azure CLI
+      href: /cli/azure/desktopvirtualization
+    - name: Azure Monitor コストを見積もる
+      href: azure-monitor-costs.md
     - name: サポートされる RDP ファイルの設定
       href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: 仮想マシンのサイズ指定ガイダンス
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure コマンド ライン インターフェイス (CLI)
-      href: /cli/azure/ext/desktopvirtualization/
+      href: /cli/azure/
     - name: Azure シナリオ例
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: メール検出
@@ -236,9 +246,11 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技術コミュニティ サポート グループ
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: UserVoice フォーラム
-      href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Microsoft 365 のロードマップ
       href: 'https://aka.ms/wvdroadmap'
     - name: Azure Resource Manager のテンプレート
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
+    - name: Azure コンプライアンス認証
+      href: 'https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/'
+    - name: Azure Advisor
+      href: ../advisor/advisor-overview.md

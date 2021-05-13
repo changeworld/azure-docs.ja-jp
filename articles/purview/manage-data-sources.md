@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 90a873b7de6ccc1ba21a05bf4c0e288ed668cac0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8eefda763765fd17fbf86bcf3205e854459a9f6
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694463"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656248"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Azure Purview でデータ ソースを管理する (プレビュー)
 
@@ -30,11 +30,11 @@ ms.locfileid: "101694463"
 
    :::image type="content" source="media/manage-data-sources/select-source-type.png" alt-text="[ソースの登録] ページでデータ ソースの種類を選択する":::
 
-1. **[ソースの登録]**  ページでフォームに入力します。 ソースの名前を選択し、関連する情報を入力します。 アカウントの選択方法として **[Azure サブスクリプションから]** を選択した場合は、サブスクリプション内のソースがドロップダウン リストに表示されます。 または、ソース情報を手動で入力することもできます。
+2. **[ソースの登録]**  ページでフォームに入力します。 ソースの名前を選択し、関連する情報を入力します。 アカウントの選択方法として **[Azure サブスクリプションから]** を選択した場合は、サブスクリプション内のソースがドロップダウン リストに表示されます。 
 
    :::image type="content" source="media/manage-data-sources/register-sources-form.png" alt-text="データ ソース情報のフォーム":::
 
-1. **[完了]** を選択します。
+3. **[登録]** を選択します。
 
 ## <a name="view-sources"></a>ソースを表示する
 

@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d9429507e39d975c5534e33052c56d77eeb3eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 309497c5ad17bd8c191992d15cb61b07fd8f9348
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "72941276"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747163"
 ---
 # <a name="supported-browsers-for-azure-iot-central"></a>Azure IoT Central 用にサポートされているブラウザー
-
-*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 Azure IoT Central は、最新のデスクトップ、タブレット、ブラウザー間でアクセスできます。 次の記事では、サポートされているブラウザーと必要な接続の一覧を示しています。  
 

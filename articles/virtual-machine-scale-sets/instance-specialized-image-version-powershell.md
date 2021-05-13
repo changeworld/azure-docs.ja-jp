@@ -3,18 +3,18 @@ title: 特殊化されたイメージからスケール セットを作成する
 description: 共有イメージ ギャラリー内の特殊化されたイメージを使用してスケール セットを作成します。
 author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: b47498127996698d53946eb2aaf54368132ae7f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.openlocfilehash: 831c3f0c7199a6603655e5fa4bb34672edd36317
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98877987"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771903"
 ---
 # <a name="create-a-scale-set-from-a-specialized-image-using-powershell"></a>PowerShell を使用して特殊化されたイメージからスケール セットを作成する 
 

@@ -3,12 +3,12 @@ title: クイック スタート:Azure CLI で共有クエリを作成する
 description: このクイックスタートでは、手順に従って Azure CLI の Resource Graph 拡張機能を有効にし、共有クエリを作成します。
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 62904a10beef9118056f34ff830f266156f42590
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 990f38b3d11cf2c0a1a8dc9c3ea8991911ada896
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326041"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751537"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Resource Graph 共有クエリを作成する
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/09/2020
 ms.author: v-jawe
-ms.openlocfilehash: 8a877e1773431053c5ad7344209076cb868a0ee3
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6df6fc7e4c2cc7a1271d3ca01e34fe6802e7abde
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424904"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109718836"
 ---
 このクイックスタートでは、Speech Service と cURL を使用してテキストを音声に変換する方法について学習します。
 
@@ -40,4 +40,42 @@ ms.locfileid: "94424904"
 
 次のような応答を受け取ります。
 
-:::code language="curl" source="~/cognitive-services-quickstart-code/curl/speech/get-voices.sh" id="response":::
+```http
+[
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+        "DisplayName": "Hoda",
+        "LocalName": "هدى",
+        "ShortName": "ar-EG-Hoda",
+        "Gender": "Female",
+        "Locale": "ar-EG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
+        "DisplayName": "Naayf",
+        "LocalName": "نايف",
+        "ShortName": "ar-SA-Naayf",
+        "Gender": "Male",
+        "Locale": "ar-SA",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
+        "DisplayName": "Ivan",
+        "LocalName": "Иван",
+        "ShortName": "bg-BG-Ivan",
+        "Gender": "Male",
+        "Locale": "bg-BG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
+    },
+    {
+        // This response is truncated. The response will include 
+        // a complete list of supported languages and specific 
+        // details like short name, gender, etc. 
+    }
+]
+```

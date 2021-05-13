@@ -1,18 +1,19 @@
 ---
 title: FedRAMP High ブループリント サンプルの概要
 description: FedRAMP High ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の FedRAMP High コントロールを評価するのに役立ちます。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 1287a0369e59cc78cce775bff01fe885c1b571d0
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b98c73992202d7adeb60c3eb52219fd411cde959
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034851"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757333"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルの概要
 
-FedRAMP High ブループリント サンプルでは、特定の FedRAMP High コントロールの評価に役立つ、[Azure Policy](../../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。 このブループリントは、FedRAMP High コントロールの実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。
+FedRAMP High ブループリント サンプルでは、特定の FedRAMP High コントロールの評価に役立つ、[Azure Policy](../../../policy/overview.md) を使用したガバナンス ガードレールが提供されます。
+このブループリントは、FedRAMP High コントロールの実施が必要とされる、Azure でデプロイされたアーキテクチャのために、一連の主要なポリシーをデプロイするのに役立ちます。
 
 ## <a name="control-mapping"></a>コントロール マッピング
 

@@ -6,17 +6,18 @@ documentationcenter: ''
 author: mathapli
 manager: rochakm
 ms.service: virtual-machine-scale-sets
+ms.subservice: azure-hybrid-benefit
 ms.collection: linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: 5b0fcbabfa97312622bc13fbfa4e4bba4b0d847e
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: afbdd490a429c86f1842b83fb62c3ce6a023a0ed
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227337"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750947"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set"></a>Linux 仮想マシン スケール セットの Azure ハイブリッド特典
 

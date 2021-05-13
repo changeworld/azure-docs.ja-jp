@@ -22,6 +22,18 @@ items:
         href: quickstarts-sdk/client-library.md
       - name: サンプル
         href: /samples/browse/?products=azure&terms=computer-vision
+      - name: AI の責任ある使用
+        items:
+          - name: 透明性に関するメモ
+            items:
+              - name: OCR のユース ケース
+                href: /legal/cognitive-services/computer-vision/ocr-transparency-note?context=/azure/cognitive-services/computer-vision/context/context
+              - name: 特性と制限
+                href: /legal/cognitive-services/computer-vision/ocr-characteristics-and-limitations?context=/azure/cognitive-services/computer-vision/context/context
+          - name: 統合と責任ある使用
+            href: /legal/cognitive-services/computer-vision/ocr-guidance-integration-responsible-use?context=/azure/cognitive-services/computer-vision/context/context
+          - name: データ、プライバシー、セキュリティ
+            href: /legal/cognitive-services/computer-vision/ocr-data-privacy-security?context=/azure/cognitive-services/computer-vision/context/context
       - name: 操作方法ガイド
         items:
           - name: Read API を呼び出す

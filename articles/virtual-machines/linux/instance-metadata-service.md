@@ -5,18 +5,17 @@ services: virtual-machines
 author: KumariSupriya
 manager: paulmey
 ms.service: virtual-machines
-ms.subservice: monitoring
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/16/2021
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 3fb0abf3fe9108461427960a2f157c4fcd3bf1d5
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 819d3c8a2bbf8890efd7dd2ea2de2deda4eef8d8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588134"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750835"
 ---
 # <a name="azure-instance-metadata-service-linux"></a>Azure Instance Metadata Service (Linux)
 

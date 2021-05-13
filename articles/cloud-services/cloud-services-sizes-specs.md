@@ -3,17 +3,18 @@ title: Azure Cloud Services (クラシック) の仮想マシンのサイズ | M
 description: Azure のクラウド サービスの Web ロールと worker ロールのさまざまな仮想マシンのサイズ (および ID) の一覧を示します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: a31c9c4747ccc72f0552ebe2f8daf85ef5fba8a3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4bc901f441de060bac3cd7d61f883c9d4e572f80
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015303"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771579"
 ---
 # <a name="sizes-for-cloud-services-classic"></a>Cloud Services (クラシック) のサイズ
 

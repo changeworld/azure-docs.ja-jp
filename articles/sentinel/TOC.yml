@@ -21,8 +21,10 @@
       href: tutorial-monitor-your-data.md
     - name: インシデントの調査
       href: tutorial-investigate-cases.md
-    - name: 脅威に対応する
+    - name: オートメーションを使用して脅威に対応する
       href: tutorial-respond-threats-playbook.md
+    - name: KQL クエリを作成する (Learn モジュール)
+      href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
 - name: 概念
   items:
     - name: エンティティを使用したデータの分類
@@ -33,8 +35,18 @@
           href: roles.md
         - name: リソースによるアクセスの管理
           href: resource-context-rbac.md
+        - name: MSSP 知的財産を保護する
+          href: mssp-protect-intellectual-property.md
     - name: 高度なマルチステージ攻撃の検出
       href: fusion.md
+    - name: オートメーション (SOAR)
+      items:
+        - name: Azure Sentinel での SOAR
+          href: automation-in-azure-sentinel.md
+        - name: インシデント処理のためのオートメーション ルール
+          href: automate-incident-handling-with-automation-rules.md
+        - name: プレイブックを使用した高度なオートメーション
+          href: automate-responses-with-playbooks.md
     - name: UEBA を使用した高度な脅威の特定
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 脅威インテリジェンスの Azure Sentinel へのインポート
@@ -45,16 +57,16 @@
       href: microsoft-365-defender-sentinel-integration.md
     - name: ウォッチリストで外部データを使用する
       href: watchlists.md
-    - name: ロールを使用したアクセス許可の割り当て
-      href: roles.md
     - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
       href: extend-sentinel-across-workspaces-tenants.md
     - name: 複数のテーブルにわたってデータを正規化する
       href: normalization.md
-    - name: セキュリティ
+    - name: 長期的なログ保持のために Azure Data Explorer を使用する
+      href: store-logs-in-azure-data-explorer.md
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json
 - name: 操作方法ガイド
   items:
     - name: データ ソースの接続
@@ -84,6 +96,8 @@
               href: connect-azure-kubernetes-service.md
             - name: Azure SQL データベース ログ
               href: connect-azure-sql-logs.md
+            - name: Azure Storage アカウント
+              href: connect-azure-storage-account.md
             - name: Azure Web アプリケーション ファイアウォール (WAF)
               href: connect-azure-waf.md
             - name: Defender for IoT (旧称 ASC for IoT)
@@ -110,6 +124,8 @@
               href: connect-windows-firewall.md
             - name: Windows セキュリティ イベント
               href: connect-windows-security-events.md
+            - name: Windows Virtual Desktop
+              href: connect-windows-virtual-desktop.md
         - name: 外部ソリューションの接続
           items:
             - name: Agari のフィッシング対策とブランド保護
@@ -250,8 +266,12 @@
           href: connect-azure-stack.md
         - name: データ コネクタの正常性を監視する
           href: monitor-data-connector-health.md
-    - name: ユーザーとエンティティの動作分析の有効化
-      href: enable-entity-behavior-analytics.md
+    - name: ユーザーとエンティティの動作分析を使用する
+      items:
+        - name: UEBA を有効にする
+          href: enable-entity-behavior-analytics.md
+        - name: UEBA を使用して調査する
+          href: investigate-with-ueba.md
     - name: データ フィールドをエンティティにマップする
       href: map-data-fields-to-entities.md
     - name: 複数のテナントの管理 (MSSP)
@@ -283,6 +303,8 @@
   items:
     - name: 上位の Azure Sentinel ブック
       href: top-workbooks.md
+    - name: Azure CLI
+      href: /cli/azure/sentinel
     - name: Azure RBAC ロール
       items:
         - name: すべての Azure ロール
@@ -311,8 +333,14 @@
           href: /azure/data-explorer/kusto/query/
         - name: Kusto クエリ言語のクイック リファレンス
           href: /azure/data-explorer/kql-quick-reference
+        - name: Azure Monitor ログ クエリの最適化
+          href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA エンリッチメント
       href: ueba-enrichments.md
+    - name: CEF ログ フィールドのマッピング
+      href: cef-name-mapping.md
+    - name: Microsoft 365 Defender にオンボードされない MCAS アラート
+      href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
 - name: リソース
   items:
     - name: 有用なリソース
@@ -323,3 +351,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/azure-sentinel/'
+    - name: 米国政府機関向けクラウドで利用できる機能
+      href: /azure/security/fundamentals/feature-availability

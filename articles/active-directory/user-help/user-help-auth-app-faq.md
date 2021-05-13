@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/28/2021
+ms.date: 04/30/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: e5f7db6b360769b7a3c2e3ffdafe66f94c2582aa
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6cc64c9b3ad3f177d50f3e659e8ea628ba485159
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178306"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764173"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -203,7 +203,13 @@ Microsoft は、Android ではアプリに位置情報へのアクセスを常�
 
 **Q**: watchOS 7 で Apple Watch に問題が発生します。なぜでしょうか。
 
-**A**: watchOS 7 で通知を承認できない問題があります。この問題を解決するために Apple と連携しています。 解決されるまで、Microsoft Authenticator watchOS アプリを必要とする通知は、代わりにお使いのスマートフォンで承認してください。
+**A**: watchOS 7 でセッションを承認または拒否すると、「電話との通信に失敗しました。 今後、要求の際にはウォッチ画面を起動しておくようにしてください。 詳細については、FAQ を参照してください」というエラー メッセージが表示されることがあります。 アプリ ロックが有効になっているとき、または番号照合が必要な場合には通知に関する既知の問題があり、これを解決するため、Apple と協力しています。 解決されるまで、Microsoft Authenticator watchOS アプリを必要とする通知は、代わりにお使いのスマートフォンで承認してください。
+
+### <a name="signing-into-an-ios-app"></a>iOS アプリへのサインイン
+
+**Q**: iOS アプリにサインインしようとしており、Authenticator アプリで通知を承認する必要があります。 iOS アプリに戻ると、スタックしてしまいます。 どうすればよいですか。
+
+**A**: これは iOS 13 以降の既知の問題です。 サポート管理者に連絡して、次の情報を提供してください。`Use Azure MFA, not MFA server.`
 
 ### <a name="apple-watch-doesnt-show-accounts"></a>Apple Watch にアカウントが表示されない
 

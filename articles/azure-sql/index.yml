@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SQL のドキュメント
-summary: 'クラウド内の SQL Server データベース エンジン製品の Azure SQL ファミリに関するドキュメントを紹介します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。 '
+summary: クラウド内の SQL Server データベース エンジン製品の Azure SQL ファミリに関するドキュメントを紹介します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。
 metadata:
   title: Azure SQL のドキュメント
   description: Azure SQL は、クラウド内の SQL Server データベース エンジン製品のファミリで、Azure SQL Database のフルマネージド データベース、Azure SQL Managed Instance のフルマネージド インスタンス、または Azure の仮想マシンにインストールされた SQL Server です。
@@ -14,19 +14,23 @@ metadata:
   ms.author: sstein
   ms.reviewer: 
   ms.date: 10/30/2019
-  ms.openlocfilehash: 91221735001f55974f6aba4b6fcae39a92834da8
-  ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+  ms.openlocfilehash: 8f462fc8b37b3f84d0e74897de76fc92d1c08fb8
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/13/2020
-  ms.locfileid: "94593894"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108147717"
 landingContent:
-- title: Azure SQL Database
+- title: Azure SQL データベース
   linkLists:
-  - linkListType: overview
+  - linkListType: whats-new
     links:
     - text: 新機能
       url: database/doc-changes-updates-release-notes.md?tabs=single-database
+    - text: フィードバックがある場合は、 アンケートにご協力ください。
+      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
+  - linkListType: overview
+    links:
     - text: SQL Database とは
       url: database/sql-database-paas-overview.md
     - text: エラスティック プールとは
@@ -55,6 +59,12 @@ landingContent:
       url: database/transact-sql-tsql-differences-sql-server.md
 - title: Azure SQL Managed Instance
   linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 新機能
+      url: database/doc-changes-updates-release-notes.md?tabs=managed-instance
+    - text: フィードバックがある場合は、 アンケートにご協力ください。
+      url: https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456
   - linkListType: overview
     links:
     - text: 新機能
@@ -116,7 +126,7 @@ landingContent:
     - text: 高可用性とディザスター リカバリー
       url: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
     - text: パフォーマンスに関するガイドライン
-      url: virtual-machines/windows/performance-guidelines-best-practices.md
+      url: ./virtual-machines/windows/performance-guidelines-best-practices-checklist.md
 - title: SQL Server からの移行
   linkLists:
   - linkListType: deploy

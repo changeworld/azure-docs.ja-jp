@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 9228faade46c2bfec3ed5170be5e256ead7d5220
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 35aa53def1a72f98309e7616ce64194dd77c5a4d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017908"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331288"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>SQL insights のトラブルシューティング (プレビュー)
 SQL insights でのデータ収集の問題をトラブルシューティングするには、 **[プロファイルの管理]** タブで監視マシンの状態を確認します。ここには、以下の状態のいずれかが表示されています。
@@ -25,6 +25,9 @@ SQL insights でのデータ収集の問題をトラブルシューティング�
 
 ## <a name="not-collecting-state"></a>Not collecting (収集中ではない) 状態 
 過去10分間、SQL の *InsightsMetrics* にデータがない場合、監視マシンの状態は *[Not collecting]\(収集中ではない\)* になります。 
+
+> [!NOTE]
+> [サポートされているバージョンの SQL](sql-insights-overview.md#supported-versions) からデータを収集しようとしていることを確認してください。 たとえば、有効なプロファイルと接続文字列を使用してデータを収集しようとしても、サポートされていないバージョンの Azure SQL Database からデータを収集しようとすると、収集されない状態となります。
 
 SQL insights では、次のクエリを使用してこの情報を取得します。
 

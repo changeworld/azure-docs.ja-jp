@@ -8,19 +8,18 @@ manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
-ms.service: virtual-machines-windows
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: depadia
-ms.openlocfilehash: a13b62da91e3ce6f18ba4dcda2b3b0f22c815026
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0eff97ac5aeecf712674bca247bb6305e550f482
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144387"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773703"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-windows-on-azure"></a>Azure の Windows 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -413,7 +412,7 @@ NFS サーバーを別に作成した場合は、バックアップと復元の�
 
 Windows 仮想マシン上で実行されている SAP BOBI プラットフォームの場合、Azure での SAP BusinessObjects BI プラットフォームの計画および実装ガイドの[サポート マトリックス](businessobjects-deployment-guide.md#support-matrix)に記載されている、任意のサポートされているデータベースで、CMS と監査データベースを実行できます。 そのため、CMS および監査データ ストアに使用されているデータベースに基づいて、バックアップと復元の戦略を採用することが重要です。
 
-1. **Azure SQL データベース** では、SQL Server 技術を利用して、[完全バックアップ](/sql/relational-databases/backup-restore/full-database-backups-sql-server?preserve-view=true&view=sql-server-ver15)を毎週、[差分バックアップ](/sql/relational-databases/backup-restore/differential-backups-sql-server?preserve-view=true&view=sql-server-ver15)を 12 ～ 24 時間ごと、そして[トランザクション ログ](/sql/relational-databases/backup-restore/transaction-log-backups-sql-server?preserve-view=true&view=sql-server-ver15) バックアップを 5 ～ 10 分ごとに作成します。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。 ユーザーは、ローカル冗長、ゾーン冗長、または geo 冗長の各ストレージ BLOB 間でバックアップ ストレージの冗長性を構成するオプションを選択できます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) から保護するために、データのコピーが複数格納されます。 Azure SQL データベースでは既定で、[ペアになっているリージョン](../../../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長[ストレージ BLOB](../../../storage/common/storage-redundancy.md) にバックアップが格納されます。 これは、ビジネスの要件に応じて、ローカル冗長またはゾーン冗長のストレージ BLOB に変更できます。 Azure SQL データベースのバックアップのスケジュール、保有期間、ストレージ使用量に関する最新情報は、「[自動バックアップ - Azure SQL Database および SQL Managed Instance](../../../azure-sql/database/automated-backups-overview.md)」を参照してください。
+1. **Azure SQL データベース** では、SQL Server 技術を利用して、[完全バックアップ](/sql/relational-databases/backup-restore/full-database-backups-sql-server?preserve-view=true&view=sql-server-ver15)を毎週、[差分バックアップ](/sql/relational-databases/backup-restore/differential-backups-sql-server?preserve-view=true&view=sql-server-ver15)を 12 ～ 24 時間ごと、そして [トランザクション ログ](/sql/relational-databases/backup-restore/transaction-log-backups-sql-server?preserve-view=true&view=sql-server-ver15) バックアップを 5 ～ 10 分ごとに作成します。 トランザクション ログ バックアップの頻度は、コンピューティング サイズとデータベース アクティビティの量に基づいて決まります。 ユーザーは、ローカル冗長、ゾーン冗長、または geo 冗長の各ストレージ BLOB 間でバックアップ ストレージの冗長性を構成するオプションを選択できます。 ストレージの冗長性メカニズムでは、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止や停電、大規模な自然災害など) から保護するために、データのコピーが複数格納されます。 Azure SQL データベースでは既定で、[ペアになっているリージョン](../../../best-practices-availability-paired-regions.md)にレプリケートされる geo 冗長[ストレージ BLOB](../../../storage/common/storage-redundancy.md) にバックアップが格納されます。 これは、ビジネスの要件に応じて、ローカル冗長またはゾーン冗長のストレージ BLOB に変更できます。 Azure SQL データベースのバックアップのスケジュール、保有期間、ストレージ使用量に関する最新情報は、「[自動バックアップ - Azure SQL Database および SQL Managed Instance](../../../azure-sql/database/automated-backups-overview.md)」を参照してください。
 
 2. **Azure Database of MySQL** では、サーバーのバックアップを自動的に作成し、ユーザーが構成したローカル冗長または geo 冗長ストレージに保存します。 Azure Database for MySQL によって、データ ファイルとトランザクション ログのバックアップが作成されます。 サポートされている最大ストレージ サイズに応じて、完全バックアップと差分バックアップ (最大 4 TB のストレージ サーバー) またはスナップショット バックアップ (最大 16 TB のストレージ サーバー) が作成されます。 これらのバックアップを使用すると、サーバーを、構成済みのバックアップ保持期間内の任意の時点に復元できます。 既定のバックアップ保有期間は 7 日間です。これは最大 35 日間まで[必要に応じて構成](../../../mysql/howto-restore-server-portal.md#set-backup-configuration)できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 これらのバックアップ ファイルはユーザーに公開されておらず、エクスポートできません。 これらのバックアップは、Azure Database for MySQL の復元操作にのみ使用できます。 [mysqldump](../../../mysql/concepts-migrate-dump-restore.md) を使用して、データベースをコピーできます。 詳細については、「[Azure Database for MySQL でのバックアップと復元](../../../mysql/concepts-backup.md)」を参照してください。
 

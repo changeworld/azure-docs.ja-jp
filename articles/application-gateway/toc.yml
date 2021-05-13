@@ -83,13 +83,15 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/application-gateway-security-baseline?toc=/azure/application-gateway/toc.json
     - name: SSL
       items:
         - name: SSL ターミネーションとエンド ツー エンド SSL
           href: ssl-overview.md
         - name: SSL ポリシーの概要
           href: application-gateway-ssl-policy-overview.md
+        - name: 相互認証
+          href: mutual-authentication-overview.md
         - name: Key Vault の使用
           href: key-vault-certs.md
     - name: AKS のイングレス
@@ -140,18 +142,28 @@
               href: end-to-end-ssl-portal.md
             - name: エンドツーエンド SSL - PowerShell
               href: application-gateway-end-to-end-ssl-powershell.md
+        - name: 相互認証
+          items:
+            - name: 相互認証 - ポータル
+              href: mutual-authentication-portal.md
+            - name: 相互認証 - PowerShell
+              href: mutual-authentication-powershell.md
         - name: 証明書の管理
           items:
             - name: バックエンド用の証明書
               href: certificates-for-backend-authentication.md
             - name: 証明書の更新
               href: renew-certificates.md
-            - name: 自己署名証明書の生成
+            - name: バックエンドの自己署名証明書を生成する
               href: self-signed-certificates.md
+            - name: 信頼されたクライアント証明書
+              href: mutual-authentication-certificate-management.md
         - name: SSL ポリシー
           items:
             - name: SSL ポリシーを構成する
               href: application-gateway-configure-ssl-policy-powershell.md
+            - name: リスナー固有の SSL ポリシー
+              href: application-gateway-configure-listener-specific-ssl-policy.md
     - name: AKS のイングレス
       items:
         - name: Helm 経由の AKS のイングレス (ブラウンフィールド)
@@ -254,6 +266,8 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: 無効なゲートウェイ (502) エラー
           href: application-gateway-troubleshooting-502.md
+        - name: 相互認証
+          href: mutual-authentication-troubleshooting.md
         - name: AKS のイングレス
           href: ingress-controller-troubleshoot.md
         - name: リソース正常性

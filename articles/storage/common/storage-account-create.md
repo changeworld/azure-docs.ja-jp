@@ -10,12 +10,12 @@ ms.date: 04/23/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 30766938526c2ba897c2aabc2513be5d6c3f01b5
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 9cb84d15c12ae823462291b2e7008653306b2b55
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949094"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773721"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 
@@ -126,7 +126,7 @@ Azure portal を使用して Azure ストレージ アカウントを作成す�
 | Section | フィールド | 必須または省略可能 | 説明 |
 |--|--|--|--|
 | プロジェクトの詳細 | サブスクリプション | 必須 | 新しいストレージ アカウントのサブスクリプションを選択します。 |
-| プロジェクトの詳細 | リソース グループ | 必須 | このストレージ アカウント用に新しいリソース グループを作成するか、既存のものを選択します。 詳細については、「[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 |
+| プロジェクトの詳細 | Resource group | 必須 | このストレージ アカウント用に新しいリソース グループを作成するか、既存のものを選択します。 詳細については、「[リソース グループ](../../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。 |
 | インスタンスの詳細 | ストレージ アカウント名 | 必須 | ストレージ アカウント用に一意の名前を選択します。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 |
 | インスタンスの詳細 | リージョン | 必須 | ストレージ アカウントの適切なリージョンを選択します。 詳細については、「[Azure のリージョンと Availability Zones](../../availability-zones/az-overview.md)」をご覧ください。<br /><br />ストレージ アカウントまたは冗長構成の種類によっては、サポートされていないリージョンがあります。 詳細については、「[Azure Storage の冗長性](storage-redundancy.md)」を参照してください。<br /><br />リージョンの選択は、課金に影響を与える可能性があります。 詳細については、「[ストレージ アカウントの課金](storage-account-overview.md#storage-account-billing)」を参照してください。 |
 | インスタンスの詳細 | パフォーマンス | 必須 | 汎用 v2 ストレージ アカウント (既定) の場合は、 **[Standard]** パフォーマンスを選択します。 Microsoft は、ほとんどのシナリオにこのアカウントの種類をお勧めします。 詳細については、「[ストレージ アカウントの種類](storage-account-overview.md#types-of-storage-accounts)」を参照してください。<br /><br />待機時間を短くする必要があるシナリオの場合は、 **[Premium]** を選択します。 **[Premium]** を選択した後、作成する Premium ストレージ アカウントの種類を選択します。 次の種類の Premium ストレージ アカウントを使用できます。 <ul><li>[ブロック BLOB](../blobs/storage-blob-performance-tiers.md)</li><li>[ファイル共有](../files/storage-files-planning.md#management-concepts)</li><li>[ページ BLOB](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
@@ -281,7 +281,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json"
 ```
 
 ```azurecli-interactive
@@ -290,7 +290,7 @@ read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
 az group create --name $resourceGroupName --location "$location" &&
-az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json"
 ```
 
 > [!NOTE]

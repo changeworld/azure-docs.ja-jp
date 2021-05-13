@@ -5,19 +5,19 @@ description: Azure Machine Learning データセットを使用してモデル�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: sihhu
-author: MayMSFT
+ms.author: yogipandey
+author: ynpandey
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: e3462b8e8bdf7d831b76c7821c5e8e22d3384586
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 25dfad48d3782c50797c855a0a8cbfded6581e0e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888298"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788015"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 

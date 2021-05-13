@@ -1,0 +1,36 @@
+- name: Oracle 用 BareMetal インフラストラクチャの概要
+  href: oracle-baremetal-overview.md
+- name: BareMetal SKU
+  href: oracle-baremetal-skus.md
+- name: ストレージ
+  href: oracle-baremetal-storage.md
+- name: 修正プログラムの適用に関する考慮事項
+  href: oracle-baremetal-patching.md
+- name: イーサネット構成
+  href: oracle-baremetal-ethernet.md
+- name: Architecture
+  href: oracle-baremetal-architecture.md
+- name: プロビジョニング
+  href: oracle-baremetal-provision.md
+- name: 高可用性とディザスター リカバリー
+  items:
+    - name: HA および DR の概要
+      href: concepts-oracle-high-availability.md
+    - name: 高可用性機能
+      href: high-availability-features.md
+    - name: オプションと考慮事項
+      href: options-considerations-high-availability.md
+    - name: 復旧方法を選択する
+      href: oracle-high-availability-recovery.md
+- name: SnapCenter の統合
+  items:
+    - name: SnapCenter の概要
+      href: netapp-snapcenter-integration-oracle-baremetal.md
+    - name: トラフィックをルーティングするように SnapCenter を設定する
+      href: set-up-snapcenter-to-route-traffic.md
+    - name: SnapCenter を構成する
+      href: configure-snapcenter-oracle-baremetal.md
+    - name: オンデマンド バックアップを作成する
+      href: create-on-demand-backup-oracle-baremetal.md
+    - name: Oracle Database を復元する
+      href: restore-oracle-database-baremetal.md

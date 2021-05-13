@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e7a725b78fa828ce1286e212ee7de0205968156
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e7de74a75bc0cf2a298b7ff75cf7b6b92eaec9d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92536081"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716116"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID の一括でのインポートおよびエクスポート
 
@@ -87,7 +87,7 @@ while(true)
 ```
 
 > [!NOTE]
-> ストレージアカウントに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファーストパーティーのエクセプション](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT hub を対象に利用可能)。
+> ストレージアカウントに IoT Hub の接続性を制限するファイアウォール構成がある場合には、[Microsoft が信頼を置くファーストパーティーのエクセプション](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources) の使用を検討してください (限られたリージョンで、管理サービス ID を持つ IoT hub を対象に利用可能)。
 
 
 ## <a name="device-importexport-job-limits"></a>デバイスのインポート ジョブまたはエクスポート ジョブの制限

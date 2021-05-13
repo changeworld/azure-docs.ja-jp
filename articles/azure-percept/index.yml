@@ -3,19 +3,19 @@ title: Azure Percept のドキュメント
 summary: Azure Percept は、認識ベースの AI を構築してエッジにデプロイするためのエンド ツー エンド ソリューションです。
 metadata:
   title: Azure Percept のドキュメント
-  description: Azure Percept は、エンド ツー エンドのエッジ AI プラットフォームです。
+  description: Azure Percept は、エンド ツー エンドのエッジ AI プラットフォームおよび開発キットです。
   services: azure-percept
   ms.service: azure-percept
   ms.topic: landing-page
-  author: elqu20
-  ms.author: v-elqu
-  ms.date: 02/11/2021
-  ms.openlocfilehash: b979f147c67e8e877b5bb0e9d3dc557317c7aa50
-  ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+  author: mimcco
+  ms.author: mimcco
+  ms.date: 03/25/2021
+  ms.openlocfilehash: 0cf9e95897554cb51ff6837dec72700124471025
+  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102097497"
+  ms.lasthandoff: 04/01/2021
+  ms.locfileid: "106107729"
 landingContent:
 - title: Azure Percept とは
   linkLists:
@@ -31,13 +31,17 @@ landingContent:
       url: overview-azure-percept-studio.md
     - text: Azure Percept セキュリティの概要
       url: overview-percept-security.md
+    - text: 80/20 統合
+      url: overview-8020-integration.md
+    - text: Azure Percept AI モデル
+      url: overview-ai-models.md
 - title: Azure Percept DK の使用を開始する
   linkLists:
   - linkListType: quickstart
     links:
     - text: Azure Percept DK を箱から取り出して組み立てる
       url: quickstart-percept-dk-unboxing.md
-    - text: Azure Percept DK を Azure に接続し、ビジョン AI モデルをデプロイする
+    - text: Azure Percept DK を Azure に接続する
       url: quickstart-percept-dk-set-up.md
   - linkListType: reference
     links:
@@ -45,8 +49,10 @@ landingContent:
       url: azure-percept-dk-datasheet.md
     - text: Azure Percept Vision のデータシート
       url: azure-percept-vision-datasheet.md
-    - text: トラブルシューティング
+    - text: 一般的な Azure Percept DK のトラブルシューティング
       url: troubleshoot-dev-kit.md
+    - text: 設定エクスペリエンスのトラブルシューティング
+      url: how-to-troubleshoot-setup.md
 - title: Azure Percept Audio の使用を開始する
   linkLists:
   - linkListType: quickstart
@@ -59,9 +65,9 @@ landingContent:
       url: azure-percept-audio-datasheet.md
     - text: Azure Percept Audio のトラブルシューティング
       url: troubleshoot-audio-accessory-speech-module.md
-    - text: Azure Percept Audio の LED とボタン
+    - text: Azure Percept Audio の LED とボタンの動作
       url: audio-button-led-behavior.md
-- title: コードなしのビジョン AI プロトタイプを構築する
+- title: コードなしのビジョン ソリューションを構築する
   linkLists:
   - linkListType: tutorial
     links:
@@ -77,11 +83,11 @@ landingContent:
       url: how-to-capture-images.md
     - text: 開発キットのテレメトリを表示する
       url: how-to-view-telemetry.md
-  - linkListType: concept
+  - linkListType: reference
     links:
-    - text: AI ソリューションの使用
-      url: overview-ai-models.md
-- title: コードなしの音声アシスタント ソリューションを構築する
+    - text: ビジョン ソリューションのトラブルシューティング
+      url: vision-solution-troubleshooting.md
+- title: コードなしの音声ソリューションを構築する
   linkLists:
   - linkListType: tutorial
     links:
@@ -89,9 +95,9 @@ landingContent:
       url: tutorial-no-code-speech.md
   - linkListType: how-to-guide
     links:
-    - text: 音声アシスタントを管理する
+    - text: Azure Percept Studio 内で音声アシスタントを構成する
       url: how-to-manage-voice-assistant.md
-    - text: IoT Hub を使って音声アシスタントを構成する
+    - text: IoT Hub 内で音声アシスタントを構成する
       url: how-to-configure-voice-assistant.md
 - title: Azure Percept を使用した高度な開発
   linkLists:
@@ -111,9 +117,9 @@ landingContent:
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:
-    - text: 無線での更新を設定する
+    - text: 無線 (OTA) での更新を設定する
       url: how-to-set-up-over-the-air-updates.md
-    - text: 無線での更新
+    - text: デバイスを無線 (OTA) で更新する
       url: how-to-update-over-the-air.md
-    - text: USB 経由で更新する
+    - text: デバイスを USB で更新する
       url: how-to-update-via-usb.md

@@ -17,30 +17,18 @@
           href: overview-opc-publisher.md
         - name: コネクテッド ファクトリとは
           href: iot-accelerators-connected-factory-features.md
-    - name: デバイスのシミュレーション
-      href: iot-accelerators-device-simulation-overview.md
 - name: クイックスタート
   items:
     - name: コネクテッド ファクトリ ソリューションを試す
       href: quickstart-connected-factory-deploy.md
-    - name: デバイス シミュレーション ソリューション アクセラレータをデプロイする
-      href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
   expanded: true
-- name: チュートリアル
-  items:
-    - name: デバイスのシミュレーション
-      items:
-        - name: シミュレーションの作成と実行
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: シミュレートされたカスタム デバイスの作成
-          href: iot-accelerators-device-simulation-create-custom-device.md
 - name: 概念
   items:
     - name: 産業用 IoT
       items:
-        - name: OPC Twin アーキテクチャ
+        - name: OPC Twin のアーキテクチャ
           href: overview-opc-twin-architecture.md
-        - name: OPC Vault アーキテクチャ
+        - name: OPC Vault のアーキテクチャ
           href: overview-opc-vault-architecture.md
 - name: 操作方法ガイド
   items:
@@ -78,20 +66,12 @@
               href: howto-opc-publisher-configure.md
             - name: OPC Publisher の実行
               href: howto-opc-publisher-run.md
-    - name: デバイスのシミュレーション
-      items:
-        - name: 既存の IoT ハブの使用
-          href: iot-accelerators-device-simulation-choose-hub.md
-        - name: シミュレートされた高度なデバイスの作成
-          href: iot-accelerators-device-simulation-advanced-device.md
-        - name: Time Series Insights によるテレメトリの視覚化
-          href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Protobuf を使用したテレメトリのシリアル化
-          href: iot-accelerators-device-simulation-protobuf.md
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub
@@ -120,20 +100,16 @@
       items:
         - name: GitHub リポジトリ
           href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: 接続済みファクトリに関する FAQ
-          href: iot-accelerators-faq-cf.md
-    - name: デバイスのシミュレーション
-      items:
-        - name: 開発者向けリファレンス ガイド
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub リポジトリ
-          href: 'https://github.com/Azure/device-simulation-dotnet'
     - name: 参照アーキテクチャ
       href: /azure/architecture/reference-architectures/iot
       items:
         - name: ダウンロード
           href: /azure/architecture/reference-architectures/iot
     - name: よく寄せられる質問
-      href: iot-accelerators-faq.md
+      items:
+        - name: ソリューション アクセラレータに関する FAQ
+          href: iot-accelerators-faq.md
+        - name: 接続済みファクトリに関する FAQ
+          href: iot-accelerators-faq-cf.md
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

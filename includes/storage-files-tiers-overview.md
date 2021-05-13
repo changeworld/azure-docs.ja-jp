@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5fd0394feb8b58688bd163d62af30b031125b46
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98633443"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109663902"
 ---
 Azure Files では、Premium、トランザクション最適化、ホット、クールの 4 つの異なるストレージのサービス レベルが提供されており、お客様のシナリオのパフォーマンスと価格の要件に合わせて共有を調整できます。
 
@@ -22,7 +22,7 @@ Azure Files では、Premium、トランザクション最適化、ホット、�
 - **Hot**:ホット ファイル共有は、チーム共有などの汎用ファイル共有シナリオに最適化されたストレージを提供します。 ホット ファイル共有は、HDD によってサポートされている標準ストレージ ハードウェアで提供されます。
 - **Cool**:クール ファイル共有は、オンライン アーカイブ ストレージのシナリオ向けに最適化された、コスト効率に優れたストレージを提供します。 クール ファイル共有は、HDD によってサポートされている標準ストレージ ハードウェアで提供されます。
 
-Premium ファイル共有は、**FileStorage ストレージ アカウント** の種類でデプロイされ、プロビジョニング済み課金モデルでのみ利用できます。 Premium ファイル共有のプロビジョニング済み課金モデルについて詳しくは、「[Premium ファイル共有のプロビジョニングについて](../articles/storage/files/understanding-billing.md#provisioned-model)」をご覧ください。 トランザクション最適化、ホット、クール ファイル共有などの Standard ファイル共有は、**汎用バージョン 2 (GPv2) ストレージ アカウント** の種類でデプロイされ、従量課金制で利用できます。 ホットおよびクール ファイル共有は、すべての Azure パブリック リージョンと Azure Government リージョンで利用できます。 トランザクション最適化ファイル共有は、Azure China および Azure Germany リージョンを含むすべての Azure リージョンで利用できます。
+Premium ファイル共有は、**FileStorage ストレージ アカウント** の種類でデプロイされ、プロビジョニング済み課金モデルでのみ利用できます。 Premium ファイル共有のプロビジョニング済み課金モデルについて詳しくは、「[Premium ファイル共有のプロビジョニングについて](../articles/storage/files/understanding-billing.md#provisioned-model)」をご覧ください。 トランザクション最適化、ホット、クール ファイル共有などの Standard ファイル共有は、**汎用バージョン 2 (GPv2) ストレージ アカウント** の種類でデプロイされ、従量課金制で利用できます。 
 
 ワークロードのストレージ層を選択する場合は、パフォーマンスと使用量の要件を考慮してください。 ワークロードに 1 桁の待機時間が必要な場合、またはオンプレミスの SSD ストレージ メディアを使用している場合は、おそらく Premium 層が最適です。 チーム共有が Azure からオンプレミスにマウントされている場合または Azure File Sync を使用してオンプレミスにキャッシュされている場合など、低待機時間が特に問題ではない場合は、コストの観点から、標準ストレージの方が適している可能性があります。
 

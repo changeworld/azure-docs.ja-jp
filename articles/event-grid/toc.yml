@@ -136,6 +136,8 @@
               href: event-schema-azure-maps.md
             - name: Azure Media Services
               href: event-schema-media-services.md
+            - name: Azure Policy
+              href: ./event-schema-policy.md
             - name: Azure リソース グループ
               href: event-schema-resource-groups.md
             - name: Azure Service Bus
@@ -188,6 +190,8 @@
           href: delivery-and-retry.md
         - name: Webhook のイベント配信
           href: webhook-event-delivery.md
+        - name: カスタム配信プロパティ
+          href: delivery-properties.md
     - name: 障害復旧
       items:
         - name: geo ディザスター リカバリー
@@ -195,7 +199,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/event-grid-security-baseline?toc=/azure/event-grid/toc.json
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
         - name: イベンド ハンドラーへのイベント配信の認証
@@ -271,7 +275,15 @@
         - name: プライベート リンクを介してイベントを安全に公開する
           href: configure-private-endpoints.md
         - name: マネージド ID を使用してイベントを配信する
-          href: managed-service-identity.md
+          items:
+            - name: カスタム トピックまたはドメインのマネージド ID を有効にする
+              href: enable-identity-custom-topics-domains.md
+            - name: システム トピックのマネージド ID を有効にする
+              href: enable-identity-system-topics.md
+            - name: マネージド ID に Event Grid の配信先へのアクセスを許可する
+              href: add-identity-roles.md
+            - name: マネージド ID を使用するイベント サブスクリプションを作成する
+              href: managed-service-identity.md
         - name: プライベート リンクを介してイベントを安全に配信する
           href: consume-private-endpoints.md
         - name: IP ファイアウォールの構成

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/09/2021
-ms.openlocfilehash: 0da1fd7b98b86ebd75926cc8a2d2bb5294d048ca
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: b523b20a3d7f22cfd5e608c6793c55583050028f
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308137"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635285"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS エンドポイントを使用してコマーシャル マーケットプレースのリードを管理する
 

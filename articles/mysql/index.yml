@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/03/2019
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 95ce5c287eb8b6b3ee745ff9305fb7861fa09989
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: a9d05253ffbe452076e6a46d2f8a0f2d15ad1782
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102040517"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108770553"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
     links:
     - text: シングル サーバーとは
       url: single-server-overview.md
+    - text: シングル サーバーの新機能
+      url: single-server-whats-new.md
     - text: すべてのシングル サーバーのドキュメントを見る
       url: single-server/index.yml
   - linkListType: concept

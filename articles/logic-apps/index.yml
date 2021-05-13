@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: ecfan
   ms.author: estfan; logicappspm
-  ms.date: 09/18/2019
-  ms.openlocfilehash: c801c46424f7128577e1426ae5f15a8623359d6a
-  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+  ms.date: 03/24/2021
+  ms.openlocfilehash: 55f2be9b738e91c076d918cf19ddd5d55d445e20
+  ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/08/2020
-  ms.locfileid: "96852763"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108204965"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:
@@ -25,8 +25,14 @@ landingContent:
       url: logic-apps-overview.md
   - linkListType: concept
     links:
-    - text: Azure Logic Apps のコネクタ
+    - text: Azure Logic Apps のコネクタの概要
       url: ../connectors/apis-list.md
+    - text: マネージド コネクタ
+      url: ../connectors/managed.md
+    - text: Azure Logic Apps の使用可能なコネクタ
+      url: /connectors/connector-reference/connector-reference-logicapps-connectors
+    - text: 組み込みのトリガーとアクション
+      url: ../connectors/built-in.md
     - text: 定期的なワークフローをスケジュール設定する
       url: concepts-schedule-automated-recurring-tasks-workflows.md
     - text: B2B エンタープライズ統合
