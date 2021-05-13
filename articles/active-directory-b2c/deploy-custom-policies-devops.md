@@ -26,10 +26,10 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
 
 1. Azure AD テナントに Web アプリケーション登録を作成する
 1. Azure リポジトリを構成する
-1. Azure パイプラインを構成する
+1. Azure Pipelines を構成する
 
 > [!IMPORTANT]
-> Azure パイプラインを使用した Azure AD B2C カスタム ポリシーの管理では、現在、Microsoft Graph API `/beta` エンドポイントで利用できる **プレビュー** 操作を使用します。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 詳細については、「[Microsoft Graph REST API ベータ版のエンドポイント リファレンス](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)」を参照してください。
+> Azure Pipelines を使用した Azure AD B2C カスタム ポリシーの管理では、現在、Microsoft Graph API `/beta` エンドポイントで利用できる **プレビュー** 操作を使用します。 実稼働アプリケーションにおけるこれらの API の使用はサポートされていません。 詳細については、「[Microsoft Graph REST API ベータ版のエンドポイント リファレンス](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
