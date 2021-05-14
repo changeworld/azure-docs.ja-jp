@@ -4,25 +4,40 @@
   items:
     - name: Azure Managed Instance for Apache Cassandra とは
       href: introduction.md
-- name: 概念
-  items:
-    - name: よく寄せられる質問
-      href: faq.md
-    - name: マネージド インスタンスと Azure Cosmos DB Cassandra API
-      href: compare-cosmosdb-managed-instance.md
 - name: クイックスタート
   items:
     - name: クラスターの作成 - ポータル
       href: create-cluster-portal.md
     - name: クラスターの作成 - CLI
+      displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
+    - name: マルチリージョン クラスターの作成 - CLI
+      href: create-multi-region-cluster.md
     - name: ハイブリッド クラスターを構成する
       href: configure-hybrid-cluster.md
     - name: Databricks を使用して Spark クラスターをデプロイする
       href: deploy-cluster-databricks.md
+- name: 概念
+  items:
+    - name: よく寄せられる質問
+      displayName: 'cost, region, monitor, backup'
+      href: faq.md
+    - name: マネージド インスタンスと Azure Cosmos DB Cassandra API
+      href: compare-cosmosdb-managed-instance.md
 - name: 操作方法ガイド
   items:
     - name: Azure CLI で管理する
+      displayName: 'az managed-cassandra, cluster, datacenter'
       href: manage-resources-cli.md
     - name: Grafana を使用して Prometheus のメトリックを視覚化する
       href: visualize-prometheus-grafana.md
+- name: リファレンス
+  items:
+    - name: REST API
+      items:
+        - name: Cassandra クラスター
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
+        - name: Cassandra データセンター
+          href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters
+    - name: Azure CLI
+      href: /cli/azure/managed-cassandra

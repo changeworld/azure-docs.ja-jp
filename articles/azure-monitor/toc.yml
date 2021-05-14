@@ -47,6 +47,8 @@
       href: logs/get-started-queries.md
     - name: ログ クエリからダッシュボードを作成する
       href: visualize/tutorial-logs-dashboards.md
+    - name: ログ クエリからアラートを作成する
+      href: alerts/tutorial-response.md
     - name: パフォーマンスとスケジュールに基づく自動スケール
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
@@ -129,7 +131,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: アラート
+    - name: 警告
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -159,7 +161,7 @@
         - name: Azure 仮想マシンの監視
           href: vm/monitor-vm-azure.md
           displayname: VM
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md

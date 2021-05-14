@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のデータをコピーおよび変換する (SQL API)
 description: Azure Cosmos DB (SQL API) との間でデータをコピーする方法、および Data Factory を使用して Azure Cosmos DB (SQL API) のデータを変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: d42f30ebd72dca81255ddc02a9440db19979536d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a7676dfe6feedc5bb34ab6c96b4c3a03e4feb56c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608069"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483121"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB (SQL API) のデータをコピーおよび変換する
 
@@ -50,7 +50,7 @@ Data Factory は、Azure Cosmos DB に書き込むときに最適なパフォー
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Cosmos DB (SQL API) に固有の Data Factory エンティティを定義するために使用できるプロパティについて詳しく説明します。
 

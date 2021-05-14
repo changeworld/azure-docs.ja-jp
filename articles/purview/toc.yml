@@ -12,6 +12,12 @@ items:
         href: create-catalog-portal.md
       - name: Purview アカウントの作成 - Azure PowerShell
         href: create-catalog-powershell.md
+      - name: Purview アカウントの作成 - .NET SDK
+        href: create-purview-dotnet.md
+      - name: Purview アカウントの作成 - Python
+        href: create-purview-python.md
+      - name: Kafka 通知の管理 - .NET
+        href: manage-kafka-dotnet.md
   - name: チュートリアル
     items:
       - name: スタート キット
@@ -71,6 +77,8 @@ items:
             href: manage-integration-runtimes.md
           - name: 接続の問題のトラブルシューティング
             href: troubleshoot-connections.md
+          - name: リソース セットのパターン ルール
+            href: how-to-resource-set-pattern-rules.md
           - name: 変換元
             items:
               - name: データ ソースを管理する
@@ -79,6 +87,8 @@ items:
                 href: purview-connector-overview.md
               - name: Azure Multiple Source
                 href: register-scan-azure-multiple-sources.md
+              - name: Azure Synapse Analytics (ワークスペース)
+                href: register-scan-synapse-workspace.md
               - name: Azure Blob Storage
                 href: register-scan-azure-blob-storage-source.md
                 displayName: Register and scan azure blob storage
@@ -100,7 +110,7 @@ items:
               - name: Azure SQL Database Managed Instance
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance
-              - name: Azure Synapse Analytics
+              - name: Azure 専用 SQL プール (以前の SQL DW)
                 href: register-scan-azure-synapse-analytics.md
               - name: オンプレミスの SQL サーバー
                 href: register-scan-on-premises-sql-server.md
@@ -148,6 +158,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Data Share のデータ系列
             href: how-to-link-azure-data-share.md
+          - name: Power BI のデータ系列
+            href: how-to-lineage-powerbi.md
+          - name: Spark のデータ系列
+            href: how-to-lineage-spark-atlas-connector.md
       - name: Monitor
         items:
           - name: Azure Monitor による監視
@@ -170,9 +184,21 @@ items:
         items:
           - name: プライベート エンドポイントを管理する
             href: catalog-private-link.md
+      - name: 障害復旧
+        items:
+          - name: 障害復旧
+            href: disaster-recovery.md
   - name: リファレンス
     items:
       - name: サポートされている分類
         href: supported-classifications.md
       - name: ABAP 関数のデプロイ ガイド
         href: abap-functions-deployment-guide.md
+  - name: リソース
+    items:
+      - name: 機能に関するフィードバック (ユーザーの声)
+        href: 'https://feedback.azure.com/forums/932437-azure-purview'
+      - name: 料金計算ツール
+        href: 'https://azure.microsoft.com/pricing/details/azure-purview/'
+      - name: Microsoft Q&A フォーラム
+        href: /answers/topics/azure-purview.html

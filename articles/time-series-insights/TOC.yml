@@ -14,7 +14,7 @@
 - name: チュートリアル
   items:
     - name: Time Series Insights Gen2 環境を設定する
-      href: tutorials-set-up-tsi-environment.md
+      href: tutorial-set-up-environment.md
     - name: Azure Digital Twins と Time Series Insights Gen2 間のモデルの同期
       href: tutorials-model-sync.md
 - name: 概念
@@ -95,9 +95,13 @@
           items:
             - name: 環境を計画する
               href: how-to-plan-your-environment.md
-        - name: 環境の管理
+        - name: 管理
           items:
-            - name: プロビジョニングと管理の方法
+            - name: Azure CLI を使用して環境を作成する方法
+              href: how-to-create-environment-using-cli.md
+            - name: Azure portal を使用して環境を作成する方法
+              href: how-to-create-environment-using-portal.md
+            - name: 環境を管理する方法
               href: how-to-provision-manage.md
             - name: TSID を選択する方法
               href: how-to-select-tsid.md
@@ -176,11 +180,11 @@
     - name: データ参照を監視する
       href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/timeseriesinsights/timeseriesinsights
+      href: /cli/azure/tsi
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/time-series-insights/toc.json&bc=/azure/time-series-insights/breadcrumb/toc.json
     - name: 顧客データ要求
       href: time-series-insights-customer-data-requests.md
     - name: 開発者向けリソース

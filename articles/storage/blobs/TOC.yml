@@ -7,7 +7,7 @@
     - name: コア ストレージ サービスの比較
       href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
-- name: Blob Storage
+- name: BLOB ストレージ
   items:
     - name: 概要
       items:
@@ -150,7 +150,7 @@
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 管理操作の承認
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
@@ -169,7 +169,7 @@
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ネットワーク ルーティング設定の構成
               href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: データの保護
+        - name: データ保護
           items:
             - name: 概要
               href: data-protection-overview.md
@@ -711,7 +711,7 @@
               href: data-lake-storage-introduction-abfs-uri.md
             - name: 階層型名前空間について
               href: data-lake-storage-namespace.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティに関する推奨事項
               href: security-recommendations.md
@@ -849,8 +849,6 @@
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
         - name: JavaScript
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
-        - name: C++
-          href: 'https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
         - name: Azure CLI

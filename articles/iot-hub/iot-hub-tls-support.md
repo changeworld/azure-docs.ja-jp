@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: 3fed568d1e5b85fcfaf5c88eb736e876e9748088
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 834ccc850a3099857dc1b88e45b0c0c3ee3a186c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930715"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486451"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT Hub でのトランスポート層セキュリティ (TLS) のサポート
 
@@ -133,7 +133,7 @@ IoT Edge デバイスは、IoT Hub との通信時に TLS 1.2 を使用するよ
 
 ## <a name="device-authentication"></a>デバイスの認証
 
-TLS ハンドシェイクに成功すると、IoT Hub では、対称キーか X.509 証明書を利用してデバイスを認証できます。 証明書ベースの認証の場合、ECC など、あらゆる X.509 証明書を利用できます。 IoT Hub では、指定した拇印または認証機関 (CA) を利用し、証明書の有効性を検証します。 詳細については、「[サポートされている X.509 証明書](iot-hub-devguide-security.md#supported-x509-certificates)」をご覧ください。
+TLS ハンドシェイクに成功すると、IoT Hub では、対称キーか X.509 証明書を利用してデバイスを認証できます。 証明書ベースの認証の場合、ECC など、あらゆる X.509 証明書を利用できます。 IoT Hub では、指定した拇印または認証機関 (CA) を利用し、証明書の有効性を検証します。 詳細については、「[サポートされている X.509 証明書](iot-hub-dev-guide-sas.md#supported-x509-certificates)」をご覧ください。
 
 ## <a name="tls-maximum-fragment-length-negotiation-preview"></a>TLS 最大フラグメント長ネゴシエーション (プレビュー)
 

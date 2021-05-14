@@ -39,8 +39,6 @@
   items:
     - name: アプリとデプロイ
       href: concept-understand-app-and-deployment.md
-    - name: ブルーグリーン デプロイの戦略
-      href: concepts-blue-green-deployment-strategies.md
     - name: クォータと制限
       href: quotas.md
     - name: メトリック
@@ -199,8 +197,6 @@
       href: /cli/azure/spring-cloud
     - name: Azure PowerShell
       href: /powershell/module/az.springcloud
-    - name: Azure Pipelines タスク
-      href: /azure/devops/pipelines/tasks/deploy/azure-spring-cloud
     - name: リソース
       href: resources.md
     - name: よく寄せられる質問

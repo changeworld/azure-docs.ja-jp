@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: a6b444092ec4e3588564a3f902b49c4ed3dc5fe5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ed906c32e91ae168e17d9eb769d3fd1985098f9c
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376785"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634637"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET での Azure Spring Cloud の実行に関するお客様の責任
 このドキュメントには、仮想ネットワークで Azure Spring Cloud を使用するための仕様が含まれています。
@@ -43,9 +43,9 @@ Azure Spring Cloud サービスのリソース要件の一覧を次に示しま�
   | *.servicebus.windows.net:443 *または* [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - EventHub:443 | TCP:443 | Azure Event Hub。 | [仮想ネットワークのサービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md) *Azure Event Hubs* を有効にすることで置き換えることができます。 |
   
 
-## <a name="azure-spring-cloud-fqdn-requirementsapplication-rules"></a>Azure Spring Cloud の FQDN 要件またはアプリケーション ルール
+## <a name="azure-spring-cloud-fqdn-requirements--application-rules"></a>Azure Spring Cloud の FQDN 要件/アプリケーション ルール
 
-Azure Firewall には、次の構成を簡略化するために FQDN タグ **AzureKubernetesService** が用意されています。
+Azure Firewall には、次の構成を簡略化するための完全修飾ドメイン名 (FQDN) タグ **AzureKubernetesService** が用意されています。
 
   | 送信先 FQDN | Port | 用途 |
   |------|------|------|
@@ -61,15 +61,6 @@ Azure Firewall には、次の構成を簡略化するために FQDN タグ **Az
   | *mscrl.microsoft.com* | HTTPS:80 | 必要な Microsoft 証明書チェーン パス。 |
   | *crl.microsoft.com* | HTTPS:80 | 必要な Microsoft 証明書チェーン パス。 |
   | *crl3.digicert.com* | HTTPS:80 | サード パーティの SSL 証明書チェーン パス。 |
-  
-## <a name="azure-spring-cloud-optional-fqdn-for-third-party-application-performance-management"></a>サードパーティ製アプリケーションのパフォーマンス管理に使用される Azure Spring Cloud の省略可能な FQDN
-
-Azure Firewall には、次の構成を簡略化するために FQDN タグ **AzureKubernetesService** が用意されています。
-
-  | 送信先 FQDN | Port | 用途                                                          |
-  | ---------------- | ---- | ------------------------------------------------------------ |
-  | collector*.newrelic.com | TCP:443/80 | 米国リージョンの New Relic APM エージェントの必須ネットワーク。[APM エージェント ネットワーク](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents)に関する記事も参照してください。 |
-  | collector*.eu01.nr-data.net | TCP:443/80 | EU リージョンの New Relic APM エージェントの必須ネットワーク。[APM エージェント ネットワーク](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#agents)に関する記事も参照してください。 |
 
 ## <a name="see-also"></a>関連項目
 * [プライベート ネットワークのアプリケーションにアクセスする](access-app-virtual-network.md)

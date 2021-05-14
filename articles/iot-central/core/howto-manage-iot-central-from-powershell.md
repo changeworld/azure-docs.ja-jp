@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: philmea
-ms.openlocfilehash: a870b72d1dda04ab29dbb5f056873d47f888b837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 932b2a5e09c335564273a1161c471182738e40b0
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501369"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685335"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell から IoT Central を管理する
 
@@ -79,7 +79,11 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |Template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |
 |DisplayName       |UI に表示されるアプリケーションの名前。 |
 
+### <a name="application-templates"></a>アプリケーション テンプレート
+
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
+
+独自のアプリケーション テンプレートを作成した場合は、それを使用して新しいアプリケーションを作成できます。 アプリケーション テンプレートの入力を求められたら、アプリの [[アプリケーション テンプレートのエクスポート]](howto-use-app-templates.md#create-an-application-template) セクションにある、エクスポートされたアプリの URL の共有可能なリンクに表示されるアプリ ID を入力します。
 
 ## <a name="view-your-iot-central-applications"></a>IoT Central アプリケーションの表示
 

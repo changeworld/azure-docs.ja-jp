@@ -21,10 +21,10 @@
       href: work-remotely-support.md
     - name: Bastion と VNet ピアリング
       href: vnet-peering.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/bastion-security-baseline?toc=/azure/bastion/TOC.json
 - name: 操作方法ガイド
   items:
     - name: ホストを作成する
@@ -57,6 +57,8 @@
       href: diagnostic-logs.md
     - name: セッションの監視と管理
       href: session-monitoring.md
+    - name: メトリック、監視、アラート
+      href: howto-metrics-monitor-alert.md
     - name: トラブルシューティング
       href: troubleshoot.md
 - name: リファレンス

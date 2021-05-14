@@ -7,16 +7,14 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: af6adcf408c9790b09830e986cd1cac00774a2ec
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 9cbcfa355198b94a60242503745f5cfc183e170d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491935"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683758"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する
-
-*この記事は、ソリューション ビルダーを対象としています。*
 
 IoT Central では、テレメトリベースの条件 (デバイスの温度がしきい値を超えたなど) に応じて、電子メール送信などのアクションをトリガーするルールを作成できます。
 
@@ -27,9 +25,9 @@ Power Automate と Azure Logic Apps 用の Azure IoT Central V3 コネクタを�
 
 ## <a name="prerequisites"></a>前提条件
 
-このハウツー ガイドの手順を完了するには、アクティブな Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+この攻略ガイドの手順を完了するには、次が必要です。
 
-ソリューションを設定するには、バージョン 3 の IoT Central アプリケーションが必要です。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。 IoT Central アプリケーションを作成する方法については、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」を参照してください。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 > [!NOTE]
 > バージョン 2 の IoT Central アプリケーションを使用している場合は、前のバージョンのドキュメント サイトで「[Azure Logic Apps 内で IoT Central コネクタを使用してワークフローを作成する](/previous-versions/azure/iot-central/core/howto-build-azure-logic-apps)」を参照し、Azure IoT Central V2 コネクタを使用してください

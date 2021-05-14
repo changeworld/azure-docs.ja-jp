@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 02/17/2021
+ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 594dbfe3dda919e4d8dcbf3047fac78bad600127
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215070"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326203"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -799,30 +799,32 @@ Azure Policy では、次の種類の効果をサポートしています。
 - `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**: [必須] 文字列 - ユニバーサル ISO 8601 日時形式 "yyyy-MM-ddTHH:mm:ss.FFFFFFFZ" の文字列
   - **numberOfDaysToAdd**: [必須] 整数 - 追加する日数
+
 - `field(fieldName)`
   - **fieldName**: [必須] 文字列 - 取得する [フィールド](#fields)の名前
   - If 条件による評価の対象となっている、リソースのそのフィールドの値を返します。
   - `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
+
 - `requestContext().apiVersion`
   - ポリシーの評価をトリガーした要求の API バージョンを返します (例: `2019-09-01`)。
     この値は、PUT または PATCH 要求で、リソースの作成または更新時の評価に使用された API バージョンになります。 既存のリソースに対するコンプライアンスの評価中は、常に最新バージョンの API が使用されます。
+
 - `policy()`
   - 評価対象のポリシーに関する次の情報が返されます。 プロパティには、返されたオブジェクトからアクセスできます (例: `[policy().assignmentId]`)。
   
-  ```json
-  {
-    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
-    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
-    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
-    "definitionReferenceId": "StorageAccountNetworkACLs"
-  }
-  ```
+    ```json
+    {
+      "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+      "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+      "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+      "definitionReferenceId": "StorageAccountNetworkACLs"
+    }
+    ```
 
 - `ipRangeContains(range, targetRange)`
-  - **range**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
-  - **targetRange**: [必須] 文字列 - IP アドレスの範囲を指定する文字列。
-
-  指定した IP アドレスの範囲にターゲット IP アドレスの範囲が含まれているかどうかを返します。 空の範囲、または IP ファミリ間の混合は許可されておらず、評価エラーが発生します。
+  - **range**: [必須] 文字列 - _targetRange_ が含まれているかどうかを確認するために IP アドレスの範囲を指定する文字列。
+  - **targetRange**: [必須] 文字列 - _range_ 内に含まれることを検証するために IP アドレスの範囲を指定する文字列。
+  - _range_ IP アドレス範囲に _targetRange_ IP アドレス範囲が含まれているかどうかを示す "_ブール値_" を返します。 空の範囲、または IP ファミリ間の混合は許可されておらず、評価エラーが発生します。
 
   サポートされる形式:
   - 単一の IP アドレス (例: `10.0.0.0`、`2001:0DB8::3:FFFE`)
