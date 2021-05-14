@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 05/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcff1ffd574db910c3206d82e4da0e9428db788f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c555f86113b9a4557e3b5ebc356f63a5e5dc1eb1
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631797"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664368"
 ---
 # <a name="technical-profiles"></a>技術プロファイル
 
@@ -90,7 +90,7 @@ ms.locfileid: "102631797"
 
 **TechnicalProfile** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Domain | 0:1 | 技術プロファイルのドメイン名。 たとえば、技術プロファイルで Facebook ID プロバイダーが指定されている場合、ドメイン名は Facebook.com です。 |
 | DisplayName | 1:1 | 技術プロファイルの表示名。 |
@@ -118,7 +118,7 @@ ms.locfileid: "102631797"
 
 **Protocol** 要素により、他の利用者との通信に使用されるプロトコルが指定されます。 **Protocol** 要素には、次の属性が含まれています。
 
-| 属性 | 必須 | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | 名前 | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 可能な値は `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、または `None` です。 |
 | Handler | いいえ | プロトコル名が `Proprietary` に設定されている場合は、プロトコル ハンドラーを決定するために Azure AD B2C によって使用されるアセンブリの名前を指定します。 |
@@ -127,7 +127,7 @@ ms.locfileid: "102631797"
 
 **Metadata** 要素には、特定のプロトコルに関連する構成オプションが含まれています。 サポートされているメタデータの一覧は、対応する[技術プロファイル](#types-of-technical-profiles)仕様に記載されています。 **Metadata** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。 |
 
@@ -135,7 +135,7 @@ ms.locfileid: "102631797"
 
 **Metadata** 要素の **Item** 要素には、次の属性が含まれています。
 
-| 属性 | 必須 | Description |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | Key | はい | メタデータ キー。 メタデータ項目の一覧については、各[技術プロファイルの種類](#types-of-technical-profiles)を参照してください。 |
 
@@ -181,7 +181,7 @@ ms.locfileid: "102631797"
 
 **CryptographicKeys** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | Key | 1:n | この技術プロファイルで使用される暗号化キー。 |
 
@@ -412,7 +412,7 @@ ms.locfileid: "102631797"
 
 **ValidationTechnicalProfiles** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | Description |
+| 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの出力要求の一部またはすべてを検証するために使用される技術プロファイルの識別子。 参照先の技術プロファイルのすべての入力要求は、参照元の技術プロファイルの出力要求に表示する必要があります。 |
 
@@ -483,10 +483,10 @@ ms.locfileid: "102631797"
     </TechnicalProfile>
 
     <TechnicalProfile Id="REST-UpdateProfile">
-       <Metadata>
+      <DisplayName>Update the user profile</DisplayName>  
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/update</Item>
       </Metadata>
-      <DisplayName>Update the user profile</DisplayName>
       <InputClaims>
         <InputClaim ClaimTypeReferenceId="objectId" />
         <InputClaim ClaimTypeReferenceId="email" />

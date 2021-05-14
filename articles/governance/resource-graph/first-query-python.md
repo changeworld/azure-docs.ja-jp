@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 857e685d105ac734188b7ef4ee90b6fb7e33b6ff
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ffb58b301e850c3887b0a554788b243f2cf262f6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324151"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751663"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-python"></a>クイック スタート:Python を使用して初めての Resource Graph クエリを実行する
 
@@ -74,12 +74,12 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
    ```python
    # Import Azure Resource Graph library
    import azure.mgmt.resourcegraph as arg
-   
+
    # Import specific methods and models from other libraries
    from azure.common.credentials import get_azure_cli_credentials
    from azure.common.client_factory import get_client_from_cli_profile
    from azure.mgmt.resource import SubscriptionClient
-   
+
    # Wrap all the work in a function
    def getresources( strQuery ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
@@ -90,20 +90,20 @@ Python で Azure Resource Graph のクエリを実行できるようにするに
        subsList = []
        for sub in subsRaw:
            subsList.append(sub.get('subscription_id'))
-       
+
        # Create Azure Resource Graph client and set options
        argClient = get_client_from_cli_profile(arg.ResourceGraphClient)
        argQueryOptions = arg.models.QueryRequestOptions(result_format="objectArray")
-       
+
        # Create query
        argQuery = arg.models.QueryRequest(subscriptions=subsList, query=strQuery, options=argQueryOptions)
-       
+
        # Run query
        argResults = argClient.resources(argQuery)
-   
+
        # Show Python object
        print(argResults)
-   
+
    getresources("Resources | project name, type | limit 5")
    ```
 

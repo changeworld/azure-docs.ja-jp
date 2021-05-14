@@ -10,12 +10,12 @@ ms.date: 11/19/2020
 ms.author: martinle
 ms.reviewer: nirav
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: a588b37b270917524453419619fdad6f88f92338
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5355a449cb55f671c59da55ba4d038e9b4b2ec5
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101693579"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803424"
 ---
 # <a name="secure-credentials-with-linked-services-using-the-tokenlibrary"></a>リンクされたサービスと TokenLibrary を使用して資格情報をセキュリティで保護する
 
@@ -139,7 +139,7 @@ display(df.limit(10))
 %%pyspark
 # Python code
 spark.conf.set("spark.storage.synapse.linkedServiceName", "<lINKED SERVICE NAME>")
-spark.conf.set("fs.azure.sas.token.provider.type", "com.microsoft.azure.synapse.tokenlibrary.LinkedServiceBasedTokenProvider")
+spark.conf.set("fs.azure.account.oauth.provider.type", "com.microsoft.azure.synapse.tokenlibrary.LinkedServiceBasedTokenProvider")
 
 df = spark.read.csv('abfss://<CONTAINER>@<ACCOUNT>.dfs.core.windows.net/<DIRECTORY PATH>')
 

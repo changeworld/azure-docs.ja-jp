@@ -43,10 +43,10 @@
           displayName: 'azure stack, ash, windows, linux, hybrid, arc'
           href: quickstart-onboard-machines.md
         - name: AWS アカウントを接続する
-          displayName: 'hybrid, multicloud, amazon, arc'
+          displayName: 'hybrid, multicloud, multi-cloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: GCP アカウントを接続する
-          displayName: 'hybrid, multicloud, google'
+          displayName: 'hybrid, multicloud, multi-cloud, google'
           href: quickstart-onboard-gcp.md
     - name: 6. アラートへの自動応答の作成
       displayName: 'Resource Manager, ARM'
@@ -66,6 +66,8 @@
       href: security-center-compliance-dashboard.md
     - name: セキュリティ ポリシーの管理
       href: tutorial-security-policy.md
+    - name: リソースの正常性を調査する
+      href: investigate-resource-health.md
 - name: 概念
   items:
     - name: クラウド セキュリティ態勢管理の概念
@@ -108,7 +110,10 @@
         - name: レコメンデーションへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-        - name: リソースを推奨事項から除外する
+        - name: レコメンデーションを無効にする
+          href: tutorial-security-policy.md#disable-security-policies-and-disable-recommendations
+        - name: リソース、サブスクリプション、または管理グループごとのレコメンデーションを除外する
+          displayName: disable
           href: exempt-resource.md
         - name: カスタム セキュリティ イニシアチブとポリシーを作成する
           href: custom-security-policies.md
@@ -141,7 +146,7 @@
               displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: 統合された Microsoft Defender for Endpoint ライセンスを使用する
-          displayName: 'ATP, mdatp, wdatp'
+          displayName: 'ATP, mdatp, wdatp, mde, mdfe'
           href: security-center-wdatp.md
         - name: コンピューターの安全なアプリケーションの一覧を定義する
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'
@@ -195,6 +200,9 @@
         - name: 特定のイメージの脆弱性の検出結果を無効にする (プレビュー)
           displayName: 'ACR, registry, images, qualys'
           href: defender-for-container-registries-usage.md#disable-specific-findings-preview
+        - name: Azure Arc 対応 Kubernetes クラスターを防御する
+          displayName: 'k8s, containers, aks, hybrid, arc, azure arc, multicloud'
+          href: defender-for-kubernetes-azure-arc.md
         - name: Kubernetes ワークロードを保護する
           displayName: 'k8s, containers, aks'
           href: kubernetes-workload-protections.md
@@ -233,7 +241,8 @@
       href: security-center-partner-integration.md
     - name: ネットワーク リソースの保護
       href: security-center-network-recommendations.md
-    - name: ID とアクセス権限の保護
+    - name: MFA の適用と管理
+      displayName: 'identity, access, AAD, active directory, multi-factor, authentication, multifactor, users, passwords'
       href: security-center-identity-access.md
     - name: Security Center の追加の脅威保護を使用する
       href: other-threat-protections.md
@@ -288,7 +297,7 @@
     - name: REST API ドキュメント
       href: /rest/api/securitycenter/
     - name: セキュリティ ベースライン
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/security-center-security-baseline?toc=/azure/security-center/TOC.json
     - name: Azure Security Center の FAQ
       items:
         - name: 一般的な質問
@@ -308,6 +317,8 @@
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: エンドポイント保護の評価および推奨事項
       href: security-center-endpoint-protection.md
+    - name: Azure CLI
+      href: /cli/azure/security
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

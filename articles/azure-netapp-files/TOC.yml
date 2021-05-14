@@ -37,6 +37,8 @@
           href: azure-netapp-files-smb-performance.md
     - name: Azure NetApp Files のコスト モデル
       href: azure-netapp-files-cost-model.md
+    - name: ボリューム クォータについて
+      href: volume-quota-introduction.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
     - name: Azure NetApp Files のスナップショットのしくみ
@@ -61,6 +63,8 @@
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
             - name: Windows Virtual Desktop での Azure NetApp Files 利用のメリット
               href: solutions-windows-virtual-desktop.md
+            - name: SQL Server のデプロイに Azure NetApp Files を使用する利点
+              href: solutions-benefits-azure-netapp-files-sql-server.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
     - name: Azure アプリケーション整合性スナップショット ツールとは
@@ -89,20 +93,26 @@
           href: azure-netapp-files-configure-nfsv41-domain.md
         - name: NFSv 4.1 の Kerberos 暗号化を構成する
           href: configure-kerberos-encryption.md
+        - name: NFS 用に拡張グループを使用する ADDS LDAP を構成する
+          href: configure-ldap-extended-groups.md
         - name: Azure NetApp Files 用に NFS クライアントを構成する
           href: configure-nfs-clients.md
-        - name: NFS ボリュームのエクスポート ポリシーを構成する
-          href: azure-netapp-files-configure-export-policy.md
     - name: SMB ボリュームを作成する
       href: azure-netapp-files-create-volumes-smb.md
     - name: デュアルプロトコル ボリュームを作成する
       href: create-volumes-dual-protocol.md
-    - name: Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する
+    - name: TLS 経由の ADDS LDAP を構成する
+      href: configure-ldap-over-tls.md
+    - name: NFS またはデュアル プロトコルのエクスポート ポリシーを構成する
+      href: azure-netapp-files-configure-export-policy.md
+    - name: ボリュームをマウントまたはマウント解除する
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: スナップショットを管理する
       href: azure-netapp-files-manage-snapshots.md
     - name: 容量プールまたはボリュームをサイズ変更する
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: ボリュームの容量を監視する
+      href: monitor-volume-capacity.md
     - name: ボリュームのサービス レベルを動的に変更する
       href: dynamic-change-volume-service-level.md
     - name: リージョン間レプリケーションの管理
@@ -115,6 +125,8 @@
           href: cross-region-replication-manage-disaster-recovery.md
         - name: ボリューム レプリケーションまたはボリュームを削除する
           href: cross-region-replication-delete.md
+    - name: タグを使用して課金を管理する
+      href: manage-billing-tags.md
     - name: 開発
       items:
         - name: REST API
@@ -135,6 +147,8 @@
           href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: スナップショット ポリシーのトラブルシューティング
           href: troubleshoot-snapshot-policies.md
+        - name: LDAP ボリュームのトラブルシューティング
+          href: troubleshoot-ldap-volumes.md
         - name: リソース プロバイダーのエラーのトラブルシューティング
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: リファレンス
@@ -143,8 +157,12 @@
       href: /rest/api/netapp/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure CLI
+      href: /cli/azure/netappfiles
     - name: Azure アプリケーション整合性スナップショット ツール (AzAcSnap)
       items:
+        - name: AzAcSnap のリリース ノート
+          href: azacsnap-release-notes.md
         - name: AzAcSnap を使ってみる
           href: azacsnap-get-started.md
         - name: AzAcSnap のインストール
@@ -179,3 +197,5 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: ビデオ
       href: azure-netapp-files-videos.md
+    - name: Azure Files と Azure NetApp Files の比較
+      href: ../storage/files/storage-files-netapp-comparison.md

@@ -3,7 +3,7 @@ title: 条件付きアクセス ポリシーから除外されたユーザーの
 description: Azure Active Directory (Azure AD) アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する方法を説明します
 services: active-directory
 documentationcenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b2ac36ad1140968fd17db0bed0b60a8aca6a02
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 77671af5c8f5466c5bebb012ec29b5b9b83f4cb1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532678"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786599"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 

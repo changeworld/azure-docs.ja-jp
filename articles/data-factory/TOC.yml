@@ -8,6 +8,7 @@
       href: introduction.md
     - name: 現在のバージョンとバージョン 1 の比較
       href: compare-versions.md
+      displayName: timeout
 - name: クイックスタート
   expanded: true
   items:
@@ -15,6 +16,9 @@
       href: quickstart-create-data-factory-portal.md
     - name: データ ファクトリの作成 - データのコピー ツール
       href: quickstart-create-data-factory-copy-data-tool.md
+      displayName: timeout
+    - name: データ ファクトリの作成 - Azure CLI
+      href: quickstart-create-data-factory-azure-cli.md
     - name: データ ファクトリの作成 - Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
     - name: データ ファクトリの作成 - .NET
@@ -30,6 +34,8 @@
       href: data-flow-create.md
 - name: チュートリアル
   items:
+    - name: チュートリアルの一覧
+      href: data-factory-tutorials.md
     - name: データのコピーと取り込み
       items:
         - name: Azure Blob Storage から Azure SQL Database
@@ -58,6 +64,7 @@
           href: load-azure-data-lake-storage-gen2-from-gen1.md
         - name: Azure SQL Database から Azure Synapse Analytics
           href: load-azure-sql-data-warehouse.md
+          displayName: polybase
         - name: SAP BW から Azure Data Lake Storage Gen2
           href: load-sap-bw-data.md
         - name: Office 365 から Azure Blob Storage
@@ -68,6 +75,7 @@
               href: tutorial-bulk-copy-portal.md
             - name: Azure PowerShell
               href: tutorial-bulk-copy.md
+              displayName: polybase
         - name: データの増分読み込み
           href: tutorial-incremental-copy-overview.md
           items:
@@ -103,6 +111,8 @@
       items:
         - name: マッピング データ フローを使用してデータを変換する
           items:
+            - name: ADLS Gen2 を使用するレイクへのデータ取り込みのベスト プラクティス
+              href: tutorial-data-flow-write-to-lake.md
             - name: Delta Lake を使用してレイク内のデータを変換する
               href: tutorial-data-flow-delta-lake.md
             - name: マッピング データ フローを使用してデータを変換する
@@ -153,6 +163,12 @@
       items:
         - name: データ ファクトリとデータ共有を使用したデータ統合
           href: lab-data-flow-data-share.md
+    - name: マネージド仮想ネットワーク
+      items:
+        - name: オンプレミスの SQL Server にアクセスする
+          href: tutorial-managed-virtual-network-on-premise-sql-server.md
+        - name: SQL Managed Instance にアクセスする
+          href: tutorial-managed-virtual-network-sql-managed-instance.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -163,12 +179,14 @@
   items:
     - name: パイプラインとアクティビティ
       href: concepts-pipelines-activities.md
+      displayName: 'retry, timeout'
     - name: リンクされたサービス
       href: concepts-linked-services.md
     - name: データセット
       href: concepts-datasets-linked-services.md
     - name: パイプラインの実行とトリガー
       href: concepts-pipeline-execution-triggers.md
+      displayName: retry
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
     - name: データ フロー
@@ -183,16 +201,20 @@
               href: concepts-data-flow-schema-drift.md
             - name: 列パターン
               href: concepts-data-flow-column-pattern.md
+              displayName: 'regex, regular expressions'
             - name: データ フローの監視
               href: concepts-data-flow-monitoring.md
             - name: データ フローのパフォーマンス
               href: concepts-data-flow-performance.md
+              displayName: 'merge, timeout'
             - name: データ フロー キャンバスの管理
               href: concepts-data-flow-manage-graph.md
             - name: 式ビルダー
               href: concepts-data-flow-expression-builder.md
+              displayName: 'regex, regular expressions'
             - name: 式言語
               href: data-flow-expression-functions.md
+              displayName: 'regex, regular expressions'
         - name: Power Query のデータ ラングリングを使用したデータの準備
           items:
             - name: データ ラングリングの概要
@@ -219,7 +241,7 @@
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
-        - name: 自動発行
+        - name: CI/CD の自動発行
           href: continuous-integration-deployment-improvements.md
     - name: Connectors
       items:
@@ -235,6 +257,7 @@
           href: format-avro.md
         - name: Azure Blob Storage
           href: connector-azure-blob-storage.md
+          displayName: timeout
         - name: Azure Cognitive Search
           href: connector-azure-search.md
         - name: Azure Cosmos DB SQL API
@@ -247,6 +270,7 @@
           href: connector-azure-data-lake-store.md
         - name: Azure Data Lake Storage Gen2
           href: connector-azure-data-lake-storage.md
+          displayName: timeout
         - name: Azure Database for MariaDB
           href: connector-azure-database-for-mariadb.md
         - name: Azure Database for MySQL
@@ -259,12 +283,16 @@
           href: connector-azure-file-storage.md
         - name: Azure SQL データベース
           href: connector-azure-sql-database.md
+          displayName: upsert
         - name: Azure SQL Managed Instance
           href: connector-azure-sql-managed-instance.md
+          displayName: upsert
         - name: Azure Synapse Analytics
           href: connector-azure-sql-data-warehouse.md
+          displayName: polybase
         - name: Azure Table Storage
           href: connector-azure-table-storage.md
+          displayName: timeout
         - name: バイナリ形式
           href: format-binary.md
         - name: Cassandra
@@ -289,6 +317,7 @@
           href: connector-dynamics-crm-office-365.md
         - name: Dynamics AX
           href: connector-dynamics-ax.md
+          displayName: timeout
         - name: Dynamics CRM
           href: connector-dynamics-crm-office-365.md
         - name: Excel 形式
@@ -315,6 +344,7 @@
           href: connector-hive.md
         - name: HTTP
           href: connector-http.md
+          displayName: timeout
         - name: HubSpot
           href: connector-hubspot.md
         - name: Impala
@@ -346,6 +376,7 @@
           href: connector-netezza.md
         - name: OData
           href: connector-odata.md
+          displayName: timeout
         - name: ODBC
           href: connector-odbc.md
         - name: Office 365
@@ -374,6 +405,7 @@
           href: connector-quickbooks.md
         - name: REST
           href: connector-rest.md
+          displayName: timeout
         - name: Salesforce
           href: connector-salesforce.md
         - name: Salesforce Service Cloud
@@ -389,8 +421,10 @@
           href: connector-sap-business-warehouse.md
         - name: SAP Cloud for Customer
           href: connector-sap-cloud-for-customer.md
+          displayName: timeout
         - name: SAP ECC
           href: connector-sap-ecc.md
+          displayName: timeout
         - name: SAP HANA
           href: connector-sap-hana.md
         - name: SAP テーブル
@@ -401,6 +435,7 @@
           href: connector-sftp.md
         - name: SharePoint Online リスト
           href: connector-sharepoint-online-list.md
+          displayName: timeout
         - name: Shopify
           href: connector-shopify.md
         - name: Snowflake
@@ -409,6 +444,7 @@
           href: connector-spark.md
         - name: SQL Server
           href: connector-sql-server.md
+          displayName: 'upsert, timeout'
         - name: Square
           href: connector-square.md
         - name: Sybase
@@ -429,6 +465,7 @@
       items:
         - name: コピー アクティビティを使用したデータのコピー
           href: copy-activity-overview.md
+          displayName: 'retry, zip'
         - name: コピー アクティビティの監視
           href: copy-activity-monitoring.md
         - name: Delete アクティビティを使用したファイルの削除
@@ -437,35 +474,42 @@
           href: copy-data-tool.md
         - name: フォーマットと圧縮のサポート
           href: supported-file-formats-and-compression-codecs.md
+          displayName: zip
         - name: コピー アクティビティのパフォーマンス
           items:
             - name: パフォーマンスとスケーラビリティのガイド
               href: copy-activity-performance.md
             - name: パフォーマンスのトラブルシューティング
               href: copy-activity-performance-troubleshooting.md
+              displayName: 'diu, timeout'
             - name: パフォーマンス機能
               href: copy-activity-performance-features.md
+              displayName: 'polybase, diu'
         - name: メタデータと ACL を保持する
           href: copy-activity-preserve-metadata.md
         - name: スキーマと型マッピング
           href: copy-activity-schema-and-type-mapping.md
         - name: フォールト トレランス
           href: copy-activity-fault-tolerance.md
+          displayName: polybase
         - name: データ整合性の検証
           href: copy-activity-data-consistency.md
         - name: コピー アクティビティ ログ
           href: copy-activity-log.md
         - name: フォーマットと圧縮のサポート (レガシ)
           href: supported-file-formats-and-compression-codecs-legacy.md
+          displayName: zip
     - name: データを変換する
       href: transform-data.md
       items:
         - name: Data Flow の実行アクティビティ
           href: control-flow-execute-data-flow-activity.md
+          displayName: polybase
         - name: Power Query の実行アクティビティ
           href: control-flow-power-query-activity.md
         - name: Azure Functions アクティビティ
           href: control-flow-azure-function-activity.md
+          displayName: timeout
         - name: カスタム アクティビティ
           href: transform-data-using-dotnet-custom-activity.md
         - name: Databricks Jar アクティビティ
@@ -480,6 +524,7 @@
           href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive アクティビティ
           href: transform-data-using-hadoop-hive.md
+          displayName: timeout
         - name: HDInsight MapReduce アクティビティ
           href: transform-data-using-hadoop-map-reduce.md
         - name: HDInsight Pig アクティビティ
@@ -514,20 +559,25 @@
           href: control-flow-if-condition-activity.md
         - name: ルックアップ アクティビティ
           href: control-flow-lookup-activity.md
+          displayName: timeout
         - name: Set Variable アクティビティ
           href: control-flow-set-variable-activity.md
         - name: Switch アクティビティ
           href: control-flow-switch-activity.md
         - name: Until アクティビティ
           href: control-flow-until-activity.md
+          displayName: timeout
         - name: Validation アクティビティ
           href: control-flow-validation-activity.md
+          displayName: timeout
         - name: Wait アクティビティ
           href: control-flow-wait-activity.md
         - name: Web アクティビティ
           href: control-flow-web-activity.md
+          displayName: timeout
         - name: Webhook アクティビティ
           href: control-flow-webhook-activity.md
+          displayName: timeout
     - name: データ フローの変換
       items:
         - name: 変換の概要
@@ -536,20 +586,24 @@
           href: data-flow-aggregate.md
         - name: 行の変更
           href: data-flow-alter-row.md
+          displayName: upsert
         - name: 条件分割
           href: data-flow-conditional-split.md
         - name: 派生列
           href: data-flow-derived-column.md
         - name: Exists
           href: data-flow-exists.md
+          displayName: timeout
         - name: Assert
           href: data-flow-filter.md
         - name: フラット化
           href: data-flow-flatten.md
         - name: Join
           href: data-flow-join.md
+          displayName: 'merge, timeout'
         - name: 参照
           href: data-flow-lookup.md
+          displayName: timeout
         - name: 新しいブランチ
           href: data-flow-new-branch.md
         - name: '[解析]'
@@ -560,6 +614,7 @@
           href: data-flow-rank.md
         - name: Select
           href: data-flow-select.md
+          displayName: 'regex, regular expressions'
         - name: シンク
           href: data-flow-sink.md
         - name: 並べ替え
@@ -582,12 +637,14 @@
           href: author-global-parameters.md
         - name: 式言語
           href: control-flow-expression-language-functions.md
+          displayName: 'formatdatetime, todate, replace, string, substring, utc, utcnow, dynamic content'
         - name: システム変数
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
         - name: パラメーター化する方法
           href: how-to-expression-language-functions.md
+          displayName: 'formatdatetime, todate, replace, string, substring, utc, utcnow, dynamic content, user properties'
     - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項
@@ -602,6 +659,7 @@
           href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: 自己ホスト型統合ランタイムの資格情報の暗号化
           href: encrypt-credentials-self-hosted-integration-runtime.md
+          displayName: self hosted
         - name: Data Factory のマネージド ID
           href: data-factory-service-identity.md
         - name: カスタマー マネージド キーを使用したデータ ファクトリの暗号化
@@ -611,7 +669,7 @@
         - name: Data Factory の Azure プライベート リンク
           href: data-factory-private-link.md
         - name: Azure セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/data-factory-security-baseline?toc=/azure/data-factory/TOC.json
     - name: 監視と管理
       items:
         - name: 視覚的な監視
@@ -638,14 +696,20 @@
           items:
             - name: セルフホステッド統合ランタイムを作成して構成する
               href: create-self-hosted-integration-runtime.md
+              displayName: self hosted
             - name: セルフホステッド統合ランタイムの自動更新と期限切れ通知
               href: self-hosted-integration-runtime-auto-update.md
+              displayName: self hosted
             - name: 共有のセルフホステッド統合ランタイム
               href: create-shared-self-hosted-integration-runtime-powershell.md
+              displayName: self hosted
             - name: セルフホステッド統合ランタイムのオートメーション スクリプト
               href: self-hosted-integration-runtime-automation-scripts.md
+              displayName: self hosted
             - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
               href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
+              displayName: self hosted
+          displayName: 'self hosted, runtime'
         - name: Azure-SSIS 統合ランタイム
           href: create-azure-ssis-integration-runtime.md
     - name: Azure での SSIS パッケージの実行
@@ -658,6 +722,7 @@
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssis-activity.md
+          displayName: 'retry, timeout'
         - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Azure-SSIS 統合ランタイムのスケジュール設定
@@ -666,6 +731,7 @@
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: セルフホステッド IR を Azure-SSIS IR のプロキシとして構成する
           href: self-hosted-integration-runtime-proxy-ssis.md
+          displayName: self hosted
         - name: Azure-SSIS IR の Azure AD 認証の有効化
           href: enable-aad-authentication-azure-ssis-ir.md
         - name: Windows 認証でのデータへの接続
@@ -678,6 +744,7 @@
           href: built-in-preinstalled-components-ssis-integration-runtime.md
         - name: Azure-SSIS IR の設定のカスタマイズ
           href: how-to-configure-azure-ssis-ir-custom-setup.md
+          displayName: timeout
         - name: Azure-SSIS IR のライセンス付きコンポーネントのインストール
           href: how-to-develop-azure-ssis-ir-licensed-components.md
         - name: 高パフォーマンスを実現するための Azure-SSIS IR の構成
@@ -694,14 +761,17 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: トリガーの作成
       items:
-        - name: ストレージ イベント トリガーの作成
-          href: how-to-create-event-trigger.md
         - name: スケジュール トリガーの作成
           href: how-to-create-schedule-trigger.md
         - name: タンブリング ウィンドウ トリガーの作成
           href: how-to-create-tumbling-window-trigger.md
+          displayName: retry
         - name: タンブリング ウィンドウ トリガーの依存関係の作成
           href: tumbling-window-trigger-dependency.md
+        - name: ストレージ イベント トリガーの作成
+          href: how-to-create-event-trigger.md
+        - name: カスタム イベント トリガーの作成
+          href: how-to-create-custom-event-trigger.md
         - name: パイプラインでのトリガー メタデータの参照
           href: how-to-use-trigger-parameterization.md
     - name: Data Catalog とガバナンス
@@ -720,6 +790,7 @@
               href: data-migration-guidance-s3-azure-storage.md
             - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
               href: data-migration-guidance-hdfs-azure-storage.md
+              displayName: retry
             - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
               href: data-migration-guidance-netezza-azure-sqldw.md
         - name: Azure Machine Learning
@@ -772,32 +843,45 @@
           href: data-flow-understand-reservation-charges.md
         - name: コストの計画と管理
           href: plan-manage-costs.md
+          displayName: diu
         - name: 価格の例
           href: pricing-concepts.md
+          displayName: diu
     - name: トラブルシューティング ガイド
       items:
         - name: Data Factory UX
           href: data-factory-ux-troubleshoot-guide.md
         - name: Activities
           href: data-factory-troubleshoot-guide.md
+          displayName: timeout
         - name: Connectors
           href: connector-troubleshoot-guide.md
+          displayName: 'polybase, timeout'
         - name: パイプラインのトリガー
           href: pipeline-trigger-troubleshoot-guide.md
         - name: データ フロー
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: データ フローの概要
+              href: data-flow-troubleshoot-guide.md
+              displayName: timeout
+            - name: コネクタと形式
+              href: data-flow-troubleshoot-connector-format.md
         - name: 継続的インテグレーションとデプロイ
           href: ci-cd-github-troubleshoot-guide.md
         - name: セキュリティとアクセス制御
           href: security-and-access-control-troubleshoot-guide.md
         - name: セルフホステッド統合ランタイム
           href: self-hosted-integration-runtime-troubleshoot-guide.md
+          displayName: self hosted
         - name: Azure-SSIS 統合ランタイム
           href: ssis-integration-runtime-management-troubleshoot.md
+          displayName: timeout
         - name: Azure-SSIS IR でのパッケージ実行
           href: ssis-integration-runtime-ssis-activity-faq.md
+          displayName: 'retry, timeout'
         - name: Azure-SSIS IR での接続性の診断
           href: ssis-integration-runtime-diagnose-connectivity-faq.md
+          displayName: timeout
 - name: リファレンス
   items:
     - name: データ フローのスクリプト
@@ -814,12 +898,15 @@
       href: /python/api/overview/azure/datafactory
     - name: Azure Policy の組み込み
       href: policy-reference.md
+    - name: Azure CLI
+      href: /cli/azure/datafactory
 - name: リソース
   items:
     - name: ホワイトペーパー
       href: whitepapers.md
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
+      displayName: timeout
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: ブログ

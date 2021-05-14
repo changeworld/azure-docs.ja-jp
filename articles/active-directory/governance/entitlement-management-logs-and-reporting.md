@@ -3,7 +3,7 @@ title: Azure Monitor を使用したアーカイブとレポート - Azure AD �
 description: Azure Active Directory のエンタイトルメント管理で、Azure Monitor を使用してログをアーカイブし、レポートを作成する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 354805b3e2b538c92ba2345df2bcd93968640068
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d2c8b4c121c14cb9bff59cf1c70367dec6702139
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764389"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786449"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 

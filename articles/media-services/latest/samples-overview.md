@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3707516818e54dd251bd470eb9231afc6e3fff67
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cd82da805538abcddf2f76a20c28cb0a74b5c89b
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138681"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685605"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3 のサンプル
 
@@ -33,11 +33,11 @@ ms.locfileid: "108138681"
 
 | Folder | 説明 |
 |-------------|-------------|
-| [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESPredefinedPreset)|組み込みのプリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
-| [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264)|カスタム H.264 エンコード プリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
-| [VideoEncoding/EncodingWithMESCustomPreset_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)|カスタム HEVC エンコード プリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
-| [VideoEncoding/EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)|JobInputSequence を使用したジョブの送信、開始時間と終了時間でクリップできる複数のアセットの合成を行う方法。 最終的にエンコードされたファイルは、すべてのアセットが合成された単一の動画になります。  また、このサンプルでは、ストリーミング用に出力アセットを発行し、検証用に結果をダウンロードします。|
-| [VideoEncoding/EncodingWithMESCustomPresetAndSprite](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPresetAndSprite)|カスタム プリセットとサムネイル スプライト、および HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
+| [VideoEncoding/EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_PredefinedPreset)|組み込みのプリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
+| [VideoEncoding/EncodingWithMESCustomPreset_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264)|カスタム H.264 エンコード プリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
+| [VideoEncoding/EncodingWithMESCustomPreset_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)|カスタム HEVC エンコード プリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
+| [VideoEncoding/EncodingWithMESCustomStitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)|JobInputSequence を使用したジョブの送信、開始時間と終了時間でクリップできる複数のアセットの合成を行う方法。 最終的にエンコードされたファイルは、すべてのアセットが合成された単一の動画になります。  また、このサンプルでは、ストリーミング用に出力アセットを発行し、検証用に結果をダウンロードします。|
+| [VideoEncoding/EncodingWithMESCustomPresetAndSprite](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_SpriteThumbnail)|カスタム プリセットとサムネイル スプライト、および HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法。|
 | [Live/LiveEventWithDVR](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live/LiveEventWithDVR)|最長 25 時間のフル アーカイブと 5 分の DVR ウィンドウを備えたアセット フィルターとを使用して LiveEvent を作成する方法。 フィルターを使用してストリーミング用のロケーターを作成する方法。|
 | [VideoAnalytics/VideoAnalyzer](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoAnalytics/VideoAnalyzer)|ビデオ アナライザーの変換の作成、入力アセットへのビデオ ファイルのアップロード、変換を使用したジョブの送信、検証用の結果のダウンロードを行う方法。|
 | [AudioAnalytics/AudioAnalyzer](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/AudioAnalytics/AudioAnalyzer)|オーディオ アナライザーの変換の作成、入力アセットへのメディア ファイルのアップロード、変換を使用したジョブの送信、検証用の結果のダウンロードを行う方法。|

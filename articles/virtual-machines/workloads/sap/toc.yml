@@ -62,6 +62,8 @@
           href: hana-concept-preparation.md
         - name: ディザスター リカバリーのフェールオーバー手順
           href: hana-failover-procedure.md
+        - name: RHEL 上の SAP 用の L インスタンス HA
+          href: large-instance-high-availability-rhel.md
     - name: トラブルシューティングと監視
       items:
         - name: HLI の監視
@@ -74,8 +76,10 @@
           href: hana-li-portal.md
         - name: STONITH を使用した HA セットアップ
           href: ha-setup-with-stonith.md
-        - name: Type II SKU 向けの OS バックアップ
-          href: os-backup-type-ii-skus.md
+        - name: OS のバックアップ
+          href: large-instance-os-backup.md
+        - name: SAP on RHEL のための Azure Large Instances の高可用性
+          href: large-instance-high-availability-rhel.md
         - name: HANA Large Instances の Kdump を有効にする
           href: hana-large-instance-enable-kdump.md
         - name: HANA Large Instances 向けの OS アップグレード
@@ -112,6 +116,8 @@
           href: sap-hana-high-availability-rhel.md
         - name: RHEL での ANF を使用した SAP HANA システム レプリケーションの設定
           href: sap-hana-high-availability-netapp-files-red-hat.md
+        - name: SLES での Pacemaker を使用した SAP HANA スケールアウト HSR
+          href: sap-hana-high-availability-scale-out-hsr-suse.md
         - name: SLES での SAP HANA スケールアウトと Pacemaker のトラブルシューティング
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: RHEL での Pacemaker を使用した SAP HANA スケールアウト HSR
@@ -120,11 +126,25 @@
           href: sap-hana-scale-out-standby-netapp-files-suse.md
         - name: RHEL で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
           href: sap-hana-scale-out-standby-netapp-files-rhel.md
-    - name: SAP HANA のバックアップの概要
-      href: sap-hana-backup-guide.md
-    - name: SAP HANA のファイル レベルのバックアップ
-      href: sap-hana-backup-file-level.md
-- name: Azure Virtual Machines 上の SAP NetWeaver と SAP Business One
+    - name: Azure Backup を使用した SAP HANA データベース バックアップ
+      items:
+        - name: Azure VM での SAP HANA データベース バックアップ
+          href: ../../../backup/sap-hana-db-about.md
+        - name: Azure VM での SAP HANA データベースのバックアップ
+          href: ../../../backup/backup-azure-sap-hana-database.md
+        - name: Azure VM 上の SAP HANA データベースの復元
+          href: ../../../backup/sap-hana-db-restore.md
+        - name: 管理および監視
+          href: ../../../backup/sap-hana-db-manage.md
+        - name: SAP HANA データベースのバックアップに関するサポート マトリックス
+          href: ../../../backup/sap-hana-backup-support-matrix.md
+        - name: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
+          href: ../../../backup/sap-hana-faq-backup-azure-vm.yml
+        - name: Azure での SAP HANA データベースのバックアップをトラブルシューティングする
+          href: ../../../backup/backup-azure-sap-hana-database-troubleshoot.md
+        - name: チュートリアル - Azure VM での SAP HANA データベースのバックアップ
+          href: ../../../backup/tutorial-backup-sap-hana-db.md
+- name: Azure Virtual Machines 上の SAP NetWeaver、S/4HANA、Business One
   items:
     - name: SAP ワークロードの計画とデプロイ チェックリスト
       href: sap-deployment-checklist.md
@@ -197,8 +217,6 @@
               href: high-availability-guide-rhel.md
             - name: Azure NetApp Files を使用した (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
               href: high-availability-guide-rhel-netapp-files.md
-            - name: RHEL 上の SAP 用の L インスタンス HA
-              href: large-instance-high-availability-rhel.md
         - name: Azure インフラストラクチャの準備
           items:
             - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
@@ -251,7 +269,9 @@
   items:
     - name: Azure の SAP BusinessObjects BI プラットフォームの計画および実装ガイド
       href: businessobjects-deployment-guide.md
-    - name: Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
+    - name: Azure の Windows 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
+      href: businessobjects-deployment-guide-windows.md
+    - name: Linux on Azure 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
       href: businessobjects-deployment-guide-linux.md
 - name: Azure AD と SAP アプリケーションの統合
   items:
@@ -314,7 +334,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/sap-hana/hanainstance
+      href: /cli/azure/hanainstance
     - name: Azure PowerShell
       href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: リソース

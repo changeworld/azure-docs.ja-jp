@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces のドキュメント
-summary: Azure Dev Spaces は廃止の予定であり、2023 年 10 月 31 日に終了します。
+summary: Azure Dev Spaces は廃止の予定であり、2023 年 10 月 31 日に終了します。 新しいコントローラーをプロビジョニングすることはできません。 使用可能なリージョンは、そのリージョンで顧客アクティビティが停止した時点で閉じられます。
 metadata:
   title: Azure Dev Spaces のドキュメント
-  description: Azure Dev Spaces は廃止の予定であり、2023 年 10 月 31 日に終了します。
+  description: Azure Dev Spaces は廃止の予定であり、2023 年 10 月 31 日に終了します。 新しいコントローラーをプロビジョニングすることはできません。 使用可能なリージョンは、そのリージョンで顧客アクティビティが停止した時点で閉じられます。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 10/29/2020
-  ms.openlocfilehash: a3b3ca8c87871b9ae8e1d6a3db32d9e2051215b6
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+  ms.openlocfilehash: 052e625961aa793d0ffe6ae3faccdc634c2e6a51
+  ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93072033"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108802704"
 landingContent:
 - title: Bridge to Kubernetes
   linkLists:

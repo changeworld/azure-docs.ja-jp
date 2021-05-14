@@ -5,16 +5,15 @@ author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 9c2b2217fc6b32e5191bb67ffdaa10b796adf84b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6c3b162c0acb5c494f8d5dda1dc9b515deb517bf
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762769"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768447"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用した仮想マシン スケール セットの管理
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI コマンドの一部について説明します。

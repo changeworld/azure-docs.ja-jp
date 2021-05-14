@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure Static Web Apps のドキュメント
-summary: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される最新の Web アプリケーションを構築できます。
+summary: Azure Static Web Apps を使用すると、コードが変更されたときに自動的に Web に発行される、最新の Web アプリケーションを構築できます。
 metadata:
   title: Azure Static Web Apps のドキュメント
-  description: Azure Static Web Apps を使用すると、GitHub で加えられた変更から自動的に発行される最新の Web アプリケーションを構築できます。
+  description: Azure Static Web Apps を使用すると、コードが変更されたときに自動的に Web に発行される、最新の Web アプリケーションを構築できます。
   ms.topic: landing-page
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 12/08/2020
-  ms.openlocfilehash: 880d675915a17e24269361c0ceed320a257d0ba9
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.date: 05/07/2021
+  ms.openlocfilehash: bcf07b325d18be53a15806f1a38cae5b61f13b41
+  ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96906133"
+  ms.lasthandoff: 05/12/2021
+  ms.locfileid: "109813112"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -26,14 +26,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: フレームワークなしで最初のアプリを作成する
+      url: ./getting-started.md?tabs=vanilla-javascript
     - text: 最初の Angular アプリを作成する
       url: ./getting-started.md?tabs=angular
     - text: 最初の React アプリを作成する
       url: ./getting-started.md?tabs=react
     - text: 最初の Vue アプリを作成する
       url: ./getting-started.md?tabs=vue
-    - text: 最初のアプリを作成する (フレームワークなし)
-      url: ./getting-started.md?tabs=vanilla-javascript
   - linkListType: learn
     links:
     - text: Angular、React、Svelte、Vue JavaScript アプリを発行する
@@ -62,6 +62,10 @@ landingContent:
       url: deploy-nextjs.md
     - text: Nuxt.js からデプロイする
       url: deploy-nuxtjs.md
+    - text: Azure DevOps を使用してデプロイする
+      url: publish-devops.md
+    - text: ARM テンプレートを使用してデプロイする
+      url: publish-azure-resource-manager.md
   - linkListType: learn
     links:
     - text: Gatsby を使用して静的な Web アプリを発行する
@@ -72,11 +76,11 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: ルート
-      url: routes.md
+    - text: アプリケーション構成
+      url: configuration.md
     - text: パブリック API
       url: apis.md
-    - text: ステージング
+    - text: ステージング環境
       url: review-publish-pull-requests.md
     - text: アクセスを制限する
       url: authentication-authorization.md

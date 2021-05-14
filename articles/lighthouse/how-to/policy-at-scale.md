@@ -1,14 +1,14 @@
 ---
 title: 委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 description: Azure Lighthouse によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
-ms.date: 03/02/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 48354c3cca7574b1d5acf71865218564591bc23e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b94816361e795d6333bdca63c5e2aab977190e8
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102049782"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786113"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 

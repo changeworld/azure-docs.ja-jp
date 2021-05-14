@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: c30781cb83436e15a217a1d43c0e39facae9f52d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3a5d37c546e57725b15c9ad42c7b422c8c34eed5
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770419"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685137"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Azure CLI から IoT Central を管理する
 
@@ -61,7 +61,11 @@ az iot central app create \
 | template          | 使用するアプリケーション テンプレート。 詳細については、後の表を参照してください。 |
 | display-name      | UI に表示されるアプリケーションの名前。 |
 
+### <a name="application-templates"></a>アプリケーション テンプレート
+
 [!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
+
+独自のアプリケーション テンプレートを作成した場合は、それを使用して新しいアプリケーションを作成できます。 アプリケーション テンプレートの入力を求められたら、アプリの [[アプリケーション テンプレートのエクスポート]](howto-use-app-templates.md#create-an-application-template) セクションにある、エクスポートされたアプリの URL の共有可能なリンクに表示されるアプリ ID を入力します。
 
 ## <a name="view-your-applications"></a>アプリケーションを表示する
 

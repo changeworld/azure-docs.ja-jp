@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c59ef009a2f71e09d9c02dc51017518f8b99da5
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 9a47831e0a3c2043b000aff491d974259321566d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275635"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684183"
 ---
 # <a name="download-the-results-of-a-job"></a>ジョブの結果をダウンロードする
 
@@ -119,7 +119,7 @@ private async static Task DownloadResults(IAzureMediaServicesClient client, stri
 }
 ```
 
-完全なコード サンプルを参照してください: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+完全なコード サンプルを参照してください: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_PredefinedPreset/Program.cs)
 
 ## <a name="next-steps"></a>次のステップ
 

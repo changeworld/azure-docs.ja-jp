@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory でのルックアップ アクティビティ
 description: ルックアップ アクティビティを使用して外部ソースから値を検索する方法を説明します。 この出力は、後続のアクティビティによってさらに参照できます。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
-ms.openlocfilehash: 4b2fb49899b6a676520fe0912dd122dd72cce023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14ab6295717777f40677e0bdcd63a46821683658
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712914"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480187"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 
@@ -32,7 +32,7 @@ ms.locfileid: "101712914"
 
 次のデータ ソースがルックアップ アクティビティでサポートされています。 
 
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
+[!INCLUDE [data-factory-v2-supported-data-stores](includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 ## <a name="syntax"></a>構文
 

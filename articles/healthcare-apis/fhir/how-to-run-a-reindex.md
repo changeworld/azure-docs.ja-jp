@@ -1,29 +1,29 @@
 ---
-title: Azure API for FHIR で再インデックスジョブを実行する方法
-description: この記事では、インデックス作成ジョブを実行して、データベースにまだインデックスが作成されていないすべての検索または並べ替えパラメーターにインデックスを作成する方法について説明します。
+title: でインデックスの再作成ジョブを実行するAzure API for FHIR
+description: この記事では、データベースにまだインデックスが作成されていない検索または並べ替えパラメーターにインデックスを付け、インデックスを再作成ジョブを実行する方法について説明します。
 author: stevewohl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/23/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0332582f65ea59f43cc55064f9cdacefe4beefe4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ea679023b2b5bb620bb9684a0e841f6cc4fa310d
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322563"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109847006"
 ---
-# <a name="running-a-reindex-job"></a>再インデックスジョブの実行
+# <a name="running-a-reindex-job"></a>インデックス再作成ジョブの実行
 
-Azure API for FHIR でまだインデックスが作成されていない検索パラメーターまたは並べ替えパラメーターがある場合があります。 これは、独自の検索パラメーターを定義する場合に特に関連します。 検索パラメーターのインデックスが作成されるまで、検索では使用できません。 この記事では、インデックス作成ジョブを実行して、データベースにまだインデックスが作成されていないすべての検索または並べ替えパラメーターにインデックスを作成する方法の概要について説明します。
+インデックスがまだ作成されていない検索パラメーターまたは並べ替えAzure API for FHIRのシナリオがあります。 これは、独自の検索パラメーターを定義する場合に特に関連します。 検索パラメーターにインデックスが付くまでは、検索で使用できません。 この記事では、データベースにまだインデックスが作成されていない検索または並べ替えパラメーターにインデックスを付け、インデックスを再作成ジョブを実行する方法の概要について説明します。
 
 > [!Warning]
-> 作業を開始する前に、この記事全体を読むことが重要です。 再インデックスジョブは、非常にパフォーマンスに大きな影響を与える可能性があります。 この記事には、再インデックスジョブを調整および制御する方法のオプションが含まれています。
+> 開始する前に、この記事全体を読む必要があります。 インデックスの再作成ジョブは、パフォーマンスが非常に高い場合があります。 この記事には、インデックスの再作成ジョブを調整および制御する方法のオプションが含まれています。
 
-## <a name="how-to-run-a-reindex-job"></a>再インデックスジョブを実行する方法 
+## <a name="how-to-run-a-reindex-job"></a>インデックス再作成ジョブの実行方法 
 
-再インデックスジョブを開始するには、次のコード例を使用します。
+インデックスの再作成ジョブを開始するには、次のコード例を使用します。
 
 ```json
 POST {{FHIR URL}}/$reindex 
@@ -37,11 +37,11 @@ POST {{FHIR URL}}/$reindex
 }
  ```
 
-要求が成功した場合は、" **201** " という状態が返されます。 このメッセージの結果は次のようになります。
+要求が成功すると、状態 **201 Created が** 返されます。 このメッセージの結果は次のように表示されます。
 
 ```json
 HTTP/1.1 201 Created 
-Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e 
+Content-Location: https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e 
 
 {
   "resourceType": "Parameters",
@@ -91,17 +91,15 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
 ```
 
 > [!NOTE]
-> またはの状態を確認して再インデックス作成ジョブを取り消すには、reindex ID が必要です。 これは、結果として得られるパラメーターリソースの ID (上記を参照) であり、コンテンツの場所の文字列の末尾にある GUID としても確認できます。
+> または の状態を確認してインデックスの再作成ジョブを取り消す場合は、インデックスの再作成 ID が必要です。 これは、結果として得られる Parameters リソースの ID です (上に示します)。 インデックスの再作成 ID は、Content-Location 文字列の末尾にも表示されます。 上記の例では `560c7c61-2c70-4c54-b86d-c53a9d29495e` です。
 
-`https://{{FHIR URL}}/_operations/reindex/560c7c61-2c70-4c54-b86d-c53a9d29495e`
+ ## <a name="how-to-check-the-status-of-a-reindex-job"></a>インデックス再作成ジョブの状態を確認する方法
 
- ## <a name="how-to-check-the-status-of-a-reindex-job"></a>再インデックスジョブの状態を確認する方法
-
-インデックスの再作成ジョブを開始したら、次のようにしてジョブの状態を確認できます。
+インデックスの再作成ジョブを開始したら、次を使用してジョブの状態を確認できます。
 
 `GET {{FHIR URL}}/_operations/reindex/{{reindexJobId}`
 
-再インデックスジョブの結果の状態を次に示します。
+インデックスの再作成ジョブの結果の状態を次に示します。
 
 ```json
 {
@@ -163,7 +161,7 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
     {
 ```
 
-次の情報が reindex ジョブの結果に表示されます。
+インデックスの再作成ジョブの結果には、次の情報が表示されます。
 
 * **Totalresourcestoreindex**: ジョブの一部としてインデックスされているリソースの合計数が含まれます。
 
@@ -192,12 +190,12 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
 
 | **パラメーター**                     | **説明**              | **[Default]**        | **推奨される範囲**           |
 | --------------------------------- | ---------------------------- | ------------------ | ------------------------------- |
-| QueryDelayIntervalInMilliseconds  | これは、再インデックスジョブ中に開始されるリソースのバッチ間の遅延です。 | 500ミリ秒 (.5 秒) | 50から 5000:50 によって再インデックスジョブが高速化され、5000によって既定の処理速度が低下します。 |
-| MaximumResourcesPerQuery  | これは、インデックスするリソースのバッチに含まれるリソースの最大数です。  | 100 | 1-500 |
+| QueryDelayIntervalInMilliseconds  | これは、再インデックスジョブ中に開始されるリソースのバッチ間の遅延です。 | 500ミリ秒 (.5 秒) | 50 から 5000: 50 を指定すると、インデックスの再作成ジョブが高速化され、5000 の場合、既定値から低下します。 |
+| MaximumResourcesPerQuery  | これは、インデックスを再作成するリソースのバッチに含まれるリソースの最大数です。  | 100 | 1-500 |
 | MaximumConcurreny  | これは、一度に実行されるバッチの数です。  | 1 | 1 - 5 |
-| targetDataStoreUsagePercentrage | これにより、インデックス再作成ジョブに使用するデータストアの割合を指定できます。 たとえば、50% を指定すると、最大インデックス作成ジョブで Cosmos DB で使用可能な Ru の50% が使用されるようになります。  | 存在しません。これは、最大100% を使用できることを意味します。 | 1-100 |
+| targetDataStoreUsagePercentrage | これにより、インデックスの再作成ジョブに使用するデータ ストアの割合を指定できます。 たとえば、50% を指定すると、インデックスの再作成ジョブで最大で 50% の使用可能な RUs が使用Cosmos DB。  | 存在しない。つまり、最大 100% を使用できます。 | 1-100 |
 
-上記のいずれかのパラメーターを使用する場合は、インデックスの再作成ジョブを開始するときに、パラメーターリソースに渡すことができます。
+上記のパラメーターを使用する場合は、インデックス再作成ジョブの開始時に Parameters リソースに渡します。
 
 ```json
 {
@@ -225,7 +223,7 @@ Content-Location: https://cv-cosmos1.azurewebsites.net/_operations/reindex/560c7
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、reindex ジョブを開始する方法について説明しました。 Reindex ジョブを必要とする新しい検索パラメーターを定義する方法については、「」を参照してください。 
+この記事では、インデックスの再作成ジョブを開始する方法について学習しました。 インデックスの再作成ジョブを必要とする新しい検索パラメーターを定義する方法については、「」を参照してください。 
 
 >[!div class="nextstepaction"]
 >[カスタム検索パラメーターの定義](how-to-do-custom-search.md)

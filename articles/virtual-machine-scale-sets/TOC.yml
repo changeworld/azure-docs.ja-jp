@@ -202,14 +202,14 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Azure セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-machine-scale-sets-security-baseline?toc=/azure/virtual-machine-scale-sets/TOC.json
       maintainContext: true
     - name: 監視
       href: ../azure-monitor/vm/monitor-vm-azure.md
@@ -223,7 +223,7 @@
       href: ../virtual-machines/put-calls-create-or-update.md
       maintainContext: true
     - name: スケール セットの FAQ
-      href: virtual-machine-scale-sets-faq.md
+      href: virtual-machine-scale-sets-faq.yml
 - name: 操作方法
   items:
     - name: 計画と設計
@@ -348,6 +348,8 @@
               href: ../virtual-machines/dedicated-hosts-portal.md
         - name: Azure スポット仮想マシン
           href: use-spot.md
+        - name: Linux 向け Azure ハイブリッド特典
+          href: azure-hybrid-benefit-linux.md
     - name: 管理する
       items:
         - name: 一般的な管理タスク
@@ -413,11 +415,4 @@
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: リソース
-- name: インスタンス
-  items:
-    - name: 購入オプション
-      items: null
-    - name: Azure ハイブリッド特典
-      items:
-        - name: Linux
-          href: azure-hybrid-benefit-linux.md
+  items: null

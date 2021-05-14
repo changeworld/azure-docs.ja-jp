@@ -35,6 +35,8 @@
       href: language-identification-model.md
     - name: ライブ ストリーム分析
       href: live-stream-analysis.md
+    - name: 観察された人々
+      href: observed-people-tracing.md
     - name: コンテンツ モデルのカスタマイズ
       items:
         - name: 概要
