@@ -64,7 +64,7 @@
               displayName: 'regulatory, compliance, standards, domains'
               href: ./database/security-controls-policy.md
             - name: セキュリティ ベースライン
-              href: database/security-baseline.md
+              href: /security/benchmark/azure/baselines/sql-database-security-baseline?toc=/azure/azure-sql/toc.json
             - name: Always Encrypted
               href: database/always-encrypted-landing.yml
             - name: Azure Defender for SQL
@@ -157,6 +157,22 @@
           href: database/job-automation-overview.md
         - name: SQL Agent を使用したジョブの自動化
           href: database/job-automation-managed-instances.md
+        - name: アプリからの接続とクエリ実行
+          items:
+            - name: Visual Studio での .NET
+              href: database/connect-query-dotnet-visual-studio.md
+            - name: .NET Core
+              href: database/connect-query-dotnet-core.md
+            - name: Go
+              href: database/connect-query-go.md
+            - name: Node.js
+              href: database/connect-query-nodejs.md
+            - name: PHP
+              href: database/connect-query-php.md
+            - name: Python
+              href: database/connect-query-python.md
+            - name: Ruby
+              href: database/connect-query-ruby.md
         - name: ビジネス継続性
           items:
             - name: フェールオーバー グループの構成
@@ -195,6 +211,8 @@
               href: database/monitoring-with-dmvs.md
             - name: ブロッキングの説明と解決策
               href: database/understand-resolve-blocking.md
+            - name: 並列処理の最大限度 (MAXDOP) の構成
+              href: database/configure-max-degree-of-parallelism.md
             - name: 診断テレメトリをログに記録する
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: インメモリ OLTP
@@ -268,7 +286,7 @@
             - name: ハイパースケール
               href: database/service-tier-hyperscale.md
             - name: ハイパースケールに関する FAQ
-              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.yml
         - name: コストの計画と管理
           href: database/cost-management.md
     - name: クイックスタート
@@ -329,8 +347,16 @@
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
     - name: 移行ガイド
       items:
-        - name: DB2 から
+        - name: Access から
+          href: migration-guides/database/access-to-sql-database-guide.md
+        - name: Db2 から
           href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Oracle から
+          href: migration-guides/database/oracle-to-sql-database-guide.md
+        - name: MySQL から
+          href: migration-guides/database/mysql-to-sql-database-guide.md
+        - name: SAP ASE から
+          href: migration-guides/database/sap-ase-to-sql-database.md
         - name: SQL Server から
           items:
             - name: 概要
@@ -452,14 +478,8 @@
                   href: database/connect-query-vscode.md
             - name: アプリからの接続とクエリ実行
               items:
-                - name: Visual Studio での .NET
-                  href: database/connect-query-dotnet-visual-studio.md
-                - name: .NET Core
-                  href: database/connect-query-dotnet-core.md
                 - name: Active Directory MFA での .NET
                   href: database/active-directory-interactive-connect-azure-sql-db.md
-                - name: Go
-                  href: database/connect-query-go.md
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java と Spring Data JDBC
@@ -468,16 +488,6 @@
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java と Spring Data R2DBC
                   href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
-                - name: Node.js
-                  href: database/connect-query-nodejs.md
-                - name: PHP
-                  href: database/connect-query-php.md
-                - name: Python
-                  href: database/connect-query-python.md
-                - name: Ruby
-                  href: database/connect-query-ruby.md
-                - name: R
-                  href: database/connect-query-r.md
         - name: 管理する
           items:
             - name: Management API リファレンス
@@ -500,6 +510,8 @@
               href: database/elastic-pool-resource-management.md
             - name: Hyperscale パフォーマンス診断
               href: database/hyperscale-performance-diagnostics.md
+            - name: ブロック T-SQL CRUD
+              href: database/block-crud-tsql.md
         - name: セキュリティで保護
           items:
             - name: VNet またはファイアウォールの背後にあるストレージ アカウントに対する監査
@@ -749,8 +761,10 @@
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
     - name: 移行ガイド
       items:
-        - name: DB2 から
+        - name: Db2 から
           href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Oracle から
+          href: migration-guides/managed-instance/oracle-to-managed-instance-guide.md
         - name: SQL Server から
           items:
             - name: 概要
@@ -906,7 +920,7 @@
                     - name: SQL Server 用の R コードを変換する
                       href: /sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: sqlrutils を使用してストアド プロシージャを作成する
-                      href: /sql/machine-learning/r/how-to-create-a-stored-procedure-using-sqlrutils?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
+                      href: /machine-learning-server/r-reference/sqlrutils/how-to-create-a-stored-procedure-from-r
                 - name: 予測
                   items:
                     - name: PREDICT T-SQL でのネイティブ スコアリング
@@ -1050,18 +1064,26 @@
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
                 - name: 可用性グループ (AG)
                   href: virtual-machines/windows/availability-group-overview.md
-                - name: フェールオーバー クラスター インスタンス
+                - name: フェールオーバー クラスター インスタンス (FCI)
                   href: virtual-machines/windows/failover-cluster-instance-overview.md
             - name: ベスト プラクティス
               items:
-                - name: パフォーマンス
-                  href: virtual-machines/windows/performance-guidelines-best-practices.md
                 - name: セキュリティ
                   href: virtual-machines/windows/security-considerations-best-practices.md
                 - name: クラスター構成
                   href: virtual-machines/windows/hadr-cluster-best-practices.md
                 - name: アプリケーション パターン
                   href: virtual-machines/windows/application-patterns-development-strategies.md
+                - name: パフォーマンス
+                  items:
+                    - name: クイック チェックリスト
+                      href: virtual-machines/windows/performance-guidelines-best-practices-checklist.md
+                    - name: VM サイズ
+                      href: virtual-machines/windows/performance-guidelines-best-practices-vm-size.md
+                    - name: ストレージ
+                      href: virtual-machines/windows/performance-guidelines-best-practices-storage.md
+                    - name: ベースラインの収集
+                      href: virtual-machines/windows/performance-guidelines-best-practices-collect-baseline.md
             - name: 管理
               items:
                 - name: SQL IaaS Agent 拡張機能
@@ -1248,12 +1270,20 @@
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: 移行ガイド
       items:
-        - name: 概要
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
-        - name: SQL Server から
-          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
-        - name: DB2 から
+        - name: Db2 から
           href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
+        - name: Oracle から
+          href: migration-guides/virtual-machines/oracle-to-sql-on-azure-vm-guide.md
+        - name: SQL Server から
+          items:
+            - name: 概要
+              href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+            - name: 移行ガイド
+              href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+            - name: 可用性グループ (AG)
+              href: migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md
+            - name: フェールオーバー クラスター インスタンス (FCI)
+              href: migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md
 - name: リファレンス
   items:
     - name: T-SQL 言語のリファレンス

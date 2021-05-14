@@ -65,7 +65,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/cosmos-db-security-baseline?context=/azure/cosmos-db/context/context
     - name: Azure Synapse Link を使用した分析
       items:
         - name: Cosmos DB の Azure Synapse Link
@@ -77,7 +77,7 @@
         - name: Synapse Link のユース ケース
           href: synapse-link-use-cases.md
         - name: Synapse Link に関する FAQ
-          href: synapse-link-frequently-asked-questions.md
+          href: synapse-link-frequently-asked-questions.yml
     - name: バックアップと復元
       items:
         - name: バックアップと復元の概要
@@ -87,7 +87,7 @@
             - name: 継続的バックアップ - 概要
               href: continuous-backup-restore-introduction.md
             - name: 継続的バックアップ - FAQ
-              href: continuous-backup-restore-frequently-asked-questions.md
+              href: continuous-backup-restore-frequently-asked-questions.yml
             - name: 継続的バックアップ - リソース モデル
               href: continuous-backup-restore-resource-model.md
     - name: Azure Cosmos DB コストの最適化
@@ -126,6 +126,8 @@
       items:
         - name: コンプライアンス
           href: compliance.md
+        - name: データの保存場所
+          href: data-residency.md
     - name: 自動の推奨事項
       href: automated-recommendations.md
 - name: SQL/Core API
@@ -150,6 +152,8 @@
               href: create-sql-api-java.md
             - name: Spring Data アプリ
               href: create-sql-api-spring-data.md
+            - name: Spark v3 アプリ
+              href: create-sql-api-spark.md
             - name: Node.js アプリ
               href: create-sql-api-nodejs.md
             - name: Python アプリ
@@ -583,6 +587,9 @@
             - name: パラメーター化クエリ
               displayName: 'parameterized query, parameterized, parameter, parameters'
               href: sql-query-parameterized-queries.md
+            - name: 改ページ位置の自動修正
+              displayName: 'continuation tokens, paging, pagination'
+              href: sql-query-pagination.md
             - name: LINQ to SQL
               displayName: 'linq, .NET'
               href: sql-query-linq-to-sql.md
@@ -669,7 +676,7 @@
                 - name: 自動スケーリングのスループットのプロビジョニング - データベースまたはコンテナー
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
                   href: how-to-provision-autoscale-throughput.md
-                - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
+                - name: 容量計画ツールを使用して RU/秒を見積もる
                   displayName: 'request units, RUs, RU, capacity'
                   href: estimate-ru-with-capacity-planner.md
                 - name: Azure Functions タイマーを使用してスケーリングする
@@ -752,6 +759,8 @@
                   href: troubleshoot-unauthorized.md
                 - name: 禁止の問題のトラブルシューティング
                   href: troubleshoot-forbidden.md
+                - name: 正しくない要求のトラブルシューティング
+                  href: troubleshoot-bad-request.md
                 - name: 複数リージョン環境での可用性の問題
                   href: troubleshoot-sdk-availability.md
             - name: .NET
@@ -828,7 +837,7 @@
               href: visualize-qlik-sense.md
         - name: Apache Spark による組み込みの分析
           items:
-            - name: Azure Databricks の Spark コネクタ
+            - name: Azure Databricks Spark 2 OLTP コネクタ
               href: spark-connector.md
             - name: Apache Kafka と Cosmos DB を使用したストリーミング
               href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
@@ -877,9 +886,9 @@
             - name: Azure Event Hubs と Azure Storage
               href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
             - name: Spring Boot Starter の使用
-              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Spring Data の開発者ガイド
-              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: ODBC ドライバー
               href: odbc-driver.md
     - name: リファレンス
@@ -908,10 +917,14 @@
               href: sql-api-sdk-java-spring-v2.md
             - name: Spring Data コネクタ v3
               href: sql-api-sdk-java-spring-v3.md
-            - name: Spark コネクタ
+            - name: Spark 3 OLTP コネクタ (プレビュー)
+              href: sql-api-sdk-java-spark-v3.md
+            - name: Spark 2 OLTP コネクタ
               href: sql-api-sdk-java-spark.md
             - name: Java バルク エグゼキューター ライブラリ v2
               href: sql-api-sdk-bulk-executor-java.md
+        - name: Azure CLI
+          href: /cli/azure/cosmosdb
         - name: Node.js
           href: sql-api-sdk-node.md
         - name: Python
@@ -919,7 +932,7 @@
         - name: REST (データ プレーン)
           href: /rest/api/cosmos-db/
         - name: REST (管理プレーン)
-          href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
+          href: /rest/api/cosmos-db-resource-provider/2021-03-15/sqlresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -966,7 +979,7 @@
     - name: 概念
       items:
         - name: よく寄せられる質問
-          href: cassandra-faq.md
+          href: cassandra-faq.yml
         - name: エラスティック スケール
           href: manage-scale-cassandra.md
         - name: パーティション分割
@@ -1000,7 +1013,7 @@
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-cassandra.md
         - name: Spring Data の格納と管理
-          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 一般的な問題のトラブルシューティング
           href: cassandra-troubleshoot.md
         - name: Cassandra と Spark
@@ -1037,7 +1050,7 @@
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
+          href: /rest/api/cosmos-db-resource-provider/2021-03-15/cassandraresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1046,7 +1059,7 @@
   items:
     - name: 概要
       items:
-        - name: Cosmos DB の MongoDB API とは
+        - name: Cosmos DB の MongoDB 用 API とは
           href: mongodb-introduction.md
     - name: クイックスタート
       items:
@@ -1056,8 +1069,6 @@
           href: create-mongodb-java.md
         - name: Node.js
           href: create-mongodb-nodejs.md
-        - name: Python
-          href: ./mongodb-introduction.md
         - name: Xamarin
           href: create-mongodb-xamarin.md
         - name: Golang
@@ -1139,6 +1150,9 @@
           href: mongodb-indexing.md
         - name: マルチドキュメント トランザクションを使用する
           href: use-multi-document-transactions.md
+        - name: 容量計画ツールを使用して RU/秒を見積もる
+          displayName: 'request units, RUs, RU, capacity'
+          href: mongodb/estimate-ru-capacity-planner.md
         - name: コンテナーの作成 - MongoDB API
           href: how-to-create-container-mongodb.md
         - name: スループットのプロビジョニング - MongoDB API
@@ -1154,7 +1168,7 @@
         - name: レート制限エラーの防止
           href: prevent-rate-limiting-errors.md
         - name: Spring Data の格納と管理
-          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: MongoDB 拡張コマンド
           href: mongodb-custom-commands.md
           displayName: custom commands
@@ -1168,7 +1182,7 @@
     - name: リファレンス
       items:
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
+          href: /rest/api/cosmos-db-resource-provider/2021-03-15/mongodbresources
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
@@ -1235,7 +1249,7 @@
         - name: グラフ データの視覚化
           href: graph-visualization.md
         - name: Spring Data の格納と管理
-          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Resource Manager テンプレートを使用して管理する
           href: templates-samples-gremlin.md
           displayName: ARM
@@ -1250,7 +1264,7 @@
         - name: PowerShell
           href: /powershell/module/az.cosmosdb/#cosmos-db&preserve-view=true
         - name: REST リソース プロバイダー
-          href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
+          href: /rest/api/cosmos-db-resource-provider/2021-03-15/gremlinresources
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
 - name: テーブル API
@@ -1408,6 +1422,8 @@
           href: how-to-restrict-user-data.md
         - name: 顧客が管理するキーを構成する
           href: how-to-setup-cmk.md
+        - name: マネージド ID の使用
+          href: how-to-setup-managed-identity.md
     - name: エンタープライズ対応
       items:
         - name: クォータの増加を要求する

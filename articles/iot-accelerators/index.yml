@@ -3,7 +3,7 @@ title: Azure IoT ソリューション アクセラレータのドキュメン�
 summary: Azure IoT Solution Accelerators は、接続済みファクトリなどの一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。
 metadata:
   title: Azure IoT ソリューション アクセラレータのドキュメント
-  description: IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 このシナリオには、接続済みファクトリとデバイスのシミュレーションが含まれます。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
+  description: IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 このシナリオには、接続済みファクトリが含まれます。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
   services: iot-accelerators
   ms.service: iot-accelerators
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 8f1b539e7201ffc31956ef48b4a155674385b97f
-  ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+  ms.openlocfilehash: 366cd9973ff72ecf638a2bbaec69004e45552ac8
+  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/08/2020
-  ms.locfileid: "96854548"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109480961"
 landingContent:
 - title: IoT ソリューション アクセラレータについて
   linkLists:
@@ -44,15 +44,3 @@ landingContent:
     links:
     - text: クラウドベースのコネクテッド ファクトリ ソリューションを試す
       url: quickstart-connected-factory-deploy.md
-- title: デバイス シミュレーションを使ってみる
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: デバイス シミュレーション ソリューション アクセラレータの概要
-      url: iot-accelerators-device-simulation-overview.md
-  - linkListType: tutorial
-    links:
-    - text: IoT デバイス シミュレーションを作成して実行する
-      url: iot-accelerators-device-simulation-create-simulation.md
-    - text: シミュレートされたカスタム デバイスの作成
-      url: iot-accelerators-device-simulation-create-custom-device.md

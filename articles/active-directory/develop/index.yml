@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: 954712c2056a4251bc92b71c5b7cd2f1309804b2
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: 86e1b4de21738ec584d7b5cae1346f166adfd595
+  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91962022"
+  ms.lasthandoff: 04/27/2021
+  ms.locfileid: "108072497"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -52,10 +52,8 @@ landingContent:
     links:
     - text: Angular
       url: quickstart-v2-angular.md
-    - text: JavaScript - 認証コード フロー
+    - text: JavaScript
       url: quickstart-v2-javascript-auth-code.md
-    - text: JavaScript - 暗黙的フロー
-      url: quickstart-v2-javascript.md
 - title: Web アプリ
   linkLists:
   - linkListType: get-started
@@ -66,6 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-core-webapp.md
     - text: Blazor サーバー
       url: tutorial-blazor-server.md
+    - text: Node.js および Express
+      url: tutorial-v2-nodejs-webapp-msal.md
 - title: モバイル/ネイティブ アプリ
   linkLists:
   - linkListType: get-started

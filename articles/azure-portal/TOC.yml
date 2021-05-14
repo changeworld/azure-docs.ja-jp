@@ -11,7 +11,7 @@
 - name: クイックスタート
   items:
     - name: ポータルで VM を作成する
-      href: ../virtual-machines/windows/quick-create-portal.md?toc=/azure/azure-portal/toc.json&bc=/azure/azure-portal/breadcrumb/toc.json
+      href: ../virtual-machines/windows/quick-create-portal.md?context=/azure/azure-portal/context/context
     - name: ダッシュボードを作成する
       items:
         - name: Azure CLI
@@ -21,13 +21,6 @@
         - name: ARM テンプレート
           displayName: Resource Manager
           href: quick-create-template.md
-- name: 概念
-  items:
-    - name: Azure ロールベースのアクセス制御を使用したダッシュボードの共有
-      href: azure-portal-dashboard-share-access.md
-    - name: プログラムによる Azure ダッシュボードの作成
-      href: azure-portal-dashboards-create-programmatically.md
-      displayName: 'Azure CLI, az portal dashboard, az portal'
 - name: 操作方法ガイド
   items:
     - name: Azure portal の設定を管理する
@@ -38,10 +31,15 @@
       href: manage-filter-resource-views.md
     - name: Azure ダッシュボードを作成する
       items:
-        - name: Azure ダッシュボードの作成と共有
+        - name: Azure ダッシュボードを作成する
           href: azure-portal-dashboards.md
+        - name: Azure ダッシュボードを共有する
+          href: azure-portal-dashboard-share-access.md
         - name: カスタムのマークダウン タイルを使用する
           href: azure-portal-markdown-tile.md
+        - name: プログラムによる Azure ダッシュボードの作成
+          href: azure-portal-dashboards-create-programmatically.md
+          displayName: 'Azure CLI, az portal dashboard, az portal'
     - name: Azure portal の使い方に関するビデオ シリーズ
       href: azure-portal-video-series.md
     - name: サポート リクエストの作成と管理
@@ -81,13 +79,13 @@
     - name: Azure ダッシュボードの構造
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
-      href: /cli/azure/ext/portal/portal
+      href: /cli/azure/portal
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
+    - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/'
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-portal

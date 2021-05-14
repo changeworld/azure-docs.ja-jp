@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory コネクタのトラブルシューティング
 description: Azure Data Factory でのコネクタに関する問題のトラブルシューティングを行う方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/13/2021
-ms.author: jingwang
+ms.author: jianleishen
 ms.custom: has-adal-ref
-ms.openlocfilehash: 21b5522f07519e9a0c3353cb2463e0ec49063f34
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: c08456b08b6b11745cced97fd92417f07af23dda
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713428"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484831"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -566,7 +566,7 @@ ms.locfileid: "107713428"
  
  - **推奨事項**: 
     1. エラー メッセージの詳細については、Dynamics サポート チームにお問い合わせください。  
-    1. サービス プリンシパル認証を使用し、「[例: Azure AD サービス プリンシパルと証明書認証を使用した Dynamics Online](https://docs.microsoft.com/azure/data-factory/connector-dynamics-crm-office-365#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)」を参照してください。 
+    1. サービス プリンシパル認証を使用し、「[例: Azure AD サービス プリンシパルと証明書認証を使用した Dynamics Online](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)」を参照してください。 
  
 
  - **原因**: エラー メッセージに `Unable to retrieve authentication parameters from the serviceUri` が表示された場合は、誤った Dynamics サービスの URL またはプロキシ/ファイアウォールを入力してトラフィックを遮断していることを意味します。 
@@ -609,7 +609,7 @@ ms.locfileid: "107713428"
 
 - **原因**: サーバー側で操作が失敗しました。 
 
-- **推奨事項**: エラー メッセージ (`Dynamics operation failed with error code: {code}`) から Dynamics 操作のエラー コードを抽出し、「[Web サービス エラー コード](https://docs.microsoft.com/powerapps/developer/data-platform/org-service/web-service-error-codes)」で詳細を参照してください。 必要に応じて、Dynamics サポート チームに問い合わせることができます。 
+- **推奨事項**: エラー メッセージ (`Dynamics operation failed with error code: {code}`) から Dynamics 操作のエラー コードを抽出し、「[Web サービス エラー コード](/powerapps/developer/data-platform/org-service/web-service-error-codes)」で詳細を参照してください。 必要に応じて、Dynamics サポート チームに問い合わせることができます。 
  
  
 ### <a name="error-code--dynamicsinvalidfetchxml"></a>エラー コード: DynamicsInvalidFetchXml 

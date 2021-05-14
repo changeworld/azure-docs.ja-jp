@@ -3,13 +3,13 @@ title: 新しい Azure Monitor Application Insights のワークスペース ベ
 description: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを有効にするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a0d41b88c1d2958fd3d5b075d54eaa8de522cc3
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: a84a9de854123b70ca96531942debc00afb2d6c6
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319991"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754499"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 

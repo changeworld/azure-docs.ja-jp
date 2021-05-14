@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/23/2021
-ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/28/2021
+ms.openlocfilehash: a02735c20b7286df4aafef998066b9edfc519ef4
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565903"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228282"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "105565903"
 メンテナンス期間機能を使用すると、[Azure SQL Database](sql-database-paas-overview.md) と [Azure SQL マネージド インスタンス](../managed-instance/sql-managed-instance-paas-overview.md) リソースのメンテナンス スケジュールを構成して、影響のあるメンテナンス イベントを予測可能にし、ワークロードの中断を減らすことができます。 
 
 > [!Note]
-> メンテナンス期間機能を使用しても、短時間の接続中断を引き起こす可能性のあるハードウェア障害などの計画外のイベントからは保護されません。
+> メンテナンス期間機能では、アップグレードや予定メンテナンスから見込まれる予定される影響のみを防ぎます。 フェールオーバーのあらゆる原因を防ぐことはありません。メンテナンス期間の外で短い接続中断を引き起こしうる例外には、ハードウェアの故障、クラスターの負荷分散、データベースの Service Level Objective の変更などのイベントに起因するデータベース再構成などがあります。 
 
 ## <a name="overview"></a>概要
 

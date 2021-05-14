@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 4/29/2021
 ms.author: rambala
-ms.openlocfilehash: f7ccad395dd473e2520bbcaefac8e34be6fb2443
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 719b68998cfc70f1075448e4c688d83f0f31a0b5
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322331"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517564"
 ---
 # <a name="using-expressroute-for-routing-microsoft-365-traffic"></a>Microsoft 365 トラフィックのルーティングに ExpressRoute を使用する
 
@@ -88,6 +88,4 @@ ExpressRoute を使用する場合、ExpressRoute の Microsoft ピアリング�
 [ExRRF]: https://docs.microsoft.com/azure/expressroute/how-to-routefilter-portal
 [Teams]: https://docs.microsoft.com/microsoftteams/microsoft-teams-online-call-flows
 [Microsoft 365-Test]: https://connectivity.office.com/
-[Microsoft 365perf]: https://docs.microsoft.com/microsoft-365/enterprise/performance-tuning-using-baselines-and-history?view=o365-worldwide
-
-
+[Microsoft 365perf]: /microsoft-365/enterprise/performance-tuning-using-baselines-and-history

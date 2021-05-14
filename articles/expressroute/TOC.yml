@@ -99,13 +99,13 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
-    - name: セキュリティ属性
-      href: ./security-baseline.md
+          href: /security/benchmark/azure/baselines/expressroute-security-baseline?toc=/azure/expressroute/TOC.json
     - name: ExpressRoute 経由での BFD
       href: expressroute-bfd.md
     - name: QoS の要件
       href: expressroute-qos.md
+    - name: ExpressRoute を介して Microsoft 365 トラフィックをルーティングする
+      href: using-expressroute-for-microsoft365.md
     - name: 高可用性 - 設計
       href: designing-for-high-availability-with-expressroute.md
     - name: ディザスター リカバリー - 計画
@@ -144,8 +144,12 @@
           href: expressroute-howto-add-ipv6-powershell.md
     - name: 監視
       items:
+        - name: ネットワークの分析情報
+          href: expressroute-network-insights.md
         - name: ExpressRoute の監視、メトリック、およびアラート
           href: expressroute-monitoring-metrics-alerts.md
+        - name: メンテナンス アラートを表示および構成する
+          href: maintenance-alerts.md
         - name: ExpressRoute に使用する Network Performance Monitor の構成
           href: how-to-npm.md
         - name: カスタム アラートを構成して、アドバタイズされるルートを監視する
@@ -209,7 +213,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.network#expressroute
     - name: Azure CLI
-      href: /cli/azure/network/express-route
+      href: /cli/azure/azure-cli-reference-for-network
     - name: REST
       href: /rest/api/expressroute/
     - name: REST (クラシック)

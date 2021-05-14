@@ -47,8 +47,6 @@
       href: logs/get-started-queries.md
     - name: ログ クエリからダッシュボードを作成する
       href: visualize/tutorial-logs-dashboards.md
-    - name: ログ クエリからアラートを作成する
-      href: alerts/tutorial-response.md
     - name: パフォーマンスとスケジュールに基づく自動スケール
       href: autoscale/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
@@ -87,6 +85,8 @@
               href: app/resource-manager-web-app.md
             - name: Azure Functions
               href: app/resource-manager-function-app.md
+        - name: Container insights
+          href: containers/resource-manager-container-insights.md
         - name: データ収集ルール
           href: agents/resource-manager-data-collection-rules.md
         - name: 診断設定
@@ -95,10 +95,10 @@
           href: logs/resource-manager-workspace.md
         - name: ログ クエリ
           href: logs/resource-manager-log-queries.md
+        - name: SQL Insights
+          href: insights/resource-manager-sql-insights.md
         - name: Workbooks
           href: visualize/resource-manager-workbooks.md
-        - name: コンテナーの分析情報
-          href: containers/resource-manager-container-insights.md
         - name: VM の分析情報
           href: vm/resource-manager-vminsights.md
     - name: Azure CLI
@@ -146,7 +146,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/monitor-security-baseline?toc=/azure/azure-monitor/toc.json
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: .//security-controls-policy.md
@@ -159,7 +159,7 @@
         - name: Azure 仮想マシンの監視
           href: vm/monitor-vm-azure.md
           displayname: VM
-    - name: 配置
+    - name: デプロイ
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -475,8 +475,6 @@
           items:
             - name: メトリック アラートの管理
               href: alerts/alerts-metric.md
-            - name: 可用性
-              href: app/monitor-web-app-availability.md
             - name: 動的しきい値の使用
               href: alerts/alerts-dynamic-thresholds.md
             - name: 多くの時系列に対する単一のアラート
@@ -642,7 +640,7 @@
             - name: 非 HTTP/バックグラウンド アプリ
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: ASP.NET コンソール
+            - name: .NET コンソール
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -720,12 +718,18 @@
                       href: app/java-in-process-agent.md
                     - name: 構成オプション
                       href: app/java-standalone-config.md
-                    - name: テレメトリ プロセッサ
+                    - name: 詳細な構成
                       items:
-                        - name: 概要
-                          href: app/java-standalone-telemetry-processors.md
-                        - name: 例
-                          href: app/java-standalone-telemetry-processors-examples.md
+                        - name: JMX メトリック
+                          href: app/java-jmx-metrics-configuration.md
+                        - name: サンプリング オーバーライド
+                          href: app/java-standalone-sampling-overrides.md
+                        - name: テレメトリ プロセッサ
+                          items:
+                            - name: 概要
+                              href: app/java-standalone-telemetry-processors.md
+                            - name: 例
+                              href: app/java-standalone-telemetry-processors-examples.md
                     - name: JVM 引数の設定
                       href: app/java-standalone-arguments.md
                     - name: 2.x SDK からのアップグレード
@@ -773,6 +777,8 @@
           displayname: 'e2e, end-to-end, component, dependency, cross-component transaction, operation ID, dependencies'
         - name: 可用性
           items:
+            - name: 概要
+              href: app/availability-overview.md
             - name: URL テスト
               displayname: 'ping, ping tests, availability, GSM, up/down'
               href: app/monitor-web-app-availability.md
@@ -964,12 +970,10 @@
               href: app/code-sample-export-sql-stream-analytics.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           items:
             - name: F5 による洞察
               href: app/visual-studio.md
-            - name: Trends
-              href: app/visual-studio-trends.md
             - name: CodeLens
               href: app/visual-studio-codelens.md
         - name: その他のプラットフォーム
@@ -1040,6 +1044,8 @@
           href: vm/vminsights-workbooks.md
         - name: 監視を無効にする
           href: vm/vminsights-optout.md
+        - name: トラブルシューティング
+          href: vm/vminsights-troubleshoot.md
     - name: コンテナーの分析情報
       items:
         - name: 概要
@@ -1128,6 +1134,18 @@
           href: insights/network-insights-overview.md
         - name: Key Vault
           href: insights/key-vault-insights-overview.md
+        - name: SQL Insights (プレビュー)
+          items:
+            - name: 概要
+              href: insights/sql-insights-overview.md
+            - name: よく寄せられる質問
+              href: faq.md#sql-insights-preview
+            - name: 有効にする
+              href: insights/sql-insights-enable.md
+            - name: 警告
+              href: insights/sql-insights-alerts.md
+            - name: トラブルシューティング
+              href: insights/sql-insights-troubleshoot.md
         - name: ストレージ
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
           href: insights/storage-insights-overview.md
@@ -1375,7 +1393,7 @@
           href: /cli/azure/azure-cli-reference-for-monitor
           displayName: 'Action Groups, Autoscale, Diagnostic Settings, Metrics, Private Link Scope'
         - name: Application Insights
-          href: /cli/azure/ext/application-insights/monitor/app-insights
+          href: /cli/azure/monitor/app-insights
         - name: アクティビティ ログ
           href: /cli/azure/monitor/activity-log
         - name: Log Analytics

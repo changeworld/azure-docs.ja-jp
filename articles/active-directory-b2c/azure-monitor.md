@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: 0231f7f3882218ef88d6151488da6aa23e4cb8e4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 4ac0cc618ec03d844c73961dcdb66f7357ce60f2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106689"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783785"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -38,7 +38,7 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサ
 
 ## <a name="deployment-overview"></a>デプロイの概要
 
-Azure AD B2C では、[Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)が利用されます。 Azure AD B2C テナント内の Azure Active Directory で "*診断設定*" を有効にするには、[Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) を使用して [リソースを委任](../lighthouse/concepts/azure-delegated-resource-management.md)します。これにより、Azure AD B2C (**サービス プロバイダー**) が Azure AD (**顧客**) のリソースを管理できるようになります。 この記事の手順を完了すると、**Azure AD B2C** ポータル内の [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md)が含まれる *azure-ad-b2c-monitor* リソース グループにアクセスできるようになります。 また、Azure AD B2C から Log Analytics ワークスペースにログを転送することもできます。
+Azure AD B2C では、[Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)が利用されます。 Azure AD B2C テナント内の Azure Active Directory で "*診断設定*" を有効にするには、[Azure Lighthouse](../lighthouse/overview.md) を使用して [リソースを委任](../lighthouse/concepts/architecture.md)します。これにより、Azure AD B2C (**サービス プロバイダー**) が Azure AD (**顧客**) のリソースを管理できるようになります。 この記事の手順を完了すると、**Azure AD B2C** ポータル内の [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md)が含まれる *azure-ad-b2c-monitor* リソース グループにアクセスできるようになります。 また、Azure AD B2C から Log Analytics ワークスペースにログを転送することもできます。
 
 このデプロイ中、Azure サブスクリプションが含まれるテナント内の Log Analytics ワークスペース インスタンスを構成するために、Azure AD B2C ディレクトリでユーザーまたはグループを承認します。 承認を作成するには、サブスクリプションが含まれる Azure AD テナントに [Azure Resource Manager](../azure-resource-manager/index.yml) テンプレートをデプロイします。
 
@@ -259,7 +259,7 @@ JSON ギャラリー テンプレートを使用して新しいブックを作�
 
 ## <a name="create-alerts"></a>アラートを作成する
 
-アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。 たとえば、アラートを使用して、サインインの平均数が特定のしきい値を超えたら通知を受けるようにできます。 詳細については、[アラートの作成](../azure-monitor/alerts/tutorial-response.md)に関するページをご覧ください。
+アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。 たとえば、アラートを使用して、サインインの平均数が特定のしきい値を超えたら通知を受けるようにできます。 詳細については、[アラートの作成](../azure-monitor/alerts/alerts-log.md)に関するページをご覧ください。
 
 
 次の手順を使用して、**合計要求数** が前の期間と比較して 25% 低下したら [電子メール通知](../azure-monitor/alerts/action-groups.md#configure-notifications)を送信する新しい Azure アラートを作成します。 アラートは 5 分ごとに実行され、過去 24 時間以内の低下が調べられます。 アラートは、Kusto クエリ言語を使用して作成されます。

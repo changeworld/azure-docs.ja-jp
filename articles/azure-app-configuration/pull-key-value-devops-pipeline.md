@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c01984f6a359c0fd1f5d06d26d97d4a84973f57
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 623ed91f9fc9ed469403c6dea5f1247141e44a98
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056789"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764083"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines を使用して App Configuration に設定をプルする
 
@@ -27,47 +27,19 @@ ms.locfileid: "106056789"
 
 ## <a name="create-a-service-connection"></a>サービス接続を作成する
 
-[サービス接続](/azure/devops/pipelines/library/service-endpoints)により、Azure DevOps プロジェクトから Azure サブスクリプション内のリソースにアクセスできます。
-
-1. Azure DevOps で、ターゲットのパイプラインを含むプロジェクトに移動し、左下にある **[プロジェクトの設定]** を開きます。
-1. **[パイプライン]** の下にある **[サービス接続]** を選択します。
-1. 既存のサービス接続がない場合は、画面の中央にある **[サービス接続の作成]** ボタンをクリックします。 あるいは、ページの右上にある **[新しいサービス接続]** をクリックします。
-1. **[Azure Resource Manager]** を選択します。
-![スクリーンショットは、[新しいサービス接続] ドロップダウン リストの [Azure Resource Manager] が選択されているのを示しています。](./media/new-service-connection.png)
-1. **[認証方法]** ダイアログで、 **[サービス プリンシパル (自動)]** を選択します。
-    > [!NOTE]
-    > **マネージド ID** 認証は現在、App Configuration タスクではサポートされていません。
-1. サブスクリプションとリソースを入力します。 サービス接続に名前を付けます。
-
-サービス接続が作成されたので、それに割り当てるサービス プリンシパルの名前を見つけます。 次の手順では、このサービス プリンシパルに新しいロールの割り当てを追加します。
-
-1. **[プロジェクトの設定]**  >  **[サービス接続]** の順に移動します。
-1. 前のセクションで作成したサービス接続を選択します。
-1. **[サービス プリンシパルの管理]** を選択します。
-1. 一覧表示された **[表示名]** をメモします。
+[!INCLUDE [azure-app-configuration-service-connection](../../includes/azure-app-configuration-service-connection.md)]
 
 ## <a name="add-role-assignment"></a>ロールの割り当ての追加
 
-タスクで App Configuration ストアにアクセスできるように、タスク内で使用するサービス接続に適切な App Configuration のロールを割り当てます。
+[!INCLUDE [azure-app-configuration-role-assignment](../../includes/azure-app-configuration-role-assignment.md)]
 
-1. ターゲットの App Configuration ストアに移動します。 App Configuration ストアの設定のチュートリアルについては、Azure App Configuration のクイックスタートのいずれかで「[App Configuration ストアを作成する](./quickstart-dotnet-core-app.md#create-an-app-configuration-store)」を参照してください。
-1. 左側で、 **[アクセス制御 (IAM)]** を選択します。
-1. 右側で、 **[ロールの割り当ての追加]** ボタンをクリックします。
-![スクリーンショットは、[ロールの割り当ての追加] ボタンを示しています。](./media/add-role-assignment-button.png)
-1. **[ロール]** の中から、**App Configuration データ リーダー** を選択します。 このロールを使用すると、タスクで App Configuration ストアから読み取ることができます。 
-1. 前のセクションで作成したサービス接続に関連付けるサービス プリンシパルを選択します。
-![スクリーンショットは、[ロールの割り当ての追加] ダイアログを示しています。](./media/add-role-assignment-reader.png)
-
-> [!NOTE]
-> App Configuration 内の Azure Key Vault 参照を解決するには、参照先の Azure Key vault のシークレットを読み取るためのアクセス許可もサービス接続に付与する必要があります。
-  
 ## <a name="use-in-builds"></a>ビルドでの使用
 
 このセクションでは、Azure DevOps ビルド パイプラインで Azure App Configuration タスクを使用する方法について説明します。
 
 1. **[パイプライン]**  >  **[パイプライン]** の順にクリックして、ビルド パイプラインのページに移動します。 ビルド パイプラインのドキュメントについては、「[最初のパイプラインの作成](/azure/devops/pipelines/create-first-pipeline?tabs=net%2Ctfs-2018-2%2Cbrowser)」を参照してください。
       - 新しいビルド パイプラインを作成している場合は、プロセスの最後の手順で、 **[確認]** タブでパイプラインの右側にある **[アシスタントを表示する]** を選択します。
-      ![スクリーンショットは、新しいパイプラインの [アシスタントを表示する] ボタンを示しています。](./media/new-pipeline-show-assistant.png)
+      ![新しいパイプラインの [アシスタントを表示する] ボタンを示すスクリーンショット。](./media/new-pipeline-show-assistant.png)
       - 既存のビルド パイプラインを使用している場合は、右上にある **[編集]** ボタンをクリックします。
       ![スクリーンショットは、既存のパイプラインの [編集] ボタンを示しています。](./media/existing-pipeline-show-assistant.png)
 1. **Azure App Configuration** タスクを検索します。
@@ -87,7 +59,7 @@ ms.locfileid: "106056789"
 1. 既存のリリース パイプラインを選択します。 既存のリリース パイプラインがない場合は、 **[新しいパイプライン]** をクリックして新規作成します。
 1. 右上隅にある **[編集]** ボタンを選択して、リリース パイプラインを編集します。
 1. **[タスク]** ドロップダウンから、タスクを追加する **ステージ** を選択します。 ステージの詳細については、[こちら](/azure/devops/pipelines/release/environments)を参照してください。
-![スクリーンショットは、[タスク] ドロップダウンで選択したステージを示しています。](./media/pipeline-stage-tasks.png)
+![[タスク] ドロップダウンで選択したステージを示すスクリーンショット。](./media/pipeline-stage-tasks.png)
 1. 新しいタスクを追加するジョブの横にある **+** をクリックします。
 ![スクリーンショットは、ジョブの横にあるプラス ボタンを示しています。](./media/add-task-to-job.png)
 1. **Azure App Configuration** タスクを検索します。

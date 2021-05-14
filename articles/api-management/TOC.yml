@@ -71,7 +71,7 @@
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/api-management-security-baseline?toc=/azure/api-management/TOC.json
     - name: バックエンド
       href: backends.md
     - name: サブスクリプション
@@ -104,8 +104,8 @@
           href: import-soap-api.md
         - name: SOAP API のインポートと REST への変換
           href: restify-soap-api.md
-        - name: API アプリのインポート
-          href: import-api-app-as-api.md
+        - name: Web アプリのインポート
+          href: import-app-service-as-api.md
         - name: 関数アプリのインポート
           href: import-function-app-as-api.md
         - name: ロジック アプリのインポート
@@ -128,6 +128,9 @@
           href: configure-custom-domain.md
         - name: 複数の Azure リージョンにデプロイする
           href: api-management-howto-deploy-multi-region.md
+        - name: ゾーン冗長性を有効にする
+          displayName: Availability zones
+          href: zone-redundancy.md
         - name: セルフホステッド ゲートウェイをプロビジョニングする
           href: api-management-howto-provision-self-hosted-gateway.md
         - name: Azure Kubernetes Service にセルフホステッド ゲートウェイをデプロイする
@@ -170,48 +173,74 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: 開発者エクスペリエンスのカスタマイズ
       items:
-        - name: 開発者ポータルについて
-          href: api-management-howto-developer-portal.md
-        - name: 非推奨から新しい開発者ポータルへの移行
-          href: developer-portal-deprecated-migration.md
-        - name: Azure AD による認証
-          href: api-management-howto-aad.md
-        - name: Azure AD B2C による認証
-          href: api-management-howto-aad-b2c.md
-        - name: 委任された認証
-          href: api-management-howto-setup-delegation.md
-        - name: 電子メール通知とテンプレート
-          href: api-management-howto-configure-notifications.md
-        - name: コンソール OAuth サポートを有効にする
-          href: api-management-howto-oauth2.md
-        - name: 非推奨のポータル - ポータルのカスタマイズ
-          href: api-management-customize-styles.md
-        - name: 非推奨のポータル - ページとレイアウトの変更
-          href: api-management-modify-content-layout.md
-        - name: 非推奨のポータル - テンプレートを使用したカスタマイズ
-          href: api-management-developer-portal-templates.md
-    - name: 非推奨のポータルのテンプレート
-      items:
-        - name: データ モデル リファレンス
-          href: api-management-template-data-model-reference.md
-        - name: ページ コントロール
-          href: api-management-page-controls.md
-        - name: テンプレート
-          href: api-management-developer-portal-templates-reference.md
-        - name: API
-          href: api-management-api-templates.md
-        - name: 製品
-          href: api-management-product-templates.md
-        - name: アプリケーション
-          href: api-management-application-templates.md
-        - name: 発行
-          href: api-management-issue-templates.md
-        - name: User Profile
-          href: api-management-user-profile-templates.md
-        - name: ページ
-          href: api-management-page-templates.md
-        - name: Template resources
-          href: api-management-template-resources.md
+        - name: 開発者ポータルを使用する
+          items:
+            - name: 開発者ポータルについて
+              href: api-management-howto-developer-portal.md
+            - name: よく寄せられる質問
+              href: developer-portal-faq.md
+            - name: ポータルのデプロイを自動化する
+              href: automate-portal-deployments.md
+            - name: 非推奨から新しい開発者ポータルへの移行
+              href: developer-portal-deprecated-migration.md
+            - name: Azure AD による認証
+              href: api-management-howto-aad.md
+            - name: Azure AD B2C による認証
+              href: api-management-howto-aad-b2c.md
+            - name: 認証を委任する
+              href: api-management-howto-setup-delegation.md
+            - name: コンソール OAuth サポートを有効にする
+              href: api-management-howto-oauth2.md
+            - name: 電子メール通知とテンプレート
+              href: api-management-howto-configure-notifications.md
+            - name: Application Insights を統合する
+              href: developer-portal-integrate-application-insights.md
+            - name: Google タグマネージャを統合する
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: 開発者ポータルをセルフホストする
+          items:
+            - name: セルフホステッド ポータルを作成する
+              href: developer-portal-self-host.md
+            - name: セルフホストの代替アプローチ
+              href: developer-portal-alternative-processes-self-host.md
+            - name: ウィジェットを実装する
+              href: developer-portal-implement-widgets.md
+            - name: ウィジェットを提供する
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: コミュニティ ウイジェットを使用する
+              href: developer-portal-use-community-widgets.md
+            - name: セルフホステッド ポータルをテストする
+              href: developer-portal-testing.md
+        - name: 非推奨のポータル
+          items:
+            - name: 非推奨のポータル - ポータルのカスタマイズ
+              href: api-management-customize-styles.md
+            - name: 非推奨のポータル - ページとレイアウトの変更
+              href: api-management-modify-content-layout.md
+            - name: 非推奨のポータル - テンプレートを使用したカスタマイズ
+              href: api-management-developer-portal-templates.md
+        - name: 非推奨のポータルのテンプレート
+          items:
+            - name: データ モデル リファレンス
+              href: api-management-template-data-model-reference.md
+            - name: ページ コントロール
+              href: api-management-page-controls.md
+            - name: テンプレート
+              href: api-management-developer-portal-templates-reference.md
+            - name: API
+              href: api-management-api-templates.md
+            - name: 製品
+              href: api-management-product-templates.md
+            - name: アプリケーション
+              href: api-management-application-templates.md
+            - name: 発行
+              href: api-management-issue-templates.md
+            - name: User Profile
+              href: api-management-user-profile-templates.md
+            - name: ページ
+              href: api-management-page-templates.md
+            - name: Template resources
+              href: api-management-template-resources.md
     - name: ポリシーの定義
       items:
         - name: ポリシーの設定または編集
@@ -245,6 +274,8 @@
           href: api-management-transformation-policies.md
         - name: 分散型アプリケーション ランタイム (Dapr) 統合ポリシー
           href: api-management-dapr-policies.md
+        - name: 検証ポリシー
+          href: validation-policies.md
     - name: 運用環境でテストする
       items:
         - name: API を Power Platform にエクスポートする

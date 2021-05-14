@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: cacf317e433ec89b3bc82f86844e5e6b5e143547
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: af76ba2a4ee8610a0f64265889c009416f477543
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330560"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109665070"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
-音声サービスは、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech CLI](spx-overview.md)、[Speech SDK](./speech-sdk.md)、[Speech Devices SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](https://speech.microsoft.com/)、または [REST API](#reference-docs) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
+音声サービスは、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech CLI](spx-overview.md)、[Speech SDK](./speech-sdk.md)、[Speech Devices SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](speech-studio-overview.md)、または [REST API](#reference-docs) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
 
 > [!IMPORTANT]
 > Speech Service は、Bing Speech API と Translator Speech に代わるものです。 移行の手順については、"_移行_" に関するセクションを参照してください。

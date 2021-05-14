@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 9c81a9b48ff9fa305385c45266d88deb4047f70f
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 2f1e610113b432fa1a62350308747ffb1d5c8fc8
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599487"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790921"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>チュートリアル:Azure AD を使用したエンド ツー エンドのコンテンツ保護
 
@@ -134,7 +134,6 @@ JWT トークン (access_token または id_token) を解析するための画�
 DRM (または AES) とストリーミング プロトコルとコンテナー形式のさまざまな組み合わせによって保護されたコンテンツをテストするための画面。
 
 ![D R M または A E S とストリーミング プロトコルとコンテナー形式のさまざまな組み合わせによって保護されたコンテンツのテストを示すスクリーンショット](media/aad-ams-content-protection/testing-protected-content.png)
--->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
 

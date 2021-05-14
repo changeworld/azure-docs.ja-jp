@@ -4,16 +4,18 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 097886e5e1942dd957b8fa3d9b8599177c229747
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 00e0eb3bbf8784c16a6f305813191143ce4f8c2a
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491204"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719154"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、**カスタム アプリケーション** テンプレートを使用して作成された Azure IoT Central アプリケーションが必要です。 詳細については、[アプリケーションの作成のクイック スタート](../articles/iot-central/core/quick-deploy-iot-central.md)に関するページをご覧ください。 アプリケーションは、2020 年 7 月 14 日以降に作成されている必要があります。
+このチュートリアルを完了するには、以下が必要になります。
+
+[!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
 
 このチュートリアルは Linux または Windows で実行できます。 このチュートリアルのシェル コマンドは、パス区切り記号を "`/`" とする Linux 規則に従っています。Windows 方式に従う場合は、必ずこれらの区切り記号を "`\`" に置き換えてください。
 

@@ -20,6 +20,8 @@
       href: walkthrough-exchange-all.md
     - name: Peering Service パートナーのチュートリアル
       href: walkthrough-peering-service-all.md
+    - name: Communications Services パートナーのチュートリアル
+      href: walkthrough-communications-services-partner.md
     - name: ピア ASN を Azure サブスクリプションに関連付ける
       items:
         - name: ポータル

@@ -8,13 +8,13 @@ metadata:
   ms.service: static-web-apps
   author: craigshoemaker
   ms.author: cshoe
-  ms.date: 05/07/2021
-  ms.openlocfilehash: bcf07b325d18be53a15806f1a38cae5b61f13b41
-  ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+  ms.date: 12/08/2020
+  ms.openlocfilehash: 49453cb08e29d8fedf9f982150ace8b9986dfaba
+  ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/12/2021
-  ms.locfileid: "109813112"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108178936"
 landingContent:
 - title: Static Web Apps について
   linkLists:
@@ -64,8 +64,6 @@ landingContent:
       url: deploy-nuxtjs.md
     - text: Azure DevOps を使用してデプロイする
       url: publish-devops.md
-    - text: ARM テンプレートを使用してデプロイする
-      url: publish-azure-resource-manager.md
   - linkListType: learn
     links:
     - text: Gatsby を使用して静的な Web アプリを発行する

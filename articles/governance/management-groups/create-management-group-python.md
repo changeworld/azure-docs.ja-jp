@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 4ac9e734e5a4d36d215fac6860689d2df87b8575
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 777cb39324e94c40bc4eac4538e59a2b75b8745e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326383"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765289"
 ---
 # <a name="quickstart-create-a-management-group-with-python"></a>クイックスタート: Python を使用して管理グループを作成する
 
@@ -74,12 +74,12 @@ Python で管理グループを管理できるようにするには、ライブ�
    ```python
    # Import management group classes
    from azure.mgmt.managementgroups import ManagementGroupsAPI
-   
+
    # Import specific methods and models from other libraries
    from azure.common.credentials import get_azure_cli_credentials
    from azure.common.client_factory import get_client_from_cli_profile
    from azure.mgmt.resource import ResourceManagementClient, SubscriptionClient
-   
+
    # Wrap all the work in a function
    def createmanagementgroup( strName ):
        # Get your credentials from Azure CLI (development only!) and get your subscription list
@@ -90,17 +90,17 @@ Python で管理グループを管理できるようにするには、ライブ�
        subsList = []
        for sub in subsRaw:
            subsList.append(sub.get('subscription_id'))
-       
+
        # Create management group client and set options
        mgClient = get_client_from_cli_profile(ManagementGroupsAPI)
        mg_request = {'name': strName, 'display_name': strName}
-       
+
        # Create management group
        mg = mgClient.management_groups.create_or_update(group_id=strName,create_management_group_request=mg_request)
-       
+
        # Show results
        print(mg)
-   
+
    createmanagementgroup("MyNewMG")
    ```
 

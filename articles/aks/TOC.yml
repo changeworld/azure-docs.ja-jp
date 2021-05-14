@@ -282,7 +282,7 @@
               href: managed-aad.md
             - name: Azure AD 統合 (レガシ)
               href: azure-ad-integration-cli.md
-        - name: Kubernetes 承認での Azure RBAC の使用 (プレビュー)
+        - name: Kubernetes 認可に Azure RBAC を使用する
           href: manage-azure-rbac.md
         - name: Azure AD の統合での Kubernetes RBAC の使用
           href: azure-ad-rbac.md

@@ -6,8 +6,8 @@
       href: overview.md
     - name: リリース ノート
       href: release-notes.md
-    - name: 既知の問題
-      href: known-issues.md
+    - name: データ収集とレポート
+      href: privacy-data-collection-and-reporting.md
 - name: クイックスタート
   items:
     - name: データ コントローラーの作成
@@ -44,16 +44,24 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: データ コントローラーの作成
       items:
-        - name: Azure Data Studio
-          href: create-data-controller-azure-data-studio.md
-        - name: Azure portal
-          href: create-data-controller-resource-in-azure-portal.md
-        - name: Azure Data CLI (azdata)
-          href: create-data-controller-using-azdata.md
-        - name: Kubernetes のツール
-          href: create-data-controller-using-kubernetes-native-tools.md
-        - name: SCC の適用 (OpenShift)
-          href: how-to-apply-security-context-constraint.md
+        - name: 間接接続モード
+          items:
+            - name: Azure Data Studio
+              href: create-data-controller-azure-data-studio.md
+            - name: ポータル
+              href: create-data-controller-resource-in-azure-portal.md
+            - name: Azure Data CLI (azdata)
+              href: create-data-controller-using-azdata.md
+            - name: Kubernetes のツール
+              href: create-data-controller-using-kubernetes-native-tools.md
+            - name: SCC の適用 (OpenShift)
+              href: how-to-apply-security-context-constraint.md
+        - name: 直接接続モード
+          items:
+            - name: 前提条件
+              href: deploy-data-controller-direct-mode-prerequisites.md
+            - name: デプロイ
+              href: deploy-data-controller-direct-mode.md
     - name: Azure Arc 対応データ サービス全般に共通するエクスペリエンス
       items:
         - name: ダッシュボードの監視 (Azure Data Studio)
@@ -106,6 +114,8 @@
           href: supported-versions-postgres-hyperscale.md
         - name: Postgres Hyperscale サーバー グループの作成 (CLI)
           href: create-postgresql-hyperscale-server-group.md
+        - name: Postgres Hyperscale サーバー グループの作成 (ポータル)
+          href: create-postgresql-hyperscale-server-group-azure-portal.md
         - name: Postgres Hyperscale サーバー グループの作成 (Azure Data Studio)
           href: create-postgresql-hyperscale-server-group-azure-data-studio.md
         - name: Postgres Hyperscale サーバー グループの作成 - Kubernetes ネイティブ ツール
@@ -140,7 +150,7 @@
               href: delete-postgresql-hyperscale-server-group.md
             - name: サーバー グループの一覧表示
               href: list-server-groups-postgres-hyperscale.md
-            - name: 監視、ログ分析、課金情報、Azure portal
+            - name: 監視、ログ分析、課金情報 (ポータル)
               href: monitoring-log-analytics-azure-portal-postgresql.md
             - name: セキュリティで保護
               href: configure-security-postgres-hyperscale.md
@@ -180,7 +190,7 @@
           items:
             - name: 構成
               href: configure-managed-instance.md
-            - name: 監視、ログ分析、課金情報、Azure portal
+            - name: 監視、ログ分析、課金情報 (ポータル)
               href: monitoring-log-analytics-azure-portal-managed-instance.md
             - name: 高可用性
               href: managed-instance-high-availability.md

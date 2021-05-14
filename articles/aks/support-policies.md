@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のサポート ポリシー、共�
 services: container-service
 ms.topic: article
 ms.date: 09/18/2020
-ms.openlocfilehash: 86b1c0bba30b41a2ee17cfbdf05286c4d2b3fb8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d30e2aa5ab13c5d7676ca7cb455a2372981e4a46
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91892712"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714478"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -62,6 +62,7 @@ Microsoft は、以下の例に関するテクニカル サポートを提供し
   * その他の Azure サービスおよびアプリケーションへの接続
   * イングレス コントローラーとイングレスまたはロード バランサーの構成
   * ネットワーク パフォーマンスと待機時間
+  * [ネットワーク ポリシー](use-network-policies.md#differences-between-azure-and-calico-policies-and-their-capabilities)
 
 
 > [!NOTE]

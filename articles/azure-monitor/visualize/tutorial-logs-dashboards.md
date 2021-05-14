@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 84c710e44fbbccdefd5bf811477e1fa4c3989114
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4a76367b65556c0f6b030eba79355382e8db0c6
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043458"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754517"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -86,7 +86,7 @@ Perf
 ![構成が完了したサンプル ダッシュボード](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure Portal でダッシュボードを作成して、ログ クエリを追加する方法について学習しました。  次のチュートリアルに進んで、ログ クエリの結果に基づいて実装できる異なる応答について学習します。  
+このチュートリアルでは、Azure Portal でダッシュボードを作成して、ログ クエリを追加する方法について学習しました。  あらかじめ用意されている Log Analytics のサンプル スクリプトを確認するには、次のリンクをクリックしてください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics のアラートを使用してイベントに応答する](../alerts/tutorial-response.md)
+> [Log Analytics のサンプル スクリプト](../powershell-samples.md)

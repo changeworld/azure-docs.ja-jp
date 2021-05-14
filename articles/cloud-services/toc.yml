@@ -18,7 +18,7 @@
         - name: Security
           items:
             - name: セキュリティ ベースライン
-              href: security-baseline.md
+              href: /security/benchmark/azure/baselines/cloud-services-security-baseline?toc=/azure/cloud-services/toc.json
     - name: 操作方法
       items:
         - name: プラン
@@ -105,6 +105,32 @@
               href: cloud-services-role-config-xpath.md
         - name: 証明書の管理
           items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: "Visual\_Studio"
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: Azure Storage への診断データの保存と表示
+          href: diagnostics-extension-to-storage.md
+        - name: 診断を使用したクラウド サービスのトレース
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: 移行
+      items:
+        - name: 移行の概要
+          href: ../cloud-services-extended-support/in-place-migration-overview.md?toc=/azure/cloud-services/toc.json
+        - name: 移行の技術的な詳細
+          href: ../cloud-services-extended-support/in-place-migration-technical-details.md?toc=/azure/cloud-services/toc.json
+        - name: Azure portal を使用して移行する
+          href: ../cloud-services-extended-support/in-place-migration-portal.md?toc=/azure/cloud-services/toc.json
+        - name: PowerShell を使用して移行する
+          href: ../cloud-services-extended-support/in-place-migration-powershell.md?toc=/azure/cloud-services/toc.json
+        - name: 一般的なエラーと既知の問題
+          href: ../cloud-services-extended-support/in-place-migration-common-errors.md?toc=/azure/cloud-services/toc.json
+    - name: トラブルシューティング
+      items:
+        - name: デバッグ
+          items:
             - name: Cloud Services と管理証明書
               href: cloud-services-certs-create.md
             - name: SSL の構成
@@ -172,6 +198,8 @@
                   href: cloud-services-deployment-faq.md
     - name: リファレンス
       items:
+        - name: Azure CLI
+          href: /cli/azure/cloud
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
         - name: .csdef XML スキーマ
@@ -196,17 +224,25 @@
           href: /rest/api/compute/cloudservices/
     - name: リソース
       items:
-        - name: Azure のロードマップ
-          href: 'https://azure.microsoft.com/roadmap/?category=compute'
-        - name: ラーニング パス
-          href: /learn/paths/azure-fundamentals/
-        - name: Microsoft Q&A 質問ページ
-          href: /answers/topics/azure-cloud-services.html
-        - name: 価格
-          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-        - name: 料金計算ツール
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: サービスの更新情報
-          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-        - name: ビデオ
-          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Role スキーマ
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration スキーマ
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: ラーニング パス
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A 質問ページ
+      href: /answers/topics/azure-cloud-services.html
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

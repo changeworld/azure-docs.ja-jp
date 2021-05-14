@@ -15,16 +15,16 @@ ms.locfileid: "86506317"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のトリガーとバインド
 
-この記事では、Azure Functions で [Azure Event Hubs](../event-hubs/event-hubs-about.md) のバインドを使用する方法について説明します。 Azure Functions は、イベント ハブのトリガーおよび出力バインドをサポートしています。
+この記事では、Azure Functions で [Azure Event Hubs](../event-hubs/event-hubs-about.md) のバインドを使用する方法について説明します。 Azure Functions は、Event Hubs のトリガーおよび出力バインドをサポートしています。
 
 | アクション | Type |
 |--------|------|
-| イベント ハブのイベント ストリームに送信されたイベントに応答する | [トリガー](./functions-bindings-event-hubs-trigger.md) |
+| Event Hubs のイベント ストリームに送信されたイベントに応答する | [トリガー](./functions-bindings-event-hubs-trigger.md) |
 | イベント ストリームにイベントを書き込む | [出力バインド](./functions-bindings-event-hubs-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-- [イベント ハブのイベント ストリームに送信されたイベントに応答する (トリガー)](./functions-bindings-event-hubs-trigger.md)
+- [Event Hubs のイベント ストリームに送信されたイベントに応答する (トリガー)](./functions-bindings-event-hubs-trigger.md)
 - [イベント ストリームにイベントを書き込む (出力バインド)](./functions-bindings-event-hubs-output.md)
