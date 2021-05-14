@@ -3,17 +3,17 @@ title: Azure Maps アカウントの価格レベルを管理する | Microsoft A
 description: Azure portal を使用して、Microsoft Azure Maps アカウントとその価格レベルを管理することができます。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/27/2020
+ms.date: 04/26/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9934a2660d18fdcbada1cda86f957345b2d1a8c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7612379f436f587d96f58ee9a03ba86c5eb5972
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92895734"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326781"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure Maps アカウントの価格レベルを管理する
 
@@ -25,13 +25,13 @@ Azure Maps アカウントの価格レベルは、Azure portal で管理する�
 
 選択した価格レベルを表示するには、設定メニューの **[価格レベル]** オプションに移動します。
 
-[ ![選択した価格レベルの表示](./media/how-to-manage-pricing-tier/view-pricing-tier.png) ](./media/how-to-manage-pricing-tier/view-pricing-tier.png#lightbox)
+:::image type="content" source="./media/how-to-manage-pricing-tier/view-pricing-tier.png" border="true" alt-text="選択した価格レベルの表示":::
 
 ## <a name="change-a-pricing-tier"></a>価格レベルの変更
 
-Azure Maps アカウントを作成すると、Azure Maps アカウントの価格レベルをアップグレードしたり、ダウングレードしたりできるようになります。 アップグレードまたはダウングレードするには、設定メニューの **[価格レベル]** オプションに移動します。 強調表示されていない価格レベルを選択します。 **[保存]** ボタンを選択して、選択した価格レベル オプションを保存します。
+Azure Maps アカウントを作成すると、Azure Maps アカウントの価格レベルをアップグレードしたり、ダウングレードしたりできるようになります。 アップグレードまたはダウングレードするには、設定メニューの **[価格レベル]** オプションに移動します。 ドロップ ダウン リストから価格レベルを選択します。  注: 現在の価格レベルは既定で選択されます。  **[保存]** ボタンを選択して、選択した価格レベル オプションを保存します。
 
-[ ![価格レベルの変更](./media/how-to-manage-pricing-tier/change-pricing-tier.png) ](./media/how-to-manage-pricing-tier/change-pricing-tier.png#lightbox)
+:::image type="content" source="./media/how-to-manage-pricing-tier/change-pricing-tier.png" border="true" alt-text="価格レベルの変更":::
 
 > [!NOTE]
 > Azure Maps アカウントの価格レベルをアップグレードまたはダウングレードした場合、新しいサブスクリプション キーやクライアント ID (Azure AD の認証用) を生成する必要はありません。

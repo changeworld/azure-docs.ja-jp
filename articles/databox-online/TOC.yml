@@ -1,4 +1,4 @@
-- name: Azure Stack Edge Pro のドキュメント
+- name: Azure Stack Edge のドキュメント
   href: ./index.yml
   expanded: true
 - name: Azure Stack Edge Pro - GPU
@@ -224,36 +224,56 @@
               href: azure-stack-edge-gpu-set-azure-resource-manager-password.md
             - name: クライアント TLS 設定を構成する
               href: azure-stack-edge-gpu-configure-tls-settings.md
-        - name: VM をデプロイする (プレビュー)
+        - name: VM について (プレビュー)
           items:
-            - name: VM をデプロイする - Azure portal
-              href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
-            - name: VM をデプロイする - テンプレート
-              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
-            - name: VM をデプロイする - GPU
-              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
-            - name: VM をデプロイする - Azure PowerShell コマンドレット
-              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
-            - name: VM をデプロイする - Azure PowerShell スクリプト
-              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
-            - name: VM をデプロイする - Azure CLI/Python
-              href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
-            - name: VM にカスタム スクリプト拡張機能をデプロイする
-              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
-            - name: VM イメージを作成する
-              href: azure-stack-edge-gpu-create-virtual-machine-image.md
-            - name: Windows 汎用化イメージを使用する
-              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
-            - name: サポートされる VM のサイズ、種類
+            - name: VM とは
+              href: azure-stack-edge-gpu-virtual-machine-overview.md
+            - name: サポートされている VM を表示する
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
-            - name: VM コンソールに接続する
-              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
-            - name: ネットワーク インターフェイスを管理する
-              href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
-            - name: ディスクを管理する
-              href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
-            - name: VM のサイズを管理する
-              href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+            - name: VM イメージを作成する
+              items:
+                - name: Azure VM からのカスタム イメージ
+                  href: azure-stack-edge-gpu-create-virtual-machine-image.md
+                - name: VHD からの Windows 汎用化イメージ
+                  href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
+                - name: ISO からの汎用化イメージ
+                  href: azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md
+                - name: 特殊化されたイメージを使用する
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+            - name: VM をデプロイする
+              items:
+                - name: Azure ポータルの使用
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
+                - name: テンプレートの使用
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+                - name: GPU の使用
+                  href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
+                - name: Azure PowerShell コマンドレットの使用
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
+                - name: Azure PowerShell スクリプトの使用
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
+                - name: Azure CLI/Python の使用
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-cli-python.md
+            - name: 方法
+              items:
+                - name: ネットワーク インターフェイスを管理する
+                  href: azure-stack-edge-gpu-manage-virtual-machine-network-interfaces-portal.md
+                - name: ディスクを管理する
+                  href: azure-stack-edge-gpu-manage-virtual-machine-disks-portal.md
+                - name: VM のサイズを管理する
+                  href: azure-stack-edge-gpu-manage-virtual-machine-resize-portal.md
+                - name: VM のタグを管理する
+                  href: azure-stack-edge-gpu-manage-virtual-machine-tags-powershell.md
+                - name: 仮想スイッチを管理する
+                  href: azure-stack-edge-gpu-create-virtual-switch-powershell.md
+                - name: カスタム スクリプト拡張機能のインストール
+                  href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
+                - name: VM のディスクをバックアップする
+                  href: azure-stack-edge-gpu-back-up-virtual-machine-disks.md
+                - name: トラブルシューティング
+                  items:
+                    - name: VM コンソールに接続する
+                      href: azure-stack-edge-gpu-connect-virtual-machine-console.md
         - name: 証明書の管理
           items:
             - name: 要件
@@ -429,7 +449,11 @@
 - name: セキュリティ
   items:
     - name: セキュリティ ベースライン
-      href: security-baseline.md
+      href: /security/benchmark/azure/baselines/stack-edge-security-baseline?toc=/azure/databox-online/TOC.json
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/databoxedge
 - name: リソース
   items:
     - name: Azure Stack Edge Pro C# モジュールのサンプル (.NET)

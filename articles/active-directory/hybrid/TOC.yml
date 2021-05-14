@@ -40,6 +40,8 @@
           href: whatis-phs.md
         - name: パスワード ハッシュ同期のしくみ
           href: how-to-connect-password-hash-synchronization.md
+        - name: 選択的なパスワード ハッシュ同期
+          href: how-to-connect-selective-password-hash-synchronization.md
     - name: パススルー認証
       items:
         - name: パススルー認証とは
@@ -240,6 +242,8 @@
           href: how-to-connect-fed-saml-idp.md
         - name: ハイブリッド Azure AD 参加の構成後のタスク
           href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+        - name: AD FS 証明書の緊急ローテーション
+          href: how-to-connect-emergency-ad-fs-certificate-rotation.md
     - name: シングル サインオンの管理
       items:
         - name: シングル サインオンの概要
@@ -254,6 +258,8 @@
           href: how-to-connect-health-adfs.md
         - name: AD FS での Azure AD Connect Health の危険な IP のレポート
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: Connect Health を使用した Azure AD での AD FS サインイン
+          href: how-to-connect-health-ad-fs-sign-in.md
         - name: Azure AD Connect Health for Sync の使用
           href: how-to-connect-health-sync.md
         - name: AD DS での Azure AD Connect Health の使用
@@ -304,6 +310,8 @@
           href: whatis-aadc-admin-agent.md
         - name: ADConnectivityTools PowerShell モジュールとは
           href: how-to-connect-adconnectivitytools.md
+        - name: Azure AD Connect 単一オブジェクト同期
+          href: how-to-connect-single-object-sync.md
         - name: 接続
           href: tshoot-connect-connectivity.md
         - name: 同期中のエラー
@@ -332,6 +340,8 @@
           href: tshoot-connect-install-issues.md
         - name: UPN の変更
           href: howto-troubleshoot-upn-changes.md
+        - name: オブジェクトおよび属性のエンドツーエンド トラブルシューティング
+          href: /troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes
 - name: リファレンス
   items:
     - name: ハイブリッド ID で必要なポートとプロトコル

@@ -131,7 +131,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ### <a name="app-service-environments"></a>App Service Environment
 
-受信と送信の両方の IP アドレスを完全に制御するには、[App Service Environment](../app-service/environment/intro.md) (App Service プランの[分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service 環境の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
+受信と送信の両方の IP アドレスを完全に制御するには、[App Service Environment](../app-service/environment/intro.md) (App Service プランの[分離レベル](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service Environment の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 

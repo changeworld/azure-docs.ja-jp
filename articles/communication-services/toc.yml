@@ -51,11 +51,11 @@
     - name: UI フレームワーク
       items:
         - name: 複合コンポーネントの概要
-          href: quickstarts/ui-framework/get-started-with-composites.md
-        - name: 基本コンポーネントの概要
-          href: quickstarts/ui-framework/get-started-with-components.md
-        - name: 独自の UI フレームワーク コンポーネントを作成する
-          href: quickstarts/ui-framework/create-your-own-components.md
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-composites--page'
+        - name: ステートフル クライアントの概要
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-stateful-client--page'
+        - name: UI コンポーネントの概要
+          href: 'https://azure.github.io/communication-ui-sdk/?path=/docs/quickstarts-get-started-with-ui-components--page'
 - name: チュートリアル
   expanded: false
   items:
@@ -86,7 +86,7 @@
           href: concepts/telephony-sms/telephony-concept.md
         - name: 電話番号の種類
           href: concepts/telephony-sms/plan-solution.md
-        - name: Azure ダイレクト ルーティング インフラストラクチャの要件
+        - name: Azure 直接ルーティングのインフラストラクチャ要件
           href: concepts/telephony-sms/sip-interface-infrastructure.md
         - name: SMS に関する FAQ
           href: concepts/telephony-sms/sms-faq.md

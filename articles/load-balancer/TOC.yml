@@ -31,6 +31,8 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: 複数の可用性セットを使用して VM を負荷分散する
+      href: tutorial-multi-availability-sets-portal.md
     - name: Load Balancer でのポート転送の構成
       href: tutorial-load-balancer-port-forwarding-portal.md
     - name: リージョン間のロード バランサー
@@ -41,6 +43,16 @@
           href: tutorial-cross-region-powershell.md
         - name: リージョン間ロード バランサーの作成 - Azure CLI
           href: tutorial-cross-region-cli.md
+    - name: NAT Gateway
+      items:
+        - name: NAT ゲートウェイ パブリック ロード バランサーを統合する
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+        - name: NAT ゲートウェイ内部ロード バランサーを統合する
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: IP ベースのバックエンド
+      items:
+        - name: IP ベースのバックエンドを備えたパブリック ロード バランサーを作成する - ポータル
+          href: tutorial-load-balancer-ip-backend-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -49,6 +61,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: ポータルの設定
+      href: manage.md
     - name: リージョン間のロード バランサー
       href: cross-region-overview.md
     - name: 新機能
@@ -90,7 +104,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/load-balancer-security-baseline?toc=/azure/load-balancer/TOC.json
     - name: バックエンド プールの管理
       href: backend-pool-management.md
     - name: Standard Load Balancer と Virtual Machine Scale Sets
@@ -99,8 +113,6 @@
       href: instance-metadata-service-load-balancer.md
 - name: 操作方法
   items:
-    - name: ポータルの設定
-      href: manage.md
     - name: 仮想マシン スケール セット
       items:
         - name: 仮想マシン スケール セットで使用される既存の Azure Load Balancer を更新または削除する

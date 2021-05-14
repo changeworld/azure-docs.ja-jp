@@ -4,12 +4,12 @@ description: Service Bus の配信不能キューについて説明します。 
 ms.topic: article
 ms.date: 04/08/2021
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 6293a3a9a760ece137644578d8ee7dccebc63d95
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 9a7eaf3cee7af4ba0f0049ee8b7a8dd0b271a94a
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812374"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804468"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -50,7 +50,7 @@ Service Bus のキューとサブスクリプションについてメッセー�
 ## <a name="time-to-live"></a>Time to Live
 キューまたはサブスクリプションで配信不能を有効にすると、有効期限が切れたすべてのメッセージは DLQ に移動されます。 配信不能理由コードは、TTLExpiredException に設定されます。
 
-メイン キューまたはサブスクリプションに対してプルを実行しているアクティブな受信者が少なくとも 1 つある場合は、期限切れメッセージは単に消去され、DLQ に移動されるだけです。 遅延メッセージは、有効期限が切れても、削除されたり、配信不能キューに移動されることはありません。 この動作は仕様です。
+遅延メッセージは、有効期限が切れても、削除されたり、配信不能キューに移動されることはありません。 この動作は仕様です。
 
 ## <a name="errors-while-processing-subscription-rules"></a>サブスクリプション ルールの処理中のエラー
 フィルター評価の例外で配信不能を有効にすると、サブスクリプションの SQL フィルター規則の実行中に発生したエラーは、問題のあるメッセージと共に DLQ にキャプチャされます。 このオプションは、すべてのメッセージ型がサブスクライバーを持つわけではない運用環境では使用しないでください。

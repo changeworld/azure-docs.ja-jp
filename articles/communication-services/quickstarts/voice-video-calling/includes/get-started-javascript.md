@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bd9a607b46c87ca590bcefef310f822d6f23483c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: de22bea9fbb9745060a1a46a01906416ce098d27
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107386786"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108793087"
 ---
 このクイックスタートでは、JavaScript 用の Azure Communication Services Calling SDK を使用して、通話を開始する方法について説明します。
 
@@ -78,7 +78,7 @@ import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
 let call;
 let callAgent;
-let userTokenCredential = "";
+let tokenCredential = "";
 const userToken = document.getElementById("token-input");
 const calleeInput = document.getElementById("callee-id-input");
 const submitToken = document.getElementById("token-submit");

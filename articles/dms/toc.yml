@@ -31,7 +31,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/database-migration-security-baseline?toc=/azure/dms/toc.json
 - name: チュートリアル
   expanded: true
   items:
@@ -45,7 +45,9 @@
           href: tutorial-sql-server-managed-instance-online.md
     - name: MySQL の移行
       items:
-        - name: Azure Database for MySQL へ
+        - name: Azure Database for MySQL へ (オフライン)
+          href: tutorial-mysql-azure-mysql-offline-portal.md
+        - name: Azure Database for MySQL へ (オンライン)
           href: tutorial-mysql-azure-mysql-online.md
     - name: RDS MySQL の移行
       items:
@@ -71,10 +73,6 @@
           href: tutorial-mongodb-cosmos-db.md
         - name: Azure Cosmos DB Mongo API へ (オンライン)
           href: tutorial-mongodb-cosmos-db-online.md
-    - name: Oracle の移行
-      items:
-        - name: Azure DB for PostgreSQL 単一サーバーへ (オンライン)
-          href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作方法ガイド
   items:
     - name: 移行アクティビティの監視
@@ -87,12 +85,18 @@
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
         - name: SQL Server から SQL MI (オフライン)
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
+        - name: MySQL から Azure Database for MySQL へ (オフライン)
+          href: migrate-mysql-to-azure-mysql-powershell.md
     - name: SSIS パッケージの再デプロイ
       items:
         - name: Azure SQL データベース
           href: how-to-migrate-ssis-packages.md
         - name: Azure SQL Managed Instance
           href: how-to-migrate-ssis-packages-managed-instance.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/dms
 - name: リソース
   items:
     - name: よく寄せられる質問
@@ -110,7 +114,7 @@
         - name: データ移行のシナリオで利用できるサービスとツール
           href: dms-tools-matrix.md
         - name: Azure データベースの移行ガイド
-          href: 'https://aka.ms/datamigration'
+          href: /data-migration/
         - name: Data Migration Assistant
           href: /sql/dma/dma-overview
         - name: SQL Server Migration Assistant
@@ -139,8 +143,6 @@
               href: known-issues-azure-mysql-online.md
             - name: PostgreSQL から Azure DB for PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: Oracle から Azure DB for PostgreSQL
-              href: known-issues-oracle-azure-postgresql-online.md
             - name: MongoDB から Azure Cosmos DB の MongoDB 用 API
               href: known-issues-mongo-cosmos-db.md
     - name: ビデオ

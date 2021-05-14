@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ff3661a7e092fd20207fe2e973afc316b2c244ef
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 06409903e77923176ac5fab4dd27bf918ea0d9d9
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447099"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331804"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
@@ -26,11 +26,16 @@ ms.locfileid: "106447099"
 
 RDP ファイルには、既定で次のプロパティがあります。
 
-|RDP プロパティ|デスクトップ上|RemoteApp として|
-|---|---|---|
-|マルチモニター モード|無効|Enabled|
-|ドライブ リダイレクト有効|ドライブ、クリップボード、プリンター、COM ポート、およびスマート カード|ドライブ、クリップボード、プリンター|
-|リモート オーディオ モード|ローカルで再生|ローカルで再生|
+|RDP プロパティ|デスクトップと RemoteApp の両方|
+|---|---|
+|マルチモニター モード|無効|
+|ドライブ リダイレクト有効|ドライブ、クリップボード、プリンター、COM ポート、スマート カード、デバイス、usbdevicestore|
+|リモート オーディオ モード|ローカルで再生|
+|VideoPlayback|Enabled|
+|EnableCredssp|Enabled|
+
+>[!NOTE]
+>マルチモニター モードは、デスクトップ アプリ グループにのみ適用され、RemoteApp アプリ グループでは無視されます。
 
 ## <a name="prerequisites"></a>前提条件
 

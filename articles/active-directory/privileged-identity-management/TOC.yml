@@ -18,6 +18,8 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: メール通知
       href: pim-email-notifications.md
+    - name: PIM API の概念
+      href: pim-apis-concept.md
     - name: Microsoft Graph API と PIM
       href: pim-apis.md
 - name: 操作方法ガイド
@@ -27,30 +29,20 @@
       href: pim-deployment-plan.md
     - name: PIM の使用を開始する
       href: pim-getting-started.md
-    - name: PIM を構成する
-      items:
-        - name: セキュリティ ウィザード
-          href: pim-security-wizard.md
-        - name: Azure リソースを見つける
-          href: pim-resource-roles-discover-resources.md
-        - name: PIM へのアクセスを委任する
-          href: pim-how-to-give-access-to-pim.md
-        - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
-          href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
-    - name: ロールをアクティブ化する
-      items:
-        - name: Azure AD ロールをアクティブ化する
-          href: pim-how-to-activate-role.md
-        - name: 自分の Azure リソース ロールをアクティブにする
-          href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD ロールの管理
       items:
         - name: 機能の概要
           href: azure-ad-roles-features.md
         - name: Azure AD ロール用の PowerShell
           href: powershell-for-azure-ad-roles.md
+        - name: 検出と分析情報
+          href: pim-security-wizard.md
+        - name: PIM アクセスを委任する
+          href: pim-how-to-give-access-to-pim.md
         - name: ロールを割り当てる
           href: pim-how-to-add-role-to-user.md
+        - name: ロールをアクティブ化する
+          href: pim-how-to-activate-role.md
         - name: 要求の承認
           href: azure-ad-pim-approval-workflow.md
         - name: ロール設定を構成する
@@ -71,10 +63,16 @@
           href: pim-how-to-use-audit-log.md
     - name: Azure ロールの管理
       items:
+        - name: Azure リソースを見つける
+          href: pim-resource-roles-discover-resources.md
+        - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
+          href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
         - name: ロールを割り当てる
           href: pim-resource-roles-assign-roles.md
         - name: 外部ユーザーを招待する
           href: pim-resource-roles-external-users.md
+        - name: ロールをアクティブ化する
+          href: pim-resource-roles-activate-your-roles.md
         - name: 要求の承認
           href: pim-resource-roles-approval-workflow.md
         - name: ロールを拡張または更新する

@@ -1,0 +1,50 @@
+- name: Azure AD の検証可能な資格情報のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Active Directory の検証可能な資格情報の概要
+      href: decentralized-identifier-overview.md
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 検証可能な資格情報のスタート ガイド
+      href: get-started-verifiable-credentials.md
+    - name: テナントで検証可能な資格情報を構成する
+      items:
+        - name: 1 - 自分自身の Azure AD で検証可能な資格情報の発行者を設定する
+          href: enable-your-tenant-verifiable-credentials.md
+        - name: 2 - 検証可能な資格情報の発行者を自分自身の Azure AD に接続する
+          href: issue-verify-verifiable-credentials-your-tenant.md
+- name: 概念
+  expanded: true
+  items:
+    - name: OpenID Connect プロトコルの詳細
+      href: issuer-openid.md
+- name: 操作方法ガイド
+  expanded: true
+  items:
+    - name: 資格情報をカスタマイズする方法
+      href: credential-design.md
+    - name: 資格情報の失効を管理する
+      href: how-to-issuer-revoke.md
+    - name: ドメインを DID にリンクする
+      href: how-to-dnsbind.md
+    - name: 検証可能な資格情報のオプトアウト
+      href: how-to-opt-out.md
+- name: サンプル
+  expanded: true
+  items:
+    - name: サンプルの Node アプリサンプルの発行者
+      href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
+    - name: Sample Issuer
+      href: 'https://didvc-issuer-sample.azurewebsites.net/'
+    - name: サンプルの検証ツール
+      href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: リソース
+  expanded: true
+  items:
+    - name: よく寄せられる質問
+      href: verifiable-credentials-faq.md
+    - name: 開発者アカウントを作成する方法
+      href: how-to-create-a-free-developer-account.md

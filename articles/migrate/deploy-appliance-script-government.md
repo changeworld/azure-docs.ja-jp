@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: b0bc2b69a4a1ec31cfa560d51920378fe1ab52b8
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: edc74f0379a15c9119d2e3ed4f207832c367866b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714796"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804036"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
@@ -62,7 +62,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 - エージェントと Web アプリケーションをインストールします。
 - Windows のロール (Windows Activation Service、IIS、PowerShell ISE など) をインストールします。
-- IIS 再書き込み可能モジュールをダウンロードしてインストールします。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
+- IIS 再書き込み可能モジュールをダウンロードしてインストールします。
 - Azure Migrate の永続的な設定を使用して、レジストリ キー (HKLM) を更新します。
 - ログファイルと構成ファイルを次のように作成します。
     - **構成ファイル**: %ProgramData%\Microsoft Azure\Config
@@ -117,7 +117,7 @@ Hyper-V のアプライアンスを設定するには、Azure portal から ZIP 
 
 - エージェントと Web アプリケーションをインストールします。
 - Windows のロール (Windows Activation Service、IIS、PowerShell ISE など) をインストールします。
-- IIS 再書き込み可能モジュールをダウンロードしてインストールします。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
+- IIS 再書き込み可能モジュールをダウンロードしてインストールします。
 - Azure Migrate の永続的な設定を使用して、レジストリ キー (HKLM) を更新します。
 - ログファイルと構成ファイルを次のように作成します。
     - **構成ファイル**: %ProgramData%\Microsoft Azure\Config
@@ -170,7 +170,7 @@ VMware 用のアプライアンスを設定するには、Azure portal から ZI
 
 - エージェントと Web アプリケーションをインストールします。
 - Windows のロール (Windows Activation Service、IIS、PowerShell ISE など) をインストールします。
-- IIS 再書き込み可能モジュールをダウンロードしてインストールします。 [詳細については、こちらを参照してください](https://www.microsoft.com/download/details.aspx?id=7435)。
+- IIS 再書き込み可能モジュールをダウンロードしてインストールします。
 - Azure Migrate の永続的な設定を使用して、レジストリ キー (HKLM) を更新します。
 - ログファイルと構成ファイルを次のように作成します。
     - **構成ファイル**: %ProgramData%\Microsoft Azure\Config

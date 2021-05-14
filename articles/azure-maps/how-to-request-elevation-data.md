@@ -3,18 +3,18 @@ title: Azure Maps の Elevation Service (プレビュー) を使用して標高�
 description: Azure Maps の Elevation Service (プレビュー) を使用して標高データを要求する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efdaf8d2d64a3865027f5211e4382458e1323b10
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98684057"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325123"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure Maps の Elevation Service (プレビュー) を使用して標高データを要求する
 
@@ -26,7 +26,7 @@ Azure Maps の [Elevation Service](/rest/api/maps/elevation) は、地表の任�
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [S1 価格レベルで Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+1. [Gen 1 (S1) または Gen 2 の価格レベルで Azure Maps アカウントを作成](quick-demo-map-app.md#create-an-azure-maps-account)します。
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。

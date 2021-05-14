@@ -40,6 +40,10 @@
           items:
             - name: クラスの種類の概要
               href: class-types.md
+            - name: Adobe Creative Cloud
+              href: class-type-adobe-creative-cloud.md
+            - name: Autodesk
+              href: class-type-autodesk.md
             - name: 自然言語処理でのディープ ラーニング
               href: class-type-deep-learning-natural-language-processing.md
             - name: Linux でのシェル スクリプト
@@ -137,6 +141,8 @@
           href: how-to-setup-lab-gpu.md
         - name: Windows テンプレート VM の準備
           href: how-to-prepare-windows-template.md
+        - name: 外部ファイル ストレージを使用する
+          href: how-to-attach-external-storage.md
         - name: Windows のシャットダウン動作を制御する
           href: how-to-windows-shutdown.md
         - name: サポート情報の表示 (教師)
@@ -177,6 +183,8 @@
       href: /rest/api/labservices/
     - name: Az.LabServices PowerShell モジュール (プレビュー)
       href: reference-powershell-module.md
+    - name: Azure CLI
+      href: /cli/azure/hack
 - name: リソース
   items:
     - name: Azure Lab Services のブログ

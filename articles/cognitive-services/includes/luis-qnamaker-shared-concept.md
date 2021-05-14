@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: b2b405e7f6babf84ef8297310a5a7a34c3f2dc11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b11a6082a5c86526e04a8b78db30650c37d467fc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102623521"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108793010"
 ---
 Cognitive Services には、[Language Understanding](../luis/what-is-luis.md) と [QnA Maker](../qnamaker/overview/overview.md) という 2 つの自然言語処理サービスが用意されており、それぞれ異なる目的があります。 各サービスをどのようなときに使用し、それぞれのサービスがどのように補完されるかについて説明します。
 
@@ -73,7 +73,7 @@ QnA Maker のナレッジ ベースを構築しているのに、対象ドメイ
 
 両方のサービスを使用するプロセスを構築するには、Bot Framework の **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** ツールを使用します。 このツールでは、子アプリとしての LUIS と QnA Maker の間でディスパッチを行う、意図の上位 LUIS アプリが構築されます。 LUIS、QnA Maker、Bot Framework との統合について詳しくは、[こちら](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs)を参照してください。
 
-この種のチャット ボットを実装するには、Bot Builder のサンプル「**NLP とディスパッチ**」を使用してください ([C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) または [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch))。
+この種のチャット ボットを実装するには、Bot Builder のサンプル「**NLP とディスパッチ**」を使用してください ([C#](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/csharp_dotnetcore/14.nlp-with-orchestrator) または [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/main/samples/javascript_nodejs/14.nlp-with-orchestrator))。
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

@@ -7,16 +7,14 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b0b5aafd85fe6d992afa9d879f73ef0ec43e00d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d59f50d6fa4f21676cef01ffe0dde8ed1fa4441
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834376"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768771"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する
-
-*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、電子メールの送信などのアクションを自動的に呼び出すことができます。 この記事では、自分のデバイスから送信されるテレメトリを監視するルールを作成する方法について説明します。
 
@@ -112,7 +110,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 [!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 
