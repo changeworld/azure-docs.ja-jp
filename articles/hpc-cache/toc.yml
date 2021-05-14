@@ -8,10 +8,14 @@
   items:
     - name: 集約された名前空間を計画する
       href: hpc-cache-namespace.md
-    - name: セキュリティ
+    - name: キャッシュ使用モデルについて
+      href: cache-usage-models.md
+    - name: HPC Cache が適切なソリューションかどうかを判断する
+      href: usage-scenarios.md
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/hpc-cache-security-baseline?toc=/azure/hpc-cache/toc.json
 - name: 操作方法ガイド
   items:
     - name: 前提条件
@@ -53,7 +57,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/hpc-cache/hpc-cache
+      href: /cli/azure/hpc-cache
     - name: Azure PowerShell
       href: /powershell/module/Az.HPCCache
 - name: リソース
@@ -66,6 +70,8 @@
       href: hpc-cache-blob-firewall-fix.md
     - name: NFS ストレージ ターゲットの作成のトラブルシューティング
       href: troubleshoot-nas.md
+    - name: NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
+      href: nfs-blob-considerations.md
     - name: リージョンの障害から復旧する
       href: hpc-region-recovery.md
     - name: カスタマーマネージド暗号化キーを使用する

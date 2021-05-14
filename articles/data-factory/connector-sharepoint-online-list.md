@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SharePoint Online List からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: jingwang
-ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.author: jianleishen
+ms.openlocfilehash: 44c60305519c2464df56c3b5a9228161548d4bd6
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177863"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482887"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ SharePoint List Online コネクタでは、サービス プリンシパル認�
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SharePoint Online リスト コネクタに固有の Data Factory エンティティの定義に使用できるプロパティについて詳しく説明します。
 

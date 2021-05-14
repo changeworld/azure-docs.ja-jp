@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して IBM Informix をコピー元またはコピー先としてデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、IBM Informix をコピー元またはコピー先としてデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: af907704862e80a2747ac064b98242a1d9d7edb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: c992140863649752a9c964424923c917462f16f7
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104588870"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485875"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Azure Data Factory を使用して IBM Informix をコピー元またはコピー先としてデータをコピーする
 
@@ -38,7 +38,7 @@ Informix ソースのデータをサポートされる任意のシンク デー�
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Informix コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

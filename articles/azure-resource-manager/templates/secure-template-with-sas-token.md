@@ -3,13 +3,13 @@ title: SAS トークンを使用してテンプレートを安全にデプロイ
 description: Azure Resource Manager テンプレートを使用して、SAS トークンで保護されているリソースを Azure にデプロイします。 Azure PowerShell と Azure CLI を表示します。
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 69462759eca08b409b1333b856fb9cd7c48a8914
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 1c3dd78d8c9c0819c69b12ccb9199acd7a4a626e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316103"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752033"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>SAS トークンを使用してプライベート ARM テンプレートをデプロイする
 

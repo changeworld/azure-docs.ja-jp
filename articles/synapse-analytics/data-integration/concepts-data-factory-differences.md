@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: makromer
 ms.reviewer: jrasnick
-ms.openlocfilehash: 144bdf5e94f753090dd73e5839b6c1fd25f11811
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 638b78f0304a9bbba8521ed523dffa1deda03c7c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567640"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480799"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure Synapse Analytics と Azure Data Factory のデータ統合
 
@@ -32,7 +32,7 @@ Azure Synapse Analytics の Synapse パイプラインやデータ フローな�
 |                          | Integration Runtime の共有 | ✓<br>"<small>*異なるデータ ファクトリ間で共有できる*" | ✗ |
 |                          | Time to Live | ✓ | ✗ |
 | **パイプライン アクティビティ** | SSIS パッケージ アクティビティ | ✓ | ✗ |
-|                          | Power Query アクティビティのサポート | ✓ | ✓ |
+|                          | Power Query アクティビティのサポート | ✓ | ✗ |
 | **テンプレート ギャラリーとナレッジ センター** | ソリューション テンプレート | ✓<br>"<small>*Azure Data Factory のテンプレート ギャラリー*" | ✓<br>"<small>*Synapse ワークスペースのナレッジ センター*" |
 | **Git リポジトリの統合** | Git 統合 | ✓ | ✓ |
 | **Monitoring**           | データ フローについての Spark ジョブの監視 | ✗ | ✓<br>"<small>*Synapse Spark プールを活用する*" |

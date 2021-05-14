@@ -1,21 +1,19 @@
 ---
 title: 共有 VM イメージを使用して Azure CLI のスケール セットを作成する
 description: Azure CLI を使用して Azure の仮想マシン スケール セットをデプロイするために使用する共有 VM イメージを作成する方法について説明します。
-author: axayjo
-tags: azure-resource-manager
+author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: b5e9d5995e8173950db483c5c26a11830a62862e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: cynthn
+ms.reviewer: mimckitt
+ms.openlocfilehash: 84970a4c8ce7a583e2b6493686b88ab5b68e142c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444005"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738199"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想マシン スケール セットの共有イメージの作成および使用
 

@@ -2,13 +2,13 @@
 title: テンプレート関数 - 論理
 description: Azure Resource Manager テンプレート (ARM テンプレート) で論理値を判定するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: f37f43d8fcec63ee4ae3d8a1064d87b0ec3d68a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920474"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736885"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM テンプレート用の論理関数
 
@@ -32,7 +32,7 @@ Resource Manager には、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
@@ -82,7 +82,7 @@ output notExampleOutput bool = !(bool('true'))
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -96,7 +96,7 @@ output notExampleOutput bool = !(bool('true'))
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または整数 |ブール値に変換する値。 |
 
@@ -152,7 +152,7 @@ output falseInt bool = bool(0)
 ---
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -203,7 +203,7 @@ output falseOutput bool = false
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | falseOutput | Bool | False |
 
@@ -215,7 +215,7 @@ output falseOutput bool = false
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | condition |はい |boolean |true か false かどうかを確認する値。 |
 | trueValue |はい | string、int、object、または array |条件が true の場合に返される値。 |
@@ -270,7 +270,7 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
 | noOutput | String | no |
@@ -328,8 +328,30 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
-> [!NOTE]
-> `Conditions` は、Bicep にはまだ実装されていません。 [条件](https://github.com/Azure/bicep/issues/186)に関するページを参照してください。
+```bicep
+param vmName string
+param location string
+param logAnalytics string = ''
+
+resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017-03-30' = if (!empty(logAnalytics)) {
+  name: '${vmName}/omsOnboarding'
+  location: location
+  properties: {
+    publisher: 'Microsoft.EnterpriseCloud.Monitoring'
+    type: 'MicrosoftMonitoringAgent'
+    typeHandlerVersion: '1.0'
+    autoUpgradeMinorVersion: true
+    settings: {
+      workspaceId: ((!empty(logAnalytics)) ? reference(logAnalytics, '2015-11-01-preview').customerId : json('null'))
+    }
+    protectedSettings: {
+      workspaceKey: ((!empty(logAnalytics)) ? listKeys(logAnalytics, '2015-11-01-preview').primarySharedKey : json('null'))
+    }
+  }
+}
+
+output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
+```
 
 ---
 
@@ -341,7 +363,7 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |変換する値。 |
 
@@ -389,7 +411,7 @@ output notExampleOutput bool = !(bool('true'))
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -424,7 +446,7 @@ output checkNotEquals bool = !(1 == 2)
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -436,7 +458,7 @@ output checkNotEquals bool = !(1 == 2)
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 型 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
@@ -486,7 +508,7 @@ output notExampleOutput bool = !(bool('true'))
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -536,7 +558,7 @@ output trueOutput bool = true
 
 前の例からの出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 型 | [値] |
 | ---- | ---- | ----- |
 | trueOutput | Bool | True |
 

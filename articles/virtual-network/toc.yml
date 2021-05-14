@@ -27,6 +27,10 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: NAT ゲートウェイの作成と検証
       href: tutorial-create-nat-gateway-portal.md
+    - name: NAT ゲートウェイ パブリック ロード バランサーを統合する
+      href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: NAT ゲートウェイ内部ロード バランサーを統合する
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -100,13 +104,13 @@
         - name: 従量制課金なしのルーティング優先設定
           href: routing-preference-unmetered.md
         - name: パブリック IP のセキュリティ ベースライン
-          href: public-ip-security-baseline.md
-    - name: セキュリティ
+          href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
+    - name: Security
       items:
         - name: Virtual Network のセキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Virtual Network NAT のセキュリティ ベースライン
-          href: nat-security-baseline.md
+          href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
         - name: Azure サービスのネットワークの分離
           href: vnet-integration-for-azure-services.md
         - name: ネットワーク セキュリティ グループ
@@ -409,17 +413,13 @@
               href: move-across-regions-publicip-powershell.md
     - name: NAT
       items:
-        - name: NAT ゲートウェイの作成 - PowerShell
-          href: quickstart-create-nat-gateway-powershell.md
-        - name: NAT ゲートウェイの作成 - CLI
-          href: quickstart-create-nat-gateway-cli.md
+        - name: NAT ゲートウェイの作成と検証 - PowerShell
+          href: tutorial-create-nat-gateway-powershell.md
+        - name: NAT ゲートウェイの作成と検証 - CLI
+          href: tutorial-create-nat-gateway-cli.md
         - name: NAT ゲートウェイの作成 - ARM テンプレート
           displayname: Resource Manager
           href: quickstart-create-nat-gateway-template.md
-        - name: NAT ゲートウェイの作成と検証 - PowerShell
-          href: tutorial-create-validate-nat-gateway-powershell.md
-        - name: NAT ゲートウェイの作成と検証 - CLI
-          href: tutorial-create-validate-nat-gateway-cli.md
     - name: トラブルシューティング
       items:
         - name: 仮想ネットワーク ピアリングの問題をトラブルシューティングする
@@ -453,7 +453,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/network
+      href: /cli/azure/azure-cli-reference-for-network
     - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET

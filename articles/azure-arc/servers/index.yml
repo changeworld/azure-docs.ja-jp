@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/26/2020
   ms.author: magoedte
-  ms.openlocfilehash: 0d0caca2d51781d899765820d691f88b7ab6f2e9
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 08bd1d0db152105b69ba578e366a37832974802a
+  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101686378"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109480781"
 landingContent:
 - title: Azure Arc 対応サーバーを使用してマシンを Azure に接続する
   linkLists:
@@ -22,9 +22,9 @@ landingContent:
     links:
     - text: Azure Arc 対応サーバーとは
       url: overview.md
-  - linkListType: architecture
+  - linkListType: deploy
     links:
-    - text: 大規模なデプロイを計画する
+    - text: 展開を計画する
       url: plan-at-scale-deployment.md
   - linkListType: get-started
     links:
@@ -46,6 +46,10 @@ landingContent:
     links:
     - text: ジャンプスタート
       url: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_servers/
+  - linkListType: get-started
+    links:
+    - text: Azure VM を使用して Arc 対応サーバーをテストする
+      url: plan-evaluate-on-azure-virtual-machine.md
 - title: 参照アーキテクチャ
   linkLists:
   - linkListType: architecture

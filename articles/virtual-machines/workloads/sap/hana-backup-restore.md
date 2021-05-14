@@ -3,7 +3,7 @@ title: SAP HANA on Azure での HANA のバックアップと復元 (ラージ �
 description: SAP HANA on Azure で HANA のバックアップと復元を実行する方法 (ラージ インスタンス)
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-sap
@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
-ms.author: saghorpa
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3244cbca3df717d3432670a366147408cf2b2c0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4b7ac968564c6c2e734fe48cca27c617eb82533
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669115"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737278"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>HANA Large Instances での SAP HANA のバックアップと復元
 

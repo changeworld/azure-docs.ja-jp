@@ -7,129 +7,126 @@ metadata:
   description: Azure Media Services は、クラウドおよびエッジ メディア ワークフロー サービスのコレクションです。これにより、ライブおよびバッチのビデオ分析、コード変換、マルチデバイス配信サービス、コンテンツ保護、および大規模なライブ イベント配信を必要とするソリューションを構築できます。
   services: media-services
   ms.service: media-services
-  ms.subservice: 
+  ms.subservice: null
   ms.topic: hub-page
   ms.collection: collection
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: b2fa1520bf73dcd1608c0f3494f4ccc1a3b13be2
-  ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98695659"
 highlightedContent:
   items:
-  - title: Azure Media Services v3 について
-    itemType: overview
-    url: ./latest/media-services-overview.md
-  - title: Azure Media Services v3 の概念
-    itemType: concept
-    url: ./latest/concepts-overview.md
-  - title: Azure Media Services Video Indexer について
-    itemType: overview
-    url: ./video-indexer/video-indexer-overview.md
-  - title: Media Services v3 プリセットと Video Indexer の比較
-    itemType: concept
-    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
-  - title: Live Video Analytics on IoT Edge (プレビュー)
-    itemType: overview
-    url: ./live-video-analytics-edge/overview.md
-  - title: Azure Media Player
-    itemType: overview
-    url: ./azure-media-player/azure-media-player-overview.md
-  - title: Azure Media Services v2 について (レガシ)
-    itemType: overview
-    url: ./previous/media-services-overview.md
-  - title: Media Services v2 を v3 に移行する
-    itemType: concept
-    url: ./latest/migrate-v-2-v-3-migration-introduction.md
+    - title: Azure Media Services v3 について
+      itemType: overview
+      url: ./latest/media-services-overview.md
+    - title: Azure Media Services v3 の概念
+      itemType: concept
+      url: ./latest/concepts-overview.md
+    - title: Azure Media Services Video Indexer について
+      itemType: overview
+      url: ./video-indexer/video-indexer-overview.md
+    - title: Media Services v3 プリセットと Video Indexer の比較
+      itemType: concept
+      url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+    - title: Live Video Analytics on IoT Edge (プレビュー)
+      itemType: overview
+      url: ./live-video-analytics-edge/overview.md
+    - title: Azure Media Player
+      itemType: overview
+      url: ./azure-media-player/azure-media-player-overview.md
+    - title: Azure Media Services v2 について (レガシ)
+      itemType: overview
+      url: ./previous/media-services-overview.md
+    - title: Media Services v2 を v3 に移行する
+      itemType: concept
+      url: ./latest/migrate-v-2-v-3-migration-introduction.md
 conceptualContent:
   items:
-  - title: Media Services v3 API を使用した開発
-    links:
-    - url: ./latest/media-services-apis-overview.md
-      itemType: concept
-      text: Media Services v3 を使用した開発
-    - url: /samples/browse/?products=azure-media-services
-      itemType: sample
-      text: コード サンプル
-    - url: ./latest/release-notes.md
-      itemType: concept
-      text: Media Services v3 の最新情報
-  - title: ライブ ストリーム配信
-    links:
-    - url: ./latest/live-streaming-overview.md
-      itemType: concept
-      text: ライブ ストリーミング
-    - url: ./latest/recommended-on-premises-live-encoders.md
-      itemType: concept
-      text: おすすめのライブ ストリーミング エンコーダー
-    - url: ./latest/stream-live-tutorial-with-api.md
-      itemType: tutorial
-      text: ライブ ストリーム配信
-  - title: オンデマンドでのストリーム配信
-    links:
-    - url: ./latest/assets-concept.md
-      itemType: concept
-      text: アップロード
-    - url: ./latest/encoding-concept.md
-      itemType: concept
-      text: エンコード
-    - url: ./latest/stream-files-tutorial-with-rest.md
-      itemType: tutorial
-      text: リモート ファイルのエンコードとストリーム配信
-    - url: ./latest/stream-files-tutorial-with-api.md
-      itemType: tutorial
-      text: アップロードされたファイルのエンコードとストリーム配信
-  - title: コンテンツの暗号化
-    links:
-    - url: ./latest/content-protection-overview.md
-      itemType: concept
-      text: 保護
-    - url: ./latest/protect-with-aes128.md
-      itemType: tutorial
-      text: AES-128 を使用した動的な暗号化
-    - url: ./latest/protect-with-drm.md
-      itemType: tutorial
-      text: DRM を使用した動的な暗号化
-  - title: コンテンツの分析
-    links:
-    - url: ./latest/analyzing-video-audio-files-concept.md
-      itemType: concept
-      text: メディア分析
-    - url: ./latest/analyze-videos-tutorial-with-api.md
-      itemType: tutorial
-      text: ビデオを分析する
-  - title: Media Services の仕様について
-    links:
-    - url: media-services-specifications-live-timed-metadata.md
-      itemType: concept
-      text: ライブ ストリーミングでの時間指定メタデータ (RTMP および Smooth Streaming)
-    - url: media-services-specifications-ms-sstr-amendment-hevc.md
-      itemType: concept
-      text: HEVC のための Smooth Streaming プロトコル (MS-SSTR) の変更
-    - url: media-services-fmp4-live-ingest-overview.md
-      itemType: concept
-      text: Smooth Streaming 取り込みプロトコル
-  - title: Live Video Analytics on IoT Edge (プレビュー)
-    links:
-    - url: ./live-video-analytics-edge/overview.md
-      itemType: overview
-      text: 概要
-    - url: ./live-video-analytics-edge/use-your-model-quickstart.md
-      itemType: quickstart
-      text: ご自分のモデルを使用して Live Video Analytics を実行する
+    - title: Media Services v3 API を使用した開発
+      links:
+        - url: ./latest/media-services-apis-overview.md
+          itemType: concept
+          text: Media Services v3 を使用した開発
+        - url: /samples/browse/?products=azure-media-services
+          itemType: sample
+          text: コード サンプル
+        - url: ./latest/release-notes.md
+          itemType: concept
+          text: Media Services v3 の最新情報
+    - title: ライブ ストリーム配信
+      links:
+        - url: ./latest/stream-live-streaming-concept.md
+          itemType: concept
+          text: ライブ ストリーミング
+        - url: ./latest/encode-recommended-on-premises-live-encoders.md
+          itemType: concept
+          text: おすすめのライブ ストリーミング エンコーダー
+        - url: ./latest/stream-live-tutorial-with-api.md
+          itemType: tutorial
+          text: ライブ ストリーム配信
+    - title: オンデマンドでのストリーム配信
+      links:
+        - url: ./latest/assets-concept.md
+          itemType: concept
+          text: アップロード
+        - url: ./latest/encode-concept.md
+          itemType: concept
+          text: エンコード
+        - url: ./latest/stream-files-tutorial-with-rest.md
+          itemType: tutorial
+          text: リモート ファイルのエンコードとストリーム配信
+        - url: ./latest/stream-files-tutorial-with-api.md
+          itemType: tutorial
+          text: アップロードされたファイルのエンコードとストリーム配信
+    - title: コンテンツの暗号化
+      links:
+        - url: ./latest/drm-content-protection-concept.md
+          itemType: concept
+          text: 保護
+        - url: ./latest/drm-playready-license-template-concept.md
+          itemType: tutorial
+          text: AES-128 を使用した動的な暗号化
+        - url: ./latest/drm-protect-with-drm-tutorial.md
+          itemType: tutorial
+          text: DRM を使用した動的な暗号化
+    - title: コンテンツの分析
+      links:
+        - url: ./latest/analyze-video-audio-files-concept.md
+          itemType: concept
+          text: メディア分析
+        - url: ./latest/analyze-videos-tutorial.md
+          itemType: tutorial
+          text: ビデオを分析する
+        - url: ./latest/analyze-face-redaction-concept.md
+          itemType: concept
+          text: 顔の検出と編集
+    - title: Media Services の仕様について
+      links:
+        - url: media-services-specifications-live-timed-metadata.md
+          itemType: concept
+          text: ライブ ストリーミングでの時間指定メタデータ (RTMP および Smooth Streaming)
+        - url: media-services-specifications-ms-sstr-amendment-hevc.md
+          itemType: concept
+          text: HEVC のための Smooth Streaming プロトコル (MS-SSTR) の変更
+        - url: media-services-fmp4-live-ingest-overview.md
+          itemType: concept
+          text: Smooth Streaming 取り込みプロトコル
+    - title: Live Video Analytics on IoT Edge (プレビュー)
+      links:
+        - url: ./live-video-analytics-edge/overview.md
+          itemType: overview
+          text: 概要
+        - url: ./live-video-analytics-edge/use-your-model-quickstart.md
+          itemType: quickstart
+          text: ご自分のモデルを使用して Live Video Analytics を実行する
 additionalContent:
   sections:
-  - items:
-    - title: Azure Storage
-      summary: ブロック BLOB とコンテナーについて学習する
-      url: ../storage/index.yml
-    - title: CDN
-      summary: Azure CDN の機能を使用すると、Akamai および Verizon のサービスを利用してコンテンツを大規模にストリーム配信したり、複数のコンテンツ配信ネットワークに負荷を分散したりできます
-      url: ../cdn/index.yml
-    - title: Event Grid
-      summary: Azure Event Grid を使用して関連するイベントに対応する方法について説明します
-      url: ../event-grid/index.yml
+    - items:
+        - title: Azure Storage
+          summary: ブロック BLOB とコンテナーについて学習する
+          url: ../storage/index.yml
+        - title: CDN
+          summary: Azure CDN の機能を使用すると、Akamai および Verizon のサービスを利用してコンテンツを大規模にストリーム配信したり、複数のコンテンツ配信ネットワークに負荷を分散したりできます
+          url: ../cdn/index.yml
+        - title: Event Grid
+          summary: Azure Event Grid を使用して関連するイベントに対応する方法について説明します
+          url: ../event-grid/index.yml

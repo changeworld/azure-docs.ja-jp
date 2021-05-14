@@ -72,7 +72,7 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: Security
+            - name: セキュリティ
               items:
                 - name: セキュリティ ベースライン
                   href: /security/benchmark/azure/baselines/databox-security-baseline?context=/azure/databox/context/context
@@ -116,8 +116,10 @@
                   href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: トラブルシューティング
               items:
-                - name: Data Box の問題
+                - name: Data Box のコピーの問題
                   href: data-box-troubleshoot.md
+                - name: Data Box のアップロードの問題
+                  href: data-box-troubleshoot-data-upload.md
                 - name: Data Box BLOB ストレージの問題
                   href: data-box-troubleshoot-rest.md
     - name: Data Box Disk
@@ -168,7 +170,7 @@
                   href: data-box-disk-troubleshoot-data-copy.md
                 - name: 検証の問題
                   href: data-box-disk-troubleshoot.md
-                - name: アップロードの問題
+                - name: アップロード エラーを確認する
                   href: data-box-disk-troubleshoot-upload.md
             - name: サポートに問い合わせる
               href: data-box-disk-contact-microsoft-support.md

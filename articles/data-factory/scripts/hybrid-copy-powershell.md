@@ -3,16 +3,16 @@ title: PowerShell を使用してオンプレミスから Azure にデータを�
 description: この PowerShell スクリプトは、SQL Server データベースから別の Azure Blob Storage にデータをコピーします。
 ms.service: data-factory
 ms.topic: article
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 34c5497a8b059260dfe60e8015e62c0f1511f021
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0158abc5b0397a55bc3cf30f0a2444b373b772e2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373387"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486361"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>PowerShell を使用して、SQL Server から Azure にデータをコピーするための Data Factory パイプラインを作成する
 
@@ -74,7 +74,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | Notes |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | データ ファクトリを作成します。 |

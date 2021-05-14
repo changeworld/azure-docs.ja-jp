@@ -1,20 +1,20 @@
 ---
 title: Data Factory 系列データを Azure Purview にプッシュする
 description: Data Factory 系列データを Azure Purview にプッシュする方法について説明します
-ms.author: lle
-author: lrtoyou1223
+ms.author: jingwang
+author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 3f2297ae619145ec19b53ba79d70b7c085cbcaab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1b6f8856d7cff88abd59661d06422cdb0fbe271
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361453"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481032"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Data Factory 系列データを Azure Purview にプッシュする (プレビュー)
 

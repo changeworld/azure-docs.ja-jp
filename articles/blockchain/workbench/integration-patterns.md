@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview のスマート コントラク�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90f5f4d55519f912b6cbd586190576bfd88fa295
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96015504"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737764"
 ---
 # <a name="smart-contract-integration-patterns"></a>スマート コントラクトの統合パターン
 
@@ -153,8 +153,6 @@ Azure Blockchain Workbench REST API によって、分散型台帳に対する�
 -   メッセージの内容はパッケージ化され、スマート コントラクトの特定の機能に送信されます。 この配信は、外部システムに関連付けられたユーザーに代わって実行されます。
 
 -   機能が実行され、通常は状態が変更されます。 状態の変化によって、スマート コントラクトに反映されたビジネス ワークフローが先に進み、他の機能を適切に実行できるようになります。
-
-### 
 
 ### <a name="delivery-of-a-message-in-a-format-unknown-to-azure-blockchain-workbench"></a>Azure Blockchain Workbench への未知の形式でのメッセージ配信
 

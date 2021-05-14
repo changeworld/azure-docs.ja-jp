@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用してファイル システムをコピー元またはコピー先としてデータをコピーする
 description: Azure Data Factory を使用して、ファイル システムからサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアからファイル システムにデータをコピーしたりする方法を説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.author: jingwang
-ms.openlocfilehash: c49b543b13dddf4c4ba7e36196795c6a0d638ae2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: jianleishen
+ms.openlocfilehash: 16be6dee6a1afa8808220790dd4cb7bd40cf50cc
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731957"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109488683"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してファイル システムをコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -41,11 +41,11 @@ ms.locfileid: "105731957"
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、ファイル システムに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -98,7 +98,7 @@ ms.locfileid: "105731957"
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 ファイル システムでは、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -140,7 +140,7 @@ ms.locfileid: "105731957"
 
 ### <a name="file-system-as-source"></a>ソースとしてのファイル システム
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 ファイル システムでは、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -205,7 +205,7 @@ ms.locfileid: "105731957"
 
 ### <a name="file-system-as-sink"></a>シンクとしてのファイル システム
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 ファイル システムでは、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: e32bf95ef52fdd081eeaa476f44bf5dab99657d6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7a2af7a050ec0203c0be6f8919309d0c849e7214
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452120"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752231"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -72,8 +72,8 @@ Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 StringToSign = VERB + "\n" +
                   Content-Length + "\n" +
-               Content-Type + "\n" +
-                  x-ms-date + "\n" +
+                  Content-Type + "\n" +
+                  "x-ms-date:" + x-ms-date + "\n" +
                   "/api/logs";
 ```
 

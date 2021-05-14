@@ -27,6 +27,8 @@
         - name: DMS を使用した最小限のダウンタイムでの移行
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+        - name: Oracle からの移行
+          href: howto-migrate-from-oracle.md
     - name: バージョン管理ポリシー
       href: concepts-version-policy.md
       displayName: 'version, postgresql'
@@ -91,6 +93,9 @@
             - name: Go
               href: connect-go.md
               displayName: connect with go
+            - name: Rust
+              href: connect-rust.md
+              displayName: connect with rust
     - name: チュートリアル
       items:
         - name: データベースの設計
@@ -124,14 +129,14 @@
           href: concepts-supported-versions.md
         - name: PostgreSQL 拡張機能
           href: concepts-extensions.md
+        - name: 制限
+          href: concepts-limits.md
         - name: 価格レベルについて
           items:
             - name: 価格レベル
               href: concepts-pricing-tiers.md
             - name: 予約容量の前払い
               href: concept-reserved-pricing.md
-            - name: 制限
-              href: concepts-limits.md
         - name: セキュリティ
           items:
             - name: セキュリティの概要
@@ -159,7 +164,7 @@
               displayName: 'regulatory, compliance, standards, domains'
               href: ./security-controls-policy.md
             - name: セキュリティ ベースライン
-              href: security-baseline.md
+              href: /security/benchmark/azure/baselines/postgresql-security-baseline?toc=/azure/postgresql/TOC.json?toc=/azure/postgresql/TOC.json
         - name: ネットワーク
           items:
             - name: ファイアウォール規則
@@ -210,6 +215,8 @@
             - name: パフォーマンスに関する推奨事項
               href: concepts-performance-recommendations.md
               displayName: 'query store, performance, optimize, recommendations'
+            - name: Azure Advisor の推奨事項
+              href: concepts-azure-advisor-recommendations.md
         - name: アプリケーション開発
           items:
             - name: ベスト プラクティス
@@ -410,6 +417,8 @@
       href: flexible-server/index.yml
     - name: 概要
       href: flexible-server/overview.md
+    - name: リリース ノート
+      href: flexible-server/release-notes.md
     - name: クイックスタート
       expanded: true
       items:
@@ -461,6 +470,8 @@
           href: flexible-server/concepts-extensions.md
         - name: 予定メンテナンス
           href: flexible-server/concepts-maintenance.md
+        - name: 接続プール (PgBouncer)
+          href: flexible-server/concepts-pgbouncer.md
         - name: ビジネス継続性
           items:
             - name: ビジネス継続性の概要
@@ -479,6 +490,16 @@
               displayName: 'monitor, server logs'
             - name: 監査ログ
               href: flexible-server/concepts-audit.md
+            - name: インテリジェント パフォーマンス
+              items:
+                - name: クエリ ストアの概要
+                  href: flexible-server/concepts-query-store.md
+                  displayName: 'performance, optimize, query store'
+                - name: クエリ ストアの使用シナリオ
+                  href: flexible-server/concepts-query-store-scenarios.md
+                  displayName: 'query store, performance, optimize'
+                - name: クエリ ストアのベスト プラクティス
+                  href: flexible-server/concepts-query-store-best-practices.md
         - name: レプリケーション
           href: flexible-server/concepts-logical.md
           displayName: logical decoding
@@ -556,11 +577,15 @@
       items:
         - name: Hyperscale (Citus) とは
           href: hyperscale-overview.md
+        - name: プレビュー段階の機能
+          href: hyperscale-preview-features.md
     - name: クイックスタート
       items:
         - name: サーバー グループを作成する
           items:
-            - name: Azure portal
+            - name: Basic レベル (プレビュー)
+              href: quickstart-create-hyperscale-basic-tier.md
+            - name: Standard レベル
               href: quickstart-create-hyperscale-portal.md
               displayName: 'portal, create hyperscale'
     - name: チュートリアル
@@ -579,6 +604,8 @@
           displayName: 'hyperscale, tutorial, real-time'
     - name: 概念
       items:
+        - name: Basic レベル
+          href: concepts-hyperscale-tiers.md
         - name: 分散データ
           items:
             - name: ノードとテーブル
@@ -599,7 +626,9 @@
               href: concepts-hyperscale-ssl-connection-security.md
               displayName: 'hyperscale, ssl'
             - name: セキュリティ ベースライン
-              href: postgresql-hyperscale-security-baseline.md
+              href: /security/benchmark/azure/baselines/postgresql-hyperscale-security-baseline?toc=/azure/postgresql/TOC.json?toc=/azure/postgresql/TOC.json
+        - name: 予定メンテナンス
+          href: concepts-hyperscale-maintenance.md
         - name: ビジネス継続性
           items:
             - name: バックアップと復元
@@ -607,26 +636,26 @@
               displayName: 'backup, restore, outage, hyperscale'
             - name: 高可用性
               href: concepts-hyperscale-high-availability.md
+        - name: レプリケーション
+          href: concepts-hyperscale-read-replicas.md
         - name: 監視と調整
           items:
             - name: 監視と調整
               href: concepts-hyperscale-monitoring.md
             - name: 監査ログ
               href: concepts-hyperscale-audit.md
+        - name: カラム型ストレージ
+          href: concepts-hyperscale-columnar.md
         - name: 構成オプション
           href: concepts-hyperscale-configuration-options.md
+        - name: 制限と制限事項
+          href: concepts-hyperscale-limits.md
         - name: 予約容量の前払い
           href: concepts-hyperscale-reserved-pricing.md
+        - name: PostgreSQL のバージョン
+          href: concepts-hyperscale-versions.md
         - name: PostgreSQL 拡張機能
           href: concepts-hyperscale-extensions.md
-    - name: API リファレンス
-      items:
-        - name: SQL API 関数
-          href: reference-hyperscale-functions.md
-        - name: サーバー パラメーター
-          href: reference-hyperscale-parameters.md
-        - name: システム テーブル
-          href: reference-hyperscale-metadata.md
     - name: 操作方法ガイド
       items:
         - name: サーバー グループのサイズ
@@ -652,6 +681,15 @@
               href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
+        - name: レプリケーション
+          items:
+            - name: Azure portal
+              href: howto-hyperscale-read-replicas-portal.md
+              displayName: 'replication, read replica'
+        - name: 予定メンテナンス
+          items:
+            - name: Azure portal
+              href: howto-hyperscale-maintenance.md
         - name: モニター
           items:
             - name: メトリックに基づいたアラートの作成
@@ -660,6 +698,12 @@
             - name: Access データベース ログ
               href: howto-hyperscale-logging.md
               displayName: 'log, hyperscale'
+        - name: サーバー グループの復元
+          items:
+            - name: Azure portal
+              href: howto-hyperscale-restore-portal.md
+        - name: メジャー バージョンのアップグレード
+          href: howto-hyperscale-upgrade.md
         - name: トラブルシューティング
           items:
             - name: 接続エラーのトラブルシューティング
@@ -667,6 +711,14 @@
               displayName: 'connection errors, hyperscale'
             - name: 有用な診断クエリ
               href: howto-hyperscale-useful-diagnostic-queries.md
+    - name: API リファレンス
+      items:
+        - name: SQL API 関数
+          href: reference-hyperscale-functions.md
+        - name: サーバー パラメーター
+          href: reference-hyperscale-parameters.md
+        - name: システム テーブル
+          href: reference-hyperscale-metadata.md
 - name: リファレンス
   items:
     - name: Azure CLI

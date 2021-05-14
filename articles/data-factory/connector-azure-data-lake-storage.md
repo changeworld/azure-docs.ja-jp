@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen2 でのデータのコピーと変換
 description: Azure Data Factory を使用して、Azure Data Lake Storage Gen2 との間でデータをコピーしたり、Azure Data Lake Storage Gen2 でデータを変換したりする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 7a501a86f979bb508052c8957627ebfa7950fd63
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a4dc1f71dd58280bacda1f90ba73b48cb8c8367c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597594"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480421"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -47,7 +47,7 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) は、ビッグ データ分析専用�
 >[!TIP]
 >Data Lake Storage Gen2 コネクタの使用方法のチュートリアルについては、[Azure Data Lake Storage Gen2 へのデータの読み込み](load-azure-data-lake-storage-gen2.md)に関する記事をご覧ください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Data Lake Storage Gen2 に固有の Data Factory エンティティの定義に使用されるプロパティについて説明します。
 
@@ -235,7 +235,7 @@ Azure リソースのマネージド ID 認証を使用するには、次の手�
 
 データセットの定義に使用できるセクションとプロパティの一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Data Lake Storage Gen2 では、形式ベースのデータセットの `location` 設定で次のプロパティがサポートされています。
 
@@ -279,7 +279,7 @@ Data Lake Storage Gen2 では、形式ベースのデータセットの `locatio
 
 ### <a name="azure-data-lake-storage-gen2-as-a-source-type"></a>ソースの種類としての Azure Data Lake Storage Gen2
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 ADLS Gen2 からデータをコピーするには、いくつかのオプションがあります。
 
@@ -349,7 +349,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー ソースの `storeS
 
 ### <a name="azure-data-lake-storage-gen2-as-a-sink-type"></a>シンクの種類としての Azure Data Lake Storage Gen2
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeSettings` 設定で次のプロパティがサポートされます。
 

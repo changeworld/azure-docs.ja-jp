@@ -4,16 +4,16 @@ description: 複数の Linux VM 間で Azure マネージド ディスクを共�
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 05/10/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 00c8a8383f1c2627b636b19cbd6f3418e3bb2e8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa7e52a3b3f3fbee4ee14101ca650531f381cf3c
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686482"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738349"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
 
