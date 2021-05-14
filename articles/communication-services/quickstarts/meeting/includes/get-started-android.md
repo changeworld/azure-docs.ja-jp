@@ -6,12 +6,12 @@ ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 331d8eb6ed74880a855934fad4d3e1afc9b29109
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cbf56f6567c3c7857afcd71ed9f6dc67be48f9d1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313377"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108792960"
 ---
 このクイックスタートでは、Android 用の Azure Communication Services Teams Embed ライブラリを使用して Microsoft Teams 会議に参加する方法について説明します。
 
@@ -76,7 +76,7 @@ dependencies {
 
 ### <a name="install-the-teams-embed-package"></a>Teams Embed パッケージをインストールする
 
-[`MicrosoftTeamsSDK` パッケージ](https://github.com/Azure/communication-teams-embed/releases)をダウンロードします。
+[`MicrosoftTeamsSDK` パッケージ](https://github.com/Azure/communication)をダウンロードします。
 
 次に、`MicrosoftTeamsSDK` フォルダーをプロジェクトの app フォルダーに解凍します。 例: `TeamsEmbedAndroidGettingStarted/app/MicrosoftTeamsSDK`.
 

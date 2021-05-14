@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: 標準に合わせた Azure Active Directory の構成に関するドキュメント
+summary: Azure と Azure Active Directory を使用すると、これらのコンプライアンス認定を活用し、政府と業界の標準を満たすように環境を構成できます。
+metadata:
+  title: 標準に合わせた Azure Active Directory の構成に関するドキュメント
+  description: 政府と業界の標準を満たすための Azure と Azure Active Directory の構成について説明します。
+  manager: mtillman
+  ms.author: baselden
+  ms.collection: na
+  ms.date: 04/26/2021
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 765473f21c1572bd9b25fc7fca67e9eb0508d63d
+  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 04/30/2021
+  ms.locfileid: "108293577"
+landingContent:
+- title: 標準の概要
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ID 標準に合わせて構成する
+      url: standards-overview.md
+    - text: NIST AAL の概要
+      url: nist-overview.md
+    - text: FedRAMP High インパクトの概要
+      url: configure-azure-active-directory-for-fedramp-high-impact.md
+- title: NIST AAL を構成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: NIST AAL 1 を達成する
+      url: nist-authenticator-assurance-level-1.md
+    - text: NIST AAL 2 を達成する
+      url: nist-authenticator-assurance-level-2.md
+    - text: NIST AAL 3 を達成する
+      url: nist-authenticator-assurance-level-3.md
+- title: FedRAMP コントロールを構成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アクセス制御の構成
+      url: fedramp-access-controls.md
+    - text: ID および認証のコントロールを構成する
+      url: fedramp-identification-and-authentication-controls.md
+    - text: 追加のコントロールを構成する
+      url: fedramp-other-controls.md

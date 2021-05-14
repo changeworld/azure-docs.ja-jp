@@ -4,12 +4,12 @@ description: Azure Virtual Machines などの Azure サービスの推奨ポリ�
 ms.date: 03/31/2021
 ms.topic: conceptual
 ms.custom: generated
-ms.openlocfilehash: f84e22e092bba202187d74087e2e3660bcbda94b
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: a505a94e580b24c19a96ea86b1237870e49a6442
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326113"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752617"
 ---
 # <a name="recommended-policies-for-azure-services"></a>Azure サービスの推奨ポリシー
 

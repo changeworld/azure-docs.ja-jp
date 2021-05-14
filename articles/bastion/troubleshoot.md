@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf6cde94374133e10b077ac799be0b85ae02bcb7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98133992"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773397"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -24,7 +24,7 @@ ms.locfileid: "98133992"
 
 **A:** NSG を作成して *AzureBastionSubnet* に適用する場合は、NSG に必要な規則を追加済みであることを確認してください。 必要な規則の一覧については、「[NSG アクセスと Azure Bastion を使用する](./bastion-nsg.md)」を参照してください。 これらの規則を追加しないと、NSG の作成/更新は失敗します。
 
-NSG 規則の例については、[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)を参照してください。
+NSG 規則の例については、[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azure-bastion-nsg/)を参照してください。
 詳細については、[Azure Bastion の NSG のガイダンス](bastion-nsg.md)に関する記事を参照してください。
 
 ## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure Bastion に SSH キーを使用できません

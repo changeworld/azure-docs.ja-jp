@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: a6335d90625f860984ccbfd224955a97a32b731f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 44fa4fb953399622d75f0239d3e7d626557629f7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785219"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744697"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -81,11 +81,11 @@ Azure ファイル共有の [Azure AD 認証](storage-files-identity-auth-active
 | source | ターゲット: </br>ハイブリッド デプロイ | ターゲット: </br>クラウドのみのデプロイ |
 |:---|:--|:--|
 | | ツールの組み合わせ:| ツールの組み合わせ: |
-| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li><li>Azure File Sync の使用</li></ul> |
-| Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| Microsoft Azure StorSimple クラウド アプライアンス 8100 または StorSimple クラウド アプライアンス 8600 | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> | |
+| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li><li>Azure File Sync の使用</li></ul> |
+| Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
+| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
+| Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[RoboCopy を使用して、マウントされた Azure ファイル共有へ](storage-files-migration-robocopy.md)</li></ul> |
+| Microsoft Azure StorSimple クラウド アプライアンス 8100 または StorSimple クラウド アプライアンス 8600 | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> |
 | StorSimple クラウド アプライアンス 1200 | <ul><li>[Azure File Sync の使用](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>移行ツールボックス

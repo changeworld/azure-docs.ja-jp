@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/22/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 18b23dc8b7ed8b074ac3afbc7d44e5d132a2ee58
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 80ea49436e9bfec5203f3a0493d441cfdbd1dbde
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890080"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755119"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 
@@ -102,7 +102,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 1. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install) をインストールします。
 1. Azure Machine Learning ワークスペースを使用するようにローカル環境を構成するには、[ワークスペース構成ファイルを作成する](#workspace)か、既存のものを使用します。
 
-ローカル環境をセットアップしたので、Azure Machine Learning の操作を開始する準備ができました。 使用を開始するには、[Azure Machine Learning Python のファースト ステップ ガイド](tutorial-1st-experiment-sdk-setup-local.md) を参照してください。
+ローカル環境をセットアップしたので、Azure Machine Learning の操作を開始する準備ができました。 使用を開始するには、[Azure Machine Learning Python のファースト ステップ ガイド](tutorial-1st-experiment-hello-world.md) を参照してください。
 
 ### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
 
@@ -147,7 +147,7 @@ Azure Machine Learning の[コンピューティング インスタンス](conce
 
 コンピューティング インスタンスでインストールまたは構成するものはありません。  
 
-Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースの設定に関するチュートリアル](tutorial-1st-experiment-sdk-setup.md)を参照)。
+Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースの設定に関するチュートリアル](quickstart-create-resources.md)を参照)。
 
 パッケージのインストール方法など、コンピューティング インスタンスの詳細については、「[Azure Machine Learning コンピューティング インスタンスを作成して管理する](how-to-create-manage-compute-instance.md)」を参照してください。
 

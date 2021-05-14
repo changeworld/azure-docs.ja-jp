@@ -3,12 +3,12 @@ title: パターン:ポリシー定義を使用してリソースをデプロイ
 description: この Azure Policy パターンでは、deployIfNotExists ポリシー定義を使用してリソースをデプロイする方法の例を示します。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: 1dda3d5f2d4bef57919931ec3c1635310723e0c8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 2220a0c66cecac3dc9dfd342fe6b802df41c1f10
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093402"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752456"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy パターン: リソースをデプロイする
 
@@ -43,7 +43,7 @@ ms.locfileid: "106093402"
 - **template** - このプロパティにはテンプレート自体が含まれます。 この例では、**location** テンプレート パラメーターにより、新しい Network Watcher リソースの場所が設定されます。
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="30-44":::
-  
+
 - **parameters** - このプロパティでは、**template** に提供されるパラメーターを定義します。 パラメーター名は **template** で定義されているものと一致している必要があります。 この例では、パラメーターには、一致するように **location** という名前が付けられています。 **location** の値は、再び `field()` 関数を使用して、評価対象のリソースの値を取得します。これは **policyRule.if** ブロック内の仮想ネットワークに当たります。
 
   :::code language="json" source="~/policy-templates/patterns/pattern-deploy-resources.json" range="45-49":::

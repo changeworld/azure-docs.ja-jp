@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen2 で .NET を使用して ACL を設定する
+title: Azure Data Lake Storage Gen2 で .NET を使用して ACL を管理する
 description: .NET を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでアクセス制御リスト (ACL) を管理します。
 author: normesta
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 626e89d8d758d5fe31ef6c913076a9154274bb61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 156af8eb034f31b9dda11ee39b9030b6d016daff
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653703"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632585"
 ---
 # <a name="use-net-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で .NET を使用して ACL を管理する
 

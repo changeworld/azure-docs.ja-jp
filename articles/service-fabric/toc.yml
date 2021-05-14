@@ -138,7 +138,7 @@
       href: service-fabric-application-scenarios.md
     - name: Architecture
       href: service-fabric-architecture.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -519,7 +519,10 @@
                 - name: クラスター構成のアップグレード
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: クラスター ノードへのパッチの適用 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
+                  href: how-to-patch-cluster-nodes-windows.md
+                  items:
+                    - name: パッチ オーケストレーション アプリケーション (POA) の使用
+                      href: service-fabric-patch-orchestration-application.md
                 - name: ディスク暗号化の有効化 (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: ディスク暗号化の有効化 (Linux)
@@ -561,7 +564,7 @@
                 - name: アクセス制御の設定
                   href: service-fabric-cluster-security-roles.md
                 - name: クラスター ノードへのパッチの適用 (Windows)
-                  href: service-fabric-patch-orchestration-application.md
+                  href: how-to-patch-cluster-nodes-windows.md
         - name: Service Fabric Explorer を使用した視覚化
           href: service-fabric-visualizing-your-cluster.md
         - name: セキュリティ保護されたクラスターに接続する

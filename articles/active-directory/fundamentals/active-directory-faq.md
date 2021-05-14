@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a83b94a94831e96dc1851f2ded5f911e7d6cc5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 74735e80326e1d05e3f8820fc2b94c8fe930fcb3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288906"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784235"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory についてよくあるご質問
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -119,7 +119,8 @@ Azure AD 有料サービス (Enterprise Mobility + セキュリティ など) �
 
 **A:** はい。パスワード ライトバックが有効な状態であれば、管理者によって実行されるパスワード操作は、オンプレミスの環境に書き戻されます。  
 
-<a name="for-more-answers-to-password-related-questions-see-password-management-frequently-asked-questions"></a>パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](../authentication/active-directory-passwords-faq.yml)」を参照してください。
+パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](../authentication/active-directory-passwords-faq.yml)」を参照してください。
+
 ---
 **Q:パスワードを変更しようとしているときに既存の Microsoft 365/Azure AD パスワードを忘れた場合は、どうすればよいですか?**
 
@@ -132,8 +133,8 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 - [Azure Portal でアカウントをリセットする](active-directory-users-reset-password-azure-portal.md)
 - [PowerShell の使用](/powershell/module/msonline/set-msoluserpassword)
 
-
 ---
+
 ## <a name="security"></a>Security
 **Q:何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか?**
 

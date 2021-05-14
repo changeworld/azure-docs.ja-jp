@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/23/2021
 ms.author: rohink
-ms.openlocfilehash: 962f1f98ad610c953368b351c1859e8e738340f9
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 6236c92037c0a5706e99eb2ef25c8453a4b91c2d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949382"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745237"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS エイリアス レコードの概要
 
@@ -81,4 +81,4 @@ Traffic Manager プロファイルの場合と同様に、エイリアス レコ
 
 - [チュートリアル:Azure パブリック IP アドレスを参照するエイリアス レコードを構成する](tutorial-alias-pip.md)
 - [チュートリアル:Traffic Manager で頂点のドメイン名をサポートするエイリアス レコードを構成する](tutorial-alias-tm.md)
-- [DNS に関する FAQ](./dns-faq.md#alias-records)
+- [DNS に関する FAQ](./dns-faq.yml)

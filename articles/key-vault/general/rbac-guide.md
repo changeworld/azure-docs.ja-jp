@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f565d0d6cbb3ccd7e380334de1d5b4cc78f15502
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e2a8e8f2abeb58cdfce53cc4578d15ace1fbff5f
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887290"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634601"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
@@ -41,7 +41,7 @@ Azure RBAC モデルには、さまざまなスコープ レベル (管理グル
 
 Azure Key Vault 管理ガイドラインの詳細については、以下を参照してください。
 
-- [Azure Key Vault セキュリティ機能](security-features.md)
+- [Azure Key Vault のベスト プラクティス](best-practices.md)
 - [Azure Key Vault サービスの制限](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Key Vault データ プレーン操作のための Azure の組み込みロール

@@ -18,7 +18,7 @@
       href: overview-percept-security.md
     - name: 80/20 統合
       href: overview-8020-integration.md
-    - name: Percept デバイスを更新する
+    - name: デバイスの更新プログラム
       href: overview-update-experience.md
 - name: クイックスタート
   items:
@@ -44,6 +44,10 @@
       items:
         - name: LED とボタンの動作
           href: audio-button-led-behavior.md
+    - name: Security
+      items:
+        - name: ファイアウォール構成とセキュリティに関する推奨事項
+          href: concept-security-configuration.md
 - name: 操作方法ガイド
   items:
     - name: Azure Percept DK を使用したビジョン ソリューションの開発
@@ -58,14 +62,16 @@
           href: how-to-view-telemetry.md
     - name: Azure Percept DK を使用した音声ソリューションの開発
       items:
-        - name: Azure Percept Studio 内で音声アシスタントを構成する
-          href: how-to-configure-voice-assistant.md
         - name: IoT Hub 内で音声アシスタントを構成する
+          href: how-to-configure-voice-assistant.md
+        - name: Azure Percept Studio 内で音声アシスタントを構成する
           href: how-to-manage-voice-assistant.md
     - name: Azure Percept デバイスを更新する
       items:
         - name: 無線での更新を設定する
           href: how-to-set-up-over-the-air-updates.md
+        - name: 更新プログラム パッケージを特定する
+          href: how-to-select-update-package.md
         - name: Azure Percept DK を無線で更新する
           href: how-to-update-over-the-air.md
         - name: Azure Percept DK を USB 経由で更新する
@@ -78,7 +84,7 @@
           href: how-to-connect-to-percept-dk-over-serial.md
     - name: ツール
       items:
-        - name: Devtools パック インストーラー
+        - name: Dev Tools Pack Installer
           href: dev-tools-installer.md
     - name: トラブルシューティング
       items:

@@ -12,13 +12,21 @@
       href: quickstart-configure-route-server-powershell.md
     - name: Route Server の構成 - CLI
       href: quickstart-configure-route-server-cli.md
+    - name: Route Server の構成 - ARM テンプレート
+      href: quickstart-configure-template.md
   expanded: true
+- name: サンプル
+  items:
+    - name: Resource Manager テンプレート
+      href: resource-manager-template-samples.md
 - name: 概念
   items:
     - name: Route Server に関する FAQ
       href: route-server-faq.md
     - name: Azure ExpressRoute と Azure VPN のサポート
       href: expressroute-vpn-support.md
+    - name: デュアルホーム ネットワーク
+      href: about-dual-homed-network.md
 - name: 操作方法ガイド
   items:
     - name: Route Server の問題のトラブルシューティング
@@ -38,7 +46,7 @@
     - name: ネットワークのブログ
       href: 'https://azure.microsoft.com/blog/topics/networking/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/routeserver/'
+      href: 'https://azure.microsoft.com/pricing/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報

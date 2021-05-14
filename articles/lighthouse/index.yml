@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 01/26/2021
-  ms.openlocfilehash: 08c6275a9202f8d52e4e3f72f18822633cd113bc
-  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+  ms.openlocfilehash: ad51b354bde216ced0d4e163a0566a0006e1d6a4
+  ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/27/2021
-  ms.locfileid: "98881773"
+  ms.lasthandoff: 05/12/2021
+  ms.locfileid: "109785891"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:
@@ -25,8 +25,8 @@ landingContent:
       url: ./overview.md
   - linkListType: concept
     links:
-    - text: Azure の委任されたリソース管理
-      url: ./concepts/azure-delegated-resource-management.md
+    - text: アーキテクチャ
+      url: ./concepts/architecture.md
     - text: テナント間の管理エクスペリエンス
       url: ./concepts/cross-tenant-management-experience.md
 - title: はじめに
@@ -85,15 +85,11 @@ landingContent:
       url: ./how-to/manage-sentinel-workspaces.md
     - text: Azure Monitor ログを使用する
       url: ./how-to/monitor-at-scale.md
-    - text: 委任変更の監視
-      url: ./how-to/monitor-delegation-changes.md
     - text: Azure Policy をデプロイする
       url: ./how-to/policy-at-scale.md
-    - text: 修復できるポリシーをデプロイする
-      url: ./how-to/deploy-policy-remediation.md
     - text: Azure Arc を使用してハイブリッド マシンを管理する
       url: ./how-to/manage-hybrid-infrastructure-arc.md
-    - text: 移行プロジェクトの管理
+    - text: Azure Migrate プロジェクトを管理する
       url: ./how-to/migration-at-scale.md
 - title: リファレンス - SDK
   linkLists:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: db55a29e53c53e26fbb04d96ddf1864946bafbfd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a7fb228763870792765c954589b347a18c560b5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581280"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758971"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -98,10 +98,6 @@ REST API を使用して動作するサード パーティ製アプリケーシ�
 ## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage の Premium レベルでのライフサイクル管理ポリシー
 
 Premium レベルで格納されているデータは、ホット、クール、アーカイブ層間で移動することはできません。 ただし、Premium レベルのデータを別のアカウントのホット アクセス層にコピーすることはできます。
-
-## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Premium パフォーマンス BlockBlobStorage ストレージ アカウントでの Dremio のサポート
-
-Dremio は、階層型名前空間機能が有効になっている BlockBlobStorage アカウントにまだ接続していません。 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) ドライバー (Data Lake Storage Gen2 ではサポートされていません)
 

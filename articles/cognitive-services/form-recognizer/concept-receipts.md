@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/30/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8248b3ed21561340e963c848dee4430c48829ab1
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 96625959c089c46b04b13216bbb9ea4b74ef4feb
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285299"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331864"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Form Recognizer の事前構築済みレシート モデル
 
@@ -23,14 +23,14 @@ Azure Form Recognizer を使用すると、事前構築済みのレシート モ
 
 ## <a name="understanding-receipts"></a>レシートについて
 
-多くの企業と個人は、いまだにレシートから手動で抽出されたデータに依存しています。 これらのレシートからデータを自動的に抽出する処理は、複雑になる場合があります。 レシートはしわくちゃになっていたり、読み取るのが難しかったり、手書き部分があったり、低画質のスマートフォン画像が含まれていたりする場合があります。 また、レシートのテンプレートとフィールドは、市場、リージョン、マーチャントなどによって大きく変わることがあります。 データ抽出とフィールド検出におけるこうした課題によって、レシート処理は独特の問題となっています。  
+多くの企業と個人は、いまだにレシートから手動で抽出されたデータに依存しています。 これらのレシートからデータを自動的に抽出する処理は、複雑になる場合があります。 レシートはしわくちゃになっていたり、読み取るのが難しかったり、手書き部分があったり、低画質のスマートフォン画像が含まれていたりする場合があります。 また、レシートのテンプレートとフィールドは、市場、リージョン、マーチャントなどによって大きく変わることがあります。 データ抽出とフィールド検出におけるこうした課題によって、レシート処理は独特の問題となっています。
 
 レシート API は、光学式文字認識 (OCR) と、事前に構築された Microsoft のモデルを使用して、大量のレシート処理シナリオを可能にします。 レシート API を使用すると、モデルをトレーニングする必要がなくなります。 レシートの画像を Analyze Receipt API に送信すると、データが抽出されます。
 
 ![レシートの例](./media/receipts-example.jpg)
 
 
-## <a name="what-does-the-receipt-service-do"></a>レシート サービスの機能 
+## <a name="what-does-the-receipt-service-do"></a>レシート サービスの機能
 
 事前構築済みのレシート サービスでは、レシート (レストラン、小売業者、または食料品店で通常取得されるレシートの類) の内容を抽出します。
 
@@ -73,17 +73,18 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-locales"></a>サポート対象のロケール 
+## <a name="supported-locales"></a>サポート対象のロケール
 
-* **事前構築済みレシート v2.0** (GA) では、EN-US ロケールでのレシートがサポートされています
-* **事前構築済みレシート v2.1-preview.3** (パブリック プレビュー) では、次の EN レシート ロケールのサポートが追加されています。 
-  * EN-AU 
-  * EN-CA 
-  * EN-GB 
-  * EN-IN 
+* **事前構築済みレシート v2.0** (GA) では、**en-us** ロケールでのレシートがサポートされています
+* **事前構築済みレシート v2.1-preview.3** (パブリック プレビュー) では、次の英語のレシート ロケールのサポートが追加されています。
+
+* **en-au**
+* **en-ca**
+* **en-gb**
+* **en-in**
 
   > [!NOTE]
-  > 言語の入力 
+  > 言語の入力
   >
   > 事前構築済みレシート v2.1-preview.3 には、追加の英語圏市場のレシート ロケールを指定するための省略可能な要求パラメーターがあります。 オーストラリア (EN-AU)、カナダ (EN-CA)、英国 (EN-GB)、インド (EN-IN) の英語で書かれた各レシートについては、ロケールを指定して、改善された結果を得ることができます。 v2.1-preview.3 でロケールが指定されていない場合、このモデルは既定で EN-US モデルになります。
 
@@ -117,28 +118,28 @@ Form Recognizer レシート サービスを試すには、オンラインのサ
 Get Analyze Receipt Result 操作への応答は、抽出されたすべての情報が含まれるレシートの構造化表現になります。  [サンプルのレシート ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg)と、その構造化された出力である[サンプルのレシート出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/receipt-result.json)を参照してください。
 
 成功した JSON 応答の例を次に示します。
-* `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 
+* `"readResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。
 * `"documentResults"` ノードには、モデルによって検出された名刺固有の値が格納されます。 名、姓、会社名など、大切なキーと値のペアが存在する場所です。
 
 ```json
-{ 
+{
   "status":"succeeded",
   "createdDateTime":"2019-12-17T04:11:24Z",
   "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
-  "analyzeResult":{ 
+  "analyzeResult":{
     "version":"2.0.0",
-    "readResults":[ 
-      { 
+    "readResults":[
+      {
         "page":1,
         "angle":0.6893,
         "width":1688,
         "height":3000,
         "unit":"pixel",
         "language":"en",
-        "lines":[ 
-          { 
+        "lines":[
+          {
             "text":"Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               635,
               510,
               1086,
@@ -148,10 +149,10 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
               643,
               604
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"Contoso",
-                "boundingBox":[ 
+                "boundingBox":[
                   639,
                   510,
                   1087,
@@ -169,24 +170,24 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
         ]
       }
     ],
-    "documentResults":[ 
-      { 
+    "documentResults":[
+      {
         "docType":"prebuilt:receipt",
-        "pageRange":[ 
+        "pageRange":[
           1,
           1
         ],
-        "fields":{ 
-          "ReceiptType":{ 
+        "fields":{
+          "ReceiptType":{
             "type":"string",
             "valueString":"Itemized",
             "confidence":0.692
           },
-          "MerchantName":{ 
+          "MerchantName":{
             "type":"string",
             "valueString":"Contoso Contoso",
             "text":"Contoso Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               378.2,
               292.4,
               1117.7,
@@ -198,16 +199,16 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.613,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/0/words/0",
               "#/readResults/0/lines/1/words/0"
             ]
           },
-          "MerchantAddress":{ 
+          "MerchantAddress":{
             "type":"string",
             "valueString":"123 Main Street Redmond, WA 98052",
             "text":"123 Main Street Redmond, WA 98052",
-            "boundingBox":[ 
+            "boundingBox":[
               302,
               675.8,
               848.1,
@@ -219,7 +220,7 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/2/words/0",
               "#/readResults/0/lines/2/words/1",
               "#/readResults/0/lines/2/words/2",
@@ -228,11 +229,11 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
               "#/readResults/0/lines/3/words/2"
             ]
           },
-          "MerchantPhoneNumber":{ 
+          "MerchantPhoneNumber":{
             "type":"phoneNumber",
             "valuePhoneNumber":"+19876543210",
             "text":"987-654-3210",
-            "boundingBox":[ 
+            "boundingBox":[
               278,
               1004,
               656.3,
@@ -244,15 +245,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/4/words/0"
             ]
           },
-          "TransactionDate":{ 
+          "TransactionDate":{
             "type":"date",
             "valueDate":"2019-06-10",
             "text":"6/10/2019",
-            "boundingBox":[ 
+            "boundingBox":[
               265.1,
               1228.4,
               525,
@@ -264,15 +265,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/5/words/0"
             ]
           },
-          "TransactionTime":{ 
+          "TransactionTime":{
             "type":"time",
             "valueTime":"13:59:00",
             "text":"13:59",
-            "boundingBox":[ 
+            "boundingBox":[
               541,
               1248,
               677.3,
@@ -284,20 +285,20 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.977,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/5/words/1"
             ]
           },
-          "Items":{ 
+          "Items":{
             "type":"array",
-            "valueArray":[ 
-              { 
+            "valueArray":[
+              {
                 "type":"object",
-                "valueObject":{ 
-                  "Quantity":{ 
+                "valueObject":{
+                  "Quantity":{
                     "type":"number",
                     "text":"1",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       245.1,
                       1581.5,
                       300.9,
@@ -309,15 +310,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
                     ],
                     "page":1,
                     "confidence":0.92,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/7/words/0"
                     ]
                   },
-                  "Name":{ 
+                  "Name":{
                     "type":"string",
                     "valueString":"Cappuccino",
                     "text":"Cappuccino",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       322,
                       1586,
                       654.2,
@@ -329,15 +330,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
                     ],
                     "page":1,
                     "confidence":0.923,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/7/words/1"
                     ]
                   },
-                  "TotalPrice":{ 
+                  "TotalPrice":{
                     "type":"number",
                     "valueNumber":2.2,
                     "text":"$2.20",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       1107.7,
                       1584,
                       1263,
@@ -349,7 +350,7 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
                     ],
                     "page":1,
                     "confidence":0.918,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/8/words/0"
                     ]
                   }
@@ -358,11 +359,11 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
               ...
             ]
           },
-          "Subtotal":{ 
+          "Subtotal":{
             "type":"number",
             "valueNumber":11.7,
             "text":"11.70",
-            "boundingBox":[ 
+            "boundingBox":[
               1146,
               2221,
               1297.3,
@@ -374,15 +375,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.955,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/13/words/1"
             ]
           },
-          "Tax":{ 
+          "Tax":{
             "type":"number",
             "valueNumber":1.17,
             "text":"1.17",
-            "boundingBox":[ 
+            "boundingBox":[
               1190,
               2359,
               1304,
@@ -394,15 +395,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.979,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/15/words/1"
             ]
           },
-          "Tip":{ 
+          "Tip":{
             "type":"number",
             "valueNumber":1.63,
             "text":"1.63",
-            "boundingBox":[ 
+            "boundingBox":[
               1094,
               2479,
               1267.7,
@@ -414,15 +415,15 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.941,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/17/words/1"
             ]
           },
-          "Total":{ 
+          "Total":{
             "type":"number",
             "valueNumber":14.5,
             "text":"$14.50",
-            "boundingBox":[ 
+            "boundingBox":[
               1034.2,
               2617,
               1387.5,
@@ -434,7 +435,7 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
             ],
             "page":1,
             "confidence":0.985,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/19/words/0"
             ]
           }
@@ -445,23 +446,23 @@ Get Analyze Receipt Result 操作への応答は、抽出されたすべての�
 }
 ```
 
-## <a name="customer-scenarios"></a>顧客シナリオ  
+## <a name="customer-scenarios"></a>顧客シナリオ
 
 レシート API で抽出されたデータは、さまざまな作業を行うために使用できます。 次に、顧客がレシート API を使用して行った作業の例をいくつかご紹介します。
 
-### <a name="business-expense-reporting"></a>事業経費の報告  
+### <a name="business-expense-reporting"></a>事業経費の報告
 
-事業経費のファイリングでは、多くの場合、レシートの画像からデータを手動で入力することに時間を費やす必要があります。 レシート API があれば、抽出されたフィールドを使用して、このプロセスを部分的に自動化し、レシートをすばやく分析することができます。  
+事業経費のファイリングでは、多くの場合、レシートの画像からデータを手動で入力することに時間を費やす必要があります。 レシート API があれば、抽出されたフィールドを使用して、このプロセスを部分的に自動化し、レシートをすばやく分析することができます。
 
-レシート API は単純な JSON 出力であり、抽出されたフィールド値をさまざまな方法で使用できるようにします。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。  
+レシート API は単純な JSON 出力であり、抽出されたフィールド値をさまざまな方法で使用できるようにします。 社内経費アプリケーションと統合すると、経費報告書に自動的に入力できます。 このシナリオの詳細については、Acumatica 社がレシート API を活用して[経費報告を苦労の少ないプロセスにしている](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)方法に関するページをご覧ください。
 
 ### <a name="auditing-and-accounting"></a>監査と会計
 
-レシート API の出力を使用すると、経費報告および払い戻しプロセスのさまざまな時点で多数の経費について分析を行うこともできます。 手動による監査または迅速な承認のために、レシートを処理して選別することができます。  
+レシート API の出力を使用すると、経費報告および払い戻しプロセスのさまざまな時点で多数の経費について分析を行うこともできます。 手動による監査または迅速な承認のために、レシートを処理して選別することができます。
 
 また、レシートの出力はビジネスまたは個人用の一般簿記にも役立ちます。 レシート API を使用すると、未加工のレシート画像/PDF データを実行可能なデジタル出力に変換できます。
 
-### <a name="consumer-behavior"></a>消費者の行動 
+### <a name="consumer-behavior"></a>消費者の行動
 
 レシートには、消費者の行動やショッピングの傾向を分析するために使用できる有益なデータが含まれています。
 

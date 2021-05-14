@@ -93,7 +93,7 @@
 - name: 概念
   items:
     - name: Site Recovery に関する一般的な質問
-      href: site-recovery-faq.md
+      href: site-recovery-faq.yml
     - name: Azure VM のディザスター リカバリーについて
       items:
         - name: Azure から Azure へのアーキテクチャ
@@ -179,7 +179,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/site-recovery-security-baseline?toc=/azure/site-recovery/toc.json
 - name: ハウツー ガイド
   items:
     - name: Azure 間のディザスター リカバリー
@@ -200,6 +200,8 @@
           items:
             - name: Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication.md
+            - name: Policy を使用して Azure から Azure へのレプリケーションを有効にする
+              href: azure-to-azure-how-to-enable-policy.md
             - name: 暗号化された VM の Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: CMK 対応ディスクを使用する VM に対して Azure から Azure へのレプリケーションを有効にする
@@ -230,6 +232,8 @@
               href: site-recovery-manage-registration-and-protection.md
             - name: コンテナーの削除
               href: delete-vault.md
+            - name: VMM サーバー上のクリーンアップ スクリプト
+              href: unregister-vmm-server-script.md
     - name: VMware から Azure へのディザスター リカバリー
       items:
         - name: 大規模なディザスター リカバリーの設定
@@ -482,6 +486,8 @@
       href: site-recovery-runbook-automation.md
     - name: ARM テンプレート
       href: asr-arm-templates.md
+    - name: パラメーターの非推奨化 - New-AzRecoveryServicesAsrVMNicConfig コマンドレット
+      href: site-recovery-ipconfig-cmdlet-parameter-deprecation.md
 - name: 監視
   items:
     - name: 監視についてよく寄せられる質問

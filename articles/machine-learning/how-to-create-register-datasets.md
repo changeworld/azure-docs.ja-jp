@@ -5,19 +5,18 @@ description: 機械学習の実験を実行するために Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, data4ml
-ms.author: sihhu
-author: MayMSFT
-manager: cgronlun
+ms.topic: how-to
+ms.custom: contperf-fy21q1, data4ml
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: f47d610a24de2cfc8f1131f61afc8c8173a34376
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9bfe0ad6e94ea40ad5edc97e8b3259bb817df03f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786623"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788339"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 

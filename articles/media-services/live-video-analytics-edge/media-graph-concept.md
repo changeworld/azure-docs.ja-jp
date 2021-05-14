@@ -3,12 +3,12 @@ title: メディア グラフの概念 - Azure
 description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 83c51bc87321633339f75ac57b480116d450bca7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557668"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770607"
 ---
 # <a name="media-graph"></a>メディア グラフ
 
@@ -112,7 +112,8 @@ gRPC 拡張プロセッサ ノードは、デコードされたビデオ フレ�
 
 ファイル シンク ノードを使用すると、メディア (ビデオやオーディオ) データを IoT Edge デバイスのローカル ファイル システム上の場所に書き込むことができます。 メディア グラフには 1 つのファイル シンク ノードしか存在できません。また、シグナル ゲート プロセッサ ノードのダウンストリームにある必要があります。 これにより、出力ファイルの長さが、シグナル ゲート プロセッサのノード プロパティで指定された値に制限されます。 エッジ デバイスのディスク領域が不足しないようにするために、IoT Edge 上の Live Video Analytics モジュールがデータを保存するために使用できる最大サイズを設定することもできます。  
 > [!NOTE]
-ファイル シンクがいっぱいになると、IoT Edge モジュールの Live Video Analytics によって最も古いデータの削除が開始され、新しいデータで置き換えられます。
+> ファイル シンクがいっぱいになると、IoT Edge モジュールの Live Video Analytics によって最も古いデータの削除が開始され、新しいデータで置き換えられます。
+
 #### <a name="iot-hub-message-sink"></a>IoT Hub メッセージ シンク  
 
 IoT Hub メッセージ シンク ノードを使用すると IoT Edge ハブにイベントを発行できます。 その後、IoT Edge ハブは、エッジ デバイス上の他のモジュールやアプリ、またはクラウド内の IoT Hub にデータをルーティングすることができます (配置マニフェストで指定されているルートごと)。 IoT Hub メッセージ シンク ノードは、モーション検出プロセッサ ノードなどのアップストリーム プロセッサから、または HTTP 拡張プロセッサ ノードを介して外部の推論サービスからイベントを受け取ることができます。

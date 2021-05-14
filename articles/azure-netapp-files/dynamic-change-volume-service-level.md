@@ -12,19 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 21233d946ba3cb1ae2c47ccf63582ef832408635
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: d75bd3580f66d7948d28b0d9ff34e247bc51c6b5
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903436"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795026"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する
-
-> [!IMPORTANT] 
-> 現時点では、レプリケーション先のボリュームのサービス レベルの動的な変更はサポートされていません。
 
 既存のボリュームのサービス レベルは変更できます。それには、目的のボリュームで使用したい[サービス レベル](azure-netapp-files-service-levels.md)を使用中の別の容量プールに、目的のボリュームを移動します。 ボリュームのサービス レベルのインプレース変更では、データを移行する必要はありません。 ボリュームへのアクセスにも影響はありません。  
 

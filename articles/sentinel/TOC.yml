@@ -25,6 +25,8 @@
       href: tutorial-respond-threats-playbook.md
     - name: KQL クエリを作成する (Learn モジュール)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+    - name: SAP 用 Azure Sentinel ソリューションをデプロイする
+      href: sap-deploy-solution.md
 - name: 概念
   items:
     - name: エンティティを使用したデータの分類
@@ -49,8 +51,12 @@
           href: automate-responses-with-playbooks.md
     - name: UEBA を使用した高度な脅威の特定
       href: identify-threats-with-entity-behavior-analytics.md
+    - name: SOC-ML の異常を使用して脅威を検出する
+      href: soc-ml-anomalies.md
     - name: 脅威インテリジェンスの Azure Sentinel へのインポート
       href: import-threat-intelligence.md
+    - name: 脅威インテリジェンスの統合
+      href: threat-intelligence-integration.md
     - name: 独自の機械学習プラットフォームを使用する
       href: bring-your-own-ml.md
     - name: Microsoft 365 Defender と Azure Sentinel の統合
@@ -59,11 +65,17 @@
       href: watchlists.md
     - name: ワークスペースおよびテナント全体での Azure Sentinel の拡張
       href: extend-sentinel-across-workspaces-tenants.md
+    - name: Azure Sentinel ソリューション
+      items:
+        - name: Sentinel ソリューションについて
+          href: sentinel-solutions.md
+        - name: ソリューション カタログ
+          href: sentinel-solutions-catalog.md
     - name: 複数のテーブルにわたってデータを正規化する
       href: normalization.md
     - name: 長期的なログ保持のために Azure Data Explorer を使用する
       href: store-logs-in-azure-data-explorer.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json
@@ -266,6 +278,16 @@
           href: connect-azure-stack.md
         - name: データ コネクタの正常性を監視する
           href: monitor-data-connector-health.md
+    - name: ソリューションをデプロイする
+      items:
+        - name: ソリューションの検出とデプロイ
+          href: sentinel-solutions-deploy.md
+        - name: 詳細 - SAP データ コネクタをオンプレミスにデプロイする
+          href: sap-solution-deploy-alternate.md
+    - name: SOC-ML 異常規則の使用
+      href: work-with-anomaly-rules.md
+    - name: カスタム エンティティ アクティビティを作成する
+      href: customize-entity-activities.md
     - name: ユーザーとエンティティの動作分析を使用する
       items:
         - name: UEBA を有効にする
@@ -284,8 +306,12 @@
       href: surface-custom-details-in-alerts.md
     - name: アラートからのインシデントの作成
       href: create-incidents-from-alerts.md
+    - name: Microsoft Teams で共同作業する
+      href: collaborate-in-microsoft-teams.md
     - name: インシデント メトリックを使用して SOC をより適切に管理する
       href: manage-soc-with-incident-metrics.md
+    - name: 擬陽性の処理
+      href: false-positives.md
     - name: Azure Sentinel クエリとアクティビティの監査
       href: audit-sentinel-data.md
     - name: 検出
@@ -341,6 +367,14 @@
       href: cef-name-mapping.md
     - name: Microsoft 365 Defender にオンボードされない MCAS アラート
       href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+    - name: SAP ソリューションのリファレンス
+      items:
+        - name: SAP ソリューションの詳細要件
+          href: sap-solution-detailed-requirements.md
+        - name: 使用可能な SAP ログ
+          href: sap-solution-log-reference.md
+        - name: SAP ソリューションのセキュリティ コンテンツのリファレンス
+          href: sap-solution-security-content.md
 - name: リソース
   items:
     - name: 有用なリソース
