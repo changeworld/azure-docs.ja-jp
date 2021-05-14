@@ -17,7 +17,7 @@
         "/dotnet",
         "/python"
       ],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "ZonePivotGroups": "Toc",
         "Conceptual": "Content",
@@ -40,10 +40,10 @@
   "branches_to_filter": [
     "master",
     "master-sync-work",
-    "live-sxs"
+    "live"
   ],
-  "git_repository_url_open_to_public_contributors": "",
-  "git_repository_branch_open_to_public_contributors": "",
+  "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/azure-docs.ja-jp",
+  "git_repository_branch_open_to_public_contributors": "master",
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "contribution_branch_mappings": {

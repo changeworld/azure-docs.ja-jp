@@ -116,9 +116,9 @@
       },
       "brand": "azure",
       "breadcrumb_path": "/azure/bread/toc.json",
-      "feedback_github_repo": "",
-      "feedback_product_url": "",
-      "feedback_system": "None",
+      "feedback_github_repo": "MicrosoftDocs/azure-docs.ja-jp",
+      "feedback_product_url": "https://feedback.azure.com/forums/34192--general-feedback",
+      "feedback_system": "GitHub",
       "searchScope": [
         "Azure"
       ],
