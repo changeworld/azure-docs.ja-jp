@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/30/2021
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97990cb38ae34e0f035f7b5c4e9c897a4973320f
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 1e17d50904ed973b21072211c06343bc880421b2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330496"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517372"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure Blob Storage のデータを探索する
 
@@ -63,7 +63,7 @@ ms.locfileid: "108330496"
     dataframe_blobdata = pd.read_csv(LOCALFILENAME)
     ```
 
-Azure Storage Blob からの読み取りに関するその他の一般的な情報については、[Python 用 Azure Storage Blob クライアント ライブラリ](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)のドキュメントを参照してください。  
+Azure Storage Blob からの読み取りに関するその他の一般的な情報については、[Python 用 Azure Storage Blob クライアント ライブラリ](/python/api/overview/azure/storage-blob-readme)のドキュメントを参照してください。  
 
 これで、データを探索し、このデータセットでの特徴を生成する準備が整いました。  
 

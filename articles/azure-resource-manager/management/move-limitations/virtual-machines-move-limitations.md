@@ -3,13 +3,13 @@ title: 新しいサブスクリプションまたはリソース グループへ
 description: Azure Resource Manager を使用して、新しいリソース グループまたはサブスクリプションに仮想マシンを移動します。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 389b06429959bf1f6f515fb0bae877caa8ea788d
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: f57b09900a955a3988c27f8f6990ff18db41c97c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316769"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751745"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>仮想マシンの移動に関するガイダンス
 

@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
-ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: mimckitt, devx-track-azurecli, vmss-flex
+ms.openlocfilehash: 19d0486461366f77a09b9e6a395e60a51efea853
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774451"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754373"
 ---
-# <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのオーケストレーション モード 
+# <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのオーケストレーション モード
 
-仮想マシン スケール セットは、プラットフォームによって管理される仮想マシンの論理グループを提供します。 スケール セットを使用して、仮想マシン構成モデルを作成し、CPU またはメモリの負荷に基づいて追加のインスタンスを自動的に追加または削除し、最新の OS バージョンに自動的にアップグレードします。 従来、スケール セットでは、スケール セットの作成時に提供された VM 構成モデルを使用して仮想マシンを作成できます。スケール セットで管理できるのは、構成モデルに基づいて暗黙的に作成された仮想マシンのみです。 
+仮想マシン スケール セットは、プラットフォームによって管理される仮想マシンの論理グループを提供します。 スケール セットを使用して、仮想マシン構成モデルを作成し、CPU またはメモリの負荷に基づいて追加のインスタンスを自動的に追加または削除し、最新の OS バージョンに自動的にアップグレードします。 従来、スケール セットでは、スケール セットの作成時に提供された VM 構成モデルを使用して仮想マシンを作成できます。スケール セットで管理できるのは、構成モデルに基づいて暗黙的に作成された仮想マシンのみです。
 
-スケール セットのオーケストレーション モードを使用すると、スケール セットでの仮想マシン インスタンスの管理方法をより詳細に制御できます。 
+スケール セットのオーケストレーション モードを使用すると、スケール セットでの仮想マシン インスタンスの管理方法をより詳細に制御できます。
 
 > [!IMPORTANT]
 > オーケストレーション モードは、スケール セットを作成するときに定義され、後で変更または更新することはできません。
@@ -28,10 +28,10 @@ ms.locfileid: "107774451"
 ## <a name="scale-sets-with-uniform-orchestration"></a>均一オーケストレーションによるスケール セット
 同一インスタンスの大規模なステートレス ワークロード用に最適化されています。
 
-均一オーケストレーションによる仮想マシン スケール セットでは、仮想マシン プロファイルまたはテンプレートを使用して目的の容量にスケールアップします。 個々の仮想マシン インスタンスを一部管理またはカスタマイズできますが、均一では同一の VM インスタンスを使用します。 個々の均一 VM インスタンスは、仮想マシン スケール セット VM API コマンドを介して公開されます。 個々のインスタンスには、標準の Azure IaaS VM API コマンド、Azure Resource Manager タグ付け RBAC アクセス許可などの Azure 管理機能、Azure Backup、Azure Site Recovery との互換性はありません。 均一オーケストレーションでは、インスタンスを 100 個未満に構成した場合に、障害ドメインの高可用性の保証が得られます。 均一オーケストレーションは一般提供されていて、メトリックベースの自動スケーリング、インスタンス保護、自動 OS アップグレードなど、あらゆるスケール セット管理およびオーケストレーションをサポートしています。 
+均一オーケストレーションによる仮想マシン スケール セットでは、仮想マシン プロファイルまたはテンプレートを使用して目的の容量にスケールアップします。 個々の仮想マシン インスタンスを一部管理またはカスタマイズできますが、均一では同一の VM インスタンスを使用します。 個々の均一 VM インスタンスは、仮想マシン スケール セット VM API コマンドを介して公開されます。 個々のインスタンスには、標準の Azure IaaS VM API コマンド、Azure Resource Manager タグ付け RBAC アクセス許可などの Azure 管理機能、Azure Backup、Azure Site Recovery との互換性はありません。 均一オーケストレーションでは、インスタンスを 100 個未満に構成した場合に、障害ドメインの高可用性の保証が得られます。 均一オーケストレーションは一般提供されていて、メトリックベースの自動スケーリング、インスタンス保護、自動 OS アップグレードなど、あらゆるスケール セット管理およびオーケストレーションをサポートしています。
 
 
-## <a name="scale-sets-with-flexible-orchestration"></a>フレキシブル オーケストレーションによるスケール セット 
+## <a name="scale-sets-with-flexible-orchestration"></a>フレキシブル オーケストレーションによるスケール セット
 同一または複数の仮想マシンの種類を使用して、大規模に高可用性を実現します。
 
 Azure ではフレキシブル オーケストレーションを使用することで、Azure VM エコシステム全体で統合されたエクスペリエンスを実現できます。 フレキシブル オーケストレーションでは、リージョン内の障害ドメインまたは可用性ゾーン内で VM を分散することで、(最大 1,000 個の VM まで) 高可用性を保証します。 これにより、以下のようなクォーラムベースまたはステートフル ワークロードを実行するのに欠かせない障害ドメインを分離したまま、アプリケーションをスケールアウトできます。
@@ -40,7 +40,7 @@ Azure ではフレキシブル オーケストレーションを使用するこ�
 - ステートフル アプリケーション
 - 高可用性と大規模を要件とするサービス
 - 仮想マシンの種類の混在、またはスポットとオンデマンドの VM の併用が求められるサービス
-- 既存の可用性セット アプリケーション  
+- 既存の可用性セット アプリケーション
 
 > [!IMPORTANT]
 > フレキシブル オーケストレーション モードの仮想マシン スケール セットは現在、パブリック プレビュー段階です。 後述するパブリック プレビュー機能を使用するためには、オプトイン手順が必要です。
@@ -49,27 +49,27 @@ Azure ではフレキシブル オーケストレーションを使用するこ�
 
 
 ## <a name="what-has-changed-with-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの変更点
-フレキシブル オーケストレーションの主なメリットの 1 つは、スケール セットの子仮想マシンではなく標準の Azure IaaS VM を介してオーケストレーション機能を利用できる点です。 つまり、フレキシブル オーケストレーション インスタンスを管理する際には、(均一オーケストレーションで使用する仮想マシン スケール セット VM API ではなく) すべての標準 VM API を使用できます。 プレビュー期間中、フレキシブル オーケストレーションと均一オーケストレーションにおけるインスタンス管理には、いくつかの違いがあります。 一般に、可能な場合は標準の Azure IaaS VM API を使用することをお勧めします。 このセクションでは、フレキシブル オーケストレーションによって VM インスタンスを管理する際のベスト プラクティスの例を紹介します。  
+フレキシブル オーケストレーションの主なメリットの 1 つは、スケール セットの子仮想マシンではなく標準の Azure IaaS VM を介してオーケストレーション機能を利用できる点です。 つまり、フレキシブル オーケストレーション インスタンスを管理する際には、(均一オーケストレーションで使用する仮想マシン スケール セット VM API ではなく) すべての標準 VM API を使用できます。 プレビュー期間中、フレキシブル オーケストレーションと均一オーケストレーションにおけるインスタンス管理には、いくつかの違いがあります。 一般に、可能な場合は標準の Azure IaaS VM API を使用することをお勧めします。 このセクションでは、フレキシブル オーケストレーションによって VM インスタンスを管理する際のベスト プラクティスの例を紹介します。
 
 ### <a name="assign-fault-domain-during-vm-creation"></a>VM 作成時の障害ドメインの割り当て
 フレキシブル オーケストレーションのスケール セットでは障害ドメインの数を選択できます。 既定では、フレキシブル スケール セットに VM を追加すると、Azure によってインスタンスが障害ドメインに対して均一に分散されます。 Azure に障害ドメインの割り当てを任せることが推奨されますが、高度またはトラブルシューティングのシナリオでは、この既定の動作をオーバーライドして、インスタンスが配置される障害ドメインを指定できます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ```
 
-### <a name="instance-naming"></a>インスタンスの命名 
+### <a name="instance-naming"></a>インスタンスの命名
 VM を作成し、それをフレキシブル スケール セットに追加する場合、Azure の名前付け規則内においてインスタンス名を完全に制御できます。 自動スケーリングを通じて自動的に VM がスケール セットに追加される場合、プレフィックスを付加します。名前の最後には、Azure によって一意の番号が追加されます。
 
 ### <a name="query-instances-for-power-state"></a>インスタンスの稼働状態についてのクエリ
-推奨されるのは、Azure Resource Graph を使用して仮想マシン スケール セット内のすべての VM に対してクエリを実行する方法です。 Azure Resource Graph には、サブスクリプション全体で大規模に Azure リソースに対してクエリを実行する効率的な機能が備わっています。 
+推奨されるのは、Azure Resource Graph を使用して仮想マシン スケール セット内のすべての VM に対してクエリを実行する方法です。 Azure Resource Graph には、サブスクリプション全体で大規模に Azure リソースに対してクエリを実行する効率的な機能が備わっています。
 
-``` 
-| where type =~ 'Microsoft.Compute/virtualMachines' 
-| where properties.virtualMachineScaleSet contains "demo" 
-| extend powerState = properties.extended.instanceView.powerState.code 
-| project name, resourceGroup, location, powerState 
-| order by resourceGroup desc, name desc 
+```
+| where type =~ 'Microsoft.Compute/virtualMachines'
+| where properties.virtualMachineScaleSet contains "demo"
+| extend powerState = properties.extended.instanceView.powerState.code
+| project name, resourceGroup, location, powerState
+| order by resourceGroup desc, name desc
 ```
 
 [Azure Resource Graph](../governance/resource-graph/overview.md) を使用したリソースへのクエリ実行は、Azure リソースに対してクエリを実行するのに便利で効率的な方法です。リソース プロバイダーへの API 呼び出しを最小限に抑えられます。 Azure Resource Graph で得られるのは最終的に一貫したキャッシュであり、新しいまたは更新されたリソースが最大 60 秒間反映されない場合があります。 次のようにすることができます。
@@ -78,22 +78,22 @@ VM を作成し、それをフレキシブル スケール セットに追加す
 - VM の取得 API およびコマンドを使用して、単一インスタンスのモデルとインスタンスのビューを取得する。
 
 ### <a name="scale-sets-vm-batch-operations"></a>スケール セット VM のバッチ操作
-仮想マシン スケール セット VM API ではなく標準の VM コマンドを使用して、インスタンスを起動、停止、再起動、削除します。 仮想マシン スケール セット VM のバッチ操作 (すべて起動、すべて停止、すべて再イメージ化など) は、フレキシブル オーケストレーション モードでは使用されません。 
+仮想マシン スケール セット VM API ではなく標準の VM コマンドを使用して、インスタンスを起動、停止、再起動、削除します。 仮想マシン スケール セット VM のバッチ操作 (すべて起動、すべて停止、すべて再イメージ化など) は、フレキシブル オーケストレーション モードでは使用されません。
 
-### <a name="monitor-application-health"></a>アプリケーションの正常性を監視する 
-アプリケーションの稼働状況の監視では、アプリケーションから Azure にハートビートを提供し、自分のアプリケーションが正常であるのか、それとも異常であるのかを判断できます。 Azure による異常な VM インスタンスの自動置換を利用できます。 フレキシブル スケール セット インスタンスの場合、仮想マシンにアプリケーション正常性拡張機能をインストールして構成する必要があります。 均一スケール セット インスタンスの場合、アプリケーション正常性拡張機能を使用することも、Azure Load Balancer のカスタム正常性プローブを使用して正常性を測定することもできます。 
+### <a name="monitor-application-health"></a>アプリケーションの正常性を監視する
+アプリケーションの稼働状況の監視では、アプリケーションから Azure にハートビートを提供し、自分のアプリケーションが正常であるのか、それとも異常であるのかを判断できます。 Azure による異常な VM インスタンスの自動置換を利用できます。 フレキシブル スケール セット インスタンスの場合、仮想マシンにアプリケーション正常性拡張機能をインストールして構成する必要があります。 均一スケール セット インスタンスの場合、アプリケーション正常性拡張機能を使用することも、Azure Load Balancer のカスタム正常性プローブを使用して正常性を測定することもできます。
 
-### <a name="list-scale-sets-vm-api-changes"></a>スケール セット VM API の変更の一覧表示 
-Virtual Machine Scale Sets では、スケール セットに属するインスタンスを一覧表示できます。 フレキシブル オーケストレーションでは、Virtual Machine Scale Sets VM のリスト コマンドを使用して、スケール セット VM の ID を一覧表示できます。 その後、Virtual Machine Scale Sets VM の取得コマンドを呼び出して、スケール セットでの VM インスタンスの動作について詳細を取得できます。 VM の完全な詳細を取得するには、標準の VM 取得コマンドまたは [Azure Resource Graph](../governance/resource-graph/overview.md) を使用します。 
+### <a name="list-scale-sets-vm-api-changes"></a>スケール セット VM API の変更の一覧表示
+Virtual Machine Scale Sets では、スケール セットに属するインスタンスを一覧表示できます。 フレキシブル オーケストレーションでは、Virtual Machine Scale Sets VM のリスト コマンドを使用して、スケール セット VM の ID を一覧表示できます。 その後、Virtual Machine Scale Sets VM の取得コマンドを呼び出して、スケール セットでの VM インスタンスの動作について詳細を取得できます。 VM の完全な詳細を取得するには、標準の VM 取得コマンドまたは [Azure Resource Graph](../governance/resource-graph/overview.md) を使用します。
 
-### <a name="retrieve-boot-diagnostics-data"></a>ブート診断データの取得 
+### <a name="retrieve-boot-diagnostics-data"></a>ブート診断データの取得
 標準の VM API およびコマンドを使用して、インスタンスのブート診断データとスクリーンショットを取得します。 Virtual Machine Scale Sets VM のブート診断 API およびコマンドは、フレキシブル オーケストレーション モードのインスタンスでは使用されません。
 
-### <a name="vm-extensions"></a>VM 拡張機能 
+### <a name="vm-extensions"></a>VM 拡張機能
 均一オーケストレーション モードのインスタンス向けの拡張機能でなく、標準の仮想マシン向けの拡張機能を使用します。
 
 
-## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>フレキシブル、均一、可用性セットの比較 
+## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>フレキシブル、均一、可用性セットの比較
 次の表では、フレキシブル オーケストレーション モード、均一オーケストレーション モード、可用性セットを機能ごとに比較しています。
 
 | 機能 | フレキシブル オーケストレーション (プレビュー) によるサポート対象 | 均一オーケストレーション (一般提供) によるサポート対象 | AvSets (一般提供) によるサポート対象 |
@@ -128,7 +128,7 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 |         VM Insights  |            いいえ  |            はい  |            はい  |
 |         Azure Backup  |            はい  |            はい  |            はい  |
 |         Azure Site Recovery  |     いいえ  |            いいえ  |            はい  |
-|         グループに対する既存の VM の追加/削除  |            いいえ  |            いいえ  |            いいえ  | 
+|         グループに対する既存の VM の追加/削除  |            いいえ  |            いいえ  |            いいえ  |
 
 
 ## <a name="register-for-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの登録
@@ -144,44 +144,44 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 ![再登録](https://user-images.githubusercontent.com/157768/110362176-cd1ee080-7ff5-11eb-8cc8-36aa967e267a.png)
 
 
-### <a name="azure-powershell"></a>Azure PowerShell 
-[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。 
+### <a name="azure-powershell"></a>Azure PowerShell
+[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute  
+Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute
 ```
 
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには: 
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
 
 ```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute 
+Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
 ```
 
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
 
 ```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute 
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0 
-[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+[az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
-az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD 
+az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD
 ```
 
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには: 
+機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
 
 ```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD 
+az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 ```
 
-サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。 
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute 
+az provider register --namespace Microsoft.Compute
 ```
 
 
@@ -194,7 +194,7 @@ Azure potal、Azure CLI、Terraform、または REST API を通じて、スケ�
 Azure portal を通じてフレキシブル オーケストレーション モードで仮想マシン スケール セットを作成します。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
-1. 検索バーで、 **[仮想マシン スケール セット]** を検索して選択します。 
+1. 検索バーで、 **[仮想マシン スケール セット]** を検索して選択します。
 1. **[仮想マシン スケール セット]** ページで **[作成]** を選択します。
 1. **[仮想マシン スケール セットの作成]** ページで、 **[オーケストレーション]** セクションを表示します。
 1. **[オーケストレーション モード]** で **[Flexible]\(フレキシブル\)** オプションを選択します。
@@ -209,22 +209,22 @@ Azure portal を通じてフレキシブル オーケストレーション モ�
 1. **[仮想マシン]** ページで **[追加]** を選択します。
 1. **[基本]** タブで **[インスタンスの詳細]** セクションを表示します。
 1. **[可用性オプション]** でスケール セットを選択して、フレキシブル オーケストレーション モードのスケール セットに VM を追加します。 同じリージョン、ゾーン、リソース グループ内のスケール セットに仮想マシンを追加できます。
-1. 仮想マシンの作成を完了します。 
+1. 仮想マシンの作成を完了します。
 
 :::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/vm-portal-orchestration-mode-flexible.png" alt-text="フレキシブル オーケストレーション モードのスケール セットへの VM の追加":::
 
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Azure CLI を使用してフレキシブルの仮想マシン スケール セットを作成します。 次の例は、フレキシブルのスケール セットの作成を示しています。ここでは、障害ドメインの数が 3 に設定された状態で仮想マシンが作成されてフレキシブルのスケール セットに追加されます。 
+Azure CLI を使用してフレキシブルの仮想マシン スケール セットを作成します。 次の例は、フレキシブルのスケール セットの作成を示しています。ここでは、障害ドメインの数が 3 に設定された状態で仮想マシンが作成されてフレキシブルのスケール セットに追加されます。
 
 ```azurecli-interactive
-vmssflexname="my-vmss-vmssflex"  
-vmname="myVM"  
-rg="my-resource-group"  
+vmssflexname="my-vmss-vmssflex"
+vmname="myVM"
+rg="my-resource-group"
 
-az group create -n "$rg" -l $location  
-az vmss create -n "$vmssflexname" -g "$rg" -l $location --orchestration-mode flexible --platform-fault-domain-count 3  
-az vm create -n "$vmname" -g "$rg" -l $location --vmss $vmssflexname --image UbuntuLTS 
+az group create -n "$rg" -l $location
+az vmss create -n "$vmssflexname" -g "$rg" -l $location --orchestration-mode flexible --platform-fault-domain-count 3
+az vm create -n "$vmname" -g "$rg" -l $location --vmss $vmssflexname --image UbuntuLTS
 ```
 
 ### <a name="terraform"></a>Terraform
@@ -249,7 +249,7 @@ zones = ["1"]
 ### <a name="rest-api"></a>REST API
 
 1. 空のスケール セットを作成します。 次のパラメーターが必要です。
-    - API バージョン 2019-12-01 (以上) 
+    - API バージョン 2019-12-01 (以上)
     - フレキシブルのスケール セットを作成する場合、単一の配置グループを `false` にする必要があります
 
     ```json
@@ -267,8 +267,8 @@ zones = ["1"]
     ```
 
 2. 仮想マシンをスケール セットに追加します。
-    1. 前に作成したスケール セットに `virtualMachineScaleSet` プロパティを割り当てます。 VM の作成時に `virtualMachineScaleSet` プロパティを指定する必要があります。 
-    1. **copy()** Azure Resource Manager テンプレート関数を使用して、複数の VM を同時に作成できます。 Azure Resource Manager テンプレートでの[リソースの反復処理](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource)に関するページを参照してください。 
+    1. 前に作成したスケール セットに `virtualMachineScaleSet` プロパティを割り当てます。 VM の作成時に `virtualMachineScaleSet` プロパティを指定する必要があります。
+    1. **copy()** Azure Resource Manager テンプレート関数を使用して、複数の VM を同時に作成できます。 Azure Resource Manager テンプレートでの[リソースの反復処理](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource)に関するページを参照してください。
 
     ```json
     {
@@ -295,7 +295,7 @@ zones = ["1"]
     }
     ```
 
-完全な例については、[Azure クイックスタート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-vmss-flexible-orchestration-mode)を参照してください。
+完全な例については、[Azure クイックスタート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-vmss-flexible-orchestration-mode)を参照してください。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -315,38 +315,38 @@ zones = ["1"]
 
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>フレキシブル オーケストレーションでのスケール セットのトラブルシューティング
-ご自分のトラブルシューティング シナリオに適した解決策を見つけてください。 
+ご自分のトラブルシューティング シナリオに適した解決策を見つけてください。
 
 ```
 InvalidParameter. The value 'False' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: True
 ```
 
-**原因:** サブスクリプションがフレキシブル オーケストレーション モードのパブリック プレビューに登録されていません。 
+**原因:** サブスクリプションがフレキシブル オーケストレーション モードのパブリック プレビューに登録されていません。
 
-**解決策:** 上記の手順に従って、フレキシブル オーケストレーション モードのパブリック プレビューに登録します。 
+**解決策:** 上記の手順に従って、フレキシブル オーケストレーション モードのパブリック プレビューに登録します。
 
 ```
 InvalidParameter. The specified fault domain count 2 must fall in the range 1 to 1.
 ```
 
-**原因:** 選択したリージョンまたはゾーンで `platformFaultDomainCount` パラメーターが無効です。 
+**原因:** 選択したリージョンまたはゾーンで `platformFaultDomainCount` パラメーターが無効です。
 
-**解決策:** 有効な `platformFaultDomainCount` 値を選択する必要があります。 ゾーン デプロイの場合、`platformFaultDomainCount` の最大値は 1 です。 ゾーンが指定されていないリージョン デプロイの場合、`platformFaultDomainCount` の最大値はリージョンによって異なります。 スクリプトでリージョンあたりの障害ドメインの最大数を判断するには、[VM の可用性の管理](../virtual-machines/availability.md)に関するページを参照してください。 
+**解決策:** 有効な `platformFaultDomainCount` 値を選択する必要があります。 ゾーン デプロイの場合、`platformFaultDomainCount` の最大値は 1 です。 ゾーンが指定されていないリージョン デプロイの場合、`platformFaultDomainCount` の最大値はリージョンによって異なります。 スクリプトでリージョンあたりの障害ドメインの最大数を判断するには、[VM の可用性の管理](../virtual-machines/availability.md)に関するページを参照してください。
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.
 ```
 
-**原因:** 1 つ以上の仮想マシンが関連付けられているフレキシブル オーケストレーション モードのスケール セットを削除しようとしています。 
+**原因:** 1 つ以上の仮想マシンが関連付けられているフレキシブル オーケストレーション モードのスケール セットを削除しようとしています。
 
 **解決策:** フレキシブル オーケストレーション モードのスケール セットに関連付けられているすべての仮想マシンを削除すると、スケール セットを削除できます。
 
 ```
 InvalidParameter. The value 'True' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: False.
 ```
-**原因:** サブスクリプションがフレキシブル オーケストレーション モードのプレビューに登録されているものの、`singlePlacementGroup` パラメーターが *True* に設定されています。 
+**原因:** サブスクリプションがフレキシブル オーケストレーション モードのプレビューに登録されているものの、`singlePlacementGroup` パラメーターが *True* に設定されています。
 
-**解決策:** `singlePlacementGroup` を *False* に設定する必要があります。 
+**解決策:** `singlePlacementGroup` を *False* に設定する必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

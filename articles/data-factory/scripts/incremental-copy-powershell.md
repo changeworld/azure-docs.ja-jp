@@ -1,18 +1,18 @@
 ---
 title: PowerShell を使用してデータを増分読み込みする
 description: この PowerShell スクリプトでは、Azure Data Factory を使用して Azure SQL Database から Azure Blob Storage にデータを増分コピーする方法を示します。
-ms.author: jingwang
-author: linda33wj
+ms.author: yexu
+author: dearandyxu
 ms.service: data-factory
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 736403696ec340e547547458cb62e243e6e660b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9160889bb66e872be044460dec9b3e39f505d551
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389843"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482059"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用したデータの増分読み込み
 

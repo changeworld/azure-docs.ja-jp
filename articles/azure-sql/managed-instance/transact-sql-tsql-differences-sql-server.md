@@ -6,17 +6,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.devlang: ''
 ms.topic: reference
-author: jovanpop-msft
-ms.author: jovanpop
+author: danimir
+ms.author: danil
 ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: f744b718919a6da75b2064efdc163ef4618b5a7c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 1a2ef6000a10c9b6879547377e26b6982e820ef1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815902"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745795"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -1,18 +1,18 @@
 ---
 title: Azure Resource Manager 用の Azure Policy の規制コンプライアンス コントロール
 description: Azure Resource Manager に対して使用できる Azure Policy の規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: dec5fb6c860da84ca047c296159d9d1f5350cabf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a00ff3532279a674bc77a61f1b9ab4d98d45f108
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108180836"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737272"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>Azure Resource Manager 用の Azure Policy の規制コンプライアンス コントロール
 

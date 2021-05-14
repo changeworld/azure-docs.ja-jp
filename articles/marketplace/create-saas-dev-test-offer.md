@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 03/25/2021
-ms.openlocfilehash: 893d38d7dcf2ef0910bc46d3e9bfd168c2a89162
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/20/2021
+ms.openlocfilehash: 318eebcca3053be2164a1fc52905f36f26b11a6d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543365"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331126"
 ---
 # <a name="create-a-test-offer"></a>テスト オファーの作成
 
@@ -94,10 +94,11 @@ Marketplace カスタム メーター ディメンションなどの、価格モ
 | ------------ | ------------- |
 | $0.00 | 合計トランザクション コストをゼロに設定して、財務に影響を与えないようにします。 この価格は、メータリング API の呼び出しや、ソリューションの開発中のオファーの購入プランのテストに使用します。 |
 | 0\.01 から 49.99 ドル | この価格範囲を使用して、分析、レポート、および購入のプロセスをテストします。 |
-| 50.00 ドル以上 | この価格範囲を使用して、ペイアウトをテストします。 ペイアウト スケジュールの詳細については、「[支払いスケジュールとプロセス](/partner-center/payout-policy-details)」を参照してください。 |
+| $50.00 - $100.00 | この価格範囲を使用して、ペイアウトをテストします。 ペイアウト スケジュールの詳細については、「[支払いスケジュールとプロセス](/partner-center/payout-policy-details)」を参照してください。 |
 |||
 
-テストでストア サービスの料金が請求されないようにするには、[サポート チケット](support.md)を開きます。
+> [!IMPORTANT]
+>  テストでストア サービスの料金が請求されないようにするには、テスト購入から 7 日以内に[サポート チケット](support.md)を開きます。
 
 #### <a name="free-trial"></a>無料試用版
 

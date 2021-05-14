@@ -5,12 +5,12 @@ author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
 ms.date: 02/14/2021
-ms.openlocfilehash: 7ab719560320882a3a6569bff5df7d2e2cf0b747
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 626f46030fc8ee5ab7c788a9b45f440d8a0fe5a4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102037559"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109733840"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Azure Monitor でクラシック メトリック アラートを使用して Webhook を呼び出す
 
@@ -18,7 +18,7 @@ ms.locfileid: "102037559"
 > この記事では、古いクラシック メトリック アラートの使用方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 パブリック クラウド ユーザー向けの従来のアラートは [廃止](./monitoring-classic-retirement.md)されていますが、**2021 年 5 月 31 日** までは引き続き利用できます。 Azure Government クラウドおよび Azure China 21Vianet 向けの従来のアラートは、**2024 年 2 月 29 日** に廃止されます。
 >
 
-webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。 
+webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。
 
 この記事では、Azure メトリック アラートで webhook を設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure アクティビティ ログ アラート (イベントでのアラート) の設定とスキーマについては、「[Azure アクティビティ ログ アラートでの webhook の呼び出し](../alerts/alerts-log-webhook.md)」を参照してください。
 
@@ -105,6 +105,6 @@ POST 操作には、すべてのメトリックベースのアラートについ
 ## <a name="next-steps"></a>次の手順
 * [Azure アラートと PagerDuty との統合](https://go.microsoft.com/fwlink/?LinkId=627080)のビデオでは、Azure アラートと webhook について説明します。
 * [Azure アラートで Azure Automation スクリプト (Runbook) を実行する](https://go.microsoft.com/fwlink/?LinkId=627081)方法について確認します。
-* [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)方法について確認します。
+* [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)方法について確認します。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)方法について確認します。
-* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)方法について確認します。
+* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)方法について確認します。

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: dotnet
 ms.custom:
 - devx-track-azurepowershell
 - mode-arm
-ms.openlocfilehash: d3ffdf144d334143fcf6b15bf7e0128c165c7119
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: aa0435e1d88c960429bb53087599e98e22e17154
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075089"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738880"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
@@ -27,12 +27,12 @@ ms.locfileid: "108075089"
 
 > [!NOTE]
 > 次の Azure Resource Manager テンプレートは、ダウンロードしてデプロイすることができます。
-> 
+>
 > * [Service Bus 名前空間の作成](service-bus-resource-manager-namespace.md)
 > * [キューを含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-queue.md)
 > * [キューと承認規則を含んだ Service Bus 名前空間を作成する](service-bus-resource-manager-namespace-auth-rule.md)
 > * [トピック、サブスクリプション、ルールを含んだ Service Bus の名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
-> 
+>
 > 最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][Azure Quickstart Templates]」ギャラリーで "**Service Bus**" を検索してください。
 
 ## <a name="what-do-you-deploy"></a>デプロイ対象
@@ -43,7 +43,7 @@ ms.locfileid: "108075089"
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-[![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-and-subscription%2Fazuredeploy.json)
+[![Azure へのデプロイ](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.servicebus%2Fservicebus-create-topic-and-subscription%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>パラメーター
 
@@ -86,11 +86,11 @@ Service Bus 名前空間に作成するサブスクリプションの名前。
 テンプレートの Service Bus API バージョン。
 
 ```json
-"serviceBusApiVersion": { 
-       "type": "string", 
-       "defaultValue": "2017-04-01", 
-       "metadata": { 
-           "description": "Service Bus ApiVersion used by the template" 
+"serviceBusApiVersion": {
+       "type": "string",
+       "defaultValue": "2017-04-01",
+       "metadata": {
+           "description": "Service Bus ApiVersion used by the template"
        }
 ```
 

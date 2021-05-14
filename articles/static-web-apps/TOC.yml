@@ -18,24 +18,28 @@
           href: get-started-cli.md
 - name: 概念
   items:
-    - name: 構成
-      href: configuration.md
-      displayName: Routing
     - name: Azure Functions での API サポート
       href: apis.md
-    - name: ルート
-      href: routes.md
-    - name: 認証と権限承認
-      href: authentication-authorization.md
-    - name: ユーザー情報にアクセスする
-      href: user-information.md
+    - name: 構成
+      items:
+        - name: アプリケーション構成
+          href: configuration.md
+          displayName: 'routing, routes'
+        - name: ビルドとワークフロー構成
+          href: github-actions-workflow.md
+    - name: セキュリティ
+      items:
+        - name: 認証と権限承認
+          href: authentication-authorization.md
+        - name: ユーザー情報にアクセスする
+          href: user-information.md
+        - name: カスタム認証
+          href: authentication-custom.md
     - name: 運用前環境で pull request を確認する
       href: review-publish-pull-requests.md
     - name: カスタム ドメイン
       href: custom-domain.md
-    - name: ビルドとワークフロー構成
-      href: github-actions-workflow.md
-- name: 操作方法ガイド
+- name: 攻略ガイド
   items:
     - name: ローカル開発の設定
       href: local-development.md
@@ -43,6 +47,8 @@
       href: add-api.md
     - name: アプリケーションの設定の構成
       href: application-settings.md
+    - name: Azure DevOps を使用して公開する
+      href: publish-devops.md
     - name: フロントエンド フレームワークとライブラリの構成
       href: front-end-frameworks.md
     - name: 監視を有効にする
@@ -53,6 +59,10 @@
     - name: エラーのトラブルシューティング
       href: troubleshooting.md
       displayName: 'deployment, runtime, errors'
+    - name: 独自の関数の持ち込み
+      href: functions-bring-your-own.md
+    - name: 認証シークレットをセキュリティで保護する
+      href: key-vault-secrets.md
 - name: チュートリアル
   items:
     - name: 静的サイト ジェネレーターからの発行
@@ -95,5 +105,7 @@
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
         - name: Blazor を使用して静的な Web アプリを作成および発行する
           href: /learn/modules/publish-app-service-static-web-app-api-dotnet
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
     - name: Quotas (クォータ)
       href: quotas.md

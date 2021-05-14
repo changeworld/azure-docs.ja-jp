@@ -1,19 +1,19 @@
 ---
 title: Cloud Services (クラシック) の割り当てエラーのトラブルシューティング | Microsoft Docs
 description: Azure Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング。 割り当てのしくみと、なぜ割り当てが失敗することがあるかについて説明します。
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 95fe4a8e1f6c6ee5f519311f8e756be89a09acf8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b9cfb7e2d57d194e9f9317d0dcbff3e87318ac9f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738312"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736201"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>Azure で Cloud Services (クラシック) をデプロイするときの割り当てエラーのトラブルシューティング
 

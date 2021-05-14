@@ -3,12 +3,12 @@ title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージの重複を検出する方法について説明します。 重複したメッセージは無視して、破棄することができます。
 ms.topic: article
 ms.date: 04/19/2021
-ms.openlocfilehash: 0b4c90885c9da817e4f78eea883e2d39e65b2480
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 9e1837d0e8859791e3834519af4a9966d2435b60
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107989290"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759079"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -21,7 +21,7 @@ ms.locfileid: "107989290"
 > [!NOTE]
 > Service Bus の Basic レベルでは、重複検出はサポートされません。 Standard と Premium レベルでは、重複検出はサポートされます。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
-## <a name="how-it-works"></a>動作のしくみ 
+## <a name="how-it-works"></a>しくみ
 重複メッセージ検出を有効にすることにより、アプリケーションによって制御され、指定した時間枠内のキューまたはトピックに送信されたすべてのメッセージの *MessageId* を追跡できます。 その時間枠内にログに記録された *MessageId* が付いた新しいメッセージが送信されると、メッセージは受信済み (送信操作成功) としてレポートされ、新しく送信されたメッセージは瞬時に無視され破棄されます。 メッセージの *MessageId* 以外の部分は考慮されません。
 
 ID のアプリケーションによる制御は、アプリケーションが *MessageId* をエラー発生時に予想可能な方法で再構築できるビジネス プロセス コンテキストに紐付けることができる唯一の方法であるため、不可欠です。
@@ -53,13 +53,13 @@ Azure portal、PowerShell、CLI、Resource Manager テンプレート、.NET、J
 
 Azure Service Bus の機能については、使用する言語のサンプルを試してみてください。 
 
-- [.NET (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
-- [Java (最新バージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/) 
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (最新)](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Python 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-python/servicebus-samples/)
 - [JavaScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
 - [TypeScript 用の Azure Service Bus クライアント ライブラリのサンプル](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
 
 以前の .NET および Java クライアント ライブラリのサンプルについては、以下を参照してください。
-- [.NET (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
-- [Java (古いバージョン) 用の Azure Service Bus クライアント ライブラリのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)
+- [.NET 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [Java 用の Azure Service Bus クライアント ライブラリのサンプル (レガシ)](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus)
 

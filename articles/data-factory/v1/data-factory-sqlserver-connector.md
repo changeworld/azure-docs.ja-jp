@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: fbd1e1d652db3bbd91344ea828278d057baeb060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 103a3bad91018a2a7b91cbc6a7839e8be56489ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368814"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741415"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間のデータの移動
 
@@ -30,11 +30,11 @@ ms.locfileid: "100368814"
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **SQL Server データベースから** 以下のデータ ストアにデータをコピーできます。
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 以下のデータ ストアから **SQL Server データベースに** データをコピーできます。
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 この SQL Server コネクタは、SQL 認証と Windows 認証の両方を使用して、オンプレミスまたは Azure IaaS でホストされているバージョンSQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005 のインスタンスとの間で、データのコピーをサポートしています。

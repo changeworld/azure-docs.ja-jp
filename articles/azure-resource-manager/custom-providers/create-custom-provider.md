@@ -5,13 +5,13 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2f8d33392e0eb71d3b9b5f641f7ed902c5da5a28
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 0aae2092a167915f2130c031808368ae52047615
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318281"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753365"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>クイック スタート:カスタム プロバイダーの作成とカスタム リソースのデプロイ
 

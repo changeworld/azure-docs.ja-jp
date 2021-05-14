@@ -5,12 +5,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 314a29cf1d45b001b28188be5de35635395fba39
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905963"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737209"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ IDEA を使用して ARM テンプレートを作成およびデプロイする
 
@@ -32,9 +32,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="deploy-a-quickstart-template"></a>クイックスタート テンプレートをデプロイする
 
-ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 この記事で使用されるテンプレートは、[Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) という名前です。 これにより、Azure Storage アカウント リソースが定義されます。
+ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイックスタート テンプレートは、ARM テンプレートのリポジトリです。 この記事で使用されるテンプレートは、[Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.storage/storage-account-create/) という名前です。 これにより、Azure Storage アカウント リソースが定義されます。
 
-1. [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) と [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) を右クリックして、お使いのローカル コンピューターに保存します。
+1. [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json) と [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.parameters.json) を右クリックして、お使いのローカル コンピューターに保存します。
 
 1. Azure Toolkit が適切にインストールされ、サインインしている場合は、IntelliJ IDEA のサイドバーに Azure Explorer が表示されます。 **[リソース管理]** を右クリックし、 **[デプロイの作成]** を選択します。
 

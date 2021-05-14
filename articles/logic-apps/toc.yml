@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Logic Apps とは
+    - name: Azure Logic Apps について
       href: logic-apps-overview.md
 - name: クイックスタート
   expanded: true
@@ -36,13 +36,15 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: 概念
   items:
-    - name: Logic Apps のコネクタの概要
-      href: ../connectors/apis-list.md
-    - name: Logic Apps のマネージド コネクタ
-      href: ../connectors/managed.md
-    - name: Logic Apps の組み込みコネクタ
-      href: ../connectors/built-in.md
-    - name: 定期的なワークフローをスケジュール設定する
+    - name: コネクタと組み込み操作
+      items:
+        - name: コネクタの概要
+          href: ../connectors/apis-list.md
+        - name: マネージド コネクタ
+          href: ../connectors/managed.md
+        - name: 組み込み操作
+          href: ../connectors/built-in.md
+    - name: スケジュールされた定期的なワークフロー
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure でのサーバーレス
       href: logic-apps-serverless-overview.md
@@ -59,15 +61,15 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/logic-apps-security-baseline?toc=/azure/logic-apps/toc.json
-- name: 操作方法ガイド
+- name: 攻略ガイド
   items:
-    - name: Azure Logic Apps プレビュー
+    - name: シングルテナント Azure Logic Apps (プレビュー)
       items:
-        - name: Azure Logic Apps プレビューの概要
+        - name: シングルテナントの概要 (プレビュー)
           href: logic-apps-overview-preview.md
-        - name: ステートフルとステートレス ワークフローの作成 - Azure portal
+        - name: プレビュー ロジック アプリの作成 - ポータル
           href: create-stateful-stateless-workflows-azure-portal.md
-        - name: ステートフルとステートレス ワークフローの作成 - Visual Studio Code
+        - name: プレビュー ロジック アプリの作成 - Visual Studio Code
           href: create-stateful-stateless-workflows-visual-studio-code.md
     - name: 開発
       items:

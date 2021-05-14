@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b6b2edce64f2f5b56acd1efbac82c042371388fc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d03a221a38bc7a6f929ebcec45526aaab17dc654
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135853"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483283"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -160,7 +160,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
   > [!NOTE]
   > X.509 証明書の認証を使用する場合は、SAS トークン パスワードは不要です。 詳細については、「[Azure IoT Hub での X.509 セキュリティの設定](./tutorial-x509-scripts.md)」を参照し、[TLS/SSL 構成セクション](#tlsssl-configuration)のコードの説明に従ってください。
 
-  SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)に関するページにあるデバイスのセクションをご覧ください。
+  SAS トークンの生成方法について詳しくは、[IoT Hub のセキュリティ トークンの使用](iot-hub-dev-guide-sas.md#use-sas-tokens-as-a-device)に関するページにあるデバイスのセクションをご覧ください。
 
   テスト時には、クロスプラットフォームの [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) または CLI 拡張機能コマンド [az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) を使用して SAS トークンを簡単に生成し、コピーして自分のコードに貼り付けることができます。
 

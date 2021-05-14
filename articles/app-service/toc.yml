@@ -4,17 +4,15 @@
   items:
     - name: Web Apps について
       href: overview.md
-    - name: App Service Environment について
+    - name: App Service 環境について
       href: environment/intro.md
     - name: ホスティング オプションの比較
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: クイックスタート
   expanded: true
   items:
-    - name: ASP.NET Core
-      href: quickstart-dotnetcore.md
     - name: ASP.NET
-      href: quickstart-dotnet-framework.md
+      href: quickstart-dotnetcore.md
     - name: Node.js
       href: quickstart-nodejs.md
     - name: PHP
@@ -108,7 +106,7 @@
       href: operating-system-functionality.md
     - name: デプロイのベスト プラクティス
       href: deploy-best-practices.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 推奨事項
           href: security-recommendations.md
@@ -117,7 +115,7 @@
         - name: OS とランタイムの修正プログラムの適用
           href: overview-patch-os-runtime.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/app-service-security-baseline?toc=/azure/app-service/toc.json
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -187,7 +185,9 @@
               href: deploy-ci-cd-custom-container.md
             - name: ローカル Git からのデプロイ
               href: deploy-local-git.md
-            - name: コンテナーの GitHub アクション
+            - name: GitHub のアクション
+              href: deploy-github-actions.md
+            - name: コンテナーの GitHub Actions
               href: deploy-container-github-action.md
             - name: テンプレートを使用したデプロイ
               href: deploy-complex-application-predictably.md
@@ -217,8 +217,6 @@
               href: configure-authentication-provider-facebook.md
             - name: Google による認証
               href: configure-authentication-provider-google.md
-            - name: Microsoft アカウントによる認証
-              href: configure-authentication-provider-microsoft.md
             - name: Twitter による認証
               href: configure-authentication-provider-twitter.md
             - name: OpenID Connect プロバイダーを使用した認証 (プレビュー)
@@ -320,8 +318,10 @@
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
-    - name: Migration Assistant のガイド
-      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
+    - name: Kudu サービス
+      href: resources-kudu.md
+    - name: Migration Assistant
+      href: app-service-migration-assistant.md
     - name: ベスト プラクティス
       href: app-service-best-practices.md
     - name: サンプル

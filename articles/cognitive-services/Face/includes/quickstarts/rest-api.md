@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 1a360a19da8006a8ab6d918560f1b1d566fdd66d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6e3827ca9f729f1fa231a58a11c829b1ee8a4f44
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105105172"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108791543"
 ---
 Face REST API を使用して顔認識を開始します。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -39,7 +39,7 @@ Face REST API を使用して、次のことを行います。
 
 Face API を呼び出して、顔の属性データを画像から取得するには、次のようなコマンドを使用します。 まず、テキスト エディターにコードをコピーしてください。実行する前に、コマンドの一部に変更を加える必要があります。
 
-:::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" ID="detection_model_2":::
+:::code language="shell" source="~/cognitive-services-quickstart-code/curl/face/detect.sh" ID="detection_model_3":::
 
 次の変更を行います。
 1. `Ocp-Apim-Subscription-Key` を、有効な Face サブスクリプション キーに割り当てます。

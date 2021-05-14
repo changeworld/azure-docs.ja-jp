@@ -2,17 +2,17 @@
 title: Azure Data Explorer との間でデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Data Explorer との間で双方向にデータをコピーする方法について説明します。
 ms.author: orspodek
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 606d10694b6806b62871ddf24afd259d7bc224bc
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027399"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482977"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -46,7 +46,7 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 >[!TIP]
 >Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](/azure/data-explorer/data-factory-load-data)」と、[データベースから Azure Data Explorer への一括コピー](/azure/data-explorer/data-factory-template)に関するページを参照してください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Data Explorer コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
 

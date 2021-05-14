@@ -148,8 +148,6 @@
           href: expressroute-network-insights.md
         - name: ExpressRoute の監視、メトリック、およびアラート
           href: expressroute-monitoring-metrics-alerts.md
-        - name: メンテナンス アラートを表示および構成する
-          href: maintenance-alerts.md
         - name: ExpressRoute に使用する Network Performance Monitor の構成
           href: how-to-npm.md
         - name: カスタム アラートを構成して、アドバタイズされるルートを監視する

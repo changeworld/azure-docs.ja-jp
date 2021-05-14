@@ -9,17 +9,17 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6f42f712ecca77c00020304b63f5a1b0dbd77ad0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9dcfb037c946394a157a9f81d5c09303e31cbefe
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172322"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108323611"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービスをデプロイおよび管理するためのクライアント ツールをインストールする
 
 > [!IMPORTANT]
-> 新しい月次リリースに更新する場合は、最新バージョンの Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ツール、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]、および Azure Data Studio 向けの Azure Arc 拡張機能も更新してください。
+> 新しい月次リリースに更新する場合は、最新バージョンの Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] ツール、および Azure Data Studio 向けの Azure Arc 拡張機能も更新してください。
 
 このドキュメントでは、[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]、Azure Data Studio、Azure CLI (az)、および Kubernetes CLI ツール (kubectl) をクライアント コンピューターにインストールする手順について説明します。
 

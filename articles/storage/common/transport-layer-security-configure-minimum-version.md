@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 257cd8dce2a080203f116a6f0d5b7c7ebd6d13f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 218575453a8d204c59a25e145581b8934ef5790a
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593178"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317842"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -102,10 +102,10 @@ Azure portal でストレージ アカウントを作成する場合、TLS の�
 Azure portal を使用して既存のストレージ アカウントの TLS の最小バージョンを構成するには、これらの手順に従います。
 
 1. Azure Portal のストレージ アカウントに移動します。
-1. **[構成]** 設定を選択します。
-1. 次の図に示すように、 **[TLS の最小バージョン]** で、ドロップダウンを使用して、このストレージ アカウントのデータにアクセスするために必要な TLS の最小バージョンを選択します。
+1. **[設定]** で **[構成]** を選択します。
+1. **[TLS の最小バージョン]** で、ドロップダウンを使用して、このストレージ アカウントのデータにアクセスするために必要な TLS の最小バージョンを選択します。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Azure portal で TLS の最小バージョンを構成する方法を示すスクリーンショット":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Azure portal で TLS の最小バージョンを構成する方法を示すスクリーンショット。" lightbox="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

@@ -11,34 +11,34 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: jeedes
-ms.openlocfilehash: f7b77ae0b816fb385c3254d42e45b1fb02778c66
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 1d43a3fddec2c72302ecd607dedec9e4cb340ad3
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951574"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802920"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と PrinterLogic の統合
 
 このチュートリアルでは、PrinterLogic と Azure Active Directory (Azure AD) を統合する方法について説明します。 PrinterLogic を Azure AD と統合すると、次のことができるようになります。
 
-* PrinterLogic にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して PrinterLogic に自動的にサインインできるようにします。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+- PrinterLogic にアクセスできるユーザーを Azure AD で制御できます。
+- ユーザーが自分の Azure AD アカウントを使用して PrinterLogic に自動的にサインインできるようにします。
+- 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* PrinterLogic でのシングル サインオン (SSO) が有効なサブスクリプション。
+- Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+- PrinterLogic でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* PrinterLogic では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
-* PrinterLogic では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+- PrinterLogic では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+- PrinterLogic では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-printerlogic-from-the-gallery"></a>ギャラリーからの PrinterLogic の追加
 
@@ -58,10 +58,10 @@ PrinterLogic の Azure AD への統合を構成するには、ギャラリーか
 PrinterLogic に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+   1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+   1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[PrinterLogic の SSO の構成](#configure-printerlogic-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[PrinterLogic のテスト ユーザーの作成](#create-printerlogic-test-user)** - PrinterLogic で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
+   1. **[PrinterLogic のテスト ユーザーの作成](#create-printerlogic-test-user)** - PrinterLogic で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -76,37 +76,37 @@ PrinterLogic に対して Azure AD SSO を構成してテストするには、�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** ボックスに、`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/metadata` の形式で URL を入力します。
+   a. **[識別子]** ボックスに、`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/metadata` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/acs` のパターンを使用して URL を入力します
+   b. **[応答 URL]** ボックスに、`https://gw.app.printercloud.com/<my_instance>/authn/idp/azuread/saml2/acs` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://www.<my_instance>printercloud.com` という形式で URL を入力します。
+   **[サインオン URL]** ボックスに、`https://www.<my_instance>printercloud.com` という形式で URL を入力します。
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[PrinterLogic クライアント サポート チーム](mailto:support@printerlogic.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+   > [!NOTE]
+   > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[PrinterLogic クライアント サポート チーム](mailto:support@printerlogic.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. PrinterLogic アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/edit-attribute.png)
+   ![image](common/edit-attribute.png)
 
 1. その他に、PrinterLogic アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 | ソース属性 |
-    | ---------| ------------ |
-    | Role | user.assignedroles |
+   | 名前 | ソース属性   |
+   | ---- | ------------------ |
+   | Role | user.assignedroles |
 
-    > [!NOTE]
-    > Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)をクリックしてください。
+   > [!NOTE]
+   > Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)をクリックしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+   ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
 1. **[PrinterLogic のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+   ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -115,7 +115,7 @@ PrinterLogic に対して Azure AD SSO を構成してテストするには、�
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。
    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
@@ -140,19 +140,19 @@ PrinterLogic に対して Azure AD SSO を構成してテストするには、�
 
 このセクションでは、PrinterLogic で Britta Simon というユーザーを作成します。 PrinterLogic では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ PrinterLogic に存在しない場合は、認証後に新しいユーザーが作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる PrinterLogic のサインオン URL にリダイレクトされます。  
+- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる PrinterLogic のサインオン URL にリダイレクトされます。
 
-* PrinterLogic のサインオン URL に直接移動し、そこからログイン フローを開始します。
+- PrinterLogic のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した PrinterLogic に自動的にサインインされます。 
+- Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した PrinterLogic に自動的にサインインされます。
 
 また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [PrinterLogic] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した PrinterLogic に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 

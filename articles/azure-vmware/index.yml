@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 05/04/2021
-  ms.openlocfilehash: 20d2d685c6ac634a1463669c262f599fb465e05d
-  ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+  ms.date: 05/11/2021
+  ms.openlocfilehash: ae12f4ed9d356eb7a196164574766868ea469f1a
+  ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108803912"
+  ms.lasthandoff: 05/11/2021
+  ms.locfileid: "109754337"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -56,7 +56,7 @@ landingContent:
       url: /azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery
     - text: ネットワークと相互接続
       url: /azure/azure-vmware/faq#networking-and-interconnectivity
-    - text: ストレージ
+    - text: Storage
       url: /azure/azure-vmware/faq#storage
     - text: ホスト、クラスター、およびプライベート クラウド
       url: /azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds
@@ -94,6 +94,14 @@ landingContent:
       url: tutorial-scale-private-cloud.md
     - text: プライベート クラウドを削除する
       url: tutorial-delete-private-cloud.md
+- title: ID 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: プライベート クラウドのアクセスと ID
+      url: concepts-identity.md
+    - text: cloudadmin 資格情報のローテーション
+      url: rotate-cloudadmin-credentials.md
 - title: Azure VMware Solution を拡張する
   linkLists:
   - linkListType: reference

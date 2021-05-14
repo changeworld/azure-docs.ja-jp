@@ -4,12 +4,12 @@ description: このクイックスタートでは、Bicep (プレビュー) フ�
 ms.date: 04/01/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: 17460f9a06d7225d50933608645ea8aea2f5e8f6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a1808114dd336d09af01beff6b8a47982444ce66
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223867"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733537"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>クイックスタート: Bicep ファイルを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 

@@ -1,18 +1,18 @@
 ---
 title: SFTP サーバーとの間でデータをコピーする
 description: Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdee163a31c7822aa0eea2ff5900e10796e0c521
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592032"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486847"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする
 
@@ -39,11 +39,11 @@ SFTP コネクタは、以下のアクティビティに対してサポートさ
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SFTP に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -210,7 +210,7 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、 [データセット](concepts-datasets-linked-services.md)に関する記事を参照してください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 SFTP では、形式ベースのデータセットの `location` 設定で、以下のプロパティがサポートされています。
 
@@ -252,7 +252,7 @@ SFTP では、形式ベースのデータセットの `location` 設定で、以
 
 ### <a name="sftp-as-source"></a>ソースとしての SFTP
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で、以下のプロパティがサポートされています。
 
@@ -316,7 +316,7 @@ SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で
 
 ### <a name="sftp-as-a-sink"></a>シンクとしての SFTP
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で、以下のプロパティがサポートされています。
 

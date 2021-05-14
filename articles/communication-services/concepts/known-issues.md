@@ -8,18 +8,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: troubleshooting
 ms.service: azure-communication-services
-ms.openlocfilehash: b9ed71a8fc9346ecd454eba98dcbb3b13186eba2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 5fe3760d5baeae4b532e0af7e28b090d170e0945
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276044"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331306"
 ---
 # <a name="known-issues-azure-communication-services-calling-sdks"></a>既知の問題: Azure Communication Services の通話 SDK
 この記事では、Azure Communication Services の通話 SDK に関連する制限事項と既知の問題について説明します。
 
 > [!IMPORTANT]
-> 通話エクスペリエンスの品質に影響する可能性のある要因が複数あります。 Communication Services のネットワーク構成とテストのベスト プラクティスの詳細については、 **[ネットワーク要件](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)** に関するドキュメントを参照してください。
+> 通話エクスペリエンスの品質に影響する可能性のある要因が複数あります。 Communication Services のネットワーク構成とテストのベスト プラクティスの詳細については、 **[ネットワーク要件](./voice-video-calling/network-requirements.md)** に関するドキュメントを参照してください。
 
 
 ## <a name="javascript-sdk"></a>JavaScript SDK
@@ -38,7 +38,7 @@ ms.locfileid: "106276044"
 
 
 ### <a name="its-not-possible-to-render-multiple-previews-from-multiple-devices-on-web"></a>Web 上の複数のデバイスから複数のプレビューをレンダリングすることはできない
-これは、既知の制限です。 詳細については、[通話 SDK の概要](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features)に関する記事を参照してください。
+これは、既知の制限です。 詳細については、[通話 SDK の概要](./voice-video-calling/calling-sdk-features.md)に関する記事を参照してください。
 
 ### <a name="enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados"></a>アプリケーションが iOS または iPadOS で実行されている場合、Safari でデバイスを列挙できない
 
@@ -110,4 +110,16 @@ Communication Services ユーザーが JavaScript 通話 SDK を使用して通�
 <br/>オペレーティング システム: iOS
 
 ###  <a name="sometimes-it-takes-a-long-time-to-render-remote-participant-videos"></a>リモート参加者のビデオをレンダリングするのに長い時間がかかることがある
-進行中のグループ通話中に、"_ユーザー A_" がビデオを送信し、次に "_ユーザー B_" が通話に参加します。 場合によって、ユーザー B にユーザー A からのビデオが表示されなかったり、長い遅延後にユーザー A のビデオのレンダリングが開始されたりすることがあります。 この問題は、追加構成が必要なネットワーク環境が原因で発生する可能性があります。 ネットワーク構成のガイダンスについては、[ネットワーク要件](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/network-requirements)に関するドキュメントを参照してください。
+進行中のグループ通話中に、"_ユーザー A_" がビデオを送信し、次に "_ユーザー B_" が通話に参加します。 場合によって、ユーザー B にユーザー A からのビデオが表示されなかったり、長い遅延後にユーザー A のビデオのレンダリングが開始されたりすることがあります。 この問題は、追加構成が必要なネットワーク環境が原因で発生する可能性があります。 ネットワーク構成のガイダンスについては、[ネットワーク要件](./voice-video-calling/network-requirements.md)に関するドキュメントを参照してください。
+
+### <a name="using-3rd-party-libraries-to-access-gum-during-the-call-may-result-in-audio-loss"></a>通話中にサード パーティのライブラリを使用して GUM にアクセスすると、オーディオが失われる可能性があります。
+アプリケーション内で getUserMedia を個別に使用すると、サード パーティのライブラリによって ACS ライブラリからのデバイス アクセスが引き継がれるため、オーディオ ストリームが失われることになります。
+開発者は、次のことを行うことをお勧めします。
+1. 通話中に内部で GetUserMedia API を使用しているサード パーティ製のライブラリを使用しないでください。
+2. それでもサード パーティのライブラリを使用する必要がある場合、復旧する唯一の方法は、選択したデバイスを変更するか (ユーザーが複数のデバイスを持っている場合)、通話を再開することです。
+
+<br/>ブラウザー: Safari
+<br/>オペレーティング システム: iOS
+
+#### <a name="possible-causes"></a>考えられる原因
+一部のブラウザー (Safari など) では、同じデバイスから独自のストリームを取得すると、競合状態になるという副作用があります。 他のデバイスからストリームを取得すると、ユーザーの USB/IO 帯域幅が不足し、sourceUnavailableError 率が急上昇します。  

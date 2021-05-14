@@ -32,6 +32,8 @@
     - name: ポリシーの割り当て - ARM テンプレート
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: ポリシーの割り当て - Bicep
+      href: ./assign-policy-bicep.md
     - name: ポリシーの割り当て - Terraform
       displayName: 'assign, compliance, hcl, provider'
       href: ./assign-policy-terraform.md
@@ -46,6 +48,9 @@
     - name: タグ ガバナンスを管理する
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: ポリシー状態変更イベントをルーティングする
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./tutorials/route-state-change-events.md
     - name: GitHub を使用してコードとしての Azure Policy を実装する
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./tutorials/policy-as-code-github.md
@@ -87,6 +92,8 @@
           href: ./samples/azure-security-benchmark.md
         - name: Azure セキュリティ ベンチマーク v1
           href: ./samples/azure-security-benchmarkv1.md
+        - name: カナダ連邦の PBMM
+          href: ./samples/canada-federal-pbmm.md
         - name: CIS Microsoft Azure Foundations Benchmark 1.3.0
           href: ./samples/cis-azure-1-3-0.md
         - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
@@ -95,6 +102,8 @@
           href: ./samples/cmmc-l3.md
         - name: HIPAA HITRUST 9.2
           href: ./samples/hipaa-hitrust-9-2.md
+        - name: IRS 1075 (2016 年 9 月)
+          href: ./samples/irs-1075-sept2016.md
         - name: 'ISO 27001:2013'
           href: ./samples/iso-27001.md
         - name: New Zealand ISM Restricted
@@ -103,6 +112,14 @@
           href: ./samples/nist-sp-800-53-r4.md
         - name: NIST SP 800-171 R2
           href: ./samples/nist-sp-800-171-r2.md
+        - name: UK OFFICIAL および UK NHS
+          href: ./samples/ukofficial-uknhs.md
+    - name: ゲスト構成基準
+      items:
+        - name: Azure セキュリティ ベンチマーク用の Linux ベースライン
+          href: ./samples/guest-configuration-baseline-linux.md
+        - name: Azure セキュリティ ベンチマーク用の Windows ベースライン
+          href: ./samples/guest-configuration-baseline-windows.md
 - name: 概念
   items:
     - name: 定義の構造
@@ -120,6 +137,9 @@
     - name: 割り当ての構造
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
+    - name: ポリシー状態変更イベントに対応する
+      displayName: 'event grid, subject, topic, subscription'
+      href: ./concepts/event-overview.md
     - name: 除外の構造
       displayName: 'waiver, mitigated, compliance'
       href: ./concepts/exemption-structure.md
@@ -149,7 +169,7 @@
     - name: セキュリティ
       items:
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
-          href: ./concepts/azure-security-benchmark-baseline.md
+          href: /security/benchmark/azure/baselines/policy-security-baseline?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: 操作方法ガイド
   items:
     - name: VS Code 用 Azure Policy 拡張機能
@@ -259,22 +279,8 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: events
-          href: /rest/api/policy-insights/policyevents
-        - name: 状態
-          href: /rest/api/policy-insights/policystates
-        - name: 代入
-          href: /rest/api/resources/policyassignments
-        - name: ポリシーの定義
-          href: /rest/api/resources/policydefinitions
-        - name: ポリシーの除外
-          href: /rest/api/resources/policyexemptions
-        - name: イニシアティブの定義
-          href: /rest/api/resources/policysetdefinitions
-        - name: ポリシー追跡対象リソース
-          href: /rest/api/policy-insights/policytrackedresources
-        - name: 修復
-          href: /rest/api/policy-insights/remediations
+        - name: ポリシー
+          href: /rest/api/policy/
         - name: ゲスト構成
           href: /rest/api/guestconfiguration/
     - name: Resource Manager テンプレート

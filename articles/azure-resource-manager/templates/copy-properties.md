@@ -3,12 +3,12 @@ title: プロパティの複数のインスタンスを定義する
 description: Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作を使用して、リソースのプロパティを作成する際に複数回反復処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/01/2021
-ms.openlocfilehash: 16c293f1c3aff64aeb8b6cae4b7f1aa14dcd0a77
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 3f6eeac8b32e0fb34b973e82557cc48bab532ffd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480003"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736936"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM テンプレートでのプロパティの反復処理
 
@@ -372,7 +372,7 @@ resource vnetname_resource 'Microsoft.Network/virtualNetworks@2018-04-01' = [for
 
 |Template  |説明  |
 |---------|---------|
-|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |仮想マシンと共に複数のデータ ディスクをデプロイします。 |
+|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-windows-copy-datadisks) |仮想マシンと共に複数のデータ ディスクをデプロイします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

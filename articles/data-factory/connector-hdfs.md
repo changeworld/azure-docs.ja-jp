@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory を使用して HDFS からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.author: jingwang
-ms.openlocfilehash: 9c274bdfb5854529dbb82bd2d8b7cefdf07390b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: 9495ffded4230dbffc62ba4f1e8aa405e448bf19
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588904"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485083"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS サーバーからデータをコピーする
 
@@ -39,14 +39,14 @@ HDFS コネクタは、次のアクティビティでサポートされます。
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
 > 統合ランタイムが、Hadoop クラスターの "*すべて*" の [name node server]:[name node port] および [data node servers]:[data node port] にアクセスできることを確認します。 既定の [name node port] は 50070、既定の [data node port] は 50075 です。
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、HDFS に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -111,7 +111,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」を参照してください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 HDFS では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -153,7 +153,7 @@ HDFS では、形式ベースのデータセットの `location` 設定におい
 
 ### <a name="hdfs-as-source"></a>ソースとしての HDFS
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 HDFS では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -172,7 +172,7 @@ HDFS では、形式ベースのコピー ソースの `storeSettings` 設定に
 | modifiedDatetimeEnd      | 上記と同じです。  
 | enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
 | partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ                                            |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ                                            |
 | "***DistCp 設定***" |  | |
 | distcpSettings | HDFS DistCp を使用する場合に使用するプロパティ グループ。 | いいえ |
 | resourceManagerEndpoint | YARN (Yet Another Resource Negotiator) エンドポイント | はい (DistCp を使用する場合) |
@@ -533,7 +533,7 @@ Delete アクティビティのプロパティの詳細については、「[Azu
 | resourceManagerEndpoint | YARN リソース マネージャー エンドポイント | はい (DistCp を使用する場合) |
 | tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
 | distcpOptions | 追加のオプションが DistCp コマンドに指定されます。 | いいえ |
-| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 **例:DistCp を使用したコピー アクティビティでの HDFS ソース**
 

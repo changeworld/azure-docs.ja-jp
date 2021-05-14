@@ -3,12 +3,12 @@ title: リソースにデプロイ順序を設定する
 description: デプロイ時に、ある Azure リソースが別のリソースに依存するように設定する方法について説明します。 依存関係によって、リソースが適切な順序でデプロイされます。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 009f5731e871c47aba418fca0937ae7aa195919e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934749"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737065"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM テンプレートでのリソース デプロイ順序の定義
 
@@ -75,7 +75,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) 内で、`dep
 ]
 ```
 
-完全なテンプレートについては、[Azure SQL Database 用のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-sql-database/azuredeploy.json)を参照してください。
+完全なテンプレートについては、[Azure SQL Database 用のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.sql/sql-database/azuredeploy.json)を参照してください。
 
 ## <a name="reference-and-list-functions"></a>reference 関数と list 関数
 

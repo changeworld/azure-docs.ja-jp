@@ -3,18 +3,18 @@ title: Azure Maps の Web マップ コントロールのスタイルを変更�
 description: マップのスタイルとオプションを変更する方法について説明します。 ユーザーがさまざまなスタイルを切り替えることができるように、Azure Maps でマップにスタイル ピッカー コントロールを追加する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 04/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec79f1427e4561447b80f500adabfa8e8400d7f5
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680023"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325195"
 ---
 # <a name="change-the-style-of-the-map"></a>マップのスタイルを変更する
 
@@ -104,7 +104,7 @@ map.setStyle({ style: 'satellite' });
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="スタイル選択機能の一覧のレイアウト":::
 
 > [!IMPORTANT]
-> 既定では、スタイル ピッカー コントロールには Azure Maps の S0 価格レベルで利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
+> 既定では、スタイル ピッカー コントロールには Azure Maps の S0 価格レベルで利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 Gen 1 (S1) または Gen 2 の価格レベルを使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
 
 次のコードは、既定の `mapStyles` 基本スタイル一覧をオーバーライドする方法を示しています。 この例では、スタイル ピッカー コントロールに表示される基本スタイルを列挙するように `mapStyles` オプションを設定しています。
 
