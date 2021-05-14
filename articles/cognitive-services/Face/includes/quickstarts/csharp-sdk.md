@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ab99d574588989c84783e532fcf801dcaffdd54d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fc45296fe3541d5388505a52a7e3f0856b4b1825
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105958114"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108791530"
 ---
 .NET 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
@@ -25,7 +25,7 @@ ms.locfileid: "105958114"
 * [PersonGroup を作成する](#create-a-persongroup)
 * [顔を識別する](#identify-a-face)
 
-[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [サンプル](/samples/browse/?products=azure&term=face)
+[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.7.0-preview.1) | [サンプル](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Visual Studio を使用して、新しい .NET Core アプリケーションを�
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする 
 
-新しいプロジェクトを作成したら、**ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.Face` を検索します。 バージョン `2.6.0-preview.1` を選択し、 **[インストール]** を選択します。 
+新しいプロジェクトを作成したら、**ソリューション エクスプローラー** でプロジェクト ソリューションを右クリックし、 **[NuGet パッケージの管理]** を選択して、クライアント ライブラリをインストールします。 パッケージ マネージャーが開いたら、 **[参照]** を選択し、 **[プレリリースを含める]** をオンにして、`Microsoft.Azure.CognitiveServices.Vision.Face` を検索します。 バージョン `2.7.0-preview.1` を選択し、 **[インストール]** を選択します。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
@@ -77,7 +77,7 @@ Build succeeded.
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Face クライアント ライブラリをインストールします。
 
 ```console
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0-preview.1
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0-preview.1
 ```
 
 ---

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9776d5f52bda56704c4839cb9edd420beec72a71
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9835a736dfd1c2ccec41eb27472f76d53b07696e
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445229"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754391"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>PowerShell を使用して Windows Virtual Desktop (クラシック) でホスト プールを作成する
 
@@ -64,7 +64,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 - [Azure ギャラリー イメージから仮想マシンを作成する](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [マネージド イメージから仮想マシンを作成する](../../virtual-machines/windows/create-vm-generalized-managed.md)
-- [アンマネージド イメージから仮想マシンを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [アンマネージド イメージから仮想マシンを作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 >[!NOTE]
 >ホスト OS として Windows 7 を使用して仮想マシンをデプロイしている場合、作成と展開のプロセスは若干異なります。 詳細については、「[Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする](deploy-windows-7-virtual-machine.md)」を参照してください。

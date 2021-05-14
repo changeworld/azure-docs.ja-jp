@@ -27,6 +27,18 @@
       href: /samples/azure/azure-sdk-for-python/formrecognizer-samples
     - name: JavaScript 用 Form Recognizer クライアント ライブラリ SDK
       href: /samples/azure/azure-sdk-for-js/ai-form-recognizer-javascript/
+- name: AI の責任ある使用
+  items:
+    - name: 透明性に関するメモ
+      items:
+        - name: Form Recognizer のユース ケース
+          href: /legal/cognitive-services/form-recognizer/fr-transparency-note?context=/azure/cognitive-services/form-recognizer/context/context
+        - name: 特性と制限
+          href: /legal/cognitive-services/form-recognizer/fr-characteristics-and-limitations?context=/azure/cognitive-services/form-recognizer/context/context
+    - name: 統合と責任ある使用
+      href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/cognitive-services/form-recognizer/context/context
+    - name: データ、プライバシー、セキュリティ
+      href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/cognitive-services/form-recognizer/context/context
 - name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成

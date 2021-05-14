@@ -21,8 +21,8 @@
       href: tutorial-multiple-components.md
     - name: MQTT を使用してデバイスを接続する
       href: tutorial-use-mqtt.md
-    - name: MXChip デバイスとの対話 (サンプル)
-      href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
+    - name: MXCHIP デバイスを接続する
+      href: /azure/iot-develop/quickstart-devkit-mxchip-az3166
     - name: デバイス モジュールを接続する
       href: tutorial-migrate-device-to-module.md
     - name: Time Series Insights Gen2 を使用したデータの接続および分析
@@ -35,8 +35,8 @@
       href: concepts-developer-guide-device.md
     - name: サービス開発者ガイド
       href: concepts-developer-guide-service.md
-    - name: コンポーネント
-      href: concepts-components.md
+    - name: モデリング ガイド
+      href: concepts-modeling-guide.md
     - name: IoT プラグ アンド プレイの規則
       href: concepts-convention.md
     - name: IoT プラグ アンド プレイ ブリッジ
@@ -44,27 +44,21 @@
     - name: Digital Twins
       href: concepts-digital-twin.md
     - name: デバイス認定
-      href: concepts-certification-program.md
+      href: ../certification/program-requirements-pnp.md
     - name: モデル リポジトリ
       href: concepts-model-repository.md
     - name: ソリューションでのモデルの使用
       href: concepts-model-discovery.md
     - name: モデル パーサー
       href: concepts-model-parser.md
-    - name: 用語集
-      href: iot-plug-and-play-glossary.md
 - name: 操作方法ガイド
   items:
     - name: IoT エクスプローラーをインストールして使用する
       href: howto-use-iot-explorer.md
     - name: DTDL 作成ツールをインストールして使用する
       href: howto-use-dtdl-authoring-tools.md
-    - name: 埋め込み C を使用する
-      href: howto-use-embedded-c.md
     - name: デジタル ツインを管理する
       href: howto-manage-digital-twin.md
-    - name: デバイスを認定する
-      href: howto-certify-device.md
     - name: IoT プラグ アンド プレイ ブリッジのサンプルを接続する方法
       href: howto-use-iot-pnp-bridge.md
     - name: IoT プラグ アンド プレイ ブリッジのビルドとデプロイ
@@ -82,7 +76,9 @@
 - name: リソース
   items:
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-pnp/toc.json&bc=/azure/iot-pnp/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub

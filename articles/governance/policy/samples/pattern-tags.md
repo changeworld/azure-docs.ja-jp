@@ -3,16 +3,16 @@ title: パターン:ポリシー定義でのタグの使用
 description: この Azure Policy パターンでは、パラメーター化されたタグを追加したり、ポリシー定義内のリソース グループからタグを継承したりする方法の例が示されています。
 ms.date: 03/31/2021
 ms.topic: sample
-ms.openlocfilehash: c748eb9b8ea795f9725082ec0aa0b8065ada8c65
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 30357632e92535368505fd72d2414292da0f5ca1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106093369"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752311"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy パターン: タグ
 
-[タグ](../../..//azure-resource-manager/management/tag-resources.md)は、ご利用の Azure リソースを管理、整理、および統括する上で重要なパーツです。 Azure Policy では、[modify](../concepts/effects.md#modify) 効果と[修復タスク](../how-to/remediate-resources.md)を使用して、新規および既存のリソース上でタグを広範に構成することができます。
+[タグ](../../../azure-resource-manager/management/tag-resources.md)は、ご利用の Azure リソースを管理、整理、および統括する上で重要なパーツです。 Azure Policy では、[modify](../concepts/effects.md#modify) 効果と[修復タスク](../how-to/remediate-resources.md)を使用して、新規および既存のリソース上でタグを広範に構成することができます。
 
 ## <a name="sample-1-parameterize-tags"></a>サンプル 1:タグのパラメーター化
 

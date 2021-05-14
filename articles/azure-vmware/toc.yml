@@ -76,8 +76,8 @@
       href: configure-site-to-site-vpn-gateway.md
     - name: Windows Server フェールオーバー クラスターの構成
       href: configure-windows-server-failover-cluster.md
-    - name: cloudadmin 資格情報のローテーション
-      href: rotate-cloudadmin-credentials.md
+    - name: vSphere の資格情報をリセットする
+      href: reset-vsphere-credentials.md
     - name: Azure Backup Server を使用したバックアップと復元
       items:
         - name: VMware VM のバックアップ
@@ -158,7 +158,7 @@
           href: '/azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery'
         - name: ネットワークと相互接続
           href: /azure/azure-vmware/faq#networking-and-interconnectivity
-        - name: Storage
+        - name: ストレージ
           href: /azure/azure-vmware/faq#storage
         - name: ホスト、クラスター、およびプライベート クラウド
           href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'

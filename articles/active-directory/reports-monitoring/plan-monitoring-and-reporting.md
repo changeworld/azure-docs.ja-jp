@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37c672f8784052424e058837d31bc1d22fcfc57
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dd95f89510cbb591f05338e2bd076967982d8761
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552616"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734039"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 
@@ -155,7 +155,6 @@ Azure AD のロールを使用すると、自分のロールに応じて、Azure
 
 *アカウント侵害* のリスクを軽減するために、最小限の特権の概念を常に適用してください。 組織をさらにセキュリティで保護するために、[Privileged Identity Management](../privileged-identity-management/pim-configure.md) の実装を検討します。
 
-##  
 
 ## <a name="deploy-azure-ad-reporting-and-monitoring"></a>Azure AD のレポートと監視をデプロイする
 

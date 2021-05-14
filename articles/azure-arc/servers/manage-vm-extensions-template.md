@@ -3,12 +3,13 @@ title: Azure Resource Manager テンプレートを使用して VM 拡張機能�
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8ad2cd02393404b419bc7028e54571d2db285982
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389640"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802452"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
@@ -326,7 +327,6 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentLinux",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -364,7 +364,6 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
       "properties": {
         "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
         "type": "DependencyAgentWindows",
-        "typeHandlerVersion": "9.5",
         "autoUpgradeMinorVersion": true
       }
     }
@@ -430,7 +429,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -500,7 +498,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForWindows",
-      "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {

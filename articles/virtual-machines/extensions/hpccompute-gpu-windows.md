@@ -4,23 +4,20 @@ description: Windows を実行中の N シリーズのコンピューティン�
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines
-ms.subservice: extensions
+ms.subservice: hpc
 ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
-ms.author: akjosh
-ms.openlocfilehash: 7cd2c5e54ccb81294a93c0ecebaa174df8d14011
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: amverma
+ms.openlocfilehash: 0f421dd7d6e494f8047c408623fc6beb828a5c73
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559666"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768176"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 

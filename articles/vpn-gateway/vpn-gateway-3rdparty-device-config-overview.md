@@ -1,18 +1,18 @@
 ---
 title: Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成
-description: この記事では、Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成の概要について説明します。
+description: Azure VPN ゲートウェイにパートナー VPN デバイスを接続するための構成について説明します。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a6c6564391d9ba2722bfa9c637ee9d1e19d9e80
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98880154"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229002"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。

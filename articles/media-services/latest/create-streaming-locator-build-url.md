@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8a192c3c3accf115b1a1db8e32a56d6d936078be
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 71713fc061165673f132f5ab778391bba3e0709a
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277661"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685354"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>ストリーミング ロケーターの作成と URL の構築
 
@@ -161,7 +161,7 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 }
 ```
 
-完全なコード サンプルを参照してください: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+完全なコード サンプルを参照してください: [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_PredefinedPreset/Program.cs)
 
 ## <a name="see-also"></a>関連項目
 

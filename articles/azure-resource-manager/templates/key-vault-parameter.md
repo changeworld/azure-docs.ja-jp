@@ -3,20 +3,20 @@ title: Key Vault のシークレットとテンプレート
 description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 584d48fb91173adb4c1c08665c6a05e373fc79d0
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: f91c45792843ab62361bf47628a45529758b4029
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316427"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754193"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
 お使いのテンプレートやパラメーター ファイルに安全な値 (パスワードなど) を直接入れる代わりに、デプロイ時に、[Azure Key Vault](../../key-vault/general/overview.md) から値を取得できます。 値を取得するには、キー コンテナーとパラメーター ファイル内のシークレットを参照します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 キー コンテナーは、デプロイ先のリソース グループとは異なるサブスクリプションにあってもかまいません。
 
 この記事では、機密の値をテンプレート パラメーターとして渡す方法に焦点を当てます。 この記事では、仮想マシンのプロパティを、キー コンテナー内の証明書の URL に設定する方法については説明しません。
-そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)方法に関する記事を参照してください。
+そのシナリオのクイックスタート テンプレートについては、[Azure Key Vault から証明書を仮想マシンにインストールする](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)方法に関する記事を参照してください。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>キー コンテナーとシークレットをデプロイする
 

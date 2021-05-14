@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 04/21/2021
-ms.openlocfilehash: 1fff4cdf24f9be245026757e18050aa121b4d62a
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a9bc17528e1314a033cf2e45fee4b112eb088cc3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138861"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715576"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Media Services データ参照の監視
 
@@ -56,7 +56,7 @@ Media Services では、次のリソース ログがサポートされていま�
 
 診断ログの上位スキーマについて詳しくは、「[Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ](../../../azure-monitor/essentials/resource-logs-schema.md)」をご覧ください。
 
-## <a name="key-delivery-log-schema-properties"></a>キー配信ログのスキーマのプロパティ
+### <a name="key-delivery"></a>キー配信 
 
 これらのプロパティは、キー配信ログのスキーマに固有です。
 

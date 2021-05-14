@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 231f4033b90b152a5893cff93584d9c9bb794321
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8d10a7681765c8a3be010737aae9cfb3faf119d6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783185"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771227"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
@@ -282,7 +282,7 @@ END
 
 * 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database、SQL Managed Instance など) とコンピューティング (Azure HDInsight など) は他のリージョンに配置できます。
 
-[!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
+[!INCLUDE [data-factory-create-install-integration-runtime](includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 

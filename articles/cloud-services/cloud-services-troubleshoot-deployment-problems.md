@@ -1,19 +1,19 @@
 ---
 title: Cloud Services (クラシック) のデプロイメントに関する問題のトラブルシューティング | Microsoft Docs
 description: クラウド サービスを Azure にデプロイするときに発生しやすい問題がいくつか存在します。 この記事では、その解決方法について説明しています。
-ms.topic: article
+ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39c69d69012345cd636964ca813ac93186946cb9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741079"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771597"
 ---
 # <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Azure Cloud Services (クラシック) のデプロイメントに関する問題のトラブルシューティング
 

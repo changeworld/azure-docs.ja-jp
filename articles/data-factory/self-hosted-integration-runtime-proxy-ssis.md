@@ -7,12 +7,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/29/2021
-ms.openlocfilehash: f0a87ef34ac4dfdccba0798a8c47f6ca6421c517
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 68a15e14b585184bd956c3ac8f79cdd5eac5d76c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227175"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788069"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>セルフホステッド IR を Azure Data Factory で Azure-SSIS IR のプロキシとして構成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "108227175"
 
 ### <a name="enable-windows-authentication-for-on-premises-tasks"></a>オンプレミスのタスクで Windows 認証を有効にする
 
-セルフホステッド IR 上のオンプレミスのステージング タスク/SQL 実行タスクが Windows 認証を必要とする場合は、[Azure-SSIS IR で windows 認証機能も構成](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth.md)する必要があります。 
+セルフホステッド IR 上のオンプレミスのステージング タスク/SQL 実行タスクが Windows 認証を必要とする場合は、[Azure-SSIS IR で windows 認証機能も構成](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)する必要があります。 
 
 オンプレミスのステージング タスク/SQL 実行タスクは、セルフホステッド IR サービス アカウント (既定では *NT SERVICE\DIAHostService*) を使用して起動され、データ ストアには Windows 認証アカウントを使用してアクセスされます。 どちらのアカウントにも、特定のセキュリティ ポリシーが割り当てられている必要があります。 セルフホステッド IR コンピューターで、 **[ローカル セキュリティ ポリシー]**  >  **[ローカル ポリシー]**  >  **[ユーザー権利の割り当て]** を選択し、次の操作を行います。
 
@@ -69,7 +69,7 @@ Azure Blob Storage のリンクされたサービスを、Azure-SSIS IR が設�
 - **[認証方法]** で、 **[アカウント キー]** 、 **[SAS URI]** 、 **[サービス プリンシパル]** 、または **[マネージド ID]** を選択します。  
 
 >[!TIP]
->**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** 方法を選択した場合は、Azure Blob Storage にアクセスするための適切なロールを ADF マネージド ID に付与します。 詳細については、[ADF マネージ ID による Azure Active Directory 認証を使用した Azure Blob Storage にアクセスする](/sql/integration-services/connection-manager/azure-storage-connection-manager.md#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
+>**サービス プリンシパル** 方法を選択した場合は、サービス プリンシパルに少なくとも *ストレージ BLOB データ共同作成者* のロールを付与します。 詳細については、「[Azure Blob Storage コネクタ](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。 **[マネージド ID]** 方法を選択した場合は、Azure Blob Storage にアクセスするための適切なロールを ADF マネージド ID に付与します。 詳細については、[ADF マネージ ID による Azure Active Directory 認証を使用した Azure Blob Storage にアクセスする](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)方法に関するページをご覧ください。
 
 ![Azure Blob Storage のリンクされたサービスをステージング用に準備する](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 

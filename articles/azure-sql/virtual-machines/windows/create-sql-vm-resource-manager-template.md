@@ -8,12 +8,12 @@ ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.subservice: deployment
-ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ba1966590b1b1af88366b8545136de8eff18ca1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359644"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755641"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して SQL Server VM を作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "97359644"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+[![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sqlvirtualmachine%2Fsql-vm-new-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.sqlvirtualmachine/sql-vm-new-storage/azuredeploy.json":::
 
 このテンプレートには、次の 5 つの Azure リソースが定義されています。 
 
@@ -55,7 +55,7 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、目的の SQL Server バージョンがインストールされており、SQL IaaS Agent 拡張機能に登録されている仮想マシンが作成されます。 
 
-   [![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
+   [![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.sqlvirtualmachine%2Fsql-vm-new-storage%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 

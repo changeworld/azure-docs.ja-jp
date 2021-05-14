@@ -16,6 +16,8 @@
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: サインイン方法
       href: user-help-sign-in.md?toc=./toc.json
+    - name: 職場または学校アカウントのサインイン
+      href: multi-factor-authentication-end-user-signin.md
     - name: ヘルプの参照
       href: multi-factor-authentication-end-user-troubleshoot.md
 - name: パスワードのリセットのヘルプ
