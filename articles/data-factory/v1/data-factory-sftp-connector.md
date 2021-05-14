@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2018
 robots: noindex
-ms.openlocfilehash: b40e9dc83629362da899d2b5ff29ad42e21c4e32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99f914ff793accbea4d348e83e2a515dfd2368e8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382652"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741373"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -214,7 +214,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、type プロパティはソースとシンクの種類によって異なります。
 
-[!INCLUDE [data-factory-file-system-source](../../../includes/data-factory-file-system-source.md)]
+[!INCLUDE [data-factory-file-system-source](includes/data-factory-file-system-source.md)]
 
 ## <a name="supported-file-and-compression-formats"></a>サポートされているファイル形式と圧縮形式
 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md)」に関する記事を参照してください。

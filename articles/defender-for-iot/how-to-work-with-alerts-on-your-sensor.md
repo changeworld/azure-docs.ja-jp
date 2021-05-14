@@ -3,12 +3,12 @@ title: センサー アラートについて
 description: アラートを使用して、ネットワークのセキュリティと操作を強化します。
 ms.date: 3/29/2021
 ms.topic: how-to
-ms.openlocfilehash: a34871342e9a868ba593ae894fdd91b5e99c5a44
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 353f7fb0da85a0ffa737dc5c4afa70763b2fb185
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729424"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208943"
 ---
 # <a name="about-sensor-alerts"></a>センサー アラートについて
 
@@ -56,7 +56,7 @@ ms.locfileid: "105729424"
 
 ## <a name="alerts-and-sensor-reporting"></a>アラートとセンサー レポート
 
-アラートに反映されたアクティビティは、データ マイニング、リスク評価、および攻撃ベクトル レポートを生成するときに計算できます。 これらのイベントを管理すると、センサーによってレポートが適宜更新されます。
+アラートに反映されたアクティビティは、データ マイニング、リスク評価、攻撃ベクトル レポートを生成するときに計算されます。 これらのイベントを管理すると、センサーによってレポートが適宜更新されます。
 
 例:
 

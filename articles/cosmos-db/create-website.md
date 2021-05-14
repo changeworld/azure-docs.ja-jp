@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ff0543ebc341788ee9492f3e2a117c8e64c44f5
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93333581"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737386"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して、Azure Cosmos DB と Azure App Service および GitHub の Web アプリをデプロイする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,9 +36,9 @@ Resource Manager テンプレートは非常に柔軟であり、Azure の任意
 
 ## <a name="step-1-deploy-the-template"></a>手順 1:テンプレートのデプロイ
 
-最初に、以下の **[Azure に配置する]** ボタンを選択して Azure portal を開き、カスタム デプロイを作成します。 Azure リソース管理テンプレートは、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)から表示することもできます
+最初に、以下の **[Azure に配置する]** ボタンを選択して Azure portal を開き、カスタム デプロイを作成します。 Azure リソース管理テンプレートは、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.documentdb/cosmosdb-webapp)から表示することもできます
 
-[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-webapp%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Azure へのデプロイ":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.documentdb%2Fcosmosdb-webapp%2Fazuredeploy.json)
 
 Azure portal で、デプロイ先のサブスクリプションを選択し、新しいリソース グループを選択または作成します。 次に、以下の値を入力します。
 
@@ -118,5 +118,5 @@ Azure portal で、デプロイ先のサブスクリプションを選択し、�
 
 お疲れさまでした。 Azure Cosmos DB、Azure App Service、および Cosmos DB への接続に必要な接続情報を自動的に取得するサンプル Web アプリケーションを、すべて 1 回の操作で、機密情報の切り取りと貼り付けを行う必要なくデプロイできました。 このテンプレートを出発点として使用し、変更を加えることで、独自の Web アプリケーションを同じ方法でデプロイできます。
 
-* このサンプル用の Azure Resource Manager テンプレートについては、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)にアクセスしてください
+* このサンプル用の Azure Resource Manager テンプレートについては、[Azure クイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.documentdb/cosmosdb-webapp)にアクセスしてください
 * サンプル アプリのソース コードについては、[GitHub 上の Cosmos DB To Do アプリ](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)にアクセスしてください。

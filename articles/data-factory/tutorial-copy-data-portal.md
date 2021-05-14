@@ -1,18 +1,18 @@
 ---
 title: Azure portal を使用してデータ ファクトリ パイプラインを作成する
 description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から Azure SQL Database にデータをコピーします。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.author: jingwang
-ms.openlocfilehash: 08ab3c9181f4fdcfc9b55bf80c53f88ff26f90ce
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: jianleishen
+ms.openlocfilehash: aa8ccdde19dadeb1864037ed13082e42a27b8f59
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584395"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483319"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーする
 

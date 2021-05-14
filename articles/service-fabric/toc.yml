@@ -2,18 +2,18 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Service Fabric とは
-      href: service-fabric-overview.md
     - name: Service Fabric の管理対象クラスター
       href: overview-managed-cluster.md
+    - name: Service Fabric とは
+      href: service-fabric-overview.md
 - name: クイックスタート
   expanded: true
   items:
+    - name: 管理対象クラスター
+      href: quickstart-managed-cluster-template.md
     - name: ARM テンプレート
       displayName: Resource Manager
       href: quickstart-cluster-template.md
-    - name: 管理対象クラスター
-      href: quickstart-managed-cluster-template.md
     - name: .NET アプリケーションの作成
       href: service-fabric-quickstart-dotnet.md
     - name: Linux コンテナー アプリケーションのデプロイ
@@ -28,6 +28,16 @@
           href: service-fabric-quickstart-java-reliable-services.md
 - name: チュートリアル
   items:
+    - name: Service Fabric の管理対象クラスターの作成
+      items:
+        - name: 1 - Service Fabric の管理対象クラスターのデプロイ
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2 - 管理対象クラスター ノードの種類をスケールアウトする
+          href: tutorial-managed-cluster-scale.md
+        - name: 3 - 管理対象クラスター ノードの種類を追加および削除する
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4 - 管理対象クラスターに接続してアプリケーションをデプロイする
+          href: tutorial-managed-cluster-deploy-app.md
     - name: .NET アプリのデプロイ
       items:
         - name: 1 - .NET アプリケーションのビルド
@@ -68,17 +78,7 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 - フェールオーバーとスケール
           href: service-fabric-tutorial-containers-failover.md
-    - name: Service Fabric の管理対象クラスターの作成
-      items:
-        - name: 1 - Service Fabric の管理対象クラスターのデプロイ
-          href: tutorial-managed-cluster-deploy.md
-        - name: 2 - 管理対象クラスター ノードの種類をスケールアウトする
-          href: tutorial-managed-cluster-scale.md
-        - name: 3 - 管理対象クラスター ノードの種類を追加および削除する
-          href: tutorial-managed-cluster-add-remove-node-type.md
-        - name: 4 - 管理対象クラスターに接続してアプリケーションをデプロイする
-          href: tutorial-managed-cluster-deploy-app.md
-    - name: クラスターの作成と管理
+    - name: Azure でのクラスターの作成
       items:
         - name: 1 - Azure でのクラスターの作成
           href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
@@ -106,8 +106,6 @@
           href: service-fabric-tutorial-standalone-clean-up.md
 - name: ベスト プラクティス
   items:
-    - name: Service Fabric のベスト プラクティスの概要
-      href: service-fabric-best-practices-overview.md
     - name: セキュリティ
       href: service-fabric-best-practices-security.md
     - name: ネットワーク
@@ -138,9 +136,9 @@
       href: service-fabric-content-roadmap.md
     - name: アプリケーションのシナリオ
       href: service-fabric-application-scenarios.md
-    - name: アーキテクチャ
+    - name: Architecture
       href: service-fabric-architecture.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Service Fabric のセキュリティ
           href: service-fabric-best-practices-security.md
@@ -156,7 +154,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: Azure セキュリティ ベンチマーク用のセキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/service-fabric-security-baseline?toc=/azure/service-fabric/toc.json
     - name: 用語
       href: service-fabric-technical-overview.md
     - name: アプリケーションの構築
@@ -201,7 +199,7 @@
           items:
             - name: Reliable Actors の概要
               href: service-fabric-reliable-actors-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-reliable-actors-platform.md
             - name: サービスレベルの機能の実装
               href: service-fabric-reliable-actors-using.md
@@ -330,7 +328,7 @@
           items:
             - name: Cluster Resource Manager の概要
               href: service-fabric-cluster-resource-manager-introduction.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: service-fabric-cluster-resource-manager-architecture.md
             - name: クラスターについて説明する
               href: service-fabric-cluster-resource-manager-cluster-description.md
@@ -358,6 +356,8 @@
               href: service-fabric-cluster-resource-manager-movement-cost.md
             - name: 自動スケーリング サービス
               href: service-fabric-cluster-resource-manager-autoscaling.md
+            - name: ノードのタグ付け
+              href: service-fabric-cluster-resource-manager-node-tagging.md
     - name: 監視と診断
       items:
         - name: 監視の概要
@@ -396,6 +396,30 @@
       href: configure-container-repository-credentials.md
 - name: 操作方法ガイド
   items:
+    - name: Service Fabric の管理対象クラスターの使用
+      items:
+        - name: 管理対象クラスター ノードの種類に VM スケールセット拡張機能を追加する
+          href: how-to-managed-cluster-vmss-extension.md
+        - name: NSG ルールおよびその他のマネージド クラスター ネットワーク オプションを追加する
+          href: how-to-managed-cluster-networking.md
+        - name: 管理対象クラスターの可用性ゾーン スパニングを構成する
+          href: how-to-managed-cluster-availability-zones.md
+        - name: 管理対象クラスターの構成
+          href: how-to-managed-cluster-configuration.md
+        - name: 管理対象クラスターのアプリケーション シークレットをデプロイする
+          href: how-to-managed-cluster-application-secrets.md
+        - name: ARM テンプレートを使用して管理対象クラスター アプリケーションをデプロイする
+          href: how-to-managed-cluster-app-deployment-template.md
+        - name: マネージド ID を使用して管理対象クラスター アプリケーションをデプロイする
+          href: how-to-managed-cluster-application-managed-identity.md
+        - name: 管理対象クラスターにステートレス専用のノードの種類をデプロイする
+          href: how-to-managed-cluster-stateless-node-type.md
+        - name: 管理対象クラスター ノードでのディスク暗号化の有効化
+          href: how-to-enable-managed-cluster-disk-encryption.md
+        - name: 管理対象クラスター ノードでのマネージド ディスクの種類を選択する
+          href: how-to-managed-cluster-managed-disk.md
+        - name: マネージド クラスター ノードのマネージド ID を使用する
+          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 開発環境を設定する
       items:
         - name: Windows
@@ -442,20 +466,6 @@
                   href: service-fabric-develop-csharp-applications-with-vs-code.md
                 - name: VS Code を使用した Java Service Fabric アプリケーションの開発
                   href: service-fabric-develop-java-applications-with-vs-code.md
-    - name: Service Fabric の管理対象クラスターの使用
-      items:
-        - name: 管理対象クラスター ノードの種類に仮想マシン スケール セット拡張機能を追加する
-          href: how-to-managed-cluster-vmss-extension.md
-        - name: 管理対象クラスターの構成
-          href: how-to-managed-cluster-configuration.md
-        - name: NSG ルールおよびその他のマネージド クラスター ネットワーク オプションを追加する
-          href: how-to-managed-cluster-networking.md
-        - name: ARM テンプレートを使用して管理対象クラスター アプリケーションをデプロイする
-          href: how-to-managed-cluster-app-deployment-template.md
-        - name: 管理対象クラスター ノードでのディスク暗号化の有効化
-          href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: マネージド クラスター ノードのマネージド ID を使用する
-          href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: 計画と準備
       items:
         - name: クラスター容量の計画
@@ -466,7 +476,7 @@
           href: service-fabric-disaster-recovery.md
         - name: アプリケーション容量の計画
           href: service-fabric-capacity-planning.md
-    - name: クラスターを作成および管理する
+    - name: クラスターの作成と管理
       items:
         - name: Azure 上のクラスター
           items:
@@ -504,7 +514,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: アップグレード
               items:
-                - name: Service Fabric バージョンのアップグレード
+                - name: Service Fabric クラスターのアップグレードの管理
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: クラスター構成のアップグレード
                   href: service-fabric-cluster-config-upgrade-azure.md
@@ -923,12 +933,12 @@
       href: ./policy-reference.md
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 一般的な質問
-      href: service-fabric-common-questions.md
     - name: Service Fabric の管理対象クラスターに関するよくある質問
       href: faq-managed-cluster.md
+    - name: 一般的な質問
+      href: service-fabric-common-questions.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A 質問ページ
       href: /answers/topics/azure-service-fabric.html
     - name: Azure Resource Manager デプロイのガードレール

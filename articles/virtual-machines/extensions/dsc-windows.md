@@ -8,12 +8,12 @@ author: bobbytreed
 ms.author: robreed
 ms.collection: windows
 ms.date: 03/26/2018
-ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d2591fa3b6d69e403935faeca075a2c747026c1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559989"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734740"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -31,11 +31,11 @@ Windows Server 2019、Windows Server 2016、Windows Server 2012R2、Windows Serv
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azure と通信できることが必要になります。また、構成パッケージ (.zip ファイル) が Azure の外部の場所に格納されている場合は、その場所と通信できる必要があります。 
+Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azure と通信できることが必要になります。また、構成パッケージ (.zip ファイル) が Azure の外部の場所に格納されている場合は、その場所と通信できる必要があります。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Azure Resource Manager テンプレートの DSC 拡張機能の settings 部分のスキーマを示しています｡ 
+次の JSON は、Azure Resource Manager テンプレートの DSC 拡張機能の settings 部分のスキーマを示しています｡
 
 ```json
 {
@@ -70,7 +70,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
             "downloadMappings": {
              "specificDependencyKey": "https://myCustomDependencyLocation"
             }
-        } 
+        }
     },
     "protectedSettings": {
         "configurationArguments": {
@@ -121,12 +121,11 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 | protectedSettings.configurationUrlSasToken | string | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
 | protectedSettings.configurationDataUrlSasToken | string | ConfigurationData.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
 
-
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。
 テンプレートは、デプロイ後の構成が必要な仮想マシンを 1 つ以上デプロイするときに最適です。
-Windows 用の DSC 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)にあります。
+Windows 用の DSC 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/automation-configuration/automation-configuration/nested/provisionServer.json#L91)にあります。
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 

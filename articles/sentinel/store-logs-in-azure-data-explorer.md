@@ -14,19 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: b0bffbba34e7816b62325db7999a7f5c6398b881
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 12a6ae76b1eb4dced661b811d8f6e9030f74b4f1
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124511"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795728"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>長期的なログ保持のために Azure Data Explorer を統合する
-
-<!--Info not included:>
-
-Script - can't xref out to a private github repo from docs
--->
 
 既定では、Azure Sentinel に取り込まれたログは Azure Monitor Log Analytics に格納されます。 この記事では、長期保持のために Azure Data Explorer に送信することで Azure Sentinel の保持コストを削減する方法について説明します。
 
@@ -44,7 +39,7 @@ Azure Sentinel は、SIEM および SOAR のフル機能を搭載し、迅速に
 
 定期的な調査や監査など、特定のテーブルに少ない頻度でアクセスするだけでよい場合は、データを Azure Sentinel に保持してもコスト効率がよくないと考えることができます。 この時点で、データを Azure Data Explorer に格納することをお勧めします。より低コストでありながら、Azure Sentinel で実行するのと同じ KQL クエリを使用して探索できます。
 
-[Log Analytics Azure Data Explorer プロキシ機能](//azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)を使用して、Azure Sentinel から Azure Data Explorer のデータに直接アクセスできます。 これを行うには、ログ検索またはブックでクロスクラスター クエリを使用します。
+[Log Analytics Azure Data Explorer プロキシ機能](/azure/azure-monitor/logs/azure-monitor-data-explorer-proxy)を使用して、Azure Sentinel から Azure Data Explorer のデータに直接アクセスできます。 これを行うには、ログ検索またはブックでクロスクラスター クエリを使用します。
 
 > [!IMPORTANT]
 > 分析ルール、UEBA、調査グラフなどの SIEM コア機能は、Azure Data Explorer に格納されているデータをサポートしていません。

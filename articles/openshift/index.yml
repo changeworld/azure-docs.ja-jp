@@ -9,12 +9,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: 06c6b14d62bb471ecc6dee50d72f11469e3cd161
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: 25c96daa5bdebb07eb868a5e2d5b574e14e38d96
+  ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100633208"
+  ms.lasthandoff: 04/16/2021
+  ms.locfileid: "107535619"
 landingContent:
 - title: Azure Red Hat OpenShift について
   linkLists:
@@ -26,23 +26,27 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Azure Red Hat OpenShift 4 クラスターを作成する
+    - text: Azure Red Hat OpenShift クラスターを作成する
       url: tutorial-create-cluster.md
-    - text: Azure Red Hat OpenShift 4 クラスターに接続する
+    - text: Azure Red Hat OpenShift クラスターに接続する
       url: tutorial-connect-cluster.md
-    - text: Azure Red Hat OpenShift 4 クラスターを削除する
+    - text: Azure Red Hat OpenShift クラスターを削除する
       url: tutorial-delete-cluster.md
 - title: 設定
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
-      url: ./howto-create-private-cluster-3x.md
-    - text: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
+    - text: プライベートの Azure Red Hat OpenShift クラスターの作成
+      url: ./howto-create-private-cluster-4x.md
+    - text: Azure Red Hat OpenShift クラスターの DNS 転送を構成する
       url: dns-forwarding.md
-    - text: Azure Red Hat OpenShift 4 の組み込みのコンテナー レジストリを構成する
+    - text: Azure Red Hat OpenShift の組み込みのコンテナー レジストリを構成する
       url: built-in-container-registry.md
-    - text: Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty アプリケーションをデプロイする
+    - text: ソースからアプリケーションをデプロイする
+      url: howto-deploy-with-s2i.md
+    - text: OpenShift Serverless を使用してアプリケーションをデプロイする
+      url: howto-deploy-with-serverless.md
+    - text: Azure Red Hat OpenShift クラスターに Open Liberty/WebSphere Liberty アプリケーションをデプロイする
       url: howto-deploy-java-liberty-app.md
 - title: リファレンス
   linkLists:

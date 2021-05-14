@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 450a12ae5ae1e13c9cc9b5599a41b6c29d740a9f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8f00715eac391e9180c36d8960f54c95772c564
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785327"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753168"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -88,13 +88,19 @@ MVP (Most Valued Professional) の 1 人である Reza Rad の「[Azure Data Fac
 ### <a name="what-are-the-supported-data-stores"></a>どのようなデータ ストアがサポートされますか。
 Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は次のデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
 
-[!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
+[!INCLUDE [data-factory-supported-data-stores](includes/data-factory-supported-data-stores.md)]
 
 > [!NOTE]
 > \* が付いたデータ ストアは、オンプレミスと Azure IaaS のどちらでもサポートされます。ただし、オンプレミス/Azure IaaS のコンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。
 
 ### <a name="what-are-the-supported-file-formats"></a>どのようなファイル形式がサポートされますか。
-[!INCLUDE [data-factory-file-format](../../../includes/data-factory-file-format.md)]
+Azure Data Factory は次のファイル形式をサポートしています。
+
+* [テキスト形式](data-factory-supported-file-and-compression-formats.md#text-format)
+* [JSON 形式](data-factory-supported-file-and-compression-formats.md#json-format)
+* [Avro 形式](data-factory-supported-file-and-compression-formats.md#avro-format)
+* [ORC 形式](data-factory-supported-file-and-compression-formats.md#orc-format)
+* [Parquet 形式](data-factory-supported-file-and-compression-formats.md#parquet-format)
 
 ### <a name="where-is-the-copy-operation-performed"></a>コピー操作はどこで実行されますか。
 詳細については、「 [グローバルに使用できるデータの移動](data-factory-data-movement-activities.md#global) 」を参照してください。 簡単に言うと、オンプレミスのデータ ストアが関係する場合、コピー操作はオンプレミス環境内の Data Management Gateway で実行されます。 また、2 つのクラウド ストア間でデータの移動を行う場合、コピー操作は同じ地理的場所のシンクの場所に最も近いリージョンで実行されます。

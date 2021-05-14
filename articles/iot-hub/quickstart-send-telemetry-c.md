@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: a9478948cd5232c863014631acb884cd637a2f7d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 3aa82d36db7e7c31f956bef940a33d2898302dca
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864003"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755515"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (C)
 
@@ -51,7 +51,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 以下の環境にこれらのパッケージとライブラリをインストールして、SDK を使用できます。
 
-* **Linux**: CPU アーキテクチャ amd64、arm64、armhf、および i386 を使用して、Ubuntu 16.04 および 18.04 用に apt-get パッケージが利用可能です。 詳細については、「[Using apt-get to create a C device client project on Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md)」(apt-get を使用して Ubuntu 上に C デバイス クライアント プロジェクトを作成する) を参照してください。
+* **Linux**: CPU アーキテクチャ amd64、arm64、armhf、および i386 を使用して、Ubuntu 16.04 および 18.04 用に apt-get パッケージが利用可能です。  詳細については、「[Using apt-get to create a C device client project on Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-linux-development-environment)」(apt-get を使用して Ubuntu 上に C デバイス クライアント プロジェクトを作成する) を参照してください。
 
 * **mbed**: mbed プラットフォーム上にデバイス アプリケーションを作成している開発者向けに、ライブラリとサンプルを公開しています。これを利用して、Azure IoT Hub の使用をすぐに開始できます。 詳細については、[mbed ライブラリの使用](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed)に関するページを参照してください。
 

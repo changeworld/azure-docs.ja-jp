@@ -24,10 +24,12 @@
       items:
         - name: Angular
           href: quickstart-v2-angular.md
-        - name: JavaScript - 認証コード フロー
+        - name: Angular - 認証コード フロー
+          href: quickstart-v2-javascript-auth-code-angular.md
+        - name: JavaScript
           href: quickstart-v2-javascript-auth-code.md
-        - name: JavaScript - 暗黙的フロー
-          href: quickstart-v2-javascript.md
+        - name: React - 認証コード フロー
+          href: quickstart-v2-javascript-auth-code-react.md
     - name: Web アプリ
       items:
         - name: ASP.NET
@@ -80,12 +82,14 @@
       items:
         - name: Angular
           href: tutorial-v2-angular.md
+        - name: Angular - 認証コード フロー
+          href: tutorial-v2-angular-auth-code.md
         - name: Blazor WebAssembly
           href: tutorial-blazor-webassembly.md
-        - name: JavaScript - 認証コード フロー
+        - name: JavaScript
           href: tutorial-v2-javascript-auth-code.md
-        - name: JavaScript - 暗黙的フロー
-          href: tutorial-v2-javascript-spa.md
+        - name: React
+          href: tutorial-v2-react.md
     - name: Web アプリ
       items:
         - name: ASP.NET
@@ -373,6 +377,8 @@
               href: msal-b2c-overview.md
             - name: MSAL.js への移行
               href: msal-compare-msal-js-and-adal-js.md
+            - name: MSAL Node への移行
+              href: msal-node-migration.md
             - name: MSAL.js でのシングル サインオン
               href: msal-js-sso.md
             - name: 考慮事項 - IE
@@ -498,7 +504,7 @@
     - name: 複数のテナントからのサインインを受け入れる
       items:
         - name: アプリでサポートされるアカウントを変更する
-          href: quickstart-modify-supported-accounts.md
+          href: ./howto-modify-supported-accounts.md
         - name: マルチテナントのログインを有効にする
           href: howto-convert-app-to-be-multi-tenant.md
         - name: パブリッシャー ドメインを構成する
@@ -512,6 +518,16 @@
           href: howto-add-app-roles-in-azure-ad-apps.md
     - name: Microsoft Graph API を使用する
       href: microsoft-graph-intro.md
+    - name: 回復性のための構築
+      items:
+        - name: 開発の概要
+          href: ../fundamentals/resilience-app-development-overview.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: クライアント アプリケーション
+          href: ../fundamentals/resilience-client-app.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: デーモン アプリケーション
+          href: ../fundamentals/resilience-daemon-app.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+        - name: OpenID Connect のメタデータの更新
+          href: howto-build-services-resilient-to-metadata-refresh.md
     - name: アプリを市場に導入する
       items:
         - name: ブランド化ガイドラインに従う
@@ -546,7 +562,9 @@
         - name: 認証時のエラーを診断する
           href: vs-active-directory-error.md
     - name: アプリ登録を削除する
-      href: quickstart-remove-app.md
+      href: ./howto-remove-app.md
+    - name: 削除されたアプリの登録を復元または削除する
+      href: ./howto-restore-app.md
 - name: リファレンス
   items:
     - name: 用語集
@@ -587,6 +605,8 @@
             - name: OAuth 2.0 リソース所有者パスワード資格情報の付与
               displayName: ROPC
               href: v2-oauth-ropc.md
+            - name: OAuth 2.0 SAML ベアラー アサーション フロー
+              href: v2-saml-bearer-assertion.md
             - name: 署名キーのロールオーバー
               href: active-directory-signing-key-rollover.md
             - name: トークン交換シナリオ
@@ -612,6 +632,8 @@
               href: active-directory-saml-protocol-reference.md
             - name: SAML トークン
               href: reference-saml-tokens.md
+    - name: Azure CLI
+      href: /cli/azure/identity
     - name: アプリケーションの種類と OAuth 2.0
       displayName: 'App types, OAuth'
       href: v2-app-types.md
@@ -625,6 +647,8 @@
       href: reference-v2-libraries.md
     - name: Microsoft Graph の ID およびアクセスに関する API
       href: /graph/api/resources/azure-ad-overview
+    - name: 要求のマッピング ポリシーの種類
+      href: reference-claims-mapping-policy-type.md
     - name: 認証と承認エラー コード
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
@@ -633,6 +657,8 @@
     - name: モバイル シングル サインオン (SSO)
       href: mobile-sso-support-overview.md
       displayName: 'android, ios'
+    - name: クレームのチャレンジと要求
+      href: claims-challenge.md
     - name: アクセス許可と同意
       displayName: Scopes
       items:

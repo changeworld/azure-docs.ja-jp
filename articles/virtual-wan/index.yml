@@ -10,12 +10,13 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 01/15/2020
-  ms.openlocfilehash: 3aaf42935e292bda64d9227d01f498c83f4c9f7a
-  ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+  ms.custom: e2e-hybrid
+  ms.openlocfilehash: a6a0660d960ad04145288475986f1bd40143b0aa
+  ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/16/2021
-  ms.locfileid: "98250776"
+  ms.lasthandoff: 04/27/2021
+  ms.locfileid: "108071836"
 landingContent:
 - title: Virtual WAN について
   linkLists:
@@ -31,6 +32,12 @@ landingContent:
       url: virtual-wan-locations-partners.md
     - text: よく寄せられる質問
       url: virtual-wan-faq.md
+  - linkListType: video
+    links:
+    - text: Azure Virtual WAN を使用したリモート ユーザー接続
+      url: https://www.youtube.com/watch?v=nP5XntjA7OQ
+    - text: Azure Virtual WAN と SD-WAN を使用してハイブリッド ネットワークを設計する
+      url: https://www.youtube.com/watch?v=2g-_empU0GU&list=PLLasX02E8BPA5V-waZPcelhg9l3IkeUQo&index=6
 - title: はじめに
   linkLists:
   - linkListType: tutorial
@@ -102,7 +109,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: /cli/azure/ext/virtual-wan/network
+      url: /cli/azure/
     - text: Azure PowerShell
       url: /powershell/module/az.network#networking
     - text: REST

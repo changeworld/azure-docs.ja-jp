@@ -3,19 +3,19 @@ title: Azure CLI を使用して特殊化されたイメージ バージョン�
 description: Azure CLI を使用して、共有イメージ ギャラリー内の特殊化されたイメージ バージョンからスケール セットを作成します。
 author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
-ms.reviewer: akjosh
+ms.reviewer: mimckitt
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5fc88c00d548c0a034984976557d316fdac7620f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c65f8c3ffcf8e48153701c8d4d2b316c2b41f375
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792347"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768465"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI で特殊化されたイメージ バージョンを使用してスケール セットを作成する
 

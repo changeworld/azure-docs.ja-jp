@@ -11,12 +11,12 @@ metadata:
   author: TheovanKraay
   ms.author: thvankra
   ms.date: 01/18/2021
-  ms.openlocfilehash: 8300012954756f1083c93745299ca57e4c4db0d3
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 6767a4f2a423b70fdfc3611ce188dcc33122c80e
+  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101742702"
+  ms.lasthandoff: 05/07/2021
+  ms.locfileid: "109517120"
 landingContent:
 - title: Azure Managed Instance for Apache Cassandra について
   linkLists:
@@ -28,12 +28,16 @@ landingContent:
     links:
     - text: Azure Managed Instance for Apache Cassandra と Azure Cosmos DB Cassandra API
       url: compare-cosmosdb-managed-instance.md
+- title: クラスターを作成してデプロイする
+  linkLists:
   - linkListType: quickstart
     links:
     - text: クラスターの作成 - ポータル
       url: create-cluster-portal.md
     - text: クラスターの作成 - CLI
       url: create-cluster-cli.md
+    - text: マルチリージョン クラスターの作成 - CLI
+      url: create-multi-region-cluster.md
     - text: Azure Databricks を使用して Spark クラスターをデプロイする
       url: deploy-cluster-databricks.md
   - linkListType: concept

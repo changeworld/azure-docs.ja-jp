@@ -51,7 +51,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/automation-security-baseline?toc=/azure/automation/TOC.json
     - name: データのセキュリティ
       items:
         - name: セキュリティで保護された資産の暗号化
@@ -66,6 +66,14 @@
           href: automation-create-standalone-account.md
         - name: Resource Manager テンプレートを使って Automation アカウントを作成する
           href: quickstart-create-automation-account-template.md
+        - name: マネージド ID
+          items:
+            - name: マネージド ID の有効化
+              href: enable-managed-identity-for-automation.md
+            - name: マネージド ID を無効にする
+              href: disable-managed-identity-for-automation.md
+            - name: マネージド ID のトラブルシューティング
+              href: troubleshoot/managed-identity.md
         - name: 実行アカウント
           items:
             - name: 実行アカウントを作成する
@@ -86,6 +94,8 @@
           href: automation-role-based-access-control.md
         - name: Automation アカウントを別のサブスクリプションに移動する
           href: how-to/move-account.md
+        - name: Automation アカウントを削除する
+          href: delete-account.md
         - name: Orchestrator から Azure Automation (ベータ版) に移行する
           href: automation-orchestrator-migration.md
     - name: 共有リソース
@@ -114,7 +124,7 @@
           href: troubleshoot/shared-resources.md
     - name: プロセスの自動化
       items:
-        - name: PowerShell ギャラリーの Runbook とモジュールを使用する
+        - name: 既存の Runbook とモジュールを使用する
           href: automation-runbook-gallery.md
         - name: PowerShell ワークフローの概要
           href: automation-powershell-workflow.md
@@ -136,8 +146,6 @@
               href: start-runbooks.md
             - name: webhook から Runbook を開始する
               href: automation-webhooks.md
-            - name: 監視タスクによる更新されたファイルの追跡
-              href: automation-watchers-tutorial.md
             - name: グラフィック Runbook SDK の操作
               href: graphical-runbook-sdk.md
         - name: Runbook を監視する
@@ -184,6 +192,8 @@
               href: automation-dsc-compile.md
             - name: 非準拠の State Configuration サーバーを修復する
               href: automation-dsc-remediate.md
+            - name: ノードと構成を削除する
+              href: state-configuration/remove-node-and-configuration-package.md
             - name: Chocolatey を使用して継続的配置を設定する
               href: automation-dsc-cd-chocolatey.md
             - name: Azure Monitor ログとの統合
@@ -312,7 +322,7 @@
               href: troubleshoot/update-agent-issues.md
             - name: Linux Update エージェントに関する問題のトラブルシューティング
               href: troubleshoot/update-agent-issues-linux.md
-    - name: コンポーネント間のシナリオ
+    - name: シナリオ
       items:
         - name: Runbook からメールを送信する
           href: automation-send-email.md
@@ -320,6 +330,8 @@
           href: automation-alert-metric.md
         - name: Azure アラートから Runbook をトリガーする
           href: automation-create-alert-triggered-runbook.md
+        - name: 監視タスクによる更新されたファイルの追跡
+          href: automation-scenario-using-watcher-task.md
         - name: Office 365 サービスを管理する
           href: manage-office-365.md
         - name: Automation Runbook を使用して AWS VM をデプロイする
@@ -332,6 +344,8 @@
           href: ../data-factory/how-to-schedule-azure-ssis-integration-runtime.md#create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir
 - name: リファレンス
   items:
+    - name: Azure CLI
+      href: /cli/azure/automation
     - name: Azure PowerShell Az
       href: /powershell/module/az.automation
     - name: Azure PowerShell AzureRM

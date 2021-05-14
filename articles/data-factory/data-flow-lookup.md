@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/19/2021
-ms.openlocfilehash: b8754742c572a8dbc1f55c64e47bec640d757d65
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 129b8460d22de6f03a136dcb30b8f686738a9bdd
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739370"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734200"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>マッピング データ フローでの参照変換
 
@@ -98,8 +98,8 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
     asc(ProductKey, true),
     broadcast: 'auto')~> LookupKeys
 ```
-## 
-次のステップ
+
+## <a name="next-steps"></a>次のステップ
 
 * [結合](data-flow-join.md)変換と[存在](data-flow-exists.md)変換はどちらも、複数のストリーム入力を受け取ります
 * ```isMatch()``` と共に[条件分割変換](data-flow-conditional-split.md)を使用して、一致する値と一致しない値に行を分割します

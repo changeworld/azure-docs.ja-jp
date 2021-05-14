@@ -12,12 +12,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: b82c42d27d05cd84cf7fc59b711c24794a8e2f17
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 96b35e65f11e9f0c1dec6b75465454be962dce46
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314016"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735136"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と Azure CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -242,7 +242,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
    # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-   ```powershell
+   ```azurecli
    az account show - s <SubscriptionId>
    ```
 

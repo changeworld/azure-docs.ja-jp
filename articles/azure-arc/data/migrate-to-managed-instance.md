@@ -4,17 +4,17 @@ description: SQL Server から Azure Arc 対応 SQL Managed Instance にデー�
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 011eb74158d9e004aca04c595e5cfe4b76d3cb51
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 1f588ca0762cf201bf532d7b9d97ea6c4e21c9b4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163357"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734956"
 ---
 # <a name="migrate-sql-server-to-azure-arc-enabled-sql-managed-instance"></a>移行する:SQL Server から Azure Arc 対応 SQL Managed Instance
 

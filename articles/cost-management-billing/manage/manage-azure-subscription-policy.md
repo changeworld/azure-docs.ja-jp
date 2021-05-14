@@ -8,17 +8,14 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.reviewer: banders
 ms.author: andalmia
-ms.openlocfilehash: 105e090655021ed4046f8880ef9816d7f7ff559f
-ms.sourcegitcommit: a9ce1da049c019c86063acf442bb13f5a0dde213
+ms.openlocfilehash: 4d0ebd73065c538a78c950ab48254cb06d113897
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2021
-ms.locfileid: "105631738"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108804522"
 ---
 # <a name="manage-azure-subscription-policies"></a>Azure サブスクリプションのポリシーを管理する
-
->[!NOTE]
->この機能は現在プレビュー段階です。段階的にロールアウトされるため、Azure portal ですべてのユーザーにこのエクスペリエンスが提供されるわけではありません。
 
 この記事は、Azure サブスクリプションのポリシーをサブスクリプションの操作のために構成し、ディレクトリからの Azure サブスクリプションの移動とディレクトリへの Azure サブスクリプションの移動を制御する際に役立ちます。
 

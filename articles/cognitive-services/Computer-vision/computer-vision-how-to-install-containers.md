@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 8b1e7a6cc31e141886e75f70ff7625e230df5b14
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 42f840c9237d22638236efb758c9b789501b0ce5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131785"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773433"
 ---
 # <a name="install-read-ocr-docker-containers"></a>Read OCR Docker コンテナーをインストールする
 
@@ -471,6 +471,6 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
 * [OCR の概要](overview-ocr.md)に関するページを読み、印刷および手書きのテキストの認識に関する詳細について確認する
-* コンテナーでサポートされているメソッドの詳細について、[Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) を参照する。
+* コンテナーでサポートされているメソッドの詳細について、[Read API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) を参照する。
 * [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

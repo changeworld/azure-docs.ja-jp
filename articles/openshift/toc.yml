@@ -26,6 +26,8 @@
           href: howto-create-private-cluster-4x.md
         - name: DNS 転送を構成する
           href: dns-forwarding.md
+        - name: エグレス トラフィックを制限する
+          href: howto-restrict-egress.md
     - name: Storage
       items:
         - name: カスタマー マネージド キーを使用して PVC を暗号化する (プレビュー)
@@ -60,6 +62,10 @@
               href: ../azure-monitor/containers/container-insights-optout-openshift-v4.md
     - name: アプリケーションの開発と実行
       items:
+        - name: ソース コードからアプリケーションをデプロイする
+          href: howto-deploy-with-s2i.md
+        - name: OpenShift Serverless を使用してアプリケーションをデプロイする
+          href: howto-deploy-with-serverless.md
         - name: Open Liberty/WebSphere Liberty アプリをデプロイする
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
@@ -107,6 +113,8 @@
       href: /cli/azure/aro
     - name: Azure Red Hat OpenShift REST API
       href: /rest/api/openshift
+    - name: Azure CLI
+      href: /cli/azure/openshift
 - name: リソース
   items:
     - name: よく寄せられる質問
@@ -117,6 +125,8 @@
       href: support-policies-v4.md
     - name: ARO 4 のサポート ライフサイクル
       href: support-lifecycle.md
+    - name: 責任マトリックス
+      href: responsibility-matrix.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift 4 のドキュメント

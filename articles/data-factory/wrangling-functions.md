@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: f7a4041d87e00fa01ae5ae4dff0cade3b9755d31
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 5985db37e6b88dc39ce1ac166c4aaf9ba368240d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600941"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737706"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>データ ラングリングのための Power Query の変換関数
 
@@ -63,8 +63,8 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 * 論理列としての行フィルター
 * 数値、テキスト、論理、日付、および日時の定数
 
-<a name="mergingjoining-tables"></a>テーブルのマージ/結合
-----------------------
+## <a name="mergingjoining-tables"></a>テーブルのマージ/結合
+
 * Power Query は入れ子になった結合を生成します (Table.NestedJoin。ユーザーは [Table.AddJoinColumn](/powerquery-m/table-addjoincolumn) を手動で書き込むこともできます)。
     ユーザーはその後、入れ子になった結合列を入れ子になっていない結合に展開する必要があります (Table.ExpandTableColumn、他のコンテキストではサポートされていない)。
 * M 関数 [Table.Join](/powerquery-m/table-join) を直接記述することで、追加の拡張手順は不要になりますが、結合されたテーブル間に重複する列名がないことをユーザーが確認する必要があります

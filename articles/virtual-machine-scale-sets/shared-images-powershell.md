@@ -7,13 +7,13 @@ ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: c6e8eaafa8d6e8b1f68873130b5ff56484fda049
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.reviewer: mimckitt
+ms.openlocfilehash: c3ae34655598454e1a91f9353ed993151efa8f6a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444022"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738217"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Azure PowerShell を使用した仮想マシン スケール セットの共有イメージの作成および使用
 

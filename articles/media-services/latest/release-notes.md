@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 40d61de140cb0b3537c56af37eb18f004a72c148
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bb331f8829252b69499944e5354c9343e96c78bd
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138897"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684741"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -62,7 +62,7 @@ AudioAnalyzer プリセット (基本と標準モードの両方) に、ビデ�
 
 Standard Encoder で、8 ビットの HEVC (H.265) エンコードがサポートされるようになりました。 HEVC コンテンツは、'hev1' 形式を使用して、Dynamic Packager を通じて配信およびパッケージ化できます。  
 
-HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_HEVC)で入手できます。
+HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)で入手できます。
 カスタム エンコードに加えて、次の組み込み HEVC エンコード プリセットを新しく使用できるようになりました。
 
 - H265ContentAwareEncoding
@@ -98,7 +98,7 @@ v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard
 新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 バージョンのエンコード API では次の機能を使用できるようになりました。
 
 - 新しい **Jobinputclip** サポートを使用して、複数の入力ファイルを結合できるようになりました。
-    - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets)する方法を示しています。
+    - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)する方法を示しています。
 - オーディオ トラックのオプションにより、お客様は着信オーディオ トラックを選択してマップし、出力にルーティングしてエンコードできます
     - **Audiotrackdescriptor** とトラックのオプションの詳細については、[REST API OpenAPI](https://github.com/Azure/azure-rest-api-specs/blob/8d15dc681b081cca983e4d67fbf6441841d94ce4/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json#L385) に関するセクションを参照してください。
 - エンコードでのトラックの選択 - お客様は、ABR ソース ファイル、または複数のビットレート トラックを含むライブ アーカイブからトラックを選択できます。 ライブ イベント アーカイブ ファイルから MP4 を生成する場合に非常に便利です。
