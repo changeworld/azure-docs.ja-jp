@@ -12,21 +12,18 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 960d27e9f67099ca7a19610011a059c2eeb602ae
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 563f4bb3eeab6bc0329b4eb46ba06c1d4fedf259
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071939"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655248"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>クイックスタート: 認可コード フローを使用して React SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
 このクイックスタートでは、認可コード フローを使用して、JavaScript React シングルページ アプリケーション (SPA) でユーザーをサインインさせ、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。 
 
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
-
-> [!IMPORTANT]
-> MSAL React [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

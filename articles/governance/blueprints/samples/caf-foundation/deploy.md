@@ -3,12 +3,12 @@ title: CAF 基盤ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む CAF Foundation ブループリント サンプルのデプロイ手順です。
 ms.date: 03/12/2021
 ms.topic: sample
-ms.openlocfilehash: a8d41364451bf2ebf1e48b90fad74f4b24c804e1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 281bd0fdae5aa144799499d583b5673a569612b1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103470151"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757873"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルをデプロイする
 
@@ -86,7 +86,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      - **Organization**:組織名 (Contoso など) を入力します。一意である必要があります。
      - **Azure リージョン**: デプロイのための Azure リージョンを選択します。
      - **許可されている場所**: リソースを構築してよい Azure リージョンを指定します。
-     
+
    - アーティファクトのパラメーター
 
      このセクションで定義するパラメーターは、定義対象のアーティファクトに適用されます。 これらのパラメーターはブループリントの割り当て時に定義されるので、[動的パラメーター](../../concepts/parameters.md#dynamic-parameters)です。 アーティファクトのパラメーターとその説明を含む詳しい一覧については、「[アーティファクトのパラメーター表](#artifact-parameters-table)」を参照してください。

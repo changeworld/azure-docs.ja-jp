@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 0728b45a72f7d4fe67807be5c9c2b5290af11c51
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8b8f42d75a0d214bdc504c8cc0adb6f234ea036e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143469"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751123"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
 
@@ -20,8 +20,6 @@ Azure Static Web Apps では、次のプロバイダーでの認証を管理す�
 
 - Azure Active Directory
 - GitHub
-- Facebook
-- Google<sup>1</sup>
 - Twitter
 
 プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_staticwebapp.config.json_ ファイルに定義された規則によって [ルート](configuration.md#routes)へのアクセス権が付与されます。
@@ -56,9 +54,7 @@ Web サイトにユーザーを追加するには、特定のロールにユー�
 | 承認プロバイダー | 公開されるユーザーの情報 |
 | ---------------------- | ---------------- |
 | Azure Active Directory | メール アドレス    |
-| Facebook               | メール アドレス    |
 | GitHub                 | username         |
-| Google<sup>1</sup>     | メール アドレス    |
 | Twitter                | username         |
 
 1. [Azure portal](https://portal.azure.com) 上で Static Web Apps リソースに移動します。
@@ -132,9 +128,7 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 | 承認プロバイダー | ログイン ルート             |
 | ---------------------- | ----------------------- |
 | Azure Active Directory | `/.auth/login/aad`      |
-| Facebook               | `/.auth/login/facebook` |
 | GitHub                 | `/.auth/login/github`   |
-| Google<sup>1</sup>     | `/.auth/login/google`   |
 | Twitter                | `/.auth/login/twitter`  |
 
 たとえば、GitHub にログインするために、次のスニペットのようなログイン リンクを含めることができます。

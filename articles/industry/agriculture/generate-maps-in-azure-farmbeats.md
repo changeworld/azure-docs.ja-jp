@@ -1,16 +1,16 @@
 ---
 title: マップの生成
 description: この記事では、Azure FarmBeats でマップを生成する方法について説明します。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.openlocfilehash: d0176fd337abd37f97a6dbe5cf7c68ccf94114d0
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.author: riyazp
+ms.openlocfilehash: 0b936ecbd80ba0b258cea8b043f4bef789b67a35
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173866"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751303"
 ---
 # <a name="generate-maps"></a>マップの生成
 

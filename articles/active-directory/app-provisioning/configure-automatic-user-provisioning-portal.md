@@ -3,20 +3,20 @@ title: Azure Active Directory でのエンタープライズ アプリのユー�
 description: Azure Active Directory を使用してエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する方法について説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/18/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5dceeb11ed9a4d6af88650a6146f58db412748d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2403ef54dfe3e0262440944b134e8021bc4c67c1
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579418"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782885"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 

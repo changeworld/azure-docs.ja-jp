@@ -1,14 +1,14 @@
 ---
 title: 'クイックスタート: ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)'
 description: このクイックスタートでは、ディストリビューションをカスタマイズするために使用できるインフラストラクチャを含むマイクロ エージェントについて説明します。
-ms.date: 1/18/2021
+ms.date: 05/10/2021
 ms.topic: quickstart
-ms.openlocfilehash: a3a8f82989d6abbaf2657e4b45638c77b3b2f704
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b52c985619e317421a1597fee77911d9bc1e81d2
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384599"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664854"
 ---
 # <a name="quickstart-build-the-defender-micro-agent-from-source-code-preview"></a>クイックスタート: ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)
 
@@ -103,4 +103,5 @@ ms.locfileid: "106384599"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Defender for IoT ソリューションを構成](quickstart-configure-your-solution.md)します。
+> [!div class="nextstepaction"]
+> [Azure Defender for IoT ソリューションを構成](quickstart-configure-your-solution.md)します。

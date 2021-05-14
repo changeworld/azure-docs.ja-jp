@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: jeedes
-ms.openlocfilehash: a846899ba8f9b9e7c0d2e54744f5e5044ca7a2d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04d93913711dc8f03e35ac811b46158dfd038c61
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732057"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750697"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
@@ -171,6 +171,10 @@ Google Cloud (G Suite) Connector に対する Azure AD SSO を構成してテス
 1. **[Google Cloud (G Suite) Connector のセットアップ]** セクションで、自分の要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+    ```Logout URL
+    https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

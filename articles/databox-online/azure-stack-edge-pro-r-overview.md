@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 02/22/2021
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 01e274ebb9746004713c3f3e6a36f9088a597802
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b07fe5ad07cca8c8e151e8232e3ab165dc476be2
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140736"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109732679"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R とは
 
@@ -67,6 +67,8 @@ Azure Stack Edge Pro R ソリューションは、Azure Stack Edge リソース�
 - **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセス可能な Web インターフェイスから、ラグドな Azure Stack Edge Pro R デバイスを管理できる、Azure portal でのリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
 
 - **Azure Stack Edge Pro R のローカル Web UI** - Azure Stack Edge Pro R デバイス上のブラウザー ベースのローカル ユーザー インターフェイス。主にデバイスの初期構成を想定しています。 他にも、ローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
+
+    [!INCLUDE [azure-stack-edge-gateway-local-web-ui-languages](../../includes/azure-stack-edge-gateway-local-web-ui-languages.md)]
 
 
 ## <a name="region-availability"></a>利用可能なリージョン

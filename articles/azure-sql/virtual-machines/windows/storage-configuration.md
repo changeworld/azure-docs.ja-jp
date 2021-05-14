@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: cf41d6f9219397e439e8d89ea011c454662e6903
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c1b4980c401fd91c589b080e907e651a59c6ab43
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126491"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753913"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>SQL Server VM のストレージを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -89,7 +89,7 @@ Azure portal で SQL Server VM を作成する詳しい手順については、[
 
 次のクイック スタート テンプレートを使用すると、ストレージ最適化を使用して SQL Server VM をデプロイできます。 
 
-* [ストレージ最適化を使用して VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [ストレージ最適化を使用して VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sqlvirtualmachine/sql-vm-new-storage/)
 * [UltraSSD を使用して VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
 
 ## <a name="existing-vms"></a>既存の VM

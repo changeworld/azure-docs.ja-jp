@@ -3,17 +3,17 @@ title: Microsoft Azure Maps Creator (プレビュー) を管理する
 description: この記事では Microsoft Azure Maps Creator (プレビュー) を管理する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/16/2021
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24a462fdb2c68bcccd539c9d18252822e2730bd6
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100559112"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326887"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>Azure Maps Creator (プレビュー) を管理する 
 
@@ -21,7 +21,7 @@ ms.locfileid: "100559112"
 > Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Maps Creator を使用すると、プライベートな屋内マップ データを作成できます。 Azure Maps API と Indoor Maps モジュールを使用して、対話型で動的な屋内マップ Web アプリケーションを開発できます。 現在、Creator は、S1 価格レベルを使用して米国内でのみ利用できます。
+Azure Maps Creator を使用すると、プライベートな屋内マップ データを作成できます。 Azure Maps API と Indoor Maps モジュールを使用して、対話型で動的な屋内マップ Web アプリケーションを開発できます。 現在、Creator は、Gen 2 または Gen 1 (S1) 価格レベルを使用して米国内でのみ利用できます。
 
 この記事では、Azure Maps アカウントで Creator リソースを作成および削除する手順について説明します。
 

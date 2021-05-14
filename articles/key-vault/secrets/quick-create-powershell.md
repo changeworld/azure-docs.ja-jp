@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8a0ebfc90fb57a6e67d7c9e41b78d9db502b2720
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 6d4864252aef5ea241c88abfd2fb4eee35f8c6ae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814642"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770751"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -69,14 +69,7 @@ $secret = Set-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "E
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
 ```azurepowershell-interactive
-$secret = Get-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "ExamplePassword"
-$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
-try {
-   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
-} finally {
-   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
-}
-Write-Output $secretValueText
+$secret = Get-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "ExamplePassword" -AsPlainText
 ```
 
 これで、キー コンテナーを作成し、シークレットを格納した後、取得しました。

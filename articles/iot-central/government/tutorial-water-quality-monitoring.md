@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c61e371cd22c305daaad6369d364b49d8db8e7d3
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: bdebe0d29f6ef781cc4b4747ff80010eeac9ff7e
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203435"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684255"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central で水質のモニタリング アプリケーションを作成する
 
@@ -55,8 +55,6 @@ ms.locfileid: "108203435"
     * **アプリケーション名**:既定では、アプリケーション名は、**Water quality monitoring** の後に IoT Central が生成する一意の ID 文字列が続く形式です。 必要に応じて、表示名を入力したり、後でアプリケーション名を変更したりできます。
     * **URL**: 必要な URL を入力したり、後で URL 値を変更したりできます。
     * Azure サブスクリプションをお持ちの場合は、 **[ディレクトリ]** 、 **[Azure サブスクリプション]** 、 **[場所]** の値を入力します。 サブスクリプションをお持ちでない場合は、 **[7-day free trial]\(7 日間の無料試用版\)** を有効にし、必須の連絡先情報を入力できます。
-
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 1. ページの左下にある **[作成]** ボタンを選択します。
 

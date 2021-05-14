@@ -3,12 +3,12 @@ title: Azure Event Grid でのカスタム トピック
 description: Azure Event Grid でのカスタム トピックについて説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c211e529e5382fd655fca6d78ab32409cbff4453
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86113787"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736648"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure Event Grid でのカスタム トピック
 Event Grid のトピックには、ソースがイベントを送信するエンドポイントが含まれます。 発行元は、イベント グリッド トピックを作成し、イベント ソースにトピックが 1 つ必要か、あるいは複数のイベント ソースが必要かを決定します。 トピックは、関連するイベントのコレクションに使用されます。 サブスクライバーは、特定の種類のイベントに応答するために、どのトピックをサブスクライブするかを決定します。
@@ -65,8 +65,8 @@ Event Grid のトピックには、ソースがイベントを送信するエン
 ## <a name="arm-template-tutorials"></a>ARM テンプレートのチュートリアル
 |タイトル  |説明  |
 |---------|---------|
-| [Resource Manager テンプレート: カスタム トピックと Webhook エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | カスタム トピックとそのカスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Webhook にイベントを送信します。 |
-| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
+| [Resource Manager テンプレート: カスタム トピックと Webhook エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid) | カスタム トピックとそのカスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.eventgrid/event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。 

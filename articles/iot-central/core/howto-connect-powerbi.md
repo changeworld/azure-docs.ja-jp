@@ -7,16 +7,14 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea4a47f1ba3eac39820e839a10330840f57afe42
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3f933393b331d24e5de05a00d1abdc7302282308
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629072"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684147"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
-
-*このトピックは、管理者とソリューション開発者を対象としています。*
 
 > [!Note] 
 > このソリューションは、[従来のデータ エクスポート機能](./howto-export-data-legacy.md)を使用します。 最新のデータ エクスポートを使用して Power BI に接続する方法の最新のガイダンスについては、しばらくお待ちください。
@@ -34,11 +32,10 @@ Azure IoT Central V3 用の Power BI ソリューションを使用して、IoT 
 
 ## <a name="prerequisites"></a>前提条件
 
-このハウツー ガイドの手順を完了するには、アクティブな Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+この攻略ガイドの手順を完了するには、次が必要です。
 
-ソリューションを設定するには、以下のリソースが必要です。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
-- バージョン 3 の IoT Central アプリケーション。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。 IoT Central アプリケーションを作成する方法については、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」を参照してください。
 - テレメトリ、デバイス、デバイス テンプレートを Azure BLOB ストレージにエクスポートするように構成された、従来の継続的データ エクスポート。 詳しくは、[従来のデータ エクスポートに関するドキュメント](howto-export-data-legacy.md)を参照してください。
   - BLOB コンテナーにデータをエクスポートしているのは IoT Central アプリケーションのみであることを確認します。
   - デバイスからは、[JSON でエンコードされたメッセージを送信する必要があります](../../iot-hub/iot-hub-devguide-messages-d2c.md)。 デバイスのメッセージ システム プロパティでは、`contentType:application/JSON` に加え、`contentEncoding:utf-8`、`contentEncoding:utf-16`、または `contentEncoding:utf-32` を指定する必要があります。

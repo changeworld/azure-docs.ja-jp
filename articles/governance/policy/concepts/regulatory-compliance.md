@@ -3,12 +3,12 @@ title: イニシアチブ定義の規制コンプライアンス
 description: イニシアチブ定義を使用して、アクセスの制御、構成管理などの規制ドメイン別にポリシーをグループ化する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 08173cd94e0841fa7a18fd55d53aa97281724ede
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d408d4c2c720a81de315680f774482592b7552b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094066"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752689"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Azure Policy の規制コンプライアンス
 
@@ -29,7 +29,7 @@ Microsoft が責任を持つコントロールは、`type`[静的](./definition-
 
 ## <a name="regulatory-compliance-in-portal"></a>ポータルの規制コンプライアンス
 
-[グループ](./initiative-definition-structure.md#policy-definition-groups)を使用してイニシアチブ定義を作成した場合、ポータルにあるそのイニシアチブの **コンプライアンス** 詳細ページに追加情報が表示されます。 
+[グループ](./initiative-definition-structure.md#policy-definition-groups)を使用してイニシアチブ定義を作成した場合、ポータルにあるそのイニシアチブの **コンプライアンス** 詳細ページに追加情報が表示されます。
 
 新しいタブ **[コントロール]** がページに追加されます。 フィルター処理は **コンプライアンス ドメイン** ごとに使用でき、ポリシー定義は **policyMetadata** オブジェクトの `title` フィールドによってグループ化されます。 各行は **コントロール** を表します。コンプライアンスの状態、所属する **コンプライアンス ドメイン**、責任情報、およびその **コントロール** を構成する非準拠ポリシー定義と準拠ポリシー定義の数を示します。
 

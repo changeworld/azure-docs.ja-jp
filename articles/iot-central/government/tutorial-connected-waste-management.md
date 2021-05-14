@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ff7cfb8c7aa8469111d4531da17c7cd184920f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42a82a59483a582e0d395092558665b12e1cd5a3
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727568"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684363"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>チュートリアル:接続された廃棄物管理アプリを作成する
 
@@ -53,8 +53,6 @@ Azure サブスクリプションをお勧めします。 また、7 日間無�
     * **アプリケーション名**: 既定では、**Connected waste management** に続けて、Azure IoT Central によって生成される一意の ID 文字列が付加されます。 必要に応じて、わかりやすいアプリケーション名を選んでください。 後でアプリケーション名を変更することもできます。
     * **URL**。 必要に応じて、目的の URL を選択できます。 URL は後から変更できます。 
     * **価格プラン**。 Azure サブスクリプションをお持ちの場合は、 **[課金情報]** ダイアログ ボックスの該当するフィールドに、ご自分のディレクトリ、Azure サブスクリプション、リージョンを入力してください。 サブスクリプションをお持ちでない場合は、 **[Free]\(無料\)** を選択して、7 日間の試用版サブスクリプションを有効にし、必須の連絡先情報を入力してください。  
-
-    ディレクトリとサブスクリプションの詳細については、「[クイックスタート - Azure IoT Central アプリケーションを作成する](../core/quick-deploy-iot-central.md)」を参照してください。
 
 1. ページの下部にある **[作成]** を選択します。 
 

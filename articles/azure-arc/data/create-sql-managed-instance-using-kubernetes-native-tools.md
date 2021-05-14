@@ -4,17 +4,17 @@ description: Kubernetes ツールを使用して SQL マネージド インス�
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 02/11/2021
 ms.topic: how-to
-ms.openlocfilehash: d23df80a3f80ed96779297bac12ef0ed8d2927d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ca8712f0cbb1c9180b4c84e682512c348abeac9
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687925"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736342"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>Kubernetes ツールを使用して Azure SQL マネージド インスタンスを作成する
 

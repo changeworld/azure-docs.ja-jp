@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Data Box に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.topic: sample
 author: alkohli
 ms.author: alkohli
 ms.service: databox
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: abdc0a7ecfce6084b0e332462ecd9e55a44741a6
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 10c2bfe4b73e25fd912558f61b3543876173f388
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108179415"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758021"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-box"></a>Azure Data Box 用の Azure Policy 規制コンプライアンス コントロール
 

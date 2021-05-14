@@ -31,15 +31,6 @@
     - name: ファイルの並列処理 - Python
       displayName: 'tutorial, hpc, high-performance, large'
       href: tutorial-parallel-python.md
-    - name: Arnold を使用したシーンのレンダリング
-      displayName: tutorial
-      href: tutorial-rendering-cli.md
-    - name: Batch Explorer を使用したレンダリング
-      displayName: tutorial
-      href: tutorial-rendering-batchexplorer-blender.md
-    - name: 並列 R シミュレーション
-      displayName: 'tutorial, doAzureParallel, rstudio'
-      href: tutorial-r-doazureparallel.md
     - name: Batch と Functions を使用した OCR
       displayName: 'trigger, optical'
       href: tutorial-batch-functions.md
@@ -76,7 +67,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/batch-security-baseline?toc=/azure/batch/TOC.json
         - name: セキュリティの運用方法
           href: security-best-practices.md
     - name: Batch サービスのワークフローとリソース
@@ -123,6 +114,8 @@
           href: private-connectivity.md
         - name: 顧客管理キーの構成
           href: batch-customer-managed-key.md
+        - name: リージョン間の移動
+          href: account-move.md
     - name: Azure AD による認証
       items:
         - name: Batch サービスでの Azure AD
@@ -172,6 +165,9 @@
         - name: マネージド ID の構成
           displayName: user-assigned
           href: managed-identity-pools.md
+        - name: 証明書のローテーションを有効にする
+          displayName: 'key vault, keyvault, automatic'
+          href: automatic-certificate-rotation.md
         - name: 仮想ファイル システムをマウントする
           href: virtual-file-mount.md
         - name: Azure ファイル共有をマウントする
@@ -238,11 +234,11 @@
           displayName: command line
           href: batch-cli-get-started.md
         - name: Batch CLI テンプレートの使用
-          diplayName: extension
+          displayName: extension
           href: batch-cli-templates.md
-    - name: Batch Node.js SDK の使用
+    - name: Batch JavaScript SDK を使用する
       displayName: json
-      href: batch-nodejs-get-started.md
+      href: batch-js-get-started.md
     - name: ワークロードの実行
       items:
         - name: MPI
@@ -280,7 +276,7 @@
       href: /dotnet/api/overview/azure/batch
     - name: Java
       href: /java/api/overview/azure/batch
-    - name: Node.js
+    - name: JavaScript
       href: /javascript/api/overview/azure/batch
     - name: Python
       href: /python/api/overview/azure/batch

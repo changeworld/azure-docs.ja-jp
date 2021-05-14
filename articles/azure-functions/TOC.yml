@@ -642,16 +642,6 @@
           href: functions-bindings-twilio.md
         - name: ウォームアップ
           href: functions-bindings-warmup.md
-    - name: エラーと診断
-      items:
-        - name: .NET worker ルール
-          items:
-            - name: AZFW0001
-              href: errors-diagnostics/net-worker-rules/azfw0001.md
-        - name: SDK ルール
-          items:
-            - name: AZF0001
-              href: errors-diagnostics/sdk-rules/azf0001.md
     - name: host.json 2.x のリファレンス
       href: functions-host-json.md
     - name: host.json 1.x のリファレンス

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: ab4d609b1638b47ad73b6f1143adee2870577305
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78536867efa4894f1041a340b9d6347a4e030a69
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390472"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685659"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>チュートリアル:マイクロフルフィルメント センター アプリケーション テンプレートを展開して調べる
 
@@ -52,8 +52,6 @@ ms.locfileid: "100390472"
     >わかりやすいアプリケーション名を使用する場合でも、アプリケーションの URL には一意の値を使用する必要があります。
 
 1. Azure サブスクリプションをお持ちの場合は、ディレクトリ、Azure サブスクリプション、リージョンを入力します。 サブスクリプションをお持ちでない場合は、7 日間の無料試用版を有効にし、必須の連絡先情報を入力できます。  
-
-    ディレクトリとサブスクリプションの詳細については、[アプリケーションの作成のクイック スタート](../core/quick-deploy-iot-central.md)に関するページを参照してください。
 
 1. **［作成］** を選択します
 

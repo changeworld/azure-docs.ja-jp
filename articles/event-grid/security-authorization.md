@@ -3,12 +3,12 @@ title: Azure Event Grid のセキュリティと認証
 description: Azure Event Grid とその概念について説明します。
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9dda983bdb70f0723b87419ae96ca5bbadccd61a
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104601042"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735766"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid リソースへのアクセスの承認
 Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な **管理操作** を実行する各ユーザーに付与されるアクセス レベルを制御できます。 Event Grid では、Azure ロールベースのアクセス制御 (Azure RBAC) が使用されます。
@@ -40,8 +40,8 @@ Event Grid の共同作成者ロールを使用すると、Event Grid リソー�
 
 | Role | 説明 |
 | ---- | ----------- | 
-| [Event Grid サブスクリプション閲覧者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Event Grid のイベント サブスクリプション操作を管理できます。 |
-| [Event Grid サブスクリプションの共同作成者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Event Grid のイベント サブスクリプションを読み取ることができます。 |
+| [Event Grid サブスクリプション閲覧者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Event Grid のイベント サブスクリプションを読み取ることができます。 |
+| [Event Grid サブスクリプションの共同作成者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Event Grid のイベント サブスクリプション操作を管理できます。 |
 | [Event Grid の共同作成者](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | Event Grid リソースの作成と管理を行うことができます。 |
 
 

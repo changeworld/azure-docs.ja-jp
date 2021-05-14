@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
-ms.reviewer: tyao
-ms.openlocfilehash: 33ad17e3024011368c909a89e9164ca06d044bad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: amsriva
+ms.openlocfilehash: ceacd210fa02594ff8b54996c1d87d560f244a7f
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612084"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634619"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door のドメインに対する geo フィルタリング
 
