@@ -45,8 +45,14 @@
       href: application-settings.md
     - name: フロントエンド フレームワークとライブラリの構成
       href: front-end-frameworks.md
+    - name: 監視を有効にする
+      href: monitor.md
+      displayName: Application Insights
     - name: デプロイ トークンのリセット
       href: deployment-token-management.md
+    - name: エラーのトラブルシューティング
+      href: troubleshooting.md
+      displayName: 'deployment, runtime, errors'
 - name: チュートリアル
   items:
     - name: 静的サイト ジェネレーターからの発行
@@ -67,6 +73,16 @@
           href: deploy-nextjs.md
         - name: Nuxt.js
           href: deploy-nuxtjs.md
+    - name: Mongoose.js と Cosmos DB を使用してデータベースを追加する
+      href: add-mongoose.md
+    - name: Azure DevOps を使用して公開する
+      href: publish-devops.md
+    - name: ARM テンプレートを使用して公開する
+      href: publish-azure-resource-manager.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/staticwebapp
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

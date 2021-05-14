@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 578eb6859114eeef9672e7b58e6bb6b56189dc5a
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 0ff35d207fe9ba95352798ca8138a75619b9f852
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101647372"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108764335"
 landingContent:
 - title: External Identities について
   linkLists:
@@ -41,7 +41,7 @@ landingContent:
     links:
     - text: 外部コラボレーションの設定を構成する
       url: delegate-invitations.md
-    - text: 直接フェデレーションの設定 (プレビュー)
+    - text: SAML/WS-Fed IdP フェデレーションを設定する (プレビュー)
       url: direct-federation.md
     - text: ワンタイム パスコードの設定 (プレビュー)
       url: one-time-passcode.md

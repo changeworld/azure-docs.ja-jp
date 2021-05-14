@@ -1,18 +1,18 @@
 ---
 title: SAP テーブルからデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP テーブルからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
-ms.author: jingwang
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2021
-ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a455def13bbf65d01f2f22972c18d39c2b15f3c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103232394"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788124"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -70,7 +70,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以降のセクションでは、SAP テーブル コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL のデータのコピーと変換
 description: Azure Data Factory を使用して、Azure Database for MySQL のデータをコピーして変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/10/2021
-ms.openlocfilehash: 4d13f6f435a21b467cae1b8e14211a001792787f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69ed45d50c98321c68e55aa15304e6d439fe58ad
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012608"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480259"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for MySQL のデータをコピーして変換する
 
@@ -32,7 +32,7 @@ ms.locfileid: "103012608"
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Database for MySQL コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

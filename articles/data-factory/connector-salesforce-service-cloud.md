@@ -1,18 +1,18 @@
 ---
 title: Salesforce Service Cloud との間でデータをコピーする
 description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Salesforce Service Cloud からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce Service Cloud にデータをコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 6a712ad1924fd73926ff0e62a7d1b9684eb5b1d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f61b5ab4a77372071658f18e81fce8ed2c3a7c51
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583115"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486991"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce Service Cloud をコピー元またはコピー先としてデータをコピーする
 
@@ -51,7 +51,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 
 ## <a name="get-started"></a>はじめに
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Salesforce Service Cloud コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

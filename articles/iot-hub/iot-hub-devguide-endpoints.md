@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: d2b9ea2e075ddcf20860ccb9ab1f2eff654993ad
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 3fe95c00c95898be1ddd6967fb9ab8ba1e3f0ddb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499378"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484644"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -36,7 +36,7 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
 次の一覧では、エンドポイントについて説明します。
 
-* **リソースプロバイダー**。 IoT Hub リソース プロバイダーでは、[Azure Resource Manager](../azure-resource-manager/management/overview.md) インターフェイスが公開されています。 Azure サブスクリプションの所有者は、IoT Hub の作成と削除や IoT Hub プロパティの更新などを、このインターフェイスで行うことができます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー](iot-hub-devguide-security.md#access-control-and-permissions) (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソースプロバイダーにより、[デバイス ID をエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)することもできます。
+* **リソースプロバイダー**。 IoT Hub リソース プロバイダーでは、[Azure Resource Manager](../azure-resource-manager/management/overview.md) インターフェイスが公開されています。 Azure サブスクリプションの所有者は、IoT Hub の作成と削除や IoT Hub プロパティの更新などを、このインターフェイスで行うことができます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー](iot-hub-dev-guide-sas.md#access-control-and-permissions) (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソースプロバイダーにより、[デバイス ID をエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)することもできます。
 
 * **デバイス ID の管理**。 各 IoT Hub は、デバイス ID の管理 (作成、取得、更新、削除) を行うための、一連の HTTPS REST エンドポイントを公開します。 [デバイス ID](iot-hub-devguide-identity-registry.md)は、デバイスの認証とアクセス制御に使用されます。
 

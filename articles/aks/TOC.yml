@@ -51,7 +51,7 @@
     - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/aks-security-baseline?context=/azure/aks/context/aks-context
         - name: アプリケーションとクラスターのセキュリティ
           href: concepts-security.md
         - name: Azure Policy によるセキュリティ制御
@@ -136,8 +136,10 @@
       items:
         - name: AKS クラスターのスケーリング
           href: scale-cluster.md
-        - name: AKS クラスターの停止 (プレビュー)
+        - name: AKS クラスターを停止する
           href: start-stop-cluster.md
+        - name: 計画メンテナンスを使用する (プレビュー)
+          href: planned-maintenance.md
         - name: AKS クラスターのアップグレード
           href: upgrade-cluster.md
         - name: アップタイム SLA を使用する
@@ -207,6 +209,8 @@
               href: azure-disk-csi.md
             - name: Azure Files CSI ドライバー (プレビュー)
               href: azure-files-csi.md
+            - name: CSI シークレット ストア ドライバー (プレビュー)
+              href: csi-secrets-store-driver.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -268,7 +272,7 @@
           href: use-pod-security-policies.md
         - name: API サーバーの許可された IP 範囲の定義
           href: api-server-authorized-ip-ranges.md
-        - name: Azure Policy を使用したデプロイの制御 (プレビュー)
+        - name: Azure Policy を使用したデプロイの制御
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: クラスターの資格情報を更新する
           href: update-credentials.md
@@ -293,6 +297,8 @@
           href: enable-host-encryption.md
     - name: 監視およびログ記録
       items:
+        - name: クラスターのメトリックの表示
+          href: view-metrics.md
         - name: コンテナーに対する Azure Monitor
           href: ../azure-monitor/containers/container-insights-overview.md
           maintainContext: true
@@ -347,6 +353,8 @@
       items:
         - name: サービス メッシュについて
           href: servicemesh-about.md
+        - name: Open Service Mesh AKS アドオン (プレビュー)
+          href: servicemesh-osm-about.md
         - name: Istio の使用
           items:
             - name: Istio について

@@ -4,12 +4,12 @@ description: Oracle ワークロード用の BareMetal インスタンスでの�
 ms.topic: reference
 ms.subservice: workloads
 ms.date: 04/14/2021
-ms.openlocfilehash: c57cbc86d17090d6960a334c2790d80b43420aca
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: c381d06c5f152ef1bfecfb76747bf26dbb24f06e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588889"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516959"
 ---
 # <a name="ethernet-configuration-of-baremetal-for-oracle"></a>Oracle 用の BareMetal のイーサネット構成
 
@@ -58,7 +58,7 @@ BareMetal インスタンスの場合、既定では 4 つの論理 NIC に 9 �
 - イーサネット "C" には、NFS ストレージへの通信に使用される IP アドレスが割り当てられている必要があります。 この種類のアドレスは、/etc/hosts ディレクトリに保持しないでください。
 - イーサネット "D" は、DR リージョンの BareMetal インスタンスにアクセスするためのグローバル アクセス設定専用に使用する必要があります。
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Oracle アーキテクチャ用の BareMetal インフラストラクチャについて学びます。
 

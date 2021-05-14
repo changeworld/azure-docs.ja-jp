@@ -10,12 +10,12 @@ metadata:
   author: vhorne
   ms.author: victorh
   ms.date: 02/08/2021
-  ms.openlocfilehash: 25604a7be6f0be94a2742751829f68e3f5353696
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: 92e58217db5779418f1a97df70d0f74e6d3dc4e6
+  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101711622"
+  ms.lasthandoff: 04/07/2021
+  ms.locfileid: "107030748"
 landingContent:
 - title: Application Gateway について
   linkLists:
@@ -31,6 +31,10 @@ landingContent:
     links:
     - text: 新機能
       url: https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway
+  - linkListType: learn
+    links:
+    - text: Application Gateway で Web サービスのトラフィックを負荷分散する
+      url: /learn/modules/load-balance-web-traffic-with-application-gateway/
 - title: 高トラフィック ボリュームのサポート
   linkLists:
   - linkListType: concept
@@ -73,7 +77,7 @@ landingContent:
       url: ingress-controller-overview.md
   - linkListType: tutorial
     links:
-    - text: AKS 用 Ingress Controller AKS アドオンを作成する
+    - text: AKS 用 Ingress Controller AKS アドオンをデプロイする
       url: tutorial-ingress-controller-add-on-new.md
 - title: Application Gateway を使用して HTTP ヘッダーと URL を書き換える
   linkLists:

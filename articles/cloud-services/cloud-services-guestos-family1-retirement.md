@@ -2,6 +2,7 @@
 title: ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Docs
 description: Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します
 services: cloud-services
+ms.subservice: auto-os-updates
 documentationcenter: na
 author: raiye
 manager: timlt
@@ -9,12 +10,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 654719dfc5cbbd095a8c6abf0c3a47c30d836e03
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b4ba01ddeb0f0fe7392abc0eec2d947ec387a99e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108160783"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736159"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>ゲスト OS ファミリ 1 の提供終了に関する通知
 

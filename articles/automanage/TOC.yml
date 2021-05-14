@@ -1,4 +1,4 @@
-- name: Azure Automanage
+- name: Azure Automanage (プレビュー)
   href: automanage-virtual-machines.md
 - name: クイックスタート
   expanded: true
@@ -15,6 +15,8 @@
       items:
         - name: 新しい仮想マシンのホットパッチ
           href: automanage-hotpatch.md
+    - name: Automanage アカウント
+      href: automanage-account.md
 - name: 方法
   expanded: true
   items:
@@ -22,6 +24,8 @@
       href: virtual-machines-custom-preferences.md
     - name: Azure Policy を介した VM 上での有効化
       href: virtual-machines-policy-enable.md
+    - name: ARM テンプレートを介した VM での有効化
+      href: arm-deploy.md
     - name: オンボーディング エラーのトラブルシューティング
       href: common-errors.md
     - name: 切断された Automanage アカウントの修復

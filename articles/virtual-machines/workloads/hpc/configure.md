@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 486bb13b1603f239d04d8805020713aaf3a7333f
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 7269309a3ed682da4d67e2509508276a3133601e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227778"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516868"
 ---
 # <a name="configure-and-optimize-vms"></a>VM の構成と最適化
 
@@ -48,7 +48,7 @@ N シリーズ (NDv2 および NDv4 VM サイズ) での GPU サポートに関�
 
 #### <a name="sr-iov-enabled-vms"></a>SR-IOV 対応の VM
 SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、バージョン 7.6 以降の CentOS-HPC VM イメージが適しています。 これらの VM イメージは最適化され、RDMA 用の Mellanox OFED ドライバー、一般的に使用されているさまざまな MPI ライブラリ、科学コンピューティング パッケージが事前に読み込まれています。
-- VM イメージの使用可能なバージョンまたは最新バージョンは、[CLI](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list) または [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) を使用して、次の情報と共に一覧表示できます。
+- VM イメージの使用可能なバージョンまたは最新バージョンは、[CLI](/cli/azure/vm/image#az_vm_image_list) または [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) を使用して、次の情報と共に一覧表示できます。
    ```bash
    "publisher": "OpenLogic",
    "offer": "CentOS-HPC",
@@ -73,7 +73,7 @@ SR-IOV 非対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances)�
 
 ### <a name="ubuntu-hpc-vm-images"></a>Ubuntu-HPC VM イメージ
 SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の場合、Ubuntu-HPC VM イメージのバージョン 18.04 が適しています。 これらの VM イメージは最適化され、RDMA 用の Mellanox OFED ドライバー、Nvidia GPU ドライバー、GPU コンピューティング ソフトウェア スタック (CUDA、NCCL)、一般的に使用されているさまざまな MPI ライブラリ、科学コンピューティング パッケージが事前に読み込まれています。
-- VM イメージの使用可能なバージョンまたは最新バージョンは、[CLI](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list) または [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview) を使用して、次の情報と共に一覧表示できます。
+- VM イメージの使用可能なバージョンまたは最新バージョンは、[CLI](/cli/azure/vm/image#az_vm_image_list) または [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-hpc?tab=overview) を使用して、次の情報と共に一覧表示できます。
    ```bash
    "publisher": "Microsoft-DSVM",
    "offer": "Ubuntu-HPC",

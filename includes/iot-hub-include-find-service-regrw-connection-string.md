@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1a0502568c1673bcd7f57d3e9bc9c95ed90bbefa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2df24a85b39d1a66a162a826dbc3985a3908d53
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80756944"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109508421"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
 
@@ -35,4 +35,4 @@ ms.locfileid: "80756944"
 
     ![接続文字列を取得する方法を示す画面](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
 
-IoT Hub の共有アクセス ポリシーとアクセス許可の詳細については、「[アクセス制御とアクセス許可](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
+IoT Hub の共有アクセス ポリシーとアクセス許可の詳細については、「[アクセス制御とアクセス許可](../articles/iot-hub/iot-hub-dev-guide-sas.md#access-control-and-permissions)」を参照してください。

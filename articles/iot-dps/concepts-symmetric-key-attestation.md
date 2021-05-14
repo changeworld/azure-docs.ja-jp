@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0455fe634b44465b4b16d48145fcf51f733f121d
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 32ad3bb4f9a845ded60694d42d0b2708a61aea6a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929365"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483301"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
@@ -37,7 +37,7 @@ ms.locfileid: "107929365"
 
 ## <a name="detailed-attestation-process"></a>詳細な構成証明プロセス
 
-Device Provisioning Service による対称キー構成証明は、デバイスを識別するために IoT ハブによってサポートされているものと同じ[セキュリティ トークン](../iot-hub/iot-hub-devguide-security.md#security-token-structure)を使用して実行されます。 これらのセキュリティ トークンは、[Shared Access Signature (SAS) トークン](../service-bus-messaging/service-bus-sas.md)です。 
+Device Provisioning Service による対称キー構成証明は、デバイスを識別するために IoT ハブによってサポートされているものと同じ[セキュリティ トークン](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)を使用して実行されます。 これらのセキュリティ トークンは、[Shared Access Signature (SAS) トークン](../service-bus-messaging/service-bus-sas.md)です。 
 
 SAS トークンは、対称キーを使用して作成されるハッシュされた "*署名*" を持っています。 署名は、構成証明中に提示されたセキュリティ トークンが本物かどうかを確認するために、Device Provisioning Service によって再作成されます。
 
@@ -57,7 +57,7 @@ SAS トークンの形式は次のとおりです。
 
 デバイスが個々の登録で構成証明を行うときは、デバイスは個別登録エントリで定義されている対称キーを使用して、SAS トークン用のハッシュされた署名を作成します。
 
-SAS トークンを作成するコードの例については、[セキュリティ トークン](../iot-hub/iot-hub-devguide-security.md#security-token-structure)に関するページをご覧ください。
+SAS トークンを作成するコードの例については、[セキュリティ トークン](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)に関するページをご覧ください。
 
 対称キー構成証明のためのセキュリティ トークンの作成は、Azure IoT C SDK でサポートされています。 Azure IoT C SDK を使用して個々の登録で構成証明を行う例については、「[クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)」をご覧ください。
 

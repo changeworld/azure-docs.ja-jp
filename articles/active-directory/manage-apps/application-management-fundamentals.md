@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: iangithinji
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c895d77b9c6ab48c60b7a337dd8c44414d8d9b5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9f77ff371bfb53cff08d860be6cc0160debe491
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318515"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765991"
 ---
 # <a name="application-management-best-practices"></a>アプリケーション管理のベスト プラクティス
 
@@ -55,4 +55,3 @@ ms.locfileid: "108318515"
 | アプリケーション サーバーの近くのコネクタ サーバーを見つけ、それらのサーバーが同じドメイン内にあるようにする | パフォーマンスを最適化するため、アプリケーション サーバーの付近に物理的にコネクタ サーバーを配置します ([ネットワーク トポロジの考慮事項](../app-proxy/application-proxy-network-topology.md)に関するページを参照してください)。 また、コネクタ サーバーと Web アプリケーション サーバーは、同じ Active Directory ドメインに属しているか、信頼する側のドメインにまたがっている必要があります。 この構成は、統合 Windows 認証 (IWA) と Kerberos の制約付き委任 (KCD) を使用する SSO に必要です。 これらのサーバーが異なるドメインにある場合は、SSO のためにリソースベースの委任を使用する必要があります ([アプリケーション プロキシを使用したシングル サインオンのための KCD](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md) に関するページを参照してください)。 |
 | コネクタの自動更新を有効にする | 最新機能とバグ修正のために、コネクタの自動更新を有効にします。 Microsoft では、コネクタの最新バージョンと 1 つ前のバージョンを直接サポートしています。 ([アプリケーション プロキシのバージョン履歴](../app-proxy/application-proxy-release-version-history.md)に関するページを参照してください。) |
 | オンプレミスのプロキシはバイパスする | メンテナンスがより容易なように、オンプレミスのプロキシをバイパスし、Azure サービスに直接接続するようにコネクタを構成します。 ([アプリケーション プロキシ コネクタとプロキシ サーバー](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)に関するページを参照してください。) |
-| Web アプリケーション プロキシ経由で Azure AD アプリケーション プロキシを使用する | ほとんどのオンプレミスのシナリオでは、Azure AD アプリケーション プロキシを使用します。 Web アプリケーション プロキシが推奨されるのは、AD FS 用のプロキシ サーバーを必要とするシナリオのみであり、その場合は Azure Active Directory のカスタム ドメインを使用することができません。 ([アプリケーション プロキシの移行](../app-proxy/application-proxy-migration.md)に関するページを参照してください。) |

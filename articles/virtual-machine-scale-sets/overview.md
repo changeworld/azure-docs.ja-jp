@@ -1,20 +1,19 @@
 ---
 title: Azure 仮想マシン スケール セットの概要
 description: Azure Virtual Machine Scale Sets についての説明に加えて、アプリケーションの自動スケーリングを行う方法についても説明します
-author: mimckitt
-ms.author: mimckitt
+author: ju-shim
+ms.author: jushiman
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: ''
 ms.date: 06/30/2020
-ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 76d3bc1e1736e648316bcd81bf8897d1d2f272a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: mimckitt
+ms.openlocfilehash: 519b5388497ee43420befa5eac4a07ffcee8085c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101672585"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738235"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
 Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
