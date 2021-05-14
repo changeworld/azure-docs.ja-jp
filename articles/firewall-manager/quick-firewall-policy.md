@@ -10,12 +10,12 @@ ms.service: firewall-manager
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 43853d9e0b955167905af4777d533114a1d1f2ba
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 65a1e966fcc6082d4034cd9fe4ee45c057496825
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529862"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786211"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-a-firewall-policy---arm-template"></a>クイックスタート: Azure ファイアウォールとファイアウォール ポリシーを作成する - ARM テンプレート
 
@@ -45,7 +45,7 @@ IP グループについては、「[Azure Firewall での IP グループ](../f
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/azurefirewall-create-with-firewallpolicy-apprule-netrule-ipgroups/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 

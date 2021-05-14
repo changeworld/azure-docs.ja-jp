@@ -4,17 +4,17 @@ description: Azure Arc 対応 SQL Managed Instance を削除する
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: vin-yu
-ms.author: vinsonyu
+author: rothja
+ms.author: jroth
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e531349e8f404380d9f0601caa3b66557c297062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 416ba3305b1a118e05987c8c7b4499d1cf79ef5d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90932626"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736306"
 ---
 # <a name="delete-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance を削除する
 この記事では、Azure Arc 対応 SQL Managed Instance を削除する方法について説明します。

@@ -47,3 +47,5 @@
   items:
     - name: 認定の用語集
       href: resources-glossary.md
+    - name: MPN/Microsoft Partner Network サポート
+      href: 'https://docs.microsoft.com/partner-center'

@@ -1,18 +1,18 @@
 ---
 title: オープン ハブを介して SAP Business Warehouse からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) から、サポートされているシンク データ ストアへデータをコピーする方法について説明します。
-ms.author: jingwang
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/02/2021
-ms.openlocfilehash: 5efc27a1ad1a26c1ae50b6aecf250afef052e3de
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a45de693f6818966eaf79fc8f636b27e8cb0c1da
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220540"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788285"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
@@ -94,7 +94,7 @@ ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能�
 >
 > SAP BW オープン ハブ コネクタの使用に関するチュートリアルについては、「[Load data from SAP Business Warehouse (BW) by using Azure Data Factory](load-sap-bw-data.md)」 (Azure Data Factory を使用して SAP Business Warehouse (BW) からデータを読み込む) を参照してください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、SAP Business Warehouse オープン ハブ コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
 

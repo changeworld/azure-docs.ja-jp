@@ -3,12 +3,12 @@ title: テンプレートを使用した条件付きデプロイ
 description: Azure Resource Manager テンプレート (ARM テンプレート) 内のリソースを条件付きでデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 409d258d7dfe3ed186e5cf97cc0dbe6dc149b849
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8be42b4e57e628e41afa5cd914f9dcf72ebe4ab7
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741176"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736954"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM テンプレートでの条件付きデプロイ
 
@@ -58,7 +58,7 @@ resource dnsZone 'Microsoft.Network/dnszones@2018-05-01' = if (deployZone) {
 
 ---
 
-より複雑な例については、「[Azure SQL 論理サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server)」を参照してください。
+より複雑な例については、「[Azure SQL 論理サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server)」を参照してください。
 
 ## <a name="new-or-existing-resource"></a>新規または既存のリソース
 
@@ -138,7 +138,7 @@ resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting =
 
 パラメーター `newOrExisting` が **new** に設定されると、その条件は true に評価されます。 ストレージ アカウントはデプロイされます。 ただし、`newOrExisting` が **existing** に設定されると、その条件は false に評価され、ストレージ アカウントはデプロイされません。
 
-`condition` 要素を使用する完全なテンプレート例については、[新規または既存の仮想ネットワーク、ストレージ、およびパブリック IP を使用する VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) に関するページを参照してください。
+`condition` 要素を使用する完全なテンプレート例については、[新規または既存の仮想ネットワーク、ストレージ、およびパブリック IP を使用する VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-new-or-existing-conditions) に関するページを参照してください。
 
 ## <a name="runtime-functions"></a>ランタイム関数
 

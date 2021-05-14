@@ -45,6 +45,8 @@
           href: tutorial-desktop-app-webapi.md
         - name: シングル ページ
           href: tutorial-single-page-app-webapi.md
+    - name: 6 - テナントのクリーンアップと削除
+      href: tutorial-delete-tenant.md
 - name: サンプル
   href: code-samples.md
 - name: 概念
@@ -79,22 +81,28 @@
           href: tokens-overview.md
         - name: アクセス トークンの要求
           href: access-tokens.md
-    - name: ポリシー キー
-      href: policy-keys-overview.md
-    - name: ユーザー フローとポリシー
+    - name: ユーザー側の表示と操作
+      expanded: true
       items:
-        - name: ユーザー フロー
+        - name: ユーザー フローとカスタム ポリシー
           href: user-flow-overview.md
-        - name: カスタム ポリシー
+        - name: カスタム ポリシーの概要
           href: custom-policy-overview.md
+    - name: API コネクタ
+      href: api-connectors-overview.md
+      displayName: 'REST API, web API, API connectors'
     - name: ユーザー アカウント
       href: user-overview.md
     - name: ユーザー プロファイルの属性
       href: user-profile-attributes.md
     - name: Identity Protection と条件付きアクセス
       href: conditional-access-identity-protection-overview.md
+    - name: ポリシー キー
+      href: policy-keys-overview.md
 - name: 操作方法ガイド
   items:
+    - name: テナントの管理
+      href: tenant-management.md
     - name: アプリの統合
       items:
         - name: Web アプリケーションの登録
@@ -120,6 +128,9 @@
           href: signin-appauth-ios.md
         - name: AppAuth を使用した Android
           href: signin-appauth-android.md
+        - name: API Management API のセキュリティ保護
+          href: secure-api-management.md
+          displayName: 'apim, api management, migrate, b2clogin.com'
     - name: フローを作成する
       items:
         - name: サインアップまたはサインイン ポリシー
@@ -163,6 +174,8 @@
           href: identity-provider-azure-ad-multi-tenant.md
         - name: Azure AD B2C
           href: identity-provider-azure-ad-b2c.md
+        - name: eBay
+          href: identity-provider-ebay.md
         - name: Facebook
           href: identity-provider-facebook.md
         - name: 汎用 OpenId Connect
@@ -221,6 +234,15 @@
           href: password-complexity.md
         - name: メールの確認を無効にする
           href: disable-email-verification.md
+        - name: カスタム メール確認
+          items:
+            - name: Mailjet
+              href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+            - name: SendGrid
+              href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
+          displayName: verification
         - name: MFA の有効化
           items:
             - name: 多要素認証
@@ -260,142 +282,25 @@
           href: conditional-access-user-flow.md
     - name: 年齢制限を構成する
       href: age-gating.md
-    - name: API コネクタ (プレビュー)
+    - name: API コネクタ
       items:
-        - name: 概要
-          href: api-connectors-overview.md
-        - name: API コネクタを追加する
+        - name: API コネクタをサインアップ ユーザー フローに追加する
           href: add-api-connector.md
+          displayName: 'rest claims validation, validate'
+        - name: API コネクタをサインアップまたはサインイン ユーザー フローに追加する
+          href: custom-policy-rest-api-claims-exchange.md
+          displayName: rest claims exchange
+        - name: API コネクタをセキュリティで保護する
+          href: secure-rest-api.md
     - name: カスタム ポリシー
       items:
-        - name: カスタム ポリシーの概要
-          href: custom-policy-trust-frameworks.md
-        - name: カスタム ポリシーの概要
-          href: custom-policy-get-started.md
-        - name: カスタム メール確認
-          items:
-            - name: Mailjet
-              href: custom-email-mailjet.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-            - name: SendGrid
-              href: custom-email-sendgrid.md
-              displayName: 'Custom email, Custom verification email, Verification email'
-          displayName: verification
-        - name: 独自のビジネス ロジックの追加
-          items:
-            - name: REST API の統合
-              href: custom-policy-rest-api-intro.md
-            - name: ユーザー入力の検証
-              href: custom-policy-rest-api-claims-validation.md
-              displayName: 'rest claims validation, validate'
-            - name: 追加の要求の取得
-              href: custom-policy-rest-api-claims-exchange.md
-              displayName: rest claims exchange
-            - name: REST API のセキュリティ保護
-              href: secure-rest-api.md
         - name: トラブルシューティング
           items:
             - name: Application Insights を使用したログの収集
               href: troubleshoot-with-application-insights.md
               displayName: 'troubleshooting, app insights'
-            - name: ポリシー検証
+            - name: カスタム ポリシーのトラブルシューティング
               href: troubleshoot-custom-policies.md
-              displayName: troubleshooting
-        - name: リファレンス
-          items:
-            - name: TrustFrameworkPolicy
-              href: trustframeworkpolicy.md
-            - name: BuildingBlocks
-              href: buildingblocks.md
-              items:
-                - name: ClaimsSchema
-                  href: claimsschema.md
-                - name: ClaimsTransformations
-                  href: claimstransformations.md
-                  items:
-                    - name: Boolean
-                      href: boolean-transformations.md
-                    - name: Date
-                      href: date-transformations.md
-                    - name: 全般
-                      href: general-transformations.md
-                    - name: Integer
-                      href: integer-transformations.md
-                    - name: JSON
-                      href: json-transformations.md
-                    - name: 電話番号
-                      href: phone-number-claims-transformations.md
-                    - name: 外部アカウント
-                      href: social-transformations.md
-                    - name: StringCollection
-                      href: stringcollection-transformations.md
-                    - name: String
-                      href: string-transformations.md
-                - name: 述語
-                  href: predicates.md
-                - name: ContentDefinitions
-                  href: contentdefinitions.md
-                - name: ローカリゼーション
-                  href: localization.md
-                  items:
-                    - name: ローカライズ文字列 ID
-                      href: localization-string-ids.md
-                - name: DisplayControl
-                  href: display-controls.md
-                  items:
-                    - name: 検証
-                      href: display-control-verification.md
-            - name: ClaimsProviders
-              href: claimsproviders.md
-              items:
-                - name: 技術プロファイル
-                  href: technicalprofiles.md
-                  items:
-                    - name: 検証技術プロファイルとは
-                      href: validation-technical-profile.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
-                    - name: Azure AD の Multi-Factor Authentication
-                      href: multi-factor-auth-technical-profile.md
-                      displayName: mfa
-                    - name: Azure AD SSPR
-                      href: aad-sspr-technical-profile.md
-                    - name: 要求の変換
-                      href: claims-transformation-technical-profile.md
-                    - name: ID トークン ヒント
-                      href: id-token-hint.md
-                    - name: JWT トークン発行者
-                      href: jwt-issuer-technical-profile.md
-                    - name: OAuth1
-                      href: oauth1-technical-profile.md
-                    - name: OAuth2
-                      href: oauth2-technical-profile.md
-                    - name: ワンタイム パスワード
-                      href: one-time-password-technical-profile.md
-                      displayName: otp
-                    - name: OpenID Connect
-                      href: openid-connect-technical-profile.md
-                    - name: 電話要素
-                      href: phone-factor-technical-profile.md
-                    - name: REST
-                      href: restful-technical-profile.md
-                    - name: SAML ID プロバイダー
-                      href: saml-identity-provider-technical-profile.md
-                    - name: SAML トークン発行者
-                      href: saml-issuer-technical-profile.md
-                    - name: セルフアサート
-                      href: self-asserted-technical-profile.md
-                    - name: SSO セッション
-                      href: custom-policy-reference-sso.md
-                      displayName: single sign-on
-            - name: UserJourneys
-              href: userjourneys.md
-            - name: SubJourneys
-              href: subjourneys.md
-            - name: RelyingParty
-              href: relyingparty.md
-            - name: 要求リゾルバー
-              href: claim-resolver-overview.md
     - name: UserInfo エンドポイント
       href: userinfo-endpoint.md
     - name: パートナー統合
@@ -417,15 +322,18 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: 不正行為からの保護
+    - name: Fraud Protection のパートナー
       items:
-        - name: Microsoft Dynamics 365 Fraud Protection
-          href: partner-dynamics-365-fraud-protection.md
-          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
         - name: Arkose Labs
           href: partner-arkose-labs.md
           displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
-    - name: レガシとオンプレミスのアプリをセキュリティで保護する
+        - name: BioCatch
+          href: partner-biocatch.md
+          displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection, user behavior'
+        - name: Microsoft Dynamics 365 Fraud Protection
+          href: partner-dynamics-365-fraud-protection.md
+          displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
+    - name: レガシとオンプレミスのアプリへのアクセスをセキュリティで保護する
       items:
         - name: Ping Identity
           href: partner-ping-identity.md
@@ -441,6 +349,10 @@
           href: b2clogin.md
         - name: カスタム ドメインを構成する
           href: custom-domain.md
+        - name: Web Application Firewall のパートナー
+          items:
+            - name: Cloudflare
+              href: partner-cloudflare.md
         - name: Web API ドメインを構成する
           href: multiple-token-endpoints.md
           displayName: 'migrate, b2clogin, owin'
@@ -460,15 +372,15 @@
         - name: Azure portal
           href: manage-users-portal.md
           displayName: 'create users, add users, delete users'
+        - name: ユーザーを移行する
+          href: user-migration.md
+          displayName: bulk import
         - name: パートナー統合
           items:
             - name: N8identity
               href: partner-n8identity.md
             - name: Saviynt
               href: partner-saviynt.md
-    - name: API Management API のセキュリティ保護
-      href: secure-api-management.md
-      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: ログと監視
       items:
         - name: 監査ログ
@@ -491,14 +403,111 @@
         - name: ユーザー データ
           href: manage-user-data.md
           displayName: GDPR
-    - name: 移行
-      items:
-        - name: ユーザーを移行する
-          href: user-migration.md
 - name: リファレンス
   items:
+    - name: カスタム ポリシー スキーマ
+      items:
+        - name: TrustFrameworkPolicy
+          href: trustframeworkpolicy.md
+        - name: BuildingBlocks
+          href: buildingblocks.md
+          items:
+            - name: ClaimsSchema
+              href: claimsschema.md
+            - name: ClaimsTransformations
+              href: claimstransformations.md
+              items:
+                - name: Boolean
+                  href: boolean-transformations.md
+                - name: Date
+                  href: date-transformations.md
+                - name: 全般
+                  href: general-transformations.md
+                - name: Integer
+                  href: integer-transformations.md
+                - name: JSON
+                  href: json-transformations.md
+                - name: 電話番号
+                  href: phone-number-claims-transformations.md
+                - name: 外部アカウント
+                  href: social-transformations.md
+                - name: StringCollection
+                  href: stringcollection-transformations.md
+                - name: String
+                  href: string-transformations.md
+            - name: 述語
+              href: predicates.md
+            - name: ContentDefinitions
+              href: contentdefinitions.md
+            - name: ローカリゼーション
+              href: localization.md
+              items:
+                - name: ローカライズ文字列 ID
+                  href: localization-string-ids.md
+            - name: DisplayControl
+              href: display-controls.md
+              items:
+                - name: 検証
+                  href: display-control-verification.md
+        - name: ClaimsProviders
+          href: claimsproviders.md
+          items:
+            - name: 技術プロファイル
+              href: technicalprofiles.md
+              items:
+                - name: 検証技術プロファイルとは
+                  href: validation-technical-profile.md
+                - name: Azure Active Directory
+                  href: active-directory-technical-profile.md
+                - name: Azure AD の Multi-Factor Authentication
+                  href: multi-factor-auth-technical-profile.md
+                  displayName: mfa
+                - name: Azure AD SSPR
+                  href: aad-sspr-technical-profile.md
+                - name: 要求の変換
+                  href: claims-transformation-technical-profile.md
+                - name: 条件付きアクセス
+                  href: conditional-access-technical-profile.md
+                - name: ID トークン ヒント
+                  href: id-token-hint.md
+                - name: JWT トークン発行者
+                  href: jwt-issuer-technical-profile.md
+                - name: OAuth1
+                  href: oauth1-technical-profile.md
+                - name: OAuth2
+                  href: oauth2-technical-profile.md
+                - name: ワンタイム パスワード
+                  href: one-time-password-technical-profile.md
+                  displayName: otp
+                - name: OpenID Connect
+                  href: openid-connect-technical-profile.md
+                - name: 電話要素
+                  href: phone-factor-technical-profile.md
+                - name: REST
+                  href: restful-technical-profile.md
+                - name: SAML ID プロバイダー
+                  href: saml-identity-provider-technical-profile.md
+                - name: SAML トークン発行者
+                  href: saml-issuer-technical-profile.md
+                - name: セルフアサート
+                  href: self-asserted-technical-profile.md
+                - name: SSO セッション
+                  href: custom-policy-reference-sso.md
+                  displayName: single sign-on
+        - name: UserJourneys
+          href: userjourneys.md
+        - name: SubJourneys
+          href: subjourneys.md
+        - name: RelyingParty
+          href: relyingparty.md
+        - name: 要求リゾルバー
+          href: claim-resolver-overview.md
+    - name: リリース ノート
+      href: custom-policy-developer-notes.md
     - name: サービスの制限と制約
       href: service-limits.md
+    - name: TLS と暗号スイートの要件
+      href: https-cipher-tls-requirements.md
     - name: アプリの登録
       href: app-registrations-training-guide.md
     - name: 課金モデル
@@ -512,8 +521,6 @@
       href: error-codes.md
     - name: Extensions アプリ
       href: extensions-app.md
-    - name: カスタム ポリシー (IEF) のリリース ノート
-      href: custom-policy-developer-notes.md
     - name: ページ レイアウト バージョン
       href: page-layout.md
       displayName: Page version

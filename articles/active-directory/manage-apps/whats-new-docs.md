@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 04/04/2021
+ms.date: 05/04/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,38 @@ ms.workload: identity
 ms.author: iangithinji
 author: iantheninja
 manager: CelesteDG
-ms.openlocfilehash: 9def91dcdf3370a94443dcea33ddf05f0e01e827
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 19fbfbed3a86575eb38fd2651cab9fffeabb673f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318457"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743869"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)
+- [アプリケーション管理のドキュメント](index.yml)
+- [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
+- [アプリケーション認証を Azure Active Directory に移行する](migrate-application-authentication-to-azure-active-directory.md)
+- [Azure Active Directory マイ アプリの構成を計画する](my-apps-deployment-plan.md)
+- [Azure AD のシングル サインオン オプション](sso-options.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証](../app-proxy/application-proxy-ping-access-publishing-guide.md)
+- [アプリケーションの同意の管理と同意要求の評価](manage-consent-requests.md)
+- [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
+- [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
+- [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
+
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -63,29 +85,3 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)
 - [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
-
-## <a name="january-2021"></a>2021 年 1 月
-
-### <a name="new-articles"></a>新しい記事
-- [Azure Active Directory マイ アプリの構成を計画する](my-apps-deployment-plan.md)
-
-### <a name="updated-articles"></a>更新された記事
-- [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](../app-proxy/application-proxy-connector-installation-problem.md)
-- [Azure AD でのパスワードベースのシングル サインオンのトラブルシューティング](troubleshoot-password-based-sso.md)
-- [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)
-- [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
-- [アプリケーション管理とは](what-is-application-management.md)
-- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](../app-proxy/application-proxy-faq.yml)
-- [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)
-- [既存のオンプレミス プロキシ サーバーと連携する](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)
-- [Azure Active Directory 用の基幹業務アプリをの開発する](../develop/v2-overview.md)
-- [Azure AD アプリケーション プロキシ コネクタについて](../app-proxy/application-proxy-connectors.md)
-- [リンクされたサインオンの概要](configure-linked-sign-on.md)
-- [パスワードベースのシングル サインオンについて理解する](configure-password-single-sign-on-non-gallery-applications.md)
-- [SAML ベースのシングル サインオンについて理解する](configure-saml-single-sign-on.md)
-- [Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
-- [ID 管理用の Azure AD テナントを使用してアプリを表示する](application-types.md)
-- [Azure Active Directory でユーザーをアプリに割り当てる方法を理解する](ways-users-get-assigned-to-applications.md)
-- [クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する](delete-application-portal.md)
-- [Azure AD アプリケーション プロキシを使用したリモート デスクトップの公開](../app-proxy/application-proxy-integrate-with-remote-desktop-services.md)
-- [Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する](manage-application-permissions.md)

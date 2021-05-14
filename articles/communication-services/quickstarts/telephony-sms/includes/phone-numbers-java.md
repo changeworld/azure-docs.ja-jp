@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: bbc0b5e3b0e080951cc274553c89f08446bf8d57
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c7033e74c8b6d845346e8f9d1b4fc5fd015a220b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157655"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108792406"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,10 +56,11 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 ```java
 import com.azure.communication.phonenumbers.*;
 import com.azure.communication.phonenumbers.models.*;
-import java.io.*;
+import com.azure.core.http.rest.*;
 import com.azure.core.util.Context;
 import com.azure.core.util.polling.PollResponse;
 import com.azure.identity.*;
+import java.io.*;
 
 public class App
 {

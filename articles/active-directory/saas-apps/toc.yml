@@ -1613,8 +1613,6 @@
           href: samlssojira-tutorial.md
         - name: Azure AD SAML Toolkit
           href: saml-toolkit-tutorial.md
-        - name: Samsara
-          href: samsara-tutorial.md
         - name: Samsung Knox およびビジネスサービス
           href: samsung-knox-and-business-services-tutorial.md
         - name: Sansan

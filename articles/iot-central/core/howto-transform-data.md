@@ -7,16 +7,14 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6032300bd203db78e8cd147cf79300d6dcd9b1dc
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 87f188b414791636e147a19202b6fcf314d6f307
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751690"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683667"
 ---
 # <a name="transform-data-for-iot-central"></a>IoT Central に対するデータの変換
-
-"*このトピックは、ソリューション ビルダーに適用されます。* "
 
 IoT デバイスから送信されるデータにはさまざまな形式があります。 デバイス データをご自分の IoT Central アプリケーションで使用するには、以下を行うために変換が必要になる場合があります。
 
@@ -41,9 +39,9 @@ IoT デバイスから送信されるデータにはさまざまな形式があ�
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を完了するには、アクティブな Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+この攻略ガイドの手順を完了するには、次が必要です。
 
-ソリューションを設定するには、IoT Central アプリケーションが必要です。 IoT Central アプリケーションを作成する方法については、「[Azure IoT Central アプリケーションの作成](quick-deploy-iot-central.md)」を参照してください。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
 
 ## <a name="data-transformation-at-ingress"></a>イングレス時のデータ変換
 
@@ -87,6 +85,8 @@ IoT Central に送信される前に、IoT Edge モジュールを使用して�
   }
 }
 ```
+
+[![コードを参照](media/common/browse-code.svg)](https://github.com/iot-for-all/iot-central-transform-with-iot-edge)
 
 次の手順は、このシナリオを設定して構成する方法を示しています。
 

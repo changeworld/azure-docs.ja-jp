@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eac5a24ae577d712a7dccc7514eb4b18ade232a
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92927534"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109485263"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 
@@ -28,7 +28,7 @@ Kubernetes クラスター上で Functions を実行するには、KEDA コン�
 
 ### <a name="installing-with-helm"></a>Helm を使用したインストール
 
-Kubernetes クラスターに KEDA をインストールするには、Helm を使用する方法を含め、さまざまな方法があります。  デプロイ オプションについては、[KEDA サイト](https://keda.sh/docs/1.4/deploy/)をご覧ください。
+Kubernetes クラスターに KEDA をインストールするには、Helm を使用する方法を含め、さまざまな方法があります。  デプロイ オプションについては、[KEDA サイト](https://keda.sh/docs/deploy/)をご覧ください。
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Kubernetes への関数アプリのデプロイ
 
@@ -73,7 +73,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>Kubernetes からの KEDA のアンインストール
 
-KEDA をアンインストールする手順については、[KEDA サイトに記載](https://keda.sh/docs/1.4/deploy/)されています。
+KEDA をアンインストールする手順については、[KEDA サイトに記載](https://keda.sh/docs/deploy/)されています。
 
 ## <a name="supported-triggers-in-keda"></a>KEDA でサポートされているトリガー
 

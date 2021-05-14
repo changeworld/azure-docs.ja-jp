@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/30/2021
 ms.author: pafarley
 keywords: computer vision, computer vision アプリケーション, computer vision サービス
-ms.openlocfilehash: 0258eb7c57bc0734b5c0a67644cbaa4f62a34537
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6e4be05d6b1c930c66c775d7b3c893e5bad4da7e
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766917"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714532"
 ---
 # <a name="what-is-image-analysis"></a>画像分析とは
 
@@ -24,7 +24,7 @@ ms.locfileid: "107766917"
 
 Computer Vision Image Analysis サービスでは、画像からさまざまな視覚的特徴を抽出できます。 たとえば、成人向けコンテンツが画像に含まれているかどうかを判断したり、特定のブランドや物体、人の顔を検出したりすることができます。
 
-画像分析は、クライアント ライブラリ SDK を通じて、または [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v2-ga/operations/5d986960601faab4bf452005) を直接呼び出すことで使用できます。 使用を開始するには、[クイックスタート](quickstarts-sdk/image-analysis-client-library.md)に従ってください。
+画像分析は、クライアント ライブラリ SDK を通じて、または [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) を直接呼び出すことで使用できます。 使用を開始するには、[クイックスタート](quickstarts-sdk/image-analysis-client-library.md)に従ってください。
 
 このドキュメントには、次のような記事が記載されています。
 * [クイックスタート](./quickstarts-sdk/image-analysis-client-library.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
@@ -34,7 +34,7 @@ Computer Vision Image Analysis サービスでは、画像からさまざまな�
 
 ## <a name="image-analysis-features"></a>画像分析の機能
 
-画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の一覧のすべての機能は、[Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API に備わっています。 [クイックスタート](./quickstarts-sdk/image-analysis-client-library.md)に従って始めてください。
+画像を分析し、その視覚的特徴や性質に関する分析情報を提示できます。 次の一覧のすべての機能は、[Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) API に備わっています。 [クイックスタート](./quickstarts-sdk/image-analysis-client-library.md)に従って始めてください。
 
 
 ### <a name="tag-visual-features"></a>視覚的特徴のタグ付け

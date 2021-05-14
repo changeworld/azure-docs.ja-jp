@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 4a8367ea41ea96d8a412af965346684737d190fe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e2458ebcdcc1b2dba598b5d443b8eab12312e7d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627576"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788964"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Synapse Link で Apache Spark を使用して Azure Cosmos DB と対話する
 
@@ -128,7 +128,7 @@ df.write.format("cosmos.oltp").
 ## <a name="load-streaming-dataframe-from-container"></a>コンテナーからストリーミング データフレームを読み込む
 このジェスチャでは、Spark Streaming 機能を使用して、コンテナーからデータフレームにデータを読み込みます。 データは、ワークスペースに接続したプライマリ データ レイク アカウント (およびファイル システム) に格納されます。 
 > [!NOTE]
-> Synapse Apache Spark で外部ライブラリを参照する場合は、[こちら](#external-library-management)で詳細を確認してください。 たとえば、Spark DataFrame を Mongo DB 用 Cosmos DB API のコンテナーに取り込む場合は、[こちら](https://docs.mongodb.com/spark-connector/master/)にある Spark 用の Mongo DB コネクターを利用できます。
+> Synapse Apache Spark で外部ライブラリを参照する場合は、[こちら](../spark/apache-spark-azure-portal-add-libraries.md)で詳細を確認してください。 たとえば、Spark DataFrame を Mongo DB 用 Cosmos DB API のコンテナーに取り込む場合は、[こちら](https://docs.mongodb.com/spark-connector/master/)にある Spark 用の Mongo DB コネクターを利用できます。
 
 ## <a name="load-streaming-dataframe-from-azure-cosmos-db-container"></a>Azure Cosmos DB コンテナーからストリーミング DataFrame を読み込む
 この例では、Spark の構造化ストリーミング機能を使用して、Azure Cosmos DB の変更フィード機能を使用している Azure Cosmos DB コンテナーから Spark のストリーミング DataFrame にデータを読み込みます。 Spark によって使用されているチェックポイント データは、ワークスペースに接続したプライマリ データ レイク アカウント (およびファイル システム) に格納されます。
@@ -207,19 +207,6 @@ val query = dfStream.
 query.awaitTermination()
 ```
 
-## <a name="external-library-management"></a>外部ライブラリの管理
-
-この例では、Synpase Apache Spark ワークスペースで Spark ノートブックを使用するときに、JAR ファイルから外部ライブラリを参照する方法について説明します。 ワークスペースに接続したプライマリ データ レイク アカウントのコンテナーに JAR ファイルを配置し、Spark ノートブックに次の `%configure` ステートメントを追加できます。
-
-```cmd
-%%configure -f
-{
-    "jars": [
-        "abfss://<storage container name>@<data lake account name>.dfs.core.windows.net/<path to jar>"
-    ]
-}
-```
-リモートの Spark ジョブ定義をサーバーレス Apache Spark プールに送信する場合は、こちらの[チュートリアル](../spark/apache-spark-job-definitions.md)に従って外部ライブラリを参照する方法を確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

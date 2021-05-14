@@ -1,18 +1,18 @@
 ---
 title: Azure File Storage との間でデータをコピーする
 description: Azure Data Factory を使用して、Azure File Storage からサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアから Azure Data Factory にデータをコピーしたりする方法を説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 1046aee7eea406cce1141382294a70c7eb2f62d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c81b3615160cc3e096267f01f2d09b40cb9dc360
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597540"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480338"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする
 
@@ -38,7 +38,7 @@ Azure File Storage のデータをサポートされる任意のシンク デー
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure File Storage に固有の Data Factory エンティティの定義に使用されるプロパティの詳細を説明します。
 
@@ -213,7 +213,7 @@ Data Factory では、Shared Access Signature 認証を使用するための次�
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Azure File Storage では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -255,7 +255,7 @@ Azure File Storage では、形式ベースのデータセットの `location` �
 
 ### <a name="azure-file-storage-as-source"></a>ソースとしての Azure File Storage
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Azure File Storage では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -320,7 +320,7 @@ Azure File Storage では、形式ベースのコピー ソースの `storeSetti
 
 ### <a name="azure-file-storage-as-sink"></a>シンクとしての Azure File Storage
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 Azure File Storage では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 

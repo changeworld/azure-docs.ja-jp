@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: c59529db0981a1071b76714c48aacaf675e4b17a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: eee4d23b17bf852946b31912eb81fd4f897e0f56
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987911"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803874"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -47,7 +47,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
     |設定|値|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
-    |**Multi-turn default text (マルチターンのデフォルト テキスト)**| 選択およびオプション|
+    |**Multi-turn default text (マルチターンのデフォルト テキスト)**| オプションを選択|
     |**+ Add URL (+ URL の追加)**|`https://www.microsoft.com/en-us/software-download/faq`|
     |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
 
@@ -82,7 +82,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
     |設定|値|
     |--|--|
     |**Enable multi-turn extraction from URLs, .pdf or .docx files (URL、.pdf、または .docx ファイルからの複数ターンの抽出を有効にする)**|オン|
-    |**Multi-turn default text (マルチターンのデフォルト テキスト)**| 選択およびオプション|
+    |**Multi-turn default text (マルチターンのデフォルト テキスト)**| オプションを選択|
     |**+ Add File (+ ファイルの追加)**| Surface のラップトップ マニュアルをダウンロードする場所: 'https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf ' 
     |**Chit-chat (おしゃべり)**|**[Professional]\(専門家\)** を選択します|
 

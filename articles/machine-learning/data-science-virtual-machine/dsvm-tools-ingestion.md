@@ -76,7 +76,7 @@ ms.locfileid: "100519373"
 | サポートされている DSVM バージョン      | Windows      |
 | 標準的な使用      | DSVM からのデータのインポートとエクスポート。    |
 |  使用/実行方法    | [スタート] メニュー内で "Azure Storage Explorer" を検索します。 |
-| サンプルへのリンク      | [Azure 記憶域エクスプローラー](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
+| サンプルへのリンク      | [Azure Storage Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp

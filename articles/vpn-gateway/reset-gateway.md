@@ -1,18 +1,18 @@
 ---
 title: IPsec トンネルを再確立するために VPN ゲートウェイまたは接続をリセットする
 titleSuffix: Azure VPN Gateway
-description: IPsec トンネルを再確立するために、接続または VPN ゲートウェイをリセットします。
+description: IPsec トンネルを再確立するためにゲートウェイまたはゲートウェイ接続をリセットする方法について説明します。
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: adc2ffd63d73baaddce00324787df61061ea69dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf92808f41d7681f2fe5c44cc958435438a1f86
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726643"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229218"
 ---
 # <a name="reset-a-vpn-gateway-or-a-connection"></a>VPN ゲートウェイまたは接続をリセットする
 

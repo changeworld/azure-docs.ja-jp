@@ -130,14 +130,16 @@
           href: backup.md
     - name: セキュリティで保護
       items:
+        - name: キー コンテナーのネットワーク設定を構成する
+          href: how-to-azure-key-vault-network-security.md
+        - name: ファイアウォールの内側にある Key Vault にアクセスする
+          href: access-behind-firewall.md
         - name: Azure Private Link
           items:
             - name: Azure Private Link サービスと統合する
               href: private-link-service.md
             - name: プライベート リンクの構成の問題を診断する
               href: private-link-diagnostics.md
-        - name: ファイアウォールの内側にある Key Vault にアクセスする
-          href: access-behind-firewall.md
     - name: キー コンテナーを移動する
       items:
         - name: キー コンテナーを別のリソース グループに移動する

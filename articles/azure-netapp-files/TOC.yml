@@ -77,10 +77,12 @@
       href: azure-netapp-files-register.md
     - name: NetApp アカウントを作成する
       href: azure-netapp-files-create-netapp-account.md
-    - name: 容量プールを設定する
-      href: azure-netapp-files-set-up-capacity-pool.md
-    - name: 手動 QoS 容量プールを管理する
-      href: manage-manual-qos-capacity-pool.md
+    - name: 容量プールの作成と管理
+      items:
+        - name: 容量プールを設定する
+          href: azure-netapp-files-set-up-capacity-pool.md
+        - name: 手動 QoS 容量プールを管理する
+          href: manage-manual-qos-capacity-pool.md
     - name: サブネットを Azure NetApp Files に委任する
       href: azure-netapp-files-delegate-subnet.md
     - name: Active Directory 接続の作成と管理
@@ -97,8 +99,12 @@
           href: configure-ldap-extended-groups.md
         - name: Azure NetApp Files 用に NFS クライアントを構成する
           href: configure-nfs-clients.md
-    - name: SMB ボリュームを作成する
-      href: azure-netapp-files-create-volumes-smb.md
+    - name: SMB ボリュームの作成と管理
+      items:
+        - name: SMB ボリュームを作成する
+          href: azure-netapp-files-create-volumes-smb.md
+        - name: 既存の SMB ボリュームを変換して継続的可用性を使用する
+          href: convert-smb-continuous-availability.md
     - name: デュアルプロトコル ボリュームを作成する
       href: create-volumes-dual-protocol.md
     - name: TLS 経由の ADDS LDAP を構成する

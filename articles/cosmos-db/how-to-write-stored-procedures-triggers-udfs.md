@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c20974513d5e52661fed16f671ca672950c054
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028864"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331792"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -351,6 +351,7 @@ function updateMetadataCallback(err, items, responseOptions) {
         if(!accept) throw "Unable to update metadata, abort";
         return;
 }
+}
 ```
 
 ここで重要なのは、Azure Cosmos DB でのトリガーのトランザクション実行です。 ポストトリガーは、基になる項目自体と同じトランザクションの一部として実行されます。 ポストトリガーの実行中に例外が発生すると、トランザクション全体が失敗します。 コミットされたものすべてがロールバックされ、例外が返されます。
@@ -388,16 +389,29 @@ function tax(income) {
 
 ユーザー定義関数を登録して使用する方法の例については、 [Azure Cosmos DB でユーザー定義関数を使用する方法](how-to-use-stored-procedures-triggers-udfs.md#udfs)に関する記事を参照してください。
 
-## <a name="logging"></a>ログ記録 
+## <a name="logging"></a>ログ記録
 
-ストアド プロシージャ、トリガー、またはユーザー定義関数を使用する場合は、`console.log()` コマンドを使用してステップをログに記録できます。 このコマンドは、次の例に示すように `EnableScriptLogging` が true に設定されている場合に、デバッグ用の文字列をまとめます。
+ストアド プロシージャ、トリガー、またはユーザー定義関数を使用する場合は、スクリプト ログを有効にすることでステップをログすることができます。 デバッグ用の文字列は、次の例に示すように、`EnableScriptLogging` が true に設定されている場合に生成されます。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
+let requestOptions = { enableScriptLogging: true };
+const { resource: result, headers: responseHeaders} await container.scripts
+      .storedProcedure(Sproc.id)
+      .execute(undefined, [], requestOptions);
+console.log(responseHeaders[Constants.HttpHeaders.ScriptLogResults]);
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
 var response = await client.ExecuteStoredProcedureAsync(
 document.SelfLink,
 new RequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
+---
 
 ## <a name="next-steps"></a>次のステップ
 

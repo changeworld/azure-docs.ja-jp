@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 05/03/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c3ea17a4f6dc2fb5134c6ceb1ae37d25e0881365
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 47947945759faee9f38393f06f7ec9396d9c715b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715249"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749107"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントを管理する
 
@@ -57,14 +57,14 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 
 |リソース  |説明  |Role  |
 |---------|---------|---------|
-|[アプリケーションの登録](tutorial-register-applications.md) | Azure AD B2C 内で、Web、モバイル、およびネイティブのアプリケーション登録のすべての側面を作成し、管理します。|[アプリケーション管理者](../active-directory/roles/permissions-reference.md#global-administrator)|
+|[アプリケーションの登録](tutorial-register-applications.md) | Azure AD B2C 内で、Web、モバイル、およびネイティブのアプリケーション登録のすべての側面を作成し、管理します。|[アプリケーション管理者](../active-directory/roles/permissions-reference.md#application-administrator)|
 |[ID プロバイダー](add-identity-provider.md)| [ローカル ID プロバイダー](identity-provider-local.md)と外部のソーシャルまたはエンタープライズ ID プロバイダーを構成します。 | [外部 ID プロバイダー管理者](../active-directory/roles/permissions-reference.md#external-identity-provider-administrator)|
-|[API コネクタ](add-api-connector.md)| ユーザー フローを Web API と統合してユーザー エクスペリエンスをカスタマイズし、外部システムと統合します。|[外部 ID ユーザー フロー属性管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
+|[API コネクタ](add-api-connector.md)| ユーザー フローを Web API と統合してユーザー エクスペリエンスをカスタマイズし、外部システムと統合します。|[外部 ID ユーザー フロー管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
 |[会社のブランド](customize-ui.md#configure-company-branding)| ユーザー フローの各ページをカスタマイズします。| [全体管理者](../active-directory/roles/permissions-reference.md#global-administrator)|
 |[ユーザー属性](user-flow-custom-attributes.md)| すべてのユーザー フローに使用可能なカスタム属性を追加するか、削除します。| [外部 ID ユーザー フロー属性管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-attribute-administrator)|
 |ユーザーの管理| この記事で説明されているように、[コンシューマー アカウント](manage-users-portal.md) と管理アカウントを管理します。| [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator)|
 |ロールと管理者| Azure AD B2C ディレクトリでロールの割り当てを管理します。 Azure AD B2C ロールに割り当てることができるグループを作成し、管理します。 |[ブローバル管理者](../active-directory/roles/permissions-reference.md#global-administrator)、[特権ロール管理者](../active-directory/roles/permissions-reference.md#privileged-role-administrator)|
-|[ユーザー フロー](user-flow-overview.md)|サインアップ、サインイン、プロファイル編集などの一般的な ID タスクを短時間で構成し、有効にします。| [外部 ID ユーザー フロー属性管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
+|[ユーザー フロー](user-flow-overview.md)|サインアップ、サインイン、プロファイル編集などの一般的な ID タスクを短時間で構成し、有効にします。| [外部 ID ユーザー フロー管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
 |[カスタム ポリシー](user-flow-overview.md)| Azure AD B2C ですべてのカスタムポリシーの作成、読み取り、更新、および削除を行います。| [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)|
 |[ポリシー キー](policy-keys-overview.md)|カスタム ポリシーで使用されるトークン、クライアント シークレット、証明書、パスワードの署名と検証のための暗号化キーを追加し、管理します。|[B2C IEF キーセット管理者](../active-directory/roles/permissions-reference.md#b2c-ief-keyset-administrator)|
 
