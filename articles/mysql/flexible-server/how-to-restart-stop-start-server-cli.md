@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: c9e646ad40c669e51f052ac9888cdd7c6883a848
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: cf4f053167c477fd68c8c56f6f03ee15b7877638
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508981"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738738"
 ---
 # <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) を再起動、停止、または開始する
 
@@ -23,7 +23,7 @@ ms.locfileid: "107508981"
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 - Azure CLI をインストールするか、最新バージョンにアップグレードします。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
--  [az login](/cli/azure/reference-index#az-login) コマンドを使用して Azure アカウントにログインします。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。
+-  [az login](/cli/azure/reference-index#az_login) コマンドを使用して Azure アカウントにログインします。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。
 
     ```azurecli-interactive
     az login

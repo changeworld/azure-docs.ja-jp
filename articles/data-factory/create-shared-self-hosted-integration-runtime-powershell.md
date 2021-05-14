@@ -3,16 +3,16 @@ title: PowerShell で共有のセルフホステッド統合ランタイムを�
 description: Azure Data Factory 内で共有のセルフホステッド統合ランタイムを作成する方法について説明します。これにより、複数のデータ ファクトリから統合ランタイムにアクセスできます。
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 16feeb124859fa6199303d9d590fa0a286033ef9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87f73c37f5809cb2f3911ba9883271aa514841e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389435"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481699"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 

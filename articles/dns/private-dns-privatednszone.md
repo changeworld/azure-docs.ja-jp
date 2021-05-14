@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/09/2021
 ms.author: rohink
-ms.openlocfilehash: 0e04d7525cbd0c707ba0050f31414c2472602d1b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ea256292510f662236fe8b9507009c8418849c5e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311415"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772641"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>プライベート Azure DNS ゾーンとは
 
@@ -38,4 +38,4 @@ Azure プライベート DNS は、信頼性が高くセキュリティで保護
 
 * [プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関しては、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを参照してください。
 
-* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.md) に関する記事をご覧ください。
+* Azure DNS のプライベート ゾーンに関する一般的な質問と回答については、[プライベート DNS の FAQ](./dns-faq-private.yml) に関する記事をご覧ください。

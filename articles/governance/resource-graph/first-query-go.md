@@ -3,12 +3,12 @@ title: クイック スタート:初めての Go クエリ
 description: このクイックスタートでは、手順に従って、Go 用の Resource Graph パッケージを有効にし、初めてのクエリを実行します。
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 7197dd95c0601f8aebd537a2b19d45821ef7716d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 42e2ee9b5fc5c34fab2785d32b8b2de55dee0d71
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325033"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751789"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>クイック スタート:Go を使用して初めての Resource Graph クエリを実行する
 
@@ -53,9 +53,9 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
 
 1. Go アプリケーションを作成し、次のソースを `argQuery.go` として保存します。
 
-   ```Go
+   ```go
    package main
-   
+
    import (
       "fmt"
       "os"
@@ -64,12 +64,12 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
       arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
       "github.com/Azure/go-autorest/autorest/azure/auth"
    )
-   
+
    func main() {
        // Get variables from command line arguments
        var query = os.Args[1]
        var subList = os.Args[2:]
-   
+
        // Create and authorize a ResourceGraph client
        argClient := arg.New()
        authorizer, err := auth.NewAuthorizerFromCLI()
@@ -78,19 +78,19 @@ Go で Azure Resource Graph のクエリを実行できるようにするには�
        } else {
            fmt.Printf(err.Error())
        }
-     
+
        // Set options
        RequestOptions := arg.QueryRequestOptions {
            ResultFormat: "objectArray",
        }
-     
+
        // Create the query request
        Request := arg.QueryRequest {
            Subscriptions: &subList,
            Query: &query,
            Options: &RequestOptions,
        }
-     
+
        // Run the query and get the results
        var results, queryErr = argClient.Resources(context.Background(), Request)
        if queryErr == nil {

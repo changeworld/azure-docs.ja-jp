@@ -1,17 +1,17 @@
 ---
 title: Amazon Redshift からデータをコピーする
 description: Azure Data Factory を使用して、Amazon Redshift からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 9441885766dad97dfc237ab81a59710245bf13ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1dd0144395d1eed533300808d8d872742f0d710
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100364258"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482239"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -43,7 +43,7 @@ Amazon Redshift から、サポートされている任意のシンク データ
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Amazon Redshift コネクターに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

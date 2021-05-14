@@ -9,15 +9,15 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc1637524acd484536cb79c68582e961ab3a5f59
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91818534"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108732781"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
-**問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
+**問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 次のような点を検討します。
@@ -46,7 +46,7 @@ ms.locfileid: "91818534"
     Azure Resource Explorer は Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。 サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。 Compute リソース プロバイダーの下で、作成した仮想マシン スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。 また、仮想マシン スケール セット内の VM のインスタンス ビューも確認します。 次に Microsoft.Insights リソース プロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 * 診断拡張機能が動作し、パフォーマンス データを出力していますか。
   
-    **更新:** Azure の自動スケーリングはホストベースのメトリック パイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
+    **更新:** Azure の自動スケーリングはホストベースのメトリック パイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/python/vmss-bottle-autoscale/azuredeploy.json にあります。 
   
     次の理由により、自動スケールにはホストベースのメトリックを使用することをお勧めします。
   

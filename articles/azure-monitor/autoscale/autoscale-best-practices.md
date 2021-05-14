@@ -4,12 +4,12 @@ description: Azure での Web Apps、Virtual Machine Scale Sets、および Clou
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9aaf9525f2fedee67a86011e938b8e995ccfe9fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a49c9812848d9ef8cbe5a4499fb1430ca146855
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100603495"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738430"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](../../api-management/api-management-key-concepts.md)にのみ適用されます。
@@ -66,7 +66,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * CPU 使用率が 80 以上のときにインスタンスを 1 つ増やす
 * CPU 使用率が 60 以下のときにインスタンスを 1 つ減らす
 
-この場合、次のようになります。  
+この場合、次のようになります。
 
 1. 最初に 2 つのインスタンスがあるとします。
 2. 全インスタンスの平均 CPU 使用率が 80 に達すると、3 つ目のインスタンスが追加され、スケールアウトされます。
@@ -149,11 +149,10 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 * 自動スケーリングによってフラッピングが検出され、スケーリングの試行が中止されます。 この状況では、`Flapping` のログの種類が表示されます。 これが表示された場合は、しきい値が狭すぎるかどうかを検討してください。
 * 自動スケーリングによってフラッピングが検出されますが、スケーリングは正常に実行できます。 この状況では、`FlappingOccurred` のログの種類が表示されます。 これが表示された場合は、自動スケーリング エンジンによって (たとえば、4 インスタンスから 2 への) スケーリングが試行されたものの、これによりフラッピングが発生する可能性があると判断されました。 代わりに、自動スケーリング エンジンによって異なる数のインスタンスにスケーリングされると (たとえば、2 つではなく 3 つのインスタンスを使用)、フラッピングが発生しなくなるため、このインスタンス数にスケーリングされました。
 
-また、アクティビティ ログ アラートを使用して、自動スケール エンジンの正常性を監視することもできます。 ここに、[アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)場合、または[アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)場合の例を示します。
+また、アクティビティ ログ アラートを使用して、自動スケール エンジンの正常性を監視することもできます。 ここに、[アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)場合、または[アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)場合の例を示します。
 
 アクティビティ ログ アラートを使用する以外に、正常なスケール操作が行われたときに通知されるように、自動スケール設定の通知タブで、電子メールまたは webhook の通知を構成することもできます。
 
 ## <a name="next-steps"></a>次の手順
-- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-
+- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)

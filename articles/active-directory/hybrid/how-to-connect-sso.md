@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 14519a1e46c3fd3414f9a09521fd6bcb5cb8b851
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517703"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285594"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -66,7 +66,7 @@ Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済�
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートする Office クライアントでサポートされています。
 
-| OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\ブラウザー |Internet Explorer|Microsoft Edge\*\*\*\*|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
 |Windows 8.1|はい\*|はい*\*\*\*|はい|はい\*\*\*|該当なし
@@ -75,14 +75,17 @@ Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済�
 |Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
 |Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
+ > [!NOTE]
+ >Microsoft Edge レガシはサポートされなくなりました
 
-\*Internet Explorer バージョン 10 以降が必要です。
 
-\*\*Internet Explorer バージョン 10 以降が必要です。 拡張保護モードを無効にする。
+\*Internet Explorer バージョン 11 以降が必要です。
+
+\*\*Internet Explorer バージョン 11 以降が必要です。 拡張保護モードを無効にする。
 
 \*\*\*[別途構成](how-to-connect-sso-quick-start.md#browser-considerations)が必要。
 
-\*\*\*\*Microsoft Edge バージョン 77 以降が必要です。
+\*\*\*\*Chromium に基づく Microsoft Edge
 
 ## <a name="next-steps"></a>次のステップ
 

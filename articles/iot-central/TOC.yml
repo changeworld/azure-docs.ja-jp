@@ -8,6 +8,10 @@
       href: core/overview-iot-central-tour.md
     - name: 最新の更新
       items:
+        - name: 2021 年 3 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-march-2021/'
+        - name: 2021 年 2 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: 2021 年 1 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: 2020 年 11 月の新機能と更新された機能
@@ -122,7 +126,7 @@
             - name: 患者の継続的なモニタリング アプリを作成する
               href: healthcare/tutorial-continuous-patient-monitoring.md
             - name: 正常性データ トリアージ ダッシュボードを作成する
-              href: healthcare/howto-health-data-triage.md
+              href: ./healthcare/tutorial-health-data-triage.md
 - name: 概念
   items:
     - name: アーキテクチャ
@@ -131,6 +135,10 @@
       href: core/overview-iot-central-developer.md
     - name: ソリューション ビルダーのガイド
       href: core/overview-iot-central-solution-builder.md
+    - name: 管理者ガイド
+      href: core/overview-iot-central-admin.md
+    - name: オペレーター ガイド
+      href: core/overview-iot-central-operator.md
     - name: アプリケーション テンプレートとは
       href: core/concepts-app-templates.md
     - name: 業界に固有のアプリケーション テンプレート
@@ -189,6 +197,8 @@
   items:
     - name: デバイスの開発と接続
       items:
+        - name: アプリケーションの作成
+          href: core/howto-create-iot-central-application.md
         - name: デバイス テンプレートを設定する
           href: core/howto-set-up-template.md
         - name: デバイス テンプレートをバージョン管理する
@@ -201,16 +211,14 @@
           href: core/how-to-connect-devices-x509.md
         - name: Azure CLI を使用してデバイスの接続性を監視する
           href: core/howto-monitor-devices-azure-cli.md
+        - name: IoT Edge の透過的なゲートウェイを経由してデバイスを接続する
+          href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: Azure Sphere DevKit を準備して接続する
           href: core/howto-connect-sphere.md
         - name: RuuviTag デバイスを準備して接続する
           href: core/howto-connect-ruuvi.md
         - name: Rigado Cascade 500 を準備して接続する
           href: core/howto-connect-rigado-cascade-500.md
-        - name: その他の IoT クラウドの接続
-          href: core/howto-build-iotc-device-bridge.md
-        - name: デバイスを管理する
-          href: core/how-to-move-device-to-iot.md
     - name: 統合されたソリューションの構築
       items:
         - name: ダッシュボードへのタイルの追加
@@ -227,6 +235,8 @@
           href: core/howto-export-data.md
         - name: クラウドの宛先にデータをエクスポートする (レガシ)
           href: core/howto-export-data-legacy.md
+        - name: データを変換する
+          href: core/howto-transform-data.md
         - name: ワークフローを使用して他のサービスと統合する
           href: core/howto-configure-rules-advanced.md
         - name: カスタム規則の作成
@@ -235,14 +245,26 @@
           href: core/howto-create-custom-analytics.md
         - name: Power BI でのデータの視覚化
           href: core/howto-connect-powerbi.md
+        - name: その他の IoT クラウドの接続
+          href: core/howto-build-iotc-device-bridge.md
         - name: Dynamics 365 Field Services を使用してアプリを接続する
           href: government/how-to-configure-connected-field-services.md
+    - name: REST API の使用
+      items:
+        - name: REST API 呼び出しの認証と承認
+          href: core/howto-authorize-rest-api.md
+        - name: ユーザーとロールを管理する
+          href: core/howto-manage-users-roles-with-rest-api.md
+        - name: デバイスを制御する
+          href: core/howto-control-devices-with-rest-api.md
     - name: デバイスを管理する
       items:
         - name: デバイスの追加と削除
           href: core/howto-manage-devices.md
         - name: ジョブの実行
           href: core/howto-run-a-job.md
+        - name: IoT Hub からデバイスを移動する
+          href: core/how-to-move-device-to-iot.md
     - name: ソリューションの管理
       items:
         - name: アプリケーション設定の変更
@@ -300,7 +322,9 @@
     - name: コード サンプル
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: サポート オプションとヘルプ オプション
-      href: ../iot-fundamentals/iot-support-help.md
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: IoT 用語集
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT のサービス
       items:
         - name: IoT Hub

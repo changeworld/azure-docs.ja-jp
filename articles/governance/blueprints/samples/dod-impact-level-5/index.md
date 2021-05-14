@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 5 ブループリント サンプルの概要
 description: DoD 影響レベル 5 サンプルの概要。 このブループリント サンプルは、お客様が特定の DoD 影響レベル 5 コントロールを評価するのに役立ちます。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 5b2d018cf6c986c38cbe5a1a8ea18bf4a290a4df
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: f8656a1d7da8ec2fd9272d7d1c87244a4aa21761
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035072"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757477"
 ---
 # <a name="overview-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影響レベル 5 ブループリント サンプルの概要
 

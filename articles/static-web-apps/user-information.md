@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: ff9760e72c8ba3f652310c96ef09cfcc9ad41198
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dec025273ddfe9abf6a7588ad09a6a08a9ff872d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141465"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762823"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのユーザー情報へのアクセス
 
@@ -36,9 +36,9 @@ Azure Static Web Apps では、[直接アクセス エンドポイント](#direc
 
 ```json
 {
-  "identityProvider": "facebook",
+  "identityProvider": "github",
   "userId": "d75b260a64504067bfc5b2905e3b8182",
-  "userDetails": "user@example.com",
+  "userDetails": "username",
   "userRoles": ["anonymous", "authenticated"]
 }
 ```

@@ -4,12 +4,12 @@ description: ポリシー定義やポリシーの割り当てなど、Azure Poli
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca7e5de5238bab50e31b25d6a0bf5068aad397a8
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 36e3c28d8448bba94222a23581dda7bd6d3ffaeb
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073649"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752671"
 ---
 # <a name="export-azure-policy-resources"></a>Azure Policy リソースをエクスポートする
 
@@ -35,7 +35,7 @@ Azure portal からポリシー定義をエクスポートするには、次の�
    - **ディレクトリ**:Azure Policy リソースをエクスポートする "_ルート レベル フォルダー_"。 このディレクトリの下のサブフォルダーは、エクスポートされるリソースに基づいて作成されます。
 
 1. **[ポリシー]** タブで、省略記号を選択し、管理グループ、サブスクリプション、またはリソース グループの組み合わせを選択して、検索範囲を設定します。
-   
+
 1. **[Add policy definition(s)]\(ポリシー定義の追加\)** ボタンを使用して、エクスポートするオブジェクトのスコープを検索します。 開いたサイド ウィンドウ内で、エクスポートする各オブジェクトを選択します。 検索ボックスまたは種類によって選択をフィルター処理します。 エクスポートするオブジェクトをすべて選択したら、ページの下部にある **[追加]** ボタンを使用します。
 
 1. 選択した各オブジェクトについて、 _[Only Definition]\(定義のみ\)_ や _[Definition and Assignment(s)]\(定義と割り当て\)_ など、ポリシー定義の目的のエクスポート オプションを選択し ます。 次に、 **[Review + Export]\(確認 + エクスポート\)** タブまたは **[Next : Review + Export]\(次へ: 確認 + エクスポート\)** ボタンがページ下部にあるので選択します。

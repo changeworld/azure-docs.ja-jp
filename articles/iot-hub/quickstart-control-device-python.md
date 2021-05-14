@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: 2ecc1ceb624f2f98bca47d4d1331f67c52fa54b4
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ba874790b8da6c1dc021163259f8df934fa17d41
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566913"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714874"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Python)
 
@@ -84,7 +84,7 @@ ms.locfileid: "107566913"
     ```azurecli-interactive
     az iot hub connection-string show \
       --policy-name service \
-      --name {YourIoTHubName} \
+      --hub-name {YourIoTHubName} \
       --output table
     ```
 

@@ -39,12 +39,12 @@
     - name: カスタム .NET 逆シリアライザーの作成
       href: custom-deserializer.md
     - name: IoT Edge ジョブを作成する
-      href: ../iot-edge/tutorial-deploy-stream-analytics.md?view=iotedge-2018-06
+      href: ../iot-edge/tutorial-deploy-stream-analytics.md
       maintainContext: true
 - name: サンプル
   items:
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+      href: /samples/browse/?products=azure-stream-analytics
 - name: 概念
   items:
     - name: エンドツーエンド ソリューション パターン
@@ -63,7 +63,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/stream-analytics-security-baseline?toc=/azure/stream-analytics/TOC.json
     - name: ジョブの入力の種類
       items:
         - name: 入力の概要
@@ -95,7 +95,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: テーブル ストレージ
+        - name: Table ストレージ
           href: table-storage-output.md
         - name: Service Bus キュー
           href: service-bus-queues-output.md
@@ -316,13 +316,13 @@
               href: external-error-codes.md
             - name: 内部エラー
               href: internal-error-codes.md
-    - name: 機械学習との統合
+    - name: Machine Learning との統合
       items:
         - name: ML モデルを利用したセンチメント分析
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: 異常検出
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: REST API の使用
+        - name: ML REST API を使用する
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: ジョブ ダイアグラムを使用したデバッグ
       href: stream-analytics-job-diagram-with-metrics.md
@@ -677,7 +677,7 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
-      href: /cli/azure/ext/stream-analytics/stream-analytics
+      href: /cli/azure/stream-analytics
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
@@ -688,7 +688,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: ブログ
-      href: 'https://azure.microsoft.com/blog/tag/azure-stream-analytics/'
+      href: 'https://techcommunity.microsoft.com/t5/analytics-on-azure/bg-p/AnalyticsonAzure'
     - name: フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
     - name: Microsoft Q&A 質問ページ
@@ -705,5 +705,3 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
     - name: お客様導入事例
       href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: ホワイトペーパー - リアルタイム イベント処理
-      href: stream-analytics-real-time-event-processing-reference-architecture.md

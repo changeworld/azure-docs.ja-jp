@@ -1,18 +1,18 @@
 ---
 title: レガシを使用して MongoDB からデータをコピーする
 description: レガシ Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
-author: linda33wj
-ms.author: jingwang
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: e13a1a5a939d314bdf4500c0827fa13201505016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4882949abd21e782d98dff8de2ba7be1b66ecdfb
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100368848"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482185"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Azure Data Factory を使用して MongoDB のデータをコピーする (レガシ)
 
@@ -37,13 +37,13 @@ MongoDB データベースのデータを、サポートされているシンク
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+[!INCLUDE [data-factory-v2-integration-runtime-requirements](includes/data-factory-v2-integration-runtime-requirements.md)]
 
 Integration Runtime には MongoDB ドライバーが組み込まれているため、MongoDB からデータをコピーするときにドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、MongoDB コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 

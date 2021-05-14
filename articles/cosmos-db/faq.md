@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb5eb3f08436001d83ce807ce775c7e49cf0e8e4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359831"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741979"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB のさまざまな API についてよく寄せられる質問
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -219,5 +219,5 @@ ResourceTokens の使用によるアクセス許可の作成は、コンテナ�
 
 * [Azure Cosmos DB の MongoDB 用 API](mongodb-api-faq.md) についてよく寄せられる質問
 * [Azure Cosmos DB での Gremlin API](gremlin-api-faq.md) についてよく寄せられる質問
-* [Azure Cosmos DB での Cassandra API](cassandra-faq.md) についてよく寄せられる質問
+* [Azure Cosmos DB での Cassandra API](cassandra-faq.yml) についてよく寄せられる質問
 * [Azure Cosmos DB での Table API](table-api-faq.md) についてよく寄せられる質問
