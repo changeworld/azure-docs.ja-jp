@@ -77,7 +77,7 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |âœ” |âœ” |âœ” |
-| [Azure 記憶域エクスプローラー](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |âœ” |âœ” |âœ” |
+| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |âœ” |âœ” |âœ” |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |âœ” |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |âœ” |
 | [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |âœ” |

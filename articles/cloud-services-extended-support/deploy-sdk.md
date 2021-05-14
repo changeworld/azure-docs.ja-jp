@@ -8,19 +8,16 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d36bae57a9e1609e053326cf7288b5b1bc470cef
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a91d26139fae80b38383e7f65f7ae2f58358e6f6
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166889"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795314"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Azure SDK を使用して Cloud Services (延長サポート) をデプロイする
 
 この記事では、複数のロール (Web ロールおよび worker ロール) を備え、かつ、リモート デスクトップ拡張機能を追加した Cloud Services (延長サポート) インスタンスを、[Azure SDK](https://azure.microsoft.com/downloads/) を使ってデプロイする方法を説明します。 Cloud Services (延長サポート) は、Azure Resource Manager に基づく Azure Cloud Services のデプロイ モデルです。
-
-> [!IMPORTANT]
-> Cloud Services (延長サポート) は現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="before-you-begin"></a>始める前に
 

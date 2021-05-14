@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 との間でデータをコピーする
 description: Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Data Lake Store にコピーしたり、Data Lake Store のデータをサポートされるシンク ストアにコピーしたりできます。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: 2b064412fab7b81a3e0cd164456e8fc5c3b35ae2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1a73fc3a48576ca39435d65449fc557fd5c93c43
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104597557"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480439"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 
@@ -49,7 +49,7 @@ ms.locfileid: "104597557"
 > [!TIP]
 > Azure Data Lake Store コネクタの使い方のチュートリアルについては、[Azure Data Lake Store へのデータの読み込み](load-azure-data-lake-store.md)に関する記事を参照してください。
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Data Lake Store に固有の Data Factory エンティティを定義するために使用されるプロパティについて説明します。
 
@@ -154,7 +154,7 @@ Azure Data Factory では、リンクされたサービスの Data Lake Store �
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Azure Data Lake Store Gen1 では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
@@ -196,7 +196,7 @@ Azure Data Lake Store Gen1 では、形式ベースのデータセットの `loc
 
 ### <a name="azure-data-lake-store-as-source"></a>ソースとしての Azure Data Lake Store
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-formats](includes/data-factory-v2-file-formats.md)] 
 
 Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -217,7 +217,7 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `st
 | modifiedDatetimeEnd      | 上記と同じです。                                               | いいえ                                           |
 | enablePartitionDiscovery | パーティション分割されているファイルの場合は、ファイル パスのパーティションを解析し、それを追加のソース列として追加するかどうかを指定します。<br/>指定できる値は **false** (既定値) と **true** です。 | いいえ                                            |
 | partitionRootPath | パーティション検出が有効になっている場合は、パーティション分割されたフォルダーをデータ列として読み取るための絶対ルート パスを指定します。<br/><br/>これが指定されていない場合は、既定で次のようになります。<br/>- ソース上のデータセットまたはファイルの一覧内のファイル パスを使用する場合、パーティションのルート パスはそのデータセットで構成されているパスです。<br/>- ワイルドカード フォルダー フィルターを使用する場合、パーティションのルート パスは最初のワイルドカードの前のサブパスです。<br/><br/>たとえば、データセット内のパスを "root/folder/year=2020/month=08/day=27" として構成するとします。<br/>- パーティションのルート パスを "root/folder/year=2020" として指定した場合は、コピー アクティビティによって、ファイル内の列とは別に、それぞれ "08" と "27" の値を持つ `month` と `day` という 2 つの追加の列が生成されます。<br/>- パーティションのルート パスが指定されない場合、追加の列は生成されません。 | いいえ                                            |
-| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されるコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ                                           |
+| maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ                                           |
 
 **例:**
 
@@ -262,7 +262,7 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー ソースの `st
 
 ### <a name="azure-data-lake-store-as-sink"></a>シンクとしての Azure Data Lake Store
 
-[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
+[!INCLUDE [data-factory-v2-file-sink-formats](includes/data-factory-v2-file-sink-formats.md)]
 
 Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `storeSettings` 設定において、次のプロパティがサポートされています。
 
@@ -271,7 +271,7 @@ Azure Data Lake Store Gen1 では、形式ベースのコピー シンクの `st
 | type                     | `storeSettings` の type プロパティは **AzureDataLakeStoreWriteSettings** に設定する必要があります。 | はい      |
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | expiryDateTime | 書き込まれたファイルの有効期限を指定します。 時刻は "2020-03-01T08:00:00Z" の形式で UTC 時刻に適用されます。 既定では NULL になっています。これは、書き込まれたファイルの有効期限が切れないことを意味します。 | いいえ |
-| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されるコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ       |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ       |
 
 **例:**
 
@@ -511,7 +511,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの `type` プロパティは **AzureDataLakeStoreSource** に設定する必要があります。 |はい |
 | recursive | データをサブフォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 `recursive` が true に設定されていて、シンクがファイル ベースのストアである場合、シンクでは空のフォルダーまたはサブフォルダーがコピーも作成もされません。 使用可能な値: **true** (既定値) および **false**。 | いいえ |
-| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されるコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 **例:**
 
@@ -551,7 +551,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの `type` プロパティは、**AzureDataLakeStoreSink** に設定する必要があります。 |はい |
 | copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 指定しないと、ファイル名は自動生成されます。 | いいえ |
-| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されるコンカレント接続数の上限。 コンカレント接続数を制限する場合にのみ、値を指定します。| いいえ |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 **例:**
 

@@ -92,14 +92,42 @@
   items:
     - name: キュー、トピック、サブスクリプション
       href: service-bus-queues-topics-subscriptions.md
-    - name: トピック フィルターとアクション
-      href: topic-filters.md
     - name: Premium メッセージング
       href: service-bus-premium-messaging.md
     - name: Azure キューと Service Bus キューを比較する
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - name: パフォーマンスを最適化する
-      href: service-bus-performance-improvements.md
+    - name: 高度な機能
+      items:
+        - name: メッセージ セッション
+          href: message-sessions.md
+        - name: 重複メッセージ検出
+          href: duplicate-detection.md
+        - name: トピック フィルターとアクション
+          href: topic-filters.md
+        - name: メッセージの読み取り
+          href: message-browsing.md
+        - name: メッセージの転送、ロック、および解決
+          href: message-transfers-locks-settlement.md
+        - name: 配達不能キュー
+          href: service-bus-dead-letter-queues.md
+        - name: メッセージ遅延
+          href: message-deferral.md
+        - name: メッセージのプリフェッチ
+          href: service-bus-prefetch.md
+        - name: エンティティと自動転送を連鎖させる
+          href: service-bus-auto-forwarding.md
+        - name: トランザクション処理
+          href: service-bus-transactions.md
+        - name: パフォーマンスを最適化する
+          href: service-bus-performance-improvements.md
+        - name: geo ディザスター リカバリーと geo レプリケーション
+          href: service-bus-geo-dr.md
+        - name: 非同期メッセージングと高可用性
+          href: service-bus-async-messaging.md
+        - name: 故障と障害の扱い
+          href: service-bus-outages-disasters.md
+        - name: Throttling
+          href: service-bus-throttling.md
     - name: フェデレーション
       items:
         - name: メッセージ レプリケーションとリージョン間フェデレーション
@@ -116,27 +144,15 @@
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
         - name: Event Hubs からのメッセージの取得
           href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
-    - name: geo ディザスター リカバリーと geo レプリケーション
-      href: service-bus-geo-dr.md
-    - name: 非同期メッセージングと高可用性
-      href: service-bus-async-messaging.md
-    - name: 故障と障害の扱い
-      href: service-bus-outages-disasters.md
-    - name: Throttling
-      href: service-bus-throttling.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/service-bus-messaging-security-baseline?toc=/azure/service-bus-messaging/TOC.json
         - name: 認証と権限承認
           href: service-bus-authentication-and-authorization.md
           items:
-            - name: Shared Access Signature の使用
-              items:
-                - name: ACS から SAS への移行
-                  href: service-bus-migrate-acs-sas.md
-                - name: Shared Access Signature による認証
-                  href: service-bus-sas.md
+            - name: Shared Access Signature による認証
+              href: service-bus-sas.md
             - name: Azure Active Directory を使用する
               items:
                 - name: Azure リソースのマネージド ID を使用した認証
@@ -154,28 +170,20 @@
           href: service-bus-to-event-grid-integration-concept.md
 - name: 操作方法ガイド
   items:
-    - name: リージョン間で移動する
-      href: move-across-regions.md
-    - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
-      href: deprecate-service-bus-management.md
-    - name: 名前空間の作成
-      href: service-bus-create-namespace-portal.md
     - name: 開発
       items:
+        - name: 名前空間の作成
+          href: service-bus-create-namespace-portal.md
         - name: サブスクリプションのフィルターとアクションを設定する
           href: service-bus-filter-examples.md
         - name: メッセージの処理
           items:
-            - name: キュー、トピック、サブスクリプション
-              href: service-bus-queues-topics-subscriptions.md
             - name: Java Message Service (JMS) 2.0 のエンティティ
               href: java-message-service-20-entities.md
             - name: Java Message Service (JMS) Developer guide.md
               href: jms-developer-guide.md
             - name: メッセージ、ペイロード、およびシリアル化
               href: service-bus-messages-payloads.md
-            - name: メッセージの転送、ロック、および解決
-              href: message-transfers-locks-settlement.md
             - name: メッセージのシーケンス処理とタイムスタンプ
               href: message-sequencing.md
             - name: メッセージの有効期限 (Time to Live)
@@ -184,8 +192,6 @@
           href: service-bus-migrate-standard-premium.md
         - name: パーティション分割されたキューとトピック
           href: service-bus-partitioning.md
-        - name: メッセージ セッション
-          href: message-sessions.md
         - name: AMQP
           items:
             - name: AMQP の概要
@@ -200,30 +206,14 @@
               href: service-bus-amqp-request-response.md
             - name: AMQP エラー
               href: service-bus-amqp-troubleshoot.md
-        - name: 高度な機能
-          items:
-            - name: 配達不能キュー
-              href: service-bus-dead-letter-queues.md
-            - name: メッセージのプリフェッチ
-              href: service-bus-prefetch.md
-            - name: 重複メッセージ検出
-              href: duplicate-detection.md
-            - name: メッセージ カウンター
-              href: message-counters.md
-            - name: メッセージ遅延
-              href: message-deferral.md
-            - name: メッセージの読み取り
-              href: message-browsing.md
-            - name: エンティティと自動転送を連鎖させる
-              href: service-bus-auto-forwarding.md
-            - name: トランザクション処理
-              href: service-bus-transactions.md
         - name: 多層 Service Bus アプリケーションを構築する
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
     - name: 移行
       items:
         - name: ActiveMQ から Azure Service Bus への移行
           href: migrate-jms-activemq-to-servicebus.md
+        - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
+          href: deprecate-service-bus-management.md
     - name: モニター
       items:
         - name: エンドツーエンドのトレースと診断
@@ -238,6 +228,20 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: 管理する
       items:
+        - name: キューまたはサブスクリプションのセッションを有効にする
+          href: enable-message-sessions.md
+        - name: キューまたはトピックの重複検出を有効にする
+          href: enable-duplicate-detection.md
+        - name: キューまたはトピックのパーティションを有効にする
+          href: enable-partitions.md
+        - name: キューまたはサブスクリプションの自動転送を有効にする
+          href: enable-auto-forward.md
+        - name: キューまたはサブスクリプションの配信不能処理を有効にする
+          href: enable-dead-letter.md
+        - name: メッセージ数を取得する
+          href: message-counters.md
+        - name: リージョン間で移動する
+          href: move-across-regions.md
         - name: メッセージング ユニットを自動的に更新する
           href: automate-update-messaging-units.md
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
@@ -292,9 +296,9 @@
         - name: azure-servicebus から azure-messaging-servicebus への移行
           href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
         - name: azure-messaging-servicebus (最新)
-          href: /java/api/overview/azure/servicebus?view=azure-java-preview
+          href: /java/api/com.azure.messaging.servicebus?view=azure-java-stable
         - name: azure-servicebus
-          href: /java/api/overview/azure/servicebus
+          href: /java/api/com.microsoft.azure.servicebus?view=azure-java-stable
     - name: Python
       items:
         - name: azure-servicebus バージョン 0.50 からバージョン 7 への移行
@@ -317,6 +321,8 @@
       href: 'https://github.com/Azure/azure-sdk-for-ruby'
     - name: Go
       href: 'https://github.com/Azure/azure-service-bus-go'
+    - name: Azure CLI
+      href: /cli/azure/servicebus
     - name: Azure PowerShell
       href: /powershell/module/az.servicebus
     - name: REST
@@ -335,7 +341,7 @@
 - name: リソース
   items:
     - name: よく寄せられる質問
-      href: service-bus-faq.md
+      href: service-bus-faq.yml
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-service-bus
     - name: Azure のロードマップ
