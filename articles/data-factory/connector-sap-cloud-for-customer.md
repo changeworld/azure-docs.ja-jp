@@ -1,18 +1,18 @@
 ---
 title: SAP Cloud for Customer との間でデータをコピーする
 description: Data Factory を使用して、SAP Cloud for Customer からサポートされるシンク データ ストアにコピーしたり、サポートされるソース データ ストアから SAP Cloud for Customer にデータをコピーしたりする方法を説明します。
-ms.author: jingwang
 author: linda33wj
+ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: b86559422b6efeed666a3ae35022563a66d9c7e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3981bdae4912dd8f7c4d6018f9fffed2eb91e133
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597320"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788249"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 
@@ -36,7 +36,7 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SAP Cloud for Customer コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

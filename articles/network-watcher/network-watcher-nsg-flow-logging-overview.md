@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 3a9e36f691a107f17e92ffbeb1221459d688b97e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 92500be4ef793fc71c828b84b6b62f833884b372
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146979"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628286"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -378,6 +378,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **互換性のないサービス**:プラットフォームの現行の制約に起因し、一部の Azure サービスは NSG フロー ログでサポートされていません。 互換性のないサービスには現在、次が含まれます。
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Azure Container Instances (ACI)](https://azure.microsoft.com/services/container-instances/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>ベスト プラクティス

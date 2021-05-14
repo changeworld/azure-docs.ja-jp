@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 5faa85a4fac9fc0b8639f33c475283f4f043c627
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8c7f5ef6e1e9c354806994e5116e40523d660e9e
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779257"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627710"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -17,7 +17,7 @@ Azure Functions では、Function App インスタンスを作成するときに
 
 |ストレージ サービス  | 機能の使用法  |
 |---------|---------|
-| [Azure BLOB Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
+| [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | バインドの状態と関数キーを管理します。  <br/>[Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)からも使用されます。 |
 | [Azure Files](../storage/files/storage-files-introduction.md)  | [従量課金プラン](consumption-plan.md)や [Premium プラン](functions-premium-plan.md)で、関数アプリ コードを格納して実行するために使用されるファイル共有。 |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  [Durable Functions 上のタスク ハブ](durable/durable-functions-task-hubs.md)から使用されます。       |

@@ -3,18 +3,18 @@ title: ラスター マップ上にカスタム データをレンダリング�
 description: ラスター マップにプッシュピン、ラベル、幾何学図形を追加する方法について説明します。 この目的のために Azure Maps で静的画像サービスを使用する方法を確認してください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/26/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80919473d5d3f4b34ce8d621d82bf4bc458b8b58
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906082"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326851"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -35,7 +35,7 @@ ms.locfileid: "96906082"
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>ラベルとカスタム画像を使ってプッシュピンをレンダリングする
 
 > [!Note]
-> このセクションの手順には、S0 または S1 価格レベルの Azure Maps アカウントが必要です。
+> このセクションの手順には、Gen 1 または Gen 2 価格レベルの Azure Maps アカウントが必要です。
 
 Azure Maps アカウント S0 レベルでは、`pins` パラメーターのインスタンスが 1 つだけサポートされます。 カスタム画像を利用し、URL 要求で指定されている最大 5 つのプッシュピンをレンダリングできます。
 
@@ -60,7 +60,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 ## <a name="get-data-from-azure-maps-data-storage"></a>Azure Maps データ ストレージからデータを取得する
 
 > [!Note]
-> このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
+> このセクションの手順には、Gen 1 (S1) または Gen 2 価格レベルの Azure Maps アカウントが必要です。
 
 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用し、パスとピンの場所情報を取得することもできます。 パスとピンのデータをアップロードするには、次の手順を実行します。
 
@@ -169,7 +169,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 ## <a name="render-a-polygon-with-color-and-opacity"></a>色と不透明度が指定された多角形をレンダリングする
 
 > [!Note]
-> このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
+> このセクションの手順には、Gen 1 (S1) または Gen 2 価格レベルの Azure Maps アカウントが必要です。
 
 
 多角形の外観は、[path パラメーター](/rest/api/maps/render/getmapimage#uri-parameters)のスタイル修飾子を使用して変更できます。
@@ -189,7 +189,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>カスタム ラベルが付いた円とプッシュピンをレンダリングする
 
 > [!Note]
-> このセクションの手順には、S1 価格レベルの Azure Maps アカウントが必要です。
+> このセクションの手順には、Gen 1 (S1) または Gen 2 価格レベルの Azure Maps アカウントが必要です。
 
 
 ピンの外観を変更するには、スタイル修飾子を追加します。 たとえば、プッシュピンとそのラベルを大きくまたは小さくするには、`sc` "スケール スタイル" 修飾子を使用します。 この修飾子は 0 より大きい値を受け取ります。 1 の値が標準のスケールです。 1 より大きい値にするとピンが大きくなり、1 より小さい値にすると小さくなります。 スタイル修飾子の詳細については、[静的画像サービス パスのパラメーター](/rest/api/maps/render/getmapimage#uri-parameters)に関するページを参照してください。

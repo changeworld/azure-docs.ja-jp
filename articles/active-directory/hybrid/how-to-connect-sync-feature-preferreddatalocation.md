@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5c528b61f4d590c0402ac7c89d97f545911d883
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95972761"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627944"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect (同期): Microsoft 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Microsoft 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Microsoft 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -203,7 +203,7 @@ Multi-Geo で使用できる Microsoft 365 の geo を次に示します。
 
 1. オンプレミスの Active Directory コネクタで、**フル インポート** を実行します。
 
-   1. Synchronization Service Manager の **[操作]** タブに進みます。
+   1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
    2. **オンプレミスの Active Directory コネクタ** を右クリックし、 **[実行]** を選択します。
    3. ダイアログ ボックスで **[フル インポート]** を選択し、 **[OK]** を選択します。
    4. 操作の完了を待ちます。

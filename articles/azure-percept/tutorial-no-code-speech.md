@@ -1,18 +1,18 @@
 ---
 title: Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
 description: コーディングなしで音声ソリューションを作成し、Azure Percept DK にデプロイする方法について説明します。
-author: elqu20
-ms.author: v-elqu
+author: philmea
+ms.author: philmea
 ms.service: azure-percept
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 76333e11916641be71c72ce6142cd59b496a17e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 441d0b4b76e0c543bd82c5546e0ca89250e418e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023165"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748171"
 ---
 # <a name="create-a-voice-assistant-with-azure-percept-dk-and-azure-percept-audio"></a>Azure Percept DK と Azure Percept Audio を使用して音声アシスタントを作成する
 

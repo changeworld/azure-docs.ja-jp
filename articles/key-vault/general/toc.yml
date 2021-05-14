@@ -47,21 +47,21 @@
       href: best-practices.md
     - name: セキュリティ
       items:
-        - name: 概要
-          href: security-overview.md
-        - name: キー コンテナーへのアクセスをセキュリティで保護する
-          href: secure-your-key-vault.md
+        - name: セキュリティ機能
+          href: security-features.md
         - name: Key Vault 認証の基礎
-          href: authentication-fundamentals.md
-        - name: セキュリティ ワールドと地理的境界
+          href: authentication.md
+        - name: Key Vault の認証
+          href: authentication.md
+        - name: セキュリティ ワールドと地域
           href: overview-security-worlds.md
         - name: ネットワークのセキュリティ
           href: network-security.md
-        - name: Key Vault 用の Azure セキュリティ ベースライン
-          href: security-baseline.md
+        - name: セキュリティ ベースライン
+          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/general/context/context
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
-          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+          href: ../security-controls-policy.md?context=/azure/key-vault/general/context/context
     - name: Azure Key Vault のログ記録
       href: logging.md
     - name: 通知
@@ -84,10 +84,8 @@
       href: overview-vnet-service-endpoints.md
 - name: 操作方法ガイド
   items:
-    - name: 認証と承認
+    - name: アクセスを承認する
       items:
-        - name: Key Vault に対する認証
-          href: authentication.md
         - name: アクセス ポリシーの割り当て
           items:
             - name: CLI
@@ -181,7 +179,7 @@
       displayName: ARM
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+      href: ../policy-reference.md?context=/azure/key-vault/general/context/context
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

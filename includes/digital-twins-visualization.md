@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: e752d6c6668ec751ff1e1bc3cd7fcc07d042d6fa
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e1b277b9c2b62ea90a51f9489deb276b473348c1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107800196"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773029"
 ---
 ## <a name="visualization"></a>グラフ
 
-自分の Azure Digital Twins インスタンスは主に、[API と SDK](../articles/digital-twins/how-to-use-apis-sdks.md) を使用して操作しますが、自分のインスタンスで作成しているツインとグラフの視覚化を確認できると便利な場合があります。
+自分の Azure Digital Twins インスタンスは主に、[API と SDK](../articles/digital-twins/concepts-apis-sdks.md) を使用して操作しますが、自分のインスタンスで作成しているツインとグラフの視覚化を確認できると便利な場合があります。
 
-[**Azure Digital Twins エクスプローラー**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、Azure Digital Twins を視覚化して操作するためのサンプル アプリケーションです。 サンプルにある手順に従って、アプリケーション コードをダウンロードして実行します。 
+[Azure Digital Twins エクスプローラー](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)は、Azure Digital Twins を視覚化して操作するためのサンプル アプリケーションです。 サンプルにある手順に従って、アプリケーション コードをダウンロードして実行します。 
 
 このサンプルでは、他に作成および管理アクティビティがある中、ご自分のデジタル ツインとそれによって作成されるグラフを視覚的に表示できます。
 

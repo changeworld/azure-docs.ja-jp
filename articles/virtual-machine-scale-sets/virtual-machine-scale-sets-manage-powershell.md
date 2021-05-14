@@ -5,16 +5,15 @@ author: ju-shim
 ms.author: jushiman
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74e61f66cfd0849b5b0a4a5b8a599230294ac436
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91570574"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744607"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 
