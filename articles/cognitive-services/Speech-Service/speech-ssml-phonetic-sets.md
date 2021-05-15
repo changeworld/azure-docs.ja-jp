@@ -21,7 +21,7 @@ ms.locfileid: "106077518"
 
 Speech サービスでは、次の 7 つの言語で構成される音声アルファベット (略語の"音声セット") を定義します。`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、および `zh-TW`。 音声サービスの音標文字は通常、<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国際音標文字 (IPA)</a> にマップされます。 Speech サービス音声セットでは、[Speech 合成マークアップ言語 (SSML)](speech-synthesis-markup.md)と共に、テキスト音声変換サービスオファリングの一部として使用されます。 この記事では、これらの音声セットがどのようにマップされているか、およびどのような音声セットをどのようなタイミングで使用するかについて説明します。
 
-# <a name="en-us"></a>[ja-JP](#tab/en-US)
+# <a name="en-us"></a>[en-US](#tab/en-US)
 
 ### <a name="english-suprasegmentals"></a>英語の超分節音素
 
