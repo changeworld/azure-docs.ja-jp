@@ -147,7 +147,7 @@ Azure Maps Android SDK では、Azure Government クラウドがサポートさ�
 
 Azure Maps 認証の詳細が指定されているのと同じ場所で、次のコード行を追加して、Azure Maps Government クラウド ドメインを使用するようにマップに指示します。
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 AzureMaps.setDomain(&quot;atlas.azure.us");
