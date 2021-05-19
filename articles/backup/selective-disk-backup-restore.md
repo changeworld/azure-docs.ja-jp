@@ -2,14 +2,14 @@
 title: Azure 仮想マシンの選択的なディスク バックアップと復元
 description: この記事では、Azure 仮想マシン バックアップ ソリューションを使用した選択的なディスク バックアップと復元について説明します。
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 05/03/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 296aea2e11dede1cd0eeaeb222e954c40cb99d3f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501833"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745651"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -47,6 +47,9 @@ az account set -s {subscriptionID}
 ### <a name="configure-backup-with-azure-cli"></a>Azure CLI を使用してバックアップを構成する
 
 保護の構成操作中に、**inclusion** / **exclusion** パラメーターを使用して、ディスク リスト設定を指定する必要があり、バックアップに含めるまたは除外するディスクの LUN 番号を指定します。
+
+>[!NOTE]
+>保護の構成操作は以前の設定を上書きし、累積されることはありません。
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -124,6 +127,11 @@ az backup job show --vault-name {vaultname} --resource-group {resourcegroup} -n 
    "Excluded disk(s)": "diskextest_DataDisk_2",
 ```
 
+_BackupJobID_ は、バックアップ ジョブの名前です。 ジョブ名を取得するには、次のコマンドを実行します。
+
+```azurecli
+az backup job list --resource-group {resourcegroup} --vault-name {vaultname}
+```
 ### <a name="list-recovery-points-with-azure-cli"></a>Azure CLI を使用して復旧ポイントを一覧表示する
 
 ```azurecli
@@ -190,6 +198,9 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 Azure PowerShell バージョン 3.7.0 以上を使用していることを確認します。
 
 保護の構成操作中に、バックアップに含めるか、または除外するディスクの LUN 番号を示す inclusion または exclusion パラメーターを含むディスク リスト設定を指定する必要があります。
+
+>[!NOTE]
+>保護の構成操作は以前の設定を上書きし、累積されることはありません。
 
 ### <a name="enable-backup-with-powershell"></a>PowerShell を使用してバックアップを有効にする
 

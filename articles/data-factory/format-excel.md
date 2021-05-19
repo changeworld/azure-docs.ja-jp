@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory での Excel 形式
 description: このトピックでは、Azure Data Factory で Excel 形式を処理する方法について説明します。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/08/2020
-ms.author: jingwang
-ms.openlocfilehash: bef29bc958253be0498442f842dda67105ce799b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: jianleishen
+ms.openlocfilehash: 4e67778778aad334d7eb7283234ae3bdb5b5eef9
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386528"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109484381"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,7 +20,8 @@ ms.locfileid: "100386528"
 
 Excel 形式は、以下のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。 これはソースとしてはサポートされますが、シンクとしてはサポートされません。 
 
-**注**: [HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。 
+>[!NOTE]
+>[HTTP](connector-http.md) の使用中は、".xls" 形式はサポートされません。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 

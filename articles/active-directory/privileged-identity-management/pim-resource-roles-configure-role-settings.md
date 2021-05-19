@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40779e4517b610e52e41caacc46fc613b72023e5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10242d867c5d9676b4f6833151863b820b2f11d1
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567137"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481807"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -40,7 +40,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
     ![管理できるリソースを一覧表示する [Azure リソース] ページ](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. **ロール設定** を選択します。
+1. **[設定]** を選択します。
 
     ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -48,7 +48,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
     ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. **[編集]** を選択して **[ロールの設定]** ペインを開きます。 最初のタブでは、Privileged Identity Management でロールのアクティブ化の構成を更新できます。
+1. **[編集]** を選択して **[Edit role setting]\(ロールの設定の編集\)** ウィンドウを開きます。 最初のタブでは、Privileged Identity Management でロールのアクティブ化の構成を更新できます。
 
     ![[アクティブ化] タブが開かれている [Edit role settings]\(ロールの設定の編集\) ページ](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 

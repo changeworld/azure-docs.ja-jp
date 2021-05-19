@@ -12,12 +12,12 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: sstein, bonova
 ms.date: 10/08/2020
-ms.openlocfilehash: f9d5528746a85668677ab122d98e954bd39cd163
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1f732c29d977ff421496809f149ee722c766072
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92790731"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517426"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>サーバー信頼グループを使用して SQL マネージド インスタンス間の信頼を設定および管理する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "92790731"
 
 ## <a name="server-trust-group-setup"></a>サーバー信頼グループの設定
 
-次のセクションでは、サーバー信頼グループの設定について説明します。
+サーバー信頼グループは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservertrustgroup) または [Azure CLI](https://docs.microsoft.com/cli/azure/sql/stg) を使用してセットアップできます。 次のセクションでは、Azure portal を使用したサーバー信頼グループの設定について説明します。
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 

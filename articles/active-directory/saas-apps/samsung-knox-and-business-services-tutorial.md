@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c292838305baa44699b6309fcaaf7de7366ba94
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952645"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753383"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Samsung Knox およびビジネス サービスの統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "104952645"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Samsung Knox およびビジネス サービスでは、**SP** Initiated SSO がサポートされます
+* Samsung Knox およびビジネス サービスでは、**SP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -78,7 +78,7 @@ Samsung Knox およびビジネス サービスに対する Azure AD SSO を構�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    * **[サインオン URL]** ボックスに、URL として「`https://www.samsungknox.com`」と入力します。
+    * **[サインオン URL]** ボックスに、URL として「`https://www2.samsungknox.com/en/sso/login/ad`」と入力します。
     * **[応答 URL (Assertion Consumer Service URL)]** ボックスに、URL として「`https://central.samsungknox.com/ams/ad/saml/acs`」を入力します
     
     ![基本的な SAML 構成値](https://docs.samsungknox.com/assets/merge/ad-sso/basic-saml-configuration.png)

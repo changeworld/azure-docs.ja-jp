@@ -3,12 +3,12 @@ title: ネットワークをセットアップする
 description: ネットワークが Azure Defender for IoT アプライアンスと連携するように正しく設定するために必要なソリューションのアーキテクチャ、ネットワークの準備、前提条件、およびその他の情報について説明します。
 ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: ed75995b7cbc3b051d77942698a5d0d948e6eef0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bbc627cccf12491d7e6eacedf834bbc845451082
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781808"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734977"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender for IoT のネットワーク設定について
 
@@ -617,7 +617,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
  
     <Add your network diagram with marked serial connection> 
 
-7. QoS では、センサーの既定の設定は 1.5 Mbps です。 これを変更する場合は記入してください: ________________ 
+7. サービスの品質 (QoS) では、センサーの既定の設定は 1.5 Mbps です。 これを変更する場合は記入してください: ________________ 
 
    事業単位 (BU): ________________ 
 

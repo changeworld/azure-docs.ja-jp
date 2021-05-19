@@ -2,13 +2,13 @@
 title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: e7f44a71388468be432bdfcb0eb2bf67c0fcc8ef
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 05/07/2021
+ms.openlocfilehash: e236980310889e84fe905861c5843f5a7b7039a2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519937"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516760"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
@@ -25,7 +25,7 @@ ms.locfileid: "107519937"
 
 * Azure ファイル共有スナップショットベースのバックアップ ソリューションについて[学習](azure-file-share-backup-overview.md)する。
 * [サポートされているストレージ アカウントの種類](azure-file-share-support-matrix.md)のいずれかにファイル共有が存在することを確認しておいてください。
-* ファイル共有をホストするストレージ アカウントと同じリージョンの [Recovery Services コンテナー](#create-a-recovery-services-vault)を特定または作成する。
+* ファイル共有をホストするストレージ アカウントと同じリージョンおよびサブスクリプションの [Recovery Services コンテナー](#create-a-recovery-services-vault)を特定または作成する。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

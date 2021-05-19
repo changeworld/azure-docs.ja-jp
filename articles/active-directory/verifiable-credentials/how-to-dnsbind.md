@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 8225d81b11553307b9675decf74c651eb8a5f9d4
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588447"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628070"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>ドメインを分散識別子 (DID) にリンクする
 
@@ -133,4 +133,4 @@ Microsoft Authenticator で **[検証済み]** アイコンが表示される前
 
 ## <a name="next-steps"></a>次の手順
 
-オンボード中に、変更することにした間違ったドメイン情報を入力した場合は、[オプトアウト](how-to-opt-out.md)が必要になります。現時点では、DID ドキュメントの更新はサポートされていません。 オプトアウトしてから再びオプトインすると、新しい DID が作成されます。
+オンボード中に間違ったドメイン情報を入力した場合、またはそれを変更することにした場合は、[オプト アウト](how-to-opt-out.md)が必要になります。現時点では、ご利用の DID ドキュメントの更新はサポートされていません。 オプトアウトしてから再びオプトインすると、新しい DID が作成されます。

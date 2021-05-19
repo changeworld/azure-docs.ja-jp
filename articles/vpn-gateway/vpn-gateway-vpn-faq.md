@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: yushwang
-ms.openlocfilehash: 0fee7a7a58a6aabc7d545981b1f8b56033bf9857
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 2c2730025d39f03824489c6f46ae625de49ea0cf
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203759"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753545"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -219,6 +219,10 @@ ExpressRoute に接続されているブランチと、サイト間 VPN 接続�
 ### <a name="can-i-configure-multiple-tunnels-between-my-virtual-network-and-my-on-premises-site-using-multi-site-vpn"></a>仮想ネットワークとオンプレミス サイトの間に、マルチサイト VPN を使用して複数のトンネルを構成できますか。
 
 はい。ただし、両方のトンネルの BGP を同じ場所に構成する必要があります。
+
+### <a name="does-azure-vpn-gateway-honor-as-path-prepending-to-influence-routing-decisions-between-multiple-connections-to-my-on-premises-sites"></a>Azure VPN Gateway では、AS パス プリペンドが優先され、これがオンプレミス サイトへの複数の接続間でのルーティング決定に影響しますか。
+
+はい。Azure VPN Gateway では、BGP が有効になっているとき、ルーティングの決定を支援するために AS パス プリペンドが優先されます。 BGP パスの選択では、より短い AS パスが優先されます。
 
 ### <a name="can-i-use-point-to-site-vpns-with-my-virtual-network-with-multiple-vpn-tunnels"></a>仮想ネットワークを持つポイント対サイト VPN を複数の VPN トンネルで使用できますか。
 

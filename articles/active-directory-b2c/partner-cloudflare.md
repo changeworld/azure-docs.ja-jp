@@ -8,19 +8,19 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 04/24/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cb4f18fd5fbd2e8eb484875bb58c9809460eb8df
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3eea91d1cbbb8fe34dcdc8668840503e6dc9d014
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128633"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517354"
 ---
-# <a name="tutorial-configure-clouldflare-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Clouldflare を構成する
+# <a name="tutorial-configure-cloudflare-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Cloudflare を構成する
 
-このサンプル チュートリアルでは、カスタム ドメインを使用して、Azure Active Directory (AD) B2C テナントに対して [Cloudflare Web Application Firewall (WAF)](https://www.cloudflare.com/waf/) ソリューションを有効にする方法について説明します。 Clouldflare WAF は、SQLi や XSS など、脆弱性を悪用することを狙った悪意のある攻撃から組織を保護します。
+このサンプル チュートリアルでは、カスタム ドメインを使用して、Azure Active Directory (AD) B2C テナントに対して [Cloudflare Web Application Firewall (WAF)](https://www.cloudflare.com/waf/) ソリューションを有効にする方法について説明します。 Cloudflare WAF は、SQLi や XSS など、脆弱性を悪用することを狙った悪意のある攻撃から組織を保護します。
 
 ## <a name="prerequisites"></a>前提条件
 

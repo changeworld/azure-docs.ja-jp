@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9b33658ff67c306085a36104679bcc855d0a3f58
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 14d3da16c8ebee0c32462cc916984536cdf943a9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208925"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734221"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー):Azure portal
 
@@ -94,26 +95,20 @@ Azure Digital Twins でのルーティングでサポートされているエン
 ID にロールを割り当てるには、最初に [Azure portal](https://portal.azure.com) を開きます。
 
 1. ポータルの検索バーで名前を検索して、お使いのエンドポイント リソース (イベント ハブ、Service Bus トピック、またはストレージ コンテナー) に移動します。 
-1. 左側のメニューで **[アクセス制御 (IAM)]** を選択します。
-1. **[+ 追加]** ボタンを選択して、新しいロールの割り当てを追加します。
 
-    :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-1.png" alt-text="イベント ハブの [アクセス制御 (IAM)] ページが表示されている Azure portal のスクリーンショット。[+ 追加] ボタンが強調表示されています。" lightbox="media/how-to-enable-managed-identities/add-role-assignment-1.png":::
+1. **[アクセス制御 (IAM)]** を選択します。
 
-1. 次の **[ロールの割り当ての追加]** ページで、値を入力します。
-    * **ロール**: ドロップダウン メニューから目的のロールを選択します。
-    * **アクセスの割り当て先**: **[システム割り当てマネージド ID]** で、 **[Digital Twins]** を選択します。
-    * **[サブスクリプション]**:サブスクリプションを選択します。 これにより、選択したサブスクリプション内のすべての Azure Digital Twins マネージド ID が表示されます。
-    * **Select**:ここでは、ロールを割り当てる Azure Digital Twins インスタンスのマネージド ID を選択します。 マネージ ID の名前はインスタンスの名前と一致するため、Azure Digital Twins インスタンスの名前を選択します。 これを選択すると、インスタンスの ID がウィンドウの下部にある **[選択したメンバー]** セクションに表示されます。
+1. **[追加]**  >  **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ページを開きます。
 
-    :::row:::
-        :::column:::
-            :::image type="content" source="media/how-to-enable-managed-identities/add-role-assignment-2.png" alt-text="[ロールの割り当てを追加する] ダイアログに表示されたフィールドへの入力":::
-        :::column-end:::
-        :::column:::
-        :::column-end:::
-    :::row-end:::
-
-詳細の入力が終わったら、 **[保存]** を選択します。
+1. 以下の情報を使用して、目的のロールを Azure Digital Twins インスタンスのマネージド ID に割り当てます。 詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    
+    | 設定 | 値 |
+    | --- | --- |
+    | Role | ドロップダウン メニューから目的のロールを選択します。 |
+    | アクセスの割り当て先 | **[システム割り当てマネージド ID]** で、 **[Digital Twins]** を選択します。 |
+    | メンバー | ロールを割り当てる Azure Digital Twins インスタンスのマネージド ID を選択します。 マネージ ID の名前はインスタンスの名前と一致するため、Azure Digital Twins インスタンスの名前を選択します。 |
+    
+    ![[ロールの割り当ての追加] ページ](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="create-an-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用してエンドポイントを作成する
 

@@ -6,13 +6,13 @@ ms.author: nickoman
 ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 535c79dba122fd22cc09b4a74b04b846d55538f9
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.custom: template-how-to, devx-track-azurecli
+ms.openlocfilehash: 7f83171733abc07de5997503560c6cc7278f3f39
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331270"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752381"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>Azure Kubernetes Service (AKS) クラスターで Kubernetes にシークレット ストア CSI ドライバーを使用する (プレビュー)
 
@@ -60,7 +60,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="install-the-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-*aks-preview* Azure CLI 拡張機能バージョン 0.5.10 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 この拡張機能が既にインストールされている場合は、[az extension update][az-extension-update] コマンドを使用して、最新の使用可能なバージョンに更新します。
+*aks-preview* Azure CLI 拡張機能バージョン 0.5.9 以降も必要です。 *aks-preview* Azure CLI 拡張機能は、[az extension add][az-extension-add] コマンドを使用してインストールします。 この拡張機能が既にインストールされている場合は、[az extension update][az-extension-update] コマンドを使用して、最新の使用可能なバージョンに更新します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -75,7 +75,13 @@ az extension update --name aks-preview
 > [!NOTE]
 > ユーザー割り当てまたはシステム割り当てマネージド ID を使用してクラスターへのアクセスを提供する予定がある場合は、`enable-managed-identity` フラグを使用してクラスターで Azure Active Directory を有効にします。 詳細については、「[Azure Kubernetes Service でマネージド ID を使用する][aks-managed-identity]」を参照してください。
 
-シークレット ストア CSI ドライバー機能を備えた AKS クラスターを作成するには、アドオン `azure-keyvault-secrets-provider` を指定して [az-aks-create][az-aks-create] コマンドを使用します。
+最初に、Azure リソース グループを作成します。
+
+```azurecli-interactive
+az group create -n myResourceGroup -l westus
+```
+
+シークレット ストア CSI ドライバー機能を備えた AKS クラスターを作成するには、アドオン `azure-keyvault-secrets-provider` を指定して [az aks create][az-aks-create] コマンドを使用します。
 
 ```azurecli-interactive
 az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider
@@ -86,16 +92,18 @@ az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-
 > [!NOTE]
 > ユーザー割り当てまたはシステム割り当てマネージド ID を使用してクラスターへのアクセスを提供する予定がある場合は、`enable-managed-identity` フラグを使用してクラスターで Azure Active Directory を有効にします。 詳細については、「[Azure Kubernetes Service でマネージド ID を使用する][aks-managed-identity]」を参照してください。
 
-シークレット ストア CSI ドライバー機能を備えた既存の AKS クラスターをアップグレードするには、アドオン `azure-keyvault-secrets-provider` を指定して [az-aks-create][az-aks-create] コマンドを使用します。
+シークレット ストア CSI ドライバー機能を備えた既存の AKS クラスターをアップグレードするには、アドオン `azure-keyvault-secrets-provider` を指定して [az aks enable-addons][az-aks-enable-addons] コマンドを使用します。
 
 ```azurecli-interactive
-az aks upgrade -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider
+az aks enable-addons --addons azure-keyvault-secrets-provider --name myAKSCluster --resource-group myResourceGroup
 ```
 
-これらのコマンドにより、シークレット ストア CSI ドライバーと Azure Key Vault プロバイダーがノードにインストールされます。 すべての名前空間のすべてのポッドを一覧表示し、出力が次のようになっていることを確認することで検証します。
+## <a name="verify-secrets-store-csi-driver-installation"></a>シークレット ストア CSI ドライバーのインストールの確認
+
+これらのコマンドにより、シークレット ストア CSI ドライバーと Azure Key Vault プロバイダーがノードにインストールされます。 kube-system 名前空間の secrets-store-csi-driver および secrets-store-provider-azure ラベルを持つすべてのポッドを一覧表示し、出力が以下のようになることを確認します。
 
 ```bash
-kubectl get pods -n kube-system
+kubectl get pods -n kube-system -l 'app in (secrets-store-csi-driver, secrets-store-provider-azure)'
 
 NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE
 kube-system   aks-secrets-store-csi-driver-4vpkj       3/3     Running   2          4m25s
@@ -106,7 +114,8 @@ kube-system   aks-secrets-store-provider-azure-6pqmv   1/1     Running   0      
 kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0          4m25s
 ```
 
-### <a name="enabling-autorotation"></a>自動ローテーションの有効化
+
+## <a name="enabling-and-disabling-autorotation"></a>自動ローテーションの有効化と無効化
 
 > [!NOTE]
 > 有効にすると、シークレット ストア CSI ドライバーは、2 分ごとに変更をポーリングして、ポッド マウントと、SecretProviderClass の secretObjects に定義されている Kubernetes シークレットを更新します。
@@ -114,7 +123,19 @@ kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0      
 シークレットの自動ローテーションを有効にするには、クラスターの作成時に `enable-secret-rotation` フラグを使用します。
 
 ```azurecli-interactive
-az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-secret-rotation --rotation-poll-interval 5m
+az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-secret-rotation
+```
+
+または、アドオンが有効になっている既存のクラスターを更新します。
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --enable-secret-rotation
+```
+
+無効にするには、フラグ `disable-secret-rotation` を使用します。
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --disable-secret-rotation
 ```
 
 ## <a name="create-or-use-an-existing-azure-key-vault"></a>Azure Key Vault を作成するか既存のものを使用する
@@ -130,6 +151,15 @@ AKS クラスターに加えて、シークレット コンテンツを含む Az
 - シークレットのコンテンツの種類 (シークレット、キー、証明書)
 - Key Vault リソースの名前
 - サブスクリプションが属している Azure テナント ID
+
+## <a name="provide-identity-to-access-azure-key-vault"></a>Azure Key Vault にアクセスするために ID を提供する
+
+この記事の例ではサービス プリンシパルを使用していますが、Azure Key Vault プロバイダーには 4 つのアクセス方法が用意されています。 それらを確認し、お客様のユース ケースに最適なものを選択します。 選択した方法によっては、キー コンテナーからシークレットを取得するためのサービス プリンシパルのアクセス許可の付与など、追加の手順が必要になる場合があることに注意してください。
+
+- [サービス プリンシパル][service-principal-access]
+- [ポッド ID][pod-identity-access]
+- [ユーザー割り当てマネージド ID][ua-mi-access]
+- [システム割り当てマネージド ID][sa-mi-access]
 
 ## <a name="create-and-apply-your-own-secretproviderclass-object"></a>独自の SecretProviderClass オブジェクトを作成して適用する
 
@@ -163,15 +193,6 @@ spec:
 
 詳細については、「[独自の SecretProviderClass オブジェクトを作成する][sample-secret-provider-class]」を参照してください。 上記でメモした値を必ず使用するようにしてください。
 
-## <a name="provide-identity-to-access-azure-key-vault"></a>Azure Key Vault にアクセスするために ID を提供する
-
-この記事の例ではサービス プリンシパルを使用していますが、Azure Key Vault プロバイダーには 4 つのアクセス方法が用意されています。 それらを確認し、お客様のユース ケースに最適なものを選択します。 選択した方法によっては、キー コンテナーからシークレットを取得するためのサービス プリンシパルのアクセス許可の付与など、追加の手順が必要になる場合があることに注意してください。
-
-- [サービス プリンシパル][service-principal-access]
-- [ポッド ID][pod-identity-access]
-- [ユーザー割り当てマネージド ID][ua-mi-access]
-- [システム割り当てマネージド ID][sa-mi-access]
-
 ### <a name="apply-the-secretproviderclass-to-your-cluster"></a>クラスターに SecretProviderClass を適用する
 
 次に、作成した SecretProviderClass をデプロイします。 次に例を示します。
@@ -194,7 +215,7 @@ spec:
   - name: busybox
     image: k8s.gcr.io/e2e-test-images/busybox:1.29
     command:
-      - "/bin/sh"
+      - "/bin/sleep"
       - "10000"
     volumeMounts:
     - name: secrets-store-inline
@@ -229,19 +250,18 @@ kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/
 kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/secret1
 ```
 
-## <a name="disable-secrets-store-csi-driver"></a>シークレット ストア CSI ドライバーを無効にする
+## <a name="disable-secrets-store-csi-driver-on-an-existing-aks-cluster"></a>既存の AKS クラスターでシークレット ストア CSI ドライバーを無効にする
 
-既存のクラスターでシークレット ストア CSI ドライバー機能を無効にするには、無効化のアドオン `azure-keyvault-secrets-provider` を指定して az aks コマンドを使用します。
+既存のクラスターでシークレット ストア CSI ドライバー機能を無効にするには、`azure-keyvault-secrets-provider` フラグを指定して [az aks disable-addons][az-aks-disable-addons] コマンドを使用します。
 
 ```azurecli-interactive
-az aks disable-addons -n myAKSCluster -g myResourceGroup --addons azure-keyvault-secrets-provider
+az aks disable-addons --addons azure-keyvault-secrets-provider -g myResourceGroup -n myAKSCluster
 ```
 
 ## <a name="next-steps"></a>次の手順
 <!-- Add a context sentence for the following links -->
 AKS クラスターで CSI シークレット ストア ドライバーを使用する方法を学習したら、次のリソースを参照してください。
 
-- [シークレット ストア CSI ドライバー用に Azure Key Vault プロバイダーを実行する][key-vault-provider]
 - [AKS で Azure ディスクおよび Azure Files 用の CSI ドライバーを有効にする][csi-storage-drivers]
 
 <!-- Links -->
@@ -252,6 +272,8 @@ AKS クラスターで CSI シークレット ストア ドライバーを使用
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
 [az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-enable-addons]: /cli/azure/aks#az_aks_enable_addons
+[az-aks-disable-addons]: /cli/azure/aks#az_aks_disable_addons
 [key-vault-provider]: ../key-vault/general/key-vault-integrate-kubernetes.md
 [csi-storage-drivers]: ./csi-storage-drivers.md
 [create-key-vault]: ../key-vault/general/quick-create-cli.md
