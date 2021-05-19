@@ -106,7 +106,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、ウィンドウの下部にある *[セキュリティ]* ボタンをクリックして、次の構成ステップに進みます。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている"
+:::image type="content" source="media/how-to-integrate-logic-apps/configure-next.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
     - リソース URL: 0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     - スコープ:Directory.AccessAsUser.All
     - リダイレクト URL: (現時点では既定のまま)
@@ -134,7 +134,7 @@ Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsof
 
 登録のメニューの *[認証]* で、URI を追加します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている" を新しいフィールドに入力し、 *[保存]* アイコンをクリックします。
+:::image type="content" source="media/how-to-integrate-logic-apps/add-uri.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている を新しいフィールドに入力し、 *[保存]* アイコンをクリックします。":::
 
 :::image type="content" source="media/how-to-integrate-logic-apps/save-uri.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている":::
 
@@ -168,7 +168,7 @@ _[確認および作成]_ ボタンをクリックします。
 
 これにより、 *[アクションの選択]* ボックスが開きます。 *[カスタム]* タブに切り替えます。上部のボックスに、前に作成したカスタム コネクタが表示されます。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている" *方法: 「デジタル ツインを管理する」方法* を参照してください。
+:::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている *方法: 「デジタル ツインを管理する」方法* を参照してください。":::
 * _API バージョン_ :最新の API バージョン。 現在、この値は *2020-10-31* です。
 
 Logic Apps デザイナーで *[保存]* をクリックします。
