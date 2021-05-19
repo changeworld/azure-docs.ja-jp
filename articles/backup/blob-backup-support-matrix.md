@@ -1,17 +1,17 @@
 ---
 title: Azure BLOB バックアップのサポート マトリックス
-description: Azure BLOB をバックアップするときのサポート設定と制限の概要について説明します (プレビュー)
+description: Azure BLOB をバックアップするときのサポート設定と制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 05/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eb923cb38a76e56c1ba60b3863b111aac83eeb7e
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561901"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517678"
 ---
-# <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Azure BLOB バックアップのサポート マトリックス (プレビュー)
+# <a name="support-matrix-for-azure-blobs-backup"></a>Azure BLOB バックアップのサポート マトリックス
 
 この記事では、利用できるリージョン、サポートされるシナリオ、BLOB の運用バックアップの制限事項について説明します。
 
@@ -35,4 +35,4 @@ BLOB の運用バックアップでは、ローカル バックアップソリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Blob の運用バックアップの概要 (プレビュー)](blob-backup-overview.md)
+[Azure Blob の運用バックアップの概要](blob-backup-overview.md)

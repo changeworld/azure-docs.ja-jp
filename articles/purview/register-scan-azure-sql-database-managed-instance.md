@@ -6,13 +6,13 @@ ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
-ms.date: 12/01/2020
-ms.openlocfilehash: aaca73d71731ee18eb8f12468ec26ece746f1b8f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/08/2021
+ms.openlocfilehash: 3ead96a49e2bacca526cd9ee3b8c8e00abbba426
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288366"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656292"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -107,19 +107,19 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Azure SQL Database Managed Instance データ ソースの登録
 
-1. 自分の Purview アカウントに移動します
+1. ご自分の Purview アカウントに移動します。
 
 1. 左側のナビゲーションで **[ソース]** を選択します。
 
-1. **[登録]** を選択します
+1. **[登録]** を選択します。
 
-1. **[Azure SQL Database Managed Instance]** 、 **[続行]** の順に選択します
+1. **[Azure SQL Database Managed Instance]** 、 **[続行]** の順に選択します。
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-the-sql-data-source.png" alt-text="SQL データ ソースを設定する":::
 
 1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択し、 **[Azure subscription]\(Azure サブスクリプション\)** ドロップダウン ボックスから適切なサブスクリプション、 **[Server name]\(サーバー名\)** ドロップダウン ボックスから適切なサーバーを選択します。
 
-1. **パブリック エンドポイントの完全修飾ドメイン名** および **ポート番号** を指定します。 **[完了]** を選択して、データ ソースを登録します。
+1. **パブリック エンドポイントの完全修飾ドメイン名** および **ポート番号** を指定します。 その後、 **[登録]** を選択してデータ ソースを登録します。
 
     :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/add-azure-sql-database-managed-instance.png" alt-text="Azure SQL Database Managed Instance を追加する":::
 

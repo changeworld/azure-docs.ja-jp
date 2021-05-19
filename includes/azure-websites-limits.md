@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: dad7799cb5a7579b28847e3968b6b38f1f98298a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e2f75c6305fb3a9879f1e801ad59cd8581dd2fd4
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327017"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109644689"
 ---
 | リソース | Free | 共有 | Basic | Standard | Premium (v1 から v3) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ ms.locfileid: "107327017"
 | サブスクリプションあたりの App Service 証明書数<sup>9</sup>| サポートされていません | サポートされていません |10 |10 |10 |10 |
 | アプリケーションごとのカスタム ドメイン数</a> |0 (azurewebsites.net サブドメインのみ)|500 |500 |500 |500 |500 |
 | カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
-| Hybrid Connections (ハイブリッド接続) | | | プランあたり 5 | プランあたり 25 | アプリあたり 200 | アプリあたり 200 |
+| [Hybrid Connections (ハイブリッド接続)](../articles/app-service/app-service-hybrid-connections.md) | | | プランあたり 5 | プランあたり 25 | アプリあたり 220 | アプリあたり 220 |
 | [Virtual Network 統合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | [プライベート エンドポイント](../articles/app-service/networking/private-endpoint.md) | | |   |   |  アプリあたり 100  |    |
 | 統合 Load Balancer | |X |X |X |X |X<sup>10</sup> |

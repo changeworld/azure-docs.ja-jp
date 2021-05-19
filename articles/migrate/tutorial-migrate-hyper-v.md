@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 397a26c7a0ba3771c47e2971fecde09f166cc90f
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604578"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751224"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -69,7 +69,18 @@ Azure Migrate:Server Migration は、Hyper-V VM を移行するにあたり、�
     ![プロバイダーとキーをダウンロードする](./media/tutorial-migrate-hyper-v/download-provider-hyper-v.png)
 
 4. プロバイダー セットアップ ファイルと登録キー ファイルを、レプリケートする VM が実行されている各 Hyper-V ホスト (またはクラスター ノード) にコピーします。
-5. 次の手順で説明するように、各ホストでプロバイダー セットアップ ファイルを実行します。
+5. 以下に説明するように、各ホストでプロバイダー セットアップ ファイルを実行します。
+    - プロバイダー セットアップ ファイルと登録キー ファイルを、レプリケートする VM が実行されている各 Hyper-V ホスト (またはクラスター ノード) にコピーします。
+    - タスク バーのファイル アイコンをクリックして、インストーラー ファイルと登録キーがダウンロードされているフォルダーを開きます。
+    - **[AzureSiteRecoveryProvider]** を選択します。 
+    - プロバイダーのインストール ウィザードで、 **[オン (推奨)]** が選択されていることを確認し、 **[次へ]** をクリックします。
+    - **[インストール]** を選択して、既定のインストール フォルダーをそのまま使用します。
+    - **[登録]** を選択して、このサーバーを Azure Site Recovery 資格情報コンテナーに登録します。
+    - **[参照]** をクリックします。
+    - 登録キーを見つけて、 **[開く]** をクリックします。
+    - **[次へ]** をクリックします。
+    - **[プロキシを使用せずに直接 Azure Site Recovery に接続する]** が選択されていることを確認し、 **[次へ]** をクリックします。
+    - **[完了]** をクリックします。
 6. ホストにプロバイダーをインストールした後、 **[マシンの検出]** で **[Finalize registration]\(登録の完了\)** をクリックします。
 
     ![登録の終了処理](./media/tutorial-migrate-hyper-v/finalize-registration.png)

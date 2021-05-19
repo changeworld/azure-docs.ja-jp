@@ -4,12 +4,12 @@ description: Azure でリソースの Web アプリ、クラウド サービス�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: edc58ed4af3475a45804e3833424bec79d50ff89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f229b3087bd616dfb55cbec4b0f6c3fcc4ec9fe1
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641548"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737530"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -115,7 +115,7 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 
 ### <a name="cool-down-period-effects"></a>クールダウン期間の効果
 
-自動スケーリングでは、インスタンスの目まぐるしく繰り返されるアップ/ダウン スケーリングを意味する、"フラッピング" を防ぐためにクールダウン期間を使用します。  詳細については、[自動スケーリングの評価手順](autoscale-understanding-settings.md#autoscale-evaluation)に関するページを参照してください。  フラッピングに関するその他の重要な情報および自動スケーリング エンジンの監視方法の解釈については、「[自動スケールのベスト プラクティス](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types)」および[自動スケールのトラブルシューティング](autoscale-troubleshoot.md)に関するページを、それぞれ参照してください。 
+自動スケーリングでは、インスタンスの目まぐるしく繰り返されるアップ スケーリングとダウン スケーリングを意味する、"フラッピング" を防ぐためにクールダウン期間を使用します。  詳細については、[自動スケーリングの評価手順](autoscale-understanding-settings.md#autoscale-evaluation)に関するページを参照してください。  フラッピングに関するその他の重要な情報および自動スケーリング エンジンの監視方法の解釈については、「[自動スケールのベスト プラクティス](autoscale-best-practices.md#choose-the-thresholds-carefully-for-all-metric-types)」および[自動スケールのトラブルシューティング](autoscale-troubleshoot.md)に関するページを、それぞれ参照してください。
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>正常なインスタンスにトラフィックをルーティングする (App Service)
 
@@ -132,14 +132,14 @@ Azure Web アプリを複数のインスタンスにスケールアウトする�
 ### <a name="move"></a>詳細ビュー
 新しい環境で自動スケーリング設定を作成するには、[REST API](/rest/api/monitor/autoscalesettings/createorupdate) を使います。 移動先のリージョンで作成される自動スケーリング設定は、移動元リージョンの自動スケーリング設定のコピーになります。
 
-移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](../essentials/diagnostic-settings.md)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。 
+移動元リージョンの自動スケーリング設定と関連付けて作成された[診断設定](../essentials/diagnostic-settings.md)は移動できません。 自動スケーリング設定の作成が完了した後で、移行先リージョンで診断設定を再作成する必要があります。
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure リージョン間でのリソースの移動に関する詳細情報
 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-failed-alert)
 
 
 <!--Reference-->

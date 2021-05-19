@@ -2,17 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6025298dfc00dc4d9283f61f81ac348e88c1abe0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 4595e611d5a3d95b885f0ae4b1b6479d07f12187
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108183049"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762215"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Bot Service エンドポイントは有効な HTTPS URI である必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6164527b-e1ee-4882-8673-572f425f5e0a) |データは送信中に改ざんされる可能性があります。 誤用や改ざんの問題に対処する暗号化を提供するプロトコルが存在します。 確実に暗号化されたチャンネルでのみボットが通信を行うように、エンドポイントを有効な HTTPS URI に設定してください。 そうすることで、HTTPS プロトコルを使用して転送中のデータが確実に暗号化されます。また、これは多くの場合、規制や業界標準に準拠するための要件でもあります。 [https://docs.microsoft.com/azure/bot-service/bot-builder-security-guidelines](https://docs.microsoft.com/azure/bot-service/bot-builder-security-guidelines) を参照してください。 |audit、deny、disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_ValidEndpoint_Audit.json) |
 |[Bot Service は、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F51522a96-0869-4791-82f3-981000c2c67f) |Azure Bot Service は、リソースを自動的に暗号化してデータを保護し、組織のセキュリティとコンプライアンスのコミットメントを満たします。 既定では、Microsoft マネージド暗号化キーが使用されます。 キーの管理やサブスクリプションへのアクセスの制御の柔軟性を高めるには、カスタマー マネージド キーを選択します。これは、Bring Your Own Key (BYOK) とも呼ばれます。 Azure Bot Service 暗号化の詳細については、[https://docs.microsoft.com/azure/bot-service/bot-service-encryption](https://docs.microsoft.com/azure/bot-service/bot-service-encryption) を参照してください。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_CMKEnabled_Audit.json) |
+|[Bot Service で分離モードが有効になっている必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F52152f42-0dda-40d9-976e-abb1acdd611e) |ボットは "分離のみ" モードに設定されている必要があります。 この設定により、パブリック インターネット経由のトラフィックを必要とする Bot Service チャンネルは無効となるように構成されます。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_NetworkIsolatedEnabled_Audit.json) |

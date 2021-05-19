@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 01/18/2021
+ms.date: 04/19/2021
 ms.author: alkohli
-ms.openlocfilehash: df102031b51f1537980e05e549e35ebda3dee104
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b56b79c29838c00fd79a0ed91a1c3ff0686c56ce
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139365"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737980"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro とは
 
@@ -23,9 +23,9 @@ GPU 搭載の Azure Stack Edge Pro は、サービスとしてのハードウェ
 
 ## <a name="use-cases"></a>ユース ケース
 
-ここでは、Azure Stack Edge Pro を使用してエッジで高速な機械学習 (ML) 推論を実行し、データを Azure に送信する前に前処理するさまざまなシナリオを示します。
+ここでは、Azure Stack Edge Pro GPU を使用してエッジで高速な機械学習 (ML) 推論を実行し、データを Azure に送信する前に前処理するさまざまなシナリオを示します。
 
-- **Azure Machine Learning による推論** - Azure Stack Edge Pro により、ML モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 必要に応じて、ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Azure Stack Edge Pro デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Azure Stack Edge Pro への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)に関する記事を参照してください。
+- **Azure Machine Learning による推論** - Azure Stack Edge Pro GPU により、ML モデルを実行して、データがクラウドに送信される前に対応できるように、迅速な結果を得ることができます。 必要に応じて、ML モデルを再調整して改善し続けるために、データ セット全体を転送することができます。 Azure Stack Edge Pro GPU デバイスで Azure ML ハードウェア アクセラレータ モデルを使用する方法の詳細については、[Azure Stack Edge Pro GPU への Azure ML ハードウェア アクセラレーション対応モデルのデプロイ](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)に関する記事を参照してください。
 
 - **データの前処理** - コンテナー化されたワークロードや Virtual Machines などのコンピューティング オプションを使用してデータを Azure に送信する前にデータを変換し、より実用的なデータセットを作成します。 前処理は以下の目的で使用できます。 
 
@@ -34,11 +34,11 @@ GPU 搭載の Azure Stack Edge Pro は、サービスとしてのハードウェ
     - ストレージと帯域幅を最適化したり、詳細な分析を行ったりするためのサブセット データ。
     - 分析して、IoT イベントに対応します。 
 
-- **ネットワーク経由でデータを Azure に転送する** - 計算や分析をさらに進めたり、アーカイブ目的のために、Azure Stack Edge Pro を使用して、Azure にデータを簡単かつ迅速に転送します。 
+- **ネットワーク経由でデータを Azure に転送する** - 計算や分析をさらに進めたり、アーカイブ目的のために、Azure Stack Edge Pro GPU を使用して、Azure にデータを簡単かつ迅速に転送します。 
 
 ## <a name="key-capabilities"></a>主な機能
 
-Azure Stack Edge Pro には、次の機能があります。
+Azure Stack Edge Pro GPU には、次の機能があります。
 
 |機能 |説明  |
 |---------|---------|
@@ -47,41 +47,44 @@ Azure Stack Edge Pro には、次の機能があります。
 |データ アクセス     | クラウドでデータをさらに処理するために、クラウド API を使用して、Azure Storage Blob と Azure ファイルからデータを直接アクセスします。 デバイス上のローカル キャッシュは、最近使用されたファイルの高速アクセスに使用されます。|
 |クラウドでの管理     |デバイスとサービスは Azure portal を介して管理されます。  |
 |オフライン アップロード     | 切断モードでは、オフライン アップロードのシナリオに対応します。|
-|サポートされているファイル転送プロトコル      | データ インジェストのために、標準の SMB、NFS、REST プロトコルをサポートします。 <br> サポート対象のバージョンについては、「[Azure Stack Edge Pro のシステム要件](azure-stack-edge-system-requirements.md)」を参照してください。|
+|サポートされているファイル転送プロトコル      | データ インジェストのために、標準の SMB、NFS、REST プロトコルをサポートします。 <br> サポート対象のバージョンについては、[Azure Stack Edge Pro GPU のシステム要件](azure-stack-edge-system-requirements.md)に関する記事を参照してください。|
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |暗号化    | ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
-<!--|ExpressRoute | ExpressRoute によってセキュリティが強化されました。 ローカル デバイスからクラウド ストレージ エンドポイントへのトラフィックが ExpressRoute 経由で転送されるピアリング構成を使用します。 詳細については、「[ExpressRoute の概要](../expressroute/expressroute-introduction.md)」を参照してください。|-->
+
+<!--|ExpressRoute | Added security through ExpressRoute. Use peering configuration where traffic from local devices to the cloud storage endpoints travels over the ExpressRoute. For more information, see [ExpressRoute overview](../expressroute/expressroute-introduction.md).|-->
 
 ## <a name="components"></a>コンポーネント
 
-Azure Stack Edge Pro ソリューションは、Azure Stack Edge リソース、Azure Stack Edge Pro 物理デバイス、およびローカル Web UI で構成されています。
+Azure Stack Edge Pro GPU ソリューションは、Azure Stack Edge リソース、Azure Stack Edge Pro GPU 物理デバイス、およびローカル Web UI で構成されています。
 
-* **Azure Stack Edge Pro 物理デバイス** - Azure にデータを送信するように構成可能な Microsoft 製の 1U ラックマウント型サーバー。
+* **Azure Stack Edge Pro GPU 物理デバイス** - Azure にデータを送信するように構成できる、Microsoft によって提供される 1U ラックマウント型サーバー。
     
-* **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから、Azure Stack Edge Pro デバイスを管理できる、Azure portal でのリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
+* **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから Azure Stack Edge Pro GPU デバイスを管理できるようにする Azure portal のリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
 
-    詳細については、[Azure Stack Edge Pro デバイスの注文の作成](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)に関する記事を参照してください。
+    詳細については、[Azure Stack Edge Pro GPU デバイスの注文の作成](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)に関する記事を参照してください。
 
-* **Azure Stack Edge Pro のローカル Web UI** - Azure Stack Edge Pro デバイス上のブラウザー ベースのローカル ユーザー インターフェイス。主にデバイスの初期構成を想定しています。 他にも、ローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
+* **Azure Stack Edge Pro GPU のローカル Web UI** - Azure Stack Edge Pro GPU デバイス上のブラウザーベースのローカル ユーザー インターフェイス。主にデバイスの初期構成を想定しています。 他にも、ローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro GPU デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
 
-    Web ベース UI の使用については、[Web ベース UI を使用した Azure Stack Edge Pro の管理](azure-stack-edge-manage-access-power-connectivity-mode.md)に関するページを参照してください。
+    [!INCLUDE [azure-stack-edge-gateway-local-web-ui-languages](../../includes/azure-stack-edge-gateway-local-web-ui-languages.md)]
+    
+    Web ベース UI の使用については、[Web ベース UI を使用した Azure Stack Edge Pro GPU の管理](azure-stack-edge-manage-access-power-connectivity-mode.md)に関するページを参照してください。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-Azure Stack Edge Pro 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じリージョンにある必要はありません。
+Azure Stack Edge Pro GPU 物理デバイス、Azure リソース、データ転送先のターゲット ストレージ アカウントは、すべて同じリージョンにある必要はありません。
 
 - **リソースの提供** - このリリースでは、米国東部、西ヨーロッパ、東南アジアの各リージョンでリソースが提供されます。
 
-- **デバイスの可用性** - Azure Stack Edge Pro デバイスが使用可能なすべての国またはリージョンの一覧については、[Azure Stack Edge Pro の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)に関するページの **[Azure Stack Edge Pro]** タブにある **[可用性]** セクションにアクセスしてください。
+- **デバイスの可用性** - Azure Stack Edge Pro GPU デバイスが使用可能なすべての国またはリージョンの一覧については、[Azure Stack Edge Pro GPU の価格](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro)に関するページの **[Azure Stack Edge Pro]** タブにある **[可用性]** セクションにアクセスしてください。
     
-- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
+- **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro GPU のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
 Azure Stack Edge サービスは、非リージョン サービスです。 詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」をご覧ください。 Azure Stack Edge サービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro のシステム要件](azure-stack-edge-gpu-system-requirements.md)を確認します。
+- [Azure Stack Edge Pro GPU のシステム必要条件](azure-stack-edge-gpu-system-requirements.md)を確認します。
 
-- [Azure Stack Edge Pro の制限](azure-stack-edge-limits.md)を理解します。
-- Azure portal で [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) を配置します。
+- [Azure Stack Edge Pro GPU の制限](azure-stack-edge-limits.md)を理解します。
+- Azure portal で [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md) をデプロイします。

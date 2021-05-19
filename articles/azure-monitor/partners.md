@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d69935c663106e9377fe78b77bcad063b0e528b4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751618"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746173"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -101,8 +101,6 @@ Azure により、ユーザーは、多くのパートナー ソリューショ�
 -   Datadog へのシングルサインオン (SSO) を効率化します。Datadog ポータルからの個別のサインオンが不要になりました。 
 -   Azure サブスクリプションの請求を通じて、Datadog サービスがまとめて請求されます。
 
-新しい Azure と Datadog の統合の[パブリック プレビュー](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u) にサインアップしてください。  パブリック プレビューは、2020 年 10 月以降、Azure Marketplace で利用できます。
-
 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview) で入手可能な "Azure と Datadog の統合" のプレビューをサブスクライブする
 
 以前に手動で構成した統合をまだ使用している場合は、[DataDog Web サイトのドキュメント](https://docs.datadoghq.com/integrations/azure/)を参照してください。
@@ -111,7 +109,16 @@ Azure により、ユーザーは、多くのパートナー ソリューショ�
 
 ![DynaTrace のロゴ](./media/partners/dynatrace.png)
 
-Dynatrace OneAgent は、Azure 拡張機能メカニズムによって、Azure VM と App Services に統合されています。 これにより、Dynatrace OneAgent でホスト、ネットワーク、およびサービスについてのパフォーマンス メトリックを収集することができます。 メトリックを表示するだけでなく、Dynatrace は環境を端から端までビジュアル化します。 クライアント側からデータベース層へのトランザクションを表示します。 Dynatrace は、問題の AI ベースの相関関係を提供し、根本原因分析を完全に統合して、コードとデータベースに対するメソッド レベルの洞察を与えます。 この洞察によって、トラブルシューティングとパフォーマンスの最適化がはるかに容易になります。
+システム全体の状態を一元的に把握するためのクラウド プラットフォーム Dynatrace は、複雑なクラウドをシンプルにします。これを使えば、Azure のアプリケーションとインフラストラクチャ全体の状態を監視できます。  Dynatrace では、データのエンリッチメントを行い、クラウド インフラストラクチャ、ロード バランサー、API Management Services などにメトリクスを追加してプラットフォームのオブザーバビリティを高めるという形で、Azure Monitor や App Insights と連携します。 Dynatrace は、アプリケーションやマイクロサービスのワークロードからインフラストラクチャ関連のサービスまで、Azure Monitor の 80 を超えるサービスをサポートしています。 
+
+自動化と AI を利用した、Azure 環境全体のオブザーバビリティを手に入れてください。
+
+- フル スタック オブザーバビリティを数分で展開し、メトリクス、ログ、トレースなどのあらゆるデータをコンテキストと共に扱います。
+- 自動検出、継続的な依存関係マッピング、迅速な応答により、App Service、Database Performance、AKS、HDInsight など Azure のクラウド サービスの監視を自動化します。
+- Dynatrace の AI、Davis は数十億の依存関係を継続的に分析し、問題の根本的な原因を正確に突き止めます。
+- システム全体の状態を一元的に把握することで、チーム同士が居場所を問わず協力し、革新的なシステム運用を実施できます。
+- Azure クラウドへの移行を加速します。
+
 
 [Dynatrace ドキュメント](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 

@@ -3,12 +3,12 @@ title: FedRAMP High ブループリント サンプルのコントロール
 description: FedRAMP High ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 88449bfb52dfe2452e1dd6b744f67600242edf79
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 3e1cea90e7b1553fb3b8b9e93994208ecfa564da
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386744"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757459"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High ブループリント サンプルのコントロール マッピング。
 
@@ -117,7 +117,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
 
-このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
+このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も使用することをお勧めします。
 
 - \[プレビュー\]:Virtual Machines で脆弱性評価を有効にする必要がある
 - \[プレビュー\]:Azure Monitor for VMs の有効化
@@ -148,7 +148,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 - Advanced Data Security を、マネージド インスタンス上で有効にする必要がある
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - ネットワーク セキュリティ グループの診断設定のデプロイ
 
 ## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) 監査の生成 | システム全体/時間相関の監査証跡
@@ -182,7 +182,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 - ディザスター リカバリーが構成されていない仮想マシンの監査
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 情報システムのバックアップ | 代替ストレージ サイトへの転送
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 情報システムのバックアップ | 代替ストレージ サイトへの転送
 
 このブループリントは、代替ストレージ サイトに対する組織のシステム バックアップ情報を電子的に監査する Azure Policy 定義を割り当てます。 ストレージ メタデータの物理的な移送については、Azure Data Box の使用を検討してください。
 
@@ -339,7 +339,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - SQL Server に対する Advanced Data Security のデプロイ
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
-- SQL Server での監査のデプロイ
+- SQL サーバーでの監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 - SQL サーバーでの脅威検出のデプロイ
 - 許可される場所
@@ -352,7 +352,7 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 
 > [!NOTE]
-> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
+> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

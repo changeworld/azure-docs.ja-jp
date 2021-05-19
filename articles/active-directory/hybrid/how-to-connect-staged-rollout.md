@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8534d4dd8df1e60e1b341088cbfaaa944ec1221b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8460e428239a652d2accb3d1818b0a709dc16c3e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073397"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758658"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
@@ -106,11 +106,11 @@ ms.locfileid: "108073397"
 
 1. Azure AD Connect の [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページから、*パスワード ハッシュ* 同期を有効にします。 
 
-   ![Azure Active Directory Connect の「オプション機能」ページのスクリーンショット](media/how-to-connect-staged-rollout/sr1.png)
+   ![Azure Active Directory Connect の「オプション機能」ページのスクリーンショット](media/how-to-connect-staged-rollout/staged-1.png)
 
 1. すべてのユーザーのパスワード ハッシュが、Azure AD に同期されるように、完全な *パスワード ハッシュ同期* サイクルが実行されていることを確認します。 *パスワードハッシュ同期* の状態を確認するには、[Azure Active Directory Connect同期によるパスワードハッシュ同期のトラブルシューティング](tshoot-connect-password-hash-synchronization.md) のPowerShell 診断を使用できます。
 
-   ![AAD Connect のトラブルシューティング ログのスクリーンショット](./media/how-to-connect-staged-rollout/sr2.png)
+   ![AAD Connect のトラブルシューティング ログのスクリーンショット](./media/how-to-connect-staged-rollout/staged-2.png)
 
 段階的なロールアウトを使用して *パススルー認証* サインインをテストする場合は、次のセクションの前の作業前の手順に従って有効にします。
 
@@ -146,7 +146,7 @@ PowerShell を使用して、Active Directory Domain Services フォレストで
 
 5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドは、この機能が有効になっている Active Directory フォレストの一覧 (「ドメイン」リストを参照) を表示します。 これは、既定ではテナント レベルで false に設定されています。
 
-   ![Windows PowerShell の出力例](./media/how-to-connect-staged-rollout/sr3.png)
+   ![Windows PowerShell の出力例](./media/how-to-connect-staged-rollout/staged-3.png)
 
 6. `$creds = Get-Credential` を呼び出します。 プロンプトが表示されたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。
 
@@ -198,24 +198,24 @@ PowerShell を使用して、Active Directory Domain Services フォレストで
   >[!NOTE]
   >段階的なロールアウトを使用して、監査イベントが *シームレス SSO* を [有効]にしたときにログに記録されます。
 
-  ![[機能のロールアウトポリシーの作成] ウィンドウ - [アクティビティ] タブ](./media/how-to-connect-staged-rollout/sr7.png)
+  ![[機能のロールアウトポリシーの作成] ウィンドウ - [アクティビティ] タブ](./media/how-to-connect-staged-rollout/staged-7.png)
 
-  ![[機能のロールアウトポリシーの作成] ウィンドウ - [変更されたプロパ ティ] タブ](./media/how-to-connect-staged-rollout/sr8.png)
+  ![[機能のロールアウトポリシーの作成] ウィンドウ - [変更されたプロパ ティ] タブ](./media/how-to-connect-staged-rollout/staged-8.png)
 
 - *パスワード ハッシュ同期*、*パススルー認証*、*シームレス SSO* に対してグループを追加したときの監査イベント。
 
   >[!NOTE]
   >グループが段階的なロールアウトのために、*パスワード ハッシュ同期* に追加されたときにログに記録される監査イベント。
 
-  ![[機能ロールアウトへのグループの追加] ペイン - [アクティビティ] タブ](./media/how-to-connect-staged-rollout/sr9.png)
+  ![[機能ロールアウトへのグループの追加] ペイン - [アクティビティ] タブ](./media/how-to-connect-staged-rollout/staged-9.png)
 
-  ![[機能ロールアウトへのグループの追加] ペイン - [変更されたプロパティ] タブ](./media/how-to-connect-staged-rollout/sr10.png)
+  ![[機能ロールアウトへのグループの追加] ペイン - [変更されたプロパティ] タブ](./media/how-to-connect-staged-rollout/staged-10.png)
 
 - グループに追加されたユーザーが、段階的なロールアウトに対して有効にされたときの監査イベント。
 
-  ![[機能ロールアウトへのユーザーの追加] ペイン - [アクティビティ] タブ](media/how-to-connect-staged-rollout/sr11.png)
+  ![[機能ロールアウトへのユーザーの追加] ペイン - [アクティビティ] タブ](media/how-to-connect-staged-rollout/staged-11.png)
 
-  ![[機能ロールアウトへのユーザーの追加] ペイン - [ターゲット] タブ](./media/how-to-connect-staged-rollout/sr12.png)
+  ![[機能ロールアウトへのユーザーの追加] ペイン - [ターゲット] タブ](./media/how-to-connect-staged-rollout/staged-12.png)
 
 ## <a name="validation"></a>検証
 
@@ -236,6 +236,11 @@ PowerShell を使用して、Active Directory Domain Services フォレストで
 1. UserPrincipalName でフィルター処理して、[Azure AD サインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md)にサインインが正常に表示されていることを確認します。
 
    選択した段階的なロールアウト ユーザーの Active Directory フェデレーションサービス (AD FS) (AD FS) でまだ発生しているユーザーのサインインを追跡するには、[AD FS トラブルシューティングの手順に従います：イベントとログ](/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#types-of-events)。 サード パーティのフェデレーション プロバイダーで、これを確認する方法については、ベンダーのドキュメントを確認してください。
+
+## <a name="monitoring"></a>監視
+Azure portal の新しいハイブリッド認証ブックを使用して、段階的ロールアウトに対して追加または削除されたユーザーとグループ、および段階的ロールアウト中のユーザーのサインインを監視できます。
+
+ ![ハイブリッド認証ブック](./media/how-to-connect-staged-rollout/staged-13.png)
 
 ## <a name="remove-a-user-from-staged-rollout"></a>段階的なロールアウトからユーザーを削除する
 
@@ -259,3 +264,5 @@ A:はい。 PowerShell を使用して段階的なロールアウトを実行す
 - [Azure Active Directory 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [サインイン方法をパスワード ハッシュ同期に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [サインイン方法をパススルー認証に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
+- [段階的ロールアウトの対話型ガイド](https://mslearn.cloudguides.com/en-us/guides/Test%20migration%20to%20cloud%20authentication%20using%20staged%20rollout%20in%20Azure%20AD)
+

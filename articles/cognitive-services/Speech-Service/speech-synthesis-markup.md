@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 423e08511003c8ba1f810bd024d0e253df612473
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 514a6f9d4d72eeffaa4a8592b57c3fdd6592d958
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293280"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627530"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -506,7 +506,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+        <phoneme alphabet="ipa" ph="təˈmeɪtoʊ"> tomato </phoneme>
     </voice>
 </speak>
 ```
@@ -529,7 +529,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>カスタム辞書を使用して発音を改善する
 
-テキスト読み上げサービスでは、単語を正確に発音できない場合があります。 たとえば、会社名や医学用語などです。 開発者は、`phoneme` および `sub` タグを使用して、SSML で 1 つのエンティティの読み方を定義できます。 一方、複数のエンティティの読み方を定義する必要がある場合は、`lexicon` タグを使用してカスタム辞書を作成できます。
+テキスト読み上げサービスでは、単語を正確に発音できない場合があります。 たとえば、会社名、医学用語、絵文字などです。 開発者は、`phoneme` および `sub` タグを使用して、SSML で 1 つのエンティティの読み方を定義できます。 一方、複数のエンティティの読み方を定義する必要がある場合は、`lexicon` タグを使用してカスタム辞書を作成できます。
 
 > [!NOTE]
 > 現在、カスタム辞書では UTF-8 エンコードがサポートされています。
@@ -570,10 +570,16 @@ A good place to start is by trying out the slew of educational apps that are hel
     <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
+  <lexeme>
+    <grapheme>😀</grapheme> 
+    <alias>test emoji</alias> 
+  </lexeme>
 </lexicon>
 ```
 
-`lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 </a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。
+`lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 </a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。 `alias` と `phoneme` 要素が同じ `grapheme` 要素で指定されている場合、`alias` の優先順位が高くなります。
+
+辞書には、適用されるロケールを示すために必要な `xml:lang` 属性が含まれています。 1 つのカスタム辞書は、設計上 1 つのロケールに制限されています。そのため、別のロケールに適用しても機能しません。
 
 カスタム辞書を使用して語句の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
 
@@ -632,7 +638,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、`zh-TW`) の発音セットが定義されています。
 
-カスタム辞書では、次に示すように、`alphabet` 属性の値として `sapi` を使用できます。
+カスタム辞書では、次に示すように、`alphabet` 属性の値として `x-microsoft-sapi` を使用できます。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -641,7 +647,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
-      alphabet="sapi" xml:lang="en-US">
+      alphabet="x-microsoft-sapi" xml:lang="en-US">
   <lexeme>
     <grapheme>BTW</grapheme>
     <alias> By the way </alias>

@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール
 description: Azure Policy と Azure RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
-ms.date: 02/05/2021
+ms.date: 04/30/2021
 ms.topic: sample
-ms.openlocfilehash: f4bd340e67547ee22a558a63b56619171a1749c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad15e7ebc980a72b079ff965e3f94a46c470af7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627469"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753013"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 
@@ -179,7 +179,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 情報転送のポリシーと手順
 
-このブループリントでは、ストレージ アカウントや Redis Cache との接続の安全性を監査する 2 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure サービスとの情報転送のセキュリティを強化できます。
+このブループリントでは、ストレージ アカウントや Azure Cache for Redis との接続の安全性を監査する 2 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure サービスとの情報転送のセキュリティを強化できます。
 
 - Azure Cache for Redis へのセキュリティで保護された接続のみを有効にする必要がある
 - ストレージ アカウントへの安全な転送を有効にする必要がある

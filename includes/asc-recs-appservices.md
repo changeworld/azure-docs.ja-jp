@@ -2,15 +2,15 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/14/2021
+ms.date: 05/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 4817a68ad74ed9a51f8b9ea67f3d271bbaa3423b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8be9c97e23b579acf138a2861a77a5b8f219b886
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466168"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766482"
 ---
 このカテゴリには **31 個** の推奨事項があります。
 
@@ -40,7 +40,7 @@ ms.locfileid: "103466168"
 |関数アプリに対して Python を最新バージョンに更新する必要がある |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。<br>最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を活用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。<br />(関連ポリシー:[関数アプリの一部として使用される "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7238174a-fd10-4ef0-817e-fc820a951d73)) |中 |
 |Web アプリに対して Python を最新バージョンに更新する必要がある |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。<br>最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を活用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。<br />(関連ポリシー:[Web アプリの一部として使用される "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7008174a-fd10-4ef0-817e-fc820a951d73)) |中 |
 |API アプリでリモート デバッグを無効にする |リモート デバッグを実行するには、API アプリ上で受信ポートが開かれている必要があります。 リモート デバッグを無効にする必要があります。<br />(関連ポリシー:[API アプリでリモート デバッグを無効にする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e)) |低 |
-|Function App でリモート デバッグを無効にする |リモート デバッグを実行するには、受信ポートが関数アプリ上で開かれている必要があります。 リモート デバッグを無効にする必要があります。<br />(関連ポリシー:[関数アプリでリモート デバッグを無効にする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0e60b895-3786-45da-8377-9c6b4b6ac5f9)) |低 |
+|Function App でリモート デバッグを無効にする |リモート デバッグを実行するには、受信ポートが Azure 関数アプリ上で開かれている必要があります。 リモート デバッグを無効にする必要があります。<br />(関連ポリシー:[関数アプリでリモート デバッグを無効にする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f0e60b895-3786-45da-8377-9c6b4b6ac5f9)) |低 |
 |Web アプリケーションのリモート デバッグを無効にする |リモート デバッグを実行するには、受信ポートが Web アプリケーション上で開かれている必要があります。 現在、リモート デバッグが有効になっています。 リモート デバッグを使用する必要がなくなったら、無効にする必要があります。<br />(関連ポリシー:[Web アプリケーションでリモート デバッグを無効にする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2fcb510bfd-1cba-4d9f-a230-cb0976f4bb71)) |低 |
 |API アプリに対して TLS を最新バージョンに更新する必要がある |最新の TLS バージョンにアップグレードします<br />(関連ポリシー:[API アプリでは最新の TLS バージョンを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f8cb6aa8b-9e41-4f4e-aa25-089a7ac2581e)) |高 |
 |関数アプリに対して TLS を最新バージョンに更新する必要がある |最新の TLS バージョンにアップグレードします<br />(関連ポリシー:[関数アプリでは最新の TLS バージョンを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff9d614c5-c173-4d56-95a7-b4437057d193)) |高 |

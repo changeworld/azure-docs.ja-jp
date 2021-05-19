@@ -8,17 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 09/28/2020
+ms.date: 04/26/2021
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 41f7870bdab36de69251bb1274472ec16d05d0a5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816874"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773865"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
-
 
 このチュートリアルでは、機械学習モデルのトレーニングをリモートのコンピューティング リソース上で行います。 Python Jupyter Notebook 内の Azure Machine Learning に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
@@ -41,15 +40,56 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[チュートリアル: 初めての Azure ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)」を完了することで、以下の操作を行います。
-    * ワークスペースの作成
-    * チュートリアル ノートブックをワークスペース内のフォルダーに複製します。
-    * クラウドベースのコンピューティング インスタンスを作成します。
+* [Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)で次の作業を完了します。
+    * ワークスペースを作成します。
+    * 開発環境に使用するクラウドベースのコンピューティング インスタンスを作成します。
+    * モデルのトレーニングに使用するクラウドベースのコンピューティング クラスターを作成します。
 
-* 複製した *tutorials/image-classification-mnist-data* フォルダーで、*img-classification-part1-training.ipynb* ノートブックを開きます。 
+## <a name="run-a-notebook-from-your-workspace"></a><a name="azure"></a>ワークスペースからノートブックを実行する
+
+Azure Machine Learning では、インストール不要であらかじめ構成されたエクスペリエンスを実現するために、お使いのワークスペースにクラウド ノートブック サーバーが含まれています。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](how-to-configure-environment.md#local)を使用してください。
+
+ 次のビデオに従うか、詳細な手順を使用して、ワークスペースでチュートリアル ノートブックを複製して実行します。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
+
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> ノートブック フォルダーを複製する
+
+次の実験の設定を完了し、Azure Machine Learning スタジオで手順を実行します。 この統合インターフェイスには、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールが含まれています。
+
+1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
+
+1. お使いのサブスクリプションと、作成したワークスペースを選択します。
+
+1. 左側で **[ノートブック]** を選択します。
+
+1. 上部で **[サンプル]** タブを選択します。
+
+1. **Python** フォルダーを開きます。
+
+1. バージョン番号が付いたフォルダーを開きます。 この番号は、Python SDK の現在のリリースを表します。
+
+1. **tutorials** フォルダーの右側にある **[...]** ボタンを選択し、 **[Clone]\(複製\)** を選択します。
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Clone チュートリアル フォルダーを示すスクリーンショット。":::
+
+1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。 自分のフォルダーを選択して **tutorials** フォルダーをそこに複製します。
+
+### <a name="open-the-cloned-notebook"></a><a name="open"></a> 複製されたノートブックを開く
+
+1. **[User files]\(ユーザー ファイル\)** セクションに複製された **tutorials** フォルダーを開きます。
+
+    > [!IMPORTANT]
+    > **samples** フォルダー内のノートブックを表示できますが、そこからノートブックを実行することはできません。 ノートブックを実行するには、必ず **[User Files]\(ユーザー ファイル\)** セクションにあるノートブックの複製バージョンを開いてください。
+    
+1. **tutorials/image-classification-mnist-data** フォルダーの **img-classification-part1-training.ipynb** ファイルを選択します。
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="tutorials フォルダーを開いたところを示すスクリーンショット。":::
+
+1. 上部のバーで、ノートブックの実行に使用するコンピューティング インスタンスを選択します。
 
 
-チュートリアルと付随する **utils.py** ファイルは、独自の [ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を実行して、このチュートリアルの依存関係をインストールします。
+チュートリアルと付随する **utils.py** ファイルは、独自の [ローカル環境](how-to-configure-environment.md#local)で使用する場合、[GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) から入手することもできます。 コンピューティング インスタンスを使用しない場合は、`pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` を使用して、このチュートリアルの依存関係をインストールしてください。 
 
 > [!Important]
 > 以降この記事には、ノートブックと同じ内容が記載されています。  
@@ -110,9 +150,12 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 マネージド サービスである Azure Machine Learning コンピューティングを使用することにより、データ サイエンティストは Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできます。 たとえば、GPU がサポートされている VM などです。 このチュートリアルでは、トレーニング環境として Azure Machine Learning コンピューティングを作成します。 その VM 上で実行する Python コードは、後でこのチュートリアルの中で送信します。 
 
-以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。 使用されていないときに 0 にスケールダウンするクラスターが設定されますが、最大 4 ノードにスケールアップできます。 
+以下のコードでは、まだワークスペース内にコンピューティング クラスターがない場合、それらが作成されます。 使用されていないときに 0 にスケールダウンするクラスターが設定されますが、最大 4 ノードにスケールアップできます。
 
- **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。
+ **コンピューティング先の作成には約 5 分かかります。** ワークスペース内にコンピューティング リソースが既にある場合は、それが使用され、作成プロセスはスキップされます。  
+
+> [!TIP]
+> クイックスタートでコンピューティング クラスターを作成した場合は、以下のコードの `compute_name` に必ず同じ名前を使用してください。
 
 ```python
 from azureml.core.compute import AmlCompute

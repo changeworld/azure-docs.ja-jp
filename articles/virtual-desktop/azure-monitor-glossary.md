@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8ed4c2cffffca79ea545358b8ad639118e87e013
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 13dfc7d7015ff293a1d6c05d94232412c8ec4fac
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448204"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753725"
 ---
 # <a name="azure-monitor-for-windows-virtual-desktop-glossary"></a>Windows Virtual Desktop 向けの Azure Monitor の用語集
 
@@ -21,7 +21,7 @@ ms.locfileid: "106448204"
 
 ## <a name="alerts"></a>アラート
 
-サブスクリプションで構成し、[重大度 0](#severity-0-alerts) として分類されているアクティブな Azure Monitor のアラートは、すべて概要ページに表示されます。 アラートの設定方法については、「[Azure Monitor のアラートを使用してイベントに応答する](../azure-monitor/alerts/tutorial-response.md)」を参照してください。
+サブスクリプションで構成し、[重大度 0](#severity-0-alerts) として分類されているアクティブな Azure Monitor のアラートは、すべて概要ページに表示されます。 アラートの設定方法について詳しくは、[Azure Monitor のログ アラート](../azure-monitor/alerts/alerts-log.md)に関するページをご覧ください。
 
 ## <a name="available-sessions"></a>使用可能なセッション
 
@@ -182,7 +182,7 @@ Windows イベント ログの詳細については、[Windows イベント レ�
 
 ## <a name="next-steps"></a>次の手順
 
-- 開始するには、[Windows Virtual Desktop 向けの Azure Monitor を使用してデプロイを監視する](azure-monitor.md)をご覧ください。
+- 開始するには、「[Azure Monitor for Windows Virtual Desktop を使用してデプロイを監視する](azure-monitor.md)」をご覧ください。
 - データ ストレージのコストを見積もり、測定、管理には、[Azure Monitor コストを見積もる](azure-monitor-costs.md)をご覧ください。
 - 問題が発生した場合のヘルプや既知の問題については、[トラブルシューティング ガイド](troubleshoot-azure-monitor.md)をご覧ください。
 

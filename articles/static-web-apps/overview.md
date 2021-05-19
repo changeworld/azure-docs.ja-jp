@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 04/01/2021
 ms.author: cshoe
-ms.openlocfilehash: c0a4156fb0015c6d319700c82f6285dbf0ed1443
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 0111e0a37f1684ab764160d64231ea5dde2547a6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947881"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758989"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
@@ -37,7 +37,7 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 - 自動的に更新される **無料の SSL 証明書**。
 - ブランド化されたカスタマイズをアプリに提供する **カスタム ドメイン**。
 - API の呼び出し時にリバースプロキシを使用する **シームレスなセキュリティ モデル**。CORS 構成は必要ありません。
-- Azure Active Directory、Facebook、Google、GitHub、および Twitter との **認証プロバイダーの統合**。
+- Azure Active Directory、GitHub、および Twitter との **認証プロバイダーの統合**。
 - **カスタマイズ可能な認可ロールの定義** と割り当て。
 - 提供するコンテンツとルートを完全に制御できるようにする **バックエンド ルーティング規則**。
 - 発行前にサイトのプレビュー バージョンを有効にする pull request を使用した **生成済みステージング バージョン**。

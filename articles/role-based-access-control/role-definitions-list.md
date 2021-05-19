@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/26/2021
+ms.date: 05/06/2021
 ms.author: rolyon
-ms.openlocfilehash: b285755d24cdbf1f8ef06eb850fc218a00734f16
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 96eb88bf1e62753cff5606881af471d32bf1e85c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771733"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483699"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
@@ -28,7 +28,7 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
 ポータルですべてのロールを一覧表示するには、次の手順に従います。
 
-更新されたロール エクスペリエンスの表示に関心がある場合は、現在パブリック プレビューにある **[ロール (プレビュー)]** タブを確認してください。 **[ロール (プレビュー)]** タブには、 **[ロール]** タブと同じロールの一覧がいくつかの追加機能と共に表示されます。 いずれかのロール タブを使用してロールを操作できます。ただし、カスタム ロールを作成または削除する場合は、ページを手動で更新して最新の変更内容を確認する必要があります。
+**[ロール]** タブは、最近いくつかの追加機能によって更新されました。 以前のエクスペリエンスを表示する必要がある場合は、 **[ロール (クラシック)]** タブを表示してください。いずれかのロール タブを使用してロールを操作できます。ただし、カスタム ロールを作成または削除する場合は、最新の変更内容を表示するためにページを手動で更新する必要がある場合があります。
 
 #### <a name="roles"></a>[ロール](#tab/roles/)
 
@@ -40,21 +40,7 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
 1. **[ロール]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
 
-   現在のスコープの各ロールに割り当てられているユーザーとグループの数を確認できます。
-
-   ![ロールの一覧表示](./media/role-definitions-list/roles-list-current.png)
-
-#### <a name="roles-preview"></a>[[ロール (プレビュー)]](#tab/roles-preview/)
-
-1. Azure portal で、 **[すべてのサービス]** をクリックしてから任意のスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
-
-1. 特定のリソースをクリックします。
-
-1. **[アクセス制御 (IAM)]** をクリックします。
-
-1. **[ロール (プレビュー)]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
-
-   ![プレビュー エクスペリエンスを使用したロールの一覧](./media/role-definitions-list/roles-list.png)
+   ![新しいエクスペリエンスを使用したロールの一覧を示すスクリーンショット。](./media/role-definitions-list/roles-list.png)
 
 1. 特定のロールのアクセス許可を表示するには、 **[詳細]** 列の **[表示]** リンクをクリックします。
 
@@ -62,7 +48,21 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
 1. **[アクセス許可]** タブをクリックして、選択したロールのアクセス許可を表示および検索します。
 
-   ![プレビュー エクスペリエンスを使用したロールのアクセス許可](./media/role-definitions-list/role-permissions.png)
+   ![新しいエクスペリエンスを使用したロールのアクセス許可を示すスクリーンショット。](./media/role-definitions-list/role-permissions.png)
+
+#### <a name="roles-classic"></a>[ロール (クラシック)](#tab/roles-classic/)
+
+1. Azure portal で、 **[すべてのサービス]** をクリックしてから任意のスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
+
+1. 特定のリソースをクリックします。
+
+1. **[アクセス制御 (IAM)]** をクリックします。
+
+1. **[ロール (クラシック)]** タブをクリックして、すべての組み込みおよびカスタムのロールの一覧を表示します。
+
+   現在のスコープの各ロールに割り当てられているユーザーとグループの数を確認できます。
+
+   ![ロールの一覧表示](./media/role-definitions-list/roles-list-classic.png)
 
 ---
 

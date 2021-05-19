@@ -4,12 +4,12 @@ description: Docker Compose を使用して、複数コンテナーのアプリ�
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: ef08b9f9e0f596f1d94c0e6edfd46f735fe78053
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 73699e9d0b7b63dcc2960521b26f0c615a608ed9
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786921"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753293"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>チュートリアル:Docker Compose を使用して複数コンテナー グループをデプロイする 
 
@@ -174,7 +174,7 @@ az acr repository show --name <acrName> --repository azure-vote-front
 
 [!INCLUDE [container-instances-create-docker-context](../../includes/container-instances-create-docker-context.md)]
 
-## <a name="deploy-application-to-azure-container-instances"></a>アプリケーションを Azure Container instances にデプロイする
+## <a name="deploy-application-to-azure-container-instances"></a>アプリケーションを Azure Container Instances にデプロイする
 
 次に、ACI コンテキストに変更します。 以降の Docker コマンドは、このコンテキストで実行されます。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/10/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3517835859de82117de07ad67cdf8027960ab777
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 68953a2848594cac673f133b2a8fbd4de1ae63f0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388693"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760141"
 ---
 # <a name="tutorial-create-a-function-to-integrate-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps と統合される関数を作成する
 
@@ -226,7 +226,7 @@ Text Analytics リソースを作成したら、いくつかの設定をコピ�
     | 設定 | 値 |
     | ------- | ----- |
     | 検索テキスト | **#my-twitter-tutorial** |
-    | 項目を確認する頻度 | ボックスに「**15**」と入力し、 <br> ドロップダウンで **[分]** を選択します |
+    | 項目を確認する頻度 | ボックスに「**1**」と入力し、 <br> ドロップダウンで **[Hour]\(時間\)** を選択します 異なる値を入力することもできますが、Twitter コネクタの現在の[制限事項](https://docs.microsoft.com/connectors/twitterconnector/#limits)を確認してください。  |
 
 1. ツール バーの **[保存]** ボタンを選択して、ここまでの作業を保存します。
 

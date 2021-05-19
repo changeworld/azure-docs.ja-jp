@@ -8,16 +8,16 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 494608f9dd8fbf986dcda6eeb782a64f6a2ca008
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: fb9b2a13f277c326cdda722398a915941b8c52b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378569"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740971"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>デバイスからのデータが Azure IoT Central で表示されない原因を解決する
 
-このドキュメントは、デバイス開発者が、デバイスから IoT Central に送信されるデータがアプリケーションで表示されない原因を解明するのに役立ちます。
+このドキュメントは、デバイスから IoT Central に送信されるデータがアプリケーションで表示されない原因を解明するのに役立ちます。
 
 調査する主な領域としては、次の 2 つがあります。
 

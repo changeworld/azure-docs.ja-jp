@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4aef4f3a0da17abc497225bcd0a27b98e4eaea95
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a7159b6528c07a2cb2734c06d644a4db3753d48a
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208511"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790885"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Azure Digital Twins でのエンドポイントとルートの管理 (ポータル)
 
@@ -22,11 +22,11 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して、エンドポイントとルートを作成する手順を説明します。
 
-別の方法として、エンドポイントとルートは、[Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)、[SDK](how-to-use-apis-sdks.md#overview-data-plane-apis)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用して管理することもできます。 ポータルの代わりにこれらのメカニズムを使用するこの記事のバージョンについては、[エンドポイントとルートを管理する方法 (API と CLI)](how-to-manage-routes-apis-cli.md)  に関するページを参照してください。
+別の方法として、エンドポイントとルートは、[Event Routes API](/rest/api/digital-twins/dataplane/eventroutes)、[SDK](concepts-apis-sdks.md#overview-data-plane-apis)、または [Azure Digital Twins CLI](concepts-cli.md) を使用して管理することもできます。 ポータルの代わりにこれらのメカニズムを使用するこの記事のバージョンについては、[エンドポイントとルートを管理する方法 (API と CLI)](how-to-manage-routes-apis-cli.md)  に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure アカウント** が必要となります ([こちら](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)から無料で設定できます)。
+* **Azure アカウント** が必要 ([無料で設定できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 * ご利用の Azure サブスクリプションに **Azure Digital Twins インスタンス** が必要となります。 まだインスタンスをお持ちでない場合は、インスタンスを作成してください。その手順については、[インスタンスと認証を設定する方法](how-to-set-up-instance-portal.md)に関するページを参照してください。 セットアップ中、次の値をメモしておいてください。後でこの記事の中で使用します。
     - インスタンス名
     - Resource group
@@ -98,7 +98,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 エンドポイントでは、一定期間内にイベントを配信できない場合や、イベントの配信を一定回数試行した後も配信できない場合、未配信イベントをストレージ アカウントに送信できます。 このプロセスは **配信不能処理** と呼ばれます。
 
-配信不能処理が有効なエンドポイントを作成するには、Azure portal ではなく [CLI コマンド](how-to-use-cli.md)または[コントロール プレーン API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) を使用してエンドポイントを作成する必要があります。
+配信不能処理が有効なエンドポイントを作成するには、Azure portal ではなく [CLI コマンド](concepts-cli.md)または[コントロール プレーン API](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) を使用してエンドポイントを作成する必要があります。
 
 これらのツールを使用してこれを行う方法については、この記事の "[API と CLI](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)" のバージョンに関する記事を参照してください。
 
@@ -135,7 +135,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="インスタンスのイベント ルートを作成するスクリーンショット。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
-完了したら、 _[保存]_ ボタンをクリックして、イベント ルートを作成します。
+完了したら、 _[保存]_ ボタンを選択して、イベント ルートを作成します。
 
 ## <a name="filter-events"></a>イベントのフィルター処理
 
@@ -148,7 +148,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 より具体的なフィルターを定義することで、送信されるイベントの種類を制限できます。
 
-イベント ルートの作成中にイベント フィルターを追加するには、 *[イベント ルートを作成する]* ページの _[イベント ルート フィルターの追加]_ セクションを使用します。 
+イベント ルートの作成中にイベント フィルターを追加するには、 *[イベント ルートを作成する]* ページの [イベント ルート フィルターの追加] セクションを使用します。 
 
 いくつかの基本的な共通フィルター オプションから選択することも、高度なフィルター オプションを使用して独自のカスタム フィルターを作成することもできます。
 
@@ -159,7 +159,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 #### <a name="use-the-basic-filters"></a>基本的なフィルターを使用する
 
-基本的なフィルターを使用するには、 _[イベントの種類]_ オプションを展開し、エンドポイントに送信するイベントに対応するチェックボックスをオンにします。 
+基本的なフィルターを使用するには、 _[イベントの種類]_ オプションを展開し、エンドポイントに送信する必要があるイベントに対応するチェックボックスをオンにします。 
 
 :::row:::
     :::column:::

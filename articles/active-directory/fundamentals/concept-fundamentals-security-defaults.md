@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c663282865e19df0e103e75a7e32d86651232a93
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769699"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762553"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -135,6 +135,9 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 - ** ユーザーは Microsoft Authenticator アプリの確認コードを使用できますが、通知オプションを使用した場合のみ登録できます。
 - *** アプリ パスワードは、管理者が有効にした場合にのみ、レガシ認証シナリオでのユーザーごとの MFA でのみ使用できます。
+
+> [!WARNING]
+> セキュリティの既定値群を使用している場合は、組織のメソッドを無効にしないでください。 メソッドを無効にすると、ご自分のテナントからロックアウトされる可能性があります。 [MFA サービス設定ポータル](../authentication/howto-mfa-getstarted.md#choose-verification-options)で、 **[ユーザーが使用できる方法]** をすべて有効のままにしておきます。
 
 ### <a name="disabled-mfa-status"></a>無効な MFA の状態
 

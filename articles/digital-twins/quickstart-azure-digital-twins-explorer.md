@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: ca50c0221843b4e24a6287177f36608b86a0a1a9
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: d56c4b8fc17dc29578366e3d84e9ba20ca95a9dd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075772"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789715"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>クイック スタート - Azure Digital Twins Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -41,7 +41,7 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 お使いのコンピューターには **Node.js** も必要になります。 最新バージョンを入手するには、「[Node.js](https://nodejs.org/)」を参照してください。
 
-最後に、クイックスタートの間に使用するサンプルをダウンロードする必要もあります。 サンプル アプリケーションは **Azure Digital Twins Explorer** です。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するアプリが含まれています。 また、サンプル シナリオ ファイルも含まれています。 サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページに移動してください。 タイトルの下の **[コードの参照]** ボタンを選択すると、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンと **[ZIP のダウンロード]** を選択してサンプルを *.ZIP* ファイルとしてダウンロードします。 
+最後に、クイックスタートの間に使用するサンプルをダウンロードする必要もあります。 サンプル アプリケーションは **Azure Digital Twins Explorer** です。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するアプリが含まれています。 また、サンプル シナリオ ファイルも含まれています。 サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページに移動してください。 タイトルの下の **[コードの参照]** ボタンを選択すると、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンと **[ZIP のダウンロード]** を選択して、サンプルを .zip ファイルとしてダウンロードします。 
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-repo-zip.png" alt-text="GitHub にある digital-twins-explorer リポジトリのスクリーンショット。[コード] ボタンが選択され、表示された小さなダイアログ ボックスで [ZIP のダウンロード] ボタンが強調表示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/download-repo-zip.png":::
 
@@ -155,7 +155,7 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 自分の Azure Digital Twins インスタンスにいくつかのモデルをアップロードしたら、そのモデルの定義に準拠した[デジタル ツイン](concepts-twins-graph.md)を追加できます。
 
-デジタル ツインは、ビジネス環境内の実際のエンティティを表します。 たとえば、農場のセンサーや車内の照明などです。このクイックスタートでは、建物のフロアにある部屋です。 特定のモデル タイプのツインを複数作成できます (同じ *Room* モデルを使用する複数の部屋など)。 これらをリレーションシップで接続し、環境全体を表す **ツイン グラフ** に反映することができます。
+デジタル ツインは、ビジネス環境内の実際のエンティティを表します。 たとえば、農場のセンサーや車内の照明などです。このクイックスタートでは、建物のフロアにある部屋です。 特定のモデル タイプのツインを複数作成できます (同じ Room モデルを使用する複数の部屋など)。 これらをリレーションシップで接続し、環境全体を表す **ツイン グラフ** に反映することができます。
 
 このセクションでは、接続された事前作成済みのツインをアップロードして、事前作成済みのグラフに反映します。 このグラフには、2 つのフロアと 2 つの部屋が含まれていて、次のレイアウトで接続されています。
 
@@ -212,7 +212,7 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="ツイン グラフが存在する [グラフ ビュー] パネルのビュー。&quot;floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;room1&quot; という円に接続されています。&quot;floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;room0&quot; という円に接続されています。":::
 
-円 (グラフの "ノード") は、デジタル ツインを表します。 線はリレーションシップを表します。 **Floor0** ツインには **Room0** が含まれており、**Floor1** ツインには **Room1** が含まれています。
+円 (グラフの "ノード") は、デジタル ツインを表します。 線はリレーションシップを表します。 Floor0 ツインには Room0 が含まれており、Floor1 ツインには Room1 が含まれています。
 
 マウスを使用する場合、グラフの要素をドラッグしてあちこちに動かすことができます。
 
@@ -283,7 +283,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
     :::column-end:::
 :::row-end:::
 
-これで、 **[パッチ情報]** ウィンドウが表示され、更新を実行するための Azure Digital Twins [API](how-to-use-apis-sdks.md) と共に、バックグラウンドで使用されたパッチ コードが表示されます。 **[閉じる]** を選択します。
+これで、 **[パッチ情報]** ウィンドウが表示され、更新を実行するための Azure Digital Twins [API](concepts-apis-sdks.md) と共に、バックグラウンドで使用されたパッチ コードが表示されます。 **[閉じる]** を選択します。
 
 ### <a name="query-to-see-the-result"></a>クエリを実行して結果を確認する
 

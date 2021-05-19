@@ -4,23 +4,23 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 05/05/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 81d361a82a05bed83156857b2381be0d6d113827
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: aae7d29abbb9ef18846e85e9a54ff0fb97f09181
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209897"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738520"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
 "*ストレージ ターゲット*" は、Azure HPC Cache を通じてアクセスされるファイルのバックエンド ストレージです。 NFS ストレージ (オンプレミスのハードウェア システムなど) を追加できるほか、Azure BLOB にデータを格納することができます。
 
-1 つのキャッシュに対して最大 20 個の異なるストレージ ターゲットを定義できます。 このキャッシュでは、すべてのストレージ ターゲットが 1 つの集約された名前空間で提供されます。
+キャッシュに対して 10 個の異なるストレージ ターゲットを定義できます。より大きなキャッシュでは、[最大で 20 個のストレージ ターゲットをサポート](#size-your-cache-correctly-to-support-your-storage-targets)できます。
 
-名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。
+このキャッシュでは、すべてのストレージ ターゲットが 1 つの集約された名前空間で提供されます。 名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。
 
 キャッシュの仮想ネットワークからストレージのエクスポートにアクセスできなければならないことに注意してください。 オンプレミスのハードウェア ストレージの場合、NFS ストレージへのアクセスに使用されるホスト名を解決できる DNS サーバーの設定が必要になることがあります。 詳細については、「[DNS アクセス](hpc-cache-prerequisites.md#dns-access)」を参照してください。
 
@@ -35,6 +35,15 @@ ms.locfileid: "108209897"
 Azure portal からのキャッシュの作成とストレージ ターゲットの追加に関する[ビデオ デモ](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)を視聴するには、次の画像をクリックしてください。
 
 [![ビデオのサムネイル:Azure HPC Cache: セットアップ (クリックしてビデオ ページにアクセス)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+
+## <a name="size-your-cache-correctly-to-support-your-storage-targets"></a>ストレージ ターゲットをサポートするようキャッシュを正しいサイズに設定する
+
+サポートされるストレージ ターゲットの数はキャッシュ サイズによって異なり、キャッシュの作成時に設定されます。 サイズは、スループット容量 (GB/秒) とストレージ容量 (TB) の組み合わせです。
+
+* 最大で 10 個のストレージ ターゲット - 選択したスループット値に対して最小または中程度のキャッシュ ストレージ サイズを選択した場合、キャッシュには最大で 10 個のストレージ ターゲットを含めることができます。
+* 最大で 20 個のストレージ ターゲット - 10 個を超えるストレージ ターゲットを使用する必要がある場合は、選択したスループット値に対して使用可能な最大キャッシュ サイズを選択します。 (Azure CLI を使用する場合は、お使いのキャッシュ SKU で有効な最大キャッシュ サイズを選択してください。)
+
+スループットとキャッシュ サイズの設定について詳しくは、「[キャッシュ容量を設定する](hpc-cache-create.md#set-cache-capacity)」をご覧ください。
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>新しい Azure Blob Storage ターゲットを追加する
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 66d41ed1bb900f55db0d3670c1ce312950ff165d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 261b939d62c4952b7dc6d1f1a4b0e91c2922b4ce
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147051"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744931"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する 
 
@@ -167,6 +167,17 @@ ms.locfileid: "108147051"
 - Microsoft.KeyVault/vaults/keys
 
 その他の Azure Key Vault テンプレートのサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)のページから入手できます。
+
+## <a name="parameters-and-definitions"></a>パラメーターと定義
+
+|パラメーター  |定義  |
+|---------|---------|
+|**Keysize**  | 実行できる操作をキーを使用して指定します。 このパラメーターを指定しない場合、すべての操作を実行できます。 このパラメーターの値には、[JSON Web Key (JWK) 仕様](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)で定義されたキー操作のリストをコンマ区切りで指定できます。 <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
+|**CurveName**  |  EC キー タイプに使用される楕円曲線の名前。 「[JsonWebKeyCurveName](/rest/api/keyvault/createkey/createkey#jsonwebkeycurvename)」を参照してください |
+|**Kty**  |  作成するキーの種類。 有効な値については、「[JsonWebKeyType](/rest/api/keyvault/createkey/createkey#jsonwebkeytype)」を参照してください。 |
+|**タグ** | キーと値のペアの形式による、アプリケーション固有のメタデータ。  |
+|**nbf**  |  キーが使用できるようになる日時を DateTime オブジェクトとして指定します。 形式は Unix タイム スタンプになります (UTC の 1970 年 1 月 1 日の Unix エポックを起点とする秒数)。  |
+|**exp**  |  有効期限を DateTime オブジェクトとして指定します。 形式は Unix タイム スタンプになります (UTC の 1970 年 1 月 1 日の Unix エポックを起点とする秒数)。 |
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 [Azure portal](../../azure-resource-manager/templates/deploy-portal.md)、Azure PowerShell、Azure CLI、または REST API を使用できます。 デプロイ方法の詳細については、「[テンプレートのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。

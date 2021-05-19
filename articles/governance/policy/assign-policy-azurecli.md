@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure CLI を使用して、
 ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2b7dad3eba18966a78fd35211ce40ea48234da30
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 7dd0ca2e1462b03c5a8e3807dd90d424e4b12be4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090182"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733609"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>クイック スタート:Azure CLI を使用して準拠していないリソースを識別するポリシー割り当てを作成する
 

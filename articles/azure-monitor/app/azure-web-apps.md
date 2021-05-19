@@ -4,12 +4,12 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
-ms.openlocfilehash: e8c794e056dca42a06bdf6b7deb274e7f5f5bfd4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e5c9e91ff6d9cc5bc8fe478853c802abcd9d6e49
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315905"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627818"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -167,7 +167,7 @@ Application Insights を使用したテレメトリの収集を有効にする�
 |アプリ設定の名前 |  定義 | 値 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | メインの拡張機能で、実行時の監視を制御します。 | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  既定モードのみ、最適なパフォーマンスを保証するため重要な機能が有効になります。 | `default` または `recommended`。 |
+|XDT_MicrosoftApplicationInsights_Mode |  既定のモードでは、最適なパフォーマンスを保証するために、重要な機能のみが有効になります。 | `default` または `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | バイナリ再書き込みエンジン `InstrumentationEngine` がオンにされるかどうかを制御します。 この設定は、パフォーマンスに影響し、コールド スタート/起動時間に影響を与えます。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | SQL と Azure テーブル テキストが依存関係呼び出しと共にキャプチャされるかどうかを制御します。 パフォーマンスの警告: アプリケーションのコールド スタートアップ時間が影響を受けます。 この設定には `InstrumentationEngine` が必要です。 | `~1` |
 |XDT_MicrosoftApplicationInsights_PreemptSdk | ASP.NET Core アプリの場合のみ。 Application Insights SDK で相互運用を有効にします。 拡張機能を SDK とサイドバイサイドで読み込み、それを使用してテレメトリを送信します (Application Insights SDK を無効にします)。 |`1`|

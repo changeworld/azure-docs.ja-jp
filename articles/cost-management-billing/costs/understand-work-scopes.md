@@ -3,18 +3,18 @@ title: Azure Cost Management のスコープを理解して使用する
 description: この記事では、Azure で使用できる課金スコープとリソース管理スコープの概要、およびこれらのスコープを Cost Management と API で使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/19/2021
+ms.date: 05/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: f1b98cdf662f6f518e0bc1c3e869de3774c1bf7e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: afa2811fe6e0dab3bc5c114febeec8aae25bd891
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204155"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765577"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -186,7 +186,7 @@ Microsoft 顧客契約の課金アカウントには、次のスコープがあ�
 
 - **顧客**  - パートナーによって Microsoft 顧客契約にオンボードされる特定の顧客に関連付けられたサブスクリプションのグループを表します。 このスコープは、クラウド ソリューション プロバイダー (CSP) に固有のものです。
 
-EA の課金スコープとは異なり、顧客契約の課金アカウントは 1 つのディレクトリにバインドされ "_ます_"。複数の Azure AD ディレクトリにまたがるサブスクリプションを持つことはできません。
+EA の課金スコープとは異なり、"_顧客契約の課金アカウントは、単一のディレクトリによって管理されます_"。 Microsoft 顧客契約の課金アカウントには、異なる Azure AD ディレクトリ内のサブスクリプションを "*リンク*" させることができます。
 
 顧客契約の課金範囲は、パートナーには適用されません。 パートナーの役割とアクセス許可については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」のドキュメントに示されています。
 

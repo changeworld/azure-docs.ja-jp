@@ -1,16 +1,16 @@
 ---
 title: クイック スタート:初めての PowerShell クエリ
 description: このクイックスタートでは、手順に従って、Azure PowerShell の Resource Graph 拡モジュールを有効にし、最初のクエリを実行します。
-ms.date: 05/01/2021
+ms.date: 05/11/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: 6147b6bcdda2674190fe3591794bb6758eb8d3eb
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: dd620ec63547b0b9fdba41da3cd2dcf6daa9dea0
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324997"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750917"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -47,7 +47,7 @@ PowerShell の Resource Graph モジュールは、**Az.ResourceGraph** です�
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. モジュールがインポートされていて、最新のバージョン (0.7.5) であることを確認します。
+1. モジュールがインポートされていて、バージョンが `0.10.0` 以降であることを確認します。
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -64,17 +64,17 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   Search-AzGraph -Query 'Resources | project name, type | limit 5'
+   (Search-AzGraph -Query 'Resources | project name, type | limit 5').Data
    ```
 
    > [!NOTE]
-   > このクエリは`order by`などの並べ替え修飾子を示しませんので、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。
+   > このクエリ例では、`order by` などの並べ替え修飾子を指定していません。そのため、このクエリを複数回実行すると、要求ごとに、得られる一連のリソースが異なる可能性があります。
 
 1. `order by`**名前** プロパティに対するクエリを更新します。
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
+   (Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc').Data
    ```
 
    > [!NOTE]
@@ -84,14 +84,14 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
+   (Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5').Data
    ```
 
 最後のクエリを複数回実行した場合、環境内で何も変更がないと仮定すると、返される結果は変わらず、**Name** プロパティで並べ替えられますが、引き続き上位 5 件の結果に制限されます。
 
 > [!NOTE]
 > 既にアクセスできているサブスクリプションからクエリの結果が返されなかった場合、`Search-AzGraph` コマンドレットでは既定コンテキストのサブスクリプションが既定で使用されることに注意してください。 既定のコンテキストの一部であるサブスクリプション ID の一覧を表示するには、この `(Get-AzContext).Account.ExtendedProperties.Subscriptions` を実行します。アクセスできるすべてのサブスクリプション全体を検索する場合は、`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` を実行して `Search-AzGraph` コマンドレットの PSDefaultParameterValues を設定できます
-   
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Resource Graph モジュールを Azure PowerShell 環境から削除する場合は、次のコマンドを使用して行うことができます。

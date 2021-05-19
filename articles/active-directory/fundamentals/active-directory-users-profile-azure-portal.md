@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 04/11/2019
+ms.date: 05/04/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 173bd167a0814ddf735d90b257089a685d99cc58
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92370918"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762607"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -26,7 +26,11 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 ご覧のとおり、ユーザーを作成するときに追加する情報より、ユーザー プロファイルの方が情報が多いです。 この追加情報は、すべて組織が必要に応じて追加することができるオプションです。
 
 ## <a name="to-add-or-change-profile-information"></a>プロファイル情報を追加または変更する
-1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
+
+>[!Note]
+>ユーザー名とメール アドレスのプロパティにアクセント文字を含めることはできません。
+
+1. 組織のユーザー管理者ロールで [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ユーザーを選択します。 たとえば、_Alain Charon_ を選びます。
 

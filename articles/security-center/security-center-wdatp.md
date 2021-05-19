@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: a9997fac66dd49af04f4ed78737118d605e27072
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 58a616953afd15bd4098eaf7ec96838137d110c5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829892"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764785"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -72,15 +72,15 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 
 ## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Microsoft Defender for Endpoint 統合を有効にする
 
-### <a name="prerequisites"></a>[前提条件]
+### <a name="prerequisites"></a>前提条件
 
 お使いのマシンが Defender for Endpoint に必要な要件を満たしていることを確認します。
 
 1. 適切な方法でコンピューターを Azure に接続していることを確認します。
 
-    - **Windows** Server の場合は[デバイス プロキシとインターネット接続の設定を構成する](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)方法に関する記事の説明に従ってネットワーク設定を構成します
+    - **Windows** Server の場合は [デバイス プロキシとインターネット接続の設定を構成する](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)方法に関する記事の説明に従ってネットワーク設定を構成します
     - **オンプレミス** のコンピューターの場合は [Azure Arc 対応サーバーにハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)方法に関する記事を参考にして、コンピューターを Azure Arc に接続します
-    - **Windows Server 2019** と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) のコンピューターの場合は、そのコンピューターで Log Analytics のエージェントを実行していることと、MicrosoftMonitoringAgent 拡張機能が入っていることを確認します。
+    - **Windows Server 2019** と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) のマシンの場合は、そのマシンに MicrosoftMonitoringAgent 拡張機能が入っていることを確認します。
     
 1. **Azure Defender for servers** を有効にします。 「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
 1. ご利用のサーバーに Microsoft Defender for Endpoints のライセンスが既に供与されデプロイ済みの場合は、「[Windows サーバーのオフボード](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)」で説明されている手順を使用して削除します。

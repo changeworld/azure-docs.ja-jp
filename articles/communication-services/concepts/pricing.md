@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5f7b1e6d600f5d3652ce6a66a72cbfbf33b336c4
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 0615d95c922ef3f04618d9f2339e82b53bd359df
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106091873"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763687"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -85,13 +85,15 @@ Alice と Bob は VOIP 通話を行っています。 Bob は、Charlie の PSTN
 Alice は医師として、患者である Bob を診察する予定です。 Alice は Teams デスクトップ アプリケーションから診察に参加します。 Bob には、医療機関の Web サイトを使用して参加するためのリンクが送信されます。このリンクを通じて、Communication Services JavaScript SDK を使用した診察に接続することができます。 Bob は携帯電話から Web ブラウザー (iPhone と Safari) を使用して診察に参加します。 仮想診察の間はチャットが利用できます。
 
 - この通話は合計 30 分間続きます。
-- Alice と Bob は通話全体に参加します。 Alice は、通話が開始されてから 5 分後にビデオをオンにし、13 分間画面を共有します。 Bob は通話が終わるまでビデオをオンにします。
+- Bob は会議に参加すると、Teams のポリシーに従って Teams ミーティング ロビーに配置されます。 1 分後、彼が会議に参加することを Alice が認めます。
+- Bob が会議への参加を認められた後、Alice と Bob は通話全体に参加します。 Alice は、通話が開始されてから 5 分後にビデオをオンにし、13 分間画面を共有します。 Bob は通話が終わるまでビデオをオンにします。
 - Alice は 5 件のメッセージを送信し、うち 3 件に Bob が返信します。
 
 
 **コストの計算**
 
-- 1 人の参加者 (Bob) x 30 分 x 参加者あたり $0.004/分 = $0.12 [ビデオとオーディオの両方が同じ料金で課金されます]
+- Teams ロビーに接続された 1 人の参加者 (Bob) x 1 分 x 参加者 1 名につき毎分 $0.004 (ロビーは会議の通常料金で課金されます) = $0.004
+- 1 人の参加者 (Bob) x 29 分 x 参加者あたり $0.004/分 = $0.116 [ビデオとオーディオの両方が同じ料金で課金されます]
 - 1 人の参加者 (Alice) x 30 分 x 参加者あたり $0.000/分 = $0.0*
 - 1 人の参加者 (Bob) x 3 件のチャット メッセージ x $0.0008 = $0.0024
 - 1 人の参加者 (Alice) x 5 件のチャット メッセージ x $0.000  = $0.0*
@@ -99,7 +101,7 @@ Alice は医師として、患者である Bob を診察する予定です。 Al
 \* Alice の参加は、Teams のライセンスによってカバーされています。 Azure の請求書には、Teams ユーザーが Communication Services ユーザーと交わしたチャット メッセージと時間 (分) が表示されますが、これはあくまで参考のためです。Teams クライアント側から送信されたメッセージと時間 (分) は課金されません。
 
 **診察の総コスト**:
-- Communication Services JavaScript SDK を使用して参加するユーザー: $0.12 + $0.0024 = $0.1224
+- Communication Services JavaScript SDK を使用して参加するユーザー: $0.004 + $0.116 + $0.0024 = $0.1224
 - Teams デスクトップ アプリケーションで参加するユーザー: $0 (Teams ライセンスに含まれています)
 
 

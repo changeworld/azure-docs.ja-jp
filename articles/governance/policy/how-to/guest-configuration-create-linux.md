@@ -4,12 +4,12 @@ description: Linux VM に対する Azure Policy のゲスト構成ポリシー�
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 926c6d472b3e4e3b6837a4d4136ee591a3d7e6c5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: b28d7f0ccd2f4b8cca7bdb5015dce6e8ee8f2f17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165373"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762985"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -24,10 +24,10 @@ Linux を監査する場合、ゲスト構成では [Chef InSpec](https://www.in
 Azure または非 Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
 > [!IMPORTANT]
-> Azure Government 環境と Azure China 環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
+> Azure Government と Azure China 21Vianet 環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
 >
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Linux マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs` を割り当てます。
-> 
+>
 > カスタム コンテンツ パッケージでは、シークレットや機密情報を使用しないでください。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
@@ -94,11 +94,11 @@ PowerShell コマンドレットは、パッケージの作成に役立ちます
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
-Linux でのゲスト構成では、`ChefInSpecResource` リソースを使って、エンジンに [InSpec プロファイル](https://www.inspec.io/docs/reference/profiles/)の名前を設定します。 **Name** は、唯一必要なリソース プロパティです。 次に説明するように、YaML ファイルと Ruby スクリプト ファイルを作成します。
+Linux でのゲスト構成では、`ChefInSpecResource` リソースを使って、エンジンに [InSpec プロファイル](https://www.inspec.io/docs/reference/profiles/)の名前を設定します。 **Name** は、唯一必要なリソース プロパティです。 下で説明するように、YAML ファイルと Ruby スクリプト ファイルを作成します。
 
-最初に、InSpec によって使用される YaML ファイルを作成します。 ファイルは、環境に関する基本的な情報を提供します。 次に例を示します。
+最初に、InSpec によって使用される YAML ファイルを作成します。 ファイルは、環境に関する基本的な情報を提供します。 次に例を示します。
 
-```YaML
+```yaml
 name: linux-path
 title: Linux path
 maintainer: Test
@@ -113,7 +113,7 @@ supports:
 
 次に、マシンの監査に使用される InSpec 言語抽象化で Ruby ファイルを作成します。
 
-```Ruby
+```ruby
 describe file('/tmp') do
     it { should exist }
 end
@@ -145,9 +145,9 @@ Configuration AuditFilePathExists
 AuditFilePathExists -out ./Config
 ```
 
-このファイルを `config.ps1` という名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい mof ファイルが作成されます。
+このファイルを `config.ps1` という名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい MOF ファイルが作成されます。
 
-`Node AuditFilePathExists` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditFilePathExists.mof` という名前のファイルを生成します。 .mof ファイル名が構成に従うことにより、大規模な運用時に多くのファイルを簡単に整理できます。
+`Node AuditFilePathExists` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditFilePathExists.mof` という名前のファイルを生成します。 構成の後に .MOF ファイル名を付けることで、大規模な運用時に多くのファイルを簡単に整理できます。
 
 これで、プロジェクトの構造は次のようになります。
 
@@ -158,7 +158,7 @@ AuditFilePathExists -out ./Config
     / linux-path
         inspec.yml
         / controls
-            linux-path.rb 
+            linux-path.rb
 ```
 
 サポート ファイルはまとめてパッケージ化する必要があります。 完成したパッケージは、Azure Policy の定義を作成するためにゲスト構成によって使われます。
@@ -222,7 +222,7 @@ Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExist
 
 `New-GuestConfigurationPolicy` コマンドレットのパラメーター:
 
-- **ContentUri**: ゲスト構成コンテンツ パッケージのパブリック HTTP(S) URI。
+- **ContentUri**: ゲスト構成コンテンツ パッケージのパブリック HTTP(s) URI。
 - **DisplayName**: ポリシーの表示名。
 - **説明**:ポリシーの説明。
 - **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
@@ -281,7 +281,7 @@ InSpec では、通常、パラメーターは、実行時に入力として、�
 
 マシン上の監査対象をスクリプト化する Ruby ファイルの入力を定義します。 次に例を示します。
 
-```Ruby
+```ruby
 attr_path = attribute('path', description: 'The file path to validate.')
 
 describe file(attr_path) do
@@ -289,8 +289,8 @@ describe file(attr_path) do
 end
 ```
 
-プロパティ **AttributesYmlContent** を構成に追加します。値として任意の文字列を含めます。
-ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる AML ファイルが自動的に作成されます。 次の例を見てください。
+プロパティ **AttributesYmlContent** を構成に追加します。値として任意の文字列を含めます。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる AML ファイルが自動的に作成されます。
+次の例を参照してください。
 
 ```powershell
 Configuration AuditFilePathExists
@@ -339,7 +339,6 @@ New-GuestConfigurationPolicy -ContentUri $uri `
     -Platform 'Linux' `
     -Version 1.0.0
 ```
-
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 

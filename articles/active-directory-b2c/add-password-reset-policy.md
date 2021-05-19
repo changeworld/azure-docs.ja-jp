@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 05/11/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2865138aeca012d30692e708a61e459492f03ccc
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798395"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750701"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -61,17 +61,17 @@ ms.locfileid: "104798395"
 1. **[ユーザー フロー]** を選択します。
 1. カスタマイズする (種類が **[推奨]** である) サインアップまたはサインインのユーザー フローを選択します。
 1. 左側のメニューの **[設定]** で、 **[プロパティ]** を選択します。
-1. **[パスワードの複雑さ]** で、 **[セルフサービス パスワード リセット]** を選択します。
+1. **[Password configuration]\(パスワードの構成\)** で、 **[セルフサービス パスワード リセット]** を選択します。
 1. **[保存]** を選択します。
 1. 左側のメニューの **[カスタマイズ]** で、 **[ページ レイアウト]** を選択します。
-1. **[ページ レイアウトのバージョン]** で、 **[2.1.2 - 現行]** 以上を選択します。
+1. **[ページ レイアウトのバージョン]** で、 **[2.1.3]** 以上を選択します。
 1. **[保存]** を選択します。
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-以降のセクションでは、セルフサービス パスワード エクスペリエンスをカスタム ポリシーに追加する方法について説明します。 このサンプルは、[カスタム ポリシー スターター パック](./custom-policy-get-started.md)に含まれるポリシー ファイルに基づいています。 
+以降のセクションでは、セルフサービス パスワード エクスペリエンスをカスタム ポリシーに追加する方法について説明します。 このサンプルは、[カスタム ポリシー スターター パック](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#custom-policy-starter-pack)に含まれるポリシー ファイルに基づいています。 
 
 > [!TIP]
 > "パスワード リセットによるサインアップまたはサインイン" ポリシーの完全なサンプルは、[GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/embedded-password-reset) に用意されています。
@@ -316,7 +316,7 @@ ms.locfileid: "104798395"
 
 ### <a name="create-a-password-reset-policy"></a>パスワードのリセット ポリシーを作成する
 
-カスタム ポリシーは、ユーザー体験を定義するために Azure AD B2C テナントにアップロードされる XML ファイルのセットです。 サインアップとサインイン、パスワードのリセット、プロファイル編集ポリシーなど、いくつかの事前に構築されたポリシーを含むスターター パックが用意されています。 詳細については、「[Azure AD B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」を参照してください。
+カスタム ポリシーは、ユーザー体験を定義するために Azure AD B2C テナントにアップロードされる XML ファイルのセットです。 サインアップとサインイン、パスワードのリセット、プロファイル編集ポリシーなど、いくつかの事前に構築されたポリシーを含むスターター パックが用意されています。 詳細については、「[Azure AD B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」を参照してください。
 
 ::: zone-end
 

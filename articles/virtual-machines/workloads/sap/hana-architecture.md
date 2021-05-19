@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f45b84360c941e879461500a033ada3642fd5cbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7af21d294021f7641da6878eeb9a61652bceb7c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671612"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768105"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Azure の SAP HANA (L インスタンス) のアーキテクチャ
 
@@ -44,7 +44,7 @@ SAP HANA on Azure (L インスタンス) の全体的なアーキテクチャで
   -  [Windows 仮想マシンにおける SAP の使用](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
   -  [Azure 仮想マシンにおける SAP ソリューションの使用](get-started.md)
 
-- **左**: Azure L インスタンス スタンプの SAP HANA TDI 認定ハードウェアを示します。 HANA L インスタンス ユニットは、オンプレミスから Azure への接続と同じテクノロジを使用して、Azure サブスクリプションの仮想ネットワークに接続されます。 2019 年 5 月の時点では、ExpressRoute ゲートウェイの関与なしに HANA L インスタンス ユニットと Azure VM の間の通信を可能にする最適化が導入されています。 ExpressRoute Fast Path と呼ばれるこの最適化は、このアーキテクチャに表示されています (赤い線)。 
+- **左**: Azure L インスタンス スタンプの SAP HANA TDI 認定ハードウェアを示します。 HANA L インスタンス ユニットは、オンプレミスから Azure への接続と同じテクノロジを使用して、Azure サブスクリプションの仮想ネットワークに接続されます。 2019 年 5 月の時点では、ExpressRoute ゲートウェイの関与なしに HANA L インスタンス ユニットと Azure VM の間の通信を可能にする最適化が導入されています。 ExpressRoute FastPath と呼ばれるこの最適化は、このアーキテクチャに表示されています (赤い線)。 
 
 Azure L インスタンス スタンプ自体は次のコンポーネントを結合します。
 

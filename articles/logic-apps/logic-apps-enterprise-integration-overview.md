@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 09d253aae4c054db5efdc252f62986044e1d366b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/11/2021
+ms.openlocfilehash: 08de00415229b410e7b88bc4cae26754c466baef
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771859"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789085"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ソリューション
 
@@ -22,7 +22,7 @@ ms.locfileid: "107771859"
 * 電子データ交換 (EDI)
 * Enterprise Application Integration (EAI)
 
-Microsoft BizTalk Server または Azure BizTalk Services を使い慣れている場合、EIP は同様の概念に従っており、機能を簡単に使用できます。 ただし、1 つの大きな違いとして、EIP はアーキテクチャ上、B2B 通信で使用されるアーティファクトの格納と管理を簡単にするために、"統合アカウント" に基づいています。 これらのアカウントは、パートナー、契約、スキーマ、マップ、証明書などのアーティファクトをすべて格納するクラウド ベースのコンテナーです。 
+Microsoft BizTalk Server または Azure BizTalk Services を使い慣れている場合、EIP は同様の概念に従っており、機能を簡単に使用できます。 ただし、1 つの大きな違いとして、EIP はアーキテクチャ上、B2B 通信で使用されるアーティファクトの格納と管理を簡単にするために、"統合アカウント" に基づいています。 これらのアカウントは、パートナー、契約、スキーマ、マップ、証明書などのアーティファクトをすべて格納するクラウド ベースのコンテナーです。
 
 ## <a name="why-use-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用する理由
 
@@ -40,17 +40,26 @@ EIP を使用した B2B ロジック アプリ ワークフローの構築を開
 
 * 使用するアーティファクトを含む[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-* マップとスキーマを作成するには、[Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) と Visual Studio 2015 を使用できます。
+* マップとスキーマを作成するには、[Microsoft Azure Logic Apps Enterprise Integration Tools 拡張機能](https://aka.ms/vsenterpriseintegrationtools)と Visual Studio 2019 を使用できます。 
+
+   > [!IMPORTANT]
+   > BizTalk Server 拡張機能とこの拡張機能を同時にインストールしないでください。 両方の拡張機能をインストールすると、予期しない動作が発生する可能性があります。 これらの拡張機能のいずれかのみがインストールされていることを確認してください。
+
+   > [!NOTE]
+   > 高解像度モニターでは、Visual Studio の[マップ デザイナーで表示の問題](/visualstudio/designers/disable-dpi-awareness)が発生することがあります。 この表示の問題を解決するには、[Visual Studio を DPI 非対応モードで再起動する](/visualstudio/designers/disable-dpi-awareness#restart-visual-studio-as-a-dpi-unaware-process)か、[DPIUNAWARE レジストリ値](/visualstudio/designers/disable-dpi-awareness#add-a-registry-entry)を追加します。
+
+
+* Visual Studio 2015 を使用している場合は、[Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) 拡張機能を使用できます。
 
 統合アカウントを作成し、アーティファクトを追加したら、Azure portal でロジック アプリを作成することにより、これらのアーティファクトを使用して B2B ワークフローの構築を開始できます。 ロジック アプリを初めて使用する場合は、[基本的なロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してみてください。 ただし、これらのアーティファクトを使用するには、統合アカウントとロジック アプリの関連付けを行っておく必要があります。 その後、ロジック アプリから統合アカウントにアクセスできます。 また、Visual Studio または [PowerShell](/powershell/module/az.logicapp) を使用して、ロジック アプリを作成、管理、デプロイすることもできます。
 
 B2B ロジック アプリの構築を開始する手順の概要を次に示します。
 
-![B2B ロジック アプリを作成するための前提条件](./media/logic-apps-enterprise-integration-overview/overview.png)  
+![B2B ロジック アプリを作成するための前提条件](./media/logic-apps-enterprise-integration-overview/overview.png)
 
 ## <a name="try-now"></a>今すぐ試す
 
-[AS2 メッセージの送受信を行う完全に動作するサンプル ロジック アプリをデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
+[AS2 メッセージの送受信を行う完全に動作するサンプル ロジック アプリをデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/logic-app-as2-send-receive)
 
 ## <a name="next-steps"></a>次のステップ
 

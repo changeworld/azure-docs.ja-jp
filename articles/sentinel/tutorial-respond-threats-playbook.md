@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2021
 ms.author: yelevin
-ms.openlocfilehash: 365ba9df39b4b3bd7397e86e6a51b285bf049242
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b2a98e92630fcdc46228cc36579cfe9787b92daf
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600632"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786647"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する
 
@@ -36,7 +36,7 @@ ms.locfileid: "104600632"
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>オートメーション ルールとプレイブックとは
 
-オートメーション ルールは、Azure Sentinel でインシデントをトリアージするのに役立ちます。 それらを使用して、インシデントを自動的に適切な担当者に割り当てたり、ノイズの多いインシデントや既知の擬陽性を終了したり、それらの重大度を変更したり、タグを追加したりすることができます。 これらは、インシデントへの対応としてプレイブックの実行を可能にするメカニズムでもあります。
+オートメーション ルールは、Azure Sentinel でインシデントをトリアージするのに役立ちます。 それらを使用して、インシデントを自動的に適切な担当者に割り当てたり、ノイズの多いインシデントや既知の[擬陽性](false-positives.md)を終了したり、それらの重大度を変更したり、タグを追加したりすることができます。 これらは、インシデントへの対応としてプレイブックの実行を可能にするメカニズムでもあります。
 
 プレイブックは、アラートやインシデントに対する応答として Azure Sentinel から実行できる手順のコレクションです。 プレイブックは対応の自動化や調整に役立ちます。分析ルールまたはオートメーション ルールにそれぞれアタッチすることで、特定のアラートまたはインシデントが発生した際に自動的に実行されるように設定できます。 必要なときに手動で実行することもできます。
 

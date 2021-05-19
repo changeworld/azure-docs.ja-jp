@@ -2,13 +2,13 @@
 title: テンプレート内のパラメーター
 description: Azure Resource Manager テンプレート (ARM テンプレート) と Bicep ファイルでパラメーターを定義する方法について説明します。
 ms.topic: conceptual
-ms.date: 03/03/2021
-ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/05/2021
+ms.openlocfilehash: c42a1a178785351bb1148c047737f62baebefa30
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102123396"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736867"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM テンプレートのパラメーター
 
@@ -23,6 +23,8 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 ## <a name="minimal-declaration"></a>最小限の宣言
 
 少なくとも、すべてのパラメーターには名前と型が必要です。 Bicep では、パラメーターに、同じスコープ内の変数、リソース、出力、またはその他のパラメーターと同じ名前を付けることはできません。
+
+テンプレートを Azure portal 経由でデプロイすると、キャメル ケースのパラメーター名はスペース区切りの名前に変換されます。 たとえば、次の例の *demoString* は *Demo String* と表示されます。 詳細については、「[デプロイ ボタンを使用して GitHub リポジトリからテンプレートをデプロイする](./deploy-to-azure-button.md)」と「[ARM テンプレートと Azure portal でリソースをデプロイする](./deploy-portal.md)」をご覧ください。
 
 # <a name="json"></a>[JSON](#tab/json)
 

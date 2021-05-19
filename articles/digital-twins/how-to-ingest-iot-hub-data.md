@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b69ba164a7bd0edecf427866cd3e872a65e41355
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ac55c3cdc041ab724c80b1042db9d988d2e988fc
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208745"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783691"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Azure Digital Twins に IoT Hub テレメトリを取り込む
 
@@ -49,7 +49,7 @@ Azure Digital Twins にデータを取り込むプロセスは、[Azure Function
 
 [!INCLUDE [digital-twins-thermostat-model-upload.md](../../includes/digital-twins-thermostat-model-upload.md)]
 
-次に、**このモデルを使用して 1 つのツインを作成** します。 次のコマンドを使用して **thermostat67** という名前のサーモスタット ツインを作成して、初期温度値を 0.0 に設定します。
+次に、**このモデルを使用して 1 つのツインを作成** します。 次のコマンドを使用して thermostat67 という名前のサーモスタット ツインを作成して、初期温度値を 0.0 に設定します。
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
@@ -146,7 +146,7 @@ _[作成]_ ボタンを選択してイベント サブスクリプションを�
 
 ## <a name="send-simulated-iot-data"></a>シミュレートされた IoT データの送信
 
-新しいイングレス機能をテストするには、デバイス シミュレーターを使用します。このデバイス シミュレーターについては、"[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)" に関するページを参照してください。 このチュートリアルは、C# で記述されたサンプル プロジェクトによって進められます。 サンプル コードについては、こちらを参照してください。[Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 このリポジトリでは、**DeviceSimulator** プロジェクトを使用します。
+新しいイングレス機能をテストするには、デバイス シミュレーターを使用します。このデバイス シミュレーターについては、"[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)" に関するページを参照してください。 このチュートリアルは、[こちらの C# で記述された Azure Digital Twins のエンドツーエンドのサンプル プロジェクト](/samples/azure-samples/digital-twins-samples/digital-twins-samples)を使用して進められます。 このリポジトリでは、**DeviceSimulator** プロジェクトを使用します。
 
 このエンド ツー エンドのチュートリアルでは、次の手順を実行します。
 1. [シミュレートされたデバイスを IoT Hub に登録する](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -157,7 +157,7 @@ _[作成]_ ボタンを選択してイベント サブスクリプションを�
 上記のデバイス シミュレーターを実行中に、デジタル ツインの温度値が変化します。 Azure CLI で、次のコマンドを実行して、温度値を確認します。
 
 ```azurecli-interactive
-az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+az dt twin query --query-command "select * from digitaltwins" --dt-name {digital_twins_instance_name}
 ```
 
 出力には、次のような温度値が含まれている必要があります。

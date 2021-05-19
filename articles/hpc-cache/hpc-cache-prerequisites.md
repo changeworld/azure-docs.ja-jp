@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/14/2021
+ms.date: 05/06/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3cddbba3dca64561d7e2b7b27715152a26a8c9e9
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 59b83132f4de25886494bdc5c23819243240e962
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717587"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737332"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -95,6 +95,8 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 キャッシュは、Azure BLOB コンテナー、NFS ハードウェア ストレージのエクスポート、および NFS でマウントされた ADLS BLOB コンテナー (現在プレビュー段階) をサポートしています。 キャッシュを作成した後で、ストレージ ターゲットを追加します。
 
+キャッシュのサイズによって、サポート可能なストレージ ターゲットの数が決まります。ほとんどのキャッシュで最大で 10 個のストレージ ターゲット、最大のサイズで最大で 20 個になります。 詳しくは、「[ストレージ ターゲットをサポートするようキャッシュを正しいサイズに設定する](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)」をご覧ください。
+
 ストレージの種類ごとに特定の前提条件があります。
 
 ### <a name="blob-storage-requirements"></a>Blob Storage の要件
@@ -129,7 +131,7 @@ NFS ストレージ システム (たとえば、オンプレミスのハード�
 
 詳細については「 [NAS 構成と NFS ストレージ ターゲットの問題のトラブルシューティング](troubleshoot-nas.md) 」をご参照ください。
 
-* ネットワーク接続: Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](../expressroute/index.yml) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングの詳細については、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions) に関する追加ヘルプをご参照ください。
+* ネットワーク接続: Azure HPC Cache には、キャッシュ サブネットと NFS システムのデータ センター間の高帯域幅ネットワーク アクセスが必要です。 [ExpressRoute](../expressroute/index.yml) または同様のアクセスが推奨されます。 VPN を使用している場合は、TCP MSS を 1350 でクランプして大きなパケットがブロックされないように構成する必要があります。 VPN 設定のトラブルシューティングについて詳しくは、[VPN のパケット サイズの制限](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)に関する追加ヘルプをご覧ください。
 
 * ポート アクセス: キャッシュには、ストレージ システム上の特定の TCP/UDP ポートへのアクセスが必要です。 ストレージの種類によってポート要件は異なります。
 

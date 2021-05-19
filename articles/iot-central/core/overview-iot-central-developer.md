@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 7cb52dba88d94ed52baa8272c7f20fed4bcde0fd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718793"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787547"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
-
-"*この記事は、デバイス開発者を対象としています。* "
 
 IoT Central アプリケーションを使用すると、数百万台ものデバイスを、そのライフ サイクル全体にわたって監視および管理することができます。 このガイドは、IoT Central に接続されたデバイスで実行されるコードを実装するデバイス開発者を対象としています。
 
@@ -35,27 +33,25 @@ IoT Central アプリケーションを使用すると、数百万台ものデ�
 
 以降のセクションでは、IoT Central アプリケーションに接続可能なデバイスの主な種類について説明します。
 
-### <a name="standalone-device"></a>スタンドアロン デバイス
+### <a name="iot-device"></a>IoT デバイス
 
-スタンドアロン デバイスは、IoT Central に直接接続します。 通常、スタンドアロン デバイスは、そのオンボード センサーまたは接続されているセンサーから IoT Central アプリケーションにテレメトリを送信します。 また、スタンドアロン デバイスは、プロパティ値の報告、書き込み可能なプロパティ値の受信、コマンドへの応答を行うこともできます。
+IoT デバイスは、IoT Central に直接接続するスタンドアロンのデバイスです。 通常、IoT デバイスは、そのオンボード センサーまたは接続されているセンサーから IoT Central アプリケーションにテレメトリを送信します。 また、スタンドアロン デバイスは、プロパティ値の報告、書き込み可能なプロパティ値の受信、コマンドへの応答を行うこともできます。
 
-### <a name="gateway-device"></a>ゲートウェイ デバイス
+### <a name="iot-edge-device"></a>IoT Edge デバイス
 
-ゲートウェイ デバイスは、IoT Central アプリケーションに接続されている 1 台以上のダウンストリーム デバイスを管理します。 ダウンストリーム デバイスとゲートウェイ デバイスの関係を構成するには、IoT Central を使用します。 詳細については、「[Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する](./tutorial-define-gateway-device-type.md)」を参照してください。
+IoT Edge デバイスは、IoT Central に直接接続します。 IoT Edge デバイスは、自身のテレメトリの送信、そのプロパティのレポート、書き込み可能なプロパティの更新やコマンドへの応答を行うことができます。 IoT Edge モジュールは、IoT Edge デバイス上のローカルでデータを処理することができます。 また、IoT Edge デバイスが、他のデバイス (リーフ デバイス) の仲介役を担うこともできます。 たとえば、IoT Edge デバイスは、次のようなシナリオで使用されます。
 
-### <a name="edge-device"></a>エッジ デバイス
-
-エッジ デバイスは、IoT Central に直接接続しますが、"_リーフ デバイス_" と呼ばれる他のデバイスの仲介役として機能します。 通常、エッジ デバイスは、それが仲介役となるリーフ デバイスの近くに配置されます。 エッジ デバイスを使用するシナリオには、次のようなものがあります。
-
-- IoT Central に直接接続できないデバイスを、エッジ デバイスを介して接続できるようにする: たとえば、リーフ デバイスが Bluetooth を使用してエッジ デバイスに接続し、エッジ デバイスがインターネット経由で IoT Central に接続することができます。
-- テレメトリを集約してから IoT Central に送信する: この方法は、データを IoT Central に送信するコストの削減に役立ちます。
+- IoT Central に送信するテレメトリを事前に集約またはフィルター処理する: この方法は、データを IoT Central に送信するコストの削減に役立ちます。
+- IoT Central に直接接続できないデバイスを、IoT Edge デバイスを介して接続できるようにする: たとえば、リーフ デバイスが Bluetooth を使用してエッジ デバイスに接続し、IoT Edge デバイスがインターネット経由で IoT Central に接続することができます。
 - インターネットを介して IoT Central に接続する場合に生じる待ち時間を回避するために、リーフ デバイスをローカルで制御する:
 
-エッジ デバイスは、自身のテレメトリの送信、そのプロパティの報告、書き込み可能なプロパティの更新やコマンドへの応答も行うことができます。
-
-IoT Central では、エッジ デバイスに接続されているリーフ デバイスではなく、エッジ デバイスのみが認識されます。
+IoT Central から見えるのは、IoT Edge デバイスのみです。IoT Edge デバイスに接続されているリーフ デバイスは見えません。
 
 詳細については、[Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する](./tutorial-add-edge-as-leaf-device.md)に関するページを参照してください。
+
+### <a name="gateways"></a>ゲートウェイ
+
+ゲートウェイ デバイスは、IoT Central アプリケーションに接続されている 1 台以上のダウンストリーム デバイスを管理します。 ダウンストリーム デバイスとゲートウェイ デバイスの関係を構成するには、IoT Central を使用します。 ゲートウェイの役割は、IoT デバイスと IoT Edge デバイスの両方が担うことができます。 詳細については、「[Azure IoT Central アプリケーションで新しい種類の IoT ゲートウェイ デバイスを定義する](./tutorial-define-gateway-device-type.md)」を参照してください。
 
 ## <a name="connect-a-device"></a>デバイスの接続
 

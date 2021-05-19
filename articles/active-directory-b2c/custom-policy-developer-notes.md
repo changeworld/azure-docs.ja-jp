@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 05/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6261699166e0157750fc691bc0c1726d8cefd50
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 9c9d5ae5fec9b9258527606d352cef83d5b5a41c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324061"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742825"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の開発者向けのメモ
 
@@ -40,6 +40,41 @@ Azure Active Directory B2C の[ユーザー フローとカスタム ポリシ�
 | [パスワードの強制的なリセット](force-password-reset.md) | プレビュー | NA | |
 | [電話によるサインアップとサインイン](phone-authentication-user-flows.md) | GA | GA | |
 
+## <a name="oauth-20-application-authorization-flows"></a>OAuth 2.0 アプリケーション認可フロー
+
+Azure AD B2C と連携できる OAuth 2.0 および OpenId Connect アプリケーションの認証フローを、次の表にまとめています。
+
+|機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
+|---------|:---------:|:---------:|---------|
+[承認コード](authorization-code-flow.md) | GA | GA | ユーザーが Web アプリケーションにサインインできます。 Web アプリケーションで認可コードを受け取ります。 承認コードと引き換えに、Web API を呼び出すためのトークンを取得します。|
+[認可コードと PKCE](authorization-code-flow.md)| GA | GA | ユーザーが、モバイルおよびシングルページ アプリケーションにサインインできます。 アプリケーションで Proof Key for Code Exchange (PKCE) を使用して認可コードを受け取ります。 承認コードと引き換えに、Web API を呼び出すためのトークンを取得します。  |
+[クライアント資格情報付与](https://tools.ietf.org/html/rfc6749#section-4.4)| GA | GA | アプリケーションの ID を使用して Web 上のリソースにアクセスできます。 バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。  <br />  <br />  Azure AD B2C テナントでこの機能を使うには、Azure AD B2C テナントの Azure AD エンドポイントを使用します。 詳しくは、[OAuth 2.0 のクライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)に関する記事をご覧ください。 このフローでは、Azure AD B2C の[ユーザー フローおよびカスタム ポリシー](user-flow-overview.md)の設定を使用しません。 |
+[デバイス認可付与](https://tools.ietf.org/html/rfc8628)| NA | NA | ユーザーは、スマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできます。  |
+[暗黙的なフロー](implicit-flow-single-page-application.md) | GA | GA |  ユーザーがシングルページ アプリケーションにサインインできます。 バック エンド サーバーと資格情報のやりとりをせずに、アプリで使用するトークンを直接取得します。|
+[On-Behalf-Of](../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)| NA | NA | アプリケーションでサービスまたは Web API を呼び出し、それがさらに別のサービスまたは Web API を呼び出す必要があります。 <br />  <br /> 中間層のサービスから下流のサービスに対して認証要求を行うには、"*クライアント資格情報*" トークンを認可ヘッダーに埋め込みます。 必要に応じて、Azure AD B2C ユーザーのトークンを含むカスタム ヘッダーも使用できます。  |
+[OpenID Connect](openid-connect.md) | GA | GA | OpenID Connect には、ID トークンの概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 |
+[OpenId Connect ハイブリッド フロー](openid-connect.md) | GA | GA | Web アプリケーションから認可要求を行って ID トークンと認可コードを取得できます。  |
+[リソース所有者のパスワード資格情報 (ROPC)](add-ropc-policy.md) | プレビュー | プレビュー | モバイル アプリケーションで直接パスワードを処理して、ユーザーをサインインさせることができます。 |
+
+### <a name="oauth-20-options"></a>OAuth 2.0 のオプション
+
+|機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
+|---------|:---------:|:---------:|---------|
+| [サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md#redirect-sign-in-to-a-social-provider) | GA | GA | クエリ文字列パラメーター `domain_hint`。 |
+| [サインイン名を事前入力する](direct-signin.md#prepopulate-the-sign-in-name) | GA | GA | クエリ文字列パラメーター `login_hint`。 |
+| `client_assertion` を使用して JSON をユーザー体験に挿入| NA| 非推奨 |  |
+| [id_token_hint](id-token-hint.md) として JSON をユーザー体験に挿入する | NA | GA | |
+| [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)| プレビュー| プレビュー| 例: Facebook からアプリへ。 |
+
+## <a name="saml2-application-authentication-flows"></a>SAML2 アプリケーションの認証フロー
+
+Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプリケーションの認証フローを、次の表にまとめています。
+
+|機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
+|---------|:---------:|:---------:|---------|
+[SP 開始](saml-service-provider.md) | NA | GA | POST とリダイレクトのバインディング。 |
+[IDP 開始](saml-service-provider-options.md#identity-provider-initiated-flow) | NA | GA | ID プロバイダーは Azure AD B2C です。  |
+
 ## <a name="user-experience-customization"></a>ユーザー エクスペリエンスのカスタマイズ
 
 |機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
@@ -54,18 +89,6 @@ Azure Active Directory B2C の[ユーザー フローとカスタム ポリシ�
 | [メールの確認を無効にする](disable-email-verification.md) | GA|  GA| 運用環境での使用はお勧めしません。 サインアップ プロセスでの電子メールの検証を無効にすると、スパムにつながる場合があります。 |
 
 
-## <a name="protocols-and-authorization-flows"></a>プロトコルと承認フロー
-
-|機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
-|---------|:---------:|:---------:|---------|
-|[OAuth2 承認コード](authorization-code-flow.md) | GA | GA |
-|[PKCE を使用した OAuth2 承認コード](authorization-code-flow.md)| GA | GA | パブリック クライアントとシングルページ アプリケーション。 |
-|[OAuth2 暗黙的フロー](implicit-flow-single-page-application.md) | GA | GA | |
-|[OAuth2 リソース所有者のパスワード資格情報](add-ropc-policy.md) | プレビュー | プレビュー | |
-|OAuth1 | NA | NA | サポートされていません。 |
-|[OpenID Connect](openid-connect.md) | GA | GA | |
-|[SAML2](saml-service-provider.md) | NA | GA | POST とリダイレクトのバインディング。 |
-| WSFED | NA | NA | サポートされていません。 |
 
 ## <a name="identity-providers"></a>ID プロバイダー
 
@@ -110,16 +133,6 @@ Azure Active Directory B2C の[ユーザー フローとカスタム ポリシ�
 |[クライアント証明書認証を使用したセキュリティ保護](secure-rest-api.md#https-client-certificate-authentication) | プレビュー | GA | |
 |[OAuth2 ベアラー認証を使用したセキュリティ保護](secure-rest-api.md#oauth2-bearer-authentication) | NA | GA | |
 |[API キー認証のセキュリティ保護](secure-rest-api.md#api-key-authentication) | NA | GA | |
-
-### <a name="application-and-azure-ad-b2c-integration"></a>アプリケーションと Azure AD B2C の統合
-
-|機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
-|---------|:---------:|:---------:|---------|
-| [サインインをソーシャル プロバイダーにリダイレクトする](direct-signin.md#redirect-sign-in-to-a-social-provider) | GA | GA | クエリ文字列パラメーター `domain_hint`。 |
-| [サインイン名を事前入力する](direct-signin.md#prepopulate-the-sign-in-name) | GA | GA | クエリ文字列パラメーター `login_hint`。 |
-| `client_assertion` を使用して JSON をユーザー体験に挿入| NA| 非推奨 |  |
-| [id_token_hint](id-token-hint.md) として JSON をユーザー体験に挿入する | NA | GA | |
-| [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)| プレビュー| プレビュー| 例: Facebook からアプリへ。 |
 
 
 ## <a name="custom-policy-features"></a>カスタム ポリシー機能

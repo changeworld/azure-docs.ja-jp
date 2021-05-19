@@ -1,14 +1,14 @@
 ---
 title: オンプレミス管理コンソールをアクティブにしてセットアップする
 description: 管理コンソールをアクティブにすると、センサーが Azure に登録され、オンプレミス管理コンソールに情報が送信されるようになります。また、オンプレミス管理コンソールでは、接続されたセンサーに対する管理タスクを実行できます。
-ms.date: 4/6/2021
+ms.date: 05/05/2021
 ms.topic: how-to
-ms.openlocfilehash: db0d2a84feeb5bf52932842badda8c126994c05d
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c491ebfe68c85b222818c9a9cf2e8e66abe8d959
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492156"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108735169"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>オンプレミス管理コンソールをアクティブにしてセットアップする 
 
@@ -24,7 +24,7 @@ ms.locfileid: "106492156"
 
 ## <a name="sign-in-for-the-first-time"></a>初めてサインインする
 
-管理コンソールにサインインするには、次のようにします。
+**管理コンソールにサインインするには、次のようにします。**
 
 1. システムのインストール時にオンプレミス管理コンソール用に受け取った IP アドレスへ移動します。
  
@@ -37,7 +37,7 @@ ms.locfileid: "106492156"
 
 初めてサインインした後に、アクティブ化ファイルを取得してアップロードし、オンプレミス管理コンソールをアクティブ化する必要があります。 
 
-オンプレミスの管理コンソールをアクティブ化するには、次のようにします。
+**オンプレミスの管理コンソールをアクティブ化するには、次のようにします。**
 
 1. オンプレミス管理コンソールにサインインします。
 
@@ -51,15 +51,46 @@ ms.locfileid: "106492156"
  
 1. オンプレミスの管理コンソールを関連付けるサブスクリプションを選択し、 **[Download on-premises management console activation file]\(オンプレミスの管理コンソールのアクティブ化ファイルをダウンロード\)** ボタンを選択します。 アクティブ化ファイルがダウンロードされます。
 
-   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="アクティブ化ファイルをダウンロードします。":::
+   オンプレミス管理コンソールを 1 つ以上のサブスクリプションに関連付けできます。 アクティブ化ファイルは、選択したサブスクリプションすべてと、ダウンロード時にコミットされた数のデバイスに関連付けられます。
+
+   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/multiple-subscriptions.png" alt-text="オンプレミス管理コンソールをオンボードするサブスクリプションを複数選択できます。":::
 
    サブスクリプションをまだオンボードしていない場合は、[サブスクリプションをオンボード](how-to-manage-subscriptions.md#onboard-a-subscription)します。
+
+   > [!Note]
+   > サブスクリプションを削除する場合は、削除されたサブスクリプションに関係しているすべてのオンプレミス管理コンソールに新しいアクティブ化ファイルをアップロードする必要があります。
 
 1. **[アクティベーション]** ポップアップ画面に戻り、 **[Choose File]\(ファイルの選択\)** を選択します。
 
 1. ダウンロードしたファイルを選択します。
 
-最初にアクティブ化した後に、監視するデバイスの数がオンボード中に定義したコミット済みデバイスの数を超えることがあります。 これは、管理コンソールに余分なセンサーを接続した場合に発生します。 監視するデバイスの数とコミット済みデバイスの数が一致しない場合は、管理コンソールに警告が表示されます。 これが発生した場合は、新しいアクティブ化ファイルをアップロードしてください。
+最初にアクティブ化した後に、監視するデバイスの数がオンボード中に定義したコミット済みデバイスの数を超えることがあります。 この問題は、管理コンソールに余分なセンサーを接続した場合に発生します。 監視するデバイスの数とコミット済みデバイスの数が一致しない場合は、管理コンソールに警告が表示されます。 
+
+:::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/device-commitment-update.png" alt-text="デバイス コミットメントの警告が表示された場合は、新しいアクティブ化ファイルをアップロードする必要があります。":::
+
+この警告が表示された場合は、[新しいアクティブ化ファイル](#activate-the-on-premises-management-console)をアップロードする必要があります。
+
+### <a name="activate-an-expired-license-versions-under-100"></a>期限切れのライセンスをアクティブ化する (10.0 より前のバージョン)
+
+10.0 より前のバージョンのユーザーの場合、ライセンスの有効期限が切れる可能性があります。その場合は、次のアラートが表示されます。 
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/activation-popup.png" alt-text="ライセンスの有効期限が切れると、アクティブ化ファイルを使用してライセンスを更新する必要があります。":::
+
+**ライセンスをアクティブ化するには、次の手順を実行します。**
+
+1. [サポート](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support)でケースを 開きます。
+
+1. サポートにアクティブ化 ID 番号を提供します。
+
+1. サポートから、新しいライセンス情報が文字列の形式で提供されます。
+
+1. 使用条件を読んで、チェックボックスをオンにして承認します。
+
+1. 文字列を、指定されたスペースに貼り付けます。
+
+    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/add-license.png" alt-text="文字列を、指定されたフィールドに貼り付けます。":::
+
+1. **[アクティブ化]** を選びます。
 
 ## <a name="set-up-a-certificate"></a>証明書の設定
 
@@ -68,6 +99,7 @@ ms.locfileid: "106492156"
 次の 2 つのレベルのセキュリティを使用できます。
 
 - CA 署名証明書をアップロードして、組織から要求された特定の証明書と暗号化の要件を満たします。
+
 - 管理コンソールと接続されたセンサーの間の検証を許可します。 検証は、証明書失効リストと証明書の有効期限に対して評価されます。 *検証に失敗した場合は、管理コンソールとセンサー間の通信が停止し、検証エラーがコンソールに表示されます。* このオプションは、インストール後に既定で有効になります。  
 
 コンソールでは、次の種類の証明書がサポートされています。
@@ -81,7 +113,7 @@ ms.locfileid: "106492156"
   > [!IMPORTANT]
   > 自己署名証明書は使用しないことをお勧めします。 この証明書はセキュリティで保護されていないため、テスト環境でのみ使用してください。 証明書の所有者を検証できないため、システムのセキュリティを維持できません。 運用ネットワークには、このオプションを使用しないでください。
 
-証明書をアップロードするには、次の手順を実行します。
+**証明書をアップロードするには、次の手順を実行します。**
 
 1. サインイン後に求められた場合は、証明書名を定義します。
 
@@ -91,7 +123,7 @@ ms.locfileid: "106492156"
 
 CA 署名証明書のアップロード後に、画面を最新の情報に更新する必要がある場合があります。
 
-管理コンソールと接続されているセンサーの間の検証を無効にするには、次の手順を実行します。
+**管理コンソールと接続されているセンサーの間の検証を無効にするには、次の手順を実行します。**
 
 1. **[次へ]** を選択します。
 
@@ -101,7 +133,7 @@ CA 署名証明書のアップロード後に、画面を最新の情報に更�
 
 ## <a name="connect-sensors-to-the-on-premises-management-console"></a>センサーをオンプレミス管理コンソールに接続する
 
-センサーによってオンプレミス管理コンソールに情報が送信されること、およびオンプレミス管理コンソールでバックアップの実行、アラートの管理、センサーでのその他のアクティビティの実行が可能であることを確認する必要があります。 これを行うには、次の手順に従って、センサーとオンプレミス管理コンソールの間で最初の接続が確立されることを確認します。
+センサーからオンプレミス管理コンソールに情報が送信されること、およびオンプレミス管理コンソールでバックアップの実行、アラートの管理、センサーでの他のアクティビティの実行を行えることを確認します。 これを行うには、次の手順に従って、センサーとオンプレミス管理コンソールの間で最初の接続が確立されることを確認します。
 
 Azure Defender for IoT センサーをオンプレミス管理コンソールに接続するには、次の 2 つのオプションを使用できます。
 
@@ -113,7 +145,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 ### <a name="connect-sensors-to-the-on-premises-management-console-from-the-sensor-console"></a>センサー コンソールからセンサーをオンプレミス管理コンソールに接続する
 
-次の方法でセンサー コンソールからセンサーをオンプレミス管理コンソールに接続することができます。
+**センサー コンソールからセンサーをオンプレミス管理コンソールに接続するには、次の手順を実行します。**
 
 1. オンプレミス管理コンソールで、 **[システム設定]** を選択します。
 
@@ -135,7 +167,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 トンネリングを使用すると、オンプレミス管理コンソールをその IP アドレスと 1 つのポート (つまり、9000) から任意のセンサーに接続することができます。
 
-オンプレミス管理コンソールでトンネリングを設定するには、次のようにします。
+**オンプレミス管理コンソールでトンネリングを設定するには、次のようにします。**
 
 - オンプレミス管理コンソールにサインインして、次のコマンドを実行します。
 
@@ -146,7 +178,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
   service apache2 reload
   ```
 
-センサーでトンネリングを設定するには、次の手順を実行します。
+**センサーでトンネリングを設定するには、次の手順を実行します。**
 
 1. センサー (network.properties) の TCP ポート 9000 を手動で開きます。 このポートが開いていない場合、オンプレミス管理コンソールからの接続がセンサーで拒否されます。
 
@@ -176,7 +208,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 組織内の各サイトに対して、部署とリージョンを定義できます。 その後、ネットワーク内に存在する論理エンティティであるゾーンを追加できます。 
 
-各ゾーンに、少なくとも 1 つのセンサーを割り当てる必要があります。 5 レベルのモデルでは、組織の構造を反映した保護システムを提供するために必要な柔軟性と細分性が提供されます。
+各ゾーンに、少なくとも 1 つのセンサーを割り当てます。 5 レベルのモデルでは、組織の構造を反映した保護システムを提供するために必要な柔軟性と細分性が提供されます。
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/diagram-of-sensor-showing-relationships.png" alt-text="センサーと地域の関係を示す図。":::
 
@@ -184,7 +216,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/console-map-with-data-overlay-v2.png" alt-text="ベルリンのデータがオーバーレイされたオンプレミス管理コンソールのマップのスクリーンショット。":::
 
-サイトをセットアップするには、次の手順を実行します。
+**サイトをセットアップするには、次の手順を実行します。**
 
 1. 組織の論理的な構造を反映するために新しい部署を追加します。
 
@@ -222,7 +254,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 サイトが不要になった場合は、オンプレミス管理コンソールから削除できます。
 
-サイトを削除するには、次の手順を実行します。
+**サイトを削除するには、次の手順を実行します。**
 
 1. **[サイトの管理]** ウィンドウで、サイト名が表示されているバーから :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: を選択し、 **[サイトの削除]** を選択します。 サイトの削除を確認する確認ボックスが表示されます。
 
@@ -255,7 +287,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/number-of-alerts-icon.png" border="false"::: | このゾーンに割り当てられているセンサーによって送信されたアラートの数を示します。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/unassign-sensor-icon.png" border="false"::: | ゾーンからセンサーを割り当て解除します。 |
 
-ゾーンをサイトに追加するには、次の手順を実行します。
+**ゾーンをサイトに追加するには、次の手順を実行します。**
 
 1. **[サイトの管理]** ウィンドウで、サイト名が表示されているバーから :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: を選択し、 **[ゾーンの追加]** を選択します。 **[新しいゾーンの作成]** ダイアログ ボックスが表示されます。
 
@@ -267,7 +299,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 1. **[SAVE]\(保存\)** を選択します。 新しいゾーンは、このゾーンが属しているサイトの **[サイトの管理]** ウィンドウに表示されます。
 
-ゾーンを編集するには、次の手順を実行します。
+**ゾーンを編集するには、次の手順を実行します。**
 
 1. **[サイトの管理]** ウィンドウで、ゾーン名が表示されているバーから :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: を選択し、 **[ゾーンの編集]** を選択します。 **[ゾーンの編集]** ダイアログ ボックスが表示されます。
 
@@ -275,13 +307,13 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 1. ゾーン パラメーターを編集し、 **[保存]** を選択します。
 
-ゾーンを削除するには、次の手順を実行します。
+**ゾーンを削除するには、次の手順を実行します。**
 
 1. **[サイトの管理]** ウィンドウで、ゾーン名が表示されているバーから :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/expand-view-icon.png" border="false"::: を選択し、 **[ゾーンの削除]** を選択します。
 
 1. 確認ボックスで **[はい]** を選択します。
 
-接続状態に従ってフィルター処理するには、次のようにします。
+**接続状態に従ってフィルター処理するには、次のようにします。**
 
 - 左上隅の **[接続]** の横にある :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/down-pointing-icon.png" border="false"::: を選択し、次のオプションのいずれかを選択します。
 
@@ -291,7 +323,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
   - **切断**: 切断されているセンサーのみが表示されます。
 
-アップグレードの状態に従ってフィルター処理するには、次のようにします。
+**アップグレードの状態に従ってフィルター処理するには、次のようにします。**
 
 - 左上隅の **[アップグレードの状態]** の横にある :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/down-pointing-icon.png" border="false"::: を選択し、次のオプションのいずれかを選択します。
 
@@ -307,7 +339,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 各ゾーンに、ローカル トラフィックの分析とアラート処理を実行するセンサーを割り当てる必要があります。 オンプレミス管理コンソールに接続されているセンサーのみを割り当てることができます。
 
-センサーを割り当てるには、次の手順を実行します。
+**センサーを割り当てるには、次の手順を実行します。**
 
 1. **[サイトの管理]** を選択します。 未割り当てのセンサーが、ダイアログ ボックスの左上隅に表示されます。
 
@@ -323,7 +355,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 1. **[割り当て]** を選択します。
 
-センサーの割り当てを解除して削除するには、次の手順を実行します。
+**センサーの割り当てを解除して削除するには、次の手順を実行します。**
 
 1. オンプレミス管理コンソールからセンサーを切断します。 詳細については、「[センサーをオンプレミス管理コンソールに接続する](#connect-sensors-to-the-on-premises-management-console)」を参照してください。
 

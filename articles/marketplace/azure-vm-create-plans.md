@@ -6,15 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/01/2021
-ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 05/06/2021
+ms.openlocfilehash: b6efd4fbb96c519508d621983eee7619d18efc38
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219367"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656130"
 ---
-# <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーのプラン作成する方法
+# <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
 **[プランの概要]** ページ (パートナー センターの左側のナビゲーション メニューから選択) では、同じオファー内にさまざまなプラン オプションを指定できます。 オファーには少なくとも 1 つのプラン (以前は SKU と呼ばれていました) が必要です。これは、収益化対象ユーザー、Azure リージョン、機能、または VM イメージごとに変えることができます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "106219367"
 - 現在の発行状態
 - 使用可能なアクション
 
-**[プランの概要]** ペインで使用可能なアクションは、プランの現在の状態によって異なります。
+このウィンドウで使用可能なアクションは、プランの現在の状態によって異なります。
 
 - プランの状態がドラフトの場合は、 **[ドラフトの削除]** を選択します。
 - プランの状態が発行済みの場合は、 **[Stop sell plan]\(プランの販売の停止\)** または **[Sync private audience]\(プライベート対象ユーザーの同期\)** を選択します。
@@ -49,13 +49,6 @@ ms.locfileid: "106219367"
 ## <a name="plan-setup"></a>プランのセットアップ
 
 プランの種類に対する高レベルの構成を設定し、別のプランの技術的構成を再利用するかどうかを指定し、プランを使用可能にする必要のある Azure リージョンを特定します。 ここでの選択により、同じプランの他のペインに表示されるフィールドが決まります。
-
-### <a name="reuse-technical-configuration"></a>技術的構成を再利用する
-
-同じ種類のプランが複数あり、それらの間でパッケージが同一である場合は、 **[This plan reuses technical configuration from another plan]\(このプランで別のプランの技術的構成を再利用する\)** を選択できます。 このオプションを使用すると、このオファーに対して同じ種類の他のプランのいずれかを選択して、その技術的構成を再利用できます。
-
-> [!NOTE]
-> 別のプランの技術的構成を再利用すると、 **[技術的な構成]** タブ全体がこのプランに対して表示されなくなります。 今後行う更新も含めて、他のプランの技術的構成の詳細が、このプランにも使用されます。 この設定は、プランを発行した後では変更できません。
 
 ### <a name="azure-regions"></a>Azure Azure リージョン
 
@@ -166,6 +159,10 @@ Microsoft がパートナーに代わって消費税および使用税を送金�
 
 > [!NOTE]
 > **[プランのセットアップ]** タブで別のプランからパッケージを再利用するように、これを構成した場合、このタブは表示されません。
+
+### <a name="reuse-technical-configuration"></a>技術的構成を再利用する
+
+同じ種類のプランが複数あり、それらの間でパッケージが同一である場合は、 **[This plan reuses the technical configuration from another plan]\(このプランで別のプランの技術的構成を再利用する\)** をオンにします。 このオプションを使用すると、このオファーに対して同じ種類の他のプランのいずれかを選択し、その技術的構成を再利用できます。
 
 ### <a name="operating-system"></a>オペレーティング システム
 

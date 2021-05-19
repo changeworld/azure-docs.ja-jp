@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7d297d96ba764c812a3d4db6d9383122c73cfe31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f54d4a704779aab1b84a92ef3b152e9319c55e89
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103143"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713362"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -152,18 +152,36 @@ Android アプリケーションがまだない場合は、次の手順に従っ
 
 ### <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
 
-1. Android Studio のプロジェクト ウィンドウで、**app** > **src** > **build.gradle** に移動し、以下を追加します。
+1. Android Studio のプロジェクト ウィンドウで、**app** > **build.gradle** の順に移動し、以下を追加します。
 
     ```gradle
-    repositories{
+    apply plugin: 'com.android.application'
+   
+    allprojects {
+     repositories {
+        mavenCentral()
+        google()
+        mavenLocal()
+        maven {
+            url 'https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1'
+        }
+        maven {
+            name "vsts-maven-adal-android"
+            url "https://identitydivision.pkgs.visualstudio.com/_packaging/AndroidADAL/maven/v1"
+            credentials {
+                username System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_USERNAME") : project.findProperty("vstsUsername")
+                password System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") != null ? System.getenv("ENV_VSTS_MVN_ANDROIDADAL_ACCESSTOKEN") : project.findProperty("vstsMavenAccessToken")
+            }
+        }
         jcenter()
+     }
     }
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:2.+'
-        implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
-    }
+     implementation 'com.microsoft.identity.client:msal:2.+'
+     implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+     }
     packagingOptions{
-        exclude("META-INF/jersey-module-version")
+     exclude("META-INF/jersey-module-version")
     }
     ```
     [Microsoft Graph SDK の詳細](https://github.com/microsoftgraph/msgraph-sdk-java/)

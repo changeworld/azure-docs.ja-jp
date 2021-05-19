@@ -2,13 +2,13 @@
 title: Azure Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
 ms.topic: overview
-ms.date: 04/25/2021
-ms.openlocfilehash: f7631caedcb26227abf65d6fad216fc629d41dd4
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 05/05/2021
+ms.openlocfilehash: e731d45d527a3bb2a59e532065fefc78a3237fd5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987095"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755263"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能  
 
@@ -104,11 +104,6 @@ Microsoft では、Azure Defender for IoT の更新プログラムを四半期�
 
 この機能は、バージョン 10.2 のリリースのオンプレミスの管理コンソールで使用できます。
 
-### <a name="add-second-network-interface-to-on-premises-management-console-public-preview"></a>オンプレミスの管理コンソールへの 2 つ目のネットワーク インターフェイスの追加 (パブリック プレビュー)
-
-オンプレミスの管理コンソールに 2 つ目のネットワーク インターフェイスを追加することで、デプロイのセキュリティを強化できるようになりました。 この機能を使用すると、オンプレミスの管理において、セキュリティで保護された 1 つのネットワーク上にセンサーを接続する一方で、ユーザーは 2 つ目の別のネットワーク インターフェイスを介してオンプレミスの管理コンソールにアクセスできるようになります。
-
-この機能は、バージョン 10.2 のリリースのオンプレミスの管理コンソールで使用できます。
 ### <a name="device-builder---new-micro-agent-public-preview"></a>デバイス ビルダー - 新しいマイクロ エージェント (パブリック プレビュー)
 
 新しいデバイス ビルダー モジュールが登場しました。 このモジュール (マイクロ エージェントと呼ばれます) では、次のことが可能です。

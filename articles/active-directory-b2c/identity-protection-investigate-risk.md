@@ -11,12 +11,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f15fd789264922865acb792bdb766b9624665d91
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102055195"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654762"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Azure AD B2C の Identity Protection を使用したリスクの調査
 
@@ -70,7 +70,7 @@ Identity Protection の一部の機能には、Azure AD B2C Premium P2 が必要
 
 危険なユーザー レポートによって提供される情報を使用して、管理者は、以下を見つけることができます。
 
-- どのユーザーにリスクがあり、リスクが修復されたか無視されたか
+- どのユーザーが **危険** な状態になっているか、およびそのリスクが **修復** されたか **無視** されたかを確認できる **リスクの状態**
 - 検出の詳細
 - すべての危険なサインインの履歴
 - リスクの履歴
@@ -82,6 +82,8 @@ Identity Protection の一部の機能には、Azure AD B2C Premium P2 が必要
 - ユーザー リスクを無視する
 - ユーザーによるサインインをブロックする
 - Azure ATP を使用してさらに調査する
+
+管理者は、Azure portal でユーザーのリスクを無視するか、[ユーザーのリスクを無視](https://docs.microsoft.com/graph/api/riskyusers-dismiss?view=graph-rest-beta&preserve-view=true)するための Microsoft Graph API を使用してプログラムによってユーザーのリスクを無視するかを選択できます。 ユーザーのリスクを無視するには、管理者特権が必要です。 リスクの修復は、危険なユーザー、またはそのユーザーの代理の管理者が、パスワードのリセットなどを通じて実行できます。
 
 ### <a name="navigating-the-risky-users-report"></a>危険なユーザー レポート内の移動
 
@@ -107,8 +109,8 @@ Identity Protection の一部の機能には、Azure AD B2C Premium P2 が必要
 リスク検出レポートによって提供される情報を使用して、管理者は、以下を見つけることができます。
 
 - 各リスク検出についての種類を含む情報
-- 同時にトリガーされた他のリスク
-- サインインが試行された場所
+- 同時にトリガーされたその他のリスク。
+- サインインが試行された場所。
 
 管理者は、ユーザーのリスク レポートまたはサインイン レポートに戻り、収集された情報に基づいてアクションを実行できます。
 

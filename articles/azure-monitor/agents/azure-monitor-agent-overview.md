@@ -6,15 +6,15 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 248f070c37e32cb0d90c3e31eebddc6245446828
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608216"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765667"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor エージェントの概要 (プレビュー)
-Azure Monitor エージェント (AMA) では、仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
+Azure Monitor エージェント (AMA) では、Azure 仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントのインストール方法やデータ収集の構成方法など、Azure Monitor エージェントの概要について説明します。
 
 ## <a name="relationship-to-other-agents"></a>他のエージェントとの関係
 Azure Monitor エージェントでは、Azure Monitor によって現在使用されている次のエージェントが置き換えられ、仮想マシンからゲスト データが収集されます。

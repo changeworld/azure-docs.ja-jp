@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 04/29/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: f062782ec2b28ca155b49c9d6ecd5c169c0430eb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 58dd7baa612e2dcf302ce87b2d77cd0e71f90187
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286836"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108763849"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>リリースノート - Azure Arc 対応データ サービス (プレビュー)
 
@@ -60,6 +60,7 @@ ms.locfileid: "108286836"
 - 直接接続モードで、`azdata arc dc upload` を使用して使用状況、メトリック、およびログをアップロードすることは、現在ブロックされています。 使用状況は自動的にアップロードされます。 間接接続モードで作成されたデータ コントローラーのアップロードは引き続き機能します。
 - `–proxy-cert <path-t-cert-file>` 経由でプロキシを使用する場合、直接接続モードでの使用状況データの自動アップロードは成功しません。
 - Azure Arc 対応 SQL Managed Instance や Azure Arc 対応 PostgreSQL Hyperscale は GB18030 認定ではありません。
+- 現時点では、kubernetes クラスターごとに直接接続モードで 1 つの Azure Arc データ コントローラーのみがサポートされています。
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 

@@ -4,12 +4,12 @@ description: このクイックスタートでは、JavaScript を使用して�
 ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: d42156e68747b66778ea1cf2001d2b4bfc901bb0
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: c0ff6ec2457c0669d055ef2da50032a99b0029c6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106090183"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772569"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>クイックスタート:JavaScript を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -70,14 +70,14 @@ JavaScript が Azure Policy で動作するようにするには、ライブラ�
    const argv = require("yargs").argv;
    const authenticator = require("@azure/ms-rest-nodeauth");
    const policyObjects = require("@azure/arm-policy");
-   
+
    if (argv.subID && argv.name && argv.displayName && argv.policyDefID && argv.scope && argv.description) {
-   
+
        const createAssignment = async () => {
            const credentials = await authenticator.interactiveLogin();
            const client = new policyObjects.PolicyClient(credentials, argv.subID);
            const assignments = new policyObjects.PolicyAssignments(client);
-   
+
            const result = await assignments.create(
                argv.scope,
                argv.name,
@@ -89,7 +89,7 @@ JavaScript が Azure Policy で動作するようにするには、ライブラ�
            );
            console.log(result);
        };
-   
+
        createAssignment();
    }
    ```
@@ -131,11 +131,11 @@ JavaScript が Azure Policy で動作するようにするには、ライブラ�
    const argv = require("yargs").argv;
    const authenticator = require("@azure/ms-rest-nodeauth");
    const policyInsights = require("@azure/arm-policyinsights");
-   
+
    if (argv.subID && argv.name) {
-   
+
        const getStates = async () => {
-   
+
            const credentials = await authenticator.interactiveLogin();
            const client = new policyInsights.PolicyInsightsClient(credentials);
            const policyStates = new policyInsights.PolicyStates(client);
@@ -151,7 +151,7 @@ JavaScript が Azure Policy で動作するようにするには、ライブラ�
            );
            console.log(result);
        };
-   
+
        getStates();
    }
    ```

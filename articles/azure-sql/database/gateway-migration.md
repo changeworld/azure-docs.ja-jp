@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 07611a3620a2fd8efe0da075b03b55a5be3a5be9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6561de6c8483c5bcdb02ff4b6aa7732fc508164e
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505379"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684759"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,14 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+## <a name="june-2021"></a>2021 年 6 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+- 英国西部: 51.140.208.96、51.140.208.97
+- 韓国中部: 20.44.24.32、20.194.64.33
+- 東日本: 13.78.104.32
+
+この SQL ゲートウェイでは、2021 年 6 月 1 日にお客様のトラフィックの受け入れを開始します。
+
 ## <a name="may-2021"></a>2021 年 5 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
 - 英国南部:  51.140.144.36、51.105.72.32  

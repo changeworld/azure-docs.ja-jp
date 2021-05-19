@@ -6,13 +6,13 @@ ms.author: navits
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/22/2020
-ms.openlocfilehash: d5eb253fb24f463106866f8b0fe17f634e805cbb
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/14/2021
+ms.openlocfilehash: 346824a9a64fa9c6b01ae29c74dca693e31f67ac
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107479"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109635267"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -56,7 +56,7 @@ ms.locfileid: "107107479"
 これには、選択した内容に基づき、このオファーで操作を実行するためのリンクが含まれています。 次に例を示します。
 
 - オファーがドラフトの場合 - ドラフトのオファーを削除する
-- オファーが発行中の場合 - [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがライブである場合 - [オファーを非推奨 (以前は販売中止) にする](update-existing-offer.md#deprecate-an-offer-or-plan)
 - オファーがプレビューの場合 - [公開する](../review-publish-offer.md#previewing-and-approving-your-offer)
 - 公開元のサインアウトを完了していない場合 - [発行をキャンセルする](../review-publish-offer.md#cancel-publishing)
 

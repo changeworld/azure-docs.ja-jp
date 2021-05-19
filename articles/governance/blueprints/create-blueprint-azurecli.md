@@ -3,12 +3,12 @@ title: クイック スタート:Azure CLI を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と Azure CLI を使用して、成果物を作成、定義、デプロイします。
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: df21354f1ce60c23a5a6e232422fc03c105b9715
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 2b5f9fe3ff8d2c43d3e0744e358c52240006e830
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323449"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747685"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>クイック スタート:Azure CLI で Azure Blueprint を定義して割り当てる
 

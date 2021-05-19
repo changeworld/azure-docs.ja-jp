@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 05/06/2021
 ms.author: yushwang
-ms.openlocfilehash: f7b36b65ee14e66de7b35d38d835fb5f2d5dd229
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 4d06393d2974a2100219c539e3d3a3bc477c238e
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205469"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109482473"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。
@@ -54,7 +54,7 @@ ms.locfileid: "108205469"
 
 この構成では、各 Azure ゲートウェイ インスタンスが一意のパブリック IP アドレスを持ち、ローカル ネットワーク ゲートウェイと接続で指定されたオンプレミスの VPN デバイスへの IPsec/IKE S2S VPN トンネルを確立します。 両方の VPN トンネルは実際には同じ接続の一部であることに注意してください。 この構成でも、これら 2 つの Azure VPN Gateway のパブリック IP アドレスへの 2 つの S2S VPN トンネルを受け入れるか確立するようにオンプレミスの VPN デバイスを構成する必要があります。
 
-Azure ゲートウェイ インスタンスがアクティブ/アクティブ構成であるため、オンプレミスの VPN デバイスで一方のトンネルを優先している場合でも、Azure Virtual Network からオンプレミス ネットワークへのトラフィックは同時に両方のトンネルを介してルーティングされます。 いずれかのインスタンスでメンテナンス イベントが発生しない限り、同じ TCP または UDP フローは常に同じトンネルまたはパスを経由することに注意してください。
+Azure ゲートウェイ インスタンスがアクティブ/アクティブ構成であるため、オンプレミスの VPN デバイスで一方のトンネルを優先している場合でも、Azure Virtual Network からオンプレミス ネットワークへのトラフィックは同時に両方のトンネルを介してルーティングされます。 また、同じ TCP または UDP のフローが必ずしも同じトンネルまたはパスを通過する保証はないことにも注意してください。
 
 1 つのゲートウェイ インスタンスに対して計画的なメンテナンスまたは計画外のイベントが発生すると、そのインスタンスからオンプレミスの VPN デバイスへの IPsec トンネルが切断されます。 VPN デバイスの対応するルートは自動的に削除または無効にされ、トラフィックはもう一方のアクティブな IPsec トンネルに切り替えられます。 Azure 側では、影響を受けるインスタンスからアクティブ インスタンスに自動的に切り替わります。
 

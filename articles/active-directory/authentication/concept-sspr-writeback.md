@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b8a84da331568d36b6f6910054fdb2aea76f490
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a5b8f1404e95ed2ccceb8400fdabeff2d60b6706
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530331"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766117"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -149,7 +149,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
 * **サポートされないエンドユーザーの操作**
    * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API を使った、エンド ユーザーによるパスワードのリセット。
 * **サポートされない管理者の操作**
-   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http) がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
+   * PowerShell バージョン 1、またはバージョン 2 から管理者が開始したエンドユーザーのパスワードのリセット。
    * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット。
    * すべての管理者は、パスワード リセット ツールを使用して自身のパスワード ライトバック用パスワードをリセットすることはできません。
 

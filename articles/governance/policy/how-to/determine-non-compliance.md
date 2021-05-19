@@ -3,12 +3,12 @@ title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 66b0c6d7d0575e7361d04d16e6ba6fb06e36801b
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: d36ed90990d2f8ba6677281ed865625da8cd3c17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094117"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752707"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -34,7 +34,7 @@ Azure リソースにポリシー ルールへのコンプライアンス違反�
 
 1. **[概要]** ページまたは **[コンプライアンス]** ページで、 **[コンプライアンスの状態]** が _[非対応]_ になっているポリシーを選択します。
 
-1. **[Policy compliance]** (ポリシー コンプライアンス) ページの **[リソースのコンプライアンス]** タブで、 **[コンプライアンスの状態]** が _[非対応]_ になっているリソースを右クリックするか、リソースの省略記号を選択します。 次に、 **[ポリシー準拠状況の詳細]** を選択します。
+1. **[ポリシーのコンプライアンス]** ページの **[リソースのコンプライアンス]** タブで、 **[コンプライアンスの状態]** が _[非対応]_ になっているリソースを選択したままにする (または右クリックする) か、リソースの省略記号を選択します。 次に、 **[ポリシー準拠状況の詳細]** を選択します。
 
    :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="[リソース コンプライアンス] タブの 'ポリシー準拠状況の詳細' リンクのスクリーンショット。" border="false":::
 

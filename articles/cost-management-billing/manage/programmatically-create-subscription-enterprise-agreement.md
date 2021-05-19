@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 868b0bc3e09768a26b895e35306de574e4bfc444
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 9f07a4f9c42923ac42735155fb0da21dee3a2353
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287592"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632369"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>最新の API を使用してプログラムで Azure Enterprise Agreement サブスクリプションを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "108287592"
 
 * 登録のエンタープライズ管理者は、ユーザーを[アカウント所有者に設定](https://ea.azure.com/helpdocs/addNewAccount)できます (サインインが必要)。これにより、ユーザーは登録アカウントの所有者になります。
 * 登録アカウントの既存の所有者が、[アクセス許可を付与](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)できます。 同様に、サービス プリンシパルを使用して EA サブスクリプションを作成する場合は、[そのサービス プリンシパルにサブスクリプションを作成する権限を付与する](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put)必要があります。  
-    SPN を使用してサブスクリプションを作成している場合は [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。
+    SPN を使用してサブスクリプションを作成している場合は [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true ) または [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true#az_ad_sp_list) を使用して、Azure AD アプリケーション登録の ObjectId をサービス プリンシパルの ObjectId として使用します。 EA ロールの割り当て API 要求の詳細については、「[Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる](assign-roles-azure-service-principals.md)」を参照してください。 このページには、SPN に割り当てることができるロール (およびロール定義 ID) の一覧が含まれています。
   > [!NOTE]
   > 登録アカウントに対する所有者アクセス許可の付与には、必ず正しい API バージョンを使用してください。 この記事およびその中で記載されている API では、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) API を使用します。 より新しい API を使用するために移行する場合は、[2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put) を使用して、所有者のアクセス許可を再度付与する必要があります。 [2015-07-01 バージョン](grant-access-to-create-subscription.md)を使用して行った以前の構成が、より新しい API で使用できるよう自動的に変換されることはありません。
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4bc5732c1b2349f34297ecaacc7eb3176fdba611
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39b21a849f13af39731c31590cf92f8ffc12cd7d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100570482"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783605"
 ---
 # <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
@@ -31,7 +31,7 @@ Azure Sentinel を使用すると、ますます巧妙化する攻撃、増加�
 
 - **クラウドの規模でデータを収集** します。オンプレミスと複数のクラウド内の両方ですべてのユーザー、デバイス、アプリケーション、インフラストラクチャにわたって収集します。 
 
-- **以前に検出されなかった脅威を検出** します。Microsoft の 分析と類を見ない脅威インテリジェンスを使用して、誤判定を最小限に抑えます。 
+- **過去に検出されたことのない脅威を検出** します。Microsoft の分析と類を見ない脅威インテリジェンスを使用して、[誤判定を最小限に抑え](false-positives.md)ます。 
 
 - **人工知能を使用して脅威を調査** します。Microsoft の長年にわたるサイバー セキュリティ業務を活用しながら、大規模に疑わしいアクティビティを捜索します。 
 

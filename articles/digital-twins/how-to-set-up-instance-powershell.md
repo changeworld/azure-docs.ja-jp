@@ -8,12 +8,12 @@ ms.date: 12/16/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 024b238ef9a6330831ae6cf4dcd6bb72d72dcc74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc7d1ca00f77ca5056c1ffd263c7bc810cd564bc
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98044273"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783767"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Azure Digital Twins インスタンスと認証を設定する (PowerShell)
 
@@ -23,11 +23,10 @@ ms.locfileid: "98044273"
 
 この記事のこのバージョンでは、[Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、これらの手順を 1 つずつ手動で実行します。
 
-* Azure portal を使用してこれらの手順を手動で実行するには、この記事のポータル バージョンである [*方法: インスタンスと認証の設定 (ポータル)*](how-to-set-up-instance-portal.md) に関するページを参照してください。
-* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、この記事のスクリプト化バージョンである [*方法: インスタンスと認証の設定 (スクリプト化)*](how-to-set-up-instance-scripted.md) に関するページを参照してください。
+* Azure portal を使用してこれらの手順を手動で実行するには、この記事のポータル バージョンである[方法: インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md)  に関するページを参照してください。
+* デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、この記事のスクリプト化バージョンである[方法: インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md)  に関するページを参照してください。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
@@ -74,7 +73,7 @@ ms.locfileid: "98044273"
   New-AzResourceGroup -Name <name-for-your-resource-group> -Location <region>
   ```
 
-* デプロイのためのリージョン。 Azure Digital Twins がどのリージョンでサポートされているかを確認するには、[*リージョン別の利用可能な Azure 製品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)に関するページを参照してください。
+* デプロイのためのリージョン。 Azure Digital Twins をサポートしているリージョンを確認するには、「[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)」を参照してください。
 * インスタンスの名前。 新しいインスタンスの名前は、サブスクリプションのリージョン内で一意である必要があります。 サブスクリプションのリージョンに、指定した名前がすでに使用されている別の Azure Digital Twins インスタンスがある場合は、別の名前を選択するように求められます。
 
 次のコマンドで実際の値を使用してインスタンスを作成します。
@@ -103,13 +102,20 @@ Get-AzDigitalTwinsInstance -ResourceGroupName <your-resource-group> -ResourceNam
 > [!TIP]
 > このコマンドを使用すると、インスタンスのすべてのプロパティをいつでも確認できます。
 
-Azure Digital Twins インスタンスの **HostName**、**Name**、**ResourceGroup** を確認します。 これらは、認証および関連する Azure リソースを設定するために、Azure Digital Twins インスタンスを引き続き操作する場合に必要になる可能性がある重要な値です。 他のユーザーがそのインスタンスに対してプログラミングする場合は、これらの値を彼らと共有する必要があります。
+Azure Digital Twins インスタンスの **ホスト名**、**名前**、**リソース グループ** を確認します。 これらは、認証および関連する Azure リソースを設定するために、Azure Digital Twins インスタンスを引き続き操作する場合に必要になる可能性がある重要な値です。 他のユーザーがそのインスタンスに対してプログラミングする場合は、これらの値を彼らと共有する必要があります。
 
 これで、Azure Digital Twins インスタンスの準備が完了しました。 次に、適切な Azure ユーザーにそれを管理するためのアクセス許可を付与します。
 
 ## <a name="set-up-user-access-permissions"></a>ユーザーのアクセス許可を設定する
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
+
+### <a name="prerequisites-permission-requirements"></a>前提条件:権限の要件
+[!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
+
+### <a name="assign-the-role"></a>ロールを割り当てる
+
+ユーザーに Azure Digital Twins インスタンスを管理するためのアクセス許可を付与するには、そのインスタンス内の _**"Azure Digital Twins Data Owner" (Azure Digital Twins データ所有者)**_ ロールをそのユーザーに割り当てる必要があります。
 
 まず、ロールを割り当てる必要があるユーザーの Azure AD アカウントの **ObjectId** を特定します。 この値は、[Get-AzAdUser](/powershell/module/az.resources/get-azaduser) コマンドレットを使用して見つけることができます。そのためには、Azure AD アカウントのユーザー プリンシパル名を渡して、その ObjectId (およびその他のユーザー情報) を取得します。 ほとんどの場合、ユーザー プリンシパル名は、Azure AD アカウントのユーザーの電子メールと一致します。
 
@@ -139,4 +145,4 @@ New-AzRoleAssignment @Params
 ## <a name="next-steps"></a>次のステップ
 
 認証コードを使ってクライアント アプリケーションをインスタンスに接続する方法を確認します。
-* [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)
+* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)

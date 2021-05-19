@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d64fd91d3f033c0a04c4936f11d096aa640942a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644067"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743887"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory の外部 ID とは
 
@@ -39,7 +39,7 @@ Azure AD External Identities は、ユーザーと組織の関係はあまり重
 | ---- | --- | --- |
 | **主要なシナリオ** | Microsoft アプリケーション (Microsoft 365、Teams など) または独自のアプリケーション (SaaS アプリ、独自に開発したアプリなど) を使用したコラボレーション。  | 最新の SaaS または独自に開発したアプリケーション (ファーストパーティの Microsoft アプリ以外) の ID とアクセスの管理。   |
 | **対象者**    | サプライヤー、パートナー、ベンダーなどの外部組織のビジネス パートナーとの共同作業。 ユーザーはディレクトリ内でゲスト ユーザーとして表示されます。 これらのユーザーは、IT を管理している場合もあれば、管理していない場合もあります。  | 製品の顧客。 これらのユーザーは、別の Azure AD ディレクトリで管理されています。  |
-| **サポートされる ID プロバイダー** | 外部ユーザーは、職場アカウント、学校アカウント、任意のメール アドレス、SAML および WS-Fed ベースの ID プロバイダー、Gmail、Facebook を使用して共同作業を行うことができます。  | ローカル アプリケーションのアカウント (任意のメール アドレスまたはユーザー名) を持つコンシューマー ユーザー、サポートされているさまざまなソーシャル ID、直接フェデレーションを介して企業や政府が発行した ID を所有するユーザー。       |
+| **サポートされる ID プロバイダー** | 外部ユーザーは、職場アカウント、学校アカウント、任意のメール アドレス、SAML および WS-Fed ベースの ID プロバイダー、Gmail、Facebook を使用して共同作業を行うことができます。  | ローカル アプリケーションのアカウント (任意のメール アドレスまたはユーザー名) を持つコンシューマー ユーザー、サポートされているさまざまなソーシャル ID、SAML または WS-Fed ベースの ID プロバイダーのフェデレーションを介して企業や政府が発行した ID を所有するユーザー。       |
 | **外部ユーザーの管理**   | 外部ユーザーは、従業員と同じディレクトリで管理されますが、通常はゲスト ユーザーとして注釈が付けられます。 ゲスト ユーザーは、従業員と同じように管理したり、同じグループに追加したりできます。    | 外部ユーザーは Azure AD B2C ディレクトリで管理されます。 組織の従業員やパートナーのディレクトリ (存在する場合) とは別に管理されます。  |
 | **シングル サインオン (SSO)**      | あらゆる Azure AD 接続アプリへの SSO がサポートされています。 たとえば、Microsoft 365 またはオンプレミスのアプリケーションや、Salesforce、Workday などの SaaS アプリへのアクセスを提供できます。    | Azure AD B2C テナント内のお客様所有のアプリへの SSO をサポートします。 Microsoft 365 やその他の Microsoft SaaS アプリへの SSO はサポートされていません。    |
 | **セキュリティ ポリシーとコンプライアンス**        | ホストまたは招待元の組織によって管理されます ([条件付きアクセス ポリシー](conditional-access.md)を使用するなど)。 | 条件付きアクセスと ID 保護を使用して組織によって管理されます。        |

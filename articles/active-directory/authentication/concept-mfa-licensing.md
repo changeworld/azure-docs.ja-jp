@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7dcd66a9c73eeda176f5318954e77673279896a
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743957"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802218"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の機能とライセンス
 
@@ -35,13 +35,13 @@ Azure AD Multi-Factor Authentication は、組織のニーズに応じて、い�
 | Azure AD Premium P1 | [Azure AD 条件付きアクセス](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)を使用して、ビジネス要件に合わせて特定のシナリオやイベントの際に多要素認証をユーザーに求めることができます。 |
 | Azure AD Premium P2 | 最も強力なセキュリティのポジションと、向上したユーザー エクスペリエンスを提供します。 [リスク ベースの条件付きアクセス](../conditional-access/howto-conditional-access-policy-risk.md)を Azure AD Premium P1 の機能に追加することで、ユーザーのパターンに適応し、多要素認証の回数を最小限に抑えます。 |
 | すべての Microsoft 365 プラン | Azure AD Multi-Factor Authentication は、[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、[ユーザーごとに有効にする](howto-mfa-userstates.md)か、すべてのユーザーに対して有効または無効にすることができます。 Azure AD Multi-Factor Authentication の管理は、Microsoft 365 ポータルを通じて行います。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Microsoft 365 リソースのセキュリティ保護](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication)に関するページを参照してください。 |
-| Azure AD Free | [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、すべてのユーザーに対して多要素認証を有効にすることができます。 有効となるユーザーまたはシナリオをきめ細かく制御することはできませんが、追加のセキュリティ措置を提供することはできます。<br /> すべてのユーザーの多要素認証を有効にするセキュリティの既定値群が使用されていない場合でも、*Azure AD 全体管理者* ロールに割り当てられたユーザーは、多要素認証を使用するように構成できます。 Free レベルのこの機能により、重要な管理者アカウントが多要素認証によって保護されます。 |
+| Azure AD Free | [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用すると、すべてのユーザーに対して多要素認証を有効にすることができますが、ユーザーごとに多要素認証を有効にすることはできません。 有効となるユーザーまたはシナリオをきめ細かく制御することはできませんが、追加のセキュリティ措置を提供することはできます。<br /> すべてのユーザーの多要素認証を有効にするセキュリティの既定値群が使用されていない場合でも、*Azure AD 全体管理者* ロールに割り当てられたユーザーは、多要素認証を使用するように構成できます。 Free レベルのこの機能により、重要な管理者アカウントが多要素認証によって保護されます。 |
 
 ## <a name="feature-comparison-of-versions"></a>バージョンごとの機能の比較
 
 次の表に、さまざまなバージョンの Azure AD Multi-Factor Authentication で使用できる機能の一覧を示します。 ユーザー認証のセキュリティ保護に必要なものを詳しく検討し、その要件を満たす方法を決定します。 たとえば、Azure AD Free は Azure AD Multi-Factor Authentication を提供するセキュリティの既定値群を提供しますが、認証プロンプトに使用できるのはモバイル認証アプリだけであり、電話や SMS は使用できません。 モバイル認証アプリがユーザーの個人のデバイスにインストールされていることを保証できない場合、この方法は制約を受けるかもしれません。
 
-| 特徴量 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Microsoft 365 アプリ | Azure AD Premium P1 または P2 |
+| 機能 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Microsoft 365 アプリ | Azure AD Premium P1 または P2 |
 | --- |:---:|:---:|:---:|:---:|
 | MFA で Azure AD テナント管理者アカウントを保護する | ● | ● (*Azure AD 全体管理者* アカウントの場合のみ) | ● | ● |
 | モバイル アプリを 2 番目の要素にする | ● | ● | ● | ● |

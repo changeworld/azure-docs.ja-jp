@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99dcb0d7edaf79356f54c930e24e35153c26c3f
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96763428"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109719116"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>Azure Media Services をデプロイして構成する
 
@@ -78,7 +78,7 @@ az resource list --resource-group lva-rg --resource-type microsoft.media/mediase
 
 1. Azure サブスクリプションをお持ちの場合は、 **[ディレクトリ]** と **[Azure サブスクリプション]** を選択し、 **[場所]** として **[米国]** を選択します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版** を有効にし、必須の連絡先情報を入力できます。 このチュートリアルでは、カメラ 2 台と IoT Edge デバイス 1 台の計 3 台のデバイスを使用します。そのため、無料試用版を使用していない場合、使用量に応じて課金されます。
 
-    ディレクトリ、サブスクリプション、場所の詳細については、[アプリケーションの作成のクイックスタート](../articles/iot-central/core/quick-deploy-iot-central.md)に関するページを参照してください。
+    ディレクトリ、サブスクリプション、場所の詳細については、「[IoT Central アプリケーションを作成する](../articles/iot-central/core/howto-create-iot-central-application.md)」を参照してください。
 
 1. **［作成］** を選択します
 

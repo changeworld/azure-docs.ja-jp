@@ -1,6 +1,6 @@
 ---
-title: Azure AD プロビジョニングのしくみについて | Microsoft Docs
-description: Azure AD プロビジョニングのしくみについて
+title: Azure Active Directory でのアプリケーションのプロビジョニングのしくみについて理解する
+description: Azure Active Directory でのアプリケーションのプロビジョニングのしくみについて理解します。
 services: active-directory
 author: kenwith
 manager: daveba
@@ -8,18 +8,17 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2f2f121ba6dde7bc516f40d5e50d53acb80b18a
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579452"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782867"
 ---
-# <a name="how-provisioning-works"></a>プロビジョニングのしくみ
+# <a name="how-application-provisioning-works-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのプロビジョニングのしくみ
 
 自動プロビジョニングとは、ユーザーがアクセスする必要のあるクラウド アプリケーションのユーザー ID とロールを作成することです。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 デプロイを開始する前に、この記事を参照して Azure AD プロビジョニングのしくみを学習し、構成に関する推奨事項を確認することができます。 
 

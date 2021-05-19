@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: shants
-ms.openlocfilehash: 51df72e31acaadc83f4c094b99fa938377e5f023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b332b1871c92d36821e8f797ceac5b6697e5dc1
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500004"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632189"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -48,6 +48,9 @@ VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Sc
 
 ライブ マイグレーションは、再起動を必要とせず、VM のメモリを保持する操作です。 これにより一時停止または凍結が発生しますが、その継続時間は通常は 5 秒未満です。 G、M、N、H シリーズを除く、サービスとしてのインフラストラクチャ (IaaS) VM はすべて、ライブ マイグレーションに対応しています。 対象となる VM は、Azure フリートにデプロイされている IaaS VM の 90% 以上に相当します。 
 
+> [!NOTE]
+> 再起動を必要としないライブ マイグレーション操作については、Azure portal で通知を受信しません。 再起動を必要としないライブ マイグレーションの一覧を表示するには、[スケジュール化されたイベントのクエリ](./windows/scheduled-events.md#query-for-events)を実行してください。
+
 Azure プラットフォームでは、次のシナリオでライブ マイグレーションを開始します。
 - Azure の計画メンテナンス
 - ハードウェア障害
@@ -56,6 +59,8 @@ Azure プラットフォームでは、次のシナリオでライブ マイグ�
 計画メンテナンスの一部のシナリオでライブ マイグレーションが使用されており、Scheduled Events を使用して、ライブ マイグレーションの操作がいつ開始するか事前に把握できます。
 
 Azure Machine Learning アルゴリズムでハードウェア障害の発生が予測されている場合や、お客様が VM の割り当てを最適化したい場合に、ライブ マイグレーションを使用して VM を移動することもできます。 機能低下しているハードウェアのインスタンスを検出する予測モデリングの詳細については、[予測機械学習とライブ マイグレーションによる Azure VM の回復性の向上](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure)に関する記事をご覧ください。 ライブ マイグレーションの通知は、Azure portal の Monitor および Service Health のログ、およびScheduled Events に表示されます (これらのサービスを使用している場合)。
+
+
 
 ## <a name="maintenance-that-requires-a-reboot"></a>再起動を必要とするメンテナンス
 
@@ -99,4 +104,4 @@ Azure VM にワークロードをデプロイするとき、*可用性セット*
 
 ## <a name="next-steps"></a>次のステップ 
 
-計画メンテナンスを管理するために、[Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用できます。
+[Azure CLI](maintenance-notifications-cli.md)、[Azure PowerShell](maintenance-notifications-powershell.md)、または[ポータル](maintenance-notifications-portal.md)を使用して計画メンテナンスを管理できます。

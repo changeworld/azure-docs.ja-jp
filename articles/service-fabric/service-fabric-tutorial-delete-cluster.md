@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure でホストされてい�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 083c6047a8b5279b9f03db5ba5196c9a109f2d25
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: c6187d2bd5b8f2101c21b3eb35362e443854e8a4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075953"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734765"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>チュートリアル: Azure で実行されている Service Fabric クラスターを削除する
 
@@ -37,7 +37,7 @@ ms.locfileid: "108075953"
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
-* [Azure Powershell](/powershell/azure//install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールする。
+* [Azure PowerShell](/powershell/azure//install-az-ps) または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Service Fabric クラスターを含むリソース グループを削除する
@@ -108,5 +108,5 @@ az resource delete --name "<name of the Resource>" --resource-type "Microsoft.Se
 
 このチュートリアルはこれで完了です。次は以下の説明をお読みください。
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用して Service Fabric クラスターを検査し、管理する方法。
-* クラスター ノードの [Windows オペレーティング システムにパッチを適用す](service-fabric-patch-orchestration-application.md)る方法。
+* [Windows で実行されているクラスター ノードに修正プログラムを適用](how-to-patch-cluster-nodes-windows.md)する方法。
 * [Windows クラスター](service-fabric-diagnostics-event-aggregation-wad.md)のイベントを集計および収集する方法と、クラスター イベントを監視するために [Log Analytics を設定](service-fabric-diagnostics-oms-setup.md)する方法。

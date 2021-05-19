@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e436427a790a3c4ebdbbedb4570c399966ab8c95
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d5273d2aedd1382146b83197afb48c5120dcbb11
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317867"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767745"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -69,7 +69,7 @@ ms.locfileid: "108317867"
 
 1. Azure AD ではユーザー基準の検出が実行され、[既存の Azure AD テナント](./what-is-b2b.md#easily-invite-guest-users-from-the-azure-ad-portal)にユーザーが存在するかどうかが判断されます。
 
-2. 管理者が[直接フェデレーション](./direct-federation.md)を有効にしている場合、Azure AD では、構成されている SAML/WS-Fed ID プロバイダーのドメインにユーザーのドメイン サフィックスが一致するかどうかが確認され、事前に構成されている ID プロバイダーにユーザーがリダイレクトされます。
+2. 管理者が [SAML/WS-Fed IdP フェデレーション](./direct-federation.md)を有効にしている場合、Azure AD では、ユーザーのドメインのサフィックスと構成されている SAML/WS-Fed ID プロバイダーのドメインが一致するかどうかを確認し、あらかじめ構成されている ID プロバイダーにユーザーをリダイレクトします。
 
 3. 管理者が [Google フェデレーション](./google-federation.md)を有効にしている場合、Azure AD では、ユーザーのドメイン サフィックスが gmail.com か googlemail.com であるかどうかが確認され、ユーザーが Google にリダイレクトされます。
 

@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 02/08/2021
+ms.date: 05/04/2021
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 3ee44509997a16fc7f06fd5a24e473d7011bde40
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1949fe7e795d7f671462f8c2a78204690dfa0595
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99974640"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108807491"
 ---
 #### <a name="process-automation"></a>プロセスの自動化
 
@@ -49,6 +49,7 @@ ms.locfileid: "99974640"
 | **リソース** | **制限**| **メモ** |
 |---|---|---|
 |ファイル|500||
+|ファイル サイズ|5 MB||
 |レジストリ|250||
 |Windows ソフトウェア|250|ソフトウェア更新プログラムは含まれません。|
 |Linux パッケージ|1,250||
@@ -62,3 +63,4 @@ ms.locfileid: "99974640"
 | **リソース** | **制限**| **メモ** |
 |---|---|---|
 |更新プログラムの展開ごとのマシンの数|1000||
+|更新プログラムのデプロイごとの動的グループの数 |500 ||

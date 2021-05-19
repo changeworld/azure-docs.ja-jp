@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 05/04/2021
 ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34342111aa0067b4f275820ac0111692c4a590f6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594599"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762571"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 
@@ -28,9 +28,12 @@ Azure Active Directory (Azure AD) 組織に対して、新しいユーザーの�
 
 Azure Active Directory ポータルを使用して、新しいユーザーを作成できます。
 
+>[!Note]
+>ユーザー名とメール アドレスのプロパティにアクセント文字を含めることはできません。
+
 新しいユーザーを追加するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) に組織のユーザー管理者としてサインインします。
+1. 組織のユーザー管理者ロールで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. 任意のページから *Azure Active Directory* を検索して選択します。
 

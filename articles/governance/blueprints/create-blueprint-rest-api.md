@@ -3,12 +3,12 @@ title: クイック スタート:REST API を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
 ms.date: 05/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 37f67e6db753969344b8c442de78b867dd41ecd6
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5b65350f47e470fc9f4797d768a32acded241266
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323827"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761509"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
@@ -435,4 +435,4 @@ REST API を使用してブループリントを発行した後は、それを�
 このクイックスタートでは、REST API を使用して、ブループリントを作成、割り当て、削除しました。 Azure Blueprints の詳細については、ブループリントのライフサイクルに関する記事に進んでください。
 
 > [!div class="nextstepaction"]
-> [ブループリントのライフサイクルについて学習する](./concepts/lifecycle.md)
+> [ブループリントのライフサイクルについて学習する](./concepts/lifecycle.md) 

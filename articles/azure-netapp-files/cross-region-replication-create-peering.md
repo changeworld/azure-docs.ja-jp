@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84b10fefbfae4ca42fa96cc96f357dbfe0d25800
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591012"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794774"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files のボリューム レプリケーションを作成する
 
 > [!IMPORTANT]
-> リージョン間レプリケーションの機能は、現在パブリック プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
+> リージョン間レプリケーションの機能は、現在プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
 
 この記事では、レプリケーション ピアリングを作成してリージョン間レプリケーションを設定する方法について説明します。 
 

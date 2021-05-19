@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: contperf-fy21q4
 ms.date: 04/28/2021
-ms.openlocfilehash: ea115d42f84562e67adb7e6f45ce8d35be21d6b0
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1ff7ba5e3835fccb2f67fa56cf3737adb9d36b45
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292596"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738898"
 ---
 # <a name="quickstart-create-an-integration-workflow-using-azure-logic-apps-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Logic Apps を使用して統合ワークフローを作成する
 
@@ -51,7 +51,7 @@ ms.locfileid: "108292596"
 
 * 特定の IP アドレスへのトラフィックを制限するファイアウォールがある場合は、ロジック アプリが存在する Azure リージョンの Logic Apps サービスで使用される [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" へのアクセスを許可するようにファイアウォールを設定します。
 
-  この例では、[Microsoft が管理する](/connectors/managed.md) RSS および Office 365 Outlook コネクタも使用します。 これらのコネクタでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可するようにファイアウォールを設定する必要があります。
+  この例では、[Microsoft が管理する](../connectors/managed.md) RSS および Office 365 Outlook コネクタも使用します。 これらのコネクタでは、ロジック アプリの Azure リージョン内の "*すべて*" の [マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可するようにファイアウォールを設定する必要があります。
 
 <a name="create-logic-app-resource"></a>
 

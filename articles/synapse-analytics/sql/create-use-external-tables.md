@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea98666b38628dcf0284b4fabbf7aa239bf270df
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462302"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751835"
 ---
 # <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールを使用して外部テーブルを作成および使用する
 
@@ -108,6 +108,10 @@ CREATE EXTERNAL TABLE Taxi (
          FILE_FORMAT = ParquetFormat
 );
 ```
+
+> [!NOTE]
+> テーブルはパーティション分割されたフォルダー構造で作成されますが、一部のパーティションの削除を利用することはできません。 なんらかの条件 (この場合は特定の年や月など) を満たしていないファイルをスキップしてパフォーマンスを向上させる場合は、[外部データに関するビュー](create-use-views.md)を使用します。
+
 ## <a name="use-an-external-table"></a>外部テーブルを使用する
 
 [外部テーブル](develop-tables-external-tables.md)は、SQL Server クエリ内で外部テーブルを使用するのと同じ方法で、クエリ内で使用できます。

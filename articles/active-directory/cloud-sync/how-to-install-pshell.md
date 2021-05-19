@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用した Azure AD Connect クラウド プロビジョニング エージェントのインストール
+title: コマンド ライン インターフェイス (CLI) と PowerShell を使用して Azure AD Connect クラウド プロビジョニング エージェントをインストールする
 description: PowerShell コマンドレットを使用して Azure AD Connect クラウド プロビジョニング エージェントをインストールする方法について説明します。
 services: active-directory
 author: billmath
@@ -11,16 +11,18 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20cfb96b5cd6e1d05e332fa7157fe6e0cde8656
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d5f560321b13e4c7a47aed262a1d312093e9be56
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612770"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758827"
 ---
-# <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>PowerShell コマンドレットを使用した Azure AD Connect プロビジョニング エージェントのインストール 
+# <a name="install-the-azure-ad-connect-provisioning-agent-using-a-command-line-interface-cli-and-powershell"></a>コマンド ライン インターフェイス (CLI) と PowerShell を使用して Azure AD Connect プロビジョニング エージェントをインストールする
 次のドキュメントでは、PowerShell コマンドレットを使用して Azure AD Connect プロビジョニング エージェントをインストールする方法について説明します。
  
+>[!NOTE]
+>このドキュメントでは、コマンド ライン インターフェイスを使用したプロビジョニング エージェントのインストールについて説明します。  ウィザードを使用して Azure AD Connect プロビジョニング エージェントをインストールする方法の詳細については、「[Azure AD Connect プロビジョニング エージェントをインストールする](how-to-install.md)」を参照してください。
 
 ## <a name="prerequisite"></a>前提条件: 
 
@@ -28,7 +30,7 @@ ms.locfileid: "98612770"
 >[!IMPORTANT]
 >次のインストール手順は、[前提条件](how-to-prerequisites.md)がすべて満たされていることを前提としています。
 >
-> Powershell コマンドレットを使用して Azure AD Connect プロビジョニング エージェントをインストールするには、Windows Server で TLS 1.2 を有効にする必要があります。 TLS 1.2 を有効にするには、[こちら](how-to-prerequisites.md#tls-requirements)の手順を使用します。
+> PowerShell コマンドレットを使用して Azure AD Connect プロビジョニング エージェントをインストールするには、Windows Server で TLS 1.2 を有効にする必要があります。 TLS 1.2 を有効にするには、[こちら](how-to-prerequisites.md#tls-requirements)の手順を使用します。
 
  
 
@@ -51,7 +53,7 @@ ms.locfileid: "98612770"
  7. プロビジョニング エージェント PS モジュールをインポートします 
 
    ```
-   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll" 
+   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.PowerShell.dll" 
    ```
  8. グローバル管理者の資格情報を使用して AzureAD に接続します。このセクションをカスタマイズして、セキュリティで保護されたストアからパスワードを取得することができます。 
 

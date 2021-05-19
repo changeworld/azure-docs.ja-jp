@@ -3,17 +3,17 @@ title: DoD 影響レベル 5 ブループリント サンプルのコントロ�
 description: DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
 ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: af68ee959c50102b8344f91f8c3aa2fe11a0e2c2
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: fdfa0cb3824234b68710600bd70ebf074cf3d157
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106386694"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108757513"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>DoD 影響レベル 5 ブループリント サンプルのコントロール マッピング
 
 次の記事では、Azure Blueprints 国防総省影響レベル 5 (DoD IL5) のブループリント サンプルが、DoD 影響レベル 5 のコントロールにどのようにマップされるかについて詳しく説明します。 コントロールの詳細については、「[DoD クラウド コンピューティング セキュリティ要件ガイド (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf)」を参照してください。
-国防情報システム局 (DISA) は、DoD クラウド コンピューティング セキュリティ要件ガイド (SRG) の開発と保守を担当する米国国防総省 (DoD) の機関です。 SRG は、DoD 情報、システム、およびアプリケーションをホストするクラウド サービス プロバイダー (CSP) と、DoD によるクラウド サービスの使用に関する基本的なセキュリティ要件を定義します。  
+国防情報システム局 (DISA) は、DoD クラウド コンピューティング セキュリティ要件ガイド (SRG) の開発と保守を担当する米国国防総省 (DoD) の機関です。 SRG は、DoD 情報、システム、およびアプリケーションをホストするクラウド サービス プロバイダー (CSP) と、DoD によるクラウド サービスの使用に関する基本的なセキュリティ要件を定義します。
 
 以下のマッピングは、**DoD 影響レベル 5** のコントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 続いて、次を探して選択します: **[\[Preview\]:DoD Impact Level 5]** 組み込みのポリシー イニシアチブ。
 
@@ -120,7 +120,7 @@ Azure Monitor で収集されたログ データは、Log Analytics ワークス
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) 監査の確認、分析、および報告 | 統合/スキャンおよび監視機能
 
-このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も活用することをお勧めします。
+このブループリントは、仮想マシン、仮想マシン スケール セット、SQL Database サーバー、SQL Managed Instance サーバーの脆弱性評価分析を含んだ記録を監査するポリシー定義を提供します。 また、これらのポリシー定義では、診断ログの構成も監査され、Azure リソース内で実行された処理に関する分析情報が提供されます。 これらの分析情報には、デプロイされたリソースのセキュリティ状態に関するリアルタイムな情報が含まれます。これらの情報は、修復アクションの優先度を決定するのに役立ちます。 詳細な脆弱性スキャンと監視については、Azure Sentinel および Azure Security Center も使用することをお勧めします。
 
 - 診断設定の監査
 - SQL Managed Instance で脆弱性評価を有効にする必要がある
@@ -176,7 +176,7 @@ Azure Site Recovery では、仮想マシンで実行中のワークロードが
 
 - ディザスター リカバリーが構成されていない仮想マシンの監査
 
-## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 情報システムのバックアップ | 代替ストレージ サイトへの転送
+## <a name="cp-9-05-information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) 情報システムのバックアップ | 代替ストレージ サイトへの転送
 
 このブループリントは、代替ストレージ サイトに対する組織のシステム バックアップ情報を電子的に監査する Azure Policy 定義を割り当てます。 ストレージ メタデータの物理的な移送については、Azure Data Box の使用を検討してください。
 
@@ -309,15 +309,15 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 
 このブループリントでは、最新バージョンの HTTP、Java、PHP、Python、および TLS がアプリに使用されていることの確認に役立つポリシー定義を割り当てます。 また、このブループリントは、Kubernetes サービスが脆弱性のないバージョンにアップグレードされることを保証するポリシー定義も割り当てます。
 
-- API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- API アプリの実行に使用される "HTTP のバージョン" が最新であることを確認する
 - 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
 - Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
-- API アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- API アプリの一部として使用される "Java のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
-- API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- API アプリの一部として使用される "PHP のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
-- API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- API アプリの一部として使用される "Python のバージョン" が最新であることを確認する
 - 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する
 - API アプリでは最新の TLS バージョンを使用する必要がある
@@ -360,7 +360,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - 自分のサブスクリプションに対し、セキュリティ連絡先の電話番号を指定する必要がある
 
 > [!NOTE]
-> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
+> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 

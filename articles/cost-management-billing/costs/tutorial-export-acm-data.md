@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2021
+ms.date: 05/06/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 100f4252768f6a141253d4df03a73da9f4f6b4bc
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 9f9afe0b7c27fb2199f9bdcd1fa5edbe4da01602
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290213"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517642"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -262,6 +262,8 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 Microsoft 顧客契約または Microsoft Partner Agreement を結んでいる場合は、エクスポートを使用して、ファイルを複数の小さなファイル パーティションに分割し、データ インジェストに役立てることができます。 最初にエクスポートを構成するときに、 **[File Partitioning]\(ファイルのパーティション分割\)** 設定を **[オン]** に設定します。 既定では、この設定は **[オフ]** です。
 
 :::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="[File Partitioning]\(ファイルのパーティション分割\) オプションを示すスクリーンショット。" lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
+
+Microsoft 顧客契約または Microsoft Partner Agreement がない場合、 **[File Partitioning]\(ファイルのパーティション分割\)** オプションは表示されません。
 
 #### <a name="update-existing-exports-to-use-file-partitioning"></a>ファイルのパーティション分割を使用するよう既存のエクスポートを更新する
 

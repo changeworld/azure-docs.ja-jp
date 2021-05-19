@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 05/03/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: da93da4c08a23e158d5a22c4552d5e5754ceb01a
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: b2ab740134ab41a76bd0170eabfda2167efb678c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988048"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740287"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -42,6 +42,7 @@ Windows Virtual Desktop エージェントは、少なくとも 1 か月に 1 �
 
 Windows Virtual Desktop エージェントの変更内容は、次のとおりです。
 
+- バージョン 1.0.2944.1400 (本番環境) およびバージョン 1.0.2990.800 (すべての検証ホスト プール): この更新プログラムは 2021 年 4 月 27 日にリリースされました。
 - バージョン 1.0.2990.800: この更新プログラムは 2021 年 4 月 13 日にリリースされ、次の変更が加えられました。
     - エージェントのエラー メッセージが更新されました。
     - Windows 7 VM に Windows 7 以外のエージェントをインストールできないようにする例外が追加されました。
@@ -59,6 +60,45 @@ Windows Virtual Desktop エージェントの変更内容は、次のとおり�
 ## <a name="fslogix-updates"></a>FSLogix の更新
 
 FSLogix に対して行われた最新の更新については、 [FSLogix の最新情報](/fslogix/whats-new)に関するページを参照してください。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+4 月の新機能は次のとおりです。
+
+### <a name="use-the-start-vm-on-connect-feature-preview-in-the-azure-portal"></a>Azure portal での Start VM on Connect 機能 (プレビュー) の使用
+
+Start VM on Connect (プレビュー) を Azure portal で構成できるようになりました。 この更新プログラムを使用すると、ユーザーは、その VM に Android クライアントや macOS クライアントからアクセスすることができます。 詳細については、「[Start VM on Connect](start-virtual-machine-connect.md#use-the-azure-portal)」を参照してください。
+
+### <a name="required-url-check-tool"></a>必要な URL チェック ツール 
+
+Windows Virtual Desktop エージェント バージョン 1.0.2944.400 には、URL を検証して、仮想マシンがその機能に必要な URL にアクセスできるかどうかを表示するツールが同梱されています。 必要な URL にアクセスできる場合、必要に応じてブロックを解除できるよう、それらの URL が一覧表示されます。 詳細については、[安全な URL の一覧](safe-url-list.md#required-url-check-tool)に関するページを参照してください。
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Windows Virtual Desktop に関する Azure portal UI の更新
+
+Windows Virtual Desktop に関する Azure portal UI の最新の更新プログラムには、次の変更が加えられています。
+
+- ドレイン モードが有効な状態でセッション ホストを取得するときのエラー発生の原因となる問題を修正しました。
+- Portal SDK をバージョン 7.161.0 にアップグレードしました。
+- [ユーザーセッション] タブに、リソース ID が見つからないというエラーメッセージが表示される原因となっていた問題を修正しました。
+- Azure portal に、セッション ホストの詳細なサブステータス メッセージが表示されるようになりました。
+
+### <a name="april-2021-updates-for-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop 上の Teams に対する 2021 年 4 月の更新
+
+ここでは、Teams on Windows Virtual Desktop の新機能について説明します。
+
+- Windows 10 ベースのクライアントの発信ビデオ ストリームのビデオ処理にハードウェア アクセラレータを追加しました。
+- 正面カメラと背面カメラの両方または外付けカメラを使用して会議に参加する場合、既定では正面カメラが選択されます。
+- x86 ベースのマシンで Teams がクラッシュする問題を解決しました。
+- 画面の共有中に筋が発生する問題を解決しました。
+- 会議の出席者が着信ビデオを見たり画面を共有したりするのを妨げていた問題を解決しました。
+
+### <a name="msix-app-attach-is-now-generally-available"></a>MSIX アプリのアタッチの一般提供開始
+
+Windows Virtual Desktop の MSIX アプリ アタッチがパブリック プレビューを経て全ユーザーへの提供が開始されました。 MSIX アプリ アタッチについては、[Microsoft の技術者コミュニティの発表](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-is-now-generally-available/m-p/2270468)で詳しくご覧いただけます。
+
+### <a name="the-macos-client-now-supports-apple-silicon-and-big-sur"></a>macOS クライアントが Apple Silicon と Big Sur に対応
+
+macOS Windows Virtual Desktop クライアントが新たに Apple Silicon と Big Sur に対応しました。 更新プログラムの全一覧については、「[macOS クライアントの新機能](/windows-server/remote/remote-desktop-services/clients/mac-whatsnew)」を参照してください。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5aa74920919e7af98368d08bfea892494273f946
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 18089da198d842f19eb6c42e82188dc615888993
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208637"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789932"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -24,13 +24,11 @@ ms.locfileid: "108208637"
 
 Time Series Insights との関係を設定する前に、次のリソースを設定する必要があります。
 * **IoT ハブ**。 手順については、"IoT Hub のテレメトリの送信" に関するクイックスタートの「*[IoT Hub の作成](../iot-hub/quickstart-send-telemetry-cli.md#create-an-iot-hub)*」セクションを参照してください。
-* **Azure Digital Twins インスタンス**。
-手順については、[方法: Azure Digital Twins インスタンスと認証の設定](./how-to-set-up-instance-portal.md)に関するページを参照してください。
-* **Azure Digital Twins インスタンス内のモデルとツイン**。
-Time Series Insights で追跡されているデータを表示するには、ツインの情報を数回更新する必要があります。 手順については、"IoT ハブの取り込み方法" に関する記事の「*[モデルとツインの追加](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)*」セクションを参照してください。
+* **Azure Digital Twins インスタンス**。 手順については、[方法: Azure Digital Twins インスタンスと認証の設定](./how-to-set-up-instance-portal.md)に関するページを参照してください。
+* **Azure Digital Twins インスタンス内のモデルとツイン**。 Time Series Insights で追跡されているデータを表示するには、ツインの情報を数回更新する必要があります。 手順については、"IoT ハブの取り込み方法" に関する記事の「*[モデルとツインの追加](how-to-ingest-iot-hub-data.md#add-a-model-and-twin)*」セクションを参照してください。
 
 > [!TIP]
-> この記事では、簡略化のため、Time Series Insights に表示されるデジタル ツインの変化する値を手動で更新しています。 ただし、シミュレートされたライブ データを使ってこの記事を完了したい場合は、シミュレートされたデバイスからの IoT テレメトリ イベントに基づいてデジタル ツインを更新する Azure 関数を設定できます。 手順については、デバイス シミュレーターを実行し、データ フローが動作することを確認する最終手順を含め、"[IoT Hub データの取り込み方法](how-to-ingest-iot-hub-data.md)" に関する記事に従ってください。
+> この記事では、簡略化のため、Time Series Insights に表示されるデジタル ツインの変化する値を手動で更新しています。 ただし、シミュレートされたライブ データを使用してこの記事を完了する必要がある場合は、シミュレートされたデバイスからの IoT テレメトリ イベントに基づいてデジタル ツインを更新する Azure 関数を設定できます。 手順については、デバイス シミュレーターを実行し、データ フローが動作することを確認する最終手順を含め、"[IoT Hub データの取り込み方法](how-to-ingest-iot-hub-data.md)" に関する記事に従ってください。
 >
 > 後で、デバイス シミュレーターの実行を開始する場所を示す別のヒントを探して、手動のデジタル ツイン更新コマンドを送信する代わりに、Azure 関数によって自動的にツインが更新されるようにします。
 
@@ -52,7 +50,7 @@ Time Series Insights で追跡されているデータを表示するには、�
 イベント ハブを作成する前に、まず、Azure Digital Twins インスタンスからイベントを受信するイベント ハブ名前空間を作成します。 以下の Azure CLI の手順を使用するか、Azure portal を使用することができます: 「[クイック スタート:Azure portal を使用したイベント ハブの作成](../event-hubs/event-hubs-create.md)」。 イベント ハブがサポートされているリージョンを確認するには、"[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=event-hubs)" に関するページを参照してください。
 
 ```azurecli-interactive
-az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> -l <region>
+az eventhubs namespace create --name <name-for-your-event-hubs-namespace> --resource-group <your-resource-group> --location <region>
 ```
 
 > [!TIP]
@@ -95,7 +93,7 @@ az eventhubs eventhub authorization-rule create --rights Listen Send --name <nam
 イベント ハブを Azure Digital Twins インスタンスにリンクする Azure Digital Twins [エンドポイント](concepts-route-events.md#create-an-endpoint)を作成します。 Twins ハブのエンドポイントの名前を指定します。
 
 ```azurecli-interactive
-az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
+az dt endpoint create eventhub --dt-name <your-Azure-Digital-Twins-instance-name> --eventhub-resource-group <your-resource-group> --eventhub-namespace <your-event-hubs-namespace-from-earlier> --eventhub <your-twins-hub-name-from-above> --eventhub-policy <your-twins-hub-auth-rule-from-earlier> --endpoint-name <name-for-your-twins-hub-endpoint>
 ```
 
 ### <a name="create-twins-hub-event-route"></a>Twins ハブのイベント ルートを作成する
@@ -105,7 +103,7 @@ az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eve
 ツイン更新イベントを上記からエンドポイントに送信するための[ルート](concepts-route-events.md#create-an-event-route)を Azure Digital Twins に作成します。 このルートのフィルターでは、エンドポイントに渡されるツイン更新メッセージのみが許可されます。 Twins ハブのイベント ルートの名前を指定します。
 
 ```azurecli-interactive
-az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <your-twins-hub-endpoint-from-above> --route-name <name-for-your-twins-hub-event-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+az dt route create --dt-name <your-Azure-Digital-Twins-instance-name> --endpoint-name <your-twins-hub-endpoint-from-above> --route-name <name-for-your-twins-hub-event-route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
 ```
 
 ### <a name="get-twins-hub-connection-string"></a>Twins ハブの接続文字列を取得する
@@ -202,13 +200,13 @@ Time Series Insights へのデバイス テレメトリ イベントを更新す
 前に保存した Twins ハブの **primaryConnectionString** 値を使用して、Twins ハブの接続文字列が含まれたアプリ設定を関数アプリに作成します。
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<your-twins-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
 ```
 
 前に保存した Time Series ハブの **primaryConnectionString** 値を使用して、Time Series ハブの接続文字列が含まれたアプリ設定を関数アプリに作成します。
 
 ```azurecli-interactive
-az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" -g <your-resource-group> -n <your-App-Service-(function-app)-name>
+az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-time-series-hub-primaryConnectionString>" --resource-group <your-resource-group> --name <your-App-Service-(function-app)-name>
 ```
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
@@ -252,16 +250,16 @@ az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<your-t
 
 Time Series Insights へのデータの送信を開始するには、変化するデータ値を使用した Azure Digital Twins のデジタル ツイン プロパティの更新を開始する必要があります。
 
-次の CLI コマンドを使用して、「[前提条件](#prerequisites)」セクションでインスタンスに追加した *Thermostat67* ツインの *Temperature* プロパティを更新します。
+次の CLI コマンドを使用して、「前提条件」セクションでインスタンスに追加した [Thermostat67](#prerequisites) ツインの *Temperature* プロパティを更新します。
 
 ```azurecli-interactive
-az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
+az dt twin update --dt-name <your-azure-digital-twins-instance-name> --twin-id thermostat67 --json-patch '{"op":"replace", "path":"/Temperature", "value": 20.5}'
 ```
 
 **異なる Temperature 値を使用して少なくともさらに 4 回コマンドを繰り返し**、後で Time Series Insights 環境で観察できるいくつかのデータ ポイントを作成します。
 
 > [!TIP]
-> 手動でデジタル ツインの値を更新するのではなく、シミュレートされたライブ データを使用してこの記事を完了したい場合は、まず、「[前提条件](#prerequisites)」セクションのヒントを完了して、シミュレートされたデバイスからツインを更新する Azure 関数を設定してください。
+> 手動でデジタル ツインの値を更新するのではなく、シミュレートされたライブ データを使用してこの記事を完了する必要がある場合は、まず、「[前提条件](#prerequisites)」セクションのヒントを完了して、シミュレートされたデバイスからツインを更新する Azure 関数を設定してください。
 その後、デバイスをすぐに実行して、シミュレートされたデータの送信と、そのデータ フローを使用したデジタル ツインの更新を開始できます。
 
 ## <a name="visualize-your-data-in-time-series-insights"></a>Time Series Insights でデータを視覚化する
@@ -272,9 +270,9 @@ az dt twin update -n <your-azure-digital-twins-instance-name> --twin-id thermost
 
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Time Series Insights 環境の [概要] タブで Time Series Insights Explorer の URL を選択する Azure portal のスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/view-environment.png":::
 
-2. エクスプローラーで、左側に Azure Digital Twins インスタンス内のツインが表示されます。 *Thermostat67* ツインを選択し、*Temperature* プロパティを選択して、 **[追加]** を押します。
+2. エクスプローラーで、左側に Azure Digital Twins インスタンス内のツインが表示されます。 thermostat67 ツインを選択し、*Temperature* プロパティを選択して、 **[追加]** を選択します。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Thermostat67 を選択する Time Series Insights エクスプローラーのスクリーンショット。Temperature プロパティを選択し、[追加] を押します。" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="thermostat67 を選択し、Temperature プロパティを選択して、[追加] を選択する、Time Series Insights エクスプローラーのスクリーンショット。" lightbox="media/how-to-integrate-time-series-insights/add-data.png":::
 
 3. これで、下に示すように、サーモスタットからの初期温度読み取りが表示されます。 
 

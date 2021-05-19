@@ -12,24 +12,51 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/30/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 46e84814e27562097a4c5dc4e3daa1e5b36669f7
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c1c0545d333a27c9a7d78f0363dc00a905bd4aa6
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287832"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481861"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
 
+## <a name="may-2021"></a>2021 年 5 月
+
+* [容量プールの課金タグのサポート](manage-billing-tags.md)   
+
+    Azure NetApp Files で課金タグがサポートされるようになり、部署やその他の内部コンシューマーとコストを相互参照できるようになりました。 課金タグは、ボリューム レベルではなく容量プール レベルで割り当てられ、顧客の請求書に表示されます。
+
+* [ADDS LDAP over TLS](configure-ldap-over-tls.md) (プレビュー) 
+
+    既定では、クライアント アプリケーションとサーバー アプリケーション間の LDAP 通信は暗号化されません。 これは、ネットワーク監視デバイスまたはソフトウェアを使用して LDAP クライアントとサーバー コンピューター間の通信を表示できることを意味します。 LDAP クライアントを LDAP サーバーにバインドするために使用される資格情報 (ユーザー名とパスワード) が暗号化されずにネットワークを介して渡されるため、このシナリオは、分離されていない VNet または共有 VNet で LDAP 単純バインドを使用する場合に問題になる可能性があります。 LDAP over TLS (LDAPS とも呼ばれます) は、TLS を使用して LDAP クライアントと LDAP サーバー間の通信をセキュリティで保護するプロトコルです。 Azure NetApp Files では、LDAP over TLS を使用して、Active Directory ドメイン サーバー (ADDS) 間のセキュリティで保護された通信がサポートされるようになりました。 Azure NetApp Files では、LDAP over TLS を使用して、Active Directory に統合された LDAP サーバー間で認証されたセッションを設定できるようになりました。 LDAP over TLS 機能は、NFS、SMB、およびデュアルプロトコル ボリュームに対して有効にできます。 LDAP over TLS は、Azure NetApp Files で既定で無効になっています。  
+
+* スループット [メトリック](azure-netapp-files-metrics.md)のサポート    
+
+    Azure NetApp Files では、次のメトリックのサポートが追加されました。   
+    * 容量プールのスループット メトリック
+        * "*プールのボリュームに割り当てられたスループット*"
+        * "*プールで消費されたスループット*"
+        * "*プールのボリュームに割り当てられたスループットの割合*"
+        * "*プールで消費されたスループットの割合*"
+    * ボリュームのスループット メトリック
+        * "*ボリュームに割り当てられたスループット*"
+        * "*ボリュームで消費されたスループット*"
+        * "*ボリュームで消費されたスループットの割合*"
+
+* レプリケーション ボリュームの[サービス レベルの動的の変更](dynamic-change-volume-service-level.md)のサポート   
+
+    Azure NetApp Files で、レプリケーションのレプリケーション元ボリュームとレプリケーション先ボリュームのサービス レベルの動的な変更がサポートされるようになりました。
+
 ## <a name="april-2021"></a>2021 年 4 月
 
 * [ボリュームと容量プールの手動管理](volume-quota-introduction.md) (ハード クォータ) 
 
-    Azure NetApp Files のボリュームと容量プールのプロビジョニングの動作が、手動で制御可能なメカニズムに変更されました。 ボリュームのストレージ容量は、ボリュームのセット サイズ (クォータ) に制限されます。 ボリューム消費量が最大になると、ボリュームも基になる容量プールも自動的には増加しません。 代わりに、ボリュームは "領域不足" という状態を受け取ります。 ただし、必要に応じて、[容量プールまたはボリュームのサイズを変更](azure-netapp-files-resize-capacity-pools-or-volumes.md)できます。 基になる容量プールと[ボリュームの容量を積極的に監視](monitor-volume-capacity.md)する必要があります。
+    Azure NetApp Files のボリュームと容量プールのプロビジョニングの動作が、手動で制御可能なメカニズムに変更されました。 ボリュームのストレージ容量は、ボリュームのセット サイズ (クォータ) に制限されます。 ボリューム消費量が最大になると、ボリュームも基になる容量プールも自動的には増加しません。 代わりに、ボリュームは "領域不足" という状態を受け取ります。 ただし、必要に応じて[容量プールまたはボリュームのサイズを変更](azure-netapp-files-resize-capacity-pools-or-volumes.md)することができます。 基になる容量プールと[ボリュームの容量を積極的に監視](monitor-volume-capacity.md)する必要があります。
 
     この動作変更は、多くのユーザーから寄せられた次の重要な要望によるものです。
 
@@ -115,11 +142,11 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
 * [転送中の NFS v4.1 Kerberos 暗号化](configure-kerberos-encryption.MD)
 
-    Azure NetApp Files で、AES-256 暗号化を使用した Kerberos モード (krb5、krb5i、krb5p) での NFS クライアント暗号化がサポートされるようになったため、データ セキュリティが強化されます。 この機能は無料で (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)、一般提供になっています。 詳細については、[NFS v4.1 Kerberos 暗号化に関するドキュメント](configure-kerberos-encryption.MD)を参照してください。
+    Azure NetApp Files で、AES-256 暗号化を使用した Kerberos モード (krb5、krb5i、krb5p) での NFS クライアント暗号化がサポートされるようになり、データ セキュリティが強化されました。 この機能は無料で (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)、一般提供になっています。 詳細については、[NFS v4.1 Kerberos 暗号化に関するドキュメント](configure-kerberos-encryption.MD)を参照してください。
 
-* [ボリュームのサービス レベルの動的な変更](dynamic-change-volume-service-level.MD)
+* [ボリュームのサービス レベルの動的な変更](dynamic-change-volume-service-level.MD) (プレビュー) 
 
-    クラウドでは IT の支出における柔軟性が期待されています。 ボリュームに必要なサービス レベルを使用している別の容量プールにボリュームを移動することで、既存の Azure NetApp Files ボリュームのサービス レベルを変更できるようになりました。 ボリュームのサービス レベルのインプレース変更では、データを移行する必要はありません。 ボリュームに対するデータ プレーン アクセスにも影響はありません。 既存のボリュームを変更し、パフォーマンス向上のために上位のサービス レベルを使用することも、コスト最適化のために下位のサービス レベルを使用することもできます。 この機能は無料で (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)、パブリック プレビューになっています。 機能のプレビューに登録するには、[ボリュームのサービス レベルの動的な変更に関するドキュメント](dynamic-change-volume-service-level.md)を参照してください。
+    クラウドでは IT の支出における柔軟性が期待されています。 ボリュームに必要なサービス レベルを使用している別の容量プールにボリュームを移動することで、既存の Azure NetApp Files ボリュームのサービス レベルを変更できるようになりました。 ボリュームのサービス レベルのインプレース変更では、データを移行する必要はありません。 ボリュームに対するデータ プレーン アクセスにも影響はありません。 既存のボリュームを変更し、パフォーマンス向上のために上位のサービス レベルを使用することも、コスト最適化のために下位のサービス レベルを使用することもできます。 この機能は無料です (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)。 これは現在プレビューの段階です。 機能のプレビューに登録するには、[ボリュームのサービス レベルの動的な変更に関するドキュメント](dynamic-change-volume-service-level.md)を参照してください。
 
 * [ボリュームのスナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) (プレビュー) 
 

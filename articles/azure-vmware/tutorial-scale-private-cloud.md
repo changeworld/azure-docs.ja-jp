@@ -1,16 +1,16 @@
 ---
-title: チュートリアル - プライベート クラウドをスケーリングする
+title: チュートリアル - プライベート クラウドでクラスターを拡大または縮小する
 description: このチュートリアルでは、Azure portal を使用して、Azure VMware Solution のプライベート クラウドをスケーリングします。
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 2129a3f5d04311883369b7b708689a13f07ec118
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23fa38f41a1effab212896e59118978202ef17a7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463616"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769293"
 ---
-# <a name="tutorial-scale-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドをスケーリングする
+# <a name="tutorial-expand-or-shrink-clusters-in-a-private-cloud"></a>チュートリアル: プライベート クラウドでクラスターを拡大または縮小する
 
 Azure VMware Solution のプライベート クラウド エクスペリエンスを最大限に活かすには、予定されたワークロードの要件を反映するようにクラスターとホストをスケーリングします。 実際のアプリケーション ワークロードに応じて、プライベート クラウドにあるクラスターとホストをスケーリングできます。 特定のサービスのパフォーマンスと可用性の制限については、ケース バイ ケースで対処する必要があります。 クラスターとホストの制限については、[プライベート クラウドの概念](concepts-private-clouds-clusters.md)に関する記事を参照してください。
 

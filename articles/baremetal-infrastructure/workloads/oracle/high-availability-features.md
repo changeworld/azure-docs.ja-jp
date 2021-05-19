@@ -4,12 +4,12 @@ description: BareMetal で利用できる Oracle データベースの機能に�
 ms.topic: overview
 ms.subservice: workloads
 ms.date: 04/16/2021
-ms.openlocfilehash: b27dc4b857d553be791528cbd91aee70b2294a92
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 91ec416c6f7c98100bf8ee00af2c060219e54693
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600218"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518344"
 ---
 # <a name="high-availability-features-for-oracle-on-azure-baremetal"></a>Azure BareMetal における Oracle の高可用性機能
 
@@ -59,7 +59,7 @@ Data Guard は、次の点でストレージレベルのレプリケーション
 
 BareMetal で使用される NetApp Files ストレージ ソリューションにより、ボリュームのスナップショットを作成できます。 スナップショットを使用すると、ファイル システムをすばやく特定の時点に戻すことができます。 スナップショット テクノロジによって達成される目標復旧時間 (RTO) は、データベース バックアップの復元にかかる時間の数分の一です。
 
-Oracle データベースのスナップショット機能は、Azure NetApp SnapCenter を通じて提供されます。 SnapCenter によってスナップショットを使ったバックアップが、SnapVault によってオフライン保管が、Snap Clone によってセルフサービス復元などの操作が可能となります。
+Oracle データベースのスナップショット機能は、Azure NetApp SnapCenter を通じて提供されます。 SnapCenter によってスナップショットを使ったバックアップが、SnapVault によってオフライン保管が、Snap Clone によってセルフサービス復元などの操作が可能となります。 詳細については、「[BareMetal インフラストラクチャ上の Oracle の SnapCenter 統合](netapp-snapcenter-integration-oracle-baremetal.md)」を参照してください。
 
 ## <a name="recovery-manager"></a>Recovery Manager
 

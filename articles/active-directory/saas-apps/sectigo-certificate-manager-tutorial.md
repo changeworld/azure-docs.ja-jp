@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 05/04/2021
 ms.author: jeedes
-ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 862138903721ddfb27547adb2b287df0526c32c6
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92673856"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>チュートリアル:Azure Active Directory と Sectigo Certificate Manager の統合
 
-このチュートリアルでは、Sectigo Certificate Manager (SCM と呼ばれることもあります) と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Sectigo Certificate Manager と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Sectigo Certificate Manager を統合すると、次のことができます。
 
-Sectigo Certificate Manager と Azure AD の統合により、次の利点が得られます。
-
-* Azure AD を使用して Sectigo Certificate Manager にアクセスできるユーザーを制御できます。
-* ユーザーは自分の Azure AD アカウントを使用して Sectigo Certificate Manager に自動的にサインイン (シングル サインオン) できます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-サービスとしてのソフトウェア (SaaS) アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+* Sectigo Certificate Manager にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Sectigo Certificate Manager に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,61 +42,45 @@ Sectigo Certificate Manager と Azure AD の統合を構成するには、次の
 
 Sectigo Certificate Manager では、次の機能がサポートされます。
 
-* **SP が起点となるシングル サインオン**
-* **IDP が起点となるシングル サインオン**
+* **SP Initiated シングル サインオン**。
+* **IDP Initiated シングル サインオン**。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Azure portal で Sectigo Certificate Manager を追加する
 
-Sectigo Certificate Manager と Azure AD を統合するには、マネージド SaaS アプリの一覧に Sectigo Certificate Manager を追加する必要があります。
+Azure AD への Sectigo Certificate Manager の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Sectigo Certificate Manager を追加する必要があります。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Sectigo Certificate Manager**」と入力します。
+1. 結果のパネルから **[Sectigo Certificate Manager]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
+## <a name="configure-and-test-azure-ad-sso-for-sectigo-certificate-manager"></a>Sectigo Certificate Manager の Azure AD SSO の構成とテスト
 
-    ![[Azure Active Directory] オプション](common/select-azuread.png)
+**B.Simon** というテスト ユーザーを使用して、Sectigo Certificate Manager に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Sectigo Certificate Manager の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-1. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+Sectigo Certificate Manager に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Sectigo Certificate Manager の SSO の構成](#configure-sectigo-certificate-manager-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[Sectigo Certificate Manager のテスト ユーザーの作成](#create-sectigo-certificate-manager-test-user)** - Sectigo Certificate Manager で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-1. アプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] オプション](common/add-new-app.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. 検索ボックスに「**Sectigo Certificate Manager**」と入力します。 検索結果で **Sectigo Certificate Manager** を選択し、 **[追加]** を選択します。
+1. Azure portal の **Sectigo Certificate Manager** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-    ![結果リストの Sectigo Certificate Manager](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Sectigo Certificate Manager で Azure AD のシングル サインオンを構成し、テストします。 シングル サインオンを機能させるには、Azure AD ユーザーと Sectigo Certificate Manager 内の関連ユーザー間にリンクされた関係を確立する必要があります。
-
-Sectigo Certificate Manager による Azure AD のシングル サインオンを構成してテストするには、次のビルド ブロックを完了する必要があります。
-
-| タスク | 説明 |
-| --- | --- |
-| **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** | ユーザーがこの機能を使用できるようにします。 |
-| **[Sectigo Certificate Manager シングル サインオンの構成](#configure-sectigo-certificate-manager-single-sign-on)** | アプリケーションでシングル サインオン設定を構成します。 |
-| **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** | Britta Simon という名前のユーザーの Azure AD シングル サインオンをテストします。 |
-| **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** | Britta Simon が Azure AD シングル サインオンを使用できるようにします。 |
-| **[Sectigo Certificate Manager のテスト ユーザーの作成](#create-a-sectigo-certificate-manager-test-user)** | Sectigo Certificate Manager で、Azure AD の Britta Simon に対応し、そのユーザーにリンクされているユーザーを作成します。 |
-| **[シングル サインオンのテスト](#test-single-sign-on)** | 構成が機能することを確認します。 |
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal で Sectigo Certificate Manager による Azure AD シングル サインオンを構成します。
-
-1. [Azure portal](https://portal.azure.com/) の **Sectigo Certificate Manager** アプリケーション統合ウィンドウで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン オプションを構成する](common/select-sso.png)
-
-1. **[シングル サインオン方式の選択]** ウィンドウで、 **[SAML]** または **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-1. **[SAML でシングル サインオンをセットアップします]** ウィンドウで、 **[編集]** (鉛筆アイコン) を選択して **[基本的な SAML 構成]** ウィンドウを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
@@ -109,17 +89,15 @@ Sectigo Certificate Manager による Azure AD のシングル サインオン�
     1. Sectigo Certificate Manager のメイン インスタンスの場合には、 **[応答 URL]** ボックスに「**https:\//cert-manager.com/Shibboleth.sso/SAML2/POST**」と入力します。
         
     > [!NOTE]
-    > 一般に "*SP Initiated モード*" では **サインオン URL** が必須となっていますが、Sectigo Certificate Manager からのログインでは不要です。        
+    > 一般に "**SP Initiated モード**" では **サインオン URL** が必須となっていますが、Sectigo Certificate Manager からのログインでは不要です。        
 
-1. 必要に応じて、"*IDP Initiated モード*" を構成し、**テスト** を機能させるために、 **[基本的な SAML 構成]** セクションで次の手順を実行します。
+1. 必要に応じて、**IDP Initiated モード** を構成し、**テスト** を機能させるために、 **[基本的な SAML 構成]** セクションで次の手順を実行します。
 
     1. **[追加の URL を設定します]** を選択します。
 
     1. **[リレー状態]** ボックスに、Sectigo Certificate Manager の顧客別 URL を入力します。 Sectigo Certificate Manager のメイン インスタンスの場合には、「**https:\//cert-manager.com/customer/\<customerURI\>/idp**」を入力します。
 
-    ![Sectigo Certificate Manager ドメインと URL のシングル サインオン情報](common/idp-relay.png)
-
-1. **[ユーザー属性とクレーム]** セクションで、次の手順に従います。
+1. **[ユーザー属性と要求]** セクションで、次の手順に実行します。
 
     1. **追加の要求** をすべて削除します。
     
@@ -138,65 +116,39 @@ Sectigo Certificate Manager による Azure AD のシングル サインオン�
 
     ![フェデレーション メタデータ XML のダウンロード オプション](common/metadataxml.png)
 
-### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Sectigo Certificate Manager シングル サインオンの構成
-
-Sectigo Certificate Manager 側でシングル サインオンを構成するには、ダウンロードしたフェデレーション メタデータ XML ファイルを [Sectigo Certificate Manager サポート チーム](https://sectigo.com/support)に送信します。 Sectigo Certificate Manager チームは、送られてきた情報を使用して、SAML シングル サインオン接続が両方の側で正しく設定されているかどうかを確認します。
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションでは、Azure ポータルで Britta Simon というテスト ユーザーを作成します。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal 内で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザー] と [すべてのユーザー] オプション](common/users.png)
-
-1. **[ 新規ユーザー]** を選択します。
-
-    ![[新しいユーザー] オプション](common/new-user.png)
-
-1. **[ユーザー]** ウィンドウで、次の手順を実行します。
-
-    1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-  
-    1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension\>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
-
-    1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を記録しておきます。
-
-    1. **［作成］** を選択します
-
-    ![[ユーザー] ウィンドウ](common/user-properties.png)
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Sectigo Certificate Manager へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に Sectigo Certificate Manager へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 内で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]**  >  **[Sectigo Certificate Manager]** の順に選択します。
-
-    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
-
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Sectigo Certificate Manager]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-    ![アプリケーションの一覧の Sectigo Certificate Manager](common/all-applications.png)
+## <a name="configure-sectigo-certificate-manager-sso"></a>Sectigo Certificate Manager の SSO の構成
 
-1. メニューで **[ユーザーとグループ]** を選択します。
+Sectigo Certificate Manager 側でシングル サインオンを構成するには、ダウンロードしたフェデレーション メタデータ XML ファイルを [Sectigo Certificate Manager サポート チーム](https://sectigo.com/support)に送信します。 Sectigo Certificate Manager チームは、送られてきた情報を使用して、SAML シングル サインオン接続が両方の側で正しく設定されているかどうかを確認します。
 
-    ![[ユーザーとグループ] オプション](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択します。 **[割り当ての追加]** ウィンドウで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ウィンドウで、ユーザーの一覧から **Britta Simon** を選択します。 **[選択]** を選択します。
-
-1. SAML アサーションでロール値が必要な場合は、 **[ロールの選択]** ウィンドウで、ユーザーに関連したロールを一覧から選択します。 **[選択]** を選択します。
-
-1. **[割り当ての追加]** ウィンドウで **[割り当て]** を選択します。
-
-### <a name="create-a-sectigo-certificate-manager-test-user"></a>Sectigo Certificate Manager のテスト ユーザーの作成
+### <a name="create-sectigo-certificate-manager-test-user"></a>Sectigo Certificate Manager のテスト ユーザーの作成
 
 このセクションでは、Sectigo Certificate Manager で Britta Simon というユーザーを作成します。 [Sectigo Certificate Manager サポート チーム](https://sectigo.com/support)と連携して、Sectigo Certificate Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、Azure AD のシングル サインオン構成をテストします。
 
@@ -214,8 +166,4 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次の記事を参照してください。
-
-- [SaaS アプリと Azure Active Directory の統合に関するチュートリアルの一覧](./tutorial-list.md)
-- [Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+Sectigo Certificate Manager を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

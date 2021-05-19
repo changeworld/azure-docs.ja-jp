@@ -3,12 +3,12 @@ title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
 ms.date: 05/01/2021
 ms.topic: overview
-ms.openlocfilehash: 8d261cc958a104b4a11a6f82a8f86352159c0275
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b9cd2becc0c1241c34b7cd887a274088296150ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323701"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733491"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -137,9 +137,9 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 このイニシアチブでは、次のようなポリシー定義を作成します。
 
-- **暗号化されていない SQL Database を Security Center で監視する** – 暗号化されていない SQL データベースとサーバーを監視します。
-- **OS の脆弱性を Security Center で監視する** – 構成されているベースラインを満たしていないサーバーを監視します。
-- **不足している Endpoint Protection を Security Center で監視する** – Endpoint Protection エージェントがインストールされていないサーバーを監視します。
+- **暗号化されていない SQL Database を Security Center で監視する** - 暗号化されていない SQL データベースとサーバーを監視します。
+- **OS の脆弱性を Security Center で監視する** - 構成されているベースラインを満たしていないサーバーを監視します。
+- **不足している Endpoint Protection を Security Center で監視する** - Endpoint Protection エージェントがインストールされていないサーバーを監視します。
 
 ポリシー パラメーターと同様に、イニシアチブ パラメーターは冗長性を減らすことでイニシアチブの管理を簡素化できます。 イニシアチブ パラメーターは、イニシアチブ内のポリシー定義によって使われるパラメーターです。
 
@@ -153,7 +153,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 このシナリオで **initiativeC** のイニシアチブ パラメーターを定義する場合、3 つのオプションがあります。
 
 - このイニシアチブ内でポリシー定義のパラメーターを使用します。この例では、_allowedLocations_ と _allowedSingleLocation_ が **initiativeC** のイニシアチブ パラメーターになります。
-- このイニシアチブ定義内でポリシー定義のパラメーターに値を指定します。 この例では、**policyA** のパラメーター – **allowedLocations** および **policyB** のパラメーター – **allowedSingleLocation** に場所のリストを提供できます。 このイニシアチブを割り当てるときに値を指定することもできます。
+- このイニシアチブ定義内でポリシー定義のパラメーターに値を指定します。 この例では、**policyA** のパラメーター - **allowedLocations** および **policyB** のパラメーター - **allowedSingleLocation** に場所のリストを提供できます。 このイニシアチブを割り当てるときに値を指定することもできます。
 - このイニシアチブを割り当てるときに使うことができる "_値_" オプションのリストを指定します。 このイニシアチブを割り当てるときは、イニシアチブ内のポリシー定義から継承したパラメーターは、この指定されたリストの値だけを持つことができます。
 
 イニシアチブ定義で値のオプションを作成すると、イニシアチブの割り当てで別の値を入力することは、リストの一部ではないためできません。

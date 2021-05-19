@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: 8b154dabd6f672c6fdaf77c5f8d48f80fb40d5d8
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 8bf73374545fa10c1b26ccbc9b932962fcabb6b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060110"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759871"
 ---
 # <a name="tutorial-install-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R を設置する
 
@@ -82,7 +82,10 @@ ms.locfileid: "106060110"
 - 設置場所の Azure Stack Edge Mini R 物理デバイス。
 - 電源ケーブル 1 本。
 - 管理インターフェイスに接続するための 1-GbE RJ-45 ネットワーク ケーブルを 1 本以上。 デバイスには、管理用とデータ用に 1 つずつ、2 つの 1-GbE ネットワーク インターフェイスがあります。
-- 構成するデータ ネットワーク インターフェイスのそれぞれに対して、10-GbE SFP+ 銅線ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 3 からポート 4) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。  
+- 構成するデータ ネットワーク インターフェイスのそれぞれに対して、10-GbE SFP+ ケーブル 1 本。 少なくとも 1 つのデータ ネットワーク インターフェイス (ポート 3 からポート 4) がインターネットに接続されている必要があります (Azure への接続が可能なもの)。
+
+  最もパフォーマンスが高い銅線 SFP+ (10 Gbps) トランシーバーの使用を強くお勧めします。 互換性のある光ファイバー トランシーバーを使用することもできますが、テストされていません。 詳細については、Azure Stack Edge Mini R の[トランシーバーとケーブルの仕様](azure-stack-edge-mini-r-technical-specifications-compliance.md#transceivers-cables)を参照してください。
+   
 - 1 台の電力分配装置へのアクセス (推奨)。
 
 > [!NOTE]
@@ -97,10 +100,10 @@ Azure Stack Edge デバイスの仕様は以下のとおりです。
     - デバイスのスロットに SSD ディスクが 1 台搭載されています。 
     - デバイスには、オペレーティング システム ディスクのストレージとして機能する CFx カードも装備されています。
     
-- フロント パネルに、ネットワーク インターフェイスと Wi-Fi へのアクセスが装備されています。
+- フロント パネルに、ネットワーク インターフェイスと Wi-Fi へのアクセスが装備されています。 
 
-    - 1 GbE RJ 45 ネットワーク インターフェイス x 2。 これらは、デバイスのローカル UI のポート 1 とポート 2 です。
-    - 10 GbE SFP+ ネットワーク インターフェイス x 2。 これらは、デバイスのローカル UI のポート 3 とポート 4 です。 
+    - 2 X 1 GbE RJ 45 ネットワーク インターフェイス (デバイスのローカル UI のポート 1 およびポート 2)
+    - 2 X 10 GbE SFP+ ネットワーク インターフェイス (デバイスのローカル UI のポート 3 およびポート 4) 
     - Wi-Fi トランシーバーが接続された Wi-Fi ポート 1 基。
 
 - フロント パネルには電源ボタンもあります。 

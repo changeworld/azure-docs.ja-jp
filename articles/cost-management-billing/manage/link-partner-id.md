@@ -8,12 +8,12 @@ ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: a214e91307308e191ce92b6461c1454d2cc7dd2b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 416bb5f477396a17d1003c537149b4c90378e652
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370480"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784559"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Azure アカウントにパートナー ID をリンクする
 
@@ -31,7 +31,7 @@ PAL を使用することで、Microsoft は、Azure の利用者を成功に導
 
 - **サービス プリンシパル**: 貴社の顧客は、貴社の組織から顧客のディレクトリ内にアプリまたはスクリプトを追加し、Azure ロールを割り当てることができます。 アプリまたはスクリプトの ID は、サービス プリンシパルと呼ばれます。
 
-- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、「[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)」を参照してください。
+- **Azure Lighthouse**: 貴社の顧客は、ユーザーがテナント内から作業できるように、サブスクリプション (またはリソース グループ) を委任することができます。 詳細については、[Azure Lighthouse](../../lighthouse/overview.md) に関するページを参照してください。
 
 ## <a name="link-to-a-partner-id"></a>パートナー ID へリンク
 

@@ -2,17 +2,17 @@
 title: テンプレート スペックの作成とデプロイ
 description: ARM テンプレートからテンプレート スペックを作成する方法について説明します。 次に、サブスクリプションのリソース グループにテンプレート スペックをデプロイします。
 author: tfitzmac
-ms.date: 12/14/2020
+ms.date: 05/04/2021
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 28987486726f5a88d20efe9fe8a766e536062c2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0775d58bebaf487d5a536818aec788fabdace909
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889962"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754183"
 ---
-# <a name="quickstart-create-and-deploy-template-spec-preview"></a>クイック スタート:テンプレート スペックの作成とデプロイ (プレビュー)
+# <a name="quickstart-create-and-deploy-template-spec"></a>クイックスタート: テンプレート スペックの作成とデプロイ
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を[テンプレート スペック](template-specs.md)にパッケージ化する方法について説明します。次に、そのテンプレート スペックをデプロイします。テンプレート スペックには、ストレージ アカウントをデプロイする ARM テンプレートが含まれています。
 
@@ -21,13 +21,13 @@ ms.locfileid: "104889962"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-template"></a>テンプレートの作成
 
 テンプレート スペックは、ローカル テンプレートから作成します。 次のテンプレートをコピーし、**azuredeploy.json** というファイル名でローカルに保存します。 このクイックスタートでは、パス **c:\Templates\azuredeploy.json** に保存したことを想定していますが、任意のパスを使用できます。
 
-:::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json":::
 
 ## <a name="create-template-spec"></a>テンプレート スペックを作成する
 
@@ -126,7 +126,7 @@ ms.locfileid: "104889962"
       "resources": [
         {
           "type": "Microsoft.Resources/templateSpecs",
-          "apiVersion": "2019-06-01-preview",
+          "apiVersion": "2021-05-01",
           "name": "storageSpec",
           "location": "westus2",
           "properties": {
@@ -136,12 +136,12 @@ ms.locfileid: "104889962"
           "resources": [
             {
               "type": "versions",
-              "apiVersion": "2019-06-01-preview",
+              "apiVersion": "2021-05-01",
               "name": "1.0",
               "location": "westus2",
               "dependsOn": [ "storageSpec" ],
               "properties": {
-                "template": {
+                "mainTemplate": {
                   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
                   "parameters": {
@@ -490,7 +490,7 @@ ms.locfileid: "104889962"
       "resources": [
         {
           "type": "Microsoft.Resources/templateSpecs",
-          "apiVersion": "2019-06-01-preview",
+          "apiVersion": "2021-05-01",
           "name": "storageSpec",
           "location": "westus2",
           "properties": {
@@ -500,12 +500,12 @@ ms.locfileid: "104889962"
           "resources": [
             {
               "type": "versions",
-              "apiVersion": "2019-06-01-preview",
+              "apiVersion": "2021-05-01",
               "name": "2.0",
               "location": "westus2",
               "dependsOn": [ "storageSpec" ],
               "properties": {
-                "template": {
+                "mainTemplate": {
                   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
                   "contentVersion": "1.0.0.0",
                   "parameters": {

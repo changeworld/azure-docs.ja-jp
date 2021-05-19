@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b22552147bec789c4b1d796cad2c52165d266334
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c238f847994b6317085fbbc7d132168c88797e03
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207719"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734257"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Azure Digital Twins で使用するアプリ登録を作成する
 
@@ -24,7 +24,7 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 
 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 Azure AD で **アプリの登録** を設定することは、クライアント アプリに Azure Digital Twins へのアクセスを許可する方法の 1 つです。
 
-このアプリの登録では、[Azure Digital Twins API](how-to-use-apis-sdks.md) に対するアクセス許可を構成します。 後で、クライアント アプリは登録の **クライアントおよびテナント ID 値** を使用してこのアプリ登録に対して認証できます。結果として API への構成済みのアクセス許可が付与されます。
+このアプリの登録では、[Azure Digital Twins API](concepts-apis-sdks.md) に対するアクセス許可を構成します。 後で、クライアント アプリは登録の **クライアントおよびテナント ID 値** を使用してこのアプリ登録に対して認証できます。結果として API への構成済みのアクセス許可が付与されます。
 
 >[!TIP]
 > 新しいアプリ登録を必要となるたびに設定することもできます。*または*、1 回だけ行い、1 つのアプリ登録を確立してそれを必要とするすべてのシナリオで共有することもできます。
@@ -40,7 +40,7 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 * **サポートされているアカウントの種類**: *[この組織ディレクトリのみに含まれるアカウント (既定のディレクトリのみ - シングル テナント)]* を選択します
 * **リダイレクト URI**:Azure AD アプリケーションの "*Azure AD アプリケーション応答 URL*"。 `http://localhost` の *パブリック クライアント/ネイティブ (モバイルとデスクトップ)* URI を追加します。
 
-完了したら、 *[登録]* ボタンを押します。
+完了したら、 *[登録]* ボタンを選択します。
 
 :::image type="content" source="media/how-to-create-app-registration/register-an-application.png" alt-text="説明に示された値が入力されている [アプリケーションの登録] ページのビュー":::
 
@@ -58,11 +58,11 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 
 次に、Azure Digital Twins API へのベースライン アクセス許可によって、作成したアプリ登録を構成します。
 
-アプリ登録のポータル ページで、メニューから *[API のアクセス許可]* を選択します。 以下のアクセス許可ページで、 *[+ アクセス許可の追加]* ボタンを押します。
+アプリ登録のポータル ページで、メニューから *[API のアクセス許可]* を選択します。 以下のアクセス許可ページで、 *[+ アクセス許可の追加]* ボタンを選択します。
 
 :::image type="content" source="media/how-to-create-app-registration/add-permission.png" alt-text="[API のアクセス許可] メニュー オプションと [+ アクセス許可の追加] ボタンが強調表示されている Azure portal 上のアプリの登録のビュー":::
 
-以下の *[API アクセス許可の要求]* ページで、 *[所属する組織で使用している API]* タブに切り替えて、"*azure digital twins*" を探します。 検索結果から "_**Azure Digital Twins**_" を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを進めます。
+次の *[API アクセス許可の要求]* ページで、 *[所属する組織で使用している API]* タブに切り替えて、"*Azure digital twins*" を検索します。 検索結果から "_**Azure Digital Twins**_" を選択して、Azure Digital Twins API に対するアクセス許可の割り当てを進めます。
 
 :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-1.png" alt-text="アプリケーション (クライアント) ID が 0b07f429-9f4b-4714-9392-cc5e8e80c8b0 である Azure Digital Twins を示す [API アクセス許可の要求] ページの検索結果のビュー。":::
 
@@ -74,7 +74,7 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 
 :::image type="content" source="media/how-to-create-app-registration/request-api-permissions-2.png" alt-text="Azure Digital Twins API の [Read.Write]\(読み取り.書き込み\) アクセス許可を選択した [API アクセス許可の要求] ページのビュー":::
 
-完了したら、 *[アクセス許可の追加]* を押します。
+完了したら、 *[アクセス許可の追加]* を選択します。
 
 ### <a name="verify-success"></a>成功を確認する
 

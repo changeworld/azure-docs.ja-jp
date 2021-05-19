@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/19/2021
 ms.author: yelevin
-ms.openlocfilehash: bf7a17d96d31fd4214d5465a5739acc9ce9a9d53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64c921f1ad401baaf12b1545bfc2bdda54ab3444
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455503"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664386"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
@@ -29,15 +29,13 @@ ms.locfileid: "102455503"
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
-### <a name="the-concept"></a>概念
-
 組織内の脅威とその潜在的な影響を特定することは (それが侵害されたエンティティ、または悪意のある内部関係者かどうかには関係なく) 常に、時間のかかる、労働集約的なプロセスでした。 アラートの選別、ドットの接続、積極的なハンティングがすべて一緒になって膨大な量の時間と労力が費やされますが、最小限の結果しか得られず、高度な脅威の可能性は簡単に検出を回避します。 特に、対象を絞った、ゼロディの高度な永続的脅威などの捕らえにくい脅威は、組織にとって最も危険なものになることがあるため、それらの検出がますます重要になっています。
 
 Azure Sentinel の UEBA 機能は、アナリストのワークロードから面倒な作業を、またその取り組みから不確実性を排除し、忠実度が高い、すぐに使用可能なインテリジェンスを提供するため、アナリストは調査と修復に集中することができます。
 
 Azure Sentinel は、接続されているすべてのデータ ソースからログとアラートを収集すると、それらを分析して、時間とピア グループの期間全体にわたる組織のエンティティ (ユーザー、ホスト、IP アドレス、アプリケーションなど) のベースライン行動プロファイルを構築します。 Azure Sentinel はその後、さまざまな手法や機械学習機能を使用して異常なアクティビティを特定できるため、資産が侵害されているかどうかを判定するために役立ちます。 それだけではなく、特定の資産の相対的な機密性を見つけたり、資産のピア グループを識別したり、特定の侵害された資産の潜在的な影響 (その "影響範囲") を評価したりすることもできます。 これらの情報を利用して、調査やインシデント処理に効果的に優先順位を付けることができます。 
 
-### <a name="architecture-overview"></a>アーキテクチャの概要
+### <a name="ueba-analytics-architecture"></a>UEBA 分析アーキテクチャ
 
 :::image type="content" source="media/identify-threats-with-entity-behavior-analytics/entity-behavior-analytics-architecture.png" alt-text="エンティティの行動分析のアーキテクチャ":::
 
@@ -117,36 +115,9 @@ Azure Sentinel は、セキュリティ アナリストが、ユーザーのベ�
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/entity-pages-use-cases.png" alt-text="エンティティ ページのユース ケース":::
 
-## <a name="data-schema"></a>データ スキーマ
+**[エンティティの行動分析]** テーブルに表示されるデータについて詳しくは、「[Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)」をご覧ください。
 
-### <a name="behavior-analytics-table"></a>行動分析テーブル
-
-| フィールド                     | 説明                                                         |
-|---------------------------|---------------------------------------------------------------------|
-| TenantId                  | テナントの一意の ID 番号                                      |
-| SourceRecordId            | EBA イベントの一意の ID 番号                                   |
-| TimeGenerated             | アクティビティの発生のタイムスタンプ                              |
-| TimeProcessed             | EBA エンジンによるアクティビティの処理のタイムスタンプ            |
-| ActivityType              | アクティビティの高レベルのカテゴリ                                 |
-| ActionType                | アクティビティの標準化名                                     |
-| UserName                  | アクティビティを開始したユーザーのユーザー名                    |
-| UserPrincipalName         | アクティビティを開始したユーザーの完全なユーザー名               |
-| EventSource               | 元のイベントを提供したデータ ソース                        |
-| SourceIPAddress           | アクティビティが開始された元の IP アドレス                        |
-| SourceIPLocation          | アクティビティが開始された元の国 (IP アドレスからエンリッチ処理済み) |
-| SourceDevice              | アクティビティを開始したデバイスのホスト名                  |
-| DestinationIPAddress      | アクティビティのターゲットの IP アドレス                            |
-| DestinationIPLocation     | アクティビティのターゲットの国 (IP アドレスからエンリッチ処理済み)     |
-| DestinationDevice         | ターゲット デバイスの名前                                           |
-| **UsersInsights**         | 関連するユーザーのコンテキスト エンリッチメント                            |
-| **DevicesInsights**       | 関連するデバイスのコンテキスト エンリッチメント                          |
-| **ActivityInsights**      | プロファイリングに基づくアクティビティのコンテキスト分析              |
-| **InvestigationPriority** | 0 ～ 10 の異常スコア (0=無害、10=きわめて異常)         |
-|
-
-**UsersInsights**、**DevicesInsights**、**ActivityInsights** で参照されるすべてのコンテキスト エンリッチメントについては、[UEBA エンリッチメントのリファレンス ドキュメント](ueba-enrichments.md)で確認できます。
-
-### <a name="querying-behavior-analytics-data"></a>行動分析データへのクエリ実行
+## <a name="querying-behavior-analytics-data"></a>行動分析データへのクエリ実行
 
 [KQL](/azure/data-explorer/kusto/query/) を使用すると、行動分析テーブルにクエリを実行できます。
 
@@ -173,7 +144,7 @@ Azure Sentinel GitHub リポジトリで提供されている [Jupyter ノート
 
 アクセス許可分析は、攻撃者による組織資産の侵害の潜在的な影響を特定するために役立ちます。 この影響は、資産の "影響範囲" とも呼ばれます。 セキュリティ アナリストは、この情報を使用して、調査やインシデント処理に優先順位を付けることができます。
 
-Azure Sentinel は、ユーザーが直接、またはグループやサービス プリンシパル経由でアクセスできる Azure サブスクリプションを評価することによって、Azure リソースへの特定のユーザーによって保持されている直接および推移的なアクセス権を特定します。 この情報や、そのユーザーの Azure AD セキュリティ グループ メンバーシップの完全な一覧は、その後 **UserAccessAnalytics** テーブルに格納されます。 次のスクリーンショットは、ユーザー Alex Johnson に関する UserAccessAnalytics テーブル内のサンプル行を示しています。 **[ソース エンティティ]** はユーザーまたはサービス プリンシパル アカウントであり、 **[ターゲット エンティティ]** はソース エンティティがアクセスできるリソースです。 **[アクセス レベル]** と **[アクセスの種類]** の値は、ターゲット エンティティのアクセス制御モデルによって異なります。 Alex が Azure サブスクリプション *Contoso Hotels Tenant* に対する共同作成者のアクセス権を持っていることがわかります。 このサブスクリプションのアクセス制御モデルは Azure RBAC です。   
+Azure Sentinel は、ユーザーが直接、またはグループやサービス プリンシパル経由でアクセスできる Azure サブスクリプションを評価することによって、Azure リソースへの特定のユーザーによって保持されている直接および推移的なアクセス権を特定します。 この情報や、そのユーザーの Azure AD セキュリティ グループ メンバーシップの完全な一覧は、その後 **UserAccessAnalytics** テーブルに格納されます。 次のスクリーンショットは、ユーザー Alex Johnson に関する UserAccessAnalytics テーブル内のサンプル行を示しています。 **[ソース エンティティ]** はユーザーまたはサービス プリンシパル アカウントであり、 **[ターゲット エンティティ]** はソース エンティティがアクセスできるリソースです。 **[アクセス レベル]** と **[アクセスの種類]** の値は、ターゲット エンティティのアクセス制御モデルによって異なります。 Alex が Azure サブスクリプション *Contoso Hotels Tenant* に対する共同作成者のアクセス権を持っていることがわかります。 このサブスクリプションのアクセス制御モデルは Azure RBAC です。
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="ユーザー アクセス分析テーブルのスクリーンショット":::
 
@@ -181,12 +152,21 @@ Azure Sentinel GitHub リポジトリの [Jupyter ノートブック](https://gi
 
 ### <a name="hunting-queries-and-exploration-queries"></a>ハンティング クエリと探索クエリ
 
-Azure Sentinel には、BehaviorAnalytics テーブルに基づいた、一連のハンティング クエリ、探索クエリ、ブックが標準で用意されています。 これらのツールは、異常な行動を示す、特定のユース ケースに焦点を絞ったエンリッチ処理されたデータを提供します。 
+Azure Sentinel には、**BehaviorAnalytics** テーブルに基づいた、一連のハンティング クエリ、探索クエリ、**ユーザー/エンティティ行動分析** ブックが標準で用意されています。 これらのツールは、異常な行動を示す、特定のユース ケースに焦点を絞ったエンリッチ処理されたデータを提供します。
 
-Azure Sentinel でのハンティングと調査グラフの詳細については、[ここ](./hunting.md) を参照してください。
+詳細については次を参照してください:
+
+- [Azure Sentinel で脅威を検出する](hunting.md)
+- [ データの視覚化と監視](tutorial-monitor-your-data.md)
+
+従来の防御ツールが古いものになるにつれて、膨大な数のデジタル資産を所有している組織は、組織の環境が直面している可能性のあるリスクと体制の全体像を把握することが困難になります。 分析やルールなどの事後対応型の取り組みに依存しすぎると、悪意のあるアクターがそれらの取り組みを回避する方法を学んでしまいます。 ここが UEBA の出番です。リスクのスコアリング方法とアルゴリズムにより、実際に何が起こっているのかを把握できます。
+
 
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Azure Sentinel のエンティティの行動分析機能について学習しました。 実装や、取得した分析情報を使用する方法に関する実用的なガイダンスについては、次の記事を参照してください。
 
 - Azure Sentinel の[エンティティの行動分析を有効にする](./enable-entity-behavior-analytics.md)。
+- [UEBA データを使用してインシデントを調査する](investigate-with-ueba.md)。
 - [セキュリティの脅威を検出する](./hunting.md)。
+
+詳しくは、「[Azure Sentinel UEBA エンリッチメント リファレンス](ueba-enrichments.md)」もご覧ください。

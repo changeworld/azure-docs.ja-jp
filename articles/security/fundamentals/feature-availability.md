@@ -6,12 +6,12 @@ ms.author: bagol
 ms.service: security
 ms.topic: reference
 ms.date: 04/29/2021
-ms.openlocfilehash: 6cead1e9dfb8cf1d12ef09079e97779c08523e36
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d545d406bc914eaf634ff2c47698df7c1206a5cb
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290580"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655518"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -62,7 +62,8 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 |- [Bring Your Own ML (BYO-ML)](/azure/sentinel/bring-your-own-ml) | パブリック プレビュー | パブリック プレビュー |
 | - [クロステナントまたはクロスワークスペース インシデント ビュー](/azure/sentinel/multiple-workspace-view) |パブリック プレビュー | パブリック プレビュー |
 | - [エンティティ分析情報](/azure/sentinel/enable-entity-behavior-analytics) | パブリック プレビュー | 利用不可 |
-| - [Fusion](/azure/sentinel/fusion)<br>高度なマルチステージ攻撃の検出 <sup>[1](#footnote1)</sup> | GA | 利用不可 |
+| - [Fusion](/azure/sentinel/fusion)<br>高度なマルチステージ攻撃の検出 <sup>[1](#footnote1)</sup> | GA | GA |
+| - [ハンティング](/azure/sentinel/hunting) | GA | GA |
 |- [ノートブック](/azure/sentinel/notebooks) | GA | GA |
 |- [SOC インシデント監査メトリック](/azure/sentinel/manage-soc-with-incident-metrics) | GA | GA |
 |- [ウォッチリスト](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-watchlist-is-now-in-public-preview/ba-p/1765887) | パブリック プレビュー | 利用不可 |
@@ -223,7 +224,7 @@ Office 365 GCC は、Azure の Azure Active Directory (Azure AD) とペアにな
 
 ## <a name="next-steps"></a>次のステップ
 
-- [共同責任](https://docs.microsoft.com/azure/security/fundamentals/shared-responsibility)モデル、クラウド プロバイダーが処理するセキュリティ タスク、およびお客様が処理するタスクについて理解します。
-- [Azure Government クラウド](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)の機能と、連邦、州、地方の各統治機関や関連組織に対して適用されるコンプライアンスをサポートする安定した設計やセキュリティについて理解します。
-- [Office 365 Government プラン](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/office-365-us-government#about-office-365-government-environments)について理解します。
+- [共同責任](shared-responsibility.md)モデル、クラウド プロバイダーが処理するセキュリティ タスク、およびお客様が処理するタスクについて理解します。
+- [Azure Government クラウド](/azure/azure-government/documentation-government-welcome)の機能と、連邦、州、地方の各統治機関や関連組織に対して適用されるコンプライアンスをサポートする安定した設計やセキュリティについて理解します。
+- [Office 365 Government プラン](/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/office-365-us-government#about-office-365-government-environments)について理解します。
 - 法的および規制基準に対する [Azure のコンプライアンス](/azure/compliance/)について理解します。

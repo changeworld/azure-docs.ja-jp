@@ -3,17 +3,17 @@ title: Azure Cost Management と AWS の統合セットアップをする
 description: この記事では、Azure Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2020
+ms.date: 05/10/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 2b8a008decc41a5686fb2c8d9fee271f95f0fef3
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: e1d332ba3ff2da50db9f59ce844844ac4c87cc0b
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122413"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738448"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
@@ -149,12 +149,20 @@ AWS 組織へのアクセス許可を追加します。
 
 AWS コネクタを作成し、AWS コストの監視を開始するには、次の情報を使用します。
 
+### <a name="prerequisites"></a>前提条件
+
+- 少なくとも 1 つの管理グループが有効になっていることを確認します。 サブスクリプションを AWS サービスにリンクするには、管理グループが必要です。 管理グループの作成方法の詳細については、[Azure での管理グループの作成](../../governance/management-groups/create-management-group-portal.md)に関する記事をご覧ください。 
+- 自分がサブスクリプションの管理者であることを確認します。
+- 「[AWS でコストと使用状況レポートを作成する](#create-a-cost-and-usage-report-in-aws)」セクションの説明に従って、新しい AWS コネクタに必要な設定を完了します。
+
+
+### <a name="create-a-new-connector"></a>新しいコネクタを作成する
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 左側のメニュー ("ハンバーガー" のような 3 本線のメニュー アイコン) にある **[ホーム]** をクリックして Azure ホームに移動します。
-3. ページ下部の **[ツール]**  >  **[コスト管理]** に移動します。
-3. **[設定]** の **[AWS のコネクタ]** を選択します。  
-4. ページの上部にある **[+ 追加]** を選択し、コネクタを作成します。  
-    :::image type="content" source="./media/aws-integration-setup-configure/aws-connector.png" alt-text="[AWS のコネクタ] 設定を示す例" :::
+1. **[コストの管理と請求]** に移動し、必要に応じて課金スコープを選択します。
+1. **[コスト分析]** を選択し、 **[設定]** を選択します。 
+1. **[AWS のコネクタ]** を選択します。
+1. **[コネクタの追加]** を選択します。
 1. **[コネクタの作成]** ページで、 **[表示名]** にコネクタの名前を入力します。  
     :::image type="content" source="./media/aws-integration-setup-configure/create-aws-connector01.png" alt-text="AWS コネクタの作成ページの例" :::
 1. 必要に応じて、既定の管理グループを選択します。 検出されたすべてのリンクされたアカウントが格納されます。 これは後で設定できます。

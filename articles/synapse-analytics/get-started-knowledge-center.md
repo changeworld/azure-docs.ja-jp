@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: f4cc631bd3ff05dc63566677ec96ef0360d362c9
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f36d5deb93f141bb7467a50d4b5dba7f3df1ea92
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517353"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517012"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Synapse Knowledge Center を探索する
 
@@ -51,7 +51,7 @@ Synapse Studio で Knowledge Center を検索するには、次の 2 つの方�
 1. 最初のクエリ (28 行目から 32 行目) までスクロールして、クエリ テキストを選択します。
 1. [実行] をクリックします。 選択したコードだけが実行されます。
 
-## <a name="gallery-a-collectiopn-of-sample-data-sets-and-sample-code"></a>ギャラリー: サンプル データセットとサンプル コードのコレクション
+## <a name="gallery-a-collection-of-sample-datasets-and-sample-code"></a>ギャラリー: サンプル データセットとサンプル コードのコレクション
 
 1. **[Knowledge Center]** に移動し、 **[ギャラリーを参照]** をクリックします。
 1. 上部にある **[SQL スクリプト]** タブを選択します。

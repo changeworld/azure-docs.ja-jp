@@ -8,18 +8,20 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/30/2021
 ms.author: rishjai
-ms.openlocfilehash: 569687a6efca34e631b096b448d988c18b21a6c9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 5c952f496a52da70f10e1de4d8a9e9164c8a9706
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326932"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759007"
 ---
 # <a name="deprecation-of-ip-config-parameters-for-the-cmdlet-new-azrecoveryservicesasrvmnicconfig"></a>コマンドレット New-AzRecoveryServicesAsrVMNicConfig の IP Config パラメーターの非推奨
 
 この記事では、非推奨、付随する影響、および次のシナリオに対してお客様が利用できる代替オプションについて説明します。
 
-フェールオーバーまたはテスト フェールオーバーのプライマリ IP 構成設定を構成します。 このコマンドレットは、コマンドレット New-AzRecoveryServicesAsrVMNicConfig を使用する Azure から Azure DR シナリオのすべてのユーザーに影響します。
+フェールオーバーまたはテスト フェールオーバーのプライマリ IP 構成設定を構成します。 
+
+このコマンドレットは、バージョン "_Az PowerShell 5.9.0 以上_" でコマンドレット New-AzRecoveryServicesAsrVMNicConfig を使用している、Azure から Azure への DR シナリオのすべてのお客様に影響します。
 
 > [!IMPORTANT]
 > お客様は、環境の中断を回避するために、できるだけ早く修復手順を実行することをお勧めします。 

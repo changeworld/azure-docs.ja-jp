@@ -1,16 +1,16 @@
 ---
-title: PowerShell を使用して Service Fabric マネージド クラスターにアプリケーションをデプロイする (プレビュー)
+title: PowerShell を使用して Service Fabric マネージド クラスターにアプリケーションをデプロイする
 description: このチュートリアルでは、Service Fabric マネージド クラスターに接続し、PowerShell を使用してアプリケーションをデプロイします。
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.openlocfilehash: 36a91d2852bcda5f958441b48ef4721d6ccc83c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 5/10/2021
+ms.openlocfilehash: c51d753f3d0aa5d3c05c66fc45ae653f0bfa8e71
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91410227"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685425"
 ---
-# <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster-preview"></a>チュートリアル:Service Fabric マネージド クラスターにアプリケーションをデプロイする (プレビュー)
+# <a name="tutorial-deploy-an-app-to-a-service-fabric-managed-cluster"></a>チュートリアル: Service Fabric マネージド クラスターにアプリケーションをデプロイする
 
 このチュートリアル シリーズでは、次のことについて説明します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "91410227"
 次のコマンドは、クラスター証明書の拇印をクラスター リソースに照会するために使用できます。
 
 ```powershell
-$serverThumbprint = (Get-AzResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceFabric/managedclusters/mysfcluster).Properties.clusterCertificateThumbprint
+$serverThumbprint = (Get-AzResource -ResourceId /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ServiceFabric/managedclusters/mysfcluster).Properties.clusterCertificateThumbprints
 ```
 
 クラスター証明書の拇印があれば、クラスターに接続することができます。
@@ -93,7 +93,12 @@ Remove-ServiceFabricApplication fabric:/Voting
 
 ## <a name="next-steps"></a>次の手順
 
-この手順では、Service Fabric マネージド クラスターにアプリケーションをデプロイしました。 Service Fabric マネージド クラスターについて詳しくは、以下の記事をご覧ください。
+この手順では、Service Fabric マネージド クラスターにアプリケーションをデプロイしました。 アプリケーションのデプロイ オプションの詳細については、次を参照してください。
 
-> [!div class="nextstepaction"]
-> [Service Fabric マネージド クラスターに関するよく寄せられる質問](faq-managed-cluster.md)
+* [マネージド クラスターのアプリケーション シークレットをデプロイする](how-to-managed-cluster-application-secrets.md)
+* [ARM テンプレートを使用してマネージド クラスター アプリケーションをデプロイする](how-to-managed-cluster-app-deployment-template.md)
+* [マネージド ID を使用してマネージド クラスター アプリケーションをデプロイする](how-to-managed-cluster-application-managed-identity.md)
+
+マネージド クラスターの構成オプションの詳細については、次を参照してください。
+
+* [マネージド クラスターを構成する](how-to-managed-cluster-configuration.md)

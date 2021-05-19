@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: a3677e50d9dab99eaedc88cdd61e8e2ed9a3761b
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9cb46ef11ab7cc86efa0842fe5952b92170aa648
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321755"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737404"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -39,7 +39,9 @@ Azure Machine Learning コンピューティング インスタンスは、デ�
 |ML &nbsp;用&nbsp;に事前構成済み|事前に構成された最新の ML パッケージ、ディープ ラーニング フレームワーク、GPU ドライバーを使用して、セットアップ タスクの時間を節約できます。|
 |フル カスタマイズが可能|Azure VM の種類 (GPU を含む) や永続的な低レベル カスタマイズ (パッケージやドライバーのインストールなど) が広範にサポートされているので、高度なシナリオに簡単に対応できます。 |
 
-自分で[コンピューティング インスタンスを作成](how-to-create-manage-compute-instance.md?tabs=python#create)することも、管理者が代わりに[コンピューティング インスタンスを作成](how-to-create-manage-compute-instance.md?tabs=python#create-on-behalf-of-preview)することもできます。
+自分で [コンピューティング インスタンスを作成する](how-to-create-manage-compute-instance.md?tabs=python#create)ことも、管理者が **[代わりにコンピューティング インスタンスを作成する](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** こともできます。
+
+また、ニーズに応じてコンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>ツールと環境
 
@@ -84,7 +86,7 @@ SSH を必要としないリモート サーバーとしてコンピューティ
 |ONNX パッケージ|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning の Python と R SDK のサンプル||
 
-Python パッケージはすべて、**Python 3.6 - AzureML** 環境にインストールされます。  
+Python パッケージはすべて、**Python 3.8 - AzureML** 環境にインストールされます。 コンピューティング インスタンスには、ベース OS として Ubuntu 18.04 があります。
 
 ## <a name="accessing-files"></a>ファイルにアクセスする
 
@@ -98,7 +100,7 @@ Python パッケージはすべて、**Python 3.6 - AzureML** 環境にインス
 
 小さいファイルの書き込みをネットワーク ドライブに対して行うと、コンピューティング インスタンス自体のローカル ディスクに書き込む場合よりも遅くなる可能性があります。  小さなファイルを多数作成する場合は、コンピューティング インスタンス上に直接配置されているディレクトリ (`/tmp` ディレクトリなど) を使用するようにしてください。 なお、これらのファイルには、他のコンピューティング インスタンスからはアクセスできなくなることにご注意ください。 
 
-一時データにはコンピューティング インスタンスの `/tmp` ディレクトリを使用できます。  ただし、コンピューティング インスタンスの OS ディスクに非常に大きなデータ ファイルを書き込むことは避けてください。 コンピューティング インスタンス上の OS ディスクには 128 GB の容量があります。 また、ノートブック ファイル共有に大量のトレーニング データを格納することも避けてください。 代わりに、[データストアとデータセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)を使用してください。 
+ノートブック ファイル共有にトレーニング データを格納しないでください。 一時データにはコンピューティング インスタンスの `/tmp` ディレクトリを使用できます。  ただし、コンピューティング インスタンスの OS ディスクに非常に大きなデータ ファイルを書き込むことは避けてください。 コンピューティング インスタンス上の OS ディスクには 128 GB の容量があります。 また、/mnt にマウントされた一時ディスクに一時的なトレーニング データを格納することもできます。 一時ディスクのサイズは、選択した VM サイズに基づいて構成可能であり、より大きなサイズの VM が選択されている場合は、より大量のデータを格納できます。 また、[データストアとデータセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)をマウントすることもできます。 
 
 ## <a name="managing-a-compute-instance"></a>コンピューティング インスタンスの管理
 
@@ -106,41 +108,18 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ![コンピューティング インスタンスを管理する](./media/concept-compute-instance/manage-compute-instance.png)
 
-次の操作を行うことができます。
-
-* [コンピューティング インスタンスを作成する](#create)。 
-* コンピューティング インスタンス タブを更新する。
-* コンピューティング インスタンスを開始、停止、再起動する。  インスタンスは、実行されるたびに支払いが発生します。 コンピューティング インスタンスを使用していないときは、コストを削減するために、コンピューティング インスタンスを停止します。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。 コンピューティング インスタンスを停止すると、コンピューティング時間の課金は停止しますが、ディスク、パブリック IP、および Standard Load Balancer に対しては引き続き課金されます。
-* コンピューティング インスタンスを削除する。
-* インスタンス化されたコンピューティングのリストをフィルター処理して、作成したもののみを表示する。
-
-使用できるワークスペース内の各コンピューティング インスタンスごとに、次のことができます。
-
-* コンピューティング インスタンス上の Jupyter、JupyterLab、RStudio にアクセスする
-* コンピューティング インスタンスに SSH 接続する。 SSH アクセスは既定で無効になっていますが、コンピューティング インスタンスの作成時に有効にすることができます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて実行されます。 このタブには、SSH 接続の詳細が表示されます (IP アドレス、ユーザー名、ポート番号など)。
-* 特定のコンピューティング インスタンスに関する詳細を取得する (IP アドレス、リージョンなど)。
-
-[Azure RBAC](../role-based-access-control/overview.md) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
-
-Azure RBAC によって、次のアクションを制御できます。
-* *Microsoft.MachineLearningServices/workspaces/computes/read*
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/computes/delete*
-* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
-
-コンピューティング インスタンスを作成するには、次のアクションのためのアクセス許可が必要です。
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
-
+コンピューティング インスタンスの管理について詳しくは、「[Azure Machine Learning コンピューティング インスタンスの作成と管理](how-to-create-manage-compute-instance.md)」をご覧ください。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>コンピューティング インスタンスを作成する
 
-Azure Machine Learning Studio のワークスペースで、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから [新しいコンピューティング インスタンス](how-to-create-attach-compute-studio.md#compute-instance)を作成します。 
+管理者は、 **[ワークスペース内で他のユーザーに代わってコンピューティング インスタンスを作成できます (プレビュー)](how-to-create-manage-compute-instance.md#on-behalf)** 。  
+
+また、コンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
+
+自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから[新しいコンピューティング インスタンスを作成](how-to-create-attach-compute-studio.md#compute-instance)します。 
 
 インスタンスを作成することもできます
-* [統合ノートブックのエクスペリエンス](tutorial-1st-experiment-sdk-setup.md#azure)から直接
+* [統合ノートブックのエクスペリエンス](tutorial-train-models-with-aml.md#azure)から直接
 * Azure Portal
 * Azure Resource Manager テンプレートから。 テンプレートの例については、[Azure Machine Learning コンピューティング インスタンス テンプレートの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)に関する記事を参照してください。
 * [Azure Machine Learning SDK](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-compute-instance.md) を使用して
@@ -150,24 +129,6 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 コンピューティング インスタンスには P10 OS ディスクが付属しています。 一時ディスクの種類は、選択された VM サイズによって異なります。 現在、OS ディスクの種類を変更することはできません。
 
-
-### <a name="create-on-behalf-of-preview"></a>代理作成 (プレビュー)
-
-管理者は、データ科学者に代わってコンピューティング インスタンスを作成し、次のようにして彼らにそのインスタンスを割り当てることができます。
-* [Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)  このテンプレートに必要な TenantID と ObjectID を見つける方法の詳細については、「[認証構成のための ID オブジェクト ID を見つける](../healthcare-apis/fhir/find-identity-object-ids.md)」を参照してください。  これらの値は Azure Active Directory ポータルでも見つけることができます。
-* REST API
-
-コンピューティング インスタンスを作成する対象となるデータ科学者には、次の Azure RBAC アクセス許可が必要です。 
-* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
-
-データ科学者は、コンピューティング インスタンスを開始、停止、再起動できます。 コンピューティング インスタンスは、次に使用できます。
-* Jupyter
-* JupyterLab
-* RStudio
-* 統合されたノートブック
 
 ## <a name="compute-target"></a>コンピューティング ターゲット
 
@@ -182,7 +143,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 コンピューティング インスタンスは、テストまたはデバッグのシナリオのためのローカル推論配置ターゲットとして使用できます。
 
 > [!TIP]
-> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足し、使用できない状態になった場合は、JupyterLab ターミナルからファイルまたはフォルダーを削除して OS ディスク (/ にマウントされている /dev/sda1/ ファイル システム) 上の少なくとも 5 GB のディスク領域をクリアしてから、sudo の再起動を実行してください。 JupyterLab ターミナルにアクセスするには、 https://ComputeInstanceName.AzureRegion.instances.azureml.ms/lab (コンピューティング インスタンスと Azure リージョンの名前を置き換えます) に移動し、[ファイル] -> [新規] -> [ターミナル] の順にクリックします。 コンピューティング インスタンスを[停止または再起動する](how-to-create-manage-compute-instance.md#manage)前に、少なくとも 5 GB をクリアしてください。 ターミナルで df -h を実行することによって、使用可能なディスク領域を確認できます。
+> コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足し、使用できない状態になった場合は、コンピューティング インスタンスのターミナルからファイルまたはフォルダーを削除して OS ディスク (/ にマウントされている) 上のディスク領域を 5 GB 以上クリアしてから、`sudo reboot` を実行してください。 ターミナルにアクセスするには、コンピューティング リスト ページまたはコンピューティング インスタンスの詳細ページに移動し、 **[ターミナル]** リンクをクリックします。 ターミナルで `df -h` を実行することによって、使用可能なディスク領域を確認できます。 `sudo reboot` を実行する前に、5 GB 以上の領域をクリアしてください。 5 GB のディスク領域がクリアされるまで、Studio を使用してコンピューティング インスタンスの停止も再起動も実行しないでください。
 
 ## <a name="next-steps"></a>次のステップ
 

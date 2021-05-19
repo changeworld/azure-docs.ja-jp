@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory の自動ユーザー プロビジョニングのデプロイを計画する
-description: 自動ユーザー プロビジョニングの計画と実行に関するガイダンス
+description: Azure Active Directory の自動ユーザー プロビジョニングの計画と実行に関するガイド
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/31/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: f29bf3fc347fa453dd2d7ebd1f10b3f0e07fac10
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.reviewer: arvinh
+ms.openlocfilehash: a8b2378949e0ead4d05651fc28919aceecd4c542
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059294"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785027"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
+# <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Azure Active Directory で自動ユーザー プロビジョニングの展開を計画する
 
 多くの組織は、エンドユーザーの生産性に関して、ServiceNow、Zscaler、Slack などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。 従来、IT スタッフは、各 SaaS アプリケーションのユーザー ID を安全に管理するために、CSV ファイルをアップロードしたりカスタム スクリプトを使用したりするなどの手動のプロビジョニング方法に依存してきました。 これらのプロセスは、エラーが発生しやすく、安全でなく、管理が困難です。
 

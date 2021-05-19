@@ -3,14 +3,14 @@ author: trevorbye
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 01/27/2020
+ms.date: 05/04/2021
 ms.author: trbye
-ms.openlocfilehash: ab22ad75b5b49588bbdcedf5fc995ce65fe4e690
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: 4ac14a82fa5698faf6f79c97cd1cdd729f1966a8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105105156"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769457"
 ---
 意図認識を実行するには、LUIS プレビュー ポータルを使用して、LUIS アカウントとプロジェクトを作成する必要があります。 このクイックスタートで必要なのは、LUIS サブスクリプションのみです。 音声サービスのサブスクリプションは "*不要*" です。
 
@@ -31,7 +31,7 @@ LUIS アプリを作成するには、次の手順に従います。
 
 1. LUIS プレビュー ポータルから目的のアプリをアプリし、**[Publish]\(発行\)** ボタンを選択します。
 
-2. **[Production]\(運用\)** スロットを選択します。`en-US` を使用している場合は、**[Speech priming]\(音声認識の準備\)** オプションを **[On]\(オン\)** の位置に切り替えます。 次に、**[Publish]\(発行\)** ボタンを選択します。
+2. **[Production]\(運用\)** スロットを選択します。`en-US` を使用している場合は、 **[change settings]\(設定の変更\)** を選択し、 **[Speech priming]\(音声プライミング\)** オプションを **[On]\(オン\)** の位置に切り替えます。 次に、**[Publish]\(発行\)** ボタンを選択します。
 
     > [!IMPORTANT]
     > **[Speech priming]\(音声認識の準備\)** の使用を強くお勧めします。音声認識の精度が向上します。
@@ -39,12 +39,12 @@ LUIS アプリを作成するには、次の手順に従います。
     > [!div class="mx-imgBorder"]
     > ![LUIS をエンドポイントに発行する](../../../media/luis/publish-app-popup.png)
 
-3. LUIS プレビュー ポータルで、**[管理]** を選択し、次に **[Azure リソース]** を選択します。 このページでは、LUIS キーと場所 ("_リージョン_" と呼ばれることもあります) を確認できます。
+3. LUIS プレビュー ポータルで、**[管理]** を選択し、次に **[Azure リソース]** を選択します。 このページでは、LUIS 予測リソースの LUIS キーと場所 ("_リージョン_" と呼ばれることもあります) を確認できます。
 
    > [!div class="mx-imgBorder"]
    > ![LUIS キーと場所](../../../media/luis/luis-key-region.png)
 
-4. キーと場所を確認したら、アプリ ID が必要になります。 **[アプリケーション設定]** を選択すると、このページにアプリ ID が表示されます。
+4. キーと場所を確認したら、アプリ ID が必要になります。 **[設定]** を選択します。 アプリ ID は、このページから入手できます。
 
    > [!div class="mx-imgBorder"]
    > ![LUIS アプリ ID](../../../media/luis/luis-app-id.png)

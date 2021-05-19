@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 570bfed5ae5fc6fafea36b9ed1f2673a0daae22b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 75e87e004190ebe86c983c5956105ec629dcc673
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521511"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772281"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -40,8 +40,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペースまたはノートブック仮想マシンがまだない場合は、[セットアップのチュートリアルのパート 1](tutorial-1st-experiment-sdk-setup.md) を済ませておいてください。
-* セットアップのチュートリアルが完了したら、同じノートブック サーバーを使用して、*tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* ノートブックを開きます。
+* まだ Azure Machine Learning ワークスペースまたはコンピューティング インスタンスがない場合は、[Azure Machine Learning の利用開始に関するクイックスタート](quickstart-create-resources.md)を完了します。
+* ウィザードの完了後:
+    1. スタジオで **[Notebooks]** を選択します。
+    1. **[サンプル]** タブを選択します。
+    1. *tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* ノートブックを開きます。
 
 独自の[ローカル環境](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)でセットアップのチュートリアルを実行したい場合は、[GitHub](how-to-configure-environment.md#local) 上のチュートリアルを利用できます。 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` を実行して必要なパッケージを取得してください。
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/18/2020
+ms.date: 05/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 49a66c265e5732c7a900a149af9f69b37efd5a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b80f3ebda672403bf42beeaec976979c9244804e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92456642"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735878"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-browserstack-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BrowserStack Single Sign-on の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92456642"
 * BrowserStack Single Sign-on にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して BrowserStack Single Sign-on に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,25 +39,22 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * BrowserStack Single Sign-on では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 
-* BrowserStack Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-## <a name="adding-browserstack-single-sign-on-from-the-gallery"></a>ギャラリーからの BrowserStack Single Sign-on の追加
+## <a name="add-browserstack-single-sign-on-from-the-gallery"></a>ギャラリーからの BrowserStack Single Sign-on の追加
 
 Azure AD への BrowserStack Single Sign-on の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に BrowserStack Single Sign-on を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**BrowserStack Single Sign-on**」と入力します。
 1. 結果のパネルから **BrowserStack Single Sign-on** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-browserstack-single-sign-on"></a>BrowserStack Single Sign-on の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-browserstack-single-sign-on"></a>BrowserStack Single Sign-on の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、BrowserStack Single Sign-on に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと BrowserStack Single Sign-on の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-BrowserStack Single Sign-on で Azure AD の SSO を構成してテストするには、次の要素を完了します。
+BrowserStack Single Sign-on で Azure AD SSO を構成してテストするには、次の手順に従います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -72,15 +67,13 @@ BrowserStack Single Sign-on で Azure AD の SSO を構成してテストする�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **BrowserStack Single Sign-on** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **BrowserStack Single Sign-on** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
-
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://login.browserstack.com/auth/realms/<REALM_ID>`
 
@@ -122,15 +115,9 @@ BrowserStack Single Sign-on で Azure AD の SSO を構成してテストする�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[BrowserStack Single Sign-on]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-browserstack-single-sign-on-sso"></a>BrowserStack Single Sign-on の SSO の構成
@@ -143,20 +130,20 @@ BrowserStack Single Sign-on で Azure AD の SSO を構成してテストする�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで BrowserStack Single Sign-on のタイルをクリックすると、SSO を設定した BrowserStack Single Sign-on に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる BrowserStack Single Sign-on のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* BrowserStack Single Sign-on のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した BrowserStack Single Sign-on に自動的にサインインされます。 
 
-- [Azure AD で BrowserStack Single Sign-on を試す](https://aad.portal.azure.com/)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [BrowserStack Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した BrowserStack Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>次のステップ
 
-- [高度な可視性と制御によって BrowserStack Single Sign-on を保護する方法](/cloud-app-security/proxy-intro-aad)
+BrowserStack Single Sign-on を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

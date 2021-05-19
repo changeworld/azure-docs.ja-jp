@@ -1,14 +1,14 @@
 ---
 title: オンプレミスの管理コンソールからセンサーを管理する
 description: センサーのバージョンの更新、センサーへのシステム設定のプッシュ、センサーでのエンジンの有効化と無効化など、管理コンソールからセンサーを管理する方法について説明します。
-ms.date: 12/07/2020
+ms.date: 04/22/2021
 ms.topic: how-to
-ms.openlocfilehash: 4706fbcf58b8e5f5eed6532f9a08f65c7716e07e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a1f1dbd69013db63365b64e255225c465b67238
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781927"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734835"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>管理コンソールからセンサーを管理する
 
@@ -42,25 +42,25 @@ ms.locfileid: "104781927"
 
 1. コンソールの左側ペインで、 **[システム設定]** を選択します。
 
-2. **[センサーの構成]** ペインで、いずれかのオプションを選択します。
+1. **[センサーの構成]** ペインで、いずれかのオプションを選択します。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/sensor-system-setting-options.png" alt-text="センサーのシステム設定オプション。":::
 
    次の例では、エンタープライズ センサーのメール サーバー パラメーターを定義する方法について説明します。
 
-3. **[メール サーバー]** を選択します。
+1. **[メール サーバー]** を選択します。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/edit-system-settings-screen.png" alt-text="[システム設定] 画面からメール サーバーを選択します。":::
 
-4. 左側でセンサーを選択します。
+1. 左側でセンサーを選択します。
 
-5. メール サーバー パラメーターを設定し、 **[複製]** を選択します。 センサー ツリー内の各項目は、横にチェック ボックスが付いた状態で表示されます。
+1. メール サーバー パラメーターを設定し、 **[複製]** を選択します。 センサー ツリー内の各項目は、横にチェック ボックスが付いた状態で表示されます。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/check-off-each-sensor.png" alt-text="目的のセンサーのチェック ボックスがオンになっていることを確認します。":::
 
-6. センサー ツリーで、構成を適用する項目を選択します。
+1. センサー ツリーで、構成を適用する項目を選択します。
 
-7. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="update-versions"></a>バージョンを更新する
 
@@ -70,35 +70,53 @@ ms.locfileid: "104781927"
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
 
-2. Azure Defender for IoT に移動します。
+1. Azure Defender for IoT に移動します。
 
-3. **[更新プログラム]** ページに移動します。
+1. **[更新プログラム]** ページに移動します。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/update-screen.png" alt-text="[更新プログラム] ダッシュボード ビューのスクリーンショット。":::
 
-4. **[センサー]** セクションの **[ダウンロード]** を選択し、ファイルを保存します。
+1. **[センサー]** セクションの **[ダウンロード]** を選択し、ファイルを保存します。
 
-5. 管理コンソールにサインインして、 **[システム設定]** を選択します。
+1. 管理コンソールにサインインして、 **[システム設定]** を選択します。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/admin-system-settings.png" alt-text="[システム設定] を選択する [管理] メニューのスクリーンショット。":::
 
-6. **[センサー エンジンの構成]** セクションで、更新するセンサーにマークを付けてから、 **[自動更新]** を選択します。
+1. **[センサー エンジンの構成]** セクションで、更新するセンサーを選択し、 **[自動更新]** を選択します。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/sensors-select.png" alt-text="学習モードと自動更新を示している 2 つのセンサー。":::
 
-7. **[変更の保存]** を選択します。
+1. **[変更の保存]** を選択します。
 
-8. **[センサー バージョンのアップグレード]** ペインで、:::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/plus-icon.png" border="false"::: を選択します。
+1. そのセンサーで **[システム設定]** を選択し、 **[更新]** を選択します。
 
-   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/display-files.png" alt-text="ファイルを表示する [センサー バージョンのアップグレード] 画面。":::
+    :::image type="content" source="media/how-to-manage-individual-sensors/upgrade-pane-v2.png" alt-text="更新ペインのスクリーンショット。":::
 
 9. **[ファイルのアップロード]** ダイアログ ボックスが開きます。 **[更新プログラム]** ページからダウンロードしたファイルをアップロードします。
 
-   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/upload-file.png" alt-text="[参照] ボタンを選択し、ファイルをアップロードします。":::
+    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/upload-file.png" alt-text="[参照] ボタンを選択し、ファイルをアップロードします。":::
 
-10. 更新プロセス中には、 **[サイト管理]** ウィンドウに各センサーの更新状態が表示されます。
+**[サイト管理]** ウィンドウでセンサーごとに更新状態を監視できます。
 
-   :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/progress.png" alt-text="更新の進行状況を観察します。":::
+:::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/progress.png" alt-text="更新の進行状況を観察します。":::
+
+### <a name="update-sensors-from-the-on-premises-management-console"></a>オンプレミスの管理コンソールでセンサーを更新する
+
+管理コンソールでセンサーの更新状態を確認できます。 更新に失敗した場合、オンプレミスの管理コンソール (バージョン 2.3.5 以上) でセンサーの更新を再試行できます。
+
+オンプレミスの管理コンソールでセンサーを更新するには
+
+1. オンプレミスの簡易コンソールにサインインし、 **[サイト管理]** ページに移動します。
+
+1. [更新の進行状況] 列で **[失敗]** の表示があるセンサーを探し、ダウンロード ボタンを押します。 
+
+    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/download-update-button.png" alt-text="ダウンロード アイコンを押して、最新のセンサーをダウンロード、インストールします。":::
+
+**[サイト管理]** ウィンドウでセンサーごとに更新状態を監視できます。
+
+:::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/progress.png" alt-text="更新の進行状況を観察します。":::
+
+センサーを更新できない場合は、カスタマー サポートにお問い合わせください。
 
 ## <a name="update-threat-intelligence-packages"></a>脅威インテリジェンス パッケージを更新する 
 
@@ -110,17 +128,17 @@ ms.locfileid: "104781927"
 
 1. Defender for IoT の **[更新プログラム]** ページに移動します。 
 
-2. ファイルをダウンロードして保存します。
+1. ファイルをダウンロードして保存します。
 
-3. 管理コンソールにサインインします。 
+1. 管理コンソールにサインインします。 
 
-4. サイド メニューで、 **[システム設定]** を選択します。 
+1. サイド メニューで、 **[システム設定]** を選択します。 
 
-5. **[センサー エンジンの構成]** セクションで、更新プログラムを受信する必要のあるセンサーを選択します。  
+1. **[センサー エンジンの構成]** セクションで、更新プログラムを受信する必要のあるセンサーを選択します。  
 
-6. **[脅威インテリジェンス データの選択]** セクションで、プラス記号 ( **+** ) を選択します。 
+1. **[脅威インテリジェンス データの選択]** セクションで、プラス記号 ( **+** ) を選択します。 
 
-7. Defender for IoT の **[更新プログラム]** ページから、ダウンロードしたパッケージをアップロードします。
+1. Defender for IoT の **[更新プログラム]** ページから、ダウンロードしたパッケージをアップロードします。
 
 ## <a name="understand-sensor-disconnection-events"></a>センサー切断イベントについて
 
@@ -153,9 +171,9 @@ ms.locfileid: "104781927"
 
 1. コンソールの左側ペインで、 **[システム設定]** を選択します。
 
-2. **[センサー エンジンの構成]** セクションで、エンジンに対して **[有効]** または **[無効]** を選択します。
+1. **[センサー エンジンの構成]** セクションで、エンジンに対して **[有効]** または **[無効]** を選択します。
          
-3. **[変更の保存]** を選択します。
+1. **[変更の保存]** を選択します。
 
    いずれかのエンタープライズ センサーについて、有効にされたエンジンの不一致があると、赤色の感嘆符が表示されます。 こうしたエンジンは、センサーから直接無効にされた可能性があります。
 
@@ -217,21 +235,21 @@ ms.locfileid: "104781927"
 
 1. **[システム設定]** ウィンドウで、 **[センサー バックアップのスケジュール]** を選択します。 オンプレミスの管理コンソールで管理しているセンサーが、 **[センサーのバックアップ スケジュール]** ダイアログ ボックスに表示されます。  
 
-2. **[バックアップの収集]** トグルを有効にします。  
+1. **[バックアップの収集]** トグルを有効にします。  
 
-3. カレンダー上での間隔、日付、タイム ゾーンを選択します。 時刻の形式は、24 時間制に基づきます。 たとえば、午後の 6:00 は **18:00** として入力します。 
+1. カレンダー上での間隔、日付、タイム ゾーンを選択します。 時刻の形式は、24 時間制に基づきます。 たとえば、午後の 6:00 は **18:00** として入力します。 
 
-4. **[バックアップ ストレージの割り当て]** フィールドに、バックアップに割り当てるストレージを入力します。 最大容量を超えた場合は通知が行われます。
+1. **[バックアップ ストレージの割り当て]** フィールドに、バックアップに割り当てるストレージを入力します。 最大容量を超えた場合は通知が行われます。
 
-5. **[最後の保持]** フィールドで、センサーごとに保持するバックアップの数を指定します。 制限を超えると、最も古いバックアップが削除されます。  
+1. **[最後の保持]** フィールドで、センサーごとに保持するバックアップの数を指定します。 制限を超えると、最も古いバックアップが削除されます。  
 
-6. バックアップの場所を選択します。  
+1. バックアップの場所を選択します。  
 
    - オンプレミスの管理コンソールにバックアップするには、 **[カスタム パス]** トグルを無効にします。 既定の場所は `/var/cyberx/sensor-backups` です。  
 
    - 外部サーバーにバックアップするには、 **[カスタム パス]** トグルを有効にして、場所を入力します。 次の数値と文字がサポートされています: `/, a-z, A-Z, 0-9, and, _`。 
 
-7. **[保存]** を選択します。 
+1. **[保存]** を選択します。 
 
 すぐにバックアップするには: 
 
@@ -277,39 +295,39 @@ CLI を使用して復元するには:
 
 1. 外部の SMB サーバーに共有フォルダーを作成します。 
 
-2. SMB サーバーへのアクセスに必要なフォルダー パス、ユーザー名、パスワードを取得します。 
+1. SMB サーバーへのアクセスに必要なフォルダー パス、ユーザー名、パスワードを取得します。 
 
-3. Defender for IoT で、バックアップ用のディレクトリを作成します。 
+1. Defender for IoT で、バックアップ用のディレクトリを作成します。 
 
    `sudo mkdir /<backup_folder_name_on_server>` 
 
    `sudo chmod 777 /<backup_folder_name_on_server>/` 
 
-4. fstab を編集します。  
+1. fstab を編集します。  
 
    `sudo nano /etc/fstab` 
 
    `add - //<server_IP>/<folder_path> /<backup_folder_name_on_cyberx_server> cifs rw,credentials=/etc/samba/user,vers=3.0,uid=cyberx,gid=cyberx,file_mode=0777,dir_mode=0777 0 0` 
 
-5. 共有する資格情報を編集または作成します。 これらは SMB サーバーの資格情報です。 
+1. 共有する資格情報を編集または作成します。 これらは SMB サーバーの資格情報です。 
 
    `sudo nano /etc/samba/user` 
 
-6. 次の項目を追加します。  
+1. 次の項目を追加します。  
 
    `username=<user name>` 
 
    `password=<password>` 
 
-7. ディレクトリをマウントします。 
+1. ディレクトリをマウントします。 
 
    `sudo mount -a` 
 
-8. Defender for IoT センサー上の共有フォルダーに、バックアップ ディレクトリを構成します。  
+1. Defender for IoT センサー上の共有フォルダーに、バックアップ ディレクトリを構成します。  
 
    `sudo nano /var/cyberx/properties/backup.properties` 
 
-9. `Backup.shared_location` を `<backup_folder_name_on_cyberx_server>` に設定します。
+1. `Backup.shared_location` を `<backup_folder_name_on_cyberx_server>` に設定します。
 
 ## <a name="see-also"></a>関連項目
 

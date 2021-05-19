@@ -1,22 +1,22 @@
 ---
 title: チュートリアル - Azure IoT Central アプリケーションでデバイス グループを使用する | Microsoft Docs
-description: チュートリアル - オペレーターとして、デバイス グループを使用して Azure IoT Central アプリケーションでデバイスからのテレメトリを分析する方法について学習します。
+description: チュートリアル - デバイス グループを使用して Azure IoT Central アプリケーションでデバイスからのテレメトリを分析する方法について説明します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cc9c0825761099f7f5f665cd3a7f27c88f9cdbc
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: ce02c86fff5ccece1528e0d08413acb5c0a7f9c6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325321"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743383"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>チュートリアル:デバイス グループを使用してデバイス テレメトリを分析する
 
-この記事では、オペレーターとしてデバイス グループを使用して Azure IoT Central アプリケーションでデバイス テレメトリを分析する方法について説明します。
+この記事では、デバイス グループを使用して Azure IoT Central アプリケーションでデバイス テレメトリを分析する方法について説明します。
 
 デバイス グループは、指定されたいくつかの条件に一致しているためにグループ化されたデバイスの一覧です。 デバイス グループは、デバイスをより小さい論理グループにグループ化することで、デバイスを大規模に管理、視覚化、および分析するのに役立ちます。 たとえば、シアトルのすべてのエアコン デバイス グループの一覧を作成して、技術者が自分の担当するデバイスを検索できるようにできます。
 

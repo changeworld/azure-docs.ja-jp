@@ -6,18 +6,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 04/07/2021
+ms.date: 05/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8db1a671904233098610a9ba55ce260e6214c38c
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: f636089ff37bd87802ac0335b65d20dc446290d3
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028504"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517930"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
 サービス内の新機能について説明します。 このページをブックマークして、常にサービスの最新情報を確認してください。 まだ一般提供されていない機能の包括的な一覧を確認するには、[プレビュー段階の機能の一覧](search-api-preview.md)に関するページを参照してください。
+
+## <a name="april-2021"></a>2021 年 4 月
+
+|機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  説明 | 可用性  |
+|------------------------------|---------------|---------------|
+| [Gremlin API のサポート](search-howto-index-cosmosdb-gremlin.md) | インデクサーベースのインデックス作成で、Gremlin API を介してアクセスされる Cosmos DB からコンテンツを取得するデータ ソースを作成できるようになりました。 | api-version=2020-06-30-Preview を使用したパブリック プレビュー ([リクエストによる](https://aka.ms/azure-cognitive-search/indexer-preview))。 |
 
 ## <a name="march-2021"></a>2021 年 3 月
 

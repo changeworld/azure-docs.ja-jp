@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 03/19/2021
+ms.date: 04/12/2021
 ms.author: banders
-ms.openlocfilehash: 15aa3acab9fe98a4c2f5103ba211dde34220c54e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: af9a56dd52a0ee70a457e4e53fd37962dca9c90d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255686"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739916"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -60,9 +60,9 @@ EA 加入契約から Microsoft 顧客契約への移行エクスペリエンス
 
 - Microsoft 顧客契約に署名したときに送信された電子メール内のリンクを使用して、Azure portal にサインインします。
 
-- メールがない場合は、次のリンクを使用してサインインします。 `enrollmentNumber` を、更新された Enterprise Agreement の加入契約番号に置き換えます。
+- メールがない場合は、次のリンクを使用してサインインします。
 
-  `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+  `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 エンタープライズ管理者ロールに加え、課金アカウント所有者ロールまたは課金プロファイル ロールが割り当てられている場合、Azure portal に次のページが表示されます。 引き続き、EA 加入契約と Microsoft 顧客契約の課金アカウントの切り替えを設定できます。
 
@@ -70,7 +70,7 @@ EA 加入契約から Microsoft 顧客契約への移行エクスペリエンス
 
 Enterprise Agreement のエンタープライズ管理者ロールも Microsoft 顧客契約の課金プロファイル所有者ロールもない場合は、以下の情報を使用して、セットアップの実行に必要なアクセス権を取得してください。
 
-### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>加入契約のエンタープライズ管理者でない場合
+#### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>加入契約のエンタープライズ管理者でない場合
 
 課金アカウント所有者ロールまたは課金プロファイル所有者ロールは割り当てられているものの、エンタープライズ管理者ではない場合、Azure portal に次のページが表示されます。
 
@@ -83,9 +83,9 @@ Enterprise Agreement のエンタープライズ管理者ロールも Microsoft 
 
 エンタープライズ管理者ロールを割り当ててもらった場合は、[課金アカウントのセットアップ] ページにあるリンクをコピーします。 それを Web ブラウザーで開いて、Microsoft 顧客契約のセットアップを続行してください。 それ以外の場合は、エンタープライズ管理者にそれを送信します。
 
-### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>課金プロファイルの所有者でない場合
+#### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>課金プロファイルの所有者でない場合
 
-エンタープライズ管理者ではあるものの、Microsoft 顧客契約の課金アカウント ロールも課金プロファイル所有者ロールも割り当てられていない場合、Azure portal には次のページが表示されます。
+エンタープライズ管理者ではあるものの、課金アカウントをお持ちでない場合、Azure portal に以下のエラーが表示されて切り替えができません。
 
 適切な Microsoft 顧客契約に対する課金プロファイル所有者のアクセス権があるにもかかわらず次のメッセージが表示される場合は、現在のテナントが、所属組織の正しいテナントであることを確認してください。 ディレクトリの変更が必要になる場合があります。
 
@@ -97,6 +97,42 @@ Enterprise Agreement のエンタープライズ管理者ロールも Microsoft 
 - 既存の課金アカウント所有者にエンタープライズ管理者ロールを割り当てます。 詳細については、「[別のエンタープライズ管理者を作成する](ea-portal-administration.md#create-another-enterprise-administrator)」を参照してください。
 
 課金アカウント所有者ロールまたは課金プロファイル所有者ロールを割り当ててもらった場合は、[課金アカウントのセットアップ] ページにあるリンクをコピーします。 それを Web ブラウザーで開いて、Microsoft 顧客契約のセットアップを続行してください。 それ以外の場合は、課金アカウント所有者にリンクを送信します。
+
+#### <a name="prepare-enrollment-for-transition"></a>切り替えに向けて加入契約を準備する
+
+EA 加入契約と課金プロファイルの両方について所有者アクセス権を取得したら、切り替えに向けた準備を行います。
+
+以前に提示された移行 (メールで送信されたリンク) を開きます。 リンクは `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment` です。
+
+次の画像は、[Prepare your enterprise agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\) ウィンドウの例です。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット - [Prepare your Enterprise Agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\) の選択前。" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition.png" :::
+
+次に、切り替え元の加入契約を選択します。 さらに、課金アカウントと課金プロファイルを選択します。 問題が生じることなく検証にパスした場合 (次の画面を参照)、 **[Continue]\(続行\)** を選択して続行します。
+
+:::image type="content" source="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" alt-text="[課金アカウントのセットアップ] ページのスクリーンショット - [Prepare your Enterprise Agreement enrollments for transition]\(Enterprise Agreement 加入契約の切り替えを準備する\) と検証済みの選択肢。" lightbox="./media/mca-setup-account/setup-billing-account-prepare-enrollment-transition-continue.png" :::
+
+**エラー条件**
+
+エンタープライズ管理者 (読み取り専用) ロールが割り当てられている場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、エンタープライズ管理者ロールが必要です。
+
+`Select another enrollment. You do not hve Enterprise Administrator write permission to the enrollment.`
+
+加入契約の終了日までの日数が 60 日を超える場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、現在の日付が、加入契約の終了日の 60 日以内である必要があります。
+
+`Select another enrollment. This enrollment has more than 60 days before its end date.`
+
+加入契約にクレジットが残っている場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、クレジットをすべて使い切る必要があります。
+
+`Select another enrollment. This enrollment still has credits and can't be transitioned to a billing account.`
+
+課金プロファイルに対する所有者アクセス許可がない場合、以下のエラーが表示されて切り替えができません。 加入契約を切り替えるには、課金プロファイル所有者ロールが必要です。
+
+`Select another Billing Profile. You do not have owner permission to this profile.`
+
+新しい課金プロファイルで新しいプランが有効になっていない場合は、以下のエラーが表示されます。 加入契約を切り替えるには、プランを有効にする必要があります。
+
+`Select another Billing Profile. The current selection does not have Azure Plan and Azure dev test plan enabled on it.`
 
 ## <a name="understand-changes-to-your-billing-hierarchy"></a>課金階層に対する変更を確認する
 
@@ -197,9 +233,9 @@ Enterprise Agreement 加入契約が期限切れになる前に、請求先ア�
 
 1. Microsoft 顧客契約に署名したときに送信された電子メール内のリンクを使用して、Azure portal にサインインします。
 
-2. メールがない場合は、次のリンクを使用してサインインします。 `<enrollmentNumber>` を、更新された Enterprise Agreement の加入契約番号に置き換えます。
+2. メールがない場合は、次のリンクを使用してサインインします。
 
-   `https://portal.azure.com/#blade/Microsoft_Azure_EA/EATransitionToMCA/enrollmentId/<enrollmentNumber>`
+   `https://portal.azure.com/#blade/Microsoft_Azure_SubscriptionManagement/TransitionEnrollment`
 
 3. セットアップの最後の手順で **[切り替えを開始]** を選択します。 [切り替えを開始] を選択した後で、次の操作を行います。
 
