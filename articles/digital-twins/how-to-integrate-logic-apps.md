@@ -101,7 +101,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、 [Azure portal](https://portal.azure.com) のコネクタの [概要] ページに進み、 *[編集]* を押します。
 
-:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている" *ホスト名* "。
+:::image type="content" source="media/how-to-integrate-logic-apps/edit-connector.png" alt-text="Azure AD アプリの登録のポータル表示。リソース メニューの [証明書とシークレット] とページの [新しいクライアント シークレット] が強調して示されている" *ホスト名* ":::
     - ベース URL: / (既定値のまま)
 
 次に、ウィンドウの下部にある *[セキュリティ]* ボタンをクリックして、次の構成ステップに進みます。
