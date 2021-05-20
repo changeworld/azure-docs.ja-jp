@@ -1017,6 +1017,8 @@
           href: jostle-tutorial.md
         - name: Juno Journey
           href: juno-journey-tutorial.md
+        - name: JustLogin
+          href: justlogin-tutorial.md
         - name: JuriBlox
           href: juriblox-tutorial.md
         - name: Kallidus
@@ -1613,6 +1615,8 @@
           href: samlssojira-tutorial.md
         - name: Azure AD SAML Toolkit
           href: saml-toolkit-tutorial.md
+        - name: Samsara
+          href: samsara-tutorial.md
         - name: Samsung Knox およびビジネスサービス
           href: samsung-knox-and-business-services-tutorial.md
         - name: Sansan
@@ -2077,6 +2081,8 @@
           href: workplacebyfacebook-tutorial.md
         - name: Workrite
           href: workrite-tutorial.md
+        - name: ワークショップ
+          href: workshop-tutorial.md
         - name: Workspot Control
           href: workspotcontrol-tutorial.md
         - name: Workstars
@@ -2288,6 +2294,8 @@
           href: infor-cloudsuite-provisioning-tutorial.md
         - name: Insight4GRC
           href: insight4grc-provisioning-tutorial.md
+        - name: Insite LMS
+          href: insite-lms-provisioning-tutorial.md
         - name: Iris Intranet
           href: iris-intranet-provisioning-tutorial.md
         - name: iPass SmartConnect

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6d15df406399e49bff3d95cb90f5d8b908d09631
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: bd761ba9785d491e9577dab828f84580d7a08bba
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208025"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787781"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>業界標準オントロジを Azure Digital Twins 用の DTDL に変換する
 
@@ -45,11 +45,9 @@ RDF ベースのモデルを DTDL に変換するときに使用できるサー�
 
 Azure Digital Twins サービスで使用するために、RDF ベースのモデル ファイルを [DTDL (バージョン 2)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) に変換するサンプル アプリケーションがあります。 これは、[Brick](https://brickschema.org/ontology/) スキーマで検証済みであり、ビルド業界の他のスキーマ向けに拡張することができます ([Building Topology Ontology (BOT)](https://w3c-lbd-cg.github.io/bot/)、[Semantic Sensor Network](https://www.w3.org/TR/vocab-ssn/)、[buildingSmart Industry Foundation Classes (IFC)](https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/) など)。
 
-このサンプルは、**RdfToDtdlConverter** という名前の .NET Core コマンド ライン アプリケーションです。
+このサンプルは、[RdfToDtdlConverter という名前の .NET Core コマンド ライン アプリケーション](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)です。
 
-サンプルはここから入手できます:[RdfToDtdlConverter](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/)。 
-
-コードを自分のマシンにダウンロードするには、サンプル ページのタイトルの下にある **[Browse code]\(コードの参照\)** ボタンを選択します。これにより、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンと **[ZIP のダウンロード]** を選択して、*RdfToDtdlConverter-main.zip* という名前の *.ZIP* ファイルとしてサンプルをダウンロードします。 その後、そのファイルを解凍してコードを調べることができます。
+コードを自分のマシンにダウンロードするには、サンプル ページのタイトルの下にある **[Browse code]\(コードの参照\)** ボタンを選択します。これにより、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンと **[ZIP のダウンロード]** を選択して、*RdfToDtdlConverter-main.zip* という名前の .ZIP ファイルとしてサンプルをダウンロードします。 その後、そのファイルを解凍してコードを調べることができます。
 
 :::image type="content" source="media/concepts-ontologies-convert/download-repo-zip.png" alt-text="GitHub 上の RdfToDtdlConverter リポジトリのスクリーンショット。[コード] ボタンが選択されて、小さなダイアログ ボックスが生成され、[ZIP のダウンロード] ボタンが強調表示されています。" lightbox="media/concepts-ontologies-convert/download-repo-zip.png":::
 

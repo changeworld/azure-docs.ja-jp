@@ -1,32 +1,34 @@
 ---
-title: Service Fabric マネージド クラスター (プレビュー) を構成する
+title: Service Fabric マネージド クラスターを構成する
 description: OS の自動アップグレード、NSG ルールなどのために Service Fabric マネージド クラスターを構成する方法について説明します。
 ms.topic: how-to
-ms.date: 02/15/2021
-ms.openlocfilehash: 44b1b949fe314231cb44f190c31b53903e47a904
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.date: 5/10/2021
+ms.openlocfilehash: 42c8cf75a274ba3b4630caf9ac7e0d194465cfe7
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732634"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735478"
 ---
-# <a name="service-fabric-managed-cluster-preview-configuration-options"></a>Service Fabric マネージド クラスター (プレビュー) の構成オプション
+# <a name="service-fabric-managed-cluster-configuration-options"></a>Service Fabric マネージド クラスターの構成オプション
 
-クラスターの作成時に [Service Fabric マネージド クラスターの SKU](overview-managed-cluster.md#service-fabric-managed-cluster-skus) を選択するのに加えて、他にもさまざまな構成方法があります。 現在のプレビューでは、次のことができます。
+クラスターの作成時に [Service Fabric マネージド クラスターの SKU](overview-managed-cluster.md#service-fabric-managed-cluster-skus) を選択するのに加えて、その他にも以下を含むさまざまな構成方法があります。
 
-* クラスターの[ネットワーク オプション](how-to-managed-cluster-networking.md)を構成する
 * ノードの種類に[仮想マシン スケール セット拡張機能](how-to-managed-cluster-vmss-extension.md)を追加する
-* ノードの種類に[マネージド ID](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) を構成する
-* ノードの [OS の自動アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)を有効にする
-* ノードで [OS とデータ ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)を有効にする
+* クラスターの[可用性ゾーンのスパン](how-to-managed-cluster-availability-zones.md)を構成する
+* クラスターの [NSG ルールおよびその他のネットワーク オプション](how-to-managed-cluster-networking.md)を構成する
+* クラスター ノードの種類で[マネージド ID](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) を構成する
+* クラスター ノードに対して[自動 OS アップグレード](how-to-managed-cluster-configuration.md#enable-automatic-os-image-upgrades)を有効にする
+* クラスター ノードで [OS とデータ ディスクの暗号化](how-to-enable-managed-cluster-disk-encryption.md)を有効にする
+* クラスターの[マネージド ディスクの種類](how-to-managed-cluster-managed-disk.md)の SKU を選択する
 
 ## <a name="enable-automatic-os-image-upgrades"></a>OS の自動アップグレードを有効にする
 
-マネージド クラスター ノードが実行されている仮想マシンに対して、OS イメージの自動アップグレードを有効にすることができます。 仮想マシン スケール セットのリソースは、ユーザーに代わって Service Fabric マネージド クラスターによって管理されますが、クラスター ノードに対して OS イメージの自動アップグレードを有効にするかどうかはユーザーが選択できます。 [従来の Service Fabric](service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration) クラスターと同様に、クラスターに対する意図しない中断を防ぐために、マネージド クラスター ノードは既定ではアップグレードされません。
+マネージド クラスター ノードが実行されている仮想マシンに対して、OS イメージの自動アップグレードを有効にすることができます。 仮想マシン スケール セットのリソースは、ユーザーに代わって Service Fabric マネージド クラスターによって管理されますが、クラスター ノードに対して OS イメージの自動アップグレードを有効にするかどうかはユーザーが選択できます。 [従来の Service Fabric](service-fabric-best-practices-infrastructure-as-code.md#virtual-machine-os-automatic-upgrade-configuration) クラスターと同様に、クラスターに対する意図しない中断を防ぐために、マネージド クラスター ノードは既定ではアップグレードされません。
 
 OS の自動アップグレードを有効にするには、次のようにします。
 
-* `2021-01-01-preview` (またはそれ以降の) バージョンの *Microsoft ServiceFabric/managedclusters* リソースと *Microsoft servicefabric/managedclusters/nodetypes* リソースを使用する
+* `2021-05-01` (またはそれ以降の) バージョンの *Microsoft ServiceFabric/managedclusters* リソースと *Microsoft servicefabric/managedclusters/nodetypes* リソースを使用する
 * クラスターのプロパティ `enableAutoOSUpgrade` を *true* に設定する
 * クラスターの nodeTypes のリソースのプロパティ `vmImageVersion` を *latest* に設定する
 
@@ -34,7 +36,7 @@ OS の自動アップグレードを有効にするには、次のようにし�
 
 ```json
     {
-      "apiVersion": "2021-01-01-preview",
+      "apiVersion": "2021-05-01",
       "type": "Microsoft.ServiceFabric/managedclusters",
       ...
       "properties": {
@@ -43,7 +45,7 @@ OS の自動アップグレードを有効にするには、次のようにし�
       },
     },
     {
-      "apiVersion": "2021-01-01-preview",
+      "apiVersion": "2021-05-01",
       "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
        ...
       "properties": {

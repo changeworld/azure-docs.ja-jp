@@ -1,18 +1,18 @@
 ---
 title: Azure Database for PostgreSQL のデータのコピーと変換
 description: Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する方法について説明します。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/25/2021
-ms.openlocfilehash: ec4ea645e325ef48d4cb5951cd39fd4e9cbe1617
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7d5ac30549667a6806b9f0c45328c0662a2e47e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738057"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785369"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する
 
@@ -30,11 +30,11 @@ ms.locfileid: "101738057"
 - [マッピング データ フロー](concepts-data-flow-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-現在、データ フローでは Azure Database for PostgreSQL のシングル サーバーがサポートされていますが、フレキシブル サーバーや Hyperscale (Citus) はサポートしていません。
+現時点では、Azure Data Factory のデータフローは PostgreSQL のシングルサーバー用の Azure データベースをサポートしていますが、フレキシブル サーバーやハイパースケール (Citus) はサポートしていません。Azure Synapse Analytics のデータフローでは、すべての PostgreSQL フレーバーがサポートされています。
 
 ## <a name="getting-started"></a>作業の開始
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Database for PostgreSQL コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 

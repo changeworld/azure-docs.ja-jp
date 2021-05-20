@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 77bfab51cf7ccc9ec6ffe3b0018c0a488b601a0a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7381d7f233bc813118f310b08352d1642904a907
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070211"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753797"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Ubuntu (18.04 x64) Simulator Reference Agent を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -75,9 +75,9 @@ PS> wsl --list
 
 ## <a name="download-device-update-ubuntu-1804-x64-simulator-reference-agent"></a>Device Update Ubuntu (18.04 x64) Simulator Reference Agent のダウンロード
 
-Ubuntu 更新イメージは、[こちらから](https://github.com/Azure/iot-hub-device-update/releases)入手可能なリリース ノートの「*アセット*」セクションでダウンロードできます。
+Ubuntu 参照エージェントは、[こちら](https://github.com/Azure/iot-hub-device-update/releases)のリリース ノートの「*アセット*」セクションからダウンロードできます。
 
-エージェントには 2 つのバージョンがあります。 イメージベースのシナリオを使用する場合は、AducIotAgentSim-microsoft-swupdate を使用します。パッケージベースのシナリオを使用する場合は、AducIotAgentSim-microsoft-apt を使用します。
+エージェントには 2 つのバージョンがあります。 このチュートリアルではイメージベースのシナリオを実行するので、AducIotAgentSim-microsoft-swupdate を使用します。 代わりにパッケージベースのシナリオを実行する場合は、AducIotAgentSim-microsoft-apt を使用します。
 
 ## <a name="install-device-update-agent-simulator"></a>デバイス更新エージェント シミュレーターのインストール
 
@@ -161,14 +161,14 @@ Agent running. [main]
 
 ## <a name="import-update"></a>更新プログラムをインポートする
 
-1. [手順](import-update.md)に従ってインポート マニフェストを作成します。
-2. 左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
+1. [サンプル インポート マニフェスト](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json)と[サンプル イメージ更新プログラム](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)をダウンロードします。
+2. [Azure portal](https://portal.azure.com/) にログインし、Device Update がある IoT Hub に移動します。 次に、左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 
 3. [更新プログラム] タブを選択します。
 
 4. [+ 新しい更新プログラムのインポート] を選択します。
 
-5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 先ほど作成したインポート マニフェストを選択します。  次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 先ほどダウンロードした Ubuntu 更新イメージを選択します。 
+5. [インポート マニフェスト ファイルを選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 上記の手順 1. でダウンロードした "_サンプル インポート マニフェスト_" を選択します。  次に、[1 つまたは複数の更新プログラム ファイルの選択] の下にあるフォルダー アイコンまたはテキスト ボックスを選択します。 ファイル ピッカーのダイアログが表示されます。 上記の手順 1. でダウンロードした "_サンプル イメージ更新プログラム_" を選択します。 
 
    :::image type="content" source="media/import-update/select-update-files.png" alt-text="更新ファイルの選択を示すスクリーンショット。" lightbox="media/import-update/select-update-files.png":::
 

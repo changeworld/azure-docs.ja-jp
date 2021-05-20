@@ -14,19 +14,19 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5947d9bcd6109e4d13d0f4492911b0cd8ead3f40
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88141671"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790615"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Privileged Identity Management における特権アクセス グループの割り当て (プレビュー) の監査アクティビティ履歴
 
 Azure Active Directory (Azure AD) 組織内の Azure 特権アクセス グループのメンバーと所有者のアクティビティ、アクティブ化、および監査履歴を Privileged Identity Management (PIM) で表示できます。
 
 > [!NOTE]
-> 組織で、[Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって承認されているロールの割り当てはここに表示されません。
+> 組織で、[Azure Lighthouse](../../lighthouse/overview.md) を使用するサービス プロバイダーに管理機能を外部委託している場合、そのサービス プロバイダーによって認可されているロールの割り当てはここに表示されません。
 
 特権アクセス グループの監査履歴を表示するには、これらの手順に従います。
 

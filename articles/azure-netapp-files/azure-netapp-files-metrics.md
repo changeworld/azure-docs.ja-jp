@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 5282c806f5c6011418dabc14d6f82d6b9c0df251
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e16e95bbb65bde6c4c0b38b9c68c0f7287b8b9b3
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206351"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795584"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
@@ -71,24 +71,6 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
     ボリュームへの 1 秒あたりの読み取り数です。
 - "*書き込み IOPS*"   
     ボリュームへの 1 秒あたりの書き込み数です。
-<!-- These two metrics are not yet available, until ~ 2020.09
-- *Read MiB/s*   
-    Read throughput in bytes per second.
-- *Write MiB/s*   
-    Write throughput in bytes per second.
---> 
-<!-- ANF-4128; 2020.07
-- *Pool Provisioned Throughput*   
-    The total throughput a capacity pool can provide to its volumes based on "Pool Provisioned Size" and "Service Level".
-- *Pool Allocated to Volume Throughput*   
-    The total throughput allocated to volumes in a given capacity pool (that is, the total of the volumes' allocated throughput in the capacity pool).
--->
-
-<!-- ANF-6443; 2020.11
-- *Pool Consumed Throughput*    
-    The total throughput being consumed by volumes in a given capacity pool.
--->
-
 
 ## <a name="volume-replication-metrics"></a><a name="replication"></a>ボリューム レプリケーション メトリック
 
@@ -116,6 +98,32 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 
 - "*Volume replication total transfer*" (ボリューム レプリケーションの転送の合計)   
     リレーションシップに対して転送された累積バイト数。 
+
+## <a name="throughput-metrics-for-capacity-pools"></a>容量プールのスループット メトリック   
+
+* *ボリュームに割り当てられたプールのスループット*    
+    特定の容量プール内のボリュームに割り当てられた合計スループット。 つまり、容量プール内のボリュームの割り当てスループットの合計。   
+
+* *プールで消費されたスループット*   
+    特定の容量プール内のボリュームによって消費されている合計スループット。   
+
+* *ボリュームに割り当てられたプールのスループットの割合*   
+    ボリュームに割り当てられた容量プールのプロビジョニング済みスループットの割合。   
+
+* *プールで消費されたスループットの割合*    
+    ボリュームによって消費された容量プールのプロビジョニング済みスループットの割合。
+
+## <a name="throughput-metrics-for-volumes"></a>ボリュームのスループット メトリック   
+
+*  *ボリュームの割り当てスループット*    
+    ボリュームが割り当てられている親の容量プールのスループット (MiB/秒)。 これはボリュームが消費できる最大スループットです。
+
+* *ボリュームで消費されたスループット*    
+    ボリュームが利用している実際のスループット (MiB/秒)。
+
+* *ボリュームで消費されたスループットの割合*   
+    ボリュームが利用している割り当てスループットの割合。 つまり、*ボリュームで消費されたスループット* が *ボリュームの割り当てスループット* に占める割合。
+
 
 ## <a name="next-steps"></a>次のステップ
 

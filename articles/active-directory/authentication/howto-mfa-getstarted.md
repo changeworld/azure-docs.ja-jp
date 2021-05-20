@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 05/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 068a3852371c44086717a6f0164e42d6a3ee33a6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861308"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754543"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication のデプロイを計画する
 
@@ -144,6 +144,9 @@ Microsoft Authenticator アプリなどのモバイル アプリで、30 秒ご�
 
 1. **[Save]** をクリックします。
 1. **[サービスの設定]** タブを閉じます。
+
+> [!WARNING]
+> [セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用している場合は、組織のメソッドを無効にしないでください。 メソッドを無効にすると、ご自分のテナントからロックアウトされる可能性があります。 MFA サービス設定ポータルで、 **[ユーザーが使用できる方法]** をすべて有効のままにしておきます。
 
 ## <a name="plan-registration-policy"></a>登録ポリシーを計画する
 

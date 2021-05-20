@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した Azure VM のディザスター リカ
 description: Azure Site Recovery を使用したセカンダリ リージョンへの Azure VM ディザスター リカバリーのサポートの概要を説明します。
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 92def8f964ec15033816cddfaa41f7e0d82ac595
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: fe3424b8905569076a1fe6e4d29352581db3bec8
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174562"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109665034"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -52,7 +52,7 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 ドイツ    | ドイツ中部、ドイツ北東部
 中国 | 中国東部、中国北部、中国北部 2、中国東部 2
 ブラジル | ブラジル南部
-国内のディザスター リカバリーのために予約されている、制限されたリージョン |スイス西部はスイス北部用に予約されており、フランス南部はフランス中部用に予約されており、アラブ首長国連邦中部はアラブ首長国連邦北部のお客様用に制限されており、ノルウェー西部はノルウェー東部のお客様用に制限されており、JIO インド中央は JIO インド西部のお客様用に制限されており、ブラジル南東部はブラジル南部のお客様用に制限されています
+国内のディザスター リカバリーのために予約されている、制限されたリージョン |スイス西部はスイス北部用に予約されており、フランス南部はフランス中部用に予約されており、アラブ首長国連邦中部はアラブ首長国連邦北部のお客様用に制限されており、ノルウェー西部はノルウェー東部のお客様用に制限されており、JIO インド中部は JIO インド西部のお客様用に制限されており、ブラジル南東部はブラジル南部のお客様用に制限されており、南アフリカ西部は南アフリカ北部のお客様用に制限されており、ドイツ北部はドイツ中西部のお客様用に制限されています。
 
 異なる大陸の 2 つのリージョン間の VM のレプリケーションと復旧は、次のリージョン ペアに限定されます。
 

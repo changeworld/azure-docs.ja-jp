@@ -10,12 +10,12 @@ ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d63a31eae57d09f1658f5f19c1518cb0648fa4e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3beba41dbd5b28d2c03d45652f6cf2eff85ba5d5
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100373753"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633297"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Azure portal を使用して BLOB とキュー データへのアクセスのための Azure ロールを割り当てる
 
@@ -56,14 +56,13 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 
 ここに示す手順では、コンテナーに対してスコープが指定されたロールを割り当てます。しかし、同じ手順に従って、キューに対してスコープが指定されたロールを割り当てることができます。
 
-1. [Azure portal](https://portal.azure.com) でお使いのストレージ アカウントに移動し、そのアカウントの **[概要]** を表示します。
-1. [サービス] で **[BLOB]** を選択します。
+1. [Azure portal](https://portal.azure.com) の **[データ ストレージ]** で、 **[BLOB コンテナー]** を選択します。
 1. 割り当てるロールの対象にするコンテナーを見つけて、コンテナーの設定を表示します。
 1. **[アクセス制御 (IAM)]** を選択して、コンテナーのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
 
     :::image type="content" source="media/storage-auth-aad-rbac-portal/portal-access-control-container.png" alt-text="コンテナーのアクセス制御設定を示すスクリーンショット":::
 
-1. **[ロールの割り当ての追加]** ボタンをクリックして新しいロールを追加します。
+1. **[追加]** 、 **[ロールの割り当ての追加]** の順にクリックし、新しい役割を追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、割り当てる Azure Storage ロールを選択します。 次に、そのロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
 
     :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Azure ロールの割り当て方法を示すスクリーンショット":::
@@ -86,11 +85,12 @@ Azure ロールが Azure AD セキュリティ プリンシパルに割り当て
 ユーザーが Azure portal から BLOB にアクセスできるように **閲覧者** ロールを割り当てるには、次の手順に従います。 この例では、割り当てのスコープはストレージ アカウントに指定されています。
 
 1. [Azure portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-1. **[ロールの割り当ての追加]** ウィンドウで、 **[閲覧者]** ロールを選択します。 
-1. **[アクセスの割り当て先]** フィールドで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
-1. ロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
-1. ロールの割り当てを保存します。
+2. **[アクセス制御 (IAM)]** を選択して、ストレージ アカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
+3. **[追加]** 、 **[ロールの割り当ての追加]** の順にクリックし、新しい役割を追加します。
+4. **[ロールの割り当ての追加]** ウィンドウで、 **[閲覧者]** ロールを選択します。 
+5. **[アクセスの割り当て先]** フィールドで **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
+6. ロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。
+7. ロールの割り当てを保存します。
 
 **閲覧者** ロールを割り当てる必要があるのは、Azure portal を使用して BLOB またはキューにアクセスする必要があるユーザーに対してのみです。
 

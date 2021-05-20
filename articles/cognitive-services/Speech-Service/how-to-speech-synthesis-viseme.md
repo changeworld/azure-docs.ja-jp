@@ -12,17 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: a7808b3b5db9d01d6a1a2cd352a912d44a4e7908
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 630e05b50f153b816f74a9df1f5783c0e36cb53e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904498"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734632"
 ---
 # <a name="get-facial-pose-events"></a>表情イベントを取得する
 
 > [!NOTE]
-> 現時点では、口形素イベントは `en-US-AriaNeural` 音声でのみ使用できます。
+> Viseme イベントは、現在、`en-US` 英語 (米国) の[ニューラル音声](language-support.md#text-to-speech)でのみ使用できます。
 
 "_口形素_" は、音声言語での音素を視覚的に描写したものです。
 言葉を話すときの顔と口の位置を定義します。

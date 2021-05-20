@@ -11,16 +11,16 @@ ms.date: 06/01/2020
 ms.custom:
 - amqp
 - 'Role: Cloud Development'
-ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f98bf2cc4fb4946f6e4609db7a1428dd153cbc84
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147682"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787331"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
-既定では、メッセージは [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) と互換性のある、サービスに接続された組み込みエンドポイント (**messages/events**) にルーティングされます。 このエンドポイントは、現在、[AMQP](https://www.amqp.org/) プロトコルを使用してポート 5671 のみで公開されています。 IoT Hub は、Event Hub と互換性のある組み込みのメッセージング エンドポイント **messages/events** を制御するための以下のプロパティを公開しています。
+既定では、メッセージは [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/) と互換性のある、サービスに接続された組み込みエンドポイント (**messages/events**) にルーティングされます。 このエンドポイントは、現在、ポート 5671 で [AMQP](https://www.amqp.org/) プロトコルを使用して、またポート 443 で [AMQP over WebSockets](http://docs.oasis-open.org/amqp-bindmap/amqp-wsb/v1.0/cs01/amqp-wsb-v1.0-cs01.html) を使用して限定的に公開されています。 IoT Hub は、Event Hub と互換性のある組み込みのメッセージング エンドポイント **messages/events** を制御するための以下のプロパティを公開しています。
 
 | プロパティ            | 説明 |
 | ------------------- | ----------- |

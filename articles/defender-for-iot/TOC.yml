@@ -120,14 +120,6 @@
             - name: ソフトウェアをインストールする
               displayName: 'setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
               href: how-to-install-software.md
-        - name: センサーを準備する
-          items:
-            - name: センサーをオンボードする
-              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
-              href: how-to-manage-sensors-on-the-cloud.md
-            - name: センサーをアクティブにしてセットアップする
-              displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
-              href: how-to-activate-and-set-up-your-sensor.md
         - name: オンプレミス管理コンソールを準備する
           items:
             - name: サブスクリプションを管理する
@@ -142,7 +134,7 @@
         - name: センサーを準備する
           items:
             - name: センサーをオンボードする
-              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
+              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: センサーをアクティブにしてセットアップする
               displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'

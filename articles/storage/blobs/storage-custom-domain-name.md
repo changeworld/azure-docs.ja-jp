@@ -9,12 +9,12 @@ ms.date: 02/12/2021
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 286e230a501b8730dd3c33e33639d89aa319d047
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6050cb576de40eefd975154a591178df59a4633b
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286980"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632783"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
@@ -56,7 +56,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
+2. メニュー ウィンドウの **[設定]** で、 **[エンドポイント]** を選択します。  
 
 3. **BLOB サービス** エンドポイントまたは **静的 Web サイト** エンドポイントの値をテキスト ファイルにコピーします。 
   
@@ -100,7 +100,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[ネットワーク]** を選択します。
+2. メニュー ウィンドウの **[セキュリティとネットワーク]** で、 **[ネットワーク]** を選択します。
 
 3. **[ネットワーク]** ページで、 **[カスタム ドメイン]** タブを選択します。
 
@@ -190,7 +190,7 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[プロパティ]** を選択します。  
+2. メニュー ウィンドウの **[設定]** で、 **[エンドポイント]** を選択します。  
 
 3. **BLOB サービス** エンドポイントまたは **静的 Web サイト** エンドポイントの値をテキスト ファイルにコピーします。  
 
@@ -236,7 +236,7 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[ネットワーク]** を選択します。
+2. メニュー ウィンドウの **[セキュリティとネットワーク]** で、 **[ネットワーク]** を選択します。
 
 3. **[ネットワーク]** ページで、 **[カスタム ドメイン]** タブを選択します。
 
@@ -327,7 +327,7 @@ az storage account update \
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[ネットワーク]** を選択します。
+2. メニュー ウィンドウの **[セキュリティとネットワーク]** で、 **[ネットワーク]** を選択します。
 
 3. **[ネットワーク]** ページで、 **[カスタム ドメイン]** タブを選択します。
 

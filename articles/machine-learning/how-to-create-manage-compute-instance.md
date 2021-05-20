@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f3e0a14ee917bf9b1396eef9d1ec36709e5e706a
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 5dd61207d3155c1279b8e8609b8aa8abf65e7ee2
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331397"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109518164"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -111,7 +111,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 
 
-## <a name="create-on-behalf-of-preview"></a>代理作成 (プレビュー)
+## <a name="create-on-behalf-of-preview"></a><a name="on-behalf"></a> 代理作成 (プレビュー)
 
 管理者は、データ科学者に代わってコンピューティング インスタンスを作成し、次のようにして彼らにそのインスタンスを割り当てることができます。
 
@@ -140,32 +140,43 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
 
 セットアップ スクリプトを使用して実行できる操作の例を次に示します。
 
-* パッケージとツールのインストール
+* パッケージ、ツール、およびソフトウェアのインストール
 * データのマウント
 * カスタムの Conda 環境と Jupyter カーネルの作成
-* Git リポジトリの複製
+* Git リポジトリの複製と git 構成の設定
+* ネットワーク プロキシの設定
+* 環境変数の設定
+* JupyterLab 拡張機能のインストール
 
 ### <a name="create-the-setup-script"></a>セットアップ スクリプトを作成する
 
-セットアップ スクリプトは、*azureuser* として実行されるシェル スクリプトです。  **ノートブック** ファイルにスクリプトを作成するか、アップロードします。
+このセットアップ スクリプトは、*rootuser* として実行されるシェル スクリプトです。  **ノートブック** ファイルにスクリプトを作成するか、アップロードします。
 
 1. [スタジオ](https://ml.azure.com)にサインインし、お使いのワークスペースを選択します。
-1. 左側にある **[ノートブック]** を選択します
-1. **[ファイルの追加]** ツールを使用して、セットアップ シェル スクリプトを作成またはアップロードします。  スクリプトのファイル名の末尾が ".sh" であることを確認してください。  新しいファイルを作成する場合は、**ファイルの種類** も *bash(.sh)* に変更します。
+2. 左側にある **[ノートブック]** を選択します
+3. **[ファイルの追加]** ツールを使用して、セットアップ シェル スクリプトを作成またはアップロードします。  スクリプトのファイル名の末尾が ".sh" であることを確認してください。  新しいファイルを作成する場合は、**ファイルの種類** も *bash(.sh)* に変更します。
 
 :::image type="content" source="media/how-to-create-manage-compute-instance/create-or-upload-file.png" alt-text="スタジオのノートブック ファイルにセットアップ スクリプトを作成またはアップロード":::
 
-スクリプトを実行すると、現在の作業ディレクトリはそれがアップロードされたディレクトリになります。  スクリプトを **Users > admin** にアップロードした場合、**ciname** という名前のコンピューティング インスタンスをプロビジョニングするときに、ファイルの場所は */mnt/batch/tasks/shared/LS_root/mounts/clusters/**ciname**/code/Users/admin* になります。
+スクリプトを実行すると、スクリプトの現在の作業ディレクトリは、そのアップロード先のディレクトリになります。 たとえば、スクリプトを **Users > admin** にアップロードした場合、スクリプトの実行時のコンピューティング インスタンスと現在の作業ディレクトリ上のスクリプトの場所は */home/azureuser/cloudfiles/code/Users/admin* になります。これにより、スクリプトで相対パスを使用できます。
 
-スクリプトの引数は、スクリプト内で $1、$2 などのように参照することができます。例えば、`scriptname ciname` を実行した場合、スクリプトの中で `cd /mnt/batch/tasks/shared/LS_root/mounts/clusters/$1/code/admin` を実行すると、スクリプトが保存されているディレクトリに移動します。
+スクリプトの引数は、スクリプト内で $1、$2 などのように参照することができます。 
 
-スクリプト内のパスを取得することもできます。
+conda 環境や jupyter カーネルのインストールなど、スクリプトで azureuser 固有の処理を行っていた場合は、次のように *sudo -u azureuser* ブロック内に置く必要があります
 
 ```shell
-#!/bin/bash 
-SCRIPT=$(readlink -f "$0") 
-SCRIPT_PATH=$(dirname "$SCRIPT") 
+sudo -u azureuser -i <<'EOF'
+
+EOF
 ```
+*sudo -u azureuser* を実行すると、現在の作業ディレクトリが */home/azureuser* に変更されることに注意してください。 また、このブロック内のスクリプト引数にアクセスすることはできません。
+
+スクリプトでは、次の環境変数も使用できます。
+
+1. CI_RESOURCE_GROUP
+2. CI_WORKSPACE
+3. CI_NAME
+4. CI_LOCAL_UBUNTU_USER。 これは azureuser を示しています
 
 ### <a name="use-the-script-in-the-studio"></a>スタジオでスクリプトを使用する
 
@@ -220,7 +231,7 @@ Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-
 
 ## <a name="manage"></a>管理する
 
-コンピューティング インスタンスを開始、停止、再起動、削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。
+コンピューティング インスタンスを開始、停止、再起動、削除します。 コンピューティング インスタンスは自動的にスケールダウンされません。そのため、継続して課金されることがないように、リソースを必ず停止してください。 コンピューティング インスタンスを停止すると、そのインスタンスは解放されます。 その後、必要なときにもう一度開始します。 コンピューティング インスタンスを停止すると、コンピューティング時間の課金は停止しますが、ディスク、パブリック IP、および Standard Load Balancer に対しては引き続き課金されます。
 
 > [!TIP]
 > コンピューティング インスタンスには 120 GB の OS ディスクがあります。 ディスク領域が不足する場合は、コンピューティング インスタンスを停止または再起動する前に、[ターミナルを使用して](how-to-access-terminal.md)少なくとも 1 から 2 GB をクリアしてください。
@@ -324,8 +335,7 @@ Azure Machine Learning Studio 内のご利用のワークスペースで、 **[�
 
 ---
 
-
-[Azure RBAC](../role-based-access-control/overview.md) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー サインインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
+[Azure RBAC](../role-based-access-control/overview.md) を使用すると、ワークスペース内のどのユーザーにコンピューティング インスタンスの作成、削除、開始、停止、再起動を許可するかを制御できます。 ワークスペースの共同作成者および所有者ロール内のユーザーはすべて、ワークスペース全体でコンピューティング インスタンスを作成、削除、開始、停止、および再起動することができます。 ただし、特定のコンピューティング インスタンスの作成者、またはその作成者に代わって作成された場合は割り当てられたユーザーのみが、そのコンピューティング インスタンス上の Jupyter、JupyterLab、および RStudio にアクセスすることが許可されます。 コンピューティング インスタンスは、ルート アクセス権を持つ 1 人のユーザー専用で、Jupyter/JupyterLab/RStudio を介してターミナルを使用できます。 コンピューティング インスタンスには、シングルユーザー ログインが用意され、すべてのアクションで、そのユーザーの ID が Azure RBAC と実験実行の属性で使用されます。 SSH アクセスは、公開/秘密キーのメカニズムを通じて制御されます。
 
 Azure RBAC によって、次のアクションを制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
@@ -334,6 +344,11 @@ Azure RBAC によって、次のアクションを制御できます。
 * *Microsoft.MachineLearningServices/workspaces/computes/start/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
 * *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+
+コンピューティング インスタンスを作成するには、次のアクションのためのアクセス許可が必要です。
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
+
 
 ## <a name="next-steps"></a>次のステップ
 

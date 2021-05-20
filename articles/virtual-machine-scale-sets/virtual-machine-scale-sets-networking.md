@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e427d51068115db27a36243d738c0e93a10d3cb1
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: e44dc221ccb8dd614372e53dd626f513c9490e78
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375918"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754410"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -130,7 +130,7 @@ Azure テンプレート内でドメイン名を設定するには、スケー�
 ただし、一部のシナリオでは、スケール セット仮想マシンが独自のパブリック IP アドレスを備える必要があります。 たとえば、ゲームで、ゲームの物理処理を行っているクラウド仮想マシンにコンソールが直接接続する必要がある場合です。 もう 1 つの例は、分散型データベースで複数のリージョンにわたって各仮想マシンが互いに対する外部接続を確立する必要がある場合です。
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>仮想マシンごとにパブリック IP アドレスがあるスケール セットの作成
-CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。 
+CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。
 
 Azure テンプレートを使用してスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが少なくとも **2017-03-30** であることを確認し、スケール セットの ipConfigurations セクションに **publicIpAddressConfiguration** JSON プロパティを追加します。 次に例を示します。
 
@@ -143,7 +143,7 @@ Azure テンプレートを使用してスケール セットを作成するに�
 }
 ```
 
-テンプレートの例:[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+サンプル テンプレート: [vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
 CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
@@ -384,7 +384,7 @@ az vmss show \
 
 ## <a name="make-networking-updates-to-specific-instances"></a>特定のインスタンスにネットワークを更新する
 
-特定の仮想マシン スケール セットのインスタンスにネットワークを更新できます。 
+特定の仮想マシン スケール セットのインスタンスにネットワークを更新できます。
 
 インスタンスに対して `PUT` を実行し、ネットワーク構成を更新できます。 これを利用し、たとえば、ネットワーク インターフェイス カード (NIC) を追加または削除したり、バックエンド プールからインスタンスを削除したりできます。
 
@@ -395,8 +395,8 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
 次の例では、NIC に 2 つ目の IP 構成を追加する方法を示します。
 
 1. `GET` 特定の仮想マシン スケール セットのインスタンスの詳細。
-    
-    ``` 
+
+    ```
     GET https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
 
@@ -449,10 +449,10 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
       }
     }
     ```
- 
+
 2. `PUT` インスタンスに対して。更新して IP 構成を追加します。 これは `networkInterfaceConfiguration` を追加する場合と似ています。
 
-    
+
     ```
     PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/providers/Microsoft.Compute/virtualMachineScaleSets/vmssnic/virtualMachines/1/?api-version=2019-07-01
     ```
