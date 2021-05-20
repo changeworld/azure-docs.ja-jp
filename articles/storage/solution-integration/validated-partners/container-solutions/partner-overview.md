@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 8b46ad7a34be99aefeb067591fa1b029dba2361e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 618ae75367fd16469fd56a29e8dce37f4d39351d
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561891"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109480511"
 ---
 # <a name="azure-storage-container-management-partners"></a>Azure Storage コンテナー管理パートナー
 
@@ -27,6 +27,7 @@ ms.locfileid: "103561891"
 | ![Portworx 社のロゴ](./media/portworx-logo.png) |**Portworx**<br>Pure Storage の Portworx は、Kubernetes に統合されて実行されているアプリケーション向けに永続ストレージ、BCDR、データ セキュリティ、クロスクラウド、データ移行に関するソリューションを提供しています。|[パートナー ページ](https://portworx.com/azure/)|
 | ![<n/>Robin.io 社のロゴ](./media/robin-logo.png) |**<n/>Robin.io**<br>Robin.io によって提供されるアプリケーションおよびデータ管理プラットフォームを利用することで、企業や5G サービス プロバイダーは、複雑なアプリケーション パイプラインをサービスとして提供できます。 業界標準の Kubernetes に基づいて構築された Robin を使用すると、開発者やプラットフォーム エンジニアは、基盤となるインフラストラクチャ リソースとは関係なく、データおよびネットワーク中心のアプリケーションを迅速にデプロイして、簡単に管理できます。<br><br>Robin Cloud Native Storage (CNS) により、Azure Kubernetes Service (AKS) に高度なデータ管理機能が組み込まれます。 Azure Disk Storage とシームレスに統合された Robin CN により、ステートフル アプリケーションの管理が簡単になります。 開発者や DevOps チームは、AKS 上の標準 Kubernetes オペレーターとして、ロビン CN をデプロイできます。 Robin Cloud Native Storage は、BCDR やアプリケーション全体の複製といったデータ管理操作の簡素化に役立ちます。 |[パートナー ページ](https://robin.io/robin-cloud-native-storage-for-microsoft-aks/)|
 
+ストレージ パートナーであるのに、ご自分のソリューションがまだ一覧に表示されていませんか? [こちら](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR3i8TQB_XnRAsV3-7XmQFpFUQjY4QlJYUzFHQ0ZBVDNYWERaUlNRVU5IMyQlQCN0PWcu)から情報をお送りください。
 ## <a name="next-steps"></a>次のステップ
 
 他のパートナーの詳細については、以下を参照してください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: e8fb6985da5046d0a1bad171cbc9742a15baf1af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 439522011734a31f818494956bd51f079b1f6113
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643429"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743257"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 
@@ -146,7 +146,7 @@ StorSimple Snapshot Manager は、ローカル データとクラウド デー�
 詳細については、「 [StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)
 
 ## <a name="storsimple-adapter-for-sharepoint"></a>SharePoint 用 StorSimple アダプター
-Microsoft Azure StorSimple には SharePoint 用 StorSimple アダプターが含まれています。これは、StorSimple のストレージおよびデータ保護機能を透過的に SharePoint サーバー ファームに拡張するオプションのコンポーネントです。 このアダプターはリモート BLOB Storage (RBS) プロバイダーおよび SQL Server RBS 機能と連携しているため、Microsoft Azure StorSimple システムでバックアップされるサーバーに BLOB を移動することができます。 Microsoft Azure StorSimple は、使用状況に応じてローカルまたはクラウドに BLOB データを格納します。
+Microsoft Azure StorSimple には SharePoint 用 StorSimple アダプターが含まれています。これは、StorSimple のストレージおよびデータ保護機能を透過的に SharePoint Server ファームに拡張するオプションのコンポーネントです。 このアダプターはリモート BLOB Storage (RBS) プロバイダーおよび SQL Server RBS 機能と連携しているため、Microsoft Azure StorSimple システムでバックアップされるサーバーに BLOB を移動することができます。 Microsoft Azure StorSimple は、使用状況に応じてローカルまたはクラウドに BLOB データを格納します。
 
 SharePoint 用 StorSimple アダプターは、SharePoint サーバーの全体管理ポータル内から管理します。 そのため、SharePoint は引き続き一元管理することができます。また、すべてのストレージが SharePoint ファーム内にあるように見えます。
 
@@ -304,7 +304,7 @@ Microsoft Azure StorSimple ソリューションをデプロイする前に、�
 | Small Computer System Interface (SCSI) |コンピューターの物理的接続とコンピューター間のデータの受け渡しのための標準のセット。 |
 | ソリッド ステート ドライブ (SSD) |可動部分を含まないディスク。たとえば、フラッシュ ドライブです。 |
 | ストレージ アカウント |特定のクラウド サービス プロバイダーのストレージ アカウントにリンクされたアクセス資格情報のセット。 |
-| SharePoint 用 StorSimple アダプター |StorSimple ストレージおよびデータ保護を SharePoint サーバー ファームまで透過的に拡張する Microsoft Azure StorSimple のコンポーネント。 |
+| SharePoint 用 StorSimple アダプター |StorSimple ストレージおよびデータ保護を SharePoint Server ファームまで透過的に拡張する Microsoft Azure StorSimple のコンポーネント。 |
 | StorSimple デバイス マネージャー サービス |Azure StorSimple のオンプレミスのデバイスと仮想デバイスを管理できるようにする Azure ポータルの拡張機能。 |
 | StorSimple Snapshot Manager |Microsoft Azure StorSimple でのバックアップおよび復元操作を管理するための Microsoft 管理コンソール (MMC) スナップイン。 |
 | バックアップの作成 |ユーザーがボリュームの対話型バックアップを作成できるようにする機能。 定義済みポリシーによる自動バックアップ作成に対して、手動でボリュームのバックアップを作成する代替手段です。 |

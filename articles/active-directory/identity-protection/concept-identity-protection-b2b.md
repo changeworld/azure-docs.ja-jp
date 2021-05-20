@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094b2ee101b10da4ec6eda9d6537656e5de28e54
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5c00090ec6b63f41a92beb485433d4667fc85860
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891044"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766018"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection と B2B ユーザー
 
 Identity Protection は、Azure AD ユーザーの資格情報の侵害を検出します。 資格情報が侵害されていると検出された場合は、他の誰かがパスワードを持っていて、それを不正に使用している可能性があることを意味します。 アカウントのリスクが高まるのを防ぐためには、パスワードを安全にリセットし、悪意のある人物が侵害されたパスワードを使用できなくなるようにすることが重要です。 Identity Protection は、侵害されている可能性のあるアカウントを "リスクあり" としてマークします。
 
-組織の資格情報を使用して別の組織にゲストとしてサインインすることができます。このプロセスは B2B 認証と呼ばれます。 組織は、ユーザーの資格情報にリスクがある場合にそのユーザーがサインインできないようにするポリシーを構成できます。 自分のアカウントがリスクにさらされており、別の組織へのゲストとしてのサインインがブロックされている場合は、下の手順を使用して自分のアカウントを自己修復できる可能性があります。 組織でセルフサービスによるパスワード リセットが有効になっていない場合は、管理者が手動でアカウントを修復する必要があります。
+組織の資格情報を使用して、別の組織にゲストとしてサインインできます。 このプロセスは、[企業間または B2B コラボレーション](../external-identities/what-is-b2b.md)と呼ばれます。 組織は、ユーザーの資格情報に[リスクがある](concept-identity-protection-risks.md)と見なされた場合に、そのユーザーがサインインできないようにするポリシーを構成できます。 自分のアカウントがリスクにさらされており、別の組織にゲストとしてサインインできない場合は、次の手順を使用して自分のアカウントを自己修復できる可能性があります。 組織でセルフサービスによるパスワード リセットが有効になっていない場合は、管理者が手動でアカウントを修復する必要があります。
 
 ## <a name="how-to-unblock-your-account"></a>自分のアカウントのブロックを解除する方法 
 

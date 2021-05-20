@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 9873b3626b77a898b7bd682446e11a77b270b297
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 05/05/2021
+ms.openlocfilehash: 2de9be37b8f5398bc6774e9b55ee96483b29b078
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897309"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759611"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -29,6 +29,26 @@ ms.locfileid: "107897309"
 >
 > ユーザーも投稿することができます。 [Azure Sentinel Threat Hunters GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/wiki)にぜひご参加ください。
 >
+
+## <a name="may-2021"></a>2021 年 5 月
+
+- [ゼロ トラスト (TIC3.0) ブック](#zero-trust-tic30-workbook)
+
+### <a name="zero-trust-tic30-workbook"></a>ゼロ トラスト (TIC3.0) ブック
+
+新しい Azure Sentinel ゼロ トラスト (TIC3.0) ブックでは、[トラステッド インターネット接続](https://www.cisa.gov/trusted-internet-connections) (TIC) フレームワークを横断的に説明した[ゼロ トラスト](/security/zero-trust/)の原則を自動的に視覚化できます。
+
+私たちは、コンプライアンスは単なる 1 年限りの要件ではなく、組織はその構成要素を細かく監視する必要があることを認識しています。 Azure Sentinel のゼロ トラスト ブックでは、Azure、Office 365、Teams、Intune、Windows Virtual Desktop などにわたり、Microsoft セキュリティ オファリング全体が使用されています。
+
+[ ![ゼロ トラスト ブック。](media/zero-trust-workbook.gif) ](media/zero-trust-workbook.gif#lightbox)
+
+**ゼロ トラスト ブック**:
+
+- 実装者、SecOps アナリスト、評価者、セキュリティおよびコンプライアンスの意思決定者、MSSP などは、クラウド ワークロードのセキュリティ状態に関する状況認識を得ることができます。
+- ナビゲーション用に選択可能な GUI ボタンを備えた、TIC 3.0 セキュリティ機能と連携する 75 を超えるコントロール カードを使用できます。
+- 自動化、人工知能、機械学習、クエリ/アラート生成、視覚化、カスタマイズされたレコメンデーション、および各ドキュメントの参照によって、スタッフ配置が強化されるように設計されています。
+
+詳細については、「[チュートリアル: データの視覚化と監視](tutorial-monitor-your-data.md)」を参照してください。
 
 ## <a name="april-2021"></a>2021 年 4 月
 

@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 04/26/2021
+ms.date: 05/06/2021
 ms.custom: generated
-ms.openlocfilehash: 4e2df06b67ee9148d3c74700ebfadd72bff8392f
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: e8683b3348dab0c01ed797525b497ced3c2737bb
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069977"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634223"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -37,7 +37,7 @@ ms.locfileid: "108069977"
 > | **Compute** |  |  |
 > | [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | [Virtual Machine Administrator Login](#virtual-machine-administrator-login) | ポータルで仮想マシンを表示し、管理者としてログインします | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
-> | [Virtual Machine Contributor](#virtual-machine-contributor) | 仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | [Virtual Machine Contributor](#virtual-machine-contributor) | 仮想マシンの作成と管理、ディスクとディスクのスナップショットの管理、ソフトウェアのインストールと実行、VM 拡張機能を使用した仮想マシンのルート ユーザーのパスワードのリセット、VM 拡張機能を使用したローカル ユーザー アカウントの管理を行います。 このロールには、仮想マシンが接続されている仮想ネットワークまたはストレージ アカウントへの管理アクセス権は付与されません。 このロールでは、Azure RBAC でロールの割り当てを行うことはできません。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Virtual Machine User Login](#virtual-machine-user-login) | ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **ネットワーク** |  |  |
 > | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
@@ -88,12 +88,12 @@ ms.locfileid: "108069977"
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Containers** |  |  |
-> | [AcrDelete](#acrdelete) | acr の削除 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
-> | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
-> | [AcrPull](#acrpull) | acr のプル | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
-> | [AcrPush](#acrpush) | acr のプッシュ | 8311e382-0749-4cb8-b61a-304f252e45ec |
-> | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
-> | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | [AcrDelete](#acrdelete) | コンテナー レジストリからリポジトリ、タグ、またはマニフェストを削除します。 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
+> | [AcrImageSigner](#acrimagesigner) | コンテンツの信頼が有効になっているコンテナー レジストリに信頼済みのイメージをプッシュしたり、信頼済みのイメージをプルしたりします。 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
+> | [AcrPull](#acrpull) | コンテナー レジストリから成果物をプルします。  | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | [AcrPush](#acrpush) | コンテナー レジストリに成果物をプッシュしたり、成果物をプルしたりします。 | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | [AcrQuarantineReader](#acrquarantinereader) | コンテナー レジストリから検疫済みのイメージをプルします。 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | [AcrQuarantineWriter](#acrquarantinewriter) | 検疫済みのイメージをコンテナー レジストリにプッシュしたり、検疫済みイメージをプルしたりします。 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes Service 共同作成者ロール](#azure-kubernetes-service-contributor-role) | Azure Kubernetes Service クラスターへの読み取りおよび書き込みアクセスを許可します。 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
@@ -143,6 +143,10 @@ ms.locfileid: "108069977"
 > | [Cognitive Services QnA Maker 閲覧者](#cognitive-services-qna-maker-reader) | KB のみ、読み取りとテストが可能になります。 | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **モノのインターネット** |  |  |
+> | [IoT Hub データ共同作成者](#iot-hub-data-contributor) | IoT Hub データ プレーン操作へのフル アクセスを許可します。 | 4fc6c259-987e-4a07-842e-c321cc9d413f |
+> | [IoT Hub データ リーダー](#iot-hub-data-reader) | IoT Hub データプレーン プロパティへの読み取りのフル アクセスを許可します | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
+> | [IoT Hub レジストリ共同作成者](#iot-hub-registry-contributor) | IoT Hub デバイス レジストリへのフル アクセスを許可します。 | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
+> | [IoT Hub ツイン共同作成者](#iot-hub-twin-contributor) | すべての IoT Hub デバイスとモジュール ツインに対する読み取りおよび書き込みのアクセスを許可します。 | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | [デバイス更新管理者](#device-update-administrator) | 管理およびコンテンツ操作へのフル アクセスが付与されます。 | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [デバイス更新コンテンツ管理者](#device-update-content-administrator) | コンテンツ操作へのフル アクセスが付与されます。 | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [デバイス更新コンテンツ閲覧者](#device-update-content-reader) | コンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。 | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
@@ -570,7 +574,7 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 
 ### <a name="virtual-machine-contributor"></a>Virtual Machine Contributor
 
-仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 [詳細情報](../virtual-machines/linux/tutorial-govern-resources.md)
+仮想マシンの作成と管理、ディスクとディスクのスナップショットの管理、ソフトウェアのインストールと実行、VM 拡張機能を使用した仮想マシンのルート ユーザーのパスワードのリセット、VM 拡張機能を使用したローカル ユーザー アカウントの管理を行います。 このロールには、仮想マシンが接続されている仮想ネットワークまたはストレージ アカウントへの管理アクセス権は付与されません。 このロールでは、Azure RBAC でロールの割り当てを行うことはできません。 [詳細情報](/azure/architecture/reference-architectures/n-tier/linux-vm)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -578,7 +582,7 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | コンピューティング可用性セットの作成と管理 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | コンピューティングの場所の作成と管理 |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 仮想マシンの作成、更新、削除、起動、再起動、電源オフを含む、すべての仮想マシン操作を実行します。 仮想マシンで定義済みのスクリプトを実行します。 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 仮想マシンの作成、更新、削除、起動、再起動、電源オフを含む、すべての仮想マシン操作を実行します。 仮想マシンでスクリプトを実行します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 仮想マシン スケールセットの作成と管理 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 新しいディスクを作成するか、既存のディスクを更新します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | ディスクのプロパティを取得します。 |
@@ -3229,7 +3233,7 @@ Web サイト (Web プランではない) を管理できます。ただし、�
 
 ### <a name="acrdelete"></a>AcrDelete
 
-acr の削除 [詳細](../container-registry/container-registry-roles.md)
+コンテナー レジストリからリポジトリ、タグ、またはマニフェストを削除します。 [詳細情報](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3268,7 +3272,7 @@ acr の削除 [詳細](../container-registry/container-registry-roles.md)
 
 ### <a name="acrimagesigner"></a>AcrImageSigner
 
-acr イメージ署名者 [詳細](../container-registry/container-registry-roles.md)
+コンテンツの信頼が有効になっているコンテナー レジストリに信頼済みのイメージをプッシュしたり、信頼済みのイメージをプルしたりします。 [詳細情報](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3307,7 +3311,7 @@ acr イメージ署名者 [詳細](../container-registry/container-registry-role
 
 ### <a name="acrpull"></a>AcrPull
 
-acr のプル [詳細](../container-registry/container-registry-roles.md)
+コンテナー レジストリから成果物をプルします。 [詳細情報](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3387,7 +3391,7 @@ acr のプッシュ [詳細](../container-registry/container-registry-roles.md)
 
 ### <a name="acrquarantinereader"></a>AcrQuarantineReader
 
-ACR 検査データ閲覧者
+コンテナー レジストリから検疫済みのイメージをプルします。 [詳細情報](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3426,7 +3430,7 @@ ACR 検査データ閲覧者
 
 ### <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 
-ACR 検査データ作成者
+検疫済みのイメージをコンテナー レジストリにプッシュしたり、検疫済みイメージをプルしたりします。 [詳細情報](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -6063,6 +6067,163 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 
 ## <a name="internet-of-things"></a>モノのインターネット
 
+### <a name="iot-hub-data-contributor"></a>IoT Hub データ共同作成者
+
+IoT Hub データ プレーン操作へのフル アクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub data plane operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-reader"></a>IoT Hub データ リーダー
+
+IoT Hub データプレーン プロパティへの読み取りのフル アクセスを許可します
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | ファイルのアップロード通知を受信、完了、または破棄します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full read access to IoT Hub data-plane properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*/read",
+        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-registry-contributor"></a>IoT Hub レジストリ共同作成者
+
+IoT Hub デバイス レジストリへのフル アクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub device registry.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/devices/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-twin-contributor"></a>IoT Hub ツイン共同作成者
+
+すべての IoT Hub デバイスとモジュール ツインに対する読み取りおよび書き込みのアクセスを許可します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read and write access to all IoT Hub device and module twins.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/twins/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Twin Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
 
 ### <a name="device-update-administrator"></a>デバイス更新管理者
 

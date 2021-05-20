@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 04/22/2021
+ms.date: 05/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc163f02873cf1827af515791e254261149fc4f9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3214069f68233fb3cb4facc08a409f4b1e05222a
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124439"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654870"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する
 
@@ -48,9 +48,18 @@ Azure AD B2C では、各サインイン イベントが評価され、すべて
 </TechnicalProfile>
 ```
 
+Identity Protection のシグナルが適切に評価されるようにするには、[ローカルとソーシャルの両方のアカウント](technical-overview.md#consumer-accounts)を含むすべてのユーザーの `ConditionalAccessEvaluation` 技術プロファイルを呼び出す必要があります。 そうしないと、ユーザーに関連付けられているリスクの程度が Identity Protection で正しく表示されません。
+
 ::: zone-end
 
-次の **修復** フェーズでは、ユーザーは MFA を求められます。 完了すると、Azure AD B2C によって、特定されたサインインの脅威が修復されたこととその方法が Identity Protection に通知されます。 この例では、Azure AD B2C によって、ユーザーが多要素認証の要求を正常に完了したことが通知されます。 
+次の *修復* フェーズでは、ユーザーは MFA を求められます。 完了すると、Azure AD B2C によって、特定されたサインインの脅威が修復されたこととその方法が Identity Protection に通知されます。 この例では、Azure AD B2C によって、ユーザーが多要素認証の要求を正常に完了したことが通知されます。
+
+修復は、他のチャンネルを介して行われる場合もあります。 たとえば、管理者またはユーザーによってアカウントのパスワードがリセットされる場合などです。 [危険なユーザー レポート](identity-protection-investigate-risk.md#navigating-the-risky-users-report)でユーザーの "*リスクの状態*" を確認できます。
+
+> [!IMPORTANT]
+> 一連の手順の中でリスクを正常に修復するには、"*評価*" 技術プロファイルの実行後に "*修復*" 技術プロファイルが呼び出されたことを確認します。 "*評価*" が "*修復*" なしで呼び出された場合、リスクの状態は " *[危険]* " です。
+
+"*評価*" 技術プロファイルの推奨事項から `Block` が返された場合、"*評価*" 技術プロファイルの呼び出しは必要ありません。 リスクの状態は " *[危険]* " に設定されます。
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -151,25 +160,19 @@ Azure AD の条件付きアクセスを使用する場合は、次の点を考�
     |---------|---------|---------|
     |**レポート専用**|P1、P2| レポート専用を使用すると、管理者は、環境で条件付きアクセス ポリシーを有効にする前に、その影響を評価できます。 この状態でポリシーを確認し、多要素認証の要求やユーザーのブロックを行うことなくエンド ユーザーへの影響を判断することをお勧めします。 詳細については、「[監査レポートで条件付きアクセスの結果を確認する](#review-conditional-access-outcomes-in-the-audit-report)」を参照してください|
     | **オン**| P1、P2| アクセス ポリシーが評価されますが、適用されません。 |
-    | "**オフ**" | P1、P2| アクセス ポリシーはアクティブ化されず、ユーザーには影響しません。 |
+    | "**オフ**" | P1、P2| アクセス ポリシーはアクティブにされず、ユーザーには影響しません。 |
 
 1. **[作成]** を選択して、テスト用条件付きアクセス ポリシーを有効にします。
-
-## <a name="add-conditional-access-to-a-user-flow"></a>ユーザー フローに条件付きアクセスを追加する
-
-Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー フローまたはカスタム ポリシーで条件付きアクセスを有効にします。 条件付きアクセスを有効にするときに、ポリシー名を指定する必要はありません。
-
-複数の条件付きアクセス ポリシーは、いつでも個々のユーザーに適用される可能性があります。 この場合、最も厳格なアクセス制御ポリシーが優先されます。 たとえば、あるポリシーでは多要素認証 (MFA) を要求し、別のポリシーではアクセスをブロックする場合、ユーザーはブロックされます。
 
 ## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>条件付きアクセス テンプレート 1: サインイン リスクベースの条件付きアクセス
 
 ほとんどのユーザーは、追跡できる正常な動作をしています。この規範から外れた場合は、そのユーザーにサインインを許可すると危険であることがあります。 そのユーザーをブロックしたり、多要素認証を実行してユーザーが本人であることを証明するように求めたりすることが必要な場合もあります。
 
-サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 P2 ライセンスを所持する組織では、[Azure AD Identity Protection のサインイン リスク検出](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。 [B2C の Identity Protection の検出に関する制限事項](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations)に注意してください。
+サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 P2 ライセンスを所持する Azure AD B2C テナントでは、[Azure AD Identity Protection のサインイン リスク検出](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。 [B2C の Identity Protection の検出に関する制限事項](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations)に注意してください。
 
 リスクが検出された場合、ユーザーは、多要素認証を実行して自己修復し、危険なサインイン イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。
 
-組織では、次のいずれかのオプションを選択して、サインイン リスクが中または高のときに多要素認証 (MFA) を要求する、サインイン リスクベースの条件付きアクセス ポリシーを有効にする必要があります。
+サインイン リスクが "*中*" または "*高*" の場合に MFA を要求するサインイン リスクベースの条件付きアクセス ポリシーを有効にするには、Azure portal または Microsoft Graph API を使用して条件付きアクセスを構成します。
 
 ### <a name="enable-with-conditional-access-policy"></a>条件付きアクセス ポリシーを有効にする
 
@@ -189,11 +192,11 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
 9. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
 10. **[作成]** を選択して、ポリシーを作成および有効化します。
 
-### <a name="enable-with-conditional-access-apis"></a>条件付きアクセス API を有効にする
+### <a name="enable-with-conditional-access-apis-optional"></a>条件付きアクセス API を有効にする (省略可能)
 
-条件付きアクセス API を使用してサインイン リスクベースの条件付きアクセス ポリシーを作成するには、[条件付きアクセス API](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api) に関するドキュメントをご覧ください。
+MS Graph API シリーズを使用して、サインイン リスクベースの条件付きアクセス ポリシーを作成します。 詳細については、[条件付きアクセス API ](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api)に関するページを参照してください。
 
-次のテンプレートを使用すると、レポート専用モードで、表示名が "CA002: Require MFA for medium+ sign-in risk" の条件付きアクセス ポリシーを作成できます。
+次のテンプレートを使用すると、レポート専用モードで、表示名が "Template 1: Require MFA for medium+ sign-in risk" の条件付きアクセス ポリシーを作成できます。
 
 ```json
 {
@@ -226,6 +229,12 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
 }
 ```
 
+## <a name="add-conditional-access-to-a-user-flow"></a>ユーザー フローに条件付きアクセスを追加する
+
+Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー フローまたはカスタム ポリシーで条件付きアクセスを有効にします。 条件付きアクセスを有効にするときに、ポリシー名を指定する必要はありません。
+
+複数の条件付きアクセス ポリシーは、いつでも個々のユーザーに適用される可能性があります。 この場合、最も厳格なアクセス制御ポリシーが優先されます。 たとえば、あるポリシーでは MFA を要求し、別のポリシーではアクセスをブロックする場合、ユーザーはブロックされます。
+
 ## <a name="enable-multi-factor-authentication-optional"></a>多要素認証を有効にする (オプション)
 
 ユーザー フローに条件付きアクセスを追加する場合は、**多要素認証 (MFA)** の使用を検討してください。 ユーザーは、SMS または音声によるワンタイム コードか、メールによるワンタイム パスワードを多要素認証に使用できます。 MFA の設定は、条件付きアクセスの設定とは別になっています。 これらの MFA オプションから選択できます。
@@ -233,9 +242,6 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
    - **[オフ]** - サインイン時に MFA が適用されることはありません。ユーザーは、サインアップ時またはサインイン時に MFA への登録を求められません。
    - **[常にオン]** - 条件付きアクセスの設定に関係なく、MFA が常に必須になります。 ユーザーが MFA にまだ登録されていない場合は、サインイン時に登録するよう求められます。 サインアップ時に、ユーザーは MFA に登録するよう求められます。
    - **[条件付き (プレビュー)]** - アクティブな条件付きアクセス ポリシーで求められる場合にのみ、MFA が必須になります。 条件付きアクセスの評価の結果がリスクのない MFA チャレンジである場合、サインイン時に MFA が適用されます。 結果がリスクによる MFA チャレンジであり、"*なおかつ*" ユーザーが MFA に登録されていない場合は、サインインがブロックされます。 サインアップ時には、ユーザーは MFA への登録を求められません。
-
-> [!IMPORTANT]
-> 条件付きアクセス ポリシーで MFA によるアクセスが許可されていても、ユーザーが電話番号を登録していない場合は、そのユーザーがブロックされることがあります。
 
 ::: zone pivot="b2c-user-flow"
 
@@ -269,6 +275,23 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
 1. 条件付きアクセスポリシーの例については、[GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) を参照してください。
 1. 各ファイル内で、文字列 `yourtenant` を、使用している Azure AD B2C テナントの名前に置き換えます。 たとえば、B2C テナントの名前が *contosob2c* であれば、`yourtenant.onmicrosoft.com` のすべてのインスタンスは `contosob2c.onmicrosoft.com` になります。
 1. ポリシー ファイルをアップロードします。
+ 
+### <a name="configure-claim-other-than-phone-number-to-be-used-for-mfa"></a>MFA で使用する電話番号以外の要求を構成する
+
+上記の条件付きアクセス ポリシーでは、`DoesClaimExist` 要求変換メソッドによって、たとえば要求 `strongAuthenticationPhoneNumber` に電話番号が含まれているかどうかなど、要求に値が含まれているかどうかが確認されます。 
+
+要求変換は、要求 `strongAuthenticationPhoneNumber` だけのことではありません。 シナリオに応じて、他の要求も使用できます。 次の XML スニペットでは、代わりに要求 `strongAuthenticationEmailAddress` がチェックされています。 選択する要求には有効な値が必要です。それがない場合、要求 `IsMfaRegistered` は `False` に設定されます。 `False` に設定されると、条件付きアクセス ポリシーの評価によって付与タイプ `Block` が返され、ユーザーがユーザー フローを完了できなくなります。
+
+```XML
+ <ClaimsTransformation Id="IsMfaRegisteredCT" TransformationMethod="DoesClaimExist">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="IsMfaRegistered" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+ </ClaimsTransformation>
+```
 
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 

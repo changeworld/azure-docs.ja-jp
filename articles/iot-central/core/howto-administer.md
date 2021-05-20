@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central アプリケーション設定を変更する | Microsoft Docs
-description: 管理者としてアプリケーション名や URL を変更し、Azure IoT Central アプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について説明します。
+description: アプリケーション名や URL を変更し、Azure IoT Central アプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について学習します
 author: viv-liu
 ms.author: viviali
 ms.date: 12/19/2020
@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 81cd2ca1cb47e6fdfb4858df930b73c1bd10118a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dadec45a23191763ad803560f1362c61917c95c5
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101091825"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756667"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 
-
-
-この記事では、Azure IoT Central アプリケーションで、管理者としてアプリケーションの名前や URL を変更してアプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について説明します。
+この記事では、Azure IoT Central アプリケーションで、アプリケーションの名前や URL を変更してアプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について説明します。
 
 **[Administration] (管理)** セクションにアクセスして使用するには、Azure IoT Central アプリケーションの **管理者** ロールが必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの **管理者** ロールに割り当てられます。
 

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 5db990fe4bf54c5604eb58af677ec4891639eb1b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 83775a48e0be1dec50e9205bb1fa9ddb8fcf0087
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165625"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743923"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -203,7 +203,7 @@ Azure Monitor リソース (Log Analytics ワークスペースと Application I
 このゾーンには、グローバル エージェントのソリューション パック ストレージ アカウントへの接続性が構成されます。 これにより、エージェントは、新規または更新されたソリューション パック (管理パックとも呼ばれます) をダウンロードできます。 使用するワークスペースの数に関係なく、Log Analytics エージェントを処理するのに必要なエントリは 1 つだけです。
 [![プライベート DNS ゾーン blob-core-windows-net のスクリーンショット。](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
 > [!NOTE]
-> このエントリは、2021 年 4 月 19 日以降に作成された Private Link セットアップにのみ追加されます。
+> このエントリは、2021 年 4 月 19 日以降 (または、Azure ソブリン クラウドでは、2021 年 6 月から) 作成された Private Link セットアップにのみ追加されます。
 
 
 ### <a name="validating-you-are-communicating-over-a-private-link"></a>プライベート リンクを介して通信が行われていることの検証
@@ -226,7 +226,7 @@ Azure Portal にアクセスします。 Log Analytics ワークスペース リ
 ワークスペースに接続されているすべてのスコープが、この画面に表示されます。 スコープ (AMPLS) に接続すると、各 AMPLS に接続されている仮想ネットワークからのネットワーク トラフィックがこのワークスペースに到達できます。 ここから接続を確立すると、[Azure Monitor リソースの接続](#connect-azure-monitor-resources)の場合のように、スコープから接続するのと同じ効果があります。 新しい接続を追加するには、 **[追加]** を選択し、Azure Monitor Private Link スコープを選択します。 **[適用]** を選択して接続します。 「[制限事項と制約事項](#restrictions-and-limitations)」で説明しているように、ワークスペースは 5 つの AMPLS オブジェクトに接続できます。 
 
 ### <a name="manage-access-from-outside-of-private-links-scopes"></a>プライベート リンク スコープ外からのアクセスを管理する
-このページの下部にある設定では、パブリック ネットワーク (つまり示されたスコープ (AMPLS) 経由で接続されていないネットワーク) からのアクセスを制御します。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定すると、接続されているスコープ外のマシンからのログ取り込みがブロックされます。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定すると、スコープ外のマシンからのクエリがブロックされます。 これには、ブック、ダッシュボード、API ベースのクライアント エクスペリエンス、Azure portal の分析情報などで実行されるクエリが含まれます。 Azure portal の外部で実行され、Log Analytics データにクエリを発行するエクスペリエンスも、プライベート リンク VNET 内で実行する必要があります。
+このページの下部にある設定では、パブリック ネットワーク (つまり示されたスコープ (AMPLS) には接続されていないネットワーク) からのアクセスを制御します。 **[Allow public network access for ingestion]\(取り込みにパブリック ネットワークを許可する\)** を **[いいえ]** に設定すると、接続されているスコープ外のマシンからのログ取り込みがブロックされます。 **[Allow public network access for queries]\(クエリにパブリック ネットワークを許可する\)** を **[いいえ]** に設定すると、スコープ外のマシンからのクエリがブロックされます。 これには、ブック、ダッシュボード、API ベースのクライアント エクスペリエンス、Azure portal の分析情報などで実行されるクエリが含まれます。 Azure portal の外部で実行され、Log Analytics データにクエリを発行するエクスペリエンスも、プライベート リンク VNET 内で実行する必要があります。
 
 ### <a name="exceptions"></a>例外
 これまで説明したアクセスの制限は Azure Resource Manager には適用されないため、次のような制限事項があります。
@@ -237,7 +237,7 @@ Azure Portal にアクセスします。 Log Analytics ワークスペース リ
 > [[診断設定]](../essentials/diagnostic-settings.md) を使用してワークスペースにアップロードされたログとメトリックは、セキュリティで保護されたプライベート Microsoft チャネルを経由し、これらの設定によって制御されることはありません。
 
 ### <a name="log-analytics-solution-packs-download"></a>Log Analytics ソリューション パックのダウンロード
-ソリューション パックをダウンロードするには、Log Analytics エージェントがグローバル ストレージ アカウントにアクセスする必要があります。 2021 年 4 月 19 日以降に作成された Private Link セットアップでは、プライベート リンクを介して、エージェントのソリューション パックのストレージに接続できます。 これは、[blob.core.windows.net](#privatelink-blob-core-windows-net) 用に作成された新しい DNS ゾーンによって可能になります。
+ソリューション パックをダウンロードするには、Log Analytics エージェントがグローバル ストレージ アカウントにアクセスする必要があります。 2021 年 4 月 19 日以降 (または、Azure ソブリン クラウドでは、2021 年 6 月から) に作成された Private Link セットアップでは、プライベート リンクを介して、エージェントのソリューション パックのストレージに接続できます。 これは、[blob.core.windows.net](#privatelink-blob-core-windows-net) 用に作成された新しい DNS ゾーンによって可能になります。
 
 2021 年 4 月 19 日より前に作成された Private Link セットアップでは、プライベート リンクを介してソリューション パックのストレージには接続できません。 これを処理するには、次のいずれかを行います。
 * AMPLS とそれに接続されているプライベート エンドポイントを再作成します。

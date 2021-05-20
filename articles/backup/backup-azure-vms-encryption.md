@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4396eb25980610e9ba22e640957b24147e875cba
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99223459"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803262"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
@@ -159,6 +159,10 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 暗号化された VM を次のように復元します。
 
 1. [VM ディスクを復元します](backup-azure-arm-restore-vms.md#restore-disks)。
+
+   > [!NOTE]
+   > VM ディスクを復元したら、作成し直すことはせずに、元の VM の OS ディスクと復元された VM ディスクをスワップします。 [詳細については、こちらを参照してください](https://azure.microsoft.com/blog/os-disk-swap-managed-disks/)。
+
 2. 以下のいずれかのアクションを実行して、仮想マシン インスタンスを再作成します。
     1. 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
     2. PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細については、こちらを参照してください](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。

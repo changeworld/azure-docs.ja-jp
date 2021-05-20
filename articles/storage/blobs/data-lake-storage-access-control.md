@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 142c8b1439447da4d535dd97e191a0ada503fe94
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774815"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632603"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>AzureData Lake Storage Gen2 のアクセス制御リスト (ACL)
 
@@ -36,13 +36,14 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 
 | 環境 | [アーティクル] |
 |--------|-----------|
-|Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 での ACL を設定する](data-lake-storage-explorer-acl.md)|
-|.NET |[Azure Data Lake Storage Gen2 で .NET を使用して ACL を設定する](data-lake-storage-acl-dotnet.md)|
-|Java|[Azure Data Lake Storage Gen2 で Java を使用して ACL を設定する](data-lake-storage-acl-java.md)|
-|Python|[Azure Data Lake Storage Gen2 で Python を使用して ACL を設定する](data-lake-storage-acl-python.md)|
-|JavaScript (Node.js)JavaScript (Node.js)|[Node.js の JavaScript SDK を使用して Azure Data Lake Storage Gen2 で ACL を設定する](data-lake-storage-directory-file-acl-javascript.md)|
-|PowerShell|[Azure Data Lake Storage Gen2 で PowerShell を使用して ACL を設定する](data-lake-storage-acl-powershell.md)|
-|Azure CLI|[Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を設定する](data-lake-storage-acl-cli.md)|
+|Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 での ACL を管理する](data-lake-storage-explorer-acl.md)|
+|Azure portal |[Azure portal を使用して Azure Data Lake Storage Gen2 で ACL を管理する](data-lake-storage-acl-azure-portal.md)|
+|.NET |[Azure Data Lake Storage Gen2 で .NET を使用して ACL を管理する](data-lake-storage-acl-dotnet.md)|
+|Java|[Azure Data Lake Storage Gen2 で Java を使用して ACL を管理する](data-lake-storage-acl-java.md)|
+|Python|[Azure Data Lake Storage Gen2 で Python を使用して ACL を管理する](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)JavaScript (Node.js)|[Azure Data Lake Storage Gen2 で JavaScript (Node.js の SDK) を使用して ACL を管理する](data-lake-storage-directory-file-acl-javascript.md)|
+|PowerShell|[Azure Data Lake Storage Gen2 で PowerShell を使用して ACL を管理する](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[Azure Data Lake Storage Gen2 で Azure CLI を使用して ACL を管理する](data-lake-storage-acl-cli.md)|
 |REST API |[Path - Update (パス - 更新)](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8750ad846b832eb4fe037568d3b99f299cfe121b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430813"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790633"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -231,7 +231,7 @@ Azure 前払いを超過分に適用するには、次の条件を満たす必�
 - 利用可能な Azure 前払い額に、過去のすべての未払い Azure 請求書を含め、発生したすべての料金が含まれている。
 - 完了する請求期間が、完全に終了している必要がある。 毎月 5 日が過ぎると、課金が完全に終了します。
 - 相殺する請求期間が、完全に終了している必要がある。
-- Azure 前払い割引 (ACD) が、実際の新しい前払いから、以前の消費額に対して計画された資金を差し引いた額に基づいている。 この要件は、発生した超過料金にのみ適用されます。 これは、Azure 前払いを消費するサービスに対してのみ有効です。そのため、Azure Marketplace の料金には適用されません。 Azure Marketplace の料金は個別に請求されます。
+- Azure 前払い割引 (APD) が、実際の新しい前払いから、以前の消費額に対して計画された資金を差し引いた額に基づいている。 この要件は、発生した超過料金にのみ適用されます。 これは、Azure 前払いを消費するサービスに対してのみ有効です。そのため、Azure Marketplace の料金には適用されません。 Azure Marketplace の料金は個別に請求されます。
 
 超過分の相殺を完了する場合は、お客様またはアカウント チームがサポート リクエストを開くことができます。 エンタープライズ管理者または請求先担当者からのメールによる承認が必要です。
 

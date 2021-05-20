@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f0fc0611e48f25c8faec415b8702a420402280c5
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517676"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483841"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
@@ -68,7 +68,7 @@ ms.locfileid: "107517676"
 - [課金データ閲覧者](built-in-roles.md#billing-reader)ロールをサブスクリプション スコープでグループに割り当てた場合、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとリソースの課金データを読み取ることができます。
 - [共同作成者](built-in-roles.md#contributor)ロールをリソース グループ スコープでアプリケーションに割り当てた場合、そのアプリケーションは、そのリソース グループ内のすべての種類のリソースを管理できますが、サブスクリプション内の他のリソース グループは管理できません。
 
- 詳細については、[スコープの概要](scope-overview.md)に関する記事を参照してください。
+[!INCLUDE [Scope for Azure RBAC least privilege](../../includes/role-based-access-control/scope-least.md)] 詳細については、[スコープの概要](scope-overview.md)に関する記事を参照してください。
 
 ## <a name="step-4-check-your-prerequisites"></a>手順 4. 前提条件を確認する
 

@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: mimcco
   ms.date: 03/25/2021
-  ms.openlocfilehash: 0cf9e95897554cb51ff6837dec72700124471025
-  ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+  ms.openlocfilehash: 1a18b819a96f8f84fb7d8e96b61f0b2d9f33709a
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/01/2021
-  ms.locfileid: "106107729"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110098868"
 landingContent:
 - title: Azure Percept とは
   linkLists:
@@ -121,5 +121,5 @@ landingContent:
       url: how-to-set-up-over-the-air-updates.md
     - text: デバイスを無線 (OTA) で更新する
       url: how-to-update-over-the-air.md
-    - text: デバイスを USB で更新する
+    - text: USB-C ケーブル接続を使用してデバイスを更新する
       url: how-to-update-via-usb.md

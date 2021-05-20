@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6fc31c006c832550cafde16959bb0c7202f915d
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044177"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655302"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>リソースによる Azure Sentinel データへのアクセスを管理する
 
@@ -39,10 +39,11 @@ ms.locfileid: "105044177"
 Azure Monitor でリソースコンテキスト RBAC を有効にします。 詳細については、「[Azure Monitor でログ データとワークスペースへのアクセスを管理する](../azure-monitor/logs/manage-access.md)」を参照してください。
 
 > [!NOTE]
-> データが、Syslog、CEF、または AAD データなどの Azure リソースではない場合、またはカスタム コレクターによって収集されたデータである場合は、データを識別してアクセスを有効にするために使用されるリソース ID を手動で構成する必要があります。
+> データが、Syslog、CEF、または AAD データなどの Azure リソースではない場合、またはカスタム コレクターによって収集されたデータである場合は、データを識別してアクセスを有効にするために使用されるリソース ID を手動で構成する必要があります。 詳細については、「[リソースコンテキスト RBAC を明示的に構成する](#explicitly-configure-resource-context-rbac)」を参照してください。
 >
-> 詳細については、「[リソースコンテキスト RBAC を明示的に構成する](#explicitly-configure-resource-context-rbac)」を参照してください。
->
+> また、[関数](/azure/azure-monitor/logs/functions)と保存された検索条件は、リソース中心のコンテキストではサポートされていません。 そのため、解析や[正規化](normalization.md)などの Azure Sentinel 機能は、Azure Sentinel のリソースコンテキスト RBAC ではサポートされません。
+> 
+
 ## <a name="scenarios-for-resource-context-rbac"></a>リソースコンテキスト RBAC のシナリオ
 
 次の表は、リソースコンテキスト RBAC が最も役立つシナリオを示しています。 SOC チームと非 SOC チームの間のアクセス要件の違いに注意してください。

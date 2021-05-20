@@ -3,16 +3,16 @@ title: チュートリアル - Azure IoT Edge を使用したエッジでの Str
 description: このチュートリアルでは、Azure Stream Analytics をモジュールとして IoT Edge デバイスに展開します
 author: kgremban
 ms.author: kgremban
-ms.date: 07/29/2020
+ms.date: 05/03/2021
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 323973b7646acee07a0c4dbc59834e0aceca75ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cafb9cdbc5ca9851130ea4d9b2ef60c1616d213
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462050"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790723"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル:Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
 
@@ -89,7 +89,7 @@ Azure Stream Analytics ジョブを作成して IoT Edge デバイスで実行�
    | サブスクリプション | IoT ハブと同じサブスクリプションを選択します。 |
    | Resource group | IoT Edge のクイック スタートおよびチュートリアルで作成するすべてのテスト リソースに、同じリソース グループを使用することをお勧めします。 たとえば、**IoTEdgeResources** を使用します。 |
    | 場所 | 近くの場所を選択します。 |
-   | ホスティング環境 | **[Edge]** を選択します。 |
+   | ホスティング環境 | **[Edge]** を選択します。 このオプションは、ジョブがクラウドでホストされるのではなく、IoT Edgeデバイスにデプロイされることを示します。 |
 
 1. **［作成］** を選択します
 
@@ -106,6 +106,8 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
    ![Azure Stream Analytics - 入力の追加](./media/tutorial-deploy-stream-analytics/asa-input.png)
 
 1. ドロップダウン リストで、 **[Edge Hub]** を選択します。
+
+   一覧に **[Edge Hub]** オプションが表示されない場合は、クラウドでホストされるジョブとして Stream Analytics ジョブを作成している可能性があります。 新しいジョブを作成し、ホスティング環境として必ず **[Edge]** を選択してください。
 
 1. **[新しい入力]** ウィンドウで、入力のエイリアスとして「**温度**」と入力します。
 
@@ -140,15 +142,15 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
 
 ### <a name="configure-iot-edge-settings"></a>IoT Edge の設定を構成する
 
-IoT Edge デバイスにデプロイされるように Stream Analytics ジョブを準備するには、ジョブをストレージ アカウント内のコンテナーに関連付ける必要があります。 ジョブをデプロイしようとすると、ジョブ定義がストレージ コンテナーにエクスポートされます。
+IoT Edge デバイスにデプロイされるように Stream Analytics ジョブを準備するには、ジョブをストレージ アカウントに関連付ける必要があります。 ジョブをデプロイしようとすると、ジョブ定義がコンテナーの形式でストレージ アカウントにエクスポートされます。
 
 1. **[構成]** で **[ストレージ アカウントの設定]** を選択し、 **[ストレージ アカウントの追加]** を選択します。
 
    ![Azure Stream Analytics - ストレージ アカウントの追加](./media/tutorial-deploy-stream-analytics/add-storage-account.png)
 
-1. このチュートリアルの開始時に作成した **ストレージ アカウント** をドロップダウン メニューから選択します。
+1. **[Select Blob storage/ADLS Gen 2 from your subscriptions]\(サブスクリプションから Blob Storage または ADLS Gen 2 を選択する\)** オプションを選択します。
 
-1. **[コンテナー]** フィールドで、 **[新規作成]** を選択し、ストレージ コンテナーの名前を指定します。
+1. ドロップダウン メニューを使用して、このチュートリアルの最初に設定した **サブスクリプション** と **ストレージ アカウント** を選択します。
 
 1. **[保存]** を選択します。
 

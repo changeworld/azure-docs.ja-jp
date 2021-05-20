@@ -5,12 +5,12 @@ author: emaher
 ms.author: enewman
 ms.date: 06/26/2020
 ms.topic: article
-ms.openlocfilehash: 067a2c9672b87974557f650cef07b0394e7d5a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b37d94249c136d2ec90a955e71e61e8eef0aeb6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445850"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772299"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure Lab Services のファイアウォール設定
 
@@ -20,6 +20,9 @@ ms.locfileid: "85445850"
 
 >[!IMPORTANT]
 >各ラボは、異なるパブリック IP アドレスを持つことになります。
+
+> [!NOTE]
+> [子供のインターネット保護法 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act) に準拠するためなど、学校でコンテンツのフィルター処理を実行する必要がある場合は、サードパーティ製ソフトウェアを使用する必要があります。  詳細については、[Lab Services を使用したコンテンツ フィルタリング](./administrator-guide.md#content-filtering)に関するガイダンスを参照してください。
 
 ## <a name="find-public-ip-for-a-lab"></a>ラボのパブリック IP を見つける
 

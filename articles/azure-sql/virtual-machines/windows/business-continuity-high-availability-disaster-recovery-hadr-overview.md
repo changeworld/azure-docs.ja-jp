@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 31d22be5ee5480878633b9742837e3f5d6119043
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c55e60627cd2c06c592af0475e84817d284eb6b5
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078946"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634205"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,6 +38,10 @@ VM がオンラインで正常であっても、SQL Server インスタンスで
 
 Azure の geo 冗長ストレージ (GRS) は、geo レプリケーションと呼ばれる機能と共に実装されます。 GRS は、ご利用のデータベースに適したディザスター リカバリー ソリューションではない可能性があります。 geo レプリケーションではデータを非同期的に送信するため、障害が発生したときに最新の更新が失われる場合があります。 geo レプリケーションの制限事項の詳細については、「[geo レプリケーション サポート](#geo-replication-support)」セクションを参照してください。
 
+> [!NOTE]
+> これで Azure Migrate を使用して、[フェールオーバー クラスター インスタンス](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)と[可用性グループ](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)のソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 
+
+
 ## <a name="deployment-architectures"></a>デプロイ アーキテクチャ
 Azure では、ビジネス継続性のための以下の SQL Server テクノロジがサポートされます。
 
@@ -46,6 +50,7 @@ Azure では、ビジネス継続性のための以下の SQL Server テクノ�
 * [ログ配布](/sql/database-engine/log-shipping/about-log-shipping-sql-server)
 * [Azure Blob Storage を使った SQL Server のバックアップと復元](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
 * [データベース ミラーリング](/sql/database-engine/database-mirroring/database-mirroring-sql-server) - SQL Server 2016 では非推奨
+* [Azure Site Recovery](../../../site-recovery/site-recovery-sql.md)
 
 高可用性とディザスター リカバリーの両方の機能を持つ SQL Server ソリューションを実装するために、テクノロジを組み合わせることができます。 使用するテクノロジによっては、ハイブリッド デプロイで、Azure 仮想ネットワークを使った VPN トンネルが必要になる場合があります。 以下の各セクションでは、デプロイ アーキテクチャの例をいくつか示します。
 

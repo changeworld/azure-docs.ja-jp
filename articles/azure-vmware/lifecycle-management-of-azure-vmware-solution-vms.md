@@ -1,18 +1,20 @@
 ---
-title: Azure VMware Solution VM のライフサイクル管理
+title: Azure VMware ソリューション VM の監視と管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
-ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.date: 05/04/2021
+ms.openlocfilehash: 3cffba1147a52a48d5005aa22e3a08a33956d66e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572195"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769257"
 ---
-# <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
+# <a name="monitor-and-manage-azure-vmware-solution-vms"></a>Azure VMware ソリューション VM の監視と管理
 
-Microsoft Azure ネイティブ ツールを使用すると、Azure 環境の仮想マシン (VM) を監視および管理できます。 さらに、Azure VMware Solution の VM とオンプレミスの VM を監視および管理することもできます。 この概要では、Azure の統合監視アーキテクチャについて説明します。また、Azure のネイティブ ツールを使用して、Azure VMware Solution VM をライフサイクル全体にわたって管理する方法についても説明します。
+
+
+Microsoft Azure ネイティブ ツールを使用すると、Azure 環境の仮想マシン (VM) を監視および管理できます。 さらに、Azure VMware Solution の VM とオンプレミスの VM を監視および管理することもできます。 この記事では、Azure の統合監視アーキテクチャについて説明します。また、Azure のネイティブ ツールを使用して、Azure VMware Solution VM をライフサイクル全体にわたって管理する方法についても説明します。
 
 ## <a name="benefits"></a>メリット
 
@@ -36,7 +38,7 @@ Microsoft Azure ネイティブ ツールを使用すると、Azure 環境の仮
 
 ## <a name="integrated-azure-monitoring-architecture"></a>Azure の統合監視アーキテクチャ
 
-次の図は、Azure VMware Solution VM の統合監視アーキテクチャを示しています。
+図は、Azure VMware Solution VM の統合監視アーキテクチャを示しています。
 
 ![Azure の統合監視アーキテクチャ](media/lifecycle-management-azure-vmware-solutions-virtual-machines/integrated-azure-monitoring-architecture.png)
 
@@ -51,7 +53,7 @@ Azure を初めて使用する場合、または前に説明したサービス�
 - 「[Azure Arc 対応サーバーとは](../azure-arc/servers/overview.md)」と「[Azure Arc 対応 Kubernetes とは](../azure-arc/kubernetes/overview.md)」
 - [Update Management の概要](../automation/update-management/overview.md)
 
-## <a name="integrating-and-deploying-azure-native-services"></a>Azure ネイティブ サービスの統合とデプロイ
+## <a name="integrate-and-deploy-azure-native-services"></a>Azure ネイティブ サービスを統合してデプロイする
 
 ### <a name="enable-azure-update-management"></a>Azure Update Management を有効にする
 

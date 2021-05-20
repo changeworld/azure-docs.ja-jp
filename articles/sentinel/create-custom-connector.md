@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: a1aaf89624f8d0ab48692629d859f3c1bdb4ba67
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d964dc25fd450f244e34140080e77cdc0e319941
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738902"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749431"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -83,7 +83,7 @@ Logstash をカスタム コネクタとして使用する例については、�
 
 ## <a name="connect-with-logic-apps"></a>Logic Apps を使用して接続する
 
-Azure Sentinel 用のサーバーレスのカスタム コネクタを作成するには、[Azure ロジック アプリ](../logic-apps/index.yml)を使用します。
+Azure Sentinel 用のサーバーレスのカスタム コネクタを作成するには、[Azure Logic Apps](../logic-apps/index.yml) を使用します。
 
 > [!NOTE]
 > Logic Apps を使用してサーバーレス コネクタを作成すると便利な場合がありますが、コネクタに Logic Apps を使用すると、大量のデータではコストがかかる可能性があります。

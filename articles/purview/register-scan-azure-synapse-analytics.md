@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/22/2020
-ms.openlocfilehash: 7d6a0b04306c2ed6ae4887c79962cbb5528643fc
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 05/08/2021
+ms.openlocfilehash: f2797af01dad10c04c8a56cf52a584ea0f04af31
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106974"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656752"
 ---
 # <a name="register-and-scan-dedicated-sql-pools-formerly-sql-dw"></a>専用 SQL プール (以前の SQL DW) の登録とスキャン
 
@@ -122,19 +122,19 @@ GO
 
 新しい Azure Synapse Analytics サーバーをデータ カタログに登録するには、次の操作を行います。
 
-1. Purview アカウントに移動します。
+1. ご自分の Purview アカウントに移動します。
 1. 左側のナビゲーションで **[ソース]** を選択します。
-1. **[登録]** を選択します
-1. **[ソースの登録]** で、 **[SQL 専用プール (以前の SQL DW)]** を選択します
-1. **[続行]** を選択します。
+1. **[登録]** を選択します。
+1. **[ソースの登録]** で、 **[SQL 専用プール (以前の SQL DW)]** を選択します。
+1. **[続行]** をクリックします。
 
 **[ソースの登録 (Azure Synapse Analytics)]** 画面で、次の操作を行います。
 
 1. データ ソースがカタログに表示される際の **[名前]** を入力します。
-1. 目的の論理 SQL Server を指し示す方法を選択します。
-   1. **[Azure サブスクリプションから]** を選択して、 **[Azure サブスクリプション]** ドロップダウン ボックスから適切なサブスクリプションを選択し、 **[サーバー名]** ドロップダウン ボックスから適切なサーバーを選択します。
-   1. または、 **[手動で入力]** を選択して、**サーバー名** を入力することもできます。
-1. **[完了]** を選択して、データ ソースを登録します。
+2. お使いの Azure サブスクリプションを選択して、Azure Synapse ワークスペースをフィルター処理します。
+3. Azure Synapse ワークスペースを選択します。
+4. コレクションを選択するか、新しいものを作成します (省略可能)。
+5. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-azure-synapse-analytics/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 

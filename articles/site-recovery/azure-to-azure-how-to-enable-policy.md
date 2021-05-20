@@ -6,12 +6,12 @@ ms.author: rishjai
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5f55d8c4d2c361f4375c44a333c2fec6afc7ef88
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 3fe6ec7baba3e075f5c5026732b10fab81f3bd42
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077738"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749377"
 ---
 # <a name="using-policy-with-azure-site-recovery-public-preview"></a>Azure Site Recovery でのポリシーの使用 (パブリック プレビュー)
 
@@ -39,20 +39,18 @@ Managed Disks | サポートされています
 可用性セット | サポートされています
 可用性ゾーン | サポートされています
 Azure Disk Encryption (ADE) 対応 VM | サポートされていません
-近接配置グループ (PPG) | サポートされていません
+近接配置グループ (PPG) | サポートされています
 カスタマー マネージド キー (CMK) 対応ディスク | サポートされていません
 記憶域スペース ダイレクト (S2D) クラスター | サポートされていません
 Azure Resource Manager デプロイ モデル | サポートされています
 クラシック デプロイ モデル | サポートされていません
 ゾーンからゾーンへの DR  | サポートされています
-Azure Disk Encryption v1 | サポートされていません
-Azure Disk Encryption v2 | サポートされていません
-Azure Backup との相互運用性 | サポートされていません
-ディスクのホット追加または削除 | サポートされていません
 既定で Azure により適用される他のポリシー (ある場合) との相互運用性 | サポートされています
 
 >[!NOTE]
->サポートされていない VM がポリシーのスコープ内で作成された場合、それらに対して Site Recovery は有効になりません。 ただし、リソース コンプライアンスでは "_非準拠_" として反映されます。
+>次の場合、Site Recovery は有効になりません。 ただし、リソース コンプライアンスでは "_非準拠_" として反映されます。 
+>1. サポートされていない VM がポリシーのスコープ内で作成された場合。
+>1. VM が可用性セットと PPG の両方に含まれる場合。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 このセクションでは、新しく作成されたすべてのリソースに対して Azure Site Recovery を有効にするポリシー割り当てを作成します。

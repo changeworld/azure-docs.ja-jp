@@ -12,12 +12,12 @@ ms.date: 04/14/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 2a975a0aba06ecfd010fe328ef6c8cda75290f2b
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f04a0ca4222ec86e793bf935247029fa78f1acf1
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515585"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627926"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
 
@@ -51,7 +51,7 @@ OAuth 2.0 では、これらの種類のアクセス許可セットは "*スコ�
 
 Microsoft ID プラットフォームでは、 "*委任されたアクセス許可*" と "*アプリケーションのアクセス許可*" という 2 種類のアクセス許可がサポートされています。
 
-* **委任されたアクセス許可** は、サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、アプリが要求するアクセス許可にユーザーまたは管理者が同意します。 アプリはアクセス許可を委任され、ターゲット リソースへの呼び出しを行うときに、サインインしているユーザーとして動作します。 
+* **委任されたアクセス許可** は、サインインしているユーザーが存在するアプリで使用されます。 これらのアプリでは、アプリが要求するアクセス許可にユーザーまたは管理者が同意します。 目的のリソースに対する呼び出しを行うときにサインインしたユーザーとして振る舞う権限を、アプリに委任します。 
 
     一部の委任されたアクセス許可には、管理者以外のユーザーが同意できます。 ただし、高い特権のアクセス許可には[管理者の同意](#admin-restricted-permissions)が必要です。 委任されたアクセス許可に同意できる管理者ロールについては、[Azure Active Directory (Azure AD) での管理者ロールのアクセス許可](../roles/permissions-reference.md)に関する記事を参照してください。
 

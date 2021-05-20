@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 295aeb47499b61556b37d87f0e3c05bc9aea3d6e
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 30419579dab90af07efcea38592d783f1a1d8e00
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208457"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786953"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Device Provisioning Service (DPS) を使用して Azure Digital Twins でデバイスを自動管理する
 
@@ -26,10 +26,10 @@ ms.locfileid: "108208457"
 
 プロビジョニングを設定する前に、次の設定を行う必要があります。
 * **Azure Digital Twins インスタンス**。  [「ハウツー: インスタンスと認証を設定する」](how-to-set-up-instance-portal.md) の手順に従って、Azure デジタル ツイン インスタンスを作成します。 Azure portal ([手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) でインスタンスの **_ホスト名_** を収集します。
-* **IoT ハブ** です。 手順については、この [ IoT Hub のクイック スタート](../iot-hub/quickstart-send-telemetry-cli.md)の「*IoT Hub の作成*」のセクションを参照してください。
+* **IoT ハブ** です。 手順については、「[IoT Hub のクイックスタート](../iot-hub/quickstart-send-telemetry-cli.md)」の「IoT Hub の作成」セクションを参照してください。
 * IoT Hub のデータに基づいてデジタル ツイン情報を更新する [Azure 関数](../azure-functions/functions-overview.md)。  [「ハウツー: IoT ハブ データを取り込み、この Azure 関数を作成する」](how-to-ingest-iot-hub-data.md) の手順に従います。 この記事で使用する関数 **_名_** を収集します。
 
-このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある **[Browse Code]\(コードの参照\)** ボタンを選択して、お使いのマシン上でサンプル プロジェクトを取得します。 これにより、サンプル用の GitHub リポジトリに移動します。 **[Code]\(コード\)** ボタンと、 **[Download ZIP]\(ZIP のダウンロード\)** を選択することによって、 *.ZIP* ファイルとしてダウンロードできます。 
+このサンプルでは、Device Provisioning Service を使用したプロビジョニングを含む **デバイス シミュレーター** も使用します。 デバイス シミュレーターは次の場所にあります: [Azure Digital Twins と IoT Hub の統合のサンプル](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 サンプルのリンクに移動し、タイトルの下にある **[Browse Code]\(コードの参照\)** ボタンを選択して、お使いのマシン上でサンプル プロジェクトを取得します。 これにより、サンプル用の GitHub リポジトリに移動します。 **[Code]\(コード\)** ボタンと、 **[Download ZIP]\(ZIP のダウンロード\)** を選択することによって、.ZIP ファイルとしてダウンロードできます。 
 
 :::image type="content" source="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png" alt-text="GitHub にある digital-twins-iothub-integration リポジトリのスクリーンショット。[Code]\(コード\) ボタンが選択され、生成された小さなダイアログ ボックスで、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png":::
 
@@ -181,10 +181,10 @@ node .\adt_custom_register.js
 
 ### <a name="validate"></a>検証
 
-この記事でフローを設定した結果として、デバイスは Azure Digital Twins に自動的に登録されます。 次の [Azure Digital Twins CLI](how-to-use-cli.md) コマンドを使用して、作成した Azure Digital Twins インスタンス内のデバイスのツインを検索します。
+この記事でフローを設定した結果として、デバイスは Azure Digital Twins に自動的に登録されます。 次の [Azure Digital Twins CLI](concepts-cli.md) コマンドを使用して、作成した Azure Digital Twins インスタンス内のデバイスのツインを検索します。
 
 ```azurecli-interactive
-az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration ID>"
+az dt twin show --dt-name <Digital Twins instance name> --twin-id "<Device Registration ID>"
 ```
 
 Azure Digital Twins インスタンス内にデバイスのツインがあることを確認します。
@@ -233,7 +233,7 @@ Azure Digital Twins インスタンス内にデバイスのツインがあるこ
 2. 次の Azure CLI コマンドを使用して、関数アプリの設定に変数として接続文字列を追加します。 このコマンドは、[Cloud Shell](https://shell.azure.com) で実行するか、Azure CLI が[コンピューターにインストールされている](/cli/azure/install-azure-cli)場合はローカルで実行できます。
 
     ```azurecli-interactive
-    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
+    az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" --resource-group <resource group> --name <your App Service (function app) name>
     ```
 
 ### <a name="add-a-function-to-retire-with-iot-hub-lifecycle-events"></a>IoT Hub ライフサイクル イベントを使用してインベントリから削除する関数を追加する
@@ -316,10 +316,10 @@ Visual Studio の関数アプリ プロジェクトに、*イベント ハブ �
 
 Azure Digital Twins に反映された変更が表示されるまでに数分かかる場合があります。
 
-次の [Azure Digital Twins CLI](how-to-use-cli.md) コマンドを使用して、Azure Digital Twins インスタンス内のデバイスのツインが削除されたことを確認します。
+次の [Azure Digital Twins CLI](concepts-cli.md) コマンドを使用して、Azure Digital Twins インスタンス内のデバイスのツインが削除されたことを確認します。
 
 ```azurecli-interactive
-az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration ID>"
+az dt twin show --dt-name <Digital Twins instance name> --twin-id "<Device Registration ID>"
 ```
 
 デバイスのツインが Azure Digital Twins インスタンス内に見つからなくなったことがわかります。

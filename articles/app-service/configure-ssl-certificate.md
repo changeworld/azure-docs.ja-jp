@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1e05435f364cc30b351275439a04caff47c35512
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4fd5d7bfc7a4ac8ab3b255091b4383085a87d4da
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871797"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634529"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -65,7 +65,7 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 
 無料 App Service マネージド証明書は、App Service でカスタム DNS 名をセキュリティで保護するためのターンキー ソリューションです。 これは、App Service によって管理され、自動的に更新される、完全に機能する TLS/SSL 証明書です。 無料の証明書には以下の制限が伴います。
 
-- ワイルドカード証明書はサポートされません。
+- ワイルドカード証明書はサポートされていないため、クライアント証明書として使用しないでください。
 - エクスポートはできません。
 - App Service Environment (ASE) ではサポートされません。
 - Traffic Manager と統合されたルート ドメインではサポートされません。
@@ -117,7 +117,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 次の表を使用して、証明書を構成できます。 完了したら、 **[作成]** をクリックします。
 
-| 設定 | Description |
+| 設定 | 説明 |
 |-|-|
 | 名前 | App Service 証明書のフレンドリ名。 |
 | ネイキッド ドメインのホスト名 | ルート ドメインはここで指定します。 発行された証明書によって、ルート ドメインと `www` サブドメインの "*両方*" が保護されます。 発行された証明書の [共通名] フィールドにはルート ドメインが含まれ、[サブジェクトの別名] フィールドには `www` ドメインが含まれています。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。|
@@ -142,7 +142,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 
 **[Key Vault の状態]** ページで **[Key Vault リポジトリ]** をクリックして、新しいコンテナーを作成するか、既存のコンテナーを選択します。 新しいコンテナーの作成を選択する場合は、次の表を使用してコンテナーを構成し、[作成] をクリックします。 App Service アプリと同じサブスクリプションおよび同じリソース グループに新しい Key Vault を作成します。
 
-| 設定 | Description |
+| 設定 | 説明 |
 |-|-|
 | 名前 | 英数字とダッシュで構成される一意の名前。 |
 | Resource group | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |

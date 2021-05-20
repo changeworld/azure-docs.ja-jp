@@ -8,33 +8,35 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 4ef4e1f11018c82d96907518b79cc5737c49b946
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5b6b2a2c8fdee17cef6c74ebfab758fe2fdb7bc0
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104050"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108766845"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-この記事では、**新しい Azure Digital Twins インスタンスを設定する** 手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が完了します。
+この記事では、**新しい Azure Digital Twins インスタンスを設定する** 手順 (インスタンスの作成と認証の設定を含む) について説明します。 この記事を完了すると、Azure Digital Twins インスタンスのプログラミングを開始する準備が整います。
 
-この記事のこのバージョンでは、プロセスを効率化する [**自動化されたデプロイ スクリプト** のサンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)を実行することによってこれらの手順を完了します。 
-* このスクリプトがバックグラウンドで実行する手動の CLI 手順を表示するには、この記事の CLI バージョンである [*方法: インスタンスと認証の設定 (CLI)*](how-to-set-up-instance-cli.md) に関するページを参照してください。
-* Azure portal に応じた手動の手順を表示するには、この記事のポータル バージョンである [*方法: インスタンスと認証の設定 (ポータル)*](how-to-set-up-instance-portal.md) に関するページを参照してください。
+この記事のこのバージョンでは、プロセスを効率化する[自動化されたデプロイ スクリプトのサンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)を実行することによってこれらの手順を完了します。 
+* このスクリプトがバックグラウンドで実行する手動の CLI 手順を表示するには、この記事の CLI バージョンである[方法: インスタンスと認証の設定 (CLI)](how-to-set-up-instance-cli.md)  に関するページを参照してください。
+* Azure portal に応じた手動の手順を表示するには、この記事のポータル バージョンである[方法: インスタンスと認証の設定 (ポータル)](how-to-set-up-instance-portal.md)  に関するページを参照してください。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+
+## <a name="prerequisites-permission-requirements"></a>前提条件:権限の要件
 [!INCLUDE [digital-twins-setup-permissions.md](../../includes/digital-twins-setup-permissions.md)]
 
 ## <a name="prerequisites-download-the-script"></a>前提条件:スクリプトのダウンロード
 
-このサンプル スクリプトは PowerShell で記述されています。 これは、[**Azure Digital Twins のエンドツーエンド サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをマシンにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[コードの参照]* ボタンを選択します。 これにより、サンプル用の GitHub リポジトリに移動します。サンプルは、 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、 *.ZIP* 形式でダウンロードできます。
+このサンプル スクリプトは PowerShell で記述されています。 これは、[Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)の一部です。これをマシンにダウンロードするには、そのサンプル リンクに移動し、タイトルの下の *[コードの参照]* ボタンを選択します。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、.zip 形式でこれをダウンロードできます。
 
-:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリのビュー。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリの図。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
 
-これにより、 *.ZIP* フォルダーが **digital-twins-samples-master.zip** としてお使いのマシンにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
+これにより、.zip フォルダーが **digital-twins-samples-master.zip** としてお使いのマシンにダウンロードされます。 お使いのコンピューター上のフォルダーに移動してこれを解凍し、ファイルを抽出します。
 
 解凍したフォルダー内で、このデプロイ スクリプトは _digital-twins-samples-master > scripts > **deploy.ps1**_ に配置されています。
 
@@ -59,7 +61,7 @@ ms.locfileid: "107104050"
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="[アップロード] アイコンが選択されていることを示す Cloud Shell ウィンドウ":::
 
-    お使いのマシン上の _**deploy.ps1**_ ファイルに移動し (_digital-twins-samples-master > scripts > **deploy.ps1**_)、[開く] をクリックします。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
+    お使いのマシン上の _**deploy.ps1**_ ファイルに移動し (_digital-twins-samples-master > scripts > **deploy.ps1**_)、[開く] を選択します。 これにより、そのファイルが Cloud Shell にアップロードされ、Cloud Shell ウィンドウで実行できるようになります。
 
 4. Cloud Shell ウィンドウで `./deploy.ps1` コマンドを送信することによってスクリプトを実行します。 次のコマンドをコピーできます (Cloud Shell に貼り付けるには、Windows と Linux では **Ctrl+Shift+V**、macOS では **Cmd+Shift+V** を使用できます。 右クリック メニューを使用することもできます)。
 
@@ -71,7 +73,7 @@ ms.locfileid: "107104050"
 
     スクリプトにより自動化された設定手順が実行されると、次の値を渡すよう求められます。
     * インスタンス用: 使用する Azure サブスクリプションの *サブスクリプション ID*
-    * インスタンス用: インスタンスをデプロイする *場所*。 Azure Digital Twins がどのリージョンでサポートされているかを確認するには、[*リージョン別の利用可能な Azure 製品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)に関するページを参照してください。
+    * インスタンス用: インスタンスをデプロイする "*場所*"。 Azure Digital Twins をサポートしているリージョンを確認するには、「[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)」を参照してください。
     * インスタンス用: *リソース グループ* の名前。 既存のリソース グループを使用するか、または作成するリソース グループの新しい名前を入力できます。
     * インスタンス用: Azure Digital Twins インスタンスの *名前*。 サブスクリプションのリージョンに、指定した名前がすでに使用されている別の Azure Digital Twins インスタンスがある場合は、別の名前を選択するように求められます。
 
@@ -87,9 +89,9 @@ ms.locfileid: "107104050"
 >[!NOTE]
 >現在のところ、スクリプト化されたセットアップには **既知の問題** があります。一部のユーザー (特に、個人の [Microsoft アカウント (MSA) のユーザー](https://account.microsoft.com/account)) に対して、**_Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)_ へのロールの割り当てを作成できない** ことがあります。
 >
->ロール割り当ての妥当性はこの記事の後半にある「[*ユーザー ロールの割り当てを確認する*](#verify-user-role-assignment)」セクションで確認できます。また、必要に応じて、[Azure portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) または [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) を使用して手動でロール割り当てを設定できます。
+>ロール割り当ての妥当性はこの記事の後半にある「[ユーザー ロールの割り当てを確認する](#verify-user-role-assignment)」セクションで確認できます。また、必要に応じて、[Azure portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions) または [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions) を使用して手動でロール割り当てを設定できます。
 >
->この問題の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)」を参照してください。
+>この問題の詳細については、「[トラブルシューティング: Azure Digital Twins の既知の問題](troubleshoot-known-issues.md#missing-role-assignment-after-scripted-setup)」を参照してください。
 
 ## <a name="verify-success-and-collect-important-values"></a>正常に実行されたことを確認して重要な値を収集する
 
@@ -124,7 +126,7 @@ ms.locfileid: "107104050"
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
 * [az dt reference](/cli/azure/dt)
-* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
+* [概念: Azure Digital Twins CLI コマンド セット](concepts-cli.md)
 
 または、認証コードを使用してクライアント アプリケーションをインスタンスに接続する方法を確認します。
-* [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)
+* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)

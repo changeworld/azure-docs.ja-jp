@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e408832affd84fcde41c79d33ec7f157611ef08
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: aba837ab590ae941e161e10e88782dcce944c085
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166811"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760465"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>チュートリアル: サーバーレス SQL プールを使用して論理データ ウェアハウスを作成する
 
@@ -52,9 +52,9 @@ CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
 データ ソースの所有者によって匿名アクセスが許可されている場合や、呼び出し元の Azure AD ID に明示的なアクセス権が与えられている場合、呼び出し元は、資格情報なしでデータ ソースにアクセスすることができます。
 
 外部データ ソース上のデータへのアクセス中に使用されるカスタムの資格情報を明示的に定義できます。
-- Synapse ワークスペースのマネージド ID
-- Azure ストレージの Shared Access Signature
-- 読み取り専用 Cosmos DB アカウント キー
+- Synapse ワークスペースの[マネージド ID](develop-storage-files-storage-access-control.md?tabs=managed-identity)
+- Azure ストレージの [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)
+- Cosmos DB 分析ストレージを読み取ることができる読み取り専用の Cosmos DB アカウントキー。
 
 前提条件として、データベースにはマスター キーを作成する必要があります。
 ```sql
@@ -77,7 +77,8 @@ Cosmos DB 分析ストレージにアクセスするためには、読み取り�
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 ```
 
 ### <a name="define-external-file-formats"></a>外部ファイルの形式を定義する
@@ -118,19 +119,19 @@ create schema ecdc_adls;
 
 ```sql
 create external table ecdc_adls.cases (
-    date_rep        date,
-    day    smallint,
-    month             smallint,
-    year  smallint,
-    cases smallint,
-    deaths            smallint,
-    countries_and_territories       varchar(256),
-    geo_id             varchar(60),
-    country_territory_code           varchar(16),
-    pop_data_2018           int,
-    continent_exp             varchar(32),
-    load_date      datetime2(7),
-    iso_country   varchar(16)
+    date_rep                   date,
+    day                        smallint,
+    month                      smallint,
+    year                       smallint,
+    cases                      smallint,
+    deaths                     smallint,
+    countries_and_territories  varchar(256),
+    geo_id                     varchar(60),
+    country_territory_code     varchar(16),
+    pop_data_2018              int,
+    continent_exp              varchar(32),
+    load_date                  datetime2(7),
+    iso_country                varchar(16)
 ) with (
     data_source= ecdc_cases,
     location = 'latest/ecdc_cases.parquet',
@@ -195,6 +196,12 @@ GO
 - 自分が用意した外部テーブルとビューを使用することによってのみデータの読み取りを許可する必要があるため、新しいユーザーには、`ADMINISTER DATABASE BULK OPERATIONS` アクセス許可を拒否します。
 - `SELECT` アクセス許可は、ユーザーに使用を許可すべきテーブルに限定して付与するようにします。
 - ビューを使用してデータへのアクセスを提供する場合、外部データ ソースへのアクセスに使用される資格情報に対し、`REFERENCES` アクセス許可を付与します。
+
+このユーザーには、外部データのクエリに必要な最小限のアクセス許可が与えられています。 アクセス許可、外部テーブル、ビューを設定できるパワーユーザーを作成したい場合は、`CONTROL` アクセス許可をユーザーに割り当ててください。
+
+```sql
+GRANT CONTROL TO [jovan@contoso.com]
+```
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d7dfe010a3f4a1559454c49545af81eb14797bf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: deaa7834d4aa69ccf161b58f566dbc82ea71ad78
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359916"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108755731"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM に SQL Server の可用性グループを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,6 +36,9 @@ ms.locfileid: "97359916"
 可用性グループの作成や、内部ロード バランサーの作成など、可用性グループ構成の他の部分は手動で行う必要があります。 この記事では、一連の自動および手動の手順を示します。
 
 この記事では Azure クイックスタート テンプレートを使用して可用性グループ環境を構成しますが、[Azure portal](availability-group-azure-portal-configure.md) を使用して構成するか、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
+
+> [!NOTE]
+> これで Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)に関するページを参照してください。 
  
 
 ## <a name="prerequisites"></a>前提条件 

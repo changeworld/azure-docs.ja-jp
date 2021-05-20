@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7b8730d9a3e50eb1373cdc2f8f2984c6cc5bbccf
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 589e7ea53f6f247d18d4a2b532af3c87a8b0230c
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108208007"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787889"
 ---
 # <a name="adopting-an-industry-ontology"></a>業界オントロジの採用
 
@@ -24,7 +24,7 @@ ms.locfileid: "108208007"
 
 ## <a name="realestatecore-smart-building-ontology"></a>RealEstateCore スマート ビル オントロジ
 
-*このオントロジについてはこちら:* [スマート ビルに関する Digital Twins Definition Language ベースの RealEstateCore オントロジ](https://github.com/Azure/opendigitaltwins-building)。
+*オントロジは次のレポジトリから所得してください:* [スマート ビルに関する Digital Twins Definition Language ベースの RealEstateCore オントロジ](https://github.com/Azure/opendigitaltwins-building)。
 
 Microsoft は、不動産所有者、ソフトウェア ベンダー、研究機関からなるスウェーデンのコンソーシアムである [RealEstateCore](https://www.realestatecore.io/) と提携しています。この目的は、不動産業界向けにこのオープンソースの  DTDL オントロジを提供することです。
 
@@ -32,11 +32,11 @@ Microsoft は、不動産所有者、ソフトウェア ベンダー、研究機
 
 このオントロジの構造とモデリング規則、使用方法、拡張方法、参加方法について詳しくは、オントロジの GitHub のリポジトリ ([Azure/opendigitaltwins-building](https://github.com/Azure/opendigitaltwins-building)) を参照してください。 
 
-また、こちらのブログ投稿と付随する動画で、RealEstateCore とのパートナーシップ、およびこのイニシアティブの目標について詳細を確認できます。"[デジタル ツインのスマート ビル オントロジ RealEstateCore が使用可能に](https://techcommunity.microsoft.com/t5/internet-of-things/realestatecore-a-smart-building-ontology-for-digital-twins-is/ba-p/1914794)"
+また、[デジタル ツインのスマート ビル オントロジ RealEstateCore が使用可能](https://techcommunity.microsoft.com/t5/internet-of-things/realestatecore-a-smart-building-ontology-for-digital-twins-is/ba-p/1914794)になったことに関するブログ投稿と付随する動画で、RealEstateCore とのパートナーシップ、およびこのイニシアティブの目標について詳細を確認できます。
 
 ## <a name="smart-cities-ontology"></a>スマート シティのオントロジ
 
-*このオントロジについてはこちら:* [スマート シティに関する Digital Twins Definition Language (DTDL) オントロジ](https://github.com/Azure/opendigitaltwins-smartcities)。
+*オントロジは次のレポジトリから所得してください:* [スマート シティ用の Digital Twins Definition Language (DTDL) オントロジ](https://github.com/Azure/opendigitaltwins-smartcities)。
 
 Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) および [Sirus](https://sirus.be/) と共同で、[ETSI CIM NGSI-LD](https://www.etsi.org/committee/cim) を始めとする、スマート シティに関する DTDL ベースのオントロジを提供しています。 ETSI NGSI-LD に加え、Saref4City、CityGML、ISO なども評価しています。
 
@@ -44,7 +44,7 @@ Microsoft は、[Open Agile Smart Cities (OASC)](https://oascities.org/) およ�
 
 オントロジと、その使用方法、参加方法について詳しくは、このオントロジの GitHub のリポジトリ ([Azure/opendigitaltwins-smartcities](https://github.com/Azure/opendigitaltwins-smartcities)) を参照してください。 
 
-スマート シティに関するパートナーシップとアプローチの詳細については、「[Digital Twins のスマート シティ オントロジ](https://techcommunity.microsoft.com/t5/internet-of-things/smart-cities-ontology-for-digital-twins/ba-p/2166585)」というブログ記事とそこに掲載されている動画も参照してください。
+スマート シティに関するパートナーシップとアプローチの詳細については、[Digital Twins のスマート シティ オントロジ](https://techcommunity.microsoft.com/t5/internet-of-things/smart-cities-ontology-for-digital-twins/ba-p/2166585)に関するブログ記事とそこに掲載されている動画も参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

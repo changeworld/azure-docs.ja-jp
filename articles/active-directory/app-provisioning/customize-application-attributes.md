@@ -1,21 +1,22 @@
 ---
-title: チュートリアル - Azure Active Directory 属性マッピングをカスタマイズする
-description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
+title: チュートリアル - アプリケーションのプロビジョニングで Azure Active Directory 属性マッピングをカスタマイズする
+description: Azure Active Directory アプリケーション プロビジョニングにおける SaaS (サービスとしてのソフトウェア) アプリの属性マッピングとは何か、また、この属性マッピングをビジネス ニーズに合わせて変更するにはどうすればよいかについて説明します。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: 8534c21bb0dad782b89c6518ea2313b4232639a6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.reviewer: arvinh
+ms.openlocfilehash: 78e2b01da1b47a51309a9e26500514aea396190b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128669"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783011"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -79,7 +80,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
   - **作成中のみ** - このマッピングをユーザーの作成アクションのみに適用します。
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>ソース システムとターゲット システムで一致するユーザー
-Azure AD プロビジョニング サービスは、"未開発" シナリオ(ユーザーがターゲット システムに存在しない) シナリオと "再開発" シナリオ (ユーザーが既にターゲット システムに存在する) のどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
+Azure AD プロビジョニング サービスは、"未開発" シナリオ (ユーザーがターゲット システムに存在しない) シナリオと "再開発" シナリオ (ユーザーが既にターゲット システムに存在する) のどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
 
 - **一致する属性は一意であることが望ましい:** 顧客は多くの場合、userPrincipalName、mail、オブジェクト ID などの属性を一致する属性として使用します。
 - **複数の属性を一致する属性として使用できる:** ユーザーを一致するときに評価される複数の属性と、それらの属性が評価される順序 (UI では一致の優先順位として定義されます) を定義することができます。 たとえば、一致する属性として 3 つの属性を定義し、最初の 2 つの属性を評価した後にユーザーが一意に一致する場合、サービスは 3 番目の属性を評価しません。 サービスは、指定された順序で一致する属性を評価し、一致が見つかったら評価を停止します。  

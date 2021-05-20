@@ -1,16 +1,16 @@
 ---
-title: ポートと VLAN の名前解決を強化する
-description: デバイスの解像度を強化するために、センサー上のポートと VLAN の名前をカスタマイズします。
-ms.date: 04/28/2021
+title: Windows エンドポイント監視を構成する
+description: Windows エンドポイント監視 (WMI) を使用して、デバイス上の解決されたデータを強化します。
+ms.date: 05/03/2021
 ms.topic: how-to
-ms.openlocfilehash: f47011b5ecab97596783f8e51be0505774a94f88
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 4d701cfda88a2c257b001a52a19853a937661714
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210213"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108734995"
 ---
-# <a name="configure-windows-endpoint-monitoring"></a>Windows エンドポイント監視を構成する
+# <a name="configure-windows-endpoint-monitoring-wmi"></a>Windows エンドポイント監視 (WMI) を構成する
 
 Windows エンドポイント監視機能を使用して、Windows システムを選択的にプローブするように Azure Defender for IoT を構成できます。 これにより、Service Pack レベルなど、デバイスに関して焦点を絞った正確な情報が得られます。
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/28/2021
+ms.date: 05/04/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a4b3a6020411d7878106e866652fea4fb1e5a407
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 14c893ec6fcece55f3b539da671d5085e3bf9390
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175005"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765858"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -48,7 +48,7 @@ ms.locfileid: "108175005"
 |[Azure Arc が有効な Windows サーバー上で依存関係エージェントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91cb9edd-cd92-4d2f-b2f2-bdd8d065a3d4) |依存関係エージェントの仮想マシン拡張機能をインストールして、Arc が有効なサーバー経由で Azure に接続されているサーバーとマシン上で VM の分析情報を有効にします。 VM の分析情報では、依存関係エージェントを使用して、マシンで実行されているプロセスと外部プロセスの依存関係に関するネットワーク メトリックと検出データを収集します。 詳細については、[https://aka.ms/vminsightsdocs](https://aka.ms/vminsightsdocs) をご覧ください。 |DeployIfNotExists、Disabled |[1.2.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_HybridVM_Deploy.json) |
 |[Azure Arc が有効な Linux サーバー上で Log Analytics エージェントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d2b61b4-1d14-4a63-be30-d4498e7ad2cf) |Log Analytics エージェントの仮想マシン拡張機能をインストールして、Arc が有効なサーバー経由で Azure に接続されているサーバーとマシン上で VM の分析情報を有効にします。 VM の分析情報では、Log Analytics エージェントを使用して、ゲスト OS のパフォーマンス データを収集し、それらのパフォーマンスに関する分析情報を提供します。 詳細については、[https://aka.ms/vminsightsdocs](https://aka.ms/vminsightsdocs) をご覧ください。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Linux_HybridVM_Deploy.json) |
 |[Azure Arc が有効な Windows サーバー上で Log Analytics エージェントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F69af7d4a-7b18-4044-93a9-2651498ef203) |Log Analytics エージェントの仮想マシン拡張機能をインストールして、Arc が有効なサーバー経由で Azure に接続されているサーバーとマシン上で VM の分析情報を有効にします。 VM の分析情報では、Log Analytics エージェントを使用して、ゲスト OS のパフォーマンス データを収集し、それらのパフォーマンスに関する分析情報を提供します。 詳細については、[https://aka.ms/vminsightsdocs](https://aka.ms/vminsightsdocs) をご覧ください。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_HybridVM_Deploy.json) |
-|[Qualys 脆弱性評価エージェントを受け取るようにマシンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13ce0167-8ca6-4048-8e6b-f996402e3c1b) |Azure Defender には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このポリシーが有効になっていると、Qualys の脆弱性評価エージェントがデプロイされていないマシンには、自動的にエージェントが送信されます。 |DeployIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VulnerabilityAssessment_ProvisionQualysAgent_Deploy.json) |
+|[脆弱性評価エージェントを受け取るようにマシンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F13ce0167-8ca6-4048-8e6b-f996402e3c1b) |Azure Defender には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このポリシーを有効にすると、Azure Defender によって Qualys 脆弱性評価エージェントが、まだインストールされていないサポートされているすべてのマシンに自動的にデプロイされます。 |DeployIfNotExists、Disabled |[2.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_VulnerabilityAssessment_ProvisionQualysAgent_Deploy.json) |
 |[Windows マシンでタイム ゾーンを構成する。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |このポリシーは、指定されたタイム ゾーンを Windows 仮想マシンに設定するためのゲスト構成の割り当てを作成します。 |deployIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
 |[Linux マシンでは、Azure セキュリティ ベースラインの要件を満たしている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](https://aka.ms/gcpol) を参照してください。 Linux マシンで Azure セキュリティ ベースラインの要件を満たしている必要がある場合、マシンは非準拠です |AuditIfNotExists、Disabled |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F842c54e8-c2f9-4d79-ae8d-38d8b8019373) |このポリシーでは、Log Analytics エージェントがインストールされていない場合に、Linux Azure Arc マシンを監査します。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Linux_LogAnalytics_Audit.json) |

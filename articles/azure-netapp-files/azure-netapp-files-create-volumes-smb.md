@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 05/05/2021
 ms.author: b-juche
-ms.openlocfilehash: d3ca94524c334a20f5ee75e5300ad419fa1542c5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: e32480a8b5e76cf0a3a8e287c0f318aa7ff445a6
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107873273"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753416"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -116,7 +116,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
         > [!IMPORTANT]   
         > SMB の継続的な可用性機能は、現在パブリック プレビュー段階です。 **[[Azure NetApp Files SMB Continuous Availability Shares Public Preview]\(Azure NetApp Files の SMB の継続的な可用性の共有パブリック プレビュー\) 順番待ち送信ページ](https://aka.ms/anfsmbcasharespreviewsignup)** から、機能にアクセスするための順番待ち要求を送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってから、継続的な可用性機能を使用してください。   
         > 
-        > SQL Server と [FSLogix のユーザー プロファイル コンテナー](../virtual-desktop/create-fslogix-profile-container.md)でのみ継続的可用性を有効にする必要があります。 SMB 継続的可用性共有を SQL Server と FSLogix のユーザー プロファイル コンテナー以外のワークロードに使用することはサポートされて *いません*。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 SQL Server のインストールに管理者以外のアカウント (ドメイン) を使用している場合は、必要なセキュリティ特権がアカウントに割り当てられていることを確認してください。 必要なセキュリティ特権 (`SeSecurityPrivilege`) がドメイン アカウントになく、ドメイン レベルで特権を設定できない場合は、Active Directory 接続の **"セキュリティ特権ユーザー"** フィールドを使用して、そのアカウントに特権を付与できます。 「[Active Directory 接続を作成する](create-active-directory-connections.md#create-an-active-directory-connection)」を参照してください。
+        SQL Server と [FSLogix のユーザー プロファイル コンテナー](../virtual-desktop/create-fslogix-profile-container.md)でのみ継続的可用性を有効にする必要があります。 SMB 継続的可用性共有を SQL Server と FSLogix のユーザー プロファイル コンテナー以外のワークロードに使用することはサポートされて *いません*。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 SQL Server のインストールに管理者以外のアカウント (ドメイン) を使用している場合は、必要なセキュリティ特権がアカウントに割り当てられていることを確認してください。 必要なセキュリティ特権 (`SeSecurityPrivilege`) がドメイン アカウントになく、ドメイン レベルで特権を設定できない場合は、Active Directory 接続の **"セキュリティ特権ユーザー"** フィールドを使用して、そのアカウントに特権を付与できます。 「[Active Directory 接続を作成する](create-active-directory-connections.md#create-an-active-directory-connection)」を参照してください。
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 
@@ -167,7 +167,9 @@ Windows SMB クライアントで、オブジェクトのプロパティの **[�
 
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
-* [SMB に関する FAQ](./azure-netapp-files-faqs.md#smb-faqs)
+* [Azure NetApp Files 用に ADDS LDAP over TLS を構成する](configure-ldap-over-tls.md) 
+* [既存の SMB ボリュームを変換して継続的な可用性を使用する](convert-smb-continuous-availability.md)
+* [SMB に関する FAQ](azure-netapp-files-faqs.md#smb-faqs)
 * [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
 * [Azure サービスの仮想ネットワーク統合について理解する](../virtual-network/virtual-network-for-azure-services.md)
 * [Azure CLI を使用して新しい Active Directory フォレストをインストールする](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 24a3c1ed9b94459eaa1993a26ce910b3f16e5383
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 0e37e6740613c7d025a461b1b3f1497880a50124
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293118"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634565"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -64,7 +64,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Kubernetes Service - Kubernetes API (Microsoft.ContainerService/managedClusters)/管理 | privatelink.{region}.azmk8s.io | {region}.azmk8s.io |
 | Azure Search (Microsoft.Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft.ContainerRegistry/registries)/レジストリ | privatelink.azurecr.io | azurecr.io |
-| Azure App Configuration (Microsoft.Appconfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure App Configuration (Microsoft.AppConfiguration/configurationStores)/configurationStores | privatelink.azconfig.io | azconfig.io |
 | Azure Backup (Microsoft.RecoveryServices/vaults)/コンテナー | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
 | Azure Site Recovery (Microsoft.RecoveryServices/vaults)/コンテナー | {region}.privatelink.siterecovery.windowsazure.com | {region}.hypervrecoverymanager.windowsazure.com |
 | Azure Event Hubs (Microsoft.EventHub/namespaces)/名前空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
