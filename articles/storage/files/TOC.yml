@@ -213,7 +213,7 @@
               href: storage-files-migration-storsimple-8000.md
             - name: StorSimple 1200 の移行ガイド
               href: storage-files-migration-storsimple-1200.md
-    - name: パフォーマンスの向上
+    - name: パフォーマンス
       items:
         - name: SMB マルチチャネルを有効にする
           href: storage-files-enable-smb-multichannel.md

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: fd8686cc396d5fcee20590fbac8bccaf187b024d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd77f7ac69296c8d59b703d202b23e2112bd912
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101735949"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764713"
 ---
 # <a name="network-requirements"></a>ネットワークの要件
 
@@ -21,7 +21,7 @@ Azure Remote Rendering での優れたユーザー エクスペリエンスを�
 正確なネットワーク要件は、リモート シーン グラフに対する変更の数と頻度およびレンダリングされるビューの複雑さなど、特定のユース ケースによって異なりますが、可能な限り優れたエクスペリエンスを確保するためのガイドラインがいくつかあります。
 
 * インターネット接続では、Azure Remote Rendering のシングル ユーザー セッションで一貫して少なくとも **40 Mbps のダウンストリーム** および **5 Mbps のアップストリーム** をサポートする必要があります。これは、ネットワーク上に競合するトラフィックが存在しないことを想定した場合です。 エクスペリエンスを向上させるには、より高いレートをお勧めします。 
-* **Wi-Fi** は、低遅延、高帯域幅、安定した接続がサポートされるため、推奨されるネットワークの種類です。 一部のモバイル ネットワークには、エクスペリエンスが低下する可能性のあるジッターが導入されています。 
+* **Wi-Fi** は低遅延で高帯域幅の安定した接続がサポートされるため、推奨されるネットワークの種類です。 一部のモバイル ネットワークには、エクスペリエンスが低下する可能性のあるジッターが導入されています。 
 * **5 GHz の Wi-Fi 帯域** を使用すると、通常は 2.4 GHz の Wi-Fi 帯域よりも優れた結果が得られますが、両方とも機能するはずです。
 * 近くに他の Wi-Fi ネットワークがある場合は、これらの他のネットワークで使われている Wi-Fi チャネルは使用しないようにしてください。 [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) などのネットワーク スキャン ツールを使用することで、Wi-Fi ネットワークで使用されるチャネルでトラフィックが競合していないかどうかを確認できます。
 * 厳密に、電力線 LAN 転送や **Wi-Fi リピーターの使用は避けてください**。

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 1d3dff19bd75bfa4e7564eb4b188ffe68d605025
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0892f11a79c62669d77cceb2dbc4f9a9f86c623a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952033"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765937"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -89,7 +89,7 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
 
 API サーバーに接続するために、ポート 22、9000、および 1194 が開いていることを確認します。 `kubectl get pods --namespace kube-system` コマンドを使用して、`tunnelfront` または `aks-link` ポッドが *kube-system* 名前空間で実行されているかどうかを確認します。 そうでない場合は、ポッドを強制的に削除すると、再起動されます。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。   どうすればいいですか。
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>AKS API に接続するときに、クライアントから `"tls: client offered only unsupported versions"` を取得しています。 どうすればよいですか。
 
 AKS でサポートされる TLS の最小バージョンは TLS 1.2 です。
 
@@ -439,7 +439,7 @@ Kubernetes の **1.15.0 より古いバージョン** では、**WaitForAttach �
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>kubernetes.io プレフィックスでノード ラベルを使用すると、Kubernetes 1.16 へのアップグレードが失敗するのはなぜですか
 
-Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
+Kubernetes 1.16 では、kubelet でノードに適用できるのは、[kubernetes.io プレフィックスで定義されているラベルのサブセットのみ](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/)です。 AKS では、影響を受けるワークロードにダウンタイムが発生する可能性があるため、ユーザーの同意なしにアクティブなラベルを自動的に削除することはできません。
 
 そのため、次のようにしてこの問題を回避できます。
 

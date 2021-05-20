@@ -1,21 +1,20 @@
 ---
-title: Azure で Windows VM のサイズを変更する
+title: Azure portal または PowerShell を使用して仮想マシンのサイズを変更する
 description: Azure 仮想マシンに使用する VM のサイズを変更します。
 author: cynthn
 ms.service: virtual-machines
-ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: f7f41c0fb2bf949dd47491761fde8025a2d35155
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3bd921d8c17f89d4f9adbc7d0409d48c00cba7a1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560652"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768123"
 ---
-# <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
+# <a name="resize-a-virtual-machine-using-the-azure-portal-or-powershell"></a>Azure portal または PowerShell を使用して仮想マシンのサイズを変更する
 
 この記事では、VM を別の [VM サイズ](../sizes.md)に移行する方法について説明します。
 
@@ -119,4 +118,4 @@ $virtualMachines | Start-AzVM
 
 ## <a name="next-steps"></a>次のステップ
 
-スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、[仮想マシン スケール セットでのマシンの自動スケール](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)に関するページを参照してください。
+スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、[仮想マシン スケール セットでのマシンの自動スケール](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md)に関する記事をご覧ください。

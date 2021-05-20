@@ -500,6 +500,9 @@
         - name: 高度なエントリ スクリプトの作成
           displayName: swagger inference schema binary cors
           href: how-to-deploy-advanced-entry-script.md
+        - name: 推論 HTTP サーバー
+          href: how-to-inference-server-http.md
+          displayName: local debug
         - name: Web サービスを監視する
           items:
             - name: モデルのデータを収集して評価する

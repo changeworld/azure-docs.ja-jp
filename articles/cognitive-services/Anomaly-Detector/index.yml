@@ -1,31 +1,33 @@
 ### YamlMime:Landing
 title: Anomaly Detector API のドキュメント
-summary: Anomaly Detector API を使用して、データを経時的に監視し、機械学習により異常を検出する方法を説明します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
+summary: Anomaly Detector 一変量および多変量の API を使用して、データを経時的に監視し、機械学習により異常を検出する方法を説明します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
 metadata:
   title: Anomaly Detector API - チュートリアル、クイックスタート、API リファレンス
   titleSuffix: Azure Cognitive Services
-  description: Anomaly Detector API を使用すると、データを経時的に監視し、機械学習により異常を検出できます。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
+  description: Anomaly Detector 一変量および多変量の API を使用して、データを経時的に監視し、機械学習により異常を検出します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
   services: cognitive-services
-  author: aahill
+  author: mrbullwinkle
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 09/10/2019
-  ms.author: aahi
-  ms.openlocfilehash: 24f6ec0afc0760b2f57f7ac9409f0b84f2e630da
-  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.date: 05/12/2021
+  ms.author: mbullwin
+  ms.openlocfilehash: 5737b7c44231053a3de0665bd4fd147729b53a3a
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/20/2021
-  ms.locfileid: "107789107"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "110082308"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
   - linkListType: overview
     links:
-    - text: Anomaly Detector API とは
+    - text: Anomaly Detector 一変量とは
       url: overview.md
+    - text: Anomaly Detector 多変量 とは
+      url: overview-multivariate.md
   - linkListType: get-started
     links:
     - text: Anomaly Detector のデモ
@@ -48,12 +50,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: C# の使用
+    - text: C# の使用 (一変量)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-csharp
-    - text: JavaScript の使用
+    - text: JavaScript の使用 (一変量)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-javascript
-    - text: Python の使用
+    - text: Python の使用 (一変量)
       url: ../anomaly-detector/quickstarts/client-libraries.md?pivots=programming-language-python
+    - text: C# の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-csharp
+    - text: JavaScript の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-javascript
+    - text: Python の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-python
+    - text: Java の使用 (多変量)
+      url: ../anomaly-detector/quickstarts/client-libraries-multivariate.md?pivots=programming-language-java
   - linkListType: tutorial
     links:
     - text: バッチ検出と Power BI を使用して異常を視覚化する

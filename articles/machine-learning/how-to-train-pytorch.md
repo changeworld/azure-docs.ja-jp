@@ -10,12 +10,12 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 1a261a972636021bec88244704b2b491ae8bcc61
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5a107bd8548b313ad2ac0bf2fa86c9f5b7527e26
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888442"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764803"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch モデルを大規模にトレーニングする
 
@@ -31,7 +31,7 @@ PyTorch のディープ ラーニング モデルを一からトレーニング�
 
 - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
-    - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+    - [クイック スタート: Azure Machine Learning の利用の開始](quickstart-create-resources.md)を完了して、SDK およびサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
     - ノートブック サーバー上のディープ ラーニングの samples フォルダーで、**how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch** とディレクトリを移動して、完成した展開済みノートブックを見つけます。 
  
  - 独自の Jupyter Notebook サーバー

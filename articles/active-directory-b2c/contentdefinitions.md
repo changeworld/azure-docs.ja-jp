@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/15/2021
+ms.date: 05/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 62bae22b6a4bb06b1e97c18e52ad614fd2439902
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f983027c142eb9e1325f7673b8d888f15dcdf18
+ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489323"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109664584"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -75,6 +75,26 @@ ms.locfileid: "103489323"
 | Metadata | 0:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 |
 | LocalizedResourcesReferences | 0:1 | ローカライズされたリソース参照のコレクション。 この要素を使用して、ユーザー インターフェイスと要求属性のローカライズをカスタマイズします。 |
 
+### <a name="loaduri"></a>LoadUri
+
+**LoadUri** 要素は、コンテンツ定義の HTML5 ページの URL を指定するために使用されます。 Azure AD B2C [カスタム ポリシー スターターパック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)には、Azure AD B2C HTML ページを使用するコンテンツ定義が付属しています。 **LoadUri** は、Azure AD B2C テナントへの相対パスである `~` で始まります。
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri>
+  ...
+</ContentDefinition>
+```
+
+[HTML テンプレートを使用してユーザー インターフェイスをカスタマイズ](customize-ui-with-html.md)できます。 HTML テンプレートを使用する場合は、絶対 URL を指定します。 次の例は、HTML テンプレートを使用したコンテンツ定義を示しています。
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+  ...
+</ContentDefinition>
+``` 
+
 ### <a name="datauri"></a>DataUri
 
 **DataUri** 要素は、ページ識別子を指定するために使用されます。 Azure AD B2C は、ページ識別子を使用して、UI 要素とクライアント側の JavaScript を読み込み開始します。 この値のフォーマットは `urn:com:microsoft:aad:b2c:elements:page-name:version` です。 次の表に、使用できるページ識別子の一覧を示します。
@@ -99,30 +119,36 @@ ms.locfileid: "103489323"
 次の例は、`selfasserted` バージョン `1.2.0` の **DataUri** を示しています。
 
 ```xml
-<ContentDefinition Id="api.localaccountpasswordreset">
-<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
-<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
-<Metadata>
-    <Item Key="DisplayName">Local account change password page</Item>
-</Metadata>
-</ContentDefinition>
+<!-- 
+<BuildingBlocks> 
+  <ContentDefinitions>-->
+    <ContentDefinition Id="api.localaccountpasswordreset">
+      <LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+      <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+      <Metadata>
+        <Item Key="DisplayName">Local account change password page</Item>
+      </Metadata>
+    </ContentDefinition>
+  <!-- 
+  </ContentDefinitions> 
+</BuildingBlocks> -->
 ```
 
 #### <a name="migrating-to-page-layout"></a>ページ レイアウトへの移行
 
-値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の表を使用して新しい形式に移行してください。
+古い **DataUri** 値 (ページ コントラクトを使用しない) からページ レイアウト バージョンに移行するには、`contract` という単語の後にページ バージョンを追加します。 次の表を使用して、古い **Datauri** 値からページ レイアウト バージョンに移行します。
 
 | 古い DataUri 値 | 新しい DataUri 値 |
 | ----------------- | ----------------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.1` |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2` |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:2.1.2` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2` |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:2.1.4` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.4` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.4` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
 
@@ -142,19 +168,19 @@ ms.locfileid: "103489323"
       <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.1</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.signuporsignin">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.2</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:2.1.4</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.selfasserted">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.selfasserted.profileupdate">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.localaccountsignup">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.localaccountpasswordreset">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.2</DataUri>
+      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.1.4</DataUri>
     </ContentDefinition>
     <ContentDefinition Id="api.phonefactor">
       <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.2</DataUri>

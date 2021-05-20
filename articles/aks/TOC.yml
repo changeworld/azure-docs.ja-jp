@@ -209,8 +209,6 @@
               href: azure-disk-csi.md
             - name: Azure Files CSI ドライバー (プレビュー)
               href: azure-files-csi.md
-            - name: CSI シークレット ストア ドライバー (プレビュー)
-              href: csi-secrets-store-driver.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -295,6 +293,8 @@
           href: azure-disk-customer-managed-keys.md
         - name: ホストベースの暗号化の有効化
           href: enable-host-encryption.md
+        - name: CSI シークレット ストア ドライバー (プレビュー)
+          href: csi-secrets-store-driver.md
     - name: 監視およびログ記録
       items:
         - name: クラスターのメトリックの表示

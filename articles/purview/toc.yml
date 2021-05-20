@@ -112,6 +112,8 @@ items:
                 displayName: Register and scan Azure SQL DB Managed Instance
               - name: Azure 専用 SQL プール (以前の SQL DW)
                 href: register-scan-azure-synapse-analytics.md
+              - name: Hive メタストア データベース
+                href: register-scan-hive-metastore-source.md
               - name: オンプレミスの SQL サーバー
                 href: register-scan-on-premises-sql-server.md
               - name: Oracle
@@ -184,6 +186,8 @@ items:
         items:
           - name: プライベート エンドポイントを管理する
             href: catalog-private-link.md
+          - name: Azure Purview プライベート エンドポイントに関する FAQ
+            href: catalog-private-link-faqs.md
       - name: 障害復旧
         items:
           - name: 障害復旧
