@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 2188aaea0cf5a4616291d3fdad839aefb2dbc413
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 85aad5435add7ca32de4cf6fcb91944431ab5506
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280702"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685173"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)
 
@@ -114,6 +114,7 @@ BLOB インデックスのフィルター処理には、次の条件が適用さ
 - フィルターは、文字列に対する辞書式の並べ替えで適用されます
 - 同じキーに対する同じ側の範囲操作は無効です (例: `"Rank" > '10' AND "Rank" >= '15'`)
 - REST を使用してフィルター式を作成する場合は、文字を URI でエンコードする必要があります
+- タグ クエリは、単一のタグを使用して等号一致するように最適化されています (例: StoreID = "100")。  >, >=, <, <= を含む単一のタグを使用した範囲クエリも効率的です。 AND を複数のタグとともに使用するクエリは、それほど効率的ではありません。  たとえば、Cost > "01" AND Cost <= "100" は効率的です。 Cost > "01 AND StoreID = "2" は効率的ではありません。
 
 次の表では、`Find Blobs by Tags` に対して有効なすべての演算子を示します。
 
@@ -281,7 +282,7 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 ## <a name="pricing"></a>価格
 
-BLOB インデックスの価格はパブリック プレビュー段階であり、一般提供については変更される可能性があります。 ストレージ アカウント内のインデックス タグの月単位の平均数に対して課金されます。 インデックス作成エンジンには料金はかかりません。 `Set Blob Tags`、`Get Blob Tags`、`Find Blobs by Tags` への要求は、それぞれの操作の種類に応じて課金されます。 詳しくは、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
+BLOB インデックスの価格はパブリック プレビュー段階であり、一般提供については変更される可能性があります。 ストレージ アカウント内のインデックス タグの月単位の平均数に対して課金されます。 インデックス作成エンジンには料金はかかりません。 BLOB タグの設定、BLOB タグの取得、および BLOB タグの検索の要求は、現在のそれぞれのトランザクション レートで課金されます。 タグによる BLOB の検索トランザクションを実行するときに試用されるリスト トランザクションの数は、要求に含まれる句の数と同じであることに注意してください。 たとえば、クエリ (StoreID = 100) は 1 つのリスト トランザクションです。  クエリ (StoreID = 100 AND SKU = 10010) は 2 つのリスト トランザクションです。 詳しくは、「[ブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="regional-availability-and-storage-account-support"></a>リージョンの可用性とストレージ アカウントのサポート
 

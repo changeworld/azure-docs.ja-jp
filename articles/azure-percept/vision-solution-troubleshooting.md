@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 78de5ef0ef77a181d4a2da91e4b468db1b47f208
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7befc9648e696e80e0469d5e91173786354574d8
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074694"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685749"
 ---
 # <a name="vision-solution-troubleshooting"></a>ビジョン ソリューションのトラブルシューティング
 
@@ -94,7 +94,7 @@ TelemetryIntervalNeuralNetworkMs 値を更新するには、こちらの手順�
 
     :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="モジュール ページのスクリーンショット。" lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
 
-1. 下にスクロールして、**properties** に移動します。 現時点では、"Running" と "Logging" のプロパティはアクティブではないことに注意してください。
+1. 下にスクロールして、**properties** に移動します。 現時点では、"Running" と "Logging" のプロパティはアクティブではありません。
 
     :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline.png" alt-text="モジュール ツインのプロパティのスナップショット。" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
 
@@ -104,7 +104,7 @@ TelemetryIntervalNeuralNetworkMs 値を更新するには、こちらの手順�
 
 デバイスの RTSP ビデオ ストリームは、[Azure Percept Studio](./how-to-view-video-stream.md) または [VLC メディア プレーヤー](https://www.videolan.org/vlc/index.html)で表示します。
 
-VLC メディア プレーヤーで RTSP ストリームを開くには、 **[Media]\(メディア\)**  ->  **[Open network stream]\(ネットワーク ストリームを開く\)**  ->  **[rtsp://<デバイスの IP アドレス>/result]** に移動します。
+VLC メディア プレーヤーで RTSP ストリームを開くには、 **[Media]\(メディア\)**  ->  **[Open network stream]\(ネットワーク ストリームを開く\)**  ->  **[rtsp://<デバイスの IP アドレス>:8554/result]** に移動します。
 
 ## <a name="next-steps"></a>次のステップ
 

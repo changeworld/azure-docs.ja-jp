@@ -11,12 +11,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 04/22/2021
-ms.openlocfilehash: 36a8ee83d2ff4b8673042d7764e83ab14ac2f016
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: f9c52307e4d743e32f8771998e2dfaacc6643a35
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946225"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739009"
 ---
 # <a name="deploy-a-model-locally"></a>ローカルでモデルをデプロイする
 
@@ -30,7 +30,7 @@ Azure Machine Learning を使用して Azure Machine Learning コンピューテ
 
 ## <a name="prerequisites"></a>前提条件
 
-- コンピューティング インスタンスが実行されている Azure Machine Learning のワークスペース。 詳細については、[環境とワークスペースの設定](tutorial-1st-experiment-sdk-setup.md)に関する記事を参照してください。
+- コンピューティング インスタンスが実行されている Azure Machine Learning のワークスペース。 詳細については、「[クイック スタート: Azure Machine Learning の利用を開始](quickstart-create-resources.md)」をご覧ください。
 
 ## <a name="deploy-to-the-compute-instances"></a>コンピューティング インスタンスへデプロイする
 

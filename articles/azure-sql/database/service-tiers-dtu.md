@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.date: 10/15/2020
+ms.date: 5/4/2021
 ms.reviewer: ''
-ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a800e30f73c73659ecf31da3f63f4ae78bfb8278
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793179"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742375"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 |**アップタイム SLA**|99.99%|99.99%|99.99%|
 |**最大バックアップ保有期間**|7 日|35 日|35 日|
 |**CPU**|低|低、中、高|中、高|
-|**IOPS (概算)** \* |DTU あたり 1-4 IOPS| DTU あたり 1-4 IOPS | DTU あたり 25 IOPS|
+|**IOPS (概算)** \* |DTU あたり 1-4 IOPS| DTU あたり 1-4 IOPS | DTU あたり 25 IOPS を超える|
 |**IO 待機時間 (概算)**|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
 |**列ストア インデックス作成** |該当なし|S3 以上|サポートされています|
 |**インメモリ OLTP**|該当なし|該当なし|サポートされています|

@@ -4,12 +4,12 @@ description: このチュートリアルでは、ポリシー状態変更イベ�
 ms.date: 03/29/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1fe87e4fd3349df7d8f5d57b2b2d95f95ed3fba8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2017b4e85c4d064fc206d9b908be126559032bd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734882"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752041"
 ---
 # <a name="tutorial-route-policy-state-change-events-to-event-grid-with-azure-cli"></a>チュートリアル: Azure CLI を使用してポリシー状態変更イベントを Event Grid にルーティングする
 
@@ -39,7 +39,7 @@ ms.locfileid: "105734882"
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。
 
 次の例では、`<resource_group_name>` という名前のリソース グループを _westus_ の場所に作成します。 `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 

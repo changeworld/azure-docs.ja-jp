@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08f6e636be885fa2e647a61a6ca1a3d35281a9eb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0708548e1ece88cbf575301ee779fd5e5000dc5d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226590"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683516"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -54,19 +54,20 @@ ms.locfileid: "108226590"
 
 ## <a name="revoke-access-for-a-user-in-the-hybrid-environment"></a>ハイブリッド環境でユーザーのアクセスを取り消す
 
-オンプレミスの Active Directory が Azure Active Directory と同期されているハイブリッド環境では、IT 管理者が次の操作を実行することをお勧めします。 **Azure AD のみの環境** を使用している場合は、「[オンプレミスの Active Directory 環境](https://docs.microsoft.com/azure/active-directory/enterprise-users/users-revoke-access#on-premises-active-directory-environment)」セクションをスキップできます。
+オンプレミスの Active Directory が Azure Active Directory と同期されているハイブリッド環境では、IT 管理者が次の操作を実行することをお勧めします。 **Azure AD のみの環境** を使用している場合は、「[Azure Active Directory の環境](https://docs.microsoft.com/azure/active-directory/enterprise-users/users-revoke-access#azure-active-directory-environment)」セクションにスキップしてください。
+
 
 ### <a name="on-premises-active-directory-environment"></a>オンプレミスの Active Directory 環境
 
 Active Directory の管理者として、オンプレミス ネットワークに接続し、PowerShell を開き、次の操作を実行します。
 
-1. Active Directory でユーザーを無効にします。 「[Disable-ADAccount](/powershell/module/activedirectory/disable-adaccount?view=win10-ps)」を参照してください。
+1. Active Directory でユーザーを無効にします。 「[Disable-ADAccount](/powershell/module/activedirectory/disable-adaccount)」を参照してください。
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-2. Active Directory でユーザーのパスワードを 2 回リセットします。 「[Set-ADAccountPassword](/powershell/module/activedirectory/set-adaccountpassword?view=win10-ps)」を参照してください。
+2. Active Directory でユーザーのパスワードを 2 回リセットします。 「[Set-ADAccountPassword](/powershell/module/activedirectory/set-adaccountpassword)」を参照してください。
 
     > [!NOTE]
     > ユーザーのパスワードを 2 回変更する理由は、特にオンプレミスのパスワード レプリケーションで遅延が発生した場合に、Pass-the-Hash のリスクを軽減するためです。 このアカウントが侵害されていないと想定できる場合は、パスワードのリセットを 1 回だけにすることができます。
@@ -83,19 +84,19 @@ Active Directory の管理者として、オンプレミス ネットワーク�
 
 Azure Active Directory の管理者として、PowerShell を開き、``Connect-AzureAD`` を実行して、次の操作を実行します。
 
-1. Azure AD でユーザーを無効にします。 「[Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)」を参照してください。
+1. Azure AD でユーザーを無効にします。 「[Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser)」を参照してください。
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
 
-2. ユーザーの Azure AD 更新トークンを取り消します。 「[Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)」を参照してください。
+2. ユーザーの Azure AD 更新トークンを取り消します。 「[Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)」を参照してください。
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-3. ユーザーのデバイスを無効にします。 「[Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)」を参照してください。
+3. ユーザーのデバイスを無効にします。 「[Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice)」を参照してください。
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -130,4 +131,4 @@ Azure Active Directory の管理者として、PowerShell を開き、``Connect-
 
 - [Azure AD 管理者向けのセキュリティで保護されたアクセスプラクティス](../roles/security-planning.md)
 - [ユーザー プロファイル情報を追加または更新する](../fundamentals/active-directory-users-profile-azure-portal.md)
-- [以前の従業員の削除](https://docs.microsoft.com/microsoft-365/admin/add-users/remove-former-employee?view=o365-worldwide)
+- [以前の従業員の削除](/microsoft-365/admin/add-users/remove-former-employee)

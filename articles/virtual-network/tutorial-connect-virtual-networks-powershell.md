@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5214dbe692584c8b1df2007019c8108fd56dfa38
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a1778e4398f78a116aebac0e90a5585f87509cea
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059345"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743113"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>PowerShell を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
@@ -54,7 +54,7 @@ $virtualNetwork1 = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用してサブネット構成を作成します。 次の例では、アドレス プレフィックスが 10.0.0.0/24 のサブネット構成を作成します。
+[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) を使用してサブネット構成を作成します。 次の例では、アドレス プレフィックスが 10.0.0.0/24 のサブネット構成を作成します。
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -152,6 +152,8 @@ New-AzVm `
 ```
 
 VM の作成には数分かかります。 Azure で VM が作成され、PowerShell に出力が返されるまで、以降の手順に進まないでください。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="communicate-between-vms"></a>VM 間の通信
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 56ff43980aafc75d5936b86c6ba2cd400311c5fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07cd77eb5546143936af1fc963f0212112fc6eb7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719102"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743365"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>チュートリアル:患者の継続的なモニタリング アプリ テンプレートのデプロイとウォークスルー
 
-このチュートリアルでは、ソリューション ビルダーを対象に、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートをデプロイして作業を開始する方法について説明します。 テンプレートをデプロイして使用する方法をご覧ください。
+このチュートリアルでは、IoT Central の患者の継続的なモニタリング アプリケーション テンプレートをデプロイして作業を開始する方法について説明します。 テンプレートをデプロイして使用する方法をご覧ください。
 
 このチュートリアルでは、以下の内容を学習します。
 

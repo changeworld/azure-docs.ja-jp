@@ -4,17 +4,17 @@ description: 暗号化スコープは、コンテナーまたは個々の BLOB �
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/26/2021
+ms.date: 05/10/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 16a600d7caf65f880ffb5c2a2abfe5a9774a7795
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a583af2811facf1cf8037fa0dd3fb9982fba60c4
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640459"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685677"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>BLOB ストレージの暗号化スコープ
 
@@ -37,6 +37,14 @@ ms.locfileid: "105640459"
 カスタマー マネージド キーを使用して暗号化スコープを定義する場合、キーのバージョンを自動的に更新するか手動で更新するかを選択できます。 キーのバージョンを自動的に更新することを選択した場合、Azure Storage によって、キー コンテナーまたはマネージド HSM でカスタマー マネージド キーの新しいバージョンが毎日チェックされ、キーが最新バージョンに自動的に更新されます。 カスタマー マネージド キーのキーのバージョンを更新する方法の詳細については、「[キーのバージョンを更新する](../common/customer-managed-keys-overview.md#update-the-key-version)」を参照してください。
 
 ストレージ アカウントには、キーのバージョンが自動的に更新されるカスタマー マネージド キーで保護される暗号化スコープを最大 10,000 含めることができます。 お使いのストレージ アカウントに、自動的に更新されているカスタマー マネージド キーで保護され暗号化スコープが既に 10,000 含まれている場合は、カスタマー マネージド キーで保護される追加の暗号化スコープについて、キーのバージョンを手動で更新する必要があります。  
+
+### <a name="infrastructure-encryption"></a>インフラストラクチャ暗号化
+
+Azure Storage のインフラストラクチャ暗号化により、データの二重暗号化が有効になります。 インフラストラクチャ暗号化により、データは、2 つの異なる暗号化アルゴリズムと 2 つの異なるキーを使用して、2 回 &mdash; サービス レベルで 1 回、インフラストラクチャ レベルで 1 回 &mdash; 暗号化されます。
+
+インフラストラクチャ暗号化は、ストレージ アカウントのレベルに加えて、暗号化スコープに対してサポートされています。 アカウントに対してインフラストラクチャ暗号化が有効になっている場合、そのアカウントで作成された暗号化スコープでは、インフラストラクチャ暗号化が自動的に使用されます。 アカウント レベルでインフラストラクチャ暗号化が有効になっていない場合、暗号化スコープ作成時にそのスコープに対してこれを有効にするオプションがあります。 暗号化スコープに対するインフラストラクチャ暗号化の設定は、スコープ作成後には変更できません。
+
+インフラストラクチャ暗号化の詳細については、「[データの二重暗号化のためのインフラストラクチャ暗号化を有効にする](../common/infrastructure-encryption-enable.md)」を参照してください。
 
 ### <a name="encryption-scopes-for-containers-and-blobs"></a>コンテナーと BLOB の暗号化スコープ
 

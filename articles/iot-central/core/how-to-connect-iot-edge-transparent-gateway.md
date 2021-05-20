@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2703e5f92ad0756ece8088c4948170ea13fa0e06
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045333"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683445"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>IoT Edge の透過的なゲートウェイを経由してデバイスを接続する方法
 
@@ -25,11 +25,11 @@ IoT Edge では、[*透過的* と *変換* のゲートウェイ パターン](
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、アクティブな Azure サブスクリプションが必要です。
+この記事の手順を完了するには、次のものが必要です。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+- 有効な Azure サブスクリプション Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-**[カスタム アプリ] > [カスタム アプリケーション]** テンプレートを使用して IoT Central アプリケーションを作成するには、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」クイックスタートを完了します。
+- **カスタム アプリケーション** テンプレートから[作成された IoT Central アプリケーション](howto-create-iot-central-application.md)。 詳細については、「[IoT Central アプリケーションを作成する](howto-create-iot-central-application.md)」を参照してください。
 
 この記事の手順を実行するには、次のファイルをコンピューターにダウンロードします。
 

@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87792b8469c78e20a8716bd925d71933f9d97c5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ccd3de1b05c416ea25f7636c683f887dccc76898
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560490"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713794"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの要求設定を変更する
 
@@ -54,7 +54,7 @@ ms.locfileid: "105560490"
 
 異なる要求と承認の設定を持つことが望ましいユーザーのセットがある場合、おそらく新しいポリシーを作成する必要があります。 既存のアクセス パッケージに新しいポリシーを追加するには、次の手順に従います。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

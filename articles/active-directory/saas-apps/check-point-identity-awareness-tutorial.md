@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
+ms.date: 04/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 0024d6b3f7e692a7caf13457b27c32d0ba9dc1e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f517698c1e44ccb5bdddb5a0bf78578c62b481e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134377"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-identity-awareness"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Identity Awareness の統合
 
@@ -85,13 +85,14 @@ Check Point Identity Awareness に対して Azure AD SSO を構成してテス�
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Check Point Identity Awareness クライアント サポート チーム](mailto:support@checkpoint.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 1. **[Check Point Identity Awareness のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -136,7 +137,7 @@ Check Point Identity Awareness に対して Azure AD SSO を構成してテス�
 
     d. **[Reply URL]\(応答 URL\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** テキスト ボックスにこの値を貼り付けます。
 
-    e. **[Import the Metadata File]\(メタデータ ファイルのインポート\)** を選択し、Azure portal からダウンロードした **証明書 (Base64)** をアップロードします。
+    e. **[Import Metadata File]\(メタデータ ファイルのインポート\)** を選択して、Azure portal からダウンロードした **フェデレーション メタデータ XML** をアップロードします。
 
     > [!NOTE]
     > または、 **[Insert Manually]\(手動で挿入\)** を選択した後、**エンティティ ID** と **ログイン URL** の値を対応するフィールドに手動で貼り付け、Azure portal から取得した **証明書ファイル** をアップロードすることもできます。

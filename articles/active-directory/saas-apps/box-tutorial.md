@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2021
 ms.author: jeedes
-ms.openlocfilehash: d21ccdcb1f3854733d045b47a5f43e27bbdf4ccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 79153734beb9ddc8bb43c1c4928844c5d4bd18e7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98807914"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739996"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Box の統合
 
@@ -153,12 +153,21 @@ Box に対する Azure AD SSO を構成してテストするには、次の手�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Box のサインオン URL にリダイレクトされます。
+* Azure portal で、 **[このアプリケーションをテストします]** を選択します。 Box のサインオン URL にリダイレクトされ、ログイン フローを開始することができます。
 
 * Box のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 * Microsoft マイ アプリを使用することができます。 マイ アプリで [Box] タイルをクリックすると、Box のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
+### <a name="push-an-azure-group-to-box"></a>Azure のグループを Box にプッシュする
+
+Azure のグループを Box にプッシュし、そのグループを同期することができます。 Azure のグループは、API レベルの統合によって Box にプッシュされます。
+
+1. **[Users & Groups]\(ユーザーとグループ\)** で、Box に割り当てるグループを検索します。
+1. **[Provisioning]\(プロビジョニング\)** で、 **[Synchronize Azure Active Directory Groups to Box]\(Azure Active Directory グループを Box と同期する\)** が選択されていることを確認します。 前の手順で割り当てたグループが、この設定によって同期されます。 これらのグループが Azure からプッシュされるには、時間がかかる場合があります。
+
+> [!NOTE]
+> ユーザーを手動で作成する必要がある場合は、[Box サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

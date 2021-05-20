@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 855cbb619f536354010c5bfe05c6c03f8bfc6985
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 7c013cbaf8a64d12b132e3dd4c599920bd3f6a2a
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291480"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736112"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -27,7 +27,7 @@ ms.locfileid: "108291480"
  
 3. [Azure portal](../storage/common/storage-account-create.md?tabs=azure-portal) または [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。
 
-4. [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)、[AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、または [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
+4. [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) または [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) を使用して、パッケージ (.cspkg) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
 
 5. (省略可能) キー コンテナーを作成し、証明書をアップロードします。
 

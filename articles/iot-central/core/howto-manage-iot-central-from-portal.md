@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 04/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 3e5e126815d0171a6c1627a08419b05b9a3c0c23
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: f84aa2c6e89c0a40249423ec8e45ac804cf03a66
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719207"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109685101"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理する
 
@@ -32,6 +32,8 @@ ms.locfileid: "107719207"
 
 * **[アプリケーション URL]** は、アプリケーションへのアクセスに使用できる URL です。
 
+* **[テンプレート]** は、作成する IoT Central アプリケーションの種類です。 アプリケーションを作成するには、業界に関連するテンプレートの一覧を参照して、すばやく作業を開始するか、 **[カスタム アプリケーション]** テンプレートを使用してゼロから始めることができます。
+
 * "**場所**" は、アプリケーションを作成する [地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 Azure IoT Central は現在、次の場所でご利用いただけます。
 
   * アジア太平洋
@@ -43,7 +45,7 @@ ms.locfileid: "107719207"
 
   いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 
-すべてのフィールドに値を入力したら、 **[作成]** を選択します。 詳細については、クイックスタートの [IoT Central アプリケーションの作成](quick-deploy-iot-central.md)に関する記事を参照してください。
+すべてのフィールドに値を入力したら、 **[作成]** を選択します。 詳細については、「[IoT Central アプリケーションを作成する](howto-create-iot-central-application.md)」を参照してください。
 
 ## <a name="manage-existing-iot-central-applications"></a>既存の IoT Central アプリケーションを管理する
 

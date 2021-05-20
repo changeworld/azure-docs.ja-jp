@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 14c5484268940a927965acf798310c3bdccf17d3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cb87ca44ecc7ff5c308dbf3a74390e34a0f5daea
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309715"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770013"
 ---
 # <a name="hbv3-series"></a>HBv3 シリーズ
 
@@ -23,12 +23,12 @@ HBv3 シリーズ VM はすべて、NVIDIA ネットワークの毎秒 200 Gb �
 
 [Premium Storage](premium-storage-performance.md):サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスについては、[詳細をご覧ください](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)) <br>
+[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
 [高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): 近日公開予定<br>
-[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md): サポートされています ([プレビュー段階](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
 <br>
 
 |サイズ |vCPU |プロセッサ |メモリ (GiB) |メモリ帯域幅 GB/秒 |ベース CPU 周波数 (GHz) |全コア周波数 (GHz、ピーク) |シングルコア周波数 (GHz、ピーク) |RDMA パフォーマンス (GB/秒) |MPI のサポート |一時ストレージ (GiB) |最大データ ディスク数 |最大イーサネット vNIC 数 |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2016
+ms.date: 04/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 84fd1a2d3d0dc4ce6960469ea3212b8ca1d4d07c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9480bc7ddb03ba537ea7f13057492aa05ed66bae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023025"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770229"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>StorSimple Virtual Array の非アクティブ化と削除
 
@@ -27,7 +27,7 @@ ms.locfileid: "96023025"
 
 StorSimple Virtual Array を非アクティブ化する場合は、デバイスとそれに対応する StorSimple デバイス マネージャー サービスの接続を切断します。 このチュートリアルでは、次の方法について説明します。
 
-* デバイスの非アクティブ化 
+* デバイスの非アクティブ化
 * 非アクティブ化されたデバイスの削除
 
 この記事の情報は、StorSimple Virtual Array にのみ適用されます。 8000 シリーズについては、[デバイスを非アクティブ化または削除](./storsimple-8000-deactivate-and-delete-device.md)する方法に関するページをご覧ください。
@@ -42,11 +42,11 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
 
 ## <a name="deactivate-a-device"></a>デバイスの非アクティブ化
 
-デバイスを非アクティブ化するには、次の手順を実行します。
+デバイスを非アクティブ化するには、次の手順を実行します。 非アクティブ化するには、デバイスがオンラインになっている必要があります。
 
 #### <a name="to-deactivate-the-device"></a>デバイスを非アクティブ化するには
 
-1. サービスで、**[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、非アクティブ化するデバイスをクリックして選択します。
+1. サービスで、**[管理] > [デバイス]** の順に移動します。 **[デバイス]** ブレードで、非アクティブ化するデバイスをクリックして選択します。 デバイスの状態は **オンライン** である必要があります。
    
     ![非アクティブ化するデバイスの選択](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete7.png)
 2. **[Device dashboard (デバイス ダッシュボード)]** ブレードで **[詳細]** をクリックし、一覧から **[非アクティブ化]** を選択します。
@@ -59,6 +59,7 @@ StorSimple Virtual Array を非アクティブ化する場合は、デバイス�
     非アクティブ化のプロセスが開始されます。この処理は数分かかります。
    
     ![非アクティブ化中](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete2.png)
+
 4. 非アクティブ化すると、デバイスの一覧が更新されます。
    
     ![非アクティブ化の完了](./media/storsimple-virtual-array-deactivate-and-delete-device/deactivate-delete3.png)

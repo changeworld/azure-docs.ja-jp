@@ -5,12 +5,12 @@ ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: 8c568e223e12a6315e7fa5e63431f8102211f71a
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 51fbac59aef82d0f7a8edbb7ce271e2eb049b699
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323413"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747582"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 

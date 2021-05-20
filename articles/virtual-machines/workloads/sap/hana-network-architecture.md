@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1e37b2de2a3d4be0250d3e900fe48a36e45240e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b9baf6dc372b9ce5d85a935502cdaf710e8d0b43
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309562"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749143"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -71,28 +71,28 @@ Azure での SAP デプロイとの違いは次のとおりです。
 - 顧客テナントの HANA L インスタンス ユニットは、別の ExpressRoute 回線を介して仮想ネットワークに接続されます。 負荷条件を分離するために、オンプレミスと Azure 仮想ネットワークの間の ExpressRoute 回線と、Azure 仮想ネットワークと HANA L インスタンスの間の回線は、同じルーターを共有しません。
 - SAP アプリケーション層と HANA L インスタンス間のワークロード プロファイルは、SAP HANA からアプリケーション層への多数の小さな要求とデータ転送 (結果セット) などのバーストという異なる特性を示します。
 - SAP アプリケーション アーキテクチャは、オンプレミスと Azure 間でデータが交換される標準的なシナリオよりも、ネットワーク待機時間の影響を受けやすくなります。
-- Azure ExpressRoute ゲートウェイには、少なくとも 2 つの ExpressRoute 接続があります。 オンプレミスを接続元とする回線と、HANA L インスタンスを接続元とする回線です。 このため、ExpressRoute ゲートウェイには、異なる MSEE を接続元とする回線を 2 つ追加できる余裕だけが残っています。 この制限は、ExpressRoute Fast Path の使用とは無関係です。 接続されているすべての回線は、ExpressRoute ゲートウェイの受信データの最大帯域幅を共有します。
+- Azure ExpressRoute ゲートウェイには、少なくとも 2 つの ExpressRoute 接続があります。 オンプレミスを接続元とする回線と、HANA L インスタンスを接続元とする回線です。 このため、ExpressRoute ゲートウェイには、異なる MSEE を接続元とする回線を 2 つ追加できる余裕だけが残っています。 この制限は、ExpressRoute FastPath の使用とは無関係です。 接続されているすべての回線は、ExpressRoute ゲートウェイの受信データの最大帯域幅を共有します。
 
-HANA L インスタンス スタンプのリビジョン 3 では、VM と HANA L インスタンス ユニット間で発生するネットワーク待機時間は、VM 間のネットワーク ラウンド トリップの標準的な待機時間よりも長くなる可能性があります。 Azure リージョンによっては、測定値が、次のノートで平均以下に分類されているラウンドトリップの待ち時間 (0.7 ms) を超える可能性があります: 「[SAP Note #1100926 - FAQ: Network performance (SAP ノート #1100926 - FAQ: ネットワーク パフォーマンス)](https://launchpad.support.sap.com/#/notes/1100926/E)」。 Azure VM と HANA L インスタンス ユニットの間のネットワーク ラウンド トリップ待機時間を測定するツールと Azure リージョンによっては、測定される待機時間が最大約 2 ミリ秒になる可能性があります。 しかし、お客様は SAP HANA ベースの実稼働 SAP アプリケーションを SAP HANA L インスタンスに問題なくデプロイしています。 Azure HANA L インスタンスでビジネス プロセスを十分にテストしてください。 ExpressRoute Fast Path と呼ばれる新しい機能では、Azure の HANA L インスタンスとアプリケーション レイヤー VM の間のネットワーク待ち時間を大幅に削減できます (下記参照)。 
+HANA L インスタンス スタンプのリビジョン 3 では、VM と HANA L インスタンス ユニット間で発生するネットワーク待機時間は、VM 間のネットワーク ラウンド トリップの標準的な待機時間よりも長くなる可能性があります。 Azure リージョンによっては、測定値が、次のノートで平均以下に分類されているラウンドトリップの待ち時間 (0.7 ms) を超える可能性があります: 「[SAP Note #1100926 - FAQ: Network performance (SAP ノート #1100926 - FAQ: ネットワーク パフォーマンス)](https://launchpad.support.sap.com/#/notes/1100926/E)」。 Azure VM と HANA L インスタンス ユニットの間のネットワーク ラウンド トリップ待機時間を測定するツールと Azure リージョンによっては、測定される待機時間が最大約 2 ミリ秒になる可能性があります。 しかし、お客様は SAP HANA ベースの実稼働 SAP アプリケーションを SAP HANA L インスタンスに問題なくデプロイしています。 Azure HANA L インスタンスでビジネス プロセスを十分にテストしてください。 ExpressRoute FastPath と呼ばれる新しい機能では、Azure の HANA L インスタンスとアプリケーション レイヤー VM の間のネットワーク待ち時間を大幅に削減できます (下記参照)。 
 
-HANA L インスタンス スタンプのリビジョン 4 では、HANA L インスタンス スタンプに近接してデプロイされる Azure VM 間のネットワーク待ち時間は、Azure ExpressRoute Fast Path が構成されている場合、「[SAP Note #1100926 - FAQ:Network performance](https://launchpad.support.sap.com/#/notes/1100926/E)」に記載されている平均または平均を上回る分類に該当します (下記参照)。 リビジョン 4 の HANA L インスタンス ユニットに近接して Azure VM をデプロイするには、[Azure 近接通信配置グループ](../../co-location.md)を利用する必要があります。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
+HANA L インスタンス スタンプのリビジョン 4 では、HANA L インスタンス スタンプに近接してデプロイされる Azure VM 間のネットワーク待ち時間は、Azure ExpressRoute FastPath が構成されている場合、「[SAP Note #1100926 - FAQ:Network performance](https://launchpad.support.sap.com/#/notes/1100926/E)」に記載されている平均または平均を上回る分類に該当します (下記参照)。 リビジョン 4 の HANA L インスタンス ユニットに近接して Azure VM をデプロイするには、[Azure 近接通信配置グループ](../../co-location.md)を利用する必要があります。 近接通信配置グループを使用して、リビジョン 4 でホストされている HANA Large Instance ユニットと同じ Azure データセンターに SAP アプリケーション レイヤーを配置する方法については、[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)に関する記事で説明しています。
 
 VM と HANA L インスタンスの間に決定論的なネットワーク待ち時間を実現するには、ExpressRoute ゲートウェイ SKU の選択が不可欠となります。 オンプレミスと VM 間のトラフィック パターンとは異なり、VM と HANA L インスタンス間のトラフィック パターンでは、送信される要求やデータ量は小さくても、大きなバーストが発生する可能性があります。 このようなバーストを適切に処理するために、UltraPerformance ゲートウェイ SKU を使用することを強くお勧めします。 Type II クラスの HANA L インスタンス SKU の場合、ExpressRoute ゲートウェイとして UltraPerformance ゲートウェイ SKU を使用することが必須となります。
 
 > [!IMPORTANT] 
-> SAP アプリケーション層とデータベース層の間の全体的なネットワーク トラフィックを考慮し、SAP HANA on Azure (L インスタンス) への接続では、仮想ネットワーク用の HighPerformance または UltraPerformance ゲートウェイ SKU だけがサポートされます。 HANA L インスタンスの Type II SKU の場合、ExpressRoute ゲートウェイとしてサポートされるのは UltraPerformance ゲートウェイ SKU だけです。 ExpressRoute Fast Path を使用する場合は、例外が適用されます (下記参照)。
+> SAP アプリケーション層とデータベース層の間の全体的なネットワーク トラフィックを考慮し、SAP HANA on Azure (L インスタンス) への接続では、仮想ネットワーク用の HighPerformance または UltraPerformance ゲートウェイ SKU だけがサポートされます。 HANA L インスタンスの Type II SKU の場合、ExpressRoute ゲートウェイとしてサポートされるのは UltraPerformance ゲートウェイ SKU だけです。 ExpressRoute FastPath を使用する場合は、例外が適用されます (下記参照)
 
-### <a name="expressroute-fast-path"></a>ExpressRoute Fast Path
-待ち時間を短縮するために、ExpressRoute Fast Path が、2019 年 5 月に導入およびリリースされました。これは、SAP アプリケーション VM をホストする Azure 仮想ネットワークへの HANA L インスタンスの接続に関する機能です。 これまでにロールアウトされたソリューションとの大きな違いは、VM と HANA L インスタンスの間のデータ フローが ExpressRoute ゲートウェイを通じてルーティングされなくなったことです。 代わりに、Azure 仮想ネットワークのサブネットに割り当てられている VM が、専用のエンタープライズ エッジ ルーターと直接通信しています。 
+### <a name="expressroute-fastpath"></a>ExpressRoute FastPath
+待ち時間を短縮するために、ExpressRoute FastPath が、2019 年 5 月に導入およびリリースされました。これは、SAP アプリケーション VM をホストする Azure 仮想ネットワークへの HANA L インスタンスの接続に関する機能です。 これまでにロールアウトされたソリューションとの大きな違いは、VM と HANA L インスタンスの間のデータ フローが ExpressRoute ゲートウェイを通じてルーティングされなくなったことです。 代わりに、Azure 仮想ネットワークのサブネットに割り当てられている VM が、専用のエンタープライズ エッジ ルーターと直接通信しています。 
 
 > [!IMPORTANT] 
-> ExpressRoute Fast Path 機能では、SAP アプリケーション VM が稼働しているサブネットが、HANA L インスタンスに接続されているのと同じ Azure 仮想ネットワーク内にあることが必要です。 HANA L インスタンス ユニットに直接接続されている Azure 仮想ネットワークにピアリングされている Azure 仮想ネットワーク内の VM には、ExpressRoute Fast Path のメリットはありません。 その結果、ExpressRoute 回線がハブ仮想ネットワークに接続し、SAP アプリケーション レイヤーを含む仮想ネットワーク (スポーク) がピアリングされている典型的なハブ アンド スポーク仮想ネットワーク設計では、ExpressRoute Fast Path による最適化は機能しません。 さらに、ExpressRoute Fast Path では現在、ユーザー定義ルーティング規則 (UDR) がサポートされていません。 詳細については、「[ExpressRoute 仮想ネットワーク ゲートウェイと FastPath](../../../expressroute/expressroute-about-virtual-network-gateways.md)」を参照してください。 
+> ExpressRoute FastPath 機能では、SAP アプリケーション VM が稼働しているサブネットが、HANA L インスタンスに接続されているのと同じ Azure 仮想ネットワーク内にあることが必要です。 HANA L インスタンス ユニットに直接接続されている Azure 仮想ネットワークにピアリングされている Azure 仮想ネットワーク内の VM には、ExpressRoute FastPath のメリットはありません。 その結果、ExpressRoute 回線がハブ仮想ネットワークに接続し、SAP アプリケーション レイヤーを含む仮想ネットワーク (スポーク) がピアリングされている典型的なハブ アンド スポーク仮想ネットワーク設計では、ExpressRoute FastPath による最適化は機能しません。 さらに、ExpressRoute FastPath では現在、ユーザー定義ルーティング規則 (UDR) がサポートされていません。 詳細については、「[ExpressRoute 仮想ネットワーク ゲートウェイと FastPath](../../../expressroute/expressroute-about-virtual-network-gateways.md)」を参照してください。 
 
 
-ExpressRoute Fast Path を構成する方法の詳細については、「[HANA Large Instances に仮想ネットワークを接続する](./hana-connect-vnet-express-route.md)」ドキュメントを参照してください。    
+ExpressRoute FastPath を構成する方法の詳細については、「[HANA Large Instances に仮想ネットワークを接続する](./hana-connect-vnet-express-route.md)」ドキュメントをご覧ください。    
 
 > [!NOTE]
-> ExpressRoute Fast Path を機能させるには、UltraPerformance ExpressRoute ゲートウェイが必要です。
+> ExpressRoute FastPath を機能させるには、UltraPerformance ExpressRoute ゲートウェイが必要です
 
 
 ## <a name="single-sap-system"></a>単一の SAP システム
@@ -102,7 +102,7 @@ ExpressRoute Fast Path を構成する方法の詳細については、「[HANA 
 > [!NOTE] 
 > Azure で SAP ランドスケープを実行するには、SAP ランドスケープの Azure リージョンに最も近いエンタープライズ エッジ ルーターに接続します。 Azure IaaS 内の VM と HANA L インスタンス スタンプの間のネットワーク待ち時間を最小限に抑えるために、HANA L インスタンス スタンプは専用のエンタープライズ エッジ ルーター デバイスを介して接続されます。
 
-SAP アプリケーション インスタンスをホストする VM の ExpressRoute ゲートウェイは、オンプレミスに接続する 1 つの ExpressRoute 回線に接続されます。 同じ仮想ネットワークが、L インスタンス スタンプへの接続専用の別のエンタープライズ エッジ ルーターに接続されます。 ExpressRoute Fast Path を使用すると、HANA L インスタンスから SAP アプリケーション レイヤー VM へのデータ フローが ExpressRoute ゲートウェイを通じてルーティングされなくなるため、ネットワークのラウンド トリップ待ち時間が短縮されます。
+SAP アプリケーション インスタンスをホストする VM の ExpressRoute ゲートウェイは、オンプレミスに接続する 1 つの ExpressRoute 回線に接続されます。 同じ仮想ネットワークが、L インスタンス スタンプへの接続専用の別のエンタープライズ エッジ ルーターに接続されます。 ExpressRoute FastPath を使用すると、HANA L インスタンスから SAP アプリケーション レイヤー VM へのデータ フローが ExpressRoute ゲートウェイを通じてルーティングされなくなるため、ネットワークのラウンド トリップ待ち時間が短縮されます。
 
 このシステムは、単一の SAP システムのわかりやすい例です。 SAP アプリケーション層は Azure でホストされます。 SAP HANA データベースは SAP HANA on Azure (L インスタンス) で実行されます。 ExpressRoute ゲートウェイの帯域幅 (2 Gbps または 10 Gbps のスループット) がボトルネックにならないことが前提となります。
 

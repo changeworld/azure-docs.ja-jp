@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d17577d7e138c4c04b7f386cb166e765c0e2e10c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390863"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733105"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure Cognitive Search のインクリメンタル エンリッチメントとキャッシュ
 
@@ -40,6 +40,9 @@ ms.locfileid: "100390863"
 インクリメンタル エンリッチメントでは、エンリッチメント パイプラインにキャッシュが追加されます。 インデクサーは、ドキュメント解析から得られた結果に加え、ドキュメントごとの各スキルの出力をキャッシュします。 スキルセットが更新されたときには、変更済み (またはダウンストリーム) のスキルのみが再実行されます。 更新された結果がキャッシュに書き込まれ、検索インデックスまたはナレッジ ストア内のドキュメントが更新されます。
 
 物理的には、キャッシュはご使用の Azure Storage アカウントの BLOB コンテナーに格納されます。 キャッシュでは、更新処理の内部レコードにテーブル ストレージも使用されます。 インデクサー キャッシュには、Search サービス内のすべてのインデックスが同じストレージ アカウントを共有できます。 それぞれのインデクサーには、使用しているコンテナーに対する一意かつ不変のキャッシュ識別子が割り当てられます。
+
+> [!NOTE]
+> インデクサー キャッシュには汎用ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
 
 ## <a name="cache-configuration"></a>キャッシュの構成
 

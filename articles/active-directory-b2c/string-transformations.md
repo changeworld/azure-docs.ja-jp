@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85574b7d33af6d9abfe25f5af4d811255f08ce4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 176c36ee5c3addf655503e3a371767764e0d9968
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452239"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108738055"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -34,7 +34,7 @@ ms.locfileid: "102452239"
 | InputClaim | inputClaim2 | string | 比較する 2 番目の要求の種類。 |
 | InputParameter | stringComparison | string | 文字列比較で、次のいずれかの値です。序数、OrdinalIgnoreCase。 |
 
-**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される [検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayConrtol](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
+**AssertStringClaimsAreEqual** 要求変換は常に、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって呼び出される[検証技術プロファイル](validation-technical-profile.md) (つまり [DisplayControl](display-controls.md)) から実行されます。 ユーザーに表示されるエラー メッセージは、セルフアサート技術プロファイルの `UserMessageIfClaimsTransformationStringsAreNotEqual` メタデータによって制御されます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#claims-transformations-error-messages)できます。
 
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)

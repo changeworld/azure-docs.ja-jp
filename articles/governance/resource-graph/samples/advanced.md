@@ -3,12 +3,12 @@ title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
 ms.date: 03/23/2021
 ms.topic: sample
-ms.openlocfilehash: c6a140b0392affea252e05d63055232532305c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef26a12b2b9d8b0d2bfe473ca91c12985185ade8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104949857"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751555"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -218,7 +218,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb"></a>特定の書き込み場所を含む Cosmos DB を一覧表示する
 
-次のクエリは、Cosmos DB リソースに対象を限定し、`mv-expand` を使用して **properties.writeLocations** のプロパティ バッグを展開した後、特定のフィールドを投影して、さらに 'East US' または 'West US' と一致する **properties.writeLocations.locationName** 値に結果を限定します。
+次のクエリは、Azure Cosmos DB リソースに対象を限定し、`mv-expand` を使用して **properties.writeLocations** のプロパティ バッグを展開した後、特定のフィールドを投影して、さらに "East US" または "West US" と一致する **properties.writeLocations.locationName** 値に結果を限定します。
 
 ```kusto
 Resources
@@ -330,15 +330,15 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 ```kusto
 Resources
 | where type =~ 'microsoft.compute/virtualmachines'
-| extend nics=array_length(properties.networkProfile.networkInterfaces) 
-| mv-expand nic=properties.networkProfile.networkInterfaces 
-| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) 
-| project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) 
+| extend nics=array_length(properties.networkProfile.networkInterfaces)
+| mv-expand nic=properties.networkProfile.networkInterfaces
+| where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic)
+| project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id)
 | join kind=leftouter (
     Resources
     | where type =~ 'microsoft.network/networkinterfaces'
-    | extend ipConfigsCount=array_length(properties.ipConfigurations) 
-    | mv-expand ipconfig=properties.ipConfigurations 
+    | extend ipConfigsCount=array_length(properties.ipConfigurations)
+    | mv-expand ipconfig=properties.ipConfigurations
     | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true'
     | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id))
 on nicId
@@ -390,7 +390,7 @@ Resources
 | join kind=leftouter(
     Resources
     | where type == 'microsoft.compute/virtualmachines/extensions'
-    | extend 
+    | extend
         VMId = toupper(substring(id, 0, indexof(id, '/extensions'))),
         ExtensionName = name
 ) on $left.JoinID == $right.VMId
@@ -532,7 +532,6 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 このクエリは、仮想マシンに対する[拡張プロパティ](../concepts/query-language.md#extended-properties)を使用して、電源状態別に集計します。
 
-
 ```kusto
 Resources
 | where type == 'microsoft.compute/virtualmachines'
@@ -563,7 +562,8 @@ Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachi
 
 ## <a name="count-of-non-compliant-guest-configuration-assignments"></a><a name="count-gcnoncompliant"></a>非準拠ゲスト構成割り当ての数
 
-[ゲスト構成割り当て理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)ごとに非準拠コンピューターの数を表示します。 パフォーマンスのために結果を最初の 100 に制限します。
+[ゲスト構成割り当て理由](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)ごとに非準拠コンピューターの数を表示します。
+パフォーマンスのために結果を最初の 100 に制限します。
 
 ```kusto
 GuestConfigurationResources

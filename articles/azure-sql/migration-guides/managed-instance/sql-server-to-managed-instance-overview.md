@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 063ebc43e0654268b758c705ca2a92b8cf88fb35
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 96ea4eb3df07cfd02dd99a55b2c33ac8b7518849
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136303"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745723"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -35,6 +35,8 @@ SQL Server データベースを Azure SQL Managed Instance に移行するた�
 ## <a name="overview"></a>概要
 
 [Azure SQL Managed Instance](../../managed-instance/sql-managed-instance-paas-overview.md) は、フル マネージド サービスを必要とする SQL Server ワークロードの推奨されるターゲット オプションであり、仮想マシンやそのオペレーティング システムを管理する必要ありません。 SQL Managed Instance を使用すると、アプリケーションやデータベースの変更を最小限にして、オンプレミスのアプリケーションを Azure に移動できます。 ネイティブの仮想ネットワーク サポートを使用してインスタンスの完全な分離が提供されます。 
+
+移行ターゲットのサポート可能性を検証するには、[Azure SQL Managed Instance で利用可能](../../database/features-comparison.md)な SQL Server データベース エンジンの機能を必ず確認してください。  
 
 ## <a name="considerations"></a>考慮事項 
 

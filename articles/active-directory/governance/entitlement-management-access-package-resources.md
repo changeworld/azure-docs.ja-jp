@@ -16,12 +16,12 @@ ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f69cf492ec3e28d7f4aa86971dc6c91b34bdf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a275b1c43f8a7c5526209f943e48a1d943eca149
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644181"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713686"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -35,7 +35,7 @@ ms.locfileid: "101644181"
 
 アクセス パッケージにリソースを追加する必要がある場合は、必要なリソースがカタログで利用可能かどうかを確認する必要があります。 アクセス パッケージ マネージャーの場合は、所有していても、カタログにリソースを追加することはできません。 カタログで利用可能なリソースの使用に制限されます。
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+**必要なロール:** グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
 
 1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
 

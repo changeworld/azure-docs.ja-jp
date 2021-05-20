@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: b2e5fdec732b823a42492af03b1cde705814b924
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d39cdc7430e41d788c29b72b129ee7939ac8b611
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136537"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108736417"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>移行ガイド: SQL Server から Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,12 +36,13 @@ ms.locfileid: "108136537"
 
 ## <a name="prerequisites"></a>前提条件 
 
-Azure SQL Database に [SQL Server を移行する](https://azure.microsoft.com/en-us/migration/sql-server/)場合は、次の前提条件が満たされていることを確認します。 
+Azure SQL Database に [SQL Server を移行する](https://azure.microsoft.com/en-us/migration/sql-server/)場合は、以下が満たされていることを確認します。 
 
-- [移行方法](sql-server-to-sql-database-overview.md#compare-migration-options)および対応するツールが選択されている。
-- ソースの SQL Server に接続できるマシンにインストールされている [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
-- ターゲットの [Azure SQL Database](../../database/single-database-create-quickstart.md)。 
-- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可。 
+- [移行方法](sql-server-to-sql-database-overview.md#compare-migration-options)および対応するツールの選択。
+- ソース SQL Server に接続できるコンピューターへの [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) のインストール。
+- 移行先となる [Azure SQL データベース](../../database/single-database-create-quickstart.md)の作成。 
+- ソースとターゲットの両方にアクセスするための接続と、適切なアクセス許可の構成。 
+- [Azure SQL Database で使用できる](../../database/features-comparison.md)データベース エンジンの機能の確認。 
 
 
 

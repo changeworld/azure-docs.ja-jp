@@ -1,5 +1,5 @@
 ---
-title: コンテンツのパフォーマンス http://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling
+title: Azure IoT Hub クォータと調整について
 description: 開発者ガイド - IoT Hub に適用されるクォータと予想される調整動作の説明。
 author: robinsh
 ms.author: robinsh
@@ -11,13 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-- ms.custom:contperf-fy21q4
-ms.openlocfilehash: a18ca18a6e9f7e26c6189cf66322b16f36a42ecb
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+- contperf-fy21q4
+ms.openlocfilehash: ae8d4efbf5080cbb675402f84cfb2709cc12e8cc
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277806"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713020"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 

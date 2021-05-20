@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5b1947a8d037dbdd20a3335a79f90ebf10b2ca6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94959783"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749899"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>仮想ネットワーク向けの Azure IoT Hub Device Provisioning Service (DPS) サポート
 
@@ -28,7 +28,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 いくつかの理由から、お客様は DPS などの Azure リソースへの接続を制限することをお勧めします。 これらの理由には以下のものが含まれます。
 
-* パブリック インターネット経由での接続の露出を防止します。 IoT ハブと DPS リソースのネットワーク レベルの分離によって追加のセキュリティ レイヤーを導入することで、露出を減らすことができます。
+* パブリック インターネット経由での接続の露出を防止します。 IoT ハブと DPS リソースのネットワーク レベルの分離によって追加のセキュリティ レイヤーを導入することで、露出を減らすことができます
 
 * オンプレミスのネットワーク資産からのプライベート接続エクスペリエンスを有効にし、データとトラフィックが Azure バックボーン ネットワークに直接送信されるようにする。
 
@@ -110,6 +110,38 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
     ![プライベート エンドポイントの構成](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. **[確認および作成]** 、引き続き **[作成]** をクリックして、プライベート エンドポイント リソースを作成します。
+
+
+## <a name="use-private-endpoints-with-devices"></a>デバイスでプライベート エンドポイントを使用する
+
+デバイス プロビジョニング コードでプライベート エンドポイントを使用するには、[Azure portal](https://portal.azure.com) 内の DPS リソースの概要ページに示されているように、DPS リソースの特定の **サービス エンドポイント** を使用する必要があります 。 サービス エンドポイントは次のように設定されています。
+
+`<Your DPS Tenant Name>.azure-devices-provisioning.net`
+
+ドキュメントと SDK で示されているほとんどのサンプル コードでは、**グローバル デバイス エンドポイント** (`global.azure-devices-provisioning.net`) と **ID スコープ** を使用して、特定の DPS リソースを解決します。 プライベート リンクを使用して DPS リソースに接続しデバイスをプロビジョニングするときに、グローバル デバイス エンドポイントの代わりにサービス エンドポイントを使用します。
+
+たとえば、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のプロビジョニング デバイス クライアント サンプル ([pro_dev_client_sample](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/prov_dev_client_sample)) は、[prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) のグローバル プロビジョニング URI (`global_prov_uri`) として **グローバル デバイス エンドポイント** を使用するように設計されています。
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="60-64" highlight="4":::
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="138-144" highlight="3":::
+
+プライベート リンクでサンプルを使用するために、DPS リソースにサービス エンドポイントを使用するために上記の強調表示されたコードが変更されます。 たとえば、サービス エンドポイントが `mydps.azure-devices-provisioning.net` の場合、コードは次のようになります。
+
+```C
+static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+static const char* service_uri = "mydps.azure-devices-provisioning.net";
+static const char* id_scope = "[ID Scope]";
+```
+
+```C
+    PROV_DEVICE_RESULT prov_device_result = PROV_DEVICE_RESULT_ERROR;
+    PROV_DEVICE_HANDLE prov_device_handle;
+    if ((prov_device_handle = Prov_Device_Create(service_uri, id_scope, prov_transport)) == NULL)
+    {
+        (void)printf("failed calling Prov_Device_Create\r\n");
+    }
+```
 
 
 ## <a name="request-a-private-endpoint"></a>プライベート エンドポイントを要求する

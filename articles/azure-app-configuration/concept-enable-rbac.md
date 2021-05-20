@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: f29be1807dfcc314c89d30301107670a970263ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5efe15ba6dafd80ca91a1d45f75ebcc85513c9dd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172877"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748430"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Active Directory を使用して Azure App Configuration へのアクセスを承認する
 Azure App Configuration では、ハッシュ ベースのメッセージ認証コード (HMAC) の使用に加えて、App Configuration インスタンスに対する要求を承認するための Azure Active Directory (Azure AD) の使用がサポートされています。  Azure AD を使用することにより、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してセキュリティ プリンシパルにアクセス許可を付与することができます。  セキュリティ プリンシパルは、ユーザー、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) または[アプリケーション サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)のいずれかになります。  ロールおよびロールの割り当ての詳細については、[各種ロールについて](../role-based-access-control/overview.md)のページを参照してください。
@@ -37,6 +37,9 @@ Azure には、Azure AD と OAuth を使用した、App Configuration データ�
 - **App Configuration データ閲覧者**: このロールを使用して、App Configuration データへの読み取りアクセス権を付与します。 App Configuration リソースへのアクセスは許可されません。
 - **共同作成者**:このロールを使用して、App Configuration リソースを管理します。 App Configuration データにはアクセス キーを使用してアクセスできますが、このロールでは Azure AD を使用したデータへの直接アクセスは許可されません。
 - **閲覧者**:このロールを使用して、App Configuration リソースへの読み取りアクセス権を付与します。 リソースのアクセス キーへのアクセスと、App Configuration に格納されているデータへのアクセスは許可されません。
+
+> [!NOTE]
+> ロール割り当てが ID に対して行われた後、アクセス許可が反映され、この ID を使用して App Configuration に格納されているデータにアクセスできるまで最大 15 分をみてください。
 
 ## <a name="next-steps"></a>次のステップ
 App Configuration サービスを管理するための [マネージド ID](howto-integrate-azure-managed-service-identity.md) の使用について詳しく説明します。

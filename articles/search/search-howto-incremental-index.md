@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b305955dbfcf99bccede041cbfcd18aef065cf1
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90971607"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770103"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法
 
@@ -73,6 +73,9 @@ api-key: [YOUR-ADMIN-KEY]
     "parameters": []
 }
 ```
+
+> [!NOTE]
+> インデクサー キャッシュには汎用 v2 ストレージ アカウントが必要です。 詳細については、「[様々なストレージ アカウントの種類](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)」を参照してください。
 
 ### <a name="step-3-reset-the-indexer"></a>手順 3:インデクサーをリセットする
 

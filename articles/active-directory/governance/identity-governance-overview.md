@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd215f0c10f8aebd2a7494ecb5894484ce7bedb9
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92362452"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714046"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -112,6 +112,9 @@ Identity Governance で管理タスクを実行するには、最小特権ロー
 | アクセス レビュー | ユーザー管理者 (特権ロール管理者が必要な、Azure ロールまたは Azure AD ロールのアクセス レビューを除きます) |
 |Privileged Identity Management | 特権ロール管理者 |
 | 使用条件 | セキュリティ管理者または条件付きアクセス管理者 |
+
+>[!NOTE]
+>エンタイトルメント管理の最小特権ロールは、ユーザー管理者ロールから Identity Governance 管理者ロールに変更になります。
 
 ## <a name="next-steps"></a>次のステップ
 

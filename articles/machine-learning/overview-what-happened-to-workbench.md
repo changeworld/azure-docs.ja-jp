@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 4c680be897c4c1bf2ccf20df1d34ab6f59f559f2
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: ed612ae6c021a2f2be7e07c48da2412c6d35670c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816154"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108770697"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -97,11 +97,10 @@ run = exp.submit(source_directory=script_folder,
 
 サービスの概要については、「[Azure Machine Learning とは](overview-what-is-azure-ml.md)」を参照してください。
 
-任意の方法で最初の実験を作成します。
+最初に、「[クイック スタート: Azure Machine Learning サービスの基本操作](quickstart-create-resources.md)」をお読みください。  その後、これらのリソースを使用して、お好きな方法で最初の実験を作成します。
 
-  + [独自の環境を使用する](tutorial-1st-experiment-sdk-setup-local.md)
-  + [Python ノートブックを使用する](tutorial-1st-experiment-sdk-setup.md)
-  + [R Markdown を使用する](https://github.com/Azure/azureml-sdk-for-r) 
+  + ["Hello world!" Python スクリプトを実行する (パート 1/3)](tutorial-1st-experiment-hello-world.md)
+  + [Jupyter Notebook を使用してイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
   + [自動機械学習を使用する](tutorial-designer-automobile-price-train-score.md) 
   + [デザイナーのドラッグ アンド ドロップ機能を使用する](tutorial-first-experiment-automated-ml.md) 
   + [CLI に対する ML 拡張機能を使用する](tutorial-train-deploy-model-cli.md)

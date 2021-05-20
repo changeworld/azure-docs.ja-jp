@@ -2,15 +2,15 @@
 title: リンクされたテンプレートを使用してテンプレート スペックを作成する
 description: リンクされたテンプレートを使用してテンプレート スペックを作成する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/05/2021
-ms.openlocfilehash: b1c757895faee208590b638094591d246bf605d8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 05/04/2021
+ms.openlocfilehash: 0a4d34016ce270c8921615868ef7019c33281905
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310616"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108754057"
 ---
-# <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する (プレビュー)
+# <a name="tutorial-create-a-template-spec-with-linked-templates"></a>チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する
 
 メイン テンプレートと[リンクされたテンプレート](linked-templates.md#linked-template)を使用して[テンプレート スペック](template-specs.md)を作成する方法について説明します。 テンプレート スペックは、ARM テンプレートを組織内の他のユーザーと共有するために使用します。 この記事では、[デプロイ リソース](/azure/templates/microsoft.resources/deployments)の `relativePath` プロパティを使用して、メイン テンプレートとそのリンクされたテンプレートをパッケージ化するテンプレート スペックを作成する方法について説明します。
 
@@ -19,7 +19,7 @@ ms.locfileid: "107310616"
 アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> Template Specs は現在プレビューの段階です。 Azure PowerShell でこれを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+> Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
 ## <a name="create-linked-templates"></a>リンク済みテンプレートの作成
 

@@ -1,5 +1,5 @@
 ---
-title: クラウド ソリューション プロバイダー - Microsoft コマーシャル マーケットプレース
+title: クラウド ソリューション プロバイダー - Microsoft コマーシャル マーケットプレース - Azure
 description: コマーシャル マーケットプレース内の Microsoft クラウド ソリューション プロバイダー (CSP) プログラムのパートナー チャネルを通じてオファーを販売する方法を説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64ad2c4311ade34314edde6e841e747745378e8c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131175"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716260"
 ---
 # <a name="cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム
 
@@ -34,7 +34,7 @@ ms.locfileid: "93131175"
 
 ## <a name="how-to-configure-an-offer"></a>オファーの構成方法
 
-パートナー センターでオファーを作成するときに、CSP プログラムのオプトイン設定を構成します。 [発行元エクスペリエンスの変更に関する詳細](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+パートナー センターでオファーを作成するときに、CSP プログラムのオプトイン設定を構成します。
 
 ### <a name="partner-center-opt-in"></a>パートナー センターのオプトイン
 

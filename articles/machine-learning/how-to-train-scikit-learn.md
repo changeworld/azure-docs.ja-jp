@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 3337607c8e4dd9dca230456cdf268ec3fbfb2f12
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 16f436c4b81aac60075be8cb3bf34a9706f739ab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884410"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746785"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して scikit-learn モデルを大規模にトレーニングする
 
@@ -30,7 +30,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
 このコードは、次の環境のいずれかで実行してください。
  - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
-    - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+    - 「[クイック スタート: Azure Machine Learning の利用を開始](quickstart-create-resources.md)」を完了して、SDK およびサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
     - ノートブック サーバー上の samples トレーニング用フォルダーで、**how-to-use-azureml > ml-frameworks > scikit-learn > train-hyperparameter-tune-deploy-with-sklearn** フォルダーの順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
 
  - 独自の Jupyter Notebook サーバー

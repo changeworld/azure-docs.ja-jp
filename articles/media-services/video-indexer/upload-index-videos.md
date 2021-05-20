@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90fca4342b1fe04adef97a1a4c1c2166ca7ec51e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 6e33b32b04fde4fb42c37dc379911369bee19835
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532497"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794414"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -92,10 +92,14 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
     `DefaultWithNoiseReduction` 値が既定のプリセット (非推奨) にマップされるようになりました。
 - `BasicAudio` - オーディオのみ (文字起こし、翻訳、出力キャプションの書式設定、字幕などの基本的なオーディオ機能のみ) を使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
- - `AdvancedAudio` -標準のオーディオ分析に加え、高度なオーディオ機能 (オーディオ イベントの検出) など、オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `AdvancedAudio` -標準のオーディオ分析に加え、高度なオーディオ機能 (オーディオ イベントの検出) など、オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `AdvancedVideo` - 標準のビデオ分析に加えて、高度なビデオ機能 (観察対象人物追跡) を含むビデオのみを使用 (オーディオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `AdvancedVideoAndAudio` - 高度なオーディオと高度なビデオ分析の両方を使用して、分析情報のインデックス作成と抽出を行います。 
 
 > [!NOTE]
-> Video Indexer では、最大 2 つのオーディオ トラックがカバーされます。 ファイル内にこれより多いオーディオ トラックがある場合、それらは 1 つのトラックとして扱われます。<br/>
+> 高度なプリセット (上記の一覧) には、パブリック プレビュー段階のモデルが含まれます。 これらのモデルが一般提供になると、価格に影響を及ぼす可能性があります。 
+
+Video Indexer では、最大 2 つのオーディオ トラックがカバーされます。 ファイル内にこれより多いオーディオ トラックがある場合、それらは 1 つのトラックとして扱われます。<br/>
 トラックに個別にインデックスを付ける場合は、関連するオーディオ ファイルを抽出し、それに `AudioOnly` とインデックスを付ける必要があります。
 
 料金は、選択したインデックス作成オプションによって異なります。 詳細については、[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください。

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 27516e5f0a75fa02804c8865c876044b48c4e729
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a27ebc70fe2ee61edf5dce07590c142c5d83ad03
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313583"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108792147"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,9 +36,7 @@ Xcode で、新しい iOS プロジェクトを作成し、 **[単一ビュー �
    platform :ios, '13.0'
    use_frameworks!
    target 'AzureCommunicationCallingSample' do
-     pod 'AzureCommunicationCalling', '~> 1.0.0-beta.8'
-     pod 'AzureCommunication', '~> 1.0.0-beta.8'
-     pod 'AzureCore', '~> 1.0.0-beta.8'
+     pod 'AzureCommunicationCalling', '~> 1.0.0'
    end
    ```
 
@@ -95,13 +93,13 @@ import AzureCommunication
 
 let tokenString = "token_string"
 var userCredential: CommunicationTokenCredential?
-var userCredential: CommunicationTokenCredential?
-   do {
-       userCredential = try CommunicationTokenCredential(with: CommunicationTokenRefreshOptions(initialToken: token, 
-                                                                     refreshProactively: true,
-                                                                     tokenRefresher: self.fetchTokenSync))
-   } catch {
-       return
+do {
+    let options = CommunicationTokenRefreshOptions(initialToken: token, refreshProactively: true, tokenRefresher: self.fetchTokenSync)
+    userCredential = try CommunicationTokenCredential(withOptions: options)
+} catch {
+    updates("Couldn't created Credential object", false)
+    initializationDispatchGroup!.leave()
+    return
 }
 
 // tokenProvider needs to be implemented by Contoso, which fetches a new token
@@ -115,11 +113,11 @@ public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
 
 ```swift
 
-callClient = CallClient()
-let callAgentOptions:CallAgentOptions = CallAgentOptions()!
-options.displayName = " iOS User"
+self.callClient = CallClient()
+let callAgentOptions = CallAgentOptions()
+options.displayName = " iOS ACS User"
 
-callClient?.createCallAgent(userCredential: userCredential!,
+self.callClient!.createCallAgent(userCredential: userCredential!,
     options: callAgentOptions) { (callAgent, error) in
         if error == nil {
             print("Create agent succeeded")
@@ -142,7 +140,14 @@ callClient?.createCallAgent(userCredential: userCredential!,
 ```swift
 
 let callees = [CommunicationUser(identifier: 'UserId')]
-let oneToOneCall = self.callAgent.call(participants: callees, options: StartCallOptions())
+self.callAgent?.startCall(participants: callees, options: StartCallOptions()) { (call, error) in
+     if error == nil {
+         print("Successfully started outgoing call")
+         self.call = call
+     } else {
+         print("Failed to start outgoing call")
+     }
+}
 
 ```
 
@@ -152,8 +157,15 @@ PSTN への通話を行うには、Communication Services で取得した電話�
 ```swift
 
 let pstnCallee = PhoneNumberIdentifier(phoneNumber: '+1999999999')
-let callee = CommunicationUserIdentifier(identifier: 'UserId')
-let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options: StartCallOptions())
+let callee = CommunicationUserIdentifier('UserId')
+self.callAgent?.startCall(participants: [pstnCallee, callee], options: StartCallOptions()) { (groupCall, error) in
+     if error == nil {
+         print("Successfully started outgoing call to multiple participants")
+         self.call = groupCall
+     } else {
+         print("Failed to start outgoing call to multiple participants")
+     }
+}
 
 ```
 
@@ -162,15 +174,23 @@ let groupCall = self.callAgent.call(participants: [pstnCallee, callee], options:
 
 ```swift
 
-let camera = self.deviceManager!.cameras!.first
-let localVideoStream = LocalVideoStream(camera: camera)
-let videoOptions = VideoOptions(localVideoStream: localVideoStream)
+let firstCamera = self.deviceManager!.cameras.first
+self.localVideoStreams = [LocalVideoStream]()
+self.localVideoStreams!.append(LocalVideoStream(camera: firstCamera!))
+let videoOptions = VideoOptions(localVideoStreams: self.localVideoStreams!)
 
 let startCallOptions = StartCallOptions()
-startCallOptions?.videoOptions = videoOptions
+startCallOptions.videoOptions = videoOptions
 
-let callee = CommunicationUserIdentifier(identifier: 'UserId')
-let call = self.callAgent?.call(participants: [callee], options: startCallOptions)
+let callee = CommunicationUserIdentifier('UserId')
+self.callAgent?.startCall(participants: [callee], options: startCallOptions) { (call, error) in
+     if error == nil {
+         print("Successfully started outgoing video call")
+         self.call = call
+     } else {
+         print("Failed to start outgoing video call")
+     }
+}
 
 ```
 
@@ -179,8 +199,15 @@ let call = self.callAgent?.call(participants: [callee], options: startCallOption
 
 ```swift
 
-let groupCallLocator = GroupCallLocator(groupId: UUID(uuidString: "uuid_string"))!
-let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCallOptions())
+let groupCallLocator = GroupCallLocator(groupId: UUID(uuidString: "uuid_string")!)
+self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCallOptions()) { (call, error) in
+     if error == nil {
+         print("Successfully joined group call")
+         self.call = call
+     } else {
+         print("Failed to join group call")
+     }
+}
 
 ```
 
@@ -191,48 +218,48 @@ let call = self.callAgent?.join(with: groupCallLocator, joinCallOptions: JoinCal
 final class IncomingCallHandler: NSObject, CallAgentDelegate, IncomingCallDelegate
 {
     // Event raised when there is an incoming call
-    public func onIncomingCall(_ callAgent: CallAgent!, incomingcall: IncomingCall!) {
+    public func callAgent(_ callAgent: CallAgent, didRecieveIncomingCall incomingcall: IncomingCall) {
         self.incomingCall = incomingcall
         // Subscribe to get OnCallEnded event
         self.incomingCall?.delegate = self
     }
 
     // Event raised when incoming call was not answered
-    public func onCallEnded(_ incomingCall: IncomingCall!, args: PropertyChangedEventArgs!) {
+    public func incomingCall(_ incomingCall: IncomingCall, didEnd args: PropertyChangedEventArgs) {
+        print("Incoming call was not answered")
         self.incomingCall = nil
     }
 }
 ```
 
 ### <a name="accept-an-incoming-call"></a>電話の着信を受け入れる
-通話を受け入れるには、呼び出しオブジェクトに対して `accept` メソッドを呼び出します。 デリゲートを `CallAgent` に設定します。
+通話を受け入れるには、`IncomingCall` オブジェクトに対して `accept` メソッドを呼び出します。
 
 ```swift
-final class CallHandler: NSObject, CallAgentDelegate
-{
-    public var incomingCall: Call?
- 
-    public func onCallsUpdated(_ callAgent: CallAgent!, args: CallsUpdatedEventArgs!) {
-        if let incomingCall = args.addedCalls?.first(where: { $0.isIncoming }) {
-            self.incomingCall = incomingCall
-        }
-    }
+self.incomingCall!.accept(options: AcceptCallOptions()) { (call, error) in
+   if (error == nil) {
+       print("Successfully accepted incoming call")
+       self.call = call
+   } else {
+       print("Failed to accept incoming call")
+   }
 }
 
-let firstCamera: VideoDeviceInfo? = self.deviceManager!.cameras!.first
-let localVideoStream = LocalVideoStream(camera: firstCamera)
+let firstCamera: VideoDeviceInfo? = self.deviceManager!.cameras.first
+localVideoStreams = [LocalVideoStream]()
+localVideoStreams!.append(LocalVideoStream(camera: firstCamera!))
 let acceptCallOptions = AcceptCallOptions()
-acceptCallOptions!.videoOptions = VideoOptions(localVideoStream:localVideoStream!)
-if let incomingCall = CallHandler().incomingCall {
-   incomingCall.accept(options: acceptCallOptions) { (call, error) in
-               if error == nil {
-                   print("Incoming call accepted")
-               } else {
-                   print("Failed to accept incoming call")
-               }
-           }
+acceptCallOptions.videoOptions = VideoOptions(localVideoStreams: localVideoStreams!)
+if let incomingCall = self.incomingCall {
+  incomingCall.accept(options: acceptCallOptions) { (call, error) in
+        if error == nil {
+            print("Incoming call accepted")
+        } else {
+            print("Failed to accept incoming call")
+        }
+    }
 } else {
-   print("No incoming call found to accept")
+  print("No incoming call found to accept")
 }
 ```
 
@@ -258,7 +285,7 @@ if let incomingCall = CallHandler().incomingCall {
 ```swift
 
 let deviceToken: Data = pushRegistry?.pushToken(for: PKPushType.voIP)
-callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
+callAgent.registerPushNotifications(deviceToken: deviceToken!) { (error) in
     if(error == nil) {
         print("Successfully registered to push notification.")
     } else {
@@ -273,13 +300,13 @@ callAgent.registerPushNotifications(deviceToken: deviceToken) { (error) in
 
 ```swift
 
-let callNotification = IncomingCallInformation.from(payload: pushPayload?.dictionaryPayload)
+let callNotification = PushNotificationInfo.fromDictionary(pushPayload.dictionaryPayload)
 
 callAgent.handlePush(notification: callNotification) { (error) in
-    if (error != nil) {
-        print("Handling of push notification failed")
-    } else {
+    if (error == nil) {
         print("Handling of push notification was successful")
+    } else {
+        print("Handling of push notification failed")
     }
 }
 
@@ -293,11 +320,11 @@ callAgent.handlePush(notification: callNotification) { (error) in
 
 ```swift
 
-callAgent.unregisterPushNotifications { (error) in
-    if (error != nil) {
-        print("Unregister of push notification failed, please try again")
-    } else {
+callAgent.unregisterPushNotification { (error) in
+    if (error == nil) {
         print("Unregister of push notification was successful")
+    } else {
+       print("Unregister of push notification failed, please try again")
     }
 }
 
@@ -340,8 +367,8 @@ call!.unmute { (error) in
 
 ```swift
 
-let firstCamera: VideoDeviceInfo? = self.deviceManager!.cameras!.first
-let localVideoStream = LocalVideoStream(camera: firstCamera)
+let firstCamera: VideoDeviceInfo? = self.deviceManager!.cameras.first
+let localVideoStream = LocalVideoStream(camera: firstCamera!)
 
 call!.startVideo(stream: localVideoStream) { (error) in
     if (error == nil) {
@@ -357,7 +384,7 @@ call!.startVideo(stream: localVideoStream) { (error) in
 
 ```swift
 
-call.localVideoStreams[0]
+call.localVideoStreams
 
 ```
 
@@ -395,7 +422,7 @@ call.remoteParticipants
 var remoteParticipantDelegate = remoteParticipant.delegate
 
 // [CommunicationIdentifier] identity - same as the one used to provision a token for another user
-var identity = remoteParticipant.identity
+var identity = remoteParticipant.identifier
 
 // ParticipantStateIdle = 0, ParticipantStateEarlyMedia = 1, ParticipantStateConnecting = 2, ParticipantStateConnected = 3, ParticipantStateOnHold = 4, ParticipantStateInLobby = 5, ParticipantStateDisconnected = 6
 var state = remoteParticipant.state
@@ -471,8 +498,8 @@ var id: Int = remoteParticipantVideoStream.id // id of remoteParticipantStream
 
 ```swift
 
-let renderer: Renderer? = Renderer(remoteVideoStream: remoteParticipantVideoStream)
-let targetRemoteParticipantView: RendererView? = renderer?.createView(with: RenderingOptions(scalingMode: ScalingMode.crop))
+let renderer = VideoStreamRenderer(remoteVideoStream: remoteParticipantVideoStream)
+let targetRemoteParticipantView = renderer?.createView(withOptions: CreateViewOptions(scalingMode: ScalingMode.crop))
 // To update the scaling mode later
 targetRemoteParticipantView.update(scalingMode: ScalingMode.fit)
 
@@ -507,27 +534,9 @@ self.callClient!.getDeviceManager { (deviceManager, error) in
 
 ```swift
 // enumerate local cameras
-var localCameras = deviceManager.cameras! // [VideoDeviceInfo, VideoDeviceInfo...]
-// enumerate local cameras
-var localMicrophones = deviceManager.microphones! // [AudioDeviceInfo, AudioDeviceInfo...]
-// enumerate local cameras
-var localSpeakers = deviceManager.speakers! // [AudioDeviceInfo, AudioDeviceInfo...]
+var localCameras = deviceManager.cameras // [VideoDeviceInfo, VideoDeviceInfo...]
+
 ``` 
-
-### <a name="set-the-default-microphone-or-speaker"></a>既定のマイクまたはスピーカーを設定する
-
-デバイス マネージャーを使って、通話の開始時に使用される既定のデバイスを設定できます。 スタックの既定値が設定されていない場合、Communication Services は OS の既定値にフォールバックします。
-
-```swift
-// get first microphone
-var firstMicrophone = self.deviceManager!.cameras!.first
-// [Synchronous] set microphone
-deviceManager.setMicrophone(microphoneDevice: firstMicrophone)
-// get first speaker
-var firstSpeaker = self.deviceManager!.speakers!
-// [Synchronous] set speaker
-deviceManager.setSpeaker(speakerDevice: firstSpeaker)
-```
 
 ### <a name="get-a-local-camera-preview"></a>ローカル カメラのプレビューを取得する
 
@@ -535,10 +544,10 @@ deviceManager.setSpeaker(speakerDevice: firstSpeaker)
 
 ```swift
 
-let camera: VideoDeviceInfo = self.deviceManager!.getCameraList()![0]
-let localVideoStream: LocalVideoStream = LocalVideoStream(camera: camera)
-let renderer: Renderer = Renderer(localVideoStream: localVideoStream)
-self.view = try renderer!.createView()
+let camera: VideoDeviceInfo = self.deviceManager!.cameras.first!
+let localVideoStream = LocalVideoStream(camera: camera)
+let localRenderer = try! VideoStreamRenderer(localVideoStream: localVideoStream)
+self.view = try! localRenderer.createView()
 
 ```
 
@@ -549,20 +558,20 @@ self.view = try renderer!.createView()
 ```swift
 
 // Constructor can take in LocalVideoStream or RemoteVideoStream
-let localRenderer = Renderer(localVideoStream:localVideoStream)
-let remoteRenderer = Renderer(remoteVideoStream:remoteVideoStream)
+let localRenderer = VideoStreamRenderer(localVideoStream:localVideoStream)
+let remoteRenderer = VideoStreamRenderer(remoteVideoStream:remoteVideoStream)
 
 // [StreamSize] size of the rendering view
 localRenderer.size
 
-// [RendererDelegate] an object you provide to receive events from this Renderer instance
+// [VideoStreamRendererDelegate] an object you provide to receive events from this Renderer instance
 localRenderer.delegate
 
 // [Synchronous] create view
 try! localRenderer.createView()
 
 // [Synchronous] create view with rendering options
-try! localRenderer.createView(with: RenderingOptions(scalingMode: ScalingMode.fit))
+try! localRenderer!.createView(withOptions: CreateViewOptions(scalingMode: ScalingMode.fit))
 
 // [Synchronous] dispose rendering view
 localRenderer.dispose()
@@ -579,8 +588,7 @@ localRenderer.dispose()
 ```swift
 call.delegate = self
 // Get the property of the call state by getting on the call's state member
-public func onCallStateChanged(_ call: Call!,
-                               args: PropertyChangedEventArgs!)
+public func call(_ call: Call, didChangeState args: PropertyChangedEventArgs) {
 {
     print("Callback from SDK when the call state changes, current state: " + call.state.rawValue)
 }
@@ -596,8 +604,7 @@ public func onCallStateChanged(_ call: Call!,
 ```swift
 call.delegate = self
 // Collection contains the streams that were added or removed only
-public func onLocalVideoStreamsChanged(_ call: Call!,
-                                       args: LocalVideoStreamsUpdatedEventArgs!)
+public func call(_ call: Call, didUpdateLocalVideoStreams args: LocalVideoStreamsUpdatedEventArgs) {
 {
     print(args.addedStreams.count)
     print(args.removedStreams.count)

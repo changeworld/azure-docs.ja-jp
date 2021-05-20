@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 12/14/2020
-ms.openlocfilehash: f1171bdd087d6ca72a09a2e3efb7f4767a575d21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/04/2021
+ms.openlocfilehash: bc1297790322202713d06c4d1f7a474c1b9dcda8
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517792"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108774081"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -93,6 +93,8 @@ ms.locfileid: "100517792"
 
 [解析変換](https://www.youtube.com/watch?v=r7O7AJcuqoY)
 
+[複合データ型を変換する](https://youtu.be/Wk0C76wnSDE)
+
 ## <a name="source-and-sink"></a>ソースとシンク
 
 [Reading and writing JSONs (JSON の読み取りと書き込み)](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
@@ -130,6 +132,8 @@ ms.locfileid: "100517792"
 [データ フローの起動時間の最適化](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
 [データ フロー用の Azure Integration Runtime](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[Azure IR でクラスターの起動時間を短縮する](https://www.youtube.com/watch?v=mxzsOZX6WVY)
 
 ## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
 

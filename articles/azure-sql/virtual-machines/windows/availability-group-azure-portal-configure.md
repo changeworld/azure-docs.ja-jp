@@ -14,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 14760b4244d42e57aaed7f7d96f487a66147a554
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5dd610d473073e5976b0e7197a1c4e4e68c0f551
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359508"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769833"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure portal を使用し、Azure VM 上で SQL Server の可用性グループ (プレビュー) を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,6 +31,9 @@ Azure portal を使用して新しいクラスターを作成するか、既存�
 現在、この機能はプレビュー段階にあります。 
 
 この記事では Azure portal を使用して可用性グループ環境を構成しますが、[PowerShell または Azure CLI](availability-group-az-commandline-configure.md) を使用して構成するか、[Azure クイックスタート テンプレート](availability-group-quickstart-template-configure.md)を使用して構成するか、[手動](availability-group-manually-configure-tutorial.md)で構成することもできます。 
+
+> [!NOTE]
+> これで、Azure Migrate を使用して、可用性グループ ソリューションを Azure VM 上の SQL Server にリフト アンド シフトできるようになりました。 詳細については、「[可用性グループの移行](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)」を参照してください。 
 
 
 ## <a name="prerequisites"></a>前提条件

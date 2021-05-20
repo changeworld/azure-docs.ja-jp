@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: dc8ca48d11f31f69ca9db5dce53cce4d9d6e8f25
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728559"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772335"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central ソリューション ビルダーのガイド
-
-*この記事は、ソリューション ビルダーを対象としています。*
 
 IoT Central アプリケーションを使用すると、数百万台ものデバイスを、そのライフ サイクル全体にわたって監視および管理することができます。 このガイドは、IoT Central を使用して統合ソリューションを構築するソリューション ビルダーを対象としています。 IoT Central アプリケーションを使用すると、デバイスの管理、デバイス テレメトリの分析、および他のバックエンド サービスとの統合を行うことができます。
 
@@ -56,6 +54,14 @@ IoT Central には、オペレーターが、接続されているデバイス�
 - [Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](howto-create-custom-rules.md)
 - [Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](howto-create-custom-analytics.md)
 - [Azure IoT Central データを Power BI ダッシュボードに視覚化する](howto-connect-powerbi.md)
+
+## <a name="apis"></a>API
+
+IoT Central API を使用すると、IoT ソリューション内の他のサービスとの深い統合を構築できます。 使用可能な API は、*データ プレーン API*  または *コントロール プレーン API* として分類されます。
+
+データ プレーン API を使用して、IoT Central アプリケーションのエンティティと機能にアクセスします。 たとえば、デバイス、デバイス テンプレート、ユーザー、ロールの管理などです。 IoT Central REST API の操作は *データ プレーン* 操作です。 詳細については、[「ユーザーとロールを 管理するためにIoT Central REST APIを使用する方法」](howto-manage-users-roles-with-rest-api.md)を参照してください。
+
+*コントロール プレーン* は、Azure サブスクリプション内の IoT Central 関連リソースを管理するために使用します。 コントロール プレーン操作には、Azure CLI テンプレートと Resource Manager テンプレートを使用できます。 たとえば Azure CLI を使ってIoT Central アプリケーションを作成することができます。 詳細については、[「Azure CLI から IoT Central を管理する」](howto-manage-iot-central-from-cli.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

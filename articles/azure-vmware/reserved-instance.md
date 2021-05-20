@@ -3,12 +3,12 @@ title: Azure VMware Solution の予約インスタンス
 description: Azure VMware Solution の予約インスタンスを購入する方法について説明します。 予約インスタンスでは、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストが含まれます。
 ms.topic: how-to
 ms.date: 04/09/2021
-ms.openlocfilehash: 68f61832ab01b3d7946e3bd8dffb3ef274e74aac
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fb30ae2fcf06abfa25770aff85f2668d7aaca770
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145343"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753733"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware Solution でコストを節約する
 
@@ -139,5 +139,5 @@ Azure VMware Solution の予約インスタンスについて確認したので�
 
 - [Azure VMware Solution 評価の作成](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
 - [Azure VMware Solution 用の DHCP の管理](manage-dhcp.md)。
-- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- [Azure VMware ソリューション VM の監視と管理](lifecycle-management-of-azure-vmware-solution-vms.md)
  

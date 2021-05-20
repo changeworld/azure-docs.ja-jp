@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2021
+ms.date: 05/03/2021
 ms.author: b-juche
-ms.openlocfilehash: d1cc59fe2eb3a2938dc776fd62e6645aec62bb1f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 08e46f056a63fe82c8a41afb9934963f55e13c36
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291802"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742519"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -325,6 +325,10 @@ NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sy
 - ソースと Azure NetApp Files のターゲット ボリュームの IP アドレス間のネットワーク接続を検証します。 オンプレミスと Azure NetApp Files サービスとの間のデータ転送は、ExpressRoute 経由でサポートされています。
 - ターゲットの Azure NetApp Files ボリュームを作成します。
 - 使用したいファイル コピー ツールを使用して、ターゲット ボリュームにソース データを転送します。
+
+### <a name="where-does-azure-netapp-files-store-customer-data"></a>Azure NetApp Files では、顧客データはどこに格納されますか?   
+
+既定では、Azure NetApp Files ボリュームをデプロイするリージョン内にデータがとどまります。 ただし、[リージョン間レプリケーション](cross-region-replication-introduction.md)を使って、使用できる宛先リージョンにデータをボリューム単位でレプリケートすることができます。
 
 ### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Azure NetApp Files ボリュームのコピーを別の Azure リージョンに作成するには、どうすればよいですか?
     

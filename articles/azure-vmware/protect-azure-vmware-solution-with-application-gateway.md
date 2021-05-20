@@ -3,14 +3,14 @@ title: Azure Application Gateway を使用して Azure VMware Solution 上の We
 description: Azure VMware Solution で実行されている Web アプリを安全に公開するために Azure Application Gateway を構成します。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d31eb24f1cb4ec1e2ead789174189dc99d5310f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601918"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771687"
 ---
-# <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
+# <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する
 
 [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) は、Web アプリケーションに対するトラフィックを管理できるレイヤー 7 の Web トラフィック ロード バランサーです。 これは、Azure VMware Solution v1.0 と v2.0 の両方で提供されています。 どちらのバージョンも、Azure VMware Solution で実行されている Web アプリでテストされています。
 

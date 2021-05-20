@@ -7,15 +7,16 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1d098f56bbadfe115620580c8d93fb6dd021550d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a62e87e97a719991169112d7280593f6ab4b340
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97586676"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772353"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Azure IoT Central と Dynamics 365 フィールド サービスを使用してエンドツーエンド ソリューションを構築する 
-ビルダーとして、他のビジネス システムへの Azure IoT Central アプリケーションの統合を有効にすることができます。 
+
+この記事では、他のビジネス システムに対して Azure IoT Central アプリケーションの統合を有効にする方法について説明します。 
 
 たとえば、接続された廃棄物管理ソリューションで、ごみ回収車の配車を最適化できます。 最適化は、接続されたごみ箱からの IoT センサー データに基づいて行うことができます。[接続された IoT Central 廃棄物管理アプリケーション](./tutorial-connected-waste-management.md)で、ルールとアクションを構成し、Dynamics フィールド サービスでアラートの作成をトリガーするように設定できます。 このシナリオは Power Automate を使用して実現されます。これは、アプリケーションやサービスにまたがるワークフローを自動化するために IoT Central で直接構成されます。 また、フィールド サービスのサービス アクティビティに基づいて、情報を Azure IoT Central に送り返すことができます。 
 

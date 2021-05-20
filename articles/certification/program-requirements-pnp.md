@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 06c09527556c92cc3a1bd4bb2784084aeb373d97
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eaf3ef6016388404761e913f878972df4a333061
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131749"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109712804"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT プラグ アンド プレイ認定の要件
 
@@ -25,9 +25,9 @@ IoT プラグ アンド プレイ プレビューにより、ソリューショ�
 IoT プラグ アンド プレイ認定では次のことが保証されます。
 
 1.  定義済みのデバイス モデルとインターフェイスは、[デジタル ツイン定義言語](https://github.com/Azure/opendigitaltwins-dtdl)に準拠している  
-2.  デバイス プロビジョニング サービスのセキュリティで保護されたプロビジョニングと ID スコープの所有権の転送を容易にする
-3.  [デジタル ツイン API](../iot-pnp/concepts-digital-twin.md) を使用した Azure IoT ベースのソリューションとの簡単な統合: Azure IoT Hub と Azure IoT Central
-4.  認定デバイスで検証された製品の真実性
+1.  [デジタル ツイン API](../iot-pnp/concepts-digital-twin.md) を使用した Azure IoT ベースのソリューションとの簡単な統合: Azure IoT Hub と Azure IoT Central
+1.  認定デバイスで検証された製品の真実性
+1.  [Azure Certified Device](./program-requirements-azure-certified-device.md) のすべての要件を満たす
 
 ## <a name="requirements"></a>必要条件
 
@@ -42,16 +42,6 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **検証**          | デバイスは IoT Hub にテレメトリ スキーマを送信する必要があります。 Microsoft では、テストを実行するための[ポータル ワークフロー](https://certify.azure.com)を提供しています。 デバイスからクラウドへ (必須): **1.** デバイスが AIC で管理されている IoT Hub にメッセージを送信できることを検証します **2.** ユーザーは、メッセージの数と頻度を指定する必要があります。 **3.** AIC は、ハブ インスタンスによってテレメトリが受信されたことを検証します |
 | **リソース**           | [認定手順](./overview.md) (すべての追加リソースを含む) |
 
-**[必須] DPS: テストの目的は、3 つの認証メソッドのいずれかを使用して、デバイスが IoT Hub Device Provisioning Service を実装およびサポートしていることを確認することです**
-
-| **名前**                | IoTPnP.DPS                                               |
-| ----------------------- | ------------------------------------------------------------ |
-| **ターゲットの可用性** | 現在利用可能                                                |
-| **適用対象**          | 任意のデバイス                                                   |
-| **OS**                  | 非依存                                                     |
-| **検証タイプ**     | 自動                                                    |
-| **検証**          | デバイスは、埋め込みコードを再コンパイルする必要なく、DPS ID スコープの所有権の転送を実装する必要があります。 Microsoft では、デバイスが DPS をサポートしていることを検証するために、テストを実行するための [ポータル ワークフロー](https://certify.azure.com)を提供しています **1.** ユーザーは、構成証明メソッド (x.509、TPM、および SAS キー) のいずれかを選択する必要があります **2.** 認証方法に応じて、ユーザーは、**a)** X.509 証明書を AICS マネージド DPS スコープにアップロードする、**b)** SAS キーまたは保証キーをデバイスに実装する、などの対応するアクションを実行する必要があります |
-| **リソース**           | **a)** [デバイス プロビジョニング サービスの概要](../iot-dps/about-iot-dps.md)、 **b)** [DPS の ID スコープ転送用のサンプル構成ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **[必須] DTDL v2: 定義済みのデバイスモデルとインターフェイスがデジタル ツイン定義言語 v2 に準拠していることを確認するテストの目的。**                                                              
 

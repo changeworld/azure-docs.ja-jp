@@ -5,16 +5,16 @@ description: Azure Data Science Virtual Machine のサポートされている�
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 ms.service: data-science-vm
-author: lobrien
-ms.author: laobri
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 927e945a0d045abcd1caa2951dbd484224b2f425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/29/2021
+ms.openlocfilehash: 52a431cae26d1d45534abd55f9de5357b31ecbea
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519543"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749467"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -27,16 +27,17 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 | カテゴリ | 値 |
 | ------------- | ------------- |
 | 紹介   | ローカルのリレーショナル データベース インスタンス      |
-| サポートされている DSVM エディション      | Windows 2016: SQL Server 2017、Windows 2019: SQL Server 2019      |
+| サポートされている DSVM エディション      | Windows 2019、Ubuntu 18.04 (SQL Server 2019)   |
 | 標準的な使用      | <ul><li>比較的小さなデータセットを使用したローカルでの迅速開発</li><li>In-Database R の実行</li></ul> |
 | サンプルへのリンク      | <ul><li>New York City データセットの小さなサンプルが、次の SQL データベースに読み込まれます。<br/>  `nyctaxi`</li><li>Microsoft Machine Learning Server およびデータベース内の分析を示す Jupyter サンプルは次の場所にあります。<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
-| DSVM 上の関連ツール       | <ul><li>SQL Server Management Studio</li><li>ODBC および JDBC ドライバー</li><li>pyodbc、RODBC</li><li>Apache Drill</li></ul> |
+| DSVM 上の関連ツール       | <ul><li>SQL Server Management Studio</li><li>ODBC および JDBC ドライバー</li><li>pyodbc、RODBC</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer エディションは、開発およびテスト目的でのみ使用できます。 実稼働環境で実行するには、ライセンスまたはいずれかの SQL Server VM が必要です。
 
+### <a name="windows"></a>Windows
 
-### <a name="setup"></a>セットアップ
+#### <a name="setup"></a>セットアップ
 
 データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で行う唯一の手順は、Microsoft Machine Learning Server を使用してデータベース内分析を有効にすることです。 SQL Server Management Studio (SSMS) で 1 回限りの操作として次のコマンドを実行することで、分析を行うことができます。 マシン管理者としてログインし、SSMS で新しいクエリを開き、選択したデータベースが `master` であることを確認した後、このコマンドを実行します。
 
@@ -48,15 +49,21 @@ CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS
 
 SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows Search を使用してこれを探して実行します。 資格情報の入力を求められたら、 **[Windows 認証]** を選択し、 **[SQL Server 名]** フィールドにはマシン名または ```localhost``` を使用します。
 
-### <a name="how-to-use-and-run-it"></a>使用と実行方法
+#### <a name="how-to-use-and-run-it"></a>使用と実行方法
 
 既定では、既定のデータベース インスタンスがあるデータベース サーバーは自動的に実行されます。 VM 上の SQL Server Management Studio などのツールを使用して、SQL Server データベースにローカルでアクセスできます。 ローカル管理者アカウントには、データベースへの管理者アクセス権があります。
 
 また DSVM には、Python、Machine Learning Server を含む複数の言語で記述されたアプリケーションから SQL Server、Azure SQL データベース、および Azure Synapse Analytics と通信するための ODBC ドライバーおよび JDBC ドライバーが付属しています。
 
-### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM での構成とインストール方法 
+#### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>DSVM での構成とインストール方法 
 
  SQL Server は、標準の方法でインストールされます。 その場所は `C:\Program Files\Microsoft SQL Server` です。 データベース内 Machine Learning Server インスタンスは、`C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES` にあります。 DSVM には、`C:\Program Files\Microsoft\R Server\R_SERVER` にインストールされる別のスタンドアロン Machine Learning Server インスタンスもあります。 これらの 2 つの Machine Learning Server インスタンスは、ライブラリを共有しません。
+
+
+### <a name="ubuntu"></a>Ubuntu
+
+Ubuntu DSVM で SQL Server Developer エディションを使用するには、まずそれをインストールする必要があります。 方法については、「[クイック スタート:Ubuntu に SQL Server をインストールし、データベースを作成する](https://docs.microsoft.com/sql/linux/quickstart-install-connect-ubuntu)」で説明しています。
+
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (スタンドアロン)

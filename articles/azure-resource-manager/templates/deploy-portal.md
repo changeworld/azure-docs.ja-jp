@@ -2,13 +2,13 @@
 title: Azure Portal を使用してリソースをデプロイする
 description: Azure Portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/05/2021
+ms.openlocfilehash: 6370b628a8dc2d880168dd3c4ea8a7d10a1cd36c
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98028677"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737119"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure Portal でリソースをデプロイする
 
@@ -95,7 +95,7 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 
     このチュートリアルでは、クイックスタート テンプレートを読み込む方法について説明します。
 
-1. **[GitHub クイックスタート テンプレートを読み込む]** で、「**101-storage-account-create**」を入力するか選択します。
+1. **[GitHub クイックスタート テンプレートを読み込む]** で、「**storage-account-create**」を入力するか選択します。
 
     2 つのオプションがあります。
 
@@ -118,7 +118,7 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
     - **サブスクリプション**:Azure サブスクリプションを選択します。
     - **[リソース グループ]** : **[新規作成]** を選択し、名前を付けます。
     - **[場所]** :Azure の場所を選択します。
-    - **ストレージ アカウントの種類**:既定値を使用します。
+    - **ストレージ アカウントの種類**:既定値を使用します。 テンプレートで定義されているキャメル ケースのパラメーター名 *storageAccountType* は、ポータルに表示されるときにスペースで区切られた文字列に変換されます。
     - **[場所]** :既定値を使用します。
     - **[上記の使用条件に同意する]** : (オン)
 
@@ -129,4 +129,3 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 - 監査ログの表示については、「 [Resource Manager の監査操作](../management/view-activity-logs.md)」を参照してください。
 - デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](deployment-history.md)」を参照してください。
 - デプロイまたはリソース グループからテンプレートをエクスポートするには、「[ARM テンプレートのエクスポート](export-template-portal.md)」を参照してください。
-- 複数のリージョン間で、サービスを安全にロール アウトするには、[Azure デプロイ マネージャー](deployment-manager-overview.md)を参照してください。

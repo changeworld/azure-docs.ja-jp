@@ -10,12 +10,12 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a641f349b070f3b4cb285b3d0007baa54219683
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 543b99013d31f5a80150bb7daa52d9a9e2992811
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884428"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747003"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras モデルを大規模にトレーニングする
 
@@ -36,7 +36,7 @@ Keras モデルを最初から開発しているか、または既存のモデ�
 
 - Azure Machine Learning コンピューティング インスタンス - ダウンロードやインストールは必要なし
 
-     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
+     - [クイック スタート: Azure Machine Learning の利用の開始](quickstart-create-resources.md)を完了して、SDK およびサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
     - ノートブック サーバー上の samples フォルダーで、**how-to-use-azureml > ml-frameworks > keras > train-hyperparameter-tune-deploy-with-keras** の各フォルダーに移動して、完成した展開済みノートブックを見つけます。
 
  - 独自の Jupyter Notebook サーバー

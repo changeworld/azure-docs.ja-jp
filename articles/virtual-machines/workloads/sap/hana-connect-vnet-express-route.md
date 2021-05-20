@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 540247752be27af268a0485ea9eb68d121a25240
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33f25542e23704f69ccab2aafe8812c7efed21f7
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775307"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749161"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>HANA Large Instances に仮想ネットワークを接続する
 
@@ -93,12 +93,12 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 ```
 
 > [!NOTE]
-> コマンド New-AzVirtualNetworkGatewayConnection の最後のパラメーター **ExpressRouteGatewayBypass** は、ExpressRoute Fast Path を有効にする新しいパラメーターです。 これは、HANA L インスタンス ユニットと Azure VM の間のネットワーク待ち時間を短縮する機能です。 この機能は 2019 年 5 月に追加されました。 詳細については、「[SAP HANA (L インスタンス) のネットワーク アーキテクチャ](./hana-network-architecture.md)」の記事を確認してください。 このコマンドを実行する前に、最新バージョンの PowerShell コマンドレットを実行していることを確認してください。
+> コマンド New-AzVirtualNetworkGatewayConnection の最後のパラメーター **ExpressRouteGatewayBypass** は、ExpressRoute FastPath を有効にする新しいパラメーターです。 これは、HANA L インスタンス ユニットと Azure VM の間のネットワーク待ち時間を短縮する機能です。 この機能は 2019 年 5 月に追加されました。 詳細については、「[SAP HANA (L インスタンス) のネットワーク アーキテクチャ](./hana-network-architecture.md)」の記事を確認してください。 このコマンドを実行する前に、最新バージョンの PowerShell コマンドレットを実行していることを確認してください。
 
 サブスクリプションに関連付けられた複数の ExpressRoute 回線にゲートウェイを接続するには、この手順を複数回実行しなければならないことがあります。 たとえば、通常は同じ仮想ネットワーク ゲートウェイを、仮想ネットワークとオンプレミス ネットワークとを接続する ExpressRoute 回線に接続します。
 
-## <a name="applying-expressroute-fast-path-to-existing-hana-large-instance-expressroute-circuits"></a>既存の HANA L インスタンスの ExpressRoute 回線への ExpressRoute Fast Path の適用
-このドキュメントではここまで、HANA L インスタンス デプロイで作成された新しい ExpressRoute 回線を、いずれかの Azure 仮想ネットワークの Azure ExpressRoute ゲートウェイに接続する方法について説明してきました。 ただし、多くの顧客では既に ExpressRoute 回線が設定され、仮想ネットワークが既に HANA L インスタンスに接続されています。 新しい ExpressRoute Fast Path はネットワーク待ち時間を短縮するため、この機能を使用するための変更を適用することをお勧めします。 新しい ExpreesRoute 回線を接続するためのコマンドと、既存の ExpressRoute 回線を変更するためのコマンドは同じです。 そのため、使用する既存の回線を変更するには、この PowerShell コマンドのシーケンスを実行する必要があります。 
+## <a name="applying-expressroute-fastpath-to-existing-hana-large-instance-expressroute-circuits"></a>既存の HANA L インスタンスの ExpressRoute 回線への ExpressRoute FastPath の適用
+このドキュメントではここまで、HANA L インスタンス デプロイで作成された新しい ExpressRoute 回線を、いずれかの Azure 仮想ネットワークの Azure ExpressRoute ゲートウェイに接続する方法について説明してきました。 ただし、多くの顧客では既に ExpressRoute 回線が設定され、仮想ネットワークが既に HANA L インスタンスに接続されています。 新しい ExpressRoute FastPath はネットワーク待ち時間を短縮するため、この機能を使用するための変更を適用することをお勧めします。 新しい ExpreesRoute 回線を接続するためのコマンドと、既存の ExpressRoute 回線を変更するためのコマンドは同じです。 そのため、使用する既存の回線を変更するには、この PowerShell コマンドのシーケンスを実行する必要があります。 
 
 ```powershell
 # Populate with information provided by Microsoft Onboarding team
@@ -121,7 +121,7 @@ New-AzVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID -ExpressRouteGatewayBypass
 ```
 
-ExpressRoute Fast Path 機能を有効にするために、上に表示されている最後のパラメーターを追加することが重要です。
+ExpressRoute FastPath 機能を有効にするために、上に表示されている最後のパラメーターを追加することが重要です
 
 
 ## <a name="expressroute-global-reach"></a>ExpressRoute Global Reach

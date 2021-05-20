@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8b3340c00d856b13edefc7728d5baa327399a441
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4dc2dd06128c373439229b5e649c37caa25b727e
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502931"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715018"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>AzCopy を使用して Azure Blob Storage と同期する
 
@@ -83,36 +83,40 @@ azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myD
 
 ## <a name="update-a-container-with-changes-in-another-container"></a>別のコンテナーへの変更を使用してコンテナーを更新する
 
-このコマンドに表示される最初のコンテナーがソースです。 2 つ目が宛先です。
+このコマンドに表示される最初のコンテナーがソースです。 2 つ目が宛先です。 必ず、各ソース URL の末尾に SAS トークンを追加してください。  
+
+Azure Active Directory (Azure AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 **構文**
 
-`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
 
 **例**
 
 ```azcopy
-azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
 ```
 
 ## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>別のコンテナー内のディレクトリへの変更を使用してディレクトリを更新する
 
-このコマンドに表示される最初のディレクトリがソースです。 2 つ目が宛先です。
+このコマンドに表示される最初のディレクトリがソースです。 2 つ目が宛先です。 必ず、各ソース URL の末尾に SAS トークンを追加してください。  
+
+Azure Active Directory (Azure AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 **構文**
 
-`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
 
 **例**
 
 ```azcopy
-azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
 ```
 
 ## <a name="synchronize-with-optional-flags"></a>オプションのフラグに同期させる

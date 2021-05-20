@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: adfb46894e769a23a2ac48bdb4ac3e432d9cebce
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ea7d44cc704e6937a0d3f396b8eea3f298a02931
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139059"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772317"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -159,7 +159,7 @@ Windows デバイスでデモ用の証明書を作成するには、生成スク
 
 1. 証明書生成スクリプトを配置した作業ディレクトリに移動します。
 
-1. ルート CA 証明書を作成し、1 つの中間証明書に署名させます。 証明書はすべて作業ディレクトリに配置されます。
+1. ルート CA 証明書を作成し、1 つの中間証明書に署名させます。 証明書はすべて作業ディレクトリに配置されます。 
 
    ```powershell
    New-CACertsCertChain rsa
@@ -168,6 +168,8 @@ Windows デバイスでデモ用の証明書を作成するには、生成スク
    このスクリプト コマンドでは、証明書とキーのファイルが複数作成されますが、記事で **ルート CA 証明書** が求められた場合は次のファイルを使用します。
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+   
+   次のセクションで説明するように、IoT Edge デバイスとリーフ デバイス用にさらに証明書を作成するには、事前にこの証明書が必要になります。
 
 ### <a name="linux"></a>Linux
 
@@ -206,6 +208,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
+
+DPS に IoT Edge デバイスを個別に登録するには、`iot-edge-device-identity-<name>.cert.pem` を使用します。 IoT Hub に IoT Edge デバイスを登録するには、`iot-edge-device-identity-<name>-full-chain.cert.pem` と `iot-edge-device-identity-<name>.key.pem` の証明書を使用します。 詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)」を参照してください。
+
 
 ### <a name="linux"></a>Linux
 
@@ -361,7 +366,7 @@ IoT Hub で認証できるように、IoT デバイスにはデバイス証明�
 次に、ルート CA 証明書を所有している IoT Hub を証明するための検証を実行します。
 最後に、同じルート CA 証明書を使用して、IoT デバイスが IoT Hub で認証できるように、そのデバイスに配置するデバイス証明書を作成します。
 
-このセクションの証明書は、「[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-scripts.md)」の手順に向けたものです。
+このセクションの証明書は、X.509 証明書チュートリアル シリーズの IoT Hub の手順を示しています。 このシリーズの導入については、「[公開キー暗号化と X.509 公開キー基盤について理解する](../iot-hub/tutorial-x509-introduction.md)」を参照してください。
 
 #### <a name="windows"></a>Windows
 
