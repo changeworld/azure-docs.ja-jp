@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 7879db0e059358a2df550a8c82f3b692597de8f6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e1868794f7e47ccce3efa36b7954a1a2a704e8d6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889000"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739027"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>ワークスペース内のファイルを作成および管理する方法
 
@@ -58,7 +58,7 @@ Azure Machine Learning ワークスペース内のファイルを作成および
 
 ワークスペースには **[サンプル ノートブック]** フォルダーがあり、SDK を探索するために役立ち、独自の機械学習プロジェクトの例として利用できるように設計されたノートブックが格納されています。   これらのノートブックを独自のフォルダーに複製し、実行したり編集したりできます。  
 
-例については、「[Tutorial:初めての ML 実験を作成する](tutorial-1st-experiment-sdk-setup.md#azure)」を参照してください。
+例については、「[Tutorial:初めての ML 実験を作成する](tutorial-train-models-with-aml.md#azure)」を参照してください。
 
 ## <a name="share-files"></a>ファイル共有
 

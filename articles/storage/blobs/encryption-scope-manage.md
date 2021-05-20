@@ -4,17 +4,17 @@ description: コンテナーまたは BLOB レベルで BLOB データを分離�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/26/2021
+ms.date: 05/10/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 656443b0bc9d0e45f43634b1b4c21145de7a5bb5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1fc2f47c2cd95722bc7659a1bfb2354d00f3b9c2
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792545"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684459"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>暗号化スコープの作成と管理
 
@@ -41,7 +41,8 @@ Azure portal で暗号化スコープを作成するには、次の手順を実�
 1. **[暗号化スコープの作成]** ウィンドウで、新しいスコープの名前を入力します。
 1. 目的の暗号化キー サポートの種類として、 **[Microsoft-managed keys]\(Microsoft マネージド キー\)** または **[Customer-managed keys]\(カスタマー マネージド キー\)** を選択します。
     - **[Microsoft-managed keys]\(Microsoft マネージド キー\)** を選択した場合は、 **[作成]** をクリックして暗号化スコープを作成します。
-    - **[Customer-managed keys]\(カスタマー マネージド キー\)** を選択した場合は、次の図に示すように、サブスクリプションを選択し、この暗号化スコープで使用するキー コンテナーまたは Managed HSM、キー、およびキーのバージョンを指定します。
+    - **[カスタマー マネージド キー]** を選択した場合は、サブスクリプションを選択し、この暗号化スコープで使用するキー コンテナーまたは Managed HSM、キー、およびキーのバージョンを指定します。
+1. ストレージ アカウントに対してインフラストラクチャ暗号化が有効になっている場合は、新しい暗号化スコープに対して自動的に有効になります。 そうでない場合は、暗号化スコープに対してインフラストラクチャ暗号化を有効にするかどうかを選択できます。
 
     :::image type="content" source="media/encryption-scope-manage/create-encryption-scope-customer-managed-key-portal.png" alt-text="Azure portal で暗号化スコープを作成する方法を示すスクリーンショット":::
 
@@ -51,7 +52,9 @@ PowerShell を使用して暗号化スコープを作成するには、[Az.Stora
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Microsoft マネージド キーによって保護される暗号化スコープを作成する
 
-Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`-StorageEncryption` パラメーターを使用して **New-AzStorageEncryptionScope** コマンドを呼び出します。
+Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`-StorageEncryption` パラメーターを使用して [New-AzStorageEncryptionScope](/powershell/module/az.storage/new-azstorageencryptionscope) コマンドを呼び出します。
+
+ストレージ アカウントに対してインフラストラクチャ暗号化が有効になっている場合は、新しい暗号化スコープに対して自動的に有効になります。 そうでない場合は、暗号化スコープに対してインフラストラクチャ暗号化を有効にするかどうかを選択できます。 インフラストラクチャ暗号化を有効にした新しいスコープを作成するには、`-RequireInfrastructureEncryption` パラメーターを含めます。
 
 例中のプレースホルダーを独自の値に置き換えてください。
 
@@ -93,7 +96,9 @@ Set-AzKeyVaultAccessPolicy `
     -PermissionsToKeys wrapkey,unwrapkey,get
 ```
 
-次に、`-KeyvaultEncryption` パラメーターを使用して **New-AzStorageEncryptionScope** コマンドを呼び出し、キー URI を指定します。 キーのバージョンをキー URI に含めることは省略可能です。 キーのバージョンを省略した場合、暗号化スコープでは最新のキーのバージョンを自動的に使用します。 キーのバージョンを含める場合は、別のバージョンを使用するようにキーのバージョンを手動で更新する必要があります。
+次に、`-KeyvaultEncryption` パラメーターを使用して [New-AzStorageEncryptionScope](/powershell/module/az.storage/new-azstorageencryptionscope) コマンドを呼び出し、キー URI を指定します。 キーのバージョンをキー URI に含めることは省略可能です。 キーのバージョンを省略した場合、暗号化スコープでは最新のキーのバージョンを自動的に使用します。 キーのバージョンを含める場合は、別のバージョンを使用するようにキーのバージョンを手動で更新する必要があります。
+
+ストレージ アカウントに対してインフラストラクチャ暗号化が有効になっている場合は、新しい暗号化スコープに対して自動的に有効になります。 そうでない場合は、暗号化スコープに対してインフラストラクチャ暗号化を有効にするかどうかを選択できます。 インフラストラクチャ暗号化を有効にした新しいスコープを作成するには、`-RequireInfrastructureEncryption` パラメーターを含めます。
 
 例中のプレースホルダーを独自の値に置き換えてください。
 
@@ -111,7 +116,11 @@ Azure CLI で暗号化スコープを作成するには、最初に Azure CLI �
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Microsoft マネージド キーによって保護される暗号化スコープを作成する
 
-Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) コマンドを呼び出します。 プレースホルダー値をお客様独自の値に置き換えてください。
+Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) コマンドを呼び出します。
+
+ストレージ アカウントに対してインフラストラクチャ暗号化が有効になっている場合は、新しい暗号化スコープに対して自動的に有効になります。 そうでない場合は、暗号化スコープに対してインフラストラクチャ暗号化を有効にするかどうかを選択できます。 インフラストラクチャ暗号化を有効にした新しいスコープを作成するには、`--require-infrastructure-encryption` パラメーターを含め、その値を `true` に設定します。
+
+プレースホルダー値をお客様独自の値に置き換えてください。
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -122,8 +131,6 @@ az storage account encryption-scope create \
 ```
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>カスタマー マネージド キーによって保護される暗号化スコープを作成する
-
-Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) コマンドを呼び出します。 プレースホルダー値をお客様独自の値に置き換えてください。
 
 キー コンテナーまたは Managed HSM にあるカスタマー マネージド キーによって保護される新しい暗号化スコープを作成するには、まず、ストレージ アカウントのカスタマー マネージド キーを構成します。 ストレージ アカウントにアクセスするためのアクセス許可が付与されるように、マネージド ID をストレージ アカウントに割り当ててから、そのマネージド ID を使用してキー コンテナーのアクセス ポリシーを構成する必要があります。 詳細については、「[Azure Storage 暗号化のカスタマー マネージド キー](../common/customer-managed-keys-overview.md)」を参照してください。
 
@@ -153,7 +160,9 @@ az keyvault set-policy \
     --key-permissions get unwrapKey wrapKey
 ```
 
-次に、`--key-uri` パラメーターを使用して **az storage account encryption-scope create** コマンドを呼び出し、キー URI を指定します。 キーのバージョンをキー URI に含めることは省略可能です。 キーのバージョンを省略した場合、暗号化スコープでは最新のキーのバージョンを自動的に使用します。 キーのバージョンを含める場合は、別のバージョンを使用するようにキーのバージョンを手動で更新する必要があります。
+次に、`--key-uri` パラメーターを使用して [az storage account encryption-scope](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) コマンドを呼び出し、キー URI を指定します。 キーのバージョンをキー URI に含めることは省略可能です。 キーのバージョンを省略した場合、暗号化スコープでは最新のキーのバージョンを自動的に使用します。 キーのバージョンを含める場合は、別のバージョンを使用するようにキーのバージョンを手動で更新する必要があります。
+
+ストレージ アカウントに対してインフラストラクチャ暗号化が有効になっている場合は、新しい暗号化スコープに対して自動的に有効になります。 そうでない場合は、暗号化スコープに対してインフラストラクチャ暗号化を有効にするかどうかを選択できます。 インフラストラクチャ暗号化を有効にした新しいスコープを作成するには、`--require-infrastructure-encryption` パラメーターを含め、その値を `true` に設定します。
 
 例中のプレースホルダーを独自の値に置き換えてください。
 
@@ -172,6 +181,8 @@ az storage account encryption-scope create \
 
 - [Azure Key Vault に格納されているカスタマー マネージド キーによる暗号化を構成する](../common/customer-managed-keys-configure-key-vault.md)
 - [Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する](../common/customer-managed-keys-configure-key-vault-hsm.md)。
+
+インフラストラクチャ暗号化の詳細については、「[データの二重暗号化のためのインフラストラクチャ暗号化を有効にする](../common/infrastructure-encryption-enable.md)」を参照してください。
 
 ## <a name="list-encryption-scopes-for-storage-account"></a>ストレージ アカウントの暗号化スコープを一覧表示する
 
@@ -418,3 +429,4 @@ az storage account encryption-scope update \
 - [保存データに対する Azure Storage 暗号化](../common/storage-service-encryption.md)
 - [BLOB ストレージの暗号化スコープ](encryption-scope-overview.md)
 - [Azure Storage の暗号化のためのカスタマー マネージド キー](../common/customer-managed-keys-overview.md)
+- [データの二重暗号化のためのインフラストラクチャ暗号化を有効にする](../common/infrastructure-encryption-enable.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 98922829e83f84078c3d8cadae15844dba194c93
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a8df14dc5fbd3f69f9c4e1b29ddb04c1a04073d9
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107800111"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108792290"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *キー コンテナーが既にある場合は、「[キー コンテナーに高度なアクセス ポリシーを設定する](#set-key-vault-advanced-access-policies)」に進むことができます。*
 
-キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az_keyvault_create) Azure CLI コマンド、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell コマンド、[Azure portal](https://portal.azure.com)、または [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) のいずれかを使用します。
+キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az_keyvault_create) Azure CLI コマンド、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure PowerShell コマンド、[Azure portal](https://portal.azure.com)、[Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)のいずれかを使用します。
 
 >[!WARNING]
 > キー コンテナーと VM は、同じサブスクリプションに配置する必要があります。 また、暗号化シークレットがリージョンの境界を確実に超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要もあります。 暗号化する VM と同じサブスクリプションとリージョン内に Key Vault を作成して使用します。 
@@ -126,6 +126,9 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 
 
 ## <a name="set-up-a-key-encryption-key-kek"></a>キー暗号化キー (KEK) を設定する
+
+> [!IMPORTANT]
+> キー コンテナーに対するディスクの暗号化を有効にするための実行アカウントには、"閲覧者" アクセス許可が必要です。
 
 暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する場合は、キー コンテナーに KEK を追加します。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。
 

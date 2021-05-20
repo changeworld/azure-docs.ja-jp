@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 03/31/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 5700447e170bebf40224366970b00814b1be3052
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 7dc6827f7ebd7b034ffc00906629bafe04036fbd
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296499"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109789571"
 ---
 # <a name="azure-digital-twins-query-language-reference-join-clause"></a>Azure Digital Twins クエリ言語リファレンス: JOIN 句
 
@@ -80,7 +80,7 @@ Building (建物) のトラバーサルを示す次のクエリについて考�
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/reference.sql" id="NoOuterJoinExample":::
 
-`Building1` に Floor (フロア) が含まれていない場合、このクエリでは (建物の値とフロアの `undefined` を持つ 1 つの行を返す代わりに) 空の結果セットが返されます。
+Building1 に Floor (フロア) が含まれていない場合、このクエリでは (建物の値とフロアの `undefined` を持つ 1 つの行を返す代わりに) 空の結果セットが返されます。
 
 ### <a name="twins-required"></a>ツインが必要
 

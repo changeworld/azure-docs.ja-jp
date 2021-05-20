@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14519a1e46c3fd3414f9a09521fd6bcb5cb8b851
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 42c73e2fa0439b247267f8d1021c0a779b6ca2ba
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285594"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627908"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -71,7 +71,6 @@ Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済�
 |Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
 |Windows 8.1|はい\*|はい*\*\*\*|はい|はい\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
-|Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
 |Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
@@ -79,7 +78,7 @@ Hybrid Azure AD 参加済み、Azure AD 参加済み、または個人登録済�
  >Microsoft Edge レガシはサポートされなくなりました
 
 
-\*Internet Explorer バージョン 11 以降が必要です。
+\*Internet Explorer バージョン 11 以降が必要です。 ([2021 年 8 月 17 日以降、Microsoft 365 のアプリとサービスでは IE 11 はサポートされなくなります](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)。)
 
 \*\*Internet Explorer バージョン 11 以降が必要です。 拡張保護モードを無効にする。
 

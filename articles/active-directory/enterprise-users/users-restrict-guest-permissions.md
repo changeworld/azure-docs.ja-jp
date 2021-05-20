@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6b93da489d1d2cbaa96ea8ed99b096ea8b7af45e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501503"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746155"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する (プレビュー)
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) を使用すると、Azure AD 内の組織で�
 
 ## <a name="permissions-and-licenses"></a>アクセス許可とライセンス
 
-外部コラボレーション設定を構成するには、全体管理者ロールである必要があります。 ゲスト アクセスを制限するための追加のライセンス要件はありません。
+ゲストユーザーアクセスを構成するには、全体管理者または特権ロール管理者ロールである必要があります。 ゲスト アクセスを制限するための追加のライセンス要件はありません。
 
 ## <a name="update-in-the-azure-portal"></a>Azure portal で更新する
 

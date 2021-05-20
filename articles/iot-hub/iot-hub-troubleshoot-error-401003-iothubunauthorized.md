@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0e59fa2bcbc2d357857ddef39d990ddee9bc9c90
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 23bd1ce63e3d697a40125c79e802ad3e01915f49
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129461"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487495"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -37,6 +37,7 @@ IoT Hub への要求が、次のいずれかのエラー メッセージで失�
 * Authorization rule '\*' does not allow access for '\*' (承認規則 '*' では '*' へのアクセスが許可されていません)
 * Authentication failed for this device, renew token or certificate and reconnect (このデバイスの認証に失敗しました。トークンまたは証明書を更新して再接続してください)
 * Thumbprint does not match configuration:Thumbprint:SHA1Hash=\*, SHA2Hash=\*; Configuration:PrimaryThumbprint=\*, SecondaryThumbprint=\* (拇印が構成と一致しません: 拇印: SHA1Hash=*、SHA2Hash=*、構成: PrimaryThumbprint=*、SecondaryThumbprint=*)
+* アクセス許可が割り当てられていないため、プリンシパル user@example.com は /exampleOperation での GET を承認されていません
 
 ## <a name="cause"></a>原因
 
@@ -73,6 +74,7 @@ IoT Hub では、認証ヘッダー、規則、またはキーを認証できま
 - X.509 証明書の拇印認証の場合、デバイス証明書の拇印は IoT Hub に登録されます。
 - 承認の資格情報が使用するプロトコルに適した形式であること。 詳細については、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」を参照してください。
 - 使用される承認規則に、要求された操作に対するアクセス許可があること。
+- "principal..." で始まるエラー メッセージが最後に返された場合、このエラーを解決するには、ユーザーに正しいレベルの Azure RBAC アクセス許可を割り当てます。 たとえば、IoT Hub 上の所有者は、すべてのアクセス許可を付与する "IoT Hub データ所有者" ロールを割り当てることができます。 アクセス許可の不足の問題を解決するには、このロールを試してください。
 
 ## <a name="next-steps"></a>次のステップ
 

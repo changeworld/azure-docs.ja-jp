@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 05/10/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77075388b28878f7256639489ef1f83a961f5a6e
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95560665"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738364"
 ---
 Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの新機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 
@@ -46,6 +46,7 @@ Azure 共有ディスクは、Windows Server 2008 以降でサポートされて
 WSFC で実行される一般的なアプリケーションには、次のようなものがあります。
 
 - [Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
+    - [共有ディスクを使用して Azure VM 上の SQL Server にフェールオーバー クラスター インスタンスを移行する](../articles/azure-sql/migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)
 - スケールアウト ファイル サーバー (SoFS) [テンプレート] (https://aka.ms/azure-shared-disk-sofs-template)
 - SAP ASCS/SCS [テンプレート] (https://aka.ms/azure-shared-disk-sapacs-template)
 - 汎用のファイル サーバー (IW ワークロード)

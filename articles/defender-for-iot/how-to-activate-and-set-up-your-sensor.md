@@ -1,14 +1,14 @@
 ---
 title: センサーをアクティブ化してセットアップする
 description: この記事では、センサー コンソールにサインインしてアクティブ化する方法について説明します。
-ms.date: 1/12/2021
+ms.date: 04/29/2021
 ms.topic: how-to
-ms.openlocfilehash: b040a87c2eae36e6049b4e1d0cf51ecb2cfde108
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 5e1e710f4f4eae844bbe18887bd3c3a1ab9f1da3
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385120"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656958"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>センサーをアクティブ化してセットアップする
 
@@ -42,7 +42,7 @@ ms.locfileid: "106385120"
 
 | モードの種類 | [説明] |
 |--|--|
-| **クラウド接続モード** | センサーによって検出された情報はセンサー コンソールに表示されます。 また、アラート情報は IoT ハブを通じて配信され、他の Azure サービス (Azure Sentinel など) と共有できます。 |
+| **クラウド接続モード** | センサーによって検出された情報はセンサー コンソールに表示されます。 また、アラート情報は IoT ハブを通じて配信され、他の Azure サービス (Azure Sentinel など) と共有できます。 また、脅威インテリジェンスの自動更新を有効にすることもできます。 |
 | **ローカル接続モード** | センサーによって検出された情報はセンサー コンソールに表示されます。 また、センサーがオンプレミスの管理コンソールに接続されている場合は、検出情報が共有されます。 |
 
 ローカル接続またはクラウド接続された、このセンサー用のアクティブ化ファイルはオンボード中に生成されてダウンロードされたものです。 アクティブ化ファイルには、センサーの管理モードに関する説明が含まれています。 "*デプロイする各センサーに、一意のアクティブ化ファイルをアップロードする必要があります。* "  初めてサインインするときは、このセンサー用の関連アクティブ化ファイルをアップロードする必要があります。
@@ -71,7 +71,7 @@ ms.locfileid: "106385120"
 
 ### <a name="sign-in-and-activate-the-sensor"></a>サインインしてセンサーをアクティブ化する
 
-サインインしてアクティブ化するには、次のようにします。
+**サインインしてアクティブ化するには、次のようにします。**
 
 1. インストール中に定義された IP を使用して、ブラウザーからセンサー コンソールにアクセスします。 サインインのダイアログ ボックスが開きます。
 
@@ -112,13 +112,35 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 センサーをアクティブ化する前に、この情報を更新する必要がある場合があります。 たとえば、Arrow によって定義された構成済みパラメーターを変更する必要がある場合があります。 また、センサーをアクティブ化する前に、プロキシ設定を定義することもできます。
 
-センサーのネットワーク構成パラメーターを更新するには、次のようにします。
+**センサーのネットワーク構成パラメーターを更新するには、次のようにします。**
 
 1. **[Activation]\(アクティブ化\)** ダイアログ ボックスの **[Sensor Network Configuration]\(センサーのネットワーク構成\)** リンクを選択します。
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-sensor/editable-network-configuration-screen-v2.png" alt-text="センサーのネットワーク構成。":::
 
 2. インストール時に定義したパラメーターが表示されます。 プロキシを定義するオプションも使用できます。 必要に応じて任意の設定を更新し、 **[Save]\(保存\)** を選択します。
+
+### <a name="activate-an-expired-license-versions-under-100"></a>期限切れのライセンスをアクティブ化する (10.0 より前のバージョン)
+
+10.0 より前のバージョンのユーザーの場合、ライセンスの有効期限が切れることがあり、次のアラートが表示されます。 
+
+:::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/activation-popup.png" alt-text="ライセンスの有効期限が切れると、アクティブ化ファイルを使用してライセンスを更新する必要があります。":::
+
+**ライセンスをアクティブ化するには、次の手順を実行します。**
+
+1. [サポート](https://ms.portal.azure.com/?passwordRecovery=true&Microsoft_Azure_IoT_Defender=canary#create/Microsoft.Support)でケースを開きます。
+
+1. サポートにアクティブ化 ID 番号を提供します。
+
+1. サポートから、新しいライセンス情報が文字列の形式で提供されます。
+
+1. ご契約条件を読んで、チェックボックスをオンにして承認します。
+
+1. 指定されたスペースに文字列を貼り付けます。
+
+    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/add-license.png" alt-text="指定されたフィールドに文字列を貼り付けます。":::
+
+1. **[アクティブ化]** を選びます。
 
 ### <a name="subsequent-sign-ins"></a>以降のサインイン
 
@@ -156,7 +178,7 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 学習モードは、ネットワークのサイズと複雑さに応じて、約 2 週間から 6 週間実行する必要があります。 学習モードを無効にすると、ベースライン アクティビティと異なるアクティビティによってアラートがトリガーされます。
 
-学習モードを無効にするには、次のようにします。
+**学習モードを無効にするには、次のようにします。**
 
 - **[システム設定]** を選択し、 **[Learning]\(学習\)** オプションをオフにします。
 
@@ -211,6 +233,8 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 | サポート | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | ヘルプが必要な場合は、[Microsoft サポート](https://support.microsoft.com/)にご連絡ください。 |
 
 ## <a name="see-also"></a>関連項目
+
+[脅威インテリジェンスの調査とパッケージ #](how-to-work-with-threat-intelligence-packages.md)
 
 [センサーをオンボードする](getting-started.md#onboard-a-sensor)
 

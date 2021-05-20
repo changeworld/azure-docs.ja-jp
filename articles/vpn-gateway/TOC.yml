@@ -172,7 +172,11 @@
             - name: Multi-Factor Authentication (MFA) の構成
               href: openvpn-azure-ad-mfa.md
             - name: VPN クライアントの構成
-              href: openvpn-azure-ad-client.md
+              items:
+                - name: Windows
+                  href: openvpn-azure-ad-client.md
+                - name: macOS - プレビュー
+                  href: openvpn-azure-ad-client-mac.md
             - name: VPN クライアント プロファイル ファイルの操作
               href: about-vpn-profile-download.md
             - name: Intune - VPN クライアント プロファイルのデプロイ

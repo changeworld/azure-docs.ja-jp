@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 137b77c09cc1ae4f18555568287324a373ca8786
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98882401"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655421"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の登録とスキャン
 
@@ -82,7 +82,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 サービス プリンシパルのアプリケーション ID とシークレットを取得する必要があります。
 
 1. [Azure portal](https://portal.azure.com) でサービス プリンシパルに移動します
-1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
+1. **[アプリケーション (クライアント) ID]** の値を **[概要]** から、および **[クライアント シークレット]** の値を **[証明書とシークレット]** からコピーします。
 1. お使いのキー コンテナーに移動する
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
@@ -101,7 +101,7 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 > [!NOTE]
 > ストレージ アカウントに対してファイアウォールが有効になっている場合は、スキャンを設定するときに、 **[マネージド ID]** の認証方法を使用する必要があります。
 
-1. [Azure portal](https://portal.azure.com) で ASLS Gen2 ストレージ アカウントに移動します
+1. [Azure portal](https://portal.azure.com) で ADLS Gen2 ストレージ アカウントに移動します
 1. **[設定] > [ネットワーク]** に移動します
 1. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します
 1. **[例外]** セクションで、 **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択し、 **[保存]** を選択します
@@ -121,10 +121,10 @@ Azure Data Lake Storage Gen2 では、次の認証方法がサポートされて
 **[ソースの登録 (Azure Data Lake Storage Gen2)]** 画面で、次の手順を行います。
 
 1. データ ソースがカタログに表示されるときの **名前** を入力します。
-2. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します
-3. Select a storage account (ストレージ アカウントを選択する)
-4. コレクションを選択するか、新しいものを作成します (省略可能)
-5. **[完了]** を選択して、データ ソースを登録します。
+2. サブスクリプションを選択して、ストレージ アカウントをフィルター処理します。
+3. ストレージ アカウントを選択します。
+4. コレクションを選択するか、新しいものを作成します (省略可能)。
+5. **[登録]** を選択してデータ ソースを登録します。
 
 :::image type="content" source="media/register-scan-adls-gen2/register-sources.png" alt-text="ソースの登録のオプション" border="true":::
 

@@ -1,21 +1,22 @@
 ---
 title: Azure Active Directory と SAP SuccessFactors の統合のリファレンス
-description: SAP SuccessFactors に関する技術的な詳細 - HR 主導のプロビジョニング
+description: Azure Active Directory 向け SAP SuccessFactors-HR 駆動のプロビジョニングに関する技術的な詳細を掘り下げます。
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/19/2021
-ms.author: chmutali
-ms.openlocfilehash: ed97600ca1802629f81f93f4f51c92ad4b1c9bd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: 7c7ba58383481e2b776b27015f98080b35f3084d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256223"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784937"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory のプロビジョニングと SAP SuccessFactors の統合方法 
 

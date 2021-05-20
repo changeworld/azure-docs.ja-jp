@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central で新しい IoT デバイスの種類を定義する | Microsoft Docs
-description: この記事では、ソリューション ビルダーとして、Azure IoT Central アプリケーションで新しい Azure IoT デバイス テンプレートを作成する方法を示します。 種類に対して、テレメトリ、状態、プロパティ、コマンドを定義します。
+description: この記事では、Azure IoT Central アプリケーションで新しい Azure IoT デバイス テンプレートを作成する方法を示します。 種類に対して、テレメトリ、状態、プロパティ、コマンドを定義します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9ef4be54f5c6025a09314a04504cff40fc39478d
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 8d51297b353a72861f864e42bf87cad4f1a712b3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168163"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747199"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
-
-"*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
 デバイス テンプレートは、[Azure IoT Central アプリケーション](concepts-app-templates.md)に接続するデバイスの種類の、特性と動作を定義するブループリントです。
 
@@ -284,4 +282,4 @@ cloud-to-device メッセージ:
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者にお勧めする次の手順は、[デバイス テンプレートのバージョン管理](./howto-version-device-template.md)に関する記事を読むことです。
+お勧めする次の手順は、[デバイス テンプレートのバージョン管理](./howto-version-device-template.md)に関する記事を読むことです。

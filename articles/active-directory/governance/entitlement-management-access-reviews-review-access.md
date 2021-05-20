@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1a3a146b2622963fb20deeb2a8915eadb028ac3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798599"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714406"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
 
@@ -31,8 +31,7 @@ ms.locfileid: "87798599"
 
 ユーザーのアクティブなアクセス パッケージの割り当てを確認するには、アクセス レビューを行うための前提条件を満たしている必要があります。
 - Azure AD Premium P2
-- 全体管理者
-- 指定されたユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+- グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネジャー
 
 詳細については、「[License requirements ライセンスの要件](entitlement-management-overview.md#license-requirements)」を参照してください。
 

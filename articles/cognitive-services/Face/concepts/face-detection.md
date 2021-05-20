@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a8abb31b2442a8823437bb155b5b9970db1d181
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98600179"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742267"
 ---
 # <a name="face-detection-and-attributes"></a>顔検出と顔属性
 
@@ -39,6 +39,7 @@ ms.locfileid: "98600179"
 
 属性は、[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (顔 - 検出) API で必要に応じて検出できる特徴のセットです。 次の属性を検出できます。
 
+* **アクセサリ**。 特定の顔にアクセサリがあるかどうか。 この属性は、帽子、眼鏡、マスクなどの考えられるアクセサリと、それぞれのアクセサリの 0 から 1 の信頼度スコアを返します。
 * **年齢**。 特定の顔の推定年齢。
 * **ぼかし**。 画像内の顔のぼかしの程度。 この属性は、0 から 1 までの間の値と、非公式の評価 (低、中、または高) を返します。
 * **感情**。 感情のリストと、特定の顔に対する検出の信頼度。 信頼度スコアは正規化され、すべての感情スコアの合計は 1 になります。 返される感情は、喜び、悲しみ、中立、怒り、軽蔑、嫌悪感、驚き、恐怖です。
@@ -51,6 +52,7 @@ ms.locfileid: "98600179"
 
     ![ピッチ、ロール、およびヨーの軸のラベルが付いた頭部](../Images/headpose.1.jpg)
 * **化粧**。 顔に化粧があるかどうか。 この属性は eyeMakeup および lipMakeup についてのブール値を返します。
+* **マスク**。  顔にマスクを付けているかどうか。 この属性は、考えられるマスクの種類と、鼻と口が覆われているかどうかを示すブール値を返します。
 * **ノイズ**。 顔の画像で検出された視覚ノイズ。 この属性は、0 から 1 までの間の値と、非公式の評価 (低、中、または高) を返します。
 * **オクルージョン**。 顔のパーツをブロックするオブジェクトがあるかどうか。 この属性は、eyeOccluded、foreheadOccluded、および mouthOccluded についてのブール値を返します。
 * **笑顔**。 特定の顔の笑顔表現。 この値は、0 (笑顔なし) から 1 (鮮明な笑顔) までです。

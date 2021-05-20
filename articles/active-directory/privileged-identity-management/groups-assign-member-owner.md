@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84b2d75c03644e346dfad84ae01be31d8589f4ec
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91534422"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481933"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる
 
@@ -56,7 +56,10 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 1. **[割り当ての種類]** リストで **[対象]** または **[アクティブ]** を選択します。 特権アクセス グループには、2 つの異なる割り当ての種類があります。
 
-    - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。
+    - **[対象]** 割り当ての場合、このロールのメンバーは、ロールを使用するにはアクションを実行する必要があります。 要求されるアクションには、多要素認証 (MFA) チェックの実行、業務上の妥当性の指定、指定された承認者に対する承認要求などがあります。 
+
+      > [!Important]
+      > Azure AD ロールに昇格するために使用される特権アクセス グループについては、資格のあるメンバーの割り当ての承認プロセスを求めることをお勧めします。 承認せずにアクティブ化できる割り当てでは、アクセス許可を持つ別の管理者が対象ユーザーのパスワードをリセットしてしまうというセキュリティリスクに対して脆弱なままである可能性があります。
 
     - **[アクティブ]** 割り当ての場合、ロールを使用するために何らかのアクションを実行することをメンバーに要求しません。 アクティブ割り当てされたメンバーは、ロールによって提供される特権を常に所有します。
 

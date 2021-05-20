@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 04/05/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cec0f2be9dc86b156bc76f0de5afb1cc19fda99b
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: d55412ebc8d5b0d8d52b9f010937200838166f98
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108016493"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794198"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -63,18 +63,14 @@ Microsoft サービスの中には、すべての場所では利用できない�
 
 > [!WARNING]
 > 既存のグループのメンバーシップ規則を変更するときには注意が必要です。 規則を変更すると、グループのメンバーシップが再評価され、新しい規則と一致しなくなったユーザーが削除されます (新しい規則とも一致しているユーザーについては、このプロセス中に影響はありません)。 このプロセス中に、これらのユーザーはライセンスが削除されます。その結果、サービスを利用できなくなったり、場合によってはデータが失われたりする可能性があります。
-> 
+>
 > ライセンス割り当ての基盤となる大きな動的グループがある場合、大規模な変更を加える際は、まず小さなテスト グループで検証し、それからメインのグループに適用することをご検討ください。
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>複数のグループと複数のライセンス
 
 ユーザーは、ライセンスを持つ複数のグループのメンバーになることができます。 考慮事項をいくつか以下に示します。
 
-- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示しています。*E3 base services (E3 基本サービス)* にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 "*E3 extended services (E3 拡張サービス)* " には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
-
-  ![有効になっているサービスのスクリーンショット](./media/licensing-group-advanced/view-enabled-services.png)
-
-  その結果、この製品のライセンスを 1 つのみ使用して、製品の 12 のサービスのうち 7 つが有効になっています。
+- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 たとえば、"*E3 基本サービス*" には最初にすべてのユーザーにデプロイする基盤サービスが含まれ、"*E3 拡張サービス*" には一部のユーザーにのみデプロイする追加サービス (Sway および Planner) が含まれている可能性があります。 両方のグループにユーザーを追加することができます。 その結果、この製品のライセンスを 1 つのみ使用して、製品の 12 のサービスのうち 7 つが有効になっています。
 
 - "*E3*" ライセンスを選ぶと、どのグループ ライセンス割り当てによってどのサービスがユーザーに対して有効になったかという情報などの詳細が表示されます。
 

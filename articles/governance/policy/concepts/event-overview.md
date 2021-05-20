@@ -3,16 +3,16 @@ title: Azure Policy 状態変更イベントに対応する
 description: Azure Event Grid を使用してアプリ ポリシーのイベントにサブスクライブすると、複雑なコードを必要とせずに、アプリケーションが状態の変化に対応できます。
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: c100d5038a8c2506f5339ea0962012a8c32e22cf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 197dfbe410874541c38334b169c526bac63a614e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734923"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108752905"
 ---
 # <a name="reacting-to-azure-policy-state-change-events"></a>Azure Policy 状態変更イベントに対応する
 
-Azure Policy イベントによって、アプリケーションは状態の変化に対応可能になります。 この統合を実行するために、複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 イベントは、[Azure Event Grid](../../../event-grid/index.yml) を通して、[Azure Functions](../../../azure-functions/index.yml)、[Azure Logic Apps](../../../logic-apps/index.yml) などのサブスクライバー、またはユーザー独自のカスタム HTTP リスナーにプッシュされます。
+Azure Policy イベントによって、アプリケーションは状態の変化に対応可能になります。 この統合を実行するために、複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 代わりにイベントが、[Azure Event Grid](../../../event-grid/index.yml) を通して、[Azure Functions](../../../azure-functions/index.yml)、[Azure Logic Apps](../../../logic-apps/index.yml) などのサブスクライバー、またはユーザー独自のカスタム HTTP リスナーにプッシュされます。
 決定的な点は、使用した分だけ支払うということです。
 
 Azure Policy のイベントは Azure Event Grid に送信されます。そこでは、豊富な再試行ポリシーと配信不能メッセージ配信を使用して、信頼性の高い配信サービスがアプリケーションに提供されます。 詳細については、「[Event Grid のメッセージの配信と再試行](../../../event-grid/delivery-and-retry.md)」を参照してください。
@@ -28,7 +28,7 @@ Azure Policy イベントのよくあるシナリオは、リソースのコン�
 
 ## <a name="available-azure-policy-events"></a>使用可能な Azure Policy イベント
 
-Event Grid は、[イベント サブスクリプション](../../../event-grid/concepts.md#event-subscriptions)を使って、イベント メッセージをサブスクライバーにルーティングします。 Azure Policy のイベント サブスクリプションは、3 種類のイベントを含むことができます。
+Event Grid は、[イベント サブスクリプション](../../../event-grid/concepts.md#event-subscriptions)を使用して、イベント メッセージをサブスクライバーにルーティングします。 Azure Policy のイベント サブスクリプションは、3 種類のイベントを含むことができます。
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
@@ -39,8 +39,7 @@ Event Grid は、[イベント サブスクリプション](../../../event-grid/
 ## <a name="event-schema"></a>イベント スキーマ
 
 Azure Policy イベントには、データの変更に対応するために必要なすべての情報が含まれます。 Azure Policy イベントは、`eventType` プロパティが "Microsoft.PolicyInsights" で始まるとき識別できます。
-Event Grid イベントのプロパティの使用法について詳しくは、  
-[Event Grid イベント スキーマ](../../../event-grid/event-schema.md)に関する記事をご覧ください。
+Event Grid イベントのプロパティの使用法について詳しくは、「[Event Grid イベント スキーマ](../../../event-grid/event-schema.md)」をご覧ください。
 
 | プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |

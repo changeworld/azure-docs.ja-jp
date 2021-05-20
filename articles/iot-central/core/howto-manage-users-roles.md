@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: cff8830d180b0c234e54f7578ed9fafafeb598f0
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 620274962f56173ff7e729d2a71c3ee50a277489
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719171"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733496"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>IoT Central アプリケーションでユーザーとロールを管理する
 
-この記事では、管理者として Azure IoT Central アプリケーションでユーザーを追加、編集、および削除する方法について説明します。 この記事では、アプリケーションでロールを管理する方法についても説明します。
+この記事では、Azure IoT Central アプリケーションでユーザーを追加、編集、および削除する方法について説明します。 この記事では、アプリケーションでロールを管理する方法についても説明します。
 
 **[Administration] (管理)** セクションにアクセスして使用するには、Azure IoT Central アプリケーションの **管理者** ロールが必要です。 Azure IoT Central アプリケーションを作成したユーザーは、自動的にそのアプリケーションの **管理者** ロールに追加されます。
 

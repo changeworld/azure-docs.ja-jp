@@ -3,12 +3,12 @@ title: MABS を使用して SharePoint ファームを Azure にバックアッ�
 description: Azure Backup Server を使用して SharePoint データをバックアップおよび復元します。 この記事では、目的のデータを Azure に保存できるように SharePoint ファームを構成するための情報を提供します。 ディスクまたは Azure から保護対象の SharePoint データを復元できます。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd0c6ede50151114994152ed2375cf53f708c620
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89375399"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769365"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>MABS を使用して SharePoint ファームを Azure にバックアップする
 
@@ -80,7 +80,7 @@ SharePoint ファームをバックアップするには、ConfigureSharePoint.e
 
 1. **[グループ メンバーの選択]** で、WFE ロールを保持しているサーバーを展開します。 複数の WFE サーバーがある場合は、ConfigureSharePoint.exe をインストールしたサーバーを選択します。
 
-    SharePoint サーバーを展開すると、MABS は VSS を照会して MABS で保護できるデータを確認します。  SharePoint データベースがリモートである場合、MABS はそれに接続します。 SharePoint データ ソースが表示されない場合は、VSS ライターが SharePoint サーバーといずれかのリモート SQL Server で実行されていることを確認し、SharePoint サーバーとリモート SQL Server の両方で MABS エージェントがインストールされていることを確認します。 さらに、SharePoint データベースが SQL Server データベースとして他の場所で保護されていないことを確認してください。
+    SharePoint を実行しているコンピューターを展開すると、MABS によって VSS の照会が行われ、MABS によってどのデータを保護できるかの確認が行われます。 SharePoint データベースがリモートである場合、MABS はそれに接続します。 SharePoint データ ソースが表示されない場合は、SharePoint を実行しているコンピューターと SQL Server のリモート インスタンスで VSS ライターが実行されていることを確認します。 次に、MABS エージェントが SharePoint を実行しているコンピューターと SQL Server のリモート インスタンスの両方にインストールされていることを確認します。 さらに、SharePoint データベースが SQL Server データベースとして他の場所で保護されていないことを確認してください。
 
 1. **[データの保護方法の選択]** で、短期と長期のバックアップの処理方法を指定します。 短期のバックアップでは、常にまずディスクにバックアップされますが、Azure Backup を使用してディスクから Azure クラウドにバックアップするオプションがあります \(短期または 長期\)。
 
